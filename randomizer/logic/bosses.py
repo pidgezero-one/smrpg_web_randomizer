@@ -76,6 +76,11 @@ def randomize_all(world):
             world.models[belome_container.uncloneable_all_directions]["sprite"] = 147
         if belome_container.uncloneable_south_only is not None:
             world.models[belome_container.uncloneable_south_only]["sprite"] = 147
+        belome_container = bosses.Belome2Boss.small_model
+        if belome_container.cloneable_south_only is not None:
+            world.models[belome_container.cloneable_south_only]["sprite"] = 590
+        if belome_container.uncloneable_south_only is not None:
+            world.models[belome_container.uncloneable_south_only]["sprite"] = 590
 
 
     # Open mode-specific shuffles.
@@ -392,7 +397,6 @@ def randomize_all(world):
                                 if index < len(unique_henchmen) and not (requires_henchman_with_pack and unique_henchmen[index].pack_number is None):
                                     new_unique_henchman = unique_henchmen[index]
                                     new_henchman = new_unique_henchman
-                                    # world.get_formation_pack_by_index(new_henchman.pack_number) # why was this even herE?
                                     location.unique_henchmen[index][index2].occupant = new_henchman
                                     set_henchman_run_flags(world, boss, new_henchman)
                                 # otherwise, repeatable henchmen can fill the npc slot if permitted
@@ -498,6 +502,7 @@ def randomize_all(world):
 
                     # nimbus land statues
                     if utils.isclass_or_instance(boss_location, bosses.Valentina):
+                        #print(boss)
                         statue = boss.statue
                         sprite_id = world.models[63]["sprite"]
                         world.models[63] = copy.deepcopy(world.models[statue.reference_model])
@@ -899,6 +904,25 @@ def randomize_all(world):
 
                                 world.eventscripts[script_id][0]["subscript"] = copy.deepcopy([{**s} for s in rewritten_recoil_subroutine])
 
+                            elif utils.isclass_or_instance(boss_location, bosses.Chester) and (script_id == 2190):
+                                if utils.isclass_or_instance(boss, bosses.MimicBoss):
+                                    pass
+                                rewritten_chester_subscript = [
+                                    {"identifier": 'EVENT_2174_action_queue_async_10_SUBSCRIPT_face_southwest_0', "command": 'face_southwest'},
+                                    {"identifier": 'EVENT_2174_action_queue_async_10_SUBSCRIPT_visibility_on_2', "command": 'visibility_on'},
+                                    {"identifier": 'EVENT_2174_action_queue_async_10_SUBSCRIPT_pause_3', "command": 'pause', "args": [35]}
+                                ]
+                                if model.animations is not None and model.animations.keep_challenge is not None:
+                                    rewritten_chester_subscript.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [model.animations.keep_challenge.sequence_id, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]})
+                                    if model.animations.keep_challenge.total_duration is not None:
+                                        rewritten_chester_subscript.append({"identifier": 'dummy', "command": 'pause', "args": [model.animations.keep_challenge.total_duration + 20]})
+                                    else:
+                                        rewritten_chester_subscript.append({"identifier": 'dummy', "command": 'pause', "args": [20]})
+                                else:
+                                    rewritten_chester_subscript.append({"identifier": 'dummy', "command": 'pause', "args": [20]})
+                                
+                                world.eventscripts[script_id][0]["subscript"] = copy.deepcopy([{**s} for s in rewritten_chester_subscript])
+
 
                             elif utils.isclass_or_instance(boss_location, bosses.Magikoopa) and (script_id == 942):
                                 if model.animations is not None and model.animations.keep_summon is not None:
@@ -929,7 +953,10 @@ def randomize_all(world):
                                     {"identifier": 'dummy', "command": 'pause', "args": [20]},
                                     {"identifier": 'dummy', "command": 'set_animation_speed', 'args': [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]}
                                 ]
-                                if model.animations is not None and model.animations.chandelier_challenge is not None:
+                                if utils.isclass_or_instance(boss, bosses.MimicBoss):
+                                    rewritten_chandelier_subscript.extend(boss.challenge_script)
+                                    rewritten_chandelier_subscript.append({"identifier": 'dummy', "command": 'pause', "args": [45]})
+                                elif model.animations is not None and model.animations.chandelier_challenge is not None:
                                     rewritten_chandelier_subscript.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [model.animations.chandelier_challenge.sequence_id, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]})
                                     if model.animations.chandelier_challenge.total_duration is not None:
                                         rewritten_chandelier_subscript.append({"identifier": 'dummy', "command": 'pause', "args": [model.animations.chandelier_challenge.total_duration + 29]})
@@ -1054,7 +1081,14 @@ def randomize_all(world):
                                 else:
                                     model_num = model.cloneable_all_directions or model.uncloneable_all_directions or model.cloneable_south_only or model.uncloneable_south_only
 
-                                world.update_room_npc_property_by_id(room_id, npc_id, "model", model_num)
+                                # preserve mack skip solidity
+                                if utils.isclass_or_instance(boss_location, bosses.Mack) and room_id == 326 and npc_id in [8, 9]:
+                                    world.models[679] = copy.deepcopy(world.models[model_num])
+                                    world.models[679]["acute_axis"] = 3
+                                    world.models[679]["obtuse_axis"] = 3
+                                    world.models[679]["height"] = 11
+                                else:
+                                    world.update_room_npc_property_by_id(room_id, npc_id, "model", model_num)
 
                                 model.directional_capability = world.models[model_num]["vram_store"]
 
@@ -1200,8 +1234,9 @@ def randomize_all(world):
                                                     subs["args"][2] = [s for s in subs["args"][2] if s != _0x08Flags.LOOPING_OFF]
                                                     scr.append(subs)
                                                     scr.append({"identifier": 'ACTION_%i_wait_post' % script_id, "command": 'pause', "args": [32]})
-                                                    subs_reset["args"][0] = model.sequence
-                                                    subs_reset["args"][2] = [s for s in subs["args"][2] if s != _0x08Flags.LOOPING_OFF].append(_0x08Flags.LOOPING_OFF)
+                                                    subs_reset["args"][0] = model.animations.factory_pierce.sequence_id
+                                                    subs_reset["args"][2] = [s for s in subs["args"][2] if s != _0x08Flags.LOOPING_OFF]
+                                                    subs_reset["args"][2].append(_0x08Flags.LOOPING_OFF)
                                                     scr.append(subs_reset)
                                             elif subscript_command["command"] == 'pause' and subscript_command["args"][0] == 32:
                                                 pass
@@ -1329,6 +1364,7 @@ def randomize_all(world):
                 fight_builders[e]["jumps"].append(new_command(e, "ret"))
                 world.eventscripts[e] = copy.deepcopy([{**s} for s in fight_builders[e]["jumps"]]) + copy.deepcopy([{**s} for s in fight_builders[e]["executions"]])
             for e in sequence_setters:
+                sequence_setters[e].append(new_command(e, "pause", [10]))
                 world.eventscripts[e] = copy.deepcopy([{**s} for s in sequence_setters[e]]) + world.eventscripts[e]
 
             # figure out partitions

@@ -11,6 +11,31 @@ script = [
         "args": [0x70ac]
     },
     {
+        "identifier": "EVENT_1688_shaman",
+        "command": "jmp_if_7000_not_equals_short",
+        "args": [0, 'EVENT_1688_remove_from_level_6_']
+    },
+    {
+        "identifier": 'EVENT_1688_jmp_if_bit_clear_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7050, 6, 'EVENT_1688_remove_from_level_6_']
+    },
+    {
+        "identifier": 'EVENT_1688_summon_from_level_6_',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
+    },
+    {
+        "identifier": 'EVENT_1688_j',
+        "command": 'jmp',
+        "args": ['EVENT_1688_mem_7000_and_const_3']
+    },
+    {
+        "identifier": 'EVENT_1688_remove_from_level_6_',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
+    },
+    {
         "identifier": 'EVENT_1688_mem_7000_and_const_3',
         "command": 'mem_7000_and_const',
         "args": [0x0003]

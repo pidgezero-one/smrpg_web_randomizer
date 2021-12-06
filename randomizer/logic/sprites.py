@@ -4,6 +4,7 @@ import string, random, math, functools, copy
 
 UNCOMPRESSED_GFX_START = 0x280000
 UNCOMPRESSED_GFX_END = 0x330000
+#UNCOMPRESSED_GFX_END = 0x333720
 
 SPRITE_PTRS_START = 0x250000
 SPRITE_PTRS_END = 0x251000
@@ -25,6 +26,190 @@ PALETTE_OFFSET = 0x253000
 DEBUG_INDEX = 3
 
 alphabet = string.ascii_lowercase + string.digits
+
+# BOWSER
+mold_shifts= {
+    0: {
+        #0: {"x": 2, "y": -7},
+        #1: {"x": 2, "y": -6},
+        #2: {"x": 2, "y": -6},
+        #3: {"x": 1, "y": -2},
+        #4: {"x": 1, "y": -2},
+        #5: {"x": 1, "y": -2},
+        #6: {"x": 1, "y": -2},
+        #7: {"x": 1, "y": -3},
+        #8: {"x": 1, "y": -2},
+        #9: {"x": 1, "y": -2},
+        #10: {"x": 0, "y": 1},
+        #11: {"x": 0, "y": 1},
+        #12: {"x": 1, "y": 4},
+        #13: {"x": 2, "y": -6},
+        #14: {"x": 1, "y": -6},
+        #15: {"x": 2, "y": -7},
+        #16: {"x": 2, "y": -6},
+        #17: {"x": 2, "y": -6},
+        #18: {"x": 0, "y": -2},
+        #19: {"x": 0, "y": -2},
+        #20: {"x": 0, "y": -2},
+        #23: {"x": -5, "y": -12},
+        #24: {"x": -5, "y": -12},
+        #25: {"x": -5, "y": -12},
+        #26: {"x": -5, "y": -12},
+        #27: {"x": 0, "y": -2},
+        #28: {"x": 0, "y": -2},
+        #29: {"x": 0, "y": -2},
+        #30: {"x": 0, "y": -2},
+        #31: {"x": 2, "y": -7},
+    },
+    1: {
+    #     0: {"x": 8, "y": -8},
+    #     1: {"x": 9, "y": -8},
+    #     2: {"x": 8, "y": -8},
+    #     3: {"x": 8, "y": -6},
+    #     4: {"x": 9, "y": -7},
+    #     5: {"x": 8, "y": -8},
+    #     6: {"x": 9, "y": -8},
+    #     7: {"x": 8, "y": -8},
+    #     8: {"x": 8, "y": -6},
+    #     9: {"x": 9, "y": -7},
+    #     13: {"x": 8, "y": 0},
+    #     14: {"x": 8, "y": 0},
+    #     15: {"x": 8, "y": 0},
+    #     16: {"x": -6, "y": 0},
+    #     17: {"x": -6, "y": 0},
+    #     18: {"x": -6, "y": 0},
+    #     19: {"x": 8, "y": 0},
+    #     20: {"x": 8, "y": 0},
+    #     21: {"x": 8, "y": 0},
+    #     22: {"x": 8, "y": 0},
+    #     23: {"x": 8, "y": 0},
+    #     24: {"x": 8, "y": 0},
+    #     25: {"x": 0, "y": -1},
+    #     26: {"x": 8, "y": -11},
+    #     27: {"x": 9, "y": -30},
+    },
+    2: {
+    #     0: {"x": 2, "y": 4},
+    #     1: {"x": 2, "y": 4},
+    #     2: {"x": 2, "y": 4},
+    #     3: {"x": 2, "y": 4},
+    #     4: {"x": 2, "y": 4},
+    #     5: {"x": 2, "y": 4},
+    #     6: {"x": 2, "y": 4},
+    #     7: {"x": 2, "y": 4},
+    #     8: {"x": 2, "y": 4},
+    #     9: {"x": 2, "y": 4},
+    #     10: {"x": 2, "y": 4},
+    #     11: {"x": 2, "y": 4},
+    #     12: {"x": 2, "y": 4},
+    #     13: {"x": 2, "y": 4},
+    #     14: {"x": 2, "y": 4},
+    #     15: {"x": 2, "y": 4},
+    #     16: {"x": 2, "y": 4},
+    #     17: {"x": 2, "y": 4},
+    #     18: {"x": 2, "y": 4},
+    #     19: {"x": 2, "y": 4},
+    #     20: {"x": 2, "y": 4},
+    #     21: {"x": 2, "y": 4},
+    #     22: {"x": 2, "y": 4},
+    #     23: {"x": 2, "y": 4},
+    #     24: {"x": 2, "y": 4},
+    #    25: {"x": 0, "y": -1},
+    #     26: {"x": 2, "y": 4},
+    #     27: {"x": 2, "y": 4},
+    #     28: {"x": 2, "y": 4},
+    #     29: {"x": 2, "y": 4},
+    #     30: {"x": 2, "y": 4},
+    #     31: {"x": 2, "y": 4},
+    },
+    3: {
+        # 0: {"x": 2, "y": 4},
+        # 1: {"x": 2, "y": 4},
+        # 2: {"x": 2, "y": 4},
+        # 3: {"x": 2, "y": 4},
+        # 4: {"x": 2, "y": 4},
+        # 5: {"x": 2, "y": 4},
+        # 6: {"x": 2, "y": 4},
+        # # 7: {"x": 4, "y": -12},
+        # # 8: {"x": 4, "y": -12},
+        # # 9: {"x": 4, "y": -12},
+        # 10: {"x": 2, "y": 4},
+        # 11: {"x": 2, "y": 4},
+        # 12: {"x": 2, "y": 4},
+        # 13: {"x": 2, "y": 4},
+        # 14: {"x": 2, "y": 4},
+        # 15: {"x": 2, "y": 6},
+        # 16: {"x": 2, "y": 6},
+        # 17: {"x": 2, "y": 6},
+        # 18: {"x": 2, "y": 6},
+        # 19: {"x": 2, "y": 6},
+        # 20: {"x": 2, "y": 4},
+        # 21: {"x": 2, "y": 6},
+        # 22: {"x": 4, "y": -8},
+        # 23: {"x": 4, "y": -9},
+    },
+    6: {
+        # 0: {"x": 2, "y": 4},
+        # 1: {"x": 2, "y": 4},
+        # 2: {"x": 2, "y": 4},
+        # 3: {"x": 2, "y": 4},
+        # 4: {"x": 2, "y": 4},
+        # 5: {"x": 2, "y": 4},
+        # 6: {"x": 2, "y": -15},
+        # 7: {"x": 2, "y": -15},
+        # 8: {"x": 0, "y": -6},
+        # 9: {"x": 4, "y": -14},
+        # 10: {"x": 10, "y": -16},
+        # 11: {"x": 9, "y": 0},
+        # 12: {"x": 9, "y": 0},
+        # 13: {"x": 9, "y": 0},
+        # 14: {"x": 9, "y": 0},
+        # 15: {"x": 9, "y": 0},
+        # 16: {"x": 9, "y": 0},
+        # 17: {"x": 9, "y": 0},
+        # 18: {"x": 11, "y": -8},
+        # 19: {"x": 11, "y": -8},
+        # 20: {"x": 11, "y": -8},
+        # 21: {"x": 11, "y": -8},
+        # 23: {"x": 3, "y": -7},
+    },
+    96: {
+    },
+    132: {
+        # 10: {"x": 7, "y": -15},
+        # 11: {"x": 7, "y": -12},
+        # 12: {"x": 2, "y": -14},
+        # 13: {"x": 0, "y": -2},
+        # 15: {"x": 0, "y": -2},
+        # 16: {"x": -7, "y": -19},
+    },
+    135: {
+        # 10: {"x": 7, "y": -15},
+        # 11: {"x": 7, "y": -12},
+        # 12: {"x": 2, "y": -14},
+        # 13: {"x": 0, "y": -2},
+        # 15: {"x": 0, "y": -2},
+        # 16: {"x": -7, "y": -19},
+    },
+    136: {
+        # 10: {"x": 7, "y": -15},
+        # 11: {"x": 7, "y": -12},
+        # 12: {"x": 2, "y": -14},
+        # 13: {"x": 0, "y": -2},
+        # 15: {"x": 0, "y": -2},
+        # 16: {"x": -7, "y": -19},
+    },
+    234: {
+        #0: {"x": 0, "y": -1},
+        # 1: {"x": 12, "y": -8},
+        # 2: {"x": 12, "y": -8},
+        # 3: {"x": 12, "y": -8},
+        # 4: {"x": 6, "y": -3},
+        # 5: {"x": 12, "y": -8},
+        # 6: {"x": 9, "y": -4},
+        # 7: {"x": 9, "y": -4},
+    },
+}
 
 def random_tile_id():
     return ''.join(random.choices(alphabet, k=8))
@@ -122,7 +307,6 @@ def is_same_animation(animation1, animation2):
             if as1.mold_id != as2.mold_id:
                 return False
     return True
-
 
 def is_clone_start(tile, compare_tile):
     if compare_tile.is_clone:
@@ -258,7 +442,7 @@ def find_clones(tiles, molds, index=0, index2=0):
                 # look for any possible point in previous molds that looks like it could be a clone range ending with this tile
                 clone_candidates += get_clone_ranges(mold_index, tiles, tile_index, mold.tiles, index, index2)
             mold_index -= 1
-        # if index == 8 and index2 == 14:
+        # if index == 2 and index2 == 25:
         #     print(tile_index, clone_candidates)
 
         # print(clone_candidates)
@@ -324,6 +508,23 @@ def find_clones(tiles, molds, index=0, index2=0):
     #         print(i, x)
     return output
 
+class AnimationBank:
+    start = 0
+    end = 0
+    tiles = bytearray([])
+
+    @property
+    def remaining_space(self):
+        return self.end - self.start - len(self.tiles)
+
+    @property
+    def current_offset(self):
+        return self.start + len(self.tiles)
+
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+        self.tiles = bytearray([])
 
 class Sprites:
     def __init__(self):
@@ -334,7 +535,6 @@ class Sprites:
         # Animation - image about how to arrange the graphics at the offset in the Image
     
     def assemble_from_tables(sprites, insert_whitespace=False):
-
         tile_groups = {}
         wip_sprites = []
         
@@ -391,8 +591,76 @@ class Sprites:
         
         unique_tiles_length = 0
 
+        animation_banks = [
+            AnimationBank(UNCOMPRESSED_GFX_START, 0x290000),
+            AnimationBank(0x290000, 0x2A0000),
+            AnimationBank(0x2A0000, 0x2B0000),
+            AnimationBank(0x2B0000, 0x2C0000),
+            AnimationBank(0x2C0000, 0x2D0000),
+            AnimationBank(0x2D0000, 0x2E0000),
+            AnimationBank(0x2E0000, 0x2F0000),
+            AnimationBank(0x2F0000, 0x300000),
+            AnimationBank(0x300000, 0x310000),
+            AnimationBank(0x310000, 0x320000),
+            AnimationBank(0x320000, 0x330000),
+            #AnimationBank(0x330000, UNCOMPRESSED_GFX_END),
+            AnimationBank(0x360000, 0x364000)
+        ]
+
+        def place_bytes(these_bytes):
+            # find bank with most space
+            highest_space = 0
+            index = 0
+            for b_index, b in enumerate(animation_banks):
+                if highest_space < b.remaining_space:
+                    highest_space = b.remaining_space
+                    index = b_index
+            if len(these_bytes) > animation_banks[index].remaining_space:
+                raise Exception("could not place bytes into a bank with space")
+            offset = animation_banks[index].current_offset
+            animation_banks[index].tiles += these_bytes
+            return offset
+
         # collect unique subtiles and group sprites by graphic similarity
         for index, sprite in enumerate(sprites):
+
+            # for key in [0, 1, 2, 3, 4, 5, 6, 251]:
+            #     if key == index:
+            #         for mold_index, mold in enumerate(sprite.animation.properties.molds):
+            #             shift = -2
+            #             y_shift = 0
+            #             if index == 0 and mold_index in [12, 13, 14, 15, 16, 17, 31]:
+            #                 shift = -1
+            #             elif index == 0 and mold_index in [23, 24, 25, 26]:
+            #                 shift = 4
+            #                 y_shift = 5
+            #             elif index == 1 and mold_index in [0, 1, 5, 6]:
+            #                 shift = -1
+            #             elif index in [4, 5]:
+            #                 shift = -1
+            #                 y_shift = 5
+            #             elif index in [251]:
+            #                 shift = 0
+            #                 y_shift = 4
+            #             elif index == 6 and mold_index in [6, 7, 8, 9, 10]:
+            #                 shift = 0
+            #             for tile_index, tile in enumerate(mold.tiles):
+            #                 tile.x += shift
+            #                 tile.y += y_shift
+            #                 mold.tiles[tile_index] = tile
+            #             sprite.animation.properties.molds[mold_index] = mold
+
+            # for key in mold_shifts:
+            #     if key == index:
+            #         for mold_index, mold in enumerate(sprite.animation.properties.molds):
+            #             for m in mold_shifts[key]:
+            #                 if mold_index == m:
+            #                     for tile_index, tile in enumerate(mold.tiles):
+            #                         tile.x += mold_shifts[key][m]["x"]
+            #                         tile.y += mold_shifts[key][m]["y"]
+            #                         #print(key, m, tile.x, tile.y)
+            #                         mold.tiles[tile_index] = tile
+            #                     sprite.animation.properties.molds[mold_index] = mold
 
             if index == 948:
                 for mi, mold in enumerate(sprite.animation.properties.molds):
@@ -465,14 +733,12 @@ class Sprites:
             unique_tiles_length += len(tile_groups[k]["tiles"])
 
         # calculate free space
-        free_tiles = (UNCOMPRESSED_GFX_END - UNCOMPRESSED_GFX_START - (unique_tiles_length * 0x20)) // 0x20
+        free_tiles = (0x330000 - UNCOMPRESSED_GFX_START - (unique_tiles_length * 0x20)) // 0x20
         #print("free space", free_tiles)
         # reserve 64 tiles for minecart and 8bit
         free_tiles -= 64
         if free_tiles < 0:
             free_tiles = 0
-
-        placed_tile_keys = []
 
         output_tiles = bytearray([])
 
@@ -502,6 +768,8 @@ class Sprites:
                     if tilegroup_index_of_this_tile > highest_subtile_index:
                         highest_subtile_index = tilegroup_index_of_this_tile
                 all_indexes_for_this_tile.sort()
+                # if sprite_index <= 6:
+                #     print(sprite_index, len(sprite["tiles"]), lowest_subtile_index, highest_subtile_index)
 
                 
                 # try copying some tiles if range is too big
@@ -522,12 +790,12 @@ class Sprites:
 
                         this_range = len(remanining_buffer) + len(tile_groups[tile_key]["extra"]) + len(tentative_clones)
 
-                        this_delta = all_indexes_for_this_tile[tg_index+1] - st_index
                         if this_range < smallest_range:
                             smallest_range = this_range
                             cutoff_index = next_st_index
-                    if sprite_index <= 6:
-                        print(smallest_range)
+                    # if still too big, convert into its own tileset?
+                    #if sprite_index <= 6:
+                    #    print(sprite_index, smallest_range)
                     lowest_subtile_index = cutoff_index
                     # add too-low sprite IDs to be duped at the end
                     new_tile_pool = tile_groups[tile_key]["tiles"][cutoff_index:] + tile_groups[tile_key]["extra"]
@@ -539,6 +807,21 @@ class Sprites:
             
             wip_sprites[sprite_index]["relative_offset"] = lowest_subtile_index
 
+
+        # start placing tile groups and get offsets for them
+        sortable_tile_groups = []
+        for key in tile_groups:
+            sortable_tile_groups.append((key, tile_groups[key]))
+        
+        
+        sortable_tile_groups.sort(key=lambda x: len(x[1]["tiles"]), reverse=True)
+        for tile_key, group in sortable_tile_groups:
+            tilebytes = bytearray([])
+            for t in group["tiles"] + group["extra"]:
+                tilebytes += bytearray(t)
+            group_offset = place_bytes(tilebytes)
+            #print(hex(group_offset))
+            tile_groups[tile_key]["offset"] = group_offset
 
         # start building stuff
         for sprite_index, sprite in enumerate(wip_sprites):
@@ -554,56 +837,12 @@ class Sprites:
                     lowest_subtile_index = tilegroup_index_of_this_tile
                 if tilegroup_index_of_this_tile > highest_subtile_index:
                     highest_subtile_index = tilegroup_index_of_this_tile
-            if sprite_index <= 6:
-                print(sprite_index)
-                print("tile group: ", len(tile_groups[tile_key]["tiles"]), "default,", len(tile_groups[tile_key]["extra"]), "extra,", len(available_tiles), "in use")
-                print("available: ", len(available_tiles))
-                print("relative offset: ", sprite["relative_offset"])
-                print("lowest:", lowest_subtile_index, "highest:", highest_subtile_index)
             
 
             inserting_whitespace_before = False
             whitespace_amount = 0
             # check if this tile group has already been placed
-            if tile_key not in placed_tile_keys:
-                offset = UNCOMPRESSED_GFX_START + len(output_tiles)
-                if insert_whitespace and free_tiles > 0 and sprite_index == 0:
-                    whitespace_amount = min(free_tiles, 510 - (highest_subtile_index - lowest_subtile_index))
-                    tile_groups[tile_key]["offset"] = offset + (0x20 * whitespace_amount)
-                    #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
-                    output_tiles += bytearray([0] * (0x20 * whitespace_amount))
-                    inserting_whitespace_before = True
-                    free_tiles -= whitespace_amount
-                else:
-                    tile_groups[tile_key]["offset"] = offset
-                offset = tile_groups[tile_key]["offset"] + sprite["relative_offset"] * 0x20
-                placed_tile_keys.append(tile_key)
-                for t in tile_groups[tile_key]["tiles"] + tile_groups[tile_key]["extra"]:
-                    output_tiles += bytearray(t)
-            else:
-                offset = tile_groups[tile_key]["offset"] + sprite["relative_offset"] * 0x20
-                if insert_whitespace and sprite_index == 1:
-                    #print(hex(tile_groups[tile_key]["offset"]))
-                    offset += ((lowest_subtile_index) * 0x20)
-                    whitespace_amount = 510 - (highest_subtile_index - lowest_subtile_index)
-                    if (offset - (whitespace_amount * 0x20)) < 0x280000:
-                        whitespace_amount = (offset - 0x280000) // 0x20
-                    #print(hex(offset))
-                    #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
-                    inserting_whitespace_before = True
-                    offset -= (whitespace_amount * 0x20)
-            # print(sprite_index, hex(offset))
-            if insert_whitespace:
-                if sprite_index == 6 or sprite_index == 3:
-                    whitespace_amount = min(free_tiles, 510 - (highest_subtile_index - lowest_subtile_index))
-                    #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
-                    free_tiles -= whitespace_amount
-                    output_tiles += bytearray([0] * (0x20 * whitespace_amount))
-                elif sprite_index == 132 or sprite_index == 234:
-                    whitespace_amount = 32
-                    #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
-                    free_tiles -= whitespace_amount
-                    output_tiles += bytearray([0] * (0x20 * whitespace_amount))
+            offset = tile_groups[tile_key]["offset"] + sprite["relative_offset"] * 0x20
 
 
             if len(available_tiles) > 510:
@@ -613,8 +852,6 @@ class Sprites:
             # get image pack #, or create new
             if not inserting_whitespace_before:
                 offset += ((subtile_subtract) * 0x20)
-            if sprite_index <= 6:
-                print(hex(offset))
             # need to change this to accommodate diff offsets in same tile group
             palette_ptr = PALETTE_OFFSET + sprite["sprite_data"].palette_id * 30
             image_index_to_use = len(complete_images)
@@ -671,13 +908,23 @@ class Sprites:
             # create sprite pack
             complete_sprites.append(Sprite(len(complete_sprites), image_index_to_use, animation_num_to_use, sprite["sprite_data"].palette_offset, sprite["sprite_data"].unknown_num))
         
-            if sprite_index <= 6:
-                print("")
+
+        output_tile_ranges = []
+        final_offset = animation_banks[0].start
+        for bank_index, b in enumerate(animation_banks):
+            final_offset = b.start + len(b.tiles)
+            animation_banks[bank_index].tiles += bytearray([0] * (b.end - b.start - len(b.tiles)))
+            if b.end <= 0x330000:
+                output_tiles += animation_banks[bank_index].tiles
+                if b.end == 0x330000:
+                    output_tile_ranges.append((0x280000, output_tiles))
+            else:
+                output_tile_ranges.append((b.start, animation_banks[bank_index].tiles))
         
         if len(complete_images) < 512:
             ind = len(complete_images)
             while ind < 512:
-                complete_images.append(ImagePack(ind, UNCOMPRESSED_GFX_START + len(output_tiles), 0x250000))
+                complete_images.append(ImagePack(ind, UNCOMPRESSED_GFX_START + final_offset, 0x250000))
                 ind += 1
         if len(complete_animations) < 444:
             ind = len(complete_animations)
@@ -688,31 +935,48 @@ class Sprites:
                     sequences=[AnimationSequence(frames=[])]
                 )))
                 ind += 1
-        output_tiles += bytearray([0] * (UNCOMPRESSED_GFX_END - UNCOMPRESSED_GFX_START - len(output_tiles)))
         #print("sprites", len(complete_sprites))
         #print("images", len(complete_images))
         #print("animations", len(complete_animations))
 
-        return assemble_from_tables_(complete_sprites, complete_images, complete_animations, output_tiles)
+        return assemble_from_tables_(complete_sprites, complete_images, complete_animations, output_tile_ranges)
 
         # problem: clones can't reference a relative offset > 7FFF
             
-
-            
-
-            
-
-
-def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
+def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
 
     sprite_data = []
     image_data = []
     animation_pointers = []
     animation_data_bank_1 = []
     animation_data_bank_2 = []
-    animation_banks = [[], [], [], []]
-    animation_bank_bounds = [(0x259000, 0x260000), (0x260000, 0x270000), (0x270000, 0x280000), (0x360000, 0x370000)]
     bank_in_use = 0
+
+    animation_data_banks = [
+        AnimationBank(0x259000, 0x260000),
+        AnimationBank(0x260000, 0x270000),
+        AnimationBank(0x270000, 0x280000),
+        AnimationBank(0x364000, 0x370000),
+        AnimationBank(0x379A00, 0x37A000),
+        AnimationBank(0x387CC0, 0x388000),
+        AnimationBank(0x3A5600, 0x3A6000),
+        AnimationBank(0x3DB5E0, 0x3DC000),
+        AnimationBank(0x3DD800, 0x3DF000),
+    ]
+
+    def place_bytes(these_bytes):
+        # find bank with most space
+        highest_space = 0
+        index = 0
+        for b_index, b in enumerate(animation_data_banks):
+            if highest_space < b.remaining_space:
+                highest_space = b.remaining_space
+                index = b_index
+        if len(these_bytes) > animation_data_banks[index].remaining_space:
+            raise Exception("could not place bytes into a bank with space")
+        offset = animation_data_banks[index].current_offset
+        animation_data_banks[index].tiles += these_bytes
+        return offset
 
     used_animations = []
 
@@ -876,6 +1140,8 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
                                 for st in tile.subtile_bytes:
                                     if st not in subtile_indexes:
                                         subtile_indexes.append(st)
+                            #print(anim_id, mold_index, tile_index, tile.subtile_bytes)
+                            #print(tile)
                             tile_bytes.append(tile.y ^ 0x80)
                             tile_bytes.append(tile.x ^ 0x80)
                             byte_upper_1 = 0
@@ -914,15 +1180,16 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
         finished_bytes = length_bytes + sequence_offset + mold_offset + count_bytes + misc_bytes + sequence_ptrs + sequence_bytes + mold_ptrs + mold_bytes
 
         # print(anim_id, len(finished_bytes))
-        if animation_bank_bounds[bank_in_use][0] + len(animation_banks[bank_in_use]) + len(finished_bytes) >= animation_bank_bounds[bank_in_use][1]:
+        #if animation_bank_bounds[bank_in_use][0] + len(animation_banks[bank_in_use]) + len(finished_bytes) >= animation_bank_bounds[bank_in_use][1]:
         #if anim_bank == ANIMATION_DATA_BANK_1_START and anim_bank + len(animation_data_bank_1) + len(finished_bytes) >= ANIMATION_DATA_BANK_1_END:
-            animation_banks[bank_in_use] += bytearray([0] * (animation_bank_bounds[bank_in_use][1] - animation_bank_bounds[bank_in_use][0] - len(animation_banks[bank_in_use])))
-            bank_in_use += 1
-        if bank_in_use > len(animation_banks):
-            raise Exception('too many animation bytes')
+        #    animation_banks[bank_in_use] += bytearray([0] * (animation_bank_bounds[bank_in_use][1] - animation_bank_bounds[bank_in_use][0] - len(animation_banks[bank_in_use])))
+        #    bank_in_use += 1
+        #if bank_in_use > len(animation_banks):
+        #    raise Exception('too many animation bytes')
 
-        anim_ptr = 0xC00000 + animation_bank_bounds[bank_in_use][0] + len(animation_banks[bank_in_use])
-        animation_banks[bank_in_use].extend(finished_bytes)
+        #anim_ptr = 0xC00000 + animation_bank_bounds[bank_in_use][0] + len(animation_banks[bank_in_use])
+        anim_ptr = place_bytes(finished_bytes) + 0xC00000
+        #animation_banks[bank_in_use].extend(finished_bytes)
 
         # if anim_bank == ANIMATION_DATA_BANK_1_START:
         #     #print(anim_id, len(animation_data_bank_1) + anim_bank)
@@ -934,13 +1201,26 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
         #     animation_data_bank_2.extend(finished_bytes)
         animation_pointers.extend([anim_ptr & 0xFF, (anim_ptr >> 8) & 0xFF, (anim_ptr >> 16) & 0xFF])
 
-    animation_data_bank_1 = animation_banks[0] + animation_banks[1] + animation_banks[2]
-    animation_data_bank_2 = animation_banks[3]
+
+    anim_tile_ranges = []
+    anim_data = bytearray([])
+    for bank_index, b in enumerate(animation_data_banks):
+        final_offset = b.start + len(b.tiles)
+        animation_data_banks[bank_index].tiles += bytearray([0] * (b.end - b.start - len(b.tiles)))
+        if b.end <= 0x280000:
+            anim_data += animation_data_banks[bank_index].tiles
+            if b.end == 0x280000:
+                anim_tile_ranges.append((0x259000, anim_data))
+        else:
+            anim_tile_ranges.append((b.start, animation_data_banks[bank_index].tiles))
+
+    #animation_data_bank_1 = animation_banks[0] + animation_banks[1] + animation_banks[2]
+    #animation_data_bank_2 = animation_banks[3]
 
     sprite_data += bytearray([0] * (SPRITE_PTRS_END - SPRITE_PTRS_START - len(sprite_data)))
     image_data += bytearray([0] * (IMAGE_PTRS_END - IMAGE_PTRS_START - len(image_data)))
     animation_pointers += bytearray([0] * (ANIMATION_PTRS_END - ANIMATION_PTRS_START - len(animation_pointers)))
-    animation_data_bank_1 += bytearray([0] * (ANIMATION_DATA_BANK_1_END - ANIMATION_DATA_BANK_1_START - len(animation_data_bank_1)))
-    animation_data_bank_2 += bytearray([0] * (ANIMATION_DATA_BANK_2_END - ANIMATION_DATA_BANK_2_START - len(animation_data_bank_2)))
+    #animation_data_bank_1 += bytearray([0] * (ANIMATION_DATA_BANK_1_END - ANIMATION_DATA_BANK_1_START - len(animation_data_bank_1)))
+    #animation_data_bank_2 += bytearray([0] * (ANIMATION_DATA_BANK_2_END - ANIMATION_DATA_BANK_2_START - len(animation_data_bank_2)))
     
-    return bytearray(sprite_data), bytearray(image_data), bytearray(animation_pointers), bytearray(animation_data_bank_1), bytearray(animation_data_bank_2), output_tiles
+    return bytearray(sprite_data), bytearray(image_data), bytearray(animation_pointers), anim_tile_ranges, output_tile_ranges

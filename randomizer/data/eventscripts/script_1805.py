@@ -236,6 +236,11 @@ script = [
         "args": [1739]
     },
     {
+        "identifier": 'EVENT_1805__remove_from_level_11',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_3, 420]
+    },
+    {
         "identifier": 'EVENT_1805_ret_38',
         "command": 'ret'
     },

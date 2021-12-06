@@ -2161,6 +2161,6 @@ script = [
     {
         "identifier": 'EVENT_1366_jmp_252',
         "command": 'jmp',
-        "args": ['EVENT_1370_jmp_if_var_equals_short_0']
+        "args": ['EVENT_1370_play_sound____']
     }
 ]

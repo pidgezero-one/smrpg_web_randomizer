@@ -261,7 +261,7 @@ dialog_data[148] = '''GARDENER: Yes, you might say I
 dialog_data[149] = '''GARDENER: You changed your mind?[await]
   [select]  (Yes)
   [select]  (No)[await]'''
-dialog_data[150] = '''GARDENER: Well, Mario?[await]
+dialog_data[150] = '''GARDENER: Well, `MAIN_CHARACTER_NAME`?[await]
  Will you give me the fertilizer?
   [select]  (Yes)
   [select]  (No)[await]'''
@@ -340,7 +340,7 @@ dialog_data[204] = '''DEALER:
 dialog_data[205] = '''DEALER: 
         I'll play with this hand.[await]'''
 dialog_data[206] = '''DEALER: 
-         Draw or stay, Mario?[await]'''
+ Draw or stay, `MAIN_CHARACTER_NAME`?[await]'''
 dialog_data[207] = '''            Your total is [0x7000].
   [select] (Draw)
   [select] (Stay)[await]'''
@@ -352,8 +352,8 @@ dialog_data[211] = '''DEALER:
       Please show me your hand.[await]'''
 dialog_data[212] = '''DEALER: 
                 I have [0x7000].[await]'''
-dialog_data[213] = '''
-          Mario, you have [0x7000].[await]'''
+dialog_data[213] = '''DEALER: 
+ `MAIN_CHARACTER_NAME`, you have [0x7000].[await]'''
 dialog_data[214] = '''DEALER: I broke 21, so you won![await]
  Here’s your Frog Coin.[await]'''
 dialog_data[215] = '''DEALER: You won this round.[await]
@@ -370,10 +370,10 @@ dialog_data[220] = '''DEALER:
           Your second card.[await]'''
 dialog_data[221] = '''DEALER: 
  Welcome to the Blackjack table.[await]
- Play a round with me, sir?
+ Play a round with me, `MAIN_CHARACTER_HONORIFIC`?
   [select] (Yes)
   [select] (No)[await]'''
-dialog_data[222] = ''' Another game, sir?
+dialog_data[222] = ''' Another game, `MAIN_CHARACTER_HONORIFIC`?
   [select] (Sure)
   [select] (No)[await]'''
 dialog_data[223] = '''[await]'''
@@ -416,8 +416,8 @@ dialog_data[232] = ''' (Hit right/left on the Control Pad)[await]'''
 dialog_data[233] = '''[await]'''
 dialog_data[234] = '''[await]'''
 dialog_data[235] = '''[await]'''
-dialog_data[236] = ''' Okay, Mario, this is in celebration
- of your [0x7000] win(s)![await]'''
+dialog_data[236] = ''' Okay, `MAIN_CHARACTER_NAME`, this is in
+ celebration of your [0x7000] win(s)![await]'''
 dialog_data[237] = '''[await]'''
 dialog_data[238] = ''' Wanna try it again?
   [select] (Yes)
@@ -483,8 +483,8 @@ dialog_data[269] = '''[await]'''
 dialog_data[270] = '''[await]'''
 dialog_data[271] = '''[await]'''
 dialog_data[272] = '''[await]'''
-dialog_data[273] = '''JAGGER: Mario Sensei, the new
- regimen will strengthen us, right?[await]'''
+dialog_data[273] = '''JAGGER: Sensei, the new regimen
+ will strengthen us, right?[await]'''
 dialog_data[274] = '''JINX: Master!
  Share your wisdom with us![await]'''
 dialog_data[275] = '''[await]'''
@@ -887,11 +887,11 @@ dialog_data[531] = '''[await]'''
 dialog_data[532] = '''GAZ:
     Geno, come on, you can do it![await]'''
 dialog_data[533] = '''YOSHI:
-          (Mario! Good luck!)[await]'''
+ (`MAIN_CHARACTER_NAME`! Good luck!)[await]'''
 dialog_data[534] = '''CHANCELLOR:
-    We're counting on you, Mario![await]'''
-dialog_data[535] = ''' Boing, boing, boing!
- I'm trying really hard, so Mario,
+ We're counting on you, `MAIN_CHARACTER_NAME`![await]'''
+dialog_data[535] = ''' Boing, boing, boing! I'm trying
+ really hard, so `MAIN_CHARACTER_NAME`,
  you have to try hard, too![await]'''
 dialog_data[536] = '''
        I'm with you all the way![await]'''
@@ -937,7 +937,7 @@ dialog_data[558] = '''[await]'''
 dialog_data[559] = '''[await]'''
 dialog_data[560] = '''      Bought a “[0x70A7]”![await]'''
 dialog_data[561] = '''[page]
- Sir, you seem to be a few coins
+ `MAIN_CHARACTER_HONORIFIC_CAP`, you seem to be a few coins
  short. Please ring again.[await][pause][end]'''
 dialog_data[562] = '''[await]'''
 dialog_data[563] = '''[await]'''

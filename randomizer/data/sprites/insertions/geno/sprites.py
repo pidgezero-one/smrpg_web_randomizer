@@ -18,6 +18,7 @@ from randomizer.data.sprites.insertions.geno.sprite_96 import sprite as sprite_9
 from randomizer.data.sprites.insertions.geno.sprite_132 import sprite as sprite_132
 from randomizer.data.sprites.insertions.geno.sprite_135 import sprite as sprite_135
 from randomizer.data.sprites.insertions.geno.sprite_136 import sprite as sprite_136
+from randomizer.data.sprites.insertions.geno.sprite_234 import sprite as sprite_234
 from randomizer.data.sprites.insertions.geno.sprite_251 import sprite as sprite_251
 sprites = [None]*1024
 sprites[0] = sprite_0
@@ -254,7 +255,7 @@ sprites[230] = None
 sprites[231] = None
 sprites[232] = None
 sprites[233] = None
-sprites[234] = None
+sprites[234] = sprite_234
 sprites[235] = None
 sprites[236] = None
 sprites[237] = None

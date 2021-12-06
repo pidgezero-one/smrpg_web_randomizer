@@ -528,10 +528,10 @@ def randomize_all(world):
 
     if world.settings.is_flag_enabled(flags.BetterTips):
         world.eventscripts[21] = copy.deepcopy(random_mushroom)
-        world.eventscripts[2670] = [utils.new_command(2670, "jmp", [57])]
-        world.eventscripts[2649] = [utils.new_command(2649, "jmp", [57])]
-        world.eventscripts[622] = [utils.new_command(622, "jmp", [51])]
-        world.eventscripts[626] = [utils.new_command(626, "jmp", [51])]
+        world.eventscripts[2670] = [utils.new_command(2670, "jmp_to_event", [57])]
+        world.eventscripts[2649] = [utils.new_command(2649, "jmp_to_event", [57])]
+        world.eventscripts[622] = [utils.new_command(622, "jmp_to_event", [51])]
+        world.eventscripts[626] = [utils.new_command(626, "jmp_to_event", [51])]
 
 
 

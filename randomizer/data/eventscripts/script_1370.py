@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_1370_play_sound____',
         "command": 'play_sound',
-        "args": [Sounds._088_WRONG_SIGNAL, 6]
+        "args": [Sounds._088_WRONG_SIGNAL, 4]
     },
     {
         "identifier": 'EVENT_1370_jmp_if_var_equals_short_0',

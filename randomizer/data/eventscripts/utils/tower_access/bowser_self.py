@@ -233,7 +233,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6___',
-                "command": 'face_southwest',
+                "command": 'face_northeast',
             },
         ]
     },

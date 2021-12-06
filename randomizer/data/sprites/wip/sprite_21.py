@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(21, length=540, unknown=0x0000,
+    animation=AnimationPack(21, length=559, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=True,
@@ -543,6 +543,18 @@ sprite = CompleteSprite(
                 AnimationSequence(
                     frames=[
                         AnimationSequenceFrame(duration=2, mold_id=10),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=8, mold_id=21),
+                        AnimationSequenceFrame(duration=8, mold_id=20),
+                        AnimationSequenceFrame(duration=8, mold_id=22),
+                        AnimationSequenceFrame(duration=8, mold_id=18),
+                        AnimationSequenceFrame(duration=8, mold_id=23),
+                        AnimationSequenceFrame(duration=8, mold_id=2),
+                        AnimationSequenceFrame(duration=8, mold_id=24),
+                        AnimationSequenceFrame(duration=8, mold_id=19),
                     ]
                 ),
             ]

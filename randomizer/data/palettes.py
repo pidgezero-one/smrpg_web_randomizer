@@ -38,13 +38,8 @@ class MarioPalette(Palette):
     ]
     doll_addresses = [
         #doll 1 - for mario, 6th colour should be 7th in palette, 7th colour should be 8th in palette, and 8th and 9th colour should both be 9th in palette. 10th colour should be 11th in palette, 11th and 12th colour should be 12th in palette
-        0x2576E6
-    ]
-    minecart_addresses = [
-        0x256DFE
-    ]
-    classic_addresses = [
-        0x2567E6
+        #0x2576E6
+        0x258D66
     ]
     poison_addresses = [0x2579D4, 0x257BB4]
     #Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
@@ -68,7 +63,9 @@ class MallowPalette(Palette):
         #maybe leave this out since mario and peach in credits have to share a palette and im probably not going to change them
         #0x2583CA,
         #scarecrow/mushroom
-        0x256B4C
+        0x256B4C,
+        # world map
+        0x3E99C1
     ]
     poison_addresses = [0x2581EA, 0x258280]
     #Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
@@ -90,7 +87,9 @@ class GenoPalette(Palette):
         #doll 1
         0x257A88,
         #scarecrow/mushroom
-        0x256B6A
+        0x256B6A,
+        # world map
+        0x3E99C1
     ]
     poison_addresses = [0x258082, 0x258136]
     #Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
@@ -112,7 +111,9 @@ class BowserPalette(Palette):
         #doll 1
         0x257AA6,
         #scarecrow/mushroom
-        0x256B2E
+        0x256B2E,
+        # world map
+        0x3E99C1
     ]
     name_address = 0x3A1361
     clone_name_address = 0x399AB0
@@ -134,7 +135,9 @@ class ToadstoolPalette(Palette):
         #doll 1
         0x257AC4,
         #scarecrow/mushroom
-        0x256B10
+        0x256B10,
+        # world map
+        0x3E99C1
     ]
     name_address = 0x3A1357
     clone_name_address = 0x399AA3

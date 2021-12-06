@@ -123,15 +123,16 @@ class NumberThresholdFlag(Flag):
 # ******** Party
 
 
-class StartingCharacters(NumberThresholdFlag):
-    # remember to set switch bit if > 3
-    name = 'Starting party size'
-    description = "The number of characters you will have already recruited at the start of the seed, including your starter."
-    default = 1
-    min = 1
-    max = 5
+
+class ShuffleCharacters(BooleanFlag):
+    name = 'Randomize party recruitment order'
+    description = '''If enabled, your characters will join your party in a random order.
+<br>
+<br>If disabled, you will start with Mario and recruit characters near their original locations.'''
     modes = ['open']
-    id = "size"
+    
+    id = "random"
+# if this is disabled, no starting/available options in this category can be changed
 
 
 class StartingCharacter(SelectOneFlag):
@@ -152,20 +153,32 @@ class PlayAsStarter(BooleanFlag):
     
     id = "allsprites"
 
-class ShuffleCharacters(BooleanFlag):
-    name = 'Randomize the locations of recruited characters'
-    description = '''If enabled, your characters will join your party in a random order.
-<br>
-<br>If disabled, you will start with Mario and recruit characters near their original locations.'''
-    modes = ['open']
-    
-    id = "random"
-# if this is disabled, no starting/available options in this category can be changed
 
+class StartingCharacters(NumberThresholdFlag):
+    # remember to set switch bit if > 3
+    name = 'Starting party size'
+    description = "The number of characters you will have already recruited at the start of the seed, including your starter."
+    default = 1
+    min = 1
+    max = 5
+    modes = ['open']
+    id = "size"
+
+
+class MaxCharacters(NumberThresholdFlag):
+    name = 'Maximum characters available'
+    description = '''The maximum number of unique characters who can appear in the seed.
+    <br>
+    <br>There are no duplicate characters. If this number is higher than the amount of characters you have chosen in "Characters Allowed", then that number will be used instead.'''
+    default = 5
+    min = 1
+    max = 5
+    modes = ['open']
+    id = "max"
 
 class AvailableCharacters(CategorizationFlag):
-    name = "Available Characters"
-    description = '''If a character is highlighted (white text over blue), they will appear in the seed. Otherwise, they will not.'''
+    name = "Characters allowed"
+    description = '''If a character is NOT highlighted (white text over blue), they will not appear in the seed. If they ARE highlighted, they may appear in the seed depending on your "Maximum characters available" setting.'''
     optionEnum = PlayableCharacters
     options = [o for o in PlayableCharacters if o != PlayableCharacters.random]
     enabled = [o for o in PlayableCharacters if o != PlayableCharacters.random]
@@ -413,13 +426,24 @@ class BiasItemShuffle(BooleanFlag):
 
 
 class RestrictSpecialEquips(BooleanFlag):
-    name = 'Restrict "Special Item" exchange equips & Monstro Town reward equips'
-    description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will appear once each, shuffled only within each other's locations. This option ignores your chosen Item Quality setting.
+    name = 'Shuffle "Special Item" exchange equips & Monstro Town reward equips'
+    description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will be shuffled within each other's original locations. This option ignores your chosen Item Quality setting.
+<br>
+<br>If disabled, the ten locations will simply contain random items, like every other item location.'''
+    modes = ['open']
+    
+    id = "restrict_monstro"
+
+class RestrictSpecialEquipsExclusive(BooleanFlag):
+    name = 'Exclude "Special Item" exchange equips & Monstro Town reward equips from all other locations'
+    description = '''If enabled alongside the "Shuffle 'Special Item exchange equips & Monstro Town reward equips" option, the ten items will ONLY appear at the ten designated locations, and nowhere else in the seed.
+<br> 
+<br>This option is redundant if you have selected "Original item pool" as your shuffle option.
 <br>
 <br>If disabled, these items can appear anywhere, subject to the restrictions of your chosen Item Pool Quality setting.'''
     modes = ['open']
     
-    id = "restrict_monstro"
+    id = "hard"
 
 
 class BetterTips(BooleanFlag):
@@ -1266,9 +1290,10 @@ class FlagCategory:
 class CharacterRecruitmentSubcategory(FlagCategory):
     flags = [
         ShuffleCharacters,
-        StartingCharacters,
         StartingCharacter,
         PlayAsStarter,
+        StartingCharacters,
+        MaxCharacters,
         AvailableCharacters,
     ]
     size = 4
@@ -1327,6 +1352,7 @@ class ItemShuffleSubcategory(FlagCategory):
         ItemQuality,
         BiasItemShuffle,
         RestrictSpecialEquips,
+        RestrictSpecialEquipsExclusive,
         EXPStarsAnywhere,
         MimicsAnywhere,
         SlotsAnywhere,

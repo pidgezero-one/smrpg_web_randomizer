@@ -295,7 +295,7 @@ dialog_data[177] = '''[await]'''
 dialog_data[178] = '''[await]'''
 dialog_data[179] = '''[await]'''
 dialog_data[180] = '''[await]'''
-dialog_data[181] = ''' Good afternoon, Mario![await]
+dialog_data[181] = ''' Good afternoon, `MAIN_CHARACTER_NAME`![await]
  Our Vault Guard is taking the day
  off today, so feel free to help
  yourself to the treasury.[await]'''
@@ -383,7 +383,7 @@ dialog_data[251] = ''' It would really stink if another
  baddie invaded the castle.[await]'''
 dialog_data[252] = '''[await]'''
 dialog_data[253] = '''[await]'''
-dialog_data[254] = ''''[await]'''
+dialog_data[254] = '''[await]'''
 dialog_data[255] = '''[await]'''
 dialog_data[256] = '''[await]'''
 dialog_data[257] = '''[await]'''
@@ -394,7 +394,7 @@ dialog_data[258] = '''[page]
   [select]  (It’s a deal!)
   [select]  (Nope)[await]'''
 dialog_data[259] = '''[page]
- Ho ho!...Mr. Wise guy doesn't
+ Ho ho!...`MAIN_CHARACTER_TITLE_SHORT`. Wise `MAIN_CHARACTER_GENDER_CASUAL_CAP` doesn't
  think 10 Frog Coins is enough![await]
  You don't know what you're
  missing, but...OH, WELL...[await]'''
@@ -736,12 +736,12 @@ dialog_data[423] = ''' Oh, hello there! Are you visiting?[await]
  often. I guess our town is a little
  bit out of the way.[await]'''
 dialog_data[424] = '''[page]
- I'm sorry sir.
+ I'm sorry `MAIN_CHARACTER_HONORIFIC`.
  You seem to be a day late and
  a few coins short! BYE![await]'''
 dialog_data[425] = '''[await]'''
 dialog_data[426] = '''[page]
- CONGRATULATIONS!!  You, sir,
+ CONGRATULATIONS!!  You, `MAIN_CHARACTER_HONORIFIC`,
  have checked in our lovely suite,
  a grand total of [0x7000] times![await][page]
  In order to show our appreciation,
@@ -749,7 +749,7 @@ dialog_data[426] = '''[page]
  this special commemorator’s gift![await]'''
 dialog_data[427] = '''All the coins, even the Frog Coins,
             have been taken![await]'''
-dialog_data[428] = ''' Sir![await]
+dialog_data[428] = ''' `MAIN_CHARACTER_HONORIFIC_CAP`![await]
  You have stayed over 200 times
  for the price of just ONE night![await][page]
  I shall receive 100 coins for each
@@ -795,7 +795,7 @@ dialog_data[456] = '''[page]
  [select]  (The regular room)  10 coins
  [select]  (The suite)         200 coins
  [select]  (Oh, forget it)[await]'''
-dialog_data[457] = ''' Sir![await]
+dialog_data[457] = ''' `MAIN_CHARACTER_HONORIFIC_CAP`![await]
  You seem to have stayed [0x7000]
  times for the price of just...[await][page]
  ONE NIGHT! I'll have to receive
@@ -833,7 +833,7 @@ dialog_data[483] = '''[await]'''
 dialog_data[484] = ''' Keep working!
  You're not getting any breaks.[await]'''
 dialog_data[485] = '''[await]'''
-dialog_data[486] = ''' Hey mate, step right up!
+dialog_data[486] = ''' Hey `MAIN_CHARACTER_MOLE_GREETING`, step right up!
  10 coins to do some Goomba
  thumping. How about it?[await]
  [select]  (Sure, why not?)
@@ -862,8 +862,7 @@ dialog_data[495] = '''KNIFE GUY: So which hand is
 dialog_data[496] = '''[await]'''
 dialog_data[497] = '''[await]'''
 dialog_data[498] = '''[await]'''
-dialog_data[499] = '''
-                  Mario![delay_64][end]'''
+dialog_data[499] = '''[await]'''
 dialog_data[500] = '''[await]'''
 dialog_data[501] = '''[await]'''
 dialog_data[502] = '''[await]'''
@@ -994,7 +993,7 @@ dialog_data[569] = '''[await]'''
 dialog_data[570] = '''[await]'''
 dialog_data[571] = '''[await]'''
 dialog_data[572] = '''[await]'''
-dialog_data[573] = ''''[await]'''
+dialog_data[573] = '''[await]'''
 dialog_data[574] = '''[await]'''
 dialog_data[575] = '''[await]'''
 dialog_data[576] = '''[await]'''
@@ -1122,7 +1121,7 @@ dialog_data[682] = '''[await]'''
 dialog_data[683] = '''[await]'''
 dialog_data[684] = '''[await]'''
 dialog_data[685] = '''               It’s locked[await]'''
-dialog_data[686] = '''  Mario tried saying the password:[delay]
+dialog_data[686] = '''      Tried saying the password:[delay]
               [filename][await]'''
 dialog_data[687] = '''                  No luck...[delay]
     Booster changed the password.[delay]
@@ -1285,9 +1284,10 @@ dialog_data[788] = '''[await]'''
 dialog_data[789] = '''[await]'''
 dialog_data[790] = '''[await]'''
 dialog_data[791] = '''[await]'''
-dialog_data[792] = '''ELDER: Hello, Mario! Have you met
- my, uh, long-term houseguest,
- who's taken over my second floor?[await]'''
+dialog_data[792] = '''ELDER: Hello, `MAIN_CHARACTER_NAME`![await][pause]
+ Have you met my, uh, long-term
+ houseguest, who's taken over
+ my second floor?[await]'''
 dialog_data[793] = '''[await]'''
 dialog_data[794] = '''[await]'''
 dialog_data[795] = ''' Speaking of items, it looks like
@@ -1331,7 +1331,7 @@ dialog_data[803] = ''' Whooeee![await]
  It’s a “Flower Mushroom”.[await][page]
  I'll give you a “Flower Tab” for it.
  Hey, thanks, dude.[await]'''
-dialog_data[804] = ''' See you around, man.
+dialog_data[804] = ''' See you around`MAIN_CHARACTER_MBOY_GREETING`.
  Come again, all right?[await]'''
 dialog_data[805] = ''' Hey you don't have any mushrooms.[await]'''
 dialog_data[806] = '''      Received a “Maple Syrup”[await]'''
@@ -1446,9 +1446,9 @@ dialog_data[897] = '''[await]'''
 dialog_data[898] = '''[await]'''
 dialog_data[899] = '''[await]'''
 dialog_data[900] = '''[await]'''
-dialog_data[901] = '''JAGGER:
- Now this should be interesting.
- Can you beat THE master, Mario?[await]'''
+dialog_data[901] = '''JAGGER: Now this should be
+ interesting. Can you beat THE
+ master, `MAIN_CHARACTER_NAME`?[await]'''
 dialog_data[902] = '''[await]'''
 dialog_data[903] = '''[await]'''
 dialog_data[904] = '''[await]'''

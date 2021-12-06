@@ -137,6 +137,41 @@ class Settings:
                         else:
                             flag.value = flag.default
                     self._all_flags.append(flag)
+
+        # reject illegal flag combinations
+        if self.get_flag(flags.MaxCharacters).value < self.get_flag(flags.StartingCharacters).value:
+            raise flags.FlagError('Your max characters setting is lower than your starting party size setting')
+        if PlayableCharacters.mario in self.get_flag(flags.AvailableCharacters).disabled and (self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario) or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario) or self.is_flag_value(flags.SeaGate, SeaGating.mario)):
+            raise flags.FlagError('Mario is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
+        if PlayableCharacters.mallow in self.get_flag(flags.AvailableCharacters).disabled and (self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mallow) or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow) or self.is_flag_value(flags.SeaGate, SeaGating.mallow)):
+            raise flags.FlagError('Mallow is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
+        if PlayableCharacters.geno in self.get_flag(flags.AvailableCharacters).disabled and (self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno) or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno) or self.is_flag_value(flags.SeaGate, SeaGating.geno)):
+            raise flags.FlagError('Geno is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
+        if PlayableCharacters.bowser in self.get_flag(flags.AvailableCharacters).disabled and (self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser) or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser) or self.is_flag_value(flags.SeaGate, SeaGating.bowser)):
+            raise flags.FlagError('Bowser is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
+        if PlayableCharacters.toadstool in self.get_flag(flags.AvailableCharacters).disabled and (self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool) or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool) or self.is_flag_value(flags.SeaGate, SeaGating.toadstool)):
+            raise flags.FlagError('Toadstool is required for one of your Progression settings, but she is excluded from the seed in your Party settings.')
+        # throw error if not enough chars to fill desired party
+        if len(self.get_flag(flags.AvailableCharacters).enabled) < self.get_flag(flags.StartingCharacters).value:
+            raise flags.FlagError('You have excluded too many characters to fill your desired starting party size')
+
+        # Clean up flag selections
+        # Set max # of chars from allowed chars
+        allowed_chars = self.get_flag(flags.AvailableCharacters).enabled
+        max_chars = self.get_flag(flags.MaxCharacters).value
+        if max_chars < len(allowed_chars):
+            available_chars = []
+            starter = self.get_flag(flags.StartingCharacter).value
+            if starter != PlayableCharacters.random:
+                if starter not in allowed_chars:
+                    raise flags.FlagError('Your selected starting character is excluded in your Allowed Characters settings')
+                available_chars.append(starter)
+            flag_val = self.get_flag(flags.AvailableCharacters)
+            available_chars.extend(random.choices([c for c in allowed_chars if c != starter], k=max_chars - len(available_chars)))
+            flag_val.enabled = available_chars
+            flag_val.disabled = [c for c in flag_val.options if c not in available_chars]
+        
+
         
     #    for flag in self._all_flags:
     #        print (flag.id, flag.type, flag.enabled if utils.isclass_or_instance(flag, flags.CategorizationFlag) else flag.value)
@@ -218,6 +253,10 @@ class Settings:
         narrowed = [i for i in self._all_flags if i == flag]
         return narrowed[0]
 
+    def update_flag(self, flag_class, flag_value):
+        ind = [(index, f) for (index, f) in self._all_flags if utils.isclass_or_instance(f, flag_class)][0][0]
+        self._all_flags[ind] = flag_value
+
     def is_flag_value(self, flag, value):
         """
         Args:
@@ -277,6 +316,7 @@ class GameWorld:
         self.starter_character_checks = data.chests.get_starter_character_checks(self)
         self.recruitable_character_checks = data.chests.get_recruitable_character_checks(self)
         self.spotted_character_checks = data.chests.get_spotted_character_checks(self)
+        self.starting_character = 0
 
         # Spells
         self.spells = data.spells.get_default_spells(self)
@@ -404,6 +444,7 @@ class GameWorld:
         # Goes before chests so that slot machine scripts can be written
         enemies.randomize_all(self)
         chests.randomize_all(self)
+        characters.finalize_all(self) # set levels AFTER chest shuffle so that we know who starters are
         shops.randomize_all(self)
         doors.randomize_all(self)
         games.randomize_all(self)
@@ -618,6 +659,29 @@ class GameWorld:
                         cursor_id = 1
                     else:
                         cursor_id = 0
+                    self.starting_character = cursor_id
+                    if self.settings.is_flag_enabled(flags.PlayAsStarter):
+                        self.search_replace_dialog("`MAIN_CHARACTER_NAME`", c.item.placeholder)
+                        self.search_replace_dialog("`MAIN_CHARACTER_GENDER`", c.item.gender)
+                        self.search_replace_dialog("`MAIN_CHARACTER_HONORIFIC`", c.item.honorific)
+                        self.search_replace_dialog("`MAIN_CHARACTER_HONORIFIC_CAP`", c.item.honorific.capitalize())
+                        self.search_replace_dialog("`MAIN_CHARACTER_HONORIFIC_CAPS`", c.item.honorific.upper())
+                        self.search_replace_dialog("`MAIN_CHARACTER_TITLE`", c.item.title)
+                        self.search_replace_dialog("`MAIN_CHARACTER_TITLE_SHORT`", c.item.title_short)
+                        self.search_replace_dialog("`MAIN_CHARACTER_GENDER_CASUAL_CAP`", c.item.gender_casual.capitalize())
+                        self.search_replace_dialog("`MAIN_CHARACTER_MOLE_GREETING`", c.item.mole_greeting)
+                        self.search_replace_dialog("`MAIN_CHARACTER_MBOY_GREETING`", c.item.mboy_greeting)
+                    else:
+                        self.search_replace_dialog("`MAIN_CHARACTER_NAME`", "`MARIO_NAME`")
+                        self.search_replace_dialog("`MAIN_CHARACTER_GENDER`", "man")
+                        self.search_replace_dialog("`MAIN_CHARACTER_HONORIFIC`", "sir")
+                        self.search_replace_dialog("`MAIN_CHARACTER_HONORIFIC_CAP`", "Sir")
+                        self.search_replace_dialog("`MAIN_CHARACTER_HONORIFIC_CAPS`", "SIR")
+                        self.search_replace_dialog("`MAIN_CHARACTER_TITLE`", "mister")
+                        self.search_replace_dialog("`MAIN_CHARACTER_TITLE_SHORT`", "Mr")
+                        self.search_replace_dialog("`MAIN_CHARACTER_GENDER_CASUAL_CAP`", "Guy")
+                        self.search_replace_dialog("`MAIN_CHARACTER_MOLE_GREETING`", "mate")
+                        self.search_replace_dialog("`MAIN_CHARACTER_MBOY_GREETING`", ", man")
                 # set character
                 self.eventscripts[c.event].insert(0, utils.new_command(c.event, "run_event_as_subroutine", [c.item.starter_script]))
                 # check if character gates forest maze
@@ -890,15 +954,23 @@ class GameWorld:
             if cursor_id == 4:
                 nc = data.characters.Mallow
                 from randomizer.data.sprites.insertions.mallow.sprites import sprites as new_sprites
+                from randomizer.data.sprites.insertions.mallow.map import map_sprite, map_address
+                patch.add_data(map_address, map_sprite)
             elif cursor_id == 3:
                 nc = data.characters.Geno
                 from randomizer.data.sprites.insertions.geno.sprites import sprites as new_sprites
+                from randomizer.data.sprites.insertions.geno.map import map_sprite, map_address
+                patch.add_data(map_address, map_sprite)
             elif cursor_id == 2:
                 nc = data.characters.Bowser
                 from randomizer.data.sprites.insertions.bowser.sprites import sprites as new_sprites
+                from randomizer.data.sprites.insertions.bowser.map import map_sprite, map_address
+                patch.add_data(map_address, map_sprite)
             else:
                 nc = data.characters.Peach
                 from randomizer.data.sprites.insertions.toadstool.sprites import sprites as new_sprites
+                from randomizer.data.sprites.insertions.toadstool.map import map_sprite, map_address
+                patch.add_data(map_address, map_sprite)
             for gsi, gs in enumerate(new_sprites):
                 if gs is not None:
                     commonsprites[gsi] = gs
@@ -1067,9 +1139,22 @@ class GameWorld:
             patch.add_data(0x3555C0, [0x8E, 0x00, 0x01])
 
 
-        # Character stats and such
-        for character in self.characters:
+        # Character stats, dialogs, and such
+        character_names = ["Mario", "Toadstool", "Bowser", "Geno", "Mallow"]
+        peach_article = ""
+        for c_index, character in enumerate(self.characters):
+            if self.settings.is_flag_enabled(flags.PaletteSwaps):
+                if character.palette.rename_character and self.settings.is_flag_enabled(flags.ChangeNames):
+                    character_names[character.index] = character.palette.name
+                    if character.index == 1:
+                        self.search_replace_dialog('`MALLOW:`', '%s:' % character.palette.name.upper())
+                if character.index == 4:
+                    if character.palette.name[0] in ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']:
+                        peach_article = "n"
+                        self.search_replace_dialog("`PEACH_ARTICLE`", peach_article)
+            self.search_replace_dialog(character.placeholder, character_names[character.index])
             patch += character.get_patch()
+        
 
 
 
@@ -1138,13 +1223,6 @@ class GameWorld:
             patch += item.get_patch()
         patch += data.items.Item.build_descriptions_patch(self)
 
-        # If playing as Bowser, partitions need adjustment.
-        if cursor_id == 2 and self.settings.is_flag_enabled(flags.PlayAsStarter):
-            for room_index, room in enumerate(self.rooms):
-                if room is not None and room["partition"] is not None:
-                    room["partition"]["ally_sprite_buffer_size"] += 1
-                    self.rooms[room_index] = room
-
         # Open mode specific data.
         if self.open_mode:
 
@@ -1190,11 +1268,13 @@ class GameWorld:
             print("assembling graphics...")
 
             # Assemble and patch graphics data
-            sprite_data, image_data, animation_pointers, animation_data_bank_1, animation_data_bank_2, tiles = Sprites.assemble_from_tables(commonsprites)
+            sprite_data, image_data, animation_pointers, animation_data, tiles = Sprites.assemble_from_tables(commonsprites)
             patch.add_data(0x250000, sprite_data)
             patch.add_data(0x251800, image_data + animation_pointers)
-            patch.add_data(0x259000, animation_data_bank_1 + tiles)
-            patch.add_data(0x360000, animation_data_bank_2)
+            for animation_offset, animation in animation_data:
+                patch.add_data(animation_offset, animation)
+            for tileset_offset, tileset in tiles:
+                patch.add_data(tileset_offset, tileset)
 
         # Unlock the whole map if in debug mode in standard.
         #if self.debug_mode and not self.open_mode:
@@ -1207,13 +1287,11 @@ class GameWorld:
         patch += credits.update_credits(self)
 
         # Choose character for the file select screen.
-        if self.settings.is_flag_enabled(flags.PlayAsStarter):
-            i = 0
-        else:
-            i = cursor_id
+        i = cursor_id
         file_select_char_bytes = [0, 7, 13, 25, 19]
         self.file_select_character = [c for c in self.characters if c.index == i][0].__class__.__name__
-
+        if self.settings.is_flag_enabled(flags.PlayAsStarter):
+            i = 0
         # Change file select character graphic, if not Mario.
         if i != 0:
             addresses = [0x34757, 0x3489a, 0x34ee7, 0x340aa, 0x3501e]

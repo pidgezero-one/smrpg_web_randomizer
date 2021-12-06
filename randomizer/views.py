@@ -151,10 +151,9 @@ class GenerateView(FormView):
         debug_mode = bool(data['debug_mode'])
         race_mode = bool(data['race_mode'])
 
-        # Build game world, randomize it, and generate the patch.
-        world = GameWorld(seed, Settings(mode, debug_mode, data['flags'] or '', data['cosmetics'] or ''))
-
         try:
+            # Build game world, randomize it, and generate the patch.
+            world = GameWorld(seed, Settings(mode, debug_mode, data['flags'] or '', data['cosmetics'] or ''))
             world.randomize()
             patches = {'US': world.build_patch()}
         except FlagError as e:

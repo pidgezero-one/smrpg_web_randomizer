@@ -289,7 +289,7 @@
 
                 $("#generate-btn").html("Generate ROM").prop("disabled", false);
                 $("#generate-error-message").html(errmsg);
-                $("#generate-error-box").show().delay(2000).fadeOut("slow");
+                $("#generate-error-box").show().delay(20000).fadeOut("slow");
             }
 
             function seedApplied(patch) {
@@ -693,19 +693,21 @@
                     }
                     else if (id == "P.random") {
                         boxes = $(`#${$.escapeSelector('P.avail')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["P.size", "P.start", "P.allsprites", ...(boxes.map(b => $(b).prop("id")))]
+                        dependent_ids = ["P.size", "P.start", "P.max", "P.allsprites", ...(boxes.map(b => $(b).prop("id")))]
                         $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
                         $("#P\\.avail\\.container .multiselect-button-container button").prop("disabled", !value)
                         $("#P\\.avail\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
                         if (value == false) {
                             $(`#${$.escapeSelector("P.avail.container")}`).addClass("disabled")
                             $(`#${$.escapeSelector('P.start')}`).siblings("label").addClass("disabled")
+                            $(`#${$.escapeSelector('P.max')}`).siblings("label").addClass("disabled")
                             $(`#${$.escapeSelector('P.size')}`).siblings("label").addClass("disabled")
                             $(`#${$.escapeSelector('P.allsprites')}`).addClass("disabled")
                         }
                         else {
                             $(`#${$.escapeSelector("P.avail.container")}`).removeClass("disabled")
                             $(`#${$.escapeSelector('P.start')}`).siblings("label").removeClass("disabled")
+                            $(`#${$.escapeSelector('P.max')}`).siblings("label").removeClass("disabled")
                             $(`#${$.escapeSelector('P.size')}`).siblings("label").removeClass("disabled")
                             $(`#${$.escapeSelector('P.allsprites')}`).removeClass("disabled")
                         }
@@ -727,7 +729,7 @@
                     }
                     else if (id == "T.random") {
                         boxes = $(`#${$.escapeSelector('L.chests')}, #${$.escapeSelector('L.coins')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["L.keys_anywhere", "L.stars_anywhere", "T.beetle", "T.kamek", "T.quality", "T.fireworks", "T.restrict_monstro", "T.mimics", "T.xpstars", "T.slots"]
+                        dependent_ids = ["L.keys_anywhere", "L.stars_anywhere", "T.beetle", "T.kamek", "T.quality", "T.fireworks", "T.mimics", "T.xpstars", "T.slots"]
                         if (!value || $(`#${$.escapeSelector('T.quality')}`).val() != "empty") {
                             dependent_ids.push(...["T.bias", "T.restrict_monstro", "L.moveflags"])
                         }
@@ -737,8 +739,6 @@
                         else {
                             $(`#${$.escapeSelector('T.ym')}`).prop("disabled", false)
                         }
-                        
-
 
                         if (value && $(`#${$.escapeSelector('T.quality')}`).val() == "empty" && $(`#${$.escapeSelector('T.xpstars')}`).prop("checked")) {
                             $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", true)
@@ -771,6 +771,9 @@
                             $(`#T\\.quality, #T\\.fireworks`).siblings("label").removeClass("disabled")
                         }
                     }
+                    /*else if (id == "T.restrict_monstro") {
+                        $("#T\\.hard").prop("disabled", !value)
+                    }*/
                     else if (id == "L.keys_anywhere" || id == "L.stars_anywhere") {
                         show_lists = $(`#${$.escapeSelector('T.random')}`).prop("checked") && ($(`#${$.escapeSelector('L.keys_anywhere')}`).prop("checked") || $(`#${$.escapeSelector('L.stars_anywhere')}`).prop("checked"))
                         boxes = $(`#${$.escapeSelector('L.chests')}, #${$.escapeSelector('L.coins')}`).find("input[type='checkbox']").toArray()
@@ -860,11 +863,18 @@
                             $(`#${$.escapeSelector("T.bias")}`).prop("disabled", true)
                             $(`#${$.escapeSelector("T.restrict_monstro")}`).prop("disabled", true)
                             $(`#${$.escapeSelector("L.moveflags")}`).prop("disabled", true)
+                            $(`#${$.escapeSelector("T.hard")}`).prop("disabled", true)
                         }
                         else {
                             $(`#${$.escapeSelector("T.bias")}`).prop("disabled", false)
                             $(`#${$.escapeSelector("T.restrict_monstro")}`).prop("disabled", false)
                             $(`#${$.escapeSelector("L.moveflags")}`).prop("disabled", false)
+                            if (value == "original" || $(`#${$.escapeSelector('T.restrict_monstro')}`).prop("checked") == false) {
+                                $(`#${$.escapeSelector("T.hard")}`).prop("disabled", true)
+                            }
+                            else {
+                                $(`#${$.escapeSelector("T.hard")}`).prop("disabled", false)
+                            }
                         }
                         if (value != "empty" || $(`#${$.escapeSelector('T.random')}`).prop("checked") == false) {
                             $(`#${$.escapeSelector("T.ym")}`).prop("disabled", true)

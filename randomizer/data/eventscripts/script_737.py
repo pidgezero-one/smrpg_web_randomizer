@@ -10,11 +10,6 @@ script = [
         "command": 'palette_set',
         "args": [110, 1, [0, 1, 3]]
     },
-    # {
-    #     "identifier": 'EVENT_737_set_action_script_async_19',
-    #     "command": 'set_action_script_async',
-    #     "args": [AreaObjects.NPC_5, 803]
-    # },
     {
         "identifier": 'EVENT_737_set_random_2',
         "command": 'set_random',

@@ -12,6 +12,8 @@ from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.data.roomobjecttables import Rooms
 from randomizer.data.objectsequencetables import SequenceSpeeds, _0x08Flags
 
+from randomizer.data.actionscripts.utils.mimic_rise import subscript as mimic_subscript
+
 EMPTY_DIALOG = auto()
 
 
@@ -96,19 +98,25 @@ def sanitize_animation_script(boss, boss_location, script, model):
                                 new_script.append(subscript_command)
                     # jagger
                     elif utils.isclass_or_instance(boss_location, Jagger):
-                        if model.animations is not None and model.animations.dojo_challenge is not None:
+                        if utils.isclass_or_instance(boss, MimicBoss) and subscript_command["args"][0] == 4:
+                            new_script.extend(boss.challenge_script)
+                        elif model.animations is not None and model.animations.dojo_challenge is not None:
                             if subscript_command["args"][0] == 4:
                                 subscript_command["args"][0] = model.animations.dojo_challenge.sequence_id
                                 new_script.append(subscript_command)
                     # jinx
                     elif utils.isclass_or_instance(boss_location, Jinx1) or utils.isclass_or_instance(boss_location, Jinx2) or utils.isclass_or_instance(boss_location, Jinx3):
-                        if model.animations is not None and model.animations.dojo_challenge is not None:
+                        if utils.isclass_or_instance(boss, MimicBoss) and subscript_command["args"][0] == 3:
+                            new_script.extend(boss.challenge_script)
+                        elif model.animations is not None and model.animations.dojo_challenge is not None:
                             if subscript_command["args"][0] == 3:
                                 subscript_command["args"][0] = model.animations.dojo_challenge.sequence_id
                                 new_script.append(subscript_command)
                     # magikoopa - challenge only. sequence #10 also used in battle doors, which will be handled separately
                     elif utils.isclass_or_instance(boss_location, Magikoopa):
-                        if model.animations is not None and model.animations.keep_challenge is not None:
+                        if utils.isclass_or_instance(boss, MimicBoss) and subscript_command["args"][0] == 10:
+                            new_script.extend(boss.challenge_script)
+                        elif model.animations is not None and model.animations.keep_challenge is not None:
                             if subscript_command["args"][0] == 10:
                                 subscript_command["args"][0] = model.animations.keep_challenge.sequence_id
                                 new_script.append(subscript_command)
@@ -320,6 +328,9 @@ class Boss:
     @property
     def classname(self):
         return self.__class__.__name__
+
+class MimicBoss(Boss):
+    challenge_script = mimic_subscript
 
 
 class SpriteAnimation:
@@ -674,9 +685,10 @@ class HammerBroBoss(Boss):
     name = "Hammer Bro"
     pack_number = 183
     eye_height = 6
-    small_model = SmallModelDetails(None, 512, None, 488)
-    statue = StatueDetails(488, ["E0C000", "482818", "C08020", "906010", "F8E870", "F8E870",
-                                 "F8E870", "F8F8A0", "F8F8A0", "F8F8F8", "F8F8F8", "F8E870", "F8F8A0", "683808", "0"])
+    small_model = SmallModelDetails(None, 653, None, 654)
+    # statue = StatueDetails(488, ["E0C000", "482818", "C08020", "906010", "F8E870", "F8E870",
+    #                              "F8E870", "F8F8A0", "F8F8A0", "F8F8F8", "F8F8F8", "F8E870", "F8F8A0", "683808", "0"])
+    statue = StatueDetails(653, ["080000", "C08020", "E0C000", "D0A000", "F8F8A0", "181818", "F8E870", "F8F890", "D8C000", "906010", "F0E860", "D08800", "F0A808", "604800", "302000", "180800"])
     big_model = BigModelDetails(None, 283, animations=SpriteAnimationCollection(
         mines_punch=hammer_bro_bop,
         statue_intro=hammer_bro_taunt,
@@ -691,7 +703,7 @@ class HammerBroBoss(Boss):
         (1660,
          ''' So, you figured it out... But you\n gotta get past my hammer to get\n through![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n the Hammer Bros' place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Hammer Bros' place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n the HAMMER BROS!![await]'''),
         (1778,
@@ -759,7 +771,7 @@ class Croco1Boss(Boss):
         (1660,
          ''' Alright, alright, so ya figured out\n my password! But I ain't goin'\n down without a fight![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Croco's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Croco's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped CROCO!![await]'''),
         (1778, '''CROCO: Enough already, get outta\n here![await]'''),
@@ -847,20 +859,22 @@ class MackBoss(Boss):
     name = "Mack"
     pack_number = 179
     eye_height = 19
-    statue = StatueDetails(414, ["F8E870", "D0A000", "F8E870", "906010", "906010", "D0A000",
-                                 "C08020", "E0C000", "683808", "301830", "C08020", "301830", "906010", "482818", "181818"])
-    small_model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
-        recoil=shyster_recoil,
-        mines_punch=shyster_taunt,
-        ship_beckon=shyster_taunt,
-        dojo_challenge=shyster_taunt,
-        statue_peck=shyster_taunt,
-        statue_flustered=shyster_recoil,
-        keep_challenge=shyster_taunt,
-        keep_summon=shyster_taunt,
-        chandelier_challenge=shyster_taunt,
-        endgame_challenge=shyster_taunt
-    ))
+    statue = StatueDetails(655, ["182038", "E0C000", "D0A000", "683808", "F8E870", "906010", "E0C000", "784818", "F8F8A0", "C08020", "906010", "D0A000", "F8E870", "F8E870", "F8F8F8", "D0A000"])
+    # statue = StatueDetails(414, ["F8E870", "D0A000", "F8E870", "906010", "906010", "D0A000",
+    #                              "C08020", "E0C000", "683808", "301830", "C08020", "301830", "906010", "482818", "181818"])
+    # small_model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
+    #     recoil=shyster_recoil,
+    #     mines_punch=shyster_taunt,
+    #     ship_beckon=shyster_taunt,
+    #     dojo_challenge=shyster_taunt,
+    #     statue_peck=shyster_taunt,
+    #     statue_flustered=shyster_recoil,
+    #     keep_challenge=shyster_taunt,
+    #     keep_summon=shyster_taunt,
+    #     chandelier_challenge=shyster_taunt,
+    #     endgame_challenge=shyster_taunt
+    # ))
+    small_model = SmallModelDetails(None, 655, None, 656)
     big_model = BigModelDetails(None, 480, sequence=7)
     attack_model = BigModelDetails(None, 480, animations=SpriteAnimationCollection(
         mines_punch=mack_hit,
@@ -875,11 +889,11 @@ class MackBoss(Boss):
         (49, '''MACK: Party's over. I'm going to\n sleep.[await]'''),
         (1660, ''' Listen, bub![await]\n You may have figured out my\n password, but you still gotta get\n past me if you want through![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Mack's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Mack's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped MACK!![await]'''),
         (1778, '''\n   MACK: Guess the party's over.[await]'''),
-        (1780, '''MACK: Hey Mario! Come back to\n crash our party?[await]'''),
+        (1780, '''MACK: Hey `MAIN_CHARACTER_NAME`!\n Come back to crash our party?[await]'''),
         (1781, '''MACK: OK, I get it, you can bounce\n too.[await]'''),
         (1784,
          '''BODYGUARD: There's no hard\n feelings. We're all just trying to\n have a good time.[await]'''),
@@ -947,7 +961,7 @@ pandorite_shake = SpriteAnimation(sequence_id=4, total_duration=58)
 pandorite_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 
 
-class PandoriteBoss(Boss):
+class PandoriteBoss(MimicBoss):
     name = "Pandorite"
     eye_height = 4
     pack_number = 156
@@ -969,7 +983,7 @@ class PandoriteBoss(Boss):
         (1660,
          ''' So, you cracked the code. I'm\n warning you though, I hate being\n woken up.[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Pandorite's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Pandorite's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped \nPANDORITE!![await]'''),
         (1778,
@@ -997,7 +1011,7 @@ class PandoriteBoss(Boss):
         (2838,
          ''' You will find Pandorite...\n in his house. He is...the most\n respected person here.[await]'''),
         (3044,
-         '''PANDORITE: Now this should be\n interesting. Can you beat THE\n master, Mario?[await]'''),
+         '''PANDORITE: Now this should be\n interesting. Can you beat THE\n master, `MAIN_CHARACTER_NAME`?[await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await]'''),
         (3352,
@@ -1020,13 +1034,15 @@ class Belome1Boss(Boss):
     name = "Belome"
     eye_height = 14
     pack_number = 168
-    statue = StatueDetails(385, ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870",
-                                 "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"])
-    small_model = SmallModelDetails(385, 520, 521, 522, animations=SpriteAnimationCollection(
-        bandits_way_distracted=scarecrow_wiggle,
-        chapel_laugh=scarecrow_wiggle,
-        ship_beckon=scarecrow_wiggle
-    ))
+    # statue = StatueDetails(385, ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870",
+    #                              "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"])
+    # small_model = SmallModelDetails(385, 520, 521, 522, animations=SpriteAnimationCollection(
+    #     bandits_way_distracted=scarecrow_wiggle,
+    #     chapel_laugh=scarecrow_wiggle,
+    #     ship_beckon=scarecrow_wiggle
+    # ))
+    statue = StatueDetails(657, ["F8D008", "F8A008", "F8F888", "984000", "F8F8F8", "181818", "F8B010", "401800", "F8D008", "F8F8B0", "582000", "C88008", "F8D060", "582000", "200000"])
+    small_model = SmallModelDetails(None, 657, None, 658)
     big_model = BigModelDetails(None, 371, animations=SpriteAnimationCollection(
         mines_punch=belome_attack,
         statue_intro=belome_wiggle,
@@ -1040,7 +1056,7 @@ class Belome1Boss(Boss):
         (1660,
          ''' Oh, is it dinner time already?\n Come on in...[delay_60] if you dare~![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Belome's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Belome's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped BELOME!![await]'''),
         (1778,
@@ -1094,9 +1110,10 @@ class BowyerBoss(Boss):
     name = "Bowyer"
     eye_height = 16
     pack_number = 181
-    statue = StatueDetails(234, ["F8F8A0", "E0C000", "E0C000", "C08020", "C08020", "906010",
-                                 "F8E870", "0", "C08020", "E0C000", "C08020", "0", "683808", "482818", "482818"])
-    small_model = SmallModelDetails(None, 234, None, 523)
+    statue = StatueDetails(661, ["181818", "E0C000", "D0A000", "D0A000", "482818", "683808", "301830", "C08020", "D0A000", "F8F8A0", "F8E870", "906010", "E0C000", "C08020", "F8E048", "C08020"])
+#    statue = StatueDetails(234, ["F8F8A0", "E0C000", "E0C000", "C08020", "C08020", "906010",
+#                                 "F8E870", "0", "C08020", "E0C000", "C08020", "0", "683808", "482818", "482818"])
+    small_model = SmallModelDetails(None, 661, None, 662)
     big_model = BigModelDetails(None, 241)
     attack_model = BigModelDetails(None, 486, animations=SpriteAnimationCollection(
         mines_punch=bowyer_hit,
@@ -1113,7 +1130,7 @@ class BowyerBoss(Boss):
         (1660,
          ''' Nya, NYA?![delay_30] Cracked the code, you\n did! But fight you, I will, nya![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Bowyer's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Bowyer's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped BOWYER!![await]'''),
         (1778,
@@ -1165,7 +1182,7 @@ class BowyerBoss(Boss):
         (3044, '''\n BOWYER: Interesting, this will be![await]'''),
         (3057,
          ''' Fight me, you will, nya?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
-        (3072, '''FLUNKIE: ...sigh... [delay]Bowyer scolded\n me for interrupting his shooting\n practice.[await][pause] I was just trying to warn\n him that Mario is here![await]'''),
+        (3072, '''FLUNKIE: ...sigh... [delay]Bowyer scolded\n me for interrupting his shooting\n practice.[await][pause] I was just trying to warn\n him that `MAIN_CHARACTER_NAME` is here![await]'''),
         (3073,
          '''FLUNKIE: You look like you'd make\n for a good statue![await]'''),
         (3338,
@@ -1223,7 +1240,7 @@ class Croco2Boss(Boss):
         (1660,
          ''' Alright, alright, so ya figured out\n my password! But I ain't goin'\n down without a fight![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Croco's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Croco's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped CROCO!![await]'''),
         (1778, '''CROCO: Enough already, get outta\n here![await]'''),
@@ -1322,21 +1339,23 @@ class PunchinelloBoss(Boss):
     name = "Punchinello"
     pack_number = 140
     eye_height = 8
-    statue = StatueDetails(281, ["F8F8A0", "000000", "000000", "F8E870", "906010", "F8E870",
-                                 "E0C000", "D0A000", "E0C000", "C08020", "C08020", "482818", "301830", "301830", "181818"])
-    small_model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
-        recoil=bomb_recoil,
-        bandits_way_distracted=bomb_tick,
-        chapel_laugh=bomb_tick,
-        ship_beckon=bomb_tick,
-        dojo_challenge=bomb_tick,
-        statue_flustered=bomb_tick,
-        statue_intro=bomb_tick,
-        keep_challenge=bomb_tick,
-        keep_summon=bomb_tick,
-        chandelier_challenge=bomb_tick,
-        endgame_challenge=bomb_tick
-    ))
+    # statue = StatueDetails(281, ["F8F8A0", "000000", "000000", "F8E870", "906010", "F8E870",
+    #                              "E0C000", "D0A000", "E0C000", "C08020", "C08020", "482818", "301830", "301830", "181818"])
+    statue = StatueDetails(663, ["C88800", "E0C000", "C08020", "482818", "D0A000", "E0C000", "C08020", "C08020", "D0A000", "F8F8A0", "F8E870", "E0C000", "F0E870", "986000", "F8F8A0", "000000"])
+    # small_model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
+    #     recoil=bomb_recoil,
+    #     bandits_way_distracted=bomb_tick,
+    #     chapel_laugh=bomb_tick,
+    #     ship_beckon=bomb_tick,
+    #     dojo_challenge=bomb_tick,
+    #     statue_flustered=bomb_tick,
+    #     statue_intro=bomb_tick,
+    #     keep_challenge=bomb_tick,
+    #     keep_summon=bomb_tick,
+    #     chandelier_challenge=bomb_tick,
+    #     endgame_challenge=bomb_tick
+    # ))
+    small_model = SmallModelDetails(None, 663, None, 664)
     big_model = BigModelDetails(None, 464, animations=SpriteAnimationCollection(
         mines_punch=punchinello_hit,
         statue_intro=punchinello_jump,
@@ -1353,7 +1372,7 @@ class PunchinelloBoss(Boss):
         (1660,
          ''' So... You figured out my\n password.[await]\n If you're not here for an\n autograph, I'll have to test you\n once more to let you through![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Punchinello's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Punchinello's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n PUNCHINELLO!![await]'''),
         (1778,
@@ -1496,7 +1515,7 @@ class BoosterBoss(Boss):
          '''BOOSTER: It's pretty cozy in here.[await][pause]\n No, you can't come in![await]'''),
         (1660, ''' Eh?[delay_30] THAT was my password?![delay_30]\n I'd better fight you, just to be\n sure.[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Booster's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Booster's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped BOOSTER!![await]'''),
         (1778,
@@ -1595,15 +1614,15 @@ class GrateGuyBoss(Boss):
         (1660,
          ''' Oh, a patron![delay_30] Come on in and let's\n get this show on the road![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Knife Guy and Grate Guy's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Knife Guy and Grate Guy's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped KNIFE GUY\n and GRATE GUY!![await]'''),
         (1778,
          '''GRATE GUY: Yikes, you're pretty\n tough! I need some time to recover.[await]'''),
         (1780,
-         '''GRATE GUY: It's so boring\n around here... Hey Mario, wanna\n play "Look the other way" with me?[await][page]\n Hah! [delay_30]Just kidding![await]'''),
+         '''GRATE GUY: It's so boring\n around here... Hey, wanna play\n "Look the other way" with me?[await][page]\n Hah! [delay_30]Just kidding![await]'''),
         (1781,
-         '''GRATE GUY: Sorry, Mario, but\n jumping on my head isn't going to\n teach you Blizzard.[await]'''),
+         '''GRATE GUY: Sorry, `MAIN_CHARACTER_NAME`,\n but jumping on my head isn't going\n to teach you Blizzard.[await]'''),
         (1784,
          '''KNIFE GUY: No, I'm not giving you the Bright Card down here![await]'''),
         (2061,
@@ -1622,9 +1641,9 @@ class GrateGuyBoss(Boss):
         (3338,
          ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Knife-this and Casino-that.[await]'''),
         (3352,
-         '''GRATE GUY: Look, Mario! I've been\n training so hard, that my ball\n jumps with me![await]'''),
+         '''GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]'''),
         (3353,
-         '''GRATE GUY: Look, Mario! I've been\n training so hard, that my ball\n jumps with me![await]'''),
+         '''GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]'''),
     ]
 
 
@@ -1678,7 +1697,7 @@ class BundtBoss(Boss):
         (49, '''\n        (There's no response.)[await]'''),
         (1660, '''\n    (The cake beckons you forth.)[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Bundt's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Bundt's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped BUNDT!![await]'''),
         # Find some way to do an animation instead of posting dialogue
@@ -1789,7 +1808,7 @@ class KingCalamariBoss(Boss):
         (49,
          '''KING CALAMARI: My species\n doesn't normally hatch from eggs\n quite this large.[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n King Calamari's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n King Calamari's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n KING CALAMARI!![await]'''),
         (1778,
@@ -1810,17 +1829,21 @@ class KingCalamariBoss(Boss):
          '''CHEF TORTE: Zees cake, ve make\n it look like big squid! It is...\n masterpiece![await]'''),
         (2504,
          '''KING CALAMARI: Sorry, I don't\n have any hint memos for where you\n can find the last [0x7024] item(s).[await]'''),  # do this one with no background
-        (2560, '''SNIFIT 1: Hello there.[await]\n King Calamari's busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560, ''' Hello there. Welcome to our\n first-ever above-ground treasure\n hoard.[await][page]\n [delay].[delay].[delay].[delay]You're not here to see that?[delay_30]\n Well,[delay] then you must be an intruder!'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering King Calamari.[await]'''),
+         ''' There's nothing back here!\n I mean it![await]'''),
         (2831,
-         '''KING CALAMARI: It's not so weird\n for a squid to run a rown.[await]'''),
+         '''KING CALAMARI: It's not so weird\n for a squid to run a town.[await]'''),
         (2838,
          ''' You will find King Calamari...\n in his house. He is...the most\n respected person here.[await]'''),
         (3044,
          '''KING CALAMARI: Think you can beat\n the dojo master?[await]'''),
         (3057,
          ''' What do you want?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]'''),
+        (3072,
+         ''' I'd just like to go back to\n shooting ink, not bullets...[await]'''),
+        (3073,
+         '''\n       You looking for a fight?[await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Ship-this and Tentacle-that.[await]'''),
         (3352,
@@ -1852,7 +1875,7 @@ hidon_attack_fast = SpriteAnimation(
     sequence_id=3, contact_frame=18, total_duration=30, speed=SequenceSpeeds.FAST)
 
 
-class HidonBoss(Boss):
+class HidonBoss(MimicBoss):
     name = "Hidon"
     eye_height = 4
     pack_number = 157
@@ -1877,7 +1900,7 @@ class HidonBoss(Boss):
         (1660,
          ''' Ugh... What a rude awakening!\n I'm going to make it a hassle for\n you to pass through here![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Hidon's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Hidon's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped HIDON!![await]'''),
         (1778,
@@ -2108,7 +2131,7 @@ class YaridovichBoss(Boss):
         (1660,
          ''' Eee hee hee! So, you've cracked the\n code... Now, it's time for the\n REAL test![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Yaridovich's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Yaridovich's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n YARIDOVICH!![await]'''),
         (1778,
@@ -2165,7 +2188,7 @@ class MokuraBoss(Boss):
         (49, '''\n     MOKURA: Uhh... Go away![await]'''),
         (1660, '''\n             Duh, huh, huh...[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Mokura's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Mokura's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped MOKURA!![await]'''),
         (1778, '''\n            MOKURA: Hmm...[await]'''),
@@ -2203,13 +2226,16 @@ class Belome2Boss(Boss):
     name = "Belome"
     pack_number = 169
     eye_height = 14
-    statue = StatueDetails(149, ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870",
-                                 "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"])
-    small_model = SmallModelDetails(149, 570, 571, 572, animations=SpriteAnimationCollection(
-        bandits_way_distracted=scarecrow_wiggle,
-        chapel_laugh=scarecrow_wiggle,
-        ship_beckon=scarecrow_wiggle
-    ))
+    # statue = StatueDetails(149, ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870",
+    #                              "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"])
+    statue = StatueDetails(659, ["F8D008", "F8A008", "F8F888", "984000", "F8F8F8", "181818", "F8B010", "401800", "F8D008", "F8F8B0", "582000", "C88008", "F8D060", "582000", "200000"])
+    
+    # small_model = SmallModelDetails(149, 570, 571, 572, animations=SpriteAnimationCollection(
+    #     bandits_way_distracted=scarecrow_wiggle,
+    #     chapel_laugh=scarecrow_wiggle,
+    #     ship_beckon=scarecrow_wiggle
+    # ))
+    small_model = SmallModelDetails(None, 659, None, 660)
     big_model = BigModelDetails(None, 455, animations=SpriteAnimationCollection(
         mines_punch=belome_attack,
         statue_intro=belome_wiggle,
@@ -2225,7 +2251,7 @@ class Belome2Boss(Boss):
         (1660,
          ''' Oh, is it dinner time already?\n Come on in...[delay_60] if you dare~![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Belome's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Belome's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped BELOME!![await]'''),
         (1778,
@@ -2297,7 +2323,7 @@ class JaggerBoss(Boss):
         (1660,
          ''' Wow, you figured out the\n password! Come on in and let's\n have a spar![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Jagger's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Jagger's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped JAGGER!![await]'''),
         (1778,
@@ -2305,7 +2331,7 @@ class JaggerBoss(Boss):
         (1780,
          '''JAGGER: Welcome back! I've been\n training hard for our next fight,\n whenever that may be![await]'''),
         (1781,
-         '''JAGGER: Mario, I can't jump as\n high as you. Is this really\n necessary?[await]'''),
+         '''JAGGER: `MAIN_CHARACTER_NAME`, I can't\n jump as high as you. Is this\n really necessary?[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2320,7 +2346,7 @@ class JaggerBoss(Boss):
          '''JAGGER: Oh, wow, you've already\n found [0x7000] item(s)![await][pause] I bet you'll find\n the last [0x7024] in no time.[await]'''),
         (2560, '''SNIFIT 1: Hello there.[await]\n Jagger's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
         (2572, '''SNIFIT 2: Please refrain\n from bothering Jagger.[await]'''),
-        (2831, '''\n         JAGGER: Hi, Mario![await]'''),
+        (2831, '''\nJAGGER: Hi, `MAIN_CHARACTER_NAME`![await]'''),
         (2838,
          ''' You will find Jagger...\n in his house. He is...the most\n respected person here.[await]'''),
         (3057,
@@ -2328,7 +2354,7 @@ class JaggerBoss(Boss):
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Sensei-that.[await]'''),
         (3353,
-         '''JAGGER: Mario Sensei, the new\n regimen will strengthen us, right?[await]'''),
+         '''JAGGER: Sensei, the new regimen\n will strengthen us, right?[await]'''),
     ]
 
 
@@ -2362,7 +2388,7 @@ class Jinx1Boss(Boss):
         (1660,
          ''' So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Jinx's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Jinx's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped JINX!![await]'''),
         (1778, '''\n   JINX: I was going easy on you![await]'''),
@@ -2421,7 +2447,7 @@ class Jinx2Boss(Boss):
         (1660,
          ''' So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Jinx's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Jinx's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped JINX!![await]'''),
         (1778, '''\n   JINX: I was going easy on you![await]'''),
@@ -2480,7 +2506,7 @@ class Jinx3Boss(Boss):
         (1660,
          ''' So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Jinx's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Jinx's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped JINX!![await]'''),
         (1778, '''\n   JINX: I was going easy on you![await]'''),
@@ -2549,7 +2575,7 @@ class CulexBoss(Boss):
         (1660,
          ''' You have passed the first test.\n But you're not finished yet!\n Please enter.[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Culex's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Culex's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped CULEX!![await]'''),
         (1778,
@@ -2618,7 +2644,7 @@ boxboy_short = SpriteAnimation(
     sequence_id=3, contact_frame=8, total_duration=98)
 
 
-class BoxBoyBoss(Boss):
+class BoxBoyBoss(MimicBoss):
     name = "Box Boy"
     eye_height = 4
     pack_number = 158
@@ -2640,7 +2666,7 @@ class BoxBoyBoss(Boss):
         (1660,
          ''' Oh, you're gonna PAY for waking\n me up like this![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Box Boy's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Box Boy's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped BOX BOY!![await]'''),
         (1778, '''\n    BOX BOY: You just got lucky![await]'''),
@@ -2696,7 +2722,7 @@ class MegaSmilaxBoss(Boss):
     name = "Megasmilax"
     pack_number = 173
     eye_height = 14
-    statue_model = StatueDetails(
+    statue = StatueDetails(
         263, ["F8F8A0", "F8E870", "E0C000", "D0A000", "C08020", "906010", "301830",
               "C08020", "482818", "F8E870", "E0C000", "C08020", "482818", "E0C000", "301830"], mold=1, horizontal_pixel_shift=-3, vertical_pixel_shift=-4)
     small_model = SmallModelDetails(263, 580, 581, 582, animations=SpriteAnimationCollection(
@@ -2727,7 +2753,7 @@ class MegaSmilaxBoss(Boss):
          '''MEGASMILAX: I'm thirsty.[await][pause] Can you\n ask Shy Away to come back here,[delay]\n please?[await]'''),
         (1660, ''' Hm?[delay_30] Not often we get visitors\n down here.[delay_30] Come in...[delay_60]\n at your own risk, that is![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Megasmilax's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Megasmilax's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n MEGASMILAX!![await]'''),
         (1778, '''\n      MEGASMILAX: I'm thirsty.[await]'''),
@@ -2805,24 +2831,26 @@ class DodoBoss(Boss):
     name = "Dodo"
     pack_number = 208
     eye_height = 2
-    statue = StatueDetails(10, ["F8F8A0", "D09020", "F8E870", "906010", "D09020", "906010", "F8E870",
-                                "784818", "482818", "482818", "E0C000", "784818", "301830", "E0C000", "301830"], horizontal_pixel_shift=-7, vertical_pixel_shift=-4)
-    small_model = SmallModelDetails(None, None, None, 10)
-    big_model = BigModelDetails(393, 583, animations=SpriteAnimationCollection(
-        mines_punch=dodo_peck,
-        statue_intro=dodo_taunt,
-        statue_flustered=dodo_taunt,
-        statue_peck=dodo_peck,
-        chandelier_challenge=dodo_taunt,
-        endgame_challenge=dodo_taunt
-    ))
+#    statue = StatueDetails(10, ["F8F8A0", "D09020", "F8E870", "906010", "D09020", "906010", "F8E870",
+#                                "784818", "482818", "482818", "E0C000", "784818", "301830", "E0C000", "301830"], horizontal_pixel_shift=-7, vertical_pixel_shift=-4)
+    statue = StatueDetails(665, ["000000", "683808", "E0C000", "906010", "C08020", "683808", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "784818", "E0C000", "C8A008", "F8E870", "C08020"])
+    #small_model = SmallModelDetails(None, None, None, 10)
+    small_model = SmallModelDetails(None, 665, None, 666)
+    # big_model = BigModelDetails(393, 583, animations=SpriteAnimationCollection(
+    #     mines_punch=dodo_peck,
+    #     statue_intro=dodo_taunt,
+    #     statue_flustered=dodo_taunt,
+    #     statue_peck=dodo_peck,
+    #     chandelier_challenge=dodo_taunt,
+    #     endgame_challenge=dodo_taunt
+    # ))
     dialog_replacements = [
         # actually, don't use dialogs for dodo, just play sfx... how to handle this?
         # time this according to how long the feather sound effect is
         (49, EMPTY_DIALOG),
         (1660, EMPTY_DIALOG),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Dodo's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Dodo's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped DODO!![await]'''),
         (1778, EMPTY_DIALOG),
@@ -2873,11 +2901,13 @@ class BirdettaBoss(Boss):
     name = "Birdetta"
     eye_height = 6
     pack_number = 175
-    statue = StatueDetails(462, ["F8E870", "E0C000", "0", "0", "C08020",
-                                 "0", "0", "0", "0", "0", "906010", "0", "0", "0", "181818"])
-    small_model = SmallModelDetails(None, None, None, 462, animations=SpriteAnimationCollection(
-        recoil=eggbert_expand,
-        bandits_way_distracted=eggbert_expand, statue_flustered=eggbert_expand, statue_intro=eggbert_expand))
+    # statue = StatueDetails(462, ["F8E870", "E0C000", "0", "0", "C08020",
+    #                              "0", "0", "0", "0", "0", "906010", "0", "0", "0", "181818"])
+    statue = StatueDetails(667, ["883800", "C08020", "E0C000", "784818", "906010", "D0A000", "683808", "F8E870", "301830", "E0C000", "C08020", "F8F8A0", "C08020", "D0A000", "482818", "906010"])
+    small_model = SmallModelDetails(None, 667, None, 668)
+    # small_model = SmallModelDetails(None, None, None, 462, animations=SpriteAnimationCollection(
+    #     recoil=eggbert_expand,
+    #     bandits_way_distracted=eggbert_expand, statue_flustered=eggbert_expand, statue_intro=eggbert_expand))
     big_model = BigModelDetails(None, 461, animations=SpriteAnimationCollection(
         mines_punch=birdetta_attack,
         statue_flustered=birdetta_recoil,
@@ -2891,7 +2921,7 @@ class BirdettaBoss(Boss):
     dialog_replacements = [
         (1660, ''' Oh, yay, you've come to play!\n Come on in~![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Birdetta's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Birdetta's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n BIRDETTA!![await]'''),
         (1778, '''BIRDETTA: Tee hee! Let's play\n again sometime♥![await]'''),
@@ -3038,7 +3068,7 @@ class ValentinaBoss(Boss):
         (1660,
          ''' ALRIGHT, already![delay_30] If you're going\n to annoy me like this, get in here\n and finish the job![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Valentina's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Valentina's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n VALENTINA!![await]'''),
         (1778,
@@ -3131,21 +3161,23 @@ class CzarBoss(Boss):
     name = "Czar Dragon"
     eye_height = 3
     pack_number = 172
-    statue = StatueDetails(155, ["683808", "0", "0", "0", "906010", "0", "0", "F8F8A0",
-                      "0", "F8F8A0", "C08020", "D0A000", "E0C000", "F8E870", "181818"])
-    small_model = SmallModelDetails(None, 155, None, 593, animations=SpriteAnimationCollection(
-        recoil=fireball_recoil, 
-        mines_punch=fireball_spin,
-        ship_beckon=fireball_spin,
-        dojo_challenge=fireball_spin,
-        statue_intro=fireball_spin,
-        statue_peck=fireball_spin,
-        statue_flustered=fireball_recoil,
-        keep_challenge=fireball_spin,
-        keep_summon=fireball_spin,
-        chandelier_challenge=fireball_spin,
-        endgame_challenge=fireball_spin
-    ))
+    # statue = StatueDetails(155, ["683808", "0", "0", "0", "906010", "0", "0", "F8F8A0",
+    #                   "0", "F8F8A0", "C08020", "D0A000", "E0C000", "F8E870", "181818"])
+    statue = StatueDetails(669, ["000000", "F8E870", "D0A000", "F8F8A0", "482818", "D0A000", "784818", "E0C000", "906010", "683808", "C08020", "301830", "181818", "906010", "784818", "482818"])
+    small_model = SmallModelDetails(None, 669, None, 670)
+    # small_model = SmallModelDetails(None, 155, None, 593, animations=SpriteAnimationCollection(
+    #     recoil=fireball_recoil, 
+    #     mines_punch=fireball_spin,
+    #     ship_beckon=fireball_spin,
+    #     dojo_challenge=fireball_spin,
+    #     statue_intro=fireball_spin,
+    #     statue_peck=fireball_spin,
+    #     statue_flustered=fireball_recoil,
+    #     keep_challenge=fireball_spin,
+    #     keep_summon=fireball_spin,
+    #     chandelier_challenge=fireball_spin,
+    #     endgame_challenge=fireball_spin
+    # ))
     big_model = BigModelDetails(None, 594, animations=SpriteAnimationCollection(
         mines_punch=czar_dragon_hit,
         statue_intro=czar_taunt,
@@ -3156,7 +3188,7 @@ class CzarBoss(Boss):
         (49, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
         (1660, ''' BLARRGGGG[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n the Czar Dragon's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Czar Dragon's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n the CZAR DRAGON!![await]'''),
         (1778, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
@@ -3257,6 +3289,23 @@ class AxemRangersMachine2(Henchman):
         tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit, factory_pierce=axem_pink_hit))
 
 
+class AxemRangersMachine3(Henchman):
+    pack_number = 203
+    model = SmallModelDetails(None, 683, None, 684, animations=SpriteAnimationCollection(
+        tower_bullet=axem_black_hit, kitchen_prep=axem_black_hit, factory_pierce=axem_black_hit))
+
+class AxemRangersMachine4(Henchman):
+    pack_number = 203
+    model = SmallModelDetails(None, 685, None, 686, animations=SpriteAnimationCollection(
+        tower_bullet=axem_yellow_hit_fast, kitchen_prep=axem_yellow_hit))
+
+class AxemRangersMachine5(Henchman):
+    pack_number = 203
+    model = SmallModelDetails(None, 687, None, 688, animations=SpriteAnimationCollection(
+        tower_bullet=axem_green_hit, kitchen_prep=axem_green_hit, factory_pierce=axem_green_hit_fast))  # 467 is a clone, could free up
+
+
+
 class AxemRangersBoss(Boss):
     name = "Axem Red"
     eye_height = 15
@@ -3279,21 +3328,21 @@ class AxemRangersBoss(Boss):
     ))
     unique_henchmen = [AxemRangersAxemBlack, AxemRangersAxemPink,
                        AxemRangersAxemYellow, AxemRangersAxemGreen]
-    repeatable_henchmen = [AxemRangersMachine1, AxemRangersMachine2]
+    repeatable_henchmen = [AxemRangersMachine1, AxemRangersMachine2, AxemRangersMachine3, AxemRangersMachine4, AxemRangersMachine5]
     dialog_replacements = [
         (49,
          '''AXEM RED: We're busy playing Uno\n in here. Go bother someone else![await]'''),
         (1660, ''' Listen up, nerd![delay_30] You may have\n figured out our password, but\n we're not going down without\n a fight![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n the Axem Rangers' place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Axem Rangers' place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n the AXEM RANGERS!![await]'''),
         (1778,
          '''AXEM RED: How could this happen\n to the Axem Rangers?![await]'''),
         (1780,
-         '''AXEM RED: Yo! Quit wasting yourn time around here, you've got a\n world to save![await]'''),
+         '''AXEM RED: Yo! Quit wasting your\n time around here, you've got a\n world to save![await]'''),
         (1781,
-         '''AXEM RED: Yo, Mario! This isn't\n cool! Get off of my head.[await]'''),
+         '''AXEM RED: Yo, `MAIN_CHARACTER_NAME`!\n This isn't cool!\n Get off of my head.[await]'''),
         (1784,
          '''AXEM BLACK: Red can be kind of\n a chump when he loses.[await]'''),
         (1792, '''AXEM YELLOW: Say, do you have\n anything to eat?[await]'''),
@@ -3354,7 +3403,7 @@ chester_attack_fast = SpriteAnimation(
     sequence_id=3, contact_frame=18, total_duration=26)
 
 
-class ChesterBoss(Boss):
+class ChesterBoss(MimicBoss):
     name = "Chester"
     pack_number = 235
     eye_height = 4
@@ -3376,7 +3425,7 @@ class ChesterBoss(Boss):
         (1660,
          ''' Quit draggin' your feet! Get in\n here and let's fight![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Chester's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Chester's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped \nCHESTER!![await]'''),
         (1778, '''CHESTER: (How embarrassing...)[await]'''),
@@ -3448,7 +3497,7 @@ class MagikoopaBoss(Boss):
          '''MAGIKOOPA: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]'''),
         (1660, ''' This..is..my ship!\n Come in..if you dare![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Magikoopa's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Magikoopa's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n MAGIKOOPA!![await]'''),
         (1778, '''\n  MAGIKOOPA: Huh? ...Where am I?[await]'''),
@@ -3472,7 +3521,7 @@ class MagikoopaBoss(Boss):
         (2838,
          ''' You will find Magikoopa...\n in his house. He is...the most\n respected person here.[await]'''),
         (3044,
-         '''MAGIKOOPA: Now this should be\n interesting. Can you beat THE\n master, Mario?[await]'''),
+         '''MAGIKOOPA: Now this should be\n interesting. Can you beat THE\n master, `MAIN_CHARACTER_NAME`?[await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Yoshi-this and Bowser-that.[await]'''),
         (3352, '''MAGIKOOPA: This is more fun than I\n expected![await]'''),
@@ -3504,24 +3553,26 @@ class BoomerBoss(Boss):
     name = "Boomer"
     eye_height = 8
     pack_number = 210
-    statue = StatueDetails(346, ["F8F8A0", "F8E870", "F8E870", "D0A000", "F8E870", "E0C000", "E0C000",
-                      "C08020", "E0C000", "301830", "C08020", "181818", "181818", "906010", "180000"], horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-2)
-    small_model = SmallModelDetails(346, 605, 606, 607, animations=SpriteAnimationCollection(
-        recoil=shyguy_recoil,
-        bandits_way_distracted=shyguy_spin,
-        mines_punch=shyguy_hit,
-        chapel_laugh=shyguy_spin,
-        ship_beckon=shyguy_taunt,
-        ship_chair=shyguy_spin,
-        dojo_challenge=shyguy_taunt,
-        statue_intro=shyguy_taunt,
-        # statue_peck=shyguy_hit,
-        statue_flustered=shyguy_recoil,
-        keep_challenge=shyguy_taunt,
-        keep_summon=shyguy_taunt,
-        chandelier_challenge=shyguy_taunt,
-        endgame_challenge=shyguy_taunt
-    ))  # maybe 346
+    # statue = StatueDetails(346, ["F8F8A0", "F8E870", "F8E870", "D0A000", "F8E870", "E0C000", "E0C000",
+    #                   "C08020", "E0C000", "301830", "C08020", "181818", "181818", "906010", "180000"], horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-2)
+    statue = StatueDetails(671, ["000000", "906010", "906010", "C08020", "E0C000", "784818", "301830", "D0A000", "E0C000", "784818", "C08020", "D0A000", "F8E870", "F8F8A0", "000000", "000000"])
+    small_model = SmallModelDetails(None, 671, None, 672)
+    # small_model = SmallModelDetails(346, 605, 606, 607, animations=SpriteAnimationCollection(
+    #     recoil=shyguy_recoil,
+    #     bandits_way_distracted=shyguy_spin,
+    #     mines_punch=shyguy_hit,
+    #     chapel_laugh=shyguy_spin,
+    #     ship_beckon=shyguy_taunt,
+    #     ship_chair=shyguy_spin,
+    #     dojo_challenge=shyguy_taunt,
+    #     statue_intro=shyguy_taunt,
+    #     # statue_peck=shyguy_hit,
+    #     statue_flustered=shyguy_recoil,
+    #     keep_challenge=shyguy_taunt,
+    #     keep_summon=shyguy_taunt,
+    #     chandelier_challenge=shyguy_taunt,
+    #     endgame_challenge=shyguy_taunt
+    # ))  # maybe 346
     big_model = BigModelDetails(None, 482, animations=SpriteAnimationCollection(
         chandelier_challenge=boomer_alt_taunt,
         endgame_challenge=boomer_alt_taunt
@@ -3542,7 +3593,7 @@ class BoomerBoss(Boss):
         (1660,
          ''' Ahhhhh... So, it's YOU who solved\n my riddle![delay_30] Now, you've got to deal\n with ME![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Boomer's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Boomer's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped BOOMER!![await]'''),
         (1778, '''BOOMER: I don't need your\n sympathy! Go on...[await]'''),
@@ -3566,7 +3617,7 @@ class BoomerBoss(Boss):
          '''CHANDELI-HO: Welcome! Have you\n come to install the chandelier?[await][page]\n ...No?[delay] Well, you'd better leave\n Boomer alone![await]'''),
         (2572, '''CHANDELI-HO: I won't let you\n bother Boomer![await]'''),
         (2831,
-         '''BOOMER: Ha ha ha![await]\n So, you've\n found our village![await]'''),
+         '''BOOMER: Ha ha ha![await][pause] So, you've\n found our village![await]'''),
         (2832,
          ''' Hi! Are you tired? You can rest\n up here, and you don't have to\n pay me anything.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
@@ -3615,16 +3666,18 @@ class ExorBoss(Boss):
     eye_height = 16
     pack_number = 186
     forced_background = 16
-    statue = StatueDetails(14, ["F8F8F8", "F8F8A0", "F8E870", "D09020", "704020", "C08020", "906010",
-                    "784818", "482818", "D0A000", "683808", "482818", "E0C000", "C08020", "181818"])
-    small_model = SmallModelDetails(None, 14, None, 609)
+    # statue = StatueDetails(14, ["F8F8F8", "F8F8A0", "F8E870", "D09020", "704020", "C08020", "906010",
+    #                 "784818", "482818", "D0A000", "683808", "482818", "E0C000", "C08020", "181818"])
+    statue = StatueDetails(673, ["000000", "F8F8A0", "F8E870", "683808", "E0C000", "784717", "301830", "C08020", "D0A000", "E0C000", "C08020", "906010", "784818", "F8E870", "784818", "E0C000"])
+    small_model = SmallModelDetails(None, 673, None, 674)
+    #small_model = SmallModelDetails(None, 14, None, 609)
     # potentially, put sprite #3 on an unused NPC and don't worry about the sprite offset
     dialog_replacements = [
         (49, '''  EXOR: What do you want? Get\n lost![await]'''),
         (1660,
          ''' Halt! This ship belongs to ME!\n If you want to get through...\n bring it on![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Exor's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Exor's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped EXOR!![await]'''),
         (1778,
@@ -3708,7 +3761,7 @@ class CountdownBoss(Boss):
         (1660,
          ''' This is not good![delay_30]\n He figured out the password![delay_30]\n ...We better do something![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Count Down's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Count Down's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n COUNT DOWN!![await]'''),
         (1778,
@@ -3727,7 +3780,7 @@ class CountdownBoss(Boss):
         (2504,
          '''COUNT DOWN: You've only got\n [0x7000] item(s)! You're missing [0x7024]![await]\n You better do something![await]'''),
         (2560,
-         '''DING-A-LING: Mario's HERE![await][pause][delay_30] I'd\n better do something![await]'''),
+         '''DING-A-LING: `MAIN_CHARACTER_NAME`'s HERE![await][pause][delay_30]\n I'd better do something![await]'''),
         (2572,
          '''DING-A-LING: You won't find\n Count Down back here![await]\n Leave us alone![await]'''),
         (2831, '''COUNT DOWN: There's nothing to\n do here![await]'''),
@@ -3783,9 +3836,11 @@ class CloakerDominoBoss(Boss):
     pack_number = 184
     eye_height = 6
     forced_background = 40
-    statue = StatueDetails(429, ["F8F8A0", "F8E870", "E0C000", "E0C000", "F8E870", "E0C000",
-                      "D09020", "482818", "301830", "906010", "0", "482818", "482818", "482818", "301830"], horizontal_pixel_shift=-4, vertical_pixel_shift=-3)
-    small_model = SmallModelDetails(None, 429, None, 610)
+    # statue = StatueDetails(429, ["F8F8A0", "F8E870", "E0C000", "E0C000", "F8E870", "E0C000",
+    #                   "D09020", "482818", "301830", "906010", "0", "482818", "482818", "482818", "301830"], horizontal_pixel_shift=-4, vertical_pixel_shift=-3)
+    statue = StatueDetails(675, ["181818", "D0A000", "F8E870", "D0A000", "F8E870", "F8F8A0", "C08020", "301830", "683808", "C08020", "E0C000", "906010", "784818", "F8E870", "482818", "301830"])
+    #small_model = SmallModelDetails(None, 429, None, 610)
+    small_model = SmallModelDetails(None, 675, None, 676)
     big_model = BigModelDetails(None, 611, animations=SpriteAnimationCollection(
         # mines_punch=cloaker_hit, # breaks vram
         # statue_peck=cloaker_hit, # breaks vram
@@ -3799,7 +3854,7 @@ class CloakerDominoBoss(Boss):
         (1660,
          ''' Uh oh, you cracked the code...\n I don't like where this is going...[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Cloaker and Domino's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Cloaker and Domino's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n CLOAKER and DOMINO!![await]'''),
         (1778, '''CLOAKER: Guess you're tougher\n than I thought...[await]'''),
@@ -3914,7 +3969,7 @@ class ClerkBoss(Boss):
         (1660,
          ''' Sorry, you may have figured out the\n password, but I can't allow you\n through without a fight.[await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n the Clerk's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Clerk's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n the CLERK!![await]'''),
         (1778,
@@ -3962,7 +4017,7 @@ class ClerkBoss(Boss):
         (2848,
          ''' Hey buddy, why don't you go snoop\n around some other houses instead?[await]'''),
         (3044,
-         '''CLERK: Now this should be\n interesting. Can you beat THE\n master, Mario?[await]'''),
+         '''CLERK: Now this should be\n interesting. Can you beat THE\n master, `MAIN_CHARACTER_NAME`?[await]'''),
         (3057,
          ''' Are you here for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3072,
@@ -4041,14 +4096,14 @@ class ManagerBoss(Boss):
         (1660,
          ''' Who gave you the password?!\n You're gonna pay for this![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n the Manager's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Manager's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n the MANAGER!![await]'''),
         (1778,
          '''MANAGER: Why don't you just jump\n on out of here?![await]'''),
         (1780, '''MANAGER: Oh, you've returned.\n Good work so far.[await]'''),
         (1781,
-         '''MANAGER: Get off of my head\n before I make you take the longestn jump of your life![await]'''),
+         '''MANAGER: Get off of my head\n before I make you take the longest\n jump of your life![await]'''),
         (1784,
          '''POUNDER: This is way more fun\n than working in the factory was.[await]'''),
         (1793,
@@ -4168,7 +4223,7 @@ class DirectorBoss(Boss):
         (1660,
          ''' Figured out the password, did you?[delay_30]\n Don't get too cocky![delay_30]\n Intruders will be eliminated![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n the Director's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Director's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n the DIRECTOR!![await]'''),
         (1778,
@@ -4284,7 +4339,7 @@ class GunyolkBoss(Boss):
         (1660,
          ''' So, you solved it?[delay_30]\n Too bad, this is the end of the line\n for you! I won't let you through![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n the Gunyolk's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Gunyolk's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n the GUNYOLK!![await]'''),
         (1778,
@@ -4362,24 +4417,26 @@ class SmithyBoss(Boss):
     name = "Smithy"
     eye_height = 18
     pack_number = 185
-    statue = StatueDetails(351, ["F8F8A0", "E0C000", "E0C000", "F8F8F8", "E0C000", "C08020", "906010",
-                      "906010", "E0C000", "906010", "683808", "D09020", "683808", "482818", "301830"])
-    small_model = SmallModelDetails(351, 632, 633, 634, animations=SpriteAnimationCollection(
-        recoil=drillbit_recoil,
-        bandits_way_distracted=drillbit_taunt,
-        mines_punch=drillbit_hit,
-        chapel_laugh=drillbit_taunt,
-        ship_beckon=drillbit_taunt,
-        ship_chair=drillbit_taunt,
-        dojo_challenge=drillbit_taunt,
-        statue_intro=drillbit_taunt,
-        statue_peck=drillbit_hit,
-        statue_flustered=drillbit_recoil,
-        keep_challenge=drillbit_taunt,
-        keep_summon=drillbit_taunt,
-        chandelier_challenge=drillbit_taunt,
-        endgame_challenge=drillbit_taunt
-    ))
+    # statue = StatueDetails(351, ["F8F8A0", "E0C000", "E0C000", "F8F8F8", "E0C000", "C08020", "906010",
+    #                   "906010", "E0C000", "906010", "683808", "D09020", "683808", "482818", "301830"])
+    statue = StatueDetails(677, ["082000", "683808", "D0A000", "F8F060", "906010", "784818", "D09020", "C08020", "784818", "F8F8A0", "E0C000", "C08020", "F8E870", "906010", "000000", "000000"])
+    # small_model = SmallModelDetails(351, 632, 633, 634, animations=SpriteAnimationCollection(
+    #     recoil=drillbit_recoil,
+    #     bandits_way_distracted=drillbit_taunt,
+    #     mines_punch=drillbit_hit,
+    #     chapel_laugh=drillbit_taunt,
+    #     ship_beckon=drillbit_taunt,
+    #     ship_chair=drillbit_taunt,
+    #     dojo_challenge=drillbit_taunt,
+    #     statue_intro=drillbit_taunt,
+    #     statue_peck=drillbit_hit,
+    #     statue_flustered=drillbit_recoil,
+    #     keep_challenge=drillbit_taunt,
+    #     keep_summon=drillbit_taunt,
+    #     chandelier_challenge=drillbit_taunt,
+    #     endgame_challenge=drillbit_taunt
+    # ))
+    small_model = SmallModelDetails(None, 677, None, 678)
     big_model = BigModelDetails(None, 635, animations=SpriteAnimationCollection(
         mines_punch=smithy_hit,
         statue_peck=smithy_hit_fast,
@@ -4393,7 +4450,7 @@ class SmithyBoss(Boss):
         (1660,
          ''' Gufaw, haw, haw![delay_30] You really think\n I'm going to let you through with\n just a password?![await]'''),
         (1694,
-         '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Smithy's place.[await]'''),
+         '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Smithy's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n SMITHY!![await]'''),
         (1778,
@@ -5348,7 +5405,7 @@ class Chester(BossAndStarLocation):
     boss = ChesterBoss
     boss_locations = [
         BossModelFill(Rooms._461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB, 4, ChesterBoss, SpriteSize.Small,
-                      False, target_scripts=[2174], target_action_scripts=[], sequence_setter=846),  # remove sequence set from 2174
+                      False, target_scripts=[2174, 2190], target_action_scripts=[], sequence_setter=846),  # remove sequence set from 2174
     ]
 
 

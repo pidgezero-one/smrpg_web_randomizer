@@ -46,11 +46,11 @@ class Command(BaseCommand):
         #     if gs is not None:
         #         commonsprites[gsi] = gs
 
-        for gsi, gs in enumerate(bowsersprites):
-            if gs is not None:
-                commonsprites[gsi] = gs
+        # for gsi, gs in enumerate(bowsersprites):
+        #     if gs is not None:
+        #         commonsprites[gsi] = gs
 
-        sprite_data, image_data, animation_pointers, animation_data_bank_1, animation_data_bank_2, tiles = Sprites.assemble_from_tables(commonsprites, whitespace)
+        sprite_data, image_data, animation_pointers, animation_data, tiles = Sprites.assemble_from_tables(commonsprites, whitespace)
 
         f = open(f'write_to_0x250000.img', 'wb')
         f.write(sprite_data)
@@ -60,14 +60,12 @@ class Command(BaseCommand):
         f.write(image_data + animation_pointers)
         f.close() 
 
-        f = open(f'write_to_0x259000.img', 'wb')
-        f.write(animation_data_bank_1)
-        f.close()
+        for animation_offset, animation in animation_data:
+            f = open('write_to_0x%06x.img' % animation_offset, 'wb')
+            f.write(animation)
+            f.close()
 
-        f = open(f'write_to_0x360000.img', 'wb')
-        f.write(animation_data_bank_2)
-        f.close()
-
-        f = open(f'write_to_0x280000.img', 'wb')
-        f.write(tiles)
-        f.close()
+        for tileset_offset, tileset in tiles:
+            f = open('write_to_0x%06x.img' % tileset_offset, 'wb')
+            f.write(tileset)
+            f.close()

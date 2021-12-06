@@ -14,6 +14,11 @@ from randomizer.data.sprites.insertions.toadstool.sprite_9 import sprite as spri
 from randomizer.data.sprites.insertions.toadstool.sprite_10 import sprite as sprite_10
 from randomizer.data.sprites.insertions.toadstool.sprite_11 import sprite as sprite_11
 from randomizer.data.sprites.insertions.toadstool.sprite_12 import sprite as sprite_12
+from randomizer.data.sprites.insertions.toadstool.sprite_96 import sprite as sprite_96
+from randomizer.data.sprites.insertions.toadstool.sprite_132 import sprite as sprite_132
+from randomizer.data.sprites.insertions.toadstool.sprite_135 import sprite as sprite_135
+from randomizer.data.sprites.insertions.toadstool.sprite_136 import sprite as sprite_136
+from randomizer.data.sprites.insertions.toadstool.sprite_234 import sprite as sprite_234
 from randomizer.data.sprites.insertions.toadstool.sprite_251 import sprite as sprite_251
 sprites = [None]*1024
 sprites[0] = sprite_0
@@ -112,7 +117,7 @@ sprites[92] = None
 sprites[93] = None
 sprites[94] = None
 sprites[95] = None
-sprites[96] = None
+sprites[96] = sprite_96
 sprites[97] = None
 sprites[98] = None
 sprites[99] = None
@@ -148,11 +153,11 @@ sprites[128] = None
 sprites[129] = None
 sprites[130] = None
 sprites[131] = None
-sprites[132] = None
+sprites[132] = sprite_132
 sprites[133] = None
 sprites[134] = None
-sprites[135] = None
-sprites[136] = None
+sprites[135] = sprite_135
+sprites[136] = sprite_136
 sprites[137] = None
 sprites[138] = None
 sprites[139] = None
@@ -250,7 +255,7 @@ sprites[230] = None
 sprites[231] = None
 sprites[232] = None
 sprites[233] = None
-sprites[234] = None
+sprites[234] = sprite_234
 sprites[235] = None
 sprites[236] = None
 sprites[237] = None

@@ -5,6 +5,7 @@ from . import utils
 from randomizer.data import palettes, items, chests, graphics
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace
 from randomizer.logic import flags
+from randomizer.data.helpers import BoosterTowerGating
 
 class RoomObjects:
     def __init__(self):
@@ -303,13 +304,18 @@ def set_partitions(world):
         elif utils.isclass_or_instance(c.item, items.HidonFight):
             hidon_rooms.extend(c.rooms)
 
+    # Big buffer for Bowser
+    ally_buffer = 1
+    if world.starting_character == 2:
+        ally_buffer = 2
+
 
     for room_index, room in enumerate(world.rooms):
         if room_index in [68]:
             pass
-        elif room_index in [376, 377, 459, 460, 461, 462]: # rooms that always need triple empty + ex 1
+        elif room_index in [376, 377, 459, 460, 461, 462, 202] or (room is not None and len(room["objects"]) == 0): # rooms that always need triple empty + ex 1
             partition = {
-                "ally_sprite_buffer_size": 1,
+                "ally_sprite_buffer_size": ally_buffer,
                 "allow_extra_sprite_buffer": True,
                 "extra_sprite_buffer_size": 1,
                 "buffer_a": {
@@ -330,9 +336,9 @@ def set_partitions(world):
                 "full_palette_buffer": True,
             }
             world.rooms[room_index]["partition"] = partition
-        elif room_index in [192, 202]: # rooms that always need triple empty + ex 1
+        elif room_index in [192]: # rooms that always need triple empty + ex 0
             partition = {
-                "ally_sprite_buffer_size": 1,
+                "ally_sprite_buffer_size": ally_buffer,
                 "allow_extra_sprite_buffer": False,
                 "extra_sprite_buffer_size": 0,
                 "buffer_a": {
@@ -355,7 +361,7 @@ def set_partitions(world):
             world.rooms[room_index]["partition"] = partition
         # elif room_index in [477]: # I assume this terra cotta room needs this because it uses high sequence #s
         #     partition = {
-        #         "ally_sprite_buffer_size": 1,
+        #         "ally_sprite_buffer_size": ally_buffer,
         #         "allow_extra_sprite_buffer": False,
         #         "extra_sprite_buffer_size": 0,
         #         "buffer_a": {
@@ -382,7 +388,7 @@ def set_partitions(world):
             if partition is not None:
                 original_partition = copy.deepcopy(partition)
             partition = {
-                "ally_sprite_buffer_size": 1,
+                "ally_sprite_buffer_size": ally_buffer,
                 "allow_extra_sprite_buffer": False,
                 "extra_sprite_buffer_size": 0,
                 "buffer_a": {
@@ -408,7 +414,6 @@ def set_partitions(world):
                 partition["full_palette_buffer"] = original_partition["full_palette_buffer"]
 
 
-            ally_buffer = 1
             
             packet_size = partition["extra_sprite_buffer_size"]
             # print(room_index, packet_size, partition["allow_extra_sprite_buffer"])
@@ -443,7 +448,7 @@ def set_partitions(world):
                     #elif utils.isclass_or_instance(c, chests.PacketItem):
                     if utils.isclass_or_instance(c, chests.PacketItem):
                         packet_size += 1
-                    if not world.settings.is_flag_enabled(flags.QuickHitCoins) and (utils.isclass_or_instance(c, chests.Chest) or utils.isclass_or_instance(c, chests.PacketItem)) and (utils.isclass_or_instance(c.item, items.FrogCoin) or utils.isclass_or_instance(c.item, items.MultiFrogCoin) or utils.isclass_or_instance(c.item, items.InfiniteCoins) or utils.isclass_or_instance(c.item, items.Coins)):
+                    if (utils.isclass_or_instance(c.item, items.FrogCoin) or utils.isclass_or_instance(c.item, items.InfiniteCoins) or (not world.settings.is_flag_enabled(flags.QuickHitCoins) and (utils.isclass_or_instance(c.item, items.MultiFrogCoin) or utils.isclass_or_instance(c.item, items.Coins)))) and (utils.isclass_or_instance(c, chests.Chest) or utils.isclass_or_instance(c, chests.PacketItem)):
                         if (utils.isclass_or_instance(c.item, items.Coins) and c.item.chest_70A7_lower != 1) or utils.isclass_or_instance(c.item, items.MultiFrogCoin) or utils.isclass_or_instance(c.item, items.InfiniteCoins):
                             ambiguous_coin_chest = AmbiguousCoin.multi
                         elif utils.isclass_or_instance(c.item, items.FrogCoin) or (utils.isclass_or_instance(c.item, items.Coins) and c.item.chest_70A7_lower == 1):
@@ -583,6 +588,9 @@ def set_partitions(world):
             # can't figure out why 301 needs 2 3sprite buffers to make button push graphic work
             elif room_index == 301:
                 npc_buffers.append(PartitionBufferTypes._3_SPRITES_PER_ROW)
+
+            if room_index == 202 and world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool): # booster tower bomb explosion
+                packet_size = max(2, packet_size)
 
             if room_index in always_requires_coin_buffer:
                 if PartitionBufferTypes.COINS not in packet_buffers:

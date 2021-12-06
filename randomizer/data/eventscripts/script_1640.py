@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1640_run_dialog_duration_10',
-        "command": 'run_dialog_duration',
-        "args": [1129, DialogDurations.FOREVER, [_0x60Flags.ASYNC]]
+        "command": 'run_dialog',
+        "args": [1129, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1640_ret_12',

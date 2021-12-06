@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(79, length=46, unknown=0x0000,
+    animation=AnimationPack(79, length=79, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -26,6 +26,46 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=114),
                     ]
                 ),
+                Mold(2, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(3, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(4, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(5, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(6, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(7, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(8, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(9, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(10, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(11, gridplane=False,
+                    tiles=[
+                    ]
+                ),
             ],
             sequences=[
                 AnimationSequence(
@@ -36,6 +76,27 @@ sprite = CompleteSprite(
                 AnimationSequence(
                     frames=[
                         AnimationSequenceFrame(duration=2, mold_id=1),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=11),
                     ]
                 ),
             ]

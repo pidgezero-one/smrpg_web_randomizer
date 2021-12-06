@@ -930,7 +930,7 @@ script = [
     {
         "identifier": 'EVENT_1365_jmp_125',
         "command": 'jmp',
-        "args": ['EVENT_1370_jmp_if_var_equals_short_0']
+        "args": ['EVENT_1370_play_sound____']
     },
     {
         "identifier": 'EVENT_1365_ret_126',

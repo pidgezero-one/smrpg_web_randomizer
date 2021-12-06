@@ -11,6 +11,11 @@ script = [
         "args": [0x704c, 6, 'EVENT_2124_enter_area_7']
     },
     {
+        "identifier": 'EVENT_2124_jmp_if_bit_set_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7063, 3, 'EVENT_2124_enter_area_7']
+    },
+    {
         "identifier": 'EVENT_2124_jmp_to_event_1',
         "command": 'jmp_to_event',
         "args": [3809]
@@ -22,6 +27,15 @@ script = [
     },
     {
         "identifier": 'EVENT_2124_ret_9',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2124_enter_area_7_',
+        "command": 'enter_area',
+        "args": [154, RadialDirections.NORTHEAST, 9, 98, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+    {
+        "identifier": 'EVENT_2124_ret_9_',
         "command": 'ret'
     }
 ]

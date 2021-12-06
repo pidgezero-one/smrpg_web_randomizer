@@ -76,7 +76,7 @@ class SlotsNotAllowedChest(Chest):
 class CoinsNotAllowedChest(SlotsNotAllowedChest):
     def item_allowed(self, item):
         # restricted for graphical reasons
-        return super().item_allowed(item) and not isclass_or_instance(item, items.InfiniteCoins) and not (self.world.settings.is_flag_value(flags.QuickHitCoins, False) and (isclass_or_instance(item, items.Coins) or isclass_or_instance(item, items.FrogCoin) or isclass_or_instance(item, items.MultiFrogCoin)))
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InfiniteCoins) and not isclass_or_instance(item, items.FrogCoin) and not (self.world.settings.is_flag_value(flags.QuickHitCoins, False) and (isclass_or_instance(item, items.Coins) or isclass_or_instance(item, items.MultiFrogCoin)))
 
 # ******* NPC reward data classes
 
@@ -141,6 +141,9 @@ class OverworldItem(locations.ItemLocation):
 
         return super().item_allowed(item) and not (isclass_or_instance(item, items.Coins) and item.amount not in [1, 10]) and not isclass_or_instance(item, (items.MimicFight, items.SlotMachineChest, items.MultiFrogCoin, items.YouMissed, items.InvincibilityStar, items.InfiniteCoins))
 
+    @property
+    def is_vanilla(self):
+        return super().is_vanilla or (isclass_or_instance(self.item, items.Coins) and isclass_or_instance(self.original_item, items.Coins)) or (isclass_or_instance(self.item, items.FrogCoin) and isclass_or_instance(self.original_item, items.FrogCoin))
 
 class PacketType(enum.Enum):
     """Enumeration for items that may need to be restricted by how many times they can appear."""
@@ -414,7 +417,8 @@ class MushroomWayCharacter(CharacterRecruit):
         (205, 5, [], []),
     ]
     credits_npcs = [
-        (269, 0, [3804], [])
+        (269, 0, [3804], []),
+        (496, 20, [3885], [])
     ]
 
 # populate this with the corresponding character in MarrymoreCharacter
@@ -1550,6 +1554,9 @@ class ForestMazeCharacter(CharacterRecruit):
         (230, 11, [], [488]),
         (232, 10, [2448], [])
     ]
+    credits_npcs = [
+        (496, 21, [3885], [])
+    ]
 
     def can_access(self, inventory):
         return locations.can_access_forest(self.world, inventory)
@@ -2004,7 +2011,8 @@ class MolevilleMinesCharacter(CharacterRecruit):
         (284, 1, [], []),
     ]
     credits_npcs = [
-        (435, 7, [], [969])
+        (435, 7, [], [969]),
+        (496, 23, [3885], [])
     ]
 
     def can_access(self, inventory):
@@ -2671,6 +2679,9 @@ class MarrymoreCharacter(CharacterRecruit):
     npcs = [
         (154, 8, [3809], []),
         (54, 8, [3499, 3502, 3506], [])
+    ]
+    credits_npcs = [
+        (496, 19, [3885], [])
     ]
 
     def can_access(self, inventory):

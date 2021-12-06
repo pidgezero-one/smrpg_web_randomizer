@@ -125,7 +125,7 @@ class Enemy:
         self.script = list(battlescripts.scripts[self.index])
 
     def __str__(self):
-        return "<{}>".format(self.name)
+        return "<{} hp: {} attack: {} defense: {} m.attack: {} m.defense: {}>".format(self.name, self.hp, self.attack, self.defense, self.magic_attack, self.magic_defense)
 
     def __repr__(self):
         return str(self)
@@ -297,6 +297,7 @@ class Enemy:
 
         """
         patch = Patch()
+
 
         # Main stats.
         data = bytearray()
@@ -503,7 +504,6 @@ class Skytroopa(Enemy):
 class MadMallet(Enemy):
     index = 3
     address = 0x390866
-    boss = True
     hp = 200
     speed = 20
     attack = 120
@@ -527,7 +527,8 @@ class MadMallet(Enemy):
 
 class MadMalletHenchman(MadMallet):
     index = 133
-    address = 0x390C06
+    address = 0x390AA6
+    boss = True
 
     # Boss shuffle attributes.
     ratio_hp = 0.2222
@@ -541,7 +542,7 @@ class MadMalletHenchman(MadMallet):
     ratio_magic_evade = 0.0
 
     # Reward attributes
-    reward_address = 0x391A6E
+    reward_address = 0x391984
     xp = 20
     coins = 1
     yoshi_cookie_item = items.Energizer

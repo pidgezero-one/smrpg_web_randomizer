@@ -63,7 +63,7 @@ script = [
             {
                 "identifier": 'EVENT_3797_action_queue_async_133_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [12, 1, [_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_1331_action_queue_async_11_SUBSCRIPT_pause_3',
@@ -161,12 +161,17 @@ script = [
                 "args": [70]
             },
             {
+                "identifier": 'EVENT_3797_action_queue_async_133_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
+            },
+            {
                 "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6',
-                "command": 'face_southwest',
+                "command": 'face_northeast',
             },
         ]
     },

@@ -189,8 +189,17 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
                     fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
                             and l.item_allowed(item) and l.access < 2]
         elif utils.isclass_or_instance(item, items.StarPiece):
-            fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
+            all_fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
                             and l.item_allowed(item) and not l.area in blocked_star_piece_areas]
+            # bias star pieces toward boss locations
+            chooser = random.randint(1, 10)
+            if world.settings.is_flag_enabled(flags.StarPieceAvailability):
+                if chooser <= 3:
+                    fillable_locations = [l for l in all_fillable_locations if utils.isclass_or_instance(l, chests.BossStarPiece)]
+                if chooser > 3 or len(fillable_locations) == 0:
+                    fillable_locations = all_fillable_locations
+            else:
+                fillable_locations = all_fillable_locations
         else:
             fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
                             and l.item_allowed(item)]
@@ -484,6 +493,8 @@ def generate_nonrequired_item(world, chest):
         else:
             all_equips = [i for i in all_choices if i.is_equipment]
             all_nonequips = [i for i in all_choices if not i.is_equipment]
+            if world.settings.is_flag_enabled(flags.RestrictSpecialEquipsExclusive):
+                all_equips = [i for i in all_equips if not i.special_equip]
             if len(all_equips) > 0 and len(all_nonequips) > 0:
                 if random.randint(0, 2) == 0:
                     all_choices = [i for i in all_choices if i.is_equipment]
@@ -631,18 +642,18 @@ def randomize_all(world):
             #print (charactersInSeed)
             # throw error if any required chars are excluded
             if PlayableCharacters.mario in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario) or world.settings.is_flag_value(flags.SeaGate, SeaGating.mario)):
-                raise Exception('cannot exclude Mario when required for area access')
+                raise flags.FlagError('Mario is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
             if PlayableCharacters.mallow in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mallow) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow) or world.settings.is_flag_value(flags.SeaGate, SeaGating.mallow)):
-                raise Exception('cannot exclude Mallow when required for area access')
+                raise flags.FlagError('Mallow is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
             if PlayableCharacters.geno in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno) or world.settings.is_flag_value(flags.SeaGate, SeaGating.geno)):
-                raise Exception('cannot exclude Geno when required for area access')
+                raise flags.FlagError('Geno is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
             if PlayableCharacters.bowser in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser) or world.settings.is_flag_value(flags.SeaGate, SeaGating.bowser)):
-                raise Exception('cannot exclude Bowser when required for area access')
+                raise flags.FlagError('Bowser is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
             if PlayableCharacters.toadstool in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool) or world.settings.is_flag_value(flags.SeaGate, SeaGating.toadstool)):
-                raise Exception('cannot exclude Toadstool when required for area access')
+                raise flags.FlagError('Toadstool is required for one of your Progression settings, but she is excluded from the seed in your Party settings.')
             # throw error if not enough chars to fill desired party
             if len(charactersInSeed) < number_of_starting_characters:
-                raise Exception('not enough characters to fill desired starting party')
+                raise flags.FlagError('not enough characters to fill desired starting party')
             random.shuffle(charactersInSeed)
             starter = world.settings.get_flag(flags.StartingCharacter).value
             if starter != PlayableCharacters.random:
@@ -856,7 +867,7 @@ def randomize_all(world):
                         world.prepend_bits(201, [[0x7066, 3], [0x706E, 3]])
                 elif utils.isclass_or_instance(c, chests.MarrymoreCharacter):
                     character_order[4] = c.item
-                    world.search_replace_dialog("`MARRYMORE_CHARACTER`", c.item.description)
+                    world.search_replace_dialog("`MARRYMORE_CHARACTER`", c.item.placeholder)
                     random_character = random.choice([i.description for i in [items.MarioRecruit, items.MallowRecruit, items.GenoRecruit, items.BowserRecruit, items.ToadstoolRecruit] if not utils.isclass_or_instance(c.item, i)])
                     world.search_replace_dialog("`RANDOM_CHARACTER_NAME`", random_character)
                     if (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, items.MarioRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, items.MallowRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, items.GenoRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, items.BowserRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, items.ToadstoolRecruit)):
@@ -891,8 +902,6 @@ def randomize_all(world):
             character_order = [items.MarioRecruit, items.ToadstoolRecruit, items.BowserRecruit, items.MallowRecruit, items.GenoRecruit]
 
         pickups = [None, chests.MushroomWayCharacter, chests.ForestMazeCharacter, chests.MolevilleMinesCharacter, chests.MarrymoreCharacter]
-        print(character_order)
-        print(playable_character_order)
         for cindex, (recruitable, ending, chest) in enumerate(zip(playable_character_order, character_order, pickups)):
             if chest is None:
                 continue
@@ -901,6 +910,8 @@ def randomize_all(world):
                 sprites = ending.sprites_primary
             else:
                 sprites = ending.sprites_secondary
+            if utils.isclass_or_instance(c, chests.ForestMazeCharacter):
+                world.update_room_npc_property_by_id(496, 22, "model", recruitable.doll)
             if recruitable is not None:
                 if not ((utils.isclass_or_instance(chest, chests.ForestMazeCharacter) and utils.isclass_or_instance(recruitable, items.GenoRecruit)) or (utils.isclass_or_instance(chest, chests.MarrymoreCharacter) and utils.isclass_or_instance(recruitable, items.ToadstoolRecruit))):
                     for room_id, npc, eventscripts, actionscripts in chest.npcs:
@@ -1244,7 +1255,7 @@ def randomize_all(world):
                     generator[0]["args"][0] = packetType
                     world.eventscripts[c.script_id] = generator
                 else:
-                    if not (utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.FrogCoin) and c.description in world.settings.get_flag(flags.EnabledFreestandingChecks).enabled):
+                    if not c.is_vanilla:
                         # set the NPC and action script for the item if it's NOT an excluded COIN overworld item location
                         model_id = c.item.model.model
                         action_script = c.item.model.action_script
@@ -1255,6 +1266,16 @@ def randomize_all(world):
                                 model_id = 111
                                 action_script = 773
                                 is_floating = False
+                            elif r == 41:
+                                if utils.isclass_or_instance(c.item, items.FrogCoin):
+                                    model_id = 202
+                                    action_script = 0
+                                    is_floating = True
+                                elif utils.isclass_or_instance(c.item, items.Coins):
+                                    model_id = 194
+                                    action_script = 0
+                                    is_floating = True
+                            # special case for coins in booster tower
                             world.update_room_npc_property_by_id(r, npc_id, "model", model_id)
                             world.update_room_npc_property_by_id(r, npc_id, "action_script", action_script)
                             world.update_room_npc_property_by_id(r, npc_id, "z_half", is_floating)

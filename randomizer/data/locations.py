@@ -206,7 +206,7 @@ class ItemLocation:
 
     @property
     def is_vanilla(self):
-        return self._item == self.original_item
+        return self._item == self.original_item or utils.isclass_or_instance(self._item, self.original_item)
 
 
 

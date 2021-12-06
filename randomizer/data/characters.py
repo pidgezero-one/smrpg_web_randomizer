@@ -8,6 +8,10 @@ from . import spells
 from .utils import color_to_bytes, palette_to_bytes
 
 
+classic_palette_offset = 0x2567E6
+minecart_palette_offset = 0x256DFE
+map_palette_offset = 0x3E99C1
+
 class StatGrowth:
     """Container class for a stat growth/bonus for a certain level + character."""
 
@@ -189,6 +193,8 @@ class Character:
         for max_hp, attack, defense, magic_attack, magic_defense in self.starting_bonuses:
             self.levelup_bonuses.append(StatGrowth(max_hp, attack, defense, magic_attack, magic_defense))
 
+        self.palette = None
+
     def __str__(self):
         return "<{}>".format(self.name)
 
@@ -244,6 +250,15 @@ class Character:
         for b in self.levelup_bonuses[:level - 1]:
             value += getattr(b, attr)
         return value
+        
+
+    def special_palette(self, colours, address, patch):
+        for j in range(0, len(colours)):
+            i = colours[j]
+            if i is not None:
+                colour = self.palette.colours[i]
+                patch.add_data(address + j*2, color_to_bytes(colour))
+        return patch
 
     def get_patch(self):
         """Build patch data for this character.
@@ -328,6 +343,7 @@ class Character:
 # ******************* Actual character data classes.
 class Mario(Character):
     original_name = PlayableCharacters.mario
+    placeholder = "`MARIO_NAME`"
     index = 0
     starting_level = 1
     max_hp = 20
@@ -447,17 +463,12 @@ class Mario(Character):
     def get_patch(self):
         patch = super().get_patch()
 
-        def special_palette(colours, address):
-            for j in range(0, len(colours)):
-                i = colours[j]
-                if i is not None:
-                    colour = self.palette.colours[i]
-                    patch.add_data(address + j*2, color_to_bytes(colour))
-
         if self.palette is not None:
-            special_palette([10, 6, 1, None, None, None, None, None, None, None, None, None, None, None, None], self.palette.classic_addresses[0])
-            special_palette([0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14], self.palette.doll_addresses[0])
-            special_palette([None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11], self.palette.minecart_addresses[0])
+            patch = self.special_palette([0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14], self.palette.doll_addresses[0], patch)
+            if self.world.starting_character == self.index or not self.world.settings.is_flag_enabled(flags.PlayAsStarter):
+                patch = self.special_palette([10, 6, 1, None, None, None, None, None, None, None, None, None, None, None, None], classic_palette_offset, patch)
+                patch = self.special_palette([None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11], minecart_palette_offset, patch)
+                patch = self.special_palette([0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14], map_palette_offset, patch)
 
         return patch
 
@@ -465,6 +476,7 @@ class Mario(Character):
 class Peach(Character):
     index = 1
     original_name = PlayableCharacters.toadstool
+    placeholder = "`PEACH_NAME`"
     starting_level = 9
     max_hp = 15
     speed = 24
@@ -558,7 +570,10 @@ class Peach(Character):
     dialog_replacements = [
         (659,''' You can't get inside Booster's
  Tower very easily. You'll need
- a persuasive princess for that.[await]''')
+ a persuasive princess for that.[await]'''),
+        (270, ''' Good day, Princess![await][pause]
+ Did you forget something in your
+ room?[await]''')
     ]
 
     original_weapon_sprite_ids = [7, None, 8, 9, 10, 11, 12]
@@ -580,10 +595,30 @@ class Peach(Character):
     runaway_offset = 0x35054E
     runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x07, 0x00, 0x00])
 
+    # print([hex(i) for i in palette_to_bytes(["EFAD31", "DE9421", "B57B21", "946318", "6B5218", "6B5218", "212110", "DE9421", "946318", "4A3910", "DE9421", "9C6B18", "523910", "101008", "181818"])])
+
+    def get_patch(self):
+        patch = super().get_patch()
+
+        if self.world.starting_character == self.index and self.world.settings.is_flag_enabled(flags.PlayAsStarter):
+            if self.palette is None:
+                classicbytes = palette_to_bytes(["E050E0", "A82828", "F8D860", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"])
+                patch.add_data(classic_palette_offset, classicbytes)
+                mapbytes = palette_to_bytes(["F8F8F8", "F8E8B0", "E09870", "985010", "502818", "F898F8", "E848B0", "B02080", "700000", "F8D038", "F88820", "3838D0", "D0C8C8", "786860", "181818"])
+                patch.add_data(map_palette_offset, mapbytes)
+            else:
+                patch = self.special_palette([6, 3, 1, None, None, None, None, None, None, None, None, None, None, None, None], classic_palette_offset, patch)
+                patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
+
+
+        return patch
+
+
 
 class Bowser(Character):
     index = 2
     original_name = PlayableCharacters.bowser
+    placeholder = "`BOWSER_NAME`"
     starting_level = 8
     max_hp = 25
     speed = 15
@@ -697,10 +732,23 @@ class Bowser(Character):
     runaway_offset = 0x350555
     runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x0D, 0x00, 0x00])
 
+    def get_patch(self):
+        patch = super().get_patch()
+
+        if self.world.starting_character == self.index and self.world.settings.is_flag_enabled(flags.PlayAsStarter):
+            if self.palette is None:
+                mapbytes = palette_to_bytes(["F8F8F8", "F8F850", "F0C830", "B83810", "503818", "38A830", "207820", "184810", "202818", "C88020", "884820", "201008", "909080", "606040", "181818"])
+                patch.add_data(map_palette_offset, mapbytes)
+            else:
+                patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
+
+
+        return patch
 
 class Geno(Character):
     index = 3
     original_name = PlayableCharacters.geno
+    placeholder = "`GENO_NAME`"
     starting_level = 6
     max_hp = 20
     speed = 30
@@ -815,9 +863,26 @@ class Geno(Character):
     runaway_offset = 0x35055C
     runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x19, 0x00, 0x00])
 
+    def get_patch(self):
+        patch = super().get_patch()
+
+        if self.world.starting_character == self.index and self.world.settings.is_flag_enabled(flags.PlayAsStarter):
+            if self.palette is None:
+                classicbytes = palette_to_bytes(["804818", "0090E0", "F0D860", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"])
+                patch.add_data(classic_palette_offset, classicbytes)
+                mapbytes = palette_to_bytes(["F8F8F8", "F0D860", "C08030", "804818", "402810", "00C0F8", "0090E0", "0070D0", "004878", "F8C000", "F85000", "682018", "B0A090", "686070", "181818"])
+                patch.add_data(map_palette_offset, mapbytes)
+            else:
+                patch = self.special_palette([3, 6, 1, None, None, None, None, None, None, None, None, None, None, None, None], classic_palette_offset, patch)
+                patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
+
+
+        return patch
+
 class Mallow(Character):
     index = 4
     original_name = PlayableCharacters.mallow
+    placeholder = "`MALLOW_NAME`"
     starting_level = 2
     max_hp = 16
     speed = 18
@@ -934,6 +999,17 @@ class Mallow(Character):
     runaway_offset = 0x350563
     runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x13, 0x00, 0x00])
 
+    def get_patch(self):
+        patch = super().get_patch()
+
+        if self.world.starting_character == self.index and self.world.settings.is_flag_enabled(flags.PlayAsStarter):
+            if self.palette is None:
+                mapbytes = palette_to_bytes(["F8F8F8", "F0F090", "D8D878", "A0A058", "403828", "F868D0", "902848", "582038", "300810", "28E8F8", "1890B8", "105060", "A08888", "686848", "181818"])
+                patch.add_data(map_palette_offset, mapbytes)
+            else:
+                patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
+
+        return patch
 
 def get_default_characters(world):
     """Get default vanilla character list for the world.

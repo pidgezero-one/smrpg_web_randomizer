@@ -43,7 +43,7 @@ dialog_data[24] = '''[await]'''
 dialog_data[25] = '''
  BIRDETTA: Don't forget about me![await]'''
 dialog_data[26] = '''[await]'''
-dialog_data[27] = '''[aWait]'''
+dialog_data[27] = '''[await]'''
 dialog_data[28] = '''[await]'''
 dialog_data[29] = '''[await]'''
 dialog_data[30] = '''[await]'''
@@ -73,9 +73,8 @@ dialog_data[48] = ''' Why don't you crash for a while?[await]
 dialog_data[49] = '''[page]
 
     Ahem...you're a little short![await]'''
-dialog_data[50] = '''[page]
-
-           Good luck, Mario![await]'''
+dialog_data[50] = '''
+               Good luck![await]'''
 dialog_data[51] = '''          Got a “[0x70A7]”![await]'''
 dialog_data[52] = '''[page]
         [0x7024] Cookie(s)[end]'''
@@ -85,8 +84,8 @@ dialog_data[55] = '''            Got a Frog Coin![await]'''
 dialog_data[56] = '''[page]
         [0x7024] Cookie(s)[await]'''
 dialog_data[57] = '''[await]'''
-dialog_data[58] = ''' Mario! Please, you've GOT
- to save Princess Toadstool![await]'''
+dialog_data[58] = ''' `MAIN_CHARACTER_NAME`! Please, you've GOT
+ to save the kingdom![await]'''
 dialog_data[59] = ''' Our economy is booming now that
  we can have up to 9999 coins at a
  time.[await][page]
@@ -117,8 +116,9 @@ dialog_data[69] = ''' My son was getting dizzy from all
  seemed to help him jump in a
  straight line.[await]'''
 dialog_data[70] = ''' One! Two! Three!
- Hey, Mario! Think if I practice
- enough, I'll get 100 Super Jumps?[await]
+ Hey, `MAIN_CHARACTER_NAME`![await][pause] Think if I
+ practice enough, I'll get
+ 100 Super Jumps?[await]
  [select]  (Sure!)
  [select]  (Yeah, right kid.)[await]'''
 dialog_data[71] = '''[await]'''
@@ -128,7 +128,7 @@ dialog_data[74] = '''
                  Yeah!!![await]'''
 dialog_data[75] = '''
              Thanks a bunch.[await]'''
-dialog_data[76] = ''' Hey Mario!
+dialog_data[76] = ''' Hey `MAIN_CHARACTER_NAME`!
  My brother's getting pretty good at Super Jumps.[await][page]
  It gets pretty precise after you do
  13 in a row.[await][pause] But the rhythm doesn't
@@ -176,8 +176,9 @@ dialog_data[108] = '''[page]
  ...If you happen to find it, can you
  bring it back to me?[await][pause] I promise I'll
  give you something NICE.[await]'''
-dialog_data[109] = ''' Hey Mario! Think you can get 100
- Super Jumps today?[await][page]
+dialog_data[109] = ''' Hey `MAIN_CHARACTER_NAME`! 
+ Think you can get 100 Super Jumps
+ today?[await][page]
  Even though it's tricky, just
  remember this tip:[await]
  If you're dropping around 13 or 14,
@@ -282,15 +283,16 @@ dialog_data[185] = '''
   I'm too scared to pass by them![await]'''
 dialog_data[186] = '''
              Trapped again![await]'''
-dialog_data[187] = ''' Saved by Mario again! How could
- I ever thank you enough?![await]'''
-dialog_data[188] = ''' You're in one piece![await]'''
-dialog_data[189] = '''TOAD: Thanks to Mario, of course![await]'''
-dialog_data[190] = '''TOAD: What?! That’s terrible![await]'''
+dialog_data[187] = ''' Saved by `MAIN_CHARACTER_NAME` again!
+ How could I ever thank you
+ enough?![await]'''
+dialog_data[188] = '''[await]'''
+dialog_data[189] = '''[await]'''
+dialog_data[190] = '''[await]'''
 dialog_data[191] = '''[await]'''
 dialog_data[192] = '''[await]'''
 dialog_data[193] = ''' That was TOO darn close.
- Thanks for the hand, Mario.[await]'''
+ Thanks for the hand, `MAIN_CHARACTER_NAME`.[await]'''
 dialog_data[194] = ''' Hey! That's the wallet I lost!
  Can I have it back?[await]
  [select]  (Sure)
@@ -319,13 +321,10 @@ dialog_data[202] = ''' Not all attacks can be blocked with
  that means you can block the hit.[await]
  And if you block it at just the
  right moment, you'll evade it![await]'''
-dialog_data[203] = '''RAINI: Do you happen to know of
- a good wedding chapel?[await]'''
-dialog_data[204] = '''RAINI: I found the perfect place
- for a wedding! But now we're all
- stuck inside![await]'''
+dialog_data[203] = '''[await]'''
+dialog_data[204] = '''[await]'''
 dialog_data[205] = '''
-           Thank you, Mario![await]'''
+                Thank you![await]'''
 dialog_data[206] = '''[await]'''
 dialog_data[207] = '''[await]'''
 dialog_data[208] = '''[await]'''
@@ -345,7 +344,7 @@ dialog_data[215] = ''' We're having an honoured guest
  around here in the meantime.[await]'''
 dialog_data[216] = '''[await]'''
 dialog_data[217] = '''
-            Thanks, Mario![await]'''
+                 Thanks![await]'''
 dialog_data[218] = ''' This guy can do more Super Jumps
  than me![await]'''
 dialog_data[219] = '''
@@ -358,7 +357,7 @@ dialog_data[223] = '''[await]'''
 dialog_data[224] = '''[await]'''
 dialog_data[225] = '''[await]'''
 dialog_data[226] = '''[await]'''
-dialog_data[227] = '''TOAD: Good luck, Mario!
+dialog_data[227] = '''TOAD: Good luck, `MAIN_CHARACTER_NAME`!
  Give 'em heck![await]'''
 dialog_data[228] = '''[await]'''
 dialog_data[229] = '''[await]'''
@@ -428,7 +427,7 @@ dialog_data[286] = '''[await]'''
 dialog_data[287] = '''[await]'''
 dialog_data[288] = '''[await]'''
 dialog_data[289] = '''[await]'''
-dialog_data[290] = ''' Hi Mario. Staying for a nap?[await]
+dialog_data[290] = ''' Hi `MAIN_CHARACTER_NAME`. Staying for a nap?[await]
  [select]  (Sure)
  [select]  (Maybe next time)[await]'''
 dialog_data[291] = '''[page]
@@ -444,8 +443,8 @@ dialog_data[296] = '''[await]'''
 dialog_data[297] = '''[await]'''
 dialog_data[298] = '''[await]'''
 dialog_data[299] = '''[await]'''
-dialog_data[300] = ''' Mario! How are we feeling?[await]
- [select]  (Like a new man!)
+dialog_data[300] = ''' `MAIN_CHARACTER_NAME`! How are we feeling?[await]
+ [select]  (Like a new `MAIN_CHARACTER_GENDER`!)
  [select]  (Need coffee. Keep away.)[await]'''
 dialog_data[301] = '''
       Well, that’s good to hear![await]'''
@@ -584,7 +583,7 @@ dialog_data[378] = ''' The Gardener is a pretty generous
 dialog_data[379] = ''' I'm so proud of my grandsons.
  Just look at them.[await]'''
 dialog_data[380] = ''' It's stopped raining arrows
- outside. Thank you, Mario![await]'''
+ outside. Thank you, `MAIN_CHARACTER_NAME`![await]'''
 dialog_data[381] = ''' There’s nothing to worry about
  anymore! I can finally relax.[await]'''
 dialog_data[382] = ''' Phew..[delay]..[delay] That was close,
@@ -757,12 +756,8 @@ dialog_data[477] = '''[page]
 dialog_data[478] = '''[page]
 
             Please come again.[await]'''
-dialog_data[479] = ''' Sir, this is the gift we promised
- you upon selection of the suite.
- We hope you will enjoy it.[await]'''
-dialog_data[480] = ''' The bellhop will show you
- to your room.[await]
- Please enjoy your stay.[await]'''
+dialog_data[479] = '''[await]'''
+dialog_data[480] = '''[await]'''
 dialog_data[481] = '''
       Hello. How may I help you?[await]'''
 dialog_data[482] = '''[await]'''
@@ -771,7 +766,7 @@ dialog_data[484] = ''' Tip 10 coins?[await]
  [select]  (Sure, why not?)
  [select]  (No way)[await]'''
 dialog_data[485] = '''   You're a little short of coins...[await]'''
-dialog_data[486] = ''' THANK YOU very much, sir!
+dialog_data[486] = ''' THANK YOU very much, `MAIN_CHARACTER_HONORIFIC`!
  Please enjoy your stay here.[await]'''
 dialog_data[487] = '''[await]'''
 dialog_data[488] = '''        You have paid for only
@@ -981,13 +976,13 @@ dialog_data[589] = '''[await]'''
 dialog_data[590] = '''[await]'''
 dialog_data[591] = ''' A couple o' jerks barged into the
  mountain, and made a big ol' mess
- inside.[await] Two kids and one of the men folk
- be stuck inside now. Please Mario,
- you gotta help us![await]'''
+ inside.[await][pause] Two kids and one of the men
+ folk be stuck inside now. Please,
+ `MAIN_CHARACTER_NAME`, you gotta help us![await]'''
 dialog_data[592] = ''' Our friend up there's tryin' to drill
  through the mountain an' rescue the
- folks trapped inside.[await]
- Say, Mario, you wouldn't happen to
+ folks trapped inside.[await][pause] Say,
+ `MAIN_CHARACTER_NAME`, you wouldn't happen to
  have anything that could blow it
  open from inside, would ya?[await]'''
 dialog_data[593] = ''' I reckon this'd be a heckuva lot
@@ -1012,8 +1007,8 @@ dialog_data[599] = ''' Let me tally up the numbers...
 dialog_data[600] = '''MA'MOLE: I wonder how those
  kids're doing?
  Sure wish they'd hurry home![await]'''
-dialog_data[601] = ''' Hey, Mario! We've got something
- fun for you today.[await][page]
+dialog_data[601] = ''' Hey, `MAIN_CHARACTER_NAME`! We've got
+ something fun for you today.[await][page]
  We've each hidden a random item
  somewhere in the world.[await][pause] It might
  be our flags, or it might be
@@ -1042,7 +1037,7 @@ dialog_data[612] = ''' Almost forgot!
  You wagered 30 coins, didn't ya?
  Here’s 50, you lucky dog![await]'''
 dialog_data[613] = '''MA'MOLE: I reckon Dyna’s taken
- a liking to you Mario.[await]'''
+ a liking to you, `MAIN_CHARACTER_NAME`.[await]'''
 dialog_data[614] = '''PA'MOLE: If you need anything,
  don't be no stranger now.[await][page]
  I'll be heading back to the mountain
@@ -1081,7 +1076,7 @@ dialog_data[623] = ''' The high score's...
 dialog_data[624] = '''[await]'''
 dialog_data[625] = ''' Oh shucks, you ain't got the coins!
  Well that’s too bad.
-[end]'''
+[await]'''
 dialog_data[626] = ''' A ticket only costs ya 10 coins,
  or you can wager 30 coins.
 [end]'''
@@ -1128,7 +1123,7 @@ dialog_data[638] = '''
  I'm just bored.[await]
  But if you go to the mountain,
  they'll sing you the real song.[await]'''
-dialog_data[639] = ''' Hey mister, have ya ever been to
+dialog_data[639] = ''' Hey `MAIN_CHARACTER_TITLE`, have ya ever been to
  Bean Valley?[await][pause] My friend's been
  readin' a book about it.[await][page]
  She tells me there's some treasure
@@ -1140,7 +1135,7 @@ dialog_data[640] = ''' My sister's friend must be sick, or
  about jumping, gold “Chomps”,
  secret passages, and such.[await] Dunno
  what she's on about!'''
-dialog_data[641] = ''' Hey mister, didja know Land's End
+dialog_data[641] = ''' Hey `MAIN_CHARACTER_TITLE`, didja know Land's End
  connects to the sewers?[await][pause] Gross![await]'''
 dialog_data[642] = ''' I'm so hungry!
  Sure wish I had a Carbo Cookie.[await]'''
@@ -1158,7 +1153,7 @@ dialog_data[646] = ''' Ooh, thanks!
  Since you're so nice, I'll give you
  this green coin.[await]'''
 dialog_data[647] = '''
-             Thanks, mister!'''
+             Thanks, `MAIN_CHARACTER_TITLE`!'''
 dialog_data[648] = '''[await]'''
 dialog_data[649] = ''' Sorry, curatives are all gone.
 [end]'''
@@ -1170,8 +1165,8 @@ dialog_data[652] = ''' I'm reading a picture book about
  left beanstalk?![await][page]
  Is there somewhere else you can
  jump from that I just can't see?[await]
- Have you ever been there, mister?[await]'''
-dialog_data[653] = ''' Hey mister! Have ya been to
+ Have you ever been there, `MAIN_CHARACTER_TITLE`?[await]'''
+dialog_data[653] = ''' Hey `MAIN_CHARACTER_TITLE`! Have ya been to
  Land's End?[await][pause] I wanna go, but my
  ma's afraid I'm gonna fall in the
  dog pit.[await]
@@ -1203,8 +1198,8 @@ dialog_data[663] = '''[await]'''
 dialog_data[664] = '''[await]'''
 dialog_data[665] = '''[await]'''
 dialog_data[666] = '''[await]'''
-dialog_data[667] = '''PA'MOLE: Mario, you're our only
- hope for those kids.
+dialog_data[667] = '''PA'MOLE: `MAIN_CHARACTER_NAME`, you're our
+ only hope for those kids.
  We're countin' on ya.[await]'''
 dialog_data[668] = ''' How about a trolley ride?[await]
   [select]  (Pay 10 coins to ride)
@@ -1260,7 +1255,7 @@ dialog_data[691] = '''[await]'''
 dialog_data[692] = '''[await]'''
 dialog_data[693] = ''' Gasp, gasp![await]
  Phew, what a workout.[await]'''
-dialog_data[694] = ''' Um••••••Mario?[await]
+dialog_data[694] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
  This is “Booster Hill”, where there
  isn't much besides barrels.[await][page]
  So, please follow me to the exit.[await]
@@ -1280,7 +1275,7 @@ dialog_data[699] = '''[await]'''
 dialog_data[700] = '''[await]'''
 dialog_data[701] = '''[await]'''
 dialog_data[702] = '''GRATE GUY: Whoa, hold on a sec,
- Mario![await]
+ `MAIN_CHARACTER_NAME`![await]
  There's a pretty tough fight on the
  other side of that trampoline.[await][page]
  Are you SURE you wanna continue?
@@ -1693,12 +1688,11 @@ dialog_data[879] = '''[await]'''
 dialog_data[880] = '''[await]'''
 dialog_data[881] = '''
    Here, hop up on our shoulders![await]'''
-dialog_data[882] = '''PA'MOLE: Mario! You've come to
- save us? One problem, though.
- This is a dead end...[await][page]
+dialog_data[882] = '''PA'MOLE: `MAIN_CHARACTER_NAME`! You've
+ come to save us? One problem,
+ though. This is a dead end...[await][page]
  We'd need a bomb to blast
- through here...
- Think you could find one?[await]'''
+ through here...[await]'''
 dialog_data[883] = '''[await]'''
 dialog_data[884] = '''[await]'''
 dialog_data[885] = '''[await]'''
@@ -1839,7 +1833,7 @@ dialog_data[945] = '''c[end]'''
 dialog_data[946] = '''o[end]'''
 dialog_data[947] = '''t[end]'''
 dialog_data[948] = '''p[end]'''
-dialog_data[949] = '''Mario’s password is....
+dialog_data[949] = '''`MAIN_CHARACTER_NAME`’s password is....
 <[end]'''
 dialog_data[950] = ''' >[await]'''
 dialog_data[951] = '''[page]

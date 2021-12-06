@@ -270,26 +270,6 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'EVENT_454_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 803]
-    },
-    {
-        "identifier": 'EVENT_454_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 803]
-    },
-    {
-        "identifier": 'EVENT_454_set_action_script_sync_18',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 803]
-    },
-    {
-        "identifier": 'EVENT_454_set_action_script_async_19',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 803]
-    },
-    {
         "identifier": 'EVENT_454_ret_20',
         "command": 'ret'
     }

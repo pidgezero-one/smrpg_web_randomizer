@@ -10906,7 +10906,7 @@ models[473] = {
   "byte6_bit2": False
 } # 0x1dc4ef
 models[474] = {
-  "sprite": SpriteName._174_SMALL_CANDY_CLOUD,
+  "sprite": 487,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -11205,7 +11205,7 @@ models[486] = {
   "byte6_bit2": False
 } # 0x1dc54a
 models[487] = {
-  "sprite": SpriteName._487_AERO,
+  "sprite": 174,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,

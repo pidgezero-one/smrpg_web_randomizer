@@ -415,6 +415,8 @@ def randomize_all(world):
         for character in world.characters:
             _randomize_character(character)
             
+
+def finalize_all(world):
     # Adjust starting levels according to join order.  Get original levels, then update starting levels based on
     # join order with Mallow = 4, Geno = 3, Bowser = 2, Peach = 1.
     orig_levels = {}
@@ -470,13 +472,22 @@ def randomize_all(world):
 
 def randomize_palettes(world):
     # Palettes!!!!
-    mario_palettes = utils.find_subclasses(palettes, palettes.MarioPalette)
-    mallow_palettes = utils.find_subclasses(palettes, palettes.MallowPalette)
-    geno_palettes = utils.find_subclasses(palettes, palettes.GenoPalette)
-    bowser_palettes = utils.find_subclasses(palettes, palettes.BowserPalette)
-    toadstool_palettes = utils.find_subclasses(palettes, palettes.ToadstoolPalette)
+
+    mario_name = 'Mario'
+    mallow_name = "Mallow"
+    geno_name = 'Geno'
+    bowser_name = 'Bowser'
+    peach_name = 'Toadstool'
+    peach_article = ""
 
     if world.settings.is_flag_enabled(flags.PaletteSwaps):
+    
+        mario_palettes = utils.find_subclasses(palettes, palettes.MarioPalette)
+        mallow_palettes = utils.find_subclasses(palettes, palettes.MallowPalette)
+        geno_palettes = utils.find_subclasses(palettes, palettes.GenoPalette)
+        bowser_palettes = utils.find_subclasses(palettes, palettes.BowserPalette)
+        toadstool_palettes = utils.find_subclasses(palettes, palettes.ToadstoolPalette)
+
         world.characters[0].palette = random.choice(mario_palettes)
         world.characters[1].palette = random.choice(mallow_palettes)
         world.characters[2].palette = random.choice(geno_palettes)
@@ -484,16 +495,7 @@ def randomize_palettes(world):
         world.characters[4].palette = random.choice(toadstool_palettes)
         if utils.isclass_or_instance(world.characters[4].palette, palettes.ToadstoolBlack):
             world.replace_dialog(735, ''' This Bowsette costume is missing\n horns. Oh, well...[await]''')
-        if world.characters[4].palette.rename_character:
-            world.search_replace_dialog('`PEACH_NAME`', '%s' % world.characters[4].palette.name)
-            world.search_replace_dialog('`PEACH_ARTICLE`', 'n' if world.characters[4].palette.name[0] in ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'] else '')
-        else:
-            world.search_replace_dialog('`PEACH_NAME`', 'Toadstool')
-            world.search_replace_dialog('`PEACH_ARTICLE`', '')
-        if world.settings.is_flag_enabled(flags.ChangeNames) and world.characters[1].palette.rename_character:
-            world.search_replace_dialog('`MALLOW:`', '%s:' % world.characters[1].palette.name.upper())
-        world.search_replace_dialog('`PEACH_NAME`', 'Toadstool')
-        world.search_replace_dialog('`PEACH_ARTICLE`', '')
+        
 
         
 

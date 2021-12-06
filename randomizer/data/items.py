@@ -43,7 +43,7 @@ overworld_items = {
     "red_mushroom_item": OverworldItem(264, 483, static_packet=194, falling_packet=195, treasure_packet=196, chest_event=918),
     "green_mushroom_item": OverworldItem(264, 483, static_packet=197, falling_packet=198, treasure_packet=199, chest_event=919),
     "yellow_mushroom_item": OverworldItem(264, 483, static_packet=200, falling_packet=201, treasure_packet=202, chest_event=920),
-    "hammer": OverworldItem(31, 15),
+    "hammer": OverworldItem(680, 15),
     "coin": OverworldItem(499, 925, static_packet=109, falling_packet=106, treasure_packet=16),
     "small_coin": OverworldItem(194, 163, static_packet=110, falling_packet=107, treasure_packet=18),
     "frog_coin": OverworldItem(195, 925, static_packet=111, falling_packet=108, treasure_packet=19),
@@ -56,7 +56,7 @@ overworld_items = {
     "egg": OverworldItem(641, 15, static_packet=115, falling_packet=116, treasure_packet=117, chest_event=892),
     "nothing": OverworldItem(255, 164),
     "default": OverworldItem(111, 773),
-    "cookie": OverworldItem(18, 15, static_packet=118, falling_packet=119, treasure_packet=120, chest_event=893),
+    "cookie": OverworldItem(652, 15, static_packet=118, falling_packet=119, treasure_packet=120, chest_event=893),
     "chomp": OverworldItem(30, 831), # might be too big
     "berry": OverworldItem(144, 15, static_packet=121, falling_packet=122, treasure_packet=123, chest_event=894),
     "cannonball": OverworldItem(430, 15),
@@ -3427,13 +3427,24 @@ class RecruitedCharacter(Item):
     sprites_primary = {}
     sprites_secondary = {}
     item_type = 3
+    doll = 91
+    placeholder = "`NAME`"
+    gender = "man"
+    gender_casual = "guy"
+    honorific = "sir"
+    title = "mister"
+    title_short = "Mr"
+    mole_greeting = "mate"
+    mboy_greeting = ", man"
 
 class MarioRecruit(RecruitedCharacter):
     index = 220
     description = PlayableCharacters.mario.value
+    placeholder = "`MARIO_NAME`"
     starter_script = 187
     container_script = 193
     model = 0
+    doll = 91
     sprites_primary = {
         "south": (0, 12, True),
         "defend": (2, 16, True),
@@ -3482,8 +3493,17 @@ class MarioRecruit(RecruitedCharacter):
 class ToadstoolRecruit(RecruitedCharacter):
     index = 221
     description = PlayableCharacters.toadstool.value
+    placeholder = "`PEACH_NAME`"
+    gender = "woman"
+    gender_casual = "gal"
+    honorific = "ma'am"
+    title = "miss"
+    title_short = "Ms"
+    mole_greeting = "friend"
+    mboy_greeting = ""
     starter_script = 191
     container_script = 197
+    doll = 92
     model = 1
     sprites_primary = {
         "south": (0, 12, True),
@@ -3533,8 +3553,10 @@ class ToadstoolRecruit(RecruitedCharacter):
 class MallowRecruit(RecruitedCharacter):
     index = 222
     description = PlayableCharacters.mallow.value
+    placeholder = "`MALLOW_NAME`"
     starter_script = 188
     container_script = 194
+    doll = 35
     model = 3
     sprites_primary = {
         "south": (0, 12, True),
@@ -3584,8 +3606,10 @@ class MallowRecruit(RecruitedCharacter):
 class GenoRecruit(RecruitedCharacter):
     index = 223
     description = PlayableCharacters.geno.value
+    placeholder = "`GENO_NAME`"
     starter_script = 189
     container_script = 195
+    doll = 476
     model = 4
     sprites_primary = {
         "south": (0, 12, True),
@@ -3636,8 +3660,10 @@ class BowserRecruit(RecruitedCharacter):
     index = 224
     model = 2
     description = PlayableCharacters.bowser.value
+    placeholder = "`BOWSER_NAME`"
     starter_script = 190
     container_script = 196
+    doll = 90
     sprites_primary = {
         "south": (0, 12, True),
         "defend": (2, 16, True),

@@ -12,7 +12,7 @@ script = [
     {
         "identifier": 'ACTION_227_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 2, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_227_pause_2',

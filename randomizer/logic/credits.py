@@ -302,7 +302,7 @@ def update_credits(world):
 
     #26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'PLAYABLE CHARACTER SPRITES')
+    credits.add_title(0x80, 0x00, 0x08, 'ALLY AND ENEMY SPRITES')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
@@ -312,7 +312,7 @@ def update_credits(world):
 
     #26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'PLAYABLE CHARACTER PALETTES')
+    credits.add_title(0x80, 0x00, 0x08, 'ALLY PALETTES')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
