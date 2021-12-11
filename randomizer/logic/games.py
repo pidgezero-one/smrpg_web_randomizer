@@ -136,8 +136,12 @@ def randomize_all(world):
 
 def get_spoiler(world):
     acc = {}
-    
-    acc["password"] = world.password.word
-    acc["songs"] = [s.scroll_text for s in world.tadpole_songs]
+
+    if not world.password:
+        acc["password"] = "pearls"
+        acc["songs"] = "(vanilla)"
+    else:
+        acc["password"] = world.password.word
+        acc["songs"] = [s.scroll_text for s in world.tadpole_songs]
 
     return acc

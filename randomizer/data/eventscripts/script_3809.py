@@ -11,11 +11,6 @@ script = [
         "args": [[]]
     },
     {
-        "identifier": 'EVENT_3809_set_bit_2',
-        "command": 'set_bit',
-        "args": [0x7063, 3]
-    },
-    {
         "identifier": 'EVENT_3809_apply_tile_mod_17',
         "command": 'apply_tile_mod',
         "args": [Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY, 0, [_0x6AFlags.USE_ALTERNATE]]
@@ -29,6 +24,11 @@ script = [
         "identifier": 'EVENT_3809_enter_area_19',
         "command": 'enter_area',
         "args": [Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, RadialDirections.NORTHEAST, 9, 100, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+    {
+        "identifier": 'EVENT_3809_set_bit_2',
+        "command": 'set_bit',
+        "args": [0x7063, 3]
     },
     {
         "identifier": 'EVENT_3809_freeze_camera_27',
@@ -478,11 +478,6 @@ script = [
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_3809_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0_',
-                "command": 'set_sprite_sequence',
-                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
                 "identifier": 'EVENT_3809_action_queue_sync_36_SUBSCRIPT_pause_0',
                 "command": 'pause',
                 "args": [30]
@@ -538,11 +533,6 @@ script = [
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_4],
         "subscript": [
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_7_SUBSCRIPT_set_sprite_sequence_0__',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_37_SUBSCRIPT_pause_0',
                 "command": 'pause',

@@ -480,6 +480,11 @@ def randomize_all(world):
                         cmds = [new_command(353, 'start_battle', [boss.pack_number, boss_location.battlefield])]
                 else:
                     cmds = [new_command(353, 'start_battle', [boss.pack_number, formation.required_battlefield])]
+                if utils.isclass_or_instance(boss, bosses.SmithyBoss):
+                    cmds.insert(0, new_command(353, 'set_bit', [0x704a, 2]))
+                    cmds.append(new_command(353, 'clear_bit', [0x704a, 2]))
+                    cmds.append(new_command(353, 'fade_out_to_black_async'))
+                    cmds.append(new_command(353, 'set_bit_7_offset', [0x0158, [7]]))
                 cmds.append(new_command(353, 'ret'))
                 fight_builders[353]["executions"].extend(cmds)
                 jmp = new_command(353, 'jmp_if_7000_equals_short', [boss_location.identifier, cmds[0]["identifier"]])
@@ -1027,10 +1032,10 @@ def randomize_all(world):
                                 script = world.eventscripts[script_id]
                                 for command_index, command in enumerate(script):
                                     if is_animation_header(command, npc_id):
-                                        command["subscript"] = fix_directions_for_sequenced_sprite(command["subscript"], model.sequence_type, seq, sprite_offset)
+                                        command["subscript"] = fix_directions_for_sequenced_sprite(command["subscript"], model.sequence_type, seq, sprite_offset, model.loop)
                                         world.eventscripts[script_id][command_index] = command
                             for script_id in boss_sprite_location.target_action_scripts:
-                                world.actionscripts[script_id] = fix_directions_for_sequenced_sprite(world.actionscripts[script_id], model.sequence_type, seq, sprite_offset)
+                                world.actionscripts[script_id] = fix_directions_for_sequenced_sprite(world.actionscripts[script_id], model.sequence_type, seq, sprite_offset, model.loop)
                             
 
                                     
@@ -1104,7 +1109,7 @@ def randomize_all(world):
                                         cmd = new_animation(henchman_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "set_sprite_sequence", "args": [model.mold, sprite_offset, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_MOLD]]}])
                                     else:
                                         seqargs = [_0x08Flags.READ_AS_SEQUENCE]
-                                        if not loop_on_walk:
+                                        if not loop_on_walk and not model.loop:
                                             seqargs.append(_0x08Flags.LOOPING_OFF)
                                         cmd = new_animation(henchman_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "set_sprite_sequence", "args": [model.sequence, sprite_offset, seqargs]}])
                                     sequence_setters[henchman_location.sequence_setter].append(cmd)
@@ -1258,10 +1263,10 @@ def randomize_all(world):
                                         script = world.eventscripts[script_id]
                                         for command_index, command in enumerate(script):
                                             if is_animation_header(command, npc_id):
-                                                command["subscript"] = fix_directions_for_sequenced_sprite(command["subscript"], model.sequence_type, seq, sprite_offset, loop_on_walk)
+                                                command["subscript"] = fix_directions_for_sequenced_sprite(command["subscript"], model.sequence_type, seq, sprite_offset, loop_on_walk or model.loop)
                                                 world.eventscripts[script_id][command_index] = command
                                     for script_id in henchman_location.target_action_scripts:
-                                        world.actionscripts[script_id] = fix_directions_for_sequenced_sprite(world.actionscripts[script_id], model.sequence_type, seq, sprite_offset, loop_on_walk)
+                                        world.actionscripts[script_id] = fix_directions_for_sequenced_sprite(world.actionscripts[script_id], model.sequence_type, seq, sprite_offset, loop_on_walk or model.loop)
                                 
 
                     # replace relevant dialogs

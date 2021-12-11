@@ -56,7 +56,7 @@ from randomizer.data.eventscripts.utils.tower_access.bowser_self import script a
 from randomizer.data.eventscripts.utils.tower_access.toadstool_self import script as tower_toadstool_self
 
 from randomizer.data.roomobjecttables import RadialDirection
-from randomizer.data.eventtables import AreaObjects, Rooms
+from randomizer.data.eventtables import AreaObjects, Rooms, _0x60Flags
 
 from .enscript import EventScript
 from .osscript import ObjectSequenceScript
@@ -432,6 +432,12 @@ class GameWorld:
         """
         return self.formation_packs_dict[index]
 
+    def is_starting_character(self, cls):
+        for c in self.starter_character_checks:
+            if utils.isclass_or_instance(c, cls):
+                return True
+        return False
+
     def randomize(self):
         print("randomizing data...")
         """Randomize this entire game world instance."""
@@ -493,6 +499,9 @@ class GameWorld:
     def prepend_bits(self, event, pairs):
         for pair in pairs:
             self.eventscripts[event].insert(0, utils.new_command(event, "set_bit", pair))
+
+    def prepend_notice(self, event, dialog):
+        self.eventscripts[event].insert(0, utils.new_command(event, 'run_dialog', [dialog, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]))
 
     def update_room_npc_property_by_id(self, room_id, npc_id, prop, value):
         ctr = 0
@@ -563,6 +572,28 @@ class GameWorld:
                     ctr += 1
         return ctr
 
+    @property
+    def max_chest_quality(self):
+        tiers_allowed = 1
+        if self.settings.is_flag_value(flags.ItemQuality, ItemQualities.t1):
+            tiers_allowed = 4
+        elif self.settings.is_flag_value(flags.ItemQuality, ItemQualities.t2):
+            tiers_allowed = 3
+        elif self.settings.is_flag_value(flags.ItemQuality, ItemQualities.t3):
+            tiers_allowed = 2
+        return tiers_allowed
+
+    @property
+    def max_shop_quality(self):
+        tiers_allowed = 1
+        if self.settings.is_flag_value(flags.ShopQuality, ShopQualities.t1):
+            tiers_allowed = 4
+        elif self.settings.is_flag_value(flags.ShopQuality, ShopQualities.t2):
+            tiers_allowed = 3
+        elif self.settings.is_flag_value(flags.ShopQuality, ShopQualities.t3):
+            tiers_allowed = 2
+        return tiers_allowed
+
     def build_patch(self):
         """Build patch data for this instance.
 
@@ -591,6 +622,8 @@ class GameWorld:
         # Set number of star pieces required for win condition
         required_star_pieces = self.settings.get_flag(flags.TotalStarPieces).value
         self.eventscripts[1969][1]["args"] = [required_star_pieces]
+        self.eventscripts[3949][1]["args"] = [required_star_pieces]
+        self.dialog_data[1][217] = ("%i[await]" % required_star_pieces)
 
         # Alternate star piece win conditions
         if self.settings.is_flag_value(flags.RequireBossFights, True):
@@ -598,41 +631,66 @@ class GameWorld:
             # disable mack skip
             self.update_room_npc_property_by_id(326, 10, "event", 256)
 
+        starting_characters = [c.item for c in self.starter_character_checks if c.item is not None]
+
         # Bandit's Way gating
         if self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.open):
             self.prepend_bits(192, [[0x7065, 4], [0x706D, 4]])
         elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mushroomway):
             self.prepend_bits(199, [[0x7065, 4], [0x706D, 4]])
+            self.prepend_notice(199, 2256)
         elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario):
             self.prepend_bits(187, [[0x7065, 4], [0x706D, 4]])
+            if not self.is_starting_character(data.items.MarioRecruit):
+                self.prepend_notice(187, 2256)
         elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mallow):
             self.prepend_bits(198, [[0x7065, 4], [0x706D, 4]])
+            if not self.is_starting_character(data.items.MallowRecruit):
+                self.prepend_notice(198, 2256)
         elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno):
             self.prepend_bits(189, [[0x7065, 4], [0x706D, 4]])
+            if not self.is_starting_character(data.items.GenoRecruit):
+                self.prepend_notice(189, 2256)
         elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser):
             self.prepend_bits(190, [[0x7065, 4], [0x706D, 4]])
+            if not self.is_starting_character(data.items.BowserRecruit):
+                self.prepend_notice(190, 2256)
         elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool):
             self.prepend_bits(191, [[0x7065, 4], [0x706D, 4]])
+            if not self.is_starting_character(data.items.ToadstoolRecruit):
+                self.prepend_notice(191, 2256)
 
         # Forest Maze gating, special conditions
         if self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.open):
             self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
         elif self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.pie):
             self.prepend_bits(203, [[0x7066, 3], [0x706E, 3]])
+            self.prepend_notice(203, 2257)
 
         # Pipe Vault gating
         if self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.forest):
             self.prepend_bits(211, [[0x7055, 7]])
+            self.prepend_notice(211, 2258)
         elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mario):
             self.prepend_bits(187, [[0x7055, 7]])
+            if not self.is_starting_character(data.items.MarioRecruit):
+                self.prepend_notice(187, 2258)
         elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mallow):
             self.prepend_bits(198, [[0x7055, 7]])
+            if not self.is_starting_character(data.items.MallowRecruit):
+                self.prepend_notice(198, 2258)
         elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.geno):
             self.prepend_bits(189, [[0x7055, 7]])
+            if not self.is_starting_character(data.items.GenoRecruit):
+                self.prepend_notice(189, 2258)
         elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowser):
             self.prepend_bits(190, [[0x7055, 7]])
+            if not self.is_starting_character(data.items.BowserRecruit):
+                self.prepend_notice(190, 2258)
         elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.toadstool):
             self.prepend_bits(191, [[0x7055, 7]])
+            if not self.is_starting_character(data.items.ToadstoolRecruit):
+                self.prepend_notice(191, 2258)
         else:
             self.prepend_bits(192, [[0x7055, 7]])
 
@@ -695,30 +753,40 @@ class GameWorld:
             self.prepend_bits(199, [[0x7053, 6]])
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario):
             self.prepend_bits(187, [[0x7053, 7]])
+            if not self.is_starting_character(data.items.MarioRecruit):
+                self.prepend_notice(187, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 0:
                 self.eventscripts[1331] = copy.deepcopy(tower_mario_self)
             else:
                 self.eventscripts[1331] = copy.deepcopy(tower_mario)
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow):
             self.prepend_bits(198, [[0x7053, 7]])
+            if not self.is_starting_character(data.items.MallowRecruit):
+                self.prepend_notice(198, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 4:
                 self.eventscripts[1331] = copy.deepcopy(tower_mallow_self)
             else:
                 self.eventscripts[1331] = copy.deepcopy(tower_mallow)
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno):
             self.prepend_bits(189, [[0x7053, 7]])
+            if not self.is_starting_character(data.items.GenoRecruit):
+                self.prepend_notice(189, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 3:
                 self.eventscripts[1331] = copy.deepcopy(tower_geno_self)
             else:
                 self.eventscripts[1331] = copy.deepcopy(tower_geno)
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser):
             self.prepend_bits(190, [[0x7053, 7]])
+            if not self.is_starting_character(data.items.BowserRecruit):
+                self.prepend_notice(190, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 2:
                 self.eventscripts[1331] = copy.deepcopy(tower_bowser_self)
             else:
                 self.eventscripts[1331] = copy.deepcopy(tower_bowser)
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool):
             self.prepend_bits(191, [[0x7053, 7]])
+            if not self.is_starting_character(data.items.ToadstoolRecruit):
+                self.prepend_notice(191, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 1:
                 self.eventscripts[1331] = copy.deepcopy(tower_toadstool_self)
             else:
@@ -729,22 +797,34 @@ class GameWorld:
             self.prepend_bits(192, [[0x704C, 7]])
         elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.hill):
             self.prepend_bits(204, [[0x704C, 7]])
+            self.prepend_notice(204, 2260)
         elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             self.prepend_bits(205, [[0x704C, 7]])
+            self.prepend_notice(205, 2260)
         
         # Sea gating
         if self.settings.is_flag_value(flags.SeaGate, SeaGating.open):
             self.prepend_bits(192, [[0x7067, 4], [0x706F, 3], [0x7067, 5], [0x706F, 4]])
         elif self.settings.is_flag_value(flags.SeaGate, SeaGating.mario):
             self.prepend_bits(187, [[0x7067, 4], [0x706F, 3]])
+            if not self.is_starting_character(data.items.MarioRecruit):
+                self.prepend_notice(187, 2261)
         elif self.settings.is_flag_value(flags.SeaGate, SeaGating.mallow):
             self.prepend_bits(198, [[0x7067, 4], [0x706F, 3]])
+            if not self.is_starting_character(data.items.MallowRecruit):
+                self.prepend_notice(198, 2261)
         elif self.settings.is_flag_value(flags.SeaGate, SeaGating.geno):
             self.prepend_bits(189, [[0x7067, 4], [0x706F, 3]])
+            if not self.is_starting_character(data.items.GenoRecruit):
+                self.prepend_notice(189, 2261)
         elif self.settings.is_flag_value(flags.SeaGate, SeaGating.bowser):
             self.prepend_bits(190, [[0x7067, 4], [0x706F, 3]])
+            if not self.is_starting_character(data.items.BowserRecruit):
+                self.prepend_notice(190, 2261)
         elif self.settings.is_flag_value(flags.SeaGate, SeaGating.toadstool):
             self.prepend_bits(191, [[0x7067, 4], [0x706F, 3]])
+            if not self.is_starting_character(data.items.ToadstoolRecruit):
+                self.prepend_notice(191, 2261)
         else:
             if self.settings.is_flag_value(flags.SeaGate, SeaGating.star1):
                 value = 1
@@ -770,12 +850,14 @@ class GameWorld:
             self.prepend_bits(192, [[0x7057, 1]])
         elif self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.ship):
             self.prepend_bits(210, [[0x7057, 1]])
+            #self.prepend_notice(210, 2262)
 
         # Belome Temple gating
         if self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.open):
             self.prepend_bits(192, [[0x7052, 2]])
         elif self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.seaside):
             self.eventscripts[192].insert(0, utils.new_command(192, 'remove_from_level', [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]))
+            self.eventscripts[1147].insert(len(self.eventscripts[1147])-2, utils.new_command(1147, 'run_dialog', [2263, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]))
                         
 
         # Monstro Town gating
@@ -867,6 +949,10 @@ class GameWorld:
         elif self.settings.is_flag_value(flags.WinCondition,WinConditions.sealed):
             self.prepend_bits(192, [[0x7051, 7]])
 
+        # Marrymore item shuffle
+        if self.settings.is_flag_enabled(flags.ShuffleWeddingGear):
+            self.prepend_bits(192, [[0x7086, 2]])
+
         # Fireworks
         if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.vanilla):
             pass
@@ -948,6 +1034,16 @@ class GameWorld:
             self.prepend_bits(192, [[0x7060, 2]])
         if self.settings.is_flag_enabled(flags.SkipMustyFearsSequence):
             self.eventscripts[192].insert(0, {"identifier": "EVENT_192_summon_invisible_flags", "command": 'run_event_as_subroutine', "args": [91]})
+
+        if self.settings.is_flag_enabled(flags.BetterTips):
+            # Boshi odds - always 10:1
+            self.eventscripts[1970] = [
+                utils.new_command(1970, 'set_random', [0x7000, 5]),
+                utils.new_command(1970, 'add', [0x7000, 38]),
+                utils.new_command(1970, 'ret'),
+            ]
+            # Mushroom Boy: double odds
+            self.eventscripts[1972][0]["args"][1] = 5000
             
         # perform non-npc sprite replacement for overworld character
         if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id > 0:
@@ -1315,6 +1411,11 @@ class GameWorld:
                 ptr = name_index & 0xFFFF
                 patch.add_data(0x2D3A7 + i * 2, [ptr & 0xFF, ptr >> 8])
                 name_index += len(c) + 1
+
+        # Japanese ABXY 
+        if self.settings.is_flag_enabled(flags.JapaneseABXY):
+            patch.add_data(0x255258, bytearray([0x0C, 0x00, 0x36, 0x16, 0x3A, 0x27, 0x48, 0x26, 0xE3, 0x11, 0x07, 0x49, 0x63, 0x44, 0x00, 0x20, 0x3F, 0x29, 0xDB, 0x1C, 0xA6, 0x04, 0xC1, 0x08,]))
+            patch.add_data(0x255C6C, bytearray([0x0C, 0x00, 0x52, 0x4A, 0x29, 0x25, 0x48, 0x26, 0xE3, 0x11, 0x07, 0x49, 0x63, 0x44, 0x00, 0x20, 0x3F, 0x29, 0xDB, 0x1C, 0xD1, 0x00, 0xC1, 0x08,]))
 
         # Possible names we can use for the hash values on the file select screen.  Needs to be 6 characters or less.
         file_entry_names = {

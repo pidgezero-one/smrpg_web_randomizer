@@ -6,6 +6,13 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_263_enter_area_280',
+        "command": 'enter_area',
+        "args": [496, RadialDirections.NORTHWEST, 4, 48, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+
+    ###
+    {
         "identifier": 'EVENT_263_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
         "args": [0x7049, 5, 'EVENT_256_ret_0']

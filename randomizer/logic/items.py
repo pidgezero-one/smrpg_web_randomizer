@@ -532,6 +532,10 @@ def randomize_all(world):
         world.eventscripts[2649] = [utils.new_command(2649, "jmp_to_event", [57])]
         world.eventscripts[622] = [utils.new_command(622, "jmp_to_event", [51])]
         world.eventscripts[626] = [utils.new_command(626, "jmp_to_event", [51])]
+        world.eventscripts[1973] = [utils.new_command(1973, "jmp_to_event", [42])]
+
+        #if world.max_chest_quality != 1: # don't let mushroom boy give rock candies if rock candies are disabled
+        #    world.eventscripts[1971] = [utils.new_command(1971, "jmp_to_event", [54])]
 
 
 

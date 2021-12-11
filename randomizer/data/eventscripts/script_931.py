@@ -68,8 +68,8 @@ script = [
     },
     {
         "identifier": 'EVENT_931_set_random_10',
-        "command": 'set_random',
-        "args": [0x7000, 43]
+        "command": 'run_event_as_subroutine',
+        "args": [1970]
     },
     {
         "identifier": 'EVENT_931_mem_compare_val_11',

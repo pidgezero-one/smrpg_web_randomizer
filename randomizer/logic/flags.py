@@ -425,6 +425,14 @@ class BiasItemShuffle(BooleanFlag):
     id = "bias"
 
 
+class NoStarEgg(BooleanFlag):
+    name = 'No Star Egg'
+    description = '''If enabled, you will not find the Star Egg via any chests, overworld items, or NPC rewards.'''
+    modes = ['open']
+    
+    id = "noegg"
+
+
 class RestrictSpecialEquips(BooleanFlag):
     name = 'Shuffle "Special Item" exchange equips & Monstro Town reward equips'
     description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will be shuffled within each other's original locations. This option ignores your chosen Item Quality setting.
@@ -444,17 +452,6 @@ class RestrictSpecialEquipsExclusive(BooleanFlag):
     modes = ['open']
     
     id = "hard"
-
-
-class BetterTips(BooleanFlag):
-    name = 'Better Consolation Prizes'
-    description = '''If enabled, some repeatable item grants will give a better, or wider, variety of items. Example of this include Knife Guy's juggling game junk prizes, or tips from working in the Marrymore hotel. This setting has no impact on singular, clearable item checks.
-<br/>
-<br/>Additionally, Forest Maze mushrooms may be ANY kind of mushroom, regardless of your max item quality settings.
-    '''
-    modes = ['open']
-    
-    id = "tips"
 
 
 class EXPStarsAnywhere(BooleanFlag):
@@ -505,9 +502,19 @@ class ShuffleMagikoopaChest(BooleanFlag):
     id = "kamek"
 
 
+class ShuffleWeddingGear(BooleanFlag):
+    name = 'Shuffle Marrymore wedding gear'
+    description = '''If enabled, the four pieces of wedding gear required to initiate the Marrymore boss fight will be located randomly within the world (not necessarily key item locations). Interacting with the four NPCs in the chapel will become item checks.
+<br>
+<br>If disabled, the Marrymore chapel minigame will behave as normal.'''
+    modes = ['open']
+    
+    id = "marry"
+
+
 class AnnoyingChests(BooleanFlag):
     name = 'Empty chests should perform the "You Missed" animation'
-    description = '''If disabled, chests will simply appear as pre-opened.'''
+    description = '''If disabled, empty chests will simply appear as pre-opened.'''
     modes = ['open']
     
     id = "ym"
@@ -1033,6 +1040,23 @@ class SkipMinecart(BooleanFlag):
     
     id = "skipcart"
 
+
+class BetterTips(BooleanFlag):
+    name = 'Better Event RNG'
+    description = '''If enabled, the following changes will take effect:
+<br/>
+<br/>Some repeatable item grants will give a better, or wider, variety of items. Example of this include Knife Guy's juggling game junk prizes, or tips from working in the Marrymore hotel. This setting has no impact on singular, clearable item checks.
+<br/>
+<br/>Your odds on Mushroom Boy's prizes and the Mushroom Derby cookie bet races will be improved.
+<br/>
+<br/>The cloud miniboss in Land's End will have an increased spawn rate. 
+<br/>
+<br/>Forest Maze mushrooms may be ANY kind of mushroom, regardless of your max item quality settings.
+    '''
+    modes = ['open']
+    
+    id = "rng"
+
 # ******** Shops
 
 
@@ -1067,6 +1091,14 @@ class BiasShopShuffle(BooleanFlag):
     
     id = "bias"
     requires_all = [(ShuffleShops(), True), (ShopQuality(), [o for o in ShopQualities if o != ShopQualities.original])]
+
+
+class NoPickMeUps(BooleanFlag):
+    name = 'Exclude Pick Me Ups'
+    description = '''If enabled, Pick Me Ups will not be sold in any shops.'''
+    modes = ['open']
+    
+    id = "nolife"
 
 
 class ShowEquips(BooleanFlag):
@@ -1116,7 +1148,15 @@ class BossReplaceMinigameSprites(BooleanFlag):
 
 class DifferentiateRepeatedBosses(BooleanFlag):
     name = "Differentiate similar bosses"
-    description = '''If enabled: Croco, Jinx, and Belome's different iterations will look slightly different in the overworld (battle sprites remain unchanged). Croco 2 will have a darker hat, Jinx 2/3's hair will be black/white respectively, Belome 2's large sprite will be the golden Belome statue, and Belome 2's smaller sprite will be a black-robed scarecrow.'''
+    description = '''If enabled, Croco, Jinx, Belome, and the four mimics' different iterations will look slightly different in the overworld (battle sprites remain unchanged). 
+<br>
+<br>Croco 2 will have a darker hat.
+<br>
+<br>Jinx 2/3's hair will be black/white respectively.
+<br>
+<br>Belome 2 will be more subdued, and coloured like the golden Belome statue.
+<br>
+<br>Pandorite will be tinted orange, Hidon will be tinted green, and Chester will be tinted purple.'''
     
     id = "diff"
 
@@ -1236,18 +1276,18 @@ class NoOHKO(BooleanFlag):
 class PaletteSwaps(BooleanFlag):
     name = 'Palette Swaps'
     description = 'Your party members get a change of wardrobe!'
-    inverse_description = '(Sprite colours are not modified.)'
-    value = '-palette'
     id = "palette"
 
 
 class ChangeNames(BooleanFlag):  # not available unless PaletteSwaps enabled
     name = 'Change character names'
     description = '''Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette.'''
-    inverse_description = '(Sprite colours are not modified.)'
     id = "names"
-    requires_all = [(PaletteSwaps(), True)]
 
+class JapaneseABXY(BooleanFlag):
+    name = 'Japanese ABXY buttons'
+    description = 'If this flag is enabled, ABXY buttons will have the Super Famicom colours from the Japanese version of the game.'
+    id = "abxy"
 
 
 class BossShuffleMusic(BooleanFlag):
@@ -1353,14 +1393,15 @@ class ItemShuffleSubcategory(FlagCategory):
         BiasItemShuffle,
         RestrictSpecialEquips,
         RestrictSpecialEquipsExclusive,
+        NoStarEgg,
         EXPStarsAnywhere,
         MimicsAnywhere,
         SlotsAnywhere,
         ShuffleBeetlemania,
         ShuffleMagikoopaChest,
+        ShuffleWeddingGear,
         AnnoyingChests,
         FireworksSetting,
-        BetterTips,
     ]
     id = "T"
 
@@ -1449,7 +1490,8 @@ class PuzzleCategory(FlagCategory):
         RandomTadpolePondSong,
         RandomSunkenShipPassword,
         BowserDoorShuffle,
-        SkipMinecart
+        SkipMinecart,
+        BetterTips,
     ]
     size = 3
     id = "G"
@@ -1459,6 +1501,7 @@ class ShopsCategory(FlagCategory):
     flags = [
         ShuffleShops,
         ShopQuality,
+        NoPickMeUps,
         BiasShopShuffle,
         ShowEquips,
         FreeShops
@@ -1547,6 +1590,7 @@ class PaletteSubcategory(FlagCategory):
     flags = [
         PaletteSwaps,
         ChangeNames,
+        JapaneseABXY
     ]
     size = 4
     id = "R"

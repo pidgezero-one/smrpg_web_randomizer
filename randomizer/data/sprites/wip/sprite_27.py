@@ -3,12 +3,12 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(27, length=313, unknown=0x0000,
+    animation=AnimationPack(268, length=290, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=True,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=15, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
                             bytearray(b'\x00\x00\x08\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x03\x02\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x04\x03\x05\x02'),
                             bytearray(b'\x81\x01\x00\x07\x01\x0f\x00?@\xff\xa9\xff\xc1\xff\xed\xed\x01\x02\x07\x00\x0f\x10?@\xbf\xacSV\t<\x11\xe2'),
                             bytearray(b'\x00\x00\x80\x80\x90\x80\x90\x80\xb0\x80\x90\x80\x80\x80\x10\x00\x00\x80\x80`\x80p\x80p\x80p\x80p\x80`\x00\xf0'),
@@ -21,12 +21,12 @@ sprite = CompleteSprite(
                             bytearray(b'8\x18\x1d\x1c\x1c\x1c\x0e\x0c\x06\x00\x00\x00\x00\x00\x00\x00?\x1e?>\x1f\x1f\x0e\x0c\x06\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\x90\x00\xb8\x18<\x1c><\x7f=?=\x7f\x7f\x1e\x1e\xbe(\xbe\x1c>\x1c~|\x7f=?=\x7f\x7f\x1e\x1e'),
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\xe0\xe0\xf8\xf8\xe0\xe0\x00\x00\x00 \x00\x00\x00\x00\x00\x00\xe0\xe0\xf8\xf8\xe0\xe0\x00\x00'),
-                        ], is_16bit=True, y_plus=0, y_minus=0, x=0, y=0),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
                     ]
                 ),
                 Mold(1, gridplane=True,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=15, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
                             None,
                             None,
                             None,
@@ -39,7 +39,7 @@ sprite = CompleteSprite(
                             bytearray(b'0 pp\xff\xf7\x8b\x8b\xbb\xbbK[==\x00\x00\xff\xe8\x8f\x9e\x88\xf7\xfc\xff\xc7\x83gC==\x00\x00'),
                             bytearray(b'\xd4\x10\x06C\x9a\x82\x01\x00\xc3\xfb\x87\xdf\xcc\xdc\x1c\x1c(\xc7\xfdI}`\xff\xf8\x84\x80\xa3\xa3\xe4\xe4\x1c\x1c'),
                             bytearray(b'|<\xc0@\xc0@\x80\x80\x80\x80\x00\x00\x00\x00\x00\x00<\xfc@\xc0@\xc0\x80\x80\x80\x80\x00\x00\x00\x00\x00\x00'),
-                        ], is_16bit=True, y_plus=0, y_minus=0, x=0, y=0),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
                     ]
                 ),
                 Mold(2, gridplane=True,
@@ -285,18 +285,6 @@ sprite = CompleteSprite(
                 AnimationSequence(
                     frames=[
                         AnimationSequenceFrame(duration=2, mold_id=4),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=8),
-                        AnimationSequenceFrame(duration=8, mold_id=7),
-                        AnimationSequenceFrame(duration=8, mold_id=6),
-                        AnimationSequenceFrame(duration=8, mold_id=5),
-                        AnimationSequenceFrame(duration=8, mold_id=11),
-                        AnimationSequenceFrame(duration=8, mold_id=2),
-                        AnimationSequenceFrame(duration=8, mold_id=10),
-                        AnimationSequenceFrame(duration=8, mold_id=9),
                     ]
                 ),
             ]

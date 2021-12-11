@@ -4,4 +4,981 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_3950_enter_area_222',
+        "command": 'enter_area',
+        "args": [Rooms._088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION, RadialDirections.SOUTHWEST, 4, 51, 0, []]
+    },
+    {
+        "identifier": 'EVENT_3950_freeze_camera_223',
+        "command": 'freeze_camera'
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_224',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_224_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [3, 50, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_224_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [248, 0, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_224_SUBSCRIPT_face_southeast_2',
+                "command": 'face_southeast'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_225',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_225_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [6, 57, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_225_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [240, 0, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_225_SUBSCRIPT_set_sprite_sequence_2',
+                "command": 'set_sprite_sequence',
+                "args": [23, 1, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_225_SUBSCRIPT_pause_3',
+                "command": 'pause',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_225_SUBSCRIPT_reset_properties_4',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_225_SUBSCRIPT_face_northwest_5',
+                "command": 'face_northwest'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_226',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_226_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [3, 56, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_226_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [240, 0, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_226_SUBSCRIPT_face_northeast_2',
+                "command": 'face_northeast'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_227',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_227_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [4, 53, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_227_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [242, 252, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_227_SUBSCRIPT_set_sprite_sequence_2',
+                "command": 'set_sprite_sequence',
+                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_async_228',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_async_228_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [6, 50, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_228_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [240, 254, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_fade_in_from_colour_duration_229',
+        "command": 'fade_in_from_colour_duration',
+        "args": [40, Colours.WHITE]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_script_until_effect_done_230',
+        "command": 'pause_script_until_effect_done'
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_async_231',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_async_231_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_231_SUBSCRIPT_set_animation_speed_1',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_231_SUBSCRIPT_walk_1_step_southwest_2',
+                "command": 'walk_1_step_southwest'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_231_SUBSCRIPT_shift_southwest_pixels_3',
+                "command": 'shift_southwest_pixels',
+                "args": [12]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_231_SUBSCRIPT_set_sprite_sequence_4',
+                "command": 'set_sprite_sequence',
+                "args": [12, 6, [_0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_232',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_233',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_233_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_233_SUBSCRIPT_set_animation_speed_1',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_233_SUBSCRIPT_walk_1_step_northwest_2',
+                "command": 'walk_1_step_northwest'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_233_SUBSCRIPT_set_animation_speed_3',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_233_SUBSCRIPT_walk_1_step_northwest_4',
+                "command": 'walk_1_step_northwest'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_233_SUBSCRIPT_shift_northwest_pixels_5',
+                "command": 'shift_northwest_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_233_SUBSCRIPT_set_sprite_sequence_6',
+                "command": 'set_sprite_sequence',
+                "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_234',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_234_SUBSCRIPT_pause_0',
+                "command": 'pause',
+                "args": [16]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_234_SUBSCRIPT_set_animation_speed_1',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_234_SUBSCRIPT_set_animation_speed_2',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_234_SUBSCRIPT_walk_1_step_southeast_3',
+                "command": 'walk_1_step_southeast'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_234_SUBSCRIPT_shift_southeast_pixels_4',
+                "command": 'shift_southeast_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_234_SUBSCRIPT_set_sprite_sequence_5',
+                "command": 'set_sprite_sequence',
+                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_235',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_235_SUBSCRIPT_pause_0',
+                "command": 'pause',
+                "args": [16]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_235_SUBSCRIPT_set_animation_speed_1',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_235_SUBSCRIPT_set_animation_speed_2',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_235_SUBSCRIPT_walk_1_step_northeast_3',
+                "command": 'walk_1_step_northeast'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_235_SUBSCRIPT_shift_northeast_pixels_4',
+                "command": 'shift_northeast_pixels',
+                "args": [6]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_235_SUBSCRIPT_set_sprite_sequence_5',
+                "command": 'set_sprite_sequence',
+                "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_remember_last_object_236',
+        "command": 'remember_last_object'
+    },
+    {
+        "identifier": 'EVENT_3950_pause_237',
+        "command": 'pause',
+        "args": [120]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_238',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_6],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_visibility_off_0',
+                "command": 'visibility_off'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_transfer_to_xyzf_1',
+                "command": 'transfer_to_xyzf',
+                "args": [4, 56, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_transfer_xyzf_pixels_2',
+                "command": 'transfer_xyzf_pixels',
+                "args": [2, 220, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_set_vram_priority_3',
+                "command": 'set_vram_priority',
+                "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_set_sprite_sequence_4',
+                "command": 'set_sprite_sequence',
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_visibility_on_5',
+                "command": 'visibility_on'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_sequence_looping_on_6',
+                "command": 'sequence_looping_on'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_set_animation_speed_7',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_start_loop_n_times_8',
+                "command": 'start_loop_n_times',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_pause_9',
+                "command": 'pause',
+                "args": [60]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_shift_z_up_pixels_10',
+                "command": 'shift_z_up_pixels',
+                "args": [12]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_shift_z_down_pixels_11',
+                "command": 'shift_z_down_pixels',
+                "args": [12]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_end_loop_12',
+                "command": 'end_loop'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_pause_13',
+                "command": 'pause',
+                "args": [60]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_set_sprite_sequence_14',
+                "command": 'set_sprite_sequence',
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_pause_15',
+                "command": 'pause',
+                "args": [56]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_visibility_off_16',
+                "command": 'visibility_off'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_set_priority_17',
+                "command": 'set_priority',
+                "args": [0]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_transfer_xyzf_pixels_18',
+                "command": 'transfer_xyzf_pixels',
+                "args": [0, 216, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_set_sprite_sequence_19',
+                "command": 'set_sprite_sequence',
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_visibility_on_20',
+                "command": 'visibility_on'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_set_priority_21',
+                "command": 'set_priority',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_238_SUBSCRIPT_set_vram_priority_22',
+                "command": 'set_vram_priority',
+                "args": [VramPriority.NORMAL]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_239',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_239_SUBSCRIPT_pause_0',
+                "command": 'pause',
+                "args": [90]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_239_SUBSCRIPT_reset_properties_1',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_239_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [150]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_239_SUBSCRIPT_set_sprite_sequence_3',
+                "command": 'set_sprite_sequence',
+                "args": [9, 2, [_0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_240',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_240_SUBSCRIPT_pause_0',
+                "command": 'pause',
+                "args": [120]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_240_SUBSCRIPT_reset_properties_1',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_240_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [90]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_240_SUBSCRIPT_set_sprite_sequence_3',
+                "command": 'set_sprite_sequence',
+                "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_241',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_241_SUBSCRIPT_pause_0',
+                "command": 'pause',
+                "args": [90]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_241_SUBSCRIPT_reset_properties_1',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_241_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [120]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_241_SUBSCRIPT_set_sprite_sequence_3',
+                "command": 'set_sprite_sequence',
+                "args": [22, 1, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_241_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_241_SUBSCRIPT_set_sprite_sequence_5',
+                "command": 'set_sprite_sequence',
+                "args": [23, 1, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_242',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_242_SUBSCRIPT_pause_0',
+                "command": 'pause',
+                "args": [90]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_242_SUBSCRIPT_reset_properties_1',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_242_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [120]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_242_SUBSCRIPT_set_sprite_sequence_3',
+                "command": 'set_sprite_sequence',
+                "args": [22, 1, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_242_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_242_SUBSCRIPT_set_sprite_sequence_5',
+                "command": 'set_sprite_sequence',
+                "args": [23, 1, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_remember_last_object_243',
+        "command": 'remember_last_object'
+    },
+    {
+        "identifier": 'EVENT_3950_set_action_script_sync_244',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 120]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_245',
+        "command": 'pause',
+        "args": [90]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_action_script_246',
+        "command": 'pause_action_script',
+        "args": [AreaObjects.NPC_6]
+    },
+    {
+        "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_247',
+        "command": 'start_embedded_action_script_async_F1',
+        "args": [AreaObjects.NPC_6],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_247_SUBSCRIPT_set_vram_priority_0',
+                "command": 'set_vram_priority',
+                "args": [VramPriority.OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_247_SUBSCRIPT_bpl_26_27_28_1',
+                "command": 'bpl_26_27_28'
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_247_SUBSCRIPT_db_2',
+                "command": 'db',
+                "args": [0x20, 0x07]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_247_SUBSCRIPT_db_3',
+                "command": 'db',
+                "args": [0x25, 0x00, 0x07, 0x80, 0xff]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_247_SUBSCRIPT_db_4',
+                "command": 'db',
+                "args": [0x24, 0x98, 0xff, 0xc8, 0xff]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_247_SUBSCRIPT_pause_5',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_247_SUBSCRIPT_bpl_26_27_28_6',
+                "command": 'bpl_26_27_28'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_set_action_script_sync_248',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 120]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_249',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_249_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [18, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_250',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_250_SUBSCRIPT_reset_properties_0',
+                "command": 'reset_properties'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_251',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_251_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [9, 1, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_async_252',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_async_252_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [8, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_253',
+        "command": 'pause',
+        "args": [60]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_action_script_254',
+        "command": 'pause_action_script',
+        "args": [AreaObjects.NPC_6]
+    },
+    {
+        "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_255',
+        "command": 'start_embedded_action_script_async_F1',
+        "args": [AreaObjects.NPC_6],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_255_SUBSCRIPT_bpl_26_27_28_0',
+                "command": 'bpl_26_27_28'
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_255_SUBSCRIPT_db_1',
+                "command": 'db',
+                "args": [0x20, 0x07]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_255_SUBSCRIPT_db_2',
+                "command": 'db',
+                "args": [0x25, 0x80, 0x06, 0xa0, 0xff]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_255_SUBSCRIPT_db_3',
+                "command": 'db',
+                "args": [0x24, 0x90, 0xff, 0x00, 0x01]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_255_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [30]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_set_action_script_sync_256',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 120]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_257',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_257_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [19, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_258',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_258_SUBSCRIPT_reset_properties_0',
+                "command": 'reset_properties'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_async_259',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_async_259_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [2, 2, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_260',
+        "command": 'pause',
+        "args": [60]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_action_script_261',
+        "command": 'pause_action_script',
+        "args": [AreaObjects.NPC_6]
+    },
+    {
+        "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_262',
+        "command": 'start_embedded_action_script_async_F1',
+        "args": [AreaObjects.NPC_6],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_262_SUBSCRIPT_bpl_26_27_28_0',
+                "command": 'bpl_26_27_28'
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_262_SUBSCRIPT_db_1',
+                "command": 'db',
+                "args": [0x20, 0x07]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_262_SUBSCRIPT_db_2',
+                "command": 'db',
+                "args": [0x25, 0xc0, 0x06, 0x88, 0xff]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_262_SUBSCRIPT_db_3',
+                "command": 'db',
+                "args": [0x24, 0x78, 0x01, 0x00, 0x00]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_262_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [28]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_set_action_script_sync_263',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 120]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_264',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_264_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [9, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_async_265',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_async_265_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [5, 2, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_265_SUBSCRIPT_jump_to_height_silent_1',
+                "command": 'jump_to_height_silent',
+                "args": [48]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_265_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_265_SUBSCRIPT_db_3',
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.NPC_0, 'EVENT_3950_action_queue_async_265_SUBSCRIPT_pause_2']
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_265_SUBSCRIPT_set_sprite_sequence_4',
+                "command": 'set_sprite_sequence',
+                "args": [2, 2, [_0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_266',
+        "command": 'pause',
+        "args": [60]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_action_script_267',
+        "command": 'pause_action_script',
+        "args": [AreaObjects.NPC_6]
+    },
+    {
+        "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_268',
+        "command": 'start_embedded_action_script_async_F1',
+        "args": [AreaObjects.NPC_6],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_268_SUBSCRIPT_bpl_26_27_28_0',
+                "command": 'bpl_26_27_28'
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_268_SUBSCRIPT_db_1',
+                "command": 'db',
+                "args": [0x20, 0x07]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_268_SUBSCRIPT_db_2',
+                "command": 'db',
+                "args": [0x25, 0x80, 0x06, 0x90, 0xff]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_268_SUBSCRIPT_db_3',
+                "command": 'db',
+                "args": [0x24, 0x20, 0x00, 0x30, 0xff]
+            },
+            {
+                "identifier": 'EVENT_3950_start_embedded_action_script_async_F1_268_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [30]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_set_action_script_sync_269',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 120]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_async_270',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_async_270_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [9, 2, [_0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_271',
+        "command": 'pause',
+        "args": [60]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_async_272',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_5],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_async_272_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [4, 52, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_272_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [242, 252, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_set_action_script_sync_273',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_5, 228]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_274',
+        "command": 'pause',
+        "args": [2]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_action_script_275',
+        "command": 'pause_action_script',
+        "args": [AreaObjects.NPC_6]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_async_276',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_6],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_async_276_SUBSCRIPT_bpl_26_27_28_0',
+                "command": 'bpl_26_27_28'
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_async_276_SUBSCRIPT_set_object_memory_bits_1',
+                "command": 'set_object_memory_bits',
+                "args": [0x0e, [0]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_277',
+        "command": 'pause',
+        "args": [230]
+    },
+    {
+        "identifier": 'EVENT_3950_action_queue_sync_278',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.SCREEN_FOCUS],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_278_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_SLOW, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_278_SUBSCRIPT_shift_north_steps_1',
+                "command": 'shift_north_steps',
+                "args": [3]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_278_SUBSCRIPT_shift_north_pixels_2',
+                "command": 'shift_north_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_278_SUBSCRIPT_pause_3',
+                "command": 'pause',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_278_SUBSCRIPT_set_animation_speed_4',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3950_action_queue_sync_278_SUBSCRIPT_shift_north_steps_5',
+                "command": 'shift_north_steps',
+                "args": [6]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3950_pause_279',
+        "command": 'pause',
+        "args": [240]
+    },
+    {
+        "identifier": 'EVENT_3950_',
+        "command": 'jmp_to_event',
+        "args": [3951]
+    },
+]

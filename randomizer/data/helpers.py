@@ -196,6 +196,10 @@ class ShuffleLocationSelector(FlagOptions):
     MarrymorePrize5 = "Marrymore Suite total stays prize 5"
     MarrymorePrize6 = "Marrymore Suite total stays prize 6"
     MarrymoreInn = "Marrymore Inn regular room chest"
+    MarrymoreSnifit1 = "Marrymore Snifit 1 chapel item"
+    MarrymoreSnifit2 = "Marrymore Snifit 2 chapel item"
+    MarrymoreSnifit3 = "Marrymore Snifit 3 chapel item"
+    MarrymoreAltar = "Marrymore altar chapel item"
     MarrymoreStarPiece = "Marrymore boss Star Piece"
     MarrymoreCharacter = "Marrymore character join"
     StarHillStarPiece1 = "Star Hill freestanding Star Piece"
@@ -540,6 +544,9 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.MarrymorePrize4,
     ShuffleLocationSelector.MarrymorePrize5,
     ShuffleLocationSelector.MarrymorePrize6,
+    ShuffleLocationSelector.MarrymoreSnifit1,
+    ShuffleLocationSelector.MarrymoreSnifit2,
+    ShuffleLocationSelector.MarrymoreSnifit3,
 
     ShuffleLocationSelector.FrogDisciple1,
     ShuffleLocationSelector.FrogDisciple2,
@@ -728,6 +735,8 @@ freestanding_checks = [
     ShuffleLocationSelector.BoosterTowerFrogCoin2,
     ShuffleLocationSelector.BoosterTowerFrogCoin3,
     ShuffleLocationSelector.BoosterTowerFrogCoin4,
+
+    ShuffleLocationSelector.MarrymoreAltar,
     
     ShuffleLocationSelector.SunkenShipRatStairsFlower,
     ShuffleLocationSelector.SunkenShipTroopaPuzzle,

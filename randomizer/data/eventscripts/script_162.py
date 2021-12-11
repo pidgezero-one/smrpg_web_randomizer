@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_162_',
         "command": 'create_packet_at_7010_coords_jmp_if_null',
-        "args": [5, 'EVENT_162_ret_259']
+        "args": [193, 'EVENT_162_ret_259']
     },
     {
         "identifier": 'EVENT_162_play_sound_24',

@@ -111,7 +111,7 @@ room = {
       "cant_float": False,
       "cant_walk_up_stairs": False,
       "cant_walk_under": False,
-      "cant_pass_walls": True,
+      "cant_pass_walls": False,
       "cant_jump_through": False,
       "cant_pass_npcs": False,
       "byte3_bit5": False,

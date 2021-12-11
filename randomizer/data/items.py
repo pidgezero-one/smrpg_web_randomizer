@@ -55,7 +55,7 @@ overworld_items = {
     "bomb": OverworldItem(37, 15, static_packet=112, falling_packet=113, treasure_packet=114, chest_event=891),
     "egg": OverworldItem(641, 15, static_packet=115, falling_packet=116, treasure_packet=117, chest_event=892),
     "nothing": OverworldItem(255, 164),
-    "default": OverworldItem(111, 773),
+    "default": OverworldItem(111, 773, static_packet=90),
     "cookie": OverworldItem(652, 15, static_packet=118, falling_packet=119, treasure_packet=120, chest_event=893),
     "chomp": OverworldItem(30, 831), # might be too big
     "berry": OverworldItem(144, 15, static_packet=121, falling_packet=122, treasure_packet=123, chest_event=894),
@@ -2950,6 +2950,7 @@ class BrightCard(RegularItem):
     order = 133
     item_type = 3
     unique = ItemUnique.Always
+    is_key = True
     tier = 1
     dialog_replacements = [
         (2911,
@@ -2959,12 +2960,6 @@ class BrightCard(RegularItem):
         (2914,
          ''' Item #3: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
-    def __init__(self, world):
-        super().__init__(world)
-        if world.settings.is_flag_value(flags.CasinoWarp, False):
-            self.price = 1554
-        else:
-            self.is_key = True
 
 
 
@@ -3081,7 +3076,6 @@ class MimicFight(MiscReward):
 
 class PandoriteFight(MimicFight):
     index = 211
-    description = 'Pandorite fight'
     unique = ItemUnique.Always
     tier = 1
     chest_event = 3124
@@ -3090,7 +3084,6 @@ class PandoriteFight(MimicFight):
 
 class HidonFight(MimicFight):
     index = 212
-    description = 'hidon fight'
     unique = ItemUnique.Always
     tier = 1
     chest_event = 3126
@@ -3099,7 +3092,6 @@ class HidonFight(MimicFight):
 
 class BoxBoyFight(MimicFight):
     index = 213
-    description = 'box boy fight'
     unique = ItemUnique.Always
     tier = 1
     chest_event = 2493
@@ -3182,7 +3174,6 @@ class Coins1(Coins):
 
 class Beetlemania(MiscReward):
     index = 164
-    description = 'Beetlemania'
     unique = ItemUnique.Always
     model = overworld_items["beetle"]
     tier = 1
@@ -3206,7 +3197,6 @@ class Beetlemania(MiscReward):
 
 class SlotMachineChest(MiscReward):
     index = 214
-    description = 'Slots'
     tier = 2
     unique = ItemUnique.BalancedOnly
     item_type = 3
@@ -3214,7 +3204,6 @@ class SlotMachineChest(MiscReward):
 
 class InfiniteCoins(MiscReward):
     index = 216
-    description = 'Infinite coins'
     unique = ItemUnique.Always
     chest_event = 3074
     tier = 2
@@ -3226,7 +3215,6 @@ class InfiniteCoins(MiscReward):
 class StarPiece(MiscReward):
     hint_bit = None
     index = 230
-    description = 'Star Hunt star piece'
     tier = 4
     unique = ItemUnique.Always
     chest_event = 163
@@ -3423,7 +3411,7 @@ class LandsEndStar3(InvincibilityStar):
 class RecruitedCharacter(Item):
     starter_script = None
     container_script = None
-    model = 0
+    models = [None, None, None, None]
     sprites_primary = {}
     sprites_secondary = {}
     item_type = 3
@@ -3443,7 +3431,7 @@ class MarioRecruit(RecruitedCharacter):
     placeholder = "`MARIO_NAME`"
     starter_script = 187
     container_script = 193
-    model = 0
+    models = [0, 706, 704, 705]
     doll = 91
     sprites_primary = {
         "south": (0, 12, True),
@@ -3453,19 +3441,40 @@ class MarioRecruit(RecruitedCharacter):
         "shocked_loop": (3, 8, False),
         "shocked_loop_backwards": (3, 9, False),
         "shocked_backwards_sequence": (2, 3, False),
+        "shocked_shadow": (3, 0, False),
+        "shocked_shadow_backwards": (2, 8, True),
         "crying": (3, 3, False),
         "crying_backwards": (3, 4, False),
         "looking_down_static": (0, 6, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (3, 1, True),
         "hurt": (0, 6, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (2, 6, False),
-        "salute": (1, 9, False),
+        "salute": (2, 9, False),
+        "joy": (2, 9, False),
+        "joy_behind": (3, 2, False),
+        "joy_jump": (3, 2, False),
         "distracted": (0, 10, True),
         "displeased": (3, 4, False),
-        "challenge": (4, 2, False)
+        "challenge": (4, 2, False),
+        "look_to_side": (0, 8, True),
+        "look_to_down": (0, 9, True),
+        "look_to_side_behind": (0, 11, True),
+        "cast_frame_1": (2, 12, True),
+        "cast_frame_2": (2, 13, True),
+        "cast_frame_3": (2, 14, True),
+        "cast_frame_4": (2, 15, True),
+        "look_up_slightly": (2, 23, True),
+        "look_way_up": (2, 24, True),
+        "victory_pose": (2, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 9, True),
+        "prince_left": (0, 8, True),
+        "hammer": (2, 3, True),
+        "hammer_static": (2, 3, True),
     }
     sprites_secondary = {
         "south": (0, 20, True),
@@ -3474,20 +3483,41 @@ class MarioRecruit(RecruitedCharacter):
         "face_south": (0, 0, False),
         "shocked_loop": (2, 8, False),
         "shocked_loop_backwards": (2, 9, False),
-        "shocked_backwards_sequence": (1, 3, False),
+        "shocked_backwards_sequence": (1, 9, False),
+        "shocked_shadow": (2, 0, False),
+        "shocked_shadow_backwards": (1, 8, True),
         "crying": (0, 4, False),
         "crying_backwards": (0, 5, False),
         "looking_down_static": (0, 14, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (2, 1, True),
         "hurt": (0, 14, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (1, 6, False),
-        "salute": (2, 9, False),
-        "distracted": (0, 10, True),
-        "displeased": (3, 4, False),
-        "challenge": (3, 2, False)
+        "salute": (1, 9, False),
+        "joy": (1, 9, False),
+        "joy_behind": (2, 2, False),
+        "joy_jump": (2, 2, False),
+        "distracted": (0, 18, True),
+        "displeased": (0, 5, False),
+        "challenge": (3, 2, False),
+        "look_to_side": (0, 16, True),
+        "look_to_down": (0, 17, True),
+        "look_to_side_behind": (0, 19, True),
+        "cast_frame_1": (1, 12, True),
+        "cast_frame_2": (1, 13, True),
+        "cast_frame_3": (1, 14, True),
+        "cast_frame_4": (1, 15, True),
+        "look_up_slightly": (1, 23, True),
+        "look_way_up": (1, 24, True),
+        "victory_pose": (1, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 17, True),
+        "prince_left": (0, 16, True),
+        "hammer": (1, 3, True),
+        "hammer_static": (1, 3, True),
     }
 
 class ToadstoolRecruit(RecruitedCharacter):
@@ -3499,55 +3529,97 @@ class ToadstoolRecruit(RecruitedCharacter):
     honorific = "ma'am"
     title = "miss"
     title_short = "Ms"
-    mole_greeting = "friend"
+    mole_greeting = "mate"
     mboy_greeting = ""
     starter_script = 191
     container_script = 197
     doll = 92
-    model = 1
+    models = [1, 707, 708, 709]
     sprites_primary = {
         "south": (0, 12, True),
-        "defend": (2, 16, True),
+        "defend": (2, 15, True),
         "face_north": (0, 1, False),
         "face_south": (0, 0, False),
         "shocked_loop": (3, 8, False),
         "shocked_loop_backwards": (3, 9, False),
         "shocked_backwards_sequence": (2, 3, False),
+        "shocked_shadow": (3, 0, False),
+        "shocked_shadow_backwards": (2, 8, True),
         "crying": (3, 3, False),
         "crying_backwards": (3, 4, False),
         "looking_down_static": (0, 6, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (3, 1, True),
         "hurt": (0, 6, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (2, 6, False),
-        "salute": (1, 9, False),
+        "salute": (2, 9, False),
+        "joy": (2, 9, False),
+        "joy_jump": (3, 2, False),
+        "joy_behind": (3, 2, False),
         "distracted": (0, 18, True),
         "displeased": (0, 5, False),
-        "challenge": (4, 5, False)
+        "challenge": (4, 5, False),
+        "look_to_side": (0, 8, True),
+        "look_to_down": (0, 9, True),
+        "look_to_side_behind": (0, 11, True),
+        "cast_frame_1": (2, 10, True),
+        "cast_frame_2": (2, 11, True),
+        "cast_frame_3": (2, 12, True),
+        "cast_frame_4": (2, 14, True),
+        "look_up_slightly": (2, 22, True),
+        "look_way_up": (2, 23, True),
+        "victory_pose": (2, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 9, True),
+        "prince_left": (0, 8, True),
+        "hammer": (2, 3, True),
+        "hammer_static": (2, 3, True),
     }
     sprites_secondary = {
         "south": (0, 20, True),
-        "defend": (1, 17, True),
+        "defend": (1, 15, True),
         "face_north": (0, 1, False),
         "face_south": (0, 0, False),
         "shocked_loop": (2, 3, False),
         "shocked_loop_backwards": (2, 4, False),
         "shocked_backwards_sequence": (1, 3, False),
+        "shocked_shadow": (2, 0, False),
+        "shocked_shadow_backwards": (1, 8, True),
         "crying": (0, 13, False),
         "crying_backwards": (0, 14, False),
         "looking_down_static": (0, 14, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (2, 1, True),
         "hurt": (5, 0, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (1, 6, False),
-        "salute": (1, 9, True),
+        "salute": (1, 9, False),
+        "joy": (1, 9, False),
+        "joy_behind": (2, 2, False),
+        "joy_jump": (2, 5, False),
         "distracted": (0, 18, True),
         "displeased": (0, 5, False),
-        "challenge": (3, 5, False)
+        "challenge": (3, 5, False),
+        "look_to_side": (0, 16, True),
+        "look_to_down": (0, 17, True),
+        "look_to_side_behind": (0, 19, True),
+        "cast_frame_1": (1, 10, True),
+        "cast_frame_2": (1, 11, True),
+        "cast_frame_3": (1, 12, True),
+        "cast_frame_4": (1, 14, True),
+        "look_up_slightly": (1, 22, True),
+        "look_way_up": (1, 23, True),
+        "victory_pose": (1, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 17, True),
+        "prince_left": (0, 16, True),
+        "hammer": (1, 3, True),
+        "hammer_static": (1, 3, True),
     }
 
 class MallowRecruit(RecruitedCharacter):
@@ -3557,50 +3629,92 @@ class MallowRecruit(RecruitedCharacter):
     starter_script = 188
     container_script = 194
     doll = 35
-    model = 3
+    models = [710, 712, 3, 711]
     sprites_primary = {
         "south": (0, 12, True),
-        "defend": (2, 16, True),
+        "defend": (2, 15, True),
         "face_north": (0, 1, False),
         "face_south": (0, 0, False),
         "shocked_loop": (3, 8, False),
         "shocked_loop_backwards": (3, 9, False),
         "shocked_backwards_sequence": (2, 3, False),
+        "shocked_shadow": (3, 0, False),
+        "shocked_shadow_backwards": (2, 8, True),
         "crying": (3, 3, False),
         "crying_backwards": (3, 4, False),
         "looking_down_static": (0, 6, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (3, 1, True),
         "hurt": (0, 6, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (2, 6, False),
-        "salute": (1, 9, False),
+        "salute": (2, 9, False),
+        "joy": (2, 9, False),
+        "joy_behind": (3, 2, False),
+        "joy_jump": (3, 2, False),
         "distracted": (0, 10, True),
         "displeased": (3, 4, False),
-        "challenge": (4, 5, False)
+        "challenge": (4, 5, False),
+        "look_to_side": (0, 8, True),
+        "look_to_down": (0, 9, True),
+        "look_to_side_behind": (0, 11, True),
+        "cast_frame_1": (2, 11, True),
+        "cast_frame_2": (2, 12, True),
+        "cast_frame_3": (2, 13, True),
+        "cast_frame_4": (2, 10, True),
+        "look_up_slightly": (2, 22, True),
+        "look_way_up": (2, 23, True),
+        "victory_pose": (2, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 9, True),
+        "prince_left": (0, 8, True),
+        "hammer": (2, 3, True),
+        "hammer_static": (2, 3, True),
     }
     sprites_secondary = {
         "south": (0, 20, True),
-        "defend": (1, 17, True),
+        "defend": (1, 15, True),
         "face_north": (0, 1, False),
         "face_south": (0, 0, False),
         "shocked_loop": (2, 8, False),
         "shocked_loop_backwards": (2, 9, False),
         "shocked_backwards_sequence": (1, 3, False),
+        "shocked_shadow": (2, 0, False),
+        "shocked_shadow_backwards": (1, 8, True),
         "crying": (0, 13, False),
         "crying_backwards": (0, 14, False),
         "looking_down_static": (0, 14, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (2, 1, True),
         "hurt": (0, 14, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (1, 6, False),
         "salute": (2, 17, True),
+        "joy": (1, 9, False),
+        "joy_behind": (2, 2, False),
+        "joy_jump": (2, 2, False),
         "distracted": (0, 18, True),
         "displeased": (0, 5, False),
-        "challenge": (3, 5, False)
+        "challenge": (3, 5, False),
+        "look_to_side": (0, 16, True),
+        "look_to_down": (0, 17, True),
+        "look_to_side_behind": (0, 19, True),
+        "cast_frame_1": (1, 11, True),
+        "cast_frame_2": (1, 12, True),
+        "cast_frame_3": (1, 13, True),
+        "cast_frame_4": (1, 10, True),
+        "look_up_slightly": (1, 22, True),
+        "look_way_up": (1, 23, True),
+        "victory_pose": (1, 10, True),
+        "prince_neutral": (2, 14, False),
+        "prince_down": (2, 15, True),
+        "prince_left": (2, 16, True),
+        "hammer": (1, 3, True),
+        "hammer_static": (1, 3, True),
     }
 
 class GenoRecruit(RecruitedCharacter):
@@ -3610,7 +3724,7 @@ class GenoRecruit(RecruitedCharacter):
     starter_script = 189
     container_script = 195
     doll = 476
-    model = 4
+    models = [4, 714, 713, 715]
     sprites_primary = {
         "south": (0, 12, True),
         "defend": (2, 16, True),
@@ -3619,46 +3733,88 @@ class GenoRecruit(RecruitedCharacter):
         "shocked_loop": (3, 8, False),
         "shocked_loop_backwards": (3, 9, False),
         "shocked_backwards_sequence": (2, 3, False),
+        "shocked_shadow": (3, 0, False),
+        "shocked_shadow_backwards": (2, 8, True),
         "crying": (3, 3, False),
         "crying_backwards": (3, 4, False),
         "looking_down_static": (0, 6, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (3, 1, True),
         "hurt": (0, 6, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (2, 6, False),
-        "salute": (1, 9, False),
+        "salute": (2, 9, False),
+        "joy": (2, 9, False),
+        "joy_behind": (3, 2, False),
+        "joy_jump": (3, 2, False),
         "distracted": (0, 10, True),
         "displeased": (3, 4, False),
-        "challenge": (4, 0, False)
+        "challenge": (4, 0, False),
+        "look_to_side": (0, 8, True),
+        "look_to_down": (0, 9, True),
+        "look_to_side_behind": (0, 11, True),
+        "cast_frame_1": (2, 12, True),
+        "cast_frame_2": (2, 13, True),
+        "cast_frame_3": (2, 14, True),
+        "cast_frame_4": (2, 15, True),
+        "look_up_slightly": (2, 23, True),
+        "look_way_up": (2, 24, True),
+        "victory_pose": (2, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 9, True),
+        "prince_left": (0, 8, True),
+        "hammer": (2, 3, True),
+        "hammer_static": (2, 3, True),
     }
     sprites_secondary = {
         "south": (0, 20, True),
-        "defend": (0, 17, True),
+        "defend": (1, 16, True),
         "face_north": (0, 1, False),
         "face_south": (0, 0, False),
         "shocked_loop": (2, 8, False),
         "shocked_loop_backwards": (2, 9, False),
         "shocked_backwards_sequence": (1, 3, False),
+        "shocked_shadow": (2, 0, False),
+        "shocked_shadow_backwards": (1, 8, True),
         "crying": (0, 11, False),
         "crying_backwards": (0, 12, False),
         "looking_down_static": (0, 14, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (2, 1, True),
         "hurt": (0, 22, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (1, 6, False),
-        "salute": (1, 9, True),
+        "salute": (1, 9, False),
+        "joy": (1, 9, False),
+        "joy_behind": (2, 2, False),
+        "joy_jump": (2, 2, False),
         "distracted": (0, 19, True),
         "displeased": (0, 5, False),
-        "challenge": (3, 0, False)
+        "challenge": (3, 0, False),
+        "look_to_side": (0, 16, True),
+        "look_to_down": (0, 17, True),
+        "look_to_side_behind": (0, 19, True),
+        "cast_frame_1": (1, 12, True),
+        "cast_frame_2": (1, 13, True),
+        "cast_frame_3": (1, 14, True),
+        "cast_frame_4": (1, 15, True),
+        "look_up_slightly": (1, 23, True),
+        "look_way_up": (1, 24, True),
+        "victory_pose": (1, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 17, True),
+        "prince_left": (0, 16, True),
+        "hammer": (1, 3, True),
+        "hammer_static": (1, 3, True),
     }
 
 class BowserRecruit(RecruitedCharacter):
     index = 224
-    model = 2
+    models = [None, None, 2, 716]
     description = PlayableCharacters.bowser.value
     placeholder = "`BOWSER_NAME`"
     starter_script = 190
@@ -3666,47 +3822,89 @@ class BowserRecruit(RecruitedCharacter):
     doll = 90
     sprites_primary = {
         "south": (0, 12, True),
-        "defend": (2, 16, True),
+        "defend": (2, 17, True),
         "face_north": (0, 1, False),
         "face_south": (0, 0, False),
         "shocked_loop": (3, 8, False),
         "shocked_loop_backwards": (3, 9, False),
         "shocked_backwards_sequence": (2, 3, False),
+        "shocked_shadow": (3, 0, False),
+        "shocked_shadow_backwards": (2, 8, True),
         "crying": (3, 3, False),
         "crying_backwards": (3, 4, False),
         "looking_down_static": (0, 6, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (3, 1, True),
         "hurt": (0, 6, True),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (2, 6, False),
-        "salute": (1, 9, False),
+        "salute": (2, 9, False),
+        "joy": (2, 9, False),
+        "joy_behind": (3, 2, False),
+        "joy_jump": (3, 2, False),
         "distracted": (0, 10, True),
         "displeased": (3, 4, False),
-        "challenge": (4, 4, False)
+        "challenge": (4, 4, False),
+        "look_to_side": (0, 8, True),
+        "look_to_down": (0, 9, True),
+        "look_to_side_behind": (0, 11, True),
+        "cast_frame_1": (2, 10, True),
+        "cast_frame_2": (2, 11, True),
+        "cast_frame_3": (2, 12, True),
+        "cast_frame_4": (2, 13, True),
+        "look_up_slightly": (2, 24, True),
+        "look_way_up": (2, 25, True),
+        "victory_pose": (2, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 9, True),
+        "prince_left": (0, 8, True),
+        "hammer": (2, 3, True),
+        "hammer_static": (2, 3, True),
     }
     sprites_secondary = {
         "south": (0, 20, True),
-        "defend": (0, 17, True),
+        "defend": (1, 17, True),
         "face_north": (0, 1, False),
         "face_south": (0, 0, False),
         "shocked_loop": (2, 8, False),
         "shocked_loop_backwards": (2, 9, False),
         "shocked_backwards_sequence": (1, 3, False),
+        "shocked_shadow": (2, 0, False),
+        "shocked_shadow_backwards": (1, 8, True),
         "crying": (0, 13, False),
         "crying_backwards": (0, 14, False),
         "looking_down_static": (0, 14, True),
         "looking_down": (0, 6, False),
+        "looking_down_away": (0, 7, False),
         "floored": (2, 1, True),
         "hurt": (0, 6, False),
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (1, 6, False),
-        "salute": (1, 9, True),
+        "salute": (1, 9, False),
+        "joy": (1, 9, False),
+        "joy_behind": (2, 2, False),
+        "joy_jump": (2, 2, False),
         "distracted": (0, 18, True),
         "displeased": (0, 5, False),
-        "challenge": (3, 4, False)
+        "challenge": (3, 4, False),
+        "look_to_side": (0, 16, True),
+        "look_to_down": (0, 17, True),
+        "look_to_side_behind": (0, 19, True),
+        "cast_frame_1": (1, 10, True),
+        "cast_frame_2": (1, 11, True),
+        "cast_frame_3": (1, 12, True),
+        "cast_frame_4": (1, 13, True),
+        "look_up_slightly": (1, 24, True),
+        "look_way_up": (1, 25, True),
+        "victory_pose": (1, 10, True),
+        "prince_neutral": (0, 0, True),
+        "prince_down": (0, 17, True),
+        "prince_left": (0, 16, True),
+        "hammer": (2, 4, False),
+        "hammer_static": (2, 13, True),
     }
 
 class SpottedCharacter(Item):
@@ -3728,6 +3926,81 @@ class GenoSpotted(SpottedCharacter):
 
 class BowserSpotted(SpottedCharacter):
     index = 229
+
+class MarrymoreGear(MiscReward):
+    pass
+
+class Shoes(MarrymoreGear):
+    index = 230
+    unique = ItemUnique.Always
+    chest_event = 3943
+    npc_event = 3931
+    overworld_event = 3935
+    overworld_midas_event = 3939
+    model = overworld_items["shoes"]
+    item_type = 3
+    dialog_replacements = [
+        (2911,
+         ''' Item #1: A “Pair of Fancy Shoes”!\n I bet they would look great on you.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2908,
+         ''' Item #2: A “Pair of Fancy Shoes”.\n I bet they would look great on you.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914,
+         ''' Item #3: A “Pair of Fancy Shoes”.\n I bet they would look great on you.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
+
+class Brooch(MarrymoreGear):
+    index = 231
+    unique = ItemUnique.Always
+    chest_event = 3944
+    npc_event = 3932
+    overworld_event = 3936
+    overworld_midas_event = 3940
+    model = overworld_items["brooch"]
+    item_type = 3
+    dialog_replacements = [
+        (2911,
+         ''' Item #1: A “Shiny Brooch”! It\n looks made for special occasions.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2908,
+         ''' Item #2: A “Shiny Brooch”. It\n looks made for special occasions.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914,
+         ''' Item #3: A “Shiny Brooch”. It\n looks made for special occasions.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
+
+class Ring(MarrymoreGear):
+    index = 232
+    unique = ItemUnique.Always
+    chest_event = 3945
+    npc_event = 3933
+    overworld_event = 3937
+    overworld_midas_event = 3941
+    model = overworld_items["ring"]
+    item_type = 3
+    dialog_replacements = [
+        (2911,
+         ''' Item #1: A “Diamond Ring”! It's\n a great gift for someone special.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2908,
+         ''' Item #2: A “Diamond Ring”. It's\n a great gift for someone special.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914,
+         ''' Item #3: A “Diamond Ring”. It's\n a great gift for someone special.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
+
+class Crown(MarrymoreGear):
+    index = 233
+    unique = ItemUnique.Always
+    chest_event = 3946
+    npc_event = 3934
+    overworld_event = 3938
+    overworld_midas_event = 3942
+    model = overworld_items["crown"]
+    item_type = 3
+    dialog_replacements = [
+        (2911,
+         ''' Item #1: A “Royal Crown”!\n It looks pretty important![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2908,
+         ''' Item #2: A “Royal Crown”.\n It looks pretty important![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914,
+         ''' Item #3: A “Royal Crown”.\n It looks pretty important![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
 
 
 # ********************* Default item lists for world

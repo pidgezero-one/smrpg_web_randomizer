@@ -176,13 +176,23 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2066_fade_in_from_black_async_17',
-        "command": 'fade_in_from_black_async'
+        "identifier": 'EVENT_2066_set_bit__399_',
+        "command": 'set_bit',
+        "args": [0x7099, 0]
     },
     {
-        "identifier": 'EVENT_2066_fade_in_from_black_async_17_',
+        "identifier": 'EVENT_2066_set_short_107',
         "command": 'run_event_as_subroutine',
         "args": [168]
+    },
+    {
+        "identifier": 'EVENT_2066_set_bit__399__',
+        "command": 'clear_bit',
+        "args": [0x7099, 0]
+    },
+    {
+        "identifier": 'EVENT_2066_fade_in_from_black_async_17',
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2066_action_queue_sync_18',

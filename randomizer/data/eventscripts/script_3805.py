@@ -8,6 +8,6 @@ script = [
     {
         "identifier": 'EVENT_3805_jmp_0',
         "command": 'jmp',
-        "args": ['EVENT_3885_pause_329']
+        "args": ['EVENT_3951_pause_329']
     }
 ]

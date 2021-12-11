@@ -983,6 +983,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_1147_jmp_to_event_66',
+        "command": 'jmp_to_event',
+        "args": [168]
+    },
+    {
         "identifier": 'EVENT_1147_jmp_to_subroutine_49',
         "command": 'run_event_as_subroutine',
         "args": [1163]
@@ -1008,11 +1013,6 @@ script = [
         "identifier": 'EVENT_1147_set_bit_44',
         "command": 'set_bit',
         "args": [0x7052, 2]
-    },
-    {
-        "identifier": 'EVENT_1147_jmp_to_event_66',
-        "command": 'jmp_to_event',
-        "args": [168]
     },
     {
         "identifier": 'EVENT_1147_ret_67',

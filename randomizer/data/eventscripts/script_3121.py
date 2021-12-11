@@ -35,9 +35,19 @@ script = [
         "args": [0x707c, 7]
     },
     {
+        "identifier": 'EVENT_3121_set_bit__399_',
+        "command": 'set_bit',
+        "args": [0x7099, 0]
+    },
+    {
         "identifier": 'EVENT_3121_set_short_107',
         "command": 'run_event_as_subroutine',
         "args": [168]
+    },
+    {
+        "identifier": 'EVENT_3121_set_bit__399__',
+        "command": 'clear_bit',
+        "args": [0x7099, 0]
     },
     {
         "identifier": 'EVENT_3121_pause_109',

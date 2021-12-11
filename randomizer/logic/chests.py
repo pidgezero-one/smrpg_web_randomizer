@@ -440,19 +440,9 @@ def set_item(collection, location, item):
         if utils.isclass_or_instance(collection[i], location):
             collection[i].item = item
 
-def get_max_item_quality(world):
-    tiers_allowed = 1
-    if world.settings.is_flag_value(flags.ItemQuality, ItemQualities.t1):
-        tiers_allowed = 4
-    elif world.settings.is_flag_value(flags.ItemQuality, ItemQualities.t2):
-        tiers_allowed = 3
-    elif world.settings.is_flag_value(flags.ItemQuality, ItemQualities.t3):
-        tiers_allowed = 2
-    return tiers_allowed
-
 def generate_nonrequired_item(world, chest):
 
-    max_tier = get_max_item_quality(world)
+    max_tier = world.max_chest_quality
     table = [t for t in reward_table if chest.item_allowed(t[1])]
     if not world.settings.is_flag_enabled(flags.SlotsAnywhere):
         table = [t for t in reward_table if not utils.isclass_or_instance(t[1], items.SlotMachineChest)]
@@ -549,9 +539,14 @@ def randomize_all(world):
         # Collect pool of locations that need item assignments
         overworld_items_to_include = world.settings.get_flag(flags.EnabledFreestandingChecks).enabled
         #print(overworld_items_to_include)
-        locations_to_completely_ignore = [w.description for w in world.freestanding_item_locations if w.description not in overworld_items_to_include]
+        locations_to_completely_ignore_ = [w for w in world.freestanding_item_locations if w.description not in overworld_items_to_include]
+        locations_to_completely_ignore = [w.description for w in locations_to_completely_ignore_]
         #print(locations_to_completely_ignore)
-        
+
+        items_in_ignored_locations = [world.get_item_instance(w.item) for w in locations_to_completely_ignore_ if w.item is not None]
+        # shuffle algorithm needs this. revisit
+
+
         inventory = Inventory([])
 
         # Contents of excluded chests will still be shuffled, they just will not contain progression items.
@@ -610,7 +605,10 @@ def randomize_all(world):
             #inventory.extend([c.item for c in all_locations if utils.isclass_or_instance(c, chests.FrogCoinShopItem)])
             #inventory.extend([c.item for c in all_locations if utils.isclass_or_instance(c, chests.TreasureSellerReward)])
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.FrogCoinShopItem) and not utils.isclass_or_instance(a, chests.TreasureSellerReward)]
-        
+        # remove marrymore checks if chapel shuffle is turned off
+        if world.settings.is_flag_value(flags.ShuffleWeddingGear, False):
+            all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.MarrymoreSnifit1) and not utils.isclass_or_instance(a, chests.MarrymoreSnifit2) and not utils.isclass_or_instance(a, chests.MarrymoreSnifit3) and not utils.isclass_or_instance(a, chests.MarrymoreCrown)]
+
         all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.CharacterSpotted)]
         
         # Do chest overrides and remove them from the pool.
@@ -639,21 +637,6 @@ def randomize_all(world):
                             PlayableCharacters.geno, PlayableCharacters.bowser, PlayableCharacters.toadstool]
             charactersInSeed = [c for c in allCharacters if c in world.settings.get_flag(
                 flags.AvailableCharacters).enabled]
-            #print (charactersInSeed)
-            # throw error if any required chars are excluded
-            if PlayableCharacters.mario in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario) or world.settings.is_flag_value(flags.SeaGate, SeaGating.mario)):
-                raise flags.FlagError('Mario is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
-            if PlayableCharacters.mallow in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mallow) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow) or world.settings.is_flag_value(flags.SeaGate, SeaGating.mallow)):
-                raise flags.FlagError('Mallow is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
-            if PlayableCharacters.geno in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno) or world.settings.is_flag_value(flags.SeaGate, SeaGating.geno)):
-                raise flags.FlagError('Geno is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
-            if PlayableCharacters.bowser in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser) or world.settings.is_flag_value(flags.SeaGate, SeaGating.bowser)):
-                raise flags.FlagError('Bowser is required for one of your Progression settings, but he is excluded from the seed in your Party settings.')
-            if PlayableCharacters.toadstool in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool) or world.settings.is_flag_value(flags.SeaGate, SeaGating.toadstool)):
-                raise flags.FlagError('Toadstool is required for one of your Progression settings, but she is excluded from the seed in your Party settings.')
-            # throw error if not enough chars to fill desired party
-            if len(charactersInSeed) < number_of_starting_characters:
-                raise flags.FlagError('not enough characters to fill desired starting party')
             random.shuffle(charactersInSeed)
             starter = world.settings.get_flag(flags.StartingCharacter).value
             if starter != PlayableCharacters.random:
@@ -693,6 +676,8 @@ def randomize_all(world):
                 inventory.append(character)
             required_item_pool += [world.get_item_instance(char) for char in [items.MarioRecruit, items.MallowRecruit, items.GenoRecruit, items.BowserRecruit, items.ToadstoolRecruit] if char.description in [c for c in charactersInSeed if c not in starting_characters]]
         
+        
+
         # Collect required base item pool
         # add star pieces
         if world.settings.is_flag_value(flags.ShuffleStarPieces, True):
@@ -717,6 +702,12 @@ def randomize_all(world):
             # if star piece hints is on, must guarantee signal ring
             if world.settings.is_flag_value(flags.StarPieceHints, True):
                 required_item_pool.append(world.get_item_instance(items.SignalRing))
+            # marrymore gear
+            if world.settings.is_flag_enabled(flags.ShuffleWeddingGear):
+                required_item_pool.append(world.get_item_instance(items.Shoes))
+                required_item_pool.append(world.get_item_instance(items.Crown))
+                required_item_pool.append(world.get_item_instance(items.Brooch))
+                required_item_pool.append(world.get_item_instance(items.Ring))
             # mimics anywhere
             if world.settings.is_flag_value(flags.MimicsAnywhere, True):
                 required_item_pool += [world.get_item_instance(f) for f in [items.PandoriteFight, items.HidonFight, items.BoxBoyFight]]
@@ -738,18 +729,25 @@ def randomize_all(world):
                 if world.settings.is_flag_value(flags.ShuffleMagikoopaChest, True):
                     required_item_pool.append(world.get_item_instance(items.InfiniteCoins))
                 limited_items = [world.get_item_instance(i) for i in [items.GoodieBag, items.YouMissed, items.SeeYa, items.EarlierTimes, items.StarEgg, items.Wallet, items.LuckyJewel]]
-                max_tier = get_max_item_quality(world)
+                if world.settings.is_flag_enabled(flags.NoStarEgg):
+                    limited_items = [i for i in limited_items if not utils.isclass_or_instance(items.StarEgg)]
+                max_tier = world.max_chest_quality
                 required_item_pool += [i for i in limited_items if i.tier <= max_tier]
             # keep one YouMissed :)
             else:
                 required_item_pool.append(world.get_item_instance(items.YouMissed))
 
+            # remove items that are guaranteed to be in excluded overworld locations
+            required_item_pool = [ri for ri in required_item_pool if ri not in items_in_ignored_locations]
+
             # balanced only: populate extra_item_pool with existing item pool
             if world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original):
-                filtered = [world.get_item_instance(c.item) for c in all_locations if c.item is not None and c.item.index not in [i.index for i in required_item_pool + extra_item_pool + inventory if i is not None]]
+                filtered = [world.get_item_instance(c.item) for c in all_locations if c not in locations_to_completely_ignore and c.item is not None and c.item.index not in [i.index for i in required_item_pool + extra_item_pool + inventory if i is not None]]
                 unique_balanced = [i for i in filtered if filtered.count(i) == 1]
                 required_item_pool += unique_balanced
                 extra_item_pool += [i for i in filtered if i not in unique_balanced]
+
+        
 
         # sanitize
         for index, r in enumerate(required_item_pool):
@@ -904,6 +902,11 @@ def randomize_all(world):
         pickups = [None, chests.MushroomWayCharacter, chests.ForestMazeCharacter, chests.MolevilleMinesCharacter, chests.MarrymoreCharacter]
         for cindex, (recruitable, ending, chest) in enumerate(zip(playable_character_order, character_order, pickups)):
             if chest is None:
+                sprites = ending.sprites_primary
+                for room_id, script_id in zip([496, 88, 375], [3885, 3950, 3951]):
+                    for command_index, cmd in enumerate(world.eventscripts[script_id]):
+                        if utils.is_animation_header_mario(cmd):
+                            world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_protagonist_animation_script(sprites, cmd["subscript"], room_id)
                 continue
             sprites = {}
             if (cindex == 0 and world.settings.is_flag_enabled(flags.PlayAsStarter)) or (utils.isclass_or_instance(ending, items.MarioRecruit) and not world.settings.is_flag_enabled(flags.PlayAsStarter)):
@@ -916,7 +919,7 @@ def randomize_all(world):
                 if not ((utils.isclass_or_instance(chest, chests.ForestMazeCharacter) and utils.isclass_or_instance(recruitable, items.GenoRecruit)) or (utils.isclass_or_instance(chest, chests.MarrymoreCharacter) and utils.isclass_or_instance(recruitable, items.ToadstoolRecruit))):
                     for room_id, npc, eventscripts, actionscripts in chest.npcs:
                         # replace model
-                        world.update_room_npc_property_by_id(room_id, npc, "model", recruitable.model)
+                        world.update_room_npc_property_by_id(room_id, npc, "model", recruitable.models[0] or recruitable.models[2])
                         # format scripts
                         for script_id in eventscripts:
                             for command_index, cmd in enumerate(world.eventscripts[script_id]):
@@ -946,6 +949,26 @@ def randomize_all(world):
                     "distracted": (0, 0, False),
                     "displeased": (0, 1, False),
                     "challenge": (0, 1, False),
+                    "look_to_side": (0, 0, False),
+                    "look_to_down": (0, 0, False),
+                    "look_to_side_behind": (0, 1, False),
+                    "look_up_slightly": (0, 1, True),
+                    "look_way_up": (0, 1, True),
+                    "cast_frame_1": (0, 1, True),
+                    "cast_frame_2": (0, 1, True),
+                    "cast_frame_3": (0, 1, True),
+                    "cast_frame_4": (0, 1, True),
+                    "looking_down_away": (0, 1, False),
+                    "victory_pose": (0, 6, True),
+                    "shocked_shadow": (0, 0, False),
+                    "shocked_shadow_backwards": (0, 1, False),
+                    "joy": (0, 0, False),
+                    "joy_behind": (0, 1, False),
+                    "joy_jump": (0, 1, False),
+                    "prince_neutral": (0, 0, False),
+                    "prince_left": (0, 0, False),
+                    "prince_down": (0, 0, False),
+                    "hammer": (0, 1, False),
                 }
                 for room_id, npc, eventscripts, actionscripts in chest.npcs:
                     world.update_room_npc_property_by_id(room_id, npc, "model", 64)
@@ -957,13 +980,19 @@ def randomize_all(world):
                         for command_index, cmd in enumerate(world.actionscripts[script_id]):
                             world.actionscripts[script_id] = utils.sanitize_character_animation_script(toad_sprites, world.actionscripts[script_id], room_id)
             for room_id, npc, eventscripts, actionscripts in chest.credits_npcs:
-                world.update_room_npc_property_by_id(room_id, npc, "model", ending.model)
+                world.update_room_npc_property_by_id(room_id, npc, "model", ending.models[2])
                 for script_id in eventscripts:
                     for command_index, cmd in enumerate(world.eventscripts[script_id]):
                         if utils.is_animation_header(cmd, npc):
                             world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(sprites, cmd["subscript"], room_id)
                 for script_id in actionscripts:
                     world.actionscripts[script_id] = utils.sanitize_character_animation_script(sprites, world.actionscripts[script_id], room_id)
+            for room_id, npc, eventscripts, actionscripts in chest.doll_npcs:
+                world.update_room_npc_property_by_id(room_id, npc, "model", ending.doll)
+                for script_id in eventscripts:
+                    for command_index, cmd in enumerate(world.eventscripts[script_id]):
+                        if utils.is_animation_header(cmd, npc):
+                            world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(sprites, cmd["subscript"], room_id)
 
         # update the sprites in the world models
         if not utils.isclass_or_instance(character_order[0], items.MarioRecruit) and world.settings.is_flag_enabled(flags.PlayAsStarter):
@@ -1182,6 +1211,19 @@ def randomize_all(world):
                                         e_3216[command_index]["subscript"] = subscript
                                 world.eventscripts[3215] = e_3215
                                 world.eventscripts[3216] = e_3216
+                            # marrymore items - visual only
+                        elif utils.isclass_or_instance(c, chests.MarrymoreSnifit1):
+                            world.update_room_npc_property_by_id(154, 4, "model", c.item.model.model)
+                            world.update_room_npc_property_by_id(154, 4, "action_script", c.item.model.action_script)
+                            world.update_room_npc_property_by_id(154, 4, "z_half", c.item.model.hover)
+                        elif utils.isclass_or_instance(c, chests.MarrymoreSnifit2):
+                            world.update_room_npc_property_by_id(154, 6, "model", c.item.model.model)
+                            world.update_room_npc_property_by_id(154, 6, "action_script", c.item.model.action_script)
+                            world.update_room_npc_property_by_id(154, 6, "z_half", c.item.model.hover)
+                        elif utils.isclass_or_instance(c, chests.MarrymoreSnifit3):
+                            world.update_room_npc_property_by_id(154, 3, "model", c.item.model.model)
+                            world.update_room_npc_property_by_id(154, 3, "action_script", c.item.model.action_script)
+                            world.update_room_npc_property_by_id(154, 3, "z_half", c.item.model.hover)
             elif utils.isclass_or_instance(c, chests.Chest) and c.item is None:
                 if world.settings.is_flag_enabled(flags.AnnoyingChests):
                     c.item = items.YouMissed
@@ -1266,6 +1308,7 @@ def randomize_all(world):
                                 model_id = 111
                                 action_script = 773
                                 is_floating = False
+                            # special case for coins in booster tower
                             elif r == 41:
                                 if utils.isclass_or_instance(c.item, items.FrogCoin):
                                     model_id = 202
@@ -1275,11 +1318,10 @@ def randomize_all(world):
                                     model_id = 194
                                     action_script = 0
                                     is_floating = True
-                            # special case for coins in booster tower
                             world.update_room_npc_property_by_id(r, npc_id, "model", model_id)
                             world.update_room_npc_property_by_id(r, npc_id, "action_script", action_script)
                             world.update_room_npc_property_by_id(r, npc_id, "z_half", is_floating)
-                # sett the item grant
+                # set the item grant
                 if utils.isclass_or_instance(c.item, items.StarPiece):
                     hint_variable, hint_bit = c.item.hint_bit
                     cmds.append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
@@ -1338,6 +1380,10 @@ def randomize_all(world):
                 # disable empty chests
                 world.eventscripts[192].insert(0, utils.new_command(192, 'disable_trigger_in_level', [0x14, 197]))
                 world.prepend_bits(192, [[0x7048, 0]])
+            elif utils.isclass_or_instance(c, chests.MarrymoreAltarHead):
+                # remove crown
+                world.eventscripts[3809] = [cmd for cmd in world.eventscripts[3809] if not utils.is_animation_header(cmd, 5)]
+                world.eventscripts[3930] = [cmd for cmd in world.eventscripts[3930] if not utils.is_animation_header(cmd, 5)]
 
 
         # boss star pieces
@@ -1353,10 +1399,9 @@ def randomize_all(world):
                         if d == id:
                             world.replace_dialog(id, dat)
                 hint_variable, hint_bit = c.item.hint_bit
-                grant_builders[c.event]["executions"].append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
-                grant_builders[c.event]["executions"].append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
-                cmd = utils.new_command(c.event, 'jmp_to_event', [3092])
+                cmd = utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit])
                 grant_builders[c.event]["executions"].append(cmd)
+                grant_builders[c.event]["executions"].append(utils.new_command(c.event, 'jmp_to_event', [3092]))
                 for r in c.rooms:
                     jmp = utils.new_command(c.event, 'jmp_if_7000_equals_short', [r, cmd["identifier"]])
                     grant_builders[c.event]["jumps"].append(jmp)

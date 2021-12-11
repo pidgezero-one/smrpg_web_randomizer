@@ -25,19 +25,9 @@ script = [
         "args": [0x7000, 3]
     },
     {
-        "identifier": 'EVENT_3595_play_sound_4',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_3595_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [2097, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_3595_inc_6',
-        "command": 'inc',
-        "args": [0x70af]
+        "identifier": 'EVENT_3595_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [179]
     },
     {
         "identifier": 'EVENT_3595_unfreeze_all_npcs_7',

@@ -578,7 +578,7 @@ class Peach(Character):
 
     original_weapon_sprite_ids = [7, None, 8, 9, 10, 11, 12]
     sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 251]
-    sprite_addresses = [[], None, [0x35FF1A, 0x35FF9D, 0x35A9FD, 0x35CDA8], [], [0x35ED1A, 0x35ED0B, 0x35EEE5, 0x35EED6, 0x35EFDE, 0x35EFCD, 0x35F049, 0x35F058, 0x35FF74], [0x35EF1D, 0x35EF0E, 0x35F0F6, 0x35F0E7], [0x35FF43, 0x35A9A0]] # not building an assembler for this in this version
+    sprite_addresses = [[], None, [0x35FF1A, 0x35A9FD, 0x35CDA8], [], [0x35ED1A, 0x35ED0B, 0x35EEE5, 0x35EED6, 0x35EFDE, 0x35EFCD, 0x35F049, 0x35F058, 0x35FF74], [0x35EF1D, 0x35EF0E, 0x35F0F6, 0x35F0E7], [0x35A9A0]] # not building an assembler for this in this version
 
     battle_sprite_offset = 0x020226
     battle_sprite_id = 0x08
@@ -610,6 +610,11 @@ class Peach(Character):
                 patch = self.special_palette([6, 3, 1, None, None, None, None, None, None, None, None, None, None, None, None], classic_palette_offset, patch)
                 patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
 
+            # group hug
+            #patch.add_data(0x35FF3E, 0x00)
+            patch.add_data(0x35FF43, bytearray([0x03, 0x81, 0x00, 0x05, 0x00, 0x04]))
+            #patch.add_data(0x35FF98, 0x00)
+            patch.add_data(0x35FF9D, bytearray([0x03, 0x81, 0x10, 0x02, 0x00, 0x01]))
 
         return patch
 

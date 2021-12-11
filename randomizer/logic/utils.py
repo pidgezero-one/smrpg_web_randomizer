@@ -227,8 +227,14 @@ def new_command(event_id, command, args=None, t=CommandTypes.Event):
     return cmd
 
 
+def is_animation_header_mario(command):
+    return is_animation_header_base(command, 0)
+
 def is_animation_header(command, npc_id):
-    return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == npc_id + 0x14
+    return is_animation_header_base(command, npc_id + 0x14)
+
+def is_animation_header_base(command, npc_id):
+    return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == npc_id
 
 
 def remove_sequence_changes_from_action_script(script):
@@ -296,6 +302,34 @@ def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Seque
 def is_mario_animation_header(command):
     return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == AreaObjects.MARIO
 
+def sanitize_protagonist_animation_script(sequence_types, script, room_id):
+    new_script = []
+    for _, command in enumerate(script):
+        cmd = copy.deepcopy(command)
+        key = None
+        if cmd["command"] == 'set_sprite_sequence':
+            seq = cmd["args"][0]
+            spr = cmd["args"][1]
+            if _0x08Flags.READ_AS_MOLD in cmd["args"][2]:
+                if spr == 2 and seq == 16:
+                    key = "defend"
+                elif spr == 2 and seq == 8:
+                    key = "shocked_shadow_backwards"
+                elif spr == 2 and seq == 23:
+                    key = "look_up_slightly"
+                elif spr == 2 and seq == 24:
+                    key = "look_way_up"
+            else:
+                if spr == 2 and seq == 10:
+                    key = "victory_pose"
+        if key is not None:
+            flags = [a for a in cmd["args"][2] if a != _0x08Flags.READ_AS_MOLD]
+            sprite, sequence, is_mold = sequence_types[key]
+            if is_mold:
+                flags.append(_0x08Flags.READ_AS_MOLD)
+            cmd["args"] = [sequence, sprite, flags]
+        new_script.append(cmd)
+    return new_script
 
 def sanitize_character_animation_script(sequence_types, script, room_id):
     '''For Forest Maze and Marrymore characters. Most characters have the same selections of sprites for a given situation, but they aren't always located at the same offset/sequence.'''
@@ -307,45 +341,87 @@ def sanitize_character_animation_script(sequence_types, script, room_id):
             seq = cmd["args"][0]
             spr = cmd["args"][1]
             if _0x08Flags.READ_AS_MOLD in cmd["args"][2]:
-                if spr == 5 and seq == 0:
-                    key = "hurt"
-                elif spr == 0 and seq == 14:
+                if spr == 0 and seq == 14:
                     key = "looking_down_static"
-                elif spr == 2 and seq == 1:
-                    key = "floored"
-                elif spr == 0 and seq == 20:
-                    key = "south"
-                elif spr == 1 and seq == 17:
-                    key = "defend"
-                elif spr == 2 and seq == 17:
-                    key = "salute"
+                elif spr == 0 and seq == 16:
+                    key = "look_to_side"
+                elif spr == 0 and seq == 17:
+                    key = "look_to_down"
                 elif spr == 0 and seq == 18:
                     key = "distracted"
+                elif spr == 0 and seq == 19:
+                    key = "look_to_side_behind"
+                elif spr == 0 and seq == 20:
+                    key = "south"
+                elif spr == 1 and seq == 12:
+                    key = "cast_frame_1"
+                elif spr == 1 and seq == 13:
+                    key = "cast_frame_2"
+                elif spr == 1 and seq == 14:
+                    key = "cast_frame_3"
+                elif spr == 1 and seq == 15:
+                    key = "cast_frame_4"
+                elif spr == 1 and seq == 17:
+                    key = "defend"
+                elif spr == 1 and seq == 22:
+                    key = "look_up_slightly"
+                elif spr == 1 and seq == 23:
+                    key = "look_way_up"
+                elif spr == 2 and seq == 1:
+                    key = "floored"
+                elif spr == 1 and seq == 8:
+                    key = "shocked_shadow_backwards"
+                elif spr == 2 and seq == 13:
+                    key = "hammer_static"
+                elif spr == 2 and seq == 14:
+                    key = "prince_neutral"
+                elif spr == 2 and seq == 15:
+                    key = "prince_left"
+                elif spr == 2 and seq == 16:
+                    key = "prince_down"
+                elif spr == 2 and seq == 17:
+                    key = "salute"
+                elif spr == 5 and seq == 0:
+                    key = "hurt"
             else:
-                if spr == 2 and seq == 3:
-                    key = "shocked_loop"
-                elif spr == 2 and seq == 4 and room_id != 435:
-                    key = "shocked_loop_backwards"
-                elif spr == 0 and seq == 13:
-                    key = "crying"
-                elif spr == 0 and seq == 14:
-                    key = "crying_backwards"
+                if spr == 0 and seq == 0:
+                    key = "face_south"
                 elif spr == 0 and seq == 1:
                     key = "face_north"
-                elif spr == 0 and seq == 0:
-                    key = "face_south"
+                elif spr == 0 and seq == 5:
+                    key = "displeased"
+                elif spr == 0 and seq == 6:
+                    key = "looking_down"
+                elif spr == 0 and seq == 7:
+                    key = "looking_down_away"
                 elif spr == 0 and seq == 8:
                     key = "shaking_head"
                 elif spr == 0 and seq == 9:
                     key = "shaking_head_backward"
-                elif spr == 0 and seq == 6:
-                    key = "looking_down"
-                elif spr == 1 and seq == 6:
-                    key = "sleeping"
+                elif spr == 0 and seq == 13:
+                    key = "crying"
+                elif spr == 0 and seq == 14:
+                    key = "crying_backwards"
                 elif spr == 1 and seq == 3:
                     key = "shocked_backwards_sequence"
-                elif spr == 0 and seq == 5:
-                    key = "displeased"
+                elif spr == 1 and seq == 6:
+                    key = "sleeping"
+                elif spr == 1 and seq == 9:
+                    key = "joy"
+                elif spr == 1 and seq == 10:
+                    key = "victory_pose"
+                elif spr == 2 and seq == 0:
+                    key = "shocked_shadow"
+                elif spr == 2 and seq == 2:
+                    key = "joy_behind"
+                elif spr == 2 and seq == 3:
+                    key = "shocked_loop"
+                elif spr == 2 and seq == 4 and room_id != 435:
+                    key = "shocked_loop_backwards"
+                elif spr == 2 and seq == 4:
+                    key = "hammer"
+                elif spr == 2 and seq == 5:
+                    key = "joy_jump"
                 elif spr == 4 and seq == 2:
                     key = "challenge"
         if key is not None:

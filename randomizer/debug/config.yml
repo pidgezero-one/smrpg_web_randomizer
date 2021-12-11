@@ -9,7 +9,8 @@ bosses:
   # shift: 0
   override:
   #  Valentina: CountdownBoss
-    Mack: BowyerBoss
+  #  Mack: BowyerBoss
+    Bundt: HidonBoss
 items:
   start:
     - CastleKey1
@@ -25,6 +26,7 @@ items:
     - PunchGlove
   override:
     MushroomWay1: InfiniteCoins
+  #   MushroomWayStarPiece: StarPiece1
   #   MushroomWay2: BanditsWayStar
   #   MushroomWay3: BanditsWayStar
   #   MushroomWay4: BanditsWayStar

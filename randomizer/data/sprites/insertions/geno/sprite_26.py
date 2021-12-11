@@ -580,13 +580,13 @@ sprite = CompleteSprite(
                 ),
                 Mold(24, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[
                             None,
                             bytearray(b'\x00\x80\x00\x80@\x80@\x80\xc0\x00\xc0@\x80\x80\x00\x00\x00\x80\x00\x80@\x80\x00\xc0\xc0\x00@\xc0\x80\x80\x00\x00'),
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=116, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'\x0f\x00\x0f\x10\x06\t\x06\x04\x07\x04\x07\x06\x03\x03\x00\x00\x11\x01\x19\x19\x0f\x0f\x05\x07\x04\x07\x06\x07\x03\x03\x00\x00'),
                             bytearray(b'\xe2\xe3\xb4\xf7\x84\xf7\x80\xf3\x0ep\xff\x04\xff\x0f\xf0\xf0\x1c\xff\x08\xff\x08\xff\x0c\xff\x83\xfc\xf5\x0e\x7f\x8f\xf0\xf0'),
                             None,
@@ -891,7 +891,7 @@ sprite = CompleteSprite(
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=26),
+                        AnimationSequenceFrame(duration=30, mold_id=26),
                     ]
                 ),
                 AnimationSequence(

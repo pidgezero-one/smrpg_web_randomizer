@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(214, length=290, unknown=0x0000,
+    animation=AnimationPack(10, length=317, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=True,
@@ -161,25 +161,25 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=138, y=378),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=138, y=122),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'\x01\x03\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\x06\xff\xfc\xff\x00\xfe\x00\x00\x03\x03\x00\x00\x00\x00\x00\x00\x01\x00\x03\x00\xff\x01??\x00\x03\x00\x00\x00\x00\x00\x00'),
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=122, y=378),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=122, y=122),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'@\x00\xa0 \xe0`\xe0`pp\xb0p\xc0\xa0\xd0\xb0\x00\x00@ \x00`\x00p\x00\xf0\x00\xf0\xa0p\x80p'),
                             None,
                             bytearray(b'\xd0\xb0\xc0\xb0\x80p\x00\xf0@\xa0Ph\x04\xbc \xe0\x80p\x90p\x10\xf00pPP\x90\x90\xf0\xc0\xe0\xe0'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=138, y=362),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=138, y=106),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x01\x00\x01\x02\x1b(\x1e\x11\x0f\x00\x00\x00\x00\x00\x00\x00\x01\x01\x01\x01\x13\x13\x00\x00\x00\x00'),
                             bytearray(b"\x00\x00\x00\x00@\xa0\x7f\x80\x7f\x87\x9fpw\x88\xafP\x00\x00\x00\x00@@\xf8~\xffx\xef\x8awp\'("),
                             bytearray(b'\x01\x00\x03\x03\x0e\x00\x03\x00\x01\x00\x00\x00\x02\x02\x01\x03\x0e\x00\x08\x07\x01\x00\x0c\x00\x06\x08\x01\x06\x00\x01\x02\x00'),
                             bytearray(b'\xdf/\x7f\x0f\xbf\x87/\x00\xef\x00\x16\x1d\xfa\xf7\xe3\xff\x0f\x10\x8f\x10W\x88\x90O\x10\x0f\xe0\x03\x08\xe9\x00\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=122, y=362),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=122, y=106),
                     ]
                 ),
                 Mold(10, gridplane=True,

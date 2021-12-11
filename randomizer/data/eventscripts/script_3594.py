@@ -17,7 +17,7 @@ script = [
     {
         "identifier": 'EVENT_3594_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 3, 'EVENT_3594_jmp_to_subroutine_10']
+        "args": [0x7053, 2, 'EVENT_3594_jmp_to_subroutine_10']
     },
     {
         "identifier": 'EVENT_3594_set_3',
@@ -25,28 +25,18 @@ script = [
         "args": [0x7000, 1]
     },
     {
-        "identifier": 'EVENT_3594_play_sound_4',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_3594_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [2095, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+        "identifier": 'EVENT_3594_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_3594_unfreeze_all_npcs_6',
         "command": 'unfreeze_all_npcs'
     },
     {
-        "identifier": 'EVENT_3594_inc_7',
-        "command": 'inc',
-        "args": [0x70af]
-    },
-    {
         "identifier": 'EVENT_3594_set_bit_8',
         "command": 'set_bit',
-        "args": [0x704c, 3]
+        "args": [0x7053, 2]
     },
     {
         "identifier": 'EVENT_3594_ret_9',

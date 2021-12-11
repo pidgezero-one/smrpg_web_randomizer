@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(439, length=760, unknown=0x0000,
+    animation=AnimationPack(439, length=766, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=4096,
             molds=[
                 Mold(0, gridplane=False,
@@ -485,7 +485,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x08\x00\x08\x00\x10\x00\x02\x00\x01\x00\x00\x00 \x00\x10\x00\x08\x00\x00\x00\x10\x00\x12\x01\t\x00@\x00 \x00'),
                             bytearray(b'\x01\x00\x00\x00    \x08\x00\x00\x00@\x00A\x00\x01\x00\x00\x00 A0\x04\x18\x00\x00\x00@\x00\x01\xa2'),
                             bytearray(b'\x00\x00@\x80\x08\x00b\x00A\x00\x00\x00\x00\x00$\x00\x00\x00@\x00\x08\x00\xe3\x00A\x80\x00\x00\x00\x00$\x08'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=359, y=137),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=103, y=137),
                         Tile(mirror=True, invert=True, format=0, length=4, subtile_bytes=[
                             None,
                             None,
@@ -533,7 +533,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x08\x00\x08\x00\x10\x00\x02\x00\x01\x00\x00\x00 \x00\x10\x00\x08\x00\x00\x00\x10\x00\x12\x01\t\x00@\x00 \x00'),
                             bytearray(b'\x01\x00\x00\x00    \x08\x00\x00\x00@\x00A\x00\x01\x00\x00\x00 A0\x04\x18\x00\x00\x00@\x00\x01\xa2'),
                             bytearray(b'\x00\x00@\x80\x08\x00b\x00A\x00\x00\x00\x00\x00$\x00\x00\x00@\x00\x08\x00\xe3\x00A\x80\x00\x00\x00\x00$\x08'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=359, y=359),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=103, y=103),
                         Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[
                             None,
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00\x00\x00'),
@@ -902,5 +902,5 @@ sprite = CompleteSprite(
     ),
     palette_id=758,
     palette_offset=0,
-    unknown_num=0
+    unknown_num=8
 )

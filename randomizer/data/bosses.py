@@ -415,8 +415,9 @@ class ModelDetails:
     mold = 0
     sequence_type = SequenceType.Sequence
     animations = SpriteAnimationCollection()
+    loop = False
 
-    def __init__(self, cloneable_all_directions, cloneable_south_only, uncloneable_all_directions, uncloneable_south_only, sequence=0, mold=0, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
+    def __init__(self, cloneable_all_directions, cloneable_south_only, uncloneable_all_directions, uncloneable_south_only, sequence=0, mold=0, loop=False, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
         self.cloneable_all_directions = cloneable_all_directions
         self.cloneable_south_only = cloneable_south_only
         self.uncloneable_all_directions = uncloneable_all_directions
@@ -425,6 +426,7 @@ class ModelDetails:
         self.mold = mold
         self.sequence_type = sequence_type
         self.animations = animations
+        self.loop = loop
 
 
 class SmallModelDetails(ModelDetails):
@@ -432,9 +434,9 @@ class SmallModelDetails(ModelDetails):
 
 
 class BigModelDetails(ModelDetails):
-    def __init__(self, uncloneable_all_directions, uncloneable_south_only, sequence=0, mold=0, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
+    def __init__(self, uncloneable_all_directions, uncloneable_south_only, sequence=0, mold=0, loop=False, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
         super().__init__(None, None, uncloneable_all_directions,
-                         uncloneable_south_only, sequence, mold, sequence_type, animations)
+                         uncloneable_south_only, sequence, mold, loop, sequence_type, animations)
 
 
 class ModelFill:
@@ -1582,7 +1584,7 @@ class GrateGuyKnifeGuy(Henchman):
     pack_number = None
     model = SmallModelDetails(None, None, None, 134, animations=SpriteAnimationCollection(
         kitchen_prep=knife_guy_taunt
-    ), sequence=2)
+    ), sequence=2, loop=True)
 
 
 grate_guy_hit = SpriteAnimation(
@@ -1862,7 +1864,7 @@ goombette_hit_fast = SpriteAnimation(
 
 class HidonGoombette(Henchman):
     pack_number = 221
-    model = SmallModelDetails(349, 549, 540, 541, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(349, 549, 551, 550, animations=SpriteAnimationCollection(
         tower_bullet=goombette_hit,
         kitchen_prep=goombette_taunt,
         factory_pierce=goombette_hit_fast))
@@ -2222,6 +2224,57 @@ class MokuraBoss(Boss):
     ]
 
 
+marioclone_hit_fast = SpriteAnimation(
+    sequence_id=0, contact_frame=8, total_duration=16, speed=SequenceSpeeds.FAST)
+
+
+class Belome2MarioClone(Henchman):
+    pack_number = 154
+    model = SmallModelDetails(409, 690, 689, 691, animations=SpriteAnimationCollection(
+        kitchen_prep=marioclone_hit_fast,
+        factory_pierce=marioclone_hit_fast))
+
+mallowclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
+mallowclone_mad = SpriteAnimation(sequence_id=4, contact_frame=8, total_duration=16)
+
+
+class Belome2MallowClone(Henchman):
+    pack_number = 155
+    model = SmallModelDetails(413, 693, 692, 694, animations=SpriteAnimationCollection(
+        tower_bullet=mallowclone_laugh,
+        kitchen_prep=mallowclone_mad,
+        factory_pierce=mallowclone_mad))
+
+genoclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
+genoclone_mad = SpriteAnimation(sequence_id=4, contact_frame=6, total_duration=12)
+
+class Belome2GenoClone(Henchman):
+    pack_number = 196
+    model = SmallModelDetails(412, 696, 695, 697, animations=SpriteAnimationCollection(
+        tower_bullet=genoclone_laugh,
+        kitchen_prep=genoclone_mad,
+        factory_pierce=genoclone_mad))
+
+bowserclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
+bowserclone_mad = SpriteAnimation(sequence_id=4, contact_frame=12, total_duration=24)
+
+class Belome2BowserClone(Henchman):
+    pack_number = 197
+    model = SmallModelDetails(411, 699, 698, 700, animations=SpriteAnimationCollection(
+        tower_bullet=bowserclone_laugh,
+        kitchen_prep=bowserclone_mad,
+        factory_pierce=bowserclone_mad))
+
+peachclone_mad = SpriteAnimation(sequence_id=4, contact_frame=12, total_duration=24)
+
+class Belome2PeachClone(Henchman):
+    pack_number = 198
+    model = SmallModelDetails(410, 702, 701, 703, animations=SpriteAnimationCollection(
+        tower_bullet=peachclone_mad,
+        kitchen_prep=peachclone_mad,
+        factory_pierce=peachclone_mad))
+
+
 class Belome2Boss(Boss):
     name = "Belome"
     pack_number = 169
@@ -2244,6 +2297,7 @@ class Belome2Boss(Boss):
         chandelier_challenge=belome_attack,
         endgame_challenge=belome_attack
     ))
+    repeatable_henchmen = [Belome2MarioClone, Belome2MallowClone, Belome2GenoClone, Belome2BowserClone, Belome2PeachClone]
     alt_palette = ["F8F8F8", "F8C880", "C08848", "A86848", "783830", "505050", "383838",
                    "202828", "181818", "3838E0", "0000D8", "000060", "E0D8D8", "988888", "181818"]
     dialog_replacements = [
@@ -2541,7 +2595,7 @@ class Jinx3Boss(Boss):
 
 class CulexFireCrystal(Henchman):
     pack_number = 217
-    model = SmallModelDetails(None, 386, None, 578, sequence=1)
+    model = SmallModelDetails(None, 707, None, 718)
 
 
 class CulexWaterCrystal(Henchman):
@@ -2551,7 +2605,7 @@ class CulexWaterCrystal(Henchman):
 
 class CulexEarthCrystal(Henchman):
     pack_number = 219
-    model = SmallModelDetails(None, 435, None, 579, sequence=1)
+    model = SmallModelDetails(None, 719, None, 720)
 
 
 class CulexWindCrystal(Henchman):
@@ -3857,9 +3911,9 @@ class CloakerDominoBoss(Boss):
          '''PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Cloaker and Domino's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped\n CLOAKER and DOMINO!![await]'''),
-        (1778, '''CLOAKER: Guess you're tougher\n than I thought...[await]'''),
-        (1780, '''\n CLOAKER: So, you've returned...![await]'''),
-        (1781, '''CLOAKER: I don't like where this is\n going...[await]'''),
+        (1778, '''DOMINO: Guess you're tougher\n than I thought...[await]'''),
+        (1780, '''\n DOMINO: So, you've returned...![await]'''),
+        (1781, '''DOMINO: I don't like where this is\n going...[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -3871,24 +3925,24 @@ class CloakerDominoBoss(Boss):
         (2061,
          '''CHEF TORTE: Zees cake, ve make\n it look like big brick! It is...\n masterpiece![await]'''),
         (2504,
-         '''CLOAKER: Hee hee hee... You still\n need to find [0x7024] more item(s)![await]'''),
+         '''DOMINO: Hee hee hee... You still\n need to find [0x7024] more item(s)![await]'''),
         (2560, '''SNIFIT 1: Hello there.[await]\n Cloaker and Domino are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
         (2572,
          '''SNIFIT 2: Please refrain\n from bothering Cloaker and Domino.[await]'''),
         (2831,
-         '''CLOAKER: Hee hee hee... So you've\n found our little town! Boring,\n isn't it?[await]'''),
+         '''DOMINO: Hee hee hee... So you've\n found our little town! Boring,\n isn't it?[await]'''),
         (2838,
-         ''' You will find Cloaker...\n in his house. He is...the most\n respected person here.[await]'''),
+         ''' You will find Domino...\n in his house. He is...the most\n respected person here.[await]'''),
         (3044,
-         '''CLOAKER: Hee hee hee... So you're\n challenging the dojo master?[await]'''),
+         '''DOMINO: Hee hee hee... So you're\n challenging the dojo master?[await]'''),
         (3057,
          ''' Hee hee hee... Wanna fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Weaklings-this and Snake-that.[await]'''),
         (3352,
-         '''CLOAKER: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]'''),
+         '''DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]'''),
         (3353,
-         '''CLOAKER: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]'''),
+         '''DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]'''),
     ]
 
 
@@ -4471,7 +4525,7 @@ class SmithyBoss(Boss):
         (2062,
          '''MACHINE MADE: We've gotten REAL\n good with fondant![await]'''),
         (2504,
-         '''SMITHY: How utterly annoying![await]\n Give me [28][1] more item(s)![await]'''),
+         '''SMITHY: How utterly annoying![await]\n Give me [0x7024] more item(s)![await]'''),
         (2560, '''MACHINE MADE: Yo![await][pause] Smithy's busy,\n so come back another time! [await][page]\n [delay]...You sure you wanna just barge\n in like that?[await][pause] Alright buddy, don't\n say I didn't warn you![await]'''),
         (2572,
          '''MACHINE MADE: Man, what's your\n deal?[await][pause] Quit snooping around!\n Smithy'll have a fit![await]'''),
@@ -4811,7 +4865,7 @@ class Booster(BossAndStarLocation):
         BossModelFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 0, BoosterBoss, SpriteSize.Small,
                       False, target_scripts=[1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], sequence_setter=789),
         BossModelFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 7, BoosterBoss,
-                      SpriteSize.Small, False, dialogs=[2504], target_scripts=[3809], sequence_setter=790),
+                      SpriteSize.Small, False, dialogs=[2504], target_scripts=[3809, 3930], sequence_setter=790),
         BossModelFill(Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 6, BoosterBoss,
                       SpriteSize.Small, False, target_scripts=[1339, 1335], target_action_scripts=[], sequence_setter=791),
         BossModelFill(Rooms._193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS, 6, BoosterBoss,
@@ -4834,12 +4888,12 @@ class Booster(BossAndStarLocation):
             UniqueHenchmanFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 1, DefaultSnifit, False, True, False, HenchmanType.NPCOnly, target_scripts=[
                                1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], target_action_scripts=[576, 577, 579], sequence_setter=789),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 0, DefaultSnifit, False, True, False,
-                               HenchmanType.NPCOnly, target_scripts=[3809, 600], target_action_scripts=[376, 372], sequence_setter=790),
+                               HenchmanType.NPCOnly, target_scripts=[3809, 600, 3930], target_action_scripts=[376, 372], sequence_setter=790),
             UniqueHenchmanFill(Rooms._054_BOOSTER_HILL_____DUMMY, 3, DefaultSnifit, True, True, False, HenchmanType.NPCOnly, target_scripts=[
                                3499, 3502, 3500, 3503], target_action_scripts=[707, 712, 711], sequence_setter=200),
             UniqueHenchmanFill(Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, 0, BoosterHillSnifit, False, True, False,
                                HenchmanType.NPCOnly, target_scripts=[1282, 2278], target_action_scripts=[], sequence_setter=794),
-            UniqueHenchmanFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 1, DefaultSnifit, False,
+            UniqueHenchmanFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 2, DefaultSnifit, False,
                                True, False, HenchmanType.NPCOnly, target_scripts=[2295], target_action_scripts=[], sequence_setter=795),
         ],
         [
@@ -4848,12 +4902,12 @@ class Booster(BossAndStarLocation):
             UniqueHenchmanFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 2, DefaultSnifit, False, True, False, HenchmanType.NPCOnly, target_scripts=[
                                1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], target_action_scripts=[576, 577, 580], sequence_setter=789, battlefield=Battlefields.BoosterTower),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 1, DefaultSnifit, False, True, False,
-                               HenchmanType.NPCOnly, target_scripts=[3809, 600], target_action_scripts=[373], sequence_setter=790),
+                               HenchmanType.NPCOnly, target_scripts=[3809, 600, 3930], target_action_scripts=[373], sequence_setter=790),
             UniqueHenchmanFill(Rooms._054_BOOSTER_HILL_____DUMMY, 4, BoosterHillSnifit, True, True, False, HenchmanType.NPCOnly, target_scripts=[
                                3499, 3502, 3500, 3503], target_action_scripts=[707, 712, 711], sequence_setter=200),
             UniqueHenchmanFill(Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, 1, DefaultSnifit, False, True, False,
                                HenchmanType.NPCOnly, target_scripts=[1282, 2278], target_action_scripts=[], sequence_setter=794),
-            UniqueHenchmanFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 2, DefaultSnifit, False,
+            UniqueHenchmanFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 1, DefaultSnifit, False,
                                True, False, HenchmanType.NPCOnly, target_scripts=[2295], target_action_scripts=[], sequence_setter=795),
         ],
         [
@@ -4862,7 +4916,7 @@ class Booster(BossAndStarLocation):
             UniqueHenchmanFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 3, DefaultSnifit, False, True, False, HenchmanType.NPCOnly, target_scripts=[
                                1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], target_action_scripts=[576, 577, 578], sequence_setter=789),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 2, DefaultSnifit, False, True, False,
-                               HenchmanType.NPCOnly, target_scripts=[3809, 600], target_action_scripts=[376, 374], sequence_setter=790),
+                               HenchmanType.NPCOnly, target_scripts=[3809, 600, 3930], target_action_scripts=[376, 374], sequence_setter=790),
             UniqueHenchmanFill(Rooms._054_BOOSTER_HILL_____DUMMY, 5, BoosterHillSnifit, True, True, False, HenchmanType.NPCOnly, target_scripts=[
                                3499, 3502, 3500, 3503], target_action_scripts=[707, 712, 711], sequence_setter=200),
             UniqueHenchmanFill(Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, 2, DefaultSnifit, False, True, False,
@@ -5103,7 +5157,6 @@ class Mokura(BossAndStarLocation):
     name = "Mokura"
     boss = MokuraBoss
 
-
 class Belome2(BossAndStarLocation):
     identifier = 268
     description = AvailableBosses.Belome2.value
@@ -5202,7 +5255,7 @@ class MegaSmilax(BossAndStarLocation):
     boss = MegaSmilaxBoss
     boss_locations = [
         BossModelFill(Rooms._254_BEAN_VALLEY_SMILAX_AREA, 1, MegaSmilaxBoss, SpriteSize.Small, False, target_scripts=[
-                      2555], target_action_scripts=[845], sequence_setter=817),  # despawn NPC 0 and move NPC 1 down one Z coordinate
+                      2555, 2557], target_action_scripts=[845], sequence_setter=817),  # despawn NPC 0 and move NPC 1 down one Z coordinate
     ]
 
 
@@ -5247,6 +5300,8 @@ class Valentina(BossAndStarLocation):
                       False, target_scripts=[738], target_action_scripts=[], sequence_setter=822),
         BossModelFill(Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, 4, ValentinaBoss, SpriteSize.Small,
                       False, target_scripts=[1282, 2278], target_action_scripts=[], sequence_setter=794),
+        BossModelFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 9, ValentinaBoss,
+                      SpriteSize.Small, False, target_scripts=[2295], target_action_scripts=[], sequence_setter=795),
     ]
     statue_locations = [
         StatueFill(Rooms._341_NIMBUS_LAND_GARROS_HOUSE, 1, sequence_setter=821), 
@@ -5286,7 +5341,6 @@ class Valentina(BossAndStarLocation):
         StatueFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 4, sequence_setter=835), 
         StatueFill(Rooms._501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, 0, sequence_setter=836), 
         StatueFill(Rooms._501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, 1, sequence_setter=836), 
-        StatueFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 9, sequence_setter=795),
     ]
     repeatable_henchmen = [
         [

@@ -662,11 +662,6 @@ class Sprites:
             #                         mold.tiles[tile_index] = tile
             #                     sprite.animation.properties.molds[mold_index] = mold
 
-            if index == 948:
-                for mi, mold in enumerate(sprite.animation.properties.molds):
-                    for ti, tile in enumerate(mold.tiles):
-                        sprite.animation.properties.molds[mi].tiles[ti].y = sprite.animation.properties.molds[mi].tiles[ti].y + 32
-
             wip_sprite = {
                 "sprite_data": sprite
             }
@@ -921,6 +916,8 @@ class Sprites:
             else:
                 output_tile_ranges.append((b.start, animation_banks[bank_index].tiles))
         
+        if len(complete_images) > 512:
+            raise("too many images: %i" % len(complete_images))
         if len(complete_images) < 512:
             ind = len(complete_images)
             while ind < 512:
@@ -1002,6 +999,8 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
         image_data.append(palette_ptr & 0xFF)
         image_data.append(palette_ptr >> 8)
 
+    #print(len(animations))
+
     for anim_id, animation in enumerate(animations):
 
         if anim_id not in used_animations:
@@ -1017,6 +1016,7 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
                     ),
                 ]
             ))
+
 
         length_bytes = bytearray([])
         sequence_offset = bytearray([0x0C, 0x00])
@@ -1064,6 +1064,8 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
                 this_mold_bytes = bytearray([])
                 if mold.gridplane:
                     for tile_index, tile in enumerate(mold.tiles):
+                        if anim_id == 453:
+                            print(mold_index, tile)
                         # if anim_id <= 1:
                         #     print(anim_id, mold_index, tile.subtile_bytes)
                         for i, subtile_byte in enumerate(tile.subtile_bytes):
@@ -1172,7 +1174,6 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
             #print(anim_id, subtile_indexes)
             #print(len(subtile_indexes))
             #print("")
-
         mold_ptrs.extend([0, 0])
 
         length_bytes_short = 2 + len(sequence_offset) + len(mold_offset) + len(count_bytes) + len(misc_bytes) + len(sequence_ptrs) + len(sequence_bytes) + len(mold_ptrs) + len(mold_bytes)

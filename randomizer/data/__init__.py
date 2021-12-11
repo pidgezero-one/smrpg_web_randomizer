@@ -1,5 +1,7 @@
 # Vanilla game data used by the randomizer.
 
+from . import agent
+
 from . import attacks
 from . import bosses
 from . import characters

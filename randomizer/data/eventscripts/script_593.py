@@ -88,11 +88,6 @@ script = [
         "args": [198]
     },
     {
-        "identifier": 'EVENT_593_jmp_to_event_50__',
-        "command": 'run_event_as_subroutine',
-        "args": [168]
-    },
-    {
         "identifier": 'EVENT_593_apply_tile_mod_22',
         "command": 'apply_tile_mod',
         "args": [Rooms._271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE, 0, [_0x6AFlags.USE_ALTERNATE]]
@@ -165,6 +160,11 @@ script = [
     {
         "identifier": 'EVENT_593_store_01_to_0248_190',
         "command": 'store_01_to_0248'
+    },
+    {
+        "identifier": 'EVENT_593_jmp_to_event_50__',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_593_ret_194',

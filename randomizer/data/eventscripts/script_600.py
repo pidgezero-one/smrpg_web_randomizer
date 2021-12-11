@@ -21,102 +21,121 @@ script = [
         "args": [0x0162, []]
     },
     {
+        "identifier": 'EVENT_600_jmp_if_bit_set_3',
+        "command": 'jmp_if_bit_set',
+        "args": [0x704c, 6, 'EVENT_257_fade_in_from_black_async_0']
+    },
+    # {
+    #     "identifier": 'EVENT_600_action_queue_sync_6',
+    #     "command": 'action_queue_sync',
+    #     "args": [AreaObjects.NPC_3],
+    #     "subscript": [
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
+    #             "command": 'set_sprite_sequence',
+    #             "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+    #         },
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_6_SUBSCRIPT_set_priority_1',
+    #             "command": 'set_priority',
+    #             "args": [2]
+    #         },
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_6_SUBSCRIPT_set_vram_priority_2',
+    #             "command": 'set_vram_priority',
+    #             "args": [VramPriority.NORMAL]
+    #         }
+    #     ]
+    # },
+    # {
+    #     "identifier": 'EVENT_600_action_queue_sync_7',
+    #     "command": 'action_queue_sync',
+    #     "args": [AreaObjects.NPC_4],
+    #     "subscript": [
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_7_SUBSCRIPT_set_sprite_sequence_0',
+    #             "command": 'set_sprite_sequence',
+    #             "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+    #         },
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_7_SUBSCRIPT_set_priority_1',
+    #             "command": 'set_priority',
+    #             "args": [2]
+    #         },
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_7_SUBSCRIPT_set_vram_priority_2',
+    #             "command": 'set_vram_priority',
+    #             "args": [VramPriority.NORMAL]
+    #         }
+    #     ]
+    # },
+    # {
+    #     "identifier": 'EVENT_600_action_queue_sync_8',
+    #     "command": 'action_queue_sync',
+    #     "args": [AreaObjects.NPC_5],
+    #     "subscript": [
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_8_SUBSCRIPT_set_sprite_sequence_0',
+    #             "command": 'set_sprite_sequence',
+    #             "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+    #         },
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_8_SUBSCRIPT_set_priority_1',
+    #             "command": 'set_priority',
+    #             "args": [2]
+    #         },
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_8_SUBSCRIPT_set_vram_priority_2',
+    #             "command": 'set_vram_priority',
+    #             "args": [VramPriority.NORMAL]
+    #         }
+    #     ]
+    # },
+    # {
+    #     "identifier": 'EVENT_600_action_queue_sync_9',
+    #     "command": 'action_queue_sync',
+    #     "args": [AreaObjects.NPC_6],
+    #     "subscript": [
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_0',
+    #             "command": 'set_sprite_sequence',
+    #             "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+    #         },
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_9_SUBSCRIPT_set_priority_1',
+    #             "command": 'set_priority',
+    #             "args": [2]
+    #         },
+    #         {
+    #             "identifier": 'EVENT_600_action_queue_sync_9_SUBSCRIPT_set_vram_priority_2',
+    #             "command": 'set_vram_priority',
+    #             "args": [VramPriority.NORMAL]
+    #         }
+    #     ]
+    # },
+    {
+        "identifier": 'EVENT_600_jmp_if_bit_set_0--_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7063, 3, 'EVENT_600_ret_12']
+    },
+    {
+        "identifier": 'EVENT_600_jmp_if_bit_set_0-_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7063, 3, 'EVENT_600_sequence_setter']
+    },
+    {
+        "identifier": 'EVENT_600_position_setter_',
+        "command": 'run_event_as_subroutine',
+        "args": [3930]
+    },
+    {
         "identifier": 'EVENT_600_sequence_setter',
         "command": 'run_event_as_subroutine',
         "args": [790]
     },
     {
-        "identifier": 'EVENT_600_jmp_if_bit_set_3',
-        "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_257_fade_in_from_black_async_0']
-    },
-    {
-        "identifier": 'EVENT_600_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_600_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_600_action_queue_sync_6_SUBSCRIPT_set_priority_1',
-                "command": 'set_priority',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_600_action_queue_sync_6_SUBSCRIPT_set_vram_priority_2',
-                "command": 'set_vram_priority',
-                "args": [VramPriority.NORMAL]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_600_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
-        "subscript": [
-            {
-                "identifier": 'EVENT_600_action_queue_sync_7_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_600_action_queue_sync_7_SUBSCRIPT_set_priority_1',
-                "command": 'set_priority',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_600_action_queue_sync_7_SUBSCRIPT_set_vram_priority_2',
-                "command": 'set_vram_priority',
-                "args": [VramPriority.NORMAL]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_600_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
-        "subscript": [
-            {
-                "identifier": 'EVENT_600_action_queue_sync_8_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_600_action_queue_sync_8_SUBSCRIPT_set_priority_1',
-                "command": 'set_priority',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_600_action_queue_sync_8_SUBSCRIPT_set_vram_priority_2',
-                "command": 'set_vram_priority',
-                "args": [VramPriority.NORMAL]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_600_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
-        "subscript": [
-            {
-                "identifier": 'EVENT_600_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_600_action_queue_sync_9_SUBSCRIPT_set_priority_1',
-                "command": 'set_priority',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_600_action_queue_sync_9_SUBSCRIPT_set_vram_priority_2',
-                "command": 'set_vram_priority',
-                "args": [VramPriority.NORMAL]
-            }
-        ]
+        "identifier": 'EVENT_600_fade_in_from_black_sync',
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_600_ret_12',

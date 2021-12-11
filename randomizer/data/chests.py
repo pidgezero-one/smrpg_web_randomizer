@@ -206,6 +206,7 @@ class CharacterRecruit(locations.ItemLocation):
     npcs = []
     credits_npcs = []
     is_character_recruit = True
+    doll_npcs = []
 
     def item_allowed(self, item):
         # Can only be character
@@ -418,7 +419,9 @@ class MushroomWayCharacter(CharacterRecruit):
     ]
     credits_npcs = [
         (269, 0, [3804], []),
-        (496, 20, [3885], [])
+        (496, 20, [3885], []),
+        (88, 2, [3950], []),
+        (375, 1, [3951], [])
     ]
 
 # populate this with the corresponding character in MarrymoreCharacter
@@ -1557,6 +1560,11 @@ class ForestMazeCharacter(CharacterRecruit):
     credits_npcs = [
         (496, 21, [3885], [])
     ]
+    doll_npcs = [
+        (496, 22, [3885], []),
+        (88, 3, [3950], []),
+        (375, 2, [3951], [])
+    ]
 
     def can_access(self, inventory):
         return locations.can_access_forest(self.world, inventory)
@@ -2012,7 +2020,9 @@ class MolevilleMinesCharacter(CharacterRecruit):
     ]
     credits_npcs = [
         (435, 7, [], [969]),
-        (496, 23, [3885], [])
+        (496, 23, [3885], []),
+        (88, 4, [3950], []),
+        (375, 4, [3951], [])
     ]
 
     def can_access(self, inventory):
@@ -2652,6 +2662,71 @@ class MarrymoreInn(Chest):
     npc_ids = [0]
     event = 247
 
+class MarrymoreSnifit1(NPCReward):
+    area = locations.Area.Marrymore
+    description = ShuffleLocationSelector.MarrymoreSnifit1.value
+    item = items.Brooch
+    original_item = items.Brooch
+    rooms = [154]
+    event = 253
+
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
+            self.access = 2
+
+    def can_access(self, inventory):
+        return locations.can_access_marrymore(self.world, inventory) and inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+
+class MarrymoreSnifit2(NPCReward):
+    area = locations.Area.Marrymore
+    description = ShuffleLocationSelector.MarrymoreSnifit2.value
+    item = items.Ring
+    original_item = items.Ring
+    rooms = [154]
+    event = 252
+
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
+            self.access = 2
+
+    def can_access(self, inventory):
+        return locations.can_access_marrymore(self.world, inventory) and inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+
+class MarrymoreSnifit3(NPCReward):
+    area = locations.Area.Marrymore
+    description = ShuffleLocationSelector.MarrymoreSnifit3.value
+    item = items.Shoes
+    original_item = items.Shoes
+    rooms = [154]
+    event = 251
+
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
+            self.access = 2
+
+    def can_access(self, inventory):
+        return locations.can_access_marrymore(self.world, inventory) and inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+
+class MarrymoreAltarHead(OverworldItem):
+    area = locations.Area.Marrymore
+    description = ShuffleLocationSelector.MarrymoreAltar.value
+    item = items.Crown
+    original_item = items.Crown
+    rooms = [154]
+    npc_ids = [5]
+    event = 241
+
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
+            self.access = 2
+
+    def can_access(self, inventory):
+        return locations.can_access_marrymore(self.world, inventory) and inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+
 
 class MarrymoreStarPiece(BossStarPiece):
     area = locations.Area.Marrymore
@@ -2677,11 +2752,13 @@ class MarrymoreCharacter(CharacterRecruit):
     rooms = [154]
     event = 186
     npcs = [
-        (154, 8, [3809], []),
+        (154, 8, [3809, 3930], []),
         (54, 8, [3499, 3502, 3506], [])
     ]
     credits_npcs = [
-        (496, 19, [3885], [])
+        (496, 19, [3885], []),
+        (88, 0, [3950], []),
+        (375, 0, [3951], [])
     ]
 
     def can_access(self, inventory):
@@ -2750,7 +2827,7 @@ class FrogDisciple5(FrogCoinShopItem):
 class SeasideTownBoss(BossStarPiece):
     description = ShuffleLocationSelector.SeasideTownBoss.value
     area = locations.Area.SeasideTown
-    rooms = [315]
+    rooms = [316]
     event = 167
     item = items.StarPiece5
     original_item = items.StarPiece5
@@ -7161,6 +7238,9 @@ def get_default_chests(world):
         MarrymorePrize4(world),
         MarrymorePrize5(world),
         MarrymorePrize6(world),
+        MarrymoreSnifit1(world),
+        MarrymoreSnifit2(world),
+        MarrymoreSnifit3(world),
         MarrymoreInn(world),
         SeasideTownBossPrize(world),
         SeasideTownRescue(world),
@@ -7600,6 +7680,7 @@ def get_freestanding_item_checks(world):
         BoosterTowerCoin8(world),
         BoosterTowerCoin9(world),
         BoosterTowerParachuteCrevice(world),
+        MarrymoreAltarHead(world),
         SunkenShipRatStairsFlower(world),
         SunkenShipUnderwaterFrogCoin1(world),
         SunkenShipUnderwaterFrogCoin2(world),

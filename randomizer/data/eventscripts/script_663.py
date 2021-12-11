@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_663_set_7000_to_70A0_short_mem_3',
         "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70af]
+        "args": [0x70B2]
     },
     {
         "identifier": 'EVENT_663_jmp_if_7000_equals_short_4',
@@ -53,7 +53,7 @@ script = [
     {
         "identifier": 'EVENT_663_set_7000_to_70A0_short_mem_9',
         "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70af]
+        "args": [0x70B2]
     },
     {
         "identifier": 'EVENT_663_run_dialog_10',

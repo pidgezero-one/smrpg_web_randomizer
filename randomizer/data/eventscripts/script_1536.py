@@ -232,11 +232,6 @@ script = [
         "args": [0x704d, 7]
     },
     {
-        "identifier": 'EVENT_1536_set_49',
-        "command": 'set',
-        "args": [0x70b2, 0]
-    },
-    {
         "identifier": 'EVENT_1536_enter_area_50',
         "command": 'enter_area',
         "args": [Rooms._014_BOOSTER_HILL, RadialDirections.NORTHWEST, 7, 57, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]

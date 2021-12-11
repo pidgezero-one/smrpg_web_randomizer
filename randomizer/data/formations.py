@@ -2481,6 +2481,21 @@ def get_default_enemy_formations(world):
             FormationMember(1, False, world.get_enemy_instance(enemies.BirdyHenchman), 151, 119),
             FormationMember(2, False, world.get_enemy_instance(enemies.BirdyHenchman), 183, 151),
         ]),
+        EnemyFormation(430, None, 1, [
+            FormationMember(0, False, world.get_enemy_instance(enemies.MarioClone), 183, 127),
+        ]),
+        EnemyFormation(431, None, 1, [
+            FormationMember(0, False, world.get_enemy_instance(enemies.MallowClone), 183, 127),
+        ]),
+        EnemyFormation(432, None, 1, [
+            FormationMember(0, False, world.get_enemy_instance(enemies.GenoClone), 183, 127),
+        ]),
+        EnemyFormation(433, None, 1, [
+            FormationMember(0, False, world.get_enemy_instance(enemies.BowserClone), 183, 127),
+        ]),
+        EnemyFormation(434, None, 1, [
+            FormationMember(0, False, world.get_enemy_instance(enemies.PeachClone), 183, 127),
+        ]),
         EnemyFormation(480, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Cloaker2), 167, 135),
         ]),
@@ -3273,6 +3288,16 @@ def get_default_enemy_formations(world):
             formations_dict[395],
             formations_dict[395],
         ]),
+        FormationPack(154, [
+            formations_dict[430],
+            formations_dict[430],
+            formations_dict[430],
+        ]),
+        FormationPack(155, [
+            formations_dict[431],
+            formations_dict[431],
+            formations_dict[431],
+        ]),
         FormationPack(156, [
             formations_dict[268],
             formations_dict[268],
@@ -3452,6 +3477,21 @@ def get_default_enemy_formations(world):
             formations_dict[20],
             formations_dict[23],
             formations_dict[23],
+        ]),
+        FormationPack(196, [
+            formations_dict[432],
+            formations_dict[432],
+            formations_dict[432],
+        ]),
+        FormationPack(197, [
+            formations_dict[433],
+            formations_dict[433],
+            formations_dict[433],
+        ]),
+        FormationPack(198, [
+            formations_dict[434],
+            formations_dict[434],
+            formations_dict[434],
         ]),
         FormationPack(199, [
             formations_dict[427],

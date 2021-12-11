@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1172_set_random_10',
-        "command": 'set_random',
-        "args": [0x7000, 10000]
+        "command": 'run_event_as_subroutine',
+        "args": [1972]
     },
     {
         "identifier": 'EVENT_1172_mem_compare_val_11',
@@ -107,20 +107,11 @@ script = [
     },
     {
         "identifier": 'EVENT_1172_run_dialog_17',
-        "command": 'run_dialog',
-        "args": [2931, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1172_ret_18',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1973]
     },
     {
         "identifier": 'EVENT_1172_run_dialog_19',
-        "command": 'run_dialog',
-        "args": [2934, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1172_play_sound_20',
         "command": 'play_sound',
         "args": [Sounds._085_FLOWER, 6]
     },
@@ -140,35 +131,11 @@ script = [
     },
     {
         "identifier": 'EVENT_1172_run_dialog_24',
-        "command": 'run_dialog',
-        "args": [2933, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1172_play_sound_25',
-        "command": 'play_sound',
-        "args": [Sounds._085_FLOWER, 6]
-    },
-    {
-        "identifier": 'EVENT_1172_run_dialog_26',
-        "command": 'run_dialog',
-        "args": [2938, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_1172_put_inventory_27',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_1172_ret_28',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1971]
     },
     {
         "identifier": 'EVENT_1172_run_dialog_29',
-        "command": 'run_dialog',
-        "args": [2932, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1172_play_sound_30',
         "command": 'play_sound',
         "args": [Sounds._085_FLOWER, 6]
     },

@@ -228,9 +228,9 @@ def update_credits(world):
 
     #14
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'S. HASHIMOTO    K. HASHIMOTO')
-    credits.add_credit(0x80, 0x40, 0x81, 'H. OHMORI       M. SAKAKIBARA')
-    credits.add_credit(0x80, 0x00, 0xc2, 'T. KAYANO       A. YAMAGUCHI')
+    credits.add_credit(0x80, 0x80, 0xc0, 'S. HASHIMOTO   K. HASHIMOTO')
+    credits.add_credit(0x80, 0x40, 0x81, 'H. OHMORI      M. SAKAKIBARA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'T. KAYANO      A. YAMAGUCHI')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #15
@@ -490,6 +490,10 @@ def update_credits(world):
     credits.add_credit(0x80, 0x40, 0x81, 'THANK YOU MIKAYLA')
     credits.add_credit(0x80, 0x00, 0xc2, 'WE MISS YOU')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    # Clear the titles
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.end_titles(END_TITLES_DELAY)
 
     credits.end_thing(END_CREDITS_DELAY_1) # Yeah, my abstraction breaks at the end.
 

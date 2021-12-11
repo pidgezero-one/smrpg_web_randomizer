@@ -14,17 +14,6 @@ from randomizer.data.eventtables import _0x60Flags, AreaObjects
 from . import flags, utils
 
 
-def get_max_item_quality(world):
-    tiers_allowed = 1
-    if world.settings.is_flag_value(flags.ShopQuality, ShopQualities.t1):
-        tiers_allowed = 4
-    elif world.settings.is_flag_value(flags.ShopQuality, ShopQualities.t2):
-        tiers_allowed = 3
-    elif world.settings.is_flag_value(flags.ShopQuality, ShopQualities.t3):
-        tiers_allowed = 2
-    return tiers_allowed
-
-
 def randomize_all(world):
 
     # Shuffle shop contents and prices.
@@ -38,7 +27,7 @@ def randomize_all(world):
                 shop.items = [items.GoodieBag(world)]
         else:
             # collect items that CAN appear in shops
-            max_tier = get_max_item_quality(world)
+            max_tier = world.max_shop_quality
 
             
             # set disciple and moleville treasure shops
@@ -53,6 +42,10 @@ def randomize_all(world):
             shops_to_fill = [s for s in world.shops if not utils.isclass_or_instance(s, shops.PartialJuiceBarShop) and not utils.isclass_or_instance(s, shops.DiscipleShop)] + [s for s in world.special_shops if not utils.isclass_or_instance(s, shops.MolevilleTreasureShop)]
             original_item_pool = [item for shop in [s.items for s in shops_to_fill] for item in shop if item not in disciple_shop.items and item not in treasure_shop.items]
 
+            if world.settings.is_flag_enabled(flags.NoPickMeUps):
+                original_item_pool = [i for i in original_item_pool if not utils.isclass_or_instance(i, items.PickMeUp)]
+                game_should_include = [i for i in game_should_include if not utils.isclass_or_instance(i, items.PickMeUp)]
+                
             # Guarantee that consumable pool from original game ends up in shops no matter what
             game_should_include = [i for i in original_item_pool if i.consumable and i not in disciple_shop.items and i not in treasure_shop.items and not (i.special_equip and world.settings.is_flag_value(flags.RestrictSpecialEquips, True))]
             # All other eligible items may or may not appear in shops

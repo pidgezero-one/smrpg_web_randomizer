@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_655_inc_3',
         "command": 'inc',
-        "args": [0x70af]
+        "args": [0x70B2]
     },
     {
         "identifier": 'EVENT_655_ret_4',

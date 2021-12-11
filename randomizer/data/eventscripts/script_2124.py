@@ -11,9 +11,9 @@ script = [
         "args": [0x704c, 6, 'EVENT_2124_enter_area_7']
     },
     {
-        "identifier": 'EVENT_2124_jmp_if_bit_set_0',
+        "identifier": 'EVENT_2124_jmp_if_bit_set_0_',
         "command": 'jmp_if_bit_set',
-        "args": [0x7063, 3, 'EVENT_2124_enter_area_7']
+        "args": [0x7063, 3, 'EVENT_2124_enter_area_7_']
     },
     {
         "identifier": 'EVENT_2124_jmp_to_event_1',

@@ -6,8 +6,119 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3809_fade_in_from_black_sync_38',
-        "command": 'fade_in_from_black_sync'
+        "identifier": 'EVENT_3930_jmp_if_object_in_level_',
+        "command": 'jmp_if_object_in_level',
+        "args": [AreaObjects.NPC_5, 154, 'EVENT_3930_action_queue_sync_372']
+    },
+    {
+        "identifier": 'EVENT_3930_jmp_if_object_in_level_~',
+        "command": 'jmp',
+        "args": ['EVENT_3930_action_queue_sync_snifit1']
+    },
+    {
+        "identifier": 'EVENT_3930_action_queue_sync_372',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_5],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [22, 73, 6, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [8, 4, 26, RadialDirections.NORTHEAST]
+            },
+            {
+                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_set_priority_3',
+                "command": 'set_priority',
+                "args": [3]
+            },
+        ]
+    },
+    {
+        "identifier": 'EVENT_3930_action_queue_sync_snifit1',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [16, 84, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3930_action_queue_sync_snifit2',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [19, 78, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3930_action_queue_sync_snifit3',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [13, 90, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3930_action_queue_sync_peach',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_8],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [22, 72, 2, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_288_SUBSCRIPT_face_northeast_6',
+                "command": 'face_northeast'
+            },
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_288_SUBSCRIPT_set_sprite_sequence_7',
+                "command": 'set_sprite_sequence',
+                "args": [14, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3930_action_queue_sync_booster',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_7],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [22, 73, 2, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_3809_action_queue_async_73_SUBSCRIPT_shift_southeast_pixels_2',
+                "command": 'shift_southeast_pixels',
+                "args": [5]
+            },
+            {
+                "identifier": 'EVENT_3930_action_queue_async_380_SUBSCRIPT_face_northeast_2',
+                "command": 'face_northeast'
+            },
+        ]
+    },
+    {
+        "identifier": 'EVENT_3930_pause_368',
+        "command": 'pause',
+        "args": [30]
     },
     {
         "identifier": 'EVENT_3930_jump',

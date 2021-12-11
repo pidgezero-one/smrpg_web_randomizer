@@ -31,6 +31,11 @@ script = [
         "args": [0x706F, 3]
     },
     {
+        "identifier": 'EVENT_206_run_dialog_104',
+        "command": 'run_dialog',
+        "args": [2261, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+    },
+    {
         "identifier": "EVENT_206_ret_",
         "command": "jmp_to_event",
         "args": [207]

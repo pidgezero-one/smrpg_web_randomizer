@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3093_ret_418',
-        "command": 'jmp_to_event',
-        "args": [3400]
+        "command": 'jmp',
+        "args": ['EVENT_3093_star_piece']
     },
     {
         "identifier": 'EVENT_3093_set_bit_399',
@@ -31,7 +31,17 @@ script = [
         "args": [0x7068, 5]
     },
     {
-        "identifier": 'EVENT_3093_ret_418_',
+        "identifier": "EVENT_3093_check_bk_complete",
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7093, 7, 'EVENT_3093_star_piece']
+    },
+    {
+        "identifier": 'EVENT_3093_run_dialog_104',
+        "command": 'run_dialog',
+        "args": [2265, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+    },
+    {
+        "identifier": 'EVENT_3093_star_piece',
         "command": 'jmp_to_event',
         "args": [3400]
     },

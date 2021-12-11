@@ -729,7 +729,7 @@
                     }
                     else if (id == "T.random") {
                         boxes = $(`#${$.escapeSelector('L.chests')}, #${$.escapeSelector('L.coins')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["L.keys_anywhere", "L.stars_anywhere", "T.beetle", "T.kamek", "T.quality", "T.fireworks", "T.mimics", "T.xpstars", "T.slots"]
+                        dependent_ids = ["L.keys_anywhere", "L.stars_anywhere", "T.beetle", "T.kamek", "T.marry", "T.quality", "T.fireworks", "T.mimics", "T.xpstars", "T.slots"]
                         if (!value || $(`#${$.escapeSelector('T.quality')}`).val() != "empty") {
                             dependent_ids.push(...["T.bias", "T.restrict_monstro", "L.moveflags"])
                         }
@@ -789,7 +789,7 @@
                         }
                     }
                     else if (id == "S.random") {
-                        dependent_ids = ["S.quality"]
+                        dependent_ids = ["S.quality", "S.nolife"]
                         if (value == false || $(`#${$.escapeSelector('S.quality')}`).val() != "empty") {
                             dependent_ids.push(...["S.bias"])
                         }
@@ -864,11 +864,13 @@
                             $(`#${$.escapeSelector("T.restrict_monstro")}`).prop("disabled", true)
                             $(`#${$.escapeSelector("L.moveflags")}`).prop("disabled", true)
                             $(`#${$.escapeSelector("T.hard")}`).prop("disabled", true)
+                            $(`#${$.escapeSelector("T.noegg")}`).prop("disabled", true)
                         }
                         else {
                             $(`#${$.escapeSelector("T.bias")}`).prop("disabled", false)
                             $(`#${$.escapeSelector("T.restrict_monstro")}`).prop("disabled", false)
                             $(`#${$.escapeSelector("L.moveflags")}`).prop("disabled", false)
+                            $(`#${$.escapeSelector("T.noegg")}`).prop("disabled", false)
                             if (value == "original" || $(`#${$.escapeSelector('T.restrict_monstro')}`).prop("checked") == false) {
                                 $(`#${$.escapeSelector("T.hard")}`).prop("disabled", true)
                             }

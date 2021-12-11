@@ -381,6 +381,11 @@ script = [
     # },
 
 
+    {
+        "identifier": 'EVENT_192_____leave_party_22~_',
+        "command": 'set',
+        "args": [0x70D5, 5]
+    }, 
 
     # finish loading game
     

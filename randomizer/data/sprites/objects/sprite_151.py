@@ -806,11 +806,6 @@ sprite = CompleteSprite(
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=12),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
                         AnimationSequenceFrame(duration=4, mold_id=0),
                         AnimationSequenceFrame(duration=4, mold_id=1),
                         AnimationSequenceFrame(duration=4, mold_id=2),
@@ -826,6 +821,11 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=4, mold_id=12),
                     ]
                 ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=12),
+                    ]
+                )
             ]
         )
     ),
