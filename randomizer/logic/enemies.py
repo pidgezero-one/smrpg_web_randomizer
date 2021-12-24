@@ -5,7 +5,7 @@ from functools import reduce
 
 from randomizer.data import bosses, enemies
 from randomizer.data.formations import FormationMember
-from randomizer.data.helpers import EXPMultiplierOptions
+from randomizer.helpers.flag_helpers import EXPMultiplierOptions
 from . import flags, utils
 
 

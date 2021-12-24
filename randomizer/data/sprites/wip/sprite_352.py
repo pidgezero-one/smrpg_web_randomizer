@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(40, length=989, unknown=0x0002,
+    animation=AnimationPack(228, length=959, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=6144,
             molds=[
                 Mold(0, gridplane=False,
@@ -2137,7 +2137,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=127, y=376),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=127, y=120),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'),
                             bytearray(b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xfe\xfe\xfe\xfc\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xfe\xfe\xfe\xfc\xfc'),
@@ -2479,5 +2479,5 @@ sprite = CompleteSprite(
     ),
     palette_id=122,
     palette_offset=1,
-    unknown_num=8
+    unknown_num=0
 )

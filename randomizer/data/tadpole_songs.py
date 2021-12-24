@@ -1,5 +1,5 @@
-from randomizer.data.eventtables import Music, AreaObjects, RadialDirections
-from randomizer.data.objectsequencetables import SequenceSpeeds, _0x10Flags
+from randomizer.helpers.eventtables import Music, AreaObjects, RadialDirections
+from randomizer.helpers.objectsequencetables import SequenceSpeeds, _0x10Flags
 from math import floor
 
 

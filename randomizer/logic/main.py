@@ -19,7 +19,7 @@ from randomizer.data.roomobjects.roomobjects import rooms as roomdata
 from randomizer.data.npcmodels import models as npcmodels
 from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
-from randomizer.data.helpers import ItemQualities, FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
+from randomizer.helpers.flag_helpers import ItemQualities, FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
 from randomizer.data.sprites.objects.sprites import sprites as commonsprites
 from randomizer.data.utils import palette_to_bytes
 from randomizer.data.packets import packets as dpackets
@@ -55,8 +55,8 @@ from randomizer.data.eventscripts.utils.tower_access.geno_self import script as 
 from randomizer.data.eventscripts.utils.tower_access.bowser_self import script as tower_bowser_self
 from randomizer.data.eventscripts.utils.tower_access.toadstool_self import script as tower_toadstool_self
 
-from randomizer.data.roomobjecttables import RadialDirection
-from randomizer.data.eventtables import AreaObjects, Rooms, _0x60Flags
+from randomizer.helpers.roomobjecttables import RadialDirection
+from randomizer.helpers.eventtables import AreaObjects, Rooms, _0x60Flags
 
 from .enscript import EventScript
 from .osscript import ObjectSequenceScript
@@ -875,23 +875,31 @@ class GameWorld:
         # Bowser's Keep gating
         if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.prepend_bits(192, [[0x7068, 3]])
+            self.search_replace_dialog('`BOWSERS_KEEP_CONDITION`', '''from the\n world map.''')
         else:
             self.prepend_bits(192, [[0x707A, 3]])
             if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.volcano):
                 self.prepend_bits(192, [[0x707B, 2]])
+                self.search_replace_dialog('`BOWSERS_KEEP_CONDITION`', '''via\n the nearby volcano.''')
             else:
                 if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star1):
                     value = 1
+                    self.search_replace_dialog('`BOWSERS_KEEP_CONDITION`', '''with\n 1 Star Piece.''')
                 elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star2):
                     value = 2
+                    self.search_replace_dialog('`BOWSERS_KEEP_CONDITION`', '''with\n 2 Star Pieces.''')
                 elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star3):
                     value = 3
+                    self.search_replace_dialog('`BOWSERS_KEEP_CONDITION`', '''with\n 3 Star Pieces.''')
                 elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star4):
                     value = 4
+                    self.search_replace_dialog('`BOWSERS_KEEP_CONDITION`', '''with\n 4 Star Pieces.''')
                 elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star5):
                     value = 5
+                    self.search_replace_dialog('`BOWSERS_KEEP_CONDITION`', '''with\n 5 Star Pieces.''')
                 elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star6):
                     value = 6
+                    self.search_replace_dialog('`BOWSERS_KEEP_CONDITION`', '''with\n 6 Star Pieces.''')
                 else:
                     raise Exception("failed to set star piece gate on keep")
                 keep_script = copy.deepcopy([{**s} for s in self.eventscripts[207]])
@@ -955,7 +963,7 @@ class GameWorld:
 
         # Fireworks
         if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.vanilla):
-            pass
+            self.search_replace_dialog('`FIREWORKS_CLAUSE`', '''I'd have to go all the way through\n the mines to get some “Fireworks”\n to exchange for one of those.''')
         else:
             # assign one of 3 random fireworks
             fireworks_credits = random.randint(1, 6)
@@ -967,8 +975,10 @@ class GameWorld:
             # append the setting
             if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1):
                 self.prepend_bits(192, [[0x705D, 4]])
+                self.search_replace_dialog('`FIREWORKS_CLAUSE`', '''I'd need to exchange some\n “Fireworks” for one of those, and\n I have no idea where those are.''')
             if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
                 self.prepend_bits(192, [[0x705D, 5]])
+                self.search_replace_dialog('`FIREWORKS_CLAUSE`', '''I have absolutely no idea where I\n could find one of those.''')
 
         # EXP progression option
         if self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.easystars) or self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.hardstars):
@@ -1247,7 +1257,7 @@ class GameWorld:
                 if character.index == 4:
                     if character.palette.name[0] in ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']:
                         peach_article = "n"
-                        self.search_replace_dialog("`PEACH_ARTICLE`", peach_article)
+                    self.search_replace_dialog("`PEACH_ARTICLE`", peach_article)
             self.search_replace_dialog(character.placeholder, character_names[character.index])
             patch += character.get_patch()
         

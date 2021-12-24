@@ -8,7 +8,7 @@ from randomizer import data
 from randomizer.logic import flags
 from randomizer.logic.patch import Patch
 from randomizer.management.disassembler_common import use_table_name
-from randomizer.data.eventtables import room_table
+from randomizer.helpers.eventtables import room_table
 
 
 

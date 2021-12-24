@@ -6,9 +6,9 @@ import re
 import enum
 import copy
 import uuid
-from randomizer.data.objectsequencetables import _0x08Flags
-from randomizer.data.eventtables import AreaObjects
-from randomizer.data.helpers import SequenceType
+from randomizer.helpers.objectsequencetables import _0x08Flags # circular dependency because of data init. consider moving data types into helpers
+from randomizer.helpers.eventtables import AreaObjects
+from randomizer.helpers.flag_helpers import SequenceType
 
 # Amount to boost very small values when shuffling to give a bit more range for very small values.
 SMALL_BOOST_AMOUNT = 2.0

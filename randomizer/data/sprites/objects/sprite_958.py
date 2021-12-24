@@ -176,7 +176,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=768,
+    palette_id=765,
     palette_offset=0,
     unknown_num=8
 )

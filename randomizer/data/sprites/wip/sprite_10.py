@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(251, length=777, unknown=0x0002,
+    animation=AnimationPack(10, length=829, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -565,7 +565,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80@\xc0\x00\xc0 \xe0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\xc0 \xc0\x00`'),
                             bytearray(b'\x00\xff\x80\xff\xc0\xffs\x7f\x1f\x1f\x1c\x1f\xf0\xff\xe0\xff\x00\xe0\x00\xe0\x00\xf1\x80\x7f\xe0\x1f\xe0\x1f\x00\xfe\x00\xfc'),
                             bytearray(b' \xe0@\xc0\x80\x80\xc0\xc0\x80\x80\x00\x80@\xc0@\xc0\x00`\x00\xc0@\x80\x00\xc0@\x80\x00\x80@\x00@ '),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=100),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=380, y=100),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
                             bytearray(b'\x00.$\x1a4K5K}K}K\xfc#\xfc#..>>oonn&&&&\xc7\xc7\x87\x87'),
                             None,
@@ -1211,6 +1211,33 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=2, mold_id=28),
                         AnimationSequenceFrame(duration=2, mold_id=29),
                         AnimationSequenceFrame(duration=4, mold_id=30),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                        AnimationSequenceFrame(duration=4, mold_id=1),
+                        AnimationSequenceFrame(duration=2, mold_id=2),
+                        AnimationSequenceFrame(duration=2, mold_id=3),
+                        AnimationSequenceFrame(duration=2, mold_id=4),
+                        AnimationSequenceFrame(duration=2, mold_id=5),
+                        AnimationSequenceFrame(duration=2, mold_id=6),
+                        AnimationSequenceFrame(duration=4, mold_id=7),
+                        AnimationSequenceFrame(duration=2, mold_id=6),
+                        AnimationSequenceFrame(duration=2, mold_id=5),
+                        AnimationSequenceFrame(duration=2, mold_id=4),
+                        AnimationSequenceFrame(duration=2, mold_id=3),
+                        AnimationSequenceFrame(duration=2, mold_id=2),
+                        AnimationSequenceFrame(duration=2, mold_id=1),
+                        AnimationSequenceFrame(duration=4, mold_id=0),
+                        AnimationSequenceFrame(duration=4, mold_id=8),
+                        AnimationSequenceFrame(duration=4, mold_id=9),
+                        AnimationSequenceFrame(duration=8, mold_id=10),
+                        AnimationSequenceFrame(duration=2, mold_id=4),
+                        AnimationSequenceFrame(duration=2, mold_id=5),
+                        AnimationSequenceFrame(duration=2, mold_id=6),
+                        AnimationSequenceFrame(duration=2, mold_id=7),
+                        AnimationSequenceFrame(duration=4, mold_id=11),
                     ]
                 ),
             ]

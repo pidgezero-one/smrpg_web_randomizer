@@ -18,8 +18,8 @@ from randomizer.data.sprites.insertions.bowser.sprite_96 import sprite as sprite
 from randomizer.data.sprites.insertions.bowser.sprite_132 import sprite as sprite_132
 from randomizer.data.sprites.insertions.bowser.sprite_135 import sprite as sprite_135
 from randomizer.data.sprites.insertions.bowser.sprite_136 import sprite as sprite_136
-from randomizer.data.sprites.insertions.bowser.sprite_234 import sprite as sprite_234
-from randomizer.data.sprites.insertions.bowser.sprite_251 import sprite as sprite_251
+from randomizer.data.sprites.insertions.bowser.sprite_621 import sprite as sprite_621
+from randomizer.data.sprites.insertions.bowser.sprite_634 import sprite as sprite_634
 sprites = [None]*1024
 sprites[0] = sprite_0
 sprites[1] = sprite_1
@@ -255,7 +255,7 @@ sprites[230] = None
 sprites[231] = None
 sprites[232] = None
 sprites[233] = None
-sprites[234] = sprite_234
+sprites[234] = None
 sprites[235] = None
 sprites[236] = None
 sprites[237] = None
@@ -272,7 +272,7 @@ sprites[247] = None
 sprites[248] = None
 sprites[249] = None
 sprites[250] = None
-sprites[251] = sprite_251
+sprites[251] = None
 sprites[252] = None
 sprites[253] = None
 sprites[254] = None
@@ -642,7 +642,7 @@ sprites[617] = None
 sprites[618] = None
 sprites[619] = None
 sprites[620] = None
-sprites[621] = None
+sprites[621] = sprite_621
 sprites[622] = None
 sprites[623] = None
 sprites[624] = None
@@ -655,7 +655,7 @@ sprites[630] = None
 sprites[631] = None
 sprites[632] = None
 sprites[633] = None
-sprites[634] = None
+sprites[634] = sprite_634
 sprites[635] = None
 sprites[636] = None
 sprites[637] = None

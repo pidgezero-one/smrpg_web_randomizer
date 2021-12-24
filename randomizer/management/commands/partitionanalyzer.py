@@ -5,9 +5,9 @@ from randomizer.management.commands.output.disassembler_copy.level.roomobjects i
 from randomizer.management.commands.output.disassembler_copy.npcmodels import models as npcmodels
 from randomizer.data.graphics import sprites, images, animations
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline, bit_bool_from_num
-from randomizer.data.roomobjecttables import object_type, event_initiator, post_battle_behaviour, radial_direction_table, music_table, edge_table, exit_type_table, location_table, room_table, partition_space_table, partition_buffer_table
-from randomizer.data.eventtables import Rooms
-from randomizer.data.npcmodeltables import sprite_name_table
+from randomizer.helpers.roomobjecttables import object_type, event_initiator, post_battle_behaviour, radial_direction_table, music_table, edge_table, exit_type_table, location_table, room_table, partition_space_table, partition_buffer_table
+from randomizer.helpers.eventtables import Rooms
+from randomizer.helpers.npcmodeltables import sprite_name_table
 
 import xlsxwriter
 

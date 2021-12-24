@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, con_bitarray, writeline
-from randomizer.data.objectsequencetables import sequence_speed_table, vram_priority_table, _0x08_flags, _0x0A_flags, _0x10_flags
-from randomizer.data.eventtables import npc_packet_table, area_object_table, radial_direction_table, sound_table, coord_table, coord_unit_table, room_table
+from randomizer.helpers.objectsequencetables import sequence_speed_table, vram_priority_table, _0x08_flags, _0x0A_flags, _0x10_flags
+from randomizer.helpers.eventtables import npc_packet_table, area_object_table, radial_direction_table, sound_table, coord_table, coord_unit_table, room_table
 
 start = 0x210800
 #end = 0x21BADE
@@ -696,9 +696,9 @@ class Command(BaseCommand):
             writeline(file, '# Run the following command if you need to rebuild the table')
             writeline(file, '# python manage.py objectsequencedisassembler --rom ROM > openmode_sequence_debug.txt')
             writeline(
-                file, 'from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
+                file, 'from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
             writeline(
-                file, 'from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms')
+                file, 'from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms')
             script = scripts_with_named_jumps[i]
             if len(script) == 0:
                 writeline(file, 'script = []')

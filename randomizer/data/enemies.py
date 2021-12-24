@@ -8,9 +8,9 @@ from . import battlescripts
 from . import items
 from . import spells
 from .utils import palette_to_bytes
-from .battletables import Monsters, Targets
+from randomizer.helpers.battletables import Monsters, Targets
 from randomizer.data.npcmodels import models
-from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.data.battleassembler import BattleScript
 
 # Number of enemies

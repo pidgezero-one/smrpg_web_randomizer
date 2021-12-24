@@ -9,10 +9,11 @@ from . import flags, utils
 from randomizer.data import bosses, enemies
 from randomizer.data.bosses import is_vanilla, has_vanilla_henchmen, sanitize_animation_script, SpriteSize, HenchmanType, SequenceType, CrownHeight
 from randomizer.data.formations import FormationMember
-from randomizer.data.npcmodeltables import VramStore, SpriteName
-from randomizer.data.eventtables import AreaObjects, Sounds
-from randomizer.data.objectsequencetables import SequenceSpeeds, _0x08Flags, _0x10Flags
-from randomizer.data.roomobjecttables import RadialDirection, Rooms
+from randomizer.helpers.flag_helpers import WinConditions
+from randomizer.helpers.npcmodeltables import VramStore, SpriteName
+from randomizer.helpers.eventtables import AreaObjects, Sounds
+from randomizer.helpers.objectsequencetables import SequenceSpeeds, _0x08Flags, _0x10Flags
+from randomizer.helpers.roomobjecttables import RadialDirection, Rooms
 
 from randomizer.data.eventscripts.utils.castle_statue_room.bonk import script as statue_bonk
 from randomizer.data.eventscripts.utils.castle_statue_room.bonk_mario import script as statue_bonk_mario
@@ -485,6 +486,12 @@ def randomize_all(world):
                     cmds.append(new_command(353, 'clear_bit', [0x704a, 2]))
                     cmds.append(new_command(353, 'fade_out_to_black_async'))
                     cmds.append(new_command(353, 'set_bit_7_offset', [0x0158, [7]]))
+                    # end the game when Smithy defeated
+                    if world.settings.is_flag_value(flags.WinCondition, WinConditions.smithy):
+                        actual_ret = new_command(353, 'ret')
+                        cmds.append(new_command(353, 'jmp_if_bit_set', [0x7040, 0, actual_ret["identifier"]]))
+                        cmds.append(new_command(353, 'jmp_to_event', [3885]))
+                        cmds.append(actual_ret)
                 cmds.append(new_command(353, 'ret'))
                 fight_builders[353]["executions"].extend(cmds)
                 jmp = new_command(353, 'jmp_if_7000_equals_short', [boss_location.identifier, cmds[0]["identifier"]])

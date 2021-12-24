@@ -1,4 +1,4 @@
-from randomizer.data.objectsequencetables import SequenceSpeeds, _0x10Flags
+from randomizer.helpers.objectsequencetables import SequenceSpeeds, _0x10Flags
 subscript = [
     {
         "identifier": 'EVENT_2174_action_queue_async_10_SUBSCRIPT_face_southwest_0',

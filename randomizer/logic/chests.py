@@ -9,14 +9,14 @@ from scipy.stats import gamma
 
 from randomizer.data import items, locations, chests, bosses
 from randomizer.data.chests import PacketType 
-from randomizer.data.helpers import FireworksOptions, WinConditions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating, ShuffleLocationSelector
+from randomizer.helpers.flag_helpers import FireworksOptions, WinConditions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating, ShuffleLocationSelector
 from randomizer.data.items import ItemUnique
 from randomizer.data.locations import Area
 from randomizer.data.keys import KeyItemLocation
 from randomizer.logic import flags, keys, utils
 from randomizer.data.eventscripts.utils.slot_machine.event import script as slot_machine_commands
 from randomizer.data.eventscripts.utils.slot_machine.objects import objects as slot_machine_npcs
-from randomizer.data.eventtables import AreaObjects
+from randomizer.helpers.eventtables import AreaObjects
 from randomizer.data import characters
 
 dummy_allpurpose_item = items.RegularItem(None)

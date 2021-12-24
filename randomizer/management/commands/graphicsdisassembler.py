@@ -76,8 +76,8 @@ class Command(BaseCommand):
 
         for index, property_offset_ptr_offset in enumerate(range(ANIMATION_PACK_POINTERS_OFFSET, ANIMATION_PACK_POINTERS_OFFSET + ANIMATION_PACK_POINTERS_LENGTH, 3)):
             #if index > 316:
-            #if index > 443:
-            #    break
+            if index > 465:
+                break
             property_offset_ptr_offset = ANIMATION_PACK_POINTERS_OFFSET + (index * 3)
             property_offset = get_animation_pack_data_offset_from_third_byte(shortify(rom, property_offset_ptr_offset), rom[property_offset_ptr_offset + 2])
             if property_offset == -0xc00000:

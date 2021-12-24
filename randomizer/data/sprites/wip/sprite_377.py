@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(44, length=996, unknown=0x0002,
+    animation=AnimationPack(253, length=995, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=4096,
             molds=[
                 Mold(0, gridplane=False,
@@ -231,7 +231,7 @@ sprite = CompleteSprite(
                             bytearray(b'\xf7I\xfb\x05\xf6\x0f\x9c\x7f\xf8g\xf0\xbe\x80\xf8\x00\x00\x03\x00\x03\x00\x02\x01\x85\x03\x9b\x07\xf6\x0e\x98x\x00\x00'),
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=123, y=360),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=123, y=104),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
                             None,
                             bytearray(b'\x00\x00\x00\x00\x00\x80\x00\x80\x00\xc0\x00@\x00@@@\x00\x00\x00\x00\x80\x80\x80\x80\xc0\xc0\xc0\xc0\xc0\xc0\xc0\xc0'),
@@ -325,7 +325,7 @@ sprite = CompleteSprite(
                             bytearray(b'\xf7I\xfb\x05\xf6\x0f\x9c\x7f\xf8g\xf0\xbe\x80\xf8\x00\x00\x03\x00\x03\x00\x02\x01\x85\x03\x9b\x07\xf6\x0e\x98x\x00\x00'),
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=125, y=358),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=125, y=102),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
                             None,
                             bytearray(b'\x00\x00\x00\x00\x00\x80\x00\x80\x00\xc0\x00@\x00@@@\x00\x00\x00\x00\x80\x80\x80\x80\xc0\xc0\xc0\xc0\xc0\xc0\xc0\xc0'),
@@ -2599,5 +2599,5 @@ sprite = CompleteSprite(
     ),
     palette_id=135,
     palette_offset=1,
-    unknown_num=8
+    unknown_num=0
 )

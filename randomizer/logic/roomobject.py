@@ -3,9 +3,9 @@ import enum
 
 from . import utils
 from randomizer.data import palettes, items, chests, graphics
-from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace
+from randomizer.helpers.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace
 from randomizer.logic import flags
-from randomizer.data.helpers import BoosterTowerGating
+from randomizer.helpers.flag_helpers import BoosterTowerGating
 
 class RoomObjects:
     def __init__(self):
@@ -201,7 +201,9 @@ class RoomObjects:
                     #final byte (optional)
                     if e["length"] > 1 or e["f"] > 0:
                         exit_bytes.append(((e["length"] - 1) & 0x0F) | (e["f"] << 7))
+                print(i, len(exits), len(exit_bytes))
                 exit_output += exit_bytes
+                print(hex(len(exit_output)))
 
 
 

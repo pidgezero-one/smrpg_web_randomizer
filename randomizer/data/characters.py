@@ -2,7 +2,7 @@
 
 from randomizer.logic import utils, flags
 from randomizer.logic.patch import Patch
-from randomizer.data.helpers import PlayableCharacters
+from randomizer.helpers.flag_helpers import PlayableCharacters
 
 from . import spells
 from .utils import color_to_bytes, palette_to_bytes
@@ -577,7 +577,7 @@ class Peach(Character):
     ]
 
     original_weapon_sprite_ids = [7, None, 8, 9, 10, 11, 12]
-    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 251]
+    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 634]
     sprite_addresses = [[], None, [0x35FF1A, 0x35A9FD, 0x35CDA8], [], [0x35ED1A, 0x35ED0B, 0x35EEE5, 0x35EED6, 0x35EFDE, 0x35EFCD, 0x35F049, 0x35F058, 0x35FF74], [0x35EF1D, 0x35EF0E, 0x35F0F6, 0x35F0E7], [0x35A9A0]] # not building an assembler for this in this version
 
     battle_sprite_offset = 0x020226
@@ -719,7 +719,7 @@ class Bowser(Character):
     ]
 
     original_weapon_sprite_ids = [13, None, 14, 15, 16, 17, 18]
-    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 251]
+    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 634]
     sprite_addresses = [[], None, [0x35FF21, 0x35CDB1], [], [0x35ED2A, 0x35ED35, 0x35F074, 0x35F069, 0x35FF7B], [0x35EE2B, 0x35EE6C, 0x35EF31, 0x35EF95], []] # not building an assembler for this in this version
 
     battle_sprite_offset = 0x020227
@@ -850,7 +850,7 @@ class Geno(Character):
     ]
 
     original_weapon_sprite_ids = [25, None, 26, 27, 28, 29, 30]
-    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 251]
+    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 634]
     sprite_addresses = [[], None, [0x35FF28, 0x35BC59, 0x35CDBA], [], [0x35F93C, 0x35ED4F, 0x35F976, 0x35EF58], [0x35FF82, 0x35EDF3, 0x35EEAD, 0x35EFF5, 0x35F09A, 0x35B4F5, 0x35BAAD], [0x35BC4A, 0x35911C]] # not building an assembler for this in this version
 
     battle_sprite_offset = 0x020228

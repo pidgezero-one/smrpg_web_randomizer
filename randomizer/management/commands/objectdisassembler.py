@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline, bit_bool_from_num
-from randomizer.data.roomobjecttables import object_type, event_initiator, post_battle_behaviour, radial_direction_table, music_table, edge_table, exit_type_table, location_table, room_table, partition_space_table, partition_buffer_table
+from randomizer.helpers.roomobjecttables import object_type, event_initiator, post_battle_behaviour, radial_direction_table, music_table, edge_table, exit_type_table, location_table, room_table, partition_space_table, partition_buffer_table
 
 
 start = 0x148400
@@ -16,7 +16,7 @@ roomevent_ptrend = 0x20E3FF
 roomexit_start = 0x1D3166
 roomexit_end = 0x1D4904
 roomexit_ptrstart = 0x1D2D64
-roomexit_ptrend = 0x1D3165  # might be 0x20FDC7
+roomexit_ptrend = 0x1D3165
 
 partitionstart = 0x1DDE00
 partitionend = 0x1DDFFF # bumped up from 0x1DDFDF
@@ -132,7 +132,7 @@ class Command(BaseCommand):
                 writeline(
                     file, '# python manage.py objectdisassembler --rom ROM')
                 writeline(
-                    file, 'from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace')
+                    file, 'from randomizer.helpers.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace')
 
                 if len(d) == 0 and len(r) == 0 and len(e) == 0:
                     writeline(file, 'room = None')

@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(67, length=364, unknown=0x0002,
+    animation=AnimationPack(300, length=363, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -207,7 +207,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\xc0 \xe00\xf0\x10\xf0P\xd0\xe0\xe0\x80\x98\x00\x00\xc0\x00\xe0\x00\xf0\x00\xf0\x08\xd0 \xe0\x00\x80\xe0'),
                             bytearray(b'$\x10\x05\x1d\x0b?\x011\x00\x01\x00\x01\x00\x00\x00\x00\x0b\x08\x03\x00\x1f\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\xe0\xf8x\xf8\xd8\xd8\x98\x98\x80\x80\x00\x80\x00\x00\x00\x00\xe0`\xf8`\xc0\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=375, y=330),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=119, y=74),
                     ]
                 ),
                 Mold(18, gridplane=False,
@@ -287,7 +287,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\xc0 \xe00\xf0\x10\xf0P\xd0\xe0\xe0\x80\x98\x00\x00\xc0\x00\xe0\x00\xf0\x00\xf0\x08\xd0 \xe0\x00\x80\xe0'),
                             bytearray(b'$\x10\x05\x1d\x0b?\x011\x00\x01\x00\x01\x00\x00\x00\x00\x0b\x08\x03\x00\x1f\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\xe0\xf8x\xf8\xd8\xd8\x98\x98\x80\x80\x00\x80\x00\x00\x00\x00\xe0`\xf8`\xc0\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=368),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=112),
                     ]
                 ),
             ],
@@ -347,5 +347,5 @@ sprite = CompleteSprite(
     ),
     palette_id=581,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

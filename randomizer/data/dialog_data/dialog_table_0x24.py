@@ -751,8 +751,7 @@ dialog_data[457] = '''[await]'''
 dialog_data[458] = ''' It's the bus driver's day off today,
  so you can't take the Royal Bus.[await]
  If you need to go to Bowser's
- Keep, you can get there from the
- world map.[await]'''
+ Keep, you can get there `BOWSERS_KEEP_CONDITION`[await]'''
 dialog_data[459] = '''[await]'''
 dialog_data[460] = '''[await]'''
 dialog_data[461] = ''' Welcome! Come on in!

@@ -120,5 +120,5 @@ sprite = CompleteSprite(
     ),
     palette_id=229,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

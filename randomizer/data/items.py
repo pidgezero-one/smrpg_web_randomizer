@@ -4,7 +4,7 @@ import enum
 import random
 import math
 
-from randomizer.data.helpers import FireworksOptions, PlayableCharacters
+from randomizer.helpers.flag_helpers import FireworksOptions, PlayableCharacters
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
@@ -43,7 +43,7 @@ overworld_items = {
     "red_mushroom_item": OverworldItem(264, 483, static_packet=194, falling_packet=195, treasure_packet=196, chest_event=918),
     "green_mushroom_item": OverworldItem(264, 483, static_packet=197, falling_packet=198, treasure_packet=199, chest_event=919),
     "yellow_mushroom_item": OverworldItem(264, 483, static_packet=200, falling_packet=201, treasure_packet=202, chest_event=920),
-    "hammer": OverworldItem(680, 15),
+    "hammer": OverworldItem(680, 15, static_packet=206, falling_packet=207, treasure_packet=208, chest_event=922),
     "coin": OverworldItem(499, 925, static_packet=109, falling_packet=106, treasure_packet=16),
     "small_coin": OverworldItem(194, 163, static_packet=110, falling_packet=107, treasure_packet=18),
     "frog_coin": OverworldItem(195, 925, static_packet=111, falling_packet=108, treasure_packet=19),
@@ -57,16 +57,17 @@ overworld_items = {
     "nothing": OverworldItem(255, 164),
     "default": OverworldItem(111, 773, static_packet=90),
     "cookie": OverworldItem(652, 15, static_packet=118, falling_packet=119, treasure_packet=120, chest_event=893),
-    "chomp": OverworldItem(30, 831), # might be too big
+    "chomp": OverworldItem(30, 831, static_packet=212, falling_packet=213, treasure_packet=214, chest_event=924), # might be too big
     "berry": OverworldItem(144, 15, static_packet=121, falling_packet=122, treasure_packet=123, chest_event=894),
     "cannonball": OverworldItem(430, 15),
     "beetle": OverworldItem(255, 15, static_packet=191, falling_packet=192, treasure_packet=193, chest_event=917),
     "crown": OverworldItem(222, 840, static_packet=105, falling_packet=104, treasure_packet=103, chest_event=890),
-    "stick": OverworldItem(474, 841),
-    "shell": OverworldItem(148, 830),
-    "parasol": OverworldItem(205, 830),
-    "fan": OverworldItem(44, 842),
-    "frying_pan": OverworldItem(235, 843),
+    "stick": OverworldItem(474, 841, static_packet=209, falling_packet=210, treasure_packet=211, chest_event=923),
+    "red_shell": OverworldItem(148, 830, static_packet=218, falling_packet=219, treasure_packet=220, chest_event=926),
+    "green_shell": OverworldItem(148, 830, static_packet=221, falling_packet=222, treasure_packet=223, chest_event=927),
+    "parasol": OverworldItem(205, 830, static_packet=224, falling_packet=225, treasure_packet=226, chest_event=928),
+    "fan": OverworldItem(44, 842, static_packet=215, falling_packet=216, treasure_packet=217, chest_event=925),
+    "frying_pan": OverworldItem(235, 843, static_packet=203, falling_packet=204, treasure_packet=205, chest_event=921),
     "card": OverworldItem(150, 1017, static_packet=124, falling_packet=125, treasure_packet=126, chest_event=895),
     #"card": OverworldItem(150, 1017, True),
     "candy": OverworldItem(153, 773, static_packet=173, falling_packet=174, treasure_packet=175, chest_event=911),
@@ -82,7 +83,7 @@ overworld_items = {
     "green_juice": OverworldItem(153, 830, static_packet=139, falling_packet=140, treasure_packet=141, chest_event=900),
     "red_juice": OverworldItem(250, 830, static_packet=142, falling_packet=143, treasure_packet=144, chest_event=901),
     "blue_r_drink": OverworldItem(146, 830, static_packet=163, falling_packet=164, treasure_packet=165, chest_event=908),
-    "yellow_d_drink": OverworldItem(277, 830, static_packet=150, falling_packet=149, treasure_packet=149, chest_event=903),
+    "yellow_d_drink": OverworldItem(277, 830, static_packet=150, falling_packet=149, treasure_packet=148, chest_event=903),
     "green_p_drink": OverworldItem(153, 201, static_packet=145, falling_packet=146, treasure_packet=147, chest_event=902),
     "green_frog_drink": OverworldItem(153, 840, static_packet=159, falling_packet=158, treasure_packet=157, chest_event=906),
     "yellow_music_drink": OverworldItem(277, 201, static_packet=153, falling_packet=152, treasure_packet=151, chest_event=904),
@@ -615,7 +616,7 @@ class NokNokShell(RegularItem):
     tier = 5
     order = 58
     equip_chars = [Mario]
-    model = overworld_items["shell"]
+    model = overworld_items["green_shell"]
     attack = 20
     variance = 2
     price = 20
@@ -776,7 +777,7 @@ class SlapGlove(RegularItem):
 class TroopaShell(RegularItem):
     index = 18
     description = 'Kick with it!'
-    model = overworld_items["shell"]
+    model = overworld_items["red_shell"]
     tier = 5
     order = 59
     equip_chars = [Mario]
@@ -1011,7 +1012,7 @@ class SonicCymbal(RegularItem):
 class LazyShellWeapon(RegularItem):
     index = 33
     description = 'Toss a shell\x01at an enemy!'
-    model = overworld_items["shell"]
+    model = overworld_items["red_shell"]
     tier = 1
     order = 57
     equip_chars = [Mario]
@@ -1197,7 +1198,7 @@ class HappyCape(RegularItem):
 class HappyShell(RegularItem):
     index = 48
     description = 'A lucky shell'
-    model = overworld_items["shell"]
+    model = overworld_items["green_shell"]
     tier = 5
     order = 86
     item_type = 1
@@ -1279,7 +1280,7 @@ class NauticaDress(RegularItem):
 class CourageShell(RegularItem):
     index = 54
     description = 'A stout shell'
-    model = overworld_items["shell"]
+    model = overworld_items["green_shell"]
     tier = 4
     order = 74
     item_type = 1
@@ -1377,7 +1378,7 @@ class FireCape(RegularItem):
 class FireShell(RegularItem):
     index = 62
     description = 'Determined\x01person~s shell'
-    model = overworld_items["shell"]
+    model = overworld_items["red_shell"]
     tier = 4
     order = 78
     item_type = 1
@@ -1440,7 +1441,7 @@ class StarCape(RegularItem):
 class HealShell(RegularItem):
     index = 67
     description = 'A legendary\x01shell.'
-    model = overworld_items["shell"]
+    model = overworld_items["green_shell"]
     tier = 3
     order = 88
     item_type = 1
@@ -1494,7 +1495,7 @@ class SuperSuit(RegularItem):
 class LazyShellArmor(RegularItem):
     index = 70
     description = 'A stout and\x01durable shell.'
-    model = overworld_items["shell"]
+    model = overworld_items["red_shell"]
     tier = 1
     order = 90
     item_type = 1

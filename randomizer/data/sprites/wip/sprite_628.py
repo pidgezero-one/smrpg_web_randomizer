@@ -3,17 +3,55 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(0, length=31, unknown=0x0002,
+    animation=AnimationPack(416, length=71, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
                     tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
+                            bytearray(b'\xd7v\x01\x12\xec\xf0v\x01\xf0\xf8\xe9\x06G\n4\x00\x12\xff\x02v\x01\x12\x01\xfd}\x01\xa0\xe6\xedC;\xc0'),
+                            None,
+                            bytearray(b'\x00\x12\xfe\x01v\x01\x12\x02\xfc}\x01"\x02\xfeR\x08"\xff\x00\x8d\x01"\x01\xfe(\x01\x12\xf6\xffv\x01\x12'),
+                            None,
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=134, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
+                            bytearray(b'\xf3\xf73\x08"\x00\x00\x8d\x01"\x02\xfe(\x01\x12\xf8\xfdv\x01\x12\xfe\xf4\xfa\x02\x12\x02\xfav\x01\x12\x02\xea'),
+                            bytearray(b'\x12\x11\xf7\xfa\x02\x12\x04\x04\xfa\x02\x12\xfc\x02v\x01\x12\xfb\xe7v\x01\x12\x03\xdd\xfa\x02\xf0\xf9\xe9J"@]'),
+                            None,
+                            bytearray(b'\x12\x06\xdd\xfa\x02\x12\x00\xf0\xfa\x02\xf0\xf7\xe8J"@]\x00\x12\xff\xffv\x01\x12\x04\xfb}\x01\xa0\xe9\xeaC'),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=118, y=120),
+                    ]
+                ),
+                Mold(1, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
+                            None,
+                            bytearray(b'\xd7v\x01\x12\xec\xf0v\x01\xf0\xf8\xe9\x06G\n4\x00\x12\xff\x02v\x01\x12\x01\xfd}\x01\xa0\xe6\xedC;\xc0'),
+                            bytearray(b'\x12\x06\xdd\xfa\x02\x12\x00\xf0\xfa\x02\xf0\xf7\xe8J"@]\x00\x12\xff\xffv\x01\x12\x04\xfb}\x01\xa0\xe9\xeaC'),
+                            bytearray(b'\x00\x12\xfe\x01v\x01\x12\x02\xfc}\x01"\x02\xfeR\x08"\xff\x00\x8d\x01"\x01\xfe(\x01\x12\xf6\xffv\x01\x12'),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=126, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
+                            bytearray(b'\x12\x12\xf6v\x01\x12\xf2\xffv\x01\x12\xec\xfav\x01\x12\xfa\xddv\x01\x12\xf5\xf2\xf3\x02\x12\t\xe1v\x01\x12\xf6'),
+                            None,
+                            bytearray(b'\xf3\xf73\x08"\x00\x00\x8d\x01"\x02\xfe(\x01\x12\xf8\xfdv\x01\x12\xfe\xf4\xfa\x02\x12\x02\xfav\x01\x12\x02\xea'),
+                            bytearray(b'\x12\x11\xf7\xfa\x02\x12\x04\x04\xfa\x02\x12\xfc\x02v\x01\x12\xfb\xe7v\x01\x12\x03\xdd\xfa\x02\xf0\xf9\xe9J"@]'),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=118, y=112),
+                    ]
+                ),
+                Mold(2, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
+                            None,
+                            bytearray(b'\xd7v\x01\x12\xec\xf0v\x01\xf0\xf8\xe9\x06G\n4\x00\x12\xff\x02v\x01\x12\x01\xfd}\x01\xa0\xe6\xedC;\xc0'),
+                            bytearray(b'\x12\x06\xdd\xfa\x02\x12\x00\xf0\xfa\x02\xf0\xf7\xe8J"@]\x00\x12\xff\xffv\x01\x12\x04\xfb}\x01\xa0\xe9\xeaC'),
+                            bytearray(b'\x00\x12\xfe\x01v\x01\x12\x02\xfc}\x01"\x02\xfeR\x08"\xff\x00\x8d\x01"\x01\xfe(\x01\x12\xf6\xffv\x01\x12'),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=126, y=120),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'\xff\xf0\xff\xc0\xff\x80\xff\x80\xff\x00\xff\x00\xff\x00\xff\x00\x0f\xff?\xff\x7f\xff~\xfe\xfe\xfe\xfe\xfe\xfe\xfe\xe0\xe0'),
-                            bytearray(b'\xff\x0f\xff\x03\xff\x01\xff\x01\xff\x00\xff\x00\xff\x00\xff\x00\xf0\xff\xfc\xff\xfe\xff~\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x07\x07'),
-                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x80\xff\x80\xff\xc0\xff\xf0\xe0\xe0\xfe\xfe\xfe\xfe\xfe\xfe~\xfe\x7f\xff?\xff\x0f\xff'),
-                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x01\xff\x01\xff\x03\xff\x0f\x07\x07\x7f\x7f\x7f\x7f\x7f\x7f~\x7f\xfe\xff\xfc\xff\xf0\xff'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                            bytearray(b'\xfa\x02\x12\x06\xf2v\x01\x12\x0b\xed\xfa\x02\x12\x08\xe2\xfa\x02\x12\x15\xeb\xfa\x02\x12\x07\xfev\x01\x12\x0b\x02\xfa\x02'),
+                            bytearray(b'\x02\xf4\xfa\x02\x12\x02\xfdv\x01\x12\x02\xe7\xfa\x02\x12\x0c\xf0\xfa\x02\x12\r\xea\xfa\x02\x12\x08\xe0\xfa\x02\x12\x14\xe9'),
+                            bytearray(b'\xfa\x02\x12\x08\xf9\xfa\x02\x12\n\x00\xfa\x02\x12\x10\xf6\xfa\x02\x12\x07\x06\xfa\x02\x12\xfb\x02v\x01\x12\xfc\xe5v\x01'),
+                            bytearray(b'\x12\x11\xf7\xfa\x02\x12\x04\x04\xfa\x02\x12\xfc\x02v\x01\x12\xfb\xe7v\x01\x12\x03\xdd\xfa\x02\xf0\xf9\xe9J"@]'),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=118, y=112),
                     ]
                 ),
             ],
@@ -21,12 +59,15 @@ sprite = CompleteSprite(
                 AnimationSequence(
                     frames=[
                         AnimationSequenceFrame(duration=16, mold_id=0),
+                        AnimationSequenceFrame(duration=16, mold_id=1),
+                        AnimationSequenceFrame(duration=16, mold_id=2),
+                        AnimationSequenceFrame(duration=16, mold_id=1),
                     ]
                 ),
             ]
         )
     ),
-    palette_id=0,
+    palette_id=633,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

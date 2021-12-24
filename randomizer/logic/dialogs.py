@@ -3,9 +3,9 @@ import random
 from randomizer.data import dialogs, ship_passwords
 from . import flags
 from .utils import new_command
-from randomizer.data.helpers import MarrymoreGating
-from randomizer.data.eventtables import _0x60Flags, AreaObjects
-from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating, LearnableSpells
+from randomizer.helpers.flag_helpers import MarrymoreGating
+from randomizer.helpers.eventtables import _0x60Flags, AreaObjects
+from randomizer.helpers.flag_helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
 
 # There's a way to do perfect allocations with DYNAMIC PROGRAMMING,
 # but I'm not doing that.
@@ -55,7 +55,7 @@ def randomize_all(world):
         value = world.settings.get_flag(flags.GrateGuyPrizeThreshold).value
         world.search_replace_dialog('`GRATE_GUY_PRIZE_CAP`', '%i' % value)
         # disable sj dog checks if SJ not learnable in seed
-        if LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).disabled:
+        if flags.LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).disabled:
             world.eventscripts[2063] = [
                 new_command(2063, 'run_dialog', [2049, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]),
                 new_command(2063, 'ret')

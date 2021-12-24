@@ -5,12 +5,12 @@ from enum import IntEnum, Enum, auto
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 
-from randomizer.data import music
-from randomizer.data.helpers import SequenceType
+from randomizer.data import music, npcs
+from randomizer.helpers.flag_helpers import SequenceType
 from randomizer.data.npcmodels import models
-from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
-from randomizer.data.roomobjecttables import Rooms
-from randomizer.data.objectsequencetables import SequenceSpeeds, _0x08Flags
+from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.helpers.roomobjecttables import Rooms
+from randomizer.helpers.objectsequencetables import SequenceSpeeds, _0x08Flags
 
 from randomizer.data.actionscripts.utils.mimic_rise import subscript as mimic_subscript
 
@@ -407,21 +407,15 @@ class StatueDetails:
 
 
 class ModelDetails:
-    cloneable_all_directions = None
-    cloneable_south_only = None
-    uncloneable_all_directions = None
-    uncloneable_south_only = None
+    occupant = None
     sequence = 0
     mold = 0
     sequence_type = SequenceType.Sequence
     animations = SpriteAnimationCollection()
     loop = False
 
-    def __init__(self, cloneable_all_directions, cloneable_south_only, uncloneable_all_directions, uncloneable_south_only, sequence=0, mold=0, loop=False, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
-        self.cloneable_all_directions = cloneable_all_directions
-        self.cloneable_south_only = cloneable_south_only
-        self.uncloneable_all_directions = uncloneable_all_directions
-        self.uncloneable_south_only = uncloneable_south_only
+    def __init__(self, occupant, sequence=0, mold=0, loop=False, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
+        self.occupant = occupant
         self.sequence = sequence
         self.mold = mold
         self.sequence_type = sequence_type
@@ -434,8 +428,8 @@ class SmallModelDetails(ModelDetails):
 
 
 class BigModelDetails(ModelDetails):
-    def __init__(self, uncloneable_all_directions, uncloneable_south_only, sequence=0, mold=0, loop=False, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
-        super().__init__(None, None, uncloneable_all_directions,
+    def __init__(self, occupant, sequence=0, mold=0, loop=False, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
+        super().__init__(occupant, uncloneable_all_directions,
                          uncloneable_south_only, sequence, mold, loop, sequence_type, animations)
 
 
@@ -686,19 +680,8 @@ hammer_bro_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 class HammerBroBoss(Boss):
     name = "Hammer Bro"
     pack_number = 183
-    eye_height = 6
-    small_model = SmallModelDetails(None, 653, None, 654)
-    # statue = StatueDetails(488, ["E0C000", "482818", "C08020", "906010", "F8E870", "F8E870",
-    #                              "F8E870", "F8F8A0", "F8F8A0", "F8F8F8", "F8F8F8", "F8E870", "F8F8A0", "683808", "0"])
-    statue = StatueDetails(653, ["080000", "C08020", "E0C000", "D0A000", "F8F8A0", "181818", "F8E870", "F8F890", "D8C000", "906010", "F0E860", "D08800", "F0A808", "604800", "302000", "180800"])
-    big_model = BigModelDetails(None, 283, animations=SpriteAnimationCollection(
-        mines_punch=hammer_bro_bop,
-        statue_intro=hammer_bro_taunt,
-        statue_peck=hammer_bro_bop_fast,
-        statue_flustered=hammer_bro_recoil,
-        chandelier_challenge=hammer_bro_taunt,
-        endgame_challenge=hammer_bro_taunt
-    ))
+    small_model = npcs.HammerBroSmall
+    big_model = npcs.HammerBroLarge
     dialog_replacements = [
         (49,
          '''HAMMER BRO: Alright already,\n you won, now go away![await]'''),
@@ -713,6 +696,8 @@ class HammerBroBoss(Boss):
         (1780, '''HAMMER BRO: What're YOU lookin' at?[await]'''),
         (1781,
          '''HAMMER BRO: Look buddy, you\n already won, you can get off of my\n hammer now.[await]'''),
+        (1783,
+         ''' After getting hammered, [await]\n I always drink Carrot Juice.[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -734,7 +719,7 @@ class HammerBroBoss(Boss):
         (3044,
          '''HAMMER BRO: The dojo master\n takes on 3 different forms.\n Me, though? I'm just a hammer.[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Hammer-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Hammer-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''HAMMER BRO: I guess you were\n tougher than I thought![await]'''),
         (3353,
@@ -742,32 +727,10 @@ class HammerBroBoss(Boss):
     ]
 
 
-croco_bag_loop = SpriteAnimation(sequence_id=5, total_duration=104)
-croco_bag_hit = SpriteAnimation(
-    sequence_id=4, contact_frame=152, total_duration=158)
-croco_bag_summon = SpriteAnimation(sequence_id=6, total_duration=136)
-croco_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-
-
 class Croco1Boss(Boss):
     name = "Croco"
-    eye_height = 13
     pack_number = 163
-
-    statue = StatueDetails(48, ["F8E870", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "C08020", "C08020",
-                                "E0C000", "906010", "683808", "784818", "482818", "906010", "301830"], horizontal_pixel_shift=-3)
-    small_model = SmallModelDetails(48, 513, 42, 514, animations=SpriteAnimationCollection(
-        recoil=croco_recoil,
-        bandits_way_distracted=croco_bag_loop,
-        mines_punch=croco_bag_hit,
-        chapel_laugh=croco_bag_loop,
-        dojo_challenge=croco_bag_summon,
-        statue_flustered=croco_recoil,
-        keep_challenge=croco_bag_summon,
-        keep_summon=croco_bag_hit,
-        chandelier_challenge=croco_bag_summon,
-        endgame_challenge=croco_bag_summon
-    ))
+    small_model = npcs.Croco
     dialog_replacements = [
         (49, '''\n CROCO: Get the heck outta here![await]'''),
         (1660,
@@ -779,6 +742,7 @@ class Croco1Boss(Boss):
         (1778, '''CROCO: Enough already, get outta\n here![await]'''),
         (1780, '''CROCO: Back already? How 'bout a\n drink?[await]'''),
         (1781, '''\n    CROCO: 'Dis some kinda joke?[await]'''),
+        (1783, ''' Wanna know how I run so fast?[await]\n Chug some Honey Syrup, chump![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -800,7 +764,7 @@ class Croco1Boss(Boss):
         (3057,
          ''' Whaddya want, bub?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''CROCO: I hate to say it, but...\n I kinda like this![await]'''),
         (3353,
@@ -808,83 +772,32 @@ class Croco1Boss(Boss):
     ]
 
 
-shyster_taunt = SpriteAnimation(
-    sequence_id=4, contact_frame=56, total_duration=56)
-shyster_fast = SpriteAnimation(
-    sequence_id=4, contact_frame=28, total_duration=28, speed=SequenceSpeeds.FAST)
-shyster_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
-
-
 class MackShyster1(Henchman):
     pack_number = 194
-    model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
-        tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt,
-        factory_pierce=shyster_fast
-    ))
+    model = npcs.Shyster
 
 
 class MackShyster2(Henchman):
     pack_number = 195
-    model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
-        tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt,
-        factory_pierce=shyster_fast
-    ))
+    model = npcs.Shyster
 
 
 class DefaultShyster1(Henchman):
     pack_number = 10
-    model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
-        tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt,
-        factory_pierce=shyster_fast
-    ))
+    model = npcs.Shyster
 
 
 class DefaultShyster2(Henchman):
     pack_number = 11
-    model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
-        tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt,
-        factory_pierce=shyster_fast
-    ))
-
-
-mack_hit = SpriteAnimation(sequence_id=4, contact_frame=22, total_duration=28)
-mack_hit_fast = SpriteAnimation(
-    sequence_id=4, contact_frame=13, total_duration=16, speed=SequenceSpeeds.FAST)
-mack_challenge = SpriteAnimation(sequence_id=2, total_duration=12)
+    model = npcs.Shyster
 
 
 class MackBoss(Boss):
     name = "Mack"
     pack_number = 179
-    eye_height = 19
-    statue = StatueDetails(655, ["182038", "E0C000", "D0A000", "683808", "F8E870", "906010", "E0C000", "784818", "F8F8A0", "C08020", "906010", "D0A000", "F8E870", "F8E870", "F8F8F8", "D0A000"])
-    # statue = StatueDetails(414, ["F8E870", "D0A000", "F8E870", "906010", "906010", "D0A000",
-    #                              "C08020", "E0C000", "683808", "301830", "C08020", "301830", "906010", "482818", "181818"])
-    # small_model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
-    #     recoil=shyster_recoil,
-    #     mines_punch=shyster_taunt,
-    #     ship_beckon=shyster_taunt,
-    #     dojo_challenge=shyster_taunt,
-    #     statue_peck=shyster_taunt,
-    #     statue_flustered=shyster_recoil,
-    #     keep_challenge=shyster_taunt,
-    #     keep_summon=shyster_taunt,
-    #     chandelier_challenge=shyster_taunt,
-    #     endgame_challenge=shyster_taunt
-    # ))
-    small_model = SmallModelDetails(None, 655, None, 656)
-    big_model = BigModelDetails(None, 480, sequence=7)
-    attack_model = BigModelDetails(None, 480, animations=SpriteAnimationCollection(
-        mines_punch=mack_hit,
-        statue_peck=mack_hit_fast,
-        statue_flustered=mack_challenge,
-        chandelier_challenge=mack_challenge,
-        endgame_challenge=mack_hit
-    ))
+    small_model = npcs.MackSmall
+    big_model = npcs.MackMedium
+    attack_model = npcs.MackLarge
     unique_henchmen = [MackShyster1, MackShyster2, MackShyster1, MackShyster2]
     repeatable_henchmen = [MackShyster1, MackShyster2]
     dialog_replacements = [
@@ -897,6 +810,7 @@ class MackBoss(Boss):
         (1778, '''\n   MACK: Guess the party's over.[await]'''),
         (1780, '''MACK: Hey `MAIN_CHARACTER_NAME`!\n Come back to crash our party?[await]'''),
         (1781, '''MACK: OK, I get it, you can bounce\n too.[await]'''),
+        (1783, ''' I don't care what kinda party it is![await]\n I drink Milk so I can be like Exor!![await]'''),
         (1784,
          '''BODYGUARD: There's no hard\n feelings. We're all just trying to\n have a good time.[await]'''),
         (1793,
@@ -943,7 +857,7 @@ class MackBoss(Boss):
         (3073,
          '''BODYGUARD: How 'bout a fat lip to\n go with that ugly moustache?[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bouncing-this and Party-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bouncing-this and Party-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''MACK: I guess you CAN bounce\n after all.[await]'''),
         (3353, '''MACK: I guess you CAN bounce\n after all.[await]'''),
     ]
@@ -955,31 +869,11 @@ class MackBoss(Boss):
     ]
 
 
-pandorite_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=70, total_duration=80)
-pandorite_short = SpriteAnimation(
-    sequence_id=3, contact_frame=8, total_duration=80)
-pandorite_shake = SpriteAnimation(sequence_id=4, total_duration=58)
-pandorite_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
-
-
 class PandoriteBoss(MimicBoss):
     name = "Pandorite"
-    eye_height = 4
     pack_number = 156
-    statue = StatueDetails(644, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
-                                 "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
-    small_model = SmallModelDetails(None, 644, None, 645)
-    #alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "F8C048", "F89800", "E80000", "F07000", "089000", "085800", "983800"]
-    alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "F8C048", "C87000", "E80000", "984000", "089000", "085800", "783800"]
-    big_model = BigModelDetails(None, 519, animations=SpriteAnimationCollection(
-        mines_punch=pandorite_attack,
-        statue_intro=pandorite_shake,
-        statue_peck=pandorite_short,
-        statue_flustered=pandorite_recoil,
-        chandelier_challenge=pandorite_attack,
-        endgame_challenge=pandorite_attack
-    ))
+    small_model = npcs.PandoriteSmall
+    big_model = npcs.PandoriteLarge
     dialog_replacements = [
         (49, '''PANDORITE: That thing was making\n me sick...[await]'''),
         (1660,
@@ -994,6 +888,8 @@ class PandoriteBoss(MimicBoss):
          '''PANDORITE: I think I like this place\n more than the sewers. It smells\n marginally better.[await]'''),
         (1781,
          '''PANDORITE: I can't tell if this is\n better or worse without the\n protection of my box.[await]'''),
+        (1783,
+         ''' Here, you can have my...um...[await]\n '21 Redtail Chardonnay.[delay] It's fine.[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -1015,7 +911,7 @@ class PandoriteBoss(MimicBoss):
         (3044,
          '''PANDORITE: Now this should be\n interesting. Can you beat THE\n master, `MAIN_CHARACTER_NAME`?[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''PANDORITE: ...I'm not sure how\n I'm accomplishing this.[await]'''),
         (3353,
@@ -1023,36 +919,11 @@ class PandoriteBoss(MimicBoss):
     ]
 
 
-scarecrow_wiggle = SpriteAnimation(sequence_id=10, total_duration=32)
-belome_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=36, total_duration=48)
-belome_attack_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=18, total_duration=24, speed=SequenceSpeeds.FAST)
-belome_wiggle = SpriteAnimation(sequence_id=4, total_duration=66)
-belome_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
-
-
 class Belome1Boss(Boss):
     name = "Belome"
-    eye_height = 14
     pack_number = 168
-    # statue = StatueDetails(385, ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870",
-    #                              "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"])
-    # small_model = SmallModelDetails(385, 520, 521, 522, animations=SpriteAnimationCollection(
-    #     bandits_way_distracted=scarecrow_wiggle,
-    #     chapel_laugh=scarecrow_wiggle,
-    #     ship_beckon=scarecrow_wiggle
-    # ))
-    statue = StatueDetails(657, ["F8D008", "F8A008", "F8F888", "984000", "F8F8F8", "181818", "F8B010", "401800", "F8D008", "F8F8B0", "582000", "C88008", "F8D060", "582000", "200000"])
-    small_model = SmallModelDetails(None, 657, None, 658)
-    big_model = BigModelDetails(None, 371, animations=SpriteAnimationCollection(
-        mines_punch=belome_attack,
-        statue_intro=belome_wiggle,
-        statue_flustered=belome_recoil,
-        statue_peck=belome_attack_fast,
-        chandelier_challenge=belome_attack,
-        endgame_challenge=belome_attack
-    ))
+    small_model = npcs.Belome1Small
+    big_model = npcs.Belome1Large
     dialog_replacements = [
         (49, '''\n        BELOME: Good night~![await]'''),
         (1660,
@@ -1067,6 +938,8 @@ class Belome1Boss(Boss):
          '''BELOME: Oh, you're back![await]\n Did you bring any food?[await]'''),
         (1781,
          '''BELOME: Say, it's past my bedtime.\n Can you get off of my head?[await]'''),
+        (1783,
+         ''' I'm always STARVING~![await]\n...but I hydrate with Filtered Water.[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -1089,7 +962,7 @@ class Belome1Boss(Boss):
         (3057,
          ''' Are you the pizza delivery person?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''BELOME: This training regimen is\n giving me quite the appetite![await]'''),
         (3353,
@@ -1099,31 +972,15 @@ class Belome1Boss(Boss):
 
 class BowyerAero(Henchman):
     pack_number = 205
-    model = SmallModelDetails(None, 234, None, 523)
-
-
-bowyer_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=76, total_duration=82)
-bowyer_taunt = SpriteAnimation(sequence_id=4, total_duration=62)
-bowyer_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
+    model = npcs.AeroUpright
 
 
 class BowyerBoss(Boss):
     name = "Bowyer"
-    eye_height = 16
     pack_number = 181
-    statue = StatueDetails(661, ["181818", "E0C000", "D0A000", "D0A000", "482818", "683808", "301830", "C08020", "D0A000", "F8F8A0", "F8E870", "906010", "E0C000", "C08020", "F8E048", "C08020"])
-#    statue = StatueDetails(234, ["F8F8A0", "E0C000", "E0C000", "C08020", "C08020", "906010",
-#                                 "F8E870", "0", "C08020", "E0C000", "C08020", "0", "683808", "482818", "482818"])
-    small_model = SmallModelDetails(None, 661, None, 662)
-    big_model = BigModelDetails(None, 241)
-    attack_model = BigModelDetails(None, 486, animations=SpriteAnimationCollection(
-        mines_punch=bowyer_hit,
-        statue_intro=bowyer_taunt,
-        statue_flustered=bowyer_recoil,
-        chandelier_challenge=bowyer_taunt,
-        endgame_challenge=bowyer_taunt
-    ))
+    small_model = npcs.BowyerSmall
+    big_model = npcs.BowyerOverworld
+    attack_model = npcs.BowyerLarge
     unique_henchmen = [BowyerAero, BowyerAero, BowyerAero,
                        BowyerAero, BowyerAero, BowyerAero, BowyerAero, BowyerAero]
     repeatable_henchmen = [BowyerAero]
@@ -1140,6 +997,7 @@ class BowyerBoss(Boss):
         (1780,
          '''BOWYER: Back again, you are,\n nya? I'm nyat as mad as before.[await]'''),
         (1781, '''BOWYER: Nya, NYA?! Stop this,\n you must![await]'''),
+        (1783, ''' Nya, Nya, NYA!  Make like Locke![await]\n Bring me more Strongbow Cider![await]'''),
         (1784,
          '''FLUNKIE: Bowyer is easily\n distracted from his missions. But\n we're off the hook today.[await]'''),
         (1793,
@@ -1188,7 +1046,7 @@ class BowyerBoss(Boss):
         (3073,
          '''FLUNKIE: You look like you'd make\n for a good statue![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arrow-this and Target-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arrow-this and Target-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''BOWYER: 1000 jumps I must do,\n nya![await]'''),
         (3353, '''BOWYER: 1000 jumps I must do,\n nya![await]'''),
     ]
@@ -1200,41 +1058,21 @@ class BowyerBoss(Boss):
     ]
 
 
-crook_scratch = SpriteAnimation(sequence_id=4, total_duration=20, contact_frame=10)
-
 
 class Croco2Crook(Henchman):
     pack_number = 141
-    model = SmallModelDetails(261, 527, 528, 529, animations=SpriteAnimationCollection(
-        tower_bullet=crook_scratch, kitchen_prep=crook_scratch, factory_pierce=crook_scratch))
+    model = npcs.Crook
 
 
 class DefaultCrook(Henchman):
     pack_number = 199
-    model = SmallModelDetails(261, 527, 528, 529, animations=SpriteAnimationCollection(
-        tower_bullet=crook_scratch, kitchen_prep=crook_scratch, factory_pierce=crook_scratch))
+    model = npcs.Crook
 
 
 class Croco2Boss(Boss):
     name = "Croco"
-    eye_height = 13
     pack_number = 164
-    statue = StatueDetails(147, ["F8E870", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "C08020", "C08020",
-                                 "E0C000", "906010", "683808", "784818", "482818", "906010", "301830"], horizontal_pixel_shift=-3)
-    small_model = SmallModelDetails(147, 524, 525, 526, animations=SpriteAnimationCollection(
-        recoil=croco_recoil,
-        bandits_way_distracted=croco_bag_loop,
-        mines_punch=croco_bag_hit,
-        chapel_laugh=croco_bag_loop,
-        dojo_challenge=croco_bag_summon,
-        statue_flustered=croco_recoil,
-        keep_challenge=croco_bag_summon,
-        keep_summon=croco_bag_hit,
-        chandelier_challenge=croco_bag_summon,
-        endgame_challenge=croco_bag_summon
-    ))
-    alt_palette = ["B8D0C8", "88C090", "A090F8", "F8F8F8", "788080", "A070F8", "9048D0",
-                   "300000", "601000", "7030A8", "482880", "480800", "300060", "281000", "000000"]
+    small_model = npcs.Croco2
     unique_henchmen = [Croco2Crook, Croco2Crook, Croco2Crook]
     repeatable_henchmen = [Croco2Crook]
     dialog_replacements = [
@@ -1248,6 +1086,7 @@ class Croco2Boss(Boss):
         (1778, '''CROCO: Enough already, get outta\n here![await]'''),
         (1780, '''CROCO: Back already? How 'bout a\n drink?[await]'''),
         (1781, '''\n    CROCO: 'Dis some kinda joke?[await]'''),
+        (1783, ''' I tapped Canada's Maple Syrup[await]\n Reserve. They'll NEVER catch me!![await]'''),
         (1784,
          '''FLUNKIE: To be honest, Croco's not\n really a bad guy.[await][pause] I guess that's why\n we follow him.[await]'''),
         (1793,
@@ -1291,7 +1130,7 @@ class Croco2Boss(Boss):
         (3072, '''\n  FLUNKIE: I could use a stepstool.[await]'''),
         (3073, '''\n      FLUNKIE: A tough guy, eh?[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''CROCO: I hate to say it, but...\n I kinda like this![await]'''),
         (3353,
@@ -1306,66 +1145,28 @@ class Croco2Boss(Boss):
 
 
 # loop a few times since no duration
-bomb_tick = SpriteAnimation(sequence_id=4)
-bomb_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class PunchinelloBobomb(Henchman):
     pack_number = 1
-    model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
-        tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 281
+    model = npcs.BobOmb
 
 
 class DefaultMicrobomb(Henchman):
     pack_number = None
-    model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
-        tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 440
+    model = npcs.Microbomb
 
 
 class DefaultBobomb(Henchman):
     pack_number = 36
-    model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
-        tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 281
-
-
-punchinello_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=26, total_duration=34)
-punchinello_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=14, total_duration=24, speed=SequenceSpeeds.FAST)
-punchinello_taunt = SpriteAnimation(sequence_id=4, total_duration=54)
-punchinello_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
-punchinello_jump = SpriteAnimation(sequence_id=5, total_duration=34)
+    model = npcs.BobOmb
 
 
 class PunchinelloBoss(Boss):
     name = "Punchinello"
     pack_number = 140
-    eye_height = 8
-    # statue = StatueDetails(281, ["F8F8A0", "000000", "000000", "F8E870", "906010", "F8E870",
-    #                              "E0C000", "D0A000", "E0C000", "C08020", "C08020", "482818", "301830", "301830", "181818"])
-    statue = StatueDetails(663, ["C88800", "E0C000", "C08020", "482818", "D0A000", "E0C000", "C08020", "C08020", "D0A000", "F8F8A0", "F8E870", "E0C000", "F0E870", "986000", "F8F8A0", "000000"])
-    # small_model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
-    #     recoil=bomb_recoil,
-    #     bandits_way_distracted=bomb_tick,
-    #     chapel_laugh=bomb_tick,
-    #     ship_beckon=bomb_tick,
-    #     dojo_challenge=bomb_tick,
-    #     statue_flustered=bomb_tick,
-    #     statue_intro=bomb_tick,
-    #     keep_challenge=bomb_tick,
-    #     keep_summon=bomb_tick,
-    #     chandelier_challenge=bomb_tick,
-    #     endgame_challenge=bomb_tick
-    # ))
-    small_model = SmallModelDetails(None, 663, None, 664)
-    big_model = BigModelDetails(None, 464, animations=SpriteAnimationCollection(
-        mines_punch=punchinello_hit,
-        statue_intro=punchinello_jump,
-        statue_peck=punchinello_hit_fast,
-        statue_flustered=punchinello_recoil,
-        chandelier_challenge=punchinello_taunt,
-        endgame_challenge=punchinello_taunt
-    ))
+    small_model = npcs.PunchinelloSmall
+    big_model = npcs.PunchinelloLarge
     unique_henchmen = [PunchinelloBobomb, PunchinelloBobomb,
                        PunchinelloBobomb, PunchinelloBobomb]
     repeatable_henchmen = [PunchinelloBobomb]
@@ -1383,6 +1184,7 @@ class PunchinelloBoss(Boss):
          '''PUNCHINELLO: You've come back to\n visit? I truly must be famous![await]'''),
         (1781,
          '''PUNCHINELLO: They say I'm a hot\n head, so it's a bad idea to stand\n on my head.[await]'''),
+        (1783, ''' WATCH ME DRINK THIS TOBASCO![await]\n I'm gonna be youtube-famous![await]'''),
         (1785, '''\n      BOB-OMB: I need a break.[await]'''),
         (1793,
          '''BOB-OMB: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
@@ -1429,7 +1231,7 @@ class PunchinelloBoss(Boss):
         (3073,
          '''BOB-OMB: You don't think it makes\n sense for a bob-omb to be shooting\n bullets?[await][pause] ...Fight me about it![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bomb-this and Famous-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bomb-this and Famous-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]'''),
         (3353,
@@ -1443,73 +1245,32 @@ class PunchinelloBoss(Boss):
     ]
 
 
-snifit_shoot = SpriteAnimation(sequence_id=4, total_duration=60)
-snifit_taunt = SpriteAnimation(
-    sequence_id=5, contact_frame=30, total_duration=46)
-snifit_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-
 
 class BoosterSnifit(Henchman):
     pack_number = 0
-    model = SmallModelDetails(36, 534, 505, 533, animations=SpriteAnimationCollection(
-        tower_bullet=snifit_shoot,
-        kitchen_prep=snifit_taunt,
-        factory_pierce=snifit_taunt
-    ))  # maybe 504 or 505
+    model = npcs.Snifit
 
 
 # Remove sequences from zoom animation if not snifit
 class BoosterHillSnifit(Henchman):
     pack_number = None
-    model = SmallModelDetails(38, None, None, None)  # maybe 224
+    model = npcs.BackSnifit
 
 
 class DefaultSnifit(Henchman):
     pack_number = 142
-    model = SmallModelDetails(36, 534, 505, 533, animations=SpriteAnimationCollection(
-        tower_bullet=snifit_shoot,
-        kitchen_prep=snifit_taunt,
-        factory_pierce=snifit_taunt
-    ))  # maybe 504 or 505
+    model = npcs.Snifit
 
 
 class BoosterApprentice(Henchman):
     pack_number = 32
-    model = SmallModelDetails(384, 535, 536, 537, animations=SpriteAnimationCollection(
-        tower_bullet=snifit_shoot,
-        kitchen_prep=snifit_taunt,
-        factory_pierce=snifit_taunt
-    ))  # maybe 282
-
-
-booster_laugh = SpriteAnimation(sequence_id=2)
-booster_punch = SpriteAnimation(
-    sequence_id=3, contact_frame=74, total_duration=92, new_sprite_id=502)  # maybe 503
-booster_jump = SpriteAnimation(sequence_id=4)
-booster_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
+    model = npcs.Apprentice
 
 
 class BoosterBoss(Boss):
     name = "Booster"
-    eye_height = 17
     pack_number = 161
-    statue = StatueDetails(50, ["F8F8A0", "F8E870", "F8E870", "E0C000", "C08020", "906010",
-                                "E0C000", "906010", "906010", "E0C000", "C08020", "906010", "683808", "482818", "301830"])
-    small_model = SmallModelDetails(50, 538, 539, 540, animations=SpriteAnimationCollection(
-        recoil=booster_recoil,
-        bandits_way_distracted=booster_laugh,
-        mines_punch=booster_punch,
-        chapel_laugh=booster_laugh,
-        ship_beckon=booster_laugh,
-        ship_chair=booster_laugh,
-        dojo_challenge=booster_jump,
-        statue_intro=booster_laugh,
-        statue_flustered=booster_jump,
-        keep_challenge=booster_jump,
-        keep_summon=booster_laugh,
-        chandelier_challenge=booster_punch,
-        endgame_challenge=booster_punch
-    ))
+    small_model = npcs.Booster
     unique_henchmen = [BoosterSnifit, BoosterSnifit, BoosterSnifit]
     repeatable_henchmen = [BoosterApprentice]
     dialog_replacements = [
@@ -1525,6 +1286,7 @@ class BoosterBoss(Boss):
         (1780,
          '''BOOSTER: Eh...? My! It's you\n again![await][page]\n  We're having a heated debate over\n what a “party” is, so you can stay\n if you'd like to contribute.[await]'''),
         (1781, '''BOOSTER: Hm? How's the view up there?[await]'''),
+        (1783, ''' This Dish Detergent is DELICIOUS![await]\n Number 2, (belch) MORE SOAP!!![await]'''),
         (1784,
          '''SNIFIT 1: There's a 70% chance the\n drink on the table is actually\n punch.[await]'''),
         (1785,
@@ -1563,7 +1325,7 @@ class BoosterBoss(Boss):
         (3057,
          ''' Eh? What'd you come here for?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Beetle-this and Train-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Beetle-this and Train-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]'''),
         (3353,
@@ -1577,39 +1339,17 @@ class BoosterBoss(Boss):
     ]
 
 
-knife_guy_taunt = SpriteAnimation(sequence_id=4)
-
 
 class GrateGuyKnifeGuy(Henchman):
     pack_number = None
-    model = SmallModelDetails(None, None, None, 134, animations=SpriteAnimationCollection(
-        kitchen_prep=knife_guy_taunt
-    ), sequence=2, loop=True)
-
-
-grate_guy_hit = SpriteAnimation(
-    sequence_id=4, contact_frame=52, total_duration=62)
-grate_guy_hit_fast = SpriteAnimation(
-    sequence_id=4, contact_frame=14, total_duration=17, speed=SequenceSpeeds.VERY_FAST)
-grate_guy_taunt = SpriteAnimation(sequence_id=3, total_duration=64)
-grate_guy_recoil = SpriteAnimation(sequence_id=2, total_duration=20)
+    model = npcs.KnifeGuyGridplane
 
 
 class GrateGuyBoss(Boss):
     name = "Grate Guy"
     pack_number = 177
-    eye_height = 16
-    statue = StatueDetails(452, ["F8F8A0", "E0C000", "E0C000", "906010", "F8E870", "E0C000", "D09020", "784818", "482818", "F8E870",
-                                 "E0C000", "D09020", "482818", "301830", "181818"], horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-2)
-    small_model = SmallModelDetails(452, 541, 542, 543)
-    big_model = BigModelDetails(None, 449, animations=SpriteAnimationCollection(
-        mines_punch=grate_guy_hit,
-        statue_intro=grate_guy_taunt,
-        statue_peck=grate_guy_hit_fast,
-        statue_flustered=grate_guy_recoil,
-        chandelier_challenge=grate_guy_taunt,
-        endgame_challenge=grate_guy_taunt
-    ))
+    small_model = npcs.GrateGuySmall
+    big_model = npcs.GrateGuyLarge
     unique_henchmen = [GrateGuyKnifeGuy]
     dialog_replacements = [
         (49, '''GRATE GUY: Get lost, buddy, I'm\n busy![await]'''),
@@ -1625,6 +1365,8 @@ class GrateGuyBoss(Boss):
          '''GRATE GUY: It's so boring\n around here... Hey, wanna play\n "Look the other way" with me?[await][page]\n Hah! [delay_30]Just kidding![await]'''),
         (1781,
          '''GRATE GUY: Sorry, `MAIN_CHARACTER_NAME`,\n but jumping on my head isn't going\n to teach you Blizzard.[await]'''),
+        (1783,
+         ''' Of course I didn't shake it up!![await]\n Go on, have a Root Beer!![await]'''),
         (1784,
          '''KNIFE GUY: No, I'm not giving you the Bright Card down here![await]'''),
         (2061,
@@ -1641,7 +1383,7 @@ class GrateGuyBoss(Boss):
         (3057,
          ''' Welcome! What brings you here?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Knife-this and Casino-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Knife-this and Casino-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]'''),
         (3353,
@@ -1649,50 +1391,22 @@ class GrateGuyBoss(Boss):
     ]
 
 
-torte_taunt = SpriteAnimation(sequence_id=3, total_duration=40)
-torte_taunt_fast = SpriteAnimation(
-    sequence_id=3, total_duration=20, speed=SequenceSpeeds.FAST)
-
 
 class BundtTorte1(Henchman):
     pack_number = 54
-    model = SmallModelDetails(398, 545, 397, 544, animations=SpriteAnimationCollection(
-        tower_bullet=torte_taunt,
-        kitchen_prep=torte_taunt,
-        factory_pierce=torte_taunt_fast
-    ))
+    model = npcs.Torte
 
 
 class BundtTorte2(Henchman):
     pack_number = 55
-    model = SmallModelDetails(398, 545, 397, 544, animations=SpriteAnimationCollection(
-        tower_bullet=torte_taunt,
-        kitchen_prep=torte_taunt,
-        factory_pierce=torte_taunt_fast
-    ))
-
-
-bundt_recoil = SpriteAnimation(sequence_id=2, total_duration=30)
-bundt_taunt = SpriteAnimation(
-    sequence_id=4, contact_frame=74, total_duration=82)
-bundt_short = SpriteAnimation(
-    sequence_id=4, contact_frame=13, total_duration=16, speed=SequenceSpeeds.FASTEST)
+    model = npcs.Torte
 
 
 class BundtBoss(Boss):
     name = "Bundt"
-    eye_height = 8
     pack_number = 176
-    statue = StatueDetails(470, ["F8F8A0", "F8E870", "F8E870", "E0C000", "F8F8F8", "D0A000", "C08020", "C08020",
-                                 "906010", "C08020", "482818", "D09020", "482818", "E0C000", "301830"], horizontal_pixel_shift=-3)
-    small_model = SmallModelDetails(None, 546, None, 470)
-    big_model = BigModelDetails(None, 547, animations=SpriteAnimationCollection(
-        mines_punch=bundt_taunt,
-        statue_intro=bundt_taunt,
-        statue_flustered=bundt_recoil,
-        chandelier_challenge=bundt_taunt,
-        endgame_challenge=bundt_taunt
-    ))
+    small_model = npcs.BundtSmall
+    big_model = npcs.BundtLarge
     unique_henchmen = [BundtTorte1, BundtTorte2]
     repeatable_henchmen = [BundtTorte1, BundtTorte2]
     dialog_replacements = [
@@ -1709,6 +1423,8 @@ class BundtBoss(Boss):
          '''APPRENTICE: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''APPRENTICE: You saw it too,\n right? I know I wasn't just\n imagining it![await]'''),
+        (1783,
+         ''' Zees ees not sparkling wine,[await]\n philistine!  Ees Champagne!![await]'''),
         (1785,
          '''APPRENTICE: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (2504,
@@ -1747,7 +1463,7 @@ class BundtBoss(Boss):
          '''APPRENTICE: (Please let this cake\n not be evil... please let this cake\n not be evil...)[await]'''),
         (3073, '''APPRENTICE: You again?! Leave\n our cake alone![await]'''),
         (3338,
-         ''' It's really weird.\n I never hear the next door\n neighbour.[await][pause] Maybe they don't move\n around much.[await]'''),
+         ''' It's really weird.\n I never hear the next door\n neighbour.[await][pause] Maybe they don't move\n around much.[await][page]\n I'd like to go over and introduce\n myself sometime, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, EMPTY_DIALOG),
         (3353, EMPTY_DIALOG),
     ]
@@ -1759,52 +1475,27 @@ class BundtBoss(Boss):
     ]
 
 
-squid_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-squid_hit = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
-squid_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=18, total_duration=24, speed=SequenceSpeeds.FAST)
-tentacle_beckon = SpriteAnimation(sequence_id=1, new_sprite_id=223)
-
 
 class KingCalamariTinyBloober(Henchman):
     pack_number = 204
-    model = SmallModelDetails(None, 266, None, 548,
-                              sequence=8)  # maybe 172 or 173
+    model = npcs.TinyBloober
 
 
 class KingCalamariBloober(Henchman):
     pack_number = 204
-    model = SmallModelDetails(None, 266, None, 548, animations=SpriteAnimationCollection(
-        tower_bullet=squid_hit
-    ))  # maybe 172 or 173
+    model = npcs.Bloober
 
 
 class KingCalamariTentacle(Henchman):
     pack_number = None
-    model = SmallModelDetails(None, None, None, 168, animations=SpriteAnimationCollection(
-        ship_beckon=tentacle_beckon
-    ))
+    model = npcs.TentacleExtending
 
 
 class KingCalamariBoss(Boss):
     name = "King Calamari"
     pack_number = 167
-    eye_height = 10
     forced_background = 35
-
-    statue = StatueDetails(266, ["F8F8A0", "F8F8A0", "F8E870", "E0C000", "F8F8A0", "F8E870",
-                                 "E0C000", "D0A000", "C08020", "906010", "784818", "482818", "0", "0", "181818"])
-    small_model = SmallModelDetails(None, 266, None, 548, animations=SpriteAnimationCollection(
-        recoil=squid_recoil,
-        mines_punch=squid_hit,
-        dojo_challenge=squid_hit,
-        statue_peck=squid_hit_fast,
-        statue_flustered=squid_recoil,
-        keep_challenge=squid_hit,
-        keep_summon=squid_hit,
-        chandelier_challenge=squid_hit,
-        endgame_challenge=squid_hit
-    ))
+    small_model = npcs.Bloober
     repeatable_henchmen = [KingCalamariBloober]
     dialog_replacements = [
         (49,
@@ -1819,6 +1510,8 @@ class KingCalamariBoss(Boss):
          '''KING CALAMARI: Win or lose, I'm\n still king of this ship.[await]'''),
         (1781,
          '''KING CALAMARI: I'm pretty slimy,\n so this seems like a bad idea.[await]'''),
+        (1783,
+         ''' I've found booty in the hold![await]\n Vats of Pearlescent Oyster Juice![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -1847,7 +1540,7 @@ class KingCalamariBoss(Boss):
         (3073,
          '''\n       You looking for a fight?[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Ship-this and Tentacle-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Ship-this and Tentacle-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''KING CALAMARI: My tentacles\n shouldn't be able to do this.[await]'''),
         (3353,
@@ -1855,44 +1548,18 @@ class KingCalamariBoss(Boss):
     ]
 
 
-goombette_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=42, total_duration=52)
-goombette_taunt = SpriteAnimation(sequence_id=2, total_duration=12)
-goombette_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=21, total_duration=26, speed=SequenceSpeeds.FAST)
-
 
 class HidonGoombette(Henchman):
     pack_number = 221
-    model = SmallModelDetails(349, 549, 551, 550, animations=SpriteAnimationCollection(
-        tower_bullet=goombette_hit,
-        kitchen_prep=goombette_taunt,
-        factory_pierce=goombette_hit_fast))
+    model = npcs.Goombette
 
-
-hidon_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=60, total_duration=60)
-
-hidon_attack_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=18, total_duration=30, speed=SequenceSpeeds.FAST)
 
 
 class HidonBoss(MimicBoss):
     name = "Hidon"
-    eye_height = 4
     pack_number = 157
-    statue = StatueDetails(646, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
-                                 "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
-    alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "A0F800", "10A010", "E80000", "106800", "089000", "085800", "004000"]
-    small_model = SmallModelDetails(None, 646, None, 647)
-    big_model = BigModelDetails(None, 343, animations=SpriteAnimationCollection(
-        mines_punch=hidon_attack,
-        statue_flustered=pandorite_recoil,
-        statue_peck=hidon_attack_fast,
-        statue_intro=pandorite_shake,
-        chandelier_challenge=hidon_attack,
-        endgame_challenge=hidon_attack
-    ))
+    small_model = npcs.HidonSmall
+    big_model = npcs.HidonLarge
     unique_henchmen = [HidonGoombette, HidonGoombette,
                        HidonGoombette, HidonGoombette]
     repeatable_henchmen = [HidonGoombette]
@@ -1910,6 +1577,7 @@ class HidonBoss(MimicBoss):
         (1780,
          '''HIDON: This is definitely an upgrade\n from my old post.[await]'''),
         (1781, '''HIDON: Oh come on, you know I'm\n weak to jumps![await]'''),
+        (1783, ''' Goombettes! They're after my[await]\n 1947 Phateu Cetrus Merlot!![await]'''),
         (1784,
          '''GOOMBETTE: Besides when he\n haphazardly throws us at enemies,\n Hidon is very good to us.[await]'''),
         (1793,
@@ -1957,7 +1625,7 @@ class HidonBoss(MimicBoss):
          '''GOOMBETTE: (I'm too short to see\n out this window.)[await]'''),
         (3073, '''GOOMBETTE: Put up your dukes,\n big man![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Piranha-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Piranha-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''HIDON: I bet this would be even\n harder to do in my box.[await]'''),
         (3353,
@@ -1970,76 +1638,35 @@ class HidonBoss(MimicBoss):
     ]
 
 
-bandana_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=26, total_duration=50)
-bandana_taunt = SpriteAnimation(
-    sequence_id=4, total_duration=36)
 
 
 class DefaultBandanaRed1(Henchman):
     pack_number = 68
-    model = SmallModelDetails(267, 552, 553, 554,
-                              animations=SpriteAnimationCollection(
-                                  tower_bullet=bandana_taunt,
-                                  kitchen_prep=bandana_attack,
-                                  factory_pierce=bandana_attack))
+    model = npcs.BandanaRed
 
 
 class DefaultBandanaRed2(Henchman):
     pack_number = 69
-    model = SmallModelDetails(267, 552, 553, 554,
-                              animations=SpriteAnimationCollection(
-                                  tower_bullet=bandana_taunt,
-                                  kitchen_prep=bandana_attack,
-                                  factory_pierce=bandana_attack))
+    model = npcs.BandanaRed
 
 
 class JohnnyBandanaRed(Henchman):
     pack_number = 71
-    model = SmallModelDetails(267, 552, 553, 554,
-                              animations=SpriteAnimationCollection(
-                                  tower_bullet=bandana_taunt,
-                                  kitchen_prep=bandana_attack,
-                                  factory_pierce=bandana_attack))
+    model = npcs.BandanaRed
 
 
 class JohnnyBandanaBlue(Henchman):
     pack_number = 70
-    model = SmallModelDetails(331, 555, 556, 557,
-                              animations=SpriteAnimationCollection(
-                                  tower_bullet=bandana_taunt,
-                                  kitchen_prep=bandana_attack,
-                                  factory_pierce=bandana_attack))
+    model = npcs.BandanaBlue
 
 
-small_johnny_sit = SpriteAnimation(sequence_id=10)
-johnny_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=48, total_duration=84)
-johnny_taunt = SpriteAnimation(sequence_id=4, total_duration=62)
-johnny_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class JohnnyBoss(Boss):
     name = "Johnny"
-    eye_height = 20
     pack_number = 166
-    statue = StatueDetails(55, ["F8F8F8", "F8E870", "E0C000", "C08020", "906010", "F8E870",
-                                "C08020", "E0C000", "D09020", "906010", "784818", "E0C000", "906010", "683808", "181818"])
-    small_model = SmallModelDetails(55, 559, 52, 558, animations=SpriteAnimationCollection(
-        bandits_way_distracted=small_johnny_sit,
-        chapel_laugh=small_johnny_sit,
-        ship_beckon=small_johnny_sit,
-        ship_chair=small_johnny_sit,
-        dojo_challenge=small_johnny_sit,
-        keep_challenge=small_johnny_sit,
-        chandelier_challenge=small_johnny_sit,
-        endgame_challenge=small_johnny_sit
-    ))
-    big_model = BigModelDetails(None, 560, animations=SpriteAnimationCollection(
-        mines_punch=johnny_hit,
-        chandelier_challenge=johnny_taunt,
-        endgame_challenge=johnny_taunt
-    ))
+    small_model = npcs.JohnnySmall
+    big_model = npcs.JohnnyLarge
     unique_henchmen = [JohnnyBandanaBlue, JohnnyBandanaBlue,
                        JohnnyBandanaBlue, JohnnyBandanaBlue]
     repeatable_henchmen = [JohnnyBandanaRed]
@@ -2085,20 +1712,11 @@ class JohnnyBoss(Boss):
          '''PIRATE: I know there be some fine\n loot in this tower, but it's too far\n 'bove sea level for my liking![await]'''),
         (3073, '''PIRATE: I'll make ya see stars,\n arr harr![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arr-this and Matey-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arr-this and Matey-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''JOHNNY: Matey, I've got lots o'\n training to do![await]'''),
         (3353, '''JOHNNY: Matey, I've got lots o'\n training to do![await]'''),
     ]
 
-
-yaridovich_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=78, total_duration=84)
-yaridovich_taunt = SpriteAnimation(sequence_id=4, total_duration=40)
-yaridovich_taunt_fast = SpriteAnimation(
-    sequence_id=4, total_duration=40, contact_frame=15, speed=SequenceSpeeds.FAST)
-yaridovich_alt_taunt = SpriteAnimation(
-    sequence_id=0, total_duration=48)  # set sequence to 0 when this runs
-yaridovich_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class YaridovichHenchman(Henchman):
@@ -2108,22 +1726,10 @@ class YaridovichHenchman(Henchman):
 
 class YaridovichBoss(Boss):
     name = "Yaridovich"
-    eye_height = 10
     pack_number = 180
-    small_model = SmallModelDetails(40, 564, 565, 566)
-    statue = StatueDetails(40, ["F8F8A0", "E0C000", "906010", "E0C000", "683808", "482818",
-                                "E0C000", "C08020", "482818", "F8E870", "E0C000", "C08020", "906010", "482818", "301830"])
-    big_model = BigModelDetails(None, 221, animations=SpriteAnimationCollection(
-        chandelier_challenge=yaridovich_alt_taunt,
-        endgame_challenge=yaridovich_alt_taunt
-    ))
-    attack_model = BigModelDetails(None, 567, animations=SpriteAnimationCollection(
-        mines_punch=yaridovich_hit,
-        statue_intro=yaridovich_taunt,
-        statue_flustered=yaridovich_recoil,
-        chandelier_challenge=yaridovich_taunt,
-        endgame_challenge=yaridovich_taunt
-    ))
+    small_model = npcs.FakeElder
+    big_model = npcs.YaridOverworld
+    attack_model = npcs.YaridovichLarge
     unique_henchmen = [YaridovichHenchman, YaridovichHenchman,
                        YaridovichHenchman, YaridovichHenchman]
     repeatable_henchmen = [YaridovichHenchman]
@@ -2148,6 +1754,8 @@ class YaridovichBoss(Boss):
          '''TOWNSPERSON: Hop on... then trampoline... in the next room.\n It'll take you... outside.[await]'''),
         (1792,
          '''TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]'''),
+        (1783,
+         ''' My disguise was as see-through[await]\n as this glass of Motor Oil!![await]'''),
         (1785,
          '''TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]'''),
         (2061,
@@ -2165,7 +1773,7 @@ class YaridovichBoss(Boss):
         (3072, '''TOWNSPERSON: It's nice...\n outside.[await]'''),
         (3073, '''TOWNSPERSON: You want...to\n fight?[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Brownie-this and Tickle-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Brownie-this and Tickle-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]'''),
         (3353,
@@ -2180,12 +1788,9 @@ class YaridovichBoss(Boss):
 
 class MokuraBoss(Boss):
     name = "Mokura"
-    eye_height = 4
     pack_number = 207
-    statue = StatueDetails(414, ["F8F8F8", "F8F8A0", "F8E870", "E0C000", "D09020", "F8F8A0",
-                                 "784818", "906010", "E0C000", "482818", "D09020", "0", "0", "0", "181818"])
-    small_model = SmallModelDetails(568, None, 201, None)
-    big_model = BigModelDetails(None, 569)
+    statue = npcs.MokuraCloud
+    big_model = npcs.MokuraLarge
     dialog_replacements = [
         (49, '''\n     MOKURA: Uhh... Go away![await]'''),
         (1660, '''\n             Duh, huh, huh...[await]'''),
@@ -2195,7 +1800,8 @@ class MokuraBoss(Boss):
          '''PIRATE: That's AMAZING!\n No one's EVER whipped MOKURA!![await]'''),
         (1778, '''\n            MOKURA: Hmm...[await]'''),
         (1780, '''MOKURA: What're you doing in my\n secret lair?[await]'''),
-        (1781, '''MOKURA: I oughtta go back to\n being invisible...[await]'''),
+        (1781, '''MOKURA: I oughta go back to\n being invisible...[await]'''),
+        (1783, ''' Mmm...uhhh. Cotton Candy![await]\n ...It's...so...airy...YUM![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2218,88 +1824,41 @@ class MokuraBoss(Boss):
         (3057,
          ''' Uhh... Hi there.[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Secret-this and Gas-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Secret-this and Gas-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''\n    MOKURA: A cloud can jump...[await]'''),
         (3353, '''\n    MOKURA: A cloud can jump...[await]'''),
     ]
 
 
-marioclone_hit_fast = SpriteAnimation(
-    sequence_id=0, contact_frame=8, total_duration=16, speed=SequenceSpeeds.FAST)
-
 
 class Belome2MarioClone(Henchman):
     pack_number = 154
-    model = SmallModelDetails(409, 690, 689, 691, animations=SpriteAnimationCollection(
-        kitchen_prep=marioclone_hit_fast,
-        factory_pierce=marioclone_hit_fast))
-
-mallowclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
-mallowclone_mad = SpriteAnimation(sequence_id=4, contact_frame=8, total_duration=16)
+    model = npcs.MarioClone
 
 
 class Belome2MallowClone(Henchman):
     pack_number = 155
-    model = SmallModelDetails(413, 693, 692, 694, animations=SpriteAnimationCollection(
-        tower_bullet=mallowclone_laugh,
-        kitchen_prep=mallowclone_mad,
-        factory_pierce=mallowclone_mad))
-
-genoclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
-genoclone_mad = SpriteAnimation(sequence_id=4, contact_frame=6, total_duration=12)
+    model = npcs.MallowClone
 
 class Belome2GenoClone(Henchman):
     pack_number = 196
-    model = SmallModelDetails(412, 696, 695, 697, animations=SpriteAnimationCollection(
-        tower_bullet=genoclone_laugh,
-        kitchen_prep=genoclone_mad,
-        factory_pierce=genoclone_mad))
-
-bowserclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
-bowserclone_mad = SpriteAnimation(sequence_id=4, contact_frame=12, total_duration=24)
+    model = npcs.GenoClone
 
 class Belome2BowserClone(Henchman):
     pack_number = 197
-    model = SmallModelDetails(411, 699, 698, 700, animations=SpriteAnimationCollection(
-        tower_bullet=bowserclone_laugh,
-        kitchen_prep=bowserclone_mad,
-        factory_pierce=bowserclone_mad))
-
-peachclone_mad = SpriteAnimation(sequence_id=4, contact_frame=12, total_duration=24)
+    model = npcs.BowserClone
 
 class Belome2PeachClone(Henchman):
     pack_number = 198
-    model = SmallModelDetails(410, 702, 701, 703, animations=SpriteAnimationCollection(
-        tower_bullet=peachclone_mad,
-        kitchen_prep=peachclone_mad,
-        factory_pierce=peachclone_mad))
+    model = npcs.PeachClone
 
 
 class Belome2Boss(Boss):
     name = "Belome"
     pack_number = 169
-    eye_height = 14
-    # statue = StatueDetails(149, ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870",
-    #                              "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"])
-    statue = StatueDetails(659, ["F8D008", "F8A008", "F8F888", "984000", "F8F8F8", "181818", "F8B010", "401800", "F8D008", "F8F8B0", "582000", "C88008", "F8D060", "582000", "200000"])
-    
-    # small_model = SmallModelDetails(149, 570, 571, 572, animations=SpriteAnimationCollection(
-    #     bandits_way_distracted=scarecrow_wiggle,
-    #     chapel_laugh=scarecrow_wiggle,
-    #     ship_beckon=scarecrow_wiggle
-    # ))
-    small_model = SmallModelDetails(None, 659, None, 660)
-    big_model = BigModelDetails(None, 455, animations=SpriteAnimationCollection(
-        mines_punch=belome_attack,
-        statue_intro=belome_wiggle,
-        statue_peck=belome_attack_fast,
-        statue_flustered=belome_recoil,
-        chandelier_challenge=belome_attack,
-        endgame_challenge=belome_attack
-    ))
+    small_model = npcs.Belome2Small
+    big_model = npcs.BelomeStatue
     repeatable_henchmen = [Belome2MarioClone, Belome2MallowClone, Belome2GenoClone, Belome2BowserClone, Belome2PeachClone]
-    alt_palette = ["F8F8F8", "F8C880", "C08848", "A86848", "783830", "505050", "383838",
-                   "202828", "181818", "3838E0", "0000D8", "000060", "E0D8D8", "988888", "181818"]
     dialog_replacements = [
         (49, '''\n        BELOME: Good night~![await]'''),
         (1660,
@@ -2314,6 +1873,8 @@ class Belome2Boss(Boss):
          '''BELOME: Oh, you're back![await]\n Did you bring any food?[await]'''),
         (1781,
          '''BELOME: Say, it's past my bedtime.\n Can you get off of my head?[await]'''),
+        (1783,
+         ''' Woof, I ate too many Mallows~![await]\n I should wash it down with Tonic~![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2336,7 +1897,7 @@ class Belome2Boss(Boss):
         (3057,
          ''' Are you the pizza delivery person?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong door)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Scarecrow-this and Hungry-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''BELOME: This training regimen is\n giving me quite the appetite![await]'''),
         (3353,
@@ -2344,33 +1905,11 @@ class Belome2Boss(Boss):
     ]
 
 
-jagger_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
-jagger_look = SpriteAnimation(sequence_id=8)
-jagger_punch = SpriteAnimation(
-    sequence_id=4, contact_frame=54, total_duration=74)
-jagger_taunt = SpriteAnimation(
-    sequence_id=3, contact_frame=18, total_duration=38)
-
 
 class JaggerBoss(Boss):
     name = "Jagger"
     pack_number = 189
-    statue = StatueDetails(256, ["F8F8A0", "F8E870", "D09020", "784818", "482818", "D09020", "784818",
-                                 "301830", "482818", "F8E870", "E0C000", "D09020", "784818", "301830", "181818"])
-    small_model = SmallModelDetails(256, 574, 156, 573, animations=SpriteAnimationCollection(
-        bandits_way_distracted=jagger_look,
-        mines_punch=jagger_punch,
-        chapel_laugh=jagger_look,
-        ship_beckon=jagger_taunt,
-        dojo_challenge=jagger_punch,
-        statue_intro=jagger_look,
-        statue_peck=jagger_taunt,
-        statue_flustered=jagger_recoil,
-        keep_challenge=jagger_punch,
-        keep_summon=jagger_punch,
-        chandelier_challenge=jagger_punch,
-        endgame_challenge=jagger_punch
-    ))  # could be 156 or 256, or maybe 206 but prob not
+    small_model = npcs.Terrapin
     dialog_replacements = [
         (49,
          '''JAGGER: It'd be fun to fight\n again, but I need a nap.[await]'''),
@@ -2386,6 +1925,8 @@ class JaggerBoss(Boss):
          '''JAGGER: Welcome back! I've been\n training hard for our next fight,\n whenever that may be![await]'''),
         (1781,
          '''JAGGER: `MAIN_CHARACTER_NAME`, I can't\n jump as high as you. Is this\n really necessary?[await]'''),
+        (1783,
+         ''' My Sensei's drink is gross...[await]\n Here, my Black Tea is WAY better.[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2406,36 +1947,18 @@ class JaggerBoss(Boss):
         (3057,
          ''' Hello. May I help you?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Sensei-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Sensei-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3353,
          '''JAGGER: Sensei, the new regimen\n will strengthen us, right?[await]'''),
     ]
 
 
-jinx_punch = SpriteAnimation(
-    sequence_id=3, contact_frame=10, total_duration=18)
-jinx_recoil = SpriteAnimation(
-    sequence_id=2, total_duration=16)
 
 
 class Jinx1Boss(Boss):
     name = "Jinx"
     pack_number = 178
-    eye_height = 4
-    statue = StatueDetails(207, ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818",
-                                 "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"])
-    small_model = SmallModelDetails(None, None, 207, 575, animations=SpriteAnimationCollection(
-        recoil=jinx_recoil,
-        mines_punch=jinx_punch,
-        ship_beckon=jinx_punch,
-        dojo_challenge=jinx_punch,
-        statue_intro=jinx_punch,
-        statue_peck=jinx_punch,
-        keep_challenge=jinx_punch,
-        keep_summon=jinx_punch,
-        chandelier_challenge=jinx_punch,
-        endgame_challenge=jinx_punch
-    ))
+    small_model = npcs.Jinx1
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2449,6 +1972,7 @@ class Jinx1Boss(Boss):
         (1780,
          '''JINX: I must accept that I have been\n bested. Good work![await]'''),
         (1781, '''JINX: Yes, I am short! Show a little\n respect![await]'''),
+        (1783, ''' We're warming up `MAIN_CHARACTER_NAME`![await]\n But first, a Green Tea break![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2470,7 +1994,7 @@ class Jinx1Boss(Boss):
         (3057,
          ''' You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''JINX: Master!\n Share your wisdom with us![await]'''),
     ]
 
@@ -2479,22 +2003,7 @@ class Jinx2Boss(Boss):
     name = "Jinx"
     pack_number = 187
     eye_height = 4
-    statue = StatueDetails(415, ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818",
-                                 "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"])
-    small_model = SmallModelDetails(None, None, 415, 576, animations=SpriteAnimationCollection(
-        recoil=jinx_recoil,
-        mines_punch=jinx_punch,
-        ship_beckon=jinx_punch,
-        dojo_challenge=jinx_punch,
-        statue_intro=jinx_punch,
-        statue_peck=jinx_punch,
-        keep_challenge=jinx_punch,
-        keep_summon=jinx_punch,
-        chandelier_challenge=jinx_punch,
-        endgame_challenge=jinx_punch
-    ))
-    alt_palette = ["F8F8F8", "E0B068", "985040", "682848", "682848", "C00000", "C00000",
-                   "300000", "F8F800", "404040", "181818", "181818", "E0D8D8", "988888", "181818"]
+    small_model = npcs.Jinx2
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2508,6 +2017,7 @@ class Jinx2Boss(Boss):
         (1780,
          '''JINX: I must accept that I have been\n bested. Good work![await]'''),
         (1781, '''JINX: Yes, I am short! Show a little\n respect![await]'''),
+        (1783, ''' Well-fought, `MAIN_CHARACTER_NAME`![await]\n I've some Jasmine Tea for this day![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2529,7 +2039,7 @@ class Jinx2Boss(Boss):
         (3057,
          ''' You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''JINX: Master!\n Share your wisdom with us![await]'''),
     ]
 
@@ -2537,23 +2047,7 @@ class Jinx2Boss(Boss):
 class Jinx3Boss(Boss):
     name = "Jinx"
     pack_number = 188
-    eye_height = 4
-    alt_palette = ["F8F8F8", "E0B068", "985040", "682848", "682848", "C00000", "C00000",
-                   "300000", "F8F800", "D0D0D0", "707070", "181818", "E0D8D8", "988888", "181818"]
-    statue = StatueDetails(416, ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818",
-                                 "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"])
-    small_model = SmallModelDetails(None, None, 416, 577, animations=SpriteAnimationCollection(
-        recoil=jinx_recoil,
-        mines_punch=jinx_punch,
-        ship_beckon=jinx_punch,
-        dojo_challenge=jinx_punch,
-        statue_intro=jinx_punch,
-        statue_peck=jinx_punch,
-        keep_challenge=jinx_punch,
-        keep_summon=jinx_punch,
-        chandelier_challenge=jinx_punch,
-        endgame_challenge=jinx_punch
-    ))
+    small_model = npcs.Jinx3
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2567,6 +2061,7 @@ class Jinx3Boss(Boss):
         (1780,
          '''JINX: I must accept that I have been\n bested. Good work![await]'''),
         (1781, '''JINX: Yes, I am short! Show a little\n respect![await]'''),
+        (1783, ''' Hail, Master `MAIN_CHARACTER_NAME`![await]\n Let us celebrate with Matcha![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2588,39 +2083,36 @@ class Jinx3Boss(Boss):
         (3057,
          ''' You have come to challenge me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''JINX: Master!\n Share your wisdom with us![await]'''),
     ]
 
 
 class CulexFireCrystal(Henchman):
     pack_number = 217
-    model = SmallModelDetails(None, 707, None, 718)
+    model = npcs.FireCrystal
 
 
 class CulexWaterCrystal(Henchman):
     pack_number = 218
-    model = SmallModelDetails(None, 435, None, 579)
+    model = npcs.WaterCrystal
 
 
 class CulexEarthCrystal(Henchman):
     pack_number = 219
-    model = SmallModelDetails(None, 719, None, 720)
+    model = npcs.EarthCrystal
 
 
 class CulexWindCrystal(Henchman):
     pack_number = 220
-    model = SmallModelDetails(None, 386, None, 578)
+    model = npcs.WindCrystal
 
 
 class CulexBoss(Boss):
     name = "Culex"
-    eye_height = 12
     pack_number = 216
-    statue = StatueDetails(151, ["482818", "F8E870", "C08020", "906010", "F8F8A0", "F8E870", "D0A000",
-                                 "E0C000", "482818", "D0A000", "F8E870", "683808", "E0C000", "683808", "F8F8A0"])
-    small_model = SmallModelDetails(None, None, None, 151)
-    big_model = BigModelDetails(None, 511)
+    small_model = npcs.CulexSmall
+    big_model = npcs.CulexLarge
     unique_henchmen = [CulexFireCrystal, CulexWaterCrystal,
                        CulexEarthCrystal, CulexWindCrystal]
     dialog_replacements = [
@@ -2638,6 +2130,8 @@ class CulexBoss(Boss):
          '''CULEX: Greetings. It is good to\n make your acquaintance once\n again.[await]'''),
         (1781,
          '''CULEX: This is not the encounter In expected when I came to visit this\n world.[await]'''),
+        (1783,
+         ''' How droll, my crystals shattered.[await]\n I've only Bacchus Wine remaining.[await]'''),
         (1785,
          '''WATER CRYSTAL: I guess this is as\n close as I'll get to being returned\n to Mysidia.[await]'''),
         (1792,
@@ -2692,28 +2186,12 @@ class CulexBoss(Boss):
     ]
 
 
-boxboy_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=76, total_duration=98)
-boxboy_short = SpriteAnimation(
-    sequence_id=3, contact_frame=8, total_duration=98)
-
 
 class BoxBoyBoss(MimicBoss):
     name = "Box Boy"
-    eye_height = 4
     pack_number = 158
-    statue = StatueDetails(650, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
-                                 "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
-    alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "707870", "484040", "E80000", "384038", "089000", "085800", "181818"]
-    small_model = SmallModelDetails(None, 650, None, 651)
-    big_model = BigModelDetails(None, 390, animations=SpriteAnimationCollection(
-        mines_punch=boxboy_attack,
-        statue_intro=pandorite_shake,
-        statue_peck=boxboy_short,
-        statue_flustered=pandorite_recoil,
-        chandelier_challenge=boxboy_attack,
-        endgame_challenge=boxboy_attack
-    ))
+    small_model = npcs.BoxBoySmall
+    big_model = npcs.BoxBoyLarge
     dialog_replacements = [
         (49,
          '''BOX BOY: How many times are you\n gonna wake me up? Get lost![await]'''),
@@ -2727,6 +2205,8 @@ class BoxBoyBoss(MimicBoss):
         (1780, '''\n   BOX BOY: This place is boring.[await]'''),
         (1781,
          '''BOX BOY: You sure you wanna jump\n on me? I counter special attacks.[await]'''),
+        (1783,
+         ''' You don't even deserve to LOOK at[await]\n My 1990 Comanee-Ronti Pinot Noir![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2750,57 +2230,23 @@ class BoxBoyBoss(MimicBoss):
         (3057,
          ''' This'd BETTER be important![await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''BOX BOY: Ahh, you're not so\n tough![await]'''),
         (3353, '''BOX BOY: Ahh, you're not so\n tough![await]'''),
     ]
 
 
-piranha_taunt = SpriteAnimation(sequence_id=4, total_duration=16)
-piranha_bite = SpriteAnimation(
-    sequence_id=3, contact_frame=20, total_duration=52)
-piranha_recoil = SpriteAnimation(sequence_id=2, total_duration=20)
-megasmilax_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
-megasmilax_bite = SpriteAnimation(
-    sequence_id=3, contact_frame=18, total_duration=28)
-megasmilax_taunt = SpriteAnimation(sequence_id=4, total_duration=38)
-
 
 class MegaSmilaxPiranha(Henchman):
     pack_number = 222
-    model = SmallModelDetails(263, 580, 581, 582, animations=SpriteAnimationCollection(
-        tower_bullet=piranha_bite, kitchen_prep=piranha_bite, factory_pierce=piranha_bite))
+    model = npcs.PiranhaPlant
 
 
 class MegaSmilaxBoss(Boss):
     name = "Megasmilax"
     pack_number = 173
-    eye_height = 14
-    statue = StatueDetails(
-        263, ["F8F8A0", "F8E870", "E0C000", "D0A000", "C08020", "906010", "301830",
-              "C08020", "482818", "F8E870", "E0C000", "C08020", "482818", "E0C000", "301830"], mold=1, horizontal_pixel_shift=-3, vertical_pixel_shift=-4)
-    small_model = SmallModelDetails(263, 580, 581, 582, animations=SpriteAnimationCollection(
-        recoil=piranha_recoil,
-        bandits_way_distracted=piranha_taunt,
-        mines_punch=piranha_bite,
-        chapel_laugh=piranha_taunt,
-        ship_beckon=piranha_taunt,
-        dojo_challenge=piranha_bite,
-        statue_intro=piranha_bite,
-        statue_peck=piranha_bite,
-        statue_flustered=piranha_recoil,
-        keep_challenge=piranha_bite,
-        keep_summon=piranha_bite,
-        chandelier_challenge=piranha_bite,
-        endgame_challenge=piranha_bite
-    ))  # could be 138
-    big_model = BigModelDetails(None, 460, animations=SpriteAnimationCollection(
-        mines_punch=megasmilax_bite,
-        statue_flustered=megasmilax_recoil,
-        statue_peck=megasmilax_bite,
-        chandelier_challenge=megasmilax_taunt,
-        endgame_challenge=megasmilax_taunt
-    ))
+    small_model = npcs.PiranhaPlant
+    big_model = npcs.Megasmilax
     repeatable_henchmen = [MegaSmilaxPiranha]
     dialog_replacements = [
         (49,
@@ -2814,6 +2260,7 @@ class MegaSmilaxBoss(Boss):
         (1780,
          '''MEGASMILAX: You'd think it\n wouldn't be so difficult to get\n watered around here, when we're\n literally underwater.[await]'''),
         (1781, '''MEGASMILAX: Careful. I have sharp\n teeth.[await]'''),
+        (1783, ''' Go ahead, just add Water![await]\n Cha-Cha-Cha-Chia!  La Dee Dah~![await]'''),
         (1784,
          '''SMILAX: I guess salt water\n wouldn't be very good for us.[await]'''),
         (1793,
@@ -2863,7 +2310,7 @@ class MegaSmilaxBoss(Boss):
         (3072, '''\n          SMILAX: I'm thirsty.[await]'''),
         (3073, '''\n       SMILAX: Careful, I bite.[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Water-this and Fertilizer-that.[await]\n ...[delay]Actually, [delay]that doesn't sound\n so bad![await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Water-this and Fertilizer-that.[await]\n ...[delay]Actually, [delay]that doesn't sound\n so bad![await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''MEGASMILAX: This is harder than it\n looks. I'm a plant.[await]'''),
         (3353,
@@ -2877,27 +2324,13 @@ class MegaSmilaxBoss(Boss):
     ]
 
 
-dodo_peck = SpriteAnimation(sequence_id=3, contact_frame=16, total_duration=22)
-dodo_taunt = SpriteAnimation(sequence_id=4, total_duration=66)
 
 
 class DodoBoss(Boss):
     name = "Dodo"
     pack_number = 208
-    eye_height = 2
-#    statue = StatueDetails(10, ["F8F8A0", "D09020", "F8E870", "906010", "D09020", "906010", "F8E870",
-#                                "784818", "482818", "482818", "E0C000", "784818", "301830", "E0C000", "301830"], horizontal_pixel_shift=-7, vertical_pixel_shift=-4)
-    statue = StatueDetails(665, ["000000", "683808", "E0C000", "906010", "C08020", "683808", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "784818", "E0C000", "C8A008", "F8E870", "C08020"])
-    #small_model = SmallModelDetails(None, None, None, 10)
-    small_model = SmallModelDetails(None, 665, None, 666)
-    # big_model = BigModelDetails(393, 583, animations=SpriteAnimationCollection(
-    #     mines_punch=dodo_peck,
-    #     statue_intro=dodo_taunt,
-    #     statue_flustered=dodo_taunt,
-    #     statue_peck=dodo_peck,
-    #     chandelier_challenge=dodo_taunt,
-    #     endgame_challenge=dodo_taunt
-    # ))
+    small_model = npcs.DodoSmall
+    big_model = npcs.DodoLarge
     dialog_replacements = [
         # actually, don't use dialogs for dodo, just play sfx... how to handle this?
         # time this according to how long the feather sound effect is
@@ -2910,6 +2343,7 @@ class DodoBoss(Boss):
         (1778, EMPTY_DIALOG),
         (1780, EMPTY_DIALOG),
         (1781, EMPTY_DIALOG),
+        (1783, ''' (Dodo stares at a Hot Chocolate)[await]\n ...Please don't tell Valentina.[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -2930,7 +2364,7 @@ class DodoBoss(Boss):
         (3044, EMPTY_DIALOG),
         (3057, '''[delay_60][await]\n  [select] (I'm here for a fight)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n I never hear the guy next door.[await]\n Maybe he can't talk.[await]'''),
+         ''' It's really weird.\n I never hear the guy next door.[await]\n Maybe he can't talk.[await][page]\n I'd like to go over and introduce\n myself sometime, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, EMPTY_DIALOG),
         (3353, EMPTY_DIALOG),
     ]
@@ -2938,38 +2372,15 @@ class DodoBoss(Boss):
 
 class BirdettaEggbert(Henchman):
     pack_number = 223
-    model = SmallModelDetails(None, None, None, 462)
+    model = npcs.EggbertGridplane
 
-
-birdetta_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=40, total_duration=50)
-birdetta_attack_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=14, total_duration=18, speed=SequenceSpeeds.FASTEST)
-birdetta_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
-birdetta_taunt = SpriteAnimation(sequence_id=4, total_duration=48)
-
-eggbert_expand = SpriteAnimation(sequence_id=2, total_duration=32)
 
 
 class BirdettaBoss(Boss):
     name = "Birdetta"
-    eye_height = 6
     pack_number = 175
-    # statue = StatueDetails(462, ["F8E870", "E0C000", "0", "0", "C08020",
-    #                              "0", "0", "0", "0", "0", "906010", "0", "0", "0", "181818"])
-    statue = StatueDetails(667, ["883800", "C08020", "E0C000", "784818", "906010", "D0A000", "683808", "F8E870", "301830", "E0C000", "C08020", "F8F8A0", "C08020", "D0A000", "482818", "906010"])
-    small_model = SmallModelDetails(None, 667, None, 668)
-    # small_model = SmallModelDetails(None, None, None, 462, animations=SpriteAnimationCollection(
-    #     recoil=eggbert_expand,
-    #     bandits_way_distracted=eggbert_expand, statue_flustered=eggbert_expand, statue_intro=eggbert_expand))
-    big_model = BigModelDetails(None, 461, animations=SpriteAnimationCollection(
-        mines_punch=birdetta_attack,
-        statue_flustered=birdetta_recoil,
-        statue_peck=birdetta_attack_fast,
-        statue_intro=birdetta_taunt,
-        chandelier_challenge=birdetta_attack,
-        endgame_challenge=birdetta_attack
-    ))
+    small_model = npcs.BirdettaSmall
+    big_model = npcs.BirdettaLarge
     unique_henchmen = [BirdettaEggbert, BirdettaEggbert, BirdettaEggbert]
     repeatable_henchmen = [BirdettaEggbert]
     dialog_replacements = [
@@ -2983,6 +2394,8 @@ class BirdettaBoss(Boss):
          '''BIRDETTA: Oh, you didn't forget\n about me! You're so sweet♥![await]'''),
         (1781,
          '''BIRDETTA: This isn't what I had in\n mind when I said I wanted to play![await]'''),
+        (1783,
+         ''' Thanks for playing with me~![await]\n I lost, but I made Yoshi's Eggnog♥![await]'''),
         (1784,
          '''EGGBERT: You visiting us has\n really made Birdetta happy.\n Thank you![await]'''),
         (1793,
@@ -3032,7 +2445,7 @@ class BirdettaBoss(Boss):
         (3073,
          '''EGGBERT: You're making me so\n mad, I could explode![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''BIRDETTA: Thanks for playing with\n me~![await]'''),
         (3353, '''BIRDETTA: Thanks for playing with\n me~![await]'''),
     ]
@@ -3043,78 +2456,43 @@ class BirdettaBoss(Boss):
     ]
 
 
-bird_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=24, total_duration=36)
 
 
 class DefaultBluebird1(Henchman):
     pack_number = 94
-    model = SmallModelDetails(333, 584, 334, 585, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
+    model = npcs.Bluebird
 
 
 class DefaultBluebird2(Henchman):
     pack_number = 95
-    model = SmallModelDetails(333, 584, 334, 585, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
+    model = npcs.Bluebird
 
 
 class DefaultBirdy1(Henchman):
     pack_number = 92
-    model = SmallModelDetails(279, 586, 587, 588, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
+    model = npcs.Birdy
 
 
 class DefaultBirdy2(Henchman):
     pack_number = 93
-    model = SmallModelDetails(279, 586, 587, 588, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
+    model = npcs.Birdy
 
 
 class ValentinaBluebird(Henchman):
     pack_number = 160
-    model = SmallModelDetails(333, 584, 334, 585, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
+    model = npcs.Bluebird
 
 
 class ValentinaBirdy(Henchman):
     pack_number = 201
-    model = SmallModelDetails(279, 586, 587, 588, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
-
-
-valentina_stand = SpriteAnimation(sequence_id=10)
-valentina_laugh = SpriteAnimation(sequence_id=2)
-valentina_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=18, total_duration=28)
-valentina_taunt = SpriteAnimation(sequence_id=4, total_duration=58)
-valentina_recoil = SpriteAnimation(sequence_id=2, total_duration=34)
+    model = npcs.Birdy
 
 
 class ValentinaBoss(Boss):
     name = "Valentina"
     pack_number = 171
-    eye_height = 16
-    small_model = SmallModelDetails(56, 589, 590, 591, animations=SpriteAnimationCollection(
-        bandits_way_distracted=valentina_stand,
-        chapel_laugh=valentina_laugh,
-        ship_beckon=valentina_laugh,
-        ship_chair=valentina_stand,
-        dojo_challenge=valentina_laugh,
-        statue_intro=valentina_laugh,
-        keep_challenge=valentina_laugh,
-        keep_summon=valentina_laugh,
-        chandelier_challenge=valentina_laugh,
-        endgame_challenge=valentina_laugh
-    ))
-    big_model = BigModelDetails(None, 592, animations=SpriteAnimationCollection(
-        # mines_punch=valentina_hit,
-        statue_intro=valentina_taunt,
-        # statue_peck=valentina_hit,
-        statue_flustered=valentina_recoil,
-        chandelier_challenge=valentina_taunt,
-        endgame_challenge=valentina_taunt)
-    )
+    small_model = npcs.ValentinaSmall
+    big_model = npcs.ValentinaLarge
     repeatable_henchmen = [ValentinaBluebird, ValentinaBirdy]
     dialog_replacements = [
         (49,
@@ -3131,6 +2509,8 @@ class ValentinaBoss(Boss):
          '''VALENTINA: YOU again?! You better\n have brought some margaritas![await]'''),
         (1781,
          '''VALENTINA: Get OFF of my head\n before I take your shoes and throw\n them in the ocean!!![await]'''),
+        (1783,
+         ''' Pfffft!  You call THIS a Martini?[await]\n MAKE IT AGAIN, and I MIGHT tip!![await]'''),
         (1784,
          '''BLUEBIRD: Valentina's grumpy.\n Booster got her a gold beetle for\n their anniversary.[await][pause] She wanted a\n ladybug.[await][page]\n Married life sounds truly weird.[await]'''),
         (1793,
@@ -3142,7 +2522,7 @@ class ValentinaBoss(Boss):
         (2061,
          ''' Why are we making a cake that\n looks like Valentina, again?[await]'''),
         (2062,
-         ''' We're making a cake that looks like[1] Valentina.\n What else are we gonna\n do on our day off?[await]'''),
+         ''' We're making a cake that looks like\n Valentina.[await][pause] What else are we gonna\n do on our day off?[await]'''),
         (2504,
          '''VALENTINA: STOP BOTHERING ME![await]\n If you need something to do, go\n look for [0x7024] more item(s)![await]'''),
         (2560,
@@ -3178,7 +2558,7 @@ class ValentinaBoss(Boss):
          '''BLUEBIRD: Valentina only gives us\n the most boring jobs to do...[await]'''),
         (3073, '''\nBLUEBIRD: I'm bored. Entertain me![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await][page]\n Sometimes I'd like to ask her what\n she's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]'''),
         (3353,
@@ -3192,51 +2572,19 @@ class ValentinaBoss(Boss):
     ]
 
 
-fireball_spin = SpriteAnimation(
-    sequence_id=3, contact_frame=40, total_duration=62)
-fireball_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
-
-fireball_spin_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=20, total_duration=31, speed=SequenceSpeeds.FAST)
-
-
 class CzarPyrosphere(Henchman):
     pack_number = 190
-    model = SmallModelDetails(None, 155, None, 593, animations=SpriteAnimationCollection(tower_bullet=fireball_spin, kitchen_prep=fireball_spin, factory_pierce=fireball_spin_fast))  # maybe 277. these are the exact same, could free one up
+    model = npcs.RedFireball
 
 
-czar_dragon_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=56, total_duration=66)
-czar_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
-czar_taunt = SpriteAnimation(sequence_id=5)
 
 
 class CzarBoss(Boss):
     name = "Czar Dragon"
-    eye_height = 3
     pack_number = 172
-    # statue = StatueDetails(155, ["683808", "0", "0", "0", "906010", "0", "0", "F8F8A0",
-    #                   "0", "F8F8A0", "C08020", "D0A000", "E0C000", "F8E870", "181818"])
-    statue = StatueDetails(669, ["000000", "F8E870", "D0A000", "F8F8A0", "482818", "D0A000", "784818", "E0C000", "906010", "683808", "C08020", "301830", "181818", "906010", "784818", "482818"])
-    small_model = SmallModelDetails(None, 669, None, 670)
-    # small_model = SmallModelDetails(None, 155, None, 593, animations=SpriteAnimationCollection(
-    #     recoil=fireball_recoil, 
-    #     mines_punch=fireball_spin,
-    #     ship_beckon=fireball_spin,
-    #     dojo_challenge=fireball_spin,
-    #     statue_intro=fireball_spin,
-    #     statue_peck=fireball_spin,
-    #     statue_flustered=fireball_recoil,
-    #     keep_challenge=fireball_spin,
-    #     keep_summon=fireball_spin,
-    #     chandelier_challenge=fireball_spin,
-    #     endgame_challenge=fireball_spin
-    # ))
-    big_model = BigModelDetails(None, 594, animations=SpriteAnimationCollection(
-        mines_punch=czar_dragon_hit,
-        statue_intro=czar_taunt,
-        statue_flustered=czar_recoil))
-    # attack_model = BigModelDetails(None, 216) # overworld object - unsure what to use for
+    small_model = npcs.CzarDragonSmall
+    big_model = npcs.CzarBody
+    attack_model = npcs.CzarDragonLarge
     repeatable_henchmen = [CzarPyrosphere]
     dialog_replacements = [
         (49, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
@@ -3248,6 +2596,7 @@ class CzarBoss(Boss):
         (1778, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
         (1780, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
         (1781, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
+        (1783, ''' FIIIIIIIRRRRREEEEBAAAALLLLLLLL[await]\n WHISSSSSSSSSKEEEEEEEEEEEEY!!![await]'''),
         (1784, EMPTY_DIALOG),
         (1785, EMPTY_DIALOG),
         (1792, EMPTY_DIALOG),
@@ -3277,7 +2626,7 @@ class CzarBoss(Boss):
         (3072, EMPTY_DIALOG),
         (3073, EMPTY_DIALOG),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always yelling about\n BLARRRRG-this and\n BLAHGAHRGGH-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always yelling about\n BLARRRRG-this and\n BLAHGAHRGGH-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
         (3353, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
     ]
@@ -3287,99 +2636,55 @@ class CzarBoss(Boss):
     ]
 
 
-axem_green_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=56, total_duration=84)
-axem_green_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=28, total_duration=42, speed=SequenceSpeeds.FAST)
-axem_yellow_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=82, total_duration=108)
-axem_yellow_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=41, total_duration=54, speed=SequenceSpeeds.FAST)
-axem_black_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=16, total_duration=64)
-axem_pink_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=26, total_duration=58)
-axem_red_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=26, total_duration=66)
-axem_red_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=13, total_duration=33, speed=SequenceSpeeds.FAST)
-axem_red_taunt = SpriteAnimation(sequence_id=4, total_duration=120)
-axem_red_recoil = SpriteAnimation(sequence_id=2, total_duration=22)
-
-
 class AxemRangersAxemBlack(Henchman):
     pack_number = 248
-    model = SmallModelDetails(None, 209, None, 595, animations=SpriteAnimationCollection(
-        tower_bullet=axem_black_hit, kitchen_prep=axem_black_hit, factory_pierce=axem_black_hit))
+    model = npcs.AxemBlack
 
 
 class AxemRangersAxemPink(Henchman):
     pack_number = 249
-    model = SmallModelDetails(None, 210, None, 596, animations=SpriteAnimationCollection(
-        tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit, factory_pierce=axem_pink_hit))
+    model = npcs.AxemPink
 
 
 class AxemRangersAxemYellow(Henchman):
     pack_number = 250
-    model = SmallModelDetails(None, 211, None, 597, animations=SpriteAnimationCollection(
-        tower_bullet=axem_yellow_hit_fast, kitchen_prep=axem_yellow_hit))
+    model = npcs.AxemYellow
 
 
 class AxemRangersAxemGreen(Henchman):
     pack_number = 251
-    model = SmallModelDetails(None, 212, None, 598, animations=SpriteAnimationCollection(
-        tower_bullet=axem_green_hit, kitchen_prep=axem_green_hit, factory_pierce=axem_green_hit_fast))  # 467 is a clone, could free up
+    model = npcs.AxemGreen
 
 
 class AxemRangersMachine1(Henchman):
     pack_number = 203
-    model = SmallModelDetails(None, 185, None, 599, animations=SpriteAnimationCollection(
-        tower_bullet=axem_red_hit, kitchen_prep=axem_red_hit, factory_pierce=axem_red_hit))
+    model = npcs.MachineAxemRed
 
 
 class AxemRangersMachine2(Henchman):
     pack_number = 203
-    model = SmallModelDetails(None, 422, None, 600, animations=SpriteAnimationCollection(
-        tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit, factory_pierce=axem_pink_hit))
+    model = npcs.MachineAxemPink
 
 
 class AxemRangersMachine3(Henchman):
     pack_number = 203
-    model = SmallModelDetails(None, 683, None, 684, animations=SpriteAnimationCollection(
-        tower_bullet=axem_black_hit, kitchen_prep=axem_black_hit, factory_pierce=axem_black_hit))
+    model = npcs.MachineAxemBlack
 
 class AxemRangersMachine4(Henchman):
     pack_number = 203
-    model = SmallModelDetails(None, 685, None, 686, animations=SpriteAnimationCollection(
-        tower_bullet=axem_yellow_hit_fast, kitchen_prep=axem_yellow_hit))
+    model = npcs.MachineAxemYellow
 
 class AxemRangersMachine5(Henchman):
     pack_number = 203
-    model = SmallModelDetails(None, 687, None, 688, animations=SpriteAnimationCollection(
-        tower_bullet=axem_green_hit, kitchen_prep=axem_green_hit, factory_pierce=axem_green_hit_fast))  # 467 is a clone, could free up
+    model = npcs.MachineAxemGreen
 
 
 
 class AxemRangersBoss(Boss):
     name = "Axem Red"
-    eye_height = 15
     pack_number = 182
     forced_background = 39
-    statue = StatueDetails(208, ["F8F8A0", "F8E870", "906010", "C08020", "906010", "301830",
-                      "F8E870", "E0C000", "C08020", "683808", "0", "0", "0", "0", "181818"], horizontal_pixel_shift=-6)
-    small_model = SmallModelDetails(None, 208, None, 601, animations=SpriteAnimationCollection(
-        bandits_way_distracted=axem_red_taunt,
-        mines_punch=axem_red_hit,
-        ship_beckon=axem_red_hit,
-        dojo_challenge=axem_red_taunt,
-        statue_intro=axem_red_taunt,
-        statue_peck=axem_red_hit_fast,
-        statue_flustered=axem_red_recoil,
-        keep_challenge=axem_red_taunt,
-        keep_summon=axem_red_hit,
-        chandelier_challenge=axem_red_taunt,
-        endgame_challenge=axem_red_taunt
-    ))
+    small_model = npcs.AxemRed
     unique_henchmen = [AxemRangersAxemBlack, AxemRangersAxemPink,
                        AxemRangersAxemYellow, AxemRangersAxemGreen]
     repeatable_henchmen = [AxemRangersMachine1, AxemRangersMachine2, AxemRangersMachine3, AxemRangersMachine4, AxemRangersMachine5]
@@ -3397,6 +2702,8 @@ class AxemRangersBoss(Boss):
          '''AXEM RED: Yo! Quit wasting your\n time around here, you've got a\n world to save![await]'''),
         (1781,
          '''AXEM RED: Yo, `MAIN_CHARACTER_NAME`!\n This isn't cool!\n Get off of my head.[await]'''),
+        (1783,
+         ''' Yo! This energy drink is preem![await]\n Axem Red Bull gives me wings![await]'''),
         (1784,
          '''AXEM BLACK: Red can be kind of\n a chump when he loses.[await]'''),
         (1792, '''AXEM YELLOW: Say, do you have\n anything to eat?[await]'''),
@@ -3445,7 +2752,7 @@ class AxemRangersBoss(Boss):
          '''AXEM YELLOW: Man...[delay] I wish\n someone would bring me some food\n up here![await]'''),
         (3073, '''\n    AXEM YELLOW: Get lost, bub![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Shades-this and Makeup-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Shades-this and Makeup-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''\n  AXEM RED: I'm way outta shape![await]'''),
         (3353, '''\n  AXEM RED: I'm way outta shape![await]'''),
     ]
@@ -3460,19 +2767,8 @@ chester_attack_fast = SpriteAnimation(
 class ChesterBoss(MimicBoss):
     name = "Chester"
     pack_number = 235
-    eye_height = 4
-    statue = StatueDetails(648, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
-                                 "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
-    alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "C8A880", "A070B0", "E80000", "603068", "089000", "085800", "481040"]
-    small_model = SmallModelDetails(None, 648, None, 649)
-    big_model = BigModelDetails(None, 330, animations=SpriteAnimationCollection(
-        mines_punch=chester_attack,
-        statue_intro=pandorite_shake,
-        statue_peck=chester_attack_fast,
-        statue_flustered=pandorite_recoil,
-        chandelier_challenge=chester_attack,
-        endgame_challenge=chester_attack
-    ))
+    small_model = npcs.ChesterSmall
+    big_model = npcs.ChesterLarge
     dialog_replacements = [
         (49,
          '''CHESTER: Go on, take it. Just let\n me go back to sleep.[await]'''),
@@ -3486,6 +2782,7 @@ class ChesterBoss(MimicBoss):
         (1780,
          '''CHESTER: You know, I'm kind of a\n big deal over in Bowser's Keep.[await]'''),
         (1781, '''CHESTER: This is unnecessary. Get\n off me![await]'''),
+        (1783, ''' Leave me alone with my precious[await]\n '92 Napper Cabernet Sauivignon.[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -3508,44 +2805,17 @@ class ChesterBoss(MimicBoss):
         (3057,
          ''' You're interrupting my sleep.[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Dragon-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Dragon-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''\n  CHESTER: I don't even have legs![await]'''),
         (3353, '''\n  CHESTER: I don't even have legs![await]'''),
     ]
 
 
-small_magikoopa_hit = SpriteAnimation(
-    sequence_id=10, contact_frame=44, total_duration=72)
-big_magikoopa_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=38, total_duration=62)
-big_magikoopa_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=14, total_duration=32, speed=SequenceSpeeds.VERY_FAST)
-big_magikoopa_taunt = SpriteAnimation(sequence_id=4, total_duration=60)
-big_magikoopa_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-
-
 class MagikoopaBoss(Boss):
     name = "Magikoopa"
-    eye_height = 12
     pack_number = 209
-    statue = StatueDetails(190, ["F8F8A0", "E0C000", "906010", "C08020", "E0C000", "C08020", "683808", "301830", "F8F8A0", "F8E870", "D09020", "784818", "E0C000", "482818", "301830"], horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-4, north_facing_vertical_pixel_shift=-1)
-    small_model = SmallModelDetails(190, 602, 603, 604, animations=SpriteAnimationCollection(
-        mines_punch=small_magikoopa_hit,
-        ship_beckon=small_magikoopa_hit,
-        dojo_challenge=small_magikoopa_hit,
-        # statue_peck=small_magikoopa_hit,
-        keep_challenge=small_magikoopa_hit,
-        keep_summon=small_magikoopa_hit,
-        chandelier_challenge=small_magikoopa_hit,
-        endgame_challenge=small_magikoopa_hit
-    ))
-    big_model = BigModelDetails(None, 605, animations=SpriteAnimationCollection(
-        mines_punch=big_magikoopa_hit,
-        statue_intro=big_magikoopa_taunt,
-        statue_peck=big_magikoopa_hit_fast,
-        statue_flustered=big_magikoopa_recoil,
-        chandelier_challenge=big_magikoopa_taunt,
-        endgame_challenge=big_magikoopa_taunt))
+    small_model = npcs.RedMagikoopa
+    big_model = npcs.MagikoopaLarge
     dialog_replacements = [
         (49,
          '''MAGIKOOPA: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]'''),
@@ -3557,6 +2827,7 @@ class MagikoopaBoss(Boss):
         (1778, '''\n  MAGIKOOPA: Huh? ...Where am I?[await]'''),
         (1780, '''MAGIKOOPA: Hello! How have you\n been?[await]'''),
         (1781, '''MAGIKOOPA: Uh, what are you\n doing?[await]'''),
+        (1783, ''' My plans are foiled yet again![await]\n There's Magic Hat in my magic hat![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -3577,68 +2848,25 @@ class MagikoopaBoss(Boss):
         (3044,
          '''MAGIKOOPA: Now this should be\n interesting. Can you beat THE\n master, `MAIN_CHARACTER_NAME`?[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Yoshi-this and Bowser-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Yoshi-this and Bowser-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''MAGIKOOPA: This is more fun than I\n expected![await]'''),
         (3353, '''MAGIKOOPA: This is more fun than I\n expected![await]'''),
     ]
 
 
-shyguy_spin = SpriteAnimation(sequence_id=5)
-shyguy_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=32, total_duration=40)
-shyguy_taunt = SpriteAnimation(sequence_id=4, total_duration=110)
-shyguy_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class BoomerShyGuy(Henchman):
     pack_number = 200
-    model = SmallModelDetails(346, 605, 606, 607, animations=SpriteAnimationCollection(
-        tower_bullet=shyguy_hit, kitchen_prep=shyguy_taunt, factory_pierce=shyguy_hit))  # maybe 346
-
-
-boomer_alt_taunt = SpriteAnimation(sequence_id=1, total_duration=16)
-boomer_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=42, total_duration=52)
-boomer_taunt = SpriteAnimation(sequence_id=4, total_duration=48)
-boomer_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
+    model = npcs.ShyGuy
 
 
 class BoomerBoss(Boss):
     name = "Boomer"
-    eye_height = 8
     pack_number = 210
-    # statue = StatueDetails(346, ["F8F8A0", "F8E870", "F8E870", "D0A000", "F8E870", "E0C000", "E0C000",
-    #                   "C08020", "E0C000", "301830", "C08020", "181818", "181818", "906010", "180000"], horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-2)
-    statue = StatueDetails(671, ["000000", "906010", "906010", "C08020", "E0C000", "784818", "301830", "D0A000", "E0C000", "784818", "C08020", "D0A000", "F8E870", "F8F8A0", "000000", "000000"])
-    small_model = SmallModelDetails(None, 671, None, 672)
-    # small_model = SmallModelDetails(346, 605, 606, 607, animations=SpriteAnimationCollection(
-    #     recoil=shyguy_recoil,
-    #     bandits_way_distracted=shyguy_spin,
-    #     mines_punch=shyguy_hit,
-    #     chapel_laugh=shyguy_spin,
-    #     ship_beckon=shyguy_taunt,
-    #     ship_chair=shyguy_spin,
-    #     dojo_challenge=shyguy_taunt,
-    #     statue_intro=shyguy_taunt,
-    #     # statue_peck=shyguy_hit,
-    #     statue_flustered=shyguy_recoil,
-    #     keep_challenge=shyguy_taunt,
-    #     keep_summon=shyguy_taunt,
-    #     chandelier_challenge=shyguy_taunt,
-    #     endgame_challenge=shyguy_taunt
-    # ))  # maybe 346
-    big_model = BigModelDetails(None, 482, animations=SpriteAnimationCollection(
-        chandelier_challenge=boomer_alt_taunt,
-        endgame_challenge=boomer_alt_taunt
-    ))
-    attack_model = BigModelDetails(None, 308, animations=SpriteAnimationCollection(
-        # mines_punch=boomer_hit, # vram issues
-        statue_intro=boomer_taunt,
-        # statue_peck=boomer_hit, # vram issues
-        statue_flustered=boomer_recoil,
-        chandelier_challenge=boomer_taunt,
-        endgame_challenge=boomer_taunt
-    ))
+    small_model = npcs.BoomerSmall
+    big_model = npcs.BoomerOverworld
+    attack_model = npcs.BoomerLarge
     unique_henchmen = [BoomerShyGuy, BoomerShyGuy]
     repeatable_henchmen = [BoomerShyGuy]
     dialog_replacements = [
@@ -3654,6 +2882,7 @@ class BoomerBoss(Boss):
         (1780,
          '''BOOMER: A true soldier knows\n when to accept defeat. You earned\n your victory.[await]'''),
         (1781, '''BOOMER: This is absurd! Get off\n of my head.[await]'''),
+        (1783, ''' Great battle deserves great Sake![await]\n Join me, `MAIN_CHARACTER_NAME`.  Kampai![await]'''),
         (1784,
          '''CHANDELI-HO: There's nowhere for\n Boomer to crash down onto in here!\n Thank goodness![await]'''),
         (1793,
@@ -3702,7 +2931,7 @@ class BoomerBoss(Boss):
         (3073,
          '''CHANDELI-HO: I won't let anything\n bad happen to Boomer![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Soldier-this and Honor-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Soldier-this and Honor-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''BOOMER: You won fair and square!\n But I won't make it so easy for you\n next time![await]'''),
         (3353,
@@ -3717,15 +2946,9 @@ class BoomerBoss(Boss):
 
 class ExorBoss(Boss):
     name = "Exor"
-    eye_height = 16
     pack_number = 186
     forced_background = 16
-    # statue = StatueDetails(14, ["F8F8F8", "F8F8A0", "F8E870", "D09020", "704020", "C08020", "906010",
-    #                 "784818", "482818", "D0A000", "683808", "482818", "E0C000", "C08020", "181818"])
-    statue = StatueDetails(673, ["000000", "F8F8A0", "F8E870", "683808", "E0C000", "784717", "301830", "C08020", "D0A000", "E0C000", "C08020", "906010", "784818", "F8E870", "784818", "E0C000"])
-    small_model = SmallModelDetails(None, 673, None, 674)
-    #small_model = SmallModelDetails(None, 14, None, 609)
-    # potentially, put sprite #3 on an unused NPC and don't worry about the sprite offset
+    small_model = npcs.ExorSmall
     dialog_replacements = [
         (49, '''  EXOR: What do you want? Get\n lost![await]'''),
         (1660,
@@ -3740,6 +2963,8 @@ class ExorBoss(Boss):
          '''EXOR: Halt! Don't even THINK\n about leaving until you've had\n some of this juice![await]'''),
         (1781,
          '''EXOR: Look, if you really want to\n humiliate me, why not use\n Geno Whirl too, while you're at it?[await]'''),
+        (1783,
+         ''' You think I was MADE this HUGE?![await]\n No, I drank my Milk EVERY DAY!!![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -3762,51 +2987,22 @@ class ExorBoss(Boss):
         (3057,
          ''' Halt! What do you want?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Nosey-this and Trespasser-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Nosey-this and Trespasser-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''\n        EXOR: How humiliating![await]'''),
         (3353, '''\n        EXOR: How humiliating![await]'''),
     ]
 
 
-dingaling_attack = SpriteAnimation(
-    sequence_id=4, contact_frame=32, total_duration=44)
-dingaling_attack_fast = SpriteAnimation(
-    sequence_id=4, contact_frame=16, total_duration=22, speed=SequenceSpeeds.FAST)
-dingaling_taunt = SpriteAnimation(sequence_id=7, total_duration=62)
-dingaling_circle = SpriteAnimation(
-    sequence_id=3, contact_frame=22, total_duration=34)
-countdown_loop = SpriteAnimation(sequence_id=9, total_duration=32)
-
-
 class CountdownDingALing(Henchman):
     pack_number = 252
-    model = SmallModelDetails(None, None, None, 454, animations=SpriteAnimationCollection(tower_bullet=dingaling_circle, factory_pierce=dingaling_circle))
+    model = npcs.DingalingGridplane
 
 
 class CountdownBoss(Boss):
     name = "Count Down"
     pack_number = 174
-    eye_height = 8
     forced_background = 18
-    # small_model = SmallModelDetails(454, animations=SpriteAnimationCollection(
-    #     mines_punch=dingaling_attack,
-    #     dojo_challenge=dingaling_taunt,
-    #     statue_peck=dingaling_attack_fast,
-    #     keep_challenge=dingaling_taunt,
-    #     keep_summon=dingaling_taunt,
-    #     chandelier_challenge=dingaling_taunt,
-    #     endgame_challenge=dingaling_taunt
-    # ))
-    statue = StatueDetails(642, ["F8F8A0", "F8E870", "E0C000", "E0C000", "E0C000", "D09020", "D09020",
-                      "F8E870", "F8E870", "906010", "D09020", "906010", "E0C000", "F8E870", "906010"], horizontal_pixel_shift=4, vertical_pixel_shift=-1)
-    small_model = SmallModelDetails(None, 642, None, 643, animations=SpriteAnimationCollection(
-        mines_punch=countdown_loop,
-        dojo_challenge=countdown_loop,
-        keep_challenge=countdown_loop,
-        keep_summon=countdown_loop,
-        chandelier_challenge=countdown_loop,
-        endgame_challenge=countdown_loop
-    ))
+    small_model = npcs.CountDownGridplane
     unique_henchmen = [CountdownDingALing, CountdownDingALing]
     repeatable_henchmen = [CountdownDingALing]
     dialog_replacements = [
@@ -3823,6 +3019,7 @@ class CountdownBoss(Boss):
         (1780,
          '''COUNT DOWN: What are you still\n doing around here? Taking a break,\n huh?[await]'''),
         (1781, '''\n   COUNT DOWN: This is not good![await]'''),
+        (1783, ''' Ahh, fresh squeezed Orange Juice-[await]\n The second best way to wake up![await]'''),
         (1784,
          '''DING-A-LING: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1785,
@@ -3864,7 +3061,7 @@ class CountdownBoss(Boss):
         (3057,
          ''' Uh-oh! Are you looking for trouble?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n The guy next door never seems\n to shut his alarm clock off.[await]'''),
+         ''' It's really weird.\n The guy next door never seems\n to shut his alarm clock off.[await][page]\n I'd like to go over and give him a\n piece of my mind, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''COUNT DOWN: This is a weird\n training regimen for an alarm\n clock![await]'''),
         (3353,
@@ -3879,29 +3076,12 @@ class CountdownBoss(Boss):
         # come up with something for booster's other replacement dialogs if it's feasible to have 4 bells in curtain room
     ]
 
-
-cloaker_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=38, total_duration=50)
-cloaker_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
-
-
 class CloakerDominoBoss(Boss):
     name = "Cloaker"
     pack_number = 184
-    eye_height = 6
     forced_background = 40
-    # statue = StatueDetails(429, ["F8F8A0", "F8E870", "E0C000", "E0C000", "F8E870", "E0C000",
-    #                   "D09020", "482818", "301830", "906010", "0", "482818", "482818", "482818", "301830"], horizontal_pixel_shift=-4, vertical_pixel_shift=-3)
-    statue = StatueDetails(675, ["181818", "D0A000", "F8E870", "D0A000", "F8E870", "F8F8A0", "C08020", "301830", "683808", "C08020", "E0C000", "906010", "784818", "F8E870", "482818", "301830"])
-    #small_model = SmallModelDetails(None, 429, None, 610)
-    small_model = SmallModelDetails(None, 675, None, 676)
-    big_model = BigModelDetails(None, 611, animations=SpriteAnimationCollection(
-        # mines_punch=cloaker_hit, # breaks vram
-        # statue_peck=cloaker_hit, # breaks vram
-        statue_flustered=cloaker_recoil,
-        # chandelier_challenge=cloaker_hit, # breaks vram
-        # endgame_challenge=cloaker_hit # breaks vram
-    ))
+    small_model = npcs.DominoSmall
+    big_model = npcs.CloakerLarge
     dialog_replacements = [
         (49,
          '''CLOAKER: I'm busy wallowing in\n misery at my defeat here.[await][pause] Get lost![await]'''),
@@ -3914,6 +3094,7 @@ class CloakerDominoBoss(Boss):
         (1778, '''DOMINO: Guess you're tougher\n than I thought...[await]'''),
         (1780, '''\n DOMINO: So, you've returned...![await]'''),
         (1781, '''DOMINO: I don't like where this is\n going...[await]'''),
+        (1783, ''' I always enjoy a nice Bubble Tea[await]\n...after CLOBBERING TIME!![await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -3938,7 +3119,7 @@ class CloakerDominoBoss(Boss):
         (3057,
          ''' Hee hee hee... Wanna fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Weaklings-this and Snake-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Weaklings-this and Snake-that.[await][page]\n Sometimes I'd like to ask them what\n they're babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]'''),
         (3353,
@@ -3946,76 +3127,25 @@ class CloakerDominoBoss(Boss):
     ]
 
 
-hammer_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=26, total_duration=36)
 
 
 class DefaultMadMallet(Henchman):
     pack_number = 150
-    model = SmallModelDetails(
-        259, 612, 613, 614, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
+    model = npcs.MadMallet
 
 
 class ClerkMadMallet(Henchman):
     pack_number = 202
-    model = SmallModelDetails(
-        259, 612, 613, 614, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
+    model = npcs.MadMallet
 
 
-shovelknight_tile = SpriteAnimation(sequence_id=2)
-shovelknight_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=32, total_duration=44)
-shovelknight_taunt = SpriteAnimation(sequence_id=4, total_duration=44)
-shovelknight_recoil = SpriteAnimation(sequence_id=2, total_duration=24)
-shovelknight_alt_taunt = SpriteAnimation(sequence_id=5)
 
 
 class ClerkBoss(Boss):
     name = "Clerk"
-    eye_height = 10
     pack_number = 146
-    statue = StatueDetails(414, ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830",
-                      "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"], horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
-    small_model = SmallModelDetails(446, 489, 615, 616, animations=SpriteAnimationCollection(
-        bandits_way_distracted=shovelknight_tile,
-        chapel_laugh=shovelknight_tile,
-        ship_chair=shovelknight_tile,
-        dojo_challenge=shovelknight_tile,
-        keep_challenge=shovelknight_tile,
-        keep_summon=shovelknight_tile,
-        chandelier_challenge=shovelknight_tile,
-        endgame_challenge=shovelknight_tile
-    ))
-    # big_model = BigModelDetails({
-    #     "sprite": SpriteName._306_CLERK,
-    #     "priority_0": False,
-    #     "priority_1": False,
-    #     "priority_2": True,
-    #     "show_shadow": False,
-    #     "shadow": ShadowSize._00_OVAL_SMALL,
-    #     "y_pixel_shift": 1,
-    #     "acute_axis": 7,
-    #     "obtuse_axis": 7,
-    #     "height": 13,
-    #     "vram_store": VramStore._02_SWSE,
-    #     "vram_size": 7,
-    #     "cannot_clone": True,
-    #     "byte2_bit0": False,
-    #     "byte2_bit1": False,
-    #     "byte2_bit2": False,
-    #     "byte2_bit3": False,
-    #     "byte2_bit4": False,
-    #     "byte5_bit6": False,
-    #     "byte5_bit7": False,
-    #     "byte6_bit2": False
-    # }, width=60, height=58, animations=SpriteAnimationCollection(
-    #     mines_punch=shovelknight_attack,
-    #     statue_peck=shovelknight_attack,
-    #     statue_intro=shovelknight_alt_taunt,
-    #     statue_flustered=shovelknight_recoil,
-    #     chandelier_challenge=shovelknight_taunt,
-    #     endgame_challenge=shovelknight_taunt
-    # ))
+    small_model = npcs.ClerkSmall
+    big_model = npcs.ClerkLarge
     unique_henchmen = [ClerkMadMallet, ClerkMadMallet]
     repeatable_henchmen = [ClerkMadMallet]
     dialog_replacements = [
@@ -4031,6 +3161,7 @@ class ClerkBoss(Boss):
         (1780,
          '''CLERK: So, you've come back! I\n hope your journey is staying on\n schedule![await]'''),
         (1781, '''CLERK: What do you think you're\n doing?![await]'''),
+        (1783, ''' You'll have to take this up with the[await]\n Manager.  I'M having an Espresso.[await]'''),
         (1784,
          '''MAD MALLET: To be honest, I hate\n fighting alone. I'll run away if I'm\n the last one left in a battle.[await]\n  It sounds cowardly, but this is\n just the way I am.[await]'''),
         (1793,
@@ -4078,7 +3209,7 @@ class ClerkBoss(Boss):
          '''MAD MALLET: Wow! I can see\n Nimbus Land from here![await]'''),
         (3073, '''MAD MALLET: I'm gonna THRASH\n ya![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Puffball-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Puffball-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''CLERK: If anyone asks, I'm on\n break![await]'''),
         (3353, '''CLERK: If anyone asks, I'm on\n break![await]'''),
     ]
@@ -4092,56 +3223,14 @@ class ClerkBoss(Boss):
 
 class ManagerPounder(Henchman):
     pack_number = 126
-    model = SmallModelDetails(
-        323, 636, 637, 638, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
+    model = npcs.Pounder
 
 
 class ManagerBoss(Boss):
     name = "Manager"
-    eye_height = 10
     pack_number = 147
-    statue = StatueDetails(493, ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830",
-                      "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"], horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
-    small_model = SmallModelDetails(493, 617, 618, 619, animations=SpriteAnimationCollection(
-        bandits_way_distracted=shovelknight_tile,
-        chapel_laugh=shovelknight_tile,
-        ship_chair=shovelknight_tile,
-        dojo_challenge=shovelknight_tile,
-        keep_challenge=shovelknight_tile,
-        keep_summon=shovelknight_tile,
-        chandelier_challenge=shovelknight_tile,
-        endgame_challenge=shovelknight_tile
-    ))
-    # big_model = BigModelDetails({
-    #     "sprite": SpriteName._332_MANAGER,
-    #     "priority_0": False,
-    #     "priority_1": False,
-    #     "priority_2": True,
-    #     "show_shadow": False,
-    #     "shadow": ShadowSize._00_OVAL_SMALL,
-    #     "y_pixel_shift": 1,
-    #     "acute_axis": 7,
-    #     "obtuse_axis": 7,
-    #     "height": 13,
-    #     "vram_store": VramStore._02_SWSE,
-    #     "vram_size": 7,
-    #     "cannot_clone": True,
-    #     "byte2_bit0": False,
-    #     "byte2_bit1": False,
-    #     "byte2_bit2": False,
-    #     "byte2_bit3": False,
-    #     "byte2_bit4": False,
-    #     "byte5_bit6": False,
-    #     "byte5_bit7": False,
-    #     "byte6_bit2": False
-    # }, width=60, height=58, animations=SpriteAnimationCollection(
-    #     mines_punch=shovelknight_attack,
-    #     statue_peck=shovelknight_attack,
-    #     statue_intro=shovelknight_alt_taunt,
-    #     statue_flustered=shovelknight_recoil,
-    #     chandelier_challenge=shovelknight_taunt,
-    #     endgame_challenge=shovelknight_taunt
-    # ))
+    small_model = npcs.ManagerSmall
+    big_model = npcs.ManagerLarge
     unique_henchmen = [ManagerPounder, ManagerPounder,
                        ManagerPounder]
     repeatable_henchmen = [ManagerPounder]
@@ -4158,6 +3247,7 @@ class ManagerBoss(Boss):
         (1780, '''MANAGER: Oh, you've returned.\n Good work so far.[await]'''),
         (1781,
          '''MANAGER: Get off of my head\n before I make you take the longest\n jump of your life![await]'''),
+        (1783, ''' DON'T bother the Director with this.[await]\n Just, drink my Cappuccino. Happy?[await]'''),
         (1784,
          '''POUNDER: This is way more fun\n than working in the factory was.[await]'''),
         (1793,
@@ -4205,7 +3295,7 @@ class ManagerBoss(Boss):
         (3073,
          '''POUNDER: Bullet Bill production is\n on schedule! Don't get in my way![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Schedule-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Schedule-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352, '''MANAGER: Don't interrupt me while\n I'm training![await]'''),
         (3353, '''MANAGER: Don't interrupt me while\n I'm training![await]'''),
     ]
@@ -4219,56 +3309,14 @@ class ManagerBoss(Boss):
 
 class DirectorPoundette(Henchman):
     pack_number = 128
-    model = SmallModelDetails(
-        324, 639, 477, 640, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))  # maybe 477
+    model = npcs.Poundette
 
 
 class DirectorBoss(Boss):
     name = "Director"
-    eye_height = 10
     pack_number = 148
-    statue = StatueDetails(497, ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830",
-                      "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"], horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
-    small_model = SmallModelDetails(497, 620, 621, 622, animations=SpriteAnimationCollection(
-        bandits_way_distracted=shovelknight_tile,
-        chapel_laugh=shovelknight_tile,
-        ship_chair=shovelknight_tile,
-        dojo_challenge=shovelknight_tile,
-        keep_challenge=shovelknight_tile,
-        keep_summon=shovelknight_tile,
-        chandelier_challenge=shovelknight_tile,
-        endgame_challenge=shovelknight_tile
-    ))
-    # big_model = BigModelDetails({
-    #     "sprite": SpriteName._332_MANAGER,
-    #     "priority_0": False,
-    #     "priority_1": False,
-    #     "priority_2": True,
-    #     "show_shadow": False,
-    #     "shadow": ShadowSize._00_OVAL_SMALL,
-    #     "y_pixel_shift": 1,
-    #     "acute_axis": 7,
-    #     "obtuse_axis": 7,
-    #     "height": 13,
-    #     "vram_store": VramStore._02_SWSE,
-    #     "vram_size": 7,
-    #     "cannot_clone": True,
-    #     "byte2_bit0": False,
-    #     "byte2_bit1": False,
-    #     "byte2_bit2": False,
-    #     "byte2_bit3": False,
-    #     "byte2_bit4": False,
-    #     "byte5_bit6": False,
-    #     "byte5_bit7": False,
-    #     "byte6_bit2": False
-    # }, width=60, height=58, animations=SpriteAnimationCollection(
-    #     mines_punch=shovelknight_attack,
-    #     statue_peck=shovelknight_attack,
-    #     statue_intro=shovelknight_alt_taunt,
-    #     statue_flustered=shovelknight_recoil,
-    #     chandelier_challenge=shovelknight_taunt,
-    #     endgame_challenge=shovelknight_taunt
-    # ))
+    small_model = npcs.DirectorSmall
+    big_model = npcs.DirectorLarge
     unique_henchmen = [DirectorPoundette, DirectorPoundette,
                        DirectorPoundette, DirectorPoundette]
     repeatable_henchmen = [DirectorPoundette]
@@ -4286,6 +3334,8 @@ class DirectorBoss(Boss):
          '''DIRECTOR: Do not waste too much\n time here. Your quest must\n continue.[await]'''),
         (1781,
          '''DIRECTOR: Any tomfoolery will be\n dealt with by immediate meltdown.\n Get off of my head.[await]'''),
+        (1783,
+         ''' Only the Chief can help you, now.[await]\n I have a Latte with my name on it.[await]'''),
         (1784,
          '''POUNDETTE: I don't feel like I'm\n being used to my full potentia\n down here, but I don't mind\n having a break.[await]'''),
         (1793,
@@ -4301,7 +3351,7 @@ class DirectorBoss(Boss):
          '''DIRECTOR: I'm afraid you must\n continue searching.[delay] There are\n [0x7024] item(s) remaining.[await]'''),
         (2560, '''POUNDETTE: Salutations.[await][pause] Would you\n like to book an appointment with\n the Director?[await][pause]\n ...You want to just barge right\n in?![delay] No way![await]\n Time to teach you some manners![await]'''),
         (2572,
-         '''POUNDETTE: The Director doesn't\n want anyone coming back here,\n so I'm going to have to ask you\n to leave.[await]'''),
+         '''POUNDETTE: The Director doesn't\n want anyone coming back here.[await]\n So I'm going to have to ask you\n to leave.[await]'''),
         (2831,
          '''DIRECTOR: I'm afraid there is\n nothing of concern to you in\n this town.[await]'''),
         (2832,
@@ -4334,7 +3384,7 @@ class DirectorBoss(Boss):
         (3072, '''POUNDETTE: Finally, some time to\n rest![await]'''),
         (3073, '''\nPOUNDETTE: Let's see whatcha got![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Meltdown-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Meltdown-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''DIRECTOR: This is quite the\n difficult regimen for a white-collar\n fellow like me.[await]'''),
         (3353,
@@ -4348,46 +3398,25 @@ class DirectorBoss(Boss):
 
 class DefaultUnpaintedDrillBit(Henchman):
     pack_number = None
-    model = SmallModelDetails(402, None, None, None)
+    model = npcs.MachineDrillBit
 
 
 class DefaultPaintedDrillBit(Henchman):
     pack_number = None
-    model = SmallModelDetails(351, None, None, None)
+    model = npcs.Jabit
 
 
 class GunyolkPiece(Henchman):
     pack_number = None
-    model = SmallModelDetails(None, 403, None, None)
+    model = npcs.GunyolkTop
 
 
-ninja_hit = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=38)
-ninja_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=13, total_duration=19)
-ninja_taunt = SpriteAnimation(sequence_id=4, total_duration=54)
-ninja_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class GunyolkBoss(Boss):
     name = "Factory Chief"
-    eye_height = 16
     pack_number = 149
-    statue = StatueDetails(484, ["F8F8A0", "E0C000", "C08020", "784818", "F8F8A0", "E0C000", "000000",
-                      "906010", "784818", "906010", "301830", "784818", "683808", "482818", "301830"], horizontal_pixel_shift=-1)
-    small_model = SmallModelDetails(484, 623, 624, 625, animations=SpriteAnimationCollection(
-        recoil=ninja_recoil,
-        mines_punch=ninja_hit,
-        chapel_laugh=ninja_taunt,
-        ship_beckon=ninja_taunt,
-        dojo_challenge=ninja_hit,
-        statue_intro=ninja_taunt,
-        statue_peck=ninja_hit_fast,
-        statue_flustered=ninja_recoil,
-        keep_challenge=ninja_hit,
-        keep_summon=ninja_taunt,
-        chandelier_challenge=ninja_hit,
-        endgame_challenge=ninja_hit
-    ))
+    small_model = npcs.FactoryChief
     dialog_replacements = [
         (49, '''FACTORY CHIEF: Grrr... Leave me\n alone![await]'''),
         (1660,
@@ -4402,6 +3431,8 @@ class GunyolkBoss(Boss):
          '''FACTORY CHIEF: I'm surprised to\n see you back here! I don't have any\n new inventions to show yet.[await]'''),
         (1781,
          '''FACTORY CHIEF: Harrumph! I should\n invent myself a spiky hat![await]'''),
+        (1783,
+         ''' Who do I have to Breaker Beam[await]\n to get a cuppa Coffee 'round here?[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1785,
@@ -4426,7 +3457,7 @@ class GunyolkBoss(Boss):
         (3057,
          ''' Did you come here to fight me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Ninja-this and Invention-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Ninja-this and Invention-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''FACTORY CHIEF: I'll out-jump you\n if it's the last thing I do![await]'''),
         (3353,
@@ -4434,69 +3465,30 @@ class GunyolkBoss(Boss):
     ]
 
 
-drillbit_hit = SpriteAnimation(
-    sequence_id=3, contact_frame=54, total_duration=64)
-drillbit_hit_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=27, total_duration=32, speed=SequenceSpeeds.FAST)
-drillbit_taunt = SpriteAnimation(sequence_id=4, total_duration=56)
-drillbit_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class SmithyDrillBit(Henchman):
     pack_number = 253
-    model = SmallModelDetails(483, 626, 627, 628, animations=SpriteAnimationCollection(tower_bullet=drillbit_hit, kitchen_prep=drillbit_hit, factory_pierce=drillbit_hit_fast))
+    model = npcs.DrillBit
 
 
 class SmithyShyster(Henchman):
     pack_number = 254
-    model = SmallModelDetails(401, 629, 630, 631, animations=SpriteAnimationCollection(
-        tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt,
-        factory_pierce=shyguy_hit
-    ))
+    model = npcs.Shyster
 
 
 class SmithyAero(Henchman):
     pack_number = 255
-    model = SmallModelDetails(None, 234, None, 523)
+    model = npcs.AeroUpright
 
 
-smithy_hit = SpriteAnimation(
-    sequence_id=1, contact_frame=76, total_duration=122)
-smithy_hit_fast = SpriteAnimation(
-    sequence_id=1, contact_frame=14, total_duration=24, speed=SequenceSpeeds.FASTEST)
 
 
 class SmithyBoss(Boss):
     name = "Smithy"
-    eye_height = 18
     pack_number = 185
-    # statue = StatueDetails(351, ["F8F8A0", "E0C000", "E0C000", "F8F8F8", "E0C000", "C08020", "906010",
-    #                   "906010", "E0C000", "906010", "683808", "D09020", "683808", "482818", "301830"])
-    statue = StatueDetails(677, ["082000", "683808", "D0A000", "F8F060", "906010", "784818", "D09020", "C08020", "784818", "F8F8A0", "E0C000", "C08020", "F8E870", "906010", "000000", "000000"])
-    # small_model = SmallModelDetails(351, 632, 633, 634, animations=SpriteAnimationCollection(
-    #     recoil=drillbit_recoil,
-    #     bandits_way_distracted=drillbit_taunt,
-    #     mines_punch=drillbit_hit,
-    #     chapel_laugh=drillbit_taunt,
-    #     ship_beckon=drillbit_taunt,
-    #     ship_chair=drillbit_taunt,
-    #     dojo_challenge=drillbit_taunt,
-    #     statue_intro=drillbit_taunt,
-    #     statue_peck=drillbit_hit,
-    #     statue_flustered=drillbit_recoil,
-    #     keep_challenge=drillbit_taunt,
-    #     keep_summon=drillbit_taunt,
-    #     chandelier_challenge=drillbit_taunt,
-    #     endgame_challenge=drillbit_taunt
-    # ))
-    small_model = SmallModelDetails(None, 677, None, 678)
-    big_model = BigModelDetails(None, 635, animations=SpriteAnimationCollection(
-        mines_punch=smithy_hit,
-        statue_peck=smithy_hit_fast,
-        chandelier_challenge=smithy_hit,
-        endgame_challenge=smithy_hit
-    ))
+    small_model = npcs.SmithySmall
+    big_model = npcs.SmithyLarge
     unique_henchmen = [SmithyDrillBit, SmithyShyster, SmithyAero]
     repeatable_henchmen = [SmithyDrillBit, SmithyShyster, SmithyAero]
     dialog_replacements = [
@@ -4512,6 +3504,7 @@ class SmithyBoss(Boss):
         (1780,
          '''SMITHY: Gufaw, haw, haw...\n Not quite as impressive as my\n factory, eh?[await]'''),
         (1781, '''SMITHY: Never have I been so\n wronged![await]'''),
+        (1783, ''' This isn't even my final form![await]\n Barkeep!  Bring me more Ale!![await]'''),
         (1784,
          ''' The foundation in this old haunted\n ship looks pretty weak. So we try\n not to make Smithy too mad.[await]'''),
         (1793,
@@ -4559,7 +3552,7 @@ class SmithyBoss(Boss):
         (3072, '''MACHINE MADE: It's pretty drafty\n in here![await]'''),
         (3073, '''\n MACHINE MADE: Oh, no you don't![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Factory-this and Weapon-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Factory-this and Weapon-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
          '''SMITHY: Grr... [delay]You're stronger\n than I thought...[await]'''),
         (3353,

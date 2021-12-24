@@ -6,7 +6,7 @@ import inspect
 
 from randomizer.data import characters, spells, palettes, items, chests
 from randomizer.logic import flags, utils
-from randomizer.data.helpers import PlayableCharacters
+from randomizer.helpers.flag_helpers import PlayableCharacters
 
 def new_spell_name(spell, character):
     working_title = spell.title

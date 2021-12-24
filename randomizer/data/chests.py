@@ -9,11 +9,11 @@ from randomizer.logic.utils import isclass_or_instance
 
 from randomizer.data import items, locations
 from randomizer.data.items import ItemUnique
-from randomizer.data.helpers import ShuffleLocationSelector, FireworksOptions, LearnableSpells, ItemQualities, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, YaridovichGating, SeaGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating
-from randomizer.data.roomobjecttables import ObjectType, Initiator, RadialDirection
-from randomizer.data.eventtables import AreaObjects, _0x60Flags
+from randomizer.helpers.flag_helpers import ShuffleLocationSelector, FireworksOptions, ItemQualities, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, YaridovichGating, SeaGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating
+from randomizer.helpers.roomobjecttables import ObjectType, Initiator, RadialDirection
+from randomizer.helpers.eventtables import AreaObjects, _0x60Flags
 
-from randomizer.data.roomobjecttables import PartitionBufferTypes, PartitionMainSpace
+from randomizer.helpers.roomobjecttables import PartitionBufferTypes, PartitionMainSpace
 
 
 # locations inherit world, and therefore settings
@@ -2667,6 +2667,7 @@ class MarrymoreSnifit1(NPCReward):
     description = ShuffleLocationSelector.MarrymoreSnifit1.value
     item = items.Brooch
     original_item = items.Brooch
+    missable = True
     rooms = [154]
     event = 253
 
@@ -2676,13 +2677,14 @@ class MarrymoreSnifit1(NPCReward):
             self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self.world, inventory) and inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+        return locations.can_access_marrymore(self.world, inventory)
 
 class MarrymoreSnifit2(NPCReward):
     area = locations.Area.Marrymore
     description = ShuffleLocationSelector.MarrymoreSnifit2.value
     item = items.Ring
     original_item = items.Ring
+    missable = True
     rooms = [154]
     event = 252
 
@@ -2692,13 +2694,14 @@ class MarrymoreSnifit2(NPCReward):
             self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self.world, inventory) and inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+        return locations.can_access_marrymore(self.world, inventory)
 
 class MarrymoreSnifit3(NPCReward):
     area = locations.Area.Marrymore
     description = ShuffleLocationSelector.MarrymoreSnifit3.value
     item = items.Shoes
     original_item = items.Shoes
+    missable = True
     rooms = [154]
     event = 251
 
@@ -2708,13 +2711,14 @@ class MarrymoreSnifit3(NPCReward):
             self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self.world, inventory) and inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+        return locations.can_access_marrymore(self.world, inventory)
 
 class MarrymoreAltarHead(OverworldItem):
     area = locations.Area.Marrymore
     description = ShuffleLocationSelector.MarrymoreAltar.value
     item = items.Crown
     original_item = items.Crown
+    missable = True
     rooms = [154]
     npc_ids = [5]
     event = 241
@@ -2725,7 +2729,7 @@ class MarrymoreAltarHead(OverworldItem):
             self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self.world, inventory) and inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+        return locations.can_access_marrymore(self.world, inventory)
 
 
 class MarrymoreStarPiece(BossStarPiece):
@@ -2741,7 +2745,10 @@ class MarrymoreStarPiece(BossStarPiece):
             self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self.world, inventory)
+        has_gear = True
+        if self.world.settings.is_flag_enabled(flags.ShuffleWeddingGear):
+            has_gear = inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+        return has_gear and locations.can_access_marrymore(self.world, inventory)
 
 
 class MarrymoreCharacter(CharacterRecruit):
@@ -2762,7 +2769,11 @@ class MarrymoreCharacter(CharacterRecruit):
     ]
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self.world, inventory)
+        has_gear = True
+        if self.world.settings.is_flag_enabled(flags.ShuffleWeddingGear):
+            has_gear = inventory.has_item(items.Shoes) and inventory.has_item(items.Ring) and inventory.has_item(items.Brooch) and inventory.has_item(items.Crown)
+        return has_gear and locations.can_access_marrymore(self.world, inventory)
+
 
 # populate this with the corresponding character in MarrymoreCharacter
 
@@ -7542,7 +7553,7 @@ def get_default_chests(world):
     world.eventscripts[91].append({"identifier": "EVENT_91_ret", "command": "ret"})
 
     # don't consider these as locations at all if super jump is turned off
-    if LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).enabled:
+    if flags.LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).enabled:
         chests.extend([
             SuperJumps30(world),
             SuperJumps100(world)

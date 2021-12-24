@@ -1001,6 +1001,9 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
 
     #print(len(animations))
 
+    animations_ready_to_place = []
+    animation_pointers_wip = [None] * len(animations)
+
     for anim_id, animation in enumerate(animations):
 
         if anim_id not in used_animations:
@@ -1180,6 +1183,15 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
         length_bytes = bytearray([length_bytes_short & 0xFF, (length_bytes_short >> 8) & 0xFF])
         finished_bytes = length_bytes + sequence_offset + mold_offset + count_bytes + misc_bytes + sequence_ptrs + sequence_bytes + mold_ptrs + mold_bytes
 
+        animations_ready_to_place.append((anim_id, finished_bytes))
+
+    animations_ready_to_place.sort(key=lambda x: len(x[1]), reverse=True)
+    for anim_id, finished_bytes in animations_ready_to_place:
+        anim_ptr = place_bytes(finished_bytes) + 0xC00000
+        animation_pointers_wip[anim_id] = anim_ptr
+
+    for anim_ptr in animation_pointers_wip:
+
         # print(anim_id, len(finished_bytes))
         #if animation_bank_bounds[bank_in_use][0] + len(animation_banks[bank_in_use]) + len(finished_bytes) >= animation_bank_bounds[bank_in_use][1]:
         #if anim_bank == ANIMATION_DATA_BANK_1_START and anim_bank + len(animation_data_bank_1) + len(finished_bytes) >= ANIMATION_DATA_BANK_1_END:
@@ -1189,7 +1201,8 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
         #    raise Exception('too many animation bytes')
 
         #anim_ptr = 0xC00000 + animation_bank_bounds[bank_in_use][0] + len(animation_banks[bank_in_use])
-        anim_ptr = place_bytes(finished_bytes) + 0xC00000
+        
+
         #animation_banks[bank_in_use].extend(finished_bytes)
 
         # if anim_bank == ANIMATION_DATA_BANK_1_START:

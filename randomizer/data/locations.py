@@ -6,7 +6,7 @@ from inspect import isclass
 from randomizer.logic import flags
 
 from randomizer.data import items, spells
-from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, PipeVaultGating
+from randomizer.helpers.flag_helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, PipeVaultGating
 from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch

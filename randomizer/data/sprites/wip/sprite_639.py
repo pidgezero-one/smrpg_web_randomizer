@@ -3,16 +3,16 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(0, length=31, unknown=0x0002,
+    animation=AnimationPack(426, length=31, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
                     tiles=[
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'\xff\xf0\xff\xc0\xff\x80\xff\x80\xff\x00\xff\x00\xff\x00\xff\x00\x0f\xff?\xff\x7f\xff~\xfe\xfe\xfe\xfe\xfe\xfe\xfe\xe0\xe0'),
-                            bytearray(b'\xff\x0f\xff\x03\xff\x01\xff\x01\xff\x00\xff\x00\xff\x00\xff\x00\xf0\xff\xfc\xff\xfe\xff~\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x07\x07'),
-                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x80\xff\x80\xff\xc0\xff\xf0\xe0\xe0\xfe\xfe\xfe\xfe\xfe\xfe~\xfe\x7f\xff?\xff\x0f\xff'),
-                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x01\xff\x01\xff\x03\xff\x0f\x07\x07\x7f\x7f\x7f\x7f\x7f\x7f~\x7f\xfe\xff\xfc\xff\xf0\xff'),
+                            bytearray(b'\x00\x81\x01\xa8\x01\xcf\x01\xfc\x01,\x02W\x02\x92\x02\xc0\x02\xec\x02\x17\x03I\x03~\x03\x97\x03\xbf\x03\xea\x03\x0e'),
+                            bytearray(b'\x02\x06\x02\x05\x00\x02\x00\x06\x07\x02\x00\x06\x08\x02\x00\x06\x07\x02\x00\x06\x08\x04\x00\x02\t\x02\x00\x02\t\x02\x00\x02'),
+                            bytearray(b'\n\x02\x00\x02\n\x02\x00\x02\n\x02\x00\x02\n\x02\x00\x02\n\x02\x00\x02\n\x02\x0c\x02\x0b\x02\x0c\x02\x0b\x02\x0c\x02'),
+                            bytearray(b'\x0b\x02\x00\x00\x02\x00\x02\r\x02\x0e\x02\x0f\x04\x10\x02\x0f\x02\x0e\x02\r\x00\x02\x00\x02\n\x00\x02\x0c\x02\x0b\x00\xca'),
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
                 ),
@@ -20,13 +20,13 @@ sprite = CompleteSprite(
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=0),
+                        AnimationSequenceFrame(duration=2, mold_id=0),
                     ]
                 ),
             ]
         )
     ),
-    palette_id=0,
+    palette_id=8,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

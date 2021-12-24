@@ -3,30 +3,30 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(0, length=31, unknown=0x0002,
+    animation=AnimationPack(326, length=159, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
                     tiles=[
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'\xff\xf0\xff\xc0\xff\x80\xff\x80\xff\x00\xff\x00\xff\x00\xff\x00\x0f\xff?\xff\x7f\xff~\xfe\xfe\xfe\xfe\xfe\xfe\xfe\xe0\xe0'),
-                            bytearray(b'\xff\x0f\xff\x03\xff\x01\xff\x01\xff\x00\xff\x00\xff\x00\xff\x00\xf0\xff\xfc\xff\xfe\xff~\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x07\x07'),
-                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x80\xff\x80\xff\xc0\xff\xf0\xe0\xe0\xfe\xfe\xfe\xfe\xfe\xfe~\xfe\x7f\xff?\xff\x0f\xff'),
-                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x01\xff\x01\xff\x03\xff\x0f\x07\x07\x7f\x7f\x7f\x7f\x7f\x7f~\x7f\xfe\xff\xfc\xff\xf0\xff'),
+                            bytearray(b'\x02\x00<"z\x07m\x1f\x9a{\x98\xd8\xbf\xd9\x99\xfa\x00\x1e \x01\x00@\x8c\xcc\x1c\x8c\x1c?\x1a<\x18<'),
+                            bytearray(b'\x00\x00\x00\x00\x00\x00\x80\x80\x80\x80\xa1\x00\xfe@\x86x\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00@\xff\xa0\x01\x00\x01'),
+                            bytearray(b'\xb8\xdc\x98\xf8\x89\xc8\x82aA3\x0c7 \x1e\x00\x0c\x18?\x1f?\x1e?\x0e\x9c\x8c\xcc\x08\x00\x00!\x01\x13'),
+                            bytearray(b'\x00\x00\x00\x00\x14\x08\x9c\x08\x94\x18\x14\x18\x00\x00\x00\x00\x01\xff\xe4\xfc\xd0\xc4\xd0D\xd0D\x90\x84\x8c\x8c\x00\x00'),
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
-                ),
+                )
             ],
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=0),
+                        AnimationSequenceFrame(duration=2, mold_id=0),
                     ]
-                ),
+                )
             ]
         )
     ),
-    palette_id=0,
+    palette_id=8,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

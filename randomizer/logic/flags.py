@@ -3,9 +3,49 @@
 import re
 from django.utils.html import mark_safe
 from markdown import markdown
-from randomizer.data.helpers import ShuffleLocationSelector
+from randomizer.helpers.flag_helpers import ShuffleLocationSelector, FlagOptions
 from randomizer.data.bosses import AvailableBosses
-from randomizer.data.helpers import FireworksOptions, WinConditions, PlayableCharacters, LearnableSpells, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, ItemQualities, ShopQualities, AvailableMusic, EquipmentCharactersOptions, regular_checks, freestanding_checks
+from randomizer.helpers.flag_helpers import FireworksOptions, WinConditions, PlayableCharacters, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, ItemQualities, ShopQualities, EquipmentCharactersOptions, regular_checks, freestanding_checks
+from randomizer.data import spells, music
+
+
+class AvailableMusic(FlagOptions):
+    normal = music.NormalBattleMusic.name
+    boss1 = music.MidbossMusic.name
+    boss2 = music.BossMusic.name
+    smithy = music.Smithy1Music.name
+    culex = music.CulexMusic.name
+    corn = music.CorndillyMusic.name
+
+class LearnableSpells(FlagOptions):
+    Jump = spells.Jump.base_title
+    FireOrb = spells.FireOrb.base_title
+    SuperJump = spells.SuperJump.base_title
+    SuperFlame = spells.SuperFlame.base_title
+    UltraJump = spells.UltraJump.base_title
+    UltraFlame = spells.UltraFlame.base_title
+    Therapy = spells.Therapy.base_title
+    GroupHug = spells.GroupHug.base_title
+    SleepyTime = spells.SleepyTime.base_title
+    ComeBack = spells.ComeBack.base_title
+    Mute = spells.Mute.base_title
+    PsychBomb = spells.PsychBomb.base_title
+    Terrorize = spells.Terrorize.base_title
+    PoisonGas = spells.PoisonGas.base_title
+    Crusher = spells.Crusher.base_title
+    BowserCrush = spells.BowserCrush.base_title
+    GenoBeam = spells.GenoBeam.base_title
+    GenoBoost = spells.GenoBoost.base_title
+    GenoWhirl = spells.GenoWhirl.base_title
+    GenoBlast = spells.GenoBlast.base_title
+    GenoFlash = spells.GenoFlash.base_title
+    Thunderbolt = spells.Thunderbolt.base_title
+    HPRain = spells.HPRain.base_title
+    Psychopath = spells.Psychopath.base_title
+    Shocker = spells.Shocker.base_title
+    Snowy = spells.Snowy.base_title
+    StarRain = spells.StarRain.base_title
+
 
 
 # ************************************** Flag classes
@@ -976,6 +1016,8 @@ class FastTravel(BooleanFlag):
 class WinCondition(SelectOneFlag):
     name = "Condition required to beat the game"
     description = '''<b>Beat the Factory</b>: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
+<br>
+<br><b>Beat Smithy</b>: The game is over as soon as you find Smithy and defeat him. (If you don't have him shuffled into the boss pool, this is effectively the same thing as "Beat the Factory".)
 <br>
 <br><b>Collect required Star Pieces</b>: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the game is over and the credits will roll.
 <br>

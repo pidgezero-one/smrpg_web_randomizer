@@ -9,8 +9,8 @@ from scipy.stats import gamma
 
 from randomizer.data import items, shops, chests
 from randomizer.data.items import ItemUnique
-from randomizer.data.helpers import ShopQualities, ItemQualities
-from randomizer.data.eventtables import _0x60Flags, AreaObjects
+from randomizer.helpers.flag_helpers import ShopQualities, ItemQualities
+from randomizer.helpers.eventtables import _0x60Flags, AreaObjects
 from . import flags, utils
 
 

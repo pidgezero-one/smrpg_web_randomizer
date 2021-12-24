@@ -8,7 +8,7 @@ from inspect import isclass
 
 from randomizer.data import items
 from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
-from randomizer.data.helpers import EquipmentPropertiesOptions, EquipmentCharactersOptions
+from randomizer.helpers.flag_helpers import EquipmentPropertiesOptions, EquipmentCharactersOptions
 from randomizer.data.eventscripts.utils.random_mushroom import script as random_mushroom
 from . import flags, utils
 

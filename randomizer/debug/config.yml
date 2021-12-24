@@ -10,7 +10,7 @@ bosses:
   override:
   #  Valentina: CountdownBoss
   #  Mack: BowyerBoss
-    Bundt: HidonBoss
+    HammerBros: SmithyBoss
 items:
   start:
     - CastleKey1
@@ -24,12 +24,12 @@ items:
     - SeeYa
     - FireBomb
     - PunchGlove
-  override:
-    MushroomWay1: InfiniteCoins
+  # override:
+  #  MushroomWay1: FroggieStick
   #   MushroomWayStarPiece: StarPiece1
-  #   MushroomWay2: BanditsWayStar
-  #   MushroomWay3: BanditsWayStar
-  #   MushroomWay4: BanditsWayStar
+  #  MushroomWay2: NokNokShell
+  #  MushroomWay3: CourageShell
+  #  MushroomWay4: ChompShell
   #   InvasionVault1: BanditsWayStar
   #   InvasionVault2: BanditsWayStar
   #   InvasionVault3: BanditsWayStar
@@ -45,11 +45,12 @@ items:
   #   KeroSewersBeforeBelomeUpper1: BanditsWayStar
   #   KeroSewersBeforeBelomeUpper2: BanditsWayStar
   #   RoseWayPlatform: BanditsWayStar
-  #   RoseWayFiveChests1: BanditsWayStar
-  #   RoseWayFiveChests2: BanditsWayStar
-  #   RoseWayFiveChests3: BanditsWayStar
-  #   RoseWayFiveChests4: BanditsWayStar
-  #   RoseWayFiveChests5: BanditsWayStar
+  #  RoseWayFiveChests1: Hammer
+  #  RoseWayFiveChests2: StarGun
+  #  RoseWayFiveChests3: Seed
+  #  RoseWayFiveChests4: WarFan
+  #  RoseWayFiveChests5: Parasol
+  #  ForestMaze1: FryingPan
   #   ForestMaze2: BanditsWayStar
   #   ForestMazeUnderground1: BanditsWayStar
   #   ForestMazeUnderground2: BanditsWayStar
@@ -69,7 +70,7 @@ items:
   #   MolevilleMinesCoins: BanditsWayStar
   #   MolevilleMinesPunchinello1: BanditsWayStar
   #   MolevilleMinesPunchinello2: BanditsWayStar
-  #   BoosterPass1: BanditsWayStar
+  #  BoosterPass1: BrightCard
   #   BoosterPass2: BanditsWayStar
   #   BoosterPassSecret1: BanditsWayStar
   #   BoosterPassSecret2: BanditsWayStar
