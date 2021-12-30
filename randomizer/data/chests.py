@@ -7,8 +7,9 @@ import enum
 from randomizer.logic import flags
 from randomizer.logic.utils import isclass_or_instance
 
-from randomizer.data import items, locations
+from randomizer.data import items, locations, npcs
 from randomizer.data.items import ItemUnique
+from randomizer.data.rooms.room import Partition, RegularNPC
 from randomizer.helpers.flag_helpers import ShuffleLocationSelector, FireworksOptions, ItemQualities, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, YaridovichGating, SeaGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating
 from randomizer.helpers.roomobjecttables import ObjectType, Initiator, RadialDirection
 from randomizer.helpers.eventtables import AreaObjects, _0x60Flags
@@ -2667,7 +2668,6 @@ class MarrymoreSnifit1(NPCReward):
     description = ShuffleLocationSelector.MarrymoreSnifit1.value
     item = items.Brooch
     original_item = items.Brooch
-    missable = True
     rooms = [154]
     event = 253
 
@@ -2675,6 +2675,8 @@ class MarrymoreSnifit1(NPCReward):
         super().__init__(world)
         if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             self.access = 2
+        if world.settings.is_flag_enabled(flags.ShuffleWeddingGear):
+            self.missable = True
 
     def can_access(self, inventory):
         return locations.can_access_marrymore(self.world, inventory)
@@ -2684,7 +2686,6 @@ class MarrymoreSnifit2(NPCReward):
     description = ShuffleLocationSelector.MarrymoreSnifit2.value
     item = items.Ring
     original_item = items.Ring
-    missable = True
     rooms = [154]
     event = 252
 
@@ -2692,6 +2693,8 @@ class MarrymoreSnifit2(NPCReward):
         super().__init__(world)
         if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             self.access = 2
+        if world.settings.is_flag_enabled(flags.ShuffleWeddingGear):
+            self.missable = True
 
     def can_access(self, inventory):
         return locations.can_access_marrymore(self.world, inventory)
@@ -2701,7 +2704,6 @@ class MarrymoreSnifit3(NPCReward):
     description = ShuffleLocationSelector.MarrymoreSnifit3.value
     item = items.Shoes
     original_item = items.Shoes
-    missable = True
     rooms = [154]
     event = 251
 
@@ -2709,6 +2711,8 @@ class MarrymoreSnifit3(NPCReward):
         super().__init__(world)
         if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             self.access = 2
+        if world.settings.is_flag_enabled(flags.ShuffleWeddingGear):
+            self.missable = True
 
     def can_access(self, inventory):
         return locations.can_access_marrymore(self.world, inventory)
@@ -2718,7 +2722,6 @@ class MarrymoreAltarHead(OverworldItem):
     description = ShuffleLocationSelector.MarrymoreAltar.value
     item = items.Crown
     original_item = items.Crown
-    missable = True
     rooms = [154]
     npc_ids = [5]
     event = 241
@@ -2727,6 +2730,8 @@ class MarrymoreAltarHead(OverworldItem):
         super().__init__(world)
         if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             self.access = 2
+        if world.settings.is_flag_enabled(flags.ShuffleWeddingGear):
+            self.missable = True
 
     def can_access(self, inventory):
         return locations.can_access_marrymore(self.world, inventory)
@@ -7437,7 +7442,7 @@ def get_default_chests(world):
         ])
         # hide these NPCs
         for t in [(189, 1), (83, 3), (84, 13), (34, 16)]:
-            world.update_room_npc_property_by_id(t[0], t[1], "visible", False)
+            world.rooms[t[0]].objects[t[1]].visible = False
 
     else:
         # disable marios pad / rose town / yoster isle invis item checks
@@ -7481,69 +7486,30 @@ def get_default_chests(world):
             # write scripts to despawn the npc and grant the item, accounting for multiple versions of the same room
             eventscript.append({"identifier": "EVENT_%i_remove___" % (es_assignment), "command": "remove_object_at_70A8_from_current_level"})
             for index, room in enumerate(check.rooms):
-                number_of_objects = world.get_npc_count_by_room_id(room)
+                number_of_objects = len(world.rooms[room].objects)
                 eventscript.append({"identifier": "EVENT_%i_remove__%i" % (es_assignment, index), "command": 'remove_from_level', "args": [0x14+number_of_objects, room]})
                 eventscript.append({"identifier": "EVENT_%i_remove_-_%i" % (es_assignment, index), "command": 'remove_from_current_level', "args": [0x14+number_of_objects]})
                 # add the npc to the rooms
 
-                if world.rooms[room]["partition"] is None:
-                    world.rooms[room]["partition"] = {
-                        "ally_sprite_buffer_size": 1,
-                        "allow_extra_sprite_buffer": False,
-                        "extra_sprite_buffer_size": 0,
-                        "buffer_a": {
-                            "type": PartitionBufferTypes.EMPTY_3,
-                            "main_buffer_space": PartitionMainSpace._0_BYTES,
-                            "index_in_main_buffer": True,
-                        },
-                        "buffer_b": {
-                            "type": PartitionBufferTypes.EMPTY_3,
-                            "main_buffer_space": PartitionMainSpace._0_BYTES,
-                            "index_in_main_buffer": True,
-                        },
-                        "buffer_c": {
-                            "type": PartitionBufferTypes.EMPTY_3,
-                            "main_buffer_space": PartitionMainSpace._0_BYTES,
-                            "index_in_main_buffer": True,
-                        },
-                        "full_palette_buffer": True,
-                    }
+                if world.rooms[room].partition is None:
+                    world.rooms[room].partition = Partition()
 
-                world.rooms[room]["objects"].append({
-                    "id": number_of_objects,
-                    "type": ObjectType.OBJECT,
-                    "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
-                    "model": 255,
-                    "event_script": es_assignment,
-                    "action_script": as_assignment,
-                    "speed": 0,
-                    "npc_id_offset": 0,
-                    "event_offset": 0,
-                    "action_offset": 0,
-                    "visible": is_visible,
-                    "x": x,
-                    "y": y,
-                    "z": z,
-                    "z_half": False,
-                    "direction": RadialDirection.NORTHWEST,
-                    "face_on_trigger": False,
-                    "cant_enter_doors": False,
-                    "byte2_bit5": False,
-                    "set_sequence_playback": True,
-                    "cant_float": False,
-                    "cant_walk_up_stairs": False,
-                    "cant_walk_under": False,
-                    "cant_pass_walls": False,
-                    "cant_jump_through": False,
-                    "cant_pass_npcs": False,
-                    "byte3_bit5": False,
-                    "cant_walk_through": True,
-                    "byte3_bit7": False,
-                    "slidable_along_walls": True,
-                    "cant_move_if_in_air": True,
-                    "byte7_upper2": 0x03,
-                    "clones": []
-                })
+                world.rooms[room].objects.append(
+                    RegularNPC(
+                        occupant=npcs.Empty,
+                        initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
+                        event_script=es_assignment,
+                        action_script=as_assignment,
+                        visible=is_visible,
+                        x=x,
+                        y=y,
+                        z=z,
+                        cant_jump_through=True,
+                        slidable_along_walls=True,
+                        cant_move_if_in_air=True,
+                        byte7_upper2=3,
+                    )
+                )
                 # add summoner
                 world.eventscripts[91].append({"identifier": "EVENT_91_remove_%s" % (uuid.uuid4()), "command": 'summon_to_level', "args": [0x14+number_of_objects, room]})
 

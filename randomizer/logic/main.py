@@ -15,7 +15,7 @@ from datetime import datetime
 from randomizer import data
 from randomizer.data.eventscripts.events import scripts as eventscripts
 from randomizer.data.actionscripts.actions import scripts as actionscripts
-from randomizer.data.roomobjects.roomobjects import rooms as roomdata
+from randomizer.data.rooms.rooms import rooms as roomdata
 from randomizer.data.npcmodels import models as npcmodels
 from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
@@ -40,7 +40,6 @@ from . import spells
 from . import shops
 from . import utils
 from .sprites import Sprites
-from .roomobject import set_partitions
 from .patch import Patch
 from .battleassembler import assemble_battle_scripts
 
@@ -60,8 +59,8 @@ from randomizer.helpers.eventtables import AreaObjects, Rooms, _0x60Flags
 
 from .enscript import EventScript
 from .osscript import ObjectSequenceScript
-from .roomobject import RoomObjects
-from .npcmodel import NPCModels
+from .rooms import Rooms as RoomObjects
+from .rooms import set_partitions
 from .packets import Packets
 
 # Current version number
@@ -371,6 +370,8 @@ class GameWorld:
         # Music (moved this into its own classes to make exclusion easier)
         self.music_pool = data.music.get_default_music()
 
+        self.sprites = commonsprites
+
 
     @property
     def open_mode(self):
@@ -503,75 +504,6 @@ class GameWorld:
     def prepend_notice(self, event, dialog):
         self.eventscripts[event].insert(0, utils.new_command(event, 'run_dialog', [dialog, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]))
 
-    def update_room_npc_property_by_id(self, room_id, npc_id, prop, value):
-        ctr = 0
-        for parent_id, npc in enumerate(self.rooms[room_id]["objects"]):
-            if ctr == npc_id:
-                if prop not in self.rooms[room_id]["objects"][parent_id]:
-                    raise Exception("npc %i in room %i has no property %s" % (npc_id, room_id, prop))
-                self.rooms[room_id]["objects"][parent_id][prop] = value
-                return
-            ctr += 1
-            if "clones" in npc:
-                for clone_id, clone in enumerate(npc["clones"]):
-                    if ctr == npc_id:
-                        if prop not in clone:
-                            if prop in ["model", "event_script", "action_script", "battle_pack"] and prop in npc:
-                                base_value_id = npc[prop]
-                                offset = value - base_value_id
-                                if offset > 7 or offset < 0:
-                                    raise Exception("illegal %s value for clone npc %i in room %i: %i (parent is %i)" % (prop, npc_id, room_id, value, npc[prop]))
-                                if prop == "model":
-                                    self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["npc_id_offset"] = offset
-                                elif prop == "event_script":
-                                    self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["event_offset"] = offset
-                                elif prop == "action_script":
-                                    self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["action_offset"] = offset
-                                elif prop == "battle_pack":
-                                    self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["pack_offset"] = offset
-                            return
-                        self.rooms[room_id]["objects"][parent_id]["clones"][clone_id][prop] = value
-                        return
-                    ctr += 1
-        raise Exception("npc %i not found in room %i" % (npc_id, room_id))
-
-    def get_room_npc_property_by_id(self, room_id, npc_id, prop):
-        ctr = 0
-        for parent_id, npc in enumerate(self.rooms[room_id]["objects"]):
-            if ctr == npc_id:
-                if prop not in self.rooms[room_id]["objects"][parent_id]:
-                    raise Exception("npc %i in room %i has no property %s" % (npc_id, room_id, prop))
-                return self.rooms[room_id]["objects"][parent_id][prop]
-            ctr += 1
-            if "clones" in npc:
-                for _, clone in enumerate(npc["clones"]):
-                    if ctr == npc_id:
-                        if prop not in clone:
-                            if prop in ["model", "event_script", "action_script", "battle_pack"]:
-                                base_value_id = npc["model"]
-                                if prop == "model":
-                                    return base_value_id + clone["npc_id_offset"]
-                                elif prop == "event_script":
-                                    return base_value_id + clone["event_offset"]
-                                elif prop == "action_script":
-                                    return base_value_id + clone["action_offset"]
-                                elif prop == "battle_pack":
-                                    return base_value_id + clone["pack_offset"]
-                            else:
-                                raise Exception("clone npc %i in room %i has no property %s" % (npc_id, room_id, prop))
-                        return clone[prop]
-                    ctr += 1
-        raise Exception("npc %i not found in room %i" %(npc_id, room_id))
-
-    def get_npc_count_by_room_id(self, room_id):
-        ctr = 0
-        for _, npc in enumerate(self.rooms[room_id]["objects"]):
-            ctr += 1
-            if "clones" in npc:
-                for _ in npc["clones"]:
-                    ctr += 1
-        return ctr
-
     @property
     def max_chest_quality(self):
         tiers_allowed = 1
@@ -629,7 +561,7 @@ class GameWorld:
         if self.settings.is_flag_value(flags.RequireBossFights, True):
             self.prepend_bits(192, [[0x7086, 7]])
             # disable mack skip
-            self.update_room_npc_property_by_id(326, 10, "event", 256)
+            self.rooms[326].objects[10].event_script = 256
 
         starting_characters = [c.item for c in self.starter_character_checks if c.item is not None]
 
@@ -729,6 +661,8 @@ class GameWorld:
                         self.search_replace_dialog("`MAIN_CHARACTER_GENDER_CASUAL_CAP`", c.item.gender_casual.capitalize())
                         self.search_replace_dialog("`MAIN_CHARACTER_MOLE_GREETING`", c.item.mole_greeting)
                         self.search_replace_dialog("`MAIN_CHARACTER_MBOY_GREETING`", c.item.mboy_greeting)
+                        if cursor_id == 1:
+                            self.replace_dialog(2320, " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
                     else:
                         self.search_replace_dialog("`MAIN_CHARACTER_NAME`", "`MARIO_NAME`")
                         self.search_replace_dialog("`MAIN_CHARACTER_GENDER`", "man")
@@ -791,6 +725,12 @@ class GameWorld:
                 self.eventscripts[1331] = copy.deepcopy(tower_toadstool_self)
             else:
                 self.eventscripts[1331] = copy.deepcopy(tower_toadstool)
+
+        if not self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno):
+            self.rooms[202].objects[4].model.occupant = data.npcs.Empty
+        if not self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool):
+            self.rooms[202].objects[5].model.occupant = data.npcs.Empty
+
 
         # Marrymore gating
         if self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.open):
@@ -1079,7 +1019,7 @@ class GameWorld:
                 patch.add_data(map_address, map_sprite)
             for gsi, gs in enumerate(new_sprites):
                 if gs is not None:
-                    commonsprites[gsi] = gs
+                    self.sprites[gsi] = gs
             patch.add_data(data.characters.Mario.battle_sprite_offset, nc.battle_sprite_id)
             patch.add_data(nc.battle_sprite_offset, data.characters.Mario.battle_sprite_id)
             patch.add_data(data.characters.Mario.menu_sprite_offset, nc.menu_sprite_id)
@@ -1112,15 +1052,15 @@ class GameWorld:
 
         # booster tower door animation
         if self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario):
-            self.update_room_npc_property_by_id(202, 0, "model", 0)
+            self.rooms[202].objects[0].model.occupant = data.npcs.Mario
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow):
-            self.update_room_npc_property_by_id(202, 0, "model", 3)
+            self.rooms[202].objects[0].model.occupant = data.npcs.Mallow
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno):
-            self.update_room_npc_property_by_id(202, 0, "model", 4)
+            self.rooms[202].objects[0].model.occupant = data.npcs.Geno
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser):
-            self.update_room_npc_property_by_id(202, 0, "model", 2)
+            self.rooms[202].objects[0].model.occupant = data.npcs.Bowser
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool):
-            self.update_room_npc_property_by_id(202, 0, "model", 1)
+            self.rooms[202].objects[0].model.occupant = data.npcs.Toadstool
 
 
         ########## Build patches
@@ -1156,31 +1096,6 @@ class GameWorld:
         # Uncap Super Jumps
         if self.settings.is_flag_enabled(flags.UncapSuperJumps):
             patch.add_data(0x35C758, [0xFF, 0xFF])
-
-        # Substitute Valentina statue sprite
-        for l in self.boss_locations:
-            model_num = l.boss.small_model.cloneable_all_directions or l.boss.small_model.uncloneable_all_directions or l.boss.small_model.cloneable_south_only or l.boss.small_model.uncloneable_south_only
-            
-            source_sprite = self.models[model_num]["sprite"]
-
-            palette_addr = 30 * (commonsprites[source_sprite].palette_id + commonsprites[source_sprite].palette_offset) + 0x253000
-
-            if self.settings.is_flag_enabled(flags.DifferentiateRepeatedBosses):
-                if l.boss.alt_palette is not None:
-                    patch.add_data(palette_addr, palette_to_bytes(l.boss.alt_palette))
-            if utils.isclass_or_instance(l, data.bosses.Valentina) and not utils.isclass_or_instance(l.boss, data.bosses.ValentinaBoss):
-                model_num = l.boss.statue.reference_model
-                dest_sprite = self.models[63]["sprite"]
-                
-                molds = copy.deepcopy(commonsprites[source_sprite].animation.properties.molds)
-                sequences = copy.deepcopy(commonsprites[source_sprite].animation.properties.sequences)
-
-                commonsprites[dest_sprite].animation.properties.molds = molds
-                commonsprites[dest_sprite].animation.properties.sequences = sequences
-
-                palette_addr = 30 * (commonsprites[dest_sprite].palette_id + commonsprites[dest_sprite].palette_offset) + 0x253000
-                patch.add_data(palette_addr, palette_to_bytes(l.boss.statue.palette))
-
 
         # Remove screen flashes
         if self.settings.is_flag_enabled(flags.RemoveFlashes):
@@ -1318,11 +1233,11 @@ class GameWorld:
                 self.eventscripts[192].insert(0, utils.new_command(192, "put_inventory", [eval('data.items.%s.index' % item)]))
         # Set debug room specified by override config
         if "house_exit" in self.settings.override:
-            self.rooms[189]["exit_fields"][0]["destination"] = self.settings.override["house_exit"]["room"]
-            self.rooms[189]["exit_fields"][0]["destination_props"]["x"] = self.settings.override["house_exit"]["x"]
-            self.rooms[189]["exit_fields"][0]["destination_props"]["y"] = self.settings.override["house_exit"]["y"]
-            self.rooms[189]["exit_fields"][0]["destination_props"]["z"] = self.settings.override["house_exit"]["z"]
-            self.rooms[189]["exit_fields"][0]["destination_props"]["f"] = eval("RadialDirection.%s" % self.settings.override["house_exit"]["direction"])
+            self.rooms[189].exit_fields[0].destination = self.settings.override["house_exit"]["room"]
+            self.rooms[189].exit_fields[0].destination_props.x = self.settings.override["house_exit"]["x"]
+            self.rooms[189].exit_fields[0].destination_props.y = self.settings.override["house_exit"]["y"]
+            self.rooms[189].exit_fields[0].destination_props.z = self.settings.override["house_exit"]["z"]
+            self.rooms[189].exit_fields[0].destination_props.f = eval("RadialDirection.%s" % self.settings.override["house_exit"]["direction"])
 
         # Items
         for item in self.items:
@@ -1332,35 +1247,32 @@ class GameWorld:
         # Open mode specific data.
         if self.open_mode:
 
-            print("assembling scripts...")
+            # Assign vram partitions
+            set_partitions(self)
 
-            # Assemble and patch event banks
-            event_code = EventScript.assemble_from_table(self.eventscripts)
+            print("assembling rooms and events...")
+
+            # Assemble and patch room NPC data, exit data, event tile data, partition data, NPC data, and event data
+            npc_code, eventtile_code, exit_code, partition_code, model_code, event_table = RoomObjects.assemble_from_table(self.rooms, self.eventscripts)
+            patch.add_data(0x148000, npc_code[0] + npc_code[1])
+            patch.add_data(0x20E000, eventtile_code[0] + eventtile_code[1])
+            patch.add_data(0x1D2D64, exit_code[0] + exit_code[1])
+            patch.add_data(0x1DDE00, partition_code)
+            patch.add_data(0x1DB800, model_code)
+            event_code = EventScript.assemble_from_table(event_table)
             patch.add_data(0x1E0000, event_code)
+
+            print("assembling animation scripts...")
 
             # Assemble and patch object sequence bank
             sequence_code = ObjectSequenceScript.assemble_from_table(self.actionscripts)
             patch.add_data(0x210000, sequence_code)
 
-            # Assign vram partitions
-            set_partitions(self)
+            print("assembling packets...")
 
-            print("assembling rooms...")
-
-            # Assemble and patch room NPC data, exit data, event tile data, and partition data
-            npc_code, eventtile_code, exit_code, partition_code = RoomObjects.assemble_from_table(self.rooms)
-            patch.add_data(0x148000, npc_code[0] + npc_code[1])
-            patch.add_data(0x20E000, eventtile_code[0] + eventtile_code[1])
-            patch.add_data(0x1D2D64, exit_code[0] + exit_code[1])
-            patch.add_data(0x1DDE00, partition_code)
-
-            print("assembling NPCs...")
-
-            # Assemble and patch packet and NPC model data
+            # Assemble and patch packet data
             packet_code = Packets.assemble_from_table(self.packets)
             patch.add_data(0x1DB000, packet_code)
-            model_code = NPCModels.assemble_from_table(self.models)
-            patch.add_data(0x1DB800, model_code)
 
             print("assembling dialogs...")
 
@@ -1374,7 +1286,7 @@ class GameWorld:
             print("assembling graphics...")
 
             # Assemble and patch graphics data
-            sprite_data, image_data, animation_pointers, animation_data, tiles = Sprites.assemble_from_tables(commonsprites)
+            sprite_data, image_data, animation_pointers, animation_data, tiles = Sprites.assemble_from_tables(self.sprites)
             patch.add_data(0x250000, sprite_data)
             patch.add_data(0x251800, image_data + animation_pointers)
             for animation_offset, animation in animation_data:
@@ -1475,6 +1387,14 @@ class GameWorld:
         patch.add_data(0x7fc0, title)
         v = VERSION.split('.')
         patch.add_data(0x7fdb, int(v[0]))
+
+        a = patch.addresses
+        a.sort()
+
+        for p in a:
+            if p >= 0x253000 and p < 0x259000:
+                print(hex(p), len(patch.get_data(p)), "first byte:", hex(patch.get_data(p)[0]))
+                print("")
 
         return patch
 

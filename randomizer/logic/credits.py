@@ -332,6 +332,17 @@ def update_credits(world):
     credits.add_credit(0x80, 0x80, 0x81, 'XIRR             DARKDATA')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
+    #26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, 'DIALOGS')
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, 'CYNAS       PIDGEZERO_ONE')
+    credits.add_credit(0x80, 0x40, 0x81, 'BROATMEAL        DARKDATA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'SUPREME DIRT')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
     #27
     credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, 'QUALITY ASSURANCE AND RESEARCH')
@@ -448,17 +459,9 @@ def update_credits(world):
 
     #33
     credits.begin_credits()
-    credits.add_credit(0x80, 0x40, 0x81, 'THANK YOU SMRPG COMMUNITY.')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #34
-    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, 'THANK YOU SMRPG COMMUNITY.')
     credits.add_credit(0x80, 0x40, 0x81, 'WITHOUT YOU...')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #35
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x40, 0x81, 'NONE OF THIS WOULD BE POSSIBLE.')
+    credits.add_credit(0x80, 0x00, 0xc2, 'NONE OF THIS WOULD BE POSSIBLE.')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #38

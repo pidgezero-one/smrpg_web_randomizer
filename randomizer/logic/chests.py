@@ -7,7 +7,7 @@ import copy
 
 from scipy.stats import gamma
 
-from randomizer.data import items, locations, chests, bosses
+from randomizer.data import items, locations, chests, bosses, npcs
 from randomizer.data.chests import PacketType 
 from randomizer.helpers.flag_helpers import FireworksOptions, WinConditions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating, ShuffleLocationSelector
 from randomizer.data.items import ItemUnique
@@ -899,8 +899,34 @@ def randomize_all(world):
         else:
             character_order = [items.MarioRecruit, items.ToadstoolRecruit, items.BowserRecruit, items.MallowRecruit, items.GenoRecruit]
 
+        # update the sprites in the world models
+        if world.settings.is_flag_enabled(flags.PlayAsStarter) and not utils.isclass_or_instance(character_order[0], items.MarioRecruit):
+            if utils.isclass_or_instance(character_order[0], items.MallowRecruit):
+                ni = items.MallowRecruit
+                swap_id = 19
+            elif utils.isclass_or_instance(character_order[0], items.GenoRecruit):
+                ni = items.GenoRecruit
+                swap_id = 25
+            elif utils.isclass_or_instance(character_order[0], items.BowserRecruit):
+                ni = items.BowserRecruit
+                swap_id = 13
+            else:
+                ni = items.ToadstoolRecruit
+                swap_id = 7
+            for room_index, room in enumerate(world.rooms):
+                if room is None:
+                    continue
+                for object_index, obj in enumerate(room.objects):
+                    occ = obj.model.occupant
+                    if utils.isclass_or_instance(occ, npcs.Mario):
+                        world.rooms[room_index].objects[object_index].model.occupant = occ(world, swap_id)
+                    elif utils.isclass_or_instance(occ, ni.model):
+                        world.rooms[room_index].objects[object_index].model.occupant = occ(world, 0)
+
         pickups = [None, chests.MushroomWayCharacter, chests.ForestMazeCharacter, chests.MolevilleMinesCharacter, chests.MarrymoreCharacter]
         for cindex, (recruitable, ending, chest) in enumerate(zip(playable_character_order, character_order, pickups)):
+
+
             if chest is None:
                 sprites = ending.sprites_primary
                 for room_id, script_id in zip([496, 88, 375], [3885, 3950, 3951]):
@@ -914,12 +940,19 @@ def randomize_all(world):
             else:
                 sprites = ending.sprites_secondary
             if utils.isclass_or_instance(c, chests.ForestMazeCharacter):
-                world.update_room_npc_property_by_id(496, 22, "model", recruitable.doll)
+                world.rooms[496].objects[22].model.occupant = recruitable.doll
             if recruitable is not None:
+                if utils.isclass_or_instance(recruitable.model, npcs.Mario):
+                    rmodel = recruitable.model(world, swap_id)
+                elif utils.isclass_or_instance(recruitable.model, ni.model):
+                    rmodel = recruitable.model(world, 0)
+                else:
+                    rmodel = recruitable.model
                 if not ((utils.isclass_or_instance(chest, chests.ForestMazeCharacter) and utils.isclass_or_instance(recruitable, items.GenoRecruit)) or (utils.isclass_or_instance(chest, chests.MarrymoreCharacter) and utils.isclass_or_instance(recruitable, items.ToadstoolRecruit))):
                     for room_id, npc, eventscripts, actionscripts in chest.npcs:
                         # replace model
-                        world.update_room_npc_property_by_id(room_id, npc, "model", recruitable.models[0] or recruitable.models[2])
+                        #print(room_id, recruitable, ending, chest)
+                        world.rooms[room_id].objects[npc].model.occupant = rmodel
                         # format scripts
                         for script_id in eventscripts:
                             for command_index, cmd in enumerate(world.eventscripts[script_id]):
@@ -971,7 +1004,7 @@ def randomize_all(world):
                     "hammer": (0, 1, False),
                 }
                 for room_id, npc, eventscripts, actionscripts in chest.npcs:
-                    world.update_room_npc_property_by_id(room_id, npc, "model", 64)
+                    world.rooms[room_id].objects[npc].model.occupant = npcs.RedSmallToad
                     for script_id in eventscripts:
                         for command_index, cmd in enumerate(world.eventscripts[script_id]):
                             if utils.is_animation_header(cmd, npc):
@@ -980,7 +1013,13 @@ def randomize_all(world):
                         for command_index, cmd in enumerate(world.actionscripts[script_id]):
                             world.actionscripts[script_id] = utils.sanitize_character_animation_script(toad_sprites, world.actionscripts[script_id], room_id)
             for room_id, npc, eventscripts, actionscripts in chest.credits_npcs:
-                world.update_room_npc_property_by_id(room_id, npc, "model", ending.models[2])
+                if utils.isclass_or_instance(ending.model, npcs.Mario):
+                    emodel = ending.model(world, swap_id)
+                elif utils.isclass_or_instance(ending.model, ni.model):
+                    emodel = ending.model(world, 0)
+                else:
+                    emodel = ending.model
+                world.rooms[room_id].objects[npc].model.occupant = emodel
                 for script_id in eventscripts:
                     for command_index, cmd in enumerate(world.eventscripts[script_id]):
                         if utils.is_animation_header(cmd, npc):
@@ -988,47 +1027,19 @@ def randomize_all(world):
                 for script_id in actionscripts:
                     world.actionscripts[script_id] = utils.sanitize_character_animation_script(sprites, world.actionscripts[script_id], room_id)
             for room_id, npc, eventscripts, actionscripts in chest.doll_npcs:
-                world.update_room_npc_property_by_id(room_id, npc, "model", ending.doll)
+                world.rooms[room_id].objects[npc].model.occupant = ending.doll
                 for script_id in eventscripts:
                     for command_index, cmd in enumerate(world.eventscripts[script_id]):
                         if utils.is_animation_header(cmd, npc):
                             world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(sprites, cmd["subscript"], room_id)
 
-        # update the sprites in the world models
-        if not utils.isclass_or_instance(character_order[0], items.MarioRecruit) and world.settings.is_flag_enabled(flags.PlayAsStarter):
-            mario_models = [(index, copy.deepcopy(m)) for (index, m) in enumerate(world.models) if m is not None and m["sprite"] in characters.Mario.original_weapon_sprite_ids]
-            if utils.isclass_or_instance(character_order[0], items.MallowRecruit):
-                nc = characters.Mallow
-                ni = items.MallowRecruit
-            elif utils.isclass_or_instance(character_order[0], items.GenoRecruit):
-                nc = characters.Geno
-                ni = items.GenoRecruit
-            elif utils.isclass_or_instance(character_order[0], items.BowserRecruit):
-                nc = characters.Bowser
-                ni = items.BowserRecruit
-            else:
-                nc = characters.Peach
-                ni = items.ToadstoolRecruit
-            incoming_models = [(index, copy.deepcopy(m)) for (index, m) in enumerate(world.models) if m is not None and m["sprite"] in nc.original_weapon_sprite_ids]
-            replacements = zip(characters.Mario.original_weapon_sprite_ids, nc.original_weapon_sprite_ids)
-            for mario, incoming in replacements:
-                if mario is not None and incoming is not None:
-                    for m_i, m in mario_models:
-                        if m["sprite"] == mario:
-                            m["sprite"] = incoming
-                            m["vram_store"] = 0
-                            world.models[m_i] = m
-                    for m_i, m in incoming_models:
-                        if m["sprite"] == incoming:
-                            m["sprite"] = mario
-                            m["vram_store"] = 7
-                            world.models[m_i] = m
             # jinx dojo
             for script_id in [2066, 2068, 2076, 2077]:
                 for command_index, cmd in enumerate(world.eventscripts[script_id]):
                     if utils.is_animation_header(cmd, 0):
                         world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(ni.sprites_primary, cmd["subscript"], room_id)
         
+
 
         # chests
         for c in [x for x in world.chest_locations if not utils.isclass_or_instance(x, chests.OverworldItem)] + [x for x in world.freestanding_item_locations if not utils.isclass_or_instance(x, chests.OverworldItem) and not utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
@@ -1051,7 +1062,7 @@ def randomize_all(world):
                     if utils.isclass_or_instance(c.item, items.SlotMachineChest): 
                         for i, r in enumerate(c.rooms):
                             # count NPCs in room
-                            ctr = world.get_npc_count_by_room_id(r)
+                            ctr = len(world.rooms[r].objects)
                             # insert a slot machine script with the NPC IDs adjusted to this room
                             slot_logic = copy.deepcopy([{**s} for s in slot_machine_commands])
                             for j, cmd in enumerate(slot_logic):
@@ -1086,7 +1097,7 @@ def randomize_all(world):
                                         slot_logic[index]["args"][cmdindex] = old_new_identifiers[old_id]
                             # add slot machine NPCs to this room
                             cmds.extend(copy.deepcopy([{**s} for s in slot_logic]))
-                            world.rooms[r]["objects"].extend(slot_machine_npcs)
+                            world.rooms[r].objects.extend(slot_machine_npcs)
                             jmp = utils.new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
                             grant_builders[c.event]["jumps"].append(jmp)
                         grant_builders[c.event]["executions"].extend(cmds)
@@ -1126,8 +1137,8 @@ def randomize_all(world):
                         else:
                             # set 70A7 on chest itself
                             for r, npc_id in zip(c.rooms, c.npc_ids):
-                                world.update_room_npc_property_by_id(r, npc_id, "item_offset", c.item.chest_70A7_upper)
-                                world.update_room_npc_property_by_id(r, npc_id, "star_offset", c.item.chest_70A7_lower)
+                                world.rooms[r].objects[npc_id].upper_70A7 = c.item.chest_70A7_upper
+                                world.rooms[r].objects[npc_id].lower_70A7 = c.item.chest_70A7_lower
                         if utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.MultiFrogCoin):
                             cmds.append(utils.new_command(c.event, 'set', [0x70BC, c.item.multiplier]))
                         elif utils.isclass_or_instance(c.item, items.StarPiece):
@@ -1178,10 +1189,10 @@ def randomize_all(world):
                             grant_builders[c.event]["jumps"].append(jmp)
                         # coin snake considerations
                         if utils.isclass_or_instance(c, chests.SunkenShipCoinSnake):
-                            model_id = c.item.model.model
+                            model_class = c.item.model
                             action_script = c.item.model.action_script
                             for r, npc_id in zip(c.rooms, c.npc_ids):
-                                world.update_room_npc_property_by_id(r, npc_id, "model", model_id)
+                                world.rooms[r].objects[npc_id].model.occupant = model_class
                             # set the right sequence on the object in AS 199 and 200
                             action_script_contents = copy.deepcopy([{**s} for s in world.actionscripts[action_script] if s["command"] != "ret"])
                             for ind in [199, 200]:
@@ -1213,17 +1224,17 @@ def randomize_all(world):
                                 world.eventscripts[3216] = e_3216
                             # marrymore items - visual only
                         elif utils.isclass_or_instance(c, chests.MarrymoreSnifit1):
-                            world.update_room_npc_property_by_id(154, 4, "model", c.item.model.model)
-                            world.update_room_npc_property_by_id(154, 4, "action_script", c.item.model.action_script)
-                            world.update_room_npc_property_by_id(154, 4, "z_half", c.item.model.hover)
+                            world.rooms[154].objects[4].model.occupant = c.item.model
+                            world.rooms[154].objects[4].action_script = 15
+                            world.rooms[154].objects[4].z_half = c.item.model.hover
                         elif utils.isclass_or_instance(c, chests.MarrymoreSnifit2):
-                            world.update_room_npc_property_by_id(154, 6, "model", c.item.model.model)
-                            world.update_room_npc_property_by_id(154, 6, "action_script", c.item.model.action_script)
-                            world.update_room_npc_property_by_id(154, 6, "z_half", c.item.model.hover)
+                            world.rooms[154].objects[6].model.occupant = c.item.model
+                            world.rooms[154].objects[6].action_script = 15
+                            world.rooms[154].objects[6].z_half = c.item.model.hover
                         elif utils.isclass_or_instance(c, chests.MarrymoreSnifit3):
-                            world.update_room_npc_property_by_id(154, 3, "model", c.item.model.model)
-                            world.update_room_npc_property_by_id(154, 3, "action_script", c.item.model.action_script)
-                            world.update_room_npc_property_by_id(154, 3, "z_half", c.item.model.hover)
+                            world.rooms[154].objects[3].model.occupant = c.item.model
+                            world.rooms[154].objects[3].action_script = 15
+                            world.rooms[154].objects[3].z_half = c.item.model.hover
             elif utils.isclass_or_instance(c, chests.Chest) and c.item is None:
                 if world.settings.is_flag_enabled(flags.AnnoyingChests):
                     c.item = items.YouMissed
@@ -1299,28 +1310,28 @@ def randomize_all(world):
                 else:
                     if not c.is_vanilla:
                         # set the NPC and action script for the item if it's NOT an excluded COIN overworld item location
-                        model_id = c.item.model.model
-                        action_script = c.item.model.action_script
+                        model_class = c.item.model
+                        action_script = 15
                         is_floating = c.item.model.hover
                         for r, npc_id in zip(c.rooms, c.npc_ids):
                             # special case for rooms that have a lot of big sprites
-                            if r in [125] and model_id not in [499, 194, 195, 111, 196]:
-                                model_id = 111
-                                action_script = 773
+                            if r in [125] and not (utils.isclass_or_instance(model_class, npcs.Coin) or utils.isclass_or_instance(model_class, npcs.ItemBag) or utils.isclass_or_instance(model_class, npcs.RecoveryMushroom)):
+                                model_class = npcs.ItemBag
+                                action_script = 15
                                 is_floating = False
                             # special case for coins in booster tower
                             elif r == 41:
                                 if utils.isclass_or_instance(c.item, items.FrogCoin):
-                                    model_id = 202
+                                    model_class = npcs.SmallFrogCoin
                                     action_script = 0
                                     is_floating = True
                                 elif utils.isclass_or_instance(c.item, items.Coins):
-                                    model_id = 194
+                                    model_class = npcs.SmallCoin
                                     action_script = 0
                                     is_floating = True
-                            world.update_room_npc_property_by_id(r, npc_id, "model", model_id)
-                            world.update_room_npc_property_by_id(r, npc_id, "action_script", action_script)
-                            world.update_room_npc_property_by_id(r, npc_id, "z_half", is_floating)
+                            world.rooms[r].objects[npc_id].model.occupant = model_class
+                            world.rooms[r].objects[npc_id].action_script = action_script
+                            world.rooms[r].objects[npc_id].z_half = is_floating
                 # set the item grant
                 if utils.isclass_or_instance(c.item, items.StarPiece):
                     hint_variable, hint_bit = c.item.hint_bit
@@ -1336,8 +1347,7 @@ def randomize_all(world):
                     new_midas_cmd = []
                     for as_index, cmd in enumerate(world.actionscripts[c.midas_action_script]):
                         if cmd["command"] == 'jmp_to_subroutine':
-                            cmd["args"][0] = world.actionscripts[c.item.model.action_script][0]["identifier"]
-                            new_midas_cmd.append(cmd)
+                            pass
                         elif cmd["command"] != 'set_sprite_sequence' and not utils.isclass_or_instance(c.item, items.Coins) and not utils.isclass_or_instance(c.item, items.FrogCoin):
                             new_midas_cmd.append(cmd)
                     world.actionscripts[c.midas_action_script] = new_midas_cmd
@@ -1355,25 +1365,11 @@ def randomize_all(world):
                 # edit action script if midas tunnel #3 item is not a coin
                 if utils.isclass_or_instance(c, chests.MidasRiverBottomLeftCave) and not utils.isclass_or_instance(c.item, items.Coins) and not utils.isclass_or_instance(c.item, items.FrogCoin):
                     world.actionscripts[298] = [a for a in world.actionscripts[298] if a["command"] != 'set_sprite_sequence']
-                # for elder key, need to forcefully set the sequence/mold of the item in script 1335
-                if utils.isclass_or_instance(c, chests.BoosterTowerPortraits):
-                    action_script_contents = [{**a, "identifier": "EVENT_1335_" + a["identifier"]} for a in world.actionscripts[c.item.model.action_script] if a["command"] != "ret"]
-                    for i, command in enumerate(world.eventscripts[1335]):
-                        if utils.is_animation_header(command, 7):
-                            command["subscript"] = copy.deepcopy([{**s} for s in action_script_contents])
-                            for subs_index, sub_cmd in enumerate(command["subscript"]):
-                                if "args" in sub_cmd:
-                                    for sub_cmd_arg_index, sub_cmd_arg in enumerate(sub_cmd["args"]):
-                                        if type(sub_cmd_arg) == str:
-                                            sub_cmd["args"][sub_cmd_arg_index] = "EVENT_1335_" + sub_cmd_arg
-                                    command["subscript"][subs_index] = sub_cmd
-                            world.eventscripts[1335][i] = command
-                            break # only apply to first command
                 # for booster tower, need to do the same
                 if utils.isclass_or_instance(c, chests.BoosterTowerMasher):
                     for i, command in enumerate(world.eventscripts[2342]):
                         if command["command"] == "set_action_script_sync" and (command["args"][0] - 0x14) in c.npc_ids:
-                            command["args"][1] = c.item.model.action_script
+                            command["args"][1] = 0
                             world.eventscripts[2342][i] = command
                             break # only apply to first command
             elif utils.isclass_or_instance(c, chests.BoosterTowerMasher):

@@ -136,6 +136,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
+            vram_size=1,
             cannot_clone=True,
         ),
         RegularNPC( # 2
@@ -169,6 +170,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
+            vram_size=1,
             cannot_clone=True,
         ),
     ]

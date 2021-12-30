@@ -63,6 +63,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
+            vram_size=1,
             cannot_clone=True,
         ),
         RegularClone( # 1
@@ -79,6 +80,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
+            vram_size=1,
             cannot_clone=True,
         ),
         RegularClone( # 2
@@ -95,6 +97,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
+            vram_size=1,
             cannot_clone=True,
         ),
         RegularNPC( # 3
@@ -128,6 +131,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
+            vram_size=1,
             cannot_clone=False,
         ),
         RegularNPC( # 4
@@ -161,6 +165,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
+            vram_size=1,
             cannot_clone=False,
         ),
         RegularNPC( # 5
@@ -194,6 +199,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
+            vram_size=1,
             cannot_clone=False,
         ),
     ]

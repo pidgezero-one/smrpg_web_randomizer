@@ -798,7 +798,9 @@ class Command(BaseCommand):
                         writeline(file, "            x=%i," % event.x)
                         writeline(file, "            y=%i," % event.y)
                         writeline(file, "            z=%i," % event.z)
-                        f, _ = byte(prefix="Edge", table=edge_table)([f_bit])
+                        f, _ = byte(prefix="Edge", table=edge_table)([event.f])
+                        if i == 284:
+                            print(f)
                         writeline(file, "            f=%s," % f)
                         writeline(file, "            height=%i," % event.height)
                         writeline(file, "            length=%i," % event.length)
@@ -1193,7 +1195,7 @@ class Command(BaseCommand):
                         writeline(file, "            lower_70A7=%i," % obj.lower_70A7)
                         writeline(file, "            upper_70A7=%i," % obj.upper_70A7)
                     if isclass_or_instance(obj, BattlePackNPC) or isclass_or_instance(obj, RegularNPC) or isclass_or_instance(obj, ChestNPC):
-                        if obj.speed > 0:
+                        if obj.speed != 0:
                             writeline(file, "            speed=%i," % obj.speed)
                     writeline(file, "            visible=%r," % obj.visible)
                     writeline(file, "            x=%i," % obj.x)

@@ -12,13 +12,16 @@ from randomizer.helpers.roomobjecttables import (
     PartitionMainSpace,
 )
 from randomizer.data import npcs
+from randomizer.helpers.roomobjecttables import (
+    partition_buffer_table,
+    partition_space_table,
+)
+from randomizer.management.disassembler_common import (
+    byte,
+)
 
 
 class Buffer:
-    buffer_type = PartitionBufferTypes.EMPTY_3
-    main_buffer_space = PartitionMainSpace._0_BYTES
-    index_in_main_buffer = True
-
     def __init__(
         self,
         buffer_type=PartitionBufferTypes.EMPTY_3,
@@ -29,28 +32,49 @@ class Buffer:
         self.main_buffer_space = main_buffer_space
         self.index_in_main_buffer = index_in_main_buffer
 
+        #print(self)
+
+    def __str__(self):
+        buffer_type, _ = byte(
+            prefix="PartitionBufferTypes", table=partition_buffer_table
+        )([self.buffer_type])
+        main_buffer_space, _ = byte(
+            prefix="PartitionMainSpace", table=partition_space_table
+        )([self.main_buffer_space])
+
+        return "{}, {}, {}".format(
+            buffer_type, main_buffer_space, self.index_in_main_buffer
+        )
+
 
 class Partition:
-    ally_sprite_buffer_size = 1
-    allow_extra_sprite_buffer = False
-    extra_sprite_buffer_size = 0
-    buffers = [Buffer(), Buffer(), Buffer()]
-    full_palette_buffer = True
-
     def __init__(
         self,
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
-        buffers=[Buffer(), Buffer(), Buffer()],
+        buffers=None,
         full_palette_buffer=True,
     ):
         self.ally_sprite_buffer_size = ally_sprite_buffer_size
         self.allow_extra_sprite_buffer = allow_extra_sprite_buffer
         self.extra_sprite_buffer_size = extra_sprite_buffer_size
-        assert len(buffers) == 3
+        if buffers is None:
+            buffers = [Buffer(), Buffer(), Buffer()]
         self.buffers = buffers
+        assert len(self.buffers) == 3
         self.full_palette_buffer = full_palette_buffer
+
+        #print(self)
+
+    def __str__(self):
+        return "ally: {},  packet: {}, {},  buffers: {},  full: {}".format(
+            self.ally_sprite_buffer_size,
+            self.allow_extra_sprite_buffer,
+            self.extra_sprite_buffer_size,
+            ";".join([b.__str__() for b in self.buffers]),
+            self.full_palette_buffer,
+        )
 
 
 class DestinationProps:
@@ -236,6 +260,7 @@ class RoomObject(BaseRoomObject):
     cant_move_if_in_air = False
     byte7_upper2 = 0
 
+
 class Clone(BaseRoomObject):
     pass
 
@@ -301,6 +326,7 @@ class BattlePackNPC(RoomObject):
         self.battle_pack = battle_pack
         self.action_script = action_script
         self.speed = speed
+        self.visible = visible
         self.x = x
         self.y = y
         self.z = z
@@ -766,25 +792,26 @@ class ChestClone(Clone):
 
 
 class Room:
-    partition = Partition()
-    music = Music._00_CURRENT
-    entrance_event = 15
-    event_tiles = []
-    exit_fields = []
-    objects = []
-
     def __init__(
         self,
-        partition=Partition(),
+        partition=None,
         music=Music._00_CURRENT,
         entrance_event=15,
-        event_tiles=[],
-        exit_fields=[],
-        objects=[],
+        event_tiles=None,
+        exit_fields=None,
+        objects=None,
     ):
+        if partition is None:
+            partition = Partition()
         self.partition = partition
         self.music = music
         self.entrance_event = entrance_event
+        if event_tiles is None:
+            event_tiles = []
         self.event_tiles = event_tiles
+        if exit_fields is None:
+            exit_fields = []
         self.exit_fields = exit_fields
+        if objects is None:
+            objects = []
         self.objects = objects

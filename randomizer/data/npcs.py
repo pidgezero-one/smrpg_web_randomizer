@@ -83,7 +83,6 @@ class SpriteAnimationCollection:
 
 
 class StatueDetails:
-    palette = []
     mold = 0
     horizontal_pixel_shift = 0
     vertical_pixel_shift = 0
@@ -92,14 +91,12 @@ class StatueDetails:
 
     def __init__(
         self,
-        palette,
         mold=0,
         horizontal_pixel_shift=0,
         vertical_pixel_shift=0,
         north_facing_horizontal_pixel_shift=0,
         north_facing_vertical_pixel_shift=0,
     ):
-        self.palette = palette
         self.mold = mold
         self.horizontal_pixel_shift = horizontal_pixel_shift
         self.vertical_pixel_shift = vertical_pixel_shift
@@ -128,7 +125,6 @@ class NPC:
     world = None
 
     animations = SpriteAnimationCollection()
-    statue = None
     eye_height = 17
     alt_palette = None
 
@@ -156,6 +152,10 @@ class NPC:
         )
 
 
+class Statue(NPC):
+    details = StatueDetails()
+
+
 class ItemNPC(NPC):
     chest_packet = 5
     chest_event = 883
@@ -165,13 +165,13 @@ class ItemNPC(NPC):
     show_shadow = False
     height = 7
     chest_70A7_upper = 0
+    hover = False
 
 
 class PartyNPC(NPC):
-    def __init__(self, world, sprite_id, directions):
+    def __init__(self, world, sprite_id):
         super().__init__(world)
         self.sprite_id = sprite_id
-        self.directions = directions
 
 
 class MimicFace(NPC):
@@ -181,25 +181,6 @@ class MimicFace(NPC):
     height = 3
 
     eye_height = 4
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8E870",
-            "F8E870",
-            "0",
-            "D09020",
-            "F8E870",
-            "E0C000",
-            "906010",
-            "482818",
-            "906010",
-            "D09020",
-            "482818",
-            "D09020",
-            "0",
-            "181818",
-        ]
-    )
 
 
 class AreaNPC:
@@ -468,6 +449,7 @@ croco_bag_hit = SpriteAnimation(sequence_id=4, contact_frame=152, total_duration
 croco_bag_summon = SpriteAnimation(sequence_id=6, total_duration=136)
 croco_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
+
 class CrocoBase(NPC):
     acute_axis = 5
     obtuse_axis = 5
@@ -476,26 +458,6 @@ class CrocoBase(NPC):
     directions = VramStore._00_SWSE_NWNE
 
     eye_height = 13
-    statue = StatueDetails(
-        [
-            "F8E870",
-            "C08020",
-            "F8E870",
-            "F8F8A0",
-            "906010",
-            "E0C000",
-            "C08020",
-            "C08020",
-            "E0C000",
-            "906010",
-            "683808",
-            "784818",
-            "482818",
-            "906010",
-            "301830",
-        ],
-        horizontal_pixel_shift=-3,
-    )
     animations = SpriteAnimationCollection(
         recoil=croco_recoil,
         bandits_way_distracted=croco_bag_loop,
@@ -508,6 +470,7 @@ class CrocoBase(NPC):
         chandelier_challenge=croco_bag_summon,
         endgame_challenge=croco_bag_summon,
     )
+
 
 class Croco(CrocoBase):
     sprite_id = 48
@@ -533,25 +496,6 @@ class Booster(NPC):
     obtuse_axis = 5
     y_shift = 2
 
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8E870",
-            "F8E870",
-            "E0C000",
-            "C08020",
-            "906010",
-            "E0C000",
-            "906010",
-            "906010",
-            "E0C000",
-            "C08020",
-            "906010",
-            "683808",
-            "482818",
-            "301830",
-        ]
-    )
     animations = SpriteAnimationCollection(
         recoil=booster_recoil,
         bandits_way_distracted=booster_laugh,
@@ -617,25 +561,6 @@ class JohnnySmall(NPC):
         endgame_challenge=small_johnny_sit,
     )
     eye_height = 20
-    statue = StatueDetails(
-        [
-            "F8F8F8",
-            "F8E870",
-            "E0C000",
-            "C08020",
-            "906010",
-            "F8E870",
-            "C08020",
-            "E0C000",
-            "D09020",
-            "906010",
-            "784818",
-            "E0C000",
-            "906010",
-            "683808",
-            "181818",
-        ]
-    )
 
 
 valentina_stand = SpriteAnimation(sequence_id=10)
@@ -1158,28 +1083,6 @@ class RedMagikoopa(SmallMagikoopa):
     sprite_id = 129
 
     eye_height = 12
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "E0C000",
-            "906010",
-            "C08020",
-            "E0C000",
-            "C08020",
-            "683808",
-            "301830",
-            "F8F8A0",
-            "F8E870",
-            "D09020",
-            "784818",
-            "E0C000",
-            "482818",
-            "301830",
-        ],
-        horizontal_pixel_shift=2,
-        north_facing_horizontal_pixel_shift=-4,
-        north_facing_vertical_pixel_shift=-1,
-    )
 
 
 class WigglerBody(NPC):
@@ -1485,25 +1388,6 @@ class FakeElder(BigToad):
     sprite_id = 163
 
     eye_height = 10
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "E0C000",
-            "906010",
-            "E0C000",
-            "683808",
-            "482818",
-            "E0C000",
-            "C08020",
-            "482818",
-            "F8E870",
-            "E0C000",
-            "C08020",
-            "906010",
-            "482818",
-            "301830",
-        ]
-    )
 
 
 class Elder(BigToad):
@@ -1613,27 +1497,6 @@ class GrateGuySmall(NPC):
     y_shift = 1
 
     eye_height = 16
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "E0C000",
-            "E0C000",
-            "906010",
-            "F8E870",
-            "E0C000",
-            "D09020",
-            "784818",
-            "482818",
-            "F8E870",
-            "E0C000",
-            "D09020",
-            "482818",
-            "301830",
-            "181818",
-        ],
-        horizontal_pixel_shift=-3,
-        north_facing_horizontal_pixel_shift=-2,
-    )
 
 
 class BlueStripedToad(BigToad):
@@ -1722,25 +1585,6 @@ class Jinx(NPC):
         chandelier_challenge=jinx_punch,
         endgame_challenge=jinx_punch,
     )
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "E0C000",
-            "D09020",
-            "A87828",
-            "482818",
-            "E0C000",
-            "784818",
-            "301830",
-            "F8F8A0",
-            "F8E870",
-            "906010",
-            "301830",
-            "F8F8A0",
-            "E0C000",
-            "301830",
-        ]
-    )
 
 
 class Jinx2(Jinx):
@@ -1763,8 +1607,11 @@ class Jinx2(Jinx):
         "181818",
     ]
 
+class Coin(ItemNPC):
+    pass
 
-class BigCoin(ItemNPC):
+
+class BigCoin(Coin):
     sprite_id = 192
     height = 6
     y_shift = 5
@@ -1774,7 +1621,7 @@ class BigCoin(ItemNPC):
     falling_packet = 106
 
 
-class SmallCoin(ItemNPC):
+class SmallCoin(Coin):
     sprite_id = 193
     acute_axis = 1
     obtuse_axis = 1
@@ -1786,7 +1633,7 @@ class SmallCoin(ItemNPC):
     falling_packet = 107
 
 
-class FrogCoin(ItemNPC):
+class FrogCoin(Coin):
     sprite_id = 194
     height = 6
     y_shift = 5
@@ -1795,6 +1642,15 @@ class FrogCoin(ItemNPC):
     static_packet = 111
     falling_packet = 108
     chest_70A7_upper = 3
+
+
+class SlotFlower(NPC):
+    sprite_id = 195
+    acute_axis = 3
+    obtuse_axis = 3
+    height = 3
+    y_shift = 1
+
 
 
 class Ring(ItemNPC):
@@ -1835,6 +1691,7 @@ class FryingPan(ItemNPC):
 
 class Explosion(NPC):
     sprite_id = 200
+    show_shadow = False
     shadow_size = ShadowSize._00_OVAL_SMALL
     y_shift = 1
     acute_axis = 1
@@ -1852,25 +1709,6 @@ class MokuraCloud(NPC):
     height = 3
 
     eye_height = 4
-    statue = StatueDetails(
-        [
-            "F8F8F8",
-            "F8F8A0",
-            "F8E870",
-            "E0C000",
-            "D09020",
-            "F8F8A0",
-            "784818",
-            "906010",
-            "E0C000",
-            "482818",
-            "D09020",
-            "0",
-            "0",
-            "0",
-            "181818",
-        ]
-    )
 
 
 class Shoes(ItemNPC):
@@ -1896,6 +1734,7 @@ class Card(ItemNPC):
     chest_event = 895
     static_packet = 124
     falling_packet = 125
+    hover = True
 
 
 class Brooch(ItemNPC):
@@ -2257,25 +2096,6 @@ class Terrapin(NPC):
         chandelier_challenge=jagger_punch,
         endgame_challenge=jagger_punch,
     )
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8E870",
-            "D09020",
-            "784818",
-            "482818",
-            "D09020",
-            "784818",
-            "301830",
-            "482818",
-            "F8E870",
-            "E0C000",
-            "D09020",
-            "784818",
-            "301830",
-            "181818",
-        ],
-    )
 
 
 class Spikey(NPC):
@@ -2380,28 +2200,6 @@ class PiranhaPlant(NPC):
         endgame_challenge=piranha_bite,
     )
     eye_height = 14
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8E870",
-            "E0C000",
-            "D0A000",
-            "C08020",
-            "906010",
-            "301830",
-            "C08020",
-            "482818",
-            "F8E870",
-            "E0C000",
-            "C08020",
-            "482818",
-            "E0C000",
-            "301830",
-        ],
-        mold=1,
-        horizontal_pixel_shift=-3,
-        vertical_pixel_shift=-4,
-    )
 
 
 class Amanita(NPC):
@@ -2446,25 +2244,6 @@ class Bloober(NPC):
         keep_summon=squid_hit,
         chandelier_challenge=squid_hit,
         endgame_challenge=squid_hit,
-    )
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8F8A0",
-            "F8E870",
-            "E0C000",
-            "F8F8A0",
-            "F8E870",
-            "E0C000",
-            "D0A000",
-            "C08020",
-            "906010",
-            "784818",
-            "482818",
-            "0",
-            "0",
-            "181818",
-        ]
     )
     eye_height = 10
 
@@ -2772,7 +2551,7 @@ class HeavyTropa(NPC):
 
 
 shovelknight_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=32, total_duration=44
+    sequence_id=3, contact_frame=16, total_duration=22, speed=SequenceSpeeds.FAST
 )
 shovelknight_taunt = SpriteAnimation(sequence_id=4, total_duration=44)
 shovelknight_recoil = SpriteAnimation(sequence_id=2, total_duration=24)
@@ -2938,26 +2717,6 @@ class FactoryChief(NPC):
     directions = VramStore._00_SWSE_NWNE
 
     eye_height = 16
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "E0C000",
-            "C08020",
-            "784818",
-            "F8F8A0",
-            "E0C000",
-            "000000",
-            "906010",
-            "784818",
-            "906010",
-            "301830",
-            "784818",
-            "683808",
-            "482818",
-            "301830",
-        ],
-        horizontal_pixel_shift=-1,
-    )
     animations = SpriteAnimationCollection(
         recoil=ninja_recoil,
         mines_punch=ninja_hit,
@@ -3757,26 +3516,6 @@ class AxemRed(NPC):
     obtuse_axis = 5
 
     eye_height = 15
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8E870",
-            "906010",
-            "C08020",
-            "906010",
-            "301830",
-            "F8E870",
-            "E0C000",
-            "C08020",
-            "683808",
-            "0",
-            "0",
-            "0",
-            "0",
-            "181818",
-        ],
-        horizontal_pixel_shift=-6,
-    )
     animations = SpriteAnimationCollection(
         bandits_way_distracted=axem_red_taunt,
         mines_punch=axem_red_hit,
@@ -3813,26 +3552,6 @@ class BundtSmall(NPC):
     height = 8
 
     eye_height = 8
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8E870",
-            "F8E870",
-            "E0C000",
-            "F8F8F8",
-            "D0A000",
-            "C08020",
-            "C08020",
-            "906010",
-            "C08020",
-            "482818",
-            "D09020",
-            "482818",
-            "E0C000",
-            "301830",
-        ],
-        horizontal_pixel_shift=-3,
-    )
 
 
 czar_dragon_hit = SpriteAnimation(sequence_id=3, contact_frame=56, total_duration=66)
@@ -4084,28 +3803,6 @@ class CountDownGridplane(NPC):
     obtuse_axis = 11
     height = 13
 
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8E870",
-            "E0C000",
-            "E0C000",
-            "E0C000",
-            "D09020",
-            "D09020",
-            "F8E870",
-            "F8E870",
-            "906010",
-            "D09020",
-            "906010",
-            "E0C000",
-            "F8E870",
-            "906010",
-        ],
-        horizontal_pixel_shift=4,
-        vertical_pixel_shift=-1,
-    )
-
 
 class MokuraLarge(NPC):
     sprite_id = 573
@@ -4211,26 +3908,6 @@ class HammerBroSmall(NPC):
     acute_axis = 7
     obtuse_axis = 7
     height = 13
-
-    statue = StatueDetails(
-        [
-            "C08020",
-            "E0C000",
-            "D0A000",
-            "F8F8A0",
-            "181818",
-            "F8E870",
-            "F8F890",
-            "D8C000",
-            "906010",
-            "F0E860",
-            "D08800",
-            "F0A808",
-            "604800",
-            "302000",
-            "180800",
-        ]
-    )
     eye_height = 6
 
 
@@ -4239,25 +3916,6 @@ class MackSmall(NPC):
     y_shift = 1
 
     eye_height = 19
-    statue = StatueDetails(
-        [
-            "E0C000",
-            "D0A000",
-            "683808",
-            "F8E870",
-            "906010",
-            "E0C000",
-            "784818",
-            "F8F8A0",
-            "C08020",
-            "906010",
-            "D0A000",
-            "F8E870",
-            "F8E870",
-            "F8F8F8",
-            "D0A000",
-        ]
-    )
 
 
 class Belome1Small(NPC):
@@ -4266,26 +3924,6 @@ class Belome1Small(NPC):
     acute_axis = 7
     obtuse_axis = 7
     height = 13
-
-    statue = StatueDetails(
-        [
-            "F8D008",
-            "F8A008",
-            "F8F888",
-            "984000",
-            "F8F8F8",
-            "181818",
-            "F8B010",
-            "401800",
-            "F8D008",
-            "F8F8B0",
-            "582000",
-            "C88008",
-            "F8D060",
-            "582000",
-            "200000",
-        ]
-    )
 
 
 class Belome2Small(NPC):
@@ -4312,51 +3950,12 @@ class Belome2Small(NPC):
         "200000",
     ]
 
-    statue = StatueDetails(
-        [
-            "F8D008",
-            "F8A008",
-            "F8F888",
-            "984000",
-            "F8F8F8",
-            "181818",
-            "F8B010",
-            "401800",
-            "F8D008",
-            "F8F8B0",
-            "582000",
-            "C88008",
-            "F8D060",
-            "582000",
-            "200000",
-        ]
-    )
-
 
 class BowyerSmall(NPC):
     sprite_id = 591
     y_shift = 1
 
     eye_height = 16
-    statue = StatueDetails(
-        [
-            "E0C000",
-            "D0A000",
-            "D0A000",
-            "482818",
-            "683808",
-            "301830",
-            "C08020",
-            "D0A000",
-            "F8F8A0",
-            "F8E870",
-            "906010",
-            "E0C000",
-            "C08020",
-            "F8E048",
-            "C08020",
-        ]
-    )
 
 
 class PunchinelloSmall(NPC):
@@ -4366,26 +3965,6 @@ class PunchinelloSmall(NPC):
     obtuse_axis = 7
     height = 13
 
-    statue = StatueDetails(
-        [
-            "E0C000",
-            "C08020",
-            "482818",
-            "D0A000",
-            "E0C000",
-            "C08020",
-            "C08020",
-            "D0A000",
-            "F8F8A0",
-            "F8E870",
-            "E0C000",
-            "F0E870",
-            "986000",
-            "F8F8A0",
-            "000000",
-        ],
-    )
-
 
 class DodoSmall(NPC):
     sprite_id = 593
@@ -4394,51 +3973,12 @@ class DodoSmall(NPC):
     obtuse_axis = 7
     height = 13
 
-    statue = StatueDetails(
-        [
-            "683808",
-            "E0C000",
-            "906010",
-            "C08020",
-            "683808",
-            "C08020",
-            "F8E870",
-            "F8F8A0",
-            "906010",
-            "E0C000",
-            "784818",
-            "E0C000",
-            "C8A008",
-            "F8E870",
-            "C08020",
-        ]
-    )
-
 
 class BirdettaSmall(NPC):
     sprite_id = 594
     y_shift = 1
 
     eye_height = 6
-    statue = StatueDetails(
-        [
-            "C08020",
-            "E0C000",
-            "784818",
-            "906010",
-            "D0A000",
-            "683808",
-            "F8E870",
-            "301830",
-            "E0C000",
-            "C08020",
-            "F8F8A0",
-            "C08020",
-            "D0A000",
-            "482818",
-            "906010",
-        ]
-    )
 
 
 class CzarDragonSmall(NPC):
@@ -4449,50 +3989,11 @@ class CzarDragonSmall(NPC):
     height = 13
 
     eye_height = 3
-    statue = StatueDetails(
-        [
-            "F8E870",
-            "D0A000",
-            "F8F8A0",
-            "482818",
-            "D0A000",
-            "784818",
-            "E0C000",
-            "906010",
-            "683808",
-            "C08020",
-            "301830",
-            "181818",
-            "906010",
-            "784818",
-            "482818",
-        ]
-    )
 
 
 class BoomerSmall(NPC):
     sprite_id = 596
     y_shift = 1
-
-    statue = StatueDetails(
-        [
-            "906010",
-            "906010",
-            "C08020",
-            "E0C000",
-            "784818",
-            "301830",
-            "D0A000",
-            "E0C000",
-            "784818",
-            "C08020",
-            "D0A000",
-            "F8E870",
-            "F8F8A0",
-            "000000",
-            "000000",
-        ]
-    )
 
 
 class ExorSmall(NPC):
@@ -4502,26 +4003,6 @@ class ExorSmall(NPC):
     obtuse_axis = 7
     height = 13
 
-    statue = StatueDetails(
-        [
-            "F8F8A0",
-            "F8E870",
-            "683808",
-            "E0C000",
-            "784717",
-            "301830",
-            "C08020",
-            "D0A000",
-            "E0C000",
-            "C08020",
-            "906010",
-            "784818",
-            "F8E870",
-            "784818",
-            "E0C000",
-        ]
-    )
-
 
 class DominoSmall(NPC):
     sprite_id = 598
@@ -4530,26 +4011,6 @@ class DominoSmall(NPC):
     obtuse_axis = 7
     height = 13
 
-    statue = StatueDetails(
-        [
-            "D0A000",
-            "F8E870",
-            "D0A000",
-            "F8E870",
-            "F8F8A0",
-            "C08020",
-            "301830",
-            "683808",
-            "C08020",
-            "E0C000",
-            "906010",
-            "784818",
-            "F8E870",
-            "482818",
-            "301830",
-        ],
-    )
-
 
 class SmithySmall(NPC):
     sprite_id = 599
@@ -4557,26 +4018,6 @@ class SmithySmall(NPC):
     acute_axis = 7
     obtuse_axis = 7
     height = 13
-
-    statue = StatueDetails(
-        [
-            "683808",
-            "D0A000",
-            "F8F060",
-            "906010",
-            "784818",
-            "D09020",
-            "C08020",
-            "784818",
-            "F8F8A0",
-            "E0C000",
-            "C08020",
-            "F8E870",
-            "906010",
-            "000000",
-            "000000",
-        ],
-    )
 
 
 class MarioDoll(NPC):
@@ -4608,7 +4049,7 @@ class BigFlower(ItemNPC):
     chest_70A7_upper = 2
 
 
-class SmallFrogCoin(ItemNPC):
+class SmallFrogCoin(Coin):
     sprite_id = 606
     shadow_size = ShadowSize._00_OVAL_SMALL
     y_shift = 1
@@ -4886,25 +4327,6 @@ class CulexSmall(NPC):
     height = 11
 
     eye_height = 12
-    statue = StatueDetails(
-        [
-            "482818",
-            "F8E870",
-            "C08020",
-            "906010",
-            "F8F8A0",
-            "F8E870",
-            "D0A000",
-            "E0C000",
-            "482818",
-            "D0A000",
-            "F8E870",
-            "683808",
-            "E0C000",
-            "683808",
-            "F8F8A0",
-        ]
-    )
 
 
 class CircularSparkle(NPC):
@@ -5062,6 +4484,189 @@ class TinyBloober(NPC):
     y_shift = 1
 
 
+class MimicStatue(MimicFace, Statue):
+    sprite_id = 652
+
+
+class CrocoStatue(CrocoBase, Statue):
+    sprite_id = 653
+    details = StatueDetails(horizontal_pixel_shift=-3)
+
+
+class BoosterStatue(Booster, Statue):
+    sprite_id = 654
+
+
+class JohnnyStatue(JohnnySmall, Statue):
+    sprite_id = 655
+
+
+class MagikoopaStatue(SmallMagikoopa, Statue):
+    sprite_id = 656
+
+    details = StatueDetails(
+        horizontal_pixel_shift=2,
+        north_facing_horizontal_pixel_shift=-4,
+        north_facing_vertical_pixel_shift=-1,
+    )
+
+
+class ShovelKnightStatue(ShovelKnightBoss, Statue):
+    sprite_id = 657
+    details = StatueDetails(
+        horizontal_pixel_shift=-3,
+        north_facing_horizontal_pixel_shift=-5,
+    )
+
+
+class YaridovichStatue(FakeElder, Statue):
+    sprite_id = 658
+
+
+class GrateGuyStatue(GrateGuySmall, Statue):
+    sprite_id = 659
+    details = StatueDetails(
+        horizontal_pixel_shift=-3,
+        north_facing_horizontal_pixel_shift=-2,
+    )
+
+
+class JinxStatue(Jinx, Statue):
+    sprite_id = 660
+
+
+class MokuraStatue(MokuraCloud, Statue):
+    sprite_id = 661
+
+
+class TerrapinStatue(Terrapin, Statue):
+    sprite_id = 662
+
+
+class PiranhaPlantStatue(PiranhaPlant, Statue):
+    sprite_id = 663
+    details = StatueDetails(
+        horizontal_pixel_shift=-3,
+        vertical_pixel_shift=-4,
+    )
+
+
+class BlooberStatue(Bloober, Statue):
+    sprite_id = 664
+
+
+class FactoryChiefStatue(FactoryChief, Statue):
+    sprite_id = 665
+    details = StatueDetails(horizontal_pixel_shift=-1)
+
+
+class AxemRedStatue(AxemRed, Statue):
+    sprite_id = 666
+    details = StatueDetails(horizontal_pixel_shift=-6)
+
+
+class BundtStatue(BundtSmall, Statue):
+    sprite_id = 667
+    details = StatueDetails(horizontal_pixel_shift=-3)
+
+
+class CountDownStatue(CountDownGridplane, Statue):
+    sprite_id = 668
+    details = StatueDetails(
+        horizontal_pixel_shift=4,
+        vertical_pixel_shift=-1,
+    )
+
+
+class HammerBroStatue(HammerBroSmall, Statue):
+    sprite_id = 669
+
+
+class MackStatue(MackSmall, Statue):
+    sprite_id = 670
+
+
+class SmallBelomeStatue(Belome1Small, Statue):
+    sprite_id = 671
+
+
+class Belome2Large(NPC):
+    sprite_id = 672
+    min_vram_size = 5
+    shadow_size = ShadowSize._02_OVAL_BIG
+    y_shift = 2
+    acute_axis = 10
+    obtuse_axis = 10
+    height = 18
+
+    animations = SpriteAnimationCollection(
+        mines_punch=belome_attack,
+        statue_intro=belome_wiggle,
+        statue_flustered=belome_recoil,
+        statue_peck=belome_attack_fast,
+        chandelier_challenge=belome_attack,
+        endgame_challenge=belome_attack,
+    )
+
+    alt_palette = [
+        "F8F8D8",
+        "F8F888",
+        "F8D060",
+        "F8D008",
+        "F8B010",
+        "F8F8B0",
+        "F8D008",
+        "F8A008",
+        "C88008",
+        "582000",
+        "582000",
+        "984000",
+        "401800",
+        "C85808",
+        "181000",
+    ]
+
+
+class BowyerStatue(BowyerSmall, Statue):
+    sprite_id = 673
+
+
+class PunchinelloStatue(PunchinelloSmall, Statue):
+    sprite_id = 674
+
+
+class DodoStatue(DodoSmall, Statue):
+    sprite_id = 675
+
+
+class BirdettaStatue(BirdettaSmall, Statue):
+    sprite_id = 676
+
+
+class CzarStatue(CzarDragonSmall, Statue):
+    sprite_id = 677
+
+
+class BoomerStatue(BoomerSmall, Statue):
+    sprite_id = 678
+
+
+class ExorStatue(ExorSmall, Statue):
+    sprite_id = 679
+
+
+class DominoStatue(DominoSmall, Statue):
+    sprite_id = 680
+
+
+class SmithyStatue(SmithySmall, Statue):
+    sprite_id = 681
+
+
+class CulexStatue(CulexSmall, Statue):
+    sprite_id = 682
+
+
 class TinyBird(NPC):
     sprite_id = 777
     shadow_size = ShadowSize._00_OVAL_SMALL
@@ -5081,7 +4686,7 @@ class SmithyLarge(NPC):
     sprite_id = 959
     shadow_size = ShadowSize._03_BLOCK
     acute_axis = 12
-    obtuse_axis = 115
+    obtuse_axis = 15
     height = 13
 
     animations = SpriteAnimationCollection(

@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(13, length=1056, unknown=0x0000,
+    animation=AnimationPack(254, length=1069, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -408,13 +408,13 @@ sprite = CompleteSprite(
                 ),
                 Mold(10, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=7, subtile_bytes=[
                             bytearray(b'\xe3\x1f\xe3\x1f\xfa\x1er\x0f;\x04\x17\x08\n\x11\x00\x00\x00\xff\x00\xff\x01\xe7\x05g\x0c,\t\r\x11\x19\x00\x00'),
                             bytearray(b'\x18\x00\x18\x00\x18\x00P\x00\xc0\x90P\xa0\x90 \x00\x00\xf8\xe0\xf8\xe0\xf8\xe0\xb8\xe88\xf8\xe0\xf0 \xb0\x00\x00'),
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=7, subtile_bytes=[
                             bytearray(b'?\x00\x0e\x11\x01\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t)\x13\x1b\x02\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\xff\xc0\xff\x00\x81\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\x00\xff\x00\x81\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             None,
@@ -448,13 +448,13 @@ sprite = CompleteSprite(
                 ),
                 Mold(11, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=7, subtile_bytes=[
                             bytearray(b'\xe3\x1f\xe3\x1f\xfa\x1er\x0f;\x04\x17\x08\n\x11\x00\x00\x00\xff\x00\xff\x01\xe7\x05g\x0c,\t\r\x11\x19\x00\x00'),
                             bytearray(b'\x18\x00\x18\x00\x18\x00P\x00\xc0\x90P\xa0\x90 \x00\x00\xf8\xe0\xf8\xe0\xf8\xe0\xb8\xe88\xf8\xe0\xf0 \xb0\x00\x00'),
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=7, subtile_bytes=[
                             bytearray(b'?\x00\x0e\x11\x01\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t)\x13\x1b\x02\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\xff\xc0\xff\x00\x81\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\x00\xff\x00\x81\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             None,
@@ -632,19 +632,19 @@ sprite = CompleteSprite(
                             bytearray(b'2l\x02q]#c\x07\x03\x07\x01\x07\x04\x07\x05\x07o}<\x7ft,`$\x00\x04\x00\x06\x00\x07\x00\x07'),
                             bytearray(b'\xe0?q\x9fy\x9fw\x9d\xef\x8b\xe3\x81[\xa0\xdc\xad?\x001"3"\x13\x0c\x0b\x16!>`\xff\x7f\xef'),
                         ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=5, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00  \xc0 \xc0 \x00`\xa0\x00\x10\x00\x00\x00\x00\x00\x00\x00\xc0 \xc0 \x80\xe0\xe0\x00\xf0\x00'),
                             None,
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=92),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=11, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x08\x00\x0c\x00\x0e\x00\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x02\x00\t'),
                             bytearray(b'\x00\x00\x00\x00\x00\x00@\x00!\x00\x12\x00"@\x91\xc0\x00\x00\x00\x00\x10\x00^\x00\x7f\x00\x7f\x01\x7fQ\xff@'),
                             bytearray(b'\x00\x07\x00\x03\x06\x01\x01\x07\x03\x0f\x01\x0f\x04\x0f\x05\x0e\x00\x04\x00\x02\x06\x01\x03\x06\x07\x0c\x07\x0c\x01\x0b\x01\t'),
                             bytearray(b'\x00\xc0\x00\xe0\x00\xe0\xbe\xf0\xff\xd8\xdf\xfc\xff\x00\xff\x00\x7f\xc0\x7f@\xff\x80\xff0\xffx\xff\xfc\x81\x81\x00\x00'),
                         ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=92),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=1, length=11, subtile_bytes=[
                             bytearray(b'\x10\x000\x009\x00\xfd\x06\xfd\x1e\xf3=\xff\x01\xfe\x03\xf0\x00\xf0\x00\xf8\x00\xff\x07\xff\x1f\xff>\xfb\xfa\x07\x04'),
                             bytearray(b'\x00\x00\x00\x00\x80\x00\xc0\x00\xe0\x00\xf0\x80\x00\xf8h\xf0\x00\x00\x00\x00\x00\x00\x80\x80\x80\x80\xd0P\xc0H\x88\x98'),
                             bytearray(b'q\x8f\x91\xfeR\xfc\xcb\x7f\xc7\xff\x03\xff\x07\xff\x0e\xff\xf3v\xf1\x00\xf3\x89\x7f\x84\xff\x00\xff\x00\xff\x00\xfe\x00'),
@@ -1140,10 +1140,10 @@ sprite = CompleteSprite(
                 ),
                 AnimationSequence(
                     frames=[
+                        AnimationSequenceFrame(duration=8, mold_id=0),
                         AnimationSequenceFrame(duration=8, mold_id=16),
                         AnimationSequenceFrame(duration=8, mold_id=0),
                         AnimationSequenceFrame(duration=8, mold_id=17),
-                        AnimationSequenceFrame(duration=8, mold_id=0),
                     ]
                 ),
                 AnimationSequence(

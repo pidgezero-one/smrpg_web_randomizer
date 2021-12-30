@@ -3289,14 +3289,14 @@ def get_default_enemy_formations(world):
             formations_dict[395],
         ]),
         FormationPack(154, [
-            formations_dict[430],
-            formations_dict[430],
-            formations_dict[430],
+            formations_dict[40],
+            formations_dict[40],
+            formations_dict[40],
         ]),
         FormationPack(155, [
-            formations_dict[431],
-            formations_dict[431],
-            formations_dict[431],
+            formations_dict[263],
+            formations_dict[263],
+            formations_dict[263],
         ]),
         FormationPack(156, [
             formations_dict[268],
@@ -3319,9 +3319,9 @@ def get_default_enemy_formations(world):
             formations_dict[271],
         ]),
         FormationPack(160, [
-            formations_dict[272],
-            formations_dict[279],
-            formations_dict[272],
+            formations_dict[349],
+            formations_dict[349],
+            formations_dict[349],
         ]),
         FormationPack(161, [
             formations_dict[274],
@@ -3499,9 +3499,9 @@ def get_default_enemy_formations(world):
             formations_dict[427],
         ]),
         FormationPack(200, [
-            formations_dict[40],
-            formations_dict[40],
-            formations_dict[40],
+            formations_dict[430],
+            formations_dict[430],
+            formations_dict[430],
         ]),
         FormationPack(201, [
             formations_dict[429],
@@ -3509,9 +3509,9 @@ def get_default_enemy_formations(world):
             formations_dict[429],
         ]),
         FormationPack(202, [
-            formations_dict[263],
-            formations_dict[263],
-            formations_dict[263],
+            formations_dict[431],
+            formations_dict[431],
+            formations_dict[431],
         ]),
         FormationPack(203, [
             formations_dict[346],
@@ -3524,9 +3524,9 @@ def get_default_enemy_formations(world):
             formations_dict[348],
         ]),
         FormationPack(205, [
-            formations_dict[349],
-            formations_dict[349],
-            formations_dict[349],
+            formations_dict[272],
+            formations_dict[279],
+            formations_dict[272],
         ]),
         FormationPack(206, [
             formations_dict[354],

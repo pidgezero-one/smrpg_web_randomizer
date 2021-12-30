@@ -177,11 +177,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            show_shadow=True,
-            height=12,
-            vram_size=1,
             cannot_clone=False,
-            y_shift=3,
         ),
     ]
 )

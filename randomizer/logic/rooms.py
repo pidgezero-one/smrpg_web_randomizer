@@ -3,11 +3,14 @@ import enum
 import difflib
 
 from . import utils
-from randomizer.data import palettes, items, chests, graphics, npcs
-from randomizer.data.rooms import room, rooms
+from randomizer.data import palettes, items, chests, npcs
+from randomizer.data.rooms import rooms
+from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room, Clone
+from randomizer.helpers.flag_helpers import BoosterTowerGating
+
 
 from randomizer.logic import flags
-from randomizer.helpers.roomobjecttables import ObjectType, ExitType
+from randomizer.helpers.roomobjecttables import ObjectType, ExitType, PartitionBufferTypes
 
 def validate_chain(chain):
     c = copy.deepcopy(chain)
@@ -91,6 +94,240 @@ class SingleNPC:
         self.id = id
 
 
+class AmbiguousCoin:
+    none = enum.auto()
+    one = enum.auto()
+    multi = enum.auto()
+
+def list_unique(arr):
+    l = set()
+    l_add = l.add
+    return [x for x in arr if not (x in l or l_add(x))]
+
+partition_priority = [
+    PartitionBufferTypes.TREASURE_CHEST,
+    PartitionBufferTypes.COINS,
+    PartitionBufferTypes.EMPTY_3,
+    PartitionBufferTypes._4_SPRITES_PER_ROW,
+    PartitionBufferTypes._3_SPRITES_PER_ROW
+]
+
+special_case_rooms = [37, 57, 70, 71, 72, 73, 79, 205, 230, 232, 233, 236, 463, 466, 477]
+# 205 - complicated spiney sequence
+# 463, 466 - barrel count room and logic problem room need this for some reason
+requires_coin_buffer = [242] # maybe 199. 199 needed all NPCs restored bc the graphics interact weirdly with the save box animation
+# 301 - breaks chest sprites if you use extra sprite buffer for coins
+
+always_requires_coin_buffer = [71, 72, 73]
+
+def is_party_member(model):
+    return utils.isclass_or_instance(model, npcs.Mario) or    utils.isclass_or_instance(model, npcs.Mallow) or    utils.isclass_or_instance(model, npcs.Geno) or    utils.isclass_or_instance(model, npcs.Bowser) or    utils.isclass_or_instance(model, npcs.Toadstool) 
+
+def set_partitions(world):
+    pandorite_rooms = []
+    hidon_rooms = []
+    for c in world.chest_locations:
+        if utils.isclass_or_instance(c.item, items.PandoriteFight):
+            pandorite_rooms.extend(c.rooms)
+        elif utils.isclass_or_instance(c.item, items.HidonFight):
+            hidon_rooms.extend(c.rooms)
+
+    # Big buffer for Bowser
+    ally_buffer = 0
+    if world.starting_character == 2:
+        ally_buffer = 1
+
+
+    for room_index, room in enumerate(world.rooms):
+
+        if room_index in [68]:
+            continue
+        elif room_index in [376, 377, 459, 460, 461, 462, 202] or (room is not None and len(room.objects) == 0): # rooms that always need triple empty + ex 1
+            partition = Partition(allow_extra_sprite_buffer=True, extra_sprite_buffer_size=1)
+            world.rooms[room_index].partition = copy.deepcopy(partition)
+        elif room_index in [192, 205]: # rooms that always need triple empty + ex 0
+            # 205 - Trying this out. A seed where partitions didn't assemble correctly actually made the spinies render correctly.
+            # May not work with all boss/ally combos.
+            world.rooms[room_index].partition = Partition()
+        elif room is not None and len(room.objects) > 0:
+            partition = room.partition
+            original_partition = None 
+            if partition is not None:
+                original_partition = copy.deepcopy(partition)
+            partition = Partition()
+            if original_partition is not None:
+                partition.extra_sprite_buffer_size = original_partition.extra_sprite_buffer_size
+                partition.allow_extra_sprite_buffer = original_partition.allow_extra_sprite_buffer
+                partition.full_palette_buffer = original_partition.full_palette_buffer
+            partition.ally_sprite_buffer_size += ally_buffer
+
+
+            
+            packet_size = partition.extra_sprite_buffer_size
+            if partition.allow_extra_sprite_buffer:
+                packet_size += 1
+            room_npcs = room.objects
+
+            has_star_chest = False
+
+            priority_buffers = []
+            npc_buffers = []
+            packet_buffers = []
+
+            if room_index in special_case_rooms:
+                priority_buffers.append(PartitionBufferTypes.EMPTY_3)
+
+            ambiguous_coin_chest = AmbiguousCoin.none
+
+            has_conundrum_clones = False
+            for npc_id, npc in enumerate(room_npcs):
+                if (utils.isclass_or_instance(npc, Clone) or (npc_id+1 < len(room_npcs) and utils.isclass_or_instance(room_npcs[npc_id+1], Clone))) and npc.model.cannot_clone:
+                    has_conundrum_clones = True
+
+
+            # consider chest contents and packets
+            for c in world.chest_locations:
+                if room_index in c.rooms or (512 in c.rooms and room_index in pandorite_rooms) or (513 in c.rooms and room_index in hidon_rooms):
+                    if utils.isclass_or_instance(c, chests.PacketItem):
+                        packet_size += 1
+                    if (utils.isclass_or_instance(c.item, items.FrogCoin) or utils.isclass_or_instance(c.item, items.InfiniteCoins) or (not world.settings.is_flag_enabled(flags.QuickHitCoins) and (utils.isclass_or_instance(c.item, items.MultiFrogCoin) or utils.isclass_or_instance(c.item, items.Coins)))) and (utils.isclass_or_instance(c, chests.Chest) or utils.isclass_or_instance(c, chests.PacketItem)):
+                        if (utils.isclass_or_instance(c.item, items.Coins) and c.item.chest_70A7_lower != 1) or utils.isclass_or_instance(c.item, items.MultiFrogCoin) or utils.isclass_or_instance(c.item, items.InfiniteCoins):
+                            ambiguous_coin_chest = AmbiguousCoin.multi
+                        elif utils.isclass_or_instance(c.item, items.FrogCoin) or (utils.isclass_or_instance(c.item, items.Coins) and c.item.chest_70A7_lower == 1):
+                            ambiguous_coin_chest = AmbiguousCoin.one
+                    elif utils.isclass_or_instance(c, chests.Chest) and utils.isclass_or_instance(c.item, items.SlotMachineChest):
+                        packet_buffers.append(PartitionBufferTypes.COINS) # slot frog coin
+                    elif utils.isclass_or_instance(c, chests.Chest) and room_index not in requires_coin_buffer and (utils.isclass_or_instance(c.item, items.RegularItem) or utils.isclass_or_instance(c.item, items.ProgressiveItem) or utils.isclass_or_instance(c.item, items.Beetlemania) or utils.isclass_or_instance(c.item, items.StarPiece)):
+                        packet_size = max(1, packet_size) # apparently this might work???
+            if has_star_chest:
+                packet_size += 1
+                # todo: invincibility stars
+
+            last_sprite = -1
+
+            existing_formats_in_room = []
+            buffer_order = []
+
+            # clones can have diff gridplane dimensions... what to do?
+
+
+            # get all npc models
+            for npc_index, npc in enumerate(room_npcs):
+                #print(room_index, npc_index)
+                model = npc.model.occupant
+                # print(npc_index, room_index, model)
+                if not npc.model.cannot_clone:
+                    sprite = model.sprite_id
+                    animation_pack = world.sprites[sprite].animation
+
+                    buf = None
+                    if is_party_member(model):
+                        if room_index in [203, 204, 205]:
+                            world.rooms[room_index].objects[npc_index].model.cannot_clone = True
+                            continue
+                    #else:
+                    if utils.isclass_or_instance(model, npcs.TreasureChest):
+                        priority_buffers.append(PartitionBufferTypes.TREASURE_CHEST)
+                    elif utils.isclass_or_instance(model, npcs.Coin):
+                        priority_buffers.append(PartitionBufferTypes.COINS)
+                    elif not animation_pack.properties.molds[0].gridplane:
+                        priority_buffers.append(PartitionBufferTypes.EMPTY_3)
+                    else:
+                        if animation_pack.properties.molds[0].tiles[0].format <= 1:
+                            buf = PartitionBufferTypes._4_SPRITES_PER_ROW
+                        else:
+                            buf = PartitionBufferTypes._3_SPRITES_PER_ROW
+                        if buf not in existing_formats_in_room:
+                            existing_formats_in_room.append(buf)
+                            if utils.isclass_or_instance(model, Clone):
+                                npc_buffers.append(buf)
+                        elif sprite != last_sprite:
+                            npc_buffers.append(buf)
+                        elif len(npc_buffers) == 0 or npc_buffers[len(npc_buffers) - 1] != buf:
+                            npc_buffers.append(buf)
+                    last_sprite = sprite 
+
+            priority_buffers = list_unique(priority_buffers)
+            # npc_buffers = list_unique(npc_buffers) # should this be disabled or not?
+            packet_buffers = list_unique(packet_buffers)
+
+            # special case - this kero sewers room needs a partition just for the fish
+            # because it has special buffer space properties
+            if room_index in [56, 57, 58]:
+                npc_buffers.insert(0, PartitionBufferTypes._4_SPRITES_PER_ROW)
+            # can't figure out why 301 needs 2 3sprite buffers to make button push graphic work
+            elif room_index == 301:
+                npc_buffers.append(PartitionBufferTypes._3_SPRITES_PER_ROW)
+
+            if room_index == 202:
+                if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool): # booster tower bomb explosion
+                    packet_size = max(2, packet_size)
+
+            if room_index in always_requires_coin_buffer:
+                if PartitionBufferTypes.COINS not in packet_buffers:
+                    packet_buffers.append(PartitionBufferTypes.COINS)
+            elif ambiguous_coin_chest is not AmbiguousCoin.none:
+                if has_conundrum_clones or room_index in requires_coin_buffer: # 301 and 401 both have Treasure-3SPRITE-3SPRITe but only 301 breaks w. coins in EX buffer
+                    packet_buffers.append(PartitionBufferTypes.COINS)
+                    # Why does 301 need this but not 401?
+                    # Only difference I see is that 301 hasclone buffer of un-cloneable sprite
+                elif ambiguous_coin_chest == AmbiguousCoin.multi:
+                    packet_size = max(4, packet_size)
+                elif ambiguous_coin_chest == AmbiguousCoin.one:
+                    packet_size = max(2, packet_size)
+
+            if PartitionBufferTypes.COINS in priority_buffers and PartitionBufferTypes.COINS in packet_buffers:
+                priority_buffers.remove(PartitionBufferTypes.COINS)
+
+            final_buffers = [None] * 3
+
+            buffers = priority_buffers + npc_buffers + packet_buffers
+
+            if PartitionBufferTypes.TREASURE_CHEST in priority_buffers:
+                final_buffers[0] = Buffer(PartitionBufferTypes.TREASURE_CHEST)
+                buffers.remove(PartitionBufferTypes.TREASURE_CHEST)
+            elif PartitionBufferTypes.EMPTY_3 in priority_buffers:
+                final_buffers[0] = Buffer(PartitionBufferTypes.EMPTY_3)
+                buffers.remove(PartitionBufferTypes.EMPTY_3)
+
+            if PartitionBufferTypes.COINS in buffers:
+                final_buffers[2] = Buffer(PartitionBufferTypes.COINS)
+                buffers.remove(PartitionBufferTypes.COINS)
+
+            idx = 0
+            for i in range(0, 3):
+                if final_buffers[i] is None and idx < len(buffers):
+                    final_buffers[i] = Buffer(buffers[idx])
+                    idx += 1
+
+            for i in range(0, 3):
+                if final_buffers[i] is None:
+                    final_buffers[i] =Buffer(PartitionBufferTypes.EMPTY_3)
+
+            for i, buf in enumerate(final_buffers):
+                if original_partition is not None:
+                    for obuf in original_partition.buffers:
+                        if obuf.buffer_type == final_buffers[i].buffer_type and obuf.main_buffer_space > buf.main_buffer_space:
+                            buf.main_buffer_space = obuf.main_buffer_space
+                            buf.index_in_main_buffer = obuf.index_in_main_buffer
+                            break
+                    partition.buffers[i] = buf
+
+
+            
+            if packet_size > 0:
+                partition.allow_extra_sprite_buffer = True
+                partition.extra_sprite_buffer_size = packet_size - 1
+            else:
+                partition.allow_extra_sprite_buffer = False
+                partition.extra_sprite_buffer_size = 0
+
+            world.rooms[room_index].partition = copy.deepcopy(partition)
+            
+
+
+
+
 class Rooms:
     def __init__(self):
         self.output = []
@@ -131,13 +368,14 @@ class Rooms:
             clone_group = []
 
             if this_room is not None and len(this_room.objects) > 0:
-                for npc in this_room.objects:
+                for npc_i, npc in enumerate(this_room.objects):
 
                     model = npc.model
+                    #print(model.occupant, i, npc_i)
                     assembled = assemble_npc(model)
 
                     if (
-                        utils.isclass_or_instance(npc, room.Clone)
+                        utils.isclass_or_instance(npc, Clone)
                         and not last_object_was_clone
                     ):  # begin new clone group
                         clone_group = [last_object]
@@ -145,14 +383,14 @@ class Rooms:
                             clone_group.append(assembled)
                         clone_group.sort()
                     elif (
-                        utils.isclass_or_instance(npc, room.Clone)
+                        utils.isclass_or_instance(npc, Clone)
                         and last_object_was_clone
                     ):  # continue clone group
                         if assembled not in clone_group:
                             clone_group.append(assembled)
                             clone_group.sort()
                     elif (  # end clone group
-                        not utils.isclass_or_instance(npc, room.Clone)
+                        not utils.isclass_or_instance(npc, Clone)
                         and last_object_was_clone
                     ):
                         if len(clone_group) == 1:
@@ -169,7 +407,7 @@ class Rooms:
                             standalone_npcs.append(last_object)
 
                     last_object = assembled
-                    last_object_was_clone = utils.isclass_or_instance(npc, room.Clone)
+                    last_object_was_clone = utils.isclass_or_instance(npc, Clone)
                 if len(clone_group) > 0:
                     if len(clone_group) == 1:
                         if clone_group[0] not in standalone_npcs:
@@ -255,6 +493,9 @@ class Rooms:
 
                 # write partition bytes if new, get partition ID
 
+                if i == 205:
+                    print(this_room.partition)
+
                 p = this_room.partition
                 partition_byte_1 = p.allow_extra_sprite_buffer * 0x10
                 partition_byte_1 += p.ally_sprite_buffer_size << 5
@@ -283,6 +524,9 @@ class Rooms:
                 if partition_index is None:
                     partition_index = len(partitions)
                     partitions.append(partition_bytes)
+                if i == 204:
+                    print(p, partition_index)
+                    print(partitions[partition_index])
 
                 room_bytes = bytearray([partition_index])
 
@@ -309,19 +553,19 @@ class Rooms:
                         #print(i, model.occupant, possible_ids)
 
                         if (
-                            utils.isclass_or_instance(npc, room.Clone)
+                            utils.isclass_or_instance(npc, Clone)
                             and not last_object_was_clone
                         ):  # begin new clone group
                             clone_group = [last_object_ids, possible_ids]
                             class_clone_group = CloneGroup([last_object, npc])
                         elif (
-                            utils.isclass_or_instance(npc, room.Clone)
+                            utils.isclass_or_instance(npc, Clone)
                             and last_object_was_clone
                         ):  # continue clone group
                             clone_group.append(possible_ids)
                             class_clone_group.npcs.append(npc)
                         elif (  # end clone group
-                            not utils.isclass_or_instance(npc, room.Clone)
+                            not utils.isclass_or_instance(npc, Clone)
                             and last_object_was_clone
                         ):
                             class_clone_group.ids = get_clone_sequence(clone_group)
@@ -335,7 +579,7 @@ class Rooms:
                         last_object = npc
                         last_object_ids = possible_ids
                         last_object_was_clone = utils.isclass_or_instance(
-                            npc, room.Clone
+                            npc, Clone
                         )
                     if len(clone_group) > 0:
                         class_clone_group.ids = get_clone_sequence(clone_group)
@@ -474,8 +718,7 @@ class Rooms:
                                     #    print(clone_index, this_clone.model.occupant, npc.ids[clone_index], base_model_id, model_offset, event_offset)
                                     room_bytes.append((event_offset << 5) + (action_script_offset << 3) + model_offset)
                                 elif this_clone.type == ObjectType.CHEST:
-                                    assert this_clone.upper_70A7 <= 15
-                                    assert this_clone.lower_70A7 <= 15
+                                    assert (this_clone.upper_70A7 << 4) + this_clone.lower_70A7 <= 255
                                     room_bytes.append((this_clone.upper_70A7 << 4) + this_clone.lower_70A7)
                                 elif this_clone.type == ObjectType.BATTLE:
                                     battle_pack_offset = this_clone.battle_pack - base_battle_pack
@@ -569,7 +812,7 @@ class Rooms:
             raise Exception("NPC data too long: %i bytes (expected up to %i)" % (len(roomdata_output), 0x7C00))
         else:
             roomdata_output += bytearray([0xFF for x in range(empty_space)])
-        npcs = [roomdata_pointers, bytearray(roomdata_output)]
+        npcs_data = [roomdata_pointers, bytearray(roomdata_output)]
 
  
         empty_space = 0x0400 - len(eventtile_pointers)
@@ -614,4 +857,4 @@ class Rooms:
         for _ in range(len(partitions), 128): # bumped up to 128 from 120
             partitions.append([0xFF, 0xFF, 0xFF, 0xFF])
 
-        return npcs, eventtiles, exits, bytearray([p for partition in partitions for p in partition]), model_output, event_table
+        return npcs_data, eventtiles, exits, bytearray([p for partition in partitions for p in partition]), model_output, event_table

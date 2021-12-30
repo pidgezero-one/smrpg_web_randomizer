@@ -38,7 +38,6 @@ def sanitize_animation_script(boss, boss_location, script, model):
                 if _0x08Flags.READ_AS_MOLD in subscript_command["args"][2]:
                     # if setting mold to 0, that's ok, just reset to the right default mold for scarecrow or culex
                     if subscript_command["args"][0] == 0:
-                        subscript_command["args"][0] = model.mold
                         new_script.append(subscript_command)
                     # otherwise, it's subject to animation-specific rules
                     else:
@@ -123,7 +122,6 @@ def sanitize_animation_script(boss, boss_location, script, model):
                     # similar to mold, restore default sequence if appropriate
                     else:
                         if subscript_command["args"][0] == 0:
-                            subscript_command["args"][0] = model.sequence
                             new_script.append(subscript_command)
             else:
                 new_script.append(subscript_command)
@@ -682,6 +680,7 @@ class HammerBroBoss(Boss):
     pack_number = 183
     small_model = npcs.HammerBroSmall
     big_model = npcs.HammerBroLarge
+    statue = npcs.HammerBroStatue
     dialog_replacements = [
         (49,
          '''HAMMER BRO: Alright already,\n you won, now go away![await]'''),
@@ -731,6 +730,7 @@ class Croco1Boss(Boss):
     name = "Croco"
     pack_number = 163
     small_model = npcs.Croco
+    statue = npcs.CrocoStatue
     dialog_replacements = [
         (49, '''\n CROCO: Get the heck outta here![await]'''),
         (1660,
@@ -798,6 +798,7 @@ class MackBoss(Boss):
     small_model = npcs.MackSmall
     big_model = npcs.MackMedium
     attack_model = npcs.MackLarge
+    statue = npcs.MackStatue
     unique_henchmen = [MackShyster1, MackShyster2, MackShyster1, MackShyster2]
     repeatable_henchmen = [MackShyster1, MackShyster2]
     dialog_replacements = [
@@ -874,6 +875,7 @@ class PandoriteBoss(MimicBoss):
     pack_number = 156
     small_model = npcs.PandoriteSmall
     big_model = npcs.PandoriteLarge
+    statue = npcs.MimicStatue
     dialog_replacements = [
         (49, '''PANDORITE: That thing was making\n me sick...[await]'''),
         (1660,
@@ -924,6 +926,7 @@ class Belome1Boss(Boss):
     pack_number = 168
     small_model = npcs.Belome1Small
     big_model = npcs.Belome1Large
+    statue = npcs.SmallBelomeStatue
     dialog_replacements = [
         (49, '''\n        BELOME: Good night~![await]'''),
         (1660,
@@ -971,7 +974,7 @@ class Belome1Boss(Boss):
 
 
 class BowyerAero(Henchman):
-    pack_number = 205
+    pack_number = 160
     model = npcs.AeroUpright
 
 
@@ -981,6 +984,7 @@ class BowyerBoss(Boss):
     small_model = npcs.BowyerSmall
     big_model = npcs.BowyerOverworld
     attack_model = npcs.BowyerLarge
+    statue = npcs.BowyerStatue
     unique_henchmen = [BowyerAero, BowyerAero, BowyerAero,
                        BowyerAero, BowyerAero, BowyerAero, BowyerAero, BowyerAero]
     repeatable_henchmen = [BowyerAero]
@@ -1073,6 +1077,7 @@ class Croco2Boss(Boss):
     name = "Croco"
     pack_number = 164
     small_model = npcs.Croco2
+    statue = npcs.CrocoStatue
     unique_henchmen = [Croco2Crook, Croco2Crook, Croco2Crook]
     repeatable_henchmen = [Croco2Crook]
     dialog_replacements = [
@@ -1167,6 +1172,7 @@ class PunchinelloBoss(Boss):
     pack_number = 140
     small_model = npcs.PunchinelloSmall
     big_model = npcs.PunchinelloLarge
+    statue = npcs.PunchinelloStatue
     unique_henchmen = [PunchinelloBobomb, PunchinelloBobomb,
                        PunchinelloBobomb, PunchinelloBobomb]
     repeatable_henchmen = [PunchinelloBobomb]
@@ -1271,6 +1277,7 @@ class BoosterBoss(Boss):
     name = "Booster"
     pack_number = 161
     small_model = npcs.Booster
+    statue = npcs.BoosterStatue
     unique_henchmen = [BoosterSnifit, BoosterSnifit, BoosterSnifit]
     repeatable_henchmen = [BoosterApprentice]
     dialog_replacements = [
@@ -1350,6 +1357,7 @@ class GrateGuyBoss(Boss):
     pack_number = 177
     small_model = npcs.GrateGuySmall
     big_model = npcs.GrateGuyLarge
+    statue = npcs.GrateGuyStatue
     unique_henchmen = [GrateGuyKnifeGuy]
     dialog_replacements = [
         (49, '''GRATE GUY: Get lost, buddy, I'm\n busy![await]'''),
@@ -1407,6 +1415,7 @@ class BundtBoss(Boss):
     pack_number = 176
     small_model = npcs.BundtSmall
     big_model = npcs.BundtLarge
+    statue = npcs.BundtStatue
     unique_henchmen = [BundtTorte1, BundtTorte2]
     repeatable_henchmen = [BundtTorte1, BundtTorte2]
     dialog_replacements = [
@@ -1496,6 +1505,7 @@ class KingCalamariBoss(Boss):
     pack_number = 167
     forced_background = 35
     small_model = npcs.Bloober
+    statue = npcs.BlooberStatue
     repeatable_henchmen = [KingCalamariBloober]
     dialog_replacements = [
         (49,
@@ -1560,6 +1570,7 @@ class HidonBoss(MimicBoss):
     pack_number = 157
     small_model = npcs.HidonSmall
     big_model = npcs.HidonLarge
+    statue = npcs.MimicStatue
     unique_henchmen = [HidonGoombette, HidonGoombette,
                        HidonGoombette, HidonGoombette]
     repeatable_henchmen = [HidonGoombette]
@@ -1667,6 +1678,7 @@ class JohnnyBoss(Boss):
     pack_number = 166
     small_model = npcs.JohnnySmall
     big_model = npcs.JohnnyLarge
+    statue = npcs.JohnnyStatue
     unique_henchmen = [JohnnyBandanaBlue, JohnnyBandanaBlue,
                        JohnnyBandanaBlue, JohnnyBandanaBlue]
     repeatable_henchmen = [JohnnyBandanaRed]
@@ -1721,7 +1733,7 @@ class JohnnyBoss(Boss):
 
 class YaridovichHenchman(Henchman):
     pack_number = 153
-    model = SmallModelDetails(39, 561, 562, 563)
+    model = npcs.FakeToad
 
 
 class YaridovichBoss(Boss):
@@ -1730,6 +1742,7 @@ class YaridovichBoss(Boss):
     small_model = npcs.FakeElder
     big_model = npcs.YaridOverworld
     attack_model = npcs.YaridovichLarge
+    statue = npcs.YaridovichStatue
     unique_henchmen = [YaridovichHenchman, YaridovichHenchman,
                        YaridovichHenchman, YaridovichHenchman]
     repeatable_henchmen = [YaridovichHenchman]
@@ -1789,7 +1802,8 @@ class YaridovichBoss(Boss):
 class MokuraBoss(Boss):
     name = "Mokura"
     pack_number = 207
-    statue = npcs.MokuraCloud
+    statue = npcs.MokuraStatue
+    small_model = npcs.MokuraCloud
     big_model = npcs.MokuraLarge
     dialog_replacements = [
         (49, '''\n     MOKURA: Uhh... Go away![await]'''),
@@ -1832,12 +1846,12 @@ class MokuraBoss(Boss):
 
 
 class Belome2MarioClone(Henchman):
-    pack_number = 154
+    pack_number = 200
     model = npcs.MarioClone
 
 
 class Belome2MallowClone(Henchman):
-    pack_number = 155
+    pack_number = 202
     model = npcs.MallowClone
 
 class Belome2GenoClone(Henchman):
@@ -1857,7 +1871,8 @@ class Belome2Boss(Boss):
     name = "Belome"
     pack_number = 169
     small_model = npcs.Belome2Small
-    big_model = npcs.BelomeStatue
+    big_model = npcs.Belome2Large
+    statue = npcs.SmallBelomeStatue
     repeatable_henchmen = [Belome2MarioClone, Belome2MallowClone, Belome2GenoClone, Belome2BowserClone, Belome2PeachClone]
     dialog_replacements = [
         (49, '''\n        BELOME: Good night~![await]'''),
@@ -1910,6 +1925,7 @@ class JaggerBoss(Boss):
     name = "Jagger"
     pack_number = 189
     small_model = npcs.Terrapin
+    statue = npcs.TerrapinStatue
     dialog_replacements = [
         (49,
          '''JAGGER: It'd be fun to fight\n again, but I need a nap.[await]'''),
@@ -1959,6 +1975,7 @@ class Jinx1Boss(Boss):
     name = "Jinx"
     pack_number = 178
     small_model = npcs.Jinx1
+    statue = npcs.JinxStatue
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2004,6 +2021,7 @@ class Jinx2Boss(Boss):
     pack_number = 187
     eye_height = 4
     small_model = npcs.Jinx2
+    statue = npcs.JinxStatue
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2048,6 +2066,7 @@ class Jinx3Boss(Boss):
     name = "Jinx"
     pack_number = 188
     small_model = npcs.Jinx3
+    statue = npcs.JinxStatue
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2113,6 +2132,7 @@ class CulexBoss(Boss):
     pack_number = 216
     small_model = npcs.CulexSmall
     big_model = npcs.CulexLarge
+    statue = npcs.CulexStatue
     unique_henchmen = [CulexFireCrystal, CulexWaterCrystal,
                        CulexEarthCrystal, CulexWindCrystal]
     dialog_replacements = [
@@ -2192,6 +2212,7 @@ class BoxBoyBoss(MimicBoss):
     pack_number = 158
     small_model = npcs.BoxBoySmall
     big_model = npcs.BoxBoyLarge
+    statue = npcs.MimicStatue
     dialog_replacements = [
         (49,
          '''BOX BOY: How many times are you\n gonna wake me up? Get lost![await]'''),
@@ -2247,6 +2268,7 @@ class MegaSmilaxBoss(Boss):
     pack_number = 173
     small_model = npcs.PiranhaPlant
     big_model = npcs.Megasmilax
+    statue = npcs.PiranhaPlantStatue
     repeatable_henchmen = [MegaSmilaxPiranha]
     dialog_replacements = [
         (49,
@@ -2331,6 +2353,7 @@ class DodoBoss(Boss):
     pack_number = 208
     small_model = npcs.DodoSmall
     big_model = npcs.DodoLarge
+    statue = npcs.DodoStatue
     dialog_replacements = [
         # actually, don't use dialogs for dodo, just play sfx... how to handle this?
         # time this according to how long the feather sound effect is
@@ -2381,6 +2404,7 @@ class BirdettaBoss(Boss):
     pack_number = 175
     small_model = npcs.BirdettaSmall
     big_model = npcs.BirdettaLarge
+    statue = npcs.BirdettaStatue
     unique_henchmen = [BirdettaEggbert, BirdettaEggbert, BirdettaEggbert]
     repeatable_henchmen = [BirdettaEggbert]
     dialog_replacements = [
@@ -2479,7 +2503,7 @@ class DefaultBirdy2(Henchman):
 
 
 class ValentinaBluebird(Henchman):
-    pack_number = 160
+    pack_number = 205
     model = npcs.Bluebird
 
 
@@ -2585,6 +2609,7 @@ class CzarBoss(Boss):
     small_model = npcs.CzarDragonSmall
     big_model = npcs.CzarBody
     attack_model = npcs.CzarDragonLarge
+    statue = npcs.CzarStatue
     repeatable_henchmen = [CzarPyrosphere]
     dialog_replacements = [
         (49, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
@@ -2685,6 +2710,7 @@ class AxemRangersBoss(Boss):
     pack_number = 182
     forced_background = 39
     small_model = npcs.AxemRed
+    statue = npcs.AxemRedStatue
     unique_henchmen = [AxemRangersAxemBlack, AxemRangersAxemPink,
                        AxemRangersAxemYellow, AxemRangersAxemGreen]
     repeatable_henchmen = [AxemRangersMachine1, AxemRangersMachine2, AxemRangersMachine3, AxemRangersMachine4, AxemRangersMachine5]
@@ -2769,6 +2795,7 @@ class ChesterBoss(MimicBoss):
     pack_number = 235
     small_model = npcs.ChesterSmall
     big_model = npcs.ChesterLarge
+    statue = npcs.MimicStatue
     dialog_replacements = [
         (49,
          '''CHESTER: Go on, take it. Just let\n me go back to sleep.[await]'''),
@@ -2816,6 +2843,7 @@ class MagikoopaBoss(Boss):
     pack_number = 209
     small_model = npcs.RedMagikoopa
     big_model = npcs.MagikoopaLarge
+    statue = npcs.MagikoopaStatue
     dialog_replacements = [
         (49,
          '''MAGIKOOPA: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]'''),
@@ -2857,7 +2885,7 @@ class MagikoopaBoss(Boss):
 
 
 class BoomerShyGuy(Henchman):
-    pack_number = 200
+    pack_number = 154
     model = npcs.ShyGuy
 
 
@@ -2867,6 +2895,7 @@ class BoomerBoss(Boss):
     small_model = npcs.BoomerSmall
     big_model = npcs.BoomerOverworld
     attack_model = npcs.BoomerLarge
+    statue = npcs.BoomerStatue
     unique_henchmen = [BoomerShyGuy, BoomerShyGuy]
     repeatable_henchmen = [BoomerShyGuy]
     dialog_replacements = [
@@ -2949,6 +2978,7 @@ class ExorBoss(Boss):
     pack_number = 186
     forced_background = 16
     small_model = npcs.ExorSmall
+    statue = npcs.ExorStatue
     dialog_replacements = [
         (49, '''  EXOR: What do you want? Get\n lost![await]'''),
         (1660,
@@ -3003,6 +3033,7 @@ class CountdownBoss(Boss):
     pack_number = 174
     forced_background = 18
     small_model = npcs.CountDownGridplane
+    statue = npcs.CountDownStatue
     unique_henchmen = [CountdownDingALing, CountdownDingALing]
     repeatable_henchmen = [CountdownDingALing]
     dialog_replacements = [
@@ -3082,6 +3113,7 @@ class CloakerDominoBoss(Boss):
     forced_background = 40
     small_model = npcs.DominoSmall
     big_model = npcs.CloakerLarge
+    statue = npcs.DominoStatue
     dialog_replacements = [
         (49,
          '''CLOAKER: I'm busy wallowing in\n misery at my defeat here.[await][pause] Get lost![await]'''),
@@ -3135,7 +3167,7 @@ class DefaultMadMallet(Henchman):
 
 
 class ClerkMadMallet(Henchman):
-    pack_number = 202
+    pack_number = 155
     model = npcs.MadMallet
 
 
@@ -3146,6 +3178,7 @@ class ClerkBoss(Boss):
     pack_number = 146
     small_model = npcs.ClerkSmall
     big_model = npcs.ClerkLarge
+    statue = npcs.ShovelKnightStatue
     unique_henchmen = [ClerkMadMallet, ClerkMadMallet]
     repeatable_henchmen = [ClerkMadMallet]
     dialog_replacements = [
@@ -3231,6 +3264,7 @@ class ManagerBoss(Boss):
     pack_number = 147
     small_model = npcs.ManagerSmall
     big_model = npcs.ManagerLarge
+    statue = npcs.ShovelKnightStatue
     unique_henchmen = [ManagerPounder, ManagerPounder,
                        ManagerPounder]
     repeatable_henchmen = [ManagerPounder]
@@ -3317,6 +3351,7 @@ class DirectorBoss(Boss):
     pack_number = 148
     small_model = npcs.DirectorSmall
     big_model = npcs.DirectorLarge
+    statue = npcs.ShovelKnightStatue
     unique_henchmen = [DirectorPoundette, DirectorPoundette,
                        DirectorPoundette, DirectorPoundette]
     repeatable_henchmen = [DirectorPoundette]
@@ -3489,6 +3524,7 @@ class SmithyBoss(Boss):
     pack_number = 185
     small_model = npcs.SmithySmall
     big_model = npcs.SmithyLarge
+    statue = npcs.SmithyStatue
     unique_henchmen = [SmithyDrillBit, SmithyShyster, SmithyAero]
     repeatable_henchmen = [SmithyDrillBit, SmithyShyster, SmithyAero]
     dialog_replacements = [
@@ -4014,7 +4050,7 @@ class Johnny(BossAndStarLocation):
     boss = JohnnyBoss
     boss_locations = [
         BossModelFill(Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM, 0, JohnnyBoss, SpriteSize.Small, False, dialogs=[
-                      1778, 1780, 1781], target_scripts=[3282], target_action_scripts=[348], sequence_setter=801),
+                      1778, 1780, 1781, 1783], target_scripts=[3282], target_action_scripts=[348], sequence_setter=801),
         BossModelFill(Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH, 8, JohnnyBoss, SpriteSize.Small,
                       False, target_scripts=[1146, 1147], target_action_scripts=[], sequence_setter=802),
         BossModelFill(Rooms._432_ENDING_CREDITS_JOHNNY_LOOKING_OUT_AT_SUNSET_ON_BEACH_SHORE, 0, JohnnyBoss, SpriteSize.Small,
@@ -4636,7 +4672,7 @@ class Smithy(BossLocation):
     boss = SmithyBoss
     # hide all other parts of smithy if shuffled
     boss_locations = [
-        BossModelFill(Rooms._509_FACTORY_GROUNDS_SMITHYS_PAD, 0, SmithyBoss, SpriteSize.Large, False, target_scripts=[
+        BossModelFill(Rooms._509_FACTORY_GROUNDS_SMITHYS_PAD, 4, SmithyBoss, SpriteSize.Large, False, target_scripts=[
                       3792, 3794], target_action_scripts=[], sequence_setter=859),  # hide a lot of clones if not vanilla
     ]
     repeatable_henchmen = [

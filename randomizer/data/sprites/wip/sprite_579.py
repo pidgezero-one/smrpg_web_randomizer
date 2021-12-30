@@ -3,189 +3,30 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(380, length=182, unknown=0x0000,
-        properties=AnimationPackProperties(vram_size=4096,
+    animation=AnimationPack(0, length=31, unknown=0x0000,
+        properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
                     tiles=[
-                        Tile(mirror=True, invert=True, format=0, length=4, subtile_bytes=[
-                            None,
-                            None,
-                            None,
-                            bytearray(b'\xdfv\x01\x12\x08\xe1v\x01\xf0\xf9\xea\x06G\n4\x00\x12\x01\xffv\x01\x12\xf7\xfev\x01\x12\x04\xfd}\x01\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=120),
-                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[
-                            None,
-                            bytearray(b'\xdfv\x01\x12\x08\xe1v\x01\xf0\xf9\xea\x06G\n4\x00\x12\x01\xffv\x01\x12\xf7\xfev\x01\x12\x04\xfd}\x01\x12'),
-                            None,
-                            None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=112),
-                        Tile(mirror=False, invert=True, format=0, length=4, subtile_bytes=[
-                            None,
-                            None,
-                            bytearray(b'\xdfv\x01\x12\x08\xe1v\x01\xf0\xf9\xea\x06G\n4\x00\x12\x01\xffv\x01\x12\xf7\xfev\x01\x12\x04\xfd}\x01\x12'),
-                            None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
-                            bytearray(b'\xdfv\x01\x12\x08\xe1v\x01\xf0\xf9\xea\x06G\n4\x00\x12\x01\xffv\x01\x12\xf7\xfev\x01\x12\x04\xfd}\x01\x12'),
-                            None,
-                            None,
-                            None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=112),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=True, format=0, length=6, subtile_bytes=[
-                            None,
-                            bytearray(b'\x12\x14\xeav\x01\x12\x0b\xfdv\x01\x12\r\x03v\x01\x12\x13\xf6v\x01\x12\xfd\x05v\x01\x12\xf4\x02v\x01\x12\xfc'),
-                            bytearray(b'\xf5\xe4J"@]\x00\x12\xfe\xffv\x01\x12\x01\xff}\x01B\x01\x00\x83\x01"\x03\xfe(\x01\x12\xf5\xeav\x01'),
-                            bytearray(b'v\x01\x12\t\xe6v\x01\x12\t\xf4v\x01\x12\x0e\xe8v\x01\xa0\xeb\xebC;\x12\x16\xebv\x01\x12\r\xfcv\x01'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=120),
-                        Tile(mirror=False, invert=True, format=0, length=6, subtile_bytes=[
-                            None,
-                            bytearray(b'\x12\x14\xeav\x01\x12\x0b\xfdv\x01\x12\r\x03v\x01\x12\x13\xf6v\x01\x12\xfd\x05v\x01\x12\xf4\x02v\x01\x12\xfc'),
-                            bytearray(b'\xf5\xe4J"@]\x00\x12\xfe\xffv\x01\x12\x01\xff}\x01B\x01\x00\x83\x01"\x03\xfe(\x01\x12\xf5\xeav\x01'),
-                            bytearray(b'v\x01\x12\t\xe6v\x01\x12\t\xf4v\x01\x12\x0e\xe8v\x01\xa0\xeb\xebC;\x12\x16\xebv\x01\x12\r\xfcv\x01'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=120),
-                        Tile(mirror=True, invert=False, format=0, length=6, subtile_bytes=[
-                            None,
-                            bytearray(b'\x12\x14\xeav\x01\x12\x0b\xfdv\x01\x12\r\x03v\x01\x12\x13\xf6v\x01\x12\xfd\x05v\x01\x12\xf4\x02v\x01\x12\xfc'),
-                            bytearray(b'\xf5\xe4J"@]\x00\x12\xfe\xffv\x01\x12\x01\xff}\x01B\x01\x00\x83\x01"\x03\xfe(\x01\x12\xf5\xeav\x01'),
-                            bytearray(b'v\x01\x12\t\xe6v\x01\x12\t\xf4v\x01\x12\x0e\xe8v\x01\xa0\xeb\xebC;\x12\x16\xebv\x01\x12\r\xfcv\x01'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=104),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
-                            None,
-                            bytearray(b'\x12\x14\xeav\x01\x12\x0b\xfdv\x01\x12\r\x03v\x01\x12\x13\xf6v\x01\x12\xfd\x05v\x01\x12\xf4\x02v\x01\x12\xfc'),
-                            bytearray(b'\xf5\xe4J"@]\x00\x12\xfe\xffv\x01\x12\x01\xff}\x01B\x01\x00\x83\x01"\x03\xfe(\x01\x12\xf5\xeav\x01'),
-                            bytearray(b'v\x01\x12\t\xe6v\x01\x12\t\xf4v\x01\x12\x0e\xe8v\x01\xa0\xeb\xebC;\x12\x16\xebv\x01\x12\r\xfcv\x01'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=104),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=True, format=0, length=7, subtile_bytes=[
-                            bytearray(b'\x12\xfa\xeev\x01\x12\xfe\xf8v\x01\x12\x04\xe9v\x01\x12\x03\xf1v\x01\x12\x0c\xedv\x01\x12\x0c\xe1v\x01\x12\x14'),
-                            bytearray(b'v\x01\x12\xfe\xebv\x01\x12\x03\xf7v\x01\x12\x07\xe8v\x01\x12\x08\xf3v\x01\x12\x0e\xeav\x01\x12\x0e\xe3v\x01'),
-                            bytearray(b'\x01\x12\x04\xdfv\x01\xf0\xf9\xed\x06G\n4\x00\x12\xfc\x00v\x01\x12\x03\xfe}\x01\xa0\xe8\xebC;\xc0\xf6\xfa'),
-                            bytearray(b'\x03\xfev\x01\xc0\xf9\xf83\x08"\x04\x01\x8d\x01"\x06\xff(\x01\x12\xf3\xe5v\x01\x12\x00\xe9v\x01\x12\x03\xf4'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=120),
-                        Tile(mirror=False, invert=True, format=0, length=7, subtile_bytes=[
-                            bytearray(b'\x12\xfa\xeev\x01\x12\xfe\xf8v\x01\x12\x04\xe9v\x01\x12\x03\xf1v\x01\x12\x0c\xedv\x01\x12\x0c\xe1v\x01\x12\x14'),
-                            bytearray(b'v\x01\x12\xfe\xebv\x01\x12\x03\xf7v\x01\x12\x07\xe8v\x01\x12\x08\xf3v\x01\x12\x0e\xeav\x01\x12\x0e\xe3v\x01'),
-                            bytearray(b'\x01\x12\x04\xdfv\x01\xf0\xf9\xed\x06G\n4\x00\x12\xfc\x00v\x01\x12\x03\xfe}\x01\xa0\xe8\xebC;\xc0\xf6\xfa'),
-                            bytearray(b'\x03\xfev\x01\xc0\xf9\xf83\x08"\x04\x01\x8d\x01"\x06\xff(\x01\x12\xf3\xe5v\x01\x12\x00\xe9v\x01\x12\x03\xf4'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=120),
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'\x12\xfa\xeev\x01\x12\xfe\xf8v\x01\x12\x04\xe9v\x01\x12\x03\xf1v\x01\x12\x0c\xedv\x01\x12\x0c\xe1v\x01\x12\x14'),
-                            bytearray(b'v\x01\x12\xfe\xebv\x01\x12\x03\xf7v\x01\x12\x07\xe8v\x01\x12\x08\xf3v\x01\x12\x0e\xeav\x01\x12\x0e\xe3v\x01'),
-                            bytearray(b'\x01\x12\x04\xdfv\x01\xf0\xf9\xed\x06G\n4\x00\x12\xfc\x00v\x01\x12\x03\xfe}\x01\xa0\xe8\xebC;\xc0\xf6\xfa'),
-                            bytearray(b'\x03\xfev\x01\xc0\xf9\xf83\x08"\x04\x01\x8d\x01"\x06\xff(\x01\x12\xf3\xe5v\x01\x12\x00\xe9v\x01\x12\x03\xf4'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=104),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'\x12\xfa\xeev\x01\x12\xfe\xf8v\x01\x12\x04\xe9v\x01\x12\x03\xf1v\x01\x12\x0c\xedv\x01\x12\x0c\xe1v\x01\x12\x14'),
-                            bytearray(b'v\x01\x12\xfe\xebv\x01\x12\x03\xf7v\x01\x12\x07\xe8v\x01\x12\x08\xf3v\x01\x12\x0e\xeav\x01\x12\x0e\xe3v\x01'),
-                            bytearray(b'\x01\x12\x04\xdfv\x01\xf0\xf9\xed\x06G\n4\x00\x12\xfc\x00v\x01\x12\x03\xfe}\x01\xa0\xe8\xebC;\xc0\xf6\xfa'),
-                            bytearray(b'\x03\xfev\x01\xc0\xf9\xf83\x08"\x04\x01\x8d\x01"\x06\xff(\x01\x12\xf3\xe5v\x01\x12\x00\xe9v\x01\x12\x03\xf4'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=104),
-                    ]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=True, format=0, length=4, subtile_bytes=[
-                            None,
-                            None,
-                            None,
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=120),
-                        Tile(mirror=True, invert=True, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x12\x0f\x02v\x01\x12\x15\xf7v\x01\x12\xf9\x04v\x01\x12\xf1\x00v\x01\x12\xfc\xdev\x01\x12\t\xe0v\x01\x12\xf9'),
-                            None,
-                            bytearray(b'\xecv\x01\x12\n\xfbv\x01\x12\x0c\x03v\x01\x12\x14\xf8v\x01\x12\x01\x04v\x01\x12\xf9\x02v\x01\x12\xfb\xe5v'),
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=136, y=120),
-                        Tile(mirror=True, invert=True, format=0, length=7, subtile_bytes=[
-                            bytearray(b'3\x08"\x02\x01\x8d\x01"\x04\xff(\x01\x12\xf4\xe9v\x01\x12\xfd\xefv\x01\x12\x00\xf9v\x01\x12\x05\xeav\x01'),
-                            bytearray(b'\x00\x01v\x01\x12\xfa\xffv\x01"\x04\xfe}\x01\xc0\xf8\xf93\x08"\x03\x01\x8d\x01"\x05\xff(\x01\x12\xf5\xe6'),
-                            bytearray(b'\x12\x05\xf2v\x01\x12\r\xecv\x01\x12\r\xe2v\x01\x12\x14\xebv\x01\x12\t\xfdv\x01\x12\x0e\x04v\x01\x12\x12'),
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=128),
-                        Tile(mirror=False, invert=True, format=0, length=4, subtile_bytes=[
-                            None,
-                            None,
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                            None,
+                            bytearray(b'\xff\xf0\xff\xc0\xff\x80\xff\x80\xff\x00\xff\x00\xff\x00\xff\x00\x0f\xff?\xff\x7f\xff~\xfe\xfe\xfe\xfe\xfe\xfe\xfe\xe0\xe0'),
+                            bytearray(b'\xff\x0f\xff\x03\xff\x01\xff\x01\xff\x00\xff\x00\xff\x00\xff\x00\xf0\xff\xfc\xff\xfe\xff~\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x07\x07'),
+                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x80\xff\x80\xff\xc0\xff\xf0\xe0\xe0\xfe\xfe\xfe\xfe\xfe\xfe~\xfe\x7f\xff?\xff\x0f\xff'),
+                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x01\xff\x01\xff\x03\xff\x0f\x07\x07\x7f\x7f\x7f\x7f\x7f\x7f~\x7f\xfe\xff\xfc\xff\xf0\xff'),
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                        Tile(mirror=False, invert=True, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x12\x0f\x02v\x01\x12\x15\xf7v\x01\x12\xf9\x04v\x01\x12\xf1\x00v\x01\x12\xfc\xdev\x01\x12\t\xe0v\x01\x12\xf9'),
-                            None,
-                            bytearray(b'\xecv\x01\x12\n\xfbv\x01\x12\x0c\x03v\x01\x12\x14\xf8v\x01\x12\x01\x04v\x01\x12\xf9\x02v\x01\x12\xfb\xe5v'),
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=104, y=120),
-                        Tile(mirror=False, invert=True, format=0, length=7, subtile_bytes=[
-                            bytearray(b'3\x08"\x02\x01\x8d\x01"\x04\xff(\x01\x12\xf4\xe9v\x01\x12\xfd\xefv\x01\x12\x00\xf9v\x01\x12\x05\xeav\x01'),
-                            bytearray(b'\x00\x01v\x01\x12\xfa\xffv\x01"\x04\xfe}\x01\xc0\xf8\xf93\x08"\x03\x01\x8d\x01"\x05\xff(\x01\x12\xf5\xe6'),
-                            bytearray(b'\x12\x05\xf2v\x01\x12\r\xecv\x01\x12\r\xe2v\x01\x12\x14\xebv\x01\x12\t\xfdv\x01\x12\x0e\x04v\x01\x12\x12'),
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=128),
-                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[
-                            None,
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                            None,
-                            None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=112),
-                        Tile(mirror=True, invert=False, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x12\x0f\x02v\x01\x12\x15\xf7v\x01\x12\xf9\x04v\x01\x12\xf1\x00v\x01\x12\xfc\xdev\x01\x12\t\xe0v\x01\x12\xf9'),
-                            None,
-                            bytearray(b'\xecv\x01\x12\n\xfbv\x01\x12\x0c\x03v\x01\x12\x14\xf8v\x01\x12\x01\x04v\x01\x12\xf9\x02v\x01\x12\xfb\xe5v'),
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=136, y=104),
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'3\x08"\x02\x01\x8d\x01"\x04\xff(\x01\x12\xf4\xe9v\x01\x12\xfd\xefv\x01\x12\x00\xf9v\x01\x12\x05\xeav\x01'),
-                            bytearray(b'\x00\x01v\x01\x12\xfa\xffv\x01"\x04\xfe}\x01\xc0\xf8\xf93\x08"\x03\x01\x8d\x01"\x05\xff(\x01\x12\xf5\xe6'),
-                            bytearray(b'\x12\x05\xf2v\x01\x12\r\xecv\x01\x12\r\xe2v\x01\x12\x14\xebv\x01\x12\t\xfdv\x01\x12\x0e\x04v\x01\x12\x12'),
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=96),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                            None,
-                            None,
-                            None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=112),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
-                            bytearray(b'\x12\x0f\x02v\x01\x12\x15\xf7v\x01\x12\xf9\x04v\x01\x12\xf1\x00v\x01\x12\xfc\xdev\x01\x12\t\xe0v\x01\x12\xf9'),
-                            None,
-                            bytearray(b'\xecv\x01\x12\n\xfbv\x01\x12\x0c\x03v\x01\x12\x14\xf8v\x01\x12\x01\x04v\x01\x12\xf9\x02v\x01\x12\xfb\xe5v'),
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=104, y=104),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'3\x08"\x02\x01\x8d\x01"\x04\xff(\x01\x12\xf4\xe9v\x01\x12\xfd\xefv\x01\x12\x00\xf9v\x01\x12\x05\xeav\x01'),
-                            bytearray(b'\x00\x01v\x01\x12\xfa\xffv\x01"\x04\xfe}\x01\xc0\xf8\xf93\x08"\x03\x01\x8d\x01"\x05\xff(\x01\x12\xf5\xe6'),
-                            bytearray(b'\x12\x05\xf2v\x01\x12\r\xecv\x01\x12\r\xe2v\x01\x12\x14\xebv\x01\x12\t\xfdv\x01\x12\x0e\x04v\x01\x12\x12'),
-                            bytearray(b'\xf7v\x01\x12\xff\x03v\x01\x12\xf6\x01v\x01\x12\xfb\xe1v\x01\x12\x07\xe0v\x01\xf0\xf8\xec\x06G\n4\x00\x12'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=96),
                     ]
                 ),
             ],
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
-                        AnimationSequenceFrame(duration=2, mold_id=1),
-                        AnimationSequenceFrame(duration=2, mold_id=2),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=1),
-                        AnimationSequenceFrame(duration=2, mold_id=2),
-                        AnimationSequenceFrame(duration=2, mold_id=3),
+                        AnimationSequenceFrame(duration=16, mold_id=0),
                     ]
                 ),
             ]
         )
     ),
-    palette_id=816,
+    palette_id=0,
     palette_offset=0,
     unknown_num=0
 )

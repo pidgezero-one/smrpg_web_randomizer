@@ -6,6 +6,7 @@ import re
 import enum
 import copy
 import uuid
+import math
 from randomizer.helpers.objectsequencetables import _0x08Flags # circular dependency because of data init. consider moving data types into helpers
 from randomizer.helpers.eventtables import AreaObjects
 from randomizer.helpers.flag_helpers import SequenceType
@@ -440,3 +441,42 @@ def find_subclasses(module, clazz):
         for name, cls in inspect.getmembers(module)
         if inspect.isclass(cls) and issubclass(cls, clazz) and cls != clazz
     ]
+
+def min_vram(num):
+    return math.ceil(max(0,num - 4) / 4)
+
+def get_min_vram_from_mold(sprite, id):
+    #print("mold:", sprite, id)
+    tiles = sprite.animation.properties.molds[id].tiles
+    return min_vram(len(tiles))
+
+def get_min_vram_from_animation(sprite, id):
+    min_vram = 0
+    seq = sprite.animation.properties.sequences[id].frames
+    #print("seq:", sprite, seq)
+    for frame in seq:
+        #print("frame:", frame)
+        min_vram = max(min_vram, get_min_vram_from_mold(sprite, frame.mold_id))
+    return min_vram
+
+def get_min_vram_size_for_actionscript(world, sprite_id, subscript):
+    #print("as:", sprite_id)
+    min_vram = get_min_vram_from_mold(world.sprites[sprite_id], 0)
+    for _, cmd in enumerate(subscript):
+        if cmd["command"] == 'set_sprite_sequence':
+            seq = cmd["args"][0]
+            spr = cmd["args"][1]
+            sprite = world.sprites[sprite_id+spr]
+            if _0x08Flags.READ_AS_MOLD in cmd["args"][2]:
+                min_vram = max(min_vram, get_min_vram_from_mold(sprite, seq))
+            else:
+                min_vram = max(min_vram, get_min_vram_from_animation(sprite, seq))
+    return min_vram
+
+def get_min_vram_size_for_eventscript(world, npc_id, sprite_id, script):
+    #print("es:", sprite_id)
+    min_vram = get_min_vram_from_mold(world.sprites[sprite_id], 0)
+    for _, cmd in enumerate(script):
+        if is_animation_header(cmd, npc_id):
+            min_vram = max(min_vram, get_min_vram_size_for_actionscript(world, sprite_id, cmd["subscript"]))
+    return min_vram

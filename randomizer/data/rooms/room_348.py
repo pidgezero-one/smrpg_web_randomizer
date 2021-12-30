@@ -231,7 +231,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            show_shadow=False,
             cannot_clone=True,
         ),
     ]
