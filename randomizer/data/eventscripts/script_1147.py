@@ -1010,11 +1010,6 @@ script = [
         "command": 'restore_all_fp'
     },
     {
-        "identifier": 'EVENT_1147_set_bit_44',
-        "command": 'set_bit',
-        "args": [0x7052, 2]
-    },
-    {
         "identifier": 'EVENT_1147_ret_67',
         "command": 'ret'
     }

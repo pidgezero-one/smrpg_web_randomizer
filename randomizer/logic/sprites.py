@@ -956,7 +956,6 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
         AnimationBank(0x364000, 0x370000),
         AnimationBank(0x379A00, 0x37A000),
         AnimationBank(0x387CC0, 0x388000),
-        AnimationBank(0x3A5600, 0x3A6000),
         AnimationBank(0x3DB5E0, 0x3DC000),
         AnimationBank(0x3DD800, 0x3DF000),
     ]
@@ -1145,8 +1144,6 @@ def assemble_from_tables_(sprites, images, animations, output_tile_ranges=[]):
                                 for st in tile.subtile_bytes:
                                     if st not in subtile_indexes:
                                         subtile_indexes.append(st)
-                            #print(anim_id, mold_index, tile_index, tile.subtile_bytes)
-                            #print(tile)
                             tile_bytes.append(tile.y ^ 0x80)
                             tile_bytes.append(tile.x ^ 0x80)
                             byte_upper_1 = 0

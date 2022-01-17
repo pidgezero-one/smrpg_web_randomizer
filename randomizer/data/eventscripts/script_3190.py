@@ -224,6 +224,11 @@ script = [
                 "args": [4]
             },
             {
+                "identifier": 'EVENT_3190_action_queue_sync_10_SUBSCRIPT_shift_southwest_pixels_20',
+                "command": 'shift_northeast_pixels',
+                "args": [0]
+            },
+            {
                 "identifier": 'EVENT_3190_action_queue_sync_10_SUBSCRIPT_shift_z_down_pixels_21',
                 "command": 'shift_z_down_pixels',
                 "args": [3]
@@ -255,7 +260,12 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_sync_10_SUBSCRIPT_set_object_memory_bits_27',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, [0]]
-            }
+            },
+            {
+                "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_set_vram_priority_34',
+                "command": 'set_vram_priority',
+                "args": [VramPriority.PRIORITY_3]
+            },
         ]
     },
     {

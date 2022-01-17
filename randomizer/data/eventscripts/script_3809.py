@@ -593,51 +593,6 @@ script = [
         "command": 'return_fd'
     },
     {
-        "identifier": 'EVENT_3809_action_queue_sync_43',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_pause_0',
-                "command": 'pause',
-                "args": [48]
-            },
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_transfer_to_object_xy_1',
-                "command": 'transfer_to_object_xy',
-                "args": [AreaObjects.NPC_8]
-            },
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_transfer_xyzf_pixels_2',
-                "command": 'transfer_xyzf_pixels',
-                "args": [0, 0, 14, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_set_priority_3',
-                "command": 'set_priority',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_jump_to_height_silent_4',
-                "command": 'jump_to_height_silent',
-                "args": [240]
-            },
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_shadow_off_5',
-                "command": 'shadow_off'
-            },
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_pause_6',
-                "command": 'pause',
-                "args": [30]
-            },
-            {
-                "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_floating_off_7',
-                "command": 'floating_off'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3809_action_queue_sync_44',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_6],
@@ -2197,15 +2152,34 @@ script = [
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_3809_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [22, 73, 6, RadialDirections.EAST]
+                "identifier": 'EVENT_3809_action_queue_sync_44_SUBSCRIPT_transfer_to_object_xy_1',
+                "command": 'transfer_to_object_xyz',
+                "args": [AreaObjects.NPC_7]
             },
             {
-                "identifier": 'EVENT_3809_action_queue_sync_173_SUBSCRIPT_transfer_xyzf_pixels_1',
-                "command": 'transfer_xyzf_pixels',
-                "args": [8, 4, 26, RadialDirections.NORTHEAST]
-            }
+                "identifier": "EVENT_3809_action_queue_sync_173_SUBSCRIPT_transfer_xyzf_pixels_1",
+                "command": "shift_z_up_steps",
+                "args": [2],
+            },
+            {
+                "identifier": 'ACTION_917_set_solidity_bits_6',
+                "command": 'set_solidity_bits',
+                "args": [[_0x0AFlags.CANT_JUMP_THROUGH, _0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
+            },
+            # {
+            #     "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_set_priority_3',
+            #     "command": 'floating_on'
+            # },
+            # {
+            #     "identifier": 'EVENT_3809_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
+            #     "command": 'transfer_to_xyzf',
+            #     "args": [22, 73, 20, RadialDirections.EAST]
+            # },
+            # {
+            #     "identifier": 'EVENT_3809_action_queue_sync_173_SUBSCRIPT_transfer_xyzf_pixels_1',
+            #     "command": 'transfer_xyzf_pixels',
+            #     "args": [8, 4, 26, RadialDirections.NORTHEAST]
+            # },
         ]
     },
     {

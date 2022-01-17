@@ -9,7 +9,7 @@ from . import flags, utils
 from randomizer.data import bosses, enemies, npcs
 from randomizer.data.bosses import is_vanilla, has_vanilla_henchmen, sanitize_animation_script, SpriteSize, HenchmanType, SequenceType, CrownHeight
 from randomizer.data.formations import FormationMember
-from randomizer.helpers.flag_helpers import WinConditions
+from randomizer.helpers.flag_helpers import WinConditions, BossScaleOptions
 from randomizer.helpers.npcmodeltables import VramStore, SpriteName
 from randomizer.helpers.eventtables import AreaObjects, Sounds
 from randomizer.helpers.objectsequencetables import SequenceSpeeds, _0x08Flags, _0x10Flags
@@ -21,31 +21,23 @@ from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3792 import scrip
 from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3794 import script as non_smithy_3794
 from randomizer.data.eventscripts.utils.smithy_room.non_smithy_room_509 import objects as non_smithy_509_objects
 
+from randomizer.helpers.flag_helpers import (
+    BanditsWayGating,
+    ForestMazeGating,
+    BoosterTowerGating,
+    MarrymoreGating,
+    SeaGating,
+    YaridovichGating,
+    BelomeTempleGating,
+    MonstroTownGating,
+    BarrelVolcanoGating,
+    BowsersKeepGating,
+    FactoryGating,
+    PipeVaultGating,
+)
 
 from .utils import fix_directions_for_sequenced_sprite, new_animation, new_command, is_animation_header, remove_sequence_changes_from_action_script, is_mario_animation_header
 
-
-
-
-def _boss_fight_filter(world, location):
-    """
-
-    Args:
-        world (randomizer.logic.main.GameWorld):
-        location (randomizer.bosses.BossLocation):
-
-    Returns:
-        bool: True is location is okay to be included, False otherwise.
-
-    """
-    if not utils.isclass_or_instance(location, bosses.BossLocation):
-        return False
-
-    bosses_to_ignore = world.settings.get_flag(flags.ShuffledBosses).disabled
-    if location.description in [b.value for b in bosses_to_ignore]:
-        return False
-
-    return True
 
 
 def swapPositions(list, pos1, pos2):
@@ -76,39 +68,48 @@ def randomize_all(world):
     if world.open_mode:
         # Shuffle boss encounters.
         if world.settings.is_flag_enabled(flags.BossShuffle):
-            locations = [b for b in world.boss_locations if _boss_fight_filter(world, b)]
-            shuffled_locations = locations[:]
 
-            # Testing: simply shift the boss positions by numebr specified
-            if "bosses" in world.settings.override and "shift" in world.settings.override["bosses"]:
-                shift = world.settings.override["bosses"]["shift"]
-                shifts = shuffled_locations[-1 * shift:]
-                shuffled_locations = shuffled_locations[:-1 * shift]
-                shuffled_locations[0:0] = shifts
-            else:
-                random.shuffle(shuffled_locations)
+            locations = [l.related_class for l in world.boss_fight_placements]
             
-            # Do boss overrides
-            if "bosses" in world.settings.override and "override" in world.settings.override["bosses"]:
-                for l in world.settings.override["bosses"]["override"]:
-                    location = eval('bosses.%s' % l)
-                    boss = eval('bosses.%s' % world.settings.override["bosses"]["override"][l])
-                    for loc in locations:
-                        if utils.isclass_or_instance(loc, location):
-                            locations.remove(loc)
-                            locations.insert(0, loc)
-                            break
-                    for loc in shuffled_locations:
-                        if utils.isclass_or_instance(loc.boss, boss):
-                            shuffled_locations.remove(loc)
-                            shuffled_locations.insert(0, loc)
-                            break
 
-            shuffled_bosses = [b.boss for b in shuffled_locations]
+            # # Testing: simply shift the boss positions by numebr specified
+            # if "bosses" in world.settings.override and "shift" in world.settings.override["bosses"]:
+            #     shift = world.settings.override["bosses"]["shift"]
+            #     shifts = shuffled_locations[-1 * shift:]
+            #     shuffled_locations = shuffled_locations[:-1 * shift]
+            #     shuffled_locations[0:0] = shifts
+            # else:
+            #     random.shuffle(shuffled_locations)
+            
+            # # Do boss overrides
+            # if "bosses" in world.settings.override and "override" in world.settings.override["bosses"]:
+            #     for l in world.settings.override["bosses"]["override"]:
+            #         location = eval('bosses.%s' % l)
+            #         boss = eval('bosses.%s' % world.settings.override["bosses"]["override"][l])
+            #         for loc in locations:
+            #             if utils.isclass_or_instance(loc, location):
+            #                 locations.remove(loc)
+            #                 locations.insert(0, loc)
+            #                 break
+            #         for loc in shuffled_locations:
+            #             if utils.isclass_or_instance(loc.boss, boss):
+            #                 shuffled_locations.remove(loc)
+            #                 shuffled_locations.insert(0, loc)
+            #                 break
+
+
+            shuffled_bosses = [l.item.related_class for l in world.boss_fight_placements]
+
+
+            original_bosses = [l.original_item.related_class for l in world.boss_fight_placements]
+            stat_inheritance = copy.deepcopy(original_bosses)
+
+            if world.settings.is_flag_value(flags.BossShuffleScaleStats, BossScaleOptions.random):
+                random.shuffle(stat_inheritance)
 
 
             # Put Shelly in the right battle & give it the right arguments to use for new script
-            for location, boss in zip(locations, shuffled_bosses):
+            for location, boss, original in zip(locations, shuffled_bosses, original_bosses):
                 if utils.isclass_or_instance(location, bosses.Birdetta):
                     # Do not allow Shelly to join battles that need their own fixed backgrounds
                     # possibly forbid johnny as well, messes up the vram
@@ -143,7 +144,7 @@ def randomize_all(world):
 
 
             # Scale boss stats accordingly if keep stats not enabled.
-            if world.settings.is_flag_value(flags.BossShuffleScaleStats, True):
+            if not world.settings.is_flag_value(flags.BossShuffleScaleStats, BossScaleOptions.vanilla):
                 # First calculate total stats for each slot based on anchors and stats shuffled already.
                 location_stats = []
                 for location in locations:
@@ -284,7 +285,10 @@ def randomize_all(world):
                 
                 ctr = 0
                 # Now adjust stats for each shuffled pack given the total stats for the slot it's going into.
-                for boss, stats in zip(shuffled_bosses, location_stats):
+                for boss, stats, original in zip(shuffled_bosses, location_stats, stat_inheritance):
+                    # skip if vanilla
+                    if boss == original:
+                        continue
                     pack = world.get_formation_pack_by_index(boss.pack_number)
                     formation = world.get_enemy_formation_by_index(pack.formations[0].index)
                     #print(location)
@@ -400,24 +404,34 @@ def randomize_all(world):
                                 # remove if no repeatables available & npc should be hidden if empty
                                 elif location.unique_henchmen[index][index2].remove_if_empty:
                                     location.unique_henchmen[index][index2].occupant = None
+                                #if utils.isclass_or_instance(location, bosses.Mack):
+                                #    print(location.unique_henchmen[index][index2].occupant)
 
                     # set npcs that require non-unique henchmen
                     for index, henchman in enumerate(location.repeatable_henchmen):
-                        if index == 0 and utils.isclass_or_instance(location, bosses.Punchinello) and utils.isclass_or_instance(boss, bosses.KingCalamariBoss):
-                            new_henchman = bosses.KingCalamariTinyBloober
+                        # ignore punchinello's microbombs unless the substituted boss is Hidon, Birdetta, or King Calamari
+                        if index == 0 and utils.isclass_or_instance(location, bosses.Punchinello):
+                            if utils.isclass_or_instance(boss, bosses.KingCalamariBoss):
+                                new_henchman = bosses.KingCalamariTinyBloober
+                            elif utils.isclass_or_instance(boss, bosses.CzarBoss):
+                                new_henchman = bosses.CzarHelio
+                            elif utils.isclass_or_instance(boss, bosses.HidonBoss):
+                                new_henchman = bosses.HidonGoombette
+                            elif utils.isclass_or_instance(boss, bosses.BirdettaBoss):
+                                new_henchman = bosses.BirdettaEggbert
+                            else:
+                                new_henchman = None
                         elif len(repeatable_henchmen) > 0:
                             new_henchman = random.choice(repeatable_henchmen)
                         else:
                             new_henchman = None
                         for index2, model in enumerate(henchman):
                             if world.settings.is_flag_value(flags.BossReplaceMinigameSprites, True) or not model.minigames_only:
-                                # ignore punchinello's microbombs unless the substituted boss is Hidon, Birdetta, or King Calamari
-                                if (utils.isclass_or_instance(location, bosses.Punchinello) and index == 0 and (utils.isclass_or_instance(boss, bosses.KingCalamariBoss) or utils.isclass_or_instance(boss, bosses.HidonBoss) or utils.isclass_or_instance(boss, bosses.BirdettaBoss))) or not (utils.isclass_or_instance(location, bosses.Punchinello) and index == 0):
-                                    if new_henchman is not None:
-                                        location.repeatable_henchmen[index][index2].occupant = new_henchman
-                                        set_henchman_run_flags(world, boss, new_henchman)
-                                    elif location.repeatable_henchmen[index][index2].remove_if_empty:
-                                        location.repeatable_henchmen[index][index2].occupant = None
+                                if new_henchman is not None:
+                                    location.repeatable_henchmen[index][index2].occupant = new_henchman
+                                    set_henchman_run_flags(world, boss, new_henchman)
+                                elif location.repeatable_henchmen[index][index2].remove_if_empty:
+                                    location.repeatable_henchmen[index][index2].occupant = None
                     
                     # update run flags
                     for index, henchman in enumerate(location.unique_henchmen + location.repeatable_henchmen):
@@ -454,6 +468,11 @@ def randomize_all(world):
                         "jumps": [],
                         "executions": []
                     }
+                if 355 not in fight_builders:
+                    fight_builders[355] = {
+                        "jumps": [],
+                        "executions": []
+                    }
                 # fights with forced backgrounds need to have them, otherwise just use whatever the level's default background is
                 formation = boss_location.formation
                 if formation.required_battlefield is None:
@@ -479,21 +498,53 @@ def randomize_all(world):
                     if world.settings.is_flag_value(flags.WinCondition, WinConditions.smithy):
                         actual_ret = new_command(353, 'ret')
                         cmds.append(new_command(353, 'jmp_if_bit_set', [0x7040, 0, actual_ret["identifier"]]))
-                        cmds.append(new_command(353, 'jmp_to_event', [3885]))
+                        cmds.append(new_command(353, 'set_bit', [0x7099, 0]))
                         cmds.append(actual_ret)
                 cmds.append(new_command(353, 'ret'))
                 fight_builders[353]["executions"].extend(cmds)
                 jmp = new_command(353, 'jmp_if_7000_equals_short', [boss_location.identifier, cmds[0]["identifier"]])
                 fight_builders[353]["jumps"].append(jmp)
-                
-                # put the shuffled boss names in dialogs that use them
-                if utils.isclass_or_instance(boss_location, bosses.Booster):
-                    world.search_replace_dialog("`TOWER_BOSS_1`", boss.name)
-                    random_bosses = random.sample([loc.boss.name for loc in world.boss_locations if not utils.isclass_or_instance(loc, bosses.Booster)], 3)
-                    world.search_replace_dialog("`RANDOM_BOSS_NAME_1`", random_bosses[0])
-                    world.search_replace_dialog("`RANDOM_BOSS_NAME_2`", random_bosses[1])
-                    world.search_replace_dialog("`RANDOM_BOSS_NAME_3`", random_bosses[2])
 
+                # boss hunting logic bits
+                map_bits = None
+                map_clear_bits = None
+                if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.hammerbro) and utils.isclass_or_instance(boss, bosses.HammerBroBoss):
+                    map_bits = [[0x7065, 4], [0x706D, 4]]
+                elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowyer) and utils.isclass_or_instance(boss, bosses.BowyerBoss):
+                    map_bits = [[0x7055, 7]]
+                elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.punchinello) and utils.isclass_or_instance(boss, bosses.PunchinelloBoss):
+                    map_bits = [[0x7053, 6]]
+                elif world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.kggg) and utils.isclass_or_instance(boss, bosses.GrateGuyBoss):
+                    map_bits = [[0x704C, 7]]
+                elif world.settings.is_flag_value(flags.SeaGate, SeaGating.bundt) and utils.isclass_or_instance(boss, bosses.BundtBoss):
+                    map_bits = [[0x7067, 4], [0x706F, 3]]
+                elif world.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.yarid) and utils.isclass_or_instance(boss, bosses.YaridovichBoss):
+                    map_bits = [[0x7052, 2]]
+                elif world.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.belome2) and utils.isclass_or_instance(boss, bosses.Belome2Boss):
+                    map_bits = [[0x7067, 7], [0x706F, 6]]
+                elif world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.valentina) and utils.isclass_or_instance(boss, bosses.ValentinaBoss):
+                    map_bits = [[0x7090, 5], [0x7070, 1], [0x7068, 2]]
+                elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.axem) and utils.isclass_or_instance(boss, bosses.AxemRangersBoss):
+                    map_bits = [[0x7068, 3]]
+                    map_clear_bits = [[0x707A, 3]]
+                    world.search_replace_dialog(
+                        "`BOWSERS_KEEP_CONDITION`", """with the\n help of the Axem Rangers."""
+                    )
+                elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.exor) and utils.isclass_or_instance(boss, bosses.ExorBoss):
+                    map_bits = [[0x7070, 5], [0x7068, 5]]
+                elif world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.johnny) and utils.isclass_or_instance(boss, bosses.JohnnyBoss):
+                    map_bits = [[0x7057, 1]]
+                if map_bits is not None:
+                    cmds = []
+                    for b in map_bits:
+                        cmds.append(new_command(355, 'set_bit', b))
+                    if map_clear_bits is not None:
+                        for b in map_bits:
+                            cmds.append(new_command(355, 'clear_bit', b))
+                    cmds.append(new_command(355, 'ret'))
+                    fight_builders[355]["executions"].extend(cmds)
+                    jmp = new_command(355, 'jmp_if_7000_equals_short', [boss_location.identifier, cmds[0]["identifier"]])
+                    fight_builders[355]["jumps"].append(jmp)
 
                 # the rest of these operations only matter if the boss is not vanilla
                 # handles sprite substitution and modifying action queues to match substituted sprite
@@ -505,6 +556,8 @@ def randomize_all(world):
                     if utils.isclass_or_instance(boss_location, bosses.Valentina):
                         #print(boss)
                         statue = boss.statue
+
+                        print(boss)
 
                         for statue_location in boss_location.statue_locations:
                             room_id = statue_location.room_id
@@ -642,6 +695,16 @@ def randomize_all(world):
                             if utils.isclass_or_instance(boss_location, bosses.Magikoopa) and model.animations is not None and model.animations.keep_summon is not None and script_id == 941:
                                 if model.animations.keep_summon.contact_frame is not None:
                                     world.eventscripts[script_id][1]["args"][0] = model.animations.keep_summon.contact_frame + 16
+
+                            # shift to the right if croco is at booster
+                            if utils.isclass_or_instance(boss_location, bosses.Booster) and model.tower_entrance_horizontal_shift != 0 and room_id == 202:
+                                if model.tower_entrance_horizontal_shift > 0:
+                                    order = 'shift_east_pixels'
+                                    shift = model.tower_entrance_horizontal_shift
+                                else:
+                                    order = 'shift_west_pixels'
+                                    shift = model.tower_entrance_horizontal_shift * -1
+                                world.actionscripts[519].insert(0, {"identifier": 'dummy', "command": order, "args": [shift]})
 
 
                             # adjust dojo pause
@@ -936,6 +999,11 @@ def randomize_all(world):
 
                             if room_id == 28:
                                 loop_on_walk = False
+
+                            # late nimbus enemies shouldn't float unless they're birds or fireballs
+                            if room_id in [121, 411, 437] and not utils.isclass_or_instance(boss, bosses.CzarBoss):
+                                world.rooms[room_id].objects[npc_id].z = 0
+
                             
                             if occupant is None:
                                 # remove this NPC if necessary when boss has nothing to fill
@@ -1082,6 +1150,16 @@ def randomize_all(world):
                                         # replace all sequences and molds if appropriate, remove if not
                                         else:
                                             world.actionscripts[script_id] = sanitize_animation_script(boss, boss_location, script, model)
+                                
+                                
+
+                                    # special consideration for mack: fixed F coord on SW/SE-only henchmen
+                                    if room_id == 326:
+                                        allowed_directions = world.rooms[room_id].objects[npc_id].model.directions
+                                        if allowed_directions == VramStore._02_SWSE:
+                                            world.rooms[room_id].objects[npc_id].direction=RadialDirection.SOUTHWEST
+                                            #world.rooms[room_id].objects[npc_id].action_script=1
+                                
                                 # finally, scrape relevant scripts to find animations or molds loaded of this NPC, and determine necessary vram for them
                                 min_vram = 0
                                 for script_id in henchman_location.target_scripts:
@@ -1210,6 +1288,17 @@ def randomize_all(world):
 
     # Exor goes first to set immunity.
     world.get_enemy_instance(enemies.Exor).speed = 255
+
+    for boss_location in world.boss_locations:
+        # put the shuffled boss names in dialogs that use them
+        if utils.isclass_or_instance(boss_location, bosses.Booster):
+            boss = boss_location.boss
+            world.search_replace_dialog("`TOWER_BOSS_1`", boss.name)
+            random_bosses = random.sample([loc.boss.name for loc in world.boss_locations if not utils.isclass_or_instance(loc, bosses.Booster)], 3)
+            world.search_replace_dialog("`RANDOM_BOSS_NAME_1`", random_bosses[0])
+            world.search_replace_dialog("`RANDOM_BOSS_NAME_2`", random_bosses[1])
+            world.search_replace_dialog("`RANDOM_BOSS_NAME_3`", random_bosses[2])
+
 
 
 def randomize_music(world):

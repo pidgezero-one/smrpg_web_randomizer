@@ -20,7 +20,9 @@ def _randomize_enemy_attack(attack):
         # If the attack has no special damage types or buffs, randomize the attack priority level.
         # Allow a small chance (1 in 495) to get the instant KO flag.  Otherwise attack level is 1-7, lower more likely.
         if not attack.damage_types and not attack.buffs:
-            new_attack_level = random.randint(0, random.randint(0, random.randint(0, random.randint(0, 8))))
+            new_attack_level = random.randint(
+                0, random.randint(0, random.randint(0, random.randint(0, 8)))
+            )
             if new_attack_level > attack.attack_level:
                 # If we got the instant KO flag, also hide the damage numbers.
                 if new_attack_level == 8:
@@ -48,7 +50,9 @@ def _randomize_enemy_attack(attack):
     if attack.status_effects:
         effects = [0, 1, 2, 3, 5, 6]
         # Small chance to include berserk as an option if safety checks are disabled.
-        if attack.world.settings.is_flag_enabled(flags.EnemyNoSafetyChecks) and utils.coin_flip(1 / 5):
+        if attack.world.settings.is_flag_enabled(
+            flags.EnemyNoSafetyChecks
+        ) and utils.coin_flip(1 / 5):
             effects.append(4)
 
         attack.status_effects = random.sample(effects, len(attack.status_effects))
@@ -59,7 +63,9 @@ def _randomize_enemy_attack(attack):
         max_hit_rate = 99
     else:
         max_hit_rate = 100
-    attack.hit_rate = utils.mutate_normal(attack.hit_rate, minimum=1, maximum=max_hit_rate)
+    attack.hit_rate = utils.mutate_normal(
+        attack.hit_rate, minimum=1, maximum=max_hit_rate
+    )
 
 
 def _randomize_enemy(enemy):
@@ -115,14 +121,25 @@ def _randomize_enemy(enemy):
     # Shuffle elemental resistances and status immunities.  Keep the same number but randomize them for now.
     # Keep the total number of elemental/status immunities the same, but mix them together with max 4 of each kind.
     total_immunities = len(enemy.status_immunities) + len(enemy.resistances)
-    new_status_immunities = random.randint(max(0, total_immunities - 4), min(total_immunities, 4))
+    new_status_immunities = random.randint(
+        max(0, total_immunities - 4), min(total_immunities, 4)
+    )
+    if new_status_immunities > 0:
+        # 10% chance of immunity to physical attacks.
+        if random.randint(1, 10) == 1:
+            enemy.evade = 100
+            new_status_immunities -= 1
     new_resistances = total_immunities - new_status_immunities
 
     # Sanity check to make sure we don't have more than the max.
     if new_status_immunities > 4 or new_status_immunities < 0:
-        raise ValueError("{}: invalid new_status_immunities {}".format(enemy, new_status_immunities))
+        raise ValueError(
+            "{}: invalid new_status_immunities {}".format(enemy, new_status_immunities)
+        )
     if new_resistances > 4 or new_resistances < 0:
-        raise ValueError("{}: invalid new_resistances {}".format(enemy, new_resistances))
+        raise ValueError(
+            "{}: invalid new_resistances {}".format(enemy, new_resistances)
+        )
 
     enemy.status_immunities = random.sample(range(0, 4), new_status_immunities)
 
@@ -133,12 +150,16 @@ def _randomize_enemy(enemy):
         enemy.resistances = random.sample(range(4, 8), new_resistances)
         potential_weaknesses = set(range(4, 8)) - set(enemy.resistances)
         potential_weaknesses.add(7)
-        enemy.weaknesses = random.sample(potential_weaknesses, min(len(enemy.weaknesses), len(potential_weaknesses)))
+        enemy.weaknesses = random.sample(
+            potential_weaknesses, min(len(enemy.weaknesses), len(potential_weaknesses))
+        )
     else:
         enemy.weaknesses = random.sample(range(4, 8), len(enemy.weaknesses))
         potential_resistances = set(range(4, 8)) - set(enemy.weaknesses)
         potential_resistances.add(7)
-        enemy.resistances = random.sample(potential_resistances, min(new_resistances, len(potential_resistances)))
+        enemy.resistances = random.sample(
+            potential_resistances, min(new_resistances, len(potential_resistances))
+        )
 
     # Randomize flower bonus type and chance for this enemy.
     enemy.flower_bonus_type = random.randint(1, 5)
@@ -156,7 +177,9 @@ def _randomize_formation(formation):
         return reduce(lambda a, b: a * b, distances, 1)
 
     def select_most_distance(possible_points, points):
-        chosen = max(possible_points, key=lambda c: get_collective_distance(c[0], c[1], points))
+        chosen = max(
+            possible_points, key=lambda c: get_collective_distance(c[0], c[1], points)
+        )
         return chosen
 
     # Max enemies for a given group.
@@ -177,7 +200,9 @@ def _randomize_formation(formation):
     # Make sure we have at most three unique candidates.
     num_candidates = len(set(candidates))
     if num_candidates > 3:
-        raise ValueError("Got more than three unique candidates, {} instead".format(num_candidates))
+        raise ValueError(
+            "Got more than three unique candidates, {} instead".format(num_candidates)
+        )
 
     # Pick random number of enemies for the group, weighted slightly lower.
     num_enemies = random.randint(1, random.randint(3, max_enemies))
@@ -191,7 +216,9 @@ def _randomize_formation(formation):
         sub_candidates = candidates + chosen_enemies
 
         # Exclude any enemies that are unique per battle.
-        sub_candidates = [e for e in sub_candidates if not e.one_per_battle or e not in chosen_enemies]
+        sub_candidates = [
+            e for e in sub_candidates if not e.one_per_battle or e not in chosen_enemies
+        ]
 
         sub_candidates = [e for e in sub_candidates if vram_total + e.palette <= 64]
         if not sub_candidates:
@@ -207,7 +234,9 @@ def _randomize_formation(formation):
         if not done_coordinates:
             x, y = random.choice(formation.VALID_COORDINATES)
         else:
-            candidates = random.sample(formation.VALID_COORDINATES, len(chosen_enemies) * 2)
+            candidates = random.sample(
+                formation.VALID_COORDINATES, len(chosen_enemies) * 2
+            )
             x, y = select_most_distance(candidates, done_coordinates)
 
         done_coordinates.append((x, y))
@@ -230,7 +259,7 @@ def randomize_all(world):
         # *** Shuffle enemy attacks ***
         # Intershuffle hit rate of attacks with status effects.
         with_status_effects = [a for a in world.enemy_attacks if a.status_effects]
-        for attr in ('hit_rate', ):
+        for attr in ("hit_rate",):
             shuffled = with_status_effects[:]
             random.shuffle(shuffled)
             swaps = []
@@ -250,8 +279,17 @@ def randomize_all(world):
         candidates = [m for m in world.enemies if not m.boss]
         candidates.sort(key=lambda c: c.rank)
 
-        for attribute in ("hp", "speed", "defense", "magic_defense", "evade", "magic_evade", "resistances",
-                          "weaknesses", "status_immunities"):
+        for attribute in (
+            "hp",
+            "speed",
+            "defense",
+            "magic_defense",
+            "evade",
+            "magic_evade",
+            "resistances",
+            "weaknesses",
+            "status_immunities",
+        ):
             shuffled = candidates[:]
             max_index = len(candidates) - 1
             done = set()
@@ -291,7 +329,12 @@ def randomize_all(world):
 
     # Special logic for Smithy 2: All heads must have the same HP!  Use the base head enemy for this.
     main_head = world.get_enemy_instance(enemies.Smithy2Head)
-    for e in (enemies.Smithy2TankHead, enemies.Smithy2SafeHead, enemies.Smithy2MageHead, enemies.Smithy2ChestHead):
+    for e in (
+        enemies.Smithy2TankHead,
+        enemies.Smithy2SafeHead,
+        enemies.Smithy2MageHead,
+        enemies.Smithy2ChestHead,
+    ):
         head = world.get_enemy_instance(e)
         head.hp = main_head.hp
 
@@ -302,7 +345,7 @@ def randomize_all(world):
 
             # For bosses, don't let exp go above vanilla.  For normal enemies, don't let it go below.
             oldxp = enemy.xp
-            enemy.xp = utils.mutate_normal(enemy.xp, minimum=1, maximum=0xffff)
+            enemy.xp = utils.mutate_normal(enemy.xp, minimum=1, maximum=0xFFFF)
             if enemy.boss:
                 enemy.xp = min(oldxp, enemy.xp)
             else:
@@ -343,7 +386,9 @@ def randomize_all(world):
 
     boss_enemies = set()
     # No XP from regular encounters.
-    if world.settings.is_flag_value(flags.ExperienceNoRegular, True) or world.settings.is_flag_value(flags.ExperienceNoBosses, True):
+    if world.settings.is_flag_value(
+        flags.ExperienceNoRegular, True
+    ) or world.settings.is_flag_value(flags.ExperienceNoBosses, True):
         for location in world.boss_locations:
             if isinstance(location, bosses.BossLocation):
                 for member in location.formation.members:
@@ -351,7 +396,7 @@ def randomize_all(world):
 
     if world.settings.is_flag_value(flags.ExperienceNoRegular, True):
         for enemy in world.enemies:
-            if (not enemy.boss or enemy not in boss_enemies):
+            if not enemy.boss or enemy not in boss_enemies:
                 enemy.xp = 0
 
     if world.settings.is_flag_value(flags.ExperienceNoBosses, True):

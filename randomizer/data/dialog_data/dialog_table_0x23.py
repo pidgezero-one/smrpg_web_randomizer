@@ -1055,46 +1055,91 @@ dialog_data[609] = ''' That’s remarkably similar to what
  I have in mind.[await]'''
 dialog_data[610] = ''' Now that is amazingly close to my
  dream composition![await]'''
-dialog_data[611] = '''[await]'''
-dialog_data[612] = '''[await]'''
-dialog_data[613] = '''[await]'''
-dialog_data[614] = '''[await]'''
-dialog_data[615] = '''[await]'''
-dialog_data[616] = '''[await]'''
-dialog_data[617] = '''[await]'''
-dialog_data[618] = '''[await]'''
-dialog_data[619] = '''[await]'''
-dialog_data[620] = '''[await]'''
-dialog_data[621] = '''[await]'''
-dialog_data[622] = '''[await]'''
-dialog_data[623] = '''[await]'''
-dialog_data[624] = '''[await]'''
-dialog_data[625] = '''[await]'''
-dialog_data[626] = '''[await]'''
-dialog_data[627] = '''[await]'''
-dialog_data[628] = '''[await]'''
-dialog_data[629] = '''[await]'''
-dialog_data[630] = '''[await]'''
-dialog_data[631] = '''[await]'''
-dialog_data[632] = '''[await]'''
-dialog_data[633] = '''[await]'''
-dialog_data[634] = '''[await]'''
-dialog_data[635] = '''[await]'''
-dialog_data[636] = '''[await]'''
-dialog_data[637] = '''[await]'''
-dialog_data[638] = '''[await]'''
-dialog_data[639] = '''[await]'''
-dialog_data[640] = '''[await]'''
-dialog_data[641] = '''[await]'''
-dialog_data[642] = '''[await]'''
-dialog_data[643] = '''[await]'''
-dialog_data[644] = '''[await]'''
-dialog_data[645] = '''[await]'''
-dialog_data[646] = '''[await]'''
-dialog_data[647] = '''[await]'''
-dialog_data[648] = '''[await]'''
-dialog_data[649] = '''[await]'''
-dialog_data[650] = '''[await]'''
+dialog_data[611] = '''FROGFUCIUS: Are you stuck?[await]\n[end]'''
+dialog_data[612] = ''' An item awaits you in your home.[await]'''
+dialog_data[613] = ''' Unfinished business awaits you
+ in Bandit's Way.[await]'''
+dialog_data[614] = ''' Have you visited the Mushroom
+ Kingdom lately?[await]'''
+dialog_data[615] = ''' Have you traversed through the
+ secret tunnel in Land's End?[await]'''
+dialog_data[616] = ''' My contemporary, Toadofsky,
+ awaits a visit from you.[await]'''
+dialog_data[617] = ''' Treasure awaits you in Rose Town.[await]'''
+dialog_data[618] = ''' It may prove worth your while to
+ visit Yo'ster Isle.[await]'''
+dialog_data[619] = ''' There seems to be some unclaimed
+ treasure in the town of Moleville.[await]'''
+dialog_data[620] = ''' When was the last time you
+ ventured into the Mines?[await]'''
+dialog_data[621] = ''' Have you visited the tall tower
+ to the west yet?[await]'''
+dialog_data[622] = ''' Something awaits you in Seaside
+ Town.[await]'''
+dialog_data[623] = ''' The ever-friendly Monstro Town
+ may have something for you
+ to find.[await]'''
+dialog_data[624] = ''' Bean Valley may have some tasks
+ for you to take care of.[await]'''
+dialog_data[625] = ''' It may help to pay a visit to
+ the Nimbus Land town square.[await]'''
+dialog_data[626] = ''' There may be some secrets left
+ to uncover in Nimbus Castle.[await]'''
+dialog_data[627] = ''' There may be something of interest
+ to you in Mushroom Way.[await]'''
+dialog_data[628] = ''' You are likely to find more treasure
+ in the Sunken Ship.[await]'''
+dialog_data[629] = ''' You may find something new if you
+ venture into the Kero Sewers.[await]'''
+dialog_data[630] = ''' The Forest Maze has much to
+ discover.[await]'''
+dialog_data[631] = ''' It may be worthwhile to pay a
+ visit to Marrymore.[await]'''
+dialog_data[632] = ''' Land's End may have something of
+ interest to you.[await]'''
+dialog_data[633] = ''' Belome Temple may have something
+ for you to investigate.[await]'''
+dialog_data[634] = ''' It would be wise to pay a visit
+ to Booster Hill.[await]'''
+dialog_data[635] = ''' Something awaits you in Barrel
+ Volcano.[await]'''
+dialog_data[636] = ''' You may find something to do in
+ Bowser's Keep.[await]'''
+dialog_data[637] = ''' There is still work to be done in
+ the Factory.[await]'''
+dialog_data[638] = ''' Grate Guy's Casino may have some
+ interesting options for you.[await]'''
+dialog_data[639] = ''' Try double-checking whatever
+ you can. I may have more advice
+ for you later.[await]'''
+dialog_data[640] = '''FROGFUCIUS: Eh!?[await]
+ That delicious smell!
+ You have some Cricket Jam, yes?[await][page]
+ Oh, but I have no pie to eat it
+ with...[await]'''
+dialog_data[641] = ''' You may find something new in
+ Midas River.[await]'''
+dialog_data[642] = ''' Rose Way may be small, but it may
+ have something new for you to
+ find.[await]'''
+dialog_data[643] = ''' Treasure awaits you in the Pipe
+ Vault.[await]'''
+dialog_data[644] = ''' Unclaimed items remain in
+ Booster Pass.[await]'''
+dialog_data[645] = ''' Check at the top of Star Hill.
+ It is worth checking to see if a
+ star piece is there or not.[await]'''
+dialog_data[646] = ''' Perhaps take some time to rest
+ in Marrymore, and something may
+ come to you.[await]'''
+dialog_data[647] = ''' An amphibian salesman in Seaside
+ Town may be seeking your business.[await]'''
+dialog_data[648] = ''' There are some unopened chests
+ remaining in the Sea.[await]'''
+dialog_data[649] = ''' The beanstalks may bring you some
+ new fortune.[await]'''
+dialog_data[650] = ''' Try your luck in Grate Guy's
+ Casino.[await]'''
 dialog_data[651] = '''[await]'''
 dialog_data[652] = '''[await]'''
 dialog_data[653] = '''[await]'''
@@ -1230,7 +1275,9 @@ dialog_data[755] = '''[await]'''
 dialog_data[756] = '''[await]'''
 dialog_data[757] = '''[await]'''
 dialog_data[758] = '''[await]'''
-dialog_data[759] = '''[await]'''
+dialog_data[759] = '''DR. TOPPER: Give up?[await]
+ [select]  (Still working on it)
+ [select]  (I GIVE UP!)[await]'''
 dialog_data[760] = '''[await]'''
 dialog_data[761] = '''[await]'''
 dialog_data[762] = '''[await]'''

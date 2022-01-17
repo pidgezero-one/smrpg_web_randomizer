@@ -6,7 +6,21 @@ from inspect import isclass
 from randomizer.logic import flags
 
 from randomizer.data import items, spells
-from randomizer.helpers.flag_helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, PipeVaultGating
+from randomizer.helpers.flag_helpers import (
+    FireworksOptions,
+    BanditsWayGating,
+    ForestMazeGating,
+    MarrymoreGating,
+    BoosterTowerGating,
+    SeaGating,
+    YaridovichGating,
+    BelomeTempleGating,
+    MonstroTownGating,
+    BarrelVolcanoGating,
+    BowsersKeepGating,
+    FactoryGating,
+    PipeVaultGating,
+)
 from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
@@ -52,6 +66,7 @@ class Area(Enum):
 
 class ItemLocation:
     """Base class for an item location, either a key item or quest reward or chest."""
+
     area = Area.MariosPad
     addresses = []
     _item = None
@@ -67,6 +82,10 @@ class ItemLocation:
     special_equip = False
     star_location = False
     is_character_recruit = False
+    is_boss_fight = False
+    is_spell_slot = False
+
+    hint_conditions = []
 
     def __init__(self, world):
         """
@@ -84,7 +103,7 @@ class ItemLocation:
             item_str = self.item.__name__
         else:
             item_str = str(self.item)
-        return '<{}: item {}>'.format(self.__class__.__name__, item_str)
+        return "<{}: item {}>".format(self.__class__.__name__, item_str)
 
     def __repr__(self):
         return str(self)
@@ -120,6 +139,10 @@ class ItemLocation:
         """
         return True
 
+    @property
+    def hint_requirements(self):
+        return []
+
     def item_allowed(self, item):
         """
 
@@ -131,11 +154,22 @@ class ItemLocation:
 
         """
         # If this is a missable location, it cannot contain a key item.
-        if self.missable and (item.is_key or utils.isclass_or_instance(item, items.MimicFight) or utils.isclass_or_instance(item, items.BrightCard) or utils.isclass_or_instance(item, items.SignalRing) or utils.isclass_or_instance(item, items.Wallet)):
+        if self.missable and (
+            item.is_key
+            or utils.isclass_or_instance(item, items.MimicFight)
+            or utils.isclass_or_instance(item, items.BrightCard)
+            or utils.isclass_or_instance(item, items.SignalRing)
+            or utils.isclass_or_instance(item, items.Wallet)
+        ):
             return False
 
         # If this is an excluded location, it cannot contain a key item.
-        if item.is_key and (self.description in self.world.settings.get_flag(flags.EnabledRegularChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledFreestandingChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledFreestandingChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledBossChecks).disabled):
+        if item.is_key and (
+            self.description
+            in self.world.settings.get_flag(flags.EnabledRegularChecks).disabled
+            or self.description
+            in self.world.settings.get_flag(flags.EnabledBossChecks).disabled
+        ):
             return False
 
         # If "KIs Anywhere" not enabled, only KIs can go in KI spots and vice versa
@@ -147,7 +181,9 @@ class ItemLocation:
 
         # If "Star Pieces Anywhere" not enabled,star pieces can't go in regular spots
         if not self.world.settings.is_flag_enabled(flags.StarPieceAvailability):
-            if not self.star_location and utils.isclass_or_instance(item, items.StarPiece):
+            if not self.star_location and utils.isclass_or_instance(
+                item, items.StarPiece
+            ):
                 return False
 
         # If this is not a special equip location, cannot contain special equips unless that setting is enabled
@@ -158,23 +194,43 @@ class ItemLocation:
                 return False
 
         # characters must be in character spots
-        if self.is_character_recruit and not utils.isclass_or_instance(item, items.RecruitedCharacter):
+        if self.is_character_recruit and not utils.isclass_or_instance(
+            item, items.RecruitedCharacter
+        ):
             return False
-        if not self.is_character_recruit and utils.isclass_or_instance(item, items.RecruitedCharacter):
+        if not self.is_character_recruit and utils.isclass_or_instance(
+            item, items.RecruitedCharacter
+        ):
+            return False
+
+        # ditto for boss fights
+        if self.is_boss_fight and not utils.isclass_or_instance(item, items.BossFight):
+            return False
+        if not self.is_boss_fight and utils.isclass_or_instance(item, items.BossFight):
+            return False
+
+        # ditto for spell slots
+        if self.is_spell_slot and not utils.isclass_or_instance(item, items.SpellLearn):
+            return False
+        if not self.is_spell_slot and utils.isclass_or_instance(item, items.SpellLearn):
             return False
 
         # only allow up to one slot machine per room
         if utils.isclass_or_instance(item, items.SlotMachineChest):
             for c in self.world.chest_locations:
-                if utils.isclass_or_instance(c.item, items.SlotMachineChest) and len(set(c.rooms).intersection(self.rooms)) > 0:
+                if (
+                    utils.isclass_or_instance(c.item, items.SlotMachineChest)
+                    and len(set(c.rooms).intersection(self.rooms)) > 0
+                ):
                     return False
 
         # only allow up to one exp star per area
         if utils.isclass_or_instance(item, items.InvincibilityStar):
             for c in self.world.chest_locations:
-                if utils.isclass_or_instance(c.item, items.InvincibilityStar) and (c.area == self.area):
+                if utils.isclass_or_instance(c.item, items.InvincibilityStar) and (
+                    c.area == self.area
+                ):
                     return False
-
 
         return True
 
@@ -198,17 +254,30 @@ class ItemLocation:
         """
         if not utils.isclass_or_instance(value, items.Item):
             raise ValueError(
-                "Location {} - Trying to assign value {} that isn't an item class".format(self, value))
+                "Location {} - Trying to assign value {} that isn't an item class".format(
+                    self, value
+                )
+            )
         if not self.item_allowed(value):
-            raise ValueError(
-                "Location {} - Item {} not allowed".format(self, value))
+            raise ValueError("Location {} - Item {} not allowed".format(self, value))
         self._item = value
 
     @property
     def is_vanilla(self):
-        return self._item == self.original_item or utils.isclass_or_instance(self._item, self.original_item)
-
-
+        try:
+            return self._item == self.original_item or utils.isclass_or_instance(
+                self._item, self.original_item
+            )
+        except:
+            if utils.isclass_or_instance(
+                self._item, items.Coins
+            ) and utils.isclass_or_instance(self.original_item, items.Coins):
+                return self._item.amount == self.original_item.amount
+            elif utils.isclass_or_instance(
+                self._item, items.MultiFrogCoin
+            ) and utils.isclass_or_instance(self.original_item, items.MultiFrogCoin):
+                return self._item.amount == self.original_item.amount
+            return False
 
 
 class BowserRoom:
@@ -540,244 +609,3 @@ class BowserDoorSparky(BowserRoom):
     jump_to_address = 0x1E22AE
     memory_700A_jump_address = 0x1E22F9
     memory_700A_load_address = 0x1E2424
-
-
-# *** Helper functions to check access to certain areas.
-
-def can_access_mines_back(inventory):
-    """
-
-    Args:
-        inventory (randomizer.logic.keys.Inventory):
-
-    Returns:
-        bool: True if this location is accessible with the given inventory, False otherwise.
-
-    """
-    # Bambino Bomb is needed to access this location.
-    return inventory.has_item(items.BambinoBomb)
-
-
-def can_access_birdo(inventory):
-    """
-
-    Args:
-        inventory (randomizer.logic.keys.Inventory):
-
-    Returns:
-        bool: True if this location is accessible with the given inventory, False otherwise.
-
-    """
-    # Castle Key 1 is needed to access this location.
-    return inventory.has_item(items.CastleKey1)
-
-
-def can_clear_nimbus_castle(inventory):
-    """
-
-    Args:
-        inventory (randomizer.logic.keys.Inventory):
-
-    Returns:
-        bool: True if this location is accessible with the given inventory, False otherwise.
-
-    """
-    # Castle Key 2 is needed to access this location, plus defeating Birdo.
-    return can_access_birdo(inventory) and inventory.has_item(items.CastleKey2)
-
-
-def can_access_bandits_way(world, inventory):
-    if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario):
-        return inventory.has_item(items.MarioRecruit)
-    elif world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mallow):
-        return inventory.has_item(items.MallowRecruit)
-    elif world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno):
-        return inventory.has_item(items.GenoRecruit)
-    elif world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser):
-        return inventory.has_item(items.BowserRecruit)
-    elif world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool):
-        return inventory.has_item(items.ToadstoolRecruit)
-    else:
-        return True
-
-
-def can_access_tower(world, inventory):
-    if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario):
-        return inventory.has_item(items.MarioRecruit)
-    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow):
-        return inventory.has_item(items.MallowRecruit)
-    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno):
-        return inventory.has_item(items.GenoRecruit)
-    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser):
-        return inventory.has_item(items.BowserRecruit)
-    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool):
-        return inventory.has_item(items.ToadstoolRecruit)
-    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mines):
-        return inventory.has_item(items.BambinoBomb)
-    else:
-        return True
-
-
-def can_access_marrymore(world, inventory):
-    if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
-        return can_access_tower(world, inventory)
-    else:
-        return True
-
-
-def can_access_forest(world, inventory):
-    if world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario):
-        return inventory.has_item(items.MarioRecruit) or inventory.has_item(items.MarioSpotted)
-    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow):
-        return inventory.has_item(items.MallowRecruit) or inventory.has_item(items.MallowSpotted)
-    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno):
-        return inventory.has_item(items.GenoRecruit) or inventory.has_item(items.GenoSpotted)
-    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser):
-        return inventory.has_item(items.BowserRecruit) or inventory.has_item(items.BowserSpotted)
-    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool):
-        return inventory.has_item(items.ToadstoolRecruit) or inventory.has_item(items.ToadstoolSpotted)
-    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.pie):
-        return inventory.has_item(items.CricketPie)
-    else:
-        return True
-
-
-def can_access_pipe_vault(world, inventory):
-    if world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mario):
-        return inventory.has_item(items.MarioRecruit) or inventory.has_item(items.MarioSpotted)
-    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mallow):
-        return inventory.has_item(items.MallowRecruit) or inventory.has_item(items.MallowSpotted)
-    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.geno):
-        return inventory.has_item(items.GenoRecruit) or inventory.has_item(items.GenoSpotted)
-    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowser):
-        return inventory.has_item(items.BowserRecruit) or inventory.has_item(items.BowserSpotted)
-    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.toadstool):
-        return inventory.has_item(items.ToadstoolRecruit) or inventory.has_item(items.ToadstoolSpotted)
-    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.forest):
-        return can_access_forest(world, inventory)
-    else:
-        return True
-
-
-def can_access_sea(world, inventory):
-    if world.settings.is_flag_value(flags.SeaGate, SeaGating.mario):
-        return inventory.has_item(items.MarioRecruit)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.mallow):
-        return inventory.has_item(items.MallowRecruit)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.geno):
-        return inventory.has_item(items.GenoRecruit)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.bowser):
-        return inventory.has_item(items.BowserRecruit)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.toadstool):
-        return inventory.has_item(items.ToadstoolRecruit)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.star1):
-        return inventory.has_item(items.StarPiece)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.star2):
-        return inventory.has_item_count(items.StarPiece, 2)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.star3):
-        return inventory.has_item_count(items.StarPiece, 3)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.star4):
-        return inventory.has_item_count(items.StarPiece, 4)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.star5):
-        return inventory.has_item_count(items.StarPiece, 5)
-    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.star6):
-        return inventory.has_item_count(items.StarPiece, 6)
-    else:
-        return True
-
-
-def can_access_yaridovich(world, inventory):
-    if world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.ship):
-        return can_access_sea(world, inventory)
-    else:
-        return True
-
-
-def can_access_temple(world, inventory):
-    if world.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.seaside):
-        return can_access_yaridovich(world, inventory)
-    else:
-        return True
-
-
-def can_access_monstro_town(world, inventory):
-    if world.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.landsend):
-        return can_access_temple(world, inventory)
-    else:
-        return True
-
-
-def can_access_invisible_flags(world, inventory):
-    if not world.settings.is_flag_enabled(flags.SkipMustyFearsSequence):
-        return can_access_monstro_town(world, inventory)
-    else:
-        return True
-
-
-def can_access_volcano(world, inventory):
-    if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.nimbus):
-        return can_clear_nimbus_castle(inventory)
-    else:
-        return True
-
-
-def can_access_keep(world, inventory):
-    if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.volcano):
-        return can_access_volcano(world, inventory)
-    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star1):
-        return inventory.has_item(items.StarPiece)
-    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star2):
-        return inventory.has_item_count(items.StarPiece, 2)
-    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star3):
-        return inventory.has_item_count(items.StarPiece, 3)
-    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star4):
-        return inventory.has_item_count(items.StarPiece, 4)
-    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star5):
-        return inventory.has_item_count(items.StarPiece, 5)
-    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star6):
-        return inventory.has_item_count(items.StarPiece, 6)
-    else:
-        return True
-
-
-def can_access_factory(world, inventory):
-    if world.settings.is_flag_value(flags.FactoryGate, FactoryGating.star1):
-        return inventory.has_item(items.StarPiece) and can_access_keep(world, inventory)
-    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.star2):
-        return inventory.has_item_count(items.StarPiece, 2) and can_access_keep(world, inventory)
-    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.star3):
-        return inventory.has_item_count(items.StarPiece, 3) and can_access_keep(world, inventory)
-    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.star4):
-        return inventory.has_item_count(items.StarPiece, 4) and can_access_keep(world, inventory)
-    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.star5):
-        return inventory.has_item_count(items.StarPiece, 5) and can_access_keep(world, inventory)
-    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.star6):
-        return inventory.has_item_count(items.StarPiece, 6) and can_access_keep(world, inventory)
-    else:
-        return can_access_keep(world, inventory)
-
-
-def can_access_final_boss(world, inventory):
-    value = world.settings.get_flag(flags.StarPiecesRequired).value
-    has_stars = inventory.has_item_count(items.StarPiece, value)
-    if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1):
-        fireworks_access = inventory.has_item(items.ProgressiveFireworks)
-    elif world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
-        fireworks_access = inventory.has_item_count(items.ProgressiveFireworks, 3)
-    can_access_bucket = fireworks_access and inventory.has_item(items.BambinoBomb) and world.settings.is_flag_value(flags.BucketWarp, False)
-    can_access_casino = world.settings.is_flag_value(flags.CasinoWarp, True) and inventory.has_item(items.BrightCard)
-    return has_stars and (can_access_bucket or can_access_casino or can_access_factory(world, inventory))
-
-
-def can_super_jump(world, inventory):
-    can_access = False
-    for c in world.characters:
-        has_super_jump = len(
-            [s for s in c.learned_spells if utils.isclass_or_instance(c.learned_spells[s], spells.SuperJump)]) > 0
-        if has_super_jump and ((utils.isclass_or_instance(c, Mario) and inventory.has_item(items.MarioRecruit)) or (utils.isclass_or_instance(c, Mallow) and inventory.has_item(items.MallowRecruit)) or (utils.isclass_or_instance(c, Geno) and inventory.has_item(items.GenoRecruit)) or (utils.isclass_or_instance(c, Bowser) and inventory.has_item(items.BowserRecruit)) or (utils.isclass_or_instance(c, Peach) and inventory.has_item(items.ToadstoolRecruit))):
-            can_access = True
-    # print ([i for i in inventory if utils.isclass_or_instance(i, items.RecruitedCharacter)])
-    # print ([(c, c.learned_spells) for c in world.characters])
-    # print(can_access)
-    # print("")
-    return can_access

@@ -338,9 +338,8 @@ def update_credits(world):
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'CYNAS       PIDGEZERO_ONE')
-    credits.add_credit(0x80, 0x40, 0x81, 'BROATMEAL        DARKDATA')
-    credits.add_credit(0x80, 0x00, 0xc2, 'SUPREME DIRT')
+    credits.add_credit(0x80, 0xc0, 0xc0, 'CYNAS       PIDGEZERO_ONE')
+    credits.add_credit(0x80, 0x80, 0x81, 'BROATMEAL        DARKDATA')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #27

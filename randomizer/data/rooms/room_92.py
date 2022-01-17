@@ -197,7 +197,7 @@ room = Room(
             cannot_clone=False,
         ),
         RegularNPC( # 5
-            occupant=npcs.BigFlower,
+            occupant=npcs.SlotFlower,
             initiator=Initiator.NONE,
             event_script=2304,
             action_script=15,
@@ -231,7 +231,7 @@ room = Room(
             cannot_clone=True,
         ),
         RegularClone( # 6
-            occupant=npcs.BigFlower,
+            occupant=npcs.SlotFlower,
             event_script=2304,
             action_script=15,
             visible=False,
@@ -248,7 +248,7 @@ room = Room(
             cannot_clone=True,
         ),
         RegularClone( # 7
-            occupant=npcs.BigFlower,
+            occupant=npcs.SlotFlower,
             event_script=2304,
             action_script=15,
             visible=False,

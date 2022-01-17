@@ -56,6 +56,18 @@ room = Room(
             ne_sw_edge_active=False,
             byte_8_bit_4=False,
         ),
+        Event(
+            event=998,
+            x=23,
+            y=77,
+            z=0,
+            f=Edge.SOUTHWEST,
+            height=0,
+            length=8,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=False,
+            byte_8_bit_4=False,
+        ),
     ],
     objects=[
         BattlePackNPC( # 0

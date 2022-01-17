@@ -4,15 +4,16 @@ import collections
 import random
 import inspect
 
-from randomizer.data import characters, spells, palettes, items, chests
+from randomizer.data import chests, characters, spells, palettes, items, chests
 from randomizer.logic import flags, utils
 from randomizer.helpers.flag_helpers import PlayableCharacters
+
 
 def new_spell_name(spell, character):
     working_title = spell.title
     new_name = character.original_name
     if new_name == PlayableCharacters.toadstool:
-        new_name = "Peach" # too long otherwise
+        new_name = "Peach"  # too long otherwise
     for n in ["Mario", "Mallow", "Geno", "Bowser", "Peach"]:
         working_title = working_title.replace(n, new_name)
     return working_title
@@ -27,101 +28,141 @@ def _randomize_learned_spells(world):
     """
     # Shuffle all spells.  There are 27 spells, so add an extra 3 random ones to ensure everybody has 6 spells.
     # In linear mode Group Hug only works with Peach, so remove it from the shuffle and give Peach only 5 spells.
+
     default_spells = [s for s in world.spells if isinstance(s, spells.CharacterSpell)]
-    
-    sj_index = next((i for i, item in enumerate(default_spells) if item.index == 2), -1)
-    sj = default_spells[sj_index]
 
     clones = [spells.Clone1, spells.Clone2, spells.Clone3]
 
-    waiting_spells = default_spells[:]
     charspells = collections.defaultdict(list)
 
-    # Super Jump MUST NOT be on a character who is not included in the seed. Do this first.
-    charactersInSeed = [c for c in world.characters if c.original_name in world.settings.get_flag(
-        flags.AvailableCharacters).enabled]
-    if len(charactersInSeed) < 5:
-        super_jump_character = random.choice(charactersInSeed)
-        charspells[super_jump_character].append(sj)
-        waiting_spells.remove(sj)
+    available_spells_to_clone = []
+    empty_placements = []
 
-    cloning = False
-    clone_index = 0
+    placement_array = [
+        [
+            chests.MarioSpell1,
+            chests.MarioSpell2,
+            chests.MarioSpell3,
+            chests.MarioSpell4,
+            chests.MarioSpell5,
+            chests.MarioSpell6,
+        ],
+        [
+            chests.MallowSpell1,
+            chests.MallowSpell2,
+            chests.MallowSpell3,
+            chests.MallowSpell4,
+            chests.MallowSpell5,
+            chests.MallowSpell6,
+        ],
+        [
+            chests.GenoSpell1,
+            chests.GenoSpell2,
+            chests.GenoSpell3,
+            chests.GenoSpell4,
+            chests.GenoSpell5,
+            chests.GenoSpell6,
+        ],
+        [
+            chests.BowserSpell1,
+            chests.BowserSpell2,
+            chests.BowserSpell3,
+            chests.BowserSpell4,
+            chests.BowserSpell5,
+            chests.BowserSpell6,
+        ],
+        [
+            chests.ToadstoolSpell1,
+            chests.ToadstoolSpell2,
+            chests.ToadstoolSpell3,
+            chests.ToadstoolSpell4,
+            chests.ToadstoolSpell5,
+            chests.ToadstoolSpell6,
+        ],
+    ]
 
+    for spell_placement in world.spell_placements:  # get spell order from item shuffler
 
-    # Place spells in characters who still need spells until we have no more.
-    while True:
-        still_need = [c for c in world.characters if
-                      (len(charspells[c]) < 5 or (len(charspells[c]) < 6 and (not isinstance(c, characters.Peach) or
-                                                                              world.open_mode)))]
-        if not still_need:
-            break
+        # print(spell_placement)
 
-        for char in still_need:
-            possible_spells = [spell for spell in waiting_spells if spell not in charspells[char]]
-            spell = random.choice(possible_spells)
-            # Remove spell from list of waiting to be assigned. 
-            waiting_spells.remove(spell)
+        if utils.isclass_or_instance(spell_placement, chests.MarioSpell):
+            char_index = 0
+        elif utils.isclass_or_instance(spell_placement, chests.MallowSpell):
+            char_index = 1
+        elif utils.isclass_or_instance(spell_placement, chests.GenoSpell):
+            char_index = 2
+        elif utils.isclass_or_instance(spell_placement, chests.BowserSpell):
+            char_index = 3
+        elif utils.isclass_or_instance(spell_placement, chests.ToadstoolSpell):
+            char_index = 4
 
-            if not world.settings.is_flag_enabled(flags.ChangeNames):
-                # change the spell name as long as character names are vanilla
-                spell_name = new_spell_name(spell, char)
-            else:
-                spell_name = spell.title
+        char = world.characters[char_index]
 
-            if cloning and clone_index < len(clones):
-                clone_spell = clones[clone_index](world, spell_name, spell)
-                spell = clone_spell
-                clone_index += 1
-                world.spells.append(spell)
-            else:
-                spell.title = spell_name
-                index = next((i for i, item in enumerate(world.spells) if item.index == spell.index), -1)
-                world.spells[index] = spell
+        if spell_placement.item is None:
+            empty_placements.append((char_index, len(charspells[char])))
+            charspells[char].append(None)
+            continue
+        spell_class = spell_placement.item.related_class
+        spell_index = next(
+            (i for i, item in enumerate(default_spells) if type(item) == spell_class),
+            -1,
+        )
+        spell = default_spells[spell_index]
 
+        if not world.settings.is_flag_enabled(flags.ChangeNames):
+            # change the spell name as long as character names are vanilla
+            spell_name = new_spell_name(spell, char)
+        else:
+            spell_name = spell.title
 
-            charspells[char].append(spell)
+        spell.title = spell_name
+        index = next(
+            (i for i, item in enumerate(world.spells) if item.index == spell.index), -1
+        )
+        world.spells[index] = spell
 
-            # If we used them all, reset the list and choose more.
-            if not waiting_spells:
-                cloning = True
-                waiting_spells = default_spells[:]
+        charspells[char].append(spell)
 
-    # Guarantee Geno Boost and Group Hug isn't the last spell a character learns if they have it.
-    for character in world.characters:
-        random.shuffle(charspells[character]) # shuffle once to make sure Super Jump isn't always spell #1
-        our_spells = charspells[character]
-        for s in (
-                spells.GenoBoost,
-                spells.GroupHug,
-        ):
-            if s in our_spells:
-                index = our_spells.index(s)
-                if index == (len(our_spells) - 1):
-                    new_index = random.randint(0, max(len(our_spells) - 2, 0))
-                    our_spells[index], our_spells[new_index] = our_spells[new_index], our_spells[index]
+        available_spells_to_clone.append(spell)
 
-    # Linear mode: Insert Group Hug for Peach, but make sure it's not the final spell learned for balance.
-    if not world.open_mode:
-        for character in world.characters:
-            if isinstance(character, characters.Peach) and len(charspells[character]) < 6:
-                charspells[character].insert(random.randint(0, 4), spells.GroupHug)
+    # for i in world.characters:
+    #     print(i, charspells[i])
+    # print(empty_placements)
+    clone_placements = random.sample(empty_placements, k=3)
+    # print(clone_placements)
+    for index, (x, y) in enumerate(clone_placements):
+        char = world.characters[x]
+        has_spells = [s for s in charspells[char] if s is not None]
+        eligible_spells = [s for s in available_spells_to_clone if s not in has_spells]
+        donor = random.choice(eligible_spells)
+        clone_spell = clones[index]
+        # print(clone_spell, char, y)
 
-    # Sanity check to make sure every character has 6 spells and Peach has Group Hug.
-    for character in world.characters:
-        if len(charspells[character]) != 6:
-            raise RuntimeError("Character {} does not have 6 spells: {!r}".format(character, charspells))
-        elif (not world.open_mode and isinstance(character, characters.Peach) and
-              spells.GroupHug not in charspells[character]):
-            raise RuntimeError("Peach was assigned 6 spells before Group Hug: {!r}".format(charspells))
+        if not world.settings.is_flag_enabled(flags.ChangeNames):
+            # change the spell name as long as character names are vanilla
+            spell_name = new_spell_name(donor, char)
+        else:
+            spell_name = spell.title
+
+        spell = clone_spell(world, spell_name, donor)
+        world.spells.append(spell)
+        charspells[char][y] = spell
+
+    for i in world.characters:
+        c = charspells[i]
+        charspells[i] = [s for s in c if s is not None]
+        # print(i, charspells[i])
 
     # Assign chosen spells for each character.  Make the first spell always learned from the start (level 1), and
     # assign the other spells to random levels from 2-20.
     for character in world.characters:
         character.learned_spells = {}
-        charlevels = [1] + sorted(random.sample(list(range(2, 20)), 5))
-        for level, spell in zip(charlevels, charspells[character]):
-            character.learned_spells[level] = spell
+        if len(charspells[character]) > 0:
+            charlevels = [1] + sorted(
+                random.sample(list(range(2, 20)), len(charspells[character]) - 1)
+            )
+            for level, spell in zip(charlevels, charspells[character]):
+                character.learned_spells[level] = spell
 
 
 def _randomize_levelup_xps(levelup_xps):
@@ -132,7 +173,9 @@ def _randomize_levelup_xps(levelup_xps):
     """
     gaps = []
     for i in range(1, len(levelup_xps.levels)):
-        xp_to_levelup = levelup_xps.get_xp_for_level(i + 1) - levelup_xps.get_xp_for_level(i)
+        xp_to_levelup = levelup_xps.get_xp_for_level(
+            i + 1
+        ) - levelup_xps.get_xp_for_level(i)
         gaps.append(utils.mutate_normal(xp_to_levelup, minimum=1, maximum=9999))
     gaps.sort()
 
@@ -167,7 +210,9 @@ def _randomize_character(character):
     Args:
         character(randomizer.data.characters.Character):
     """
-    character.starting_level = utils.mutate_normal(character.starting_level, minimum=1, maximum=30)
+    character.starting_level = utils.mutate_normal(
+        character.starting_level, minimum=1, maximum=30
+    )
     character.speed = utils.mutate_normal(character.speed, minimum=1, maximum=255)
 
     # Shuffle level up stat bonuses.
@@ -191,8 +236,11 @@ def _randomize_character(character):
 
         for _ in range(3):
             # Pick a random level range in the fixed points list that is >= 4 levels apart to spread them out a bit.
-            range_index = [i for i in range(1, len(fixed_points) - 1) if
-                           fixed_points[i][0] - fixed_points[i - 1][0] >= 4]
+            range_index = [
+                i
+                for i in range(1, len(fixed_points) - 1)
+                if fixed_points[i][0] - fixed_points[i - 1][0] >= 4
+            ]
             if not range_index:
                 break
 
@@ -204,11 +252,15 @@ def _randomize_character(character):
             value_interval = (upper_value - lower_value) // 2
 
             # Increase by at least 1 level, but not all the way to the upper level.
-            level_increase = max(random.randint(0, level_interval) + random.randint(0, level_interval), 1)
+            level_increase = max(
+                random.randint(0, level_interval) + random.randint(0, level_interval), 1
+            )
             level = min(lower_level + level_increase, upper_level - 1)
 
             # Increase value by at least 1 for each level.
-            value_increase = random.randint(0, value_interval) + random.randint(0, value_interval)
+            value_increase = random.randint(0, value_interval) + random.randint(
+                0, value_interval
+            )
             value_increase = max(value_increase, level_increase)
             value = lower_value + value_increase
 
@@ -223,7 +275,9 @@ def _randomize_character(character):
                 steps_away_from_level1 = l - level1
                 factor = steps_away_from_level1 / float(level_difference)
                 # Min increase value number of steps away from level1, so we increase by at least 1 for each level.
-                v = value1 + max(int(round(factor * value_difference)), steps_away_from_level1)
+                v = value1 + max(
+                    int(round(factor * value_difference)), steps_away_from_level1
+                )
                 fixed_points.append((l, v))
 
         fixed_points = sorted(fixed_points)
@@ -232,14 +286,19 @@ def _randomize_character(character):
         # Sanity checks
         num_points = len(fixed_points)
         if num_points != 20:
-            raise ValueError("Generated fixed points is not 20 levels: {} instead".format(num_points))
+            raise ValueError(
+                "Generated fixed points is not 20 levels: {} instead".format(num_points)
+            )
 
         if levels != tuple(sorted(levels)):
             raise ValueError("Generate levels aren't in order: {!r}".format(levels))
 
         if values != tuple(sorted(values)):
-            raise ValueError("Stat values aren't in order character {}, stat {}: {!r}, fixed_points {!r}".format(
-                character.name, attr, values, fixed_points))
+            raise ValueError(
+                "Stat values aren't in order character {}, stat {}: {!r}, fixed_points {!r}".format(
+                    character.name, attr, values, fixed_points
+                )
+            )
 
         # Get increases for each levelup.
         increases = []
@@ -253,9 +312,9 @@ def _randomize_character(character):
 
         max_index = len(increases) - 1
         for n, inc in enumerate(increases):
-            factor = (((max_index - n) / float(max_index)) * frontload_factor)
+            factor = ((max_index - n) / float(max_index)) * frontload_factor
             amount = int(round(inc * factor))
-            increases[n] = (inc - amount)
+            increases[n] = inc - amount
 
         # Make sure no single level has an increase greater than 15.  Shuffle increases to avoid this.
         while max(increases) > 15:
@@ -288,10 +347,12 @@ def _randomize_character(character):
             # things get messy as dummy spells get learnt and bad data is used for level up stats.  If the physical
             # attack growth is at least 3, this will make two bytes 0x3000 at minimum which is > 12000 no matter
             # what the other values are.  This prevents this bug from happening.
-            if attr == 'attack':
+            if attr == "attack":
                 while increases[0] < 3:
                     # Subtract 1 from a random growth that has > 1 currently so we have at least 1 per level.
-                    candidates = [i for i in range(1, len(increases)) if increases[i] > 1]
+                    candidates = [
+                        i for i in range(1, len(increases)) if increases[i] > 1
+                    ]
                     if not candidates:
                         break
                     increases[0] += 1
@@ -320,14 +381,18 @@ def _finalize_character(character):
     for attr in character.LEVEL_STATS:
         # Make sure stat can't grow beyond max value.  This should be rare, but if it happens then subtract from
         # the levelup growths beyond the starting level to fix it.
-        if attr == 'max_hp':
+        if attr == "max_hp":
             max_allowed = 999
         else:
             max_allowed = 255
 
         while character.get_max_stat_at_level(attr, 30) > max_allowed:
             # Subtract 1 from a random growth that has > 1 currently so we have at least 1 per level.
-            ss = [s for s in character.levelup_growths[character.starting_level - 1:] if getattr(s, attr) > 1]
+            ss = [
+                s
+                for s in character.levelup_growths[character.starting_level - 1 :]
+                if getattr(s, attr) > 1
+            ]
             if not ss:
                 break
             weights = list(range(len(ss)))
@@ -336,7 +401,11 @@ def _finalize_character(character):
             setattr(s, attr, value - 1)
 
         # Set final starting stat value based on optimal bonuses.
-        setattr(character, attr, character.get_optimal_stat_at_level(attr, character.starting_level))
+        setattr(
+            character,
+            attr,
+            character.get_optimal_stat_at_level(attr, character.starting_level),
+        )
 
     # If we're in debug mode, max all starting stats.
     if character.world.debug_mode:
@@ -355,7 +424,9 @@ def _finalize_character(character):
             character.starting_spells.add(character.learned_spells[level])
 
     # Set starting exp based on starting level.
-    character.xp = character.world.levelup_xps.get_xp_for_level(character.starting_level)
+    character.xp = character.world.levelup_xps.get_xp_for_level(
+        character.starting_level
+    )
 
 
 def randomize_all(world):
@@ -373,11 +444,17 @@ def randomize_all(world):
     for character in world.characters:
         illegal_spell_keys = []
         for key, value in character.learned_spells.items():
-            if value.base_title in world.settings.get_flag(flags.AvailableSpells).disabled or (utils.isclass_or_instance(value, spells.CloneSpell) and value.reference_spell in world.settings.get_flag(flags.AvailableSpells).disabled):
+            if value.base_title in world.settings.get_flag(
+                flags.AvailableSpells
+            ).disabled or (
+                utils.isclass_or_instance(value, spells.CloneSpell)
+                and value.reference_spell
+                in world.settings.get_flag(flags.AvailableSpells).disabled
+            ):
                 illegal_spell_keys.append(key)
         for level in illegal_spell_keys:
             character.learned_spells.pop(level, None)
- 
+
     # Shuffle character stats.
     if world.settings.is_flag_enabled(flags.CharacterStats):
         _randomize_levelup_xps(world.levelup_xps)
@@ -389,9 +466,9 @@ def randomize_all(world):
 
         # Shuffle physical and magical bonuses together.
         for attrs in (
-                ('max_hp',),
-                ('attack', 'defense'),
-                ('magic_attack', 'magic_defense'),
+            ("max_hp",),
+            ("attack", "defense"),
+            ("magic_attack", "magic_defense"),
         ):
             # Shuffle between all characters.
             shuffled = all_bonuses[:]
@@ -405,7 +482,9 @@ def randomize_all(world):
                     setattr(bonus, attr, bval)
 
             # For any bonuses that are zero, pick a random non-zero one.
-            non_zeros = [b for b in all_bonuses if all([getattr(b, attr) for attr in attrs])]
+            non_zeros = [
+                b for b in all_bonuses if all([getattr(b, attr) for attr in attrs])
+            ]
             for bonus in all_bonuses:
                 for attr in attrs:
                     while getattr(bonus, attr) == 0:
@@ -414,7 +493,7 @@ def randomize_all(world):
         # Now randomize everything else including the intershuffled bonus values and other levelup growths.
         for character in world.characters:
             _randomize_character(character)
-            
+
 
 def finalize_all(world):
     # Adjust starting levels according to join order.  Get original levels, then update starting levels based on
@@ -438,7 +517,7 @@ def finalize_all(world):
                     world.characters[3].starting_level = 1
                 elif utils.isclass_or_instance(l.item, items.ToadstoolRecruit):
                     world.characters[4].starting_level = 1
-        
+
         for l in world.recruitable_character_checks:
             if l.has_item:
                 lvl = 1
@@ -470,18 +549,19 @@ def finalize_all(world):
     for character in world.characters:
         _finalize_character(character)
 
+
 def randomize_palettes(world):
     # Palettes!!!!
 
-    mario_name = 'Mario'
+    mario_name = "Mario"
     mallow_name = "Mallow"
-    geno_name = 'Geno'
-    bowser_name = 'Bowser'
-    peach_name = 'Toadstool'
+    geno_name = "Geno"
+    bowser_name = "Bowser"
+    peach_name = "Toadstool"
     peach_article = ""
 
     if world.settings.is_flag_enabled(flags.PaletteSwaps):
-    
+
         mario_palettes = utils.find_subclasses(palettes, palettes.MarioPalette)
         mallow_palettes = utils.find_subclasses(palettes, palettes.MallowPalette)
         geno_palettes = utils.find_subclasses(palettes, palettes.GenoPalette)
@@ -493,16 +573,20 @@ def randomize_palettes(world):
         world.characters[2].palette = random.choice(geno_palettes)
         world.characters[3].palette = random.choice(bowser_palettes)
         world.characters[4].palette = random.choice(toadstool_palettes)
-        if utils.isclass_or_instance(world.characters[4].palette, palettes.ToadstoolBlack):
-            world.replace_dialog(735, ''' This Bowsette costume is missing\n horns. Oh, well...[await]''')
-        
+        if utils.isclass_or_instance(
+            world.characters[4].palette, palettes.ToadstoolBlack
+        ):
+            world.replace_dialog(
+                735, """ This Bowsette costume is missing\n horns. Oh, well...[await]"""
+            )
 
-        
 
 def get_spoiler(world):
     acc = {}
-    
+
     for character in world.characters:
-        acc[character.original_name] = [{s: character.learned_spells[s].title} for s in character.learned_spells]
+        acc[character.original_name] = [
+            {s: character.learned_spells[s].title} for s in character.learned_spells
+        ]
 
     return acc

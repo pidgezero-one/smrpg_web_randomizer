@@ -1579,9 +1579,9 @@ def get_default_enemy_formations(world):
             FormationMember(4, False, world.get_enemy_instance(enemies.MadMallet), 183, 151),
         ]),
         EnemyFormation(263, None, 1, [
-            FormationMember(0, False, world.get_enemy_instance(enemies.MadMalletHenchman), 167, 103),
-            FormationMember(1, False, world.get_enemy_instance(enemies.MadMalletHenchman), 135, 119),
-            FormationMember(2, False, world.get_enemy_instance(enemies.MadMalletHenchman), 199, 151),
+            FormationMember(0, False, world.get_enemy_instance(enemies.MadMalletHenchman), 151, 127),
+            FormationMember(1, False, world.get_enemy_instance(enemies.MadMalletHenchman), 199, 151),
+            FormationMember(2, False, world.get_enemy_instance(enemies.MadMalletHenchman), 199, 119),
         ]),
         EnemyFormation(264, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Pounder), 183, 127),
@@ -1843,8 +1843,10 @@ def get_default_enemy_formations(world):
             FormationMember(1, False, world.get_enemy_instance(enemies.GrateGuy), 199, 143),
         ]),
         EnemyFormation(300, None, 7, [
-            FormationMember(0, False, world.get_enemy_instance(enemies.KingBomb), 151, 119),
-            FormationMember(1, False, world.get_enemy_instance(enemies.MezzoBomb), 199, 143),
+            FormationMember(0, True, world.get_enemy_instance(enemies.Helio), 167, 119),
+            FormationMember(1, True, world.get_enemy_instance(enemies.Helio), 135, 135),
+            FormationMember(2, True, world.get_enemy_instance(enemies.Helio), 199, 167),
+            FormationMember(3, True, world.get_enemy_instance(enemies.Helio), 231, 151),
         ]),
         # This formation actually has Jinx 3 in the vanilla data, but it's for the Jinx 1 battle!
         # There's a weird battle event that swaps in the Jinx 1 enemy, but we want Jinx 1 data for boss shuffle.
@@ -1879,6 +1881,9 @@ def get_default_enemy_formations(world):
         ], required_battlefield=Battlefields.AxemRangers),
         EnemyFormation(305, 14, 11, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Bowyer), 183, 127),
+        ], stat_scaling_enemies=[
+            world.get_enemy_instance(enemies.Bowyer),
+            world.get_enemy_instance(enemies.AeroBowyer)
         ]),
         EnemyFormation(306, None, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Culex), 183, 127),
@@ -2495,6 +2500,10 @@ def get_default_enemy_formations(world):
         ]),
         EnemyFormation(434, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.PeachClone), 183, 127),
+        ]),
+        EnemyFormation(435, None, 1, [
+            FormationMember(0, False, world.get_enemy_instance(enemies.AeroBowyer), 167, 119),
+            FormationMember(1, False, world.get_enemy_instance(enemies.AeroBowyer), 199, 135),
         ]),
         EnemyFormation(480, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Cloaker2), 167, 135),
@@ -3319,9 +3328,9 @@ def get_default_enemy_formations(world):
             formations_dict[271],
         ]),
         FormationPack(160, [
-            formations_dict[349],
-            formations_dict[349],
-            formations_dict[349],
+            formations_dict[435],
+            formations_dict[435],
+            formations_dict[435],
         ]),
         FormationPack(161, [
             formations_dict[274],
@@ -3467,6 +3476,11 @@ def get_default_enemy_formations(world):
             formations_dict[355],
             formations_dict[355],
             formations_dict[355],
+        ]),
+        FormationPack(193, [
+            formations_dict[300],
+            formations_dict[300],
+            formations_dict[300],
         ]),
         FormationPack(194, [
             formations_dict[20],

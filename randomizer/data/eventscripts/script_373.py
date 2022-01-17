@@ -1466,21 +1466,6 @@ script = [
         "args": [AreaObjects.MARIO, 395]
     },
     {
-        "identifier": 'EVENT_373_set_bit_399_',
-        "command": 'set_bit',
-        "args": [0x7099, 0]
-    },
-    {
-        "identifier": 'EVENT_373_star',
-        "command": 'run_event_as_subroutine',
-        "args": [168]
-    },
-    {
-        "identifier": 'EVENT_373_set_bit_399__',
-        "command": 'clear_bit',
-        "args": [0x7099, 0]
-    },
-    {
         "identifier": 'EVENT_373_jmp_to_event_235',
         "command": 'jmp_to_event',
         "args": [375]

@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_3114_set_action_script_sync_1',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 1]
+        "args": [AreaObjects.MEM_70A8, 1012]
     },
     {
         "identifier": 'EVENT_3114_run_dialog_2',

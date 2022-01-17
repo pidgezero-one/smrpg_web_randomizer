@@ -5,7 +5,7 @@ from django.utils.html import mark_safe
 from markdown import markdown
 from randomizer.helpers.flag_helpers import ShuffleLocationSelector, FlagOptions
 from randomizer.data.bosses import AvailableBosses
-from randomizer.helpers.flag_helpers import FireworksOptions, WinConditions, PlayableCharacters, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, ItemQualities, ShopQualities, EquipmentCharactersOptions, regular_checks, freestanding_checks
+from randomizer.helpers.flag_helpers import FireworksOptions, WinConditions, PlayableCharacters, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, ItemQualities, ShopQualities, EquipmentCharactersOptions, regular_checks, BossScaleOptions
 from randomizer.data import spells, music
 
 
@@ -506,7 +506,7 @@ class EXPStarsAnywhere(BooleanFlag):
 
 class MimicsAnywhere(BooleanFlag):
     name = 'Shuffle mimic chests'
-    description = '''If enabled, any three chests in the world may be mimics. You will be able to run away from them, including fights initiated by failed slot machines. If you have "Scale boss stats to area difficulty" enabled, each mimic will be restricted to areas that are appropriate for its stats. However you should save often with this setting turned on, especially if item-hunting at the start of the seed.
+    description = '''If enabled, any three chests in the world may be mimics. You will be able to run away from them, including fights initiated by failed slot machines. If you have "Scale boss stats to area difficulty" set to "Match to area", each mimic will be restricted to areas that are appropriate for its stats. However you should save often with this setting turned on, especially if item-hunting at the start of the seed.
 <br>
 <br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley. You will not be able to run away from these fights, or from fights initiated by failed slot machines.'''
     modes = ['open']
@@ -581,7 +581,7 @@ class FireworksSetting(SelectOneFlag):
 
 
 class KeyItemsAnywhere(BooleanFlag):
-    name = '"Special Items" can appear anywhere'
+    name = '"Special Items" can appear in the general item pool'
     description = '''If enabled, items belonging to your "Special Items" pocket can appear in any item location.
 <br>
 <br>If disabled, the "Special Items" will only be shuffled within each other's locations.
@@ -615,30 +615,16 @@ class InvisibleFlagsSetting(BooleanFlag):
 
 
 class EnabledRegularChecks(CategorizationFlag):
-    name = 'Chest & reward checks'
+    name = 'General item pool checks'
     description = '''If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
 <br>
 <br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
 <br>
-<br>This setting only applies if you have "Special Items can appear anywhere" or "Star Pieces can appear in the general item pool" enabled.'''
+<br>This setting only applies if you have "Special Items can appear in the general item pool" or "Star Pieces can appear in the general item pool" enabled.'''
     optionEnum = ShuffleLocationSelector
     options = [o for o in regular_checks]
     enabled = [o for o in regular_checks]
     id = "chests"
-
-
-
-
-class EnabledFreestandingChecks(CategorizationFlag):
-    name = 'Freestanding coin/flower/mushroom checks'
-    description = '''If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
-<br>
-<br>If a check is not highlighted, it will not be shuffled, nor can it contain any items required to complete the seed. (However, it will disappear if Item Pool is set to "Completely Empty".)
-<br>
-<br>If item quality is set to "Completely empty", only highlighted checks will be affected.'''
-    optionEnum = ShuffleLocationSelector
-    options = [o for o in freestanding_checks]
-    id = "coins"
 
 
 # ******** Item behaviour
@@ -791,9 +777,11 @@ class SuperJump2Threshold(NumberThresholdFlag):
 
 class BanditsWayGate(SelectOneFlag):
     name = '''Bandit's Way access'''
-    description = '''<b>Recruit character</b>: Bandit's Way will become available on the world map when you recruit the selected character.
+    description = '''<b>Recruit Mallow</b>: Bandit's Way will become available on the world map when Mallow joins the party.
 <br>
 <br><b>Finish Mushroom Way</b>: Bandit's Way will become available on the world map when you defeat the boss of Mushroom Way.
+<br>
+<br><b>Defeat Hammer Bros</b>: Bandit's Way will become available on the world map when you have found and defeated the Hammer Bros boss battle.
 <br>
 <br><b>Always Open</b>: Bandit's Way will be available on the world map from the start of the game.'''
     modes = ['open']
@@ -805,7 +793,7 @@ class BanditsWayGate(SelectOneFlag):
 
 class ForestMazeGate(SelectOneFlag):
     name = '''Forest Maze access'''
-    description = '''<b>Find character</b>: Forest Maze will become available on the world map when you first see the selected character. "See" does not necessarily mean "recruit".
+    description = '''<b>Find Geno</b>: Forest Maze will become available on the world map when you first see Geno. "See" does not necessarily mean "recruit".
 <br>
 <br><b>Exchange Cricket Pie</b>: Forest Maze will become available on the world map when you turn in the Cricket Pie to Frogfucius.
 <br>
@@ -819,9 +807,11 @@ class ForestMazeGate(SelectOneFlag):
 
 class PipeVaultGate(SelectOneFlag):
     name = '''Pipe Vault access'''
-    description = '''<b>Recruit character</b>: Pipe Vault will be unblocked when you recruit the selected character.
+    description = '''<b>Recruit Geno</b>: Pipe Vault will be unblocked when Geno joins the party.
 <br>
 <br><b>Finish Forest Maze</b>: Pipe Vault will be unblocked when you defeat the final boss of Forest Maze.
+<br>
+<br><b>Defeat Bowyer</b>: Pipe Vault will be unblocked when you have found and defeated the Bowyer boss battle.
 <br>
 <br><b>Always Open</b>: Pipe Vault will be unblocked from the start of the game.'''
     modes = ['open']
@@ -837,6 +827,8 @@ class BoosterTowerGate(SelectOneFlag):
 <br>
 <br><b>Finish Moleville</b>: Booster Tower's door will unlock when you defeat the final boss of Moleville.
 <br>
+<br><b>Defeat Punchinello</b>: Booster Tower's door will unlock when you have found and defeated the Punchinello boss battle.
+<br>
 <br><b>Always Open</b>: Booster Tower's door will be unlocked from the start of the game.'''
     modes = ['open']
     optionEnum = BoosterTowerGating
@@ -847,9 +839,11 @@ class BoosterTowerGate(SelectOneFlag):
 
 class MarrymoreGate(SelectOneFlag):
     name = '''Marrymore back door access'''
-    description = '''<b>Finish Booster Hill</b>: The chapel back door will become available on the world map when you complete Booster Hill one time.
+    description = '''<b>Finish Booster Hill</b>: The chapel back door will open when you complete Booster Hill one time.
 <br>
-<br><b>Finish Booster Tower</b>: The chapel back door will become available on the world map when you defeat the balcony boss of Booster Tower.
+<br><b>Finish Booster Tower</b>: The chapel back door will open when you defeat the balcony boss of Booster Tower.
+<br>
+<br><b>Defeat Knife Guy & Grate Guy</b>: The chapel back door will open when you have found and defeated the Knife Guy & Grate Guy boss battle.
 <br>
 <br><b>Always Open</b>: The chapel back door will be open from the start of the game.'''
     modes = ['open']
@@ -861,9 +855,11 @@ class MarrymoreGate(SelectOneFlag):
 
 class SeaGate(SelectOneFlag):
     name = '''Sea & Sunken Ship access'''
-    description = '''<b>Recruit character</b>: The Sea will become available on the world map when you recruit the selected character.
+    description = '''<b>Recruit Toadstool</b>: The Sea will become available on the world map when Toadstool joins the party.
 <br>
-<br><b>Collect Star Pieces</b>: The Sea will become available on the world map when you collect the selected number of Star Pieces.
+<br><b>Collect 4 Star Pieces</b>: The Sea will become available on the world map when you collect 4 Star Pieces.
+<br>
+<br><b>Defeat Bundt</b>: The Sea will become available on the world map when you have found and defeated the Bundt boss battle.
 <br>
 <br><b>Always Open</b>: The Sea & Sunken Ship will be available on the world map from the start of the game.'''
     modes = ['open']
@@ -877,6 +873,8 @@ class BelomeTempleGate(SelectOneFlag):
     name = '''Belome Temple access'''
     description = '''<b>Finish Seaside Town</b>: The first Fortune Teller shaman will not appear until you have defeated the boss of Seaside Town.
 <br>
+<br><b>Defeat Yaridovich</b>: The first Fortune Teller shaman will appear when you have found and defeated the Yaridovich boss battle.
+<br>
 <br><b>Always Open</b>: Belome Temple access is unrestricted.'''
     modes = ['open']
     optionEnum = BelomeTempleGating
@@ -888,6 +886,8 @@ class BelomeTempleGate(SelectOneFlag):
 class MonstroTownGate(SelectOneFlag):
     name = '''Monstro Town access'''
     description = '''<b>Finish Land's End</b>: Monstro Town will become available on the World Map once you take the pipe behind the boss of Belome Temple.
+<br>
+<br><b>Defeat Belome 2</b>: Monstro Town will become available on the World Map when you have found and defeated the Belome 2 boss battle. The pipe in Land's End will be blocked until this happens.
 <br>
 <br><b>Always Open</b>: Monstro Town will be available on the World Map from the start of the game.'''
     modes = ['open']
@@ -901,6 +901,8 @@ class BarrelVolcanoGate(SelectOneFlag):
     name = '''Barrel Volcano access'''
     description = '''<b>Finish Nimbus Land</b>: Barrel Volcano will become available on the World Map once you defeat the final boss of Nimbus Castle.
 <br>
+<br><b>Defeat Valentina</b>: Barrel Volcano will become available on the World Map when you have found and defeated the Valentina boss battle.
+<br>
 <br><b>Always Open</b>: Barrel Volcano will be available on the World Map from the start of the game.'''
     modes = ['open']
     optionEnum = BarrelVolcanoGating
@@ -911,9 +913,11 @@ class BarrelVolcanoGate(SelectOneFlag):
 
 class BowsersKeepGate(SelectOneFlag):
     name = '''Bowser's Keep access'''
-    description = '''<b>Collect Star Pieces</b>: Bowser's Keep will become available on the world map when you collect the selected number of Star Pieces.
+    description = '''<b>Collect 6 Star Pieces</b>: Bowser's Keep will become available on the world map when you collect 6 Star Pieces.
 <br>
 <br><b>Finish Barrel Volcano</b>: Bowser's Keep will become available on the World Map once you defeat the final boss of Barrel Volcano.
+<br>
+<br><b>Defeat Axem Rangers</b>: Bowser's Keep will become available on the World Map when you have found and defeated the Axem Rangers boss battle.
 <br>
 <br><b>Always Open</b>: Bowser's Keep will be available on the world map from the start of the game.'''
     modes = ['open']
@@ -929,7 +933,9 @@ class FactoryGate(SelectOneFlag):
 <br>
 <br><b>Finish Bowser's Keep</b>: Factory will become available on the world map when you complete Bowser's Keep for the first time.
 <br>
-<br><b>Collect Star Pieces</b>: Factory will become available on the world map when you collect the selected number of Star Pieces and Bowser's Keep has been opened. Cannot be higher than 'Star Pieces required to beat the game'.'''
+<br><b>Defeat Exor</b>: Factory will become available on the World Map when you have found and defeated the Exor boss battle and Bowser's Keep has been opened.
+<br>
+<br><b>Collect 6 Star Pieces</b>: Factory will become available on the world map when you collect 6 Star Pieces and Bowser's Keep has been opened.'''
     modes = ['open']
     optionEnum = FactoryGating
     choices = [o for o in FactoryGating]
@@ -943,6 +949,8 @@ class FactoryGate(SelectOneFlag):
 class YaridovichGate(SelectOneFlag):
     name = '''Seaside boss fight access'''
     description = '''<b>Finish Sunken Ship</b>: The Seaside boss fight will become available after you defeat the final boss of Sunken Ship.
+<br>
+<br><b>Defeat Johnny</b>: The Seaside boss fight will become available after you find and defeat the Johnny boss fight.
 <br>
 <br><b>Always Open</b>: The Seaside boss will be available from the start of the game.'''
     modes = ['open']
@@ -1061,7 +1069,9 @@ class RandomTadpolePondSong(BooleanFlag):
 
 class RandomSunkenShipPassword(BooleanFlag):
     name = 'Randomize Sunken Ship password'
-    description = '''If enabled, the password for the Sunken Ship will be changed. Hints are available in the 6 ship puzzles, and occasionally on posted notes within the Sunken Ship.'''
+    description = '''If enabled, the password for the Sunken Ship will be changed. Hints are available in the 6 ship puzzles, and occasionally on posted notes within the Sunken Ship.
+<br/>
+<br/><b>Be warned that some of these are very difficult, or may be references to things you aren't familiar with.</b> The nearby shop shaman will tell you how many of your letters were correct when you submit an incorrect password.'''
     modes = ['open']
     
     id = "pwd"
@@ -1170,12 +1180,18 @@ class BossShuffle(BooleanFlag):
     # if false, disable stat scaling and mimics anywhere
 
 
-class BossShuffleScaleStats(BooleanFlag):
-    name = "Scale boss stats to area difficulty"
-    description = '''If enabled: A boss fight that has been shuffled into a different area will have its stats scaled to match the area's original boss.
+class BossShuffleScaleStats(SelectOneFlag):
+    name = "Scale boss stats"
+    description = '''<b>Do not scale</b>: Boss fights retain their relative original stats, regardless of where they are placed. For example, Culex would still have around 4000 HP, even if he's in Mushroom Way.
 <br>
-<br>If disabled: Boss fights retain their original stats, regardless of where they are placed.'''
-    
+<br><b>Match to area</b>: A boss fight that has been shuffled into a different area will have its stats scaled to match the area's original boss. For example, Culex would have about 100 HP if he's in Mushroom Way.
+<br>
+<br><b>Completely random</b>: A boss fight will inherit the relative stats of a random other location, regardless of position. For example, Culex could be placed in Mushroom Way, but have 1200 HP because he's inherited Belome 2's original stats.'''
+    modes = ['open']
+    optionEnum = BossScaleOptions
+    choices = [o for o in BossScaleOptions]
+    default = BossScaleOptions.vanilla
+
     id = "scale"
 
 
@@ -1277,15 +1293,15 @@ class ExperienceNoBosses(BooleanFlag):
 
 
 class RequireBossFights(BooleanFlag):
-    name = 'Disable all alternate star piece win conditions'
-    description = '''If set, the following actions will NOT grant you a Star Piece, and you must fight the associated boss in order to retrieve their Star Piece (if they have one):
+    name = 'Disable all alternate boss fight win conditions'
+    description = '''If set, the following actions will NOT grant you a Star Piece or open any related map locations, and you must fight the associated boss in order to retrieve their Star Piece (if they have one) and unlock their associated map area (if they unlock one):
 <ul>
 <li> Performing Mack Skip (the Chancellor will not advance the script)</li>
 <li> Completing the Booster Tower curtain minigame (a copy of the boss will appear in the room corner)</li>
 <li> Completing the Nimbus Castle statue minigame, or eliminating the boss in the final hallway with an EXP star (a copy of the boss will appear in the nearby save room)</li>
-<li> Failing a Slot Machine chest and completing the forced mimic encounter (the mimic encounter is available on its own in a separate chest)</li>
+<li> Failing a Slot Machine chest and defeating the forced mimic encounter (the mimic encounter is available on its own in a separate chest)</li>
 </ul>
-<br/>If unset, the above actions will grant you a Star Piece if one is assigned to the associated boss. Each boss' Star Piece can only be obtained once.'''
+<br/>If unset, the above actions will grant you a Star Piece if one is assigned to the associated boss, and unlock the associated map area if the associated boss gates it. Each boss' Star Piece can only be obtained once.'''
     modes = ['open']
     
     id = "noskips"
@@ -1293,14 +1309,14 @@ class RequireBossFights(BooleanFlag):
 
 class NoGenoWhirlExor(BooleanFlag):
     name = 'No Geno Whirl on Exor'
-    description = 'Removes the Exor exploit where he is vulnerable to Geno Whirl when the eyes are stunned.'
+    description = 'If enabled, stunning Exor\'s eyes will not make him vulnerable to Geno Whirl.'
     
     id = "nowhirl"
 
 
 class FixMagikoopa(BooleanFlag):
     name = "Fix Magikoopa"
-    description = 'Removes the Magikoopa oversight where he permanently skips turns after a King Bomb explosion.'
+    description = 'If enabled, King Bomb\'s Big Bang will not disable Magikoopa\'s attacks.'
     
     id = "nobigbang"
 
@@ -1453,8 +1469,7 @@ class ItemLocationSubcategory(FlagCategory):
         InvisibleFlagsSetting,
         KeyItemsAnywhere,
         StarPieceAvailability,
-        EnabledRegularChecks,
-        EnabledFreestandingChecks
+        EnabledRegularChecks
     ]
     id = "L"
 

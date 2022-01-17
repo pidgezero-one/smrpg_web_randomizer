@@ -281,21 +281,6 @@ script = [
         "args": [0x7040, 0, 'EVENT_2077_ret_98']
     },
     {
-        "identifier": 'EVENT_2077_item_grant',
-        "command": 'run_event_as_subroutine',
-        "args": [178]
-    },
-    {
-        "identifier": 'EVENT_2077_pause_64_',
-        "command": 'set',
-        "args": [0x7000, 517]
-    },
-    {
-        "identifier": 'EVENT_2077_star',
-        "command": 'run_event_as_subroutine',
-        "args": [167]
-    },
-    {
         "identifier": 'EVENT_2077_pause_75',
         "command": 'pause',
         "args": [3]
@@ -561,6 +546,26 @@ script = [
         "identifier": 'EVENT_2077_set_bit_87',
         "command": 'set_bit',
         "args": [0x708a, 5]
+    },
+    {
+        "identifier": 'EVENT_2077_pause_64_',
+        "command": 'set',
+        "args": [0x7000, 517]
+    },
+    {
+        "identifier": 'EVENT_2077_item_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_2077_pause_64_~~',
+        "command": 'set',
+        "args": [0x7000, 517]
+    },
+    {
+        "identifier": 'EVENT_2077_star',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
     },
     {
         "identifier": 'EVENT_2077_ret_90',

@@ -178,7 +178,7 @@ room = Room(
             cannot_clone=False,
         ),
         RegularNPC( # 5
-            occupant=npcs.BigFlower,
+            occupant=npcs.Flower,
             initiator=Initiator.NONE,
             event_script=1551,
             action_script=644,

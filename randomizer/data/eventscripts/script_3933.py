@@ -21,6 +21,11 @@ script = [
         "args": [0x70B2]
     },
     {
+        "identifier": 'EVENT_3933_put_inventory_22',
+        "command": 'put_inventory',
+        "args": [232]
+    },
+    {
         "identifier": 'EVENT_3933_inc_7_',
         "command": 'ret'
     }

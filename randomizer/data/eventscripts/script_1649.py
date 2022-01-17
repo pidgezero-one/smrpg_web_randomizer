@@ -117,6 +117,16 @@ script = [
         "args": [3897]
     },
     {
+        "identifier": "EVENT_1649_jmp_if_bit_set_22",
+        "command": "jmp_if_bit_clear",
+        "args": [0x7077, 5, 'EVENT_1649_ret_26'],
+    },
+    {
+        "identifier": "EVENT_1649_star_grant",
+        "command": "jmp_to_event",
+        "args": [168],
+    },
+    {
         "identifier": 'EVENT_1649_ret_26',
         "command": 'ret'
     },

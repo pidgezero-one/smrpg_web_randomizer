@@ -175,10 +175,10 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            occupant=npcs.BigFlower,
+            occupant=npcs.Key,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=2056,
-            action_script=830,
+            action_script=0,
             visible=True,
             x=11,
             y=61,

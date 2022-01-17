@@ -3852,6 +3852,7 @@ scripts[0xE6] = [
     ("inc", [0x7EE000]),
     ("inc", [0x7EE000]),
     ("inc", [0x7EE000]),
+    ("inc", [0x7EE000]),
     ("wait_return", []),
     ("if_bits_set", [0x7EE00A, 0x01]),
     ("if_command", [0x03, 0x03]),
@@ -3861,7 +3862,6 @@ scripts[0xE6] = [
     ("wait_return", []),
     ("if_bits_set", [0x7EE00A, 0x01]),
     ("if_attacked", []),
-    ("inc", [0x7EE000]),
     ("inc", [0x7EE000]),
     ("wait_return", []),
     ("if_command", [0x02, 0x02]),
@@ -3887,8 +3887,6 @@ scripts[0xE6] = [
     ("inc", [0x7EE000]),
     ("wait_return", []),
     ("if_attacked", []),
-    ("inc", [0x7EE000]),
-    ("inc", [0x7EE000]),
     ("inc", [0x7EE000]),
 ]
 scripts[0xE7] = [("attack", [attacks.PhysicalAttack0]), ("start_counter", [])]

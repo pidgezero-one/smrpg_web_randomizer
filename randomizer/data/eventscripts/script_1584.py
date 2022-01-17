@@ -6,6 +6,32 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1584_set_bit_0_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7067, 7, 'EVENT_1584_set_bit_0']
+    },
+    {
+        "identifier": "EVENT_1584_remove_block-",
+        "command": "remove_from_current_level",
+        "args": [AreaObjects.NPC_3],
+    },
+    {
+        "identifier": "EVENT_1584_remove_note-",
+        "command": "remove_from_current_level",
+        "args": [AreaObjects.NPC_4],
+    },
+    {
+        "identifier": "EVENT_1584_remove_block",
+        "command": "remove_from_level",
+        "args": [AreaObjects.NPC_3, Rooms._427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN],
+    },
+    {
+        "identifier": "EVENT_1584_remove_note",
+        "command": "remove_from_level",
+        "args": [AreaObjects.NPC_4, Rooms._427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN],
+    },
+
+    {
         "identifier": 'EVENT_1584_set_bit_0',
         "command": 'jmp_if_bit_set',
         "args": [0x708A, 0, 'EVENT_1584_summon_to_level_248']

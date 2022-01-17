@@ -182,8 +182,8 @@ dialog_data[109] = ''' Hey `MAIN_CHARACTER_NAME`!
  Even though it's tricky, just
  remember this tip:[await]
  If you're dropping around 13 or 14,
- you're just a hair too early.[delay]
- Good luck![await]'''
+ you're just a hair too early.[await]
+ [delay]Good luck![await]'''
 dialog_data[110] = '''[await]'''
 dialog_data[111] = '''[await]'''
 dialog_data[112] = '''[await]'''
@@ -642,7 +642,9 @@ dialog_data[407] = '''YOSHI: (Looks like I need a little
 dialog_data[408] = ''' (Oh, you were SO close!
   Too bad Yoshi lost...
   Let’s race again, sometime.)[await]'''
-dialog_data[409] = '''[await]'''
+dialog_data[409] = ''' (Sorry.
+  Yoshi lost...
+  Better luck next time.)[await]'''
 dialog_data[410] = '''
                   GOAL![delay_48][end]'''
 dialog_data[411] = '''[await]'''

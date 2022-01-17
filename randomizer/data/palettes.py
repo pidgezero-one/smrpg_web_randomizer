@@ -38,7 +38,7 @@ class MarioPalette(Palette):
         #?
         0x257AE2,
         #?
-        0x37A9D8,
+        #0x37A9D8,
         #?
         0x3EDFFD,
         #?
@@ -77,7 +77,7 @@ class MallowPalette(Palette):
         #scarecrow/mushroom
         #0x256B4C
         #?
-        0x37A9F6
+        #0x37A9F6
     ]
     poison_addresses = [0x2581EA, 0x258280]
     #Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
@@ -101,7 +101,7 @@ class GenoPalette(Palette):
         #scarecrow/mushroom
         #0x256B6A,
         #?
-        0x37AA14
+        #0x37AA14
     ]
     poison_addresses = [0x258082, 0x258136]
     #Poison palette for battle portrait will not be edited. It is shared by all 5 characters.
@@ -124,10 +124,10 @@ class BowserPalette(Palette):
         0x257AA6,
         #scarecrow/mushroom
         #0x256B2E,
+        # ending credits
+        # 0x2585AA,
         # ?
-        0x2585AA,
-        # ?
-        0x37B068
+        #0x37B068
     ]
     name_address = 0x3A1361
     clone_name_address = 0x399AB0
@@ -151,7 +151,7 @@ class ToadstoolPalette(Palette):
         #scarecrow/mushroom
         #0x256B10,
         # ?
-        0x37B086
+        #0x37B086
     ]
     name_address = 0x3A1357
     clone_name_address = 0x399AA3

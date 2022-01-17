@@ -153,6 +153,9 @@ class Character:
     mway_2_npc_id = []
     mway_1_npc_id = []
     moleville_sprite_id = 0x0
+    ending_palettes = []
+    default_palette_bytes = []
+    default_underwater_palette_bytes = []
 
     # Placeholders for vanilla starting levelup growth and bonus numbers.
     starting_growths = ()
@@ -335,6 +338,16 @@ class Character:
                     clone_name += " "
                 patch.add_data(self.palette.name_address, name)
                 patch.add_data(self.palette.clone_name_address, clone_name)
+        else:
+            colourbytes = self.default_palette_bytes
+            underwaterbytes = self.default_underwater_palette_bytes
+
+        patch.add_data(self.ending_palettes[0], colourbytes)
+        #if self.index not in [2, 3]:
+        patch.add_data(self.ending_palettes[1], underwaterbytes)
+
+
+            
         
 
         return patch
@@ -433,6 +446,9 @@ class Mario(Character):
     mway_2_npc_id = [0x03, 0x70]
     mway_1_npc_id = [0x03, 0x40]
     moleville_sprite_id = 0x02
+    ending_palettes = (0x37A9D8, 0x37B31A)
+    default_palette_bytes = bytearray([0xFF, 0x7F, 0x3F, 0x43, 0x38, 0x26, 0xB5, 0x25, 0xEF, 0x18, 0x1D, 0x1D, 0x3F, 0x00, 0x36, 0x00, 0x0C, 0x00, 0xE7, 0x70, 0x00, 0x6C, 0x00, 0x30, 0x7C, 0x6F, 0x33, 0x46, 0x63, 0x0C])
+    default_underwater_palette_bytes = bytearray([0xB5, 0x7A, 0x35, 0x52, 0x70, 0x3D, 0x2C, 0x39, 0xA8, 0x30, 0x35, 0x24, 0x0C, 0x24, 0x07, 0x24, 0x03, 0x24, 0x00, 0x6C, 0x00, 0x3C, 0x00, 0x14, 0x53, 0x6E, 0x6D, 0x51, 0x63, 0x0C])
     
     dialog_replacements = [
         (659,''' You can't get inside Booster's
@@ -469,6 +485,11 @@ class Mario(Character):
                 patch = self.special_palette([10, 6, 1, None, None, None, None, None, None, None, None, None, None, None, None], classic_palette_offset, patch)
                 patch = self.special_palette([None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11], minecart_palette_offset, patch)
                 patch = self.special_palette([0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14], map_palette_offset, patch)
+
+        if self.world.starting_character == self.index or not self.world.settings.is_flag_enabled(flags.PlayAsStarter):
+            if self.palette is not None:
+                patch.add_data(0x37B0A4, palette_to_bytes(self.palette.colours))
+                patch.add_data(0x37B0A6, bytearray([0x5F, 0x19, 0xD8, 0x1C, 0x35]))
 
         return patch
 
@@ -566,7 +587,10 @@ class Peach(Character):
     mway_2_npc_id = [0x07, 0x70]
     mway_1_npc_id = [0x07, 0x40]
     moleville_sprite_id = 0x06
-
+    ending_palettes = (0x37B086, 0x37B338)
+    default_palette_bytes = bytearray([0xFF, 0x7F, 0xBF, 0x5B, 0x7C, 0x3A, 0x53, 0x09, 0xAA, 0x0C, 0x7F, 0x7E, 0x3D, 0x59, 0x96, 0x40, 0x0E, 0x00, 0x5F, 0x1F, 0x3F, 0x12, 0xE7, 0x68, 0x3A, 0x67, 0xAF, 0x31, 0x63, 0x0C])
+    default_underwater_palette_bytes = bytearray([0xD6, 0x6A, 0xB6, 0x52, 0xD4, 0x39, 0x0E, 0x19, 0xA8, 0x14, 0x56, 0x69, 0xD5, 0x50, 0x90, 0x40, 0x4B, 0x14, 0x76, 0x2A, 0xB6, 0x21, 0xC6, 0x58, 0x53, 0x5A, 0x4C, 0x35, 0x63, 0x0C])
+    
     dialog_replacements = [
         (659,''' You can't get inside Booster's
  Tower very easily. You'll need
@@ -606,9 +630,11 @@ class Peach(Character):
                 patch.add_data(classic_palette_offset, classicbytes)
                 mapbytes = palette_to_bytes(["F8F8F8", "F8E8B0", "E09870", "985010", "502818", "F898F8", "E848B0", "B02080", "700000", "F8D038", "F88820", "3838D0", "D0C8C8", "786860", "181818"])
                 patch.add_data(map_palette_offset, mapbytes)
+                patch.add_data(0x37B0A4, self.default_palette_bytes)
             else:
                 patch = self.special_palette([6, 3, 1, None, None, None, None, None, None, None, None, None, None, None, None], classic_palette_offset, patch)
                 patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
+                patch.add_data(0x37B0A4, palette_to_bytes(self.palette.colours))
 
             # group hug
             #patch.add_data(0x35FF3E, 0x00)
@@ -711,7 +737,10 @@ class Bowser(Character):
     mway_2_npc_id = [0x0B, 0x70]
     mway_1_npc_id = [0x0B, 0x40]
     moleville_sprite_id = 0x0A
-
+    ending_palettes = (0x37B068, 0x37B356)
+    default_palette_bytes = bytearray([0xFF, 0x7F, 0xFF, 0x2B, 0x3E, 0x1B, 0xF7, 0x08, 0xEA, 0x0C, 0xA7, 0x1A, 0xE4, 0x11, 0x23, 0x09, 0xA4, 0x0C, 0x19, 0x12, 0x31, 0x11, 0x44, 0x04, 0x52, 0x42, 0x8C, 0x21, 0x63, 0x0C])
+    default_underwater_palette_bytes = bytearray([0xD6, 0x6A, 0xD6, 0x32, 0x56, 0x26, 0xD1, 0x18, 0xC8, 0x1C, 0x06, 0x26, 0x64, 0x25, 0x04, 0x19, 0xA4, 0x1C, 0x92, 0x21, 0x0D, 0x21, 0x64, 0x18, 0xCE, 0x41, 0x4A, 0x29, 0x63, 0x0C])
+    
     dialog_replacements = [
         (659,''' You can't get inside Booster's
  Tower very easily. You'll need
@@ -744,8 +773,10 @@ class Bowser(Character):
             if self.palette is None:
                 mapbytes = palette_to_bytes(["F8F8F8", "F8F850", "F0C830", "B83810", "503818", "38A830", "207820", "184810", "202818", "C88020", "884820", "201008", "909080", "606040", "181818"])
                 patch.add_data(map_palette_offset, mapbytes)
+                patch.add_data(0x37B0A4, self.default_palette_bytes)
             else:
                 patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
+                patch.add_data(0x37B0A4, palette_to_bytes(self.palette.colours))
 
 
         return patch
@@ -842,7 +873,10 @@ class Geno(Character):
     mway_2_npc_id = [0x13, 0x70]
     mway_1_npc_id = [0x13, 0x40]
     moleville_sprite_id = 0x12
-
+    ending_palettes = (0x37AA14, 0x37B392)
+    default_palette_bytes = bytearray([0xFF, 0x7F, 0x7E, 0x33, 0x18, 0x1A, 0x30, 0x0D, 0xA8, 0x08, 0x00, 0x7F, 0x40, 0x72, 0xC0, 0x69, 0x20, 0x3D, 0x1F, 0x03, 0x5F, 0x01, 0x8D, 0x0C, 0x96, 0x4A, 0x8D, 0x39, 0x63, 0x0C])
+    default_underwater_palette_bytes = bytearray([0xD6, 0x66, 0x95, 0x36, 0x91, 0x25, 0x0C, 0x1D, 0xA6, 0x18, 0xE1, 0x65, 0x61, 0x5D, 0x01, 0x59, 0xA1, 0x34, 0x56, 0x16, 0x16, 0x15, 0x8A, 0x1C, 0xF0, 0x45, 0x4A, 0x39, 0x63, 0x0C])
+    
     dialog_replacements = [
         (659,''' You can't get inside Booster's
  Tower very easily. You'll need
@@ -877,9 +911,11 @@ class Geno(Character):
                 patch.add_data(classic_palette_offset, classicbytes)
                 mapbytes = palette_to_bytes(["F8F8F8", "F0D860", "C08030", "804818", "402810", "00C0F8", "0090E0", "0070D0", "004878", "F8C000", "F85000", "682018", "B0A090", "686070", "181818"])
                 patch.add_data(map_palette_offset, mapbytes)
+                patch.add_data(0x37B0A4, self.default_palette_bytes)
             else:
                 patch = self.special_palette([3, 6, 1, None, None, None, None, None, None, None, None, None, None, None, None], classic_palette_offset, patch)
                 patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
+                patch.add_data(0x37B0A4, palette_to_bytes(self.palette.colours))
 
 
         return patch
@@ -977,6 +1013,10 @@ class Mallow(Character):
     mway_2_npc_id = [0x0F, 0x70]
     mway_1_npc_id = [0x0F, 0x40]
     moleville_sprite_id = 0x0E
+    ending_palettes = (0x37A9F6, 0x37B374)
+    default_palette_bytes = bytearray([0xFF, 0x7F, 0xDE, 0x4B, 0x7B, 0x3F, 0x94, 0x2E, 0xE8, 0x14, 0xBF, 0x69, 0xB2, 0x24, 0x8B, 0x1C, 0x26, 0x08, 0xA5, 0x7F, 0x43, 0x5E, 0x42, 0x31, 0x34, 0x46, 0xAD, 0x25, 0x63, 0x0C])
+    default_underwater_palette_bytes = bytearray([0xB5, 0x7A, 0x94, 0x56, 0x52, 0x4E, 0xAD, 0x41, 0xA5, 0x30, 0x35, 0x69, 0x6C, 0x3C, 0x67, 0x38, 0x24, 0x28, 0x63, 0x7A, 0x82, 0x61, 0xE1, 0x44, 0x6D, 0x51, 0x29, 0x3D, 0x63, 0x0C])
+    
 
     dialog_replacements = [
         (659,''' You can't get inside Booster's
@@ -1011,8 +1051,10 @@ class Mallow(Character):
             if self.palette is None:
                 mapbytes = palette_to_bytes(["F8F8F8", "F0F090", "D8D878", "A0A058", "403828", "F868D0", "902848", "582038", "300810", "28E8F8", "1890B8", "105060", "A08888", "686848", "181818"])
                 patch.add_data(map_palette_offset, mapbytes)
+                patch.add_data(0x37B0A4, self.default_palette_bytes)
             else:
                 patch = self.special_palette([i for i in range(0,15)], map_palette_offset, patch)
+                patch.add_data(0x37B0A4, palette_to_bytes(self.palette.colours))
 
         return patch
 

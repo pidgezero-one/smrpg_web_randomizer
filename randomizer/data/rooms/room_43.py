@@ -253,7 +253,7 @@ room = Room(
             occupant=npcs.Empty,
             initiator=Initiator.PRESS_A_FROM_FRONT,
             event_script=1316,
-            action_script=13,
+            action_script=15,
             speed=3,
             visible=True,
             x=24,
@@ -285,7 +285,7 @@ room = Room(
         RegularClone( # 6
             occupant=npcs.Empty,
             event_script=1317,
-            action_script=13,
+            action_script=15,
             visible=True,
             x=25,
             y=104,
@@ -300,7 +300,7 @@ room = Room(
         RegularClone( # 7
             occupant=npcs.Empty,
             event_script=1318,
-            action_script=13,
+            action_script=15,
             visible=True,
             x=26,
             y=106,
@@ -315,7 +315,7 @@ room = Room(
         RegularClone( # 8
             occupant=npcs.Empty,
             event_script=1319,
-            action_script=13,
+            action_script=15,
             visible=True,
             x=27,
             y=108,
@@ -330,7 +330,7 @@ room = Room(
         RegularClone( # 9
             occupant=npcs.Empty,
             event_script=1320,
-            action_script=13,
+            action_script=15,
             visible=True,
             x=28,
             y=110,
@@ -345,7 +345,7 @@ room = Room(
         RegularClone( # 10
             occupant=npcs.Empty,
             event_script=1321,
-            action_script=13,
+            action_script=15,
             visible=True,
             x=29,
             y=112,

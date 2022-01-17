@@ -124,8 +124,11 @@ class NPC:
     byte6_bit2 = False
     world = None
 
+    crown = 2
+
     animations = SpriteAnimationCollection()
     eye_height = 17
+    tower_entrance_horizontal_shift = 0
     alt_palette = None
 
     def __init__(self, world):
@@ -169,9 +172,15 @@ class ItemNPC(NPC):
 
 
 class PartyNPC(NPC):
+    minecart_shift = 0
     def __init__(self, world, sprite_id):
         super().__init__(world)
         self.sprite_id = sprite_id
+
+        if sprite_id >= 7:
+            self.directions = VramStore._00_SWSE_NWNE
+        else:
+            self.directions = VramStore._07_ALL_DIRECTIONS
 
 
 class MimicFace(NPC):
@@ -182,6 +191,8 @@ class MimicFace(NPC):
 
     eye_height = 4
 
+    crown = 1
+
 
 class AreaNPC:
     occupant = None
@@ -189,6 +200,7 @@ class AreaNPC:
     priority_1 = False
     priority_2 = True
     _show_shadow = None
+    _shadow_size = None
     _acute_axis = None
     _obtuse_axis = None
     _height = None
@@ -211,6 +223,13 @@ class AreaNPC:
             return self.occupant.show_shadow
         else:
             return self._show_shadow
+
+    @property
+    def shadow_size(self):
+        if self._shadow_size is None:
+            return self.occupant.shadow_size
+        else:
+            return self._shadow_size
 
     @property
     def acute_axis(self):
@@ -318,7 +337,7 @@ class AreaNPC:
                 or (
                     areaNPC.show_shadow
                     and self.show_shadow
-                    and areaNPC.occupant.shadow_size == self.occupant.shadow_size
+                    and areaNPC.occupant.shadow_size == self.shadow_size
                 )
             )
             and areaNPC.priority_0 == self.priority_0
@@ -349,6 +368,7 @@ class AreaNPC:
         priority_1=False,
         priority_2=True,
         show_shadow=None,
+        shadow_size=None,
         y_shift=None,
         acute_axis=None,
         obtuse_axis=None,
@@ -370,6 +390,7 @@ class AreaNPC:
         self.priority_1 = priority_1
         self.priority_2 = priority_2
         self._show_shadow = show_shadow
+        self._shadow_size = shadow_size
         self._y_shift = y_shift
         self._acute_axis = acute_axis
         self._obtuse_axis = obtuse_axis
@@ -391,12 +412,14 @@ class Mario(PartyNPC):
     sprite_id = 0
     y_shift = 1
     directions = VramStore._07_ALL_DIRECTIONS
+    minecart_shift = 7
 
 
 class Toadstool(PartyNPC):
     sprite_id = 7
     y_shift = 1
     directions = VramStore._00_SWSE_NWNE
+    minecart_shift = 6
 
 
 class Bowser(PartyNPC):
@@ -413,6 +436,7 @@ class Mallow(PartyNPC):
     sprite_id = 19
     height = 8
     directions = VramStore._00_SWSE_NWNE
+    minecart_shift = 4
 
 
 class Geno(PartyNPC):
@@ -421,6 +445,7 @@ class Geno(PartyNPC):
     acute_axis = 4
     obtuse_axis = 4
     directions = VramStore._00_SWSE_NWNE
+    minecart_shift = 9
 
 
 class YoshiNPC(NPC):
@@ -456,8 +481,9 @@ class CrocoBase(NPC):
     height = 10
     y_shift = 2
     directions = VramStore._00_SWSE_NWNE
+    tower_entrance_horizontal_shift = 9
 
-    eye_height = 13
+    eye_height = 16
     animations = SpriteAnimationCollection(
         recoil=croco_recoil,
         bandits_way_distracted=croco_bag_loop,
@@ -1573,6 +1599,7 @@ class Jinx(NPC):
     shadow_size = ShadowSize._00_OVAL_SMALL
 
     eye_height = 4
+    crown = 1
     animations = SpriteAnimationCollection(
         recoil=jinx_recoil,
         mines_punch=jinx_punch,
@@ -1606,6 +1633,7 @@ class Jinx2(Jinx):
         "988888",
         "181818",
     ]
+
 
 class Coin(ItemNPC):
     pass
@@ -1650,7 +1678,6 @@ class SlotFlower(NPC):
     obtuse_axis = 3
     height = 3
     y_shift = 1
-
 
 
 class Ring(ItemNPC):
@@ -1709,6 +1736,7 @@ class MokuraCloud(NPC):
     height = 3
 
     eye_height = 4
+    crown = 1
 
 
 class Shoes(ItemNPC):
@@ -3704,7 +3732,7 @@ class BowyerLarge(NPC):
     sprite_id = 486
     y_shift = 1
     acute_axis = 14
-    obtuse_axis = 19
+    obtuse_axis = 15
     height = 16
     min_vram_size = 5
     shadow_size = ShadowSize._00_OVAL_SMALL
@@ -3817,6 +3845,7 @@ class MokuraLarge(NPC):
 
 class PandoriteSmall(MimicFace):
     sprite_id = 583
+    y_shift = 1
 
     alt_palette = [
         "F8F0D8",
@@ -3839,6 +3868,7 @@ class PandoriteSmall(MimicFace):
 
 class HidonSmall(MimicFace):
     sprite_id = 584
+    y_shift = 1
     alt_palette = [
         "F8F0D8",
         "F8F860",
@@ -3860,6 +3890,7 @@ class HidonSmall(MimicFace):
 
 class ChesterSmall(MimicFace):
     sprite_id = 585
+    y_shift = 1
 
     alt_palette = [
         "F8F0D8",
@@ -3882,6 +3913,7 @@ class ChesterSmall(MimicFace):
 
 class BoxBoySmall(MimicFace):
     sprite_id = 586
+    y_shift = 1
 
     alt_palette = [
         "F8F0D8",
@@ -4545,10 +4577,6 @@ class TerrapinStatue(Terrapin, Statue):
 
 class PiranhaPlantStatue(PiranhaPlant, Statue):
     sprite_id = 663
-    details = StatueDetails(
-        horizontal_pixel_shift=-3,
-        vertical_pixel_shift=-4,
-    )
 
 
 class BlooberStatue(Bloober, Statue):
@@ -4665,6 +4693,11 @@ class SmithyStatue(SmithySmall, Statue):
 
 class CulexStatue(CulexSmall, Statue):
     sprite_id = 682
+
+
+class MallowStatue(NPC):
+    sprite_id = 683
+    height = 8
 
 
 class TinyBird(NPC):

@@ -1403,7 +1403,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1368_give_star_piece',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [168]
     },
     {

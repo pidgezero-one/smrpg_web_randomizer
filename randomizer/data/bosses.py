@@ -2601,6 +2601,10 @@ class CzarPyrosphere(Henchman):
     model = npcs.RedFireball
 
 
+class CzarHelio(Henchman):
+    pack_number = 193
+    model = npcs.Helio
+
 
 
 class CzarBoss(Boss):
@@ -3452,6 +3456,7 @@ class GunyolkBoss(Boss):
     name = "Factory Chief"
     pack_number = 149
     small_model = npcs.FactoryChief
+    statue = npcs.FactoryChiefStatue
     dialog_replacements = [
         (49, '''FACTORY CHIEF: Grrr... Leave me\n alone![await]'''),
         (1660,
@@ -3918,9 +3923,9 @@ class Booster(BossAndStarLocation):
                                1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], target_action_scripts=[576, 577, 579], sequence_setter=789),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 0, DefaultSnifit, False, True, False,
                                HenchmanType.NPCOnly, target_scripts=[3809, 600, 3930], target_action_scripts=[376, 372], sequence_setter=790),
-            UniqueHenchmanFill(Rooms._054_BOOSTER_HILL_____DUMMY, 3, DefaultSnifit, True, True, False, HenchmanType.NPCOnly, target_scripts=[
+            UniqueHenchmanFill(Rooms._054_BOOSTER_HILL_____DUMMY, 3, BoosterHillSnifit, True, True, False, HenchmanType.NPCOnly, target_scripts=[
                                3499, 3502, 3500, 3503], target_action_scripts=[707, 712, 711], sequence_setter=200),
-            UniqueHenchmanFill(Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, 0, BoosterHillSnifit, False, True, False,
+            UniqueHenchmanFill(Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, 0, DefaultSnifit, False, True, False,
                                HenchmanType.NPCOnly, target_scripts=[1282, 2278], target_action_scripts=[], sequence_setter=794),
             UniqueHenchmanFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 2, DefaultSnifit, False,
                                True, False, HenchmanType.NPCOnly, target_scripts=[2295], target_action_scripts=[], sequence_setter=795),
@@ -4052,7 +4057,7 @@ class Johnny(BossAndStarLocation):
         BossModelFill(Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM, 0, JohnnyBoss, SpriteSize.Small, False, dialogs=[
                       1778, 1780, 1781, 1783], target_scripts=[3282], target_action_scripts=[348], sequence_setter=801),
         BossModelFill(Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH, 8, JohnnyBoss, SpriteSize.Small,
-                      False, target_scripts=[1146, 1147], target_action_scripts=[], sequence_setter=802),
+                      False, dialogs=[1787], target_scripts=[1146, 1147], target_action_scripts=[], sequence_setter=802),
         BossModelFill(Rooms._432_ENDING_CREDITS_JOHNNY_LOOKING_OUT_AT_SUNSET_ON_BEACH_SHORE, 0, JohnnyBoss, SpriteSize.Small,
                       False, target_scripts=[2619], target_action_scripts=[], sequence_setter=1191),
     ]

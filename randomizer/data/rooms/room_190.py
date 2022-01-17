@@ -236,6 +236,9 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
+            acute_axis = 3,
+            obtuse_axis = 3,
+            height = 11
         ),
         RegularClone(  # 1
             occupant=npcs.Shyster,
@@ -251,6 +254,9 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
+            acute_axis = 3,
+            obtuse_axis = 3,
+            height = 11
         ),
         RegularClone(  # 2
             occupant=npcs.Shyster,
@@ -266,6 +272,9 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
+            acute_axis = 3,
+            obtuse_axis = 3,
+            height = 11
         ),
         BattlePackNPC(  # 3
             occupant=npcs.Shyster,

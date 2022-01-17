@@ -5,7 +5,24 @@ from . import flags
 from .utils import new_command
 from randomizer.helpers.flag_helpers import MarrymoreGating
 from randomizer.helpers.eventtables import _0x60Flags, AreaObjects
-from randomizer.helpers.flag_helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
+from randomizer.helpers.flag_helpers import (
+    FireworksOptions,
+    BanditsWayGating,
+    ForestMazeGating,
+    BoosterTowerGating,
+    MarrymoreGating,
+    SeaGating,
+    YaridovichGating,
+    MonstroTownGating,
+    BarrelVolcanoGating,
+    BowsersKeepGating,
+    FactoryGating,
+    EXPChallengeOptions,
+    PlayableCharacters,
+    ShopQualities,
+    WinConditions,
+    PipeVaultGating,
+)
 
 # There's a way to do perfect allocations with DYNAMIC PROGRAMMING,
 # but I'm not doing that.
@@ -14,7 +31,7 @@ def allocate_string(string_length, free_list):
         if free_list[base] >= string_length:
             size = free_list[base]
             del free_list[base]
-            free_list[base+string_length] = size - string_length
+            free_list[base + string_length] = size - string_length
             return base
 
     # If we get this far, we couldn't find space for the string.
@@ -44,57 +61,114 @@ def randomize_all(world):
 
         # misc. dialogs
         if world.settings.is_flag_enabled(flags.EXPStarsAnywhere):
-            world.replace_dialog(1222, ''' I have an item to sell, but you\n don't have enough coins.[await]''')
-            world.replace_dialog(1223, ''' You're looking for items?\n I'll sell one for 400 coins.\n Are you interested?[await]\n  [select] (Yes)\n  [select] (No)[await]''')
-            world.replace_dialog(1224, ''' You want another item?[await]\n  [select] (Yes)\n  [select] (No)[await]''')
-            world.replace_dialog(1227, ''' I found another item.\n I'll sell it for 800 coins.[await]\n  [select] (Buy it)\n  [select] (Pass)[await]''')
+            world.replace_dialog(
+                1222,
+                """ I have an item to sell, but you\n don't have enough coins.[await]""",
+            )
+            world.replace_dialog(
+                1223,
+                """ You're looking for items?\n I'll sell one for 400 coins.\n Are you interested?[await]\n  [select] (Yes)\n  [select] (No)[await]""",
+            )
+            world.replace_dialog(
+                1224,
+                """ You want another item?[await]\n  [select] (Yes)\n  [select] (No)[await]""",
+            )
+            world.replace_dialog(
+                1227,
+                """ I found another item.\n I'll sell it for 800 coins.[await]\n  [select] (Buy it)\n  [select] (Pass)[await]""",
+            )
         if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.hill):
-            world.replace_dialog(2116, '''You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy on Booster Hill.''')
+            world.replace_dialog(
+                2116,
+                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n on Booster Hill.""",
+            )
         elif world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
-            world.replace_dialog(2116, '''You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy up atop Booster Tower.''')
+            world.replace_dialog(
+                2116,
+                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n up atop Booster Tower.""",
+            )
+        elif world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.kggg):
+            world.replace_dialog(
+                2116,
+                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n clowning around.""",
+            )
         value = world.settings.get_flag(flags.GrateGuyPrizeThreshold).value
-        world.search_replace_dialog('`GRATE_GUY_PRIZE_CAP`', '%i' % value)
+        world.search_replace_dialog("`GRATE_GUY_PRIZE_CAP`", "%i" % value)
         # disable sj dog checks if SJ not learnable in seed
-        if flags.LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).disabled:
+        if (
+            flags.LearnableSpells.SuperJump
+            in world.settings.get_flag(flags.AvailableSpells).disabled
+        ):
             world.eventscripts[2063] = [
-                new_command(2063, 'run_dialog', [2049, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]),
-                new_command(2063, 'ret')
+                new_command(
+                    2063,
+                    "run_dialog",
+                    [
+                        2049,
+                        AreaObjects.MARIO,
+                        [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE],
+                    ],
+                ),
+                new_command(2063, "ret"),
             ]
-
-    
 
 
 RWRITER = "%RANDOM_WRITER%"
-box_dialog_ids = [[1696, 1697, 1698, 1699, 1700], [1708, 1709, 1710, 1711, 1712], [1720, 1721, 1722, 1723, 1724], [
-    1732, 1733, 1734, 1735, 1736], [1744, 1745, 1746, 1747, 1748], [1756, 1757, 1758, 1759, 1760]]
-recitation_ids = [[1701, 1702, 1703, 1704, 1705], [1713, 1714, 1715, 1716, 1717], [1725, 1726, 1727, 1728, 1729], [
-    1737, 1738, 1739, 1740, 1741], [1749, 1750, 1751, 1752, 1753], [1761, 1762, 1763, 1764, 1765]]
+box_dialog_ids = [
+    [1696, 1697, 1698, 1699, 1700],
+    [1708, 1709, 1710, 1711, 1712],
+    [1720, 1721, 1722, 1723, 1724],
+    [1732, 1733, 1734, 1735, 1736],
+    [1744, 1745, 1746, 1747, 1748],
+    [1756, 1757, 1758, 1759, 1760],
+]
+recitation_ids = [
+    [1701, 1702, 1703, 1704, 1705],
+    [1713, 1714, 1715, 1716, 1717],
+    [1725, 1726, 1727, 1728, 1729],
+    [1737, 1738, 1739, 1740, 1741],
+    [1749, 1750, 1751, 1752, 1753],
+    [1761, 1762, 1763, 1764, 1765],
+]
 
 
 def randomize_password(world):
     password = random.choice(ship_passwords.pool)
     decoy_word = random.choice(
-        [p for p in ship_passwords.pool if p.word != password.word])
+        [p for p in ship_passwords.pool if p.word != password.word]
+    )
     correct_positions = []
 
     # modify the letter selection and recitation to be for this word
     for index, letter in enumerate(list(password.word)):
-        letters = ship_passwords.suggest_letter_bank(password.word, index, decoy_word.word)
+        letters = ship_passwords.suggest_letter_bank(
+            password.word, index, decoy_word.word
+        )
         correct_position = letters.index(password.word[index])
         correct_positions.append(correct_position)
 
         # generate the dialogs that display your letter selection when you stand under the boxes
         box_dialogs = []
-        box_dialogs.append('''[page]\n Key letter%i  <%s> %s  %s  %s  %s[end]''' % (
-            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
-        box_dialogs.append('''[page]\n Key letter%i   %s <%s> %s  %s  %s[end]''' % (
-            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
-        box_dialogs.append('''[page]\n Key letter%i   %s  %s <%s> %s  %s[end]''' % (
-            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
-        box_dialogs.append('''[page]\n Key letter%i   %s  %s  %s <%s> %s[end]''' % (
-            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
-        box_dialogs.append('''[page]\n Key letter%i   %s  %s  %s  %s <%s>[end]''' % (
-            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
+        box_dialogs.append(
+            """[page]\n Key letter%i  <%s> %s  %s  %s  %s[end]"""
+            % (index + 1, letters[0], letters[1], letters[2], letters[3], letters[4])
+        )
+        box_dialogs.append(
+            """[page]\n Key letter%i   %s <%s> %s  %s  %s[end]"""
+            % (index + 1, letters[0], letters[1], letters[2], letters[3], letters[4])
+        )
+        box_dialogs.append(
+            """[page]\n Key letter%i   %s  %s <%s> %s  %s[end]"""
+            % (index + 1, letters[0], letters[1], letters[2], letters[3], letters[4])
+        )
+        box_dialogs.append(
+            """[page]\n Key letter%i   %s  %s  %s <%s> %s[end]"""
+            % (index + 1, letters[0], letters[1], letters[2], letters[3], letters[4])
+        )
+        box_dialogs.append(
+            """[page]\n Key letter%i   %s  %s  %s  %s <%s>[end]"""
+            % (index + 1, letters[0], letters[1], letters[2], letters[3], letters[4])
+        )
         box_dialog_pairs = zip(box_dialogs, box_dialog_ids[index])
         for dialog_content, dialog_id in box_dialog_pairs:
             world.replace_dialog(dialog_id, dialog_content)
@@ -102,81 +176,92 @@ def randomize_password(world):
         # populate the dialogs that are used in reciting your password
         recitation_pairs = zip(letters, recitation_ids[index])
         for letter, dialog_id in recitation_pairs:
-            world.replace_dialog(dialog_id, '''%s[end]''' % letter)
+            world.replace_dialog(dialog_id, """%s[end]""" % letter)
 
     # calibrate correctness checker
     world.eventscripts[3411] = [
         {
-            "identifier": 'EVENT_3411_jmp_if_var_not_equals_short_31',
-            "command": 'jmp_if_var_not_equals_short',
-            "args": [0x7024, correct_positions[0], 'EVENT_3411_jmp_if_var_not_equals_short_33']
+            "identifier": "EVENT_3411_jmp_if_var_not_equals_short_31",
+            "command": "jmp_if_var_not_equals_short",
+            "args": [
+                0x7024,
+                correct_positions[0],
+                "EVENT_3411_jmp_if_var_not_equals_short_33",
+            ],
         },
+        {"identifier": "EVENT_3411_inc_32", "command": "inc", "args": [0x70AC]},
         {
-            "identifier": 'EVENT_3411_inc_32',
-            "command": 'inc',
-            "args": [0x70ac]
+            "identifier": "EVENT_3411_jmp_if_var_not_equals_short_33",
+            "command": "jmp_if_var_not_equals_short",
+            "args": [
+                0x7026,
+                correct_positions[1],
+                "EVENT_3411_jmp_if_var_not_equals_short_35",
+            ],
         },
+        {"identifier": "EVENT_3411_inc_34", "command": "inc", "args": [0x70AC]},
         {
-            "identifier": 'EVENT_3411_jmp_if_var_not_equals_short_33',
-            "command": 'jmp_if_var_not_equals_short',
-            "args": [0x7026, correct_positions[1], 'EVENT_3411_jmp_if_var_not_equals_short_35']
+            "identifier": "EVENT_3411_jmp_if_var_not_equals_short_35",
+            "command": "jmp_if_var_not_equals_short",
+            "args": [
+                0x7028,
+                correct_positions[2],
+                "EVENT_3411_jmp_if_var_not_equals_short_37",
+            ],
         },
+        {"identifier": "EVENT_3411_inc_36", "command": "inc", "args": [0x70AC]},
         {
-            "identifier": 'EVENT_3411_inc_34',
-            "command": 'inc',
-            "args": [0x70ac]
+            "identifier": "EVENT_3411_jmp_if_var_not_equals_short_37",
+            "command": "jmp_if_var_not_equals_short",
+            "args": [
+                0x702A,
+                correct_positions[3],
+                "EVENT_3411_jmp_if_var_not_equals_short_39",
+            ],
         },
+        {"identifier": "EVENT_3411_inc_38", "command": "inc", "args": [0x70AC]},
         {
-            "identifier": 'EVENT_3411_jmp_if_var_not_equals_short_35',
-            "command": 'jmp_if_var_not_equals_short',
-            "args": [0x7028, correct_positions[2], 'EVENT_3411_jmp_if_var_not_equals_short_37']
+            "identifier": "EVENT_3411_jmp_if_var_not_equals_short_39",
+            "command": "jmp_if_var_not_equals_short",
+            "args": [
+                0x702C,
+                correct_positions[4],
+                "EVENT_3411_jmp_if_var_not_equals_short_41",
+            ],
         },
+        {"identifier": "EVENT_3411_inc_40", "command": "inc", "args": [0x70AC]},
         {
-            "identifier": 'EVENT_3411_inc_36',
-            "command": 'inc',
-            "args": [0x70ac]
+            "identifier": "EVENT_3411_jmp_if_var_not_equals_short_41",
+            "command": "jmp_if_var_not_equals_short",
+            "args": [0x702E, correct_positions[5], "EVENT_3411_ret"],
         },
-        {
-            "identifier": 'EVENT_3411_jmp_if_var_not_equals_short_37',
-            "command": 'jmp_if_var_not_equals_short',
-            "args": [0x702a, correct_positions[3], 'EVENT_3411_jmp_if_var_not_equals_short_39']
-        },
-        {
-            "identifier": 'EVENT_3411_inc_38',
-            "command": 'inc',
-            "args": [0x70ac]
-        },
-        {
-            "identifier": 'EVENT_3411_jmp_if_var_not_equals_short_39',
-            "command": 'jmp_if_var_not_equals_short',
-            "args": [0x702c, correct_positions[4], 'EVENT_3411_jmp_if_var_not_equals_short_41']
-        },
-        {
-            "identifier": 'EVENT_3411_inc_40',
-            "command": 'inc',
-            "args": [0x70ac]
-        },
-        {
-            "identifier": 'EVENT_3411_jmp_if_var_not_equals_short_41',
-            "command": 'jmp_if_var_not_equals_short',
-            "args": [0x702e, correct_positions[5], 'EVENT_3411_ret']
-        },
-        {
-            "identifier": 'EVENT_3411_inc_42',
-            "command": 'inc',
-            "args": [0x70ac]
-        },
-        {
-            "identifier": 'EVENT_3411_ret',
-            "command": "ret"
-        }
+        {"identifier": "EVENT_3411_inc_42", "command": "inc", "args": [0x70AC]},
+        {"identifier": "EVENT_3411_ret", "command": "ret"},
     ]
 
     # populate hint dialogs
     random.shuffle(ship_passwords.hint_authors)
     # guarantee that the hint submitter will get their name on one of the hints
     writers = [password.submitter_hint_prefix] + ship_passwords.hint_authors
-    number_of_writers = len([h for h in [password.troopa_hint, password.trampoline_hint, password.maze_hint, password.snake_hint, password.cannonball_hint, password.barrel_hint, password.entrance_hint, password.saveroom_hint, password.greaper_hint_2, password.greaper_hint, password.drybones_hint] if h is not None and RWRITER in h])
+    number_of_writers = len(
+        [
+            h
+            for h in [
+                password.troopa_hint,
+                password.trampoline_hint,
+                password.maze_hint,
+                password.snake_hint,
+                password.cannonball_hint,
+                password.barrel_hint,
+                password.entrance_hint,
+                password.saveroom_hint,
+                password.greaper_hint_2,
+                password.greaper_hint,
+                password.drybones_hint,
+            ]
+            if h is not None and RWRITER in h
+        ]
+    )
     writers = writers[:number_of_writers]
     random.shuffle(writers)
     for s in writers:
@@ -184,8 +269,7 @@ def randomize_password(world):
             password.troopa_hint = password.troopa_hint.replace(RWRITER, s)
             continue
         if RWRITER in password.trampoline_hint:
-            password.trampoline_hint = password.trampoline_hint.replace(
-                RWRITER, s)
+            password.trampoline_hint = password.trampoline_hint.replace(RWRITER, s)
             continue
         if RWRITER in password.maze_hint:
             password.maze_hint = password.maze_hint.replace(RWRITER, s)
@@ -194,8 +278,7 @@ def randomize_password(world):
             password.snake_hint = password.snake_hint.replace(RWRITER, s)
             continue
         if RWRITER in password.cannonball_hint:
-            password.cannonball_hint = password.cannonball_hint.replace(
-                RWRITER, s)
+            password.cannonball_hint = password.cannonball_hint.replace(RWRITER, s)
             continue
         if RWRITER in password.barrel_hint:
             password.barrel_hint = password.barrel_hint.replace(RWRITER, s)
@@ -210,8 +293,7 @@ def randomize_password(world):
             password.greaper_hint = password.greaper_hint.replace(RWRITER, s)
             continue
         if password.greaper_hint_2 and RWRITER in password.greaper_hint_2:
-            password.greaper_hint_2 = password.greaper_hint_2.replace(
-                RWRITER, s)
+            password.greaper_hint_2 = password.greaper_hint_2.replace(RWRITER, s)
             continue
         if password.drybones_hint and RWRITER in password.drybones_hint:
             password.drybones_hint = password.drybones_hint.replace(RWRITER, s)
@@ -265,8 +347,9 @@ def randomize_quiz(world):
         random_questions = random.sample(questions, len(dialogs.quiz_dialogs))
     else:
         random_questions = questions
-    random_questions += random.sample(dialogs.backfill_questions,
-                                      len(dialogs.quiz_dialogs) - len(random_questions))
+    random_questions += random.sample(
+        dialogs.backfill_questions, len(dialogs.quiz_dialogs) - len(random_questions)
+    )
     random.shuffle(random_questions)
 
     for dialog_id, question in zip(dialogs.quiz_dialogs, random_questions):
@@ -284,16 +367,17 @@ def randomize_quiz(world):
         world.quiz.questions.append((dialog_id, string))
 
 
-
 def assemble_from_table(pointer_table, data_table):
 
     if len(pointer_table) != 4096:
-        raise Exception('dialog pointer table must have exactly 4096 entries')
+        raise Exception("dialog pointer table must have exactly 4096 entries")
 
     if len(data_table) != 3:
-        raise Exception('data table must consist of exactly 3 arrays, 1 per dialog data bank')
+        raise Exception(
+            "data table must consist of exactly 3 arrays, 1 per dialog data bank"
+        )
 
-    new_pointer_table = [None]*4096
+    new_pointer_table = [None] * 4096
 
     # Will need to substitute vars into any strings here where appropriate. i.e. Peach's name into #735
     # `PEACH_NAME`
@@ -323,15 +407,14 @@ def assemble_from_table(pointer_table, data_table):
 
     # convert dialogs to byte vals
     compressed_dialog = [
-        [dialogs.compress(d) for d in data_table[0]], # 0x22
-        [dialogs.compress(d) for d in data_table[1]], # 0x23
-        [dialogs.compress(d) for d in data_table[2]], # 0x24
+        [dialogs.compress(d) for d in data_table[0]],  # 0x22
+        [dialogs.compress(d) for d in data_table[1]],  # 0x23
+        [dialogs.compress(d) for d in data_table[2]],  # 0x24
     ]
 
     assembled_dialog_data = []
 
     assembled_pointers = bytearray([])
-
 
     for b in range(len(compressed_dialog)):
         bank = 0x22 + b
@@ -341,26 +424,35 @@ def assemble_from_table(pointer_table, data_table):
         # convert pointer data to offsets
         for dialog_id in range(len(compressed_dialog[b])):
             d = compressed_dialog[b][dialog_id]
-            #print ('0x%02x' % (8 + pointer_position))
+            # print ('0x%02x' % (8 + pointer_position))
             for i in range(len(d)):
-                indices = [j for j, x in enumerate(pointer_table) if x["bank"] == bank and x["index"] == dialog_id and x["pos"] == i]
-                #if len(indices) > 0:
+                indices = [
+                    j
+                    for j, x in enumerate(pointer_table)
+                    if x["bank"] == bank and x["index"] == dialog_id and x["pos"] == i
+                ]
+                # if len(indices) > 0:
                 #    print (hex(bank), dialog_id, i, indices, d, len(d))
                 #    print ([hex(ord(c)) for c in d])
                 for matched_pointer in indices:
                     new_pointer_table[matched_pointer] = pointer_position
                 pointer_position += 1
             assembled_dialog_for_this_bank += d
-            #print (dialog_id)
-            #print (str(d))
-            #print (len(d), pointer_position)
-            #print ([hex(c) for c in d])
-            #print ('')
-            #print ('')
-                
+            # print (dialog_id)
+            # print (str(d))
+            # print (len(d), pointer_position)
+            # print ([hex(c) for c in d])
+            # print ('')
+            # print ('')
+
         # convert to pointers relative to section pointer
         if b == 0:
-            offsets = [0, new_pointer_table[0x200], new_pointer_table[0x400], new_pointer_table[0x600]]
+            offsets = [
+                0,
+                new_pointer_table[0x200],
+                new_pointer_table[0x400],
+                new_pointer_table[0x600],
+            ]
             offsets = [o + 8 for o in offsets]
             for i in range(0x3FF, 0x1FF, -1):
                 new_pointer_table[i] -= new_pointer_table[0x200]
@@ -378,7 +470,7 @@ def assemble_from_table(pointer_table, data_table):
             offsets = [o + 4 for o in offsets]
             for i in range(0xFFF, 0xDFF, -1):
                 new_pointer_table[i] -= new_pointer_table[0xE00]
-        
+
         # final output for data bank: section pointers plus dialog data
         assembled_bank_dialog_data = bytearray([])
         for val in offsets:
@@ -397,7 +489,10 @@ def assemble_from_table(pointer_table, data_table):
             max_length = 0x249000 - 0x240000
             empty_space = max_length - len(assembled_bank_dialog_data)
         if empty_space < 0:
-            raise Exception("Bank 0x%02x dialog data too long: %i bytes (expected up to %i)" % (0x22 + b, len(assembled_bank_dialog_data), max_length))
+            raise Exception(
+                "Bank 0x%02x dialog data too long: %i bytes (expected up to %i)"
+                % (0x22 + b, len(assembled_bank_dialog_data), max_length)
+            )
         elif empty_space > 0:
             assembled_bank_dialog_data += bytearray([0x00 for x in range(empty_space)])
 
@@ -406,10 +501,8 @@ def assemble_from_table(pointer_table, data_table):
     # pointer bytes
     for i in range(len(new_pointer_table)):
         val = new_pointer_table[i]
-        #print(i, hex(val))
+        # print(i, hex(val))
         assembled_pointers.append(val & 0xFF)
         assembled_pointers.append(val >> 8)
-    
-    return assembled_pointers, assembled_dialog_data
-    
 
+    return assembled_pointers, assembled_dialog_data

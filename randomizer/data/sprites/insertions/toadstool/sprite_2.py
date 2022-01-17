@@ -1017,12 +1017,12 @@ sprite = CompleteSprite(
                 AnimationSequence(
                     frames=[
                         AnimationSequenceFrame(duration=4, mold_id=6),
-                        AnimationSequenceFrame(duration=4, mold_id=30),
+                        AnimationSequenceFrame(duration=4, mold_id=27),
                         AnimationSequenceFrame(duration=4, mold_id=3),
                         AnimationSequenceFrame(duration=4, mold_id=29),
                         AnimationSequenceFrame(duration=4, mold_id=0),
                         AnimationSequenceFrame(duration=4, mold_id=26),
-                        AnimationSequenceFrame(duration=4, mold_id=27),
+                        AnimationSequenceFrame(duration=4, mold_id=30),
                         AnimationSequenceFrame(duration=8, mold_id=28),
                     ]
                 ),

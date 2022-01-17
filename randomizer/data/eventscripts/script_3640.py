@@ -1442,60 +1442,57 @@ script = [
         "identifier": 'EVENT_3640_unfreeze_camera_217',
         "command": 'unfreeze_camera'
     },
-
-
-    {
-        "identifier": 'EVENT_3640_jmp_if_alt_condition_on',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7086, 7, 'EVENT_3640_set_bit_203']
-    },
-
-    
-    {
-        "identifier": 'EVENT_3640_jmp_if_already_checked_star_piece_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7081, 2, 'EVENT_3640_jmp_']
-    },
-    {
-        "identifier": 'EVENT_3640_set_sp_bit_1',
-        "command": "set_bit",
-        "args": [0x7081, 2]
-    },
-
     {
         "identifier": 'EVENT_3640_set',
         "command": 'set',
         "args": [0x7000, 520]
     },
     {
-        "identifier": 'EVENT_3640_star',
+        "identifier": 'EVENT_3640_item',
         "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_3640_jmp_if_alt_condition_on',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7086, 7, 'EVENT_3640_set_bit_203']
+    },
+
+
+
+
+    {
+        "identifier": 'EVENT_3640_jmp_if_already_checked_star_piece_1',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 2, 'EVENT_3640_jmp_sub']
+    },
+    {
+        "identifier": 'EVENT_3640_set_sp_bit_1',
+        "command": "set_bit",
+        "args": [0x7081, 2]
+    },
+    {
+        "identifier": 'EVENT_3640_set~',
+        "command": 'set',
+        "args": [0x7000, 520]
+    },
+    {
+        "identifier": 'EVENT_3640_star',
+        "command": 'jmp_to_event',
         "args": [167]
     },
-    {
-        "identifier": 'EVENT_3640_jmp_sub',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3400_determine_nimbus_music']
-    },
-    {
-        "identifier": 'EVENT_3640_jmp_',
-        "command": 'jmp',
-        "args": ['EVENT_3640_item']
-    },
+
+
+
     {
         "identifier": 'EVENT_3640_set_bit_203',
         "command": 'set_bit',
         "args": [0x7092, 7]
     },
     {
-        "identifier": 'EVENT_3640_jmp_sub_2',
+        "identifier": 'EVENT_3640_jmp_sub',
         "command": 'jmp_to_subroutine',
         "args": ['EVENT_3400_determine_nimbus_music']
-    },
-    {
-        "identifier": 'EVENT_3640_item',
-        "command": 'run_event_as_subroutine',
-        "args": [178]
     },
     {
         "identifier": 'EVENT_3640_ret_226',
@@ -1983,7 +1980,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_star_',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [167]
     },
     {
@@ -2012,7 +2009,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_star__',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [167]
     },
     {

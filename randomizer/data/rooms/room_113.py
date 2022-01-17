@@ -200,10 +200,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            show_shadow=True,
-            directions=VramStore._00_SWSE_NWNE,
             cannot_clone=False,
-            y_shift=1,
         ),
     ]
 )

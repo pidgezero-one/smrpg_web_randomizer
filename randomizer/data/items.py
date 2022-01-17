@@ -9,7 +9,7 @@ from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
 from randomizer.logic import flags
-from randomizer.data import npcs
+from randomizer.data import npcs, bosses, spells
 
 
 class OverworldItem:
@@ -432,11 +432,11 @@ class Item:
             if item.is_equipment:
                 desc = item.build_equipment_description()
             else:
-                desc = item.description
+               desc = item.description
             descriptions[item.index] = desc
 
         # Now build the actual pointer data.
-        for desc in descriptions:
+        for desc_index, desc in enumerate(descriptions):
             # If the description is empty, just use the null byte at the very beginning.
             if not desc:
                 pointer = (
@@ -2493,6 +2493,7 @@ class GoodieBag(RegularItem):
     price = 1110
     tier = 4
     unique = ItemUnique.Always
+    description = "It's packed\x01full of coins"
     model = npcs.SmallCoin
     dialog_replacements = [
         (
@@ -2574,6 +2575,7 @@ class RareFrogCoin(RegularItem):
 
 class Wallet(RegularItem):
     index = 129
+    description = "A fat wallet"
     order = 152
     item_type = 3
     price = 246
@@ -2693,6 +2695,7 @@ class BambinoBomb(RegularItem):
 
 class SheepAttack(Item):
     index = 136
+    description = "Baah, baah..."
     order = 40
     item_type = 3
     price = 150
@@ -2718,6 +2721,7 @@ class SheepAttack(Item):
 
 class CarboCookie(RegularItem):
     index = 137
+    description = "Kid's love 'em"
     order = 134
     item_type = 3
     unique = ItemUnique.Always
@@ -2747,12 +2751,14 @@ class CarboCookie(RegularItem):
             flags.FireworksSetting, FireworksOptions.progressive
         ):
             self.price = 0
+            self.description = ""
 
 
 class ShinyStone(RegularItem):
     index = 138
     order = 148
     item_type = 3
+    description = "A pretty stone!"
     is_subitem = True
     unique = ItemUnique.Always
     price = 4
@@ -2779,6 +2785,7 @@ class ShinyStone(RegularItem):
             flags.FireworksSetting, FireworksOptions.progressive
         ):
             self.price = 0
+            self.description = ""
 
 
 class RoomKey(RegularItem):
@@ -2855,6 +2862,7 @@ class ShedKey(RegularItem):
 
 class LambsLure(RegularItem):
     index = 143
+    description = "Baa, baa..."
     order = 36
     item_type = 3
     price = 40
@@ -2893,6 +2901,7 @@ class FrightBomb(RegularItem):
 
 class MysteryEgg(RegularItem):
     index = 145
+    description = "A product of\x01pure love..."
     order = 38
     item_type = 3
     is_subitem = True
@@ -2931,6 +2940,7 @@ class BeetleBox2(RegularItem):
 
 class LuckyJewel(RegularItem):
     index = 148
+    description = "Summons Luck\x01at will"
     order = 37
     item_type = 3
     price = 100
@@ -3026,7 +3036,7 @@ class TenorCard(Item):
 
 class Crystalline(RegularItem):
     index = 153
-    description = "Raises party~s\x01Defense in\x01battle"
+    description = "Raises party's\x01Defense in\x01battle"
     order = 3
     item_type = 3
     consumable = True
@@ -3040,7 +3050,7 @@ class Crystalline(RegularItem):
 
 class PowerBlast(RegularItem):
     index = 154
-    description = "Raises party~s\x01Attack Power\x01in battle"
+    description = "Raises party's\x01Attack Power\x01in battle"
     order = 18
     item_type = 3
     consumable = True
@@ -3054,6 +3064,7 @@ class PowerBlast(RegularItem):
 
 class WiltShroom(RegularItem):
     index = 155
+    description = "It's wilted..."
     order = 22
     item_type = 3
     consumable = True
@@ -3065,6 +3076,7 @@ class WiltShroom(RegularItem):
 
 class RottenMush(RegularItem):
     index = 156
+    description = "Eeew,\x01it's rotten!"
     order = 20
     item_type = 3
     consumable = True
@@ -3076,6 +3088,7 @@ class RottenMush(RegularItem):
 
 class MoldyMush(RegularItem):
     index = 157
+    description = "Gross!\x01There's mold\x01growing on it."
     order = 14
     item_type = 3
     consumable = True
@@ -3230,7 +3243,7 @@ class CricketJam(RegularItem):
 
 class Fireworks(RegularItem):
     index = 172
-    description = " A gorgeous\x01 firework"
+    description = "A gorgeous\x01firework"
     item_type = 3
     unique = ItemUnique.Always
     chest_event = 3099
@@ -3262,6 +3275,7 @@ class Fireworks(RegularItem):
             flags.FireworksSetting, FireworksOptions.progressive
         ):
             self.price = 0
+            self.description = ""
         if world.settings.is_flag_value(
             flags.FireworksSetting, FireworksOptions.shuffle1
         ):
@@ -3271,7 +3285,6 @@ class Fireworks(RegularItem):
 
 class BrightCard(RegularItem):
     index = 174
-    description = "For the casino"
     model = npcs.Card
     order = 133
     item_type = 3
@@ -3459,6 +3472,362 @@ class BoxBoyFight(MimicFight):
     item_type = 3
 
 
+# *** Bosses
+
+
+class BossFight(MiscReward):
+    pass
+
+
+class HammerBroBossFight(BossFight):
+    related_class = bosses.HammerBroBoss
+    index = 539
+
+
+class Croco1BossFight(BossFight):
+    related_class = bosses.Croco1Boss
+    index = 540
+
+
+class MackBossFight(BossFight):
+    related_class = bosses.MackBoss
+    index = 541
+
+
+class PandoriteBossFight(BossFight):
+    related_class = bosses.PandoriteBoss
+    index = 542
+
+
+class Belome1BossFight(BossFight):
+    related_class = bosses.Belome1Boss
+    index = 543
+
+
+class BowyerBossFight(BossFight):
+    related_class = bosses.BowyerBoss
+    index = 544
+
+
+class Croco2BossFight(BossFight):
+    related_class = bosses.Croco2Boss
+    index = 545
+
+
+class PunchinelloBossFight(BossFight):
+    related_class = bosses.PunchinelloBoss
+    index = 546
+
+
+class BoosterBossFight(BossFight):
+    related_class = bosses.BoosterBoss
+    index = 547
+
+
+class GrateGuyBossFight(BossFight):
+    related_class = bosses.GrateGuyBoss
+    index = 548
+
+
+class BundtBossFight(BossFight):
+    related_class = bosses.BundtBoss
+    index = 549
+
+
+class KingCalamariBossFight(BossFight):
+    related_class = bosses.KingCalamariBoss
+    index = 550
+
+
+class HidonBossFight(BossFight):
+    related_class = bosses.HidonBoss
+    index = 551
+
+
+class JohnnyBossFight(BossFight):
+    related_class = bosses.JohnnyBoss
+    index = 552
+
+
+class YaridovichBossFight(BossFight):
+    related_class = bosses.YaridovichBoss
+    index = 553
+
+
+class MokuraBossFight(BossFight):
+    related_class = bosses.MokuraBoss
+    index = 554
+
+
+class Belome2BossFight(BossFight):
+    related_class = bosses.Belome2Boss
+    index = 555
+
+
+class JaggerBossFight(BossFight):
+    related_class = bosses.JaggerBoss
+    index = 556
+
+
+class Jinx1BossFight(BossFight):
+    related_class = bosses.Jinx1Boss
+    index = 557
+
+
+class Jinx2BossFight(BossFight):
+    related_class = bosses.Jinx2Boss
+    index = 558
+
+
+class Jinx3BossFight(BossFight):
+    related_class = bosses.Jinx3Boss
+    index = 559
+
+
+class CulexBossFight(BossFight):
+    related_class = bosses.CulexBoss
+    index = 560
+
+
+class BoxBoyBossFight(BossFight):
+    related_class = bosses.BoxBoyBoss
+    index = 561
+
+
+class MegaSmilaxBossFight(BossFight):
+    related_class = bosses.MegaSmilaxBoss
+    index = 562
+
+
+class DodoBossFight(BossFight):
+    related_class = bosses.DodoBoss
+    index = 563
+
+
+class BirdettaBossFight(BossFight):
+    related_class = bosses.BirdettaBoss
+    index = 564
+
+
+class ValentinaBossFight(BossFight):
+    related_class = bosses.ValentinaBoss
+    index = 565
+
+
+class CzarDragonBossFight(BossFight):
+    related_class = bosses.CzarBoss
+    index = 566
+
+
+class AxemRangersBossFight(BossFight):
+    related_class = bosses.AxemRangersBoss
+    index = 567
+
+
+class ChesterBossFight(BossFight):
+    related_class = bosses.ChesterBoss
+    index = 568
+
+
+class MagikoopaBossFight(BossFight):
+    related_class = bosses.MagikoopaBoss
+    index = 569
+
+
+class BoomerBossFight(BossFight):
+    related_class = bosses.BoomerBoss
+    index = 570
+
+
+class ExorBossFight(BossFight):
+    related_class = bosses.ExorBoss
+    index = 571
+
+
+class CountdownBossFight(BossFight):
+    related_class = bosses.CountdownBoss
+    index = 572
+
+
+class CloakerDominoBossFight(BossFight):
+    related_class = bosses.CloakerDominoBoss
+    index = 573
+
+
+class ClerkBossFight(BossFight):
+    related_class = bosses.ClerkBoss
+    index = 574
+
+
+class ManagerBossFight(BossFight):
+    related_class = bosses.ManagerBoss
+    index = 575
+
+
+class DirectorBossFight(BossFight):
+    related_class = bosses.DirectorBoss
+    index = 576
+
+
+class GunyolkBossFight(BossFight):
+    related_class = bosses.GunyolkBoss
+    index = 577
+
+
+class SmithyBossFight(BossFight):
+    related_class = bosses.SmithyBoss
+    index = 578
+
+
+# *** Spells
+
+
+class SpellLearn(MiscReward):
+    damaging = True
+
+
+class JumpLearn(SpellLearn):
+    related_class = spells.Jump
+    index = 512
+
+
+class FireOrbLearn(SpellLearn):
+    related_class = spells.FireOrb
+    index = 513
+
+
+class SuperJumpLearn(SpellLearn):
+    related_class = spells.SuperJump
+    index = 514
+
+
+class SuperFlameLearn(SpellLearn):
+    related_class = spells.SuperFlame
+    index = 515
+
+
+class UltraJumpLearn(SpellLearn):
+    related_class = spells.UltraJump
+    index = 516
+
+
+class UltraFlameLearn(SpellLearn):
+    related_class = spells.UltraFlame
+    index = 517
+
+
+class TherapyLearn(SpellLearn):
+    related_class = spells.Therapy
+    damaging = False
+    index = 518
+
+
+class GroupHugLearn(SpellLearn):
+    related_class = spells.GroupHug
+    damaging = False
+    index = 519
+
+
+class SleepyTimeLearn(SpellLearn):
+    related_class = spells.SleepyTime
+    index = 520
+
+
+class ComeBackLearn(SpellLearn):
+    related_class = spells.ComeBack
+    damaging = False
+    index = 521
+
+
+class MuteLearn(SpellLearn):
+    related_class = spells.Mute
+    damaging = False
+    index = 522
+
+
+class PsychBombLearn(SpellLearn):
+    related_class = spells.PsychBomb
+    index = 523
+
+
+class TerrorizeLearn(SpellLearn):
+    related_class = spells.Terrorize
+    index = 524
+
+
+class PoisonGasLearn(SpellLearn):
+    related_class = spells.PoisonGas
+    index = 525
+
+
+class CrusherLearn(SpellLearn):
+    related_class = spells.Crusher
+    index = 526
+
+
+class BowserCrushLearn(SpellLearn):
+    related_class = spells.BowserCrush
+    index = 527
+
+
+class GenoBeamLearn(SpellLearn):
+    related_class = spells.GenoBeam
+    index = 528
+
+
+class GenoBoostLearn(SpellLearn):
+    related_class = spells.GenoBoost
+    damaging = False
+    index = 529
+
+
+class GenoWhirlLearn(SpellLearn):
+    related_class = spells.GenoWhirl
+    index = 530
+
+
+class GenoBlastLearn(SpellLearn):
+    related_class = spells.GenoBlast
+    index = 531
+
+
+class GenoFlashLearn(SpellLearn):
+    related_class = spells.GenoFlash
+    index = 532
+
+
+class ThunderboltLearn(SpellLearn):
+    related_class = spells.Thunderbolt
+    index = 533
+
+
+class HPRainLearn(SpellLearn):
+    related_class = spells.HPRain
+    damaging = False
+    index = 534
+
+
+class PsychopathLearn(SpellLearn):
+    related_class = spells.Psychopath
+    damaging = False
+    index = 535
+
+
+class ShockerLearn(SpellLearn):
+    related_class = spells.Shocker
+    index = 536
+
+
+class SnowyLearn(SpellLearn):
+    related_class = spells.Snowy
+    index = 537
+
+
+class StarRainLearn(SpellLearn):
+    related_class = spells.StarRain
+    index = 538
+
+
 # *** Coins
 
 
@@ -3577,7 +3946,7 @@ class SlotMachineChest(MiscReward):
 
 
 class InfiniteCoins(MiscReward):
-    index = 216
+    index = 240
     unique = ItemUnique.Always
     chest_event = 3074
     tier = 2
@@ -3821,6 +4190,7 @@ class RecruitedCharacter(Item):
 class MarioRecruit(RecruitedCharacter):
     index = 220
     description = PlayableCharacters.mario.value
+    related_class = Mario
     placeholder = "`MARIO_NAME`"
     starter_script = 187
     container_script = 193
@@ -3917,6 +4287,7 @@ class MarioRecruit(RecruitedCharacter):
 class ToadstoolRecruit(RecruitedCharacter):
     index = 221
     description = PlayableCharacters.toadstool.value
+    related_class = Peach
     placeholder = "`PEACH_NAME`"
     gender = "woman"
     gender_casual = "gal"
@@ -4020,6 +4391,7 @@ class ToadstoolRecruit(RecruitedCharacter):
 class MallowRecruit(RecruitedCharacter):
     index = 222
     description = PlayableCharacters.mallow.value
+    related_class = Mallow
     placeholder = "`MALLOW_NAME`"
     starter_script = 188
     container_script = 194
@@ -4105,7 +4477,7 @@ class MallowRecruit(RecruitedCharacter):
         "look_up_slightly": (1, 22, True),
         "look_way_up": (1, 23, True),
         "victory_pose": (1, 10, True),
-        "prince_neutral": (2, 14, False),
+        "prince_neutral": (2, 14, True),
         "prince_down": (2, 15, True),
         "prince_left": (2, 16, True),
         "hammer": (1, 3, True),
@@ -4116,6 +4488,7 @@ class MallowRecruit(RecruitedCharacter):
 class GenoRecruit(RecruitedCharacter):
     index = 223
     description = PlayableCharacters.geno.value
+    related_class = Geno
     placeholder = "`GENO_NAME`"
     starter_script = 189
     container_script = 195
@@ -4212,6 +4585,7 @@ class GenoRecruit(RecruitedCharacter):
 class BowserRecruit(RecruitedCharacter):
     index = 224
     model = npcs.Bowser
+    related_class = Bowser
     description = PlayableCharacters.bowser.value
     placeholder = "`BOWSER_NAME`"
     starter_script = 190
@@ -4343,6 +4717,7 @@ class Shoes(MarrymoreGear):
     overworld_event = 3935
     overworld_midas_event = 3939
     model = npcs.Shoes
+    price = 0
     item_type = 3
     dialog_replacements = [
         (
@@ -4368,6 +4743,7 @@ class Brooch(MarrymoreGear):
     overworld_event = 3936
     overworld_midas_event = 3940
     model = npcs.Brooch
+    price = 0
     item_type = 3
     dialog_replacements = [
         (
@@ -4394,6 +4770,7 @@ class Ring(MarrymoreGear):
     overworld_midas_event = 3941
     model = npcs.Ring
     item_type = 3
+    price = 0
     dialog_replacements = [
         (
             2911,
@@ -4419,6 +4796,7 @@ class Crown(MarrymoreGear):
     overworld_midas_event = 3942
     model = npcs.Crown
     item_type = 3
+    price = 0
     dialog_replacements = [
         (
             2911,
@@ -4611,6 +4989,9 @@ def get_default_items(world):
         MysteryEgg(world),
         LambsLure(world),
         SheepAttack(world),
+        AltoCard(world),
+        SopranoCard(world),
+        TenorCard(world)
     ]
 
     if world.settings.is_flag_value(
@@ -4619,3 +5000,80 @@ def get_default_items(world):
         items.append(ProgressiveFireworks(world))
 
     return items
+
+
+def get_placeable_spells(world):
+    return [
+        JumpLearn(world),
+        FireOrbLearn(world),
+        SuperJumpLearn(world),
+        SuperFlameLearn(world),
+        UltraJumpLearn(world),
+        UltraFlameLearn(world),
+        TherapyLearn(world),
+        GroupHugLearn(world),
+        SleepyTimeLearn(world),
+        ComeBackLearn(world),
+        MuteLearn(world),
+        PsychBombLearn(world),
+        TerrorizeLearn(world),
+        PoisonGasLearn(world),
+        CrusherLearn(world),
+        BowserCrushLearn(world),
+        GenoBeamLearn(world),
+        GenoBoostLearn(world),
+        GenoWhirlLearn(world),
+        GenoBlastLearn(world),
+        GenoFlashLearn(world),
+        ThunderboltLearn(world),
+        HPRainLearn(world),
+        PsychopathLearn(world),
+        ShockerLearn(world),
+        SnowyLearn(world),
+        StarRainLearn(world),
+    ]
+
+
+def get_placeable_boss_fights(world):
+    return [
+        HammerBroBossFight(world),
+        Croco1BossFight(world),
+        MackBossFight(world),
+        PandoriteBossFight(world),
+        Belome1BossFight(world),
+        BowyerBossFight(world),
+        Croco2BossFight(world),
+        PunchinelloBossFight(world),
+        BoosterBossFight(world),
+        GrateGuyBossFight(world),
+        BundtBossFight(world),
+        KingCalamariBossFight(world),
+        HidonBossFight(world),
+        JohnnyBossFight(world),
+        YaridovichBossFight(world),
+        MokuraBossFight(world),
+        Belome2BossFight(world),
+        JaggerBossFight(world),
+        Jinx1BossFight(world),
+        Jinx2BossFight(world),
+        Jinx3BossFight(world),
+        CulexBossFight(world),
+        BoxBoyBossFight(world),
+        MegaSmilaxBossFight(world),
+        DodoBossFight(world),
+        BirdettaBossFight(world),
+        ValentinaBossFight(world),
+        CzarDragonBossFight(world),
+        AxemRangersBossFight(world),
+        ChesterBossFight(world),
+        MagikoopaBossFight(world),
+        BoomerBossFight(world),
+        ExorBossFight(world),
+        CountdownBossFight(world),
+        CloakerDominoBossFight(world),
+        ClerkBossFight(world),
+        ManagerBossFight(world),
+        DirectorBossFight(world),
+        GunyolkBossFight(world),
+        SmithyBossFight(world),
+    ]

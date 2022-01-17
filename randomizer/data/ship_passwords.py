@@ -21,7 +21,7 @@ hint_authors = [
     "     Memo left by Tinywetblanket:",
     "       Memo left by WeffJebster:",
     "        Memo left by Yakibomb:",
-    " Memo left by [filename]:"
+    " Memo left by [filename]:",
 ]
 
 
@@ -39,13 +39,28 @@ class Password:
     greaper_hint = None
     greaper_hint_2 = None
 
-
-    
     submitter = "anonymous"
     submitter_credits = "ANONYMOUS"
     submitter_hint_prefix = "       Memo left by Anonymous:"
 
-    def __init__(self, word, hint1, hint2, hint3, hint4, hint5, hint6, hint7=None, hint8=None, hint9=None, hint10=None, hint11=None, submitter="Anonymous", submitter_credits="ANONYMOUS", submitter_hint_prefix="       Memo left by Anonymous:"):
+    def __init__(
+        self,
+        word,
+        hint1,
+        hint2,
+        hint3,
+        hint4,
+        hint5,
+        hint6,
+        hint7=None,
+        hint8=None,
+        hint9=None,
+        hint10=None,
+        hint11=None,
+        submitter="Anonymous",
+        submitter_credits="ANONYMOUS",
+        submitter_hint_prefix="       Memo left by Anonymous:",
+    ):
         self.word = word
         self.trampoline_hint = hint1
         self.troopa_hint = hint2
@@ -62,6 +77,7 @@ class Password:
         self.submitter = submitter
         self.submitter_credits = submitter_credits
         self.submitter_hint_prefix = submitter_hint_prefix
+
 
 pool = (
     Password(
@@ -119,7 +135,7 @@ pool = (
         "DRY BONES: I was a Koopa, just\n like my boss... once.[await]",
         "Naegleria & Cynas",
         "NAEGLERIA",
-        "   Memo left by Naegleria & Cynas:"
+        "   Memo left by Naegleria & Cynas:",
     ),
     Password(
         "mallow",
@@ -136,7 +152,7 @@ pool = (
         "\nDRY BONES: The password is a\n name.[await]",
         "Naegleria",
         "NAEGLERIA        CYNAS",
-        "        Memo left by Naegleria:"
+        "        Memo left by Naegleria:",
     ),
     Password(
         "smithy",
@@ -153,7 +169,7 @@ pool = (
         "\nDRY BONES: The password is a\n name.[await]",
         "Naegleria",
         "NAEGLERIA",
-        "        Memo left by Naegleria:"
+        "        Memo left by Naegleria:",
     ),
     Password(
         "flower",
@@ -170,7 +186,7 @@ pool = (
         "\n      DRY BONES: Leaf me alone.[await]",
         "HeroicReplicas",
         "HEROICREPLICAS",
-        "     Memo left by HeroicReplicas:"
+        "     Memo left by HeroicReplicas:",
     ),
     Password(
         "crafts",
@@ -187,7 +203,7 @@ pool = (
         "DRY BONES: The password's letters\n are hidden among six wrecked kinds\n of ship.[await]",
         "Projectyl",
         "PROJECTYL",
-        "        Memo left by Projectyl:"
+        "        Memo left by Projectyl:",
     ),
     Password(
         "ocelot",
@@ -197,10 +213,14 @@ pool = (
         "%RANDOM_WRITER%\n\n   Small, but more than *a little*.[await]",
         "%RANDOM_WRITER%\n\n           Starts with an “O”.[await]",
         "%RANDOM_WRITER%\n\n         It's a pretty good cat.[await]",
-        None,None,None,None,None,
+        None,
+        None,
+        None,
+        None,
+        None,
         "TriumphantBass",
         "TRIUMPHANTBASS",
-        "    Memo left by TriumphantBass:"
+        "    Memo left by TriumphantBass:",
     ),
     Password(
         "wallet",
@@ -217,7 +237,7 @@ pool = (
         "\n     DRY BONES: I may be sat on.[await]",
         "Aweglib",
         "AWEGLIB",
-        "         Memo left by Aweglib:"
+        "         Memo left by Aweglib:",
     ),
     Password(
         "stamos",
@@ -234,7 +254,7 @@ pool = (
         "DRY BONES: Have you been reading\n the notes posted around these\n rooms?[await]",
         "FedoraFriday",
         "FEDORAFRIDAY",
-        "      Memo left by FedoraFriday:"
+        "      Memo left by FedoraFriday:",
     ),
     Password(
         "boxboy",
@@ -244,10 +264,14 @@ pool = (
         "%RANDOM_WRITER%\n\n      There is a “Y” in the word.[await]",
         "%RANDOM_WRITER%\n\n     It usually lives underground.[await]",
         "%RANDOM_WRITER%\n\n     It counters Special attacks.[await]",
-        None,None,None,None,None,
+        None,
+        None,
+        None,
+        None,
+        None,
         "Cynas",
         "CYNAS",
-        "          Memo left by Cynas:"
+        "          Memo left by Cynas:",
     ),
     Password(
         "catnip",
@@ -256,7 +280,7 @@ pool = (
         "%RANDOM_WRITER%\n\n           It has two vowels.[await]",
         "%RANDOM_WRITER%\n\n      Its consumer is consumed.[await]",
         "%RANDOM_WRITER%\n\n      It's named for its lovers.[await]",
-        "%RANDOM_WRITER%\n\n      It has no repeated letters.[await]"
+        "%RANDOM_WRITER%\n\n      It has no repeated letters.[await]",
     ),
     Password(
         "chess2",
@@ -313,7 +337,7 @@ pool = (
         "\n   DRY BONES: Naps are the best.[await]",
         "Calereliya",
         "CALERELIYA",
-        "        Memo left by Calereliya:"
+        "        Memo left by Calereliya:",
     ),
     Password(
         "beetle",
@@ -323,10 +347,14 @@ pool = (
         "       Memo left by Rawk Hawk:\n Get back in the rookie room, scrub!\n You and those creepy flying things![await]",
         "            Memo left by Pat:\n       Look, I gave you RSTLNE.\n        That's 3 of the letters![await]",
         "          Memo left by Vanna:\n\n  (Pssst, the other letter is a B.)[await]",
-        None,None,None,None,None,
+        None,
+        None,
+        None,
+        None,
+        None,
         "Calereliya",
         "CALERELIYA",
-        "        Memo left by Calereliya:"
+        "        Memo left by Calereliya:",
     ),
     Password(
         "♪♪♪♪♪♪",
@@ -336,10 +364,14 @@ pool = (
         "         Memo left by Kazooie:\n    I am so sick of gathering these\n       things. You have no idea.[await]",
         "        Memo left by Gruntilda:\n     Locked is the door; you must\n         search all the floors![await]",
         "        Memo left by Bruntilda:\n  She played in Grunty and the Flute\nFellows. Her guitar is... not good.[await]",
-        None,None,None,None,None,
+        None,
+        None,
+        None,
+        None,
+        None,
         "Calereliya",
         "CALERELIYA",
-        "        Memo left by Calereliya:"
+        "        Memo left by Calereliya:",
     ),
     Password(
         "shells",
@@ -356,7 +388,7 @@ pool = (
         "\n    DRY BONES: She sells them...[await]",
         "Naegleria",
         "NAEGLERIA",
-        "        Memo left by Naegleria:"
+        "        Memo left by Naegleria:",
     ),
     Password(
         "donkey",
@@ -373,7 +405,7 @@ pool = (
         "DRY BONES: He's the leader of the\n bunch, you know him well![await]",
         submitter="LimeFiasco",
         submitter_credits="LIMEFIASCO",
-        submitter_hint_prefix="       Memo left by LimeFiasco:"
+        submitter_hint_prefix="       Memo left by LimeFiasco:",
     ),
     Password(
         "weston",
@@ -390,16 +422,17 @@ pool = (
         None,
         "Mr Dean",
         "MR DEAN",
-        "         Memo left by Mr Dean:"
+        "         Memo left by Mr Dean:",
     ),
 )
 
-all_symbols = list('''0123456789♥♪•~©:;#×+%↑→←*&()-/?!.,\'''')
-vowels = list('aeiouy')
-uncommon_consonants = list('bcdfghjklmnpqrstvwxz')
+all_symbols = list("""0123456789♥♪•~©:;#×+%↑→←*&()-/?!.,\'""")
+vowels = list("aeiouy")
+uncommon_consonants = list("bcdfghjklmnpqrstvwxz")
 
-symbols = list('''0123456789♪•~©↑→←*&,\'''')
-common_consonants = list('bcdfghklmnprstw')
+symbols = list("""0123456789♪•~©↑→←*&,\'""")
+common_consonants = list("bcdfghklmnprstw")
+
 
 def get_similar_letters(letter):
 
@@ -410,7 +443,7 @@ def get_similar_letters(letter):
     elif letter in uncommon_consonants:
         return [c for c in common_consonants if c != letter]
     else:
-        raise Exception('unusable password letter %s' % letter)
+        raise Exception("unusable password letter %s" % letter)
 
 
 def suggest_letter_bank(word, position, decoy_word):
@@ -427,9 +460,16 @@ def suggest_letter_bank(word, position, decoy_word):
     # get random letters similar to this one
     letter_bank = [c for c in get_similar_letters(word[position]) if c not in letters]
     if len(letter_bank) >= 5 - len(letters):
-        letters.extend(random.sample(letter_bank, min(5-len(letters), len(letter_bank))))
+        letters.extend(
+            random.sample(letter_bank, k=min(5 - len(letters), len(letter_bank)))
+        )
     # if not enough fillable letters from that, add a random consonant
+    letters = list(set(letters))
     if len(letters) < 5:
-        letters.extend(random.sample([c for c in common_consonants if c not in letters], 5-len(letters)))
+        letters.extend(
+            random.sample(
+                [c for c in common_consonants if c not in letters], k=5 - len(letters)
+            )
+        )
     random.shuffle(letters)
     return letters

@@ -180,18 +180,6 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_1335_action_queue_async_20_seq',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
-        "subscript": [
-            {
-                "identifier": 'set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-        ]
-    },
-    {
         "identifier": 'EVENT_1335_action_queue_async_20',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_7],

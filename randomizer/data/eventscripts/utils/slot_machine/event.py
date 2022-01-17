@@ -739,16 +739,6 @@ script = [
         "args": [AreaObjects.NPC_2]
     },
     {
-        "identifier": 'jmp_if_bit_set_351',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7086, 7, 'fade_in_from_black_async_98']
-    },
-    {
-        "identifier": 'start_battle_94_',
-        "command": 'run_event_as_subroutine',
-        "args": [171]
-    },
-    {
         "identifier": 'fade_in_from_black_async_98',
         "command": 'fade_in_from_black_async'
     },
@@ -807,6 +797,21 @@ script = [
         "identifier": 'clear_bit_3',
         "command": 'clear_bit',
         "args": [0x7044, 4]
+    },
+    {
+        "identifier": 'jmp_if_bit_set_351',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7086, 7, 'ret_100']
+    },
+    {
+        "identifier": "map_special_val", # box boy chest
+        "command": 'set',
+        "args": [0x7000, 514]
+    },
+    {
+        "identifier": 'start_battle_94_',
+        "command": 'jmp_to_event',
+        "args": [171]
     },
     {
         "identifier": 'ret_100',

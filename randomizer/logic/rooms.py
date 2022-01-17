@@ -64,7 +64,7 @@ def assemble_npc(model):
         byte4 = (1 << 4) + (model.y_shift + 16)
     else:
         byte4 = model.y_shift
-    byte4 += model.occupant.shadow_size << 5
+    byte4 += model.shadow_size << 5
     byte4 += model.cannot_clone << 7
     output.append(byte4)
     output.append((model.obtuse_axis << 4) + model.acute_axis)
@@ -145,7 +145,7 @@ def set_partitions(world):
         elif room_index in [376, 377, 459, 460, 461, 462, 202] or (room is not None and len(room.objects) == 0): # rooms that always need triple empty + ex 1
             partition = Partition(allow_extra_sprite_buffer=True, extra_sprite_buffer_size=1)
             world.rooms[room_index].partition = copy.deepcopy(partition)
-        elif room_index in [192, 205]: # rooms that always need triple empty + ex 0
+        elif room_index in [192, 205, 104]: # rooms that always need triple empty + ex 0
             # 205 - Trying this out. A seed where partitions didn't assemble correctly actually made the spinies render correctly.
             # May not work with all boss/ally combos.
             world.rooms[room_index].partition = Partition()
@@ -371,7 +371,6 @@ class Rooms:
                 for npc_i, npc in enumerate(this_room.objects):
 
                     model = npc.model
-                    #print(model.occupant, i, npc_i)
                     assembled = assemble_npc(model)
 
                     if (
@@ -493,8 +492,8 @@ class Rooms:
 
                 # write partition bytes if new, get partition ID
 
-                if i == 205:
-                    print(this_room.partition)
+                # if i == 205:
+                #     print(this_room.partition)
 
                 p = this_room.partition
                 partition_byte_1 = p.allow_extra_sprite_buffer * 0x10
@@ -524,9 +523,9 @@ class Rooms:
                 if partition_index is None:
                     partition_index = len(partitions)
                     partitions.append(partition_bytes)
-                if i == 204:
-                    print(p, partition_index)
-                    print(partitions[partition_index])
+                # if i == 204:
+                #     print(p, partition_index)
+                #     print(partitions[partition_index])
 
                 room_bytes = bytearray([partition_index])
 
@@ -610,9 +609,13 @@ class Rooms:
                             assert clone_length <= 15
 
                             if this_npc.type != ObjectType.CHEST:
+                                #print(i, [n.model.occupant for n in npc.npcs], [n.action_script for n in npc.npcs])
                                 base_action_script = min([n.action_script for n in npc.npcs])
                                 action_script_offset = this_npc.action_script - base_action_script
-                                assert action_script_offset <= 7
+                                if this_npc.type == ObjectType.BATTLE:
+                                    assert action_script_offset <= 15
+                                else:
+                                    assert action_script_offset <= 7
                             else:
                                 base_action_script = npc.npcs[0].action_script
 
@@ -651,7 +654,7 @@ class Rooms:
 
                                 else:
                                     event_id = min(event_group)
-                                    event_offset = this_npc.event_script = min(event_group)
+                                    event_offset = this_npc.event_script - min(event_group)
                                     
                                 #if i == 5:
                                 #    print(new_event_group)
@@ -689,9 +692,10 @@ class Rooms:
                             room_bytes.append((this_npc.initiator << 4) + this_npc.after_battle)
 
                         if this_npc.type == ObjectType.OBJECT:
-                            room_bytes.append((action_script_offset << 3) + model_offset)
+                            room_bytes.append((event_offset << 5) + (action_script_offset << 3) + model_offset)
                         elif this_npc.type == ObjectType.CHEST:
-                            room_bytes.append((event_offset << 5) + (this_npc.upper_70A7 << 4) + this_npc.lower_70A7)
+                            room_bytes.append((this_npc.upper_70A7 << 4) + this_npc.lower_70A7)
+                            #print(i, (this_npc.upper_70A7 << 4) + this_npc.lower_70A7)
                         elif this_npc.type == ObjectType.BATTLE:
                             room_bytes.append((battle_pack_offset << 4) + action_script_offset)
                         room_bytes.append((this_npc.visible << 7) + this_npc.x)
@@ -701,16 +705,19 @@ class Rooms:
                         # write clones
 
                         if utils.isclass_or_instance(npc, CloneGroup):
+                            #print(npc.npcs[0].model.occupant)
                             for clone_index in range(1, len(npc.npcs)):
                                 this_clone = npc.npcs[clone_index]
                                 if this_clone.type != this_npc.type:
                                     raise Exception("room %i: mismatched clone type found" % i)
                                 if this_clone.type != ObjectType.CHEST:
                                     action_script_offset = this_clone.action_script - base_action_script
+                                    #print (this_clone.action_script, base_action_script)
                                 if this_clone.type == ObjectType.OBJECT:
                                     new_event_id = new_event_group[clone_index]
                                     model_offset = npc.ids[clone_index] - base_model_id
                                     event_offset = new_event_id - min(new_event_group)
+                                    #print(i, npc, this_clone.model.occupant)
                                     assert model_offset <= 7
                                     assert action_script_offset <= 3
                                     assert event_offset <= 7
