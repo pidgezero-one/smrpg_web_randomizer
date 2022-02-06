@@ -5,7 +5,7 @@ from django.utils.html import mark_safe
 from markdown import markdown
 from randomizer.helpers.flag_helpers import ShuffleLocationSelector, FlagOptions
 from randomizer.data.bosses import AvailableBosses
-from randomizer.helpers.flag_helpers import FireworksOptions, WinConditions, PlayableCharacters, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, ItemQualities, ShopQualities, EquipmentCharactersOptions, regular_checks, BossScaleOptions
+from randomizer.helpers.flag_helpers import FireworksOptions, WinConditions, PlayableCharacters, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, Moleville1Gating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, ItemQualities, ShopQualities, EquipmentCharactersOptions, regular_checks, BossScaleOptions
 from randomizer.data import spells, music
 
 
@@ -423,7 +423,7 @@ class StarPiecesRestrictedByArea(BooleanFlag):
     name = 'Restrict number of Star Pieces in a World Map area'
     description = '''If enabled, each of the seven overworld map areas may only contain up to one Star Piece each.
 <br>
-<br>Note: This may not be perfectly respected if Bowser's Keep and Factory are both gated by high Star Piece counts.'''
+<br>Note: This may not be respected if Bowser's Keep and Factory are both gated by 6 Star Pieces.'''
     modes = ['open']
     
     id = "restrict_map"
@@ -821,6 +821,22 @@ class PipeVaultGate(SelectOneFlag):
     id = "pv"
 
 
+class Moleville1Gate(SelectOneFlag):
+    name = '''Moleville Mines entrance access'''
+    description = '''<b>Recruit Geno</b>: The top door inside the Moleville Mines entrance will be accessible when Geno joins the party.
+<br>
+<br><b>Finish Forest Maze</b>: The top door inside the Moleville Mines entrance will be accessible when you defeat the final boss of Forest Maze.
+<br>
+<br><b>Defeat Bowyer</b>: The top door inside the Moleville Mines entrance will be accessible when you have found and defeated the Bowyer boss battle.
+<br>
+<br><b>Always Open</b>: The top door inside the Moleville Mines entrance will be accessible from the start of the game.'''
+    modes = ['open']
+    optionEnum = Moleville1Gating
+    choices = [o for o in Moleville1Gating]
+    default = Moleville1Gating.open
+    id = "me"
+
+
 class BoosterTowerGate(SelectOneFlag):
     name = '''Booster Tower access'''
     description = '''<b>Recruit character</b>: Booster Tower's door can be unlocked when you recruit the selected character.
@@ -1023,11 +1039,11 @@ class FastTravel(BooleanFlag):
 
 class WinCondition(SelectOneFlag):
     name = "Condition required to beat the game"
-    description = '''<b>Beat the Factory</b>: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
+    description = '''<b>Beat the Factory</b>: When you collect the number of Star Pieces specified in your 'Star Pieces required to access the final Factory boss' setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
 <br>
 <br><b>Beat Smithy</b>: The game is over as soon as you find Smithy and defeat him. (If you don't have him shuffled into the boss pool, this is effectively the same thing as "Beat the Factory".)
 <br>
-<br><b>Collect required Star Pieces</b>: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the game is over and the credits will roll.
+<br><b>Collect required Star Pieces</b>: When you collect the number of Star Pieces specified in your 'Star Pieces required to access the final Factory boss' setting, the game is over and the credits will roll.
 <br>
 <br><b>Beat Monstro Town sealed door</b>: The game is over when you defeat the boss behind the sealed door in Monstro Town, regardless of your Star Piece count.'''
     optionEnum = WinConditions
@@ -1254,7 +1270,7 @@ class EnemyFormations(BooleanFlag):
 
 
 class EnemyAttacks(BooleanFlag):
-    name = 'Randomize attacks'
+    name = 'Randomize attack stats and effects'
     description = "If enabled, enemy spells and attacks will have their power randomized. Attacks which cast statuses will have the status effects randomized, and attacks which normally don't inflict statuses may inflict unexpected statuses."
     
     id = "attacks"
@@ -1270,7 +1286,7 @@ class EnemyNoSafetyChecks(BooleanFlag):
 
 
 class EnemySpells(BooleanFlag):
-    name = 'Randomize enemy spells'
+    name = 'Randomize enemy spell assignments'
     description = "If enabled, enemies can cast random spells. I.E. Mack could cast Blast instead of Flame."
     
     hard = True
@@ -1509,6 +1525,7 @@ class AreaAccessSubcategory(FlagCategory):
     flags = [
         BanditsWayGate,
         ForestMazeGate,
+        Moleville1Gate,
         PipeVaultGate,
         BoosterTowerGate,
         MarrymoreGate,

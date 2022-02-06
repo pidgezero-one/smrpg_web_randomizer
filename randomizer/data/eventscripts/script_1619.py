@@ -16,6 +16,16 @@ script = [
         "args": [1095, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
+        "identifier": "EVENT_1619_mines_access",  # is mines open
+        "command": "jmp_if_bit_set",
+        "args": [0x707B, 3, 'EVENT_1619_jmp_if_bit_set_2'],
+    },
+    {
+        "identifier": 'EVENT_1619_run_dialog_1_',
+        "command": 'run_dialog',
+        "args": [1051, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
         "identifier": 'EVENT_1619_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
         "args": [0x707a, 4, 'EVENT_1619_resume_action_script_15']

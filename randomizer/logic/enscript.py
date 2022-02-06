@@ -67,7 +67,10 @@ class EventScript:
                 #print(command["identifier"])
                 script_with_length = command
                 assembler = EventScript()
-                func = getattr(assembler, command["command"], None)
+                try:
+                    func = getattr(assembler, command["command"], None)
+                except:
+                    raise Exception(command)
                 #print(command)
                 if "args" in command.keys():
                     dummy_args = [(0 if isinstance(

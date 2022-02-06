@@ -970,6 +970,21 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=2, mold_id=31),
                     ]
                 ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=22),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=23),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=18),
+                    ]
+                ),
             ]
         )
     ),

@@ -67,6 +67,8 @@ script = [
         "command": "run_event_as_subroutine",
         "args": [24],
     },
+    {"identifier": "EVENT_3331_restore_all_hp_7", "command": "restore_all_hp"},
+    {"identifier": "EVENT_3331_restore_all_fp_8", "command": "restore_all_fp"},
     {"identifier": "EVENT_3331_set_bit_6", "command": "set_bit", "args": [0x707E, 0]},
     {
         "identifier": "EVENT_3331_set_action_script_sync_7",

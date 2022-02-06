@@ -97,7 +97,8 @@ def _randomize_enemy(enemy):
     enemy.magic_attack = utils.mutate_normal(enemy.magic_attack, minimum=1)
     enemy.magic_defense = utils.mutate_normal(enemy.magic_defense, minimum=1)
     enemy.fp = utils.mutate_normal(enemy.fp, minimum=1)
-    enemy.evade = utils.mutate_normal(enemy.evade, minimum=0, maximum=100)
+    if enemy.index != 147:  # Formless should always have max evade
+        enemy.evade = utils.mutate_normal(enemy.evade, minimum=0, maximum=100)
     enemy.magic_evade = utils.mutate_normal(enemy.magic_evade, minimum=0, maximum=100)
 
     if enemy.boss:

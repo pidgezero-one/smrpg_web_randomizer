@@ -5,6 +5,7 @@ from randomizer.helpers.roomobjecttables import ObjectType, Initiator, PostBattl
 from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -249,6 +250,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
+            shadow_size = ShadowSize._00_OVAL_SMALL,
             acute_axis=4,
             obtuse_axis=4,
             height=8,

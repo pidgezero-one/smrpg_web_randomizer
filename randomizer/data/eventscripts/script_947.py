@@ -97,13 +97,13 @@ script = [
     {
         "identifier": "EVENT_947_belome1",
         "command": "jmp_if_bit_clear",
-        "args": [0x7055, 0, "EVENT_991_sewer"],
+        "args": [0x7055, 2, "EVENT_991_sewer"],
     },
     # bowyer
     {
         "identifier": "EVENT_947_bowyer",
-        "command": "jmp_if_bit_set",
-        "args": [0x7066, 3, "EVENT_947_croco2"],
+        "command": "jmp_if_bit_clear",
+        "args": [0x7066, 3, "EVENT_947_mines_access"],
     },
     {
         "identifier": "EVENT_947_bowyer2",
@@ -111,6 +111,11 @@ script = [
         "args": [0x7083, 6, "EVENT_991_forest"],
     },
     # croco 2 boss fight / item
+    {
+        "identifier": "EVENT_947_mines_access",
+        "command": "jmp_if_bit_clear",
+        "args": [0x707B, 3, "EVENT_947_rk+"],
+    },
     {
         "identifier": "EVENT_947_croco2",
         "command": "jmp_if_bit_clear",
@@ -146,17 +151,12 @@ script = [
     {
         "identifier": "EVENT_947_booster+",
         "command": "jmp_if_bit_clear",
-        "args": [0x7053, 4, "EVENT_991_tower"],
+        "args": [0x7053, 5, "EVENT_991_tower"],
     },
     {
         "identifier": "EVENT_947_rk_2+",
         "command": "jmp_if_object_in_level",
         "args": [AreaObjects.NPC_7, 192, "EVENT_991_tower"],
-    },
-    {
-        "identifier": "EVENT_947_rk-+",
-        "command": "jmp_if_bit_clear",
-        "args": [0x7053, 4, "EVENT_991_tower"],
     },
     {
         "identifier": "EVENT_947_rk_3+",
@@ -177,8 +177,14 @@ script = [
     {
         "identifier": "EVENT_947_bundt_1",
         "command": "jmp_if_bit_clear",
-        "args": [0x704C, 7, "EVENT_991_marrymore"],
+        "args": [0x704C, 7, "EVENT_947_bundt_2"],
     },
+    {
+        "identifier": "EVENT_947_has_items",  # depending on settings, check if you have four items
+        "command": "run_event_as_subroutine",
+        "args": [979],
+    },
+    ####### check if you have the key items
     {
         "identifier": "EVENT_947_bundt_2",  # suggest going to booster hill depending on condition
         "command": "run_event_as_subroutine",
@@ -194,7 +200,7 @@ script = [
     {
         "identifier": "EVENT_947_calamari",
         "command": "jmp_if_bit_clear",
-        "args": [0x7067, 5, "EVENT_947_yarid"],
+        "args": [0x7067, 4, "EVENT_947_yarid"],
     },
     {
         "identifier": "EVENT_947_calamari_2",
@@ -228,7 +234,7 @@ script = [
     {
         "identifier": "EVENT_947_mokura",
         "command": "jmp_if_bit_clear",
-        "args": [0x7081, 7, "EVENT_991_lands_end"],
+        "args": [0x7081, 4, "EVENT_991_lands_end"],
     },
     # belome 2
     {
@@ -237,7 +243,7 @@ script = [
         "args": [0x7052, 2, "EVENT_947_mtown_open"],
     },
     {
-        "identifier": "EVENT_947_temple",
+        "identifier": "EVENT_947_temple_",
         "command": "jmp_if_bit_clear",
         "args": [0x708A, 0, "EVENT_991_temple"],
     },
@@ -270,12 +276,12 @@ script = [
     # culex
     {
         "identifier": "EVENT_947_culex_is_win_condition",
-        "command": "jmp_if_bit_clear",
+        "command": "jmp_if_bit_set",
         "args": [0x7051, 7, "EVENT_947_megasmilax"],
     },
     {
         "identifier": "EVENT_947_culex_already_defeated",
-        "command": "jmp_if_bit_clear",
+        "command": "jmp_if_bit_set",
         "args": [0x7093, 4, "EVENT_947_megasmilax"],
     },
     {
@@ -339,7 +345,7 @@ script = [
     },
     {
         "identifier": "EVENT_947_-ck2",  # birdetta not cleared - display hint
-        "command": "jmp_if_bit_set",
+        "command": "jmp_if_bit_clear",
         "args": [0x705F, 5, "EVENT_991_nimbus_castle"],
     },
     {
@@ -359,7 +365,7 @@ script = [
     },
     {
         "identifier": "EVENT_947_-ck2/",  # valentina not cleared - display hint
-        "command": "jmp_if_bit_set",
+        "command": "jmp_if_bit_clear",
         "args": [0x705F, 4, "EVENT_991_nimbus_castle"],
     },
     # czar dragon & axems
@@ -378,6 +384,11 @@ script = [
         "identifier": "EVENT_947_is_keep_open",
         "command": "jmp_if_bit_clear",
         "args": [0x7068, 3, "EVENT_947_smithy"],
+    },
+    {
+        "identifier": "EVENT_947_chester",
+        "command": "jmp_if_bit_clear",
+        "args": [0x7098, 7, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_947_exor",
@@ -446,20 +457,20 @@ script = [
     },
     {
         "identifier": "EVENT_947_barrel_",  # sewer chest
-        "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_1, 301, "EVENT_991_sewer"],
+        "command": "jmp_if_bit_clear",
+        "args": [0x7055, 4, "EVENT_991_sewer"],
     },
     # melody bay 1
     {
         "identifier": "EVENT_947_mb1",
         "command": "jmp_if_bit_clear",
-        "args": [0x7052, 6, "EVENT_991_mb"],
+        "args": [0x7051, 4, "EVENT_991_mb"],
     },
     # melody bay 2
     {
         "identifier": "EVENT_947_mb2",  # song unlocked
         "command": "jmp_if_bit_clear",
-        "args": [0x7057, 4, "EVENT_947_mb3"],
+        "args": [0x7057, 4, "EVENT_947_rose_town_flower"],
     },
     {
         "identifier": "EVENT_947_mb2_2",
@@ -553,22 +564,22 @@ script = [
         "command": "jmp_if_object_in_level",
         "args": [AreaObjects.NPC_0, 324, "EVENT_991_monstro"],
     },
+    {
+        "identifier": "EVENT_947_flags", # flags not placed
+        "command": "jmp_if_bit_clear",
+        "args": [0x705F, 2, "EVENT_991_monstro"],
+    },
     # seed
     {
         "identifier": "EVENT_947_-seed",
-        "command": "jmp_if_bit_clear",
-        "args": [0x708C, 3, "EVENT_991_bean"],
-    },
-    {
-        "identifier": "EVENT_947_-seed_1",
         "command": "jmp_if_object_in_level",
-        "args": [AreaObjects.NPC_3, 254, "EVENT_991_monstro"],
+        "args": [AreaObjects.NPC_3, 254, "EVENT_991_bean"],
     },
     # castle key 1
     {
         "identifier": "EVENT_947_ck1",
         "command": "jmp_if_bit_clear",
-        "args": [0x705F, 6, "EVENT_991_nimbus_proper"],
+        "args": [0x705F, 6, "EVENT_991_nimbus_castle"],
     },
     # ck2/fertilizer
     {
@@ -588,7 +599,7 @@ script = [
     },
     {
         "identifier": "EVENT_947_ck2",  # birdetta not cleared - display hint
-        "command": "jmp_if_bit_set",
+        "command": "jmp_if_bit_clear",
         "args": [0x705F, 5, "EVENT_991_nimbus_castle"],
     },
     {
@@ -608,7 +619,7 @@ script = [
     },
     {
         "identifier": "EVENT_947_ck2/",  # valentina not cleared - display hint
-        "command": "jmp_if_bit_set",
+        "command": "jmp_if_bit_clear",
         "args": [0x705F, 4, "EVENT_991_nimbus_castle"],
     },
     {

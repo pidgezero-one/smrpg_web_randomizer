@@ -48,7 +48,7 @@ script = [
     {
         "identifier": "EVENT_3519_npc",
         "command": "jmp_if_var_equals_byte",
-        "args": [0x70A8, 0x16, "EVENT_3519_chest_2"],
+        "args": [0x70A8, 0x18, "EVENT_3519_chest_2"],
     },
     {
         "identifier": "EVENT_3519_chest_1",

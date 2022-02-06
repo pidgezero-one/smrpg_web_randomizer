@@ -61,13 +61,6 @@ script = [
         "command": "run_event_as_subroutine",
         "args": [354],
     },
-    {"identifier": "EVENT_593_set_bit_8", "command": "set_bit", "args": [0x704A, 2]},
-    {
-        "identifier": "EVENT_593_run_event_as_subroutine_9",
-        "command": "run_event_as_subroutine",
-        "args": [1011],
-    },
-    {"identifier": "EVENT_593_pause_10", "command": "pause", "args": [1]},
     {
         "identifier": "EVENT_593_remove_from_level_11",
         "command": "remove_from_level",

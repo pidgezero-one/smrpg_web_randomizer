@@ -11,6 +11,11 @@ script = [
         "args": [0x7092, 4, 'EVENT_3400_exor_eject']
     },
     {
+        "identifier": "EVENT_3400_axem",
+        "command": 'jmp_if_bit_set',
+        "args": [0x7093, 3, "EVENT_3400_v"]
+    },
+    {
         "identifier": "EVENT_3400_check_room",
         "command": "set_7000_to_current_level"
     },
@@ -940,6 +945,11 @@ script = [
         "args": [256, 'EVENT_3400_play_forest_music']
     },
     {
+        "identifier": "EVENT_3400_room_258_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [258, 'EVENT_3400_play_booster_tower_music']
+    },
+    {
         "identifier": "EVENT_3400_room_259_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [259, 'EVENT_3400_play_booster_tower_music']
@@ -1459,7 +1469,7 @@ script = [
     {
         "identifier": "EVENT_3400_room_393_jump",
         "command": 'jmp_if_7000_equals_short',
-        "args": [393, "EVENT_3400_v"]
+        "args": [393, 'EVENT_3400_play_volcano_music']
     },
     {
         "identifier": "EVENT_3400_room_394_jump",
@@ -2368,6 +2378,11 @@ script = [
     },
     {
         "identifier": "EVENT_3400_v",
+        "command": 'clear_bit',
+        "args": [0x7093, 3]
+    },
+    {
+        "identifier": "EVENT_3400_v_",
         "command": "open_location",
         "args": [Locations._050_BARREL_VOLCANO, [6, 7]],
     },

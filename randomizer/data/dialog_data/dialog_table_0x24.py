@@ -8,7 +8,7 @@ dialog_data[1] = '''SNIFIT 3: You wanna fight?[await]'''
 dialog_data[2] = '''\n           Got “Beetlemania”![await]'''
 dialog_data[3] = '''GARDENER: I'll plant the seed...[await]'''
 dialog_data[4] = '''GARDENER: Then give it fertilizer.[await]'''
-dialog_data[5] = '''[await]'''
+dialog_data[5] = '''           Got “Beetlemania”![end]'''
 dialog_data[6] = '''[await]'''
 dialog_data[7] = '''\n            Got a Star Piece![await]'''
 dialog_data[8] = '''[await]'''
@@ -752,7 +752,8 @@ dialog_data[458] = ''' It's the bus driver's day off today,
  so you can't take the Royal Bus.[await]
  If you need to go to Bowser's
  Keep, you can get there `BOWSERS_KEEP_CONDITION`[await]'''
-dialog_data[459] = '''[await]'''
+dialog_data[459] = ''' I heard there was a big factory
+ behind it. Is that true?[await]'''
 dialog_data[460] = '''[await]'''
 dialog_data[461] = ''' Welcome! Come on in!
  So you want to take a rest?

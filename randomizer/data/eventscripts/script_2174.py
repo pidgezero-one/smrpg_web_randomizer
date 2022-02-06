@@ -243,7 +243,7 @@ script = [
     },
     {
         "identifier": "EVENT_2174_is_volcano_open",
-        "command": "jmp_if_bit_clear",
+        "command": "jmp_if_bit_set",
         "args": [0x7098, 7, "EVENT_2174_ret_26"],
     },
     {"identifier": "EVENT_2174_set_bit_2", "command": "set_bit", "args": [0x7098, 7]},

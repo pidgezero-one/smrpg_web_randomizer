@@ -16,7 +16,7 @@ class ShuffleLocationSelector(FlagOptions):
     StarterCharacter3 = "Starter character 3"
     StarterCharacter4 = "Starter character 4"
     StarterCharacter5 = "Starter character 5"
-    MariosPadBed = "Invisible Musty Fears Item #1"
+    MariosPadBed = "Mario's Pad Invisible Item"
     MariosPadStarter1 = "Starter item 1"
     MariosPadStarter2 = "Starter item 2"
     MariosPadStarter3 = "Starter item 3"
@@ -92,7 +92,7 @@ class ShuffleLocationSelector(FlagOptions):
     RoseWayFiveChests3 = "Rose Way five-chest top right chest"
     RoseWayFiveChests4 = "Rose Way five-chest top left chest"
     RoseWayFiveChests5 = "Rose Way five-chest bottom right chest"
-    RoseTownFlag = "Invisible Musty Fears Item #2"
+    RoseTownFlag = "Rose Town Invisible Item"
     RoseTownStore1 = "Rose Town shop right chest"
     RoseTownStore2 = "Rose Town shop left chest"
     GardenerCloud1 = "Rose Town gardener right chest"
@@ -131,7 +131,7 @@ class ShuffleLocationSelector(FlagOptions):
     GoombaThumping2 = "Pipe Vault Goomba Thumpin second prize"
     YosterIsleEntrance = "Yo'ster Isle entrance chest"
     YosterIsleRaceReward1 = "Yo'ster Isle first race prize item 1"
-    YosterIsleRaceReward2 = "Invisible Musty Fears Item #3"
+    YosterIsleRaceReward2 = "Yo'ster Isle Invisible Item"
     YosterIsleRaceReward3 = "Yo'ster Isle first race prize item 2"
     YosterIsleFlag = "Yo'ster Isle first race prize item 3"
     BucketGirl = "Moleville bucket girl"
@@ -433,6 +433,7 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.MariosPadStarter2,
     ShuffleLocationSelector.MariosPadStarter3,
     ShuffleLocationSelector.MariosPadStarter4,
+    ShuffleLocationSelector.MariosPadBed,
 
     ShuffleLocationSelector.MushroomWay1,
     ShuffleLocationSelector.MushroomWay2,
@@ -448,17 +449,20 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.MushroomKingdomStore,
     ShuffleLocationSelector.MushroomKingdomStoreBasement1,
     ShuffleLocationSelector.MushroomKingdomStoreBasement2,
-    ShuffleLocationSelector.MushroomKingdomInn,
 
     ShuffleLocationSelector.BanditsWay1,
     ShuffleLocationSelector.BanditsWay2,
     ShuffleLocationSelector.BanditsWayStarChest,
     ShuffleLocationSelector.BanditsWayDogJump,
     ShuffleLocationSelector.BanditsWayCroco,
+    ShuffleLocationSelector.Croco1Reward,
     ShuffleLocationSelector.Croco1Reward2,
     # ShuffleLocationSelector.BanditsWayCoin1,
     # ShuffleLocationSelector.BanditsWayCoin2,
     # ShuffleLocationSelector.BanditsWayCoin3,
+
+    ShuffleLocationSelector.MushroomKingdomStoreExchange,
+    ShuffleLocationSelector.MushroomKingdomInn,
 
     ShuffleLocationSelector.PandoriteChest,
     ShuffleLocationSelector.PandoriteReward1,
@@ -473,6 +477,9 @@ regular_checks = [ # excludes key item checks. can't turn those off
 
     ShuffleLocationSelector.CricketJamReward,
     ShuffleLocationSelector.CricketPieReward,
+    ShuffleLocationSelector.MelodyBay1,
+    ShuffleLocationSelector.MelodyBay2,
+    ShuffleLocationSelector.MelodyBay3,
 
     ShuffleLocationSelector.RoseWayPlatform,
     ShuffleLocationSelector.RoseWayMushroom,
@@ -483,6 +490,7 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.RoseWayFiveChests4,
     ShuffleLocationSelector.RoseWayFiveChests5,
 
+    ShuffleLocationSelector.RoseTownFlag,
     ShuffleLocationSelector.RoseTownStore1,
     ShuffleLocationSelector.RoseTownStore2,
     ShuffleLocationSelector.RoseTownTreasureHouse1,
@@ -526,10 +534,12 @@ regular_checks = [ # excludes key item checks. can't turn those off
     # ShuffleLocationSelector.PipeVaultSlideCoin5,
 
     ShuffleLocationSelector.YosterIsleEntrance,
+    ShuffleLocationSelector.YosterIsleFlag,
     ShuffleLocationSelector.YosterIsleRaceReward1,
     ShuffleLocationSelector.YosterIsleRaceReward2,
     ShuffleLocationSelector.YosterIsleRaceReward3,
 
+    ShuffleLocationSelector.Croco2Item,
     ShuffleLocationSelector.MolevilleMinesShyGuy,
     ShuffleLocationSelector.MolevilleMinesStarChest,
     ShuffleLocationSelector.MolevilleMinesCoins,
@@ -538,6 +548,7 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.TreasureSeller1,
     ShuffleLocationSelector.TreasureSeller2,
     ShuffleLocationSelector.TreasureSeller3,
+    ShuffleLocationSelector.FireworksShop,
     ShuffleLocationSelector.BucketGirl,
 
     ShuffleLocationSelector.BoosterPassBush,
@@ -551,17 +562,20 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.BoosterTowerSpookum,
     ShuffleLocationSelector.BoosterTowerRailway,
     ShuffleLocationSelector.BoosterTowerMasher,
+    ShuffleLocationSelector.BoosterTowerPortraits,
     ShuffleLocationSelector.BoosterTowerThwomp,
-    ShuffleLocationSelector.BoosterTowerZoomShoes,
+    ShuffleLocationSelector.BoosterTowerParachute,
+    ShuffleLocationSelector.BoosterTowerParachuteCrevice,
     ShuffleLocationSelector.BoosterTowerFrogCoin1,
     ShuffleLocationSelector.BoosterTowerFrogCoin2,
     ShuffleLocationSelector.BoosterTowerFrogCoin3,
     ShuffleLocationSelector.BoosterTowerFrogCoin4,
-    ShuffleLocationSelector.BoosterTowerParachute,
-    ShuffleLocationSelector.BoosterTowerParachuteCrevice,
+    ShuffleLocationSelector.BoosterTowerRoomKey,
+    ShuffleLocationSelector.BoosterTowerZoomShoes,
     ShuffleLocationSelector.BoosterTowerTop1,
     ShuffleLocationSelector.BoosterTowerTop2,
     ShuffleLocationSelector.BoosterTowerTop3,
+    ShuffleLocationSelector.BoosterTowerKnifeGuy,
     # ShuffleLocationSelector.BoosterTowerCoin1,
     # ShuffleLocationSelector.BoosterTowerCoin2,
     # ShuffleLocationSelector.BoosterTowerCoin3,
@@ -589,6 +603,7 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.FrogDisciple3,
     ShuffleLocationSelector.FrogDisciple4,
     ShuffleLocationSelector.FrogDisciple5,
+    ShuffleLocationSelector.SeasideTownBossPrize,
     ShuffleLocationSelector.SeasideTownRescue,
 
     ShuffleLocationSelector.SeaStarChest,
@@ -629,6 +644,7 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.LandsEndSecret1,
     ShuffleLocationSelector.LandsEndSecret2,
     ShuffleLocationSelector.LandsEndShyAway,
+    ShuffleLocationSelector.KeroSewersBeforeBelomeUpper2,
     ShuffleLocationSelector.LandsEndStarChest1,
     ShuffleLocationSelector.LandsEndStarChest2,
     ShuffleLocationSelector.LandsEndStarChest3,
@@ -660,6 +676,7 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.BelomeTempleTreasureFrogCoin8,
 
     ShuffleLocationSelector.MonstroTownEntrance,
+    ShuffleLocationSelector.MonstroTownThwomp,
     ShuffleLocationSelector.JinxDojoReward,
     ShuffleLocationSelector.CulexReward,
     ShuffleLocationSelector.SuperJumps100,
@@ -676,6 +693,7 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.BeanValleyBoxBoyRoom2,
     ShuffleLocationSelector.BeanValleyBoxBoyRoomHidden,
     ShuffleLocationSelector.BeanValleyPiranhaPlants,
+    ShuffleLocationSelector.BeanValleyMegasmilaxRoom,
     ShuffleLocationSelector.BeanValleyFirstVineRoomFrogCoin,
     ShuffleLocationSelector.BeanValleyBeanstalk,
     ShuffleLocationSelector.BeanValleyBeanstalkFrogCoin,
@@ -709,13 +727,16 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.NimbusCastleOutOfBounds1,
     ShuffleLocationSelector.NimbusCastleOutOfBounds2,
     ShuffleLocationSelector.NimbusLandPrisoners,
+    ShuffleLocationSelector.NimbusLandPrisoners2,
     ShuffleLocationSelector.NimbusCastleSingleGoldBird,
+    ShuffleLocationSelector.NimbusCastleBirdetta,
     ShuffleLocationSelector.NimbusCastleAfterEgg1,
     ShuffleLocationSelector.NimbusCastleAfterEgg2,
     ShuffleLocationSelector.NimbusCastleCornerChestAfterValentina,
     ShuffleLocationSelector.NimbusCastleStarAfterValentina,
     ShuffleLocationSelector.NimbusLandCellar,
     ShuffleLocationSelector.NimbusLandSignalRing,
+    ShuffleLocationSelector.NimbusLandRightSide,
     
     ShuffleLocationSelector.BarrelVolcanoSecret1,
     ShuffleLocationSelector.BarrelVolcanoSecret2,
@@ -852,6 +873,18 @@ class ForestMazeGating(FlagOptions):
     #bowser = "Find Bowser"
     #toadstool = "Find Toadstool"
     pie = "Exchange Cricket Pie"
+    open = "Always open"
+
+
+class Moleville1Gating(FlagOptions):
+    """Enumeration for Pipe Vault gating flag option"""
+    #mario = "Recruit Mario"
+    #mallow = "Recruit Mallow"
+    geno = "Recruit Geno"
+    #bowser = "Recruit Bowser"
+    #toadstool = "Recruit Toadstool"
+    forest = "Finish Forest Maze"
+    bowyer = "Defeat Bowyer"
     open = "Always open"
 
 

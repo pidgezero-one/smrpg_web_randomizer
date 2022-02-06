@@ -983,11 +983,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1147_jmp_to_event_66',
-        "command": 'jmp_to_event',
-        "args": [168]
-    },
-    {
         "identifier": 'EVENT_1147_jmp_to_subroutine_49',
         "command": 'run_event_as_subroutine',
         "args": [1163]
@@ -1008,6 +1003,11 @@ script = [
     {
         "identifier": 'EVENT_1147_restore_all_fp_64',
         "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_1147_jmp_to_event_66',
+        "command": 'jmp_to_event',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_1147_ret_67',

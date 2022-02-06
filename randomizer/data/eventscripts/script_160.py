@@ -11,11 +11,6 @@ script = [
         "args": [Sounds._027_FOUND_AN_ITEM, 6]
     },
     {
-        "identifier": 'EVENT_160_put_inventory_105',
-        "command": 'put_inventory',
-        "args": [0x70a7]
-    },
-    {
         "identifier": 'EVENT_160_check_12',
         "command": 'jmp_if_var_equals_byte',
         "args": [0x70a7, 28, 'EVENT_160_run_dialog_104_']
@@ -81,6 +76,11 @@ script = [
         "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
+        "identifier": 'EVENT_160_put_inventory_105',
+        "command": 'put_inventory',
+        "args": [0x70a7]
+    },
+    {
         "identifier": 'EVENT_160_ret_106',
         "command": 'ret'
     },
@@ -88,6 +88,11 @@ script = [
         "identifier": 'EVENT_160_run_dialog_104_',
         "command": 'run_dialog',
         "args": [65, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+    },
+    {
+        "identifier": 'EVENT_160_put_inventory_105_',
+        "command": 'put_inventory',
+        "args": [0x70a7]
     },
     {
         "identifier": 'EVENT_160_ret_106_',

@@ -260,6 +260,11 @@ script = [
         ],
     },
     {
+        "identifier": "EVENT_3282_jmp_if_bit_set_129_",
+        "command": "set_bit",
+        "args": [0x707E, 2],
+    },
+    {
         "identifier": "EVENT_3282_star_piece",
         "command": "jmp_to_event",
         "args": [168],
@@ -267,8 +272,8 @@ script = [
     {"identifier": "EVENT_3282_ret_128", "command": "ret"},
     {
         "identifier": "EVENT_3282_jmp_if_bit_set_129",
-        "command": "jmp_if_bit_set",
-        "args": [0x7086, 0, "EVENT_3282_jmp_to_event_133"],
+        "command": "jmp_if_bit_clear",
+        "args": [0x707E, 2, "EVENT_3282_jmp_to_event_133"],
     },
     {
         "identifier": "EVENT_3282_set_action_script_sync_130",

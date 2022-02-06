@@ -31,7 +31,7 @@ from randomizer.data.rooms.room import (
 )
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
-
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -56,6 +56,7 @@ room = Room(
         ],
         full_palette_buffer=True,
     ),
+    extra_required_actions=[ExtraSpriteActions.Climb],
     music=Music._42_STILL_THE_ROAD_IS_FULL_OF_MONSTERS,
     entrance_event=15,
     event_tiles=[

@@ -38,6 +38,7 @@ from randomizer.helpers.flag_helpers import (
     ShopQualities,
     WinConditions,
     PipeVaultGating,
+    Moleville1Gating,
 )
 from randomizer.data.sprites.objects.sprites import sprites as commonsprites
 from randomizer.data.utils import palette_to_bytes
@@ -223,9 +224,9 @@ class Settings:
             flags.AvailableCharacters
         ).disabled and (
             self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mallow)
-#            or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow)
+            #            or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow)
             or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow)
-#            or self.is_flag_value(flags.SeaGate, SeaGating.mallow)
+            #            or self.is_flag_value(flags.SeaGate, SeaGating.mallow)
         ):
             raise flags.FlagError(
                 "Mallow is required for one of your Progression settings, but he is excluded from the seed in your Party settings."
@@ -233,11 +234,11 @@ class Settings:
         if PlayableCharacters.geno in self.get_flag(
             flags.AvailableCharacters
         ).disabled and (
-#            self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno)
-#            or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno)
+            #            self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno)
+            #            or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno)
             self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno)
             or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno)
-#            or self.is_flag_value(flags.SeaGate, SeaGating.geno)
+            #            or self.is_flag_value(flags.SeaGate, SeaGating.geno)
         ):
             raise flags.FlagError(
                 "Geno is required for one of your Progression settings, but he is excluded from the seed in your Party settings."
@@ -245,11 +246,11 @@ class Settings:
         if PlayableCharacters.bowser in self.get_flag(
             flags.AvailableCharacters
         ).disabled and (
-#            self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser)
-#            or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser)
+            #            self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser)
+            #            or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser)
             self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser)
-#            or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser)
-#            or self.is_flag_value(flags.SeaGate, SeaGating.bowser)
+            #            or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser)
+            #            or self.is_flag_value(flags.SeaGate, SeaGating.bowser)
         ):
             raise flags.FlagError(
                 "Bowser is required for one of your Progression settings, but he is excluded from the seed in your Party settings."
@@ -257,10 +258,10 @@ class Settings:
         if PlayableCharacters.toadstool in self.get_flag(
             flags.AvailableCharacters
         ).disabled and (
-#            self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool)
-#            or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool)
+            #            self.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool)
+            #            or self.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool)
             self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool)
-#            or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool)
+            #            or self.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool)
             or self.is_flag_value(flags.SeaGate, SeaGating.toadstool)
         ):
             raise flags.FlagError(
@@ -273,6 +274,33 @@ class Settings:
         ):
             raise flags.FlagError(
                 "You have excluded too many characters to fill your desired starting party size"
+            )
+        # don't allow there to be less star pieces than gating allows
+        if (
+            (
+                self.get_flag(flags.TotalStarPieces).value < 4
+                and self.is_flag_value(flags.SeaGate, SeaGating.star4)
+            )
+            or (
+                self.get_flag(flags.TotalStarPieces).value < 6
+                and self.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star6)
+            )
+            or (
+                self.get_flag(flags.TotalStarPieces).value < 6
+                and self.is_flag_value(flags.FactoryGate, FactoryGating.star6)
+            )
+        ):
+            raise flags.FlagError(
+                "Not enough Star Pieces available to unlock world areas with your selected progression settings"
+            )
+        # don't allow endgame stars to be less than available stats
+
+        if (
+            self.get_flag(flags.TotalStarPieces).value
+            < self.get_flag(flags.StarPiecesRequired).value
+        ):
+            raise flags.FlagError(
+                "Star Pieces required to access the final Factory boss cannot be higher than the total Star Pieces available in the world"
             )
 
         # needs at least 1 damaging spell to be enabled
@@ -296,7 +324,7 @@ class Settings:
             LearnableSpells.Thunderbolt,
             LearnableSpells.Shocker,
             LearnableSpells.Snowy,
-            LearnableSpells.StarRain
+            LearnableSpells.StarRain,
         ]
         # what to do about actually applying these when seed has limited chars?
         has_required = False
@@ -308,7 +336,6 @@ class Settings:
             raise flags.FlagError(
                 "At least one spell must be included that can transform Mokura."
             )
-
 
         # Clean up flag selections
         # Set max # of chars from allowed chars
@@ -501,8 +528,16 @@ class GameWorld:
         self.recruitable_characters = data.items.get_recruitable_characters(self)
         self.shuffler_spells = data.items.get_placeable_spells(self)
         self.shuffler_fights = data.items.get_placeable_boss_fights(self)
-        #print(self.shuffler_fights)
-        self.items_dict = dict([(i.index, i) for i in self.items + self.recruitable_characters + self.shuffler_spells + self.shuffler_fights])
+        # print(self.shuffler_fights)
+        self.items_dict = dict(
+            [
+                (i.index, i)
+                for i in self.items
+                + self.recruitable_characters
+                + self.shuffler_spells
+                + self.shuffler_fights
+            ]
+        )
 
         # Shops
         self.shops = data.shops.get_default_shops(self)
@@ -593,12 +628,20 @@ class GameWorld:
                 return cls
 
     def get_check_instance(self, cls):
-        all_checks = self.chest_locations + self.freestanding_item_locations + self.spell_placements + self.boss_fight_placements + self.starter_character_checks + self.recruitable_character_checks
+        all_checks = (
+            self.chest_locations
+            + self.freestanding_item_locations
+            + self.spell_placements
+            + self.boss_fight_placements
+            + self.starter_character_checks
+            + self.recruitable_character_checks
+        )
         return next((x for x in all_checks if utils.isclass_or_instance(x, cls)), None)
 
     def get_character_instance(self, cls):
-        return next((x for x in self.characters if utils.isclass_or_instance(x, cls)), None)
-        
+        return next(
+            (x for x in self.characters if utils.isclass_or_instance(x, cls)), None
+        )
 
     def get_enemy_instance(self, cls):
         """
@@ -774,6 +817,10 @@ class GameWorld:
         ):
             self.prepend_bits(199, [[0x7065, 4], [0x706D, 4]])
             self.prepend_notice(199, 2256)
+            self.replace_dialog(
+                1053,
+                """ To get to Bandit's Way, you will\n first need to take care of\n business in Mushroom Way.[await]""",
+            )
         # elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario):
         #     self.prepend_bits(187, [[0x7065, 4], [0x706D, 4]])
         #     if not self.is_starting_character(data.items.MarioRecruit):
@@ -782,6 +829,10 @@ class GameWorld:
             self.prepend_bits(198, [[0x7065, 4], [0x706D, 4]])
             if not self.is_starting_character(data.items.MallowRecruit):
                 self.prepend_notice(198, 2256)
+            self.replace_dialog(
+                1053,
+                """ To get to Bandit's Way, you will\n need to rendezvous with a cloudy\n sorceror.[await]""",
+            )
         # elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno):
         #     self.prepend_bits(189, [[0x7065, 4], [0x706D, 4]])
         #     if not self.is_starting_character(data.items.GenoRecruit):
@@ -796,6 +847,13 @@ class GameWorld:
         #     self.prepend_bits(191, [[0x7065, 4], [0x706D, 4]])
         #     if not self.is_starting_character(data.items.ToadstoolRecruit):
         #         self.prepend_notice(191, 2256)
+        elif self.settings.is_flag_value(
+            flags.BanditsWayGate, BanditsWayGating.hammerbro
+        ):
+            self.replace_dialog(
+                1053,
+                """ To get to Bandit's Way, you will\n need to locate and trounce a pair\n of well-equipped turtles.[await]""",
+            )
 
         # Forest Maze gating, special conditions
         if self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.open):
@@ -808,6 +866,10 @@ class GameWorld:
         if self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.forest):
             self.prepend_bits(211, [[0x7055, 7]])
             self.prepend_notice(211, 2258)
+            self.replace_dialog(
+                1052,
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it went to take a break\n in the forest.[await]""",
+            )
         # elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mario):
         #     self.prepend_bits(187, [[0x7055, 7]])
         #     if not self.is_starting_character(data.items.MarioRecruit):
@@ -820,6 +882,10 @@ class GameWorld:
             self.prepend_bits(189, [[0x7055, 7]])
             if not self.is_starting_character(data.items.GenoRecruit):
                 self.prepend_notice(189, 2258)
+            self.replace_dialog(
+                1052,
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it went looking for\n someone named “`GENO_NAME`”.[await]""",
+            )
         # elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowser):
         #     self.prepend_bits(190, [[0x7055, 7]])
         #     if not self.is_starting_character(data.items.BowserRecruit):
@@ -832,6 +898,53 @@ class GameWorld:
         #         self.prepend_notice(191, 2258)
         elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.open):
             self.prepend_bits(192, [[0x7055, 7]])
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowyer):
+            self.replace_dialog(
+                1052,
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it was hunting for the\n jerk shooting arrows into town.[await]""",
+            )
+
+        # Moleville entrance gating
+        if self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.forest):
+            self.prepend_bits(211, [[0x707B, 3]])
+            self.prepend_notice(211, 2269)
+            self.replace_dialog(
+                1051,
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to gather up wood in the\n forest.[await]""",
+            )
+        # elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.mario):
+        #     self.prepend_bits(187, [[0x707B, 3]])
+        #     if not self.is_starting_character(data.items.MarioRecruit):
+        #         self.prepend_notice(187, 2258)
+        # elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.mallow):
+        #     self.prepend_bits(198, [[0x707B, 3]])
+        #     if not self.is_starting_character(data.items.MallowRecruit):
+        #         self.prepend_notice(198, 2258)
+        elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.geno):
+            self.prepend_bits(189, [[0x707B, 3]])
+            if not self.is_starting_character(data.items.GenoRecruit):
+                self.prepend_notice(189, 2269)
+            self.replace_dialog(
+                1051,
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to chat with some fella named\n “`GENO_NAME`”, or somethin'.[await]""",
+            )
+        # elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.bowser):
+        #     self.prepend_bits(190, [[0x707B, 3]])
+        #     if not self.is_starting_character(data.items.BowserRecruit):
+        #         self.prepend_notice(190, 2258)
+        # elif self.settings.is_flag_value(
+        #     flags.Moleville1Gate, Moleville1Gating.toadstool
+        # ):
+        #     self.prepend_bits(191, [[0x707B, 3]])
+        #     if not self.is_starting_character(data.items.ToadstoolRecruit):
+        #         self.prepend_notice(191, 2258)
+        elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.open):
+            self.prepend_bits(192, [[0x707B, 3]])
+        elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.bowyer):
+            self.replace_dialog(
+                1051,
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go hunt down some fella\n named “Bowyer”, or somethin'.[await]""",
+            )
 
         # Starting characters - necessary to determine booster tower script
         # maintain the join order to match cursor character
@@ -944,10 +1057,10 @@ class GameWorld:
                     #     and utils.isclass_or_instance(c.item, data.items.MallowRecruit)
                     # )
                     # or (
-                        self.settings.is_flag_value(
-                            flags.ForestMazeGate, ForestMazeGating.geno
-                        )
-                        and utils.isclass_or_instance(c.item, data.items.GenoRecruit)
+                    self.settings.is_flag_value(
+                        flags.ForestMazeGate, ForestMazeGating.geno
+                    )
+                    and utils.isclass_or_instance(c.item, data.items.GenoRecruit)
                     # )
                     # or (
                     #     self.settings.is_flag_value(
@@ -977,6 +1090,10 @@ class GameWorld:
             flags.BoosterTowerGate, BoosterTowerGating.mario
         ):
             self.prepend_bits(187, [[0x7053, 7]])
+            self.replace_dialog(
+                1163,
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty good jumper for that.[await]""",
+            )
             if not self.is_starting_character(data.items.MarioRecruit):
                 self.prepend_notice(187, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 0:
@@ -987,6 +1104,10 @@ class GameWorld:
             flags.BoosterTowerGate, BoosterTowerGating.mallow
         ):
             self.prepend_bits(198, [[0x7053, 7]])
+            self.replace_dialog(
+                1163,
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n some pretty magical fluff for that.[await]""",
+            )
             if not self.is_starting_character(data.items.MallowRecruit):
                 self.prepend_notice(198, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 4:
@@ -997,6 +1118,10 @@ class GameWorld:
             flags.BoosterTowerGate, BoosterTowerGating.geno
         ):
             self.prepend_bits(189, [[0x7053, 7]])
+            self.replace_dialog(
+                1163,
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty strong gun for that.[await]""",
+            )
             if not self.is_starting_character(data.items.GenoRecruit):
                 self.prepend_notice(189, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 3:
@@ -1007,6 +1132,10 @@ class GameWorld:
             flags.BoosterTowerGate, BoosterTowerGating.bowser
         ):
             self.prepend_bits(190, [[0x7053, 7]])
+            self.replace_dialog(
+                1163,
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n a REALLY strong person for that.[await]""",
+            )
             if not self.is_starting_character(data.items.BowserRecruit):
                 self.prepend_notice(190, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 2:
@@ -1017,12 +1146,23 @@ class GameWorld:
             flags.BoosterTowerGate, BoosterTowerGating.toadstool
         ):
             self.prepend_bits(191, [[0x7053, 7]])
+            self.replace_dialog(
+                1163,
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n to track down a for that.[await]""",
+            )
             if not self.is_starting_character(data.items.ToadstoolRecruit):
                 self.prepend_notice(191, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 1:
                 self.eventscripts[1331] = copy.deepcopy(tower_toadstool_self)
             else:
                 self.eventscripts[1331] = copy.deepcopy(tower_toadstool)
+        elif self.settings.is_flag_value(
+            flags.BoosterTowerGate, BoosterTowerGating.punchinello
+        ):
+            self.replace_dialog(
+                1163,
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n to track down a hot-head for that.[await]""",
+            )
 
         if not self.settings.is_flag_value(
             flags.BoosterTowerGate, BoosterTowerGating.geno
@@ -1041,14 +1181,11 @@ class GameWorld:
             self.prepend_notice(204, 2260)
             self.eventscripts[985] = [
                 {
-                    "identifier": 'EVENT_985_do_hill', 
-                    "command": 'jmp_if_bit_clear',
-                    "args": [0x704D, 7, 'EVENT_991_hill']
+                    "identifier": "EVENT_985_do_hill",
+                    "command": "jmp_if_bit_clear",
+                    "args": [0x704D, 7, "EVENT_991_hill"],
                 },
-                {
-                    "identifier": "EVENT_985_do_hill_2",
-                    "command": "ret"
-                },
+                {"identifier": "EVENT_985_do_hill_2", "command": "ret"},
             ]
         elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             self.prepend_bits(205, [[0x704C, 7]])
@@ -1077,7 +1214,11 @@ class GameWorld:
             self.prepend_bits(191, [[0x7067, 4], [0x706F, 3]])
             if not self.is_starting_character(data.items.ToadstoolRecruit):
                 self.prepend_notice(191, 2261)
-        #else:
+                self.replace_dialog(
+                    1054,
+                    """ Did you know there's a shipwreck\n off the beach to the south?[await]\n `PEACH_NAME` can help you get there.[await]""",
+                )
+        # else:
         elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star4):
             # if self.settings.is_flag_value(flags.SeaGate, SeaGating.star1):
             #     value = 1
@@ -1086,7 +1227,7 @@ class GameWorld:
             # elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star3):
             #     value = 3
             # elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star4):
-            #if self.settings.is_flag_value(flags.SeaGate, SeaGating.star4):
+            # if self.settings.is_flag_value(flags.SeaGate, SeaGating.star4):
             value = 4
             # elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star5):
             #     value = 5
@@ -1096,8 +1237,17 @@ class GameWorld:
             gate_script[1]["args"][1] = value
             self.eventscripts[206] = gate_script
             self.prepend_bits(192, [[0x7051, 0]])
+            self.replace_dialog(
+                1054,
+                """ Did you know there's a shipwreck\n off the beach to the south?[await]\n It will be pretty easy to find if you\n have four stars to guide you.[await]""",
+            )
             # else:
             #     raise Exception("failed to set star piece gate on sea")
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.bundt):
+            self.replace_dialog(
+                1054,
+                """ Did you know there's a shipwreck\n off the beach to the south?[await]\n You'll need to vanquish a large\n cake in order to make it more\n visible.[await]""",
+            )
 
         # Yaridovich gating
         if self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.open):
@@ -1111,7 +1261,9 @@ class GameWorld:
             self.prepend_bits(192, [[0x7052, 2]])
         elif self.settings.is_flag_value(
             flags.BelomeTempleGate, BelomeTempleGating.seaside
-        ) or self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.yarid):
+        ) or self.settings.is_flag_value(
+            flags.BelomeTempleGate, BelomeTempleGating.yarid
+        ):
             self.eventscripts[192].insert(
                 0,
                 utils.new_command(
@@ -1120,15 +1272,25 @@ class GameWorld:
                     [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM],
                 ),
             )
-            self.eventscripts[1147].insert(
-                len(self.eventscripts[1147]) - 1,
-                utils.new_command(
-                    1147,
-                    "run_dialog",
-                    [2263, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]],
-                ),
-            )
-            if self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.seaside):
+            if self.settings.is_flag_value(
+                flags.BelomeTempleGate, BelomeTempleGating.seaside
+            ):
+                self.replace_dialog(
+                    1274,
+                    """ Look for the whirl where the ant\n pops up and proceed after it.[await][page]\n Keep following it and you'll find\n your way underground.[await][page]\n But be careful, you won't be able\n to go very far down there until you\n help out in Seaside Town.[await]""",
+                )
+                self.eventscripts[1147].insert(
+                    len(self.eventscripts[1147]) - 1,
+                    utils.new_command(
+                        1147,
+                        "run_dialog",
+                        [
+                            2263,
+                            AreaObjects.BOWSER,
+                            [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC],
+                        ],
+                    ),
+                )
                 self.eventscripts[1147].insert(
                     len(self.eventscripts[1147]) - 1,
                     utils.new_command(
@@ -1136,6 +1298,11 @@ class GameWorld:
                         "set_bit",
                         [0x7052, 2],
                     ),
+                )
+            else:
+                self.replace_dialog(
+                    1274,
+                    """ Look for the whirl where the ant\n pops up and proceed after it.[await][page]\n Keep following it and you'll find\n your way underground.[await][page]\n But be careful, you won't be able\n to go very far down there until you\n find Yaridovich.[await]""",
                 )
 
         # Monstro Town gating
@@ -1169,7 +1336,19 @@ class GameWorld:
         elif self.settings.is_flag_value(
             flags.BarrelVolcanoGate, BarrelVolcanoGating.nimbus
         ):
-            pass
+            self.prepend_bits(3660, [[0x7090, 5]])
+            self.prepend_notice(3660, 2268)
+            self.replace_dialog(
+                2474,
+                """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need to clear\n out the castle first, though.[await]""",
+            )
+        elif self.settings.is_flag_value(
+            flags.BarrelVolcanoGate, BarrelVolcanoGating.valentina
+        ):
+            self.replace_dialog(
+                2474,
+                """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need\n Valentina's permission to enter,\n though.[await]""",
+            )
 
         # Bowser's Keep gating
         if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
@@ -1186,45 +1365,57 @@ class GameWorld:
                 self.search_replace_dialog(
                     "`BOWSERS_KEEP_CONDITION`", """via\n the nearby volcano."""
                 )
-            #else:
-                # if self.settings.is_flag_value(
-                #     flags.BowsersKeepGate, BowsersKeepGating.star1
-                # ):
-                #     value = 1
-                #     self.search_replace_dialog(
-                #         "`BOWSERS_KEEP_CONDITION`", """with\n 1 Star Piece."""
-                #     )
-                # elif self.settings.is_flag_value(
-                #     flags.BowsersKeepGate, BowsersKeepGating.star2
-                # ):
-                #     value = 2
-                #     self.search_replace_dialog(
-                #         "`BOWSERS_KEEP_CONDITION`", """with\n 2 Star Pieces."""
-                #     )
-                # elif self.settings.is_flag_value(
-                #     flags.BowsersKeepGate, BowsersKeepGating.star3
-                # ):
-                #     value = 3
-                #     self.search_replace_dialog(
-                #         "`BOWSERS_KEEP_CONDITION`", """with\n 3 Star Pieces."""
-                #     )
-                # elif self.settings.is_flag_value(
-                #     flags.BowsersKeepGate, BowsersKeepGating.star4
-                # ):
-                #     value = 4
-                #     self.search_replace_dialog(
-                #         "`BOWSERS_KEEP_CONDITION`", """with\n 4 Star Pieces."""
-                #     )
-                # elif self.settings.is_flag_value(
-                #     flags.BowsersKeepGate, BowsersKeepGating.star5
-                # ):
-                #     value = 5
-                #     self.search_replace_dialog(
-                #         "`BOWSERS_KEEP_CONDITION`", """with\n 5 Star Pieces."""
-                #     )
-                # elif self.settings.is_flag_value(
-                #     flags.BowsersKeepGate, BowsersKeepGating.star6
-                # ):
+                self.eventscripts[208].insert(
+                    1,
+                    utils.new_command(
+                        208,
+                        "run_dialog",
+                        [
+                            2264,
+                            AreaObjects.BOWSER,
+                            [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC],
+                        ],
+                    ),
+                )
+            # else:
+            # if self.settings.is_flag_value(
+            #     flags.BowsersKeepGate, BowsersKeepGating.star1
+            # ):
+            #     value = 1
+            #     self.search_replace_dialog(
+            #         "`BOWSERS_KEEP_CONDITION`", """with\n 1 Star Piece."""
+            #     )
+            # elif self.settings.is_flag_value(
+            #     flags.BowsersKeepGate, BowsersKeepGating.star2
+            # ):
+            #     value = 2
+            #     self.search_replace_dialog(
+            #         "`BOWSERS_KEEP_CONDITION`", """with\n 2 Star Pieces."""
+            #     )
+            # elif self.settings.is_flag_value(
+            #     flags.BowsersKeepGate, BowsersKeepGating.star3
+            # ):
+            #     value = 3
+            #     self.search_replace_dialog(
+            #         "`BOWSERS_KEEP_CONDITION`", """with\n 3 Star Pieces."""
+            #     )
+            # elif self.settings.is_flag_value(
+            #     flags.BowsersKeepGate, BowsersKeepGating.star4
+            # ):
+            #     value = 4
+            #     self.search_replace_dialog(
+            #         "`BOWSERS_KEEP_CONDITION`", """with\n 4 Star Pieces."""
+            #     )
+            # elif self.settings.is_flag_value(
+            #     flags.BowsersKeepGate, BowsersKeepGating.star5
+            # ):
+            #     value = 5
+            #     self.search_replace_dialog(
+            #         "`BOWSERS_KEEP_CONDITION`", """with\n 5 Star Pieces."""
+            #     )
+            # elif self.settings.is_flag_value(
+            #     flags.BowsersKeepGate, BowsersKeepGating.star6
+            # ):
             elif self.settings.is_flag_value(
                 flags.BowsersKeepGate, BowsersKeepGating.star6
             ):
@@ -1236,7 +1427,8 @@ class GameWorld:
                 keep_script[1]["args"][1] = value
                 self.eventscripts[207] = keep_script
                 self.prepend_bits(192, [[0x7051, 1]])
-            #else:
+                self.prepend_notice(192, 2264)
+            # else:
             #    raise Exception("failed to set star piece gate on keep")
 
         # Factory gating
@@ -1244,6 +1436,11 @@ class GameWorld:
             self.prepend_bits(192, [[0x7070, 5], [0x7068, 5]])
         elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.keep):
             self.prepend_bits(2149, [[0x7070, 5], [0x7068, 5]])
+        elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.exor):
+            self.replace_dialog(
+                3726,
+                """ I heard there was a big factory\n behind it. Is that true?[await][pause] I bet Exor\n would know, if you run into him![await]""",
+            )
         else:
             # if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.star1):
             #     value = 1
@@ -1262,7 +1459,12 @@ class GameWorld:
                 factory_script[1]["args"][1] = value
                 self.eventscripts[3093] = factory_script
                 self.prepend_bits(192, [[0x7051, 3]])
-            #else:
+                self.replace_dialog(
+                    3726,
+                    """ I heard there was a big factory\n behind it. Is that true?[await][pause] I wish I had\n 6 Star Pieces, so I could find out.[await]""",
+                )
+
+            # else:
             #    raise Exception("failed to set star piece gate on factory")
 
         # Casino warp
@@ -1286,256 +1488,283 @@ class GameWorld:
         # Win condition
         if not self.settings.is_flag_value(flags.WinCondition, WinConditions.factory):
             self.eventscripts[984] = [
-                utils.new_command(984, self.eventscripts[1969][0]["command"], self.eventscripts[1969][0]["args"]),
-                utils.new_command(984, self.eventscripts[1969][1]["command"], self.eventscripts[1969][1]["args"]),
+                utils.new_command(
+                    984,
+                    "jmp_if_bit_set",
+                    [0x7052, 0, "EVENT_984_ret"]
+                ),
+                utils.new_command(
+                    984,
+                    self.eventscripts[1969][0]["command"],
+                    self.eventscripts[1969][0]["args"],
+                ),
+                utils.new_command(
+                    984,
+                    self.eventscripts[1969][1]["command"],
+                    self.eventscripts[1969][1]["args"],
+                ),
             ]
-            self.eventscripts[984].extend([
-                {
-                    "identifier": "EVENT_984_jmp_if_comparison_result_is_lesser_19",
-                    "command": "jmp_if_comparison_result_is_lesser",
-                    "args": ["EVENT_984_ret"],
-                },
-                {
-                    "identifier": "EVENT_984_is_factory_open", 
-                    "command": "jmp_if_bit_set",
-                    "args": [0x7070, 5, 'EVENT_991_factory'],
-                },
-                {
-                    "identifier": "EVENT_984_is_casino_warp", 
-                    "command": "jmp_if_bit_clear",
-                    "args": [0x7088, 5, "EVENT_984_is_bucket_warp"],
-                },
-
-                {
-                    "identifier": 'EVENT_984_-ck2__~', 
-                    "command": 'set',
-                    "args": [0x7000, 174]
-                },
-                {
-                    "identifier": 'EVENT_984_-ck2____~',
-                    "command": 'store_7000_item_quantity_to_70A7'
-                },
-                {
-                    "identifier": 'EVENT_984_-ck2_363~', # have castle key 2 - display hint
-                    "command": 'jmp_if_7000_equals_short',
-                    "args": [1, 'EVENT_991_casino']
-                },
-
-
-                {
-                    "identifier": "EVENT_984_is_bucket_warp", 
-                    "command": "jmp_if_bit_clear",
-                    "args": [0x705E, 6, "EVENT_984_ret"],
-                },
-                {
-                    "identifier": "EVENT_984_is_bucket_available", 
-                    "command": "jmp_if_bit_clear",
-                    "args": [0x7057, 4, "EVENT_984_ret"],
-                },
-            ])
-
-
+            self.eventscripts[984].extend(
+                [
+                    {
+                        "identifier": "EVENT_984_jmp_if_comparison_result_is_lesser_19",
+                        "command": "jmp_if_comparison_result_is_lesser",
+                        "args": ["EVENT_984_ret"],
+                    },
+                    {
+                        "identifier": "EVENT_984_is_factory_open",
+                        "command": "jmp_if_bit_set",
+                        "args": [0x7070, 5, "EVENT_991_factory"],
+                    },
+                    {
+                        "identifier": "EVENT_984_is_casino_warp",
+                        "command": "jmp_if_bit_clear",
+                        "args": [0x7088, 5, "EVENT_984_is_bucket_warp"],
+                    },
+                    {
+                        "identifier": "EVENT_984_-ck2__~",
+                        "command": "set",
+                        "args": [0x7000, 174],
+                    },
+                    {
+                        "identifier": "EVENT_984_-ck2____~",
+                        "command": "store_7000_item_quantity_to_70A7",
+                    },
+                    {
+                        "identifier": "EVENT_984_-ck2_363~",  # have castle key 2 - display hint
+                        "command": "jmp_if_7000_equals_short",
+                        "args": [1, "EVENT_991_casino"],
+                    },
+                    {
+                        "identifier": "EVENT_984_is_bucket_warp",
+                        "command": "jmp_if_bit_clear",
+                        "args": [0x705E, 6, "EVENT_984_ret"],
+                    },
+                    {
+                        "identifier": "EVENT_984_is_bucket_available",
+                        "command": "jmp_if_bit_clear",
+                        "args": [0x7057, 4, "EVENT_984_ret"],
+                    },
+                ]
+            )
 
             if self.settings.is_flag_value(
                 flags.FireworksSetting, FireworksOptions.shuffle1
             ):
-                self.eventscripts[984].extend([
-                    
-                    {
-                        "identifier": 'EVENT_984_have_ss', 
-                        "command": 'set',
-                        "args": [0x7000, 172]
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss_2',
-                        "command": 'store_7000_item_quantity_to_70A7'
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss_3', # have fireworks
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss-', 
-                        "command": 'set',
-                        "args": [0x7000, 138]
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss_2-',
-                        "command": 'store_7000_item_quantity_to_70A7'
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss_3-', # have shiny stone
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss--', 
-                        "command": 'set',
-                        "args": [0x7000, 137]
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss_2--',
-                        "command": 'store_7000_item_quantity_to_70A7'
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss_3--', # have carbo cookie
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
-                    },
-                    {
-                        "identifier": "EVENT_984_bucket_open",
-                        "command": "jmp_if_object_not_in_level",
-                        "args": [AreaObjects.NPC_7, 108, 'EVENT_991_moleville_proper'],
-                    },
-                    {
-                        "identifier": "EVENT_984_ret",
-                        "command": "ret"
-                    },
-                ])
+                self.eventscripts[984].extend(
+                    [
+                        {
+                            "identifier": "EVENT_984_have_ss",
+                            "command": "set",
+                            "args": [0x7000, 172],
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss_2",
+                            "command": "store_7000_item_quantity_to_70A7",
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss_3",  # have fireworks
+                            "command": "jmp_if_7000_equals_short",
+                            "args": [1, "EVENT_991_moleville_proper"],
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss-",
+                            "command": "set",
+                            "args": [0x7000, 138],
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss_2-",
+                            "command": "store_7000_item_quantity_to_70A7",
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss_3-",  # have shiny stone
+                            "command": "jmp_if_7000_equals_short",
+                            "args": [1, "EVENT_991_moleville_proper"],
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss--",
+                            "command": "set",
+                            "args": [0x7000, 137],
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss_2--",
+                            "command": "store_7000_item_quantity_to_70A7",
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss_3--",  # have carbo cookie
+                            "command": "jmp_if_7000_equals_short",
+                            "args": [1, "EVENT_991_moleville_proper"],
+                        },
+                        {
+                            "identifier": "EVENT_984_bucket_open",
+                            "command": "jmp_if_object_not_in_level",
+                            "args": [
+                                AreaObjects.NPC_7,
+                                108,
+                                "EVENT_991_moleville_proper",
+                            ],
+                        },
+                        {"identifier": "EVENT_984_ret", "command": "ret"},
+                    ]
+                )
                 self.eventscripts[982] = [
-                    
                     {
-                        "identifier": 'EVENT_982_have_ss', 
-                        "command": 'set',
-                        "args": [0x7000, 172]
+                        "identifier": "EVENT_982_have_ss",
+                        "command": "set",
+                        "args": [0x7000, 172],
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss_2',
-                        "command": 'store_7000_item_quantity_to_70A7'
+                        "identifier": "EVENT_982_have_ss_2",
+                        "command": "store_7000_item_quantity_to_70A7",
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss_3', # have fireworks
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
+                        "identifier": "EVENT_982_have_ss_3",  # have fireworks
+                        "command": "jmp_if_7000_equals_short",
+                        "args": [1, "EVENT_991_moleville_proper"],
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss-', 
-                        "command": 'set',
-                        "args": [0x7000, 138]
+                        "identifier": "EVENT_982_have_ss-",
+                        "command": "set",
+                        "args": [0x7000, 138],
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss_2-',
-                        "command": 'store_7000_item_quantity_to_70A7'
+                        "identifier": "EVENT_982_have_ss_2-",
+                        "command": "store_7000_item_quantity_to_70A7",
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss_3-', # have shiny stone
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
+                        "identifier": "EVENT_982_have_ss_3-",  # have shiny stone
+                        "command": "jmp_if_7000_equals_short",
+                        "args": [1, "EVENT_991_moleville_proper"],
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss--', 
-                        "command": 'set',
-                        "args": [0x7000, 137]
+                        "identifier": "EVENT_982_have_ss--",
+                        "command": "set",
+                        "args": [0x7000, 137],
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss_2--',
-                        "command": 'store_7000_item_quantity_to_70A7'
+                        "identifier": "EVENT_982_have_ss_2--",
+                        "command": "store_7000_item_quantity_to_70A7",
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss_3--', # have cookie
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
+                        "identifier": "EVENT_982_have_ss_3--",  # have cookie
+                        "command": "jmp_if_7000_equals_short",
+                        "args": [1, "EVENT_991_moleville_proper"],
                     },
                     {
                         "identifier": "EVENT_982_bucket_open",
                         "command": "jmp_if_object_not_in_level",
-                        "args": [AreaObjects.NPC_7, 108, 'EVENT_991_moleville_proper'],
+                        "args": [AreaObjects.NPC_7, 108, "EVENT_991_moleville_proper"],
                     },
-                    {
-                        "identifier": "EVENT_982_ret",
-                        "command": "ret"
-                    },
+                    {"identifier": "EVENT_982_ret", "command": "ret"},
                 ]
             elif self.settings.is_flag_value(
                 flags.FireworksSetting, FireworksOptions.progressive
             ):
-                self.eventscripts[984].extend([
-                    {
-                        "identifier": 'EVENT_984_have_ss--', 
-                        "command": 'set',
-                        "args": [0x7000, 137]
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss_2--',
-                        "command": 'store_7000_item_quantity_to_70A7'
-                    },
-                    {
-                        "identifier": 'EVENT_984_have_ss_3--', # have cookie
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
-                    },
-                    {
-                        "identifier": "EVENT_984_bucket_open",
-                        "command": "jmp_if_object_not_in_level",
-                        "args": [AreaObjects.NPC_7, 108, 'EVENT_991_moleville_proper'],
-                    },
-                    {
-                        "identifier": "EVENT_984_ret",
-                        "command": "ret"
-                    },
-                ])
+                self.eventscripts[984].extend(
+                    [
+                        {
+                            "identifier": "EVENT_984_have_ss--",
+                            "command": "set",
+                            "args": [0x7000, 137],
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss_2--",
+                            "command": "store_7000_item_quantity_to_70A7",
+                        },
+                        {
+                            "identifier": "EVENT_984_have_ss_3--",  # have cookie
+                            "command": "jmp_if_7000_equals_short",
+                            "args": [1, "EVENT_991_moleville_proper"],
+                        },
+                        {
+                            "identifier": "EVENT_984_bucket_open",
+                            "command": "jmp_if_object_not_in_level",
+                            "args": [
+                                AreaObjects.NPC_7,
+                                108,
+                                "EVENT_991_moleville_proper",
+                            ],
+                        },
+                        {"identifier": "EVENT_984_ret", "command": "ret"},
+                    ]
+                )
                 self.eventscripts[982] = [
                     {
-                        "identifier": 'EVENT_982_have_ss--', 
-                        "command": 'set',
-                        "args": [0x7000, 137]
+                        "identifier": "EVENT_982_have_ss--",
+                        "command": "set",
+                        "args": [0x7000, 137],
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss_2--',
-                        "command": 'store_7000_item_quantity_to_70A7'
+                        "identifier": "EVENT_982_have_ss_2--",
+                        "command": "store_7000_item_quantity_to_70A7",
                     },
                     {
-                        "identifier": 'EVENT_982_have_ss_3--', # have cookie
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
+                        "identifier": "EVENT_982_have_ss_3--",  # have cookie
+                        "command": "jmp_if_7000_equals_short",
+                        "args": [1, "EVENT_991_moleville_proper"],
                     },
                     {
                         "identifier": "EVENT_982_bucket_open",
                         "command": "jmp_if_object_not_in_level",
-                        "args": [AreaObjects.NPC_7, 108, 'EVENT_991_moleville_proper'],
+                        "args": [AreaObjects.NPC_7, 108, "EVENT_991_moleville_proper"],
                     },
-                    {
-                        "identifier": "EVENT_982_ret",
-                        "command": "ret"
-                    },
+                    {"identifier": "EVENT_982_ret", "command": "ret"},
                 ]
             else:
-                self.eventscripts[984].extend([
-                    {
-                        "identifier": 'EVENT_984_have_ss_3--', # have access to cookie
-                        "command": 'jmp',
-                        "args": ['EVENT_991_moleville_proper']
-                    },
-                    {
-                        "identifier": "EVENT_984_ret",
-                        "command": "ret"
-                    },
-                ])
+                self.eventscripts[984].extend(
+                    [
+                        {
+                            "identifier": "EVENT_984_have_ss_3--",  # have access to cookie
+                            "command": "jmp",
+                            "args": ["EVENT_991_moleville_proper"],
+                        },
+                        {"identifier": "EVENT_984_ret", "command": "ret"},
+                    ]
+                )
                 self.eventscripts[982] = [
                     {
-                        "identifier": 'EVENT_982_have_ss_3--', # have access to cookie
-                        "command": 'jmp',
-                        "args": ['EVENT_991_moleville_proper']
+                        "identifier": "EVENT_982_have_ss_3--",  # have access to cookie
+                        "command": "jmp",
+                        "args": ["EVENT_991_moleville_proper"],
                     },
-                    {
-                        "identifier": "EVENT_982_ret",
-                        "command": "ret"
-                    },
+                    {"identifier": "EVENT_982_ret", "command": "ret"},
                 ]
-            
-
-
 
         if self.settings.is_flag_value(flags.WinCondition, WinConditions.stars):
             self.prepend_bits(192, [[0x7051, 6]])
             self.eventscripts[3101][1]["args"][1] = [required_star_pieces]
+            self.replace_dialog(
+                1050,
+                " I wish you the best of luck on your\n quest to collect the Star Pieces.[await]",
+            )
         elif self.settings.is_flag_value(flags.WinCondition, WinConditions.sealed):
             self.prepend_bits(192, [[0x7051, 7]])
+            self.replace_dialog(
+                1050,
+                " I wish you the best of luck on your\n quest to conquer Monstro Town.[await]",
+            )
+        elif self.settings.is_flag_value(flags.WinCondition, WinConditions.smithy):
+            self.replace_dialog(
+                1050,
+                " I wish you the best of luck on your\n quest to defeat Smithy.[await]",
+            )
 
         # Marrymore item shuffle
         if self.settings.is_flag_enabled(flags.ShuffleWeddingGear):
             self.prepend_bits(192, [[0x7086, 2]])
+            self.eventscripts[979] = [
+                {
+                    "identifier": "EVENT_979_set_7000_to_70A0_short_mem_3",
+                    "command": "set_7000_to_70A0_short_mem",
+                    "args": [0x70B2],
+                },
+                {
+                    "identifier": "EVENT_979_jmp_if_7000_equals_short_4",
+                    "command": "jmp_if_7000_equals_short",
+                    "args": [4, "EVENT_991_marrymore"],
+                },
+                {"identifier": "EVENT_979_fw_3", "command": "ret"},
+            ]
 
         # Fireworks
         if self.settings.is_flag_value(
@@ -1547,14 +1776,11 @@ class GameWorld:
             )
             self.eventscripts[986] = [
                 {
-                    "identifier": "EVENT_986_fw", 
+                    "identifier": "EVENT_986_fw",
                     "command": "jmp_if_bit_set",
-                    "args": [0x7057, 4, 'EVENT_991_moleville_proper'],
+                    "args": [0x7057, 4, "EVENT_991_moleville_proper"],
                 },
-                {
-                    "identifier": "EVENT_986_fw_3",
-                    "command": "ret"
-                },
+                {"identifier": "EVENT_986_fw_3", "command": "ret"},
             ]
         else:
             # assign one of 3 random fireworks
@@ -1577,64 +1803,58 @@ class GameWorld:
                 )
                 self.eventscripts[986] = [
                     {
-                        "identifier": 'EVENT_986_have_ss', 
-                        "command": 'set',
-                        "args": [0x7000, 172]
+                        "identifier": "EVENT_986_have_ss",
+                        "command": "set",
+                        "args": [0x7000, 172],
                     },
                     {
-                        "identifier": 'EVENT_986_have_ss_2',
-                        "command": 'store_7000_item_quantity_to_70A7'
+                        "identifier": "EVENT_986_have_ss_2",
+                        "command": "store_7000_item_quantity_to_70A7",
                     },
                     {
-                        "identifier": 'EVENT_986_have_ss_3', # have fireworks
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_monstro']
+                        "identifier": "EVENT_986_have_ss_3",  # have fireworks
+                        "command": "jmp_if_7000_equals_short",
+                        "args": [1, "EVENT_991_monstro"],
                     },
                     {
-                        "identifier": 'EVENT_986_have_cc', 
-                        "command": 'set',
-                        "args": [0x7000, 137]
+                        "identifier": "EVENT_986_have_cc",
+                        "command": "set",
+                        "args": [0x7000, 137],
                     },
                     {
-                        "identifier": 'EVENT_986_have_cc_2',
-                        "command": 'store_7000_item_quantity_to_70A7'
+                        "identifier": "EVENT_986_have_cc_2",
+                        "command": "store_7000_item_quantity_to_70A7",
                     },
                     {
-                        "identifier": 'EVENT_986_have_cc_3', # have cookie
-                        "command": 'jmp_if_7000_equals_short',
-                        "args": [1, 'EVENT_991_moleville_proper']
+                        "identifier": "EVENT_986_have_cc_3",  # have cookie
+                        "command": "jmp_if_7000_equals_short",
+                        "args": [1, "EVENT_991_moleville_proper"],
                     },
                     {
                         "identifier": "EVENT_949_turned_in_cookie",
                         "command": "jmp_if_bit_clear",
-                        "args": [0x705E, 5, 'EVENT_991_moleville_proper'],
+                        "args": [0x705E, 5, "EVENT_991_moleville_proper"],
                     },
-                    {
-                        "identifier": "EVENT_986_fw_3",
-                        "command": "ret"
-                    },
+                    {"identifier": "EVENT_986_fw_3", "command": "ret"},
                 ]
                 # add fireworks guy to frogfucius' first hint generator
                 self.eventscripts[990] = [
                     {
-                        "identifier": "EVENT_990_fw", 
+                        "identifier": "EVENT_990_fw",
                         "command": "jmp_if_bit_clear",
                         "args": [0x7057, 4, "EVENT_990_fw_3"],
                     },
                     {
-                        "identifier": "EVENT_990_fw_1", 
+                        "identifier": "EVENT_990_fw_1",
                         "command": "jmp_if_bit_set",
                         "args": [0x705D, 7, "EVENT_990_fw_3"],
                     },
                     {
                         "identifier": "EVENT_990_fw_2",
                         "command": "jmp",
-                        "args": ['EVENT_991_moleville_proper'],
+                        "args": ["EVENT_991_moleville_proper"],
                     },
-                    {
-                        "identifier": "EVENT_990_fw_3",
-                        "command": "ret"
-                    },
+                    {"identifier": "EVENT_990_fw_3", "command": "ret"},
                 ]
             if self.settings.is_flag_value(
                 flags.FireworksSetting, FireworksOptions.progressive
@@ -1647,24 +1867,21 @@ class GameWorld:
                 # add fireworks guy to frogfucius' second hint generator
                 self.eventscripts[981] = [
                     {
-                        "identifier": "EVENT_981_fw", 
+                        "identifier": "EVENT_981_fw",
                         "command": "jmp_if_bit_clear",
                         "args": [0x7057, 4, "EVENT_981_fw_3"],
                     },
                     {
-                        "identifier": "EVENT_981_fw_1", 
+                        "identifier": "EVENT_981_fw_1",
                         "command": "jmp_if_bit_set",
                         "args": [0x705D, 7, "EVENT_981_fw_3"],
                     },
                     {
                         "identifier": "EVENT_981_fw_2",
                         "command": "jmp",
-                        "args": ['EVENT_991_moleville_proper'],
+                        "args": ["EVENT_991_moleville_proper"],
                     },
-                    {
-                        "identifier": "EVENT_981_fw_3",
-                        "command": "ret"
-                    },
+                    {"identifier": "EVENT_981_fw_3", "command": "ret"},
                 ]
 
         # EXP progression option
@@ -1712,7 +1929,14 @@ class GameWorld:
             patch.add_data(0x39BC52, utils.ByteField(exps[6]).as_bytes())  # 6/7 stars
             # patch.add_data(0x1fd32d, utils.ByteField(0xa0).as_bytes())  # Enable flag
 
-        if self.settings.is_flag_enabled(flags.MimicsAnywhere) or self.settings.is_flag_enabled(flags.StarPieceAvailability) or self.settings.is_flag_enabled(flags.KeyItemsAnywhere) or self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
+        if (
+            self.settings.is_flag_enabled(flags.MimicsAnywhere)
+            or self.settings.is_flag_enabled(flags.StarPieceAvailability)
+            or self.settings.is_flag_enabled(flags.KeyItemsAnywhere)
+            or self.settings.is_flag_value(
+                flags.FireworksSetting, FireworksOptions.progressive
+            )
+        ):
             self.eventscripts[947][len(self.eventscripts[947]) - 1]["args"][0] = 949
 
         # Grate Guy threshold
@@ -1757,6 +1981,10 @@ class GameWorld:
         # Invisible Checks Anywhere
         if self.settings.is_flag_enabled(flags.InvisibleFlagsSetting):
             self.prepend_bits(192, [[0x7060, 2]])
+        else:
+            self.dialog_data[0][
+                387
+            ] += """[page]\n One of them might be in this town.\n Have you found it yet?[await]"""
         if self.settings.is_flag_enabled(flags.SkipMustyFearsSequence):
             self.eventscripts[192].insert(
                 0,
@@ -1776,6 +2004,8 @@ class GameWorld:
             ]
             # Mushroom Boy: double odds
             self.eventscripts[1972][0]["args"][1] = 5000
+            # Mokura cloud: 50% odds
+            self.eventscripts[1844][0]["args"][1] = 1
 
         # perform non-npc sprite replacement for overworld character
         if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id > 0:
@@ -2125,34 +2355,36 @@ class GameWorld:
             patch.add_data(0x3A00DB, utils.ByteField(9999, num_bytes=2).as_bytes())
             patch.add_data(0x3A00DF, utils.ByteField(999, num_bytes=2).as_bytes())
         # Add items specified by debug config.
-        if (
-            "items" in self.settings.override
-            and "start" in self.settings.override["items"]
-        ):
-            for item in self.settings.override["items"]["start"]:
-                self.eventscripts[192].insert(
-                    0,
-                    utils.new_command(
-                        192, "put_inventory", [eval("data.items.%s.index" % item)]
-                    ),
+        if self.settings.override is not None:
+            if (
+                "items" in self.settings.override
+                and "start" in self.settings.override["items"]
+            ):
+                for item in self.settings.override["items"]["start"]:
+                    self.eventscripts[192].insert(
+                        0,
+                        utils.new_command(
+                            192, "put_inventory", [eval("data.items.%s.index" % item)]
+                        ),
+                    )
+            # Set debug room specified by override config
+            if "house_exit" in self.settings.override:
+                self.rooms[189].exit_fields[0].destination = self.settings.override[
+                    "house_exit"
+                ]["room"]
+                self.rooms[189].exit_fields[
+                    0
+                ].destination_props.x = self.settings.override["house_exit"]["x"]
+                self.rooms[189].exit_fields[
+                    0
+                ].destination_props.y = self.settings.override["house_exit"]["y"]
+                self.rooms[189].exit_fields[
+                    0
+                ].destination_props.z = self.settings.override["house_exit"]["z"]
+                self.rooms[189].exit_fields[0].destination_props.f = eval(
+                    "RadialDirection.%s"
+                    % self.settings.override["house_exit"]["direction"]
                 )
-        # Set debug room specified by override config
-        if "house_exit" in self.settings.override:
-            self.rooms[189].exit_fields[0].destination = self.settings.override[
-                "house_exit"
-            ]["room"]
-            self.rooms[189].exit_fields[0].destination_props.x = self.settings.override[
-                "house_exit"
-            ]["x"]
-            self.rooms[189].exit_fields[0].destination_props.y = self.settings.override[
-                "house_exit"
-            ]["y"]
-            self.rooms[189].exit_fields[0].destination_props.z = self.settings.override[
-                "house_exit"
-            ]["z"]
-            self.rooms[189].exit_fields[0].destination_props.f = eval(
-                "RadialDirection.%s" % self.settings.override["house_exit"]["direction"]
-            )
 
         # Items
         for item in self.items:

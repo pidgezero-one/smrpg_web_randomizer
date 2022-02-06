@@ -78,6 +78,14 @@ def randomize_all(world):
             if (pmu_instance):
                 random.choice([a for a in shops_to_fill if a.access == 1 and not utils.isclass_or_instance(a, shops.NPCShop) and not utils.isclass_or_instance(a, shops.SeasideYaridShop)]).items.append(world.get_item_instance(items.PickMeUp))
                 item_pool.remove(pmu_instance[0])
+            
+            # place bad mushroom in early shop for earlygame safety if enemy immunities are shuffled
+            if world.settings.is_flag_enabled(flags.EnemyStats):
+                bomb_instance = [i for i in item_pool if utils.isclass_or_instance(i, items.BadMushroom)]
+                earlygame_shops = [shops.MushroomKingdomShop, shops.RoseTownItemShop, shops.MolevilleShop, shops.MarrymoreShop, shops.FrogCoinEmporiumShop, shops.NimbusLandItemWeaponShop, shops.RoomServiceShop]
+                random.choice([a for a in earlygame_shops]).items.append(world.get_item_instance(items.BadMushroom))
+                item_pool.remove(bomb_instance[0])
+
 
             item_ids_that_cannot_be_in_a_frog_coin_shop = []
 

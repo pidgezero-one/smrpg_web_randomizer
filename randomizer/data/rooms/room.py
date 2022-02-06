@@ -812,6 +812,7 @@ class Room:
         event_tiles=None,
         exit_fields=None,
         objects=None,
+        extra_required_actions=[]
     ):
         if partition is None:
             partition = Partition()
@@ -827,3 +828,4 @@ class Room:
         if objects is None:
             objects = []
         self.objects = objects
+        self.extra_required_actions = extra_required_actions

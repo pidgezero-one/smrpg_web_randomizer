@@ -78,6 +78,6 @@ script = [
     {
         "identifier": "EVENT_3517_chest_4",
         "command": "jmp_to_event",
-        "args": [174],
+        "args": [175],
     },
 ]

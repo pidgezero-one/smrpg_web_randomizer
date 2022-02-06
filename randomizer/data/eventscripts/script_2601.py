@@ -299,10 +299,11 @@ script = [
         "command": "jmp_if_bit_clear",
         "args": [0x7077, 5, "EVENT_2601_ret_8_"],
     },
+    {"identifier": "EVENT_2601_set_factory_", "command": "set", "args": [0x7000, 523]},
     {
         "identifier": "EVENT_2601_star_grant",
         "command": "jmp_to_event",
-        "args": [168],
+        "args": [167],
     },
     {"identifier": "EVENT_2601_ret_8_", "command": "ret"},
 ]

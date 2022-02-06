@@ -31,6 +31,7 @@ from randomizer.data.rooms.room import (
 )
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 
 room = Room(
     partition=Partition(
@@ -56,6 +57,7 @@ room = Room(
         ],
         full_palette_buffer=True,
     ),
+    extra_required_actions=[ExtraSpriteActions.Recoil, ExtraSpriteActions.Wobble],
     music=Music._66_BOWSERS_CASTLE_2ND_TIME,
     entrance_event=1825,
     event_tiles=[
@@ -122,7 +124,7 @@ room = Room(
         ChestNPC(  # 1
             occupant=npcs.TreasureChest,
             initiator=Initiator.HIT_FROM_BELOW,
-            event_script=3516,
+            event_script=3524,
             action_script=14,
             lower_70A7=2,
             upper_70A7=0,
@@ -171,7 +173,7 @@ room = Room(
         ChestNPC(  # 3
             occupant=npcs.TreasureChest,
             initiator=Initiator.HIT_FROM_BELOW,
-            event_script=3516,
+            event_script=3524,
             action_script=14,
             lower_70A7=7,
             upper_70A7=1,

@@ -31,7 +31,7 @@ from randomizer.data.rooms.room import (
 )
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
-
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -56,6 +56,7 @@ room = Room(
         ],
         full_palette_buffer=False,
     ),
+    extra_required_actions=[ExtraSpriteActions.Swim],
     music=Music._41_SUNKEN_SHIP,
     entrance_event=15,
     event_tiles=[

@@ -4,9 +4,11 @@ import difflib
 
 from . import utils
 from randomizer.data import palettes, items, chests, npcs
+from randomizer.data.packets import packets
 from randomizer.data.rooms import rooms
 from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room, Clone
 from randomizer.helpers.flag_helpers import BoosterTowerGating
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 
 
 from randomizer.logic import flags
@@ -112,13 +114,189 @@ partition_priority = [
     PartitionBufferTypes._3_SPRITES_PER_ROW
 ]
 
+needs_base_packet_size = {
+    27: 1,
+    35: 1,
+    36: 1,
+    39: 0,
+    41: 1,
+    54: 0,
+    # 57: 1,
+    # 58: 1,
+    # 60: 1,
+    # 62: 1,
+    68: 1,
+    69: 0,
+    71: 0,
+    # 72: 0,
+    73: 0,
+    # 77: 1,
+    79: 2,
+    82: 0, # might be 1
+    92: 0,
+    # 95: 1,
+    100: 0,
+    105: 1,
+    108: 1,
+    116: 1,
+    119: 1,
+    123: 1,
+    124: 1,
+    125: 1,
+    127: 1,
+    # 128: 1,
+    # 129: 1,
+    136: 1,
+    137: 0,
+    138: 1,
+    139: 3,
+    142: 0,
+    # 144: 1,
+    # 157: 1,
+    # 158: 1,
+    # 159: 0,
+    # 161: 1,
+    # 165: 1,
+    # 168: 2,
+    # 169: 1,
+    # 171: 1,
+    # 174: 1,
+    # 175: 1,
+    # 178: 2,
+    # 179: 0,
+    # 180: 2,
+    181: 2,
+    # 184: 1,
+    # 185: 1,
+    187: 0,
+    188: 1,
+    # 196: 1,
+    # 198: 0,
+    # 199: 1,
+    # 204: 1,
+    # 207: 0,
+    # 221: 0,
+    # 222: 1,
+    230: 1,
+    # 233: 1,
+    # 235: 1,
+    # 236: 1,
+    # 238: 0,
+    251: 1,
+    254: 1,
+    262: 0,
+    # 263: 0,
+    # 264: 0,
+    # 265: 0,
+    # 267: 1,
+    268: 0,
+    # 275: 1,
+    # 276: 2,
+    # 277: 1,
+    # 278: 1,
+    # 279: 1,
+    # 280: 1,
+    # 281: 1,
+    # 282: 1,
+    # 283: 2, - probably just 1, no bomb in rando
+    284: 0,
+    # 286: 1,
+    289: 0,
+    # 317: 0,
+    318: 0,
+    319: 0,
+    # 321: 0,
+    322: 0, # might be 1
+    # 335: 0,
+    # 337: 1,
+    338: 1,
+    # 339: 2,
+    352: 2,
+    354: 1,
+    # 355: 0, # normally 1, but will never have lava and 2 chests active at once
+    # 356: 0,
+    358: 0,
+    359: 0,
+    361: 0,
+    364: 0,
+    # 367: 1,
+    # 369: 1,
+    370: 1,
+    # 371: 1,
+    # 372: 1,
+    # 373: 1,
+    # 374: 1,
+    376: 1,
+    377: 1,
+    383: 1,
+    384: 0,
+    385: 0,
+    389: 0,
+    394: 1,
+    # 395: 1,
+    402: 0,
+    403: 0,
+    404: 0,
+    # 405: 0,
+    407: 0,
+    # 408: 0, 
+    # 411: 1,
+    418: 0,
+    420: 1,
+    422: 0,
+    423: 0,
+    424: 0,
+    426: 0,
+    # 427: 0,
+    428: 1,
+    442: 2,
+    # 445: 0,
+    448: 0,
+    455: 0, # plus chests - originally 1
+    456: 2,
+    457: 0,
+    458: 1,
+    459: 1,
+    460: 1,
+    461: 1,
+    462: 1,
+    # 463: 1,
+    # 464: 1,
+    # 465: 1,
+    # 467: 1,
+    # 468: 1,
+    470: 0,
+    472: 0,
+    473: 2,
+    474: 1,
+    # 475: 1,
+    478: 0,
+    # 497: 0,
+    # 501: 0,
+    509: 1,
+}
+
 special_case_rooms = [37, 57, 70, 71, 72, 73, 79, 205, 230, 232, 233, 236, 463, 466, 477]
 # 205 - complicated spiney sequence
 # 463, 466 - barrel count room and logic problem room need this for some reason
-requires_coin_buffer = [242] # maybe 199. 199 needed all NPCs restored bc the graphics interact weirdly with the save box animation
+requires_coin_buffer = [71, 72, 242] # maybe 199. 199 needed all NPCs restored bc the graphics interact weirdly with the save box animation
 # 301 - breaks chest sprites if you use extra sprite buffer for coins
 
 always_requires_coin_buffer = [71, 72, 73]
+
+def finalize_packet(size):
+    if size > 0:
+        return True, size - 1
+    return False, 0
+
+def get_ally_buffer(world, current_size, sprite_id, prop_id, sequence=True):
+    if sequence:
+        mold_size = utils.get_min_vram_from_animation(world.sprites[sprite_id], prop_id)
+    else:
+        mold_size = utils.get_min_vram_from_mold(world.sprites[sprite_id], prop_id)
+    if mold_size > current_size:
+        return mold_size
+    return current_size
 
 def is_party_member(model):
     return utils.isclass_or_instance(model, npcs.Mario) or    utils.isclass_or_instance(model, npcs.Mallow) or    utils.isclass_or_instance(model, npcs.Geno) or    utils.isclass_or_instance(model, npcs.Bowser) or    utils.isclass_or_instance(model, npcs.Toadstool) 
@@ -132,43 +310,187 @@ def set_partitions(world):
         elif utils.isclass_or_instance(c.item, items.HidonFight):
             hidon_rooms.extend(c.rooms)
 
-    # Big buffer for Bowser
-    ally_buffer = 0
-    if world.starting_character == 2:
-        ally_buffer = 1
+    # get rooms which need star packet
+    rooms_with_star_packet = []
+    for c in world.chest_locations:
+        if utils.isclass_or_instance(c.item, items.InvincibilityStar):
+            rooms_with_star_packet.extend(c.nearby_star_rooms)
+    rooms_with_star_packet = list(set(rooms_with_star_packet))
 
+    # get vram sizes of packets per room, denote coin chests
+    chest_packets = {}
+    chest_coins = {}
+    for c in world.chest_locations:
+        if items.is_coin(c.item):
+            for i, r in c.rooms:
+                if r not in chest_coins:
+                    chest_coins[r] = []
+                npc_id = c.npc_ids[i]
+                coords = world.rooms[r].objects[npc_id]
+                chest_coins[r].append((npc_id, coords.x, coords.y))
+        elif utils.isclass_or_instance(c.item, items.SlotMachineChest):
+            continue
+        else:
+            npc_model = c.item.model
+            packet_number = npc_model.chest_packet
+            sprite_id = packets[packet_number]["sprite"]
+            vram_size =  utils.get_min_vram_from_animation(world.sprites[sprite_id], 0)
+            for r in c.rooms:
+                if r not in chest_contents:
+                    chest_contents[r] = []
+                npc_id = c.npc_ids[i]
+                coords = world.rooms[r].objects[npc_id]
+                chest_contents[r].append((npc_id, vram_size, coords.x, coords.y))
+            
 
     for room_index, room in enumerate(world.rooms):
 
         if room_index in [68]:
             continue
-        elif room_index in [376, 377, 459, 460, 461, 462, 202] or (room is not None and len(room.objects) == 0): # rooms that always need triple empty + ex 1
-            partition = Partition(allow_extra_sprite_buffer=True, extra_sprite_buffer_size=1)
-            world.rooms[room_index].partition = copy.deepcopy(partition)
-        elif room_index in [192, 205, 104]: # rooms that always need triple empty + ex 0
+
+        # Get the ally buffer required size
+
+        ally_buffer = 0
+        for seq_id in [0, 1, 6, 7, 8, 9, 10, 11, 12]:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 0, seq_id)
+        for seq_id in range(0,10):
+            ally_buffer = get_ally_buffer(world, ally_buffer, 1, seq_id)
+
+        if ExtraSpriteActions.Swim in room.extra_required_actions:
+            for seq_id in range(10, 15):
+                ally_buffer = get_ally_buffer(world, ally_buffer, 1, seq_id)
+        if ExtraSpriteActions.Wobble in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 0, 4)
+        if ExtraSpriteActions.Sleep in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 0, 13)
+            ally_buffer = get_ally_buffer(world, ally_buffer, 0, 14)
+        if ExtraSpriteActions.HoldStar in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 0, 5)
+        if ExtraSpriteActions.Whirl in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 1, 15)
+        if ExtraSpriteActions.StandingSleep in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 3)
+        if ExtraSpriteActions.SurpriseFrame in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 3, 0)
+        if ExtraSpriteActions.StandingSleep in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 6)
+        if ExtraSpriteActions.Defend in room.extra_required_actions:
+            seq = world.sprites[2].animation.properties.sequences[5]
+            frame = seq.frames[0].mold_id
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, frame, False)
+        if ExtraSpriteActions.LeanBack in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 13)
+        if ExtraSpriteActions.LeanBack2 in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 14)
+        if ExtraSpriteActions.LeanForward in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 15)
+        if ExtraSpriteActions.Salute in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 10)
+        if ExtraSpriteActions.Flop in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 8)
+        if ExtraSpriteActions.SurpriseFrameBack in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 7, False)
+        if ExtraSpriteActions.DownPipe in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 30, False)
+        if ExtraSpriteActions.Dizzy in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 7)
+        if ExtraSpriteActions.PraiseFront in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 9)
+        if ExtraSpriteActions.Mute in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 2, 12)
+        if ExtraSpriteActions.PraiseBack in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 3, 2)
+        if ExtraSpriteActions.DispleasedFront in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 3, 3)
+        if ExtraSpriteActions.DispleasedBack in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 3, 4)
+        if ExtraSpriteActions.TumbleFront in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 3, 6)
+        if ExtraSpriteActions.TumbleBack in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 3, 7)
+        if ExtraSpriteActions.Exor in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 3, 10)
+        if ExtraSpriteActions.Challenge in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 4, 2)
+        if ExtraSpriteActions.ChallengeNimbus in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 4, 10, False)
+            ally_buffer = get_ally_buffer(world, ally_buffer, 4, 11, False)
+        if ExtraSpriteActions.Crouch in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 6, 0, False)
+        if ExtraSpriteActions.Yoshi in room.extra_required_actions:
+            for seq_id in range(2, 7):
+                ally_buffer = get_ally_buffer(world, ally_buffer, 6, seq_id)
+        if ExtraSpriteActions.Climb in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 6, 7)
+            ally_buffer = get_ally_buffer(world, ally_buffer, 6, 8)
+        if ExtraSpriteActions.Blackjack in room.extra_required_actions:
+            for seq_id in range(9, 12):
+                ally_buffer = get_ally_buffer(world, ally_buffer, 6, seq_id)
+        if ExtraSpriteActions.LookAtDoll in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 6, 12)
+        if ExtraSpriteActions.ClimbFrame in room.extra_required_actions:
+            ally_buffer = get_ally_buffer(world, ally_buffer, 6, 13)
+
+        ally_buffer += 1
+        # if room_index in [184, 189, 202, 204, 225, 226, 229, 238, 255, 284, 351, 397, ]:
+        #     ally_buffer += 1
+        # elif room_index in [456]:
+        #     ally_buffer += 2
+
+        extra_sprite_buffer = 0
+        if room_index in needs_base_packet_size:
+            extra_sprite_buffer = needs_base_packet_size[extra_sprite_buffer] + 1
+        if room_index in rooms_with_star_packet:
+            extra_sprite_buffer += 1
+
+        # add chest packets where necessary
+        if room_index in chest_packets:
+            extra_sprite_buffer += 1
+            min_packet_size = 0
+            for chest in chest_packets[room_index]:
+                npc_id = chest[0]
+                vram = chest[1]
+                if vram > min_packet_size:
+                    min_packet_size = vram
+                x = chest[2]
+                y = chest[3]
+
+                # account for chests that are close together and may need packets active at the same time
+                min_second_packet_size = 0
+                for other_chest in chest_packets[room_index]:
+                    other_npc_id = chest[0]
+                    other_vram = chest[1] + 1
+                    other_x = chest[2]
+                    other_y = chest[3]
+                    if abs(other_x - x) <= 3 and abs(other_y - y) <= 4 and other_vram > min_second_packet_size:
+                        min_second_packet_size = other_vram
+                if min_packet_size < min_packet_size + min_second_packet_size:
+                    min_packet_size = min_packet_size + min_second_packet_size
+            extra_sprite_buffer += min_packet_size
+
+        
+        # elif room_index in [376, 377, 459, 460, 461, 462, 202] or (room is not None and len(room.objects) == 0): # rooms that always need triple empty + ex 1
+        #     partition = Partition(ally_sprite_buffer_size=ally_buffer, allow_extra_sprite_buffer=True, extra_sprite_buffer_size=extra_sprite_buffer)
+        #     world.rooms[room_index].partition = copy.deepcopy(partition)
+        if room_index in [192, 205, 104]: # rooms that always need triple empty
             # 205 - Trying this out. A seed where partitions didn't assemble correctly actually made the spinies render correctly.
             # May not work with all boss/ally combos.
-            world.rooms[room_index].partition = Partition()
-        elif room is not None and len(room.objects) > 0:
-            partition = room.partition
+            packet_on, packet_size = finalize_packet(extra_sprite_buffer)
+            world.rooms[room_index].partition = Partition(ally_sprite_buffer_size=ally_buffer, allow_extra_sprite_buffer=packet_on, extra_sprite_buffer_size=packet_size)
+            continue
+
+        if room is not None and len(room.objects) > 0:
+
             original_partition = None 
             if partition is not None:
-                original_partition = copy.deepcopy(partition)
-            partition = Partition()
+                original_partition = copy.deepcopy(room.partition)
+
+            partition = Partition(ally_sprite_buffer_size=ally_buffer)
+
             if original_partition is not None:
-                partition.extra_sprite_buffer_size = original_partition.extra_sprite_buffer_size
-                partition.allow_extra_sprite_buffer = original_partition.allow_extra_sprite_buffer
                 partition.full_palette_buffer = original_partition.full_palette_buffer
-            partition.ally_sprite_buffer_size += ally_buffer
 
-
-            
-            packet_size = partition.extra_sprite_buffer_size
-            if partition.allow_extra_sprite_buffer:
-                packet_size += 1
             room_npcs = room.objects
-
-            has_star_chest = False
 
             priority_buffers = []
             npc_buffers = []
@@ -860,7 +1182,7 @@ class Rooms:
         exits = [exit_pointers, bytearray(exit_output)]
 
         if len(partitions) > 128: # bumped up to 128 from 120
-            raise Exception("Too many partitions (got %i, expected up to 120)" % len(partitions))
+            raise Exception("Too many partitions (got %i, expected up to 128)" % len(partitions))
         for _ in range(len(partitions), 128): # bumped up to 128 from 120
             partitions.append([0xFF, 0xFF, 0xFF, 0xFF])
 

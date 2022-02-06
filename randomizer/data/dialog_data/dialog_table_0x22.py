@@ -56,7 +56,7 @@ dialog_data[36] = '''[await]'''
 dialog_data[37] = ''' Don't spend it all in one place,
  now.[await]'''
 dialog_data[38] = '''[await]'''
-dialog_data[39] = '''[await]'''
+dialog_data[39] = '''          Got an “[0x70A7]”![end]'''
 dialog_data[40] = '''          Got an “[0x70A7]”![await]'''
 dialog_data[41] = '''          Got a “[0x70A7]”![end]'''
 dialog_data[42] = '''          Got a “[0x70A7]”![await]'''
@@ -495,9 +495,12 @@ dialog_data[324] = '''[await]'''
 dialog_data[325] = '''[await]'''
 dialog_data[326] = '''[await]'''
 dialog_data[327] = '''[await]'''
-dialog_data[328] = ''' Button? Yeah, I jumped on it.
- I do it all the time.
- It really winds my Dad up![await]'''
+dialog_data[328] = '''  The forest?[await][pause] Nah, that's more my
+ dad's thing. I'm more of a volcano
+ guy.[await][page]
+ Did you know there's some sort-of
+ hidden treasures near the lava in
+ the first room in Barrel Volcano?[await]'''
 dialog_data[329] = '''[await]'''
 dialog_data[330] = '''[await]'''
 dialog_data[331] = ''' Found me, huh? What are you doing
@@ -601,9 +604,7 @@ dialog_data[386] = ''' When our shops rotate their stock,
  and vice versa.[await]'''
 dialog_data[387] = ''' There are three special invisible
  items hidden somewhere around the
- world.[await]
- One of them is in this town.
- Have you found it yet?[await]'''
+ world.[await]'''
 dialog_data[388] = '''[await]'''
 dialog_data[389] = '''[await]'''
 dialog_data[390] = '''[await]'''
@@ -613,8 +614,9 @@ dialog_data[391] = ''' There's a gardener who lives in this
  Do you have anything to do to pass
  the time until he's ready? Like,[delay]
  attending a wedding,[delay] or something?[await]'''
-dialog_data[392] = ''' Sorry, I don't have any advice
- today.[await]'''
+dialog_data[392] = ''' Have you been to Midas River?
+ There is some interesting stuff to
+ find in the tunnels.[await]'''
 dialog_data[393] = ''' People in our world love to share
  the things they know.[await]
  A select few might have some
@@ -789,8 +791,8 @@ dialog_data[493] = '''[page]
  with you.[await]'''
 dialog_data[494] = '''[page]
  Please feel free to drop by
- again, anytime, sir![await]'''
-dialog_data[495] = ''' Sir![await]'''
+ again, anytime, `MAIN_CHARACTER_HONORIFIC`![await]'''
+dialog_data[495] = ''' `MAIN_CHARACTER_HONORIFIC_CAP`![await]'''
 dialog_data[496] = ''' Thank you very much.[await]'''
 dialog_data[497] = '''[await]'''
 dialog_data[498] = '''[await]'''
@@ -905,11 +907,13 @@ dialog_data[544] = ''' [page]
  [0x70A7][end]'''
 dialog_data[545] = '''
          Found a “Frog Coin”![end]'''
-dialog_data[546] = '''[await]'''
-dialog_data[547] = '''[await]'''
-dialog_data[548] = '''[await]'''
+dialog_data[546] = ''' I wish you the best of luck on your
+ quest to conquer the Factory.[await]'''
+dialog_data[547] = ''' The menfolk'll help you get inside\n once they come back to town.[await]'''
+dialog_data[548] = ''' There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await]'''
 dialog_data[549] = '''[await]'''
-dialog_data[550] = '''[await]'''
+dialog_data[550] = ''' Did you know there's a shipwreck
+ off the beach to the south?[await]'''
 dialog_data[551] = '''[await]'''
 dialog_data[552] = '''[await]'''
 dialog_data[553] = '''[await]'''
@@ -1194,7 +1198,9 @@ dialog_data[660] = '''MA'MOLE: Seen our roof yet?[await]
  Pa fixed it up and now he’s back
  to work at the mountain.[await]
  He’s singin' and workin' hard.[await]'''
-dialog_data[661] = '''[await]'''
+dialog_data[661] = ''' Oh, the pipe?[delay_30]
+ I think Belome 2 might know
+ something about it.[await]'''
 dialog_data[662] = '''[await]'''
 dialog_data[663] = '''[await]'''
 dialog_data[664] = '''[await]'''
@@ -1342,8 +1348,8 @@ dialog_data[719] = ''' You want a better star?[await]
   [select] (Yes)
   [select] (No)[await]'''
 dialog_data[720] = '''[await]'''
-dialog_data[721] = ''' Come back later.
- I'll find it by then.[await]'''
+dialog_data[721] = ''' Come back next time you're
+ underground. I'll find it by then.[await]'''
 dialog_data[722] = ''' I found an incredible star.
  I'll sell it for 800 coins.[await]
   [select] (Buy it)

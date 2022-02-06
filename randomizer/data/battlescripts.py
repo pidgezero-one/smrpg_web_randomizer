@@ -2878,6 +2878,7 @@ scripts[0xC6] = [
     ("zero", [0x7EE005]),
     ("rand", [0x07]),
     ("if_less_than", [0x7EE005, 0x04]),
+    ("if_bits_set", [0x7EE00A, 0x03]),
     ("if_target_alive", [Targets.SLOT_1]),
     ("animate", [0x0F]),
     ("set_target", [Targets.SLOT_1]),
@@ -2886,6 +2887,7 @@ scripts[0xC6] = [
     ("zero", [0x7EE005]),
     ("rand", [0x07]),
     ("if_less_than", [0x7EE005, 0x04]),
+    ("if_bits_set", [0x7EE00A, 0x03]),
     ("if_target_alive", [Targets.SLOT_2]),
     ("animate", [0x0F]),
     ("set_target", [Targets.SLOT_2]),
@@ -2893,6 +2895,7 @@ scripts[0xC6] = [
     ("attack", [attacks.FearRoulette]),
     ("clear", [0x7EE00E, 0x01]),
     ("wait_return", []),
+    ("if_bits_set", [0x7EE00A, 0x03]),
     ("if_target_alive", [Targets.SLOT_3]),
     ("animate", [0x0F]),
     ("set_target", [Targets.SLOT_3]),
@@ -2900,6 +2903,7 @@ scripts[0xC6] = [
     ("attack", [attacks.FearRoulette]),
     ("clear", [0x7EE00E, 0x02]),
     ("wait_return", []),
+    ("cast_spell", [spells.DarkStar]),
     ("start_counter", []),
 ]
 scripts[0xC7] = [

@@ -564,7 +564,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_star',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [167]
     },
     {

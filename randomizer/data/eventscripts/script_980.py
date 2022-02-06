@@ -53,7 +53,7 @@ script = [
     {"identifier": "EVENT_980_", "command": "mem_compare_val", "args": [255]},
     {
         "identifier": "EVENT_980_c",
-        "cmd": "jmp_if_comparison_result_is_lesser",
+        "command": "jmp_if_comparison_result_is_lesser",
         "args": ["EVENT_991_marrymore_inn"],
     },
     {"identifier": "EVENT_980_fw_3", "command": "ret"},

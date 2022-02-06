@@ -123,7 +123,7 @@ script = [
     {
         "identifier": "EVENT_2048_jmp_if_bit_clear_7",
         "command": "jmp_if_bit_clear",
-        "args": [0x7087, 0, "EVENT_2048_ret_26"],
+        "args": [0x7087, 0, "EVENT_2048_star_grant"],
     },
     {
         "identifier": "EVENT_2048_run_event_as_subroutine_25_",
@@ -133,7 +133,7 @@ script = [
     {
         "identifier": "EVENT_2048_jmp_if_bit_clear_7_",
         "command": "jmp_if_bit_clear",
-        "args": [0x7099, 7, "EVENT_2048_ret_26"],
+        "args": [0x7099, 7, "EVENT_2048_star_grant"],
     },
     {
         "identifier": "EVENT_2048_run_event_as_subroutine_25__",

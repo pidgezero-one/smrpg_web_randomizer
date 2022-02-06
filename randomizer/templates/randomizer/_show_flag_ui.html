@@ -51,9 +51,9 @@
             {% for choice in flag.options_dict %}
             <div class="multiselect-option">
                 {% if choice in flag.default_dict %}
-                    <input type="checkbox" checked="checked" class="btn-check flag-form-input" autocomplete="off" id="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}" name="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}">
+                    <input type="checkbox" checked="checked" class="btn-check flag-form-input" autocomplete="off" id="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}" name="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}" value="{{ choice.text }}">
                 {% else %}
-                    <input type="checkbox" class="btn-check flag-form-input" autocomplete="off" id="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}" name="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}">
+                    <input type="checkbox" class="btn-check flag-form-input" autocomplete="off" id="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}" name="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}" value="{{ choice.text }}">
                 {% endif %}
                 
                 <label class="btn btn-outline-primary" for="{{ subcategory.id }}.{{ flag.id }}.{{ choice.id }}">{{ choice.text }}</label>

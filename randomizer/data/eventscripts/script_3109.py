@@ -42,8 +42,17 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3109_put_inventory_105',
-        "command": 'jmp_to_event',
-        "args": [161]
+        "identifier": "EVENT_3109_unlock_beetlemania",
+        "command": "set_bit",
+        "args": [0x7062, 3]
     },
+    {
+        "identifier": 'EVENT_3109_run_dialog_104',
+        "command": 'run_dialog',
+        "args": [3077, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+    },
+    {
+        "identifier": 'EVENT_3109_ret',
+        "command": 'ret'
+    }
 ]

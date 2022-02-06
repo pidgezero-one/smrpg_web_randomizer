@@ -11,7 +11,7 @@ from randomizer.data import items, locations, npcs, bosses
 from randomizer.data.bosses import AvailableBosses
 from randomizer.data.items import ItemUnique
 from randomizer.data.rooms.room import Partition, RegularNPC
-from randomizer.helpers.flag_helpers import ShuffleLocationSelector, FireworksOptions, ItemQualities, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, YaridovichGating, SeaGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, PlayableCharacters, BossScaleOptions
+from randomizer.helpers.flag_helpers import ShuffleLocationSelector, FireworksOptions, ItemQualities, BanditsWayGating, ForestMazeGating, Moleville1Gating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, YaridovichGating, SeaGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, PlayableCharacters, BossScaleOptions
 from randomizer.helpers.roomobjecttables import ObjectType, Initiator, RadialDirection
 from randomizer.helpers.eventtables import AreaObjects, _0x60Flags
 
@@ -47,11 +47,12 @@ def can_access_bandits_way(world, inventory):
         return True
 
 def can_clear_bandits_way(world, inventory):
-    return world.get_check_instance(Croco1BossFightLocation).item is not None# and can_access_bandits_way(world, inventory)
+    #return world.get_check_instance(Croco1BossFightLocation).item is not None# and can_access_bandits_way(world, inventory)
+    return can_access_bandits_way(world, inventory)
 
 def can_clear_invasion(world, inventory):
-    return world.get_check_instance(MackBossFightLocation).item is not None# and can_clear_bandits_way(world, inventory)
-
+    #return world.get_check_instance(MackBossFightLocation).item is not None# and can_clear_bandits_way(world, inventory)
+    return can_clear_bandits_way(world, inventory)
 
 
 def can_beat_mimic_1(world, inventory):
@@ -95,7 +96,7 @@ def can_access_pipe_vault(world, inventory):
     #     return inventory.has_item(items.MallowRecruit) or inventory.has_item(items.MallowSpotted)
     if world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.geno):
     # elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.geno):
-        return inventory.has_item(items.GenoRecruit) or inventory.has_item(items.GenoSpotted)
+        return inventory.has_item(items.GenoRecruit)
     # elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowser):
     #     return inventory.has_item(items.BowserRecruit) or inventory.has_item(items.BowserSpotted)
     # elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.toadstool):
@@ -107,8 +108,27 @@ def can_access_pipe_vault(world, inventory):
     else:
         return True
 
+def can_access_moleville_entrance(world, inventory):
+    # if world.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.mario):
+    #     return inventory.has_item(items.MarioRecruit) or inventory.has_item(items.MarioSpotted)
+    # elif world.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.mallow):
+    #     return inventory.has_item(items.MallowRecruit) or inventory.has_item(items.MallowSpotted)
+    if world.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.geno):
+    # elif world.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.geno):
+        return inventory.has_item(items.GenoRecruit)
+    # elif world.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.bowser):
+    #     return inventory.has_item(items.BowserRecruit) or inventory.has_item(items.BowserSpotted)
+    # elif world.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.toadstool):
+    #     return inventory.has_item(items.ToadstoolRecruit) or inventory.has_item(items.ToadstoolSpotted)
+    elif world.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.forest):
+        return can_clear_forest(world, inventory)
+    elif world.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.bowyer):
+        return inventory.has_item(items.BowyerBossFight)
+    else:
+        return True
+
 def can_clear_mines(world, inventory):
-    return inventory.has_item(items.BambinoBomb)# and world.get_check_instance(PunchinelloBossFightLocation).item is not None
+    return can_access_moleville_entrance(world, inventory) and inventory.has_item(items.BambinoBomb)# and world.get_check_instance(PunchinelloBossFightLocation).item is not None
 
 def can_access_tower(world, inventory):
     if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario):
@@ -410,6 +430,7 @@ class Chest(locations.ItemLocation):
     coinsanity = False
     manual_70A7 = False
     dialogs_to_replace = []
+    nearby_star_rooms = []
 
     def item_allowed(self, item):
         # If scaling boss stats, it would defeat the purpose of the setting if a mimic chest with Box Boy's stats could appear in the earlygame.
@@ -425,22 +446,16 @@ class Chest(locations.ItemLocation):
         if self.area not in [
             locations.Area.MushroomWay,
             locations.Area.BanditsWay,
-            locations.Area.MushroomKingdomOccupiedOnly,
             locations.Area.KeroSewers,
             locations.Area.RoseWay,
             locations.Area.ForestMaze,
             locations.Area.MolevilleMines,
-            locations.Area.BoosterPass,
             locations.Area.BoosterTower,
-            locations.Area.PipeVault,
             locations.Area.Sea,
             locations.Area.SunkenShip,
             locations.Area.LandsEnd,
-            locations.Area.BeanValley,
             locations.Area.NimbusLand,
             locations.Area.BarrelVolcano,
-            locations.Area.BowsersKeep,
-            locations.Area.Factory
         ] and isclass_or_instance(item, items.InvincibilityStar):
             return False
 
@@ -486,7 +501,7 @@ class TreasureSellerReward(NPCReward):
         return super().item_allowed(item) and not (isclass_or_instance(item, items.MultiFrogCoin)) and not (isclass_or_instance(item, items.FrogCoin)) and not (isclass_or_instance(item, items.Coins)) and (item.unique == ItemUnique.Always or item.unique == ItemUnique.BalancedOnly)
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb)
+        return can_clear_mines(self.world, inventory)
 
 
 class FrogCoinShopItem(NPCReward):
@@ -529,6 +544,7 @@ class PacketType(enum.Enum):
     """Enumeration for items that may need to be restricted by how many times they can appear."""
     Falling = enum.auto()
     Static = enum.auto()
+    Chest = enum.auto()
 
 class PacketItem(OverworldItem):
     """Subclass for NPC reward location."""
@@ -1010,6 +1026,9 @@ class MushroomWay4(Chest):
     npc_ids = [1]
     event = 246
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class ToadRescue1(NPCReward):
     description = ShuffleLocationSelector.ToadRescue1.value
@@ -1181,6 +1200,9 @@ class BanditsWay1(Chest):
     def can_access(self, inventory):
         return can_access_bandits_way(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class BanditsWayCoin1(OverworldItem):
     description = ShuffleLocationSelector.BanditsWayCoin1.value
@@ -1233,6 +1255,9 @@ class BanditsWay2(Chest):
     def can_access(self, inventory):
         return can_access_bandits_way(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class BanditsWayStarChest(CoinsNotAllowedChest):
     description = ShuffleLocationSelector.BanditsWayStarChest.value
@@ -1258,7 +1283,7 @@ class BanditsWayDogJump(CoinsNotAllowedChest):
     def can_access(self, inventory):
         return can_access_bandits_way(self.world, inventory)
 
-class BanditsWayCroco(Chest):
+class BanditsWayCroco(SlotsNotAllowedChest):
     description = ShuffleLocationSelector.BanditsWayCroco.value
     area = locations.Area.BanditsWay
     rooms = [206]
@@ -1269,6 +1294,9 @@ class BanditsWayCroco(Chest):
 
     def can_access(self, inventory):
         return can_access_bandits_way(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class Croco1BossFightLocation(BossFightLocation):
@@ -1345,6 +1373,9 @@ class InvasionVault1(Chest):
     def can_access(self, inventory):
         return can_clear_bandits_way(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class InvasionVault2(Chest):
     area = locations.Area.MushroomKingdomOccupiedOnly
@@ -1365,6 +1396,9 @@ class InvasionVault2(Chest):
     def can_access(self, inventory):
         return can_clear_bandits_way(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class InvasionVault3(Chest):
     area = locations.Area.MushroomKingdomOccupiedOnly
@@ -1384,6 +1418,9 @@ class InvasionVault3(Chest):
 
     def can_access(self, inventory):
         return can_clear_bandits_way(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class InvasionEasternGuard(NPCReward):
@@ -1484,7 +1521,7 @@ class MackBossFightLocation(BossFightLocation):
     area = locations.Area.MushroomKingdom
     item = items.MackBossFight
     original_item = items.MackBossFight
-    rooms = [306]
+    rooms = [326]
     event = 353
 
     def can_access(self, inventory):
@@ -1494,7 +1531,7 @@ class MackBossFightLocation(BossFightLocation):
 class InvasionStarPiece(BossStarPiece):
     description = ShuffleLocationSelector.InvasionStarPiece.value
     area = locations.Area.MushroomKingdom
-    rooms = [326]
+    rooms = [18]
     event = 167
     item = items.StarPiece1
     original_item = items.StarPiece1
@@ -1547,6 +1584,9 @@ class KeroSewersPandoriteRoom(Chest):
     npc_ids = [0]
     event = 247
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class PandoriteChest(Chest):
     description = ShuffleLocationSelector.PandoriteChest.value
@@ -1556,6 +1596,9 @@ class PandoriteChest(Chest):
     rooms = [60]
     npc_ids = [1]
     event = 246
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class PandoriteBossFightLocation(BossFightLocation):
@@ -1625,7 +1668,7 @@ class PandoriteReward2(Chest):
         return can_beat_mimic_1(self.world, inventory)
 
     def item_allowed(self, item):
-        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight) and not isclass_or_instance(item, items.SlotMachineChest) and not isclass_or_instance(item, items.InvincibilityStar)
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight) and not isclass_or_instance(item, items.SlotMachineChest) and not isclass_or_instance(item, items.InvincibilityStar) and not isclass_or_instance(item, items.InfiniteCoins)
 
 class KeroSewersStarChest(Chest):
     description = ShuffleLocationSelector.KeroSewersStarChest.value
@@ -1646,6 +1689,9 @@ class KeroSewersBeforeBelomeLower(Chest):
     npc_ids = [0]
     event = 247
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class KeroSewersBeforeBelomeUpper1(Chest):
     description = ShuffleLocationSelector.KeroSewersBeforeBelomeUpper1.value
@@ -1656,6 +1702,9 @@ class KeroSewersBeforeBelomeUpper1(Chest):
     rooms = [301]
     event = 246
     missable = True
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class KeroSewersBeforeBelomeUpper2(Chest):
@@ -1671,7 +1720,7 @@ class KeroSewersBeforeBelomeUpper2(Chest):
     def item_allowed(self, item):
         if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
-        return super().item_allowed(item)
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class Belome1BossFightLocation(BossFightLocation):
@@ -1687,7 +1736,7 @@ class Belome1BossFightLocation(BossFightLocation):
 class KeroSewersBoss(BossStarPiece):
     description = ShuffleLocationSelector.KeroSewersBoss.value
     area = locations.Area.KeroSewers
-    rooms = [302]
+    rooms = [301]
     event = 167
 
     def can_access(self, inventory):
@@ -1817,6 +1866,9 @@ class RoseWayPlatform(Chest):
     event = 247
     item = items.FrogCoin
     original_item = items.FrogCoin
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class RoseWayFlower(OverworldItem):
@@ -2117,6 +2169,10 @@ class ForestMaze2(Chest):
     def can_access(self, inventory):
         return can_access_forest(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
+
 
 class ForestMazeUnderground1(CoinsNotAllowedChest):
     description = ShuffleLocationSelector.ForestMazeUnderground1.value
@@ -2130,6 +2186,10 @@ class ForestMazeUnderground1(CoinsNotAllowedChest):
 
     def can_access(self, inventory):
         return can_access_forest(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 
 class ForestMazeUnderground2(CoinsNotAllowedChest):
@@ -2300,6 +2360,10 @@ class PipeVaultSlide1(Chest):
 
     def can_access(self, inventory):
         return can_access_pipe_vault(self.world, inventory)
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
+
 
 
 class PipeVaultSlide2(Chest):
@@ -2313,6 +2377,10 @@ class PipeVaultSlide2(Chest):
 
     def can_access(self, inventory):
         return can_access_pipe_vault(self.world, inventory)
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
+
 
 
 class PipeVaultSlide3(Chest):
@@ -2326,6 +2394,10 @@ class PipeVaultSlide3(Chest):
 
     def can_access(self, inventory):
         return can_access_pipe_vault(self.world, inventory)
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
+
 
 
 class PipeVaultSlideCoin1(OverworldItem):
@@ -2419,6 +2491,10 @@ class PipeVaultNippers1(Chest):
 
     def can_access(self, inventory):
         return can_access_pipe_vault(self.world, inventory)
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
+
 
 
 class PipeVaultNippers2(Chest):
@@ -2432,6 +2508,10 @@ class PipeVaultNippers2(Chest):
 
     def can_access(self, inventory):
         return can_access_pipe_vault(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 
 class GoombaThumping1(NPCReward):
@@ -2568,7 +2648,6 @@ class TreasureSeller1(TreasureSellerReward):
     def can_access(self, inventory):
         return can_clear_mines(self.world, inventory)
 
-
 class TreasureSeller2(TreasureSellerReward):
     description = ShuffleLocationSelector.TreasureSeller2.value
     area = locations.Area.Moleville
@@ -2635,6 +2714,8 @@ class CrocoFlunkie1(NPCReward):
     original_item = items.FlowerTab
     missable = True
 
+    def can_access(self, inventory):
+        return can_access_moleville_entrance(self.world, inventory)
 
 class CrocoFlunkie2(NPCReward):
     description = ShuffleLocationSelector.CrocoFlunkie2.value
@@ -2644,6 +2725,9 @@ class CrocoFlunkie2(NPCReward):
     item = items.FlowerTab
     original_item = items.FlowerTab
     missable = True
+
+    def can_access(self, inventory):
+        return can_access_moleville_entrance(self.world, inventory)
 
 
 class CrocoFlunkie3(NPCReward):
@@ -2655,6 +2739,9 @@ class CrocoFlunkie3(NPCReward):
     original_item = items.FlowerTab
     missable = True
 
+    def can_access(self, inventory):
+        return can_access_moleville_entrance(self.world, inventory)
+
 
 class Croco2BossFightLocation(BossFightLocation):
     related_class = bosses.Croco2
@@ -2664,6 +2751,9 @@ class Croco2BossFightLocation(BossFightLocation):
     original_item = items.Croco2BossFight
     rooms = [518]
     event = 353
+
+    def can_access(self, inventory):
+        return can_access_moleville_entrance(self.world, inventory)
 
 
 class Croco2Item(NPCReward):
@@ -2681,7 +2771,7 @@ class Croco2Item(NPCReward):
         return super().item_allowed(item)
 
     def can_access(self, inventory):
-        return self.world.get_check_instance(Croco2BossFightLocation).item is not None
+        return can_access_moleville_entrance(self.world, inventory) and self.world.get_check_instance(Croco2BossFightLocation).item is not None
 
 class MolevilleMinesBoss1(BossStarPiece):
     description = ShuffleLocationSelector.MolevilleMinesBoss1.value
@@ -2690,7 +2780,7 @@ class MolevilleMinesBoss1(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return self.world.get_check_instance(Croco2BossFightLocation).item is not None
+        return can_access_moleville_entrance(self.world, inventory) and self.world.get_check_instance(Croco2BossFightLocation).item is not None
 
 class MolevilleMinesStarChest(Chest):
     description = ShuffleLocationSelector.MolevilleMinesStarChest.value
@@ -2703,7 +2793,7 @@ class MolevilleMinesStarChest(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb)
+        return can_access_moleville_entrance(self.world, inventory) and inventory.has_item(items.BambinoBomb)
 
 
 class MolevilleMinesShyGuy(PacketItem):
@@ -2718,7 +2808,7 @@ class MolevilleMinesShyGuy(PacketItem):
     missable = True
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb)
+        return can_access_moleville_entrance(self.world, inventory) and inventory.has_item(items.BambinoBomb)
 
 class MolevilleMinesCoins(Chest):
     description = ShuffleLocationSelector.MolevilleMinesCoins.value
@@ -2731,7 +2821,7 @@ class MolevilleMinesCoins(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb)
+        return can_access_moleville_entrance(self.world, inventory) and inventory.has_item(items.BambinoBomb)
 
 
 class MolevilleMinesPunchinello1(Chest):
@@ -2745,7 +2835,10 @@ class MolevilleMinesPunchinello1(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb)
+        return can_access_moleville_entrance(self.world, inventory) and inventory.has_item(items.BambinoBomb)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class MolevilleMinesPunchinello2(Chest):
@@ -2759,7 +2852,10 @@ class MolevilleMinesPunchinello2(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb)
+        return can_access_moleville_entrance(self.world, inventory) and inventory.has_item(items.BambinoBomb)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class PunchinelloBossFightLocation(BossFightLocation):
@@ -2772,7 +2868,7 @@ class PunchinelloBossFightLocation(BossFightLocation):
     event = 353
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb)
+        return can_access_moleville_entrance(self.world, inventory) and inventory.has_item(items.BambinoBomb)
 
 
 class MolevilleMinesBoss2(BossStarPiece):
@@ -2941,6 +3037,9 @@ class BoosterTowerThwomp(Chest):
 
     def can_access(self, inventory):
         return can_access_tower(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class BoosterTowerKnifeGuy(NPCReward):
@@ -3179,6 +3278,9 @@ class BoosterTowerParachute(SlotsNotAllowedChest):
 
     def can_access(self, inventory):
         return can_access_tower(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class BoosterTowerParachuteCrevice(NPCReward):
@@ -3207,6 +3309,9 @@ class BoosterTowerZoomShoes(Chest):
 
     def can_access(self, inventory):
         return inventory.has_item(items.RoomKey) and can_access_tower(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class BoosterTowerTop1(Chest):
@@ -3220,6 +3325,9 @@ class BoosterTowerTop1(Chest):
 
     def can_access(self, inventory):
         return can_access_tower(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class BoosterTowerTop2(Chest):
@@ -3233,6 +3341,9 @@ class BoosterTowerTop2(Chest):
 
     def can_access(self, inventory):
         return can_access_tower(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 class BoosterTowerTop3(Chest):
     description = ShuffleLocationSelector.BoosterTowerTop3.value
@@ -3245,6 +3356,9 @@ class BoosterTowerTop3(Chest):
 
     def can_access(self, inventory):
         return can_access_tower(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class BoosterTowerRailway(NPCReward):
@@ -3348,7 +3462,7 @@ class ClownBrosBossFightLocation(BossFightLocation):
 class BoosterTowerStarPiece2(BossStarPiece):
     area = locations.Area.BoosterTower
     description = ShuffleLocationSelector.BoosterTowerStarPiece2.value
-    rooms = [258]
+    rooms = [202]
     event = 167
 
     def can_access(self, inventory):
@@ -3713,6 +3827,9 @@ class SeaSaveRoom1(Chest):
 
     def can_access(self, inventory):
         return can_access_sea(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class SeaSaveRoom2(Chest):
@@ -3733,6 +3850,9 @@ class SeaSaveRoom2(Chest):
 
     def can_access(self, inventory):
         return can_access_sea(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class SeaSaveRoom3(Chest):
@@ -3753,6 +3873,9 @@ class SeaSaveRoom3(Chest):
 
     def can_access(self, inventory):
         return can_access_sea(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class SeaWhirlpoolChest(Chest):
@@ -3773,6 +3896,9 @@ class SeaWhirlpoolChest(Chest):
 
     def can_access(self, inventory):
         return can_access_sea(self.world, inventory)
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 # *** Sunken Ship
@@ -3795,6 +3921,11 @@ class SunkenShipRatStairs(Chest):
 
     def can_access(self, inventory):
         return can_access_sea(self.world, inventory)
+        
+    def item_allowed(self, item):
+        if isclass_or_instance(item, items.InvincibilityStar):
+            return True
+        return super().item_allowed(item)
 
 
 class SunkenShipRatStairsFlower(PacketItem):
@@ -3806,6 +3937,7 @@ class SunkenShipRatStairsFlower(PacketItem):
     item = items.Flower
     original_item = items.Flower
     access = 1
+    preferred = PacketType.Chest
 
     def __init__(self, world):
         super().__init__(world)
@@ -3944,7 +4076,7 @@ class KingCalamariBossFightLocation(BossFightLocation):
 class SunkenShipMidboss(BossStarPiece):
     description = ShuffleLocationSelector.SunkenShipMidboss.value
     area = locations.Area.SunkenShip
-    rooms = [177]
+    rooms = [173]
     event = 167
 
     def can_access(self, inventory):
@@ -4033,6 +4165,10 @@ class HidonChest(Chest):
     def can_access(self, inventory):
         return can_clear_ship_midboss(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
+
 
 class HidonBossFightLocation(BossFightLocation):
     related_class = bosses.Hidon
@@ -4100,7 +4236,7 @@ class HidonReward2(Chest):
         return can_beat_mimic_2(self.world, inventory)
 
     def item_allowed(self, item):
-        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight) and not isclass_or_instance(item, items.SlotMachineChest) and not isclass_or_instance(item, items.InvincibilityStar)
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight) and not isclass_or_instance(item, items.SlotMachineChest) and not isclass_or_instance(item, items.InvincibilityStar) and not isclass_or_instance(item, items.InfiniteCoins)
 
 
 class SunkenShipUnderwaterFrogCoin1(OverworldItem):
@@ -4240,6 +4376,9 @@ class LandsEndRedEssence(Chest):
     event = 247
     item = items.RedEssence
     original_item = items.RedEssence
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class LandsEndChowPit1(Chest):
@@ -4290,6 +4429,9 @@ class LandsEndSecret2(Chest):
     event = 246
     item = items.Flower
     original_item = items.Flower
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class LandsEndShyAway(Chest):
@@ -4300,6 +4442,9 @@ class LandsEndShyAway(Chest):
     event = 247
     item = items.RecoveryMushroom
     original_item = items.RecoveryMushroom
+        
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class LandsEndStarChest1(Chest):
@@ -4310,6 +4455,12 @@ class LandsEndStarChest1(Chest):
     event = 247
     item = items.LandsEndVolcanoStar
     original_item = items.LandsEndVolcanoStar
+        
+    def item_allowed(self, item):
+        if isclass_or_instance(item, items.InvincibilityStar):
+            return True
+        return super().item_allowed(item)
+
 
 
 class LandsEndStarChest2(Chest):
@@ -4320,6 +4471,11 @@ class LandsEndStarChest2(Chest):
     event = 247
     item = items.LandsEndStar2
     original_item = items.LandsEndStar2
+        
+    def item_allowed(self, item):
+        if isclass_or_instance(item, items.InvincibilityStar):
+            return True
+        return super().item_allowed(item)
 
 
 class LandsEndStarChest3(Chest):
@@ -4330,6 +4486,11 @@ class LandsEndStarChest3(Chest):
     event = 246
     item = items.LandsEndStar3
     original_item = items.LandsEndStar3
+        
+    def item_allowed(self, item):
+        if isclass_or_instance(item, items.InvincibilityStar):
+            return True
+        return super().item_allowed(item)
 
 
 class TroopaClimb(NPCReward):
@@ -4377,7 +4538,7 @@ class BelomeTempleFortuneTeller(Chest):
     original_item = items.Coins(50)
 
 
-class BelomeTempleFortune1(Chest):
+class BelomeTempleFortune1(SlotsNotAllowedChest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortune1.value
     rooms = [421]
@@ -4396,7 +4557,7 @@ class BelomeTempleFortune1(Chest):
             self.access = 2
 
 
-class BelomeTempleFortune2(Chest):
+class BelomeTempleFortune2(SlotsNotAllowedChest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortune2.value
     rooms = [421]
@@ -4415,7 +4576,7 @@ class BelomeTempleFortune2(Chest):
             self.access = 2
 
 
-class BelomeTempleFortune3(Chest):
+class BelomeTempleFortune3(SlotsNotAllowedChest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortune3.value
     rooms = [421]
@@ -4434,7 +4595,7 @@ class BelomeTempleFortune3(Chest):
             self.access = 2
 
 
-class BelomeTempleFortune4(Chest):
+class BelomeTempleFortune4(SlotsNotAllowedChest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortune4.value
     rooms = [421]
@@ -5009,7 +5170,7 @@ class CulexBossFightLocation(BossFightLocation):
 class CulexBoss(BossStarPiece):
     description = ShuffleLocationSelector.CulexBoss.value
     area = locations.Area.MonstroTown
-    rooms = [351]
+    rooms = [324]
     event = 167
 
     def can_access(self, inventory):
@@ -5616,6 +5777,9 @@ class NimbusCastleOutOfBounds1(Chest):
     item = items.FrogCoin
     original_item = items.FrogCoin
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class NimbusCastleOutOfBounds2(Chest):
     area = locations.Area.NimbusLand
@@ -5625,6 +5789,9 @@ class NimbusCastleOutOfBounds2(Chest):
     event = 246
     item = items.FrogCoin
     original_item = items.FrogCoin
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class NimbusCastleSingleGoldBird(Chest):
@@ -5647,6 +5814,9 @@ class NimbusCastleAfterEgg1(Chest):
     original_item = items.Flower
     access = 2
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class BirdettaBossFightLocation(BossFightLocation):
     related_class = bosses.Birdetta
@@ -5659,6 +5829,10 @@ class BirdettaBossFightLocation(BossFightLocation):
 
     def can_access(self, inventory):
         return inventory.has_item(items.CastleKey1)
+
+    # graphical restrictions
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.ExorBossFight) and not isclass_or_instance(item, items.CloakerDominoBossFight) and not isclass_or_instance(item, items.KingCalamariBossFight) and not isclass_or_instance(item, items.CountdownBossFight) and not isclass_or_instance(item, items.SmithyBossFight) and not isclass_or_instance(item, items.AxemRangersBossFight) and not isclass_or_instance(item, items.MackBossFight) and not isclass_or_instance(item, items.Belome1BossFight) and not isclass_or_instance(item, items.BowyerBossFight) and not isclass_or_instance(item, items.GrateGuyBossFight) and not isclass_or_instance(item, items.JohnnyBossFight) and not isclass_or_instance(item, items.YaridovichBossFight) and not isclass_or_instance(item, items.Belome2BossFight) and not isclass_or_instance(item, items.CulexBossFight) and not isclass_or_instance(item, items.BoxBoyBossFight) and not isclass_or_instance(item, items.DodoBossFight) and not isclass_or_instance(item, items.ValentinaBossFight) and not isclass_or_instance(item, items.CzarDragonBossFight) and not isclass_or_instance(item, items.ChesterBossFight) and not isclass_or_instance(item, items.MagikoopaBossFight) and not isclass_or_instance(item, items.BoomerBossFight) and not isclass_or_instance(item, items.ClerkBossFight) and not isclass_or_instance(item, items.ManagerBossFight) and not isclass_or_instance(item, items.DirectorBossFight) and not isclass_or_instance(item, items.GunyolkBossFight) and not isclass_or_instance(item, items.SmithyBossFight)
 
 
 class NimbusCastleStarPiece2(BossStarPiece):
@@ -5736,7 +5910,7 @@ class ValentinaBossFightLocation(BossFightLocation):
 class NimbusCastleStarPiece3(BossStarPiece):
     description = ShuffleLocationSelector.NimbusCastleStarPiece3.value
     area = locations.Area.NimbusLand
-    rooms = [430]
+    rooms = [438]
     event = 167
 
     def can_access(self, inventory):
@@ -5816,7 +5990,7 @@ class NimbusLandSignalRing(OverworldItem):
 class NimbusLandCellar(NPCReward):
     area = locations.Area.NimbusLand
     description = ShuffleLocationSelector.NimbusLandCellar.value
-    #rooms = [413]
+    rooms = [413]
     event = 253
     item = items.FlowerJar
     original_item = items.FlowerJar
@@ -5846,6 +6020,9 @@ class BarrelVolcanoSecret1(Chest):
     def can_access(self, inventory):
         return can_access_volcano(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class BarrelVolcanoSecret2(Chest):
     area = locations.Area.BarrelVolcano
@@ -5864,6 +6041,9 @@ class BarrelVolcanoSecret2(Chest):
 
     def can_access(self, inventory):
         return can_access_volcano(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class BarrelVolcanoReverse(OverworldItem):
@@ -5960,6 +6140,9 @@ class BarrelVolcanoBeforeStar1(Chest):
     def can_access(self, inventory):
         return can_access_volcano(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class BarrelVolcanoBeforeStar2(Chest):
     area = locations.Area.BarrelVolcano
@@ -5978,6 +6161,9 @@ class BarrelVolcanoBeforeStar2(Chest):
 
     def can_access(self, inventory):
         return can_access_volcano(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class BarrelVolcanoStarRoom(Chest):
@@ -6017,6 +6203,9 @@ class BarrelVolcanoSaveRoom1(Chest):
     def can_access(self, inventory):
         return can_access_volcano(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class BarrelVolcanoSaveRoom2(Chest):
     area = locations.Area.BarrelVolcano
@@ -6054,6 +6243,9 @@ class BarrelVolcanoHinopio(Chest):
 
     def can_access(self, inventory):
         return can_access_volcano(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class CzarDragonBossFightLocation(BossFightLocation):
@@ -7061,6 +7253,9 @@ class FactorySaveRoom(Chest):
     def can_access(self, inventory):
         return can_access_factory(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class FactoryBoltPlatforms(Chest):
     area = locations.Area.Factory
@@ -7080,6 +7275,9 @@ class FactoryBoltPlatforms(Chest):
     def can_access(self, inventory):
         return can_access_factory(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class CountDownBossFightLocation(BossFightLocation):
     related_class = bosses.Countdown
@@ -7097,7 +7295,7 @@ class CountDownBossFightLocation(BossFightLocation):
 class FactoryBoss1(BossStarPiece):
     description = ShuffleLocationSelector.FactoryBoss1.value
     area = locations.Area.Factory
-    rooms = [223]
+    rooms = [433]
     event = 167
 
     def can_access(self, inventory):
@@ -7242,7 +7440,7 @@ class ClerkBossFightLocation(BossFightLocation):
 class InnerFactoryBoss1(BossStarPiece):
     description = ShuffleLocationSelector.InnerFactoryBoss1.value
     area = locations.Area.InnerFactory
-    rooms = [469]
+    rooms = [406]
     event = 167
 
     def can_access(self, inventory):
@@ -7348,7 +7546,7 @@ class SmithyBossFightLocation(BossFightLocation):
 class InnerFactoryBossFinal(BossStarPiece):
     description = ShuffleLocationSelector.InnerFactoryBossFinal.value
     area = locations.Area.InnerFactory
-    rooms = [496]
+    rooms = [523]
     event = 167
 
     def can_access(self, inventory):

@@ -83,7 +83,7 @@ script = [
     {
         "identifier": "EVENT_162_run_dialog_25",
         "command": "run_dialog",
-        "args": [3074, AreaObjects.MARIO, [_0x60Flags.BIT_6]],
+        "args": [3077, AreaObjects.MARIO, [_0x60Flags.BIT_6]],
     },
     {
         "identifier": "EVENT_162_unlock_beetlemania",

@@ -6,6 +6,33 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1584_action_queue_async_1',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'shift_east_pixels',
+                "args": [11]
+            },
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'shift_northeast_pixels',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_2',
+                "command": 'set_sprite_sequence',
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_set_vram_priority_3',
+                "command": 'set_vram_priority',
+                "args": [VramPriority.NORMAL]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_1584_set_bit_0_',
         "command": 'jmp_if_bit_clear',
         "args": [0x7067, 7, 'EVENT_1584_set_bit_0']

@@ -46,6 +46,11 @@ from randomizer.data import items
 
 script = [
     {
+        "identifier": "EVENT_3680_exit_star",
+        "command": "run_event_as_subroutine",
+        "args": [1603],
+    },
+    {
         "identifier": "EVENT_3680_jmp_if_bit_set_0",
         "command": "jmp_if_bit_set",
         "args": [0x705F, 5, "EVENT_3680_run_dialog_35"],

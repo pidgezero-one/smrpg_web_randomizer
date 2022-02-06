@@ -31,6 +31,7 @@ from randomizer.data.rooms.room import (
 )
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 
 room = Room(
     partition=Partition(
@@ -56,6 +57,7 @@ room = Room(
         ],
         full_palette_buffer=True,
     ),
+    extra_required_actions=[ExtraSpriteActions.DownPipe],
     music=Music._27_DUNGEON_IS_FULL_OF_MONSTERS,
     entrance_event=3135,
     event_tiles=[
@@ -112,7 +114,7 @@ room = Room(
         ChestNPC(  # 0
             occupant=npcs.TreasureChest,
             initiator=Initiator.HIT_FROM_BELOW,
-            event_script=3881,
+            event_script=3525,
             action_script=14,
             lower_70A7=0,
             upper_70A7=0,

@@ -346,19 +346,9 @@ script = [
         "args": [AreaObjects.NPC_2, Rooms._378_BEAN_VALLEY_BEANSTALKS_AREA_01]
     },
     {
-        "identifier": 'EVENT_3660_remove_from_level_77',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._378_BEAN_VALLEY_BEANSTALKS_AREA_01]
-    },
-    {
         "identifier": 'EVENT_3660_remove_from_level_78',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_1, Rooms._379_BEAN_VALLEY_BEANSTALKS_AREA_02]
-    },
-    {
-        "identifier": 'EVENT_3660_remove_from_level_79',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._379_BEAN_VALLEY_BEANSTALKS_AREA_02]
     },
     {
         "identifier": 'EVENT_3660_remove_from_level_80',
@@ -394,11 +384,6 @@ script = [
         "identifier": 'EVENT_3660_remove_from_level_86',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_3, Rooms._381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02]
-    },
-    {
-        "identifier": 'EVENT_3660_remove_from_level_87',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02]
     },
     {
         "identifier": 'EVENT_3660_jmp_if_object_trigger_enabled_88',

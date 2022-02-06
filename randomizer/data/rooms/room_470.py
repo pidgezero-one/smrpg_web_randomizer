@@ -31,6 +31,7 @@ from randomizer.data.rooms.room import (
 )
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 
 room = Room(
     partition=Partition(
@@ -56,6 +57,12 @@ room = Room(
         ],
         full_palette_buffer=True,
     ),
+    extra_required_actions=[
+        ExtraSpriteActions.LeanBack,
+        ExtraSpriteActions.LeanBack2,
+        ExtraSpriteActions.LeanBack,
+        ExtraSpriteActions.ClimbFrame,
+    ],
     music=Music._56_FACTORY,
     entrance_event=2601,
     event_tiles=[

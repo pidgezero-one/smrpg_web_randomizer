@@ -326,109 +326,12 @@ class Boss:
     @property
     def classname(self):
         return self.__class__.__name__
+    
 
 class MimicBoss(Boss):
     challenge_script = mimic_subscript
 
 
-class SpriteAnimation:
-    sequence_id = 0
-    contact_frame = None
-    total_duration = None
-    new_sprite_id = None
-    speed = SequenceSpeeds.NORMAL
-
-    def __init__(self, sequence_id=0, contact_frame=None, total_duration=None, new_sprite_id=None, speed=SequenceSpeeds.NORMAL):
-        self.sequence_id = sequence_id
-        self.contact_frame = contact_frame
-        self.total_duration = total_duration
-        self.new_sprite_id = new_sprite_id
-        self.speed = speed
-
-
-class SpriteAnimationCollection:
-    recoil = None
-    bandits_way_distracted = None
-    mines_punch = None
-    tower_bullet = None
-    chapel_laugh = None
-    kitchen_prep = None
-    ship_beckon = None
-    ship_chair = None
-    dojo_challenge = None
-    statue_intro = None
-    statue_peck = None
-    statue_flustered = None
-    keep_challenge = None
-    keep_summon = None
-    chandelier_challenge = None
-    factory_pierce = None
-    endgame_challenge = None
-
-    def __init__(self, recoil=None, bandits_way_distracted=None, mines_punch=None, tower_bullet=None, chapel_laugh=None, kitchen_prep=None, ship_beckon=None, ship_chair=None, dojo_challenge=None, statue_intro=None, statue_peck=None, statue_flustered=None, keep_challenge=None, keep_summon=None, chandelier_challenge=None, factory_pierce=None, endgame_challenge=None):
-        self.recoil = recoil
-        self.bandits_way_distracted = bandits_way_distracted
-        self.mines_punch = mines_punch
-        self.tower_bullet = tower_bullet
-        self.chapel_laugh = chapel_laugh
-        self.kitchen_prep = kitchen_prep
-        self.ship_beckon = ship_beckon
-        self.ship_chair = ship_chair
-        self.dojo_challenge = dojo_challenge
-        self.statue_intro = statue_intro
-        self.statue_peck = statue_peck
-        self.statue_flustered = statue_flustered
-        self.keep_challenge = keep_challenge
-        self.keep_summon = keep_summon
-        self.chandelier_challenge = chandelier_challenge
-        self.factory_pierce = factory_pierce
-        self.endgame_challenge = endgame_challenge
-
-
-class StatueDetails:
-    reference_model = 63
-    palette = []
-    mold = 0
-    horizontal_pixel_shift = 0
-    vertical_pixel_shift = 0
-    north_facing_horizontal_pixel_shift = 0
-    north_facing_vertical_pixel_shift = 0
-
-    def __init__(self, reference_model, palette, mold=0, horizontal_pixel_shift=0, vertical_pixel_shift=0, north_facing_horizontal_pixel_shift=0, north_facing_vertical_pixel_shift=0):
-        self.reference_model = reference_model
-        self.palette = palette
-        self.mold = mold
-        self.horizontal_pixel_shift = horizontal_pixel_shift
-        self.vertical_pixel_shift = vertical_pixel_shift
-        self.north_facing_horizontal_pixel_shift = north_facing_horizontal_pixel_shift
-        self.north_facing_vertical_pixel_shift = north_facing_vertical_pixel_shift
-
-
-class ModelDetails:
-    occupant = None
-    sequence = 0
-    mold = 0
-    sequence_type = SequenceType.Sequence
-    animations = SpriteAnimationCollection()
-    loop = False
-
-    def __init__(self, occupant, sequence=0, mold=0, loop=False, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
-        self.occupant = occupant
-        self.sequence = sequence
-        self.mold = mold
-        self.sequence_type = sequence_type
-        self.animations = animations
-        self.loop = loop
-
-
-class SmallModelDetails(ModelDetails):
-    pass
-
-
-class BigModelDetails(ModelDetails):
-    def __init__(self, occupant, sequence=0, mold=0, loop=False, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
-        super().__init__(occupant, uncloneable_all_directions,
-                         uncloneable_south_only, sequence, mold, loop, sequence_type, animations)
 
 
 class ModelFill:
@@ -564,6 +467,9 @@ class BossLocation:
     statue_locations = []
     dialogs_to_replace = []
 
+    _identifier = None
+    _grant_identifier = None
+    
     def __init__(self, world):
         """
 
@@ -596,6 +502,18 @@ class BossLocation:
 
         """
         return self.world.get_formation_pack_by_index(self.boss.pack_number).formations[0]
+
+
+    @property
+    def identifier(self):
+        return self._identifier
+
+    @property
+    def grant_identifier(self):
+        if self._grant_identifier is None:
+            return self._identifier
+        return self._grant_identifier
+
 
     def get_patch(self):
         """
@@ -665,14 +583,6 @@ class BossAndStarLocation(StarLocation, BossLocation):
 class BowsersKeepLocation(BossAndStarLocation):
     """Container subclass for Bowser's Keep locations."""
     pass
-
-
-hammer_bro_bop = SpriteAnimation(
-    sequence_id=3, contact_frame=36, total_duration=48)
-hammer_bro_bop_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=16, total_duration=21, speed=SequenceSpeeds.FAST)
-hammer_bro_taunt = SpriteAnimation(sequence_id=5, total_duration=20)
-hammer_bro_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 
 
 class HammerBroBoss(Boss):
@@ -2787,13 +2697,6 @@ class AxemRangersBoss(Boss):
         (3353, '''\n  AXEM RED: I'm way outta shape![await]'''),
     ]
 
-
-chester_attack = SpriteAnimation(
-    sequence_id=3, contact_frame=50, total_duration=64)
-chester_attack_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=18, total_duration=26)
-
-
 class ChesterBoss(MimicBoss):
     name = "Chester"
     pack_number = 235
@@ -3094,7 +2997,7 @@ class CountdownBoss(Boss):
         (3073,
          '''DING-A-LING: Back off![delay_15] I know\n Fear Roulette and I'm not afraid\n to use it![await]'''),
         (3057,
-         ''' Uh-oh! Are you looking for trouble?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
+         ''' Uh-oh! Are you looking for\n trouble?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
          ''' It's really weird.\n The guy next door never seems\n to shut his alarm clock off.[await][page]\n I'd like to go over and give him a\n piece of my mind, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]'''),
         (3352,
@@ -3112,15 +3015,15 @@ class CountdownBoss(Boss):
     ]
 
 class CloakerDominoBoss(Boss):
-    name = "Cloaker"
+    name = "Domino"
     pack_number = 184
     forced_background = 40
     small_model = npcs.DominoSmall
-    big_model = npcs.CloakerLarge
+    big_model = npcs.DominoLarge
     statue = npcs.DominoStatue
     dialog_replacements = [
         (49,
-         '''CLOAKER: I'm busy wallowing in\n misery at my defeat here.[await][pause] Get lost![await]'''),
+         '''DOMINO: I'm busy wallowing in\n misery at my defeat here.[await][pause] Get lost![await]'''),
         (1660,
          ''' Uh oh, you cracked the code...\n I don't like where this is going...[await]'''),
         (1694,
@@ -3609,7 +3512,7 @@ class SmithyBoss(Boss):
 
 # ****************************** Actual location classes
 class HammerBros(BossAndStarLocation):
-    identifier = 205
+    _identifier = 205
     description = AvailableBosses.HammerBro.value
     name = "Hammer Bro"
     battlefield = Battlefields.MushroomWay
@@ -3623,7 +3526,7 @@ class HammerBros(BossAndStarLocation):
 
 
 class Croco1(BossAndStarLocation):
-    identifier = 206
+    _identifier = 206
     description = AvailableBosses.Croco1.value
     name = "Croco"
     battlefield = Battlefields.MushroomWay
@@ -3646,7 +3549,8 @@ class Croco1(BossAndStarLocation):
 
 
 class Mack(BossAndStarLocation):
-    identifier = 326
+    _identifier = 326
+    _grant_identifier = 18
     description = AvailableBosses.Mack.value
     name = "Mack"
     battlefield = Battlefields.MushroomKingdomThroneRoom
@@ -3739,7 +3643,7 @@ class Mack(BossAndStarLocation):
 
 
 class Pandorite(BossAndStarLocation):
-    identifier = 512
+    _identifier = 512
     description = AvailableBosses.Pandorite.value
     name = "Pandorite"
     battlefield = Battlefields.KeroSewers
@@ -3748,7 +3652,8 @@ class Pandorite(BossAndStarLocation):
 
 
 class Belome1(BossAndStarLocation):
-    identifier = 302
+    _identifier = 302
+    _grant_identifier = 301
     battlefield = Battlefields.KeroSewers
     music = music.MidbossMusic
     description = AvailableBosses.Belome1.value
@@ -3761,7 +3666,7 @@ class Belome1(BossAndStarLocation):
 
 
 class Bowyer(BossAndStarLocation):
-    identifier = 232
+    _identifier = 232
     description = AvailableBosses.Bowyer.value
     name = "Bowyer"
     battlefield = Battlefields.Bowyer
@@ -3816,7 +3721,7 @@ class Bowyer(BossAndStarLocation):
 
 
 class Croco2(BossAndStarLocation):
-    identifier = 518
+    _identifier = 518
     description = AvailableBosses.Croco2.value
     name = "Croco"
     battlefield = Battlefields.MolevilleMines
@@ -3853,7 +3758,7 @@ class Croco2(BossAndStarLocation):
 
 
 class Punchinello(BossAndStarLocation):
-    identifier = 271
+    _identifier = 271
     description = AvailableBosses.Punchinello.value
     name = "Punchinello"
     battlefield = Battlefields.MolevilleMines
@@ -3889,7 +3794,7 @@ class Punchinello(BossAndStarLocation):
 
 
 class Booster(BossAndStarLocation):
-    identifier = 192
+    _identifier = 192
     description = AvailableBosses.Booster.value
     name = "Booster"
     battlefield = Battlefields.BoosterTower
@@ -3988,7 +3893,8 @@ class Booster(BossAndStarLocation):
 
 
 class ClownBros(BossAndStarLocation):
-    identifier = 258
+    _identifier = 258
+    _grant_identifier = 202
     battlefield = Battlefields.ClownBros
     music = music.MidbossMusic
     description = AvailableBosses.KnifeGuyGrateGuy.value
@@ -3997,7 +3903,7 @@ class ClownBros(BossAndStarLocation):
 
 
 class Bundt(BossAndStarLocation):
-    identifier = 154
+    _identifier = 154
     battlefield = Battlefields.Bundt
     music = music.MidbossMusic
     description = AvailableBosses.Bundt.value
@@ -4026,7 +3932,8 @@ class Bundt(BossAndStarLocation):
 
 
 class KingCalamari(BossAndStarLocation):
-    identifier = 177
+    _identifier = 177
+    _grant_identifier = 173
     battlefield = Battlefields.SunkenShip
     music = music.MidbossMusic
     description = AvailableBosses.KingCalamari.value
@@ -4039,7 +3946,7 @@ class KingCalamari(BossAndStarLocation):
 
 
 class Hidon(BossAndStarLocation):
-    identifier = 513
+    _identifier = 513
     battlefield = Battlefields.SunkenShip
     description = AvailableBosses.Hidon.value
     name = "Hidon"
@@ -4047,7 +3954,7 @@ class Hidon(BossAndStarLocation):
 
 
 class Johnny(BossAndStarLocation):
-    identifier = 28
+    _identifier = 28
     battlefield = Battlefields.SunkenShip
     music = music.MidbossMusic
     description = AvailableBosses.Johnny.value
@@ -4104,7 +4011,8 @@ class Johnny(BossAndStarLocation):
 
 
 class Yaridovich(BossAndStarLocation):
-    identifier = 315
+    _identifier = 315
+    _grant_identifier = 316
     description = AvailableBosses.Yaridovich.value
     name = "Yaridovich"
     battlefield = Battlefields.Yaridovich
@@ -4185,14 +4093,14 @@ class Yaridovich(BossAndStarLocation):
 
 
 class Mokura(BossAndStarLocation):
-    identifier = 519
+    _identifier = 519
     music = music.MidbossMusic
     description = AvailableBosses.Mokura.value
     name = "Mokura"
     boss = MokuraBoss
 
 class Belome2(BossAndStarLocation):
-    identifier = 268
+    _identifier = 268
     description = AvailableBosses.Belome2.value
     name = "Belome"
     battlefield = Battlefields.BelomeTemple
@@ -4205,7 +4113,7 @@ class Belome2(BossAndStarLocation):
 
 
 class Jagger(BossAndStarLocation):
-    identifier = 255
+    _identifier = 255
     description = AvailableBosses.Jagger.value
     name = "Jagger"
     battlefield = Battlefields.JinxDojo
@@ -4218,7 +4126,7 @@ class Jagger(BossAndStarLocation):
 
 
 class Jinx1(BossAndStarLocation):
-    identifier = 515
+    _identifier = 515
     description = AvailableBosses.Jinx1.value
     name = "Jinx"
     battlefield = Battlefields.JinxDojo
@@ -4232,7 +4140,7 @@ class Jinx1(BossAndStarLocation):
 
 
 class Jinx2(BossAndStarLocation):
-    identifier = 516
+    _identifier = 516
     description = AvailableBosses.Jinx2.value
     name = "Jinx"
     battlefield = Battlefields.JinxDojo
@@ -4246,7 +4154,7 @@ class Jinx2(BossAndStarLocation):
 
 
 class Jinx3(BossAndStarLocation):
-    identifier = 517
+    _identifier = 517
     description = AvailableBosses.Jinx3.value
     name = "Jinx"
     battlefield = Battlefields.JinxDojo
@@ -4260,7 +4168,8 @@ class Jinx3(BossAndStarLocation):
 
 
 class Culex(BossAndStarLocation):
-    identifier = 351
+    _identifier = 351
+    _grant_identifier = 324
     description = AvailableBosses.Culex.value
     name = "Culex"
     battlefield = Battlefields.Culex
@@ -4273,7 +4182,7 @@ class Culex(BossAndStarLocation):
 
 
 class BoxBoy(BossAndStarLocation):
-    identifier = 514
+    _identifier = 514
     battlefield = Battlefields.KeroSewers
     description = AvailableBosses.BoxBoy.value
     name = "Box Boy"
@@ -4281,7 +4190,7 @@ class BoxBoy(BossAndStarLocation):
 
 
 class MegaSmilax(BossAndStarLocation):
-    identifier = 254
+    _identifier = 254
     description = AvailableBosses.Megasmilax.value
     name = "Megasmilax"
     battlefield = Battlefields.BeanValley
@@ -4294,7 +4203,7 @@ class MegaSmilax(BossAndStarLocation):
 
 
 class Dodo(BossAndStarLocation):
-    identifier = 520
+    _identifier = 520
     description = AvailableBosses.Dodo.value
     name = "Dodo"
     battlefield = Battlefields.NimbusCastle
@@ -4313,7 +4222,7 @@ class Dodo(BossAndStarLocation):
 
 
 class Birdetta(BossAndStarLocation):
-    identifier = 409
+    _identifier = 409
     description = AvailableBosses.Birdetta.value
     name = "Birdetta"
     battlefield = Battlefields.Birdo
@@ -4323,7 +4232,8 @@ class Birdetta(BossAndStarLocation):
 
 
 class Valentina(BossAndStarLocation):
-    identifier = 430
+    _identifier = 430
+    _grant_identifier = 438
     description = AvailableBosses.Valentina.value
     name = "Valentina"
     battlefield = Battlefields.Valentina
@@ -4403,7 +4313,7 @@ class Valentina(BossAndStarLocation):
 
 
 class CzarDragon(BossAndStarLocation):
-    identifier = 352
+    _identifier = 352
     description = AvailableBosses.CzarDragon.value
     name = "Czar Dragon"
     battlefield = Battlefields.CzarDragon
@@ -4436,7 +4346,7 @@ class CzarDragon(BossAndStarLocation):
 
 
 class AxemRangers(BossAndStarLocation):
-    identifier = 393
+    _identifier = 393
     description = AvailableBosses.AxemRangers.value
     name = "Axem Red"
     battlefield = Battlefields.AxemRangers
@@ -4485,7 +4395,7 @@ class AxemRangers(BossAndStarLocation):
 
 
 class Chester(BossAndStarLocation):
-    identifier = 463
+    _identifier = 461
     description = AvailableBosses.Chester.value
     name = "Chester"
     battlefield = Battlefields.BowsersKeep
@@ -4498,7 +4408,7 @@ class Chester(BossAndStarLocation):
 
 
 class Magikoopa(BowsersKeepLocation):
-    identifier = 266
+    _identifier = 266
     description = AvailableBosses.Magikoopa.value
     name = "Magikoopa"
     battlefield = Battlefields.BowsersKeep
@@ -4525,7 +4435,7 @@ class Magikoopa(BowsersKeepLocation):
 
 
 class Boomer(BowsersKeepLocation):
-    identifier = 521
+    _identifier = 521
     description = AvailableBosses.Boomer.value
     name = "Boomer"
     battlefield = Battlefields.Boomer
@@ -4538,7 +4448,7 @@ class Boomer(BowsersKeepLocation):
 
 
 class Exor(BowsersKeepLocation):
-    identifier = 522
+    _identifier = 522
     description = AvailableBosses.Exor.value
     name = "Exor"
     battlefield = Battlefields.BowsersKeep
@@ -4547,7 +4457,8 @@ class Exor(BowsersKeepLocation):
 
 
 class Countdown(BossLocation):
-    identifier = 223
+    _identifier = 223
+    _grant_identifier = 433
     description = AvailableBosses.CountDown.value
     name = "Count Down"
     battlefield = Battlefields.Gate
@@ -4568,16 +4479,17 @@ class Countdown(BossLocation):
 
 
 class CloakerDomino(BossLocation):
-    identifier = 103
+    _identifier = 103
     description = AvailableBosses.CloakerDomino.value
-    name = "Cloaker"
+    name = "Domino"
     battlefield = Battlefields.Gate
     music = music.MidbossMusic
     boss = CloakerDominoBoss
 
 
 class Clerk(BossLocation):
-    identifier = 469
+    _identifier = 469
+    _grant_identifier = 406
     description = AvailableBosses.Clerk.value
     name = "Clerk"
     battlefield = Battlefields.Factory
@@ -4597,7 +4509,7 @@ class Clerk(BossLocation):
 
 
 class Manager(BossLocation):
-    identifier = 471
+    _identifier = 471
     description = AvailableBosses.Manager.value
     name = "Manager"
     battlefield = Battlefields.Factory
@@ -4624,7 +4536,7 @@ class Manager(BossLocation):
 
 
 class Director(BossLocation):
-    identifier = 472
+    _identifier = 472
     description = AvailableBosses.Director.value
     name = "Director"
     battlefield = Battlefields.Factory
@@ -4650,7 +4562,7 @@ class Director(BossLocation):
 
 
 class Gunyolk(BossLocation):
-    identifier = 470
+    _identifier = 470
     description = AvailableBosses.Gunyolk.value
     name = "Factory Chief"
     battlefield = Battlefields.Factory
@@ -4669,7 +4581,8 @@ class Gunyolk(BossLocation):
 
 
 class Smithy(BossLocation):
-    identifier = 496
+    _identifier = 496
+    _grant_identifier = 523
     description = AvailableBosses.Smithy.value
     name = "Smithy"
     battlefield = Battlefields.Smithy

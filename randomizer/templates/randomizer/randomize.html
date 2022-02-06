@@ -667,7 +667,7 @@
                 }
                 else {
                     boxes.forEach(b => {
-                        if ($(b).prop("id").toLowerCase().includes(searchterm.toLowerCase())) {
+                        if ($(b).prop("value").toLowerCase().includes(searchterm.toLowerCase())) {
                             $(b).closest(".multiselect-option").show();
                         }
                         else {
@@ -813,6 +813,9 @@
                         else {
                             $(`#${$.escapeSelector("B.pool.container")}`).removeClass("disabled")
                         }
+                    }
+                    else if (id == "E.attacks") {
+                        $("#E\\.unsafe").prop("disabled", !value)
                     }
                     else if (id == "R.palette") {
                         $("#R\\.names").prop("disabled", !value)

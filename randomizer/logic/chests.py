@@ -218,7 +218,7 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
 
         # bias star pieces toward boss locations, slightly, even if SPs Anywhere enabled
         if world.settings.is_flag_enabled(flags.StarPieceAvailability) and utils.isclass_or_instance(item, items.StarPiece):
-            if random.randint(0, 9) > 5:
+            if random.randint(0, 9) > 7:
                 fillable_locations = [l for l in fillable_locations if l.star_location]
 
         # do not place mokura if you have no damaging spells
@@ -229,8 +229,6 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
         #print (item, len(fillable_locations))
         # print(item, fillable_locations)
         
-        #if utils.isclass_or_instance(item, items.SpellLearn):
-        #    print(item, len(remaining_fill_items), "         ", item, fillable_locations)
         #print("")
         if fillable_locations:
 
@@ -250,6 +248,9 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
                 #print ("default:", item, item.tier, items.Coins(item.price // 2, world).amount)
             else:
                 fillable_locations[0].item = item
+
+            if utils.isclass_or_instance(item, items.StarPiece):
+                print(fillable_locations[0])
 
             # Populate corresponding spotted character, if eligible (currently only affects Forest Maze access)
             if utils.isclass_or_instance(fillable_locations[0], chests.MarrymoreCharacter) or utils.isclass_or_instance(fillable_locations[0], chests.MushroomWayCharacter):
@@ -544,10 +545,8 @@ def randomize_all(world):
     # Open mode-specific shuffles.
     if world.open_mode:
 
-
-
         # Collect pool of locations that need item assignments
-        locations_to_completely_ignore_ = [w for w in world.freestanding_item_locations if w.description not in world.settings.get_flag(flags.EnabledRegularChecks).enabled]
+        locations_to_completely_ignore_ = [w for w in world.freestanding_item_locations if w.description not in world.settings.get_flag(flags.EnabledRegularChecks).enabled and not (w.key and not world.settings.is_flag_enabled(flags.KeyItemsAnywhere))]
         locations_to_completely_ignore = [w.description for w in locations_to_completely_ignore_]
         #print(locations_to_completely_ignore)
 
@@ -690,7 +689,7 @@ def randomize_all(world):
                 all_locations.remove(l)
 
         # Do any other chest overrides and remove them from the pool.
-        if "items" in world.settings.override and "override" in world.settings.override["items"]:
+        if world.settings.override is not None and "items" in world.settings.override and "override" in world.settings.override["items"]:
             for c in world.settings.override["items"]["override"]:
                 chest = eval('chests.%s' % c)
                 item = eval('items.%s' % world.settings.override["items"]["override"][c])
@@ -783,6 +782,7 @@ def randomize_all(world):
         if world.settings.is_flag_enabled(flags.ShuffleItems):
             # key items
             required_item_pool += [i for i in world.items if i.is_key and not i.is_subitem]
+            required_item_pool.extend([world.get_item_instance(items.ProgressiveCard)] * 2)
 
             # non-key items which should always only appear up to a certain # of times
             # bright card, if not a KI
@@ -880,15 +880,21 @@ def randomize_all(world):
 
         #print([i for i in all_locations if utils.isclass_or_instance(i, chests.InvisibleFlagLocation)])
         # keep rolling until characters are placed in a logically completable way
+        tries = 0
         while True:
+            if tries > 5:
+                raise Exception("Could not fill world after 5 tries: seed %s, settings: %s" % (world.seed, world.settings.flag_string))
             remainder = fill_locations(world, copy.copy(all_locations), copy.copy(required_item_pool), copy.copy(extra_item_pool), copy.copy(inventory))
             print(remainder)
+            #print(world.settings.get_flag(flags.StarPiecesRequired).value)
+            #print([l for l in all_locations if l.item is None and not utils.isclass_or_instance(l, chests.BossStarPiece)])
             if len([i for i in remainder if utils.isclass_or_instance(i, items.RecruitedCharacter) or utils.isclass_or_instance(i, items.BossFight)]) == 0:
                 break
+            tries += 1
 
         if remainder:
             # if this is a real rom attempt with no overrides specified in debug config, error out if required items weren't placed
-            if not ("items" in world.settings.override and "override" in world.settings.override["items"] and len(world.settings.override["items"]["override"]) > 0):
+            if world.settings.override is not None and not ("items" in world.settings.override and "override" in world.settings.override["items"] and len(world.settings.override["items"]["override"]) > 0):
                 required_item_types = [type(i) for i in remainder_check]
                 excluded_important_items = [i for i in remainder if i.is_key or type(i) in required_item_types or utils.isclass_or_instance(i, items.RecruitedCharacter)]
                 # if all excluded important items are the two that can't be placed because Super Jump is turned off, this is allowed
@@ -1248,32 +1254,32 @@ def randomize_all(world):
                         grant_builders[c.event]["executions"].extend(cmds)
                     # mimics - update battlefield
                     elif utils.isclass_or_instance(c.item, items.PandoriteFight) or utils.isclass_or_instance(c.item, items.HidonFight) or utils.isclass_or_instance(c.item, items.BoxBoyFight):
-                        battlefield = None
-                        for b_f in bosses.battlefield_room_table:
-                            if c.rooms[0] in b_f[1]:
-                                battlefield = b_f[0]
-                                break
-                        boss = None
-                        pack_number = None
-                        if utils.isclass_or_instance(c.item, items.PandoriteFight):
-                            fightlocation = chests.PandoriteBossFightLocation
-                        elif utils.isclass_or_instance(c.item, items.HidonFight):
-                            fightlocation = chests.HidonBossFightLocation
-                        elif utils.isclass_or_instance(c.item, items.BoxBoyFight):
-                            fightlocation = chests.BoxBoyBossFightLocation
-                        else:
-                            raise Exception("how did you get here?")
+                        # battlefield = None
+                        # for b_f in bosses.battlefield_room_table:
+                        #     if c.rooms[0] in b_f[1]:
+                        #         battlefield = b_f[0]
+                        #         break
+                        # boss = None
+                        # pack_number = None
+                        # if utils.isclass_or_instance(c.item, items.PandoriteFight):
+                        #     fightlocation = chests.PandoriteBossFightLocation
+                        # elif utils.isclass_or_instance(c.item, items.HidonFight):
+                        #     fightlocation = chests.HidonBossFightLocation
+                        # elif utils.isclass_or_instance(c.item, items.BoxBoyFight):
+                        #     fightlocation = chests.BoxBoyBossFightLocation
+                        # else:
+                        #     raise Exception("how did you get here?")
 
-                        check = world.get_check_instance(fightlocation)
-                        pack_number = check.item.related_class.pack_number
-                        formation = world.get_formation_pack_by_index(pack_number).formations[0]
-                        if formation.required_battlefield is not None:
-                            battlefield = formation.required_battlefield
-                        for cmd_index, cmd in enumerate(world.eventscripts[353]):
-                            if cmd["command"] == "start_battle" and cmd["args"][0] == pack_number:
-                                cmd["args"][1] = battlefield
-                                world.eventscripts[353][cmd_index] = cmd
-                                break
+                        # check = world.get_check_instance(fightlocation)
+                        # pack_number = check.item.related_class.pack_number
+                        # formation = world.get_formation_pack_by_index(pack_number).formations[0]
+                        # if formation.required_battlefield is not None:
+                        #     battlefield = formation.required_battlefield
+                        # for cmd_index, cmd in enumerate(world.eventscripts[353]):
+                        #     if cmd["command"] == "start_battle" and cmd["args"][0] == pack_number:
+                        #         cmd["args"][1] = battlefield
+                        #         world.eventscripts[353][cmd_index] = cmd
+                        #         break
 
                         # add jumps
                         cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.get_chest_event(c.event)]))
@@ -1296,7 +1302,7 @@ def randomize_all(world):
                         elif utils.isclass_or_instance(c.item, items.StarPiece):
                             hint_variable, hint_bit = c.item.hint_bit
                             cmds.append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
-                            cmds.append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
+                        #    cmds.append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
                         # jump based on type
                         if world.settings.is_flag_value(flags.QuickHitCoins, True) and (utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.MultiFrogCoin)):
                             cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.quick_chest_event]))
@@ -1311,7 +1317,7 @@ def randomize_all(world):
                         # do not do trigger-based hints for infinite coin chest, it will always evaluate to true
                         if utils.isclass_or_instance(c.item, items.InfiniteCoins):
                             for hint_script in [947, 949]:
-                                for hscmd_index, hscmd in world.eventscripts[hint_script]:
+                                for hscmd_index, hscmd in enumerate(world.eventscripts[hint_script]):
                                     if hscmd["command"] == "jmp_if_object_trigger_enabled" and hscmd["args"][0] == c.npc_ids[0] + 0x14 and hscmd["args"][1] == c.rooms[0]:
                                         hscmd["command"] = "jmp"
                                         hscmd["args"] = [world.eventscripts[hint_script][hscmd_index+1]["identifier"]]
@@ -1339,7 +1345,7 @@ def randomize_all(world):
                         if utils.isclass_or_instance(c.item, items.StarPiece):
                             hint_variable, hint_bit = c.item.hint_bit
                             cmds.append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
-                            cmds.append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
+                        #    cmds.append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
                         
                         cmds.append(utils.new_command(c.event, 'jmp_to_event', [this_event]))
                         grant_builders[c.event]["executions"].extend(cmds)
@@ -1473,6 +1479,8 @@ def randomize_all(world):
                     generator = copy.deepcopy([{**s} for s in world.eventscripts[c.script_id]])
                     if c.preferred == PacketType.Falling:
                         packetType = c.item.model.falling_packet
+                    elif c.preferred == PacketType.Chest:
+                        packetType = c.item.model.chest_packet
                     else:
                         packetType = c.item.model.static_packet
                     generator[0]["args"][0] = packetType
@@ -1509,7 +1517,7 @@ def randomize_all(world):
                 if utils.isclass_or_instance(c.item, items.StarPiece):
                     hint_variable, hint_bit = c.item.hint_bit
                     cmds.append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
-                    cmds.append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
+                #    cmds.append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
                 if utils.isclass_or_instance(c.item, items.RegularItem):
                     # set 70A7 for granting a normal item
                     cmds.append(utils.new_command(c.event, 'set', [0x70A7, c.item.chest_70A7_lower]))
@@ -1582,18 +1590,19 @@ def randomize_all(world):
                     grant_builders[c.event]["jumps"].append(jmp)
             elif utils.isclass_or_instance(c, chests.StarHillStarPiece1):
                 # remove freestanding star if empty
-                world.eventscripts[2405].pop(0)
-        
-        grant_builders[c.event]["jumps"].append(utils.new_command(167, 'jmp_to_event', [3400]),)
-                
+                world.rooms[159].objects[9].visible = False
+
+        grant_builders[167]["jumps"].append(utils.new_command(167, 'jmp_to_event', [3400]),)
         # finalize granter scripts
         for e in grant_builders:
             grant_builders[e]["jumps"].append(utils.new_command(e, "ret"))
             world.eventscripts[e] = copy.deepcopy([{**s} for s in grant_builders[e]["jumps"]]) + copy.deepcopy([{**s} for s in grant_builders[e]["executions"]])
+        # clear directional bit for rooms that needed it in star piece granter
+        world.eventscripts[e].insert(0, utils.new_command(167, "clear_bit", [0x7077, 5]),)
 
         # if star piece signal ring hints turned on, set the appropriate bit checks in each area
         if world.settings.is_flag_value(flags.StarPieceHints, True):
-            for c in world.recruitable_character_checks + world.chest_locations + world.freestanding_item_locations + world.boss_star_checks:
+            for c in world.chest_locations + world.freestanding_item_locations + world.boss_star_checks:
                 if c.item is not None and utils.isclass_or_instance(c.item, items.StarPiece):
                     #print(c.area, c.name, c.item)
                     hint_event = None
@@ -1657,6 +1666,8 @@ def randomize_all(world):
                         hint_event = 3915
                     elif c.area == Area.InnerFactory:
                         hint_event = 3916
+                    else:
+                        raise Exception("no hint event for %s" % c)
                     if hint_event is not None:
                         # get name of sound command
                         sound_command = [cmd for cmd in world.eventscripts[hint_event] if cmd["command"] == 'play_sound'][0]

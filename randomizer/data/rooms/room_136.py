@@ -5,6 +5,7 @@ from randomizer.helpers.roomobjecttables import ObjectType, Initiator, PostBattl
 from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -29,6 +30,7 @@ room = Room(
         ],
         full_palette_buffer=False
     ),
+    extra_required_actions=[ExtraSpriteActions.Whirl],
     music=Music._27_DUNGEON_IS_FULL_OF_MONSTERS,
     entrance_event=15,
     event_tiles=[

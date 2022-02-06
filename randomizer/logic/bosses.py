@@ -9,9 +9,10 @@ from . import flags, utils
 from randomizer.data import bosses, enemies, npcs
 from randomizer.data.bosses import is_vanilla, has_vanilla_henchmen, sanitize_animation_script, SpriteSize, HenchmanType, SequenceType, CrownHeight
 from randomizer.data.formations import FormationMember
+from randomizer.data.items import PandoriteFight, HidonFight, BoxBoyFight
 from randomizer.helpers.flag_helpers import WinConditions, BossScaleOptions
 from randomizer.helpers.npcmodeltables import VramStore, SpriteName
-from randomizer.helpers.eventtables import AreaObjects, Sounds
+from randomizer.helpers.eventtables import AreaObjects, Sounds, _0x60Flags, Colours
 from randomizer.helpers.objectsequencetables import SequenceSpeeds, _0x08Flags, _0x10Flags
 from randomizer.helpers.roomobjecttables import RadialDirection, Rooms
 
@@ -107,31 +108,50 @@ def randomize_all(world):
             if world.settings.is_flag_value(flags.BossShuffleScaleStats, BossScaleOptions.random):
                 random.shuffle(stat_inheritance)
 
+            exclude_shelly = False
 
             # Put Shelly in the right battle & give it the right arguments to use for new script
             for location, boss, original in zip(locations, shuffled_bosses, original_bosses):
                 if utils.isclass_or_instance(location, bosses.Birdetta):
+                    pack = world.get_formation_pack_by_index(boss.pack_number)
+                    target_formation = world.get_enemy_formation_by_index(pack.formations[0].index)
                     # Do not allow Shelly to join battles that need their own fixed backgrounds
                     # possibly forbid johnny as well, messes up the vram
-                    if utils.isclass_or_instance(boss, bosses.BirdettaBoss) or utils.isclass_or_instance(boss, bosses.ExorBoss) or utils.isclass_or_instance(boss, bosses.CloakerDominoBoss) or utils.isclass_or_instance(boss, bosses.KingCalamariBoss) or utils.isclass_or_instance(boss, bosses.CountdownBoss) or utils.isclass_or_instance(boss, bosses.SmithyBoss) or utils.isclass_or_instance(boss, bosses.AxemRangersBoss):
+                    if utils.isclass_or_instance(boss, (bosses.BirdettaBoss, bosses.ExorBoss, bosses.CloakerDominoBoss, bosses.KingCalamariBoss, bosses.CountdownBoss, bosses.SmithyBoss, bosses.AxemRangersBoss)):
                         target_formation_birdetta = world.get_enemy_formation_by_index(297)
                         target_formation_birdetta.required_battlefield = bosses.Battlefields.Birdo
+                    elif utils.isclass_or_instance(boss, (bosses.MackBoss, bosses.Belome1Boss, bosses.BowyerBoss, bosses.GrateGuyBoss, bosses.JohnnyBoss, bosses.YaridovichBoss, bosses.Belome2Boss, bosses.CulexBoss, bosses.DodoBoss, bosses.ValentinaBoss, bosses.CzarBoss, bosses.ChesterBoss, bosses.MagikoopaBoss, bosses.BoomerBoss, bosses.ClerkBoss, bosses.ManagerBoss, bosses.DirectorBoss, bosses.GunyolkBoss)):
+                        target_formation_birdetta = world.get_enemy_formation_by_index(297)
+                        target_formation_birdetta.required_battlefield = bosses.Battlefields.Birdo
+                        target_formation.required_battlefield = bosses.Battlefields.NimbusCastle
                     else:
-                        pack = world.get_formation_pack_by_index(boss.pack_number)
-                        target_formation = world.get_enemy_formation_by_index(pack.formations[0].index)
+                        exclude_shelly = True
                         # Only put Shelly in the battle if it won't break the VRAM - 8192 vram size
                         # fix this
                         #if not (utils.isclass_or_instance(boss, bosses.BowyerBoss) or utils.isclass_or_instance(boss, bosses.JohnnyBoss) or utils.isclass_or_instance(boss, bosses.YaridovichBoss) or utils.isclass_or_instance(boss, bosses.ClerkBoss) or utils.isclass_or_instance(boss, bosses.ManagerBoss) or utils.isclass_or_instance(boss, bosses.DirectorBoss)):
                         # get list of enemy ID vals who should be summoned by shelly
                         summons = []
                         for index, member in enumerate(target_formation.members):
+                            if member.enemy.sprite is not None:
+                                # will need to write an animation patch that delays loading larger enemies into vram
+                                # couldn't get this to work :( see EmptyEnemy script for details
+                                world.get_enemy_instance(enemies.EmptyEnemy).sprite_sub = True
+                                world.get_enemy_instance(enemies.EmptyEnemy).formation_id = pack.formations[0].index
                             if not member.hidden_at_start:
                                 summons.append(0x28 + member.index)
                                 target_formation.members[index].hidden_at_start = True
+                        world.get_enemy_instance(enemies.Shelly).position = len(target_formation.members)
+                        world.get_enemy_instance(enemies.Shelly).vanilla = utils.isclass_or_instance(boss, bosses.BirdettaBoss)
                         target_formation.members.append(FormationMember(len(target_formation.members), False, world.get_enemy_instance(enemies.Shelly), 171, 103))
+                        # add an invisible enemy to keep the battle alive while we despawn shelly
+                        #target_formation.members.append(FormationMember(len(target_formation.members), True, world.get_enemy_instance(enemies.EmptyEnemy), 255, 255))
+                        
+                        
                         # shelly will modify its summon script at the time of patch build
+                        #world.get_enemy_instance(enemies.EmptyEnemy).summons = summons
                         world.get_enemy_instance(enemies.Shelly).summons = summons
                         # if target formation has a loder event, move it into shelly's script instead
+                        #world.get_enemy_instance(enemies.EmptyEnemy).summon_event = target_formation.event_at_start
                         world.get_enemy_instance(enemies.Shelly).summon_event = target_formation.event_at_start
                         target_formation.event_at_start = None
                         # force nimbus battle to have egg background
@@ -150,7 +170,7 @@ def randomize_all(world):
                 for location in locations:
                     pack = world.get_formation_pack_by_index(location.boss.pack_number)
                     formation = world.get_enemy_formation_by_index(pack.formations[0].index)
-                    elist = formation.stat_total_enemies
+                    elist = [e for e in formation.stat_total_enemies if not (utils.isclass_or_instance(e, enemies.Shelly) and exclude_shelly)]
                     # HP
                     # For Exor fight, only count Exor and average of Left + Right Eye mandatory HP.
                     if any(e for e in elist if utils.isclass_or_instance(e, enemies.Exor)):
@@ -291,6 +311,11 @@ def randomize_all(world):
                         continue
                     pack = world.get_formation_pack_by_index(boss.pack_number)
                     formation = world.get_enemy_formation_by_index(pack.formations[0].index)
+                    original_xp_sum = 0
+                    original_coin_sum = 0
+                    for member in formation.members:
+                        original_xp_sum += member.enemy.xp
+                        original_coin_sum += member.enemy.coins
                     #print(location)
                     #print(location.boss)
                     #print(location.boss.pack_number)
@@ -302,6 +327,8 @@ def randomize_all(world):
                     ctr += 1
 
                     for i, enemy in enumerate(formation.stat_scaling_enemies):
+                        if utils.isclass_or_instance(e, enemies.Shelly) and exclude_shelly:
+                            continue
                         # Do not raise King Bomb's stats more than normal.
                         no_raise = utils.isclass_or_instance(enemy, enemies.KingBomb)
                         # dont raise def on jinx clone or bahamutt, gets ridiculous and or boring. attack tho, learn 2 block
@@ -345,8 +372,18 @@ def randomize_all(world):
                                 enemy.xp = min(stats['xp'], 0xffff)
                                 enemy.coins = min(stats['coins'], 255)
                         else:
-                            enemy.xp = 0
-                            enemy.coins = 0
+                            if utils.isclass_or_instance(enemy, enemies.Henchman) and original_xp_sum > 0:
+                                enemy.xp = max(1, round(enemy.xp / original_xp_sum * stats['xp']))
+                                enemy.xp = min(enemy.xp, 0xffff)
+                            else:
+                                # I dont remember why we set these to 0 - maybe will need to reverse this c hange
+                                enemy.xp = 0
+                            if utils.isclass_or_instance(enemy, enemies.Henchman) and original_coin_sum > 0:
+                                enemy.coins = max(1, round(enemy.xp / original_coin_sum * stats['coins']))
+                                enemy.coins = min(enemy.coins, 255)
+                            else:
+                                enemy.coins = 0
+
 
             # What to do about EXP?
 
@@ -480,8 +517,19 @@ def randomize_all(world):
                         cmds = [new_command(353, 'set_short', [0x700E, boss.pack_number]), new_command(353, 'start_battle_700E')]
                     else:
                         fields = bosses.battlefield_room_table
+                        if utils.isclass_or_instance(boss_location, bosses.Pandorite):
+                            where_is_pandorite = [c for c in world.chest_locations if utils.isclass_or_instance(c.item, PandoriteFight)]
+                            bl_identifier = where_is_pandorite[0].rooms[0]
+                        elif utils.isclass_or_instance(boss_location, bosses.Hidon):
+                            where_is_hidon = [c for c in world.chest_locations if utils.isclass_or_instance(c.item, HidonFight)]
+                            bl_identifier = where_is_hidon[0].rooms[0]
+                        elif utils.isclass_or_instance(boss_location, bosses.BoxBoy):
+                            where_is_boxboy = [c for c in world.chest_locations if utils.isclass_or_instance(c.item, BoxBoyFight)]
+                            bl_identifier = where_is_boxboy[0].rooms[0]
+                        else:
+                            bl_identifier = boss_location.identifier
                         for t, t_r in fields:
-                            if boss_location.identifier in t_r:
+                            if bl_identifier in t_r:
                                 boss_location.battlefield = t
                                 break
                         if boss_location.battlefield is None: # default to BV underground if still empty
@@ -490,10 +538,9 @@ def randomize_all(world):
                 else:
                     cmds = [new_command(353, 'start_battle', [boss.pack_number, formation.required_battlefield])]
                 if utils.isclass_or_instance(boss, bosses.SmithyBoss):
-                    cmds.insert(0, new_command(353, 'set_bit', [0x704a, 2]))
-                    cmds.append(new_command(353, 'clear_bit', [0x704a, 2]))
-                    cmds.append(new_command(353, 'fade_out_to_black_async'))
                     cmds.append(new_command(353, 'set_bit_7_offset', [0x0158, [7]]))
+                    cmds.append(new_command(353, 'fade_in_from_colour_duration', [90, Colours.WHITE]))
+                    cmds.append(new_command(353, 'pause_script_until_effect_done'))
                     # end the game when Smithy defeated
                     if world.settings.is_flag_value(flags.WinCondition, WinConditions.smithy):
                         actual_ret = new_command(353, 'ret')
@@ -506,44 +553,72 @@ def randomize_all(world):
                 fight_builders[353]["jumps"].append(jmp)
 
                 # boss hunting logic bits
-                map_bits = None
+                map_bits = []
+                dialog = []
+                extra_script = []
                 map_clear_bits = None
                 if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.hammerbro) and utils.isclass_or_instance(boss, bosses.HammerBroBoss):
                     map_bits = [[0x7065, 4], [0x706D, 4]]
-                elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowyer) and utils.isclass_or_instance(boss, bosses.BowyerBoss):
-                    map_bits = [[0x7055, 7]]
+                    dialog = [2256]
+                elif utils.isclass_or_instance(boss, bosses.BowyerBoss):
+                    if world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowyer):
+                        map_bits.append([0x7055, 7])
+                        dialog = [2258]
+                    if world.settings.is_flag_value(flags.Moleville1Gate, PipeVaultGating.bowyer):
+                        map_bits.append([0x707B, 3])
+                        dialog = [2269]
                 elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.punchinello) and utils.isclass_or_instance(boss, bosses.PunchinelloBoss):
                     map_bits = [[0x7053, 6]]
+                    dialog = [2259]
                 elif world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.kggg) and utils.isclass_or_instance(boss, bosses.GrateGuyBoss):
                     map_bits = [[0x704C, 7]]
+                    dialog = [2260]
                 elif world.settings.is_flag_value(flags.SeaGate, SeaGating.bundt) and utils.isclass_or_instance(boss, bosses.BundtBoss):
                     map_bits = [[0x7067, 4], [0x706F, 3]]
+                    dialog = [2261]
                 elif world.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.yarid) and utils.isclass_or_instance(boss, bosses.YaridovichBoss):
                     map_bits = [[0x7052, 2]]
+                    dialog = [2263]
                 elif world.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.belome2) and utils.isclass_or_instance(boss, bosses.Belome2Boss):
                     map_bits = [[0x7067, 7], [0x706F, 6]]
+                    dialog = [2267]
                 elif world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.valentina) and utils.isclass_or_instance(boss, bosses.ValentinaBoss):
                     map_bits = [[0x7090, 5], [0x7070, 1], [0x7068, 2]]
+                    dialog = [2268]
                 elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.axem) and utils.isclass_or_instance(boss, bosses.AxemRangersBoss):
                     map_bits = [[0x7068, 3]]
+                    dialog = [2264]
                     map_clear_bits = [[0x707A, 3]]
                     world.search_replace_dialog(
                         "`BOWSERS_KEEP_CONDITION`", """with the\n help of the Axem Rangers."""
                     )
                 elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.exor) and utils.isclass_or_instance(boss, bosses.ExorBoss):
                     map_bits = [[0x7070, 5], [0x7068, 5]]
+                    extra_dialog_cmd = utils.new_command(355, "run_dialog", [2265, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]])
+                    dummy_cmd = utils.new_command(355, "add_coins", [0])
+                    extra_script = [
+                        utils.new_command(355, "jmp_if_bit_clear", [0x7068, 3, dummy_cmd["identifier"]]),
+                        extra_dialog_cmd,
+                        dummy_cmd
+                    ]
                 elif world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.johnny) and utils.isclass_or_instance(boss, bosses.JohnnyBoss):
                     map_bits = [[0x7057, 1]]
-                if map_bits is not None:
+                    dialog = [2262]
+
+                if len(map_bits) > 0:
                     cmds = []
                     for b in map_bits:
                         cmds.append(new_command(355, 'set_bit', b))
                     if map_clear_bits is not None:
-                        for b in map_bits:
+                        for b in map_clear_bits:
                             cmds.append(new_command(355, 'clear_bit', b))
+                    if len(dialog) > 0:
+                        for d in dialog:
+                            cmds.append(new_command(355, 'run_dialog', [d, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]))
+                    cmds.extend(extra_script)
                     cmds.append(new_command(355, 'ret'))
                     fight_builders[355]["executions"].extend(cmds)
-                    jmp = new_command(355, 'jmp_if_7000_equals_short', [boss_location.identifier, cmds[0]["identifier"]])
+                    jmp = new_command(355, 'jmp_if_7000_equals_short', [boss_location.grant_identifier, cmds[0]["identifier"]])
                     fight_builders[355]["jumps"].append(jmp)
 
                 # the rest of these operations only matter if the boss is not vanilla
@@ -557,7 +632,7 @@ def randomize_all(world):
                         #print(boss)
                         statue = boss.statue
 
-                        print(boss)
+                        #print(boss)
 
                         for statue_location in boss_location.statue_locations:
                             room_id = statue_location.room_id
@@ -584,22 +659,30 @@ def randomize_all(world):
                             horizontal_shift = 0
                             vertical_shift = 0
                             reverse_horizontal_shift = 0
+                            reverse_horizontal_shift_b = 0
                             if statue.details.horizontal_pixel_shift > 0:
                                 horizontal_shift = 0xFF & (statue.details.horizontal_pixel_shift)
-                                reverse_horizontal_shift = 0xFF & (0xFF - statue.details.horizontal_pixel_shift + 1)
                             elif statue.details.horizontal_pixel_shift < 0:
                                 horizontal_shift = 0xFF & (0xFF + statue.details.horizontal_pixel_shift + 1)
-                                reverse_horizontal_shift = 0xFF & (statue.details.horizontal_pixel_shift * -1)
+                            if statue.details.north_facing_horizontal_pixel_shift > 0:
+                                reverse_horizontal_shift = 0xFF & (statue.details.north_facing_horizontal_pixel_shift)
+                                reverse_horizontal_shift_b = 0xFF & (0xFF + statue.details.north_facing_horizontal_pixel_shift + 1)
+                            elif statue.details.north_facing_horizontal_pixel_shift < 0:
+                                reverse_horizontal_shift = 0xFF & (0xFF + statue.details.north_facing_horizontal_pixel_shift + 1)
+                                reverse_horizontal_shift_b = 0xFF & (statue.details.north_facing_horizontal_pixel_shift)
                             if statue.details.vertical_pixel_shift > 0:
                                 vertical_shift = 0xFF & (statue.details.vertical_pixel_shift)
                             elif statue.details.vertical_pixel_shift < 0:
                                 vertical_shift = 0xFF & (0xFF + statue.details.vertical_pixel_shift + 1)
-                            if (horizontal_shift != 0 or vertical_shift != 0) and (new_direction == RadialDirection.SOUTHWEST or new_direction == RadialDirection.NORTHWEST):
+                            if (horizontal_shift != 0 or vertical_shift != 0) and (new_direction == RadialDirection.SOUTHWEST or new_direction == RadialDirection.SOUTHEAST):
                                 cmd = new_animation(statue_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
                                 #print(statue_location.sequence_setter, cmd)
                                 sequence_setters[statue_location.sequence_setter].append(cmd)
-                            elif (reverse_horizontal_shift != 0 or vertical_shift != 0) and (new_direction == RadialDirection.NORTHEAST or new_direction == RadialDirection.SOUTHEAST):
+                            elif (reverse_horizontal_shift != 0 or vertical_shift != 0) and new_direction == RadialDirection.NORTHWEST:
                                 cmd = new_animation(statue_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [reverse_horizontal_shift, vertical_shift]}])
+                                sequence_setters[statue_location.sequence_setter].append(cmd)
+                            elif (reverse_horizontal_shift_b != 0 or vertical_shift != 0) and new_direction == RadialDirection.NORTHEAST:
+                                cmd = new_animation(statue_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [reverse_horizontal_shift_b, vertical_shift]}])
                                 sequence_setters[statue_location.sequence_setter].append(cmd)
 
                     for boss_sprite_location in boss_location.boss_locations:
@@ -1165,6 +1248,7 @@ def randomize_all(world):
                                 for script_id in henchman_location.target_scripts:
                                     min_vram = max(min_vram, utils.get_min_vram_size_for_eventscript(world, npc_id, model.sprite_id, world.eventscripts[script_id]))
                                 for script_id in henchman_location.target_action_scripts:
+                                    #print (occupant)
                                     min_vram = max(min_vram, utils.get_min_vram_size_for_actionscript(world, model.sprite_id, world.actionscripts[script_id]))
                                 world.rooms[room_id].objects[npc_id].vram_size = min_vram 
 

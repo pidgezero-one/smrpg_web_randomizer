@@ -99,7 +99,7 @@ script = [
     {
         "identifier": 'EVENT_1649_jmp_if_bit_clear_7',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7087, 0, 'EVENT_1649_ret_26']
+        "args": [0x7087, 0,  "EVENT_1649_star_grant"]
     },
     {
         "identifier": 'EVENT_1649_run_event_as_subroutine_25_',
@@ -109,7 +109,7 @@ script = [
     {
         "identifier": 'EVENT_1649_jmp_if_bit_clear_7_',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_1649_ret_26']
+        "args": [0x7099, 7,  "EVENT_1649_star_grant"]
     },
     {
         "identifier": 'EVENT_1649_run_event_as_subroutine_25__',
@@ -121,10 +121,11 @@ script = [
         "command": "jmp_if_bit_clear",
         "args": [0x7077, 5, 'EVENT_1649_ret_26'],
     },
+    {"identifier": 'EVENT_1649_set_factory_', "command": 'set', "args": [0x7000, 523]},
     {
         "identifier": "EVENT_1649_star_grant",
         "command": "jmp_to_event",
-        "args": [168],
+        "args": [167],
     },
     {
         "identifier": 'EVENT_1649_ret_26',

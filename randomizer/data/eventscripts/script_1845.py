@@ -94,9 +94,9 @@ script = [
     {
         "identifier": "EVENT_1845_jmp_if_already_got_star_piece",
         "command": "jmp_if_bit_set",
-        "args": [0x7081, 7, "EVENT_1845_ret"],
+        "args": [0x7081, 4, "EVENT_1845_ret"],
     },
-    {"identifier": "EVENT_1845_set", "command": "set_bit", "args": [0x7081, 7]},
+    {"identifier": "EVENT_1845_set", "command": "set_bit", "args": [0x7081, 4]},
     {"identifier": "EVENT_1845_set_", "command": "set", "args": [0x7000, 519]},
     {
         "identifier": "EVENT_1845_grant_star",

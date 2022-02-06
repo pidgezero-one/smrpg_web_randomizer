@@ -1,296 +1,1249 @@
-{% extends 'randomizer/layouts/default.html' %}
+{% extends 'randomizer/layouts/default.html' %} {% block content %}
+<h1>Version History</h1>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">9.0 Updates</h2>
+  </div>
+  <div class="card-body">
+    <h4>Version 9.0.0</h4>
+    <h5>General Changes</h5>
+    <ul>
+      <li>
+        Assembly of world areas, character models, event scripts, and sprite
+        assets has been completely refactored. As such, minor bug fixes
+        pertaining to those things in 8.2.x will not be enumerated here.
+      </li>
+    </ul>
+    <h5>Changes related to characters, equipment, and party spells</h5>
+    <ul>
+      <li>Starting party size can be any number from 1 to 5.</li>
+      <li>
+        A cap on the total number of recruitable characters has been added,
+        which does not necessarily need to be determined by excluding specific
+        characters.
 
-{% block content %}
-    <h1>Version History</h1>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">8.2 Updates</h2>
-        </div>
-        <div class="card-body">
-            <h4>Version 8.2.8</h4>
+        <ul>
+          <li>This is separate from character-specific exclusions.</li>
+          <li>
+            i.e. If you want only 2 characters to be available in the seed, but
+            also deliberately exclude Bowser and Mallow, your 2 available
+            characters would therefore be any two of: Mario, Toadstool, Geno.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Equipment assignment to characters has been expanded to allow several
+        new options (i.e. "random, except anyone can wear any accessory").
+      </li>
+      <li>
+        "Some buffs added" is now an option for equipment stats, which adds some
+        extra non-random properties to vanilla equipment and converts some
+        weapons to increase your magic attack instead of physical attack.
+      </li>
+      <li>
+        Added option to make the Signal Ring alert you of unclaimed star pieces
+        when entering a world area.
+      </li>
+      <li>All stat randomization algorithms have been rebalanced.</li>
+      <li>
+        Added option to randomize party spell elements.
+        <ul>
+          <li>
+            When enabled, spell names are changed to reflect their elements.
+          </li>
+          <li>
+            At the moment, only spells which were originally infused with an
+            element (Jump, Snowy, etc) can have a randomized element.
+          </li>
+        </ul>
+      </li>
+      <li>Added option to uncap Super Jumps.</li>
+      <li>The shortened frame window on Group Hug is (tentatively) fixed.</li>
+      <li>
+        Added option to pick and choose which party spells can and cannot be
+        learnable in the seed.
+        <ul>
+          <li>
+            Excluding Super Jump will make some checks inaccessible, but this
+            will never make a seed incompletable.
+          </li>
+        </ul>
+      </li>
+      <li>
+        If EXP from regular encounters is turned off, the player is guaranteed
+        to start off with at least one damage-inducing non-elemental spell to
+        ensure that transforming Mokura does not softlock your progress.
+      </li>
+    </ul>
+    <h5>Changes related to check locations and item placement</h5>
+    <ul>
+      <li>
+        Added option to cap the number of Star Pieces available in the world.
+      </li>
+      <li>
+        Mokura's cloud, Chester's battle door, Dojo 2, Dojo 3, and all Factory
+        bosses (including Smithy's lair) are eligible to grant Star Pieces.
+        <ul>
+          <li>
+            See the Progression Logic updates section for clarification on
+            Smithy's lair.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Any boss location, not just Culex's door, can be excluded from
+        eligibility to hold a Star Piece.
+      </li>
+      <li>
+        Added option to ensure that only up to 1 Star Piece will be available
+        per each of the seven World Map mega-sections (depending on other
+        settings).
+      </li>
+      <li>
+        The option to shuffle original item pools by world area has been changed
+        to shuffle the entire game's item pool within itself.
+      </li>
+      <li>
+        The pool of eligible chests to contain EXP stars has been expanded.
+      </li>
+      <li>
+        Added option for mimic chests to appear anywhere.
+        <ul>
+          <li>
+            If you scale bosses by world area, this setting respects that choice
+            and will not put a lategame-strength mimic in an earlygame area.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Added option for slot roulette chests to appear (almost) anywhere.
+      </li>
+      <li>
+        Added option for Beetlemania to be shuffled into the item pool as a key
+        item. With this setting, the Game Boy Kid sells you a Key Item check.
+      </li>
+      <li>
+        Toad is always available in the Rose Town Inn to give you an item on
+        your first stay regardless of the town's liberation status.
+      </li>
+      <li>
+        Added option for the infinite coin chest (normally in Magikoopa's room)
+        to be shuffled into one random chest.
+      </li>
+      <li>
+        Added option to shuffle the four Marrymore wedding gear pieces randomly
+        throughout the world.
+        <ul>
+          <li>All four must be found to fight the Marrymore boss.</li>
+          <li>
+            They are NOT considered Key Items as far as shuffle logic is
+            concerned, but they appear in your inventory as Special Items and
+            cannot be sold.
+          </li>
+          <li>
+            The snifits, plus the item on the tower boss' head near the altar,
+            become item pool checks.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Added choice to have empty chests perform "You Missed!", or simply be
+        disabled from the outset.
+      </li>
+      <li>
+        Added option to move the three invisible items (normally in Mario's Pad,
+        Rose Town, and Yo'ster Isle). The Three Musty Fears will give clues as
+        to their new locations. The items you find will not necessarily be
+        flags.
+        <ul>
+          <li>
+            These cannot be excluded from eligibility to hold a progress item.
+          </li>
+        </ul>
+      </li>
+      <li>
+        The original behaviour of the Gardener has been restored, and players
+        must complete both Forest Maze and Marrymore to access him.
+      </li>
+      <li>
+        Both items in the first Nimbus Castle cellar are always available
+        regardless of the town's liberation status.
+      </li>
+      <li>
+        Added option to expand eligible Star Piece locations to include boss
+        fights as well as general item pool checks.
+      </li>
+      <li>
+        Any item check, not just 3D maze/Culex's lair/30 SJs/100 SJs, can be
+        excluded from eligibility to contain a progression item.
+        <ul>
+          <li>
+            If "Special Items can appear in the general item pool" is turned
+            off, any choices to exclude Key Item locations will be ignored.
+          </li>
+          <li>
+            The item check pool has been vastly expanded.
             <ul>
-                <li>Added no XP flags for boss fights and invincibility stars.</li>
-                <li>Minecart music added to boss music shuffle.</li>
-                <li>New wishes added.</li>
+              <li>
+                Every treasure chest (except the Grate Guy's Casino slot machine
+                chest) is included.
+              </li>
+              <li>
+                Every sidequest reward which can originally only be obtained
+                once is included. (i.e. Marrymore Suite gifts are included, but
+                bellhop tips are not)
+              </li>
+              <li>
+                Every freestanding item (except for gold coins and Midas
+                waterfall climb tiny frog coins) is included.
+              </li>
+              <li>
+                Freestanding items which are excluded from eligibility will
+                always be defaulted to their original vanilla item. Chests and
+                sidequests rewards that are excluded will still be randomized,
+                but will not contain progression items (key item, progressive
+                fireworks, star pieces, or Marrymore gear).
+              </li>
             </ul>
-            <h4>Version 8.2.7</h4>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Checks which require a lot of repetition (Knife Guy's juggling game,
+        Look The Other Way, Marrymore suite gifts) can have their thresholds
+        adjusted as the player sees fit.
+        <ul>
+          <li>
+            Super Jump checks are usually biased to hold better equipment, but
+            this does not apply if the thresholds are lowered.
+          </li>
+        </ul>
+      </li>
+      <li>
+        To prevent players from believing they are softlocked when they have
+        missed checks, Frogfucius will hint you toward one check you have not
+        done yet. Be warned that this hint system does not account for checks
+        that the player has excluded.
+      </li>
+    </ul>
+    <h5>Changes to item behaviour and availability</h5>
+    <ul>
+      <li>
+        "Proxy items" (superfluous single items that are simply exchanged for
+        one other item with no co-requirements) have been changed such that they
+        require at least one other condition in order to be exchanged.
+        <ul>
+          <li>
+            The Wallet can only be exchanged after completing Bandit's Way.
+          </li>
+          <li>
+            The RareFrogCoin can only be exchanged after liberating the Mushroom
+            Kingdom.
+          </li>
+          <li>The Cricket Jam can only be exchanged after the Cricket Pie.</li>
+        </ul>
+      </li>
+      <li>
+        Added new options for Fireworks.
+        <ul>
+          <li>
+            Vanilla: Like in the original game, Players can purchase up to one
+            Fireworks at a time from the Moleville house, exchange it outside
+            for a Shiny Stone, and exchange it in the shop for a Carbo Cookie.
+          </li>
+          <li>
+            Shuffle Fireworks:
             <ul>
-                <li>Fixed certain enemies break(er)ing the game with Breaker Beam.</li>
+              <li>
+                One Fireworks is shuffled somewhere in the game (treated as a
+                Key Item).
+              </li>
+              <li>
+                The Fireworks house sells you a random item check (this is a Key
+                Item check).
+              </li>
+              <li>
+                The Fireworks can be traded for a Shiny Stone outdoors as
+                normal, and the Shiny Stone can be traded for the Carbo Cookie
+                in the shop as normal.
+              </li>
+              <li>
+                You may ask the shop girl for your Shiny Stone back if you need
+                it for Culex's door, after you have traded away the Carbo
+                Cookie.
+              </li>
             </ul>
-            <h4>Version 8.2.6</h4>
+          </li>
+          <li>
+            Progressive Fireworks:
             <ul>
-                <li>Fixed Johnny dying when he still has HP left.</li>
+              <li>
+                Fireworks, Shiny Stone, and Carbo Cookie are each shuffled
+                somewhere in the world. These are NOT treated as Key Items as
+                far as the shuffler is concerned, but they will appear in your
+                Special Items inventory. The three items will always be found in
+                that order.
+              </li>
+              <li>
+                The Fireworks house sells you a random item pool check (this is
+                NOT a Key Item check).
+              </li>
+              <li>
+                The Pur-Tend Store and item shop girls will not trade with you.
+              </li>
+              <li>
+                Culex's door will automatically open as soon as you find the
+                Shiny Stone.
+              </li>
             </ul>
-            <h4>Version 8.2.5</h4>
-            <ul>
-                <li>Dream Cushion can only reward consumables since it grants the item twice currently.</li>
-                <li>Bugged repleneshing chest in Box Boy room converted back to frog coin as in vanilla.</li>
-            </ul>
-            <h4>Version 8.2.4</h4>
-            <ul>
-                <li>Fixed shuffling Goomba Thumping first reward.</li>
-                <li>Certain non-depletable chests can now only contain coins or a recovery mushroom.</li>
-            </ul>
-            <h4>Version 8.2.3</h4>
-            <ul>
-                <li>Fixed issue with item prices going negative if stat shuffle is bad enough in rare cases.</li>
-            </ul>
-            <h4>Version 8.2.2</h4>
-            <ul>
-                <li>Stop trying to make Bowser's Keep wrong warp a thing, it's not going to be a thing.</li>
-            </ul>
-            <h4>Version 8.2.1</h4>
-            <ul>
-                <li>Fixed "You Missed!" item appearing at key item spots when mixing key items with chests.</li>
-            </ul>
-            <h4>Version 8.2.0</h4>
-            <ul>
-                <li>Added "No Free Characters" option to start with a single character in open mode.  You have to find
-                    all the others.</li>
-                <li>Added Choose Starting Character and Exclude Character options.</li>
-                <li>Added enemy spell shuffle flag.</li>
-                <li>Equipment shuffle rebalancing from AmazingAmpharos.</li>
-                <li>Palette shuffle flag is now available for Linear mode as well.</li>
-                <li>When shuffling bosses, overworld sprites for those bosses will now change as a preview/hint to show
-                    which boss is at that spot.</li>
-                <li>Fixed softlock issue with Machine Made Drill Bit enemies during formation shuffle.</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">8.1 Updates</h2>
-        </div>
-        <div class="card-body">
-            <h4>Version 8.1.2</h4>
-            <ul>
-                <li>Added some more wishes and quiz questions from community submissions.</li>
-                <li>Fixed wrong character starting levels in linear mode.</li>
-            </ul>
-            <h4>Version 8.1.1</h4>
-            <ul>
-                <li>Fixed some typos and added more wishes and quiz questions.</li>
-                <li>Bundt has a 50% chance to be a chocolate cake with palette shuffle instead of 100%.</li>
-            </ul>
-            <h4>Version 8.1.0</h4>
-            <ul>
-                <li>Added warp to Smithy in Grate Guy's Casino available once the Bright Card is obtained.</li>
-                <li>Added community messages for Star Hill wish dialogs (more to be added in the future).</li>
-                <li>Added Dr. Topper quiz shuffle flag with community questions (more to be added in the future).
-                    Thanks to patcdr for help with these!</li>
-                <li>Fixed crash with some flag combinations.</li>
-                <li>Fixed dummy items appearing in NPC reward spots with some flag combinations.</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">8.0 Updates</h2>
-        </div>
-        <div class="card-body">
-            <h4>Version 8.0.0</h4>
-            <ul>
-                <li>Revamped front end UI and flag selection, and include flag hash in the filename.</li>
-                <li>Added API for generating seeds with permalinks for race bots (ask for details in the Discord if
-                    you're a bot developer!)</li>
-                <li>Replaced seed number with version on name entry screen.  Hash values on file select should be used
-                    for verification instead.
-                </li>
-                <li>Added a brand new non-linear mode: <b>Open</b>.  Previous mode is now called <b>Linear</b>.  Changes
-                    for this are too numerous to list here, but some open-mode specific changes are as follows:
-                    <ul>
-                        <li>Key item shuffle available along with chest/reward shuffling.  There are a LOT of options
-                            available for chest/reward shuffling logic including mixing key items with them!
-                        </li>
-                        <li>Boss shuffle with stat scaling similar to Free Enterprise, plus music shuffle option.</li>
-                        <li>Star piece shuffle that randomizes where star pieces are located to access the endgame.</li>
-                        <li>Bowser's Keep minigame randomization, ex. Ball Solitaire and Magic Buttons.</li>
-                        <li>Geno can now use other's weapons, and they can use his.</li>
-                        <li>Fixed Hurly Gloves softlock issue in some situations, and also allow Mario to use them.</li>
-                        <li>Group Hug can now be learned by anyone.</li>
-                    </ul>
-                </li>
-                <li>The Seed, Fertilizer, and Bright Card items are now Special Items and no longer appear in shops.</li>
-                <li>Reworked character stat shuffle so stats should increase more evently as characters level up, and
-                    will always increase by at least 1 for each level.
-                </li>
-                <li>Complete revamp of shop shuffle logic and item pricing.</li>
-                <li>Fixed a data corruption bug that resulted in wrong Psychopath text for weaknesses.</li>
-                <li>Fixed issue with Smithy 2 having different HP for each head.</li>
-                <li>Added sanity check option for enemy shuffle for attack power multiplier and status effects.</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">7.1 Updates</h2>
-        </div>
-        <div class="card-body">
-            <h4>Version 7.1.7</h4>
-            <ul>
-                <li>Healing spells no longer miss due to spell hitrate shuffling.</li>
-            </ul>
-            <h4>Version 7.1.6</h4>
-            <ul>
-                <li>Adjusted boss immunities and weaknesses to allow elemental attacks to be more useful in general.</li>
-            </ul>
-            <h4>Version 7.1.5</h4>
-            <ul>
-                <li>Removed Fireworks item from the shop shuffle because it doesn't do anything in a normal shop.</li>
-            </ul>
-            <h4>Version 7.1.4</h4>
-            <ul>
-                <li>Split equipment shuffle flag into separate flags for stats and which characters can equip them.</li>
-            </ul>
-            <h4>Version 7.1.3</h4>
-            <ul>
-                <li>Adjusted chances of special properties on equipment lower for balance.</li>
-            </ul>
-            <h4>Version 7.1.2</h4>
-            <ul>
-                <li>Fixed issue with custom flags being used in full randomize mode by mistake</li>
-            </ul>
-            <h4>Version 7.1.1</h4>
-            <ul>
-                <li>Fixed special property item descriptions still showing vanilla text</li>
-            </ul>
-            <h4>Version 7.1.0</h4>
-            <ul>
-                <li>Added option to shuffle elemental protections and status immunities of equipment</li>
-                <li>Updated descriptions of equipment to show special propery and stats info with custom icons</li>
-                <li>Enemy shuffle now allows a tiny (1/255) chance for bosses to be vulnerable to instant KO</li>
-                <li>Psychopath now reveals shuffled enemy immunities and weaknesses when perfectly timed</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">7.0 Updates</h2>
-        </div>
-        <div class="card-body">
-            <h4>Version 7.0.2</h4>
-            <ul>
-                <li>Fixed issue with coins still being capped at 999 when getting coins from a chest outside of battle</li>
-            </ul>
-            <h4>Version 7.0.1</h4>
-            <ul>
-                <li>Fixed a bug where instant KO attacks could bypass instant KO protection from equipment</li>
-                <li>Fixed softlock with some flying enemies on certain screen coordinates in battle</li>
-            </ul>
-            <h4>Version 7.0.0</h4>
-            <ul>
-                <li>Full rewrite of backend logic for future feature support, faster patch generation, and smaller patch
-                    size
-                </li>
-                <li>Switched to new version numbering with major/minor version</li>
-                <li>Added hash values for names on file select screen to verify seed</li>
-                <li>Updated cutscene skip patch for a few remaining cutscenes and bug fixes</li>
-                <li>Mario can now be swapped out of the active party members</li>
-                <li>Max coin amount has been increased to 9999</li>
-                <li>Because of max coin change, shop prices for items are now allowed to go beyond 999 when shuffled</li>
-                <li>Fixed issue where levels could progress beyond 30 leading to bad things happening</li>
-                <li>Fixed bad enemy battle screen coordinates that could cause softlocks in certain cases</li>
-                <li>Dodo solo fight now ends when Dodo is at 60% of his shuffled HP, not always 600 HP</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">V6 Updates</h2>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li>Channel Title and Title ID are now changed for Wii Virtual Console WAD files when packing so the title
-                    includes the seed number to tell them apart, and the channel and save data will not conflict with other
-                    seeds or commercial VC games
-                </li>
-                <li>Added new option to randomize the order characters join the party (points at which they join are still
-                    the same)
-                </li>
-                <li>Cutscene skip patch is now mandatory due to party join shuffle (and other future features)</li>
-                <li>Dropped support for JP version due to cutscene skip patch modifications being mandatory</li>
-                <li>Starting FP is now shuffled as well when randomizing spell stats</li>
-                <li>Fixed issue with Bowyer's button lock attack doing damage or applying status effects</li>
-                <li>Removed damage numbers from attacks which have the instant death flag</li>
-                <li>Group Hug now guaranteed not to be the final spell learned by Peach</li>
-                <li>New algorithm for exp required to level up to smooth out progression curve</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">V5 Updates</h2>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li>Move to new web-based front end</li>
-                <li>Added cutscene skip patch for US/EU ROM (thanks Alanim!)</li>
-                <li>Added ability to pack randomized ROM in corresponding Virtual Console WAD file to play on Wii VC</li>
-                <li>Seed number now appears on name entry screen in JP version as well</li>
-                <li>Debug Bomb no longer appears in shops</li>
-                <li>Excluded Apprentice enemy from formation shuffle to avoid battle event script problems</li>
-                <li>Fixed issue with some boss enemies mistakenly being shuffled with normal enemy groups</li>
-                <li>Exclude certain characters from equipping certain weapons that cause softlocks when used by them</li>
-                <li>Cap exp required for level up at 9999 for max level</li>
-                <li>Other debug status bombs no longer appear in shops</li>
-                <li>Fixed randomization of Geno Boost stats so it doesn't break the spell</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">V4 Updates</h2>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li>Lower rate of high multiplier physical attacks</li>
-                <li>Disciple's shop only has 10 items</li>
-                <li>Change file select on Japanese version</li>
-                <li>Peach always gets Group Hug</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">V3 Updates</h2>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li>Limit number of enemies to 6 (issues with spell animation/targeting)</li>
-                <li>Add Snifit to the list of boss enemies</li>
-                <li>Add Hangin' Shy to boss enemies</li>
-                <li>Yoshi's Cookie items can only be consumables</li>
-                <li>Don't randomize equippability of Geno's weapons (game freezes)</li>
-                <li>Don't randomize enemy attacks for early game mandatory battles</li>
-                <li>Misc tweaks to enemy attack randomization</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">V2 Updates</h2>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li>Remove glitchy enemies from the intro</li>
-                <li>Limit randomization of monster exp</li>
-                <li>Ban a few more enemies from being shuffled</li>
-                <li>Make the experience curve a little more friendly early on</li>
-                <li>Don't randomize equippability of certain buggy weapons</li>
-                <li>Sanity checks for selecting frog coin items</li>
-                <li>More conservative buff randomization</li>
-                <li>Don't intershuffle attack and magic attack</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card border-info my-3">
-        <div class="card-header bg-info text-white">
-            <h2 class="card-title">V1 Updates</h2>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li>Initial version</li>
-            </ul>
-        </div>
-    </div>
+          </li>
+          <li>
+            With the latter two options, you may trade the Carbo Cookie for a
+            general pool item check if the Factory bucket warp is turned off.
+          </li>
+          <li>
+            With the latter two options, your ending credits fireworks will be
+            random.
+          </li>
+          <li>
+            With the latter two options, the Fireworks, Shiny Stone, and Carbo
+            Cookie cannot be sold.
+          </li>
+        </ul>
+      </li>
+      <li>
+        The Seed, Fertilizer, and Bright Card are always key items.
+        <ul>
+          <li>
+            The Bright Card can still be sold and re-bought from the gambler in
+            Marrymore.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Reusable items (Star Egg, See Ya, Sheep Attack, etc) can only be
+        obtained once per seed.
+        <ul>
+          <li>
+            Exception: The Mystery Egg, Lamb's Lure, and Sheep Attack each will
+            progressively upgrade whichever version of the item you currently
+            have (exactly 3 instances total are available in the seed). If you
+            upgraded any of these manually, and you already have the Sheep
+            Attack by the time you find the third one, you will instead be given
+            a random top-tier consumable.
+          </li>
+        </ul>
+      </li>
+      <li>Added option to exclude the Star Egg from appearing anywhere.</li>
+      <li>
+        Added option to restore the original game's multi-hit coin chest
+        behaviour. Also applies to chests containing multiple Frog Coins.
+      </li>
+      <li>
+        Added new options for scaling EXP stars that are based on how many boss
+        fights you have completed.
+      </li>
+    </ul>
+    <h5>Changes to progression logic</h5>
+    <ul>
+      <li>
+        To introduce more interesting logic chains, many areas have options to
+        gate them behind completing a certain task (recruit a specific
+        character, defeat a specific boss, clear a specific area, etc...)
+
+        <ul>
+          <li>
+            These are approximately based around events that happened in the
+            original game at the times when these areas became available.
+          </li>
+          <li>
+            The areas that can be gated this way are: Bandit's Way, Forest Maze,
+            Moleville Mines, Pipe Vault, Booster Tower, Marrymore chapel, Sea &
+            Sunken Ship, Belome Temple, Monstro Town, Barrel Volcano, Bowser's
+            Keep, and Factory.
+          </li>
+          <li>
+            The Seaside Town boss fight can also be gated in this manner, which
+            will leave the area boss and their minions in the surrounding houses
+            until the condition is completed.
+          </li>
+          <li>
+            Some of these gates remove areas from the world map, while others
+            prohibit access by means of in-area obstacles.
+          </li>
+          <li>
+            You will always be able to complete a circle around the overworld
+            map. When Bowser's Keep is closed, a path from Vista Hill to Nimbus
+            Land bypasses it until it opens.
+          </li>
+          <li>
+            Depending on how close the task is to the area it unlocks, you may
+            be shown a message confirming that you unlocked an area.
+          </li>
+        </ul>
+      </li>
+      <li>
+        The Factory is no longer necessarily gated behind having found all your
+        Star Pieces.
+        <ul>
+          <li>
+            This means the Factory may have Star Pieces and Key Items depending
+            on your settings.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Added option that despawns the three invisible check items until you
+        have visited the 3 Musty Fears inn.
+      </li>
+      <li>
+        Added option that converts the Midas River warp in the Carbo Cookie
+        girl's bucket to warp you to the final Factory boss if you have enough
+        Star Pieces.
+        <ul>
+          <li>
+            If disabled, the girl gives you a random item check when you trade
+            the Carbo Cookie under settings where the Carbo Cookie is a key
+            item.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Grate Guy's Casino warp has been converted to a trampoline inside of the
+        casino, instead of talking to Grate Guy.
+      </li>
+      <li>
+        Expanded option to adjust how many Star Pieces you need to access the
+        final Factory boss. Instead of 6 or 7, it can now be 0 to 7.
+        <ul>
+          <li>
+            This can be less than the total number of Star Pieces available in
+            the game.
+          </li>
+          <li>
+            The green button to take you to Smithy's lair in the Factory will
+            not be usable until you have this many Star Pieces.
+          </li>
+          <li>
+            If the Factory Warp is enabled, the trampoline will not appear until
+            you have this many Star Pieces.
+          </li>
+          <li>
+            If the Bucket Warp is enabled, the bucket will warp you to Midas
+            River instead until you have this many Star Pieces.
+          </li>
+        </ul>
+      </li>
+      <li>
+        There are now four different options for a condition that terminates the
+        game.
+        <ul>
+          <li>
+            Beat the final Factory Boss: This was the original condition to beat
+            the game. Under this setting, the final Factory Boss cannot be
+            assigned a Star Piece, although the final Star Piece cutscene will
+            play when you win.
+          </li>
+          <li>
+            Beat Smithy: Once you find Smithy anywhere in the world and beat
+            him, the game is over.
+          </li>
+          <li>
+            Collect required Star Pieces: Once you collect the Star Pieces
+            necessary to access the Factory boss, the game is over, without
+            having to do that fight.
+          </li>
+          <li>
+            Beat Monstro Town sealed door: The game is over when you unlock the
+            door to Culex's lair and defeat whoever is behind it. Under this
+            setting, Culex's lair cannot be assigned a Star Piece, although the
+            final Star Piece cutscene will play when you win.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h5>Changes to shops</h5>
+    <ul>
+      <li>
+        The Room Service menu in the Marrymore suite now sells two consumables
+        and is considered part of the shop pool.
+      </li>
+      <li>
+        The Moleville swap shop will sell 3 random non-reusable damage items.
+      </li>
+      <li>
+        The Frog Disciple always sells exactly five items, typically those that
+        are subject to limited quantity, and only items that can be sold back to
+        shops (no key items).
+      </li>
+      <li>
+        The Moleville treasure shop toad may sell key items or Star Pieces (if
+        your settings allow for this), or items that were only available in
+        limited quantities in the original game.
+      </li>
+      <li>
+        Some items can no longer be purchased in regular shops. This includes:
+        <ul>
+          <li>Reusable items (Star Egg, See Ya, Lamb's Lure, etc)</li>
+          <li>Fireworks, Shiny Stone, and Carbo Cookie</li>
+          <li>Mystery Egg, Lamb's Lure, and Sheep Attack</li>
+        </ul>
+      </li>
+      <li>
+        Each item in the game is no longer guaranteed to be in at least one
+        shop.
+      </li>
+      <li>Added an option to exclude Pick-Me-Ups from shops.</li>
+      <li>
+        To prevent rare cases of softlocking in the event of physical attack
+        immunities and spell exclusions, at least one shop available from the
+        beginning of the seed will carry Bad Mushrooms.
+      </li>
+      <li>
+        Item prices are no longer randomized, but equipment prices are still
+        based on their stat distribution.
+      </li>
+      <li>
+        Empty shops will simply display a dialog instead of just containing a
+        Goodie Bag.
+      </li>
+    </ul>
+    <h5>Changes specific to world areas</h5>
+    <ul>
+      <li>
+        Added an option that does the following:
+        <ul>
+          <li>
+            For items that are repeatably grantable (such as Marrymore bellhop
+            tips), the incidence of the prizes is improved and the quality of
+            prizes is expanded.
+          </li>
+          <li>Mushroom Boy's prize grant odds are improved.</li>
+          <li>The Mushroom Derby's odds for Yoshi are improved.</li>
+          <li>Forest Maze mushrooms may be any kind of mushroom.</li>
+          <li>The spawn rate for Mokura's cloud is improved.</li>
+        </ul>
+      </li>
+      <li>
+        The hallway chest in Mushroom Kingdom has been moved back above the
+        door.
+      </li>
+      <li>
+        Added an option to randomize the three Melody Bay songs. Hints are given
+        by Frogfucius' scroll, the mining moles, the Monstro Town starslap, and
+        the protégé tadpole.
+      </li>
+      <li>
+        The second hidden NPC in Rose Town behind the lower house remains
+        available even after defeating Bowyer.
+      </li>
+      <li>
+        If you fail three times in a row to obtain enough points in Goomba
+        Thumpin' for the second prize, the gamekeeper will reward you the prize
+        out of sympathy.
+      </li>
+      <li>
+        Added an option to skip the mandatory Moleville Mountain minigame. It
+        can still be played optionally by returning to Moleville after
+        completing the Mines.
+      </li>
+      <li>
+        The blue toad in Moleville will describe the items he is selling to you.
+        Some items may have the same description. Depending on your settings, he
+        may have Key Items or Star Pieces.
+      </li>
+      <li>
+        You can now save your game while working as a bellhop in Marrymore.
+      </li>
+      <li>
+        Added an option to randomize the Sunken Ship password. At minimum, 6
+        hints are available within the ship. The shop shaman will still tell you
+        how close you are to being correct.
+      </li>
+      <li>
+        Johnny's periscope will show you if the green button in the Factory is
+        ready yet or not, and will tell you how many Star Pieces are needed for
+        it.
+      </li>
+      <li>
+        The Shy Away in the Bean Valley five-pipe always flies in a circle
+        counter-clockwise, starting with the most rightmost pipe.
+      </li>
+      <li>
+        Players can press A, B, X, or Y during Dr. Topper's barrel counting game
+        to abort the timer and go straight to the answer input.
+      </li>
+      <li>
+        Players can forfeit the green button puzzle room in Bowser's Keep by
+        attempting to leave the room via its entrance.
+      </li>
+      <li>
+        There is now a trampoline in the save room before Magikoopa's room that
+        will eject you from Bowser's Keep upon confirmation. This means you will
+        no longer warp out of the castle upon a Game Over.
+      </li>
+      <li>
+        Players can no longer save between the final two bosses of Bowser's
+        Keep. They are back-to-back like in the original game.
+      </li>
+      <li>
+        Added an option that enables both of the following:
+        <ul>
+          <li>
+            Climbing to the top of Booster's Tower, if you have already cleared
+            the balcony fight, will warp you back to the ground.
+          </li>
+          <li>
+            Reaching the Inner Factory will add a dot for it to the overworld
+            map, and will place an exit trampoline in the first room.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h5>Changes to enemies</h5>
+    <ul>
+      <li>
+        Added a third boss scaling option, which performs the area-based scaling
+        and then performs an ADDITIONAL shuffle on the boss placements.
+      </li>
+      <li>
+        Boss substitution has been improved. For example, Dodo's statue minigame
+        will show the actual boss of that location attacking the statues, and
+        will also be seen slowly escaping the final castle hall.
+      </li>
+      <li>
+        More bosses have henchmen that will replace sprites where appropriate
+        (i.e. the Snifits in Booster Tower.)
+      </li>
+      <li>
+        More boss locations have henchmen that can be replaced (i.e. the birds
+        at the end of Nimbus Castle).
+      </li>
+      <li>
+        Some boss and henchmen replacements can be disabled visually to preserve
+        visual cues for minigames or strategy for event battles.
+      </li>
+      <li>
+        Players can choose which bosses they would and would not like to include
+        in the location shuffler (instead of just excluding Culex).
+        <ul>
+          <li>
+            i.e. Smithy can be shuffled into the pool, but will stay in the
+            final Factory position if he is not selected in this setting.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Replaced henchmen that start a battle will now have you actually fight
+        the henchman you see.
+        <ul>
+          <li>
+            i.e. If Culex owns Booster Tower, three of the Crystals replace the
+            Snifits, and you may have to fight a solo Crystal if you talk to
+            one.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Enemy immunity shuffling has been expanded to include weapon damage as
+        an immunity.
+      </li>
+      <li>
+        The following actions can now grant you a Star Piece, if the skipped
+        boss was supposed to grant one:
+        <ul>
+          <li>Completing the Booster Tower curtain minigame</li>
+          <li>Completing the statue polishing minigame</li>
+          <li>
+            Failing a slots roulette chest and defeating the forced mimic fight
+          </li>
+          <li>
+            There is also an option that blocks you from obtaining Star Pieces
+            in these ways (as well as Mack Skip), and forces you to fight the
+            boss regardless of whether you succeeded at these tasks or not.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Enemies which may need to appear in more than one location (i.e.
+        Punchinello's bob-ombs vs. bob-ombs in Moleville Mines) have been
+        separated so that only those related to a shuffled boss will have their
+        stats changed.
+        <ul>
+          <li>
+            When scaled, this also means Bahamutt will have different stats when
+            summoned by Chester and Magikoopa.
+          </li>
+          <li>
+            This also restores the original Mad Mallet fight in the Factory
+            (when not substituted by henchmen).
+          </li>
+        </ul>
+      </li>
+      <li>
+        The unused Aero enemy has been given a single attack animation, a recoil
+        animation, switched upright, and is used as a henchman battle where
+        appropriate for Bowyer.
+      </li>
+      <li>
+        In the Valentina fight, Dodo will 1v1 one of your characters if you have
+        a party size of 2 or more. If you only have one character, Dodo will
+        join Valentina to fight alongside her immediately.
+      </li>
+      <li>
+        Birdetta will no longer hatch out of an eggshell unless she is in her
+        vanilla location. The boss fight at the giant egg location in Nimbus
+        Land will hatch out of the eggshell.
+      </li>
+    </ul>
+    <h5>Cosmetic & Text Changes</h5>
+    <ul>
+      <li>A new title screen has been added.</li>
+      <li>The intro movie has been removed in order to free up assets.</li>
+      <li>
+        Added option to play in the overworld as whichever character is shown on
+        the file select menu.
+      </li>
+      <li>Cosmetic settings are no longer tied to the seed value.</li>
+      <li>
+        Character name changes are now a separate option from palette changes.
+      </li>
+      <li>Some additional character palettes have been added.</li>
+      <li>
+        Changed character names now appear correctly in the level-up menu.
+      </li>
+      <li>
+        Spell names which include a character's name will be changed to use the
+        name of the character who learns it.
+        <ul>
+          <li>This only happens if character names are not changed.</li>
+        </ul>
+      </li>
+      <li>
+        Walking animations have been restored in battles (i.e. Cloaker/Domino,
+        King Calamari).
+      </li>
+      <li>
+        Most abrupt endings/transitions in boss fights have been smoothed out.
+      </li>
+      <li>
+        More detail has been given to make freestanding items and items popping
+        out of treasure chests more closely match their contents in appearance.
+        <ul>
+          <li>
+            Some sprites are used for many items, so players will still have to
+            pick them up to find out what they are.
+          </li>
+        </ul>
+      </li>
+      <li>All boss sprites now resemble the actual boss.</li>
+      <li>
+        All three stages of the second Dojo occupant are now visible. Your
+        opponent will transform to its next form in the dojo after you win each
+        stage.
+      </li>
+      <li>
+        Added option to differentiate shared-sprite bosses (Croco 1&2, Belome
+        1&2, Jinx 1-3, and all 4 mimic enemies) in the overworld.
+      </li>
+      <li>All Nimbus Land statues are gold-coloured.</li>
+      <li>
+        Any overworld locations which CAN have a character, but where you will
+        NOT be recruiting a character, will show Toad.
+      </li>
+      <li>
+        NPC dialog has been vastly expanded, and some of it even depends on
+        which boss is occupying an area. Many NPCs will offer you hints
+        regarding easy-to-miss checks, the locations of bosses, and other
+        settings enabled for your seed.
+      </li>
+      <li>
+        In Rose Town, the boy who was frozen as a statue has been moved safely
+        inside his house, and the dad from the treasure house has been moved
+        indoors with the stairs permanently set.
+      </li>
+      <li>
+        Samus stays in the Mushroom Kingdom permanently after liberating it.
+      </li>
+      <li>Psychopath messages have been slightly reformatted for clarity.</li>
+      <li>The Beetlemania menu tutorial has been removed.</li>
+      <li>
+        Added an option to use ABXY button colours from the Japanese version.
+      </li>
+      <li>
+        Added a DMCA-friendly option to remove specific tracks from the random
+        boss music pool.
+      </li>
+      <li>
+        Added an option to remove some flashing animations from the game.
+        <b
+          >This is not a perfect implementation and we cannot promise that the
+          randomizer is 100% safe for photosensitive players or viewers.</b
+        >.
+      </li>
+      <li>Some palette glitches have been fixed.</li>
+    </ul>
+    <h5>Other Site Updates</h5>
+    <ul>
+      <li>Settings interfaced has been revamped.</li>
+      <li>New presets added.</li>
+      <li>Player's guide revamped for new changes.</li>
+      <li>Fleshed out a credits page.</li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">8.2 Updates</h2>
+  </div>
+  <div class="card-body">
+    <h4>Version 8.2.8</h4>
+    <ul>
+      <li>Added no XP flags for boss fights and invincibility stars.</li>
+      <li>Minecart music added to boss music shuffle.</li>
+      <li>New wishes added.</li>
+    </ul>
+    <h4>Version 8.2.7</h4>
+    <ul>
+      <li>Fixed certain enemies break(er)ing the game with Breaker Beam.</li>
+    </ul>
+    <h4>Version 8.2.6</h4>
+    <ul>
+      <li>Fixed Johnny dying when he still has HP left.</li>
+    </ul>
+    <h4>Version 8.2.5</h4>
+    <ul>
+      <li>
+        Dream Cushion can only reward consumables since it grants the item twice
+        currently.
+      </li>
+      <li>
+        Bugged repleneshing chest in Box Boy room converted back to frog coin as
+        in vanilla.
+      </li>
+    </ul>
+    <h4>Version 8.2.4</h4>
+    <ul>
+      <li>Fixed shuffling Goomba Thumping first reward.</li>
+      <li>
+        Certain non-depletable chests can now only contain coins or a recovery
+        mushroom.
+      </li>
+    </ul>
+    <h4>Version 8.2.3</h4>
+    <ul>
+      <li>
+        Fixed issue with item prices going negative if stat shuffle is bad
+        enough in rare cases.
+      </li>
+    </ul>
+    <h4>Version 8.2.2</h4>
+    <ul>
+      <li>
+        Stop trying to make Bowser's Keep wrong warp a thing, it's not going to
+        be a thing.
+      </li>
+    </ul>
+    <h4>Version 8.2.1</h4>
+    <ul>
+      <li>
+        Fixed "You Missed!" item appearing at key item spots when mixing key
+        items with chests.
+      </li>
+    </ul>
+    <h4>Version 8.2.0</h4>
+    <ul>
+      <li>
+        Added "No Free Characters" option to start with a single character in
+        open mode. You have to find all the others.
+      </li>
+      <li>Added Choose Starting Character and Exclude Character options.</li>
+      <li>Added enemy spell shuffle flag.</li>
+      <li>Equipment shuffle rebalancing from AmazingAmpharos.</li>
+      <li>Palette shuffle flag is now available for Linear mode as well.</li>
+      <li>
+        When shuffling bosses, overworld sprites for those bosses will now
+        change as a preview/hint to show which boss is at that spot.
+      </li>
+      <li>
+        Fixed softlock issue with Machine Made Drill Bit enemies during
+        formation shuffle.
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">8.1 Updates</h2>
+  </div>
+  <div class="card-body">
+    <h4>Version 8.1.2</h4>
+    <ul>
+      <li>
+        Added some more wishes and quiz questions from community submissions.
+      </li>
+      <li>Fixed wrong character starting levels in linear mode.</li>
+    </ul>
+    <h4>Version 8.1.1</h4>
+    <ul>
+      <li>Fixed some typos and added more wishes and quiz questions.</li>
+      <li>
+        Bundt has a 50% chance to be a chocolate cake with palette shuffle
+        instead of 100%.
+      </li>
+    </ul>
+    <h4>Version 8.1.0</h4>
+    <ul>
+      <li>
+        Added warp to Smithy in Grate Guy's Casino available once the Bright
+        Card is obtained.
+      </li>
+      <li>
+        Added community messages for Star Hill wish dialogs (more to be added in
+        the future).
+      </li>
+      <li>
+        Added Dr. Topper quiz shuffle flag with community questions (more to be
+        added in the future). Thanks to patcdr for help with these!
+      </li>
+      <li>Fixed crash with some flag combinations.</li>
+      <li>
+        Fixed dummy items appearing in NPC reward spots with some flag
+        combinations.
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">8.0 Updates</h2>
+  </div>
+  <div class="card-body">
+    <h4>Version 8.0.0</h4>
+    <ul>
+      <li>
+        Revamped front end UI and flag selection, and include flag hash in the
+        filename.
+      </li>
+      <li>
+        Added API for generating seeds with permalinks for race bots (ask for
+        details in the Discord if you're a bot developer!)
+      </li>
+      <li>
+        Replaced seed number with version on name entry screen. Hash values on
+        file select should be used for verification instead.
+      </li>
+      <li>
+        Added a brand new non-linear mode: <b>Open</b>. Previous mode is now
+        called <b>Linear</b>. Changes for this are too numerous to list here,
+        but some open-mode specific changes are as follows:
+        <ul>
+          <li>
+            Key item shuffle available along with chest/reward shuffling. There
+            are a LOT of options available for chest/reward shuffling logic
+            including mixing key items with them!
+          </li>
+          <li>
+            Boss shuffle with stat scaling similar to Free Enterprise, plus
+            music shuffle option.
+          </li>
+          <li>
+            Star piece shuffle that randomizes where star pieces are located to
+            access the endgame.
+          </li>
+          <li>
+            Bowser's Keep minigame randomization, ex. Ball Solitaire and Magic
+            Buttons.
+          </li>
+          <li>Geno can now use other's weapons, and they can use his.</li>
+          <li>
+            Fixed Hurly Gloves softlock issue in some situations, and also allow
+            Mario to use them.
+          </li>
+          <li>Group Hug can now be learned by anyone.</li>
+        </ul>
+      </li>
+      <li>
+        The Seed, Fertilizer, and Bright Card items are now Special Items and no
+        longer appear in shops.
+      </li>
+      <li>
+        Reworked character stat shuffle so stats should increase more evently as
+        characters level up, and will always increase by at least 1 for each
+        level.
+      </li>
+      <li>Complete revamp of shop shuffle logic and item pricing.</li>
+      <li>
+        Fixed a data corruption bug that resulted in wrong Psychopath text for
+        weaknesses.
+      </li>
+      <li>Fixed issue with Smithy 2 having different HP for each head.</li>
+      <li>
+        Added sanity check option for enemy shuffle for attack power multiplier
+        and status effects.
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">7.1 Updates</h2>
+  </div>
+  <div class="card-body">
+    <h4>Version 7.1.7</h4>
+    <ul>
+      <li>Healing spells no longer miss due to spell hitrate shuffling.</li>
+    </ul>
+    <h4>Version 7.1.6</h4>
+    <ul>
+      <li>
+        Adjusted boss immunities and weaknesses to allow elemental attacks to be
+        more useful in general.
+      </li>
+    </ul>
+    <h4>Version 7.1.5</h4>
+    <ul>
+      <li>
+        Removed Fireworks item from the shop shuffle because it doesn't do
+        anything in a normal shop.
+      </li>
+    </ul>
+    <h4>Version 7.1.4</h4>
+    <ul>
+      <li>
+        Split equipment shuffle flag into separate flags for stats and which
+        characters can equip them.
+      </li>
+    </ul>
+    <h4>Version 7.1.3</h4>
+    <ul>
+      <li>
+        Adjusted chances of special properties on equipment lower for balance.
+      </li>
+    </ul>
+    <h4>Version 7.1.2</h4>
+    <ul>
+      <li>
+        Fixed issue with custom flags being used in full randomize mode by
+        mistake
+      </li>
+    </ul>
+    <h4>Version 7.1.1</h4>
+    <ul>
+      <li>
+        Fixed special property item descriptions still showing vanilla text
+      </li>
+    </ul>
+    <h4>Version 7.1.0</h4>
+    <ul>
+      <li>
+        Added option to shuffle elemental protections and status immunities of
+        equipment
+      </li>
+      <li>
+        Updated descriptions of equipment to show special propery and stats info
+        with custom icons
+      </li>
+      <li>
+        Enemy shuffle now allows a tiny (1/255) chance for bosses to be
+        vulnerable to instant KO
+      </li>
+      <li>
+        Psychopath now reveals shuffled enemy immunities and weaknesses when
+        perfectly timed
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">7.0 Updates</h2>
+  </div>
+  <div class="card-body">
+    <h4>Version 7.0.2</h4>
+    <ul>
+      <li>
+        Fixed issue with coins still being capped at 999 when getting coins from
+        a chest outside of battle
+      </li>
+    </ul>
+    <h4>Version 7.0.1</h4>
+    <ul>
+      <li>
+        Fixed a bug where instant KO attacks could bypass instant KO protection
+        from equipment
+      </li>
+      <li>
+        Fixed softlock with some flying enemies on certain screen coordinates in
+        battle
+      </li>
+    </ul>
+    <h4>Version 7.0.0</h4>
+    <ul>
+      <li>
+        Full rewrite of backend logic for future feature support, faster patch
+        generation, and smaller patch size
+      </li>
+      <li>Switched to new version numbering with major/minor version</li>
+      <li>Added hash values for names on file select screen to verify seed</li>
+      <li>
+        Updated cutscene skip patch for a few remaining cutscenes and bug fixes
+      </li>
+      <li>Mario can now be swapped out of the active party members</li>
+      <li>Max coin amount has been increased to 9999</li>
+      <li>
+        Because of max coin change, shop prices for items are now allowed to go
+        beyond 999 when shuffled
+      </li>
+      <li>
+        Fixed issue where levels could progress beyond 30 leading to bad things
+        happening
+      </li>
+      <li>
+        Fixed bad enemy battle screen coordinates that could cause softlocks in
+        certain cases
+      </li>
+      <li>
+        Dodo solo fight now ends when Dodo is at 60% of his shuffled HP, not
+        always 600 HP
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">V6 Updates</h2>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li>
+        Channel Title and Title ID are now changed for Wii Virtual Console WAD
+        files when packing so the title includes the seed number to tell them
+        apart, and the channel and save data will not conflict with other seeds
+        or commercial VC games
+      </li>
+      <li>
+        Added new option to randomize the order characters join the party
+        (points at which they join are still the same)
+      </li>
+      <li>
+        Cutscene skip patch is now mandatory due to party join shuffle (and
+        other future features)
+      </li>
+      <li>
+        Dropped support for JP version due to cutscene skip patch modifications
+        being mandatory
+      </li>
+      <li>Starting FP is now shuffled as well when randomizing spell stats</li>
+      <li>
+        Fixed issue with Bowyer's button lock attack doing damage or applying
+        status effects
+      </li>
+      <li>
+        Removed damage numbers from attacks which have the instant death flag
+      </li>
+      <li>
+        Group Hug now guaranteed not to be the final spell learned by Peach
+      </li>
+      <li>
+        New algorithm for exp required to level up to smooth out progression
+        curve
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">V5 Updates</h2>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li>Move to new web-based front end</li>
+      <li>Added cutscene skip patch for US/EU ROM (thanks Alanim!)</li>
+      <li>
+        Added ability to pack randomized ROM in corresponding Virtual Console
+        WAD file to play on Wii VC
+      </li>
+      <li>
+        Seed number now appears on name entry screen in JP version as well
+      </li>
+      <li>Debug Bomb no longer appears in shops</li>
+      <li>
+        Excluded Apprentice enemy from formation shuffle to avoid battle event
+        script problems
+      </li>
+      <li>
+        Fixed issue with some boss enemies mistakenly being shuffled with normal
+        enemy groups
+      </li>
+      <li>
+        Exclude certain characters from equipping certain weapons that cause
+        softlocks when used by them
+      </li>
+      <li>Cap exp required for level up at 9999 for max level</li>
+      <li>Other debug status bombs no longer appear in shops</li>
+      <li>
+        Fixed randomization of Geno Boost stats so it doesn't break the spell
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">V4 Updates</h2>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li>Lower rate of high multiplier physical attacks</li>
+      <li>Disciple's shop only has 10 items</li>
+      <li>Change file select on Japanese version</li>
+      <li>Peach always gets Group Hug</li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">V3 Updates</h2>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li>
+        Limit number of enemies to 6 (issues with spell animation/targeting)
+      </li>
+      <li>Add Snifit to the list of boss enemies</li>
+      <li>Add Hangin' Shy to boss enemies</li>
+      <li>Yoshi's Cookie items can only be consumables</li>
+      <li>Don't randomize equippability of Geno's weapons (game freezes)</li>
+      <li>Don't randomize enemy attacks for early game mandatory battles</li>
+      <li>Misc tweaks to enemy attack randomization</li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">V2 Updates</h2>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li>Remove glitchy enemies from the intro</li>
+      <li>Limit randomization of monster exp</li>
+      <li>Ban a few more enemies from being shuffled</li>
+      <li>Make the experience curve a little more friendly early on</li>
+      <li>Don't randomize equippability of certain buggy weapons</li>
+      <li>Sanity checks for selecting frog coin items</li>
+      <li>More conservative buff randomization</li>
+      <li>Don't intershuffle attack and magic attack</li>
+    </ul>
+  </div>
+</div>
+<div class="card border-info my-3">
+  <div class="card-header bg-info text-white">
+    <h2 class="card-title">V1 Updates</h2>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li>Initial version</li>
+    </ul>
+  </div>
+</div>
 {% endblock %}

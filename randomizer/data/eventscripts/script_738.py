@@ -1865,11 +1865,6 @@ script = [
         "command": 'restore_all_fp'
     },
     {
-        "identifier": 'EVENT_738_run_event_as_subroutine_113',
-        "command": 'run_event_as_subroutine',
-        "args": [3660]
-    },
-    {
         "identifier": 'EVENT_738_jmp_if_bit_clear_114',
         "command": 'jmp_if_bit_clear',
         "args": [0x7092, 7, 'EVENT_738_enter_area_0']
@@ -1883,6 +1878,11 @@ script = [
         "identifier": 'EVENT_738_enter_area_0',
         "command": 'enter_area',
         "args": [Rooms._438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, RadialDirections.SOUTH, 15, 46, 2, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+    {
+        "identifier": 'EVENT_738_run_event_as_subroutine_113',
+        "command": 'run_event_as_subroutine',
+        "args": [3660]
     },
     {
         "identifier": 'EVENT_738_fade_in_from_black_sync_1',

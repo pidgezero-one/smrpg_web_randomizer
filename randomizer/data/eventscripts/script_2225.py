@@ -272,7 +272,6 @@ script = [
     {"identifier": "EVENT_2225_restore_all_hp_13", "command": "restore_all_hp"},
     {"identifier": "EVENT_2225_restore_all_fp_14", "command": "restore_all_fp"},
     {"identifier": "EVENT_2225_set_bit_15", "command": "set_bit", "args": [0x7054, 2]},
-    {"identifier": "EVENT_2225_set_bit_15_", "command": "set_bit", "args": [0x7093, 3]},
     {"identifier": "EVENT_2225_set_short_17", "command": "set", "args": [0x7000, 521]},
     {
         "identifier": "EVENT_2225_jmp_to_event_18",

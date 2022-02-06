@@ -3,30 +3,35 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(0, length=31, unknown=0x0002,
+    animation=AnimationPack(385, length=130, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
-                Mold(0, gridplane=False,
+                Mold(3, gridplane=True,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
-                            bytearray(b'\xff\xf0\xff\xc0\xff\x80\xff\x80\xff\x00\xff\x00\xff\x00\xff\x00\x0f\xff?\xff\x7f\xff~\xfe\xfe\xfe\xfe\xfe\xfe\xfe\xe0\xe0'),
-                            bytearray(b'\xff\x0f\xff\x03\xff\x01\xff\x01\xff\x00\xff\x00\xff\x00\xff\x00\xf0\xff\xfc\xff\xfe\xff~\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x07\x07'),
-                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x80\xff\x80\xff\xc0\xff\xf0\xe0\xe0\xfe\xfe\xfe\xfe\xfe\xfe~\xfe\x7f\xff?\xff\x0f\xff'),
-                            bytearray(b'\xff\x00\xff\x00\xff\x00\xff\x00\xff\x01\xff\x01\xff\x03\xff\x0f\x07\x07\x7f\x7f\x7f\x7f\x7f\x7f~\x7f\xfe\xff\xfc\xff\xf0\xff'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=10, subtile_bytes=[
+                            None,
+                            None,
+                            None,
+                            bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x02\x02\x01\x03\x05\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x03\x00\x02\x00\x06\x00'),
+                            bytearray(b'\x00\x00\x00\x00\x00\x00\xd00\xe8\x18\x10\xe8\xcc4\xd0|\x00\x00\x00\x00\x00\x000\x00\xf8\x00\x18\x04L@\x8c\x82'),
+                            None,
+                            bytearray(b'\x06\x01\x02\x05\x03\x05\x06\x04\x04\x06\x03\x02\x00\x00\x00\x00\x06\x00\x06\x00\x06\x00\x06\x01\x02\x05\x03\x00\x00\x00\x00\x00'),
+                            bytearray(b'Dl$\xecd\xec\xc0\xc8\x18\x18\x00\x10 \xe0\x00\x00\x9c\x02\x1c\x02\x1c\x028\x06\x98f\x90l\xe0\x18\x00p'),
+                            None,
+                        ], is_16bit=False, y_plus=0, y_minus=1, x=0, y=0),
                     ]
                 ),
             ],
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=0),
+                        AnimationSequenceFrame(duration=2, mold_id=0)
                     ]
-                ),
+                )
             ]
         )
     ),
-    palette_id=0,
+    palette_id=523,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

@@ -1,4 +1,5 @@
 # Data module for enemy data.
+import copy
 
 from randomizer.logic import flags, utils
 from randomizer.logic.patch import Patch
@@ -106,6 +107,8 @@ class Enemy:
     sprite_height = 32
     model_small = None
     model_large = None
+
+    sprite = None
 
     def __init__(self, world):
         """
@@ -358,6 +361,9 @@ class Enemy:
             patch.add_data(
                 addr, self.name_override.upper().encode().ljust(13, b'\x20'))
 
+        if self.xp == 0:
+            print(self)
+
         return patch
 
     def patch_script(self):
@@ -426,6 +432,10 @@ class Enemy:
 
         return patch
 
+
+
+class Henchman(Enemy):
+    pass
 
 # ********************* Actual data classes
 
@@ -525,7 +535,7 @@ class MadMallet(Enemy):
     yoshi_cookie_item = items.Energizer
 
 
-class MadMalletHenchman(MadMallet):
+class MadMalletHenchman(MadMallet, Henchman):
     index = 133
     address = 0x390AA6
     boss = True
@@ -601,7 +611,7 @@ class Crook(Enemy):
         "is_wide": True
     }
 
-class CrookHenchman(Crook):
+class CrookHenchman(Crook, Henchman):
     index = 78
     address = 0x3909B6
     reward_address = 0x39192A
@@ -619,6 +629,8 @@ class CrookHenchman(Crook):
 
     # Reward attributes
     reward_address = 0x39192A
+    xp = 10
+    coin = 10
     yoshi_cookie_item = items.MidMushroom
     rare_item = items.HoneySyrup
 
@@ -678,7 +690,7 @@ class PiranhaPlant(Enemy):
     normal_item = items.MapleSyrup
 
 
-class PiranhaPlantHenchman(PiranhaPlant):
+class PiranhaPlantHenchman(PiranhaPlant, Henchman):
     index = 131
     address = 0x390A86
 
@@ -784,7 +796,7 @@ class Bloober(Enemy):
     rare_item = items.HoneySyrup
 
 
-class BlooberHenchman(Bloober):
+class BlooberHenchman(Bloober, Henchman):
     index = 172
     address = 0x390BA6
 
@@ -832,7 +844,7 @@ class BandanaRed(Enemy):
     rare_item = items.Mushroom
 
 
-class BandanaRedHenchman(BandanaRed):
+class BandanaRedHenchman(BandanaRed, Henchman):
     index = 130
     address = 0x390A76
 
@@ -911,7 +923,7 @@ class Birdy(Enemy):
     yoshi_cookie_item = items.Energizer
     normal_item = items.Energizer
 
-class BirdyHenchman(Birdy):
+class BirdyHenchman(Birdy, Henchman):
     index = 160
     address = 0x390AE6
 
@@ -1256,7 +1268,7 @@ class Bobomb(Enemy):
     yoshi_cookie_item = items.Mushroom
     normal_item = items.PickMeUp
 
-class BobombHenchman(Bobomb):
+class BobombHenchman(Bobomb, Henchman):
     index = 25
     address = 0x3903b6
     boss = True
@@ -1882,6 +1894,8 @@ class BahamuttMagikoopa(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+    sprite = 699
+
 class BahamuttChester(Enemy):
     index = 171
     address = 0x390B96
@@ -2002,6 +2016,8 @@ class Clerk(Enemy):
     sprite_height = 58
     sidekicks = [3, 3]
 
+    sprite = 702
+
 
 class Gunyolk(Enemy):
     index = 51
@@ -2039,6 +2055,8 @@ class Gunyolk(Enemy):
     ratio_magic_defense = 0.9412
     ratio_speed = 0.7143
 
+    sprite = 705
+
 
 class Boomer(Enemy):
     index = 52
@@ -2072,6 +2090,8 @@ class Boomer(Enemy):
     sprite_width = 52
     sprite_width = 49
     sidekicks = [90, 90]
+
+    sprite = 701
 
     def get_patch(self):
         """Update battle events for switching between blue and red states for Boomer with shuffled stat changes.
@@ -2219,6 +2239,8 @@ class Dodo(Enemy):
     ratio_speed = 0.05
     ratio_evade = 0.0
     ratio_magic_evade = 1.0
+
+    sprite = 696
 
     def get_patch(self):
         """For Dodo solo boss, also update the battle event trigger so he runs away from the solo fight at 60% of his
@@ -2499,7 +2521,7 @@ class Malakoopa(Enemy):
     rare_item = items.HoneySyrup
 
 
-class Pounder(Enemy):
+class Pounder(Henchman):
     index = 67
     address = 0x390876
     boss = True
@@ -2537,7 +2559,7 @@ class Pounder(Enemy):
     model_small = {**models[323]}
 
 
-class Poundette(Enemy):
+class Poundette(Henchman):
     index = 68
     address = 0x390886
     boss = True
@@ -2741,7 +2763,7 @@ class FactoryChief(Enemy):
     ratio_speed = 1.2857
 
 
-class BandanaBlue(Enemy):
+class BandanaBlue(Henchman):
     index = 75
     address = 0x390586
     boss = True
@@ -2816,6 +2838,8 @@ class Manager(Enemy):
     sprite_height = 58
     sidekicks = [67, 67, 67]
 
+    sprite = 703
+
 
 class Bluebird(Enemy):
     index = 77
@@ -2847,7 +2871,7 @@ class Bluebird(Enemy):
     normal_item = items.Bracer
 
 
-class BluebirdHenchman(Bluebird):
+class BluebirdHenchman(Bluebird, Henchman):
     index = 141
     address = 0x390AC6
 
@@ -3045,7 +3069,7 @@ class Pyrosphere(Enemy):
     coins = 2
     yoshi_cookie_item = items.FireBomb
 
-class PyrosphereHenchman(Pyrosphere):
+class PyrosphereHenchman(Pyrosphere, Henchman):
     index = 183
     address = 0x390BF6
 
@@ -3114,7 +3138,8 @@ class Hidon(Enemy):
 
     # Reward attributes
     reward_address = 0x391900
-    xp = 50
+    #xp = 50
+    xp = 42
     coins = 100
     yoshi_cookie_item = items.Mushroom
 
@@ -3199,7 +3224,7 @@ class ShyGuy(Enemy):
     coins = 1
     yoshi_cookie_item = items.HoneySyrup
 
-class ShyGuyHenchman(ShyGuy):
+class ShyGuyHenchman(ShyGuy, Henchman):
     index = 185
     address = 0x390C06
 
@@ -3279,7 +3304,7 @@ class Stinger(Enemy):
     rare_item = items.AbleJuice
 
 
-class Goombette(Enemy):
+class Goombette(Henchman):
     index = 93
     address = 0x390976
     boss = True
@@ -3300,6 +3325,8 @@ class Goombette(Enemy):
     # Reward attributes
     reward_address = 0x391912
     yoshi_cookie_item = items.Mushroom
+    # made this up
+    xp = 2
 
     # Boss shuffle attributes.
     ratio_hp = 0.1667
@@ -3840,6 +3867,8 @@ class Director(Enemy):
     sprite_height = 58
     sidekicks = [68, 68, 68, 68]
 
+    sprite = 704
+
 
 class Puppox(Enemy):
     index = 117
@@ -4095,7 +4124,7 @@ class Apprentice(Enemy):
     normal_item = items.MidMushroom
 
 
-class ApprenticeHenchman(Apprentice):
+class ApprenticeHenchman(Apprentice, Henchman):
     index = 129
     address = 0x390A66
 
@@ -4155,7 +4184,7 @@ class Shelly(Enemy):
     index = 135
     address = 0x390e06
     boss = True
-    hp = 10
+    hp = 500
     defense = 80
     fp = 100
     death_immune = True
@@ -4181,8 +4210,26 @@ class Shelly(Enemy):
     ratio_magic_evade = 0.0
 
     # Specific to Shelly
+    position = 1
+    vanilla = True
     summons = [0x28]
     summon_event = None
+
+    def get_patch(self):
+        """Update battle event triggers based on HP to use shuffled HP value instead.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data
+
+        """
+        patch = super().get_patch()
+
+        if not self.vanilla:
+            # don't summon eggshell fragment if not paired with birdetta
+            # targets battle event 92, new object sprite 160
+            patch.add_data(0x3A6F00, bytearray([0x09, 0x50, 0x75, 0x0A, 0x0A, 0x0A, 0x0A]))
+
+        return patch
 
     def patch_script(self):
 
@@ -4216,12 +4263,23 @@ class Shelly(Enemy):
         script.if_hp(0x0000)
         script.animate(0x08)
         script.battle_event(92)
+
+        #decoy_id = 0x28 + self.position + 1
+
+        # call invisible enemy to keep battle alive
+        #script.call(decoy_id)
+
+        # summon enemies who should be visible at start
         for id in self.summons:
             script.call(id)
-        script.animate(0x02)
+        # run event if necessary
         if self.summon_event is not None:
             script.battle_event(self.summon_event)
+
+        # remove self
+        script.animate(0x02)
         script.remove(0x1b)
+
         script.wait_return()
 
         self.script = script.fin()
@@ -4274,6 +4332,8 @@ class DodoSolo(Enemy):
     # shuffled overworld sprites
     sprite_height = 56
     sprite_width = 46
+
+    sprite = 695
 
 
 class Oerlikon(Enemy):
@@ -4359,7 +4419,7 @@ class CorkpediteBody(Enemy):
     yoshi_cookie_item = items.Mushroom
 
 
-class Torte(Enemy):
+class Torte(Henchman):
     index = 142
     address = 0x390cc6
     boss = True
@@ -4381,6 +4441,8 @@ class Torte(Enemy):
     # Reward attributes
     reward_address = 0x39172c
     yoshi_cookie_item = items.Mushroom
+    # made this up
+    xp = 3
 
     # Boss shuffle attributes.
     ratio_hp = 0.0667
@@ -4491,6 +4553,40 @@ class MachineMadeShyster(Enemy):
     ratio_magic_evade = 0.0
 
 
+class MachineMadeShysterHenchman(MachineMadeShyster, Henchman):
+    index = 214
+    address = 0x390CA6
+    hp = 100
+    speed = 36
+    attack = 135
+    defense = 95
+    magic_attack = 90
+    magic_defense = 65
+    fp = 250
+    evade = 10
+    morph_chance = 3
+    sound_on_hit = 80
+    palette = 8
+    flower_bonus_type = 1
+    flower_bonus_chance = 2
+
+    # Reward attributes
+    reward_address = 0x391AB6
+    xp = 28
+    yoshi_cookie_item = items.Mushroom
+
+    # Boss shuffle attributes.
+    ratio_hp = 0.05
+    ratio_fp = 1.0
+    ratio_attack = (135 / 230)
+    ratio_defense = (19 / 26)
+    ratio_magic_attack = 0.9
+    ratio_magic_defense = 0.65
+    ratio_speed = 1.2
+    ratio_evade = 1.0
+    ratio_magic_evade = 0.0
+
+
 class MachineMadeDrillBit(Enemy):
     index = 146
     address = 0x390b36
@@ -4572,7 +4668,7 @@ class Mokura(Enemy):
     normal_item = items.KerokeroCola
     rare_item = items.RoyalSyrup
 
-class FireCrystal(Enemy):
+class FireCrystal(Henchman):
     index = 149
     address = 0x391146
     boss = True
@@ -4608,7 +4704,7 @@ class FireCrystal(Enemy):
     ratio_magic_evade = 0.0
 
 
-class WaterCrystal(Enemy):
+class WaterCrystal(Henchman):
     index = 150
     address = 0x391156
     boss = True
@@ -4644,7 +4740,7 @@ class WaterCrystal(Enemy):
     ratio_magic_evade = 0.0
 
 
-class EarthCrystal(Enemy):
+class EarthCrystal(Henchman):
     index = 151
     address = 0x391166
     boss = True
@@ -4679,7 +4775,7 @@ class EarthCrystal(Enemy):
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
 
-class WindCrystal(Enemy):
+class WindCrystal(Henchman):
     index = 152
     address = 0x391176
     boss = True
@@ -4714,7 +4810,7 @@ class WindCrystal(Enemy):
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
 
-class MarioClone(Enemy):
+class MarioClone(Henchman):
     index = 153
     address = 0x390d66
     boss = True
@@ -4750,7 +4846,7 @@ class MarioClone(Enemy):
     ratio_magic_evade = 0.0
 
 
-class PeachClone(Enemy):
+class PeachClone(Henchman):
     index = 154
     address = 0x390d76
     boss = True
@@ -4784,7 +4880,7 @@ class PeachClone(Enemy):
     ratio_magic_evade = 0.0
 
 
-class BowserClone(Enemy):
+class BowserClone(Henchman):
     index = 155
     address = 0x390d86
     boss = True
@@ -4820,7 +4916,7 @@ class BowserClone(Enemy):
     ratio_magic_evade = 0.0
 
 
-class GenoClone(Enemy):
+class GenoClone(Henchman):
     index = 156
     address = 0x390d96
     boss = True
@@ -4857,7 +4953,7 @@ class GenoClone(Enemy):
     ratio_magic_evade = 0.0
 
 
-class MallowClone(Enemy):
+class MallowClone(Henchman):
     index = 157
     address = 0x390da6
     boss = True
@@ -5091,7 +5187,7 @@ class MachineMadeAxemPink(Enemy):
     yoshi_cookie_item = items.Mushroom
     rare_item = items.MapleSyrup
 
-class MachineMadeAxemPinkHenchman(MachineMadeAxemPink):
+class MachineMadeAxemPinkHenchman(MachineMadeAxemPink, Henchman):
     index = 174
     address = 0x390BC6
 
@@ -5138,7 +5234,7 @@ class MachineMadeAxemBlack(Enemy):
     yoshi_cookie_item = items.Mushroom
     rare_item = items.MaxMushroom
 
-class MachineMadeAxemBlackHenchman(MachineMadeAxemBlack):
+class MachineMadeAxemBlackHenchman(MachineMadeAxemBlack, Henchman):
     index = 173
     address = 0x390BB6
 
@@ -5187,7 +5283,7 @@ class MachineMadeAxemRed(Enemy):
     rare_item = items.RoyalSyrup
 
 
-class MachineMadeAxemRedHenchman(MachineMadeAxemRed):
+class MachineMadeAxemRedHenchman(MachineMadeAxemRed, Henchman):
     index = 201
     address = 0x390DB6
 
@@ -5236,7 +5332,7 @@ class MachineMadeAxemYellow(Enemy):
     rare_item = items.MaxMushroom
 
 
-class MachineMadeAxemYellowHenchman(MachineMadeAxemYellow):
+class MachineMadeAxemYellowHenchman(MachineMadeAxemYellow, Henchman):
     index = 242
     address = 0x391056
 
@@ -5286,7 +5382,7 @@ class MachineMadeAxemGreen(Enemy):
     rare_item = items.RoyalSyrup
 
 
-class MachineMadeAxemGreenHenchman(MachineMadeAxemGreen):
+class MachineMadeAxemGreenHenchman(MachineMadeAxemGreen, Henchman):
     index = 232
     address = 0x390F56
 
@@ -5435,23 +5531,86 @@ class Jagger(Enemy):
     battle_y_shift = 1
 
 
-class Chompweed(Enemy):
+class EmptyEnemy(Enemy):
     index = 180
     address = 0x390be6
     boss = True
-    hp = 10
+    hp = 9999
     fp = 100
-    morph_chance = 3
-    sound_on_hit = 16
-    sound_on_approach = 2
-    palette = 8
-    flower_bonus_type = 1
-    flower_bonus_chance = 2
+    speed = 255
 
     # Reward attributes
     reward_address = 0x391a56
     yoshi_cookie_item = items.Mushroom
 
+    # Specific to Shelly
+    summons = [0x28]
+    summon_event = None
+    sprite_sub = False
+    formation_id = None
+
+    # def patch_script(self):
+
+    #     script = BattleScript()
+    #     # summon enemies who should be visible at start
+    #     #script.if_solo()
+    #     if self.sprite_sub:
+    #         script.battle_event(99)
+    #     for id in self.summons:
+    #         script.call(id)
+    #     # run event if necessary
+    #     if self.summon_event is not None:
+    #         script.battle_event(self.summon_event)
+    #     # remove decoy
+    #     script.remove(0x1b)
+    #     script.start_counter()
+
+    #     self.script = script.fin()
+
+    # def get_patch(self):
+
+    #     patch = super().get_patch()
+
+    #     # TODO: Get addresses for linear mode.
+    #     if self.sprite_sub:
+    #         subroutine_index = 0x3AADD5
+    #         subroutine_bytes = bytearray([])
+    #         battle_event_index = 0x3A6FD4
+    #         battle_event_bytes = bytearray([])
+    #         target_formation = self.world.get_enemy_formation_by_index(self.formation_id)
+    #         for index, member in enumerate(target_formation.members):
+    #             en = member.enemy
+    #             if en.sprite is not None:
+    #                 original_sprite_id = en.index + 256
+    #                 new_sprite_id = en.sprite
+    #                 self.world.sprites[original_sprite_id] = copy.deepcopy(self.world.sprites[1023])
+    #                 vram_addr = 0x7600 + index * 0x200
+    #                 subroutine_start = subroutine_index + len(subroutine_bytes)
+    #                 subroutine_bytes += bytearray([0x05])
+    #                 subroutine_bytes += bytearray([0x01, 0x07, member.x_pos & 0xFF, member.x_pos >> 8, member.y_pos & 0xFF, member.y_pos >> 8, 0, 0])
+    #                 subroutine_bytes += bytearray([0x00, 0xC0, 0x30, new_sprite_id & 0xFF, new_sprite_id >> 8, 0x00, 0x2C, vram_addr & 0xFF, vram_addr >> 8])
+    #                 subroutine_bytes += bytearray([0xD5, 0x80, en.index, 0x01])
+    #                 subroutine_bytes += bytearray([0x5E])
+    #                 battle_event_bytes += bytearray([0x5D, 0x14, index, subroutine_start & 0xFF, (subroutine_start >> 8) & 0xFF])
+
+    #                 if utils.isclass_or_instance(en, BahamuttMagikoopa):
+    #                     patch.add_data(0x3AE003, bytearray([new_sprite_id & 0xFF, new_sprite_id >> 8]))
+    #                 elif utils.isclass_or_instance(en, KingBomb):
+    #                     patch.add_data(0x3AE01C, bytearray([new_sprite_id & 0xFF, new_sprite_id >> 8]))
+
+    #         battle_event_bytes += bytearray([0x09, 0x50, 0x75])
+    #         assert len(battle_event_bytes) <= 0x11
+    #         while len(battle_event_bytes) < 0x11:
+    #             battle_event_bytes += bytearray([0x0A])
+    #         assert len(subroutine_bytes) <= 62
+    #         patch.add_data(subroutine_index, subroutine_bytes)
+    #         patch.add_data(battle_event_index, battle_event_bytes)
+
+    #     return patch
+
+    # couldn't get this to work :(
+    # idea was to replace vram-heavy enemies with an empty sprite, and then summon their actual sprite with a delayed battle event, so that they are not loaded into the vram at the start of the fight breaking the egg graphically
+    # graphics were still breaking, and i didn't know what to put for the vram address (last 2 args of the 3rd addition to  subroutine_bytes)
 
 class Smithy2TankHead(Enemy):
     index = 181
@@ -5884,6 +6043,8 @@ class KnifeGuy(Enemy):
     ratio_magic_defense = 0.4
     ratio_speed = 1.25
 
+    sprite = 690
+
 
 class GrateGuy(Enemy):
     index = 193
@@ -5927,6 +6088,8 @@ class GrateGuy(Enemy):
     sprite_height = 57
     sidekicks = [192]
 
+    sprite = 689
+
 class Bundt(Enemy):
     index = 194
     address = 0x390c86
@@ -5949,7 +6112,8 @@ class Bundt(Enemy):
 
     # Reward attributes
     reward_address = 0x391ab0
-    xp = 25
+    #xp = 25
+    xp = 23
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -6079,7 +6243,7 @@ class CountDown(Enemy):
     ratio_speed = 0.625
 
 
-class DingALing(Enemy):
+class DingALing(Henchman):
     index = 198
     address = 0x390d36
     boss = True
@@ -6148,6 +6312,8 @@ class Belome1(Enemy):
     sprite_height = 54
     sprite_width = 49
 
+    sprite = 687
+
 
 class Belome2(Enemy):
     index = 200
@@ -6182,6 +6348,8 @@ class Belome2(Enemy):
     # shuffled overworld sprites
     sprite_height = 54
     sprite_width = 49
+
+    sprite = 693
 
 
 class Smilax(Enemy):
@@ -6291,7 +6459,8 @@ class Birdo(Enemy):
 
     # Reward attributes
     reward_address = 0x391b0a
-    xp = 60
+    #xp = 60
+    xp = 48
     coins = 30
     yoshi_cookie_item = items.Mushroom
 
@@ -6307,7 +6476,7 @@ class Birdo(Enemy):
 
     sidekicks = [206, 206, 206, 206]
 
-class Eggbert(Enemy):
+class Eggbert(Henchman):
     index = 206
     address = 0x390e16
     boss = True
@@ -6323,6 +6492,8 @@ class Eggbert(Enemy):
     # Reward attributes
     reward_address = 0x391b10
     yoshi_cookie_item = items.Mushroom
+    # made this up
+    xp = 3
 
     # Boss shuffle attributes.
     ratio_hp = 0.01
@@ -6335,7 +6506,7 @@ class Eggbert(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
-class AxemYellow(Enemy):
+class AxemYellow(Henchman):
     index = 207
     address = 0x391086
     boss = True
@@ -6478,7 +6649,7 @@ class AxemRed(Enemy):
     ratio_evade = 0.9091
     ratio_magic_evade = 0.0
 
-class AxemGreen(Enemy):
+class AxemGreen(Henchman):
     index = 211
     address = 0x3910a6
     boss = True
@@ -6551,6 +6722,8 @@ class KingBomb(Enemy):
     ratio_speed = 0.0
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
+
+    sprite = 700
 
     def patch_script(self):
         script = BattleScript()
@@ -6632,7 +6805,8 @@ class Raspberry(Enemy):
 
     # Reward attributes
     reward_address = 0x391abc
-    xp = 50
+    #xp = 50
+    xp = 46
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -6840,6 +7014,8 @@ class CzarDragon(Enemy):
     sprite_width = 59
     sprite_height = 54
 
+    sprite = 698
+
 class Cloaker(Enemy):
     index = 221
     address = 0x390e86
@@ -6965,8 +7141,10 @@ class Mack(Enemy):
 
     # Reward attributes
     reward_address = 0x391b7c
-    xp = 24
-    coins = 20
+    #xp = 24
+    xp = 12
+    #coins = 20
+    coins = 12
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes
@@ -6978,7 +7156,9 @@ class Mack(Enemy):
     sprite_width = 43
     sidekicks = [158, 158, 158, 158]
 
-class Bodyguard(Enemy):
+    sprite = 686
+
+class Bodyguard(Henchman):
     index = 225
     address = 0x390ef6
     boss = True
@@ -7010,6 +7190,10 @@ class Bodyguard(Enemy):
     ratio_speed = 1.88
     ratio_evade = 0.1
     ratio_magic_evade = 0.0
+
+    # this isn't from the original game
+    xp = 3
+    coins = 2
 
 
 class Yaridovich(Enemy):
@@ -7048,7 +7232,9 @@ class Yaridovich(Enemy):
 
     sidekick_models = [39, 39, 39, 39]
 
-class DrillBit(Enemy):
+    sprite = 692
+
+class DrillBit(Henchman):
     index = 227
     address = 0x390f26
     boss = True
@@ -7082,7 +7268,7 @@ class DrillBit(Enemy):
     ratio_magic_evade = 0.0
 
 
-class YaridovichDrillBit(Enemy):
+class YaridovichDrillBit(Henchman):
     index = 244
     address = 0x391066
     hp = 80
@@ -7113,7 +7299,7 @@ class YaridovichDrillBit(Enemy):
     ratio_magic_defense = (69 / 50)
     ratio_speed = (24 / 18)
 
-class AxemPink(Enemy):
+class AxemPink(Henchman):
     index = 228
     address = 0x3910b6
     boss = True
@@ -7153,7 +7339,7 @@ class AxemPink(Enemy):
 
     model_small = {**models[210]}
 
-class AxemBlack(Enemy):
+class AxemBlack(Henchman):
     index = 229
     address = 0x3910c6
     boss = True
@@ -7227,7 +7413,9 @@ class Bowyer(Enemy):
     sprite_height = 52
     sidekicks = [231, 231, 231, 231]
 
-class AeroBowyer(Enemy):
+    sprite = 688
+
+class AeroBowyer(Henchman):
     # Borrow stats from Bob-omb to be relatively reasonable to match Bowyer
     index = 231
     address = 0x390f46
@@ -7261,7 +7449,7 @@ class AeroBowyer(Enemy):
     ratio_magic_evade = 0.0
 
 
-class AeroSmithy(Enemy):
+class AeroSmithy(Henchman):
     # Borrow stats from Poundette to be relatively reasonable to match Smithy
     index = 175
     address = 0x390BD6
@@ -7746,7 +7934,7 @@ class Snifit(Enemy):
     yoshi_cookie_item = items.Mushroom
     rare_item = items.Mushroom
 
-class SnifitHenchman(Snifit):
+class SnifitHenchman(Snifit, Henchman):
     index = 115
     address = 0x3909E6
 
@@ -7802,6 +7990,8 @@ class Johnny(Enemy):
     # shuffled overworld sprites
     sprite_height = 55
     sprite_width = 64
+
+    sprite = 691
 
 
 class JohnnySolo(Enemy):
@@ -7880,6 +8070,8 @@ class Valentina(Enemy):
     battle_sesw_only = True
     overworld_is_skinny = True
     shadow = SMALL_SHADOW
+
+    sprite = 697
 
 class Cloaker2(Enemy):
     index = 252
@@ -7997,6 +8189,8 @@ class Culex(Enemy):
     #other_sprites_sequences = [1, 0, 1, 0]
 
     sidekicks = [149, 150, 151, 152]
+
+    sprite = 694
 
 # ********************* Default lists for the world.
 
@@ -8160,6 +8354,7 @@ def get_default_enemies(world):
         Shyaway(world),
         JinxClone(world),
         MachineMadeShyster(world),
+        MachineMadeShysterHenchman(world),
         MachineMadeDrillBit(world),
         Formless(world),
         Mokura(world),
@@ -8193,7 +8388,7 @@ def get_default_enemies(world):
         Mukumuku(world),
         Zeostar(world),
         Jagger(world),
-        Chompweed(world),
+        EmptyEnemy(world),
         Smithy2TankHead(world),
         Smithy2SafeHead(world),
         Microbomb(world),

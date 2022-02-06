@@ -46,6 +46,11 @@ from randomizer.data import items
 
 script = [
     {
+        "identifier": "EVENT_1328_exit_star",
+        "command": "run_event_as_subroutine",
+        "args": [1605],
+    },
+    {
         "identifier": "EVENT_1328_play_music_default_volume_0",
         "command": "play_music_default_volume",
         "args": [Music._13_ROAD_IS_FULL_OF_DANGERS],
@@ -139,7 +144,7 @@ script = [
     {
         "identifier": "EVENT_1328_jmp_if_bit_clear_7",
         "command": "jmp_if_bit_clear",
-        "args": [0x7087, 0, "EVENT_1328_ret_26"],
+        "args": [0x7087, 0, "EVENT_1328_jmp_if_bit_set_22"],
     },
     {
         "identifier": "EVENT_1328_run_event_as_subroutine_25_",
@@ -149,7 +154,7 @@ script = [
     {
         "identifier": "EVENT_1328_jmp_if_bit_clear_7_",
         "command": "jmp_if_bit_clear",
-        "args": [0x7099, 7, "EVENT_1328_ret_26"],
+        "args": [0x7099, 7, "EVENT_1328_jmp_if_bit_set_22"],
     },
     {
         "identifier": "EVENT_1328_run_event_as_subroutine_25__",

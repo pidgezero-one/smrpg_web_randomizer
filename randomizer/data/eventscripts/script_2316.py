@@ -192,26 +192,6 @@ script = [
         "args": [Rooms._419_LAZY_SHELL_CLOUD, RadialDirections.SOUTH, 4, 109, 10, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
-        "identifier": 'EVENT_2316_jmp_if_bit_clear_14',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 0, 'EVENT_2316_jmp_if_bit_clear_16']
-    },
-    {
-        "identifier": 'EVENT_2316_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 690]
-    },
-    {
-        "identifier": 'EVENT_2316_jmp_if_bit_clear_16',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 1, 'EVENT_2316_freeze_camera_18']
-    },
-    {
-        "identifier": 'EVENT_2316_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 690]
-    },
-    {
         "identifier": 'EVENT_2316_freeze_camera_18',
         "command": 'freeze_camera'
     },
@@ -291,7 +271,7 @@ script = [
     {
         "identifier": 'EVENT_2316_action_queue_async_21',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_async_21_SUBSCRIPT_set_priority_0',

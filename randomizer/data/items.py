@@ -4246,7 +4246,7 @@ class MarioRecruit(RecruitedCharacter):
         "face_south": (0, 0, False),
         "shocked_loop": (2, 8, False),
         "shocked_loop_backwards": (2, 9, False),
-        "shocked_backwards_sequence": (1, 9, False),
+        "shocked_backwards_sequence": (1, 3, False),
         "shocked_shadow": (2, 0, False),
         "shocked_shadow_backwards": (1, 8, True),
         "crying": (0, 4, False),
@@ -5077,3 +5077,6 @@ def get_placeable_boss_fights(world):
         GunyolkBossFight(world),
         SmithyBossFight(world),
     ]
+
+def is_coin(item):
+    return utils.isclass_or_instance(item, Coins) or utils.isclass_or_instance(item, FrogCoin) or utils.isclass_or_instance(item, MultiFrogCoin) or utils.isclass_or_instance(item, RareFrogCoin) or utils.isclass_or_instance(item, InfiniteCoinChest)

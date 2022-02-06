@@ -31,7 +31,7 @@ from randomizer.data.rooms.room import (
 )
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
-
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -200,6 +200,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
+            shadow_size=ShadowSize._00_OVAL_SMALL,
             acute_axis=4,
             obtuse_axis=4,
             height=8,
@@ -222,6 +223,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
+            shadow_size=ShadowSize._00_OVAL_SMALL,
             acute_axis=4,
             obtuse_axis=4,
             height=8,
@@ -244,6 +246,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
+            shadow_size=ShadowSize._00_OVAL_SMALL,
             acute_axis=4,
             obtuse_axis=4,
             height=8,

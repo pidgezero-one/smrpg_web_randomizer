@@ -31,11 +31,11 @@ from randomizer.data.rooms.room import (
 )
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
-
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
-        allow_extra_sprite_buffer=True,
+        allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
         buffers=[
             Buffer(
@@ -49,7 +49,7 @@ room = Room(
                 index_in_main_buffer=True,
             ),
             Buffer(
-                buffer_type=PartitionBufferTypes.COINS,
+                buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
                 index_in_main_buffer=True,
             ),

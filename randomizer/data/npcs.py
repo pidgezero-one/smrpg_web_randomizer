@@ -173,6 +173,7 @@ class ItemNPC(NPC):
 
 class PartyNPC(NPC):
     minecart_shift = 0
+
     def __init__(self, world, sprite_id):
         super().__init__(world)
         self.sprite_id = sprite_id
@@ -1254,6 +1255,11 @@ class LandsEndCannon(NPC):
     acute_axis = 7
     obtuse_axis = 7
     height = 11
+
+
+class BerryGridplane(ItemNPC):
+    sprite_id = 144
+    y_shift = 1
 
 
 class CommanderTroopa(NPC):
@@ -2606,7 +2612,7 @@ class ShovelKnightBossLarge(NPC):
 
 
 class ClerkLarge(ShovelKnightBossLarge):
-    sprite_id = 306
+    sprite_id = 702
 
 
 boomer_hit = SpriteAnimation(sequence_id=3, contact_frame=42, total_duration=52)
@@ -2615,7 +2621,7 @@ boomer_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
 
 
 class BoomerLarge(NPC):
-    sprite_id = 308
+    sprite_id = 701
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 2
     acute_axis = 9
@@ -2638,7 +2644,7 @@ dodo_taunt = SpriteAnimation(sequence_id=4, total_duration=66)
 
 
 class DodoLarge(NPC):
-    sprite_id = 312
+    sprite_id = 695
     shadow_size = ShadowSize._02_OVAL_BIG
     acute_axis = 9
     obtuse_axis = 9
@@ -2778,7 +2784,7 @@ class BandanaBlue(NPC):
 
 
 class ManagerLarge(ShovelKnightBossLarge):
-    sprite_id = 332
+    sprite_id = 703
 
 
 class Bluebird(ValentinaBird):
@@ -2953,7 +2959,7 @@ class MagikoopaLarge(NPC):
 
 
 class DirectorLarge(ShovelKnightBossLarge):
-    sprite_id = 370
+    sprite_id = 704
 
 
 snifit_shoot = SpriteAnimation(sequence_id=4, total_duration=60)
@@ -3304,13 +3310,6 @@ class Zeostar(NPC):
     height = 6
 
 
-class Chompweed(NPC):
-    sprite_id = 436
-    shadow_size = ShadowSize._00_OVAL_SMALL
-    y_shift = 1
-    height = 6
-
-
 class Microbomb(NPC):
     sprite_id = 440
     shadow_size = ShadowSize._00_OVAL_SMALL
@@ -3331,7 +3330,7 @@ class Helio(NPC):
 
 
 class KnifeGuyLarge(NPC):
-    sprite_id = 448
+    sprite_id = 689
     min_vram_size = 3
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 1
@@ -3349,7 +3348,7 @@ grate_guy_recoil = SpriteAnimation(sequence_id=2, total_duration=20)
 
 
 class GrateGuyLarge(NPC):
-    sprite_id = 449
+    sprite_id = 690
     min_vram_size = 3
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 1
@@ -3393,7 +3392,7 @@ class BundtLarge(NPC):
 
 
 class Belome1Large(NPC):
-    sprite_id = 455
+    sprite_id = 687
     min_vram_size = 5
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 2
@@ -3572,7 +3571,7 @@ class AxemGreen(NPC):
 
 
 class BundtSmall(NPC):
-    sprite_id = 470
+    sprite_id = 712
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 1
     acute_axis = 7
@@ -3588,7 +3587,7 @@ czar_taunt = SpriteAnimation(sequence_id=5)
 
 
 class CzarDragonLarge(NPC):
-    sprite_id = 476
+    sprite_id = 698
     show_shadow = False
     shadow_size = ShadowSize._00_OVAL_SMALL
     acute_axis = 10
@@ -3624,6 +3623,19 @@ class CloakerLarge(NPC):
         # endgame_challenge=cloaker_hit # breaks vram
     )
 
+class DominoLarge(NPC):
+    sprite_id = 478
+    shadow_size = ShadowSize._02_OVAL_BIG
+    y_shift = 1
+    acute_axis = 8
+    obtuse_axis = 8
+    height = 17
+    min_vram_size = 3
+
+    animations = SpriteAnimationCollection(
+        statue_flustered=cloaker_recoil
+    )
+
 
 mack_hit = SpriteAnimation(sequence_id=4, contact_frame=22, total_duration=28)
 mack_hit_fast = SpriteAnimation(
@@ -3633,7 +3645,7 @@ mack_challenge = SpriteAnimation(sequence_id=2, total_duration=12)
 
 
 class MackLarge(NPC):
-    sprite_id = 480
+    sprite_id = 686
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 1
     acute_axis = 13
@@ -3660,7 +3672,7 @@ yaridovich_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class YaridovichLarge(NPC):
-    sprite_id = 482
+    sprite_id = 692
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 1
     acute_axis = 13
@@ -3729,7 +3741,7 @@ bowyer_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class BowyerLarge(NPC):
-    sprite_id = 486
+    sprite_id = 688
     y_shift = 1
     acute_axis = 14
     obtuse_axis = 15
@@ -3777,7 +3789,7 @@ johnny_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class JohnnyLarge(NPC):
-    sprite_id = 505
+    sprite_id = 691
     show_shadow = False
     shadow_size = ShadowSize._00_OVAL_SMALL
     y_shift = 1
@@ -3794,7 +3806,7 @@ class JohnnyLarge(NPC):
 
 
 class ValentinaLarge(NPC):
-    sprite_id = 507
+    sprite_id = 697
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 1
     acute_axis = 13
@@ -3813,7 +3825,7 @@ class ValentinaLarge(NPC):
 
 
 class CulexLarge(NPC):
-    sprite_id = 511
+    sprite_id = 694
     shadow_size = ShadowSize._02_OVAL_BIG
     y_shift = 1
     acute_axis = 13
@@ -4698,6 +4710,43 @@ class CulexStatue(CulexSmall, Statue):
 class MallowStatue(NPC):
     sprite_id = 683
     height = 8
+
+
+class Chompweed(NPC):
+    sprite_id = 685
+    shadow_size = ShadowSize._00_OVAL_SMALL
+    y_shift = 1
+    height = 6
+
+
+class BeetleGridplane(ItemNPC):
+    sprite_id = 706
+    show_shadow = False
+    shadow_size = ShadowSize._00_OVAL_SMALL
+    y_shift = 1
+
+
+class BananaGridplane(ItemNPC):
+    sprite_id = 707
+    show_shadow = False
+    shadow_size = ShadowSize._00_OVAL_SMALL
+    y_shift = 1
+
+
+class CrownGridplane(ItemNPC):
+    sprite_id = 708
+
+
+class BroochGridplane(ItemNPC):
+    sprite_id = 709
+
+
+class ShoesGridplane(ItemNPC):
+    sprite_id = 710
+
+
+class RingGridplane(ItemNPC):
+    sprite_id = 711
 
 
 class TinyBird(NPC):

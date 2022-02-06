@@ -1809,7 +1809,7 @@ def get_default_enemy_formations(world):
             world.get_enemy_instance(enemies.Smilax),
             world.get_enemy_instance(enemies.PiranhaPlantHenchman),
         ]),
-        EnemyFormation(295, None, 7, [
+        EnemyFormation(295, 14, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.CountDown), 150, 93),
             FormationMember(1, False, world.get_enemy_instance(enemies.DingALing), 158, 52),
             FormationMember(2, False, world.get_enemy_instance(enemies.DingALing), 194, 67),
@@ -1897,8 +1897,8 @@ def get_default_enemy_formations(world):
         EnemyFormation(308, 14, 15, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Smithy1), 199, 127),
             FormationMember(1, False, world.get_enemy_instance(enemies.Smelter), 87, 87),
-            FormationMember(2, True, world.get_enemy_instance(enemies.MachineMadeShyster), 135, 127),
-            FormationMember(3, True, world.get_enemy_instance(enemies.MachineMadeShyster), 199, 159),
+            FormationMember(2, True, world.get_enemy_instance(enemies.MachineMadeShysterHenchman), 135, 127),
+            FormationMember(3, True, world.get_enemy_instance(enemies.MachineMadeShysterHenchman), 199, 159),
             FormationMember(4, True, world.get_enemy_instance(enemies.Smithy2Head), 199, 127),
         ], stat_total_enemies=[
             world.get_enemy_instance(enemies.Smithy1),
@@ -1906,7 +1906,7 @@ def get_default_enemy_formations(world):
         ], stat_scaling_enemies=[
             world.get_enemy_instance(enemies.Smithy1),
             world.get_enemy_instance(enemies.Smelter),
-            world.get_enemy_instance(enemies.MachineMadeShyster),
+            world.get_enemy_instance(enemies.MachineMadeShysterHenchman),
             world.get_enemy_instance(enemies.AeroSmithy),
             world.get_enemy_instance(enemies.DrillBit),
             world.get_enemy_instance(enemies.Smithy2Body),
@@ -2429,11 +2429,11 @@ def get_default_enemy_formations(world):
         EnemyFormation(418, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.AxemGreen), 183, 127),
         ]),
-        EnemyFormation(419, None, 1, [
+        EnemyFormation(419, 14, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.DingALing), 183, 127),
         ]),
         EnemyFormation(420, None, 1, [
-            FormationMember(0, False, world.get_enemy_instance(enemies.MachineMadeShyster), 151, 111),
+            FormationMember(0, False, world.get_enemy_instance(enemies.MachineMadeShysterHenchman), 151, 111),
             FormationMember(1, False, world.get_enemy_instance(enemies.AeroSmithy), 215, 127),
             FormationMember(2, False, world.get_enemy_instance(enemies.DrillBit), 167, 151),
         ]),
@@ -2449,13 +2449,13 @@ def get_default_enemy_formations(world):
             FormationMember(2, False, world.get_enemy_instance(enemies.AeroSmithy), 151, 111),
         ]),
         EnemyFormation(423, None, 1, [
-            FormationMember(0, False, world.get_enemy_instance(enemies.MachineMadeShyster), 167, 119),
-            FormationMember(1, False, world.get_enemy_instance(enemies.MachineMadeShyster), 199, 135),
+            FormationMember(0, False, world.get_enemy_instance(enemies.MachineMadeShysterHenchman), 167, 119),
+            FormationMember(1, False, world.get_enemy_instance(enemies.MachineMadeShysterHenchman), 199, 135),
         ]),
         EnemyFormation(424, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.DrillBit), 231, 135),
             FormationMember(1, False, world.get_enemy_instance(enemies.DrillBit), 167, 103),
-            FormationMember(2, False, world.get_enemy_instance(enemies.MachineMadeShyster), 167, 135),
+            FormationMember(2, False, world.get_enemy_instance(enemies.MachineMadeShysterHenchman), 167, 135),
         ]),
         EnemyFormation(425, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.AeroSmithy), 167, 103),
@@ -2467,7 +2467,7 @@ def get_default_enemy_formations(world):
         EnemyFormation(426, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.AeroSmithy), 231, 135),
             FormationMember(1, False, world.get_enemy_instance(enemies.AeroSmithy), 167, 103),
-            FormationMember(2, False, world.get_enemy_instance(enemies.MachineMadeShyster), 167, 135),
+            FormationMember(2, False, world.get_enemy_instance(enemies.MachineMadeShysterHenchman), 167, 135),
         ]),
         EnemyFormation(427, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Crook), 135, 119),

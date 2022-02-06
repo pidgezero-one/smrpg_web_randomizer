@@ -20,6 +20,7 @@ from randomizer.helpers.flag_helpers import (
     BowsersKeepGating,
     FactoryGating,
     PipeVaultGating,
+    ItemQualities,
 )
 from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
@@ -153,18 +154,32 @@ class ItemLocation:
             bool: True if the given item is allowed to be placed in this spot, False otherwise.
 
         """
-        # If this is a missable location, it cannot contain a key item.
+        # If this is a missable location, it cannot contain an important item.
         if self.missable and (
             item.is_key
             or utils.isclass_or_instance(item, items.MimicFight)
-            or utils.isclass_or_instance(item, items.BrightCard)
             or utils.isclass_or_instance(item, items.SignalRing)
             or utils.isclass_or_instance(item, items.Wallet)
+            or utils.isclass_or_instance(item, items.MarrymoreGear)
+            or utils.isclass_or_instance(item, items.ProgressiveFireworks)
+            or utils.isclass_or_instance(item, items.StarPiece)
         ):
             return False
 
-        # If this is an excluded location, it cannot contain a key item.
-        if item.is_key and (
+        # If this is an excluded location, it cannot contain a progress item.
+        if (
+            not self.world.settings.is_flag_enabled(flags.KeyItemsAnywhere)
+            and self.key
+            and item.is_key
+        ):
+            return True
+        if (
+            item.is_key
+            or utils.isclass_or_instance(item, items.MimicFight)
+            or utils.isclass_or_instance(item, items.StarPiece)
+            or utils.isclass_or_instance(item, items.MarrymoreGear)
+            or utils.isclass_or_instance(item, items.ProgressiveFireworks)
+        ) and (
             self.description
             in self.world.settings.get_flag(flags.EnabledRegularChecks).disabled
             or self.description
@@ -188,9 +203,16 @@ class ItemLocation:
 
         # If this is not a special equip location, cannot contain special equips unless that setting is enabled
         if self.world.settings.is_flag_enabled(flags.RestrictSpecialEquips):
-            if not self.special_equip and item.special_equip:
+            if self.special_equip and not item.special_equip:
                 return False
-            elif self.special_equip and not item.special_equip:
+            if (
+                self.world.settings.is_flag_enabled(
+                    flags.RestrictSpecialEquipsExclusive
+                )
+                or self.world.settings.is_flag_value(
+                    flags.ItemQuality, ItemQualities.original
+                )
+            ) and (not self.special_equip and item.special_equip):
                 return False
 
         # characters must be in character spots
@@ -225,8 +247,13 @@ class ItemLocation:
                     return False
 
         # only allow up to one exp star per area
+        # exception: land's end underground and sunken ship rat stairs do not factor into this as they can never be close enough to another star chest
         if utils.isclass_or_instance(item, items.InvincibilityStar):
-            for c in self.world.chest_locations:
+            for c in [
+                ch
+                for ch in self.world.chest_locations
+                if 262 not in ch.rooms and 263 not in ch.rooms and 167 not in ch.rooms
+            ]:
                 if utils.isclass_or_instance(c.item, items.InvincibilityStar) and (
                     c.area == self.area
                 ):

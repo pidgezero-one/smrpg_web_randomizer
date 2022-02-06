@@ -352,10 +352,10 @@ dialog_data[215] = '''
      “Bowser's Keep” is now open[await]'''
 dialog_data[216] = '''
            “Gate” is now open[await]'''
-dialog_data[217] = '''0[await]'''
-dialog_data[218] = '''[await]'''
-dialog_data[219] = '''[await]'''
-dialog_data[220] = '''[await]'''
+dialog_data[217] = '''[await]'''
+dialog_data[218] = '''     “Monstro Town” is now open[await]'''
+dialog_data[219] = '''    “Barrel Volcano” is now open[await]'''
+dialog_data[220] = '''    “Moleville Mines” is now open[await]'''
 dialog_data[221] = '''[await]'''
 dialog_data[222] = '''[await]'''
 dialog_data[223] = '''[await]'''
@@ -732,7 +732,7 @@ dialog_data[420] = '''[page]
  [select]  (The SUITE!)       200 coins
  [select]  (Oh wait, forget it)[await]'''
 dialog_data[421] = '''[page]
- Oh, EXCELLENT CHOICE, SIR![await]
+ Oh, EXCELLENT CHOICE, `MAIN_CHARACTER_HONORIFIC`![await]
  We shall attend to you in a minute.[await]'''
 dialog_data[422] = '''[page]
  We thank you very much!
@@ -744,7 +744,10 @@ dialog_data[422] = '''[page]
 dialog_data[423] = ''' Oh, hello there! Are you visiting?[await]
  We don't get tourists here very
  often. I guess our town is a little
- bit out of the way.[await]'''
+ bit out of the way.[await][page]
+ If you're looking for something fun
+ to do, you should visit our
+ volcano![await]'''
 dialog_data[424] = '''[page]
  I'm sorry `MAIN_CHARACTER_HONORIFIC`.
  You seem to be a day late and
@@ -1107,8 +1110,8 @@ dialog_data[636] = ''' You may find something to do in
  Bowser's Keep.[await]'''
 dialog_data[637] = ''' There is still work to be done in
  the Factory.[await]'''
-dialog_data[638] = ''' Grate Guy's Casino may have some
- interesting options for you.[await]'''
+dialog_data[638] = ''' Try your luck in Grate Guy's
+ Casino.[await]'''
 dialog_data[639] = ''' Try double-checking whatever
  you can. I may have more advice
  for you later.[await]'''
@@ -1138,9 +1141,11 @@ dialog_data[648] = ''' There are some unopened chests
  remaining in the Sea.[await]'''
 dialog_data[649] = ''' The beanstalks may bring you some
  new fortune.[await]'''
-dialog_data[650] = ''' Try your luck in Grate Guy's
- Casino.[await]'''
-dialog_data[651] = '''[await]'''
+dialog_data[650] = ''' I haven't heard much news about
+ new treasures lately.[await][pause] Say... Have
+ you been practicing Super Jumps?[await]'''
+dialog_data[651] = ''' I recommend exploring the obstacle
+ courses deep in Bowser's Keep.[await]'''
 dialog_data[652] = '''[await]'''
 dialog_data[653] = '''[await]'''
 dialog_data[654] = '''[await]'''
@@ -1297,7 +1302,7 @@ dialog_data[772] = '''[await]'''
 dialog_data[773] = '''[await]'''
 dialog_data[774] = ''' Check back with me after you kill
  some time by... I don't know,
- liberating a volcano, or something.[await]'''
+ exploring a volcano, or something.[await]'''
 dialog_data[775] = '''[await]'''
 dialog_data[776] = ''' I'm all out of inventory, and won't\n be selling any more.[await][pause] Thanks for\n your business![await]'''
 dialog_data[777] = ''' Item #2: A “Mystery Egg”.

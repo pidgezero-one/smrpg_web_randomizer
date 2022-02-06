@@ -529,7 +529,7 @@ script = [
         "identifier": "EVENT_991_marrymore_inn",
         "command": "run_dialog",
         "args": [
-            2764,
+            2765,
             AreaObjects.BOWSER,
             [
                 _0x60Flags.CLOSABLE,
@@ -544,7 +544,7 @@ script = [
         "identifier": "EVENT_991_seaside_frog",
         "command": "run_dialog",
         "args": [
-            2765,
+            2766,
             AreaObjects.BOWSER,
             [
                 _0x60Flags.CLOSABLE,
@@ -559,7 +559,7 @@ script = [
         "identifier": "EVENT_991_sea",
         "command": "run_dialog",
         "args": [
-            2766,
+            2767,
             AreaObjects.BOWSER,
             [
                 _0x60Flags.CLOSABLE,
@@ -574,7 +574,7 @@ script = [
         "identifier": "EVENT_991_beanstalk",
         "command": "run_dialog",
         "args": [
-            2767,
+            2768,
             AreaObjects.BOWSER,
             [
                 _0x60Flags.CLOSABLE,
@@ -586,10 +586,10 @@ script = [
     },
     {"identifier": "EVENT_991_beanstalk_", "command": "end_all"},
     {
-        "identifier": "EVENT_991_casino",
+        "identifier": "EVENT_991_sj",
         "command": "run_dialog",
         "args": [
-            2768,
+            2769,
             AreaObjects.BOWSER,
             [
                 _0x60Flags.CLOSABLE,
@@ -599,5 +599,20 @@ script = [
             ],
         ],
     },
-    {"identifier": "EVENT_991_casino_", "command": "end_all"},
+    {"identifier": "EVENT_991_sj_", "command": "end_all"},
+    {
+        "identifier": "EVENT_991_deep_keep",
+        "command": "run_dialog",
+        "args": [
+            2770,
+            AreaObjects.BOWSER,
+            [
+                _0x60Flags.CLOSABLE,
+                _0x60Flags.ASYNC,
+                _0x60Flags.MULTILINE,
+                _0x60Flags.USE_BACKGROUND,
+            ],
+        ],
+    },
+    {"identifier": "EVENT_991_deep_keep_", "command": "end_all"},
 ]

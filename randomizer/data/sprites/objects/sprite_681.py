@@ -94,6 +94,11 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=16, mold_id=0),
                     ]
                 ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=0),
+                    ]
+                ),
             ],
         ),
     ),

@@ -232,12 +232,12 @@ script = [
     {
         "identifier": "EVENT_949_forest_clear",
         "command": "jmp_if_bit_clear",
-        "args": [0x7086, 6, "EVENT_949_rose_town_3"],
+        "args": [0x7083, 6, "EVENT_949_rose_town_3"],
     },
     {
         "identifier": "EVENT_949_gaz",  # gaz
         "command": "jmp_if_bit_clear",
-        "args": [0x7085, 7, "EVENT_949_rose_town_3"],
+        "args": [0x7085, 7, "EVENT_991_rose_town"],
     },
     {
         "identifier": "EVENT_949_marrymore_clear",  # lazy shell chests
@@ -311,9 +311,9 @@ script = [
     },
     # forest
     {
-        "identifier": "EVENT_949_forest_clear_",
+        "identifier": "EVENT_949_forest_open",
         "command": "jmp_if_bit_clear",
-        "args": [0x7086, 6, "EVENT_949_pipe"],
+        "args": [0x7066, 3, "EVENT_949_pipe"],
     },
     {
         "identifier": "EVENT_949_forest_1",
@@ -371,9 +371,9 @@ script = [
         "args": [AreaObjects.NPC_5, 234, "EVENT_991_forest"],
     },
     {
-        "identifier": "EVENT_949_forest_secret",
+        "identifier": "EVENT_949_secret_found",
         "command": "jmp_if_bit_clear",
-        "args": [0x7047, 2, "EVENT_991_rose_town"],
+        "args": [0x705D, 2, "EVENT_991_rose_town"],
     },
     # pipe vault/yoster
     {
@@ -424,15 +424,21 @@ script = [
     {
         "identifier": "EVENT_949_yoster_2",
         "command": "jmp_if_bit_clear",
-        "args": [0x7085, 3, "EVENT_991_pipe"],
+        "args": [0x7085, 3, "EVENT_991_yoster"],
     },
     # moleville
+    {
+        "identifier": "EVENT_949_mines_access", # is mines open
+        "command": "jmp_if_bit_clear",
+        "args": [0x707B, 3, "EVENT_949_pass_1"],
+    },
     {
         "identifier": "EVENT_949_is_bucket_available",  # is mines clear
         "command": "jmp_if_bit_clear",
         "args": [
             0x7057,
             4,
+            "EVENT_949_mines_open"
         ],
     },
     {
@@ -446,7 +452,7 @@ script = [
         "args": [0x704D, 2, "EVENT_949_treasure_shop_1"],
     },
     {
-        "identifier": "EVENT_949_fw",
+        "identifier": "EVENT_949_fw_",
         "command": "run_event_as_subroutine",
         "args": [982],
     },
@@ -468,7 +474,7 @@ script = [
     {
         "identifier": "EVENT_949_treasure_shop_3",  # moleville treasure shop 3
         "command": "jmp_if_bit_clear",
-        "args": [0x707D, 3, "EVENT_949_fw"],
+        "args": [0x707D, 7, "EVENT_949_fw"],
     },
     {
         "identifier": "EVENT_949_treasure_shop_3_",
@@ -541,12 +547,17 @@ script = [
     {
         "identifier": "EVENT_949_tower_recruit_1",
         "command": "jmp_if_bit_set",
-        "args": [0x7053, 6, "EVENT_949_hotel_stays"],
+        "args": [0x7053, 6, "EVENT_949_tower_pass_open"],
     },
     {
         "identifier": "EVENT_949_tower_recruit_2",
         "command": "jmp_if_bit_clear",
         "args": [0x7053, 7, "EVENT_949_hotel_stays"],
+    },
+    {
+        "identifier": "EVENT_949_tower_pass_open", # booster pass switch not hit yet
+        "command": "jmp_if_bit_clear",
+        "args": [0x7047, 5, "EVENT_991_tower"],
     },
     {
         "identifier": "EVENT_949_pass_5",
@@ -732,11 +743,6 @@ script = [
         "args": [AreaObjects.NPC_0, 134, "EVENT_991_sea"],
     },
     {
-        "identifier": "EVENT_949_sea_1",
-        "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_0, 134, "EVENT_991_sea"],
-    },
-    {
         "identifier": "EVENT_949_sea_2",
         "command": "jmp_if_object_trigger_enabled",
         "args": [AreaObjects.NPC_0, 132, "EVENT_991_sea"],
@@ -904,23 +910,23 @@ script = [
     },
     {
         "identifier": "EVENT_949_lands_end_9",
-        "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_18, 262, "EVENT_991_lands_end"],
+        "command": "jmp_if_bit_clear",
+        "args": [0x7050, 0, "EVENT_991_lands_end"],
     },
     {
         "identifier": "EVENT_949_lands_end_10",
-        "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_19, 262, "EVENT_991_lands_end"],
+        "command":  "jmp_if_bit_clear",
+        "args": [0x7050, 2, "EVENT_991_lands_end"],
     },
     {
         "identifier": "EVENT_949_belome_defeated",
         "command": "jmp_if_bit_clear",
-        "args": [0x708A, 0, "EVENT_991_temple"],
+        "args": [0x708A, 0, "EVENT_949_temple"],
     },
     {
-        "identifier": "EVENT_949_lands_ed_11",
+        "identifier": "EVENT_949_lands_end_11",
         "command": "jmp_if_bit_clear",
-        "args": [0x7094, 7, "EVENT_94+_lands_end"],
+        "args": [0x7094, 7, "EVENT_991_lands_end"],
     },
     # temple
     {
@@ -931,52 +937,47 @@ script = [
     {
         "identifier": "EVENT_949_temple_1",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_5, 420, "EVENT_991_lands_end"],
+        "args": [AreaObjects.NPC_5, 420, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_temple_2",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_6, 421, "EVENT_991_lands_end"],
+        "args": [AreaObjects.NPC_6, 421, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_temple_3",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_7, 421, "EVENT_991_lands_end"],
+        "args": [AreaObjects.NPC_7, 421, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_temple_4",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_8, 421, "EVENT_991_lands_end"],
+        "args": [AreaObjects.NPC_8, 421, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_temple_5",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_9, 421, "EVENT_991_lands_end"],
+        "args": [AreaObjects.NPC_9, 421, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_temple_6",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_0, 425, "EVENT_991_lands_end"],
+        "args": [AreaObjects.NPC_0, 425, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_temple_7",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_1, 425, "EVENT_991_lands_end"],
+        "args": [AreaObjects.NPC_1, 425, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_temple_8",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_2, 425, "EVENT_991_lands_end"],
+        "args": [AreaObjects.NPC_2, 425, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_temple_9",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_3, 425, "EVENT_991_lands_end"],
-    },
-    {
-        "identifier": "EVENT_949_statue",  # temple key
-        "command": "jmp_if_object_not_in_level",
-        "args": [AreaObjects.NPC_16, 422, "EVENT_949_temple_10"],
+        "args": [AreaObjects.NPC_3, 425, "EVENT_991_temple"],
     },
     {
         "identifier": "EVENT_949_seaside_tk_1",
@@ -986,7 +987,12 @@ script = [
     {
         "identifier": "EVENT_949_seaside_tk_3",
         "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_949_mtown_open"],
+        "args": [1, "EVENT_991_temple"],
+    },
+    {
+        "identifier": "EVENT_949_statue",  # temple key
+        "command": "jmp_if_bit_clear",
+        "args": [0x7094, 6, "EVENT_949_mtown_open"],
     },
     {
         "identifier": "EVENT_949_temple_10",
@@ -1311,6 +1317,11 @@ script = [
         "args": [AreaObjects.NPC_4, 345, "EVENT_991_nimbus_proper"],
     },
     {
+        "identifier": "EVENT_949_nimbus_12__",
+        "command": "jmp_if_bit_clear",
+        "args": [0x7084, 3, "EVENT_991_lands_end"],
+    },
+    {
         "identifier": "EVENT_949_nimbus_12_",
         "command": "jmp_if_object_in_level",
         "args": [AreaObjects.NPC_5, 345, "EVENT_991_nimbus_proper"],
@@ -1410,122 +1421,102 @@ script = [
     {
         "identifier": "EVENT_949_keep_4",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_4, 322, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_4, 322, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_5",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_5, 322, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_5, 322, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_6",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_6, 322, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_6, 322, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_7",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_7, 322, "EVENT_991_keep"],
-    },
-    {
-        "identifier": "EVENT_949_keep_8",
-        "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_8, 322, "EVENT_991_keep"],
-    },
-    {
-        "identifier": "EVENT_949_keep_9",
-        "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_9, 322, "EVENT_991_keep"],
-    },
-    {
-        "identifier": "EVENT_949_keep_10",
-        "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_10, 322, "EVENT_991_keep"],
-    },
-    {
-        "identifier": "EVENT_949_keep_11",
-        "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_11, 322, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_7, 322, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_12",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_10, 458, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_10, 458, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_13",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_11, 458, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_11, 458, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_14",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_12, 458, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_12, 458, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_15",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_13, 458, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_13, 458, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_16",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_8, 321, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_8, 321, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_17",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_3, 457, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_3, 457, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_18",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_4, 457, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_4, 457, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_19",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_5, 457, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_5, 457, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_20",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_6, 457, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_6, 457, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_21",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_7, 457, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_7, 457, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_22",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_1, 455, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_1, 455, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_23",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_2, 455, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_2, 455, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_24",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_3, 455, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_3, 455, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_25",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_4, 455, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_4, 455, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_26",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_5, 455, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_5, 455, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_27",
         "command": "jmp_if_object_trigger_enabled",
-        "args": [AreaObjects.NPC_6, 455, "EVENT_991_keep"],
+        "args": [AreaObjects.NPC_6, 455, "EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_28",
@@ -1535,7 +1526,7 @@ script = [
     {
         "identifier": "EVENT_949_keep_28_",
         "command": "jmp_if_mem_704x_at_7000_bit_clear",
-        "args": ["EVENT_991_keep"],
+        "args": ["EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_29",
@@ -1545,7 +1536,7 @@ script = [
     {
         "identifier": "EVENT_949_keep_29_",
         "command": "jmp_if_mem_704x_at_7000_bit_clear",
-        "args": ["EVENT_991_keep"],
+        "args": ["EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_30",
@@ -1555,7 +1546,7 @@ script = [
     {
         "identifier": "EVENT_949_keep_30_",
         "command": "jmp_if_mem_704x_at_7000_bit_clear",
-        "args": ["EVENT_991_keep"],
+        "args": ["EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_31",
@@ -1565,7 +1556,7 @@ script = [
     {
         "identifier": "EVENT_949_keep_31_",
         "command": "jmp_if_mem_704x_at_7000_bit_clear",
-        "args": ["EVENT_991_keep"],
+        "args": ["EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_32",
@@ -1575,7 +1566,7 @@ script = [
     {
         "identifier": "EVENT_949_keep_32_",
         "command": "jmp_if_mem_704x_at_7000_bit_clear",
-        "args": ["EVENT_991_keep"],
+        "args": ["EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_33",
@@ -1585,7 +1576,7 @@ script = [
     {
         "identifier": "EVENT_949_keep_33_",
         "command": "jmp_if_mem_704x_at_7000_bit_clear",
-        "args": ["EVENT_991_keep"],
+        "args": ["EVENT_991_deep_keep"],
     },
     {
         "identifier": "EVENT_949_keep_34",
@@ -1593,7 +1584,7 @@ script = [
         "args": [AreaObjects.NPC_0, 266, "EVENT_991_keep"],
     },
     {
-        "identifier": "EVENT_947_is_factory_open",
+        "identifier": "EVENT_949_is_factory_open",
         "command": "jmp_if_bit_clear",
         "args": [0x7070, 5, "EVENT_949_mtown_open_2"],
     },
@@ -1655,7 +1646,7 @@ script = [
     {
         "identifier": "EVENT_949_sj_rewards",
         "command": "jmp_if_bit_clear",
-        "args": [0x7092, 2, "EVENT_991_monstro"],
+        "args": [0x7092, 2, "EVENT_991_sj"],
     },
     {
         "identifier": "EVENT_949_end",

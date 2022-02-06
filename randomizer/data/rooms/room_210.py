@@ -5,6 +5,7 @@ from randomizer.helpers.roomobjecttables import ObjectType, Initiator, PostBattl
 from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.helpers.misc_helpers import ExtraSpriteActions
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -29,6 +30,7 @@ room = Room(
         ],
         full_palette_buffer=True
     ),
+    extra_required_actions=[ExtraSpriteActions.Sleep],
     music=Music._15_HERES_SOME_WEAPONS,
     entrance_event=1122,
     event_tiles=[
