@@ -57,7 +57,7 @@ room = Room(
         ],
         full_palette_buffer=True,
     ),
-    extra_required_actions=[ExtraSpriteActions.Flop, ExtraSpriteActions.Sleep],
+    extra_required_actions=[ExtraSpriteActions.DownPipe, ExtraSpriteActions.Sleep],
     music=Music._39_MARRYMORE,
     entrance_event=613,
     event_tiles=[

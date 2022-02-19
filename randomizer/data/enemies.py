@@ -361,9 +361,6 @@ class Enemy:
             patch.add_data(
                 addr, self.name_override.upper().encode().ljust(13, b'\x20'))
 
-        if self.xp == 0:
-            print(self)
-
         return patch
 
     def patch_script(self):

@@ -735,6 +735,21 @@ def randomize_all(world):
                             model = occupant.big_model
                         elif preferred_size == SpriteSize.Attack:
                             model = occupant.attack_model
+                        models = [occupant.attack_model, occupant.big_model, occupant.small_model]
+                        models = [m for m in models if m is not None]
+    
+                        if room_id in [205]: # rooms that just don't work nicely for models with 6 min vram
+                            is_current = False
+                            for m in models:
+                                sid = m.sprite_id
+                                model_sprite = world.sprites[sid]
+                                if utils.isclass_or_instance(model, m):
+                                    is_current = True
+                                if is_current and utils.get_min_vram_from_animation(model_sprite, 0) < 6:
+                                    model = m
+                                    break
+
+
                         if model is None:
                             raise Exception("what boss did you try to put here?")
 

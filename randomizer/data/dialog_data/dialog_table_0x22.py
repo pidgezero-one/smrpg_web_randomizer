@@ -73,7 +73,8 @@ dialog_data[48] = ''' Why don't you crash for a while?[await]
 dialog_data[49] = '''[page]
 
     Ahem...you're a little short![await]'''
-dialog_data[50] = '''
+dialog_data[50] = '''[page]
+
                Good luck![await]'''
 dialog_data[51] = '''          Got a “[0x70A7]”![await]'''
 dialog_data[52] = '''[page]

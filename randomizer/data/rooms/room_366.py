@@ -32,6 +32,7 @@ from randomizer.data.rooms.room import (
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
+
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -102,7 +103,7 @@ room = Room(
         ChestNPC(  # 0
             occupant=npcs.TreasureChest,
             initiator=Initiator.HIT_FROM_BELOW,
-            event_script=3611,
+            event_script=3612,
             action_script=435,
             lower_70A7=2,
             upper_70A7=0,

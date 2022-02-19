@@ -4879,3 +4879,4 @@ class TableNPC:
         self.byte5_bit6 = byte5_bit6
         self.byte5_bit7 = byte5_bit7
         self.byte6_bit2 = byte6_bit2
+

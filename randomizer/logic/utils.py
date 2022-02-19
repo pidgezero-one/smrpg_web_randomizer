@@ -10,15 +10,18 @@ import math
 from randomizer.helpers.objectsequencetables import _0x08Flags # circular dependency because of data init. consider moving data types into helpers
 from randomizer.helpers.eventtables import AreaObjects
 from randomizer.helpers.flag_helpers import SequenceType
+from randomizer.data import npcs
 
 # Amount to boost very small values when shuffling to give a bit more range for very small values.
 SMALL_BOOST_AMOUNT = 2.0
-
 
 def isclass_or_instance(obj_or_cls, classinfo):
     """Helper function to check if an object is an instance of a class, or the class itself."""
     return isinstance(obj_or_cls, classinfo) or (inspect.isclass(obj_or_cls) and issubclass(obj_or_cls, classinfo))
 
+
+def is_coin(npc):
+    return isclass_or_instance(model, npcs.Coin) or utils.isclass_or_instance(model, npcs.SmallCoin) or utils.isclass_or_instance(model, npcs.FrogCoin) or utils.isclass_or_instance(model, npcs.SmallFrogCoin)
 
 class BitMapSet(set):
     """A class representing a bitmap of a certain length using the set built-in type to track which bits are set."""
@@ -480,3 +483,6 @@ def get_min_vram_size_for_eventscript(world, npc_id, sprite_id, script):
         if is_animation_header(cmd, npc_id):
             min_vram = max(min_vram, get_min_vram_size_for_actionscript(world, sprite_id, cmd["subscript"]))
     return min_vram
+
+def is_coin(model):
+    return isclass_or_instance(model, npcs.Coin) or isclass_or_instance(model, npcs.SmallCoin) or isclass_or_instance(model, npcs.FrogCoin) or isclass_or_instance(model, npcs.SmallFrogCoin)

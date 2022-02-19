@@ -46,6 +46,9 @@ class Buffer:
             buffer_type, main_buffer_space, self.index_in_main_buffer
         )
 
+    def is_same(self, buffer):
+        return self.buffer_type == buffer.buffer_type and self.main_buffer_space == buffer.main_buffer_space and self.index_in_main_buffer == buffer.index_in_main_buffer
+
 
 class Partition:
     def __init__(
@@ -75,6 +78,12 @@ class Partition:
             ";".join([b.__str__() for b in self.buffers]),
             self.full_palette_buffer,
         )
+
+    def is_same(self, partition):
+        return self.ally_sprite_buffer_size == partition.ally_sprite_buffer_size and self.allow_extra_sprite_buffer == partition.allow_extra_sprite_buffer and self.extra_sprite_buffer_size == partition.extra_sprite_buffer_size and self.buffers[0].is_same(partition.buffers[0]) and self.buffers[1].is_same(partition.buffers[1]) and self.buffers[2].is_same(partition.buffers[2]) and self.full_palette_buffer == partition.full_palette_buffer
+
+    def is_similar_but_larger_packet_buffer(self, partition):
+        return self.ally_sprite_buffer_size == partition.ally_sprite_buffer_size and self.allow_extra_sprite_buffer == True and partition.allow_extra_sprite_buffer == True and self.extra_sprite_buffer_size > partition.extra_sprite_buffer_size and self.extra_sprite_buffer_size <= 2 and self.buffers[0].is_same(partition.buffers[0]) and self.buffers[1].is_same(partition.buffers[1]) and self.buffers[2].is_same(partition.buffers[2]) and self.full_palette_buffer == partition.full_palette_buffer
 
 
 class DestinationProps:

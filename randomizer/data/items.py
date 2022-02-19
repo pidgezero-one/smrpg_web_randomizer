@@ -5079,4 +5079,4 @@ def get_placeable_boss_fights(world):
     ]
 
 def is_coin(item):
-    return utils.isclass_or_instance(item, Coins) or utils.isclass_or_instance(item, FrogCoin) or utils.isclass_or_instance(item, MultiFrogCoin) or utils.isclass_or_instance(item, RareFrogCoin) or utils.isclass_or_instance(item, InfiniteCoinChest)
+    return utils.isclass_or_instance(item, Coins) or utils.isclass_or_instance(item, FrogCoin) or utils.isclass_or_instance(item, MultiFrogCoin) or utils.isclass_or_instance(item, RareFrogCoin) or utils.isclass_or_instance(item, InfiniteCoins)

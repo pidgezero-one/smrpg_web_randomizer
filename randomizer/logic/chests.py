@@ -1510,6 +1510,9 @@ def randomize_all(world):
                                     model_class = npcs.SmallCoin
                                     action_script = 15
                                     is_floating = True
+                            # special case for rooms in volcano where items are showing up as invisible
+                            elif r in [358, 361] and not utils.is_coin(model_class):
+                                action_script = 12
                             world.rooms[r].objects[npc_id].model.occupant = model_class
                             world.rooms[r].objects[npc_id].action_script = action_script
                             world.rooms[r].objects[npc_id].z_half = is_floating
