@@ -30,8 +30,8 @@ script = [
     },
     {
         "identifier": 'ACTION_554_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [31, 'ACTION_554_set_priority_16']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 31, 'ACTION_554_set_priority_16']
     },
     {
         "identifier": 'ACTION_554_set_sprite_sequence_6',
@@ -40,18 +40,18 @@ script = [
     },
     {
         "identifier": 'ACTION_554_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_554_set_priority_13']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_554_set_priority_13']
     },
     {
         "identifier": 'ACTION_554_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [22, 'ACTION_554_set_priority_13']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 22, 'ACTION_554_set_priority_13']
     },
     {
         "identifier": 'ACTION_554_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [25, 'ACTION_554_set_priority_13']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 25, 'ACTION_554_set_priority_13']
     },
     {
         "identifier": 'ACTION_554_set_priority_10',

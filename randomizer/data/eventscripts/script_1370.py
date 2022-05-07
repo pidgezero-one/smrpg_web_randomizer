@@ -16,8 +16,8 @@ script = [
         "args": [Sounds._088_WRONG_SIGNAL, 4]
     },
     {
-        "identifier": 'EVENT_1370_jmp_if_var_equals_short_0',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_1370_jmp_if_var_equals_const_0',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7026, 2, 'EVENT_1369_pause_0']
     },
     {
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1370_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1370_action_queue_async_2_SUBSCRIPT_reset_properties_0',
@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1370_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1370_action_queue_sync_10_SUBSCRIPT_fixed_f_coord_off_0',
@@ -101,8 +101,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1370_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1370_action_queue_sync_11_SUBSCRIPT_fixed_f_coord_off_0',
@@ -130,8 +130,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1370_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1370_action_queue_sync_12_SUBSCRIPT_fixed_f_coord_off_0',
@@ -159,8 +159,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1370_action_queue_async_13',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1370_action_queue_async_13_SUBSCRIPT_fixed_f_coord_off_0',
@@ -193,7 +193,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1370_inc_short_16',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7026]
     },
     {

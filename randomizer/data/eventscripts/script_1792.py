@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1792_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1792_action_queue_sync_0_SUBSCRIPT_object_memory_set_bit_0',
@@ -19,8 +19,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1792_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1792_action_queue_sync_1_SUBSCRIPT_object_memory_set_bit_0',
@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1792_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1792_action_queue_async_2_SUBSCRIPT_object_memory_set_bit_0',
@@ -53,7 +53,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1792_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701c, 0x0050]
     },
     {

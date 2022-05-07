@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3736_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3736_action_queue_async_1_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -57,7 +57,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3736_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7022, 0x0046]
     },
     {
@@ -66,8 +66,8 @@ script = [
         "args": [0x707c, 3]
     },
     {
-        "identifier": 'EVENT_3736_create_packet_at_object_coords_jmp_if_null_8',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_3736_create_packet_at_npc_coords_8',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._022_SPARKLES_MOVE_N, AreaObjects.MARIO, 'EVENT_3584_ret_0']
     },
     {

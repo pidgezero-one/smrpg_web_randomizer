@@ -11,7 +11,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1676_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 37]
     },
     {
@@ -21,7 +21,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1676_set_10',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 43]
     },
     {

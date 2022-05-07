@@ -10,8 +10,8 @@ script = [
     },
     {
         "identifier": 'ACTION_629_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [120, 'ACTION_629_pause_13']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 120, 'ACTION_629_pause_13']
     },
     {
         "identifier": 'ACTION_629_set_object_memory_bits_2',

@@ -7,12 +7,12 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3142_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x000c]
     },
     {
         "identifier": 'EVENT_3142_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x006c]
     },
     {
@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3142_action_queue_sync_48',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3142_action_queue_sync_48_SUBSCRIPT_face_northeast_0',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3142_action_queue_sync_49',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3142_action_queue_sync_49_SUBSCRIPT_shadow_off_3',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3142_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3142_action_queue_sync_10_SUBSCRIPT_set_animation_speed_0',

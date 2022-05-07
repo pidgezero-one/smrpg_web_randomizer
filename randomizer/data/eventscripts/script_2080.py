@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2080_hide_note',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
@@ -23,8 +23,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2080_show_guy_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
@@ -38,8 +38,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2080_show_guy_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
@@ -53,8 +53,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2080_show_guy_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
@@ -73,8 +73,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2080_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',

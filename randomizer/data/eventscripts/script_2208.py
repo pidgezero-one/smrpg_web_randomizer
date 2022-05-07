@@ -30,13 +30,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2208_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 14]
     },
     {
         "identifier": 'EVENT_2208_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2208_action_queue_sync_11_SUBSCRIPT_shift_to_xy_coords_0',
@@ -59,8 +59,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2208_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2208_action_queue_async_12_SUBSCRIPT_transfer_to_xyzf_0',

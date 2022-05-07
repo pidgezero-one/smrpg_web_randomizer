@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2646_jmp_if_7000_equals_short_15',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2646_set_7000_to_pressed_button_13']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2646_set_7000_to_pressed_button_13']
     },
     {
         "identifier": 'EVENT_2646_ret',

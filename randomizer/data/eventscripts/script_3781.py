@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3781_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3781_action_queue_sync_3_SUBSCRIPT_set_animation_speed_0',
@@ -68,7 +68,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3781_set_11',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 49]
     },
     {

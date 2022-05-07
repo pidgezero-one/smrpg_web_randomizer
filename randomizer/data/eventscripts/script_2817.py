@@ -12,12 +12,12 @@ script = [
     },
     {
         "identifier": 'EVENT_2817_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 1]
     },
     {
-        "identifier": 'EVENT_2817_add_max_FP_7000_2',
-        "command": 'add_max_FP_7000'
+        "identifier": 'EVENT_2817_add_7000_to_max_FP_2',
+        "command": 'add_7000_to_max_FP'
     },
     {
         "identifier": 'EVENT_2817_ret_4',

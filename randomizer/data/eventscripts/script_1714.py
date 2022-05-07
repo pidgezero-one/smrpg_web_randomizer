@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1714_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1714_action_queue_sync_0_SUBSCRIPT_shift_west_pixels_0',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1714_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1714_action_queue_async_5_SUBSCRIPT_visibility_on_0',
@@ -73,8 +73,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1714_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1714_action_queue_async_10_SUBSCRIPT_play_sound_0',
@@ -117,8 +117,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1714_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1714_action_queue_sync_13_SUBSCRIPT_set_priority_0',
@@ -187,8 +187,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1714_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1714_action_queue_async_14_SUBSCRIPT_set_animation_speed_0',

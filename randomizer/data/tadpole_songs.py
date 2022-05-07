@@ -164,8 +164,8 @@ class Song:
                 },
                 {
                     "identifier": 'jmp_if_7000_equals_short_%i' % index,
-                    "command": 'jmp_if_7000_equals_short',
-                    "args": [128, prefix_command_name('jmp_if_bit_clear_%i' % index)]
+                    "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 128, prefix_command_name('jmp_if_bit_clear_%i' % index)]
                 },
                 {
                     "identifier": 'jmp_%i' % index,
@@ -179,13 +179,13 @@ class Song:
                 },
                 {
                     "identifier": 'set_action_script_sync_%i' % index,
-                    "command": 'set_action_script_sync',
-                    "args": [0x14 + index, 571]
+                    "command": 'set_action_script',
+        'args': [0x14 + index, True, 571]
                 },
                 {
                     "identifier": 'set_7000_to_7000_short_mem_%i' % index,
-                    "command": 'set_7000_to_7000_short_mem',
-                    "args": [0x7012]
+                    "command": 'copy_var_to_var',
+        'args': [0x7012, 0x7000]
                 },
                 {
                     "identifier": 'jmp_to_subroutine_%i' % index,
@@ -194,8 +194,8 @@ class Song:
                 },
                 {
                     "identifier": 'EVENT_1082_dec_short_mem_%i' % index,
-                    "command": 'dec_short_mem',
-                    "args": [0x7000, 0x7010]
+                    "command": 'dec_var_from_7000',
+                    "args": [0x7010]
                 },
                 {
                     "identifier": 'jmp_to_subroutine__%i' % index,
@@ -206,19 +206,19 @@ class Song:
             if index < len(self.notes) - 1:
                 note_input.extend([
                     {
-                        "identifier": 'set_7000_short_mem_to_7000_short_mem_%i' % index,
-                        "command": 'set_7000_short_mem_to_7000_short_mem',
+                        "identifier": 'copy_var_to_var_%i' % index,
+                        "command": 'copy_var_to_var',
                         "args": [0x7012, address]
                     },
                     {
-                        "identifier": 'set_7000_short_mem_to_7000_short_mem__%i' % index,
-                        "command": 'set_7000_short_mem_to_7000_short_mem',
+                        "identifier": 'copy_var_to_var__%i' % index,
+                        "command": 'copy_var_to_var',
                         "args": [0x7012, 0x7010]
                     },
                     {
                         "identifier": 'action_queue_sync_13_%i' % index,
-                        "command": 'action_queue_sync',
-                        "args": [AreaObjects.SCREEN_FOCUS],
+                        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
                         "subscript": [
                             {
                                 "identifier": 'EVENT_1082_action_queue_sync_13_SUBSCRIPT_set_animation_speed_0',
@@ -238,8 +238,8 @@ class Song:
                     },
                     {
                         "identifier": 'action_queue_async_%i' % index,
-                        "command": 'action_queue_async',
-                        "args": [0x14 + index + 1],
+                        "command": 'action_queue',
+        'args': [0x14 + index + 1, False],
                         "subscript": [
                             {
                                 "identifier": 'EVENT_1082_action_queue_async_14_SUBSCRIPT_transfer_to_xyzf_0',
@@ -264,18 +264,18 @@ class Song:
                     },
                     {
                         "identifier": 'set_action_script_sync___%i' % index,
-                        "command": 'set_action_script_sync',
-                        "args": [0x14 + index + 1, 570]
+                        "command": 'set_action_script',
+        'args': [0x14 + index + 1, True, 570]
                     },
                     {
                         "identifier": 'set_%i' % index,
-                        "command": 'set',
+                        "command": "set_var_to_const",
                         "args": [0x70a9, 0x14 + index + 1]
                     },
                     {
                         "identifier": 'set_action_script_sync_____%i' % index,
-                        "command": 'set_action_script_sync',
-                        "args": [AreaObjects.MARIO, 515]
+                        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 515]
                     },
                 ])
             else:
@@ -286,13 +286,13 @@ class Song:
                         "args": [AreaObjects.MARIO]
                     },
                     {
-                        "identifier": 'set_7000_short_mem_to_7000_short_mem____%i' % index,
-                        "command": 'set_7000_short_mem_to_7000_short_mem',
+                        "identifier": 'copy_var_to_var____%i' % index,
+                        "command": 'copy_var_to_var',
                         "args": [0x7012, address]
                     },
                     {
-                        "identifier": 'set_7000_short_mem_to_7000_short_mem______%i' % index,
-                        "command": 'set_7000_short_mem_to_7000_short_mem',
+                        "identifier": 'copy_var_to_var______%i' % index,
+                        "command": 'copy_var_to_var',
                         "args": [0x7012, 0x7010]
                     },
                     {
@@ -301,19 +301,19 @@ class Song:
                         "args": [10]
                     },
                     {
-                        "identifier": 'set_7000_short_mem_to_7000_short_mem_-_%i' % index,
-                        "command": 'set_short',
+                        "identifier": 'copy_var_to_var_-_%i' % index,
+                        "command": "set_var_to_const",
                         "args": [0x7012, 3]
                     },
                     {
                         "identifier": 'set_7000_to_7000_short_mem___%i' % index,
-                        "command": 'set_7000_to_7000_short_mem',
-                        "args": [0x7012]
+                        "command": 'copy_var_to_var',
+        'args': [0x7012, 0x7000]
                     },
                     {
                         "identifier": 'dec_short_mem___%i' % index,
-                        "command": 'dec_short_mem',
-                        "args": [0x7000, 0x7010]
+                        "command": 'dec_var_from_7000',
+                        "args": [0x7010]
                     },
                 ])
                 if len(self.notes) == 8:
@@ -379,8 +379,8 @@ class Song:
         script_toadofsky_reactions = [
             {
                 "identifier": prefix_command_name('jmp_if_7000_equals_reaction_%i' % 0),
-                "command": 'jmp_if_7000_equals_short',
-                "args": [0, toadofsky_confirmations[0]]
+                "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, toadofsky_confirmations[0]]
             }
         ]
         for index, pair in enumerate(note_variable_pairs):
@@ -392,15 +392,15 @@ class Song:
 
             script_toadofsky_reactions.append({
                 "identifier": prefix_command_name('jmp_if_7000_equals_reaction_%i' % (index + 1)),
-                "command": 'jmp_if_7000_equals_short',
-                "args": [index + 1, toadofsky_confirmations[index + 1]]
+                "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, index + 1, toadofsky_confirmations[index + 1]]
             })
 
             note_check = [
                 {
                     "identifier": 'set_7000_to_7000_short_mem_notecheck_%i' % index,
-                    "command": 'set_7000_to_7000_short_mem',
-                    "args": [address]
+                    "command": 'copy_var_to_var',
+        'args': [address, 0x7000]
                 },
                 {
                     "identifier": 'jmp_to_subroutine_notecheck_%i' % index,
@@ -409,13 +409,13 @@ class Song:
                 },
                 {
                     "identifier": 'jmp_if_var_not_equals_notecheck_%i' % index,
-                    "command": 'jmp_if_var_not_equals_short',
+                    "command": 'jmp_if_var_not_equals_const',
                     "args": [address, note, prefix_command_name('set_action_script_sync_notecheck__%i' % index)]
                 },
                 {
                     "identifier": 'set_action_script_sync_notecheck_%i' % index,
-                    "command": 'set_action_script_sync',
-                    "args": [0x14 + index, 571]
+                    "command": 'set_action_script',
+        'args': [0x14 + index, True, 571]
                 },
                 {
                     "identifier": 'set_bit_notecheck_%i' % index,
@@ -429,8 +429,8 @@ class Song:
                 },
                 {
                     "identifier": 'set_action_script_sync_notecheck__%i' % index,
-                    "command": 'set_action_script_sync',
-                    "args": [0x14 + index, 572]
+                    "command": 'set_action_script',
+        'args': [0x14 + index, True, 572]
                 },
                 {
                     "identifier": 'clear_bit_notecheck_%i' % index,
@@ -449,9 +449,9 @@ class Song:
 
             correctness_check = [
                 {
-                    "identifier": 'jmp_if_var_not_equals_short_correctcheck_%i' % index,
-                    "command": 'jmp_if_var_not_equals_short',
-                    "args": [address, note, prefix_command_name('jmp_if_var_not_equals_short_correctcheck_%i' % (index + 1)) if index < len(self.notes) - 1 else script_toadofsky_reactions[0]["identifier"]]
+                    "identifier": 'jmp_if_var_not_equals_const_correctcheck_%i' % index,
+                    "command": 'jmp_if_var_not_equals_const',
+                    "args": [address, note, prefix_command_name('jmp_if_var_not_equals_const_correctcheck_%i' % (index + 1)) if index < len(self.notes) - 1 else script_toadofsky_reactions[0]["identifier"]]
                 },
                 {
                     "identifier": 'inc_correctcheck_%i' % index,
@@ -478,7 +478,7 @@ class Song:
             },
             {
                 "identifier": prefix_command_name('set_mandatory'),
-                "command": 'set',
+                "command": "set_var_to_const",
                 "args": [0x7000, 0]
             }
         ])

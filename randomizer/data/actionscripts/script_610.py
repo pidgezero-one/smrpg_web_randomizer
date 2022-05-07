@@ -10,8 +10,8 @@ script = [
         "args": [252, 6]
     },
     {
-        "identifier": 'ACTION_610_jump_to_script_1',
-        "command": 'jump_to_script',
+        "identifier": 'ACTION_610_jmp_to_script_1',
+        "command": 'jmp_to_script',
         "args": [14]
     }
 ]

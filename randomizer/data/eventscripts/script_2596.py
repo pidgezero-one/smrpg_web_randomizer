@@ -53,8 +53,8 @@ script = [
     {"identifier": "EVENT_2596_pause_4", "command": "pause", "args": [16]},
     {
         "identifier": "EVENT_2596_action_queue_async_5",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2596_action_queue_async_5_SUBSCRIPT_start_loop_n_times_0",
@@ -89,8 +89,8 @@ script = [
     },
     {
         "identifier": "EVENT_2596_action_queue_async_9",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2596_action_queue_async_9_SUBSCRIPT_reset_properties_0",
@@ -104,8 +104,8 @@ script = [
     },
     {
         "identifier": "EVENT_2596_action_queue_async_10",
-        "command": "action_queue_async",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": "EVENT_2596_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_0",
@@ -117,13 +117,13 @@ script = [
     {"identifier": "EVENT_2596_pause_11", "command": "pause", "args": [30]},
     {
         "identifier": "EVENT_2596_set_action_script_sync_29",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MARIO, 861],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, True, 861],
     },
     {
         "identifier": "EVENT_2596_set_action_script_sync_30",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.SCREEN_FOCUS, 862],
+        "command": "set_action_script",
+        "args": [AreaObjects.SCREEN_FOCUS, True, 862],
     },
     {
         "identifier": "EVENT_2596_start_battle_33",
@@ -132,13 +132,13 @@ script = [
     },
     {
         "identifier": "EVENT_2596_set_action_script_sync_34",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MARIO, 15],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, True, 15],
     },
     {
         "identifier": "EVENT_2596_set_action_script_sync_35",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.SCREEN_FOCUS, 15],
+        "command": "set_action_script",
+        "args": [AreaObjects.SCREEN_FOCUS, True, 15],
     },
     {
         "identifier": "EVENT_2596_jmp_if_bit_clear_36",

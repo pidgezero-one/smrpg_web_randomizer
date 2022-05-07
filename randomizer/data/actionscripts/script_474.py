@@ -14,8 +14,8 @@ script = [
     },
     {
         "identifier": 'ACTION_474_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [78, 'ACTION_474_set_priority_27']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 78, 'ACTION_474_set_priority_27']
     },
     {
         "identifier": 'ACTION_474_set_700C_to_pressed_button_3',
@@ -23,7 +23,7 @@ script = [
     },
     {
         "identifier": 'ACTION_474_add_4',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {
@@ -166,7 +166,7 @@ script = [
     },
     {
         "identifier": 'ACTION_474_add_34',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {

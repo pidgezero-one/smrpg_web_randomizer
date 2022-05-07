@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2635_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2635_action_queue_sync_0_SUBSCRIPT_set_sprite_sequence_0',
@@ -23,8 +23,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2635_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2635_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_0',
@@ -49,8 +49,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2635_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2635_action_queue_sync_4_SUBSCRIPT_set_animation_speed_0',
@@ -66,8 +66,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2635_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2635_action_queue_sync_5_SUBSCRIPT_set_animation_speed_0',
@@ -83,8 +83,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2635_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2635_action_queue_async_6_SUBSCRIPT_shift_south_pixels_0',

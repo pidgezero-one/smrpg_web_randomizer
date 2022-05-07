@@ -37,17 +37,17 @@ script = [
     },
     {
         "identifier": 'EVENT_2620_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x0008]
     },
     {
         "identifier": 'EVENT_2620_set_short_7',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x0060]
     },
     {
         "identifier": 'EVENT_2620_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x000c]
     },
     {
@@ -56,8 +56,8 @@ script = [
         "args": [0xfd, 0xc4]
     },
     {
-        "identifier": 'EVENT_2620_create_packet_at_7010_coords_jmp_if_null_10',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_2620_create_packet_at_7010_10',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._049_HAMMER_SPARKS_SFX, 'EVENT_2620_jmp_4']
     },
     {
@@ -72,17 +72,17 @@ script = [
     },
     {
         "identifier": 'EVENT_2620_set_short_13',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x000a]
     },
     {
         "identifier": 'EVENT_2620_set_short_14',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x0065]
     },
     {
         "identifier": 'EVENT_2620_set_short_15',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x000c]
     },
     {
@@ -91,8 +91,8 @@ script = [
         "args": [0xfd, 0xc4]
     },
     {
-        "identifier": 'EVENT_2620_create_packet_at_7010_coords_jmp_if_null_17',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_2620_create_packet_at_7010_17',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._049_HAMMER_SPARKS_SFX, 'EVENT_2620_jmp_4']
     },
     {
@@ -107,17 +107,17 @@ script = [
     },
     {
         "identifier": 'EVENT_2620_set_short_20',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x000d]
     },
     {
         "identifier": 'EVENT_2620_set_short_21',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x006b]
     },
     {
         "identifier": 'EVENT_2620_set_short_22',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x000c]
     },
     {
@@ -126,8 +126,8 @@ script = [
         "args": [0xfd, 0xc4]
     },
     {
-        "identifier": 'EVENT_2620_create_packet_at_7010_coords_jmp_if_null_24',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_2620_create_packet_at_7010_24',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._049_HAMMER_SPARKS_SFX, 'EVENT_2620_jmp_4']
     },
     {

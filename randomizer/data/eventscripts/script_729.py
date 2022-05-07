@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_729_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [153, 'EVENT_729_apply_tile_mod_21']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 153, 'EVENT_729_apply_tile_mod_21']
     },
     {
         "identifier": 'EVENT_729_apply_solidity_mod_10',

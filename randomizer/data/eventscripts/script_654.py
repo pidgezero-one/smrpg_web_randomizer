@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_654_dec_2',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae, 1],
     },
     {
         "identifier": 'EVENT_654_ret_3',

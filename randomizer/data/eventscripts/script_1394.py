@@ -6,8 +6,8 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1394_jmp_if_var_equals_short_0',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_1394_jmp_if_var_equals_const_0',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x71f0, 200, 'EVENT_1394_set_7000_to_7000_short_mem_6']
     },
     {
@@ -20,12 +20,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1394_set_7000_short_mem_to_7000_3',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x700a]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x700a]
     },
     {
         "identifier": 'EVENT_1394_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x71f0, 0x00c8]
     },
     {
@@ -34,8 +34,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1394_set_7000_to_7000_short_mem_6',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x700a]
+        "command": 'copy_var_to_var',
+        'args': [0x700a, 0x7000]
     },
     {
         "identifier": 'EVENT_1394_add_coins_7',

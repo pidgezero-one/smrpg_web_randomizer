@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2544_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2544_apply_tile_mod_10']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2544_apply_tile_mod_10']
     },
     {
         "identifier": 'EVENT_2544_set_bit_4',
@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2544_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2544_action_queue_sync_11_SUBSCRIPT_set_animation_speed_0',
@@ -77,8 +77,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2544_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2544_action_queue_sync_12_SUBSCRIPT_set_priority_0',
@@ -99,8 +99,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2544_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2544_action_queue_sync_13_SUBSCRIPT_set_animation_speed_0',
@@ -124,8 +124,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2544_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2544_action_queue_async_14_SUBSCRIPT_set_animation_speed_0',
@@ -162,8 +162,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2544_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2544_action_queue_async_16_SUBSCRIPT_jump_to_height_silent_0',

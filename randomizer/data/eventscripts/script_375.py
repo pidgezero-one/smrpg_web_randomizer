@@ -64,8 +64,8 @@ script = [
     },
     {
         "identifier": "EVENT_375_action_queue_async_43",
-        "command": "action_queue_async",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": "EVENT_375_action_queue_async_43_SUBSCRIPT_set_animation_speed_0",
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": "EVENT_375_action_queue_async_45",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": "EVENT_375_action_queue_async_45_SUBSCRIPT_set_animation_speed_0",

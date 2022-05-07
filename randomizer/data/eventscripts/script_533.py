@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_533_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A9],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_533_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_0',

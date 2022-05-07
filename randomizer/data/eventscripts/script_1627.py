@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1627_set_action_script_sync_6',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 160]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 160]
     },
     {
         "identifier": 'EVENT_1627_summon_to_current_level_7',
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1627_set_action_script_sync_8',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 160]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 160]
     },
     {
         "identifier": 'EVENT_1627_fade_in_from_black_async_9',
@@ -60,8 +60,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1627_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 160]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 160]
     },
     {
         "identifier": 'EVENT_1627_fade_in_from_black_async_17',

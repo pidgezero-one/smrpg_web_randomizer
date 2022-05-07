@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1901_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1901_action_queue_sync_3_SUBSCRIPT_shadow_off_0',
@@ -33,8 +33,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1901_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1901_action_queue_sync_4_SUBSCRIPT_fixed_f_coord_on_0',
@@ -71,8 +71,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1901_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1901_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_0',

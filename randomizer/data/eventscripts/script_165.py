@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": "EVENT_165_action_queue_async_0",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": "EVENT_165_action_queue_async_0_SUBSCRIPT_object_memory_set_bit_0",
@@ -78,62 +78,62 @@ script = [
     },
     {
         "identifier": "EVENT_165_check_12",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 28, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_1",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 78, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_2",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 81, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_10",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 80, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_3",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 84, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_4",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 103, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_9",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 105, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_11",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 114, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_8",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 121, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_5",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 126, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_7",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 141, "EVENT_165_run_dialog_104_"],
     },
     {
         "identifier": "EVENT_165_check_6",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A7, 151, "EVENT_165_run_dialog_104_"],
     },
     {

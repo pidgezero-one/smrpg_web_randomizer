@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2336_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 696]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 696]
     },
     {
         "identifier": 'EVENT_2336_pause_12',
@@ -87,8 +87,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2336_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 696]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 696]
     },
     {
         "identifier": 'EVENT_2336_pause_17',
@@ -112,8 +112,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2336_set_action_script_sync_21',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 696]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 696]
     },
     {
         "identifier": 'EVENT_2336_pause_22',
@@ -137,8 +137,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2336_set_action_script_sync_26',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 696]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 696]
     },
     {
         "identifier": 'EVENT_2336_pause_27',
@@ -162,8 +162,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2336_set_action_script_sync_31',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 696]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 696]
     },
     {
         "identifier": 'EVENT_2336_pause_32',
@@ -187,8 +187,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2336_set_action_script_sync_36',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 696]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 696]
     },
     {
         "identifier": 'EVENT_2336_pause_37',

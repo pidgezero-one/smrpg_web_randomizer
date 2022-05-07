@@ -10,18 +10,18 @@ script = [
         "args": [0x7044, 6]
     },
     {
-        "identifier": 'ACTION_929_jmp_if_var_equals_byte_1',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_929_jmp_if_var_equals_const_1',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 6, 'ACTION_929_play_sound_7']
     },
     {
-        "identifier": 'ACTION_929_jmp_if_var_equals_byte_2',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_929_jmp_if_var_equals_const_2',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 7, 'ACTION_929_set_sprite_sequence_10']
     },
     {
-        "identifier": 'ACTION_929_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_929_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 135, 'ACTION_929_set_sprite_sequence_12']
     },
     {

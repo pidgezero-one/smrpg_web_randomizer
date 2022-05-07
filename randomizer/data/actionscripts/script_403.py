@@ -17,7 +17,7 @@ script = [
     {
         "identifier": 'ACTION_403_jmp_if_random_above_128_2',
         "command": 'jmp_if_random_above_128',
-        "args": ['ACTION_403_set_random_5']
+        "args": ['ACTION_403_set_var_to_random_5']
     },
     {
         "identifier": 'ACTION_403_turn_random_direction_3',
@@ -29,8 +29,8 @@ script = [
         "args": [8]
     },
     {
-        "identifier": 'ACTION_403_set_random_5',
-        "command": 'set_random',
+        "identifier": 'ACTION_403_set_var_to_random_5',
+        "command": 'set_var_to_random',
         "args": [0x700c, 2]
     },
     {
@@ -57,8 +57,8 @@ script = [
         "args": [8]
     },
     {
-        "identifier": 'ACTION_403_set_random_11',
-        "command": 'set_random',
+        "identifier": 'ACTION_403_set_var_to_random_11',
+        "command": 'set_var_to_random',
         "args": [0x700c, 2]
     },
     {

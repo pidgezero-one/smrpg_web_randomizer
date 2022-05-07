@@ -62,7 +62,7 @@ script = [
     },
     {
         "identifier": "EVENT_171_special_val",  # box boy chest
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 514],
     },
     {"identifier": "EVENT_171_jmp", "command": "jmp_to_event", "args": [167]},

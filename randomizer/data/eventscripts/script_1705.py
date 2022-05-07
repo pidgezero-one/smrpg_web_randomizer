@@ -42,7 +42,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1705_set_7',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 20]
     },
     {
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1705_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AB, 474]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70AB, True, 474]
     },
     {
         "identifier": 'EVENT_1705_inc_11',
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1705_jmp_if_7000_not_equals_short_16',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [0, 'EVENT_1705_pause_0']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 0, 'EVENT_1705_pause_0']
     },
     {
         "identifier": 'EVENT_1705_jmp_if_bit_set_17',
@@ -106,7 +106,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1705_set_20',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 20]
     },
     {
@@ -121,8 +121,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1705_set_action_script_sync_23',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AB, 475]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70AB, True, 475]
     },
     {
         "identifier": 'EVENT_1705_inc_24',

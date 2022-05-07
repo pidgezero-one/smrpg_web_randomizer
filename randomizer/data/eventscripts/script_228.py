@@ -11,13 +11,13 @@ script = [
     },
     {
         "identifier": "EVENT_228_room_41_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [41, 'EVENT_228_room_41_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 41, 'EVENT_228_room_41_logic']
     },
     {
         "identifier": "EVENT_228_room_422_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [422, "EVENT_228_room_422_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 422, "EVENT_228_room_422_logic"]
     },
     {
         "identifier": "EVENT_228_cancel",
@@ -25,7 +25,7 @@ script = [
     },
     {
         "identifier": 'EVENT_228_room_41_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 140]
     },
     {
@@ -35,7 +35,7 @@ script = [
     },
     {
         "identifier": 'EVENT_228_room_422_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 101]
     },
     {

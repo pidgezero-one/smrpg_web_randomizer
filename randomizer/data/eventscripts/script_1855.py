@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1855_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_clear_solidity_bits_0',
@@ -59,8 +59,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_jmp_if_700C_not_equals_short_9',
-                "command": 'jmp_if_700C_not_equals_short',
-                "args": [0, 'EVENT_1855_action_queue_async_1_SUBSCRIPT_walk_1_step_south_7']
+                "command": "jmp_if_var_not_equals_const",
+                "args": [0x700C, 0, 'EVENT_1855_action_queue_async_1_SUBSCRIPT_walk_1_step_south_7']
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_play_sound_10',

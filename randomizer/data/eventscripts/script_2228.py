@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2228_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 1010]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 1010]
     },
     {
         "identifier": 'EVENT_2228_db_2',
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2228_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2228_action_queue_sync_4_SUBSCRIPT_sequence_looping_on_0',
@@ -38,8 +38,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2228_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2228_action_queue_sync_5_SUBSCRIPT_shift_southeast_pixels_0',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2228_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2228_action_queue_sync_6_SUBSCRIPT_shift_southwest_pixels_0',
@@ -84,8 +84,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2228_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2228_action_queue_async_7_SUBSCRIPT_shift_southwest_pixels_0',
@@ -110,8 +110,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2228_jmp_if_7000_not_equals_short_9',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [27, 'EVENT_2228_fade_in_from_black_async_14']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 27, 'EVENT_2228_fade_in_from_black_async_14']
     },
     {
         "identifier": 'EVENT_2228_remove_from_current_level_10',

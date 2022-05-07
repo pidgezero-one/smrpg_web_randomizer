@@ -24,17 +24,17 @@ script = [
     },
     {
         "identifier": 'ACTION_318_set_7000_short_mem_to_700C_5',
-        "command": 'set_7000_short_mem_to_700C',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x7024]
     },
     {
         "identifier": 'ACTION_318_set_700C_to_70A0_short_mem_6',
-        "command": 'set_700C_to_70A0_short_mem',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x70ae, 0x700C]
     },
     {
-        "identifier": 'ACTION_318_mem_compare_address_7',
-        "command": 'mem_compare_address',
+        "identifier": 'ACTION_318_compare_700C_to_var_7',
+        "command": 'compare_700C_to_var',
         "args": [0x7024]
     },
     {

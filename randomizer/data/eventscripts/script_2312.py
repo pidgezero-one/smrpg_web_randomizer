@@ -51,8 +51,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_async_9_SUBSCRIPT_set_animation_speed_0',
@@ -103,8 +103,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_sync_17',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_sync_17_SUBSCRIPT_floating_off_0',
@@ -167,8 +167,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_set_action_script_sync_21',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 391]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, True, 391]
     },
     {
         "identifier": 'EVENT_2312_pause_22',
@@ -187,8 +187,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_async_25',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_async_25_SUBSCRIPT_set_animation_speed_0',
@@ -239,8 +239,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_sync_33',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_sync_33_SUBSCRIPT_floating_off_0',
@@ -298,8 +298,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_set_action_script_sync_37',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 391]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, True, 391]
     },
     {
         "identifier": 'EVENT_2312_pause_38',
@@ -318,8 +318,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_async_41',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_async_41_SUBSCRIPT_set_animation_speed_0',
@@ -370,8 +370,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_sync_49',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_sync_49_SUBSCRIPT_floating_off_0',
@@ -429,8 +429,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_set_action_script_sync_53',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 391]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, True, 391]
     },
     {
         "identifier": 'EVENT_2312_pause_54',
@@ -449,8 +449,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_async_57',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_async_57_SUBSCRIPT_set_animation_speed_0',
@@ -496,8 +496,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_sync_64',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_sync_64_SUBSCRIPT_set_bit_0',
@@ -560,8 +560,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_set_action_script_sync_68',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 391]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, True, 391]
     },
     {
         "identifier": 'EVENT_2312_pause_69',
@@ -604,8 +604,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2312_action_queue_async_77',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2312_action_queue_async_77_SUBSCRIPT_set_animation_speed_0',

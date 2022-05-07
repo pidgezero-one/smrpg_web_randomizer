@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": "EVENT_3093_skip",
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70D5, 7,  'EVENT_3093_set_bit_399']
     },
     {

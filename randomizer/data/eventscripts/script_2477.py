@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2477_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 845]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_6, True, 845]
     },
     {
         "identifier": 'EVENT_2477_summon_to_current_level_11',
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2477_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 845]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 845]
     },
     {
         "identifier": 'EVENT_2477_summon_to_current_level_16',
@@ -107,8 +107,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2477_set_action_script_sync_20',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 845]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 845]
     },
     {
         "identifier": 'EVENT_2477_summon_to_current_level_21',
@@ -132,8 +132,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2477_set_action_script_sync_25',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 845]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 845]
     },
     {
         "identifier": 'EVENT_2477_summon_to_current_level_26',
@@ -157,8 +157,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2477_set_action_script_sync_30',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_10, 845]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_10, True, 845]
     },
     {
         "identifier": 'EVENT_2477_summon_to_current_level_31',
@@ -182,8 +182,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2477_set_action_script_sync_35',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 845]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_11, True, 845]
     },
     {
         "identifier": 'EVENT_2477_summon_to_current_level_36',

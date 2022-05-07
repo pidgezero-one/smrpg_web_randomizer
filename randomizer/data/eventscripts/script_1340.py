@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1340_jmp_if_7000_equals_short_210',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_1340_apply_tile_mod_5']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_1340_apply_tile_mod_5']
     },
     {
         "identifier": 'EVENT_1340_run_dialog_3',

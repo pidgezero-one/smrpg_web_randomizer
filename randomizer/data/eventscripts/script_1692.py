@@ -17,7 +17,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1692_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0x0001]
     },
     {
@@ -36,8 +36,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1692_create_packet_at_7010_coords_jmp_if_null_6',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_1692_create_packet_at_7010_6',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_1692_pause_5']
     },
     {
@@ -47,7 +47,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1692_add_short_8',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7034, 0x0003]
     },
     {
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1692_set_7000_to_70A0_short_mem_20',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x70ac, 0x7000]
     },
     {
         "identifier": 'EVENT_1692_mem_7000_and_const_21',
@@ -96,33 +96,33 @@ script = [
     },
     {
         "identifier": 'EVENT_1692_jmp_if_7000_equals_short_22',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [9, 'EVENT_1692_run_dialog_duration_30']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 9, 'EVENT_1692_run_dialog_duration_30']
     },
     {
         "identifier": 'EVENT_1692_jmp_if_7000_equals_short_23',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [13, 'EVENT_1692_run_dialog_duration_39']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 13, 'EVENT_1692_run_dialog_duration_39']
     },
     {
         "identifier": 'EVENT_1692_jmp_if_7000_equals_short_24',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_1692_run_dialog_duration_43']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 6, 'EVENT_1692_run_dialog_duration_43']
     },
     {
         "identifier": 'EVENT_1692_jmp_if_7000_equals_short_25',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [14, 'EVENT_1692_run_dialog_duration_48']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 14, 'EVENT_1692_run_dialog_duration_48']
     },
     {
         "identifier": 'EVENT_1692_jmp_if_7000_equals_short_26',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, 'EVENT_1692_run_dialog_duration_56']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, 'EVENT_1692_run_dialog_duration_56']
     },
     {
         "identifier": 'EVENT_1692_jmp_if_7000_equals_short_27',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [11, 'EVENT_1692_run_dialog_duration_65']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 11, 'EVENT_1692_run_dialog_duration_65']
     },
     {
         "identifier": 'EVENT_1692_run_dialog_duration_28',

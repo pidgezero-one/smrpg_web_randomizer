@@ -29,8 +29,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_612_jmp_if_var_not_equals_byte_5',
-        "command": 'jmp_if_var_not_equals_byte',
+        "identifier": 'ACTION_612_jmp_if_var_not_equals_const_5',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x70ae, 22, 'ACTION_612_visibility_off_0']
     },
     {

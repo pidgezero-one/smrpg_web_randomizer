@@ -45,7 +45,7 @@ from randomizer.helpers.objectsequencetables import (
 from randomizer.data import items
 
 script = [
-    {"identifier": "EVENT_3184_set_0", "command": "set", "args": [0x70DF, 54]},
+    {"identifier": "EVENT_3184_set_0", "command": "set_var_to_const", "args": [0x70DF, 54]},
     {
         "identifier": "EVENT_3184_jmp_if_bit_set_1",
         "command": "jmp_if_bit_set",
@@ -74,8 +74,8 @@ script = [
     },
     {
         "identifier": "EVENT_3184_action_queue_sync_59",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_3184_action_queue_sync_59_SUBSCRIPT_set_object_memory_bits_0",
@@ -95,8 +95,8 @@ script = [
     },
     {
         "identifier": "EVENT_3184_action_queue_sync_60",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": "EVENT_3184_action_queue_sync_60_SUBSCRIPT_set_object_memory_bits_0",

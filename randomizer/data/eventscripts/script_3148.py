@@ -32,22 +32,22 @@ script = [
     },
     {
         "identifier": 'EVENT_3148_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x0000]
     },
     {
         "identifier": 'EVENT_3148_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x0000]
     },
     {
         "identifier": 'EVENT_3148_set_short_7',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703c, 0x0000]
     },
     {
         "identifier": 'EVENT_3148_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703e, 0x0000]
     },
     # {

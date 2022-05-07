@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1750_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 777]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 777]
     },
     {
         "identifier": 'EVENT_1750_clear_bit_3',

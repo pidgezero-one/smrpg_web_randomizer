@@ -15,8 +15,8 @@ script = [
     },
     {
         "identifier": 'ACTION_886_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [410, 'ACTION_886_clear_bit_34']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 410, 'ACTION_886_clear_bit_34']
     },
     {
         "identifier": 'ACTION_886_set_sprite_sequence_3',

@@ -7,43 +7,43 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1775_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1775_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [23, 'EVENT_1775_jmp_if_bit_set_15']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 23, 'EVENT_1775_jmp_if_bit_set_15']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [24, 'EVENT_1775_jmp_if_bit_set_21']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 24, 'EVENT_1775_jmp_if_bit_set_21']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [25, 'EVENT_1775_jmp_if_bit_set_27']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 25, 'EVENT_1775_jmp_if_bit_set_27']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [26, 'EVENT_1775_jmp_if_bit_set_33']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 26, 'EVENT_1775_jmp_if_bit_set_33']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [27, 'EVENT_1775_jmp_if_bit_set_39']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 27, 'EVENT_1775_jmp_if_bit_set_39']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [28, 'EVENT_1775_jmp_if_bit_set_45']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 28, 'EVENT_1775_jmp_if_bit_set_45']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [29, 'EVENT_1775_jmp_if_bit_set_51']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 29, 'EVENT_1775_jmp_if_bit_set_51']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_8',
@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_sync_12_SUBSCRIPT_set_animation_speed_0',
@@ -147,8 +147,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_18',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_sync_18_SUBSCRIPT_set_animation_speed_0',
@@ -225,8 +225,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_24',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_sync_24_SUBSCRIPT_set_animation_speed_0',
@@ -305,8 +305,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_30',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_sync_30_SUBSCRIPT_set_animation_speed_0',
@@ -375,8 +375,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_36',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_sync_36_SUBSCRIPT_set_animation_speed_0',
@@ -459,8 +459,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_42',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_sync_42_SUBSCRIPT_set_animation_speed_0',
@@ -537,8 +537,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_48',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_sync_48_SUBSCRIPT_set_animation_speed_0',
@@ -625,8 +625,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_54',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_sync_54_SUBSCRIPT_set_animation_speed_0',
@@ -700,8 +700,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_action_queue_async_59',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_set_700C_to_object_coord_0',

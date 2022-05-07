@@ -45,7 +45,7 @@ from randomizer.helpers.objectsequencetables import (
 from randomizer.data import items
 
 script = [
-    {"identifier": "EVENT_3182_set_0", "command": "set", "args": [0x70DF, 24]},
+    {"identifier": "EVENT_3182_set_0", "command": "set_var_to_const", "args": [0x70DF, 24]},
     {
         "identifier": "EVENT_3182_jmp_if_bit_set_1",
         "command": "jmp_if_bit_set",
@@ -59,8 +59,8 @@ script = [
     {"identifier": "EVENT_3182_set_bit_3", "command": "set_bit", "args": [0x7049, 0]},
     {
         "identifier": "EVENT_3182_action_queue_sync_4",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_3182_action_queue_sync_4_SUBSCRIPT_jump_to_height_silent_0",

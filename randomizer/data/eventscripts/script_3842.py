@@ -6,8 +6,8 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3842_jmp_if_var_equals_byte_0',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3842_jmp_if_var_equals_const_0',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70de, 10, 'EVENT_3842_enter_area_3']
     },
     {

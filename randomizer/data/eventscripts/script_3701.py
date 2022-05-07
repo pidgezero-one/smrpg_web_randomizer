@@ -30,8 +30,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3701_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 883]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 883]
     },
     {
         "identifier": 'EVENT_3701_fade_in_from_black_async_5',

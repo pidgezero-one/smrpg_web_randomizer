@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_932_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_932_action_queue_sync_3_SUBSCRIPT_clear_solidity_bits_0',
@@ -44,8 +44,8 @@ script = [
     },
     {
         "identifier": 'EVENT_932_start_embedded_action_script_async_F1_4',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_9],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_9, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_932_start_embedded_action_script_async_F1_4_SUBSCRIPT_set_animation_speed_0',
@@ -60,8 +60,8 @@ script = [
     },
     {
         "identifier": 'EVENT_932_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_932_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_932_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_932_action_queue_async_7_SUBSCRIPT_face_northwest_0',
@@ -93,8 +93,8 @@ script = [
     },
     {
         "identifier": 'EVENT_932_set_action_script_sync_8',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 119]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 119]
     },
     {
         "identifier": 'EVENT_932_store_item_amount_7000_9',
@@ -103,13 +103,13 @@ script = [
     },
     {
         "identifier": 'EVENT_932_jmp_if_7000_equals_short_10',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_932_close_dialog_28']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_932_close_dialog_28']
     },
     {
         "identifier": 'EVENT_932_set_7000_short_mem_to_7000_11',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7026]
     },
     {
         "identifier": 'EVENT_932_run_dialog_12',
@@ -138,8 +138,8 @@ script = [
     },
     {
         "identifier": 'EVENT_932_action_queue_async_17',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_932_action_queue_async_17_SUBSCRIPT_set_animation_speed_0',
@@ -188,23 +188,23 @@ script = [
     },
     {
         "identifier": 'EVENT_932_set_7000_to_70A0_short_mem_21',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70d9]
+        "command": 'copy_var_to_var',
+        'args': [0x70d9, 0x7000]
     },
     {
         "identifier": 'EVENT_932_add_short_mem_22',
-        "command": 'add_short_mem',
-        "args": [0x7000, 0x7024]
+        "command": 'add_var_to_7000',
+        'args': [0x7024]
     },
     {
         "identifier": 'EVENT_932_set_70A0_short_mem_to_7000_23',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70d9]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70d9]
     },
     {
         "identifier": 'EVENT_932_mem_compare_val_24',
-        "command": 'mem_compare_val',
-        "args": [21]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 21]
     },
     {
         "identifier": 'EVENT_932_jmp_if_comparison_result_is_greater_or_equal_25',
@@ -280,7 +280,7 @@ script = [
     },
     {
         "identifier": 'EVENT_932_set_40',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70d9, 0]
     },
     {

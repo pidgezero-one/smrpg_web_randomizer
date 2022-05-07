@@ -51,13 +51,13 @@ script = [
     },
     {
         "identifier": 'EVENT_620_jmp_if_7000_equals_short_9',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [64, 'EVENT_256_ret_0']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 64, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_620_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_620_action_queue_async_10_SUBSCRIPT_set_animation_speed_0',

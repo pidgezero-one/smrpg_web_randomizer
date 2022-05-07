@@ -15,13 +15,13 @@ script = [
         "args": [18]
     },
     {
-        "identifier": 'ACTION_776_set_random_2',
-        "command": 'set_random',
+        "identifier": 'ACTION_776_set_var_to_random_2',
+        "command": 'set_var_to_random',
         "args": [0x700c, 16]
     },
     {
         "identifier": 'ACTION_776_add_3',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 15]
     },
     {
@@ -71,7 +71,7 @@ script = [
     {
         "identifier": 'ACTION_776_jmp_13',
         "command": 'jmp',
-        "args": ['ACTION_776_set_random_2']
+        "args": ['ACTION_776_set_var_to_random_2']
     },
     {
         "identifier": 'ACTION_776_set_animation_speed_14',
@@ -106,6 +106,6 @@ script = [
     {
         "identifier": 'ACTION_776_jmp_20',
         "command": 'jmp',
-        "args": ['ACTION_776_set_random_2']
+        "args": ['ACTION_776_set_var_to_random_2']
     }
 ]

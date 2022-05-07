@@ -39,7 +39,7 @@ script = [
     {
         "identifier": 'ACTION_299_jmp_if_bit_set_7',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'ACTION_299_set_random_66']
+        "args": [0x7043, 1, 'ACTION_299_set_var_to_random_66']
     },
     {
         "identifier": 'ACTION_299_set_bit_8',
@@ -53,38 +53,38 @@ script = [
     },
     {
         "identifier": 'ACTION_299_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_299_jmp_if_bit_set_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_299_jmp_if_bit_set_23']
     },
     {
         "identifier": 'ACTION_299_jmp_if_700C_equals_short_11',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_299_jmp_if_bit_set_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_299_jmp_if_bit_set_23']
     },
     {
         "identifier": 'ACTION_299_jmp_if_700C_equals_short_12',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_299_jmp_if_bit_set_35']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_299_jmp_if_bit_set_35']
     },
     {
         "identifier": 'ACTION_299_jmp_if_700C_equals_short_13',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [4, 'ACTION_299_jmp_if_bit_set_29']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 4, 'ACTION_299_jmp_if_bit_set_29']
     },
     {
         "identifier": 'ACTION_299_jmp_if_700C_equals_short_14',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [5, 'ACTION_299_jmp_if_bit_set_41']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 5, 'ACTION_299_jmp_if_bit_set_41']
     },
     {
         "identifier": 'ACTION_299_jmp_if_700C_equals_short_15',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [6, 'ACTION_299_jmp_if_bit_set_41']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 6, 'ACTION_299_jmp_if_bit_set_41']
     },
     {
         "identifier": 'ACTION_299_jmp_if_700C_equals_short_16',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_299_jmp_if_bit_set_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_299_jmp_if_bit_set_23']
     },
     {
         "identifier": 'ACTION_299_jmp_if_bit_set_17',
@@ -332,8 +332,8 @@ script = [
         "args": ['ACTION_302_pause_0']
     },
     {
-        "identifier": 'ACTION_299_set_random_66',
-        "command": 'set_random',
+        "identifier": 'ACTION_299_set_var_to_random_66',
+        "command": 'set_var_to_random',
         "args": [0x700c, 8]
     },
     {

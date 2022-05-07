@@ -29,8 +29,8 @@ script = [
         "command": 'add_z_coord_1_step'
     },
     {
-        "identifier": 'ACTION_248_pause_short_5',
-        "command": 'pause_short',
+        "identifier": 'ACTION_248_pause_5',
+        "command": 'pause',
         "args": [392]
     },
     {

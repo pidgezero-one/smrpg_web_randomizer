@@ -21,12 +21,12 @@ script = [
     },
     {
         "identifier": 'ACTION_676_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0004]
     },
     {
         "identifier": 'ACTION_676_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x0014]
     },
     {
@@ -49,14 +49,14 @@ script = [
         "args": ['ACTION_676_dec_short_29']
     },
     {
-        "identifier": 'ACTION_676_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_676_jmp_if_var_equals_const_9',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7030, 0, 'ACTION_676_set_animation_speed_21']
     },
     {
         "identifier": 'ACTION_676_jmp_if_random_above_66_10',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_676_set_animation_speed_5', 'ACTION_676_jmp_if_var_equals_short_12']
+        "args": ['ACTION_676_set_animation_speed_5', 'ACTION_676_jmp_if_var_equals_const_12']
     },
     {
         "identifier": 'ACTION_676_jmp_11',
@@ -64,8 +64,8 @@ script = [
         "args": ['ACTION_676_set_animation_speed_5']
     },
     {
-        "identifier": 'ACTION_676_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_676_jmp_if_var_equals_const_12',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702c, 0, 'ACTION_676_set_animation_speed_5']
     },
     {
@@ -88,8 +88,8 @@ script = [
         "args": ['ACTION_676_dec_short_29']
     },
     {
-        "identifier": 'ACTION_676_jmp_if_var_equals_short_17',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_676_jmp_if_var_equals_const_17',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7030, 0, 'ACTION_676_set_animation_speed_21']
     },
     {
@@ -100,12 +100,12 @@ script = [
     {
         "identifier": 'ACTION_676_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_676_jmp_if_var_equals_short_12', 'ACTION_676_set_animation_speed_5']
+        "args": ['ACTION_676_jmp_if_var_equals_const_12', 'ACTION_676_set_animation_speed_5']
     },
     {
         "identifier": 'ACTION_676_jmp_20',
         "command": 'jmp',
-        "args": ['ACTION_676_jmp_if_var_equals_short_12']
+        "args": ['ACTION_676_jmp_if_var_equals_const_12']
     },
     {
         "identifier": 'ACTION_676_set_animation_speed_21',
@@ -147,7 +147,7 @@ script = [
     },
     {
         "identifier": 'ACTION_676_dec_short_29',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x7030]
     },
     {
@@ -156,7 +156,7 @@ script = [
     },
     {
         "identifier": 'ACTION_676_dec_short_31',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x702c]
     },
     {

@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3657_set_short_20',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x000a]
     },
     {
@@ -27,22 +27,22 @@ script = [
     },
     {
         "identifier": 'EVENT_3657_set_27',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 102]
     },
     {
         "identifier": 'EVENT_3657_set_28',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 10]
     },
     {
         "identifier": 'EVENT_3657_set_7000_short_mem_to_7000_29',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x703a]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x703a]
     },
     {
         "identifier": 'EVENT_3657_set_30',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 3852]
     },
     {
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3657_set_7000_to_7000_short_mem_32',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x703a]
+        "command": 'copy_var_to_var',
+        'args': [0x703a, 0x7000]
     },
     {
         "identifier": 'EVENT_3657_dec_coins_33',
@@ -65,8 +65,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3657_action_queue_async_37',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3657_action_queue_async_37_SUBSCRIPT_object_memory_clear_bit_0',
@@ -77,13 +77,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3657_set_action_script_sync_38',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 978]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 978]
     },
     {
         "identifier": 'EVENT_3657_set_action_script_sync_39',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_3657_ret_40',
@@ -91,7 +91,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3657_set_short_41',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0096]
     },
     {
@@ -106,18 +106,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3657_set_48',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 108]
     },
     {
         "identifier": 'EVENT_3657_set_49',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 150]
     },
     {
         "identifier": 'EVENT_3657_set_7000_short_mem_to_7000_50',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x703a]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x703a]
     },
     {
         "identifier": 'EVENT_3657_jmp_51',

@@ -162,8 +162,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1783_action_queue_async_31',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1783_action_queue_async_31_SUBSCRIPT_db_0',
@@ -193,12 +193,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1783_set_short_35',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0014]
     },
     {
         "identifier": 'EVENT_1783_set_short_36',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0015]
     },
     {

@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3242_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 340]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 340]
     },
     {
         "identifier": 'EVENT_3242_run_dialog_2',

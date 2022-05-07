@@ -21,7 +21,7 @@ script = [
         "args": [AreaObjects.MARIO]
     },
     {
-        "identifier": 'EVENT_3158_create_packet_at_7010_coords_jmp_if_null_5',
+        "identifier": 'EVENT_3158_create_packet_at_7010_5',
         "command": 'jmp_to_event',
         "args": [3385]
     },

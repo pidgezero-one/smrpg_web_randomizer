@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1693_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1693_action_queue_sync_3_SUBSCRIPT_jump_to_height_silent_0',
@@ -66,22 +66,22 @@ script = [
     },
     {
         "identifier": 'EVENT_1693_set_7000_to_70A0_short_mem_11',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ad]
+        "command": 'copy_var_to_var',
+        'args': [0x70ad, 0x7000]
     },
     {
         "identifier": 'EVENT_1693_add_12',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 5]
     },
     {
-        "identifier": 'EVENT_1693_set_random_13',
-        "command": 'set_random',
+        "identifier": 'EVENT_1693_set_var_to_random_13',
+        "command": 'set_var_to_random',
         "args": [0x702a, 20]
     },
     {
-        "identifier": 'EVENT_1693_mem_compare_address_14',
-        "command": 'mem_compare_address',
+        "identifier": 'EVENT_1693_compare_7000_to_var_14',
+        "command": 'compare_7000_to_var',
         "args": [0x702a]
     },
     {
@@ -111,8 +111,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1693_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1693_action_queue_async_20_SUBSCRIPT_inc_palette_row_by_0',

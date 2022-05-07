@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3682_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3682_action_queue_sync_0_SUBSCRIPT_set_animation_speed_0',
@@ -39,7 +39,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3682_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 32]
     },
     {

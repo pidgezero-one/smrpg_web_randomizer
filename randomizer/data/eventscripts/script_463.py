@@ -85,23 +85,23 @@ script = [
     },
     {
         "identifier": 'EVENT_463_set_7000_short_mem_to_7000_22',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7024]
     },
     {
         "identifier": 'EVENT_463_set_7000_to_70A0_short_mem_23',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70d8]
+        "command": 'copy_var_to_var',
+        'args': [0x70d8, 0x7000]
     },
     {
         "identifier": 'EVENT_463_add_short_mem_24',
-        "command": 'add_short_mem',
-        "args": [0x7000, 0x7024]
+        "command": 'add_var_to_7000',
+        'args': [0x7024]
     },
     {
         "identifier": 'EVENT_463_jmp_if_7000_equals_short_25',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_463_play_sound_30']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_463_play_sound_30']
     },
     {
         "identifier": 'EVENT_463_run_dialog_20',
@@ -128,7 +128,7 @@ script = [
     },
     {
         "identifier": 'EVENT_463_set_31',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 3]
     },
     {

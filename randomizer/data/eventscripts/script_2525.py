@@ -6,8 +6,8 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2525_jmp_if_var_equals_byte_0',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2525_jmp_if_var_equals_const_0',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 6, 'EVENT_2525_freeze_camera_2']
     },
     {
@@ -20,8 +20,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2525_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2525_action_queue_async_3_SUBSCRIPT_pause_0',

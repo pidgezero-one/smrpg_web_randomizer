@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_778_action_queue_async_19',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'ACTION_617_shift_west_pixels_6',

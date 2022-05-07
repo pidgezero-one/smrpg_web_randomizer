@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'ACTION_344_jmp_if_700C_not_equals_short_2',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [3, 'ACTION_344_sequence_looping_on_4']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x700C, 3, 'ACTION_344_sequence_looping_on_4']
     },
     {
         "identifier": 'ACTION_344_shift_xy_pixels_3',
@@ -43,38 +43,38 @@ script = [
     },
     {
         "identifier": 'ACTION_344_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_344_pause_22']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_344_pause_22']
     },
     {
         "identifier": 'ACTION_344_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [6, 'ACTION_344_pause_21']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 6, 'ACTION_344_pause_21']
     },
     {
         "identifier": 'ACTION_344_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [5, 'ACTION_344_pause_20']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 5, 'ACTION_344_pause_20']
     },
     {
         "identifier": 'ACTION_344_jmp_if_700C_equals_short_11',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [4, 'ACTION_344_pause_19']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 4, 'ACTION_344_pause_19']
     },
     {
         "identifier": 'ACTION_344_jmp_if_700C_equals_short_12',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [3, 'ACTION_344_pause_18']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 3, 'ACTION_344_pause_18']
     },
     {
         "identifier": 'ACTION_344_jmp_if_700C_equals_short_13',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_344_pause_17']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_344_pause_17']
     },
     {
         "identifier": 'ACTION_344_jmp_if_700C_equals_short_14',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_344_pause_16']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_344_pause_16']
     },
     {
         "identifier": 'ACTION_344_pause_15',

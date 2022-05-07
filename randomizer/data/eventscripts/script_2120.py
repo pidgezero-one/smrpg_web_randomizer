@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2120_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2120_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_0',
@@ -43,8 +43,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2120_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2120_action_queue_sync_2_SUBSCRIPT_sequence_looping_on_0',
@@ -91,8 +91,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2120_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2120_action_queue_async_3_SUBSCRIPT_pause_0',
@@ -133,8 +133,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2120_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2120_action_queue_async_9_SUBSCRIPT_reset_properties_0',

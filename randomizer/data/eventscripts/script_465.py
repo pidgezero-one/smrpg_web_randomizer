@@ -67,107 +67,107 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_12',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 0]
     },
     {
         "identifier": 'EVENT_465_set_13',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70af, 0]
     },
     {
         "identifier": 'EVENT_465_set_14',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70eb, 0]
     },
     {
         "identifier": 'EVENT_465_set_15',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ee, 0]
     },
     {
         "identifier": 'EVENT_465_set_short_16',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_17',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0014]
     },
     {
         "identifier": 'EVENT_465_set_short_18',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702a, 0x0014]
     },
     {
         "identifier": 'EVENT_465_set_short_19',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702e, 0x0014]
     },
     {
         "identifier": 'EVENT_465_set_short_20',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_21',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_22',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_23',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_24',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_25',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_26',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_27',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700a, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_28',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700c, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_29',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_30',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_31',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703c, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_32',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703e, 0x0000]
     },
     {
@@ -177,22 +177,22 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_34',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0014]
     },
     {
         "identifier": 'EVENT_465_set_short_35',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702e, 0x0014]
     },
     {
         "identifier": 'EVENT_465_set_short_36',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702a, 0x0014]
     },
     {
         "identifier": 'EVENT_465_set_short_37',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x0014]
     },
     {
@@ -202,43 +202,43 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_7000_to_70A0_short_mem_39',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70b0]
+        "command": 'copy_var_to_var',
+        'args': [0x70b0, 0x7000]
     },
     {
         "identifier": 'EVENT_465_jmp_if_7000_equals_short_40',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_465_set_short_53']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_465_set_short_53']
     },
     {
         "identifier": 'EVENT_465_jmp_if_7000_equals_short_41',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [4, 'EVENT_465_set_short_60']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 4, 'EVENT_465_set_short_60']
     },
     {
         "identifier": 'EVENT_465_jmp_if_7000_equals_short_42',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_465_set_short_70']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 5, 'EVENT_465_set_short_70']
     },
     {
         "identifier": 'EVENT_465_jmp_if_7000_equals_short_43',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_465_set_short_77']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 6, 'EVENT_465_set_short_77']
     },
     {
         "identifier": 'EVENT_465_jmp_if_7000_equals_short_44',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [8, 'EVENT_465_set_short_87']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 8, 'EVENT_465_set_short_87']
     },
     {
         "identifier": 'EVENT_465_jmp_if_7000_equals_short_45',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [10, 'EVENT_465_set_short_97']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 10, 'EVENT_465_set_short_97']
     },
     {
         "identifier": 'EVENT_465_jmp_if_7000_equals_short_46',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [20, 'EVENT_465_set_short_107']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 20, 'EVENT_465_set_short_107']
     },
     {
         "identifier": 'EVENT_465_jmp_if_random_above_66_47',
@@ -257,12 +257,12 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_50',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0051]
     },
     {
         "identifier": 'EVENT_465_set_short_51',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0032]
     },
     {
@@ -272,32 +272,32 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_53',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x004f]
     },
     {
         "identifier": 'EVENT_465_set_short_54',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0030]
     },
     {
         "identifier": 'EVENT_465_set_short_55',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0051]
     },
     {
         "identifier": 'EVENT_465_set_short_56',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x0032]
     },
     {
         "identifier": 'EVENT_465_set_short_57',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x004c]
     },
     {
         "identifier": 'EVENT_465_set_short_58',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0044]
     },
     {
@@ -307,32 +307,32 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_60',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x004d]
     },
     {
         "identifier": 'EVENT_465_set_short_61',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x002f]
     },
     {
         "identifier": 'EVENT_465_set_short_62',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x004f]
     },
     {
         "identifier": 'EVENT_465_set_short_63',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x002d]
     },
     {
         "identifier": 'EVENT_465_set_short_64',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0048]
     },
     {
         "identifier": 'EVENT_465_set_short_65',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0044]
     },
     {
@@ -342,12 +342,12 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_67',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x004a]
     },
     {
         "identifier": 'EVENT_465_set_short_68',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x002b]
     },
     {
@@ -357,32 +357,32 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_70',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x004a]
     },
     {
         "identifier": 'EVENT_465_set_short_71',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x002d]
     },
     {
         "identifier": 'EVENT_465_set_short_72',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x004d]
     },
     {
         "identifier": 'EVENT_465_set_short_73',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x0029]
     },
     {
         "identifier": 'EVENT_465_set_short_74',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0046]
     },
     {
         "identifier": 'EVENT_465_set_short_75',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0040]
     },
     {
@@ -392,32 +392,32 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_77',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0046]
     },
     {
         "identifier": 'EVENT_465_set_short_78',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x002a]
     },
     {
         "identifier": 'EVENT_465_set_short_79',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x004c]
     },
     {
         "identifier": 'EVENT_465_set_short_80',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x0026]
     },
     {
         "identifier": 'EVENT_465_set_short_81',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0044]
     },
     {
         "identifier": 'EVENT_465_set_short_82',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x003e]
     },
     {
@@ -427,12 +427,12 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_84',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x0044]
     },
     {
         "identifier": 'EVENT_465_set_short_85',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x0026]
     },
     {
@@ -442,32 +442,32 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_87',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0044]
     },
     {
         "identifier": 'EVENT_465_set_short_88',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0027]
     },
     {
         "identifier": 'EVENT_465_set_short_89',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x004a]
     },
     {
         "identifier": 'EVENT_465_set_short_90',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x0022]
     },
     {
         "identifier": 'EVENT_465_set_short_91',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0040]
     },
     {
         "identifier": 'EVENT_465_set_short_92',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x003a]
     },
     {
@@ -477,12 +477,12 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_94',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x0041]
     },
     {
         "identifier": 'EVENT_465_set_short_95',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x0024]
     },
     {
@@ -492,32 +492,32 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_97',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0042]
     },
     {
         "identifier": 'EVENT_465_set_short_98',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0023]
     },
     {
         "identifier": 'EVENT_465_set_short_99',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0046]
     },
     {
         "identifier": 'EVENT_465_set_short_100',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x001f]
     },
     {
         "identifier": 'EVENT_465_set_short_101',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x003e]
     },
     {
         "identifier": 'EVENT_465_set_short_102',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0037]
     },
     {
@@ -527,12 +527,12 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_104',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x0042]
     },
     {
         "identifier": 'EVENT_465_set_short_105',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x001e]
     },
     {
@@ -542,32 +542,32 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_107',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0038]
     },
     {
         "identifier": 'EVENT_465_set_short_108',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x001e]
     },
     {
         "identifier": 'EVENT_465_set_short_109',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x003c]
     },
     {
         "identifier": 'EVENT_465_set_short_110',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x0010]
     },
     {
         "identifier": 'EVENT_465_set_short_111',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0034]
     },
     {
         "identifier": 'EVENT_465_set_short_112',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x002c]
     },
     {
@@ -587,8 +587,8 @@ script = [
     },
     {
         "identifier": 'EVENT_465_mem_compare_val_116',
-        "command": 'mem_compare_val',
-        "args": [6]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 6]
     },
     {
         "identifier": 'EVENT_465_jmp_if_comparison_result_is_greater_or_equal_117',
@@ -597,8 +597,8 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_70A0_short_mem_to_7000_118',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70eb]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70eb]
     },
     {
         "identifier": 'EVENT_465_jmp_119',
@@ -607,7 +607,7 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_120',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70eb, 5]
     },
     {
@@ -617,7 +617,7 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_122',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70eb, 3]
     },
     {
@@ -641,8 +641,8 @@ script = [
     },
     {
         "identifier": 'EVENT_465_start_embedded_action_script_sync_F1_127',
-        "command": 'start_embedded_action_script_sync_F1',
-        "args": [AreaObjects.NPC_9],
+        "command": 'start_embedded_action_script',
+        "args": [AreaObjects.NPC_9, True, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_465_start_embedded_action_script_sync_F1_127_SUBSCRIPT_set_animation_speed_0',
@@ -657,8 +657,8 @@ script = [
     },
     {
         "identifier": 'EVENT_465_action_queue_sync_128',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_465_action_queue_sync_128_SUBSCRIPT_sequence_looping_on_0',
@@ -668,8 +668,8 @@ script = [
     },
     {
         "identifier": 'EVENT_465_action_queue_sync_129',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_465_action_queue_sync_129_SUBSCRIPT_sequence_looping_on_0',
@@ -679,8 +679,8 @@ script = [
     },
     {
         "identifier": 'EVENT_465_action_queue_sync_130',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, True],
         "subscript": [
             {
                 "identifier": 'EVENT_465_action_queue_sync_130_SUBSCRIPT_sequence_looping_on_0',
@@ -827,12 +827,12 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_159',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0000]
     },
     {
         "identifier": 'EVENT_465_set_short_160',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x0000]
     },
     {
@@ -902,13 +902,13 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_action_script_sync_174',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 499]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 499]
     },
     {
         "identifier": 'EVENT_465_set_action_script_sync_175',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 431]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 431]
     },
     {
         "identifier": 'EVENT_465_jmp_176',
@@ -927,13 +927,13 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_action_script_sync_179',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 499]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 499]
     },
     {
         "identifier": 'EVENT_465_set_action_script_sync_180',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 431]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 431]
     },
     {
         "identifier": 'EVENT_465_jmp_181',
@@ -947,7 +947,7 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_183',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0000]
     },
     {
@@ -967,12 +967,12 @@ script = [
     },
     {
         "identifier": 'EVENT_465_inc_short_187',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7032]
     },
     {
         "identifier": 'EVENT_465_mem_compare_188',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7032, 4]
     },
     {
@@ -1002,12 +1002,12 @@ script = [
     },
     {
         "identifier": 'EVENT_465_inc_short_194',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7032]
     },
     {
         "identifier": 'EVENT_465_mem_compare_195',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7032, 4]
     },
     {
@@ -1032,7 +1032,7 @@ script = [
     },
     {
         "identifier": 'EVENT_465_set_short_200',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0000]
     },
     {

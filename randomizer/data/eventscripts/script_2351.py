@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2351_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 389]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 389]
     },
     {
         "identifier": 'EVENT_2351_pause_8',
@@ -87,8 +87,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2351_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 389]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 389]
     },
     {
         "identifier": 'EVENT_2351_pause_17',
@@ -132,8 +132,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2351_set_action_script_sync_25',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 389]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 389]
     },
     {
         "identifier": 'EVENT_2351_pause_26',
@@ -177,8 +177,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2351_set_action_script_sync_34',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 389]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 389]
     },
     {
         "identifier": 'EVENT_2351_pause_35',

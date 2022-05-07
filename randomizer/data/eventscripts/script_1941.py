@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1941_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1941_action_queue_sync_7_SUBSCRIPT_set_animation_speed_0',
@@ -43,7 +43,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1941_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701c, 0x0028]
     },
     {

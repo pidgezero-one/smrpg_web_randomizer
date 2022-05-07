@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1557_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1557_action_queue_async_1_SUBSCRIPT_visibility_off_0',
@@ -35,13 +35,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1557_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 482]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 482]
     },
     {
         "identifier": 'EVENT_1557_set_action_script_async_6',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_1557_unfreeze_camera_7',
@@ -70,23 +70,23 @@ script = [
     },
     {
         "identifier": 'EVENT_1557_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 36]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 36]
     },
     {
         "identifier": 'EVENT_1557_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 36]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 36]
     },
     {
         "identifier": 'EVENT_1557_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 36]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 36]
     },
     {
         "identifier": 'EVENT_1557_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 36]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 36]
     },
     {
         "identifier": 'EVENT_1557_pause_17',
@@ -99,8 +99,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1557_action_queue_async_19',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1557_action_queue_async_19_SUBSCRIPT_walk_1_step_west_0',

@@ -47,8 +47,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_2068_action_queue_sync_1",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_2068_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0",
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": "EVENT_2068_action_queue_async_2",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2068_action_queue_async_2_SUBSCRIPT_clear_solidity_bits_0",
@@ -101,8 +101,8 @@ script = [
     {"identifier": "EVENT_2068_freeze_camera_42", "command": "freeze_camera"},
     {
         "identifier": "EVENT_2068_action_queue_async_44",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_2068_action_queue_async_44_SUBSCRIPT_fixed_f_coord_on_0",
@@ -167,7 +167,7 @@ script = [
     },
     {
         "identifier": "EVENT_2068_start_battle_47",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 515],
     },
     {
@@ -232,8 +232,8 @@ script = [
     },
     {
         "identifier": "EVENT_2068_action_queue_sync__61",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_2],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": "EVENT_2068_action_queue_sync__61_SUBSCRIPT_pause_0",
@@ -283,8 +283,8 @@ script = [
     },
     {
         "identifier": "EVENT_2068_action_queue_sync_61",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_2068_action_queue_sync_61_SUBSCRIPT_pause_0",
@@ -325,8 +325,8 @@ script = [
     },
     {
         "identifier": "EVENT_2068_action_queue_async_62",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2068_action_queue_async_62_SUBSCRIPT_pause_0",
@@ -396,7 +396,7 @@ script = [
         "command": "jmp_if_bit_set",
         "args": [0x7040, 0, "EVENT_2068_pause_64"],
     },
-    {"identifier": "EVENT_2068_pause_64_", "command": "set", "args": [0x7000, 515]},
+    {"identifier": "EVENT_2068_pause_64_", "command": "set_var_to_const", "args": [0x7000, 515]},
     {"identifier": "EVENT_2068_star", "command": "jmp_to_event", "args": [167]},
     {"identifier": "EVENT_2068_pause_64", "command": "pause", "args": [30]},
     {"identifier": "EVENT_2068_ret_70", "command": "ret"},

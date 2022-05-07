@@ -16,7 +16,7 @@ script = [
     },
     {
         "identifier": 'EVENT_512_mem_compare_204',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7010, 3]
     },
     {

@@ -53,8 +53,8 @@ script = [
     {"identifier": "EVENT_3880_s", "command": "set_bit", "args": [0x709C, 1]},
     {
         "identifier": "EVENT_3880_action_queue_sync_0",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": "EVENT_3880_action_queue_sync_0_SUBSCRIPT_set_animation_speed_0",
@@ -80,12 +80,12 @@ script = [
     },
     {
         "identifier": "EVENT_3880_npc",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x15, "EVENT_3880_chest_2"],
     },
     {
         "identifier": "EVENT_3880_npc_",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x16, "EVENT_3880_chest_3"],
     },
     {

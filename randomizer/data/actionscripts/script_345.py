@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'ACTION_345_set_700C_to_7000_short_mem_2',
-        "command": 'set_700C_to_7000_short_mem',
-        "args": [0x702c]
+        "command": 'copy_var_to_var',
+        'args': [0x702c, 0x700C]
     },
     {
         "identifier": 'ACTION_345_mem_700C_and_const_3',
@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'ACTION_345_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_345_shift_f_direction_steps_6']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_345_shift_f_direction_steps_6']
     },
     {
         "identifier": 'ACTION_345_set_animation_speed_5',
@@ -46,8 +46,8 @@ script = [
     },
     {
         "identifier": 'ACTION_345_set_700C_to_7000_short_mem_8',
-        "command": 'set_700C_to_7000_short_mem',
-        "args": [0x702c]
+        "command": 'copy_var_to_var',
+        'args': [0x702c, 0x700C]
     },
     {
         "identifier": 'ACTION_345_mem_700C_and_const_9',
@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'ACTION_345_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_345_face_mario_13']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_345_face_mario_13']
     },
     {
         "identifier": 'ACTION_345_turn_random_direction_11',

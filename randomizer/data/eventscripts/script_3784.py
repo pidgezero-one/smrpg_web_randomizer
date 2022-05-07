@@ -17,13 +17,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3784_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 977]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 977]
     },
     {
         "identifier": 'EVENT_3784_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3784_action_queue_sync_3_SUBSCRIPT_floating_off_0',

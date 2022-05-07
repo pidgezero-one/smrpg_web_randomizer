@@ -55,8 +55,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_mem_compare_val_16',
-        "command": 'mem_compare_val',
-        "args": [100]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 100]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_17',
@@ -65,7 +65,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_set_18',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 100]
     },
     {
@@ -157,8 +157,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_mem_compare_val_36',
-        "command": 'mem_compare_val',
-        "args": [100]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 100]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_37',
@@ -167,7 +167,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_set_38',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 100]
     },
     {
@@ -230,8 +230,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_mem_compare_val_51',
-        "command": 'mem_compare_val',
-        "args": [200]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 200]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_52',
@@ -240,7 +240,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_set_53',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 200]
     },
     {
@@ -332,8 +332,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_mem_compare_val_71',
-        "command": 'mem_compare_val',
-        "args": [100]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 100]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_72',
@@ -342,7 +342,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_set_73',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 100]
     },
     {
@@ -405,8 +405,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_mem_compare_val_86',
-        "command": 'mem_compare_val',
-        "args": [200]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 200]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_87',
@@ -415,7 +415,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_set_88',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 200]
     },
     {
@@ -478,8 +478,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_mem_compare_val_101',
-        "command": 'mem_compare_val',
-        "args": [300]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 300]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_102',
@@ -488,7 +488,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_set_103',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 300]
     },
     {

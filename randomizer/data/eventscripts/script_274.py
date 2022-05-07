@@ -15,8 +15,8 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_274_mem_compare_address_2',
-        "command": 'mem_compare_address',
+        "identifier": 'EVENT_274_compare_7000_to_var_2',
+        "command": 'compare_7000_to_var',
         "args": [0x7024]
     },
     {

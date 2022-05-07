@@ -52,13 +52,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2813_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 196]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 196]
     },
     {
         "identifier": 'EVENT_2813_set_temp_action_script_sync_10',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.NPC_6, 556]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.NPC_6, True, 556]
     },
     {
         "identifier": 'EVENT_2813_jmp_11',
@@ -72,13 +72,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2813_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 196]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 196]
     },
     {
         "identifier": 'EVENT_2813_set_temp_action_script_sync_14',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.NPC_6, 556]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.NPC_6, True, 556]
     },
     {
         "identifier": 'EVENT_2813_jmp_15',
@@ -92,13 +92,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2813_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 196]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 196]
     },
     {
         "identifier": 'EVENT_2813_set_temp_action_script_sync_18',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.NPC_6, 556]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.NPC_6, True, 556]
     },
     {
         "identifier": 'EVENT_2813_pause_19',

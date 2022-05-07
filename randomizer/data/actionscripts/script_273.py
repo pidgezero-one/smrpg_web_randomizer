@@ -11,13 +11,13 @@ script = [
     },
     {
         "identifier": 'ACTION_273_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_273_set_sprite_sequence_8']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_273_set_sprite_sequence_8']
     },
     {
         "identifier": 'ACTION_273_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_273_set_sprite_sequence_8']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_273_set_sprite_sequence_8']
     },
     {
         "identifier": 'ACTION_273_set_sprite_sequence_3',
@@ -35,8 +35,8 @@ script = [
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
     },
     {
-        "identifier": 'ACTION_273_pause_short_6',
-        "command": 'pause_short',
+        "identifier": 'ACTION_273_pause_6',
+        "command": 'pause',
         "args": [360]
     },
     {
@@ -60,8 +60,8 @@ script = [
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
     },
     {
-        "identifier": 'ACTION_273_pause_short_11',
-        "command": 'pause_short',
+        "identifier": 'ACTION_273_pause_11',
+        "command": 'pause',
         "args": [360]
     },
     {

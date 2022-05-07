@@ -7,58 +7,58 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_244_room_81_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [81, "EVENT_244_room_81_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 81, "EVENT_244_room_81_logic"]
     },
     {
         "identifier": "EVENT_244_room_144_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [144, "EVENT_244_room_144_446_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 144, "EVENT_244_room_144_446_logic"]
     },
     {
         "identifier": "EVENT_244_room_234_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [234, "EVENT_244_room_234_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 234, "EVENT_244_room_234_logic"]
     },
     {
         "identifier": "EVENT_244_room_322_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [322, "EVENT_244_room_322_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 322, "EVENT_244_room_322_logic"]
     },
     {
         "identifier": "EVENT_244_room_421_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [421, "EVENT_244_room_421_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 421, "EVENT_244_room_421_logic"]
     },
     {
         "identifier": "EVENT_244_room_425_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [425, "EVENT_244_room_425_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 425, "EVENT_244_room_425_logic"]
     },
     {
         "identifier": "EVENT_244_room_443_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [443, "EVENT_244_room_443_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 443, "EVENT_244_room_443_logic"]
     },
     {
         "identifier": "EVENT_244_room_446_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [446, "EVENT_244_room_144_446_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 446, "EVENT_244_room_144_446_logic"]
     },
     {
         "identifier": "EVENT_244_room_455_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [455, "EVENT_244_room_455_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 455, "EVENT_244_room_455_logic"]
     },
     {
         "identifier": "EVENT_244_room_457_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [457, "EVENT_244_room_457_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 457, "EVENT_244_room_457_logic"]
     },
     {
         "identifier": "EVENT_244_room_458_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [458, "EVENT_244_room_458_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 458, "EVENT_244_room_458_logic"]
     },
     {
         "identifier": "EVENT_244_cancel",
@@ -66,7 +66,7 @@ script = [
     },
     {
         "identifier": "EVENT_244_room_81_logic",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70BC, 0]
     },
     {
@@ -76,7 +76,7 @@ script = [
     },
     {
         "identifier": "EVENT_244_room_144_446_logic",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 31]
     },
     {
@@ -96,7 +96,7 @@ script = [
     },
     {
         "identifier": "EVENT_244_room_421_logic",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70BC, 0]
     },
     {

@@ -40,7 +40,7 @@ script = [
     },
     {
         "identifier": 'ACTION_294_set_7',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 255]
     },
     {
@@ -54,8 +54,8 @@ script = [
         "args": [0x35, 0x01, 0x04]
     },
     {
-        "identifier": 'ACTION_294_pause_short_10',
-        "command": 'pause_short',
+        "identifier": 'ACTION_294_pause_10',
+        "command": 'pause',
         "args": [420]
     },
     {

@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3193_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3193_action_queue_sync_4_SUBSCRIPT_object_memory_set_bit_0',

@@ -27,7 +27,7 @@ script = [
     },
     {
         "identifier": "EVENT_3092_skip",
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70D5, 7, 'EVENT_3092_ret_418']
     },
     {
@@ -50,38 +50,38 @@ script = [
         "command": 'pause_script_until_effect_done'
     },
     {
-        "identifier": 'EVENT_3092_jmp_if_var_equals_byte_400',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3092_jmp_if_var_equals_const_400',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70d5, 7, 'EVENT_3092_run_star_piece_sequence_7']
     },
     {
-        "identifier": 'EVENT_3092_jmp_if_var_equals_byte_401',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3092_jmp_if_var_equals_const_401',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70d5, 6, 'EVENT_3092_run_star_piece_sequence_6']
     },
     {
-        "identifier": 'EVENT_3092_jmp_if_var_equals_byte_402',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3092_jmp_if_var_equals_const_402',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70d5, 5, 'EVENT_3092_run_star_piece_sequence_5']
     },
     {
-        "identifier": 'EVENT_3092_jmp_if_var_equals_byte_403',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3092_jmp_if_var_equals_const_403',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70d5, 4, 'EVENT_3092_run_star_piece_sequence_4']
     },
     {
-        "identifier": 'EVENT_3092_jmp_if_var_equals_byte_404',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3092_jmp_if_var_equals_const_404',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70d5, 3, 'EVENT_3092_run_star_piece_sequence_3']
     },
     {
-        "identifier": 'EVENT_3092_jmp_if_var_equals_byte_405',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3092_jmp_if_var_equals_const_405',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70d5, 2, 'EVENT_3092_run_star_piece_sequence_2']
     },
     {
-        "identifier": 'EVENT_3092_jmp_if_var_equals_byte_406',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3092_jmp_if_var_equals_const_406',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70d5, 1, 'EVENT_3092_run_star_piece_sequence_1']
     },
     {

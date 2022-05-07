@@ -7,7 +7,7 @@ script = [
     {
         "identifier": 'ACTION_549_dec_0',
         "command": 'dec',
-        "args": [0x70bb]
+        'args': [0x70bb, 1],
     },
     {
         "identifier": 'ACTION_549_reset_properties_1',

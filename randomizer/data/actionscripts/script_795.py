@@ -5,13 +5,13 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_795_set_random_0',
-        "command": 'set_random',
+        "identifier": 'ACTION_795_set_var_to_random_0',
+        "command": 'set_var_to_random',
         "args": [0x700c, 80]
     },
     {
-        "identifier": 'ACTION_795_mem_compare_address_1',
-        "command": 'mem_compare_address',
+        "identifier": 'ACTION_795_compare_700C_to_var_1',
+        "command": 'compare_700C_to_var',
         "args": [0x701a]
     },
     {
@@ -20,8 +20,8 @@ script = [
         "args": ['ACTION_795_jmp_to_subroutine_9']
     },
     {
-        "identifier": 'ACTION_795_mem_compare_address_3',
-        "command": 'mem_compare_address',
+        "identifier": 'ACTION_795_compare_700C_to_var_3',
+        "command": 'compare_700C_to_var',
         "args": [0x7030]
     },
     {
@@ -40,14 +40,14 @@ script = [
         "args": ['ACTION_795_dec_short_42']
     },
     {
-        "identifier": 'ACTION_795_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_795_jmp_if_var_equals_const_7',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702e, 1, 'ACTION_795_shift_northeast_pixels_29']
     },
     {
         "identifier": 'ACTION_795_jmp_8',
         "command": 'jmp',
-        "args": ['ACTION_795_set_random_0']
+        "args": ['ACTION_795_set_var_to_random_0']
     },
     {
         "identifier": 'ACTION_795_jmp_to_subroutine_9',
@@ -60,14 +60,14 @@ script = [
         "args": ['ACTION_795_dec_short_42']
     },
     {
-        "identifier": 'ACTION_795_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_795_jmp_if_var_equals_const_11',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702e, 1, 'ACTION_795_shift_northeast_pixels_29']
     },
     {
         "identifier": 'ACTION_795_jmp_12',
         "command": 'jmp',
-        "args": ['ACTION_795_set_random_0']
+        "args": ['ACTION_795_set_var_to_random_0']
     },
     {
         "identifier": 'ACTION_795_jmp_to_subroutine_13',
@@ -80,14 +80,14 @@ script = [
         "args": ['ACTION_795_dec_short_42']
     },
     {
-        "identifier": 'ACTION_795_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_795_jmp_if_var_equals_const_15',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702e, 1, 'ACTION_795_shift_northeast_pixels_29']
     },
     {
         "identifier": 'ACTION_795_jmp_16',
         "command": 'jmp',
-        "args": ['ACTION_795_set_random_0']
+        "args": ['ACTION_795_set_var_to_random_0']
     },
     {
         "identifier": 'ACTION_795_set_animation_speed_17',
@@ -208,7 +208,7 @@ script = [
     },
     {
         "identifier": 'ACTION_795_dec_short_42',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x702e]
     },
     {

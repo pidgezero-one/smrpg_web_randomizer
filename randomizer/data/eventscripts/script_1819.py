@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1819_mem_compare_val_6',
-        "command": 'mem_compare_val',
-        "args": [48]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 48]
     },
     {
         "identifier": 'EVENT_1819_jmp_if_comparison_result_is_greater_or_equal_7',
@@ -52,13 +52,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1819_set_action_script_async_9',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_3, 160]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, False, 160]
     },
     {
         "identifier": 'EVENT_1819_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1819_action_queue_async_10_SUBSCRIPT_set_animation_speed_0',
@@ -83,8 +83,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1819_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 714]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 714]
     },
     {
         "identifier": 'EVENT_1819_ret_13',

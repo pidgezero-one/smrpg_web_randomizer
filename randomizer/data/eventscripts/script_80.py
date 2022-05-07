@@ -26,13 +26,13 @@ script = [
     },
     {
         "identifier": 'EVENT_80_set_7000_to_70A0_short_mem_4',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_80_set_70A0_short_mem_to_7000_5',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70c6]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70c6]
     },
     {
         "identifier": 'EVENT_80_enable_controls_until_return_6',
@@ -54,13 +54,13 @@ script = [
     },
     {
         "identifier": 'EVENT_80_set_action_script_async_10',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 408]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 408]
     },
     {
         "identifier": 'EVENT_80_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_floating_off_0',
@@ -91,13 +91,13 @@ script = [
             },
             {
                 "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_set_700C_to_70A0_short_mem_6',
-                "command": 'set_700C_to_70A0_short_mem',
-                "args": [0x70c6]
+                "command": 'copy_var_to_var',
+        'args': [0x70c6, 0x700C]
             },
             {
                 "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_set_70A0_short_mem_to_700C_7',
-                "command": 'set_70A0_short_mem_to_700C',
-                "args": [0x70a9]
+                "command": 'copy_var_to_var',
+        'args': [0x700C, 0x70a9]
             },
             {
                 "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_db_8',

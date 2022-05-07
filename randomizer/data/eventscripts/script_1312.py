@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1312_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1312_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0',
@@ -29,8 +29,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1312_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1312_action_queue_sync_2_SUBSCRIPT_set_animation_speed_0',
@@ -55,8 +55,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1312_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1312_action_queue_async_3_SUBSCRIPT_set_animation_speed_0',

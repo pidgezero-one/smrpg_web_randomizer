@@ -29,23 +29,23 @@ script = [
     },
     {
         "identifier": 'ACTION_701_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_701_face_southeast_11']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_701_face_southeast_11']
     },
     {
         "identifier": 'ACTION_701_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [23, 'ACTION_701_face_southeast_11']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 23, 'ACTION_701_face_southeast_11']
     },
     {
         "identifier": 'ACTION_701_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [25, 'ACTION_701_face_southeast_11']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 25, 'ACTION_701_face_southeast_11']
     },
     {
         "identifier": 'ACTION_701_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [27, 'ACTION_701_face_southeast_11']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 27, 'ACTION_701_face_southeast_11']
     },
     {
         "identifier": 'ACTION_701_face_southwest_9',

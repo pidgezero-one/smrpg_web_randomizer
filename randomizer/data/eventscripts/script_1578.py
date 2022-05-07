@@ -21,8 +21,8 @@ script = [
         "args": [0x7043, 4]
     },
     {
-        "identifier": 'EVENT_1578_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_1578_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 1, 'EVENT_1578_set_short_5']
     },
     {
@@ -32,12 +32,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1578_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0018]
     },
     {
         "identifier": 'EVENT_1578_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0039]
     },
     {

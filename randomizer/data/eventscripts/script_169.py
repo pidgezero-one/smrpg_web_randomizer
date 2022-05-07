@@ -47,7 +47,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_169_special_val",  # pandorite chest
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 512],
     },
     {"identifier": "EVENT_169_jmp", "command": "jmp_to_event", "args": [167]},

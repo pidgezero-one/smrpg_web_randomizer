@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": "EVENT_2074_action_queue_sync_1",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": "EVENT_2074_action_queue_sync_1_SUBSCRIPT_shift_east_pixels_0",
@@ -64,8 +64,8 @@ script = [
     },
     {
         "identifier": "EVENT_2074_set_action_script_sync_3",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.LAYER_1, 575],
+        "command": "set_action_script",
+        "args": [AreaObjects.LAYER_1, True, 575]
     },
     {
         "identifier": "EVENT_2074_sequence_setter_1",
@@ -80,8 +80,8 @@ script = [
     {"identifier": "EVENT_2074_pause_5", "command": "pause", "args": [60]},
     {
         "identifier": "EVENT_2074_action_queue_async_6",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": "EVENT_2074_action_queue_async_6_SUBSCRIPT_set_animation_speed_0",
@@ -180,8 +180,8 @@ script = [
     },
     {
         "identifier": "EVENT_2074_action_queue_async_21",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": "EVENT_2074_action_queue_async_21_SUBSCRIPT_set_animation_speed_0",

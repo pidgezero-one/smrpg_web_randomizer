@@ -7,12 +7,12 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1735_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a7]
+        "command": 'copy_var_to_var',
+        'args': [0x70a7, 0x7000]
     },
     {
-        "identifier": 'EVENT_1735_disable_event_trigger_for_object_at_70A8_1',
-        "command": 'disable_event_trigger_for_object_at_70A8'
+        "identifier": 'EVENT_1735_disable_trigger_at_70A8_1',
+        "command": 'disable_trigger_at_70A8'
     },
     {
         "identifier": 'EVENT_1735_mem_7000_and_const_2',
@@ -21,13 +21,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1735_set_70A0_short_mem_to_7000_3',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70b4]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70b4]
     },
     {
         "identifier": 'EVENT_1735_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 7]
     },
     {
         "identifier": 'EVENT_1735_set_7010_to_object_xyz_5',
@@ -36,22 +36,22 @@ script = [
     },
     {
         "identifier": 'EVENT_1735_set_7000_to_7000_short_mem_6',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7014, 0x7000]
     },
     {
         "identifier": 'EVENT_1735_add_7',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 608]
     },
     {
         "identifier": 'EVENT_1735_set_7000_short_mem_to_7000_8',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7014]
     },
     {
-        "identifier": 'EVENT_1735_create_packet_at_7010_coords_jmp_if_null_9',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_1735_create_packet_at_7010_9',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._003_SUPER_STAR, 'EVENT_1735_ret_19']
     },
     {
@@ -61,8 +61,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1735_set_7000_to_70A0_short_mem_11',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a7]
+        "command": 'copy_var_to_var',
+        'args': [0x70a7, 0x7000]
     },
     {
         "identifier": 'EVENT_1735_mem_7000_and_const_12',
@@ -93,8 +93,8 @@ script = [
         "args": [0x707c, 2]
     },
     {
-        "identifier": 'EVENT_1735_create_packet_at_object_coords_jmp_if_null_18',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_1735_create_packet_at_npc_coords_18',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._022_SPARKLES_MOVE_N, AreaObjects.MARIO, 'EVENT_1735_ret_19']
     },
     {

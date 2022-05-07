@@ -42,43 +42,43 @@ script = [
     },
     {
         "identifier": 'EVENT_2379_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [9, 'EVENT_2379_action_queue_sync_18']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 9, 'EVENT_2379_action_queue_sync_18']
     },
     {
         "identifier": 'EVENT_2379_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [8, 'EVENT_2379_action_queue_sync_18']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 8, 'EVENT_2379_action_queue_sync_18']
     },
     {
         "identifier": 'EVENT_2379_jmp_if_7000_equals_short_9',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, 'EVENT_2379_action_queue_sync_18']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, 'EVENT_2379_action_queue_sync_18']
     },
     {
         "identifier": 'EVENT_2379_jmp_if_7000_equals_short_10',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [4, 'EVENT_2379_enter_area_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 4, 'EVENT_2379_enter_area_16']
     },
     {
         "identifier": 'EVENT_2379_jmp_if_7000_equals_short_11',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_2379_enter_area_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_2379_enter_area_16']
     },
     {
         "identifier": 'EVENT_2379_jmp_if_7000_equals_short_12',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_2379_enter_area_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_2379_enter_area_16']
     },
     {
         "identifier": 'EVENT_2379_jmp_if_7000_equals_short_13',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_2379_enter_area_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_2379_enter_area_16']
     },
     {
         "identifier": 'EVENT_2379_jmp_if_7000_equals_short_14',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2379_enter_area_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2379_enter_area_16']
     },
     {
         "identifier": 'EVENT_2379_jmp_15',
@@ -96,8 +96,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2379_action_queue_sync_18',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2379_action_queue_sync_18_SUBSCRIPT_set_priority_0',

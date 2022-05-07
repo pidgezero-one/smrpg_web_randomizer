@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2097_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 866]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 866]
     },
     {
         "identifier": 'EVENT_2097_ret_3',
@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2097_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 868]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 868]
     },
     {
         "identifier": 'EVENT_2097_ret_6',

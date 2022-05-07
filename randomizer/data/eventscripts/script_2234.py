@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2234_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2234_action_queue_async_1_SUBSCRIPT_shift_to_xy_coords_0',
@@ -59,8 +59,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2234_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2234_action_queue_async_2_SUBSCRIPT_pause_0',
@@ -79,17 +79,17 @@ script = [
         "args": [3426, AreaObjects.NPC_12, [_0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2234_pause_script_resume_on_next_dialog_page_a_FD61_4',
-        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
+        "identifier": 'EVENT_2234_pause_script_resume_on_next_dialog_page_b_4',
+        "command": 'pause_script_resume_on_next_dialog_page_b'
     },
     {
-        "identifier": 'EVENT_2234_pause_script_resume_on_next_dialog_page_a_FD61_5',
-        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
+        "identifier": 'EVENT_2234_pause_script_resume_on_next_dialog_page_b_5',
+        "command": 'pause_script_resume_on_next_dialog_page_b'
     },
     {
         "identifier": 'EVENT_2234_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2234_action_queue_async_6_SUBSCRIPT_set_animation_speed_0',
@@ -118,8 +118,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2234_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2234_action_queue_async_10_SUBSCRIPT_reset_properties_0',
@@ -142,8 +142,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2234_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2234_action_queue_async_11_SUBSCRIPT_pause_0',

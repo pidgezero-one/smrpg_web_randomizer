@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3217_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3217_action_queue_sync_1_SUBSCRIPT_object_memory_set_bit_0',
@@ -38,8 +38,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3217_set_7000_to_70A0_short_mem_2',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_3217_dec_3',
@@ -49,17 +49,17 @@ script = [
     {
         "identifier": 'EVENT_3217_dec_4',
         "command": 'dec',
-        "args": [0x7000]
+        'args': [0x7000, 1],
     },
     {
         "identifier": 'EVENT_3217_dec_5',
         "command": 'dec',
-        "args": [0x7000]
+        'args': [0x7000]
     },
     {
         "identifier": 'EVENT_3217_set_70A0_short_mem_to_7000_6',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a9]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a9]
     },
     {
         "identifier": 'EVENT_3217_jmp_if_objects_less_than_xy_steps_apart_7',
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3217_set_temp_action_script_sync_11',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A9, 337]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A9, True, 337]
     },
     {
         "identifier": 'EVENT_3217_play_sound_12',
@@ -96,14 +96,14 @@ script = [
         "args": [0x70af]
     },
     {
-        "identifier": 'EVENT_3217_jmp_if_var_equals_byte_14',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3217_jmp_if_var_equals_const_14',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 3, 'EVENT_3217_set_action_script_sync_20']
     },
     {
         "identifier": 'EVENT_3217_set_7000_to_70A0_short_mem_15',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_3217_inc_16',
@@ -112,13 +112,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3217_set_70A0_short_mem_to_7000_17',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a9]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a9]
     },
     {
         "identifier": 'EVENT_3217_set_action_script_sync_18',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A9, 319]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A9, True, 319]
     },
     {
         "identifier": 'EVENT_3217_ret_19',
@@ -126,8 +126,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3217_set_action_script_sync_20',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 338]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 338]
     },
     {
         "identifier": 'EVENT_3217_jmp_if_bit_set_21',
@@ -136,17 +136,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3217_set_short_22',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x0007]
     },
     {
         "identifier": 'EVENT_3217_set_short_23',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x003e]
     },
     {
         "identifier": 'EVENT_3217_set_short_24',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x0015]
     },
     {
@@ -160,7 +160,7 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3217_create_packet_event_at_coords_jmp_if_null_27',
+        "identifier": 'EVENT_3217_create_packet_at_7010_with_event_27',
         "command": 'run_event_as_subroutine',
         "args": [3387]
     },

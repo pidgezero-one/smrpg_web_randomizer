@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1386_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1386_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0',
@@ -28,8 +28,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1386_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1386_action_queue_async_2_SUBSCRIPT_set_priority_0',
@@ -68,8 +68,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1386_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.LAYER_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.LAYER_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1386_action_queue_sync_4_SUBSCRIPT_set_animation_speed_0',
@@ -85,8 +85,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1386_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.LAYER_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.LAYER_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1386_action_queue_sync_5_SUBSCRIPT_set_animation_speed_0',
@@ -102,8 +102,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1386_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1386_action_queue_async_6_SUBSCRIPT_fixed_f_coord_on_0',
@@ -128,8 +128,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1386_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1386_action_queue_async_8_SUBSCRIPT_sequence_playback_on_0',

@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2424_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [246, 'EVENT_2424_disable_trigger_4']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 246, 'EVENT_2424_disable_trigger_4']
     },
     {
         "identifier": 'EVENT_2424_disable_trigger_2',
@@ -35,8 +35,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2424_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2424_action_queue_async_6_SUBSCRIPT_face_southwest_0',
@@ -56,13 +56,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2424_set_action_script_async_8',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 384]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 384]
     },
     {
         "identifier": 'EVENT_2424_set_action_script_async_9',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2424_set_7000_to_current_level_10',
@@ -70,8 +70,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2424_jmp_if_7000_equals_short_11',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [246, 'EVENT_2424_enable_trigger_14']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 246, 'EVENT_2424_enable_trigger_14']
     },
     {
         "identifier": 'EVENT_2424_enable_trigger_12',

@@ -22,13 +22,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1574_inc_short_3',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_1574_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7024, 1, 'EVENT_1574_jmp_if_var_not_equals_short_6']
+        "identifier": 'EVENT_1574_jmp_if_var_equals_const_4',
+        "command": 'jmp_if_var_equals_const',
+        "args": [0x7024, 1, 'EVENT_1574_jmp_if_var_not_equals_const_6']
     },
     {
         "identifier": 'EVENT_1574_run_background_event_5',
@@ -36,8 +36,8 @@ script = [
         "args": [1586, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]]
     },
     {
-        "identifier": 'EVENT_1574_jmp_if_var_not_equals_short_6',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_1574_jmp_if_var_not_equals_const_6',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x7024, 2, 'EVENT_1574_set_short_8']
     },
     {
@@ -47,12 +47,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1574_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0006]
     },
     {
         "identifier": 'EVENT_1574_set_short_9',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x001d]
     },
     {

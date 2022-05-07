@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3188_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3188_action_queue_sync_1_SUBSCRIPT_set_vram_priority_0',
@@ -23,8 +23,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3188_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3188_action_queue_async_2_SUBSCRIPT_clear_solidity_bits_0',
@@ -65,8 +65,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3188_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3188_action_queue_sync_3_SUBSCRIPT_clear_solidity_bits_0',
@@ -112,8 +112,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3188_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3188_action_queue_sync_4_SUBSCRIPT_pause_0',
@@ -182,8 +182,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3188_set_7000_short_mem_to_7000_9',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x702e]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x702e]
     },
     {
         "identifier": 'EVENT_3188_run_moleville_mountain_sequence_10',

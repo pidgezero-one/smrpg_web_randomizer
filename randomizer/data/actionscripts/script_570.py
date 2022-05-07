@@ -6,7 +6,7 @@ from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPac
 script = [
     {
         "identifier": 'ACTION_570_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x0006]
     },
     {
@@ -90,7 +90,7 @@ script = [
     },
     {
         "identifier": 'ACTION_570_dec_short_17',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x7012]
     },
     {

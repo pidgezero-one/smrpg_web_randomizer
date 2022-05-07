@@ -6,8 +6,8 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3386_create_packet_event_at_coords_jmp_if_null_9',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
+        "identifier": 'EVENT_3386_create_packet_at_7010_with_event_9',
+        "command": 'create_packet_at_7010_with_event',
         "args": [NPCPackets._037_ITEM_BAG_JUMPS, 3290, 'EVENT_3221_pause_8']
     },
     {

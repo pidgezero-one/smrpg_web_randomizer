@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3318_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [362, 'EVENT_3318_start_battle_6']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 362, 'EVENT_3318_start_battle_6']
     },
     {
         "identifier": 'EVENT_3318_start_battle_4',
@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3318_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3318_action_queue_async_10_SUBSCRIPT_object_memory_set_bit_0',
@@ -82,12 +82,12 @@ script = [
     },
     {
         "identifier": 'EVENT_3318_set_7000_to_70A0_short_mem_11',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_3318_add_12',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 7]
     },
     {

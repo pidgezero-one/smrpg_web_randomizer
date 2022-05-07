@@ -33,8 +33,8 @@ script = [
         "args": [8]
     },
     {
-        "identifier": 'ACTION_409_set_random_6',
-        "command": 'set_random',
+        "identifier": 'ACTION_409_set_var_to_random_6',
+        "command": 'set_var_to_random',
         "args": [0x700c, 2]
     },
     {
@@ -54,7 +54,7 @@ script = [
     {
         "identifier": 'ACTION_409_jmp_if_random_above_128_10',
         "command": 'jmp_if_random_above_128',
-        "args": ['ACTION_409_set_random_13']
+        "args": ['ACTION_409_set_var_to_random_13']
     },
     {
         "identifier": 'ACTION_409_turn_random_direction_11',
@@ -66,8 +66,8 @@ script = [
         "args": [8]
     },
     {
-        "identifier": 'ACTION_409_set_random_13',
-        "command": 'set_random',
+        "identifier": 'ACTION_409_set_var_to_random_13',
+        "command": 'set_var_to_random',
         "args": [0x700c, 2]
     },
     {

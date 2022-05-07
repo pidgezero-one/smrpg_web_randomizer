@@ -22,43 +22,43 @@ script = [
     },
     {
         "identifier": 'EVENT_548_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_548_jmp_if_random_above_66_19']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_548_jmp_if_random_above_66_19']
     },
     {
         "identifier": 'EVENT_548_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_548_jmp_if_random_above_128_13']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_548_jmp_if_random_above_128_13']
     },
     {
         "identifier": 'EVENT_548_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_548_jmp_if_random_above_66_23']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_548_jmp_if_random_above_66_23']
     },
     {
         "identifier": 'EVENT_548_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_548_jmp_if_random_above_128_17']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_548_jmp_if_random_above_128_17']
     },
     {
         "identifier": 'EVENT_548_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [4, 'EVENT_548_jmp_if_random_above_66_27']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 4, 'EVENT_548_jmp_if_random_above_66_27']
     },
     {
         "identifier": 'EVENT_548_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_548_jmp_if_random_above_128_15']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 5, 'EVENT_548_jmp_if_random_above_128_15']
     },
     {
         "identifier": 'EVENT_548_jmp_if_7000_equals_short_9',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_548_jmp_if_random_above_66_31']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 6, 'EVENT_548_jmp_if_random_above_66_31']
     },
     {
         "identifier": 'EVENT_548_jmp_if_7000_equals_short_10',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, 'EVENT_548_jmp_if_random_above_128_11']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, 'EVENT_548_jmp_if_random_above_128_11']
     },
     {
         "identifier": 'EVENT_548_jmp_if_random_above_128_11',
@@ -112,8 +112,8 @@ script = [
     },
     {
         "identifier": 'EVENT_548_set_action_script_sync_21',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 635]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 635]
     },
     {
         "identifier": 'EVENT_548_ret_22',
@@ -131,8 +131,8 @@ script = [
     },
     {
         "identifier": 'EVENT_548_set_action_script_sync_25',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 635]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 635]
     },
     {
         "identifier": 'EVENT_548_ret_26',
@@ -150,8 +150,8 @@ script = [
     },
     {
         "identifier": 'EVENT_548_set_action_script_sync_29',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 635]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 635]
     },
     {
         "identifier": 'EVENT_548_ret_30',
@@ -169,8 +169,8 @@ script = [
     },
     {
         "identifier": 'EVENT_548_set_action_script_sync_33',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 635]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 635]
     },
     {
         "identifier": 'EVENT_548_ret_34',
@@ -188,8 +188,8 @@ script = [
     },
     {
         "identifier": 'EVENT_548_set_action_script_sync_37',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 635]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 635]
     },
     {
         "identifier": 'EVENT_548_ret_38',
@@ -207,8 +207,8 @@ script = [
     },
     {
         "identifier": 'EVENT_548_set_action_script_sync_41',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 635]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 635]
     },
     {
         "identifier": 'EVENT_548_ret_42',

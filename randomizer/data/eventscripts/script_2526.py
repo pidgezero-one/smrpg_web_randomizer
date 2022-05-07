@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2526_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_11],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_11, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2526_action_queue_sync_0_SUBSCRIPT_shift_southwest_pixels_0',
@@ -24,8 +24,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2526_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2526_action_queue_sync_1_SUBSCRIPT_shift_southwest_pixels_0',
@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2526_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_13],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_13, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2526_action_queue_sync_2_SUBSCRIPT_shift_west_pixels_0',
@@ -53,8 +53,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2526_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_14],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_14, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2526_action_queue_async_3_SUBSCRIPT_shift_southeast_pixels_0',

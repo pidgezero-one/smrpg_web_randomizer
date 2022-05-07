@@ -17,13 +17,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3227_jmp_if_7000_not_equals_short_2',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [16, 'EVENT_3227_run_background_event_4']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 16, 'EVENT_3227_run_background_event_4']
     },
     {
         "identifier": 'EVENT_3227_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3227_action_queue_async_3_SUBSCRIPT_shift_to_xy_coords_0',

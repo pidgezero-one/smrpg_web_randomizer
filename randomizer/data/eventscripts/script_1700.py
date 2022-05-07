@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1700_mem_compare_val_11',
-        "command": 'mem_compare_val',
-        "args": [12]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 12]
     },
     {
         "identifier": 'EVENT_1700_jmp_if_comparison_result_is_greater_or_equal_12',
@@ -76,8 +76,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1700_mem_compare_val_14',
-        "command": 'mem_compare_val',
-        "args": [15]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 15]
     },
     {
         "identifier": 'EVENT_1700_jmp_if_comparison_result_is_lesser_15',
@@ -90,13 +90,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1700_set_7000_to_7000_short_mem_17',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x703e]
+        "command": 'copy_var_to_var',
+        'args': [0x703e, 0x7000]
     },
     {
         "identifier": 'EVENT_1700_mem_compare_val_18',
-        "command": 'mem_compare_val',
-        "args": [26]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 26]
     },
     {
         "identifier": 'EVENT_1700_jmp_if_loaded_memory_is_not_0_19',
@@ -105,23 +105,23 @@ script = [
     },
     {
         "identifier": 'EVENT_1700_add_short_20',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7024, 0x0080]
     },
     {
         "identifier": 'EVENT_1700_set_21',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 26]
     },
     {
         "identifier": 'EVENT_1700_set_short_22',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703e, 0x001a]
     },
     {
         "identifier": 'EVENT_1700_set_action_script_sync_23',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 478]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 478]
     },
     {
         "identifier": 'EVENT_1700_pause_24',
@@ -130,8 +130,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1700_set_action_script_sync_25',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 477]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 477]
     },
     {
         "identifier": 'EVENT_1700_ret_26',

@@ -58,8 +58,8 @@ script = [
     {"identifier": "EVENT_2633_set_bit_0", "command": "set_bit", "args": [0x7046, 1]},
     {
         "identifier": "EVENT_2633_action_queue_sync_1",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0",
@@ -75,8 +75,8 @@ script = [
     },
     {
         "identifier": "EVENT_2633_action_queue_sync_2",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_2],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_sync_2_SUBSCRIPT_set_animation_speed_0",
@@ -97,8 +97,8 @@ script = [
     },
     {
         "identifier": "EVENT_2633_action_queue_sync_3",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_3],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_sync_3_SUBSCRIPT_set_animation_speed_0",
@@ -127,8 +127,8 @@ script = [
     },
     {
         "identifier": "EVENT_2633_action_queue_sync_4",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_8],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_sync_4_SUBSCRIPT_set_animation_speed_0",
@@ -144,8 +144,8 @@ script = [
     },
     {
         "identifier": "EVENT_2633_action_queue_async_5",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_9],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0",
@@ -166,8 +166,8 @@ script = [
     },
     {
         "identifier": "EVENT_2633_action_queue_async_5_",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_4],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0",
@@ -177,8 +177,8 @@ script = [
     },
     {
         "identifier": "EVENT_2633_action_queue_async_5__",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_5],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0",
@@ -188,8 +188,8 @@ script = [
     },
     {
         "identifier": "EVENT_2633_action_queue_async_5___",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_6],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_6, False],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0",
@@ -199,8 +199,8 @@ script = [
     },
     {
         "identifier": "EVENT_2633_action_queue_async_5____",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_7],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_7, False],
         "subscript": [
             {
                 "identifier": "EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0",
@@ -217,7 +217,7 @@ script = [
         "command": "jmp_if_bit_clear",
         "args": [0x7077, 5, "EVENT_2633_ret_7"],
     },
-    {"identifier": "EVENT_2633_set_factory_", "command": "set", "args": [0x7000, 523]},
+    {"identifier": "EVENT_2633_set_factory_", "command": "set_var_to_const", "args": [0x7000, 523]},
     {
         "identifier": "EVENT_2633_star_grant",
         "command": "jmp_to_event",

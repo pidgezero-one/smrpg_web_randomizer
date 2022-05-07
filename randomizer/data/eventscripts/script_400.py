@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_400_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [21, 'EVENT_400_run_dialog_4']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 21, 'EVENT_400_run_dialog_4']
     },
     {
         "identifier": 'EVENT_400_run_dialog_2',

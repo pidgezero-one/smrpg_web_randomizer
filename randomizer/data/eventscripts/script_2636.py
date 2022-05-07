@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2636_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 174]
     },
     {
@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2636_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2636_jmp_if_bit_set_13']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2636_jmp_if_bit_set_13']
     },
     {
         "identifier": 'EVENT_2636_jmp_if_bit_set_3',
@@ -46,8 +46,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2636_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2636_action_queue_sync_8_SUBSCRIPT_shift_northwest_pixels_0',
@@ -58,8 +58,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2636_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2636_action_queue_async_9_SUBSCRIPT_shift_southeast_pixels_0',

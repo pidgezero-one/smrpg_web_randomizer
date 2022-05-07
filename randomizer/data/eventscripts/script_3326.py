@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3326_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [390, 'EVENT_3326_jmp_if_object_not_in_level_9']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 390, 'EVENT_3326_jmp_if_object_not_in_level_9']
     },
     {
         "identifier": 'EVENT_3326_jmp_if_object_not_in_level_4',
@@ -76,7 +76,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3326_set_14',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70aa, 26]
     },
     {
@@ -86,7 +86,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3326_set_16',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70aa, 27]
     },
     {
@@ -96,7 +96,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3326_set_18',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70aa, 28]
     },
     {
@@ -106,7 +106,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3326_set_20',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70aa, 29]
     },
     {
@@ -116,13 +116,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3326_set_7000_to_70A0_short_mem_22',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70aa]
+        "command": 'copy_var_to_var',
+        'args': [0x70aa, 0x7000]
     },
     {
         "identifier": 'EVENT_3326_set_70A0_short_mem_to_7000_23',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_3326_summon_object_at_70A8_to_current_level_24',
@@ -135,13 +135,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3326_set_action_script_sync_26',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AA, 933]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70AA, True, 933]
     },
     {
         "identifier": 'EVENT_3326_action_queue_sync_27',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3326_action_queue_sync_27_SUBSCRIPT_db_0',

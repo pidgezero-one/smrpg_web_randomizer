@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2441_set_action_script_async_2',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 355]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 355]
     },
     {
         "identifier": 'EVENT_2441_enter_area_3',

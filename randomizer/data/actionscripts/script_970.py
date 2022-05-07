@@ -28,13 +28,13 @@ script = [
     },
     {
         "identifier": 'ACTION_970_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_970_start_loop_n_times_15']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_970_start_loop_n_times_15']
     },
     {
         "identifier": 'ACTION_970_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [22, 'ACTION_970_start_loop_n_times_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 22, 'ACTION_970_start_loop_n_times_23']
     },
     {
         "identifier": 'ACTION_970_start_loop_n_times_7',

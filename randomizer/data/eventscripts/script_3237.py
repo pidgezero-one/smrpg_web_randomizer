@@ -12,17 +12,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3237_inc_short_1',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x702e]
     },
     {
-        "identifier": 'EVENT_3237_jmp_if_var_not_equals_short_2',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_3237_jmp_if_var_not_equals_const_2',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x702e, 5, 'EVENT_3232_jmp_4']
     },
     {
         "identifier": 'EVENT_3237_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702e, 0x0000]
     },
     {
@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3237_set_temp_action_script_sync_7',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 337]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 337]
     },
     {
         "identifier": 'EVENT_3237_ret_8',

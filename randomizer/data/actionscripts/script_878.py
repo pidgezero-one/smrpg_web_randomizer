@@ -20,8 +20,8 @@ script = [
     },
     {
         "identifier": 'ACTION_878_set_7000_short_mem_to_700C_3',
-        "command": 'set_7000_short_mem_to_700C',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x7024]
     },
     {
         "identifier": 'ACTION_878_face_southwest_7D_4',
@@ -35,13 +35,13 @@ script = [
     },
     {
         "identifier": 'ACTION_878_jmp_if_700C_not_equals_short_6',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [5, 'ACTION_878_face_east_7C_8']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x700C, 5, 'ACTION_878_face_east_7C_8']
     },
     {
         "identifier": 'ACTION_878_set_700C_to_7000_short_mem_7',
-        "command": 'set_700C_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x700C]
     },
     {
         "identifier": 'ACTION_878_face_east_7C_8',

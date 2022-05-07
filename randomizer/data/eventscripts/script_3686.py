@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3686_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3686_action_queue_async_2_SUBSCRIPT_face_southwest_0',
@@ -66,8 +66,8 @@ script = [
         "args": [Sounds._006_RUNNING_WATER, 4]
     },
     {
-        "identifier": 'EVENT_3686_pause_short_10',
-        "command": 'pause_short',
+        "identifier": 'EVENT_3686_pause_10',
+        "command": 'pause',
         "args": [480]
     },
     {
@@ -110,8 +110,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3686_action_queue_async_19',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3686_action_queue_async_19_SUBSCRIPT_transfer_to_xyzf_0',
@@ -151,8 +151,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3686_action_queue_async_22',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3686_action_queue_async_22_SUBSCRIPT_shift_southwest_steps_0',
@@ -219,8 +219,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3686_action_queue_async_27',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3686_action_queue_async_27_SUBSCRIPT_face_east_0',
@@ -248,8 +248,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3686_set_action_script_sync_28',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_3686_clear_bit_29',

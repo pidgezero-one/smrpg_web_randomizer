@@ -5,13 +5,13 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_705_set_random_0',
-        "command": 'set_random',
+        "identifier": 'ACTION_705_set_var_to_random_0',
+        "command": 'set_var_to_random',
         "args": [0x700c, 16]
     },
     {
         "identifier": 'ACTION_705_add_1',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 15]
     },
     {
@@ -71,7 +71,7 @@ script = [
     {
         "identifier": 'ACTION_705_jmp_13',
         "command": 'jmp',
-        "args": ['ACTION_705_set_random_0']
+        "args": ['ACTION_705_set_var_to_random_0']
     },
     {
         "identifier": 'ACTION_705_set_animation_speed_14',
@@ -126,7 +126,7 @@ script = [
     {
         "identifier": 'ACTION_705_jmp_24',
         "command": 'jmp',
-        "args": ['ACTION_705_set_random_0']
+        "args": ['ACTION_705_set_var_to_random_0']
     },
     {
         "identifier": 'ACTION_705_ret_25',

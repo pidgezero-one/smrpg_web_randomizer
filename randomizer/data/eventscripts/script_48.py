@@ -6,14 +6,14 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_48_set_random_1',
-        "command": 'set_random',
+        "identifier": 'EVENT_48_set_var_to_random_1',
+        "command": 'set_var_to_random',
         "args": [0x7000, 2]
     },
     {
         "identifier": "EVENT_48_jmp_if_7000_equals_short_0",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_48__2"]
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_48__2"]
     },
     {
         "identifier": "EVENT_48_2",

@@ -55,8 +55,8 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'EVENT_2508_jmp_if_var_equals_byte_10',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2508_jmp_if_var_equals_const_10',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 6, 'EVENT_2509_pause_0']
     },
     {

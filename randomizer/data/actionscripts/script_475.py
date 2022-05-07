@@ -10,7 +10,7 @@ script = [
     },
     {
         "identifier": 'ACTION_475_add_1',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {

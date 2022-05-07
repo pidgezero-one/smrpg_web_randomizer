@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": "EVENT_2066_action_queue_sync_8",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": "EVENT_2066_action_queue_sync_8_SUBSCRIPT_set_animation_speed_0",
@@ -73,8 +73,8 @@ script = [
     },
     {
         "identifier": "EVENT_2066_action_queue_async_7",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2066_action_queue_async_7_SUBSCRIPT_clear_solidity_bits_0",
@@ -111,8 +111,8 @@ script = [
     {"identifier": "EVENT_2066_freeze_camera_8", "command": "freeze_camera"},
     {
         "identifier": "EVENT_2066_action_queue_async_10",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_2066_action_queue_async_10_SUBSCRIPT_fixed_f_coord_on_0",
@@ -194,8 +194,8 @@ script = [
     },
     {
         "identifier": "EVENT_2066_action_queue_async_16",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": "EVENT_2066_action_queue_async_16_SUBSCRIPT_transfer_to_xyzf_0",
@@ -218,8 +218,8 @@ script = [
     },
     {
         "identifier": "EVENT_2066_action_queue_sync_18",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": "EVENT_2066_action_queue_sync_18_SUBSCRIPT_pause_0",
@@ -260,8 +260,8 @@ script = [
     },
     {
         "identifier": "EVENT_2066_action_queue_async_19",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2066_action_queue_async_19_SUBSCRIPT_pause_0",

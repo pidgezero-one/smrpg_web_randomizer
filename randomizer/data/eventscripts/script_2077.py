@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0',
@@ -28,8 +28,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_async_2_SUBSCRIPT_clear_solidity_bits_0',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_async_44',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_async_44_SUBSCRIPT_fixed_f_coord_on_0',
@@ -129,7 +129,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_start_battle_51',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 517]
     },
     {
@@ -175,8 +175,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_sync_61',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_sync_61_SUBSCRIPT_pause_0',
@@ -214,8 +214,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_async_62',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_async_62_SUBSCRIPT_pause_0',
@@ -287,8 +287,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_async_78',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_async_78_SUBSCRIPT_set_animation_speed_0',
@@ -357,8 +357,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_async_78_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_async_78_SUBSCRIPT_play_sound_13',
@@ -461,8 +461,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_sync_80',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_sync_80_SUBSCRIPT_set_animation_speed_0',
@@ -493,8 +493,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_action_queue_async_81',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_async_81_SUBSCRIPT_set_animation_speed_0',
@@ -529,13 +529,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_set_action_script_sync_84',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 1006]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 1006]
     },
     {
         "identifier": 'EVENT_2077_set_action_script_sync_85',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 1006]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 1006]
     },
     {
         "identifier": 'EVENT_2077_apply_tile_mod_86',
@@ -549,7 +549,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_pause_64_',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 517]
     },
     {
@@ -559,7 +559,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_pause_64_~~',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 517]
     },
     {

@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_615_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_615_action_queue_async_5_SUBSCRIPT_jump_to_height_silent_0',
@@ -84,8 +84,8 @@ script = [
     },
     {
         "identifier": 'EVENT_615_action_queue_async_13',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_615_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_0',
@@ -133,8 +133,8 @@ script = [
     },
     {
         "identifier": 'EVENT_615_action_queue_sync_22',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_615_action_queue_sync_22_SUBSCRIPT_set_sprite_sequence_0',
@@ -145,8 +145,8 @@ script = [
     },
     {
         "identifier": 'EVENT_615_action_queue_async_23',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_615_action_queue_async_23_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -244,8 +244,8 @@ script = [
     },
     {
         "identifier": 'EVENT_615_action_queue_async_41',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_615_action_queue_async_41_SUBSCRIPT_set_sprite_sequence_0',
@@ -271,8 +271,8 @@ script = [
     },
     {
         "identifier": 'EVENT_615_action_queue_async_45',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_615_action_queue_async_45_SUBSCRIPT_reset_properties_0',
@@ -340,13 +340,13 @@ script = [
     },
     {
         "identifier": 'EVENT_615_set_7000_to_70A0_short_mem_53',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x70ac, 0x7000]
     },
     {
         "identifier": 'EVENT_615_jmp_if_7000_equals_short_54',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [199, 'EVENT_615_set_bit_58']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 199, 'EVENT_615_set_bit_58']
     },
     {
         "identifier": 'EVENT_615_inc_55',
@@ -355,8 +355,8 @@ script = [
     },
     {
         "identifier": 'EVENT_615_set_7000_to_70A0_short_mem_56',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x70ac, 0x7000]
     },
     {
         "identifier": 'EVENT_615_jmp_57',
@@ -370,7 +370,7 @@ script = [
     },
     {
         "identifier": 'EVENT_615_set_59',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 199]
     },
     {

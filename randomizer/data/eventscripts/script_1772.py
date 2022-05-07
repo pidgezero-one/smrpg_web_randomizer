@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1772_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1772_action_queue_sync_1_SUBSCRIPT_set_vram_priority_0',
@@ -29,18 +29,18 @@ script = [
     },
     {
         "identifier": 'EVENT_1772_set_7000_to_70A0_short_mem_3',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1772_set_70A0_short_mem_to_7000_4',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70aa]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70aa]
     },
     {
         "identifier": 'EVENT_1772_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1772_action_queue_async_5_SUBSCRIPT_set_sprite_sequence_0',

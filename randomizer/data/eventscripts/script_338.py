@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_338_mem_compare_3',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7014, 5]
     },
     {
@@ -22,7 +22,7 @@ script = [
     },
     {
         "identifier": 'EVENT_338_mem_compare_5',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7012, 19]
     },
     {
@@ -51,7 +51,7 @@ script = [
     },
     {
         "identifier": 'EVENT_338_mem_compare_11',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7010, 14]
     },
     {

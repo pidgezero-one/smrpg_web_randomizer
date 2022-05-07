@@ -26,8 +26,8 @@ script = [
         "args": [0x707c, 3]
     },
     {
-        "identifier": 'EVENT_254_create_packet_at_object_coords_jmp_if_null_4',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_254_create_packet_at_npc_coords_4',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._022_SPARKLES_MOVE_N, AreaObjects.MARIO, 'EVENT_254_pause_0']
     },
     {

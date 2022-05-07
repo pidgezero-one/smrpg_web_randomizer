@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'EVENT_503_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_503_action_queue_sync_13_SUBSCRIPT_clear_solidity_bits_0',
@@ -133,7 +133,7 @@ script = [
     },
     {
         "identifier": "EVENT_503_set_70A7",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A8, 0x19]
     },
     {
@@ -147,8 +147,8 @@ script = [
     },
     {
         "identifier": 'EVENT_503_set_action_script_sync_21',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_503_ret_22',

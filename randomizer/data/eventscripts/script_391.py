@@ -35,8 +35,8 @@ script = [
     },
     {
         "identifier": 'EVENT_391_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_391_action_queue_async_5_SUBSCRIPT_transfer_to_xyzf_0',

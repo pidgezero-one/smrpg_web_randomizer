@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3342_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3342_action_queue_sync_1_SUBSCRIPT_transfer_xyzf_steps_0',

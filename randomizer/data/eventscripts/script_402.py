@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_402_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_402_action_queue_sync_6_SUBSCRIPT_transfer_to_xyzf_0',
@@ -53,8 +53,8 @@ script = [
     },
     {
         "identifier": 'EVENT_402_start_embedded_action_script_async_F1_7',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_9],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_9, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_402_start_embedded_action_script_async_F1_7_SUBSCRIPT_transfer_to_xyzf_0',
@@ -98,8 +98,8 @@ script = [
     },
     {
         "identifier": 'EVENT_402_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 98]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 98]
     },
     {
         "identifier": 'EVENT_402_ret_18',

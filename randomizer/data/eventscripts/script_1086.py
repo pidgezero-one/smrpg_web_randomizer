@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1086_action_queue_swim',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1086_action_queue_async_161_SUBSCRIPT_face_northeast_0',
@@ -51,8 +51,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1086_action_queue_swim_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'ACTION_1015_set_sprite_sequence_4',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1086_action_queue_swim__',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1146_action_queue_sync_18_SUBSCRIPT_play_sound_9',
@@ -85,8 +85,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1086_action_queue_async_161__',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1086_action_queue_async_161_SUBSCRIPT_face_northeast_0',

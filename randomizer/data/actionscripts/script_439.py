@@ -20,8 +20,8 @@ script = [
         "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
     },
     {
-        "identifier": 'ACTION_439_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_439_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 0, 'ACTION_439_visibility_off_57']
     },
     {
@@ -35,7 +35,7 @@ script = [
     },
     {
         "identifier": 'ACTION_439_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x000c]
     },
     {
@@ -53,8 +53,8 @@ script = [
         "args": [3]
     },
     {
-        "identifier": 'ACTION_439_jmp_if_var_equals_byte_10',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_439_jmp_if_var_equals_const_10',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 25, 'ACTION_439_db_19']
     },
     {
@@ -93,8 +93,8 @@ script = [
         "args": [8, 93]
     },
     {
-        "identifier": 'ACTION_439_jmp_if_var_not_equals_byte_18',
-        "command": 'jmp_if_var_not_equals_byte',
+        "identifier": 'ACTION_439_jmp_if_var_not_equals_const_18',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x70ae, 25, 'ACTION_439_walk_to_xy_coords_14']
     },
     {
@@ -139,8 +139,8 @@ script = [
     },
     {
         "identifier": 'ACTION_439_mem_compare_val_28',
-        "command": 'mem_compare_val',
-        "args": [4]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 4]
     },
     {
         "identifier": 'ACTION_439_jmp_if_comparison_result_is_greater_or_equal_29',
@@ -178,7 +178,7 @@ script = [
     },
     {
         "identifier": 'ACTION_439_db_36',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
+        "command": 'create_packet_at_7010_with_event',
         "args": [NPCPackets._028_MUSHROOM_THROWN_SW, 3077, 'ACTION_439_reset_properties_37']
     },
     {
@@ -239,7 +239,7 @@ script = [
     },
     {
         "identifier": 'ACTION_439_db_49',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
+        "command": 'create_packet_at_7010_with_event',
         "args": [NPCPackets._028_MUSHROOM_THROWN_SW, 3077, 'ACTION_439_reset_properties_50']
     },
     {

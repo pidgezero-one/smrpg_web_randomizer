@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1799_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0x0001]
     },
     {
@@ -31,8 +31,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1799_create_packet_at_7010_coords_jmp_if_null_5',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_1799_create_packet_at_7010_5',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_1799_pause_4']
     },
     {
@@ -42,7 +42,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1799_add_short_7',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7034, 0x0003]
     },
     {

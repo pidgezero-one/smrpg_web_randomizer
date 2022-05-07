@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3238_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3238_action_queue_sync_2_SUBSCRIPT_clear_solidity_bits_0',

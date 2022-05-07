@@ -45,7 +45,7 @@ from randomizer.helpers.objectsequencetables import (
 from randomizer.data import items
 
 script = [
-    {"identifier": "EVENT_2641_set_0", "command": "set", "args": [0x70DF, 1]},
+    {"identifier": "EVENT_2641_set_0", "command": "set_var_to_const", "args": [0x70DF, 1]},
     {
         "identifier": "EVENT_2641_stop_sound_0_",
         "command": "jmp_if_bit_clear",
@@ -58,8 +58,8 @@ script = [
     },
     {
         "identifier": "EVENT_2641_action_queue_async_15",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_7],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_7, False],
         "subscript": [
             {
                 "identifier": "EVENT_2641_action_queue_async_15_SUBSCRIPT_shift_southwest_pixels_0",
@@ -70,13 +70,13 @@ script = [
     },
     {
         "identifier": "EVENT_2641_set_action_script_sync_16",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.NPC_7, 978],
+        "command": "set_action_script",
+        "args": [AreaObjects.NPC_7, True, 978]
     },
     {
         "identifier": "EVENT_2641_action_queue_async_18",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": "EVENT_2641_action_queue_async_18_SUBSCRIPT_set_sprite_sequence_0",

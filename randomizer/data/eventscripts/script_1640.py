@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1640_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1640_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1640_jmp_if_bit_set_2',
@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1640_mem_compare_val_8',
-        "command": 'mem_compare_val',
-        "args": [10]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 10]
     },
     {
         "identifier": 'EVENT_1640_jmp_if_comparison_result_is_greater_or_equal_9',
@@ -54,8 +54,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1640_mem_compare_val_14',
-        "command": 'mem_compare_val',
-        "args": [30]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 30]
     },
     {
         "identifier": 'EVENT_1640_jmp_if_comparison_result_is_lesser_15',
@@ -112,8 +112,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1640_set_action_script_async_26',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1640_set_bit_27',
@@ -126,8 +126,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1640_mem_compare_val_29',
-        "command": 'mem_compare_val',
-        "args": [30]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 30]
     },
     {
         "identifier": 'EVENT_1640_jmp_if_comparison_result_is_lesser_30',
@@ -151,7 +151,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1640_set_34',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 10]
     },
     {
@@ -166,7 +166,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1640_set_37',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 30]
     },
     {
@@ -219,8 +219,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1640_set_action_script_async_48',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1640_ret_50',

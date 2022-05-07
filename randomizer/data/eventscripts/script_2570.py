@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2570_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2570_action_queue_sync_0_SUBSCRIPT_set_animation_speed_0',
@@ -28,8 +28,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2570_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_11],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_11, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2570_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0',
@@ -45,8 +45,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2570_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2570_action_queue_async_2_SUBSCRIPT_set_animation_speed_0',
@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2570_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_10, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_10, True, 14]
     },
     {
         "identifier": 'EVENT_2570_jmp_if_object_trigger_disabled_5',
@@ -77,8 +77,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2570_set_action_script_sync_6',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_11, True, 14]
     },
     {
         "identifier": 'EVENT_2570_jmp_if_object_trigger_disabled_7',
@@ -87,8 +87,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2570_set_action_script_sync_8',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_12, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_12, True, 14]
     },
     {
         "identifier": 'EVENT_2570_run_background_event_9',

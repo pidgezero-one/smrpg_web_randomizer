@@ -16,13 +16,13 @@ script = [
         "args": [Sounds._005_BLOCK_SWITCH, 6]
     },
     {
-        "identifier": 'EVENT_3081_disable_event_trigger_for_object_at_70A8_243',
-        "command": 'disable_event_trigger_for_object_at_70A8'
+        "identifier": 'EVENT_3081_disable_trigger_at_70A8_243',
+        "command": 'disable_trigger_at_70A8'
     },
     {
         "identifier": 'EVENT_3081_set_action_script_sync_244',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 7]
     },
     {
         "identifier": 'EVENT_3081_set_7010_to_object_xyz_245',
@@ -31,18 +31,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3081_set_7000_to_7000_short_mem_246',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7014, 0x7000]
     },
     {
         "identifier": 'EVENT_3081_add_247',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 608]
     },
     {
         "identifier": 'EVENT_3081_set_7000_short_mem_to_7000_248',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7014]
     },
     {
         "identifier": 'EVENT_3081_jmp_if_bit_set_249',
@@ -71,13 +71,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3081_set_action_script_sync_254',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 391]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, True, 391]
     },
     {
         "identifier": 'EVENT_3081_action_queue_async_255',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3081_action_queue_async_255_SUBSCRIPT_face_southwest_0',
@@ -102,13 +102,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3081_set_action_script_async_257',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 384]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 384]
     },
     {
         "identifier": 'EVENT_3081_set_action_script_async_258',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_3081_ret_259',

@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2805_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2805_action_queue_async_1_SUBSCRIPT_set_animation_speed_0',

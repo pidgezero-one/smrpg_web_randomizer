@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_410_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_410_set_70A0_short_mem_to_7000_2',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a9]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a9]
     },
     {
         "identifier": 'EVENT_410_start_battle_3',
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_410_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_410_action_queue_async_8_SUBSCRIPT_clear_solidity_bits_0',
@@ -77,8 +77,8 @@ script = [
     },
     {
         "identifier": 'EVENT_410_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_410_action_queue_async_11_SUBSCRIPT_fixed_f_coord_off_0',
@@ -103,8 +103,8 @@ script = [
     },
     {
         "identifier": 'EVENT_410_set_action_script_async_13',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_410_pause_14',
@@ -123,8 +123,8 @@ script = [
     },
     {
         "identifier": 'EVENT_410_action_queue_async_19',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_410_action_queue_async_19_SUBSCRIPT_shift_southwest_steps_0',
@@ -144,8 +144,8 @@ script = [
     },
     {
         "identifier": 'EVENT_410_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_410_action_queue_async_20_SUBSCRIPT_face_southwest_0',
@@ -160,7 +160,7 @@ script = [
     },
     {
         "identifier": 'EVENT_410_set_22',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 20]
     },
     {
@@ -170,8 +170,8 @@ script = [
     },
     {
         "identifier": 'EVENT_410_action_queue_async_24',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_410_action_queue_async_24_SUBSCRIPT_face_southwest_0',
@@ -191,13 +191,13 @@ script = [
     },
     {
         "identifier": 'EVENT_410_set_action_script_sync_26',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 23]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 23]
     },
     {
         "identifier": 'EVENT_410_action_queue_async_27',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_410_action_queue_async_27_SUBSCRIPT_set_animation_speed_0',
@@ -227,8 +227,8 @@ script = [
     },
     {
         "identifier": 'EVENT_410_set_action_script_sync_28',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_410_ret_29',
@@ -240,8 +240,8 @@ script = [
     },
     {
         "identifier": 'EVENT_410_set_action_script_sync_49',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_410_ret_50',

@@ -11,8 +11,8 @@ script = [
         "args": [0x7087, 0]
     },
     {
-        "identifier": 'EVENT_3848_jmp_if_var_not_equals_byte_0',
-        "command": 'jmp_if_var_not_equals_byte',
+        "identifier": 'EVENT_3848_jmp_if_var_not_equals_const_0',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x70de, 18, 'EVENT_3848_enter_area_3']
     },
     {

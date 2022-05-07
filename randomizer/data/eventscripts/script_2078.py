@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2078_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 38]
     },
     {
@@ -17,13 +17,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2078_set_7000_to_70A0_short_mem_2',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_2078_set_70A0_short_mem_to_7000_3',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70c6]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70c6]
     },
     {
         "identifier": 'EVENT_2078_enable_controls_until_return_4',
@@ -45,13 +45,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2078_set_action_script_async_8',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 408]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 408]
     },
     {
         "identifier": 'EVENT_2078_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2078_action_queue_async_9_SUBSCRIPT_floating_off_0',
@@ -77,13 +77,13 @@ script = [
             },
             {
                 "identifier": 'EVENT_2078_action_queue_async_9_SUBSCRIPT_set_700C_to_70A0_short_mem_5',
-                "command": 'set_700C_to_70A0_short_mem',
-                "args": [0x70c6]
+                "command": 'copy_var_to_var',
+        'args': [0x70c6, 0x700C]
             },
             {
                 "identifier": 'EVENT_2078_action_queue_async_9_SUBSCRIPT_set_70A0_short_mem_to_700C_6',
-                "command": 'set_70A0_short_mem_to_700C',
-                "args": [0x70a9]
+                "command": 'copy_var_to_var',
+        'args': [0x700C, 0x70a9]
             },
             {
                 "identifier": 'EVENT_2078_action_queue_async_9_SUBSCRIPT_db_7',

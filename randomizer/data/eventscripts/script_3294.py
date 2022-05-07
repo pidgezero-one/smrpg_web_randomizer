@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3294_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_clear_solidity_bits_0',
@@ -42,13 +42,13 @@ script = [
             },
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_jmp_if_700C_equals_short_4',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [1, 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 1, 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6']
             },
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_jmp_if_700C_equals_short_5',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [3, 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_10']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 3, 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_10']
             },
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6',

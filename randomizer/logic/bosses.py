@@ -996,7 +996,8 @@ def randomize_all(world):
                                     ]
 
                                 rewritten_keep_event = [
-                                    {"identifier": 'EVENT_942_action_queue_async', "command": 'action_queue_async', 'args': [AreaObjects.NPC_1], "subscript": rewritten_keep_subscript},
+                                    {"identifier": 'EVENT_942_action_queue_async', "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False], "subscript": rewritten_keep_subscript},
                                     {"identifier": 'EVENT_942_ret_291', "command": 'ret'},
                                 ]
 
@@ -1035,10 +1036,12 @@ def randomize_all(world):
                                         if challenge_duration > 55:
                                             world.eventscripts[945][0]["args"] = [challenge_duration]
                                             world.eventscripts[946][0]["subscript"].insert(0, {"identifier": "dummy", "command": "pause", "args": [challenge_duration - 55]})
-                                        endgame_animation = {"identifier": "EVENT_944_taunt", "command": 'action_queue_sync', "args": [AreaObjects.NPC_0], "subscript": [{"identifier": "dummy", "command": 'set_sprite_sequence', 'args': [model.animations.endgame_challenge.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.LOOPING_OFF]]}]}
+                                        endgame_animation = {"identifier": "EVENT_944_taunt", "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True], "subscript": [{"identifier": "dummy", "command": 'set_sprite_sequence', 'args': [model.animations.endgame_challenge.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.LOOPING_OFF]]}]}
                                         world.eventscripts[944].insert(0, endgame_animation)
                                     else:
-                                        endgame_animation = {"identifier": "EVENT_944_taunt", "command": 'action_queue_sync', "args": [AreaObjects.NPC_0], "subscript": [{"identifier": "dummy", "command": 'set_sprite_sequence', 'args': [model.animations.endgame_challenge.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE]]}]}
+                                        endgame_animation = {"identifier": "EVENT_944_taunt", "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True], "subscript": [{"identifier": "dummy", "command": 'set_sprite_sequence', 'args': [model.animations.endgame_challenge.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE]]}]}
                                         world.eventscripts[944].insert(0, endgame_animation)
                             else:
                                 # replace all sequences and molds if appropriate, remove if not

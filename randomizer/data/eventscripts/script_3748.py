@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3748_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 82]
     },
     {
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3748_set_action_script_sync_6',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 510]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 510]
     },
     {
         "identifier": 'EVENT_3748_run_dialog_7',

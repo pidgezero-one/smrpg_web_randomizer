@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_690_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65, 'EVENT_690_fade_out_music_FDA3_5']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65, 'EVENT_690_fade_out_music_FDA3_5']
     },
     {
         "identifier": 'EVENT_690_jmp_if_bit_set_insert',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_690_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_690_action_queue_async_6_SUBSCRIPT_face_northeast_0',

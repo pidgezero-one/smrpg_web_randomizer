@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3833_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3833_action_queue_sync_2_SUBSCRIPT_set_animation_speed_0',
@@ -33,7 +33,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3833_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 32]
     },
     {
@@ -84,8 +84,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3833_jmp_if_7000_equals_short_16',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [492, 'EVENT_3833_apply_tile_mod_21']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 492, 'EVENT_3833_apply_tile_mod_21']
     },
     {
         "identifier": 'EVENT_3833_apply_tile_mod_19',
@@ -104,8 +104,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3833_set_action_script_sync_22',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 14]
     },
     {
         "identifier": 'EVENT_3833_ret_23',

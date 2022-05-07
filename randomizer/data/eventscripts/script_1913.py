@@ -32,7 +32,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1913_add_short_5',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x701a, 0x0800]
     },
     {
@@ -65,27 +65,27 @@ script = [
     },
     {
         "identifier": 'EVENT_1913_jmp_if_7000_equals_short_12',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_1913_add_short_18']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 6, 'EVENT_1913_add_short_18']
     },
     {
         "identifier": 'EVENT_1913_jmp_if_7000_equals_short_13',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, 'EVENT_1913_add_short_20']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, 'EVENT_1913_add_short_20']
     },
     {
         "identifier": 'EVENT_1913_jmp_if_7000_equals_short_14',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1913_add_short_23']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1913_add_short_23']
     },
     {
         "identifier": 'EVENT_1913_add_short_15',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0xff40]
     },
     {
         "identifier": 'EVENT_1913_add_short_16',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0x00c0]
     },
     {
@@ -95,7 +95,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1913_add_short_18',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0xfe80]
     },
     {
@@ -105,12 +105,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1913_add_short_20',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x0180]
     },
     {
         "identifier": 'EVENT_1913_add_short_21',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0xff40]
     },
     {
@@ -120,13 +120,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1913_add_short_23',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x0180]
     },
     {
         "identifier": 'EVENT_1913_action_queue_sync_24',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_jmp_if_bit_clear_0',

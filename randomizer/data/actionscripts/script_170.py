@@ -28,7 +28,7 @@ script = [
     },
     {
         "identifier": 'ACTION_170_add_short_5',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x701a, 0x0002]
     },
     {

@@ -24,13 +24,13 @@ script = [
         "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x76, 0x00, 0x1a, 0x00, 0x01, 0x00, 0x00, 0x80, 0xfe, 0x80]
     },
     {
-        "identifier": 'ACTION_252_pause_short_4',
-        "command": 'pause_short',
+        "identifier": 'ACTION_252_pause_4',
+        "command": 'pause',
         "args": [296]
     },
     {
         "identifier": 'ACTION_252_set_5',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 65120]
     },
     {
@@ -50,7 +50,7 @@ script = [
     },
     {
         "identifier": 'ACTION_252_set_9',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 64800]
     },
     {
@@ -70,7 +70,7 @@ script = [
     },
     {
         "identifier": 'ACTION_252_set_13',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 64512]
     },
     {
@@ -90,7 +90,7 @@ script = [
     },
     {
         "identifier": 'ACTION_252_set_17',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 64000]
     },
     {
@@ -110,7 +110,7 @@ script = [
     },
     {
         "identifier": 'ACTION_252_set_21',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 63744]
     },
     {
@@ -130,7 +130,7 @@ script = [
     },
     {
         "identifier": 'ACTION_252_set_25',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 63488]
     },
     {
@@ -144,8 +144,8 @@ script = [
         "args": [0x35, 0x01, 0x06]
     },
     {
-        "identifier": 'ACTION_252_pause_short_28',
-        "command": 'pause_short',
+        "identifier": 'ACTION_252_pause_28',
+        "command": 'pause',
         "args": [300]
     },
     {

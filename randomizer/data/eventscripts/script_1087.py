@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1087_action_queue_swim',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1087_action_queue_async_161_SUBSCRIPT_face_northeast_0',
@@ -51,43 +51,43 @@ script = [
     },
     {
         "identifier": 'EVENT_1087_jmp_if_7000_equals_short_147',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1087_pause_action_script_187_']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1087_pause_action_script_187_']
     },
     {
         "identifier": 'EVENT_1087_jmp_if_7000_equals_short_148',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_1087_pause_action_script_187__']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_1087_pause_action_script_187__']
     },
     {
         "identifier": 'EVENT_1087_jmp_if_7000_equals_short_149',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_1087_pause_action_script_187__']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_1087_pause_action_script_187__']
     },
     {
         "identifier": 'EVENT_1087_jmp_if_7000_equals_short_150',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_1087_pause_action_script_187__']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_1087_pause_action_script_187__']
     },
     {
         "identifier": 'EVENT_1087_jmp_if_7000_equals_short_154',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65535, 'EVENT_1087_pause_action_script_187']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65535, 'EVENT_1087_pause_action_script_187']
     },
     {
         "identifier": 'EVENT_1087_jmp_if_7000_equals_short_155',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65534, 'EVENT_1087_pause_action_script_187']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65534, 'EVENT_1087_pause_action_script_187']
     },
     {
         "identifier": 'EVENT_1087_jmp_if_7000_equals_short_156',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65533, 'EVENT_1087_pause_action_script_187']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65533, 'EVENT_1087_pause_action_script_187']
     },
     {
         "identifier": 'EVENT_1087_pause_action_script_187',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'ACTION_1015_set_sprite_sequence_4',
@@ -103,8 +103,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1087_pause_action_script_187_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'ACTION_1015_set_sprite_sequence_4',
@@ -120,8 +120,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1087_pause_action_script_187__',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'ACTION_1015_set_sprite_sequence_4',
@@ -132,8 +132,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1087_action_queue_swim__',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1146_action_queue_sync_18_SUBSCRIPT_play_sound_9',
@@ -154,8 +154,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1087_action_queue_async_161__',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1087_action_queue_async_161_SUBSCRIPT_face_northeast_0',

@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3756_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3756_action_queue_async_0_SUBSCRIPT_set_priority_0',
@@ -24,8 +24,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3756_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 977]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 977]
     },
     {
         "identifier": 'EVENT_3756_fade_in_from_black_async_3',

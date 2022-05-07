@@ -6,8 +6,8 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_10_set_random_1',
-        "command": 'set_random',
+        "identifier": 'EVENT_10_set_var_to_random_1',
+        "command": 'set_var_to_random',
         "args": [0x7000, 20]
     },
     {
@@ -107,7 +107,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_19",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 21]
     },
     {
@@ -116,7 +116,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_0",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 75]
     },
     {
@@ -126,7 +126,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_1",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 92]
     },
     {
@@ -136,7 +136,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_2",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 63]
     },
     {
@@ -146,7 +146,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_3",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 60]
     },
     {
@@ -156,7 +156,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_4",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 59]
     },
     {
@@ -166,7 +166,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_5",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 19]
     },
     {
@@ -176,7 +176,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_6",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 22]
     },
     {
@@ -186,7 +186,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_7",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 18]
     },
     {
@@ -196,7 +196,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_8",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 89]
     },
     {
@@ -206,7 +206,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_9",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 26]
     },
     {
@@ -216,7 +216,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_10",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 30]
     },
     {
@@ -226,7 +226,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_11",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 58]
     },
     {
@@ -236,7 +236,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_12",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 56]
     },
     {
@@ -246,7 +246,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_13",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 55]
     },
     {
@@ -256,7 +256,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_14",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 66]
     },
     {
@@ -266,7 +266,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_15",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 17]
     },
     {
@@ -276,7 +276,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_16",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 14]
     },
     {
@@ -286,7 +286,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_17",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 16]
     },
     {
@@ -296,7 +296,7 @@ script = [
     },
     {
         "identifier": "EVENT_10_set_18",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x70A7, 78]
     },
     {

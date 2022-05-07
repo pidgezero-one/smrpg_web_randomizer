@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2631_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 22]
     },
     {
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_4',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_2631_jmp_if_bit_set_5',
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_10',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_2631_store_coin_amount_7000_11',
@@ -66,8 +66,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_mem_compare_val_12',
-        "command": 'mem_compare_val',
-        "args": [10]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 10]
     },
     {
         "identifier": 'EVENT_2631_jmp_if_comparison_result_is_greater_or_equal_13',
@@ -90,8 +90,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_17',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_2631_run_dialog_18',
@@ -110,8 +110,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_21',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_2631_jmp_22',
@@ -125,8 +125,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_24',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_2631_ret_26',
@@ -139,7 +139,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_set_28',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 10]
     },
     {
@@ -153,8 +153,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_action_queue_async_31',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2631_action_queue_async_31_SUBSCRIPT_overwrite_solidity_0',
@@ -194,13 +194,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_set_action_script_sync_33',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 14]
     },
     {
         "identifier": 'EVENT_2631_action_queue_sync_34',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2631_action_queue_sync_34_SUBSCRIPT_set_sprite_sequence_0',

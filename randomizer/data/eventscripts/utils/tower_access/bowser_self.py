@@ -28,8 +28,8 @@ script = [
 
     {
         "identifier": 'EVENT_1331_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1331_action_queue_async_11_SUBSCRIPT_set_animation_speed_0',
@@ -122,8 +122,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1331_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1331_action_queue_sync_12_SUBSCRIPT_sequence_looping_off_0_',
@@ -209,8 +209,8 @@ script = [
 
     {
         "identifier": 'EVENT_1331_action_queue_async_133',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3797_action_queue_async_133_SUBSCRIPT_set_animation_speed_0',

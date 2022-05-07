@@ -25,8 +25,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3617_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3617_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_0',

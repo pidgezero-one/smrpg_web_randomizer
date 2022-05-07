@@ -261,8 +261,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_has_seed_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_949_rose_town_3"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_949_rose_town_3"]
     },
     {
         "identifier": "EVENT_949_turned_fert_in",
@@ -276,8 +276,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_has_fert_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_949_rose_town_3"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_949_rose_town_3"]
     },
     {
         "identifier": "EVENT_949_ls_chest_1",
@@ -499,8 +499,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_have_bomb_2",  # have bambino bomb
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_949_pass_1"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_949_pass_1"]
     },
     {
         "identifier": "EVENT_949_mines_1",
@@ -626,8 +626,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_have_rk_2",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_991_tower"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_991_tower"]
     },
     {
         "identifier": "EVENT_949_have_used_rk",
@@ -661,8 +661,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_have_ek_2",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_991_tower"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_991_tower"]
     },
     {
         "identifier": "EVENT_949_tower_14",
@@ -728,8 +728,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_seaside_shed_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_991_seaside"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_991_seaside"]
     },
     # sea and ship
     {
@@ -986,8 +986,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_seaside_tk_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_991_temple"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_991_temple"]
     },
     {
         "identifier": "EVENT_949_statue",  # temple key
@@ -1091,8 +1091,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_flag1_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_949_valley_1"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_949_valley_1"]
     },
     {
         "identifier": "EVENT_949_flag2_1",
@@ -1101,8 +1101,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_flag2_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_949_valley_1"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_949_valley_1"]
     },
     {
         "identifier": "EVENT_949_flag3_1",
@@ -1111,8 +1111,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_flag3_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_949_valley_1"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_949_valley_1"]
     },
     {
         "identifier": "EVENT_949_flag3_3_",
@@ -1222,8 +1222,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_bc_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_991_casino"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_991_casino"]
     },
     # nimbus land
     {
@@ -1273,8 +1273,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_has_ck1_",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_949_has_ck2"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_949_has_ck2"]
     },
     {
         "identifier": "EVENT_949_ck1_open",
@@ -1288,8 +1288,8 @@ script = [
     },
     {
         "identifier": "EVENT_949_has_ck2_",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_949_nimbus_9"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_949_nimbus_9"]
     },
     {
         "identifier": "EVENT_949_ck2_open",
@@ -1520,7 +1520,7 @@ script = [
     },
     {
         "identifier": "EVENT_949_keep_28",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 512],
     },
     {
@@ -1530,7 +1530,7 @@ script = [
     },
     {
         "identifier": "EVENT_949_keep_29",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 513],
     },
     {
@@ -1540,7 +1540,7 @@ script = [
     },
     {
         "identifier": "EVENT_949_keep_30",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 514],
     },
     {
@@ -1550,7 +1550,7 @@ script = [
     },
     {
         "identifier": "EVENT_949_keep_31",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 515],
     },
     {
@@ -1560,7 +1560,7 @@ script = [
     },
     {
         "identifier": "EVENT_949_keep_32",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 516],
     },
     {
@@ -1570,7 +1570,7 @@ script = [
     },
     {
         "identifier": "EVENT_949_keep_33",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 517],
     },
     {

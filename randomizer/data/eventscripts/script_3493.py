@@ -25,13 +25,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3493_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 600]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 600]
     },
     {
         "identifier": 'EVENT_3493_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 647]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, True, 647]
     },
     {
         "identifier": 'EVENT_3493_jmp_to_subroutine_6',
@@ -55,8 +55,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3493_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3493_action_queue_async_10_SUBSCRIPT_visibility_off_0',
@@ -70,8 +70,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3493_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3493_action_queue_async_12_SUBSCRIPT_clear_solidity_bits_0',
@@ -85,12 +85,12 @@ script = [
             },
             {
                 "identifier": 'EVENT_3493_action_queue_async_12_SUBSCRIPT_set_short_2',
-                "command": 'set_short',
+                "command": "set_var_to_const",
                 "args": [0x7016, 0x1980]
             },
             {
                 "identifier": 'EVENT_3493_action_queue_async_12_SUBSCRIPT_set_short_3',
-                "command": 'set_short',
+                "command": "set_var_to_const",
                 "args": [0x7018, 0x2080]
             },
             {
@@ -106,8 +106,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3493_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3493_action_queue_async_14_SUBSCRIPT_play_sound_0',
@@ -162,8 +162,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3493_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 466]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 466]
     },
     {
         "identifier": 'EVENT_3493_jmp_16',

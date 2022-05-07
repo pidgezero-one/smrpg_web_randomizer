@@ -52,27 +52,23 @@ script = [
     },
     {
         "identifier": "EVENT_162_set_7000_to_7000_short_mem_5",
-        "command": "set_7000_to_7000_short_mem",
-        "args": [0x7014],
+        "command": "copy_var_to_var",
+        "args": [0x7014, 0x7000],
     },
     {
         "identifier": "EVENT_162_set_7000_to_7000_short_mem_5_",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x7014, 150],
     },
+    {"identifier": "EVENT_162_add_6", "command": "dec_var_from_7000", "args": [0x7014]},
     {
-        "identifier": "EVENT_162_add_6",
-        "command": "dec_short_mem",
+        "identifier": "EVENT_162_set_7000_short_mem_to_7000_7",
+        "command": "copy_var_to_var",
         "args": [0x7000, 0x7014],
     },
     {
-        "identifier": "EVENT_162_set_7000_short_mem_to_7000_7",
-        "command": "set_7000_short_mem_to_7000",
-        "args": [0x7014],
-    },
-    {
         "identifier": "EVENT_162_",
-        "command": "create_packet_at_7010_coords_jmp_if_null",
+        "command": "create_packet_at_7010",
         "args": [193, "EVENT_162_ret_259"],
     },
     {

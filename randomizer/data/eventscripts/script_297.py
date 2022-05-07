@@ -25,13 +25,13 @@ script = [
     },
     {
         "identifier": 'EVENT_297_jmp_if_7000_equals_short_10',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [495, 'EVENT_256_ret_0']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 495, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_297_jmp_if_7000_equals_short_11',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [51, 'EVENT_256_ret_0']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 51, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_297_resume_action_script_12',
@@ -83,8 +83,8 @@ script = [
     },
     {
         "identifier": 'EVENT_297_jmp_if_7000_equals_short_22',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [191, 'EVENT_297_set_7000_to_object_coord_25']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 191, 'EVENT_297_set_7000_to_object_coord_25']
     },
     {
         "identifier": 'EVENT_297_set_7000_to_object_coord_23',
@@ -103,13 +103,13 @@ script = [
     },
     {
         "identifier": 'EVENT_297_set_7000_short_mem_to_7000_26',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x700c]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x700c]
     },
     {
         "identifier": 'EVENT_297_action_queue_async_27',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_sequence_playback_off_0',
@@ -122,18 +122,18 @@ script = [
             },
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_700C_equals_short_2',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [1, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_southwest_7']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 1, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_southwest_7']
             },
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_700C_equals_short_3',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [5, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_northeast_9']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 5, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_northeast_9']
             },
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_700C_equals_short_4',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [3, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_northwest_11']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 3, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_northwest_11']
             },
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_southeast_5',
@@ -216,8 +216,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_700C_equals_short_22',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [7, 'EVENT_297_action_queue_async_27_SUBSCRIPT_start_loop_n_times_24']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 7, 'EVENT_297_action_queue_async_27_SUBSCRIPT_start_loop_n_times_24']
             },
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_23',
@@ -311,13 +311,13 @@ script = [
     },
     {
         "identifier": 'EVENT_297_set_action_script_async_29',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_297_set_action_script_sync_30',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_297_ret_31',

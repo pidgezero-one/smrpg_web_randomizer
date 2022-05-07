@@ -47,8 +47,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3930_action_queue_sync_snifit1",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0",
@@ -59,8 +59,8 @@ script = [
     },
     {
         "identifier": "EVENT_3930_action_queue_sync_snifit2",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": "EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0",
@@ -71,8 +71,8 @@ script = [
     },
     {
         "identifier": "EVENT_3930_action_queue_sync_snifit3",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_2],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": "EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0",
@@ -83,8 +83,8 @@ script = [
     },
     {
         "identifier": "EVENT_3930_action_queue_sync_peach",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_8],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": "EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0",
@@ -108,8 +108,8 @@ script = [
     },
     {
         "identifier": "EVENT_3930_action_queue_sync_booster",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_7],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_7, True],
         "subscript": [
             {
                 "identifier": "EVENT_3930_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0",
@@ -144,8 +144,8 @@ script = [
     },
     {
         "identifier": "EVENT_3930_action_queue_sync_372",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_5],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": "EVENT_3809_action_queue_sync_44_SUBSCRIPT_transfer_to_object_xy_1",

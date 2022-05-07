@@ -47,42 +47,42 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3607_npc",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x1C, "EVENT_3607_chest_2"],
     },
     {
         "identifier": "EVENT_3607_npc_",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x1D, "EVENT_3607_chest_3"],
     },
     {
         "identifier": "EVENT_3607_npc__",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x1E, "EVENT_3607_chest_4"],
     },
     {
         "identifier": "EVENT_3607_npc___",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x1F, "EVENT_3607_chest_5"],
     },
     {
         "identifier": "EVENT_3607_npc____",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x20, "EVENT_3607_chest_6"],
     },
     {
         "identifier": "EVENT_3607_npc_____",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x21, "EVENT_3607_chest_7"],
     },
     {
         "identifier": "EVENT_3607_npc______",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x22, "EVENT_3607_chest_8"],
     },
     {
         "identifier": "EVENT_3607_npc_______",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x23, "EVENT_3607_chest_9"],
     },
     {

@@ -67,18 +67,18 @@ script = [
     },
     {
         "identifier": "EVENT_3311_set_7000_to_70A0_short_mem_4",
-        "command": "set_7000_to_70A0_short_mem",
-        "args": [0x70AC],
+        "command": "copy_var_to_var",
+        "args": [0x70AC, 0x7000]
     },
     {
         "identifier": "EVENT_3311_jmp_if_7000_equals_short_5",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_3311_run_dialog_9"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_3311_run_dialog_9"]
     },
     {
         "identifier": "EVENT_3311_jmp_if_7000_equals_short_6",
-        "command": "jmp_if_7000_equals_short",
-        "args": [6, "EVENT_3311_run_dialog_11"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 6, "EVENT_3311_run_dialog_11"]
     },
     {
         "identifier": "EVENT_3311_run_dialog_7",

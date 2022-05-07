@@ -45,7 +45,7 @@ from randomizer.helpers.objectsequencetables import (
 from randomizer.data import items
 
 script = [
-    {"identifier": "EVENT_3333_set_0", "command": "set", "args": [0x70DF, 50]},
+    {"identifier": "EVENT_3333_set_0", "command": "set_var_to_const", "args": [0x70DF, 50]},
     {
         "identifier": "EVENT_3333_run_event_as_subroutine_1",
         "command": "run_event_as_subroutine",
@@ -57,13 +57,13 @@ script = [
     },
     {
         "identifier": "EVENT_3333_jmp_if_7000_equals_short_3_",
-        "command": "jmp_if_7000_not_equals_short",
-        "args": [361, "EVENT_3333_jmp_if_7000_equals_short_3_2"],
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x7000, 361, "EVENT_3333_jmp_if_7000_equals_short_3_2"]
     },
     {
         "identifier": "EVENT_3333_set_item_priority",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": "ACTION_925_set_priority_0",
@@ -79,13 +79,13 @@ script = [
     },
     {
         "identifier": "EVENT_3333_jmp_if_7000_equals_short_3_2",
-        "command": "jmp_if_7000_not_equals_short",
-        "args": [358, "EVENT_3333_jmp_if_7000_equals_short_3"],
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x7000, 358, "EVENT_3333_jmp_if_7000_equals_short_3"]
     },
     {
         "identifier": "EVENT_3333_set_item_priority2",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_2],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": "ACTION_925_set_priority_0",
@@ -101,13 +101,13 @@ script = [
     },
     {
         "identifier": "EVENT_3333_jmp_if_7000_equals_short_3",
-        "command": "jmp_if_7000_equals_short",
-        "args": [354, "EVENT_3333_run_background_event_5_"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 354, "EVENT_3333_run_background_event_5_"]
     },
     {
         "identifier": "EVENT_3333_action_queue_async_4",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": "EVENT_3333_action_queue_async_4_SUBSCRIPT_transfer_to_object_xy_0",

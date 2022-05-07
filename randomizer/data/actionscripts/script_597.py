@@ -35,17 +35,17 @@ script = [
     },
     {
         "identifier": 'ACTION_597_add_short_6',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0xf600]
     },
     {
         "identifier": 'ACTION_597_add_short_7',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0x0500]
     },
     {
         "identifier": 'ACTION_597_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0000]
     },
     {

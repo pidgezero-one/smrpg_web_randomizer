@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3487_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 719]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 719]
     },
     {
         "identifier": 'EVENT_3487_add_frog_coins_2',
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3487_mem_compare_val_4',
-        "command": 'mem_compare_val',
-        "args": [12288]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 12288]
     },
     {
         "identifier": 'EVENT_3487_jmp_if_comparison_result_is_greater_or_equal_5',
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3487_mem_compare_val_6',
-        "command": 'mem_compare_val',
-        "args": [8704]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 8704]
     },
     {
         "identifier": 'EVENT_3487_jmp_if_comparison_result_is_greater_or_equal_7',
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3487_mem_compare_val_8',
-        "command": 'mem_compare_val',
-        "args": [5120]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 5120]
     },
     {
         "identifier": 'EVENT_3487_jmp_if_comparison_result_is_greater_or_equal_9',

@@ -72,7 +72,7 @@ script = [
     {"identifier": "EVENT_1677_set_bit_3", "command": "set_bit", "args": [0x7096, 4]},
     {
         "identifier": "EVENT_1677_set_short_4",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x7016, 0x1D2E],
     },
     {
@@ -102,8 +102,8 @@ script = [
     },
     {
         "identifier": "EVENT_1677_action_queue_sync_9",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_1677_action_queue_sync_9_SUBSCRIPT_jump_to_height_silent_0",

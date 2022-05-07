@@ -10,8 +10,8 @@ script = [
     },
     {
         "identifier": 'ACTION_678_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [22, 'ACTION_678_set_sprite_sequence_7']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 22, 'ACTION_678_set_sprite_sequence_7']
     },
     {
         "identifier": 'ACTION_678_sequence_looping_on_2',

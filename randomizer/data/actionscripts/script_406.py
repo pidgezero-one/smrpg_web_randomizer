@@ -55,8 +55,8 @@ script = [
         "args": [9, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
-        "identifier": 'ACTION_406_pause_short_10',
-        "command": 'pause_short',
+        "identifier": 'ACTION_406_pause_10',
+        "command": 'pause',
         "args": [292]
     },
     {
@@ -125,8 +125,8 @@ script = [
         "args": [9, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_406_pause_short_24',
-        "command": 'pause_short',
+        "identifier": 'ACTION_406_pause_24',
+        "command": 'pause',
         "args": [292]
     },
     {
@@ -193,8 +193,8 @@ script = [
         "args": [9, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_406_pause_short_38',
-        "command": 'pause_short',
+        "identifier": 'ACTION_406_pause_38',
+        "command": 'pause',
         "args": [292]
     },
     {
@@ -261,8 +261,8 @@ script = [
         "args": [9, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
-        "identifier": 'ACTION_406_pause_short_52',
-        "command": 'pause_short',
+        "identifier": 'ACTION_406_pause_52',
+        "command": 'pause',
         "args": [292]
     },
     {
@@ -329,8 +329,8 @@ script = [
         "args": [9, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
-        "identifier": 'ACTION_406_pause_short_66',
-        "command": 'pause_short',
+        "identifier": 'ACTION_406_pause_66',
+        "command": 'pause',
         "args": [292]
     },
     {

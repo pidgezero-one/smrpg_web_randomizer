@@ -7,24 +7,24 @@ from randomizer.data import items
 
 script = [
     {
-        "identifier": 'EVENT_37_set_random_1',
-        "command": 'set_random',
+        "identifier": 'EVENT_37_set_var_to_random_1',
+        "command": 'set_var_to_random',
         "args": [0x7000, 4]
     },
     {
         "identifier": "EVENT_37_jmp_if_7000_equals_short_0",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_37__2"]
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_37__2"]
     },
     {
         "identifier": "EVENT_37_jmp_if_7000_equals_short__0",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_37___2"]
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_37___2"]
     },
     {
         "identifier": "EVENT_37_jmp_if_7000_equals_short___0",
-        "command": "jmp_if_7000_equals_short",
-        "args": [2, "EVENT_37____2"]
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 2, "EVENT_37____2"]
     },
     {
         "identifier": "EVENT_37_2",

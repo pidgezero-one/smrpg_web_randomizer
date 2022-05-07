@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2445_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2445_action_queue_async_4_SUBSCRIPT_shadow_off_0',
@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2445_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2445_action_queue_async_6_SUBSCRIPT_floating_on_0',
@@ -106,8 +106,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2445_set_action_script_async_7',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2445_unfreeze_camera_8',

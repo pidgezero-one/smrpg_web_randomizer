@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1732_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_15],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_15, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1732_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_0',
@@ -24,8 +24,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1732_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 47]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_11, True, 47]
     },
     {
         "identifier": 'EVENT_1732_clear_bit_3',
@@ -68,8 +68,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1732_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_12, 47]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_12, True, 47]
     },
     {
         "identifier": 'EVENT_1732_clear_bit_12',
@@ -112,8 +112,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1732_set_action_script_sync_20',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_13, 47]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_13, True, 47]
     },
     {
         "identifier": 'EVENT_1732_clear_bit_21',
@@ -156,8 +156,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1732_set_action_script_sync_29',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_14, 47]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_14, True, 47]
     },
     {
         "identifier": 'EVENT_1732_clear_bit_30',
@@ -186,8 +186,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1732_action_queue_async_35',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_15],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_15, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1732_action_queue_async_35_SUBSCRIPT_set_sprite_sequence_0',

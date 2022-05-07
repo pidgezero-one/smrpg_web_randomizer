@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1848_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1848_action_queue_async_4_SUBSCRIPT_play_sound_0',
@@ -52,8 +52,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1848_create_packet_at_object_coords_jmp_if_null_6',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_1848_create_packet_at_npc_coords_6',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, AreaObjects.NPC_2, 'EVENT_1848_pause_5']
     },
     {

@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1803_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1803_action_queue_async_0_SUBSCRIPT_object_memory_set_bit_0',
@@ -43,8 +43,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1803_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1803_action_queue_sync_1_SUBSCRIPT_jump_to_height_silent_0',
@@ -54,18 +54,18 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1803_jmp_if_var_equals_byte_2',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_1803_jmp_if_var_equals_const_2',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a8, 33, 'EVENT_1803_set_6']
     },
     {
-        "identifier": 'EVENT_1803_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_1803_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a8, 34, 'EVENT_1803_set_8']
     },
     {
-        "identifier": 'EVENT_1803_jmp_if_var_equals_byte_4',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_1803_jmp_if_var_equals_const_4',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a8, 35, 'EVENT_1803_set_10']
     },
     {
@@ -74,7 +74,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1803_set_6',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 98]
     },
     {
@@ -84,7 +84,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1803_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 101]
     },
     {
@@ -94,7 +94,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1803_set_10',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 113]
     },
     {

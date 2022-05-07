@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3157_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [12, 'EVENT_3157_set_7000_to_object_coord_4']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 12, 'EVENT_3157_set_7000_to_object_coord_4']
     },
     {
         "identifier": 'EVENT_3157_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3157_action_queue_async_2_SUBSCRIPT_set_vram_priority_0',
@@ -44,13 +44,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3157_jmp_if_7000_not_equals_short_5',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [61, 'EVENT_3157_action_queue_async_2']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 61, 'EVENT_3157_action_queue_async_2']
     },
     {
         "identifier": 'EVENT_3157_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3157_action_queue_async_6_SUBSCRIPT_set_vram_priority_0',

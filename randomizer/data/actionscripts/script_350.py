@@ -34,38 +34,38 @@ script = [
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_350_create_packet_at_npc_coords_20']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_350_pause_19']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_350_pause_19']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_350_pause_18']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_350_pause_18']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [3, 'ACTION_350_pause_17']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 3, 'ACTION_350_pause_17']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [4, 'ACTION_350_pause_16']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 4, 'ACTION_350_pause_16']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_11',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [5, 'ACTION_350_pause_15']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 5, 'ACTION_350_pause_15']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_12',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [6, 'ACTION_350_pause_14']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 6, 'ACTION_350_pause_14']
     },
     {
         "identifier": 'ACTION_350_pause_13',
@@ -103,8 +103,8 @@ script = [
         "args": [20]
     },
     {
-        "identifier": 'ACTION_350_create_packet_at_object_coords_jmp_if_null_20',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_350_create_packet_at_npc_coords_20',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, AreaObjects.DUMMY_0X07, 'ACTION_350_visibility_on_21']
     },
     {
@@ -163,33 +163,33 @@ script = [
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_33',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [26, 'ACTION_350_transfer_to_xyzf_39']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 26, 'ACTION_350_transfer_to_xyzf_39']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_34',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [27, 'ACTION_350_transfer_to_xyzf_41']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 27, 'ACTION_350_transfer_to_xyzf_41']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_35',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [28, 'ACTION_350_transfer_to_xyzf_43']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 28, 'ACTION_350_transfer_to_xyzf_43']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_36',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [29, 'ACTION_350_transfer_to_xyzf_45']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 29, 'ACTION_350_transfer_to_xyzf_45']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_37',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [30, 'ACTION_350_transfer_to_xyzf_47']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 30, 'ACTION_350_transfer_to_xyzf_47']
     },
     {
         "identifier": 'ACTION_350_jmp_if_700C_equals_short_38',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [31, 'ACTION_350_transfer_to_xyzf_49']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 31, 'ACTION_350_transfer_to_xyzf_49']
     },
     {
         "identifier": 'ACTION_350_transfer_to_xyzf_39',
@@ -199,7 +199,7 @@ script = [
     {
         "identifier": 'ACTION_350_jmp_40',
         "command": 'jmp',
-        "args": ['ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
+        "args": ['ACTION_350_create_packet_at_npc_coords_20']
     },
     {
         "identifier": 'ACTION_350_transfer_to_xyzf_41',
@@ -209,7 +209,7 @@ script = [
     {
         "identifier": 'ACTION_350_jmp_42',
         "command": 'jmp',
-        "args": ['ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
+        "args": ['ACTION_350_create_packet_at_npc_coords_20']
     },
     {
         "identifier": 'ACTION_350_transfer_to_xyzf_43',
@@ -219,7 +219,7 @@ script = [
     {
         "identifier": 'ACTION_350_jmp_44',
         "command": 'jmp',
-        "args": ['ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
+        "args": ['ACTION_350_create_packet_at_npc_coords_20']
     },
     {
         "identifier": 'ACTION_350_transfer_to_xyzf_45',
@@ -229,7 +229,7 @@ script = [
     {
         "identifier": 'ACTION_350_jmp_46',
         "command": 'jmp',
-        "args": ['ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
+        "args": ['ACTION_350_create_packet_at_npc_coords_20']
     },
     {
         "identifier": 'ACTION_350_transfer_to_xyzf_47',
@@ -239,7 +239,7 @@ script = [
     {
         "identifier": 'ACTION_350_jmp_48',
         "command": 'jmp',
-        "args": ['ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
+        "args": ['ACTION_350_create_packet_at_npc_coords_20']
     },
     {
         "identifier": 'ACTION_350_transfer_to_xyzf_49',
@@ -249,6 +249,6 @@ script = [
     {
         "identifier": 'ACTION_350_jmp_50',
         "command": 'jmp',
-        "args": ['ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
+        "args": ['ACTION_350_create_packet_at_npc_coords_20']
     }
 ]

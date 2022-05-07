@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2416_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2416_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_0',
@@ -24,8 +24,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2416_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2416_action_queue_async_2_SUBSCRIPT_fixed_f_coord_on_0',
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2416_set_action_script_async_3',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 408]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 408]
     },
     {
         "identifier": 'EVENT_2416_play_sound_4',
@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2416_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2416_action_queue_sync_5_SUBSCRIPT_pause_0',
@@ -217,33 +217,33 @@ script = [
         "args": [0x7045, 5]
     },
     {
-        "identifier": 'EVENT_2416_jmp_if_var_equals_byte_31',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2416_jmp_if_var_equals_const_31',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ac, 1, 'EVENT_2416_enter_area_39']
     },
     {
-        "identifier": 'EVENT_2416_jmp_if_var_equals_byte_32',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2416_jmp_if_var_equals_const_32',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ac, 2, 'EVENT_2416_enter_area_41']
     },
     {
-        "identifier": 'EVENT_2416_jmp_if_var_equals_byte_33',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2416_jmp_if_var_equals_const_33',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ac, 3, 'EVENT_2416_enter_area_43']
     },
     {
-        "identifier": 'EVENT_2416_jmp_if_var_equals_byte_34',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2416_jmp_if_var_equals_const_34',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ac, 4, 'EVENT_2416_enter_area_45']
     },
     {
-        "identifier": 'EVENT_2416_jmp_if_var_equals_byte_35',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2416_jmp_if_var_equals_const_35',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ac, 5, 'EVENT_2416_enter_area_47']
     },
     {
-        "identifier": 'EVENT_2416_jmp_if_var_equals_byte_36',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2416_jmp_if_var_equals_const_36',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ac, 6, 'EVENT_2416_enter_area_49']
     },
     {

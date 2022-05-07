@@ -47,27 +47,27 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3524_npc2",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x16, "EVENT_3524_chest_2"],
     },
     {
         "identifier": "EVENT_3524_npc-3",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x17, "EVENT_3524_chest_3"],
     },
     {
         "identifier": "EVENT_3524_npc-4",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x18, "EVENT_3524_chest_4"],
     },
     {
         "identifier": "EVENT_3524_npc-5",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x19, "EVENT_3524_chest_5"],
     },
     {
         "identifier": "EVENT_3524_npc-6",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x1A, "EVENT_3524_chest_6"],
     },
     {

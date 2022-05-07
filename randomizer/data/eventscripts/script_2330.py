@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2330_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 691]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 691]
     },
     {
         "identifier": 'EVENT_2330_ret_4',

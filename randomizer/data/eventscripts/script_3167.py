@@ -45,7 +45,7 @@ from randomizer.helpers.objectsequencetables import (
 from randomizer.data import items
 
 script = [
-    {"identifier": "EVENT_3167_set_0", "command": "set", "args": [0x70DF, 24]},
+    {"identifier": "EVENT_3167_set_0", "command": "set_var_to_const", "args": [0x70DF, 24]},
     {
         "identifier": "EVENT_3167_jmp_if_bit_clear_7______",
         "command": "jmp_if_bit_clear",

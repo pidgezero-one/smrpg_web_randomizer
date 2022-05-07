@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2600_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 7]
     },
     {
         "identifier": 'EVENT_2600_set_7010_to_object_xyz_3',
@@ -31,8 +31,8 @@ script = [
         "args": [Sounds._014_FLOWER, 6]
     },
     {
-        "identifier": 'EVENT_2600_create_packet_at_7010_coords_jmp_if_null_5',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_2600_create_packet_at_7010_5',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._001_MUSHROOM, 'EVENT_2600_ret_15']
     },
     {
@@ -45,7 +45,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2600_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7020, 0x0008]
     },
     {

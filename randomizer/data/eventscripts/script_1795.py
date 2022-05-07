@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1795_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_18, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_18, True, 14]
     },
     {
         "identifier": 'EVENT_1795_jmp_if_bit_clear_6',
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1795_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_19, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_19, True, 14]
     },
     {
         "identifier": 'EVENT_1795_run_event_as_subroutine_10',

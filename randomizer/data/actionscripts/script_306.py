@@ -19,8 +19,8 @@ script = [
     },
     {
         "identifier": 'ACTION_306_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [24, 'ACTION_306_jmp_to_subroutine_5']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 24, 'ACTION_306_jmp_to_subroutine_5']
     },
     {
         "identifier": 'ACTION_306_pause_4',

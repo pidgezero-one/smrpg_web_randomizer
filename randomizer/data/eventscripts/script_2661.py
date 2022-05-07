@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2661_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 7]
     },
     {
         "identifier": 'EVENT_2661_summon_to_level_3',
@@ -47,13 +47,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2661_set_action_script_sync_8',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 391]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, True, 391]
     },
     {
         "identifier": 'EVENT_2661_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2661_action_queue_async_9_SUBSCRIPT_face_southwest_0',
@@ -78,13 +78,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2661_set_action_script_async_11',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 384]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 384]
     },
     {
         "identifier": 'EVENT_2661_set_action_script_async_12',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2661_ret_13',

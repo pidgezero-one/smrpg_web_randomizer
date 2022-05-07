@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_6_SUBSCRIPT_face_southeast_0',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_7_SUBSCRIPT_floating_off_0',
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_async_8_SUBSCRIPT_pause_0',
@@ -104,8 +104,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_9_SUBSCRIPT_overwrite_solidity_0',
@@ -155,8 +155,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_10_SUBSCRIPT_pause_0',
@@ -186,8 +186,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_async_11_SUBSCRIPT_pause_0',
@@ -228,8 +228,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_async_16_SUBSCRIPT_jump_to_height_0',
@@ -269,8 +269,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_async_20_SUBSCRIPT_set_animation_speed_0',
@@ -295,8 +295,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_async_22',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_async_22_SUBSCRIPT_set_sprite_sequence_0',
@@ -341,8 +341,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_26',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_26_SUBSCRIPT_set_sprite_sequence_0',
@@ -373,8 +373,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_29',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_29_SUBSCRIPT_reset_properties_0',
@@ -394,8 +394,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_32',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_32_SUBSCRIPT_reset_properties_0',
@@ -444,8 +444,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_37',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_37_SUBSCRIPT_jump_to_height_0',
@@ -466,8 +466,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_async_40',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_async_40_SUBSCRIPT_set_sprite_sequence_0',
@@ -488,8 +488,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_43',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_43_SUBSCRIPT_reset_properties_0',
@@ -499,8 +499,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_44',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_44_SUBSCRIPT_jump_to_height_0',
@@ -530,8 +530,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_49',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_49_SUBSCRIPT_jump_to_height_0',
@@ -572,8 +572,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_async_56',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_0',
@@ -593,8 +593,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_sync_57',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_sync_57_SUBSCRIPT_pause_0',
@@ -654,8 +654,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_action_queue_async_65',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2642_action_queue_async_65_SUBSCRIPT_walk_to_xy_coords_0',
@@ -670,8 +670,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2642_set_action_script_async_66',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2642_ret_67',

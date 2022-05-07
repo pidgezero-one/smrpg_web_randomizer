@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1359_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0000]
     },
     {
         "identifier": 'EVENT_1359_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1359_action_queue_sync_1_SUBSCRIPT_shift_south_pixels_0',
@@ -39,8 +39,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1359_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1359_action_queue_sync_2_SUBSCRIPT_shadow_off_0',
@@ -50,8 +50,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1359_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1359_action_queue_sync_3_SUBSCRIPT_shift_northeast_pixels_0',
@@ -80,8 +80,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1359_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.LAYER_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.LAYER_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1359_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
@@ -124,8 +124,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1359_action_queue_async_4_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1359_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
@@ -141,8 +141,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1359_action_queue_async_4__',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1359_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
@@ -204,8 +204,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1359_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1359_action_queue_async_14_SUBSCRIPT_transfer_to_xyzf_0',

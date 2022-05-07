@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_751_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_751_action_queue_async_2_SUBSCRIPT_clear_solidity_bits_0',

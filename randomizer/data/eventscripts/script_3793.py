@@ -52,23 +52,23 @@ script = [
     },
     {
         "identifier": 'EVENT_3793_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 240]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 240]
     },
     {
         "identifier": 'EVENT_3793_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 991]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 991]
     },
     {
         "identifier": 'EVENT_3793_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 241]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 241]
     },
     {
         "identifier": 'EVENT_3793_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 990]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 990]
     },
     {
         "identifier": 'EVENT_3793_pause_13',
@@ -107,17 +107,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3793_set_short_20',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x0004]
     },
     {
         "identifier": 'EVENT_3793_set_short_21',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x0013]
     },
     {
         "identifier": 'EVENT_3793_set_short_22',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x0000]
     },
     {
@@ -126,8 +126,8 @@ script = [
         "args": [0xfd, 0xc4]
     },
     {
-        "identifier": 'EVENT_3793_create_packet_at_7010_coords_jmp_if_null_24',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_3793_create_packet_at_7010_24',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._050_WATER_BLAST_SFX, 'EVENT_3793_clear_bit_28']
     },
     {
@@ -167,17 +167,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3793_set_short_32',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x0004]
     },
     {
         "identifier": 'EVENT_3793_set_short_33',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x0013]
     },
     {
         "identifier": 'EVENT_3793_set_short_34',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x0000]
     },
     {
@@ -186,8 +186,8 @@ script = [
         "args": [0xfd, 0xc4]
     },
     {
-        "identifier": 'EVENT_3793_create_packet_at_7010_coords_jmp_if_null_36',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_3793_create_packet_at_7010_36',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._051_DRILL_BIT, 'EVENT_3793_set_bit_40']
     },
     {

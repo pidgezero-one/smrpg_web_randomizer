@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_250_room_7_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, "EVENT_250_room_7_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, "EVENT_250_room_7_logic"]
     },
     {
         "identifier": "EVENT_250_room_34_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [34, "EVENT_250_room_34_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 34, "EVENT_250_room_34_logic"]
     },
     {
         "identifier": "EVENT_250_cancel",
@@ -21,7 +21,7 @@ script = [
     },
     {
         "identifier": "EVENT_250_room_7_logic",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 10]
     },
     {
@@ -31,7 +31,7 @@ script = [
     },
     {
         "identifier": 'EVENT_250_room_34_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 109]
     },
     {

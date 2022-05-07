@@ -7,33 +7,33 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_708_jmp_if_7000_equals_short_66',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_708_prize_1']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_708_prize_1']
     },
     {
         "identifier": 'EVENT_708_jmp_if_7000_equals_short__66',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_708_prize_2']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_708_prize_2']
     },
     {
         "identifier": 'EVENT_708_jmp_if_7000_equals_short_67',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_708_prize_3']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 5, 'EVENT_708_prize_3']
     },
     {
         "identifier": 'EVENT_708_jmp_if_7000_equals_short_68',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [10, 'EVENT_708_prize_4']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 10, 'EVENT_708_prize_4']
     },
     {
         "identifier": 'EVENT_708_jmp_if_7000_equals_short_69',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [15, 'EVENT_708_prize_5']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 15, 'EVENT_708_prize_5']
     },
     {
         "identifier": 'EVENT_708_jmp_if_7000_equals_short___66',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [200, 'EVENT_708_prize_6']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 200, 'EVENT_708_prize_6']
     },
     {
         "identifier": 'EVENT_708_return_if_no_prize',

@@ -16,17 +16,17 @@ script = [
     },
     {
         "identifier": 'ACTION_600_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x2100]
     },
     {
         "identifier": 'ACTION_600_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x2280]
     },
     {
         "identifier": 'ACTION_600_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0000]
     },
     {

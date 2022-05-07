@@ -285,12 +285,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1536_set_short_61',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7030, 0x2710]
     },
     {
         "identifier": 'EVENT_1536_set_short_62',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702e, 0x2a30]
     },
     {
@@ -373,7 +373,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1536_set_79',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 4]
     },
     {
@@ -396,8 +396,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1536_jmp_if_7000_equals_short_84',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1536_play_sound_81']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1536_play_sound_81']
     },
     {
         "identifier": 'EVENT_1536_close_dialog_85',
@@ -418,12 +418,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1536_set_short_89',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703e, 0x019a]
     },
     {
         "identifier": 'EVENT_1536_set_90',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 4]
     },
     {
@@ -446,12 +446,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1536_dec_short_95',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x703e]
     },
     {
-        "identifier": 'EVENT_1536_jmp_if_var_not_equals_short_96',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_1536_jmp_if_var_not_equals_const_96',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x703e, 0, 'EVENT_1536_play_sound_92']
     },
     {
@@ -497,16 +497,16 @@ script = [
     },
     {
         "identifier": 'EVENT_1536_set_106',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 99]
     },
     {
-        "identifier": 'EVENT_1536_add_max_FP_7000_107',
-        "command": 'add_max_FP_7000'
+        "identifier": 'EVENT_1536_add_7000_to_max_FP_107',
+        "command": 'add_7000_to_max_FP'
     },
     {
-        "identifier": 'EVENT_1536_add_current_FP_7000_108',
-        "command": 'add_current_FP_7000'
+        "identifier": 'EVENT_1536_add_7000_to_current_FP_108',
+        "command": 'add_7000_to_current_FP'
     },
     {
         "identifier": 'EVENT_1536_ret_109',

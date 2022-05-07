@@ -5,8 +5,8 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_351_jmp_if_var_equals_byte_0',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_351_jmp_if_var_equals_const_0',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70df, 50, 'ACTION_351_set_animation_speed_28']
     },
     {

@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2361_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2361_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_0',
@@ -54,53 +54,53 @@ script = [
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_8',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 456]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 456]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 456]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 456]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_async_12',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_5, 456]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, False, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 457]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 457]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 459]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 459]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 461]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 461]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 463]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 463]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 481]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 481]
     },
     {
         "identifier": 'EVENT_2361_fade_in_from_black_async_18',

@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": "EVENT_3936_action_queue_async_0",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": "EVENT_3936_action_queue_async_0_SUBSCRIPT_object_memory_set_bit_0",

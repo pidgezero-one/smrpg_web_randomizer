@@ -6,28 +6,28 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_8_set_random_1',
-        "command": 'set_random',
+        "identifier": 'EVENT_8_set_var_to_random_1',
+        "command": 'set_var_to_random',
         "args": [0x7000, 4]
     },
     {
         "identifier": 'EVENT_8_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_8_set_3']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_8_set_3']
     },
     {
         "identifier": 'EVENT_8_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_8_set_4']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_8_set_4']
     },
     {
         "identifier": 'EVENT_8_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_8_set_5']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_8_set_5']
     },
     {
         "identifier": 'EVENT_8_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 107]
     },
     {
@@ -37,7 +37,7 @@ script = [
     },
     {
         "identifier": 'EVENT_8_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 108]
     },
     {
@@ -47,7 +47,7 @@ script = [
     },
     {
         "identifier": 'EVENT_8_set_4',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 117]
     },
     {
@@ -57,7 +57,7 @@ script = [
     },
     {
         "identifier": 'EVENT_8_set_5',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 131]
     },
     {

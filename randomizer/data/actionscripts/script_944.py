@@ -21,7 +21,7 @@ script = [
     },
     {
         "identifier": 'ACTION_944_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x000d]
     },
     {

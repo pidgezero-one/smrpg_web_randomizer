@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1592_jmp_if_7000_not_equals_short_251',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [0, 'EVENT_1592_summon_to_current_level_at_marios_coords_254']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 0, 'EVENT_1592_summon_to_current_level_at_marios_coords_254']
     },
     {
         "identifier": 'EVENT_1592_run_dialog_252',
@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1592_action_queue_async_255',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1592_action_queue_async_255_SUBSCRIPT_set_sprite_sequence_0',
@@ -108,8 +108,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1592_action_queue_async_256',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_16],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_16, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1592_action_queue_async_256_SUBSCRIPT_set_animation_speed_0',
@@ -159,7 +159,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1592_set_short_260',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0x0001]
     },
     {
@@ -178,8 +178,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1592_create_packet_at_7010_coords_jmp_if_null_264',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_1592_create_packet_at_7010_264',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_1592_pause_263']
     },
     {
@@ -189,7 +189,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1592_add_short_266',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7034, 0x0003]
     },
     {
@@ -198,8 +198,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1592_action_queue_async_268',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_16],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_16, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1592_action_queue_async_268_SUBSCRIPT_jump_to_height_0',

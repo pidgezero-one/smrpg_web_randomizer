@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1645_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1645_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1645_store_item_amount_7000_2',
@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1645_set_action_script_async_9',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1645_remove_one_from_inventory_10',
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1645_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1645_action_queue_async_14_SUBSCRIPT_play_sound_0',
@@ -159,8 +159,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1645_action_queue_async_18',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1645_action_queue_async_18_SUBSCRIPT_set_animation_speed_0',
@@ -242,8 +242,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1645_set_action_script_async_28',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1645_run_dialog_29',

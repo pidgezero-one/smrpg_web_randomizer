@@ -39,17 +39,17 @@ script = [
     {
         "identifier": 'ACTION_443_dec_7',
         "command": 'dec',
-        "args": [0x700c]
+        'args': [0x700c, 1],
     },
     {
         "identifier": 'ACTION_443_dec_8',
         "command": 'dec',
-        "args": [0x700c]
+        'args': [0x700c]
     },
     {
         "identifier": 'ACTION_443_set_70A0_short_mem_to_700C_9',
-        "command": 'set_70A0_short_mem_to_700C',
-        "args": [0x70a9]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x70a9]
     },
     {
         "identifier": 'ACTION_443_db_10',
@@ -58,17 +58,17 @@ script = [
     },
     {
         "identifier": 'ACTION_443_add_short_11',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x701a, 0x00c0]
     },
     {
         "identifier": 'ACTION_443_add_short_12',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x0040]
     },
     {
         "identifier": 'ACTION_443_add_short_13',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0x0030]
     },
     {

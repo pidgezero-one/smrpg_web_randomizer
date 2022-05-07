@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_702_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_702_action_queue_async_2_SUBSCRIPT_clear_solidity_bits_0',
@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_702_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_702_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_0',
@@ -113,8 +113,8 @@ script = [
     },
     {
         "identifier": 'EVENT_702_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_702_action_queue_async_9_SUBSCRIPT_pause_0',
@@ -163,8 +163,8 @@ script = [
     },
     {
         "identifier": 'EVENT_702_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_702_ret_18',

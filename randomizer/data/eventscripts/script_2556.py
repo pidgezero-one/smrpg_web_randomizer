@@ -94,8 +94,8 @@ script = [
     },
     {
         "identifier": "EVENT_2556_action_queue_async_12",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_2],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": "EVENT_2556_action_queue_async_12_SUBSCRIPT_set_sprite_sequence_0",
@@ -110,8 +110,8 @@ script = [
     },
     {
         "identifier": "EVENT_2556_action_queue_async_14",
-        "command": "action_queue_async",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": "EVENT_2556_action_queue_async_14_SUBSCRIPT_shift_north_steps_0",
@@ -123,8 +123,8 @@ script = [
     {"identifier": "EVENT_2556_pause_15", "command": "pause", "args": [16]},
     {
         "identifier": "EVENT_2556_action_queue_sync_16",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_2],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": "EVENT_2556_action_queue_sync_16_SUBSCRIPT_sequence_looping_off_0",
@@ -160,8 +160,8 @@ script = [
     {"identifier": "EVENT_2556_pause_18", "command": "pause", "args": [24]},
     {
         "identifier": "EVENT_2556_action_queue_sync_19",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_2],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": "EVENT_2556_action_queue_sync_19_SUBSCRIPT_set_sprite_sequence_0",
@@ -181,8 +181,8 @@ script = [
     },
     {
         "identifier": "EVENT_2556_set_action_script_sync_20",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.NPC_3, 689],
+        "command": "set_action_script",
+        "args": [AreaObjects.NPC_3, True, 689]
     },
     {
         "identifier": "EVENT_2556_jmp_to_event_22",

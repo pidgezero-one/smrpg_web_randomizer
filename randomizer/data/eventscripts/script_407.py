@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_407_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_407_set_70A0_short_mem_to_7000_2',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a9]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a9]
     },
     {
         "identifier": 'EVENT_407_start_battle_3',

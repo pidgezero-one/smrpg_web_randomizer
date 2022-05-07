@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_377_set_action_script_sync_0',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 108]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 108]
     },
     {
         "identifier": 'EVENT_377_pause_action_script_1',
@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_377_start_embedded_action_script_async_F1_2',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_0],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_0, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_377_start_embedded_action_script_async_F1_2_SUBSCRIPT_bpl_26_27_28_0',
@@ -28,8 +28,8 @@ script = [
     },
     {
         "identifier": 'EVENT_377_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 110]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 110]
     },
     {
         "identifier": 'EVENT_377_pause_4',
@@ -43,8 +43,8 @@ script = [
     },
     {
         "identifier": 'EVENT_377_start_embedded_action_script_async_F1_6',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_1],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_1, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_377_start_embedded_action_script_async_F1_6_SUBSCRIPT_bpl_26_27_28_0',
@@ -54,8 +54,8 @@ script = [
     },
     {
         "identifier": 'EVENT_377_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 110]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 110]
     },
     {
         "identifier": 'EVENT_377_pause_8',

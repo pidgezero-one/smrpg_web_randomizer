@@ -15,8 +15,8 @@ script = [
     },
     {
         "identifier": 'ACTION_925_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [79, 'ACTION_925_set_priority_4']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 79, 'ACTION_925_set_priority_4']
     },
     {
         "identifier": 'ACTION_925_set_animation_speed_3',

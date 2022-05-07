@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_55_store_multiplier',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7088]
+        "command": 'copy_var_to_var',
+        'args': [0x7088, 0x7000]
     },
     {
         "identifier": 'EVENT_55_mem_7000_and_const_6',
@@ -17,18 +17,18 @@ script = [
     },
     {
         "identifier": "EVENT_55_tier4_jmp",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_55_tier4"]
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_55_tier4"]
     },
     {
         "identifier": "EVENT_55_tier3_jmp",
-        "command": "jmp_if_7000_equals_short",
-        "args": [8, "EVENT_55_tier3"]
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 8, "EVENT_55_tier3"]
     },
     {
         "identifier": "EVENT_55_tier2_jmp",
-        "command": "jmp_if_7000_equals_short",
-        "args": [16, "EVENT_55_tier2"]
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 16, "EVENT_55_tier2"]
     },
     {
         "identifier": "EVENT_55_tier1",

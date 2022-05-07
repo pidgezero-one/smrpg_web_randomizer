@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1647_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1647_action_queue_async_3_SUBSCRIPT_set_animation_speed_0',
@@ -88,8 +88,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1647_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1647_action_queue_async_12_SUBSCRIPT_jump_to_height_silent_0',
@@ -109,8 +109,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1647_action_queue_async_15',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1647_action_queue_async_15_SUBSCRIPT_bounce_to_xy_with_height_0',
@@ -125,8 +125,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1647_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 40]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 40]
     },
     {
         "identifier": 'EVENT_1647_run_dialog_17',

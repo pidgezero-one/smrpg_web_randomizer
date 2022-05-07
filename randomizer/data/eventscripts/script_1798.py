@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1798_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1798_action_queue_async_6_SUBSCRIPT_set_animation_speed_0',

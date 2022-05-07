@@ -16,7 +16,7 @@ script = [
     },
     {
         "identifier": 'ACTION_373_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0001]
     },
     {
@@ -36,13 +36,13 @@ script = [
     },
     {
         "identifier": 'ACTION_373_set_700C_to_70A0_short_mem_6',
-        "command": 'set_700C_to_70A0_short_mem',
-        "args": [0x70c1]
+        "command": 'copy_var_to_var',
+        'args': [0x70c1, 0x700C]
     },
     {
         "identifier": 'ACTION_373_mem_compare_val_7',
-        "command": 'mem_compare_val',
-        "args": [5]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 5]
     },
     {
         "identifier": 'ACTION_373_jmp_if_comparison_result_is_greater_or_equal_8',
@@ -82,7 +82,7 @@ script = [
     {
         "identifier": 'ACTION_373_jmp_to_subroutine_15',
         "command": 'jmp_to_subroutine',
-        "args": ['ACTION_373_jmp_if_var_equals_short_19']
+        "args": ['ACTION_373_jmp_if_var_equals_const_19']
     },
     {
         "identifier": 'ACTION_373_jmp_16',
@@ -100,14 +100,14 @@ script = [
         "args": ['ACTION_373_jmp_if_bit_set_4']
     },
     {
-        "identifier": 'ACTION_373_jmp_if_var_equals_short_19',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7028, 0, 'ACTION_373_jmp_if_var_equals_short_43']
+        "identifier": 'ACTION_373_jmp_if_var_equals_const_19',
+        "command": 'jmp_if_var_equals_const',
+        "args": [0x7028, 0, 'ACTION_373_jmp_if_var_equals_const_43']
     },
     {
         "identifier": 'ACTION_373_jmp_if_random_above_128_20',
         "command": 'jmp_if_random_above_128',
-        "args": ['ACTION_373_jmp_if_var_equals_short_43']
+        "args": ['ACTION_373_jmp_if_var_equals_const_43']
     },
     {
         "identifier": 'ACTION_373_jmp_if_bit_set_21',
@@ -179,7 +179,7 @@ script = [
     },
     {
         "identifier": 'ACTION_373_dec_short_35',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x7028]
     },
     {
@@ -217,9 +217,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_373_jmp_if_var_equals_short_43',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7028, 3, 'ACTION_373_jmp_if_var_equals_short_19']
+        "identifier": 'ACTION_373_jmp_if_var_equals_const_43',
+        "command": 'jmp_if_var_equals_const',
+        "args": [0x7028, 3, 'ACTION_373_jmp_if_var_equals_const_19']
     },
     {
         "identifier": 'ACTION_373_jmp_if_bit_set_44',
@@ -400,7 +400,7 @@ script = [
     },
     {
         "identifier": 'ACTION_373_set_80',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70c1, 0]
     },
     {
@@ -474,7 +474,7 @@ script = [
     },
     {
         "identifier": 'ACTION_373_set_95',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70c1, 0]
     },
     {

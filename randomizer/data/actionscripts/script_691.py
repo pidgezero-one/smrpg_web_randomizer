@@ -125,23 +125,23 @@ script = [
     },
     {
         "identifier": 'ACTION_691_jmp_if_700C_equals_short_25',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [20, 'ACTION_691_set_700C_to_object_coord_30']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 20, 'ACTION_691_set_700C_to_object_coord_30']
     },
     {
         "identifier": 'ACTION_691_jmp_if_700C_equals_short_26',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_691_set_700C_to_object_coord_37']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_691_set_700C_to_object_coord_37']
     },
     {
         "identifier": 'ACTION_691_jmp_if_700C_equals_short_27',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [22, 'ACTION_691_set_700C_to_object_coord_44']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 22, 'ACTION_691_set_700C_to_object_coord_44']
     },
     {
         "identifier": 'ACTION_691_jmp_if_700C_equals_short_28',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [23, 'ACTION_691_set_700C_to_object_coord_51']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 23, 'ACTION_691_set_700C_to_object_coord_51']
     },
     {
         "identifier": 'ACTION_691_ret_29',
@@ -154,8 +154,8 @@ script = [
     },
     {
         "identifier": 'ACTION_691_jmp_if_700C_equals_short_31',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_691_clear_bit_34']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_691_clear_bit_34']
     },
     {
         "identifier": 'ACTION_691_walk_to_xy_coords_32',
@@ -187,8 +187,8 @@ script = [
     },
     {
         "identifier": 'ACTION_691_jmp_if_700C_equals_short_38',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_691_clear_bit_41']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_691_clear_bit_41']
     },
     {
         "identifier": 'ACTION_691_walk_to_xy_coords_39',
@@ -220,8 +220,8 @@ script = [
     },
     {
         "identifier": 'ACTION_691_jmp_if_700C_equals_short_45',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_691_clear_bit_48']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_691_clear_bit_48']
     },
     {
         "identifier": 'ACTION_691_walk_to_xy_coords_46',
@@ -253,8 +253,8 @@ script = [
     },
     {
         "identifier": 'ACTION_691_jmp_if_700C_equals_short_52',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [8, 'ACTION_691_clear_bit_55']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 8, 'ACTION_691_clear_bit_55']
     },
     {
         "identifier": 'ACTION_691_walk_to_xy_coords_53',

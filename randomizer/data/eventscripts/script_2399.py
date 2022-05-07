@@ -45,12 +45,12 @@ from randomizer.helpers.objectsequencetables import (
 from randomizer.data import items
 
 script = [
-    {"identifier": "EVENT_2399_set_0", "command": "set", "args": [0x70DF, 5]},
-    {"identifier": "EVENT_2399_set_2", "command": "set", "args": [0x70C0, 219]},
+    {"identifier": "EVENT_2399_set_0", "command": "set_var_to_const", "args": [0x70DF, 5]},
+    {"identifier": "EVENT_2399_set_2", "command": "set_var_to_const", "args": [0x70C0, 219]},
     {
         "identifier": "EVENT_2399_action_queue_async_3",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": "EVENT_2399_action_queue_async_3_SUBSCRIPT_shift_northwest_pixels_0",
@@ -87,8 +87,8 @@ script = [
     },
     {
         "identifier": "EVENT_2399_action_queue_sync_13",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": "EVENT_2399_action_queue_sync_13_SUBSCRIPT_set_animation_speed_0",
@@ -104,8 +104,8 @@ script = [
     },
     {
         "identifier": "EVENT_2399_action_queue_async_14",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2399_action_queue_async_14_SUBSCRIPT_floating_off_0",
@@ -129,8 +129,8 @@ script = [
     },
     {
         "identifier": "EVENT_2399_action_queue_async_16",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2399_action_queue_async_16_SUBSCRIPT_floating_on_0",
@@ -165,8 +165,8 @@ script = [
     },
     {
         "identifier": "EVENT_2399_set_action_script_async_17",
-        "command": "set_action_script_async",
-        "args": [AreaObjects.MARIO, 395],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, False, 395]
     },
     {"identifier": "EVENT_2399_unfreeze_camera_109", "command": "unfreeze_camera"},
     {

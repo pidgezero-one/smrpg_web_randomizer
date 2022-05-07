@@ -17,7 +17,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1695_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700e, 0x0007]
     },
     {
@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1695_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1695_action_queue_async_6_SUBSCRIPT_object_memory_set_bit_0',
@@ -69,8 +69,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1695_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1695_action_queue_async_10_SUBSCRIPT_clear_solidity_bits_0',

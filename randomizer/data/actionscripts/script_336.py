@@ -35,8 +35,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_336_jmp_if_var_equals_byte_6',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_336_jmp_if_var_equals_const_6',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 2, 'ACTION_336_pause_5']
     },
     {
@@ -52,7 +52,7 @@ script = [
     {
         "identifier": 'ACTION_336_dec_9',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae, 1],
     },
     {
         "identifier": 'ACTION_336_play_sound_10',

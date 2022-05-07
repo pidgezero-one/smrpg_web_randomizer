@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": "EVENT_2627_action_queue_sync_2",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": "EVENT_2627_action_queue_sync_2_SUBSCRIPT_set_animation_speed_0",
@@ -73,8 +73,8 @@ script = [
     },
     {
         "identifier": "EVENT_2627_action_queue_async_3",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2627_action_queue_async_3_SUBSCRIPT_pause_0",
@@ -99,8 +99,8 @@ script = [
     },
     {
         "identifier": "EVENT_2627_action_queue_sync_25",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_10],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_10, True],
         "subscript": [
             {
                 "identifier": "EVENT_2627_action_queue_sync_25_SUBSCRIPT_set_animation_speed_0",

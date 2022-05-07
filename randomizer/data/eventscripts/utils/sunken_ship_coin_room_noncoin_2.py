@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3216_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3216_action_queue_sync_3_SUBSCRIPT_visibility_on_0',
@@ -46,8 +46,8 @@ script = [
         "args": [0x70af]
     },
     {
-        "identifier": 'EVENT_3216_jmp_if_var_equals_byte_5',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3216_jmp_if_var_equals_const_5',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 16, 'EVENT_3216_set_action_script_sync_7']
     },
     {
@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3216_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_17, 338]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_17, True, 338]
     },
     {
         "identifier": 'EVENT_3216_jmp_if_bit_set_8',

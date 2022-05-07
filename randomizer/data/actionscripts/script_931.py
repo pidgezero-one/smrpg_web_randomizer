@@ -15,28 +15,28 @@ script = [
     },
     {
         "identifier": 'ACTION_931_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_931_transfer_xyzf_pixels_8']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_931_transfer_xyzf_pixels_8']
     },
     {
         "identifier": 'ACTION_931_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [22, 'ACTION_931_transfer_xyzf_pixels_12']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 22, 'ACTION_931_transfer_xyzf_pixels_12']
     },
     {
         "identifier": 'ACTION_931_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [23, 'ACTION_931_set_vram_priority_16']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 23, 'ACTION_931_set_vram_priority_16']
     },
     {
         "identifier": 'ACTION_931_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [24, 'ACTION_931_set_vram_priority_21']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 24, 'ACTION_931_set_vram_priority_21']
     },
     {
         "identifier": 'ACTION_931_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [25, 'ACTION_931_set_vram_priority_26']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 25, 'ACTION_931_set_vram_priority_26']
     },
     {
         "identifier": 'ACTION_931_ret_7',

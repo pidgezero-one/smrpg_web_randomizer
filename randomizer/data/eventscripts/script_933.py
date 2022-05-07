@@ -27,13 +27,13 @@ script = [
     },
     {
         "identifier": 'EVENT_933_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_933_close_dialog_74']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_933_close_dialog_74']
     },
     {
         "identifier": 'EVENT_933_set_7000_short_mem_to_7000_5',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7026]
     },
     {
         "identifier": 'EVENT_933_run_dialog_7',
@@ -96,18 +96,18 @@ script = [
     },
     {
         "identifier": 'EVENT_933_set_7000_to_70A0_short_mem_19',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70d9]
+        "command": 'copy_var_to_var',
+        'args': [0x70d9, 0x7000]
     },
     {
         "identifier": 'EVENT_933_add_short_mem_20',
-        "command": 'add_short_mem',
-        "args": [0x7000, 0x7024]
+        "command": 'add_var_to_7000',
+        'args': [0x7024]
     },
     {
         "identifier": 'EVENT_933_mem_compare_val_21',
-        "command": 'mem_compare_val',
-        "args": [50]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 50]
     },
     {
         "identifier": 'EVENT_933_jmp_if_comparison_result_is_greater_or_equal_22',
@@ -116,18 +116,18 @@ script = [
     },
     {
         "identifier": 'EVENT_933_set_70A0_short_mem_to_7000_23',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70d9]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70d9]
     },
     {
         "identifier": 'EVENT_933_set_7000_to_7000_short_mem_24',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_933_mem_compare_val_25',
-        "command": 'mem_compare_val',
-        "args": [20]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 20]
     },
     {
         "identifier": 'EVENT_933_jmp_if_comparison_result_is_greater_or_equal_26',
@@ -136,8 +136,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_mem_compare_val_27',
-        "command": 'mem_compare_val',
-        "args": [10]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 10]
     },
     {
         "identifier": 'EVENT_933_jmp_if_comparison_result_is_greater_or_equal_28',
@@ -151,8 +151,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_action_queue_async_31',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_11],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_11, False],
         "subscript": [
             {
                 "identifier": 'EVENT_933_action_queue_async_31_SUBSCRIPT_set_sprite_sequence_0',
@@ -212,8 +212,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_action_queue_async_42',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_11],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_11, False],
         "subscript": [
             {
                 "identifier": 'EVENT_933_action_queue_async_42_SUBSCRIPT_set_sprite_sequence_0',
@@ -252,7 +252,7 @@ script = [
         "args": [Sounds._027_FOUND_AN_ITEM, 6]
     },
     {
-        "identifier": 'EVENT_933_set_random_49',
+        "identifier": 'EVENT_933_set_var_to_random_49',
         "command": 'run_event_as_subroutine',
         "args": [7]
     },
@@ -273,8 +273,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_action_queue_async_64',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_11],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_11, False],
         "subscript": [
             {
                 "identifier": 'EVENT_933_action_queue_async_64_SUBSCRIPT_set_sprite_sequence_0',
@@ -324,7 +324,7 @@ script = [
     },
     {
         "identifier": 'EVENT_933_set_73',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70d9, 0]
     },
     {
@@ -367,8 +367,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_action_queue_async_82',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, False],
         "subscript": [
             {
                 "identifier": 'EVENT_933_action_queue_async_82_SUBSCRIPT_sequence_playback_off_0',
@@ -382,8 +382,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_action_queue_async_83',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_11],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_11, False],
         "subscript": [
             {
                 "identifier": 'EVENT_933_action_queue_async_83_SUBSCRIPT_set_animation_speed_0',
@@ -408,8 +408,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_action_queue_async_84',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, False],
         "subscript": [
             {
                 "identifier": 'EVENT_933_action_queue_async_84_SUBSCRIPT_sequence_playback_on_0',

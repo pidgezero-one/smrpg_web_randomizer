@@ -24,8 +24,8 @@ script = [
         "args": [0, 0, 8, RadialDirections.NORTHEAST]
     },
     {
-        "identifier": 'ACTION_347_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_347_jmp_if_var_equals_const_4',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7032, 1, 'ACTION_347_pause_13']
     },
     {
@@ -71,8 +71,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_347_jmp_if_var_not_equals_short_14',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'ACTION_347_jmp_if_var_not_equals_const_14',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x7032, 1, 'ACTION_347_pause_13']
     },
     {
@@ -135,8 +135,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_347_jmp_if_var_not_equals_short_27',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'ACTION_347_jmp_if_var_not_equals_const_27',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x7032, 2, 'ACTION_347_pause_26']
     },
     {

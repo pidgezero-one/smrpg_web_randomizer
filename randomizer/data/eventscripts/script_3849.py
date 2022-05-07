@@ -25,13 +25,13 @@ script = [
         "args": [0xfd, 0x45]
     },
     {
-        "identifier": 'EVENT_3849_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3849_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70de, 18, 'EVENT_3849_set_short_7']
     },
     {
         "identifier": 'EVENT_3849_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7036, 0x0000]
     },
     {
@@ -45,7 +45,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3849_set_short_7',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7036, 0x118d]
     },
     {

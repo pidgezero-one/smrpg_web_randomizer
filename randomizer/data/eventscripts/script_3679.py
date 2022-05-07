@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3679_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3679_action_queue_sync_5_SUBSCRIPT_transfer_to_xyzf_3',
@@ -38,8 +38,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3679_set_action_script_sync_8',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 978]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 978]
     },
     {
         "identifier": 'EVENT_3679_jmp_if_bit_clear_9',

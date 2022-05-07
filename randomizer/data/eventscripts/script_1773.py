@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1773_set_action_script_async_2',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 363]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 363]
     },
     {
         "identifier": 'EVENT_1773_enable_controls_3',
@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1773_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 823]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 823]
     },
     {
         "identifier": 'EVENT_1773_ret_6',

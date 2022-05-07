@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": "EVENT_346_room_283_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [328, 'EVENT_346_remove_from_current_level_1']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 328, 'EVENT_346_remove_from_current_level_1']
     },
     {
         "identifier": 'EVENT_346_remove_from_current_level_0',

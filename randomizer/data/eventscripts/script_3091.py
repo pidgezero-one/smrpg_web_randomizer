@@ -8,27 +8,27 @@ script = [
     
     {
         "identifier": 'EVENT_3091_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a7]
+        "command": 'copy_var_to_var',
+        'args': [0x70a7, 0x7000]
     },
     {
         "identifier": 'EVENT_3091_reset_7000___',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 0]
     },
     {
         "identifier": 'EVENT_3091_check_multiplier',
-        "command": 'jmp_if_var_equals_short',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70BC, 0, 'EVENT_3091_store_multiplier']
     },
     {
         "identifier": 'EVENT_3091_add_counter',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 15]
     },
     {
         "identifier": 'EVENT_3091_get_multiplier',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x70BC]
     },
     {
@@ -38,15 +38,15 @@ script = [
     },
     {
         "identifier": 'EVENT_3091_store_multiplier',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x70BC]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70BC]
     },
 
 
     {
         "identifier": 'EVENT_3091_set_7000_to_70A0_short_mem_11',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a7]
+        "command": 'copy_var_to_var',
+        'args': [0x70a7, 0x7000]
     },
     {
         "identifier": 'EVENT_3091_mem_7000_and_const__12_',
@@ -55,26 +55,26 @@ script = [
     },
     {
         "identifier": 'EVENT_3091_concat_multiplier',
-        "command": 'add_short_mem',
-        "args": [0x7000, 0x70BC]
+        "command": 'add_var_to_7000',
+        'args': [0x70BC]
     },
     {
         "identifier": 'EVENT_3091_store_multiplier_',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x70BC]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70BC]
     },
 
     
     {
         "identifier": 'EVENT_3091_reset_7000_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 0]
     },
 
 
     {
         "identifier": 'EVENT_3091_use_multiplier',
-        "command": 'jmp_if_var_equals_short',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70BC, 0, 'EVENT_3091_add_coins_260']
     },
     {
@@ -84,7 +84,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3091_dec_multiplier',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x70BC]
     },
     {
@@ -120,13 +120,13 @@ script = [
         "args": [Sounds._005_BLOCK_SWITCH, 6]
     },
     {
-        "identifier": 'EVENT_3091_disable_event_trigger_for_object_at_70A8_265',
-        "command": 'disable_event_trigger_for_object_at_70A8'
+        "identifier": 'EVENT_3091_disable_trigger_at_70A8_265',
+        "command": 'disable_trigger_at_70A8'
     },
     {
         "identifier": 'EVENT_3091_set_action_script_sync_266',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 7]
     },
     {
         "identifier": 'EVENT_3091_set_7010_to_object_xyz_267',
@@ -135,18 +135,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3091_set_7000_to_7000_short_mem_268',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7014, 0x7000]
     },
     {
         "identifier": 'EVENT_3091_add_269',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 608]
     },
     {
         "identifier": 'EVENT_3091_set_7000_short_mem_to_7000_270',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7014]
     },
     {
         "identifier": 'EVENT_3091_jmp_if_bit_set_271',
@@ -164,8 +164,8 @@ script = [
         "args": [0x704a, 3]
     },
     {
-        "identifier": 'EVENT_3091_create_packet_at_7010_coords_jmp_if_null_274',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_3091_create_packet_at_7010_274',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._019_FROG_COIN, 'EVENT_3091_ret']
     },
     {

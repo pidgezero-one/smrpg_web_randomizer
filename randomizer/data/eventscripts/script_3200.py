@@ -12,18 +12,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3200_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_3200_set_70A0_short_mem_to_7000_2',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70aa]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70aa]
     },
     {
         "identifier": 'EVENT_3200_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70AA],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70AA, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3200_action_queue_sync_3_SUBSCRIPT_sequence_playback_on_0',
@@ -58,8 +58,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3200_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3200_action_queue_async_4_SUBSCRIPT_sequence_playback_off_0',
@@ -199,8 +199,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_set_animation_speed_0',
@@ -265,8 +265,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7',
-        "command": 'start_embedded_action_script_sync_F1',
-        "args": [AreaObjects.MEM_70AA],
+        "command": 'start_embedded_action_script',
+        "args": [AreaObjects.MEM_70AA, True, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_pause_0',
@@ -324,8 +324,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3200_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3200_action_queue_async_8_SUBSCRIPT_jump_to_height_silent_0',
@@ -421,8 +421,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3200_action_queue_async_56',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3200_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_0',

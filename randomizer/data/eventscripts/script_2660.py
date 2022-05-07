@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2660_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 7]
     },
     {
         "identifier": 'EVENT_2660_set_bit_3',
@@ -47,32 +47,32 @@ script = [
     },
     {
         "identifier": 'EVENT_2660_set_7000_to_7000_short_mem_8',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7014, 0x7000]
     },
     {
         "identifier": 'EVENT_2660_add_9',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 512]
     },
     {
         "identifier": 'EVENT_2660_set_7000_short_mem_to_7000_10',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7014]
     },
     {
-        "identifier": 'EVENT_2660_create_packet_at_7010_coords_jmp_if_null_11',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_2660_create_packet_at_7010_11',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._000_FLOWER, 'EVENT_2660_ret_14']
     },
     {
         "identifier": 'EVENT_2660_set_12',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 1]
     },
     {
-        "identifier": 'EVENT_2660_add_max_FP_7000_13',
-        "command": 'add_max_FP_7000'
+        "identifier": 'EVENT_2660_add_7000_to_max_FP_13',
+        "command": 'add_7000_to_max_FP'
     },
     {
         "identifier": 'EVENT_2660_ret_14',

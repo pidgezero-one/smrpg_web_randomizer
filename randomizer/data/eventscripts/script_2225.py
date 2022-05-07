@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": "EVENT_2225_action_queue_async_2",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2225_action_queue_async_2_SUBSCRIPT_face_northeast_0",
@@ -106,8 +106,8 @@ script = [
     },
     {
         "identifier": "EVENT_2225_action_queue_async_3",
-        "command": "action_queue_async",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": "EVENT_2225_action_queue_async_3_SUBSCRIPT_set_animation_speed_0",
@@ -146,8 +146,8 @@ script = [
     {"identifier": "EVENT_2225_freeze_camera_6", "command": "freeze_camera"},
     {
         "identifier": "EVENT_2225_action_queue_async_7",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2225_action_queue_async_7_SUBSCRIPT_transfer_to_xyzf_0",
@@ -255,7 +255,7 @@ script = [
     },
     {
         "identifier": "EVENT_2225_start_battle_10",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 521],
     },
     {
@@ -272,7 +272,7 @@ script = [
     {"identifier": "EVENT_2225_restore_all_hp_13", "command": "restore_all_hp"},
     {"identifier": "EVENT_2225_restore_all_fp_14", "command": "restore_all_fp"},
     {"identifier": "EVENT_2225_set_bit_15", "command": "set_bit", "args": [0x7054, 2]},
-    {"identifier": "EVENT_2225_set_short_17", "command": "set", "args": [0x7000, 521]},
+    {"identifier": "EVENT_2225_set_short_17", "command": "set_var_to_const", "args": [0x7000, 521]},
     {
         "identifier": "EVENT_2225_jmp_to_event_18",
         "command": "jmp_to_event",

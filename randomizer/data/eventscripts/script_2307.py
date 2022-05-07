@@ -22,7 +22,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2307_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70e2, 4]
     },
     {
@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2307_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2307_action_queue_async_5_SUBSCRIPT_set_sprite_sequence_0',
@@ -74,8 +74,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2307_set_action_script_async_10',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.SCREEN_FOCUS, 391]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, False, 391]
     },
     {
         "identifier": 'EVENT_2307_run_dialog_11',

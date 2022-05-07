@@ -131,23 +131,23 @@ script = [
     },
     {
         "identifier": "EVENT_3819_set_7000_to_70A0_short_mem_33",
-        "command": "set_7000_to_70A0_short_mem",
-        "args": [0x70DE],
+        "command": "copy_var_to_var",
+        "args": [0x70DE, 0x7000]
     },
     {
         "identifier": "EVENT_3819_jmp_if_7000_equals_short_34",
-        "command": "jmp_if_7000_equals_short",
-        "args": [39, "EVENT_3819_jmp_if_bit_clear_50"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 39, "EVENT_3819_jmp_if_bit_clear_50"]
     },
     {
         "identifier": "EVENT_3819_jmp_if_7000_equals_short_35",
-        "command": "jmp_if_7000_equals_short",
-        "args": [45, "EVENT_3819_jmp_if_bit_clear_50"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 45, "EVENT_3819_jmp_if_bit_clear_50"]
     },
     {
         "identifier": "EVENT_3819_action_queue_sync_36",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": "EVENT_3819_action_queue_sync_36_SUBSCRIPT_shift_northeast_pixels_0",
@@ -158,8 +158,8 @@ script = [
     },
     {
         "identifier": "EVENT_3819_action_queue_sync_37",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_3819_action_queue_sync_37_SUBSCRIPT_shift_west_pixels_0",
@@ -170,8 +170,8 @@ script = [
     },
     {
         "identifier": "EVENT_3819_action_queue_async_38",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_4],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": "EVENT_3819_action_queue_async_38_SUBSCRIPT_shift_northeast_pixels_0",

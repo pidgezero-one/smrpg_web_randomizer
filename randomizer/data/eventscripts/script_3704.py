@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3704_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3704_action_queue_async_2_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -49,8 +49,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3704_set_action_script_sync_6',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 245]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 245]
     },
     {
         "identifier": 'EVENT_3704_jmp_if_object_in_level_7',
@@ -69,8 +69,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3704_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 245]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 245]
     },
     {
         "identifier": 'EVENT_3704_fade_in_from_black_async_11',

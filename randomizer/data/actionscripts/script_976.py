@@ -6,7 +6,7 @@ from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPac
 script = [
     {
         "identifier": 'ACTION_976_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0x0001]
     },
     {
@@ -21,17 +21,17 @@ script = [
     },
     {
         "identifier": 'ACTION_976_add_short_3',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7034, 0x0001]
     },
     {
         "identifier": 'ACTION_976_add_short_4',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0008]
     },
     {
-        "identifier": 'ACTION_976_create_packet_at_7010_coords_jmp_if_null_5',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'ACTION_976_create_packet_at_7010_5',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._032_BLUE_CLOUD, 'ACTION_976_end_loop_7']
     },
     {
@@ -45,7 +45,7 @@ script = [
     },
     {
         "identifier": 'ACTION_976_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0x0001]
     },
     {
@@ -60,17 +60,17 @@ script = [
     },
     {
         "identifier": 'ACTION_976_add_short_11',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7034, 0x0001]
     },
     {
         "identifier": 'ACTION_976_add_short_12',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0008]
     },
     {
-        "identifier": 'ACTION_976_create_packet_at_7010_coords_jmp_if_null_13',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'ACTION_976_create_packet_at_7010_13',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._032_BLUE_CLOUD, 'ACTION_976_end_loop_15']
     },
     {

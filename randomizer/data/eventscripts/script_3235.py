@@ -12,17 +12,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3235_inc_short_1',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x702a]
     },
     {
-        "identifier": 'EVENT_3235_jmp_if_var_not_equals_short_2',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_3235_jmp_if_var_not_equals_const_2',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x702a, 5, 'EVENT_3232_jmp_4']
     },
     {
         "identifier": 'EVENT_3235_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702a, 0x0000]
     },
     {

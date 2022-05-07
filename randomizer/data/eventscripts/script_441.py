@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_441_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_441_action_queue_sync_10']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_441_action_queue_sync_10']
     },
     {
         "identifier": 'EVENT_441_summon_to_current_level_at_marios_coords_3',
@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'EVENT_441_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_441_action_queue_sync_4_SUBSCRIPT_floating_off_0',
@@ -39,8 +39,8 @@ script = [
                 "args": [0, 0, 24, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_441_action_queue_sync_4_SUBSCRIPT_set_random_2',
-                "command": 'set_random',
+                "identifier": 'EVENT_441_action_queue_sync_4_SUBSCRIPT_set_var_to_random_2',
+                "command": 'set_var_to_random',
                 "args": [0x700c, 8]
             },
             {
@@ -84,8 +84,8 @@ script = [
     },
     {
         "identifier": 'EVENT_441_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_441_action_queue_sync_6_SUBSCRIPT_floating_off_0',
@@ -97,8 +97,8 @@ script = [
                 "args": [0, 0, 24, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_441_action_queue_sync_6_SUBSCRIPT_set_random_2',
-                "command": 'set_random',
+                "identifier": 'EVENT_441_action_queue_sync_6_SUBSCRIPT_set_var_to_random_2',
+                "command": 'set_var_to_random',
                 "args": [0x700c, 8]
             },
             {
@@ -142,7 +142,7 @@ script = [
     },
     {
         "identifier": 'EVENT_441_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 2]
     },
     {
@@ -151,8 +151,8 @@ script = [
     },
     {
         "identifier": 'EVENT_441_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_441_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_0',

@@ -24,13 +24,13 @@ script = [
     },
     {
         "identifier": 'ACTION_821_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [27, 'ACTION_821_set_animation_speed_28']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 27, 'ACTION_821_set_animation_speed_28']
     },
     {
         "identifier": 'ACTION_821_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_821_shift_southwest_steps_19']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_821_shift_southwest_steps_19']
     },
     {
         "identifier": 'ACTION_821_set_priority_6',
@@ -39,7 +39,7 @@ script = [
     },
     {
         "identifier": 'ACTION_821_add_7',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65515]
     },
     {
@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'ACTION_821_jmp_if_700C_equals_short_14',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_821_shift_z_up_steps_16']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_821_shift_z_up_steps_16']
     },
     {
         "identifier": 'ACTION_821_pause_15',

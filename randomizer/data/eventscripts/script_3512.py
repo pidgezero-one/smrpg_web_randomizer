@@ -17,17 +17,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3512_set_action_script_async_2',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 365]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, False, 365]
     },
     {
         "identifier": 'EVENT_3512_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 1]
     },
     {
-        "identifier": 'EVENT_3512_add_max_FP_7000_4',
-        "command": 'add_max_FP_7000'
+        "identifier": 'EVENT_3512_add_7000_to_max_FP_4',
+        "command": 'add_7000_to_max_FP'
     },
     {
         "identifier": 'EVENT_3512_inc_5',

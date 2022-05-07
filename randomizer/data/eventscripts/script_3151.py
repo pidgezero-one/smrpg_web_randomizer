@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3151_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700e, 0x0014]
     },
     {
@@ -26,14 +26,14 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'EVENT_3151_jmp_if_var_not_equals_byte_4',
-        "command": 'jmp_if_var_not_equals_byte',
+        "identifier": 'EVENT_3151_jmp_if_var_not_equals_const_4',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x70ae, 25, 'EVENT_3151_ret_6']
     },
     {
         "identifier": 'EVENT_3151_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 439]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 439]
     },
     {
         "identifier": 'EVENT_3151_ret_6',

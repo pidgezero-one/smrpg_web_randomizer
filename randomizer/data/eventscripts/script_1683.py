@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1683_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1683_action_queue_sync_5_SUBSCRIPT_clear_solidity_bits_0',

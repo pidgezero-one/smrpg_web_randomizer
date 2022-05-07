@@ -16,17 +16,17 @@ script = [
     },
     {
         "identifier": 'EVENT_1801_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 1]
     },
     {
-        "identifier": 'EVENT_1801_add_max_FP_7000_2',
-        "command": 'add_max_FP_7000'
+        "identifier": 'EVENT_1801_add_7000_to_max_FP_2',
+        "command": 'add_7000_to_max_FP'
     },
     {
         "identifier": 'EVENT_1801_action_queue_async_0',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 1016]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 1016]
     },
     {
         "identifier": 'EVENT_1801_ret_3',

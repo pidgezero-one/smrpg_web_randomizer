@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": "EVENT_3822_room_84_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [84, 'EVENT_3822_remove_from_current_level_6']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 84, 'EVENT_3822_remove_from_current_level_6']
     },
     {
         "identifier": 'EVENT_3822_remove_from_current_level_5_',

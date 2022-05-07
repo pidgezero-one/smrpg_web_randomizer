@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1632_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1632_action_queue_async_0_SUBSCRIPT_set_animation_speed_0',
@@ -28,8 +28,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1632_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1632_action_queue_async_1_SUBSCRIPT_face_southwest_7D_0',
@@ -45,8 +45,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1632_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1632_action_queue_async_3_SUBSCRIPT_set_animation_speed_0',

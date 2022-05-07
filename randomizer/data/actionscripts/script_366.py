@@ -11,7 +11,7 @@ script = [
     },
     {
         "identifier": 'ACTION_366_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0014]
     },
     {
@@ -25,8 +25,8 @@ script = [
     },
     {
         "identifier": 'ACTION_366_dec_short_mem_4',
-        "command": 'dec_short_mem',
-        "args": [0x700c, 0x7024]
+        "command": 'dec_short_mem_from_700C'
+        'args': [0x7024]
     },
     {
         "identifier": 'ACTION_366_mem_700C_and_const_5',
@@ -35,8 +35,8 @@ script = [
     },
     {
         "identifier": 'ACTION_366_jmp_if_700C_not_equals_short_6',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [0, 'ACTION_366_load_mem_12']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x700C, 0, 'ACTION_366_load_mem_12']
     },
     {
         "identifier": 'ACTION_366_db_7',
@@ -45,12 +45,12 @@ script = [
     },
     {
         "identifier": 'ACTION_366_add_short_8',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x701a, 0x0080]
     },
     {
         "identifier": 'ACTION_366_add_short_9',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x0040]
     },
     {

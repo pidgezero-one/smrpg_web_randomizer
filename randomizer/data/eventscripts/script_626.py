@@ -6,14 +6,14 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_626_set_random_111',
-        "command": 'set_random',
+        "identifier": 'EVENT_626_set_var_to_random_111',
+        "command": 'set_var_to_random',
         "args": [0x7000, 101]
     },
     {
         "identifier": 'EVENT_626_mem_compare_val_112',
-        "command": 'mem_compare_val',
-        "args": [80]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 80]
     },
     {
         "identifier": 'EVENT_626_jmp_if_comparison_result_is_lesser_113',
@@ -22,7 +22,7 @@ script = [
     },
     {
         "identifier": 'EVENT_626_grant_item_1_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 117]
     },
     {

@@ -416,7 +416,7 @@ script = [
     # },
     # {
     #     "identifier": 'EVENT_192_____leave_party_22~_',
-    #     "command": 'set',
+    #     "command": "set_var_to_const",
     #     "args": [0x70D5, 5]
     # },
     # finish loading game

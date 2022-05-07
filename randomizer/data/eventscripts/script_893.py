@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_893_',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "command": 'create_packet_at_7010',
         "args": [120, 'EVENT_893_final_ret']
     },
     {

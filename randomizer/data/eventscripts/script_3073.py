@@ -16,13 +16,13 @@ script = [
         "args": [Sounds._005_BLOCK_SWITCH, 6]
     },
     {
-        "identifier": 'EVENT_3073_disable_event_trigger_for_object_at_70A8_2',
-        "command": 'disable_event_trigger_for_object_at_70A8'
+        "identifier": 'EVENT_3073_disable_trigger_at_70A8_2',
+        "command": 'disable_trigger_at_70A8'
     },
     {
         "identifier": 'EVENT_3073_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 7]
     },
     {
         "identifier": 'EVENT_3073_set_7010_to_object_xyz_4',
@@ -31,18 +31,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3073_set_7000_to_7000_short_mem_5',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7014, 0x7000]
     },
     {
         "identifier": 'EVENT_3073_add_6',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 608]
     },
     {
         "identifier": 'EVENT_3073_set_7000_short_mem_to_7000_7',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7014]
     },
     {
         "identifier": 'EVENT_3073_jmp_if_bit_set_8',

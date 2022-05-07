@@ -17,12 +17,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1572_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 470]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 470]
     },
     {
         "identifier": 'EVENT_1572_inc_short_3',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x702a]
     },
     {

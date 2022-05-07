@@ -33,8 +33,8 @@ script = [
         "args": [8]
     },
     {
-        "identifier": 'ACTION_404_set_random_6',
-        "command": 'set_random',
+        "identifier": 'ACTION_404_set_var_to_random_6',
+        "command": 'set_var_to_random',
         "args": [0x700c, 2]
     },
     {
@@ -71,8 +71,8 @@ script = [
         "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
     },
     {
-        "identifier": 'ACTION_404_set_random_14',
-        "command": 'set_random',
+        "identifier": 'ACTION_404_set_var_to_random_14',
+        "command": 'set_var_to_random',
         "args": [0x700c, 2]
     },
     {

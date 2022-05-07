@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1586_set_7000_to_7000_short_mem_1',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x702a, 0x7000]
     },
     {
         "identifier": 'EVENT_1586_mem_compare_val_2',
-        "command": 'mem_compare_val',
-        "args": [30]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 30]
     },
     {
         "identifier": 'EVENT_1586_jmp_if_comparison_result_is_greater_or_equal_3',
@@ -31,7 +31,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1586_set_5',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 161]
     },
     {
@@ -41,13 +41,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1586_add_7',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 65522]
     },
     {
         "identifier": 'EVENT_1586_set_7000_short_mem_to_7000_8',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x702c]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x702c]
     },
     {
         "identifier": 'EVENT_1586_pause_9',
@@ -61,23 +61,23 @@ script = [
     },
     {
         "identifier": 'EVENT_1586_dec_short_11',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x702c]
     },
     {
-        "identifier": 'EVENT_1586_jmp_if_var_not_equals_short_12',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_1586_jmp_if_var_not_equals_const_12',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x702c, 0, 'EVENT_1586_pause_9']
     },
     {
         "identifier": 'EVENT_1586_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 597]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 597]
     },
     {
         "identifier": 'EVENT_1586_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 167]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_11, True, 167]
     },
     {
         "identifier": 'EVENT_1586_ret_15',

@@ -15,8 +15,8 @@ script = [
     },
     {
         "identifier": 'ACTION_497_set_700C_to_7000_short_mem_2',
-        "command": 'set_700C_to_7000_short_mem',
-        "args": [0x703e]
+        "command": 'copy_var_to_var',
+        'args': [0x703e, 0x700C]
     },
     {
         "identifier": 'ACTION_497_face_east_7C_3',

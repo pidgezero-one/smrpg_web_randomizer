@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1873_set_7000_to_7000_short_mem_2',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x702a, 0x7000]
     },
     {
         "identifier": 'EVENT_1873_add_coins_3',

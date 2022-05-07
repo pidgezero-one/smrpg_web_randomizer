@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3099_set_fireworks",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70EA, 5]
     },
     {

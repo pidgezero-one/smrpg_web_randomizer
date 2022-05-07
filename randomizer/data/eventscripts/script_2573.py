@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2573_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_6, True, 14]
     },
     {
         "identifier": 'EVENT_2573_summon_to_current_level_4',
@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2573_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 398]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 398]
     },
     {
         "identifier": 'EVENT_2573_ret_6',

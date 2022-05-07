@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3394_mem_compare_0',
-        "command": 'mem_compare_val',
-        "args": [100]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 100]
     },
     {
         "identifier": 'EVENT_3394_ret',

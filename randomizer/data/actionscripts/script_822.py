@@ -25,13 +25,13 @@ script = [
     },
     {
         "identifier": 'ACTION_822_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_822_pause_119']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_822_pause_119']
     },
     {
         "identifier": 'ACTION_822_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [22, 'ACTION_822_pause_63']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 22, 'ACTION_822_pause_63']
     },
     {
         "identifier": 'ACTION_822_set_solidity_bits_6',

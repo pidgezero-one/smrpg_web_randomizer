@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1847_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1847_action_queue_async_4_SUBSCRIPT_play_sound_0',
@@ -52,8 +52,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1847_create_packet_at_object_coords_jmp_if_null_6',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_1847_create_packet_at_npc_coords_6',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, AreaObjects.NPC_1, 'EVENT_1847_pause_5']
     },
     {
@@ -68,8 +68,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1847_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1847_action_queue_async_9_SUBSCRIPT_set_animation_speed_0',

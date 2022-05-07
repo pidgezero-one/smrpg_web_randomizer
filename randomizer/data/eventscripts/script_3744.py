@@ -47,8 +47,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3744_action_queue_async_0",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": "EVENT_3744_action_queue_async_0_SUBSCRIPT_set_sprite_sequence_0",
@@ -67,8 +67,8 @@ script = [
         ],
     },
     {"identifier": "EVENT_3744_pause_1", "command": "pause", "args": [20]},
-    {"identifier": "EVENT_3744_set_3", "command": "set", "args": [0x70A7, 159]},
-    {"identifier": "EVENT_3744_set_4", "command": "set", "args": [0x7000, 524]},
+    {"identifier": "EVENT_3744_set_3", "command": "set_var_to_const", "args": [0x70A7, 159]},
+    {"identifier": "EVENT_3744_set_4", "command": "set_var_to_const", "args": [0x7000, 524]},
     {
         "identifier": "EVENT_3744_run_event_as_subroutine_5",
         "command": "run_event_as_subroutine",
@@ -76,8 +76,8 @@ script = [
     },
     {
         "identifier": "EVENT_3744_action_queue_sync_6",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_3744_action_queue_sync_6_SUBSCRIPT_pause_0",
@@ -92,8 +92,8 @@ script = [
     },
     {
         "identifier": "EVENT_3744_action_queue_async_7",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": "EVENT_3744_action_queue_async_7_SUBSCRIPT_shift_southeast_steps_0",
@@ -119,8 +119,8 @@ script = [
     },
     {
         "identifier": "EVENT_3744_action_queue_async_8",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_3744_action_queue_async_8_SUBSCRIPT_face_south_0",

@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1539_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1539_set_70A0_short_mem_to_7000_2',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1539_freeze_all_npcs_until_return_3',
@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1539_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 470]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 470]
     },
     {
         "identifier": 'EVENT_1539_pause_8',
@@ -55,7 +55,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1539_set_10',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 1]
     },
     {
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1539_set_7000_to_70A0_short_mem_15',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x70ae, 0x7000]
     },
     {
         "identifier": 'EVENT_1539_jmp_if_7000_not_equals_short_16',
@@ -88,8 +88,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1539_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 468]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 468]
     },
     {
         "identifier": 'EVENT_1539_set_bit_18',
@@ -103,8 +103,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1539_set_action_script_sync_20',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 468]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 468]
     },
     {
         "identifier": 'EVENT_1539_set_bit_21',

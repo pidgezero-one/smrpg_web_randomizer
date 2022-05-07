@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_340_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_340_action_queue_async_2_SUBSCRIPT_set_animation_speed_0',

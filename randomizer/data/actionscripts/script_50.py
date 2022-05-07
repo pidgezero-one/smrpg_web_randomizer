@@ -20,8 +20,8 @@ script = [
     },
     {
         "identifier": 'ACTION_50_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_50_pause_26']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_50_pause_26']
     },
     {
         "identifier": 'ACTION_50_pause_4',

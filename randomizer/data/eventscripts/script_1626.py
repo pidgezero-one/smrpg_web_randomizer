@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1626_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1626_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1626_jmp_if_trade_option_2_used_carbo_cookie_no_bucket_warp',
@@ -71,8 +71,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1626_set_action_script_async_14',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1626_remove_one_from_inventory_15',
@@ -81,7 +81,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1626_set_17',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 137]
     },
     {
@@ -100,8 +100,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1626_set_action_script_async_22',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1626_ret_24',
@@ -134,12 +134,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1626_set_action_script_async_14_',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1626_set_17_',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 138]
     },
     {

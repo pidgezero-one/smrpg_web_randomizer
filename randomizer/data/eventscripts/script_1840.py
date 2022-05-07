@@ -17,13 +17,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_set_7000_to_70A0_short_mem_2',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1840_set_7000_short_mem_to_7000_3',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x703e]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x703e]
     },
     {
         "identifier": 'EVENT_1840_set_bit_4',
@@ -41,18 +41,18 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [321, 'EVENT_1840_play_sound_25']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 321, 'EVENT_1840_play_sound_25']
     },
     {
         "identifier": 'EVENT_1840_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [455, 'EVENT_1840_play_sound_25']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 455, 'EVENT_1840_play_sound_25']
     },
     {
         "identifier": 'EVENT_1840_jmp_if_7000_equals_short_9',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [458, 'EVENT_1840_play_sound_25']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 458, 'EVENT_1840_play_sound_25']
     },
     {
         "identifier": 'EVENT_1840_play_sound_10',
@@ -264,8 +264,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_jmp_if_7000_equals_short_54',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [321, 'EVENT_1840_enable_controls_until_return_56']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 321, 'EVENT_1840_enable_controls_until_return_56']
     },
     {
         "identifier": 'EVENT_1840_ret_55',
@@ -307,8 +307,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_action_queue_async_63',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1840_action_queue_async_63_SUBSCRIPT_set_animation_speed_0',
@@ -339,8 +339,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_action_queue_async_65',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1840_action_queue_async_65_SUBSCRIPT_set_animation_speed_0',
@@ -398,8 +398,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_jmp_if_7000_equals_short_73',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [455, 'EVENT_1840_action_queue_async_75']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 455, 'EVENT_1840_action_queue_async_75']
     },
     {
         "identifier": 'EVENT_1840_freeze_all_npcs_until_return_74',
@@ -407,8 +407,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_action_queue_async_75',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1840_action_queue_async_75_SUBSCRIPT_floating_off_0',
@@ -423,13 +423,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_set_7000_to_7000_short_mem_76',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x703e]
+        "command": 'copy_var_to_var',
+        'args': [0x703e, 0x7000]
     },
     {
         "identifier": 'EVENT_1840_set_70A0_short_mem_to_7000_77',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_1840_set_7016_to_object_xyz_78',
@@ -452,8 +452,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1840_jmp_if_7000_equals_short_82',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [455, 'EVENT_1840_reactivate_trigger_if_mario_on_top_of_object_85']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 455, 'EVENT_1840_reactivate_trigger_if_mario_on_top_of_object_85']
     },
     {
         "identifier": 'EVENT_1840_unfreeze_all_npcs_83',

@@ -58,8 +58,8 @@ script = [
     },
     {
         "identifier": "EVENT_1604_start_embedded_action_script_async_F1_1",
-        "command": "start_embedded_action_script_async_F1",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "start_embedded_action_script",
+        "args": [AreaObjects.MEM_70A8, False, 0xF1],
         "subscript": [
             {
                 "identifier": "EVENT_1604_start_embedded_action_script_async_F1_1_SUBSCRIPT_set_object_memory_bits_0",
@@ -75,22 +75,22 @@ script = [
     },
     {
         "identifier": "EVENT_1604_set_action_script_sync_2",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MEM_70A8, 1022],
+        "command": "set_action_script",
+        "args": [AreaObjects.MEM_70A8, True, 1022],
     },
     {"identifier": "EVENT_1604_inc_exp_by_packet_3", "command": "inc_exp_by_packet"},
     {
         "identifier": "EVENT_1604_jmp_if_7000_equals_short_4",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_1604_ret_78_cancel"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_1604_ret_78_cancel"]
     },
     {"identifier": "EVENT_1604_set_bit_5", "command": "set_bit", "args": [0x7064, 4]},
     {"identifier": "EVENT_1604_set_bit_6", "command": "set_bit", "args": [0x707C, 3]},
     {"identifier": "EVENT_1604_unfreeze_all_npcs_7", "command": "unfreeze_all_npcs"},
     {"identifier": "EVENT_1604_pause_8", "command": "pause", "args": [3]},
     {
-        "identifier": "EVENT_1604_create_packet_at_object_coords_jmp_if_null_9",
-        "command": "create_packet_at_object_coords_jmp_if_null",
+        "identifier": "EVENT_1604_create_packet_at_npc_coords_9",
+        "command": "create_packet_at_npc_coords",
         "args": [
             NPCPackets._031_LEVELUP_TEXT,
             AreaObjects.MARIO,
@@ -104,7 +104,7 @@ script = [
     },
     {
         "identifier": "EVENT_1604_set_short_11",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x701E, 0x0040],
     },
     {

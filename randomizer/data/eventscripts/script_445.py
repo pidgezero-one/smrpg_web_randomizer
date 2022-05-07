@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_445_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0000]
     },
     {
@@ -22,13 +22,13 @@ script = [
     },
     {
         "identifier": 'EVENT_445_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 30]
     },
     {
         "identifier": 'EVENT_445_set_7000_short_mem_to_7000_4',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7026]
     },
     {
         "identifier": 'EVENT_445_play_music_default_volume_5',

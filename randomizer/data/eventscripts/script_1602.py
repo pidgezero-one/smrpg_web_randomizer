@@ -53,8 +53,8 @@ script = [
     {"identifier": "EVENT_1602_ret_78", "command": "ret"},
     {
         "identifier": "EVENT_1602_action_queue_sync_77",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": "EVENT_1602_action_queue_sync_77_SUBSCRIPT_clear_solidity_bits_0",

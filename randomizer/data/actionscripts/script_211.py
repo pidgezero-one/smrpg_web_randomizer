@@ -19,7 +19,7 @@ script = [
     },
     {
         "identifier": 'ACTION_211_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703e, 0x0005]
     },
     {

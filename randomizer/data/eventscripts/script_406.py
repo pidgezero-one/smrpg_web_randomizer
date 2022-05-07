@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_406_start_embedded_action_script_async_F1_2',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_0],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_0, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_406_start_embedded_action_script_async_F1_2_SUBSCRIPT_clear_solidity_bits_0',
@@ -54,8 +54,8 @@ script = [
     },
     {
         "identifier": 'EVENT_406_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_406_action_queue_async_6_SUBSCRIPT_set_solidity_bits_0',
@@ -66,8 +66,8 @@ script = [
     },
     {
         "identifier": 'EVENT_406_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 22]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 22]
     },
     {
         "identifier": 'EVENT_406_ret_8',
@@ -80,8 +80,8 @@ script = [
     },
     {
         "identifier": 'EVENT_406_start_embedded_action_script_async_F1_10',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_0],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_0, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_406_start_embedded_action_script_async_F1_10_SUBSCRIPT_clear_solidity_bits_0',
@@ -117,8 +117,8 @@ script = [
     },
     {
         "identifier": 'EVENT_406_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_406_action_queue_async_14_SUBSCRIPT_set_solidity_bits_0',
@@ -129,8 +129,8 @@ script = [
     },
     {
         "identifier": 'EVENT_406_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 23]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 23]
     },
     {
         "identifier": 'EVENT_406_ret_16',

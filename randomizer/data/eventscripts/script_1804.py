@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1804_jmp_if_7000_not_equals_short_1',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [0, 'EVENT_1804_run_dialog_4']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 0, 'EVENT_1804_run_dialog_4']
     },
     {
         "identifier": 'EVENT_1804_run_dialog_2',
@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1804_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1804_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_0',
@@ -118,8 +118,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1804_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_16],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_16, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1804_action_queue_async_8_SUBSCRIPT_set_animation_speed_0',
@@ -169,7 +169,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1804_set_short_12',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0x0001]
     },
     {
@@ -188,8 +188,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1804_create_packet_at_7010_coords_jmp_if_null_16',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_1804_create_packet_at_7010_16',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_1804_pause_15']
     },
     {
@@ -199,7 +199,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1804_add_short_18',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7034, 0x0003]
     },
     {
@@ -208,8 +208,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1804_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_16],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_16, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1804_action_queue_async_20_SUBSCRIPT_jump_to_height_0',

@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2065_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2065_action_queue_async_2_SUBSCRIPT_face_southwest_0',
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2065_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2065_action_queue_async_11_SUBSCRIPT_set_animation_speed_0',

@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2343_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2343_clear_bit_4']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2343_clear_bit_4']
     },
     {
         "identifier": 'EVENT_2343_pause_2',

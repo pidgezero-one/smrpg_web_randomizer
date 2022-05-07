@@ -69,8 +69,8 @@ script = [
     {"identifier": "EVENT_668_pause_6", "command": "pause", "args": [10]},
     {
         "identifier": "EVENT_668_action_queue_sync_7",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_668_action_queue_sync_7_SUBSCRIPT_face_southwest_0",
@@ -80,8 +80,8 @@ script = [
     },
     {
         "identifier": "EVENT_668_action_queue_sync_9",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_8],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": "EVENT_668_action_queue_sync_25_SUBSCRIPT_set_animation_speed_0_",
@@ -99,8 +99,8 @@ script = [
     },
     {
         "identifier": "EVENT_668_action_queue_sync_10",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_11],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_11, True],
         "subscript": [
             {
                 "identifier": "EVENT_668_action_queue_sync_10_SUBSCRIPT_transfer_to_xyzf_0",
@@ -116,8 +116,8 @@ script = [
     },
     {
         "identifier": "EVENT_668_action_queue_sync_11",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_9],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": "EVENT_668_action_queue_sync_11_SUBSCRIPT_transfer_to_xyzf_0",
@@ -137,8 +137,8 @@ script = [
     },
     {
         "identifier": "EVENT_668_action_queue_async_12",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_10],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_10, False],
         "subscript": [
             {
                 "identifier": "EVENT_668_action_queue_async_12_SUBSCRIPT_transfer_to_xyzf_0",
@@ -158,8 +158,8 @@ script = [
     },
     {
         "identifier": "EVENT_668_action_queue_sync_13",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": "EVENT_668_action_queue_sync_13_SUBSCRIPT_set_animation_speed_0",
@@ -179,8 +179,8 @@ script = [
     },
     {
         "identifier": "EVENT_668_set_action_script_sync_27",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MARIO, 395],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, True, 395]
     },
     {"identifier": "EVENT_668_pause_37", "command": "pause", "args": [30]},
     {

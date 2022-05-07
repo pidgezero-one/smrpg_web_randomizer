@@ -47,13 +47,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3477_set_7000_to_70A0_short_mem_2",
-        "command": "set_7000_to_70A0_short_mem",
-        "args": [0x70A7],
+        "command": "copy_var_to_var",
+        "args": [0x70A7, 0x7000]
     },
     {
         "identifier": "EVENT_3477_room_9_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [240, "EVENT_3477_j"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 240, "EVENT_3477_j"]
     },
     {
         "identifier": "EVENT_3477_disable_trigger_in_level_70",
@@ -77,8 +77,8 @@ script = [
     {"identifier": "EVENT_3477_freeze_camera_137", "command": "freeze_camera"},
     {
         "identifier": "EVENT_3477_action_queue_sync_138",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": "EVENT_3477_action_queue_sync_138_SUBSCRIPT_set_animation_speed_0",

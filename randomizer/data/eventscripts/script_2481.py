@@ -65,8 +65,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2481_set_temp_action_script_sync_12',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.NPC_9, 2]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.NPC_9, True, 2]
     },
     {
         "identifier": 'EVENT_2481_fade_in_from_black_async_13',

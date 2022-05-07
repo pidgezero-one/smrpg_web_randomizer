@@ -12,12 +12,12 @@ script = [
     },
     {
         "identifier": 'EVENT_431_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x000d]
     },
     {
         "identifier": 'EVENT_431_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0026]
     },
     {
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_431_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_431_action_queue_async_6_SUBSCRIPT_db_0',
@@ -47,7 +47,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_431_action_queue_async_6_SUBSCRIPT_add_short_1',
-                "command": 'add_short',
+                "command": "add_const_to_var",
                 "args": [0x701a, 0x0900]
             },
             {

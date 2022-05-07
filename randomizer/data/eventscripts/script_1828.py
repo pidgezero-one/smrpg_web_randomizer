@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1828_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1828_db_10']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1828_db_10']
     },
     {
         "identifier": 'EVENT_1828_jmp_if_mario_in_air_3',
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1828_set_7000_short_mem_to_7000_4',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x703c]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x703c]
     },
     {
         "identifier": 'EVENT_1828_set_7000_to_object_coord_5',
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1828_set_7000_short_mem_to_7000_6',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7038]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7038]
     },
     {
         "identifier": 'EVENT_1828_set_7000_to_object_coord_7',
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1828_set_7000_short_mem_to_7000_8',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x703a]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x703a]
     },
     {
         "identifier": 'EVENT_1828_jmp_9',

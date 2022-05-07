@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3496_set_7000_to_7000_short_mem_0',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x702a, 0x7000]
     },
     {
         "identifier": 'EVENT_3496_set_7000_short_mem_to_7000_1',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7034]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7034]
     },
     {
         "identifier": 'EVENT_3496_pause_2',
@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3496_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3496_action_queue_sync_7_SUBSCRIPT_set_animation_speed_0',
@@ -81,8 +81,8 @@ script = [
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3496_action_queue_sync_7_SUBSCRIPT_jmp_if_var_equals_short_7',
-                "command": 'jmp_if_var_equals_short',
+                "identifier": 'EVENT_3496_action_queue_sync_7_SUBSCRIPT_jmp_if_var_equals_const_7',
+                "command": 'jmp_if_var_equals_const',
                 "args": [0x7034, 0, 'EVENT_3496_action_queue_sync_8']
             },
             {
@@ -94,8 +94,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3496_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3496_action_queue_sync_8_SUBSCRIPT_play_sound_0',
@@ -116,7 +116,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3496_set_short_9',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700c, 0x0000]
     },
     {
@@ -126,22 +126,22 @@ script = [
     },
     {
         "identifier": 'EVENT_3496_set_7000_to_7000_short_mem_11',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x702a, 0x7000]
     },
     {
         "identifier": 'EVENT_3496_jmp_if_7000_equals_short_12',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_3496_pause_15']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_3496_pause_15']
     },
     {
-        "identifier": 'EVENT_3496_create_packet_at_object_coords_jmp_if_null_13',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_3496_create_packet_at_npc_coords_13',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._017_SMALL_COIN_NOT_MOVING, AreaObjects.MARIO, 'EVENT_3496_pause_15']
     },
     {
         "identifier": 'EVENT_3496_dec_short_14',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x702a]
     },
     {
@@ -151,7 +151,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3496_inc_short_16',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x700c]
     },
     {
@@ -170,8 +170,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3496_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3496_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_0',

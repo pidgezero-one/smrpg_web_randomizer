@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_278_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A9],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_floating_on_0',
@@ -36,13 +36,13 @@ script = [
             },
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_set_700C_to_70A0_short_mem_5',
-                "command": 'set_700C_to_70A0_short_mem',
-                "args": [0x70a9]
+                "command": 'copy_var_to_var',
+        'args': [0x70a9, 0x700C]
             },
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_jmp_if_700C_equals_short_6',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [0, 'EVENT_278_ret_1']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 0, 'EVENT_278_ret_1']
             },
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_floating_off_7',

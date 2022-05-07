@@ -18,11 +18,11 @@ script = [
     {
         "identifier": 'EVENT_652_dec_2',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae, 1],
     },
     {
         "identifier": 'EVENT_652_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701c, 0x0078]
     },
     {

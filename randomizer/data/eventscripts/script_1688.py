@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1688_set_7000_to_70A0_short_mem_2',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x70ac, 0x7000]
     },
     {
         "identifier": "EVENT_1688_shaman",
-        "command": "jmp_if_7000_not_equals_short",
-        "args": [0, 'EVENT_1688_remove_from_level_6_']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x7000, 0, 'EVENT_1688_remove_from_level_6_']
     },
     {
         "identifier": 'EVENT_1688_jmp_if_bit_clear_0',
@@ -47,13 +47,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1688_set_7000_short_mem_to_7000_4',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7024]
     },
     {
         "identifier": 'EVENT_1688_set_7000_to_70A0_short_mem_5',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x70ac, 0x7000]
     },
     {
         "identifier": 'EVENT_1688_mem_7000_and_const_6',
@@ -62,13 +62,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1688_set_7000_short_mem_to_7000_7',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7026]
     },
     {
         "identifier": 'EVENT_1688_set_7000_to_70A0_short_mem_8',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x70ac, 0x7000]
     },
     {
         "identifier": 'EVENT_1688_jmp_if_7000_all_bits_clear_9',
@@ -122,8 +122,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1688_action_queue_sync_19',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1688_action_queue_sync_19_SUBSCRIPT_set_animation_speed_0',
@@ -179,8 +179,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1688_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1688_action_queue_async_20_SUBSCRIPT_set_animation_speed_0',
@@ -241,8 +241,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1688_action_queue_sync_22',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1688_action_queue_sync_22_SUBSCRIPT_inc_palette_row_by_0',

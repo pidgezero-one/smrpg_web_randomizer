@@ -20,7 +20,7 @@ script = [
     },
     {
         "identifier": 'ACTION_611_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 21]
     },
     {
@@ -34,8 +34,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_611_jmp_if_var_not_equals_byte_6',
-        "command": 'jmp_if_var_not_equals_byte',
+        "identifier": 'ACTION_611_jmp_if_var_not_equals_const_6',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x70ae, 21, 'ACTION_611_visibility_off_0']
     },
     {

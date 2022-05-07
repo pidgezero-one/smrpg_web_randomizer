@@ -305,7 +305,7 @@ class ObjectSequenceScript:
 
     # 0x22
     def bmi_26_27_28(self):
-        self.append_byte(0x21)
+        self.append_byte(0x22)
         return self
 
     # 0x26, 0x27, 0x28
@@ -366,7 +366,7 @@ class ObjectSequenceScript:
         return self
 
     # 0x3E
-    def create_packet_at_object_coords_jmp_if_null(self, packet_id, object_id, address):
+    def create_packet_at_npc_coords(self, packet_id, object_id, address):
         self.append_byte(0x3E)
         self.append_byte(packet_id)
         self.append_byte(object_id)
@@ -374,7 +374,7 @@ class ObjectSequenceScript:
         return self
 
     # 0x3F
-    def create_packet_at_7010_coords_jmp_if_null(self, packet_id, address):
+    def create_packet_at_7010(self, packet_id, address):
         self.append_byte(0x3F)
         self.append_byte(packet_id)
         self.append_short(self.get_branch_address(address))
@@ -857,130 +857,92 @@ class ObjectSequenceScript:
         self.append_byte(0xA7)
         return self
 
-    # 0xA8
-    def set(self, address, value):
-        if 0x70A0 <= address <= 0x719F:
+    # 0xA8, 0xAC, 0xB0
+    def set_var_to_const(self, address, value):
+        if 0x70A0 <= address <= 0x719F and value <= 0xFF:
             self.append_byte(0xA8)
             self.append_byte(address - 0x70A0)
             self.append_byte(value)
         elif address == 0x700C:
             self.append_byte(0xAC)
             self.append_short(value)
-        return self
-        
-    # 0xA9, 0xAD
-    def add(self, address, value):
-        if 0x70A0 <= address <= 0x719F:
-            self.append_byte(0xA9)
-            self.append_byte(address - 0x70A0)
-            self.append_byte(value)
-        elif address == 0x700C:
-            self.append_byte(0xAD)
-            self.append_short(value)
-        else:
-            1/0
-        return self
-    # 0xAA, 0xAE
-    def inc(self, address):
-        if 0x70A0 <= address <= 0x719F:
-            self.append_byte(0xAA)
-            self.append_byte(address - 0x70A0)
-        elif address == 0x700C:
-            self.append_byte(0xAE)
-        else:
-            1/0
-        return self
-
-    # 0xAB
-    def dec(self, address):
-        if 0x70A0 <= address <= 0x719F:
-            self.append_byte(0xAB)
-            self.append_byte(address - 0x70A0)
-        elif address == 0x700C:
-            self.append_byte(0xAF)
-        return self
-
-    # 0xB0
-    def set_short(self, address, value):
-        if 0x7000 <= address <= 0x71FE:
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xB0)
             self.append_byte((address - 0x7000) // 2)
             self.append_short(value)
         else:
             1/0
         return self
-
-    # 0xB1, 0xB2
-    def add_short(self, address, value):
-        if 0x7000 <= address <= 0x71FE:
+        
+    # 0xA9, 0xAD, 0xB1
+    def add_const_to_var(self, address, value):
+        if 0x70A0 <= address <= 0x719F and value <= 0xFF:
+            self.append_byte(0xA9)
+            self.append_byte(address - 0x70A0)
+            self.append_byte(value)
+        elif address == 0x700C:
+            self.append_byte(0xAD)
+            self.append_short(value)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xB1)
             self.append_byte((address - 0x7000) // 2)
             self.append_short(value)
         else:
             1/0
         return self
-    def inc_short(self, address):
-        if 0x7000 <= address <= 0x71FE:
+
+
+    # 0xAA, 0xAE, 0xB2
+    def inc(self, address):
+        if 0x70A0 <= address <= 0x719F:
+            self.append_byte(0xAA)
+            self.append_byte(address - 0x70A0)
+        elif address == 0x7000:
+            self.append_byte(0xAE)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xB2)
             self.append_byte((address - 0x7000) // 2)
         else:
             1/0
         return self
 
-    # 0xB3
-    def dec_short(self, address):
-        assert 0x7000 <= address <= 0x71FE
-        self.append_byte(0xB3)
-        self.append_byte((address - 0x7000) // 2)
+    # 0xAB, AF, B3
+    def dec(self, address):
+        if 0x70A0 <= address <= 0x719F:
+            self.append_byte(0xAB)
+            self.append_byte(address - 0x70A0)
+        elif address == 0x7000:
+            self.append_byte(0xAF)
+        elif 0x7000 < address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xB3)
+            self.append_byte((address - 0x7000) // 2)
+        return self
     
     # 0xB4, 0xB5, 0xBA, 0xBB, 0xBC
-    def set_short_mem(self, address_left, address_right):
-        if address_left == 0x700C and 0x70A0 <= address_right <= 0x719F:
+    def copy_var_to_var(self, address_left, address_right): # for some reason, left and right are reversed. in disassembled code, you're actually setting the value of arg 1 to the value of arg 0
+        assert 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE
+        if address_right == 0x700C and 0x70A0 <= address_left <= 0x719F:
             self.append_byte(0xB4)
-            self.append_byte(address_right - 0x70A0)
-        elif address_left == 0x700C and 0x7000 <= address_right <= 0x71FE:
-            self.append_byte(0xBA)
-            self.append_byte((address_right - 0x7000) // 2)
-        elif address_right == 0x700C and 0x70A0 <= address_left <= 0x719F:
-            self.append_byte(0xB5)
             self.append_byte(address_left - 0x70A0)
-        elif address_right == 0x700C and 0x7000 <= address_left <= 0x71FE:
-            self.append_byte(0xBB)
+        elif address_left == 0x700C and 0x70A0 <= address_right <= 0x719F:
+            self.append_byte(0xB5)
+            self.append_byte(address_right - 0x70A0)
+        elif address_right == 0x700C and address_left % 2 == 0:
+            self.append_byte(0xBA)
             self.append_byte((address_left - 0x7000) // 2)
-        elif 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE:
+        elif address_left == 0x700C and address_right % 2 == 0:
+            self.append_byte(0xBB)
+            self.append_byte((address_right - 0x7000) // 2)
+        elif address_left % 2 == 0 and address_right % 2 == 0:
             self.append_byte(0xBC)
             self.append_byte((address_left - 0x7000) // 2)
             self.append_byte((address_right - 0x7000) // 2)
         else:
             1/0
         return self
-
-    # 0xB4, 0xB5, 0xBA, 0xBB, 0xBC
-    def set_7000_short_mem_to_7000_short_mem(self, address_left, address_right):
-        assert 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE
-        self.append_byte(0xBC)
-        self.append_byte((address_left - 0x7000) // 2)
-        self.append_byte((address_right - 0x7000) // 2)
-        return self
-    def set_700C_to_70A0_short_mem(self, address):
-        self.append_byte(0xB4)
-        self.append_byte(address - 0x70A0)
-        return self
-    def set_70A0_short_mem_to_700C(self, address):
-        self.append_byte(0xB5)
-        self.append_byte(address - 0x70A0)
-        return self
-    def set_700C_to_7000_short_mem(self, address):
-        self.append_byte(0xBA)
-        self.append_byte((address - 0x7000) // 2)
-        return self
-    def set_7000_short_mem_to_700C(self, address):
-        self.append_byte(0xBB)
-        self.append_byte((address - 0x7000) // 2)
-        return self
         
     # 0xB6, 0xB7
-    def set_random(self, address, limit):
+    def set_var_to_random(self, address, limit):
         if address == 0x700C:
             self.append_byte(0xB6)
             self.append_short(limit)
@@ -991,8 +953,8 @@ class ObjectSequenceScript:
         return self
 
     # 0xB8
-    def add_short_mem(self, address_left, address_right):
-        if address_left == 0x700C and 0x7000 <= address_right <= 0x71FE:
+    def add_var_to_700C(self, address_left, address_right):
+        if 0x7000 <= address_right <= 0x71FE:
             self.append_byte(0xB8)
             self.append_byte((address_right - 0x7000) // 2)
         else:
@@ -1000,16 +962,16 @@ class ObjectSequenceScript:
         return self
 
     # 0xB9
-    def dec_short_mem(self, address_left, address_right):
-        if address_left == 0x700C and 0x7000 <= address_right <= 0x71FE:
+    def dec_var_from_700C(self, address):
+        if 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xB9)
-            self.append_byte((address_right - 0x7000) // 2)
+            self.append_byte((address - 0x7000) // 2)
         else:
             1/0
         return self
         
     # 0xBD
-    def swap_short_mem(self, address_left, address_right):
+    def swap_vars(self, address_left, address_right):
         if 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE:
             self.append_byte(0xBD)
             self.append_byte((address_left - 0x7000) // 2)
@@ -1019,28 +981,28 @@ class ObjectSequenceScript:
         return self
         
     # 0xBE
-    def move_7010_7012_7014_to_7016_7018_701A(self):
+    def move_7010_7015_to_7016_701B(self):
         self.append_byte(0xBE)
         return self
 
     # 0xBF
-    def move_7016_7018_701A_to_7010_7012_7014(self):
+    def move_7016_701B_to_7010_7015(self):
         self.append_byte(0xBF)
         return self
 
-    # 0xC0, 0xC1, 0xC2
-    def mem_compare(self, address, value):
-        self.append_byte(0xC2)
-        self.append_byte((address - 0x7000) // 2)
+    # 0xC0, 0xC2
+    def compare_var_to_const(self, address, value):
+        if address == 0x700C:
+            self.append_byte(0xC0)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xC2)
+            self.append_byte((address - 0x7000) // 2)
+        else:
+            1/0
         self.append_short(value)
         return self
 
-    def mem_compare_val(self, value):
-        self.append_byte(0xC0)
-        self.append_short(value)
-        return self
-
-    def mem_compare_address(self, address):
+    def compare_700C_to_var(self, address):
         self.append_byte(0xC1)
         self.append_byte((address - 0x7000) // 2)
         return self
@@ -1069,7 +1031,7 @@ class ObjectSequenceScript:
         return self
 
     # 0xD0
-    def jump_to_script(self, id):
+    def jmp_to_script(self, id):
         self.append_byte(0xD0)
         self.append_short(id)
         return self
@@ -1154,40 +1116,34 @@ class ObjectSequenceScript:
         self.append_byte(0xDF)
         self.append_short(self.get_branch_address(address))
 
-    # 0xE0
-    def jmp_if_var_equals_byte(self, test_addr, val, branch):
-        self.db(0xE0, test_addr - 0x70A0, val)
-        self.append_short(self.get_branch_address(branch))
-        return self
-
-    # 0xE1
-    def jmp_if_var_not_equals_byte(self, test_addr, val, branch):
-        self.db(0xE1, test_addr - 0x70A0, val)
-        self.append_short(self.get_branch_address(branch))
-        return self
-
-    # 0xE2, 0xE4
-    def jmp_if_700C_equals_short(self, val, branch):
-        self.append_byte(0xE2)
-        self.append_short(val)
-        self.append_short(self.get_branch_address(branch))
-        return self
-    def jmp_if_var_equals_short(self, test_addr, val, branch):
-        self.append_byte(0xE4)
-        self.append_byte((test_addr - 0x7000) // 2)
+    # 0xE0, 0xE2, 0xE4
+    def jmp_if_var_equals_const(self, address, val, branch):
+        if 0x70A0 <= address <= 0x719F and 0 <= val <= 0xFF:
+            self.append_byte(0xE0)
+            self.append_byte(address - 0x70A0)
+        elif address == 0x700C:
+            self.append_byte(0xE2)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xE4)
+            self.append_byte((address - 0x7000) // 2)
+        else:
+            1/0
         self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
 
-    # 0xE3, 0xE5
-    def jmp_if_700C_not_equals_short(self, val, branch):
-        self.append_byte(0xE3)
-        self.append_short(val)
-        self.append_short(self.get_branch_address(branch))
-        return self
-    def jmp_if_var_not_equals_short(self, test_addr, val, branch):
-        self.append_byte(0xE5)
-        self.append_byte((test_addr - 0x7000) // 2)
+    # 0xE1, 0xE3, 0xE5
+    def jmp_if_var_not_equals_const(self, address, val, branch):
+        if 0x70A0 <= address <= 0x719F and 0 <= val <= 0xFF:
+            self.append_byte(0xE1)
+            self.append_byte(address - 0x70A0)
+        elif address == 0x700C:
+            self.append_byte(0xE3)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xE5)
+            self.append_byte((address - 0x7000) // 2)
+        else:
+            1/0
         self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
@@ -1257,15 +1213,12 @@ class ObjectSequenceScript:
 
     # 0xF0
     def pause(self, value):
-        assert 1 <= value <= 256
-        self.append_byte(0xF0)
-        self.append_byte(value - 1)
-        return self
-
-    # 0xF1
-    def pause_short(self, value):
-        self.append_byte(0xF1)
-        self.append_short(value - 1)
+        if 1 <= value <= 256:
+            self.append_byte(0xF0)
+            self.append_byte(value - 1)
+        else:
+            self.append_byte(0xF1)
+            self.append_short(value - 1)
         return self
 
     # 0xF2
@@ -1301,12 +1254,12 @@ class ObjectSequenceScript:
         return self
 
     # 0xF6
-    def enable_event_trigger_for_object_at_70A8(self):
+    def enable_trigger_at_70A8(self):
         self.append_byte(0xF6)
         return self
 
     # 0xF7
-    def disable_event_trigger_for_object_at_70A8(self):
+    def disable_trigger_at_70A8(self):
         self.append_byte(0xF7)
         return self
 
@@ -1324,10 +1277,10 @@ class ObjectSequenceScript:
         return self
 
     # 0xF9, 0xFA - do they need to be distinguished?
-    def jump_to_start_of_this_script(self):
+    def jmp_to_start_of_this_script(self):
         self.append_byte(0xF9)
         return self
-    def jump_to_start_of_this_script_FA(self):
+    def jmp_to_start_of_this_script_FA(self):
         self.append_byte(0xFA)
         return self
 
@@ -1440,7 +1393,7 @@ class ObjectSequenceScript:
         return self
 
     # FD 0x3E
-    def create_packet_event_at_coords_jmp_if_null(self, packet_id, event_id, address):
+    def create_packet_at_7010_with_event(self, packet_id, event_id, address):
         self.append_byte(0xFD)
         self.append_byte(0x3E)
         self.append_byte(packet_id)

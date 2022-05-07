@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2346_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2346_action_queue_sync_0_SUBSCRIPT_set_vram_priority_0',
@@ -19,13 +19,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2346_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 738]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 738]
     },
     {
         "identifier": 'EVENT_2346_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2346_action_queue_async_2_SUBSCRIPT_play_sound_0',
@@ -46,8 +46,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2346_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2346_action_queue_sync_3_SUBSCRIPT_shift_z_up_pixels_0',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2346_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_1, 739]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, False, 739]
     },
     {
         "identifier": 'EVENT_2346_jmp_if_mario_in_air_6',
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2346_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [23, 'EVENT_2346_enable_controls_11']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 23, 'EVENT_2346_enable_controls_11']
     },
     {
         "identifier": 'EVENT_2346_clear_bit_9',
@@ -101,8 +101,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2346_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2346_action_queue_sync_13_SUBSCRIPT_jump_to_height_0',
@@ -113,8 +113,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2346_action_queue_sync_14',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2346_action_queue_sync_14_SUBSCRIPT_set_animation_speed_0',

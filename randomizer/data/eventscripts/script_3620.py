@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3620_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3620_action_queue_async_2_SUBSCRIPT_play_sound_0',
@@ -33,8 +33,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3620_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [438, 'EVENT_3620_apply_tile_mod_10']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 438, 'EVENT_3620_apply_tile_mod_10']
     },
     {
         "identifier": 'EVENT_3620_apply_tile_mod_8',

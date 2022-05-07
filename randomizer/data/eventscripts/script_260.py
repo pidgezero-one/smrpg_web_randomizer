@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_260_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70AA],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70AA, False],
         "subscript": [
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_db_0',
@@ -22,23 +22,23 @@ script = [
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_jmp_if_700C_equals_short_2',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [0, 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_southeast_6']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 0, 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_southeast_6']
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_jmp_if_700C_equals_short_3',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [64, 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_southwest_8']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 64, 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_southwest_8']
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_jmp_if_700C_equals_short_4',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [128, 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_northwest_10']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 128, 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_northwest_10']
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_jmp_if_700C_equals_short_5',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [192, 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_northeast_12']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 192, 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_northeast_12']
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_southeast_6',

@@ -16,8 +16,8 @@ script = [
         "args": [0x7043, 7]
     },
     {
-        "identifier": 'EVENT_1581_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_1581_jmp_if_var_equals_const_2',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 4, 'EVENT_1581_db_4']
     },
     {

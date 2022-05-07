@@ -6,8 +6,8 @@ from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPac
 script = [
     {
         "identifier": 'ACTION_288_set_700C_to_7000_short_mem_0',
-        "command": 'set_700C_to_7000_short_mem',
-        "args": [0x703e]
+        "command": 'copy_var_to_var',
+        'args': [0x703e, 0x700C]
     },
     {
         "identifier": 'ACTION_288_face_east_7C_1',

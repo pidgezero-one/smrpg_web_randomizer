@@ -11,13 +11,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1544_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1544_set_70A0_short_mem_to_7000_2',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a9]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a9]
     },
     {
         "identifier": 'EVENT_1544_set_7000_to_object_coord_3',
@@ -26,13 +26,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1544_set_7000_short_mem_to_7000_4',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x700c]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x700c]
     },
     {
         "identifier": 'EVENT_1544_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 781]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 781]
     },
     {
         "identifier": 'EVENT_1544_pause_6',
@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1544_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1544_action_queue_sync_7_SUBSCRIPT_inc_0',
@@ -90,8 +90,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1544_action_queue_async_13',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1544_action_queue_async_13_SUBSCRIPT_play_sound_0',
@@ -104,7 +104,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1544_action_queue_async_13_SUBSCRIPT_set_2',
-                "command": 'set',
+                "command": "set_var_to_const",
                 "args": [0x700c, 2]
             },
             {

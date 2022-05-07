@@ -93,8 +93,8 @@ script = [
     },
     {
         "identifier": "EVENT_3214_action_queue_sync_193",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_3214_action_queue_sync_193_SUBSCRIPT_jump_to_height_silent_0",
@@ -134,8 +134,8 @@ script = [
     },
     {
         "identifier": "EVENT_3214_action_queue_sync_208",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_3214_action_queue_sync_208_SUBSCRIPT_jump_to_height_silent_0",

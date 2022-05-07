@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3711_set_action_script_sync_0',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 257]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 257]
     },
     {
         "identifier": 'EVENT_3711_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 890]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 890]
     },
     {
         "identifier": 'EVENT_3711_jmp_if_object_not_in_level_2',
@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3711_mem_compare_val_5',
-        "command": 'mem_compare_val',
-        "args": [2]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 2]
     },
     {
         "identifier": 'EVENT_3711_jmp_if_comparison_result_is_lesser_6',
@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3711_set_action_script_async_11',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_5, 256]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, False, 256]
     },
     {
         "identifier": 'EVENT_3711_clear_bit_12',

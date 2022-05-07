@@ -24,18 +24,18 @@ script = [
     },
     {
         "identifier": 'ACTION_923_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_923_db_10']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_923_db_10']
     },
     {
         "identifier": 'ACTION_923_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_923_pause_9']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_923_pause_9']
     },
     {
         "identifier": 'ACTION_923_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_923_pause_8']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_923_pause_8']
     },
     {
         "identifier": 'ACTION_923_pause_7',

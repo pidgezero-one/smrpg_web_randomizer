@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2306_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2306_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0',
@@ -39,8 +39,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2306_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 7]
     },
     {
         "identifier": "EVENT_2306_grant",

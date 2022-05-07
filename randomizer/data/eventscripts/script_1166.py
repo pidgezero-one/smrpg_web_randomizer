@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1166_set_237',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 142]
     },
     {
@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1166_jmp_if_7000_equals_short_239',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_1166_pause_3']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_1166_pause_3']
     },
     {
         "identifier": 'EVENT_1166_run_dialog_1',

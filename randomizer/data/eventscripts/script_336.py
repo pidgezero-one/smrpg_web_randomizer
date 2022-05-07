@@ -7,12 +7,12 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_336_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 20]
     },
     {
         "identifier": 'EVENT_336_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0005]
     },
     {

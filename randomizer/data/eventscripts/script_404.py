@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_404_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_404_action_queue_sync_1_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -24,8 +24,8 @@ script = [
     },
     {
         "identifier": 'EVENT_404_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_404_action_queue_async_2_SUBSCRIPT_transfer_to_xyzf_0',
@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'EVENT_404_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 113]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 113]
     },
     {
         "identifier": 'EVENT_404_jmp_to_event_4',

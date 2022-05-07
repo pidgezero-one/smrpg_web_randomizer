@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_466_set_action_script_sync_0',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_10, 794]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_10, True, 794]
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_1',
@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 431]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 431]
     },
     {
         "identifier": 'EVENT_466_jmp_3',
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 797]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 797]
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_clear_5',
@@ -37,13 +37,13 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_6',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 795]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 795]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 796]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 796]
     },
     {
         "identifier": 'EVENT_466_pause_action_script_8',
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_466_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_466_action_queue_sync_9_SUBSCRIPT_face_northwest_0',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'EVENT_466_start_embedded_action_script_async_F1_10',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_5],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_5, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_466_start_embedded_action_script_async_F1_10_SUBSCRIPT_transfer_to_xyzf_0',
@@ -94,13 +94,13 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 677]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 677]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 677]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 677]
     },
     {
         "identifier": 'EVENT_466_jmp_13',
@@ -109,23 +109,23 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 677]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 677]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 677]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 677]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 677]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 677]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 677]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 677]
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_18',
@@ -134,8 +134,8 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_19',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 500]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 500]
     },
     {
         "identifier": 'EVENT_466_clear_bit_20',
@@ -199,13 +199,13 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_32',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 499]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 499]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_33',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 430]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 430]
     },
     {
         "identifier": 'EVENT_466_jmp_34',
@@ -214,18 +214,18 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_short_35',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0000]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_36',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 502]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 502]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_37',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 428]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 428]
     },
     {
         "identifier": 'EVENT_466_jmp_38',
@@ -249,18 +249,18 @@ script = [
     },
     {
         "identifier": 'EVENT_466_set_short_42',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0000]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_43',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 501]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 501]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_44',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 430]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 430]
     },
     {
         "identifier": 'EVENT_466_jmp_45',

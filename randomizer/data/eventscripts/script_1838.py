@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1838_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 470]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 470]
     },
     {
         "identifier": 'EVENT_1838_add_coins_2',

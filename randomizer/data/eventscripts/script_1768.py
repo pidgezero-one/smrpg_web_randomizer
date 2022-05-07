@@ -76,7 +76,7 @@ script = [
     },
     {
         "identifier": "EVENT_1768_set_short_239",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x7034, 0x0001],
     },
     {
@@ -91,21 +91,21 @@ script = [
     },
     {"identifier": "EVENT_1768_pause_242", "command": "pause", "args": [1]},
     {
-        "identifier": "EVENT_1768_create_packet_at_7010_coords_jmp_if_null_243",
-        "command": "create_packet_at_7010_coords_jmp_if_null",
+        "identifier": "EVENT_1768_create_packet_at_7010_243",
+        "command": "create_packet_at_7010",
         "args": [NPCPackets._032_BLUE_CLOUD, "EVENT_1768_pause_242"],
     },
     {"identifier": "EVENT_1768_pause_244", "command": "pause", "args": [4]},
     {
         "identifier": "EVENT_1768_add_short_245",
-        "command": "add_short",
+        "command": "add_const_to_var",
         "args": [0x7034, 0x0003],
     },
     {"identifier": "EVENT_1768_end_loop_246", "command": "end_loop"},
     {
         "identifier": "EVENT_1768_action_queue_sync_247",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_1768_action_queue_sync_247_SUBSCRIPT_visibility_on_0",

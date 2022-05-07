@@ -28,23 +28,23 @@ script = [
     },
     {
         "identifier": 'ACTION_937_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [26, 'ACTION_937_fixed_f_coord_on_9']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 26, 'ACTION_937_fixed_f_coord_on_9']
     },
     {
         "identifier": 'ACTION_937_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [27, 'ACTION_937_fixed_f_coord_on_16']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 27, 'ACTION_937_fixed_f_coord_on_16']
     },
     {
         "identifier": 'ACTION_937_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [28, 'ACTION_937_embedded_animation_routine_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 28, 'ACTION_937_embedded_animation_routine_23']
     },
     {
         "identifier": 'ACTION_937_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [29, 'ACTION_937_embedded_animation_routine_27']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 29, 'ACTION_937_embedded_animation_routine_27']
     },
     {
         "identifier": 'ACTION_937_fixed_f_coord_on_9',
@@ -78,7 +78,7 @@ script = [
     {
         "identifier": 'ACTION_937_jmp_15',
         "command": 'jmp',
-        "args": ['ACTION_937_pause_short_30']
+        "args": ['ACTION_937_pause_30']
     },
     {
         "identifier": 'ACTION_937_fixed_f_coord_on_16',
@@ -112,7 +112,7 @@ script = [
     {
         "identifier": 'ACTION_937_jmp_22',
         "command": 'jmp',
-        "args": ['ACTION_937_pause_short_30']
+        "args": ['ACTION_937_pause_30']
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_23',
@@ -132,7 +132,7 @@ script = [
     {
         "identifier": 'ACTION_937_jmp_26',
         "command": 'jmp',
-        "args": ['ACTION_937_pause_short_30']
+        "args": ['ACTION_937_pause_30']
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_27',
@@ -150,8 +150,8 @@ script = [
         "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x80]
     },
     {
-        "identifier": 'ACTION_937_pause_short_30',
-        "command": 'pause_short',
+        "identifier": 'ACTION_937_pause_30',
+        "command": 'pause',
         "args": [500]
     },
     {

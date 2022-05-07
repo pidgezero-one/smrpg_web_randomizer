@@ -34,8 +34,8 @@ script = [
         "command": 'floating_off'
     },
     {
-        "identifier": 'ACTION_935_set_random_6',
-        "command": 'set_random',
+        "identifier": 'ACTION_935_set_var_to_random_6',
+        "command": 'set_var_to_random',
         "args": [0x700c, 8]
     },
     {
@@ -50,12 +50,12 @@ script = [
     {
         "identifier": 'ACTION_935_jmp_if_random_above_128_9',
         "command": 'jmp_if_random_above_128',
-        "args": ['ACTION_935_set_random_6']
+        "args": ['ACTION_935_set_var_to_random_6']
     },
     {
         "identifier": 'ACTION_935_jmp_if_random_above_128_10',
         "command": 'jmp_if_random_above_128',
-        "args": ['ACTION_935_set_random_6']
+        "args": ['ACTION_935_set_var_to_random_6']
     },
     {
         "identifier": 'ACTION_935_visibility_on_11',

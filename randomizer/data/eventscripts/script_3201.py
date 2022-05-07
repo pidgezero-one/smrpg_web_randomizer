@@ -53,7 +53,7 @@ script = [
     {"identifier": "EVENT_3201_set_bit_1", "command": "set_bit", "args": [0x7043, 0]},
     {
         "identifier": "EVENT_3201_start_battle_73",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 518],
     },
     {
@@ -75,8 +75,8 @@ script = [
     },
     {
         "identifier": "EVENT_3201_action_queue_async_14",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": "EVENT_3201_action_queue_async_14_SUBSCRIPT_object_memory_set_bit_0",
@@ -145,8 +145,8 @@ script = [
     },
     {
         "identifier": "EVENT_3201_jmp_if_7000_not_equals_short_17",
-        "command": "jmp_if_7000_not_equals_short",
-        "args": [277, "EVENT_3201_jmp_if_7000_not_equals_short_20"],
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x7000, 277, "EVENT_3201_jmp_if_7000_not_equals_short_20"]
     },
     {
         "identifier": "EVENT_3201_jmp_if_bit_set_18",
@@ -155,8 +155,8 @@ script = [
     },
     {
         "identifier": "EVENT_3201_action_queue_sync_19",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": "EVENT_3201_action_queue_sync_19_SUBSCRIPT_set_bit_0",
@@ -174,8 +174,8 @@ script = [
     },
     {
         "identifier": "EVENT_3201_jmp_if_7000_not_equals_short_20",
-        "command": "jmp_if_7000_not_equals_short",
-        "args": [283, "EVENT_3201_jmp_if_7000_not_equals_short_23"],
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x7000, 283, "EVENT_3201_jmp_if_7000_not_equals_short_23"]
     },
     {
         "identifier": "EVENT_3201_jmp_if_bit_set_21",
@@ -184,8 +184,8 @@ script = [
     },
     {
         "identifier": "EVENT_3201_action_queue_sync_22",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_2],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": "EVENT_3201_action_queue_sync_22_SUBSCRIPT_set_bit_0",
@@ -203,8 +203,8 @@ script = [
     },
     {
         "identifier": "EVENT_3201_jmp_if_7000_not_equals_short_23",
-        "command": "jmp_if_7000_not_equals_short",
-        "args": [273, "EVENT_3201_set_short_364"],
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x7000, 273, "EVENT_3201_set_short_364"]
     },
     {
         "identifier": "EVENT_3201_jmp_if_bit_set_24",
@@ -213,8 +213,8 @@ script = [
     },
     {
         "identifier": "EVENT_3201_action_queue_sync_25",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_3],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": "EVENT_3201_action_queue_sync_25_SUBSCRIPT_set_bit_0",
@@ -228,7 +228,7 @@ script = [
             },
         ],
     },
-    {"identifier": "EVENT_3201_set_short_364", "command": "set", "args": [0x7000, 518]},
+    {"identifier": "EVENT_3201_set_short_364", "command": "set_var_to_const", "args": [0x7000, 518]},
     {
         "identifier": "EVENT_3201_clear_bit_30",
         "command": "clear_bit",
@@ -241,7 +241,7 @@ script = [
     },
     {
         "identifier": "EVENT_3201_set_short_364_-",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 518],
     },
     {

@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1852_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1852_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1852_jmp_fork_mario_on_object_2',
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_async_18',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1852_clear_bit_19',
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_sync_21',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 823]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 823]
     },
     {
         "identifier": 'EVENT_1852_ret_22',
@@ -71,8 +71,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_async_24',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1852_clear_bit_25',
@@ -90,8 +90,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_mem_compare_val_28',
-        "command": 'mem_compare_val',
-        "args": [5]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 5]
     },
     {
         "identifier": 'EVENT_1852_jmp_if_comparison_result_is_greater_or_equal_29',
@@ -105,8 +105,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_sync_31',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 823]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 823]
     },
     {
         "identifier": 'EVENT_1852_ret_32',
@@ -119,7 +119,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_34',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 5]
     },
     {
@@ -148,8 +148,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_async_40',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1852_clear_bit_41',
@@ -178,8 +178,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_async_46',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1852_clear_bit_47',
@@ -198,7 +198,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_short_50',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0005]
     },
     {
@@ -218,7 +218,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_short_54',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0008]
     },
     {
@@ -238,7 +238,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_short_58',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0001]
     },
     {
@@ -253,12 +253,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_short_61',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702e, 0x0030]
     },
     {
         "identifier": 'EVENT_1852_set_short_62',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0064]
     },
     {
@@ -273,13 +273,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_short_65',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0001]
     },
     {
         "identifier": 'EVENT_1852_action_queue_async_66',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_17],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_17, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1852_action_queue_async_66_SUBSCRIPT_clear_solidity_bits_0',
@@ -350,8 +350,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_sync_68',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 823]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 823]
     },
     {
         "identifier": 'EVENT_1852_ret_69',
@@ -372,8 +372,8 @@ script = [
         "args": [0x7044, 3]
     },
     {
-        "identifier": 'EVENT_1852_jmp_if_var_not_equals_short_73',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_1852_jmp_if_var_not_equals_const_73',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x7028, 3, 'EVENT_1852_run_dialog_76']
     },
     {
@@ -403,8 +403,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_async_79',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1852_clear_bit_80',
@@ -413,7 +413,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_inc_short_81',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7028]
     },
     {
@@ -423,18 +423,18 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_add_short_83',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x702e, 0xfff0]
     },
     {
         "identifier": 'EVENT_1852_add_short_84',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x702c, 0xffec]
     },
     {
         "identifier": 'EVENT_1852_action_queue_async_85',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1852_action_queue_async_85_SUBSCRIPT_set_animation_speed_0',
@@ -475,8 +475,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_action_queue_sync_87',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1852_action_queue_sync_87_SUBSCRIPT_floating_off_0',
@@ -509,8 +509,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_action_queue_async_88',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_17],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_17, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1852_action_queue_async_88_SUBSCRIPT_set_animation_speed_0',
@@ -535,8 +535,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_action_queue_async_89',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1852_action_queue_async_89_SUBSCRIPT_set_animation_speed_0',
@@ -570,8 +570,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_async_92',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1852_clear_bit_93',
@@ -585,8 +585,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_action_queue_async_95',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_17],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_17, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1852_action_queue_async_95_SUBSCRIPT_set_sprite_sequence_0',
@@ -612,8 +612,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_7000_to_7000_short_mem_98',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_1852_add_frog_coins_99',
@@ -637,8 +637,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_7000_to_7000_short_mem_103',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_1852_add_coins_104',
@@ -652,8 +652,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_action_queue_sync_106',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_18],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_18, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1852_action_queue_sync_106_SUBSCRIPT_start_loop_n_times_0',
@@ -678,8 +678,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_action_queue_async_107',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_17],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_17, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1852_action_queue_async_107_SUBSCRIPT_clear_solidity_bits_0',
@@ -750,8 +750,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_set_action_script_sync_109',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 823]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 823]
     },
     {
         "identifier": 'EVENT_1852_ret_110',

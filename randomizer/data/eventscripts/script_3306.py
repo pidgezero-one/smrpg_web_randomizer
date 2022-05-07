@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3306_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [25, 'EVENT_3306_enter_area_4']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 25, 'EVENT_3306_enter_area_4']
     },
     {
         "identifier": 'EVENT_3306_enter_area_2',

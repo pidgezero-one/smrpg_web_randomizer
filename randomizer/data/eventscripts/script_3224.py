@@ -67,37 +67,37 @@ script = [
     },
     {
         "identifier": 'EVENT_3224_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0000]
     },
     {
         "identifier": 'EVENT_3224_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0000]
     },
     {
         "identifier": 'EVENT_3224_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0000]
     },
     {
         "identifier": 'EVENT_3224_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702a, 0x0000]
     },
     {
         "identifier": 'EVENT_3224_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0000]
     },
     {
         "identifier": 'EVENT_3224_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702e, 0x0000]
     },
     {
         "identifier": 'EVENT_3224_set_6',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 0]
     },
     {

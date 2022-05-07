@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_477_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_477_action_queue_sync_2_SUBSCRIPT_face_northeast_0',
@@ -33,8 +33,8 @@ script = [
     },
     {
         "identifier": 'EVENT_477_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_477_action_queue_async_3_SUBSCRIPT_set_sprite_sequence_0',
@@ -74,8 +74,8 @@ script = [
     },
     {
         "identifier": 'EVENT_477_start_embedded_action_script_async_F1_5',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_9],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_9, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_477_start_embedded_action_script_async_F1_5_SUBSCRIPT_set_animation_speed_0',
@@ -121,28 +121,28 @@ script = [
     },
     {
         "identifier": 'EVENT_477_set_short_11',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703e, 0x0003]
     },
     {
         "identifier": 'EVENT_477_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 289]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 289]
     },
     {
         "identifier": 'EVENT_477_set_action_script_async_13',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 288]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 288]
     },
     {
         "identifier": 'EVENT_477_set_action_script_async_14',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_477_action_queue_async_15',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_477_action_queue_async_15_SUBSCRIPT_set_solidity_bits_0',

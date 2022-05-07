@@ -111,18 +111,18 @@ script = [
     },
     {
         "identifier": 'EVENT_455_jmp_if_7000_equals_short_21',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [33, 'EVENT_455_set_27']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 33, 'EVENT_455_set_27']
     },
     {
         "identifier": 'EVENT_455_set_22',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 20]
     },
     {
         "identifier": 'EVENT_455_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
@@ -225,7 +225,7 @@ script = [
     },
     {
         "identifier": 'EVENT_455_set_27',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 52]
     },
     {

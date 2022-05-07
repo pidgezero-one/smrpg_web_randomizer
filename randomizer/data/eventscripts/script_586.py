@@ -22,23 +22,23 @@ script = [
     },
     {
         "identifier": 'EVENT_586_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 210]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 210]
     },
     {
         "identifier": 'EVENT_586_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 422]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 422]
     },
     {
         "identifier": 'EVENT_586_add_short_5',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7024, 0x0003]
     },
     {
         "identifier": 'EVENT_586_set_7000_to_7000_short_mem_6',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_586_run_dialog_7',

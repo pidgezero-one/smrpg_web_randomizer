@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1722_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1722_action_queue_sync_2_SUBSCRIPT_shift_z_up_pixels_0',
@@ -29,8 +29,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1722_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1722_action_queue_sync_3_SUBSCRIPT_shift_z_up_pixels_0',
@@ -50,8 +50,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1722_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1722_action_queue_async_6_SUBSCRIPT_floating_off_0',
@@ -124,8 +124,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1722_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1722_action_queue_async_9_SUBSCRIPT_floating_off_0',
@@ -173,8 +173,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1722_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 823]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 823]
     },
     {
         "identifier": 'EVENT_1722_set_bit_11',
@@ -188,18 +188,18 @@ script = [
     },
     {
         "identifier": 'EVENT_1722_set_short_13',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702e, 0x0030]
     },
     {
         "identifier": 'EVENT_1722_set_short_14',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0046]
     },
     {
         "identifier": 'EVENT_1722_action_queue_sync_15',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_16],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_16, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_set_animation_speed_0',
@@ -212,8 +212,8 @@ script = [
                 "args": [16]
             },
             {
-                "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_short_2',
-                "command": 'pause_short',
+                "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_2',
+                "command": 'pause',
                 "args": [300]
             },
             {
@@ -228,12 +228,12 @@ script = [
             },
             {
                 "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_set_short_5',
-                "command": 'set_short',
+                "command": "set_var_to_const",
                 "args": [0x7034, 0x8006]
             },
             {
-                "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_create_packet_at_object_coords_jmp_if_null_6',
-                "command": 'create_packet_at_object_coords_jmp_if_null',
+                "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_create_packet_at_npc_coords_6',
+                "command": 'create_packet_at_npc_coords',
                 "args": [NPCPackets._032_BLUE_CLOUD, AreaObjects.DUMMY_0X07, 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_4']
             },
             {
@@ -249,7 +249,7 @@ script = [
             {
                 "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_jmp_9',
                 "command": 'jmp',
-                "args": ['EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_short_2']
+                "args": ['EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_2']
             }
         ]
     },

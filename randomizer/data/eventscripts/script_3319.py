@@ -21,13 +21,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3319_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [367, 'EVENT_3319_start_battle_7']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 367, 'EVENT_3319_start_battle_7']
     },
     {
         "identifier": 'EVENT_3319_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [364, 'EVENT_3319_start_battle_7']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 364, 'EVENT_3319_start_battle_7']
     },
     {
         "identifier": 'EVENT_3319_start_battle_5',
@@ -56,13 +56,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3319_set_temp_action_script_sync_10',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 273]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 273]
     },
     {
         "identifier": 'EVENT_3319_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3319_action_queue_sync_11_SUBSCRIPT_jump_to_height_silent_0',
@@ -100,8 +100,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3319_set_temp_action_script_sync_14',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 2]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 2]
     },
     {
         "identifier": 'EVENT_3319_fade_in_from_black_async_15',

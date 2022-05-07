@@ -97,8 +97,8 @@ script = [
     },
     {
         "identifier": "EVENT_351_action_queue_async_28",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": "EVENT_351_action_queue_async_28_SUBSCRIPT_db_0",
@@ -112,8 +112,8 @@ script = [
             },
             {
                 "identifier": "EVENT_351_action_queue_async_28_SUBSCRIPT_jmp_if_700C_equals_short_2",
-                "command": "jmp_if_700C_equals_short",
-                "args": [64, "EVENT_351_run_event_as_subroutine_29"],
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 64, "EVENT_351_run_event_as_subroutine_29"],
             },
             {
                 "identifier": "EVENT_351_action_queue_async_28_SUBSCRIPT_set_sprite_sequence_3",
@@ -159,12 +159,12 @@ script = [
     {"identifier": "EVENT_351_pause_32", "command": "pause", "args": [10]},
     {
         "identifier": "EVENT_351_set_action_script_async_33",
-        "command": "set_action_script_async",
-        "args": [AreaObjects.MARIO, 670],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": "EVENT_351_set_short_34",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x7024, 0x01F4],
     },
     {
@@ -182,7 +182,7 @@ script = [
         "command": "play_sound",
         "args": [Sounds._013_COIN, 6],
     },
-    {"identifier": "EVENT_351_set_38", "command": "set", "args": [0x7000, 500]},
+    {"identifier": "EVENT_351_set_38", "command": "set_var_to_const", "args": [0x7000, 500]},
     {"identifier": "EVENT_351_dec_coins_39", "command": "dec_coins"},
     {"identifier": "EVENT_351_kid_grant_", "command": "set_bit", "args": [0x7077, 6]},
     {
@@ -217,8 +217,8 @@ script = [
     {"identifier": "EVENT_351_pause_44", "command": "pause", "args": [10]},
     {
         "identifier": "EVENT_351_set_action_script_async_45",
-        "command": "set_action_script_async",
-        "args": [AreaObjects.MARIO, 670],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, False, 670],
     },
     {
         "identifier": "EVENT_351_run_dialog_46",
@@ -242,8 +242,8 @@ script = [
     {"identifier": "EVENT_351_pause_48", "command": "pause", "args": [10]},
     {
         "identifier": "EVENT_351_set_action_script_async_49",
-        "command": "set_action_script_async",
-        "args": [AreaObjects.MARIO, 671],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, False, 671],
     },
     {
         "identifier": "EVENT_351_jmp_51",
@@ -253,8 +253,8 @@ script = [
     {"identifier": "EVENT_351_pause_52", "command": "pause", "args": [10]},
     {
         "identifier": "EVENT_351_set_action_script_async_53",
-        "command": "set_action_script_async",
-        "args": [AreaObjects.MARIO, 671],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, False, 671],
     },
     {
         "identifier": "EVENT_351_jmp_55",
@@ -282,8 +282,8 @@ script = [
     },
     {
         "identifier": "EVENT_351_action_queue_async_58",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": "EVENT_351_action_queue_async_58_SUBSCRIPT_set_sprite_sequence_0",

@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3794_action_queue_sync_38',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3794_loop_pause_42',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3794_action_queue_async_51',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3794_action_queue_async_51_SUBSCRIPT_jump_to_height_0',
@@ -105,8 +105,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3794_action_queue_async_122',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3794_action_queue_async_122_SUBSCRIPT_set_sprite_sequence_4',
@@ -126,8 +126,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3794_action_queue_sync_132',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3794_action_queue_sync_132_SUBSCRIPT_pause_0',

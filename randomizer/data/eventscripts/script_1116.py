@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1116_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 150]
     },
     {
@@ -16,12 +16,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1116_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_1116_open_shop_12']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_1116_open_shop_12']
     },
     {
         "identifier": 'EVENT_1116_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 152]
     },
     {
@@ -30,12 +30,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1116_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_1116_open_shop_15']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_1116_open_shop_15']
     },
     {
         "identifier": 'EVENT_1116_set_6',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 151]
     },
     {
@@ -44,8 +44,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1116_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_1116_open_shop_18']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_1116_open_shop_18']
     },
     {
         "identifier": 'EVENT_1116_open_shop_9',

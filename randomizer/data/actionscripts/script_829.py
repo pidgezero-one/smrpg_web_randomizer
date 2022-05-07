@@ -25,8 +25,8 @@ script = [
     },
     {
         "identifier": 'ACTION_829_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [28, 'ACTION_829_shift_f_direction_steps_9']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 28, 'ACTION_829_shift_f_direction_steps_9']
     },
     {
         "identifier": 'ACTION_829_shift_f_direction_steps_5',

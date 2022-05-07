@@ -53,8 +53,8 @@ script = [
     {"identifier": "EVENT_3737_set_bit_158", "command": "set_bit", "args": [0x7090, 2]},
     {
         "identifier": "EVENT_3737_action_queue_sync_1",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_3737_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_0",
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": "EVENT_3737_action_queue_async_2",
-        "command": "action_queue_async",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": "EVENT_3737_action_queue_async_2_SUBSCRIPT_set_animation_speed_0",
@@ -98,8 +98,8 @@ script = [
     },
     {
         "identifier": "EVENT_3737_action_queue_async_4",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_3737_action_queue_async_4_SUBSCRIPT_floating_off_0",

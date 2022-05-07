@@ -6,23 +6,23 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3152_jmp_if_var_equals_byte_0',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3152_jmp_if_var_equals_const_0',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a8, 21, 'EVENT_3152_set_bit_8']
     },
     {
-        "identifier": 'EVENT_3152_jmp_if_var_equals_byte_1',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3152_jmp_if_var_equals_const_1',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a8, 22, 'EVENT_3152_set_bit_12']
     },
     {
-        "identifier": 'EVENT_3152_jmp_if_var_equals_byte_2',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3152_jmp_if_var_equals_const_2',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a8, 23, 'EVENT_3152_set_bit_16']
     },
     {
-        "identifier": 'EVENT_3152_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3152_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a8, 24, 'EVENT_3152_set_bit_20']
     },
     {

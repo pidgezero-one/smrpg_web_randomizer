@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2802_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [128, 'EVENT_2802_set_7000_to_70A0_short_mem_5']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 128, 'EVENT_2802_set_7000_to_70A0_short_mem_5']
     },
     {
         "identifier": 'EVENT_2802_jmp_4',
@@ -31,13 +31,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2802_set_7000_to_70A0_short_mem_5',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x70ae, 0x7000]
     },
     {
         "identifier": 'EVENT_2802_mem_compare_val_6',
-        "command": 'mem_compare_val',
-        "args": [2]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 2]
     },
     {
         "identifier": 'EVENT_2802_jmp_if_comparison_result_is_greater_or_equal_7',

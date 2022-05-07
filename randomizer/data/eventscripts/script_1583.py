@@ -22,7 +22,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1583_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a8, 20]
     },
     {
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1583_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1583_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1583_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1583_action_queue_async_7_SUBSCRIPT_sequence_playback_off_0',

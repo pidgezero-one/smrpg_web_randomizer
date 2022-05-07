@@ -47,7 +47,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3358_set_short_0",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x703E, 0x0000],
     },
     {
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": "EVENT_3358_action_queue_async_2",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_3358_action_queue_async_2_SUBSCRIPT_walk_to_xy_coords_0",
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": "EVENT_3358_action_queue_sync_3",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": "action_queue",
+        "args": [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": "EVENT_3358_action_queue_sync_3_SUBSCRIPT_set_animation_speed_0",
@@ -105,14 +105,14 @@ script = [
     },
     {
         "identifier": "EVENT_3358_set_action_script_sync_5",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.NPC_0, 59],
+        "command": "set_action_script",
+        "args": [AreaObjects.NPC_0, True, 59]
     },
     {"identifier": "EVENT_3358_set_bit_9", "command": "set_bit", "args": [0x7044, 7]},
     {
         "identifier": "EVENT_3358_action_queue_sync_10",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_3358_action_queue_sync_10_SUBSCRIPT_start_loop_n_times_0",
@@ -159,8 +159,8 @@ script = [
     },
     {
         "identifier": "EVENT_3358_set_action_script_sync_13",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MEM_70A9, 281],
+        "command": "set_action_script",
+        "args": [AreaObjects.MEM_70A9, True, 281],
     },
     {"identifier": "EVENT_3358_inc_14", "command": "inc", "args": [0x70A9]},
     {"identifier": "EVENT_3358_end_loop_15", "command": "end_loop"},

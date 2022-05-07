@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": "EVENT_1111_jmp_if_7000_equals_short_2",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_1111_remove_one_from_inventory_10"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_1111_remove_one_from_inventory_10"]
     },
     {
         "identifier": "EVENT_1111_store_7000_item_quantity_to_70A7_4",
@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": "EVENT_1111_jmp_if_7000_equals_short_2_",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_1111_check_if_pie_exchanged"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_1111_check_if_pie_exchanged"]
     },
     {
         "identifier": "EVENT_1111_run_dialog_6",
@@ -98,8 +98,8 @@ script = [
     },
     {
         "identifier": "EVENT_1111_jmp_if_7000_equals_short_2__",
-        "command": "jmp_if_7000_equals_short",
-        "args": [0, "EVENT_1111_ret_6__"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 0, "EVENT_1111_ret_6__"]
     },
     {
         "identifier": "EVENT_1111_check_if_pie_exchanged",

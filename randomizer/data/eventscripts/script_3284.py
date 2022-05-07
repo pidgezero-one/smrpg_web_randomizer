@@ -17,7 +17,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3284_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 0]
     },
     {
@@ -76,32 +76,32 @@ script = [
     },
     {
         "identifier": 'EVENT_3284_set_10',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70da, 0]
     },
     {
         "identifier": 'EVENT_3284_set_11',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70db, 0]
     },
     {
         "identifier": 'EVENT_3284_set_12',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70dc, 0]
     },
     {
         "identifier": 'EVENT_3284_set_13',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70dd, 0]
     },
     {
         "identifier": 'EVENT_3284_set_9_',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70f8, 0]
     },
     {
         "identifier": 'EVENT_3284_set_9__',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70f9, 0]
     },
     {

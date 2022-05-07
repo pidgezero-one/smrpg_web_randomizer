@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_395_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_293_pause_action_script_20']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_293_pause_action_script_20']
     },
     {
         "identifier": 'EVENT_395_run_event_as_subroutine_5',
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_395_set_action_script_async_10',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_395_pause_11',
@@ -92,8 +92,8 @@ script = [
     },
     {
         "identifier": 'EVENT_395_set_action_script_sync_19',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 978]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 978]
     },
     {
         "identifier": 'EVENT_395_ret_20',
@@ -101,8 +101,8 @@ script = [
     },
     {
         "identifier": 'EVENT_395_set_action_script_async_21',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_395_remember_last_object_22',
@@ -144,8 +144,8 @@ script = [
     },
     {
         "identifier": 'EVENT_395_jmp_if_7000_equals_short_30',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_395_run_dialog_36']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_395_run_dialog_36']
     },
     {
         "identifier": 'EVENT_395_jmp_31',

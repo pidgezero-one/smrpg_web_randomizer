@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1762_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a8, 23]
     },
     {
@@ -37,7 +37,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1762_set_6',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a8, 20]
     },
     {

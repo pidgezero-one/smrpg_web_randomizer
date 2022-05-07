@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3189_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3189_action_queue_sync_1_SUBSCRIPT_jump_to_height_silent_0',

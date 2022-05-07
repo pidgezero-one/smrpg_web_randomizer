@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1884_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1884_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70af]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70af]
     },
     {
         "identifier": 'EVENT_1884_jmp_if_bit_clear_2',
@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1884_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1884_action_queue_sync_10_SUBSCRIPT_pause_0',

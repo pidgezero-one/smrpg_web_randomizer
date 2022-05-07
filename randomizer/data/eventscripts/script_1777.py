@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_10_SUBSCRIPT_set_animation_speed_0',
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_11_SUBSCRIPT_clear_solidity_bits_0',
@@ -127,8 +127,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_12_SUBSCRIPT_clear_solidity_bits_0',
@@ -191,8 +191,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_13_SUBSCRIPT_clear_solidity_bits_0',
@@ -255,8 +255,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_14',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_14_SUBSCRIPT_clear_solidity_bits_0',
@@ -319,8 +319,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_15',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_15_SUBSCRIPT_clear_solidity_bits_0',
@@ -383,8 +383,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_16',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_16_SUBSCRIPT_clear_solidity_bits_0',
@@ -447,8 +447,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_17',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_17_SUBSCRIPT_clear_solidity_bits_0',
@@ -511,8 +511,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_sync_18',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_sync_18_SUBSCRIPT_clear_solidity_bits_0',
@@ -575,8 +575,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_async_19',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_async_19_SUBSCRIPT_clear_solidity_bits_0',
@@ -639,7 +639,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_set_20',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 21]
     },
     {
@@ -654,7 +654,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_set_23',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 29]
     },
     {
@@ -669,12 +669,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_action_queue_async_26',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70AB],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70AB, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1777_action_queue_async_26_SUBSCRIPT_set_short_0',
-                "command": 'set_short',
+                "command": "set_var_to_const",
                 "args": [0x7034, 0xffff]
             },
             {
@@ -684,12 +684,12 @@ script = [
             },
             {
                 "identifier": 'EVENT_1777_action_queue_async_26_SUBSCRIPT_add_short_2',
-                "command": 'add_short',
+                "command": "add_const_to_var",
                 "args": [0x7010, 0x0050]
             },
             {
                 "identifier": 'EVENT_1777_action_queue_async_26_SUBSCRIPT_add_short_3',
-                "command": 'add_short',
+                "command": "add_const_to_var",
                 "args": [0x7014, 0x0080]
             },
             {
@@ -698,8 +698,8 @@ script = [
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_1777_action_queue_async_26_SUBSCRIPT_create_packet_at_7010_coords_jmp_if_null_5',
-                "command": 'create_packet_at_7010_coords_jmp_if_null',
+                "identifier": 'EVENT_1777_action_queue_async_26_SUBSCRIPT_create_packet_at_7010_5',
+                "command": 'create_packet_at_7010',
                 "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_1777_action_queue_async_26_SUBSCRIPT_pause_4']
             },
             {
@@ -753,7 +753,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1777_set_29',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 0]
     },
     {

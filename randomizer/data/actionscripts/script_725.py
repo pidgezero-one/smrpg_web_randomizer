@@ -35,7 +35,7 @@ script = [
     },
     {
         "identifier": 'ACTION_725_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0384]
     },
     {
@@ -50,7 +50,7 @@ script = [
     },
     {
         "identifier": 'ACTION_725_dec_short_9',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x7024]
     },
     {

@@ -47,12 +47,12 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3520_npc",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x20, "EVENT_3520_chest_2"],
     },
     {
         "identifier": "EVENT_3520_npc_",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x21, "EVENT_3520_chest_3"],
     },
     {

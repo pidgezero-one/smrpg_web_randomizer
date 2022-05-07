@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1569_set_7000_to_7000_short_mem_1',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x702a, 0x7000]
     },
     {
         "identifier": 'EVENT_1569_mem_compare_val_2',
-        "command": 'mem_compare_val',
-        "args": [30]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 30]
     },
     {
         "identifier": 'EVENT_1569_jmp_if_comparison_result_is_greater_or_equal_3',
@@ -31,7 +31,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1569_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x00a0]
     },
     {
@@ -41,12 +41,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1569_dec_short_7',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x702c]
     },
     {
-        "identifier": 'EVENT_1569_jmp_if_var_not_equals_short_8',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_1569_jmp_if_var_not_equals_const_8',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x702c, 0, 'EVENT_1569_pause_6']
     },
     {
@@ -56,22 +56,22 @@ script = [
     },
     {
         "identifier": 'EVENT_1569_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 597]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 597]
     },
     {
         "identifier": 'EVENT_1569_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 167]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_11, True, 167]
     },
     {
-        "identifier": 'EVENT_1569_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_1569_jmp_if_var_equals_const_12',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 1, 'EVENT_1569_ret_20']
     },
     {
         "identifier": 'EVENT_1569_set_short_13',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0050]
     },
     {
@@ -81,12 +81,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1569_dec_short_15',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x702c]
     },
     {
-        "identifier": 'EVENT_1569_jmp_if_var_not_equals_short_16',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_1569_jmp_if_var_not_equals_const_16',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x702c, 0, 'EVENT_1569_pause_14']
     },
     {
@@ -96,13 +96,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1569_set_action_script_sync_18',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 597]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 597]
     },
     {
         "identifier": 'EVENT_1569_set_action_script_sync_19',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 167]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_11, True, 167]
     },
     {
         "identifier": 'EVENT_1569_ret_20',

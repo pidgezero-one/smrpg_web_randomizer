@@ -64,7 +64,7 @@ script = [
         "command": "jmp_to_event",
         "args": [255],
     },
-    {"identifier": "EVENT_1669_set_short_3", "command": "set", "args": [0x7000, 520]},
+    {"identifier": "EVENT_1669_set_short_3", "command": "set_var_to_const", "args": [0x7000, 520]},
     {
         "identifier": "EVENT_1669_start_battle_700E_4",
         "command": "run_event_as_subroutine",
@@ -84,8 +84,8 @@ script = [
     },
     {
         "identifier": "EVENT_1669_action_queue_sync_9",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_1669_action_queue_sync_9_SUBSCRIPT_pause_0",
@@ -99,7 +99,7 @@ script = [
             },
         ],
     },
-    {"identifier": "EVENT_1669_set_10", "command": "set", "args": [0x70AB, 22]},
+    {"identifier": "EVENT_1669_set_10", "command": "set_var_to_const", "args": [0x70AB, 22]},
     {
         "identifier": "EVENT_1669_clear_bit_11",
         "command": "clear_bit",
@@ -121,7 +121,7 @@ script = [
         "command": "set_bit",
         "args": [0x7081, 2],
     },
-    {"identifier": "EVENT_1669_set", "command": "set", "args": [0x7000, 520]},
+    {"identifier": "EVENT_1669_set", "command": "set_var_to_const", "args": [0x7000, 520]},
     {"identifier": "EVENT_1669_star", "command": "jmp_to_event", "args": [167]},
     {"identifier": "EVENT_1669_ret_14", "command": "ret"},
 ]

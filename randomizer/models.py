@@ -1,5 +1,5 @@
 from django.db import models
-from jsonfield import JSONField
+from django.db.models import JSONField
 
 
 class Seed(models.Model):
@@ -9,9 +9,9 @@ class Seed(models.Model):
     generated = models.DateTimeField(auto_now_add=True)
     mode = models.CharField(max_length=16)
     debug_mode = models.BooleanField(default=False)
-    flags = models.TextField(default='')
-    file_select_char = models.CharField(max_length=100, default='')
-    file_select_hash = models.CharField(max_length=100, default='')
+    flags = models.TextField(default="")
+    file_select_char = models.CharField(max_length=100, default="")
+    file_select_hash = models.CharField(max_length=100, default="")
     race_mode = models.BooleanField(default=False)
     spoiler = JSONField(default={})
 
@@ -24,5 +24,5 @@ class Patch(models.Model):
 
     class Meta:
         unique_together = [
-            ('seed', 'region'),
+            ("seed", "region"),
         ]

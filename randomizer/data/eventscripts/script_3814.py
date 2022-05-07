@@ -35,13 +35,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3814_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 119]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 119]
     },
     {
         "identifier": 'EVENT_3814_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3814_action_queue_async_8_SUBSCRIPT_transfer_xyzf_pixels_0',

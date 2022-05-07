@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_3_SUBSCRIPT_set_vram_priority_0',
@@ -33,8 +33,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3190_action_queue_async_4_SUBSCRIPT_floating_off_0',
@@ -67,13 +67,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_1, 15]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, False, 15]
     },
     {
         "identifier": 'EVENT_3190_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3190_action_queue_async_6_SUBSCRIPT_walk_to_xy_coords_0',
@@ -88,18 +88,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_set_7',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 21]
     },
     {
         "identifier": 'EVENT_3190_set_temp_action_script_async_8',
-        "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_3190_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3190_action_queue_async_9_SUBSCRIPT_jump_to_height_0',
@@ -125,8 +125,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_10_SUBSCRIPT_reset_properties_0',
@@ -270,8 +270,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_jump_to_height_0',
@@ -490,8 +490,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_action_queue_sync_17',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_17_SUBSCRIPT_set_sprite_sequence_0',
@@ -532,8 +532,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_action_queue_sync_18',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_18_SUBSCRIPT_pause_0',
@@ -601,8 +601,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3190_set_7000_short_mem_to_7000_25',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x702e]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x702e]
     },
     {
         "identifier": 'EVENT_3190_set_bit_45__',

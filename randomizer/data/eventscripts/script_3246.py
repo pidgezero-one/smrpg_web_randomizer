@@ -56,13 +56,13 @@ script = [
     },
     {
         "identifier": "EVENT_3246_jmp_if_7000_equals_short_1",
-        "command": "jmp_if_7000_equals_short",
-        "args": [169, "EVENT_3246_start_battle_5"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 169, "EVENT_3246_start_battle_5"]
     },
     {
         "identifier": "EVENT_3246_jmp_if_7000_equals_short_2",
-        "command": "jmp_if_7000_equals_short",
-        "args": [182, "EVENT_3246_start_battle_5"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 182, "EVENT_3246_start_battle_5"]
     },
     {
         "identifier": "EVENT_3246_start_battle_3",
@@ -91,13 +91,13 @@ script = [
     },
     {
         "identifier": "EVENT_3246_set_temp_action_script_sync_8",
-        "command": "set_temp_action_script_sync",
-        "args": [AreaObjects.MEM_70A8, 920],
+        "command": "set_temp_action_script",
+        "args": [AreaObjects.MEM_70A8, True, 920]
     },
     {
         "identifier": "EVENT_3246_action_queue_sync_9",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_3246_action_queue_sync_9_SUBSCRIPT_jump_to_height_silent_0",
@@ -132,8 +132,8 @@ script = [
     {"identifier": "EVENT_3246_ret_11", "command": "ret"},
     {
         "identifier": "EVENT_3246_set_temp_action_script_sync_12",
-        "command": "set_temp_action_script_sync",
-        "args": [AreaObjects.MEM_70A8, 2],
+        "command": "set_action_script",
+        "args": [AreaObjects.MEM_70A8, True, 2],
     },
     {
         "identifier": "EVENT_3246_fade_in_from_black_async_13",

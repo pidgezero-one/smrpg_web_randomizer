@@ -20,8 +20,8 @@ script = [
         "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x00, 0x48, 0xff, 0x00, 0xe8, 0xff, 0x00, 0xfe, 0x80]
     },
     {
-        "identifier": 'ACTION_394_pause_short_3',
-        "command": 'pause_short',
+        "identifier": 'ACTION_394_pause_3',
+        "command": 'pause',
         "args": [598]
     },
     {

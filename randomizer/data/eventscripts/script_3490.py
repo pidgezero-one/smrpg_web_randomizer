@@ -22,28 +22,28 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1792, 'EVENT_3490_jmp_if_bit_set_9']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1792, 'EVENT_3490_jmp_if_bit_set_9']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5120, 'EVENT_3490_jmp_if_bit_set_37']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 5120, 'EVENT_3490_jmp_if_bit_set_37']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [8704, 'EVENT_3490_jmp_if_bit_set_65']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 8704, 'EVENT_3490_jmp_if_bit_set_65']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [12288, 'EVENT_3490_jmp_if_bit_set_93']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 12288, 'EVENT_3490_jmp_if_bit_set_93']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [15616, 'EVENT_3490_set_bit_140']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 15616, 'EVENT_3490_set_bit_140']
     },
     {
         "identifier": 'EVENT_3490_jmp_8',
@@ -62,38 +62,38 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_11',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 23]
     },
     {
         "identifier": 'EVENT_3490_set_short_12',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0f08]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_14',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x1109]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_15',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_16',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x100b]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_bit_set_18',
@@ -102,22 +102,22 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_19',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 22]
     },
     {
         "identifier": 'EVENT_3490_set_short_20',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x120c]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_21',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_22',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 27]
     },
     {
@@ -127,63 +127,63 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_short_24',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x120c]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_25',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_26',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x100e]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_27',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_28',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x1010]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_29',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_30',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x1211]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_31',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_32',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0f12]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_33',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_34',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x1213]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_35',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_36',
@@ -202,38 +202,38 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_39',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 23]
     },
     {
         "identifier": 'EVENT_3490_set_short_40',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0f15]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_41',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_42',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x1217]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_43',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_44',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0d18]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_bit_set_46',
@@ -242,22 +242,22 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_47',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 22]
     },
     {
         "identifier": 'EVENT_3490_set_short_48',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0c1a]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_49',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_50',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 27]
     },
     {
@@ -267,63 +267,63 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_short_52',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0c1a]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_53',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_54',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x1319]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_55',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_56',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0d1c]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_57',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_58',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0b1e]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_59',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_60',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0d1f]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_61',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_62',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0a21]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_63',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_64',
@@ -342,38 +342,38 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_67',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 23]
     },
     {
         "identifier": 'EVENT_3490_set_short_68',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0d22]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_69',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_70',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0823]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_71',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_72',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0a24]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_73',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_bit_set_74',
@@ -382,22 +382,22 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_75',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 22]
     },
     {
         "identifier": 'EVENT_3490_set_short_76',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0826]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_77',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_78',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 27]
     },
     {
@@ -407,63 +407,63 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_short_80',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0826]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_81',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_82',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0928]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_83',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_84',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x082a]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_85',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_86',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x092d]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_87',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_88',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x072e]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_89',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_90',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x052f]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_91',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_92',
@@ -482,38 +482,38 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_95',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 23]
     },
     {
         "identifier": 'EVENT_3490_set_short_96',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0531]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_97',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_98',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0432]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_99',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_100',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0c32]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_101',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_bit_set_102',
@@ -522,22 +522,22 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_103',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 22]
     },
     {
         "identifier": 'EVENT_3490_set_short_104',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0c35]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_105',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_106',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 27]
     },
     {
@@ -547,63 +547,63 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_short_108',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0c35]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_109',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_110',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x1036]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_111',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_112',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0d37]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_113',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_114',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0c38]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_115',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_116',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0b39]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_117',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_118',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x143c]
     },
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_119',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3490_set_7000_short_mem_to_7000_short_mem_121']
+        "args": ['EVENT_3490_copy_var_to_var_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_120',
@@ -611,14 +611,14 @@ script = [
         "args": ['EVENT_3490_pause_0']
     },
     {
-        "identifier": 'EVENT_3490_set_7000_short_mem_to_7000_short_mem_121',
-        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "identifier": 'EVENT_3490_copy_var_to_var_121',
+        "command": 'copy_var_to_var',
         "args": [0x7016, 0x7018]
     },
     {
         "identifier": 'EVENT_3490_set_7000_to_7000_short_mem_122',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7016]
+        "command": 'copy_var_to_var',
+        'args': [0x7016, 0x7000]
     },
     {
         "identifier": 'EVENT_3490_mem_7000_and_const_123',
@@ -632,8 +632,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_7000_short_mem_to_7000_125',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7016]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7016]
     },
     {
         "identifier": 'EVENT_3490_mem_7000_shift_left_126',
@@ -642,8 +642,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_7000_to_7000_short_mem_127',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7018]
+        "command": 'copy_var_to_var',
+        'args': [0x7018, 0x7000]
     },
     {
         "identifier": 'EVENT_3490_mem_7000_or_const_128',
@@ -652,12 +652,12 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_7000_short_mem_to_7000_129',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7018]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7018]
     },
     {
         "identifier": 'EVENT_3490_set_short_130',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0000]
     },
     {
@@ -667,8 +667,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_action_queue_async_132',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70AB],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70AB, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3490_action_queue_async_132_SUBSCRIPT_start_loop_n_times_0',
@@ -711,8 +711,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3490_set_action_script_sync_135',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AB, 173]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70AB, True, 173]
     },
     {
         "identifier": 'EVENT_3490_summon_to_level_136',

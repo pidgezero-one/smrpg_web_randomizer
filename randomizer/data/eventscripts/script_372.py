@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_async_3_SUBSCRIPT_pause_0',
@@ -90,13 +90,13 @@ script = [
     },
     {
         "identifier": 'EVENT_372_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 103]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 103]
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_8_SUBSCRIPT_pause_0',
@@ -130,13 +130,13 @@ script = [
     },
     {
         "identifier": 'EVENT_372_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 103]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 103]
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_15',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_15_SUBSCRIPT_pause_0',
@@ -170,8 +170,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_21',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_21_SUBSCRIPT_set_animation_speed_0',
@@ -296,8 +296,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_22',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_22_SUBSCRIPT_clear_solidity_bits_0',
@@ -412,8 +412,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_23',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_23_SUBSCRIPT_pause_0',
@@ -446,8 +446,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_25',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_25_SUBSCRIPT_face_southwest_0',
@@ -457,8 +457,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_26',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_26_SUBSCRIPT_face_southwest_0',
@@ -468,8 +468,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_27',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_27_SUBSCRIPT_face_southwest_0',
@@ -479,8 +479,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_sync_28',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, True],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_sync_28_SUBSCRIPT_face_southwest_0',
@@ -499,33 +499,33 @@ script = [
     },
     {
         "identifier": 'EVENT_372_set_action_script_sync_31',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 102]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 102]
     },
     {
         "identifier": 'EVENT_372_set_action_script_sync_32',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 101]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 101]
     },
     {
         "identifier": 'EVENT_372_set_action_script_sync_33',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 102]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 102]
     },
     {
         "identifier": 'EVENT_372_set_action_script_sync_34',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 101]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 101]
     },
     {
         "identifier": 'EVENT_372_set_action_script_sync_35',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 102]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_6, True, 102]
     },
     {
         "identifier": 'EVENT_372_set_action_script_sync_36',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 101]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 101]
     },
     {
         "identifier": 'EVENT_372_pause_37',
@@ -534,8 +534,8 @@ script = [
     },
     {
         "identifier": 'EVENT_372_action_queue_async_38',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_372_action_queue_async_38_SUBSCRIPT_walk_1_step_northeast_0',

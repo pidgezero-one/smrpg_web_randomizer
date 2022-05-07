@@ -31,7 +31,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1706_set_5',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 22]
     },
     {
@@ -61,8 +61,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1706_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AB, 471]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70AB, True, 471]
     },
     {
         "identifier": 'EVENT_1706_inc_12',
@@ -90,7 +90,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1706_set_17',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 22]
     },
     {
@@ -115,8 +115,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1706_set_action_script_sync_22',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AB, 474]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70AB, True, 474]
     },
     {
         "identifier": 'EVENT_1706_inc_23',

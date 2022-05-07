@@ -39,27 +39,27 @@ script = [
     },
     {
         "identifier": 'ACTION_859_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [4, 'ACTION_859_jmp_if_var_equals_byte_19']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 4, 'ACTION_859_jmp_if_var_equals_const_19']
     },
     {
         "identifier": 'ACTION_859_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [3, 'ACTION_859_jmp_if_var_equals_byte_19']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 3, 'ACTION_859_jmp_if_var_equals_const_19']
     },
     {
         "identifier": 'ACTION_859_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_859_jmp_if_var_equals_byte_19']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_859_jmp_if_var_equals_const_19']
     },
     {
         "identifier": 'ACTION_859_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_859_jmp_if_var_equals_byte_19']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_859_jmp_if_var_equals_const_19']
     },
     {
-        "identifier": 'ACTION_859_jmp_if_var_equals_byte_11',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_859_jmp_if_var_equals_const_11',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70c2, 16, 'ACTION_859_pause_0']
     },
     {
@@ -98,14 +98,14 @@ script = [
         "args": ['ACTION_859_pause_0']
     },
     {
-        "identifier": 'ACTION_859_jmp_if_var_equals_byte_19',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_859_jmp_if_var_equals_const_19',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70c2, 0, 'ACTION_859_pause_0']
     },
     {
         "identifier": 'ACTION_859_dec_20',
         "command": 'dec',
-        "args": [0x70c2]
+        'args': [0x70c2, 1],
     },
     {
         "identifier": 'ACTION_859_set_sprite_sequence_21',

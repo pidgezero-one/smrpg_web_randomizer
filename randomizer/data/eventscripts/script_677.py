@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_677_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_677_action_queue_async_0_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -19,8 +19,8 @@ script = [
     },
     {
         "identifier": 'EVENT_677_action_queue_async_01',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_677_action_queue_async_01_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_677_action_queue_async_02',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, False],
         "subscript": [
             {
                 "identifier": 'EVENT_677_action_queue_async_02_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_677_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_677_action_queue_async_2_SUBSCRIPT_transfer_xyzf_pixels_0',

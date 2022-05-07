@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3703_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [498, 'EVENT_3703_fade_in_from_black_async_7']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 498, 'EVENT_3703_fade_in_from_black_async_7']
     },
     {
         "identifier": 'EVENT_3703_jmp_if_object_not_in_level_2',
@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3703_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3703_action_queue_sync_3_SUBSCRIPT_set_priority_0',

@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_618_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_618_action_queue_async_4_SUBSCRIPT_face_northeast_0',
@@ -38,8 +38,8 @@ script = [
     },
     {
         "identifier": 'EVENT_618_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_5, 636]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, False, 636]
     },
     {
         "identifier": 'EVENT_618_pause_6',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_618_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_618_action_queue_async_7_SUBSCRIPT_face_south_0',
@@ -64,8 +64,8 @@ script = [
     },
     {
         "identifier": 'EVENT_618_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_618_action_queue_async_9_SUBSCRIPT_face_northwest_0',

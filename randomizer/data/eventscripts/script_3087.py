@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3087_jmp_if_7000_equals_short_284',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_3087_set_298']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_3087_set_298']
     },
     {
         "identifier": 'EVENT_3087_store_7000_item_quantity_to_70A7_283_',
@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3087_jmp_if_7000_equals_short_287',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_3087_set_294']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_3087_set_294']
     },
     {
         "identifier": 'EVENT_3087_store_7000_item_quantity_to_70A7_283__',
@@ -32,12 +32,12 @@ script = [
     },
     {
         "identifier": 'EVENT_3087_jmp_if_7000_equals_short_287_',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_3087_set_298___']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_3087_set_298___']
     },
     {
         "identifier": 'EVENT_3087_set_291',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 145]
     },
     {
@@ -47,7 +47,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3087_set_298___',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 136]
     },
     {
@@ -66,7 +66,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3087_set_294',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 136]
     },
     {
@@ -81,7 +81,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3087_set_298',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 143]
     },
     {

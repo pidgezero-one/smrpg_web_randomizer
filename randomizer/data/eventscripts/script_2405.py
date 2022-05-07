@@ -92,8 +92,8 @@ script = [
     },
     {
         "identifier": "EVENT_2405_action_queue_sync_9",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_9],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": "EVENT_2405_action_queue_sync_9_SUBSCRIPT_set_animation_speed_0",
@@ -118,8 +118,8 @@ script = [
     },
     {
         "identifier": "EVENT_2405_action_queue_sync_10",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_12],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_12, True],
         "subscript": [
             {
                 "identifier": "EVENT_2405_action_queue_sync_10_SUBSCRIPT_shift_west_pixels_0",
@@ -130,8 +130,8 @@ script = [
     },
     {
         "identifier": "EVENT_2405_action_queue_sync_11",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_13],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_13, True],
         "subscript": [
             {
                 "identifier": "EVENT_2405_action_queue_sync_11_SUBSCRIPT_shift_east_pixels_0",
@@ -142,8 +142,8 @@ script = [
     },
     {
         "identifier": "EVENT_2405_action_queue_sync_12",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_14],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_14, True],
         "subscript": [
             {
                 "identifier": "EVENT_2405_action_queue_sync_12_SUBSCRIPT_shift_west_pixels_0",
@@ -155,8 +155,8 @@ script = [
     {"identifier": "EVENT_2405_freeze_camera_13", "command": "freeze_camera"},
     {
         "identifier": "EVENT_2405_action_queue_async_14",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2405_action_queue_async_14_SUBSCRIPT_shift_to_xy_coords_0",
@@ -197,8 +197,8 @@ script = [
     {"identifier": "EVENT_2405_pause_20", "command": "pause", "args": [16]},
     {
         "identifier": "EVENT_2405_action_queue_async_21",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2405_action_queue_async_21_SUBSCRIPT_set_animation_speed_0",
@@ -226,8 +226,8 @@ script = [
     },
     {
         "identifier": "EVENT_2405_set_action_script_async_26",
-        "command": "set_action_script_async",
-        "args": [AreaObjects.MARIO, 395],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, False, 395]
     },
     {"identifier": "EVENT_2405_unfreeze_camera_27", "command": "unfreeze_camera"},
     {"identifier": "EVENT_2405_ret_28", "command": "ret"},

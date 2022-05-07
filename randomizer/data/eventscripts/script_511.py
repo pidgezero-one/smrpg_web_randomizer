@@ -11,13 +11,13 @@ script = [
     },
     {
         "identifier": 'EVENT_511_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [128, 'EVENT_511_action_queue_sync_7']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 128, 'EVENT_511_action_queue_sync_7']
     },
     {
         "identifier": 'EVENT_511_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_511_action_queue_sync_2_SUBSCRIPT_set_animation_speed_0',
@@ -51,8 +51,8 @@ script = [
     },
     {
         "identifier": 'EVENT_511_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_511_action_queue_sync_7_SUBSCRIPT_set_animation_speed_0',

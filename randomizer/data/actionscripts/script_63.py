@@ -10,8 +10,8 @@ script = [
     },
     {
         "identifier": 'ACTION_63_jmp_if_700C_not_equals_short_1',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [13, 'ACTION_63_sequence_looping_on_3']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x700C, 13, 'ACTION_63_sequence_looping_on_3']
     },
     {
         "identifier": 'ACTION_63_set_vram_priority_2',
@@ -47,12 +47,12 @@ script = [
     },
     {
         "identifier": 'ACTION_63_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [457, 'ACTION_63_play_sound_11']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 457, 'ACTION_63_play_sound_11']
     },
     {
-        "identifier": 'ACTION_63_jmp_if_var_equals_byte_10',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_63_jmp_if_var_equals_const_10',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70df, 4, 'ACTION_63_play_sound_17']
     },
     {

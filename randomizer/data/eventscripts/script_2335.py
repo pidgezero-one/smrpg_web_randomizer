@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2335_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2335_action_queue_async_2_SUBSCRIPT_set_sprite_sequence_0',
@@ -109,8 +109,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2335_jmp_if_7000_equals_short_19',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [17, 'EVENT_2335_run_background_event_23']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 17, 'EVENT_2335_run_background_event_23']
     },
     {
         "identifier": 'EVENT_2335_run_background_event_20',

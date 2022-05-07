@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3123_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 56]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 56]
     },
     {
         "identifier": 'EVENT_3123_play_sound_3',
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3123_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3123_action_queue_sync_4_SUBSCRIPT_jump_to_height_silent_0',

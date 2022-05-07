@@ -11,23 +11,23 @@ script = [
     },
     {
         "identifier": "EVENT_186_room_154_jump___",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [154, "EVENT_186_room_154_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 154, "EVENT_186_room_154_logic"]
     },
     {
         "identifier": "EVENT_186_room_205_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [205, "EVENT_186_room_205_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 205, "EVENT_186_room_205_logic"]
     },
     {
         "identifier": "EVENT_186_room_232_jump_",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [232, "EVENT_186_room_232_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 232, "EVENT_186_room_232_logic"]
     },
     {
         "identifier": "EVENT_186_room_284_jump__",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [284, "EVENT_186_room_284_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 284, "EVENT_186_room_284_logic"]
     },
     {
         "identifier": 'EVENT_186_ret_34',

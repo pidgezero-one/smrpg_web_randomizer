@@ -33,7 +33,7 @@ script = [
     },
     {
         "identifier": 'ACTION_772_add_6',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {
@@ -61,8 +61,8 @@ script = [
         "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_772_set_random_12',
-        "command": 'set_random',
+        "identifier": 'ACTION_772_set_var_to_random_12',
+        "command": 'set_var_to_random',
         "args": [0x700c, 12]
     },
     {
@@ -102,6 +102,6 @@ script = [
     {
         "identifier": 'ACTION_772_jmp_20',
         "command": 'jmp',
-        "args": ['ACTION_772_set_random_12']
+        "args": ['ACTION_772_set_var_to_random_12']
     }
 ]

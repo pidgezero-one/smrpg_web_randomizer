@@ -59,8 +59,8 @@ script = [
     {"identifier": "EVENT_2401_freeze_camera_2", "command": "freeze_camera"},
     {
         "identifier": "EVENT_2401_action_queue_async_3",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_2401_action_queue_async_3_SUBSCRIPT_shift_to_xy_coords_0",
@@ -91,8 +91,8 @@ script = [
     },
     {
         "identifier": "EVENT_2401_action_queue_async_4",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": "EVENT_2401_action_queue_async_4_SUBSCRIPT_set_object_memory_bits_0",

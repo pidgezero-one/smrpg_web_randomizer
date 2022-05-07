@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_435_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_435_action_queue_sync_1_SUBSCRIPT_transfer_to_xyzf_0',
@@ -33,8 +33,8 @@ script = [
     },
     {
         "identifier": 'EVENT_435_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_435_action_queue_sync_3_SUBSCRIPT_transfer_to_xyzf_0',
@@ -54,8 +54,8 @@ script = [
     },
     {
         "identifier": 'EVENT_435_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_435_action_queue_sync_5_SUBSCRIPT_visibility_off_0',
@@ -70,8 +70,8 @@ script = [
     },
     {
         "identifier": 'EVENT_435_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_435_action_queue_sync_7_SUBSCRIPT_visibility_off_0',
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": 'EVENT_435_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_435_action_queue_sync_9_SUBSCRIPT_visibility_off_0',
@@ -102,8 +102,8 @@ script = [
     },
     {
         "identifier": 'EVENT_435_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_435_action_queue_sync_11_SUBSCRIPT_visibility_off_0',

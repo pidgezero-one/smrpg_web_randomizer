@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1767_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.LAYER_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.LAYER_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1767_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',
@@ -54,8 +54,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1767_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1767_action_queue_async_6_SUBSCRIPT_transfer_xyzf_steps_0',
@@ -133,8 +133,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1767_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1767_action_queue_sync_7_SUBSCRIPT_pause_0',
@@ -148,8 +148,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_1767_action_queue_sync_7_SUBSCRIPT_jmp_if_700C_equals_short_2',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [0, 'EVENT_1767_ret_8']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 0, 'EVENT_1767_ret_8']
             },
             {
                 "identifier": 'EVENT_1767_action_queue_sync_7_SUBSCRIPT_jump_to_height_3',

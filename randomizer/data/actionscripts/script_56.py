@@ -10,13 +10,13 @@ script = [
     },
     {
         "identifier": 'ACTION_56_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [302, 'ACTION_56_set_vram_priority_9']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 302, 'ACTION_56_set_vram_priority_9']
     },
     {
         "identifier": 'ACTION_56_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [303, 'ACTION_56_set_vram_priority_9']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 303, 'ACTION_56_set_vram_priority_9']
     },
     {
         "identifier": 'ACTION_56_pause_3',

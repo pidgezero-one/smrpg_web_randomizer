@@ -26,7 +26,7 @@ script = [
     },
     {
         "identifier": 'ACTION_225_set_4',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 65120]
     },
     {
@@ -46,7 +46,7 @@ script = [
     },
     {
         "identifier": 'ACTION_225_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 64800]
     },
     {
@@ -66,7 +66,7 @@ script = [
     },
     {
         "identifier": 'ACTION_225_set_12',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 64512]
     },
     {
@@ -86,7 +86,7 @@ script = [
     },
     {
         "identifier": 'ACTION_225_set_16',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 64000]
     },
     {
@@ -106,7 +106,7 @@ script = [
     },
     {
         "identifier": 'ACTION_225_set_20',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 63744]
     },
     {
@@ -126,7 +126,7 @@ script = [
     },
     {
         "identifier": 'ACTION_225_set_24',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 63488]
     },
     {
@@ -146,7 +146,7 @@ script = [
     },
     {
         "identifier": 'ACTION_225_set_28',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 64256]
     },
     {

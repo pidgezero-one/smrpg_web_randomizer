@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3135_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701c, 0x012c]
     },
     {
@@ -21,8 +21,8 @@ script = [
         "args": [0x701c]
     },
     {
-        "identifier": 'EVENT_3135_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3135_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70df, 14, 'EVENT_3135_jmp_if_bit_set_7']
     },
     {
@@ -32,7 +32,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3135_set_5',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 14]
     },
     {
@@ -61,8 +61,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3135_jmp_if_7000_equals_short_11',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [62, 'EVENT_3135_run_event_as_subroutine_15']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 62, 'EVENT_3135_run_event_as_subroutine_15']
     },
     {
         "identifier": 'EVENT_3135_priority_set_12',

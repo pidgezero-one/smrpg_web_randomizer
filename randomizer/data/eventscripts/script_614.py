@@ -22,7 +22,7 @@ script = [
     },
     {
         "identifier": 'EVENT_614_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x000a]
     },
     {
@@ -42,7 +42,7 @@ script = [
     },
     {
         "identifier": 'EVENT_614_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 10]
     },
     {
@@ -96,8 +96,8 @@ script = [
     },
     {
         "identifier": 'EVENT_614_action_queue_async_19',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_614_action_queue_async_19_SUBSCRIPT_set_animation_speed_0',
@@ -131,8 +131,8 @@ script = [
     },
     {
         "identifier": 'EVENT_614_action_queue_async_21',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_614_action_queue_async_21_SUBSCRIPT_face_south_0',
@@ -176,8 +176,8 @@ script = [
     },
     {
         "identifier": 'EVENT_614_action_queue_async_29',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_614_action_queue_async_29_SUBSCRIPT_set_animation_speed_0',

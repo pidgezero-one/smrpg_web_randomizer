@@ -6,14 +6,14 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1844_set_random_0',
-        "command": 'set_random',
+        "identifier": 'EVENT_1844_set_var_to_random_0',
+        "command": 'set_var_to_random',
         "args": [0x7000, 10]
     },
     {
         "identifier": 'EVENT_1844_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1844_pause_3']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1844_pause_3']
     },
     {
         "identifier": 'EVENT_1844_ret_2',
@@ -36,17 +36,17 @@ script = [
     },
     {
         "identifier": 'EVENT_1844_add_short_6',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0400]
     },
     {
         "identifier": 'EVENT_1844_set_short_7',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0xcccc]
     },
     {
-        "identifier": 'EVENT_1844_create_packet_event_at_coords_jmp_if_null_8',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
+        "identifier": 'EVENT_1844_create_packet_at_7010_with_event_8',
+        "command": 'create_packet_at_7010_with_event',
         "args": [NPCPackets._032_BLUE_CLOUD, 0x0735, 'EVENT_1844_pause_3']
     },
     {

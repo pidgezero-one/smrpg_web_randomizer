@@ -229,7 +229,7 @@ script = [
     },
     {
         "identifier": 'ACTION_34_set_short_49',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0014]
     },
     {
@@ -243,8 +243,8 @@ script = [
     },
     {
         "identifier": 'ACTION_34_dec_short_mem_52',
-        "command": 'dec_short_mem',
-        "args": [0x700c, 0x7024]
+        "command": 'dec_short_mem_from_700C'
+        'args': [0x7024]
     },
     {
         "identifier": 'ACTION_34_mem_700C_and_const_53',
@@ -253,8 +253,8 @@ script = [
     },
     {
         "identifier": 'ACTION_34_jmp_if_700C_not_equals_short_54',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [0, 'ACTION_34_load_mem_60']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x700C, 0, 'ACTION_34_load_mem_60']
     },
     {
         "identifier": 'ACTION_34_db_55',
@@ -263,12 +263,12 @@ script = [
     },
     {
         "identifier": 'ACTION_34_add_short_56',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x701a, 0x0080]
     },
     {
         "identifier": 'ACTION_34_add_short_57',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x0040]
     },
     {
@@ -328,8 +328,8 @@ script = [
     },
     {
         "identifier": 'ACTION_34_mem_compare_val_70',
-        "command": 'mem_compare_val',
-        "args": [4]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 4]
     },
     {
         "identifier": 'ACTION_34_jmp_if_comparison_result_is_lesser_71',

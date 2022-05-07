@@ -6,8 +6,8 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1972_set_random_10',
-        "command": 'set_random',
+        "identifier": 'EVENT_1972_set_var_to_random_10',
+        "command": 'set_var_to_random',
         "args": [0x7000, 10000]
     },
     {

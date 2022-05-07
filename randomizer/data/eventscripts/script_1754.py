@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1754_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 0]
     },
     {
@@ -42,13 +42,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1754_set_7000_to_7000_short_mem_1',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_1754_jmp_if_7000_not_equals_short_2',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [21, 'EVENT_1753_run_event_as_subroutine_3']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 21, 'EVENT_1753_run_event_as_subroutine_3']
     },
     {
         "identifier": 'EVENT_1754_run_event_as_subroutine_3',
@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1754_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1754_action_queue_async_7_SUBSCRIPT_jump_to_height_silent_0',
@@ -98,13 +98,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1754_set_7000_to_7000_short_mem_11',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_1754_jmp_if_7000_equals_short_12',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [21, 'EVENT_1753_jmp_if_bit_set_11']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 21, 'EVENT_1753_jmp_if_bit_set_11']
     },
     {
         "identifier": 'EVENT_1754_jmp_13',

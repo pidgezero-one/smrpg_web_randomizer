@@ -47,8 +47,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_1674_set_action_script_sync_0",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MARIO, 161],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, True, 161]
     },
     {
         "identifier": "EVENT_1674_play_sound_1",
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": "EVENT_1674_start_embedded_action_script_async_F1_2",
-        "command": "start_embedded_action_script_async_F1",
-        "args": [AreaObjects.MARIO],
+        "command": "start_embedded_action_script",
+        "args": [AreaObjects.MARIO, False, 0xF1],
         "subscript": [
             {
                 "identifier": "EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_floating_off_0",
@@ -127,8 +127,8 @@ script = [
     },
     {
         "identifier": "EVENT_1674_action_queue_sync_9",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_1674_action_queue_sync_9_SUBSCRIPT_jump_to_height_silent_0",

@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": "EVENT_1190_room_190_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [190, "EVENT_1190_room_190_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 190, "EVENT_1190_room_190_logic"]
     },
     {
         "identifier": "EVENT_1190_cancel",

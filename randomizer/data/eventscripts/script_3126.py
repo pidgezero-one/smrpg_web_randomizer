@@ -57,18 +57,18 @@ script = [
     },
     {
         "identifier": "EVENT_3126_set_7000_to_70A0_short_mem_1",
-        "command": "set_7000_to_70A0_short_mem",
-        "args": [0x70A8],
+        "command": "copy_var_to_var",
+        "args": [0x70A8, 0x7000]
     },
     {
         "identifier": "EVENT_3126_set_70A0_short_mem_to_7000_2",
-        "command": "set_70A0_short_mem_to_7000",
-        "args": [0x70B4],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x70B4]
     },
     {
         "identifier": "EVENT_3126_action_queue_sync_3",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": "EVENT_3126_action_queue_sync_3_SUBSCRIPT_object_memory_set_bit_0",
@@ -122,14 +122,14 @@ script = [
     },
     {
         "identifier": "EVENT_3126_set_7000_to_7000_short_mem_5",
-        "command": "set_7000_to_7000_short_mem",
-        "args": [0x7014],
+        "command": "copy_var_to_var",
+        "args": [0x7014, 0x7000]
     },
-    {"identifier": "EVENT_3126_add_6", "command": "add", "args": [0x7000, 608]},
+    {"identifier": "EVENT_3126_add_6", "command": "add_const_to_var", "args": [0x7000, 608]},
     {
         "identifier": "EVENT_3126_set_7000_short_mem_to_7000_7",
-        "command": "set_7000_short_mem_to_7000",
-        "args": [0x7014],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x7014]
     },
     {
         "identifier": "EVENT_3126_clear_bit_8",
@@ -142,8 +142,8 @@ script = [
         "args": [Sounds._014_FLOWER, 6],
     },
     {
-        "identifier": "EVENT_3126_create_packet_at_7010_coords_jmp_if_null_10",
-        "command": "create_packet_at_7010_coords_jmp_if_null",
+        "identifier": "EVENT_3126_create_packet_at_7010_10",
+        "command": "create_packet_at_7010",
         "args": [NPCPackets._004_MONSTER_FACE, "EVENT_3126_pause_11"],
     },
     {"identifier": "EVENT_3126_pause_11", "command": "pause", "args": [8]},
@@ -155,7 +155,7 @@ script = [
     },
     {
         "identifier": "EVENT_3126_start_battle_18",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 513],
     },
     {
@@ -175,8 +175,8 @@ script = [
     {"identifier": "EVENT_3126_set_bit_24", "command": "set_bit", "args": [0x7064, 6]},
     {
         "identifier": "EVENT_3126_action_queue_sync_25",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": "EVENT_3126_action_queue_sync_25_SUBSCRIPT_db_0",
@@ -258,17 +258,17 @@ script = [
     {"identifier": "EVENT_3126_set_bit_4", "command": "set_bit", "args": [0x7057, 7]},
     {
         "identifier": "EVENT_3126_set_action_script_sync_5",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MEM_70A8, 15],
+        "command": "set_action_script",
+        "args": [AreaObjects.MEM_70A8, True, 15]
     },
     {
         "identifier": "EVENT_3126_special_val_2",  # hidon chest
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 513],
     },
     {
         "identifier": "EVENT_3126_special_val_2_--",  # hidon chest
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 513],
     },
     {
@@ -278,14 +278,14 @@ script = [
     },
     {
         "identifier": "EVENT_3126_special_val_2_-",  # hidon chest
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 513],
     },
     {"identifier": "EVENT_3126_star", "command": "jmp_to_event", "args": [170]},
     {"identifier": "EVENT_3126_ret_10", "command": "ret"},
     {
         "identifier": "EVENT_3126_special_val_2_",  # hidon chest
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 513],
     },
     {

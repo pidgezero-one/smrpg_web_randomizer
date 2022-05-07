@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3832_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 32]
     },
     {
@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3832_jmp_if_7000_equals_short_12',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [492, 'EVENT_3832_apply_tile_mod_17']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 492, 'EVENT_3832_apply_tile_mod_17']
     },
     {
         "identifier": 'EVENT_3832_apply_tile_mod_15',
@@ -76,8 +76,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3832_set_action_script_sync_18',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 14]
     },
     {
         "identifier": 'EVENT_3832_ret_19',

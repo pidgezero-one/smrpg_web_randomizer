@@ -23,7 +23,7 @@ script = [
     },
     {
         "identifier": 'ACTION_819_add_4',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65516]
     },
     {
@@ -61,12 +61,12 @@ script = [
     },
     {
         "identifier": 'ACTION_819_add_12',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65515]
     },
     {
         "identifier": 'ACTION_819_add_13',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 25]
     },
     {
@@ -75,7 +75,7 @@ script = [
     },
     {
         "identifier": 'ACTION_819_add_15',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 4]
     },
     {
@@ -93,12 +93,12 @@ script = [
     },
     {
         "identifier": 'ACTION_819_add_19',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65515]
     },
     {
         "identifier": 'ACTION_819_add_20',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 25]
     },
     {
@@ -107,7 +107,7 @@ script = [
     },
     {
         "identifier": 'ACTION_819_add_22',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 4]
     },
     {

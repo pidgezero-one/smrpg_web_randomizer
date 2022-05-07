@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_66_jmp_if_7000_not_equals_short_2',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [4, 'EVENT_66_end_all_11']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 4, 'EVENT_66_end_all_11']
     },
     {
         "identifier": 'EVENT_66_set_7000_to_pressed_button_3',
@@ -25,12 +25,12 @@ script = [
     },
     {
         "identifier": 'EVENT_66_jmp_if_7000_not_equals_short_4',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [4, 'EVENT_66_end_all_11']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 4, 'EVENT_66_end_all_11']
     },
     {
         "identifier": 'EVENT_66_mem_compare_5',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7016, 256]
     },
     {
@@ -39,8 +39,8 @@ script = [
         "args": ['EVENT_66_set_action_script_async_9']
     },
     {
-        "identifier": 'EVENT_66_set_7000_short_mem_to_7000_short_mem_7',
-        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "identifier": 'EVENT_66_copy_var_to_var_7',
+        "command": 'copy_var_to_var',
         "args": [0x7016, 0x7018]
     },
     {
@@ -50,8 +50,8 @@ script = [
     },
     {
         "identifier": 'EVENT_66_set_action_script_async_9',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 11]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 11]
     },
     {
         "identifier": 'EVENT_66_ret_10',

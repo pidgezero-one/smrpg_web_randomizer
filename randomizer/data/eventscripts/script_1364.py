@@ -17,7 +17,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1364_set_short_98',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0000]
     },
     {
@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1364_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1364_action_queue_sync_8_SUBSCRIPT_set_animation_speed_0',
@@ -53,8 +53,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1364_action_queue_async_9_SUBSCRIPT_shift_to_xy_coords_0',
@@ -80,8 +80,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_24',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_reset_properties_0',
@@ -248,8 +248,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_34',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1364_action_queue_async_34_SUBSCRIPT_shift_northwest_pixels_0',

@@ -111,8 +111,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_async_19',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_19_SUBSCRIPT_transfer_to_xyzf_0',
@@ -145,8 +145,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_async_24',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_24_SUBSCRIPT_transfer_to_xyzf_0',
@@ -166,8 +166,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_async_26',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_26_SUBSCRIPT_transfer_to_xyzf_0',
@@ -191,8 +191,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_async_29',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_29_SUBSCRIPT_walk_1_step_southwest_0',
@@ -207,8 +207,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_7000_to_70A0_short_mem_31',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x70ac, 0x7000]
     },
     {
         "identifier": 'EVENT_611_inc_32',
@@ -227,17 +227,17 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_7000_short_mem_to_7000_35',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7024]
     },
     {
         "identifier": 'EVENT_611_dec_short_36',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x7024]
     },
     {
         "identifier": 'EVENT_611_set_short_37',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0000]
     },
     {
@@ -251,8 +251,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_mem_compare_val_40',
-        "command": 'mem_compare_val',
-        "args": [100]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 100]
     },
     {
         "identifier": 'EVENT_611_jmp_if_comparison_result_is_lesser_41',
@@ -261,7 +261,7 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_42',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 100]
     },
     {
@@ -270,7 +270,7 @@ script = [
     },
     {
         "identifier": 'EVENT_611_inc_short_44',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7026]
     },
     {
@@ -289,8 +289,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_sync_48',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_sync_48_SUBSCRIPT_set_sprite_sequence_0',
@@ -310,8 +310,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_7000_to_7000_short_mem_49',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_611_run_dialog_50',
@@ -334,17 +334,17 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_action_script_sync_54',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 323]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 323]
     },
     {
         "identifier": 'EVENT_611_set_action_script_sync_55',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 891]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 891]
     },
     {
         "identifier": 'EVENT_611_set_56',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 0]
     },
     {
@@ -368,23 +368,23 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_7000_to_7000_short_mem_61',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_611_dec_short_mem_62',
-        "command": 'dec_short_mem',
-        "args": [0x7000, 0x7026]
+        "command": 'dec_var_from_7000',
+        'args': [0x7026]
     },
     {
         "identifier": 'EVENT_611_set_70A0_short_mem_to_7000_63',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ac]
     },
     {
         "identifier": 'EVENT_611_action_queue_async_64',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_64_SUBSCRIPT_set_sprite_sequence_0',
@@ -395,8 +395,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_action_script_sync_65',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 322]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 322]
     },
     {
         "identifier": 'EVENT_611_fade_out_to_black_sync_duration_66',
@@ -414,8 +414,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_sync_69',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_sync_69_SUBSCRIPT_reset_properties_0',
@@ -434,8 +434,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_sync_70',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_sync_70_SUBSCRIPT_transfer_to_xyzf_0',
@@ -494,8 +494,8 @@ script = [
         "command": 'store_frog_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_611_dec_frog_coins_7000_81',
-        "command": 'dec_frog_coins_7000'
+        "identifier": 'EVENT_611_dec_7000_from_frog_coins_81',
+        "command": 'dec_7000_from_frog_coins'
     },
     {
         "identifier": 'EVENT_611_play_sound_82',
@@ -534,8 +534,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_async_89',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_89_SUBSCRIPT_set_sprite_sequence_0',
@@ -546,7 +546,7 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_90',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 200]
     },
     {
@@ -556,8 +556,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_sync_92',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_sync_92_SUBSCRIPT_transfer_to_xyzf_0',
@@ -577,28 +577,28 @@ script = [
     },
     {
         "identifier": 'EVENT_611_set_7000_to_70A0_short_mem_94',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70b8]
+        "command": 'copy_var_to_var',
+        'args': [0x70b8, 0x7000]
     },
     {
         "identifier": 'EVENT_611_jmp_if_7000_equals_short_95',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_611_jmp_if_bit_set_104']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_611_jmp_if_bit_set_104']
     },
     {
         "identifier": 'EVENT_611_jmp_if_7000_equals_short_96',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_611_action_queue_sync_100']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_611_action_queue_sync_100']
     },
     {
         "identifier": 'EVENT_611_jmp_if_7000_equals_short_97',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_611_action_queue_async_103']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_611_action_queue_async_103']
     },
     {
         "identifier": 'EVENT_611_action_queue_async_98',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_98_SUBSCRIPT_transfer_to_xyzf_0',
@@ -618,8 +618,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_sync_100',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_sync_100_SUBSCRIPT_transfer_to_xyzf_0',
@@ -634,8 +634,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_async_101',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_101_SUBSCRIPT_transfer_to_xyzf_0',
@@ -655,8 +655,8 @@ script = [
     },
     {
         "identifier": 'EVENT_611_action_queue_async_103',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, False],
         "subscript": [
             {
                 "identifier": 'EVENT_611_action_queue_async_103_SUBSCRIPT_transfer_to_xyzf_0',

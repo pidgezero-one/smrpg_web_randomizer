@@ -10,8 +10,8 @@ script = [
     },
     {
         "identifier": 'ACTION_817_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [457, 'ACTION_817_set_sprite_sequence_6']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 457, 'ACTION_817_set_sprite_sequence_6']
     },
     {
         "identifier": 'ACTION_817_set_priority_2',

@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_941_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_0, 1004]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, False, 1004]
     },
     {
         "identifier": 'EVENT_941_pause_6',

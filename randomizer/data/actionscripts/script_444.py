@@ -10,7 +10,7 @@ script = [
         "args": [0x0d, [6]]
     },
     {
-        "identifier": 'ACTION_444_jump_to_script_2',
+        "identifier": 'ACTION_444_jmp_to_script_2',
         "command": 'ret'
     }
 ]

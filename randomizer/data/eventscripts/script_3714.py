@@ -50,8 +50,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3714_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 257]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 257]
     },
     {
         "identifier": 'EVENT_3714_fade_in_from_black_async_10',
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3714_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 881]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 881]
     },
     {
         "identifier": 'EVENT_3714_fade_in_from_black_async_16',

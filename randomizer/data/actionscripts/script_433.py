@@ -53,8 +53,8 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_433_mem_compare_address_10',
-        "command": 'mem_compare_address',
+        "identifier": 'ACTION_433_compare_700C_to_var_10',
+        "command": 'compare_700C_to_var',
         "args": [0x7034]
     },
     {

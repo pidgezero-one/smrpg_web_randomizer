@@ -9,28 +9,28 @@ script = [
         "command": 'visibility_on'
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_byte_1',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_1',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 0, 'ACTION_939_set_sprite_sequence_6']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_byte_2',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_2',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 1, 'ACTION_939_set_sprite_sequence_44']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 2, 'ACTION_939_set_sprite_sequence_57']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_byte_4',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_4',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 3, 'ACTION_939_inc_palette_row_by_70']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_byte_5',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_5',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 4, 'ACTION_939_inc_palette_row_by_86']
     },
     {
@@ -44,18 +44,18 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_8',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 0, 'ACTION_939_set_sprite_sequence_6']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_9',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 1, 'ACTION_939_set_sprite_sequence_12']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_10',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 2, 'ACTION_939_set_sprite_sequence_14']
     },
     {
@@ -118,33 +118,33 @@ script = [
     },
     {
         "identifier": 'ACTION_939_add_23',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65515]
     },
     {
         "identifier": 'ACTION_939_jmp_if_700C_equals_short_24',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_939_set_object_memory_bits_29']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_939_set_object_memory_bits_29']
     },
     {
         "identifier": 'ACTION_939_jmp_if_700C_equals_short_25',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_939_set_object_memory_bits_31']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_939_set_object_memory_bits_31']
     },
     {
         "identifier": 'ACTION_939_jmp_if_700C_equals_short_26',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [3, 'ACTION_939_set_object_memory_bits_33']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 3, 'ACTION_939_set_object_memory_bits_33']
     },
     {
         "identifier": 'ACTION_939_jmp_if_700C_equals_short_27',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [4, 'ACTION_939_set_object_memory_bits_35']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 4, 'ACTION_939_set_object_memory_bits_35']
     },
     {
         "identifier": 'ACTION_939_jmp_if_700C_equals_short_28',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [5, 'ACTION_939_set_object_memory_bits_37']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 5, 'ACTION_939_set_object_memory_bits_37']
     },
     {
         "identifier": 'ACTION_939_set_object_memory_bits_29',
@@ -202,8 +202,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_40',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_40',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 2, 'ACTION_939_pause_39']
     },
     {
@@ -235,18 +235,18 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_47',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_47',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7026, 0, 'ACTION_939_set_sprite_sequence_51']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_48',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_48',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7026, 1, 'ACTION_939_set_sprite_sequence_53']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_49',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_49',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7026, 2, 'ACTION_939_set_sprite_sequence_55']
     },
     {
@@ -300,18 +300,18 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_60',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_60',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7028, 0, 'ACTION_939_set_sprite_sequence_64']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_61',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_61',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7028, 1, 'ACTION_939_set_sprite_sequence_66']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_62',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_62',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7028, 2, 'ACTION_939_set_sprite_sequence_68']
     },
     {
@@ -370,18 +370,18 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_74',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_74',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702a, 0, 'ACTION_939_set_sprite_sequence_78']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_75',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_75',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702a, 1, 'ACTION_939_set_sprite_sequence_80']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_76',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_76',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702a, 2, 'ACTION_939_set_sprite_sequence_82']
     },
     {
@@ -449,18 +449,18 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_90',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_90',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702c, 0, 'ACTION_939_set_sprite_sequence_94']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_91',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_91',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702c, 1, 'ACTION_939_set_sprite_sequence_96']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_92',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'ACTION_939_jmp_if_var_equals_const_92',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x702c, 2, 'ACTION_939_set_sprite_sequence_98']
     },
     {

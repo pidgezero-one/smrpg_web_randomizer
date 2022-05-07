@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_604_jmp_if_7000_not_equals_short_1',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [0, 'EVENT_604_run_dialog_5']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 0, 'EVENT_604_run_dialog_5']
     },
     {
         "identifier": 'EVENT_604_jmp_if_bit_set_2',
@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'EVENT_604_set_action_script_async_7',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_604_pause_8',
@@ -90,8 +90,8 @@ script = [
     },
     {
         "identifier": 'EVENT_604_set_action_script_async_17',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_604_pause_18',
@@ -110,8 +110,8 @@ script = [
     },
     {
         "identifier": 'EVENT_604_set_action_script_async_21',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_604_pause_22',
@@ -135,8 +135,8 @@ script = [
     },
     {
         "identifier": 'EVENT_604_set_action_script_async_26',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_604_pause_27',
@@ -155,8 +155,8 @@ script = [
     },
     {
         "identifier": 'EVENT_604_set_action_script_async_30',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_604_pause_31',
@@ -180,8 +180,8 @@ script = [
     },
     {
         "identifier": 'EVENT_604_set_action_script_async_35',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_604_pause_36',
@@ -213,8 +213,8 @@ script = [
     },
     {
         "identifier": 'EVENT_604_mem_compare_val_42',
-        "command": 'mem_compare_val',
-        "args": [15]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 15]
     },
     {
         "identifier": 'EVENT_604_jmp_if_comparison_result_is_lesser_43',
@@ -228,7 +228,7 @@ script = [
     },
     {
         "identifier": 'EVENT_604_set_45',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 15]
     },
     {
@@ -237,8 +237,8 @@ script = [
         "args": [Sounds._094_FROG_COIN, 6]
     },
     {
-        "identifier": 'EVENT_604_dec_frog_coins_7000_47',
-        "command": 'dec_frog_coins_7000'
+        "identifier": 'EVENT_604_dec_7000_from_frog_coins_47',
+        "command": 'dec_7000_from_frog_coins'
     },
     {
         "identifier": 'EVENT_604_put_inventory_48',

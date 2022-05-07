@@ -10,13 +10,13 @@ script = [
     },
     {
         "identifier": 'ACTION_943_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [395, 'ACTION_943_set_sprite_sequence_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 395, 'ACTION_943_set_sprite_sequence_23']
     },
     {
         "identifier": 'ACTION_943_jmp_if_700C_not_equals_short_2',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [13, 'ACTION_943_set_sprite_sequence_4']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x700C, 13, 'ACTION_943_set_sprite_sequence_4']
     },
     {
         "identifier": 'ACTION_943_set_vram_priority_3',
@@ -89,8 +89,8 @@ script = [
         "args": [0x7044, 4, 'ACTION_943_visibility_off_21']
     },
     {
-        "identifier": 'ACTION_943_create_packet_at_object_coords_jmp_if_null_17',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_943_create_packet_at_npc_coords_17',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._047_BLUE_FIRE_TRAIL_FOLLOWS_OBJECT, AreaObjects.MARIO, 'ACTION_943_pause_18']
     },
     {
@@ -104,8 +104,8 @@ script = [
         "args": [0x7044, 4, 'ACTION_943_visibility_off_21']
     },
     {
-        "identifier": 'ACTION_943_create_packet_at_object_coords_jmp_if_null_20',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_943_create_packet_at_npc_coords_20',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._047_BLUE_FIRE_TRAIL_FOLLOWS_OBJECT, AreaObjects.MARIO, 'ACTION_943_visibility_off_21']
     },
     {
@@ -127,18 +127,18 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_943_jmp_if_var_equals_byte_25',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_943_jmp_if_var_equals_const_25',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 1, 'ACTION_943_pause_28']
     },
     {
-        "identifier": 'ACTION_943_jmp_if_var_equals_byte_26',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_943_jmp_if_var_equals_const_26',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 2, 'ACTION_943_pause_36']
     },
     {
-        "identifier": 'ACTION_943_jmp_if_var_equals_byte_27',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_943_jmp_if_var_equals_const_27',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 3, 'ACTION_943_set_44']
     },
     {
@@ -152,8 +152,8 @@ script = [
         "args": [0x7043, 0, 'ACTION_943_visibility_off_21']
     },
     {
-        "identifier": 'ACTION_943_create_packet_at_object_coords_jmp_if_null_30',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_943_create_packet_at_npc_coords_30',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._047_BLUE_FIRE_TRAIL_FOLLOWS_OBJECT, AreaObjects.NPC_2, 'ACTION_943_pause_31']
     },
     {
@@ -167,8 +167,8 @@ script = [
         "args": [0x7043, 0, 'ACTION_943_visibility_off_21']
     },
     {
-        "identifier": 'ACTION_943_create_packet_at_object_coords_jmp_if_null_33',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_943_create_packet_at_npc_coords_33',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._047_BLUE_FIRE_TRAIL_FOLLOWS_OBJECT, AreaObjects.NPC_2, 'ACTION_943_visibility_off_34']
     },
     {
@@ -190,8 +190,8 @@ script = [
         "args": [0x7043, 0, 'ACTION_943_visibility_off_21']
     },
     {
-        "identifier": 'ACTION_943_create_packet_at_object_coords_jmp_if_null_38',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_943_create_packet_at_npc_coords_38',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._047_BLUE_FIRE_TRAIL_FOLLOWS_OBJECT, AreaObjects.NPC_3, 'ACTION_943_pause_39']
     },
     {
@@ -205,8 +205,8 @@ script = [
         "args": [0x7043, 0, 'ACTION_943_visibility_off_21']
     },
     {
-        "identifier": 'ACTION_943_create_packet_at_object_coords_jmp_if_null_41',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_943_create_packet_at_npc_coords_41',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._047_BLUE_FIRE_TRAIL_FOLLOWS_OBJECT, AreaObjects.NPC_3, 'ACTION_943_visibility_off_42']
     },
     {
@@ -219,7 +219,7 @@ script = [
     },
     {
         "identifier": 'ACTION_943_set_44',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 0]
     },
     {
@@ -233,8 +233,8 @@ script = [
         "args": [0x7043, 0, 'ACTION_943_visibility_off_21']
     },
     {
-        "identifier": 'ACTION_943_create_packet_at_object_coords_jmp_if_null_47',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_943_create_packet_at_npc_coords_47',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._047_BLUE_FIRE_TRAIL_FOLLOWS_OBJECT, AreaObjects.NPC_4, 'ACTION_943_pause_48']
     },
     {
@@ -248,8 +248,8 @@ script = [
         "args": [0x7043, 0, 'ACTION_943_visibility_off_21']
     },
     {
-        "identifier": 'ACTION_943_create_packet_at_object_coords_jmp_if_null_50',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_943_create_packet_at_npc_coords_50',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._047_BLUE_FIRE_TRAIL_FOLLOWS_OBJECT, AreaObjects.NPC_4, 'ACTION_943_visibility_off_51']
     },
     {

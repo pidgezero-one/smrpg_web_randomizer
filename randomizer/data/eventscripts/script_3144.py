@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3144_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3144_action_queue_sync_0_SUBSCRIPT_reset_properties_0',
@@ -18,17 +18,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3144_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_3144_set_70A0_short_mem_to_7000_2',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70aa]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70aa]
     },
     {
         "identifier": 'EVENT_3144_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 20]
     },
     {

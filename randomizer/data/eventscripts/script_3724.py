@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3724_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 49]
     },
     {
         "identifier": 'EVENT_3724_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3724_action_queue_sync_3_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -29,8 +29,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3724_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3724_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_0',
@@ -50,8 +50,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3724_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3724_action_queue_async_4_SUBSCRIPT_transfer_xyzf_pixels_0',

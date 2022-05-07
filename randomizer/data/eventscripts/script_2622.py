@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2622_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2622_action_queue_async_0_SUBSCRIPT_set_animation_speed_0',
@@ -46,8 +46,8 @@ script = [
         "command": 'star_mask_expand_from_screen_center'
     },
     {
-        "identifier": 'EVENT_2622_pause_short_3',
-        "command": 'pause_short',
+        "identifier": 'EVENT_2622_pause_3',
+        "command": 'pause',
         "args": [564]
     },
     {

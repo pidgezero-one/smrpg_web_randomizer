@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1643_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1643_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1643_jmp_if_trade_option_3',
@@ -46,8 +46,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1643_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1643_store_item_amount_7000_6',
@@ -66,8 +66,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1643_jmp_if_7000_equals_short_9',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1643_run_dialog_27']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1643_run_dialog_27']
     },
     {
         "identifier": 'EVENT_1643_run_dialog_10',
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1643_set_action_script_async_13',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1643_remove_one_from_inventory_14',
@@ -101,12 +101,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1643_set_16',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 138]
     },
     {
         "identifier": 'EVENT_1643_set_17',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 1155]
     },
     {
@@ -139,8 +139,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1643_set_action_script_async_24',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1643_run_dialog_25',

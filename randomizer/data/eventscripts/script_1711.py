@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1711_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1711_action_queue_async_2_SUBSCRIPT_set_solidity_bits_0',
@@ -32,7 +32,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1711_action_queue_async_2_SUBSCRIPT_add_short_2',
-                "command": 'add_short',
+                "command": "add_const_to_var",
                 "args": [0x701a, 0x0900]
             },
             {

@@ -47,7 +47,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3881_npc",
-        "command": "jmp_if_var_equals_byte",
+        "command": "jmp_if_var_equals_const",
         "args": [0x70A8, 0x15, "EVENT_3881_chest_2"],
     },
     {

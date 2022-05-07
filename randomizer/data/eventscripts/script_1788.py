@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1788_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1788_action_queue_sync_0_SUBSCRIPT_face_southwest_0',
@@ -18,8 +18,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1788_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1788_action_queue_sync_1_SUBSCRIPT_face_southwest_0',
@@ -29,8 +29,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1788_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1788_action_queue_sync_2_SUBSCRIPT_face_southwest_0',
@@ -45,8 +45,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1788_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1788_action_queue_sync_3_SUBSCRIPT_face_southwest_0',

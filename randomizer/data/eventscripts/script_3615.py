@@ -22,13 +22,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3615_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 977]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 977]
     },
     {
         "identifier": 'EVENT_3615_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3615_action_queue_sync_4_SUBSCRIPT_set_animation_speed_0',

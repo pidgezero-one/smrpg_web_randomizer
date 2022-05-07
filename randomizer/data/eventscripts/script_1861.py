@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1861_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1861_action_queue_sync_3_SUBSCRIPT_fixed_f_coord_on_0',
@@ -50,8 +50,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1861_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1861_action_queue_async_4_SUBSCRIPT_object_memory_set_bit_0',

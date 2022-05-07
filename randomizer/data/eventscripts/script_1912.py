@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1912_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1912_action_queue_sync_2_SUBSCRIPT_object_memory_set_bit_0',
@@ -58,8 +58,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1912_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1912_action_queue_sync_3_SUBSCRIPT_set_animation_speed_0',
@@ -94,7 +94,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1912_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701c, 0x005a]
     },
     {

@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3100_jmp_if_7000_equals_short_284',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_3100_set_298']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_3100_set_298']
     },
     {
         "identifier": 'EVENT_3100_store_7000_item_quantity_to_70A7_283_',
@@ -22,17 +22,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3100_jmp_if_7000_equals_short_287',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_3100_set_294']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_3100_set_294']
     },
     {
         "identifier": "EVENT_3100_set_fireworks",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70EA, 5]
     },
     {
         "identifier": 'EVENT_3100_set_291',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 172]
     },
     {
@@ -46,7 +46,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3100_set_294',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 137]
     },
     {
@@ -65,7 +65,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3100_set_298',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 138]
     },
     {

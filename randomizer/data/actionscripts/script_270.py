@@ -39,8 +39,8 @@ script = [
     },
     {
         "identifier": 'ACTION_270_set_7000_short_mem_to_700C_7',
-        "command": 'set_7000_short_mem_to_700C',
-        "args": [0x7032]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x7032]
     },
     {
         "identifier": 'ACTION_270_sequence_playback_on_8',

@@ -26,7 +26,7 @@ script = [
     },
     {
         "identifier": 'ACTION_811_set_11',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x700c, 4]
     },
     {

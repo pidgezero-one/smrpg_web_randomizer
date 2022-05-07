@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_330_action_queue_async_18',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_330_action_queue_async_18_SUBSCRIPT_set_700C_to_7000_short_mem_0',
-                "command": 'set_700C_to_7000_short_mem',
-                "args": [0x7024]
+                "command": 'copy_var_to_var',
+        'args': [0x7024, 0x700C]
             },
             {
                 "identifier": 'EVENT_330_action_queue_async_18_SUBSCRIPT_face_east_7C_1',

@@ -487,7 +487,7 @@ room = Room(
         RegularNPC(  # 10
             occupant=npcs.Empty,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
-            event_script=300,
+            event_script=358,
             action_script=15,
             visible=True,
             x=5,

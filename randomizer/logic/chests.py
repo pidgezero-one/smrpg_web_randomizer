@@ -1064,6 +1064,8 @@ def randomize_all(world):
         pickups = [chests.StarterCharacter1, chests.MushroomWayCharacter, chests.ForestMazeCharacter, chests.MolevilleMinesCharacter, chests.MarrymoreCharacter]
         ending_palettes = [(0x37A9D8, 0x37B31A), (0x37A9F6, 0x37B374), (0x37AA14, 0x37B392), (0x37B068, 0x37B356), (0x37B086, 0x37B338)]
         
+        print(playable_character_order, character_order, pickups, ending_palettes)
+
         for cindex, (recruitable, ending, chest, end_palettes) in enumerate(zip(playable_character_order, character_order, pickups, ending_palettes)):
             
             # rearrange end credits palette sets
@@ -1081,7 +1083,7 @@ def randomize_all(world):
                         if utils.is_animation_header_mario(cmd):
                             world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_protagonist_animation_script(sprites, cmd["subscript"], room_id)
             if utils.isclass_or_instance(chest, chests.ForestMazeCharacter):
-                world.rooms[496].objects[22].model.occupant = recruitable.doll
+                world.rooms[496].objects[22].model.occupant = ending.doll
             if recruitable is not None:
                 if utils.isclass_or_instance(recruitable.model, npcs.Mario):
                     rmodel = recruitable.model(world, swap_id)
@@ -1418,32 +1420,32 @@ def randomize_all(world):
                     # disable empty chests
                     if utils.isclass_or_instance(c, chests.BowsersKeepDoorReward1):
                         world.eventscripts[192][0:0] = [
-                            {"identifier": 'EVENT_192_set_bk_1', "command": 'set', "args": [0x7000, 512]},
+                            {"identifier": 'EVENT_192_set_bk_1', "command": "set_var_to_const", "args": [0x7000, 512]},
                             {"identifier": 'EVENT_192_set_bk_1_', "command": 'set_mem_704x_at_7000_bit'}
                         ]
                     elif utils.isclass_or_instance(c, chests.BowsersKeepDoorReward2):
                         world.eventscripts[192][0:0] = [
-                            {"identifier": 'EVENT_192_set_bk_2', "command": 'set', "args": [0x7000, 513]},
+                            {"identifier": 'EVENT_192_set_bk_2', "command": "set_var_to_const", "args": [0x7000, 513]},
                             {"identifier": 'EVENT_192_set_bk_2_', "command": 'set_mem_704x_at_7000_bit'}
                         ]
                     elif utils.isclass_or_instance(c, chests.BowsersKeepDoorReward3):
                         world.eventscripts[192][0:0] = [
-                            {"identifier": 'EVENT_192_set_bk_3', "command": 'set', "args": [0x7000, 514]},
+                            {"identifier": 'EVENT_192_set_bk_3', "command": "set_var_to_const", "args": [0x7000, 514]},
                             {"identifier": 'EVENT_192_set_bk_3_', "command": 'set_mem_704x_at_7000_bit'}
                         ]
                     elif utils.isclass_or_instance(c, chests.BowsersKeepDoorReward4):
                         world.eventscripts[192][0:0] = [
-                            {"identifier": 'EVENT_192_set_bk_4', "command": 'set', "args": [0x7000, 515]},
+                            {"identifier": 'EVENT_192_set_bk_4', "command": "set_var_to_const", "args": [0x7000, 515]},
                             {"identifier": 'EVENT_192_set_bk_4_', "command": 'set_mem_704x_at_7000_bit'}
                         ]
                     elif utils.isclass_or_instance(c, chests.BowsersKeepDoorReward5):
                         world.eventscripts[192][0:0] = [
-                            {"identifier": 'EVENT_192_set_bk_5', "command": 'set', "args": [0x7000, 516]},
+                            {"identifier": 'EVENT_192_set_bk_5', "command": "set_var_to_const", "args": [0x7000, 516]},
                             {"identifier": 'EVENT_192_set_bk_5_', "command": 'set_mem_704x_at_7000_bit'}
                         ]
                     elif utils.isclass_or_instance(c, chests.BowsersKeepDoorReward6):
                         world.eventscripts[192][0:0] = [
-                            {"identifier": 'EVENT_192_set_bk_6', "command": 'set', "args": [0x7000, 517]},
+                            {"identifier": 'EVENT_192_set_bk_6', "command": "set_var_to_const", "args": [0x7000, 517]},
                             {"identifier": 'EVENT_192_set_bk_6_', "command": 'set_mem_704x_at_7000_bit'}
                         ]
                     elif utils.isclass_or_instance(c, chests.PandoriteReward2):

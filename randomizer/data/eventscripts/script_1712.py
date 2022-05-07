@@ -11,7 +11,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1712_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700e, 0x0009]
     },
     {
@@ -40,8 +40,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1712_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1712_action_queue_sync_7_SUBSCRIPT_pause_0',
@@ -57,7 +57,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1712_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 20]
     },
     {
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1712_action_queue_async_13',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70AB],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70AB, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_clear_solidity_bits_0',
@@ -102,8 +102,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_mem_compare_val_3',
-                "command": 'mem_compare_val',
-                "args": [14]
+                "command": 'compare_var_to_const',
+                'args': [0x700C, 14]
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_jmp_if_comparison_result_is_lesser_4',
@@ -155,8 +155,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1712_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AB, 474]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70AB, True, 474]
     },
     {
         "identifier": 'EVENT_1712_summon_to_level_15',

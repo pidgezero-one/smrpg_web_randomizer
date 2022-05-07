@@ -11,8 +11,8 @@ script = [
         "args": [0x7043, 3, 'EVENT_1332_ret_17']
     },
     {
-        "identifier": 'EVENT_1332_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_1332_jmp_if_var_equals_const_1',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 3, 'EVENT_1332_apply_tile_mod_10']
     },
     {
@@ -81,7 +81,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1332_inc_short_15',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7024]
     },
     {

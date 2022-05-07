@@ -53,8 +53,8 @@ script = [
     },
     {
         "identifier": 'ACTION_770_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_770_transfer_to_xyzf_14']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_770_transfer_to_xyzf_14']
     },
     {
         "identifier": 'ACTION_770_transfer_to_xyzf_11',

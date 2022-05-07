@@ -37,32 +37,32 @@ script = [
     },
     {
         "identifier": 'EVENT_15_set_6',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70da, 0]
     },
     {
         "identifier": 'EVENT_15_set_7',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70db, 0]
     },
     {
         "identifier": 'EVENT_15_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70dc, 0]
     },
     {
         "identifier": 'EVENT_15_set_9',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70dd, 0]
     },
     {
         "identifier": 'EVENT_15_set_9_',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70f8, 0]
     },
     {
         "identifier": 'EVENT_15_set_9__',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70f9, 0]
     },
     {
@@ -85,8 +85,8 @@ script = [
         "args": [0x707c, 3]
     },
     {
-        "identifier": 'EVENT_15_create_packet_at_object_coords_jmp_if_null_14',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_15_create_packet_at_npc_coords_14',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._022_SPARKLES_MOVE_N, AreaObjects.MARIO, 'EVENT_15_ret_15']
     },
     {

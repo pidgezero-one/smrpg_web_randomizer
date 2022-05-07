@@ -34,12 +34,12 @@ script = [
     },
     {
         "identifier": 'ACTION_126_add_6',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65511]
     },
     {
         "identifier": 'ACTION_126_add_7',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 25]
     },
     {
@@ -49,7 +49,7 @@ script = [
     },
     {
         "identifier": 'ACTION_126_add_9',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65511]
     },
     {
@@ -59,13 +59,13 @@ script = [
     },
     {
         "identifier": 'ACTION_126_add_11',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 21]
     },
     {
         "identifier": 'ACTION_126_set_70A0_short_mem_to_700C_12',
-        "command": 'set_70A0_short_mem_to_700C',
-        "args": [0x70aa]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x70aa]
     },
     {
         "identifier": 'ACTION_126_db_13',
@@ -94,12 +94,12 @@ script = [
     },
     {
         "identifier": 'ACTION_126_set_short_18',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0xeeee]
     },
     {
-        "identifier": 'ACTION_126_create_packet_at_object_coords_jmp_if_null_19',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_126_create_packet_at_npc_coords_19',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._032_BLUE_CLOUD, AreaObjects.DUMMY_0X07, 'ACTION_126_jump_to_height_20']
     },
     {

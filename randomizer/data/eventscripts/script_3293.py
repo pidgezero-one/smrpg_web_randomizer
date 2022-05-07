@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3293_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_3293_set_70A0_short_mem_to_7000_2',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70aa]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70aa]
     },
     {
         "identifier": 'EVENT_3293_run_background_event_3',
@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3293_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3293_action_queue_sync_6_SUBSCRIPT_clear_solidity_bits_0',
@@ -85,8 +85,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3293_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3293_action_queue_sync_9_SUBSCRIPT_clear_solidity_bits_0',

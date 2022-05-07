@@ -11,27 +11,27 @@ script = [
     },
     {
         "identifier": 'EVENT_289_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [485, 'EVENT_289_set_short_8']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 485, 'EVENT_289_set_short_8']
     },
     {
         "identifier": 'EVENT_289_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [493, 'EVENT_289_set_short_11']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 493, 'EVENT_289_set_short_11']
     },
     {
         "identifier": 'EVENT_289_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [85, 'EVENT_289_jmp_if_bit_set_15']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 85, 'EVENT_289_jmp_if_bit_set_15']
     },
     {
         "identifier": 'EVENT_289_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [86, 'EVENT_289_set_bit_14']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 86, 'EVENT_289_set_bit_14']
     },
     {
         "identifier": 'EVENT_289_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0003]
     },
     {
@@ -46,7 +46,7 @@ script = [
     },
     {
         "identifier": 'EVENT_289_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0003]
     },
     {
@@ -61,7 +61,7 @@ script = [
     },
     {
         "identifier": 'EVENT_289_set_short_11',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0003]
     },
     {
@@ -111,8 +111,8 @@ script = [
     },
     {
         "identifier": 'EVENT_289_set_action_script_async_21',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_289_pause_22',
@@ -161,8 +161,8 @@ script = [
     },
     {
         "identifier": 'EVENT_289_set_action_script_async_31',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_289_remember_last_object_32',
@@ -189,7 +189,7 @@ script = [
     },
     {
         "identifier": 'EVENT_289_mem_compare_37',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7010, 5]
     },
     {
@@ -238,8 +238,8 @@ script = [
     },
     {
         "identifier": 'EVENT_289_action_queue_async_48',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_289_action_queue_async_48_SUBSCRIPT_clear_solidity_bits_0',
@@ -323,8 +323,8 @@ script = [
     },
     {
         "identifier": 'EVENT_289_action_queue_async_56',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_700C_to_object_coord_0',
@@ -333,8 +333,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_7000_short_mem_to_700C_1',
-                "command": 'set_7000_short_mem_to_700C',
-                "args": [0x7024]
+                "command": 'copy_var_to_var',
+        'args': [0x700C, 0x7024]
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_db_2',
@@ -343,8 +343,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_7000_short_mem_to_700C_3',
-                "command": 'set_7000_short_mem_to_700C',
-                "args": [0x7000]
+                "command": 'copy_var_to_var',
+        'args': [0x700C, 0x7000]
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_mem_700C_and_const_4',
@@ -353,23 +353,23 @@ script = [
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_jmp_if_700C_equals_short_5',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [0, 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_9']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 0, 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_9']
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_jmp_if_700C_equals_short_6',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [64, 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_15']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 64, 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_15']
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_jmp_if_700C_equals_short_7',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [128, 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_21']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 128, 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_21']
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_jmp_if_700C_equals_short_8',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [192, 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_27']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 192, 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_27']
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_9',

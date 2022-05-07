@@ -37,38 +37,38 @@ script = [
     },
     {
         "identifier": 'EVENT_2592_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_2592_action_queue_sync_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 6, 'EVENT_2592_action_queue_sync_16']
     },
     {
         "identifier": 'EVENT_2592_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_2592_action_queue_sync_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 5, 'EVENT_2592_action_queue_sync_16']
     },
     {
         "identifier": 'EVENT_2592_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [4, 'EVENT_2592_action_queue_sync_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 4, 'EVENT_2592_action_queue_sync_16']
     },
     {
         "identifier": 'EVENT_2592_jmp_if_7000_equals_short_9',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_2592_enter_area_14']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_2592_enter_area_14']
     },
     {
         "identifier": 'EVENT_2592_jmp_if_7000_equals_short_10',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_2592_enter_area_14']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_2592_enter_area_14']
     },
     {
         "identifier": 'EVENT_2592_jmp_if_7000_equals_short_11',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_2592_enter_area_14']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_2592_enter_area_14']
     },
     {
         "identifier": 'EVENT_2592_jmp_if_7000_equals_short_12',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2592_enter_area_14']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2592_enter_area_14']
     },
     {
         "identifier": 'EVENT_2592_jmp_13',
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2592_action_queue_sync_16',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2592_action_queue_sync_16_SUBSCRIPT_set_priority_0',

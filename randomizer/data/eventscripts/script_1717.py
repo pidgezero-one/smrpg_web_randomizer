@@ -21,7 +21,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1717_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700e, 0x0009]
     },
     {
@@ -50,8 +50,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1717_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1717_action_queue_sync_9_SUBSCRIPT_pause_0',
@@ -67,7 +67,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1717_set_10',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 22]
     },
     {

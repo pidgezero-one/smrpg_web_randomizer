@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1699_mem_compare_val_7',
-        "command": 'mem_compare_val',
-        "args": [576]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 576]
     },
     {
         "identifier": 'EVENT_1699_jmp_if_comparison_result_is_lesser_8',

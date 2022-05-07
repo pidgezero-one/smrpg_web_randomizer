@@ -7,21 +7,23 @@ import enum
 import copy
 import uuid
 import math
-from randomizer.helpers.objectsequencetables import _0x08Flags # circular dependency because of data init. consider moving data types into helpers
+from randomizer.helpers.objectsequencetables import (
+    _0x08Flags,
+)  # circular dependency because of data init. consider moving data types into helpers
 from randomizer.helpers.eventtables import AreaObjects
 from randomizer.helpers.flag_helpers import SequenceType
-from randomizer.data import npcs
+from randomizer.data.npcs import Coin, FrogCoin, SmallCoin, SmallFrogCoin
 
 # Amount to boost very small values when shuffling to give a bit more range for very small values.
 SMALL_BOOST_AMOUNT = 2.0
 
+
 def isclass_or_instance(obj_or_cls, classinfo):
     """Helper function to check if an object is an instance of a class, or the class itself."""
-    return isinstance(obj_or_cls, classinfo) or (inspect.isclass(obj_or_cls) and issubclass(obj_or_cls, classinfo))
+    return isinstance(obj_or_cls, classinfo) or (
+        inspect.isclass(obj_or_cls) and issubclass(obj_or_cls, classinfo)
+    )
 
-
-def is_coin(npc):
-    return isclass_or_instance(model, npcs.Coin) or utils.isclass_or_instance(model, npcs.SmallCoin) or utils.isclass_or_instance(model, npcs.FrogCoin) or utils.isclass_or_instance(model, npcs.SmallFrogCoin)
 
 class BitMapSet(set):
     """A class representing a bitmap of a certain length using the set built-in type to track which bits are set."""
@@ -40,8 +42,8 @@ class BitMapSet(set):
         """
         result = 0
         for value in self:
-            result |= (1 << value)
-        return result.to_bytes(self._num_bytes, 'little')
+            result |= 1 << value
+        return result.to_bytes(self._num_bytes, "little")
 
     def __str__(self):
         return "BitMapSet({})".format(super().__str__())
@@ -76,10 +78,12 @@ class ByteField:
             val = self._value + (2 ** (self._num_bytes * 8))
         else:
             val = self._value
-        return val.to_bytes(self._num_bytes, 'little')
+        return val.to_bytes(self._num_bytes, "little")
 
     def __str__(self):
-        return "ByteField(current value: {}, number of bytes: {}".format(self.value, self._num_bytes)
+        return "ByteField(current value: {}, number of bytes: {}".format(
+            self.value, self._num_bytes
+        )
 
 
 class Mutator:
@@ -89,7 +93,7 @@ class Mutator:
         # Placeholder for future difficulty option.
         self.difficulty = difficulty
 
-    def mutate_normal(self, value, minimum=0, maximum=0xff):
+    def mutate_normal(self, value, minimum=0, maximum=0xFF):
         """Mutate a value with a given range.
         This is roughly simulating a normal distribution with mean <value>, std deviation approx 1/5 <value>.
         """
@@ -142,6 +146,7 @@ class Mutator:
 
 class _GlobalMutator:
     """Container class for the global mutator instance so we can control the difficulty."""
+
     mutator = Mutator()
 
     @classmethod
@@ -153,7 +158,7 @@ class _GlobalMutator:
         cls.mutator.difficulty = difficulty
 
 
-def mutate_normal(value, minimum=0, maximum=0xff):
+def mutate_normal(value, minimum=0, maximum=0xFF):
     """Mutate a stat value using the global mutator."""
     return _GlobalMutator.get_mutator().mutate_normal(value, minimum, maximum)
 
@@ -169,7 +174,7 @@ def coin_flip(odds=0.5):
 
 
 def add_desc_fields(fields):
-    d = ''
+    d = ""
     for chars, flag, attr in fields:
         if isinstance(attr, (list, tuple)):
             if flag in attr:
@@ -190,7 +195,7 @@ def split_camel_case(string):
         str: Camel case string split out with spaces in between words.
 
     """
-    return re.sub(r'(?!^)([A-Z0-9][a-z]*)', r' \1', string)
+    return re.sub(r"(?!^)([A-Z0-9][a-z]*)", r" \1", string)
 
 
 def allocate_string(string_length, free_list):
@@ -198,13 +203,15 @@ def allocate_string(string_length, free_list):
         if free_list[base] >= string_length:
             size = free_list[base]
             del free_list[base]
-            free_list[base+string_length] = size - string_length
+            free_list[base + string_length] = size - string_length
             return base
 
     # If we get this far, we couldn't find space for the string.
     return None
 
+
 # animation utils
+
 
 class CommandTypes(enum.Enum):
     Action = enum.auto()
@@ -224,7 +231,7 @@ def new_command(event_id, command, args=None, t=CommandTypes.Event):
         cmdType = "EVENT"
     cmd = {
         "identifier": "%s_%i_%s" % (cmdType, event_id, str(uuid.uuid4())),
-        "command": command
+        "command": command,
     }
     if args is not None:
         cmd["args"] = args
@@ -234,22 +241,42 @@ def new_command(event_id, command, args=None, t=CommandTypes.Event):
 def is_animation_header_mario(command):
     return is_animation_header_base(command, 0)
 
+
 def is_animation_header(command, npc_id):
     return is_animation_header_base(command, npc_id + 0x14)
 
+
 def is_animation_header_base(command, npc_id):
-    return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == npc_id
+    return (
+        command["command"]
+        in [
+            "action_queue",
+            "start_embedded_action_script",
+        ]
+        and command["args"][0] == npc_id
+    )
 
 
 def remove_sequence_changes_from_action_script(script):
-    #if NPC is supposed to keep a certain mold/sequence, make sure it never resets
-    return [a for a in script if a["command"] != 'set_sprite_sequence' and a["command"] != "reset_properties"]
+    # if NPC is supposed to keep a certain mold/sequence, make sure it never resets
+    return [
+        a
+        for a in script
+        if a["command"] != "set_sprite_sequence" and a["command"] != "reset_properties"
+    ]
 
-def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Sequence, sequence_id=0, sprite_offset=0, loop=True):
+
+def fix_directions_for_sequenced_sprite(
+    script,
+    sequence_type=SequenceType.Sequence,
+    sequence_id=0,
+    sprite_offset=0,
+    loop=True,
+):
     # specific sequence sprites: face left or right depending on intent of script
     output = []
     flags = []
-    if sequence_type==SequenceType.Sequence:
+    if sequence_type == SequenceType.Sequence:
         flags.append(_0x08Flags.READ_AS_SEQUENCE)
     else:
         flags.append(_0x08Flags.READ_AS_MOLD)
@@ -257,61 +284,121 @@ def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Seque
         flags.append(_0x08Flags.LOOPING_OFF)
     for command in script:
         if command["command"] in ["face_southeast", "face_northeast"]:
-            output.append({
-                "identifier": 'dummy',
-                "command": 'set_sprite_sequence',
-                "args": [sequence_id, sprite_offset, [*flags, _0x08Flags.MIRROR_SPRITE]]
-            })
+            output.append(
+                {
+                    "identifier": "dummy",
+                    "command": "set_sprite_sequence",
+                    "args": [
+                        sequence_id,
+                        sprite_offset,
+                        [*flags, _0x08Flags.MIRROR_SPRITE],
+                    ],
+                }
+            )
         elif command["command"] in ["face_southwest", "face_northwest"]:
-            output.append({
-                "identifier": 'dummy',
-                "command": 'set_sprite_sequence',
-                "args": [sequence_id, sprite_offset, flags]
-            })
-        elif command["command"] in ["walk_1_step_east", "walk_1_step_northeast", "shift_east_steps", "shift_northeast_steps", "shift_east_pixels", "shift_northeast_pixels", "walk_1_step_southeast", "shift_southeast_steps", "shift_southeast_pixels", "walk_1_step_south", "shift_south_steps", "shift_south_pixels"]:
+            output.append(
+                {
+                    "identifier": "dummy",
+                    "command": "set_sprite_sequence",
+                    "args": [sequence_id, sprite_offset, flags],
+                }
+            )
+        elif command["command"] in [
+            "walk_1_step_east",
+            "walk_1_step_northeast",
+            "shift_east_steps",
+            "shift_northeast_steps",
+            "shift_east_pixels",
+            "shift_northeast_pixels",
+            "walk_1_step_southeast",
+            "shift_southeast_steps",
+            "shift_southeast_pixels",
+            "walk_1_step_south",
+            "shift_south_steps",
+            "shift_south_pixels",
+        ]:
             c = {
-                "identifier": 'dummy',
-                "command": 'set_sprite_sequence',
-                "args": [sequence_id, sprite_offset, [*flags, _0x08Flags.MIRROR_SPRITE]]
+                "identifier": "dummy",
+                "command": "set_sprite_sequence",
+                "args": [
+                    sequence_id,
+                    sprite_offset,
+                    [*flags, _0x08Flags.MIRROR_SPRITE],
+                ],
             }
             output.append(c)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
             output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
-        elif command["command"] in ["walk_1_step_west", "walk_1_step_southwest", "shift_west_steps", "shift_southwest_steps", "shift_west_pixels", "shift_southwest_pixels", "walk_1_step_north", "walk_1_step_northwest", "shift_north_steps", "shift_northwest_steps", "shift_north_pixels", "shift_northwest_pixels"]:
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in [
+            "walk_1_step_west",
+            "walk_1_step_southwest",
+            "shift_west_steps",
+            "shift_southwest_steps",
+            "shift_west_pixels",
+            "shift_southwest_pixels",
+            "walk_1_step_north",
+            "walk_1_step_northwest",
+            "shift_north_steps",
+            "shift_northwest_steps",
+            "shift_north_pixels",
+            "shift_northwest_pixels",
+        ]:
             c = {
-                "identifier": 'dummy',
-                "command": 'set_sprite_sequence',
-                "args": [sequence_id, sprite_offset, flags]
+                "identifier": "dummy",
+                "command": "set_sprite_sequence",
+                "args": [sequence_id, sprite_offset, flags],
             }
             output.append(c)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
             output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
-        elif command["command"] in ["shift_f_direction_steps", "shift_z_20_steps", "shift_z_up_steps", "shift_z_down_steps", "shift_z_up_20_steps", "shift_z_down_20_steps", "shift_f_direction_pixels", "walk_f_direction_16_pixels", "shift_z_up_pixels", "shift_z_down_pixels", "shift_to_xy_coords", "shift_xy_steps", "shift_xy_pixels", "walk_1_step_f_direction", "walk_f_direction_16_pixels", "walk_to_xy_coords", "walk_xy_steps", "walk_to_7016_7018", "walk_to_7016_7018_701A"]:
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in [
+            "shift_f_direction_steps",
+            "shift_z_20_steps",
+            "shift_z_up_steps",
+            "shift_z_down_steps",
+            "shift_z_up_20_steps",
+            "shift_z_down_20_steps",
+            "shift_f_direction_pixels",
+            "walk_f_direction_16_pixels",
+            "shift_z_up_pixels",
+            "shift_z_down_pixels",
+            "shift_to_xy_coords",
+            "shift_xy_steps",
+            "shift_xy_pixels",
+            "walk_1_step_f_direction",
+            "walk_f_direction_16_pixels",
+            "walk_to_xy_coords",
+            "walk_xy_steps",
+            "walk_to_7016_7018",
+            "walk_to_7016_7018_701A",
+        ]:
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
             output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
         else:
             output.append(command)
     return output
 
 
 def is_mario_animation_header(command):
-    return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == AreaObjects.MARIO
+    return (
+        command["command"]
+        in [
+            "action_queue
+            "start_embedded_action_script
+        ]
+        and command["args"][0] == AreaObjects.MARIO
+    )
+
 
 def sanitize_protagonist_animation_script(sequence_types, script, room_id):
     new_script = []
     for _, command in enumerate(script):
         cmd = copy.deepcopy(command)
         key = None
-        if cmd["command"] == 'set_sprite_sequence':
+        if cmd["command"] == "set_sprite_sequence":
             seq = cmd["args"][0]
             spr = cmd["args"][1]
             if _0x08Flags.READ_AS_MOLD in cmd["args"][2]:
@@ -335,13 +422,14 @@ def sanitize_protagonist_animation_script(sequence_types, script, room_id):
         new_script.append(cmd)
     return new_script
 
+
 def sanitize_character_animation_script(sequence_types, script, room_id):
-    '''For Forest Maze and Marrymore characters. Most characters have the same selections of sprites for a given situation, but they aren't always located at the same offset/sequence.'''
+    """For Forest Maze and Marrymore characters. Most characters have the same selections of sprites for a given situation, but they aren't always located at the same offset/sequence."""
     new_script = []
     for _, command in enumerate(script):
         cmd = copy.deepcopy(command)
         key = None
-        if cmd["command"] == 'set_sprite_sequence':
+        if cmd["command"] == "set_sprite_sequence":
             seq = cmd["args"][0]
             spr = cmd["args"][1]
             if _0x08Flags.READ_AS_MOLD in cmd["args"][2]:
@@ -445,44 +533,58 @@ def find_subclasses(module, clazz):
         if inspect.isclass(cls) and issubclass(cls, clazz) and cls != clazz
     ]
 
+
 def min_vram(num):
-    return math.ceil(max(0,num - 4) / 4)
+    return math.ceil(max(0, num - 4) / 4)
+
 
 def get_min_vram_from_mold(sprite, id):
-    #print("mold:", sprite, id)
+    # print("mold:", sprite, id)
     tiles = sprite.animation.properties.molds[id].tiles
     return min_vram(len(tiles))
+
 
 def get_min_vram_from_animation(sprite, id):
     min_vram = 0
     seq = sprite.animation.properties.sequences[id].frames
-    #print("seq:", sprite, seq)
+    # print("seq:", sprite, seq)
     for frame in seq:
-        #print("frame:", frame)
+        # print("frame:", frame)
         min_vram = max(min_vram, get_min_vram_from_mold(sprite, frame.mold_id))
     return min_vram
 
+
 def get_min_vram_size_for_actionscript(world, sprite_id, subscript):
-    #print("as:", sprite_id)
+    # print("as:", sprite_id)
     min_vram = get_min_vram_from_mold(world.sprites[sprite_id], 0)
     for _, cmd in enumerate(subscript):
-        if cmd["command"] == 'set_sprite_sequence':
+        if cmd["command"] == "set_sprite_sequence":
             seq = cmd["args"][0]
             spr = cmd["args"][1]
-            sprite = world.sprites[sprite_id+spr]
+            sprite = world.sprites[sprite_id + spr]
             if _0x08Flags.READ_AS_MOLD in cmd["args"][2]:
                 min_vram = max(min_vram, get_min_vram_from_mold(sprite, seq))
             else:
                 min_vram = max(min_vram, get_min_vram_from_animation(sprite, seq))
     return min_vram
 
+
 def get_min_vram_size_for_eventscript(world, npc_id, sprite_id, script):
-    #print("es:", sprite_id)
+    # print("es:", sprite_id)
     min_vram = get_min_vram_from_mold(world.sprites[sprite_id], 0)
     for _, cmd in enumerate(script):
         if is_animation_header(cmd, npc_id):
-            min_vram = max(min_vram, get_min_vram_size_for_actionscript(world, sprite_id, cmd["subscript"]))
+            min_vram = max(
+                min_vram,
+                get_min_vram_size_for_actionscript(world, sprite_id, cmd["subscript"]),
+            )
     return min_vram
 
+
 def is_coin(model):
-    return isclass_or_instance(model, npcs.Coin) or isclass_or_instance(model, npcs.SmallCoin) or isclass_or_instance(model, npcs.FrogCoin) or isclass_or_instance(model, npcs.SmallFrogCoin)
+    return (
+        isclass_or_instance(model, Coin)
+        or isclass_or_instance(model, SmallCoin)
+        or isclass_or_instance(model, FrogCoin)
+        or isclass_or_instance(model, SmallFrogCoin)
+    )

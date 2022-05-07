@@ -16,13 +16,13 @@ script = [
     },
     {
         "identifier": 'ACTION_920_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_920_set_sprite_sequence_14']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_920_set_sprite_sequence_14']
     },
     {
         "identifier": 'ACTION_920_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_920_set_sprite_sequence_14']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_920_set_sprite_sequence_14']
     },
     {
         "identifier": 'ACTION_920_set_sprite_sequence_4',

@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3884_set_ball_solitaire",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 49151]
     },
     {

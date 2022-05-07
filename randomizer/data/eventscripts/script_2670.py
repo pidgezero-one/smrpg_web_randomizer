@@ -6,14 +6,14 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2670_set_random_93',
-        "command": 'set_random',
+        "identifier": 'EVENT_2670_set_var_to_random_93',
+        "command": 'set_var_to_random',
         "args": [0x7000, 21]
     },
     {
         "identifier": 'EVENT_2670_mem_compare_val_94',
-        "command": 'mem_compare_val',
-        "args": [3]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 3]
     },
     {
         "identifier": 'EVENT_2670_jmp_if_comparison_result_is_lesser_95',
@@ -32,7 +32,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2670_set_98',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 155]
     },
     {
@@ -42,7 +42,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2670_set_100',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 156]
     },
     {
@@ -52,7 +52,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2670_set_102',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 157]
     },
     {
@@ -166,7 +166,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2670_set_126',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 96]
     },
     {
@@ -176,7 +176,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2670_set_128',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 97]
     },
     {
@@ -186,7 +186,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2670_set_130',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 98]
     },
     {

@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1908_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700e, 0x00d6]
     },
     {
@@ -40,8 +40,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1908_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 826]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 826]
     },
     {
         "identifier": 'EVENT_1908_ret_8',

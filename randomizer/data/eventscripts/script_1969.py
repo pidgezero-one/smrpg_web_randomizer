@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1969_set_7000_to_70A0_short_mem_11',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70d5]
+        "command": 'copy_var_to_var',
+        'args': [0x70d5, 0x7000]
     },
     {
         "identifier": 'EVENT_1969_mem_compare_0',
-        "command": 'mem_compare_val',
-        "args": [6]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 6]
     },
     {
         "identifier": 'EVENT_1969_ret',

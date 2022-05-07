@@ -11,58 +11,58 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [17, 'EVENT_3625_jmp_if_present_in_current_level_25']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 17, 'EVENT_3625_jmp_if_present_in_current_level_25']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [325, 'EVENT_3625_jmp_if_present_in_current_level_64']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 325, 'EVENT_3625_jmp_if_present_in_current_level_64']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [114, 'EVENT_3625_jmp_if_present_in_current_level_35']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 114, 'EVENT_3625_jmp_if_present_in_current_level_35']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [498, 'EVENT_3625_jmp_if_present_in_current_level_45']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 498, 'EVENT_3625_jmp_if_present_in_current_level_45']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [499, 'EVENT_3625_jmp_if_present_in_current_level_54']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 499, 'EVENT_3625_jmp_if_present_in_current_level_54']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [97, 'EVENT_3625_jmp_if_present_in_current_level_75']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 97, 'EVENT_3625_jmp_if_present_in_current_level_75']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [98, 'EVENT_3625_jmp_if_present_in_current_level_86']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 98, 'EVENT_3625_jmp_if_present_in_current_level_86']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [87, 'EVENT_3625_jmp_if_present_in_current_level_97']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 87, 'EVENT_3625_jmp_if_present_in_current_level_97']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_9',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [33, 'EVENT_3625_jmp_if_present_in_current_level_107']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 33, 'EVENT_3625_jmp_if_present_in_current_level_107']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_10',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [125, 'EVENT_3625_jmp_if_present_in_current_level_117']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 125, 'EVENT_3625_jmp_if_present_in_current_level_117']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_7000_equals_short_11',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [9, 'EVENT_3625_jmp_if_present_in_current_level_127']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 9, 'EVENT_3625_jmp_if_present_in_current_level_127']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_present_in_current_level_12',
@@ -76,7 +76,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_14',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -118,8 +118,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_action_script_sync_23',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 14]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 14]
     },
     {
         "identifier": 'EVENT_3625_ret_24',
@@ -137,7 +137,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_27',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -184,7 +184,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_37',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -231,7 +231,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_47',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -273,7 +273,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_56',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -320,7 +320,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_66',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -372,7 +372,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_77',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -424,7 +424,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_88',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -476,7 +476,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_99',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -523,7 +523,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_109',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -570,7 +570,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_119',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -617,7 +617,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_set_129',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 48]
     },
     {
@@ -658,8 +658,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3625_action_queue_sync_138',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3625_action_queue_sync_138_SUBSCRIPT_set_animation_speed_0',

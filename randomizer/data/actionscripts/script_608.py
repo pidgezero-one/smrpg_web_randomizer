@@ -38,7 +38,7 @@ script = [
     },
     {
         "identifier": 'ACTION_608_add_7',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65535]
     },
     {
@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'ACTION_608_mem_compare_val_13',
-        "command": 'mem_compare_val',
-        "args": [3]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 3]
     },
     {
         "identifier": 'ACTION_608_jmp_if_comparison_result_is_greater_or_equal_14',
@@ -77,8 +77,8 @@ script = [
     },
     {
         "identifier": 'ACTION_608_mem_compare_val_15',
-        "command": 'mem_compare_val',
-        "args": [7]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 7]
     },
     {
         "identifier": 'ACTION_608_jmp_if_comparison_result_is_lesser_16',
@@ -135,18 +135,18 @@ script = [
     },
     {
         "identifier": 'ACTION_608_set_short_27',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0005]
     },
     {
         "identifier": 'ACTION_608_dec_short_mem_28',
-        "command": 'dec_short_mem',
-        "args": [0x700c, 0x7024]
+        "command": 'dec_short_mem_from_700C'
+        'args': [0x7024]
     },
     {
         "identifier": 'ACTION_608_set_70A0_short_mem_to_700C_29',
-        "command": 'set_70A0_short_mem_to_700C',
-        "args": [0x70a9]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x70a9]
     },
     {
         "identifier": 'ACTION_608_face_southwest_7D_30',

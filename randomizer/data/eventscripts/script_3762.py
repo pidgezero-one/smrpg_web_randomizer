@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3762_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3762_action_queue_async_3_SUBSCRIPT_transfer_xyzf_pixels_0',

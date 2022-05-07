@@ -11,23 +11,23 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1815_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_1815_jmp_if_var_equals_const_1',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 65535, 'EVENT_1815_inc_short_3']
     },
     {
         "identifier": 'EVENT_1815_inc_short_2',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1815_inc_short_3',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_1815_jmp_if_var_not_equals_short_4',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_1815_jmp_if_var_not_equals_const_4',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x7026, 10, 'EVENT_1815_set_7000_to_object_coord_7']
     },
     {
@@ -37,7 +37,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1815_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0000]
     },
     {
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1815_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1815_fade_out_music_to_volume_13']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1815_fade_out_music_to_volume_13']
     },
     {
         "identifier": 'EVENT_1815_jmp_if_bit_clear_9',
@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1815_mem_compare_val_11',
-        "command": 'mem_compare_val',
-        "args": [1536]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 1536]
     },
     {
         "identifier": 'EVENT_1815_jmp_if_comparison_result_is_greater_or_equal_12',

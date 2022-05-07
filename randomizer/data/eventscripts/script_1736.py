@@ -7,12 +7,12 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1736_inc_short_0',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x7030]
     },
     {
-        "identifier": 'EVENT_1736_jmp_if_var_not_equals_short_1',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_1736_jmp_if_var_not_equals_const_1',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x7030, 4, 'EVENT_1736_pause_action_script_7']
     },
     {
@@ -26,13 +26,13 @@ script = [
         "args": [3]
     },
     {
-        "identifier": 'EVENT_1736_create_packet_at_object_coords_jmp_if_null_4',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_1736_create_packet_at_npc_coords_4',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._031_LEVELUP_TEXT, AreaObjects.MARIO, 'EVENT_1736_set_bit_2']
     },
     {
         "identifier": 'EVENT_1736_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7020, 0x0040]
     },
     {
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1736_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1736_action_queue_sync_8_SUBSCRIPT_object_memory_set_bit_0',
@@ -115,7 +115,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1736_action_queue_sync_8_SUBSCRIPT_add_13',
-                "command": 'add',
+                "command": "add_const_to_var",
                 "args": [0x700c, 24]
             },
             {
@@ -125,7 +125,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1736_action_queue_sync_8_SUBSCRIPT_add_15',
-                "command": 'add',
+                "command": "add_const_to_var",
                 "args": [0x700c, 232]
             },
             {

@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_596_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 299]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 299]
     },
     {
         "identifier": 'EVENT_596_pause_10',
@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_596_set_action_script_sync_19',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 299]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 299]
     },
     {
         "identifier": 'EVENT_596_pause_20',
@@ -92,8 +92,8 @@ script = [
     },
     {
         "identifier": 'EVENT_596_set_action_script_sync_29',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 299]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 299]
     },
     {
         "identifier": 'EVENT_596_jmp_30',
@@ -106,8 +106,8 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'EVENT_596_create_packet_at_object_coords_jmp_if_null_32',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_596_create_packet_at_npc_coords_32',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_2, 'EVENT_596_pause_31']
     },
     {
@@ -121,8 +121,8 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'EVENT_596_create_packet_at_object_coords_jmp_if_null_35',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_596_create_packet_at_npc_coords_35',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_3, 'EVENT_596_pause_34']
     },
     {
@@ -136,8 +136,8 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'EVENT_596_create_packet_at_object_coords_jmp_if_null_38',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_596_create_packet_at_npc_coords_38',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_1, 'EVENT_596_pause_37']
     },
     {

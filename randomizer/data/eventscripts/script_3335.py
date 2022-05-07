@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3335_set_action_script_async_6',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MEM_70A8, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, False, 1023]
     },
     {
         "identifier": 'EVENT_3335_remove_from_current_level_7',
@@ -64,8 +64,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3335_set_temp_action_script_sync_12',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 2]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 2]
     },
     {
         "identifier": 'EVENT_3335_run_background_event_13',

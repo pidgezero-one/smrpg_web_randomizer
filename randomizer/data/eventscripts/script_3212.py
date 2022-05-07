@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3212_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3212_action_queue_sync_3_SUBSCRIPT_object_memory_modify_bits_0',
@@ -58,13 +58,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3212_set_action_script_sync_8',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 351]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 351]
     },
     {
         "identifier": 'EVENT_3212_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3212_action_queue_sync_9_SUBSCRIPT_set_priority_0',
@@ -134,8 +134,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3212_action_queue_sync_21',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3212_action_queue_sync_21_SUBSCRIPT_object_memory_modify_bits_0',

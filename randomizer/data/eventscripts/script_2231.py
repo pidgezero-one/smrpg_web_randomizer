@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2231_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 1013]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 1013]
     },
     {
         "identifier": 'EVENT_2231_remove_from_level_3',

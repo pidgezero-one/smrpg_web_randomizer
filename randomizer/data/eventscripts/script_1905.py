@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1905_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1905_action_queue_async_6_SUBSCRIPT_set_animation_speed_0',
@@ -96,8 +96,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1905_action_queue_async_13',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1905_action_queue_async_13_SUBSCRIPT_transfer_to_xyzf_0',

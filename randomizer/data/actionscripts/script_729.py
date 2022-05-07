@@ -71,7 +71,7 @@ script = [
     },
     {
         "identifier": 'ACTION_729_add_short_14',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0020]
     },
     {
@@ -80,18 +80,18 @@ script = [
         "args": ['ACTION_729_pause_42']
     },
     {
-        "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_16',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'ACTION_729_create_packet_at_7010_16',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, 'ACTION_729_pause_38']
     },
     {
         "identifier": 'ACTION_729_add_short_17',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0020]
     },
     {
         "identifier": 'ACTION_729_add_short_18',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7010, 0x0040]
     },
     {
@@ -105,18 +105,18 @@ script = [
         "args": ['ACTION_729_pause_42']
     },
     {
-        "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_21',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'ACTION_729_create_packet_at_7010_21',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, 'ACTION_729_pause_38']
     },
     {
         "identifier": 'ACTION_729_add_short_22',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0020]
     },
     {
         "identifier": 'ACTION_729_add_short_23',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7010, 0xff80]
     },
     {
@@ -130,18 +130,18 @@ script = [
         "args": ['ACTION_729_pause_42']
     },
     {
-        "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_26',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'ACTION_729_create_packet_at_7010_26',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, 'ACTION_729_pause_38']
     },
     {
         "identifier": 'ACTION_729_add_short_27',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0020]
     },
     {
         "identifier": 'ACTION_729_add_short_28',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7012, 0x0040]
     },
     {
@@ -155,23 +155,23 @@ script = [
         "args": ['ACTION_729_pause_42']
     },
     {
-        "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_31',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'ACTION_729_create_packet_at_7010_31',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, 'ACTION_729_pause_38']
     },
     {
         "identifier": 'ACTION_729_add_short_32',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0020]
     },
     {
         "identifier": 'ACTION_729_add_short_33',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7012, 0xffc0]
     },
     {
         "identifier": 'ACTION_729_add_short_34',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7010, 0x0040]
     },
     {
@@ -185,8 +185,8 @@ script = [
         "args": ['ACTION_729_pause_42']
     },
     {
-        "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_37',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'ACTION_729_create_packet_at_7010_37',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, 'ACTION_729_pause_38']
     },
     {

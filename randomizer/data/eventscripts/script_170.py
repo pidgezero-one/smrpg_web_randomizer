@@ -47,7 +47,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_170_special_val",  # hidon chest
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 513],
     },
     {"identifier": "EVENT_170_jmp", "command": "jmp_to_event", "args": [167]},

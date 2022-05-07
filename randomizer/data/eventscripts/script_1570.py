@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1570_set_7000_to_7000_short_mem_0',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x702a, 0x7000]
     },
     {
         "identifier": 'EVENT_1570_set_7000_short_mem_to_7000_1',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7034]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7034]
     },
     {
         "identifier": 'EVENT_1570_set_bit_2',
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1570_start_embedded_action_script_sync_F1_4',
-        "command": 'start_embedded_action_script_sync_F1',
-        "args": [AreaObjects.NPC_0],
+        "command": 'start_embedded_action_script',
+        "args": [AreaObjects.NPC_0, True, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_1570_start_embedded_action_script_sync_F1_4_SUBSCRIPT_set_sprite_sequence_0',
@@ -57,13 +57,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1570_set_7000_to_7000_short_mem_5',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7028]
+        "command": 'copy_var_to_var',
+        'args': [0x7028, 0x7000]
     },
     {
         "identifier": 'EVENT_1570_set_70A0_short_mem_to_7000_6',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_1570_pause_action_script_7',
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1570_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_0',
@@ -101,13 +101,13 @@ script = [
             },
             {
                 "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_set_700C_to_7000_short_mem_3',
-                "command": 'set_700C_to_7000_short_mem',
-                "args": [0x7034]
+                "command": 'copy_var_to_var',
+        'args': [0x7034, 0x700C]
             },
             {
                 "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_jmp_if_700C_equals_short_4',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [0, 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_play_sound_8']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 0, 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_play_sound_8']
             },
             {
                 "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_play_sound_5',
@@ -138,8 +138,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1570_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1570_action_queue_sync_11_SUBSCRIPT_set_animation_speed_0',
@@ -180,7 +180,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1570_set_short_12',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700c, 0x0005]
     },
     {
@@ -190,22 +190,22 @@ script = [
     },
     {
         "identifier": 'EVENT_1570_set_7000_to_7000_short_mem_14',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x702a, 0x7000]
     },
     {
         "identifier": 'EVENT_1570_jmp_if_7000_equals_short_15',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1570_pause_18']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1570_pause_18']
     },
     {
-        "identifier": 'EVENT_1570_create_packet_at_object_coords_jmp_if_null_16',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_1570_create_packet_at_npc_coords_16',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._017_SMALL_COIN_NOT_MOVING, AreaObjects.MARIO, 'EVENT_1570_pause_18']
     },
     {
         "identifier": 'EVENT_1570_dec_short_17',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x702a]
     },
     {
@@ -215,7 +215,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1570_inc_short_19',
-        "command": 'inc_short',
+        "command": 'inc',
         "args": [0x700c]
     },
     {
@@ -229,8 +229,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1570_action_queue_async_22',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1570_action_queue_async_22_SUBSCRIPT_reset_properties_0',

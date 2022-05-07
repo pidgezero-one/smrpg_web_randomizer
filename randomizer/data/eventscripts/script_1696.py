@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1696_mem_compare_0',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x702c, 26]
     },
     {
@@ -17,23 +17,23 @@ script = [
     },
     {
         "identifier": 'EVENT_1696_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x001a]
     },
     {
         "identifier": 'EVENT_1696_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 26]
     },
     {
         "identifier": 'EVENT_1696_set_4',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70aa, 27]
     },
     {
         "identifier": 'EVENT_1696_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A9],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1696_action_queue_async_5_SUBSCRIPT_bpl_26_27_28_0',
@@ -46,8 +46,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_1696_action_queue_async_5_SUBSCRIPT_set_7000_short_mem_to_700C_2',
-                "command": 'set_7000_short_mem_to_700C',
-                "args": [0x702a]
+                "command": 'copy_var_to_var',
+        'args': [0x700C, 0x702a]
             }
         ]
     },
@@ -58,8 +58,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1696_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AA, 479]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70AA, True, 479]
     },
     {
         "identifier": 'EVENT_1696_pause_8',
@@ -68,8 +68,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1696_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 653]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 653]
     },
     {
         "identifier": 'EVENT_1696_jmp_if_bit_clear_10',

@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1648_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 24]
     },
     {
@@ -53,8 +53,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1648_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1648_action_queue_async_10_SUBSCRIPT_floating_off_0',

@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_640_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_640_action_queue_async_5_SUBSCRIPT_clear_solidity_bits_0',
@@ -68,8 +68,8 @@ script = [
     },
     {
         "identifier": 'EVENT_640_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_640_action_queue_async_6_SUBSCRIPT_visibility_off_0',
@@ -131,8 +131,8 @@ script = [
     },
     {
         "identifier": 'EVENT_640_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_640_action_queue_async_10_SUBSCRIPT_set_sprite_sequence_0',
@@ -158,8 +158,8 @@ script = [
     },
     {
         "identifier": 'EVENT_640_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_640_action_queue_async_14_SUBSCRIPT_reset_properties_0',
@@ -178,13 +178,13 @@ script = [
     },
     {
         "identifier": 'EVENT_640_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 31]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 31]
     },
     {
         "identifier": 'EVENT_640_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_640_action_queue_async_16_SUBSCRIPT_pause_0',

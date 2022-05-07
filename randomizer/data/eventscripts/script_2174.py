@@ -53,8 +53,8 @@ script = [
     {"identifier": "EVENT_2174_set_bit_1", "command": "set_bit", "args": [0x7043, 4]},
     {
         "identifier": "EVENT_2174_action_queue_sync_2",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_2174_action_queue_sync_2_SUBSCRIPT_transfer_to_xyzf_0",
@@ -73,8 +73,8 @@ script = [
     },
     {
         "identifier": "EVENT_2174_action_queue_async_3",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_4],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": "EVENT_2174_action_queue_async_3_SUBSCRIPT_transfer_to_xyzf_0",
@@ -90,7 +90,7 @@ script = [
     {
         "identifier": "EVENT_2174_jmp_if_bit_set_4",
         "command": "jmp_if_bit_set",
-        "args": [0x7093, 6, "EVENT_2174_create_packet_at_object_coords_jmp_if_null_7"],
+        "args": [0x7093, 6, "EVENT_2174_create_packet_at_npc_coords_7"],
     },
     {
         "identifier": "EVENT_2174_set_action_script_async_5",
@@ -98,23 +98,23 @@ script = [
         "args": [941],
     },
     {
-        "identifier": "EVENT_2174_create_packet_at_object_coords_jmp_if_null_7",
-        "command": "create_packet_at_object_coords_jmp_if_null",
+        "identifier": "EVENT_2174_create_packet_at_npc_coords_7",
+        "command": "create_packet_at_npc_coords",
         "args": [
             NPCPackets._034_GREY_EXPLOSION_SFX,
             AreaObjects.NPC_4,
-            "EVENT_2174_create_packet_at_object_coords_jmp_if_null_7",
+            "EVENT_2174_create_packet_at_npc_coords_7",
         ],
     },
     {
         "identifier": "EVENT_2174_set_action_script_sync_8",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.NPC_0, 1005],
+        "command": "set_action_script",
+        "args": [AreaObjects.NPC_0, True, 1005]
     },
     {
         "identifier": "EVENT_2174_action_queue_sync_9",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_2174_action_queue_sync_9_SUBSCRIPT_pause_0",
@@ -151,8 +151,8 @@ script = [
     {"identifier": "EVENT_2174_ret_16", "command": "ret"},
     {
         "identifier": "EVENT_2174_action_queue_sync_17",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_2174_action_queue_sync_17_SUBSCRIPT_transfer_to_xyzf_0",
@@ -167,8 +167,8 @@ script = [
     },
     {
         "identifier": "EVENT_2174_action_queue_async_18",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_4],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": "EVENT_2174_action_queue_async_18_SUBSCRIPT_transfer_to_xyzf_0",
@@ -224,21 +224,21 @@ script = [
         "command": "fade_in_from_black_async",
     },
     {
-        "identifier": "EVENT_2174_create_packet_at_object_coords_jmp_if_null_24",
-        "command": "create_packet_at_object_coords_jmp_if_null",
+        "identifier": "EVENT_2174_create_packet_at_npc_coords_24",
+        "command": "create_packet_at_npc_coords",
         "args": [
             NPCPackets._034_GREY_EXPLOSION_SFX,
             AreaObjects.NPC_0,
-            "EVENT_2174_create_packet_at_object_coords_jmp_if_null_24",
+            "EVENT_2174_create_packet_at_npc_coords_24",
         ],
     },
     {
-        "identifier": "EVENT_2174_create_packet_at_object_coords_jmp_if_null_25",
-        "command": "create_packet_at_object_coords_jmp_if_null",
+        "identifier": "EVENT_2174_create_packet_at_npc_coords_25",
+        "command": "create_packet_at_npc_coords",
         "args": [
             NPCPackets._034_GREY_EXPLOSION_SFX,
             AreaObjects.NPC_4,
-            "EVENT_2174_create_packet_at_object_coords_jmp_if_null_24",
+            "EVENT_2174_create_packet_at_npc_coords_24",
         ],
     },
     {

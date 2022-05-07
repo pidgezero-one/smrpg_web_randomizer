@@ -47,8 +47,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_2115_action_queue_async_0",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, False],
         "subscript": [
             {"identifier": "ACTION_333_freeze", "command": "fixed_f_coord_on"},
             {"identifier": "ACTION_333_freeze_2", "command": "sequence_playback_off"},

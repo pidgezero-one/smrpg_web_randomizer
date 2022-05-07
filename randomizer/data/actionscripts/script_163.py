@@ -10,8 +10,8 @@ script = [
     },
     {
         "identifier": 'ACTION_163_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [422, 'ACTION_163_shadow_on_3']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 422, 'ACTION_163_shadow_on_3']
     },
     {
         "identifier": 'ACTION_163_set_vram_priority_2',
@@ -33,7 +33,7 @@ script = [
     },
     {
         "identifier": 'ACTION_163_add_6',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {

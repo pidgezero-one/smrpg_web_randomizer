@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_531_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_531_action_queue_async_2_SUBSCRIPT_set_priority_0',

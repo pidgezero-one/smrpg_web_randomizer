@@ -22,18 +22,18 @@ script = [
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 636]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 636]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 636]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 636]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 636]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 636]
     },
     {
         "identifier": 'EVENT_678_pause_6',
@@ -46,8 +46,8 @@ script = [
     },
     {
         "identifier": 'EVENT_678_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_678_action_queue_sync_8_SUBSCRIPT_set_sprite_sequence_0',
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'EVENT_678_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_678_action_queue_async_10_SUBSCRIPT_reset_properties_0',
@@ -119,18 +119,18 @@ script = [
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 119]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 119]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 119]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 119]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 119]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 119]
     },
     {
         "identifier": 'EVENT_678_ret_15',

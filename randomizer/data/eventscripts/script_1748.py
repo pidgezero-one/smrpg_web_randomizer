@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1748_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1748_action_queue_sync_0_SUBSCRIPT_jump_to_height_silent_0',
@@ -19,7 +19,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1748_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701e, 0x003a]
     },
     {

@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1872_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1872_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1872_jmp_if_bit_set_6_',
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1872_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1872_jmp_if_bit_set_6']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1872_jmp_if_bit_set_6']
     },
     {
         "identifier": 'EVENT_1872_run_dialog_4',
@@ -71,8 +71,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1872_set_action_script_async_11',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1872_store_coin_amount_7000_12',
@@ -80,8 +80,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1872_mem_compare_val_13',
-        "command": 'mem_compare_val',
-        "args": [500]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 500]
     },
     {
         "identifier": 'EVENT_1872_jmp_if_comparison_result_is_greater_or_equal_14',
@@ -104,7 +104,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1872_set_18',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 500]
     },
     {
@@ -112,8 +112,8 @@ script = [
         "command": 'dec_coins'
     },
     {
-        "identifier": 'EVENT_1872_jmp_if_var_equals_byte_32',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_1872_jmp_if_var_equals_const_32',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ea, 5, 'EVENT_1872_play_sound_34']
     },
     {
@@ -147,8 +147,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1872_set_action_script_async_39',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1872_ret_40',
@@ -171,8 +171,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1872_set_action_script_async_11_',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1872_store_coin_amount_7000_12_',
@@ -180,8 +180,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1872_mem_compare_val_13_',
-        "command": 'mem_compare_val',
-        "args": [500]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 500]
     },
     {
         "identifier": 'EVENT_1872_jmp_if_comparison_result_is_greater_or_equal_14_',
@@ -195,7 +195,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1872_set_18_',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 500]
     },
     {

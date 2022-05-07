@@ -16,7 +16,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1909_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700e, 0x0088]
     },
     {
@@ -26,7 +26,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1909_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700e, 0x0089]
     },
     {
@@ -45,8 +45,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1909_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1909_action_queue_async_8_SUBSCRIPT_visibility_off_0',
@@ -79,7 +79,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1909_set_short_14',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701c, 0x0002]
     },
     {

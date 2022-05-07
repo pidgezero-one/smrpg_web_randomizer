@@ -17,13 +17,13 @@ script = [
     },
     {
         "identifier": 'EVENT_337_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 0]
     },
     {
         "identifier": 'EVENT_337_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_337_action_queue_async_3_SUBSCRIPT_reset_properties_0',
@@ -90,8 +90,8 @@ script = [
     },
     {
         "identifier": 'EVENT_337_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_337_action_queue_sync_5_SUBSCRIPT_face_southwest_0',
@@ -116,8 +116,8 @@ script = [
     },
     {
         "identifier": 'EVENT_337_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_337_action_queue_async_6_SUBSCRIPT_face_northeast_0',
@@ -154,8 +154,8 @@ script = [
     },
     {
         "identifier": 'EVENT_337_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_337_action_queue_async_9_SUBSCRIPT_reset_properties_0',
@@ -179,8 +179,8 @@ script = [
     },
     {
         "identifier": 'EVENT_337_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_337_action_queue_async_11_SUBSCRIPT_face_southwest_0',
@@ -190,8 +190,8 @@ script = [
     },
     {
         "identifier": 'EVENT_337_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_337_unsync_action_script_13',

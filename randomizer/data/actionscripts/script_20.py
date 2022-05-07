@@ -25,7 +25,7 @@ script = [
     },
     {
         "identifier": 'ACTION_20_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0005]
     },
     {
@@ -40,23 +40,23 @@ script = [
     },
     {
         "identifier": 'ACTION_20_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_20_transfer_xyzf_pixels_14']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_20_transfer_xyzf_pixels_14']
     },
     {
         "identifier": 'ACTION_20_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [3, 'ACTION_20_transfer_xyzf_pixels_16']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 3, 'ACTION_20_transfer_xyzf_pixels_16']
     },
     {
         "identifier": 'ACTION_20_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [5, 'ACTION_20_transfer_xyzf_pixels_18']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 5, 'ACTION_20_transfer_xyzf_pixels_18']
     },
     {
         "identifier": 'ACTION_20_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_20_transfer_xyzf_pixels_20']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_20_transfer_xyzf_pixels_20']
     },
     {
         "identifier": 'ACTION_20_jmp_if_random_above_66_11',
@@ -125,12 +125,12 @@ script = [
     },
     {
         "identifier": 'ACTION_20_jmp_if_700C_equals_short_24',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [255, 'ACTION_18_ret_61']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 255, 'ACTION_18_ret_61']
     },
     {
         "identifier": 'ACTION_20_mem_compare_25',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7010, 12544]
     },
     {
@@ -140,7 +140,7 @@ script = [
     },
     {
         "identifier": 'ACTION_20_mem_compare_27',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7010, 3584]
     },
     {
@@ -150,7 +150,7 @@ script = [
     },
     {
         "identifier": 'ACTION_20_mem_compare_29',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7012, 13056]
     },
     {
@@ -160,7 +160,7 @@ script = [
     },
     {
         "identifier": 'ACTION_20_mem_compare_31',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7012, 8192]
     },
     {

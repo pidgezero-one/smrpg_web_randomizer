@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_277_set_7000_short_mem_to_7000_1',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7032]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7032]
     },
     {
         "identifier": 'EVENT_277_jmp_if_7000_any_bits_set_2',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[0], 'EVENT_277_jmp_if_var_equals_short_4']
+        "args": [[0], 'EVENT_277_jmp_if_var_equals_const_4']
     },
     {
         "identifier": 'EVENT_277_jmp_3',
@@ -26,29 +26,29 @@ script = [
         "args": ['EVENT_277_action_queue_async_8']
     },
     {
-        "identifier": 'EVENT_277_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_277_jmp_if_var_equals_const_4',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7032, 1, 'EVENT_277_action_queue_async_14']
     },
     {
-        "identifier": 'EVENT_277_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_277_jmp_if_var_equals_const_5',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7032, 3, 'EVENT_277_action_queue_async_16']
     },
     {
-        "identifier": 'EVENT_277_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_277_jmp_if_var_equals_const_6',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7032, 5, 'EVENT_277_action_queue_async_18']
     },
     {
-        "identifier": 'EVENT_277_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_277_jmp_if_var_equals_const_7',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7032, 7, 'EVENT_277_action_queue_async_20']
     },
     {
         "identifier": 'EVENT_277_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_277_action_queue_async_8_SUBSCRIPT_db_0',
@@ -57,8 +57,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_277_action_queue_async_8_SUBSCRIPT_set_7000_short_mem_to_700C_1',
-                "command": 'set_7000_short_mem_to_700C',
-                "args": [0x7000]
+                "command": 'copy_var_to_var',
+        'args': [0x700C, 0x7000]
             }
         ]
     },
@@ -69,28 +69,28 @@ script = [
     },
     {
         "identifier": 'EVENT_277_jmp_if_7000_equals_short_10',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_277_action_queue_async_14']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_277_action_queue_async_14']
     },
     {
         "identifier": 'EVENT_277_jmp_if_7000_equals_short_11',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [64, 'EVENT_277_action_queue_async_16']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 64, 'EVENT_277_action_queue_async_16']
     },
     {
         "identifier": 'EVENT_277_jmp_if_7000_equals_short_12',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [128, 'EVENT_277_action_queue_async_18']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 128, 'EVENT_277_action_queue_async_18']
     },
     {
         "identifier": 'EVENT_277_jmp_if_7000_equals_short_13',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [192, 'EVENT_277_action_queue_async_20']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 192, 'EVENT_277_action_queue_async_20']
     },
     {
         "identifier": 'EVENT_277_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_277_action_queue_async_14_SUBSCRIPT_start_loop_n_times_0',
@@ -130,8 +130,8 @@ script = [
     },
     {
         "identifier": 'EVENT_277_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_277_action_queue_async_16_SUBSCRIPT_start_loop_n_times_0',
@@ -171,8 +171,8 @@ script = [
     },
     {
         "identifier": 'EVENT_277_action_queue_async_18',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_277_action_queue_async_18_SUBSCRIPT_start_loop_n_times_0',
@@ -212,8 +212,8 @@ script = [
     },
     {
         "identifier": 'EVENT_277_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_277_action_queue_async_20_SUBSCRIPT_start_loop_n_times_0',
@@ -248,8 +248,8 @@ script = [
     },
     {
         "identifier": 'EVENT_277_action_queue_async_21',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_reset_properties_0',
@@ -257,8 +257,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_set_700C_to_7000_short_mem_1',
-                "command": 'set_700C_to_7000_short_mem',
-                "args": [0x7032]
+                "command": 'copy_var_to_var',
+        'args': [0x7032, 0x700C]
             },
             {
                 "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_face_east_7C_2',

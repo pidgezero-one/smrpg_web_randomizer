@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_429_set_action_script_async_3',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.SCREEN_FOCUS, 658]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, False, 658]
     },
     {
         "identifier": 'EVENT_429_jmp_4',

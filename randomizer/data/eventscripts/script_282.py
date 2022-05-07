@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_282_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_282_action_queue_async_3_SUBSCRIPT_db_0',
@@ -31,7 +31,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_282_action_queue_async_3_SUBSCRIPT_add_short_1',
-                "command": 'add_short',
+                "command": "add_const_to_var",
                 "args": [0x701a, 0x0900]
             },
             {

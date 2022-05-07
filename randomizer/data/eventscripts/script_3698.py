@@ -76,8 +76,8 @@ script = [
     },
     {
         "identifier": "EVENT_3698_set_action_script_sync_5",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MARIO, 814],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, True, 814],
     },
     {"identifier": "EVENT_3698_ret_6", "command": "ret"},
 ]

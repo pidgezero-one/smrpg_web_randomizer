@@ -7,33 +7,33 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_243_room_81_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [81, "EVENT_243_room_81_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 81, "EVENT_243_room_81_logic"]
     },
     {
         "identifier": "EVENT_243_room_144_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [144, "EVENT_243_room_144_446_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 144, "EVENT_243_room_144_446_logic"]
     },
     {
         "identifier": "EVENT_243_room_234_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [234, "EVENT_243_room_234_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 234, "EVENT_243_room_234_logic"]
     },
     {
         "identifier": "EVENT_243_room_446_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [446, "EVENT_243_room_144_446_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 446, "EVENT_243_room_144_446_logic"]
     },
     {
         "identifier": "EVENT_243_room_455_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [455, "EVENT_243_room_455_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 455, "EVENT_243_room_455_logic"]
     },
     {
         "identifier": "EVENT_243_room_457_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [457, "EVENT_243_room_457_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 457, "EVENT_243_room_457_logic"]
     },
     {
         "identifier": "EVENT_243_cancel",
@@ -41,7 +41,7 @@ script = [
     },
     {
         "identifier": "EVENT_243_room_81_logic",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70BC, 0]
     },
     {
@@ -51,7 +51,7 @@ script = [
     },
     {
         "identifier": "EVENT_243_room_144_446_logic",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 131]
     },
     {

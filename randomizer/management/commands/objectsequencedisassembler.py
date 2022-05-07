@@ -207,9 +207,9 @@ def pause(args):
     return 'pause', ['%i' % (args[0] + 1)]
 
 
-def pause_short(args):
+def pause(args):
     s = shortify(args, 0)
-    return 'pause_short', ['%i' % (s + 1)]
+    return 'pause', ['%i' % (s + 1)]
 
 
 def set_object_presence_in_level(args):
@@ -296,10 +296,10 @@ names[0x3A] = named('jmp_if_object_within_range', byte(prefix="AreaObjects", tab
 names[0x3B] = named('jmp_if_object_within_range_same_z', byte(prefix="AreaObjects", table=area_object_table), byte_int(), byte_int(), short())
 names[0x3C] = named('unknown_jmp_3C', byte(), byte(), short())
 names[0x3D] = named('jmp_if_mario_in_air', short())
-names[0x3E] = named('create_packet_at_object_coords_jmp_if_null', byte(
+names[0x3E] = named('create_packet_at_npc_coords', byte(
     prefix="NPCPackets", table=npc_packet_table), byte(
     prefix="AreaObjects", table=area_object_table), short())
-names[0x3F] = named('create_packet_at_7010_coords_jmp_if_null', byte(
+names[0x3F] = named('create_packet_at_7010', byte(
     prefix="NPCPackets", table=npc_packet_table), short())
 names[0x40] = named('walk_1_step_east')
 names[0x41] = named('walk_1_step_southeast')
@@ -398,34 +398,34 @@ names[0xA4] = clear_bit(0xA4)
 names[0xA5] = clear_bit(0xA5)
 names[0xA6] = clear_bit(0xA6)
 names[0xA7] = named('clear_mem_704x_at_700C_bit')
-names[0xA8] = named('set', byte(0x70A0), byte_int())
+names[0xA8] = named('set_var_to_const', byte(0x70A0), byte_int())
 names[0xA9] = named('add', byte(0x70A0), byte_int())
 names[0xAA] = named('inc', byte(0x70A0))
 names[0xAB] = named('dec', byte(0x70A0))
-names[0xAC] = named('set', con(0x700C), short_int())
+names[0xAC] = named('set_var_to_const', con(0x700C), short_int())
 names[0xAD] = named('add', con(0x700C), short_int())
 names[0xAE] = named('inc', con(0x700C))
 names[0xAF] = named('dec', con(0x700C))
-names[0xB0] = named('set_short', dbyte(0x7000), short())
-names[0xB1] = named('add_short', dbyte(0x7000), short())
-names[0xB2] = named('inc_short', dbyte(0x7000))
-names[0xB3] = named('dec_short', dbyte(0x7000))
-names[0xB4] = named('set_700C_to_70A0_short_mem', byte(0x70A0))
-names[0xB5] = named('set_70A0_short_mem_to_700C', byte(0x70A0))
-names[0xB6] = named('set_random', con(0x700C), short_int())
-names[0xB7] = named('set_random', dbyte(0x7000),
+names[0xB0] = named('set_var_to_const', dbyte(0x7000), short())
+names[0xB1] = named('add', dbyte(0x7000), short())
+names[0xB2] = named('inc', dbyte(0x7000))
+names[0xB3] = named('dec', dbyte(0x7000))
+names[0xB4] = named('copy_var_to_var', byte(0x70A0), con(0x700C))
+names[0xB5] = named('copy_var_to_var', con(0x700C), byte(0x70A0))
+names[0xB6] = named('set_var_to_random', con(0x700C), short_int())
+names[0xB7] = named('set_var_to_random', dbyte(0x7000),
                     short_int())  # may be confused for 0xB6
-names[0xB8] = named('add_short_mem', con(0x700C), dbyte(0x7000))
-names[0xB9] = named('dec_short_mem', con(0x700C), dbyte(0x7000))
-names[0xBA] = named('set_700C_to_7000_short_mem', dbyte(0x7000))
-names[0xBB] = named('set_7000_short_mem_to_700C', dbyte(0x7000))
-names[0xBC] = named('set_7000_short_mem_to_7000_short_mem',
+names[0xB8] = named('add_short_mem_to_700C', dbyte(0x7000))
+names[0xB9] = named('dec_short_mem_from_700C', dbyte(0x7000))
+names[0xBA] = named('copy_var_to_var', dbyte(0x7000), con(0x700C))
+names[0xBB] = named('copy_var_to_var', con(0x700C), dbyte(0x7000))
+names[0xBC] = named('copy_var_to_var',
                     dbyte(0x7000), dbyte(0x7000))
-names[0xBD] = named('swap_short_mem', dbyte(0x7000), dbyte(0x7000))
-names[0xBE] = named('move_7010_7012_7014_to_7016_7018_701A')
-names[0xBF] = named('move_7016_7018_701A_to_7010_7012_7014')
+names[0xBD] = named('swap_vars', dbyte(0x7000), dbyte(0x7000))
+names[0xBE] = named('move_7010_7015_to_7016_701B')
+names[0xBF] = named('move_7016_701B_to_7010_7015')
 names[0xC0] = named('mem_compare_val', short_int())
-names[0xC1] = named('mem_compare_address', dbyte(0x7000))
+names[0xC1] = named('compare_700C_to_var', dbyte(0x7000))
 names[0xC2] = named('mem_compare', dbyte(0x7000), short_int())
 names[0xC3] = named('set_700C_to_current_level')
 names[0xC4] = parse_object_coord(0xC4)
@@ -436,7 +436,7 @@ names[0xC9] = parse_object_coord(0xC9)
 names[0xCA] = named('set_700C_to_pressed_button')
 names[0xCB] = named('set_700C_to_tapped_button')
 # 0xCC - 0xCF undocumented
-names[0xD0] = named('jump_to_script', short_int())
+names[0xD0] = named('jmp_to_script', short_int())
 # 0xD1 undocumented
 names[0xD2] = named('jmp', short())
 names[0xD3] = named('jmp_to_subroutine', short())
@@ -453,17 +453,17 @@ names[0xDC] = jmp_if_bit_clear(0xDC)
 names[0xDD] = jmp_if_bit_clear(0xDD)
 names[0xDE] = jmp_if_bit_clear(0xDE)
 names[0xDF] = named('jmp_if_mem_704x_at_700C_bit_clear', short())
-names[0xE0] = named('jmp_if_var_equals_byte',
+names[0xE0] = named('jmp_if_var_equals_const',
                     byte(0x70A0), byte_int(), short())
-names[0xE1] = named('jmp_if_var_not_equals_byte',
+names[0xE1] = named('jmp_if_var_not_equals_const',
                     byte(0x70A0), byte_int(), short())
-names[0xE2] = named('jmp_if_700C_equals_short',
-                    short_int(), short())
-names[0xE3] = named('jmp_if_700C_not_equals_short',
-                    short_int(), short())
-names[0xE4] = named('jmp_if_var_equals_short', dbyte(
+names[0xE2] = named('jmp_if_var_equals_const',
+                    con(0x700C), short_int(), short())
+names[0xE3] = named('jmp_if_var_not_equals_const',
+                    con(0x700C), short_int(), short())
+names[0xE4] = named('jmp_if_var_equals_const', dbyte(
     0x7000), short_int(), short()) 
-names[0xE5] = named('jmp_if_var_not_equals_short', dbyte(
+names[0xE5] = named('jmp_if_var_not_equals_const', dbyte(
     0x7000), short_int(), short())  # may be confused for 0xE3
 names[0xE6] = named('jmp_if_700C_all_bits_clear', flags_short(), short())
 names[0xE7] = named('jmp_if_700C_any_bits_set', flags_short(), short())
@@ -476,17 +476,17 @@ names[0xED] = named('jmp_if_comparison_result_is_lesser', short())
 names[0xEE] = named('jmp_if_loaded_memory_is_below_0', short())
 names[0xEF] = named('jmp_if_loaded_memory_is_above_or_equal_0', short())
 names[0xF0] = pause
-names[0xF1] = pause_short
+names[0xF1] = pause
 names[0xF2] = set_object_presence_in_level
 names[0xF3] = set_object_trigger_in_level
 names[0xF4] = named('summon_object_at_70A8_to_current_level')
 names[0xF5] = named('remove_object_at_70A8_from_current_level')
-names[0xF6] = named('enable_event_trigger_for_object_at_70A8')
-names[0xF7] = named('disable_event_trigger_for_object_at_70A8')
+names[0xF6] = named('enable_trigger_at_70A8')
+names[0xF7] = named('disable_trigger_at_70A8')
 names[0xF8] = jmp_depending_on_object_presence
-names[0xF9] = named('jump_to_start_of_this_script')
+names[0xF9] = named('jmp_to_start_of_this_script')
 # indistinguishable from F9
-names[0xFA] = named('jump_to_start_of_this_script_FA')
+names[0xFA] = named('jmp_to_start_of_this_script_FA')
 # 0xFB - 0xFC undocumented
 # 0xFD is a special case
 names[0xFE] = named('ret')
@@ -526,7 +526,7 @@ fd_names[0x19] = named('object_memory_set_bit', con(0x0D), con_bitarray([6]))
 # 0x1A - 0x3C undocumented
 fd_names[0x3D] = named('jmp_if_object_in_air', byte(
     prefix="AreaObjects", table=area_object_table), short())
-fd_names[0x3E] = named('create_packet_event_at_coords_jmp_if_null', byte(
+fd_names[0x3E] = named('create_packet_at_7010_with_event', byte(
     prefix="NPCPackets", table=npc_packet_table), short_int(), short())
 # 0x3F - 0x9B undocumented
 # 0x1A - 0x9B undocumente

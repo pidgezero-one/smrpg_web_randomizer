@@ -22,13 +22,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3096_set_19',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b8, 3]
     },
     {
         "identifier": 'EVENT_3096_dec',
         "command": "dec",
-        "args": [0x70B8]
+        "args": [0x70B8, 1],
     },
     {
         "identifier": 'EVENT_3096_put_inventory_105',
@@ -37,7 +37,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3096_check_multiplier',
-        "command": 'jmp_if_var_equals_short',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70B8, 0, 'EVENT_3096_ret_106']
     },
     {

@@ -17,7 +17,7 @@ script = [
     },
     {
         "identifier": 'EVENT_403_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 26]
     },
     {
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_403_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_403_action_queue_sync_4_SUBSCRIPT_clear_solidity_bits_0',
@@ -44,8 +44,8 @@ script = [
     },
     {
         "identifier": 'EVENT_403_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_403_action_queue_sync_6_SUBSCRIPT_transfer_to_xyzf_0',
@@ -60,8 +60,8 @@ script = [
     },
     {
         "identifier": 'EVENT_403_start_embedded_action_script_async_F1_7',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.NPC_7],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_7, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_403_start_embedded_action_script_async_F1_7_SUBSCRIPT_transfer_to_xyzf_0',
@@ -108,8 +108,8 @@ script = [
     },
     {
         "identifier": 'EVENT_403_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, False],
         "subscript": [
             {
                 "identifier": 'EVENT_403_action_queue_async_14_SUBSCRIPT_object_memory_modify_bits_0',
@@ -120,8 +120,8 @@ script = [
     },
     {
         "identifier": 'EVENT_403_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 128]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 128]
     },
     {
         "identifier": 'EVENT_403_ret_16',

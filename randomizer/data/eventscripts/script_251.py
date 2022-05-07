@@ -47,47 +47,47 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_251_room_7_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [7, "EVENT_251_room_7_logic"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 7, "EVENT_251_room_7_logic"]
     },
     {
         "identifier": "EVENT_251_room_34_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [34, "EVENT_251_room_34_logic"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 34, "EVENT_251_room_34_logic"]
     },
     {
         "identifier": "EVENT_251_room_74_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [74, "EVENT_251_room_74_logic"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 74, "EVENT_251_room_74_logic"]
     },
     {
         "identifier": "EVENT_251_room_154_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [154, "EVENT_251_room_154_logic"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 154, "EVENT_251_room_154_logic"]
     },
     {
         "identifier": "EVENT_251_room_190_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [190, "EVENT_251_room_190_191_logic"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 190, "EVENT_251_room_190_191_logic"]
     },
     {
         "identifier": "EVENT_251_room_191_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [191, "EVENT_251_room_190_191_logic"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 191, "EVENT_251_room_190_191_logic"]
     },
     {
         "identifier": "EVENT_251_room_336_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [336, "EVENT_251_room_336_logic"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 336, "EVENT_251_room_336_logic"]
     },
     {"identifier": "EVENT_251_cancel", "command": "ret"},
-    {"identifier": "EVENT_251_room_7_logic", "command": "set", "args": [0x7000, 5]},
+    {"identifier": "EVENT_251_room_7_logic", "command": "set_var_to_const", "args": [0x7000, 5]},
     {
         "identifier": "EVENT_251_room_7_logic_1",
         "command": "jmp_to_event",
         "args": [158],
     },
-    {"identifier": "EVENT_251_room_34_logic", "command": "set", "args": [0x70A7, 109]},
+    {"identifier": "EVENT_251_room_34_logic", "command": "set_var_to_const", "args": [0x70A7, 109]},
     {
         "identifier": "EVENT_251_room_34_logic_",
         "command": "jmp_to_event",
@@ -108,7 +108,7 @@ script = [
         "command": "jmp_to_event",
         "args": [157],
     },
-    {"identifier": "EVENT_251_room_336_logic", "command": "set", "args": [0x70A7, 34]},
+    {"identifier": "EVENT_251_room_336_logic", "command": "set_var_to_const", "args": [0x70A7, 34]},
     {
         "identifier": "EVENT_251_room_336_logic_",
         "command": "jmp_to_event",

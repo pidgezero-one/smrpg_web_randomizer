@@ -4,14 +4,14 @@ from randomizer.data import items
 script = [
 
     {
-        "identifier": 'EVENT_2672_set_random_93',
-        "command": 'set_random',
+        "identifier": 'EVENT_2672_set_var_to_random_93',
+        "command": 'set_var_to_random',
         "args": [0x7000, 21]
     },
     {
         "identifier": 'EVENT_2672_mem_compare_val_94',
-        "command": 'mem_compare_val',
-        "args": [3]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 3]
     },
     {
         "identifier": 'EVENT_2672_jmp_if_comparison_result_is_lesser_95',

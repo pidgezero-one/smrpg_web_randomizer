@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_376_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_376_action_queue_async_4_SUBSCRIPT_shadow_off_0',
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_376_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 98]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 98]
     },
     {
         "identifier": 'EVENT_376_jmp_if_object_in_level_6',
@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'EVENT_376_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, False],
         "subscript": [
             {
                 "identifier": 'EVENT_376_action_queue_async_8_SUBSCRIPT_shadow_off_0',
@@ -88,8 +88,8 @@ script = [
     },
     {
         "identifier": 'EVENT_376_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 128]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 128]
     },
     {
         "identifier": 'EVENT_376_jmp_if_object_in_level_10',
@@ -98,8 +98,8 @@ script = [
     },
     {
         "identifier": 'EVENT_376_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_376_action_queue_async_11_SUBSCRIPT_shadow_off_0',
@@ -118,8 +118,8 @@ script = [
     },
     {
         "identifier": 'EVENT_376_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_376_action_queue_sync_12_SUBSCRIPT_set_priority_0',
@@ -130,8 +130,8 @@ script = [
     },
     {
         "identifier": 'EVENT_376_action_queue_async_13',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": 'EVENT_376_action_queue_async_13_SUBSCRIPT_set_priority_0',

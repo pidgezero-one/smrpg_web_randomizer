@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3807_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3807_action_queue_sync_1_SUBSCRIPT_visibility_off_0',
@@ -28,18 +28,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3807_set_temp_action_script_sync_2',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.NPC_3, 803]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.NPC_3, True, 803]
     },
     {
         "identifier": 'EVENT_3807_set_temp_action_script_async_3',
-        "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_2, 803]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.NPC_2, False, 803]
     },
     {
         "identifier": 'EVENT_3807_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3807_action_queue_sync_4_SUBSCRIPT_set_priority_0',
@@ -70,8 +70,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3807_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3807_action_queue_sync_5_SUBSCRIPT_set_priority_0',
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3807_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_10, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3807_action_queue_sync_6_SUBSCRIPT_transfer_xyzf_pixels_0',

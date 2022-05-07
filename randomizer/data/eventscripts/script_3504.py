@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3504_mem_compare_val_5',
-        "command": 'mem_compare_val',
-        "args": [288]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 288]
     },
     {
         "identifier": 'EVENT_3504_jmp_if_comparison_result_is_greater_or_equal_6',
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3504_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_clear_solidity_bits_0',
@@ -103,7 +103,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_mem_compare_10',
-                "command": 'mem_compare',
+                "command": "compare_var_to_const",
                 "args": [0x7024, 65475]
             },
             {
@@ -118,7 +118,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_add_short_13',
-                "command": 'add_short',
+                "command": "add_const_to_var",
                 "args": [0x7024, 0xfffe]
             },
             {
@@ -154,7 +154,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3504_set_short_12',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701c, 0x0002]
     },
     {
@@ -173,12 +173,12 @@ script = [
     },
     {
         "identifier": 'EVENT_3504_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 711]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 711]
     },
     {
         "identifier": 'EVENT_3504_set_short_17',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0030]
     },
     {

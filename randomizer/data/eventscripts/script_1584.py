@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1584_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
@@ -65,8 +65,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1584_action_queue_async_4_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1584_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1584_action_queue_async_4__',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1584_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
@@ -124,7 +124,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1584_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 37]
     },
     {
@@ -134,7 +134,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1584_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 43]
     },
     {
@@ -183,7 +183,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1584_set_12',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 0]
     },
     {
@@ -198,7 +198,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1584_set_16',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ad, 0]
     },
     {
@@ -342,8 +342,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1584_set_action_script_async_45',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 10]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 10]
     },
     {
         "identifier": 'EVENT_1584_jmp_if_bit_clear_7',

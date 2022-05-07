@@ -20,8 +20,8 @@ script = [
     },
     {
         "identifier": 'ACTION_703_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [20, 'ACTION_703_set_sprite_sequence_7']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 20, 'ACTION_703_set_sprite_sequence_7']
     },
     {
         "identifier": 'ACTION_703_set_sprite_sequence_4',
@@ -59,8 +59,8 @@ script = [
     },
     {
         "identifier": 'ACTION_703_jmp_if_700C_equals_short_11',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [20, 'ACTION_703_set_sprite_sequence_15']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 20, 'ACTION_703_set_sprite_sequence_15']
     },
     {
         "identifier": 'ACTION_703_set_sprite_sequence_12',
@@ -98,8 +98,8 @@ script = [
     },
     {
         "identifier": 'ACTION_703_jmp_if_700C_equals_short_19',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [20, 'ACTION_703_set_sprite_sequence_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 20, 'ACTION_703_set_sprite_sequence_23']
     },
     {
         "identifier": 'ACTION_703_set_sprite_sequence_20',

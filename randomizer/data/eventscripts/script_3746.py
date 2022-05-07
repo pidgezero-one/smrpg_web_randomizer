@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3746_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3746_action_queue_async_4_SUBSCRIPT_floating_off_0',
@@ -61,12 +61,12 @@ script = [
     },
     {
         "identifier": 'EVENT_3746_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_3746_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 49]
     },
     {

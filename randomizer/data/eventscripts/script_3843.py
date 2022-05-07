@@ -16,8 +16,8 @@ script = [
         "args": [0x7081, 7, 'EVENT_3843_jmp_if_bit_set_6']
     },
     {
-        "identifier": 'EVENT_3843_jmp_if_var_equals_byte_1',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3843_jmp_if_var_equals_const_1',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70de, 9, 'EVENT_3843_enter_area_4']
     },
     {
@@ -41,11 +41,11 @@ script = [
     {
         "identifier": 'EVENT_3843_jmp_if_bit_set_6',
         "command": 'jmp_if_bit_set',
-        "args": [0x7082, 0, 'EVENT_3843_jmp_if_var_equals_byte_1']
+        "args": [0x7082, 0, 'EVENT_3843_jmp_if_var_equals_const_1']
     },
     {
-        "identifier": 'EVENT_3843_jmp_if_var_equals_byte_7',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3843_jmp_if_var_equals_const_7',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70de, 9, 'EVENT_3843_enter_area_10']
     },
     {

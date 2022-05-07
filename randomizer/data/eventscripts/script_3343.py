@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3343_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_3_SUBSCRIPT_db_0',
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3343_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_4_SUBSCRIPT_db_0',
@@ -58,8 +58,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3343_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_5_SUBSCRIPT_db_0',
@@ -79,8 +79,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3343_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_6_SUBSCRIPT_db_0',
@@ -100,8 +100,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3343_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_7_SUBSCRIPT_db_0',

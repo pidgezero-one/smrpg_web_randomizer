@@ -7,23 +7,23 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_446_dec_short_0',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_446_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_446_jmp_if_var_equals_const_1',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7026, 10, 'EVENT_446_set_7000_to_7000_short_mem_23']
     },
     {
-        "identifier": 'EVENT_446_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_446_jmp_if_var_equals_const_2',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7026, 0, 'EVENT_446_run_dialog_6']
     },
     {
         "identifier": 'EVENT_446_set_7000_to_7000_short_mem_3',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_446_run_dialog_4',
@@ -80,8 +80,8 @@ script = [
     },
     {
         "identifier": 'EVENT_446_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_446_pause_16',
@@ -104,7 +104,7 @@ script = [
     },
     {
         "identifier": 'EVENT_446_set_short_20',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701c, 0x0050]
     },
     {
@@ -118,13 +118,13 @@ script = [
     },
     {
         "identifier": 'EVENT_446_set_7000_to_7000_short_mem_23',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_446_mem_compare_val_24',
-        "command": 'mem_compare_val',
-        "args": [20]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 20]
     },
     {
         "identifier": 'EVENT_446_jmp_if_comparison_result_is_greater_or_equal_25',
@@ -134,7 +134,7 @@ script = [
     {
         "identifier": 'EVENT_446_jmp_26',
         "command": 'jmp',
-        "args": ['EVENT_446_jmp_if_var_equals_short_2']
+        "args": ['EVENT_446_jmp_if_var_equals_const_2']
     },
     {
         "identifier": 'EVENT_446_set_bit_27',
@@ -144,6 +144,6 @@ script = [
     {
         "identifier": 'EVENT_446_jmp_28',
         "command": 'jmp',
-        "args": ['EVENT_446_jmp_if_var_equals_short_2']
+        "args": ['EVENT_446_jmp_if_var_equals_const_2']
     }
 ]

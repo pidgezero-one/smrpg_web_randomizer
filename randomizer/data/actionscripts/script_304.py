@@ -24,23 +24,23 @@ script = [
     },
     {
         "identifier": 'ACTION_304_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_304_pause_8']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_304_pause_8']
     },
     {
         "identifier": 'ACTION_304_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_304_pause_9']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_304_pause_9']
     },
     {
         "identifier": 'ACTION_304_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [4, 'ACTION_304_pause_10']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 4, 'ACTION_304_pause_10']
     },
     {
         "identifier": 'ACTION_304_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [6, 'ACTION_304_jmp_to_subroutine_11']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 6, 'ACTION_304_jmp_to_subroutine_11']
     },
     {
         "identifier": 'ACTION_304_pause_8',

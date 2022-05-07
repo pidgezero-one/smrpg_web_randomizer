@@ -10,8 +10,8 @@ script = [
     },
     {
         "identifier": 'ACTION_775_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [20, 'ACTION_775_set_short_11']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 20, 'ACTION_775_set_short_11']
     },
     {
         "identifier": 'ACTION_775_play_sound_2',
@@ -60,7 +60,7 @@ script = [
     },
     {
         "identifier": 'ACTION_775_set_short_11',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0xffff]
     },
     {
@@ -69,8 +69,8 @@ script = [
         "args": [0xc7, 0x00]
     },
     {
-        "identifier": 'ACTION_775_create_packet_at_7010_coords_jmp_if_null_13',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'ACTION_775_create_packet_at_7010_13',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._032_BLUE_CLOUD, 'ACTION_775_pause_14']
     },
     {

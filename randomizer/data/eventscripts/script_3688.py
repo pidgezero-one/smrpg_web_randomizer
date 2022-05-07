@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3688_mem_compare_1',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7014, 2]
     },
     {
@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3688_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3688_action_queue_sync_12_SUBSCRIPT_clear_solidity_bits_0',
@@ -103,8 +103,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3688_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3688_action_queue_async_14_SUBSCRIPT_object_memory_set_bit_0',

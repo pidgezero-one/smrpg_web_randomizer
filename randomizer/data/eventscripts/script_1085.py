@@ -7,68 +7,68 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_147',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1085_pause_action_script_160']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1085_pause_action_script_160']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_148',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_1085_pause_action_script_163']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_1085_pause_action_script_163']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_149',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_1085_pause_action_script_166']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_1085_pause_action_script_166']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_150',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_1085_pause_action_script_169']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_1085_pause_action_script_169']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_151',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [4, 'EVENT_1085_pause_action_script_172']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 4, 'EVENT_1085_pause_action_script_172']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_152',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_1085_pause_action_script_175']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 5, 'EVENT_1085_pause_action_script_175']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_153',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_1085_pause_action_script_178']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 6, 'EVENT_1085_pause_action_script_178']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_154',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65535, 'EVENT_1085_pause_action_script_181']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65535, 'EVENT_1085_pause_action_script_181']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_155',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65534, 'EVENT_1085_pause_action_script_184']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65534, 'EVENT_1085_pause_action_script_184']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_156',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65533, 'EVENT_1085_pause_action_script_187']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65533, 'EVENT_1085_pause_action_script_187']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_157',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65532, 'EVENT_1085_pause_action_script_190']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65532, 'EVENT_1085_pause_action_script_190']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_158',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65531, 'EVENT_1085_pause_action_script_193']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65531, 'EVENT_1085_pause_action_script_193']
     },
     {
         "identifier": 'EVENT_1085_jmp_if_7000_equals_short_159',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65530, 'EVENT_1085_pause_action_script_196']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65530, 'EVENT_1085_pause_action_script_196']
     },
     {
         "identifier": 'EVENT_1085_pause_action_script_160',
@@ -77,8 +77,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_161',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_161_SUBSCRIPT_face_northeast_0',
@@ -121,8 +121,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_164',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_164_SUBSCRIPT_face_northeast_0',
@@ -165,8 +165,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_167',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_167_SUBSCRIPT_face_north_0',
@@ -209,8 +209,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_170',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_170_SUBSCRIPT_face_north_0',
@@ -253,8 +253,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_173',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_173_SUBSCRIPT_face_northwest_0',
@@ -297,8 +297,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_176',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_176_SUBSCRIPT_face_northwest_0',
@@ -341,8 +341,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_179',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_179_SUBSCRIPT_face_northwest_0',
@@ -385,8 +385,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_182',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_182_SUBSCRIPT_face_northeast_0',
@@ -429,8 +429,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_185',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_185_SUBSCRIPT_face_east_0',
@@ -473,8 +473,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_188',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_188_SUBSCRIPT_face_east_0',
@@ -517,8 +517,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_191',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_191_SUBSCRIPT_face_southeast_0',
@@ -561,8 +561,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_194',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_194_SUBSCRIPT_face_southeast_0',
@@ -605,8 +605,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1085_action_queue_async_197',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1085_action_queue_async_197_SUBSCRIPT_face_southeast_0',

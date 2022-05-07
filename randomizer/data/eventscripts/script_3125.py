@@ -7,12 +7,12 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3125_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0008]
     },
     {
         "identifier": 'EVENT_3125_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0064]
     },
     {
@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3125_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3125_action_queue_sync_6_SUBSCRIPT_jump_to_height_silent_0',

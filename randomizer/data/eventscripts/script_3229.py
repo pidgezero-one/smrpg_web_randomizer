@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": "EVENT_3229_action_queue_async_1",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": "EVENT_3229_action_queue_async_1_SUBSCRIPT_play_sound_0",
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": "EVENT_3229_action_queue_sync_2",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_3229_action_queue_sync_2_SUBSCRIPT_start_loop_n_times_0",
@@ -174,8 +174,8 @@ script = [
     },
     {
         "identifier": "EVENT_3229_action_queue_async_3",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": "EVENT_3229_action_queue_async_3_SUBSCRIPT_start_loop_n_times_0",
@@ -282,7 +282,7 @@ script = [
     {"identifier": "EVENT_3229_set_bit_6", "command": "set_bit", "args": [0x707C, 7]},
     {
         "identifier": "EVENT_3229_set_short_7",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x700E, 0x004D],
     },
     {
@@ -292,8 +292,8 @@ script = [
     },
     {
         "identifier": "EVENT_3229_action_queue_sync_9",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.NPC_0],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": "EVENT_3229_action_queue_sync_9_SUBSCRIPT_visibility_off_0",
@@ -326,8 +326,8 @@ script = [
     },
     {
         "identifier": "EVENT_3229_action_queue_async_10",
-        "command": "action_queue_async",
-        "args": [AreaObjects.NPC_1],
+        "command": "action_queue",
+        "args": [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": "EVENT_3229_action_queue_async_10_SUBSCRIPT_visibility_off_0",

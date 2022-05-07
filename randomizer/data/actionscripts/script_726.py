@@ -81,18 +81,18 @@ script = [
     },
     {
         "identifier": 'ACTION_726_jmp_if_700C_equals_short_16',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_726_pause_21']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_726_pause_21']
     },
     {
         "identifier": 'ACTION_726_jmp_if_700C_equals_short_17',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_726_pause_22']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_726_pause_22']
     },
     {
         "identifier": 'ACTION_726_jmp_if_700C_equals_short_18',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [3, 'ACTION_726_pause_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 3, 'ACTION_726_pause_23']
     },
     {
         "identifier": 'ACTION_726_turn_random_direction_19',
@@ -365,8 +365,8 @@ script = [
     },
     {
         "identifier": 'ACTION_726_mem_compare_val_75',
-        "command": 'mem_compare_val',
-        "args": [10]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 10]
     },
     {
         "identifier": 'ACTION_726_jmp_if_comparison_result_is_greater_or_equal_76',
@@ -390,8 +390,8 @@ script = [
     },
     {
         "identifier": 'ACTION_726_mem_compare_val_80',
-        "command": 'mem_compare_val',
-        "args": [10]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 10]
     },
     {
         "identifier": 'ACTION_726_jmp_if_comparison_result_is_greater_or_equal_81',

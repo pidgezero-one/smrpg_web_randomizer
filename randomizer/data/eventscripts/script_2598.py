@@ -77,32 +77,32 @@ script = [
     },
     {
         "identifier": 'EVENT_2598_set_14',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70da, 0]
     },
     {
         "identifier": 'EVENT_2598_set_15',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70db, 0]
     },
     {
         "identifier": 'EVENT_2598_set_16',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70dc, 0]
     },
     {
         "identifier": 'EVENT_2598_set_17',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70dd, 0]
     },
     {
         "identifier": 'EVENT_2598_set_9_',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70f8, 0]
     },
     {
         "identifier": 'EVENT_2598_set_9__',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70f9, 0]
     },
     {
@@ -112,8 +112,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2598_action_queue_async_19',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2598_action_queue_async_19_SUBSCRIPT_visibility_off_0',
@@ -131,13 +131,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2598_set_action_script_async_22',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 482]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 482]
     },
     {
         "identifier": 'EVENT_2598_set_action_script_async_23',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2598_unfreeze_camera_24',

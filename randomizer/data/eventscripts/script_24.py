@@ -32,7 +32,7 @@ script = [
     {
         "identifier": 'EVENT_24_jmp_if_bit_clear_5',
         "command": 'jmp_if_bit_clear',
-        "args": [0x707c, 7, 'EVENT_24_jmp_if_var_not_equals_byte_9']
+        "args": [0x707c, 7, 'EVENT_24_jmp_if_var_not_equals_const_9']
     },
     {
         "identifier": 'EVENT_24_disable_trigger_6',
@@ -50,13 +50,13 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_24_jmp_if_var_not_equals_byte_9',
-        "command": 'jmp_if_var_not_equals_byte',
+        "identifier": 'EVENT_24_jmp_if_var_not_equals_const_9',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x70bb, 255, 'EVENT_24_inc_11']
     },
     {
         "identifier": 'EVENT_24_set_10',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70bb, 0]
     },
     {
@@ -92,8 +92,8 @@ script = [
     },
     {
         "identifier": 'EVENT_24_set_temp_action_script_sync_18',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 2]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 2]
     },
     {
         "identifier": 'EVENT_24_jmp_if_bit_set_19',

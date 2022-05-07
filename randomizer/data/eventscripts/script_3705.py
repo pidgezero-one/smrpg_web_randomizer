@@ -81,8 +81,8 @@ script = [
     {"identifier": "EVENT_3705_ret_6", "command": "ret"},
     {
         "identifier": "EVENT_3705_set_temp_action_script_sync_7",
-        "command": "set_temp_action_script_sync",
-        "args": [AreaObjects.MEM_70A8, 2],
+        "command": "set_action_script",
+        "args": [AreaObjects.MEM_70A8, True, 2],
     },
     {
         "identifier": "EVENT_3705_set_7000_to_current_level_8",
@@ -90,18 +90,18 @@ script = [
     },
     {
         "identifier": "EVENT_3705_jmp_if_7000_equals_short_9",
-        "command": "jmp_if_7000_equals_short",
-        "args": [410, "EVENT_3705_set_temp_action_script_sync_14"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 410, "EVENT_3705_set_temp_action_script_sync_14"]
     },
     {
         "identifier": "EVENT_3705_set_temp_action_script_sync_10",
-        "command": "set_temp_action_script_sync",
-        "args": [AreaObjects.NPC_5, 2],
+        "command": "set_action_script",
+        "args": [AreaObjects.NPC_5, True, 2],
     },
     {
         "identifier": "EVENT_3705_set_temp_action_script_sync_11",
-        "command": "set_temp_action_script_sync",
-        "args": [AreaObjects.NPC_6, 2],
+        "command": "set_action_script",
+        "args": [AreaObjects.NPC_6, True, 2],
     },
     {
         "identifier": "EVENT_3705_fade_in_from_black_async_12",
@@ -110,13 +110,13 @@ script = [
     {"identifier": "EVENT_3705_ret_13", "command": "ret"},
     {
         "identifier": "EVENT_3705_set_temp_action_script_sync_14",
-        "command": "set_temp_action_script_sync",
-        "args": [AreaObjects.NPC_6, 2],
+        "command": "set_action_script",
+        "args": [AreaObjects.NPC_6, True, 2],
     },
     {
         "identifier": "EVENT_3705_set_temp_action_script_sync_15",
-        "command": "set_temp_action_script_sync",
-        "args": [AreaObjects.NPC_7, 2],
+        "command": "set_action_script",
+        "args": [AreaObjects.NPC_7, True, 2],
     },
     {
         "identifier": "EVENT_3705_fade_in_from_black_async_16",

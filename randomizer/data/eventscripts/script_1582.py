@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1582_set_action_script_async_6',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 10]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 10]
     },
     {
         "identifier": 'EVENT_1582_ret_7',

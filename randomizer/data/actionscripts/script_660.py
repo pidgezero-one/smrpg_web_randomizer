@@ -10,13 +10,13 @@ script = [
     },
     {
         "identifier": 'ACTION_660_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [378, 'ACTION_660_shadow_off_9']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 378, 'ACTION_660_shadow_off_9']
     },
     {
         "identifier": 'ACTION_660_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [381, 'ACTION_660_shadow_off_9']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 381, 'ACTION_660_shadow_off_9']
     },
     {
         "identifier": 'ACTION_660_set_animation_speed_3',

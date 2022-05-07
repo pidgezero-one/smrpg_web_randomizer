@@ -5,6 +5,7 @@ import numbers
 
 bank_lengths = [1536, 1536, 1024]
 
+
 class EventScript:
     def __init__(self):
         self.commands = []
@@ -351,35 +352,23 @@ class EventScript:
     # Commands
 
     # 0x00-0x30 assemblers are below
-    def action_queue_async(self, obj, script):
+    def action_queue(self, obj, sync, script):
         self.append_byte(obj)
-        assert (len(script) + (0x80)) < 0xF0 # if 2nd byte is >= 0xF0, that's a different command
-        self.append_byte(0x00 + (0x80) + len(script))
+        sync_bit = 0x80 * (not sync)
+        assert (len(script) + sync_bit) < 0xF0 # if 2nd byte is >= 0xF0, that's a different command
+        self.append_byte(sync_bit + len(script))
         for b in script:
             self.commands.append(b)
         return self
 
-    def action_queue_sync(self, obj, script):
+    def start_embedded_action_script(self, obj, sync, prefix, script):
+        if prefix != 0xF1 and prefix != 0xF0:
+            1/0
+        sync_bit = 0x80 * (not sync)
         self.append_byte(obj)
-        assert len(script) < 0x80 # if 2nd byte is >= 0x80, that's a different command
-        self.append_byte(0x00 + len(script))
-        for b in script:
-            self.commands.append(b)
-        return self
-
-    def start_embedded_action_script_async_F0(self, obj, script):
-        self.append_byte(obj)
-        self.append_byte(0xF0)
+        self.append_byte(prefix)
         assert len(script) < 0x80
-        self.append_byte(0x00 + (0x80) + len(script))
-        for b in script:
-            self.commands.append(b)
-        return self
-    def start_embedded_action_script_async_F1(self, obj, script):
-        self.append_byte(obj)
-        self.append_byte(0xF1)
-        assert len(script) < 0x80
-        self.append_byte(0x00 + (0x80) + len(script))
+        self.append_byte(sync_bit + len(script))
         for b in script:
             self.commands.append(b)
         return self
@@ -389,46 +378,17 @@ class EventScript:
             self.commands.append(b)
         return self
 
-    def start_embedded_action_script_sync_F0(self, obj, script):
-        self.append_byte(obj)
-        self.append_byte(0xF0)
-        assert len(script) < 0x80
-        self.append_byte(0x00 + len(script))
-        for b in script:
-            self.commands.append(b)
-        return self
-    def start_embedded_action_script_sync_F1(self, obj, script):
-        self.append_byte(obj)
-        self.append_byte(0xF1)
-        assert len(script) < 0x80
-        self.append_byte(0x00 + len(script))
-        for b in script:
-            self.commands.append(b)
-        return self
-
     # 0xF2 indistinguishable from 0xF1
 
-    def set_action_script_sync(self, obj, script_id):
+    def set_action_script(self, obj, sync, script_id):
         self.append_byte(obj)
-        self.append_byte(0xF2)
+        self.append_byte(0xF2 + (not sync))
         self.append_short(script_id)
         return self
 
-    def set_action_script_async(self, obj, script_id):
+    def set_temp_action_script(self, obj, sync, script_id):
         self.append_byte(obj)
-        self.append_byte(0xF3)
-        self.append_short(script_id)
-        return self
-
-    def set_temp_action_script_sync(self, obj, script_id):
-        self.append_byte(obj)
-        self.append_byte(0xF4)
-        self.append_short(script_id)
-        return self
-
-    def set_temp_action_script_async(self, obj, script_id):
-        self.append_byte(obj)
-        self.append_byte(0xF5)
+        self.append_byte(0xF4 + (not sync))
         self.append_short(script_id)
         return self
 
@@ -484,25 +444,33 @@ class EventScript:
 
     # other event functions are below
 
-    # 0xA9, 0xAD
-    def add(self, address, value):
-        if 0x70A0 <= address <= 0x719F:
+    # 0xA9, 0xAD, 0xB1
+    def add_const_to_var(self, address, value):
+        if 0x70A0 <= address <= 0x719F and 0 <= value <= 0xFF:
             self.append_byte(0xA9)
             self.append_byte(address - 0x70A0)
             self.append_byte(value)
         elif address == 0x7000:
             self.append_byte(0xAD)
             self.append_short(value)
+        elif 0x7000 < address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xB1)
+            self.append_byte((address - 0x7000) // 2)
+            self.append_short(value)
         else:
             1/0
         return self
-    # 0xAA, 0xAE
+        
+    # 0xAA, 0xAE, 0xB2
     def inc(self, address):
         if 0x70A0 <= address <= 0x719F:
             self.append_byte(0xAA)
             self.append_byte(address - 0x70A0)
         elif address == 0x7000:
             self.append_byte(0xAE)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xB2)
+            self.append_byte((address - 0x7000) // 2)
         else:
             1/0
         return self
@@ -517,12 +485,6 @@ class EventScript:
             self.append_byte(amount)
         return self
 
-    # 0xFD 0x56
-    def add_current_FP_7000(self):
-        self.append_byte(0xFD)
-        self.append_byte(0x56)
-        return self
-
     # 0x53, FD 0x54
     def add_frog_coins(self, amount):
         if amount == 0x7000:
@@ -533,35 +495,23 @@ class EventScript:
             self.append_byte(amount)
             return self
 
+    # 0xFD 0x56
+    def add_7000_to_current_FP(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x56)
+        return self
+
     # 0xFD 0x57
-    def add_max_FP_7000(self):
+    def add_7000_to_max_FP(self):
         self.append_byte(0xFD)
         self.append_byte(0x57)
         return self
 
-    # 0xB1
-    def add_short(self, address, value):
-        if 0x7000 <= address <= 0x71FE:
-            self.append_byte(0xB1)
-            self.append_byte((address - 0x7000) // 2)
-            self.append_short(value)
-        else:
-            1/0
-        return self
-    # 0xB2
-    def inc_short(self, address):
-        if 0x7000 <= address <= 0x71FE:
-            self.append_byte(0xB2)
-            self.append_byte((address - 0x7000) // 2)
-        else:
-            1/0
-        return self
-
     # 0xB8
-    def add_short_mem(self, address_left, address_right):
-        if address_left == 0x7000 and 0x7000 <= address_right <= 0x71FE:
+    def add_var_to_7000(self, address):
+        if 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xB8)
-            self.append_byte((address_right - 0x7000) // 2)
+            self.append_byte((address - 0x7000) // 2)
         else:
             1/0
         return self
@@ -648,23 +598,23 @@ class EventScript:
         self.append_byte(0x64)
         return self
 
-    # 0x3F
-    def create_packet_at_7010_coords_jmp_if_null(self, packet_id, address):
-        self.append_byte(0x3F)
-        self.append_byte(packet_id)
-        self.append_short(self.get_branch_address(address))
-        return self
-
     # 0x3E
-    def create_packet_at_object_coords_jmp_if_null(self, packet_id, object_id, address):
+    def create_packet_at_npc_coords(self, packet_id, object_id, address):
         self.append_byte(0x3E)
         self.append_byte(packet_id)
         self.append_byte(object_id)
         self.append_short(self.get_branch_address(address))
         return self
 
+    # 0x3F
+    def create_packet_at_7010(self, packet_id, address):
+        self.append_byte(0x3F)
+        self.append_byte(packet_id)
+        self.append_short(self.get_branch_address(address))
+        return self
+
     # FD 0x3E
-    def create_packet_event_at_coords_jmp_if_null(self, packet_id, event_id, address):
+    def create_packet_at_7010_with_event(self, packet_id, event_id, address):
         self.append_byte(0xFD)
         self.append_byte(0x3E)
         self.append_byte(packet_id)
@@ -679,13 +629,25 @@ class EventScript:
         self.append_byte(self.consolidate_flags(flags))
         return self
 
-    # 0xAB
+    # 0xAB, AF, B3
     def dec(self, address):
         if 0x70A0 <= address <= 0x719F:
             self.append_byte(0xAB)
             self.append_byte(address - 0x70A0)
         elif address == 0x7000:
             self.append_byte(0xAF)
+        elif 0x7000 < address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xB3)
+            self.append_byte((address - 0x7000) // 2)
+        return self
+
+    # 0xB9
+    def dec_var_from_7000(self, address):
+        if 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xB9)
+            self.append_byte((address - 0x7000) // 2)
+        else:
+            1/0
         return self
 
     # 0xFD 0x53
@@ -695,35 +657,20 @@ class EventScript:
         return self
 
     # 0x57
-    def dec_current_FP_7000(self):
+    def dec_7000_from_current_FP(self):
         self.append_byte(0x57)
         return self
 
     # 0x56
-    def dec_current_HP_7000(self, character):
+    def dec_7000_from_current_HP(self, character):
         self.append_byte(0x56)
         self.append_byte(character)
         return self
 
     # 0xFD 0x55
-    def dec_frog_coins_7000(self):
+    def dec_7000_from_frog_coins(self):
         self.append_byte(0xFD)
         self.append_byte(0x55)
-        return self
-
-    # 0xB3
-    def dec_short(self, address):
-        assert 0x7000 <= address <= 0x71FE
-        self.append_byte(0xB3)
-        self.append_byte((address - 0x7000) // 2)
-
-    # 0xB9
-    def dec_short_mem(self, address_left, address_right):
-        if address_left == 0x7000 and 0x7000 <= address_right <= 0x71FE:
-            self.append_byte(0xB9)
-            self.append_byte((address_right - 0x7000) // 2)
-        else:
-            1/0
         return self
 
     # FD 0x66
@@ -772,12 +719,12 @@ class EventScript:
         return self
 
     # 0xF6
-    def enable_event_trigger_for_object_at_70A8(self):
+    def enable_trigger_at_70A8(self):
         self.append_byte(0xF6)
         return self
 
     # 0xF7
-    def disable_event_trigger_for_object_at_70A8(self):
+    def disable_trigger_at_70A8(self):
         self.append_byte(0xF7)
         return self
 
@@ -908,9 +855,12 @@ class EventScript:
 
     # FD 0xB7
     def generate_random_num_from_range_var(self, addr):
-        self.append_byte(0xFD)
-        self.append_byte(0xB7)
-        self.append_byte((addr - 0x7000) // 2)
+        if 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xFD)
+            self.append_byte(0xB7)
+            self.append_byte((addr - 0x7000) // 2)
+        else:
+            1/0
         return self
 
     # FD 0x62
@@ -1177,41 +1127,34 @@ class EventScript:
         self.append_short(self.get_branch_address(address))
         return self
 
-    # 0xE0
-    def jmp_if_var_equals_byte(self, test_addr, val, branch):
-        self.db(0xE0, test_addr - 0x70A0, val)
-        self.append_short(self.get_branch_address(branch))
-        return self
-
-    # 0xE2, 0xE4
-    def jmp_if_7000_equals_short(self, val, branch):
-        self.append_byte(0xE2)
-        self.append_short(val)
-        self.append_short(self.get_branch_address(branch))
-        return self
-    def jmp_if_var_equals_short(self, test_addr, val, branch):
-        self.append_byte(0xE4)
-        self.append_byte((test_addr - 0x7000) // 2)
+    # 0xE0, 0xE2, 0xE4
+    def jmp_if_var_equals_const(self, address, val, branch):
+        if 0x70A0 <= address <= 0x719F and 0 <= val <= 0xFF:
+            self.append_byte(0xE0)
+            self.append_byte(address - 0x70A0)
+        elif address == 0x7000:
+            self.append_byte(0xE2)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xE4)
+            self.append_byte((address - 0x7000) // 2)
+        else:
+            1/0
         self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
 
-    # 0xE1
-    def jmp_if_var_not_equals_byte(self, test_addr, val, branch):
-        self.db(0xE1, test_addr - 0x70A0, val)
-        self.append_short(self.get_branch_address(branch))
-        return self
-
-    # 0xE3
-    def jmp_if_7000_not_equals_short(self, val, branch):
-        self.append_byte(0xE3)
-        self.append_short(val)
-        self.append_short(self.get_branch_address(branch))
-        return self
-    # 0xE5
-    def jmp_if_var_not_equals_short(self, test_addr, val, branch):
-        self.append_byte(0xE5)
-        self.append_byte((test_addr - 0x7000) // 2)
+    # 0xE1, 0xE3, 0xE5
+    def jmp_if_var_not_equals_const(self, address, val, branch):
+        if 0x70A0 <= address <= 0x719F and 0 <= val <= 0xFF:
+            self.append_byte(0xE1)
+            self.append_byte(address - 0x70A0)
+        elif address == 0x7000:
+            self.append_byte(0xE3)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xE5)
+            self.append_byte((address - 0x7000) // 2)
+        else:
+            1/0
         self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
@@ -1232,20 +1175,22 @@ class EventScript:
         return self
 
     # 0xD3
-    def jmp_to_subroutine(self, id):
+    def jmp_to_subroutine(self, subroutine_id):
         self.append_byte(0xD3)
-        self.append_short(id)
+        self.append_short(subroutine_id)
         return self
 
     # 0x36
     def join_party(self, member):
+        assert 0 <= member <= 0x7F
         self.append_byte(0x36)
-        self.append_byte(member | 0x80)
+        self.append_byte(member + 0x80)
         return self
 
     def leave_party(self, member):
+        assert 0 <= member <= 0x0F
         self.append_byte(0x36)
-        self.append_byte(member & ~0x80)
+        self.append_byte(member & 0x7F)
         return self
 
     # 0x5D
@@ -1278,6 +1223,7 @@ class EventScript:
 
     # FD 0xB3
     def mem_7000_and_var(self, address):
+        assert 0x7000 <= address <= 0x71FE and address % 2 == 0
         self.append_byte(0xFD)
         self.append_byte(0xB3)
         self.append_byte((address - 0x7000) // 2)
@@ -1292,6 +1238,7 @@ class EventScript:
 
     # FD 0xB4
     def mem_7000_or_var(self, address):
+        assert 0x7000 <= address <= 0x71FE and address % 2 == 0
         self.append_byte(0xFD)
         self.append_byte(0xB4)
         self.append_byte((address - 0x7000) // 2)
@@ -1319,30 +1266,32 @@ class EventScript:
         self.append_byte((address - 0x7000) // 2)
         return self
 
-    # 0xC0, 0xC1, 0xC2
-    def mem_compare(self, address, value):
-        self.append_byte(0xC2)
-        self.append_byte((address - 0x7000) // 2)
+    # 0xC0, 0xC2
+    def compare_var_to_const(self, address, value):
+        if address == 0x7000:
+            self.append_byte(0xC0)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xC2)
+            self.append_byte((address - 0x7000) // 2)
+        else:
+            1/0
         self.append_short(value)
         return self
 
-    def mem_compare_val(self, value):
-        self.append_byte(0xC0)
-        self.append_short(value)
-        return self
-
-    def mem_compare_address(self, address):
+    # 0xC1
+    def compare_7000_to_var(self, address):
+        assert 0x7000 <= address <= 0x71FE and address % 2 == 0
         self.append_byte(0xC1)
         self.append_byte((address - 0x7000) // 2)
         return self
 
     # 0xBE
-    def move_7010_7012_7014_to_7016_7018_701A(self):
+    def move_7010_7015_to_7016_701B(self):
         self.append_byte(0xBE)
         return self
 
     # 0xBF
-    def move_7016_7018_701A_to_7010_7012_7014(self):
+    def move_7016_701B_to_7010_7015(self):
         self.append_byte(0xBF)
         return self
 
@@ -1415,15 +1364,12 @@ class EventScript:
 
     # 0xF0
     def pause(self, value):
-        assert 1 <= value <= 256
-        self.append_byte(0xF0)
-        self.append_byte(value - 1)
-        return self
-
-    # 0xF1
-    def pause_short(self, value):
-        self.append_byte(0xF1)
-        self.append_short(value - 1)
+        if 1 <= value <= 256:
+            self.append_byte(0xF0)
+            self.append_byte(value - 1)
+        else:
+            self.append_byte(0xF1)
+            self.append_short(value - 1)
         return self
 
     # 0x5B
@@ -1440,11 +1386,6 @@ class EventScript:
     def pause_script_resume_on_next_dialog_page_a(self):
         self.append_byte(0xFD)
         self.append_byte(0x60)
-        return self
-    # FD 0x61
-    def pause_script_resume_on_next_dialog_page_a_FD61(self):
-        self.append_byte(0xFD)
-        self.append_byte(0x61)
         return self
 
     # FD 0x61
@@ -1516,10 +1457,6 @@ class EventScript:
 
     # 0x50
     def put_inventory(self, item):
-        '''try:
-            print(hex(item))
-        except:
-            print(item)'''
         if item == 0x70A7:
             self.append_byte(0xFD)
             self.append_byte(0x50)
@@ -1696,15 +1633,21 @@ class EventScript:
         self.append_byte(colour)
         return self
 
-    # 0xA8
-    def set(self, address, value):
-        if 0x70A0 <= address <= 0x719F:
+    # 0xA8, 0xAC, 0xB0
+    def set_var_to_const(self, address, value):
+        if 0x70A0 <= address <= 0x719F and value <= 0xFF:
             self.append_byte(0xA8)
             self.append_byte(address - 0x70A0)
             self.append_byte(value)
         elif address == 0x7000:
             self.append_byte(0xAC)
             self.append_short(value)
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
+            self.append_byte(0xB0)
+            self.append_byte((address - 0x7000) // 2)
+            self.append_short(value)
+        else:
+            1/0
         return self
 
     # FD 0xAC
@@ -1761,14 +1704,16 @@ class EventScript:
         return self
 
     # 0xB6, 0xB7
-    def set_random(self, address, limit):
+    def set_var_to_random(self, address, limit):
         if address == 0x7000:
             self.append_byte(0xB6)
             self.append_short(limit)
-        else:
+        elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xB7)
             self.append_byte((address - 0x7000) // 2)
             self.append_short(limit)
+        else:
+            1/0
         return self
 
     # 0xC3
@@ -1814,52 +1759,42 @@ class EventScript:
 
     # 0xD6
     def set_object_memory_to(self, address):
+        assert 0x7000 <= address <= 0x71FE and address % 2 == 0
         self.append_byte(0xD6)
         self.append_byte((address - 0x7000) // 2)
         return self
 
-    # 0xB0
-    def set_short(self, address, value):
-        if 0x7000 <= address <= 0x71FE:
-            self.append_byte(0xB0)
-            self.append_byte((address - 0x7000) // 2)
-            self.append_short(value)
+    # 0xB4, 0xB5, 0xBA, 0xBB, 0xBC
+    def copy_var_to_var(self, address_left, address_right): # for some reason, left and right are reversed. in disassembled code, you're actually setting the value of arg 1 to the value of arg 0
+        assert 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE
+        if address_right == 0x7000 and 0x70A0 <= address_left <= 0x719F:
+            self.append_byte(0xB4)
+            self.append_byte(address_left - 0x70A0)
+        elif address_left == 0x7000 and 0x70A0 <= address_right <= 0x719F:
+            self.append_byte(0xB5)
+            self.append_byte(address_right - 0x70A0)
+        elif address_right == 0x7000 and address_left % 2 == 0:
+            self.append_byte(0xBA)
+            self.append_byte((address_left - 0x7000) // 2)
+        elif address_left == 0x7000 and address_right % 2 == 0:
+            self.append_byte(0xBB)
+            self.append_byte((address_right - 0x7000) // 2)
+        elif address_left % 2 == 0 and address_right % 2 == 0:
+            self.append_byte(0xBC)
+            self.append_byte((address_left - 0x7000) // 2)
+            self.append_byte((address_right - 0x7000) // 2)
         else:
             1/0
         return self
 
-    # 0xB4, 0xB5, 0xBA, 0xBB, 0xBC
-    def set_7000_short_mem_to_7000_short_mem(self, address_left, address_right): # for some reason, left and right are reversed. in disassembled code, you're actually setting the value of arg 1 to the value of arg 0
-        assert 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE
-        self.append_byte(0xBC)
-        self.append_byte((address_left - 0x7000) // 2)
-        self.append_byte((address_right - 0x7000) // 2)
-        return self
-    def set_7000_to_70A0_short_mem(self, address):
-        self.append_byte(0xB4)
-        self.append_byte(address - 0x70A0)
-        return self
-    def set_70A0_short_mem_to_7000(self, address):
-        self.append_byte(0xB5)
-        self.append_byte(address - 0x70A0)
-        return self
-    def set_7000_to_7000_short_mem(self, address):
-        self.append_byte(0xBA)
-        self.append_byte((address - 0x7000) // 2)
-        return self
-    def set_7000_short_mem_to_7000(self, address):
-        self.append_byte(0xBB)
-        self.append_byte((address - 0x7000) // 2)
-        return self
-
     # 0x38
-    def set_short_member_in_slot(self, slot):
+    def set_7000_to_member_in_slot(self, slot):
         self.append_byte(0x38)
         self.append_byte(slot + 0x08)
         return self
 
     # 0x37
-    def set_short_party_capacity(self):
+    def set_7000_to_party_capacity(self):
         self.append_byte(0x37)
         return self
 
@@ -2079,7 +2014,7 @@ class EventScript:
         return self
 
     # 0xBD
-    def swap_short_mem(self, address_left, address_right):
+    def swap_vars(self, address_left, address_right):
         if 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE:
             self.append_byte(0xBD)
             self.append_byte((address_left - 0x7000) // 2)

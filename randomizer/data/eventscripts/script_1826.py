@@ -7,17 +7,17 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1826_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x1080]
     },
     {
         "identifier": 'EVENT_1826_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x3980]
     },
     {
         "identifier": 'EVENT_1826_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703c, 0x0200]
     },
     {
@@ -57,18 +57,18 @@ script = [
     },
     {
         "identifier": 'EVENT_1826_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 822]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 822]
     },
     {
         "identifier": 'EVENT_1826_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 822]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 822]
     },
     {
         "identifier": 'EVENT_1826_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 822]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 822]
     },
     {
         "identifier": 'EVENT_1826_jmp_to_event_14',

@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2586_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2586_action_queue_async_1_SUBSCRIPT_set_priority_0',
@@ -38,8 +38,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2586_set_action_script_async_12',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_9, 851]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, False, 851]
     },
     {
         "identifier": 'EVENT_2586_ret_13',
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2586_set_temp_action_script_sync_14',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.NPC_9, 2]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.NPC_9, True, 2]
     },
     {
         "identifier": 'EVENT_2586_fade_in_from_black_async_15',
@@ -64,8 +64,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2586_action_queue_async_18',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2586_action_queue_async_18_SUBSCRIPT_set_sprite_sequence_0',
@@ -84,8 +84,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2586_set_action_script_async_23',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_9, 851]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, False, 851]
     },
     {
         "identifier": 'EVENT_2586_pause_31',
@@ -94,13 +94,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2586_set_action_script_async_32',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 384]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 384]
     },
     {
         "identifier": 'EVENT_2586_set_action_script_async_33',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2586_ret_34',

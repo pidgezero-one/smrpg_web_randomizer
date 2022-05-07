@@ -8,8 +8,8 @@ script = [
     
     {
         "identifier": 'EVENT_939_action_queue_async_39',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_shift_to_xy_coords_0',

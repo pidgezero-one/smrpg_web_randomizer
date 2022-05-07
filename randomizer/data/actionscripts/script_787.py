@@ -10,8 +10,8 @@ script = [
     },
     {
         "identifier": 'ACTION_787_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [346, 'ACTION_787_set_animation_speed_10']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 346, 'ACTION_787_set_animation_speed_10']
     },
     {
         "identifier": 'ACTION_787_set_animation_speed_2',

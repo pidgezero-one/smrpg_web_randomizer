@@ -59,33 +59,33 @@ script = [
     },
     {
         "identifier": 'ACTION_176_jmp_if_700C_equals_short_11',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [20, 'ACTION_176_shadow_off_17']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 20, 'ACTION_176_shadow_off_17']
     },
     {
         "identifier": 'ACTION_176_jmp_if_700C_equals_short_12',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_176_shadow_off_29']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_176_shadow_off_29']
     },
     {
         "identifier": 'ACTION_176_jmp_if_700C_equals_short_13',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [22, 'ACTION_176_shadow_off_52']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 22, 'ACTION_176_shadow_off_52']
     },
     {
         "identifier": 'ACTION_176_jmp_if_700C_equals_short_14',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [24, 'ACTION_176_jmp_if_bit_set_65']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 24, 'ACTION_176_jmp_if_bit_set_65']
     },
     {
         "identifier": 'ACTION_176_jmp_if_700C_equals_short_15',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [25, 'ACTION_176_jmp_if_bit_set_77']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 25, 'ACTION_176_jmp_if_bit_set_77']
     },
     {
         "identifier": 'ACTION_176_jmp_if_700C_equals_short_16',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [26, 'ACTION_176_jmp_if_bit_set_120']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 26, 'ACTION_176_jmp_if_bit_set_120']
     },
     {
         "identifier": 'ACTION_176_shadow_off_17',

@@ -35,13 +35,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3681_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [379, 'EVENT_3681_jmp_to_subroutine_8']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 379, 'EVENT_3681_jmp_to_subroutine_8']
     },
     {
         "identifier": 'EVENT_3681_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [380, 'EVENT_3681_jmp_to_subroutine_14']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 380, 'EVENT_3681_jmp_to_subroutine_14']
     },
     {
         "identifier": 'EVENT_3681_jmp_to_subroutine_8',
@@ -103,8 +103,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3681_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3681_action_queue_async_20_SUBSCRIPT_start_loop_n_times_0',

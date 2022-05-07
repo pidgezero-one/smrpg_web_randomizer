@@ -8,8 +8,8 @@ script = [
     
     {
         "identifier": 'EVENT_3080_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a7]
+        "command": 'copy_var_to_var',
+        'args': [0x70a7, 0x7000]
     },
     {
         "identifier": 'EVENT_3080_mem_7000_and_const_12',
@@ -18,13 +18,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3080_mem_7000_decision',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [240, 'EVENT_3080_reset_7000___']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 240, 'EVENT_3080_reset_7000___']
     },
     {
         "identifier": 'EVENT_3080_set_7000_to_70A0_short_mem__11',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a7]
+        "command": 'copy_var_to_var',
+        'args': [0x70a7, 0x7000]
     },
     {
         "identifier": 'EVENT_3080_mem_7000_and_const__12',
@@ -43,22 +43,22 @@ script = [
 
     {
         "identifier": 'EVENT_3080_reset_7000___',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 0]
     },
     {
         "identifier": 'EVENT_3080_check_multiplier',
-        "command": 'jmp_if_var_equals_short',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70BC, 0, 'EVENT_3080_store_multiplier']
     },
     {
         "identifier": 'EVENT_3080_add_counter',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 15]
     },
     {
         "identifier": 'EVENT_3080_get_multiplier',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x70BC]
     },
     {
@@ -68,15 +68,15 @@ script = [
     },
     {
         "identifier": 'EVENT_3080_store_multiplier',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x70BC]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70BC]
     },
 
 
     {
         "identifier": 'EVENT_3080_set_7000_to_70A0_short_mem_11',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a7]
+        "command": 'copy_var_to_var',
+        'args': [0x70a7, 0x7000]
     },
     {
         "identifier": 'EVENT_3080_mem_7000_and_const__12_',
@@ -85,36 +85,36 @@ script = [
     },
     {
         "identifier": 'EVENT_3080_concat_multiplier',
-        "command": 'add_short_mem',
-        "args": [0x7000, 0x70BC]
+        "command": 'add_var_to_7000',
+        'args': [0x70BC]
     },
     {
         "identifier": 'EVENT_3080_store_multiplier_',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x70BC]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70BC]
     },
 
     
     {
         "identifier": 'EVENT_3080_reset_7000_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 0]
     },
 
 
     {
         "identifier": 'EVENT_3080_use_multiplier',
-        "command": 'jmp_if_var_equals_short',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70BC, 0, 'EVENT_3080_add_coins_260']
     },
     {
         "identifier": 'EVENT_3080_count_10s',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 10]
     },
     {
         "identifier": 'EVENT_3080_dec_multiplier',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x70BC]
     },
     {
@@ -150,13 +150,13 @@ script = [
         "args": [Sounds._005_BLOCK_SWITCH, 6]
     },
     {
-        "identifier": 'EVENT_3080_disable_event_trigger_for_object_at_70A8_265',
-        "command": 'disable_event_trigger_for_object_at_70A8'
+        "identifier": 'EVENT_3080_disable_trigger_at_70A8_265',
+        "command": 'disable_trigger_at_70A8'
     },
     {
         "identifier": 'EVENT_3080_set_action_script_sync_266',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 7]
     },
     {
         "identifier": 'EVENT_3080_set_7010_to_object_xyz_267',
@@ -165,18 +165,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3080_set_7000_to_7000_short_mem_268',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7014, 0x7000]
     },
     {
         "identifier": 'EVENT_3080_add_269',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 608]
     },
     {
         "identifier": 'EVENT_3080_set_7000_short_mem_to_7000_270',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7014]
     },
     {
         "identifier": 'EVENT_3080_jmp_if_bit_set_271',
@@ -194,8 +194,8 @@ script = [
         "args": [0x704a, 3]
     },
     {
-        "identifier": 'EVENT_3080_create_packet_at_7010_coords_jmp_if_null_274',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_3080_create_packet_at_7010_274',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._016_BIG_COIN, 'EVENT_3080_ret']
     },
     {

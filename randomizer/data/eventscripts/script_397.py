@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_397_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7022, 0x0008]
     },
     {

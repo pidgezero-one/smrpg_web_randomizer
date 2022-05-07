@@ -5,114 +5,114 @@ from randomizer.helpers.eventtables import ControllerDirections, RadialDirection
 from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
 script = [    {
-        "identifier": 'EVENT_2649_set_random_56',
-        "command": 'set_random',
+        "identifier": 'EVENT_2649_set_var_to_random_56',
+        "command": 'set_var_to_random',
         "args": [0x7000, 255]
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_57',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2649_run_dialog_84']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2649_run_dialog_84']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_58',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_2649_run_dialog_90']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_2649_run_dialog_90']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_59',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_2649_run_dialog_90']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_2649_run_dialog_90']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_60',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_2649_run_dialog_96']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_2649_run_dialog_96']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_61',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [4, 'EVENT_2649_run_dialog_96']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 4, 'EVENT_2649_run_dialog_96']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_62',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_2649_run_dialog_96']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 5, 'EVENT_2649_run_dialog_96']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_63',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_2649_run_dialog_102']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 6, 'EVENT_2649_run_dialog_102']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_64',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, 'EVENT_2649_run_dialog_102']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, 'EVENT_2649_run_dialog_102']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_65',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [8, 'EVENT_2649_run_dialog_102']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 8, 'EVENT_2649_run_dialog_102']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_66',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [9, 'EVENT_2649_run_dialog_102']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 9, 'EVENT_2649_run_dialog_102']
     },
     {
-        "identifier": 'EVENT_2649_set_random_67',
-        "command": 'set_random',
+        "identifier": 'EVENT_2649_set_var_to_random_67',
+        "command": 'set_var_to_random',
         "args": [0x7000, 10]
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_68',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2649_run_dialog_108']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2649_run_dialog_108']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_69',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_2649_run_dialog_114']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_2649_run_dialog_114']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_70',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_2649_run_dialog_114']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_2649_run_dialog_114']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_71',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_2649_run_dialog_114']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_2649_run_dialog_114']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_72',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [4, 'EVENT_2649_run_dialog_120']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 4, 'EVENT_2649_run_dialog_120']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_73',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_2649_run_dialog_120']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 5, 'EVENT_2649_run_dialog_120']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_74',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_2649_run_dialog_120']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 6, 'EVENT_2649_run_dialog_120']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_75',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, 'EVENT_2649_run_dialog_126']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, 'EVENT_2649_run_dialog_126']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_76',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [8, 'EVENT_2649_run_dialog_126']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 8, 'EVENT_2649_run_dialog_126']
     },
     {
         "identifier": 'EVENT_2649_jmp_if_7000_equals_short_77',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [9, 'EVENT_2649_run_dialog_126']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 9, 'EVENT_2649_run_dialog_126']
     },
     {
         "identifier": 'EVENT_2649_jmp_78',
@@ -121,7 +121,7 @@ script = [    {
     },
     {
         "identifier": 'EVENT_2649_run_dialog_84',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 131]
     },
     {
@@ -146,7 +146,7 @@ script = [    {
     },
     {
         "identifier": 'EVENT_2649_run_dialog_90',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 101]
     },
     {
@@ -171,7 +171,7 @@ script = [    {
     },
     {
         "identifier": 'EVENT_2649_run_dialog_96',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 107]
     },
     {
@@ -196,7 +196,7 @@ script = [    {
     },
     {
         "identifier": 'EVENT_2649_run_dialog_102',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 108]
     },
     {
@@ -221,7 +221,7 @@ script = [    {
     },
     {
         "identifier": 'EVENT_2649_run_dialog_108',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 96]
     },
     {
@@ -246,7 +246,7 @@ script = [    {
     },
     {
         "identifier": 'EVENT_2649_run_dialog_114',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 155]
     },
     {
@@ -272,7 +272,7 @@ script = [    {
     {
         "identifier": 'EVENT_2649_run_dialog_120',
         "command": 'run_dialog',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 156]
     },
     {
@@ -297,7 +297,7 @@ script = [    {
     },
     {
         "identifier": 'EVENT_2649_run_dialog_126',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 157]
     },
     {

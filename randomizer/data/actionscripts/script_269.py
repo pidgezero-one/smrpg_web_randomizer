@@ -36,23 +36,23 @@ script = [
     },
     {
         "identifier": 'ACTION_269_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_269_set_sprite_sequence_12']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_269_set_sprite_sequence_12']
     },
     {
         "identifier": 'ACTION_269_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_269_set_sprite_sequence_12']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_269_set_sprite_sequence_12']
     },
     {
         "identifier": 'ACTION_269_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_269_set_sprite_sequence_12']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_269_set_sprite_sequence_12']
     },
     {
         "identifier": 'ACTION_269_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_269_set_sprite_sequence_12']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_269_set_sprite_sequence_12']
     },
     {
         "identifier": 'ACTION_269_set_sprite_sequence_10',
@@ -76,8 +76,8 @@ script = [
     },
     {
         "identifier": 'ACTION_269_set_700C_to_7000_short_mem_14',
-        "command": 'set_700C_to_7000_short_mem',
-        "args": [0x7032]
+        "command": 'copy_var_to_var',
+        'args': [0x7032, 0x700C]
     },
     {
         "identifier": 'ACTION_269_face_east_7C_15',
@@ -85,23 +85,23 @@ script = [
     },
     {
         "identifier": 'ACTION_269_jmp_if_700C_equals_short_16',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_269_set_sprite_sequence_22']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_269_set_sprite_sequence_22']
     },
     {
         "identifier": 'ACTION_269_jmp_if_700C_equals_short_17',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_269_set_sprite_sequence_22']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_269_set_sprite_sequence_22']
     },
     {
         "identifier": 'ACTION_269_jmp_if_700C_equals_short_18',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_269_set_sprite_sequence_22']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_269_set_sprite_sequence_22']
     },
     {
         "identifier": 'ACTION_269_jmp_if_700C_equals_short_19',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_269_set_sprite_sequence_22']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_269_set_sprite_sequence_22']
     },
     {
         "identifier": 'ACTION_269_set_sprite_sequence_20',

@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2478_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 39]
     },
     {
@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2478_action_queue_sync_11_SUBSCRIPT_set_animation_speed_0',
@@ -117,8 +117,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2478_action_queue_async_12_SUBSCRIPT_set_animation_speed_0',
@@ -182,8 +182,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 15]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 15]
     },
     {
         "identifier": 'EVENT_2478_set_7000_to_object_coord_15',
@@ -192,8 +192,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_jmp_if_7000_equals_short_16',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [27, 'EVENT_2478_freeze_camera_19']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 27, 'EVENT_2478_freeze_camera_19']
     },
     {
         "identifier": 'EVENT_2478_fade_in_from_black_async_17',
@@ -209,8 +209,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_action_queue_sync_20',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2478_action_queue_sync_20_SUBSCRIPT_floating_off_0',
@@ -264,8 +264,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_action_queue_async_21',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2478_action_queue_async_21_SUBSCRIPT_set_animation_speed_0',
@@ -290,8 +290,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_action_queue_async_23',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2478_action_queue_async_23_SUBSCRIPT_db_0',
@@ -326,8 +326,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_action_queue_sync_24',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2478_action_queue_sync_24_SUBSCRIPT_set_sprite_sequence_0',
@@ -371,8 +371,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_action_queue_async_25',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2478_action_queue_async_25_SUBSCRIPT_set_animation_speed_0',
@@ -392,8 +392,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_set_action_script_async_27',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2478_ret_28',

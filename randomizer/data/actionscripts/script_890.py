@@ -10,8 +10,8 @@ script = [
     },
     {
         "identifier": 'ACTION_890_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [117, 'ACTION_890_pause_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 117, 'ACTION_890_pause_23']
     },
     {
         "identifier": 'ACTION_890_pause_2',

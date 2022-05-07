@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3837_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_3837_enable_controls_4',
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3837_set_action_script_sync_6',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 128]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 128]
     },
     {
         "identifier": 'EVENT_3837_ret_7',

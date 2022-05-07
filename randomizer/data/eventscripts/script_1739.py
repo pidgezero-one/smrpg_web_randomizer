@@ -12,12 +12,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1739_add_short_1',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0xfffc]
     },
     {
         "identifier": 'EVENT_1739_mem_compare_2',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7016, 32768]
     },
     {
@@ -27,18 +27,18 @@ script = [
     },
     {
         "identifier": 'EVENT_1739_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x0000]
     },
     {
         "identifier": 'EVENT_1739_add_short_5',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0xfff0]
     },
     {
         "identifier": 'EVENT_1739_set_7000_to_7000_short_mem_6',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x701a]
+        "command": 'copy_var_to_var',
+        'args': [0x701a, 0x7000]
     },
     {
         "identifier": 'EVENT_1739_mem_7000_xor_const_7',
@@ -52,13 +52,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1739_add_short_mem_9',
-        "command": 'add_short_mem',
-        "args": [0x7000, 0x7018]
+        "command": 'add_var_to_7000',
+        'args': [0x7018]
     },
     {
         "identifier": 'EVENT_1739_mem_compare_val_10',
-        "command": 'mem_compare_val',
-        "args": [32768]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 32768]
     },
     {
         "identifier": 'EVENT_1739_jmp_if_comparison_result_is_lesser_11',
@@ -67,23 +67,23 @@ script = [
     },
     {
         "identifier": 'EVENT_1739_set_12',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 0]
     },
     {
         "identifier": 'EVENT_1739_set_7000_short_mem_to_7000_13',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7018]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7018]
     },
     {
         "identifier": 'EVENT_1739_set_short_14',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0000]
     },
     {
         "identifier": 'EVENT_1739_action_queue_async_15',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1739_action_queue_async_15_SUBSCRIPT_jmp_if_bit_set_0',

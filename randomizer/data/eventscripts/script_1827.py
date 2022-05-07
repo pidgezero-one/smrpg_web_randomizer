@@ -22,22 +22,22 @@ script = [
     },
     {
         "identifier": 'EVENT_1827_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x0e80]
     },
     {
         "identifier": 'EVENT_1827_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x3a80]
     },
     {
         "identifier": 'EVENT_1827_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703c, 0x0200]
     },
     {
         "identifier": 'EVENT_1827_set_6',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 21]
     },
     {
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1827_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A9],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1827_action_queue_sync_8_SUBSCRIPT_shift_z_up_pixels_0',
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1827_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A9],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1827_action_queue_sync_12_SUBSCRIPT_shift_z_up_pixels_0',
@@ -99,7 +99,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1827_set_15',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 21]
     },
     {
@@ -109,8 +109,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1827_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A9, 829]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A9, True, 829]
     },
     {
         "identifier": 'EVENT_1827_inc_18',

@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": "EVENT_2808_action_queue_sync_2",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_2808_action_queue_sync_2_SUBSCRIPT_overwrite_solidity_0",
@@ -159,12 +159,12 @@ script = [
     {"identifier": "EVENT_2808_unfreeze_all_npcs_30", "command": "unfreeze_all_npcs"},
     {
         "identifier": "EVENT_2808_set_action_script_sync_31",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MARIO, 395],
+        "command": "set_action_script",
+        "args": [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": "EVENT_2808_set_short_32",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x700A, 0x00C8],
     },
     {

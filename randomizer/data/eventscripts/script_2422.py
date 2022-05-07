@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2422_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2422_action_queue_sync_0_SUBSCRIPT_set_sprite_sequence_0',
@@ -19,8 +19,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2422_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2422_action_queue_async_1_SUBSCRIPT_fixed_f_coord_on_0',
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2422_set_action_script_async_2',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 408]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 408]
     },
     {
         "identifier": 'EVENT_2422_play_sound_3',
@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2422_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2422_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_0',
@@ -142,8 +142,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2422_set_action_script_async_7',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2422_ret_8',

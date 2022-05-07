@@ -10,33 +10,33 @@ script = [
     },
     {
         "identifier": 'ACTION_59_jmp_if_700C_equals_short_1',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [463, 'ACTION_59_set_700C_to_object_coord_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 463, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
         "identifier": 'ACTION_59_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [464, 'ACTION_59_set_700C_to_object_coord_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 464, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
         "identifier": 'ACTION_59_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [465, 'ACTION_59_set_700C_to_object_coord_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 465, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
         "identifier": 'ACTION_59_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [466, 'ACTION_59_set_700C_to_object_coord_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 466, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
         "identifier": 'ACTION_59_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [467, 'ACTION_59_set_700C_to_object_coord_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 467, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
         "identifier": 'ACTION_59_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [468, 'ACTION_59_set_700C_to_object_coord_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 468, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
         "identifier": 'ACTION_59_object_memory_set_bit_7',
@@ -123,8 +123,8 @@ script = [
     },
     {
         "identifier": 'ACTION_59_jmp_if_700C_equals_short_24',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_59_set_sprite_sequence_32']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_59_set_sprite_sequence_32']
     },
     {
         "identifier": 'ACTION_59_set_sprite_sequence_25',

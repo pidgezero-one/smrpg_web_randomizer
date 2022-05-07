@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'EVENT_694_jmp_if_7000_equals_short_1',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [65, 'EVENT_694_run_dialog_5']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 65, 'EVENT_694_run_dialog_5']
     },
     {
         "identifier": 'EVENT_694_jmp_if_bit_set_insert',

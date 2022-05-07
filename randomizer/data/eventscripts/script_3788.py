@@ -26,8 +26,8 @@ script = [
         "args": [0x80]
     },
     {
-        "identifier": 'EVENT_3788_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_3788_jmp_if_var_equals_const_4',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7014, 40, 'EVENT_3788_pause_6']
     },
     {

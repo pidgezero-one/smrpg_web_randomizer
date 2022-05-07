@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3231_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3231_action_queue_sync_2_SUBSCRIPT_set_palette_row_0',
@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3231_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 319]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 319]
     },
     {
         "identifier": 'EVENT_3231_ret_4',

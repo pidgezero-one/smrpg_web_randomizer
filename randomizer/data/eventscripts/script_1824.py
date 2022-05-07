@@ -16,12 +16,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1824_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 22]
     },
     {
         "identifier": 'EVENT_1824_set_short_3',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700c, 0x0002]
     },
     {
@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1824_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A9],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A9, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1824_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',
@@ -61,7 +61,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1824_add_short_7',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x700c, 0x0002]
     },
     {
@@ -74,17 +74,17 @@ script = [
     },
     {
         "identifier": 'EVENT_1824_set_short_10',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7038, 0x0880]
     },
     {
         "identifier": 'EVENT_1824_set_short_11',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703a, 0x1c80]
     },
     {
         "identifier": 'EVENT_1824_set_short_12',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x703c, 0x0500]
     },
     {

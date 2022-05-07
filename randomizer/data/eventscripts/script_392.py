@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_392_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 136]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 136]
     },
     {
         "identifier": 'EVENT_392_pause_action_script_2',
@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_392_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 133]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 133]
     },
     {
         "identifier": 'EVENT_392_pause_4',
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_392_set_action_script_sync_6',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 133]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 133]
     },
     {
         "identifier": 'EVENT_392_pause_7',

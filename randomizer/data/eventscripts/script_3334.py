@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3334_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3334_action_queue_sync_5_SUBSCRIPT_set_object_memory_bits_0',
@@ -31,13 +31,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3334_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [387, 'EVENT_3334_action_queue_async_11']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 387, 'EVENT_3334_action_queue_async_11']
     },
     {
         "identifier": 'EVENT_3334_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3334_action_queue_async_8_SUBSCRIPT_clear_solidity_bits_0',
@@ -71,8 +71,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3334_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3334_action_queue_async_11_SUBSCRIPT_clear_solidity_bits_0',

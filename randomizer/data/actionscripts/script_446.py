@@ -92,8 +92,8 @@ script = [
         "args": [0x7076, 0, 'ACTION_446_start_loop_n_times_19']
     },
     {
-        "identifier": 'ACTION_446_create_packet_at_object_coords_jmp_if_null_18',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_446_create_packet_at_npc_coords_18',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._023_SPARKLES_MOVE_W, AreaObjects.MARIO, 'ACTION_446_start_loop_n_times_19']
     },
     {
@@ -126,8 +126,8 @@ script = [
         "args": [0x7076, 0, 'ACTION_446_start_loop_n_times_26']
     },
     {
-        "identifier": 'ACTION_446_create_packet_at_object_coords_jmp_if_null_25',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_446_create_packet_at_npc_coords_25',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._022_SPARKLES_MOVE_N, AreaObjects.MARIO, 'ACTION_446_start_loop_n_times_26']
     },
     {

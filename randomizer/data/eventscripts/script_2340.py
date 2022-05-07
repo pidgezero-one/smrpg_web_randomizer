@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2340_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2340_action_queue_sync_0_SUBSCRIPT_set_vram_priority_0',
@@ -24,8 +24,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2340_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2340_action_queue_sync_1_SUBSCRIPT_fixed_f_coord_on_0',
@@ -55,8 +55,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2340_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2340_action_queue_async_2_SUBSCRIPT_fixed_f_coord_on_0',
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2340_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [22, 'EVENT_2340_set_bit_7']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 22, 'EVENT_2340_set_bit_7']
     },
     {
         "identifier": 'EVENT_2340_fade_in_from_black_async_5',

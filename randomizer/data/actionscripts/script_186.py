@@ -16,7 +16,7 @@ script = [
     },
     {
         "identifier": 'ACTION_186_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70c2, 0]
     },
     {
@@ -31,7 +31,7 @@ script = [
     },
     {
         "identifier": 'ACTION_186_set_5',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70c2, 2]
     },
     {
@@ -46,7 +46,7 @@ script = [
     },
     {
         "identifier": 'ACTION_186_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70c2, 1]
     },
     {

@@ -24,8 +24,8 @@ script = [
         "args": [24]
     },
     {
-        "identifier": 'ACTION_319_create_packet_at_object_coords_jmp_if_null_4',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_319_create_packet_at_npc_coords_4',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, AreaObjects.DUMMY_0X07, 'ACTION_319_visibility_on_5']
     },
     {

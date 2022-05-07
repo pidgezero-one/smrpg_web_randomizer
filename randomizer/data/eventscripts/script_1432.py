@@ -7,23 +7,23 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1432_set_action_script_sync_0',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 563]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 563]
     },
     {
         "identifier": 'EVENT_1432_set_action_script_async_1',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 563]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, False, 563]
     },
     {
         "identifier": 'EVENT_1432_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 535]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 535]
     },
     {
         "identifier": 'EVENT_1432_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 535]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 535]
     },
     {
         "identifier": 'EVENT_1432_enable_trigger_4',

@@ -56,8 +56,8 @@ script = [
         "args": [AreaObjects.NPC_0, Rooms._394_VOLCANO_POSTCD_AREA_05]
     },
     {
-        "identifier": 'EVENT_3345_create_packet_at_object_coords_jmp_if_null_10',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_3345_create_packet_at_npc_coords_10',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_0, 'EVENT_3345_pause_12']
     },
     {
@@ -101,8 +101,8 @@ script = [
         "args": [AreaObjects.NPC_1, Rooms._394_VOLCANO_POSTCD_AREA_05]
     },
     {
-        "identifier": 'EVENT_3345_create_packet_at_object_coords_jmp_if_null_23',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_3345_create_packet_at_npc_coords_23',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_1, 'EVENT_3345_pause_25']
     },
     {
@@ -131,13 +131,13 @@ script = [
         "args": [AreaObjects.NPC_2, Rooms._394_VOLCANO_POSTCD_AREA_05]
     },
     {
-        "identifier": 'EVENT_3345_create_packet_at_object_coords_jmp_if_null_31',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_2, 'EVENT_3345_create_packet_at_object_coords_jmp_if_null_32']
+        "identifier": 'EVENT_3345_create_packet_at_npc_coords_31',
+        "command": 'create_packet_at_npc_coords',
+        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_2, 'EVENT_3345_create_packet_at_npc_coords_32']
     },
     {
-        "identifier": 'EVENT_3345_create_packet_at_object_coords_jmp_if_null_32',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_3345_create_packet_at_npc_coords_32',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_0, 'EVENT_3345_ret_33']
     },
     {

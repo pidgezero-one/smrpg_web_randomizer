@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1770_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.LAYER_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.LAYER_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1770_action_queue_async_2_SUBSCRIPT_set_animation_speed_0',

@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_610_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70df, 28]
     },
     {
@@ -57,12 +57,12 @@ script = [
     },
     {
         "identifier": 'EVENT_610_set_11',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 0]
     },
     {
         "identifier": 'EVENT_610_set_12',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b8, 0]
     },
     {
@@ -107,38 +107,38 @@ script = [
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_21',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 376]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 376]
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_22',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 113]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 113]
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_23',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 376]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 376]
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_24',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 376]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 376]
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_25',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 98]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 98]
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_26',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 376]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 376]
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_29',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_610_action_queue_sync_29_SUBSCRIPT_transfer_to_xyzf_0',
@@ -153,8 +153,8 @@ script = [
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_30',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_610_action_queue_sync_30_SUBSCRIPT_transfer_to_xyzf_0',
@@ -174,8 +174,8 @@ script = [
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_33',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_610_action_queue_sync_33_SUBSCRIPT_transfer_to_xyzf_0',
@@ -186,8 +186,8 @@ script = [
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_34',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_610_action_queue_sync_34_SUBSCRIPT_transfer_to_xyzf_0',
@@ -202,8 +202,8 @@ script = [
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_35',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_610_action_queue_sync_35_SUBSCRIPT_transfer_to_xyzf_0',
@@ -218,8 +218,8 @@ script = [
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_36',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_610_action_queue_sync_36_SUBSCRIPT_transfer_to_xyzf_0',
@@ -234,8 +234,8 @@ script = [
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_37',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, True],
         "subscript": [
             {
                 "identifier": 'EVENT_610_action_queue_sync_37_SUBSCRIPT_face_southeast_0',
@@ -249,18 +249,18 @@ script = [
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_39',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 376]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 376]
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_40',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 376]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_6, True, 376]
     },
     {
         "identifier": 'EVENT_610_set_action_script_sync_41',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 113]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 113]
     },
     {
         "identifier": 'EVENT_610_fade_in_from_black_async_42',

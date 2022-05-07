@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2453_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 5]
     },
     {
@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2453_set_action_script_async_3',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 360]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 360]
     },
     {
         "identifier": 'EVENT_2453_enter_area_4',

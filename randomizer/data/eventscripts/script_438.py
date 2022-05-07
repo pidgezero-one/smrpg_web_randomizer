@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_438_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_438_action_queue_async_5_SUBSCRIPT_transfer_to_xyzf_0',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_438_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_438_action_queue_async_7_SUBSCRIPT_transfer_to_xyzf_0',
@@ -75,8 +75,8 @@ script = [
     },
     {
         "identifier": 'EVENT_438_set_temp_action_script_sync_11',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 2]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 2]
     },
     {
         "identifier": 'EVENT_438_fade_in_from_black_async_12',

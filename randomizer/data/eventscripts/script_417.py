@@ -12,12 +12,12 @@ script = [
     },
     {
         "identifier": 'EVENT_417_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x001e]
     },
     {
         "identifier": 'EVENT_417_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0012]
     },
     {

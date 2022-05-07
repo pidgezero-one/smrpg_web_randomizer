@@ -65,8 +65,8 @@ script = [
     },
     {
         "identifier": 'EVENT_389_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_389_action_queue_async_12_SUBSCRIPT_transfer_to_xyzf_0',
@@ -96,8 +96,8 @@ script = [
     },
     {
         "identifier": 'EVENT_389_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_389_action_queue_async_16_SUBSCRIPT_face_northeast_0',
@@ -126,8 +126,8 @@ script = [
     },
     {
         "identifier": 'EVENT_389_action_queue_sync_21',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_set_solidity_bits_0',
@@ -216,8 +216,8 @@ script = [
     },
     {
         "identifier": 'EVENT_389_action_queue_async_22',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_389_action_queue_async_22_SUBSCRIPT_pause_0',
@@ -232,8 +232,8 @@ script = [
     },
     {
         "identifier": 'EVENT_389_action_queue_async_23',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_389_action_queue_async_23_SUBSCRIPT_pause_0',
@@ -257,8 +257,8 @@ script = [
     },
     {
         "identifier": 'EVENT_389_action_queue_sync_30',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_389_action_queue_sync_30_SUBSCRIPT_set_solidity_bits_0',

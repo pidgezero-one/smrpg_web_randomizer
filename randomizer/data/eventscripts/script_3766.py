@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3766_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3766_action_queue_async_2_SUBSCRIPT_db_0',
@@ -27,7 +27,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3766_action_queue_async_2_SUBSCRIPT_add_short_1',
-                "command": 'add_short',
+                "command": "add_const_to_var",
                 "args": [0x701a, 0x0900]
             },
             {
@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3766_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3766_action_queue_async_8_SUBSCRIPT_visibility_off_0',
@@ -95,8 +95,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3766_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3766_action_queue_async_10_SUBSCRIPT_pause_0',
@@ -121,13 +121,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3766_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 976]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 976]
     },
     {
         "identifier": 'EVENT_3766_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3766_action_queue_async_12_SUBSCRIPT_set_animation_speed_0',
@@ -143,8 +143,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3766_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 395]
     },
     {
         "identifier": 'EVENT_3766_enable_controls_14',

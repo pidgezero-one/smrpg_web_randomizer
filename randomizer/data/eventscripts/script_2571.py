@@ -17,13 +17,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2571_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2571_set_bit_7']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2571_set_bit_7']
     },
     {
         "identifier": 'EVENT_2571_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [12, 'EVENT_2571_freeze_camera_5']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 12, 'EVENT_2571_freeze_camera_5']
     },
     {
         "identifier": 'EVENT_2571_jmp_4',

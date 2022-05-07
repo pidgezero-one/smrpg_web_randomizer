@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1172_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1172_run_dialog_34']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_1172_run_dialog_34']
     },
     {
         "identifier": 'EVENT_1172_run_dialog_7',
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1172_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1172_action_queue_async_9_SUBSCRIPT_sequence_looping_off_0',
@@ -71,14 +71,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1172_set_random_10',
+        "identifier": 'EVENT_1172_set_var_to_random_10',
         "command": 'run_event_as_subroutine',
         "args": [1972]
     },
     {
         "identifier": 'EVENT_1172_mem_compare_val_11',
-        "command": 'mem_compare_val',
-        "args": [400]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 400]
     },
     {
         "identifier": 'EVENT_1172_jmp_if_comparison_result_is_lesser_12',
@@ -87,8 +87,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1172_mem_compare_val_13',
-        "command": 'mem_compare_val',
-        "args": [1000]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 1000]
     },
     {
         "identifier": 'EVENT_1172_jmp_if_comparison_result_is_lesser_14',
@@ -97,8 +97,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1172_mem_compare_val_15',
-        "command": 'mem_compare_val',
-        "args": [2400]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 2400]
     },
     {
         "identifier": 'EVENT_1172_jmp_if_comparison_result_is_lesser_16',

@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3223_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 338]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 338]
     },
     {
         "identifier": 'EVENT_3223_jmp_if_bit_set_4',
@@ -32,17 +32,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3223_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x000f]
     },
     {
         "identifier": 'EVENT_3223_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x0075]
     },
     {
         "identifier": 'EVENT_3223_set_short_7',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x000f]
     },
     {
@@ -56,7 +56,7 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3223_create_packet_event_at_coords_jmp_if_null_10',
+        "identifier": 'EVENT_3223_create_packet_at_7010_with_event_10',
         "command": 'jmp_to_event',
         "args": [3384]
     },
@@ -71,8 +71,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3223_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3223_action_queue_sync_13_SUBSCRIPT_start_loop_n_times_0',

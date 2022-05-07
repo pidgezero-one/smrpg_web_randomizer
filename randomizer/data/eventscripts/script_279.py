@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_279_set_7000_to_7000_short_mem_0',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x702a, 0x7000]
     },
     {
         "identifier": 'EVENT_279_add_coins_1',
@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_279_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 470]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 470]
     },
     {
         "identifier": 'EVENT_279_ret_4',

@@ -19,13 +19,13 @@ script = [
     },
     {
         "identifier": 'ACTION_354_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [20, 'ACTION_354_face_northeast_20']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 20, 'ACTION_354_face_northeast_20']
     },
     {
         "identifier": 'ACTION_354_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [21, 'ACTION_354_set_solidity_bits_30']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 21, 'ACTION_354_set_solidity_bits_30']
     },
     {
         "identifier": 'ACTION_354_set_solidity_bits_5',
@@ -181,8 +181,8 @@ script = [
     },
     {
         "identifier": 'ACTION_354_mem_compare_val_37',
-        "command": 'mem_compare_val',
-        "args": [3072]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 3072]
     },
     {
         "identifier": 'ACTION_354_jmp_if_comparison_result_is_lesser_38',

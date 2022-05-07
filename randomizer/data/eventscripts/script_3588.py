@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3588_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [93, 'EVENT_3588_set_bit_8']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 93, 'EVENT_3588_set_bit_8']
     },
     {
         "identifier": 'EVENT_3588_store_character_equipment_7000_3',
@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3588_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [93, 'EVENT_3588_set_bit_8']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 93, 'EVENT_3588_set_bit_8']
     },
     {
         "identifier": 'EVENT_3588_store_character_equipment_7000_5',
@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3588_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [93, 'EVENT_3588_set_bit_8']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 93, 'EVENT_3588_set_bit_8']
     },
     {
         "identifier": 'EVENT_3588_store_character_equipment_7000_insert',
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3588_jmp_if_7000_equals_short_insert',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [93, 'EVENT_3588_set_bit_8']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 93, 'EVENT_3588_set_bit_8']
     },
     {
         "identifier": 'EVENT_3588_store_character_equipment_7000_insert2',
@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3588_jmp_if_7000_equals_short_insert2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [93, 'EVENT_3588_set_bit_8']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 93, 'EVENT_3588_set_bit_8']
     },
     {
         "identifier": 'EVENT_3588_ret_7',

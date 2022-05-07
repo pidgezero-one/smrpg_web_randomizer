@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1078_set_action_script_sync_141',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 157]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 157]
     },
     {
         "identifier": 'EVENT_1078_pause_142',
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1078_set_action_script_sync_144',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 157]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 157]
     },
     {
         "identifier": 'EVENT_1078_pause_145',
@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1078_set_action_script_sync_147',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 157]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 157]
     },
     {
         "identifier": 'EVENT_1078_pause_148',
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1078_set_action_script_sync_150',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 157]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 157]
     },
     {
         "identifier": 'EVENT_1078_pause_151',
@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1078_set_action_script_sync_153',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 157]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 157]
     },
     {
         "identifier": 'EVENT_1078_pause_154',
@@ -87,8 +87,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1078_set_action_script_sync_156',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 157]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 157]
     },
     {
         "identifier": 'EVENT_1078_pause_157',
@@ -102,8 +102,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1078_set_action_script_sync_159',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 157]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_6, True, 157]
     },
     {
         "identifier": 'EVENT_1078_pause_160',
@@ -117,8 +117,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1078_set_action_script_sync_162',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 157]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 157]
     },
     {
         "identifier": 'EVENT_1078_pause_163',

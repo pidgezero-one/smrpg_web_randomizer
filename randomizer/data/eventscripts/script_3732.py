@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3732_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3732_action_queue_async_2_SUBSCRIPT_set_vram_priority_0',
@@ -52,8 +52,8 @@ script = [
         "args": [0x707c, 3]
     },
     {
-        "identifier": 'EVENT_3732_create_packet_at_object_coords_jmp_if_null_7',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_3732_create_packet_at_npc_coords_7',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._022_SPARKLES_MOVE_N, AreaObjects.MARIO, 'EVENT_3584_ret_0']
     },
     {

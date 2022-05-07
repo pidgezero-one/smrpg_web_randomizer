@@ -17,7 +17,7 @@ script = [
     },
     {
         "identifier": 'EVENT_622_grant_coins_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 30]
     },
     {
@@ -31,7 +31,7 @@ script = [
     },
     {
         "identifier": 'EVENT_622_grant_item_1_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 96]
     },
     {
@@ -45,7 +45,7 @@ script = [
     },
     {
         "identifier": 'EVENT_622_grant_item_2_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 97]
     },
     {

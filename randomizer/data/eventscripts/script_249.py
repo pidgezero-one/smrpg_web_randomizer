@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_249_room_7_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, "EVENT_249_room_7_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, "EVENT_249_room_7_logic"]
     },
     {
         "identifier": "EVENT_249_cancel",
@@ -16,7 +16,7 @@ script = [
     },
     {
         "identifier": "EVENT_249_room_7_logic",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 15]
     },
     {

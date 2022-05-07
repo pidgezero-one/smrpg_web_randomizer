@@ -47,7 +47,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_1556_set_short_0",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x700E, 0x0018],
     },
     {
@@ -57,7 +57,7 @@ script = [
     },
     {
         "identifier": "EVENT_1556_set_short_2",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x700E, 0x0019],
     },
     {
@@ -88,18 +88,18 @@ script = [
     },
     {
         "identifier": "EVENT_1556_set_short_6",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0014],
     },
     {
         "identifier": "EVENT_1556_set_7000_to_70A0_short_mem_7",
-        "command": "set_7000_to_70A0_short_mem",
-        "args": [0x70A8],
+        "command": "copy_var_to_var",
+        "args": [0x70A8, 0x7000]
     },
     {
         "identifier": "EVENT_1556_dec_short_mem_8",
-        "command": "dec_short_mem",
-        "args": [0x7000, 0x7024],
+        "command": "dec_var_from_7000",
+        "args": [0x7024]
     },
     {
         "identifier": "EVENT_1556_jmp_if_7000_any_bits_set_9",
@@ -126,18 +126,18 @@ script = [
     },
     {
         "identifier": "EVENT_1556_add_short_mem_16",
-        "command": "add_short_mem",
-        "args": [0x7000, 0x7024],
+        "command": "add_var_to_7000",
+        "args": [0x7024]
     },
     {
         "identifier": "EVENT_1556_set_7000_short_mem_to_7000_17",
-        "command": "set_7000_short_mem_to_7000",
-        "args": [0x702E],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x702E]
     },
     {
         "identifier": "EVENT_1556_set_70A0_short_mem_to_7000_18",
-        "command": "set_70A0_short_mem_to_7000",
-        "args": [0x70AA],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x70AA]
     },
     {
         "identifier": "EVENT_1556_set_7000_to_object_coord_19",
@@ -146,8 +146,8 @@ script = [
     },
     {
         "identifier": "EVENT_1556_set_70A0_short_mem_to_7000_20",
-        "command": "set_70A0_short_mem_to_7000",
-        "args": [0x70AE],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x70AE]
     },
     {
         "identifier": "EVENT_1556_jmp_if_bit_set_2",
@@ -205,16 +205,16 @@ script = [
         "command": "jmp_if_bit_set",
         "args": [0x7040, 0, "EVENT_1556_reset_and_choose_game_43"],
     },
-    {"identifier": "EVENT_1556_set_28", "command": "set", "args": [0x70AF, 0]},
+    {"identifier": "EVENT_1556_set_28", "command": "set_var_to_const", "args": [0x70AF, 0]},
     {
         "identifier": "EVENT_1556_set_7000_to_7000_short_mem_29",
-        "command": "set_7000_to_7000_short_mem",
-        "args": [0x702E],
+        "command": "copy_var_to_var",
+        "args": [0x702E, 0x7000]
     },
     {
         "identifier": "EVENT_1556_set_70A0_short_mem_to_7000_30",
-        "command": "set_70A0_short_mem_to_7000",
-        "args": [0x70AA],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x70AA]
     },
     {
         "identifier": "EVENT_1556_start_loop_n_times_31",
@@ -228,15 +228,15 @@ script = [
     },
     {
         "identifier": "EVENT_1556_set_action_script_sync_33",
-        "command": "set_action_script_sync",
-        "args": [AreaObjects.MEM_70AA, 652],
+        "command": "set_action_script",
+        "args": [AreaObjects.MEM_70AA, True, 652],
     },
     {"identifier": "EVENT_1556_inc_34", "command": "inc", "args": [0x70AA]},
     {"identifier": "EVENT_1556_end_loop_35", "command": "end_loop"},
     {
         "identifier": "EVENT_1556_action_queue_sync_36",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_1556_action_queue_sync_36_SUBSCRIPT_pause_0",
@@ -278,18 +278,18 @@ script = [
     {"identifier": "EVENT_1556_ret_44", "command": "ret"},
     {
         "identifier": "EVENT_1556_set_7000_to_70A0_short_mem_45",
-        "command": "set_7000_to_70A0_short_mem",
-        "args": [0x70AE],
+        "command": "copy_var_to_var",
+        "args": [0x70AE, 0x7000]
     },
     {
         "identifier": "EVENT_1556_set_7000_short_mem_to_7000_46",
-        "command": "set_7000_short_mem_to_7000",
-        "args": [0x700C],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x700C]
     },
     {
         "identifier": "EVENT_1556_action_queue_sync_47",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_1556_action_queue_sync_47_SUBSCRIPT_face_east_7C_0",
@@ -332,8 +332,8 @@ script = [
     },
     {"identifier": "EVENT_1556_inc_48", "command": "inc", "args": [0x70AF]},
     {
-        "identifier": "EVENT_1556_jmp_if_var_not_equals_byte_49",
-        "command": "jmp_if_var_not_equals_byte",
+        "identifier": "EVENT_1556_jmp_if_var_not_equals_const_49",
+        "command": "jmp_if_var_not_equals_const",
         "args": [0x70AF, 10, "EVENT_1556_add_coins_57"],
     },
     {"identifier": "EVENT_1556_inc_50", "command": "inc", "args": [0x70AB]},
@@ -344,8 +344,8 @@ script = [
     },
     {
         "identifier": "EVENT_1556_start_embedded_action_script_sync_F1_52",
-        "command": "start_embedded_action_script_sync_F1",
-        "args": [AreaObjects.MEM_70AB],
+        "command": "start_embedded_action_script",
+        "args": [AreaObjects.MEM_70AB, True, 0xF1],
         "subscript": [
             {
                 "identifier": "EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_play_sound_0",
@@ -378,7 +378,7 @@ script = [
             },
             {
                 "identifier": "EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_add_6",
-                "command": "add",
+                "command": "add_const_to_var",
                 "args": [0x700C, 2],
             },
             {
@@ -439,8 +439,8 @@ script = [
     },
     {
         "identifier": "EVENT_1556_start_embedded_action_script_sync_F1_59",
-        "command": "start_embedded_action_script_sync_F1",
-        "args": [AreaObjects.MEM_70AB],
+        "command": "start_embedded_action_script",
+        "args": [AreaObjects.MEM_70AB, True, 0xF1],
         "subscript": [
             {
                 "identifier": "EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_play_sound_0",
@@ -473,7 +473,7 @@ script = [
             },
             {
                 "identifier": "EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_add_6",
-                "command": "add",
+                "command": "add_const_to_var",
                 "args": [0x700C, 2],
             },
             {
@@ -521,13 +521,13 @@ script = [
     {"identifier": "EVENT_1556_pause_60", "command": "pause", "args": [1]},
     {
         "identifier": "EVENT_1556_set_7000_to_7000_short_mem_61",
-        "command": "set_7000_to_7000_short_mem",
-        "args": [0x702E],
+        "command": "copy_var_to_var",
+        "args": [0x702E, 0x7000]
     },
     {
         "identifier": "EVENT_1556_set_70A0_short_mem_to_7000_62",
-        "command": "set_70A0_short_mem_to_7000",
-        "args": [0x70AA],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x70AA]
     },
     {
         "identifier": "EVENT_1556_start_loop_n_times_63",
@@ -536,8 +536,8 @@ script = [
     },
     {
         "identifier": "EVENT_1556_action_queue_sync_64",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MEM_70AA],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70AA, True],
         "subscript": [
             {
                 "identifier": "EVENT_1556_action_queue_sync_64_SUBSCRIPT_set_animation_speed_0",
@@ -567,13 +567,13 @@ script = [
     },
     {
         "identifier": "EVENT_1556_set_7000_to_7000_short_mem_70",
-        "command": "set_7000_to_7000_short_mem",
-        "args": [0x702E],
+        "command": "copy_var_to_var",
+        "args": [0x702E, 0x7000]
     },
     {
         "identifier": "EVENT_1556_set_70A0_short_mem_to_7000_71",
-        "command": "set_70A0_short_mem_to_7000",
-        "args": [0x70AA],
+        "command": "copy_var_to_var",
+        "args": [0x7000, 0x70AA]
     },
     {
         "identifier": "EVENT_1556_start_loop_n_times_72",

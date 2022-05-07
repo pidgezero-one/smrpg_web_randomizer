@@ -10,7 +10,7 @@ script = [
     },
     {
         "identifier": 'ACTION_46_add_1',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {
@@ -32,8 +32,8 @@ script = [
         "command": 'sequence_looping_on'
     },
     {
-        "identifier": 'ACTION_46_pause_short_6',
-        "command": 'pause_short',
+        "identifier": 'ACTION_46_pause_6',
+        "command": 'pause',
         "args": [414]
     },
     {

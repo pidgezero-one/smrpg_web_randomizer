@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2619_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2619_action_queue_sync_0_SUBSCRIPT_set_animation_speed_0',
@@ -34,8 +34,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2619_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2619_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_0',
@@ -51,8 +51,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2619_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2619_action_queue_sync_3_SUBSCRIPT_set_animation_speed_0',
@@ -76,14 +76,14 @@ script = [
         "command": 'star_mask_expand_from_screen_center'
     },
     {
-        "identifier": 'EVENT_2619_pause_short_5',
-        "command": 'pause_short',
+        "identifier": 'EVENT_2619_pause_5',
+        "command": 'pause',
         "args": [384]
     },
     {
         "identifier": 'EVENT_2619_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2619_action_queue_sync_6_SUBSCRIPT_set_animation_speed_0',

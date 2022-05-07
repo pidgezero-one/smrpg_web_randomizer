@@ -10,8 +10,8 @@ script = [
         "args": [0x7043, 5]
     },
     {
-        "identifier": 'ACTION_125_set_random_1',
-        "command": 'set_random',
+        "identifier": 'ACTION_125_set_var_to_random_1',
+        "command": 'set_var_to_random',
         "args": [0x700c, 2]
     },
     {

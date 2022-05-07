@@ -65,8 +65,8 @@ script = [
         "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_227_pause_short_12',
-        "command": 'pause_short',
+        "identifier": 'ACTION_227_pause_12',
+        "command": 'pause',
         "args": [384]
     },
     {

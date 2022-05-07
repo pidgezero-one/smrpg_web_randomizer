@@ -74,7 +74,7 @@ script = [
     },
     {
         "identifier": 'ACTION_1022_add_14',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 24]
     },
     {
@@ -84,7 +84,7 @@ script = [
     },
     {
         "identifier": 'ACTION_1022_add_16',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 232]
     },
     {

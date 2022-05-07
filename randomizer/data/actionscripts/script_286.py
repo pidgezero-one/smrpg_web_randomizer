@@ -34,7 +34,7 @@ script = [
     },
     {
         "identifier": 'ACTION_286_add_6',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {
@@ -90,7 +90,7 @@ script = [
     },
     {
         "identifier": 'ACTION_286_add_18',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 4]
     },
     {
@@ -108,7 +108,7 @@ script = [
     },
     {
         "identifier": 'ACTION_286_add_22',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 4]
     },
     {
@@ -136,8 +136,8 @@ script = [
     },
     {
         "identifier": 'ACTION_286_jmp_if_700C_not_equals_short_28',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [16, 'ACTION_286_set_animation_speed_25']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x700C, 16, 'ACTION_286_set_animation_speed_25']
     },
     {
         "identifier": 'ACTION_286_pause_29',

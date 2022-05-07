@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3651_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3651_action_queue_async_0_SUBSCRIPT_set_animation_speed_0',
@@ -43,8 +43,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3651_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3651_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_0',
@@ -55,8 +55,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3651_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3651_action_queue_async_2_SUBSCRIPT_face_southeast_0',
@@ -104,8 +104,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3651_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3651_action_queue_sync_3_SUBSCRIPT_transfer_to_xyzf_0',
@@ -131,8 +131,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3651_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3651_action_queue_sync_4_SUBSCRIPT_play_sound_0',
@@ -177,8 +177,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3651_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3651_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',

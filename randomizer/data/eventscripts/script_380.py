@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_380_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 22]
     },
     {
@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_380_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 99]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 99]
     },
     {
         "identifier": 'EVENT_380_run_dialog_4',

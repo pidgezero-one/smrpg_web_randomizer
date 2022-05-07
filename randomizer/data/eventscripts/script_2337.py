@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2337_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 695]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 695]
     },
     {
         "identifier": 'EVENT_2337_pause_11',
@@ -77,8 +77,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2337_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 695]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 695]
     },
     {
         "identifier": 'EVENT_2337_pause_15',
@@ -97,8 +97,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2337_set_action_script_sync_18',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 695]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 695]
     },
     {
         "identifier": 'EVENT_2337_pause_19',
@@ -117,8 +117,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2337_set_action_script_sync_22',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 695]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 695]
     },
     {
         "identifier": 'EVENT_2337_pause_23',
@@ -137,8 +137,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2337_set_action_script_sync_26',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 695]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 695]
     },
     {
         "identifier": 'EVENT_2337_pause_27',
@@ -157,8 +157,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2337_set_action_script_sync_30',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 695]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 695]
     },
     {
         "identifier": 'EVENT_2337_pause_31',

@@ -47,13 +47,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_3674_set_7000_to_70A0_short_mem_2",
-        "command": "set_7000_to_70A0_short_mem",
-        "args": [0x70A7],
+        "command": "copy_var_to_var",
+        "args": [0x70A7, 0x7000]
     },
     {
         "identifier": "EVENT_3674_room_9_jump",
-        "command": "jmp_if_7000_equals_short",
-        "args": [240, "EVENT_3674_run_event_as_subroutine_1"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 240, "EVENT_3674_run_event_as_subroutine_1"]
     },
     {
         "identifier": "EVENT_3674_disable_trigger_in_level_2",

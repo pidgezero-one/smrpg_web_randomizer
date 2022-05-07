@@ -52,7 +52,7 @@ script = [
     },
     {
         "identifier": "EVENT_2118_start_battle_1",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 520],
     },
     {
@@ -97,7 +97,7 @@ script = [
         "args": [0x7081, 2, "EVENT_2118_ret_10"],
     },
     {"identifier": "EVENT_2118_set_sp_bit", "command": "set_bit", "args": [0x7081, 2]},
-    {"identifier": "EVENT_2118_set_", "command": "set", "args": [0x7000, 520]},
+    {"identifier": "EVENT_2118_set_", "command": "set_var_to_const", "args": [0x7000, 520]},
     {"identifier": "EVENT_2118_star_", "command": "jmp_to_event", "args": [167]},
     {"identifier": "EVENT_2118_ret_10", "command": "ret"},
 ]

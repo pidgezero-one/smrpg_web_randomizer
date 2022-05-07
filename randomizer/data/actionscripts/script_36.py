@@ -6,7 +6,7 @@ from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPac
 script = [
     {
         "identifier": 'ACTION_36_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0014]
     },
     {
@@ -20,8 +20,8 @@ script = [
     },
     {
         "identifier": 'ACTION_36_dec_short_mem_3',
-        "command": 'dec_short_mem',
-        "args": [0x700c, 0x7024]
+        "command": 'dec_short_mem_from_700C'
+        'args': [0x7024]
     },
     {
         "identifier": 'ACTION_36_mem_700C_and_const_4',
@@ -30,8 +30,8 @@ script = [
     },
     {
         "identifier": 'ACTION_36_jmp_if_700C_not_equals_short_5',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [0, 'ACTION_36_load_mem_11']
+        "command": "jmp_if_var_not_equals_const",
+        "args": [0x700C, 0, 'ACTION_36_load_mem_11']
     },
     {
         "identifier": 'ACTION_36_db_6',
@@ -40,12 +40,12 @@ script = [
     },
     {
         "identifier": 'ACTION_36_add_short_7',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x701a, 0x0080]
     },
     {
         "identifier": 'ACTION_36_add_short_8',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x0040]
     },
     {

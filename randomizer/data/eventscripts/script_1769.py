@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1769_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1769_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_0',
@@ -54,8 +54,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1769_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.LAYER_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.LAYER_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1769_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',

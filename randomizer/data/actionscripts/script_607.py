@@ -10,7 +10,7 @@ script = [
     },
     {
         "identifier": 'ACTION_607_add_1',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {
@@ -130,8 +130,8 @@ script = [
     },
     {
         "identifier": 'ACTION_607_mem_compare_val_26',
-        "command": 'mem_compare_val',
-        "args": [25]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 25]
     },
     {
         "identifier": 'ACTION_607_jmp_if_comparison_result_is_lesser_27',

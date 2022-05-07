@@ -66,8 +66,8 @@ script = [
     },
     {
         "identifier": "EVENT_3209_action_queue_sync_1",
-        "command": "action_queue_sync",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": "EVENT_3209_action_queue_sync_1_SUBSCRIPT_fixed_f_coord_on_0",
@@ -95,8 +95,8 @@ script = [
     },
     {
         "identifier": "EVENT_3209_action_queue_async_2",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MEM_70A8],
+        "command": "action_queue",
+        "args": [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": "EVENT_3209_action_queue_async_2_SUBSCRIPT_set_sprite_sequence_0",
@@ -112,7 +112,7 @@ script = [
     },
     {
         "identifier": "EVENT_3209_set_short_3",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x700E, 0x0048],
     },
     {

@@ -12,12 +12,12 @@ script = [
     },
     {
         "identifier": 'EVENT_276_add_short_1',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0xf900]
     },
     {
         "identifier": 'EVENT_276_add_short_2',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0xf900]
     },
     {
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_276_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_276_action_queue_async_4_SUBSCRIPT_jmp_if_bit_set_0',

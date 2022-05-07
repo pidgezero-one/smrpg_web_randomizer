@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2050_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2050_action_queue_async_1_SUBSCRIPT_pause_0',
@@ -94,8 +94,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2050_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2050_action_queue_sync_2_SUBSCRIPT_jump_to_height_silent_0',
@@ -106,8 +106,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2050_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2050_action_queue_sync_3_SUBSCRIPT_jump_to_height_silent_0',
@@ -118,8 +118,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2050_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2050_action_queue_sync_4_SUBSCRIPT_jump_to_height_silent_0',
@@ -135,8 +135,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2050_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2050_action_queue_async_6_SUBSCRIPT_set_animation_speed_0',
@@ -176,8 +176,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2050_jmp_if_var_equals_byte_7',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_2050_jmp_if_var_equals_const_7',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70bd, 7, 'EVENT_2050_run_dialog_20']
     },
     {

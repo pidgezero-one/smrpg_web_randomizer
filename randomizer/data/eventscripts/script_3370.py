@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3370_set_action_script_sync_0',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 930]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 930]
     }
 ]

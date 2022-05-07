@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1653_get_face_buttons_',
-        "command": 'mem_compare_val',
-        "args": [0x10]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 0x10]
     },
     {
         "identifier": 'EVENT_1653_jmp_if_comparison_result_is_greater_or_equal',
@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1653_get_face_buttons_2_',
-        "command": 'mem_compare_val',
-        "args": [0x10]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 0x10]
     },
     {
         "identifier": 'EVENT_1653_jmp_if_7000_not_equals_short_4',
@@ -56,7 +56,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1653_zero',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0]
     },
     {

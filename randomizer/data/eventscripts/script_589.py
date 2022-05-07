@@ -22,33 +22,33 @@ script = [
     },
     {
         "identifier": 'EVENT_589_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 210]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 210]
     },
     {
         "identifier": 'EVENT_589_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 425]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_11, True, 425]
     },
     {
         "identifier": 'EVENT_589_set_7000_to_7000_short_mem_5',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_589_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_256_ret_0']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_589_dec_short_7',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x7024]
     },
     {
         "identifier": 'EVENT_589_set_7000_to_7000_short_mem_8',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_589_run_dialog_9',

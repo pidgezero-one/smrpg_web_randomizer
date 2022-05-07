@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3228_jmp_if_7000_not_equals_short_6',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [17, 'EVENT_3228_start_embedded_action_script_sync_F1_15']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 17, 'EVENT_3228_start_embedded_action_script_sync_F1_15']
     },
     {
         "identifier": 'EVENT_3228_set_7000_to_object_coord_7',
@@ -46,8 +46,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3228_jmp_if_7000_not_equals_short_8',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [121, 'EVENT_3228_start_embedded_action_script_sync_F1_15']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 121, 'EVENT_3228_start_embedded_action_script_sync_F1_15']
     },
     {
         "identifier": 'EVENT_3228_set_bit_13',
@@ -61,8 +61,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_15',
-        "command": 'start_embedded_action_script_sync_F1',
-        "args": [AreaObjects.NPC_0],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_0, True, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_15_SUBSCRIPT_jump_to_height_0',
@@ -101,8 +101,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22',
-        "command": 'start_embedded_action_script_sync_F1',
-        "args": [AreaObjects.NPC_0],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_0, True, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_set_animation_speed_0',
@@ -126,43 +126,43 @@ script = [
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_jmp_if_700C_equals_short_4',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [0, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_south_pixels_16']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 0, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_south_pixels_16']
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_jmp_if_700C_equals_short_5',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [1, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southeast_pixels_14']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 1, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southeast_pixels_14']
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_jmp_if_700C_equals_short_6',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [2, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_east_pixels_12']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 2, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_east_pixels_12']
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_jmp_if_700C_equals_short_7',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [3, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northeast_pixels_26']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 3, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northeast_pixels_26']
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_jmp_if_700C_equals_short_8',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [4, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_north_pixels_24']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 4, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_north_pixels_24']
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_jmp_if_700C_equals_short_9',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [5, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northwest_pixels_22']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 5, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northwest_pixels_22']
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_jmp_if_700C_equals_short_10',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [6, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_west_pixels_20']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 6, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_west_pixels_20']
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_jmp_if_700C_equals_short_11',
-                "command": 'jmp_if_700C_equals_short',
-                "args": [7, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southwest_pixels_18']
+                "command": "jmp_if_var_equals_const",
+                "args": [0x700C, 7, 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southwest_pixels_18']
             },
             {
                 "identifier": 'EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_east_pixels_12',

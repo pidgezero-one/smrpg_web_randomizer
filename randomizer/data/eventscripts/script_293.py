@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_293_set_action_script_sync_21',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 99]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 99]
     },
     {
         "identifier": 'EVENT_293_run_dialog_22',
@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_293_start_embedded_action_script_async_F1_27',
-        "command": 'start_embedded_action_script_async_F1',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.MEM_70A8, False, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_293_start_embedded_action_script_async_F1_27_SUBSCRIPT_set_solidity_bits_0',
@@ -83,8 +83,8 @@ script = [
     },
     {
         "identifier": 'EVENT_293_set_action_script_sync_28',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 21]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 21]
     },
     {
         "identifier": 'EVENT_293_ret_29',

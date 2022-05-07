@@ -11,7 +11,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3708_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 132]
     },
     {
@@ -20,8 +20,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3708_jmp_if_7000_equals_short_3',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_3708_play_sound_6']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_3708_play_sound_6']
     },
     {
         "identifier": 'EVENT_3708_unfreeze_all_npcs_4',

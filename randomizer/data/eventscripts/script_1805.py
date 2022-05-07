@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1805_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1805_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1805_jmp_fork_mario_on_object_2',
@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_mem_compare_val_4',
-        "command": 'mem_compare_val',
-        "args": [50]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 50]
     },
     {
         "identifier": 'EVENT_1805_jmp_if_comparison_result_is_lesser_5',
@@ -51,13 +51,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_set_action_script_async_9',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1805_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1805_action_queue_async_10_SUBSCRIPT_set_animation_speed_0',
@@ -82,7 +82,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_set_11',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 50]
     },
     {
@@ -101,7 +101,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_set_15',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70aa, 23]
     },
     {
@@ -136,7 +136,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_set_22',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 24]
     },
     {
@@ -151,8 +151,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_action_queue_sync_25',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1805_action_queue_sync_25_SUBSCRIPT_visibility_off_0',
@@ -167,8 +167,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_action_queue_sync_26',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1805_action_queue_sync_26_SUBSCRIPT_visibility_off_0',
@@ -183,7 +183,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_set_short_27',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0x0001]
     },
     {
@@ -202,8 +202,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1805_create_packet_at_7010_coords_jmp_if_null_31',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_1805_create_packet_at_7010_31',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_1805_pause_30']
     },
     {
@@ -213,12 +213,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_add_short_33',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7034, 0x0003]
     },
     {
         "identifier": 'EVENT_1805_add_short_34',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7014, 0x0050]
     },
     {
@@ -227,7 +227,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_set_36',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 0]
     },
     {
@@ -255,7 +255,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_set_41',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70aa, 23]
     },
     {
@@ -274,8 +274,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1805_set_action_script_async_45',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1805_ret_46',

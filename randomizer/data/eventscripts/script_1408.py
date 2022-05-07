@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1408_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1408_action_queue_sync_3_SUBSCRIPT_set_priority_0',

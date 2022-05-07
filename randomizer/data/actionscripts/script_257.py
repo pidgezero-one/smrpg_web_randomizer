@@ -19,8 +19,8 @@ script = [
     },
     {
         "identifier": 'ACTION_257_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [117, 'ACTION_257_set_bit_55']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 117, 'ACTION_257_set_bit_55']
     },
     {
         "identifier": 'ACTION_257_jmp_4',

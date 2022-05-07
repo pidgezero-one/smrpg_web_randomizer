@@ -7,23 +7,23 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3336_set_action_script_sync_0',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 1023]
     },
     {
         "identifier": 'EVENT_3336_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 1023]
     },
     {
         "identifier": 'EVENT_3336_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 1023]
     },
     {
         "identifier": 'EVENT_3336_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 1023]
     },
     {
         "identifier": 'EVENT_3336_set_7000_to_current_level_4',
@@ -31,13 +31,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3336_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [363, 'EVENT_3336_jmp_if_object_not_in_level_7']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 363, 'EVENT_3336_jmp_if_object_not_in_level_7']
     },
     {
         "identifier": 'EVENT_3336_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [362, 'EVENT_3336_jmp_if_object_not_in_level_9']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 362, 'EVENT_3336_jmp_if_object_not_in_level_9']
     },
     {
         "identifier": 'EVENT_3336_jmp_if_object_not_in_level_7',
@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3336_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3336_action_queue_async_10_SUBSCRIPT_fixed_f_coord_on_0',

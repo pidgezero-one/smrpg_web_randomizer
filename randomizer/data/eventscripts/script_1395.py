@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1395_action_queue_async_5_SUBSCRIPT_transfer_to_xyzf_0',
@@ -76,8 +76,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1395_action_queue_async_10_SUBSCRIPT_pause_0',
@@ -185,8 +185,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_25',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1395_action_queue_async_25_SUBSCRIPT_shift_northeast_pixels_0',
@@ -237,8 +237,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_32',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1395_action_queue_async_32_SUBSCRIPT_play_sound_0',
@@ -288,8 +288,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1395_jmp_if_7000_equals_short_37',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [128, 'EVENT_1395_apply_tile_mod_39']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 128, 'EVENT_1395_apply_tile_mod_39']
     },
     {
         "identifier": 'EVENT_1395_jmp_38',
@@ -308,8 +308,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_41',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1395_action_queue_async_41_SUBSCRIPT_reset_properties_0',

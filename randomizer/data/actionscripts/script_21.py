@@ -6,7 +6,7 @@ from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPac
 script = [
     {
         "identifier": 'ACTION_21_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 20]
     },
     {
@@ -46,7 +46,7 @@ script = [
     {
         "identifier": 'ACTION_21_dec_8',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae]
     },
     {
         "identifier": 'ACTION_21_turn_random_direction_9',
@@ -107,8 +107,8 @@ script = [
         "args": ['ACTION_21_set_700C_to_70A0_short_mem_40']
     },
     {
-        "identifier": 'ACTION_21_jmp_if_var_equals_byte_21',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_21_jmp_if_var_equals_const_21',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 1, 'ACTION_21_pause_32']
     },
     {
@@ -128,12 +128,12 @@ script = [
     {
         "identifier": 'ACTION_21_dec_25',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae]
     },
     {
         "identifier": 'ACTION_21_dec_26',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae]
     },
     {
         "identifier": 'ACTION_21_jmp_if_random_above_128_27',
@@ -157,7 +157,7 @@ script = [
     {
         "identifier": 'ACTION_21_dec_31',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae]
     },
     {
         "identifier": 'ACTION_21_pause_32',
@@ -172,17 +172,17 @@ script = [
     {
         "identifier": 'ACTION_21_dec_34',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae]
     },
     {
         "identifier": 'ACTION_21_dec_35',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae]
     },
     {
         "identifier": 'ACTION_21_dec_36',
         "command": 'dec',
-        "args": [0x70ae]
+        'args': [0x70ae]
     },
     {
         "identifier": 'ACTION_21_jmp_to_subroutine_37',
@@ -190,8 +190,8 @@ script = [
         "args": ['ACTION_21_set_700C_to_70A0_short_mem_40']
     },
     {
-        "identifier": 'ACTION_21_jmp_if_var_equals_byte_38',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_21_jmp_if_var_equals_const_38',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 2, 'ACTION_21_pause_14']
     },
     {
@@ -201,17 +201,17 @@ script = [
     },
     {
         "identifier": 'ACTION_21_set_700C_to_70A0_short_mem_40',
-        "command": 'set_700C_to_70A0_short_mem',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x70ae, 0x700C]
     },
     {
         "identifier": 'ACTION_21_set_7000_short_mem_to_700C_41',
-        "command": 'set_7000_short_mem_to_700C',
-        "args": [0x702c]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x702c]
     },
     {
         "identifier": 'ACTION_21_mem_compare_42',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x702c, 28]
     },
     {
@@ -221,7 +221,7 @@ script = [
     },
     {
         "identifier": 'ACTION_21_mem_compare_44',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x702c, 13]
     },
     {
@@ -231,7 +231,7 @@ script = [
     },
     {
         "identifier": 'ACTION_21_set_46',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70af, 0]
     },
     {
@@ -240,12 +240,12 @@ script = [
     },
     {
         "identifier": 'ACTION_21_set_48',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70af, 1]
     },
     {
         "identifier": 'ACTION_21_set_49',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 23]
     },
     {
@@ -254,12 +254,12 @@ script = [
     },
     {
         "identifier": 'ACTION_21_set_51',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70af, 2]
     },
     {
         "identifier": 'ACTION_21_set_52',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 17]
     },
     {

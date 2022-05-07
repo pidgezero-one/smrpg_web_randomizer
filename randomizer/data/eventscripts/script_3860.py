@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3860_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3860_action_queue_sync_3_SUBSCRIPT_face_south_0',

@@ -13,13 +13,13 @@ script = [
         "command": 'sequence_looping_on'
     },
     {
-        "identifier": 'ACTION_558_set_random_2',
-        "command": 'set_random',
+        "identifier": 'ACTION_558_set_var_to_random_2',
+        "command": 'set_var_to_random',
         "args": [0x700c, 112]
     },
     {
         "identifier": 'ACTION_558_add_3',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 32]
     },
     {
@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'ACTION_558_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [36, 'ACTION_558_visibility_on_10']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 36, 'ACTION_558_visibility_on_10']
     },
     {
         "identifier": 'ACTION_558_set_priority_9',
@@ -192,13 +192,13 @@ script = [
         "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_558_set_random_39',
-        "command": 'set_random',
+        "identifier": 'ACTION_558_set_var_to_random_39',
+        "command": 'set_var_to_random',
         "args": [0x700c, 18]
     },
     {
         "identifier": 'ACTION_558_add_40',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 8]
     },
     {

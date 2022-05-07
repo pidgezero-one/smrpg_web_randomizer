@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1573_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0000]
     },
     {
@@ -17,23 +17,23 @@ script = [
     },
     {
         "identifier": 'EVENT_1573_add_short_2',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x0001]
     },
     {
         "identifier": 'EVENT_1573_add_short_3',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0x0002]
     },
     {
         "identifier": 'EVENT_1573_set_7000_to_7000_short_mem_4',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_1573_set_70A0_short_mem_to_7000_5',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_1573_reset_coords_6',
@@ -42,33 +42,33 @@ script = [
     },
     {
         "identifier": 'EVENT_1573_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 595]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 595]
     },
     {
         "identifier": 'EVENT_1573_add_8',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 8]
     },
     {
         "identifier": 'EVENT_1573_set_70A0_short_mem_to_7000_9',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_1573_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 170]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 170]
     },
     {
         "identifier": 'EVENT_1573_set_7000_to_7000_short_mem_11',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7028]
+        "command": 'copy_var_to_var',
+        'args': [0x7028, 0x7000]
     },
     {
         "identifier": 'EVENT_1573_set_70A0_short_mem_to_7000_12',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_1573_reset_coords_13',
@@ -87,13 +87,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1573_set_action_script_sync_16',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 596]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 596]
     },
     {
         "identifier": 'EVENT_1573_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 596]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 596]
     },
     {
         "identifier": 'EVENT_1573_jmp_18',
@@ -102,13 +102,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1573_set_action_script_sync_19',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 594]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 594]
     },
     {
         "identifier": 'EVENT_1573_set_action_script_sync_20',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 594]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 594]
     },
     {
         "identifier": 'EVENT_1573_pause_21',

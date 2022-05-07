@@ -29,8 +29,8 @@ script = [
         "args": [25, 107, 0, RadialDirections.SOUTHEAST]
     },
     {
-        "identifier": 'ACTION_824_jmp_if_var_equals_byte_5',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_824_jmp_if_var_equals_const_5',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a9, 27, 'ACTION_824_set_sprite_sequence_70']
     },
     {

@@ -46,9 +46,9 @@ from randomizer.data import items
 
 script = [
     {
-        "identifier": "EVENT_1970_set_random_10",
-        "command": "set_random",
+        "identifier": "EVENT_1970_set_var_to_random_10",
+        "command": "set_var_to_random",
         "args": [0x7000, 43],
     },
-    {"identifier": "EVENT_1970_set_random_10_", "command": "ret"},
+    {"identifier": "EVENT_1970_set_var_to_random_10_", "command": "ret"},
 ]

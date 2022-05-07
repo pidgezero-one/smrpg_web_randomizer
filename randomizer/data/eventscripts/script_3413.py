@@ -26,14 +26,14 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_3413_create_packet_at_7010_coords_jmp_if_null_16',
+        "identifier": 'EVENT_3413_create_packet_at_7010_16',
         "command": 'jmp_to_event',
         "args": [3412]
     },
     {
         "identifier": 'EVENT_3413_action_queue_sync_15',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A9],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3413_action_queue_sync_15_SUBSCRIPT_set_sprite_sequence_16',

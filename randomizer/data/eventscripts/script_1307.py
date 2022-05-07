@@ -16,14 +16,14 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1307_create_packet_at_object_coords_jmp_if_null_2',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_1307_create_packet_at_npc_coords_2',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._034_GREY_EXPLOSION_SFX, AreaObjects.MARIO, 'EVENT_1307_jmp_if_bit_set_0']
     },
     {
         "identifier": 'EVENT_1307_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1307_action_queue_sync_3_SUBSCRIPT_transfer_to_xyzf_0',
@@ -98,8 +98,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1307_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1307_action_queue_async_4_SUBSCRIPT_jump_to_height_silent_0',
@@ -134,8 +134,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1307_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1307_action_queue_sync_9_SUBSCRIPT_visibility_off_0',

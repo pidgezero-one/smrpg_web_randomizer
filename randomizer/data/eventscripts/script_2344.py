@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2344_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2344_action_queue_sync_3_SUBSCRIPT_set_animation_speed_0',
@@ -54,8 +54,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2344_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2344_action_queue_async_4_SUBSCRIPT_set_animation_speed_0',
@@ -96,8 +96,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2344_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [22, 'EVENT_2344_freeze_camera_9']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 22, 'EVENT_2344_freeze_camera_9']
     },
     {
         "identifier": 'EVENT_2344_fade_in_from_black_async_7',
@@ -113,8 +113,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2344_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2344_action_queue_async_10_SUBSCRIPT_set_animation_speed_0',
@@ -144,8 +144,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2344_action_queue_async_13',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2344_action_queue_async_13_SUBSCRIPT_jump_to_height_0',
@@ -175,8 +175,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2344_set_action_script_async_15',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2344_ret_16',

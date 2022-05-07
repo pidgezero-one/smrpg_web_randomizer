@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1899_mem_compare_val_2',
-        "command": 'mem_compare_val',
-        "args": [1024]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 1024]
     },
     {
         "identifier": 'EVENT_1899_jmp_if_comparison_result_is_greater_or_equal_3',

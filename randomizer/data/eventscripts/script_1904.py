@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1904_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x700e, 0x00d5]
     },
     {
@@ -44,8 +44,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1904_create_packet_at_object_coords_jmp_if_null_8',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'EVENT_1904_create_packet_at_npc_coords_8',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, AreaObjects.NPC_0, 'EVENT_1904_pause_7']
     },
     {
@@ -60,8 +60,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1904_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1904_action_queue_async_11_SUBSCRIPT_floating_off_0',

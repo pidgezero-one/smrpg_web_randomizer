@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2316_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_0_SUBSCRIPT_set_priority_0',
@@ -24,8 +24,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_1_SUBSCRIPT_set_priority_0',
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_8_SUBSCRIPT_floating_off_0',
@@ -152,8 +152,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_9_SUBSCRIPT_pause_0',
@@ -197,8 +197,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_19',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_19_SUBSCRIPT_set_animation_speed_0',
@@ -224,8 +224,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_20',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_20_SUBSCRIPT_floating_off_0',
@@ -270,8 +270,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_async_21',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_async_21_SUBSCRIPT_set_priority_0',
@@ -306,8 +306,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_async_24',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_async_24_SUBSCRIPT_db_0',
@@ -371,8 +371,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_set_action_script_async_25',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2316_unfreeze_camera_26',
@@ -388,8 +388,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_29',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_29_SUBSCRIPT_floating_off_0',
@@ -428,8 +428,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_async_30',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_async_30_SUBSCRIPT_set_animation_speed_0',
@@ -449,8 +449,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_async_32',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_async_32_SUBSCRIPT_set_animation_speed_0',
@@ -490,8 +490,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_33',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_33_SUBSCRIPT_set_sprite_sequence_0',
@@ -531,8 +531,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_action_queue_async_34',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_async_34_SUBSCRIPT_set_animation_speed_0',
@@ -557,8 +557,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_set_action_script_async_37',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2316_ret_38',

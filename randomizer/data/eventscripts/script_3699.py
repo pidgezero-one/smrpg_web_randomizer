@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3699_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 814]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 814]
     },
     {
         "identifier": 'EVENT_3699_ret_4',

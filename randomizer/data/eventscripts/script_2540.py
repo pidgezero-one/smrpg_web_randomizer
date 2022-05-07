@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2540_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2540_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_0',
@@ -24,8 +24,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2540_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2540_action_queue_async_2_SUBSCRIPT_fixed_f_coord_on_0',
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2540_set_action_script_async_3',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 408]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 408]
     },
     {
         "identifier": 'EVENT_2540_play_sound_4',
@@ -67,8 +67,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2540_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2540_action_queue_sync_5_SUBSCRIPT_pause_0',

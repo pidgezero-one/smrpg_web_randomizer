@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1672_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1672_action_queue_sync_5_SUBSCRIPT_visibility_on_0',
@@ -85,8 +85,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1672_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1672_action_queue_async_12_SUBSCRIPT_set_animation_speed_0',
@@ -107,8 +107,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1672_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1672_action_queue_sync_13_SUBSCRIPT_walk_1_step_southeast_0',

@@ -19,7 +19,7 @@ script = [
     },
     {
         "identifier": 'ACTION_548_add_3',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {
@@ -52,8 +52,8 @@ script = [
         "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_548_jmp_if_var_equals_byte_10',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_548_jmp_if_var_equals_const_10',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70bb, 0, 'ACTION_548_pause_16']
     },
     {

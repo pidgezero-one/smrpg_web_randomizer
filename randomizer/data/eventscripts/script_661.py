@@ -99,8 +99,8 @@ script = [
     {"identifier": "EVENT_661_slow_down_music_171", "command": "slow_down_music"},
     {
         "identifier": "EVENT_661_action_queue_async_172",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_661_action_queue_async_172_SUBSCRIPT_set_sprite_sequence_0",
@@ -127,8 +127,8 @@ script = [
     #    {"identifier": "EVENT_661_ret_", "command": "set_bit", "args": [0x7044, 7]},
     {
         "identifier": "EVENT_661_action_queue_async_2_",
-        "command": "action_queue_async",
-        "args": [AreaObjects.MARIO],
+        "command": "action_queue",
+        "args": [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": "EVENT_661_action_queue_async_2_SUBSCRIPT_walk_to_xy_coords_0",

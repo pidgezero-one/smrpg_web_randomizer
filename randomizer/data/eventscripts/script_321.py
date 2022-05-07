@@ -11,13 +11,13 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'EVENT_321_jmp_if_var_equals_byte_1',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_321_jmp_if_var_equals_const_1',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 1, 'EVENT_321_run_dialog_5']
     },
     {
-        "identifier": 'EVENT_321_jmp_if_var_equals_byte_2',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_321_jmp_if_var_equals_const_2',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70ae, 2, 'EVENT_321_run_dialog_7']
     },
     {

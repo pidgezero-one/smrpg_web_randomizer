@@ -60,6 +60,6 @@ script = [
         "identifier": "EVENT_1893_fade_in_from_black_async_3",
         "command": "fade_in_from_black_async",
     },
-    {"identifier": "EVENT_1893_set_0", "command": "set", "args": [0x70DF, 5]},
+    {"identifier": "EVENT_1893_set_0", "command": "set_var_to_const", "args": [0x70DF, 5]},
     {"identifier": "EVENT_1893_ret_4", "command": "ret"},
 ]

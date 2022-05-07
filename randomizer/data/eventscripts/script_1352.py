@@ -12,12 +12,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1352_set_1',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 140]
     },
     {
         "identifier": 'EVENT_1352_set_2',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 2802]
     },
     {

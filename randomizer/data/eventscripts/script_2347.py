@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2347_action_queue_sync_138',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2347_action_queue_sync_138_SUBSCRIPT_set_animation_speed_0',

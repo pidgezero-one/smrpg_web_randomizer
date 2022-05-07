@@ -29,12 +29,12 @@ script = [
     },
     {
         "identifier": 'ACTION_621_set_70A0_short_mem_to_700C_5',
-        "command": 'set_70A0_short_mem_to_700C',
-        "args": [0x70aa]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x70aa]
     },
     {
-        "identifier": 'ACTION_621_create_packet_at_object_coords_jmp_if_null_6',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_621_create_packet_at_npc_coords_6',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._021_BULLET_BILL_IGNITION, AreaObjects.MEM_70AA, 'ACTION_621_pause_7']
     },
     {

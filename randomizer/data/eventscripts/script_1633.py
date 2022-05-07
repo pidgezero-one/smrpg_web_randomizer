@@ -27,17 +27,17 @@ script = [
     },
     {
         "identifier": 'EVENT_1633_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x000a]
     },
     {
         "identifier": 'EVENT_1633_set_5',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 1088]
     },
     {
         "identifier": 'EVENT_1633_set_6',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 20]
     },
     {
@@ -84,8 +84,8 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1633_mem_compare_address_16',
-        "command": 'mem_compare_address',
+        "identifier": 'EVENT_1633_compare_7000_to_var_16',
+        "command": 'compare_7000_to_var',
         "args": [0x7024]
     },
     {
@@ -139,8 +139,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1633_set_7000_to_7000_short_mem_27',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_1633_dec_coins_28',
@@ -153,8 +153,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1633_set_action_script_async_30',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_1633_set_bit_31',
@@ -172,8 +172,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1633_set_action_script_async_34',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 671]
     },
     {
         "identifier": 'EVENT_1633_ret_35',

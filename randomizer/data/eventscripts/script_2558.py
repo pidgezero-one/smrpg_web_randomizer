@@ -12,12 +12,12 @@ script = [
     },
     {
         "identifier": 'EVENT_2558_set_short_1',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7016, 0x001b]
     },
     {
         "identifier": 'EVENT_2558_set_short_2',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7018, 0x0046]
     },
     {
@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2558_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 10]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 10]
     },
     {
         "identifier": 'EVENT_2558_ret_6',

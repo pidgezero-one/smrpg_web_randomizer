@@ -6,27 +6,27 @@ from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPac
 script = [
     {
         "identifier": 'ACTION_639_set_700C_to_70A0_short_mem_0',
-        "command": 'set_700C_to_70A0_short_mem',
-        "args": [0x70b8]
+        "command": 'copy_var_to_var',
+        'args': [0x70b8, 0x700C]
     },
     {
         "identifier": 'ACTION_639_set_7000_short_mem_to_700C_1',
-        "command": 'set_7000_short_mem_to_700C',
-        "args": [0x7016]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x7016]
     },
     {
         "identifier": 'ACTION_639_set_700C_to_70A0_short_mem_2',
-        "command": 'set_700C_to_70A0_short_mem',
-        "args": [0x70b9]
+        "command": 'copy_var_to_var',
+        'args': [0x70b9, 0x700C]
     },
     {
         "identifier": 'ACTION_639_set_7000_short_mem_to_700C_3',
-        "command": 'set_7000_short_mem_to_700C',
-        "args": [0x7018]
+        "command": 'copy_var_to_var',
+        'args': [0x700C, 0x7018]
     },
     {
         "identifier": 'ACTION_639_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0020]
     },
     {

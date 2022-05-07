@@ -12,12 +12,12 @@ script = [
     },
     {
         "identifier": 'EVENT_266_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70bb]
+        "command": 'copy_var_to_var',
+        'args': [0x70bb, 0x7000]
     },
     {
-        "identifier": 'EVENT_266_mem_compare_address_2',
-        "command": 'mem_compare_address',
+        "identifier": 'EVENT_266_compare_7000_to_var_2',
+        "command": 'compare_7000_to_var',
         "args": [0x702e]
     },
     {

@@ -12,62 +12,62 @@ script = [
     },
     {
         "identifier": 'EVENT_160_check_12',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 28, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_1',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 78, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_2',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 81, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_10',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 80, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_3',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 84, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_4',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 103, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_9',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 105, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_11',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 114, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_8',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 121, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_5',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 126, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_7',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 141, 'EVENT_160_run_dialog_104_']
     },
     {
         "identifier": 'EVENT_160_check_6',
-        "command": 'jmp_if_var_equals_byte',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70a7, 151, 'EVENT_160_run_dialog_104_']
     },
     {

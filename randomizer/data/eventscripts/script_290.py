@@ -69,8 +69,8 @@ script = [
     },
     {
         "identifier": "EVENT_290_jmp_if_7000_equals_short_363",
-        "command": "jmp_if_7000_equals_short",
-        "args": [1, "EVENT_290_run_event_as_subroutine_359_"],
+        "command": "jmp_if_var_equals_const",
+        "args": [0x7000, 1, "EVENT_290_run_event_as_subroutine_359_"]
     },
     {"identifier": "EVENT_290_open_shop_364", "command": "jmp_to_event", "args": [284]},
     {

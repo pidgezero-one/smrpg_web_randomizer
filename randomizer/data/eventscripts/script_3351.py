@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3351_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70b7]
+        "command": 'copy_var_to_var',
+        'args': [0x70b7, 0x7000]
     },
     {
         "identifier": 'EVENT_3351_mem_7000_shift_left_2',
@@ -22,12 +22,12 @@ script = [
     },
     {
         "identifier": 'EVENT_3351_set_7000_short_mem_to_7000_3',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7016]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7016]
     },
     {
         "identifier": 'EVENT_3351_add_short_4',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x0003]
     },
     {
@@ -37,18 +37,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3351_set_7000_short_mem_to_7000_6',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7018]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7018]
     },
     {
         "identifier": 'EVENT_3351_add_short_7',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0x0019]
     },
     {
         "identifier": 'EVENT_3351_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3351_action_queue_sync_8_SUBSCRIPT_walk_to_7016_7018_0',

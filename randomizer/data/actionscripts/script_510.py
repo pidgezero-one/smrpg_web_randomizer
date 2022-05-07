@@ -20,43 +20,43 @@ script = [
     },
     {
         "identifier": 'ACTION_510_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_510_start_loop_n_times_14']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_510_start_loop_n_times_14']
     },
     {
         "identifier": 'ACTION_510_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_510_turn_clockwise_45_degrees_n_times_11']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_510_turn_clockwise_45_degrees_n_times_11']
     },
     {
         "identifier": 'ACTION_510_jmp_if_700C_equals_short_5',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_510_start_loop_n_times_38']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_510_start_loop_n_times_38']
     },
     {
         "identifier": 'ACTION_510_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [3, 'ACTION_510_start_loop_n_times_35']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 3, 'ACTION_510_start_loop_n_times_35']
     },
     {
         "identifier": 'ACTION_510_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [4, 'ACTION_510_start_loop_n_times_31']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 4, 'ACTION_510_start_loop_n_times_31']
     },
     {
         "identifier": 'ACTION_510_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [5, 'ACTION_510_start_loop_n_times_27']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 5, 'ACTION_510_start_loop_n_times_27']
     },
     {
         "identifier": 'ACTION_510_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [6, 'ACTION_510_start_loop_n_times_23']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 6, 'ACTION_510_start_loop_n_times_23']
     },
     {
         "identifier": 'ACTION_510_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_510_start_loop_n_times_19']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_510_start_loop_n_times_19']
     },
     {
         "identifier": 'ACTION_510_turn_clockwise_45_degrees_n_times_11',

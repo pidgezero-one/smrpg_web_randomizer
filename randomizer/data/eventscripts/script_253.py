@@ -7,303 +7,303 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_253_room_7_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, 'EVENT_253_room_7_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 7, 'EVENT_253_room_7_set']
     },
     {
         "identifier": "EVENT_253_room_20_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [20, 'EVENT_253_room_20_328_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 20, 'EVENT_253_room_20_328_set']
     },
     {
         "identifier": "EVENT_253_room_34_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [34, 'EVENT_253_room_34_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 34, 'EVENT_253_room_34_set']
     },
     {
         "identifier": "EVENT_253_room_35_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [35, 'EVENT_253_room_35_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 35, 'EVENT_253_room_35_logic']
     },
     {
         "identifier": "EVENT_253_room_39_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [39, 'EVENT_253_room_39_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 39, 'EVENT_253_room_39_set']
     },
     {
         "identifier": "EVENT_253_room_67_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [67, 'EVENT_253_room_67_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 67, 'EVENT_253_room_67_set']
     },
     {
         "identifier": "EVENT_253_room_74_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [74, 'EVENT_253_room_74_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 74, 'EVENT_253_room_74_logic']
     },
     {
         "identifier": "EVENT_253_room_75_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [75, 'EVENT_253_room_75_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 75, 'EVENT_253_room_75_logic']
     },
     {
         "identifier": "EVENT_253_room_83_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [83, 'EVENT_253_room_83_84_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 83, 'EVENT_253_room_83_84_logic']
     },
     {
         "identifier": "EVENT_253_room_84_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [84, 'EVENT_253_room_83_84_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 84, 'EVENT_253_room_83_84_logic']
     },
     {
         "identifier": "EVENT_253_room_86_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [86, 'EVENT_253_room_86_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 86, 'EVENT_253_room_86_logic']
     },
     {
         "identifier": "EVENT_253_room_92_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [92, 'EVENT_253_room_92_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 92, 'EVENT_253_room_92_logic']
     },
     {
         "identifier": "EVENT_253_room_93_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [93, 'EVENT_253_room_93_94_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 93, 'EVENT_253_room_93_94_logic']
     },
     {
         "identifier": "EVENT_253_room_94_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [94, 'EVENT_253_room_93_94_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 94, 'EVENT_253_room_93_94_logic']
     },
     {
         "identifier": "EVENT_253_room_95_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [95, 'EVENT_253_room_95_96_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 95, 'EVENT_253_room_95_96_logic']
     },
     {
         "identifier": "EVENT_253_room_96_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [96, 'EVENT_253_room_95_96_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 96, 'EVENT_253_room_95_96_logic']
     },
     {
         "identifier": "EVENT_253_room_100_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [100, 'EVENT_253_room_100_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 100, 'EVENT_253_room_100_logic']
     },
     {
         "identifier": "EVENT_253_room_108_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [108, 'EVENT_253_room_108_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 108, 'EVENT_253_room_108_logic']
     },
     {
         "identifier": "EVENT_253_room_110_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [110, 'EVENT_253_room_110_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 110, 'EVENT_253_room_110_logic']
     },
     {
         "identifier": "EVENT_253_room_143_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [143, 'EVENT_253_room_143_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 143, 'EVENT_253_room_143_logic']
     },
     {
         "identifier": "EVENT_253_room_154_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [154, 'EVENT_253_room_154_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 154, 'EVENT_253_room_154_logic']
     },
     {
         "identifier": "EVENT_253_room_171_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [171, 'EVENT_253_room_171_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 171, 'EVENT_253_room_171_logic']
     },
     {
         "identifier": "EVENT_253_room_189_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [189, 'EVENT_253_room_189_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 189, 'EVENT_253_room_189_logic']
     },
     {
         "identifier": "EVENT_253_room_190_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [190, 'EVENT_253_room_190_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 190, 'EVENT_253_room_190_logic']
     },
     {
         "identifier": "EVENT_253_room_192_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [192, 'EVENT_253_room_192_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 192, 'EVENT_253_room_192_logic']
     },
     {
         "identifier": "EVENT_253_room_194_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [194, 'EVENT_253_room_194_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 194, 'EVENT_253_room_194_logic']
     },
     {
         "identifier": "EVENT_253_room_197_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [197, "EVENT_253_room_197_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 197, "EVENT_253_room_197_logic"]
     },
     {
         "identifier": "EVENT_253_room_203_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [203, 'EVENT_253_room_203_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 203, 'EVENT_253_room_203_logic']
     },
     {
         "identifier": "EVENT_253_room_204_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [204, 'EVENT_253_room_204_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 204, 'EVENT_253_room_204_logic']
     },
     {
         "identifier": "EVENT_253_room_205_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [205, 'EVENT_253_room_205_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 205, 'EVENT_253_room_205_logic']
     },
     {
         "identifier": "EVENT_253_room_206_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [206, 'EVENT_253_room_206_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 206, 'EVENT_253_room_206_logic']
     },
     {
         "identifier": "EVENT_253_room_254_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [254, 'EVENT_253_room_254_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 254, 'EVENT_253_room_254_logic']
     },
     {
         "identifier": "EVENT_253_room_255_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [255, 'EVENT_253_room_255_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 255, 'EVENT_253_room_255_logic']
     },
     {
         "identifier": "EVENT_253_room_273_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [273, 'EVENT_253_room_273_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 273, 'EVENT_253_room_273_logic']
     },
     {
         "identifier": "EVENT_253_room_277_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [277, 'EVENT_253_room_277_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 277, 'EVENT_253_room_277_logic']
     },
     {
         "identifier": "EVENT_253_room_283_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [283, 'EVENT_253_room_283_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 283, 'EVENT_253_room_283_logic']
     },
     {
         "identifier": "EVENT_253_room_314_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [314, "EVENT_253_room_314_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 314, "EVENT_253_room_314_logic"]
     },
     {
         "identifier": "EVENT_253_room_328_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [328, 'EVENT_253_room_20_328_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 328, 'EVENT_253_room_20_328_set']
     },
     {
         "identifier": "EVENT_253_room_330_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [330, 'EVENT_253_room_330_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 330, 'EVENT_253_room_330_set']
     },
     {
         "identifier": "EVENT_253_room_335_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [335, 'EVENT_253_room_335_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 335, 'EVENT_253_room_335_logic']
     },
     {
         "identifier": "EVENT_253_room_336_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [336, 'EVENT_253_room_336_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 336, 'EVENT_253_room_336_logic']
     },
     {
         "identifier": "EVENT_253_room_339_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [339, "EVENT_253_room_339_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 339, "EVENT_253_room_339_logic"]
     },
     {
         "identifier": "EVENT_253_room_346_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [346, "EVENT_253_room_346_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 346, "EVENT_253_room_346_logic"]
     },
     {
         "identifier": "EVENT_253_room_351_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [351, "EVENT_253_room_351_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 351, "EVENT_253_room_351_logic"]
     },
     {
         "identifier": "EVENT_253_room_397_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [397, "EVENT_253_room_397_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 397, "EVENT_253_room_397_logic"]
     },
     {
         "identifier": "EVENT_253_room_399_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [399, "EVENT_253_room_399_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 399, "EVENT_253_room_399_logic"]
     },
     {
         "identifier": "EVENT_253_room_406_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [406, "EVENT_253_room_406_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 406, "EVENT_253_room_406_logic"]
     },
     {
         "identifier": "EVENT_253_room_407_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [407, "EVENT_253_room_407_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 407, "EVENT_253_room_407_logic"]
     },
     {
         "identifier": "EVENT_253_room_409_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [409, "EVENT_253_room_409_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 409, "EVENT_253_room_409_logic"]
     },
     {
         "identifier": "EVENT_253_room_413_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [413, "EVENT_253_room_413_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 413, "EVENT_253_room_413_logic"]
     },
     {
         "identifier": "EVENT_253_room_414_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [414, "EVENT_253_room_414_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 414, "EVENT_253_room_414_logic"]
     },
     {
         "identifier": "EVENT_253_room_438_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [438, "EVENT_253_room_438_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 438, "EVENT_253_room_438_logic"]
     },
     {
         "identifier": "EVENT_253_room_480_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [480, "EVENT_253_room_480_481_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 480, "EVENT_253_room_480_481_logic"]
     },
     {
         "identifier": "EVENT_253_room_481_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [481, "EVENT_253_room_480_481_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 481, "EVENT_253_room_480_481_logic"]
     },
     {
         "identifier": "EVENT_253_room_483_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [483, 'EVENT_253_room_491_483_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 483, 'EVENT_253_room_491_483_logic']
     },
     {
         "identifier": "EVENT_253_room_491_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [491, 'EVENT_253_room_491_483_logic']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 491, 'EVENT_253_room_491_483_logic']
     },
     {
         "identifier": "EVENT_253_room_493_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [493, "EVENT_253_room_493_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 493, "EVENT_253_room_493_logic"]
     },
     {
         "identifier": "EVENT_253_pandorite_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [512, 'EVENT_253_pandorite_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 512, 'EVENT_253_pandorite_set']
     },
     {
         "identifier": "EVENT_253_hidon_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [513, 'EVENT_253_hidon_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 513, 'EVENT_253_hidon_set']
     },
     {
         "identifier": "EVENT_253_croco_2_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [518, 'EVENT_253_croco_2_set']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 518, 'EVENT_253_croco_2_set']
     },
     {
         "identifier": "EVENT_253_cancel",
@@ -311,7 +311,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_7_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -321,7 +321,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_20_328_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 96]
     },
     {
@@ -331,7 +331,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_34_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 109]
     },
     {
@@ -346,7 +346,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_39_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 174]
     },
     {
@@ -356,7 +356,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_67_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 7]
     },
     {
@@ -371,7 +371,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_75_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 6]
     },
     {
@@ -381,7 +381,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_83_84_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 163]
     },
     {
@@ -391,7 +391,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_86_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 9]
     },
     {
@@ -401,7 +401,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_92_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 176]
     },
     {
@@ -416,7 +416,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_95_96_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -436,7 +436,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_110_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 91]
     },
     {
@@ -446,7 +446,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_143_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -461,7 +461,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_171_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 150]
     },
     {
@@ -471,7 +471,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_189_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 162]
     },
     {
@@ -481,7 +481,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_190_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x7000, 10]
     },
     {
@@ -491,7 +491,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_192_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 78]
     },
     {
@@ -501,7 +501,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_194_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -511,7 +511,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_197_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 12]
     },
     {
@@ -521,7 +521,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_203_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 99]
     },
     {
@@ -531,7 +531,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_204_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -541,7 +541,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_205_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 5]
     },
     {
@@ -551,7 +551,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_206_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 128]
     },
     {
@@ -561,7 +561,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_254_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 158]
     },
     {
@@ -571,7 +571,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_255_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 90]
     },
     {
@@ -581,7 +581,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_273_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -591,7 +591,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_277_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -601,7 +601,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_283_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -611,7 +611,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_314_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 117]
     },
     {
@@ -621,7 +621,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_330_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 85]
     },
     {
@@ -636,7 +636,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_336_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 148]
     },
     {
@@ -651,7 +651,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_346_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 107]
     },
     {
@@ -661,7 +661,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_351_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 94]
     },
     {
@@ -671,7 +671,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_397_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 81]
     },
     {
@@ -681,7 +681,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_399_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 89]
     },
     {
@@ -691,7 +691,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_406_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 131]
     },
     {
@@ -701,7 +701,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_407_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 92]
     },
     {
@@ -711,7 +711,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_409_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 134]
     },
     {
@@ -721,7 +721,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_413_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 116]
     },
     {
@@ -731,7 +731,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_414_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 116]
     },
     {
@@ -741,7 +741,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_438_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 159]
     },
     {
@@ -751,7 +751,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_480_481_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 115]
     },
     {
@@ -761,7 +761,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_room_491_483_logic',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 102]
     },
     {
@@ -776,7 +776,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_pandorite_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 87]
     },
     {
@@ -786,7 +786,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_hidon_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 75]
     },
     {
@@ -796,7 +796,7 @@ script = [
     },
     {
         "identifier": 'EVENT_253_croco_2_set',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 135]
     },
     {

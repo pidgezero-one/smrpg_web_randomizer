@@ -8,22 +8,22 @@ script = [
     {
         "identifier": 'EVENT_447_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 0, 'EVENT_447_set_random_6']
+        "args": [0x7044, 0, 'EVENT_447_set_var_to_random_6']
     },
     {
         "identifier": 'EVENT_447_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 1, 'EVENT_447_set_random_6']
+        "args": [0x7044, 1, 'EVENT_447_set_var_to_random_6']
     },
     {
         "identifier": 'EVENT_447_jmp_if_bit_clear_2',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 2, 'EVENT_447_set_random_6']
+        "args": [0x7044, 2, 'EVENT_447_set_var_to_random_6']
     },
     {
         "identifier": 'EVENT_447_jmp_if_bit_clear_3',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 3, 'EVENT_447_set_random_6']
+        "args": [0x7044, 3, 'EVENT_447_set_var_to_random_6']
     },
     {
         "identifier": 'EVENT_447_pause_4',
@@ -36,24 +36,24 @@ script = [
         "args": [447]
     },
     {
-        "identifier": 'EVENT_447_set_random_6',
-        "command": 'set_random',
+        "identifier": 'EVENT_447_set_var_to_random_6',
+        "command": 'set_var_to_random',
         "args": [0x7000, 4]
     },
     {
         "identifier": 'EVENT_447_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_447_jmp_if_bit_set_29']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_447_jmp_if_bit_set_29']
     },
     {
         "identifier": 'EVENT_447_jmp_if_7000_equals_short_8',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_447_jmp_if_bit_set_54']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 2, 'EVENT_447_jmp_if_bit_set_54']
     },
     {
         "identifier": 'EVENT_447_jmp_if_7000_equals_short_9',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_447_jmp_if_bit_set_73']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 3, 'EVENT_447_jmp_if_bit_set_73']
     },
     {
         "identifier": 'EVENT_447_jmp_if_bit_set_10',
@@ -66,14 +66,14 @@ script = [
         "args": [0x7043, 1]
     },
     {
-        "identifier": 'EVENT_447_set_random_12',
-        "command": 'set_random',
+        "identifier": 'EVENT_447_set_var_to_random_12',
+        "command": 'set_var_to_random',
         "args": [0x7000, 23]
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_13',
-        "command": 'mem_compare_val',
-        "args": [21]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 21]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_14',
@@ -82,8 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_15',
-        "command": 'mem_compare_val',
-        "args": [16]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 16]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_16',
@@ -92,8 +92,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_17',
-        "command": 'mem_compare_val',
-        "args": [2]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 2]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_18',
@@ -107,8 +107,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_20',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 416]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 416]
     },
     {
         "identifier": 'EVENT_447_set_bit_21',
@@ -122,8 +122,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_23',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_10, 416]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_10, True, 416]
     },
     {
         "identifier": 'EVENT_447_set_bit_24',
@@ -137,8 +137,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_26',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 416]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 416]
     },
     {
         "identifier": 'EVENT_447_set_bit_27',
@@ -161,14 +161,14 @@ script = [
         "args": [0x7043, 2]
     },
     {
-        "identifier": 'EVENT_447_set_random_31',
-        "command": 'set_random',
+        "identifier": 'EVENT_447_set_var_to_random_31',
+        "command": 'set_var_to_random',
         "args": [0x7000, 23]
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_32',
-        "command": 'mem_compare_val',
-        "args": [21]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 21]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_33',
@@ -177,8 +177,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_34',
-        "command": 'mem_compare_val',
-        "args": [16]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 16]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_35',
@@ -187,8 +187,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_36',
-        "command": 'mem_compare_val',
-        "args": [2]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 2]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_37',
@@ -202,8 +202,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_39',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 417]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_6, True, 417]
     },
     {
         "identifier": 'EVENT_447_set_bit_40',
@@ -217,8 +217,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_42',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 417]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_11, True, 417]
     },
     {
         "identifier": 'EVENT_447_set_bit_43',
@@ -232,8 +232,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_45',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 417]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 417]
     },
     {
         "identifier": 'EVENT_447_set_bit_46',
@@ -286,14 +286,14 @@ script = [
         "args": [0x7043, 3]
     },
     {
-        "identifier": 'EVENT_447_set_random_56',
-        "command": 'set_random',
+        "identifier": 'EVENT_447_set_var_to_random_56',
+        "command": 'set_var_to_random',
         "args": [0x7000, 23]
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_57',
-        "command": 'mem_compare_val',
-        "args": [21]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 21]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_58',
@@ -302,8 +302,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_59',
-        "command": 'mem_compare_val',
-        "args": [16]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 16]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_60',
@@ -312,8 +312,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_61',
-        "command": 'mem_compare_val',
-        "args": [2]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 2]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_62',
@@ -327,8 +327,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_64',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 418]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 418]
     },
     {
         "identifier": 'EVENT_447_set_bit_65',
@@ -342,8 +342,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_67',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_12, 418]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_12, True, 418]
     },
     {
         "identifier": 'EVENT_447_set_bit_68',
@@ -357,8 +357,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_70',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 418]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_3, True, 418]
     },
     {
         "identifier": 'EVENT_447_set_bit_71',
@@ -381,14 +381,14 @@ script = [
         "args": [0x7043, 4]
     },
     {
-        "identifier": 'EVENT_447_set_random_75',
-        "command": 'set_random',
+        "identifier": 'EVENT_447_set_var_to_random_75',
+        "command": 'set_var_to_random',
         "args": [0x7000, 23]
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_76',
-        "command": 'mem_compare_val',
-        "args": [21]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 21]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_77',
@@ -397,8 +397,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_78',
-        "command": 'mem_compare_val',
-        "args": [16]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 16]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_79',
@@ -407,8 +407,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_mem_compare_val_80',
-        "command": 'mem_compare_val',
-        "args": [2]
+        "command": 'compare_var_to_const',
+        'args': [0x7000, 2]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_81',
@@ -422,8 +422,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_83',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 419]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 419]
     },
     {
         "identifier": 'EVENT_447_set_bit_84',
@@ -437,8 +437,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_86',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_13, 419]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_13, True, 419]
     },
     {
         "identifier": 'EVENT_447_set_bit_87',
@@ -452,8 +452,8 @@ script = [
     },
     {
         "identifier": 'EVENT_447_set_action_script_sync_89',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 419]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_4, True, 419]
     },
     {
         "identifier": 'EVENT_447_set_bit_90',

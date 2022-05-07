@@ -32,8 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2388_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2388_action_queue_async_5_SUBSCRIPT_set_sprite_sequence_0',
@@ -164,8 +164,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2388_set_action_script_async_30',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.SCREEN_FOCUS, 391]
+        "command": 'set_action_script',
+        'args': [AreaObjects.SCREEN_FOCUS, False, 391]
     },
     {
         "identifier": 'EVENT_2388_apply_solidity_mod_31',

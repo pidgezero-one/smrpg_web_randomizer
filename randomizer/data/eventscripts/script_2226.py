@@ -48,7 +48,7 @@ script = [
     {"identifier": "EVENT_2226_pause_5_", "command": "pause", "args": [10]},
     {
         "identifier": "EVENT_2226_start_battle_19",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 522],
     },
     {
@@ -66,7 +66,7 @@ script = [
     {"identifier": "EVENT_2226_restore_all_fp_14_", "command": "restore_all_fp"},
     {"identifier": "EVENT_2226_set_bit_23", "command": "set_bit", "args": [0x7093, 7]},
     {"identifier": "EVENT_2226_set_bit_23_", "command": "set_bit", "args": [0x7092, 4]},
-    {"identifier": "EVENT_2226_set_short_28", "command": "set", "args": [0x7000, 522]},
+    {"identifier": "EVENT_2226_set_short_28", "command": "set_var_to_const", "args": [0x7000, 522]},
     {
         "identifier": "EVENT_2226_jmp_to_event_29",
         "command": "jmp_to_event",

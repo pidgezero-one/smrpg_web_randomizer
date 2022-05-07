@@ -38,8 +38,8 @@ script = [
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
     },
     {
-        "identifier": 'ACTION_774_set_random_7',
-        "command": 'set_random',
+        "identifier": 'ACTION_774_set_var_to_random_7',
+        "command": 'set_var_to_random',
         "args": [0x700c, 20]
     },
     {

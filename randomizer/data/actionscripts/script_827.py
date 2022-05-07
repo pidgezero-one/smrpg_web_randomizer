@@ -23,8 +23,8 @@ script = [
     },
     {
         "identifier": 'ACTION_827_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [473, 'ACTION_827_floating_off_72']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 473, 'ACTION_827_floating_off_72']
     },
     {
         "identifier": 'ACTION_827_set_700C_to_pressed_button_5',
@@ -32,13 +32,13 @@ script = [
     },
     {
         "identifier": 'ACTION_827_jmp_if_700C_equals_short_6',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [29, 'ACTION_827_shadow_off_53']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 29, 'ACTION_827_shadow_off_53']
     },
     {
         "identifier": 'ACTION_827_mem_compare_val_7',
-        "command": 'mem_compare_val',
-        "args": [24]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 24]
     },
     {
         "identifier": 'ACTION_827_jmp_if_comparison_result_is_greater_or_equal_8',
@@ -51,7 +51,7 @@ script = [
     },
     {
         "identifier": 'ACTION_827_add_10',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65517]
     },
     {
@@ -164,7 +164,7 @@ script = [
     },
     {
         "identifier": 'ACTION_827_add_34',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x700c, 65513]
     },
     {
@@ -543,8 +543,8 @@ script = [
         "args": [Sounds._022_CLOSE_DOOR, 4]
     },
     {
-        "identifier": 'ACTION_827_pause_short_114',
-        "command": 'pause_short',
+        "identifier": 'ACTION_827_pause_114',
+        "command": 'pause',
         "args": [258]
     },
     {

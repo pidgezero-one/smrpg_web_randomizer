@@ -26,12 +26,12 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0000]
     },
     {
         "identifier": 'ACTION_783_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0500]
     },
     {
@@ -41,7 +41,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_7',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0501]
     },
     {
@@ -56,7 +56,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_10',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0502]
     },
     {
@@ -66,7 +66,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_12',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0503]
     },
     {
@@ -111,7 +111,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_21',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0005]
     },
     {
@@ -121,7 +121,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_23',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0502]
     },
     {
@@ -131,7 +131,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_25',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0501]
     },
     {
@@ -141,7 +141,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_27',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0500]
     },
     {
@@ -171,12 +171,12 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_33',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0000]
     },
     {
         "identifier": 'ACTION_783_set_short_34',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0100]
     },
     {
@@ -186,7 +186,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_36',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0101]
     },
     {
@@ -201,7 +201,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_39',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0102]
     },
     {
@@ -211,7 +211,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_41',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0103]
     },
     {
@@ -256,7 +256,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_50',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7032, 0x0001]
     },
     {
@@ -266,7 +266,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_52',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0102]
     },
     {
@@ -276,7 +276,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_54',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0101]
     },
     {
@@ -286,7 +286,7 @@ script = [
     },
     {
         "identifier": 'ACTION_783_set_short_56',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0100]
     },
     {

@@ -11,8 +11,8 @@ script = [
         "args": [0x7087, 0]
     },
     {
-        "identifier": 'EVENT_3818_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3818_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70de, 10, 'EVENT_3818_jmp_if_bit_clear_8']
     },
     {

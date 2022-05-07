@@ -6,8 +6,8 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2585_disable_event_trigger_for_object_at_70A8_0',
-        "command": 'disable_event_trigger_for_object_at_70A8'
+        "identifier": 'EVENT_2585_disable_trigger_at_70A8_0',
+        "command": 'disable_trigger_at_70A8'
     },
     {
         "identifier": 'EVENT_2585_run_event_as_subroutine_1',

@@ -17,7 +17,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3360_dec_short_2',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x703c]
     },
     {
@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3360_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 7]
     },
     {
         "identifier": 'EVENT_3360_jmp_5',
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3360_set_temp_action_script_sync_6',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.NPC_2, 8]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.NPC_2, True, 8]
     },
     {
         "identifier": 'EVENT_3360_set_7010_to_object_xyz_7',
@@ -47,18 +47,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3360_set_7000_to_7000_short_mem_8',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7014, 0x7000]
     },
     {
         "identifier": 'EVENT_3360_add_9',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 608]
     },
     {
         "identifier": 'EVENT_3360_set_7000_short_mem_to_7000_10',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7014]
     },
     {
         "identifier": 'EVENT_3360_play_sound_11',
@@ -66,14 +66,14 @@ script = [
         "args": [Sounds._013_COIN, 4]
     },
     {
-        "identifier": 'EVENT_3360_create_packet_at_7010_coords_jmp_if_null_12',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_3360_create_packet_at_7010_12',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._016_BIG_COIN, 'EVENT_3360_ret_14']
     },
     {
         "identifier": 'EVENT_3360_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A9, 906]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A9, True, 906]
     },
     {
         "identifier": 'EVENT_3360_ret_14',

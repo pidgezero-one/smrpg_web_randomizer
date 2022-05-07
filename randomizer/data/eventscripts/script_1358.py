@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1358_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1358_action_queue_sync_7_SUBSCRIPT_transfer_to_xyzf_0',
@@ -95,8 +95,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1358_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1358_action_queue_sync_8_SUBSCRIPT_pause_0',
@@ -159,8 +159,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1358_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1358_action_queue_sync_9_SUBSCRIPT_pause_0',
@@ -228,8 +228,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1358_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1358_action_queue_async_10_SUBSCRIPT_pause_0',
@@ -302,8 +302,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1358_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1358_action_queue_async_16_SUBSCRIPT_set_animation_speed_0',
@@ -356,8 +356,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1358_action_queue_sync_60',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1358_action_queue_sync_60_SUBSCRIPT_fixed_f_coord_off_0',

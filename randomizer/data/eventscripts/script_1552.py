@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1552_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1552_action_queue_async_1_SUBSCRIPT_visibility_off_0',
@@ -35,13 +35,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1552_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 482]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 482]
     },
     {
         "identifier": 'EVENT_1552_set_action_script_async_6',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_1552_unfreeze_camera_7',
@@ -62,7 +62,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1552_set_11',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 20]
     },
     {
@@ -72,8 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1552_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A9],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1552_action_queue_sync_13_SUBSCRIPT_clear_solidity_bits_0',
@@ -93,8 +93,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1552_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1552_action_queue_async_16_SUBSCRIPT_object_memory_set_bit_0',
@@ -105,7 +105,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1552_set_17',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ab, 28]
     },
     {

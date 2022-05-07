@@ -56,8 +56,8 @@ script = [
         "args": [[_0x0AFlags.CANT_PASS_WALLS]]
     },
     {
-        "identifier": 'ACTION_933_set_random_11',
-        "command": 'set_random',
+        "identifier": 'ACTION_933_set_var_to_random_11',
+        "command": 'set_var_to_random',
         "args": [0x700c, 8]
     },
     {
@@ -92,7 +92,7 @@ script = [
     {
         "identifier": 'ACTION_933_jmp_18',
         "command": 'jmp',
-        "args": ['ACTION_727_jmp_if_var_equals_byte_0']
+        "args": ['ACTION_727_jmp_if_var_equals_const_0']
     },
     {
         "identifier": 'ACTION_933_jump_to_height_silent_19',
@@ -112,7 +112,7 @@ script = [
     {
         "identifier": 'ACTION_933_jmp_22',
         "command": 'jmp',
-        "args": ['ACTION_727_jmp_if_var_equals_byte_0']
+        "args": ['ACTION_727_jmp_if_var_equals_const_0']
     },
     {
         "identifier": 'ACTION_933_jump_to_height_silent_23',
@@ -132,6 +132,6 @@ script = [
     {
         "identifier": 'ACTION_933_jmp_26',
         "command": 'jmp',
-        "args": ['ACTION_727_jmp_if_var_equals_byte_0']
+        "args": ['ACTION_727_jmp_if_var_equals_const_0']
     }
 ]

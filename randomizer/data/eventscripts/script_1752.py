@@ -22,7 +22,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1752_set_3',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a8, 25]
     },
     {

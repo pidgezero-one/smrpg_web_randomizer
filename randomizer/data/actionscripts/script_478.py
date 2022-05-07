@@ -39,8 +39,8 @@ script = [
     },
     {
         "identifier": 'ACTION_478_set_700C_to_7000_short_mem_7',
-        "command": 'set_700C_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x700C]
     },
     {
         "identifier": 'ACTION_478_db_8',

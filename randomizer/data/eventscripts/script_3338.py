@@ -63,27 +63,27 @@ script = [
     {"identifier": "EVENT_3338_stop_music_FDA2_116", "command": "stop_music_FDA2"},
     {
         "identifier": "EVENT_3338_set_short_117",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0000],
     },
     {
         "identifier": "EVENT_3338_set_short_118",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0000],
     },
     {
         "identifier": "EVENT_3338_set_short_119",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0000],
     },
     {
         "identifier": "EVENT_3338_set_short_120",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x702A, 0x0000],
     },
     {
         "identifier": "EVENT_3338_set_short_121",
-        "command": "set_short",
+        "command": "set_var_to_const",
         "args": [0x702C, 0x0000],
     },
     {

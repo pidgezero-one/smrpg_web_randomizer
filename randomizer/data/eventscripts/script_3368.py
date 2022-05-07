@@ -21,28 +21,28 @@ script = [
         "args": [1923, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_3368_jmp_if_var_equals_byte_3',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'EVENT_3368_jmp_if_var_equals_const_3',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70af, 1, 'EVENT_3369_set_7000_to_70A0_short_mem_32']
     },
     {
-        "identifier": 'EVENT_3368_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_3368_jmp_if_var_equals_const_4',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7028, 1, 'EVENT_3369_run_dialog_12']
     },
     {
-        "identifier": 'EVENT_3368_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_3368_jmp_if_var_equals_const_5',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7028, 2, 'EVENT_3369_run_dialog_10']
     },
     {
-        "identifier": 'EVENT_3368_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_3368_jmp_if_var_equals_const_6',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7028, 3, 'EVENT_3369_run_dialog_8']
     },
     {
-        "identifier": 'EVENT_3368_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_3368_jmp_if_var_equals_const_7',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7028, 4, 'EVENT_3369_run_dialog_30']
     }
 ]

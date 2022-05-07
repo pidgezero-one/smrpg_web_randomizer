@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3364_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3364_action_queue_async_0_SUBSCRIPT_clear_solidity_bits_0',
@@ -34,8 +34,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3364_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3364_action_queue_async_2_SUBSCRIPT_shift_northeast_steps_0',
@@ -46,8 +46,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3364_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3364_action_queue_async_3_SUBSCRIPT_shift_northeast_steps_0',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3364_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 59]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 59]
     },
     {
         "identifier": 'EVENT_3364_set_bit_7',
@@ -73,22 +73,22 @@ script = [
     },
     {
         "identifier": 'EVENT_3364_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x0001]
     },
     {
         "identifier": 'EVENT_3364_set_short_9',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7026, 0x0002]
     },
     {
         "identifier": 'EVENT_3364_set_short_10',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7028, 0x0003]
     },
     {
         "identifier": 'EVENT_3364_set_short_11',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702a, 0x0004]
     },
     {

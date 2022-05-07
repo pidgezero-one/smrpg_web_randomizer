@@ -110,7 +110,7 @@ script = [
         "command": "set_bit",
         "args": [0x7081, 2],
     },
-    {"identifier": "EVENT_3079_set", "command": "set", "args": [0x7000, 520]},
+    {"identifier": "EVENT_3079_set", "command": "set_var_to_const", "args": [0x7000, 520]},
     {"identifier": "EVENT_3079_star", "command": "jmp_to_event", "args": [167]},
     {"identifier": "EVENT_3079_music", "command": "jmp_to_event", "args": [3400]},
     {"identifier": "EVENT_3079_ret_8", "command": "ret"},

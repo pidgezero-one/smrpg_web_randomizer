@@ -34,8 +34,8 @@ script = [
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
     },
     {
-        "identifier": 'ACTION_731_jmp_if_var_equals_byte_8',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_731_jmp_if_var_equals_const_8',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70b5, 27, 'ACTION_731_transfer_to_xyzf_30']
     },
     {
@@ -44,28 +44,28 @@ script = [
         "args": [0x7044, 6]
     },
     {
-        "identifier": 'ACTION_731_jmp_if_var_equals_byte_10',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_731_jmp_if_var_equals_const_10',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70b5, 23, 'ACTION_731_pause_15']
     },
     {
-        "identifier": 'ACTION_731_jmp_if_var_equals_byte_11',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_731_jmp_if_var_equals_const_11',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70b5, 25, 'ACTION_731_pause_18']
     },
     {
-        "identifier": 'ACTION_731_jmp_if_var_equals_byte_12',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_731_jmp_if_var_equals_const_12',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70b5, 19, 'ACTION_731_pause_21']
     },
     {
-        "identifier": 'ACTION_731_jmp_if_var_equals_byte_13',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_731_jmp_if_var_equals_const_13',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70b5, 21, 'ACTION_731_pause_24']
     },
     {
-        "identifier": 'ACTION_731_jmp_if_var_equals_byte_14',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_731_jmp_if_var_equals_const_14',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70b5, 17, 'ACTION_731_pause_27']
     },
     {
@@ -75,7 +75,7 @@ script = [
     },
     {
         "identifier": 'ACTION_731_set_16',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b5, 25]
     },
     {
@@ -90,7 +90,7 @@ script = [
     },
     {
         "identifier": 'ACTION_731_set_19',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b5, 19]
     },
     {
@@ -105,7 +105,7 @@ script = [
     },
     {
         "identifier": 'ACTION_731_set_22',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b5, 21]
     },
     {
@@ -120,7 +120,7 @@ script = [
     },
     {
         "identifier": 'ACTION_731_set_25',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b5, 17]
     },
     {
@@ -135,7 +135,7 @@ script = [
     },
     {
         "identifier": 'ACTION_731_set_28',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b5, 27]
     },
     {
@@ -259,7 +259,7 @@ script = [
     },
     {
         "identifier": 'ACTION_731_set_53',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b5, 23]
     },
     {

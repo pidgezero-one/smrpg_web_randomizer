@@ -78,7 +78,7 @@ script = [
     {"identifier": "EVENT_1845_set_bit_5", "command": "set_bit", "args": [0x707C, 7]},
     {
         "identifier": "EVENT_1845_start_battle_700E_6",
-        "command": "set",
+        "command": "set_var_to_const",
         "args": [0x7000, 519],
     },
     {
@@ -97,7 +97,7 @@ script = [
         "args": [0x7081, 4, "EVENT_1845_ret"],
     },
     {"identifier": "EVENT_1845_set", "command": "set_bit", "args": [0x7081, 4]},
-    {"identifier": "EVENT_1845_set_", "command": "set", "args": [0x7000, 519]},
+    {"identifier": "EVENT_1845_set_", "command": "set_var_to_const", "args": [0x7000, 519]},
     {
         "identifier": "EVENT_1845_grant_star",
         "command": "jmp_to_event",

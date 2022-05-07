@@ -39,8 +39,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1008_set_temp_action_script_sync_7',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 2]
+        "command": 'set_temp_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 2]
     },
     {
         "identifier": 'EVENT_1008_jmp_if_bit_set_8',

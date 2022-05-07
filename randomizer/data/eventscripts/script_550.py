@@ -22,12 +22,12 @@ script = [
     },
     {
         "identifier": 'EVENT_550_set_7000_short_mem_to_7000_3',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7026]
     },
     {
         "identifier": 'EVENT_550_mem_compare_4',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7026, 3]
     },
     {
@@ -37,7 +37,7 @@ script = [
     },
     {
         "identifier": 'EVENT_550_mem_compare_6',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7026, 6]
     },
     {
@@ -52,8 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_550_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_550_action_queue_sync_9_SUBSCRIPT_pause_0',
@@ -94,8 +94,8 @@ script = [
     },
     {
         "identifier": 'EVENT_550_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 638]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 638]
     },
     {
         "identifier": 'EVENT_550_ret_11',

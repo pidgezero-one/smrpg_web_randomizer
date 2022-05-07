@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_656_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_656_action_queue_async_3_SUBSCRIPT_face_northeast_0',
@@ -38,8 +38,8 @@ script = [
     },
     {
         "identifier": 'EVENT_656_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_656_action_queue_async_5_SUBSCRIPT_walk_1_step_south_0',

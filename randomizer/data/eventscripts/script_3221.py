@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3221_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3221_action_queue_sync_0_SUBSCRIPT_play_sound_0',
@@ -39,8 +39,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3221_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3221_action_queue_sync_1_SUBSCRIPT_shift_z_down_pixels_0',
@@ -55,8 +55,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3221_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 338]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_1, True, 338]
     },
     {
         "identifier": 'EVENT_3221_jmp_if_bit_set_3',
@@ -65,17 +65,17 @@ script = [
     },
     {
         "identifier": 'EVENT_3221_set_short_4',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7010, 0x001a]
     },
     {
         "identifier": 'EVENT_3221_set_short_5',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7012, 0x006e]
     },
     {
         "identifier": 'EVENT_3221_set_short_6',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7014, 0x0015]
     },
     {
@@ -89,7 +89,7 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3221_create_packet_event_at_coords_jmp_if_null_9',
+        "identifier": 'EVENT_3221_create_packet_at_7010_with_event_9',
         "command": 'run_event_as_subroutine',
         "args": [3386]
     },

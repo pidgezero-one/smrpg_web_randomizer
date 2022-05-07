@@ -8,7 +8,7 @@ script = [
     
     {
         "identifier": 'EVENT_3185_set_395',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 135]
     },
     {
@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3185_jmp_if_7000_equals_short_397',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_3185_set_399']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_3185_set_399']
     },
     {
         "identifier": 'EVENT_3185_run_dialog_12',
@@ -31,13 +31,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3185_set_399',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 20]
     },
     {
         "identifier": 'EVENT_3185_set_action_script_async_400',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 670]
     },
     {
         "identifier": 'EVENT_3185_pause_401',
@@ -94,8 +94,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3185_action_queue_sync_414',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3185_action_queue_sync_414_SUBSCRIPT_set_animation_speed_0',
@@ -128,23 +128,23 @@ script = [
     },
     {
         "identifier": 'EVENT_3185_set_415',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ae, 20]
     },
     {
         "identifier": 'EVENT_3185_set_action_script_sync_416',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 671]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 671]
     },
     {
         "identifier": 'EVENT_3185_set_action_script_sync_417',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 670]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 670]
     },
     {
         "identifier": 'EVENT_3185_action_queue_async_418',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3185_action_queue_async_418_SUBSCRIPT_pause_0',

@@ -34,8 +34,8 @@ script = [
     },
     {
         "identifier": 'ACTION_418_mem_compare_val_6',
-        "command": 'mem_compare_val',
-        "args": [25]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 25]
     },
     {
         "identifier": 'ACTION_418_jmp_if_comparison_result_is_lesser_7',
@@ -44,8 +44,8 @@ script = [
     },
     {
         "identifier": 'ACTION_418_mem_compare_val_8',
-        "command": 'mem_compare_val',
-        "args": [29]
+        "command": 'compare_var_to_const',
+        'args': [0x700C, 29]
     },
     {
         "identifier": 'ACTION_418_jmp_if_comparison_result_is_greater_or_equal_9',

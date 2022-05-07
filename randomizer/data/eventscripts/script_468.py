@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_468_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, False],
         "subscript": [
             {
                 "identifier": 'EVENT_468_action_queue_async_0_SUBSCRIPT_sequence_looping_on_0',
@@ -18,18 +18,18 @@ script = [
     },
     {
         "identifier": 'EVENT_468_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70eb]
+        "command": 'copy_var_to_var',
+        'args': [0x70eb, 0x7000]
     },
     {
         "identifier": 'EVENT_468_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_468_pause_5']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_468_pause_5']
     },
     {
         "identifier": 'EVENT_468_set_7000_short_mem_to_7000_3',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7024]
     },
     {
         "identifier": 'EVENT_468_run_dialog_4',
@@ -61,13 +61,13 @@ script = [
         "args": [0x7043, 4, 'EVENT_468_pause_5']
     },
     {
-        "identifier": 'EVENT_468_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_468_jmp_if_var_equals_const_10',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 0, 'EVENT_468_pause_5']
     },
     {
         "identifier": 'EVENT_468_dec_short_11',
-        "command": 'dec_short',
+        "command": 'dec',
         "args": [0x7024]
     },
     {
@@ -76,8 +76,8 @@ script = [
         "args": [0x70ee]
     },
     {
-        "identifier": 'EVENT_468_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
+        "identifier": 'EVENT_468_jmp_if_var_equals_const_13',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x7024, 0, 'EVENT_468_close_dialog_16']
     },
     {
@@ -111,8 +111,8 @@ script = [
     },
     {
         "identifier": 'EVENT_468_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, False],
         "subscript": [
             {
                 "identifier": 'EVENT_468_action_queue_async_20_SUBSCRIPT_transfer_to_object_xy_0',
@@ -132,8 +132,8 @@ script = [
     },
     {
         "identifier": 'EVENT_468_action_queue_sync_21',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_12],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_12, True],
         "subscript": [
             {
                 "identifier": 'EVENT_468_action_queue_sync_21_SUBSCRIPT_jump_to_height_silent_0',
@@ -153,8 +153,8 @@ script = [
     },
     {
         "identifier": 'EVENT_468_action_queue_sync_22',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_9, True],
         "subscript": [
             {
                 "identifier": 'EVENT_468_action_queue_sync_22_SUBSCRIPT_pause_0',
@@ -397,13 +397,13 @@ script = [
     },
     {
         "identifier": 'EVENT_468_set_action_script_sync_24',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 430]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 430]
     },
     {
         "identifier": 'EVENT_468_set_action_script_sync_25',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 503]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, True, 503]
     },
     {
         "identifier": 'EVENT_468_jmp_26',

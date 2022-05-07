@@ -15,18 +15,18 @@ script = [
     },
     {
         "identifier": 'ACTION_337_jmp_if_700C_equals_short_2',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [172, 'ACTION_337_set_palette_row_20']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 172, 'ACTION_337_set_palette_row_20']
     },
     {
         "identifier": 'ACTION_337_jmp_if_700C_equals_short_3',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [177, 'ACTION_337_set_palette_row_20']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 177, 'ACTION_337_set_palette_row_20']
     },
     {
         "identifier": 'ACTION_337_jmp_if_700C_equals_short_4',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [163, 'ACTION_337_set_palette_row_24']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 163, 'ACTION_337_set_palette_row_24']
     },
     {
         "identifier": 'ACTION_337_inc_palette_row_by_5',
@@ -73,18 +73,18 @@ script = [
     },
     {
         "identifier": 'ACTION_337_jmp_if_700C_equals_short_14',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [172, 'ACTION_337_set_palette_row_22']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 172, 'ACTION_337_set_palette_row_22']
     },
     {
         "identifier": 'ACTION_337_jmp_if_700C_equals_short_15',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [177, 'ACTION_337_set_palette_row_22']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 177, 'ACTION_337_set_palette_row_22']
     },
     {
         "identifier": 'ACTION_337_jmp_if_700C_equals_short_16',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [163, 'ACTION_337_set_palette_row_26']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 163, 'ACTION_337_set_palette_row_26']
     },
     {
         "identifier": 'ACTION_337_inc_palette_row_by_17',

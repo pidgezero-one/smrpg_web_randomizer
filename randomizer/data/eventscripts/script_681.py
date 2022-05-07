@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_681_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_681_action_queue_async_1_SUBSCRIPT_clear_solidity_bits_0',
@@ -39,8 +39,8 @@ script = [
     },
     {
         "identifier": 'EVENT_681_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_681_action_queue_async_5_SUBSCRIPT_set_solidity_bits_0',

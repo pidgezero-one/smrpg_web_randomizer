@@ -16,17 +16,17 @@ script = [
     },
     {
         "identifier": 'ACTION_47_add_short_2',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7016, 0x00e0]
     },
     {
         "identifier": 'ACTION_47_add_short_3',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x7018, 0x0070]
     },
     {
         "identifier": 'ACTION_47_add_short_4',
-        "command": 'add_short',
+        "command": "add_const_to_var",
         "args": [0x701a, 0x0180]
     },
     {
@@ -44,12 +44,12 @@ script = [
     },
     {
         "identifier": 'ACTION_47_set_short_8',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7034, 0xffff]
     },
     {
-        "identifier": 'ACTION_47_create_packet_at_object_coords_jmp_if_null_9',
-        "command": 'create_packet_at_object_coords_jmp_if_null',
+        "identifier": 'ACTION_47_create_packet_at_npc_coords_9',
+        "command": 'create_packet_at_npc_coords',
         "args": [NPCPackets._032_BLUE_CLOUD, AreaObjects.DUMMY_0X07, 'ACTION_47_set_animation_speed_10']
     },
     {

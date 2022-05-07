@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2644_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 7]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, True, 7]
     },
     {
         "identifier": 'EVENT_2644_set_7010_to_object_xyz_3',
@@ -27,18 +27,18 @@ script = [
     },
     {
         "identifier": 'EVENT_2644_set_7000_to_7000_short_mem_4',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7014, 0x7000]
     },
     {
         "identifier": 'EVENT_2644_add_5',
-        "command": 'add',
+        "command": "add_const_to_var",
         "args": [0x7000, 512]
     },
     {
         "identifier": 'EVENT_2644_set_7000_short_mem_to_7000_6',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7014]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7014]
     },
     {
         "identifier": 'EVENT_2644_play_sound_7',
@@ -46,8 +46,8 @@ script = [
         "args": [Sounds._027_FOUND_AN_ITEM, 6]
     },
     {
-        "identifier": 'EVENT_2644_create_packet_at_7010_coords_jmp_if_null_8',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "identifier": 'EVENT_2644_create_packet_at_7010_8',
+        "command": 'create_packet_at_7010',
         "args": [NPCPackets._005_ITEM_BAG, 'EVENT_2644_ret_9']
     },
     {

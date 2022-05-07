@@ -11,19 +11,19 @@ script = [
         "args": [0x80]
     },
     {
-        "identifier": 'EVENT_3166_jmp_if_var_not_equals_short_1',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_3166_jmp_if_var_not_equals_const_1',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x7010, 22, 'EVENT_3166_action_queue_async_6']
     },
     {
-        "identifier": 'EVENT_3166_jmp_if_var_not_equals_short_2',
-        "command": 'jmp_if_var_not_equals_short',
+        "identifier": 'EVENT_3166_jmp_if_var_not_equals_const_2',
+        "command": 'jmp_if_var_not_equals_const',
         "args": [0x7012, 74, 'EVENT_3166_action_queue_async_6']
     },
     {
         "identifier": 'EVENT_3166_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3166_action_queue_async_3_SUBSCRIPT_set_priority_0',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3166_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3166_action_queue_async_6_SUBSCRIPT_object_memory_modify_bits_0',

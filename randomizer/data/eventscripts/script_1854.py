@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1854_set_0',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a9, 22]
     },
     {
@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1854_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1854_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
@@ -49,8 +49,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1854_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A9, 824]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A9, True, 824]
     },
     {
         "identifier": 'EVENT_1854_pause_8',
@@ -103,8 +103,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1854_action_queue_sync_18',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1854_action_queue_sync_18_SUBSCRIPT_play_sound_0',
@@ -120,8 +120,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1854_set_action_script_sync_19',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A9, 824]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A9, True, 824]
     },
     {
         "identifier": 'EVENT_1854_pause_20',
@@ -155,8 +155,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1854_action_queue_sync_26',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1854_action_queue_sync_26_SUBSCRIPT_set_sprite_sequence_0',
@@ -167,8 +167,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1854_set_action_script_sync_27',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A9, 824]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A9, True, 824]
     },
     {
         "identifier": 'EVENT_1854_pause_28',

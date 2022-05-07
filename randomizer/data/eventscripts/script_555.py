@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_555_set_action_script_async_4',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MEM_70A8, 636]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MEM_70A8, False, 636]
     },
     {
         "identifier": 'EVENT_555_pause_5',
@@ -31,8 +31,8 @@ script = [
     },
     {
         "identifier": 'EVENT_555_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_555_action_queue_async_6_SUBSCRIPT_set_animation_speed_0',

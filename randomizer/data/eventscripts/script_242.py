@@ -7,18 +7,18 @@ from randomizer.data import items
 script = [
     {
         "identifier": "EVENT_242_room_144_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [144, "EVENT_242_room_144_446_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 144, "EVENT_242_room_144_446_logic"]
     },
     {
         "identifier": "EVENT_242_room_446_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [446, "EVENT_242_room_144_446_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 446, "EVENT_242_room_144_446_logic"]
     },
     {
         "identifier": "EVENT_242_room_455_jump",
-        "command": 'jmp_if_7000_equals_short',
-        "args": [455, "EVENT_242_room_455_logic"]
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 455, "EVENT_242_room_455_logic"]
     },
     {
         "identifier": "EVENT_242_cancel",
@@ -26,7 +26,7 @@ script = [
     },
     {
         "identifier": "EVENT_242_room_144_446_logic",
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70A7, 131]
     },
     {

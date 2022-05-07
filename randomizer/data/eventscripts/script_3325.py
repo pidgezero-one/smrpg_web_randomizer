@@ -7,23 +7,23 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3325_set_action_script_sync_0',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_6, True, 1023]
     },
     {
         "identifier": 'EVENT_3325_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 1023]
     },
     {
         "identifier": 'EVENT_3325_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_8, True, 1023]
     },
     {
         "identifier": 'EVENT_3325_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 1023]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_9, True, 1023]
     },
     {
         "identifier": 'EVENT_3325_run_event_as_subroutine_4',
@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3325_jmp_if_7000_equals_short_6',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [390, 'EVENT_3325_jmp_if_object_not_in_level_9']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 390, 'EVENT_3325_jmp_if_object_not_in_level_9']
     },
     {
         "identifier": 'EVENT_3325_jmp_if_object_not_in_level_7',

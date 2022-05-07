@@ -42,8 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2145_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2145_action_queue_sync_7_SUBSCRIPT_face_northeast_0',
@@ -58,8 +58,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2145_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_5, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2145_action_queue_sync_8_SUBSCRIPT_set_animation_speed_0',
@@ -80,8 +80,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2145_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2145_action_queue_sync_9_SUBSCRIPT_set_animation_speed_0',
@@ -102,8 +102,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2145_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2145_action_queue_async_10_SUBSCRIPT_set_animation_speed_0',
@@ -129,13 +129,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2145_jmp_if_7000_not_equals_short_12',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [16, 'EVENT_2145_fade_in_from_black_async_14']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 16, 'EVENT_2145_fade_in_from_black_async_14']
     },
     {
         "identifier": 'EVENT_2145_action_queue_async_13',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2145_action_queue_async_13_SUBSCRIPT_transfer_to_xyzf_0',

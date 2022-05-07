@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2081_set_short_0',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7022, 0x0008]
     },
     {
         "identifier": 'EVENT_2081_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2081_action_queue_async_2_SUBSCRIPT_pause_0',
@@ -39,7 +39,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2081_set_5',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 161]
     },
     {
@@ -48,12 +48,12 @@ script = [
     },
     {
         "identifier": 'EVENT_2081_jmp_if_7000_equals_short_7',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2081_run_background_event_with_pause_1']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2081_run_background_event_with_pause_1']
     },
     {
         "identifier": 'EVENT_2081_set_8',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 162]
     },
     {
@@ -62,12 +62,12 @@ script = [
     },
     {
         "identifier": 'EVENT_2081_jmp_if_7000_equals_short_10',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2081_run_background_event_with_pause_1']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2081_run_background_event_with_pause_1']
     },
     {
         "identifier": 'EVENT_2081_set_11',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a7, 163]
     },
     {
@@ -76,8 +76,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2081_jmp_if_7000_equals_short_13',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2081_run_background_event_with_pause_1']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_2081_run_background_event_with_pause_1']
     },
     {
         "identifier": 'EVENT_2081_run_event_as_subroutine_17',
@@ -129,8 +129,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2081_action_queue_async_2_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2081_action_queue_async_2_SUBSCRIPT_pause_0',

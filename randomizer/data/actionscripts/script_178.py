@@ -14,8 +14,8 @@ script = [
         "args": [3]
     },
     {
-        "identifier": 'ACTION_178_set_random_2',
-        "command": 'set_random',
+        "identifier": 'ACTION_178_set_var_to_random_2',
+        "command": 'set_var_to_random',
         "args": [0x700c, 255]
     },
     {
@@ -260,6 +260,6 @@ script = [
     {
         "identifier": 'ACTION_178_jmp_53',
         "command": 'jmp',
-        "args": ['ACTION_178_set_random_2']
+        "args": ['ACTION_178_set_var_to_random_2']
     }
 ]

@@ -7,13 +7,13 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1853_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x70a8, 0x7000]
     },
     {
         "identifier": 'EVENT_1853_set_70A0_short_mem_to_7000_1',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ae]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ae]
     },
     {
         "identifier": 'EVENT_1853_jmp_fork_mario_on_object_2',
@@ -60,18 +60,18 @@ script = [
     },
     {
         "identifier": 'EVENT_1853_set_short_11',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702e, 0x0030]
     },
     {
         "identifier": 'EVENT_1853_set_short_12',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x702c, 0x0046]
     },
     {
         "identifier": 'EVENT_1853_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_17],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_17, True],
         "subscript": [
             {
                 "identifier": 'EVENT_1853_action_queue_sync_13_SUBSCRIPT_transfer_to_xyzf_0',
@@ -87,8 +87,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1853_action_queue_async_15',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1853_action_queue_async_15_SUBSCRIPT_floating_off_0',
@@ -106,8 +106,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1853_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, False],
         "subscript": [
             {
                 "identifier": 'EVENT_1853_action_queue_async_16_SUBSCRIPT_set_animation_speed_0',

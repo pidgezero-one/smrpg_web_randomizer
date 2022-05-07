@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_65_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_65_action_queue_sync_2_SUBSCRIPT_sequence_looping_on_0',
@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_65_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_65_action_queue_async_3_SUBSCRIPT_sequence_playback_off_0',
@@ -164,8 +164,8 @@ script = [
     },
     {
         "identifier": 'EVENT_65_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MEM_70A8],
+        "command": 'action_queue',
+        'args': [AreaObjects.MEM_70A8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_65_action_queue_sync_6_SUBSCRIPT_sequence_looping_on_0',
@@ -203,8 +203,8 @@ script = [
     },
     {
         "identifier": 'EVENT_65_action_queue_async_7',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_65_action_queue_async_7_SUBSCRIPT_pause_0',

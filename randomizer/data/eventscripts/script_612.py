@@ -45,8 +45,8 @@ script = [
     },
     {
         "identifier": 'EVENT_612_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_612_action_queue_async_8_SUBSCRIPT_transfer_to_xyzf_0',
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_612_set_action_script_sync_9',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 300]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_0, True, 300]
     },
     {
         "identifier": 'EVENT_612_fade_in_from_black_async_10',

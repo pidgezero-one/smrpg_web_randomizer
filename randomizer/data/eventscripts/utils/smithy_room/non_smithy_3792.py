@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3792_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3792_action_queue_sync_5_SUBSCRIPT_transfer_to_xyzf_0',
@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3792_red_thing',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.LAYER_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.LAYER_3, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3792_action_queue_sync_5_SUBSCRIPT_transfer_to_xyzf_0_',

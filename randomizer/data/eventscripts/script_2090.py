@@ -12,8 +12,8 @@ script = [
     }, # maintains bowser door manip
     {
         "identifier": 'EVENT_2090_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2090_action_queue_sync_2_SUBSCRIPT_shift_northwest_pixels_0',
@@ -29,8 +29,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2090_action_queue_async_4',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2090_action_queue_async_4_SUBSCRIPT_shift_northeast_pixels_0',

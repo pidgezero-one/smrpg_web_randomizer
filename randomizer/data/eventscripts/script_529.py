@@ -21,8 +21,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_3, True],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_0',
@@ -43,8 +43,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_4, True],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_sync_4_SUBSCRIPT_set_priority_0',
@@ -85,8 +85,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_sync_5_SUBSCRIPT_object_memory_clear_bit_0',
@@ -107,8 +107,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_6, True],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
@@ -124,8 +124,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_7, True],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_sync_7_SUBSCRIPT_set_sprite_sequence_0',
@@ -141,8 +141,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_8, True],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_sync_8_SUBSCRIPT_set_sprite_sequence_0',
@@ -163,8 +163,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, False],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_async_10_SUBSCRIPT_set_animation_speed_0',
@@ -180,8 +180,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_sync_11_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -211,8 +211,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 637]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_7, True, 637]
     },
     {
         "identifier": 'EVENT_529_set_bit_13',
@@ -226,8 +226,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_178',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, True],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_sync_178_SUBSCRIPT_set_solidity_bits_0',
@@ -238,8 +238,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_set_action_script_sync_179',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 21]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_2, True, 21]
     },
     {
         "identifier": 'EVENT_529_jmp_180',
@@ -248,8 +248,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_set_7000_to_70A0_short_mem_181',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70b8]
+        "command": 'copy_var_to_var',
+        'args': [0x70b8, 0x7000]
     },
     {
         "identifier": 'EVENT_529_jmp_if_7000_any_bits_set_182',
@@ -258,28 +258,28 @@ script = [
     },
     {
         "identifier": 'EVENT_529_set_7000_short_mem_to_7000_183',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7016]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7016]
     },
     {
         "identifier": 'EVENT_529_set_7000_to_70A0_short_mem_184',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70b9]
+        "command": 'copy_var_to_var',
+        'args': [0x70b9, 0x7000]
     },
     {
         "identifier": 'EVENT_529_set_7000_short_mem_to_7000_185',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7018]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x7018]
     },
     {
         "identifier": 'EVENT_529_set_short_186',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x701a, 0x0002]
     },
     {
         "identifier": 'EVENT_529_action_queue_async_187',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_2, False],
         "subscript": [
             {
                 "identifier": 'EVENT_529_action_queue_async_187_SUBSCRIPT_object_memory_clear_bit_0',
@@ -338,8 +338,8 @@ script = [
     },
     {
         "identifier": 'EVENT_529_set_7000_to_70A0_short_mem_190',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70b8]
+        "command": 'copy_var_to_var',
+        'args': [0x70b8, 0x7000]
     },
     {
         "identifier": 'EVENT_529_mem_7000_and_const_191',

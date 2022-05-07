@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1010_set_7000_to_70A0_short_mem_1',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70a9]
+        "command": 'copy_var_to_var',
+        'args': [0x70a9, 0x7000]
     },
     {
         "identifier": 'EVENT_1010_set_70A0_short_mem_to_7000_2',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70a8]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_1010_remove_object_at_70A8_from_current_level_3',

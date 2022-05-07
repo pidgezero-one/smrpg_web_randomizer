@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3330_action_queue_async_0',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_3330_action_queue_async_0_SUBSCRIPT_transfer_to_object_xy_0',
@@ -23,18 +23,18 @@ script = [
         "args": [0x94]
     },
     {
-        "identifier": 'EVENT_3330_set_7000_short_mem_to_7000_short_mem_2',
-        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "identifier": 'EVENT_3330_copy_var_to_var_2',
+        "command": 'copy_var_to_var',
         "args": [0x7010, 0x7024]
     },
     {
-        "identifier": 'EVENT_3330_set_7000_short_mem_to_7000_short_mem_3',
-        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "identifier": 'EVENT_3330_copy_var_to_var_3',
+        "command": 'copy_var_to_var',
         "args": [0x7012, 0x7026]
     },
     {
-        "identifier": 'EVENT_3330_set_7000_short_mem_to_7000_short_mem_4',
-        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "identifier": 'EVENT_3330_copy_var_to_var_4',
+        "command": 'copy_var_to_var',
         "args": [0x7014, 0x7028]
     },
     {
@@ -44,8 +44,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3330_set_7000_short_mem_to_7000_6',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x702a]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x702a]
     },
     {
         "identifier": 'EVENT_3330_run_background_event_7',
@@ -79,8 +79,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3330_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
+        "command": 'action_queue',
+        'args': [AreaObjects.SCREEN_FOCUS, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3330_action_queue_sync_12_SUBSCRIPT_set_animation_speed_0',
@@ -114,8 +114,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3330_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_3330_action_queue_sync_13_SUBSCRIPT_shift_northeast_steps_0',

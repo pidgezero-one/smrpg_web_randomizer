@@ -66,7 +66,7 @@ script = [
     },
     {
         "identifier": 'EVENT_602_set_short_20',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x000a]
     },
     {
@@ -86,8 +86,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_set_7000_to_7000_short_mem_24',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_602_dec_coins_25',
@@ -119,7 +119,7 @@ script = [
     },
     {
         "identifier": 'EVENT_602_set_short_31',
-        "command": 'set_short',
+        "command": "set_var_to_const",
         "args": [0x7024, 0x00c8]
     },
     {
@@ -139,8 +139,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_set_7000_to_7000_short_mem_35',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7024]
+        "command": 'copy_var_to_var',
+        'args': [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_602_dec_coins_36',
@@ -148,13 +148,13 @@ script = [
     },
     {
         "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_37',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70d7]
+        "command": 'copy_var_to_var',
+        'args': [0x70d7, 0x7000]
     },
     {
         "identifier": 'EVENT_602_jmp_if_7000_equals_short_38',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [255, 'EVENT_602_set_bit_63']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 255, 'EVENT_602_set_bit_63']
     },
     {
         "identifier": 'EVENT_602_inc_39',
@@ -168,8 +168,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_64',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70d7]
+        "command": 'copy_var_to_var',
+        'args': [0x70d7, 0x7000]
     },
     {
         "identifier": 'EVENT_602_run_dialog_77',
@@ -186,8 +186,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_jmp_if_7000_equals_short_65',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [255, 'EVENT_602_set_7010_to_object_xyz_72']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 255, 'EVENT_602_set_7010_to_object_xyz_72']
     },
     {
         "identifier": 'EVENT_602_prize_decision',
@@ -201,7 +201,7 @@ script = [
     },
     {
         "identifier": 'EVENT_602_mem_compare_73',
-        "command": 'mem_compare',
+        "command": "compare_var_to_const",
         "args": [0x7010, 5]
     },
     {
@@ -211,8 +211,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_action_queue_sync_75',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_1, True],
         "subscript": [
             {
                 "identifier": 'EVENT_602_action_queue_sync_75_SUBSCRIPT_face_northeast_0',
@@ -231,8 +231,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_start_embedded_action_script_sync_F1_76',
-        "command": 'start_embedded_action_script_sync_F1',
-        "args": [AreaObjects.NPC_5],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_5, True, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_602_start_embedded_action_script_sync_F1_76_SUBSCRIPT_pause_0',
@@ -277,8 +277,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_start_embedded_action_script_sync_F1_81',
-        "command": 'start_embedded_action_script_sync_F1',
-        "args": [AreaObjects.NPC_5],
+        "command": 'start_embedded_action_script',
+        'args': [AreaObjects.NPC_5, True, 0xF1],
         "subscript": [
             {
                 "identifier": 'EVENT_602_start_embedded_action_script_sync_F1_81_SUBSCRIPT_set_animation_speed_0',
@@ -326,13 +326,13 @@ script = [
     },
     {
         "identifier": 'EVENT_602_set_action_script_async_56',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_5, 636]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, False, 636]
     },
     {
         "identifier": 'EVENT_602_set_action_script_sync_57',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 301]
+        "command": 'set_action_script',
+        'args': [AreaObjects.NPC_5, True, 301]
     },
     {
         "identifier": 'EVENT_602_ret_58',
@@ -386,13 +386,13 @@ script = [
     },
     {
         "identifier": 'EVENT_602_jmp_if_7000_equals_short_139',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_602_run_dialog_162']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 1, 'EVENT_602_run_dialog_162']
     },
     {
         "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_140',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x70ac, 0x7000]
     },
     {
         "identifier": 'EVENT_602_dec_141',
@@ -401,13 +401,13 @@ script = [
     },
     {
         "identifier": 'EVENT_602_jmp_if_7000_equals_short_142',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_602_run_dialog_149']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 0, 'EVENT_602_run_dialog_149']
     },
     {
         "identifier": 'EVENT_602_set_70A0_short_mem_to_7000_143',
-        "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70ac]
+        "command": 'copy_var_to_var',
+        'args': [0x7000, 0x70ac]
     },
     {
         "identifier": 'EVENT_602_run_dialog_144',
@@ -416,8 +416,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_action_queue_async_145',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_602_action_queue_async_145_SUBSCRIPT_clear_solidity_bits_0',
@@ -514,12 +514,12 @@ script = [
     },
     {
         "identifier": 'EVENT_602_set_153',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70ac, 0]
     },
     {
         "identifier": 'EVENT_602_set_154',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70b8, 0]
     },
     {

@@ -12,13 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1753_set_7000_to_7000_short_mem_1',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_1753_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [20, 'EVENT_1754_run_event_as_subroutine_3']
+        "command": 'jmp_if_var_equals_const',
+        'args': [0x7000, 20, 'EVENT_1754_run_event_as_subroutine_3']
     },
     {
         "identifier": 'EVENT_1753_run_event_as_subroutine_3',
@@ -37,7 +37,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1753_set_6',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a8, 21]
     },
     {
@@ -52,13 +52,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1753_set_7000_to_7000_short_mem_9',
-        "command": 'set_7000_to_7000_short_mem',
-        "args": [0x7026]
+        "command": 'copy_var_to_var',
+        'args': [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_1753_jmp_if_7000_not_equals_short_10',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [20, 'EVENT_1753_run_event_as_subroutine_3']
+        "command": 'jmp_if_var_not_equals_const',
+        'args': [0x7000, 20, 'EVENT_1753_run_event_as_subroutine_3']
     },
     {
         "identifier": 'EVENT_1753_jmp_if_bit_set_11',
@@ -67,7 +67,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1753_set_12',
-        "command": 'set',
+        "command": "set_var_to_const",
         "args": [0x70a8, 22]
     },
     {

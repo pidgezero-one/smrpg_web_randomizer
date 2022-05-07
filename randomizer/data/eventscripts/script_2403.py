@@ -30,8 +30,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2403_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2403_action_queue_sync_5_SUBSCRIPT_set_sprite_sequence_0',
@@ -106,8 +106,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2403_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2403_action_queue_async_9_SUBSCRIPT_set_animation_speed_0',
@@ -127,8 +127,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2403_action_queue_async_9_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "command": 'action_queue',
+        'args': [AreaObjects.NPC_0, False],
         "subscript": [
             {
                 "identifier": 'EVENT_2403_action_queue_async_3_SUBSCRIPT_reset',
@@ -154,8 +154,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2403_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
+        "command": 'action_queue',
+        'args': [AreaObjects.MARIO, True],
         "subscript": [
             {
                 "identifier": 'EVENT_2403_action_queue_sync_12_SUBSCRIPT_set_priority_0',
@@ -224,13 +224,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2403_set_action_script_async_16',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 384]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 384]
     },
     {
         "identifier": 'EVENT_2403_set_action_script_async_17',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
+        "command": 'set_action_script',
+        'args': [AreaObjects.MARIO, False, 395]
     },
     {
         "identifier": 'EVENT_2403_pause_18',

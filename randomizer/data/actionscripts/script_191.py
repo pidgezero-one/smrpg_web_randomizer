@@ -39,33 +39,33 @@ script = [
     },
     {
         "identifier": 'ACTION_191_jmp_if_700C_equals_short_7',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [7, 'ACTION_191_jmp_if_var_equals_byte_18']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 7, 'ACTION_191_jmp_if_var_equals_const_18']
     },
     {
         "identifier": 'ACTION_191_jmp_if_700C_equals_short_8',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [0, 'ACTION_191_jmp_if_var_equals_byte_18']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 0, 'ACTION_191_jmp_if_var_equals_const_18']
     },
     {
         "identifier": 'ACTION_191_jmp_if_700C_equals_short_9',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [1, 'ACTION_191_jmp_if_var_equals_byte_18']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 1, 'ACTION_191_jmp_if_var_equals_const_18']
     },
     {
         "identifier": 'ACTION_191_jmp_if_700C_equals_short_10',
-        "command": 'jmp_if_700C_equals_short',
-        "args": [2, 'ACTION_191_jmp_if_var_equals_byte_18']
+        "command": "jmp_if_var_equals_const",
+        "args": [0x700C, 2, 'ACTION_191_jmp_if_var_equals_const_18']
     },
     {
-        "identifier": 'ACTION_191_jmp_if_var_equals_byte_11',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_191_jmp_if_var_equals_const_11',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70c5, 0, 'ACTION_191_pause_0']
     },
     {
         "identifier": 'ACTION_191_dec_12',
         "command": 'dec',
-        "args": [0x70c5]
+        'args': [0x70c5, 1],
     },
     {
         "identifier": 'ACTION_191_set_sprite_sequence_13',
@@ -93,8 +93,8 @@ script = [
         "args": ['ACTION_191_pause_0']
     },
     {
-        "identifier": 'ACTION_191_jmp_if_var_equals_byte_18',
-        "command": 'jmp_if_var_equals_byte',
+        "identifier": 'ACTION_191_jmp_if_var_equals_const_18',
+        "command": 'jmp_if_var_equals_const',
         "args": [0x70c5, 16, 'ACTION_191_pause_0']
     },
     {
