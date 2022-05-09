@@ -472,16 +472,6 @@ script = [
     },
     {
         "identifier": 'EVENT_2409_jmp_if_bit_clear_57',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 5, 'EVENT_2409_set_59']
-    },
-    {
-        "identifier": 'EVENT_2409_set_action_script_sync_58',
-        "command": 'set_action_script',
-        'args': [AreaObjects.NPC_7, True, 690]
-    },
-    {
-        "identifier": 'EVENT_2409_set_59',
         "command": "set_var_to_const",
         "args": [0x70c0, 239]
     },

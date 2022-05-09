@@ -316,16 +316,6 @@ script = [
         "args": [0x7085, 0]
     },
     {
-        "identifier": 'EVENT_2496___set_bit_44',
-        "command": 'set_bit',
-        "args": [0x708b, 6]
-    },
-    {
-        "identifier": 'EVENT_2496___set_bit_46',
-        "command": 'set_bit',
-        "args": [0x7091, 6]
-    },
-    {
         "identifier": 'EVENT_2496___set_bit_47',
         "command": 'set_bit',
         "args": [0x709c, 5]

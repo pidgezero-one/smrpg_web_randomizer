@@ -45,7 +45,6 @@ from randomizer.helpers.objectsequencetables import (
 from randomizer.data import items
 
 script = [
-    {"identifier": "EVENT_2048_set_bit_0", "command": "set_bit", "args": [0x7093, 5]},
     {
         "identifier": "EVENT_2048_jmp_if_bit_set_1",
         "command": "jmp_if_bit_set",

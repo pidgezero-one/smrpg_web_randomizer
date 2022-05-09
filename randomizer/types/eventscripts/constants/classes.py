@@ -1,0 +1,2 @@
+class EventScriptCommandName(str):
+    pass

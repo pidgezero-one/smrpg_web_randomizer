@@ -1,0 +1,2 @@
+class ActionScriptCommandName(str):
+    pass
