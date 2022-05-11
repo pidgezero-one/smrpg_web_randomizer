@@ -1755,8 +1755,8 @@ class GameWorld:
             self.eventscripts[979] = [
                 {
                     "identifier": "EVENT_979_set_7000_to_70A0_short_mem_3",
-                    "command": "set_7000_to_70A0_short_mem",
-                    "args": [0x70B2],
+                    "command": "copy_var_to_var",
+        "args": [0x70B2, 0x7000]
                 },
                 {
                     "identifier": "EVENT_979_jmp_if_7000_equals_short_4",

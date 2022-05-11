@@ -16,7 +16,7 @@ class Flag(_Flag):
 class ShortVar(int):
     def __new__(cls, *args, **kwargs):
         address = args[0]
-        assert 0x7000 <= address <= 0x71FE
+        assert 0x7000 <= address <= 0x71FE and address % 2 == 0
         return super(ShortVar, cls).__new__(cls, address)
 
 
@@ -24,4 +24,4 @@ class ByteVar(int):
     def __new__(cls, *args, **kwargs):
         address = args[0]
         assert 0x70A0 <= address <= 0x719F
-        return super(ShortVar, cls).__new__(cls, address)
+        return super(ByteVar, cls).__new__(cls, address)

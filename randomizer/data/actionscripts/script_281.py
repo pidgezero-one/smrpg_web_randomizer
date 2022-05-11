@@ -40,8 +40,8 @@ script = [
     },
     {"identifier": "ACTION_281_load_mem_4", "command": "load_mem", "args": [0x700C]},
     {
-        "identifier": "ACTION_281_mem_7000_shift_left_5",
-        "command": "mem_7000_shift_left",
+        "identifier": "ACTION_281_mem_700C_shift_left_5",
+        "command": "mem_700C_shift_left",
         "args": [0x7026, 255],
     },
     {"identifier": "ACTION_281_end_loop_6", "command": "end_loop"},

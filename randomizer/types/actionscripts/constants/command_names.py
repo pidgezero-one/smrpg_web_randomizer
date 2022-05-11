@@ -7,8 +7,12 @@ START_LOOP_N_FRAMES: ActionScriptCommandName = "start_loop_n_frames"  # D5
 START_LOOP_N_TIMES: ActionScriptCommandName = "start_loop_n_times"  # D4
 END_LOOP: ActionScriptCommandName = "end_loop"  # D7
 PAUSE: ActionScriptCommandName = "pause"  # F0, F1
-JMP_TO_START_OF_THIS_SCRIPT: ActionScriptCommandName = "jmp_to_start_of_this_script"  # F9
-JMP_TO_START_OF_THIS_SCRIPT_FA: ActionScriptCommandName = "jmp_to_start_of_this_script_FA"  # FA
+JMP_TO_START_OF_THIS_SCRIPT: ActionScriptCommandName = (
+    "jmp_to_start_of_this_script"  # F9
+)
+JMP_TO_START_OF_THIS_SCRIPT_FA: ActionScriptCommandName = (
+    "jmp_to_start_of_this_script_FA"  # FA
+)
 RET: ActionScriptCommandName = "ret"  # FE
 END_ALL: ActionScriptCommandName = "end_all"  # FF
 DB: ActionScriptCommandName = "db"  # any
@@ -49,21 +53,35 @@ COMPARE_700C_TO_VAR: ActionScriptCommandName = "compare_700C_to_var"  # C1
 JMP_IF_COMPARISON_RESULT_IS_GREATER_OR_EQUAL: ActionScriptCommandName = (
     "jmp_if_comparison_result_is_greater_or_equal"  # EC
 )
-JMP_IF_COMPARISON_RESULT_IS_LESSER: ActionScriptCommandName = "jmp_if_comparison_result_is_lesser"  # ED
+JMP_IF_COMPARISON_RESULT_IS_LESSER: ActionScriptCommandName = (
+    "jmp_if_comparison_result_is_lesser"  # ED
+)
 SET_VAR_TO_RANDOM: ActionScriptCommandName = "set_var_to_random"  # B6, B7
 ADD_VAR_TO_700C: ActionScriptCommandName = "add_var_to_700C"  # B8
 DEC_VAR_FROM_700C: ActionScriptCommandName = "dec_var_from_700C"  # B9
 SWAP_VARS: ActionScriptCommandName = "swap_vars"  # BD
-MOVE_7010_7015_TO_7016_701B: ActionScriptCommandName = "move_7010_7015_to_7016_701B"  # BE
-MOVE_7016_701B_TO_7010_7015: ActionScriptCommandName = "move_7016_701B_to_7010_7015"  # BF
+MOVE_7010_7015_TO_7016_701B: ActionScriptCommandName = (
+    "move_7010_7015_to_7016_701B"  # BE
+)
+MOVE_7016_701B_TO_7010_7015: ActionScriptCommandName = (
+    "move_7016_701B_to_7010_7015"  # BF
+)
 SET_700C_TO_CURRENT_LEVEL: ActionScriptCommandName = "set_700C_to_current_level"
 LOAD_MEM: ActionScriptCommandName = "load_mem"  # D6
 JMP_IF_BIT_CLEAR: ActionScriptCommandName = "jmp_if_bit_clear"  # DC, DD, DE
 JMP_IF_BIT_SET: ActionScriptCommandName = "jmp_if_bit_set"  # D8, D9, DA
-JMP_IF_MEM_704X_AT_700C_BIT_SET: ActionScriptCommandName = "jmp_if_mem_704x_at_700C_bit_set"  # DB
-JMP_IF_MEM_704X_AT_700C_BIT_CLEAR: ActionScriptCommandName = "jmp_if_mem_704x_at_700C_bit_clear"  # DF
-JMP_IF_VAR_EQUALS_CONST: ActionScriptCommandName = "jmp_if_var_equals_const"  # E0, E2, E4
-JMP_IF_VAR_NOT_EQUALS_CONST: ActionScriptCommandName = "jmp_if_var_not_equals_const"  # E1, E3, E5
+JMP_IF_MEM_704X_AT_700C_BIT_SET: ActionScriptCommandName = (
+    "jmp_if_mem_704x_at_700C_bit_set"  # DB
+)
+JMP_IF_MEM_704X_AT_700C_BIT_CLEAR: ActionScriptCommandName = (
+    "jmp_if_mem_704x_at_700C_bit_clear"  # DF
+)
+JMP_IF_VAR_EQUALS_CONST: ActionScriptCommandName = (
+    "jmp_if_var_equals_const"  # E0, E2, E4
+)
+JMP_IF_VAR_NOT_EQUALS_CONST: ActionScriptCommandName = (
+    "jmp_if_var_not_equals_const"  # E1, E3, E5
+)
 JMP_IF_700C_ALL_BITS_CLEAR: ActionScriptCommandName = "jmp_if_700C_all_bits_clear"  # E6
 JMP_IF_700C_ANY_BITS_SET: ActionScriptCommandName = "jmp_if_700C_any_bits_set"  # E7
 JMP_IF_RANDOM_ABOVE_66: ActionScriptCommandName = "jmp_if_random_above_66"  # E9
@@ -72,8 +90,12 @@ JMP_IF_LOADED_MEMORY_IS_0: ActionScriptCommandName = "jmp_if_loaded_memory_is_0"
 JMP_IF_LOADED_MEMORY_IS_ABOVE_OR_EQUAL_0: ActionScriptCommandName = (
     "jmp_if_loaded_memory_is_above_or_equal_0"  # EF
 )
-JMP_IF_LOADED_MEMORY_IS_BELOW_0: ActionScriptCommandName = "jmp_if_loaded_memory_is_below_0"  # EE
-JMP_IF_LOADED_MEMORY_IS_NOT_0: ActionScriptCommandName = "jmp_if_loaded_memory_is_not_0"  # EB
+JMP_IF_LOADED_MEMORY_IS_BELOW_0: ActionScriptCommandName = (
+    "jmp_if_loaded_memory_is_below_0"  # EE
+)
+JMP_IF_LOADED_MEMORY_IS_NOT_0: ActionScriptCommandName = (
+    "jmp_if_loaded_memory_is_not_0"  # EB
+)
 MEM_700C_AND_CONST: ActionScriptCommandName = "mem_700C_and_const"  # FD B0
 MEM_700C_AND_VAR: ActionScriptCommandName = "mem_700C_and_var"  # FD B3
 MEM_700C_OR_CONST: ActionScriptCommandName = "mem_700C_or_const"  # FD B1
@@ -84,12 +106,15 @@ MEM_700C_SHIFT_LEFT: ActionScriptCommandName = "mem_700C_shift_left"  # FD B6
 
 # sequencing
 
+SET_SPRITE_SEQUENCE: ActionScriptCommandName = "set_sprite_sequence"  # 08
 SEQUENCE_PLAYBACK_ON: ActionScriptCommandName = "sequence_playback_on"  # 02
 SEQUENCE_PLAYBACK_OFF: ActionScriptCommandName = "sequence_playback_off"  # 03
 SEQUENCE_LOOPING_ON: ActionScriptCommandName = "sequence_looping_on"  # 04
 SEQUENCE_LOOPING_OFF: ActionScriptCommandName = "sequence_looping_off"  # 05
 SET_ANIMATION_SPEED: ActionScriptCommandName = "set_animation_speed"  # 10
-EMBEDDED_ANIMATION_ROUTINE: ActionScriptCommandName = "embedded_animation_routine"  # 26, 27, 28
+EMBEDDED_ANIMATION_ROUTINE: ActionScriptCommandName = (
+    "embedded_animation_routine"  # 26, 27, 28
+)
 MAXIMIZE_SEQUENCE_SPEED: ActionScriptCommandName = "maximize_sequence_speed"  # 85
 MAXIMIZE_SEQUENCE_SPEED_86: ActionScriptCommandName = "maximize_sequence_speed_86"  # 86
 
@@ -98,7 +123,9 @@ MAXIMIZE_SEQUENCE_SPEED_86: ActionScriptCommandName = "maximize_sequence_speed_8
 FIXED_F_COORD_ON: ActionScriptCommandName = "fixed_f_coord_on"  # 06
 FIXED_F_COORD_OFF: ActionScriptCommandName = "fixed_f_coord_off"  # 07
 JMP_IF_OBJECT_WITHIN_RANGE: ActionScriptCommandName = "jmp_if_object_within_range"  # 3A
-JMP_IF_OBJECT_WITHIN_RANGE_SAME_Z: ActionScriptCommandName = "jmp_if_object_within_range_same_z"  # 3B
+JMP_IF_OBJECT_WITHIN_RANGE_SAME_Z: ActionScriptCommandName = (
+    "jmp_if_object_within_range_same_z"  # 3B
+)
 WALK_1_STEP_EAST: ActionScriptCommandName = "walk_1_step_east"  # 40
 WALK_1_STEP_SOUTHEAST: ActionScriptCommandName = "walk_1_step_southeast"  # 41
 WALK_1_STEP_SOUTH: ActionScriptCommandName = "walk_1_step_south"  # 42
@@ -149,7 +176,9 @@ FACE_NORTHEAST: ActionScriptCommandName = "face_northeast"  # 77
 FACE_MARIO: ActionScriptCommandName = "face_mario"  # 78
 TURN_CLOCKWISE_45_DEGREES: ActionScriptCommandName = "turn_clockwise_45_degrees"  # 79
 TURN_RANDOM_DIRECTION: ActionScriptCommandName = "turn_random_direction"  # 7A
-TURN_CLOCKWISE_45_DEGREES_N_TIMES: ActionScriptCommandName = "turn_clockwise_45_degrees_n_times"  # 7B
+TURN_CLOCKWISE_45_DEGREES_N_TIMES: ActionScriptCommandName = (
+    "turn_clockwise_45_degrees_n_times"  # 7B
+)
 JUMP_TO_HEIGHT_SILENT: ActionScriptCommandName = "jump_to_height_silent"  # 7E
 JUMP_TO_HEIGHT: ActionScriptCommandName = "jump_to_height"  # 7F
 WALK_TO_XY_COORDS: ActionScriptCommandName = "walk_to_xy_coords"  # 80
@@ -165,17 +194,25 @@ TRANSFER_TO_7016_7018_701A: ActionScriptCommandName = "transfer_to_7016_7018_701
 WALK_TO_7016_7018: ActionScriptCommandName = "walk_to_7016_7018"  # 8A
 WALK_TO_7016_7018_701A: ActionScriptCommandName = "walk_to_7016_7018_701A"  # 98
 BOUNCE_TO_XY_WITH_HEIGHT: ActionScriptCommandName = "bounce_to_xy_with_height"  # 90
-BOUNCE_XY_STEPS_WITH_HEIGHT: ActionScriptCommandName = "bounce_xy_steps_with_height"  # 91
+BOUNCE_XY_STEPS_WITH_HEIGHT: ActionScriptCommandName = (
+    "bounce_xy_steps_with_height"  # 91
+)
 TRANSFER_TO_XYZF: ActionScriptCommandName = "transfer_to_xyzf"  # 92
 TRANSFER_XYZF_STEPS: ActionScriptCommandName = "transfer_xyzf_steps"  # 93
 TRANSFER_XYZF_PIXELS: ActionScriptCommandName = "transfer_xyzf_pixels"  # 94
 
 # room objects and camera
 
-SET_700C_TO_OBJECT_COORD: ActionScriptCommandName = "set_700C_to_object_coord"  # C4, C5, C6
-CREATE_PACKET_AT_NPC_COORDS: ActionScriptCommandName = "create_packet_at_npc_coords"  # 3E
+SET_700C_TO_OBJECT_COORD: ActionScriptCommandName = (
+    "set_700C_to_object_coord"  # C4, C5, C6
+)
+CREATE_PACKET_AT_NPC_COORDS: ActionScriptCommandName = (
+    "create_packet_at_npc_coords"  # 3E
+)
 CREATE_PACKET_AT_7010: ActionScriptCommandName = "create_packet_at_7010"  # 3F
-CREATE_PACKET_AT_7010_WITH_EVENT: ActionScriptCommandName = "create_packet_at_7010_with_event"  # FD 3E
+CREATE_PACKET_AT_7010_WITH_EVENT: ActionScriptCommandName = (
+    "create_packet_at_7010_with_event"  # FD 3E
+)
 SUMMON_TO_LEVEL: ActionScriptCommandName = "summon_to_level"  # F2
 SUMMON_OBJECT_AT_70A8_TO_CURRENT_LEVEL: ActionScriptCommandName = (
     "summon_object_at_70A8_to_current_level"  # F4
@@ -201,7 +238,6 @@ SET_700C_TO_TAPPED_BUTTON: ActionScriptCommandName = "set_700C_to_tapped_button"
 
 SET_PALETTE_ROW: ActionScriptCommandName = "set_palette_row"  # 0D
 INC_PALETTE_ROW_BY: ActionScriptCommandName = "inc_palette_row_by"  # 0E
-INC_PALETTE_ROW_BY_1: ActionScriptCommandName = "inc_palette_row_by_1"  # 0F
 
 # branching / jumps
 

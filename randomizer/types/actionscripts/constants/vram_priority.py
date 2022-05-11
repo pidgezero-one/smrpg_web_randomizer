@@ -1,0 +1,6 @@
+from classes import VRAMPriority
+
+MARIO_OVERLAPS_ON_ALL_SIDES = VRAMPriority(0)
+NORMAL = VRAMPriority(1)
+OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES = VRAMPriority(2)
+PRIORITY_3 = VRAMPriority(3)
