@@ -1,10 +1,11 @@
 from randomizer.types.actionscripts.constants.misc import TOTAL_SCRIPTS
+from randomizer.types.numbers.classes import UInt8
 from randomizer.types.packets.constants.misc import TOTAL_PACKETS
 from randomizer.types.sprites.constants.misc import TOTAL_SPRITES
 
 
 class Packet:
-    id: int
+    id: UInt8
     sprite_id: int
     shadow: bool
     action_script_id: int
@@ -23,7 +24,7 @@ class Packet:
         assert 0 <= sprite_id < TOTAL_SPRITES
         assert 0 <= action_script_id < TOTAL_SCRIPTS
         assert 0 <= id < TOTAL_PACKETS
-        self.id = id
+        self.id = UInt8(id)
         self.sprite_id = sprite_id
         self.shadow = shadow
         self.action_script_id = action_script_id

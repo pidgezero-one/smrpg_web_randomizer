@@ -102,7 +102,7 @@ MEM_700C_OR_CONST: ActionScriptCommandName = "mem_700C_or_const"  # FD B1
 MEM_700C_OR_VAR: ActionScriptCommandName = "mem_700C_or_var"  # FD B4
 MEM_700C_XOR_CONST: ActionScriptCommandName = "mem_700C_xor_const"  # FD B2
 MEM_700C_XOR_VAR: ActionScriptCommandName = "mem_700C_xor_var"  # FD B5
-MEM_700C_SHIFT_LEFT: ActionScriptCommandName = "mem_700C_shift_left"  # FD B6
+MEM_SHIFT_LEFT: ActionScriptCommandName = "mem_700C_shift_left"  # FD B6
 
 # sequencing
 

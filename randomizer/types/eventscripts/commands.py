@@ -9,8 +9,9 @@ from ..variables.classes import Flag
 
 # script operations
 
+
 class StartLoopNFrames(EventScriptCommand):
-    command_name: EventScriptCommandName = cmdnm.START_LOOP_N_FRAMES
+    _command_name: EventScriptCommandName = cmdnm.START_LOOP_N_FRAMES
     length: int
 
     def __init__(self, length: int, identifier: str = None) -> None:
@@ -19,7 +20,7 @@ class StartLoopNFrames(EventScriptCommand):
 
 
 class StartLoopNTimes(EventScriptCommand):
-    command_name: EventScriptCommandName = cmdnm.START_LOOP_N_TIMES
+    _command_name: EventScriptCommandName = cmdnm.START_LOOP_N_TIMES
     count: int
 
     def __init__(self, count: int, identifier: str = None) -> None:

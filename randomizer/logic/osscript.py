@@ -927,7 +927,7 @@ class ObjectSequenceScript:
         if 0x70A0 <= address <= 0x719F:
             self.append_byte(0xAA)
             self.append_byte(address - 0x70A0)
-        elif address == 0x7000:
+        elif address == 0x700C:
             self.append_byte(0xAE)
         elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xB2)
@@ -941,7 +941,7 @@ class ObjectSequenceScript:
         if 0x70A0 <= address <= 0x719F:
             self.append_byte(0xAB)
             self.append_byte(address - 0x70A0)
-        elif address == 0x7000:
+        elif address == 0x700C:
             self.append_byte(0xAF)
         elif 0x7000 < address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xB3)
@@ -1153,14 +1153,16 @@ class ObjectSequenceScript:
         if 0x70A0 <= address <= 0x719F and 0 <= val <= 0xFF:
             self.append_byte(0xE0)
             self.append_byte(address - 0x70A0)
+            self.append_byte(val)
         elif address == 0x700C:
             self.append_byte(0xE2)
+            self.append_short(val)
         elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xE4)
             self.append_byte((address - 0x7000) // 2)
+            self.append_short(val)
         else:
             1 / 0
-        self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
 
@@ -1169,14 +1171,16 @@ class ObjectSequenceScript:
         if 0x70A0 <= address <= 0x719F and 0 <= val <= 0xFF:
             self.append_byte(0xE1)
             self.append_byte(address - 0x70A0)
+            self.append_byte(val)
         elif address == 0x700C:
             self.append_byte(0xE3)
+            self.append_short(val)
         elif 0x7000 <= address <= 0x71FE and address % 2 == 0:
             self.append_byte(0xE5)
             self.append_byte((address - 0x7000) // 2)
+            self.append_short(val)
         else:
             1 / 0
-        self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
 

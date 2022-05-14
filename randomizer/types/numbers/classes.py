@@ -10,3 +10,6 @@ class UInt16(int):
         num = args[0]
         assert 0 <= num <= 0xFFFF
         return super(UInt16, cls).__new__(cls, num)
+
+    def little_endian(self) -> bytearray:
+        return bytearray([(self & 0xFF), ((self >> 8))])
