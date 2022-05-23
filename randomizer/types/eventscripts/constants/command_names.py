@@ -85,7 +85,11 @@ SET_BIT: EventScriptCommandName = "set_bit"  # A0, A1, A2
 SET_BIT_3: EventScriptCommandName = "set_bit_3"  # FD FA
 SET_BIT_3_OFFSET: EventScriptCommandName = "set_bit_3_offset"  # FD 8B
 SET_BIT_7_OFFSET: EventScriptCommandName = "set_bit_7_offset"  # FD 88
+CLEAR_BIT: EventScriptCommandName = "clear_bit"  # 0xA4, 0xA5, 0xA6
 CLEAR_BIT_7_OFFSET: EventScriptCommandName = "set_bit_7_offset"  # FD 89
+CLEAR_7016_TO_7018_AND_ISOLATE_701A_HIGH_BYTE_IF_7018_BIT_0_SET: EventScriptCommandName = (
+    "clear_7016_to_7018_and_isolate_701A_high_byte_if_7018_bit_0_set"  # FD 0xC6
+)
 COPY_VAR_TO_VAR: EventScriptCommandName = "copy_var_to_var"  # B4, B5, BA, BB, BC
 STORE_BYTES_TO_0335_0556: EventScriptCommandName = "store_bytes_to_0335_0556"  # FD 90
 STORE_00_TO_0348: EventScriptCommandName = "store_00_to_0248"  # FD FC
@@ -105,10 +109,6 @@ INC: EventScriptCommandName = "inc"  # AA, AE, B2
 DEC: EventScriptCommandName = "dec"  # AB, AF, B3
 ADD_VAR_TO_7000: EventScriptCommandName = "add_var_to_7000"  # B8
 DEC_VAR_FROM_7000: EventScriptCommandName = "dec_var_from_7000"  # # B9
-CLEAR_BIT: EventScriptCommandName = "clear_bit"  # 0xA4, 0xA5, 0xA6
-CLEAR_7016_TO_7018_AND_ISOLATE_701A_HIGH_BYTE_IF_7018_BIT_0_SET: EventScriptCommandName = (
-    "clear_7016_to_7018_and_isolate_701A_high_byte_if_7018_bit_0_set"  # FD 0xC6
-)
 GENERATE_RANDOM_NUM_FROM_RANGE_VAR: EventScriptCommandName = (
     "generate_random_num_from_range_var"  # FD B7
 )

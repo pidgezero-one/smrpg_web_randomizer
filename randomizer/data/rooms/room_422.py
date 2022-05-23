@@ -32,6 +32,7 @@ from randomizer.data.rooms.room import (
 from randomizer.data import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
+
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -295,8 +296,8 @@ room = Room(
         ),
         RegularNPC(  # 12
             occupant=npcs.Key,
-            initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=1803,
+            initiator=Initiator.NONE,
+            event_script=1551,
             action_script=15,
             visible=False,
             x=0,

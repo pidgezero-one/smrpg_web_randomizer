@@ -140,7 +140,7 @@ script = [
     {
         "identifier": "EVENT_947_punch~",  # have bambino bomb
         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_mines"]
+        "args": [0x7000, 1, "EVENT_991_mines"],
     },
     # booster tower fights/curtain
     {
@@ -297,7 +297,7 @@ script = [
     {
         "identifier": "EVENT_947_have_ss_3",  # have shiny stone
         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_monstro"]
+        "args": [0x7000, 1, "EVENT_991_monstro"],
     },
     {
         "identifier": "EVENT_947_have_ss_access",  # suggest going to moleville depending on condition
@@ -336,7 +336,7 @@ script = [
     {
         "identifier": "EVENT_947_-ck2_363",  # have castle key 1 - display hint
         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_nimbus_castle"]
+        "args": [0x7000, 1, "EVENT_991_nimbus_castle"],
     },
     {
         "identifier": "EVENT_947_-ck2_361",  # haven't unlocked the door - abandon path
@@ -356,7 +356,7 @@ script = [
     {
         "identifier": "EVENT_947_-ck2_363~",  # have castle key 2 - display hint
         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_nimbus_castle"]
+        "args": [0x7000, 1, "EVENT_991_nimbus_castle"],
     },
     {
         "identifier": "EVENT_947_-ck2_362e2r",  # haven't unlocked the door - abandon path
@@ -415,13 +415,8 @@ script = [
     # marios pad bed
     {
         "identifier": "EVENT_947_marios_pad_bed",
-        "command": "jmp_if_object_not_in_level",
-        "args": [AreaObjects.NPC_1, 189, "EVENT_947_rfc"],
-    },
-    {
-        "identifier": "EVENT_947_marios_pad_bed_2",
-        "command": "jmp_if_bit_clear",
-        "args": [0x7089, 5, "EVENT_991_marios_pad"],
+        "command": "jmp_if_object_in_level",
+        "args": [AreaObjects.NPC_1, 189, "EVENT_991_marios_pad"],
     },
     # RFC exchange
     {
@@ -437,7 +432,7 @@ script = [
     {
         "identifier": "EVENT_947_rfc_363",
         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_947_rfc_3"]
+        "args": [0x7000, 1, "EVENT_947_rfc_3"],
     },
     {
         "identifier": "EVENT_947_rfc_3_",
@@ -565,7 +560,7 @@ script = [
         "args": [AreaObjects.NPC_0, 324, "EVENT_991_monstro"],
     },
     {
-        "identifier": "EVENT_947_flags", # flags not placed
+        "identifier": "EVENT_947_flags",  # flags not placed
         "command": "jmp_if_bit_clear",
         "args": [0x705F, 2, "EVENT_991_monstro"],
     },
@@ -590,7 +585,7 @@ script = [
     {
         "identifier": "EVENT_947_ck2_363",  # have castle key 1 - display hint
         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_nimbus_castle"]
+        "args": [0x7000, 1, "EVENT_991_nimbus_castle"],
     },
     {
         "identifier": "EVENT_947_ck2_361",  # haven't unlocked the door - abandon path
@@ -610,7 +605,7 @@ script = [
     {
         "identifier": "EVENT_947_ck2_363~",  # have castle key 2 - display hint
         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_nimbus_castle"]
+        "args": [0x7000, 1, "EVENT_991_nimbus_castle"],
     },
     {
         "identifier": "EVENT_947_-ck2_362e2r-",  # haven't unlocked the door - abandon path

@@ -44,10 +44,4 @@ from randomizer.helpers.objectsequencetables import (
 )
 from randomizer.data import items
 
-script = [
-    {
-        "identifier": "EVENT_1930_jmp_to_event_235",
-        "command": "jmp_to_event",
-        "args": [375],
-    }
-]
+script = []

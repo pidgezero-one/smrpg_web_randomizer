@@ -121,8 +121,8 @@ room = Room(
         ),
         RegularNPC(  # 1
             occupant=npcs.Terrapin,
-            initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=1821,
+            initiator=Initiator.NONE,
+            event_script=1551,
             action_script=160,
             visible=True,
             x=9,
@@ -153,7 +153,7 @@ room = Room(
         ),
         RegularClone(  # 2
             occupant=npcs.Terrapin,
-            event_script=1821,
+            event_script=1551,
             action_script=160,
             visible=True,
             x=9,
@@ -168,7 +168,7 @@ room = Room(
         ),
         RegularClone(  # 3
             occupant=npcs.Terrapin,
-            event_script=1821,
+            event_script=1551,
             action_script=160,
             visible=True,
             x=9,

@@ -6,7 +6,22 @@ from . import utils
 from randomizer.data import palettes, items, chests, npcs
 from randomizer.data.packets import packets
 from randomizer.data.rooms import rooms
-from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room, Clone
+from randomizer.data.rooms.room import (
+    Buffer,
+    Partition,
+    DestinationProps,
+    RoomExit,
+    MapExit,
+    Event,
+    BattlePackNPC,
+    RegularNPC,
+    ChestNPC,
+    BattlePackClone,
+    RegularClone,
+    ChestClone,
+    Room,
+    Clone,
+)
 from randomizer.helpers.flag_helpers import BoosterTowerGating
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
 from randomizer.helpers.roomobjecttables import (
@@ -15,16 +30,20 @@ from randomizer.helpers.roomobjecttables import (
 )
 
 from randomizer.logic import flags
-from randomizer.helpers.roomobjecttables import ObjectType, ExitType, PartitionBufferTypes
+from randomizer.helpers.roomobjecttables import (
+    ObjectType,
+    ExitType,
+    PartitionBufferTypes,
+)
+
 
 def validate_chain(chain):
     c = copy.deepcopy(chain)
     c.sort()
-    return (max(c) - min(c) <= 8)
-    
+    return max(c) - min(c) <= 8
+
 
 def get_clone_sequence(ids):
-
     def get_next_id(cursor=0, existing_ids=[]):
         possibilities = []
         for id in ids[cursor]:
@@ -33,7 +52,7 @@ def get_clone_sequence(ids):
                 if validate_chain(chain):
                     possibilities.append(chain)
             else:
-                c = get_next_id(cursor+1, chain)
+                c = get_next_id(cursor + 1, chain)
                 if len(c) > 0:
                     possibilities.extend(c)
         return possibilities
@@ -82,6 +101,7 @@ def assemble_npc(model):
     output.append(model.byte6_bit2 << 2)
     return output
 
+
 class CloneGroup:
     npcs = []
     ids = []
@@ -89,6 +109,7 @@ class CloneGroup:
     def __init__(self, npcs, ids=[]):
         self.npcs = copy.deepcopy(npcs)
         self.ids = copy.deepcopy(ids)
+
 
 class SingleNPC:
     npc = None
@@ -103,6 +124,7 @@ class AmbiguousCoin:
     none = enum.auto()
     one = enum.auto()
     multi = enum.auto()
+
 
 def list_unique(arr):
     l = set()
@@ -128,7 +150,7 @@ needs_base_packet_size = {
     73: 0,
     # 77: 1,
     79: 2,
-    82: 0, # might be 1
+    82: 0,  # might be 1
     92: 0,
     # 95: 1,
     100: 0,
@@ -202,7 +224,7 @@ needs_base_packet_size = {
     318: 0,
     319: 0,
     # 321: 0,
-    322: 0, # might be 1
+    322: 0,  # might be 1
     # 335: 0,
     # 337: 1,
     338: 1,
@@ -235,7 +257,7 @@ needs_base_packet_size = {
     404: 0,
     # 405: 0,
     407: 0,
-    # 408: 0, 
+    # 408: 0,
     # 411: 1,
     418: 0,
     420: 1,
@@ -248,7 +270,7 @@ needs_base_packet_size = {
     442: 2,
     # 445: 0,
     448: 0,
-    455: 0, # plus chests - originally 1
+    455: 0,  # plus chests - originally 1
     456: 2,
     457: 0,
     458: 1,
@@ -272,18 +294,41 @@ needs_base_packet_size = {
     509: 1,
 }
 
-special_case_rooms = [37, 57, 70, 71, 72, 73, 74, 79, 205, 230, 232, 233, 236, 463, 466, 477]
+special_case_rooms = [
+    37,
+    57,
+    70,
+    71,
+    72,
+    73,
+    74,
+    79,
+    205,
+    230,
+    232,
+    233,
+    236,
+    463,
+    466,
+    477,
+]
 # 205 - complicated spiney sequence
 # 463, 466 - barrel count room and logic problem room need this for some reason
-requires_coin_buffer = [71, 72, 242] # maybe 199. 199 needed all NPCs restored bc the graphics interact weirdly with the save box animation
+requires_coin_buffer = [
+    71,
+    72,
+    242,
+]  # maybe 199. 199 needed all NPCs restored bc the graphics interact weirdly with the save box animation
 # 301 - breaks chest sprites if you use extra sprite buffer for coins
 
 always_requires_coin_buffer = [71, 72, 73]
+
 
 def finalize_packet(size):
     if size > 0:
         return True, size - 1
     return False, 0
+
 
 def get_ally_buffer(world, current_size, sprite_id, prop_id, sequence=True):
     if sequence:
@@ -300,11 +345,15 @@ def get_gridplane_type(world, npc):
     gp = world.sprites[sprite_id].animation.properties.molds[0].gridplane
     if gp == False:
         return None
-    elif world.sprites[sprite_id].animation.properties.molds[0].tiles[0].format in [0, 1]:
+    elif world.sprites[sprite_id].animation.properties.molds[0].tiles[0].format in [
+        0,
+        1,
+    ]:
         return 4
     else:
         return 3
-    
+
+
 def set_clone_buffers_of_clone_group(world, room_index, clone_indexes):
     if len(clone_indexes) == 0:
         return
@@ -353,16 +402,29 @@ def set_clone_buffers_of_clone_group(world, room_index, clone_indexes):
         gp_type = get_gridplane_type(world, _npc)
         if gp_type != dominant_gridplane:
             world.rooms[room_index].objects[_npc_index].model.cannot_clone = True
-    
+
 
 def is_party_member(model):
-    return utils.isclass_or_instance(model, npcs.Mario) or    utils.isclass_or_instance(model, npcs.Mallow) or    utils.isclass_or_instance(model, npcs.Geno) or    utils.isclass_or_instance(model, npcs.Bowser) or    utils.isclass_or_instance(model, npcs.Toadstool) 
+    return (
+        utils.isclass_or_instance(model, npcs.Mario)
+        or utils.isclass_or_instance(model, npcs.Mallow)
+        or utils.isclass_or_instance(model, npcs.Geno)
+        or utils.isclass_or_instance(model, npcs.Bowser)
+        or utils.isclass_or_instance(model, npcs.Toadstool)
+    )
+
 
 def set_partitions(world):
     pandorite_rooms = []
     hidon_rooms = []
-    locations = [c for c in world.chest_locations if utils.isclass_or_instance(c, chests.Chest)]
-    packet_locations = [c for c in world.chest_locations if utils.isclass_or_instance(c, chests.PacketItem)]
+    locations = [
+        c for c in world.chest_locations if utils.isclass_or_instance(c, chests.Chest)
+    ]
+    packet_locations = [
+        c
+        for c in world.chest_locations
+        if utils.isclass_or_instance(c, chests.PacketItem)
+    ]
     for c in locations:
         if utils.isclass_or_instance(c.item, items.PandoriteFight):
             pandorite_rooms.extend(c.rooms)
@@ -386,7 +448,7 @@ def set_partitions(world):
             for i, r in enumerate(c.rooms):
                 if r not in chest_coins:
                     chest_coins[r] = []
-                if not hasattr(c, 'npc_ids'):
+                if not hasattr(c, "npc_ids"):
                     continue
                 npc_id = c.npc_ids[i]
                 coords = world.rooms[r].objects[npc_id]
@@ -397,12 +459,12 @@ def set_partitions(world):
             npc_model = c.item.model
             packet_number = npc_model.chest_packet
             sprite_id = packets[packet_number]["sprite"]
-            vram_size =  utils.get_min_vram_from_animation(world.sprites[sprite_id], 0)
-            #print(c, c.rooms)
+            vram_size = utils.get_min_vram_from_animation(world.sprites[sprite_id], 0)
+            # print(c, c.rooms)
             for i, r in enumerate(c.rooms):
                 if r not in chest_packets:
                     chest_packets[r] = []
-                if not hasattr(c, 'npc_ids'):
+                if not hasattr(c, "npc_ids"):
                     chest_packets[r].append((None, vram_size, -999, -999))
                     continue
                 npc_id = c.npc_ids[i]
@@ -416,12 +478,14 @@ def set_partitions(world):
                 if r not in packet_general:
                     packet_general[r] = []
                 npc_model = c.item.model
-                packet_number = npc_model.chest_packet # any packet will do here, they all use the same sprites right now
+                packet_number = (
+                    npc_model.chest_packet
+                )  # any packet will do here, they all use the same sprites right now
                 sprite_id = packets[packet_number]["sprite"]
-                vram_size =  utils.get_min_vram_from_animation(world.sprites[sprite_id], 0)
+                vram_size = utils.get_min_vram_from_animation(
+                    world.sprites[sprite_id], 0
+                )
                 packet_general[r].append(vram_size)
-
-            
 
     for room_index, room in enumerate(world.rooms):
 
@@ -436,7 +500,7 @@ def set_partitions(world):
         ally_buffer = 0
         for seq_id in [0, 1, 6, 7, 8, 9, 10, 11, 12]:
             ally_buffer = get_ally_buffer(world, ally_buffer, 0, seq_id)
-        for seq_id in range(0,10):
+        for seq_id in range(0, 10):
             ally_buffer = get_ally_buffer(world, ally_buffer, 1, seq_id)
 
         if ExtraSpriteActions.Swim in room.extra_required_actions:
@@ -530,7 +594,7 @@ def set_partitions(world):
         if room_index in chest_packets:
             extra_sprite_buffer += 1
             min_packet_size = 0
-            #if room_index == 335:
+            # if room_index == 335:
             #    print(extra_sprite_buffer, chest_packets[room_index])
             for i, chest in enumerate(chest_packets[room_index]):
                 npc_id = chest[0]
@@ -548,9 +612,13 @@ def set_partitions(world):
                     other_vram = other_chest[1] + 1
                     other_x = other_chest[2]
                     other_y = other_chest[3]
-                    #if room_index == 335:
+                    # if room_index == 335:
                     #    print(x, other_x, abs(other_x - x), y, other_y, abs(other_y - y))
-                    if abs(other_x - x) <= 3 and abs(other_y - y) <= 4 and other_vram > min_second_packet_size:
+                    if (
+                        abs(other_x - x) <= 3
+                        and abs(other_y - y) <= 4
+                        and other_vram > min_second_packet_size
+                    ):
                         min_second_packet_size = other_vram
                 if min_packet_size < min_packet_size + min_second_packet_size:
                     min_packet_size = min_packet_size + min_second_packet_size
@@ -559,7 +627,6 @@ def set_partitions(world):
                 print(extra_sprite_buffer)
         if room_index in packet_general:
             extra_sprite_buffer += 1 + max(packet_general[room_index])
-
 
         # if room has save box in it, move ally buffer overflow into packet buffer
         # I don't know why the hell this works, but here was some experimentation I did in the mushroom kingdom:
@@ -582,33 +649,35 @@ def set_partitions(world):
                     extra_sprite_buffer += ally_buffer - 1
                     ally_buffer = 1
 
-        if room_index in [95, 301]: # rooms that are finicky with packets
+        if room_index in [95, 301]:  # rooms that are finicky with packets
             extra_sprite_buffer = 0
 
-        # finalize packet buffer and ally buffer            
+        # finalize packet buffer and ally buffer
         packet_on, packet_size = finalize_packet(extra_sprite_buffer)
         if room_index == 74:
             print("extra_sprite_buffer", packet_on, packet_size)
-        partition = Partition(ally_sprite_buffer_size=ally_buffer, allow_extra_sprite_buffer=packet_on, extra_sprite_buffer_size=packet_size)
-        
+        partition = Partition(
+            ally_sprite_buffer_size=ally_buffer,
+            allow_extra_sprite_buffer=packet_on,
+            extra_sprite_buffer_size=packet_size,
+        )
+
         # elif room_index in [376, 377, 459, 460, 461, 462, 202] or (room is not None and len(room.objects) == 0): # rooms that always need triple empty + ex 1
         #     partition = Partition(ally_sprite_buffer_size=ally_buffer, allow_extra_sprite_buffer=True, extra_sprite_buffer_size=extra_sprite_buffer)
         #     world.rooms[room_index].partition = copy.deepcopy(partition)
         # if room_index in [192, 205, 104]: # rooms that always need triple empty
-        if room_index in [192, 104]: # rooms that always need triple empty
+        if room_index in [192, 104]:  # rooms that always need triple empty
             # 205 - Trying this out. A seed where partitions didn't assemble correctly actually made the spinies render correctly.
             # May not work with all boss/ally combos.
             world.rooms[room_index].partition = partition
             continue
 
-        original_partition = None 
+        original_partition = None
         if partition is not None:
             original_partition = copy.deepcopy(room.partition)
 
-
         if original_partition is not None:
             partition.full_palette_buffer = original_partition.full_palette_buffer
-
 
         buffer_types = [None] * 3
 
@@ -636,15 +705,24 @@ def set_partitions(world):
                 for j, buf_ in enumerate(original_partition.buffers):
                     if j in used:
                         continue
-                    if buf_.main_buffer_space != PartitionMainSpace._0_BYTES and not found:
-                        if (buf == None and buf_.buffer_type == PartitionBufferTypes.EMPTY_3) or buf == buf_.buffer_type:
+                    if (
+                        buf_.main_buffer_space != PartitionMainSpace._0_BYTES
+                        and not found
+                    ):
+                        if (
+                            buf == None
+                            and buf_.buffer_type == PartitionBufferTypes.EMPTY_3
+                        ) or buf == buf_.buffer_type:
                             buffer_types[i] == buf_.buffer_type
                             partition.buffers[i].buffer_type = buf_.buffer_type
-                            partition.buffers[i].main_buffer_space = buf_.main_buffer_space
-                            partition.buffers[i].index_in_main_buffer = buf_.index_in_main_buffer
+                            partition.buffers[
+                                i
+                            ].main_buffer_space = buf_.main_buffer_space
+                            partition.buffers[
+                                i
+                            ].index_in_main_buffer = buf_.index_in_main_buffer
                             found = True
                             used.append(j)
-
 
         if len(room_npcs) > 0:
 
@@ -678,8 +756,10 @@ def set_partitions(world):
             else:
                 npc_groups.append(clone_group)
             set_clone_buffers_of_clone_group(world, room_index, clone_group)
-            
-            room_npcs = room.objects # i swear ill never get used to references and mutability in python
+
+            room_npcs = (
+                room.objects
+            )  # i swear ill never get used to references and mutability in python
 
             dominant_clone_gridplane_types = []
             standalones = [0] * 3
@@ -692,7 +772,13 @@ def set_partitions(world):
                     for object_id in group:
                         _npc = world.rooms[room_index].objects[object_id]
                         model = _npc.model
-                        if utils.isclass_or_instance(model.occupant, npcs.Empty) or utils.is_coin(model.occupant) or utils.isclass_or_instance(model.occupant, npcs.TreasureChest):
+                        if (
+                            utils.isclass_or_instance(model.occupant, npcs.Empty)
+                            or utils.is_coin(model.occupant)
+                            or utils.isclass_or_instance(
+                                model.occupant, npcs.TreasureChest
+                            )
+                        ):
                             continue
                         if not model.cannot_clone:
                             gp_type = get_gridplane_type(world, _npc)
@@ -703,7 +789,11 @@ def set_partitions(world):
                     object_id = group[0]
                     _npc = world.rooms[room_index].objects[object_id]
                     model = _npc.model
-                    if utils.isclass_or_instance(model.occupant, npcs.Empty) or utils.is_coin(model.occupant) or utils.isclass_or_instance(model.occupant, npcs.TreasureChest):
+                    if (
+                        utils.isclass_or_instance(model.occupant, npcs.Empty)
+                        or utils.is_coin(model.occupant)
+                        or utils.isclass_or_instance(model.occupant, npcs.TreasureChest)
+                    ):
                         pass
                     elif not model.cannot_clone:
                         gp_type = get_gridplane_type(world, _npc)
@@ -718,7 +808,7 @@ def set_partitions(world):
             priority = copy.deepcopy(dominant_clone_gridplane_types)
 
             # now assign clone buffers as available
-            
+
             for ind, val in enumerate(standalones):
                 if val == max(standalones) and val > 1:
                     if ind == 0 and 4 not in priority:
@@ -740,7 +830,6 @@ def set_partitions(world):
                         else:
                             priority.append(None)
                     standalones[ind] = 0
-                
 
             last_gp_type = None
             # define as many clone buffers as possible, in order
@@ -754,13 +843,19 @@ def set_partitions(world):
                 insertion = buffer_types.index(None)
                 if gp_type == 4:
                     buffer_types[insertion] = PartitionBufferTypes._4_SPRITES_PER_ROW
-                    partition.buffers[insertion].buffer_type = PartitionBufferTypes._4_SPRITES_PER_ROW
+                    partition.buffers[
+                        insertion
+                    ].buffer_type = PartitionBufferTypes._4_SPRITES_PER_ROW
                 elif gp_type == 3:
                     buffer_types[insertion] = PartitionBufferTypes._3_SPRITES_PER_ROW
-                    partition.buffers[insertion].buffer_type = PartitionBufferTypes._3_SPRITES_PER_ROW
+                    partition.buffers[
+                        insertion
+                    ].buffer_type = PartitionBufferTypes._3_SPRITES_PER_ROW
                 else:
                     buffer_types[insertion] = PartitionBufferTypes.EMPTY_3
-                    partition.buffers[insertion].buffer_type = PartitionBufferTypes.EMPTY_3
+                    partition.buffers[
+                        insertion
+                    ].buffer_type = PartitionBufferTypes.EMPTY_3
                 last_gp_type = gp_type
             # set NPCs to Cannot Clone if their gridplane type is not represented
             for group, gp_type in group_gridplane_pairs:
@@ -768,9 +863,29 @@ def set_partitions(world):
                     _npc = world.rooms[room_index].objects[object_id]
                     model = _npc.model
                     if utils.is_coin(model.occupant):
-                        world.rooms[room_index].objects[object_id].model.cannot_clone = False
-                    elif (gp_type == 4 and PartitionBufferTypes._4_SPRITES_PER_ROW not in buffer_types) or (gp_type == 3 and PartitionBufferTypes._3_SPRITES_PER_ROW not in buffer_types) or (gp_type == None and PartitionBufferTypes.EMPTY_3 not in buffer_types and None not in buffer_types):
-                        world.rooms[room_index].objects[object_id].model.cannot_clone = True
+                        world.rooms[room_index].objects[
+                            object_id
+                        ].model.cannot_clone = False
+                    elif (
+                        (
+                            gp_type == 4
+                            and PartitionBufferTypes._4_SPRITES_PER_ROW
+                            not in buffer_types
+                        )
+                        or (
+                            gp_type == 3
+                            and PartitionBufferTypes._3_SPRITES_PER_ROW
+                            not in buffer_types
+                        )
+                        or (
+                            gp_type == None
+                            and PartitionBufferTypes.EMPTY_3 not in buffer_types
+                            and None not in buffer_types
+                        )
+                    ):
+                        world.rooms[room_index].objects[
+                            object_id
+                        ].model.cannot_clone = True
 
             # effective_buffer_types = priority[0:len([x for x in buffer_types if x is None])]
             # priority_index = 0
@@ -830,9 +945,6 @@ def set_partitions(world):
         # may need more work regarding who to set Cannot Clone on
 
         world.rooms[room_index].partition = copy.deepcopy(partition)
-            
-
-
 
 
 class Rooms:
@@ -860,9 +972,8 @@ class Rooms:
             range(2823, 3072),
             range(3950, 4095),
             range(2675, 2793),
-            range(1972, 2047),
-            range(1466, 1520),
-            range(1523, 1536),
+            range(1972, 2048),
+            range(1433, 1536),
         ]
 
         # collect all NPC model definitions
@@ -889,8 +1000,7 @@ class Rooms:
                             clone_group.append(assembled)
                         clone_group.sort()
                     elif (
-                        utils.isclass_or_instance(npc, Clone)
-                        and last_object_was_clone
+                        utils.isclass_or_instance(npc, Clone) and last_object_was_clone
                     ):  # continue clone group
                         if assembled not in clone_group:
                             clone_group.append(assembled)
@@ -1022,7 +1132,7 @@ class Rooms:
                     model = npc.model
                     if utils.isclass_or_instance(model.occupant, npcs.TreasureChest):
                         chest_count += 1
-                    
+
                 # opt for similar partition with biggest packet buffer
                 p = copy.deepcopy(this_room.partition)
                 # if chest_count + p.extra_sprite_buffer_size > 4:
@@ -1066,7 +1176,7 @@ class Rooms:
                             i for i, val in enumerate(all_npcs) if val == assembled
                         ]
 
-                        #print(i, model.occupant, possible_ids)
+                        # print(i, model.occupant, possible_ids)
 
                         if (
                             utils.isclass_or_instance(npc, Clone)
@@ -1090,18 +1200,20 @@ class Rooms:
                             class_clone_group = []
                         else:  # no clone group
                             if len(last_object_ids) > 0 and last_object is not None:
-                                npcs_in_assembly_order.append(SingleNPC(last_object, last_object_ids[0]))
+                                npcs_in_assembly_order.append(
+                                    SingleNPC(last_object, last_object_ids[0])
+                                )
 
                         last_object = npc
                         last_object_ids = possible_ids
-                        last_object_was_clone = utils.isclass_or_instance(
-                            npc, Clone
-                        )
+                        last_object_was_clone = utils.isclass_or_instance(npc, Clone)
                     if len(clone_group) > 0:
                         class_clone_group.ids = get_clone_sequence(clone_group)
                         npcs_in_assembly_order.append(class_clone_group)
                     else:
-                        npcs_in_assembly_order.append(SingleNPC(last_object, last_object_ids[0]))
+                        npcs_in_assembly_order.append(
+                            SingleNPC(last_object, last_object_ids[0])
+                        )
 
                     # start writing NPC data
 
@@ -1117,7 +1229,7 @@ class Rooms:
                         event_id = 256
                         event_group = []
                         new_event_group = []
-                        #if i == 5:
+                        # if i == 5:
                         #    print(npc)
                         if utils.isclass_or_instance(npc, CloneGroup):
 
@@ -1126,9 +1238,13 @@ class Rooms:
                             assert clone_length <= 15
 
                             if this_npc.type != ObjectType.CHEST:
-                                #print(i, [n.model.occupant for n in npc.npcs], [n.action_script for n in npc.npcs])
-                                base_action_script = min([n.action_script for n in npc.npcs])
-                                action_script_offset = this_npc.action_script - base_action_script
+                                # print(i, [n.model.occupant for n in npc.npcs], [n.action_script for n in npc.npcs])
+                                base_action_script = min(
+                                    [n.action_script for n in npc.npcs]
+                                )
+                                action_script_offset = (
+                                    this_npc.action_script - base_action_script
+                                )
                                 if this_npc.type == ObjectType.BATTLE:
                                     assert action_script_offset <= 15
                                 else:
@@ -1146,40 +1262,68 @@ class Rooms:
                                 model_offset = npc.ids[0] - base_model_id
                                 assert model_offset <= 7
                                 if max(event_group) - min(event_group) > 7:
-                                    if len(reserved_event_IDS[event_assignment_cursor[0]]) - event_assignment_cursor[1] < len(npc.npcs):
+                                    if len(
+                                        reserved_event_IDS[event_assignment_cursor[0]]
+                                    ) - event_assignment_cursor[1] < len(npc.npcs):
                                         event_assignment_cursor[0] += 1
                                         event_assignment_cursor[1] = 0
 
-                                    new_event_id = reserved_event_IDS[event_assignment_cursor[0]][event_assignment_cursor[1]]
+                                    new_event_id = reserved_event_IDS[
+                                        event_assignment_cursor[0]
+                                    ][event_assignment_cursor[1]]
                                     event_assignment_cursor[1] += 1
-                                    event_table[new_event_id] = [utils.new_command(new_event_id, "jmp_to_event", [this_npc.event_script])]
-                                
+                                    event_table[new_event_id] = [
+                                        utils.new_command(
+                                            new_event_id,
+                                            "jmp_to_event",
+                                            [this_npc.event_script],
+                                        )
+                                    ]
+
                                     new_event_group = [new_event_id]
                                     event_id = new_event_id
-                                    #print(i, new_event_id)
+                                    # print(i, new_event_id)
 
                                     for clone_index, clone in enumerate(npc.npcs[1:]):
-                                        if clone.event_script not in event_group[0:clone_index]:
-                                            new_event_id = reserved_event_IDS[event_assignment_cursor[0]][event_assignment_cursor[1]]
+                                        if (
+                                            clone.event_script
+                                            not in event_group[0:clone_index]
+                                        ):
+                                            new_event_id = reserved_event_IDS[
+                                                event_assignment_cursor[0]
+                                            ][event_assignment_cursor[1]]
                                             event_assignment_cursor[1] += 1
-                                            event_table[new_event_id] = [utils.new_command(new_event_id, "jmp_to_event", [clone.event_script])]
+                                            event_table[new_event_id] = [
+                                                utils.new_command(
+                                                    new_event_id,
+                                                    "jmp_to_event",
+                                                    [clone.event_script],
+                                                )
+                                            ]
                                         else:
-                                            ind = event_group[0:clone_index].index(clone.event_script)
+                                            ind = event_group[0:clone_index].index(
+                                                clone.event_script
+                                            )
                                             new_event_id = new_event_group[ind]
                                         new_event_group.append(new_event_id)
-                                
 
                                 else:
                                     event_id = min(event_group)
-                                    event_offset = this_npc.event_script - min(event_group)
-                                    
-                                #if i == 5:
+                                    event_offset = this_npc.event_script - min(
+                                        event_group
+                                    )
+
+                                # if i == 5:
                                 #    print(new_event_group)
                             elif this_npc.type == ObjectType.CHEST:
                                 event_id = this_npc.event_script
                             elif this_npc.type == ObjectType.BATTLE:
-                                base_battle_pack = min([n.battle_pack for n in npc.npcs])
-                                battle_pack_offset = this_npc.battle_pack - base_battle_pack
+                                base_battle_pack = min(
+                                    [n.battle_pack for n in npc.npcs]
+                                )
+                                battle_pack_offset = (
+                                    this_npc.battle_pack - base_battle_pack
+                                )
                                 assert battle_pack_offset <= 7
 
                         else:
@@ -1190,31 +1334,67 @@ class Rooms:
                                 event_id = this_npc.event_script
                             else:
                                 base_battle_pack = this_npc.battle_pack
-                        #if i == 5:
+                        # if i == 5:
                         #    print(clone_length)
 
                         room_bytes.append((this_npc.type << 4) + clone_length)
-                        room_bytes.append((this_npc.cant_float << 7) + (this_npc.set_sequence_playback << 6) + (this_npc.byte2_bit5 << 5) + (this_npc.cant_enter_doors << 4) + (this_npc.face_on_trigger << 3) + this_npc.speed)
-                        room_bytes.append((this_npc.byte3_bit7 << 7) + (this_npc.cant_walk_through << 6) + (this_npc.byte3_bit5 << 5) + (this_npc.cant_pass_npcs << 4) + (this_npc.cant_jump_through << 3) + (this_npc.cant_pass_walls << 2) + (this_npc.cant_walk_under << 1) + this_npc.cant_walk_up_stairs)
+                        room_bytes.append(
+                            (this_npc.cant_float << 7)
+                            + (this_npc.set_sequence_playback << 6)
+                            + (this_npc.byte2_bit5 << 5)
+                            + (this_npc.cant_enter_doors << 4)
+                            + (this_npc.face_on_trigger << 3)
+                            + this_npc.speed
+                        )
+                        room_bytes.append(
+                            (this_npc.byte3_bit7 << 7)
+                            + (this_npc.cant_walk_through << 6)
+                            + (this_npc.byte3_bit5 << 5)
+                            + (this_npc.cant_pass_npcs << 4)
+                            + (this_npc.cant_jump_through << 3)
+                            + (this_npc.cant_pass_walls << 2)
+                            + (this_npc.cant_walk_under << 1)
+                            + this_npc.cant_walk_up_stairs
+                        )
 
-                        room_bytes.append(((base_model_id << 2) & 0xFF) + (this_npc.cant_move_if_in_air << 1) + this_npc.slidable_along_walls)
-                        room_bytes.append(((base_action_script & 0x0F) << 4) + (base_model_id >> 6))
-                        room_bytes.append((this_npc.byte7_upper2 << 6) + (base_action_script >> 4))
+                        room_bytes.append(
+                            ((base_model_id << 2) & 0xFF)
+                            + (this_npc.cant_move_if_in_air << 1)
+                            + this_npc.slidable_along_walls
+                        )
+                        room_bytes.append(
+                            ((base_action_script & 0x0F) << 4) + (base_model_id >> 6)
+                        )
+                        room_bytes.append(
+                            (this_npc.byte7_upper2 << 6) + (base_action_script >> 4)
+                        )
 
                         if this_npc.type != ObjectType.BATTLE:
                             room_bytes.append(event_id & 0xFF)
-                            room_bytes.append((this_npc.initiator << 4) + (event_id >> 8))
+                            room_bytes.append(
+                                (this_npc.initiator << 4) + (event_id >> 8)
+                            )
                         else:
                             room_bytes.append(base_battle_pack & 0xFF)
-                            room_bytes.append((this_npc.initiator << 4) + this_npc.after_battle)
+                            room_bytes.append(
+                                (this_npc.initiator << 4) + this_npc.after_battle
+                            )
 
                         if this_npc.type == ObjectType.OBJECT:
-                            room_bytes.append((event_offset << 5) + (action_script_offset << 3) + model_offset)
+                            room_bytes.append(
+                                (event_offset << 5)
+                                + (action_script_offset << 3)
+                                + model_offset
+                            )
                         elif this_npc.type == ObjectType.CHEST:
-                            room_bytes.append((this_npc.upper_70A7 << 4) + this_npc.lower_70A7)
-                            #print(i, (this_npc.upper_70A7 << 4) + this_npc.lower_70A7)
+                            room_bytes.append(
+                                (this_npc.upper_70A7 << 4) + this_npc.lower_70A7
+                            )
+                            # print(i, (this_npc.upper_70A7 << 4) + this_npc.lower_70A7)
                         elif this_npc.type == ObjectType.BATTLE:
-                            room_bytes.append((battle_pack_offset << 4) + action_script_offset)
+                            room_bytes.append(
+                                (battle_pack_offset << 4) + action_script_offset
+                            )
                         room_bytes.append((this_npc.visible << 7) + this_npc.x)
                         room_bytes.append((this_npc.z_half << 7) + this_npc.y)
                         room_bytes.append((this_npc.direction << 5) + this_npc.z)
@@ -1222,46 +1402,74 @@ class Rooms:
                         # write clones
 
                         if utils.isclass_or_instance(npc, CloneGroup):
-                            #print(npc.npcs[0].model.occupant)
+                            # print(npc.npcs[0].model.occupant)
                             for clone_index in range(1, len(npc.npcs)):
                                 this_clone = npc.npcs[clone_index]
                                 if this_clone.type != this_npc.type:
-                                    raise Exception("room %i: mismatched clone type found" % i)
+                                    raise Exception(
+                                        "room %i: mismatched clone type found" % i
+                                    )
                                 if this_clone.type != ObjectType.CHEST:
-                                    action_script_offset = this_clone.action_script - base_action_script
-                                    #print (this_clone.action_script, base_action_script)
+                                    action_script_offset = (
+                                        this_clone.action_script - base_action_script
+                                    )
+                                    # print (this_clone.action_script, base_action_script)
                                 if this_clone.type == ObjectType.OBJECT:
                                     new_event_id = new_event_group[clone_index]
                                     model_offset = npc.ids[clone_index] - base_model_id
                                     event_offset = new_event_id - min(new_event_group)
-                                    #print(i, npc, this_clone.model.occupant)
+                                    # print(i, npc, this_clone.model.occupant)
                                     assert model_offset <= 7
                                     assert action_script_offset <= 3
                                     assert event_offset <= 7
-                                    #if i == 5:
+                                    # if i == 5:
                                     #    print(clone_index, this_clone.model.occupant, npc.ids[clone_index], base_model_id, model_offset, event_offset)
-                                    room_bytes.append((event_offset << 5) + (action_script_offset << 3) + model_offset)
+                                    room_bytes.append(
+                                        (event_offset << 5)
+                                        + (action_script_offset << 3)
+                                        + model_offset
+                                    )
                                 elif this_clone.type == ObjectType.CHEST:
-                                    assert (this_clone.upper_70A7 << 4) + this_clone.lower_70A7 <= 255
-                                    room_bytes.append((this_clone.upper_70A7 << 4) + this_clone.lower_70A7)
+                                    assert (
+                                        this_clone.upper_70A7 << 4
+                                    ) + this_clone.lower_70A7 <= 255
+                                    room_bytes.append(
+                                        (this_clone.upper_70A7 << 4)
+                                        + this_clone.lower_70A7
+                                    )
                                 elif this_clone.type == ObjectType.BATTLE:
-                                    battle_pack_offset = this_clone.battle_pack - base_battle_pack
+                                    battle_pack_offset = (
+                                        this_clone.battle_pack - base_battle_pack
+                                    )
                                     assert battle_pack_offset <= 15
                                     assert action_script_offset <= 15
-                                    room_bytes.append((battle_pack_offset << 4) + action_script_offset)
-                                room_bytes.append((this_clone.visible << 7) + this_clone.x)
-                                room_bytes.append((this_clone.z_half << 7) + this_clone.y)
-                                room_bytes.append((this_clone.direction << 5) + this_clone.z)
-                        
+                                    room_bytes.append(
+                                        (battle_pack_offset << 4) + action_script_offset
+                                    )
+                                room_bytes.append(
+                                    (this_clone.visible << 7) + this_clone.x
+                                )
+                                room_bytes.append(
+                                    (this_clone.z_half << 7) + this_clone.y
+                                )
+                                room_bytes.append(
+                                    (this_clone.direction << 5) + this_clone.z
+                                )
 
                         # if utils.isclass_or_instance(npc, SingleNPC):
                         #     print(i, npc.npc.model.occupant, npc.id)
                         # else:
                         #     print(i, [n.model.occupant for n in npc.npcs], npc.ids)
-                
-                roomdata_output += room_bytes             
 
-                event_tile_bytes = bytearray([this_room.music, this_room.entrance_event & 0xFF, this_room.entrance_event >> 8])
+                roomdata_output += room_bytes
+
+                event_tile_bytes = bytearray(
+                    [
+                        this_room.music,
+                        this_room.entrance_event & 0xFF,
+                        this_room.entrance_event >> 8,
+                    ]
+                )
                 event_tiles = this_room.event_tiles
                 for e in event_tiles:
                     # byte 3
@@ -1279,7 +1487,9 @@ class Rooms:
                     event_tile_bytes.append(e.z + (e.height << 5))
                     # byte 8 (optional)
                     if e.length > 1:
-                        event_tile_bytes.append(((e.length - 1) & 0x0F) + (e.byte_8_bit_4 << 4) + (e.f << 7))
+                        event_tile_bytes.append(
+                            ((e.length - 1) & 0x0F) + (e.byte_8_bit_4 << 4) + (e.f << 7)
+                        )
                 eventtile_output += event_tile_bytes
 
                 exit_bytes = bytearray([])
@@ -1290,7 +1500,7 @@ class Rooms:
                     # byte 0
                     exit_bytes.append(e.destination & 0xFF)
                     # byte 1
-                    byte_1 = (e.destination >> 8)
+                    byte_1 = e.destination >> 8
                     if e.length > 1 or e.f > 0:
                         byte_1 += 0x80
                     if e.destination_type == ExitType.ROOM:
@@ -1306,20 +1516,29 @@ class Rooms:
                     if e.byte_2_bit_2:
                         byte_1 += 0x04
                     exit_bytes.append(byte_1)
-                    #byte_2
+                    # byte_2
                     exit_bytes.append((e.x & 0x7F) + (e.nw_se_edge_active << 7))
-                    #byte_3
+                    # byte_3
                     exit_bytes.append((e.y & 0x7F) + (e.ne_sw_edge_active << 7))
-                    #byte_4
+                    # byte_4
                     exit_bytes.append((e.z & 0x1F) + (e.height << 5))
                     if e.destination_type == ExitType.ROOM:
-                        #byte_5
-                        exit_bytes.append((e.destination_props.x & 0x7F) + (e.destination_props.x_bit_7 << 7))
-                        #byte_6
-                        exit_bytes.append((e.destination_props.y & 0x7F) + (e.destination_props.z_half << 7))
-                        #byte_7
-                        exit_bytes.append((e.destination_props.z & 0x1F) + (e.destination_props.f << 5))
-                    #final byte (optional)
+                        # byte_5
+                        exit_bytes.append(
+                            (e.destination_props.x & 0x7F)
+                            + (e.destination_props.x_bit_7 << 7)
+                        )
+                        # byte_6
+                        exit_bytes.append(
+                            (e.destination_props.y & 0x7F)
+                            + (e.destination_props.z_half << 7)
+                        )
+                        # byte_7
+                        exit_bytes.append(
+                            (e.destination_props.z & 0x1F)
+                            + (e.destination_props.f << 5)
+                        )
+                    # final byte (optional)
                     if e.length > 1 or e.f > 0:
                         exit_bytes.append(((e.length - 1) & 0x0F) + (e.f << 7))
                 exit_output += exit_bytes
@@ -1350,61 +1569,87 @@ class Rooms:
             )
             partitions.append(partition_bytes)
 
-
         empty_space = 0x0400 - len(roomdata_pointers)
-        if (empty_space < 0):
-            raise Exception("NPC pointer table too long: %i bytes (expected up to %i)" % (len(roomdata_pointers), 0x0400))
+        if empty_space < 0:
+            raise Exception(
+                "NPC pointer table too long: %i bytes (expected up to %i)"
+                % (len(roomdata_pointers), 0x0400)
+            )
         else:
             for i in range(0, empty_space, 2):
                 roomdata_pointers += ptr_bytes
         empty_space = 0x7C00 - len(roomdata_output)
-        if (empty_space < 0):
-            raise Exception("NPC data too long: %i bytes (expected up to %i)" % (len(roomdata_output), 0x7C00))
+        if empty_space < 0:
+            raise Exception(
+                "NPC data too long: %i bytes (expected up to %i)"
+                % (len(roomdata_output), 0x7C00)
+            )
         else:
             roomdata_output += bytearray([0xFF for x in range(empty_space)])
         npcs_data = [roomdata_pointers, bytearray(roomdata_output)]
 
- 
         empty_space = 0x0400 - len(eventtile_pointers)
-        if (empty_space < 0):
-            #eventtile_pointers = eventtile_pointers[0:(empty_space)]
-            raise Exception("Event pointer table too long: %i bytes (expected up to %i)" % (len(eventtile_pointers), 0x0400))
+        if empty_space < 0:
+            # eventtile_pointers = eventtile_pointers[0:(empty_space)]
+            raise Exception(
+                "Event pointer table too long: %i bytes (expected up to %i)"
+                % (len(eventtile_pointers), 0x0400)
+            )
         else:
             for i in range(0, empty_space, 2):
                 eventtile_pointers += eventtile_ptr_bytes
-        #empty_space = 0x19C8 - len(eventtile_output)
+        # empty_space = 0x19C8 - len(eventtile_output)
         empty_space = 0x1C00 - len(eventtile_output)
-        if (empty_space < 0):
-            #eventtile_output = eventtile_output[0:(empty_space)]
-            #raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x19C8))
-            raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x1C00))
+        if empty_space < 0:
+            # eventtile_output = eventtile_output[0:(empty_space)]
+            # raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x19C8))
+            raise Exception(
+                "Event tile data too long: %i bytes (expected up to %i)"
+                % (len(eventtile_output), 0x1C00)
+            )
         else:
-            if (empty_space >= 3):
-                eventtile_output += bytearray([0x00, 0x0F, 0x00]) # necessary to match 512th room header in vanilla, room does not actually exist
+            if empty_space >= 3:
+                eventtile_output += bytearray(
+                    [0x00, 0x0F, 0x00]
+                )  # necessary to match 512th room header in vanilla, room does not actually exist
                 empty_space = 0x1C00 - len(eventtile_output)
-                #empty_space = 0x19C8 - len(eventtile_output)
+                # empty_space = 0x19C8 - len(eventtile_output)
             eventtile_output += bytearray([0xFF for x in range(empty_space)])
         eventtiles = [eventtile_pointers, bytearray(eventtile_output)]
 
-
         empty_space = 0x0402 - len(exit_pointers)
-        if (empty_space < 0):
-            #exit_pointers = exit_pointers[0:(empty_space)]
-            raise Exception("Exit pointer table too long: %i bytes (expected up to %i)" % (len(exit_pointers), 0x0402))
+        if empty_space < 0:
+            # exit_pointers = exit_pointers[0:(empty_space)]
+            raise Exception(
+                "Exit pointer table too long: %i bytes (expected up to %i)"
+                % (len(exit_pointers), 0x0402)
+            )
         else:
             for i in range(0, empty_space, 2):
                 exit_pointers += exit_ptr_bytes
         empty_space = 0x179F - len(exit_output)
-        if (empty_space < 0):
-            #exit_output = exit_output[0:(empty_space)]
-            raise Exception("Exit data too long: %i bytes (expected up to %i)" % (len(exit_output), 0x179F))
+        if empty_space < 0:
+            # exit_output = exit_output[0:(empty_space)]
+            raise Exception(
+                "Exit data too long: %i bytes (expected up to %i)"
+                % (len(exit_output), 0x179F)
+            )
         else:
             exit_output += bytearray([0xFF for x in range(empty_space)])
         exits = [exit_pointers, bytearray(exit_output)]
 
-        if len(partitions) > 128: # bumped up to 128 from 120
-            raise Exception("Too many partitions (got %i, expected up to 128)" % len(partitions))
-        for _ in range(len(partitions), 128): # bumped up to 128 from 120
+        if len(partitions) > 128:  # bumped up to 128 from 120
+            raise Exception(
+                "Too many partitions (got %i, expected up to 128)" % len(partitions)
+            )
+        for _ in range(len(partitions), 128):  # bumped up to 128 from 120
             partitions.append([0xFF, 0xFF, 0xFF, 0xFF])
 
-        return npcs_data, eventtiles, exits, bytearray([p for partition in partitions for p in partition]), model_output, event_table
+        return (
+            npcs_data,
+            eventtiles,
+            exits,
+            bytearray([p for partition in partitions for p in partition]),
+            model_output,
+            event_table,
+        )

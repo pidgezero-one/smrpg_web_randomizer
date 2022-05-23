@@ -1,12 +1,6 @@
-from typing import Union
-from randomizer.management.disassembler_common import byte
-from randomizer.types.actionscripts.constants.classes import VRAMPriority
-from randomizer.types.constants.misc import TOTAL_ROOMS, TOTAL_SOUNDS
-from randomizer.types.packets.classes import Packet
-from randomizer.utils.number import bits_to_int, bools_to_int, set_bits_to_true
-from randomizer.utils.memsize import cast_address
+from typing import Optional, Union
 
-from classes import (
+from randomizer.types.actionscripts.classes import (
     ActionScriptCommand,
     ActionScriptCommandNoArgs,
     ActionScriptCommandWithJmps,
@@ -18,28 +12,29 @@ from classes import (
     ActionScriptCommandBytePixels,
     ActionScriptCommandXYBytes,
 )
-
-from constants import command_names as cmdnm
-from constants.classes import (
-    ActionScriptCommandName,
-    SequenceSpeed,
+from randomizer.types.actionscripts.constants.classes import SequenceSpeed, VRAMPriority
+from randomizer.types.actionscripts.constants.misc import (
+    TOTAL_SCRIPTS as TOTAL_ACTION_SCRIPTS,
 )
-from constants.misc import TOTAL_SCRIPTS as TOTAL_ACTION_SCRIPTS
-from ..eventscripts.constants.misc import TOTAL_SCRIPTS as TOTAL_EVENT_SCRIPTS
 
-from ..constants.classes import AreaObject, Direction, Coord
-from ..constants import coords
+from randomizer.types.eventscripts.constants.misc import (
+    TOTAL_SCRIPTS as TOTAL_EVENT_SCRIPTS,
+)
 
-from ..numbers.classes import UInt16, UInt8
-from ..variables import variables
-from ..variables.classes import ByteVar, Flag, ShortVar
-
+from randomizer.types.constants.classes import AreaObject, Direction, Coord
+from randomizer.types.constants.misc import TOTAL_ROOMS, TOTAL_SOUNDS
+from randomizer.types.constants import coords
+from randomizer.types.numbers.classes import UInt16, UInt8
+from randomizer.types.packets.classes import Packet
+from randomizer.types.variables import variables
+from randomizer.types.variables.classes import ByteVar, Flag, ShortVar
+from randomizer.utils.number import bits_to_int, bools_to_int
+from randomizer.utils.memsize import cast_address
 
 # script operations
 
 
 class JmpToScript(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_TO_SCRIPT
     _opcode: int = 0xD0
     _size: int = 3
     _destination: UInt16
@@ -52,7 +47,7 @@ class JmpToScript(ActionScriptCommand):
         assert 0 <= destination < TOTAL_ACTION_SCRIPTS
         self._destination = UInt16(destination)
 
-    def __init__(self, destination: int, identifier: str = None) -> None:
+    def __init__(self, destination: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_destination(destination)
 
@@ -61,7 +56,6 @@ class JmpToScript(ActionScriptCommand):
 
 
 class Jmp(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP
     _opcode: int = 0xD2
     _size: int = 3
 
@@ -70,7 +64,6 @@ class Jmp(ActionScriptCommandWithJmps):
 
 
 class JmpToSubroutine(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_TO_SUBROUTINE
     _opcode: int = 0xD3
     _size: int = 3
 
@@ -79,7 +72,6 @@ class JmpToSubroutine(ActionScriptCommandWithJmps):
 
 
 class StartLoopNFrames(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.START_LOOP_N_FRAMES
     _opcode: int = 0xD5
     _size: int = 3
     _length: UInt16
@@ -91,7 +83,7 @@ class StartLoopNFrames(ActionScriptCommand):
     def set_length(self, length: int) -> None:
         self._length = UInt16(length)
 
-    def __init__(self, length: int, identifier: str = None) -> None:
+    def __init__(self, length: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_length(length)
 
@@ -100,7 +92,6 @@ class StartLoopNFrames(ActionScriptCommand):
 
 
 class StartLoopNTimes(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.START_LOOP_N_TIMES
     _opcode: int = 0xD4
     _size: int = 2
     _count: UInt8
@@ -112,7 +103,7 @@ class StartLoopNTimes(ActionScriptCommand):
     def set_count(self, count: int) -> None:
         self._count = UInt8(count)
 
-    def __init__(self, count: int, identifier: str = None) -> None:
+    def __init__(self, count: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_count(count)
 
@@ -121,12 +112,10 @@ class StartLoopNTimes(ActionScriptCommand):
 
 
 class EndLoop(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.END_LOOP
     _opcode: int = 0xD7
 
 
 class Pause(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.PAUSE
     _length: Union[UInt8, UInt16]
 
     @property
@@ -143,7 +132,7 @@ class Pause(ActionScriptCommand):
                 "illegal pause duration in %s: %i" % (self.identifier, length)
             )
 
-    def __init__(self, length: int, identifier: str = None) -> None:
+    def __init__(self, length: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_length(length)
         if isinstance(self.length, UInt8):
@@ -160,27 +149,22 @@ class Pause(ActionScriptCommand):
 
 
 class JmpToStartOfThisScript(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_TO_START_OF_THIS_SCRIPT
     _opcode: int = 0xF9
 
 
 class JmpToStartOfThisScriptFA(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_TO_START_OF_THIS_SCRIPT_FA
     _opcode: int = 0xFA
 
 
-class Ret(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.RET
+class Return(ActionScriptCommandNoArgs):
     _opcode: int = 0xFE
 
 
 class EndAll(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.END_ALL
     _opcode: int = 0xFF
 
 
 class Db(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.DB
     _contents: bytearray
 
     @property
@@ -196,7 +180,7 @@ class Db(ActionScriptCommand):
     def size(self) -> int:
         return len(self.contents)
 
-    def __init__(self, contents: "int[int]", identifier: str = None) -> None:
+    def __init__(self, contents: "int[int]", identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_contents(contents)
 
@@ -208,22 +192,18 @@ class Db(ActionScriptCommand):
 
 
 class VisibilityOn(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.VISIBILITY_ON
     _opcode: int = 0x00
 
 
 class VisibilityOff(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.VISIBILITY_OFF
     _opcode: int = 0x01
 
 
 class ResetProperties(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.RESET_PROPERTIES
     _opcode: int = 0x09
 
 
 class OverwriteSolidity(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.OVERWRITE_SOLIDITY
     _opcode: int = 0x0A
     _size: int = 2
     _bit_0: bool = False
@@ -301,7 +281,7 @@ class OverwriteSolidity(ActionScriptCommand):
         cant_pass_npcs: bool = False,
         cant_walk_through: bool = False,
         bit_7: bool = False,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_bit_0(bit_0)
@@ -329,7 +309,6 @@ class OverwriteSolidity(ActionScriptCommand):
 
 
 class SetSolidityBits(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_SOLIDITY_BITS
     _opcode: int = 0x0B
     _size: int = 2
     _bit_0: bool = False
@@ -407,7 +386,7 @@ class SetSolidityBits(ActionScriptCommand):
         cant_pass_npcs: bool = False,
         cant_walk_through: bool = False,
         bit_7: bool = False,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_bit_0(bit_0)
@@ -435,7 +414,6 @@ class SetSolidityBits(ActionScriptCommand):
 
 
 class ClearSolidityBits(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.CLEAR_SOLIDITY_BITS
     _opcode: int = 0x0C
     _size: int = 2
     _bit_0: bool = False
@@ -513,7 +491,7 @@ class ClearSolidityBits(ActionScriptCommand):
         cant_pass_npcs: bool = False,
         cant_walk_through: bool = False,
         bit_7: bool = False,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_bit_0(bit_0)
@@ -541,7 +519,6 @@ class ClearSolidityBits(ActionScriptCommand):
 
 
 class SetMovementsBits(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_MOVEMENT_BITS
     _opcode: int = 0x15
     _size: int = 2
     _bit_0: bool = False
@@ -619,7 +596,7 @@ class SetMovementsBits(ActionScriptCommand):
         cant_pass_npcs: bool = False,
         cant_walk_through: bool = False,
         bit_7: bool = False,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_bit_0(bit_0)
@@ -647,7 +624,6 @@ class SetMovementsBits(ActionScriptCommand):
 
 
 class SetVRAMPriority(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_VRAM_PRIORITY
     _opcode: int = 0x13
     _size: int = 2
     _priority: VRAMPriority
@@ -659,7 +635,9 @@ class SetVRAMPriority(ActionScriptCommand):
     def set_priority(self, priority: VRAMPriority) -> None:
         self._priority = priority
 
-    def __init__(self, priority: VRAMPriority, identifier: str = None) -> None:
+    def __init__(
+        self, priority: VRAMPriority, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_priority(priority)
 
@@ -668,7 +646,6 @@ class SetVRAMPriority(ActionScriptCommand):
 
 
 class SetPriority(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_PRIORITY
     _opcode = bytearray([0xFD, 0x0F])
     _size: int = 3
     _priority: int
@@ -681,7 +658,7 @@ class SetPriority(ActionScriptCommand):
         assert 0 <= priority <= 3
         self._priority = priority
 
-    def __init__(self, priority: int, identifier: str = None) -> None:
+    def __init__(self, priority: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_priority(priority)
 
@@ -690,22 +667,18 @@ class SetPriority(ActionScriptCommand):
 
 
 class ShadowOn(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SHADOW_ON
     _opcode = bytearray([0xFD, 0x00])
 
 
 class ShadowOff(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SHADOW_OFF
     _opcode = bytearray([0xFD, 0x01])
 
 
 class FloatingOn(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FLOATING_ON
     _opcode = bytearray([0xFD, 0x02])
 
 
 class FloatingOff(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FLOATING_OFF
     _opcode = bytearray([0xFD, 0x03])
 
 
@@ -713,7 +686,6 @@ class FloatingOff(ActionScriptCommandNoArgs):
 
 
 class SetObjectMemoryBits(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_OBJECT_MEMORY_BITS
     _size: int = 2
     _arg_1: int
     _bits: "set[int]"
@@ -735,7 +707,9 @@ class SetObjectMemoryBits(ActionScriptCommand):
             assert 0 <= bit <= 7
         self._bits = bits
 
-    def __init__(self, arg_1: int, bits: "set[int]", identifier: str = None) -> None:
+    def __init__(
+        self, arg_1: int, bits: "set[int]", identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_arg_1(arg_1)
         self.set_bits(bits)
@@ -753,7 +727,6 @@ class SetObjectMemoryBits(ActionScriptCommand):
 
 
 class ObjectMemorySetBit(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.OBJECT_MEMORY_SET_BIT
     _size: int = 2
     _arg_1: int
     _bits: "set[int]"
@@ -783,7 +756,9 @@ class ObjectMemorySetBit(ActionScriptCommand):
         self._arg_1 = arg_1
         self._bits = bits
 
-    def __init__(self, arg_1: int, bits: "set[int]", identifier: str = None) -> None:
+    def __init__(
+        self, arg_1: int, bits: "set[int]", identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_props(arg_1, bits)
 
@@ -815,7 +790,6 @@ class ObjectMemorySetBit(ActionScriptCommand):
 
 
 class ObjectMemoryClearBit(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.OBJECT_MEMORY_SET_BIT
     _size: int = 2
     _arg_1: int
     _bits: "set[int]"
@@ -843,7 +817,9 @@ class ObjectMemoryClearBit(ActionScriptCommand):
         self._arg_1 = arg_1
         self._bits = bits
 
-    def __init__(self, arg_1: int, bits: "set[int]", identifier: str = None) -> None:
+    def __init__(
+        self, arg_1: int, bits: "set[int]", identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_props(arg_1, bits)
 
@@ -871,7 +847,6 @@ class ObjectMemoryClearBit(ActionScriptCommand):
 
 
 class ObjectMemoryModifyBits(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.OBJECT_MEMORY_MODIFY_BITS
     _size: int = 2
     _arg_1: int
     _set_bits: "set[int]"
@@ -906,7 +881,7 @@ class ObjectMemoryModifyBits(ActionScriptCommand):
         arg_1: int,
         set_bits: "set[int]" = [],
         clear_bits: "set[int]" = [],
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_props(arg_1, set_bits, clear_bits)
@@ -922,7 +897,6 @@ class ObjectMemoryModifyBits(ActionScriptCommand):
 
 
 class SetBit(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_BIT
     _size: int = 2
     _bit: Flag
 
@@ -933,7 +907,7 @@ class SetBit(ActionScriptCommand):
     def set_bit(self, bit: Flag) -> None:
         self._bit = bit
 
-    def __init__(self, bit: Flag, identifier: str = None) -> None:
+    def __init__(self, bit: Flag, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_bit(bit)
 
@@ -947,12 +921,11 @@ class SetBit(ActionScriptCommand):
         else:
             opcode = UInt8(0xA0)
             offset = ShortVar(0x7040)
-        arg = ((self.bit.byte - offset) << 3) + self.bit.bit
+        arg = UInt8(((self.bit.byte - offset) << 3) + self.bit.bit)
         return super().render(opcode, arg)
 
 
 class ClearBit(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.CLEAR_BIT
     _size: int = 2
     _bit: Flag
 
@@ -963,7 +936,7 @@ class ClearBit(ActionScriptCommand):
     def set_bit(self, bit: Flag) -> None:
         self._bit = bit
 
-    def __init__(self, bit: Flag, identifier: str = None) -> None:
+    def __init__(self, bit: Flag, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_bit(bit)
 
@@ -977,22 +950,138 @@ class ClearBit(ActionScriptCommand):
         else:
             opcode = UInt8(0xA4)
             offset = ShortVar(0x7040)
-        arg = ((self.bit.byte - offset) << 3) + self.bit.bit
+        arg = UInt8(((self.bit.byte - offset) << 3) + self.bit.bit)
         return super().render(opcode, arg)
 
 
+class JmpIfBitSet(ActionScriptCommandWithJmps):
+    _size: int = 4
+    _bit: Flag
+
+    @property
+    def bit(self) -> Flag:
+        return self._bit
+
+    def set_bit(self, bit: Flag) -> None:
+        self._bit = bit
+
+    def __init__(
+        self, bit: Flag, destinations: "str[int]", identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_bit(bit)
+
+    def render(self) -> bytearray:
+        if self.bit.byte >= 0x7080:
+            opcode = UInt8(0xDA)
+            offset = ShortVar(0x7080)
+        elif self.bit.byte >= 0x7060:
+            opcode = UInt8(0xD9)
+            offset = ShortVar(0x7060)
+        else:
+            opcode = UInt8(0xD8)
+            offset = ShortVar(0x7040)
+        arg = UInt8(((self.bit.byte - offset) << 3) + self.bit.bit)
+        return super().render(opcode, arg, *self.destinations)
+
+
+class JmpIfBitClear(ActionScriptCommandWithJmps):
+    _size: int = 4
+    _bit: Flag
+
+    @property
+    def bit(self) -> Flag:
+        return self._bit
+
+    def set_bit(self, bit: Flag) -> None:
+        self._bit = bit
+
+    def __init__(
+        self, bit: Flag, destinations: "str[int]", identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_bit(bit)
+
+    def render(self) -> bytearray:
+        if self.bit.byte >= 0x7080:
+            opcode = UInt8(0xDE)
+            offset = ShortVar(0x7080)
+        elif self.bit.byte >= 0x7060:
+            opcode = UInt8(0xDD)
+            offset = ShortVar(0x7060)
+        else:
+            opcode = UInt8(0xDC)
+            offset = ShortVar(0x7040)
+        arg = UInt8(((self.bit.byte - offset) << 3) + self.bit.bit)
+        return super().render(opcode, arg, *self.destinations)
+
+
 class SetMem704XAt700CBit(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SET_MEM_704X_AT_700C_BIT
     _opcode: int = 0xA3
 
 
 class ClearMem704XAt700CBit(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.CLEAR_MEM_704X_AT_700C_BIT
     _opcode: int = 0xA7
 
 
+class JmpIfMem704XAt700CBitSet(ActionScriptCommandWithJmps):
+    _opcode: 0xDB
+    _size: int = 3
+
+    def __init__(
+        self, destinations: "str[int]", identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(destinations, identifier)
+
+    def render(self) -> bytearray:
+        return super().render(*self.destinations)
+
+
+class JmpIfMem704XAt700CBitClear(ActionScriptCommandWithJmps):
+    _size: int = 3
+    _opcode: 0xDF
+
+    def __init__(
+        self, destinations: "str[int]", identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(destinations, identifier)
+
+    def render(self) -> bytearray:
+        return super().render(*self.destinations)
+
+
+class JmpIfBitClear(ActionScriptCommandWithJmps):
+    _size: int = 4
+    _bit: Flag
+
+    @property
+    def bit(self) -> Flag:
+        return self._bit
+
+    def set_bit(self, bit: Flag) -> None:
+        self._bit = bit
+
+    def __init__(
+        self, bit: Flag, destinations: "str[int]", identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_bit(bit)
+
+    def render(self) -> bytearray:
+        if self.bit.byte >= 0x7080:
+            opcode = UInt8(0xDE)
+            offset = ShortVar(0x7080)
+        elif self.bit.byte >= 0x7060:
+            opcode = UInt8(0xDD)
+            offset = ShortVar(0x7060)
+        else:
+            opcode = UInt8(0xDC)
+            offset = ShortVar(0x7040)
+        arg = UInt8(((self.bit.byte - offset) << 3) + self.bit.bit)
+        return super().render(opcode, arg, self.destinations)
+
+
 class SetVarToConst(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_VAR_TO_CONST
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
@@ -1012,8 +1101,16 @@ class SetVarToConst(ActionScriptCommand):
 
     def set_address(self, address: Union[UInt8, UInt16]) -> None:
         self._address = address
+        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
+            self.address, ByteVar
+        ):
+            self._size = 3
+        else:
+            self._size = 4
 
-    def __init__(self, address: int, value: int, identifier: str = None) -> None:
+    def __init__(
+        self, address: int, value: int, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_value(value)
         if isinstance(self.value, UInt8):
@@ -1023,12 +1120,6 @@ class SetVarToConst(ActionScriptCommand):
                 self.set_address(ShortVar(address))
         else:
             self.set_address(ShortVar(address))
-        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 3
-        else:
-            self._size = 4
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1045,7 +1136,6 @@ class SetVarToConst(ActionScriptCommand):
 
 
 class AddConstToVar(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.ADD_CONST_TO_VAR
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
@@ -1065,8 +1155,16 @@ class AddConstToVar(ActionScriptCommand):
 
     def set_address(self, address: Union[UInt8, UInt16]) -> None:
         self._address = address
+        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
+            self.address, ByteVar
+        ):
+            self._size = 3
+        else:
+            self._size = 4
 
-    def __init__(self, address: int, value: int, identifier: str = None) -> None:
+    def __init__(
+        self, address: int, value: int, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_value(value)
         if isinstance(self.value, UInt8):
@@ -1076,16 +1174,10 @@ class AddConstToVar(ActionScriptCommand):
                 self.set_address(ShortVar(address))
         else:
             self.set_address(ShortVar(address))
-        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 3
-        else:
-            self._size = 4
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
-            return super().render(0xA0, self.address, self.value)
+            return super().render(0xA9, self.address, self.value)
         elif self.address == variables.PRIMARY_TEMP_700C:
             return super().render(0xAD, UInt16(self.value))
         elif isinstance(self.address, ShortVar):
@@ -1098,8 +1190,6 @@ class AddConstToVar(ActionScriptCommand):
 
 
 class Inc(ActionScriptCommandAnySizeMem):
-    _command_name: ActionScriptCommandName = cmdnm.INC
-
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar):
             return super().render(0xAA, self.address)
@@ -1114,8 +1204,6 @@ class Inc(ActionScriptCommandAnySizeMem):
 
 
 class Dec(ActionScriptCommandAnySizeMem):
-    _command_name: ActionScriptCommandName = cmdnm.DEC
-
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar):
             return super().render(0xAB, self.address)
@@ -1130,9 +1218,17 @@ class Dec(ActionScriptCommandAnySizeMem):
 
 
 class CopyVarToVar(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.COPY_VAR_TO_VAR
     _address_left: Union[ShortVar, ByteVar]
     _address_right: Union[ShortVar, ByteVar]
+
+    def _set_size(self):
+        if (
+            self.address_left != variables.PRIMARY_TEMP_700C
+            and self.address_right != variables.PRIMARY_TEMP_700C
+        ):
+            self._size = 3
+        else:
+            self._size = 2
 
     @property
     def address_left(self) -> Union[ShortVar, ByteVar]:
@@ -1140,6 +1236,7 @@ class CopyVarToVar(ActionScriptCommand):
 
     def set_address_left(self, address_left: Union[ShortVar, ByteVar]) -> None:
         self._address_left = address_left
+        self._set_size()
 
     def cast_address_left(self, address_left: int) -> None:
         self.set_address_left(cast_address(address_left))
@@ -1150,6 +1247,7 @@ class CopyVarToVar(ActionScriptCommand):
 
     def set_address_right(self, address_right: int) -> None:
         self._address_right = cast_address(address_right)
+        self._set_size()
 
     def cast_address_right(self, address_right: int) -> None:
         self.set_address_right(cast_address(address_right))
@@ -1158,7 +1256,7 @@ class CopyVarToVar(ActionScriptCommand):
         self,
         address_left: int,
         address_right: int,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         if address_left == variables.PRIMARY_TEMP_700C:
@@ -1170,14 +1268,6 @@ class CopyVarToVar(ActionScriptCommand):
         else:
             self.set_address_left(ShortVar(address_left))
             self.set_address_right(ShortVar(address_right))
-
-        if (
-            self.address_left != variables.PRIMARY_TEMP_700C
-            and self.address_right != variables.PRIMARY_TEMP_700C
-        ):
-            self._size = 3
-        else:
-            self._size = 2
 
     def render(self) -> bytearray:
         if self.address_right == variables.PRIMARY_TEMP_700C and isinstance(
@@ -1208,8 +1298,6 @@ class CopyVarToVar(ActionScriptCommand):
 
 
 class CompareVarToConst(ActionScriptCommandShortAddrAndValueOnly):
-    _command_name: ActionScriptCommandName = cmdnm.COMPARE_VAR_TO_CONST
-
     def render(self) -> bytearray:
         if self.address == variables.PRIMARY_TEMP_700C:
             return super().render(0xC0, self.value)
@@ -1218,7 +1306,6 @@ class CompareVarToConst(ActionScriptCommandShortAddrAndValueOnly):
 
 
 class Compare700CToVar(ActionScriptCommandShortMem):
-    _command_name: ActionScriptCommandName = cmdnm.COMPARE_700C_TO_VAR
     _opcode: int = 0xC1
     _size: int = 2
 
@@ -1227,9 +1314,6 @@ class Compare700CToVar(ActionScriptCommandShortMem):
 
 
 class JmpIfComparisonResultIsGreaterOrEqual(ActionScriptCommandWithJmps):
-    _command_name = (
-        ActionScriptCommandName
-    ) = cmdnm.JMP_IF_COMPARISON_RESULT_IS_GREATER_OR_EQUAL
     _opcode: int = 0xEC
     _size = 3
 
@@ -1238,7 +1322,6 @@ class JmpIfComparisonResultIsGreaterOrEqual(ActionScriptCommandWithJmps):
 
 
 class JmpIfComparisonResultIsLesser(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_COMPARISON_RESULT_IS_LESSER
     _opcode: int = 0xED
     _size = 3
 
@@ -1247,8 +1330,6 @@ class JmpIfComparisonResultIsLesser(ActionScriptCommandWithJmps):
 
 
 class SetVarToRandom(ActionScriptCommandShortAddrAndValueOnly):
-    _command_name: ActionScriptCommandName = cmdnm.SET_VAR_TO_RANDOM
-
     def render(self) -> bytearray:
         if self.address == variables.PRIMARY_TEMP_700C:
             return super().render(0xB6, self.value)
@@ -1257,19 +1338,16 @@ class SetVarToRandom(ActionScriptCommandShortAddrAndValueOnly):
 
 
 class AddVarTo700C(ActionScriptCommandShortMem):
-    _command_name: ActionScriptCommandName = cmdnm.ADD_VAR_TO_700C
     _opcode: int = 0xB8
     _size: int = 2
 
 
 class DecVarFrom700C(ActionScriptCommandShortMem):
-    _command_name: ActionScriptCommandName = cmdnm.DEC_VAR_FROM_700C
     _opcode: int = 0xB9
     _size: int = 2
 
 
 class SwapVars(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SWAP_VARS
     _opcode: int = 0xBD
     _size: int = 3
     _address_left: ShortVar
@@ -1293,7 +1371,7 @@ class SwapVars(ActionScriptCommand):
         self,
         address_left: int,
         address_right: int,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_address_left(address_left)
@@ -1304,17 +1382,14 @@ class SwapVars(ActionScriptCommand):
 
 
 class Move70107015To7016701B(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.MOVE_7010_7015_TO_7016_701B
     _opcode: int = 0xBE
 
 
 class Move7016701BTo70107015(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.MOVE_7016_701B_TO_7010_7015
     _opcode: int = 0xBF
 
 
 class JmpIfVarEqualsConst(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_VAR_EQUALS_CONST
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
@@ -1334,11 +1409,21 @@ class JmpIfVarEqualsConst(ActionScriptCommandWithJmps):
 
     def set_address(self, address: Union[UInt8, UInt16]) -> None:
         self._address = address
+        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
+            self.address, ByteVar
+        ):
+            self._size = 5
+        else:
+            self._size = 6
 
     def __init__(
-        self, address: int, value: int, destinations: "str[int]", identifier: str = None
+        self,
+        address: int,
+        value: int,
+        destinations: "str[int]",
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_value(value)
         if isinstance(self.value, UInt8):
             try:
@@ -1347,12 +1432,6 @@ class JmpIfVarEqualsConst(ActionScriptCommandWithJmps):
                 self.set_address(ShortVar(address))
         else:
             self.set_address(ShortVar(address))
-        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 5
-        else:
-            self._size = 6
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1371,7 +1450,6 @@ class JmpIfVarEqualsConst(ActionScriptCommandWithJmps):
 
 
 class JmpIfVarNotEqualsConst(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_VAR_NOT_EQUALS_CONST
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
@@ -1391,11 +1469,21 @@ class JmpIfVarNotEqualsConst(ActionScriptCommandWithJmps):
 
     def set_address(self, address: Union[UInt8, UInt16]) -> None:
         self._address = address
+        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
+            self.address, ByteVar
+        ):
+            self._size = 5
+        else:
+            self._size = 6
 
     def __init__(
-        self, address: int, value: int, destinations: "str[int]", identifier: str = None
+        self,
+        address: int,
+        value: int,
+        destinations: "str[int]",
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_value(value)
         if isinstance(self.value, UInt8):
             try:
@@ -1404,12 +1492,6 @@ class JmpIfVarNotEqualsConst(ActionScriptCommandWithJmps):
                 self.set_address(ShortVar(address))
         else:
             self.set_address(ShortVar(address))
-        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 5
-        else:
-            self._size = 6
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1428,7 +1510,6 @@ class JmpIfVarNotEqualsConst(ActionScriptCommandWithJmps):
 
 
 class JmpIf700CAllBitsClear(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_700C_ALL_BITS_CLEAR
     _opcode: int = 0xE6
     _size = 5
     _bits: "set[int]"
@@ -1446,9 +1527,9 @@ class JmpIf700CAllBitsClear(ActionScriptCommandWithJmps):
         self,
         bits: "set[int]",
         destinations: "str[int]",
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_bits(bits)
 
     def render(self) -> bytearray:
@@ -1457,7 +1538,6 @@ class JmpIf700CAllBitsClear(ActionScriptCommandWithJmps):
 
 
 class JmpIf700CAnyBitsSet(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_700C_ANY_BITS_SET
     _opcode: int = 0xE7
     _size = 5
     _bits: "set[int]"
@@ -1475,9 +1555,9 @@ class JmpIf700CAnyBitsSet(ActionScriptCommandWithJmps):
         self,
         bits: "set[int]",
         destinations: "str[int]",
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_bits(bits)
 
     def render(self) -> bytearray:
@@ -1486,7 +1566,6 @@ class JmpIf700CAnyBitsSet(ActionScriptCommandWithJmps):
 
 
 class JmpIfRandomAbove66(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_RANDOM_ABOVE_66
     _opcode: int = 0xE9
     _size: int = 5
 
@@ -1495,7 +1574,6 @@ class JmpIfRandomAbove66(ActionScriptCommandWithJmps):
 
 
 class JmpIfRandomAbove128(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_RANDOM_ABOVE_128
     _opcode: int = 0xE8
     _size: int = 3
 
@@ -1504,7 +1582,6 @@ class JmpIfRandomAbove128(ActionScriptCommandWithJmps):
 
 
 class JmpIfLoadedMemoryIs0(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_LOADED_MEMORY_IS_0
     _opcode: int = 0xEA
     _size: int = 3
 
@@ -1513,9 +1590,6 @@ class JmpIfLoadedMemoryIs0(ActionScriptCommandWithJmps):
 
 
 class JmpIfLoadedMemoryIsAboveOrEqual0(ActionScriptCommandWithJmps):
-    _command_name = (
-        ActionScriptCommandName
-    ) = cmdnm.JMP_IF_LOADED_MEMORY_IS_ABOVE_OR_EQUAL_0
     _opcode: int = 0xEF
     _size: int = 3
 
@@ -1524,7 +1598,6 @@ class JmpIfLoadedMemoryIsAboveOrEqual0(ActionScriptCommandWithJmps):
 
 
 class JmpIfLoadedMemoryIsBelow0(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_LOADED_MEMORY_IS_BELOW_0
     _opcode: int = 0xEE
     _size: int = 3
 
@@ -1533,7 +1606,6 @@ class JmpIfLoadedMemoryIsBelow0(ActionScriptCommandWithJmps):
 
 
 class JmpIfLoadedMemoryIsNot0(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_LOADED_MEMORY_IS_NOT_0
     _opcode: int = 0xEB
     _size: int = 3
 
@@ -1542,40 +1614,33 @@ class JmpIfLoadedMemoryIsNot0(ActionScriptCommandWithJmps):
 
 
 class Mem700CAndConst(ActionScriptCommandBasicShortOperation):
-    _command_name: ActionScriptCommandName = cmdnm.MEM_700C_AND_CONST
     _opcode = bytearray([0xFD, 0xB0])
 
 
 class Mem700CAndVar(ActionScriptCommandShortMem):
-    _command_name: ActionScriptCommandName = cmdnm.MEM_700C_AND_VAR
     _opcode = bytearray([0xFD, 0xB3])
     _size: int = 3
 
 
 class Mem700COrConst(ActionScriptCommandBasicShortOperation):
-    _command_name: ActionScriptCommandName = cmdnm.MEM_700C_OR_CONST
     _opcode = bytearray([0xFD, 0xB1])
 
 
 class Mem700COrVar(ActionScriptCommandShortMem):
-    _command_name: ActionScriptCommandName = cmdnm.MEM_700C_OR_VAR
     _opcode = bytearray([0xFD, 0xB4])
     _size: int = 3
 
 
 class Mem700CXorConst(ActionScriptCommandBasicShortOperation):
-    _command_name: ActionScriptCommandName = cmdnm.MEM_700C_XOR_CONST
     _opcode = bytearray([0xFD, 0xB2])
 
 
 class Mem700CXorVar(ActionScriptCommandShortMem):
-    _command_name: ActionScriptCommandName = cmdnm.MEM_700C_XOR_VAR
     _opcode = bytearray([0xFD, 0xB5])
     _size: int = 3
 
 
 class VarShiftLeft(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.MEM_SHIFT_LEFT
     _opcode = bytearray([0xFD, 0xB6])
     _size: int = 4
     _address: ShortVar
@@ -1595,7 +1660,9 @@ class VarShiftLeft(ActionScriptCommand):
     def set_shift(self, shift: int) -> None:
         self._shift = UInt8(shift)
 
-    def __init__(self, address: int, shift: int, identifier: str = None) -> None:
+    def __init__(
+        self, address: int, shift: int, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_address(address)
         self.set_shift(shift)
@@ -1608,7 +1675,6 @@ class VarShiftLeft(ActionScriptCommand):
 
 
 class SetSpriteSequence(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_SPRITE_SEQUENCE
     _opcode: int = 0x08
     _size: int = 3
     _sequence_or_mold_id: UInt8
@@ -1669,7 +1735,7 @@ class SetSpriteSequence(ActionScriptCommand):
         is_sequence: bool = False,
         looping_off: bool = False,
         mirror_sprite: bool = False,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         if is_mold:
             assert 0 <= sequence_or_mold_id <= 31
@@ -1695,27 +1761,22 @@ class SetSpriteSequence(ActionScriptCommand):
 
 
 class SequencePlaybackOn(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SEQUENCE_PLAYBACK_ON
     _opcode: int = 0x02
 
 
 class SequencePlaybackOff(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SEQUENCE_PLAYBACK_OFF
     _opcode: int = 0x03
 
 
 class SequenceLoopingOn(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SEQUENCE_LOOPING_ON
     _opcode: int = 0x04
 
 
 class SequenceLoopingOff(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SEQUENCE_LOOPING_OFF
     _opcode: int = 0x05
 
 
 class SetAnimationSpeed(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_ANIMATION_SPEED
     _opcode: int = 0x10
     _size: int = 2
     _speed: SequenceSpeed
@@ -1748,7 +1809,7 @@ class SetAnimationSpeed(ActionScriptCommand):
         speed: SequenceSpeed,
         sequence: bool = False,
         walking: bool = False,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_speed(speed)
@@ -1761,7 +1822,6 @@ class SetAnimationSpeed(ActionScriptCommand):
 
 
 class EmbeddedAnimationRoutine(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.EMBEDDED_ANIMATION_ROUTINE
     _args: bytearray
     _size: int = 16
 
@@ -1774,7 +1834,7 @@ class EmbeddedAnimationRoutine(ActionScriptCommand):
         assert args[0] in [0x26, 0x27, 0x28]
         self._args = args
 
-    def __init__(self, args: bytearray, identifier: str = None) -> None:
+    def __init__(self, args: bytearray, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_args(args)
 
@@ -1783,12 +1843,10 @@ class EmbeddedAnimationRoutine(ActionScriptCommand):
 
 
 class MaximizeSequenceSpeed(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.MAXIMIZE_SEQUENCE_SPEED
     _opcode: int = 0x85
 
 
 class MaximizeSequenceSpeed86(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.MAXIMIZE_SEQUENCE_SPEED_86
     _opcode: int = 0x86
 
 
@@ -1796,17 +1854,14 @@ class MaximizeSequenceSpeed86(ActionScriptCommandNoArgs):
 
 
 class FixedFCoordOn(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FIXED_F_COORD_ON
     _opcode: int = 0x06
 
 
 class FixedFCoordOff(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FIXED_F_COORD_OFF
     _opcode: int = 0x07
 
 
 class JmpIfObjectWithinRange(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_OBJECT_WITHIN_RANGE
     _opcode: int = 0x3A
     _size: int = 6
     _object: AreaObject
@@ -1840,9 +1895,9 @@ class JmpIfObjectWithinRange(ActionScriptCommandWithJmps):
         usually: int,
         tiles: int,
         destinations: "str[int]",
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_object(object)
         self.set_usually(usually)
         self.set_tiles(tiles)
@@ -1852,7 +1907,6 @@ class JmpIfObjectWithinRange(ActionScriptCommandWithJmps):
 
 
 class JmpIfObjectWithinRangeSameZ(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_OBJECT_WITHIN_RANGE_SAME_Z
     _opcode: int = 0x3B
     _size: int = 6
     _object: AreaObject
@@ -1886,9 +1940,9 @@ class JmpIfObjectWithinRangeSameZ(ActionScriptCommandWithJmps):
         usually: int,
         tiles: int,
         destinations: "str[int]",
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_object(object)
         self.set_usually(usually)
         self.set_tiles(tiles)
@@ -1898,252 +1952,202 @@ class JmpIfObjectWithinRangeSameZ(ActionScriptCommandWithJmps):
 
 
 class Walk1StepEast(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_EAST
     _opcode: int = 0x40
 
 
 class Walk1StepSoutheast(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_SOUTHEAST
     _opcode: int = 0x41
 
 
 class Walk1StepSouth(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_SOUTH
     _opcode: int = 0x42
 
 
 class Walk1StepSouthwest(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_SOUTHWEST
     _opcode: int = 0x43
 
 
 class Walk1StepWest(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_WEST
     _opcode: int = 0x44
 
 
 class Walk1StepNorthwest(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_NORTHWEST
     _opcode: int = 0x45
 
 
 class Walk1StepNorth(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_NORTH
     _opcode: int = 0x46
 
 
 class Walk1StepNortheast(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_NORTHEAST
     _opcode: int = 0x47
 
 
 class Walk1StepFDirection(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_1_STEP_F_DIRECTION
     _opcode: int = 0x48
 
 
 class AddZCoord1Step(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.ADD_Z_COORD_1_STEP
     _opcode: int = 0x4A
 
 
 class DecZCoord1Step(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.DEC_Z_COORD_1_STEP
     _opcode: int = 0x4B
 
 
 class ShiftEastSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_EAST_STEPS
     _opcode: int = 0x50
 
 
 class ShiftSoutheastSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_SOUTHEAST_STEPS
     _opcode: int = 0x51
 
 
 class ShiftSouthSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_SOUTH_STEPS
     _opcode: int = 0x52
 
 
 class ShiftSouthwestSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_SOUTHWEST_STEPS
     _opcode: int = 0x53
 
 
 class ShiftWestSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_WEST_STEPS
     _opcode: int = 0x54
 
 
 class ShiftNorthwestSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_NORTHWEST_STEPS
     _opcode: int = 0x55
 
 
 class ShiftNorthSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_NORTH_STEPS
     _opcode: int = 0x56
 
 
 class ShiftNortheastSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_NORTHEAST_STEPS
     _opcode: int = 0x57
 
 
 class ShiftFDirectionSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_F_DIRECTION_STEPS
     _opcode: int = 0x58
 
 
 class ShiftZ20Steps(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_Z_20_STEPS
     _opcode: int = 0x59
 
 
 class ShiftZUpSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_Z_UP_STEPS
     _opcode: int = 0x5A
 
 
 class ShiftZDownSteps(ActionScriptCommandByteSteps):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_Z_DOWN_STEPS
     _opcode: int = 0x5B
 
 
 class ShiftZUp20Steps(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_Z_UP_20_STEPS
     _opcode: int = 0x5C
 
 
 class ShiftZDown20Steps(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_Z_DOWN_20_STEPS
     _opcode: int = 0x5D
 
 
 class ShiftEastPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_EAST_PIXELS
     _opcode: int = 0x60
 
 
 class ShiftSoutheastPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_SOUTHEAST_PIXELS
     _opcode: int = 0x61
 
 
 class ShiftSouthPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_SOUTH_PIXELS
     _opcode: int = 0x62
 
 
 class ShiftSouthwestPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_SOUTHWEST_PIXELS
     _opcode: int = 0x63
 
 
 class ShiftWestPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_WEST_PIXELS
     _opcode: int = 0x64
 
 
 class ShiftNorthwestPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_NORTHWEST_PIXELS
     _opcode: int = 0x65
 
 
 class ShiftNorthPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_NORTH_PIXELS
     _opcode: int = 0x66
 
 
 class ShiftNortheastPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_NORTHEAST_PIXELS
     _opcode: int = 0x67
 
 
 class ShiftFDirectionPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_F_DIRECTION_PIXELS
     _opcode: int = 0x68
 
 
 class WalkFDirection16Pixels(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_F_DIRECTION_16_PIXELS
     _opcode: int = 0x69
 
 
 class ShiftZUpPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_Z_UP_PIXELS
     _opcode: int = 0x6A
 
 
 class ShiftZDownPixels(ActionScriptCommandBytePixels):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_Z_DOWN_PIXELS
     _opcode: int = 0x6B
 
 
 class FaceEast(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_EAST
     _opcode: int = 0x70
 
 
 class FaceEast7C(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_EAST_7C
     _opcode: int = 0x7C
 
 
 class FaceSoutheast(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_SOUTHEAST
     _opcode: int = 0x71
 
 
 class FaceSouth(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_SOUTH
     _opcode: int = 0x72
 
 
 class FaceSouthwest(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_SOUTHWEST
     _opcode: int = 0x73
 
 
 class FaceSouthwes0t7D(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_SOUTHWEST_7D
     _opcode: int = 0x7D
 
 
 class FaceWest(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_WEST
     _opcode: int = 0x74
 
 
 class FaceNorthwest(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_NORTHWEST
     _opcode: int = 0x75
 
 
 class FaceNorth(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_NORTH
     _opcode: int = 0x76
 
 
 class FaceNortheast(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_NORTHEAST
     _opcode: int = 0x77
 
 
 class FaceMario(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.FACE_MARIO
     _opcode: int = 0x78
 
 
 class TurnClockwise45Degrees(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.TURN_CLOCKWISE_45_DEGREES
     _opcode: int = 0x79
 
 
 class TurnClockwise45DegreesNTimes(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.TURN_CLOCKWISE_45_DEGREES_N_TIMES
     _opcode: int = 0x7B
     _size: int = 2
     _count: UInt8
@@ -2155,7 +2159,7 @@ class TurnClockwise45DegreesNTimes(ActionScriptCommand):
     def set_count(self, count: int) -> None:
         self._count = UInt8(count)
 
-    def __init__(self, count: int, identifier: str = None) -> None:
+    def __init__(self, count: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_count(count)
 
@@ -2164,7 +2168,6 @@ class TurnClockwise45DegreesNTimes(ActionScriptCommand):
 
 
 class JumpToHeightSilent(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.JUMP_TO_HEIGHT_SILENT
     _opcode: int = 0x7E
     _size: int = 3
     _height: UInt16
@@ -2175,7 +2178,7 @@ class JumpToHeightSilent(ActionScriptCommand):
     def set_height(self, height: int) -> None:
         self._height = UInt16(height)
 
-    def __init__(self, height: int, identifier: str = None) -> None:
+    def __init__(self, height: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_height(height)
 
@@ -2184,7 +2187,6 @@ class JumpToHeightSilent(ActionScriptCommand):
 
 
 class JumpToHeight(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.JUMP_TO_HEIGHT
     _opcode: int = 0x7F
     _size: int = 3
     _height: UInt16
@@ -2195,7 +2197,7 @@ class JumpToHeight(ActionScriptCommand):
     def set_height(self, height: int) -> None:
         self._height = UInt16(height)
 
-    def __init__(self, height: int, identifier: str = None) -> None:
+    def __init__(self, height: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_height(height)
 
@@ -2204,32 +2206,26 @@ class JumpToHeight(ActionScriptCommand):
 
 
 class WalkToXYCoords(ActionScriptCommandXYBytes):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_TO_XY_COORDS
     _opcode: int = 0x80
 
 
 class WalkXYSteps(ActionScriptCommandXYBytes):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_XY_STEPS
     _opcode: int = 0x81
 
 
 class ShiftToXYCoords(ActionScriptCommandXYBytes):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_TO_XY_COORDS
     _opcode: int = 0x82
 
 
 class ShiftXYSteps(ActionScriptCommandXYBytes):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_XY_STEPS
     _opcode: int = 0x83
 
 
 class ShiftXYPixels(ActionScriptCommandXYBytes):
-    _command_name: ActionScriptCommandName = cmdnm.SHIFT_XY_PIXELS
     _opcode: int = 0x84
 
 
 class TransferToObjectXY(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.TRANSFER_TO_OBJECT_XY
     _opcode: int = 0x87
     _size: int = 2
     _object: AreaObject
@@ -2244,7 +2240,7 @@ class TransferToObjectXY(ActionScriptCommand):
     def __init__(
         self,
         object: AreaObject,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_object(object)
@@ -2254,7 +2250,6 @@ class TransferToObjectXY(ActionScriptCommand):
 
 
 class TransferToObjectXYZ(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.TRANSFER_TO_OBJECT_XYZ
     _opcode: int = 0x95
     _size: int = 2
     _object: AreaObject
@@ -2269,7 +2264,7 @@ class TransferToObjectXYZ(ActionScriptCommand):
     def __init__(
         self,
         object: AreaObject,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_object(object)
@@ -2279,32 +2274,26 @@ class TransferToObjectXYZ(ActionScriptCommand):
 
 
 class RunAwayShift(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.RUN_AWAY_SHIFT
     _opcode: int = 0x88
 
 
 class TransferTo70167018(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.TRANSFER_TO_7016_7018
     _opcode: int = 0x89
 
 
 class TransferTo70167018701A(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.TRANSFER_TO_7016_7018_701A
     _opcode: int = 0x99
 
 
 class WalkTo70167018(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_TO_7016_7018
     _opcode: int = 0x8A
 
 
 class WalkTo70167018701A(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.WALK_TO_7016_7018_701A
     _opcode: int = 0x98
 
 
 class BounceToXYWithHeight(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.BOUNCE_TO_XY_WITH_HEIGHT
     _opcode: int = 0x90
     _size: int = 4
     _x: UInt8
@@ -2332,7 +2321,9 @@ class BounceToXYWithHeight(ActionScriptCommand):
     def set_height(self, height: int) -> None:
         self._height = UInt8(height)
 
-    def __init__(self, x: int, y: int, height: int, identifier: str = None) -> None:
+    def __init__(
+        self, x: int, y: int, height: int, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_x(x)
         self.set_y(y)
@@ -2343,7 +2334,6 @@ class BounceToXYWithHeight(ActionScriptCommand):
 
 
 class BounceXYStepsWithHeight(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.BOUNCE_TO_XY_WITH_HEIGHT
     _opcode: int = 0x91
     _size: int = 4
     _x: UInt8
@@ -2371,7 +2361,9 @@ class BounceXYStepsWithHeight(ActionScriptCommand):
     def set_height(self, height: int) -> None:
         self._height = UInt8(height)
 
-    def __init__(self, x: int, y: int, height: int, identifier: str = None) -> None:
+    def __init__(
+        self, x: int, y: int, height: int, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_x(x)
         self.set_y(y)
@@ -2382,7 +2374,6 @@ class BounceXYStepsWithHeight(ActionScriptCommand):
 
 
 class TransferToXYZF(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.TRANSFER_TO_XYZF
     _opcode: int = 0x92
     _size: int = 4
     _x: UInt8
@@ -2420,7 +2411,12 @@ class TransferToXYZF(ActionScriptCommand):
         self._direction = UInt8(direction)
 
     def __init__(
-        self, x: int, y: int, z: int, direction: Direction, identifier: str = None
+        self,
+        x: int,
+        y: int,
+        z: int,
+        direction: Direction,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_x(x)
@@ -2434,7 +2430,6 @@ class TransferToXYZF(ActionScriptCommand):
 
 
 class TransferXYZFSteps(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.TRANSFER_XYZF_STEPS
     _opcode: int = 0x93
     _size: int = 4
     _x: UInt8
@@ -2472,7 +2467,12 @@ class TransferXYZFSteps(ActionScriptCommand):
         self._direction = UInt8(direction)
 
     def __init__(
-        self, x: int, y: int, z: int, direction: Direction, identifier: str = None
+        self,
+        x: int,
+        y: int,
+        z: int,
+        direction: Direction,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_x(x)
@@ -2486,7 +2486,6 @@ class TransferXYZFSteps(ActionScriptCommand):
 
 
 class TransferXYZFPixels(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.TRANSFER_XYZF_PIXELS
     _opcode: int = 0x94
     _size: int = 4
     _x: UInt8
@@ -2524,7 +2523,12 @@ class TransferXYZFPixels(ActionScriptCommand):
         self._direction = UInt8(direction)
 
     def __init__(
-        self, x: int, y: int, z: int, direction: Direction, identifier: str = None
+        self,
+        x: int,
+        y: int,
+        z: int,
+        direction: Direction,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
         self.set_x(x)
@@ -2541,7 +2545,6 @@ class TransferXYZFPixels(ActionScriptCommand):
 
 
 class Set700CToObjectCoord(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_700C_TO_OBJECT_COORD
     _size: int = 2
     _object: AreaObject
     _coord: Coord
@@ -2584,7 +2587,7 @@ class Set700CToObjectCoord(ActionScriptCommand):
         isometric: bool = False,
         pixel: bool = False,
         bit_7: bool = False,
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
         assert isometric ^ pixel
         super().__init__(identifier)
@@ -2602,7 +2605,6 @@ class Set700CToObjectCoord(ActionScriptCommand):
 
 
 class CreatePacketAtNPCCoords(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.CREATE_PACKET_AT_NPC_COORDS
     _opcode: int = 0x3E
     _size: int = 5
     _packet_id: int
@@ -2627,9 +2629,9 @@ class CreatePacketAtNPCCoords(ActionScriptCommandWithJmps):
         packet: Packet,
         object: AreaObject,
         destinations: "str[int]",
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_packet_id(packet.id)
         self.set_object(object)
 
@@ -2638,7 +2640,6 @@ class CreatePacketAtNPCCoords(ActionScriptCommandWithJmps):
 
 
 class CreatePacketAt7010(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.CREATE_PACKET_AT_7010
     _opcode: int = 0x3F
     _size: int = 4
     _packet_id: UInt8
@@ -2651,9 +2652,9 @@ class CreatePacketAt7010(ActionScriptCommandWithJmps):
         self._packet_id = UInt8(packet_id)
 
     def __init__(
-        self, packet: Packet, destinations: "str[int]", identifier: str = None
+        self, packet: Packet, destinations: "str[int]", identifier: Optional[str] = None
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_packet_id(packet.id)
 
     def render(self) -> bytearray:
@@ -2661,7 +2662,6 @@ class CreatePacketAt7010(ActionScriptCommandWithJmps):
 
 
 class CreatePacketAt7010WithEvent(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.CREATE_PACKET_AT_7010_WITH_EVENT
     _opcode: bytearray([0xFD, 0x3E])
     _size: int = 7
     _packet_id: UInt8
@@ -2687,9 +2687,9 @@ class CreatePacketAt7010WithEvent(ActionScriptCommandWithJmps):
         packet: Packet,
         event_id: int,
         destinations: "str[int]",
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_packet_id(packet.id)
         self.set_event_id(event_id)
 
@@ -2698,7 +2698,6 @@ class CreatePacketAt7010WithEvent(ActionScriptCommandWithJmps):
 
 
 class SummonToLevel(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SUMMON_TO_LEVEL
     _opcode: int = 0xF2
     _size: int = 3
     _object: AreaObject
@@ -2720,7 +2719,7 @@ class SummonToLevel(ActionScriptCommand):
         self._level_id = UInt16(level_id)
 
     def __init__(
-        self, object: AreaObject, level_id: int, identifier: str = None
+        self, object: AreaObject, level_id: int, identifier: Optional[str] = None
     ) -> None:
         super().__init__(identifier)
         self.set_object(object)
@@ -2732,14 +2731,10 @@ class SummonToLevel(ActionScriptCommand):
 
 
 class SummonObjectAt70A8ToCurrentLevel(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = (
-        cmdnm.SUMMON_OBJECT_AT_70A8_TO_CURRENT_LEVEL
-    )
     _opcode: int = 0xF4
 
 
 class RemoveFromLevel(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.REMOVE_FROM_LEVEL
     _opcode: int = 0xF2
     _size: int = 3
     _object: AreaObject
@@ -2761,7 +2756,7 @@ class RemoveFromLevel(ActionScriptCommand):
         self._level_id = UInt16(level_id)
 
     def __init__(
-        self, object: AreaObject, level_id: int, identifier: str = None
+        self, object: AreaObject, level_id: int, identifier: Optional[str] = None
     ) -> None:
         super().__init__(identifier)
         self.set_object(object)
@@ -2774,14 +2769,10 @@ class RemoveFromLevel(ActionScriptCommand):
 
 
 class RemoveObjectAt70A8FromCurrentLevel(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = (
-        cmdnm.REMOVE_OBJECT_AT_70A8_FROM_CURRENT_LEVEL
-    )
     _opcode: int = 0xF5
 
 
 class EnableTriggerInLevel(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.ENABLE_TRIGGER_IN_LEVEL
     _opcode: int = 0xF3
     _size: int = 3
     _object: AreaObject
@@ -2803,7 +2794,7 @@ class EnableTriggerInLevel(ActionScriptCommand):
         self._level_id = UInt16(level_id)
 
     def __init__(
-        self, object: AreaObject, level_id: int, identifier: str = None
+        self, object: AreaObject, level_id: int, identifier: Optional[str] = None
     ) -> None:
         super().__init__(identifier)
         self.set_object(object)
@@ -2815,12 +2806,10 @@ class EnableTriggerInLevel(ActionScriptCommand):
 
 
 class EnableTriggerAt70A8(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.ENABLE_TRIGGER_AT_70A8
     _opcode: int = 0xF6
 
 
 class DisableTriggerInLevel(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.DISABLE_TRIGGER_IN_LEVEL
     _opcode: int = 0xF3
     _size: int = 3
     _object: AreaObject
@@ -2842,7 +2831,7 @@ class DisableTriggerInLevel(ActionScriptCommand):
         self._level_id = UInt16(level_id)
 
     def __init__(
-        self, object: AreaObject, level_id: int, identifier: str = None
+        self, object: AreaObject, level_id: int, identifier: Optional[str] = None
     ) -> None:
         super().__init__(identifier)
         self.set_object(object)
@@ -2855,12 +2844,10 @@ class DisableTriggerInLevel(ActionScriptCommand):
 
 
 class DisableTriggerAt70A8(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.DISABLE_TRIGGER_AT_70A8
     _opcode: int = 0xF7
 
 
-class JmpIfObjectInLevel(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_OBJECT_IN_LEVEL
+class JmpIfObjectInSpecificLevel(ActionScriptCommandWithJmps):
     _opcode: int = 0xF8
     _size: int = 5
     _object: AreaObject
@@ -2886,9 +2873,9 @@ class JmpIfObjectInLevel(ActionScriptCommandWithJmps):
         object: AreaObject,
         level_id: int,
         destinations: "str[int]",
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_object(object)
         self.set_level_id(level_id)
 
@@ -2897,8 +2884,7 @@ class JmpIfObjectInLevel(ActionScriptCommandWithJmps):
         return super().render(arg_1, *self.destinations)
 
 
-class JmpIfObjectNotInLevel(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_OBJECT_NOT_IN_LEVEL
+class JmpIfObjectNotInSpecificLevel(ActionScriptCommandWithJmps):
     _opcode: int = 0xF8
     _size: int = 5
     _object: AreaObject
@@ -2924,9 +2910,9 @@ class JmpIfObjectNotInLevel(ActionScriptCommandWithJmps):
         object: AreaObject,
         level_id: int,
         destinations: "str[int]",
-        identifier: str = None,
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_object(object)
         self.set_level_id(level_id)
 
@@ -2937,7 +2923,6 @@ class JmpIfObjectNotInLevel(ActionScriptCommandWithJmps):
 
 
 class JmpIfObjectInAir(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_OBJECT_IN_AIR
     _opcode: bytearray([0xFD, 0x3D])
     _size: int = 5
     _object: AreaObject
@@ -2950,9 +2935,12 @@ class JmpIfObjectInAir(ActionScriptCommandWithJmps):
         self._object = object
 
     def __init__(
-        self, object: AreaObject, destinations: "str[int]", identifier: str = None
+        self,
+        object: AreaObject,
+        destinations: "str[int]",
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_object(object)
 
     def render(self) -> bytearray:
@@ -2963,12 +2951,10 @@ class JmpIfObjectInAir(ActionScriptCommandWithJmps):
 
 
 class Set700CToPressedButton(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SET_700C_TO_PRESSED_BUTTON
     _opcode: int = 0xCA
 
 
 class Set700CToTappedButton(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.SET_700C_TO_TAPPED_BUTTON
     _opcode: int = 0xCB
 
 
@@ -2976,7 +2962,6 @@ class Set700CToTappedButton(ActionScriptCommandNoArgs):
 
 
 class SetPaletteRow(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.SET_PALETTE_ROW
     _opcode: int = 0x0D
     _size: int = 2
     _row: UInt8
@@ -2989,7 +2974,7 @@ class SetPaletteRow(ActionScriptCommand):
         assert 0 <= row <= 15
         self._row = UInt8(row)
 
-    def __init__(self, row: int, identifier: str = None) -> None:
+    def __init__(self, row: int, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_row(row)
 
@@ -2998,51 +2983,49 @@ class SetPaletteRow(ActionScriptCommand):
 
 
 class IncPaletteRowBy(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.INC_PALETTE_ROW_BY
-    _row: UInt8
+    _rows: UInt8
 
     @property
-    def row(self) -> UInt8:
-        return self._row
+    def rows(self) -> UInt8:
+        return self._rows
 
-    def set_row(self, row: int) -> None:
-        self._row = UInt8(row)
-
-    def __init__(self, row: int, identifier: str = None) -> None:
-        super().__init__(identifier)
-        self.set_row(row)
-        if self.row == 1:
+    def set_rows(self, rows: int) -> None:
+        self._rows = UInt8(rows)
+        if self.rows == 1:
             self._size = 1
+            self._opcode = 0x0F
         else:
             self._size = 2
+            self._opcode = 0x0E
+
+    def __init__(self, rows: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_rows(rows)
 
     def render(self) -> bytearray:
         if self.row == 1:
-            return super().render(0x0F)
-        return super().render(0x0E, self.row)
+            return super().render()
+        return super().render(self.rows)
 
 
 # branching / jumps
 
 
 class BPL262728(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.BPL_26_27_28
     _opcode: int = 0x21
 
 
 class BMI262728(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.BMI_26_27_28
     _opcode: int = 0x22
 
 
 class BPL2627(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.BPL_26_27
     _opcode: int = 0x2A
 
 
 class UnknownJmp3C(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.UNKNOWN_JMP_3C
     _opcode: 0x3C
+    _size: int = 5
     _arg1: UInt8
     _arg2: UInt8
 
@@ -3061,9 +3044,13 @@ class UnknownJmp3C(ActionScriptCommandWithJmps):
         self._arg2 = UInt8(arg2)
 
     def __init__(
-        self, arg1: int, arg2: int, destinations: "str[int]", identifier: str = None
+        self,
+        arg1: int,
+        arg2: int,
+        destinations: "str[int]",
+        identifier: Optional[str] = None,
     ) -> None:
-        super().__init__(identifier, destinations)
+        super().__init__(destinations, identifier)
         self.set_arg1(arg1)
         self.set_arg1(arg2)
 
@@ -3072,8 +3059,8 @@ class UnknownJmp3C(ActionScriptCommandWithJmps):
 
 
 class JmpIfMarioInAir(ActionScriptCommandWithJmps):
-    _command_name: ActionScriptCommandName = cmdnm.JMP_IF_MARIO_IN_AIR
     _opcode: 0x3D
+    _size: int = 3
 
     def render(self) -> bytearray:
         return super().render(*self.destinations)
@@ -3083,12 +3070,10 @@ class JmpIfMarioInAir(ActionScriptCommandWithJmps):
 
 
 class StopSound(ActionScriptCommandNoArgs):
-    _command_name: ActionScriptCommandName = cmdnm.STOP_SOUND
     _opcode: 0x9B
 
 
 class PlaySound(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.PLAY_SOUND
     _sound: UInt8
     _channel: UInt8
 
@@ -3107,26 +3092,25 @@ class PlaySound(ActionScriptCommand):
     def set_channel(self, channel: int) -> None:
         assert channel in [4, 6]
         self._channel = UInt8(channel)
+        if self.channel == 4:
+            self._size = 3
+            self._opcode = bytearray([0xFD, 0x9E])
+        else:
+            self._size = 2
+            self._opcode = 0x9C
 
-    def __init__(self, sound: int, channel: int, identifier: str = None) -> None:
+    def __init__(
+        self, sound: int, channel: int, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_sound(sound)
         self.set_channel(channel)
-        if self.channel == 4:
-            self._size = 3
-        else:
-            self._size = 2
 
     def render(self) -> bytearray:
-        if self.channel == 4:
-            opcode = bytearray([0xFD, 0x9E])
-        else:
-            opcode = 0x9C
-        return super().render(opcode, self.sound)
+        return super().render(self.sound)
 
 
 class PlaySoundBalance(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.PLAY_SOUND_BALANCE
     _opcode: 0x9D
     _size: int = 3
     _sound: UInt8
@@ -3147,7 +3131,9 @@ class PlaySoundBalance(ActionScriptCommand):
     def set_balance(self, balance: int) -> None:
         self._balance = UInt8(balance)
 
-    def __init__(self, sound: int, balance: int, identifier: str = None) -> None:
+    def __init__(
+        self, sound: int, balance: int, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_sound(sound)
         self.set_balance(balance)
@@ -3157,7 +3143,6 @@ class PlaySoundBalance(ActionScriptCommand):
 
 
 class FadeOutSoundToVolume(ActionScriptCommand):
-    _command_name: ActionScriptCommandName = cmdnm.FADE_OUT_SOUND_TO_VOLUME
     _opcode: 0x9E
     _size: int = 3
     _duration: UInt8
@@ -3177,7 +3162,9 @@ class FadeOutSoundToVolume(ActionScriptCommand):
     def set_volume(self, volume: int) -> None:
         self._volume = UInt8(volume)
 
-    def __init__(self, duration: int, volume: int, identifier: str = None) -> None:
+    def __init__(
+        self, duration: int, volume: int, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_duration(duration)
         self.set_volume(volume)

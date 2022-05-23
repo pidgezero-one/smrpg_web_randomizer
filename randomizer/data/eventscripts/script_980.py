@@ -48,10 +48,13 @@ script = [
     {
         "identifier": "EVENT_980_set_7000_to_70A0_short_mem_37",
         "command": "copy_var_to_var",
-        "args": [0x70D7, 0x7000]
+        "args": [0x70D7, 0x7000],
     },
-    {"identifier": "EVENT_980_", "command": "compare_var_to_const",
-        "args": [0x7000, 255]},
+    {
+        "identifier": "EVENT_980_",
+        "command": "compare_var_to_const",
+        "args": [0x7000, 200],
+    },
     {
         "identifier": "EVENT_980_c",
         "command": "jmp_if_comparison_result_is_lesser",

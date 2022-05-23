@@ -1469,7 +1469,7 @@ class ObjectSequenceScript:
     # FD 0xB4
     def mem_700C_or_var(self, address):
         self.append_byte(0xFD)
-        self.append_byte(0xB3)
+        self.append_byte(0xB4)
         self.append_byte((address - 0x7000) // 2)
         return self
 

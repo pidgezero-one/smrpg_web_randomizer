@@ -6,19 +6,23 @@ from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2084_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7089, 5, 'EVENT_2084_ret_7']
-    },
-    {
         "identifier": 'EVENT_2084_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
         "args": [178]
     },
     {
         "identifier": 'EVENT_2084_set_bit_5',
-        "command": 'set_bit',
-        "args": [0x7089, 5]
+        "command": 'remove_object_at_70A8_from_current_level'
+    },
+    {
+        "identifier": 'EVENT_2084_remove_from_current_level_1',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_1]
+    },
+    {
+        "identifier": 'EVENT_2084_ACTION_725_remove_from_level_12',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, 189]
     },
     {
         "identifier": 'EVENT_2084_ret_7',
