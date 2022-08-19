@@ -796,7 +796,6 @@ class GameWorld:
         # Set number of star pieces required for win condition
         required_star_pieces = self.settings.get_flag(flags.TotalStarPieces).value
         self.eventscripts[1969][1]["args"] = [required_star_pieces]
-        self.eventscripts[3949][1]["args"] = [required_star_pieces]
         self.dialog_data[1][217] = "%i[await]" % required_star_pieces
 
         # Alternate star piece win conditions
@@ -1488,11 +1487,7 @@ class GameWorld:
         # Win condition
         if not self.settings.is_flag_value(flags.WinCondition, WinConditions.factory):
             self.eventscripts[984] = [
-                utils.new_command(
-                    984,
-                    "jmp_if_bit_set",
-                    [0x7052, 0, "EVENT_984_ret"]
-                ),
+                utils.new_command(984, "jmp_if_bit_set", [0x7052, 0, "EVENT_984_ret"]),
                 utils.new_command(
                     984,
                     self.eventscripts[1969][0]["command"],
@@ -1533,7 +1528,7 @@ class GameWorld:
                     {
                         "identifier": "EVENT_984_-ck2_363~",  # have castle key 2 - display hint
                         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_casino"]
+                        "args": [0x7000, 1, "EVENT_991_casino"],
                     },
                     {
                         "identifier": "EVENT_984_is_bucket_warp",
@@ -1565,7 +1560,7 @@ class GameWorld:
                         {
                             "identifier": "EVENT_984_have_ss_3",  # have fireworks
                             "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                            "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                         },
                         {
                             "identifier": "EVENT_984_have_ss-",
@@ -1579,7 +1574,7 @@ class GameWorld:
                         {
                             "identifier": "EVENT_984_have_ss_3-",  # have shiny stone
                             "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                            "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                         },
                         {
                             "identifier": "EVENT_984_have_ss--",
@@ -1593,7 +1588,7 @@ class GameWorld:
                         {
                             "identifier": "EVENT_984_have_ss_3--",  # have carbo cookie
                             "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                            "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                         },
                         {
                             "identifier": "EVENT_984_bucket_open",
@@ -1620,7 +1615,7 @@ class GameWorld:
                     {
                         "identifier": "EVENT_982_have_ss_3",  # have fireworks
                         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                        "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                     },
                     {
                         "identifier": "EVENT_982_have_ss-",
@@ -1634,7 +1629,7 @@ class GameWorld:
                     {
                         "identifier": "EVENT_982_have_ss_3-",  # have shiny stone
                         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                        "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                     },
                     {
                         "identifier": "EVENT_982_have_ss--",
@@ -1648,7 +1643,7 @@ class GameWorld:
                     {
                         "identifier": "EVENT_982_have_ss_3--",  # have cookie
                         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                        "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                     },
                     {
                         "identifier": "EVENT_982_bucket_open",
@@ -1674,7 +1669,7 @@ class GameWorld:
                         {
                             "identifier": "EVENT_984_have_ss_3--",  # have cookie
                             "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                            "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                         },
                         {
                             "identifier": "EVENT_984_bucket_open",
@@ -1701,7 +1696,7 @@ class GameWorld:
                     {
                         "identifier": "EVENT_982_have_ss_3--",  # have cookie
                         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                        "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                     },
                     {
                         "identifier": "EVENT_982_bucket_open",
@@ -1756,12 +1751,12 @@ class GameWorld:
                 {
                     "identifier": "EVENT_979_set_7000_to_70A0_short_mem_3",
                     "command": "copy_var_to_var",
-        "args": [0x70B2, 0x7000]
+                    "args": [0x70B2, 0x7000],
                 },
                 {
                     "identifier": "EVENT_979_jmp_if_7000_equals_short_4",
                     "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 4, "EVENT_991_marrymore"]
+                    "args": [0x7000, 4, "EVENT_991_marrymore"],
                 },
                 {"identifier": "EVENT_979_fw_3", "command": "ret"},
             ]
@@ -1814,7 +1809,7 @@ class GameWorld:
                     {
                         "identifier": "EVENT_986_have_ss_3",  # have fireworks
                         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_monstro"]
+                        "args": [0x7000, 1, "EVENT_991_monstro"],
                     },
                     {
                         "identifier": "EVENT_986_have_cc",
@@ -1828,7 +1823,7 @@ class GameWorld:
                     {
                         "identifier": "EVENT_986_have_cc_3",  # have cookie
                         "command": "jmp_if_var_equals_const",
-        "args": [0x7000, 1, "EVENT_991_moleville_proper"]
+                        "args": [0x7000, 1, "EVENT_991_moleville_proper"],
                     },
                     {
                         "identifier": "EVENT_949_turned_in_cookie",

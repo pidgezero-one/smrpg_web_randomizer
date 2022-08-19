@@ -1,4 +1,4 @@
-from classes import Layer
+from .classes import Layer
 
 LAYER_1 = Layer(0)
 LAYER_2 = Layer(1)

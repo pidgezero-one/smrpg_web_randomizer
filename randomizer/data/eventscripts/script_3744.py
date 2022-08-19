@@ -67,8 +67,6 @@ script = [
         ],
     },
     {"identifier": "EVENT_3744_pause_1", "command": "pause", "args": [20]},
-    {"identifier": "EVENT_3744_set_3", "command": "set_var_to_const", "args": [0x70A7, 159]},
-    {"identifier": "EVENT_3744_set_4", "command": "set_var_to_const", "args": [0x7000, 524]},
     {
         "identifier": "EVENT_3744_run_event_as_subroutine_5",
         "command": "run_event_as_subroutine",

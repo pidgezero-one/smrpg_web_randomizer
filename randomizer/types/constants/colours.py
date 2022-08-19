@@ -1,4 +1,4 @@
-from classes import Colour
+from .classes import Colour
 
 BLACK = Colour(0)
 BLUE = Colour(1)

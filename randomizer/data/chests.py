@@ -2805,7 +2805,6 @@ class MolevilleMinesShyGuy(PacketItem):
     item = items.FrogCoin
     original_item = items.FrogCoin
     access = 2
-    missable = True
 
     def can_access(self, inventory):
         return can_access_moleville_entrance(self.world, inventory) and inventory.has_item(items.BambinoBomb)

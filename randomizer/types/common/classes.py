@@ -135,9 +135,11 @@ class ScriptCommandAnySizeMem(ScriptCommand):
         return self._address
 
     def set_address(self, address: int) -> None:
-        self._address = cast_address(address)
+        self._address = address
 
-    def __init__(self, address: int, identifier: Optional[str] = None) -> None:
+    def __init__(
+        self, address: Union[ByteVar, ShortVar], identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_address(address)
 
@@ -149,10 +151,10 @@ class ScriptCommandShortMem(ScriptCommand):
     def address(self) -> ShortVar:
         return self._address
 
-    def set_address(self, address: int) -> None:
-        self._address = cast_address(address)
+    def set_address(self, address: ShortVar) -> None:
+        self._address = address
 
-    def __init__(self, address: int, identifier: Optional[str] = None) -> None:
+    def __init__(self, address: ShortVar, identifier: Optional[str] = None) -> None:
         super().__init__(identifier)
         self.set_address(address)
 
@@ -168,7 +170,7 @@ class ScriptCommandShortAddrAndValueOnly(ScriptCommand):
     def address(self) -> ShortVar:
         return self._address
 
-    def set_address(self, address: int) -> None:
+    def set_address(self, address: ShortVar) -> None:
         self._address = ShortVar(address)
 
     @property
@@ -179,7 +181,7 @@ class ScriptCommandShortAddrAndValueOnly(ScriptCommand):
         self._value = UInt16(value)
 
     def __init__(
-        self, address: int, value: int, identifier: Optional[str] = None
+        self, address: ShortVar, value: int, identifier: Optional[str] = None
     ) -> None:
         super().__init__(identifier)
         self.set_address(address)
@@ -282,6 +284,10 @@ class ScriptBank:
     _start: int
     _end: int
 
+    _addresses: "dict[str, int]"
+    _pointer_bytes: bytearray
+    _script_bytes: bytearray
+
     @property
     def pointer_table_start(self) -> int:
         return self._pointer_table_start
@@ -306,3 +312,33 @@ class ScriptBank:
 
     def __init__(self, script: "Script[int]" = []) -> None:
         self.set_contents(script)
+        self._addresses = {}
+        self._pointer_bytes = bytearray()
+        self._script_bytes = bytearray()
+
+    @property
+    def addresses(self) -> "dict[str, int]":
+        return self._addresses
+
+    @property
+    def pointer_bytes(self) -> bytearray:
+        return self._pointer_bytes
+
+    @property
+    def script_bytes(self) -> bytearray:
+        return self._script_bytes
+
+    def _populate_jumps(self, script: Script) -> None:
+        affected_commands = [
+            cmd for cmd in script if isinstance(cmd, ScriptCommandWithJmps)
+        ]
+        for command in affected_commands:
+            destination: TransformableIdentifier
+            for destination in command.destinations:
+                key: str = destination.name
+                if key not in self.addresses:
+                    raise Exception(
+                        "couldn't find destination %s in %s"
+                        % (key, command.identifier.name)
+                    )
+                destination.set_address(self.addresses[key] % 0xFFFF)

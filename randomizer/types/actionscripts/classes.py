@@ -1,6 +1,6 @@
-from typing import Optional, cast, Type
+from typing import Optional, Type, cast, Union
 
-from constants.misc import TOTAL_SCRIPTS
+from randomizer.types.actionscripts.constants.misc import TOTAL_SCRIPTS
 
 from randomizer.types.common.classes import (
     Script,
@@ -12,9 +12,9 @@ from randomizer.types.common.classes import (
     ScriptCommandShortAddrAndValueOnly,
     ScriptCommandShortMem,
     ScriptCommandWithJmps,
-    TransformableIdentifier,
 )
 from randomizer.types.numbers.classes import UInt16, UInt8
+from randomizer.types.variables.classes import ShortVar, ByteVar
 from randomizer.types.variables import variables
 
 
@@ -31,7 +31,9 @@ class ActionScriptCommandNoArgs(ActionScriptCommand, ScriptCommandNoArgs):
 
 
 class ActionScriptCommandAnySizeMem(ActionScriptCommand, ScriptCommandAnySizeMem):
-    def __init__(self, address: int, identifier: Optional[str] = None) -> None:
+    def __init__(
+        self, address: Union[ShortVar, ByteVar], identifier: Optional[str] = None
+    ) -> None:
         super().__init__(address, identifier)
 
         if self.address == variables.PRIMARY_TEMP_700C:
@@ -48,7 +50,10 @@ class ActionScriptCommandShortAddrAndValueOnly(
     ActionScriptCommand, ScriptCommandShortAddrAndValueOnly
 ):
     def __init__(
-        self, address: int, value: int, identifier: Optional[str] = None
+        self,
+        address: Union[ShortVar, ByteVar],
+        value: int,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(address, value, identifier)
 
@@ -188,6 +193,10 @@ class ActionScriptBank(ScriptBank):
     _start: int = 0x210800
     _end: int = 0x21C000
 
+    _addresses: "dict[str, int]"
+    _pointer_bytes: bytearray
+    _script_bytes: bytearray
+
     @property
     def scripts(self) -> "ActionScript[int]":
         return self._scripts
@@ -203,49 +212,62 @@ class ActionScriptBank(ScriptBank):
     def __init__(self, script: "ActionScript[int]" = []) -> None:
         super().__init__(script)
 
+    @property
+    def addresses(self) -> "dict[str, int]":
+        return self._addresses
+
+    @property
+    def pointer_bytes(self) -> bytearray:
+        return self._pointer_bytes
+
+    @property
+    def script_bytes(self) -> bytearray:
+        return self._script_bytes
+
+    def _associate_address(self, command: ActionScriptCommand, position: int) -> int:
+
+        key: str = command.identifier.name
+        if key in self.addresses:
+            raise Exception("duplicate command identifier found: %s" % key)
+        self.addresses[key] = position
+
+        position += command.size
+
+        if position >= self.end:
+            raise Exception(
+                "command exceeded max bank size: %s @ %06x" % (key, position)
+            )
+        return position
+
     def render(self) -> bytearray:
-        addresses: dict[str, int] = {}
-        position: self._start
-        pointer_bytes = bytearray()
-        script_bytes = bytearray()
+        position: int = self._start
 
         script: ActionScript
         command: ActionScriptCommand
-        destination: TransformableIdentifier
 
         # build command name : address table
         for script in self.scripts:
-            pointer_bytes.extend(UInt16(position & 0xFFFF).little_endian())
+            self.pointer_bytes.extend(UInt16(position & 0xFFFF).little_endian())
             for command in script:
-                addresses[command.identifier.name] = position
-                position += command.size
+                position = self._associate_address(command, position)
 
         # replace jump placeholders with addresses
         for script in self.scripts:
-            for command in script:
-                if isinstance(command, ActionScriptCommandWithJmps):
-                    for destination in command.destinations:
-                        key: str = destination.name
-                        if key not in addresses:
-                            raise Exception(
-                                "couldn't find destination %s in %s"
-                                % (key, command.identifier.name)
-                            )
-                        destination.set_address(addresses[key] % 0xFFFF)
+            self._populate_jumps(script)
 
         # finalize bytes
         for script in self.scripts:
-            script_bytes.extend(script.render())
+            self.script_bytes.extend(script.render())
 
         # fill empty bytes
         expected_length: int = self.end - self.start
-        final_length: int = len(script_bytes)
+        final_length: int = len(self.script_bytes)
         if final_length > expected_length:
             raise Exception(
                 "action script output too long: got %s expected %s"
                 % (final_length, expected_length)
             )
         buffer: "int[int]" = [0xFF] * expected_length - final_length
-        script_bytes.extend(bytearray(buffer))
+        self.script_bytes.extend(buffer)
 
-        return pointer_bytes + script_bytes
+        return self.pointer_bytes + self.script_bytes

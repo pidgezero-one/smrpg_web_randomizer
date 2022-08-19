@@ -45,8 +45,16 @@ from randomizer.helpers.objectsequencetables import (
 from randomizer.data import items
 
 script = [
-    {"identifier": "EVENT_2399_set_0", "command": "set_var_to_const", "args": [0x70DF, 5]},
-    {"identifier": "EVENT_2399_set_2", "command": "set_var_to_const", "args": [0x70C0, 219]},
+    {
+        "identifier": "EVENT_2399_set_0",
+        "command": "set_var_to_const",
+        "args": [0x70DF, 5],
+    },
+    {
+        "identifier": "EVENT_2399_set_2",
+        "command": "set_var_to_const",
+        "args": [0x70C0, 219],
+    },
     {
         "identifier": "EVENT_2399_action_queue_async_3",
         "command": "action_queue",
@@ -63,11 +71,6 @@ script = [
         "identifier": "EVENT_2399_jmp_if_bit_clear_4",
         "command": "jmp_if_bit_clear",
         "args": [0x708F, 3, "EVENT_2399_fade_in_music_10"],
-    },
-    {
-        "identifier": "EVENT_2399_clear_bit_5",
-        "command": "clear_bit",
-        "args": [0x708F, 3],
     },
     {
         "identifier": "EVENT_2399_fade_in_from_black_async_6",
@@ -166,7 +169,7 @@ script = [
     {
         "identifier": "EVENT_2399_set_action_script_async_17",
         "command": "set_action_script",
-        "args": [AreaObjects.MARIO, False, 395]
+        "args": [AreaObjects.MARIO, False, 395],
     },
     {"identifier": "EVENT_2399_unfreeze_camera_109", "command": "unfreeze_camera"},
     {
@@ -188,6 +191,11 @@ script = [
         "identifier": "EVENT_2399_run_event_as_subroutine_25__",
         "command": "run_event_as_subroutine",
         "args": [3915],
+    },
+    {
+        "identifier": "EVENT_2399_set_bit_5",
+        "command": "set_bit",
+        "args": [0x708F, 3],
     },
     {"identifier": "EVENT_2399_ret_4", "command": "ret"},
 ]

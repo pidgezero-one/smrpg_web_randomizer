@@ -11,11 +11,11 @@ from randomizer.types.common.classes import (
     ScriptCommandWithJmps,
     ScriptCommandAnySizeMem,
     ScriptCommandShortMem,
-    TransformableIdentifier,
 )
 from randomizer.types.constants.classes import AreaObject
 from randomizer.types.eventscripts.constants.misc import TOTAL_SCRIPTS
 from randomizer.types.numbers.classes import UInt16, UInt8
+from randomizer.types.variables.classes import ShortVar, ByteVar
 from randomizer.types.variables import variables
 
 
@@ -32,7 +32,9 @@ class EventScriptCommandWithJmps(EventScriptCommand, ScriptCommandWithJmps):
 
 
 class EventScriptCommandAnySizeMem(EventScriptCommand, ScriptCommandAnySizeMem):
-    def __init__(self, address: int, identifier: Optional[str] = None) -> None:
+    def __init__(
+        self, address: Union[ByteVar, ShortVar], identifier: Optional[str] = None
+    ) -> None:
         super().__init__(address, identifier)
 
         if self.address == variables.PRIMARY_TEMP_7000:
@@ -49,7 +51,10 @@ class EventScriptCommandShortAddrAndValueOnly(
     EventScriptCommand, ScriptCommandShortAddrAndValueOnly
 ):
     def __init__(
-        self, address: int, value: int, identifier: Optional[str] = None
+        self,
+        address: Union[ByteVar, ShortVar],
+        value: int,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(address, value, identifier)
 
@@ -356,78 +361,68 @@ class EventScriptBank(ScriptBank):
         self.set_end(end)
         super().__init__(script)
 
+    def _associate_address(
+        self, command: Union[EventScriptCommand, ActionScriptCommand], position: int
+    ) -> int:
+
+        key: str = command.identifier.name
+        if key in self.addresses:
+            raise Exception("duplicate command identifier found: %s" % key)
+        self.addresses[key] = position
+
+        if isinstance(command, EventScriptCommandActionScriptContainer):
+            position += command.header_size
+            action_command: ActionScriptCommand
+            for action_command in command.subscript:
+                position = self._associate_address(action_command, position)
+        else:
+            position += command.size
+
+        if position >= self.end:
+            raise Exception(
+                "command exceeded max bank size: %s @ %06x" % (key, position)
+            )
+        return position
+
     def render(self) -> bytearray:
-        # edit this
-        addresses: dict[str, int] = {}
-        position: self._start
-        pointer_bytes = bytearray()
-        script_bytes = bytearray()
+        position: int = self._start
 
         script: EventScript
         command: EventScriptCommand
 
-        def associate_address(
-            command: Union[EventScriptCommand, ActionScriptCommand], position: int
-        ) -> int:
-            key: str = command.identifier.name
-            if key in addresses:
-                raise Exception("duplicate command identifier found: %s" % key)
-            addresses[command.identifier.name] = position
-            # include subscript commands, advancing by header size and then subscript command sizes, if this is an embedded action script
-            if isinstance(command, EventScriptCommandActionScriptContainer):
-                position += command.header_size
-                action_command: ActionScriptCommand
-                for action_command in command.subscript:
-                    position = associate_address(action_command, position)
-            # otherwise just advance by command size
-            else:
-                position += command.size
-            return position
-
         # build command name and pointer table : address table
         for script in self.scripts:
-            pointer_bytes.extend(UInt16(position & 0xFFFF).little_endian())
+            self.pointer_bytes.extend(UInt16(position & 0xFFFF).little_endian())
             for command in script:
-                position = associate_address(command, position)
+                position = self._associate_address(command, position)
 
         # replace jump placeholders with addresses
-        def populate_jumps(script: Union[EventScript, ActionScript]):
-            affected_commands = [
-                cmd for cmd in script if isinstance(cmd, ScriptCommandWithJmps)
-            ]
-            for command in affected_commands:
-                destination: TransformableIdentifier
-                for destination in command.destinations:
-                    key: str = destination.name
-                    if key not in addresses:
-                        raise Exception(
-                            "couldn't find destination %s in %s"
-                            % (key, command.identifier.name)
-                        )
-                    destination.set_address(addresses[key] % 0xFFFF)
-
         for script in self.scripts:
-            populate_jumps(script)
-            for command in script:
-                if isinstance(command, EventScriptCommandActionScriptContainer):
-                    populate_jumps(command.subscript)
+            self._populate_jumps(script)
+            commands_with_subscripts = [
+                cmd
+                for cmd in script
+                if isinstance(cmd, EventScriptCommandActionScriptContainer)
+            ]
+            for command in commands_with_subscripts:
+                self._populate_jumps(command.subscript)
 
         # finalize bytes
         for script in self.scripts:
-            script_bytes.extend(script.render())
+            self.script_bytes.extend(script.render())
 
         # fill empty bytes
         expected_length: int = self.end - self.start
-        final_length: int = len(script_bytes)
+        final_length: int = len(self.script_bytes)
         if final_length > expected_length:
             raise Exception(
                 "Event script output too long: got %s expected %s"
                 % (final_length, expected_length)
             )
         buffer: "int[int]" = [0xFF] * expected_length - final_length
-        script_bytes.extend(bytearray(buffer))
+        self.script_bytes.extend(buffer)
 
-        return pointer_bytes + script_bytes
+        return self.pointer_bytes + self.script_bytes
 
 
 class EventScriptController:

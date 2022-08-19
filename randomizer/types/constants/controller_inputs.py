@@ -1,5 +1,5 @@
 from msilib.schema import Control
-from classes import ControllerInput
+from .classes import ControllerInput
 
 LEFT = ControllerInput(0)
 RIGHT = ControllerInput(1)

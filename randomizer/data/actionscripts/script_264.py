@@ -18,7 +18,4 @@ from randomizer.helpers.eventtables import (
     Rooms,
 )
 
-script = [
-    {"identifier": "ACTION_264_stop_sound_0", "command": "floating_on"},
-    {"identifier": "ACTION_264_stop_sound_1", "command": "ret"},
-]
+script = []

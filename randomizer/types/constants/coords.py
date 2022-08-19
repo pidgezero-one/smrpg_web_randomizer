@@ -1,4 +1,4 @@
-from classes import Coord
+from .classes import Coord
 
 X = Coord(0x00)
 Y = Coord(0x01)

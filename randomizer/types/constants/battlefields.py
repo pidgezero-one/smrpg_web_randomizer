@@ -1,4 +1,4 @@
-from classes import Battlefield
+from .classes import Battlefield
 
 BF01_FOREST_MAZE_BOWYERS_PAD = Battlefield(1)
 BF02_BEAN_VALLEY_BEANSTALKS = Battlefield(2)

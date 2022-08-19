@@ -1,0 +1,90 @@
+#classes
+from randomizer.types.actionscripts.commands import *
+from randomizer.types.actionscripts.classes import ActionScript
+#ids
+from randomizer.types.eventscripts.constants.script_ids import *
+from randomizer.types.actionscripts.constants.script_ids import *
+from randomizer.types.packets.constants.packet_ids import *
+from randomizer.types.constants.sound_names import *
+from randomizer.types.constants.directions import *
+#types
+from randomizer.types.constants.area_objects import *
+from randomizer.types.constants.coords import *
+from randomizer.types.actionscripts.constants.sequence_speeds import *
+from randomizer.types.actionscripts.constants.vram_priority import *
+from randomizer.types.variables.variables import *
+
+script = ActionScript([
+	JmpIfBitSet(FOREST_LIBERATED, ["ACTION_488_clear_bit_10"]),
+	JmpIfBitSet(DIRECTIONAL_7045_5, ["ACTION_488_clear_bit_10"]),
+	JmpIfBitSet(DIRECTIONAL_7045_7, ["ACTION_488_clear_bit_10"]),
+	JmpIfBitSet(DIRECTIONAL_7046_0, ["ACTION_488_clear_bit_10"]),
+	JmpIfBitSet(DIRECTIONAL_7045_0, ["ACTION_488_shift_to_xy_coords_24"]),
+	JmpIfBitSet(DIRECTIONAL_7045_1, ["ACTION_488_shift_to_xy_coords_36"]),
+	JmpIfBitSet(DIRECTIONAL_7045_2, ["ACTION_488_clear_bit_10"]),
+	JmpIfBitSet(DIRECTIONAL_7045_3, ["ACTION_488_shift_to_xy_coords_48"]),
+	JmpIfBitSet(DIRECTIONAL_7045_4, ["ACTION_488_shift_to_xy_coords_60"]),
+	JmpIfBitSet(DIRECTIONAL_7046_1, ["ACTION_488_shift_to_xy_coords_13"]),
+	ClearBit(DIRECTIONAL_7045_5, identifier="ACTION_488_clear_bit_10"),
+	VisibilityOff(),
+	Return(),
+	ShiftToXYCoords(x=8, y=61, identifier="ACTION_488_shift_to_xy_coords_13"),
+	SetSpriteSequence(index=8, is_sequence=True, mirror_sprite=True),
+	Pause(2, identifier="ACTION_488_pause_15"),
+	JmpIfObjectWithinRangeSameZ(object=MARIO, usually=0, tiles=5, destinations=["ACTION_488_set_animation_speed_18"]),
+	Jmp(["ACTION_488_pause_15"]),
+	SetSequenceSpeed(speed=FAST, identifier="ACTION_488_set_animation_speed_18"),
+	SetSpriteSequence(index=0, is_sequence=True, mirror_sprite=True),
+	ShiftSoutheastSteps(2),
+	ShiftSoutheastPixels(8),
+	VisibilityOff(),
+	Return(),
+	ShiftToXYCoords(x=8, y=47, identifier="ACTION_488_shift_to_xy_coords_24"),
+	ShiftSoutheastPixels(8),
+	SetSpriteSequence(index=9, is_sequence=True, mirror_sprite=True),
+	Pause(2, identifier="ACTION_488_pause_27"),
+	JmpIfObjectWithinRangeSameZ(object=MARIO, usually=0, tiles=5, destinations=["ACTION_488_set_animation_speed_30"]),
+	Jmp(["ACTION_488_pause_27"]),
+	SetSequenceSpeed(speed=FAST, identifier="ACTION_488_set_animation_speed_30"),
+	SetSpriteSequence(index=1, is_sequence=True, mirror_sprite=True),
+	ShiftNortheastSteps(2),
+	ShiftNortheastPixels(8),
+	VisibilityOff(),
+	Return(),
+	ShiftToXYCoords(x=8, y=47, identifier="ACTION_488_shift_to_xy_coords_36"),
+	ShiftSoutheastPixels(8),
+	SetSpriteSequence(index=6, is_sequence=True, mirror_sprite=True),
+	Pause(2, identifier="ACTION_488_pause_39"),
+	JmpIfObjectWithinRangeSameZ(object=MARIO, usually=0, tiles=5, destinations=["ACTION_488_set_animation_speed_42"]),
+	Jmp(["ACTION_488_pause_39"]),
+	SetSequenceSpeed(speed=FAST, identifier="ACTION_488_set_animation_speed_42"),
+	SetSpriteSequence(index=1, is_sequence=True, mirror_sprite=True),
+	ShiftNortheastSteps(2),
+	ShiftNortheastPixels(8),
+	VisibilityOff(),
+	Return(),
+	ShiftToXYCoords(x=8, y=47, identifier="ACTION_488_shift_to_xy_coords_48"),
+	ShiftSoutheastPixels(8),
+	SetSpriteSequence(index=9, is_sequence=True, mirror_sprite=True),
+	Pause(2, identifier="ACTION_488_pause_51"),
+	JmpIfObjectWithinRangeSameZ(object=MARIO, usually=0, tiles=5, destinations=["ACTION_488_set_animation_speed_54"]),
+	Jmp(["ACTION_488_pause_51"]),
+	SetSequenceSpeed(speed=FAST, identifier="ACTION_488_set_animation_speed_54"),
+	SetSpriteSequence(index=1, is_sequence=True, mirror_sprite=True),
+	ShiftNortheastSteps(2),
+	ShiftNortheastPixels(8),
+	VisibilityOff(),
+	Return(),
+	ShiftToXYCoords(x=3, y=47, identifier="ACTION_488_shift_to_xy_coords_60"),
+	SetSequenceSpeed(speed=FAST),
+	SetSpriteSequence(index=6, sprite_offset=1, is_sequence=True, mirror_sprite=True),
+	Pause(52),
+	SetSequenceSpeed(speed=NORMAL),
+	SetSpriteSequence(index=3, sprite_offset=1, looping_off=True, mirror_sprite=True),
+	Pause(16),
+	SetSequenceSpeed(speed=FAST),
+	SetSpriteSequence(index=1, is_sequence=True),
+	ShiftNorthwestSteps(2),
+	VisibilityOff(),
+	Return()
+])

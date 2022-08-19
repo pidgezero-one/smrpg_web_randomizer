@@ -1,4 +1,4 @@
-from classes import AreaObject
+from .classes import AreaObject
 
 MARIO = AreaObject(0x00)
 TOADSTOOL = AreaObject(0x01)

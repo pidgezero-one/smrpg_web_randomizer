@@ -84,7 +84,11 @@ script = [
         "args": [[_0x0AFlags.CANT_WALK_THROUGH]],
     },
     {"identifier": "ACTION_713_visibility_off_14", "command": "visibility_off"},
-    {"identifier": "ACTION_713_set_15", "command": "set_var_to_const", "args": [0x70AE, 0]},
+    {
+        "identifier": "ACTION_713_set_15",
+        "command": "set_var_to_const",
+        "args": [0x70AE, 0],
+    },
     {"identifier": "ACTION_713_pause_16", "command": "pause", "args": [56]},
     {
         "identifier": "ACTION_713_set_var_to_random_17",
@@ -185,7 +189,11 @@ script = [
         "args": [[_0x0AFlags.CANT_WALK_THROUGH]],
     },
     {"identifier": "ACTION_713_visibility_off_43", "command": "visibility_off"},
-    {"identifier": "ACTION_713_set_44", "command": "set_var_to_const", "args": [0x70AE, 0]},
+    {
+        "identifier": "ACTION_713_set_44",
+        "command": "set_var_to_const",
+        "args": [0x70AE, 0],
+    },
     {
         "identifier": "ACTION_713_set_var_to_random_45",
         "command": "set_var_to_random",
@@ -194,25 +202,33 @@ script = [
     {
         "identifier": "ACTION_713_set_7000_short_mem_to_700C_46",
         "command": "copy_var_to_var",
-        "args": [0x700C, 0x7034]
+        "args": [0x700C, 0x7034],
     },
     {
         "identifier": "ACTION_713_mem_compare_val_47",
         "command": "compare_var_to_const",
-        "args": [0x700C, 16384]
+        "args": [0x700C, 16384],
     },
     {
         "identifier": "ACTION_713_jmp_if_comparison_result_is_lesser_48",
         "command": "jmp_if_comparison_result_is_lesser",
         "args": ["ACTION_713_set_51"],
     },
-    {"identifier": "ACTION_713_set_49", "command": "set_var_to_const", "args": [0x700C, 1]},
+    {
+        "identifier": "ACTION_713_set_49",
+        "command": "set_var_to_const",
+        "args": [0x700C, 1],
+    },
     {
         "identifier": "ACTION_713_jmp_50",
         "command": "jmp",
         "args": ["ACTION_713_add_short_mem_52"],
     },
-    {"identifier": "ACTION_713_set_51", "command": "set_var_to_const", "args": [0x700C, 0]},
+    {
+        "identifier": "ACTION_713_set_51",
+        "command": "set_var_to_const",
+        "args": [0x700C, 0],
+    },
     {
         "identifier": "ACTION_713_add_short_mem_52",
         "command": "add_var_to_700C",
@@ -221,12 +237,12 @@ script = [
     {
         "identifier": "ACTION_713_set_7000_short_mem_to_700C_53",
         "command": "copy_var_to_var",
-        "args": [0x700C, 0x7026]
+        "args": [0x700C, 0x7026],
     },
     {
         "identifier": "ACTION_713_set_70A0_short_mem_to_700C_54",
         "command": "copy_var_to_var",
-        "args": [0x700C, 0x70A9]
+        "args": [0x700C, 0x70A9],
     },
     {
         "identifier": "ACTION_713_object_memory_set_bit_55",
@@ -253,12 +269,12 @@ script = [
     {
         "identifier": "ACTION_713_set_700C_to_7000_short_mem_61",
         "command": "copy_var_to_var",
-        "args": [0x7026, 0x700C]
+        "args": [0x7026, 0x700C],
     },
     {
         "identifier": "ACTION_713_dec_short_mem_62",
-        "command": "dec_short_mem_from_700C'
-        "args": [0x7024]
+        "command": "dec_short_mem_from_700C",
+        "args": [0x7024],
     },
     {
         "identifier": "ACTION_713_jmp_if_700C_equals_short_63",

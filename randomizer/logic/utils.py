@@ -384,11 +384,7 @@ def fix_directions_for_sequenced_sprite(
 
 def is_mario_animation_header(command):
     return (
-        command["command"]
-        in [
-            "action_queue
-            "start_embedded_action_script
-        ]
+        command["command"] in ["action_queue", "start_embedded_action_script"]
         and command["args"][0] == AreaObjects.MARIO
     )
 

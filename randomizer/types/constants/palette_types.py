@@ -1,4 +1,4 @@
-from classes import PaletteType
+from .classes import PaletteType
 
 NOTHING = PaletteType(0x00)
 GLOW = PaletteType(0x06)

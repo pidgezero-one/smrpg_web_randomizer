@@ -1,0 +1,72 @@
+#classes
+from randomizer.types.actionscripts.commands import *
+from randomizer.types.actionscripts.classes import ActionScript
+#ids
+from randomizer.types.eventscripts.constants.script_ids import *
+from randomizer.types.actionscripts.constants.script_ids import *
+from randomizer.types.packets.constants.packet_ids import *
+from randomizer.types.constants.sound_names import *
+from randomizer.types.constants.directions import *
+#types
+from randomizer.types.constants.area_objects import *
+from randomizer.types.constants.coords import *
+from randomizer.types.actionscripts.constants.sequence_speeds import *
+from randomizer.types.actionscripts.constants.vram_priority import *
+from randomizer.types.variables.variables import *
+
+script = ActionScript([
+	SetVarToConst(TEMP_70AE, 20, identifier="ACTION_21_set_0"),
+	SetWalkingSpeed(speed=SLOW),
+	ShiftSoutheastSteps(2),
+	Inc(TEMP_70AE),
+	Inc(TEMP_70AE),
+	Pause(20),
+	JmpIfRandom1of2(["ACTION_21_turn_random_direction_9"]),
+	Walk1StepNorthwest(),
+	Dec(TEMP_70AE),
+	TurnRandomDirection(identifier="ACTION_21_turn_random_direction_9"),
+	Pause(10),
+	Walk1StepSoutheast(),
+	Inc(TEMP_70AE),
+	JmpIfRandom2of3(['ACTION_21_turn_random_direction_9', 'ACTION_21_set_animation_speed_29']),
+	Pause(20, identifier="ACTION_21_pause_14"),
+	SetWalkingSpeed(speed=VERY_SLOW),
+	ShiftSoutheastSteps(3),
+	Inc(TEMP_70AE),
+	Inc(TEMP_70AE),
+	Inc(TEMP_70AE),
+	JmpToSubroutine(["ACTION_21_set_700C_to_70A0_short_mem_40"]),
+	JmpIfVarEqualsConst(TEMP_70AF, 1, ["ACTION_21_pause_32"]),
+	TurnRandomDirection(),
+	Pause(30),
+	ShiftNorthwestSteps(2),
+	Dec(TEMP_70AE),
+	Dec(TEMP_70AE),
+	JmpIfRandom1of2(["ACTION_21_pause_32"]),
+	Pause(10),
+	SetWalkingSpeed(speed=SLOW, identifier="ACTION_21_set_animation_speed_29"),
+	Walk1StepNorthwest(),
+	Dec(TEMP_70AE),
+	Pause(20, identifier="ACTION_21_pause_32"),
+	ShiftNorthwestSteps(3),
+	Dec(TEMP_70AE),
+	Dec(TEMP_70AE),
+	Dec(TEMP_70AE),
+	JmpToSubroutine(["ACTION_21_set_700C_to_70A0_short_mem_40"]),
+	JmpIfVarEqualsConst(TEMP_70AF, 2, ["ACTION_21_pause_14"]),
+	Jmp(["ACTION_21_set_0"]),
+	CopyVarToVar(from_var=TEMP_70AE, to_var=PRIMARY_TEMP_700C, identifier="ACTION_21_set_700C_to_70A0_short_mem_40"),
+	CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_702C),
+	CompareVarToConst(TEMP_702C, 28),
+	JmpIfComparisonResultIsGreaterOrEqual(["ACTION_21_set_48"]),
+	CompareVarToConst(TEMP_702C, 13),
+	JmpIfComparisonResultIsLesser(["ACTION_21_set_51"]),
+	SetVarToConst(TEMP_70AF, 0),
+	Return(),
+	SetVarToConst(TEMP_70AF, 1, identifier="ACTION_21_set_48"),
+	SetVarToConst(TEMP_70AE, 23),
+	Return(),
+	SetVarToConst(TEMP_70AF, 2, identifier="ACTION_21_set_51"),
+	SetVarToConst(TEMP_70AE, 17),
+	Return()
+])

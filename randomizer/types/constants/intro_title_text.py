@@ -1,4 +1,4 @@
-from classes import IntroTitleText
+from .classes import IntroTitleText
 
 SUPER_MARIO = IntroTitleText(0)
 PRINCESS_TOADSTOOL = IntroTitleText(0)

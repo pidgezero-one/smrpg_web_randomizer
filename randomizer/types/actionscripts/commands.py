@@ -1085,41 +1085,43 @@ class SetVarToConst(ActionScriptCommand):
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
+    def set_value_and_address(self, value=None, address=None) -> None:
+        if value is None:
+            value = self.value
+        try:
+            value = UInt8(value)
+        except:
+            value = UInt16(value)
+        if address is None:
+            address = self.address
+        if isinstance(value, UInt16) and isinstance(address, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%02x %r:"
+                % (self.identifier.name, self.address, self.value)
+            )
+        if address == variables.PRIMARY_TEMP_700C or isinstance(address, ByteVar):
+            self._size = 3
+        else:
+            self._size = 4
+        self._address = address
+        self._value = value
+
     @property
     def value(self) -> Union[UInt8, UInt16]:
         return self._value
-
-    def set_value(self, value: int) -> None:
-        try:
-            self.value = UInt8(value)
-        except:
-            self.value = UInt16(value)
 
     @property
     def address(self) -> Union[ShortVar, ByteVar]:
         return self._address
 
-    def set_address(self, address: Union[UInt8, UInt16]) -> None:
-        self._address = address
-        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 3
-        else:
-            self._size = 4
-
     def __init__(
-        self, address: int, value: int, identifier: Optional[str] = None
+        self,
+        address: Union[ShortVar, ByteVar],
+        value: int,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
-        self.set_value(value)
-        if isinstance(self.value, UInt8):
-            try:
-                self.set_address(ByteVar(address))
-            except:
-                self.set_address(ShortVar(address))
-        else:
-            self.set_address(ShortVar(address))
+        self.set_value_and_address(address, value)
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1139,41 +1141,43 @@ class AddConstToVar(ActionScriptCommand):
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
+    def set_value_and_address(self, value=None, address=None) -> None:
+        if value is None:
+            value = self.value
+        try:
+            value = UInt8(value)
+        except:
+            value = UInt16(value)
+        if address is None:
+            address = self.address
+        if isinstance(value, UInt16) and isinstance(address, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%02x %r:"
+                % (self.identifier.name, self.address, self.value)
+            )
+        if address == variables.PRIMARY_TEMP_700C or isinstance(address, ByteVar):
+            self._size = 3
+        else:
+            self._size = 4
+        self._address = address
+        self._value = value
+
     @property
     def value(self) -> Union[UInt8, UInt16]:
         return self._value
-
-    def set_value(self, value: int) -> None:
-        try:
-            self.value = UInt8(value)
-        except:
-            self.value = UInt16(value)
 
     @property
     def address(self) -> Union[ShortVar, ByteVar]:
         return self._address
 
-    def set_address(self, address: Union[UInt8, UInt16]) -> None:
-        self._address = address
-        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 3
-        else:
-            self._size = 4
-
     def __init__(
-        self, address: int, value: int, identifier: Optional[str] = None
+        self,
+        address: Union[ShortVar, ByteVar],
+        value: int,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
-        self.set_value(value)
-        if isinstance(self.value, UInt8):
-            try:
-                self.set_address(ByteVar(address))
-            except:
-                self.set_address(ShortVar(address))
-        else:
-            self.set_address(ShortVar(address))
+        self.set_value_and_address(address, value)
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1218,82 +1222,67 @@ class Dec(ActionScriptCommandAnySizeMem):
 
 
 class CopyVarToVar(ActionScriptCommand):
-    _address_left: Union[ShortVar, ByteVar]
-    _address_right: Union[ShortVar, ByteVar]
+    _from_var: Union[ShortVar, ByteVar]
+    _to_var: Union[ShortVar, ByteVar]
 
-    def _set_size(self):
+    def set_addresses(self, from_var=None, to_var=None):
+        if from_var is None:
+            from_var = self.from_var
+        if to_var is None:
+            to_var = self.to_var
+        if isinstance(from_var, ByteVar) and isinstance(to_var, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%04x 0x%04x:"
+                % (self.identifier.name, from_var, to_var)
+            )
         if (
-            self.address_left != variables.PRIMARY_TEMP_700C
-            and self.address_right != variables.PRIMARY_TEMP_700C
+            self.from_var != variables.PRIMARY_TEMP_700C
+            and self.to_var != variables.PRIMARY_TEMP_700C
         ):
             self._size = 3
         else:
             self._size = 2
 
     @property
-    def address_left(self) -> Union[ShortVar, ByteVar]:
-        return self._address_left
-
-    def set_address_left(self, address_left: Union[ShortVar, ByteVar]) -> None:
-        self._address_left = address_left
-        self._set_size()
-
-    def cast_address_left(self, address_left: int) -> None:
-        self.set_address_left(cast_address(address_left))
+    def from_var(self) -> Union[ShortVar, ByteVar]:
+        return self._from_var
 
     @property
-    def address_right(self) -> Union[ShortVar, ByteVar]:
-        return self._address_right
-
-    def set_address_right(self, address_right: int) -> None:
-        self._address_right = cast_address(address_right)
-        self._set_size()
-
-    def cast_address_right(self, address_right: int) -> None:
-        self.set_address_right(cast_address(address_right))
+    def to_var(self) -> Union[ShortVar, ByteVar]:
+        return self._to_var
 
     def __init__(
         self,
-        address_left: int,
-        address_right: int,
+        from_var: Union[ShortVar, ByteVar],
+        to_var: Union[ShortVar, ByteVar],
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
-        if address_left == variables.PRIMARY_TEMP_700C:
-            self.set_address_left(ShortVar(address_left))
-            self.cast_address_right(address_right)
-        elif address_right == variables.PRIMARY_TEMP_700C:
-            self.cast_address_left(address_left)
-            self.set_address_right(ShortVar(address_right))
-        else:
-            self.set_address_left(ShortVar(address_left))
-            self.set_address_right(ShortVar(address_right))
+        self.set_addresses(from_var, to_var)
 
     def render(self) -> bytearray:
-        if self.address_right == variables.PRIMARY_TEMP_700C and isinstance(
-            self.address_left, ByteVar
+        if self.to_var == variables.PRIMARY_TEMP_700C and isinstance(
+            self.from_var, ByteVar
         ):
-            return super().render(0xB4, self.address_left)
-        elif self.address_left == variables.PRIMARY_TEMP_700C and isinstance(
-            self.address_right, ByteVar
+            return super().render(0xB4, self.from_var)
+        elif self.from_var == variables.PRIMARY_TEMP_700C and isinstance(
+            self.to_var, ByteVar
         ):
-            return super().render(0xB5, self.address_right)
-        elif self.address_right == variables.PRIMARY_TEMP_700C and isinstance(
-            self.address_left, ShortVar
+            return super().render(0xB5, self.to_var)
+        elif self.to_var == variables.PRIMARY_TEMP_700C and isinstance(
+            self.from_var, ShortVar
         ):
-            return super().render(0xBA, self.address_left)
-        elif self.address_left == variables.PRIMARY_TEMP_700C and isinstance(
-            self.address_right, ShortVar
+            return super().render(0xBA, self.from_var)
+        elif self.from_var == variables.PRIMARY_TEMP_700C and isinstance(
+            self.to_var, ShortVar
         ):
-            return super().render(0xBB, self.address_right)
-        elif isinstance(self.address_left, ShortVar) and isinstance(
-            self.address_right, ShortVar
-        ):
-            return super().render(0xBC, self.address_left, self.address_right)
+            return super().render(0xBB, self.to_var)
+        elif isinstance(self.from_var, ShortVar) and isinstance(self.to_var, ShortVar):
+            return super().render(0xBC, self.from_var, self.to_var)
         else:
             raise Exception(
                 "illegal args for %s: 0x%04x 0x%04x:"
-                % (self.identifier.name, self.address_left, self.address_right)
+                % (self.identifier.name, self.from_var, self.to_var)
             )
 
 
@@ -1350,35 +1339,35 @@ class DecVarFrom700C(ActionScriptCommandShortMem):
 class SwapVars(ActionScriptCommand):
     _opcode: int = 0xBD
     _size: int = 3
-    _address_left: ShortVar
-    _address_right: ShortVar
+    _from_var: ShortVar
+    _to_var: ShortVar
 
     @property
-    def address_left(self) -> ShortVar:
-        return self._address_left
+    def from_var(self) -> ShortVar:
+        return self._from_var
 
-    def set_address_left(self, address_left: int) -> None:
-        self._address_left = ShortVar(address_left)
+    def set_from_var(self, from_var: ShortVar) -> None:
+        self._from_var = from_var
 
     @property
-    def address_right(self) -> ShortVar:
-        return self._address_right
+    def to_var(self) -> ShortVar:
+        return self._to_var
 
-    def set_address_right(self, address_right: int) -> None:
-        self._address_right = ShortVar(address_right)
+    def set_to_var(self, to_var: ShortVar) -> None:
+        self._to_var = to_var
 
     def __init__(
         self,
-        address_left: int,
-        address_right: int,
+        from_var: ShortVar,
+        to_var: ShortVar,
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
-        self.set_address_left(address_left)
-        self.set_address_right(address_right)
+        self.set_from_var(from_var)
+        self.set_to_var(to_var)
 
     def render(self) -> bytearray:
-        return super().render(self.address_left, self.address_right)
+        return super().render(self.from_var, self.to_var)
 
 
 class Move70107015To7016701B(ActionScriptCommandNoArgs):
@@ -1393,45 +1382,46 @@ class JmpIfVarEqualsConst(ActionScriptCommandWithJmps):
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
+    def set_value_and_address(
+        self, value: int = None, address: Union[ByteVar, ShortVar] = None
+    ) -> None:
+        if value is None:
+            value = self.value
+        try:
+            value = UInt8(value)
+        except:
+            value = UInt16(value)
+        if address is None:
+            address = self.address
+        if isinstance(value, UInt16) and isinstance(address, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%02x %r:"
+                % (self.identifier.name, self.address, self.value)
+            )
+        if address == variables.PRIMARY_TEMP_700C or isinstance(address, ByteVar):
+            self._size = 5
+        else:
+            self._size = 6
+        self._address = address
+        self._value = value
+
     @property
     def value(self) -> Union[UInt8, UInt16]:
         return self._value
-
-    def set_value(self, value: int) -> None:
-        try:
-            self.value = UInt8(value)
-        except:
-            self.value = UInt16(value)
 
     @property
     def address(self) -> Union[ShortVar, ByteVar]:
         return self._address
 
-    def set_address(self, address: Union[UInt8, UInt16]) -> None:
-        self._address = address
-        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 5
-        else:
-            self._size = 6
-
     def __init__(
         self,
-        address: int,
+        address: Union[ByteVar, ShortVar],
         value: int,
         destinations: "str[int]",
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_value(value)
-        if isinstance(self.value, UInt8):
-            try:
-                self.set_address(ByteVar(address))
-            except:
-                self.set_address(ShortVar(address))
-        else:
-            self.set_address(ShortVar(address))
+        self.set_value_and_address(value, address)
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1453,45 +1443,44 @@ class JmpIfVarNotEqualsConst(ActionScriptCommandWithJmps):
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
+    def set_value_and_address(self, value=None, address=None) -> None:
+        if value is None:
+            value = self.value
+        try:
+            value = UInt8(value)
+        except:
+            value = UInt16(value)
+        if address is None:
+            address = self.address
+        if isinstance(value, UInt16) and isinstance(address, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%02x %r:"
+                % (self.identifier.name, self.address, self.value)
+            )
+        if address == variables.PRIMARY_TEMP_700C or isinstance(address, ByteVar):
+            self._size = 5
+        else:
+            self._size = 6
+        self._address = address
+        self._value = value
+
     @property
     def value(self) -> Union[UInt8, UInt16]:
         return self._value
-
-    def set_value(self, value: int) -> None:
-        try:
-            self.value = UInt8(value)
-        except:
-            self.value = UInt16(value)
 
     @property
     def address(self) -> Union[ShortVar, ByteVar]:
         return self._address
 
-    def set_address(self, address: Union[UInt8, UInt16]) -> None:
-        self._address = address
-        if self.address == variables.PRIMARY_TEMP_700C or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 5
-        else:
-            self._size = 6
-
     def __init__(
         self,
-        address: int,
+        address: Union[ByteVar, ShortVar],
         value: int,
         destinations: "str[int]",
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_value(value)
-        if isinstance(self.value, UInt8):
-            try:
-                self.set_address(ByteVar(address))
-            except:
-                self.set_address(ShortVar(address))
-        else:
-            self.set_address(ShortVar(address))
+        self.set_value_and_address(address, value)
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1565,7 +1554,7 @@ class JmpIf700CAnyBitsSet(ActionScriptCommandWithJmps):
         return super().render(flags, *self.destinations)
 
 
-class JmpIfRandomAbove66(ActionScriptCommandWithJmps):
+class JmpIfRandom2of3(ActionScriptCommandWithJmps):
     _opcode: int = 0xE9
     _size: int = 5
 
@@ -1573,7 +1562,7 @@ class JmpIfRandomAbove66(ActionScriptCommandWithJmps):
         return super().render(*self.destinations)
 
 
-class JmpIfRandomAbove128(ActionScriptCommandWithJmps):
+class JmpIfRandom1of2(ActionScriptCommandWithJmps):
     _opcode: int = 0xE8
     _size: int = 3
 
@@ -1650,25 +1639,31 @@ class VarShiftLeft(ActionScriptCommand):
     def address(self) -> ShortVar:
         return self._address
 
-    def set_address(self, address: int) -> None:
-        self._address = ShortVar(address)
+    def set_address(self, address: ShortVar) -> None:
+        self._address = address
 
     @property
     def shift(self) -> UInt8:
-        return self._shift
+        return self._shift + 1
 
     def set_shift(self, shift: int) -> None:
-        self._shift = UInt8(shift)
+        assert 1 <= shift <= 256
+        self._shift = UInt8(shift - 1)
 
     def __init__(
-        self, address: int, shift: int, identifier: Optional[str] = None
+        self, address: ShortVar, shift: int, identifier: Optional[str] = None
     ) -> None:
         super().__init__(identifier)
         self.set_address(address)
         self.set_shift(shift)
 
     def render(self) -> bytearray:
-        return super().render(self.address, self.shift)
+        return super().render(self.address, 0xFF - self.shift)
+
+
+class LoadMemory(ActionScriptCommandShortMem):
+    _opcode = 0xD6
+    _size: int = 3
 
 
 # sequencing
@@ -1677,7 +1672,7 @@ class VarShiftLeft(ActionScriptCommand):
 class SetSpriteSequence(ActionScriptCommand):
     _opcode: int = 0x08
     _size: int = 3
-    _sequence_or_mold_id: UInt8
+    _index: UInt8
     _sprite_offset: UInt8
     _is_mold: bool = False
     _is_sequence: bool = False
@@ -1685,11 +1680,11 @@ class SetSpriteSequence(ActionScriptCommand):
     _mirror_sprite: bool = False
 
     @property
-    def sequence_or_mold_id(self) -> UInt8:
-        return self._sequence_or_mold_id
+    def index(self) -> UInt8:
+        return self._index
 
-    def set_sequence_or_mold_id(self, sequence_or_mold_id: int) -> None:
-        self._sequence_or_mold_id = UInt8(sequence_or_mold_id)
+    def set_index(self, index: int) -> None:
+        self._index = UInt8(index)
 
     @property
     def sprite_offset(self) -> UInt8:
@@ -1729,7 +1724,7 @@ class SetSpriteSequence(ActionScriptCommand):
 
     def __init__(
         self,
-        sequence_or_mold_id: int,
+        index: int,
         sprite_offset: int,
         is_mold: bool = False,
         is_sequence: bool = False,
@@ -1738,11 +1733,11 @@ class SetSpriteSequence(ActionScriptCommand):
         identifier: Optional[str] = None,
     ) -> None:
         if is_mold:
-            assert 0 <= sequence_or_mold_id <= 31
+            assert 0 <= index <= 31
         else:
-            assert 0 <= sequence_or_mold_id <= 15
+            assert 0 <= index <= 15
         super().__init__(identifier)
-        self.set_sequence_or_mold_id(sequence_or_mold_id)
+        self.set_index(index)
         self.set_sprite_offset(sprite_offset)
         self.set_is_mold(is_mold)
         self.set_is_sequence(is_sequence)
@@ -1756,7 +1751,7 @@ class SetSpriteSequence(ActionScriptCommand):
         bit_array[6] = self.is_sequence
         bit_array[15] = self.mirror_sprite
         flags: int = bools_to_int(*bit_array)
-        arg = UInt16((self.sequence_or_mold_id << 8) | self.sprite_offset | flags)
+        arg = UInt16((self.index << 8) | self.sprite_offset | flags)
         return super().render(arg)
 
 
@@ -1776,7 +1771,7 @@ class SequenceLoopingOff(ActionScriptCommandNoArgs):
     _opcode: int = 0x05
 
 
-class SetAnimationSpeed(ActionScriptCommand):
+class _SetAnimationSpeed(ActionScriptCommand):
     _opcode: int = 0x10
     _size: int = 2
     _speed: SequenceSpeed
@@ -1789,6 +1784,7 @@ class SetAnimationSpeed(ActionScriptCommand):
 
     def set_speed(self, speed: SequenceSpeed) -> None:
         self._speed = speed
+        assert self.speed or self.sequence
 
     @property
     def sequence(self) -> bool:
@@ -1796,6 +1792,7 @@ class SetAnimationSpeed(ActionScriptCommand):
 
     def set_sequence(self, sequence: bool) -> None:
         self._sequence = sequence
+        assert self.speed or self.sequence
 
     @property
     def walking(self) -> bool:
@@ -1819,6 +1816,33 @@ class SetAnimationSpeed(ActionScriptCommand):
     def render(self) -> bytearray:
         flags = bools_to_int(self.walking, self.sequence) << 6
         return super().render(UInt8(self.speed + flags))
+
+
+class SetSequenceSpeed(_SetAnimationSpeed):
+    def __init__(
+        self,
+        speed: SequenceSpeed,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(speed, sequence=True, walking=False, identifier=identifier)
+
+
+class SetWalkingSpeed(_SetAnimationSpeed):
+    def __init__(
+        self,
+        speed: SequenceSpeed,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(speed, sequence=False, walking=True, identifier=identifier)
+
+
+class SetAllSpeeds(_SetAnimationSpeed):
+    def __init__(
+        self,
+        speed: SequenceSpeed,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(speed, sequence=True, walking=True, identifier=identifier)
 
 
 class EmbeddedAnimationRoutine(ActionScriptCommand):
@@ -2119,7 +2143,7 @@ class FaceSouthwest(ActionScriptCommandNoArgs):
     _opcode: int = 0x73
 
 
-class FaceSouthwes0t7D(ActionScriptCommandNoArgs):
+class FaceSouthwest7D(ActionScriptCommandNoArgs):
     _opcode: int = 0x7D
 
 
@@ -2147,6 +2171,10 @@ class TurnClockwise45Degrees(ActionScriptCommandNoArgs):
     _opcode: int = 0x79
 
 
+class TurnRandomDirection(ActionScriptCommandNoArgs):
+    _opcode: int = 0x7A
+
+
 class TurnClockwise45DegreesNTimes(ActionScriptCommand):
     _opcode: int = 0x7B
     _size: int = 2
@@ -2167,29 +2195,10 @@ class TurnClockwise45DegreesNTimes(ActionScriptCommand):
         return super().render(self.count)
 
 
-class JumpToHeightSilent(ActionScriptCommand):
-    _opcode: int = 0x7E
-    _size: int = 3
-    _height: UInt16
-
-    def height(self) -> UInt16:
-        return self._height
-
-    def set_height(self, height: int) -> None:
-        self._height = UInt16(height)
-
-    def __init__(self, height: int, identifier: Optional[str] = None) -> None:
-        super().__init__(identifier)
-        self.set_height(height)
-
-    def render(self) -> bytearray:
-        return super().render(self.height)
-
-
 class JumpToHeight(ActionScriptCommand):
-    _opcode: int = 0x7F
     _size: int = 3
     _height: UInt16
+    _silent: bool
 
     def height(self) -> UInt16:
         return self._height
@@ -2197,12 +2206,24 @@ class JumpToHeight(ActionScriptCommand):
     def set_height(self, height: int) -> None:
         self._height = UInt16(height)
 
-    def __init__(self, height: int, identifier: Optional[str] = None) -> None:
+    def silent(self) -> bool:
+        return self._silent
+
+    def set_silent(self, silent: bool) -> None:
+        self._silent = silent
+
+    def __init__(
+        self, height: int, silent: bool = False, identifier: Optional[str] = None
+    ) -> None:
         super().__init__(identifier)
         self.set_height(height)
+        self.set_silent(silent)
 
     def render(self) -> bytearray:
-        return super().render(self.height)
+        if self.silent:
+            return super().render(0x7E, self.height)
+        else:
+            return super().render(0x7F, self.height)
 
 
 class WalkToXYCoords(ActionScriptCommandXYBytes):
@@ -2626,13 +2647,13 @@ class CreatePacketAtNPCCoords(ActionScriptCommandWithJmps):
 
     def __init__(
         self,
-        packet: Packet,
+        packet_id: int,
         object: AreaObject,
         destinations: "str[int]",
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_packet_id(packet.id)
+        self.set_packet_id(packet_id)
         self.set_object(object)
 
     def render(self) -> bytearray:
@@ -2652,10 +2673,10 @@ class CreatePacketAt7010(ActionScriptCommandWithJmps):
         self._packet_id = UInt8(packet_id)
 
     def __init__(
-        self, packet: Packet, destinations: "str[int]", identifier: Optional[str] = None
+        self, packet_id: int, destinations: "str[int]", identifier: Optional[str] = None
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_packet_id(packet.id)
+        self.set_packet_id(packet_id)
 
     def render(self) -> bytearray:
         return super().render(self.packet_id, *self.destinations)
@@ -2684,13 +2705,13 @@ class CreatePacketAt7010WithEvent(ActionScriptCommandWithJmps):
 
     def __init__(
         self,
-        packet: Packet,
+        packet_id: int,
         event_id: int,
         destinations: "str[int]",
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_packet_id(packet.id)
+        self.set_packet_id(packet_id)
         self.set_event_id(event_id)
 
     def render(self) -> bytearray:
@@ -2947,6 +2968,10 @@ class JmpIfObjectInAir(ActionScriptCommandWithJmps):
         return super().render(self._object, *self.destinations)
 
 
+class Set700CToCurrentLevel(ActionScriptCommandNoArgs):
+    _opcode: int = 0xC3
+
+
 # controls
 
 
@@ -3005,7 +3030,7 @@ class IncPaletteRowBy(ActionScriptCommand):
     def render(self) -> bytearray:
         if self.row == 1:
             return super().render()
-        return super().render(self.rows)
+        return super().render(UInt8(0xF0 + self.rows))
 
 
 # branching / jumps

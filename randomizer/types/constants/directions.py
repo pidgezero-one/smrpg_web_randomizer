@@ -1,4 +1,4 @@
-from classes import Direction
+from .classes import Direction
 
 EAST = Direction(0b0)
 SOUTHEAST = Direction(0b1)

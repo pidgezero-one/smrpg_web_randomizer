@@ -970,7 +970,7 @@ class Rooms:
 
         reserved_event_IDS = [
             range(2823, 3072),
-            range(3950, 4095),
+            range(3952, 4095),
             range(2675, 2793),
             range(1972, 2048),
             range(1433, 1536),

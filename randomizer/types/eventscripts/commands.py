@@ -705,46 +705,48 @@ class SetVarToConst(EventScriptCommand):
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
+    def set_value_and_address(self, value=None, address=None) -> None:
+        if value is None:
+            value = self.value
+        try:
+            value = UInt8(value)
+        except:
+            value = UInt16(value)
+        if address is None:
+            address = self.address
+        if isinstance(value, UInt16) and isinstance(address, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%02x %r:"
+                % (self.identifier.name, self.address, self.value)
+            )
+        if address == variables.PRIMARY_TEMP_700C or isinstance(address, ByteVar):
+            self._size = 3
+        else:
+            self._size = 4
+        self._address = address
+        self._value = value
+
     @property
     def value(self) -> Union[UInt8, UInt16]:
         return self._value
-
-    def set_value(self, value: int) -> None:
-        try:
-            self.value = UInt8(value)
-        except:
-            self.value = UInt16(value)
 
     @property
     def address(self) -> Union[ShortVar, ByteVar]:
         return self._address
 
-    def set_address(self, address: Union[UInt8, UInt16]) -> None:
-        self._address = address
-        if self.address == variables.PRIMARY_TEMP_7000 or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 3
-        else:
-            self._size = 4
-
     def __init__(
-        self, address: int, value: int, identifier: Optional[str] = None
+        self,
+        address: Union[ShortVar, ByteVar],
+        value: int,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
-        self.set_value(value)
-        if isinstance(self.value, UInt8):
-            try:
-                self.set_address(ByteVar(address))
-            except:
-                self.set_address(ShortVar(address))
-        else:
-            self.set_address(ShortVar(address))
+        self.set_value_and_address(address, value)
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
             return super().render(0xA8, self.address, self.value)
-        elif self.address == variables.PRIMARY_TEMP_7000:
+        elif self.address == variables.PRIMARY_TEMP_700C:
             return super().render(0xAC, UInt16(self.value))
         elif isinstance(self.address, ShortVar):
             return super().render(0xB0, self.address, UInt16(self.value))
@@ -956,82 +958,67 @@ class Clear7016To7018AndIsolate701AHighByteIf7018Bit0Set(EventScriptCommandNoArg
 
 
 class CopyVarToVar(EventScriptCommand):
-    _address_left: Union[ShortVar, ByteVar]
-    _address_right: Union[ShortVar, ByteVar]
+    _from_var: Union[ShortVar, ByteVar]
+    _to_var: Union[ShortVar, ByteVar]
 
-    def _set_size(self):
+    def set_addresses(self, from_var=None, to_var=None):
+        if from_var is None:
+            from_var = self.from_var
+        if to_var is None:
+            to_var = self.to_var
+        if isinstance(from_var, ByteVar) and isinstance(to_var, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%04x 0x%04x:"
+                % (self.identifier.name, from_var, to_var)
+            )
         if (
-            self.address_left != variables.PRIMARY_TEMP_7000
-            and self.address_right != variables.PRIMARY_TEMP_7000
+            self.from_var != variables.PRIMARY_TEMP_700C
+            and self.to_var != variables.PRIMARY_TEMP_700C
         ):
             self._size = 3
         else:
             self._size = 2
 
     @property
-    def address_left(self) -> Union[ShortVar, ByteVar]:
-        return self._address_left
-
-    def set_address_left(self, address_left: Union[ShortVar, ByteVar]) -> None:
-        self._address_left = address_left
-        self._set_size()
-
-    def cast_address_left(self, address_left: int) -> None:
-        self.set_address_left(cast_address(address_left))
+    def from_var(self) -> Union[ShortVar, ByteVar]:
+        return self._from_var
 
     @property
-    def address_right(self) -> Union[ShortVar, ByteVar]:
-        return self._address_right
-
-    def set_address_right(self, address_right: int) -> None:
-        self._address_right = cast_address(address_right)
-        self._set_size()
-
-    def cast_address_right(self, address_right: int) -> None:
-        self.set_address_right(cast_address(address_right))
+    def to_var(self) -> Union[ShortVar, ByteVar]:
+        return self._to_var
 
     def __init__(
         self,
-        address_left: int,
-        address_right: int,
+        from_var: Union[ShortVar, ByteVar],
+        to_var: Union[ShortVar, ByteVar],
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
-        if address_left == variables.PRIMARY_TEMP_7000:
-            self.set_address_left(ShortVar(address_left))
-            self.cast_address_right(address_right)
-        elif address_right == variables.PRIMARY_TEMP_7000:
-            self.cast_address_left(address_left)
-            self.set_address_right(ShortVar(address_right))
-        else:
-            self.set_address_left(ShortVar(address_left))
-            self.set_address_right(ShortVar(address_right))
+        self.set_addresses(from_var, to_var)
 
     def render(self) -> bytearray:
-        if self.address_right == variables.PRIMARY_TEMP_7000 and isinstance(
-            self.address_left, ByteVar
+        if self.to_var == variables.PRIMARY_TEMP_700C and isinstance(
+            self.from_var, ByteVar
         ):
-            return super().render(0xB4, self.address_left)
-        elif self.address_left == variables.PRIMARY_TEMP_7000 and isinstance(
-            self.address_right, ByteVar
+            return super().render(0xB4, self.from_var)
+        elif self.from_var == variables.PRIMARY_TEMP_700C and isinstance(
+            self.to_var, ByteVar
         ):
-            return super().render(0xB5, self.address_right)
-        elif self.address_right == variables.PRIMARY_TEMP_7000 and isinstance(
-            self.address_left, ShortVar
+            return super().render(0xB5, self.to_var)
+        elif self.to_var == variables.PRIMARY_TEMP_700C and isinstance(
+            self.from_var, ShortVar
         ):
-            return super().render(0xBA, self.address_left)
-        elif self.address_left == variables.PRIMARY_TEMP_7000 and isinstance(
-            self.address_right, ShortVar
+            return super().render(0xBA, self.from_var)
+        elif self.from_var == variables.PRIMARY_TEMP_700C and isinstance(
+            self.to_var, ShortVar
         ):
-            return super().render(0xBB, self.address_right)
-        elif isinstance(self.address_left, ShortVar) and isinstance(
-            self.address_right, ShortVar
-        ):
-            return super().render(0xBC, self.address_left, self.address_right)
+            return super().render(0xBB, self.to_var)
+        elif isinstance(self.from_var, ShortVar) and isinstance(self.to_var, ShortVar):
+            return super().render(0xBC, self.from_var, self.to_var)
         else:
             raise Exception(
                 "illegal args for %s: 0x%04x 0x%04x:"
-                % (self.identifier.name, self.address_left, self.address_right)
+                % (self.identifier.name, self.from_var, self.to_var)
             )
 
 
@@ -1126,35 +1113,35 @@ class StoreSetBits(EventScriptCommand):
 class SwapVars(EventScriptCommand):
     _opcode: int = 0xBD
     _size: int = 3
-    _address_left: ShortVar
-    _address_right: ShortVar
+    _from_var: ShortVar
+    _to_var: ShortVar
 
     @property
-    def address_left(self) -> ShortVar:
-        return self._address_left
+    def from_var(self) -> ShortVar:
+        return self._from_var
 
-    def set_address_left(self, address_left: int) -> None:
-        self._address_left = ShortVar(address_left)
+    def set_from_var(self, from_var: ShortVar) -> None:
+        self._from_var = from_var
 
     @property
-    def address_right(self) -> ShortVar:
-        return self._address_right
+    def to_var(self) -> ShortVar:
+        return self._to_var
 
-    def set_address_right(self, address_right: int) -> None:
-        self._address_right = ShortVar(address_right)
+    def set_to_var(self, to_var: ShortVar) -> None:
+        self._to_var = to_var
 
     def __init__(
         self,
-        address_left: int,
-        address_right: int,
+        from_var: ShortVar,
+        to_var: ShortVar,
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
-        self.set_address_left(address_left)
-        self.set_address_right(address_right)
+        self.set_from_var(from_var)
+        self.set_to_var(to_var)
 
     def render(self) -> bytearray:
-        return super().render(self.address_left, self.address_right)
+        return super().render(self.from_var, self.to_var)
 
 
 # math operations
@@ -1164,41 +1151,43 @@ class AddConstToVar(EventScriptCommand):
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
+    def set_value_and_address(self, value=None, address=None) -> None:
+        if value is None:
+            value = self.value
+        try:
+            value = UInt8(value)
+        except:
+            value = UInt16(value)
+        if address is None:
+            address = self.address
+        if isinstance(value, UInt16) and isinstance(address, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%02x %r:"
+                % (self.identifier.name, self.address, self.value)
+            )
+        if address == variables.PRIMARY_TEMP_700C or isinstance(address, ByteVar):
+            self._size = 3
+        else:
+            self._size = 4
+        self._address = address
+        self._value = value
+
     @property
     def value(self) -> Union[UInt8, UInt16]:
         return self._value
-
-    def set_value(self, value: int) -> None:
-        try:
-            self.value = UInt8(value)
-        except:
-            self.value = UInt16(value)
 
     @property
     def address(self) -> Union[ShortVar, ByteVar]:
         return self._address
 
-    def set_address(self, address: Union[UInt8, UInt16]) -> None:
-        self._address = address
-        if self.address == variables.PRIMARY_TEMP_7000 or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 3
-        else:
-            self._size = 4
-
     def __init__(
-        self, address: int, value: int, identifier: Optional[str] = None
+        self,
+        address: Union[ShortVar, ByteVar],
+        value: int,
+        identifier: Optional[str] = None,
     ) -> None:
         super().__init__(identifier)
-        self.set_value(value)
-        if isinstance(self.value, UInt8):
-            try:
-                self.set_address(ByteVar(address))
-            except:
-                self.set_address(ShortVar(address))
-        else:
-            self.set_address(ShortVar(address))
+        self.set_value_and_address(address, value)
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1317,45 +1306,46 @@ class JmpIfVarEqualsConst(EventScriptCommandWithJmps):
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
+    def set_value_and_address(
+        self, value: int = None, address: Union[ByteVar, ShortVar] = None
+    ) -> None:
+        if value is None:
+            value = self.value
+        try:
+            value = UInt8(value)
+        except:
+            value = UInt16(value)
+        if address is None:
+            address = self.address
+        if isinstance(value, UInt16) and isinstance(address, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%02x %r:"
+                % (self.identifier.name, self.address, self.value)
+            )
+        if address == variables.PRIMARY_TEMP_700C or isinstance(address, ByteVar):
+            self._size = 5
+        else:
+            self._size = 6
+        self._address = address
+        self._value = value
+
     @property
     def value(self) -> Union[UInt8, UInt16]:
         return self._value
-
-    def set_value(self, value: int) -> None:
-        try:
-            self.value = UInt8(value)
-        except:
-            self.value = UInt16(value)
 
     @property
     def address(self) -> Union[ShortVar, ByteVar]:
         return self._address
 
-    def set_address(self, address: Union[UInt8, UInt16]) -> None:
-        self._address = address
-        if self.address == variables.PRIMARY_TEMP_7000 or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 5
-        else:
-            self._size = 6
-
     def __init__(
         self,
-        address: int,
+        address: Union[ByteVar, ShortVar],
         value: int,
         destinations: "str[int]",
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_value(value)
-        if isinstance(self.value, UInt8):
-            try:
-                self.set_address(ByteVar(address))
-            except:
-                self.set_address(ShortVar(address))
-        else:
-            self.set_address(ShortVar(address))
+        self.set_value_and_address(value, address)
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1377,45 +1367,44 @@ class JmpIfVarNotEqualsConst(EventScriptCommandWithJmps):
     _value: Union[UInt8, UInt16]
     _address: Union[ShortVar, ByteVar]
 
+    def set_value_and_address(self, value=None, address=None) -> None:
+        if value is None:
+            value = self.value
+        try:
+            value = UInt8(value)
+        except:
+            value = UInt16(value)
+        if address is None:
+            address = self.address
+        if isinstance(value, UInt16) and isinstance(address, ByteVar):
+            raise Exception(
+                "illegal args for %s: 0x%02x %r:"
+                % (self.identifier.name, self.address, self.value)
+            )
+        if address == variables.PRIMARY_TEMP_700C or isinstance(address, ByteVar):
+            self._size = 5
+        else:
+            self._size = 6
+        self._address = address
+        self._value = value
+
     @property
     def value(self) -> Union[UInt8, UInt16]:
         return self._value
-
-    def set_value(self, value: int) -> None:
-        try:
-            self.value = UInt8(value)
-        except:
-            self.value = UInt16(value)
 
     @property
     def address(self) -> Union[ShortVar, ByteVar]:
         return self._address
 
-    def set_address(self, address: Union[UInt8, UInt16]) -> None:
-        self._address = address
-        if self.address == variables.PRIMARY_TEMP_7000 or isinstance(
-            self.address, ByteVar
-        ):
-            self._size = 5
-        else:
-            self._size = 6
-
     def __init__(
         self,
-        address: int,
+        address: Union[ByteVar, ShortVar],
         value: int,
         destinations: "str[int]",
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_value(value)
-        if isinstance(self.value, UInt8):
-            try:
-                self.set_address(ByteVar(address))
-            except:
-                self.set_address(ShortVar(address))
-        else:
-            self.set_address(ShortVar(address))
+        self.set_value_and_address(address, value)
 
     def render(self) -> bytearray:
         if isinstance(self.address, ByteVar) and isinstance(self.value, UInt8):
@@ -1470,25 +1459,26 @@ class VarShiftLeft(EventScriptCommand):
     def address(self) -> ShortVar:
         return self._address
 
-    def set_address(self, address: int) -> None:
-        self._address = ShortVar(address)
+    def set_address(self, address: ShortVar) -> None:
+        self._address = address
 
     @property
     def shift(self) -> UInt8:
-        return self._shift
+        return self._shift + 1
 
     def set_shift(self, shift: int) -> None:
-        self._shift = UInt8(shift)
+        assert 1 <= shift <= 256
+        self._shift = UInt8(shift - 1)
 
     def __init__(
-        self, address: int, shift: int, identifier: Optional[str] = None
+        self, address: ShortVar, shift: int, identifier: Optional[str] = None
     ) -> None:
         super().__init__(identifier)
         self.set_address(address)
         self.set_shift(shift)
 
     def render(self) -> bytearray:
-        return super().render(self.address, self.shift)
+        return super().render(self.address, 0xFF - self.shift)
 
 
 class MultiplyAndAddMem3148StoreToOffsrt7fB000PlusOutputX2(EventScriptCommand):
@@ -1958,13 +1948,13 @@ class CreatePacketAtNPCCoords(EventScriptCommandWithJmps):
 
     def __init__(
         self,
-        packet: Packet,
+        packet_id: int,
         object: AreaObject,
         destinations: "str[int]",
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_packet_id(packet.id)
+        self.set_packet_id(packet_id)
         self.set_object(object)
 
     def render(self) -> bytearray:
@@ -1984,10 +1974,10 @@ class CreatePacketAt7010(EventScriptCommandWithJmps):
         self._packet_id = UInt8(packet_id)
 
     def __init__(
-        self, packet: Packet, destinations: "str[int]", identifier: Optional[str] = None
+        self, packet_id: int, destinations: "str[int]", identifier: Optional[str] = None
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_packet_id(packet.id)
+        self.set_packet_id(packet_id)
 
     def render(self) -> bytearray:
         return super().render(self.packet_id, *self.destinations)
@@ -2016,13 +2006,13 @@ class CreatePacketAt7010WithEvent(EventScriptCommandWithJmps):
 
     def __init__(
         self,
-        packet: Packet,
+        packet_id: int,
         event_id: int,
         destinations: "str[int]",
         identifier: Optional[str] = None,
     ) -> None:
         super().__init__(destinations, identifier)
-        self.set_packet_id(packet.id)
+        self.set_packet_id(packet_id)
         self.set_event_id(event_id)
 
     def render(self) -> bytearray:

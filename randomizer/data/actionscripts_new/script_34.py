@@ -1,0 +1,97 @@
+#classes
+from randomizer.types.actionscripts.commands import *
+from randomizer.types.actionscripts.classes import ActionScript
+#ids
+from randomizer.types.eventscripts.constants.script_ids import *
+from randomizer.types.actionscripts.constants.script_ids import *
+from randomizer.types.packets.constants.packet_ids import *
+from randomizer.types.constants.sound_names import *
+from randomizer.types.constants.directions import *
+#types
+from randomizer.types.constants.area_objects import *
+from randomizer.types.constants.coords import *
+from randomizer.types.actionscripts.constants.sequence_speeds import *
+from randomizer.types.actionscripts.constants.vram_priority import *
+from randomizer.types.variables.variables import *
+
+script = ActionScript([
+	JmpIfBitSet(TEMP_7044_5, ["ACTION_34_jmp_if_bit_set_3"]),
+	JmpIfBitSet(TEMP_7044_6, ["ACTION_34_face_northeast_29"]),
+	Jmp(["ACTION_34_face_northeast_20"]),
+	JmpIfBitSet(TEMP_7044_6, ["ACTION_34_face_northeast_11"], identifier="ACTION_34_jmp_if_bit_set_3"),
+	FaceSouthwest(),
+	JmpToSubroutine(["ACTION_34_clear_solidity_bits_48"]),
+	SetPriority(3),
+	ShiftSouthwestSteps(2),
+	SetPriority(2),
+	ShiftSouthwestSteps(2),
+	Jmp(["ACTION_32_shift_z_up_steps_20"]),
+	FaceNortheast(identifier="ACTION_34_face_northeast_11"),
+	JmpToSubroutine(["ACTION_34_clear_solidity_bits_48"]),
+	Walk1StepNortheast(),
+	Walk1StepNorthwest(),
+	ShiftSouthwestSteps(10),
+	SetPriority(3),
+	Walk1StepSoutheast(),
+	Walk1StepNortheast(),
+	Jmp(["ACTION_32_shift_z_up_steps_20"]),
+	FaceNortheast(identifier="ACTION_34_face_northeast_20"),
+	JmpToSubroutine(["ACTION_34_clear_solidity_bits_48"]),
+	Walk1StepNortheast(),
+	Walk1StepSoutheast(),
+	SetPriority(3),
+	ShiftSouthwestSteps(10),
+	Walk1StepNorthwest(),
+	Walk1StepNortheast(),
+	Jmp(["ACTION_32_shift_z_up_steps_20"]),
+	FaceNortheast(identifier="ACTION_34_face_northeast_29"),
+	JmpToSubroutine(["ACTION_34_clear_solidity_bits_48"]),
+	Walk1StepNortheast(),
+	Walk1StepNorthwest(),
+	ShiftSouthwestSteps(10),
+	Walk1StepNorthwest(),
+	ShiftNortheastSteps(5),
+	Walk1StepSoutheast(),
+	Walk1StepNortheast(),
+	SetPriority(3),
+	StartLoopNTimes(1),
+	Walk1StepSoutheast(),
+	Walk1StepNortheast(),
+	EndLoop(),
+	ShiftNortheastSteps(2),
+	SetPriority(2),
+	Walk1StepNorthwest(),
+	Walk1StepSouthwest(),
+	Jmp(["ACTION_32_shift_z_up_steps_20"]),
+	ClearSolidityBits(bit_4=True, cant_walk_through=True, identifier="ACTION_34_clear_solidity_bits_48"),
+	SetVarToConst(SECONDARY_TEMP_7024, 20),
+	SetWalkingSpeed(speed=NORMAL),
+	Set700CToPressedButton(),
+	DecVarFrom700C(SECONDARY_TEMP_7024),
+	Mem700CAndConst(0x0003),
+	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 0, ["ACTION_34_load_mem_60"]),
+	Db(bytearray(b'\xc8\x07')),
+	AddConstToVar(Z_COORD_2, 128),
+	AddConstToVar(X_COORD_2, 64),
+	TransferTo70167018701A(),
+	Jmp(["ACTION_34_visibility_on_65"]),
+	LoadMemory(PRIMARY_TEMP_700C, identifier="ACTION_34_load_mem_60"),
+	Pause(8),
+	EndLoop(),
+	Pause(1),
+	SetSequenceSpeed(speed=FAST),
+	VisibilityOn(identifier="ACTION_34_visibility_on_65"),
+	SetPriority(3),
+	AddZCoord1Step(),
+	Walk1StepFDirection(),
+	Set700CToObjectCoord(object=DUMMY_0X07, coord=F, pixel=True),
+	CompareVarToConst(PRIMARY_TEMP_700C, 4),
+	JmpIfComparisonResultIsLesser(["ACTION_34_set_priority_74"]),
+	SetPriority(2),
+	Jmp(["ACTION_34_dec_z_coord_1_step_75"]),
+	SetPriority(3, identifier="ACTION_34_set_priority_74"),
+	DecZCoord1Step(identifier="ACTION_34_dec_z_coord_1_step_75"),
+	SetSolidityBits(bit_4=True, cant_walk_through=True),
+	DecZCoord1Step(),
+	Return()
+])

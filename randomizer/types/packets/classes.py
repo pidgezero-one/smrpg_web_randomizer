@@ -9,7 +9,7 @@ class Packet:
     sprite_id: int
     shadow: bool
     action_script_id: int
-    unknown_bits: bool[3] = None
+    unknown_bits: "bool[int]" = [False] * 3
     unknown_bytes: bytearray()
 
     def __init__(
@@ -18,7 +18,7 @@ class Packet:
         sprite_id: int,
         shadow: bool,
         action_script_id: int,
-        unknown_bits: bool[3],
+        unknown_bits: "bool[int]",
         unknown_bytes: bytearray,
     ) -> None:
         assert 0 <= sprite_id < TOTAL_SPRITES
@@ -29,4 +29,5 @@ class Packet:
         self.shadow = shadow
         self.action_script_id = action_script_id
         self.unknown_bits = unknown_bits
+        assert len(self.unknown_bits) == 3
         self.unknown_bytes = unknown_bytes
