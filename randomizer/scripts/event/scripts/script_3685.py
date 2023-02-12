@@ -1,0 +1,12 @@
+# E3685_NIMBUS_GET_CROCOS_ITEM
+
+from randomizer.scripts.event.script_imports import *
+
+script = EventScript(
+    [
+        RemoveObjectFromCurrentLevel(MEM_70A8),
+        SetBit(NIMBUS_HOUSE_ITEM_RETRIEVED),
+        RunEventAsSubroutine(E0241_FREESTANDING_1_GRANT),
+        Return(),
+    ]
+)

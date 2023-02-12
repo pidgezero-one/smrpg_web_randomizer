@@ -1,0 +1,40 @@
+from randomizer.entities.rooms.event_imports import *
+
+events = [
+    Event(
+        event=E1685_TEMPLE_FORTUNE_HEAD_1,
+        x=4,
+        y=36,
+        z=3,
+        f=EdgeDirection.SOUTHEAST,
+        length=2,
+        height=0,
+        nw_se_edge_active = True,
+        ne_sw_edge_active = False,
+        byte_8_bit_4 = False,
+    ),
+    Event(
+        event=E1686_TEMPLE_FORTUNE_HEAD_2,
+        x=6,
+        y=32,
+        z=3,
+        f=EdgeDirection.SOUTHEAST,
+        length=2,
+        height=0,
+        nw_se_edge_active = True,
+        ne_sw_edge_active = False,
+        byte_8_bit_4 = False,
+    ),
+    Event(
+        event=E1687_TEMPLE_FORTUNE_HEAD_3,
+        x=8,
+        y=28,
+        z=3,
+        f=EdgeDirection.SOUTHEAST,
+        length=2,
+        height=0,
+        nw_se_edge_active = True,
+        ne_sw_edge_active = False,
+        byte_8_bit_4 = False,
+    ),
+]

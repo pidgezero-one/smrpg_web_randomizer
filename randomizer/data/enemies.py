@@ -22,31 +22,46 @@ MED_SHADOW = 2
 LARGE_SHADOW = 3
 BLOCK_SHADOW = 4
 
- # TODO: real palettes
+# TODO: real palettes
 sprite_data = [
-  (1022, 260, 385, 1, 0x257432, [0]*30), # Jinx 2
-  (1023, 260, 285, 2, 0x257450, [0xFF]*30),  # Jinx 3
+    (1022, 260, 385, 1, 0x257432, [0] * 30),  # Jinx 2
+    (1023, 260, 285, 2, 0x257450, [0xFF] * 30),  # Jinx 3
 ]
+
 
 def recolor_npcs():
     patch = Patch()
-       
-    # Jinx 2-3 in Sprite slot 1022-1023
-    for sprite_index, image_index, animation_index, palette_index, palette_offset, palette in sprite_data:
-      gfx_offset = (sprite_index * 4) + 0x250000
 
-      patch.add_data(gfx_offset, utils.ByteField(image_index | (palette_index << 9), num_bytes=2).as_bytes())
-      patch.add_data(gfx_offset + 2, utils.ByteField(animation_index, num_bytes=2).as_bytes())
-      patch.add_data(palette_offset, palette) 
+    # Jinx 2-3 in Sprite slot 1022-1023
+    for (
+        sprite_index,
+        image_index,
+        animation_index,
+        palette_index,
+        palette_offset,
+        palette,
+    ) in sprite_data:
+        gfx_offset = (sprite_index * 4) + 0x250000
+
+        patch.add_data(
+            gfx_offset,
+            utils.ByteField(image_index | (palette_index << 9), num_bytes=2).as_bytes(),
+        )
+        patch.add_data(
+            gfx_offset + 2, utils.ByteField(animation_index, num_bytes=2).as_bytes()
+        )
+        patch.add_data(palette_offset, palette)
     return patch
-    
+
+
 class Enemy:
     """Class representing an enemy in the game."""
-    FLOWER_BONUS_BASE_ADDRESS = 0x39bb44
-    BASE_PSYCHOPATH_POINTER_ADDRESS = 0x399fd1
+
+    FLOWER_BONUS_BASE_ADDRESS = 0x39BB44
+    BASE_PSYCHOPATH_POINTER_ADDRESS = 0x399FD1
     PSYCHOPATH_DATA_POINTER_OFFSET = 0x390000
-    BASE_PSYCHOPATH_DATA_ADDRESS = 0x39a1d1
-    NAME_BASE_ADDRESS = 0x3992d1
+    BASE_PSYCHOPATH_DATA_ADDRESS = 0x39A1D1
+    NAME_BASE_ADDRESS = 0x3992D1
 
     # Default instance attributes.
     index = 0
@@ -97,7 +112,7 @@ class Enemy:
     ratio_speed = 1.0
     ratio_evade = 1.0
     ratio_magic_evade = 1.0
-    name_override = ''
+    name_override = ""
     dialog_replacements = []
     optional_dialog_replacements = []
 
@@ -128,7 +143,14 @@ class Enemy:
         self.script = list(battlescripts.scripts[self.index])
 
     def __str__(self):
-        return "<{} hp: {} attack: {} defense: {} m.attack: {} m.defense: {}>".format(self.name, self.hp, self.attack, self.defense, self.magic_attack, self.magic_defense)
+        return "<{} hp: {} attack: {} defense: {} m.attack: {} m.defense: {}>".format(
+            self.name,
+            self.hp,
+            self.attack,
+            self.defense,
+            self.magic_attack,
+            self.magic_defense,
+        )
 
     def __repr__(self):
         return str(self)
@@ -193,49 +215,62 @@ class Enemy:
 
         :rtype: str
         """
-        desc = ''
+        desc = ""
 
-        elemental_immunities = ''
-        elemental_weaknesses = ''
-        status_vulnerabilities = ''
+        elemental_immunities = ""
+        elemental_weaknesses = ""
+        status_vulnerabilities = ""
 
         # Elemental immunities.
         if self.resistances:
-            elemental_immunities += '\x7C'
-            elemental_immunities += utils.add_desc_fields((
-                ('\x7E', 6, self.resistances),
-                ('\x7D', 4, self.resistances),
-                ('\x7F', 5, self.resistances),
-                ('\x85', 7, self.resistances),
-            ))
+            elemental_immunities += "\x7C"
+            elemental_immunities += utils.add_desc_fields(
+                (
+                    ("\x7E", 6, self.resistances),
+                    ("\x7D", 4, self.resistances),
+                    ("\x7F", 5, self.resistances),
+                    ("\x85", 7, self.resistances),
+                )
+            )
 
         # Elemental weaknesses.
         if self.weaknesses:
-            elemental_weaknesses += '\x7B'
-            elemental_weaknesses += utils.add_desc_fields((
-                ('\x7E', 6, self.weaknesses),
-                ('\x7D', 4, self.weaknesses),
-                ('\x7F', 5, self.weaknesses),
-                ('\x85', 7, self.weaknesses),
-            ))
+            elemental_weaknesses += "\x7B"
+            elemental_weaknesses += utils.add_desc_fields(
+                (
+                    ("\x7E", 6, self.weaknesses),
+                    ("\x7D", 4, self.weaknesses),
+                    ("\x7F", 5, self.weaknesses),
+                    ("\x85", 7, self.weaknesses),
+                )
+            )
 
         # Status vulnerabilities.
-        vulnerabilities = [i for i in range(
-            4) if i not in self.status_immunities]
+        vulnerabilities = [i for i in range(4) if i not in self.status_immunities]
         if vulnerabilities:
-            status_vulnerabilities += utils.add_desc_fields((
-                ('\x82', 0, vulnerabilities),
-                ('\x80', 1, vulnerabilities),
-                ('\x83', 2, vulnerabilities),
-                ('\x81', 3, vulnerabilities),
-                ('\x84\x84', True, not self.death_immune),
-            ))
+            status_vulnerabilities += utils.add_desc_fields(
+                (
+                    ("\x82", 0, vulnerabilities),
+                    ("\x80", 1, vulnerabilities),
+                    ("\x83", 2, vulnerabilities),
+                    ("\x81", 3, vulnerabilities),
+                    ("\x84\x84", True, not self.death_immune),
+                )
+            )
 
-        eligible = [s for s in [status_vulnerabilities, elemental_weaknesses, elemental_immunities] if s != '']
+        eligible = [
+            s
+            for s in [
+                status_vulnerabilities,
+                elemental_weaknesses,
+                elemental_immunities,
+            ]
+            if s != ""
+        ]
         if len(eligible) == 0:
             desc = "No weaknesses or resistances.\x02"
         else:
-            desc = "  \x2A  ".join(eligible) + '\x02'
+            desc = "  \x2A  ".join(eligible) + "\x02"
 
         return desc
 
@@ -275,14 +310,14 @@ class Enemy:
         for i in range(len(script)):
             (name, val) = script[i]
             # Skip any HP checks for 0 because these are death checks that end the fight.
-            if name == 'if_hp' and val[0] > 0:
+            if name == "if_hp" and val[0] > 0:
                 hp = self.round_for_battle_script(self.hp * hps[dex])
-                script[i] = ('if_hp', [hp])
+                script[i] = ("if_hp", [hp])
                 dex += 1
                 if dex == len(hps):
                     break
         else:
-            raise Exception('More HP values than counters')
+            raise Exception("More HP values than counters")
 
     def get_model(self, battle=False):
         if battle and self.model_large is not None:
@@ -290,7 +325,7 @@ class Enemy:
         elif self.model_small is not None:
             return self.model_small
         else:
-            raise 'No model for %s' % self.name
+            raise "No model for %s" % self.name
 
     def get_patch(self):
         """Get patch for this enemy.
@@ -300,7 +335,6 @@ class Enemy:
 
         """
         patch = Patch()
-
 
         # Main stats.
         data = bytearray()
@@ -348,18 +382,20 @@ class Enemy:
         data += utils.ByteField(self.xp, num_bytes=2).as_bytes()
         data += utils.ByteField(self.coins).as_bytes()
         data += utils.ByteField(
-            self.yoshi_cookie_item.index if self.yoshi_cookie_item else 0xff).as_bytes()
+            self.yoshi_cookie_item.index if self.yoshi_cookie_item else 0xFF
+        ).as_bytes()
         data += utils.ByteField(
-            self.normal_item.index if self.normal_item else 0xff).as_bytes()
+            self.normal_item.index if self.normal_item else 0xFF
+        ).as_bytes()
         data += utils.ByteField(
-            self.rare_item.index if self.rare_item else 0xff).as_bytes()
+            self.rare_item.index if self.rare_item else 0xFF
+        ).as_bytes()
         patch.add_data(self.reward_address, data)
 
         # If we have an override name, add to the patch data.
         if self.name_override:
             addr = self.NAME_BASE_ADDRESS + (self.index * 13)
-            patch.add_data(
-                addr, self.name_override.upper().encode().ljust(13, b'\x20'))
+            patch.add_data(addr, self.name_override.upper().encode().ljust(13, b"\x20"))
 
         return patch
 
@@ -368,12 +404,17 @@ class Enemy:
             self.fix_hp_counters()
 
         if self.world.settings.is_flag_enabled(flags.NoOHKO) and type(self) in (
-                MarioClone, MallowClone, GenoClone, BowserClone, PeachClone):
+            MarioClone,
+            MallowClone,
+            GenoClone,
+            BowserClone,
+            PeachClone,
+        ):
             for i in range(len(self.script)):
                 name, args = self.script[i]
-                if name == 'if_item':
+                if name == "if_item":
                     # Good luck using that in battle
-                    self.script[i] = ('if_item', [items.BrightCard])
+                    self.script[i] = ("if_item", [items.BrightCard])
 
     @classmethod
     def build_psychopath_patch(cls, world):
@@ -391,7 +432,7 @@ class Enemy:
         text_data.append(0x00)
 
         # Make list of blank text for all enemies, and get text for each valid enemy we have based on index.
-        descriptions = [''] * NUM_ENEMIES
+        descriptions = [""] * NUM_ENEMIES
         for enemy in world.enemies:
             descriptions[enemy.index] = enemy.psychopath_text
 
@@ -399,29 +440,34 @@ class Enemy:
         for desc in descriptions:
             # If the description is empty, just use the null byte at the very beginning.
             if not desc:
-                pointer = cls.BASE_PSYCHOPATH_DATA_ADDRESS - cls.PSYCHOPATH_DATA_POINTER_OFFSET
-                pointer_data += utils.ByteField(pointer,
-                                                num_bytes=2).as_bytes()
+                pointer = (
+                    cls.BASE_PSYCHOPATH_DATA_ADDRESS
+                    - cls.PSYCHOPATH_DATA_POINTER_OFFSET
+                )
+                pointer_data += utils.ByteField(pointer, num_bytes=2).as_bytes()
                 continue
 
             # Compute pointer from base address and current data length.
-            pointer = cls.BASE_PSYCHOPATH_DATA_ADDRESS + \
-                len(text_data) - cls.PSYCHOPATH_DATA_POINTER_OFFSET
+            pointer = (
+                cls.BASE_PSYCHOPATH_DATA_ADDRESS
+                + len(text_data)
+                - cls.PSYCHOPATH_DATA_POINTER_OFFSET
+            )
             pointer_data += utils.ByteField(pointer, num_bytes=2).as_bytes()
 
             # Add null byte to terminate the text string.
-            desc = desc.encode('latin1')
+            desc = desc.encode("latin1")
             desc += bytes([0x00])
             text_data += desc
 
         # Sanity check that pointer data has the correct number of items.
         if len(pointer_data) != NUM_ENEMIES * 2:
-            raise ValueError(
-                "Wrong length for pointer data, something went wrong...")
+            raise ValueError("Wrong length for pointer data, something went wrong...")
         # Sanity check that data doesn't overflow into battlefield tilesets.
         if len(text_data) > 5235:
             raise ValueError(
-                "Psychopath text too long (got %i, want <= %i)" % (len(text_data), 5235))
+                "Psychopath text too long (got %i, want <= %i)" % (len(text_data), 5235)
+            )
 
         # Add pointer data, then add text data.
         patch.add_data(cls.BASE_PSYCHOPATH_POINTER_ADDRESS, pointer_data)
@@ -430,11 +476,12 @@ class Enemy:
         return patch
 
 
-
 class Henchman(Enemy):
     pass
 
+
 # ********************* Actual data classes
+
 
 class Terrapin(Enemy):
     index = 0
@@ -451,7 +498,7 @@ class Terrapin(Enemy):
     flower_bonus_type = 3
 
     # Reward attributes
-    reward_address = 0x39162a
+    reward_address = 0x39162A
     yoshi_cookie_item = items.Mushroom
 
 
@@ -554,6 +601,7 @@ class MadMalletHenchman(MadMallet, Henchman):
     coins = 1
     yoshi_cookie_item = items.Energizer
 
+
 class Shaman(Enemy):
     index = 4
     address = 0x390706
@@ -571,7 +619,7 @@ class Shaman(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x3917fe
+    reward_address = 0x3917FE
     xp = 17
     coins = 4
     yoshi_cookie_item = items.RoyalSyrup
@@ -581,7 +629,7 @@ class Shaman(Enemy):
 
 class Crook(Enemy):
     index = 5
-    address = 0x3902e6
+    address = 0x3902E6
     hp = 38
     speed = 22
     attack = 35
@@ -603,10 +651,8 @@ class Crook(Enemy):
     yoshi_cookie_item = items.MidMushroom
     rare_item = items.HoneySyrup
 
-    model_small = {
-        **models[261],
-        "is_wide": True
-    }
+    model_small = {**models[261], "is_wide": True}
+
 
 class CrookHenchman(Crook, Henchman):
     index = 78
@@ -614,11 +660,11 @@ class CrookHenchman(Crook, Henchman):
     reward_address = 0x39192A
 
     # Boss shuffle attributes.
-    ratio_hp = (38 / 750)
+    ratio_hp = 38 / 750
     ratio_fp = 100 / 12
-    ratio_attack = (35 / 52)
+    ratio_attack = 35 / 52
     ratio_defense = 0.64
-    ratio_magic_attack = (12 / 27)
+    ratio_magic_attack = 12 / 27
     ratio_magic_defense = 0.5
     ratio_speed = 1.1
     ratio_evade = 2.0
@@ -631,11 +677,7 @@ class CrookHenchman(Crook, Henchman):
     yoshi_cookie_item = items.MidMushroom
     rare_item = items.HoneySyrup
 
-    model_small = {
-        **models[261],
-        "is_wide": True
-    }
-
+    model_small = {**models[261], "is_wide": True}
 
 
 class Goomba(Enemy):
@@ -656,7 +698,7 @@ class Goomba(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x39163c
+    reward_address = 0x39163C
     xp = 1
     yoshi_cookie_item = items.Mushroom
 
@@ -680,7 +722,7 @@ class PiranhaPlant(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3916b4
+    reward_address = 0x3916B4
     xp = 5
     coins = 5
     yoshi_cookie_item = items.SleepyBomb
@@ -693,13 +735,13 @@ class PiranhaPlantHenchman(PiranhaPlant, Henchman):
 
     # Boss shuffle attributes.
     # Partially taken from Chewy to be closer to Megasmilax
-    ratio_hp = (168 / 2600)
-    ratio_fp = (1 / 9)
-    ratio_attack = (110 / 940)
-    ratio_defense = (52 / 720)
-    ratio_magic_attack = (1 / 9)
-    ratio_magic_defense = (52 / 480)
-    ratio_speed = (6 / 42)
+    ratio_hp = 168 / 2600
+    ratio_fp = 1 / 9
+    ratio_attack = 110 / 940
+    ratio_defense = 52 / 720
+    ratio_magic_attack = 1 / 9
+    ratio_magic_defense = 52 / 480
+    ratio_speed = 6 / 42
 
     # Reward attributes
     reward_address = 0x391978
@@ -707,7 +749,6 @@ class PiranhaPlantHenchman(PiranhaPlant, Henchman):
     coins = 5
     yoshi_cookie_item = items.SleepyBomb
     normal_item = items.MapleSyrup
-
 
 
 class Amanita(Enemy):
@@ -739,7 +780,7 @@ class Amanita(Enemy):
 
 class Goby(Enemy):
     index = 9
-    address = 0x3902b6
+    address = 0x3902B6
     hp = 40
     speed = 12
     attack = 22
@@ -814,8 +855,6 @@ class BlooberHenchman(Bloober, Henchman):
     rare_item = items.HoneySyrup
 
 
-
-
 class BandanaRed(Enemy):
     index = 11
     address = 0x390576
@@ -834,7 +873,7 @@ class BandanaRed(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x39176e
+    reward_address = 0x39176E
     xp = 18
     coins = 10
     yoshi_cookie_item = items.Energizer
@@ -862,10 +901,9 @@ class BandanaRedHenchman(BandanaRed, Henchman):
     rare_item = items.Mushroom
 
 
-
 class Lakitu(Enemy):
     index = 12
-    address = 0x3903f6
+    address = 0x3903F6
     hp = 124
     speed = 28
     attack = 45
@@ -883,7 +921,7 @@ class Lakitu(Enemy):
     flying = True
 
     # Reward attributes
-    reward_address = 0x3916d8
+    reward_address = 0x3916D8
     xp = 10
     coins = 3
     yoshi_cookie_item = items.MapleSyrup
@@ -893,7 +931,7 @@ class Lakitu(Enemy):
 
 class Birdy(Enemy):
     index = 13
-    address = 0x3906d6
+    address = 0x3906D6
     hp = 150
     speed = 23
     attack = 110
@@ -914,11 +952,12 @@ class Birdy(Enemy):
     flying = True
 
     # Reward attributes
-    reward_address = 0x3917ec
+    reward_address = 0x3917EC
     xp = 16
     coins = 3
     yoshi_cookie_item = items.Energizer
     normal_item = items.Energizer
+
 
 class BirdyHenchman(Birdy, Henchman):
     index = 160
@@ -926,12 +965,12 @@ class BirdyHenchman(Birdy, Henchman):
 
     # Boss shuffle attributes.
     anchor = False
-    ratio_hp = (150 / 2400)
-    ratio_fp = (100 / 350)
-    ratio_attack = (110 / 260)
-    ratio_defense = (75 / 180)
-    ratio_magic_attack = (55 / 89)
-    ratio_magic_defense = (13 / 120)
+    ratio_hp = 150 / 2400
+    ratio_fp = 100 / 350
+    ratio_attack = 110 / 260
+    ratio_defense = 75 / 180
+    ratio_magic_attack = 55 / 89
+    ratio_magic_defense = 13 / 120
     ratio_evade = 1.8
 
     # Reward attributes
@@ -942,11 +981,9 @@ class BirdyHenchman(Birdy, Henchman):
     normal_item = items.Energizer
 
 
-
-
 class Pinwheel(Enemy):
     index = 14
-    address = 0x3906f6
+    address = 0x3906F6
     hp = 99
     speed = 32
     attack = 120
@@ -964,7 +1001,7 @@ class Pinwheel(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x3917f8
+    reward_address = 0x3917F8
     xp = 23
     yoshi_cookie_item = items.PickMeUp
     rare_item = items.PickMeUp
@@ -1017,7 +1054,7 @@ class K9(Enemy):
 
 class Magmite(Enemy):
     index = 17
-    address = 0x3903c6
+    address = 0x3903C6
     hp = 26
     speed = 2
     attack = 45
@@ -1034,7 +1071,7 @@ class Magmite(Enemy):
     flower_bonus_chance = 10
 
     # Reward attributes
-    reward_address = 0x3916c6
+    reward_address = 0x3916C6
     xp = 5
     coins = 1
     yoshi_cookie_item = items.Bracer
@@ -1042,7 +1079,7 @@ class Magmite(Enemy):
 
 class TheBigBoo(Enemy):
     index = 18
-    address = 0x3902a6
+    address = 0x3902A6
     hp = 43
     speed = 17
     attack = 18
@@ -1058,7 +1095,7 @@ class TheBigBoo(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x39165a
+    reward_address = 0x39165A
     xp = 2
     yoshi_cookie_item = items.FrightBomb
     normal_item = items.HoneySyrup
@@ -1082,7 +1119,7 @@ class DryBones(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39177a
+    reward_address = 0x39177A
     xp = 12
     coins = 5
     yoshi_cookie_item = items.Mushroom
@@ -1092,7 +1129,7 @@ class DryBones(Enemy):
 
 class Greaper(Enemy):
     index = 20
-    address = 0x3905b6
+    address = 0x3905B6
     hp = 148
     speed = 30
     attack = 72
@@ -1138,14 +1175,12 @@ class Sparky(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3916ae
+    reward_address = 0x3916AE
     xp = 4
     coins = 1
     yoshi_cookie_item = items.FireBomb
 
-    model_small = {
-        **models[277]
-    }
+    model_small = {**models[277]}
 
 
 class Chomp(Enemy):
@@ -1166,7 +1201,7 @@ class Chomp(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3916fc
+    reward_address = 0x3916FC
     xp = 10
     yoshi_cookie_item = items.Bracer
     normal_item = items.Mushroom
@@ -1193,7 +1228,7 @@ class Pandorite(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3918fa
+    reward_address = 0x3918FA
     xp = 20
     coins = 30
     yoshi_cookie_item = items.Mushroom
@@ -1206,20 +1241,17 @@ class Pandorite(Enemy):
 
     model_small = {
         **models[199],
-        "extra_props": {
-            "is_empty": True,
-            "sequence": 4,
-            "freeze": True
-        }
+        "extra_props": {"is_empty": True, "sequence": 4, "freeze": True},
     }
     model_large = {
         **models[343],
         "sprite": SpriteName._279_PANDORITE,
     }
 
+
 class ShyRanger(Enemy):
     index = 24
-    address = 0x3903a6
+    address = 0x3903A6
     hp = 300
     speed = 43
     attack = 100
@@ -1236,7 +1268,7 @@ class ShyRanger(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3916ba
+    reward_address = 0x3916BA
     xp = 60
     coins = 1
     yoshi_cookie_item = items.KerokeroCola
@@ -1245,7 +1277,7 @@ class ShyRanger(Enemy):
 class Bobomb(Enemy):
     index = 111
     address = 0x3909D6
-    
+
     hp = 90
     speed = 1
     attack = 50
@@ -1265,9 +1297,10 @@ class Bobomb(Enemy):
     yoshi_cookie_item = items.Mushroom
     normal_item = items.PickMeUp
 
+
 class BobombHenchman(Bobomb, Henchman):
     index = 25
-    address = 0x3903b6
+    address = 0x3903B6
     boss = True
 
     # Boss shuffle attributes.
@@ -1282,10 +1315,11 @@ class BobombHenchman(Bobomb, Henchman):
     ratio_magic_evade = 0.0
 
     # Reward attributes
-    reward_address = 0x3916c0
+    reward_address = 0x3916C0
     xp = 4
     yoshi_cookie_item = items.Mushroom
     normal_item = items.PickMeUp
+
 
 class Spookum(Enemy):
     index = 26
@@ -1305,7 +1339,7 @@ class Spookum(Enemy):
     flower_bonus_chance = 1
 
     # Reward attributes
-    reward_address = 0x3916f0
+    reward_address = 0x3916F0
     xp = 8
     coins = 4
     yoshi_cookie_item = items.SleepyBomb
@@ -1314,7 +1348,7 @@ class Spookum(Enemy):
 
 class HammerBro(Enemy):
     index = 27
-    address = 0x390c26
+    address = 0x390C26
     boss = True
     hp = 50
     speed = 10
@@ -1332,7 +1366,7 @@ class HammerBro(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x391a9e
+    reward_address = 0x391A9E
     xp = 3
     coins = 10
     yoshi_cookie_item = items.Mushroom
@@ -1351,8 +1385,8 @@ class HammerBro(Enemy):
         "extra_props": {
             "is_tall": True,
             "moleville_animation_sequence": 3,
-            "moleville_animation_duration": 40
-        }
+            "moleville_animation_duration": 40,
+        },
     }
     model_small = {
         "sprite": SpriteName._545_THROWN_HAMMER,
@@ -1362,11 +1396,7 @@ class HammerBro(Enemy):
         "obtuse_axis": 2,
         "height": 6,
         "vram_store": VramStore._02_SWSE,
-        "extra_props": {
-            "is_empty": True,
-            "sequence": 4,
-            "freeze": True
-        }
+        "extra_props": {"is_empty": True, "sequence": 4, "freeze": True},
     }
 
 
@@ -1391,7 +1421,7 @@ class Buzzer(Enemy):
     flying = True
 
     # Reward attributes
-    reward_address = 0x39169c
+    reward_address = 0x39169C
     xp = 4
     coins = 1
     yoshi_cookie_item = items.Mushroom
@@ -1399,7 +1429,7 @@ class Buzzer(Enemy):
 
 class Ameboid(Enemy):
     index = 29
-    address = 0x3908c6
+    address = 0x3908C6
     hp = 220
     speed = 1
     attack = 130
@@ -1417,7 +1447,7 @@ class Ameboid(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x3918ca
+    reward_address = 0x3918CA
     xp = 10
     yoshi_cookie_item = items.MaxMushroom
     normal_item = items.RoyalSyrup
@@ -1425,7 +1455,7 @@ class Ameboid(Enemy):
 
 class Gecko(Enemy):
     index = 30
-    address = 0x3904f6
+    address = 0x3904F6
     hp = 92
     speed = 22
     attack = 68
@@ -1443,7 +1473,7 @@ class Gecko(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x39173e
+    reward_address = 0x39173E
     xp = 10
     yoshi_cookie_item = items.FroggieDrink
 
@@ -1532,6 +1562,7 @@ class Magikoopa(Enemy):
     sprite_height = 42
     sprite_width = 45
 
+
 class Leuko(Enemy):
     index = 34
     address = 0x390566
@@ -1578,7 +1609,7 @@ class Jawful(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x39180a
+    reward_address = 0x39180A
     xp = 27
     yoshi_cookie_item = items.RockCandy
     rare_item = items.SleepyBomb
@@ -1586,7 +1617,7 @@ class Jawful(Enemy):
 
 class Enigma(Enemy):
     index = 36
-    address = 0x3903d6
+    address = 0x3903D6
     hp = 150
     speed = 25
     attack = 55
@@ -1604,7 +1635,7 @@ class Enigma(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3916cc
+    reward_address = 0x3916CC
     xp = 10
     coins = 5
     yoshi_cookie_item = items.Energizer
@@ -1652,7 +1683,7 @@ class Guerrilla(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3916a2
+    reward_address = 0x3916A2
     xp = 8
     coins = 8
     yoshi_cookie_item = items.AbleJuice
@@ -1661,7 +1692,7 @@ class Guerrilla(Enemy):
 
 class Babayaga(Enemy):
     index = 39
-    address = 0x3909a6
+    address = 0x3909A6
     hp = 10
     fp = 100
     morph_chance = 3
@@ -1677,7 +1708,7 @@ class Babayaga(Enemy):
 
 class Hobgoblin(Enemy):
     index = 40
-    address = 0x3902c6
+    address = 0x3902C6
     hp = 50
     speed = 5
     attack = 22
@@ -1703,7 +1734,7 @@ class Hobgoblin(Enemy):
 
 class Reacher(Enemy):
     index = 41
-    address = 0x3905c6
+    address = 0x3905C6
     hp = 184
     speed = 3
     attack = 95
@@ -1718,7 +1749,7 @@ class Reacher(Enemy):
     flower_bonus_chance = 6
 
     # Reward attributes
-    reward_address = 0x39178c
+    reward_address = 0x39178C
     xp = 30
     coins = 8
     yoshi_cookie_item = items.PickMeUp
@@ -1745,7 +1776,7 @@ class Shogun(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x3917b6
+    reward_address = 0x3917B6
     xp = 24
     coins = 10
     yoshi_cookie_item = items.RoyalSyrup
@@ -1807,7 +1838,7 @@ class HeavyTroopa(Enemy):
 
 class Shadow(Enemy):
     index = 45
-    address = 0x3902d6
+    address = 0x3902D6
     hp = 85
     speed = 18
     attack = 24
@@ -1824,7 +1855,7 @@ class Shadow(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x39166c
+    reward_address = 0x39166C
     xp = 3
     coins = 2
     yoshi_cookie_item = items.HoneySyrup
@@ -1833,7 +1864,7 @@ class Shadow(Enemy):
 
 class Cluster(Enemy):
     index = 46
-    address = 0x3903e6
+    address = 0x3903E6
     hp = 60
     speed = 20
     attack = 50
@@ -1850,7 +1881,7 @@ class Cluster(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x3916d2
+    reward_address = 0x3916D2
     xp = 8
     coins = 8
     yoshi_cookie_item = items.PickMeUp
@@ -1877,7 +1908,7 @@ class BahamuttMagikoopa(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39191e
+    reward_address = 0x39191E
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -1892,6 +1923,7 @@ class BahamuttMagikoopa(Enemy):
     ratio_magic_evade = 0.0
 
     sprite = 699
+
 
 class BahamuttChester(Enemy):
     index = 171
@@ -1917,16 +1949,15 @@ class BahamuttChester(Enemy):
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
-    ratio_hp = (5 / 12)
+    ratio_hp = 5 / 12
     ratio_fp = 1.0
-    ratio_attack = (17 / 22)
-    ratio_defense = (5 / 6)
-    ratio_magic_attack = (2 / 3)
+    ratio_attack = 17 / 22
+    ratio_defense = 5 / 6
+    ratio_magic_attack = 2 / 3
     ratio_magic_defense = 0.25
     ratio_speed = 8.0
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
-
 
 
 class Octolot(Enemy):
@@ -1948,7 +1979,7 @@ class Octolot(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3916a8
+    reward_address = 0x3916A8
     xp = 6
     coins = 4
     yoshi_cookie_item = items.HoneySyrup
@@ -1982,7 +2013,7 @@ class Frogog(Enemy):
 
 class Clerk(Enemy):
     index = 50
-    address = 0x3911d6
+    address = 0x3911D6
     boss = True
     hp = 500
     speed = 15
@@ -1998,7 +2029,7 @@ class Clerk(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3918a0
+    reward_address = 0x3918A0
     xp = 50
     coins = 20
     yoshi_cookie_item = items.Mushroom
@@ -2038,7 +2069,7 @@ class Gunyolk(Enemy):
     sprite_height = 63
 
     # Reward attributes
-    reward_address = 0x3918b8
+    reward_address = 0x3918B8
     xp = 100
     coins = 10
     yoshi_cookie_item = items.Mushroom
@@ -2057,7 +2088,7 @@ class Gunyolk(Enemy):
 
 class Boomer(Enemy):
     index = 52
-    address = 0x3911b6
+    address = 0x3911B6
     boss = True
     hp = 2000
     speed = 18
@@ -2074,7 +2105,7 @@ class Boomer(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3918dc
+    reward_address = 0x3918DC
     xp = 55
     coins = 9
     yoshi_cookie_item = items.Mushroom
@@ -2102,22 +2133,32 @@ class Boomer(Enemy):
         # TODO: Get addresses for linear mode.
         if self.world.open_mode:
             # Change to blue state.  Scale shuffled stats based on vanilla ratios.
-            patch.add_data(0x353629, utils.ByteField(
-                int(round(min(self.attack * 0.6, 255)))).as_bytes())
-            patch.add_data(0x35362d, utils.ByteField(
-                int(round(min(self.defense * 0.6429, 255)))).as_bytes())
-            patch.add_data(0x353631, utils.ByteField(
-                int(round(min(self.magic_attack * 2.8571, 255)))).as_bytes())
-            patch.add_data(0x353635, utils.ByteField(
-                int(round(min(self.magic_defense * 3.4615, 255)))).as_bytes())
+            patch.add_data(
+                0x353629,
+                utils.ByteField(int(round(min(self.attack * 0.6, 255)))).as_bytes(),
+            )
+            patch.add_data(
+                0x35362D,
+                utils.ByteField(int(round(min(self.defense * 0.6429, 255)))).as_bytes(),
+            )
+            patch.add_data(
+                0x353631,
+                utils.ByteField(
+                    int(round(min(self.magic_attack * 2.8571, 255)))
+                ).as_bytes(),
+            )
+            patch.add_data(
+                0x353635,
+                utils.ByteField(
+                    int(round(min(self.magic_defense * 3.4615, 255)))
+                ).as_bytes(),
+            )
 
             # Change back to red state (use starting stats).
-            patch.add_data(0x3535e2, utils.ByteField(self.attack).as_bytes())
-            patch.add_data(0x3535e6, utils.ByteField(self.defense).as_bytes())
-            patch.add_data(0x3535ea, utils.ByteField(
-                self.magic_attack).as_bytes())
-            patch.add_data(0x3535ee, utils.ByteField(
-                self.magic_defense).as_bytes())
+            patch.add_data(0x3535E2, utils.ByteField(self.attack).as_bytes())
+            patch.add_data(0x3535E6, utils.ByteField(self.defense).as_bytes())
+            patch.add_data(0x3535EA, utils.ByteField(self.magic_attack).as_bytes())
+            patch.add_data(0x3535EE, utils.ByteField(self.magic_defense).as_bytes())
 
         return patch
 
@@ -2175,7 +2216,7 @@ class Snapdragon(Enemy):
 
 class Stumpet(Enemy):
     index = 55
-    address = 0x3907a6
+    address = 0x3907A6
     hp = 500
     speed = 1
     attack = 200
@@ -2193,7 +2234,7 @@ class Stumpet(Enemy):
     flower_bonus_chance = 10
 
     # Reward attributes
-    reward_address = 0x39183a
+    reward_address = 0x39183A
     xp = 70
     coins = 15
     yoshi_cookie_item = items.RoyalSyrup
@@ -2222,7 +2263,7 @@ class Dodo(Enemy):
     hp_counter_ratios = [0.6]
 
     # Reward attributes
-    reward_address = 0x391c12
+    reward_address = 0x391C12
     xp = 40
     yoshi_cookie_item = items.Mushroom
 
@@ -2252,8 +2293,7 @@ class Dodo(Enemy):
         # Open mode event address is the same as vanilla, but standard mode patch is in a different spot.
         if not self.world.open_mode:
             run_away = self.round_for_battle_script(self.hp * 0.6)
-            patch.add_data(0x393818, utils.ByteField(
-                run_away, num_bytes=2).as_bytes())
+            patch.add_data(0x393818, utils.ByteField(run_away, num_bytes=2).as_bytes())
 
         return patch
 
@@ -2278,7 +2318,7 @@ class Jester(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x39170e
+    reward_address = 0x39170E
     xp = 10
     coins = 10
     yoshi_cookie_item = items.HoneySyrup
@@ -2305,7 +2345,7 @@ class Artichoker(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x3916e4
+    reward_address = 0x3916E4
     xp = 12
     coins = 10
     yoshi_cookie_item = items.MidMushroom
@@ -2329,7 +2369,7 @@ class Arachne(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39168a
+    reward_address = 0x39168A
     xp = 6
     coins = 6
     yoshi_cookie_item = items.Energizer
@@ -2355,7 +2395,7 @@ class Carriboscis(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x3916ea
+    reward_address = 0x3916EA
     xp = 10
     coins = 4
     yoshi_cookie_item = items.HoneySyrup
@@ -2383,7 +2423,7 @@ class Hippopo(Enemy):
     one_per_battle = True
 
     # Reward attributes
-    reward_address = 0x3918f4
+    reward_address = 0x3918F4
     xp = 80
     coins = 50
     yoshi_cookie_item = items.Megalixir
@@ -2417,7 +2457,7 @@ class Mastadoom(Enemy):
 
 class Corkpedite(Enemy):
     index = 63
-    address = 0x3907d6
+    address = 0x3907D6
     hp = 200
     speed = 5
     attack = 130
@@ -2435,7 +2475,7 @@ class Corkpedite(Enemy):
     flower_bonus_chance = 6
 
     # Reward attributes
-    reward_address = 0x39184c
+    reward_address = 0x39184C
     xp = 50
     coins = 10
     yoshi_cookie_item = items.Crystalline
@@ -2444,7 +2484,7 @@ class Corkpedite(Enemy):
 
 class Terracotta(Enemy):
     index = 64
-    address = 0x3907f6
+    address = 0x3907F6
     hp = 180
     speed = 23
     attack = 120
@@ -2484,7 +2524,7 @@ class Spikester(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3916de
+    reward_address = 0x3916DE
     xp = 6
     coins = 2
     yoshi_cookie_item = items.Bracer
@@ -2511,7 +2551,7 @@ class Malakoopa(Enemy):
     flying = True
 
     # Reward attributes
-    reward_address = 0x39185e
+    reward_address = 0x39185E
     xp = 23
     coins = 3
     yoshi_cookie_item = items.MapleSyrup
@@ -2537,7 +2577,7 @@ class Pounder(Henchman):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x39188e
+    reward_address = 0x39188E
     xp = 24
     coins = 2
     yoshi_cookie_item = items.Energizer
@@ -2596,7 +2636,7 @@ class Poundette(Henchman):
 
 class Sackit(Enemy):
     index = 69
-    address = 0x3904e6
+    address = 0x3904E6
     hp = 152
     speed = 26
     attack = 70
@@ -2665,7 +2705,7 @@ class Chewy(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3917ce
+    reward_address = 0x3917CE
     xp = 14
     yoshi_cookie_item = items.BadMushroom
     normal_item = items.SleepyBomb
@@ -2673,7 +2713,7 @@ class Chewy(Enemy):
 
 class Fireball(Enemy):
     index = 72
-    address = 0x3904b6
+    address = 0x3904B6
     hp = 10
     speed = 42
     attack = 55
@@ -2720,7 +2760,7 @@ class MrKipper(Enemy):
     high_flying = True
 
     # Reward attributes
-    reward_address = 0x39175c
+    reward_address = 0x39175C
     xp = 8
     coins = 2
     yoshi_cookie_item = items.Mushroom
@@ -2745,7 +2785,7 @@ class FactoryChief(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3918b2
+    reward_address = 0x3918B2
     xp = 80
     coins = 90
     yoshi_cookie_item = items.Mushroom
@@ -2792,14 +2832,12 @@ class BandanaBlue(Henchman):
     ratio_magic_defense = 0.5
     ratio_speed = 2.3077
 
-    model_small = {
-        **models[331]
-    }    
+    model_small = {**models[331]}
 
 
 class Manager(Enemy):
     index = 76
-    address = 0x3911e6
+    address = 0x3911E6
     boss = True
     hp = 800
     speed = 25
@@ -2815,7 +2853,7 @@ class Manager(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3918a6
+    reward_address = 0x3918A6
     xp = 60
     coins = 40
     yoshi_cookie_item = items.Mushroom
@@ -2840,7 +2878,7 @@ class Manager(Enemy):
 
 class Bluebird(Enemy):
     index = 77
-    address = 0x3906e6
+    address = 0x3906E6
     hp = 200
     speed = 29
     attack = 95
@@ -2861,7 +2899,7 @@ class Bluebird(Enemy):
     flying = True
 
     # Reward attributes
-    reward_address = 0x3917f2
+    reward_address = 0x3917F2
     xp = 14
     coins = 6
     yoshi_cookie_item = items.Bracer
@@ -2874,12 +2912,12 @@ class BluebirdHenchman(Bluebird, Henchman):
 
     # Boss shuffle attributes.
     anchor = False
-    ratio_hp = (200 / 2400)
-    ratio_fp = (100 / 350)
-    ratio_attack = (95 / 260)
-    ratio_defense = (50 / 180)
-    ratio_magic_attack = (80 / 89)
-    ratio_magic_defense = (94 / 120)
+    ratio_hp = 200 / 2400
+    ratio_fp = 100 / 350
+    ratio_attack = 95 / 260
+    ratio_defense = 50 / 180
+    ratio_magic_attack = 80 / 89
+    ratio_magic_defense = 94 / 120
     ratio_evade = 0.8
 
     # Reward attributes
@@ -2892,7 +2930,7 @@ class BluebirdHenchman(Bluebird, Henchman):
 
 class AlleyRat(Enemy):
     index = 79
-    address = 0x3905a6
+    address = 0x3905A6
     hp = 105
     speed = 21
     attack = 70
@@ -2931,7 +2969,7 @@ class Chow(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3917aa
+    reward_address = 0x3917AA
     xp = 15
     coins = 3
     yoshi_cookie_item = items.FrightBomb
@@ -2967,7 +3005,7 @@ class Magmus(Enemy):
 
 class LilBoo(Enemy):
     index = 82
-    address = 0x3908e6
+    address = 0x3908E6
     hp = 66
     speed = 27
     attack = 120
@@ -2984,7 +3022,7 @@ class LilBoo(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3918d6
+    reward_address = 0x3918D6
     xp = 28
     yoshi_cookie_item = items.FreshenUp
 
@@ -3015,7 +3053,7 @@ class Vomer(Enemy):
 
 class GlumReaper(Enemy):
     index = 84
-    address = 0x3908d6
+    address = 0x3908D6
     hp = 180
     speed = 35
     attack = 120
@@ -3033,7 +3071,7 @@ class GlumReaper(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3918d0
+    reward_address = 0x3918D0
     xp = 35
     coins = 3
     yoshi_cookie_item = items.PureWater
@@ -3061,10 +3099,11 @@ class Pyrosphere(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x39182e
+    reward_address = 0x39182E
     xp = 17
     coins = 2
     yoshi_cookie_item = items.FireBomb
+
 
 class PyrosphereHenchman(Pyrosphere, Henchman):
     index = 183
@@ -3072,13 +3111,13 @@ class PyrosphereHenchman(Pyrosphere, Henchman):
 
     # Boss shuffle attributes.
     anchor = False
-    ratio_hp = (167 / 3200)
+    ratio_hp = 167 / 3200
     ratio_fp = 0.5
-    ratio_attack = (105 / 350)
-    ratio_defense = (66 / 160)
-    ratio_magic_attack = (100 / 200)
-    ratio_magic_defense = (48 / 170)
-    ratio_speed = (24 / 26)
+    ratio_attack = 105 / 350
+    ratio_defense = 66 / 160
+    ratio_magic_attack = 100 / 200
+    ratio_magic_defense = 48 / 170
+    ratio_speed = 24 / 26
     ratio_evade = 0.35
 
     # Reward attributes
@@ -3106,7 +3145,7 @@ class ChompChomp(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3917c2
+    reward_address = 0x3917C2
     xp = 12
     coins = 5
     yoshi_cookie_item = items.Mushroom
@@ -3135,7 +3174,7 @@ class Hidon(Enemy):
 
     # Reward attributes
     reward_address = 0x391900
-    #xp = 50
+    # xp = 50
     xp = 42
     coins = 100
     yoshi_cookie_item = items.Mushroom
@@ -3192,7 +3231,7 @@ class Robomb(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3916f6
+    reward_address = 0x3916F6
     xp = 6
     coins = 1
     yoshi_cookie_item = items.PickMeUp
@@ -3201,7 +3240,7 @@ class Robomb(Enemy):
 
 class ShyGuy(Enemy):
     index = 90
-    address = 0x3902f6
+    address = 0x3902F6
     hp = 78
     speed = 14
     attack = 29
@@ -3221,6 +3260,7 @@ class ShyGuy(Enemy):
     coins = 1
     yoshi_cookie_item = items.HoneySyrup
 
+
 class ShyGuyHenchman(ShyGuy, Henchman):
     index = 185
     address = 0x390C06
@@ -3231,10 +3271,10 @@ class ShyGuyHenchman(ShyGuy, Henchman):
     ratio_hp = 0.06
     ratio_fp = 0.5
     ratio_attack = 0.54
-    ratio_defense = (4 / 7)
+    ratio_defense = 4 / 7
     ratio_magic_attack = 1.2
-    ratio_magic_defense = (21 / 26)
-    ratio_speed = (8 / 9)
+    ratio_magic_defense = 21 / 26
+    ratio_speed = 8 / 9
     ratio_evade = 0
     ratio_magic_evade = 0.0
 
@@ -3245,10 +3285,9 @@ class ShyGuyHenchman(ShyGuy, Henchman):
     yoshi_cookie_item = items.HoneySyrup
 
 
-
 class Ninja(Enemy):
     index = 91
-    address = 0x3908a6
+    address = 0x3908A6
     boss = True
     hp = 235
     speed = 28
@@ -3267,7 +3306,7 @@ class Ninja(Enemy):
     flower_bonus_chance = 7
 
     # Reward attributes
-    reward_address = 0x3918be
+    reward_address = 0x3918BE
     xp = 32
     coins = 6
     yoshi_cookie_item = items.PowerBlast
@@ -3276,7 +3315,7 @@ class Ninja(Enemy):
 
 class Stinger(Enemy):
     index = 92
-    address = 0x3905f6
+    address = 0x3905F6
     hp = 65
     speed = 33
     attack = 78
@@ -3294,7 +3333,7 @@ class Stinger(Enemy):
     flying = True
 
     # Reward attributes
-    reward_address = 0x3917a4
+    reward_address = 0x3917A4
     xp = 13
     coins = 1
     yoshi_cookie_item = items.AbleJuice
@@ -3359,7 +3398,7 @@ class Geckit(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3917d4
+    reward_address = 0x3917D4
     xp = 18
     yoshi_cookie_item = items.Energizer
     rare_item = items.AbleJuice
@@ -3382,7 +3421,7 @@ class Jabit(Enemy):
     flower_bonus_chance = 1
 
     # Reward attributes
-    reward_address = 0x39189a
+    reward_address = 0x39189A
     xp = 18
     yoshi_cookie_item = items.Bracer
     normal_item = items.PickMeUp
@@ -3408,7 +3447,7 @@ class Starcruster(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x39187c
+    reward_address = 0x39187C
     xp = 36
     coins = 30
     yoshi_cookie_item = items.Crystalline
@@ -3417,7 +3456,7 @@ class Starcruster(Enemy):
 
 class Merlin(Enemy):
     index = 97
-    address = 0x3908f6
+    address = 0x3908F6
     boss = True
     hp = 169
     speed = 20
@@ -3433,7 +3472,7 @@ class Merlin(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3918e2
+    reward_address = 0x3918E2
     xp = 50
     coins = 20
     yoshi_cookie_item = items.Mushroom
@@ -3494,7 +3533,7 @@ class Forkies(Enemy):
 
 class Gorgon(Enemy):
     index = 100
-    address = 0x3905d6
+    address = 0x3905D6
     hp = 140
     speed = 16
     attack = 86
@@ -3533,7 +3572,7 @@ class BigBertha(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x39186a
+    reward_address = 0x39186A
     xp = 35
     coins = 7
     yoshi_cookie_item = items.PickMeUp
@@ -3541,7 +3580,7 @@ class BigBertha(Enemy):
 
 class ChainedKong(Enemy):
     index = 102
-    address = 0x3907b6
+    address = 0x3907B6
     hp = 355
     speed = 17
     attack = 150
@@ -3605,7 +3644,7 @@ class Fautso(Enemy):
 
 class Strawhead(Enemy):
     index = 104
-    address = 0x3905e6
+    address = 0x3905E6
     hp = 131
     speed = 9
     attack = 80
@@ -3631,7 +3670,7 @@ class Strawhead(Enemy):
 
 class Juju(Enemy):
     index = 105
-    address = 0x3909c6
+    address = 0x3909C6
     hp = 10
     fp = 100
     morph_chance = 3
@@ -3647,7 +3686,7 @@ class Juju(Enemy):
 
 class ArmoredAnt(Enemy):
     index = 106
-    address = 0x3907c6
+    address = 0x3907C6
     hp = 230
     speed = 12
     attack = 130
@@ -3690,7 +3729,7 @@ class Orbison(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39181c
+    reward_address = 0x39181C
     xp = 18
     yoshi_cookie_item = items.RoyalSyrup
     normal_item = items.PureWater
@@ -3742,7 +3781,7 @@ class Doppel(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3918ee
+    reward_address = 0x3918EE
     xp = 40
     coins = 12
     yoshi_cookie_item = items.PickMeUp
@@ -3770,7 +3809,7 @@ class Pulsar(Enemy):
     flower_bonus_chance = 9
 
     # Reward attributes
-    reward_address = 0x39174a
+    reward_address = 0x39174A
     xp = 15
     coins = 12
     yoshi_cookie_item = items.PickMeUp
@@ -3798,7 +3837,7 @@ class Octovader(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3917bc
+    reward_address = 0x3917BC
     xp = 30
     coins = 8
     yoshi_cookie_item = items.FroggieDrink
@@ -3807,7 +3846,7 @@ class Octovader(Enemy):
 
 class Ribbite(Enemy):
     index = 113
-    address = 0x3906a6
+    address = 0x3906A6
     hp = 250
     speed = 15
     attack = 115
@@ -3824,7 +3863,7 @@ class Ribbite(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x3917da
+    reward_address = 0x3917DA
     xp = 22
     coins = 8
     yoshi_cookie_item = items.Elixir
@@ -3833,7 +3872,7 @@ class Ribbite(Enemy):
 
 class Director(Enemy):
     index = 114
-    address = 0x3911f6
+    address = 0x3911F6
     boss = True
     hp = 1000
     speed = 35
@@ -3849,7 +3888,7 @@ class Director(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3918ac
+    reward_address = 0x3918AC
     xp = 70
     coins = 80
     yoshi_cookie_item = items.Mushroom
@@ -3886,7 +3925,7 @@ class Puppox(Enemy):
     flower_bonus_chance = 1
 
     # Reward attributes
-    reward_address = 0x3918e8
+    reward_address = 0x3918E8
     xp = 30
     coins = 10
     yoshi_cookie_item = items.RockCandy
@@ -3913,7 +3952,7 @@ class FinkFlower(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x3917b0
+    reward_address = 0x3917B0
     xp = 20
     coins = 2
     yoshi_cookie_item = items.MaxMushroom
@@ -3922,7 +3961,7 @@ class FinkFlower(Enemy):
 
 class Lumbler(Enemy):
     index = 119
-    address = 0x390a06
+    address = 0x390A06
     boss = True
     hp = 10
     fp = 100
@@ -3939,7 +3978,7 @@ class Lumbler(Enemy):
 
 class Springer(Enemy):
     index = 120
-    address = 0x3908b6
+    address = 0x3908B6
     hp = 122
     speed = 16
     attack = 155
@@ -3955,7 +3994,7 @@ class Springer(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x3918c4
+    reward_address = 0x3918C4
     xp = 29
     coins = 2
     yoshi_cookie_item = items.Elixir
@@ -3964,7 +4003,7 @@ class Springer(Enemy):
 
 class Harlequin(Enemy):
     index = 121
-    address = 0x390a16
+    address = 0x390A16
     hp = 10
     fp = 100
     morph_chance = 3
@@ -3974,13 +4013,13 @@ class Harlequin(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39194e
+    reward_address = 0x39194E
     yoshi_cookie_item = items.Mushroom
 
 
 class Kriffid(Enemy):
     index = 122
-    address = 0x3906b6
+    address = 0x3906B6
     hp = 320
     speed = 8
     attack = 95
@@ -3999,7 +4038,7 @@ class Kriffid(Enemy):
     flower_bonus_chance = 5
 
     # Reward attributes
-    reward_address = 0x3917e0
+    reward_address = 0x3917E0
     xp = 35
     coins = 6
     yoshi_cookie_item = items.Crystalline
@@ -4008,7 +4047,7 @@ class Kriffid(Enemy):
 
 class Spinthra(Enemy):
     index = 123
-    address = 0x3906c6
+    address = 0x3906C6
     hp = 230
     speed = 19
     attack = 110
@@ -4025,7 +4064,7 @@ class Spinthra(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3917e6
+    reward_address = 0x3917E6
     xp = 30
     coins = 4
     yoshi_cookie_item = items.PowerBlast
@@ -4034,7 +4073,7 @@ class Spinthra(Enemy):
 
 class Radish(Enemy):
     index = 124
-    address = 0x390a26
+    address = 0x390A26
     hp = 10
     fp = 100
     morph_chance = 3
@@ -4050,7 +4089,7 @@ class Radish(Enemy):
 
 class Crippo(Enemy):
     index = 125
-    address = 0x390a36
+    address = 0x390A36
     hp = 10
     fp = 100
     morph_chance = 3
@@ -4060,13 +4099,13 @@ class Crippo(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39195a
+    reward_address = 0x39195A
     yoshi_cookie_item = items.Mushroom
 
 
 class MastaBlasta(Enemy):
     index = 126
-    address = 0x390a46
+    address = 0x390A46
     hp = 10
     fp = 100
     morph_chance = 3
@@ -4082,7 +4121,7 @@ class MastaBlasta(Enemy):
 
 class Piledriver(Enemy):
     index = 127
-    address = 0x390a56
+    address = 0x390A56
     hp = 10
     fp = 100
     morph_chance = 3
@@ -4098,7 +4137,7 @@ class Piledriver(Enemy):
 
 class Apprentice(Enemy):
     index = 128
-    address = 0x3904c6
+    address = 0x3904C6
     boss = True
     hp = 120
     speed = 20
@@ -4126,14 +4165,14 @@ class ApprenticeHenchman(Apprentice, Henchman):
     address = 0x390A66
 
     # Boss shuffle attributes.
-    ratio_hp = (3 / 35)
+    ratio_hp = 3 / 35
     ratio_fp = 0.33
-    ratio_attack = (50 / 255)
-    ratio_defense = (50 / 235)
+    ratio_attack = 50 / 255
+    ratio_defense = 50 / 235
     ratio_magic_attack = 1.0
     ratio_magic_defense = 0.5
-    ratio_speed = (10 / 51)
-    
+    ratio_speed = 10 / 51
+
     # Reward attributes
     reward_address = 0x39196C
     xp = 1
@@ -4179,7 +4218,7 @@ class BoxBoy(Enemy):
 
 class Shelly(Enemy):
     index = 135
-    address = 0x390e06
+    address = 0x390E06
     boss = True
     hp = 500
     defense = 80
@@ -4192,11 +4231,11 @@ class Shelly(Enemy):
     hp_counter_ratios = [0.8, 0.6, 0.4, 0.2]
 
     # Reward attributes
-    reward_address = 0x39198a
+    reward_address = 0x39198A
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
-    ratio_hp = (500 / 777)
+    ratio_hp = 500 / 777
     ratio_fp = 0.0
     ratio_attack = 0.0
     ratio_defense = 0.6154
@@ -4224,47 +4263,49 @@ class Shelly(Enemy):
         if not self.vanilla:
             # don't summon eggshell fragment if not paired with birdetta
             # targets battle event 92, new object sprite 160
-            patch.add_data(0x3A6F00, bytearray([0x09, 0x50, 0x75, 0x0A, 0x0A, 0x0A, 0x0A]))
+            patch.add_data(
+                0x3A6F00, bytearray([0x09, 0x50, 0x75, 0x0A, 0x0A, 0x0A, 0x0A])
+            )
 
         return patch
 
     def patch_script(self):
 
         script = BattleScript()
-        
+
         script.start_counter()
         script.if_hp(round(self.hp * 0.8))
-        script.if_bits_clear(0x7ee004, 0x08)
-        script.set(0x7ee004, 0x08)
+        script.if_bits_clear(0x7EE004, 0x08)
+        script.set(0x7EE004, 0x08)
         script.animate(0x04)
         script.wait_return()
-        
+
         script.if_hp(round(self.hp * 0.6))
-        script.if_bits_clear(0x7ee004, 0x04)
-        script.set(0x7ee004, 0x04)
+        script.if_bits_clear(0x7EE004, 0x04)
+        script.set(0x7EE004, 0x04)
         script.animate(0x05)
         script.wait_return()
-        
+
         script.if_hp(round(self.hp * 0.4))
-        script.if_bits_clear(0x7ee004, 0x02)
-        script.set(0x7ee004, 0x02)
+        script.if_bits_clear(0x7EE004, 0x02)
+        script.set(0x7EE004, 0x02)
         script.animate(0x06)
         script.wait_return()
-        
+
         script.if_hp(round(self.hp * 0.2))
-        script.if_bits_clear(0x7ee004, 0x01)
-        script.set(0x7ee004, 0x01)
+        script.if_bits_clear(0x7EE004, 0x01)
+        script.set(0x7EE004, 0x01)
         script.animate(0x07)
         script.wait_return()
-        
+
         script.if_hp(0x0000)
         script.animate(0x08)
         script.battle_event(92)
 
-        #decoy_id = 0x28 + self.position + 1
+        # decoy_id = 0x28 + self.position + 1
 
         # call invisible enemy to keep battle alive
-        #script.call(decoy_id)
+        # script.call(decoy_id)
 
         # summon enemies who should be visible at start
         for id in self.summons:
@@ -4275,7 +4316,7 @@ class Shelly(Enemy):
 
         # remove self
         script.animate(0x02)
-        script.remove(0x1b)
+        script.remove(0x1B)
 
         script.wait_return()
 
@@ -4284,7 +4325,7 @@ class Shelly(Enemy):
 
 class Superspike(Enemy):
     index = 136
-    address = 0x390ab6
+    address = 0x390AB6
     boss = True
     hp = 10
     fp = 100
@@ -4318,7 +4359,7 @@ class DodoSolo(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391c18
+    reward_address = 0x391C18
     xp = 70
     yoshi_cookie_item = items.Mushroom
 
@@ -4381,12 +4422,11 @@ class Chester(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39190c
+    reward_address = 0x39190C
     xp = 150
     coins = 200
     yoshi_cookie_item = items.Mushroom
 
-    
     # shuffled overworld sprites
     sprite_width = 37
     sprite_height = 40
@@ -4394,7 +4434,7 @@ class Chester(Enemy):
 
 class CorkpediteBody(Enemy):
     index = 140
-    address = 0x3907e6
+    address = 0x3907E6
     hp = 300
     speed = 5
     attack = 100
@@ -4418,7 +4458,7 @@ class CorkpediteBody(Enemy):
 
 class Torte(Henchman):
     index = 142
-    address = 0x390cc6
+    address = 0x390CC6
     boss = True
     hp = 100
     speed = 99
@@ -4436,7 +4476,7 @@ class Torte(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39172c
+    reward_address = 0x39172C
     yoshi_cookie_item = items.Mushroom
     # made this up
     xp = 3
@@ -4452,9 +4492,7 @@ class Torte(Henchman):
     ratio_evade = 1.0
     ratio_magic_evade = 1.0
 
-    model_small = {
-        **models[398]
-    }
+    model_small = {**models[398]}
 
 
 class Shyaway(Enemy):
@@ -4476,7 +4514,7 @@ class Shyaway(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x3917c8
+    reward_address = 0x3917C8
     xp = 1
     coins = 30
     yoshi_cookie_item = items.MapleSyrup
@@ -4485,7 +4523,7 @@ class Shyaway(Enemy):
 
 class JinxClone(Enemy):
     index = 144
-    address = 0x3911a6
+    address = 0x3911A6
     boss = True
     hp = 320
     speed = 22
@@ -4501,7 +4539,7 @@ class JinxClone(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39199c
+    reward_address = 0x39199C
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -4518,7 +4556,7 @@ class JinxClone(Enemy):
 
 class MachineMadeShyster(Enemy):
     index = 145
-    address = 0x390b06
+    address = 0x390B06
     hp = 100
     speed = 36
     attack = 135
@@ -4534,15 +4572,15 @@ class MachineMadeShyster(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919a2
+    reward_address = 0x3919A2
     xp = 28
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
     ratio_hp = 0.05
     ratio_fp = 1.0
-    ratio_attack = (135 / 230)
-    ratio_defense = (19 / 26)
+    ratio_attack = 135 / 230
+    ratio_defense = 19 / 26
     ratio_magic_attack = 0.9
     ratio_magic_defense = 0.65
     ratio_speed = 1.2
@@ -4575,8 +4613,8 @@ class MachineMadeShysterHenchman(MachineMadeShyster, Henchman):
     # Boss shuffle attributes.
     ratio_hp = 0.05
     ratio_fp = 1.0
-    ratio_attack = (135 / 230)
-    ratio_defense = (19 / 26)
+    ratio_attack = 135 / 230
+    ratio_defense = 19 / 26
     ratio_magic_attack = 0.9
     ratio_magic_defense = 0.65
     ratio_speed = 1.2
@@ -4586,7 +4624,7 @@ class MachineMadeShysterHenchman(MachineMadeShyster, Henchman):
 
 class MachineMadeDrillBit(Enemy):
     index = 146
-    address = 0x390b36
+    address = 0x390B36
     boss = True
     hp = 180
     speed = 24
@@ -4601,7 +4639,7 @@ class MachineMadeDrillBit(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919a8
+    reward_address = 0x3919A8
     yoshi_cookie_item = items.Mushroom
 
 
@@ -4623,11 +4661,11 @@ class Formless(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919ae
+    reward_address = 0x3919AE
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
-    ratio_hp = (1 / 62)
+    ratio_hp = 1 / 62
     ratio_fp = 1.0
     ratio_attack = 0.0
     ratio_defense = 0.0
@@ -4659,11 +4697,12 @@ class Mokura(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919b4
+    reward_address = 0x3919B4
     xp = 90
     yoshi_cookie_item = items.Mushroom
     normal_item = items.KerokeroCola
     rare_item = items.RoyalSyrup
+
 
 class FireCrystal(Henchman):
     index = 149
@@ -4685,7 +4724,7 @@ class FireCrystal(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919ba
+    reward_address = 0x3919BA
     xp = 40
     yoshi_cookie_item = items.Mushroom
 
@@ -4721,7 +4760,7 @@ class WaterCrystal(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919c0
+    reward_address = 0x3919C0
     xp = 30
     yoshi_cookie_item = items.Mushroom
 
@@ -4757,7 +4796,7 @@ class EarthCrystal(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919c6
+    reward_address = 0x3919C6
     xp = 50
     yoshi_cookie_item = items.Mushroom
 
@@ -4771,6 +4810,7 @@ class EarthCrystal(Henchman):
     ratio_speed = 0.02
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
+
 
 class WindCrystal(Henchman):
     index = 152
@@ -4792,7 +4832,7 @@ class WindCrystal(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919cc
+    reward_address = 0x3919CC
     xp = 10
     yoshi_cookie_item = items.Mushroom
 
@@ -4807,9 +4847,10 @@ class WindCrystal(Henchman):
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
 
+
 class MarioClone(Henchman):
     index = 153
-    address = 0x390d66
+    address = 0x390D66
     boss = True
     hp = 200
     speed = 20
@@ -4827,7 +4868,7 @@ class MarioClone(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919d2
+    reward_address = 0x3919D2
     xp = 10
     yoshi_cookie_item = items.Mushroom
 
@@ -4845,7 +4886,7 @@ class MarioClone(Henchman):
 
 class PeachClone(Henchman):
     index = 154
-    address = 0x390d76
+    address = 0x390D76
     boss = True
     hp = 120
     speed = 20
@@ -4861,7 +4902,7 @@ class PeachClone(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919d8
+    reward_address = 0x3919D8
     xp = 1
     yoshi_cookie_item = items.Mushroom
 
@@ -4879,7 +4920,7 @@ class PeachClone(Henchman):
 
 class BowserClone(Henchman):
     index = 155
-    address = 0x390d86
+    address = 0x390D86
     boss = True
     hp = 300
     speed = 12
@@ -4897,7 +4938,7 @@ class BowserClone(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919de
+    reward_address = 0x3919DE
     xp = 100
     yoshi_cookie_item = items.Mushroom
 
@@ -4915,7 +4956,7 @@ class BowserClone(Henchman):
 
 class GenoClone(Henchman):
     index = 156
-    address = 0x390d96
+    address = 0x390D96
     boss = True
     hp = 250
     speed = 30
@@ -4934,7 +4975,7 @@ class GenoClone(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919e4
+    reward_address = 0x3919E4
     xp = 40
     yoshi_cookie_item = items.Mushroom
 
@@ -4952,7 +4993,7 @@ class GenoClone(Henchman):
 
 class MallowClone(Henchman):
     index = 157
-    address = 0x390da6
+    address = 0x390DA6
     boss = True
     hp = 150
     speed = 14
@@ -4970,7 +5011,7 @@ class MallowClone(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919ea
+    reward_address = 0x3919EA
     xp = 60
     yoshi_cookie_item = items.Mushroom
 
@@ -5004,20 +5045,18 @@ class Shyster(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39164e
+    reward_address = 0x39164E
     xp = 3
     coins = 2
     yoshi_cookie_item = items.HoneySyrup
     normal_item = items.HoneySyrup
 
-    model_small = {
-        **models[414]
-    }
+    model_small = {**models[414]}
 
 
 class Kinklink(Enemy):
     index = 159
-    address = 0x390ad6
+    address = 0x390AD6
     boss = True
     hp = 60
     speed = 99
@@ -5028,13 +5067,13 @@ class Kinklink(Enemy):
     flower_bonus_type = 1
 
     # Reward attributes
-    reward_address = 0x3919f0
+    reward_address = 0x3919F0
     yoshi_cookie_item = items.Mushroom
 
 
 class HanginShy(Enemy):
     index = 161
-    address = 0x3911c6
+    address = 0x3911C6
     boss = True
     hp = 10
     speed = 200
@@ -5045,13 +5084,13 @@ class HanginShy(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x3919fc
+    reward_address = 0x3919FC
     yoshi_cookie_item = items.Mushroom
 
 
 class Smelter(Enemy):
     index = 162
-    address = 0x390fc6
+    address = 0x390FC6
     boss = True
     hp = 1500
     defense = 120
@@ -5066,21 +5105,21 @@ class Smelter(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a02
+    reward_address = 0x391A02
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
     ratio_hp = 0.75
-    ratio_fp = (100 / 250)
+    ratio_fp = 100 / 250
     ratio_attack = 0.0
-    ratio_defense = (120 / 130)
+    ratio_defense = 120 / 130
     ratio_magic_attack = 0.0
     ratio_magic_defense = 1.0
 
 
 class MachineMadeMack(Enemy):
     index = 163
-    address = 0x390af6
+    address = 0x390AF6
     boss = True
     hp = 300
     speed = 10
@@ -5098,7 +5137,7 @@ class MachineMadeMack(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a08
+    reward_address = 0x391A08
     xp = 120
     coins = 30
     yoshi_cookie_item = items.Mushroom
@@ -5107,7 +5146,7 @@ class MachineMadeMack(Enemy):
 
 class MachineMadeBowyer(Enemy):
     index = 164
-    address = 0x390b16
+    address = 0x390B16
     boss = True
     hp = 1000
     speed = 200
@@ -5124,7 +5163,7 @@ class MachineMadeBowyer(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a0e
+    reward_address = 0x391A0E
     xp = 150
     coins = 40
     yoshi_cookie_item = items.Mushroom
@@ -5133,7 +5172,7 @@ class MachineMadeBowyer(Enemy):
 
 class MachineMadeYaridovich(Enemy):
     index = 165
-    address = 0x390b26
+    address = 0x390B26
     boss = True
     hp = 800
     speed = 18
@@ -5150,7 +5189,7 @@ class MachineMadeYaridovich(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a14
+    reward_address = 0x391A14
     xp = 180
     coins = 50
     yoshi_cookie_item = items.Mushroom
@@ -5159,7 +5198,7 @@ class MachineMadeYaridovich(Enemy):
 
 class MachineMadeAxemPink(Enemy):
     index = 166
-    address = 0x390b46
+    address = 0x390B46
     hp = 100
     speed = 35
     attack = 95
@@ -5179,25 +5218,26 @@ class MachineMadeAxemPink(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x391a1a
+    reward_address = 0x391A1A
     xp = 30
     yoshi_cookie_item = items.Mushroom
     rare_item = items.MapleSyrup
+
 
 class MachineMadeAxemPinkHenchman(MachineMadeAxemPink, Henchman):
     index = 174
     address = 0x390BC6
 
     # Boss shuffle attributes.
-    ratio_hp = (100 / (800 + 400 + 550 + 600 + 450 + 999))
-    ratio_fp = (200 / (100 + 200 + 100 + 100 + 200 + 100))
-    ratio_attack = (40 / (150 + 120 + 140 + 170 + 110 + 0))
-    ratio_defense = (100 / (100 + 80 + 120 + 130 + 60 + 100))
-    ratio_magic_attack = (40 / (24 + 80 + 4 + 6 + 90 + 120))
-    ratio_magic_defense = (100 / (80 + 100 + 40 + 60 + 120 + 100))
-    ratio_speed = (35 / (30 + 25 + 35 + 3 + 20 + 200))
-    ratio_evade = (25 / (10 + 25 + 30 + 0 + 0 + 0))
-    ratio_magic_evade = (10 / (0 + 10 + 0 + 0 + 20 + 0))
+    ratio_hp = 100 / (800 + 400 + 550 + 600 + 450 + 999)
+    ratio_fp = 200 / (100 + 200 + 100 + 100 + 200 + 100)
+    ratio_attack = 40 / (150 + 120 + 140 + 170 + 110 + 0)
+    ratio_defense = 100 / (100 + 80 + 120 + 130 + 60 + 100)
+    ratio_magic_attack = 40 / (24 + 80 + 4 + 6 + 90 + 120)
+    ratio_magic_defense = 100 / (80 + 100 + 40 + 60 + 120 + 100)
+    ratio_speed = 35 / (30 + 25 + 35 + 3 + 20 + 200)
+    ratio_evade = 25 / (10 + 25 + 30 + 0 + 0 + 0)
+    ratio_magic_evade = 10 / (0 + 10 + 0 + 0 + 20 + 0)
 
     # Reward attributes
     reward_address = 0x391A4A
@@ -5208,7 +5248,7 @@ class MachineMadeAxemPinkHenchman(MachineMadeAxemPink, Henchman):
 
 class MachineMadeAxemBlack(Enemy):
     index = 167
-    address = 0x390b56
+    address = 0x390B56
     hp = 120
     speed = 55
     attack = 120
@@ -5226,25 +5266,26 @@ class MachineMadeAxemBlack(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x391a20
+    reward_address = 0x391A20
     xp = 20
     yoshi_cookie_item = items.Mushroom
     rare_item = items.MaxMushroom
+
 
 class MachineMadeAxemBlackHenchman(MachineMadeAxemBlack, Henchman):
     index = 173
     address = 0x390BB6
 
     # Boss shuffle attributes.
-    ratio_hp = (120 / (800 + 400 + 550 + 600 + 450 + 999))
-    ratio_fp = (100 / (100 + 200 + 100 + 100 + 200 + 100))
-    ratio_attack = (120 / (150 + 120 + 140 + 170 + 110 + 0))
-    ratio_defense = (40 / (100 + 80 + 120 + 130 + 60 + 100))
-    ratio_magic_attack = (4 / (24 + 80 + 4 + 6 + 90 + 120))
-    ratio_magic_defense = (40 / (80 + 100 + 40 + 60 + 120 + 100))
-    ratio_speed = (55 / (30 + 25 + 35 + 3 + 20 + 200))
-    ratio_evade = (30 / (10 + 25 + 30 + 0 + 0 + 0))
-    ratio_magic_evade = (0 / (0 + 10 + 0 + 0 + 20 + 0))
+    ratio_hp = 120 / (800 + 400 + 550 + 600 + 450 + 999)
+    ratio_fp = 100 / (100 + 200 + 100 + 100 + 200 + 100)
+    ratio_attack = 120 / (150 + 120 + 140 + 170 + 110 + 0)
+    ratio_defense = 40 / (100 + 80 + 120 + 130 + 60 + 100)
+    ratio_magic_attack = 4 / (24 + 80 + 4 + 6 + 90 + 120)
+    ratio_magic_defense = 40 / (80 + 100 + 40 + 60 + 120 + 100)
+    ratio_speed = 55 / (30 + 25 + 35 + 3 + 20 + 200)
+    ratio_evade = 30 / (10 + 25 + 30 + 0 + 0 + 0)
+    ratio_magic_evade = 0 / (0 + 10 + 0 + 0 + 20 + 0)
 
     # Reward attributes
     reward_address = 0x391A44
@@ -5255,7 +5296,7 @@ class MachineMadeAxemBlackHenchman(MachineMadeAxemBlack, Henchman):
 
 class MachineMadeAxemRed(Enemy):
     index = 168
-    address = 0x390b66
+    address = 0x390B66
     hp = 180
     speed = 45
     attack = 135
@@ -5274,7 +5315,7 @@ class MachineMadeAxemRed(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a26
+    reward_address = 0x391A26
     xp = 50
     yoshi_cookie_item = items.Mushroom
     rare_item = items.RoyalSyrup
@@ -5285,15 +5326,15 @@ class MachineMadeAxemRedHenchman(MachineMadeAxemRed, Henchman):
     address = 0x390DB6
 
     # Boss shuffle attributes.
-    ratio_hp = (180 / (800 + 400 + 550 + 600 + 450 + 999))
-    ratio_fp = (100 / (100 + 200 + 100 + 100 + 200 + 100))
-    ratio_attack = (135 / (150 + 120 + 140 + 170 + 110 + 0))
-    ratio_defense = (95 / (100 + 80 + 120 + 130 + 60 + 100))
-    ratio_magic_attack = (24 / (24 + 80 + 4 + 6 + 90 + 120))
-    ratio_magic_defense = (80 / (80 + 100 + 40 + 60 + 120 + 100))
-    ratio_speed = (45 / (30 + 25 + 35 + 3 + 20 + 200))
-    ratio_evade = (10 / (10 + 25 + 30 + 0 + 0 + 0))
-    ratio_magic_evade = (0 / (0 + 10 + 0 + 0 + 20 + 0))
+    ratio_hp = 180 / (800 + 400 + 550 + 600 + 450 + 999)
+    ratio_fp = 100 / (100 + 200 + 100 + 100 + 200 + 100)
+    ratio_attack = 135 / (150 + 120 + 140 + 170 + 110 + 0)
+    ratio_defense = 95 / (100 + 80 + 120 + 130 + 60 + 100)
+    ratio_magic_attack = 24 / (24 + 80 + 4 + 6 + 90 + 120)
+    ratio_magic_defense = 80 / (80 + 100 + 40 + 60 + 120 + 100)
+    ratio_speed = 45 / (30 + 25 + 35 + 3 + 20 + 200)
+    ratio_evade = 10 / (10 + 25 + 30 + 0 + 0 + 0)
+    ratio_magic_evade = 0 / (0 + 10 + 0 + 0 + 20 + 0)
 
     # Reward attributes
     reward_address = 0x391AF2
@@ -5302,10 +5343,9 @@ class MachineMadeAxemRedHenchman(MachineMadeAxemRed, Henchman):
     rare_item = items.RoyalSyrup
 
 
-
 class MachineMadeAxemYellow(Enemy):
     index = 169
-    address = 0x390b76
+    address = 0x390B76
     hp = 200
     speed = 20
     attack = 140
@@ -5323,7 +5363,7 @@ class MachineMadeAxemYellow(Enemy):
     flower_bonus_chance = 8
 
     # Reward attributes
-    reward_address = 0x391a2c
+    reward_address = 0x391A2C
     xp = 25
     yoshi_cookie_item = items.Mushroom
     rare_item = items.MaxMushroom
@@ -5334,15 +5374,15 @@ class MachineMadeAxemYellowHenchman(MachineMadeAxemYellow, Henchman):
     address = 0x391056
 
     # Boss shuffle attributes.
-    ratio_hp = (200 / (800 + 400 + 550 + 600 + 450 + 999))
-    ratio_fp = (100 / (100 + 200 + 100 + 100 + 200 + 100))
-    ratio_attack = (140 / (150 + 120 + 140 + 170 + 110 + 0))
-    ratio_defense = (20 / (100 + 80 + 120 + 130 + 60 + 100))
-    ratio_magic_attack = (16 / (24 + 80 + 4 + 6 + 90 + 120))
-    ratio_magic_defense = (20 / (80 + 100 + 40 + 60 + 120 + 100))
-    ratio_speed = (20 / (30 + 25 + 35 + 3 + 20 + 200))
-    ratio_evade = (0 / (10 + 25 + 30 + 0 + 0 + 0))
-    ratio_magic_evade = (0 / (0 + 10 + 0 + 0 + 20 + 0))
+    ratio_hp = 200 / (800 + 400 + 550 + 600 + 450 + 999)
+    ratio_fp = 100 / (100 + 200 + 100 + 100 + 200 + 100)
+    ratio_attack = 140 / (150 + 120 + 140 + 170 + 110 + 0)
+    ratio_defense = 20 / (100 + 80 + 120 + 130 + 60 + 100)
+    ratio_magic_attack = 16 / (24 + 80 + 4 + 6 + 90 + 120)
+    ratio_magic_defense = 20 / (80 + 100 + 40 + 60 + 120 + 100)
+    ratio_speed = 20 / (30 + 25 + 35 + 3 + 20 + 200)
+    ratio_evade = 0 / (10 + 25 + 30 + 0 + 0 + 0)
+    ratio_magic_evade = 0 / (0 + 10 + 0 + 0 + 20 + 0)
 
     # Reward attributes
     reward_address = 0x391BE8
@@ -5351,11 +5391,9 @@ class MachineMadeAxemYellowHenchman(MachineMadeAxemYellow, Henchman):
     rare_item = items.MaxMushroom
 
 
-
-
 class MachineMadeAxemGreen(Enemy):
     index = 170
-    address = 0x390b86
+    address = 0x390B86
     hp = 80
     speed = 40
     attack = 105
@@ -5373,7 +5411,7 @@ class MachineMadeAxemGreen(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x391a32
+    reward_address = 0x391A32
     xp = 10
     yoshi_cookie_item = items.Mushroom
     rare_item = items.RoyalSyrup
@@ -5384,23 +5422,21 @@ class MachineMadeAxemGreenHenchman(MachineMadeAxemGreen, Henchman):
     address = 0x390F56
 
     # Boss shuffle attributes.
-    ratio_hp = (80 / (800 + 400 + 550 + 600 + 450 + 999))
-    ratio_fp = (250 / (100 + 200 + 100 + 100 + 200 + 100))
-    ratio_attack = (105 / (150 + 120 + 140 + 170 + 110 + 0))
-    ratio_defense = (80 / (100 + 80 + 120 + 130 + 60 + 100))
-    ratio_magic_attack = (80 / (24 + 80 + 4 + 6 + 90 + 120))
-    ratio_magic_defense = (120 / (80 + 100 + 40 + 60 + 120 + 100))
-    ratio_speed = (40 / (30 + 25 + 35 + 3 + 20 + 200))
-    ratio_evade = (0 / (10 + 25 + 30 + 0 + 0 + 0))
-    ratio_magic_evade = (20 / (0 + 10 + 0 + 0 + 20 + 0))
+    ratio_hp = 80 / (800 + 400 + 550 + 600 + 450 + 999)
+    ratio_fp = 250 / (100 + 200 + 100 + 100 + 200 + 100)
+    ratio_attack = 105 / (150 + 120 + 140 + 170 + 110 + 0)
+    ratio_defense = 80 / (100 + 80 + 120 + 130 + 60 + 100)
+    ratio_magic_attack = 80 / (24 + 80 + 4 + 6 + 90 + 120)
+    ratio_magic_defense = 120 / (80 + 100 + 40 + 60 + 120 + 100)
+    ratio_speed = 40 / (30 + 25 + 35 + 3 + 20 + 200)
+    ratio_evade = 0 / (10 + 25 + 30 + 0 + 0 + 0)
+    ratio_magic_evade = 20 / (0 + 10 + 0 + 0 + 20 + 0)
 
     # Reward attributes
     reward_address = 0x391B9A
     xp = 10
     yoshi_cookie_item = items.Mushroom
     rare_item = items.RoyalSyrup
-
-
 
 
 class Starslap(Enemy):
@@ -5423,7 +5459,7 @@ class Starslap(Enemy):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x39167e
+    reward_address = 0x39167E
     xp = 2
     coins = 2
     yoshi_cookie_item = items.Mushroom
@@ -5431,7 +5467,7 @@ class Starslap(Enemy):
 
 class Mukumuku(Enemy):
     index = 177
-    address = 0x3904d6
+    address = 0x3904D6
     hp = 108
     speed = 11
     attack = 60
@@ -5484,7 +5520,7 @@ class Zeostar(Enemy):
 
 class Jagger(Enemy):
     index = 179
-    address = 0x390d06
+    address = 0x390D06
     boss = True
     hp = 600
     speed = 30
@@ -5502,7 +5538,7 @@ class Jagger(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391ad4
+    reward_address = 0x391AD4
     xp = 50
     yoshi_cookie_item = items.Mushroom
 
@@ -5530,14 +5566,14 @@ class Jagger(Enemy):
 
 class EmptyEnemy(Enemy):
     index = 180
-    address = 0x390be6
+    address = 0x390BE6
     boss = True
     hp = 9999
     fp = 100
     speed = 255
 
     # Reward attributes
-    reward_address = 0x391a56
+    reward_address = 0x391A56
     yoshi_cookie_item = items.Mushroom
 
     # Specific to Shelly
@@ -5609,9 +5645,10 @@ class EmptyEnemy(Enemy):
     # idea was to replace vram-heavy enemies with an empty sprite, and then summon their actual sprite with a delayed battle event, so that they are not loaded into the vram at the start of the fight breaking the egg graphically
     # graphics were still breaking, and i didn't know what to put for the vram address (last 2 args of the 3rd addition to  subroutine_bytes)
 
+
 class Smithy2TankHead(Enemy):
     index = 181
-    address = 0x390ff6
+    address = 0x390FF6
     boss = True
     hp = 8000
     speed = 50
@@ -5630,9 +5667,9 @@ class Smithy2TankHead(Enemy):
     hp_counter_ratios = [0.25, 0.5, 0.75]
 
     # Reward attributes
-    reward_address = 0x391a5c
+    reward_address = 0x391A5C
     yoshi_cookie_item = items.Mushroom
-    
+
     ratio_hp = 8000 / 10000
     ratio_attack = 250 / 186.875
     ratio_defense = 130 / 121.25
@@ -5660,9 +5697,9 @@ class Smithy2SafeHead(Enemy):
     hp_counter_ratios = [0.25, 0.5, 0.75]
 
     # Reward attributes
-    reward_address = 0x391a62
+    reward_address = 0x391A62
     yoshi_cookie_item = items.Mushroom
-    
+
     ratio_hp = 8000 / 10000
     ratio_attack = 40 / 186.875
     ratio_defense = 150 / 121.25
@@ -5672,7 +5709,7 @@ class Smithy2SafeHead(Enemy):
 
 class Microbomb(Enemy):
     index = 184
-    address = 0x390c36
+    address = 0x390C36
     boss = True
     hp = 30
     speed = 15
@@ -5689,7 +5726,7 @@ class Microbomb(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x391a86
+    reward_address = 0x391A86
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -5706,7 +5743,7 @@ class Microbomb(Enemy):
 
 class Grit(Enemy):
     index = 186
-    address = 0x390c16
+    address = 0x390C16
     boss = True
     hp = 10
     fp = 100
@@ -5716,13 +5753,13 @@ class Grit(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a74
+    reward_address = 0x391A74
     yoshi_cookie_item = items.Mushroom
 
 
 class Neosquid(Enemy):
     index = 187
-    address = 0x390f76
+    address = 0x390F76
     boss = True
     hp = 800
     speed = 20
@@ -5739,7 +5776,7 @@ class Neosquid(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391bb2
+    reward_address = 0x391BB2
     xp = 40
     yoshi_cookie_item = items.Mushroom
 
@@ -5755,7 +5792,7 @@ class Neosquid(Enemy):
 
 class YaridovichMirage(Enemy):
     index = 188
-    address = 0x390f16
+    address = 0x390F16
     boss = True
     hp = 500
     speed = 16
@@ -5772,7 +5809,7 @@ class YaridovichMirage(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a7a
+    reward_address = 0x391A7A
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -5787,7 +5824,7 @@ class YaridovichMirage(Enemy):
 
 class Helio(Enemy):
     index = 189
-    address = 0x390e76
+    address = 0x390E76
     boss = True
     hp = 10
     attack = 140
@@ -5800,7 +5837,7 @@ class Helio(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a80
+    reward_address = 0x391A80
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -5817,7 +5854,7 @@ class Helio(Enemy):
 
 class RightEye(Enemy):
     index = 190
-    address = 0x390f86
+    address = 0x390F86
     boss = True
     hp = 500
     speed = 17
@@ -5835,7 +5872,7 @@ class RightEye(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391ba6
+    reward_address = 0x391BA6
     xp = 30
     yoshi_cookie_item = items.Mushroom
 
@@ -5861,28 +5898,27 @@ class RightEye(Enemy):
         if self.world.open_mode:
             # Vanilla game gives a 20% bonus when the eye comes back...h*ck it, let's keep it!
             reset_hp = self.round_for_battle_script(self.hp * 1.2)
-            patch.add_data(0x35366e, utils.ByteField(
-                reset_hp, num_bytes=2).as_bytes())
+            patch.add_data(0x35366E, utils.ByteField(reset_hp, num_bytes=2).as_bytes())
 
         return patch
 
     def patch_script(self):
         script = BattleScript()
-        script.if_bits_set(0x7ee002, 0x01)
-        script.if_greater_or_equal(0x7ee004, 0x03)
+        script.if_bits_set(0x7EE002, 0x01)
+        script.if_greater_or_equal(0x7EE004, 0x03)
         script.set_targetable(Monsters.SELF)
-        script.zero(0x7ee004)
-        script.zero(0x7ee002)
-        script.animate(0x0d)
+        script.zero(0x7EE004)
+        script.zero(0x7EE002)
+        script.animate(0x0D)
         script.wait_return()
 
-        script.if_bits_set(0x7ee002, 0x01)
-        script.inc(0x7ee004)
+        script.if_bits_set(0x7EE002, 0x01)
+        script.inc(0x7EE004)
         script.wait_return()
 
-        script.zero(0x7ee005)
+        script.zero(0x7EE005)
         script.rand(0x07)
-        script.if_less_than(0x7ee005, 0x04)
+        script.if_less_than(0x7EE005, 0x04)
         script.cast_spell(spells.Bolt, spells.DiamondSaw, spells.MegaDrain)
         script.wait_return()
 
@@ -5890,19 +5926,19 @@ class RightEye(Enemy):
         script.start_counter()
 
         script.if_hp(0x0000)
-        script.if_bits_clear(0x7ee008, 0x01)
-        script.set(0x7ee002, 0x01)
-        script.set(0x7ee000, 0x01)
-        script.clear(0x7ee000, 0x04)
+        script.if_bits_clear(0x7EE008, 0x01)
+        script.set(0x7EE002, 0x01)
+        script.set(0x7EE000, 0x01)
+        script.clear(0x7EE000, 0x04)
         script.set_untargetable(Monsters.SELF)
 
         if self.world.settings.is_flag_enabled(flags.NoGenoWhirlExor):
-            script.set_targetable(Monsters.MONSTER_1)
+            script.set_targetable(Monsters.MONSTER_1_SET)
         else:
-            script.uninvuln(Targets.MONSTER_1)
+            script.uninvuln(Targets.MONSTER_1_SET)
 
-        script.animate(0x0b)
-        script.battle_dialog(0xdb)
+        script.animate(0x0B)
+        script.battle_dialog(0xDB)
         script.wait_return()
 
         self.script = script.fin()
@@ -5910,7 +5946,7 @@ class RightEye(Enemy):
 
 class LeftEye(Enemy):
     index = 191
-    address = 0x390f96
+    address = 0x390F96
     boss = True
     hp = 300
     speed = 21
@@ -5928,7 +5964,7 @@ class LeftEye(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391bac
+    reward_address = 0x391BAC
     xp = 30
     yoshi_cookie_item = items.Mushroom
 
@@ -5952,54 +5988,53 @@ class LeftEye(Enemy):
 
         # TODO: Get addresses for linear mode.
         if self.world.open_mode:
-            patch.add_data(0x35368e, utils.ByteField(
-                self.hp, num_bytes=2).as_bytes())
+            patch.add_data(0x35368E, utils.ByteField(self.hp, num_bytes=2).as_bytes())
 
         return patch
 
     def patch_script(self):
         script = BattleScript()
-        script.if_bits_set(0x7ee003, 0x01)
-        script.if_greater_or_equal(0x7ee004, 0x02)
+        script.if_bits_set(0x7EE003, 0x01)
+        script.if_greater_or_equal(0x7EE004, 0x02)
         script.set_targetable(Monsters.SELF)
-        script.zero(0x7ee004)
-        script.zero(0x7ee003)
-        script.animate(0x0d)
+        script.zero(0x7EE004)
+        script.zero(0x7EE003)
+        script.animate(0x0D)
         script.wait_return()
 
-        script.if_bits_set(0x7ee003, 0x01)
-        script.inc(0x7ee004)
+        script.if_bits_set(0x7EE003, 0x01)
+        script.inc(0x7EE004)
         script.wait_return()
 
-        script.zero(0x7ee005)
+        script.zero(0x7EE005)
         script.rand(0x07)
-        script.if_less_than(0x7ee005, 0x04)
-        script.set(0x7ee00f, 0x01)
-        script.attack(attacks.PhysicalAttack0,
-                      attacks.GunkBall, attacks.PhysicalAttack0)
-        script.clear(0x7ee00f, 0x01)
+        script.if_less_than(0x7EE005, 0x04)
+        script.set(0x7EE00F, 0x01)
+        script.attack(
+            attacks.PhysicalAttack0, attacks.GunkBall, attacks.PhysicalAttack0
+        )
+        script.clear(0x7EE00F, 0x01)
         script.wait_return()
 
-        script.set(0x7ee00f, 0x01)
-        script.attack(attacks.PhysicalAttack0,
-                      attacks.VenomDrool, attacks.ScrowBell)
-        script.clear(0x7ee00f, 0x01)
+        script.set(0x7EE00F, 0x01)
+        script.attack(attacks.PhysicalAttack0, attacks.VenomDrool, attacks.ScrowBell)
+        script.clear(0x7EE00F, 0x01)
         script.start_counter()
 
         script.if_hp(0x0000)
-        script.if_bits_clear(0x7ee008, 0x01)
-        script.set(0x7ee003, 0x01)
-        script.set(0x7ee000, 0x02)
-        script.clear(0x7ee000, 0x04)
+        script.if_bits_clear(0x7EE008, 0x01)
+        script.set(0x7EE003, 0x01)
+        script.set(0x7EE000, 0x02)
+        script.clear(0x7EE000, 0x04)
         script.set_untargetable(Monsters.SELF)
 
         if self.world.settings.is_flag_enabled(flags.NoGenoWhirlExor):
-            script.set_targetable(Monsters.MONSTER_1)
+            script.set_targetable(Monsters.MONSTER_1_SET)
         else:
-            script.uninvuln(Targets.MONSTER_1)
+            script.uninvuln(Targets.MONSTER_1_SET)
 
-        script.animate(0x0c)
-        script.battle_dialog(0xdb)
+        script.animate(0x0C)
+        script.battle_dialog(0xDB)
         script.wait_return()
 
         self.script = script.fin()
@@ -6007,7 +6042,7 @@ class LeftEye(Enemy):
 
 class KnifeGuy(Enemy):
     index = 192
-    address = 0x390c66
+    address = 0x390C66
     boss = True
     hp = 700
     speed = 25
@@ -6026,7 +6061,7 @@ class KnifeGuy(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391aa4
+    reward_address = 0x391AA4
     xp = 40
     coins = 15
     yoshi_cookie_item = items.Mushroom
@@ -6045,7 +6080,7 @@ class KnifeGuy(Enemy):
 
 class GrateGuy(Enemy):
     index = 193
-    address = 0x390c76
+    address = 0x390C76
     boss = True
     hp = 900
     speed = 14
@@ -6064,7 +6099,7 @@ class GrateGuy(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391aaa
+    reward_address = 0x391AAA
     xp = 50
     coins = 10
     yoshi_cookie_item = items.Mushroom
@@ -6087,9 +6122,10 @@ class GrateGuy(Enemy):
 
     sprite = 689
 
+
 class Bundt(Enemy):
     index = 194
-    address = 0x390c86
+    address = 0x390C86
     boss = True
     hp = 900
     speed = 16
@@ -6108,8 +6144,8 @@ class Bundt(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391ab0
-    #xp = 25
+    reward_address = 0x391AB0
+    # xp = 25
     xp = 23
     yoshi_cookie_item = items.Mushroom
 
@@ -6125,7 +6161,7 @@ class Bundt(Enemy):
     # shuffled overworld sprites
     sprite_height = 56
     sprite_width = 35
-    
+
     sidekicks = [142, 142]
 
     def get_patch(self):
@@ -6138,15 +6174,32 @@ class Bundt(Enemy):
         patch = super().get_patch()
 
         if self.world.chocolate_cake:
-            data = palette_to_bytes(["A88878", "906858", "906858", "684838", "504028", "382018", "382010", "382818", "201800",
-                                     "484020", "483020", "805848", "483020", "806050", "181818"])
+            data = palette_to_bytes(
+                [
+                    "A88878",
+                    "906858",
+                    "906858",
+                    "684838",
+                    "504028",
+                    "382018",
+                    "382010",
+                    "382818",
+                    "201800",
+                    "484020",
+                    "483020",
+                    "805848",
+                    "483020",
+                    "806050",
+                    "181818",
+                ]
+            )
             patch.add_data(0x2547AC, data)
         return patch
 
 
 class Jinx1(Enemy):
     index = 195
-    address = 0x390cd6
+    address = 0x390CD6
     boss = True
     hp = 600
     speed = 30
@@ -6166,18 +6219,19 @@ class Jinx1(Enemy):
     hp_counter_ratios = [0.5]
 
     # Reward attributes
-    reward_address = 0x391ac2
+    reward_address = 0x391AC2
     xp = 75
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
     ratio_hp = 1.0
     ratio_fp = 1.0
-    name_override = 'JINX 1'
+    name_override = "JINX 1"
+
 
 class Jinx2(Enemy):
     index = 196
-    address = 0x390ce6
+    address = 0x390CE6
     boss = True
     hp = 800
     speed = 32
@@ -6197,19 +6251,19 @@ class Jinx2(Enemy):
     hp_counter_ratios = [0.5]
 
     # Reward attributes
-    reward_address = 0x391ac8
+    reward_address = 0x391AC8
     xp = 100
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
     ratio_hp = 1.0
     ratio_fp = 1.0
-    name_override = 'JINX 2'
+    name_override = "JINX 2"
 
 
 class CountDown(Enemy):
     index = 197
-    address = 0x390d26
+    address = 0x390D26
     boss = True
     hp = 2400
     speed = 5
@@ -6225,7 +6279,7 @@ class CountDown(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391ada
+    reward_address = 0x391ADA
     xp = 140
     coins = 100
     yoshi_cookie_item = items.Mushroom
@@ -6242,7 +6296,7 @@ class CountDown(Enemy):
 
 class DingALing(Henchman):
     index = 198
-    address = 0x390d36
+    address = 0x390D36
     boss = True
     hp = 1200
     speed = 10
@@ -6259,7 +6313,7 @@ class DingALing(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391ae0
+    reward_address = 0x391AE0
     xp = 30
     yoshi_cookie_item = items.Mushroom
 
@@ -6275,7 +6329,7 @@ class DingALing(Henchman):
 
 class Belome1(Enemy):
     index = 199
-    address = 0x390d46
+    address = 0x390D46
     boss = True
     hp = 500
     speed = 4
@@ -6295,7 +6349,7 @@ class Belome1(Enemy):
     hp_counter_ratios = [300 / 500]
 
     # Reward attributes
-    reward_address = 0x391ae6
+    reward_address = 0x391AE6
     xp = 30
     coins = 40
     yoshi_cookie_item = items.Mushroom
@@ -6303,7 +6357,7 @@ class Belome1(Enemy):
     # Boss shuffle attributes.
     ratio_hp = 1.0
     ratio_fp = 1.0
-    name_override = 'BELOME 1'
+    name_override = "BELOME 1"
 
     # shuffled overworld sprites
     sprite_height = 54
@@ -6314,7 +6368,7 @@ class Belome1(Enemy):
 
 class Belome2(Enemy):
     index = 200
-    address = 0x390d56
+    address = 0x390D56
     boss = True
     hp = 1200
     speed = 4
@@ -6332,7 +6386,7 @@ class Belome2(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391aec
+    reward_address = 0x391AEC
     xp = 80
     coins = 20
     yoshi_cookie_item = items.Mushroom
@@ -6340,7 +6394,7 @@ class Belome2(Enemy):
     # Boss shuffle attributes.
     ratio_hp = 1.0
     ratio_fp = 1.0
-    name_override = 'BELOME 2'
+    name_override = "BELOME 2"
 
     # shuffled overworld sprites
     sprite_height = 54
@@ -6351,7 +6405,7 @@ class Belome2(Enemy):
 
 class Smilax(Enemy):
     index = 202
-    address = 0x390dc6
+    address = 0x390DC6
     boss = True
     hp = 200
     speed = 5
@@ -6369,7 +6423,7 @@ class Smilax(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391af8
+    reward_address = 0x391AF8
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -6383,9 +6437,10 @@ class Smilax(Enemy):
 
     model_small = {**models[458]}
 
+
 class Thrax(Enemy):
     index = 203
-    address = 0x390dd6
+    address = 0x390DD6
     boss = True
     hp = 10
     speed = 200
@@ -6397,13 +6452,13 @@ class Thrax(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391afe
+    reward_address = 0x391AFE
     yoshi_cookie_item = items.Mushroom
 
 
 class Megasmilax(Enemy):
     index = 204
-    address = 0x390de6
+    address = 0x390DE6
     boss = True
     hp = 1000
     speed = 2
@@ -6421,7 +6476,7 @@ class Megasmilax(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b04
+    reward_address = 0x391B04
     xp = 120
     yoshi_cookie_item = items.Mushroom
 
@@ -6436,9 +6491,10 @@ class Megasmilax(Enemy):
     sidekicks = [7, 7, 7, 7]
     czar = 202
 
+
 class Birdo(Enemy):
     index = 205
-    address = 0x390df6
+    address = 0x390DF6
     boss = True
     hp = 777
     speed = 10
@@ -6455,8 +6511,8 @@ class Birdo(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b0a
-    #xp = 60
+    reward_address = 0x391B0A
+    # xp = 60
     xp = 48
     coins = 30
     yoshi_cookie_item = items.Mushroom
@@ -6469,13 +6525,14 @@ class Birdo(Enemy):
     sprite_height = 57
     sprite_width = 38
     empty_sidekicks = True
-    name_override = 'BIRDETTA'
+    name_override = "BIRDETTA"
 
     sidekicks = [206, 206, 206, 206]
 
+
 class Eggbert(Henchman):
     index = 206
-    address = 0x390e16
+    address = 0x390E16
     boss = True
     hp = 10
     attack = 210
@@ -6487,7 +6544,7 @@ class Eggbert(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b10
+    reward_address = 0x391B10
     yoshi_cookie_item = items.Mushroom
     # made this up
     xp = 3
@@ -6502,6 +6559,7 @@ class Eggbert(Henchman):
     ratio_speed = 0.0
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
+
 
 class AxemYellow(Henchman):
     index = 207
@@ -6524,7 +6582,7 @@ class AxemYellow(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b1c
+    reward_address = 0x391B1C
     xp = 30
     yoshi_cookie_item = items.Mushroom
 
@@ -6542,7 +6600,7 @@ class AxemYellow(Henchman):
 
 class Punchinello(Enemy):
     index = 208
-    address = 0x390c56
+    address = 0x390C56
     boss = True
     hp = 1200
     speed = 15
@@ -6558,10 +6616,10 @@ class Punchinello(Enemy):
     palette = 16
     flower_bonus_type = 1
     battle_sesw_only = True
-    hp_counter_ratios = [2/3, 2/3, 1/3, 1/3]
+    hp_counter_ratios = [2 / 3, 2 / 3, 1 / 3, 1 / 3]
 
     # Reward attributes
-    reward_address = 0x391a98
+    reward_address = 0x391A98
     xp = 70
     yoshi_cookie_item = items.Mushroom
 
@@ -6576,10 +6634,9 @@ class Punchinello(Enemy):
     sidekicks = [25, 25, 25]
 
 
-
 class TentaclesRight(Enemy):
     index = 209
-    address = 0x390e46
+    address = 0x390E46
     boss = True
     hp = 260
     speed = 21
@@ -6596,7 +6653,7 @@ class TentaclesRight(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b3a
+    reward_address = 0x391B3A
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -6631,7 +6688,7 @@ class AxemRed(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b22
+    reward_address = 0x391B22
     xp = 40
     yoshi_cookie_item = items.Mushroom
 
@@ -6646,9 +6703,10 @@ class AxemRed(Enemy):
     ratio_evade = 0.9091
     ratio_magic_evade = 0.0
 
+
 class AxemGreen(Henchman):
     index = 211
-    address = 0x3910a6
+    address = 0x3910A6
     boss = True
     hp = 450
     speed = 20
@@ -6667,7 +6725,7 @@ class AxemGreen(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b28
+    reward_address = 0x391B28
     xp = 20
     yoshi_cookie_item = items.Mushroom
 
@@ -6682,12 +6740,8 @@ class AxemGreen(Henchman):
     ratio_evade = 0.0
     ratio_magic_evade = 4.0
 
-    model_small = {
-        **models[212],
-        "extra_props": {
-            "is_wide": True
-        }
-    }
+    model_small = {**models[212], "extra_props": {"is_wide": True}}
+
 
 class KingBomb(Enemy):
     index = 212
@@ -6706,7 +6760,7 @@ class KingBomb(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391a8c
+    reward_address = 0x391A8C
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -6727,19 +6781,19 @@ class KingBomb(Enemy):
 
         script.if_phase(0x03)
         if self.world.settings.is_flag_enabled(flags.FixMagikoopa):
-            script.zero(0x7ee000)
-        script.set_targetable(Monsters.MONSTER_1)
+            script.zero(0x7EE000)
+        script.set_targetable(Monsters.MONSTER_1_SET)
         script.cast_spell(spells.BigBang)
-        script.remove(0x1b)
+        script.remove(0x1B)
         script.wait_return()
 
         script.start_counter()
 
         script.if_hp(0x0000)
-        script.zero(0x7ee000)
-        script.set_targetable(Monsters.MONSTER_1)
+        script.zero(0x7EE000)
+        script.set_targetable(Monsters.MONSTER_1_SET)
         script.animate(0x03)
-        script.remove(0x1b)
+        script.remove(0x1B)
         script.wait_return()
 
         self.script = script.fin()
@@ -6749,7 +6803,7 @@ class KingBomb(Enemy):
 
 class MezzoBomb(Enemy):
     index = 213
-    address = 0x390c46
+    address = 0x390C46
     boss = True
     hp = 150
     speed = 1
@@ -6765,7 +6819,7 @@ class MezzoBomb(Enemy):
     flower_bonus_chance = 8
 
     # Reward attributes
-    reward_address = 0x391a92
+    reward_address = 0x391A92
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -6782,7 +6836,7 @@ class MezzoBomb(Enemy):
 
 class Raspberry(Enemy):
     index = 215
-    address = 0x390c96
+    address = 0x390C96
     boss = True
     hp = 600
     speed = 16
@@ -6801,8 +6855,8 @@ class Raspberry(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391abc
-    #xp = 50
+    reward_address = 0x391ABC
+    # xp = 50
     xp = 46
     yoshi_cookie_item = items.Mushroom
 
@@ -6825,15 +6879,32 @@ class Raspberry(Enemy):
         patch = super().get_patch()
 
         if self.world.chocolate_cake:
-            data = palette_to_bytes(["A88878", "806858", "704838", "685040", "604838", "503828", "685040", "684028", "482820",
-                                     "584028", "684838", "382820", "402010", "583828", "281808"])
+            data = palette_to_bytes(
+                [
+                    "A88878",
+                    "806858",
+                    "704838",
+                    "685040",
+                    "604838",
+                    "503828",
+                    "685040",
+                    "684028",
+                    "482820",
+                    "584028",
+                    "684838",
+                    "382820",
+                    "402010",
+                    "583828",
+                    "281808",
+                ]
+            )
             patch.add_data(0x254770, data)
         return patch
 
 
 class KingCalamari(Enemy):
     index = 216
-    address = 0x390e26
+    address = 0x390E26
     boss = True
     hp = 800
     speed = 8
@@ -6851,7 +6922,7 @@ class KingCalamari(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b40
+    reward_address = 0x391B40
     xp = 100
     coins = 100
     yoshi_cookie_item = items.Mushroom
@@ -6868,7 +6939,7 @@ class KingCalamari(Enemy):
 
 class TentaclesLeft(Enemy):
     index = 217
-    address = 0x390e36
+    address = 0x390E36
     boss = True
     hp = 200
     speed = 21
@@ -6886,7 +6957,7 @@ class TentaclesLeft(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b46
+    reward_address = 0x391B46
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -6901,7 +6972,7 @@ class TentaclesLeft(Enemy):
 
 class Jinx3(Enemy):
     index = 218
-    address = 0x390cf6
+    address = 0x390CF6
     boss = True
     hp = 1000
     speed = 35
@@ -6921,19 +6992,19 @@ class Jinx3(Enemy):
     hp_counter_ratios = [0.6, 0.3]
 
     # Reward attributes
-    reward_address = 0x391ace
+    reward_address = 0x391ACE
     xp = 150
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
     ratio_hp = 1.0
     ratio_fp = 1.0
-    name_override = 'JINX 3'
+    name_override = "JINX 3"
 
 
 class Zombone(Enemy):
     index = 219
-    address = 0x390e56
+    address = 0x390E56
     boss = True
     hp = 1800
     speed = 6
@@ -6953,7 +7024,7 @@ class Zombone(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b4c
+    reward_address = 0x391B4C
     xp = 50
     yoshi_cookie_item = items.Mushroom
 
@@ -6971,7 +7042,7 @@ class Zombone(Enemy):
 
 class CzarDragon(Enemy):
     index = 220
-    address = 0x390e66
+    address = 0x390E66
     boss = True
     hp = 1400
     speed = 20
@@ -6991,7 +7062,7 @@ class CzarDragon(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b52
+    reward_address = 0x391B52
     xp = 100
     yoshi_cookie_item = items.Mushroom
 
@@ -7013,9 +7084,10 @@ class CzarDragon(Enemy):
 
     sprite = 698
 
+
 class Cloaker(Enemy):
     index = 221
-    address = 0x390e86
+    address = 0x390E86
     boss = True
     hp = 1200
     speed = 20
@@ -7032,7 +7104,7 @@ class Cloaker(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b58
+    reward_address = 0x391B58
     xp = 60
     yoshi_cookie_item = items.Mushroom
 
@@ -7052,7 +7124,7 @@ class Cloaker(Enemy):
 
 class Domino(Enemy):
     index = 222
-    address = 0x390eb6
+    address = 0x390EB6
     boss = True
     hp = 900
     speed = 25
@@ -7069,7 +7141,7 @@ class Domino(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b5e
+    reward_address = 0x391B5E
     xp = 60
     yoshi_cookie_item = items.Mushroom
 
@@ -7085,7 +7157,7 @@ class Domino(Enemy):
 
 class MadAdder(Enemy):
     index = 223
-    address = 0x390ed6
+    address = 0x390ED6
     boss = True
     hp = 1500
     speed = 10
@@ -7102,7 +7174,7 @@ class MadAdder(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b64
+    reward_address = 0x391B64
     xp = 200
     yoshi_cookie_item = items.Mushroom
     normal_item = items.Crystalline
@@ -7120,7 +7192,7 @@ class MadAdder(Enemy):
 
 class Mack(Enemy):
     index = 224
-    address = 0x390ee6
+    address = 0x390EE6
     boss = True
     hp = 480
     speed = 8
@@ -7137,10 +7209,10 @@ class Mack(Enemy):
     flower_bonus_type = 1
 
     # Reward attributes
-    reward_address = 0x391b7c
-    #xp = 24
+    reward_address = 0x391B7C
+    # xp = 24
     xp = 12
-    #coins = 20
+    # coins = 20
     coins = 12
     yoshi_cookie_item = items.Mushroom
 
@@ -7155,9 +7227,10 @@ class Mack(Enemy):
 
     sprite = 686
 
+
 class Bodyguard(Henchman):
     index = 225
-    address = 0x390ef6
+    address = 0x390EF6
     boss = True
     hp = 30
     speed = 15
@@ -7174,7 +7247,7 @@ class Bodyguard(Henchman):
     flower_bonus_chance = 3
 
     # Reward attributes
-    reward_address = 0x391b82
+    reward_address = 0x391B82
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes
@@ -7195,7 +7268,7 @@ class Bodyguard(Henchman):
 
 class Yaridovich(Enemy):
     index = 226
-    address = 0x390f06
+    address = 0x390F06
     boss = True
     hp = 1500
     speed = 20
@@ -7213,7 +7286,7 @@ class Yaridovich(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b88
+    reward_address = 0x391B88
     xp = 120
     coins = 50
     yoshi_cookie_item = items.Mushroom
@@ -7231,9 +7304,10 @@ class Yaridovich(Enemy):
 
     sprite = 692
 
+
 class DrillBit(Henchman):
     index = 227
-    address = 0x390f26
+    address = 0x390F26
     boss = True
     hp = 80
     speed = 15
@@ -7248,7 +7322,7 @@ class DrillBit(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x39179e
+    reward_address = 0x39179E
     xp = 11
     coins = 1
     yoshi_cookie_item = items.Mushroom
@@ -7256,8 +7330,8 @@ class DrillBit(Henchman):
     # Boss shuffle attributes.
     ratio_hp = 0.04
     ratio_fp = 0.4
-    ratio_attack = (17 / 46)
-    ratio_defense = (7 / 13)
+    ratio_attack = 17 / 46
+    ratio_defense = 7 / 13
     ratio_magic_attack = 0.4
     ratio_magic_defense = 0.56
     ratio_speed = 0.5
@@ -7281,24 +7355,25 @@ class YaridovichDrillBit(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391bee
+    reward_address = 0x391BEE
     xp = 11
     coins = 1
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
     # Attuned to ratio of machine made drill bit to machine made yarid.
-    ratio_hp = (180 / 800)
-    ratio_fp = (100 / 250)
-    ratio_attack = (130 / 180)
-    ratio_defense = (82 / 130)
-    ratio_magic_attack = (31 / 90)
-    ratio_magic_defense = (69 / 50)
-    ratio_speed = (24 / 18)
+    ratio_hp = 180 / 800
+    ratio_fp = 100 / 250
+    ratio_attack = 130 / 180
+    ratio_defense = 82 / 130
+    ratio_magic_attack = 31 / 90
+    ratio_magic_defense = 69 / 50
+    ratio_speed = 24 / 18
+
 
 class AxemPink(Henchman):
     index = 228
-    address = 0x3910b6
+    address = 0x3910B6
     boss = True
     hp = 400
     speed = 25
@@ -7319,7 +7394,7 @@ class AxemPink(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b2e
+    reward_address = 0x391B2E
     xp = 10
     yoshi_cookie_item = items.Mushroom
 
@@ -7336,9 +7411,10 @@ class AxemPink(Henchman):
 
     model_small = {**models[210]}
 
+
 class AxemBlack(Henchman):
     index = 229
-    address = 0x3910c6
+    address = 0x3910C6
     boss = True
     hp = 550
     speed = 35
@@ -7357,7 +7433,7 @@ class AxemBlack(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b34
+    reward_address = 0x391B34
     xp = 40
     yoshi_cookie_item = items.Mushroom
 
@@ -7372,16 +7448,12 @@ class AxemBlack(Henchman):
     ratio_evade = 2.7273
     ratio_magic_evade = 0.0
 
-    model_small = {
-        **models[209],
-        "extra_props": {
-            "is_wide": True
-        }
-    }
+    model_small = {**models[209], "extra_props": {"is_wide": True}}
+
 
 class Bowyer(Enemy):
     index = 230
-    address = 0x390f36
+    address = 0x390F36
     boss = True
     hp = 720
     speed = 10
@@ -7398,7 +7470,7 @@ class Bowyer(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b8e
+    reward_address = 0x391B8E
     xp = 60
     coins = 50
     yoshi_cookie_item = items.Mushroom
@@ -7412,10 +7484,11 @@ class Bowyer(Enemy):
 
     sprite = 688
 
+
 class AeroBowyer(Henchman):
     # Borrow stats from Bob-omb to be relatively reasonable to match Bowyer
     index = 231
-    address = 0x390f46
+    address = 0x390F46
     boss = True
     hp = 90
     speed = 1
@@ -7430,7 +7503,7 @@ class AeroBowyer(Henchman):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b94
+    reward_address = 0x391B94
     xp = 4
     yoshi_cookie_item = items.Mushroom
 
@@ -7439,8 +7512,8 @@ class AeroBowyer(Henchman):
     ratio_fp = 0.4
     ratio_attack = 1.0
     ratio_defense = 0.95
-    ratio_magic_attack = (1 / 30)
-    ratio_magic_defense = (10 / 35)
+    ratio_magic_attack = 1 / 30
+    ratio_magic_defense = 10 / 35
     ratio_speed = 1.5
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
@@ -7471,17 +7544,18 @@ class AeroSmithy(Henchman):
     # Boss shuffle attributes.
     ratio_hp = 0.075
     ratio_fp = 0.4
-    ratio_attack = (14 / 23)
-    ratio_defense = (6 / 13)
+    ratio_attack = 14 / 23
+    ratio_defense = 6 / 13
     ratio_magic_attack = 0.66
     ratio_magic_defense = 0.45
     ratio_speed = 1.0
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+
 class Exor(Enemy):
     index = 233
-    address = 0x390f66
+    address = 0x390F66
     boss = True
     hp = 1800
     speed = 200
@@ -7495,7 +7569,7 @@ class Exor(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391ba0
+    reward_address = 0x391BA0
     xp = 100
     yoshi_cookie_item = items.Mushroom
 
@@ -7507,29 +7581,30 @@ class Exor(Enemy):
     ratio_magic_attack = 0.0
     ratio_magic_defense = 1.2903
     ratio_speed = 3.0769
+
     def patch_script(self):
         script = BattleScript()
-        script.if_bits_clear(0x7ee000, 0x07)
-        script.if_target_alive(Targets.MONSTER_3)
-        script.if_target_alive(Targets.MONSTER_4)
-        script.set(0x7ee000, 0x04)
-        script.battle_dialog(0xda)
+        script.if_bits_clear(0x7EE000, 0x07)
+        script.if_target_alive(Targets.MONSTER_3_SET)
+        script.if_target_alive(Targets.MONSTER_4_SET)
+        script.set(0x7EE000, 0x04)
+        script.battle_dialog(0xDA)
 
         if self.world.settings.is_flag_enabled(flags.NoGenoWhirlExor):
-            script.set_untargetable(Monsters.MONSTER_1)
+            script.set_untargetable(Monsters.MONSTER_1_SET)
         else:
-            script.invuln(Targets.MONSTER_1)
+            script.invuln(Targets.MONSTER_1_SET)
 
         script.wait_return()
 
         script.start_counter()
 
         script.if_hp(0x0000)
-        script.set(0x7ee008, 0x01)
-        script.set_untargetable(Monsters.MONSTER_2)
-        script.set_untargetable(Monsters.MONSTER_3)
-        script.set_untargetable(Monsters.MONSTER_4)
-        script.remove(0x1b)
+        script.set(0x7EE008, 0x01)
+        script.set_untargetable(Monsters.MONSTER_2_SET)
+        script.set_untargetable(Monsters.MONSTER_3_SET)
+        script.set_untargetable(Monsters.MONSTER_4_SET)
+        script.remove(0x1B)
         script.wait_return()
 
         self.script = script.fin()
@@ -7537,7 +7612,7 @@ class Exor(Enemy):
 
 class Smithy1(Enemy):
     index = 234
-    address = 0x390fa6
+    address = 0x390FA6
     boss = True
     hp = 2000
     speed = 30
@@ -7554,9 +7629,9 @@ class Smithy1(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391bb8
+    reward_address = 0x391BB8
     yoshi_cookie_item = items.Mushroom
-    
+
     ratio_hp = 2000 / 10000
     ratio_attack = 230 / 186.875
     ratio_defense = 130 / 121.25
@@ -7566,7 +7641,7 @@ class Smithy1(Enemy):
 
 class Shyper(Enemy):
     index = 235
-    address = 0x390fb6
+    address = 0x390FB6
     boss = True
     hp = 400
     speed = 42
@@ -7584,13 +7659,13 @@ class Shyper(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391bbe
+    reward_address = 0x391BBE
     yoshi_cookie_item = items.Mushroom
 
 
 class Smithy2Body(Enemy):
     index = 236
-    address = 0x390fd6
+    address = 0x390FD6
     boss = True
     hp = 1000
     speed = 30
@@ -7607,9 +7682,9 @@ class Smithy2Body(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391bc4
+    reward_address = 0x391BC4
     yoshi_cookie_item = items.Mushroom
-    
+
     ratio_hp = 1000 / 10000
     ratio_attack = 180 / 186.875
     ratio_defense = 80 / 121.25
@@ -7619,7 +7694,7 @@ class Smithy2Body(Enemy):
 
 class Smithy2Head(Enemy):
     index = 237
-    address = 0x390fe6
+    address = 0x390FE6
     boss = True
     hp = 8000
     speed = 40
@@ -7637,9 +7712,9 @@ class Smithy2Head(Enemy):
     hp_counter_ratios = [0.25, 0.5, 0.75]
 
     # Reward attributes
-    reward_address = 0x391bca
+    reward_address = 0x391BCA
     yoshi_cookie_item = items.Mushroom
-    
+
     ratio_hp = 8000 / 10000
     ratio_attack = 180 / 186.875
     ratio_defense = 80 / 121.25
@@ -7668,9 +7743,9 @@ class Smithy2MageHead(Enemy):
     hp_counter_ratios = [0.25, 0.5, 0.75]
 
     # Reward attributes
-    reward_address = 0x391bd0
+    reward_address = 0x391BD0
     yoshi_cookie_item = items.Mushroom
-    
+
     ratio_hp = 8000 / 10000
     ratio_attack = 135 / 186.875
     ratio_defense = 50 / 121.25
@@ -7700,9 +7775,9 @@ class Smithy2ChestHead(Enemy):
     hp_counter_ratios = [0.25, 0.5, 0.75]
 
     # Reward attributes
-    reward_address = 0x391bd6
+    reward_address = 0x391BD6
     yoshi_cookie_item = items.Mushroom
-    
+
     ratio_hp = 8000 / 10000
     ratio_attack = 150 / 186.875
     ratio_defense = 120 / 121.25
@@ -7731,7 +7806,7 @@ class Croco1(Enemy):
     hp_counter_ratios = [100 / 320]
 
     # Reward attributes
-    reward_address = 0x391bdc
+    reward_address = 0x391BDC
     xp = 16
     coins = 10
     yoshi_cookie_item = items.Mushroom
@@ -7741,8 +7816,7 @@ class Croco1(Enemy):
     # Boss shuffle attributes.
     ratio_hp = 1.0
     ratio_fp = 1.0
-    name_override = 'CROCO 1'
-
+    name_override = "CROCO 1"
 
 
 class Croco2(Enemy):
@@ -7767,7 +7841,7 @@ class Croco2(Enemy):
     hp_counter_ratios = [400 / 750]
 
     # Reward attributes
-    reward_address = 0x391be2
+    reward_address = 0x391BE2
     xp = 30
     coins = 50
     yoshi_cookie_item = items.Mushroom
@@ -7776,12 +7850,12 @@ class Croco2(Enemy):
     # Boss shuffle attributes.
     ratio_hp = 1.0
     ratio_fp = 1.0
-    name_override = 'CROCO 2'
+    name_override = "CROCO 2"
 
 
 class Earthlink(Enemy):
     index = 243
-    address = 0x390ea6
+    address = 0x390EA6
     boss = True
     hp = 2500
     speed = 16
@@ -7798,7 +7872,7 @@ class Earthlink(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b6a
+    reward_address = 0x391B6A
     xp = 200
     yoshi_cookie_item = items.Mushroom
     normal_item = items.PowerBlast
@@ -7812,7 +7886,6 @@ class Earthlink(Enemy):
     ratio_magic_attack = 0.0877
     ratio_magic_defense = 0.1111
     ratio_speed = 0.8889
-
 
 
 class AxemRangers(Enemy):
@@ -7834,7 +7907,7 @@ class AxemRangers(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b16
+    reward_address = 0x391B16
     xp = 50
     yoshi_cookie_item = items.Mushroom
 
@@ -7858,7 +7931,7 @@ class AxemRangers(Enemy):
 
 class Booster(Enemy):
     index = 246
-    address = 0x3910d6
+    address = 0x3910D6
     boss = True
     hp = 800
     speed = 24
@@ -7878,7 +7951,7 @@ class Booster(Enemy):
     hp_counter_ratios = [500 / 800]
 
     # Reward attributes
-    reward_address = 0x391bf4
+    reward_address = 0x391BF4
     xp = 60
     coins = 100
     yoshi_cookie_item = items.Mushroom
@@ -7892,7 +7965,7 @@ class Booster(Enemy):
 
 class Booster2(Enemy):
     index = 247
-    address = 0x3910e6
+    address = 0x3910E6
     boss = True
     hp = 10
     fp = 100
@@ -7903,13 +7976,13 @@ class Booster2(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391bfa
+    reward_address = 0x391BFA
     yoshi_cookie_item = items.Mushroom
 
 
 class Snifit(Enemy):
     index = 248
-    address = 0x3904a6
+    address = 0x3904A6
     boss = True
     hp = 200
     speed = 26
@@ -7925,11 +7998,12 @@ class Snifit(Enemy):
     flower_bonus_chance = 8
 
     # Reward attributes
-    reward_address = 0x39171a
+    reward_address = 0x39171A
     xp = 2
     coins = 15
     yoshi_cookie_item = items.Mushroom
     rare_item = items.Mushroom
+
 
 class SnifitHenchman(Snifit, Henchman):
     index = 115
@@ -7955,7 +8029,7 @@ class SnifitHenchman(Snifit, Henchman):
 
 class Johnny(Enemy):
     index = 249
-    address = 0x3910f6
+    address = 0x3910F6
     boss = True
     hp = 820
     speed = 13
@@ -7973,7 +8047,7 @@ class Johnny(Enemy):
     hp_counter_ratios = [400 / 820]
 
     # Reward attributes
-    reward_address = 0x391c00
+    reward_address = 0x391C00
     xp = 90
     coins = 50
     yoshi_cookie_item = items.Mushroom
@@ -7993,7 +8067,7 @@ class Johnny(Enemy):
 
 class JohnnySolo(Enemy):
     index = 250
-    address = 0x390d16
+    address = 0x390D16
     boss = True
     hp = 400
     speed = 30
@@ -8011,7 +8085,7 @@ class JohnnySolo(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391c06
+    reward_address = 0x391C06
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
@@ -8048,7 +8122,7 @@ class Valentina(Enemy):
     hp_counter_ratios = [0.6]
 
     # Reward attributes
-    reward_address = 0x391c0c
+    reward_address = 0x391C0C
     xp = 120
     coins = 200
     yoshi_cookie_item = items.Mushroom
@@ -8070,9 +8144,10 @@ class Valentina(Enemy):
 
     sprite = 697
 
+
 class Cloaker2(Enemy):
     index = 252
-    address = 0x390e96
+    address = 0x390E96
     boss = True
     hp = 1200
     speed = 20
@@ -8089,7 +8164,7 @@ class Cloaker2(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391b70
+    reward_address = 0x391B70
     xp = 60
     yoshi_cookie_item = items.Mushroom
 
@@ -8105,7 +8180,7 @@ class Cloaker2(Enemy):
 
 class Domino2(Enemy):
     index = 253
-    address = 0x390ec6
+    address = 0x390EC6
     boss = True
     hp = 900
     speed = 25
@@ -8121,7 +8196,7 @@ class Domino2(Enemy):
     flower_bonus_type = 1
 
     # Reward attributes
-    reward_address = 0x391b76
+    reward_address = 0x391B76
     xp = 60
     yoshi_cookie_item = items.Mushroom
 
@@ -8137,7 +8212,7 @@ class Domino2(Enemy):
 
 class Candle(Enemy):
     index = 254
-    address = 0x390cb6
+    address = 0x390CB6
     boss = True
     hp = 10
     fp = 100
@@ -8147,7 +8222,7 @@ class Candle(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391c1e
+    reward_address = 0x391C1E
     yoshi_cookie_item = items.Mushroom
 
 
@@ -8170,7 +8245,7 @@ class Culex(Enemy):
     flower_bonus_chance = 2
 
     # Reward attributes
-    reward_address = 0x391c24
+    reward_address = 0x391C24
     xp = 600
     yoshi_cookie_item = items.Mushroom
 
@@ -8181,13 +8256,14 @@ class Culex(Enemy):
     # shuffled overworld sprites
     sprite_height = 143
     sprite_width = 90
-    
-    #other_sprites = [786, 789, 789, 786]
-    #other_sprites_sequences = [1, 0, 1, 0]
+
+    # other_sprites = [786, 789, 789, 786]
+    # other_sprites_sequences = [1, 0, 1, 0]
 
     sidekicks = [149, 150, 151, 152]
 
     sprite = 694
+
 
 # ********************* Default lists for the world.
 

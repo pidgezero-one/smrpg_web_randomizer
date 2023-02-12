@@ -1,0 +1,3492 @@
+from randomizer.types.enemies.classes import Enemy
+from randomizer.types.battle_animation_scripts.constants.classes import (
+    BattleTarget,
+    BonusMessage,
+    FlashColour,
+    MaskEffect,
+    MaskPoint,
+    PauseUntil,
+    ShiftType,
+    MessageType,
+    LayerPriorityType,
+)
+from randomizer.types.battle_animation_scripts.constants.pause_until import (
+    BUTTON_PRESSED,
+    FADE_2BPP_COMPLETE,
+    FADE_4BPP_COMPLETE,
+    FADE_IN_COMPLETE,
+    FRAMES_ELAPSED,
+    SEQ_2BPP_COMPLETE,
+    SEQ_4BPP_COMPLETE,
+    SPRITE_SHIFT_COMPLETE,
+)
+from randomizer.utils.number import bits_to_int, bools_to_int
+from .classes import (
+    AnimationScriptAMEM6XSoloCommand,
+    AnimationScriptAMEMAnd7E,
+    AnimationScriptAMEMAnd7F,
+    AnimationScriptAMEMAndAMEM,
+    AnimationScriptAMEMAndConst,
+    AnimationScriptAMEMAndOMEM,
+    AnimationScriptAMEMCommand,
+    AnimationScriptCommand,
+    AnimationScriptCommandInventory,
+    AnimationScriptCommandNoArgs,
+    AnimationScriptCommandWithJmps,
+    AnimationScriptFadeObject,
+    AnimationScriptShakeObject,
+    AnimationScriptUnknownJmp2X,
+    SetAMEMToXYZCoords,
+)
+from randomizer.types.numbers.classes import Int16, Int8, UInt16, UInt8, UInt4
+from typing import List, Optional, Set, Tuple, Type, Union
+from randomizer.types.sprites.constants.misc import TOTAL_SPRITES
+
+
+class NewSpriteAtCoords(AnimationScriptCommand):
+    _opcode: int = 0x00
+    _size: int = 9
+
+    _sprite_id: UInt16 = UInt16(0)
+    _sequence: UInt4 = UInt4(0)
+    _priority: UInt4 = UInt4(0)
+    _vram_address: UInt16 = UInt16(0)
+    _palette_row: UInt4 = UInt4(0)
+    _overwrite_vram: bool = False
+    _looping: bool = False
+    _param_2_and_0x10: bool = False
+    _overwrite_palette: bool = False
+    _mirror_sprite: bool = False
+    _invert_sprite: bool = False
+    _behind_all_sprites: bool = False
+    _overlap_all_sprites: bool = False
+
+    @property
+    def sprite_id(self) -> UInt16:
+        return self._sprite_id
+
+    def set_sprite_id(self, sprite_id: int) -> None:
+        assert sprite_id < TOTAL_SPRITES
+        self._sprite_id = UInt16(sprite_id)
+
+    @property
+    def sequence(self) -> UInt4:
+        return self._sequence
+
+    def set_sequence(self, sequence: int) -> None:
+        self._sequence = UInt4(sequence)
+
+    @property
+    def priority(self) -> UInt4:
+        return self._priority
+
+    def set_priority(self, priority: int) -> None:
+        assert priority <= 3
+        self._priority = UInt4(priority)
+
+    @property
+    def vram_address(self) -> UInt16:
+        return self._vram_address
+
+    def set_vram_address(self, vram_address: int) -> None:
+        self._vram_address = UInt16(vram_address)
+
+    @property
+    def palette_row(self) -> UInt4:
+        return self._palette_row
+
+    def set_palette_row(self, palette_row: int) -> None:
+        self._palette_row = UInt4(palette_row)
+
+    @property
+    def overwrite_vram(self) -> bool:
+        return self._overwrite_vram
+
+    def set_overwrite_vram(self, overwrite_vram: bool) -> None:
+        self._overwrite_vram = overwrite_vram
+
+    @property
+    def looping(self) -> bool:
+        return self._looping
+
+    def set_looping(self, looping: bool) -> None:
+        self._looping = looping
+
+    @property
+    def param_2_and_0x10(self) -> bool:
+        return self._param_2_and_0x10
+
+    def set_param_2_and_0x10(self, param_2_and_0x10: bool) -> None:
+        self._param_2_and_0x10 = param_2_and_0x10
+
+    @property
+    def overwrite_palette(self) -> bool:
+        return self._overwrite_palette
+
+    def set_overwrite_palette(self, overwrite_palette: bool) -> None:
+        self._overwrite_palette = overwrite_palette
+
+    @property
+    def mirror_sprite(self) -> bool:
+        return self._mirror_sprite
+
+    def set_mirror_sprite(self, mirror_sprite: bool) -> None:
+        self._mirror_sprite = mirror_sprite
+
+    @property
+    def invert_sprite(self) -> bool:
+        return self._invert_sprite
+
+    def set_invert_sprite(self, invert_sprite: bool) -> None:
+        self._invert_sprite = invert_sprite
+
+    @property
+    def behind_all_sprites(self) -> bool:
+        return self._behind_all_sprites
+
+    def set_behind_all_sprites(self, behind_all_sprites: bool) -> None:
+        self._behind_all_sprites = behind_all_sprites
+
+    @property
+    def overlap_all_sprites(self) -> bool:
+        return self._overlap_all_sprites
+
+    def set_overlap_all_sprites(self, overlap_all_sprites: bool) -> None:
+        self._overlap_all_sprites = overlap_all_sprites
+
+    def __init__(
+        self,
+        sprite_id: int,
+        sequence: int,
+        priority: int,
+        vram_address: int,
+        palette_row: int,
+        overwrite_vram: bool = False,
+        looping: bool = False,
+        param_2_and_0x10: bool = False,
+        overwrite_palette: bool = False,
+        mirror_sprite: bool = False,
+        invert_sprite: bool = False,
+        behind_all_sprites: bool = False,
+        overlap_all_sprites: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_sprite_id(sprite_id)
+        self.set_sequence(sequence)
+        self.set_priority(priority)
+        self.set_vram_address(vram_address)
+        self.set_palette_row(palette_row)
+        self.set_overwrite_vram(overwrite_vram)
+        self.set_looping(looping)
+        self.set_param_2_and_0x10(param_2_and_0x10)
+        self.set_overwrite_palette(overwrite_palette)
+        self.set_mirror_sprite(mirror_sprite)
+        self.set_invert_sprite(invert_sprite)
+        self.set_behind_all_sprites(behind_all_sprites)
+        self.set_overlap_all_sprites(overlap_all_sprites)
+
+    def render(self) -> bytearray:
+        byte1 = (
+            (self.overwrite_vram * 0x01)
+            + (self.behind_all_sprites * 0x40)
+            + (self.overlap_all_sprites * 0x80)
+        )
+        byte2 = (
+            (self.looping * 0x08)
+            + (self.param_2_and_0x10 * 0x10)
+            + (self.overwrite_palette * 0x20)
+        )
+        byte6 = (
+            (self.priority << 4)
+            + (self.mirror_sprite * 0x40)
+            + (self.invert_sprite * 0x80)
+            + self.palette_row
+        )
+
+        return super().render(
+            byte1, byte2, self.sprite_id, self.sequence, byte6, self.vram_address
+        )
+
+
+class SetAMEM32ToXYZCoords(SetAMEMToXYZCoords):
+    _opcode: int = 0x01
+
+
+class DrawSpriteAtAMEM32Coords(AnimationScriptCommand):
+    _size: int = 6
+    _opcode: int = 0x03
+
+    _sprite_id: UInt16
+    _sequence: UInt4
+    _store_to_vram: bool
+    _looping: bool
+    _store_palette: bool
+
+    @property
+    def sprite_id(self) -> UInt16:
+        return self._sprite_id
+
+    def set_sprite_id(self, sprite_id: int) -> None:
+        assert sprite_id < TOTAL_SPRITES
+        self._sprite_id = UInt16(sprite_id)
+
+    @property
+    def sequence(self) -> UInt4:
+        return self._sequence
+
+    def set_sequence(self, sequence: int) -> None:
+        self._sequence = UInt4(sequence)
+
+    @property
+    def store_to_vram(self) -> bool:
+        return self._store_to_vram
+
+    def set_store_to_vram(self, store_to_vram: bool) -> None:
+        self._store_to_vram = store_to_vram
+
+    @property
+    def looping(self) -> bool:
+        return self._looping
+
+    def set_looping(self, looping: bool) -> None:
+        self._looping = looping
+
+    @property
+    def store_palette(self) -> bool:
+        return self._store_palette
+
+    def set_store_palette(self, store_palette: bool) -> None:
+        self._store_palette = store_palette
+
+    def __init__(
+        self,
+        sprite_id: int,
+        sequence: int,
+        store_to_vram: bool = False,
+        looping: bool = False,
+        store_palette: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_sprite_id(sprite_id)
+        self.set_sequence(sequence)
+        self.set_store_to_vram(store_to_vram)
+        self.set_looping(looping)
+        self.set_store_palette(store_palette)
+
+    def render(self) -> bytearray:
+        byte2 = (self.looping * 0x08) + (self.store_palette * 0x20)
+        return super().render(self.store_to_vram, byte2, self.sprite_id, self.sequence)
+
+
+class PauseScriptUntil(AnimationScriptCommand):
+
+    _condition: Union[PauseUntil, bytearray]
+    _frames: UInt16
+
+    @property
+    def condition(self) -> Union[PauseUntil, bytearray]:
+        return self._condition
+
+    def set_condition(self, condition: Union[int, PauseUntil, bytearray]) -> None:
+        if condition in [SPRITE_SHIFT_COMPLETE, BUTTON_PRESSED, FRAMES_ELAPSED]:
+            self._size = 4
+            self._opcode = 0x04
+            self._condition = PauseUntil(condition)
+        elif condition in [
+            SEQ_4BPP_COMPLETE,
+            SEQ_2BPP_COMPLETE,
+            FADE_IN_COMPLETE,
+            FADE_4BPP_COMPLETE,
+            FADE_2BPP_COMPLETE,
+        ]:
+            self._size = 3
+            self._opcode = 0x74
+            self._condition = condition
+        else:
+            raise Exception("invalid pause condition: %r" % condition)
+
+    @property
+    def frames(self) -> UInt16:
+        return self._frames
+
+    def set_frames(self, frames: int) -> None:
+        self._frames = UInt16(frames)
+
+    def __init__(
+        self,
+        condition: Union[int, PauseUntil, bytearray],
+        frames: int = 0,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_condition(condition)
+        self.set_frames(frames)
+
+    def render(self) -> bytearray:
+        if self.opcode == 0x04:
+            return super().render(self.condition, self.frames)
+        elif self.opcode == 0x74:
+            return super().render(self.condition)
+        else:
+            raise Exception("invalid opcode %r" % self.opcode)
+
+
+class RemoveObject(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x05
+
+
+class ReturnObjectQueue(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x07
+
+
+class MoveObject(AnimationScriptCommand):
+    _opcode: int = 0x08
+    _size: int = 8
+
+    _speed: Int16
+    _start_position: Int16
+    _end_position: Int16
+    _apply_to_x: bool
+    _apply_to_y: bool
+    _apply_to_z: bool
+    _should_set_start_position: bool
+    _should_set_end_position: bool
+    _should_set_speed: bool
+
+    @property
+    def speed(self) -> Int16:
+        return self._speed
+
+    def set_speed(self, speed: int) -> None:
+        self._speed = Int16(speed)
+
+    @property
+    def start_position(self) -> Int16:
+        return self._start_position
+
+    def set_start_position(self, start_position: int) -> None:
+        self._start_position = Int16(start_position)
+
+    @property
+    def end_position(self) -> Int16:
+        return self._end_position
+
+    def set_end_position(self, end_position: int) -> None:
+        self._end_position = Int16(end_position)
+
+    @property
+    def apply_to_x(self) -> bool:
+        return self._apply_to_x
+
+    def set_apply_to_x(self, apply_to_x: bool) -> None:
+        self._apply_to_x = apply_to_x
+
+    @property
+    def apply_to_y(self) -> bool:
+        return self._apply_to_y
+
+    def set_apply_to_y(self, apply_to_y: bool) -> None:
+        self._apply_to_y = apply_to_y
+
+    @property
+    def apply_to_z(self) -> bool:
+        return self._apply_to_z
+
+    def set_apply_to_z(self, apply_to_z: bool) -> None:
+        self._apply_to_z = apply_to_z
+
+    @property
+    def should_set_start_position(self) -> bool:
+        return self._should_set_start_position
+
+    def set_should_set_start_position(self, should_set_start_position: bool) -> None:
+        self._should_set_start_position = should_set_start_position
+
+    @property
+    def should_set_end_position(self) -> bool:
+        return self._should_set_end_position
+
+    def set_should_set_end_position(self, should_set_end_position: bool) -> None:
+        self._should_set_end_position = should_set_end_position
+
+    @property
+    def should_set_speed(self) -> bool:
+        return self._should_set_speed
+
+    def set_should_set_speed(self, should_set_speed: bool) -> None:
+        self._should_set_speed = should_set_speed
+
+    def __init__(
+        self,
+        speed: int,
+        start_position: int,
+        end_position: int,
+        apply_to_x: bool = False,
+        apply_to_y: bool = False,
+        apply_to_z: bool = False,
+        should_set_start_position: bool = False,
+        should_set_end_position: bool = False,
+        should_set_speed: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_speed(speed)
+        self.set_start_position(start_position)
+        self.set_end_position(end_position)
+        self.set_apply_to_x(apply_to_x)
+        self.set_apply_to_y(apply_to_y)
+        self.set_apply_to_z(apply_to_z)
+        self.set_should_set_start_position(should_set_start_position)
+        self.set_should_set_end_position(should_set_end_position)
+        self.set_should_set_speed(should_set_speed)
+
+    def render(self) -> bytearray:
+        byte1 = (
+            (self.apply_to_z * 0x01)
+            + (self.apply_to_y * 0x02)
+            + (self.apply_to_x * 0x04)
+            + (self.should_set_start_position * 0x20)
+            + (self.should_set_end_position * 0x40)
+            + (self.should_set_speed * 0x80)
+        )
+        return super().render(byte1, self.speed, self.start_position, self.end_position)
+
+
+class Jmp(AnimationScriptCommandWithJmps):
+    _opcode: int = 0x09
+    _size: int = 3
+
+    def render(self) -> bytearray:
+        return super().render(*self.destinations)
+
+
+class Pause1Frame(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x0A
+
+
+class SetAMEM40ToXYZCoords(SetAMEMToXYZCoords):
+    _opcode: int = 0x0B
+
+
+class MoveSpriteToCoords(AnimationScriptCommand):
+    _opcode: int = 0x0C
+    _size: int = 6
+
+    _shift_type: ShiftType
+    _speed: Int16
+    _arch_height: Int16
+
+    @property
+    def shift_type(self) -> ShiftType:
+        return self._shift_type
+
+    def set_shift_type(self, shift_type: ShiftType) -> None:
+        self._shift_type = shift_type
+
+    @property
+    def speed(self) -> Int16:
+        return self._speed
+
+    def set_speed(self, speed: int) -> None:
+        self._speed = Int16(speed)
+
+    @property
+    def arch_height(self) -> Int16:
+        return self._arch_height
+
+    def set_arch_height(self, arch_height: int) -> None:
+        self._arch_height = Int16(arch_height)
+
+    def __init__(
+        self,
+        shift_type: ShiftType,
+        speed: int,
+        arch_height: int,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_shift_type(shift_type)
+        self.set_speed(speed)
+        self.set_arch_height(arch_height)
+
+    def render(self) -> bytearray:
+        return super().render(self.shift_type, self.speed, self.arch_height)
+
+
+class ResetTargetMappingMemory(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x0E
+
+
+class ResetObjectMappingMemory(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x0F
+
+
+class RunSubroutine(AnimationScriptCommandWithJmps):
+    _opcode: int = 0x10
+    _size: int = 3
+
+    def render(self) -> bytearray:
+        return super().render(*self.destinations)
+
+
+class ReturnSubroutine(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x11
+
+
+class VisibilityOn(AnimationScriptCommandNoArgs):
+    _opcode: bytearray = bytearray([0x1A, 0x01])
+
+
+class VisibilityOff(AnimationScriptCommandNoArgs):
+    _opcode: bytearray = bytearray([0x1B, 0x01])
+
+
+class SetAMEM8BitToConst(AnimationScriptAMEMAndConst):
+    _opcode: int = 0x20
+
+    def __init__(self, amem: int, value: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_value(value)
+
+    def render(self) -> bytearray:
+        return super().render(self._amem_bits(), self.value)
+
+
+class SetAMEM16BitToConst(SetAMEM8BitToConst):
+    _opcode: int = 0x21
+
+
+class JmpIfAMEM8BitEqualsConst(
+    AnimationScriptCommandWithJmps, AnimationScriptAMEMAndConst
+):
+    _opcode: int = 0x24
+    _size: int = 6
+
+    def __init__(
+        self,
+        amem: int,
+        value: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_amem(amem)
+        self.set_value(value)
+
+    def render(self) -> bytearray:
+        return super().render(self._amem_bits(), self.value, *self.destinations)
+
+
+class JmpIfAMEM16BitEqualsConst(JmpIfAMEM8BitEqualsConst):
+    _opcode: int = 0x25
+
+
+class JmpIfAMEM8BitNotEqualsConst(JmpIfAMEM8BitEqualsConst):
+    _opcode: int = 0x26
+
+
+class JmpIfAMEM16BitNotEqualsConst(JmpIfAMEM8BitEqualsConst):
+    _opcode: int = 0x27
+
+
+class JmpIfAMEM8BitLessThanConst(JmpIfAMEM8BitEqualsConst):
+    _opcode: int = 0x28
+
+
+class JmpIfAMEM16BitLessThanConst(JmpIfAMEM8BitEqualsConst):
+    _opcode: int = 0x29
+
+
+class JmpIfAMEM8BitGreaterOrEqualThanConst(JmpIfAMEM8BitEqualsConst):
+    _opcode: int = 0x2A
+
+
+class JmpIfAMEM16BitGreaterOrEqualThanConst(JmpIfAMEM8BitEqualsConst):
+    _opcode: int = 0x2B
+
+
+class IncAMEM8BitByConst(AnimationScriptAMEMAndConst):
+    _opcode: int = 0x2C
+
+    def __init__(self, amem: int, value: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_value(value)
+
+    def render(self) -> bytearray:
+        return super().render(self._amem_bits(), self.value)
+
+
+class IncAMEM16BitByConst(IncAMEM8BitByConst):
+    _opcode: int = 0x2D
+
+
+class DecAMEM8BitByConst(IncAMEM8BitByConst):
+    _opcode: int = 0x2E
+
+
+class DecAMEM16BitByConst(IncAMEM8BitByConst):
+    _opcode: int = 0x2F
+
+
+class SetAMEM8BitTo7E1x(AnimationScriptAMEMAnd7E):
+    _opcode: int = 0x20
+
+    def __init__(
+        self, amem: int, address: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(0x10 + self._amem_bits(), addr)
+
+
+class SetAMEM16BitTo7E1x(SetAMEM8BitTo7E1x):
+    _opcode: int = 0x21
+
+
+class Set7E1xToAMEM8Bit(SetAMEM8BitTo7E1x):
+    _opcode: int = 0x22
+
+    def __init__(
+        self, address: int, amem: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(amem, address, identifier)
+
+
+class Set7E1xToAMEM16Bit(Set7E1xToAMEM8Bit):
+    _opcode: int = 0x23
+
+
+class JmpIfAMEM8BitEquals7E1x(AnimationScriptCommandWithJmps, AnimationScriptAMEMAnd7E):
+    _opcode: int = 0x24
+    _size: int = 6
+
+    def __init__(
+        self,
+        amem: int,
+        address: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(self._amem_bits(), addr, *self.destinations)
+
+
+class JmpIfAMEM16BitEquals7E1x(JmpIfAMEM8BitEquals7E1x):
+    _opcode: int = 0x25
+
+
+class JmpIfAMEM8BitNotEquals7E1x(JmpIfAMEM8BitEquals7E1x):
+    _opcode: int = 0x26
+
+
+class JmpIfAMEM16BitNotEquals7E1x(JmpIfAMEM8BitEquals7E1x):
+    _opcode: int = 0x27
+
+
+class JmpIfAMEM8BitLessThan7E1x(JmpIfAMEM8BitEquals7E1x):
+    _opcode: int = 0x28
+
+
+class JmpIfAMEM16BitLessThan7E1x(JmpIfAMEM8BitEquals7E1x):
+    _opcode: int = 0x29
+
+
+class JmpIfAMEM8BitGreaterOrEqualThan7E1x(JmpIfAMEM8BitEquals7E1x):
+    _opcode: int = 0x2A
+
+
+class JmpIfAMEM16BitGreaterOrEqualThan7E1x(JmpIfAMEM8BitEquals7E1x):
+    _opcode: int = 0x2B
+
+
+class IncAMEM8BitBy7E1x(AnimationScriptAMEMAnd7E):
+    _opcode: int = 0x2C
+
+    def __init__(
+        self, amem: int, address: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(0x10 + self._amem_bits(), addr)
+
+
+class IncAMEM16BitBy7E1x(IncAMEM8BitBy7E1x):
+    _opcode: int = 0x2D
+
+
+class DecAMEM8BitBy7E1x(IncAMEM8BitBy7E1x):
+    _opcode: int = 0x2E
+
+
+class DecAMEM16BitBy7E1x(IncAMEM8BitBy7E1x):
+    _opcode: int = 0x2F
+
+
+class SetAMEM8BitTo7F(AnimationScriptAMEMAnd7F):
+    _opcode: int = 0x20
+
+    def __init__(
+        self, amem: int, address: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(0x20 + self._amem_bits(), addr)
+
+
+class SetAMEM16BitTo7F(SetAMEM8BitTo7F):
+    _opcode: int = 0x21
+
+
+class Set7FToAMEM8Bit(SetAMEM8BitTo7F):
+    _opcode: int = 0x22
+
+    def __init__(
+        self, address: int, amem: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(amem, address, identifier)
+
+
+class Set7FToAMEM16Bit(Set7FToAMEM8Bit):
+    _opcode: int = 0x23
+
+
+class JmpIfAMEM8BitEquals7F(AnimationScriptCommandWithJmps, AnimationScriptAMEMAnd7F):
+    _opcode: int = 0x24
+    _size: int = 6
+
+    def __init__(
+        self,
+        amem: int,
+        address: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(self._amem_bits(), addr, *self.destinations)
+
+
+class JmpIfAMEM16BitEquals7F(JmpIfAMEM8BitEquals7F):
+    _opcode: int = 0x25
+
+
+class JmpIfAMEM8BitNotEquals7F(JmpIfAMEM8BitEquals7F):
+    _opcode: int = 0x26
+
+
+class JmpIfAMEM16BitNotEquals7F(JmpIfAMEM8BitEquals7F):
+    _opcode: int = 0x27
+
+
+class JmpIfAMEM8BitLessThan7F(JmpIfAMEM8BitEquals7F):
+    _opcode: int = 0x28
+
+
+class JmpIfAMEM16BitLessThan7F(JmpIfAMEM8BitEquals7F):
+    _opcode: int = 0x29
+
+
+class JmpIfAMEM8BitGreaterOrEqualThan7F(JmpIfAMEM8BitEquals7F):
+    _opcode: int = 0x2A
+
+
+class JmpIfAMEM16BitGreaterOrEqualThan7F(JmpIfAMEM8BitEquals7F):
+    _opcode: int = 0x2B
+
+
+class IncAMEM8BitBy7F(AnimationScriptAMEMAnd7F):
+    _opcode: int = 0x2C
+
+    def __init__(
+        self, amem: int, address: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(0x20 + self._amem_bits(), addr)
+
+
+class IncAMEM16BitBy7F(IncAMEM8BitBy7F):
+    _opcode: int = 0x2D
+
+
+class DecAMEM8BitBy7F(IncAMEM8BitBy7F):
+    _opcode: int = 0x2E
+
+
+class DecAMEM16BitBy7F(IncAMEM8BitBy7F):
+    _opcode: int = 0x2F
+
+
+class SetAMEM8BitToAMEM(AnimationScriptAMEMAndAMEM):
+    _opcode: int = 0x20
+
+    def __init__(
+        self, amem: int, source_amem: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_source_amem(source_amem)
+
+    def render(self) -> bytearray:
+        return super().render(0x30 + self._amem_bits(), UInt16(self.source_amem & 0x0F))
+
+
+class SetAMEM16BitToAMEM(SetAMEM8BitToAMEM):
+    _opcode: int = 0x21
+
+
+class SetAMEMToAMEM8Bit(SetAMEM8BitToAMEM):
+    _opcode: int = 0x22
+
+    def __init__(
+        self, dest_amem: int, amem: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(amem, dest_amem, identifier)
+
+
+class SetAMEMToAMEM16Bit(SetAMEMToAMEM8Bit):
+    _opcode: int = 0x23
+
+
+class JmpIfAMEM8BitEqualsAMEM(
+    AnimationScriptCommandWithJmps, AnimationScriptAMEMAndAMEM
+):
+    _opcode: int = 0x24
+    _size: int = 6
+
+    def __init__(
+        self,
+        amem: int,
+        source_amem: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_amem(amem)
+        self.set_source_amem(source_amem)
+
+    def render(self) -> bytearray:
+        return super().render(
+            0x30 + self._amem_bits(),
+            UInt16(self.source_amem & 0x0F),
+            *self.destinations
+        )
+
+
+class JmpIfAMEM16BitEqualsAMEM(JmpIfAMEM8BitEqualsAMEM):
+    _opcode: int = 0x25
+
+
+class JmpIfAMEM8BitNotEqualsAMEM(JmpIfAMEM8BitEqualsAMEM):
+    _opcode: int = 0x26
+
+
+class JmpIfAMEM16BitNotEqualsAMEM(JmpIfAMEM8BitEqualsAMEM):
+    _opcode: int = 0x27
+
+
+class JmpIfAMEM8BitLessThanAMEM(JmpIfAMEM8BitEqualsAMEM):
+    _opcode: int = 0x28
+
+
+class JmpIfAMEM16BitLessThanAMEM(JmpIfAMEM8BitEqualsAMEM):
+    _opcode: int = 0x29
+
+
+class JmpIfAMEM8BitGreaterOrEqualThanAMEM(JmpIfAMEM8BitEqualsAMEM):
+    _opcode: int = 0x2A
+
+
+class JmpIfAMEM16BitGreaterOrEqualThanAMEM(JmpIfAMEM8BitEqualsAMEM):
+    _opcode: int = 0x2B
+
+
+class IncAMEM8BitByAMEM(AnimationScriptAMEMAndAMEM):
+    _opcode: int = 0x2C
+
+    def __init__(
+        self, amem: int, source_amem: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_source_amem(source_amem)
+
+    def render(self) -> bytearray:
+        return super().render(0x30 + self._amem_bits(), UInt16(self.source_amem & 0x0F))
+
+
+class IncAMEM16BitByAMEM(IncAMEM8BitByAMEM):
+    _opcode: int = 0x2D
+
+
+class DecAMEM8BitByAMEM(IncAMEM8BitByAMEM):
+    _opcode: int = 0x2E
+
+
+class DecAMEM16BitByAMEM(IncAMEM8BitByAMEM):
+    _opcode: int = 0x2F
+
+
+class SetAMEM8BitToOMEMCurrent(AnimationScriptAMEMAndOMEM):
+    _opcode: int = 0x20
+
+    def __init__(self, amem: int, omem: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_omem(omem)
+
+    def render(self) -> bytearray:
+        return super().render(0x40 + self._amem_bits(), UInt16(self.omem))
+
+
+class SetAMEM16BitToOMEMCurrent(SetAMEM8BitToOMEMCurrent):
+    _opcode: int = 0x21
+
+
+class SetOMEMCurrentToAMEM8Bit(SetAMEM8BitToOMEMCurrent):
+    _opcode: int = 0x22
+
+    def __init__(self, omem: int, amem: int, identifier: Optional[str] = None) -> None:
+        super().__init__(amem, omem, identifier)
+
+
+class SetOMEMCurrentToAMEM16Bit(SetOMEMCurrentToAMEM8Bit):
+    _opcode: int = 0x23
+
+
+class JmpIfAMEM8BitEqualsOMEMCurrent(
+    AnimationScriptCommandWithJmps, AnimationScriptAMEMAndOMEM
+):
+    _opcode: int = 0x24
+    _size: int = 6
+
+    def __init__(
+        self,
+        amem: int,
+        omem: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_amem(amem)
+        self.set_omem(omem)
+
+    def render(self) -> bytearray:
+        return super().render(
+            0x40 + self._amem_bits(), UInt16(self.omem), *self.destinations
+        )
+
+
+class JmpIfAMEM16BitEqualsOMEMCurrent(JmpIfAMEM8BitEqualsOMEMCurrent):
+    _opcode: int = 0x25
+
+
+class JmpIfAMEM8BitNotEqualsOMEMCurrent(JmpIfAMEM8BitEqualsOMEMCurrent):
+    _opcode: int = 0x26
+
+
+class JmpIfAMEM16BitNotEqualsOMEMCurrent(JmpIfAMEM8BitEqualsOMEMCurrent):
+    _opcode: int = 0x27
+
+
+class JmpIfAMEM8BitLessThanOMEMCurrent(JmpIfAMEM8BitEqualsOMEMCurrent):
+    _opcode: int = 0x28
+
+
+class JmpIfAMEM16BitLessThanOMEMCurrent(JmpIfAMEM8BitEqualsOMEMCurrent):
+    _opcode: int = 0x29
+
+
+class JmpIfAMEM8BitGreaterOrEqualThanOMEMCurrent(JmpIfAMEM8BitEqualsOMEMCurrent):
+    _opcode: int = 0x2A
+
+
+class JmpIfAMEM16BitGreaterOrEqualThanOMEMCurrent(JmpIfAMEM8BitEqualsOMEMCurrent):
+    _opcode: int = 0x2B
+
+
+class IncAMEM8BitByOMEMCurrent(AnimationScriptAMEMAndOMEM):
+    _opcode: int = 0x2C
+
+    def __init__(self, amem: int, omem: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_omem(omem)
+
+    def render(self) -> bytearray:
+        return super().render(0x40 + self._amem_bits(), UInt16(self.omem))
+
+
+class IncAMEM16BitByOMEMCurrent(IncAMEM8BitByOMEMCurrent):
+    _opcode: int = 0x2D
+
+
+class DecAMEM8BitByOMEMCurrent(IncAMEM8BitByOMEMCurrent):
+    _opcode: int = 0x2E
+
+
+class DecAMEM16BitByOMEMCurrent(IncAMEM8BitByOMEMCurrent):
+    _opcode: int = 0x2F
+
+
+class SetAMEM8BitTo7E5x(AnimationScriptAMEMAnd7E):
+    _opcode: int = 0x20
+
+    def __init__(
+        self, amem: int, address: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(0x50 + self._amem_bits(), addr)
+
+
+class SetAMEM16BitTo7E5x(SetAMEM8BitTo7E5x):
+    _opcode: int = 0x21
+
+
+class Set7E5xToAMEM8Bit(SetAMEM8BitTo7E5x):
+    _opcode: int = 0x22
+
+    def __init__(
+        self, address: int, amem: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(amem, address, identifier)
+
+
+class Set7E5xToAMEM16Bit(Set7E5xToAMEM8Bit):
+    _opcode: int = 0x23
+
+
+class JmpIfAMEM8BitEquals7E5x(AnimationScriptCommandWithJmps, AnimationScriptAMEMAnd7E):
+    _opcode: int = 0x24
+    _size: int = 6
+
+    def __init__(
+        self,
+        amem: int,
+        address: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(0x50 + self._amem_bits(), addr, *self.destinations)
+
+
+class JmpIfAMEM16BitEquals7E5x(JmpIfAMEM8BitEquals7E5x):
+    _opcode: int = 0x25
+
+
+class JmpIfAMEM8BitNotEquals7E5x(JmpIfAMEM8BitEquals7E5x):
+    _opcode: int = 0x26
+
+
+class JmpIfAMEM16BitNotEquals7E5x(JmpIfAMEM8BitEquals7E5x):
+    _opcode: int = 0x27
+
+
+class JmpIfAMEM8BitLessThan7E5x(JmpIfAMEM8BitEquals7E5x):
+    _opcode: int = 0x28
+
+
+class JmpIfAMEM16BitLessThan7E5x(JmpIfAMEM8BitEquals7E5x):
+    _opcode: int = 0x29
+
+
+class JmpIfAMEM8BitGreaterOrEqualThan7E5x(JmpIfAMEM8BitEquals7E5x):
+    _opcode: int = 0x2A
+
+
+class JmpIfAMEM16BitGreaterOrEqualThan7E5x(JmpIfAMEM8BitEquals7E5x):
+    _opcode: int = 0x2B
+
+
+class IncAMEM8BitBy7E5x(AnimationScriptAMEMAnd7E):
+    _opcode: int = 0x2C
+
+    def __init__(
+        self, amem: int, address: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_address(address)
+
+    def render(self) -> bytearray:
+        addr = UInt16(self.address & 0xFFFF)
+        return super().render(0x50 + self._amem_bits(), addr)
+
+
+class IncAMEM16BitBy7E5x(IncAMEM8BitBy7E5x):
+    _opcode: int = 0x2D
+
+
+class DecAMEM8BitBy7E5x(IncAMEM8BitBy7E5x):
+    _opcode: int = 0x2E
+
+
+class DecAMEM16BitBy7E5x(IncAMEM8BitBy7E5x):
+    _opcode: int = 0x2F
+
+
+class SetAMEM8BitToOMEMMain(AnimationScriptAMEMAndOMEM):
+    _opcode: int = 0x20
+
+    def __init__(self, amem: int, omem: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_omem(omem)
+
+    def render(self) -> bytearray:
+        return super().render(0x60 + self._amem_bits(), UInt16(self.omem))
+
+
+class SetAMEM16BitToOMEMMain(SetAMEM8BitToOMEMMain):
+    _opcode: int = 0x21
+
+
+class SetOMEMMainToAMEM8Bit(SetAMEM8BitToOMEMMain):
+    _opcode: int = 0x22
+
+    def __init__(self, omem: int, amem: int, identifier: Optional[str] = None) -> None:
+        super().__init__(amem, omem, identifier)
+
+
+class SetOMEMMainToAMEM16Bit(SetOMEMMainToAMEM8Bit):
+    _opcode: int = 0x23
+
+
+class JmpIfAMEM8BitEqualsOMEMMain(
+    AnimationScriptCommandWithJmps, AnimationScriptAMEMAndOMEM
+):
+    _opcode: int = 0x24
+    _size: int = 6
+
+    def __init__(
+        self,
+        amem: int,
+        omem: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_amem(amem)
+        self.set_omem(omem)
+
+    def render(self) -> bytearray:
+        return super().render(
+            0x40 + self._amem_bits(), UInt16(self.omem), *self.destinations
+        )
+
+
+class JmpIfAMEM16BitEqualsOMEMMain(JmpIfAMEM8BitEqualsOMEMMain):
+    _opcode: int = 0x25
+
+
+class JmpIfAMEM8BitNotEqualsOMEMMain(JmpIfAMEM8BitEqualsOMEMMain):
+    _opcode: int = 0x26
+
+
+class JmpIfAMEM16BitNotEqualsOMEMMain(JmpIfAMEM8BitEqualsOMEMMain):
+    _opcode: int = 0x27
+
+
+class JmpIfAMEM8BitLessThanOMEMMain(JmpIfAMEM8BitEqualsOMEMMain):
+    _opcode: int = 0x28
+
+
+class JmpIfAMEM16BitLessThanOMEMMain(JmpIfAMEM8BitEqualsOMEMMain):
+    _opcode: int = 0x29
+
+
+class JmpIfAMEM8BitGreaterOrEqualThanOMEMMain(JmpIfAMEM8BitEqualsOMEMMain):
+    _opcode: int = 0x2A
+
+
+class JmpIfAMEM16BitGreaterOrEqualThanOMEMMain(JmpIfAMEM8BitEqualsOMEMMain):
+    _opcode: int = 0x2B
+
+
+class IncAMEM8BitByOMEMMain(AnimationScriptAMEMAndOMEM):
+    _opcode: int = 0x2C
+
+    def __init__(self, amem: int, omem: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_omem(omem)
+
+    def render(self) -> bytearray:
+        return super().render(0x60 + self._amem_bits(), UInt16(self.omem))
+
+
+class IncAMEM16BitByOMEMMain(IncAMEM8BitByOMEMMain):
+    _opcode: int = 0x2D
+
+
+class DecAMEM8BitByOMEMMain(IncAMEM8BitByOMEMMain):
+    _opcode: int = 0x2E
+
+
+class DecAMEM16BitByOMEMMain(IncAMEM8BitByOMEMMain):
+    _opcode: int = 0x2F
+
+
+class UnknownJmp24(AnimationScriptUnknownJmp2X):
+    _opcode: int = 0x24
+
+
+class UnknownJmp25(AnimationScriptUnknownJmp2X):
+    _opcode: int = 0x25
+
+
+class UnknownJmp26(AnimationScriptUnknownJmp2X):
+    _opcode: int = 0x26
+
+
+class UnknownJmp27(AnimationScriptUnknownJmp2X):
+    _opcode: int = 0x27
+
+
+class UnknownJmp28(AnimationScriptUnknownJmp2X):
+    _opcode: int = 0x28
+
+
+class UnknownJmp29(AnimationScriptUnknownJmp2X):
+    _opcode: int = 0x29
+
+
+class UnknownJmp2A(AnimationScriptUnknownJmp2X):
+    _opcode: int = 0x2A
+
+
+class UnknownJmp2B(AnimationScriptUnknownJmp2X):
+    _opcode: int = 0x2B
+
+
+class IncAMEM8Bit(AnimationScriptAMEM6XSoloCommand):
+    _opcode: int = 0x30
+
+
+class IncAMEM16Bit(AnimationScriptAMEM6XSoloCommand):
+    _opcode: int = 0x31
+
+
+class DecAMEM8Bit(AnimationScriptAMEM6XSoloCommand):
+    _opcode: int = 0x32
+
+
+class DecAMEM16Bit(AnimationScriptAMEM6XSoloCommand):
+    _opcode: int = 0x33
+
+
+class ClearAMEM8Bit(AnimationScriptAMEM6XSoloCommand):
+    _opcode: int = 0x34
+
+
+class ClearAMEM16Bit(AnimationScriptAMEM6XSoloCommand):
+    _opcode: int = 0x35
+
+
+class SetAMEMBits(AnimationScriptAMEMCommand):
+    _opcode: int = 0x36
+    _size: int = 3
+
+    @property
+    def bits(self) -> Set[int]:
+        return self._bits
+
+    def set_bits(self, bits: List[int]) -> None:
+        self._bits = set(bits)
+
+    def __init__(
+        self, amem: int, bits: List[int], identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_bits(bits)
+
+    def render(self) -> bytearray:
+        flags = UInt16(bits_to_int(list(self.bits)))
+        return super().render(self._amem_bits(), flags)
+
+
+class ClearAMEMBits(SetAMEMBits):
+    _opcode: int = 0x37
+
+
+class JmpIfAMEMBitsSet(AnimationScriptCommandWithJmps, AnimationScriptAMEMCommand):
+    _opcode: int = 0x38
+    _size: int = 5
+
+    @property
+    def bits(self) -> Set[int]:
+        return self._bits
+
+    def set_bits(self, bits: List[int]) -> None:
+        for bit in bits:
+            assert 0 <= bit <= 7
+        self._bits = set(bits)
+
+    def __init__(
+        self,
+        amem: int,
+        bits: List[int],
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_amem(amem)
+        self.set_bits(bits)
+
+    def render(self) -> bytearray:
+        flags = UInt16(bits_to_int(list(self.bits)))
+        return super().render(self._amem_bits(), flags, *self.destinations)
+
+
+class JmpIfAMEMBitsClear(JmpIfAMEMBitsSet):
+    _opcode: int = 0x39
+
+
+class AttackTimerBegins(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x3A
+
+
+class PauseScriptUntilAMEMBitsSet(AnimationScriptAMEMCommand):
+    _opcode: int = 0x40
+    _size: int = 3
+
+    @property
+    def bits(self) -> Set[int]:
+        return self._bits
+
+    def set_bits(self, bits: List[int]) -> None:
+        self._bits = set(bits)
+
+    def __init__(
+        self, amem: int, bits: List[int], identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_bits(bits)
+
+    def render(self) -> bytearray:
+        flags = UInt16(bits_to_int(list(self.bits)))
+        return super().render(self._amem_bits(), flags)
+
+
+class PauseScriptUntilAMEMBitsClear(PauseScriptUntilAMEMBitsSet):
+    _opcode: int = 0x41
+
+
+class SpriteSequence(AnimationScriptCommand):
+    _opcode: int = 0x43
+    _size: int = 2
+
+    _sequence: UInt4
+    _looping_on: bool
+    _looping_off: bool
+    _bit_6: bool
+    _mirror: bool
+
+    @property
+    def sequence(self) -> UInt4:
+        return self._sequence
+
+    def set_sequence(self, sequence: int) -> None:
+        self._sequence = UInt4(sequence)
+
+    @property
+    def looping_on(self) -> bool:
+        return self._looping_on
+
+    def set_looping_on(self, looping_on: bool) -> None:
+        self._looping_on = looping_on
+
+    @property
+    def looping_off(self) -> bool:
+        return self._looping_off
+
+    def set_looping_off(self, looping_off: bool) -> None:
+        self._looping_off = looping_off
+
+    @property
+    def bit_6(self) -> bool:
+        return self._bit_6
+
+    def set_bit_6(self, bit_6: bool) -> None:
+        self._bit_6 = bit_6
+
+    @property
+    def mirror(self) -> bool:
+        return self._mirror
+
+    def set_mirror(self, mirror: bool) -> None:
+        self._mirror = mirror
+
+    def __init__(
+        self,
+        sequence: int,
+        looping_on: bool = False,
+        looping_off: bool = False,
+        bit_6: bool = False,
+        mirror: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_sequence(sequence)
+        self.set_looping_on(looping_on)
+        self.set_looping_off(looping_off)
+        self.set_bit_6(bit_6)
+        self.set_mirror(mirror)
+
+    def render(self) -> bytearray:
+        byte1 = self.sequence + (
+            (
+                self.looping_on
+                + (self.looping_off << 1)
+                + (self.bit_6 << 2)
+                + (self.mirror)
+                << 3
+            )
+            << 4
+        )
+        return super().render(byte1)
+
+
+class SetAMEM60ToCurrentTarget(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x45
+
+
+class PauseScriptUntilSpriteSequenceDone(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x4E
+
+
+class JmpIfTargetDisabled(AnimationScriptCommandWithJmps):
+    _opcode: int = 0x50
+    _size: int = 3
+
+    def __init__(
+        self,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+
+    def render(self) -> bytearray:
+        return super().render(*self.destinations)
+
+
+class JmpIfTargetEnabled(AnimationScriptCommandWithJmps):
+    _opcode: int = 0x51
+    _size: int = 3
+
+    def __init__(
+        self,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+
+    def render(self) -> bytearray:
+        return super().render(*self.destinations)
+
+
+class SpriteQueue(AnimationScriptCommandWithJmps):
+    _opcode: int = 0x5D
+    _size: int = 5
+
+    _field_object: UInt4
+    _bit_0: bool
+    _bit_1: bool
+    _bit_2: bool
+    _character_slot: bool
+    _bit_4: bool
+    _bit_5: bool
+    _current_target: bool
+    _bit_7: bool
+    _mirror: bool
+
+    @property
+    def field_object(self) -> UInt4:
+        return self._field_object
+
+    def set_field_object(self, field_object: int) -> None:
+        self._field_object = UInt4(field_object)
+
+    @property
+    def bit_0(self) -> bool:
+        return self._bit_0
+
+    def set_bit_0(self, bit_0: bool) -> None:
+        self._bit_0 = bit_0
+
+    @property
+    def bit_1(self) -> bool:
+        return self._bit_1
+
+    def set_bit_1(self, bit_1: bool) -> None:
+        self._bit_1 = bit_1
+
+    @property
+    def bit_2(self) -> bool:
+        return self._bit_2
+
+    def set_bit_2(self, bit_2: bool) -> None:
+        self._bit_2 = bit_2
+
+    @property
+    def character_slot(self) -> bool:
+        return self._character_slot
+
+    def set_character_slot(self, character_slot: bool) -> None:
+        self._character_slot = character_slot
+
+    @property
+    def bit_4(self) -> bool:
+        return self._bit_4
+
+    def set_bit_4(self, bit_4: bool) -> None:
+        self._bit_4 = bit_4
+
+    @property
+    def bit_5(self) -> bool:
+        return self._bit_5
+
+    def set_bit_5(self, bit_5: bool) -> None:
+        self._bit_5 = bit_5
+
+    @property
+    def current_target(self) -> bool:
+        return self._current_target
+
+    def set_current_target(self, current_target: bool) -> None:
+        self._current_target = current_target
+
+    @property
+    def bit_7(self) -> bool:
+        return self._bit_7
+
+    def set_bit_7(self, bit_7: bool) -> None:
+        self._bit_7 = bit_7
+
+    def __init__(
+        self,
+        field_object: int,
+        destinations: List[str],
+        bit_0: bool = False,
+        bit_1: bool = False,
+        bit_2: bool = False,
+        character_slot: bool = False,
+        bit_4: bool = False,
+        bit_5: bool = False,
+        current_target: bool = False,
+        bit_7: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_field_object(field_object)
+        self.set_destinations(destinations)
+        self.set_bit_0(bit_0)
+        self.set_bit_1(bit_1)
+        self.set_bit_2(bit_2)
+        self.set_character_slot(character_slot)
+        self.set_bit_4(bit_4)
+        self.set_bit_5(bit_5)
+        self.set_current_target(current_target)
+        self.set_bit_7(bit_7)
+
+    def render(self) -> bytearray:
+        byte1 = bools_to_int(
+            self.bit_0,
+            self.bit_1,
+            self.bit_2,
+            self.character_slot,
+            self.bit_4,
+            self.bit_5,
+            self.current_target,
+            self.bit_7,
+        )
+        return super().render(byte1, self.field_object, *self.destinations)
+
+
+class ReturnSpriteQueue(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x5E
+
+
+class DisplayMessageAtOMEM60As(AnimationScriptCommand):
+    _opcode: int = 0x63
+    _size: int = 2
+
+    _type: MessageType
+
+    @property
+    def type(self) -> MessageType:
+        return self._type
+
+    def set_type(self, type: MessageType) -> None:
+        self._type = type
+
+    def __init__(self, type: MessageType, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_type(type)
+
+    def render(self) -> bytearray:
+        return super().render(self.type)
+
+
+class ObjectQueueAtOffsetAndIndexAtAMEM60(AnimationScriptCommandWithJmps):
+    _opcode: int = 0x64
+    _size: int = 3
+
+    _target_address: int
+
+    def set_targets(
+        self, target_address: int = 0, destinations: List[str] = []
+    ) -> None:
+        assert not (target_address == 0 and len(destinations) == 0) and not (
+            target_address != 0 and len(destinations) > 0
+        )
+        self._target_address = target_address
+        super().set_destinations(destinations)
+
+    @property
+    def target_address(self) -> int:
+        return self._target_address
+
+    def set_target_address(self, target_address: int) -> None:
+        self.set_targets(target_address, [ident.name for ident in self.destinations])
+
+    def set_destinations(self, destinations: List[str]) -> None:
+        self.set_targets(self.target_address, destinations)
+
+    def __init__(
+        self,
+        target_address: int = 0,
+        destinations: List[str] = [],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_targets(target_address, destinations)
+
+    def render(self) -> bytearray:
+        return super().render(UInt16(self.target_address & 0xFFFF))
+
+
+class ObjectQueueAtOffsetAndIndex(AnimationScriptCommandWithJmps):
+    _opcode: int = 0x68
+    _size: int = 4
+
+    _target_address: int
+    _index: UInt8
+
+    def set_targets(
+        self, target_address: int = 0, destinations: List[str] = []
+    ) -> None:
+        assert not (target_address == 0 and len(destinations) == 0) and not (
+            target_address != 0 and len(destinations) > 0
+        )
+        self._target_address = target_address
+        super().set_destinations(destinations)
+
+    @property
+    def target_address(self) -> int:
+        return self._target_address
+
+    def set_target_address(self, target_address: int) -> None:
+        self.set_targets(target_address, [ident.name for ident in self.destinations])
+
+    def set_destinations(self, destinations: List[str]) -> None:
+        self.set_targets(self.target_address, destinations)
+
+    @property
+    def index(self) -> UInt8:
+        return self._index
+
+    def set_index(self, index: int) -> None:
+        self._index = UInt8(index)
+
+    def __init__(
+        self,
+        index: int,
+        target_address: int = 0,
+        destinations: List[str] = [],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_index(index)
+        self.set_targets(target_address, destinations)
+
+    def render(self) -> bytearray:
+        return super().render(UInt16(self.target_address & 0xFFFF), self.index)
+
+
+class SetOMEM60To072C(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x69
+
+
+class SetAMEMToRandom(AnimationScriptAMEMCommand):
+    _opcode: int = 0x6A
+    _size: int = 3
+
+    _upper_bound: Union[UInt8, UInt16]
+
+    @property
+    def upper_bound(self) -> Union[UInt8, UInt16]:
+        return self._upper_bound
+
+    def set_upper_bound(self, upper_bound: int) -> None:
+        if upper_bound > 255:
+            self._upper_bound = UInt16(upper_bound)
+            self._opcode = 0x6B
+            self._size = 4
+        else:
+            self._upper_bound = UInt8(upper_bound)
+            self._opcode = 0x6A
+            self._size = 3
+
+    def __init__(
+        self, amem: int, upper_bound: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_amem(amem)
+        self.set_upper_bound(upper_bound)
+
+    def render(self) -> bytearray:
+        return super().render(self._amem_bits(), self.upper_bound)
+
+
+class EnableSpritesOnSubscreen(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x70
+
+
+class DisableSpritesOnSubscreen(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x71
+
+
+class NewEffectObject(AnimationScriptCommand):
+    _opcode: int = 0x72
+    _size: int = 3
+
+    _effect: UInt8
+    _looping_on: bool
+    _playback_off: bool
+    _looping_off: bool
+    _bit_3: bool
+
+    @property
+    def effect(self) -> UInt8:
+        return self._effect
+
+    def set_effect(self, effect: int) -> None:
+        assert 0 <= effect <= 127
+        self._effect = UInt8(effect)
+
+    @property
+    def looping_on(self) -> bool:
+        return self._looping_on
+
+    def set_looping_on(self, looping_on: bool) -> None:
+        self._looping_on = looping_on
+
+    @property
+    def playback_off(self) -> bool:
+        return self._playback_off
+
+    def set_playback_off(self, playback_off: bool) -> None:
+        self._playback_off = playback_off
+
+    @property
+    def looping_off(self) -> bool:
+        return self._looping_off
+
+    def set_looping_off(self, looping_off: bool) -> None:
+        self._looping_off = looping_off
+
+    @property
+    def bit_3(self) -> bool:
+        return self._bit_3
+
+    def set_bit_3(self, bit_3: bool) -> None:
+        self._bit_3 = bit_3
+
+    def __init__(
+        self,
+        effect: int,
+        looping_on: bool = False,
+        playback_off: bool = False,
+        looping_off: bool = False,
+        bit_3: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_effect(effect)
+        self.set_looping_on(looping_on)
+        self.set_playback_off(playback_off)
+        self.set_looping_off(looping_off)
+        self.set_bit_3(bit_3)
+
+    def render(self) -> bytearray:
+        byte1 = bools_to_int(
+            self.looping_on,
+            self.playback_off,
+            self.looping_off,
+            self.bit_3,
+        )
+        return super().render(byte1, self.effect)
+
+
+class Pause2Frames(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x73
+
+
+class PauseScriptUntilBitsClear(AnimationScriptCommand):
+    _opcode: int = 0x75
+    _size: int = 3
+
+    _bits: UInt16
+
+    @property
+    def bits(self) -> UInt16:
+        return self._bits
+
+    def set_bits(self, bits: int) -> None:
+        self._bits = UInt16(bits)
+
+    def __init__(self, bits: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_bits(bits)
+
+    def render(self) -> bytearray:
+        return super().render(self.bits)
+
+
+class ClearEffectIndex(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x76
+
+
+class Layer3On(AnimationScriptCommand):
+    _opcode: int = 0x77
+    _size: int = 2
+
+    _prop: LayerPriorityType
+    _bit_0: bool
+    _bpp4: bool
+    _bpp2: bool
+    _invisible: bool
+
+    @property
+    def prop(self) -> LayerPriorityType:
+        return self._prop
+
+    def set_property(self, prop: LayerPriorityType) -> None:
+        self._prop = prop
+
+    @property
+    def bit_0(self) -> bool:
+        return self._bit_0
+
+    def set_bit_0(self, bit_0: bool) -> None:
+        self._bit_0 = bit_0
+
+    @property
+    def bpp4(self) -> bool:
+        return self._bpp4
+
+    def set_bpp4(self, bpp4: bool) -> None:
+        self._bpp4 = bpp4
+
+    @property
+    def bpp2(self) -> bool:
+        return self._bpp2
+
+    def set_bpp2(self, bpp2: bool) -> None:
+        self._bpp2 = bpp2
+
+    @property
+    def invisible(self) -> bool:
+        return self._invisible
+
+    def set_invisible(self, invisible: bool) -> None:
+        self._invisible = invisible
+
+    def __init__(
+        self,
+        property: LayerPriorityType,
+        bit_0: bool = False,
+        bpp4: bool = False,
+        bpp2: bool = False,
+        invisible: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_property(property)
+        self.set_bit_0(bit_0)
+        self.set_bpp4(bpp4)
+        self.set_bpp2(bpp2)
+        self.set_invisible(invisible)
+
+    def render(self) -> bytearray:
+        byte1 = bits_to_int([self.bit_0, self.bpp4, self.bpp2, self.invisible]) + (
+            self.prop << 4
+        )
+        return super().render(byte1)
+
+
+class Layer3Off(Layer3On):
+    _opcode: int = 0x78
+
+
+class DisplayMessage(AnimationScriptCommand):
+    _opcode: int = 0x7A
+    _size: int = 3
+
+    _type: MessageType
+    _dialog_id: UInt8
+
+    @property
+    def type(self) -> MessageType:
+        return self._type
+
+    def set_type(self, type: MessageType) -> None:
+        self._type = type
+
+    @property
+    def dialog_id(self) -> UInt8:
+        return self._dialog_id
+
+    def set_dialog_id(self, dialog_id: int) -> None:
+        self._dialog_id = UInt8(dialog_id)
+
+    def __init__(
+        self, type: MessageType, dialog_id: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_type(type)
+        self.set_dialog_id(dialog_id)
+
+    def render(self) -> bytearray:
+        return super().render(self.type, self.dialog_id)
+
+
+class PauseScriptUntilDialogueClosed(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x7B
+
+
+class FadeOutObject(AnimationScriptCommand):
+    _opcode: int = 0x7E
+    _size: int = 2
+    _duration: UInt8
+
+    @property
+    def duration(self) -> UInt8:
+        return self._duration
+
+    def set_duration(self, duration: int) -> None:
+        self._duration = UInt8(duration)
+
+    def __init__(self, duration: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_duration(duration)
+
+    def render(self) -> bytearray:
+        return super().render(self.duration)
+
+
+class ResetSpriteSequence(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x7F
+
+
+class ShineEffect(AnimationScriptCommand):
+    _opcode: int = 0x80
+    _size: int = 4
+
+    _colour_count: UInt4
+    _starting_colour_index: UInt4
+    _glow_duration: UInt8
+    _east: bool
+    _west: bool
+
+    @property
+    def colour_count(self) -> UInt4:
+        return self._colour_count
+
+    def set_colour_count(self, colour_count: int) -> None:
+        self._colour_count = UInt4(colour_count)
+
+    @property
+    def starting_colour_index(self) -> UInt4:
+        return self._starting_colour_index
+
+    def set_starting_colour_index(self, starting_colour_index: int) -> None:
+        self._starting_colour_index = UInt4(starting_colour_index)
+
+    @property
+    def glow_duration(self) -> UInt8:
+        return self._glow_duration
+
+    def set_glow_duration(self, glow_duration: int) -> None:
+        self._glow_duration = UInt8(glow_duration)
+
+    @property
+    def east(self) -> bool:
+        return self._east
+
+    def set_east(self, east: bool) -> None:
+        self._east = east
+
+    @property
+    def west(self) -> bool:
+        return self._west
+
+    def set_west(self, west: bool) -> None:
+        self._west = west
+
+    def __init__(
+        self,
+        colour_count: int,
+        starting_colour_index: int,
+        glow_duration: int,
+        east: bool = False,
+        west: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_colour_count(colour_count)
+        self.set_starting_colour_index(starting_colour_index)
+        self.set_glow_duration(glow_duration)
+        if (east and west) or (not east and not west):
+            raise Exception("shine effect must have exactly 1 direction")
+        self.set_east(east)
+        self.set_west(west)
+
+    def render(self) -> bytearray:
+        return super().render(
+            self.west,
+            self.colour_count + (self.starting_colour_index << 4),
+            self.glow_duration,
+        )
+
+
+class FadeOutEffect(AnimationScriptFadeObject):
+    def render(self) -> bytearray:
+        return super().render(0, self.duration)
+
+
+class FadeOutSprite(AnimationScriptFadeObject):
+    def render(self) -> bytearray:
+        return super().render(0x10, self.duration)
+
+
+class FadeOutScreen(AnimationScriptFadeObject):
+    def render(self) -> bytearray:
+        return super().render(0x20, self.duration)
+
+
+class FadeInEffect(AnimationScriptFadeObject):
+    def render(self) -> bytearray:
+        return super().render(2, self.duration)
+
+
+class FadeInSprite(AnimationScriptFadeObject):
+    def render(self) -> bytearray:
+        return super().render(0x12, self.duration)
+
+
+class FadeInScreen(AnimationScriptFadeObject):
+    def render(self) -> bytearray:
+        return super().render(0x22, self.duration)
+
+
+class ShakeScreen(AnimationScriptShakeObject):
+    def render(self) -> bytearray:
+        return super().render(1)
+
+
+class ShakeSprites(AnimationScriptShakeObject):
+    def render(self) -> bytearray:
+        return super().render(2)
+
+
+class ShakeScreenAndSprites(AnimationScriptShakeObject):
+    def render(self) -> bytearray:
+        return super().render(4)
+
+
+class StopShakingObject(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x87
+
+
+class ScreenFlashWithDuration(AnimationScriptCommand):
+    _opcode: int = 0x8E
+    _size: int = 3
+
+    _colour: FlashColour
+    _unknown_upper: UInt8
+    _duration: UInt8
+
+    @property
+    def colour(self) -> FlashColour:
+        return self._colour
+
+    def set_colour(self, colour: FlashColour) -> None:
+        self._colour = colour
+
+    @property
+    def unknown_upper(self) -> UInt8:
+        return self._unknown_upper
+
+    def set_unknown_upper(self, unknown_upper: int) -> None:
+        assert unknown_upper & 0x07 == 0
+        self._unknown_upper = UInt8(unknown_upper)
+
+    @property
+    def duration(self) -> UInt8:
+        return self._duration
+
+    def set_duration(self, duration: int) -> None:
+        self._duration = UInt8(duration)
+
+    def __init__(
+        self,
+        colour: FlashColour,
+        duration: int,
+        unknown_upper: int = 0,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_colour(colour)
+        self.set_duration(duration)
+        self.set_unknown_upper(unknown_upper)
+
+    def render(self) -> bytearray:
+        return super().render(self.unknown_upper + self.colour, self.duration)
+
+
+class ScreenFlash(AnimationScriptCommand):
+    _opcode: int = 0x8F
+    _size: int = 2
+
+    _colour: FlashColour
+    _unknown_upper: UInt8
+
+    @property
+    def colour(self) -> FlashColour:
+        return self._colour
+
+    def set_colour(self, colour: FlashColour) -> None:
+        self._colour = colour
+
+    @property
+    def unknown_upper(self) -> UInt8:
+        return self._unknown_upper
+
+    def set_unknown_upper(self, unknown_upper: int) -> None:
+        assert unknown_upper & 0x07 == 0
+        self._unknown_upper = UInt8(unknown_upper)
+
+    def __init__(
+        self,
+        colour: FlashColour,
+        unknown_upper: int = 0,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_colour(colour)
+        self.set_unknown_upper(unknown_upper)
+
+    def render(self) -> bytearray:
+        return super().render(self.unknown_upper + self.colour)
+
+
+class InitializeBonusMessageSequence(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x95
+
+
+class DisplayBonusMessage(AnimationScriptCommand):
+    _opcode: int = 0x96
+    _size: int = 5
+
+    _message: BonusMessage
+    _x: Int8
+    _y: Int8
+
+    @property
+    def message(self) -> BonusMessage:
+        return self._message
+
+    def set_message(self, message: BonusMessage) -> None:
+        self._message = message
+
+    @property
+    def x(self) -> Int8:
+        return self._x
+
+    def set_x(self, x: int) -> None:
+        self._x = Int8(x)
+
+    @property
+    def y(self) -> Int8:
+        return self._y
+
+    def set_y(self, y: int) -> None:
+        self._y = Int8(y)
+
+    def __init__(
+        self, message: BonusMessage, x: int, y: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_message(message)
+        self.set_x(x)
+        self.set_y(y)
+
+    def render(self) -> bytearray:
+        return super().render(0, self.message, self.x, self.y)
+
+
+class PauseScriptUntilBonusMessageComplete(AnimationScriptCommandNoArgs):
+    _opcode: int = 0x97
+
+
+class ScreenEffect(AnimationScriptCommandNoArgs):
+    _opcode: int = 0xA3
+    _size: int = 2
+
+    _effect: UInt8
+
+    @property
+    def effect(self) -> UInt8:
+        return self._effect
+
+    def set_effect(self, effect: int) -> None:
+        assert 0 <= effect <= 20
+        self._effect = UInt8(effect)
+
+    def __init__(self, effect: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_effect(effect)
+
+    def render(self) -> bytearray:
+        return super().render(self.effect)
+
+
+class PlaySound(AnimationScriptCommand):
+    _size: int = 2
+
+    _sound: UInt8
+    _channel: UInt4
+
+    @property
+    def sound(self) -> UInt8:
+        return self._sound
+
+    def set_sound(self, sound: int) -> None:
+        assert 0 <= sound <= 210
+        self._sound = UInt8(sound)
+
+    @property
+    def channel(self) -> UInt4:
+        return self._channel
+
+    def set_channel(self, channel: int) -> None:
+        assert channel in [4, 6]
+        if channel == 4:
+            self._opcode = 0xAE
+        else:
+            self._opcode = 0xAB
+        self._channel = UInt4(channel)
+
+    def __init__(
+        self, sound: int, channel: int = 6, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_sound(sound)
+        self.set_channel(channel)
+
+    def render(self) -> bytearray:
+        return super().render(self.sound)
+
+
+class PlayMusicAtCurrentVolume(AnimationScriptCommand):
+    _opcode: int = 0xB0
+    _size: int = 2
+
+    _music: UInt8
+
+    @property
+    def music(self) -> UInt8:
+        return self._music
+
+    def set_music(self, music: int) -> None:
+        assert 0 <= music <= 73
+        self._music = UInt8(music)
+
+    def __init__(self, music: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_music(music)
+
+    def render(self) -> bytearray:
+        return super().render(self.music)
+
+
+class PlayMusicAtVolume(AnimationScriptCommand):
+    _opcode: int = 0xB1
+    _size: int = 4
+
+    _music: UInt8
+    _volume: UInt16
+
+    @property
+    def music(self) -> UInt8:
+        return self._music
+
+    def set_music(self, music: int) -> None:
+        self._music = UInt8(music)
+
+    @property
+    def volume(self) -> UInt16:
+        return self._volume
+
+    def set_volume(self, volume: int) -> None:
+        self._volume = UInt16(volume)
+
+    def __init__(
+        self, music: int, volume: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_music(music)
+        self.set_volume(volume)
+
+    def render(self) -> bytearray:
+        return super().render(self.music, self.volume)
+
+
+class StopCurrentSoundEffect(AnimationScriptCommandNoArgs):
+    _opcode: int = 0xB2
+
+
+class FadeCurrentMusicToVolume(AnimationScriptCommand):
+    _opcode: int = 0xB6
+    _size: int = 3
+
+    _speed: UInt8
+    _volume: UInt16
+
+    @property
+    def speed(self) -> UInt8:
+        return self._speed
+
+    def set_speed(self, speed: int) -> None:
+        self._speed = UInt8(speed)
+
+    @property
+    def volume(self) -> UInt16:
+        return self._volume
+
+    def set_volume(self, volume: int) -> None:
+        self._volume = UInt16(volume)
+
+    def __init__(
+        self, speed: int, volume: int, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_speed(speed)
+        self.set_volume(volume)
+
+    def render(self) -> bytearray:
+        return super().render(self.speed, self.volume)
+
+
+class SetTarget(AnimationScriptCommand):
+    _opcode: int = 0xBB
+    _size: int = 2
+
+    _target: BattleTarget
+
+    @property
+    def target(self) -> BattleTarget:
+        return self._target
+
+    def set_target(self, target: BattleTarget) -> None:
+        self._target = target
+
+    def __init__(self, target: BattleTarget, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_target(target)
+
+    def render(self) -> bytearray:
+        return super().render(self.target)
+
+
+class AddItemToStandardInventory(AnimationScriptCommandInventory):
+    _opcode: int = 0xBC
+
+    def render(self) -> bytearray:
+        return super().render(self.item_id, 0)
+
+
+class RemoveItemFromStandardInventory(AnimationScriptCommandInventory):
+    _opcode: int = 0xBC
+
+    def render(self) -> bytearray:
+        return super().render(256 - self.item_id, 0xFF)
+
+
+class AddItemToKeyItemInventory(AnimationScriptCommandInventory):
+    _opcode: int = 0xBD
+
+    def render(self) -> bytearray:
+        return super().render(self.item_id, 0)
+
+
+class RemoveItemFromKeyItemInventory(AnimationScriptCommandInventory):
+    _opcode: int = 0xBD
+
+    def render(self) -> bytearray:
+        return super().render(256 - self.item_id, 0xFF)
+
+
+class AddCoins(AnimationScriptCommand):
+    _size: int = 3
+    _opcode: int = 0xBE
+
+    _amount: UInt16
+
+    @property
+    def amount(self) -> UInt16:
+        return self._amount
+
+    def set_amount(self, amount: int) -> None:
+        self._amount = UInt16(amount)
+
+    def __init__(self, amount: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_amount(amount)
+
+    def render(self) -> bytearray:
+        return super().render(self.amount)
+
+
+class AddYoshiCookiesToInventory(AnimationScriptCommand):
+    _size: int = 2
+    _opcode: int = 0xBF
+
+    _amount: UInt8
+
+    @property
+    def amount(self) -> UInt8:
+        return self._amount
+
+    def set_amount(self, amount: int) -> None:
+        self._amount = UInt8(amount)
+
+    def __init__(self, amount: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_amount(amount)
+
+    def render(self) -> bytearray:
+        return super().render(self.amount)
+
+
+class DoMaskEffect(AnimationScriptCommand):
+    _size: int = 2
+    _opcode: int = 0xC3
+
+    _effect: MaskEffect
+    _unknown_upper: UInt8
+
+    @property
+    def effect(self) -> MaskEffect:
+        return self._effect
+
+    def set_effect(self, effect: MaskEffect) -> None:
+        self._effect = effect
+
+    @property
+    def unknown_upper(self) -> UInt8:
+        return self._unknown_upper
+
+    def set_unknown_upper(self, unknown_upper: int) -> None:
+        assert unknown_upper & 0x07 == 0
+        self._unknown_upper = UInt8(unknown_upper)
+
+    def __init__(
+        self,
+        effect: MaskEffect,
+        unknown_upper: int = 0,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_effect(effect)
+        self.set_unknown_upper(unknown_upper)
+
+    def render(self) -> bytearray:
+        return super().render(self.unknown_upper + self.effect)
+
+
+class SetMaskCoords(AnimationScriptCommand):
+    _size: int = 9
+    _opcode: int = 0xC6
+
+    _point1: MaskPoint
+    _point2: MaskPoint
+    _point3: MaskPoint
+    _point4: MaskPoint
+
+    @property
+    def point1(self) -> MaskPoint:
+        return self._point1
+
+    def set_point1(self, point1: Tuple[int, int]) -> None:
+        self._point1 = MaskPoint(*point1)
+
+    @property
+    def point2(self) -> MaskPoint:
+        return self._point2
+
+    def set_point2(self, point2: Tuple[int, int]) -> None:
+        self._point2 = MaskPoint(*point2)
+
+    @property
+    def point3(self) -> MaskPoint:
+        return self._point3
+
+    def set_point3(self, point3: Tuple[int, int]) -> None:
+        self._point3 = MaskPoint(*point3)
+
+    @property
+    def point4(self) -> MaskPoint:
+        return self._point4
+
+    def set_point4(self, point4: Tuple[int, int]) -> None:
+        self._point4 = MaskPoint(*point4)
+
+    def __init__(
+        self,
+        point1: Tuple[int, int],
+        point2: Tuple[int, int],
+        point3: Tuple[int, int],
+        point4: Tuple[int, int],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_point1(point1)
+        self.set_point2(point2)
+        self.set_point3(point3)
+        self.set_point4(point4)
+
+    def render(self) -> bytearray:
+        return super().render(
+            self.point1[0],
+            self.point1[1],
+            self.point2[0],
+            self.point2[1],
+            self.point3[0],
+            self.point3[1],
+            self.point4[0],
+            self.point4[1],
+        )
+
+
+class SetSequenceSpeed(AnimationScriptCommand):
+    _size: int = 2
+    _opcode: int = 0xCB
+
+    _speed: UInt4
+
+    @property
+    def speed(self) -> UInt4:
+        return self._speed
+
+    def set_speed(self, speed: int) -> None:
+        self._speed = UInt4(speed)
+
+    def __init__(self, speed: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_speed(speed)
+
+    def render(self) -> bytearray:
+        return super().render()
+
+
+class StartTrackingAllyButtonInputs(AnimationScriptCommandNoArgs):
+    _opcode: int = 0xCC
+
+
+class EndTrackingAllyButtonInputs(AnimationScriptCommandNoArgs):
+    _opcode: int = 0xCD
+
+
+class TimingForOneTieredButtonPress(AnimationScriptCommandWithJmps):
+    _opcode: int = 0xCE
+    _size: int = 8
+
+    _start_accepting_input: UInt8
+    _end_accepting_input: UInt8
+    _partial_start: UInt8
+    _perfect_start: UInt8
+    _perfect_end: UInt8
+
+    def set_input_windows(
+        self,
+        start_accepting_input: int,
+        end_accepting_input: int,
+        partial_start: int,
+        perfect_start: int,
+        perfect_end: int,
+    ):
+        assert (
+            start_accepting_input
+            <= partial_start
+            <= perfect_start
+            <= perfect_end
+            <= end_accepting_input
+        )
+        self._start_accepting_input = UInt8(start_accepting_input)
+        self._end_accepting_input = UInt8(end_accepting_input)
+        self._partial_start = UInt8(partial_start)
+        self._perfect_start = UInt8(perfect_start)
+        self._perfect_end = UInt8(perfect_end)
+
+    @property
+    def start_accepting_input(self) -> UInt8:
+        return self._start_accepting_input
+
+    def set_start_accepting_input(self, start_accepting_input: int) -> None:
+        self.set_input_windows(
+            start_accepting_input,
+            self.end_accepting_input,
+            self.partial_start,
+            self.perfect_start,
+            self.perfect_end,
+        )
+
+    @property
+    def end_accepting_input(self) -> UInt8:
+        return self._end_accepting_input
+
+    def set_end_accepting_input(self, end_accepting_input: int) -> None:
+        self.set_input_windows(
+            self.start_accepting_input,
+            end_accepting_input,
+            self.partial_start,
+            self.perfect_start,
+            self.perfect_end,
+        )
+
+    @property
+    def partial_start(self) -> UInt8:
+        return self._partial_start
+
+    def set_partial_start(self, partial_start: int) -> None:
+        self.set_input_windows(
+            self.start_accepting_input,
+            self.end_accepting_input,
+            partial_start,
+            self.perfect_start,
+            self.perfect_end,
+        )
+
+    @property
+    def perfect_start(self) -> UInt8:
+        return self._perfect_start
+
+    def set_perfect_start(self, perfect_start: int) -> None:
+        self.set_input_windows(
+            self.start_accepting_input,
+            self.end_accepting_input,
+            self.partial_start,
+            perfect_start,
+            self.perfect_end,
+        )
+
+    @property
+    def perfect_end(self) -> UInt8:
+        return self._perfect_end
+
+    def set_perfect_end(self, perfect_end: int) -> None:
+        self.set_input_windows(
+            self.start_accepting_input,
+            self.end_accepting_input,
+            self.partial_start,
+            self.perfect_start,
+            perfect_end,
+        )
+
+    def __init__(
+        self,
+        start_accepting_input: int,
+        end_accepting_input: int,
+        partial_start: int,
+        perfect_start: int,
+        perfect_end: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_input_windows(
+            start_accepting_input,
+            end_accepting_input,
+            partial_start,
+            perfect_start,
+            perfect_end,
+        )
+
+    def render(self) -> bytearray:
+        return super().render(
+            self.start_accepting_input,
+            self.end_accepting_input,
+            self.partial_start,
+            self.perfect_start,
+            self.perfect_end,
+            *self.destinations
+        )
+
+
+class TimingForOneBinaryButtonPress(AnimationScriptCommandWithJmps):
+    _opcode: int = 0xCF
+    _size: int = 6
+
+    _start_accepting_input: UInt8
+    _end_accepting_input: UInt8
+    _timed_hit_ends: UInt8
+
+    def set_input_windows(
+        self,
+        start_accepting_input: int,
+        end_accepting_input: int,
+        timed_hit_ends: int,
+    ):
+        assert start_accepting_input <= timed_hit_ends <= end_accepting_input
+        self._start_accepting_input = UInt8(start_accepting_input)
+        self._end_accepting_input = UInt8(end_accepting_input)
+        self._timed_hit_ends = UInt8(timed_hit_ends)
+
+    @property
+    def start_accepting_input(self) -> UInt8:
+        return self._start_accepting_input
+
+    def set_start_accepting_input(self, start_accepting_input: int) -> None:
+        self.set_input_windows(
+            start_accepting_input, self.end_accepting_input, self.timed_hit_ends
+        )
+
+    @property
+    def end_accepting_input(self) -> UInt8:
+        return self._end_accepting_input
+
+    def set_end_accepting_input(self, end_accepting_input: int) -> None:
+        self.set_input_windows(
+            self.start_accepting_input, end_accepting_input, self.timed_hit_ends
+        )
+
+    @property
+    def timed_hit_ends(self) -> UInt8:
+        return self._timed_hit_ends
+
+    def set_timed_hit_ends(self, timed_hit_ends: int) -> None:
+        self.set_input_windows(
+            self.start_accepting_input, self.end_accepting_input, timed_hit_ends
+        )
+
+    def __init__(
+        self,
+        start_accepting_input: int,
+        end_accepting_input: int,
+        timed_hit_ends: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_input_windows(
+            start_accepting_input, end_accepting_input, timed_hit_ends
+        )
+
+    def render(self) -> bytearray:
+        return super().render(
+            self.start_accepting_input,
+            self.end_accepting_input,
+            self.timed_hit_ends,
+            *self.destinations
+        )
+
+
+class TimingForMultipleButtonPresses(AnimationScriptCommandWithJmps):
+    _opcode: int = 0xD0
+    _size: int = 4
+
+    _start_accepting_input: UInt8
+
+    @property
+    def start_accepting_input(self) -> UInt8:
+        return self._start_accepting_input
+
+    def set_start_accepting_input(self, start_accepting_input: int) -> None:
+        self._start_accepting_input = UInt8(start_accepting_input)
+
+    def __init__(
+        self,
+        start_accepting_input: int,
+        destinations: List[str],
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(destinations, identifier)
+        self.set_start_accepting_input(start_accepting_input)
+
+    def render(self) -> bytearray:
+        return super().render(self.start_accepting_input, *self.destinations)
+
+
+class TimingForButtonMashUnknown(AnimationScriptCommandNoArgs):
+    _opcode: int = 0xD1
+
+
+class TimingForButtonMashCount(AnimationScriptCommand):
+    _opcode: int = 0xD2
+    _size: int = 2
+
+    _max_presses: UInt8
+
+    @property
+    def max_presses(self) -> UInt8:
+        return self._max_presses
+
+    def set_max_presses(self, max_presses: int) -> None:
+        self._max_presses = UInt8(max_presses)
+
+    def __init__(self, max_presses: int, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_max_presses(max_presses)
+
+    def render(self) -> bytearray:
+        return super().render()
+
+
+class TimingForRotationCount(AnimationScriptCommand):
+    _opcode: int = 0xD3
+    _size: int = 4
+
+    _start_accepting_input: UInt8
+    _end_accepting_input: UInt8
+    _max_presses: UInt8
+
+    def set_input_windows(self, start_accepting_input: int, end_accepting_input: int):
+        assert start_accepting_input <= end_accepting_input
+        self._start_accepting_input = UInt8(start_accepting_input)
+        self._end_accepting_input = UInt8(end_accepting_input)
+
+    @property
+    def start_accepting_input(self) -> UInt8:
+        return self._start_accepting_input
+
+    def set_start_accepting_input(self, start_accepting_input: int) -> None:
+        self.set_input_windows(start_accepting_input, self.end_accepting_input)
+
+    @property
+    def end_accepting_input(self) -> UInt8:
+        return self._end_accepting_input
+
+    def set_end_accepting_input(self, end_accepting_input: int) -> None:
+        self.set_input_windows(self.start_accepting_input, end_accepting_input)
+
+    @property
+    def max_presses(self) -> UInt8:
+        return self._max_presses
+
+    def set_max_presses(self, max_presses: int) -> None:
+        self._max_presses = UInt8(max_presses)
+
+    def __init__(
+        self,
+        start_accepting_input: int,
+        end_accepting_input: int,
+        max_presses: int,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_input_windows(start_accepting_input, end_accepting_input)
+        self.set_max_presses(max_presses)
+
+    def render(self) -> bytearray:
+        return super().render(
+            self.start_accepting_input, self.end_accepting_input, self.max_presses
+        )
+
+
+class TimingForChargePress(AnimationScriptCommand):
+    _opcode: int = 0xCE
+    _size: int = 8
+
+    _charge_level_1_end: UInt8
+    _charge_level_2_end: UInt8
+    _charge_level_3_end: UInt8
+    _charge_level_4_end: UInt8
+    _overcharge_end: UInt8
+
+    def set_input_windows(
+        self,
+        charge_level_1_end: int,
+        charge_level_2_end: int,
+        charge_level_3_end: int,
+        charge_level_4_end: int,
+        overcharge_end: int,
+    ):
+        assert (
+            charge_level_1_end
+            <= charge_level_2_end
+            <= charge_level_3_end
+            <= charge_level_4_end
+            <= overcharge_end
+        )
+        self._charge_level_1_end = UInt8(charge_level_1_end)
+        self._charge_level_2_end = UInt8(charge_level_2_end)
+        self._charge_level_3_end = UInt8(charge_level_3_end)
+        self._charge_level_4_end = UInt8(charge_level_4_end)
+        self._overcharge_end = UInt8(overcharge_end)
+
+    @property
+    def charge_level_1_end(self) -> UInt8:
+        return self._charge_level_1_end
+
+    def set_charge_level_1_end(self, charge_level_1_end: int) -> None:
+        self.set_input_windows(
+            charge_level_1_end,
+            self.charge_level_2_end,
+            self.charge_level_3_end,
+            self.charge_level_4_end,
+            self.overcharge_end,
+        )
+
+    @property
+    def charge_level_2_end(self) -> UInt8:
+        return self._charge_level_2_end
+
+    def set_charge_level_2_end(self, charge_level_2_end: int) -> None:
+        self.set_input_windows(
+            self.charge_level_1_end,
+            charge_level_2_end,
+            self.charge_level_3_end,
+            self.charge_level_4_end,
+            self.overcharge_end,
+        )
+
+    @property
+    def charge_level_3_end(self) -> UInt8:
+        return self._charge_level_3_end
+
+    def set_charge_level_3_end(self, charge_level_3_end: int) -> None:
+        self.set_input_windows(
+            self.charge_level_1_end,
+            self.charge_level_2_end,
+            charge_level_3_end,
+            self.charge_level_4_end,
+            self.overcharge_end,
+        )
+
+    @property
+    def charge_level_4_end(self) -> UInt8:
+        return self._charge_level_4_end
+
+    def set_charge_level_4_end(self, charge_level_4_end: int) -> None:
+        self.set_input_windows(
+            self.charge_level_1_end,
+            self.charge_level_2_end,
+            self.charge_level_3_end,
+            charge_level_4_end,
+            self.overcharge_end,
+        )
+
+    @property
+    def overcharge_end(self) -> UInt8:
+        return self._overcharge_end
+
+    def set_overcharge_end(self, overcharge_end: int) -> None:
+        self.set_input_windows(
+            self.charge_level_1_end,
+            self.charge_level_2_end,
+            self.charge_level_3_end,
+            self.charge_level_4_end,
+            overcharge_end,
+        )
+
+    def __init__(
+        self,
+        charge_level_1_end: int,
+        charge_level_2_end: int,
+        charge_level_3_end: int,
+        charge_level_4_end: int,
+        overcharge_end: int,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_input_windows(
+            charge_level_1_end,
+            charge_level_2_end,
+            charge_level_3_end,
+            charge_level_4_end,
+            overcharge_end,
+        )
+
+    def render(self) -> bytearray:
+        return super().render(
+            self.charge_level_1_end,
+            self.charge_level_2_end,
+            self.charge_level_3_end,
+            self.charge_level_4_end,
+            self.overcharge_end,
+        )
+
+
+class SummonMonster(AnimationScriptCommand):
+    _opcode: int = 0x5D
+    _size: int = 4
+
+    _monster: Type["Enemy"]
+    _position: UInt4
+    _bit_0: bool
+    _bit_1: bool
+    _bit_2: bool
+    _bit_3: bool
+    _bit_4: bool
+    _bit_5: bool
+    _bit_6: bool
+    _bit_7: bool
+
+    @property
+    def monster(self) -> Type["Enemy"]:
+        return self._monster
+
+    def set_monster(self, monster: Type["Enemy"]) -> None:
+        self._monster = monster
+
+    @property
+    def position(self) -> UInt4:
+        return self._position
+
+    def set_position(self, position: int) -> None:
+        assert 0 <= position <= 7
+        self._position = UInt4(position)
+
+    @property
+    def bit_0(self) -> bool:
+        return self._bit_0
+
+    def set_bit_0(self, bit_0: bool) -> None:
+        self._bit_0 = bit_0
+
+    @property
+    def bit_1(self) -> bool:
+        return self._bit_1
+
+    def set_bit_1(self, bit_1: bool) -> None:
+        self._bit_1 = bit_1
+
+    @property
+    def bit_2(self) -> bool:
+        return self._bit_2
+
+    def set_bit_2(self, bit_2: bool) -> None:
+        self._bit_2 = bit_2
+
+    @property
+    def bit_3(self) -> bool:
+        return self._bit_3
+
+    def set_bit_3(self, bit_3: bool) -> None:
+        self._bit_3 = bit_3
+
+    @property
+    def bit_4(self) -> bool:
+        return self._bit_4
+
+    def set_bit_4(self, bit_4: bool) -> None:
+        self._bit_4 = bit_4
+
+    @property
+    def bit_5(self) -> bool:
+        return self._bit_5
+
+    def set_bit_5(self, bit_5: bool) -> None:
+        self._bit_5 = bit_5
+
+    @property
+    def bit_6(self) -> bool:
+        return self._bit_6
+
+    def set_bit_6(self, bit_6: bool) -> None:
+        self._bit_6 = bit_6
+
+    @property
+    def bit_7(self) -> bool:
+        return self._bit_7
+
+    def set_bit_7(self, bit_7: bool) -> None:
+        self._bit_7 = bit_7
+
+    def __init__(
+        self,
+        monster: Type["Enemy"],
+        position: int,
+        bit_0: bool = False,
+        bit_1: bool = False,
+        bit_2: bool = False,
+        bit_3: bool = False,
+        bit_4: bool = False,
+        bit_5: bool = False,
+        bit_6: bool = False,
+        bit_7: bool = False,
+        identifier: Optional[str] = None,
+    ) -> None:
+        super().__init__(identifier)
+        self.set_monster(monster)
+        self.set_position(position)
+        self.set_bit_0(bit_0)
+        self.set_bit_1(bit_1)
+        self.set_bit_2(bit_2)
+        self.set_bit_3(bit_3)
+        self.set_bit_4(bit_4)
+        self.set_bit_5(bit_5)
+        self.set_bit_6(bit_6)
+        self.set_bit_7(bit_7)
+
+    def render(self) -> bytearray:
+        byte1: int = bits_to_int(
+            [
+                self.bit_0,
+                self.bit_1,
+                self.bit_2,
+                self.bit_3,
+                self.bit_4,
+                self.bit_5,
+                self.bit_6,
+                self.bit_7,
+            ]
+        )
+        return super().render(byte1, self.monster().monster_id, self.position)
+
+
+class MuteTimingJmp(AnimationScriptCommandWithJmps):
+    _opcode: int = 0xD8
+    _size: int = 3
+
+    def render(self) -> bytearray:
+        return super().render(*self.destinations)
+
+
+class DisplayCantRunDialog(AnimationScriptCommandNoArgs):
+    _opcode: int = 0xD9
+
+
+class StoreOMEM60ToItemInventory(AnimationScriptCommandNoArgs):
+    _opcode: int = 0xE0
+
+
+class RunBattleEvent(AnimationScriptCommand):
+    _opcode: int = 0xE1
+    _size: int = 4
+
+    _script_id: UInt16
+    _offset: UInt8
+
+    @property
+    def script_id(self) -> UInt16:
+        return self._script_id
+
+    def set_script_id(self, script_id: int) -> None:
+        self._script_id = UInt16(script_id)
+
+    @property
+    def offset(self) -> UInt8:
+        return self._offset
+
+    def set_offset(self, offset: int) -> None:
+        self._offset = UInt8(offset)
+
+    def __init__(
+        self, script_id: int, offset: int = 0, identifier: Optional[str] = None
+    ) -> None:
+        super().__init__(identifier)
+        self.set_script_id(script_id)
+        self.set_offset(offset)
+
+    def render(self) -> bytearray:
+        return super().render()
+
+
+class Db(AnimationScriptCommand):
+    _contents: bytearray
+
+    @property
+    def contents(self) -> bytearray:
+        return self._contents
+
+    def set_contents(self, contents: bytearray) -> None:
+        self._contents = contents
+
+    @property
+    def size(self) -> int:
+        return len(self.contents)
+
+    def __init__(self, contents: bytearray, identifier: Optional[str] = None) -> None:
+        super().__init__(identifier)
+        self.set_contents(contents)
+
+    def render(self) -> bytearray:
+        return super().render(self.contents)
+
+
+commands = [
+    NewSpriteAtCoords,
+    SetAMEM32ToXYZCoords,
+    DrawSpriteAtAMEM32Coords,
+    PauseScriptUntil,
+    RemoveObject,
+    ReturnObjectQueue,
+    MoveObject,
+    Jmp,
+    Pause1Frame,
+    SetAMEM40ToXYZCoords,
+    MoveSpriteToCoords,
+    ResetTargetMappingMemory,
+    ResetObjectMappingMemory,
+    RunSubroutine,
+    ReturnSubroutine,
+    VisibilityOn,
+    VisibilityOff,
+    SetAMEM8BitToConst,
+    SetAMEM16BitToConst,
+    JmpIfAMEM8BitEqualsConst,
+    JmpIfAMEM16BitEqualsConst,
+    JmpIfAMEM8BitNotEqualsConst,
+    JmpIfAMEM16BitNotEqualsConst,
+    JmpIfAMEM8BitLessThanConst,
+    JmpIfAMEM16BitLessThanConst,
+    JmpIfAMEM8BitGreaterOrEqualThanConst,
+    JmpIfAMEM16BitGreaterOrEqualThanConst,
+    SetAMEM8BitTo7E1x,
+    SetAMEM16BitTo7E1x,
+    Set7E1xToAMEM8Bit,
+    Set7E1xToAMEM16Bit,
+    JmpIfAMEM8BitEquals7E1x,
+    JmpIfAMEM16BitEquals7E1x,
+    JmpIfAMEM8BitNotEquals7E1x,
+    JmpIfAMEM16BitNotEquals7E1x,
+    JmpIfAMEM8BitLessThan7E1x,
+    JmpIfAMEM16BitLessThan7E1x,
+    JmpIfAMEM8BitGreaterOrEqualThan7E1x,
+    JmpIfAMEM16BitGreaterOrEqualThan7E1x,
+    SetAMEM8BitTo7F,
+    SetAMEM16BitTo7F,
+    Set7FToAMEM8Bit,
+    Set7FToAMEM16Bit,
+    JmpIfAMEM8BitEquals7F,
+    JmpIfAMEM16BitEquals7F,
+    JmpIfAMEM8BitNotEquals7F,
+    JmpIfAMEM16BitNotEquals7F,
+    JmpIfAMEM8BitLessThan7F,
+    JmpIfAMEM16BitLessThan7F,
+    JmpIfAMEM8BitGreaterOrEqualThan7F,
+    JmpIfAMEM16BitGreaterOrEqualThan7F,
+    SetAMEM8BitToAMEM,
+    SetAMEM16BitToAMEM,
+    SetAMEMToAMEM8Bit,
+    SetAMEMToAMEM16Bit,
+    JmpIfAMEM8BitEqualsAMEM,
+    JmpIfAMEM16BitEqualsAMEM,
+    JmpIfAMEM8BitNotEqualsAMEM,
+    JmpIfAMEM16BitNotEqualsAMEM,
+    JmpIfAMEM8BitLessThanAMEM,
+    JmpIfAMEM16BitLessThanAMEM,
+    JmpIfAMEM8BitGreaterOrEqualThanAMEM,
+    JmpIfAMEM16BitGreaterOrEqualThanAMEM,
+    SetAMEM8BitToOMEMCurrent,
+    SetAMEM16BitToOMEMCurrent,
+    SetOMEMCurrentToAMEM8Bit,
+    SetOMEMCurrentToAMEM16Bit,
+    JmpIfAMEM8BitEqualsOMEMCurrent,
+    JmpIfAMEM16BitEqualsOMEMCurrent,
+    JmpIfAMEM8BitNotEqualsOMEMCurrent,
+    JmpIfAMEM16BitNotEqualsOMEMCurrent,
+    JmpIfAMEM8BitLessThanOMEMCurrent,
+    JmpIfAMEM16BitLessThanOMEMCurrent,
+    JmpIfAMEM8BitGreaterOrEqualThanOMEMCurrent,
+    JmpIfAMEM16BitGreaterOrEqualThanOMEMCurrent,
+    SetAMEM8BitTo7E5x,
+    SetAMEM16BitTo7E5x,
+    Set7E5xToAMEM8Bit,
+    Set7E5xToAMEM16Bit,
+    JmpIfAMEM8BitEquals7E5x,
+    JmpIfAMEM16BitEquals7E5x,
+    JmpIfAMEM8BitNotEquals7E5x,
+    JmpIfAMEM16BitNotEquals7E5x,
+    JmpIfAMEM8BitLessThan7E5x,
+    JmpIfAMEM16BitLessThan7E5x,
+    JmpIfAMEM8BitGreaterOrEqualThan7E5x,
+    JmpIfAMEM16BitGreaterOrEqualThan7E5x,
+    SetAMEM8BitToOMEMMain,
+    SetAMEM16BitToOMEMMain,
+    SetOMEMMainToAMEM8Bit,
+    SetOMEMMainToAMEM16Bit,
+    JmpIfAMEM8BitEqualsOMEMMain,
+    JmpIfAMEM16BitEqualsOMEMMain,
+    JmpIfAMEM8BitNotEqualsOMEMMain,
+    JmpIfAMEM16BitNotEqualsOMEMMain,
+    JmpIfAMEM8BitLessThanOMEMMain,
+    JmpIfAMEM16BitLessThanOMEMMain,
+    JmpIfAMEM8BitGreaterOrEqualThanOMEMMain,
+    JmpIfAMEM16BitGreaterOrEqualThanOMEMMain,
+    IncAMEM8BitByConst,
+    IncAMEM8BitBy7E1x,
+    IncAMEM8BitBy7F,
+    IncAMEM8BitByAMEM,
+    IncAMEM8BitByOMEMCurrent,
+    IncAMEM8BitBy7E5x,
+    IncAMEM8BitByOMEMMain,
+    IncAMEM16BitByConst,
+    IncAMEM16BitBy7E1x,
+    IncAMEM16BitBy7F,
+    IncAMEM16BitByAMEM,
+    IncAMEM16BitByOMEMCurrent,
+    IncAMEM16BitBy7E5x,
+    IncAMEM16BitByOMEMMain,
+    DecAMEM8BitByConst,
+    DecAMEM8BitBy7E1x,
+    DecAMEM8BitBy7F,
+    DecAMEM8BitByAMEM,
+    DecAMEM8BitByOMEMCurrent,
+    DecAMEM8BitBy7E5x,
+    DecAMEM8BitByOMEMMain,
+    DecAMEM16BitByConst,
+    DecAMEM16BitBy7E1x,
+    DecAMEM16BitBy7F,
+    DecAMEM16BitByAMEM,
+    DecAMEM16BitByOMEMCurrent,
+    DecAMEM16BitBy7E5x,
+    DecAMEM16BitByOMEMMain,
+    UnknownJmp24,
+    UnknownJmp25,
+    UnknownJmp26,
+    UnknownJmp27,
+    UnknownJmp28,
+    UnknownJmp29,
+    UnknownJmp2A,
+    UnknownJmp2B,
+    IncAMEM8Bit,
+    IncAMEM16Bit,
+    DecAMEM8Bit,
+    DecAMEM16Bit,
+    ClearAMEM8Bit,
+    ClearAMEM16Bit,
+    SetAMEMBits,
+    ClearAMEMBits,
+    JmpIfAMEMBitsSet,
+    JmpIfAMEMBitsClear,
+    AttackTimerBegins,
+    PauseScriptUntilAMEMBitsSet,
+    PauseScriptUntilAMEMBitsClear,
+    SpriteSequence,
+    SetAMEM60ToCurrentTarget,
+    PauseScriptUntilSpriteSequenceDone,
+    JmpIfTargetDisabled,
+    JmpIfTargetEnabled,
+    SpriteQueue,
+    ReturnSpriteQueue,
+    DisplayMessageAtOMEM60As,
+    ObjectQueueAtOffsetAndIndexAtAMEM60,
+    ObjectQueueAtOffsetAndIndex,
+    SetOMEM60To072C,
+    SetAMEMToRandom,
+    EnableSpritesOnSubscreen,
+    DisableSpritesOnSubscreen,
+    NewEffectObject,
+    Pause2Frames,
+    PauseScriptUntilBitsClear,
+    ClearEffectIndex,
+    Layer3On,
+    Layer3Off,
+    DisplayMessage,
+    PauseScriptUntilDialogueClosed,
+    FadeOutObject,
+    ResetSpriteSequence,
+    ShineEffect,
+    FadeOutEffect,
+    FadeOutSprite,
+    FadeOutScreen,
+    FadeInEffect,
+    FadeInSprite,
+    FadeInScreen,
+    ShakeScreen,
+    ShakeSprites,
+    ShakeScreenAndSprites,
+    StopShakingObject,
+    ScreenFlashWithDuration,
+    ScreenFlash,
+    InitializeBonusMessageSequence,
+    DisplayBonusMessage,
+    PauseScriptUntilBonusMessageComplete,
+    ScreenEffect,
+    PlaySound,
+    PlayMusicAtCurrentVolume,
+    PlayMusicAtVolume,
+    StopCurrentSoundEffect,
+    FadeCurrentMusicToVolume,
+    SetTarget,
+    AddItemToStandardInventory,
+    RemoveItemFromStandardInventory,
+    AddItemToKeyItemInventory,
+    RemoveItemFromKeyItemInventory,
+    AddCoins,
+    AddYoshiCookiesToInventory,
+    DoMaskEffect,
+    SetMaskCoords,
+    SetSequenceSpeed,
+    StartTrackingAllyButtonInputs,
+    EndTrackingAllyButtonInputs,
+    TimingForOneTieredButtonPress,
+    TimingForOneBinaryButtonPress,
+    TimingForMultipleButtonPresses,
+    TimingForButtonMashUnknown,
+    TimingForButtonMashCount,
+    TimingForOneBinaryButtonPress,
+    TimingForChargePress,
+    SummonMonster,
+    DisplayCantRunDialog,
+    StoreOMEM60ToItemInventory,
+    RunBattleEvent,
+    Db,
+]

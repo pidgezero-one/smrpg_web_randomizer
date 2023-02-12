@@ -1,0 +1,43 @@
+#A0641_MIDAS_2ND_TUNNELS_PIRANHA
+
+from randomizer.scripts.action.script_imports import *
+
+script = ActionScript([
+	SetPriority(3),
+	SetVRAMPriority(NORMAL_PRIORITY),
+	SequenceLoopingOn(),
+	FixedFCoordOn(),
+	Pause(8),
+	StartLoopNTimes(5),
+	SetAllSpeeds(NORMAL),
+	Walk1StepSouthwest(),
+	SetSequenceSpeed(FAST),
+	ShiftSouthwestPixels(8),
+	ShiftNortheastPixels(8),
+	ShiftSouthwestPixels(8),
+	ShiftNortheastPixels(8),
+	SetSequenceSpeed(NORMAL),
+	Walk1StepNortheast(),
+	EndLoop(),
+	SetAllSpeeds(FAST),
+	Walk1StepSouthwest(),
+	Pause(1, identifier="ACTION_641_pause_18"),
+	JmpIfBitClear(TEMP_7043_1, ["ACTION_641_pause_18"]),
+	SetAllSpeeds(VERY_FAST),
+	Walk1StepNortheast(),
+	StartLoopNTimes(7),
+	ShiftZUpPixels(8),
+	ShiftZDownPixels(8),
+	EndLoop(),
+	SetWalkingSpeed(NORMAL),
+	SetSequenceSpeed(VERY_FAST),
+	Pause(16),
+	StartLoopNTimes(5),
+	JumpToHeight(56),
+	Walk1StepSoutheast(),
+	JumpToHeight(56),
+	Walk1StepNorthwest(),
+	EndLoop(),
+	ShiftEastSteps(2),
+	Return()
+])

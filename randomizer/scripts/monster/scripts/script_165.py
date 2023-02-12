@@ -1,0 +1,47 @@
+# 165 - MachineMadeYaridovich
+
+from randomizer.scripts.monster.script_imports import *
+
+script = MonsterScript(
+    [
+        IfVarEqualOrGreaterThan(0x7EE003, 8),
+        IfVarBitsSet(0x7EE000, [1]),
+        ClearVarBits(0x7EE000, [1]),
+        ClearVar(0x7EE003),
+        ClearVar(0x7EE007),
+        SetTargetable(SELF),
+        RunBattleEvent(BE0025_DRILL_BIT),
+        RemoveTarget(ALL_ALLIES_EXCLUDING_SELF),
+        Wait1TurnandRestartScript(),
+        IfVarBitsSet(0x7EE000, [0]),
+        Attack(PhysicalAttack1, Pierce, PhysicalAttack31),
+        Wait1TurnandRestartScript(),
+        IfVarBitsSet(0x7EE000, [1]),
+        Wait1TurnandRestartScript(),
+        IfVarLessThan(0x7EE001, 1),
+        CastSpell(FlameStone, FlameStone, MeteorBlast),
+        IncreaseVarBy1(0x7EE001),
+        Wait1TurnandRestartScript(),
+        ClearVar(0x7EE001),
+        ClearVar(DESIGNATED_RANDOM_NUM_VAR),
+        Set7EE005ToRandomNumber(upper_bound=7),
+        IfVarLessThan(DESIGNATED_RANDOM_NUM_VAR, 3),
+        SetVarBits(0x7EE000, [1]),
+        SetUntargetable(SELF),
+        RunBattleDialog(134),
+        RunBattleEvent(BE0024_MACHINE_MADE_YARIDOVICH_MULTIPLIER),
+        Wait1TurnandRestartScript(),
+        StartCounterCommands(),
+        IfHPBelow(0),
+        IfTargetAlive(ALL_ALLIES_EXCLUDING_SELF),
+        RunBattleEvent(BE0023_YARIDOVICH_MIRAGE_IS_DESTROYED_RETURN_TO_SINGLE_FORM),
+        RemoveTarget(MONSTER_2_SET),
+        DoMonsterBehaviour(3),
+        RemoveTarget(SELF),
+        Wait1TurnandRestartScript(),
+        IfHPBelow(0),
+        DoMonsterBehaviour(3),
+        RemoveTarget(SELF),
+        Wait1TurnandRestartScript(),
+    ]
+)

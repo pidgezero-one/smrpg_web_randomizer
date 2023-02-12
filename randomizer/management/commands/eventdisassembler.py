@@ -1826,7 +1826,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         debug = options["debug"]
 
-        dest = "randomizer/data/eventscripts_new"
+        dest = "randomizer/data/eventscripts"
         if debug:
             dest = "randomizer/management/commands/output/disassembler/event"
 

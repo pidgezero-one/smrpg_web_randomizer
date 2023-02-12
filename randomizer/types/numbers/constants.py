@@ -1,0 +1,1 @@
+SMALL_BOOST_AMOUNT: float = 2.0

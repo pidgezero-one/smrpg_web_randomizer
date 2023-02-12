@@ -1,0 +1,28 @@
+# referenced by weapons Parasol
+
+from randomizer.scripts.animation.script_imports import *
+
+script = SubroutineOrBanklessScript(expected_size = 81, script = [
+	SetAMEM32ToXYZCoords(origin=CASTER_CURRENT_POSITION, x=0, y=0, z=0, set_x=True, set_y=True, set_z=True, identifier="queuestart_0x35f3ee"),
+	NewSpriteAtCoords(sprite_id=SPR0036_PARASOL, sequence=0, priority=3, vram_address=0x6600, palette_row=8, overwrite_vram=True, overwrite_palette=True, behind_all_sprites=True, overlap_all_sprites=True),
+	PauseScriptUntilSpriteSequenceDone(),
+	Pause1Frame(identifier="command_0x35f400"),
+	SetAMEM8BitToOMEMMain(amem=0x63, omem=0x63),
+	JmpIfAMEM8BitNotEqualsConst(0x63, 1, ["command_0x35f400"]),
+	RemoveObject(),
+	SetOMEMMainToAMEM8Bit(omem=0x64, amem=0x63),
+	ReturnObjectQueue(),
+	PlaySound(sound=S0046_PLASMA_BOUNCE, identifier="queuestart_0x35f411"),
+	SetAMEM32ToXYZCoords(origin=CASTER_CURRENT_POSITION, x=0, y=0, z=0, set_x=True, set_y=True, set_z=True),
+	Pause1Frame(identifier="command_0x35f41b"),
+	SetAMEM8BitToOMEMMain(amem=0x64, omem=0x64),
+	JmpIfAMEM8BitNotEqualsConst(0x64, 1, ["command_0x35f41b"]),
+	NewSpriteAtCoords(sprite_id=SPR0036_PARASOL, sequence=1, priority=3, vram_address=0x6600, palette_row=8, overwrite_vram=True, overwrite_palette=True, behind_all_sprites=True, overlap_all_sprites=True),
+	PauseScriptUntilSpriteSequenceDone(),
+	PlaySound(sound=S0047_DRY_CLUNK),
+	Pause1Frame(identifier="command_0x35f432"),
+	SetAMEM8BitToOMEMMain(amem=0x65, omem=0x65),
+	JmpIfAMEM8BitNotEqualsConst(0x65, 1, ["command_0x35f432"]),
+	RemoveObject(),
+	ReturnObjectQueue()
+])

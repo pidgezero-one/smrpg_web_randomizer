@@ -1,0 +1,67 @@
+# referenced by monster_attacks Shaker
+
+from randomizer.scripts.animation.script_imports import *
+
+script = SubroutineOrBanklessScript(
+    expected_size=77,
+    script=[
+        SetAMEM32ToXYZCoords(
+            origin=CASTER_CURRENT_POSITION,
+            x=-16,
+            y=-8,
+            z=0,
+            set_x=True,
+            set_y=True,
+            set_z=True,
+            identifier="queuestart_0x354e1f",
+        ),
+        RunSubroutine(["command_0x352ec7"]),
+        RunSubroutine(["command_0x357fcc"]),
+        PlaySound(sound=S0192_BIG_SHELL_KICK),
+        AttackTimerBegins(),
+        ClearAMEM8Bit(0x60),
+        ClearAMEM8Bit(0x6F),
+        ClearAMEM8Bit(0x68),
+        Db(bytearray(b"?\x80\x18\x00\x00\x84")),
+        MoveObject(
+            speed=33,
+            start_position=-1281,
+            end_position=0,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        MoveObject(
+            speed=17,
+            start_position=-897,
+            end_position=0,
+            apply_to_x=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=30),
+        ResetObjectMappingMemory(),
+        MoveObject(
+            speed=33,
+            start_position=0,
+            end_position=1280,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        MoveObject(
+            speed=17,
+            start_position=-385,
+            end_position=-897,
+            apply_to_x=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=30),
+        ResetObjectMappingMemory(),
+        PauseScriptUntilAMEMBitsSet(0x6F, [0, 1, 2, 3, 4, 5, 6, 7]),
+        Jmp(["command_0x35252f"]),
+    ],
+)

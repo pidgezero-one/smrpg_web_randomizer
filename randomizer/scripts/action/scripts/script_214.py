@@ -1,0 +1,11 @@
+#A0214_SANCTUARY_CAMERA
+
+from randomizer.scripts.action.script_imports import *
+
+script = ActionScript([
+	SetBit(TEMP_7042_0),
+	SetWalkingSpeed(SLOW),
+	ShiftSouthwestSteps(4),
+	ClearBit(TEMP_7042_0),
+	Return()
+])

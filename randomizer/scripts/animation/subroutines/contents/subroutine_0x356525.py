@@ -1,0 +1,40 @@
+# referenced by monster_attacks PhysicalAttack56
+
+from randomizer.scripts.animation.script_imports import *
+
+script = SubroutineOrBanklessScript(expected_size = 123, script = [
+	ResetTargetMappingMemory(identifier="queuestart_0x356525"),
+	SetAMEM60ToCurrentTarget(),
+	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=0, y=240, z=0, set_x=True, set_y=True, set_z=True),
+	EnableSpritesOnSubscreen(),
+	NewSpriteAtCoords(sprite_id=SPR0790_PLASM_WATER_DROPLET_BLUE_GREEN, sequence=1, priority=0, vram_address=0x6200, palette_row=8, looping=True, overwrite_palette=True, overlap_all_sprites=True),
+	VisibilityOn(),
+	PlaySound(sound=S0068_RECOVER_DRINK),
+	ClearAMEM8Bit(0x68),
+	ClearAMEM8Bit(0x69),
+	SetAMEM16BitToConst(0x60, 2),
+	ObjectQueueAtOffsetAndIndex(index=0, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=2, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=4, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=6, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=8, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=0, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=2, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=4, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=6, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	ObjectQueueAtOffsetAndIndex(index=8, target_address=0x356B15),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
+	Pause1Frame(identifier="command_0x356595"),
+	JmpIfAMEM8BitNotEqualsConst(0x69, 10, ["command_0x356595"]),
+	DisableSpritesOnSubscreen(),
+	Jmp(["command_0x356b01"])
+])

@@ -1,2 +1,0 @@
-class EventScriptCommandName(str):
-    pass

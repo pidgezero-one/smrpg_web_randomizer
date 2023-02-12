@@ -1,0 +1,13 @@
+#A0700_TOWER_EARLY_CIRCLING_BOMB
+
+from randomizer.scripts.action.script_imports import *
+
+script = ActionScript([
+	SequenceLoopingOn(identifier="ACTION_700_sequence_looping_on_0"),
+	SetWalkingSpeed(NORMAL),
+	ShiftNorthwestSteps(3),
+	Walk1StepSouthwest(),
+	ShiftSoutheastSteps(3),
+	Walk1StepNortheast(),
+	Jmp(["ACTION_700_sequence_looping_on_0"])
+])

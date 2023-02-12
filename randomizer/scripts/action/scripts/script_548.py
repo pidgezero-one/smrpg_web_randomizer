@@ -1,0 +1,43 @@
+#A0548_KEEP_CROSSING_TERRA_COTTAS
+
+from randomizer.scripts.action.script_imports import *
+
+script = ActionScript([
+	SetWalkingSpeed(SLOW),
+	SequenceLoopingOn(),
+	Set700CToPressedButton(),
+	AddConstToVar(PRIMARY_TEMP_700C, 65517),
+	LoadMemory(PRIMARY_TEMP_700C),
+	Pause(1),
+	EndLoop(),
+	ShiftNorthwestPixels(37, identifier="ACTION_548_shift_northwest_pixels_7"),
+	JmpIfRandom1of2(["ACTION_548_shift_northwest_pixels_30"]),
+	SetSpriteSequence(index=9, is_sequence=True, looping=True),
+	JmpIfVarEqualsConst(GAME_OVER_COUNTER_MAYBE, 0, ["ACTION_548_pause_16"]),
+	StartLoopNTimes(4),
+	JmpIfObjectWithinRangeSameZ(object=MARIO, usually=128, tiles=3, destinations=["ACTION_549_dec_0"]),
+	Pause(16),
+	EndLoop(),
+	Jmp(["ACTION_548_reset_properties_17"]),
+	Pause(80, identifier="ACTION_548_pause_16"),
+	ResetProperties(identifier="ACTION_548_reset_properties_17"),
+	JmpIfRandom1of2(["ACTION_548_shift_northwest_pixels_30"]),
+	FaceNortheast(),
+	Pause(8),
+	FaceSoutheast(),
+	Pause(8),
+	ShiftSoutheastPixels(37),
+	Pause(8),
+	FaceSouthwest(),
+	Pause(8),
+	FaceNorthwest(),
+	Pause(16),
+	Jmp(["ACTION_548_shift_northwest_pixels_7"]),
+	ShiftNorthwestPixels(37, identifier="ACTION_548_shift_northwest_pixels_30"),
+	Pause(8),
+	FaceNortheast(),
+	Pause(8),
+	FaceSoutheast(),
+	Pause(16),
+	Jmp(["ACTION_547_shift_southeast_pixels_7"])
+])

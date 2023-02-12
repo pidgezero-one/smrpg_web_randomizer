@@ -1,0 +1,35 @@
+# referenced by items PickMeUp
+
+from randomizer.scripts.animation.script_imports import *
+
+script = SubroutineOrBanklessScript(expected_size = 109, script = [
+	ClearAMEM16Bit(0x60, identifier="queuestart_0x35d191"),
+	ClearAMEM8Bit(0x6E),
+	ObjectQueueAtOffsetAndIndex(index=2, target_address=0x35D187),
+	ObjectQueueAtOffsetAndIndex(index=4, target_address=0x35D187),
+	ObjectQueueAtOffsetAndIndex(index=6, target_address=0x35D187),
+	PlaySound(sound=S0068_RECOVER_DRINK),
+	Pause1Frame(identifier="command_0x35d1a3"),
+	JmpIfAMEM8BitNotEqualsConst(0x6E, 3, ["command_0x35d1a3"]),
+	ClearAMEM8Bit(0x6C),
+	ObjectQueueAtOffsetAndIndex(index=8, target_address=0x35CF29),
+	PauseScriptUntilAMEMBitsSet(0x6C, [0]),
+	SetAMEM8BitToConst(0x6F, 1),
+	SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
+	ReturnObjectQueue(),
+	SetAMEM60ToCurrentTarget(identifier="queuestart_0x35d1bc"),
+	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=0, y=-24, z=0, set_x=True, set_y=True, set_z=True),
+	NewSpriteAtCoords(sprite_id=SPR0796_LIGHT_ORANGE_STARS, sequence=0, priority=3, vram_address=0x6200, palette_row=8, overwrite_vram=True, overwrite_palette=True, overlap_all_sprites=True),
+	RunSubroutine(["command_0x35d0cf"]),
+	ReturnObjectQueue(),
+	SetAMEM60ToCurrentTarget(identifier="queuestart_0x35d1d2"),
+	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=-8, y=-8, z=0, set_x=True, set_y=True, set_z=True),
+	NewSpriteAtCoords(sprite_id=SPR0560_RED_CURE_STARS, sequence=0, priority=3, vram_address=0x6400, palette_row=0, overwrite_vram=True, overwrite_palette=True, overlap_all_sprites=True),
+	RunSubroutine(["command_0x35d0cf"]),
+	ReturnObjectQueue(),
+	SetAMEM60ToCurrentTarget(identifier="queuestart_0x35d1e8"),
+	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=8, y=-10, z=0, set_x=True, set_y=True, set_z=True),
+	NewSpriteAtCoords(sprite_id=SPR0560_RED_CURE_STARS, sequence=0, priority=3, vram_address=0x6600, palette_row=0, overwrite_vram=True, overwrite_palette=True, mirror_sprite=True, overlap_all_sprites=True),
+	RunSubroutine(["command_0x35d0cf"]),
+	ReturnObjectQueue()
+])

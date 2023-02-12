@@ -1,0 +1,8 @@
+#A0160_SEQUENCE_LOOPING_ON
+
+from randomizer.scripts.action.script_imports import *
+
+script = ActionScript([
+	SequenceLoopingOn(),
+	Return()
+])

@@ -1,0 +1,8 @@
+# E0767_MUSHROOM_KINGDOM_OCCUPIED_EAST_HALL_LOADER
+
+from randomizer.scripts.event.script_imports import *
+
+script = EventScript([
+	RunEventAsSubroutine(E0768_MUSHROOM_KINGDOM_OCCUPIED_EAST_HALL_SHUFFLED_NPC_ANIMATION_LOADER),
+	JmpToEvent(E0015_STANDARD_ROOM_LOADER)
+])

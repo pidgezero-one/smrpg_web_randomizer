@@ -1,0 +1,8 @@
+# E0784_MINES_SMALL_NORTH_ROOM_IN_MINIBOSS_PATH_LOADER
+
+from randomizer.scripts.event.script_imports import *
+
+script = EventScript([
+	RunEventAsSubroutine(E0785_MINES_SMALL_NORTH_ROOM_IN_MINIBOSS_PATH_SHUFFLED_NPC_ANIMATION_LOADER),
+	JmpToEvent(E0015_STANDARD_ROOM_LOADER)
+])

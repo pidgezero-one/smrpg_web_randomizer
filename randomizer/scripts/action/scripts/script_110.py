@@ -1,0 +1,42 @@
+#A0110_MK_HALL_REPEATING_HENCHMEN
+
+from randomizer.scripts.action.script_imports import *
+
+script = ActionScript([
+	BPL262728(),
+	VisibilityOff(),
+	TransferToXYZF(x=11, y=18, z=4, direction=EAST),
+	ClearSolidityBits(bit_4=True),
+	ClearSolidityBits(cant_walk_through=True),
+	Walk1StepSouthwest(),
+	ShiftSouthwestPixels(8),
+	VisibilityOn(),
+	ShiftSouthwestPixels(8),
+	SetSolidityBits(bit_4=True),
+	SetSolidityBits(cant_walk_through=True),
+	ClearSolidityBits(cant_pass_walls=True),
+	StartLoopNTimes(6),
+	PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
+	Db(bytearray(b' \x04')),
+	Db(bytearray(b'%\xc0\x06\x80\xff')),
+	Walk1StepSouthwest(),
+	ShiftSouthwestPixels(11),
+	BPL262728(),
+	Pause(2),
+	EndLoop(),
+	SetSolidityBits(cant_pass_walls=True),
+	PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
+	JumpToHeight(height=108, silent=True),
+	Walk1StepSouthwest(),
+	ShiftSouthwestPixels(14),
+	Pause(2),
+	PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
+	Db(bytearray(b' \x04')),
+	Db(bytearray(b'%\xc0\x06\x80\xff')),
+	Walk1StepSouthwest(),
+	ShiftSouthwestPixels(11),
+	BPL262728(),
+	ShiftSouthwestPixels(8),
+	VisibilityOff(),
+	Return()
+])

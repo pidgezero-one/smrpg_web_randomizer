@@ -1,0 +1,105 @@
+# referenced by monster_attacks LullaBye, monster_spells LightBeam
+
+from randomizer.scripts.animation.script_imports import *
+
+script = SubroutineOrBanklessScript(
+    expected_size=122,
+    script=[
+        ResetTargetMappingMemory(identifier="command_0x357ff8"),
+        MoveObject(
+            speed=1,
+            start_position=-137,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
+        ),
+        MoveObject(
+            speed=1, start_position=80, end_position=0, apply_to_y=True, set_speed=True
+        ),
+        MoveObject(
+            speed=17,
+            start_position=-257,
+            end_position=256,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
+        MoveObject(
+            speed=17,
+            start_position=256,
+            end_position=-257,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
+        MoveObject(
+            speed=17,
+            start_position=-257,
+            end_position=256,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
+        MoveObject(
+            speed=17,
+            start_position=256,
+            end_position=-257,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
+        ResetObjectMappingMemory(),
+        ReturnSubroutine(),
+        ResetTargetMappingMemory(identifier="command_0x35803b"),
+        MoveObject(
+            speed=1,
+            start_position=-129,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
+        ),
+        MoveObject(
+            speed=1, start_position=64, end_position=0, apply_to_y=True, set_speed=True
+        ),
+        MoveObject(
+            speed=17,
+            start_position=-257,
+            end_position=256,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
+        MoveObject(
+            speed=17,
+            start_position=256,
+            end_position=-257,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
+        MoveObject(
+            speed=17,
+            start_position=-257,
+            end_position=256,
+            apply_to_z=True,
+            should_set_start_position=True,
+            should_set_end_position=True,
+            should_set_speed=True,
+        ),
+        PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
+        ResetObjectMappingMemory(),
+        ReturnSubroutine(),
+    ],
+)

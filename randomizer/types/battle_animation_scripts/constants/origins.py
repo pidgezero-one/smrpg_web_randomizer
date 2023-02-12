@@ -1,0 +1,6 @@
+from .classes import Origin
+
+ABSOLUTE_POSITION = Origin(0)
+CASTER_INITIAL_POSITION = Origin(1)
+TARGET_CURRENT_POSITION = Origin(2)
+CASTER_CURRENT_POSITION = Origin(3)

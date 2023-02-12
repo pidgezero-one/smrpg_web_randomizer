@@ -1,0 +1,7 @@
+# E0704_EMPTY
+
+from randomizer.scripts.event.script_imports import *
+
+script = EventScript([
+	
+])

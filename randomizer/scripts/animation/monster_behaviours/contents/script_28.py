@@ -1,0 +1,40 @@
+# behaviour_28_0x350BB7
+
+from randomizer.scripts.animation.script_imports import *
+
+script = SubroutineOrBanklessScript(
+    expected_size=60,
+    script=[
+        ResetTargetMappingMemory(),
+        ResetObjectMappingMemory(),
+        Db(bytearray(b"T")),
+        Db(bytearray(b"n")),
+        Db(bytearray(b">")),
+        ResetSpriteSequence(),
+        Db(bytearray(b"W")),
+        Db(bytearray(b";")),
+        Db(bytearray(b"U")),
+        Db(bytearray(b";")),
+        Db(bytearray(b"V")),
+        JmpIfTargetEnabled(["command_0x350bef"]),
+        PlaySound(sound=S0176_BOSS_FADE_OUT_DEATH),
+        EnableSpritesOnSubscreen(),
+        Db(bytearray(b"\x84\x00\x08")),
+        Db(bytearray(b"\x9e\x00\x00")),
+        PauseScriptUntilBitsClear(768),
+        FadeOutSprite(duration=2),
+        PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
+        DisableSpritesOnSubscreen(),
+        Db(bytearray(b"\xa4")),
+        RemoveObject(),
+        PlaySound(sound=S0043_COIN_SHOWERS_INTO_FOUNTAIN),
+        ClearAMEM8Bit(0x60),
+        SetAMEM16BitToConst(0x60, 20),
+        ClearAMEM8Bit(0x6F),
+        ObjectQueueAtOffsetAndIndex(index=2, target_address=0x353706),
+        PauseScriptUntilAMEMBitsSet(0x6F, [0]),
+        SetAMEMToAMEM16Bit(dest_amem=0x6E, amem=0x62),
+        Db(bytearray(b"F"), identifier="command_0x350bef"),
+        Jmp(["command_0x350b06"]),
+    ],
+)

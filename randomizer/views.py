@@ -20,9 +20,9 @@ from django.views.generic import TemplateView, FormView
 
 from .models import Seed, Patch
 from .forms import GenerateForm
-from .logic.flags import CATEGORIES, PRESETS, FlagError
-from .logic.main import GameWorld, Settings, VERSION
-from .logic.patch import PatchJSONEncoder
+from randomizer.types.world.flags.categories.constants import CATEGORIES, PRESETS
+from randomizer.types.world.flags.classes import FlagError
+from randomizer.types.patch.classes import PatchJSONEncoder
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -63,9 +63,9 @@ def _build_flag_json_data(f, letter):
 # Build JSON representation of flag hierarchy.
 FLAGS = []
 for category in CATEGORIES:
-    for subcategory in category.subcategories:
+    for subcategory in category().subcategories:
         for flag in subcategory.flags:
-            FLAGS.append(_build_flag_json_data(flag, subcategory().id))
+            FLAGS.append(_build_flag_json_data(flag, subcategory.id))
 
 
 class RandomizerView(TemplateView):

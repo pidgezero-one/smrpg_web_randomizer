@@ -1,0 +1,8 @@
+# E0326_MUSHROOM_KINGDOM_CASTLE_GENERIC_TOAD
+
+from randomizer.scripts.event.script_imports import *
+
+script = EventScript([
+	RunDialog(dialog_id=DI2300_TOAD_GUARD, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	Return()
+])

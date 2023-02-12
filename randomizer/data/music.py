@@ -1,48 +1,28 @@
-
-
-class Music:
-    name = ""
-    value = 0
-
-
-class NormalBattleMusic(Music):
+class NormalBattleMusic:
     name = "Regular encounter theme"
     value = 0x00
 
 
-class MidbossMusic(Music):
+class MidbossMusic:
     name = "Midboss theme"
     value = 0x04
 
 
-class BossMusic(Music):
+class BossMusic:
     name = "Smithy Gang theme"
     value = 0x08
 
 
-class Smithy1Music(Music):
+class Smithy1Music:
     name = "Smithy phase 1 theme"
-    value = 0x0c
+    value = 0x0C
 
 
-class CulexMusic(Music):
+class CulexMusic:
     name = "Final Fantasy 4 boss theme"
-    value = 0x1c
+    value = 0x1C
 
 
-class CorndillyMusic(Music):
+class CorndillyMusic:
     name = "Moleville Minecart theme"
     value = 0x10
-
-# ********************* Default objects for world
-
-
-def get_default_music():
-    return [
-        NormalBattleMusic(),
-        MidbossMusic(),
-        BossMusic(),
-        Smithy1Music(),
-        CulexMusic(),
-        CorndillyMusic()
-    ]

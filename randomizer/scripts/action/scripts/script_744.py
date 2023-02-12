@@ -1,0 +1,42 @@
+#A0744_STAR_HILL_1ST_ROOM_NORTH_GECKO
+
+from randomizer.scripts.action.script_imports import *
+
+script = ActionScript([
+	SequenceLoopingOn(identifier="ACTION_744_sequence_looping_on_0"),
+	ShadowOff(),
+	SetWalkingSpeed(VERY_SLOW),
+	ShiftSouthwestSteps(4),
+	ShiftSouthwestPixels(7),
+	Pause(32),
+	FaceNorthwest(),
+	Pause(24),
+	ShiftNorthwestSteps(3),
+	ShiftNorthwestPixels(7),
+	Pause(16),
+	FaceNortheast(),
+	FixedFCoordOn(),
+	SetWalkingSpeed(FASTEST),
+	ShiftSouthwestPixels(3),
+	SetSequenceSpeed(SLOW),
+	Pause(384),
+	ShiftNortheastPixels(3),
+	FixedFCoordOff(),
+	SetSequenceSpeed(NORMAL),
+	SetWalkingSpeed(VERY_SLOW),
+	Walk1StepSouthwest(),
+	ShiftSoutheastSteps(8),
+	ShiftSoutheastPixels(5),
+	SetSequenceSpeed(SLOW),
+	Pause(32),
+	SetSequenceSpeed(NORMAL),
+	SetWalkingSpeed(SLOW),
+	ShiftNortheastSteps(4),
+	ShiftNortheastPixels(7),
+	Pause(32),
+	SequenceLoopingOff(),
+	Pause(64),
+	SetWalkingSpeed(VERY_SLOW),
+	WalkToXYCoords(x=12, y=71),
+	Jmp(["ACTION_744_sequence_looping_on_0"])
+])

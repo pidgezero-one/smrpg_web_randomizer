@@ -1,0 +1,11 @@
+# 36 - Enigma
+
+from randomizer.scripts.monster.script_imports import *
+
+script = MonsterScript([
+	Attack(PhysicalAttack1, PhysicalAttack1, Echofinder),
+	Wait1Turn(),
+	Attack(PhysicalAttack1),
+	Wait1Turn(),
+	StartCounterCommands()
+])

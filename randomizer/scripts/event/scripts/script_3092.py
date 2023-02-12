@@ -1,0 +1,40 @@
+# E3092_STAR_PIECE_GRANT
+
+from randomizer.scripts.event.script_imports import *
+
+script = EventScript([
+	Pause(1, identifier="EVENT_3092_pause_1"),
+	JmpIfMarioInAir(["EVENT_3092_pause_1"]),
+	JmpIfBitSet(STAR_PIECE_MENU_UNLOCKED, ["EVENT_3092_skip"]),
+	SetBit(STAR_PIECE_MENU_UNLOCKED),
+	JmpIfVarEqualsConst(EXP_STAR_70D5, 7, ["EVENT_3092_ret_418"], identifier="EVENT_3092_skip"),
+	Inc(EXP_STAR_70D5),
+	PlayMusicAtCurrentVolume(M24_GOT_A_STAR_PIECE_PART_2),
+	Db(bytearray(b'\xfd\x8e\x80\x07\x01')),
+	PauseScriptUntilEffectDone(),
+	JmpIfVarEqualsConst(EXP_STAR_70D5, 7, ["EVENT_3092_run_star_piece_sequence_7"]),
+	JmpIfVarEqualsConst(EXP_STAR_70D5, 6, ["EVENT_3092_run_star_piece_sequence_6"]),
+	JmpIfVarEqualsConst(EXP_STAR_70D5, 5, ["EVENT_3092_run_star_piece_sequence_5"]),
+	JmpIfVarEqualsConst(EXP_STAR_70D5, 4, ["EVENT_3092_run_star_piece_sequence_4"]),
+	JmpIfVarEqualsConst(EXP_STAR_70D5, 3, ["EVENT_3092_run_star_piece_sequence_3"]),
+	JmpIfVarEqualsConst(EXP_STAR_70D5, 2, ["EVENT_3092_run_star_piece_sequence_2"]),
+	JmpIfVarEqualsConst(EXP_STAR_70D5, 1, ["EVENT_3092_run_star_piece_sequence_1"]),
+	Jmp(["EVENT_3092_db_413"]),
+	RunStarPieceSequence(1, identifier="EVENT_3092_run_star_piece_sequence_1"),
+	Jmp(["EVENT_3092_db_413"]),
+	RunStarPieceSequence(2, identifier="EVENT_3092_run_star_piece_sequence_2"),
+	Jmp(["EVENT_3092_db_413"]),
+	RunStarPieceSequence(3, identifier="EVENT_3092_run_star_piece_sequence_3"),
+	Jmp(["EVENT_3092_db_413"]),
+	RunStarPieceSequence(4, identifier="EVENT_3092_run_star_piece_sequence_4"),
+	Jmp(["EVENT_3092_db_413"]),
+	RunStarPieceSequence(5, identifier="EVENT_3092_run_star_piece_sequence_5"),
+	Jmp(["EVENT_3092_db_413"]),
+	RunStarPieceSequence(6, identifier="EVENT_3092_run_star_piece_sequence_6"),
+	Jmp(["EVENT_3092_db_413"]),
+	RunStarPieceSequence(7, identifier="EVENT_3092_run_star_piece_sequence_7"),
+	Db(bytearray(b'\xfd\x8e\xb2\x07\x01'), identifier="EVENT_3092_db_413"),
+	PauseScriptUntilEffectDone(),
+	JmpToEvent(E3101_STAR_PIECE_HUNT_END_GAME),
+	Return(identifier="EVENT_3092_ret_418")
+])

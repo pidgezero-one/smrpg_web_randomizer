@@ -1,0 +1,73 @@
+# referenced by weapons UltraHammer
+
+from randomizer.scripts.animation.script_imports import *
+
+script = SubroutineOrBanklessScript(
+    expected_size=90,
+    script=[
+        SetAMEM32ToXYZCoords(
+            origin=CASTER_CURRENT_POSITION,
+            x=0,
+            y=0,
+            z=0,
+            set_x=True,
+            set_y=True,
+            set_z=True,
+            identifier="queuestart_0x35f305",
+        ),
+        NewSpriteAtCoords(
+            sprite_id=SPR0031_HAMMER,
+            sequence=0,
+            priority=3,
+            vram_address=0x6600,
+            palette_row=8,
+            overwrite_vram=True,
+            overwrite_palette=True,
+            behind_all_sprites=True,
+            overlap_all_sprites=True,
+        ),
+        PauseScriptUntilSpriteSequenceDone(),
+        Pause1Frame(identifier="command_0x35f317"),
+        SetAMEM8BitToOMEMMain(amem=0x63, omem=0x63),
+        JmpIfAMEM8BitNotEqualsConst(0x63, 1, ["command_0x35f317"]),
+        RemoveObject(),
+        SetOMEMMainToAMEM8Bit(omem=0x64, amem=0x63),
+        ReturnObjectQueue(),
+        PlaySound(sound=S0054_HAMMER_HIT_1, identifier="queuestart_0x35f328"),
+        SetAMEM32ToXYZCoords(
+            origin=CASTER_CURRENT_POSITION,
+            x=0,
+            y=0,
+            z=0,
+            set_x=True,
+            set_y=True,
+            set_z=True,
+        ),
+        Pause1Frame(identifier="command_0x35f332"),
+        SetAMEM8BitToOMEMMain(amem=0x64, omem=0x64),
+        JmpIfAMEM8BitNotEqualsConst(0x64, 1, ["command_0x35f332"]),
+        NewSpriteAtCoords(
+            sprite_id=SPR0031_HAMMER,
+            sequence=1,
+            priority=3,
+            vram_address=0x6600,
+            palette_row=8,
+            overwrite_vram=True,
+            overwrite_palette=True,
+            behind_all_sprites=True,
+            overlap_all_sprites=True,
+        ),
+        PauseScriptUntilSpriteSequenceDone(),
+        PlaySound(sound=S0055_HAMMER_HIT_2),
+        DrawSpriteAtAMEM32Coords(
+            sprite_id=SPR0031_HAMMER, sequence=3, store_to_vram=True, store_palette=True
+        ),
+        PauseScriptUntilSpriteSequenceDone(),
+        PlaySound(sound=S0054_HAMMER_HIT_1),
+        Pause1Frame(identifier="command_0x35f352"),
+        SetAMEM8BitToOMEMMain(amem=0x65, omem=0x65),
+        JmpIfAMEM8BitNotEqualsConst(0x65, 1, ["command_0x35f352"]),
+        RemoveObject(),
+        ReturnObjectQueue(),
+    ],
+)

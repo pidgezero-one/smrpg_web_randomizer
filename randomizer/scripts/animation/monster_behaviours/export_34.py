@@ -1,0 +1,14 @@
+from randomizer.types.battle_animation_scripts.classes import AnimationScriptBank
+from randomizer.types.battle_animation_scripts.constants.script_ids.bank_names import (
+    BEHAVIOUR_34_0X350C9E,
+)
+from .contents.subroutine_0x34 import script as subroutine_0x34
+
+bank = AnimationScriptBank(
+    name=BEHAVIOUR_34_0X350C9E,
+    start=0x350C9E,
+    end=0x350CDB,
+    scripts=[
+        subroutine_0x34,
+    ],
+)

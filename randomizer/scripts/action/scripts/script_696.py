@@ -1,0 +1,41 @@
+#A0696_TOWER_FIRST_STAIRCASE_SPOOKUM_DIRECTION_1
+
+from randomizer.scripts.action.script_imports import *
+
+script = ActionScript([
+	SequenceLoopingOn(),
+	ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+	Db(bytearray(b'\xfd\x12')),
+	FloatingOff(),
+	ClearSolidityBits(cant_pass_walls=True),
+	TransferToXYZF(x=16, y=77, z=0, direction=EAST),
+	ShiftEastPixels(16),
+	FaceNortheast(),
+	VisibilityOn(),
+	SetWalkingSpeed(SLOW),
+	ObjectMemoryClearBit(arg_1=0x30, bits=[4]),
+	ShiftNortheastSteps(4),
+	FloatingOn(),
+	SetSolidityBits(cant_pass_walls=True),
+	JumpToHeight(108),
+	Walk1StepNortheast(),
+	FloatingOff(),
+	ClearSolidityBits(cant_pass_walls=True),
+	ShiftNortheastPixels(4),
+	StartLoopNTimes(2),
+	FloatingOff(),
+	ClearSolidityBits(cant_pass_walls=True),
+	Walk1StepNorthwest(),
+	FloatingOn(),
+	SetSolidityBits(cant_pass_walls=True),
+	JumpToHeight(108),
+	Walk1StepNorthwest(),
+	EndLoop(),
+	FloatingOff(),
+	ClearSolidityBits(cant_pass_walls=True),
+	ShiftNorthwestPixels(4),
+	ShiftSouthwestSteps(5),
+	VisibilityOff(),
+	Db(bytearray(b'\xfd\xf2')),
+	Return()
+])

@@ -1,0 +1,23 @@
+# SlapGlove
+
+from randomizer.scripts.animation.script_imports import *
+
+script = AnimationScript(
+    [
+        ClearAMEM16Bit(0x60),
+        JmpIfAMEM8BitEqualsConst(0x62, 1, ["command_0x35eee1"]),
+        DrawSpriteAtAMEM32Coords(
+            sprite_id=SPR0010_TOADSTOOL_SLAP_ATTACK, sequence=0, store_to_vram=True
+        ),
+        ObjectQueueAtOffsetAndIndex(index=0, target_address=0x35F35F),
+        ReturnSubroutine(),
+        ObjectQueueAtOffsetAndIndex(
+            index=2, target_address=0x35F35F, identifier="command_0x35eee1"
+        ),
+        DrawSpriteAtAMEM32Coords(
+            sprite_id=SPR0010_TOADSTOOL_SLAP_ATTACK, sequence=1, store_to_vram=True
+        ),
+        PauseScriptUntilSpriteSequenceDone(),
+        ReturnSubroutine(),
+    ]
+)

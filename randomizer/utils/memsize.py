@@ -1,5 +1,5 @@
 from typing import Union
-from randomizer.types.variables.classes import ByteVar, ShortVar
+from randomizer.types.overworld_scripts.variables.classes import ByteVar, ShortVar
 
 
 def cast_address(address: Union[ShortVar, ByteVar]) -> Union[ShortVar, ByteVar]:
