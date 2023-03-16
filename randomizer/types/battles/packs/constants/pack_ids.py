@@ -1,3 +1,10 @@
+"""Constants for battle pack IDs.
+Every battle in the game uses a battle pack.
+Battles which should only ever load one formation, such as bosses,
+can use the same formation three times.
+This file is a list of contextually named constants representing
+the ID of each pack in the game."""
+
 PACK0000_SNIFIT_FIGHT: int = 0
 PACK0001_BOBOMB_HENCHMEN: int = 1
 PACK0002_SPIKEYS_AND_TROOPAS: int = 2

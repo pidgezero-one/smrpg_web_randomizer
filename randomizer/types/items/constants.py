@@ -1,3 +1,6 @@
+""""Miscellaeous constants used for item classes and functions."""
+
+from typing import List
 from randomizer.types.items.enums import EquipStats
 
 # Global item address info.
@@ -15,9 +18,9 @@ NUM_ITEMS: int = 256
 
 # Stats used during equipment randomization.
 EQUIP_STATS: List[EquipStats] = [
-    EquipStats.Speed,
-    EquipStats.Attack,
-    EquipStats.Defense,
-    EquipStats.MagicAttack,
-    EquipStats.MagicDefense,
+    EquipStats.SPEED,
+    EquipStats.ATTACK,
+    EquipStats.DEFENSE,
+    EquipStats.MAGIC_ATTACK,
+    EquipStats.MAGIC_DEFENSE,
 ]

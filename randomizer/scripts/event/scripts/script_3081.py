@@ -6,7 +6,7 @@ script = EventScript(
     [
         DisableObjectTrigger(MEM_70A8),
         PlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
-        DisableTriggerInLevel(),
+        DisableTriggerOfObjectAt70A8InCurrentLevel(),
         SetSyncActionScript(MEM_70A8, A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED),
         Set70107015ToObjectXYZ(MEM_70A8),
         CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),

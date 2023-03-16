@@ -2,7 +2,9 @@ from randomizer.types.battle_animation_scripts.classes import AnimationScriptBan
 from randomizer.types.battle_animation_scripts.constants.script_ids.bank_names import (
     TOAD_TUTORIAL,
 )
-from .contents.script_0 import script as script_0
+from randomizer.scripts.animation.toad_tutorial.contents.script_0 import (
+    script as script_0,
+)
 
 bank = AnimationScriptBank(
     name=TOAD_TUTORIAL,

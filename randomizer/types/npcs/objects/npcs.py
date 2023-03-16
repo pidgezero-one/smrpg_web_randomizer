@@ -1,3 +1,5 @@
+"""The available NPCs that can occupy any slot in a room."""
+
 from randomizer.types.npcs.animations.animations import (
     AXEM_BLACK_HIT,
     AXEM_GREEN_HIT,
@@ -787,6 +789,8 @@ from randomizer.types.sprites.constants.sprite_ids import (
 
 
 class Mario(PartyNPC):
+    """Occupant NPC definition for Mario"""
+
     _sprite_id: int = SPR0000_MARIO_WALKING_DOWN_LEFT
     _y_shift: int = 1
     _directions = VramStore.DIR7_ALL_DIRECTIONS
@@ -794,6 +798,8 @@ class Mario(PartyNPC):
 
 
 class Toadstool(PartyNPC):
+    """Occupant NPC definition for Toadstool"""
+
     _sprite_id: int = SPR0007_TOADSTOOL_WALKING_DOWN_LEFT
     _y_shift: int = 1
     _directions = VramStore.DIR0_SWSE_NWNE
@@ -801,6 +807,8 @@ class Toadstool(PartyNPC):
 
 
 class Bowser(PartyNPC):
+    """Occupant NPC definition for Bowser"""
+
     _sprite_id: int = SPR0013_BOWSER_WALKING_DOWN_LEFT
     _shadow_size = ShadowSize.OVAL_BIG
     _acute_axis: int = 6
@@ -811,6 +819,8 @@ class Bowser(PartyNPC):
 
 
 class Mallow(PartyNPC):
+    """Occupant NPC definition for Mallow"""
+
     _sprite_id: int = SPR0019_MALLOW_WALKING_DOWN_LEFT
     _height: int = 8
     _directions = VramStore.DIR0_SWSE_NWNE
@@ -818,6 +828,8 @@ class Mallow(PartyNPC):
 
 
 class Geno(PartyNPC):
+    """Occupant NPC definition for Geno"""
+
     _sprite_id: int = SPR0025_GENO_WALKING_DOWN_LEFT
     _y_shift: int = 1
     _acute_axis: int = 4
@@ -827,30 +839,42 @@ class Geno(PartyNPC):
 
 
 class YellowYoshi(YoshiNPC):
+    """Occupant NPC definition for Yellow  Yoshi"""
+
     _sprite_id: int = SPR0045_YELLOW_YOSHI
     _byte2_bit0: bool = True
     _byte2_bit3: bool = True
 
 
 class PinkYoshi(YoshiNPC):
+    """Occupant NPC definition for Pink  Yoshi"""
+
     _sprite_id: int = SPR0046_PINK_YOSHI
 
 
 class Boshi(YoshiNPC):
+    """Occupant NPC definition for Boshi"""
+
     _sprite_id: int = SPR0047_BOSHI
     _min_vram_size: int = 0
 
 
 class Croco(CrocoBase):
+    """Occupant NPC definition for Croco (1st iteration)"""
+
     _sprite_id: int = SPR0048_CROCO
 
 
 class RideYoshi(YoshiNPC):
+    """Occupant NPC definition for a Yoshi being ridden by the player"""
+
     _sprite_id: int = 49
     _directions = VramStore.DIR7_ALL_DIRECTIONS
 
 
 class Booster(NPC):
+    """Occupant NPC definition for Booster"""
+
     _sprite_id: int = SPR0050_BOOSTER
     _directions = VramStore.DIR0_SWSE_NWNE
     _acute_axis: int = 5
@@ -876,6 +900,8 @@ class Booster(NPC):
 
 
 class GreenYoshi(YoshiNPC):
+    """Occupant NPC definition for Green  Yoshi"""
+
     _sprite_id: int = SPR0051_GREEN_YOSHI_WALK
     _min_vram_size: int = 0
     _byte2_bit0: bool = True
@@ -883,6 +909,8 @@ class GreenYoshi(YoshiNPC):
 
 
 class KingNimbus(NPC):
+    """Occupant NPC definition for King  Nimbus"""
+
     _sprite_id: int = SPR0053_KING_NIMBUS
     _directions = VramStore.DIR0_SWSE_NWNE
     _acute_axis: int = 5
@@ -892,6 +920,8 @@ class KingNimbus(NPC):
 
 
 class QueenNimbus(NPC):
+    """Occupant NPC definition for Queen  Nimbus"""
+
     _sprite_id: int = SPR0054_QUEEN_NIMBUS
     _directions = VramStore.DIR0_SWSE_NWNE
     _acute_axis: int = 4
@@ -901,6 +931,8 @@ class QueenNimbus(NPC):
 
 
 class JohnnySmall(NPC):
+    """Occupant NPC definition for Johnny (standard size)"""
+
     _sprite_id: int = SPR0055_JONATHAN_JONES
     _directions = VramStore.DIR0_SWSE_NWNE
     _acute_axis: int = 5
@@ -922,6 +954,8 @@ class JohnnySmall(NPC):
 
 
 class ValentinaSmall(NPC):
+    """Occupant NPC definition for Valentina (standard size)"""
+
     _sprite_id: int = SPR0056_VALENTINA
     _directions = VramStore.DIR0_SWSE_NWNE
     _y_shift: int = 1
@@ -942,16 +976,22 @@ class ValentinaSmall(NPC):
 
 
 class MagikoopaSmall(SmallMagikoopa):
+    """Occupant NPC definition for Magikoopa (standard size)"""
+
     _sprite_id: int = SPR0057_MAGIKOOPA
 
 
 class Frogfucius(NPC):
+    """Occupant NPC definition for Frogfucius"""
+
     _sprite_id: int = 58
     _directions = VramStore.DIR0_SWSE_NWNE
     _height: int = 11
 
 
 class Tadpole(NPC):
+    """Occupant NPC definition for Tadpole"""
+
     _sprite_id: int = SPR0059_TADPOLE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -963,6 +1003,8 @@ class Tadpole(NPC):
 
 
 class Thwomp(NPC):
+    """Occupant NPC definition for Thwomp (small)"""
+
     _sprite_id: int = SPR0060_THWOMP
     _acute_axis: int = 8
     _obtuse_axis: int = 6
@@ -971,6 +1013,8 @@ class Thwomp(NPC):
 
 
 class BigThwomp(NPC):
+    """Occupant NPC definition for Thwomp (large)"""
+
     _sprite_id: int = SPR0061_BIG_THWOMP
     _acute_axis: int = 14
     _obtuse_axis: int = 8
@@ -980,41 +1024,59 @@ class BigThwomp(NPC):
 
 
 class NimbusLandStatue(NPC):
+    """Occupant NPC definition for vanilla Valentina statues"""
+
     _sprite_id: int = SPR0063_VALENTINA_STATUE
     _show_shadow: bool = False
 
 
 class RedSmallToad(SmallToad):
+    """Occupant NPC definition for small red spotted Toad"""
+
     _sprite_id: int = SPR0064_TOAD
 
 
 class BlueToad(BigToad):
+    """Occupant NPC definition for large blue spotted male Toad"""
+
     _sprite_id: int = SPR0065_WALLET_GUY_ALSO_CASINO_ASSISTANTS
 
 
 class PinkToad(BigToad):
+    """Occupant NPC definition for large pink spotted female Toad"""
+
     _sprite_id: int = SPR0066_RAINI
 
 
 class OldBlueToad(BigToad):
+    """Occupant NPC definition for large elder male Toad with blue coat"""
+
     _sprite_id: int = SPR0067_OLD_MAN
 
 
 class OldRedToad(BigToad):
+    """Occupant NPC definition for large elder female Toad with red coat"""
+
     _sprite_id: int = SPR0068_OLD_WOMAN
 
 
 class GreenSmallToad(SmallToad):
+    """Occupant NPC definition for small green spotted Toad"""
+
     _sprite_id: int = SPR0069_GREEN_BROWN_TOAD
 
 
 class Chancellor(Villager):
+    """Occupant NPC definition for Chancellor"""
+
     _sprite_id: int = SPR0070_CHANCELLOR
     _height: int = 9
     _y_shift: int = 1
 
 
 class PaMole(Villager):
+    """Occupant NPC definition for Pa Mole"""
+
     _sprite_id: int = SPR0071_PA_MOLE
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1022,6 +1084,8 @@ class PaMole(Villager):
 
 
 class MaMole(Villager):
+    """Occupant NPC definition for Ma Mole"""
+
     _sprite_id: int = SPR0072_MA_MOLE
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1029,18 +1093,24 @@ class MaMole(Villager):
 
 
 class PinkMole(Villager):
+    """Occupant NPC definition for child pink bow mole"""
+
     _sprite_id: int = SPR0073_GIRL_MOLE_PINK_BOW
     _height: int = 6
     _y_shift: int = 1
 
 
 class YellowMole(Villager):
+    """Occupant NPC definition for child yellow bow mole"""
+
     _sprite_id: int = SPR0074_GIRL_MOLE_YELLOW_BOW
     _height: int = 6
     _y_shift: int = 1
 
 
 class BlueNimbite(Villager):
+    """Occupant NPC definition for male Nimbus Land occupant with blue coat"""
+
     _sprite_id: int = SPR0075_NIMBUSITE_BLUE
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1049,6 +1119,8 @@ class BlueNimbite(Villager):
 
 
 class RedNimbite(Villager):
+    """Occupant NPC definition for female Nimbus Land occupant with red coat"""
+
     _sprite_id: int = SPR0076_NIMBUSITE_RED
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1057,6 +1129,8 @@ class RedNimbite(Villager):
 
 
 class BrownNimbite(Villager):
+    """Occupant NPC definition for male Nimbus Land occupant with brown coat"""
+
     _sprite_id: int = SPR0077_NIMBUSITE_BROWN_GREEN
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1065,6 +1139,8 @@ class BrownNimbite(Villager):
 
 
 class GreenNimbite(Villager):
+    """Occupant NPC definition for female Nimbus Land occupant with green coat"""
+
     _sprite_id: int = SPR0078_NIMBUSITE_YELLOW_GREEN
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1073,6 +1149,8 @@ class GreenNimbite(Villager):
 
 
 class NimbusGuard(Villager):
+    """Occupant NPC definition for Nimbus Land castle guard in red uniform"""
+
     _sprite_id: int = SPR0079_NIMBUS_GUARD
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1080,6 +1158,8 @@ class NimbusGuard(Villager):
 
 
 class Toadofsky(NPC):
+    """Occupant NPC definition for Toadofsky"""
+
     _sprite_id: int = SPR0080_TOADOFSKY
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1087,6 +1167,8 @@ class Toadofsky(NPC):
 
 
 class MallowDoll(NPC):
+    """Occupant NPC definition for Mallow Doll"""
+
     _sprite_id: int = SPR0081_MALLOW_DOLL
     _shadow_size = ShadowSize.OVAL_SMALL
     _acute_axis: int = 1
@@ -1096,34 +1178,50 @@ class MallowDoll(NPC):
 
 
 class BlueStarPiece(StarPiece):
+    """Occupant NPC definition for Blue Star Piece"""
+
     _sprite_id: int = SPR0082_BLUE_STAR_PIECE
 
 
 class PurpleStarPiece(StarPiece):
+    """Occupant NPC definition for Purple Star Piece"""
+
     _sprite_id: int = SPR0083_PURPLE_STAR_PIECE
 
 
 class RedStarPiece(StarPiece):
+    """Occupant NPC definition for Red Star Piece"""
+
     _sprite_id: int = SPR0084_RED_STAR_PIECE
 
 
 class OrangeStarPiece(StarPiece):
+    """Occupant NPC definition for Orange Star Piece"""
+
     _sprite_id: int = SPR0085_GOLD_STAR_PIECE
 
 
 class GreenStarPiece(StarPiece):
+    """Occupant NPC definition for Green Star Piece"""
+
     _sprite_id: int = SPR0086_GREEN_STAR_PIECE
 
 
 class IndigoStarPiece(StarPiece):
+    """Occupant NPC definition for Indigo Star Piece"""
+
     _sprite_id: int = SPR0087_LIGHT_BLUE_STAR_PIECE
 
 
 class YellowStarPiece(StarPiece):
+    """Occupant NPC definition for Yellow Star Piece"""
+
     _sprite_id: int = SPR0088_YELLOW_STAR_PIECE
 
 
 class BowserDoll(NPC):
+    """Occupant NPC definition for Bowser Doll"""
+
     _sprite_id: int = SPR0090_BOWSER_DOLL
     _shadow_size = ShadowSize.OVAL_SMALL
     _directions = VramStore.DIR0_SWSE_NWNE
@@ -1134,6 +1232,8 @@ class BowserDoll(NPC):
 
 
 class ToadstoolDoll(NPC):
+    """Occupant NPC definition for Toadstool Doll"""
+
     _sprite_id: int = SPR0092_TOADSTOOL_DOLL
     _shadow_size = ShadowSize.OVAL_SMALL
     _directions = VramStore.DIR0_SWSE_NWNE
@@ -1144,6 +1244,8 @@ class ToadstoolDoll(NPC):
 
 
 class TreasureChest(NPC):
+    """Occupant NPC definition for Treasure Chest"""
+
     _sprite_id: int = SPR0094_TREASURE_CHEST
     _shadow_size = ShadowSize.BLOCK
     _y_shift: int = -2
@@ -1154,6 +1256,8 @@ class TreasureChest(NPC):
 
 
 class MidasRiverMario(NPC):
+    """Occupant NPC definition for Midas River Mario"""
+
     _sprite_id: int = SPR0096_MARIO_DOLL_SURPRISED
     _shadow_size = ShadowSize.OVAL_SMALL
     _acute_axis: int = 2
@@ -1163,6 +1267,8 @@ class MidasRiverMario(NPC):
 
 
 class Parachute(NPC):
+    """Occupant NPC definition for Parachute"""
+
     _sprite_id: int = SPR0097_TOADSTOOL_S_PARACHUTE
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -1173,6 +1279,8 @@ class Parachute(NPC):
 
 
 class Barrel(NPC):
+    """Occupant NPC definition for Barrel"""
+
     _sprite_id: int = SPR0098_ROLLING_BARREL
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -1183,14 +1291,20 @@ class Barrel(NPC):
 
 
 class WarpTrampoline(Trampoline):
+    """Occupant NPC definition for Warp Trampoline"""
+
     _sprite_id: int = SPR0099_TRAMPOLINE_WARP
 
 
 class JumpTrampoline(Trampoline):
+    """Occupant NPC definition for Jump Trampoline"""
+
     _sprite_id: int = SPR0100_TRAMPOLINE_JUMP
 
 
 class Seesaw(NPC):
+    """Occupant NPC definition for Seesaw"""
+
     _sprite_id: int = SPR0101_TEETER_TOTTER
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -1202,6 +1316,8 @@ class Seesaw(NPC):
 
 
 class SavePoint(NPC):
+    """Occupant NPC definition for Save Point"""
+
     _sprite_id: int = SPR0102_SAVE_POINT
     _y_shift: int = -2
     _acute_axis: int = 7
@@ -1211,6 +1327,8 @@ class SavePoint(NPC):
 
 
 class Corkpedite(NPC):
+    """Occupant NPC definition for Corkpedite"""
+
     _sprite_id: int = SPR0103_CORKPEDITE
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -1222,6 +1340,8 @@ class Corkpedite(NPC):
 
 
 class JBlock(NPC):
+    """Occupant NPC definition for J Block"""
+
     _sprite_id: int = SPR0104_J_PUZZLE_BLOCK
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -1232,6 +1352,8 @@ class JBlock(NPC):
 
 
 class YellowPlatform(NPC):
+    """Occupant NPC definition for Yellow Platform"""
+
     _sprite_id: int = SPR0105_YELLOW_STEPPING_BLOCK
     _y_shift: int = -1
     _acute_axis: int = 6
@@ -1241,6 +1363,8 @@ class YellowPlatform(NPC):
 
 
 class WhirlpoolBubble(NPC):
+    """Occupant NPC definition for Whirlpool Bubble"""
+
     _sprite_id: int = SPR0106_WHIRLPOOL_WATER
     _y_shift: int = 1
     _acute_axis: int = 1
@@ -1251,6 +1375,8 @@ class WhirlpoolBubble(NPC):
 
 
 class Hinopio(NPC):
+    """Occupant NPC definition for Hinopio"""
+
     _sprite_id: int = SPR0107_HINOPIO
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1259,6 +1385,8 @@ class Hinopio(NPC):
 
 
 class FactoryNut(NPC):
+    """Occupant NPC definition for Factory Nut"""
+
     _sprite_id: int = SPR0108_FACTORY_HEX_NUT
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1269,6 +1397,8 @@ class FactoryNut(NPC):
 
 
 class GreenSwitch(NPC):
+    """Occupant NPC definition for Green Switch"""
+
     _sprite_id: int = SPR0109_GREEN_SWITCH
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = -2
@@ -1278,56 +1408,82 @@ class GreenSwitch(NPC):
 
 
 class RedToad(BigToad):
+    """Occupant NPC definition for large red spotted male Toad"""
+
     _sprite_id: int = SPR0112_MUSHROOM_BOY
 
 
 class GreenToad(BigToad):
+    """Occupant NPC definition for large green spotted male Toad"""
+
     _sprite_id: int = SPR0113_MARRYMORE_MAN_GREEN
 
 
 class YellowToad(BigToad):
+    """Occupant NPC definition for large yellow spotted female Toad"""
+
     _sprite_id: int = SPR0114_MARRYMORE_WOMAN_YELLOW
 
 
 class TurquoiseToad(BigToad):
+    """Occupant NPC definition for large turquoise spotted female Toad"""
+
     _sprite_id: int = SPR0115_MARRYMORE_WOMAN_GREEN
 
 
 class PinkSmallToad(SmallToad):
+    """Occupant NPC definition for small pink spotted Toad"""
+
     _sprite_id: int = SPR0116_MARRYMORE_KID_PURPLE
 
 
 class BlueSmallToad(SmallToad):
+    """Occupant NPC definition for small blue spotted Toad"""
+
     _sprite_id: int = SPR0117_MARRYMORE_KID_BLUE_GREEN
 
 
 class OldBrownToad(BigToad):
+    """Occupant NPC definition for large elder male Toad with brown coat"""
+
     _sprite_id: int = SPR0118_MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY
 
 
 class OldGreenToad(BigToad):
+    """Occupant NPC definition for large elder male Toad with green coat"""
+
     _sprite_id: int = SPR0119_ROSE_TOWN_GARDENER_GREEN_GREY
 
 
 class OldDarkGreenToad(BigToad):
+    """Occupant NPC definition for large elder female Toad with green coat"""
+
     _sprite_id: int = SPR0120_OLD_WOMAN_GREEN_GREY
 
 
 class OldPinkToad(BigToad):
+    """Occupant NPC definition for large elder female Toad with pink coat"""
+
     _sprite_id: int = SPR0121_OLD_WOMAN_PURPLE_GREY
 
 
 class FatYoshi(NPC):
+    """Occupant NPC definition for Fat Yoshi"""
+
     _sprite_id: int = SPR0122_FAT_YOSHI_BABY
     _acute_axis: int = 5
     _obtuse_axis: int = 5
 
 
 class PurpleSmallToad(SmallToad):
+    """Occupant NPC definition for Gameboy Kid"""
+
     _sprite_id: int = SPR0124_GAMEBOY_KID
 
 
 class FrogDisciple(NPC):
+    """Occupant NPC definition for Frog Disciple"""
+
     _sprite_id: int = SPR0125_FROGFUCIUS_STUDENT
     _y_shift: int = 1
     _acute_axis: int = 4
@@ -1335,6 +1491,8 @@ class FrogDisciple(NPC):
 
 
 class ChompBehind(NPC):
+    """Occupant NPC definition for Chomp Behind"""
+
     _sprite_id: int = SPR0126_CHOMP_BEHIND
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1346,6 +1504,8 @@ class ChompBehind(NPC):
 
 
 class WigglerHead(NPC):
+    """Occupant NPC definition for Wiggler Head"""
+
     _sprite_id: int = SPR0127_WIGGLER_HEAD
     _directions = VramStore.DIR0_SWSE_NWNE
     _show_shadow: bool = False
@@ -1356,6 +1516,8 @@ class WigglerHead(NPC):
 
 
 class BlockShadow(NPC):
+    """Occupant NPC definition for Block Shadow"""
+
     _sprite_id: int = SPR0128_BLOCK_SHADOW
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1366,12 +1528,16 @@ class BlockShadow(NPC):
 
 
 class RedMagikoopa(SmallMagikoopa):
+    """Occupant NPC definition for Red Magikoopa (standard size)"""
+
     _sprite_id: int = SPR0129_RED_MAGIKOOPA
 
     _eye_height: int = 12
 
 
 class WigglerBody(NPC):
+    """Occupant NPC definition for Wiggler Body"""
+
     _sprite_id: int = SPR0130_WIGGLER_BODY_SEGMENT
     _directions = VramStore.DIR0_SWSE_NWNE
     _show_shadow: bool = False
@@ -1383,6 +1549,8 @@ class WigglerBody(NPC):
 
 
 class ParsonDodo(NPC):
+    """Occupant NPC definition for Parson Dodo"""
+
     _sprite_id: int = SPR0131_DODO_AS_PARSON
     _shadow_size = ShadowSize.OVAL_BIG
     _min_vram_size: int = 4
@@ -1392,6 +1560,8 @@ class ParsonDodo(NPC):
 
 
 class KnifeGuySmall(NPC):
+    """Occupant NPC definition for Knife Guy standard size"""
+
     _sprite_id: int = SPR0133_KNIFE_GUY_JUGGLER_STILL_RED_BALLS
     _min_vram_size: int = 2
     _y_shift: int = 1
@@ -1400,6 +1570,8 @@ class KnifeGuySmall(NPC):
 
 
 class KnifeGuySmall2(NPC):
+    """Occupant NPC definition for Knife Guy standard size (alternate)"""
+
     _sprite_id: int = SPR0134_KNIFE_GUY_JUGGLER
     _min_vram_size: int = 2
     _y_shift: int = 1
@@ -1408,6 +1580,8 @@ class KnifeGuySmall2(NPC):
 
 
 class Minecart(NPC):
+    """Occupant NPC definition for Minecart"""
+
     _sprite_id: int = SPR0135_MINE_CART_BAD_PALETTE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1418,6 +1592,8 @@ class Minecart(NPC):
 
 
 class FlatFireball(NPC):
+    """Occupant NPC definition for a flat Fireball"""
+
     _sprite_id: int = SPR0137_FIREBALL_SURFACE_FROM_LAVA
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -1427,12 +1603,16 @@ class FlatFireball(NPC):
 
 
 class PipePiranhaPlant(NPC):
+    """Occupant NPC definition for Piranha Plant that comes out of a pipe"""
+
     _sprite_id: int = SPR0138_PIRANHA_PLANT
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
 
 
 class ThumpGoomba(NPC):
+    """Occupant NPC definition for Goomba from Goomba Thumpin' game"""
+
     _sprite_id: int = SPR0139_GOOMBA
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -1442,6 +1622,8 @@ class ThumpGoomba(NPC):
 
 
 class BulletBill(NPC):
+    """Occupant NPC definition for Bullet Bill"""
+
     _sprite_id: int = SPR0140_BULLET_BILL
     _directions = VramStore.DIR0_SWSE_NWNE
     _y_shift: int = 1
@@ -1451,6 +1633,8 @@ class BulletBill(NPC):
 
 
 class GoldenBulletBill(NPC):
+    """Occupant NPC definition for Golden Bullet Bill"""
+
     _sprite_id: int = SPR0141_GOLDEN_BULLET_BILL
     _directions = VramStore.DIR0_SWSE_NWNE
     _y_shift: int = 1
@@ -1460,10 +1644,14 @@ class GoldenBulletBill(NPC):
 
 
 class ClerkSmall(ShovelKnightBoss):
+    """Occupant NPC definition for Clerk (standard size)"""
+
     _sprite_id: int = SPR0142_FACTORY_CLERK_GREEN
 
 
 class LandsEndCannon(NPC):
+    """Occupant NPC definition for Lands End Cannon"""
+
     _sprite_id: int = SPR0143_LAND_S_END_CANNON
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -1473,11 +1661,15 @@ class LandsEndCannon(NPC):
 
 
 class BerryGridplane(ItemNPC):
+    """Occupant NPC definition for Berry (gridplane version)"""
+
     _sprite_id: int = SPR0144_RED_DOT
     _y_shift: int = 1
 
 
 class CommanderTroopa(NPC):
+    """Occupant NPC definition for Commander Troopa"""
+
     _sprite_id: int = SPR0146_COMMANDER_TROOPA
     _y_shift: int = -1
     _acute_axis: int = 7
@@ -1488,6 +1680,8 @@ class CommanderTroopa(NPC):
 
 
 class BelomeStatue(NPC):
+    """Occupant NPC definition for Belome Statue (large)"""
+
     _sprite_id: int = SPR0147_GOLDEN_BELOME
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1508,6 +1702,8 @@ class BelomeStatue(NPC):
 
 
 class ShyGuyClownCar(NPC):
+    """Occupant NPC definition for Shy Guy in Clown Car"""
+
     _sprite_id: int = SPR0149_SHYGUY_IN_BOWSER_S_HELICOPTER
     _y_shift: int = 1
     _acute_axis: int = 1
@@ -1518,6 +1714,8 @@ class ShyGuyClownCar(NPC):
 
 
 class MachineBowyer(NPC):
+    """Occupant NPC definition for Machine Made Bowyer"""
+
     _sprite_id: int = SPR0150_MACHINE_MADE_BOWYER
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1529,6 +1727,8 @@ class MachineBowyer(NPC):
 
 
 class MachineYaridOverworld(NPC):
+    """Occupant NPC definition for Machine Made Yarid (overworld version)"""
+
     _sprite_id: int = SPR0151_MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE
     _y_shift: int = 1
     _acute_axis: int = 6
@@ -1538,6 +1738,8 @@ class MachineYaridOverworld(NPC):
 
 
 class GunyolkTop(NPC):
+    """Occupant NPC definition for Gunyolk (top component)"""
+
     _sprite_id: int = SPR0153_GUNYOLK_TOP_SECTION
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1548,6 +1750,8 @@ class GunyolkTop(NPC):
 
 
 class GunyolkOuter(NPC):
+    """Occupant NPC definition for Gunyolk (outer component)"""
+
     _sprite_id: int = SPR0154_GUNYOLK_OUTER_SECTION
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1559,6 +1763,8 @@ class GunyolkOuter(NPC):
 
 
 class Crane(NPC):
+    """Occupant NPC definition for Factory Crane"""
+
     _sprite_id: int = SPR0155_FACTORY_CRANE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1570,6 +1776,8 @@ class Crane(NPC):
 
 
 class SpinningStarPiece(NPC):
+    """Occupant NPC definition for a spinning Star Piece"""
+
     _sprite_id: int = SPR0156_BLUE_GREEN_STAR_PIECE_SPINNING
     _show_shadow: bool = False
     _acute_axis: int = 1
@@ -1579,6 +1787,8 @@ class SpinningStarPiece(NPC):
 
 
 class SmithyHammer(NPC):
+    """Occupant NPC definition for Smithy's Hammer"""
+
     _sprite_id: int = SPR0157_SMITHY_S_HAMMER
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1590,6 +1800,8 @@ class SmithyHammer(NPC):
 
 
 class SmithyBodyOverworld(NPC):
+    """Occupant NPC definition for Smithy's body in the overworld"""
+
     _sprite_id: int = SPR0158_SMITHY_S_CHEST
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1600,6 +1812,8 @@ class SmithyBodyOverworld(NPC):
 
 
 class PoisonGas(NPC):
+    """Occupant NPC definition for a poison gas effect"""
+
     _sprite_id: int = SPR0159_POISON_TOXIC_GAS
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1611,6 +1825,8 @@ class PoisonGas(NPC):
 
 
 class DynaMite(NPC):
+    """Occupant NPC definition for Dyna & Mite"""
+
     _sprite_id: int = SPR0161_DYNA_AND_MITE
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -1620,25 +1836,35 @@ class DynaMite(NPC):
 
 
 class FakeToad(BigToad):
+    """Occupant NPC definition for robotic Toad"""
+
     _sprite_id: int = SPR0162_SEASIDE_TOWN_FAKE_GREEN
 
 
 class FakeElder(BigToad):
+    """Occupant NPC definition for Fake Elder"""
+
     _sprite_id: int = SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN
 
     _eye_height: int = 10
 
 
 class Elder(BigToad):
+    """Occupant NPC definition for Seaside Elder"""
+
     _sprite_id: int = SPR0164_SEASIDE_TOWN_ELDER_YELLOW_GREEN
 
 
 class Monstromama(BigToad):
+    """Occupant NPC definition for Monstromama"""
+
     _sprite_id: int = SPR0165_MONSTERMAMA_GOLDEN_BROWN_RED
     _byte5_bit7: bool = False
 
 
 class NimbusGuardPurple(Villager):
+    """Occupant NPC definition for Nimbus Guard in purple uniform"""
+
     _sprite_id: int = SPR0166_NIMBUS_GUARD
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -1648,14 +1874,20 @@ class NimbusGuardPurple(Villager):
 
 
 class ManagerSmall(ShovelKnightBoss):
+    """Occupant NPC definition for Manager (standard size)"""
+
     _sprite_id: int = SPR0167_FACTORY_MANAGER_BLUE
 
 
 class DirectorSmall(ShovelKnightBoss):
+    """Occupant NPC definition for Director (standard size)"""
+
     _sprite_id: int = SPR0168_FACTORY_DIRECTOR_RED
 
 
 class BoomerOverworld(NPC):
+    """Occupant NPC definition for Boomer (overworld version)"""
+
     _sprite_id: int = SPR0169_BOOMER_RED
     _acute_axis: int = 8
     _obtuse_axis: int = 8
@@ -1669,6 +1901,8 @@ class BoomerOverworld(NPC):
 
 
 class DrTopper(NPC):
+    """Occupant NPC definition for Dr Topper"""
+
     _sprite_id: int = SPR0170_DR_TOPPER_GREEN
     _acute_axis: int = 9
     _obtuse_axis: int = 9
@@ -1678,6 +1912,8 @@ class DrTopper(NPC):
 
 
 class StarPieceSparkle(NPC):
+    """Occupant NPC definition for Star Piece glitter"""
+
     _sprite_id: int = SPR0171_SPARKLES_FROM_STAR_PIECE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1688,6 +1924,8 @@ class StarPieceSparkle(NPC):
 
 
 class GenoDoll(NPC):
+    """Occupant NPC definition for Geno Doll"""
+
     _sprite_id: int = SPR0172_GENO_DOLL
     _shadow_size = ShadowSize.OVAL_SMALL
     _directions = VramStore.DIR0_SWSE_NWNE
@@ -1698,6 +1936,8 @@ class GenoDoll(NPC):
 
 
 class SmelterSection(NPC):
+    """Occupant NPC definition for Smelter Section"""
+
     _sprite_id: int = SPR0173_SMELTER_BACK_SECTION
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1708,6 +1948,8 @@ class SmelterSection(NPC):
 
 
 class AeroShot(NPC):
+    """Occupant NPC definition for Aero (being shot)"""
+
     _sprite_id: int = SPR0174_AERO_UPRIGHT
     _shadow_size = ShadowSize.OVAL_SMALL
     _acute_axis: int = 3
@@ -1717,6 +1959,8 @@ class AeroShot(NPC):
 
 
 class GoldenChompBehind(NPC):
+    """Occupant NPC definition for Golden Chomp (from behind)"""
+
     _sprite_id: int = SPR0175_GOLDEN_CHOMP_BACK
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1728,6 +1972,8 @@ class GoldenChompBehind(NPC):
 
 
 class GrateGuySmall(NPC):
+    """Occupant NPC definition for Grate Guy (standard size)"""
+
     _sprite_id: int = SPR0177_GRATE_GUY_FROM_CASINO
     _directions = VramStore.DIR0_SWSE_NWNE
     _y_shift: int = 1
@@ -1736,38 +1982,56 @@ class GrateGuySmall(NPC):
 
 
 class BlueStripedToad(BigToad):
+    """Occupant NPC definition for large blue striped male Toad"""
+
     _sprite_id: int = SPR0178_MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT
 
 
 class RedStripedToad(BigToad):
+    """Occupant NPC definition for large red striped male Toad"""
+
     _sprite_id: int = SPR0179_ROSE_TOWN_TREASURE_HOLDER
 
 
 class PinkStripedToad(BigToad):
+    """Occupant NPC definition for large pink striped female Toad"""
+
     _sprite_id: int = SPR0180_ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS
 
 
 class YellowStripedToad(BigToad):
+    """Occupant NPC definition for large yellow striped female Toad"""
+
     _sprite_id: int = SPR0181_MARRYMORE_WOMAN_YELLOW
 
 
 class OldBlueStripedToad(BigToad):
+    """Occupant NPC definition for large elder male striped Toad with blue coat"""
+
     _sprite_id: int = SPR0182_ROSE_TOWN_OLD_MAN_BLUE_GREY
 
 
 class OldRedStripedToad(BigToad):
+    """Occupant NPC definition for large elder female striped Toad with red coat"""
+
     _sprite_id: int = SPR0183_OLD_WOMAN_GREY_RED
 
 
 class RedStripedSmallToad(SmallToad):
+    """Occupant NPC definition for small red striped Toad"""
+
     _sprite_id: int = SPR0184_KID_RED_STRIPED_HAT
 
 
 class PinkStripedSmallToad(SmallToad):
+    """Occupant NPC definition for small pink striped Toad"""
+
     _sprite_id: int = SPR0185_GAZ_PURPLE
 
 
 class Cannonball(NPC):
+    """Occupant NPC definition for Cannonball"""
+
     _sprite_id: int = SPR0188_CANNON_BALL
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -1777,16 +2041,22 @@ class Cannonball(NPC):
 
 
 class Croco2(CrocoBase):
+    """Occupant NPC definition for Croco (2nd iteration)"""
+
     _sprite_id: int = SPR0190_CROCO_OVERWORLD
     _alt_palette: Palette = CROCO_ALT_PALETTE
 
 
 class Jinx2(Jinx):
+    """Occupant NPC definition for Jinx (2nd iteration)"""
+
     _sprite_id: int = SPR0191_JINX_OVERWORLD
     _alt_palette: Palette = JINX_2_ALT_PALETTE
 
 
 class BigCoin(Coin):
+    """Occupant NPC definition for Big Coin"""
+
     _sprite_id: int = SPR0192_COIN
     _height: int = 6
     _y_shift: int = 5
@@ -1797,6 +2067,8 @@ class BigCoin(Coin):
 
 
 class SmallCoin(Coin):
+    """Occupant NPC definition for Small Coin"""
+
     _sprite_id: int = SPR0193_SMALL_COIN
     _acute_axis: int = 1
     _obtuse_axis: int = 1
@@ -1809,6 +2081,8 @@ class SmallCoin(Coin):
 
 
 class FrogCoin(Coin):
+    """Occupant NPC definition for Frog Coin"""
+
     _sprite_id: int = SPR0194_FROG_COIN
     _height: int = 6
     _y_shift: int = 5
@@ -1816,10 +2090,12 @@ class FrogCoin(Coin):
     _chest_packet: Packet = P019_FROG_COIN_BEING_COLLECTED
     _static_packet: Packet = P111_FROG_COIN_STATIC
     _falling_packet: Packet = P108_FROG_COIN_FALL
-    _chest_70A7_upper: int = 3
+    _chest_70a7_upper: int = 3
 
 
 class SlotFlower(NPC):
+    """Occupant NPC definition for Slot Machine Flower"""
+
     _sprite_id: int = SPR0195_FLOWER
     _acute_axis: int = 3
     _obtuse_axis: int = 3
@@ -1828,6 +2104,8 @@ class SlotFlower(NPC):
 
 
 class Ring(ItemNPC):
+    """Occupant NPC definition for Ring"""
+
     _sprite_id: int = SPR0196_RING
     _chest_packet: Packet = P091_RING_CHEST
     _static_packet: Packet = P093_RING_STATIC
@@ -1836,6 +2114,8 @@ class Ring(ItemNPC):
 
 
 class SparkleSideways(NPC):
+    """Occupant NPC definition for Sparkle Sideways"""
+
     _sprite_id: int = SPR0197_SPARKLE_SIDEWAYS
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1846,6 +2126,8 @@ class SparkleSideways(NPC):
 
 
 class SparkleDown(NPC):
+    """Occupant NPC definition for Sparkle Down"""
+
     _sprite_id: int = SPR0198_SPARKLE_DOWNWARDS
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1856,6 +2138,8 @@ class SparkleDown(NPC):
 
 
 class FryingPan(ItemNPC):
+    """Occupant NPC definition for Frying Pan"""
+
     _sprite_id: int = SPR0199_FRYING_PAN_PACKET
     _chest_packet: Packet = P205_FRYING_PAN_CHEST
     _chest_event: int = E0921_CHEST_FRYING_PAN_PACKET
@@ -1864,6 +2148,8 @@ class FryingPan(ItemNPC):
 
 
 class Explosion(NPC):
+    """Occupant NPC definition for Explosion"""
+
     _sprite_id: int = SPR0200_EXPLOSION
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1874,6 +2160,8 @@ class Explosion(NPC):
 
 
 class MokuraCloud(NPC):
+    """Occupant NPC definition for Small Blue Cloud"""
+
     _sprite_id: int = SPR0201_MOKURA_S_CLOUD_BLUE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1887,6 +2175,8 @@ class MokuraCloud(NPC):
 
 
 class Shoes(ItemNPC):
+    """Occupant NPC definition for Shoes (as item)"""
+
     _sprite_id: int = SPR0202_SHOES
     _chest_packet: Packet = P099_SHOES_CHEST
     _static_packet: Packet = P097_SHOES_STATIC
@@ -1895,6 +2185,8 @@ class Shoes(ItemNPC):
 
 
 class MicroBombItem(ItemNPC):
+    """Occupant NPC definition for Micro Bomb (as item)"""
+
     _sprite_id: int = SPR0205_MICROBOMB_PACKET
     _y_shift: int = 1
     _chest_packet: Packet = P114_BOMB_CHEST
@@ -1904,6 +2196,8 @@ class MicroBombItem(ItemNPC):
 
 
 class Card(ItemNPC):
+    """Occupant NPC definition for Card (as item)"""
+
     _sprite_id: int = SPR0206_CARD
     _chest_packet: Packet = P126_CARD_CHEST
     _chest_event: int = E0895_CHEST_CARD_PACKET
@@ -1913,6 +2207,8 @@ class Card(ItemNPC):
 
 
 class Brooch(ItemNPC):
+    """Occupant NPC definition for Brooch (as item)"""
+
     _sprite_id: int = SPR0207_BROOCH
     _chest_packet: Packet = P096_BROOCH_CHEST
     _static_packet: Packet = P094_BROOCH_STATIC
@@ -1921,6 +2217,8 @@ class Brooch(ItemNPC):
 
 
 class Hammer(ItemNPC):
+    """Occupant NPC definition for Hammer (as item)"""
+
     _sprite_id: int = SPR0208_HAMMER_PACKET
     _chest_packet: Packet = P208_HAMMER_CHEST
     _chest_event: int = E0922_CHEST_HAMMER_PACKET
@@ -1929,6 +2227,8 @@ class Hammer(ItemNPC):
 
 
 class FroggieStick(ItemNPC):
+    """Occupant NPC definition for FroggieStick (as item)"""
+
     _sprite_id: int = SPR0209_STICK_PACKET
     _chest_packet: Packet = P211_STICK_CHEST
     _chest_event: int = E0923_CHEST_STICK_PACKET
@@ -1937,6 +2237,8 @@ class FroggieStick(ItemNPC):
 
 
 class ChompItem(ItemNPC):
+    """Occupant NPC definition for Chomp (as item)"""
+
     _sprite_id: int = SPR0210_CHOMP_PACKET
     _chest_packet: Packet = P214_CHOMP_CHEST
     _chest_event: int = E0924_CHEST_CHOMP_PACKET
@@ -1945,6 +2247,8 @@ class ChompItem(ItemNPC):
 
 
 class Fan(ItemNPC):
+    """Occupant NPC definition for Fan (as item)"""
+
     _sprite_id: int = SPR0211_FAN_PACKET
     _chest_packet: Packet = P217_FAN_CHEST
     _chest_event: int = E2952_CLONE_RESERVED
@@ -1953,6 +2257,8 @@ class Fan(ItemNPC):
 
 
 class RedMushroom(ItemNPC):
+    """Occupant NPC definition for Red Mushroom (as item)"""
+
     _sprite_id: int = SPR0212_RED_MUSHROOM_ITEM
     _chest_packet: Packet = P196_RED_MUSHROOM_CHEST
     _chest_event: int = E0918_CHEST_RED_MUSHROOM_PACKET
@@ -1961,6 +2267,8 @@ class RedMushroom(ItemNPC):
 
 
 class Teleport(NPC):
+    """Occupant NPC definition for Teleport effect (as item)"""
+
     _sprite_id: int = SPR0213_AXEM_RED_TELEPORT
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -1970,6 +2278,8 @@ class Teleport(NPC):
 
 
 class GreenMushroom(ItemNPC):
+    """Occupant NPC definition for Green Mushroom (as item)"""
+
     _sprite_id: int = SPR0214_GREEN_MUSHROOM_ITEM
     _chest_packet: Packet = P199_GREEN_MUSHROOM_CHEST
     _chest_event: int = E0919_CHEST_GREEN_MUSHROOM_PACKET
@@ -1978,6 +2288,8 @@ class GreenMushroom(ItemNPC):
 
 
 class YellowMushroom(ItemNPC):
+    """Occupant NPC definition for Yellow Mushroom (as item)"""
+
     _sprite_id: int = SPR0215_YELLOW_MUSHROOM_ITEM
     _chest_packet: Packet = P202_YELLOW_MUSHROOM_CHEST
     _chest_event: int = E0920_CHEST_YELLOW_MUSHROOM_PACKET
@@ -1986,6 +2298,8 @@ class YellowMushroom(ItemNPC):
 
 
 class Crown(ItemNPC):
+    """Occupant NPC definition for Crown (as item)"""
+
     _sprite_id: int = SPR0216_CROWN
     _chest_packet: Packet = P103_CROWN_CHEST
     _static_packet: Packet = P105_CROWN_STATIC
@@ -1994,6 +2308,8 @@ class Crown(ItemNPC):
 
 
 class GreenCandy(ItemNPC):
+    """Occupant NPC definition for Green Candy (as item)"""
+
     _sprite_id: int = SPR0217_GREEN_CANDY
     _chest_packet: Packet = P175_GREEN_CANDY_CHEST
     _static_packet: Packet = P173_GREEN_CANDY_STATIC
@@ -2002,6 +2318,8 @@ class GreenCandy(ItemNPC):
 
 
 class BlueCandy(ItemNPC):
+    """Occupant NPC definition for Blue Candy (as item)"""
+
     _sprite_id: int = SPR0218_BLUE_CANDY
     _chest_packet: Packet = P178_BLUE_CANDY_CHEST
     _static_packet: Packet = P176_BLUE_CANDY_STATIC
@@ -2010,6 +2328,8 @@ class BlueCandy(ItemNPC):
 
 
 class RedSyrup(ItemNPC):
+    """Occupant NPC definition for Red Syrup (as item)"""
+
     _sprite_id: int = SPR0219_RED_SYRUP
     _chest_packet: Packet = P132_RED_SYRUP_CHEST
     _static_packet: Packet = P130_RED_SYRUP_STATIC
@@ -2018,6 +2338,8 @@ class RedSyrup(ItemNPC):
 
 
 class GreenSyrup(ItemNPC):
+    """Occupant NPC definition for Green Syrup (as item)"""
+
     _sprite_id: int = SPR0220_GREEN_SYRUP
     _chest_packet: Packet = P129_GREEN_SYRUP_CHEST
     _static_packet: Packet = P127_GREEN_SYRUP_STATIC
@@ -2026,6 +2348,8 @@ class GreenSyrup(ItemNPC):
 
 
 class YellowSyrup(ItemNPC):
+    """Occupant NPC definition for Yellow Syrup (as item)"""
+
     _sprite_id: int = SPR0221_YELLOW_SYRUP
     _chest_packet: Packet = P138_YELLOW_SYRUP_CHEST
     _static_packet: Packet = P136_YELLOW_SYRUP_STATIC
@@ -2034,6 +2358,8 @@ class YellowSyrup(ItemNPC):
 
 
 class Banana(ItemNPC):
+    """Occupant NPC definition for Banana (as item)"""
+
     _sprite_id: int = SPR0222_BANANA_PEEL
     _chest_packet: Packet = P102_BANANA_CHEST
     _static_packet: Packet = P100_BANANA_STATIC
@@ -2042,6 +2368,8 @@ class Banana(ItemNPC):
 
 
 class BlueSyrup(ItemNPC):
+    """Occupant NPC definition for Blue Syrup (as item)"""
+
     _sprite_id: int = SPR0223_BLUE_SYRUP
     _chest_packet: Packet = P135_BLUE_SYRUP_CHEST
     _static_packet: Packet = P133_BLUE_SYRUP_STATIC
@@ -2050,6 +2378,8 @@ class BlueSyrup(ItemNPC):
 
 
 class RedBomb(ItemNPC):
+    """Occupant NPC definition for Red Bomb (as item)"""
+
     _sprite_id: int = SPR0224_RED_BOMB
     _chest_packet: Packet = P184_RED_BOMB_CHEST
     _static_packet: Packet = P182_RED_BOMB_STATIC
@@ -2058,6 +2388,8 @@ class RedBomb(ItemNPC):
 
 
 class TinyStar(ItemNPC):
+    """Occupant NPC definition for Tiny Star (as item)"""
+
     _sprite_id: int = SPR0226_TINY_STAR
     _chest_packet: Packet = P081_STAR_PIECE_CHEST
     _static_packet: Packet = P085_STAR_PIECE_STATIC
@@ -2066,6 +2398,8 @@ class TinyStar(ItemNPC):
 
 
 class GreenBomb(ItemNPC):
+    """Occupant NPC definition for Green Bomb (as item)"""
+
     _sprite_id: int = SPR0233_GREEN_BOMB
     _chest_packet: Packet = P181_GREEN_BOMB_CHEST
     _static_packet: Packet = P179_GREEN_BOMB_STATIC
@@ -2074,6 +2408,8 @@ class GreenBomb(ItemNPC):
 
 
 class YellowBomb(ItemNPC):
+    """Occupant NPC definition for Yellow Bomb (as item)"""
+
     _sprite_id: int = SPR0234_YELLOW_BOMB
     _chest_packet: Packet = P190_YELLOW_BOMB_CHEST
     _static_packet: Packet = P188_YELLOW_BOMB_STATIC
@@ -2082,6 +2418,8 @@ class YellowBomb(ItemNPC):
 
 
 class BlueBomb(ItemNPC):
+    """Occupant NPC definition for Blue Bomb (as item)"""
+
     _sprite_id: int = SPR0235_BLUE_BOMB
     _chest_packet: Packet = P187_BLUE_BOMB_CHEST
     _static_packet: Packet = P185_BLUE_BOMB_STATIC
@@ -2090,6 +2428,8 @@ class BlueBomb(ItemNPC):
 
 
 class GreenJuice(ItemNPC):
+    """Occupant NPC definition for Green Juice (as item)"""
+
     _sprite_id: int = SPR0236_GREEN_JUICE
     _chest_packet: Packet = P141_GREEN_JUICE_CHEST
     _static_packet: Packet = P139_GREEN_JUICE_STATIC
@@ -2098,6 +2438,8 @@ class GreenJuice(ItemNPC):
 
 
 class Egg(ItemNPC):
+    """Occupant NPC definition for a small egg item (as item)"""
+
     _sprite_id: int = SPR0237_EGG
     _chest_packet: Packet = P117_EGG_CHEST
     _static_packet: Packet = P115_EGG_STATIC
@@ -2106,6 +2448,8 @@ class Egg(ItemNPC):
 
 
 class RedJuice(ItemNPC):
+    """Occupant NPC definition for Red Juice (as item)"""
+
     _sprite_id: int = SPR0238_RED_JUICE
     _chest_packet: Packet = P144_RED_JUICE_CHEST
     _static_packet: Packet = P142_RED_JUICE_STATIC
@@ -2114,6 +2458,8 @@ class RedJuice(ItemNPC):
 
 
 class RDrink(ItemNPC):
+    """Occupant NPC definition for R Drink (as item)"""
+
     _sprite_id: int = SPR0239_BLUE_R_DRINK
     _chest_packet: Packet = P165_R_DRINK_CHEST
     _static_packet: Packet = P163_R_DRINK_STATIC
@@ -2122,6 +2468,8 @@ class RDrink(ItemNPC):
 
 
 class DDrink(ItemNPC):
+    """Occupant NPC definition for D Drink (as item)"""
+
     _sprite_id: int = SPR0240_YELLOW_D_DRINK
     _chest_packet: Packet = P148_D_DRINK_CHEST
     _static_packet: Packet = P150_D_DRINK_STATIC
@@ -2130,6 +2478,8 @@ class DDrink(ItemNPC):
 
 
 class PDrink(ItemNPC):
+    """Occupant NPC definition for P Drink (as item)"""
+
     _sprite_id: int = SPR0241_GREEN_P_DRINK
     _chest_packet: Packet = P147_P_DRINK_CHEST
     _static_packet: Packet = P145_P_DRINK_STATIC
@@ -2138,6 +2488,8 @@ class PDrink(ItemNPC):
 
 
 class FrogDrink(ItemNPC):
+    """Occupant NPC definition for Frog Drink (as item)"""
+
     _sprite_id: int = SPR0244_GREEN_FROG_DRINK
     _chest_packet: Packet = P157_FROG_DRINK_CHEST
     _static_packet: Packet = P159_FROG_DRINK_STATIC
@@ -2146,6 +2498,8 @@ class FrogDrink(ItemNPC):
 
 
 class YellowMusicDrink(ItemNPC):
+    """Occupant NPC definition for Yellow Music Drink (as item)"""
+
     _sprite_id: int = SPR0245_YELLOW_MUSIC_DRINK
     _chest_packet: Packet = P151_YELLOW_MUSIC_DRINK_CHEST
     _static_packet: Packet = P153_YELLOW_MUSIC_DRINK_STATIC
@@ -2154,6 +2508,8 @@ class YellowMusicDrink(ItemNPC):
 
 
 class BlueMusicDrink(ItemNPC):
+    """Occupant NPC definition for Blue Music Drink (as item)"""
+
     _sprite_id: int = SPR0246_BLUE_MUSIC_DRINK
     _chest_packet: Packet = P154_BLUE_MUSIC_DRINK_CHEST
     _static_packet: Packet = P156_BLUE_MUSIC_DRINK_STATIC
@@ -2162,6 +2518,8 @@ class BlueMusicDrink(ItemNPC):
 
 
 class RedMusicDrink(ItemNPC):
+    """Occupant NPC definition for Red Music Drink (as item)"""
+
     _sprite_id: int = SPR0247_RED_MUSIC_DRINK
     _chest_packet: Packet = P160_RED_MUSIC_DRINK_CHEST
     _static_packet: Packet = P162_RED_MUSIC_DRINK_STATIC
@@ -2170,6 +2528,8 @@ class RedMusicDrink(ItemNPC):
 
 
 class StarDrink(ItemNPC):
+    """Occupant NPC definition for Star Drink (as item)"""
+
     _sprite_id: int = SPR0248_RED_STAR_DRINK
     _chest_packet: Packet = P171_STAR_DRINK_CHEST
     _static_packet: Packet = P169_STAR_DRINK_STATIC
@@ -2178,6 +2538,8 @@ class StarDrink(ItemNPC):
 
 
 class RedShell(ItemNPC):
+    """Occupant NPC definition for Red Shell (as item)"""
+
     _sprite_id: int = SPR0249_RED_SHELL
     _chest_packet: Packet = P220_RED_SHELL_CHEST
     _static_packet: Packet = P218_RED_SHELL_STATIC
@@ -2189,6 +2551,8 @@ class RedShell(ItemNPC):
 
 
 class GreenShell(ItemNPC):
+    """Occupant NPC definition for Green Shell (as item)"""
+
     _sprite_id: int = SPR0250_GREEN_SHELL
     _chest_packet: Packet = P223_GREEN_SHELL_CHEST
     _static_packet: Packet = P221_GREEN_SHELL_STATIC
@@ -2200,6 +2564,8 @@ class GreenShell(ItemNPC):
 
 
 class Parasol(ItemNPC):
+    """Occupant NPC definition for Parasol (as item)"""
+
     _sprite_id: int = SPR0251_PARASOL_PACKET
     _chest_packet: Packet = P226_PARASOL_CHEST
     _chest_event: int = E0928_CHEST_CHEST_PARASOL_PACKET
@@ -2208,6 +2574,8 @@ class Parasol(ItemNPC):
 
 
 class Feather(ItemNPC):
+    """Occupant NPC definition for Feather (as item)"""
+
     _sprite_id: int = SPR0252_FEATHER
     _chest_packet: Packet = P080_FEATHER_CHEST
     _chest_event: int = E0884_CHEST_FEATHER_PACKET
@@ -2216,6 +2584,8 @@ class Feather(ItemNPC):
 
 
 class Berry(ItemNPC):
+    """Occupant NPC definition for Berry (non-gridplane)"""
+
     _sprite_id: int = SPR0253_BERRY
     _y_shift: int = 1
     _chest_packet: Packet = P123_BERRY_CHEST
@@ -2225,6 +2595,8 @@ class Berry(ItemNPC):
 
 
 class Cookie(ItemNPC):
+    """Occupant NPC definition for Cookie (as item)"""
+
     _sprite_id: int = SPR0254_YOSHI_COOKIE
     _chest_packet: Packet = P120_COOKIE_CHEST
     _chest_event: int = E0893_CHEST_COOKIE_PACKET
@@ -2233,6 +2605,8 @@ class Cookie(ItemNPC):
 
 
 class Beetle(ItemNPC):
+    """Occupant NPC definition for Beetle (as item)"""
+
     _sprite_id: int = SPR0255_BEETLE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -2244,6 +2618,8 @@ class Beetle(ItemNPC):
 
 
 class Terrapin(NPC):
+    """Occupant NPC definition for Terrapin"""
+
     _sprite_id: int = SPR0256_TERRAPIN
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2268,6 +2644,8 @@ class Terrapin(NPC):
 
 
 class Spikey(NPC):
+    """Occupant NPC definition for Spikey"""
+
     _sprite_id: int = SPR0257_SPIKEY
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2277,6 +2655,8 @@ class Spikey(NPC):
 
 
 class SkyTroopa(NPC):
+    """Occupant NPC definition for Sky Troopa"""
+
     _sprite_id: int = SPR0258_SKY_TROOPA
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -2286,10 +2666,14 @@ class SkyTroopa(NPC):
 
 
 class MadMallet(HammerNPC):
+    """Occupant NPC definition for Mad Mallet"""
+
     _sprite_id: int = SPR0259_MAD_MALLET
 
 
 class Shaman(NPC):
+    """Occupant NPC definition for Shaman"""
+
     _sprite_id: int = SPR0260_SHAMAN
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2299,6 +2683,8 @@ class Shaman(NPC):
 
 
 class Crook(NPC):
+    """Occupant NPC definition for Crook"""
+
     _sprite_id: int = SPR0261_CROOK
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -2315,6 +2701,8 @@ class Crook(NPC):
 
 
 class Goomba(NPC):
+    """Occupant NPC definition for Goomba"""
+
     _sprite_id: int = SPR0262_GOOMBA
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2324,6 +2712,8 @@ class Goomba(NPC):
 
 
 class PiranhaPlant(NPC):
+    """Occupant NPC definition for Piranha Plant (standalone)"""
+
     _sprite_id: int = SPR0263_PIRANHA_PLANT
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2349,6 +2739,8 @@ class PiranhaPlant(NPC):
 
 
 class Amanita(NPC):
+    """Occupant NPC definition for Amanita"""
+
     _sprite_id: int = SPR0264_AMANITA
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2357,6 +2749,8 @@ class Amanita(NPC):
 
 
 class Goby(NPC):
+    """Occupant NPC definition for Goby"""
+
     _sprite_id: int = SPR0265_GOBY
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -2366,6 +2760,8 @@ class Goby(NPC):
 
 
 class Bloober(NPC):
+    """Occupant NPC definition for Bloober"""
+
     _sprite_id: int = SPR0266_BLOOBER
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2388,6 +2784,8 @@ class Bloober(NPC):
 
 
 class BandanaRed(NPC):
+    """Occupant NPC definition for Bandana Red"""
+
     _sprite_id: int = SPR0267_BANDANA_RED
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2404,6 +2802,8 @@ class BandanaRed(NPC):
 
 
 class Lakitu(NPC):
+    """Occupant NPC definition for Lakitu"""
+
     _sprite_id: int = SPR0268_LAKITU
     _acute_axis: int = 7
     _obtuse_axis: int = 7
@@ -2413,10 +2813,14 @@ class Lakitu(NPC):
 
 
 class Birdy(ValentinaBird):
+    """Occupant NPC definition for Birdy"""
+
     _sprite_id: int = SPR0269_BIRDY
 
 
 class Pinwheel(NPC):
+    """Occupant NPC definition for Pinwheel"""
+
     _sprite_id: int = SPR0270_PINWHEEL
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2425,6 +2829,8 @@ class Pinwheel(NPC):
 
 
 class RatFunk(NPC):
+    """Occupant NPC definition for Rat Funk"""
+
     _sprite_id: int = SPR0271_RAT_FUNK
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2433,6 +2839,8 @@ class RatFunk(NPC):
 
 
 class K9(NPC):
+    """Occupant NPC definition for K9"""
+
     _sprite_id: int = SPR0272_K
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -2442,6 +2850,8 @@ class K9(NPC):
 
 
 class Magmite(NPC):
+    """Occupant NPC definition for Magmite"""
+
     _sprite_id: int = SPR0273_MAGMITE
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2451,6 +2861,8 @@ class Magmite(NPC):
 
 
 class BigBoo(NPC):
+    """Occupant NPC definition for Big Boo"""
+
     _sprite_id: int = SPR0274_THE_BIG_BOO
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2460,6 +2872,8 @@ class BigBoo(NPC):
 
 
 class DryBones(NPC):
+    """Occupant NPC definition for Dry Bones"""
+
     _sprite_id: int = SPR0275_DRY_BONES
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2469,6 +2883,8 @@ class DryBones(NPC):
 
 
 class Greaper(NPC):
+    """Occupant NPC definition for Greaper"""
+
     _sprite_id: int = SPR0276_GREAPER
     _acute_axis: int = 8
     _obtuse_axis: int = 8
@@ -2479,10 +2895,14 @@ class Greaper(NPC):
 
 
 class RedFireball(Fireball):
+    """Occupant NPC definition for Red Fireball"""
+
     _sprite_id: int = SPR0277_SPARKY
 
 
 class Chomp(NPC):
+    """Occupant NPC definition for Chomp"""
+
     _sprite_id: int = SPR0278_CHOMP
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -2494,6 +2914,8 @@ class Chomp(NPC):
 
 
 class PandoriteLarge(MimicLarge):
+    """Occupant NPC definition for Pandorite (large)"""
+
     _sprite_id: int = SPR0279_PANDORITE
 
     _animations = SpriteAnimationCollection(
@@ -2507,6 +2929,8 @@ class PandoriteLarge(MimicLarge):
 
 
 class BobOmb(NPC):
+    """Occupant NPC definition for Bob-Omb"""
+
     _sprite_id: int = SPR0281_BOB_OMB
     _y_shift: int = 1
     _acute_axis: int = 4
@@ -2521,6 +2945,8 @@ class BobOmb(NPC):
 
 
 class Spookum(NPC):
+    """Occupant NPC definition for Spookum"""
+
     _sprite_id: int = SPR0282_SPOOKUM
     _y_shift: int = 2
     _acute_axis: int = 4
@@ -2530,6 +2956,8 @@ class Spookum(NPC):
 
 
 class HammerBroLarge(NPC):
+    """Occupant NPC definition for Hammer Bro (large)"""
+
     _sprite_id: int = SPR0283_HAMMER_BRO
     _y_shift: int = 1
     _acute_axis: int = 8
@@ -2548,6 +2976,8 @@ class HammerBroLarge(NPC):
 
 
 class Buzzer(NPC):
+    """Occupant NPC definition for Buzzer"""
+
     _sprite_id: int = SPR0284_BUZZER
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2557,6 +2987,8 @@ class Buzzer(NPC):
 
 
 class Ameboid(NPC):
+    """Occupant NPC definition for Ameboid"""
+
     _sprite_id: int = SPR0285_AMEBOID
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2566,6 +2998,8 @@ class Ameboid(NPC):
 
 
 class Gecko(NPC):
+    """Occupant NPC definition for Gecko"""
+
     _sprite_id: int = SPR0286_GECKO
     _acute_axis: int = 7
     _obtuse_axis: int = 7
@@ -2575,6 +3009,8 @@ class Gecko(NPC):
 
 
 class Wiggler(NPC):
+    """Occupant NPC definition for Wiggler"""
+
     _sprite_id: int = SPR0287_WIGGLER
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -2587,6 +3023,8 @@ class Wiggler(NPC):
 
 
 class Jawful(NPC):
+    """Occupant NPC definition for Jawful"""
+
     _sprite_id: int = SPR0291_JAWFUL
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -2597,6 +3035,8 @@ class Jawful(NPC):
 
 
 class Guerrilla(NPC):
+    """Occupant NPC definition for Guerrilla"""
+
     _sprite_id: int = SPR0294_GUERRILLA
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = -1
@@ -2607,6 +3047,8 @@ class Guerrilla(NPC):
 
 
 class Shogun(NPC):
+    """Occupant NPC definition for Shogun"""
+
     _sprite_id: int = SPR0298_SHOGUN
     _acute_axis: int = 7
     _obtuse_axis: int = 7
@@ -2615,6 +3057,8 @@ class Shogun(NPC):
 
 
 class HeavyTropa(NPC):
+    """Occupant NPC definition for Heavy Tropa"""
+
     _sprite_id: int = SPR0300_HEAVY_TROOPA
     _shadow_size = ShadowSize.OVAL_BIG
     _acute_axis: int = 10
@@ -2624,10 +3068,14 @@ class HeavyTropa(NPC):
 
 
 class ClerkLarge(ShovelKnightBossLarge):
+    """Occupant NPC definition for Clerk (large)"""
+
     _sprite_id: int = SPR0702_CLERK_SUB
 
 
 class BoomerLarge(NPC):
+    """Occupant NPC definition for Boomer (large)"""
+
     _sprite_id: int = SPR0701_BOOMER_SUB
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 2
@@ -2647,6 +3095,8 @@ class BoomerLarge(NPC):
 
 
 class DodoLarge(NPC):
+    """Occupant NPC definition for Dodo (large)"""
+
     _sprite_id: int = SPR0695_DODO_SUB
     _shadow_size = ShadowSize.OVAL_BIG
     _acute_axis: int = 9
@@ -2666,6 +3116,8 @@ class DodoLarge(NPC):
 
 
 class TerraCotta(NPC):
+    """Occupant NPC definition for Terra Cotta"""
+
     _sprite_id: int = SPR0320_TERRA_COTTA
     _directions = VramStore.DIR0_SWSE_NWNE
     _acute_axis: int = 4
@@ -2675,6 +3127,8 @@ class TerraCotta(NPC):
 
 
 class Spikester(NPC):
+    """Occupant NPC definition for Spikester"""
+
     _sprite_id: int = SPR0321_SPIKESTER
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2684,6 +3138,8 @@ class Spikester(NPC):
 
 
 class Malakoopa(NPC):
+    """Occupant NPC definition for Malakoopa"""
+
     _sprite_id: int = SPR0322_MALAKOOPA
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -2693,14 +3149,20 @@ class Malakoopa(NPC):
 
 
 class Pounder(HammerNPC):
+    """Occupant NPC definition for Pounder"""
+
     _sprite_id: int = SPR0323_POUNDER
 
 
 class Poundette(HammerNPC):
+    """Occupant NPC definition for Poundette"""
+
     _sprite_id: int = SPR0324_POUNDETTE
 
 
 class Sackit(NPC):
+    """Occupant NPC definition for Sackit"""
+
     _sprite_id: int = SPR0325_SACKIT
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -2711,6 +3173,8 @@ class Sackit(NPC):
 
 
 class GuGoomba(NPC):
+    """Occupant NPC definition for Gu Goomba"""
+
     _sprite_id: int = SPR0326_GU_GOOMBA
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2720,6 +3184,8 @@ class GuGoomba(NPC):
 
 
 class Chewy(NPC):
+    """Occupant NPC definition for Chewy"""
+
     _sprite_id: int = SPR0327_CHEWY
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2728,10 +3194,14 @@ class Chewy(NPC):
 
 
 class BlueFireball(Fireball):
+    """Occupant NPC definition for Blue Fireball"""
+
     _sprite_id: int = SPR0328_FIREBALL
 
 
 class MrKipper(NPC):
+    """Occupant NPC definition for Mr Kipper"""
+
     _sprite_id: int = SPR0329_MR_KIPPER
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -2741,6 +3211,8 @@ class MrKipper(NPC):
 
 
 class FactoryChief(NPC):
+    """Occupant NPC definition for Factory Chief"""
+
     _sprite_id: int = SPR0330_FACTORY_CHIEF
     _acute_axis: int = 7
     _obtuse_axis: int = 7
@@ -2765,6 +3237,8 @@ class FactoryChief(NPC):
 
 
 class BandanaBlue(NPC):
+    """Occupant NPC definition for Bandana Blue"""
+
     _sprite_id: int = SPR0331_BANDANA_BLUE
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2781,14 +3255,20 @@ class BandanaBlue(NPC):
 
 
 class ManagerLarge(ShovelKnightBossLarge):
+    """Occupant NPC definition for Manager (large)"""
+
     _sprite_id: int = SPR0703_MANAGER_SUB
 
 
 class Bluebird(ValentinaBird):
+    """Occupant NPC definition for Bluebird"""
+
     _sprite_id: int = SPR0333_BLUEBIRD
 
 
 class AlleyRat(NPC):
+    """Occupant NPC definition for Alley Rat"""
+
     _sprite_id: int = SPR0335_ALLEY_RAT
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2797,6 +3277,8 @@ class AlleyRat(NPC):
 
 
 class Chow(NPC):
+    """Occupant NPC definition for Chow"""
+
     _sprite_id: int = SPR0336_CHOW
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -2806,6 +3288,8 @@ class Chow(NPC):
 
 
 class Magmus(NPC):
+    """Occupant NPC definition for Magmus"""
+
     _sprite_id: int = SPR0337_MAGMUS
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2815,6 +3299,8 @@ class Magmus(NPC):
 
 
 class LilBoo(NPC):
+    """Occupant NPC definition for Lil Boo"""
+
     _sprite_id: int = SPR0338_LI_XX_L_BOO
     _acute_axis: int = 4
     _obtuse_axis: int = 4
@@ -2824,6 +3310,8 @@ class LilBoo(NPC):
 
 
 class Vomer(NPC):
+    """Occupant NPC definition for Vomer"""
+
     _sprite_id: int = SPR0339_VOMER
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2833,6 +3321,8 @@ class Vomer(NPC):
 
 
 class GlumReaper(NPC):
+    """Occupant NPC definition for Glum Reaper"""
+
     _sprite_id: int = SPR0340_GLUM_REAPER
     _acute_axis: int = 8
     _obtuse_axis: int = 8
@@ -2843,6 +3333,8 @@ class GlumReaper(NPC):
 
 
 class HidonLarge(MimicLarge):
+    """Occupant NPC definition for Hidon (large)"""
+
     _sprite_id: int = SPR0343_HIDON
     _animations = SpriteAnimationCollection(
         mines_punch=HIDON_ATTACK,
@@ -2855,6 +3347,8 @@ class HidonLarge(MimicLarge):
 
 
 class SlingShy(NPC):
+    """Occupant NPC definition for Sling Shy"""
+
     _sprite_id: int = SPR0344_SLING_SHY
     _y_shift: int = 1
     _height: int = 7
@@ -2862,6 +3356,8 @@ class SlingShy(NPC):
 
 
 class RobOmb(NPC):
+    """Occupant NPC definition for Rob-Omb"""
+
     _sprite_id: int = SPR0345_ROB_OMB
     _y_shift: int = 1
     _acute_axis: int = 4
@@ -2872,6 +3368,8 @@ class RobOmb(NPC):
 
 
 class ShyGuy(NPC):
+    """Occupant NPC definition for Shy Guy"""
+
     _sprite_id: int = SPR0346_SHY_GUY
     _y_shift: int = 1
     _height: int = 7
@@ -2883,6 +3381,8 @@ class ShyGuy(NPC):
 
 
 class Ninja(NPC):
+    """Occupant NPC definition for Ninja"""
+
     _sprite_id: int = SPR0347_NINJA
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2892,6 +3392,8 @@ class Ninja(NPC):
 
 
 class Stinger(NPC):
+    """Occupant NPC definition for Stinger"""
+
     _sprite_id: int = SPR0348_STINGER
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2901,6 +3403,8 @@ class Stinger(NPC):
 
 
 class Geckit(NPC):
+    """Occupant NPC definition for Geckit"""
+
     _sprite_id: int = SPR0350_GECKIT
     _acute_axis: int = 7
     _obtuse_axis: int = 7
@@ -2910,6 +3414,8 @@ class Geckit(NPC):
 
 
 class Jabit(NPC):
+    """Occupant NPC definition for Jabit"""
+
     _sprite_id: int = SPR0351_JABIT
     _y_shift: int = 2
     _height: int = 11
@@ -2917,6 +3423,8 @@ class Jabit(NPC):
 
 
 class MagikoopaLarge(NPC):
+    """Occupant NPC definition for Magikoopa (large)"""
+
     _sprite_id: int = SPR0353_MERLIN
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -2936,6 +3444,8 @@ class MagikoopaLarge(NPC):
 
 
 class Apprentice(NPC):
+    """Occupant NPC definition for Apprentice"""
+
     _sprite_id: int = SPR0384_APPRENTICE
     _y_shift: int = 2
     _acute_axis: int = 4
@@ -2954,6 +3464,8 @@ class Apprentice(NPC):
 
 
 class GenoRedemption(NPC):
+    """Occupant NPC definition for Geno's Redemption"""
+
     _sprite_id: int = SPR0388_GENO_REDEMPTION
     _y_shift: int = 1
     _acute_axis: int = 1
@@ -2963,6 +3475,8 @@ class GenoRedemption(NPC):
 
 
 class BoxBoyLarge(MimicLarge):
+    """Occupant NPC definition for Box Boy (large)"""
+
     _sprite_id: int = SPR0390_BOX_BOY
 
     _animations = SpriteAnimationCollection(
@@ -2976,6 +3490,8 @@ class BoxBoyLarge(MimicLarge):
 
 
 class Oerlikon(NPC):
+    """Occupant NPC definition for Oerlikon"""
+
     _sprite_id: int = SPR0394_OERLIKON
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -2985,6 +3501,8 @@ class Oerlikon(NPC):
 
 
 class ChesterLarge(MimicLarge):
+    """Occupant NPC definition for Chester (large)"""
+
     _sprite_id: int = SPR0395_CHESTER
 
     _animations = SpriteAnimationCollection(
@@ -2998,6 +3516,8 @@ class ChesterLarge(MimicLarge):
 
 
 class Torte(NPC):
+    """Occupant NPC definition for Torte"""
+
     _sprite_id: int = SPR0398_TORTE
     _acute_axis: int = 2
     _obtuse_axis: int = 2
@@ -3012,6 +3532,8 @@ class Torte(NPC):
 
 
 class ShyAway(NPC):
+    """Occupant NPC definition for Shy Away"""
+
     _sprite_id: int = SPR0399_SHY_AWAY
     _acute_axis: int = 6
     _obtuse_axis: int = 6
@@ -3021,6 +3543,8 @@ class ShyAway(NPC):
 
 
 class MachineShyster(NPC):
+    """Occupant NPC definition for Machine Shyster"""
+
     _sprite_id: int = SPR0401_MACHINE_MADE_SHYSTER
     _y_shift: int = 1
     _height: int = 11
@@ -3029,6 +3553,8 @@ class MachineShyster(NPC):
 
 
 class MachineDrillBit(NPC):
+    """Occupant NPC definition for Machine Drill Bit"""
+
     _sprite_id: int = SPR0402_MACHINE_MADE_DRILL_BIT
     _y_shift: int = 2
     _height: int = 11
@@ -3037,6 +3563,8 @@ class MachineDrillBit(NPC):
 
 
 class MarioClone(CloneNPC):
+    """Occupant NPC definition for Mario Clone"""
+
     _sprite_id: int = SPR0409_MARIO_CLONE
     _y_shift: int = 1
     _animations = SpriteAnimationCollection(
@@ -3045,6 +3573,8 @@ class MarioClone(CloneNPC):
 
 
 class PeachClone(CloneNPC):
+    """Occupant NPC definition for Peach Clone"""
+
     _sprite_id: int = SPR0410_TOADSTOOL
     _y_shift: int = 1
 
@@ -3056,6 +3586,8 @@ class PeachClone(CloneNPC):
 
 
 class BowserClone(CloneNPC):
+    """Occupant NPC definition for Bowser Clone"""
+
     _sprite_id: int = SPR0411_BOWSER_CLONE
     _shadow_size = ShadowSize.OVAL_BIG
     _acute_axis: int = 6
@@ -3071,6 +3603,8 @@ class BowserClone(CloneNPC):
 
 
 class GenoClone(CloneNPC):
+    """Occupant NPC definition for Geno Clone"""
+
     _sprite_id: int = SPR0412_GENO_CLONE
     _y_shift: int = 1
     _acute_axis: int = 4
@@ -3084,6 +3618,8 @@ class GenoClone(CloneNPC):
 
 
 class MallowClone(CloneNPC):
+    """Occupant NPC definition for Mallow Clone"""
+
     _sprite_id: int = SPR0413_MALLOW_CLONE
     _height: int = 8
 
@@ -3095,6 +3631,8 @@ class MallowClone(CloneNPC):
 
 
 class Shyster(NPC):
+    """Occupant NPC definition for Shyster"""
+
     _sprite_id: int = SPR0414_SHYSTER
     _y_shift: int = 1
     _height: int = 11
@@ -3109,6 +3647,8 @@ class Shyster(NPC):
 
 
 class HanginShy(NPC):
+    """Occupant NPC definition for Hangin Shy"""
+
     _sprite_id: int = SPR0417_HANGIN_XX_SHY
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3119,6 +3659,8 @@ class HanginShy(NPC):
 
 
 class MachineMack(NPC):
+    """Occupant NPC definition for Machine Mack"""
+
     _sprite_id: int = SPR0419_MACHINE_MADE_MACK
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -3129,6 +3671,8 @@ class MachineMack(NPC):
 
 
 class MachineAxemPink(NPC):
+    """Occupant NPC definition for Machine Made Axem Pink"""
+
     _sprite_id: int = SPR0422_MACHINE_MADE_AXEM_PINK
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3141,6 +3685,8 @@ class MachineAxemPink(NPC):
 
 
 class MachineAxemBlack(NPC):
+    """Occupant NPC definition for Machine Made Axem Black"""
+
     _sprite_id: int = SPR0423_MACHINE_MADE_AXEM_BLACK
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3153,6 +3699,8 @@ class MachineAxemBlack(NPC):
 
 
 class MachineAxemRed(NPC):
+    """Occupant NPC definition for Machine Made Axem Red"""
+
     _sprite_id: int = SPR0424_MACHINE_MADE_AXEM_RED
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3165,6 +3713,8 @@ class MachineAxemRed(NPC):
 
 
 class MachineAxemYellow(NPC):
+    """Occupant NPC definition for Machine Made Axem Yellow"""
+
     _sprite_id: int = SPR0425_MACHINE_MADE_AXEM_YELLOW
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3175,6 +3725,8 @@ class MachineAxemYellow(NPC):
 
 
 class MachineAxemGreen(NPC):
+    """Occupant NPC definition for Machine Made Axem Green"""
+
     _sprite_id: int = SPR0426_MACHINE_MADE_AXEM_GREEN
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3187,6 +3739,8 @@ class MachineAxemGreen(NPC):
 
 
 class Starslap(NPC):
+    """Occupant NPC definition for Starslap"""
+
     _sprite_id: int = SPR0432_STARSLAP
     _y_shift: int = -4
     _acute_axis: int = 6
@@ -3195,6 +3749,8 @@ class Starslap(NPC):
 
 
 class Mukumuku(NPC):
+    """Occupant NPC definition for Mukumuku"""
+
     _sprite_id: int = SPR0433_MUKUMUKU
     _y_shift: int = 3
     _acute_axis: int = 4
@@ -3203,6 +3759,8 @@ class Mukumuku(NPC):
 
 
 class Zeostar(NPC):
+    """Occupant NPC definition for Zeostar"""
+
     _sprite_id: int = SPR0434_ZEOSTAR
     _y_shift: int = -4
     _acute_axis: int = 6
@@ -3211,6 +3769,8 @@ class Zeostar(NPC):
 
 
 class Microbomb(NPC):
+    """Occupant NPC definition for Microbomb"""
+
     _sprite_id: int = SPR0440_MICROBOMB
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -3224,12 +3784,16 @@ class Microbomb(NPC):
 
 
 class Helio(NPC):
+    """Occupant NPC definition for Helio"""
+
     _sprite_id: int = SPR0445_HELIO
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
 
 
 class BundtLarge(NPC):
+    """Occupant NPC definition for Bundt (large)"""
+
     _sprite_id: int = SPR0450_BUNDT
     _min_vram_size: int = 3
     _shadow_size = ShadowSize.OVAL_BIG
@@ -3248,6 +3812,8 @@ class BundtLarge(NPC):
 
 
 class Smilax(NPC):
+    """Occupant NPC definition for Smilax"""
+
     _sprite_id: int = SPR0458_SMILAX
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -3258,6 +3824,8 @@ class Smilax(NPC):
 
 
 class Thrax(NPC):
+    """Occupant NPC definition for Thrax"""
+
     _sprite_id: int = SPR0459_THRAX
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -3268,6 +3836,8 @@ class Thrax(NPC):
 
 
 class Megasmilax(NPC):
+    """Occupant NPC definition for Megasmilax"""
+
     _sprite_id: int = SPR0460_MEGASMILAX
     _min_vram_size: int = 3
     _shadow_size = ShadowSize.OVAL_BIG
@@ -3286,6 +3856,8 @@ class Megasmilax(NPC):
 
 
 class BirdettaLarge(NPC):
+    """Occupant NPC definition for Birdetta (large)"""
+
     _sprite_id: int = SPR0461_BIRDETTA
     _shadow_size = ShadowSize.OVAL_BIG
     _min_vram_size: int = 4
@@ -3305,6 +3877,8 @@ class BirdettaLarge(NPC):
 
 
 class Eggbert(NPC):
+    """Occupant NPC definition for Eggbert"""
+
     _sprite_id: int = SPR0462_EGGBERT
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -3320,6 +3894,8 @@ class Eggbert(NPC):
 
 
 class AxemYellow(NPC):
+    """Occupant NPC definition for Axem Yellow"""
+
     _sprite_id: int = SPR0463_AXEM_YELLOW
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3330,6 +3906,8 @@ class AxemYellow(NPC):
 
 
 class PunchinelloLarge(NPC):
+    """Occupant NPC definition for Punchinello (large)"""
+
     _sprite_id: int = SPR0464_PUNCHINELLO
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -3350,6 +3928,8 @@ class PunchinelloLarge(NPC):
 
 
 class AxemRed(NPC):
+    """Occupant NPC definition for Axem Red"""
+
     _sprite_id: int = SPR0466_AXEM_RED
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3371,6 +3951,8 @@ class AxemRed(NPC):
 
 
 class AxemGreen(NPC):
+    """Occupant NPC definition for Axem Green"""
+
     _sprite_id: int = SPR0467_AXEM_GREEN
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3383,6 +3965,8 @@ class AxemGreen(NPC):
 
 
 class CloakerLarge(NPC):
+    """Occupant NPC definition for Cloaker (large)"""
+
     _sprite_id: int = SPR0477_CLOAKER_ST_TIME
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -3401,6 +3985,8 @@ class CloakerLarge(NPC):
 
 
 class DominoLarge(NPC):
+    """Occupant NPC definition for Domino (large)"""
+
     _sprite_id: int = SPR0478_DOMINO_ND_TIME
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -3413,6 +3999,8 @@ class DominoLarge(NPC):
 
 
 class DrillBit(NPC):
+    """Occupant NPC definition for Drill Bit"""
+
     _sprite_id: int = SPR0483_DRILL_BIT
     _y_shift: int = 2
     _height: int = 11
@@ -3427,6 +4015,8 @@ class DrillBit(NPC):
 
 
 class AxemPink(NPC):
+    """Occupant NPC definition for Axem Pink"""
+
     _sprite_id: int = SPR0484_AXEM_PINK
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3439,6 +4029,8 @@ class AxemPink(NPC):
 
 
 class AxemBlack(NPC):
+    """Occupant NPC definition for Axem Black"""
+
     _sprite_id: int = SPR0485_AXEM_BLACK
     _acute_axis: int = 5
     _obtuse_axis: int = 5
@@ -3451,6 +4043,8 @@ class AxemBlack(NPC):
 
 
 class AeroUpright(NPC):
+    """Occupant NPC definition for Aero (upright)"""
+
     _sprite_id: int = SPR0487_AERO
     _shadow_size = ShadowSize.OVAL_SMALL
     _acute_axis: int = 3
@@ -3460,6 +4054,8 @@ class AeroUpright(NPC):
 
 
 class Snifit(NPC):
+    """Occupant NPC definition for Snifit"""
+
     _sprite_id: int = SPR0504_SNIFIT
     _y_shift: int = 2
     _acute_axis: int = 4
@@ -3475,6 +4071,8 @@ class Snifit(NPC):
 
 
 class CountDownGridplane(NPC):
+    """Occupant NPC definition for Count Down (gridplane)"""
+
     _sprite_id: int = SPR0572_COUNT_DOWN_GRIDPLANE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3485,6 +4083,8 @@ class CountDownGridplane(NPC):
 
 
 class MokuraLarge(NPC):
+    """Occupant NPC definition for Mokura (large)"""
+
     _sprite_id: int = SPR0573_MOKURA
     _show_shadow: bool = False
     _y_shift: int = 2
@@ -3496,6 +4096,8 @@ class MokuraLarge(NPC):
 
 
 class PandoriteSmall(MimicFace):
+    """Occupant NPC definition for Pandorite (small)"""
+
     _sprite_id: int = SPR0583_PANDORITE_SMALL
     _y_shift: int = 1
 
@@ -3503,12 +4105,16 @@ class PandoriteSmall(MimicFace):
 
 
 class HidonSmall(MimicFace):
+    """Occupant NPC definition for Hidon (small)"""
+
     _sprite_id: int = SPR0584_HIDON_SMALL
     _y_shift: int = 1
     _alt_palette: Palette = HIDON_FACE_PALETTE
 
 
 class ChesterSmall(MimicFace):
+    """Occupant NPC definition for Chester (small)"""
+
     _sprite_id: int = SPR0585_CHESTER_SMALL
     _y_shift: int = 1
 
@@ -3516,6 +4122,8 @@ class ChesterSmall(MimicFace):
 
 
 class BoxBoySmall(MimicFace):
+    """Occupant NPC definition for Box Boy (small)"""
+
     _sprite_id: int = SPR0586_BOX_BOY_SMALL
     _y_shift: int = 1
 
@@ -3523,6 +4131,8 @@ class BoxBoySmall(MimicFace):
 
 
 class HammerBroSmall(NPC):
+    """Occupant NPC definition for Hammer Bro (small)"""
+
     _sprite_id: int = SPR0587_HAMMER_BRO_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3532,6 +4142,8 @@ class HammerBroSmall(NPC):
 
 
 class MackSmall(NPC):
+    """Occupant NPC definition for Mack (small)"""
+
     _sprite_id: int = SPR0588_MACK_SMALL
     _y_shift: int = 1
 
@@ -3539,6 +4151,8 @@ class MackSmall(NPC):
 
 
 class Belome1Small(NPC):
+    """Occupant NPC definition for Belome1 (small)"""
+
     _sprite_id: int = SPR0589_BELOME_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3547,6 +4161,8 @@ class Belome1Small(NPC):
 
 
 class Belome2Small(NPC):
+    """Occupant NPC definition for Belome2 (small)"""
+
     _sprite_id: int = SPR0590_BELOME_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3556,6 +4172,8 @@ class Belome2Small(NPC):
 
 
 class BowyerSmall(NPC):
+    """Occupant NPC definition for Bowyer (small)"""
+
     _sprite_id: int = SPR0591_BOWYER_SMALL
     _y_shift: int = 1
 
@@ -3563,6 +4181,8 @@ class BowyerSmall(NPC):
 
 
 class PunchinelloSmall(NPC):
+    """Occupant NPC definition for Punchinello (small)"""
+
     _sprite_id: int = SPR0592_PUNCHINELLO_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3571,6 +4191,8 @@ class PunchinelloSmall(NPC):
 
 
 class DodoSmall(NPC):
+    """Occupant NPC definition for Dodo (small)"""
+
     _sprite_id: int = SPR0593_DODO_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3579,6 +4201,8 @@ class DodoSmall(NPC):
 
 
 class BirdettaSmall(NPC):
+    """Occupant NPC definition for Birdetta (small)"""
+
     _sprite_id: int = SPR0594_BIRDETTA_SMALL
     _y_shift: int = 1
 
@@ -3586,6 +4210,8 @@ class BirdettaSmall(NPC):
 
 
 class CzarDragonSmall(NPC):
+    """Occupant NPC definition for Czar Dragon (small)"""
+
     _sprite_id: int = SPR0595_CZAR_DRAGON_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3596,11 +4222,15 @@ class CzarDragonSmall(NPC):
 
 
 class BoomerSmall(NPC):
+    """Occupant NPC definition for Boomer (small)"""
+
     _sprite_id: int = SPR0596_BOOMER_SMALL
     _y_shift: int = 1
 
 
 class ExorSmall(NPC):
+    """Occupant NPC definition for Exor (small)"""
+
     _sprite_id: int = SPR0597_EXOR_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3609,6 +4239,8 @@ class ExorSmall(NPC):
 
 
 class DominoSmall(NPC):
+    """Occupant NPC definition for Domino (small)"""
+
     _sprite_id: int = SPR0598_DOMINO_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3617,6 +4249,8 @@ class DominoSmall(NPC):
 
 
 class SmithySmall(NPC):
+    """Occupant NPC definition for Smithy (small)"""
+
     _sprite_id: int = SPR0599_SMITHY_SMALL
     _y_shift: int = 1
     _acute_axis: int = 7
@@ -3625,6 +4259,8 @@ class SmithySmall(NPC):
 
 
 class MarioDoll(NPC):
+    """Occupant NPC definition for Mario Doll"""
+
     _sprite_id: int = SPR0600_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE
     _shadow_size = ShadowSize.OVAL_SMALL
     _directions = VramStore.DIR0_SWSE_NWNE
@@ -3635,6 +4271,8 @@ class MarioDoll(NPC):
 
 
 class GoldGoomba(NPC):
+    """Occupant NPC definition for Gold Goomba"""
+
     _sprite_id: int = SPR0602_GOLD_GOOMBA
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -3644,23 +4282,27 @@ class GoldGoomba(NPC):
 
 
 class BigFlower(ItemNPC):
+    """Occupant NPC definition for Big Flower"""
+
     _sprite_id: int = SPR0605_BIG_FLOWER
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
     _chest_packet: Packet = P000_FLASHING_POOF_FLOWER
     _static_packet: Packet = P086_FLOWER_STATIC
     _falling_packet: Packet = P035_FLOWER_FALL
-    _chest_70A7_upper: int = 2
+    _chest_70a7_upper: int = 2
 
 
 class SmallFrogCoin(Coin):
+    """Occupant NPC definition for Small Frog Coin"""
+
     _sprite_id: int = SPR0606_SMALL_FROG_COIN
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
     _chest_packet: Packet = P019_FROG_COIN_BEING_COLLECTED
     _static_packet: Packet = P111_FROG_COIN_STATIC
     _falling_packet: Packet = P108_FROG_COIN_FALL
-    _chest_70A7_upper: int = 3
+    _chest_70a7_upper: int = 3
     _acute_axis: int = 2
     _obtuse_axis: int = 2
     _height: int = 3
@@ -3668,16 +4310,22 @@ class SmallFrogCoin(Coin):
 
 
 class Jinx1(Jinx):
+    """Occupant NPC definition for Jinx (1st iteration)"""
+
     _sprite_id: int = SPR0607_JINX_OVERWORLD
 
 
 class Jinx3(Jinx):
+    """Occupant NPC definition for Jinx (3rd iteration)"""
+
     _sprite_id: int = SPR0608_JINX_OVERWORLD
 
     _alt_palette: Palette = JINX_3_ALT_PALETTE
 
 
 class TerrapinEnding(NPC):
+    """Occupant NPC definition for Terrapin (ending credits)"""
+
     _sprite_id: int = SPR0609_TERRAPIN_ENDING_CREDITS
     _y_shift: int = 1
     _acute_axis: int = 4
@@ -3687,6 +4335,8 @@ class TerrapinEnding(NPC):
 
 
 class StumpetHead(NPC):
+    """Occupant NPC definition for Stumpet Head"""
+
     _sprite_id: int = SPR0610_STUMPET_HEAD
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3697,6 +4347,8 @@ class StumpetHead(NPC):
 
 
 class StumpetRoot(NPC):
+    """Occupant NPC definition for Stumpet Root"""
+
     _sprite_id: int = SPR0611_STUMPET_ROOTS_RIGHT
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3706,6 +4358,8 @@ class StumpetRoot(NPC):
 
 
 class CzarBody(NPC):
+    """Occupant NPC definition for Czar Body"""
+
     _sprite_id: int = SPR0612_CZAR_DRAGON_BODY
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3715,7 +4369,9 @@ class CzarBody(NPC):
     _min_vram_size: int = 3
 
 
-class VineBeanstalm(NPC):
+class VineBeanstalk(NPC):
+    """Occupant NPC definition for Vine Beanstalk"""
+
     _sprite_id: int = SPR0613_GROWING_VINE_BEANSTALK
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3726,6 +4382,8 @@ class VineBeanstalm(NPC):
 
 
 class BrownBrick(NPC):
+    """Occupant NPC definition for Brown Brick"""
+
     _sprite_id: int = SPR0614_BRICK_BEANSTALK_BLOCK
     _show_shadow: bool = False
     _shadow_size = ShadowSize.BLOCK
@@ -3736,6 +4394,8 @@ class BrownBrick(NPC):
 
 
 class SandWhirlpool(NPC):
+    """Occupant NPC definition for Sand Whirlpool"""
+
     _sprite_id: int = SPR0615_WHIRLPOOL_DESERT
     _y_shift: int = 1
     _acute_axis: int = 9
@@ -3747,6 +4407,8 @@ class SandWhirlpool(NPC):
 
 
 class Letter(NPC):
+    """Occupant NPC definition for Letter"""
+
     _sprite_id: int = SPR0616_YELLOW_LETTER
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3756,6 +4418,8 @@ class Letter(NPC):
 
 
 class YaridOverworld(NPC):
+    """Occupant NPC definition for Yarid Overworld"""
+
     _sprite_id: int = SPR0617_YARIDOVICH_OUT_OF_BATTLE
     _y_shift: int = 1
     _acute_axis: int = 11
@@ -3771,6 +4435,8 @@ class YaridOverworld(NPC):
 
 
 class TentacleExtending(NPC):
+    """Occupant NPC definition for Tentacle Extending"""
+
     _sprite_id: int = SPR0618_TENTACLE_EXTENDING
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3784,6 +4450,8 @@ class TentacleExtending(NPC):
 
 
 class BackSnifit(NPC):
+    """Occupant NPC definition for Snifit (from behind)"""
+
     _sprite_id: int = SPR0619_SNIFIT_BLACK_BACK
     _y_shift: int = 1
     _acute_axis: int = 5
@@ -3792,6 +4460,8 @@ class BackSnifit(NPC):
 
 
 class DonutLift(NPC):
+    """Occupant NPC definition for Donut Lift"""
+
     _sprite_id: int = SPR0620_FALLING_STEPPING_BRIDGE_BLOCK
     _shadow_size = ShadowSize.BLOCK
     _y_shift: int = -1
@@ -3801,11 +4471,15 @@ class DonutLift(NPC):
 
 
 class NESProtagonist(NPC):
+    """Occupant NPC definition for NES Protagonist"""
+
     _sprite_id: int = SPR0621_OLD_CLASSIC_MARIO
     _height: int = 1
 
 
 class SplashWaterDroplets(NPC):
+    """Occupant NPC definition for Splash Water Droplets"""
+
     _sprite_id: int = SPR0623_SPLASH_WATER_DROPLETS
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3816,6 +4490,8 @@ class SplashWaterDroplets(NPC):
 
 
 class Fish(NPC):
+    """Occupant NPC definition for Tiny Fish"""
+
     _sprite_id: int = SPR0624_SMALL_SEA_FISH
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3826,6 +4502,8 @@ class Fish(NPC):
 
 
 class Geyser(NPC):
+    """Occupant NPC definition for Geyser"""
+
     _sprite_id: int = SPR0625_SPLASH_WATER_GEYSER
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3836,6 +4514,8 @@ class Geyser(NPC):
 
 
 class BowyerOverworld(NPC):
+    """Occupant NPC definition for Bowyer (overworld)"""
+
     _sprite_id: int = SPR0626_BOWYER
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3847,6 +4527,8 @@ class BowyerOverworld(NPC):
 
 
 class MushroomLamp(NPC):
+    """Occupant NPC definition for Mushroom Lamp"""
+
     _sprite_id: int = SPR0627_MUSHROOM_HOUSE_DECOR_MAILBOX
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -3856,6 +4538,8 @@ class MushroomLamp(NPC):
 
 
 class Link(NPC):
+    """Occupant NPC definition for Link"""
+
     _sprite_id: int = SPR0628_LINK_SLEEPING_IN_ROSE_TOWN_INN
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3866,6 +4550,8 @@ class Link(NPC):
 
 
 class Samus(NPC):
+    """Occupant NPC definition for Samus"""
+
     _sprite_id: int = SPR0629_SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3876,6 +4562,8 @@ class Samus(NPC):
 
 
 class GreyBlock(NPC):
+    """Occupant NPC definition for Grey Block"""
+
     _sprite_id: int = SPR0630_GREY_STEPPING_STONE
     _shadow_size = ShadowSize.BLOCK
     _y_shift: int = -2
@@ -3885,6 +4573,8 @@ class GreyBlock(NPC):
 
 
 class PlaneModel(NPC):
+    """Occupant NPC definition for Plane Model"""
+
     _sprite_id: int = SPR0631_HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3894,6 +4584,8 @@ class PlaneModel(NPC):
 
 
 class GreyBrick(NPC):
+    """Occupant NPC definition for Grey Brick"""
+
     _sprite_id: int = SPR0632_GREY_STONE_BLOCK
     _shadow_size = ShadowSize.BLOCK
     _y_shift: int = -3
@@ -3903,6 +4595,8 @@ class GreyBrick(NPC):
 
 
 class CulexSmall(NPC):
+    """Occupant NPC definition for Culex (small)"""
+
     _sprite_id: int = SPR0633_CULEX_SMALL
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3915,6 +4609,8 @@ class CulexSmall(NPC):
 
 
 class CircularSparkle(NPC):
+    """Occupant NPC definition for Circular Sparkle"""
+
     _sprite_id: int = SPR0635_SPARKLE_CIRCULAR_WINDING
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -3925,15 +4621,19 @@ class CircularSparkle(NPC):
 
 
 class Flower(ItemNPC):
+    """Occupant NPC definition for Flower"""
+
     _sprite_id: int = SPR0636_SMALL_FLOWER_STANDALONE
     _y_shift: int = 1
     _chest_packet: Packet = P000_FLASHING_POOF_FLOWER
     _static_packet: Packet = P086_FLOWER_STATIC
     _falling_packet: Packet = P035_FLOWER_FALL
-    _chest_70A7_upper: int = 2
+    _chest_70a7_upper: int = 2
 
 
 class RecoveryMushroom(ItemNPC):
+    """Occupant NPC definition for Recovery Mushroom"""
+
     _sprite_id: int = SPR0637_RECOVERY_MUSHROOM_STANDALONE
     _y_shift: int = 1
     _chest_packet: Packet = P001_FLASHING_POOF_MUSHROOM
@@ -3942,6 +4642,8 @@ class RecoveryMushroom(ItemNPC):
 
 
 class Key(ItemNPC):
+    """Occupant NPC definition for Key"""
+
     _sprite_id: int = SPR0638_KEY_STANDALONE
     _y_shift: int = 1
     _chest_packet: Packet = P002_BRIEF_KEY
@@ -3951,11 +4653,15 @@ class Key(ItemNPC):
 
 
 class ItemBag(ItemNPC):
+    """Occupant NPC definition for Item Bag"""
+
     _sprite_id: int = SPR0639_ITEM_BAG_STANDALONE
     _y_shift: int = 1
 
 
 class Music(ItemNPC):
+    """Occupant NPC definition for Music"""
+
     _sprite_id: int = SPR0640_MUSIC_NOTE_STANDALONE
     _y_shift: int = 1
     _chest_packet: Packet = P168_MUSIC_NOTE_CHEST
@@ -3965,11 +4671,15 @@ class Music(ItemNPC):
 
 
 class TinyMushroom(NPC):
+    """Occupant NPC definition for Tiny Mushroom"""
+
     _sprite_id: int = SPR0641_AMANITA_MUSHROOM_STANDALONE
     _shadow_size = ShadowSize.OVAL_SMALL
 
 
 class DingalingGridplane(NPC):
+    """Occupant NPC definition for Dingaling (gridplane)"""
+
     _sprite_id: int = SPR0642_DINGALING_GRIDPLANE
     _y_shift: int = -6
     _acute_axis: int = 11
@@ -3978,6 +4688,8 @@ class DingalingGridplane(NPC):
 
 
 class EggbertGridplane(NPC):
+    """Occupant NPC definition for Eggbert (gridplane)"""
+
     _sprite_id: int = SPR0643_EGGBERT_GRIDPLANE
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -3993,6 +4705,8 @@ class EggbertGridplane(NPC):
 
 
 class FireCrystal(NPC):
+    """Occupant NPC definition for Fire Crystal"""
+
     _sprite_id: int = SPR0644_FIRE_CRYSTAL_GRIDPLANE
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -4001,6 +4715,8 @@ class FireCrystal(NPC):
 
 
 class WaterCrystal(NPC):
+    """Occupant NPC definition for Water Crystal"""
+
     _sprite_id: int = SPR0645_WATER_CRYSTAL_GRIDPLANE
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -4009,6 +4725,8 @@ class WaterCrystal(NPC):
 
 
 class EarthCrystal(NPC):
+    """Occupant NPC definition for Earth Crystal"""
+
     _sprite_id: int = SPR0646_EARTH_CRYSTAL_GRIDPLANE
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -4017,6 +4735,8 @@ class EarthCrystal(NPC):
 
 
 class WindCrystal(NPC):
+    """Occupant NPC definition for Wind Crystal"""
+
     _sprite_id: int = SPR0647_WIND_CRYSTAL_GRIDPLANE
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -4025,6 +4745,8 @@ class WindCrystal(NPC):
 
 
 class GenoBullet(NPC):
+    """Occupant NPC definition for Geno Bullet"""
+
     _sprite_id: int = SPR0648_GENO_ARM_SHOT
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False
@@ -4035,6 +4757,8 @@ class GenoBullet(NPC):
 
 
 class MackMedium(NPC):
+    """Occupant NPC definition for Mack Medium"""
+
     _sprite_id: int = SPR0649_MACK_MEDIUM
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -4045,6 +4769,8 @@ class MackMedium(NPC):
 
 
 class KnifeGuyGridplane(NPC):
+    """Occupant NPC definition for Knife Guy (gridplane)"""
+
     _sprite_id: int = SPR0650_KNIFE_GUY_GRIDPLANE
     _min_vram_size: int = 0
     _y_shift: int = 1
@@ -4053,6 +4779,8 @@ class KnifeGuyGridplane(NPC):
 
 
 class TinyBloober(NPC):
+    """Occupant NPC definition for Tiny Bloober"""
+
     _sprite_id: int = SPR0651_TINY_BLOOBER_STANDALONE
     _acute_axis: int = 2
     _obtuse_axis: int = 2
@@ -4061,23 +4789,33 @@ class TinyBloober(NPC):
 
 
 class MimicStatue(MimicFace, Statue):
+    """Occupant NPC definition for Mimic Statue"""
+
     _sprite_id: int = SPR0652_MIMIC_STATUE
 
 
 class CrocoStatue(CrocoBase, Statue):
+    """Occupant NPC definition for Croco Statue"""
+
     _sprite_id: int = SPR0653_CROCO_STATUE
     _details = StatueDetails(horizontal_pixel_shift=-3)
 
 
 class BoosterStatue(Booster, Statue):
+    """Occupant NPC definition for Booster Statue"""
+
     _sprite_id: int = SPR0654_BOOSTER_STATUE
 
 
 class JohnnyStatue(JohnnySmall, Statue):
+    """Occupant NPC definition for Johnny Statue"""
+
     _sprite_id: int = SPR0655_JOHNNY_STATUE
 
 
 class MagikoopaStatue(SmallMagikoopa, Statue):
+    """Occupant NPC definition for Magikoopa Statue"""
+
     _sprite_id: int = SPR0656_MAGIKOOPA_STATUE
 
     _details = StatueDetails(
@@ -4088,10 +4826,14 @@ class MagikoopaStatue(SmallMagikoopa, Statue):
 
 
 class ValentinaStatue(NimbusLandStatue, Statue):
+    """Occupant NPC definition for Valentina Statue"""
+
     _sprite_id: int = SPR0063_VALENTINA_STATUE
 
 
 class ShovelKnightStatue(ShovelKnightBoss, Statue):
+    """Occupant NPC definition for Shovel Knight Statue"""
+
     _sprite_id: int = SPR0657_CLERK_MANAGER_DIRECTOR_STATUE
     _details = StatueDetails(
         horizontal_pixel_shift=-3,
@@ -4100,10 +4842,14 @@ class ShovelKnightStatue(ShovelKnightBoss, Statue):
 
 
 class YaridovichStatue(FakeElder, Statue):
+    """Occupant NPC definition for Yaridovich Statue"""
+
     _sprite_id: int = SPR0658_FAKE_ELDER_STATUE
 
 
 class GrateGuyStatue(GrateGuySmall, Statue):
+    """Occupant NPC definition for Grate Guy Statue"""
+
     _sprite_id: int = SPR0659_GRATE_GUY_STATUE
     _details = StatueDetails(
         horizontal_pixel_shift=-3,
@@ -4112,36 +4858,52 @@ class GrateGuyStatue(GrateGuySmall, Statue):
 
 
 class JinxStatue(Jinx, Statue):
+    """Occupant NPC definition for Jinx Statue"""
+
     _sprite_id: int = SPR0660_JINX_STATUE
 
 
 class MokuraStatue(MokuraCloud, Statue):
+    """Occupant NPC definition for Mokura Statue"""
+
     _sprite_id: int = SPR0661_MOKURA_STATUE
 
 
 class TerrapinStatue(Terrapin, Statue):
+    """Occupant NPC definition for Terrapin Statue"""
+
     _sprite_id: int = SPR0662_JAGGER_STATUE
 
 
 class PiranhaPlantStatue(PiranhaPlant, Statue):
+    """Occupant NPC definition for Piranha Plant Statue"""
+
     _sprite_id: int = SPR0663_PIRANHA_PLANT_STATUE
 
 
 class BlooberStatue(Bloober, Statue):
+    """Occupant NPC definition for Bloober Statue"""
+
     _sprite_id: int = SPR0664_BLOOBER_STATUE
 
 
 class FactoryChiefStatue(FactoryChief, Statue):
+    """Occupant NPC definition for Factory Chief Statue"""
+
     _sprite_id: int = SPR0665_FACTORY_CHIEF_STATUE
     _details = StatueDetails(horizontal_pixel_shift=-1)
 
 
 class AxemRedStatue(AxemRed, Statue):
+    """Occupant NPC definition for Axem Red Statue"""
+
     _sprite_id: int = SPR0666_AXEM_RED_STATUE
     _details = StatueDetails(horizontal_pixel_shift=-6)
 
 
 class BundtSmall(NPC):
+    """Occupant NPC definition for Bundt (small)"""
+
     _sprite_id: int = SPR0712_EMPTY
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -4153,11 +4915,15 @@ class BundtSmall(NPC):
 
 
 class BundtStatue(BundtSmall, Statue):
+    """Occupant NPC definition for Bundt Statue"""
+
     _sprite_id: int = SPR0667_BUNDT_STATUE
     _details = StatueDetails(horizontal_pixel_shift=-3)
 
 
 class CountDownStatue(CountDownGridplane, Statue):
+    """Occupant NPC definition for Count Down Statue"""
+
     _sprite_id: int = SPR0668_COUNT_DOWN_STATUE
     _details = StatueDetails(
         horizontal_pixel_shift=4,
@@ -4166,18 +4932,26 @@ class CountDownStatue(CountDownGridplane, Statue):
 
 
 class HammerBroStatue(HammerBroSmall, Statue):
+    """Occupant NPC definition for Hammer Bro Statue"""
+
     _sprite_id: int = SPR0669_HAMMER_BRO_STATUE
 
 
 class MackStatue(MackSmall, Statue):
+    """Occupant NPC definition for Mack Statue"""
+
     _sprite_id: int = SPR0670_MACK_STATUE
 
 
 class SmallBelomeStatue(Belome1Small, Statue):
+    """Occupant NPC definition for Small Belome Statue"""
+
     _sprite_id: int = SPR0671_SMALL_BELOME_STATUE
 
 
 class Belome2Large(NPC):
+    """Occupant NPC definition for Belome2 (large)"""
+
     _sprite_id: int = SPR0672_BELOME_LARGE_OVERWORLD
     _min_vram_size: int = 5
     _shadow_size = ShadowSize.OVAL_BIG
@@ -4199,51 +4973,75 @@ class Belome2Large(NPC):
 
 
 class BowyerStatue(BowyerSmall, Statue):
+    """Occupant NPC definition for Bowyer Statue"""
+
     _sprite_id: int = SPR0673_BOWYER_STATUE
 
 
 class PunchinelloStatue(PunchinelloSmall, Statue):
+    """Occupant NPC definition for Punchinello Statue"""
+
     _sprite_id: int = SPR0674_PUNCHINELLO_STATUE
 
 
 class DodoStatue(DodoSmall, Statue):
+    """Occupant NPC definition for Dodo Statue"""
+
     _sprite_id: int = SPR0675_DODO_STATUE
 
 
 class BirdettaStatue(BirdettaSmall, Statue):
+    """Occupant NPC definition for Birdetta Statue"""
+
     _sprite_id: int = SPR0676_BIRDETTA_STATUE
 
 
 class CzarStatue(CzarDragonSmall, Statue):
+    """Occupant NPC definition for Czar Statue"""
+
     _sprite_id: int = SPR0677_CZAR_DRAGON_STATUE
 
 
 class BoomerStatue(BoomerSmall, Statue):
+    """Occupant NPC definition for Boomer Statue"""
+
     _sprite_id: int = SPR0678_BOOMER_STATUE
 
 
 class ExorStatue(ExorSmall, Statue):
+    """Occupant NPC definition for Exor Statue"""
+
     _sprite_id: int = SPR0679_EXOR_STATUE
 
 
 class DominoStatue(DominoSmall, Statue):
+    """Occupant NPC definition for Domino Statue"""
+
     _sprite_id: int = SPR0680_DOMINO_STATUE
 
 
 class SmithyStatue(SmithySmall, Statue):
+    """Occupant NPC definition for Smithy Statue"""
+
     _sprite_id: int = SPR0681_SMITHY_STATUE
 
 
 class CulexStatue(CulexSmall, Statue):
+    """Occupant NPC definition for Culex Statue"""
+
     _sprite_id: int = SPR0682_CULEX_STATUE
 
 
 class MallowStatue(NPC):
+    """Occupant NPC definition for Mallow Statue"""
+
     _sprite_id: int = SPR0683_MALLOW_STATUE_UNTINTED
     _height: int = 8
 
 
 class Chompweed(NPC):
+    """Occupant NPC definition for Chompweed"""
+
     _sprite_id: int = SPR0685_CHOMPWEED
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -4251,6 +5049,8 @@ class Chompweed(NPC):
 
 
 class MackLarge(NPC):
+    """Occupant NPC definition for Mack (large)"""
+
     _sprite_id: int = SPR0686_MACK_SUB
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -4269,6 +5069,8 @@ class MackLarge(NPC):
 
 
 class Belome1Large(NPC):
+    """Occupant NPC definition for Belome1 (large)"""
+
     _sprite_id: int = SPR0687_BELOME_SUB
     _min_vram_size: int = 5
     _shadow_size = ShadowSize.OVAL_BIG
@@ -4288,6 +5090,8 @@ class Belome1Large(NPC):
 
 
 class BowyerLarge(NPC):
+    """Occupant NPC definition for Bowyer (large)"""
+
     _sprite_id: int = SPR0688_BOWYER_SUB
     _y_shift: int = 1
     _acute_axis: int = 14
@@ -4307,6 +5111,8 @@ class BowyerLarge(NPC):
 
 
 class JohnnyLarge(NPC):
+    """Occupant NPC definition for Johnny (large)"""
+
     _sprite_id: int = SPR0691_JOHNNY_SUB
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -4324,6 +5130,8 @@ class JohnnyLarge(NPC):
 
 
 class YaridovichLarge(NPC):
+    """Occupant NPC definition for Yaridovich (large)"""
+
     _sprite_id: int = SPR0692_YARIDOVICH_SUB
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -4342,6 +5150,8 @@ class YaridovichLarge(NPC):
 
 
 class KnifeGuyLarge(NPC):
+    """Occupant NPC definition for Knife Guy (large)"""
+
     _sprite_id: int = SPR0689_KNIFE_GUY_SUB
     _min_vram_size: int = 3
     _shadow_size = ShadowSize.OVAL_BIG
@@ -4352,6 +5162,8 @@ class KnifeGuyLarge(NPC):
 
 
 class GrateGuyLarge(NPC):
+    """Occupant NPC definition for Grate Guy (large)"""
+
     _sprite_id: int = SPR0690_GRATE_GUY_SUB
     _min_vram_size: int = 3
     _shadow_size = ShadowSize.OVAL_BIG
@@ -4371,6 +5183,8 @@ class GrateGuyLarge(NPC):
 
 
 class CulexLarge(NPC):
+    """Occupant NPC definition for Culex (large)"""
+
     _sprite_id: int = SPR0694_CULEX_SUB
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -4381,6 +5195,8 @@ class CulexLarge(NPC):
 
 
 class ValentinaLarge(NPC):
+    """Occupant NPC definition for Valentina (large)"""
+
     _sprite_id: int = SPR0697_VALENTINA_SUB
     _shadow_size = ShadowSize.OVAL_BIG
     _y_shift: int = 1
@@ -4400,6 +5216,8 @@ class ValentinaLarge(NPC):
 
 
 class CzarDragonLarge(NPC):
+    """Occupant NPC definition for Czar Dragon (large)"""
+
     _sprite_id: int = SPR0698_CZAR_DRAGON_SUB
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -4416,10 +5234,14 @@ class CzarDragonLarge(NPC):
 
 
 class DirectorLarge(ShovelKnightBossLarge):
+    """Occupant NPC definition for Director (large)"""
+
     _sprite_id: int = SPR0704_DIRECTOR_SUB
 
 
 class BeetleGridplane(ItemNPC):
+    """Occupant NPC definition for Beetle (gridplane)"""
+
     _sprite_id: int = SPR0706_BEETLE_GRIDPLANE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -4427,6 +5249,8 @@ class BeetleGridplane(ItemNPC):
 
 
 class BananaGridplane(ItemNPC):
+    """Occupant NPC definition for Banana (gridplane)"""
+
     _sprite_id: int = SPR0707_BANANA_GRIDPLANE
     _show_shadow: bool = False
     _shadow_size = ShadowSize.OVAL_SMALL
@@ -4434,22 +5258,32 @@ class BananaGridplane(ItemNPC):
 
 
 class CrownGridplane(ItemNPC):
+    """Occupant NPC definition for Crown (gridplane)"""
+
     _sprite_id: int = SPR0708_CROWN_GRIDPLANE
 
 
 class BroochGridplane(ItemNPC):
+    """Occupant NPC definition for Brooch (gridplane)"""
+
     _sprite_id: int = SPR0709_BROOCH_GRIDPLANE
 
 
 class ShoesGridplane(ItemNPC):
+    """Occupant NPC definition for Shoes (gridplane)"""
+
     _sprite_id: int = SPR0710_SHOES_GRIDPLANE
 
 
 class RingGridplane(ItemNPC):
+    """Occupant NPC definition for Ring (gridplane)"""
+
     _sprite_id: int = SPR0711_RING_GRIDPLANE
 
 
 class TinyBird(NPC):
+    """Occupant NPC definition for Tiny Bird"""
+
     _sprite_id: int = SPR0777_STAR_EGG_LITTLE_BROWN_BIRD
     _shadow_size = ShadowSize.OVAL_SMALL
     _y_shift: int = 1
@@ -4459,6 +5293,8 @@ class TinyBird(NPC):
 
 
 class SmithyLarge(NPC):
+    """Occupant NPC definition for Smithy (large)"""
+
     _sprite_id: int = SPR0959_SMITHY_LOWER
     _shadow_size = ShadowSize.BLOCK
     _acute_axis: int = 12
@@ -4474,6 +5310,8 @@ class SmithyLarge(NPC):
 
 
 class Goombette(NPC):
+    """Occupant NPC definition for Goombette"""
+
     _sprite_id: int = SPR0960_GOOMBETTE_LOWER
     _shadow_size = ShadowSize.OVAL_SMALL
     _acute_axis: int = 2
@@ -4489,6 +5327,8 @@ class Goombette(NPC):
 
 
 class Empty(ItemNPC):
+    """Occupant NPC definition for Empty NPC"""
+
     _sprite_id: int = SPR1023_EMPTY
     _shadow_size = ShadowSize.OVAL_SMALL
     _show_shadow: bool = False

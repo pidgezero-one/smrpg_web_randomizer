@@ -13,8 +13,8 @@ from randomizer.types.spells.constants.misc import (
 from randomizer.types.spells.enums import (
     EffectType,
     InflictFunction,
-    SpellElement,
-    SpellStatusEffects,
+    Element,
+    Status,
     SpellType,
     SpellBoosts,
 )
@@ -39,10 +39,10 @@ class Spell:
     _anim_ptr: int = 0  # I'm not writing an assembler for this yet
     _desc_ptr: int = 0
 
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _inflict: InflictFunction
-    _element: SpellElement.NoElement
+    _element: Element.NONE
 
     _checkStats: bool = False
     _ignoreDefense: bool = False
@@ -57,7 +57,7 @@ class Spell:
     _targetWounded: bool = False
     _targetOneParty: bool = False
     _targetNotSelf: bool = False
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
 
     _world: Optional[GameWorld] = None
@@ -124,10 +124,10 @@ class Spell:
         self._inflict = inflict
 
     @property
-    def element(self) -> SpellElement:
+    def element(self) -> Element:
         return self._element
 
-    def set_element(self, element: SpellElement) -> None:
+    def set_element(self, element: Element) -> None:
         self._element = element
 
     @property
@@ -215,10 +215,10 @@ class Spell:
         self._targetNotSelf = targetNotSelf
 
     @property
-    def status_effects(self) -> List[SpellStatusEffects]:
+    def status_effects(self) -> List[Status]:
         return deepcopy(self._status_effects)
 
-    def set_status_effects(self, status_effects: List[SpellStatusEffects]) -> None:
+    def set_status_effects(self, status_effects: List[Status]) -> None:
         self._status_effects = deepcopy(status_effects)
 
     @property

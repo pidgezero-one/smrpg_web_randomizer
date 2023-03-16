@@ -28,8 +28,8 @@ from randomizer.types.spells.enums import (
     EffectType,
     InflictFunction,
     SpellBoosts,
-    SpellElement,
-    SpellStatusEffects,
+    Element,
+    Status,
     SpellType,
 )
 
@@ -53,7 +53,7 @@ from randomizer.entities.spells.palettes import (
     THUNDERBOLT_FIRE,
     THUNDERBOLT_ICE,
 )
-from randomizer.types.world.flags.flags import CharacterSpellElements
+from randomizer.types.world.flags.flags import CharacterElements
 
 
 class Jump(CharacterSpell):
@@ -67,10 +67,10 @@ class Jump(CharacterSpell):
     _anim_ptr: int = 0x35C9CE
     _desc_ptr: int = 0x3A40A3
 
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
-    _inflict: InflictFunction = InflictFunction.IncJump
-    _element: SpellElement = SpellElement.Jump
+    _inflict: InflictFunction = InflictFunction.INC_JUMP
+    _element: Element = Element.JUMP
 
     _checkStats: bool = False
     _ignoreDefense: bool = False
@@ -86,7 +86,7 @@ class Jump(CharacterSpell):
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
 
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
 
     _timing_modifiers: TimingProperties = ONE_TIMING_FOR_125_OR_15X_DMG
@@ -97,17 +97,17 @@ class Jump(CharacterSpell):
 
 class IceJump(Jump):
     _title: str = "Ice Jump"
-    _element: SpellElement = SpellElement.Ice
+    _element: Element = Element.ICE
 
 
 class ThunderJump(Jump):
     _title: str = "Thunder Jump"
-    _element: SpellElement = SpellElement.Thunder
+    _element: Element = Element.THUNDER
 
 
 class FireJump(Jump):
     _title: str = "Fire Jump"
-    _element: SpellElement = SpellElement.Fire
+    _element: Element = Element.FIRE
 
 
 class FireOrb(CharacterSpell):
@@ -123,7 +123,7 @@ class FireOrb(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -132,8 +132,8 @@ class FireOrb(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -145,7 +145,7 @@ class FireOrb(CharacterSpell):
 
 class IceOrb(FireOrb):
     _title: str = "Ice Orb"
-    _element: SpellElement = SpellElement.Ice
+    _element: Element = Element.ICE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -164,7 +164,7 @@ class IceOrb(FireOrb):
 
 class ThunderOrb(FireOrb):
     _title: str = "Thunder Orb"
-    _element: SpellElement = SpellElement.Thunder
+    _element: Element = Element.THUNDER
 
     def get_patch(self):
         """Get patch for this spell.
@@ -183,7 +183,7 @@ class ThunderOrb(FireOrb):
 
 class EarthOrb(FireOrb):
     _title: str = "Earth Orb"
-    _element: SpellElement = SpellElement.Earth
+    _element: Element = Element.JUMP
 
     def get_patch(self):
         """Get patch for this spell.
@@ -213,7 +213,7 @@ class SuperJump(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -222,8 +222,8 @@ class SuperJump(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Jump
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.JUMP
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -235,17 +235,17 @@ class SuperJump(CharacterSpell):
 
 class IceSuperJump(SuperJump):
     _title: str = "Ice S.Jump"
-    _element: SpellElement = SpellElement.Ice
+    _element: Element = Element.ICE
 
 
 class ThunderSuperJump(SuperJump):
     _title: str = "Thndr S.Jump"
-    _element: SpellElement = SpellElement.Thunder
+    _element: Element = Element.THUNDER
 
 
 class FireSuperJump(SuperJump):
     _title: str = "Fire S.Jump"
-    _element: SpellElement = SpellElement.Fire
+    _element: Element = Element.FIRE
 
 
 class SuperFlame(CharacterSpell):
@@ -261,7 +261,7 @@ class SuperFlame(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -270,8 +270,8 @@ class SuperFlame(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -283,7 +283,7 @@ class SuperFlame(CharacterSpell):
 
 class IceSuperFlame(SuperFlame):
     _title: str = "Super Ice"
-    _element: SpellElement = SpellElement.Ice
+    _element: Element = Element.ICE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -302,7 +302,7 @@ class IceSuperFlame(SuperFlame):
 
 class ThunderSuperFlame(SuperFlame):
     _title: str = "SuperThunder"
-    _element: SpellElement = SpellElement.Thunder
+    _element: Element = Element.THUNDER
 
     def get_patch(self):
         """Get patch for this spell.
@@ -321,7 +321,7 @@ class ThunderSuperFlame(SuperFlame):
 
 class EarthSuperFlame(SuperFlame):
     _title: str = "Super Earth"
-    _element: SpellElement = SpellElement.Earth
+    _element: Element = Element.JUMP
 
     def get_patch(self):
         """Get patch for this spell.
@@ -351,7 +351,7 @@ class UltraJump(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -360,8 +360,8 @@ class UltraJump(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Jump
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.JUMP
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -373,17 +373,17 @@ class UltraJump(CharacterSpell):
 
 class IceUltraJump(UltraJump):
     _title: str = "Ice U.Jump"
-    _element: SpellElement = SpellElement.Ice
+    _element: Element = Element.ICE
 
 
 class ThunderUltraJump(UltraJump):
     _title: str = "Thndr U.Jump"
-    _element: SpellElement = SpellElement.Thunder
+    _element: Element = Element.THUNDER
 
 
 class FireUltraJump(UltraJump):
     _title: str = "Fire U.Jump"
-    _element: SpellElement = SpellElement.Fire
+    _element: Element = Element.FIRE
 
 
 class UltraFlame(CharacterSpell):
@@ -399,7 +399,7 @@ class UltraFlame(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -408,8 +408,8 @@ class UltraFlame(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -421,7 +421,7 @@ class UltraFlame(CharacterSpell):
 
 class IceUltraFlame(UltraFlame):
     _title: str = "Ultra Ice"
-    _element: SpellElement = SpellElement.Ice
+    _element: Element = Element.ICE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -440,7 +440,7 @@ class IceUltraFlame(UltraFlame):
 
 class ThunderUltraFlame(UltraFlame):
     _title: str = "UltraThunder"
-    _element: SpellElement = SpellElement.Thunder
+    _element: Element = Element.THUNDER
 
     def get_patch(self):
         """Get patch for this spell.
@@ -459,7 +459,7 @@ class ThunderUltraFlame(UltraFlame):
 
 class EarthUltraFlame(UltraFlame):
     _title: str = "Ultra Earth"
-    _element: SpellElement = SpellElement.Earth
+    _element: Element = Element.JUMP
 
     def get_patch(self):
         """Get patch for this spell.
@@ -489,8 +489,8 @@ class Therapy(CharacterSpell):
     _ignoreDefense: bool = True
     _checkOHKO: bool = False
     _overworldUsable: bool = True
-    _spell_type: SpellType = SpellType.Heal
-    _effect_type: EffectType = EffectType.Nullify
+    _spell_type: SpellType = SpellType.HEAL
+    _effect_type: EffectType = EffectType.NULLIFY
     _quad9s: bool = False
     _targetOthers: bool = True
     _targetEnemies: bool = False
@@ -498,15 +498,15 @@ class Therapy(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [
-        SpellStatusEffects.Mute,
-        SpellStatusEffects.Sleep,
-        SpellStatusEffects.Poison,
-        SpellStatusEffects.Fear,
-        SpellStatusEffects.Berserk,
-        SpellStatusEffects.Mushroom,
-        SpellStatusEffects.Scarecrow,
+    _element: Element
+    _status_effects: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
+        Status.BERSERK,
+        Status.MUSHROOM,
+        Status.SCARECROW,
     ]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
@@ -530,8 +530,8 @@ class GroupHug(CharacterSpell):
     _ignoreDefense: bool = True
     _checkOHKO: bool = False
     _overworldUsable: bool = True
-    _spell_type: SpellType = SpellType.Heal
-    _effect_type: EffectType = EffectType.Nullify
+    _spell_type: SpellType = SpellType.HEAL
+    _effect_type: EffectType = EffectType.NULLIFY
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = False
@@ -539,15 +539,15 @@ class GroupHug(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [
-        SpellStatusEffects.Mute,
-        SpellStatusEffects.Sleep,
-        SpellStatusEffects.Poison,
-        SpellStatusEffects.Fear,
-        SpellStatusEffects.Berserk,
-        SpellStatusEffects.Mushroom,
-        SpellStatusEffects.Scarecrow,
+    _element: Element
+    _status_effects: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
+        Status.BERSERK,
+        Status.MUSHROOM,
+        Status.SCARECROW,
     ]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
@@ -570,8 +570,8 @@ class SleepyTime(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = True
     _targetEnemies: bool = True
@@ -579,8 +579,8 @@ class SleepyTime(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _element: Element
+    _status_effects: List[Status] = [Status.SLEEP]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = True
@@ -602,7 +602,7 @@ class ComeBack(CharacterSpell):
     _ignoreDefense: bool = True
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Heal
+    _spell_type: SpellType = SpellType.HEAL
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -611,10 +611,10 @@ class ComeBack(CharacterSpell):
     _targetWounded: bool = True
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
-    _inflict: InflictFunction = InflictFunction.Revive
+    _inflict: InflictFunction = InflictFunction.REVIVE
     _hideNum: bool = False
     _timing_modifiers: TimingProperties = TIMED_HEALS_ALL_HP_TO_FIRST_TARGET
     _damage_modifiers: DamageModifiers = NO_MODIFIERS
@@ -634,8 +634,8 @@ class Mute(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = True
     _targetEnemies: bool = True
@@ -643,8 +643,8 @@ class Mute(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mute]
+    _element: Element
+    _status_effects: List[Status] = [Status.MUTE]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = True
@@ -667,7 +667,7 @@ class PsychBomb(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -676,8 +676,8 @@ class PsychBomb(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -700,8 +700,8 @@ class Terrorize(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -709,8 +709,8 @@ class Terrorize(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _element: Element
+    _status_effects: List[Status] = [Status.FEAR]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -733,8 +733,8 @@ class PoisonGas(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -742,8 +742,8 @@ class PoisonGas(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _element: Element
+    _status_effects: List[Status] = [Status.POISON]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -766,7 +766,7 @@ class Crusher(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -775,8 +775,8 @@ class Crusher(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -799,7 +799,7 @@ class BowserCrush(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -808,8 +808,8 @@ class BowserCrush(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -832,7 +832,7 @@ class GenoBeam(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -841,8 +841,8 @@ class GenoBeam(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -864,8 +864,8 @@ class GenoBoost(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = True
     _targetEnemies: bool = False
@@ -873,9 +873,9 @@ class GenoBoost(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
-    _boosts: List[SpellBoosts] = [SpellBoosts.MagicAttack, SpellBoosts.Attack]
+    _element: Element
+    _status_effects: List[Status] = []
+    _boosts: List[SpellBoosts] = [SpellBoosts.MAGIC_ATTACK, SpellBoosts.ATTACK]
     _inflict: InflictFunction
     _hideNum: bool = True
     _timing_modifiers: TimingProperties = TIMED_GIVES_TARGET_DEFENSE_UP_BUFF
@@ -897,7 +897,7 @@ class GenoWhirl(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -906,8 +906,8 @@ class GenoWhirl(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -930,7 +930,7 @@ class GenoBlast(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -939,8 +939,8 @@ class GenoBlast(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -963,7 +963,7 @@ class GenoFlash(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -972,8 +972,8 @@ class GenoFlash(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -996,7 +996,7 @@ class Thunderbolt(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1005,8 +1005,8 @@ class Thunderbolt(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Thunder
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.THUNDER
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1018,7 +1018,7 @@ class Thunderbolt(CharacterSpell):
 
 class IceThunderbolt(Thunderbolt):
     _title: str = "Icebolt"
-    _element: SpellElement = SpellElement.Ice
+    _element: Element = Element.ICE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1036,7 +1036,7 @@ class IceThunderbolt(Thunderbolt):
 
 class FireThunderbolt(Thunderbolt):
     _title: str = "Firebolt"
-    _element: SpellElement = SpellElement.Fire
+    _element: Element = Element.FIRE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1054,7 +1054,7 @@ class FireThunderbolt(Thunderbolt):
 
 class EarthThunderbolt(Thunderbolt):
     _title: str = "Earthbolt"
-    _element: SpellElement = SpellElement.Earth
+    _element: Element = Element.JUMP
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1083,7 +1083,7 @@ class HPRain(CharacterSpell):
     _ignoreDefense: bool = True
     _checkOHKO: bool = False
     _overworldUsable: bool = True
-    _spell_type: SpellType = SpellType.Heal
+    _spell_type: SpellType = SpellType.HEAL
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1092,8 +1092,8 @@ class HPRain(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1115,7 +1115,7 @@ class Psychopath(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1124,10 +1124,10 @@ class Psychopath(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
-    _inflict: InflictFunction = InflictFunction.Scan
+    _inflict: InflictFunction = InflictFunction.SCAN
     _hideNum: bool = True
     _timing_modifiers: TimingProperties = TIME_TO_ACTIVATE_HP_READ
     _damage_modifiers: DamageModifiers = NO_MODIFIERS
@@ -1148,7 +1148,7 @@ class Shocker(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1157,8 +1157,8 @@ class Shocker(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Thunder
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.THUNDER
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1170,7 +1170,7 @@ class Shocker(CharacterSpell):
 
 class IceShocker(Shocker):
     _title: str = "Ice Shocker"
-    _element: SpellElement = SpellElement.Ice
+    _element: Element = Element.ICE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1186,7 +1186,7 @@ class IceShocker(Shocker):
 
 class FireShocker(Shocker):
     _title: str = "Fire Shocker"
-    _element: SpellElement = SpellElement.Fire
+    _element: Element = Element.FIRE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1202,7 +1202,7 @@ class FireShocker(Shocker):
 
 class EarthShocker(Shocker):
     _title: str = "EarthShocker"
-    _element: SpellElement = SpellElement.Fire
+    _element: Element = Element.FIRE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1229,7 +1229,7 @@ class Snowy(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1238,8 +1238,8 @@ class Snowy(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Ice
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.ICE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1256,13 +1256,13 @@ class Snowy(CharacterSpell):
 
         """
         patch = super().get_patch()
-        if self.element == SpellElement.Thunder:
+        if self.element == Element.THUNDER:
             patch.add_data(0x33C141, SNOWY_THUNDER_UPPER.to_bytes())
             patch.add_data(0x33C400, SNOWY_THUNDER_LOWER.to_bytes())
-        elif self.element == SpellElement.Fire:
+        elif self.element == Element.FIRE:
             patch.add_data(0x33C141, SNOWY_FIRE_UPPER.to_bytes())
             patch.add_data(0x33C400, SNOWY_FIRE_LOWER.to_bytes())
-        elif self.element == SpellElement.Jump:
+        elif self.element == Element.JUMP:
             patch.add_data(0x33C141, SNOWY_EARTH_UPPER.to_bytes())
             patch.add_data(0x33C400, SNOWY_EARTH_LOWER.to_bytes())
         return patch
@@ -1270,7 +1270,7 @@ class Snowy(CharacterSpell):
 
 class ThunderSnowy(Snowy):
     _title: str = "Thundery"
-    _element: SpellElement = SpellElement.Thunder
+    _element: Element = Element.THUNDER
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1287,7 +1287,7 @@ class ThunderSnowy(Snowy):
 
 class FireSnowy(Snowy):
     _title: str = "Firey"
-    _element: SpellElement = SpellElement.Fire
+    _element: Element = Element.FIRE
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1304,7 +1304,7 @@ class FireSnowy(Snowy):
 
 class EarthSnowy(Snowy):
     _title: str = "Earthy"
-    _element: SpellElement = SpellElement.Earth
+    _element: Element = Element.JUMP
 
     def get_patch(self):
         """Get patch for this spell.
@@ -1332,7 +1332,7 @@ class StarRain(CharacterSpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1341,8 +1341,8 @@ class StarRain(CharacterSpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1374,7 +1374,7 @@ class Drain(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1383,8 +1383,8 @@ class Drain(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1400,7 +1400,7 @@ class LightningOrb(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1409,8 +1409,8 @@ class LightningOrb(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Thunder
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.THUNDER
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1426,7 +1426,7 @@ class Flame(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1435,8 +1435,8 @@ class Flame(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1452,7 +1452,7 @@ class Bolt(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1461,8 +1461,8 @@ class Bolt(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Thunder
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.THUNDER
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1478,7 +1478,7 @@ class Crystal(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1487,8 +1487,8 @@ class Crystal(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Ice
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.ICE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1504,7 +1504,7 @@ class FlameStone(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1513,8 +1513,8 @@ class FlameStone(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1530,7 +1530,7 @@ class MegaDrain(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1539,8 +1539,8 @@ class MegaDrain(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1556,7 +1556,7 @@ class WillyWisp(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1565,8 +1565,8 @@ class WillyWisp(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1582,7 +1582,7 @@ class DiamondSaw(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1591,8 +1591,8 @@ class DiamondSaw(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1608,7 +1608,7 @@ class Electroshock(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1617,8 +1617,8 @@ class Electroshock(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Thunder
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.THUNDER
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1634,7 +1634,7 @@ class Blast(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1643,8 +1643,8 @@ class Blast(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1660,7 +1660,7 @@ class Storm(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1669,8 +1669,8 @@ class Storm(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1686,7 +1686,7 @@ class IceRock(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1695,8 +1695,8 @@ class IceRock(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Ice
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.ICE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1710,7 +1710,7 @@ class Escape(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1719,10 +1719,10 @@ class Escape(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
-    _inflict: InflictFunction = InflictFunction.NoDmg
+    _inflict: InflictFunction = InflictFunction.NO_DMG
     _hideNum: bool = False
 
 
@@ -1736,7 +1736,7 @@ class DarkStar(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1745,8 +1745,8 @@ class DarkStar(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1762,7 +1762,7 @@ class Recover(EnemySpell):
     _ignoreDefense: bool = True
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Heal
+    _spell_type: SpellType = SpellType.HEAL
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1771,8 +1771,8 @@ class Recover(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1788,7 +1788,7 @@ class MegaRecover(EnemySpell):
     _ignoreDefense: bool = True
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Heal
+    _spell_type: SpellType = SpellType.HEAL
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -1797,8 +1797,8 @@ class MegaRecover(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1814,7 +1814,7 @@ class FlameWall(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1823,8 +1823,8 @@ class FlameWall(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1840,7 +1840,7 @@ class StaticE(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1849,8 +1849,8 @@ class StaticE(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Thunder
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.THUNDER
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1866,8 +1866,8 @@ class SandStorm(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -1875,8 +1875,8 @@ class SandStorm(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _element: Element
+    _status_effects: List[Status] = [Status.FEAR]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1892,7 +1892,7 @@ class Blizzard(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1901,8 +1901,8 @@ class Blizzard(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Ice
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.ICE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1918,7 +1918,7 @@ class DrainBeam(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1927,8 +1927,8 @@ class DrainBeam(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1944,7 +1944,7 @@ class MeteorBlast(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -1953,8 +1953,8 @@ class MeteorBlast(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1970,8 +1970,8 @@ class LightBeam(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -1979,8 +1979,8 @@ class LightBeam(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _element: Element
+    _status_effects: List[Status] = [Status.SLEEP]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -1996,7 +1996,7 @@ class WaterBlast(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2005,8 +2005,8 @@ class WaterBlast(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2022,7 +2022,7 @@ class Solidify(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2031,8 +2031,8 @@ class Solidify(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Ice
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.ICE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2048,8 +2048,8 @@ class PetalBlast(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -2057,8 +2057,8 @@ class PetalBlast(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mushroom]
+    _element: Element
+    _status_effects: List[Status] = [Status.MUSHROOM]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2074,8 +2074,8 @@ class AuroraFlash(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -2083,8 +2083,8 @@ class AuroraFlash(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _element: Element
+    _status_effects: List[Status] = [Status.SLEEP]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2100,7 +2100,7 @@ class Boulder(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2109,8 +2109,8 @@ class Boulder(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2126,7 +2126,7 @@ class Corona(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2135,8 +2135,8 @@ class Corona(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement = SpellElement.Fire
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element = Element.FIRE
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2152,7 +2152,7 @@ class MeteorSwarm(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2161,8 +2161,8 @@ class MeteorSwarm(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2179,7 +2179,7 @@ class KnockOut(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = True
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = True
     _targetOthers: bool = False
@@ -2188,8 +2188,8 @@ class KnockOut(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2204,7 +2204,7 @@ class WeirdMushroom(EnemySpell):
     _ignoreDefense: bool = True
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Heal
+    _spell_type: SpellType = SpellType.HEAL
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = True
@@ -2213,8 +2213,8 @@ class WeirdMushroom(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2230,7 +2230,7 @@ class BreakerBeam(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2239,8 +2239,8 @@ class BreakerBeam(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2255,8 +2255,8 @@ class Shredder(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Nullify
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.NULLIFY
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -2264,13 +2264,13 @@ class Shredder(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = [
-        SpellBoosts.MagicAttack,
-        SpellBoosts.Attack,
-        SpellBoosts.MagicDefense,
-        SpellBoosts.Defense,
+        SpellBoosts.MAGIC_ATTACK,
+        SpellBoosts.ATTACK,
+        SpellBoosts.MAGIC_DEFENSE,
+        SpellBoosts.DEFENSE,
     ]
     _inflict: InflictFunction
     _hideNum: bool = True
@@ -2286,7 +2286,7 @@ class Sledge(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2295,8 +2295,8 @@ class Sledge(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2312,7 +2312,7 @@ class SwordRain(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2321,8 +2321,8 @@ class SwordRain(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2338,7 +2338,7 @@ class SpearRain(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2347,8 +2347,8 @@ class SpearRain(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2364,7 +2364,7 @@ class ArrowRain(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2373,8 +2373,8 @@ class ArrowRain(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2389,7 +2389,7 @@ class BigBang(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2398,8 +2398,8 @@ class BigBang(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2414,8 +2414,8 @@ class ChestScrow(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -2423,8 +2423,8 @@ class ChestScrow(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Scarecrow]
+    _element: Element
+    _status_effects: List[Status] = [Status.SCARECROW]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2439,8 +2439,8 @@ class ChestFear(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -2448,8 +2448,8 @@ class ChestFear(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _element: Element
+    _status_effects: List[Status] = [Status.FEAR]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = True
@@ -2464,8 +2464,8 @@ class ChestMute(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -2473,8 +2473,8 @@ class ChestMute(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mute]
+    _element: Element
+    _status_effects: List[Status] = [Status.MUTE]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = True
@@ -2489,8 +2489,8 @@ class ChestPoison(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
-    _effect_type: EffectType = EffectType.Inflict
+    _spell_type: SpellType = SpellType.DAMAGE
+    _effect_type: EffectType = EffectType.INFLICT
     _quad9s: bool = False
     _targetOthers: bool = False
     _targetEnemies: bool = True
@@ -2498,8 +2498,8 @@ class ChestPoison(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _element: Element
+    _status_effects: List[Status] = [Status.POISON]
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = True
@@ -2514,7 +2514,7 @@ class ChainSaw(EnemySpell):
     _ignoreDefense: bool = False
     _checkOHKO: bool = False
     _overworldUsable: bool = False
-    _spell_type: SpellType = SpellType.Damage
+    _spell_type: SpellType = SpellType.DAMAGE
     _effect_type: EffectType
     _quad9s: bool = False
     _targetOthers: bool = False
@@ -2523,8 +2523,8 @@ class ChainSaw(EnemySpell):
     _targetWounded: bool = False
     _targetOneParty: bool = True
     _targetNotSelf: bool = False
-    _element: SpellElement
-    _status_effects: List[SpellStatusEffects] = []
+    _element: Element
+    _status_effects: List[Status] = []
     _boosts: List[SpellBoosts] = []
     _inflict: InflictFunction
     _hideNum: bool = False
@@ -2540,63 +2540,63 @@ class SpellDoNothing(EnemySpell):
 
 
 def _get_jump_spell(world) -> Type[Jump]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([Jump, FireJump, IceJump, ThunderJump])
     else:
         return Jump
 
 
 def _get_fire_orb_spell(world) -> Type[FireOrb]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([FireOrb, IceOrb, ThunderOrb, EarthOrb])
     else:
         return FireOrb
 
 
 def _get_super_jump_spell(world) -> Type[SuperJump]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([SuperJump, FireSuperJump, IceSuperJump, ThunderSuperJump])
     else:
         return SuperJump
 
 
 def _get_super_flame_spell(world) -> Type[SuperFlame]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([SuperFlame, IceSuperFlame, ThunderSuperFlame, EarthSuperFlame])
     else:
         return SuperFlame
 
 
 def _get_ultra_jump_spell(world) -> Type[UltraJump]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([UltraJump, FireUltraJump, IceUltraJump, ThunderUltraJump])
     else:
         return UltraJump
 
 
 def _get_ultra_flame_spell(world) -> Type[UltraFlame]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([UltraFlame, IceUltraFlame, ThunderUltraFlame, EarthUltraFlame])
     else:
         return UltraFlame
 
 
 def _get_thunderbolt_spell(world) -> Type[Thunderbolt]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([Thunderbolt, IceThunderbolt, FireThunderbolt, EarthThunderbolt])
     else:
         return Thunderbolt
 
 
 def _get_shocker_spell(world) -> Type[Shocker]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([Shocker, IceShocker, FireShocker, EarthShocker])
     else:
         return Shocker
 
 
 def _get_snowy_spell(world) -> Type[Snowy]:
-    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
+    if world.settings.is_boolean_flag_enabled(CharacterElements):
         return choice([Snowy, ThunderSnowy, FireSnowy, EarthSnowy])
     else:
         return Snowy

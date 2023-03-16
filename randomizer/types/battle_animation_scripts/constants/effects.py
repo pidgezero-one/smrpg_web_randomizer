@@ -1,3 +1,5 @@
+"""Meaningful const names of spell effects."""
+
 EF0000____DUMMY = 0
 EF0001____DUMMY = 1
 EF0002_THUNDERSHOCK = 2

@@ -1,4 +1,6 @@
-from .classes import LayerPriorityType
+"""Int subclass instances meaningfully representing layer priority in battle animations."""
+
+from randomizer.types.battle_animation_scripts.constants.classes import LayerPriorityType
 
 TRANSPARENCY_OFF = LayerPriorityType(0)
 OVERLAP_ALL = LayerPriorityType(1)

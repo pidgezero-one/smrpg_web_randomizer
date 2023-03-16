@@ -1,3 +1,5 @@
+"""Contextual constant names for every action script ID."""
+
 A0000_DO_NOTHING = 0
 A0001_FIX_F_COORD_FOR_CLONES = 1
 A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES = 2

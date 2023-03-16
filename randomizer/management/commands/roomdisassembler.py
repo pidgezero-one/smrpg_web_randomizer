@@ -51,7 +51,11 @@ from randomizer.management.disassembler_common import (
     writeline,
     bit_bool_from_num,
 )
-from randomizer.helpers.npcmodeltables import sprite_name_table, vram_store_table, shadow_size_table
+from randomizer.helpers.npcmodeltables import (
+    sprite_name_table,
+    vram_store_table,
+    shadow_size_table,
+)
 
 
 start = 0x148400
@@ -411,7 +415,7 @@ ELIGIBLE_NPCS = [
     npcs.StumpetHead,
     npcs.StumpetRoot,
     npcs.CzarBody,
-    npcs.VineBeanstalm,
+    npcs.VineBeanstalk,
     npcs.BrownBrick,
     npcs.SandWhirlpool,
     npcs.Letter,
@@ -660,17 +664,13 @@ class Command(BaseCommand):
             )
             writeline(
                 file,
-                "from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room"
+                "from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room",
             )
+            writeline(file, "from randomizer.data import npcs")
             writeline(
                 file,
-                "from randomizer.data import npcs"
+                "from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize",
             )
-            writeline(
-                file,
-                "from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize"
-            )
-            
 
             if len(d) == 0 and len(r) == 0 and len(e) == 0:
                 writeline(file, "room = None")
@@ -805,10 +805,14 @@ class Command(BaseCommand):
                         writeline(file, "            height=%i," % event.height)
                         writeline(file, "            length=%i," % event.length)
                         writeline(
-                            file, "            nw_se_edge_active=%r," % event.nw_se_edge_active
+                            file,
+                            "            nw_se_edge_active=%r,"
+                            % event.nw_se_edge_active,
                         )
                         writeline(
-                            file, "            ne_sw_edge_active=%r," % event.ne_sw_edge_active
+                            file,
+                            "            ne_sw_edge_active=%r,"
+                            % event.ne_sw_edge_active,
                         )
                         writeline(
                             file, "            byte_8_bit_4=%r," % event.byte_8_bit_4
@@ -998,7 +1002,7 @@ class Command(BaseCommand):
                     y = d[offset + 10] & 0x7F
                     z = d[offset + 11] & 0x1F
                     z_half = bit_bool_from_num(d[offset + 10], 7)
-                    direction = (d[offset + 11] >> 5)
+                    direction = d[offset + 11] >> 5
                     face_on_trigger = bit_bool_from_num(d[offset + 1], 3)
                     cant_enter_doors = bit_bool_from_num(d[offset + 1], 4)
                     byte2_bit5 = bit_bool_from_num(d[offset + 1], 5)
@@ -1024,8 +1028,8 @@ class Command(BaseCommand):
                     )
                     if npc_class is None:
                         raise Exception(
-                            "could not find a NPC matching sprite with ID %i in room %i" %
-                            (sprite_match, i),
+                            "could not find a NPC matching sprite with ID %i in room %i"
+                            % (sprite_match, i),
                         )
 
                     ending_args = [
@@ -1055,34 +1059,82 @@ class Command(BaseCommand):
                         npc_from_table.priority_0,
                         npc_from_table.priority_1,
                         npc_from_table.priority_2,
-                        None if npc_class.show_shadow == npc_from_table.show_shadow else npc_from_table.show_shadow,
-                        None if npc_class.acute_axis == npc_from_table.acute_axis else npc_from_table.acute_axis,
-                        None if npc_class.obtuse_axis == npc_from_table.obtuse_axis else npc_from_table.obtuse_axis,
-                        None if npc_class.height == npc_from_table.height else npc_from_table.height,
-                        None if npc_class.directions == npc_from_table.directions else npc_from_table.directions,
-                        None if npc_class.min_vram_size == npc_from_table.vram_size else npc_from_table.vram_size,
+                        None
+                        if npc_class.show_shadow == npc_from_table.show_shadow
+                        else npc_from_table.show_shadow,
+                        None
+                        if npc_class.acute_axis == npc_from_table.acute_axis
+                        else npc_from_table.acute_axis,
+                        None
+                        if npc_class.obtuse_axis == npc_from_table.obtuse_axis
+                        else npc_from_table.obtuse_axis,
+                        None
+                        if npc_class.height == npc_from_table.height
+                        else npc_from_table.height,
+                        None
+                        if npc_class.directions == npc_from_table.directions
+                        else npc_from_table.directions,
+                        None
+                        if npc_class.min_vram_size == npc_from_table.vram_size
+                        else npc_from_table.vram_size,
                         npc_from_table.cannot_clone,
-                        None if npc_class.byte2_bit0 == npc_from_table.byte2_bit0 else npc_from_table.byte2_bit0,
-                        None if npc_class.byte2_bit1 == npc_from_table.byte2_bit1 else npc_from_table.byte2_bit1,
-                        None if npc_class.byte2_bit2 == npc_from_table.byte2_bit2 else npc_from_table.byte2_bit2,
-                        None if npc_class.byte2_bit3 == npc_from_table.byte2_bit3 else npc_from_table.byte2_bit3,
-                        None if npc_class.byte2_bit4 == npc_from_table.byte2_bit4 else npc_from_table.byte2_bit4,
-                        None if npc_class.byte5_bit6 == npc_from_table.byte5_bit6 else npc_from_table.byte5_bit6,
-                        None if npc_class.byte5_bit7 == npc_from_table.byte5_bit7 else npc_from_table.byte5_bit7,
-                        None if npc_class.byte6_bit2 == npc_from_table.byte6_bit2 else npc_from_table.byte6_bit2,
-                        None if npc_class.y_shift == npc_from_table.y_shift else npc_from_table.y_shift,
+                        None
+                        if npc_class.byte2_bit0 == npc_from_table.byte2_bit0
+                        else npc_from_table.byte2_bit0,
+                        None
+                        if npc_class.byte2_bit1 == npc_from_table.byte2_bit1
+                        else npc_from_table.byte2_bit1,
+                        None
+                        if npc_class.byte2_bit2 == npc_from_table.byte2_bit2
+                        else npc_from_table.byte2_bit2,
+                        None
+                        if npc_class.byte2_bit3 == npc_from_table.byte2_bit3
+                        else npc_from_table.byte2_bit3,
+                        None
+                        if npc_class.byte2_bit4 == npc_from_table.byte2_bit4
+                        else npc_from_table.byte2_bit4,
+                        None
+                        if npc_class.byte5_bit6 == npc_from_table.byte5_bit6
+                        else npc_from_table.byte5_bit6,
+                        None
+                        if npc_class.byte5_bit7 == npc_from_table.byte5_bit7
+                        else npc_from_table.byte5_bit7,
+                        None
+                        if npc_class.byte6_bit2 == npc_from_table.byte6_bit2
+                        else npc_from_table.byte6_bit2,
+                        None
+                        if npc_class.y_shift == npc_from_table.y_shift
+                        else npc_from_table.y_shift,
                     ]
 
                     # start comparing properties of npc_from_table vs npc_class
                     if otype == 0:  # regular
                         npcType = RegularNPC
-                        args = [npc_class, initiator, event, action_script] + ending_args
+                        args = [
+                            npc_class,
+                            initiator,
+                            event,
+                            action_script,
+                        ] + ending_args
                     elif otype == 1:  # chest
                         npcType = ChestNPC
-                        args = [npc_class, initiator, event, action_script, upper_70A7, lower_70A7] + ending_args
+                        args = [
+                            npc_class,
+                            initiator,
+                            event,
+                            action_script,
+                            upper_70A7,
+                            lower_70A7,
+                        ] + ending_args
                     else:  # battle
                         npcType = BattlePackNPC
-                        args = [npc_class, initiator, after_battle, pack, action_script] + ending_args
+                        args = [
+                            npc_class,
+                            initiator,
+                            after_battle,
+                            pack,
+                            action_script,
+                        ] + ending_args
                     thisNPC = npcType(*args)
 
                     room_objects.append(thisNPC)
@@ -1090,7 +1142,7 @@ class Command(BaseCommand):
                     n += 1
 
                     extra_length = d[offset] & 0x0F
-                    if (extra_length > 0):
+                    if extra_length > 0:
                         l += extra_length * 4
                         for o in range(offset + 12, offset + l - 1, 4):
 
@@ -1098,11 +1150,13 @@ class Command(BaseCommand):
                                 npcType = RegularClone
                                 assigned_npc = base_assigned_npc + (d[o] & 0x07)
                                 event = base_event + (d[o] >> 5)
-                                action_script = base_action_script + ((d[o] & 0x1F) >> 3)
+                                action_script = base_action_script + (
+                                    (d[o] & 0x1F) >> 3
+                                )
                             elif otype == 1:  # chest
                                 npcType = ChestClone
-                                upper_70A7 = (d[o] >> 4)
-                                lower_70A7 = (d[o] & 0x0F)
+                                upper_70A7 = d[o] >> 4
+                                lower_70A7 = d[o] & 0x0F
                             else:  # battle
                                 npcType = BattlePackClone
                                 action_script = base_action_script + (d[o] & 0x0F)
@@ -1112,7 +1166,12 @@ class Command(BaseCommand):
                             sprite_match = npc_from_table.sprite_id
 
                             npc_class = next(
-                                (x for x in ELIGIBLE_NPCS if x.sprite_id == sprite_match), None
+                                (
+                                    x
+                                    for x in ELIGIBLE_NPCS
+                                    if x.sprite_id == sprite_match
+                                ),
+                                None,
                             )
                             if npc_class is None:
                                 raise Exception(
@@ -1120,7 +1179,7 @@ class Command(BaseCommand):
                                     (sprite_match, i),
                                 )
 
-                            #print(npc_from_table.cannot_clone)
+                            # print(npc_from_table.cannot_clone)
 
                             ending_args = [
                                 bit_bool_from_num(d[o + 1], 7),
@@ -1132,22 +1191,52 @@ class Command(BaseCommand):
                                 npc_from_table.priority_0,
                                 npc_from_table.priority_1,
                                 npc_from_table.priority_2,
-                                None if npc_class.show_shadow == npc_from_table.show_shadow else npc_from_table.show_shadow,
-                                None if npc_class.y_shift == npc_from_table.y_shift else npc_from_table.y_shift,
-                                None if npc_class.acute_axis == npc_from_table.acute_axis else npc_from_table.acute_axis,
-                                None if npc_class.obtuse_axis == npc_from_table.obtuse_axis else npc_from_table.obtuse_axis,
-                                None if npc_class.height == npc_from_table.height else npc_from_table.height,
-                                None if npc_class.directions == npc_from_table.directions else npc_from_table.directions,
-                                None if npc_class.min_vram_size == npc_from_table.vram_size else npc_from_table.vram_size,
+                                None
+                                if npc_class.show_shadow == npc_from_table.show_shadow
+                                else npc_from_table.show_shadow,
+                                None
+                                if npc_class.y_shift == npc_from_table.y_shift
+                                else npc_from_table.y_shift,
+                                None
+                                if npc_class.acute_axis == npc_from_table.acute_axis
+                                else npc_from_table.acute_axis,
+                                None
+                                if npc_class.obtuse_axis == npc_from_table.obtuse_axis
+                                else npc_from_table.obtuse_axis,
+                                None
+                                if npc_class.height == npc_from_table.height
+                                else npc_from_table.height,
+                                None
+                                if npc_class.directions == npc_from_table.directions
+                                else npc_from_table.directions,
+                                None
+                                if npc_class.min_vram_size == npc_from_table.vram_size
+                                else npc_from_table.vram_size,
                                 npc_from_table.cannot_clone,
-                                None if npc_class.byte2_bit0 == npc_from_table.byte2_bit0 else npc_from_table.byte2_bit0,
-                                None if npc_class.byte2_bit1 == npc_from_table.byte2_bit1 else npc_from_table.byte2_bit1,
-                                None if npc_class.byte2_bit2 == npc_from_table.byte2_bit2 else npc_from_table.byte2_bit2,
-                                None if npc_class.byte2_bit3 == npc_from_table.byte2_bit3 else npc_from_table.byte2_bit3,
-                                None if npc_class.byte2_bit4 == npc_from_table.byte2_bit4 else npc_from_table.byte2_bit4,
-                                None if npc_class.byte5_bit6 == npc_from_table.byte5_bit6 else npc_from_table.byte5_bit6,
-                                None if npc_class.byte5_bit7 == npc_from_table.byte5_bit7 else npc_from_table.byte5_bit7,
-                                None if npc_class.byte6_bit2 == npc_from_table.byte6_bit2 else npc_from_table.byte6_bit2,
+                                None
+                                if npc_class.byte2_bit0 == npc_from_table.byte2_bit0
+                                else npc_from_table.byte2_bit0,
+                                None
+                                if npc_class.byte2_bit1 == npc_from_table.byte2_bit1
+                                else npc_from_table.byte2_bit1,
+                                None
+                                if npc_class.byte2_bit2 == npc_from_table.byte2_bit2
+                                else npc_from_table.byte2_bit2,
+                                None
+                                if npc_class.byte2_bit3 == npc_from_table.byte2_bit3
+                                else npc_from_table.byte2_bit3,
+                                None
+                                if npc_class.byte2_bit4 == npc_from_table.byte2_bit4
+                                else npc_from_table.byte2_bit4,
+                                None
+                                if npc_class.byte5_bit6 == npc_from_table.byte5_bit6
+                                else npc_from_table.byte5_bit6,
+                                None
+                                if npc_class.byte5_bit7 == npc_from_table.byte5_bit7
+                                else npc_from_table.byte5_bit7,
+                                None
+                                if npc_class.byte6_bit2 == npc_from_table.byte6_bit2
+                                else npc_from_table.byte6_bit2,
                             ]
 
                             if otype == 0:  # regular
@@ -1177,24 +1266,56 @@ class Command(BaseCommand):
                         writeline(file, "        ChestClone( # %i" % index)
                     else:
                         raise Exception("unknown class")
-                    writeline(file, "            occupant=npcs.%s," % obj.model.occupant.__name__)
-                    if isclass_or_instance(obj, BattlePackNPC) or isclass_or_instance(obj, RegularNPC) or isclass_or_instance(obj, ChestNPC):
+                    writeline(
+                        file,
+                        "            occupant=npcs.%s," % obj.model.occupant.__name__,
+                    )
+                    if (
+                        isclass_or_instance(obj, BattlePackNPC)
+                        or isclass_or_instance(obj, RegularNPC)
+                        or isclass_or_instance(obj, ChestNPC)
+                    ):
                         initiator, _ = byte(prefix="Initiator", table=event_initiator)(
-                            [obj.initiator])
+                            [obj.initiator]
+                        )
                         writeline(file, "            initiator=%s," % initiator)
                     if isclass_or_instance(obj, BattlePackNPC):
-                        postbattle, _ = byte(prefix="PostBattle", table=post_battle_behaviour)([obj.after_battle])
+                        postbattle, _ = byte(
+                            prefix="PostBattle", table=post_battle_behaviour
+                        )([obj.after_battle])
                         writeline(file, "            after_battle=%s," % postbattle)
-                    if isclass_or_instance(obj, BattlePackNPC) or isclass_or_instance(obj, BattlePackClone):
+                    if isclass_or_instance(obj, BattlePackNPC) or isclass_or_instance(
+                        obj, BattlePackClone
+                    ):
                         writeline(file, "            battle_pack=%i," % obj.battle_pack)
-                    if isclass_or_instance(obj, RegularNPC) or isclass_or_instance(obj, RegularClone) or isclass_or_instance(obj, ChestNPC):
-                        writeline(file, "            event_script=%i," % obj.event_script)
-                    if isclass_or_instance(obj, RegularNPC) or isclass_or_instance(obj, BattlePackNPC) or isclass_or_instance(obj, ChestNPC) or isclass_or_instance(obj, RegularClone) or isclass_or_instance(obj, BattlePackClone):
-                        writeline(file, "            action_script=%i," % obj.action_script)
-                    if isclass_or_instance(obj, ChestNPC) or isclass_or_instance(obj, ChestClone):
+                    if (
+                        isclass_or_instance(obj, RegularNPC)
+                        or isclass_or_instance(obj, RegularClone)
+                        or isclass_or_instance(obj, ChestNPC)
+                    ):
+                        writeline(
+                            file, "            event_script=%i," % obj.event_script
+                        )
+                    if (
+                        isclass_or_instance(obj, RegularNPC)
+                        or isclass_or_instance(obj, BattlePackNPC)
+                        or isclass_or_instance(obj, ChestNPC)
+                        or isclass_or_instance(obj, RegularClone)
+                        or isclass_or_instance(obj, BattlePackClone)
+                    ):
+                        writeline(
+                            file, "            action_script=%i," % obj.action_script
+                        )
+                    if isclass_or_instance(obj, ChestNPC) or isclass_or_instance(
+                        obj, ChestClone
+                    ):
                         writeline(file, "            lower_70A7=%i," % obj.lower_70A7)
                         writeline(file, "            upper_70A7=%i," % obj.upper_70A7)
-                    if isclass_or_instance(obj, BattlePackNPC) or isclass_or_instance(obj, RegularNPC) or isclass_or_instance(obj, ChestNPC):
+                    if (
+                        isclass_or_instance(obj, BattlePackNPC)
+                        or isclass_or_instance(obj, RegularNPC)
+                        or isclass_or_instance(obj, ChestNPC)
+                    ):
                         if obj.speed != 0:
                             writeline(file, "            speed=%i," % obj.speed)
                     writeline(file, "            visible=%r," % obj.visible)
@@ -1203,74 +1324,145 @@ class Command(BaseCommand):
                     writeline(file, "            z=%i," % obj.z)
                     writeline(file, "            z_half=%r," % obj.z_half)
                     direction, _ = byte(
-                        prefix="RadialDirection", table=radial_direction_table)([obj.direction])
+                        prefix="RadialDirection", table=radial_direction_table
+                    )([obj.direction])
                     writeline(file, "            direction=%s," % direction)
-                    if isclass_or_instance(obj, BattlePackNPC) or isclass_or_instance(obj, RegularNPC) or isclass_or_instance(obj, ChestNPC):
-                        writeline(file, "            face_on_trigger=%r," % obj.face_on_trigger)
-                        writeline(file, "            cant_enter_doors=%r," % obj.cant_enter_doors)
+                    if (
+                        isclass_or_instance(obj, BattlePackNPC)
+                        or isclass_or_instance(obj, RegularNPC)
+                        or isclass_or_instance(obj, ChestNPC)
+                    ):
+                        writeline(
+                            file,
+                            "            face_on_trigger=%r," % obj.face_on_trigger,
+                        )
+                        writeline(
+                            file,
+                            "            cant_enter_doors=%r," % obj.cant_enter_doors,
+                        )
                         writeline(file, "            byte2_bit5=%r," % obj.byte2_bit5)
-                        writeline(file, "            set_sequence_playback=%r," % obj.set_sequence_playback)
+                        writeline(
+                            file,
+                            "            set_sequence_playback=%r,"
+                            % obj.set_sequence_playback,
+                        )
                         writeline(file, "            cant_float=%r," % obj.cant_float)
-                        writeline(file, "            cant_walk_up_stairs=%r," % obj.cant_walk_up_stairs)
-                        writeline(file, "            cant_walk_under=%r," % obj.cant_walk_under)
-                        writeline(file, "            cant_pass_walls=%r," % obj.cant_pass_walls)
-                        writeline(file, "            cant_jump_through=%r," % obj.cant_jump_through)
-                        writeline(file, "            cant_pass_npcs=%r," % obj.cant_pass_npcs)
+                        writeline(
+                            file,
+                            "            cant_walk_up_stairs=%r,"
+                            % obj.cant_walk_up_stairs,
+                        )
+                        writeline(
+                            file,
+                            "            cant_walk_under=%r," % obj.cant_walk_under,
+                        )
+                        writeline(
+                            file,
+                            "            cant_pass_walls=%r," % obj.cant_pass_walls,
+                        )
+                        writeline(
+                            file,
+                            "            cant_jump_through=%r," % obj.cant_jump_through,
+                        )
+                        writeline(
+                            file, "            cant_pass_npcs=%r," % obj.cant_pass_npcs
+                        )
                         writeline(file, "            byte3_bit5=%r," % obj.byte3_bit5)
-                        writeline(file, "            cant_walk_through=%r," % obj.cant_walk_through)
+                        writeline(
+                            file,
+                            "            cant_walk_through=%r," % obj.cant_walk_through,
+                        )
                         writeline(file, "            byte3_bit7=%r," % obj.byte3_bit7)
-                        writeline(file, "            slidable_along_walls=%r," % obj.slidable_along_walls)
-                        writeline(file, "            cant_move_if_in_air=%r," % obj.cant_move_if_in_air)
-                        writeline(file, "            byte7_upper2=%r," % obj.byte7_upper2)
+                        writeline(
+                            file,
+                            "            slidable_along_walls=%r,"
+                            % obj.slidable_along_walls,
+                        )
+                        writeline(
+                            file,
+                            "            cant_move_if_in_air=%r,"
+                            % obj.cant_move_if_in_air,
+                        )
+                        writeline(
+                            file, "            byte7_upper2=%r," % obj.byte7_upper2
+                        )
                     writeline(file, "            priority_0=%r," % obj.model.priority_0)
                     writeline(file, "            priority_1=%r," % obj.model.priority_1)
                     writeline(file, "            priority_2=%r," % obj.model.priority_2)
                     if obj.model._show_shadow is not None:
-                        writeline(file, "            show_shadow=%r," % obj.model.show_shadow)
+                        writeline(
+                            file, "            show_shadow=%r," % obj.model.show_shadow
+                        )
                     if obj.model._acute_axis is not None:
-                        writeline(file, "            acute_axis=%i," % obj.model.acute_axis)
+                        writeline(
+                            file, "            acute_axis=%i," % obj.model.acute_axis
+                        )
                     if obj.model._obtuse_axis is not None:
-                        writeline(file, "            obtuse_axis=%i," % obj.model.obtuse_axis)
+                        writeline(
+                            file, "            obtuse_axis=%i," % obj.model.obtuse_axis
+                        )
                     if obj.model._height is not None:
                         writeline(file, "            height=%i," % obj.model.height)
                     if obj.model._vram_size is not None:
-                        writeline(file, "            vram_size=%i," % obj.model.vram_size)
+                        writeline(
+                            file, "            vram_size=%i," % obj.model.vram_size
+                        )
                     if obj.model._directions is not None:
-                        vram_store, _ = byte(prefix="VramStore", table=vram_store_table)([obj.model.directions])
+                        vram_store, _ = byte(
+                            prefix="VramStore", table=vram_store_table
+                        )([obj.model.directions])
                         writeline(file, "            directions=%s," % vram_store)
-                    writeline(file, "            cannot_clone=%r," % obj.model.cannot_clone)
+                    writeline(
+                        file, "            cannot_clone=%r," % obj.model.cannot_clone
+                    )
                     if obj.model._byte2_bit0 is not None:
-                        writeline(file, "            byte2_bit0=%r," % obj.model.byte2_bit0)
+                        writeline(
+                            file, "            byte2_bit0=%r," % obj.model.byte2_bit0
+                        )
                     if obj.model._byte2_bit1 is not None:
-                        writeline(file, "            byte2_bit1=%r," % obj.model.byte2_bit1)
+                        writeline(
+                            file, "            byte2_bit1=%r," % obj.model.byte2_bit1
+                        )
                     if obj.model._byte2_bit2 is not None:
-                        writeline(file, "            byte2_bit2=%r," % obj.model.byte2_bit2)
+                        writeline(
+                            file, "            byte2_bit2=%r," % obj.model.byte2_bit2
+                        )
                     if obj.model._byte2_bit3 is not None:
-                        writeline(file, "            byte2_bit3=%r," % obj.model.byte2_bit3)
+                        writeline(
+                            file, "            byte2_bit3=%r," % obj.model.byte2_bit3
+                        )
                     if obj.model._byte2_bit4 is not None:
-                        writeline(file, "            byte2_bit4=%r," % obj.model.byte2_bit4)
+                        writeline(
+                            file, "            byte2_bit4=%r," % obj.model.byte2_bit4
+                        )
                     if obj.model._byte5_bit6 is not None:
-                        writeline(file, "            byte5_bit6=%r," % obj.model.byte5_bit6)
+                        writeline(
+                            file, "            byte5_bit6=%r," % obj.model.byte5_bit6
+                        )
                     if obj.model._byte5_bit7 is not None:
-                        writeline(file, "            byte5_bit7=%r," % obj.model.byte5_bit7)
+                        writeline(
+                            file, "            byte5_bit7=%r," % obj.model.byte5_bit7
+                        )
                     if obj.model._byte6_bit2 is not None:
-                        writeline(file, "            byte6_bit2=%r," % obj.model.byte6_bit2)
+                        writeline(
+                            file, "            byte6_bit2=%r," % obj.model.byte6_bit2
+                        )
                     if obj.model._y_shift is not None:
                         writeline(file, "            y_shift=%i," % obj.model.y_shift)
                     writeline(file, "        ),")
-
 
                 writeline(file, "    ]")
 
             writeline(file, ")")
             file.close()
 
-        file = open("%s/rooms.py" % dest,
-                    "w", encoding='utf-8')
+        file = open("%s/rooms.py" % dest, "w", encoding="utf-8")
         for i in range(512):
             writeline(
-                file, 'from randomizer.data.rooms.room_%i import room as room_%i' % (i, i))
-        writeline(file, 'rooms = [None]*512')
+                file,
+                "from randomizer.data.rooms.room_%i import room as room_%i" % (i, i),
+            )
+        writeline(file, "rooms = [None]*512")
         for i in range(512):
-            writeline(file, 'rooms[%i] = room_%i' % (i, i))
+            writeline(file, "rooms[%i] = room_%i" % (i, i))
         file.close()

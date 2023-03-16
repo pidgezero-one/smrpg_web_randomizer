@@ -1,4 +1,6 @@
-from .classes import BattleTarget
+"""Int subclass instances representing valid targets in battle animation script commands."""
+
+from randomizer.types.battle_animation_scripts.constants.classes import BattleTarget
 
 MARIO = BattleTarget(0)
 TOADSTOOL = BattleTarget(1)

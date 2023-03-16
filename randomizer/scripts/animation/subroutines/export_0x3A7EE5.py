@@ -2,7 +2,9 @@ from randomizer.types.battle_animation_scripts.classes import AnimationScriptBan
 from randomizer.types.battle_animation_scripts.constants.script_ids.bank_names import (
     SUBROUTINES_0X3A7EE5,
 )
-from .contents.subroutine_0x3A7EE5 import script as subroutine_0x3A7EE5
+from randomizer.scripts.animation.subroutines.contents.subroutine_0x3A7EE5 import (
+    script as subroutine_0x3A7EE5,
+)
 
 bank = AnimationScriptBank(
     name=SUBROUTINES_0X3A7EE5,

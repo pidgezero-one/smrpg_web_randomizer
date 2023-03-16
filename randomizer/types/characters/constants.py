@@ -1,3 +1,5 @@
+""""Miscellaeous constants used for playable character classes and functions."""
+
 from typing import List, Tuple
 from randomizer.types.characters.enums import LevelStats
 
@@ -44,11 +46,11 @@ CHARACTER_BASE_LEARNED_SPELLS_ADDRESS: int = 0x3A42F5
 
 # Stats used during levelups.
 CHARACTER_LEVEL_STATS: List[str] = [
-    LevelStats.MaxHP,
-    LevelStats.Attack,
-    LevelStats.Defense,
-    LevelStats.MagicAttack,
-    LevelStats.MagicDefense,
+    LevelStats.MAX_HP,
+    LevelStats.ATTACK,
+    LevelStats.DEFENSE,
+    LevelStats.MAGIC_ATTACK,
+    LevelStats.MAGIC_DEFENSE,
 ]
 ENDING_PALETTES: List[Tuple[int, int]] = [
     (0x37A9D8, 0x37B31A),

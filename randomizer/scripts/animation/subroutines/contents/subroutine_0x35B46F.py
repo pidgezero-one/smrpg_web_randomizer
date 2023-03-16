@@ -90,7 +90,7 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToOMEMMain(amem=0x6B, omem=0x6B, identifier="command_0x35b50e"),
         JmpIfAMEM8BitGreaterOrEqualThanConst(0x6B, 31, ["command_0x35b51c"]),
         DisplayMessage(BATTLE_MESSAGE, 13),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         SetAMEM8BitToConst(0x6F, 1, identifier="command_0x35b51c"),
         SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
         Pause1Frame(identifier="command_0x35b524"),

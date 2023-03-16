@@ -151,7 +151,7 @@ room = Room(
             cannot_clone=False,
         ),
         RegularNPC(  # 2
-            occupant=npcs.VineBeanstalm,
+            occupant=npcs.VineBeanstalk,
             initiator=Initiator.NONE,
             event_script=2304,
             action_script=15,

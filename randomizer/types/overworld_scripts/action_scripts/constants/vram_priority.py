@@ -1,3 +1,5 @@
+"""Int subclass instances representing valid VRAM priority levels."""
+
 from classes import VRAMPriority
 
 MARIO_OVERLAPS_ON_ALL_SIDES = VRAMPriority(0)

@@ -8,7 +8,7 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b" \x80\x10\x00"), identifier="queuestart_0x35a77d"),
         JmpIfAMEM8BitGreaterOrEqualThanConst(0x60, 31, ["command_0x35a78b"]),
         DisplayMessage(BATTLE_MESSAGE, 11),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         ClearAMEM16Bit(0x60, identifier="command_0x35a78b"),
         ClearAMEM8Bit(0x62),
         ClearAMEM8Bit(0x6C),

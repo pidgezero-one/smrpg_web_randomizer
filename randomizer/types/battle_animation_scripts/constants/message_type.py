@@ -1,4 +1,6 @@
-from .classes import MessageType
+"""Int subclass instances representing the context of a dialog displayed in battle."""
+
+from randomizer.types.battle_animation_scripts.constants.classes import MessageType
 
 BATTLE_DIALOGUE = MessageType(0)
 PSYCHOPATH_MESSAGE = MessageType(1)

@@ -1,4 +1,6 @@
-from .classes import PauseUntil
+"""Int subclass instances representing the behaviour of a script pause."""
+
+from randomizer.types.battle_animation_scripts.constants.classes import PauseUntil
 
 SPRITE_SHIFT_COMPLETE = PauseUntil(6)
 BUTTON_PRESSED = PauseUntil(8)

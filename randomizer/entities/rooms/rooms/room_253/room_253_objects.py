@@ -3,7 +3,7 @@ from randomizer.entities.rooms.object_imports import *
 objects = [
     # NPC_0
     RegularNPC(
-        occupant=VineBeanstalm,
+        occupant=VineBeanstalk,
         initiator=EventInitiator.NONE,
         event_script=E2304_BANK_1F_RETURN_EVENT_2,
         action_script=A0015_DO_NOTHING,
@@ -37,7 +37,7 @@ objects = [
     ),
     # NPC_1
     RegularClone(
-        occupant=VineBeanstalm,
+        occupant=VineBeanstalk,
         event_script=E2304_BANK_1F_RETURN_EVENT_2,
         action_script=A0015_DO_NOTHING,
         visible=True,

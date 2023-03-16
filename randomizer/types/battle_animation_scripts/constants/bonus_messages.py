@@ -1,4 +1,6 @@
-from .classes import BonusMessage
+"""Int subclass instances representing the messages that appear from in-battle bonus flowers."""
+
+from randomizer.types.battle_animation_scripts.constants.classes import BonusMessage
 
 BM_ATTACK = BonusMessage(0)
 BM_DEFENSE = BonusMessage(1)

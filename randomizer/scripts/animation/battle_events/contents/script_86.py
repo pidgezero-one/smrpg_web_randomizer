@@ -1,4 +1,4 @@
-# BE0086_SMELTER_POURS_MOLTEN_LIQUID_SMITHY_WELDS
+"""BE0086_SMELTER_POURS_MOLTEN_LIQUID_SMITHY_WELDS"""
 
 from randomizer.scripts.animation.script_imports import *
 

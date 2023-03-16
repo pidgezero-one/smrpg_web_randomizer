@@ -1,3 +1,5 @@
+""""Miscellaeous constants used for enemy classes and functions."""
+
 TOTAL_ENEMIES = 0x100
 FLOWER_BONUS_BASE_ADDRESS = 0x39BB44
 BASE_PSYCHOPATH_POINTER_ADDRESS = 0x399FD1

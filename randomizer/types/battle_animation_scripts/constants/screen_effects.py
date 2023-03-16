@@ -1,3 +1,5 @@
+"""Const names for screen effect IDs."""
+
 SEF0000_GENO_FLASH = 0
 SEF0001_SNOWY = 1
 SEF0002_TERRORIZE = 2

@@ -1,3 +1,5 @@
+"""Constants denoting the context of each room ID."""
+
 R000_DEBUG_ROOM: int = 0x000
 R001_____BLUE_BG_NOTHING_THERE: int = 0x001
 R002_BOWSERS_KEEP_OUTSIDE_MARIO_ENTERS_AT_BEGINNING_OF_GAME: int = 0x002

@@ -1,3 +1,5 @@
+"""Const names for overworld music IDs."""
+
 M0000_CURRENT = 0
 M0001_DODO_SCOMING = 1
 M0002_MUSHROOMKINGDOM = 2

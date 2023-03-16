@@ -1,3 +1,5 @@
+"""Constants representing monster entrance IDs"""
+
 ENT0000_NONE = 0
 ENT0001_SLIDE_IN = 1
 ENT0002_LONG_JUMP = 2

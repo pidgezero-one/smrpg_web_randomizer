@@ -1,46 +1,107 @@
-from enum import IntEnum
+from enum import IntEnum, Enum
+from typing import TypeVar
+from randomizer.types.numbers.classes import UInt4, UInt8
+
+ELEMENT_NAME_NONE = "No Element"
+ELEMENT_NAME_FIRE = "Fire"
+ELEMENT_NAME_ICE = "Ice"
+ELEMENT_NAME_THUNDER = "Thunder"
+ELEMENT_NAME_JUMP = "Jump"
+
+STATUS_NAME_MUTE = "Mute"
+STATUS_NAME_SLEEP = "Sleep"
+STATUS_NAME_POISON = "Poison"
+STATUS_NAME_FEAR = "Fear"
+STATUS_NAME_BERSERK = "Berserk"
+STATUS_NAME_MUSHROOM = "Mushroom"
+STATUS_NAME_SCARECROW = "Scarecrow"
+STATUS_NAME_INVINCIBLE = "Invincible"
+
+
+class DescribableAttribute:
+    _name: str
+    _stat_value: UInt4
+    _spell_value: UInt8
+    _stat_char: str
+    _dialog_char: str
+
+    @property
+    def name(self) -> str:
+        return self._name
+
+    @property
+    def stat_value(self) -> UInt4:
+        return self._stat_value
+
+    @property
+    def spell_value(self) -> UInt8:
+        return self._spell_value
+
+    @property
+    def stat_char(self) -> str:
+        return self._stat_char
+
+    @property
+    def dialog_char(self) -> str:
+        return self._dialog_char
+
+    def __init__(
+        self,
+        name: str,
+        stat_value: int,
+        spell_value: int,
+        stat_char: str,
+        dialog_char: str,
+    ) -> None:
+        self._name = name
+        self._stat_value = UInt4(stat_value)
+        self._spell_value = UInt8(spell_value)
+        self._stat_char = stat_char
+        self._dialog_char = dialog_char
+
+
+TDescAttrEnum = TypeVar("TDescAttrEnum", bound=DescribableAttribute)
+
+
+class Element(DescribableAttribute, Enum):
+    NONE = DescribableAttribute(ELEMENT_NAME_NONE, 0, 0, "", "")
+    ICE = DescribableAttribute(ELEMENT_NAME_ICE, 4, 0x10, "\x81", "\x7D")
+    THUNDER = DescribableAttribute(ELEMENT_NAME_THUNDER, 5, 0x20, "\x82", "\x7F")
+    FIRE = DescribableAttribute(ELEMENT_NAME_FIRE, 6, 0x40, "\x80\x98", "\x7E")
+    JUMP = DescribableAttribute(ELEMENT_NAME_JUMP, 7, 0x80, "", "\x85")
+
+
+class Status(DescribableAttribute, Enum):
+    MUTE = DescribableAttribute(STATUS_NAME_MUTE, 0, 0, "\x83", "\x82")
+    SLEEP = DescribableAttribute(STATUS_NAME_SLEEP, 1, 1, "\x84", "\x80")
+    POISON = DescribableAttribute(STATUS_NAME_POISON, 2, 2, "\x85", "\x83")
+    FEAR = DescribableAttribute(STATUS_NAME_FEAR, 3, 3, "\x86", "\x81")
+    BERSERK = DescribableAttribute(STATUS_NAME_BERSERK, 4, 4, "\x8A", "")
+    MUSHROOM = DescribableAttribute(STATUS_NAME_MUSHROOM, 5, 5, "\x98\x87", "")
+    SCARECROW = DescribableAttribute(STATUS_NAME_SCARECROW, 6, 6, "\x88", "")
+    INVINCIBLE = DescribableAttribute(STATUS_NAME_INVINCIBLE, 7, 7, "", "")
 
 
 class SpellType(IntEnum):
-    Damage = 0
-    Heal = 1
+    DAMAGE = 0
+    HEAL = 1
 
 
 class EffectType(IntEnum):
-    Inflict = 2
-    Nullify = 4
-
-
-class SpellElement(IntEnum):
-    NoElement = 0x00
-    Ice = 0x10
-    Thunder = 0x20
-    Fire = 0x40
-    Earth = 0x80
-    Jump = 0x80
+    INFLICT = 2
+    NULLIFY = 4
 
 
 class InflictFunction(IntEnum):
-    Scan = 0
-    Miss = 1
-    NoDmg = 2
-    Revive = 3
-    IncJump = 4
-
-
-class SpellStatusEffects(IntEnum):
-    Mute = 0
-    Sleep = 1
-    Poison = 2
-    Fear = 3
-    Berserk = 4
-    Mushroom = 5
-    Scarecrow = 6
-    Invincible = 7
+    SCAN = 0
+    MISS = 1
+    NO_DMG = 2
+    REVIVE = 3
+    INC_JUMP = 4
 
 
 class SpellBoosts(IntEnum):
-    MagicAttack = 3
-    Attack = 4
-    MagicDefense = 5
-    Defense = 6
+    MAGIC_ATTACK = 3
+    ATTACK = 4
+    MAGIC_DEFENSE = 5
+    DEFENSE = 6

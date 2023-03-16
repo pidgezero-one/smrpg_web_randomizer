@@ -1,4 +1,6 @@
-from .music import (
+"""Helper functions related to battle music."""
+
+from randomizer.types.battles.battle_music.music import (
     NormalBattleMusic,
     MidbossMusic,
     BossMusic,
@@ -12,6 +14,7 @@ from .music import (
 
 
 def get_default_music():
+    """Returns a list of every battle music class."""
     return [
         NormalBattleMusic(),
         MidbossMusic(),

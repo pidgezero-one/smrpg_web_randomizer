@@ -1,3 +1,5 @@
+"""Constants representing battle animation bank names"""
+
 FLOWER_BONUS = "flower_bonus"
 TOAD_TUTORIAL = "toad_tutorial"
 MONSTER_SPELLS = "monster_spells"

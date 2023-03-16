@@ -1,3 +1,12 @@
+"""Constants for battle formation IDs.
+A formation defines how enemies are arranged on the battlefield.
+A battle back consists of three formations, and loads one randomly.
+Every battle in the game uses a battle pack.
+Battles which should only ever load one formation, such as bosses,
+can use the same formation three times.
+This file is a list of contextually named constants representing
+the ID of each formation in the game."""
+
 FORM0000_ONE_BOBOMB_HENCHMAN: int = 0
 FORM0001_FOUR_BOBOMB_HENCHMEN: int = 1
 FORM0002_APPRENTICE_HENCHMAN: int = 2

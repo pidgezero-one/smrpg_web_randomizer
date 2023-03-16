@@ -112,7 +112,7 @@ script = SubroutineOrBanklessScript(
             store_palette=True,
         ),
         DisplayMessage(BATTLE_MESSAGE, 15),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         PauseScriptUntilSpriteSequenceDone(),
         SetAMEM40ToXYZCoords(origin=ABSOLUTE_POSITION, x=0, y=-32, z=0, set_y=True),
         PlaySound(sound=S0181_LAMB_S_LURE_SINGLE),

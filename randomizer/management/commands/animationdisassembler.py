@@ -4301,7 +4301,7 @@ def convert_event_script_command(command, valid_identifiers):
         args["dialog_id"] = str(cmd[2])
         include_argnames = False
     elif opcode == 0x7B:
-        cls = "PauseScriptUntilDialogueClosed"
+        cls = "PauseScriptUntilDialogClosed"
     elif opcode == 0x7E:
         cls = "FadeOutObject"
         args["duration"] = str(cmd[1])

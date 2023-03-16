@@ -2,7 +2,9 @@ from randomizer.types.battle_animation_scripts.classes import AnimationScriptBan
 from randomizer.types.battle_animation_scripts.constants.script_ids.bank_names import (
     BEHAVIOUR_22_0X350A3E,
 )
-from .contents.subroutine_0x22 import script as subroutine_0x22
+from randomizer.scripts.animation.monster_behaviours.contents.script_22 import (
+    script as subroutine_0x22,
+)
 
 bank = AnimationScriptBank(
     name=BEHAVIOUR_22_0X350A3E,

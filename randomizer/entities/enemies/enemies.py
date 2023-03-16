@@ -6,8 +6,8 @@ from randomizer.types.battle_animation_scripts.constants.script_ids.bank_names i
     SUBROUTINES_0X353437,
 )
 
-from randomizer.types.items.enums import EquipElement, ItemStatusEffect
 from randomizer.logic import utils
+from randomizer.types.spells.enums import Element, Status
 
 from randomizer.types.enemies.classes import Enemy, AllyClone, Henchman, ShellySupport
 from randomizer.types.enemies.enums import ApproachSound, HitSound, FlowerBonusType
@@ -69,13 +69,13 @@ class Terrapin(Enemy):
     _speed: int = 10
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # reward attributes
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -104,13 +104,13 @@ class Spikey(Enemy):
     _speed: int = 14
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element nullification
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 1
@@ -144,13 +144,13 @@ class Skytroopa(Enemy):
     _evade: int = 8
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 1
@@ -185,13 +185,13 @@ class MadMallet(Enemy):
     _speed: int = 20
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 20
@@ -242,13 +242,13 @@ class Shaman(Enemy):
     _speed: int = 9
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 17
@@ -284,13 +284,13 @@ class Crook(Enemy):
     _magic_evade: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 10
@@ -337,13 +337,13 @@ class Goomba(Enemy):
     _speed: int = 13
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 1
@@ -373,13 +373,13 @@ class PiranhaPlant(Enemy):
     _speed: int = 6
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 5
@@ -429,13 +429,13 @@ class Amanita(Enemy):
     _magic_evade: int = 10
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 3
@@ -468,13 +468,13 @@ class Goby(Enemy):
     _evade: int = 20
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 3
@@ -511,13 +511,13 @@ class Bloober(Enemy):
     _evade: int = 20
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.FIRE, Element.THUNDER]
 
     # rewards
     _xp: int = 12
@@ -564,13 +564,13 @@ class BandanaRed(Enemy):
     _speed: int = 20
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.FIRE, Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 18
@@ -617,13 +617,13 @@ class Lakitu(Enemy):
     _evade: int = 13
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
+    _resistances: List[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 10
@@ -659,13 +659,13 @@ class Birdy(Enemy):
     _evade: int = 18
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _status_immunities: List[Status] = [Status.SLEEP]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 16
@@ -715,18 +715,18 @@ class Pinwheel(Enemy):
     _evade: int = 35
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
+    _resistances: List[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 23
@@ -758,13 +758,13 @@ class Ratfunk(Enemy):
     _evade: int = 30
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 2
@@ -796,13 +796,13 @@ class K9(Enemy):
     _speed: int = 19
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 2
@@ -831,13 +831,13 @@ class Magmite(Enemy):
     _speed: int = 2
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 5
@@ -869,13 +869,13 @@ class TheBigBoo(Enemy):
     _evade: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Fear]
+    _status_immunities: List[Status] = [Status.FEAR]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 2
@@ -904,13 +904,13 @@ class DryBones(Enemy):
     _speed: int = 9
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 12
@@ -948,13 +948,13 @@ class Greaper(Enemy):
     _magic_evade: int = 30
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 13
@@ -988,13 +988,13 @@ class Sparky(Enemy):
     _evade: int = 6
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.FIRE]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # rewards
     _xp: int = 4
@@ -1026,13 +1026,13 @@ class Chomp(Enemy):
     _speed: int = 10
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 10
@@ -1063,21 +1063,21 @@ class Pandorite(Enemy):
     _speed: int = 1
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
 
     # special status
@@ -1116,17 +1116,17 @@ class ShyRanger(Enemy):
     _evade: int = 50
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
-        EquipElement.Jump,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
+        Element.JUMP,
     ]
 
     # rewards
@@ -1159,13 +1159,13 @@ class Bobomb(Enemy):
     _speed: int = 1
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.THUNDER, Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 4
@@ -1213,13 +1213,13 @@ class Spookum(Enemy):
     _speed: int = 18
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 8
@@ -1265,13 +1265,13 @@ class HammerBro(Enemy):
 
     # other properties
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _status_immunities: List[Status] = [Status.SLEEP]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # special status
     _ohko_immune: bool = True
@@ -1308,13 +1308,13 @@ class Buzzer(Enemy):
     _flower_bonus_chance: int = 70
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.THUNDER, Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # other properties
     _morph_chance: float = 1.0
@@ -1340,13 +1340,13 @@ class Ameboid(Enemy):
     _magic_evade: int = 50
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 10
@@ -1378,13 +1378,13 @@ class Gecko(Enemy):
     _evade: int = 14
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
+    _resistances: List[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 10
@@ -1414,13 +1414,13 @@ class Wiggler(Enemy):
     _speed: int = 10
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 6
@@ -1453,13 +1453,13 @@ class Crusty(Enemy):
     _speed: int = 6
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 25
@@ -1493,17 +1493,17 @@ class Kamek(Enemy):
     _speed: int = 12
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -1542,13 +1542,13 @@ class Leuko(Enemy):
     _magic_evade: int = 30
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
+    _resistances: List[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 20
@@ -1582,13 +1582,13 @@ class Jawful(Enemy):
     _speed: int = 200
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Fear]
+    _status_immunities: List[Status] = [Status.FEAR]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 27
@@ -1624,13 +1624,13 @@ class Enigma(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 10
@@ -1653,13 +1653,13 @@ class Blaster(Enemy):
     _flower_bonus_chance: int = 0
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 12
@@ -1684,13 +1684,13 @@ class Guerrilla(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 8
@@ -1710,13 +1710,13 @@ class Babayaga(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -1738,13 +1738,13 @@ class Hobgoblin(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 4
@@ -1769,13 +1769,13 @@ class Reacher(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 30
@@ -1801,16 +1801,16 @@ class Shogun(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Fear,
-        ItemStatusEffect.Sleep,
+    _status_immunities: List[Status] = [
+        Status.FEAR,
+        Status.SLEEP,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 24
@@ -1835,16 +1835,16 @@ class Orbuser(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
     # rewards
     _xp: int = 5
@@ -1872,13 +1872,13 @@ class HeavyTroopa(Enemy):
     _flying: bool = True
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 32
@@ -1904,13 +1904,13 @@ class Shadow(Enemy):
     _flower_bonus_chance: int = 60
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 3
@@ -1936,13 +1936,13 @@ class Cluster(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 8
@@ -1962,11 +1962,11 @@ class BahamuttKamek(Enemy):
     _magic_defense: int = 20
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -1999,11 +1999,11 @@ class BahamuttChester(Enemy):
     _magic_defense: int = 20
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -2040,13 +2040,13 @@ class Octolot(Enemy):
     _flower_bonus_chance: int = 60
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.FIRE, Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 6
@@ -2071,13 +2071,13 @@ class Frogog(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.FIRE, Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 3
@@ -2103,13 +2103,13 @@ class Clerk(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 50
@@ -2147,13 +2147,13 @@ class Gunyolk(Enemy):
     sprite_height = 63
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice, EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.ICE, Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 100
@@ -2188,18 +2188,18 @@ class Boomer(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 55
@@ -2228,11 +2228,13 @@ class Boomer(Enemy):
         # Change to blue state.  Scale shuffled stats based on vanilla ratios.
         patch.add_data(
             0x353629,
-            utils.ByteField(int(round(min(self.attack * 0.6, 255)))).as_bytes(),
+            utils.ByteField(
+                int(round(min(self.attack * 0.6, 255)))).as_bytes(),
         )
         patch.add_data(
             0x35362D,
-            utils.ByteField(int(round(min(self.defense * 0.6429, 255)))).as_bytes(),
+            utils.ByteField(
+                int(round(min(self.defense * 0.6429, 255)))).as_bytes(),
         )
         patch.add_data(
             0x353631,
@@ -2251,7 +2253,8 @@ class Boomer(Enemy):
         patch.add_data(0x3535E2, utils.ByteField(self.attack).as_bytes())
         patch.add_data(0x3535E6, utils.ByteField(self.defense).as_bytes())
         patch.add_data(0x3535EA, utils.ByteField(self.magic_attack).as_bytes())
-        patch.add_data(0x3535EE, utils.ByteField(self.magic_defense).as_bytes())
+        patch.add_data(0x3535EE, utils.ByteField(
+            self.magic_defense).as_bytes())
 
         return patch
 
@@ -2272,13 +2275,13 @@ class Remocon(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Ice, EquipElement.Thunder]
+    _resistances: List[Element] = [Element.ICE, Element.THUNDER]
 
     # rewards
     _xp: int = 8
@@ -2303,13 +2306,13 @@ class Snapdragon(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 4
@@ -2329,13 +2332,13 @@ class Stumpet(Enemy):
     _fp: int = 100
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
@@ -2361,10 +2364,10 @@ class Dodo(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
     ]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -2396,7 +2399,7 @@ class Dodo(Enemy):
         # update dodo's HP
         _, command = monsterscript.get_command_by_name("dodo_solo_ends")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.6))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.6))
 
 
 class Jester(Enemy):
@@ -2417,13 +2420,13 @@ class Jester(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 10
@@ -2449,13 +2452,13 @@ class Artichoker(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
+    _resistances: List[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 12
@@ -2479,13 +2482,13 @@ class Arachne(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 6
@@ -2511,13 +2514,13 @@ class Carriboscis(Enemy):
     _flower_bonus_chance: int = 60
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 10
@@ -2544,18 +2547,18 @@ class Hippopo(Enemy):
     _one_per_battle: bool = True
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 80
@@ -2579,13 +2582,13 @@ class Mastadoom(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
+    _resistances: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 20
@@ -2604,13 +2607,13 @@ class Corkpedite(Enemy):
     _fp: int = 100
     _morph_chance: float = 0.25
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -2637,13 +2640,13 @@ class Terracotta(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 25
@@ -2667,13 +2670,13 @@ class Spikester(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 6
@@ -2700,13 +2703,13 @@ class Malakoopa(Enemy):
     _flying: bool = True
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 23
@@ -2731,13 +2734,13 @@ class Pounder(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 24
@@ -2779,13 +2782,13 @@ class Poundette(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 28
@@ -2827,13 +2830,13 @@ class Sackit(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 20
@@ -2860,13 +2863,13 @@ class GuGoomba(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 15
@@ -2892,18 +2895,18 @@ class Chewy(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 14
@@ -2929,13 +2932,13 @@ class Fireball(Enemy):
     _flower_bonus_chance: int = 30
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice, EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.ICE, Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 8
@@ -2963,13 +2966,13 @@ class MrKipper(Enemy):
     _high_flying: bool = True
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.THUNDER, Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 8
@@ -3000,13 +3003,13 @@ class FactoryChief(Enemy):
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4
@@ -3034,13 +3037,13 @@ class BandanaBlue(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 20
@@ -3073,13 +3076,13 @@ class Manager(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 60
@@ -3112,9 +3115,9 @@ class Bluebird(Enemy):
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.PIERCE
     _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _resistances: List[EquipElement] = [EquipElement.Ice]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _resistances: List[Element] = [Element.ICE]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
     _flower_bonus_chance: int = 100
@@ -3169,13 +3172,13 @@ class AlleyRat(Enemy):
     _rare_item_drop: "Type[RegularItem]" = Mushroom
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
 
 class Chow(Enemy):
@@ -3193,16 +3196,16 @@ class Chow(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 15
@@ -3222,13 +3225,13 @@ class Magmus(Enemy):
     _magic_evade: int = 10
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -3258,13 +3261,13 @@ class LilBoo(Enemy):
     _flower_bonus_chance: int = 10
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 28
@@ -3287,18 +3290,18 @@ class Vomer(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 19
@@ -3324,13 +3327,13 @@ class GlumReaper(Enemy):
     _flower_bonus_chance: int = 50
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 35
@@ -3351,9 +3354,9 @@ class Pyrosphere(Enemy):
     _evade: int = 7
     _morph_chance: float = 0.25
     _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Poison]
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [Status.POISON]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
     _flower_bonus_chance: int = 70
@@ -3400,13 +3403,13 @@ class ChompChomp(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 12
@@ -3427,17 +3430,17 @@ class Hidon(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -3475,13 +3478,13 @@ class SlingShy(Enemy):
     _rare_item_drop: "Type[RegularItem]" = HoneySyrup
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
 
 class Robomb(Enemy):
@@ -3500,13 +3503,13 @@ class Robomb(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 6
@@ -3531,13 +3534,13 @@ class ShyGuy(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 2
@@ -3585,21 +3588,21 @@ class Ninja(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Fire,
-        EquipElement.Thunder,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.FIRE,
+        Element.THUNDER,
     ]
 
     # rewards
@@ -3628,13 +3631,13 @@ class Stinger(Enemy):
     _flying: bool = True
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 13
@@ -3664,13 +3667,13 @@ class Goombette(Henchman):
     _xp: int = 2
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1667
@@ -3700,13 +3703,13 @@ class Geckit(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 18
@@ -3728,13 +3731,13 @@ class Jabit(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 18
@@ -3759,13 +3762,13 @@ class Starcruster(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 36
@@ -3791,13 +3794,13 @@ class Merlin(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 50
@@ -3818,13 +3821,13 @@ class Muckle(Enemy):
     _evade: int = 1
     _morph_chance: float = 0.25
     _sound_on_hit: HitSound = HitSound.SLAP
-    _resistances: List[EquipElement] = [EquipElement.Ice]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.ICE]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -3853,13 +3856,13 @@ class Forkies(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 32
@@ -3886,13 +3889,13 @@ class Gorgon(Enemy):
     _flower_bonus_chance: int = 30
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 20
@@ -3913,13 +3916,13 @@ class BigBertha(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 35
@@ -3945,13 +3948,13 @@ class ChainedKong(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 35
@@ -3972,12 +3975,13 @@ class Fautso(Enemy):
     _fp: int = 100
     _evade: int = 10
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [EquipElement.Thunder, EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Fear,
-        ItemStatusEffect.Poison,
+    _resistances: List[Element] = [
+        Element.THUNDER, Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE, Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.FEAR,
+        Status.POISON,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -4012,13 +4016,13 @@ class Strawhead(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 17
@@ -4039,13 +4043,13 @@ class Juju(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4067,13 +4071,13 @@ class ArmoredAnt(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 30
@@ -4097,16 +4101,16 @@ class Orbison(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
+    _weaknesses: List[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
 
     # rewards
@@ -4133,13 +4137,13 @@ class TuboTroopa(Enemy):
     _flying: bool = True
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
+    _weaknesses: List[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 40
@@ -4165,13 +4169,13 @@ class Doppel(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 40
@@ -4198,13 +4202,13 @@ class Pulsar(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Jump]
+    _resistances: List[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 15
@@ -4231,13 +4235,13 @@ class Octovader(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
+    _resistances: List[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 30
@@ -4256,9 +4260,9 @@ class Ribbite(Enemy):
     _magic_defense: int = 29
     _fp: int = 100
     _morph_chance: float = 1.0
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Fear]
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [Status.FEAR]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
     _flower_bonus_chance: int = 80
@@ -4287,13 +4291,13 @@ class Director(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 70
@@ -4324,13 +4328,13 @@ class Puppox(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
+    _resistances: List[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 30
@@ -4356,18 +4360,18 @@ class FinkFlower(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 20
@@ -4388,13 +4392,13 @@ class Lumbler(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4417,13 +4421,13 @@ class Springer(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 29
@@ -4443,13 +4447,13 @@ class Harlequin(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4467,9 +4471,9 @@ class Kriffid(Enemy):
     _morph_chance: float = 0.25
     _sound_on_hit: HitSound = HitSound.CLAW
     _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Poison]
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [Status.POISON]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
     _flower_bonus_chance: int = 80
@@ -4497,13 +4501,13 @@ class Spinthra(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Poison]
+    _status_immunities: List[Status] = [Status.POISON]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 30
@@ -4523,13 +4527,13 @@ class Radish(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4546,13 +4550,13 @@ class Crippo(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4569,13 +4573,13 @@ class MastaBlasta(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4592,13 +4596,13 @@ class Piledriver(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4620,13 +4624,13 @@ class Apprentice(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 1
@@ -4660,17 +4664,17 @@ class BoxBoy(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -4697,18 +4701,18 @@ class Shelly(ShellySupport):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4758,16 +4762,16 @@ class Shelly(ShellySupport):
         # update shelly's HP
         _, command = monsterscript.get_command_by_name("shelly_hp_phase_1")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.8))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.8))
         _, command = monsterscript.get_command_by_name("shelly_hp_phase_2")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.6))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.6))
         _, command = monsterscript.get_command_by_name("shelly_hp_phase_3")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.4))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.4))
         _, command = monsterscript.get_command_by_name("shelly_hp_phase_4")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.2))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.2))
 
         # update shelly summons
         index, _ = monsterscript.get_command_by_name("shelly_summon")
@@ -4776,7 +4780,8 @@ class Shelly(ShellySupport):
                 "shelly_summon", RunBattleEvent(self.summon_event)
             )
         for id in self.summons:
-            monsterscript.insert_after_identifier("shelly_summon", cast(CallTarget, id))
+            monsterscript.insert_after_identifier(
+                "shelly_summon", cast(CallTarget, id))
         monsterscript.delete_at_index(index)
 
 
@@ -4791,13 +4796,13 @@ class Superspike(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4815,16 +4820,16 @@ class DodoSolo(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
     ]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 70
@@ -4848,13 +4853,13 @@ class Oerlikon(Enemy):
     _fp: int = 100
     _morph_chance: float = 1.0
     _sound_on_approach: ApproachSound = ApproachSound.STARSLAP_SPIKEY_ENIGMA
-    _resistances: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -4878,17 +4883,17 @@ class Chester(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Fire,
-        EquipElement.Thunder,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.FIRE,
+        Element.THUNDER,
     ]
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -4910,13 +4915,13 @@ class CorkpediteBody(Enemy):
     _magic_defense: int = 1
     _fp: int = 100
     _morph_chance: float = 1.0
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
@@ -4939,20 +4944,20 @@ class Torte(Henchman):
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
     _sound_on_approach: ApproachSound = ApproachSound.TORTE
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -4988,13 +4993,13 @@ class Shyaway(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 1
@@ -5018,16 +5023,16 @@ class JinxClone(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -5060,13 +5065,13 @@ class MachineMadeShyster(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 28
@@ -5103,13 +5108,13 @@ class MachineMadeDrillBit(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -5125,19 +5130,19 @@ class Formless(Enemy):
     _evade: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -5167,19 +5172,19 @@ class Mokura(Enemy):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 90
@@ -5199,13 +5204,13 @@ class FireCrystal(Henchman):
     _fp: int = 250
     _evade: int = 10
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -5238,13 +5243,13 @@ class WaterCrystal(Henchman):
     _fp: int = 250
     _evade: int = 20
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Ice]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.ICE]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -5277,13 +5282,13 @@ class EarthCrystal(Henchman):
     _fp: int = 250
     _evade: int = 5
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Jump]
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.JUMP]
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -5316,13 +5321,13 @@ class WindCrystal(Henchman):
     _fp: int = 250
     _evade: int = 30
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.THUNDER]
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -5356,18 +5361,18 @@ class MarioClone(AllyClone):
     _fp: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 10
@@ -5396,20 +5401,20 @@ class PeachClone(AllyClone):
     _magic_defense: int = 70
     _fp: int = 180
     _ohko_immune: bool = True
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 1
@@ -5438,13 +5443,13 @@ class BowserClone(AllyClone):
     _fp: int = 1
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -5477,13 +5482,13 @@ class GenoClone(AllyClone):
     _fp: int = 40
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _resistances: List[EquipElement] = [EquipElement.Ice]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.ICE]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -5516,18 +5521,18 @@ class MallowClone(AllyClone):
     _fp: int = 80
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[EquipElement] = [EquipElement.Ice, EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.ICE, Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 60
@@ -5562,13 +5567,13 @@ class Shyster(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 3
@@ -5590,13 +5595,13 @@ class Kinklink(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -5613,13 +5618,13 @@ class HanginShy(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -5633,13 +5638,13 @@ class Smelter(Enemy):
     _magic_defense: int = 100
     _fp: int = 100
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -5668,19 +5673,19 @@ class MachineMadeMack(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 80
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 120
@@ -5701,21 +5706,21 @@ class MachineMadeBowyer(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 80
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 150
@@ -5736,21 +5741,21 @@ class MachineMadeYaridovich(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 80
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 180
@@ -5772,11 +5777,11 @@ class MachineMadeAxemPink(Enemy):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[EquipElement] = [EquipElement.Ice]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
+    _resistances: List[Element] = [Element.ICE]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -5819,16 +5824,16 @@ class MachineMadeAxemBlack(Enemy):
     _evade: int = 30
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 20
@@ -5868,11 +5873,11 @@ class MachineMadeAxemRed(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -5914,11 +5919,11 @@ class MachineMadeAxemYellow(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
+    _resistances: List[Element] = [Element.THUNDER]
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.POISON,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -5961,16 +5966,16 @@ class MachineMadeAxemGreen(Enemy):
     _magic_evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 10
@@ -6011,16 +6016,16 @@ class Starslap(Enemy):
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.KNOCK
     _sound_on_approach: ApproachSound = ApproachSound.STARSLAP_SPIKEY_ENIGMA
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
     _flower_bonus_chance: int = 50
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 2
@@ -6040,14 +6045,14 @@ class Mukumuku(Enemy):
     _magic_evade: int = 80
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
+    _resistances: List[Element] = [Element.THUNDER]
+    _weaknesses: List[Element] = [Element.FIRE]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # rewards
     _xp: int = 8
@@ -6068,16 +6073,16 @@ class Zeostar(Enemy):
     _morph_chance: float = 0.75
     _sound_on_hit: HitSound = HitSound.KNOCK
     _sound_on_approach: ApproachSound = ApproachSound.STARSLAP_SPIKEY_ENIGMA
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Fire]
+    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
     _flower_bonus_chance: int = 50
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 10
@@ -6098,13 +6103,13 @@ class Jagger(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Poison]
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [Status.POISON]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 50
@@ -6123,13 +6128,13 @@ class EmptyEnemy(ShellySupport):
     _speed: int = 255
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -6153,19 +6158,19 @@ class Smithy2TankHead(Enemy):
     _fp: int = 30
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 30
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -6185,13 +6190,14 @@ class Smithy2TankHead(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("tank_threshold_lowest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.25))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.25))
         _, command = monsterscript.get_command_by_name("tank_threshold_mid")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.5))
-        _, command = monsterscript.get_command_by_name("tank_threshold_highest")
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.5))
+        _, command = monsterscript.get_command_by_name(
+            "tank_threshold_highest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.75))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.75))
 
 
 class Smithy2SafeHead(Enemy):
@@ -6204,17 +6210,17 @@ class Smithy2SafeHead(Enemy):
     _magic_defense: int = 100
     _fp: int = 120
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [
-        EquipElement.Thunder,
-        EquipElement.Fire,
-        EquipElement.Jump,
+    _resistances: List[Element] = [
+        Element.THUNDER,
+        Element.FIRE,
+        Element.JUMP,
     ]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -6236,15 +6242,17 @@ class Smithy2SafeHead(Enemy):
         ]
 
         # update HP
-        _, command = monsterscript.get_command_by_name("chest_threshold_lowest")
+        _, command = monsterscript.get_command_by_name(
+            "chest_threshold_lowest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.25))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.25))
         _, command = monsterscript.get_command_by_name("chest_threshold_mid")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.5))
-        _, command = monsterscript.get_command_by_name("chest_threshold_highest")
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.5))
+        _, command = monsterscript.get_command_by_name(
+            "chest_threshold_highest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.75))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.75))
 
 
 class Microbomb(Enemy):
@@ -6258,8 +6266,8 @@ class Microbomb(Enemy):
     _magic_defense: int = 10
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
@@ -6267,7 +6275,7 @@ class Microbomb(Enemy):
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # boss shuffle attributes
     _ratio_hp: float = 0.025
@@ -6292,13 +6300,13 @@ class Grit(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -6320,13 +6328,13 @@ class Neosquid(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _status_immunities: List[Status] = [Status.SLEEP]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 40
@@ -6353,18 +6361,18 @@ class YaridovichMirage(Enemy):
     _magic_defense: int = 10
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.CLAW
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -6385,13 +6393,13 @@ class Helio(Enemy):
     _hp: int = 10
     _attack: int = 140
     _fp: int = 100
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -6423,9 +6431,9 @@ class RightEye(Enemy):
     _magic_defense: int = 36
     _fp: int = 200
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _resistances: List[Element] = [Element.THUNDER]
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
@@ -6455,7 +6463,8 @@ class RightEye(Enemy):
         if isinstance(command, SetAMEM16BitToConst):
             command.set_value(round(self.hp * 1.2))
         else:
-            raise Exception("right_eye_revival_hp is the wrong type %r" % type(command))
+            raise Exception(
+                "right_eye_revival_hp is the wrong type %r" % type(command))
 
         # replace exor revival command
         monsterscript: MonsterScript = self.world.monster_scripts.scripts[
@@ -6479,9 +6488,9 @@ class LeftEye(Enemy):
     _magic_defense: int = 80
     _fp: int = 200
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _resistances: List[Element] = [Element.THUNDER]
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
@@ -6511,7 +6520,8 @@ class LeftEye(Enemy):
         if isinstance(command, SetAMEM16BitToConst):
             command.set_value(self.hp)
         else:
-            raise Exception("left_eye_revival_hp is the wrong type %r" % type(command))
+            raise Exception(
+                "left_eye_revival_hp is the wrong type %r" % type(command))
 
         # replace exor revival command
         monsterscript: MonsterScript = self.world.monster_scripts.scripts[
@@ -6536,9 +6546,9 @@ class KnifeGuy(Enemy):
     _fp: int = 35
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _resistances: List[Element] = [Element.THUNDER]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 80
@@ -6572,9 +6582,9 @@ class GrateGuy(Enemy):
     _fp: int = 50
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 80
@@ -6610,16 +6620,16 @@ class Bundt(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -6666,22 +6676,22 @@ class Jinx1(Enemy):
     _magic_evade: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 75
@@ -6702,7 +6712,7 @@ class Jinx1(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("jinx1_def")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.5))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.5))
 
 
 class Jinx2(Enemy):
@@ -6718,22 +6728,22 @@ class Jinx2(Enemy):
     _magic_evade: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 100
@@ -6754,7 +6764,7 @@ class Jinx2(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("jinx2_def")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.5))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.5))
 
 
 class CountDown(Enemy):
@@ -6767,18 +6777,18 @@ class CountDown(Enemy):
     _magic_defense: int = 80
     _fp: int = 100
     _ohko_immune: bool = True
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER, Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 140
@@ -6806,18 +6816,18 @@ class DingALing(Henchman):
     _magic_defense: int = 50
     _fp: int = 100
     _ohko_immune: bool = True
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 30
@@ -6846,13 +6856,13 @@ class Belome1(Enemy):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 30
@@ -6875,7 +6885,7 @@ class Belome1(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("belome_hp")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.6))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.6))
 
 
 class Belome2(Enemy):
@@ -6891,15 +6901,15 @@ class Belome2(Enemy):
     _magic_evade: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 80
@@ -6926,19 +6936,19 @@ class Smilax(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -6964,13 +6974,13 @@ class Thrax(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _status_immunities: List[Status] = [Status.SLEEP]
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -6988,19 +6998,19 @@ class Megasmilax(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 30
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 120
@@ -7023,18 +7033,18 @@ class Birdetta(Enemy):
     _magic_defense: int = 100
     _fp: int = 100
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     # xp = 60
@@ -7056,20 +7066,20 @@ class Eggbert(Henchman):
     _attack: int = 210
     _fp: int = 100
     _ohko_immune: bool = True
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -7100,11 +7110,11 @@ class AxemYellow(Henchman):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
+    _resistances: List[Element] = [Element.THUNDER]
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.POISON,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -7137,12 +7147,12 @@ class Punchinello(Enemy):
     _fp: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -7150,7 +7160,7 @@ class Punchinello(Enemy):
     battle_sesw_only = True
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 70
@@ -7169,16 +7179,16 @@ class Punchinello(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("punch_hp_1")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 2 / 3))
+            command.set_threshold(self.round_for_battle_script(self.hp * 2 / 3))
         _, command = monsterscript.get_command_by_name("punch_hp_2")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 2 / 3))
+            command.set_threshold(self.round_for_battle_script(self.hp * 2 / 3))
         _, command = monsterscript.get_command_by_name("punch_hp_3")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 1 / 3))
+            command.set_threshold(self.round_for_battle_script(self.hp * 1 / 3))
         _, command = monsterscript.get_command_by_name("punch_hp_4")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 1 / 3))
+            command.set_threshold(self.round_for_battle_script(self.hp * 1 / 3))
 
 
 class TentaclesRight(Enemy):
@@ -7192,16 +7202,16 @@ class TentaclesRight(Enemy):
     _magic_defense: int = 40
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.SLAP
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -7229,11 +7239,11 @@ class AxemRed(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -7267,16 +7277,16 @@ class AxemGreen(Henchman):
     _magic_evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 20
@@ -7303,18 +7313,18 @@ class KingBomb(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -7352,13 +7362,13 @@ class MezzoBomb(Enemy):
     _magic_defense: int = 10
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.SMASH
-    _weaknesses: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -7387,16 +7397,16 @@ class Raspberry(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
     ]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -7441,18 +7451,18 @@ class KingCalamari(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.DEEP_JAB
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 100
@@ -7477,16 +7487,16 @@ class TentaclesLeft(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SLAP
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -7514,22 +7524,22 @@ class Jinx3(Enemy):
     _magic_evade: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 150
@@ -7550,10 +7560,10 @@ class Jinx3(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("jinx3_def_1")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.6))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.6))
         _, command = monsterscript.get_command_by_name("jinx3_def_2")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.3))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.3))
 
 
 class Zombone(Enemy):
@@ -7569,12 +7579,12 @@ class Zombone(Enemy):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Ice, EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.ICE, Element.FIRE]
+    _weaknesses: List[Element] = [Element.THUNDER, Element.JUMP]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -7609,9 +7619,9 @@ class CzarDragon(Enemy):
     _evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Fire]
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _resistances: List[Element] = [Element.FIRE]
+    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
@@ -7646,21 +7656,21 @@ class Cloaker(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 60
@@ -7688,21 +7698,21 @@ class Domino(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 60
@@ -7730,20 +7740,20 @@ class MadAdder(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 200
@@ -7773,18 +7783,18 @@ class Mack(Enemy):
     _fp: int = 28
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     # xp = 24
@@ -7812,20 +7822,20 @@ class Bodyguard(Henchman):
     _fp: int = 3
     _evade: int = 10
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -7858,18 +7868,18 @@ class Yaridovich(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 120
@@ -7894,11 +7904,11 @@ class DrillBit(Henchman):
     _magic_attack: int = 40
     _magic_defense: int = 56
     _fp: int = 100
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -7910,10 +7920,10 @@ class DrillBit(Henchman):
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # boss shuffle attributes
     _ratio_hp: float = 0.04
@@ -7936,11 +7946,11 @@ class YaridovichDrillBit(Henchman):
     _magic_attack: int = 40
     _magic_defense: int = 56
     _fp: int = 100
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -7976,11 +7986,11 @@ class AxemPink(Henchman):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[EquipElement] = [EquipElement.Ice]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
+    _resistances: List[Element] = [Element.ICE]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -8014,16 +8024,16 @@ class AxemBlack(Henchman):
     _evade: int = 30
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 40
@@ -8053,20 +8063,20 @@ class Bowyer(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 60
@@ -8089,21 +8099,21 @@ class AeroBowyer(Henchman):
     _magic_attack: int = 1
     _magic_defense: int = 10
     _fp: int = 100
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 40
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 4
@@ -8132,21 +8142,21 @@ class AeroSmithy(Henchman):
     _magic_attack: int = 66
     _magic_defense: int = 45
     _fp: int = 100
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 40
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 28
@@ -8172,19 +8182,19 @@ class Exor(Enemy):
     _defense: int = 120
     _magic_defense: int = 80
     _ohko_immune: bool = True
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 30
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 100
@@ -8224,20 +8234,20 @@ class Smithy1(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -8262,20 +8272,20 @@ class Shyper(Enemy):
     _evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -8293,20 +8303,20 @@ class Smithy2Body(Enemy):
     _fp: int = 50
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -8330,21 +8340,21 @@ class Smithy2Head(Enemy):
     _fp: int = 50
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 30
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -8362,15 +8372,17 @@ class Smithy2Head(Enemy):
         ]
 
         # update HP
-        _, command = monsterscript.get_command_by_name("smithy2_threshold_lowest")
+        _, command = monsterscript.get_command_by_name(
+            "smithy2_threshold_lowest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.25))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.25))
         _, command = monsterscript.get_command_by_name("smithy2_threshold_mid")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.5))
-        _, command = monsterscript.get_command_by_name("smithy2_threshold_highest")
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.5))
+        _, command = monsterscript.get_command_by_name(
+            "smithy2_threshold_highest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.75))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.75))
 
 
 class Smithy2MageHead(Enemy):
@@ -8385,23 +8397,23 @@ class Smithy2MageHead(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [
-        EquipElement.Ice,
-        EquipElement.Thunder,
-        EquipElement.Fire,
+    _resistances: List[Element] = [
+        Element.ICE,
+        Element.THUNDER,
+        Element.FIRE,
     ]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 30
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -8421,13 +8433,14 @@ class Smithy2MageHead(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("mage_threshold_lowest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.25))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.25))
         _, command = monsterscript.get_command_by_name("mage_threshold_mid")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.5))
-        _, command = monsterscript.get_command_by_name("mage_threshold_highest")
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.5))
+        _, command = monsterscript.get_command_by_name(
+            "mage_threshold_highest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.75))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.75))
 
 
 class Smithy2ChestHead(Enemy):
@@ -8442,13 +8455,13 @@ class Smithy2ChestHead(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[EquipElement] = [EquipElement.Thunder]
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.THUNDER]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -8470,15 +8483,17 @@ class Smithy2ChestHead(Enemy):
         ]
 
         # update HP
-        _, command = monsterscript.get_command_by_name("chest_threshold_lowest")
+        _, command = monsterscript.get_command_by_name(
+            "chest_threshold_lowest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.25))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.25))
         _, command = monsterscript.get_command_by_name("chest_threshold_mid")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.5))
-        _, command = monsterscript.get_command_by_name("chest_threshold_highest")
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.5))
+        _, command = monsterscript.get_command_by_name(
+            "chest_threshold_highest")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.75))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.75))
 
 
 class Croco1(Enemy):
@@ -8494,17 +8509,17 @@ class Croco1(Enemy):
     _evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Mushroom,
-        ItemStatusEffect.Scarecrow,
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.MUSHROOM,
+        Status.Scarecrow,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 16
@@ -8528,7 +8543,7 @@ class Croco1(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("croco_heal_threshold")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 16 / 5))
+            command.set_threshold(self.round_for_battle_script(self.hp * 16 / 5))
 
 
 class Croco2(Enemy):
@@ -8544,17 +8559,17 @@ class Croco2(Enemy):
     _evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[EquipElement] = [EquipElement.Fire]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Mushroom,
-        ItemStatusEffect.Scarecrow,
+    _weaknesses: List[Element] = [Element.FIRE]
+    _status_immunities: List[Status] = [
+        Status.SLEEP,
+        Status.MUSHROOM,
+        Status.Scarecrow,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 30
@@ -8576,7 +8591,7 @@ class Croco2(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("croco2_item_steal")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 40 / 75))
+            command.set_threshold(self.round_for_battle_script(self.hp * 40 / 75))
 
 
 class Earthlink(Enemy):
@@ -8591,20 +8606,20 @@ class Earthlink(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 200
@@ -8633,18 +8648,18 @@ class AxemRangers(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _weaknesses: List[EquipElement] = [EquipElement.Thunder]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 50
@@ -8675,13 +8690,13 @@ class Booster(Enemy):
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
     _sound_on_approach: ApproachSound = ApproachSound.AMANITA_TERRAPIN
-    _weaknesses: List[EquipElement] = [EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _weaknesses: List[Element] = [Element.JUMP]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 60
@@ -8703,7 +8718,7 @@ class Booster(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("booster_hits_hard")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 8 / 5))
+            command.set_threshold(self.round_for_battle_script(self.hp * 8 / 5))
 
 
 class Booster2(Enemy):
@@ -8718,13 +8733,13 @@ class Booster2(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -8741,16 +8756,16 @@ class Snifit(Enemy):
     _magic_defense: int = 20
     _fp: int = 32
     _sound_on_hit: HitSound = HitSound.PUNCH
-    _weaknesses: List[EquipElement] = [EquipElement.Ice]
+    _weaknesses: List[Element] = [Element.ICE]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[ItemStatusEffect] = []
+    _status_immunities: List[Status] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 2
@@ -8790,16 +8805,16 @@ class Johnny(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Sleep]
+    _status_immunities: List[Status] = [Status.SLEEP]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 40
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 90
@@ -8821,7 +8836,7 @@ class Johnny(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("johnny_def")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 20 / 41))
+            command.set_threshold(self.round_for_battle_script(self.hp * 20 / 41))
 
 
 class JohnnySolo(Enemy):
@@ -8836,13 +8851,13 @@ class JohnnySolo(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Fire, EquipElement.Jump]
-    _status_immunities: List[ItemStatusEffect] = [ItemStatusEffect.Poison]
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: List[Status] = [Status.POISON]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
@@ -8872,19 +8887,19 @@ class Valentina(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[EquipElement] = [EquipElement.Ice]
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _resistances: List[Element] = [Element.ICE]
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # rewards
     _xp: int = 120
@@ -8907,7 +8922,7 @@ class Valentina(Enemy):
         # update HP
         _, command = monsterscript.get_command_by_name("return_dodo")
         if isinstance(command, IfHPBelow):
-            command.set_threshold(round(self.hp * 0.6))
+            command.set_threshold(self.round_for_battle_script(self.hp * 0.6))
 
 
 class Cloaker2(Enemy):
@@ -8922,21 +8937,21 @@ class Cloaker2(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 60
@@ -8964,21 +8979,21 @@ class Domino2(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 60
@@ -8999,11 +9014,11 @@ class Candle(Enemy):
     _boss: bool = True
     _hp: int = 10
     _fp: int = 100
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -9012,10 +9027,10 @@ class Candle(Enemy):
     _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
 
 class Culex(Enemy):
@@ -9030,21 +9045,21 @@ class Culex(Enemy):
     _fp: int = 200
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[ItemStatusEffect] = [
-        ItemStatusEffect.Mute,
-        ItemStatusEffect.Sleep,
-        ItemStatusEffect.Poison,
-        ItemStatusEffect.Fear,
+    _status_immunities: List[Status] = [
+        Status.MUTE,
+        Status.SLEEP,
+        Status.POISON,
+        Status.FEAR,
     ]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 10
 
     # element weaknesses
-    _weaknesses: List[EquipElement] = []
+    _weaknesses: List[Element] = []
 
     # element resistances
-    _resistances: List[EquipElement] = []
+    _resistances: List[Element] = []
 
     # rewards
     _xp: int = 600

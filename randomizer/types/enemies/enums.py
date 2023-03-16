@@ -1,7 +1,11 @@
+"""Enums supporting enemy classes and functions."""
+
 from enum import IntEnum
 
 
 class HitSound(IntEnum):
+    """Enum for the default sound an enemy will make when attacking you."""
+
     BITE = 0
     PIERCE = 1
     CLAW = 2
@@ -19,6 +23,8 @@ class HitSound(IntEnum):
 
 
 class FlowerBonusType(IntEnum):
+    """Enum for the type of flower bonus the enemy will award you."""
+
     NONE = 0
     ATTACK_UP = 1
     DEFENSE_UP = 2
@@ -28,6 +34,8 @@ class FlowerBonusType(IntEnum):
 
 
 class ApproachSound(IntEnum):
+    """Enum for the default sound an enemy will make when approaching you."""
+
     NONE = 0
     STARSLAP_SPIKEY_ENIGMA = 1
     SPARKY_GOOMBA_BIRDY = 2

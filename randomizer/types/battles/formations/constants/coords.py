@@ -1,4 +1,6 @@
-from typing import Tuple
+"""A list of valid coordinates that enemies in battle can use."""
+
+from typing import List, Tuple
 
 
 VALID_COORDINATES: List[Tuple[int, int]] = [

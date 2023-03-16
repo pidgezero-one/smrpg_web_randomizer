@@ -22,7 +22,7 @@ script = MonsterScript(
         RemoveTarget(SELF),
         Wait1TurnandRestartScript(),
         IfVarBitsClear(0x7EE003, [0, 1]),
-        IfTargetedByElement([SpellElement.Fire]),
+        IfTargetedByElement([Element.FIRE]),
         SetVarBits(0x7EE003, [0, 1]),
         RunBattleDialog(1),
         Wait1TurnandRestartScript(),

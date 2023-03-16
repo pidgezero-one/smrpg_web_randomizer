@@ -1,37 +1,51 @@
-from typing import List, Optional, Sequence, Tuple, Type, cast
+"""Base classes supporting monster battle script assembly."""
+
+from typing import List, Optional, Tuple, Type
 from randomizer.types.monster_scripts.commands import StartCounterCommands
 from randomizer.types.monster_scripts.constants.classes import Target
+from randomizer.types.monster_scripts.constants.misc import (
+    BANK_RANGE_1_END,
+    BANK_RANGE_1_START,
+    BANK_RANGE_2_END,
+    BANK_RANGE_2_START,
+    POINTER_TABLE_START,
+)
 from randomizer.types.monster_scripts.constants.targets import SELF
 from randomizer.types.scripts_common.classes import (
     Script,
     ScriptBank,
+    ScriptBankTooLongException,
     ScriptCommand,
     ScriptCommandNoArgs,
 )
-from randomizer.types.numbers.classes import UInt16, UInt4
+from randomizer.types.numbers.classes import UInt16, UInt4, UInt8
 
 
 class MonsterScriptCommand(ScriptCommand):
-    pass
+    """Base class for any command in a monster's battle script."""
 
 
 class MonsterScriptCommandNoArgs(MonsterScriptCommand, ScriptCommandNoArgs):
-    pass
+    """Base class for any command in a monster's battle script that takes no arguments."""
 
 
 class MonsterScriptCommandOneVar(MonsterScriptCommand):
+    """Base class for any command in a monster's battle script that takes one 0x7EE00X variable."""
 
     _variable: int
 
     @property
     def variable(self) -> int:
+        """The 0x7EE00X variable used by this command."""
         return self._variable
 
     def set_variable(self, variable: int) -> None:
+        """Designate the 0x7EE00X variable that is to be used by this command."""
         assert 0x7EE000 <= variable <= 0x7EE00F
         self._variable = int(variable)
 
     def render_var(self):
+        """Get the representation of this variable as a patch byte."""
         return UInt4(self.variable & 0x0F)
 
     def __init__(self, variable: int, identifier: Optional[str] = None) -> None:
@@ -40,14 +54,17 @@ class MonsterScriptCommandOneVar(MonsterScriptCommand):
 
 
 class MonsterScriptCommandOneTarget(MonsterScriptCommand):
+    """Base class for any command in a monster's battle script that has one target."""
 
     _target: Target
 
     @property
     def target(self) -> Target:
+        """The target to be.... targeted.... by this command"""
         return self._target
 
     def set_target(self, target: Target) -> None:
+        """Designate this command's target"""
         self._target = target
 
     def __init__(self, target: Target, identifier: Optional[str] = None) -> None:
@@ -56,14 +73,18 @@ class MonsterScriptCommandOneTarget(MonsterScriptCommand):
 
 
 class MonsterScriptCommandOneTargetLimited(MonsterScriptCommand):
+    """Base class for any command that takes one target, where the target value can only
+    fall within the range of targets beginning with MONSTER_1_SET and ending with SELF."""
 
     _target: Target
 
     @property
     def target(self) -> Target:
+        """The target to be.... targeted.... by this command"""
         return self._target
 
     def set_target(self, target: Target) -> None:
+        """Designate this command's target"""
         assert 0x13 <= target <= 0x1B
         self._target = target
 
@@ -76,11 +97,13 @@ class MonsterScriptCommandOneTargetLimited(MonsterScriptCommand):
         if self.target == SELF:
             byte1 = 0
         else:
-            byte1 = self.target - 0x12
+            byte1 = UInt8(self.target - 0x12)
         return super().render(byte1)
 
 
 class MonsterScript(Script[MonsterScriptCommand]):
+    """Base class for a single monster battle script, a list of script command subclasses."""
+
     _contents: List[MonsterScriptCommand]
 
     @property
@@ -93,10 +116,10 @@ class MonsterScript(Script[MonsterScriptCommand]):
     def extend(self, commands: List[MonsterScriptCommand]) -> None:
         super().extend(commands)
 
-    def set_contents(self, script: List[MonsterScriptCommand] = []) -> None:
+    def set_contents(self, script: Optional[List[MonsterScriptCommand]] = None) -> None:
         super().set_contents(script)
 
-    def __init__(self, script: List[MonsterScriptCommand] = []) -> None:
+    def __init__(self, script: Optional[List[MonsterScriptCommand]] = None) -> None:
         super().__init__(script)
 
     def insert_before_nth_command(self, n: int, command: MonsterScriptCommand) -> None:
@@ -128,44 +151,52 @@ class MonsterScript(Script[MonsterScriptCommand]):
     def replace_at_index(self, index: int, content: MonsterScriptCommand) -> None:
         super().replace_at_index(index, content)
 
-    def delete_at_index(self, index: int) -> None:
-        super().delete_at_index(index)
-
 
 class MonsterScriptBank(ScriptBank[MonsterScript]):
+    """Base class for the collection of monster battle scripts.
+    Battle scripts are not stored in a contiguous range, but
+    rather two separate ranges that share a pointer table."""
+
     _scripts: List[MonsterScript]
     _rom_ranges: List[List[int]] = []
-    _pointer_table_start: int = 0x3930AA
-    _range_1_start: int = 0x3932AA
-    _range_1_end: int = 0x3959F4
-    _range_2_start: int = 0x39F400
-    _range_2_end: int = 0x3A0000
+    _pointer_table_start: int = POINTER_TABLE_START
+    _range_1_start: int = BANK_RANGE_1_START
+    _range_1_end: int = BANK_RANGE_1_END
+    _range_2_start: int = BANK_RANGE_2_START
+    _range_2_end: int = BANK_RANGE_2_END
 
     @property
     def range_1_start(self) -> int:
+        """The address at which the first script bank begins."""
         return self._range_1_start
 
     @property
     def range_1_end(self) -> int:
+        """The address at which the first script bank ends."""
         return self._range_1_end
 
     @property
     def range_2_start(self) -> int:
+        """The address at which the second script bank begins."""
         return self._range_2_start
 
     @property
     def range_2_end(self) -> int:
+        """The address at which the second script bank ends."""
         return self._range_2_end
 
     @property
     def script_count(self) -> UInt16:
+        """The expected total number of individual scripts to be included across both ranges."""
         return UInt16((self.start - self.pointer_table_start) // 2)
 
     @property
     def scripts(self) -> List[MonsterScript]:
         return self._scripts
 
-    def set_contents(self, scripts: List[MonsterScript] = []) -> None:
+    def set_contents(self, scripts: Optional[List[MonsterScript]] = None) -> None:
+        if scripts is None:
+            scripts = []
         assert len(scripts) == self.script_count
         super().set_contents(scripts)
 
@@ -175,11 +206,14 @@ class MonsterScriptBank(ScriptBank[MonsterScript]):
 
     def __init__(
         self,
-        scripts: List[MonsterScript] = [],
+        scripts: Optional[List[MonsterScript]] = None,
     ) -> None:
         super().__init__(scripts)
 
     def render(self) -> Tuple[bytearray, bytearray]:
+        """Return this script as two bytearrays
+        (one per range, the first including the pointer table)
+        which are to be included in the ROM patch."""
 
         script: MonsterScript
 
@@ -201,7 +235,8 @@ class MonsterScriptBank(ScriptBank[MonsterScript]):
             ]
             assert len(counter_starts) <= 1
 
-            # reuse pointers where possible, i.e. two enemies use the same script (henchmen and non-henchmen)
+            # reuse pointers where possible, i.e. two enemies use the same script
+            # (henchmen and non-henchmen)
             rendered_script = script.render()
             if rendered_script in already_rendered:
                 existing_script_index = already_rendered.index(rendered_script)
@@ -210,7 +245,9 @@ class MonsterScriptBank(ScriptBank[MonsterScript]):
                 script_size = len(rendered_script)
                 if position_1 + script_size > self.range_1_end:
                     if position_2 + script_size > self.range_2_end:
-                        raise Exception("no room for monster script %i" % script_index)
+                        raise ScriptBankTooLongException(
+                            f"no room for monster script {script_index}"
+                        )
                     else:
                         position_2 += script_size
                         ptr = UInt16(position_2 & 0xFFFF).little_endian()

@@ -807,7 +807,7 @@ class KingCalamariBoss(Boss):
     _letter_volcano_boss_name: str = "a giant squid lurking"
     _letter_final_boss_name: str = "King Calamari's hands."
     _pack_number: int = PACK0167_CALAMARI_FIGHT_STATIC
-    _forced_background = Battlefields.KingCalamari
+    _forced_background = Battlefields.KING_CALAMARI
     _small_model: Type[NPC] = Bloober
     _statue: Type[NPC] = BlooberStatue
     _repeatable_henchmen: List[Type[Henchman]] = [KingCalamariBloober]
@@ -1638,7 +1638,7 @@ class AxemRangersBoss(Boss):
     _letter_volcano_boss_name: str = "a huge AX flying around"
     _letter_final_boss_name: str = "the Axem Rangers' stooges."
     _pack_number: int = PACK0182_AXEM_FIGHT_STATIC
-    _forced_background = Battlefields.AxemRangers
+    _forced_background = Battlefields.AXEM_RANGERS
     _small_model: Type[NPC] = AxemRed
     _statue: Type[NPC] = AxemRedStatue
     _unique_henchmen: List[Type[Henchman]] = [
@@ -1844,7 +1844,7 @@ class ExorBoss(Boss):
     _letter_volcano_boss_name: str = "a massive sword falling"
     _letter_final_boss_name: str = "Exor's sellswords."
     _pack_number: int = PACK0186_EXOR_FIGHT_STATIC
-    _forced_background = Battlefields.Exor
+    _forced_background = Battlefields.EXOR
     _small_model: Type[NPC] = ExorSmall
     _statue: Type[NPC] = ExorStatue
     _dialog_replacements: Dict[int, str] = {
@@ -1886,7 +1886,7 @@ class CountdownBoss(Boss):
     _letter_volcano_boss_name: str = "a noisy clock winding"
     _letter_final_boss_name: str = "Count Down's friends."
     _pack_number: int = PACK0174_COUNTDOWN_FIGHT_STATIC
-    _forced_background = Battlefields.Countdown
+    _forced_background = Battlefields.COUNTDOWN
     _small_model: Type[NPC] = CountDownGridplane
     _statue: Type[NPC] = CountDownStatue
     _unique_henchmen: List[Type[Henchman]] = [CountdownDingALing, CountdownDingALing]
@@ -1943,7 +1943,7 @@ class CloakerDominoBoss(Boss):
     _letter_volcano_boss_name: str = "a snake slithering around"
     _letter_final_boss_name: str = "Domino's snakes."
     _pack_number: int = PACK0184_CLOAKER_DOMINO_FIGHT_STATIC
-    _forced_background = Battlefields.CloakerDomino
+    _forced_background = Battlefields.CLOAKER_DOMINO
     _small_model: Type[NPC] = DominoSmall
     _big_model: Type[NPC] = DominoLarge
     _statue: Type[NPC] = DominoStatue

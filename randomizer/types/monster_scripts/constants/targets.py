@@ -1,4 +1,6 @@
-from .classes import Target
+"""Int subclass instances representing what can be targeted by a monster script command."""
+
+from randomizer.types.monster_scripts.classes import Target
 
 MARIO = Target(0x00)
 TOADSTOOL = Target(0x01)

@@ -1,7 +1,7 @@
 # Data module for enemy attack data.
 
-from randomizer.logic import utils
-from randomizer.logic.patch import Patch
+from randomizer.types.numbers.classes import ByteField, BitMapSet
+from randomizer.types.patch.classes import Patch
 
 
 class EnemyAttack:
@@ -49,12 +49,12 @@ class EnemyAttack:
         # First byte is attack level + damage type flags in a bitmap.
         attack_flags = [i for i in range(3) if self.attack_level & (1 << i)]
         attack_flags += self.damage_types
-        data += utils.BitMapSet(1, attack_flags).as_bytes()
+        data += BitMapSet(1, attack_flags).as_bytes()
 
         # Other bytes are hit rate, status effects, and buffs.
-        data += utils.ByteField(self.hit_rate).as_bytes()
-        data += utils.BitMapSet(1, self.status_effects).as_bytes()
-        data += utils.BitMapSet(1, self.buffs).as_bytes()
+        data += ByteField(self.hit_rate).as_bytes()
+        data += BitMapSet(1, self.status_effects).as_bytes()
+        data += BitMapSet(1, self.buffs).as_bytes()
 
         patch.add_data(base_addr, data)
         return patch

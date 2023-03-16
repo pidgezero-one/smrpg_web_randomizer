@@ -384,7 +384,7 @@ from randomizer.types.npcs.objects.npcs import (
     StumpetHead,
     StumpetRoot,
     CzarBody,
-    VineBeanstalm,
+    VineBeanstalk,
     BrownBrick,
     SandWhirlpool,
     Letter,

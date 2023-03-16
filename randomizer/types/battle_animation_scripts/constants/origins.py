@@ -1,4 +1,6 @@
-from .classes import Origin
+"""Int subclass instances representing the origin point that coords should be relative to."""
+
+from randomizer.types.battle_animation_scripts.constants.classes import Origin
 
 ABSOLUTE_POSITION = Origin(0)
 CASTER_INITIAL_POSITION = Origin(1)

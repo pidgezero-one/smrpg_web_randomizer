@@ -8,7 +8,7 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b" \x80\x10\x00"), identifier="queuestart_0x3593a3"),
         JmpIfAMEM8BitGreaterOrEqualThanConst(0x60, 31, ["command_0x3593b1"]),
         DisplayMessage(BATTLE_MESSAGE, 10),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         SetAMEM32ToXYZCoords(
             origin=CASTER_CURRENT_POSITION,
             x=0,

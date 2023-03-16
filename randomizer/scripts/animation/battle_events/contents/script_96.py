@@ -1,11 +1,17 @@
-# BE0096_NOTHING
+"""BE0096_NOTHING"""
 
 from randomizer.scripts.animation.script_imports import *
 
-script = BattleAnimationScript(script=[
-	RunSubroutine(["command_0x3a7531"]),
-	SpriteQueue(field_object=2, destinations=["queuestart_0x3acf4c"], bit_2=True, bit_4=True),
-	SpriteQueue(field_object=3, destinations=["queuestart_0x3acf4c"], bit_2=True, bit_4=True),
-	RunSubroutine(["command_0x3a771e"]),
-	Jmp(["command_0x3a7550"])
-])
+script = BattleAnimationScript(
+    script=[
+        RunSubroutine(["command_0x3a7531"]),
+        SpriteQueue(
+            field_object=2, destinations=["queuestart_0x3acf4c"], bit_2=True, bit_4=True
+        ),
+        SpriteQueue(
+            field_object=3, destinations=["queuestart_0x3acf4c"], bit_2=True, bit_4=True
+        ),
+        RunSubroutine(["command_0x3a771e"]),
+        Jmp(["command_0x3a7550"]),
+    ]
+)

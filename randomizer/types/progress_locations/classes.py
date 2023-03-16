@@ -131,7 +131,6 @@ from randomizer.types.progress_locations.enums import LocationWorldArea, PacketT
 from randomizer.types.progress_locations.utils import get_default_battlefield_from_room
 from randomizer.types.overworld_scripts.constants.misc import TOTAL_ROOMS
 from randomizer.types.spells.classes import CharacterSpell
-from randomizer.types.spells.enums import SpellElement
 from randomizer.types.world.classes import GameWorld
 from randomizer.types.world.flags.enums import (
     BossScaleOptions,
@@ -357,8 +356,8 @@ TProgressLocation = TypeVar("TProgressLocation", bound="ProgressLocation")
 class BossFightLocation(ProgressLocation):
     _original_item: Type[Boss]
     _battlefield: Optional[Battlefields] = None
-    _name_enum: BossLocations = BossLocations.MushroomWay
-    _music: BattleMusic = BattleMusic.Normal
+    _name_enum: BossLocations = BossLocations.MUSHROOM_WAY
+    _music: BattleMusic = BattleMusic.NORMAL
     _overworld_boss_npc_fills: List[BossModelFill] = []
     _overworld_unique_henchmen_npc_fills: List[list[UniqueHenchmanFill]] = []
     _overworld_generic_henchmen_npc_fills: List[list[RepeatableHenchmanFill]] = []
@@ -575,7 +574,7 @@ class BossFightLocation(ProgressLocation):
                 [
                     type(spell)
                     for spell in self.world.character_spells
-                    if spell.targetEnemies and spell.element == SpellElement.NoElement
+                    if spell.targetEnemies and spell.element == Element.NONE
                 ]
             ):
                 return False

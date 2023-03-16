@@ -168,7 +168,7 @@ from randomizer.types.battle_animation_scripts.commands import (
     Layer3On,
     Layer3Off,
     DisplayMessage,
-    PauseScriptUntilDialogueClosed,
+    PauseScriptUntilDialogClosed,
     FadeOutObject,
     ResetSpriteSequence,
     ShineEffect,

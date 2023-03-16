@@ -55,7 +55,7 @@ objects = [
     ),
     # NPC_2
     RegularNPC(
-        occupant=VineBeanstalm,
+        occupant=VineBeanstalk,
         initiator=EventInitiator.NONE,
         event_script=E2304_BANK_1F_RETURN_EVENT_2,
         action_script=A0015_DO_NOTHING,

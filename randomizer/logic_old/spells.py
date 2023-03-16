@@ -25,7 +25,8 @@ def _randomize_spell(world, spell):
             if spell.world.settings.is_flag_enabled(flags.EnemyNoSafetyChecks) and utils.coin_flip(1 / 5):
                 effects.append(4)
 
-            spell.status_effects = random.sample(effects, len(spell.status_effects))
+            spell.status_effects = random.sample(
+                effects, len(spell.status_effects))
 
         # Don't shuffle power for certain spells that cause problems if they deal damage.
         if not isinstance(spell, (spells.GenoBoost, spells.Shredder, spells.SleepyTime, spells.Mute, spells.Psychopath)):
@@ -33,95 +34,98 @@ def _randomize_spell(world, spell):
 
         # Don't shuffle hit rate for certain spells or Geno Boost.  We don't want those to ever be able to miss.
         if not isinstance(spell, (spells.GenoBoost, spells.Therapy, spells.GroupHug, spells.HPRain, spells.Recover,
-                                spells.MegaRecover, spells.Shredder, spells.Psychopath)):
+                                  spells.MegaRecover, spells.Shredder, spells.Psychopath)):
             # If the spell is instant death, cap hit rate at 99% so items that protect from this actually work.
             # Protection forces the attack to miss, but 100% hit rate can't "miss" so it hits anyway.
             if spell.instant_ko:
                 max_hit_rate = 99
             else:
                 max_hit_rate = 100
-            spell.hit_rate = utils.mutate_normal(spell.hit_rate, minimum=1, maximum=max_hit_rate)
-            
+            spell.hit_rate = utils.mutate_normal(
+                spell.hit_rate, minimum=1, maximum=max_hit_rate)
+
     if world.settings.is_flag_enabled(flags.CharacterSpellElements) and spell.index in [0, 1, 2, 3, 4, 5, 21, 24, 25]:
-        spell.element = random.choice([SpellElement.Ice, SpellElement.Thunder, SpellElement.Fire, SpellElement.Earth])
+        spell.element = random.choice(
+            [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP])
 
         new_name = spell.base_title
-        if spell.index == 0 and spell.element != SpellElement.Earth:
-            if spell.element == SpellElement.Ice:
+        if spell.index == 0 and spell.element != Element.JUMP:
+            if spell.element == Element.ICE:
                 new_name = "Ice Jump"
-            elif spell.element == SpellElement.Thunder:
+            elif spell.element == Element.THUNDER:
                 new_name = "Thunder Jump"
-            elif spell.element == SpellElement.Fire:
+            elif spell.element == Element.FIRE:
                 new_name = "Fire Jump"
-        elif spell.index == 2 and spell.element != SpellElement.Earth:
-            if spell.element == SpellElement.Ice:
+        elif spell.index == 2 and spell.element != Element.JUMP:
+            if spell.element == Element.ICE:
                 new_name = "Ice S.Jump"
-            elif spell.element == SpellElement.Thunder:
+            elif spell.element == Element.THUNDER:
                 new_name = "Thndr S.Jump"
-            elif spell.element == SpellElement.Fire:
+            elif spell.element == Element.FIRE:
                 new_name = "Fire S.Jump"
-        elif spell.index == 4 and spell.element != SpellElement.Earth:
-            if spell.element == SpellElement.Ice:
+        elif spell.index == 4 and spell.element != Element.JUMP:
+            if spell.element == Element.ICE:
                 new_name = "Ice U.Jump"
-            elif spell.element == SpellElement.Thunder:
+            elif spell.element == Element.THUNDER:
                 new_name = "Thndr U.Jump"
-            elif spell.element == SpellElement.Fire:
+            elif spell.element == Element.FIRE:
                 new_name = "Fire U.Jump"
-        if spell.index == 1 and spell.element != SpellElement.Fire:
-            if spell.element == SpellElement.Ice:
+        if spell.index == 1 and spell.element != Element.FIRE:
+            if spell.element == Element.ICE:
                 new_name = "Ice Orb"
-            elif spell.element == SpellElement.Thunder:
+            elif spell.element == Element.THUNDER:
                 new_name = "Thunder Orb"
-            elif spell.element == SpellElement.Earth:
+            elif spell.element == Element.JUMP:
                 new_name = "Earth Orb"
-        elif spell.index == 3 and spell.element != SpellElement.Fire:
-            if spell.element == SpellElement.Ice:
+        elif spell.index == 3 and spell.element != Element.FIRE:
+            if spell.element == Element.ICE:
                 new_name = "Super Ice"
-            elif spell.element == SpellElement.Thunder:
+            elif spell.element == Element.THUNDER:
                 new_name = "SuperThunder"
-            elif spell.element == SpellElement.Earth:
+            elif spell.element == Element.JUMP:
                 new_name = "Super Earth"
-        elif spell.index == 5 and spell.element != SpellElement.Fire:
-            if spell.element == SpellElement.Ice:
+        elif spell.index == 5 and spell.element != Element.FIRE:
+            if spell.element == Element.ICE:
                 new_name = "Ultra Ice"
-            elif spell.element == SpellElement.Thunder:
+            elif spell.element == Element.THUNDER:
                 new_name = "UltraThunder"
-            elif spell.element == SpellElement.Earth:
+            elif spell.element == Element.JUMP:
                 new_name = "Ultra Earth"
-        elif spell.index == 21 and spell.element != SpellElement.Thunder:
-            if spell.element == SpellElement.Ice:
+        elif spell.index == 21 and spell.element != Element.THUNDER:
+            if spell.element == Element.ICE:
                 new_name = "Icebolt"
-            elif spell.element == SpellElement.Fire:
+            elif spell.element == Element.FIRE:
                 new_name = "Firebolt"
-            elif spell.element == SpellElement.Earth:
+            elif spell.element == Element.JUMP:
                 new_name = "Earthbolt"
-        elif spell.index == 24 and spell.element != SpellElement.Thunder:
-            if spell.element == SpellElement.Ice:
+        elif spell.index == 24 and spell.element != Element.THUNDER:
+            if spell.element == Element.ICE:
                 new_name = "Ice Shocker"
-            elif spell.element == SpellElement.Fire:
+            elif spell.element == Element.FIRE:
                 new_name = "Fire Shocker"
-            elif spell.element == SpellElement.Earth:
+            elif spell.element == Element.JUMP:
                 new_name = "EarthShocker"
-        elif spell.index == 25 and spell.element != SpellElement.Ice:
-            if spell.element == SpellElement.Thunder:
+        elif spell.index == 25 and spell.element != Element.ICE:
+            if spell.element == Element.THUNDER:
                 new_name = "Thundery"
-            elif spell.element == SpellElement.Fire:
+            elif spell.element == Element.FIRE:
                 new_name = "Firey"
-            elif spell.element == SpellElement.Earth:
+            elif spell.element == Element.JUMP:
                 new_name = "Earthy"
         spell.title = new_name
-
 
 
 def _randomize_spell_casting(world):
     for enemy in world.enemies:
         script = enemy.script
         for i in range(len(script)):
-            command,args = script[i]
-            if command != 'cast_spell': continue
+            command, args = script[i]
+            if command != 'cast_spell':
+                continue
             new_args = []
             for arg in args:
-                possible_spells = [spell for spell in spells.SpellsToTargets[getattr(arg, 'index', arg)] if spell.fp <= enemy.fp]
+                possible_spells = [spell for spell in spells.SpellsToTargets[getattr(
+                    arg, 'index', arg)] if spell.fp <= enemy.fp]
                 # This should probably never happen...probably.
                 if not possible_spells:
                     possible_spells = [arg]
@@ -141,7 +145,8 @@ def randomize_all(world):
 
     if world.settings.is_flag_enabled(flags.CharacterSpellStats):
         # Randomize starting FP if we're randomizing spell stats.
-        world.starting_fp = utils.mutate_normal(world.starting_fp, minimum=1, maximum=99)
+        world.starting_fp = utils.mutate_normal(
+            world.starting_fp, minimum=1, maximum=99)
 
     # Randomize enemy spells.
     if world.settings.is_flag_enabled(flags.EnemyAttacks):
@@ -167,5 +172,3 @@ def randomize_all(world):
         raise Exception("2nd super jump threshold must be higher than 1st")
     world.eventscripts[3394][0]["args"] = [value]
     world.search_replace_dialog('`SUPER_JUMP_PRIZE_2_CAP`', '%i' % value)
-
-    

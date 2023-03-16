@@ -209,7 +209,7 @@ script = SubroutineOrBanklessScript(
         ),
         ResetObjectMappingMemory(),
         DisplayMessage(BATTLE_MESSAGE, 5),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         SetAMEM8BitToConst(0x6D, 1),
         SetAMEM8BitToConst(0x6E, 255),
         Jmp(["command_0x35d924"]),

@@ -3623,6 +3623,7 @@ class CloakerLarge(NPC):
         # endgame_challenge=cloaker_hit # breaks vram
     )
 
+
 class DominoLarge(NPC):
     sprite_id = 478
     shadow_size = ShadowSize._02_OVAL_BIG
@@ -3632,9 +3633,7 @@ class DominoLarge(NPC):
     height = 17
     min_vram_size = 3
 
-    animations = SpriteAnimationCollection(
-        statue_flustered=cloaker_recoil
-    )
+    animations = SpriteAnimationCollection(statue_flustered=cloaker_recoil)
 
 
 mack_hit = SpriteAnimation(sequence_id=4, contact_frame=22, total_duration=28)
@@ -4171,7 +4170,7 @@ class CzarBody(NPC):
     min_vram_size = 3
 
 
-class VineBeanstalm(NPC):
+class VineBeanstalk(NPC):
     sprite_id = 613
     show_shadow = False
     shadow_size = ShadowSize._00_OVAL_SMALL
@@ -4879,4 +4878,3 @@ class TableNPC:
         self.byte5_bit6 = byte5_bit6
         self.byte5_bit7 = byte5_bit7
         self.byte6_bit2 = byte6_bit2
-

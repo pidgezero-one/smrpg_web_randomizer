@@ -1,4 +1,6 @@
-from .classes import ShiftType
+"""Int subclass instances representing the behaviour of an object shift."""
+
+from randomizer.types.battle_animation_scripts.constants.classes import ShiftType
 
 SHIFT_TYPE_0X00 = ShiftType(0)
 SHIFT_TYPE_SHIFT = ShiftType(2)

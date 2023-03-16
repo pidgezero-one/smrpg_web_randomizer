@@ -1,66 +1,53 @@
+"""Static values for item properties"""
+
 import enum
 
 
 class ItemShuffleType(enum.Enum):
     """Enumeration for key item types for shuffling."""
 
-    Required = enum.auto()
-    Extra = enum.auto()
+    REQUIRED = enum.auto()
+    EXTRA = enum.auto()
 
 
 class ItemUnique(enum.Enum):
     """Enumeration for items that may need to be restricted by how many times they can appear."""
 
-    Always = enum.auto()
-    BalancedOnly = enum.auto()
-    Never = enum.auto()
+    ALWAYS = enum.auto()
+    BALANCED_ONLY = enum.auto()
+    NEVER = enum.auto()
 
 
 class EffectType(enum.Enum):
-    Normal = enum.auto()
-    ElementalImmunity = enum.auto()
-    ElementalResistance = enum.auto()
-    StatusProtection = enum.auto()
-    FewEffects = enum.auto()
-    Buffs = enum.auto()
+    """Enumeration to describe the type of effect an item will have on its target."""
+    NORMAL = enum.auto()
+    ELEMENTAL_IMMUNITY = enum.auto()
+    ELEMENTAL_RESISTANCE = enum.auto()
+    STATUS_PROTECTION = enum.auto()
+    FEW_EFFECTS = enum.auto()
+    BUFFS = enum.auto()
 
 
 class EquipStats(str, enum.Enum):
-    Speed = "speed"
-    Attack = "attack"
-    Defense = "defense"
-    MagicAttack = "magic_attack"
-    MagicDefense = "magic_defense"
-
-
-class EquipElement(enum.IntEnum):
-    Ice = 4
-    Thunder = 5
-    Fire = 6
-    Earth = 7
-    Jump = 7
-
-
-class ItemStatusEffect(enum.IntEnum):
-    Mute = 0
-    Sleep = 1
-    Poison = 2
-    Fear = 3
-    Berserk = 4
-    Mushroom = 5
-    Scarecrow = 6
-    Invincible = 7
+    """Enumeration for numerical stats that are directly affected by equips."""
+    SPEED = "speed"
+    ATTACK = "attack"
+    DEFENSE = "defense"
+    MAGIC_ATTACK = "magic_attack"
+    MAGIC_DEFENSE = "magic_defense"
 
 
 class ItemTempBuff(enum.IntEnum):
-    MagicAttack = 3
-    Attack = 4
-    MagicDefense = 5
-    Defense = 6
+    """Enumeration for in-battle temporary buffs applies to offensive and defensive stats."""
+    MAGIC_ATTACK = 3
+    ATTACK = 4
+    MAGIC_DEFENSE = 5
+    DEFENSE = 6
 
 
 class ItemTypeValue(enum.IntEnum):
-    Weapon = 0b00
-    Armor = 0b01
-    Accessory = 0b10
-    Item = 0b11
+    """Enumeration for distinct base classifications for items."""
+    WEAPON = 0b00
+    ARMOR = 0b01
+    ACCESSORY = 0b10
+    ITEM = 0b11

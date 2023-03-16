@@ -46,7 +46,7 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b" \x80\x10\x00"), identifier="command_0x35a9b5"),
         JmpIfAMEM8BitGreaterOrEqualThanConst(0x60, 31, ["command_0x35a9c3"]),
         DisplayMessage(BATTLE_MESSAGE, 41),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         Db(bytearray(b" \x8d@\x00"), identifier="command_0x35a9c3"),
         JmpIfAMEM8BitEqualsConst(0x6D, 64, ["command_0x35a9d2"]),
         SpriteSequence(sequence=2),

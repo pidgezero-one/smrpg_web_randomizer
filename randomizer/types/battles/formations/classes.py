@@ -1,3 +1,5 @@
+"""Base classes for enemy formations."""
+
 import statistics
 from typing import List, Tuple, Type, Optional
 from randomizer.entities.enemies.enemies import (
@@ -24,8 +26,6 @@ from randomizer.entities.enemies.enemies import (
     WindCrystal,
 )
 from randomizer.types.numbers.classes import ByteField, BitMapSet
-from randomizer.types.battles.battle_music.classes import Music
-from randomizer.types.battles.battle_music.music import NormalBattleMusic
 from randomizer.types.battles.formations.constants.misc import (
     BASE_FORMATION_ADDRESS,
     BASE_FORMATION_META_ADDRESS,
@@ -33,7 +33,7 @@ from randomizer.types.battles.formations.constants.misc import (
 )
 from randomizer.types.bosses.enums import BattleMusic, Battlefields
 from randomizer.types.enemies.classes import Enemy
-from randomizer.types.numbers.classes import UInt16, UInt8
+from randomizer.types.numbers.classes import UInt8
 from randomizer.types.patch.classes import Patch
 
 
@@ -49,44 +49,60 @@ class FormationMember:
 
     @property
     def hidden_at_start(self) -> bool:
+        """If true, this enemy will be hidden when the battle begins."""
         return self._hidden_at_start
 
     def set_hidden_at_start(self, hidden_at_start: bool) -> None:
+        """If true, this enemy will be hidden when the battle begins."""
         self._hidden_at_start = hidden_at_start
 
     @property
     def enemy(self) -> Type[Enemy]:
+        """The class of the enemy being included in the formation."""
         return self._enemy
 
     def set_enemy(self, enemy: Type[Enemy]) -> None:
+        """Set the class of the enemy being included in the formation."""
         self._enemy = enemy
 
     @property
     def x_pos(self) -> UInt8:
+        """The X coordinate that the enemy will be stationed at."""
         return self._x_pos
 
     def set_x_pos(self, x_pos: int) -> None:
+        """Set the X coordinate that the enemy will be stationed at."""
         self._x_pos = UInt8(x_pos)
 
     @property
     def y_pos(self) -> UInt8:
+        """The Y coordinate that the enemy will be stationed at."""
         return self._y_pos
 
     def set_y_pos(self, y_pos: int) -> None:
+        """Set the Y coordinate that the enemy will be stationed at."""
         self._y_pos = UInt8(y_pos)
 
     @property
     def anchor(self) -> bool:
+        """(deprecated)"""
         return self._anchor
 
     def set_anchor(self, anchor: bool) -> None:
+        """(deprecated)"""
         self._anchor = anchor
 
     @property
     def include_in_stat_totaling(self) -> bool:
+        """True by default. If false, this enemy's stats will not be considered
+        when calculating the total stats for a boss location to distribute to
+        the boss fight that is shuffled into it."""
         return self._include_in_stat_totaling
 
     def set_include_in_stat_totaling(self, include_in_stat_totaling: bool) -> None:
+        """If false, this enemy's stats will not be considered
+        when calculating the total stats for a boss location to distribute to
+        the boss fight that is shuffled into it."""
         self._include_in_stat_totaling = include_in_stat_totaling
 
     def __init__(
@@ -107,6 +123,7 @@ class FormationMember:
 
 
 class Formation:
+    """A subclass that defines an arrangement of enemies in a battle."""
 
     _members: List[Optional[FormationMember]]
     _run_event_at_load: Optional[UInt8]
@@ -119,17 +136,23 @@ class Formation:
 
     @property
     def members(self) -> List[Optional[FormationMember]]:
+        """A list of containers including info about enemies and their positioning."""
         return self._members
 
     def set_members(self, members: List[Optional[FormationMember]]) -> None:
+        """Overwrite the list of containers including info about enemies and their positioning."""
         self._members = members
         self._members.extend([None] * (8 - len(self._members)))
 
     @property
     def run_event_at_load(self) -> Optional[UInt8]:
+        """The event that should run at the start of the battle when this formation is used.
+        If not set, no event will run."""
         return self._run_event_at_load
 
     def set_run_event_at_load(self, run_event_at_load: Optional[int]) -> None:
+        """Set the event that should run at the start of the battle when this formation is used.
+        If not set, no event will run."""
         if run_event_at_load is None:
             self._run_event_at_load = run_event_at_load
         else:
@@ -137,53 +160,114 @@ class Formation:
 
     @property
     def music(self) -> BattleMusic:
+        """The battle music that should accompany this formation."""
         return self._music
 
     def set_music(self, music: BattleMusic) -> None:
+        """Set the battle music that should accompany this formation."""
         self._music = music
 
     @property
     def can_run_away(self) -> bool:
+        """If false, running away from this formation is impossible."""
         return self._can_run_away
 
     def set_can_run_away(self, can_run_away: bool) -> None:
+        """If false, running away from this formation is impossible."""
         self._can_run_away = can_run_away
 
     @property
     def unknown_bit(self) -> bool:
+        """(unknown)"""
         return self._unknown_bit
 
     def set_unknown_bit(self, unknown_bit: bool) -> None:
+        """(unknown)"""
         self._unknown_bit = unknown_bit
 
     @property
     def battlefield_override(self) -> Optional[Battlefields]:
+        """If set, forces this formation to always load with the given battlefield,
+        regardless of where in the world it is encountered."""
         return self._battlefield_override
 
     def set_battlefield_override(
         self, battlefield_override: Optional[Battlefields]
     ) -> None:
+        """Force this formation to always load with the given battlefield,
+        regardless of where in the world it is encountered."""
         self._battlefield_override = battlefield_override
 
     @property
     def additional_enemies_to_scale(self) -> List[Type[Enemy]]:
+        """If this formation is used in a boss fight, its stats will change depending on
+        which location it is shuffled to inhabit. This property specifies enemies that are
+        NOT included in the formation itself whose stats should also be scaled similarly to
+        the enemies in this formation.
+
+        An example of this is when Valentina occupies the Mushroom Kingdom. Valentina and Dodo
+        will have their stats scaled to roughly match Mack's original stats. However, Valentina
+        also brings bluebird henchmen with her who occupy the mushroom kingdom exterior, despite
+        not appearing in battle in the same formation as her. Those bluebirds should also be
+        roughly scaled to match stats suitable to the Mushroom Kingdom, so you would
+        specify BluebirdHenchmen in this list to make sure their stats stay appropriately
+        relative to Valentina's, no matter where she ends up."""
         return self._additional_enemies_to_scale
 
     def set_additional_enemies_to_scale(
         self, additional_enemies_to_scale: List[Type[Enemy]]
     ) -> None:
+        """If this formation is used in a boss fight, its stats will change depending on
+        which location it is shuffled to inhabit. This property specifies enemies that are
+        NOT included in the formation itself whose stats should also be scaled similarly to
+        the enemies in this formation.
+
+        An example of this is when Valentina occupies the Mushroom Kingdom. Valentina and Dodo
+        will have their stats scaled to roughly match Mack's original stats. However, Valentina
+        also brings bluebird henchmen with her who occupy the mushroom kingdom exterior, despite
+        not appearing in battle in the same formation as her. Those bluebirds should also be
+        roughly scaled to match stats suitable to the Mushroom Kingdom, so you would
+        specify BluebirdHenchmen in this list to make sure their stats stay appropriately
+        relative to Valentina's, no matter where she ends up."""
         self._additional_enemies_to_scale = additional_enemies_to_scale
 
     @property
     def additional_enemies_for_stat_count(self) -> List[Type[Enemy]]:
+        """Calculating the stats that a boss location should confer onto the boss inhabiting it
+        via shuffling is based on the stats of the boss that inhabited that location in the original
+        game, and takes into account which enemies absolutely must be defeated in order
+        to end the fight. Sometimes, an enemy formation does not perfectly define the whole
+        list of enemies that need to be defeated.
+
+        For example, the Megasmilax fight requires you to defeat 8 smilaxes, but the formation
+        only includes five, three of which are re-summoned during battle.
+
+        This property would be used to contain three more smilaxes, so that the total HP
+        conferred by the Bean Valley boss location is equivalent to megasmilax plus 8 smilaxes
+        instead of five."""
         return self._additional_enemies_for_stat_count
 
     def set_additional_enemies_for_stat_count(
         self, additional_enemies_for_stat_count: List[Type[Enemy]]
     ) -> None:
+        """Calculating the stats that a boss location should confer onto the boss inhabiting it
+        via shuffling is based on the stats of the boss that inhabited that location in the original
+        game, and takes into account which enemies absolutely must be defeated in order
+        to end the fight. Sometimes, an enemy formation does not perfectly define the whole
+        list of enemies that need to be defeated.
+
+        For example, the Megasmilax fight requires you to defeat 8 smilaxes, but the formation
+        only includes five, three of which are re-summoned during battle.
+
+        This property would be used to contain three more smilaxes, so that the total HP
+        conferred by the Bean Valley boss location is equivalent to megasmilax plus 8 smilaxes
+        instead of five."""
         self._additional_enemies_for_stat_count = additional_enemies_for_stat_count
 
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
+        """Calculates the stats that this fight's original location should confer onto whichever
+        boss fight inhabits it via the shuffler, IF the player's settings require relative
+        stat scaling."""
         stat_counted_enemy_classes = [
             m.enemy
             for m in self.members
@@ -191,8 +275,6 @@ class Formation:
         ]
         stat_counted_enemy_classes.extend(self.additional_enemies_for_stat_count)
         stat_counted_enemies = [m() for m in stat_counted_enemy_classes]
-
-        e: Enemy
 
         hp: int = sum(e.hp for e in stat_counted_enemies)
         xp: int = sum(e.xp for e in stat_counted_enemies)
@@ -228,24 +310,31 @@ class Formation:
         )
 
     def get_scaled_enemy_classes(self) -> List[Type[Enemy]]:
+        """A list of the class definitions of enemies which are included in scaling."""
         returned_enemy_classes = [m.enemy for m in self.members if m is not None]
         returned_enemy_classes.extend(self.additional_enemies_to_scale)
         return list(set(returned_enemy_classes))
 
     def get_members_by_enemy_classes(self, *cls: Type[Enemy]) -> List[FormationMember]:
+        """Returns all of the enemy containers in this formation if the enemy class
+        matches an entry in the given list."""
         return [m for m in self.members if m is not None and type(m) in cls]
 
     def __init__(
         self,
         members: List[Optional[FormationMember]],
         run_event_at_load: Optional[int] = None,
-        music: BattleMusic = BattleMusic.Normal,
+        music: BattleMusic = BattleMusic.NORMAL,
         can_run_away: bool = True,
         unknown_bit: bool = True,
         battlefield_override: Optional[Battlefields] = None,
-        additional_enemies_to_scale: List[Type[Enemy]] = [],
-        additional_enemies_for_stat_count: List[Type[Enemy]] = [],
+        additional_enemies_to_scale: Optional[List[Type[Enemy]]] = None,
+        additional_enemies_for_stat_count: Optional[List[Type[Enemy]]] = None,
     ) -> None:
+        if additional_enemies_to_scale is None:
+            additional_enemies_to_scale = []
+        if additional_enemies_for_stat_count is None:
+            additional_enemies_for_stat_count = []
         self.set_members(members)
         self.set_run_event_at_load(run_event_at_load)
         self.set_music(music)
@@ -256,6 +345,7 @@ class Formation:
         self.set_additional_enemies_for_stat_count(additional_enemies_for_stat_count)
 
     def get_patch(self, formation_index: int) -> Patch:
+        """Get the patch object for this formation to be written to the ROM."""
         assert 0 <= formation_index < TOTAL_FORMATIONS
         patch = Patch()
         data = bytearray()
@@ -305,6 +395,9 @@ class Formation:
 
 
 class ExorBossFormation(Formation):
+    """A formation subclass specifically for Exor, who needs special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # HP = exor plus average of two eyes
         (
@@ -337,6 +430,9 @@ class ExorBossFormation(Formation):
 
 
 class KingCalamariBossFormation(Formation):
+    """A formation subclass specifically for King Calamari, who needs special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # xp only from kc
         (
@@ -350,9 +446,9 @@ class KingCalamariBossFormation(Formation):
             evade,
             magic_evade,
         ) = super().get_summed_stats()
-        kc = self.get_members_by_enemy_classes(KingCalamari)[0].enemy()
-        xp = kc.xp
-        coins = kc.coins
+        king_calamari = self.get_members_by_enemy_classes(KingCalamari)[0].enemy()
+        xp = king_calamari.xp
+        coins = king_calamari.coins
         return (
             hp,
             xp,
@@ -367,6 +463,9 @@ class KingCalamariBossFormation(Formation):
 
 
 class CloakerDominoFormation(Formation):
+    """A formation subclass specifically for Cloaker and Domino, who need special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # average HP between alternating fight options
         (
@@ -402,6 +501,9 @@ class CloakerDominoFormation(Formation):
 
 
 class ValentinaBossFormation(Formation):
+    """A formation subclass specifically for Valentina, who needs special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # For Dodo/Valentina, count 40% of Dodo's HP.
         (
@@ -431,6 +533,9 @@ class ValentinaBossFormation(Formation):
 
 
 class MegasmilaxBossFormation(Formation):
+    """A formation subclass specifically for Megasmilax, who needs special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # xp only from mega
         (
@@ -444,9 +549,9 @@ class MegasmilaxBossFormation(Formation):
             evade,
             magic_evade,
         ) = super().get_summed_stats()
-        ms = self.get_members_by_enemy_classes(Megasmilax)[0].enemy()
-        xp = ms.xp
-        coins = ms.coins
+        megasmilax = self.get_members_by_enemy_classes(Megasmilax)[0].enemy()
+        xp = megasmilax.xp
+        coins = megasmilax.coins
         return (
             hp,
             xp,
@@ -461,6 +566,9 @@ class MegasmilaxBossFormation(Formation):
 
 
 class AxemBossFormation(Formation):
+    """A formation subclass specifically for the Axem Rangers, who need special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # xp only from mega
         (
@@ -474,9 +582,9 @@ class AxemBossFormation(Formation):
             evade,
             magic_evade,
         ) = super().get_summed_stats()
-        ar = self.get_members_by_enemy_classes(AxemRangers)[0].enemy()
-        xp = ar.xp
-        coins = ar.coins
+        axems = self.get_members_by_enemy_classes(AxemRangers)[0].enemy()
+        xp = axems.xp
+        coins = axems.coins
         return (
             hp,
             xp,
@@ -491,6 +599,9 @@ class AxemBossFormation(Formation):
 
 
 class Belome2BossFormation(Formation):
+    """A formation subclass specifically for Belome 2, who needs special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # xp only from mega
         (
@@ -523,6 +634,9 @@ class Belome2BossFormation(Formation):
 
 
 class CulexBossFormation(Formation):
+    """A formation subclass specifically for Culex, who needs special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # xp only from mega
         (
@@ -537,12 +651,12 @@ class CulexBossFormation(Formation):
             magic_evade,
         ) = super().get_summed_stats()
         culex = self.get_members_by_enemy_classes(Culex)[0].enemy()
-        fc = self.get_members_by_enemy_classes(FireCrystal)[0].enemy()
-        wc = self.get_members_by_enemy_classes(WindCrystal)[0].enemy()
-        ec = self.get_members_by_enemy_classes(EarthCrystal)[0].enemy()
-        wac = self.get_members_by_enemy_classes(WaterCrystal)[0].enemy()
-        xp = culex.xp + fc.xp + wc.xp + ec.xp + wac.xp
-        coins = culex.coins + fc.coins + wc.coins + ec.coins + wac.coins
+        fire = self.get_members_by_enemy_classes(FireCrystal)[0].enemy()
+        wind = self.get_members_by_enemy_classes(WindCrystal)[0].enemy()
+        earth = self.get_members_by_enemy_classes(EarthCrystal)[0].enemy()
+        water = self.get_members_by_enemy_classes(WaterCrystal)[0].enemy()
+        xp = culex.xp + fire.xp + wind.xp + earth.xp + water.xp
+        coins = culex.coins + fire.coins + wind.coins + earth.coins + water.coins
         return (
             hp,
             xp,
@@ -557,6 +671,9 @@ class CulexBossFormation(Formation):
 
 
 class JohnnyBossFormation(Formation):
+    """A formation subclass specifically for Johnny, who needs special calculations
+    for stat totalling."""
+
     def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
         # xp only from mega
         (
@@ -574,8 +691,8 @@ class JohnnyBossFormation(Formation):
         henchmen = self.get_members_by_enemy_classes(BandanaBlue)
         xp = johnny.xp
         coins = johnny.coins
-        for h in henchmen:
-            henchman = h.enemy()
+        for hench in henchmen:
+            henchman = hench.enemy()
             xp += henchman.xp * 4
             coins += henchman.coins * 4
         return (

@@ -91,7 +91,7 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntilSpriteSequenceDone(),
         SpriteSequence(sequence=13),
         PauseScriptUntilSpriteSequenceDone(),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         PauseScriptUntilAMEMBitsSet(0x6F, [0]),
         SpriteSequence(sequence=6),
         PauseScriptUntilSpriteSequenceDone(),

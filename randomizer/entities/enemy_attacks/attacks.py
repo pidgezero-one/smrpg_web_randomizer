@@ -1,117 +1,117 @@
 from typing import List
 from randomizer.types.enemy_attacks.classes import EnemyAttack
-from randomizer.types.spells.enums import SpellBoosts, SpellStatusEffects
+from randomizer.types.spells.enums import SpellBoosts, Status
 
 
 class PhysicalAttack0(EnemyAttack):
     _index: int = 0
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack1(EnemyAttack):
     _index: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack2(EnemyAttack):
     _index: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack3(EnemyAttack):
     _index: int = 3
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack4(EnemyAttack):
     _index: int = 4
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack5(EnemyAttack):
     _index: int = 5
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack6(EnemyAttack):
     _index: int = 6
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack7(EnemyAttack):
     _index: int = 7
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack8(EnemyAttack):
     _index: int = 8
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack9(EnemyAttack):
     _index: int = 9
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack10(EnemyAttack):
     _index: int = 10
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack11(EnemyAttack):
     _index: int = 11
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack12(EnemyAttack):
     _index: int = 12
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack13(EnemyAttack):
     _index: int = 13
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack14(EnemyAttack):
     _index: int = 14
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack15(EnemyAttack):
     _index: int = 15
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -119,7 +119,7 @@ class PhysicalAttack16(EnemyAttack):
     _index: int = 16
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -127,7 +127,7 @@ class Thornet(EnemyAttack):
     _index: int = 17
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _status_effects: List[Status] = [Status.POISON]
     _buffs: List[SpellBoosts] = []
 
 
@@ -135,7 +135,7 @@ class PhysicalAttack18(EnemyAttack):
     _index: int = 18
     _attack_level: int = 3
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -143,7 +143,7 @@ class Funguspike(EnemyAttack):
     _index: int = 19
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mushroom]
+    _status_effects: List[Status] = [Status.MUSHROOM]
     _buffs: List[SpellBoosts] = []
 
 
@@ -151,7 +151,7 @@ class PhysicalAttack20(EnemyAttack):
     _index: int = 20
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -159,7 +159,7 @@ class PhysicalAttack21(EnemyAttack):
     _index: int = 21
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -167,7 +167,7 @@ class FullHouse(EnemyAttack):
     _index: int = 22
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -175,7 +175,7 @@ class WildCard(EnemyAttack):
     _index: int = 23
     _attack_level: int = 3
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -183,7 +183,7 @@ class RoyalFlush(EnemyAttack):
     _index: int = 24
     _attack_level: int = 4
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -191,7 +191,7 @@ class PhysicalAttack25(EnemyAttack):
     _index: int = 25
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -199,7 +199,7 @@ class SpritzBomb(EnemyAttack):
     _index: int = 26
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -207,7 +207,7 @@ class PhysicalAttack27(EnemyAttack):
     _index: int = 27
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -215,14 +215,14 @@ class PhysicalAttack28(EnemyAttack):
     _index: int = 28
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack29(EnemyAttack):
     _index: int = 29
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -231,7 +231,7 @@ class Blazer(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -239,7 +239,7 @@ class PhysicalAttack31(EnemyAttack):
     _index: int = 31
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -247,7 +247,7 @@ class PhysicalAttack32(EnemyAttack):
     _index: int = 32
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -255,7 +255,7 @@ class Echofinder(EnemyAttack):
     _index: int = 33
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mute]
+    _status_effects: List[Status] = [Status.MUTE]
     _buffs: List[SpellBoosts] = []
 
 
@@ -265,7 +265,7 @@ class ScrowBell(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Scarecrow]
+    _status_effects: List[Status] = [Status.SCARECROW]
     _buffs: List[SpellBoosts] = []
 
 
@@ -275,7 +275,7 @@ class DoomReverb(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mute]
+    _status_effects: List[Status] = [Status.MUTE]
     _buffs: List[SpellBoosts] = []
 
 
@@ -285,7 +285,7 @@ class SporeChimes(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mushroom]
+    _status_effects: List[Status] = [Status.MUSHROOM]
     _buffs: List[SpellBoosts] = []
 
 
@@ -293,7 +293,7 @@ class InkBlast(EnemyAttack):
     _index: int = 37
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -301,7 +301,7 @@ class GunkBall(EnemyAttack):
     _index: int = 38
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mute]
+    _status_effects: List[Status] = [Status.MUTE]
     _buffs: List[SpellBoosts] = []
 
 
@@ -311,7 +311,7 @@ class Endobubble(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _status_effects: List[Status] = [Status.FEAR]
     _buffs: List[SpellBoosts] = []
 
 
@@ -319,7 +319,7 @@ class PhysicalAttack40(EnemyAttack):
     _index: int = 40
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -328,7 +328,7 @@ class SleepSauce(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _status_effects: List[Status] = [Status.SLEEP]
     _buffs: List[SpellBoosts] = []
 
 
@@ -337,7 +337,7 @@ class VenomDrool(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _status_effects: List[Status] = [Status.POISON]
     _buffs: List[SpellBoosts] = []
 
 
@@ -347,7 +347,7 @@ class MushFunk(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mushroom]
+    _status_effects: List[Status] = [Status.MUSHROOM]
     _buffs: List[SpellBoosts] = []
 
 
@@ -356,7 +356,7 @@ class ScrowFunk(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Scarecrow]
+    _status_effects: List[Status] = [Status.SCARECROW]
     _buffs: List[SpellBoosts] = []
 
 
@@ -365,7 +365,7 @@ class Stench(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _status_effects: List[Status] = [Status.POISON]
     _buffs: List[SpellBoosts] = []
 
 
@@ -373,7 +373,7 @@ class PhysicalAttack46(EnemyAttack):
     _index: int = 46
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -381,7 +381,7 @@ class PhysicalAttack47(EnemyAttack):
     _index: int = 47
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _status_effects: List[Status] = [Status.FEAR]
     _buffs: List[SpellBoosts] = []
 
 
@@ -390,7 +390,7 @@ class ViroPlasm(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _status_effects: List[Status] = [Status.POISON]
     _buffs: List[SpellBoosts] = []
 
 
@@ -399,7 +399,7 @@ class PsychoPlasm(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _status_effects: List[Status] = [Status.FEAR]
     _buffs: List[SpellBoosts] = []
 
 
@@ -408,7 +408,7 @@ class PhysicalAttack50(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mute]
+    _status_effects: List[Status] = [Status.MUTE]
     _buffs: List[SpellBoosts] = []
 
 
@@ -417,7 +417,7 @@ class PhysicalAttack51(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _status_effects: List[Status] = [Status.SLEEP]
     _buffs: List[SpellBoosts] = []
 
 
@@ -426,7 +426,7 @@ class PollenNap(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _status_effects: List[Status] = [Status.SLEEP]
     _buffs: List[SpellBoosts] = []
 
 
@@ -435,7 +435,7 @@ class ScrowDust(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Scarecrow]
+    _status_effects: List[Status] = [Status.SCARECROW]
     _buffs: List[SpellBoosts] = []
 
 
@@ -444,7 +444,7 @@ class Sporocyst(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mushroom]
+    _status_effects: List[Status] = [Status.MUSHROOM]
     _buffs: List[SpellBoosts] = []
 
 
@@ -453,7 +453,7 @@ class Toxicyst(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _status_effects: List[Status] = [Status.POISON]
     _buffs: List[SpellBoosts] = []
 
 
@@ -461,7 +461,7 @@ class PhysicalAttack56(EnemyAttack):
     _index: int = 56
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -469,7 +469,7 @@ class PhysicalAttack57(EnemyAttack):
     _index: int = 57
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -479,7 +479,7 @@ class LullaBye(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _status_effects: List[Status] = [Status.SLEEP]
     _buffs: List[SpellBoosts] = []
 
 
@@ -489,14 +489,14 @@ class Elegy(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mute]
+    _status_effects: List[Status] = [Status.MUTE]
     _buffs: List[SpellBoosts] = []
 
 
 class Backfire(EnemyAttack):
     _index: int = 60
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -504,7 +504,7 @@ class VaVaVoom(EnemyAttack):
     _index: int = 61
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -512,7 +512,7 @@ class FunRun(EnemyAttack):
     _index: int = 62
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -520,7 +520,7 @@ class BodySlam(EnemyAttack):
     _index: int = 63
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -530,7 +530,7 @@ class Howl(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _status_effects: List[Status] = [Status.FEAR]
     _buffs: List[SpellBoosts] = []
 
 
@@ -540,7 +540,7 @@ class Scream(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _status_effects: List[Status] = [Status.FEAR]
     _buffs: List[SpellBoosts] = []
 
 
@@ -550,7 +550,7 @@ class IronMaiden(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _status_effects: List[Status] = [Status.FEAR]
     _buffs: List[SpellBoosts] = []
 
 
@@ -558,7 +558,7 @@ class Fangs(EnemyAttack):
     _index: int = 67
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -566,7 +566,7 @@ class Poison(EnemyAttack):
     _index: int = 68
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _status_effects: List[Status] = [Status.POISON]
     _buffs: List[SpellBoosts] = []
 
 
@@ -574,7 +574,7 @@ class CarniKiss(EnemyAttack):
     _index: int = 69
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -582,7 +582,7 @@ class Claw(EnemyAttack):
     _index: int = 70
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -590,7 +590,7 @@ class Grinder(EnemyAttack):
     _index: int = 71
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -598,7 +598,7 @@ class DarkClaw(EnemyAttack):
     _index: int = 72
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Poison]
+    _status_effects: List[Status] = [Status.POISON]
     _buffs: List[SpellBoosts] = []
 
 
@@ -607,7 +607,7 @@ class Scythe(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -615,7 +615,7 @@ class Sickle(EnemyAttack):
     _index: int = 74
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Scarecrow]
+    _status_effects: List[Status] = [Status.SCARECROW]
     _buffs: List[SpellBoosts] = []
 
 
@@ -623,7 +623,7 @@ class Deathsickle(EnemyAttack):
     _index: int = 75
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Fear]
+    _status_effects: List[Status] = [Status.FEAR]
     _buffs: List[SpellBoosts] = []
 
 
@@ -632,7 +632,7 @@ class EerieJig(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Scarecrow]
+    _status_effects: List[Status] = [Status.SCARECROW]
     _buffs: List[SpellBoosts] = []
 
 
@@ -641,7 +641,7 @@ class SomnusWaltz(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _status_effects: List[Status] = [Status.SLEEP]
     _buffs: List[SpellBoosts] = []
 
 
@@ -650,7 +650,7 @@ class DahliaDance(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mushroom]
+    _status_effects: List[Status] = [Status.MUSHROOM]
     _buffs: List[SpellBoosts] = []
 
 
@@ -658,7 +658,7 @@ class Skewer(EnemyAttack):
     _index: int = 79
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -666,14 +666,14 @@ class Pierce(EnemyAttack):
     _index: int = 80
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack81(EnemyAttack):
     _index: int = 81
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -682,7 +682,7 @@ class Magnum(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -691,7 +691,7 @@ class Psyche(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 80
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -700,14 +700,14 @@ class Migraine(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 80
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack85(EnemyAttack):
     _index: int = 85
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -715,7 +715,7 @@ class PhysicalAttack86(EnemyAttack):
     _index: int = 86
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -723,7 +723,7 @@ class Multistrike(EnemyAttack):
     _index: int = 87
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -732,21 +732,21 @@ class FlutterHush(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Mute]
+    _status_effects: List[Status] = [Status.MUTE]
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack89(EnemyAttack):
     _index: int = 89
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack90(EnemyAttack):
     _index: int = 90
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -755,7 +755,7 @@ class PhysicalAttack91(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 85
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _status_effects: List[Status] = [Status.SLEEP]
     _buffs: List[SpellBoosts] = []
 
 
@@ -764,28 +764,28 @@ class FearRoulette(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack93(EnemyAttack):
     _index: int = 93
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack94(EnemyAttack):
     _index: int = 94
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack95(EnemyAttack):
     _index: int = 95
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -793,7 +793,7 @@ class HammerTime(EnemyAttack):
     _index: int = 96
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -802,14 +802,15 @@ class ValorUp(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 100
-    _buffs: List[SpellBoosts] = [SpellBoosts.MagicDefense, SpellBoosts.Defense]
-    _status_effects: List[SpellStatusEffects] = []
+    _buffs: List[SpellBoosts] = [
+        SpellBoosts.MAGIC_DEFENSE, SpellBoosts.DEFENSE]
+    _status_effects: List[Status] = []
 
 
 class PhysicalAttack98(EnemyAttack):
     _index: int = 98
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -817,14 +818,14 @@ class LastShot(EnemyAttack):
     _index: int = 99
     _attack_level: int = 3
     _hit_rate: int = 100
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack100(EnemyAttack):
     _index: int = 100
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -832,7 +833,7 @@ class PhysicalAttack101(EnemyAttack):
     _index: int = 101
     _attack_level: int = 1
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -841,7 +842,7 @@ class PhysicalAttack102(EnemyAttack):
     _hit_rate: int = 100
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -850,7 +851,7 @@ class PhysicalAttack103(EnemyAttack):
     _hit_rate: int = 100
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -859,14 +860,14 @@ class PhysicalAttack104(EnemyAttack):
     _hit_rate: int = 100
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack105(EnemyAttack):
     _index: int = 105
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -875,21 +876,21 @@ class Gnight(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Sleep]
+    _status_effects: List[Status] = [Status.SLEEP]
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack107(EnemyAttack):
     _index: int = 107
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack108(EnemyAttack):
     _index: int = 108
     _hit_rate: int = 100
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -897,7 +898,7 @@ class Chomp(EnemyAttack):
     _index: int = 109
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -906,14 +907,15 @@ class GetTough(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 100
-    _buffs: List[SpellBoosts] = [SpellBoosts.MagicDefense, SpellBoosts.Defense]
-    _status_effects: List[SpellStatusEffects] = []
+    _buffs: List[SpellBoosts] = [
+        SpellBoosts.MAGIC_DEFENSE, SpellBoosts.DEFENSE]
+    _status_effects: List[Status] = []
 
 
 class PhysicalAttack111(EnemyAttack):
     _index: int = 111
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -922,7 +924,7 @@ class Missedme(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -930,7 +932,7 @@ class PhysicalAttack113(EnemyAttack):
     _index: int = 113
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -938,14 +940,14 @@ class LocoExpress(EnemyAttack):
     _index: int = 114
     _attack_level: int = 3
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack115(EnemyAttack):
     _index: int = 115
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -953,28 +955,28 @@ class PhysicalAttack116(EnemyAttack):
     _index: int = 116
     _attack_level: int = 1
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack117(EnemyAttack):
     _index: int = 117
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class PhysicalAttack118(EnemyAttack):
     _index: int = 118
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class Jinxed(EnemyAttack):
     _index: int = 119
     _hit_rate: int = 100
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -982,7 +984,7 @@ class TripleKick(EnemyAttack):
     _index: int = 120
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -990,7 +992,7 @@ class Quicksilver(EnemyAttack):
     _index: int = 121
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -998,7 +1000,7 @@ class BombsAway(EnemyAttack):
     _index: int = 122
     _attack_level: int = 3
     _hit_rate: int = 90
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -1007,14 +1009,14 @@ class Vigorup(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 100
-    _buffs: List[SpellBoosts] = [SpellBoosts.MagicAttack, SpellBoosts.Attack]
-    _status_effects: List[SpellStatusEffects] = []
+    _buffs: List[SpellBoosts] = [SpellBoosts.MAGIC_ATTACK, SpellBoosts.ATTACK]
+    _status_effects: List[Status] = []
 
 
 class PhysicalAttack124(EnemyAttack):
     _index: int = 124
     _hit_rate: int = 100
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -1023,7 +1025,7 @@ class SilverBullet(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -1031,7 +1033,7 @@ class Terrapunch(EnemyAttack):
     _index: int = 126
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
@@ -1040,7 +1042,7 @@ class ScrowFangs(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 85
-    _status_effects: List[SpellStatusEffects] = [SpellStatusEffects.Scarecrow]
+    _status_effects: List[Status] = [Status.SCARECROW]
     _buffs: List[SpellBoosts] = []
 
 
@@ -1049,13 +1051,13 @@ class Shaker(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 99
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 
 class AttackDoNothing(EnemyAttack):
     _index: int = 251
-    _status_effects: List[SpellStatusEffects] = []
+    _status_effects: List[Status] = []
     _buffs: List[SpellBoosts] = []
 
 

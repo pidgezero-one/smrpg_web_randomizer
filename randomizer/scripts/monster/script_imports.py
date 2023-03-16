@@ -471,7 +471,7 @@ from randomizer.entities.enemy_attacks.attacks import (
     Shaker,
     AttackDoNothing,
 )
-from randomizer.types.spells.enums import SpellElement, SpellStatusEffects
+from randomizer.types.spells.enums import Element, Status
 from randomizer.types.monster_scripts.constants.targets import (
     MARIO,
     TOADSTOOL,

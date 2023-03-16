@@ -600,7 +600,7 @@ MUSHROOM_WAY_2_BOSS_FILL = BossModelFill(
     room_id=R205_MUSHROOM_WAY_AREA_03,
     npc=NPC_7,
     occupant=HammerBroBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[E2809_MUSHROOM_WAY_BOSS_THREATENS_YOU],
     sequence_setter=E0755_MUSHROOM_WAY_AREA_03_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -658,7 +658,7 @@ THRONE_ROOM_BOSS_FILL = BossModelFill(
     room_id=R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
     npc=NPC_3,
     occupant=MackBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[
         E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
         E0373_MUSHROOM_KINGDOM_BOSS_FIGHT,
@@ -672,7 +672,7 @@ THRONE_ROOM_TOP_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_4,
     occupant=DefaultShyster1,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
         E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE,
@@ -689,7 +689,7 @@ THRONE_ROOM_MID_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_5,
     occupant=DefaultShyster1,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
         E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE,
@@ -706,7 +706,7 @@ THRONE_ROOM_MID_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_6,
     occupant=DefaultShyster1,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
         E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE,
@@ -723,7 +723,7 @@ THRONE_ROOM_TOP_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_7,
     occupant=DefaultShyster1,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
         E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE,
@@ -741,7 +741,7 @@ THRONE_ROOM_BOTTOM_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     occupant=DefaultShyster1,
     minigames_only=True,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
         E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE,
@@ -759,7 +759,7 @@ THRONE_ROOM_BOTTOM_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     occupant=DefaultShyster1,
     minigames_only=True,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
         E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE,
@@ -775,7 +775,7 @@ KINGDOM_EXTERIOR_NPC_HITTING_HOUSE_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
     npc=NPC_3,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER],
     affected_action_scripts=[A0132_HENCHMAN_BONKING_HOUSE],
     sequence_setter=E0762_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -784,7 +784,7 @@ KINGDOM_EXTERIOR_NPC_TERRORIZING_GUARD_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
     npc=NPC_5,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1189_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER],
     affected_action_scripts=[
@@ -795,13 +795,13 @@ KINGDOM_EXTERIOR_NPC_TERRORIZING_GUARD_HENCHMAN_FILL = RepeatableHenchmanFill(
         A0104_BASE_SOUTHWEST_MK_HENCHMAN_MOVEMENT,
     ],
     sequence_setter=E0762_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomOutside,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_OUTSIDE,
 )
 KINGDOM_ANTECHAMBER_LEFT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM,
     npc=NPC_0,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[E0764_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ANTECHAMBER_LOADER],
     affected_action_scripts=[
         A0115_MK_THRONE_ANTECHAMBER_HENCHMAN,
@@ -816,7 +816,7 @@ KINGDOM_MAIN_HALL_REPEATING_HENCHMAN_FILL_1 = RepeatableHenchmanFill(
     room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
     npc=NPC_0,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[
         E0371_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_LOADER,
@@ -824,13 +824,13 @@ KINGDOM_MAIN_HALL_REPEATING_HENCHMAN_FILL_1 = RepeatableHenchmanFill(
     ],
     affected_action_scripts=[A0110_MK_HALL_REPEATING_HENCHMEN],
     sequence_setter=E0765_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomThroneRoom,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_THRONE_ROOM,
 )
 KINGDOM_MAIN_HALL_REPEATING_HENCHMAN_FILL_2 = RepeatableHenchmanFill(
     room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
     npc=NPC_1,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1187_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[
         E0371_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_LOADER,
@@ -838,13 +838,13 @@ KINGDOM_MAIN_HALL_REPEATING_HENCHMAN_FILL_2 = RepeatableHenchmanFill(
     ],
     affected_action_scripts=[A0110_MK_HALL_REPEATING_HENCHMEN],
     sequence_setter=E0765_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomThroneRoom,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_THRONE_ROOM,
 )
 KINGDOM_MAIN_HALL_REPEATING_HENCHMAN_FILL_3 = RepeatableHenchmanFill(
     room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
     npc=NPC_2,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1188_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[
         E0371_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_LOADER,
@@ -852,13 +852,13 @@ KINGDOM_MAIN_HALL_REPEATING_HENCHMAN_FILL_3 = RepeatableHenchmanFill(
     ],
     affected_action_scripts=[A0108_MK_HALL_REPEATING_HENCHMEN],
     sequence_setter=E0765_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomThroneRoom,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_THRONE_ROOM,
 )
 KINGDOM_MAIN_HALL_DOOR_GUARD_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
     npc=NPC_3,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[
         E0371_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_LOADER,
         E0377_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_REPEATING_SHYSTERS_POSITION,
@@ -870,7 +870,7 @@ KINGDOM_MAIN_HALL_TERRORIZING_TOAD_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
     npc=NPC_4,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1189_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[
         E0371_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_LOADER,
@@ -878,13 +878,13 @@ KINGDOM_MAIN_HALL_TERRORIZING_TOAD_HENCHMAN_FILL = RepeatableHenchmanFill(
     ],
     affected_action_scripts=[A0111_MK_HALL_REPEATING_HENCHMEN_STARTING],
     sequence_setter=E0765_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomThroneRoom,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_THRONE_ROOM,
 )
 KINGDOM_STAIRCASE_RIGHT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
     npc=NPC_0,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[E0391_MUSHROOM_KINGDOM_OCCUPIED_LEFT_STAIRWAY_LOADER],
     affected_action_scripts=[A0125_MK_BRANCH_HALLWAY_HENCHMAN],
     sequence_setter=E0766_MUSHROOM_KINGDOM_OCCUPIED_STAIRWAY_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -893,7 +893,7 @@ KINGDOM_RIGHT_HALL_RIGHT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM,
     npc=NPC_1,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[E0767_MUSHROOM_KINGDOM_OCCUPIED_EAST_HALL_LOADER],
     affected_action_scripts=[A0123_MK_BRANCH_HALLWAY_HENCHMAN],
     sequence_setter=E0768_MUSHROOM_KINGDOM_OCCUPIED_EAST_HALL_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -902,7 +902,7 @@ KINGDOM_HOUSE_TABLE_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
     npc=NPC_4,
     occupant=DefaultShyster1,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1187_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[
         E0393_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F_LOADER,
@@ -911,46 +911,46 @@ KINGDOM_HOUSE_TABLE_HENCHMAN_FILL = RepeatableHenchmanFill(
     ],
     affected_action_scripts=[A0103_MK_THRONE_HENCHMAN_BOUNCE_BOSS_FIGHT_START],
     sequence_setter=E0770_MUSHROOM_KINGDOM_OCCUPIED_JUMPING_KIDS_HOUSE_1F_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.House,
+    battlefield=Battlefields.HOUSE,
 )
 KINGDOM_EXTERIOR_RESPAWNING_HENCHMAN_1 = RepeatableHenchmanFill(
     room_id=R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
     npc=NPC_0,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER],
     affected_action_scripts=[A0133_MK_OCCUPIED_EXTERIOR_REPEATING_HENCHMEN],
     sequence_setter=E0762_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomOutside,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_OUTSIDE,
 )
 KINGDOM_EXTERIOR_RESPAWNING_HENCHMAN_2 = RepeatableHenchmanFill(
     room_id=R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
     npc=NPC_1,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1187_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER],
     affected_action_scripts=[A0133_MK_OCCUPIED_EXTERIOR_REPEATING_HENCHMEN],
     sequence_setter=E0762_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomOutside,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_OUTSIDE,
 )
 KINGDOM_EXTERIOR_RESPAWNING_HENCHMAN_3 = RepeatableHenchmanFill(
     room_id=R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
     npc=NPC_2,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1188_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER],
     affected_action_scripts=[A0136_MK_OCCUPIED_EXTERIOR_REPEATING_HENCHMEN],
     sequence_setter=E0762_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomOutside,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_OUTSIDE,
 )
 KINGDOM_EXTERIOR_STANDING_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
     npc=NPC_4,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER],
     affected_action_scripts=[A0135_HENCHMAN_IMPRESSING_JUMP_LADY],
     sequence_setter=E0762_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -959,7 +959,7 @@ KINGDOM_EXTERIOR_GRASS_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
     npc=NPC_6,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1190_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER],
     affected_action_scripts=[
@@ -970,13 +970,13 @@ KINGDOM_EXTERIOR_GRASS_HENCHMAN_FILL = RepeatableHenchmanFill(
         A0104_BASE_SOUTHWEST_MK_HENCHMAN_MOVEMENT,
     ],
     sequence_setter=E0762_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdomOutside,
+    battlefield=Battlefields.MUSHROOM_KINGDOM_OUTSIDE,
 )
 KINGDOM_ANTECHAMBER_RIGHT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM,
     npc=NPC_1,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[E0764_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ANTECHAMBER_LOADER],
     affected_action_scripts=[
         A0116_MK_THRONE_ANTECHAMBER_HENCHMAN,
@@ -991,18 +991,18 @@ KINGDOM_STAIRCASE_LEFT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
     npc=NPC_1,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0391_MUSHROOM_KINGDOM_OCCUPIED_LEFT_STAIRWAY_LOADER],
     affected_action_scripts=[A0124_MK_BRANCH_HALLWAY_HENCHMAN],
     sequence_setter=E0766_MUSHROOM_KINGDOM_OCCUPIED_STAIRWAY_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdom,
+    battlefield=Battlefields.MUSHROOM_KINGDOM,
 )
 KINGDOM_RIGHT_HALL_LEFT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM,
     npc=NPC_0,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[E0767_MUSHROOM_KINGDOM_OCCUPIED_EAST_HALL_LOADER],
     affected_action_scripts=[A0122_MK_BRANCH_HALLWAY_HENCHMAN],
     sequence_setter=E0768_MUSHROOM_KINGDOM_OCCUPIED_EAST_HALL_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1011,7 +1011,7 @@ KINGDOM_BEDROOM_ANTECHAMBER_LEFT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
     npc=NPC_0,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.ExternalEvent,
+    fill_type=HenchmanType.EXTERNAL_EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[
         E0384_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_ANTECHAMBER_LOADER,
@@ -1019,26 +1019,26 @@ KINGDOM_BEDROOM_ANTECHAMBER_LEFT_HENCHMAN_FILL = RepeatableHenchmanFill(
     ],
     affected_action_scripts=[A0103_MK_THRONE_HENCHMAN_BOUNCE_BOSS_FIGHT_START],
     sequence_setter=E0769_MUSHROOM_KINGDOM_OCCUPIED_PEACHS_ANTECHAMBER_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdom,
+    battlefield=Battlefields.MUSHROOM_KINGDOM,
 )
 KINGDOM_BEDROOM_ANTECHAMBER_RIGHT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
     npc=NPC_1,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0384_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_ANTECHAMBER_LOADER,
         E0381_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_ANTECHAMBER_FIGHT,
     ],
     affected_action_scripts=[A0103_MK_THRONE_HENCHMAN_BOUNCE_BOSS_FIGHT_START],
     sequence_setter=E0769_MUSHROOM_KINGDOM_OCCUPIED_PEACHS_ANTECHAMBER_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MushroomKingdom,
+    battlefield=Battlefields.MUSHROOM_KINGDOM,
 )
 KINGDOM_HOUSE_SINK_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
     npc=NPC_3,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[
         E0393_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F_LOADER,
@@ -1047,13 +1047,13 @@ KINGDOM_HOUSE_SINK_HENCHMAN_FILL = RepeatableHenchmanFill(
     ],
     affected_action_scripts=[A0103_MK_THRONE_HENCHMAN_BOUNCE_BOSS_FIGHT_START],
     sequence_setter=E0770_MUSHROOM_KINGDOM_OCCUPIED_JUMPING_KIDS_HOUSE_1F_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.House,
+    battlefield=Battlefields.HOUSE,
 )
 KINGDOM_HOUSE_BED_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
     npc=NPC_1,
     occupant=DefaultShyster2,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[
         E0409_MUSHROOM_KINGDOM_OCCUPIED_JUMPING_KIDS_HOUSE_2F_LOADER,
@@ -1061,13 +1061,13 @@ KINGDOM_HOUSE_BED_HENCHMAN_FILL = RepeatableHenchmanFill(
     ],
     affected_action_scripts=[A0103_MK_THRONE_HENCHMAN_BOUNCE_BOSS_FIGHT_START],
     sequence_setter=E0771_MUSHROOM_KINGDOM_OCCUPIED_JUMPING_KIDS_HOUSE_2F_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.House,
+    battlefield=Battlefields.HOUSE,
 )
 SEWER_BOSS_ROOM_FILL = BossModelFill(
     room_id=R302_KERO_SEWERS_AREA_08_BELOMES_ROOM,
     npc=NPC_1,
     occupant=Belome1Boss,
-    preferred_size=SpriteSize.Attack,
+    preferred_size=SpriteSize.ATTACK,
     affected_event_scripts=[
         E0773_KERO_SEWERS_BELOME_ROOM_LOADER_CONTAINER,
         E3135_SEWERS_GENERIC_LOADER,
@@ -1078,7 +1078,7 @@ FOREST_BOSS_AREA_BOSS_FILL = BossModelFill(
     room_id=R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
     npc=NPC_11,
     occupant=BowyerBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1092,7 +1092,7 @@ FOREST_MID_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1109,7 +1109,7 @@ FOREST_MID_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_7,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1126,7 +1126,7 @@ FOREST_BOTTOM_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_3,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1143,7 +1143,7 @@ FOREST_BOTTOM_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_9,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1160,7 +1160,7 @@ FOREST_TOP_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_4,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1177,7 +1177,7 @@ FOREST_TOP_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_5,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1194,7 +1194,7 @@ FOREST_BOTTOM_MID_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1211,7 +1211,7 @@ FOREST_BOTTOM_MID_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_8,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1228,7 +1228,7 @@ FOREST_TOP_MID_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1245,7 +1245,7 @@ FOREST_TOP_MID_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_6,
     occupant=BowyerAero,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0774_FOREST_MAZE_BOSS_ROOM_LOADER,
         E2448_FOREST_BOSS_FIGHT,
@@ -1261,7 +1261,7 @@ MINES_CIRCLE_TRAMPOLINE_ROOM_BOSS_FILL = BossModelFill(
     room_id=R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE,
     npc=NPC_0,
     occupant=Croco2Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0776_MINES_TRAMPOLINE_ROOM_LOADER],
     affected_action_scripts=[A0730_MINES_CROCO],
     sequence_setter=E0777_MINES_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1270,7 +1270,7 @@ MINES_CIRCLE_LEFT_OF_TRAMPOLINE_ROOM_BOSS_FILL = BossModelFill(
     room_id=R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM,
     npc=NPC_0,
     occupant=Croco2Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0778_MINES_LEFT_OF_TRAMPOLINE_ROOM_LOADER],
     affected_action_scripts=[A0735_MINES_CROCO],
     sequence_setter=E0779_MINES_LEFT_OF_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1279,7 +1279,7 @@ MINES_CIRCLE_SMALL_ROOM_BOSS_FILL = BossModelFill(
     room_id=R275_MOLEVILLE_MINES_AREA_06_SMALL_ROOM_LEADING_TO_AREA_06,
     npc=NPC_0,
     occupant=Croco2Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0780_MINES_TINY_ROOM_2_LEFT_OF_TRAMPOLINE_ROOM_LOADER],
     affected_action_scripts=[A0734_MINES_CROCO],
     sequence_setter=E0781_MINES_TINY_ROOM_2_LEFT_OF_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1288,7 +1288,7 @@ MINES_CIRCLE_EXIT_ROOM_BOSS_FILL = BossModelFill(
     room_id=R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM,
     npc=NPC_0,
     occupant=Croco2Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0782_MINES_ROOM_THAT_SPLITS_TO_PA_MOLE_PATH_LOADER],
     affected_action_scripts=[A0733_MINES_CROCO],
     sequence_setter=E0783_MINES_ROOM_THAT_SPLITS_TO_PA_MOLE_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1297,7 +1297,7 @@ MINES_CIRCLE_EXPLODED_ROOM = BossModelFill(
     room_id=R279_MOLEVILLE_MINES_AREA_08_CROCOS_BOMBED_ROOM,
     npc=NPC_0,
     occupant=Croco2Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0784_MINES_SMALL_NORTH_ROOM_IN_MINIBOSS_PATH_LOADER],
     affected_action_scripts=[A0732_MINES_CROCO],
     sequence_setter=E0785_MINES_SMALL_NORTH_ROOM_IN_MINIBOSS_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1306,7 +1306,7 @@ MINES_CIRCLE_PRE_EXPLODED_ROOM = BossModelFill(
     room_id=R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
     npc=NPC_0,
     occupant=Croco2Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0786_MINES_LONG_ROOM_IN_MINIBOSS_PATH_LOADER],
     affected_action_scripts=[A0731_MINES_CROCO],
     sequence_setter=E0787_MINES_LONG_ROOM_IN_MINIBOSS_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1316,7 +1316,7 @@ MINES_TRAMPOLINE_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=DefaultCrook,
     repeatable_allowed=True,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0776_MINES_TRAMPOLINE_ROOM_LOADER],
     affected_action_scripts=[A0619_MINES_CENTER_CROOK],
@@ -1329,7 +1329,7 @@ MINES_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=DefaultCrook,
     repeatable_allowed=True,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0778_MINES_LEFT_OF_TRAMPOLINE_ROOM_LOADER],
     affected_action_scripts=[A0617_MINES_LEFT_CROOK],
@@ -1342,7 +1342,7 @@ MINES_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=DefaultCrook,
     repeatable_allowed=True,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E0786_MINES_LONG_ROOM_IN_MINIBOSS_PATH_LOADER],
     affected_action_scripts=[A0618_MINES_RIGHT_CROOK],
@@ -1354,7 +1354,7 @@ MINES_FINAL_BOSS_FILL = BossModelFill(
     room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
     npc=NPC_0,
     occupant=PunchinelloBoss,
-    preferred_size=SpriteSize.Attack,
+    preferred_size=SpriteSize.ATTACK,
     affected_event_scripts=[
         E0592_MINES_BOSS_ROOM_LOADER_BEFORE_DEFEAT,
         E0596_MINES_BOSS_ROOM_BACKGROUND_EXPLOSIONS,
@@ -1367,7 +1367,7 @@ MINES_BOSS_TINY_HENCHMAN_FILL_1 = TinyHenchmanFill(
     room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
     npc=NPC_1,
     occupant=DefaultMicrobomb,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0592_MINES_BOSS_ROOM_LOADER_BEFORE_DEFEAT,
         E0596_MINES_BOSS_ROOM_BACKGROUND_EXPLOSIONS,
@@ -1382,7 +1382,7 @@ MINES_BOSS_TINY_HENCHMAN_FILL_2 = TinyHenchmanFill(
     room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
     npc=NPC_2,
     occupant=DefaultMicrobomb,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0592_MINES_BOSS_ROOM_LOADER_BEFORE_DEFEAT,
         E0596_MINES_BOSS_ROOM_BACKGROUND_EXPLOSIONS,
@@ -1397,7 +1397,7 @@ MINES_BOSS_TINY_HENCHMAN_FILL_3 = TinyHenchmanFill(
     room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
     npc=NPC_3,
     occupant=DefaultMicrobomb,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E0592_MINES_BOSS_ROOM_LOADER_BEFORE_DEFEAT,
         E0596_MINES_BOSS_ROOM_BACKGROUND_EXPLOSIONS,
@@ -1412,7 +1412,7 @@ MINES_BOSS_BATTLE_HENCHMAN_FILL_1 = RepeatableHenchmanFill(
     room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
     npc=NPC_4,
     occupant=DefaultBobomb,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[
         E0592_MINES_BOSS_ROOM_LOADER_BEFORE_DEFEAT,
         E0596_MINES_BOSS_ROOM_BACKGROUND_EXPLOSIONS,
@@ -1428,7 +1428,7 @@ MINES_BOSS_BATTLE_HENCHMAN_FILL_2 = RepeatableHenchmanFill(
     room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
     npc=NPC_5,
     occupant=DefaultBobomb,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[
         E0592_MINES_BOSS_ROOM_LOADER_BEFORE_DEFEAT,
         E0596_MINES_BOSS_ROOM_BACKGROUND_EXPLOSIONS,
@@ -1444,7 +1444,7 @@ MINES_BOSS_BATTLE_HENCHMAN_FILL_3 = RepeatableHenchmanFill(
     room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
     npc=NPC_6,
     occupant=DefaultBobomb,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_event_scripts=[
         E0592_MINES_BOSS_ROOM_LOADER_BEFORE_DEFEAT,
         E0596_MINES_BOSS_ROOM_BACKGROUND_EXPLOSIONS,
@@ -1460,7 +1460,7 @@ TOWER_SEESAW_CHEST_NPC_FILL = RepeatableHenchmanFill(
     room_id=R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER,
     npc=NPC_1,
     occupant=DefaultBobomb,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E2340_TOWER_SEESAW_CHEST_ROOM_LOADER,
         E2342_TOWER_SEESAW_CHEST_CONTD,
@@ -1471,7 +1471,7 @@ TOWER_CURTAIN_GAME_ROOM_BOSS_FILL = BossModelFill(
     room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
     npc=NPC_0,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E1359_CURTAIN_GAME_ROOM_LOADER,
         E1358_CURTAIN_GAME_BEGINS_NPCS_WALK_INTO_ROOM,
@@ -1489,7 +1489,7 @@ TOWER_BOSS_SANCTUARY_NPC_FILL = BossModelFill(
     room_id=R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
     npc=NPC_7,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_dialog_ids=[DI2503_NEED_X_MORE_ITEMS_MARRYMORE],
     affected_event_scripts=[
         E3809_MARRYMORE_SANCTUARY_BEGIN_WEDDING_GEAR_SEQUENCE,
@@ -1501,7 +1501,7 @@ TOWER_ANCESTOR_GAME_MASTER_NPC_FILL = BossModelFill(
     R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
     npc=NPC_6,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E1339_PORTRAIT_GAME_ROOM_LOADER, E1335_PORTRAIT_GAME_4],
     sequence_setter=E0791_TOWER_ANCESTOR_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1509,7 +1509,7 @@ TOWER_BEHIND_BOBOMB_CURTAINS_BOSS_FILL = BossModelFill(
     room_id=R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS,
     npc=NPC_6,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_action_scripts=[A0702_TOWER_FIRST_STAIRCASE_BOSS],
     sequence_setter=E0792_TOWER_FIRST_BOBOMB_STAIRCASE_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1517,7 +1517,7 @@ TOWER_BOSS_BOOSTER_HILL_FILL = BossModelFill(
     room_id=R054_BOOSTER_HILL_____DUMMY,
     npc=NPC_7,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E3499_BOOSTER_HILL_1ST_PASS_LOADER,
         E3502_BOOSTER_HILL_END,
@@ -1535,7 +1535,7 @@ TOWER_BOSS_FRONT_DOOR_FILL = BossModelFill(
     room_id=R202_BOOSTER_TOWER_ENTRANCE,
     npc=NPC_1,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E1328_TOWER_EXTERIOR_LOADER],
     affected_action_scripts=[A0519_TOWER_BOSS_PEEKING_BEHIND_ENTRANCE],
     sequence_setter=E0878_TOWER_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1544,7 +1544,7 @@ TOWER_BOSS_FIRST_ROOM_BEHIND_DOORWAY_FILL = BossModelFill(
     room_id=R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM,
     npc=NPC_3,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E1312_TOWER_LOBBY_LOADER],
     affected_action_scripts=[A0518_TOWER_BOSS_1_HIDES_BEHIND_DOORWAY_IN_LOBBY_2],
     sequence_setter=E0797_TOWER_LOBBY_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1553,7 +1553,7 @@ TOWER_BOSS_ON_BALCONY_FILL = BossModelFill(
     room_id=R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
     npc=NPC_3,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE,
         E2278_BALCONY_LOADER_AFTER_NIMBUS_CASTLE,
@@ -1564,7 +1564,7 @@ TOWER_BOSS_ENDING_CREDITS_WEDDING_FILL = BossModelFill(
     room_id=R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
     npc=NPC_10,
     occupant=BoosterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1573,19 +1573,19 @@ TOWER_LOBBY_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_4,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_dialog_ids=[DI2560_TOWER_HENCHMAN_1],
     affected_event_scripts=[E1312_TOWER_LOBBY_LOADER],
     sequence_setter=E0797_TOWER_LOBBY_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.BoosterTower,
+    battlefield=Battlefields.BOOSTER_TOWER,
 )
 TOWER_CURTAIN_GAME_ROOM_HENCHMAN_1_FILL = UniqueHenchmanFill(
     room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
     npc=NPC_1,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1359_CURTAIN_GAME_ROOM_LOADER,
         E1358_CURTAIN_GAME_BEGINS_NPCS_WALK_INTO_ROOM,
@@ -1609,7 +1609,7 @@ CHAPEL_HENCHMAN_1_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3809_MARRYMORE_SANCTUARY_BEGIN_WEDDING_GEAR_SEQUENCE,
         E0600_MARRYMORE_OCCUPIED_CHAPEL_LOADER,
@@ -1624,7 +1624,7 @@ BOOSTER_HILL_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     occupant=BoosterHillSnifit,
     minigames_only=True,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3499_BOOSTER_HILL_1ST_PASS_LOADER,
         E3502_BOOSTER_HILL_END,
@@ -1643,7 +1643,7 @@ TOWER_BALCONY_HENCHMAN_1_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE,
         E2278_BALCONY_LOADER_AFTER_NIMBUS_CASTLE,
@@ -1655,7 +1655,7 @@ ENDING_CREDITS_CHAPEL_HENCHMAN_1_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1664,19 +1664,19 @@ TOWER_TRAIN_ROOM_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.ExternalEvent,
+    fill_type=HenchmanType.EXTERNAL_EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_dialog_ids=[DI2572_TOWER_HENCHMAN_2],
     affected_event_scripts=[E1344_TOWER_HENCHMAN_2_ROOM_LOADER, E1346_TOWER_HENCHMAN_2],
     sequence_setter=E0798_TOWER_FIRST_RAIL_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.BoosterTower,
+    battlefield=Battlefields.BOOSTER_TOWER,
 )
 TOWER_CURTAIN_GAME_ROOM_HENCHMAN_2_FILL = UniqueHenchmanFill(
     room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
     npc=NPC_2,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1359_CURTAIN_GAME_ROOM_LOADER,
         E1358_CURTAIN_GAME_BEGINS_NPCS_WALK_INTO_ROOM,
@@ -1700,7 +1700,7 @@ CHAPEL_HENCHMAN_2_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3809_MARRYMORE_SANCTUARY_BEGIN_WEDDING_GEAR_SEQUENCE,
         E0600_MARRYMORE_OCCUPIED_CHAPEL_LOADER,
@@ -1715,7 +1715,7 @@ BOOSTER_HILL_MIDDLE_HENCHMAN_FILL = UniqueHenchmanFill(
     occupant=BoosterHillSnifit,
     minigames_only=True,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3499_BOOSTER_HILL_1ST_PASS_LOADER,
         E3502_BOOSTER_HILL_END,
@@ -1734,7 +1734,7 @@ TOWER_BALCONY_HENCHMAN_2_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE,
         E2278_BALCONY_LOADER_AFTER_NIMBUS_CASTLE,
@@ -1746,7 +1746,7 @@ ENDING_CREDITS_CHAPEL_HENCHMAN_2_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1755,7 +1755,7 @@ TOWER_BULLET_ROOM_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_8,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.Event,
+    fill_type=HenchmanType.EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_dialog_ids=[DI3072_TOWER_HENCHMAN_3_WINDOW, DI3073_TOWER_HENCHMAN_3],
     affected_event_scripts=[
@@ -1765,14 +1765,14 @@ TOWER_BULLET_ROOM_HENCHMAN_FILL = UniqueHenchmanFill(
     ],
     affected_action_scripts=[A0386_TOWER_SHOOT_BULLET_BILLS],
     sequence_setter=E0799_TOWER_JUMPING_SPOOKUM_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.BoosterTower,
+    battlefield=Battlefields.BOOSTER_TOWER,
 )
 TOWER_CURTAIN_GAME_ROOM_HENCHMAN_3_FILL = UniqueHenchmanFill(
     room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
     npc=NPC_3,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1359_CURTAIN_GAME_ROOM_LOADER,
         E1358_CURTAIN_GAME_BEGINS_NPCS_WALK_INTO_ROOM,
@@ -1796,7 +1796,7 @@ CHAPEL_HENCHMAN_3_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3809_MARRYMORE_SANCTUARY_BEGIN_WEDDING_GEAR_SEQUENCE,
         E0600_MARRYMORE_OCCUPIED_CHAPEL_LOADER,
@@ -1811,7 +1811,7 @@ BOOSTER_HILL_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     occupant=BoosterHillSnifit,
     minigames_only=True,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3499_BOOSTER_HILL_1ST_PASS_LOADER,
         E3502_BOOSTER_HILL_END,
@@ -1830,7 +1830,7 @@ TOWER_BALCONY_HENCHMAN_3_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE,
         E2278_BALCONY_LOADER_AFTER_NIMBUS_CASTLE,
@@ -1842,7 +1842,7 @@ ENDING_CREDITS_CHAPEL_HENCHMAN_3_FILL = UniqueHenchmanFill(
     npc=NPC_3,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1851,7 +1851,7 @@ ENDING_CREDITS_CHAPEL_HENCHMAN_4_FILL = UniqueHenchmanFill(
     npc=NPC_4,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1860,7 +1860,7 @@ ENDING_CREDITS_CHAPEL_HENCHMAN_5_FILL = UniqueHenchmanFill(
     npc=NPC_5,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1869,7 +1869,7 @@ ENDING_CREDITS_CHAPEL_HENCHMAN_6_FILL = UniqueHenchmanFill(
     npc=NPC_6,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1878,7 +1878,7 @@ ENDING_CREDITS_CHAPEL_HENCHMAN_7_FILL = UniqueHenchmanFill(
     npc=NPC_7,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1887,7 +1887,7 @@ ENDING_CREDITS_CHAPEL_HENCHMAN_8_FILL = UniqueHenchmanFill(
     npc=NPC_8,
     occupant=DefaultSnifit,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1895,18 +1895,18 @@ BOOSTER_PASS_APPRENTICE_FILL = RepeatableHenchmanFill(
     room_id=R405_BOOSTER_PASS_SECRET,
     npc=NPC_9,
     occupant=BoosterApprentice,
-    fill_type=HenchmanType.ExternalEvent,
+    fill_type=HenchmanType.EXTERNAL_EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E2586_BOOSTER_PASS_APPRENTICE_FIGHT],
     affected_action_scripts=[A0851_BOOSTER_PASS_APPRENTICE_AFTER_FIGHT],
     sequence_setter=E0880_BOOSTER_PASS_SECRET_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.Mountains,
+    battlefield=Battlefields.MOUNTAINS,
 )
 CHAPEL_KITCHEN_BOSS_FILL = BossModelFill(
     room_id=R155_MARRYMORE_CHAPEL_KITCHEN,
     npc=NPC_0,
     occupant=BundtBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0628_MARRYMORE_KITCHEN_LOADER],
     sequence_setter=E0796_MARRYMORE_KITCHEN_SHUFFLED_NPC_ANIMATION_LOADER,
     prefer_south_only=True,
@@ -1916,7 +1916,7 @@ CHAPEL_SANCTUARY_BOSS_FILL = BossModelFill(
     room_id=R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
     npc=NPC_11,
     occupant=BundtBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0668_SUMMON_MARRYMORE_BOSS_TO_ROOM],
     sequence_setter=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -1925,7 +1925,7 @@ CHAPEL_KITCHEN_HENCHMAN_1_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=BundtTorte1,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2061_HEAD_CHEF],
     affected_event_scripts=[E0628_MARRYMORE_KITCHEN_LOADER],
     affected_action_scripts=[A0330_MARRYMORE_HEAD_CHEF],
@@ -1937,7 +1937,7 @@ CHAPEL_SANCTUARY_HENCHMAN_1_FILL = UniqueHenchmanFill(
     npc=NPC_9,
     occupant=BundtTorte1,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E0668_SUMMON_MARRYMORE_BOSS_TO_ROOM],
     affected_action_scripts=[A0636_54_VELOCITY_SINGLE_JUMP],
     sequence_setter=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1947,7 +1947,7 @@ CHAPEL_KITCHEN_HENCHMAN_2_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=BundtTorte2,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2062_APPRENTICE_CHEF],
     affected_event_scripts=[E0628_MARRYMORE_KITCHEN_LOADER],
     affected_action_scripts=[A0331_MARRYMORE_2ND_CHEF],
@@ -1959,7 +1959,7 @@ CHAPEL_SANCTUARY_HENCHMAN_2_FILL = UniqueHenchmanFill(
     npc=NPC_10,
     occupant=BundtTorte2,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E0668_SUMMON_MARRYMORE_BOSS_TO_ROOM],
     affected_action_scripts=[A0636_54_VELOCITY_SINGLE_JUMP],
     sequence_setter=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -1968,7 +1968,7 @@ PASSWORD_ROOM_BECKON_BOSS_FILL = BossModelFill(
     room_id=R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM,
     npc=NPC_7,
     occupant=KingCalamariTentacle,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_dialog_ids=[DI1660_SHIP_PASSWORD_COMPLETE],
     affected_event_scripts=[
         E3224_SHIP_PASSWORD_ROOM_LOADER,
@@ -1981,7 +1981,7 @@ SHIP_FINAL_ROOM_BOSS_FILL = BossModelFill(
     room_id=R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
     npc=NPC_0,
     occupant=JohnnyBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_dialog_ids=[
         DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING,
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER,
@@ -1996,7 +1996,7 @@ SHIP_BOSS_ON_BEACH_FILL = BossModelFill(
     room_id=R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
     npc=NPC_8,
     occupant=JohnnyBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_dialog_ids=[DI1786_LETTER_FROM_SHIP_BOSS],
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
@@ -2008,7 +2008,7 @@ ENDING_CREDITS_SHIP_BOSS_ON_CLIFF_FILL = BossModelFill(
     room_id=R432_ENDING_CREDITS_JOHNNY_LOOKING_OUT_AT_SUNSET_ON_BEACH_SHORE,
     npc=NPC_0,
     occupant=JohnnyBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E2619_ENDING_CREDITS_SUNSET],
     sequence_setter=E1191_ENDING_CREDITS_CLIFF_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2017,7 +2017,7 @@ SHIP_MAIN_HENCHMAN_1_BOSS_ROOM_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=JohnnyBandanaBlue,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2],
     affected_event_scripts=[E3282_SHIP_BOSS_ROOM_LOADER],
     sequence_setter=E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2027,7 +2027,7 @@ SHIP_MAIN_HENCHMAN_1_BEACH_FILL = UniqueHenchmanFill(
     npc=NPC_4,
     occupant=JohnnyBandanaBlue,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
         E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION,
@@ -2039,7 +2039,7 @@ SHIP_MAIN_HENCHMAN_2_BOSS_ROOM_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=JohnnyBandanaBlue,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1],
     affected_event_scripts=[E3282_SHIP_BOSS_ROOM_LOADER],
     sequence_setter=E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2049,7 +2049,7 @@ SHIP_MAIN_HENCHMAN_2_BEACH_FILL = UniqueHenchmanFill(
     npc=NPC_5,
     occupant=JohnnyBandanaBlue,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
         E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION,
@@ -2061,7 +2061,7 @@ SHIP_MAIN_HENCHMAN_3_BOSS_ROOM_FILL = UniqueHenchmanFill(
     npc=NPC_3,
     occupant=JohnnyBandanaBlue,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3],
     affected_event_scripts=[E3282_SHIP_BOSS_ROOM_LOADER],
     sequence_setter=E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2071,7 +2071,7 @@ SHIP_MAIN_HENCHMAN_4_BOSS_ROOM_FILL = UniqueHenchmanFill(
     npc=NPC_4,
     occupant=JohnnyBandanaBlue,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4],
     affected_event_scripts=[E3282_SHIP_BOSS_ROOM_LOADER],
     sequence_setter=E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2081,48 +2081,48 @@ SHIP_FIRST_FORCED_HENCHMAN_FIGHT_FILL_1 = RepeatableHenchmanFill(
     npc=NPC_0,
     occupant=DefaultBandanaRed1,
     minigames_only=True,
-    fill_type=HenchmanType.ExternalEvent,
+    fill_type=HenchmanType.EXTERNAL_EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E3280_SHIP_LOWER_HENCHMAN_ROOM_LOADER],
     sequence_setter=E0803_SHIP_1ST_PREBOSS_BATTLE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.SunkenShip,
+    battlefield=Battlefields.SUNKEN_SHIP,
 )
 SHIP_FIRST_FORCED_HENCHMAN_FIGHT_FILL_2 = RepeatableHenchmanFill(
     room_id=R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
     npc=NPC_1,
     occupant=DefaultBandanaRed1,
     minigames_only=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3280_SHIP_LOWER_HENCHMAN_ROOM_LOADER],
     sequence_setter=E0803_SHIP_1ST_PREBOSS_BATTLE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.SunkenShip,
+    battlefield=Battlefields.SUNKEN_SHIP,
 )
 SHIP_FIRST_FORCED_HENCHMAN_FIGHT_FILL_3 = RepeatableHenchmanFill(
     room_id=R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
     npc=NPC_2,
     occupant=DefaultBandanaRed1,
     minigames_only=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3280_SHIP_LOWER_HENCHMAN_ROOM_LOADER],
     sequence_setter=E0803_SHIP_1ST_PREBOSS_BATTLE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.SunkenShip,
+    battlefield=Battlefields.SUNKEN_SHIP,
 )
 SHIP_FIRST_FORCED_HENCHMAN_FIGHT_FILL_4 = RepeatableHenchmanFill(
     room_id=R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
     npc=NPC_3,
     occupant=DefaultBandanaRed1,
     minigames_only=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3280_SHIP_LOWER_HENCHMAN_ROOM_LOADER],
     sequence_setter=E0803_SHIP_1ST_PREBOSS_BATTLE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.SunkenShip,
+    battlefield=Battlefields.SUNKEN_SHIP,
 )
 SHIP_SECOND_FORCED_HENCHMAN_FIGHT_FILL_1 = RepeatableHenchmanFill(
     room_id=R025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM,
     npc=NPC_0,
     occupant=DefaultBandanaRed2,
     minigames_only=True,
-    fill_type=HenchmanType.ExternalEvent,
+    fill_type=HenchmanType.EXTERNAL_EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_dialog_ids=[
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED,
@@ -2130,14 +2130,14 @@ SHIP_SECOND_FORCED_HENCHMAN_FIGHT_FILL_1 = RepeatableHenchmanFill(
     ],
     affected_event_scripts=[E3281_SHIP_UPPER_HENCHMAN_ROOM_LOADER],
     sequence_setter=E0804_SHIP_2ND_PREBOSS_BATTLE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.SunkenShip,
+    battlefield=Battlefields.SUNKEN_SHIP,
 )
 SHIP_SECOND_FORCED_HENCHMAN_FIGHT_FILL_2 = RepeatableHenchmanFill(
     room_id=R025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM,
     npc=NPC_1,
     occupant=DefaultBandanaRed2,
     minigames_only=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3281_SHIP_UPPER_HENCHMAN_ROOM_LOADER],
     sequence_setter=E0804_SHIP_2ND_PREBOSS_BATTLE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2145,7 +2145,7 @@ SEASIDE_HOUSE_BOSS_FILL = BossModelFill(
     room_id=R211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F,
     npc=NPC_0,
     occupant=YaridovichBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_dialog_ids=[DI2830_SEASIDE_BOSS_WELCOMES_YOU],
     sequence_setter=E0805_SEASIDE_OCCUPIED_ELDER_HOUSE_1F_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2153,7 +2153,7 @@ SEASIDE_CONFRONTATION_BOSS_FILL = BossModelFill(
     room_id=R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
     npc=NPC_4,
     occupant=YaridovichBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E1119_SEASIDE_OCCUPIED_EXTERIOR_LOADER],
     sequence_setter=E0806_SEASIDE_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2161,7 +2161,7 @@ SEASIDE_BEACH_BOSS_FILL_SMALL = BossModelFill(
     room_id=R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
     npc=NPC_6,
     occupant=YaridovichBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
         E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION,
@@ -2173,7 +2173,7 @@ SEASIDE_BOSS_TRANSFORMED_FILL = BossModelFill(
     room_id=R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
     npc=NPC_7,
     occupant=YaridovichBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
         E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION,
@@ -2186,7 +2186,7 @@ SEASIDE_OUTSIDE_LEFT_GUARD = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD],
     affected_event_scripts=[E1119_SEASIDE_OCCUPIED_EXTERIOR_LOADER],
     sequence_setter=E0806_SEASIDE_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2196,7 +2196,7 @@ SEASIDE_BEACH_HENCHMAN_1_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
         E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION,
@@ -2208,7 +2208,7 @@ SEASIDE_OUTSIDE_RIGHT_GUARD = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD],
     affected_event_scripts=[E1119_SEASIDE_OCCUPIED_EXTERIOR_LOADER],
     sequence_setter=E0806_SEASIDE_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2218,7 +2218,7 @@ SEASIDE_BEACH_HENCHMAN_2_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
         E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION,
@@ -2230,7 +2230,7 @@ SEASIDE_CONFRONTATION_HENCHMAN_3_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E1119_SEASIDE_OCCUPIED_EXTERIOR_LOADER],
     sequence_setter=E0806_SEASIDE_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2239,7 +2239,7 @@ SEASIDE_INNKEEPER_1F_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2832_OCCUPIED_SEASIDE_INNKEEPER],
     affected_event_scripts=[E1121_SEASIDE_OCCUPIED_INN_1F_LOADER],
     sequence_setter=E0807_SEASIDE_OCCUPIED_INN_1F_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2249,7 +2249,7 @@ SEASIDE_INNKEEPER_2F_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E1122_SEASIDE_OCCUPIED_INN_2F_LOADER],
     sequence_setter=E0808_SEASIDE_OCCUPIED_INN_2F_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2258,7 +2258,7 @@ SEASIDE_BEACH_HENCHMAN_3_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
         E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION,
@@ -2270,7 +2270,7 @@ SEASIDE_CONFRONTATION_HENCHMAN_4_FILL = UniqueHenchmanFill(
     npc=NPC_3,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E1119_SEASIDE_OCCUPIED_EXTERIOR_LOADER],
     sequence_setter=E0806_SEASIDE_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2279,7 +2279,7 @@ SEASIDE_SHOPKEEPER_HENCHMAN_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E1125_SEASIDE_OCCUPIED_BOMB_SHOP_LOADER],
     affected_action_scripts=[A0585_SEASIDE_OCCUPIED_SHOPKEEPER],
     sequence_setter=E0809_SEASIDE_OCCUPIED_BOMB_SHOP_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2289,7 +2289,7 @@ SEASIDE_BEACH_HENCHMAN_4_FILL = UniqueHenchmanFill(
     npc=NPC_3,
     occupant=YaridovichHenchman,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E1146_SEASIDE_INITIATE_BOSS_FIGHT,
         E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION,
@@ -2300,7 +2300,7 @@ SEASIDE_CUSTOMER_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R213_SEASIDE_TOWN_DURING_YARIDOVICH_BEETLES_ARE_USBOMB_SHOP,
     npc=NPC_1,
     occupant=YaridovichHenchman,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER],
     affected_event_scripts=[E1125_SEASIDE_OCCUPIED_BOMB_SHOP_LOADER],
     affected_action_scripts=[A0586_SEASIDE_OCCUPIED_CUSTOMER],
@@ -2310,7 +2310,7 @@ SEASIDE_LONG_SHOP_LEFT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R214_SEASIDE_TOWN_DURING_YARIDOVICH_WEAPONS_AND_ARMOR_SHOP,
     npc=NPC_0,
     occupant=YaridovichHenchman,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[
         DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
         DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
@@ -2326,7 +2326,7 @@ SEASIDE_LONG_SHOP_RIGHT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R214_SEASIDE_TOWN_DURING_YARIDOVICH_WEAPONS_AND_ARMOR_SHOP,
     npc=NPC_1,
     occupant=YaridovichHenchman,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[
         DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
         DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
@@ -2342,7 +2342,7 @@ SEASIDE_RIGHT_BUILDING_LEFT_DOOR_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R215_SEASIDE_TOWN_DURING_YARIDOVICH_HEALTH_FOOD_STORE_LEFTMOST,
     npc=NPC_0,
     occupant=YaridovichHenchman,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED],
     affected_event_scripts=[E1127_SEASIDE_OCCUPIED_HEALTH_STORE_LOADER],
     sequence_setter=E0811_SEASIDE_OCCUPIED_HEALTH_STORE_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2351,7 +2351,7 @@ SEASIDE_RIGHT_BUILDING_MIDDLE_DOOR_HENCHMAN_LOWER_FILL = RepeatableHenchmanFill(
     room_id=R216_SEASIDE_TOWN_DURING_YARIDOVICH_MUSHROOM_BOY_SHOP_MIDDLE,
     npc=NPC_0,
     occupant=YaridovichHenchman,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED],
     affected_event_scripts=[E1128_SEASIDE_OCCUPIED_MUSHROOM_BOY_SHOP_LOADER],
     sequence_setter=E0812_SEASIDE_OCCUPIED_MUSHROOM_BOY_SHOP_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2360,7 +2360,7 @@ SEASIDE_RIGHT_BUILDING_MIDDLE_DOOR_HENCHMAN_UPPER_FILL = RepeatableHenchmanFill(
     room_id=R216_SEASIDE_TOWN_DURING_YARIDOVICH_MUSHROOM_BOY_SHOP_MIDDLE,
     npc=NPC_1,
     occupant=YaridovichHenchman,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME],
     affected_event_scripts=[E1128_SEASIDE_OCCUPIED_MUSHROOM_BOY_SHOP_LOADER],
     sequence_setter=E0812_SEASIDE_OCCUPIED_MUSHROOM_BOY_SHOP_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2369,7 +2369,7 @@ SEASIDE_RIGHT_BUILDING_RIGHT_DOOR_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST,
     npc=NPC_0,
     occupant=YaridovichHenchman,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_dialog_ids=[DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING],
     affected_event_scripts=[E1129_SEASIDE_OCCUPIED_ACCESSORY_SHOP_LOADER],
     sequence_setter=E0813_SEASIDE_OCCUPIED_ACCESSORY_SHOP_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -2378,7 +2378,7 @@ TEMPLE_BOSS_FILL = BossModelFill(
     room_id=R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
     npc=NPC_4,
     occupant=Belome2Boss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[E1771_TEMPLE_BOSS_ROOM_LOADER],
     sequence_setter=E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2386,7 +2386,7 @@ DOJO_FIRST_BOSS_FILL = BossModelFill(
     room_id=R255_MONSTRO_TOWN_JINXS_DOJO,
     npc=NPC_1,
     occupant=JaggerBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_dialog_ids=[
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT,
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED,
@@ -2405,7 +2405,7 @@ DOJO_SECOND_BOSS_FILL = BossModelFill(
     room_id=R255_MONSTRO_TOWN_JINXS_DOJO,
     npc=NPC_0,
     occupant=Jinx1Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E0862_DOJO_2ND_BOSS_CHALLENGE_SUBROUTINE,
         E2064_DOJO_LOADER,
@@ -2419,7 +2419,7 @@ DOJO_THIRD_BOSS_FILL = BossModelFill(
     room_id=R255_MONSTRO_TOWN_JINXS_DOJO,
     npc=NPC_2,
     occupant=Jinx2Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E0863_DOJO_2ND_BOSS_CHALLENGE_DEESCALATE,
         E0864_DOJO_3RD_BOSS_CHALLENGE_SUBROUTINE,
@@ -2433,7 +2433,7 @@ DOJO_FOURTH_BOSS_FILL = BossModelFill(
     room_id=R255_MONSTRO_TOWN_JINXS_DOJO,
     npc=NPC_3,
     occupant=Jinx3Boss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_dialog_ids=[DI3353_DOJO_BOSS_2_FULLY_DEFEATED],
     affected_event_scripts=[
         E0865_DOJO_3RD_BOSS_CHALLENGE_DEESCALATE,
@@ -2449,7 +2449,7 @@ MONSTRO_SEALED_DOOR_BOSS_FILL = BossModelFill(
     room_id=R351_CULEXS_ROOM,
     npc=NPC_0,
     occupant=CulexBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_dialog_ids=[
         DI3338_MONSTRO_SUPERBOSS_HINT,
         DI3057_MONSTRO_SUPERBOSS_PROMPT,
@@ -2461,7 +2461,7 @@ BEAN_VALLEY_BOSS_FILL = BossModelFill(
     room_id=R254_BEAN_VALLEY_SMILAX_AREA,
     npc=NPC_1,
     occupant=MegaSmilaxBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2555_BEAN_VALLEY_BOSS_ROOM_LOADER,
         E2557_BEAN_VALLEY_WATERS_BOSS,
@@ -2473,7 +2473,7 @@ STATUE_ROOM_BOSS_FILL = BossModelFill(
     room_id=R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
     npc=NPC_1,
     occupant=DodoBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[E2108_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_FIGHT_ROOM_LOADER],
     sequence_setter=E0818_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2481,7 +2481,7 @@ ENDING_CREDITS_CHAPEL_PASTOR_FILL = BossModelFill(
     room_id=R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
     npc=NPC_0,
     occupant=DodoBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2489,7 +2489,7 @@ STATUE_POLISHER_FILL = BossModelFill(
     room_id=R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
     npc=NPC_3,
     occupant=DodoBoss,
-    preferred_size=SpriteSize.Attack,
+    preferred_size=SpriteSize.ATTACK,
     minigames_only=True,
     affected_event_scripts=[
         E3640_STATUE_GAME,
@@ -2505,7 +2505,7 @@ END_OF_NIMBUS_HALLWAY_BOSS_FILL = BossModelFill(
     room_id=R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
     npc=NPC_0,
     occupant=DodoBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[E3736_NIMBUS_CASTLE_FINAL_HALLWAY_LOADER],
     sequence_setter=E0820_NIMBUS_CASTLE_FINAL_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2513,7 +2513,7 @@ NIMBUS_CONFRONTATION_BOSS_FILL = BossModelFill(
     room_id=R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA,
     npc=NPC_9,
     occupant=ValentinaBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E0738_NIMBUS_LAND_FINAL_BOSS_FIGHT_TOWN_SQUARE_LOADER],
     sequence_setter=E0822_NIMBUS_LAND_OCCUPIED_EXTERIOR_FINAL_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2521,7 +2521,7 @@ NIMBUS_BOSS_ON_BALCONY_FILL = BossModelFill(
     room_id=R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
     npc=NPC_4,
     occupant=ValentinaBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE,
         E2278_BALCONY_LOADER_AFTER_NIMBUS_CASTLE,
@@ -2532,7 +2532,7 @@ ENDING_CREDITS_CHAPEL_NIMBUS_BOSS_FILL = BossModelFill(
     room_id=R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
     npc=NPC_9,
     occupant=ValentinaBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E2295_ENDING_CREDITS_WEDDING_LOGIC],
     sequence_setter=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2725,7 +2725,7 @@ NIMBUS_BACKDOOR_HALLWAY_1_LEFT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST,
     npc=NPC_0,
     occupant=DefaultBluebird2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_action_scripts=[A0029_POST_THRONE_FIRST_BIRD],
     sequence_setter=E0838_NIMBUS_CASTLE_FIRST_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
     can_run_away=True,
@@ -2734,7 +2734,7 @@ NIMBUS_BACKDOOR_HALLWAY_1_RIGHT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST,
     npc=NPC_1,
     occupant=DefaultBluebird2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_action_scripts=[A0458_NIMBUS_POST_THRONE_BIRD],
     sequence_setter=E0838_NIMBUS_CASTLE_FIRST_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
     can_run_away=True,
@@ -2743,7 +2743,7 @@ NIMBUS_BACKDOOR_HALLWAY_2_FIRST_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
     npc=NPC_2,
     occupant=DefaultBluebird2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_action_scripts=[A0458_NIMBUS_POST_THRONE_BIRD],
     sequence_setter=E0839_NIMBUS_CASTLE_SECOND_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
     can_run_away=True,
@@ -2752,7 +2752,7 @@ NIMBUS_BACKDOOR_HALLWAY_2_SECOND_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
     npc=NPC_3,
     occupant=DefaultBluebird2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_action_scripts=[A0030_POST_THRONE_BIRDS_3_TO_7],
     sequence_setter=E0839_NIMBUS_CASTLE_SECOND_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
     can_run_away=True,
@@ -2761,7 +2761,7 @@ NIMBUS_BACKDOOR_HALLWAY_2_FOURTH_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
     npc=NPC_4,
     occupant=DefaultBluebird2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_action_scripts=[A0030_POST_THRONE_BIRDS_3_TO_7],
     sequence_setter=E0839_NIMBUS_CASTLE_SECOND_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
     can_run_away=True,
@@ -2770,7 +2770,7 @@ NIMBUS_BACKDOOR_HALLWAY_2_THIRD_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
     npc=NPC_5,
     occupant=DefaultBluebird2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_action_scripts=[A0030_POST_THRONE_BIRDS_3_TO_7],
     sequence_setter=E0839_NIMBUS_CASTLE_SECOND_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
     can_run_away=True,
@@ -2779,7 +2779,7 @@ NIMBUS_BACKDOOR_HALLWAY_3_FIRST_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
     npc=NPC_1,
     occupant=DefaultBluebird2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_action_scripts=[A0030_POST_THRONE_BIRDS_3_TO_7],
     sequence_setter=E0820_NIMBUS_CASTLE_FINAL_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
     can_run_away=True,
@@ -2788,7 +2788,7 @@ NIMBUS_BACKDOOR_HALLWAY_3_SECOND_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
     npc=NPC_2,
     occupant=DefaultBluebird2,
-    fill_type=HenchmanType.Pack,
+    fill_type=HenchmanType.PACK,
     affected_action_scripts=[A0030_POST_THRONE_BIRDS_3_TO_7],
     sequence_setter=E0820_NIMBUS_CASTLE_FINAL_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER,
     can_run_away=True,
@@ -2797,7 +2797,7 @@ VOLCANO_BRIDGE_BOSS_FILL = BossModelFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_1,
     occupant=CzarBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2809,7 +2809,7 @@ VOLCANO_BRIDGE_ASSEMBLER_HENCHMAN_1_FILL = RepeatableHenchmanFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_2,
     occupant=CzarPyrosphere,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2821,7 +2821,7 @@ VOLCANO_BRIDGE_ASSEMBLER_HENCHMAN_2_FILL = RepeatableHenchmanFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_3,
     occupant=CzarPyrosphere,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2833,7 +2833,7 @@ VOLCANO_BRIDGE_ASSEMBLER_HENCHMAN_3_FILL = RepeatableHenchmanFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_4,
     occupant=CzarPyrosphere,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2845,7 +2845,7 @@ VOLCANO_BRIDGE_ASSEMBLER_HENCHMAN_4_FILL = RepeatableHenchmanFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_5,
     occupant=CzarPyrosphere,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2857,7 +2857,7 @@ VOLCANO_BRIDGE_ASSEMBLER_HENCHMAN_5_FILL = RepeatableHenchmanFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_6,
     occupant=CzarPyrosphere,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2869,7 +2869,7 @@ VOLCANO_BRIDGE_ASSEMBLER_HENCHMAN_6_FILL = RepeatableHenchmanFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_7,
     occupant=CzarPyrosphere,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2881,7 +2881,7 @@ VOLCANO_BRIDGE_ASSEMBLER_HENCHMAN_7_FILL = RepeatableHenchmanFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_8,
     occupant=CzarPyrosphere,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2893,7 +2893,7 @@ VOLCANO_BRIDGE_ASSEMBLER_HENCHMAN_8_FILL = RepeatableHenchmanFill(
     room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
     npc=NPC_9,
     occupant=CzarPyrosphere,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[
         E3330_VOLCANO_1ST_BOSS_ROOM_LOADER,
         E3331_VOLCANO_1ST_BOSS_FIGHT,
@@ -2905,7 +2905,7 @@ VOLCANO_BOSS_FINAL_STAIRCASE_FILL = BossModelFill(
     room_id=R392_VOLCANO_POSTCD_AREA_06,
     npc=NPC_0,
     occupant=AxemRangersBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E3343_VOLCANO_FINAL_BOSS_PATH_ROOM_LOADER],
     sequence_setter=E0842_VOLCANO_FINAL_PRE_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2913,7 +2913,7 @@ VOLCANO_BOSS_TELEPORT_FILL = BossModelFill(
     room_id=R394_VOLCANO_POSTCD_AREA_05,
     npc=NPC_2,
     occupant=AxemRangersBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E3345_VOLCANO_CHASE_SEQEUNCE],
     sequence_setter=E0843_VOLCANO_POST_BOSS_ROOM_WITH_ENEMY_WARPS_SHUFFLED_NPC_ANIMATION_LOADER,
 )  # NPCs missing from 394 may need to have every command related to them removed from 3345
@@ -2921,7 +2921,7 @@ VOLCANO_BOSS_TRAMPOLINE_FILL = BossModelFill(
     room_id=R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
     npc=NPC_1,
     occupant=AxemRangersBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E3344_VOLCANO_FINAL_TRAMPOLINE_ROOM_LOADER],
     sequence_setter=E0844_VOLCANO_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )  # NPCs missing from room 393 should have their embedded scripts removed and the trampoline bounces reduced
@@ -2930,7 +2930,7 @@ VOLCANO_FIRST_HENCHMAN_FINAL_STAIRCASE_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=AxemRangersAxemGreen,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3343_VOLCANO_FINAL_BOSS_PATH_ROOM_LOADER],
     sequence_setter=E0842_VOLCANO_FINAL_PRE_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2939,7 +2939,7 @@ VOLCANO_FIRST_HENCHMAN_TINY_ROOM_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=AxemRangersAxemGreen,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3341_VOLCANO_SMALL_BOSS_PATH_ROOM_LOADER],
     sequence_setter=E0845_VOLCANO_BRIEF_HENCHMAN_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2948,7 +2948,7 @@ VOLCANO_FIRST_HENCHMAN_TRAMPOLINE_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=AxemRangersAxemGreen,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3344_VOLCANO_FINAL_TRAMPOLINE_ROOM_LOADER],
     sequence_setter=E0844_VOLCANO_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2958,7 +2958,7 @@ VOLCANO_SECOND_HENCHMAN_FINAL_STAIRCASE_FILL = UniqueHenchmanFill(
     npc=NPC_2,
     occupant=AxemRangersAxemYellow,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3343_VOLCANO_FINAL_BOSS_PATH_ROOM_LOADER],
     sequence_setter=E0842_VOLCANO_FINAL_PRE_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2967,7 +2967,7 @@ VOLCANO_SECOND_HENCHMAN_TRAMPOLINE_FILL = UniqueHenchmanFill(
     npc=NPC_3,
     occupant=AxemRangersAxemYellow,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3344_VOLCANO_FINAL_TRAMPOLINE_ROOM_LOADER],
     sequence_setter=E0844_VOLCANO_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2977,7 +2977,7 @@ VOLCANO_THIRD_HENCHMAN_FINAL_STAIRCASE_FILL = UniqueHenchmanFill(
     npc=NPC_3,
     occupant=AxemRangersAxemPink,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3343_VOLCANO_FINAL_BOSS_PATH_ROOM_LOADER],
     sequence_setter=E0842_VOLCANO_FINAL_PRE_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2986,7 +2986,7 @@ VOLCANO_THIRD_HENCHMAN_TRAMPOLINE_FILL = UniqueHenchmanFill(
     npc=NPC_4,
     occupant=AxemRangersAxemPink,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3344_VOLCANO_FINAL_TRAMPOLINE_ROOM_LOADER],
     sequence_setter=E0844_VOLCANO_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -2995,7 +2995,7 @@ VOLCANO_THIRD_HENCHMAN_TELEPORT_FILL = UniqueHenchmanFill(
     npc=NPC_1,
     occupant=AxemRangersAxemPink,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3345_VOLCANO_CHASE_SEQEUNCE],
     affected_action_scripts=[],
     sequence_setter=E0843_VOLCANO_POST_BOSS_ROOM_WITH_ENEMY_WARPS_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -3006,7 +3006,7 @@ VOLCANO_FOURTH_HENCHMAN_FINAL_STAIRCASE_FILL = UniqueHenchmanFill(
     npc=NPC_4,
     occupant=AxemRangersAxemBlack,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3343_VOLCANO_FINAL_BOSS_PATH_ROOM_LOADER],
     sequence_setter=E0842_VOLCANO_FINAL_PRE_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3015,7 +3015,7 @@ VOLCANO_FOURTH_HENCHMAN_TELEPORT_FILL = UniqueHenchmanFill(
     npc=NPC_0,
     occupant=AxemRangersAxemBlack,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3345_VOLCANO_CHASE_SEQEUNCE],
     sequence_setter=E0843_VOLCANO_POST_BOSS_ROOM_WITH_ENEMY_WARPS_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3024,7 +3024,7 @@ VOLCANO_FOURTH_HENCHMAN_TRAMPOLINE_FILL = UniqueHenchmanFill(
     npc=NPC_5,
     occupant=AxemRangersAxemPink,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E3344_VOLCANO_FINAL_TRAMPOLINE_ROOM_LOADER],
     sequence_setter=E0844_VOLCANO_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3032,7 +3032,7 @@ KEEP_OBSTACLE_ROOM_FINAL_FIGHT_FILL = BossModelFill(
     room_id=R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
     npc=NPC_4,
     occupant=ChesterBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2174_KEEP_BOBOMB_BATTLE_ROOM_SUMMON_4TH_BATTLE,
         E2190_BATTLE_DOOR_MIMIC_BOSS_ANIMATION,
@@ -3043,7 +3043,7 @@ KEEP_MIDBOSS_LAIR_FILL = BossModelFill(
     room_id=R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
     npc=NPC_1,
     occupant=KamekBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2208_KEEP_1ST_BOSS_ROOM_LOADER,
         E2209_KEEP_1ST_BOSS_FIGHT,
@@ -3055,7 +3055,7 @@ KEEP_BATTLE_ROOM_1_END_BOSS_FILL = BossModelFill(
     room_id=R376_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2B_1ST_FIGHT_CHEWY,
     npc=NPC_0,
     occupant=KamekBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2181_KEEP_CHEWY_BATTLE_ROOM_SUMMON_1ST_BATTLE,
         E2182_KEEP_CHEWY_BATTLE_ROOM_SUMMON_2ND_BATTLE,
@@ -3073,7 +3073,7 @@ KEEP_BATTLE_ROOM_2_END_BOSS_FILL = BossModelFill(
     room_id=R377_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2C_1ST_FIGHT_SPARKY,
     npc=NPC_0,
     occupant=KamekBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2186_KEEP_SPARKY_BATTLE_ROOM_SUMMON_1ST_BATTLE,
         E2187_KEEP_SPARKY_BATTLE_ROOM_SUMMON_2ND_BATTLE,
@@ -3091,7 +3091,7 @@ KEEP_BATTLE_ROOM_3_END_BOSS_FILL = BossModelFill(
     room_id=R459_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1A_1ST_FIGHT_TERRA_COTTA,
     npc=NPC_0,
     occupant=KamekBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2161_KEEP_TERRA_COTTA_BATTLE_ROOM_SUMMON_1ST_BATTLE,
         E2162_KEEP_TERRA_COTTA_BATTLE_ROOM_SUMMON_2ND_BATTLE,
@@ -3109,7 +3109,7 @@ KEEP_BATTLE_ROOM_4_END_BOSS_FILL = BossModelFill(
     room_id=R460_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1B_1ST_FIGHT_ALLEY_RAT,
     npc=NPC_0,
     occupant=KamekBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2166_KEEP_ALLEY_RAT_BATTLE_ROOM_SUMMON_1ST_BATTLE,
         E2167_KEEP_ALLEY_RAT_BATTLE_ROOM_SUMMON_2ND_BATTLE,
@@ -3127,7 +3127,7 @@ KEEP_BATTLE_ROOM_5_END_BOSS_FILL = BossModelFill(
     room_id=R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
     npc=NPC_0,
     occupant=KamekBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2171_KEEP_BOBOMB_BATTLE_ROOM_SUMMON_1ST_BATTLE,
         E2172_KEEP_BOBOMB_BATTLE_ROOM_SUMMON_2ND_BATTLE,
@@ -3145,7 +3145,7 @@ KEEP_BATTLE_ROON_6_END_BOSS_FILL = BossModelFill(
     room_id=R462_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2A_1ST_FIGHT_GU_GOOMBA,
     npc=NPC_0,
     occupant=KamekBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2176_KEEP_GOOMBA_BATTLE_ROOM_SUMMON_1ST_BATTLE,
         E2177_KEEP_GOOMBA_BATTLE_ROOM_SUMMON_2ND_BATTLE,
@@ -3163,7 +3163,7 @@ ENDING_CREDITS_KEEP_BOSS_CASTLE_REPAIR = BossModelFill(
     room_id=R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER__TROOPS_REPAIR,
     npc=NPC_6,
     occupant=KamekBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E2622_ENDING_CREDITS_KEEP],
     sequence_setter=E1192_ENDING_CREDITS_KEEP_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3171,7 +3171,7 @@ KEEP_CHANDELIER_BOSS_FILL = BossModelFill(
     room_id=R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM,
     npc=NPC_0,
     occupant=BoomerBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[
         E2224_KEEP_FINAL_BOSS_ROOM_LOADER,
         E2225_KEEP_2ND_BOSS,
@@ -3183,7 +3183,7 @@ FACTORY_CLOCK_BOSS_FILL = BossModelFill(
     room_id=R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM,
     npc=NPC_0,
     occupant=CountdownBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E2363_ABYSS_1ST_BOSS_ROOM_LOADER],
     sequence_setter=E0854_ABYSS_1ST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3191,7 +3191,7 @@ FACTORY_CLOCK_LEFT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM,
     npc=NPC_1,
     occupant=CountdownDingALing,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2363_ABYSS_1ST_BOSS_ROOM_LOADER],
     sequence_setter=E0854_ABYSS_1ST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3199,7 +3199,7 @@ FACTORY_CLOCK_RIGHT_HENCHMAN_FILL = RepeatableHenchmanFill(
     room_id=R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM,
     npc=NPC_2,
     occupant=CountdownDingALing,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2363_ABYSS_1ST_BOSS_ROOM_LOADER],
     sequence_setter=E0854_ABYSS_1ST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3207,7 +3207,7 @@ INNER_FACTORY_FIRST_BOSS_FILL = BossModelFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_8,
     occupant=ClerkBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E2606_FACTORY_1ST_BOSS],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3215,27 +3215,27 @@ INNER_FACTORY_FIRST_BOSS_RIGHT_HENCHMAN = RepeatableHenchmanFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_6,
     occupant=DefaultMadMallet,
-    fill_type=HenchmanType.ExternalEvent,
+    fill_type=HenchmanType.EXTERNAL_EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E2606_FACTORY_1ST_BOSS],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.Factory,
+    battlefield=Battlefields.FACTORY,
 )
 INNER_FACTORY_FIRST_BOSS_LEFT_HENCHMAN = RepeatableHenchmanFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_7,
     occupant=DefaultMadMallet,
-    fill_type=HenchmanType.ExternalEvent,
+    fill_type=HenchmanType.EXTERNAL_EVENT,
     event_id=E1186_HENCHMAN_BATTLE_PACK_SELECTOR,
     affected_event_scripts=[E2606_FACTORY_1ST_BOSS],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.Factory,
+    battlefield=Battlefields.FACTORY,
 )
 INNER_FACTORY_SECOND_BOSS_FILL = BossModelFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_15,
     occupant=ManagerBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[E2617_FACTORY_2ND_ROOM_LOADER, E2618_FACTORY_2ND_BOSS],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3245,7 +3245,7 @@ INNER_FACTORY_SECOND_BOSS_LEFT_HENCHMAN = UniqueHenchmanFill(
     occupant=ManagerPounder,
     repeatable_allowed=True,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2617_FACTORY_2ND_ROOM_LOADER, E2618_FACTORY_2ND_BOSS],
     affected_action_scripts=[
         A0960_FACTORY_2ND_BOSS_HENCHMAN,
@@ -3259,7 +3259,7 @@ INNER_FACTORY_SECOND_BOSS_MID_HENCHMAN = UniqueHenchmanFill(
     occupant=ManagerPounder,
     repeatable_allowed=True,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2617_FACTORY_2ND_ROOM_LOADER, E2618_FACTORY_2ND_BOSS],
     affected_action_scripts=[
         A0960_FACTORY_2ND_BOSS_HENCHMAN,
@@ -3273,7 +3273,7 @@ INNER_FACTORY_SECOND_BOSS_RIGHT_HENCHMAN = UniqueHenchmanFill(
     occupant=ManagerPounder,
     repeatable_allowed=True,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2617_FACTORY_2ND_ROOM_LOADER, E2618_FACTORY_2ND_BOSS],
     affected_action_scripts=[
         A0960_FACTORY_2ND_BOSS_HENCHMAN,
@@ -3285,7 +3285,7 @@ INNER_FACTORY_THIRD_BOSS_FILL = BossModelFill(
     room_id=R472_FACTORY_GROUNDS_AREA_03,
     npc=NPC_10,
     occupant=DirectorBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2621_FACTORY_3RD_ROOM_LOADER,
         E2627_FACTORY_3RD_BOSS_FIGHT,
@@ -3297,7 +3297,7 @@ INNER_FACTORY_LEFT_ASSEMBLER = UniqueHenchmanFill(
     npc=NPC_7,
     occupant=DirectorPoundette,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2621_FACTORY_3RD_ROOM_LOADER],
     affected_action_scripts=[A0962_FACTORY_3RD_BOSS_LEFT_HAMMER],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -3307,7 +3307,7 @@ INNER_FACTORY_MID_ASSEMBLER = UniqueHenchmanFill(
     npc=NPC_8,
     occupant=DirectorPoundette,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2621_FACTORY_3RD_ROOM_LOADER],
     affected_action_scripts=[A0962_FACTORY_3RD_BOSS_LEFT_HAMMER],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -3317,7 +3317,7 @@ INNER_FACTORY_RIGHT_ASSEMBLER = UniqueHenchmanFill(
     npc=NPC_9,
     occupant=DirectorPoundette,
     repeatable_allowed=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2621_FACTORY_3RD_ROOM_LOADER],
     affected_action_scripts=[A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
@@ -3326,7 +3326,7 @@ INNER_FACTORY_FOURTH_BOSS_FILL = BossModelFill(
     room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
     npc=NPC_12,
     occupant=GunyolkBoss,
-    preferred_size=SpriteSize.Small,
+    preferred_size=SpriteSize.SMALL,
     affected_event_scripts=[
         E2601_FACTORY_4TH_ROOM_LOADER,
         E2603_FACTORY_4TH_BOSS_FIGHT,
@@ -3339,7 +3339,7 @@ INNER_FACTORY_FOURTH_BOSS_HENCHMAN_FILL = UniqueHenchmanFill(
     occupant=GunyolkPiece,
     repeatable_allowed=True,
     remove_if_empty=True,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_event_scripts=[E2601_FACTORY_4TH_ROOM_LOADER],
     sequence_setter=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )  # hide a lot of clones if not vanilla
@@ -3347,7 +3347,7 @@ FINAL_FACTORY_BOSS_FILL = BossModelFill(
     room_id=R509_FACTORY_GROUNDS_SMITHYS_PAD,
     npc=NPC_4,
     occupant=SmithyBoss,
-    preferred_size=SpriteSize.Large,
+    preferred_size=SpriteSize.LARGE,
     affected_event_scripts=[
         E3792_FACTORY_FINAL_BOSS_ROOM_LOADER,
         E3794_FACTORY_FINAL_BOSS_FIGHT,
@@ -3360,7 +3360,7 @@ INNER_FACTORY_1_POST_DEFEAT_CONVEYOR_HENCHMAN_1_FILL = RepeatableHenchmanFill(
     room_id=R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
     npc=NPC_1,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3368,7 +3368,7 @@ INNER_FACTORY_1_POST_DEFEAT_CONVEYOR_HENCHMAN_2_FILL = RepeatableHenchmanFill(
     room_id=R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
     npc=NPC_2,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3376,7 +3376,7 @@ INNER_FACTORY_1_POST_DEFEAT_CONVEYOR_HENCHMAN_3_FILL = RepeatableHenchmanFill(
     room_id=R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
     npc=NPC_3,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3384,7 +3384,7 @@ INNER_FACTORY_1_POST_DEFEAT_CONVEYOR_HENCHMAN_4_FILL = RepeatableHenchmanFill(
     room_id=R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
     npc=NPC_4,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3392,7 +3392,7 @@ INNER_FACTORY_1_POST_DEFEAT_CONVEYOR_HENCHMAN_5_FILL = RepeatableHenchmanFill(
     room_id=R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
     npc=NPC_5,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3400,7 +3400,7 @@ INNER_FACTORY_1_POST_DEFEAT_CONVEYOR_HENCHMAN_6_FILL = RepeatableHenchmanFill(
     room_id=R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
     npc=NPC_6,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3408,7 +3408,7 @@ INNER_FACTORY_1_CONVEYOR_HENCHMAN_1_FILL = RepeatableHenchmanFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_0,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3416,7 +3416,7 @@ INNER_FACTORY_1_CONVEYOR_HENCHMAN_2_FILL = RepeatableHenchmanFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_1,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3424,7 +3424,7 @@ INNER_FACTORY_1_CONVEYOR_HENCHMAN_3_FILL = RepeatableHenchmanFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_2,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3432,7 +3432,7 @@ INNER_FACTORY_1_CONVEYOR_HENCHMAN_4_FILL = RepeatableHenchmanFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_3,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3440,7 +3440,7 @@ INNER_FACTORY_1_CONVEYOR_HENCHMAN_5_FILL = RepeatableHenchmanFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_4,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3448,7 +3448,7 @@ INNER_FACTORY_1_CONVEYOR_HENCHMAN_6_FILL = RepeatableHenchmanFill(
     room_id=R469_FACTORY_GROUNDS_AREA_01,
     npc=NPC_5,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0945_FACTORY_1ST_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0855_INNER_FACTORY_1ST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3456,7 +3456,7 @@ INNER_FACTORY_4_CONVEYOR_HENCHMAN_1_FILL = RepeatableHenchmanFill(
     room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
     npc=NPC_7,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0955_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3464,7 +3464,7 @@ INNER_FACTORY_4_CONVEYOR_HENCHMAN_2_FILL = RepeatableHenchmanFill(
     room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
     npc=NPC_8,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0954_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3472,7 +3472,7 @@ INNER_FACTORY_4_CONVEYOR_HENCHMAN_3_FILL = RepeatableHenchmanFill(
     room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
     npc=NPC_9,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0954_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3480,7 +3480,7 @@ INNER_FACTORY_4_CONVEYOR_HENCHMAN_4_FILL = RepeatableHenchmanFill(
     room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
     npc=NPC_10,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0954_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3488,7 +3488,7 @@ INNER_FACTORY_4_CONVEYOR_HENCHMAN_5_FILL = RepeatableHenchmanFill(
     room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
     npc=NPC_11,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0956_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES],
     sequence_setter=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3496,7 +3496,7 @@ INNER_FACTORY_4_CONVEYOR_HENCHMAN_6_FILL = RepeatableHenchmanFill(
     room_id=R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
     npc=NPC_15,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0959_FINAL_FACTORY_ROOM_MASS_PRODUCED_NPC_PICKED_UP],
     sequence_setter=E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3504,7 +3504,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_1_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_0,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0949_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_BEFORE_PAINT],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3512,7 +3512,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_2_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_1,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0949_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_BEFORE_PAINT],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3520,7 +3520,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_3_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_2,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0949_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_BEFORE_PAINT],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3528,7 +3528,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_4_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_3,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0948_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_BEFORE_PAINT_BASE],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3536,7 +3536,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_5_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_4,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0948_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_BEFORE_PAINT_BASE],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3544,7 +3544,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_6_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_5,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0948_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_BEFORE_PAINT_BASE],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3552,7 +3552,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_7_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_6,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0951_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_AFTER_PAINT],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3560,7 +3560,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_8_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_7,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0951_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_AFTER_PAINT],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3568,7 +3568,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_9_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_8,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0951_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_AFTER_PAINT],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3576,7 +3576,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_10_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_9,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0950_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_AFTER_PAINT_BASE],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3584,7 +3584,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_11_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_10,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0950_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_AFTER_PAINT_BASE],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3592,7 +3592,7 @@ INNER_FACTORY_2_CONVEYOR_HENCHMAN_12_FILL = RepeatableHenchmanFill(
     room_id=R471_FACTORY_GROUNDS_AREA_02,
     npc=NPC_11,
     occupant=DefaultPaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0950_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_AFTER_PAINT_BASE],
     sequence_setter=E0856_INNER_FACTORY_2ND_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3600,7 +3600,7 @@ INNER_FACTORY_3_CONVEYOR_HENCHMAN_1_FILL = RepeatableHenchmanFill(
     room_id=R472_FACTORY_GROUNDS_AREA_03,
     npc=NPC_1,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0968_FACTORY_3RD_BOSS_CONVEYOR_NPC],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3608,7 +3608,7 @@ INNER_FACTORY_3_CONVEYOR_HENCHMAN_2_FILL = RepeatableHenchmanFill(
     room_id=R472_FACTORY_GROUNDS_AREA_03,
     npc=NPC_2,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0968_FACTORY_3RD_BOSS_CONVEYOR_NPC],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3616,7 +3616,7 @@ INNER_FACTORY_3_CONVEYOR_HENCHMAN_3_FILL = RepeatableHenchmanFill(
     room_id=R472_FACTORY_GROUNDS_AREA_03,
     npc=NPC_3,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0967_FACTORY_3RD_BOSS_CONVEYOR_NPC],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3624,7 +3624,7 @@ INNER_FACTORY_3_CONVEYOR_HENCHMAN_4_FILL = RepeatableHenchmanFill(
     room_id=R472_FACTORY_GROUNDS_AREA_03,
     npc=NPC_4,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0966_FACTORY_3RD_BOSS_CONVEYOR_NPC],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3632,7 +3632,7 @@ INNER_FACTORY_3_CONVEYOR_HENCHMAN_5_FILL = RepeatableHenchmanFill(
     room_id=R472_FACTORY_GROUNDS_AREA_03,
     npc=NPC_5,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0966_FACTORY_3RD_BOSS_CONVEYOR_NPC],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )
@@ -3640,7 +3640,7 @@ INNER_FACTORY_3_CONVEYOR_HENCHMAN_6_FILL = RepeatableHenchmanFill(
     room_id=R472_FACTORY_GROUNDS_AREA_03,
     npc=NPC_6,
     occupant=DefaultUnpaintedDrillBit,
-    fill_type=HenchmanType.NPCOnly,
+    fill_type=HenchmanType.NPC_ONLY,
     affected_action_scripts=[A0965_FACTORY_3RD_BOSS_CONVEYOR_NPC_BASE],
     sequence_setter=E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
 )

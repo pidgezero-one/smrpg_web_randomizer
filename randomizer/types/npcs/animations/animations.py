@@ -1,3 +1,7 @@
+"""Contextual names for frequently used sprite animations that need to be
+inserted into overworld scripts depending on boss shuffling."""
+
+
 from randomizer.types.npcs.animations.classes import SpriteAnimation
 from randomizer.types.overworld_scripts.action_scripts.constants.sequence_speeds import (
     FAST,

@@ -1368,13 +1368,13 @@ def convert(command):
         cls = "IfTargetedByElement"
         elements = []
         if cmdargs[0] & 0x10 == 0x10:
-            elements.append("SpellElement.Ice")
+            elements.append("Element.ICE")
         if cmdargs[0] & 0x20 == 0x20:
-            elements.append("SpellElement.Thunder")
+            elements.append("Element.THUNDER")
         if cmdargs[0] & 0x40 == 0x40:
-            elements.append("SpellElement.Fire")
+            elements.append("Element.FIRE")
         if cmdargs[0] & 0x80 == 0x80:
-            elements.append("SpellElement.Jump")
+            elements.append("Element.Jump")
         args["items"] = "[%s]" % ", ".join(elements)
     elif name == "if_attacked":
         cls = "IfTargetedByRegularAttack"
@@ -1390,21 +1390,21 @@ def convert(command):
         elements = []
         args["target"] = TARGETS[cmdargs[0]]
         if cmdargs[1] & 0x01 == 0x01:
-            elements.append("SpellStatusEffects.Mute")
+            elements.append("Status.Mute")
         if cmdargs[1] & (1 << 1) == (1 << 1):
-            elements.append("SpellStatusEffects.Sleep")
+            elements.append("Status.Sleep")
         if cmdargs[1] & (1 << 2) == (1 << 2):
-            elements.append("SpellStatusEffects.Poison")
+            elements.append("Status.Poison")
         if cmdargs[1] & (1 << 3) == (1 << 3):
-            elements.append("SpellStatusEffects.Fear")
+            elements.append("Status.Fear")
         if cmdargs[1] & (1 << 4) == (1 << 4):
-            elements.append("SpellStatusEffects.Berserk")
+            elements.append("Status.Berserk")
         if cmdargs[1] & (1 << 5) == (1 << 5):
-            elements.append("SpellStatusEffects.Mushroom")
+            elements.append("Status.Mushroom")
         if cmdargs[1] & (1 << 6) == (1 << 6):
-            elements.append("SpellStatusEffects.Scarecrow")
+            elements.append("Status.Scarecrow")
         if cmdargs[1] & (1 << 7) == (1 << 7):
-            elements.append("SpellStatusEffects.Invincible")
+            elements.append("Status.Invincible")
         args["statuses"] = "[%s]" % ", ".join(elements)
         include_argnames = False
     elif name == "if_phase":

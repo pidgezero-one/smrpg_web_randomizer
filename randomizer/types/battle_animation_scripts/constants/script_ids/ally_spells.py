@@ -1,3 +1,5 @@
+"""Constants representing ally spell IDs"""
+
 ALS0000_JUMP = 0
 ALS0001_FIRE_ORB = 1
 ALS0002_SUPER_JUMP = 2

@@ -36,7 +36,7 @@ script = SubroutineOrBanklessScript(
         JmpIfAMEM8BitNotEqualsConst(0x6F, 1, ["command_0x35c17f"]),
         DisplayMessage(PSYCHOPATH_MESSAGE, 0),
         PlaySound(sound=S0073_PSYCHOPATH_MESSAGE),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6E, identifier="command_0x35c17f"),
         ReturnObjectQueue(),
         Db(bytearray(b"\x1f\x80"), identifier="queuestart_0x35c184"),

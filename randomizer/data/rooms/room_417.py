@@ -102,7 +102,7 @@ room = Room(
     ],
     objects=[
         RegularNPC(  # 0
-            occupant=npcs.VineBeanstalm,
+            occupant=npcs.VineBeanstalk,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=2350,
             action_script=15,
@@ -135,7 +135,7 @@ room = Room(
             cannot_clone=True,
         ),
         RegularNPC(  # 1
-            occupant=npcs.VineBeanstalm,
+            occupant=npcs.VineBeanstalk,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=2304,
             action_script=15,

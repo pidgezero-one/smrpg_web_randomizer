@@ -1,3 +1,5 @@
+"""Const names for sound IDs."""
+
 S0000_SILENCE = 0
 S0001_MENU_SELECT = 1
 S0002_MENU_CANCEL = 2

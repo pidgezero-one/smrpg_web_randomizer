@@ -8,13 +8,16 @@ import enum
 
 STARTING_FP = 10
 
+
 class SpellType(enum.Enum):
     Damage = 0
     Heal = 1
 
+
 class EffectType(enum.Enum):
     Inflict = 2
     Nullify = 4
+
 
 class SpellElement(enum.Enum):
     Ice = 0x10
@@ -22,12 +25,14 @@ class SpellElement(enum.Enum):
     Fire = 0x40
     Earth = 0x80
 
+
 class InflictFunction(enum.Enum):
     Scan = 0
     Miss = 1
     NoDmg = 2
     Revive = 3
     IncJump = 4
+
 
 class Spell:
     """Class representing a magic spell to be randomized."""
@@ -44,7 +49,7 @@ class Spell:
 
     title = None
 
-    anim_ptr = None # I'm not writing an assembler for this yet
+    anim_ptr = None  # I'm not writing an assembler for this yet
     desc_ptr = None
 
     spell_type = SpellType.Damage
@@ -68,8 +73,6 @@ class Spell:
 
     status_effects = []
     boosts = []
-
-
 
     def __init__(self, world):
         """
@@ -100,7 +103,8 @@ class Spell:
 
         # FP is byte 3, power is byte 6, hit rate is byte 7.  Each spell is 12 bytes.
         base_addr = self.BASE_ADDRESS + (self.index * 12)
-        patch.add_data(base_addr, (self.checkStats * 0x01) + (self.ignoreDefense * 0x02) + (self.checkOHKO * 0x20) + (self.overworldUsable * 0x80))
+        patch.add_data(base_addr, (self.checkStats * 0x01) + (self.ignoreDefense *
+                       0x02) + (self.checkOHKO * 0x20) + (self.overworldUsable * 0x80))
         if self.spell_type is None:
             st = 0
         else:
@@ -119,7 +123,8 @@ class Spell:
             iv = self.inflict.value
         patch.add_data(base_addr + 1, st + et + (self.quad9s * 0x08))
         patch.add_data(base_addr + 2, utils.ByteField(self.fp).as_bytes())
-        patch.add_data(base_addr + 3, (self.targetOthers * 0x02) + (self.targetEnemies * 0x04) + (self.targetParty * 0x10) + (self.targetWounded * 0x20) + (self.targetOneParty * 0x40) + (self.targetNotSelf * 0x80))
+        patch.add_data(base_addr + 3, (self.targetOthers * 0x02) + (self.targetEnemies * 0x04) + (self.targetParty *
+                       0x10) + (self.targetWounded * 0x20) + (self.targetOneParty * 0x40) + (self.targetNotSelf * 0x80))
         patch.add_data(base_addr + 4, el)
         data = utils.ByteField(self.power).as_bytes()
         data += utils.ByteField(self.hit_rate).as_bytes()
@@ -134,8 +139,6 @@ class Spell:
         patch.add_data(base_addr + 8, buffs)
         patch.add_data(base_addr + 10, iv)
         patch.add_data(base_addr + 11, (self.hideNum * 0x04))
-
-
 
         return patch
 
@@ -158,15 +161,19 @@ class CharacterSpell(Spell):
         name_bytes = '\x40' + self.title
         name_bytes += " " * (15 - len(name_bytes))
         patch.add_data(self.BASE_NAME_ADDRESS + (self.index * 15), name_bytes)
-        patch.add_data(0x02CACE + self.index * 2, bytearray([self.timingModifiers & 0xFF, (self.timingModifiers >> 8) & 0xFF]))
-        patch.add_data(0x02D05B + self.index * 2, bytearray([self.damageModifiers & 0xFF, (self.damageModifiers >> 8) & 0xFF]))
+        patch.add_data(0x02CACE + self.index * 2, bytearray(
+            [self.timingModifiers & 0xFF, (self.timingModifiers >> 8) & 0xFF]))
+        patch.add_data(0x02D05B + self.index * 2, bytearray(
+            [self.damageModifiers & 0xFF, (self.damageModifiers >> 8) & 0xFF]))
 
         return patch
+
 
 class CloneSpell(CharacterSpell):
     reference_spell = None
     ref_ptr = None
     """Spell class that allows an ally spell to be repeated with a different name."""
+
     def __init__(self, world, title, spell):
         super().__init__(world)
         self.title = title
@@ -198,7 +205,6 @@ class CloneSpell(CharacterSpell):
         self.timingModifiers = spell.timingModifiers
         self.damageModifiers = spell.damageModifiers
 
-
     def get_patch(self):
         """Get patch for this spell.
 
@@ -207,10 +213,13 @@ class CloneSpell(CharacterSpell):
         """
         patch = super().get_patch()
 
-        patch.add_data(0x35C992 + self.index * 2, bytearray([self.ref_ptr & 0xFF, (self.ref_ptr >> 8) & 0xFF]))
-        patch.add_data(0x3A2B80 + self.index * 2, bytearray([self.desc_ptr & 0xFF, (self.desc_ptr >> 8) & 0xFF]))
+        patch.add_data(0x35C992 + self.index * 2,
+                       bytearray([self.ref_ptr & 0xFF, (self.ref_ptr >> 8) & 0xFF]))
+        patch.add_data(0x3A2B80 + self.index * 2,
+                       bytearray([self.desc_ptr & 0xFF, (self.desc_ptr >> 8) & 0xFF]))
 
         return patch
+
 
 class EnemySpell(Spell):
     """Grouping class for enemy-specific spells."""
@@ -247,7 +256,7 @@ class Jump(CharacterSpell):
     base_title = "Jump"
     anim_ptr = 0x35C9CE
     desc_ptr = 0x3A40A3
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -261,7 +270,7 @@ class Jump(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Earth
+    element = Element.JUMP
     status_effects = []
     boosts = []
     inflict = InflictFunction.IncJump
@@ -279,7 +288,7 @@ class FireOrb(CharacterSpell):
     base_title = "Fire Orb"
     anim_ptr = 0x35C9D2
     desc_ptr = 0x3A2BDF
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -293,7 +302,7 @@ class FireOrb(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -310,18 +319,23 @@ class FireOrb(CharacterSpell):
         """
         patch = super().get_patch()
 
-        if self.element == SpellElement.Ice:
-            patch.add_data(0x253000 + 30 * 408, palette_to_bytes(["F8F8D0", "00F8F8", "00D0F8", "00A8F8", "0080F8", "0058F8", "0028F8", "0028F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 392, palette_to_bytes(["F8F8F8", "A0F8F8", "40F8F8", "38D0F8", "30A8F8", "1850F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
-        elif self.element == SpellElement.Thunder:
-            patch.add_data(0x253000 + 30 * 408, palette_to_bytes(["F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 392, palette_to_bytes(["F8F8F8", "B8F0F8", "B8E0F8", "B0E0F8", "A0D0F8", "80D0F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
-        elif self.element == SpellElement.Earth:
-            patch.add_data(0x253000 + 30 * 408, palette_to_bytes(["80F800", "78F800", "30D800", "38C800", "18B000", "008000", "78F800", "A8F800", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 392, palette_to_bytes(["F8F8F8", "B8F800", "78F800", "30D800", "38C800", "18B000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        if self.element == Element.ICE:
+            patch.add_data(0x253000 + 30 * 408, palette_to_bytes(["F8F8D0", "00F8F8", "00D0F8", "00A8F8", "0080F8",
+                           "0058F8", "0028F8", "0028F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 392, palette_to_bytes(["F8F8F8", "A0F8F8", "40F8F8", "38D0F8", "30A8F8",
+                           "1850F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        elif self.element == Element.THUNDER:
+            patch.add_data(0x253000 + 30 * 408, palette_to_bytes(["F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8",
+                           "B8F8F8", "F8F8F8", "B8F8F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 392, palette_to_bytes(["F8F8F8", "B8F0F8", "B8E0F8", "B0E0F8", "A0D0F8",
+                           "80D0F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        elif self.element == Element.JUMP:
+            patch.add_data(0x253000 + 30 * 408, palette_to_bytes(["80F800", "78F800", "30D800", "38C800", "18B000",
+                           "008000", "78F800", "A8F800", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 392, palette_to_bytes(["F8F8F8", "B8F800", "78F800", "30D800", "38C800",
+                           "18B000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
 
         return patch
-    
 
 
 class SuperJump(CharacterSpell):
@@ -333,7 +347,7 @@ class SuperJump(CharacterSpell):
     base_title = "Super Jump"
     anim_ptr = 0x35C9D6
     desc_ptr = 0x3A2C01
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -347,7 +361,7 @@ class SuperJump(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Earth
+    element = Element.JUMP
     status_effects = []
     boosts = []
     inflict = None
@@ -365,7 +379,7 @@ class SuperFlame(CharacterSpell):
     base_title = "Super Flame"
     anim_ptr = 0x35C9DA
     desc_ptr = 0x3A2C26
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -379,7 +393,7 @@ class SuperFlame(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -396,17 +410,24 @@ class SuperFlame(CharacterSpell):
         """
         patch = super().get_patch()
 
-        if self.element == SpellElement.Ice:
-            patch.add_data(0x253000 + 30 * 817, palette_to_bytes(["F8F8D0", "00F8F8", "00D0F8", "00A8F8", "0080F8", "0058F8", "0028F8", "0028F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 815, palette_to_bytes(["F8F8F8", "A0F8F8", "40F8F8", "38D0F8", "30A8F8", "1850F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
-        elif self.element == SpellElement.Thunder:
-            patch.add_data(0x253000 + 30 * 817, palette_to_bytes(["F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 815, palette_to_bytes(["F8F8F8", "B8F0F8", "B8E0F8", "B0E0F8", "A0D0F8", "80D0F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
-        elif self.element == SpellElement.Earth:
-            patch.add_data(0x253000 + 30 * 817, palette_to_bytes(["80F800", "78F800", "30D800", "38C800", "18B000", "008000", "78F800", "A8F800", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 815, palette_to_bytes(["F8F8F8", "B8F800", "78F800", "30D800", "38C800", "18B000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        if self.element == Element.ICE:
+            patch.add_data(0x253000 + 30 * 817, palette_to_bytes(["F8F8D0", "00F8F8", "00D0F8", "00A8F8", "0080F8",
+                           "0058F8", "0028F8", "0028F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 815, palette_to_bytes(["F8F8F8", "A0F8F8", "40F8F8", "38D0F8", "30A8F8",
+                           "1850F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        elif self.element == Element.THUNDER:
+            patch.add_data(0x253000 + 30 * 817, palette_to_bytes(["F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8",
+                           "B8F8F8", "F8F8F8", "B8F8F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 815, palette_to_bytes(["F8F8F8", "B8F0F8", "B8E0F8", "B0E0F8", "A0D0F8",
+                           "80D0F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        elif self.element == Element.JUMP:
+            patch.add_data(0x253000 + 30 * 817, palette_to_bytes(["80F800", "78F800", "30D800", "38C800", "18B000",
+                           "008000", "78F800", "A8F800", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 815, palette_to_bytes(["F8F8F8", "B8F800", "78F800", "30D800", "38C800",
+                           "18B000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
 
         return patch
+
 
 class UltraJump(CharacterSpell):
     index = 4
@@ -417,7 +438,7 @@ class UltraJump(CharacterSpell):
     base_title = "Ultra Jump"
     anim_ptr = 0x35C9E4
     desc_ptr = 0x3A2C4A
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -431,7 +452,7 @@ class UltraJump(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Earth
+    element = Element.JUMP
     status_effects = []
     boosts = []
     inflict = None
@@ -449,7 +470,7 @@ class UltraFlame(CharacterSpell):
     base_title = "Ultra Flame"
     anim_ptr = 0x35C9E8
     desc_ptr = 0x3A2C6F
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -463,7 +484,7 @@ class UltraFlame(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -480,17 +501,24 @@ class UltraFlame(CharacterSpell):
         """
         patch = super().get_patch()
 
-        if self.element == SpellElement.Ice:
-            patch.add_data(0x253000 + 30 * 818, palette_to_bytes(["F8F8D0", "00F8F8", "00D0F8", "00A8F8", "0080F8", "0058F8", "0028F8", "0028F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 816, palette_to_bytes(["F8F8F8", "A0F8F8", "40F8F8", "38D0F8", "30A8F8", "1850F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
-        elif self.element == SpellElement.Thunder:
-            patch.add_data(0x253000 + 30 * 818, palette_to_bytes(["F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 816, palette_to_bytes(["F8F8F8", "B8F0F8", "B8E0F8", "B0E0F8", "A0D0F8", "80D0F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
-        elif self.element == SpellElement.Earth:
-            patch.add_data(0x253000 + 30 * 818, palette_to_bytes(["80F800", "78F800", "30D800", "38C800", "18B000", "008000", "78F800", "A8F800", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
-            patch.add_data(0x253000 + 30 * 816, palette_to_bytes(["F8F8F8", "B8F800", "78F800", "30D800", "38C800", "18B000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        if self.element == Element.ICE:
+            patch.add_data(0x253000 + 30 * 818, palette_to_bytes(["F8F8D0", "00F8F8", "00D0F8", "00A8F8", "0080F8",
+                           "0058F8", "0028F8", "0028F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 816, palette_to_bytes(["F8F8F8", "A0F8F8", "40F8F8", "38D0F8", "30A8F8",
+                           "1850F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        elif self.element == Element.THUNDER:
+            patch.add_data(0x253000 + 30 * 818, palette_to_bytes(["F8F8F8", "B8F8F8", "F8F8F8", "B8F8F8", "F8F8F8",
+                           "B8F8F8", "F8F8F8", "B8F8F8", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 816, palette_to_bytes(["F8F8F8", "B8F0F8", "B8E0F8", "B0E0F8", "A0D0F8",
+                           "80D0F8", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
+        elif self.element == Element.JUMP:
+            patch.add_data(0x253000 + 30 * 818, palette_to_bytes(["80F800", "78F800", "30D800", "38C800", "18B000",
+                           "008000", "78F800", "A8F800", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0", "0000D0"]))
+            patch.add_data(0x253000 + 30 * 816, palette_to_bytes(["F8F8F8", "B8F800", "78F800", "30D800", "38C800",
+                           "18B000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"]))
 
         return patch
+
 
 class Therapy(CharacterSpell):
     index = 6
@@ -501,7 +529,7 @@ class Therapy(CharacterSpell):
     base_title = "Therapy"
     anim_ptr = 0x35C9F2
     desc_ptr = 0x3A2C92
-    
+
     checkStats = False
     ignoreDefense = True
     checkOHKO = False
@@ -533,7 +561,7 @@ class GroupHug(CharacterSpell):
     base_title = "Group Hug"
     anim_ptr = 0x35C9FC
     desc_ptr = 0x3A2CA6
-    
+
     checkStats = False
     ignoreDefense = True
     checkOHKO = False
@@ -564,7 +592,7 @@ class SleepyTime(CharacterSpell):
     base_title = "Sleepy Time"
     anim_ptr = 0x35CA00
     desc_ptr = 0x3A2CBF
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -595,7 +623,7 @@ class ComeBack(CharacterSpell):
     base_title = "Come Back"
     anim_ptr = 0x35CA07
     desc_ptr = 0x3A2CD6
-    
+
     checkStats = False
     ignoreDefense = True
     checkOHKO = False
@@ -626,7 +654,7 @@ class Mute(CharacterSpell):
     base_title = "Mute"
     anim_ptr = 0x35CA11
     desc_ptr = 0x3A2CF4
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -658,7 +686,7 @@ class PsychBomb(CharacterSpell):
     base_title = "Psych Bomb"
     anim_ptr = 0x35CA1B
     desc_ptr = 0x3A2D0C
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -690,7 +718,7 @@ class Terrorize(CharacterSpell):
     base_title = "Terrorize"
     anim_ptr = 0x35CA22
     desc_ptr = 0x3A2D26
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -722,7 +750,7 @@ class PoisonGas(CharacterSpell):
     base_title = "Poison Gas"
     anim_ptr = 0x35CA2C
     desc_ptr = 0x3A2D36
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -754,7 +782,7 @@ class Crusher(CharacterSpell):
     base_title = "Crusher"
     anim_ptr = 0x35CA36
     desc_ptr = 0x3A2D44
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -786,7 +814,7 @@ class BowserCrush(CharacterSpell):
     base_title = "Bowser Crush"
     anim_ptr = 0x35CA40
     desc_ptr = 0x3A2D6D
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -818,7 +846,7 @@ class GenoBeam(CharacterSpell):
     base_title = "Geno Beam"
     anim_ptr = 0x35CA47
     desc_ptr = 0x3A2D87
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -849,7 +877,7 @@ class GenoBoost(CharacterSpell):
     base_title = "Geno Boost"
     anim_ptr = 0x35CA4E
     desc_ptr = 0x3A2DB0
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -881,7 +909,7 @@ class GenoWhirl(CharacterSpell):
     base_title = "Geno Whirl"
     anim_ptr = 0x35CA58
     desc_ptr = 0x3A2DD8
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -913,7 +941,7 @@ class GenoBlast(CharacterSpell):
     base_title = "Geno Blast"
     anim_ptr = 0x35CA62
     desc_ptr = 0x3A2E05
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -945,7 +973,7 @@ class GenoFlash(CharacterSpell):
     base_title = "Geno Flash"
     anim_ptr = 0x35CA69
     desc_ptr = 0x3A2E26
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -977,7 +1005,7 @@ class Thunderbolt(CharacterSpell):
     base_title = "Thunderbolt"
     anim_ptr = 0x35CA73
     desc_ptr = 0x3A2E4A
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -991,7 +1019,7 @@ class Thunderbolt(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Thunder
+    element = Element.THUNDER
     status_effects = []
     boosts = []
     inflict = None
@@ -1008,12 +1036,15 @@ class Thunderbolt(CharacterSpell):
         """
         patch = super().get_patch()
 
-        if self.element == SpellElement.Ice:
-            patch.add_data(0x33cb1f, bytearray([0x7E, 0x40, 0xC0, 0x51, 0x20, 0x67, 0xF3, 0x7F]))
-        elif self.element == SpellElement.Fire:
-            patch.add_data(0x33cb1f, bytearray([0x7E, 0x40, 0x11, 0x00, 0x99, 0x01, 0xFF, 0x03]))
-        elif self.element == SpellElement.Earth:
-            patch.add_data(0x33cb1f, bytearray([0x7E, 0x40, 0x00, 0x06, 0x20, 0x13, 0xF8, 0x03]))
+        if self.element == Element.ICE:
+            patch.add_data(0x33cb1f, bytearray(
+                [0x7E, 0x40, 0xC0, 0x51, 0x20, 0x67, 0xF3, 0x7F]))
+        elif self.element == Element.FIRE:
+            patch.add_data(0x33cb1f, bytearray(
+                [0x7E, 0x40, 0x11, 0x00, 0x99, 0x01, 0xFF, 0x03]))
+        elif self.element == Element.JUMP:
+            patch.add_data(0x33cb1f, bytearray(
+                [0x7E, 0x40, 0x00, 0x06, 0x20, 0x13, 0xF8, 0x03]))
 
         return patch
 
@@ -1027,7 +1058,7 @@ class HPRain(CharacterSpell):
     base_title = "HP Rain"
     anim_ptr = 0x35CA7D
     desc_ptr = 0x3A2E6C
-    
+
     checkStats = False
     ignoreDefense = True
     checkOHKO = False
@@ -1058,7 +1089,7 @@ class Psychopath(CharacterSpell):
     base_title = "Psychopath"
     anim_ptr = 0x35CA84
     desc_ptr = 0x3A2E9E
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1090,7 +1121,7 @@ class Shocker(CharacterSpell):
     base_title = "Shocker"
     anim_ptr = 0x35CA8E
     desc_ptr = 0x3A2EBC
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1104,7 +1135,7 @@ class Shocker(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Thunder
+    element = Element.THUNDER
     status_effects = []
     boosts = []
     inflict = None
@@ -1120,12 +1151,15 @@ class Shocker(CharacterSpell):
 
         """
         patch = super().get_patch()
-        if self.element == SpellElement.Ice:
-            patch.add_data(0x330bb8, bytearray([0x00, 0x00, 0x9F, 0x73, 0xF8, 0x7F, 0xF4, 0x7F, 0xF0, 0x7F, 0xEC, 0x7F, 0xE9, 0x7F, 0xC0, 0x5A, 0x00, 0x42, 0xE0, 0x3D, 0x00, 0x21, 0x20, 0x25, 0x80, 0x10, 0x40, 0x08]))
-        elif self.element == SpellElement.Fire:
-            patch.add_data(0x330bb8, bytearray([0x00, 0x00, 0x9F, 0x73, 0x1F, 0x63, 0x9F, 0x52, 0x1F, 0x42, 0x9F, 0x31, 0x3F, 0x25, 0x16, 0x00, 0x10, 0x00, 0x0F, 0x00, 0x08, 0x00, 0x09, 0x00, 0x04, 0x00, 0x02]))
-        elif self.element == SpellElement.Earth:
-            patch.add_data(0x330bb8, bytearray([0x00, 0x00, 0xF4, 0x53, 0xEA, 0x2B, 0xE0, 0x03, 0xE0, 0x03, 0xA0, 0x03, 0x20, 0x03, 0xA0, 0x02, 0x00, 0x02, 0xE0, 0x01, 0x00, 0x01, 0x20, 0x01, 0x80, 0x00, 0x40, 0x08]))
+        if self.element == Element.ICE:
+            patch.add_data(0x330bb8, bytearray([0x00, 0x00, 0x9F, 0x73, 0xF8, 0x7F, 0xF4, 0x7F, 0xF0, 0x7F, 0xEC,
+                           0x7F, 0xE9, 0x7F, 0xC0, 0x5A, 0x00, 0x42, 0xE0, 0x3D, 0x00, 0x21, 0x20, 0x25, 0x80, 0x10, 0x40, 0x08]))
+        elif self.element == Element.FIRE:
+            patch.add_data(0x330bb8, bytearray([0x00, 0x00, 0x9F, 0x73, 0x1F, 0x63, 0x9F, 0x52, 0x1F, 0x42, 0x9F,
+                           0x31, 0x3F, 0x25, 0x16, 0x00, 0x10, 0x00, 0x0F, 0x00, 0x08, 0x00, 0x09, 0x00, 0x04, 0x00, 0x02]))
+        elif self.element == Element.JUMP:
+            patch.add_data(0x330bb8, bytearray([0x00, 0x00, 0xF4, 0x53, 0xEA, 0x2B, 0xE0, 0x03, 0xE0, 0x03, 0xA0,
+                           0x03, 0x20, 0x03, 0xA0, 0x02, 0x00, 0x02, 0xE0, 0x01, 0x00, 0x01, 0x20, 0x01, 0x80, 0x00, 0x40, 0x08]))
         return patch
 
 
@@ -1138,7 +1172,7 @@ class Snowy(CharacterSpell):
     base_title = "Snowy"
     anim_ptr = 0x35CA98
     desc_ptr = 0x3A2EDE
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1152,7 +1186,7 @@ class Snowy(CharacterSpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Ice
+    element = Element.ICE
     status_effects = []
     boosts = []
     inflict = None
@@ -1168,17 +1202,19 @@ class Snowy(CharacterSpell):
 
         """
         patch = super().get_patch()
-        if self.element == SpellElement.Thunder:
-            patch.add_data(0x33c141, bytearray([0x85, 0x02, 0xFF, 0x7F, 0xF8, 0x7F, 0xED, 0x7F]))
+        if self.element == Element.THUNDER:
+            patch.add_data(0x33c141, bytearray(
+                [0x85, 0x02, 0xFF, 0x7F, 0xF8, 0x7F, 0xED, 0x7F]))
             patch.add_data(0x33c400, bytearray([00, 0x00, 0xFF, 0x7F]))
-        elif self.element == SpellElement.Fire:
-            patch.add_data(0x33c141, bytearray([0x85, 0x02, 0xDB, 0x02, 0x97, 0x01, 0x13, 0x00]))
+        elif self.element == Element.FIRE:
+            patch.add_data(0x33c141, bytearray(
+                [0x85, 0x02, 0xDB, 0x02, 0x97, 0x01, 0x13, 0x00]))
             patch.add_data(0x33c400, bytearray([00, 0x00, 0xDB, 0x02]))
-        elif self.element == SpellElement.Earth:
-            patch.add_data(0x33c141, bytearray([0x85, 0x02, 0x40, 0x03, 0xA0, 0x02, 0x00, 0x02]))
+        elif self.element == Element.JUMP:
+            patch.add_data(0x33c141, bytearray(
+                [0x85, 0x02, 0x40, 0x03, 0xA0, 0x02, 0x00, 0x02]))
             patch.add_data(0x33c400, bytearray([00, 0x00, 0x40, 0x03]))
         return patch
-
 
 
 class StarRain(CharacterSpell):
@@ -1190,7 +1226,7 @@ class StarRain(CharacterSpell):
     base_title = "Star Rain"
     anim_ptr = 0x35CAA2
     desc_ptr = 0x3A2EF4
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1230,7 +1266,7 @@ class Drain(EnemySpell):
     fp = 1
     power = 4
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1244,7 +1280,7 @@ class Drain(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -1256,7 +1292,7 @@ class LightningOrb(EnemySpell):
     fp = 2
     power = 8
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1270,7 +1306,7 @@ class LightningOrb(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Thunder
+    element = Element.THUNDER
     status_effects = []
     boosts = []
     inflict = None
@@ -1282,7 +1318,7 @@ class Flame(EnemySpell):
     fp = 3
     power = 12
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1296,7 +1332,7 @@ class Flame(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -1308,7 +1344,7 @@ class Bolt(EnemySpell):
     fp = 4
     power = 20
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1322,7 +1358,7 @@ class Bolt(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Thunder
+    element = Element.THUNDER
     status_effects = []
     boosts = []
     inflict = None
@@ -1334,7 +1370,7 @@ class Crystal(EnemySpell):
     fp = 5
     power = 25
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1348,7 +1384,7 @@ class Crystal(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Ice
+    element = Element.ICE
     status_effects = []
     boosts = []
     inflict = None
@@ -1360,7 +1396,7 @@ class FlameStone(EnemySpell):
     fp = 6
     power = 32
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1374,7 +1410,7 @@ class FlameStone(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -1386,7 +1422,7 @@ class MegaDrain(EnemySpell):
     fp = 7
     power = 40
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1400,7 +1436,7 @@ class MegaDrain(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -1412,7 +1448,7 @@ class WillyWisp(EnemySpell):
     fp = 8
     power = 48
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1438,7 +1474,7 @@ class DiamondSaw(EnemySpell):
     fp = 9
     power = 60
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1464,7 +1500,7 @@ class Electroshock(EnemySpell):
     fp = 10
     power = 72
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1478,7 +1514,7 @@ class Electroshock(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Thunder
+    element = Element.THUNDER
     status_effects = []
     boosts = []
     inflict = None
@@ -1490,7 +1526,7 @@ class Blast(EnemySpell):
     fp = 11
     power = 89
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1516,7 +1552,7 @@ class Storm(EnemySpell):
     fp = 12
     power = 108
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1542,7 +1578,7 @@ class IceRock(EnemySpell):
     fp = 13
     power = 130
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1556,7 +1592,7 @@ class IceRock(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Ice
+    element = Element.ICE
     status_effects = []
     boosts = []
     inflict = None
@@ -1566,7 +1602,7 @@ class IceRock(EnemySpell):
 class Escape(EnemySpell):
     index = 77
     hit_rate = 100
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1592,7 +1628,7 @@ class DarkStar(EnemySpell):
     fp = 20
     power = 160
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1618,7 +1654,7 @@ class Recover(EnemySpell):
     fp = 3
     power = 50
     hit_rate = 100
-    
+
     checkStats = False
     ignoreDefense = True
     checkOHKO = False
@@ -1644,7 +1680,7 @@ class MegaRecover(EnemySpell):
     fp = 9
     power = 200
     hit_rate = 100
-    
+
     checkStats = False
     ignoreDefense = True
     checkOHKO = False
@@ -1670,7 +1706,7 @@ class FlameWall(EnemySpell):
     fp = 2
     power = 8
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1684,7 +1720,7 @@ class FlameWall(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -1696,7 +1732,7 @@ class StaticE(EnemySpell):
     fp = 4
     power = 12
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1710,7 +1746,7 @@ class StaticE(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Thunder
+    element = Element.THUNDER
     status_effects = []
     boosts = []
     inflict = None
@@ -1723,7 +1759,7 @@ class SandStorm(EnemySpell):
     power = 16
     hit_rate = 90
     status_effects = [3]
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1749,7 +1785,7 @@ class Blizzard(EnemySpell):
     fp = 8
     power = 22
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1763,7 +1799,7 @@ class Blizzard(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Ice
+    element = Element.ICE
     status_effects = []
     boosts = []
     inflict = None
@@ -1775,7 +1811,7 @@ class DrainBeam(EnemySpell):
     fp = 10
     power = 26
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1801,7 +1837,7 @@ class MeteorBlast(EnemySpell):
     fp = 12
     power = 30
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1828,7 +1864,7 @@ class LightBeam(EnemySpell):
     power = 34
     hit_rate = 90
     status_effects = [1]
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1854,7 +1890,7 @@ class WaterBlast(EnemySpell):
     fp = 14
     power = 39
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1880,7 +1916,7 @@ class Solidify(EnemySpell):
     fp = 15
     power = 47
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1894,7 +1930,7 @@ class Solidify(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Ice
+    element = Element.ICE
     status_effects = []
     boosts = []
     inflict = None
@@ -1907,7 +1943,7 @@ class PetalBlast(EnemySpell):
     power = 40
     hit_rate = 85
     status_effects = [5]
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1934,7 +1970,7 @@ class AuroraFlash(EnemySpell):
     power = 50
     hit_rate = 85
     status_effects = [1]
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1960,7 +1996,7 @@ class Boulder(EnemySpell):
     fp = 18
     power = 72
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -1986,7 +2022,7 @@ class Corona(EnemySpell):
     fp = 19
     power = 88
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2000,7 +2036,7 @@ class Corona(EnemySpell):
     targetWounded = False
     targetOneParty = True
     targetNotSelf = False
-    element = SpellElement.Fire
+    element = Element.FIRE
     status_effects = []
     boosts = []
     inflict = None
@@ -2012,7 +2048,7 @@ class MeteorSwarm(EnemySpell):
     fp = 20
     power = 100
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2039,7 +2075,7 @@ class KnockOut(EnemySpell):
     power = 1
     hit_rate = 60
     instant_ko = True
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = True
@@ -2064,7 +2100,7 @@ class WeirdMushroom(EnemySpell):
     index = 96
     power = 30
     hit_rate = 100
-    
+
     checkStats = False
     ignoreDefense = True
     checkOHKO = False
@@ -2090,7 +2126,7 @@ class BreakerBeam(EnemySpell):
     fp = 15
     power = 80
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2115,7 +2151,7 @@ class Shredder(EnemySpell):
     index = 98
     fp = 8
     hit_rate = 100
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2141,7 +2177,7 @@ class Sledge(EnemySpell):
     fp = 6
     power = 50
     hit_rate = 99
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2167,7 +2203,7 @@ class SwordRain(EnemySpell):
     fp = 8
     power = 80
     hit_rate = 99
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2193,7 +2229,7 @@ class SpearRain(EnemySpell):
     fp = 5
     power = 60
     hit_rate = 99
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2219,7 +2255,7 @@ class ArrowRain(EnemySpell):
     fp = 2
     power = 40
     hit_rate = 99
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2238,12 +2274,13 @@ class ArrowRain(EnemySpell):
     boosts = []
     inflict = None
     hideNum = False
+
 
 class BigBang(EnemySpell):
     index = 103
     power = 100
     hit_rate = 100
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2263,11 +2300,12 @@ class BigBang(EnemySpell):
     inflict = None
     hideNum = False
 
+
 class ChestScrow(EnemySpell):
     index = 104
     power = 10
     hit_rate = 85
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2287,11 +2325,12 @@ class ChestScrow(EnemySpell):
     inflict = None
     hideNum = False
 
+
 class ChestFear(EnemySpell):
     index = 105
     power = 0
     hit_rate = 82
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2311,11 +2350,12 @@ class ChestFear(EnemySpell):
     inflict = None
     hideNum = True
 
+
 class ChestMute(EnemySpell):
     index = 106
     power = 0
     hit_rate = 85
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2335,11 +2375,12 @@ class ChestMute(EnemySpell):
     inflict = None
     hideNum = True
 
+
 class ChestPoison(EnemySpell):
     index = 107
     power = 0
     hit_rate = 85
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2359,11 +2400,12 @@ class ChestPoison(EnemySpell):
     inflict = None
     hideNum = True
 
+
 class ChainSaw(EnemySpell):
     index = 108
     power = 50
     hit_rate = 90
-    
+
     checkStats = False
     ignoreDefense = False
     checkOHKO = False
@@ -2382,6 +2424,7 @@ class ChainSaw(EnemySpell):
     boosts = []
     inflict = None
     hideNum = False
+
 
 class Nothing(EnemySpell):
     index = 251
@@ -2477,10 +2520,13 @@ def get_default_spells(world):
         # Nothing(world),
     ]
 
+
 # BigBang is not in any of these tables. It's just a bad idea.
-SingleTargets = [Drain, LightningOrb, Flame, Bolt, Crystal, FlameStone, MegaDrain, WillyWisp, DiamondSaw, Electroshock, Blast, Storm, IceRock, DarkStar]
+SingleTargets = [Drain, LightningOrb, Flame, Bolt, Crystal, FlameStone,
+                 MegaDrain, WillyWisp, DiamondSaw, Electroshock, Blast, Storm, IceRock, DarkStar]
 Heals = [Recover, MegaRecover, WeirdMushroom]
-MultiTargets = [FlameWall, StaticE, SandStorm, Blizzard, DrainBeam, MeteorBlast, LightBeam, WaterBlast, Solidify, PetalBlast, AuroraFlash, Boulder, Corona, MeteorSwarm, KnockOut, Shredder, Sledge, SwordRain, SpearRain, ArrowRain, ChestScrow, ChestFear, ChestMute, ChestPoison, ChainSaw]
+MultiTargets = [FlameWall, StaticE, SandStorm, Blizzard, DrainBeam, MeteorBlast, LightBeam, WaterBlast, Solidify, PetalBlast, AuroraFlash, Boulder,
+                Corona, MeteorSwarm, KnockOut, Shredder, Sledge, SwordRain, SpearRain, ArrowRain, ChestScrow, ChestFear, ChestMute, ChestPoison, ChainSaw]
 DoNothing = [Nothing]
 Run = [Escape]
 

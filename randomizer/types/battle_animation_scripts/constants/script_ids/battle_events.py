@@ -1,3 +1,5 @@
+"""Constants representing individual battle event IDs"""
+
 BE0000_UNUSED = 0
 BE0001_UNUSED = 1
 BE0002_BELOME_SWALLOWS_MALLOW = 2

@@ -42,7 +42,7 @@ script = SubroutineOrBanklessScript(
         ReturnSubroutine(identifier="command_0x35c981"),
         PlaySound(sound=S0006_BONUS_FLOWER_STATUS_UP, identifier="command_0x35c982"),
         DisplayMessage(BATTLE_MESSAGE, 8),
-        PauseScriptUntilDialogueClosed(),
+        PauseScriptUntilDialogClosed(),
         SetAMEM16BitTo7E1x(0x60, 0x7EE022),
         IncAMEM16BitByConst(0x60, 96),
         StoreOMEM60ToItemInventory(),

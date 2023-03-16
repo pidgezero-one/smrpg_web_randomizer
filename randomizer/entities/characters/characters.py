@@ -154,7 +154,7 @@ class Mario(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: List[StatGrowth] = [
         StatGrowth(3, 1, 1, 3, 1),
         StatGrowth(3, 2, 1, 1, 1),
         StatGrowth(4, 1, 1, 1, 1),
@@ -412,7 +412,7 @@ class Toadstool(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: List[StatGrowth] = [
         StatGrowth(5, 1, 1, 3, 1),
         StatGrowth(5, 3, 1, 1, 1),
         StatGrowth(9, 1, 1, 1, 1),
@@ -660,7 +660,7 @@ class Bowser(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: List[StatGrowth] = [
         StatGrowth(1, 1, 1, 3, 1),
         StatGrowth(1, 2, 1, 1, 1),
         StatGrowth(3, 1, 1, 1, 1),
@@ -886,7 +886,7 @@ class Geno(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: List[StatGrowth] = [
         StatGrowth(5, 1, 1, 3, 1),
         StatGrowth(5, 3, 1, 1, 1),
         StatGrowth(6, 1, 1, 1, 1),
@@ -1113,7 +1113,7 @@ class Mallow(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: List[StatGrowth] = [
         StatGrowth(4, 1, 1, 2, 1),
         StatGrowth(4, 3, 1, 1, 1),
         StatGrowth(6, 1, 1, 1, 1),

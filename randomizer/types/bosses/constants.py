@@ -1,9 +1,14 @@
+"""A collection of which specific battlefields should be used when
+you get into an encounter with an enemy in any of the associated rooms."""
+
+from randomizer import *
+
 from randomizer.types.bosses.enums import Battlefields
 from randomizer.types.overworld_scripts.constants.room_names import *
 
-battlefield_room_table = [
+BATTLEFIELD_ROOM_TABLE = [
     (
-        Battlefields.Forest,
+        Battlefields.FOREST,
         [
             R224_FOREST_MAZE_AREA_01,
             R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE,
@@ -11,7 +16,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.Beanstalks,
+        Battlefields.BEANSTALKS,
         [
             R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND,
             R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD,
@@ -19,7 +24,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.SunkenShip,
+        Battlefields.SUNKEN_SHIP,
         [
             R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
             R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS,
@@ -33,7 +38,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.MushroomKingdom,
+        Battlefields.MUSHROOM_KINGDOM,
         [
             R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL,
             R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
@@ -42,7 +47,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.BowsersKeep,
+        Battlefields.BOWSERS_KEEP,
         [
             R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
             R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS,
@@ -61,7 +66,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.MushroomWay,
+        Battlefields.MUSHROOM_WAY,
         [
             R077_BANDITS_WAY_AREA_03,
             R078_BANDITS_WAY_AREA_04,
@@ -75,7 +80,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.Mountains,
+        Battlefields.MOUNTAINS,
         [
             R100_BOOSTER_PASS_AREA_01,
             R137_LANDS_END_AREA_01,
@@ -84,7 +89,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.House,
+        Battlefields.HOUSE,
         [
             R009_MARRYMORE_INN_REGULAR_ROOM,
             R087_ROSE_TOWN_ITEM_SHOP,
@@ -96,7 +101,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.BoosterTower,
+        Battlefields.BOOSTER_TOWER,
         [
             R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS,
             R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER,
@@ -106,7 +111,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.Volcano,
+        Battlefields.VOLCANO,
         [
             R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS,
             R366_VOLCANO_AREA_13_WSAVE_POINT,
@@ -116,7 +121,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.KeroSewers,
+        Battlefields.KERO_SEWERS,
         [
             R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS,
             R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS,
@@ -126,7 +131,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.NimbusCastle,
+        Battlefields.NIMBUS_CASTLE,
         [
             R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE,
             R500_NIMBUS_CASTLE_AREA_04_____DUMMY,
@@ -139,9 +144,9 @@ battlefield_room_table = [
             R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
         ],
     ),
-    (Battlefields.Valentina, [R344_NIMBUS_LAND_ITEM_SHOP]),
+    (Battlefields.VALENTINA, [R344_NIMBUS_LAND_ITEM_SHOP]),
     (
-        Battlefields.Underground,
+        Battlefields.UNDERGROUND,
         [
             R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS,
             R263_LANDS_END_UNDERGROUND_AREA_01,
@@ -155,14 +160,14 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.Plateau,
+        Battlefields.PLATEAU,
         [
             R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT,
             R141_LANDS_END_AREA_04_ROTATING_FLOWERS,
         ],
     ),
     (
-        Battlefields.Sea,
+        Battlefields.SEA,
         [
             R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT,
             R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS,
@@ -170,11 +175,11 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.BeanValley,
+        Battlefields.BEAN_VALLEY,
         [R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, R252_BEAN_VALLEY_MAIN_AREA],
     ),
     (
-        Battlefields.BelomeTemple,
+        Battlefields.BELOME_TEMPLE,
         [
             R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM,
             R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE,
@@ -182,7 +187,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.Factory,
+        Battlefields.FACTORY,
         [
             R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT,
             R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER,
@@ -192,7 +197,7 @@ battlefield_room_table = [
         ],
     ),
     (
-        Battlefields.BeanValleyUnderground,
+        Battlefields.BEAN_VALLEY_UNDERGROUND,
         [
             R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE,
             R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM,

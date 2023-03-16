@@ -1,4 +1,6 @@
-from .classes import MaskEffect
+"""Int subclass instances describing screen mask effects in battle animations."""
+
+from randomizer.types.battle_animation_scripts.constants.classes import MaskEffect
 
 NO_MASK = MaskEffect(0)
 INCLINE_1 = MaskEffect(1)

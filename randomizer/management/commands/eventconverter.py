@@ -5085,7 +5085,7 @@ def convert_event_script_command(cmd, valid_identifiers):
     elif cmd["command"] == "enable_trigger_at_70A8":
         cls = "EnableTriggerAt70A8"
     elif cmd["command"] == "disable_trigger_at_70A8":
-        cls = "DisableTriggerInLevel"
+        cls = "DisableObjectTriggerInSpecificLevel"
     elif cmd["command"] == "enter_area":
         cls = "EnterArea"
         args["room_id"] = get_room_name(cmdargs[0])
@@ -5100,7 +5100,7 @@ def convert_event_script_command(cmd, valid_identifiers):
         if 15 in cmdargs[5]:
             args["run_entrance_event"] = "True"
     elif cmd["command"] == "equip_item_to_character":
-        cls = "DisableTriggerInLevel"
+        cls = "DisableObjectTriggerInSpecificLevel"
         args["item"] = get_item_class(cmdargs[1])
         args["character"] = AREA_OBJECTS[cmdargs[0]]
         include_argnames = False
@@ -6514,7 +6514,7 @@ def convert_action_script_command(cmd, valid_identifiers):
     elif cmd["command"] == "enable_trigger_at_70A8":
         cls = "EnableTriggerAt70A8"
     elif cmd["command"] == "disable_trigger_at_70A8":
-        cls = "DisableTriggerInLevel"
+        cls = "DisableObjectTriggerInSpecificLevel"
     elif cmd["command"] in ["jmp_if_object_in_level", "jmp_if_object_not_in_level"]:
         if cmd["command"] == "jmp_if_object_in_level":
             cls = "JmpIfObjectInSpecificLevel"

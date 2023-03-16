@@ -1,3 +1,5 @@
+"""Int subclass instances representing valid sprite sequence playback speeds."""
+
 from classes import SequenceSpeed
 
 NORMAL = SequenceSpeed(0)

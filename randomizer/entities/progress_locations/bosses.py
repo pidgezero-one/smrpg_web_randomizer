@@ -442,9 +442,9 @@ from randomizer.types.progress_locations.enums import LocationWorldArea
 
 class MushroomWayBossFight(BossFightLocation):
     _room_ids: List[int] = [R205_MUSHROOM_WAY_AREA_03]
-    _name_enum: BossLocations = BossLocations.MushroomWay
-    _battlefield = Battlefields.MushroomWay
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.MUSHROOM_WAY
+    _battlefield = Battlefields.MUSHROOM_WAY
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.MushroomWay
 
     _original_item: Type[Boss] = HammerBroBoss
@@ -453,9 +453,9 @@ class MushroomWayBossFight(BossFightLocation):
 
 class BanditsWayBossFight(BossFightLocation):
     _room_ids: List[int] = [R206_BANDITS_WAY_AREA_05]
-    _name_enum: BossLocations = BossLocations.BanditsWay
-    _battlefield = Battlefields.MushroomWay
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.BANDITS_WAY
+    _battlefield = Battlefields.MUSHROOM_WAY
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.BanditsWay
 
     _original_item: Type[Boss] = Croco1Boss
@@ -477,9 +477,9 @@ class BanditsWayBossFight(BossFightLocation):
 
 class MushroomKingdomBossFight(BossFightLocation):
     _room_ids: List[int] = [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM]
-    _name_enum: BossLocations = BossLocations.MushroomKingdom
-    _battlefield = Battlefields.MushroomKingdomThroneRoom
-    _music = BattleMusic.Boss2
+    _name_enum: BossLocations = BossLocations.MUSHROOM_KINGDOM
+    _battlefield = Battlefields.MUSHROOM_KINGDOM_THRONE_ROOM
+    _music = BattleMusic.BOSS_2
     _world_area: LocationWorldArea = LocationWorldArea.MushroomKingdomOccupiedOnly
 
     _original_item: Type[Boss] = MackBoss
@@ -528,7 +528,7 @@ class MushroomKingdomBossFight(BossFightLocation):
 
 class MimicFightLocation1(BossFightLocation):
     _identifier: int = 512
-    _name_enum: BossLocations = BossLocations.Mimic1
+    _name_enum: BossLocations = BossLocations.MIMIC_1
     _original_item: Type[Boss] = PandoriteBoss
 
     def can_access(self, inventory: Inventory):
@@ -537,9 +537,9 @@ class MimicFightLocation1(BossFightLocation):
 
 class KeroSewersBossFight(BossFightLocation):
     _room_ids: List[int] = [R302_KERO_SEWERS_AREA_08_BELOMES_ROOM]
-    _battlefield = Battlefields.KeroSewers
-    _music = BattleMusic.Boss1
-    _name_enum: BossLocations = BossLocations.KeroSewers
+    _battlefield = Battlefields.KERO_SEWERS
+    _music = BattleMusic.BOSS_1
+    _name_enum: BossLocations = BossLocations.KERO_SEWERS
     _original_item: Type[Boss] = Belome1Boss
     _world_area: LocationWorldArea = LocationWorldArea.KeroSewers
     _overworld_boss_npc_fills: List[BossModelFill] = [SEWER_BOSS_ROOM_FILL]
@@ -553,9 +553,9 @@ class KeroSewersBossFight(BossFightLocation):
 
 class ForestBossFight(BossFightLocation):
     _room_ids: List[int] = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
-    _name_enum: BossLocations = BossLocations.ForestMaze
+    _name_enum: BossLocations = BossLocations.FOREST_MAZE
     _battlefield = Battlefields.Bowyer
-    _music = BattleMusic.Boss2
+    _music = BattleMusic.BOSS_2
     _original_item: Type[Boss] = BowyerBoss
     _world_area: LocationWorldArea = LocationWorldArea.ForestMaze
     _overworld_boss_npc_fills: List[BossModelFill] = [FOREST_BOSS_AREA_BOSS_FILL]
@@ -578,9 +578,9 @@ class ForestBossFight(BossFightLocation):
 
 class MinesMidbossFight(BossFightLocation):
     _identifier: int = 518
-    _name_enum: BossLocations = BossLocations.MinesMidboss
+    _name_enum: BossLocations = BossLocations.MINES_MIDBOSS
     _battlefield = Battlefields.MolevilleMines
-    _music = BattleMusic.Boss1
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = Croco2Boss
     _world_area: LocationWorldArea = LocationWorldArea.MolevilleMines
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -606,9 +606,9 @@ class MinesMidbossFight(BossFightLocation):
 
 class MinesBossFight(BossFightLocation):
     _room_ids: List[int] = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
-    _name_enum: BossLocations = BossLocations.MinesEnd
+    _name_enum: BossLocations = BossLocations.MINES_END
     _battlefield = Battlefields.MolevilleMines
-    _music = BattleMusic.Boss1
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = PunchinelloBoss
     _world_area: LocationWorldArea = LocationWorldArea.MolevilleMines
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -635,9 +635,9 @@ class MinesBossFight(BossFightLocation):
 
 class TowerCurtainRoomBossFight(BossFightLocation):
     _room_ids: List[int] = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
-    _name_enum: BossLocations = BossLocations.TowerCurtain
-    _battlefield = Battlefields.BoosterTower
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.TOWER_CURTAIN
+    _battlefield = Battlefields.BOOSTER_TOWER
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = BoosterBoss
     _world_area: LocationWorldArea = LocationWorldArea.BoosterTower
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -692,9 +692,9 @@ class TowerCurtainRoomBossFight(BossFightLocation):
 
 class TowerBalconyBossFight(BossFightLocation):
     _room_ids: List[int] = [R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR]
-    _battlefield = Battlefields.ClownBros
-    _music = BattleMusic.Boss1
-    _name_enum: BossLocations = BossLocations.TowerBalcony
+    _battlefield = Battlefields.CLOWN_BROS
+    _music = BattleMusic.BOSS_1
+    _name_enum: BossLocations = BossLocations.TOWER_BALCONY
     _original_item: Type[Boss] = GrateGuyBoss
     _world_area: LocationWorldArea = LocationWorldArea.BoosterTower
 
@@ -704,9 +704,9 @@ class TowerBalconyBossFight(BossFightLocation):
 
 class ChapelBossFight(BossFightLocation):
     _room_ids: List[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    _name_enum: BossLocations = BossLocations.Marrymore
-    _battlefield = Battlefields.Bundt
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.MARRYMORE
+    _battlefield = Battlefields.BUNDT
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = BundtBoss
     _world_area: LocationWorldArea = LocationWorldArea.Marrymore
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -730,9 +730,9 @@ class ChapelBossFight(BossFightLocation):
 
 class ShipPasswordBossFight(BossFightLocation):
     _room_ids: List[int] = [R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM]
-    _battlefield = Battlefields.SunkenShip
-    _music = BattleMusic.Boss1
-    _name_enum: BossLocations = BossLocations.SunkenShipMidboss
+    _battlefield = Battlefields.SUNKEN_SHIP
+    _music = BattleMusic.BOSS_1
+    _name_enum: BossLocations = BossLocations.SUNKEN_SHIP_MIDBOSS
     _world_area: LocationWorldArea = LocationWorldArea.SunkenShip
     _original_item: Type[Boss] = KingCalamariBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [PASSWORD_ROOM_BECKON_BOSS_FILL]
@@ -743,7 +743,7 @@ class ShipPasswordBossFight(BossFightLocation):
 
 class MimicFightLocation2(BossFightLocation):
     _identifier: int = 513
-    _name_enum: BossLocations = BossLocations.Mimic2
+    _name_enum: BossLocations = BossLocations.MIMIC_2
     _original_item: Type[Boss] = HidonBoss
 
     def can_access(self, inventory: Inventory):
@@ -752,9 +752,9 @@ class MimicFightLocation2(BossFightLocation):
 
 class ShipFinalBossFight(BossFightLocation):
     _room_ids: List[int] = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
-    _battlefield = Battlefields.SunkenShip
-    _music = BattleMusic.Boss1
-    _name_enum: BossLocations = BossLocations.SunkenShipEnd
+    _battlefield = Battlefields.SUNKEN_SHIP
+    _music = BattleMusic.BOSS_1
+    _name_enum: BossLocations = BossLocations.SUNKEN_SHIP_END
     _original_item: Type[Boss] = JohnnyBoss
     _world_area: LocationWorldArea = LocationWorldArea.SunkenShip
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -790,9 +790,9 @@ class ShipFinalBossFight(BossFightLocation):
 
 class SeasideBeachBossFight(BossFightLocation):
     _room_ids: List[int] = [R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
-    _name_enum: BossLocations = BossLocations.SeasideTown
-    _battlefield = Battlefields.Yaridovich
-    _music = BattleMusic.Boss2
+    _name_enum: BossLocations = BossLocations.SEASIDE_TOWN
+    _battlefield = Battlefields.YARIDOVICH
+    _music = BattleMusic.BOSS_2
     _world_area: LocationWorldArea = LocationWorldArea.SeasideTown
     _original_item: Type[Boss] = YaridovichBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -838,8 +838,8 @@ class SeasideBeachBossFight(BossFightLocation):
 
 class LandsEndCloudBossFight(BossFightLocation):
     _identifier: int = 519
-    _music = BattleMusic.Boss1
-    _name_enum: BossLocations = BossLocations.LandsEndCloud
+    _music = BattleMusic.BOSS_1
+    _name_enum: BossLocations = BossLocations.LANDS_END_CLOUD
     _world_area: LocationWorldArea = LocationWorldArea.LandsEnd
     _original_item: Type[Boss] = MokuraBoss
 
@@ -849,9 +849,9 @@ class LandsEndCloudBossFight(BossFightLocation):
 
 class TempleBossFight(BossFightLocation):
     _room_ids: List[int] = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
-    _name_enum: BossLocations = BossLocations.BelomeTemple
-    _battlefield = Battlefields.BelomeTemple
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.BELOME_TEMPLE
+    _battlefield = Battlefields.BELOME_TEMPLE
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = Belome2Boss
     _world_area: LocationWorldArea = LocationWorldArea.BelomeTemple
     _overworld_boss_npc_fills: List[BossModelFill] = [TEMPLE_BOSS_FILL]
@@ -865,8 +865,8 @@ class TempleBossFight(BossFightLocation):
 
 class DojoFirstFight(BossFightLocation):
     _room_ids: List[int] = [R255_MONSTRO_TOWN_JINXS_DOJO]
-    _name_enum: BossLocations = BossLocations.Dojo1
-    _battlefield = Battlefields.JinxDojo
+    _name_enum: BossLocations = BossLocations.DOJO_1
+    _battlefield = Battlefields.JINX_DOJO
     _can_run_away: bool = True
     _original_item: Type[Boss] = JaggerBoss
     _world_area: LocationWorldArea = LocationWorldArea.MonstroTown
@@ -878,10 +878,10 @@ class DojoFirstFight(BossFightLocation):
 
 class DojoSecondFight(BossFightLocation):
     _identifier: int = 515
-    _name_enum: BossLocations = BossLocations.Dojo2
-    _battlefield = Battlefields.JinxDojo
+    _name_enum: BossLocations = BossLocations.DOJO_2
+    _battlefield = Battlefields.JINX_DOJO
     _can_run_away: bool = True
-    _music = BattleMusic.Boss1
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.MonstroTown
     _original_item: Type[Boss] = Jinx1Boss
     _overworld_boss_npc_fills: List[BossModelFill] = [DOJO_SECOND_BOSS_FILL]
@@ -899,10 +899,10 @@ class DojoSecondFight(BossFightLocation):
 
 class DojoThirdFight(BossFightLocation):
     _identifier: int = 516
-    _name_enum: BossLocations = BossLocations.Dojo3
-    _battlefield = Battlefields.JinxDojo
+    _name_enum: BossLocations = BossLocations.DOJO_3
+    _battlefield = Battlefields.JINX_DOJO
     _can_run_away: bool = True
-    _music = BattleMusic.Boss1
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.MonstroTown
     _original_item: Type[Boss] = Jinx2Boss
     _overworld_boss_npc_fills: List[BossModelFill] = [DOJO_THIRD_BOSS_FILL]
@@ -920,10 +920,10 @@ class DojoThirdFight(BossFightLocation):
 
 class DojoFourthFight(BossFightLocation):
     _identifier: int = 517
-    _name_enum: BossLocations = BossLocations.Dojo4
-    _battlefield = Battlefields.JinxDojo
+    _name_enum: BossLocations = BossLocations.DOJO_4
+    _battlefield = Battlefields.JINX_DOJO
     _can_run_away: bool = True
-    _music = BattleMusic.Boss1
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.MonstroTown
     _original_item: Type[Boss] = Jinx3Boss
     _overworld_boss_npc_fills: List[BossModelFill] = [DOJO_FOURTH_BOSS_FILL]
@@ -941,9 +941,9 @@ class DojoFourthFight(BossFightLocation):
 
 class MonstroSealedDoorBossFight(BossFightLocation):
     _room_ids: List[int] = [R351_CULEXS_ROOM]
-    _name_enum: BossLocations = BossLocations.MonstroDoor
-    _battlefield = Battlefields.Culex
-    _music = BattleMusic.Culex
+    _name_enum: BossLocations = BossLocations.MONSTRO_DOOR
+    _battlefield = Battlefields.CULEX
+    _music = BattleMusic.CULEX
     _original_item: Type[Boss] = CulexBoss
     _world_area: LocationWorldArea = LocationWorldArea.MonstroTown
     _overworld_boss_npc_fills: List[BossModelFill] = [MONSTRO_SEALED_DOOR_BOSS_FILL]
@@ -954,7 +954,7 @@ class MonstroSealedDoorBossFight(BossFightLocation):
 
 class MimicFightLocation3(BossFightLocation):
     _identifier: int = 514
-    _name_enum: BossLocations = BossLocations.Mimic3
+    _name_enum: BossLocations = BossLocations.MIMIC_3
     _original_item: Type[Boss] = BoxBoyBoss
 
     def can_access(self, inventory: Inventory):
@@ -963,9 +963,9 @@ class MimicFightLocation3(BossFightLocation):
 
 class BeanValleyPlanterBossFight(BossFightLocation):
     _room_ids: List[int] = [R254_BEAN_VALLEY_SMILAX_AREA]
-    _name_enum: BossLocations = BossLocations.BeanValley
-    _battlefield = Battlefields.BeanValley
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.BEAN_VALLEY
+    _battlefield = Battlefields.BEAN_VALLEY
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = MegaSmilaxBoss
     _world_area: LocationWorldArea = LocationWorldArea.BeanValley
     _overworld_boss_npc_fills: List[BossModelFill] = [BEAN_VALLEY_BOSS_FILL]
@@ -975,10 +975,10 @@ class BeanValleyPlanterBossFight(BossFightLocation):
 
 
 class StatueRoomBossFight(BossFightLocation):
-    _name_enum: BossLocations = BossLocations.NimbusStatues
+    _name_enum: BossLocations = BossLocations.NIMBUS_STATUES
     _identifier: int = 520
-    _battlefield = Battlefields.NimbusCastle
-    _music = BattleMusic.Boss1
+    _battlefield = Battlefields.NIMBUS_CASTLE
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = DodoBoss
     _world_area: LocationWorldArea = LocationWorldArea.NimbusCastle
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -994,9 +994,9 @@ class StatueRoomBossFight(BossFightLocation):
 
 class GiantEggBossFight(BossFightLocation):
     _room_ids: List[int] = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
-    _name_enum: BossLocations = BossLocations.GiantEgg
-    _battlefield = Battlefields.Birdetta
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.GIANT_EGG
+    _battlefield = Battlefields.BIRDETTA
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.NimbusCastle
     _affected_dialog_ids: List[int] = [DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING]
     _original_item: Type[Boss] = BirdettaBoss
@@ -1110,9 +1110,9 @@ class GiantEggBossFight(BossFightLocation):
 
 class NimbusFinalBossFight(BossFightLocation):
     _room_ids: List[int] = [R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA]
-    _name_enum: BossLocations = BossLocations.NimbusEnd
-    _battlefield = Battlefields.Valentina
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.NIMBUS_END
+    _battlefield = Battlefields.VALENTINA
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = ValentinaBoss
     _world_area: LocationWorldArea = LocationWorldArea.NimbusCastle
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -1182,9 +1182,9 @@ class NimbusFinalBossFight(BossFightLocation):
 
 class VolcanoBridgeBossFight(BossFightLocation):
     _room_ids: List[int] = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
-    _name_enum: BossLocations = BossLocations.BarrelVolcanoMidboss
-    _battlefield = Battlefields.CzarDragon
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.BARREL_VOLCANO_MIDBOSS
+    _battlefield = Battlefields.CZAR_DRAGON
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.BarrelVolcano
     _original_item: Type[Boss] = CzarBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [VOLCANO_BRIDGE_BOSS_FILL]
@@ -1207,9 +1207,9 @@ class VolcanoBridgeBossFight(BossFightLocation):
 
 class VolcanoExitBossFight(BossFightLocation):
     _room_ids: List[int] = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
-    _name_enum: BossLocations = BossLocations.BarrelVolcanoEnd
-    _battlefield = Battlefields.AxemRangers
-    _music = BattleMusic.Boss2
+    _name_enum: BossLocations = BossLocations.BARREL_VOLCANO_END
+    _battlefield = Battlefields.AXEM_RANGERS
+    _music = BattleMusic.BOSS_2
     _world_area: LocationWorldArea = LocationWorldArea.BarrelVolcano
     _original_item: Type[Boss] = AxemRangersBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -1245,8 +1245,8 @@ class VolcanoExitBossFight(BossFightLocation):
 
 class ObstacleCourseFinalFight(BossFightLocation):
     _room_ids: List[int] = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
-    _name_enum: BossLocations = BossLocations.BowsersKeepObstacles
-    _battlefield = Battlefields.BowsersKeep
+    _name_enum: BossLocations = BossLocations.BOWSERS_KEEP_OBSTACLES
+    _battlefield = Battlefields.BOWSERS_KEEP
     _original_item: Type[Boss] = ChesterBoss
     _world_area: LocationWorldArea = LocationWorldArea.BowsersKeep
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -1259,9 +1259,9 @@ class ObstacleCourseFinalFight(BossFightLocation):
 
 class KeepAfterObstaclesBossFight(BossFightLocation):
     _room_ids: List[int] = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
-    _name_enum: BossLocations = BossLocations.BowsersKeepMidboss
-    _battlefield = Battlefields.BowsersKeep
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.BOWSERS_KEEP_MIDBOSS
+    _battlefield = Battlefields.BOWSERS_KEEP
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.BowsersKeep
     _original_item: Type[Boss] = KamekBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [
@@ -1281,9 +1281,9 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
 
 class KeepChandelierBossFight(BossFightLocation):
     _identifier: int = 521
-    _name_enum: BossLocations = BossLocations.BowsersKeepEnd1
-    _battlefield = Battlefields.Boomer
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.BOWSERS_KEEP_END_1
+    _battlefield = Battlefields.BOOMER
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.BowsersKeep
     _original_item: Type[Boss] = BoomerBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [KEEP_CHANDELIER_BOSS_FILL]
@@ -1294,9 +1294,9 @@ class KeepChandelierBossFight(BossFightLocation):
 
 class KeepFinalBossFight(BossFightLocation):
     _identifier: int = 522
-    _name_enum: BossLocations = BossLocations.BowsersKeepEnd2
-    _battlefield = Battlefields.BowsersKeep
-    _music = BattleMusic.Boss2
+    _name_enum: BossLocations = BossLocations.BOWSERS_KEEP_END_2
+    _battlefield = Battlefields.BOWSERS_KEEP
+    _music = BattleMusic.BOSS_2
     _world_area: LocationWorldArea = LocationWorldArea.BowsersKeep
     _original_item: Type[Boss] = ExorBoss
 
@@ -1306,9 +1306,9 @@ class KeepFinalBossFight(BossFightLocation):
 
 class FactoryEntranceBoss(BossFightLocation):
     _room_ids: List[int] = [R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM]
-    _name_enum: BossLocations = BossLocations.FactoryMidboss
-    _battlefield = Battlefields.Gate
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.FACTORY_MIDBOSS
+    _battlefield = Battlefields.GATE
+    _music = BattleMusic.BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.Factory
     _original_item: Type[Boss] = CountdownBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [FACTORY_CLOCK_BOSS_FILL]
@@ -1325,9 +1325,9 @@ class FactoryEntranceBoss(BossFightLocation):
 
 class FactoryTransitionBoss(BossFightLocation):
     _room_ids: List[int] = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
-    _name_enum: BossLocations = BossLocations.FactoryEnd
-    _battlefield = Battlefields.Gate
-    _music = BattleMusic.Boss1
+    _name_enum: BossLocations = BossLocations.FACTORY_END
+    _battlefield = Battlefields.GATE
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = CloakerDominoBoss
     _world_area: LocationWorldArea = LocationWorldArea.Factory
 
@@ -1337,8 +1337,8 @@ class FactoryTransitionBoss(BossFightLocation):
 
 class InnerFactoryFirstFight(BossFightLocation):
     _room_ids: List[int] = [R469_FACTORY_GROUNDS_AREA_01]
-    _name_enum: BossLocations = BossLocations.InnerFactory1
-    _battlefield = Battlefields.Factory
+    _name_enum: BossLocations = BossLocations.INNER_FACTORY_1
+    _battlefield = Battlefields.FACTORY
     _world_area: LocationWorldArea = LocationWorldArea.InnerFactory
     _original_item: Type[Boss] = ClerkBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [INNER_FACTORY_FIRST_BOSS_FILL]
@@ -1355,8 +1355,8 @@ class InnerFactoryFirstFight(BossFightLocation):
 
 class InnerFactorySecondFight(BossFightLocation):
     _room_ids: List[int] = [R471_FACTORY_GROUNDS_AREA_02]
-    _name_enum: BossLocations = BossLocations.InnerFactory2
-    _battlefield = Battlefields.Factory
+    _name_enum: BossLocations = BossLocations.INNER_FACTORY_2
+    _battlefield = Battlefields.FACTORY
     _world_area: LocationWorldArea = LocationWorldArea.InnerFactory
     _original_item: Type[Boss] = ManagerBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [INNER_FACTORY_SECOND_BOSS_FILL]
@@ -1374,8 +1374,8 @@ class InnerFactorySecondFight(BossFightLocation):
 
 class InnerFactoryThirdFight(BossFightLocation):
     _room_ids: List[int] = [R472_FACTORY_GROUNDS_AREA_03]
-    _name_enum: BossLocations = BossLocations.InnerFactory3
-    _battlefield = Battlefields.Factory
+    _name_enum: BossLocations = BossLocations.INNER_FACTORY_3
+    _battlefield = Battlefields.FACTORY
     _world_area: LocationWorldArea = LocationWorldArea.InnerFactory
     _original_item: Type[Boss] = DirectorBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [INNER_FACTORY_THIRD_BOSS_FILL]
@@ -1391,10 +1391,10 @@ class InnerFactoryThirdFight(BossFightLocation):
 
 class InnerFactoryFourthFight(BossFightLocation):
     _room_ids: List[int] = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
-    _name_enum: BossLocations = BossLocations.InnerFactory4
-    _battlefield = Battlefields.Factory
+    _name_enum: BossLocations = BossLocations.INNER_FACTORY_4
+    _battlefield = Battlefields.FACTORY
     _world_area: LocationWorldArea = LocationWorldArea.InnerFactory
-    _music = BattleMusic.Boss1
+    _music = BattleMusic.BOSS_1
     _original_item: Type[Boss] = GunyolkBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [INNER_FACTORY_FOURTH_BOSS_FILL]
     _overworld_unique_henchmen_npc_fills: List[list[UniqueHenchmanFill]] = [
@@ -1407,10 +1407,10 @@ class InnerFactoryFourthFight(BossFightLocation):
 
 class FinalBossFight(BossFightLocation):
     _room_ids: List[int] = [R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE]
-    _name_enum: BossLocations = BossLocations.InnerFactoryLair
-    _battlefield = Battlefields.Smithy
+    _name_enum: BossLocations = BossLocations.INNER_FACTORY_LAIR
+    _battlefield = Battlefields.SMITHY
     _world_area: LocationWorldArea = LocationWorldArea.InnerFactory
-    _music = BattleMusic.Smithy
+    _music = BattleMusic.SMITHY
     _original_item: Type[Boss] = SmithyBoss
     # hide all other parts of smithy if shuffled
     _overworld_boss_npc_fills: List[BossModelFill] = [FINAL_FACTORY_BOSS_FILL]

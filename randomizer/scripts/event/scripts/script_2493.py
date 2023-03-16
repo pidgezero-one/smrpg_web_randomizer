@@ -75,7 +75,7 @@ script = EventScript(
         ),
         JmpIfBitSet(RUN_AWAY, ["EVENT_2493_ret_25"]),
         DisableObjectTrigger(MEM_70A8),
-        DisableTriggerInLevel(),
+        DisableTriggerOfObjectAt70A8InCurrentLevel(),
         StopEmbeddedActionScript(MEM_70A8),
         SetAsyncActionScript(MEM_70A8, A0015_DO_NOTHING),
         SetVarToConst(PRIMARY_TEMP_7000, 514),
