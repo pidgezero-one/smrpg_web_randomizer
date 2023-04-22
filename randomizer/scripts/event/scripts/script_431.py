@@ -1,4 +1,6 @@
-# E0431_PIPE_VAULT_GOOMBA_THUMPIN_ENTRANCE_PIPE
+# pylint: disable=C0301
+
+"""E0431_PIPE_VAULT_GOOMBA_THUMPIN_ENTRANCE_PIPE"""
 
 from randomizer.scripts.event.script_imports import *
 

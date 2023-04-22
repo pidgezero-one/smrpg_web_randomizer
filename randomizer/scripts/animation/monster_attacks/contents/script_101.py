@@ -1,4 +1,4 @@
-# PhysicalAttack115
+"""PhysicalAttack115 animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

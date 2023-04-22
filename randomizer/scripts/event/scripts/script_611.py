@@ -1,4 +1,6 @@
-# E0611_MARRYMORE_INN_LOBBY_LOADER
+# pylint: disable=C0301
+
+"""E0611_MARRYMORE_INN_LOBBY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -128,7 +130,7 @@ script = EventScript(
         CopyVarToVar(from_var=TEMP_7026, to_var=PRIMARY_TEMP_7000),
         RunDialog(
             dialog_id=DI1003_THEY_TOOK_ALL_COINS,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=False,
             sync=True,
             multiline=True,
@@ -222,7 +224,7 @@ script = EventScript(
         Pause(60),
         RunDialog(
             dialog_id=DI2478_LOST_ALL_COINS_AND_FROG_COINS,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,

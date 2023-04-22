@@ -1,4 +1,4 @@
-# 125 - Crippo
+"""125 - Crippo"""
 
 from randomizer.scripts.monster.script_imports import *
 

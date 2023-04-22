@@ -1,4 +1,6 @@
-# E2813_MUSHROOM_WAY_3_SUMMON_SPINYS
+# pylint: disable=C0301
+
+"""E2813_MUSHROOM_WAY_3_SUMMON_SPINYS"""
 
 from randomizer.scripts.event.script_imports import *
 

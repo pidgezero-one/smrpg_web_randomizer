@@ -1,4 +1,6 @@
-# E3605_PIPE_VAULT_PIPE_TO_TRIPLE_CHEST_ROOM
+# pylint: disable=C0301
+
+"""E3605_PIPE_VAULT_PIPE_TO_TRIPLE_CHEST_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 

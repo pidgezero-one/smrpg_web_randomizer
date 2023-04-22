@@ -1,4 +1,6 @@
-# E0469_YOSTER_ISLE_BACKGROUND
+# pylint: disable=C0301
+
+"""E0469_YOSTER_ISLE_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,22 +19,40 @@ script = EventScript(
         ActionQueueAsync(target=NPC_9, subscript=[ASTransferToObjectXY(MARIO)]),
         SetSyncActionScript(NPC_9, A0505_SLOW_SEQUENCE_LOOP),
         Set7000ToPressedButton(identifier="EVENT_469_set_7000_to_pressed_button_7"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_7000_to_pressed_button_83"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_7000_to_pressed_button_87"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_7000_to_pressed_button_91"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_7000_to_pressed_button_95"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_61"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_67"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_64"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_58"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_action_queue_async_20"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_enable_controls_until_return_99"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_7000_to_pressed_button_83"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_7000_to_pressed_button_87"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_7000_to_pressed_button_91"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_7000_to_pressed_button_95"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_61"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_67"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_64"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_58"]
+        ),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_469_action_queue_async_20"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_enable_controls_until_return_99"]
+        ),
         Pause(1),
         Jmp(["EVENT_469_enable_controls_until_return_4"]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=ROSE_WAY_703E),
             ],
             identifier="EVENT_469_action_queue_async_20",
@@ -134,20 +154,36 @@ script = EventScript(
         SetAsyncActionScript(MARIO, A0237_RIDE_YOSHI),
         Jmp(["EVENT_469_set_7000_to_pressed_button_7"]),
         Set7000ToPressedButton(identifier="EVENT_469_set_7000_to_pressed_button_83"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_58"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_61"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_58"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_61"]
+        ),
         Jmp(["EVENT_469_set_action_script_sync_70"]),
         Set7000ToPressedButton(identifier="EVENT_469_set_7000_to_pressed_button_87"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_64"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_67"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_64"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_67"]
+        ),
         Jmp(["EVENT_469_set_action_script_sync_73"]),
         Set7000ToPressedButton(identifier="EVENT_469_set_7000_to_pressed_button_91"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_58"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_64"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_58"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_64"]
+        ),
         Jmp(["EVENT_469_set_bit_76"]),
         Set7000ToPressedButton(identifier="EVENT_469_set_7000_to_pressed_button_95"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_61"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_469_set_action_script_sync_67"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_61"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_469_set_action_script_sync_67"]
+        ),
         Jmp(["EVENT_469_set_action_script_sync_80"]),
         EnableControlsUntilReturn(
             [], identifier="EVENT_469_enable_controls_until_return_99"
@@ -158,12 +194,13 @@ script = EventScript(
             prefix=0xF1,
             subscript=[
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[2, 3]),
-                ASSet700CToObjectCoord(object=NPC_9, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=NPC_9, coord=COORD_F, pixel=True),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_7032),
                 ASJmpIf700CAnyBitsSet(
+                    bits=[],
                     destinations=[
                         "EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_equals_short_5"
-                    ]
+                    ],
                 ),
                 ASJmp(["EVENT_469_pause_102"]),
                 ASJmpIfVarEqualsConst(

@@ -1,4 +1,6 @@
-# E1717_BANDITS_WAY_4_MANAGE_DOG_COLLISION
+# pylint: disable=C0301
+
+"""E1717_BANDITS_WAY_4_MANAGE_DOG_COLLISION"""
 
 from randomizer.scripts.event.script_imports import *
 

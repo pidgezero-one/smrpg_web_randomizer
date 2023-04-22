@@ -1,4 +1,6 @@
-# E0616_MARRYMORE_INN_LOBBY_EXIT
+# pylint: disable=C0301
+
+"""E0616_MARRYMORE_INN_LOBBY_EXIT"""
 
 from randomizer.scripts.event.script_imports import *
 

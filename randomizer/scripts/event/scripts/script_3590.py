@@ -1,4 +1,6 @@
-# E3590_ROSE_TOWN_CHIMNEY
+# pylint: disable=C0301
+
+"""E3590_ROSE_TOWN_CHIMNEY"""
 
 from randomizer.scripts.event.script_imports import *
 

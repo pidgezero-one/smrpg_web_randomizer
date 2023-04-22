@@ -1,4 +1,4 @@
-# 82 - LilBoo
+"""82 - LilBoo"""
 
 from randomizer.scripts.monster.script_imports import *
 

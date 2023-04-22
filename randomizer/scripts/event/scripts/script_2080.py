@@ -1,4 +1,6 @@
-# E2080_MUSTY_FEARS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2080_MUSTY_FEARS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,8 +21,8 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
-                ASShiftNorthwestPixels(4),
-                ASShiftNorthPixels(9),
+                ASWalkNorthwestPixels(4),
+                ASWalkNorthPixels(9),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
             ],

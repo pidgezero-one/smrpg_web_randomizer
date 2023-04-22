@@ -1,4 +1,6 @@
-# E1328_TOWER_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E1328_TOWER_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
-                ASShiftSoutheastPixels(2),
+                ASWalkSoutheastPixels(2),
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
                 ASClearSolidityBits(cant_pass_walls=True),
@@ -19,7 +21,7 @@ script = EventScript(
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
         ),
-        ActionQueueAsync(target=NPC_5, subscript=[ASShiftNortheastPixels(8)]),
+        ActionQueueAsync(target=NPC_5, subscript=[ASWalkNortheastPixels(8)]),
         Jmp(["EVENT_1328_fade_in_from_black_async_4_"]),
         RemoveObjectFromCurrentLevel(
             NPC_1, identifier="EVENT_1328_remove_from_current_level_3_"

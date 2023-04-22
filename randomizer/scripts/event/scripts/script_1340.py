@@ -1,4 +1,6 @@
-# E1340_PORTRAIT_GAME_ROOM_LOCKED_DOOR
+# pylint: disable=C0301
+
+"""E1340_PORTRAIT_GAME_ROOM_LOCKED_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,7 +10,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1340_apply_tile_mod_5"]),
         RunDialog(
             dialog_id=DI1945_NEED_ELDER_KEY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,

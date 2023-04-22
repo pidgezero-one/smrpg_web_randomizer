@@ -1,4 +1,4 @@
-# 194 - Bundt
+"""194 - Bundt"""
 
 from randomizer.scripts.monster.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3859_WORLD_MAP_SEA
+# pylint: disable=C0301
+
+"""E3859_WORLD_MAP_SEA"""
 
 from randomizer.scripts.event.script_imports import *
 

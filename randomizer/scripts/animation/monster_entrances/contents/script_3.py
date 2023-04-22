@@ -1,4 +1,4 @@
-# ENT0003_HOP_3_TIMES
+"""ENT0003_HOP_3_TIMES animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

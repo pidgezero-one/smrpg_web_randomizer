@@ -1,8 +1,7 @@
-# E3309_SHIP_SPAWN_HIDDEN_CHEST
+# pylint: disable=C0301
+
+"""E3309_SHIP_SPAWN_HIDDEN_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	SetBit(TEMP_7044_5),
-	Return()
-])
+script = EventScript([SetBit(TEMP_7044_5), Return()])

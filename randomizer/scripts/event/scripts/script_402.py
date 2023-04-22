@@ -1,4 +1,6 @@
-# E0402_SHYSTER_HARASSING_EASTERN_GUARD
+# pylint: disable=C0301
+
+"""E0402_SHYSTER_HARASSING_EASTERN_GUARD"""
 
 from randomizer.scripts.event.script_imports import *
 

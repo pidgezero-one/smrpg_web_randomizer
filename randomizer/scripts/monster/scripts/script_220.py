@@ -1,4 +1,4 @@
-# 220 - CzarDragon
+"""220 - CzarDragon"""
 
 from randomizer.scripts.monster.script_imports import *
 

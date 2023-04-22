@@ -1,4 +1,6 @@
-# E2342_TOWER_SEESAW_CHEST_CONTD
+# pylint: disable=C0301
+
+"""E2342_TOWER_SEESAW_CHEST_CONTD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -177,7 +179,7 @@ script = EventScript(
         ActionQueueSync(target=NPC_1, subscript=[ASShiftZUpPixels(12)]),
         Pause(1),
         SetAsyncActionScript(NPC_4, A0739_TOWER_SEESAW_CHEST_ITEM),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_2342_freeze_camera_58"]),
         ClearBit(TEMP_7043_0),
         Return(),

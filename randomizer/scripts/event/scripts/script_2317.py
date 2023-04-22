@@ -1,4 +1,6 @@
-# E2317_GARDENER_CLOUD_LOADER
+# pylint: disable=C0301
+
+"""E2317_GARDENER_CLOUD_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,8 +12,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkToXYCoords(x=0, y=76),
-                ASShiftNorthPixels(8),
-                ASShiftEastPixels(17),
+                ASWalkNorthPixels(8),
+                ASWalkEastPixels(17),
             ],
         ),
         ActionQueueSync(
@@ -37,7 +39,7 @@ script = EventScript(
             subscript=[
                 ASSetPriority(2),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-                ASShiftWestPixels(5),
+                ASWalkWestPixels(5),
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -66,7 +68,7 @@ script = EventScript(
                 ),
                 ASFaceNorthwest(),
                 ASJumpToHeight(160),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASOverwriteSolidity(
                     cant_pass_walls=True,
                     bit_4=True,
@@ -74,7 +76,7 @@ script = EventScript(
                     cant_walk_through=True,
                     bit_7=True,
                 ),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
             ],
         ),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

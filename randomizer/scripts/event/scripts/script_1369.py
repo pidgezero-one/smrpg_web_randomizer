@@ -1,4 +1,6 @@
-# E1369_CURTAIN_GAME_SUCCESS_FAILURE_FIGHT_BOSS
+# pylint: disable=C0301
+
+"""E1369_CURTAIN_GAME_SUCCESS_FAILURE_FIGHT_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,7 +18,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetAllSpeeds(NORMAL),
                 ASTransferToXYZF(x=3, y=23, z=0, direction=EAST),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceNortheast(),
             ],
             identifier="EVENT_1369_action_queue_sync_5",
@@ -26,7 +28,7 @@ script = EventScript(
             subscript=[
                 ASSetAllSpeeds(FAST),
                 ASTransferToXYZF(x=4, y=21, z=0, direction=EAST),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
             ],
         ),
@@ -37,7 +39,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetAllSpeeds(FAST),
                 ASTransferToXYZF(x=5, y=20, z=0, direction=EAST),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
             ],
         ),
@@ -48,7 +50,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetAllSpeeds(FAST),
                 ASTransferToXYZF(x=5, y=19, z=0, direction=EAST),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
             ],
         ),
@@ -59,7 +61,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetAllSpeeds(FAST),
                 ASTransferToXYZF(x=6, y=18, z=0, direction=EAST),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
             ],
         ),
@@ -71,10 +73,10 @@ script = EventScript(
         ),
         SetBit(TOWER_BOSS_1_DEFEATED),
         FadeInFromBlack(sync=False),
-        ActionQueueSync(target=NPC_0, subscript=[ASShiftSouthwestSteps(4)]),
-        ActionQueueSync(target=NPC_1, subscript=[ASShiftSouthwestSteps(4)]),
-        ActionQueueSync(target=NPC_2, subscript=[ASShiftSouthwestSteps(4)]),
-        ActionQueueSync(target=NPC_3, subscript=[ASShiftSouthwestSteps(4)]),
+        ActionQueueSync(target=NPC_0, subscript=[ASWalkSouthwestSteps(4)]),
+        ActionQueueSync(target=NPC_1, subscript=[ASWalkSouthwestSteps(4)]),
+        ActionQueueSync(target=NPC_2, subscript=[ASWalkSouthwestSteps(4)]),
+        ActionQueueSync(target=NPC_3, subscript=[ASWalkSouthwestSteps(4)]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -82,7 +84,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(96),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASSetPriority(2),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASSetWalkingSpeed(NORMAL),
@@ -90,16 +92,16 @@ script = EventScript(
             ],
         ),
         ActionQueueSync(
-            target=NPC_0, subscript=[ASShiftSouthwestSteps(1), ASVisibilityOff()]
+            target=NPC_0, subscript=[ASWalkSouthwestSteps(1), ASVisibilityOff()]
         ),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASShiftSouthwestSteps(2), ASVisibilityOff()]
+            target=NPC_1, subscript=[ASWalkSouthwestSteps(2), ASVisibilityOff()]
         ),
         ActionQueueSync(
-            target=NPC_2, subscript=[ASShiftSouthwestSteps(3), ASVisibilityOff()]
+            target=NPC_2, subscript=[ASWalkSouthwestSteps(3), ASVisibilityOff()]
         ),
         ActionQueueAsync(
-            target=NPC_3, subscript=[ASShiftSouthwestSteps(4), ASVisibilityOff()]
+            target=NPC_3, subscript=[ASWalkSouthwestSteps(4), ASVisibilityOff()]
         ),
         RemoveObjectFromCurrentLevel(NPC_0),
         RemoveObjectFromCurrentLevel(NPC_1),

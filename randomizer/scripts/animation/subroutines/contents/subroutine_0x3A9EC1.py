@@ -1,4 +1,6 @@
-# referenced by battle_events BE0079_MAGIKOOPA_SUMMONS_MONSTER
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0079_MAGIKOOPA_SUMMONS_MONSTER"""
 
 from randomizer.scripts.animation.script_imports import *
 

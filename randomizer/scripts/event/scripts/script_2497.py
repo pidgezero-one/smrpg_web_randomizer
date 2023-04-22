@@ -1,4 +1,6 @@
-# E2497_ADDITIONAL_GATING_LOGIC_START_PLAYING
+# pylint: disable=C0301
+
+"""E2497_ADDITIONAL_GATING_LOGIC_START_PLAYING"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,7 +12,7 @@ script = EventScript(
             subscript=[
                 ASFloatingOff(),
                 ASTransferToXYZF(x=3, y=9, z=3, direction=EAST),
-                ASShiftSouthwestPixels(6),
+                ASWalkSouthwestPixels(6),
                 ASShiftZUpPixels(2),
                 ASFaceSoutheast(),
                 ASSetSpriteSequence(
@@ -22,11 +24,11 @@ script = EventScript(
         SetSyncActionScript(MARIO, A0095_PLAYER_GAME_START),
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASSetWalkingSpeed(VERY_FAST), ASShiftSouthwestPixels(2)],
+            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkSouthwestPixels(2)],
         ),
         ActionQueueAsync(
             target=NPC_2,
-            subscript=[ASSetWalkingSpeed(VERY_FAST), ASShiftNorthPixels(4)],
+            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkNorthPixels(4)],
         ),
         FadeInFromBlack(sync=False),
         RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
@@ -56,7 +58,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(69),
                 ASFloatingOn(),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASPause(35),
                 ASPlaySound(sound=SO056_SHAKE_HEAD, channel=6),
                 ASSetSequenceSpeed(VERY_FAST),

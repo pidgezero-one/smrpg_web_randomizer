@@ -1,4 +1,6 @@
-# E3807_ENDING_CREDITS_RACE_LOADER
+# pylint: disable=C0301
+
+"""E3807_ENDING_CREDITS_RACE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

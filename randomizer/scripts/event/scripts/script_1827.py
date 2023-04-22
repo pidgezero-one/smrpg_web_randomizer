@@ -1,4 +1,6 @@
-# E1827_KEEP_LINEAR_PLATFORM_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1827_KEEP_LINEAR_PLATFORM_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

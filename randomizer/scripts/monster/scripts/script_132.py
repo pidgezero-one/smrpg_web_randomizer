@@ -1,4 +1,4 @@
-# 68 - PoundetteHenchman
+"""68 - PoundetteHenchman"""
 
 from randomizer.scripts.monster.script_imports import *
 

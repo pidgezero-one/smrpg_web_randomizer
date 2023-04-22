@@ -1,4 +1,6 @@
-# E2079_MONSTRO_TOWN_EXTERIOR_LOADER_FROM_SAVE_BOX
+# pylint: disable=C0301
+
+"""E2079_MONSTRO_TOWN_EXTERIOR_LOADER_FROM_SAVE_BOX"""
 
 from randomizer.scripts.event.script_imports import *
 

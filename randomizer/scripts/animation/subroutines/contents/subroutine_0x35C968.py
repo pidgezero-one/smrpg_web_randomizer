@@ -1,4 +1,6 @@
-# referenced by items RottenMush, items RockCandy, items AbleJuice, items 79, items MysteryEgg, items Energizer, items Bracer, items Elixir, items BadMushroom, items MaxMushroom, items PureWater, items Mushroom, items RedEssence, items Megalixir, items YoshiAde, items FroggieDrink, items IceBomb, items MukuCookie, items RoyalSyrup, items MidMushroom, items MapleSyrup, items WiltShroom, items HoneySyrup, items SleepyBomb, items FireBomb, items KerokeroCola, items PickMeUp
+# pylint: disable=C0301,C0103
+
+"""referenced by items RottenMush, items RockCandy, items AbleJuice, items 79, items MysteryEgg, items Energizer, items Bracer, items Elixir, items BadMushroom, items MaxMushroom, items PureWater, items Mushroom, items RedEssence, items Megalixir, items YoshiAde, items FroggieDrink, items IceBomb, items MukuCookie, items RoyalSyrup, items MidMushroom, items MapleSyrup, items WiltShroom, items HoneySyrup, items SleepyBomb, items FireBomb, items KerokeroCola, items PickMeUp"""
 
 from randomizer.scripts.animation.script_imports import *
 

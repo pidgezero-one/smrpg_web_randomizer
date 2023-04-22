@@ -1,4 +1,6 @@
-# E2635_CASINO_DOORWAY_LOADER
+# pylint: disable=C0301
+
+"""E2635_CASINO_DOORWAY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -24,14 +26,14 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftNorthwestPixels(8)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkNorthwestPixels(8)],
         ),
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftSoutheastPixels(8)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSoutheastPixels(8)],
         ),
         ActionQueueAsync(
-            target=MARIO, subscript=[ASShiftSouthPixels(8), ASFaceSouthwest()]
+            target=MARIO, subscript=[ASWalkSouthPixels(8), ASFaceSouthwest()]
         ),
         FadeInFromBlack(sync=False, identifier="EVENT_2635_fade_in_from_black_async_7"),
         Return(),

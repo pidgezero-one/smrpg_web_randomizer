@@ -1,4 +1,6 @@
-# E1848_CANNONBALL_ROOM_BOMB_2
+# pylint: disable=C0301
+
+"""E1848_CANNONBALL_ROOM_BOMB_2"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,7 +21,7 @@ script = EventScript(
         Pause(1, identifier="EVENT_1848_pause_5"),
         CreatePacketAtObjectCoords(
             packet=P024_REGULAR_SOUND_EXPLOSION,
-            object=NPC_2,
+            target_npc=NPC_2,
             destinations=["EVENT_1848_pause_5"],
         ),
         PlaySound(sound=SO060_DYNAMITE_BOMB_EXPLOSION, channel=6),

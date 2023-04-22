@@ -1,4 +1,6 @@
-# E2316_GARDENER_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E2316_GARDENER_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,8 +19,8 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetPriority(3),
-                ASShiftEastPixels(5),
-                ASShiftSouthPixels(3),
+                ASWalkEastPixels(5),
+                ASWalkSouthPixels(3),
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -42,7 +44,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=7, sprite_offset=6, is_sequence=True, looping=True
                 ),
-                ASShiftWestPixels(4),
+                ASWalkWestPixels(4),
                 ASShiftZUpSteps(2),
                 ASSetWalkingSpeed(NORMAL),
                 ASDb(bytearray(b" \x01")),
@@ -72,8 +74,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkToXYCoords(x=0, y=76),
-                ASShiftNorthPixels(8),
-                ASShiftEastPixels(17),
+                ASWalkNorthPixels(8),
+                ASWalkEastPixels(17),
             ],
         ),
         ActionQueueSync(
@@ -84,7 +86,7 @@ script = EventScript(
                 ASOverwriteSolidity(),
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftZDownSteps(8),
-                ASShiftWestPixels(12),
+                ASWalkWestPixels(12),
                 ASSetSpriteSequence(
                     index=7, sprite_offset=6, is_sequence=True, looping=True
                 ),
@@ -96,7 +98,7 @@ script = EventScript(
             subscript=[
                 ASSetPriority(2),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-                ASShiftWestPixels(5),
+                ASWalkWestPixels(5),
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -124,7 +126,7 @@ script = EventScript(
                 ),
                 ASFaceNortheast(),
                 ASJumpToHeight(160),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASOverwriteSolidity(
                     cant_pass_walls=True,
                     bit_4=True,
@@ -132,7 +134,7 @@ script = EventScript(
                     cant_walk_through=True,
                     bit_7=True,
                 ),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
             ],
         ),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

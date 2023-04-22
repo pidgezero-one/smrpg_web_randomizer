@@ -1,4 +1,6 @@
-# E1713_BANDITS_WAY_3_LOADER
+# pylint: disable=C0301
+
+"""E1713_BANDITS_WAY_3_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

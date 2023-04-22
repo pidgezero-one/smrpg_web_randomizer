@@ -1,4 +1,6 @@
-# E3298_SEA_REVERSE_WHIRLPOOL_TO_LONE_CHEST
+# pylint: disable=C0301
+
+"""E3298_SEA_REVERSE_WHIRLPOOL_TO_LONE_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1650_MOLEVILLE_LIBERATED_EXTERIOR_LOADER_CONTD
+# pylint: disable=C0301
+
+"""E1650_MOLEVILLE_LIBERATED_EXTERIOR_LOADER_CONTD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -53,26 +55,26 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASStartLoopNTimes(5),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(8),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(8),
                 ASEndLoop(),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
                 ASSetWalkingSpeed(FASTER),
-                ASShiftSouthPixels(3),
+                ASWalkSouthPixels(3),
                 ASStartLoopNTimes(8),
-                ASShiftNorthPixels(6),
-                ASShiftSouthPixels(6),
+                ASWalkNorthPixels(6),
+                ASWalkSouthPixels(6),
                 ASEndLoop(),
-                ASShiftNorthPixels(3),
+                ASWalkNorthPixels(3),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthPixels(2),
+                ASWalkSouthPixels(2),
                 ASStartLoopNTimes(10),
-                ASShiftNorthPixels(4),
-                ASShiftSouthPixels(4),
+                ASWalkNorthPixels(4),
+                ASWalkSouthPixels(4),
                 ASEndLoop(),
-                ASShiftNorthPixels(2),
+                ASWalkNorthPixels(2),
             ],
         ),
         ActionQueueSync(
@@ -92,7 +94,7 @@ script = EventScript(
                 ),
                 ASJumpToHeight(104),
                 ASSetAllSpeeds(NORMAL),
-                ASShiftSouthwestSteps(5),
+                ASWalkSouthwestSteps(5),
                 ASVisibilityOff(),
             ],
         ),
@@ -154,7 +156,7 @@ script = EventScript(
                     NPC_2, ["EVENT_1650_action_queue_sync_18_SUBSCRIPT_pause_12"]
                 ),
                 ASJumpToHeight(125),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASPause(
                     1, identifier="EVENT_1650_action_queue_sync_18_SUBSCRIPT_pause_16"
                 ),
@@ -162,7 +164,7 @@ script = EventScript(
                     NPC_2, ["EVENT_1650_action_queue_sync_18_SUBSCRIPT_pause_16"]
                 ),
                 ASJumpToHeight(116),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASClearSolidityBits(cant_pass_walls=True),
             ],
         ),
@@ -193,7 +195,7 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetAllSpeeds(NORMAL),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(SLOW),
                 ASSequenceLoopingOn(),
@@ -206,7 +208,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASFaceNortheast(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(SLOW),
@@ -223,7 +225,7 @@ script = EventScript(
                 ),
                 ASFixedFCoordOn(),
                 ASSetAllSpeeds(FAST),
-                ASShiftEastSteps(2),
+                ASWalkEastSteps(2),
                 ASFixedFCoordOff(),
                 ASWalk1StepSoutheast(),
                 ASSetWalkingSpeed(NORMAL),

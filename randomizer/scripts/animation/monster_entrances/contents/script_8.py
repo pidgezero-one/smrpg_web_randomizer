@@ -1,4 +1,4 @@
-# ENT0008_HOVER_IN
+"""ENT0008_HOVER_IN animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

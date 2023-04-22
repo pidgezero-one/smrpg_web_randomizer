@@ -1,4 +1,6 @@
-# E3094_STAR_PIECE_CHEST_ANIMATION
+# pylint: disable=C0301
+
+"""E3094_STAR_PIECE_CHEST_ANIMATION"""
 
 from randomizer.scripts.event.script_imports import *
 

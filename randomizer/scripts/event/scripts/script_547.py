@@ -1,10 +1,14 @@
-# E0547_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_1
+# pylint: disable=C0301
+
+"""E0547_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_1"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
-	JmpIfBitSet(TEMP_7044_6, ["EVENT_256_ret_0"]),
-	SetBit(TEMP_7044_6),
-	Return()
-])
+script = EventScript(
+    [
+        EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
+        JmpIfBitSet(TEMP_7044_6, ["EVENT_256_ret_0"]),
+        SetBit(TEMP_7044_6),
+        Return(),
+    ]
+)

@@ -1,4 +1,6 @@
-# E2050_MONSTRO_THWOMP
+# pylint: disable=C0301
+
+"""E2050_MONSTRO_THWOMP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -45,12 +47,12 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(22),
-                ASShiftNorthPixels(22),
-                ASShiftSouthPixels(14),
-                ASShiftNorthPixels(14),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(8),
+                ASWalkSouthPixels(22),
+                ASWalkNorthPixels(22),
+                ASWalkSouthPixels(14),
+                ASWalkNorthPixels(14),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(8),
             ],
         ),
         JmpIfVarEqualsConst(MONSTRO_THWOMP_COUNTER, 7, ["EVENT_2050_run_dialog_20"]),

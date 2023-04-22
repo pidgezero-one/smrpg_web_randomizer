@@ -1,4 +1,6 @@
-# E3660_NIMBUS_REPOPULATE_CASTLE_UPON_LIBERATION
+# pylint: disable=C0301
+
+"""E3660_NIMBUS_REPOPULATE_CASTLE_UPON_LIBERATION"""
 
 from randomizer.scripts.event.script_imports import *
 

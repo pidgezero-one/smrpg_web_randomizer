@@ -1,4 +1,6 @@
-# E3811_NIMBUS_INNER_CELLAR_LOADER
+# pylint: disable=C0301
+
+"""E3811_NIMBUS_INNER_CELLAR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

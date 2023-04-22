@@ -1,4 +1,6 @@
-# E1816_TROOPA_CLIFF_FINISH
+# pylint: disable=C0301
+
+"""E1816_TROOPA_CLIFF_FINISH"""
 
 from randomizer.scripts.event.script_imports import *
 

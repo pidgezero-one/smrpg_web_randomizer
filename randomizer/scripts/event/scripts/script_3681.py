@@ -1,4 +1,6 @@
-# E3681_BIRDY_BECOMES_PLATFORM
+# pylint: disable=C0301
+
+"""E3681_BIRDY_BECOMES_PLATFORM"""
 
 from randomizer.scripts.event.script_imports import *
 

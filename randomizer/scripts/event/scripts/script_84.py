@@ -1,4 +1,6 @@
-# E0084_THREE_MUSTY_FEARS_BONES_DIALOG
+# pylint: disable=C0301
+
+"""E0084_THREE_MUSTY_FEARS_BONES_DIALOG"""
 
 from randomizer.scripts.event.script_imports import *
 

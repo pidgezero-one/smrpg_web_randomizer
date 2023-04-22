@@ -1,4 +1,6 @@
-# E2525_STAR_HILL_2ND_ROOM_USE_DOOR
+# pylint: disable=C0301
+
+"""E2525_STAR_HILL_2ND_ROOM_USE_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 

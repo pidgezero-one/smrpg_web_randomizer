@@ -1,4 +1,6 @@
-# E1148_FROG_SHOP
+# pylint: disable=C0301
+
+"""E1148_FROG_SHOP"""
 
 from randomizer.scripts.event.script_imports import *
 

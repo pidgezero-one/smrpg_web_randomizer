@@ -1,4 +1,6 @@
-# E0080_SAVE_BLOCK_SUBROUTINE
+# pylint: disable=C0301
+
+"""E0080_SAVE_BLOCK_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 

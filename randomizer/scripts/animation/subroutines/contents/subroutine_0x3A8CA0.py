@@ -1,4 +1,6 @@
-# referenced by
+# pylint: disable=C0301,C0103
+
+"""referenced by"""
 
 from randomizer.scripts.animation.script_imports import *
 

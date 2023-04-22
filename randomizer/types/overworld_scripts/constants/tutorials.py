@@ -1,4 +1,6 @@
-from .classes import Tutorial
+"""Int subclass instances representing IDs for some predefined in-game tutorial modes."""
+
+from randomizer.types.overworld_scripts.constants.classes import Tutorial
 
 TU00_HOW_TO_EQUIP = Tutorial(0)
 TU01_HOW_TO_USE_ITEMS = Tutorial(1)

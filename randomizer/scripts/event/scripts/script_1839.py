@@ -1,4 +1,6 @@
-# E1839_UNKNOWN
+# pylint: disable=C0301
+
+"""E1839_UNKNOWN"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,9 +14,9 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNorthPixels(4),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(4),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -34,27 +36,27 @@ script = EventScript(
                 ASWalk1StepNortheast(),
                 ASShiftZUpSteps(2),
                 ASShiftZDownSteps(4),
-                ASShiftNortheastSteps(4),
+                ASWalkNortheastSteps(4),
                 ASShiftZUpSteps(7),
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftZDownSteps(8),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSoutheastSteps(6),
+                ASWalkSoutheastSteps(6),
                 ASShiftZUpSteps(3),
-                ASShiftSouthwestSteps(6),
-                ASShiftNortheastSteps(10),
+                ASWalkSouthwestSteps(6),
+                ASWalkNortheastSteps(10),
                 ASShiftZUpSteps(4),
                 ASShiftZDownSteps(4),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASShiftZDownSteps(4),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASShiftZUpSteps(2),
                 ASPlaySound(sound=SO113_OPEN_CHAMBER_DOOR, channel=4),
                 ASPause(30),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftNorthwestSteps(6),
+                ASWalkNorthwestSteps(6),
                 ASShiftZDownSteps(2),
-                ASShiftSouthwestSteps(9),
+                ASWalkSouthwestSteps(9),
                 ASShiftZUpSteps(4),
                 ASPlaySound(sound=SO113_OPEN_CHAMBER_DOOR, channel=4),
                 ASPause(60),

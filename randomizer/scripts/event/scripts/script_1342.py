@@ -1,4 +1,6 @@
-# E1342_ELDER_KEY_PRIZE_GRANTER
+# pylint: disable=C0301
+
+"""E1342_ELDER_KEY_PRIZE_GRANTER"""
 
 from randomizer.scripts.event.script_imports import *
 

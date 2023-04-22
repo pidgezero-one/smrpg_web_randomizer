@@ -1,4 +1,6 @@
-# referenced by ally_spells Crusher
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Crusher"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -33,7 +35,7 @@ script = SubroutineOrBanklessScript(
         ScreenFlash(WHITE, 8),
         SetAMEM16BitToAMEM(amem=0x68, source_amem=0x8A),
         Db(bytearray(b"\xc5")),
-        Layer3On(property=TRANSPARENCY_OFF, bit_0=True, bpp4=True),
+        Layer3On(prop=TRANSPARENCY_OFF, bit_0=True, bpp4=True),
         ShakeScreen(amount=1, speed=224),
         PlaySound(sound=S0095_BOWSERS_CRUSHER),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
@@ -50,9 +52,9 @@ script = SubroutineOrBanklessScript(
         EndTrackingAllyButtonInputs(identifier="command_0x35b0a6"),
         FadeOutObject(duration=1),
         ScreenFlash(NO_COLOUR, 8),
-        Layer3On(property=OVERLAP_ALL, bpp4=True, set_invisible=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True, invisible=True),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         StopShakingObject(),
         Pause2Frames(),
         ClearEffectIndex(),

@@ -1,5 +1,6 @@
+"""Enums supporting development surrounding spells."""
+
 from enum import IntEnum, Enum
-from typing import TypeVar
 from randomizer.types.numbers.classes import UInt4, UInt8
 
 ELEMENT_NAME_NONE = "No Element"
@@ -19,6 +20,11 @@ STATUS_NAME_INVINCIBLE = "Invincible"
 
 
 class DescribableAttribute:
+    """Base class for attributes like statuses or elements
+    that may be assembled differently depending on what
+    is using them. Different characters for equips vs.
+    Psychopath messages, etc."""
+
     _name: str
     _stat_value: UInt4
     _spell_value: UInt8
@@ -27,22 +33,28 @@ class DescribableAttribute:
 
     @property
     def name(self) -> str:
+        """The name of this attribute."""
         return self._name
 
     @property
     def stat_value(self) -> UInt4:
+        """The value or ID of this attribute when used in equipment,
+        character, or monster stats."""
         return self._stat_value
 
     @property
     def spell_value(self) -> UInt8:
+        """The value or ID of this attribute when used in spells."""
         return self._spell_value
 
     @property
     def stat_char(self) -> str:
+        """The ascii value of this character when used in equip descriptions."""
         return self._stat_char
 
     @property
     def dialog_char(self) -> str:
+        """The ascii value of this character when used in Psychopath text."""
         return self._dialog_char
 
     def __init__(
@@ -60,10 +72,9 @@ class DescribableAttribute:
         self._dialog_char = dialog_char
 
 
-TDescAttrEnum = TypeVar("TDescAttrEnum", bound=DescribableAttribute)
-
-
 class Element(DescribableAttribute, Enum):
+    """Enum of elements."""
+
     NONE = DescribableAttribute(ELEMENT_NAME_NONE, 0, 0, "", "")
     ICE = DescribableAttribute(ELEMENT_NAME_ICE, 4, 0x10, "\x81", "\x7D")
     THUNDER = DescribableAttribute(ELEMENT_NAME_THUNDER, 5, 0x20, "\x82", "\x7F")
@@ -72,6 +83,8 @@ class Element(DescribableAttribute, Enum):
 
 
 class Status(DescribableAttribute, Enum):
+    """Enum of status effects."""
+
     MUTE = DescribableAttribute(STATUS_NAME_MUTE, 0, 0, "\x83", "\x82")
     SLEEP = DescribableAttribute(STATUS_NAME_SLEEP, 1, 1, "\x84", "\x80")
     POISON = DescribableAttribute(STATUS_NAME_POISON, 2, 2, "\x85", "\x83")
@@ -83,16 +96,22 @@ class Status(DescribableAttribute, Enum):
 
 
 class SpellType(IntEnum):
+    """Enum of damage vs. heal spell types."""
+
     DAMAGE = 0
     HEAL = 1
 
 
 class EffectType(IntEnum):
+    """Enum of influct vs. nullify spell effect types."""
+
     INFLICT = 2
     NULLIFY = 4
 
 
 class InflictFunction(IntEnum):
+    """Enum of additional miscellaneous spell effects upon inflict."""
+
     SCAN = 0
     MISS = 1
     NO_DMG = 2
@@ -100,7 +119,9 @@ class InflictFunction(IntEnum):
     INC_JUMP = 4
 
 
-class SpellBoosts(IntEnum):
+class TempStatBuff(IntEnum):
+    """Enumeration for in-battle temporary buffs applies to offensive and defensive stats."""
+
     MAGIC_ATTACK = 3
     ATTACK = 4
     MAGIC_DEFENSE = 5

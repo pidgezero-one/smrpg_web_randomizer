@@ -1,4 +1,6 @@
-# referenced by monster_spells Storm, monster_attacks Echofinder
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells Storm, monster_attacks Echofinder"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -33,11 +35,11 @@ script = SubroutineOrBanklessScript(
         ),
         NewEffectObject(effect=EF0067_STORM, looping_on=True),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         RunSubroutine(["command_0x35336f"]),
         Pause2Frames(),
         ClearEffectIndex(),

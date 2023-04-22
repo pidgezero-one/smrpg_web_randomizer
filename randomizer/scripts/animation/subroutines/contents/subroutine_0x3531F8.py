@@ -1,4 +1,6 @@
-# referenced by behaviour_24_0x350A9C, behaviour_8_0x3507A2, monster_attacks Backfire, monster_spells Escape, behaviour_32_0x350C14, behaviour_23_0x350A55, behaviour_9_0x3507E9, monster_spells LightBeam, behaviour_35_0x350CDC, behaviour_17_0x35096F, monster_attacks DarkClaw, behaviour_33_0x350C5B, behaviour_16_0x350928, behaviour_25_0x350ABD, monster_spells LightningOrb, behaviour_10_0x350830, monster_attacks Endobubble, monster_attacks LullaBye, behaviour_44_0x350E4A
+# pylint: disable=C0301,C0103
+
+"""referenced by behaviour_24_0x350A9C, behaviour_8_0x3507A2, monster_attacks Backfire, monster_spells Escape, behaviour_32_0x350C14, behaviour_23_0x350A55, behaviour_9_0x3507E9, monster_spells LightBeam, behaviour_35_0x350CDC, behaviour_17_0x35096F, monster_attacks DarkClaw, behaviour_33_0x350C5B, behaviour_16_0x350928, behaviour_25_0x350ABD, monster_spells LightningOrb, behaviour_10_0x350830, monster_attacks Endobubble, monster_attacks LullaBye, behaviour_44_0x350E4A"""
 
 from randomizer.scripts.animation.script_imports import *
 

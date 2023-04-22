@@ -1,4 +1,6 @@
-# E3363_KEEP_BALL_SOLITAIRE_KICK_BALL
+# pylint: disable=C0301
+
+"""E3363_KEEP_BALL_SOLITAIRE_KICK_BALL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,15 +9,19 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=ROSE_WAY_7038),
             ],
         ),
         CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 65515),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3363_jmp_if_7000_any_bits_set_12"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3363_jmp_if_var_equals_const_9"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3363_jmp_if_7000_any_bits_set_12"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3363_jmp_if_var_equals_const_9"]
+        ),
         JmpIfVarEqualsConst(
             ROSE_WAY_7038, 7, ["EVENT_3363_set_7000_to_7000_short_mem_19"]
         ),
@@ -34,6 +40,7 @@ script = EventScript(
         ),
         Jmp(["EVENT_3363_play_sound_153"]),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3363_jmp_if_var_equals_const_16"],
             identifier="EVENT_3363_jmp_if_7000_any_bits_set_12",
         ),
@@ -169,7 +176,9 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[
-                ASSet700CToObjectCoord(object=DUMMY_0X07, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(
+                    target_npc=DUMMY_0X07, coord=COORD_F, pixel=True
+                ),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     7,
@@ -241,10 +250,10 @@ script = EventScript(
                 ASPlaySound(sound=SO066_KICK_BALL_SHELL, channel=4),
                 ASJumpToHeight(height=124, silent=True),
                 ASSetSolidityBits(cant_pass_npcs=True, bit_7=True),
-                ASShiftFDirectionSteps(2),
+                ASWalkFDirectionSteps(2),
                 ASSetBit(TEMP_7043_1),
                 ASJumpToHeight(height=120, silent=True),
-                ASShiftFDirectionSteps(2),
+                ASWalkFDirectionSteps(2),
                 ASSetBit(TEMP_7043_2),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\x99")),
@@ -307,8 +316,10 @@ script = EventScript(
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         JmpIfObjectInCurrentLevel(MEM_70A9, ["EVENT_3363_inc_short_149"]),
         CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3363_jmp_if_7000_any_bits_set_113"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3363_jmp_to_subroutine_110"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3363_jmp_if_7000_any_bits_set_113"]
+        ),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_3363_jmp_to_subroutine_110"]),
         JmpToSubroutine(["EVENT_3363_set_7000_to_7000_short_mem_120"]),
         JmpToSubroutine(["EVENT_3363_set_7000_to_7000_short_mem_126"]),
         Jmp(["EVENT_3363_inc_short_149"]),
@@ -319,6 +330,7 @@ script = EventScript(
         JmpToSubroutine(["EVENT_3363_set_7000_to_7000_short_mem_132"]),
         Jmp(["EVENT_3363_inc_short_149"]),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3363_jmp_to_subroutine_117"],
             identifier="EVENT_3363_jmp_if_7000_any_bits_set_113",
         ),

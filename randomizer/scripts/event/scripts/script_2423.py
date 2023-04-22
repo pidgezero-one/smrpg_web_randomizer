@@ -1,4 +1,6 @@
-# E2423_ABYSS_TRAMPOLINE_TO_1ST_BOSS
+# pylint: disable=C0301
+
+"""E2423_ABYSS_TRAMPOLINE_TO_1ST_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,7 +19,7 @@ script = EventScript(
                 ASSequencePlaybackOff(),
                 ASShadowOff(),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
             ],
         ),
         SetAsyncActionScript(MARIO, A0408_JUMP_ON_SAVE_BLOCK),

@@ -1,4 +1,4 @@
-# 1 - Spikey
+"""1 - Spikey"""
 
 from randomizer.scripts.monster.script_imports import *
 

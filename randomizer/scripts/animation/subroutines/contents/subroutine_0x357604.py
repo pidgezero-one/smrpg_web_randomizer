@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack40
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack40"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -65,7 +67,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -93,10 +99,18 @@ script = SubroutineOrBanklessScript(
         ),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
-            speed=1, start_position=256, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=256,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -124,7 +138,11 @@ script = SubroutineOrBanklessScript(
         ),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
-            speed=1, start_position=256, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=256,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,

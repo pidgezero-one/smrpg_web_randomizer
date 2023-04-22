@@ -1,4 +1,6 @@
-# E0682_MARRYMORE_LIBERATED_EXTERIOR_MOM
+# pylint: disable=C0301
+
+"""E0682_MARRYMORE_LIBERATED_EXTERIOR_MOM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,7 +9,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
-                ASSet700CToObjectCoord(object=NPC_6, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=NPC_6, coord=COORD_F, pixel=True),
                 ASFaceSouthwest(),
             ],
         ),

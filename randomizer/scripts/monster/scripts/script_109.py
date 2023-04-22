@@ -1,4 +1,4 @@
-# 109 - Doppel
+"""109 - Doppel"""
 
 from randomizer.scripts.monster.script_imports import *
 

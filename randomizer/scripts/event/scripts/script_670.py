@@ -1,10 +1,12 @@
-# E0670_MARRYMORE_UNOCCUPIED_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E0670_MARRYMORE_UNOCCUPIED_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        Set0158Bit7Offset(),
+        Set0158Bit7Offset(0x0158),
         ActionQueueSync(target=NPC_0, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_1, subscript=[ASSetPriority(3)]),
         ActionQueueSync(

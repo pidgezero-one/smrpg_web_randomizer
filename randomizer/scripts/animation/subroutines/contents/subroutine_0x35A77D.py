@@ -1,4 +1,6 @@
-# referenced by ally_spells Mute
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Mute"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -274,10 +276,10 @@ script = SubroutineOrBanklessScript(
             identifier="queuestart_0x35a924",
         ),
         NewEffectObject(effect=EF0009_MUTE__BALLOON_, looping_off=True),
-        Layer3On(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3On(prop=TRANSPARENCY_OFF, bpp4=True),
         PlaySound(sound=S0107_BUBBLE_POP),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
-        Layer3Off(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3Off(prop=TRANSPARENCY_OFF, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         SetAMEM8BitToConst(0x6B, 1),

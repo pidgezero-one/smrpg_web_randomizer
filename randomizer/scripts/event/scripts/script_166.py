@@ -1,4 +1,6 @@
-# E0166_FREESTANDING_GRANT_STAR_PIECE
+# pylint: disable=C0301
+
+"""E0166_FREESTANDING_GRANT_STAR_PIECE"""
 
 from randomizer.scripts.event.script_imports import *
 

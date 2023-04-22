@@ -1,4 +1,6 @@
-# E1632_MOLEVILLE_MINECART_FREEPLAY_ENDING_LANDING
+# pylint: disable=C0301
+
+"""E1632_MOLEVILLE_MINECART_FREEPLAY_ENDING_LANDING"""
 
 from randomizer.scripts.event.script_imports import *
 

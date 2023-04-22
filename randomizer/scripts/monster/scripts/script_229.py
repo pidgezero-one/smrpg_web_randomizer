@@ -1,4 +1,4 @@
-# 229 - AxemBlack
+"""229 - AxemBlack"""
 
 from randomizer.scripts.monster.script_imports import *
 

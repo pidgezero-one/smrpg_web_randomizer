@@ -1,4 +1,6 @@
-# referenced by monster_spells WeirdMushroom
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells WeirdMushroom"""
 
 from randomizer.scripts.animation.script_imports import *
 

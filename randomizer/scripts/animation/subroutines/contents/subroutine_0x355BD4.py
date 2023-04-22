@@ -1,4 +1,6 @@
-# referenced by monster_spells MeteorSwarm, monster_spells SwordRain, monster_spells SpearRain, monster_spells Sledge, monster_spells ArrowRain
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells MeteorSwarm, monster_spells SwordRain, monster_spells SpearRain, monster_spells Sledge, monster_spells ArrowRain"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -21,7 +23,7 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x35336f"]),
         RunSubroutine(["command_0x3533f5"]),
         ScreenFlash(BLUE, 8),
-        Layer3On(property=TRANSPARENCY_OFF, bit_0=True, bpp4=True),
+        Layer3On(prop=TRANSPARENCY_OFF, bit_0=True, bpp4=True),
         ResetTargetMappingMemory(),
         MoveObject(
             speed=65,
@@ -48,7 +50,7 @@ script = SubroutineOrBanklessScript(
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=30),
         ResetObjectMappingMemory(),
-        Layer3Off(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3Off(prop=TRANSPARENCY_OFF, bpp4=True),
         Db(bytearray(b"\x90")),
         RunSubroutine(["command_0x35337d"]),
         Pause2Frames(),
@@ -120,12 +122,12 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x35336f"], identifier="command_0x355cb1"),
         RunSubroutine(["command_0x3533ea"]),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=120),
         RunSubroutine(["command_0x35338b"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\xde")),
         ResetObjectMappingMemory(),
         Pause2Frames(),
@@ -307,11 +309,11 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x35337d"], identifier="command_0x355d9a"),
         RunSubroutine(["command_0x3533df"]),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         RunSubroutine(["command_0x3533f5"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         ResetObjectMappingMemory(),
         Pause2Frames(),
         ClearEffectIndex(),

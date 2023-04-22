@@ -1,4 +1,6 @@
-# E2292_ENDING_CREDITS_TOADOFSKY
+# pylint: disable=C0301
+
+"""E2292_ENDING_CREDITS_TOADOFSKY"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -20,8 +22,8 @@ script = EventScript(
             ],
         ),
         ActionQueueAsync(target=MARIO, subscript=[ASVisibilityOff()]),
-        ActionQueueAsync(target=NPC_2, subscript=[ASShiftNorthPixels(3)]),
-        Set0158Bit7Offset(),
+        ActionQueueAsync(target=NPC_2, subscript=[ASWalkNorthPixels(3)]),
+        Set0158Bit7Offset(0x0158),
         StarMaskExpandFromScreenCenter(),
         ActionQueueAsync(
             target=NPC_0,
@@ -29,7 +31,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -46,7 +48,7 @@ script = EventScript(
         ),
         SetSyncActionScript(NPC_2, A1015_END_CREDITS_FROGFUCIUS_RAISES),
         Pause(30),
-        Clear0158Bit7Offset(),
+        Clear0158Bit7Offset(0x0158),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -66,7 +68,7 @@ script = EventScript(
                 ASPause(120),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASStartLoopNTimes(30),
-                ASShiftNorthPixels(1),
+                ASWalkNorthPixels(1),
                 ASPause(4),
                 ASEndLoop(),
             ],

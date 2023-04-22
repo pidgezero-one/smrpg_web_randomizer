@@ -1,4 +1,6 @@
-# E3792_FACTORY_FINAL_BOSS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3792_FACTORY_FINAL_BOSS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

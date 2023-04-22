@@ -1,4 +1,6 @@
-# E1769_TEMPLE_SUMMON_GREEN_BUTTON
+# pylint: disable=C0301
+
+"""E1769_TEMPLE_SUMMON_GREEN_BUTTON"""
 
 from randomizer.scripts.event.script_imports import *
 

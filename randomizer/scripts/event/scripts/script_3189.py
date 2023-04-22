@@ -1,4 +1,6 @@
-# E3189_FALL_TO_MINECART_ROOM_FROM_LOBBY
+# pylint: disable=C0301
+
+"""E3189_FALL_TO_MINECART_ROOM_FROM_LOBBY"""
 
 from randomizer.scripts.event.script_imports import *
 

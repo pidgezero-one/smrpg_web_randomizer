@@ -1,4 +1,4 @@
-# ENT0005_ZOOM_IN_FROM_RIGHT
+"""ENT0005_ZOOM_IN_FROM_RIGHT animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

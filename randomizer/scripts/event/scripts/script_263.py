@@ -1,4 +1,6 @@
-# E0263_BOUNCE_ON_BED
+# pylint: disable=C0301
+
+"""E0263_BOUNCE_ON_BED"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,7 +21,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASJumpToHeight(height=96, silent=True),
-                ASShiftFDirectionPixels(16),
+                ASWalkFDirectionPixels(16),
             ],
         ),
         Return(),

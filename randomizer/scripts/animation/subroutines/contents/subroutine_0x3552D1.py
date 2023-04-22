@@ -1,4 +1,6 @@
-# referenced by behaviour_53_0x350F7A, monster_attacks PhysicalAttack117, monster_attacks PhysicalAttack116, monster_attacks PhysicalAttack118
+# pylint: disable=C0301,C0103
+
+"""referenced by behaviour_53_0x350F7A, monster_attacks PhysicalAttack117, monster_attacks PhysicalAttack116, monster_attacks PhysicalAttack118"""
 
 from randomizer.scripts.animation.script_imports import *
 

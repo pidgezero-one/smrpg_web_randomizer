@@ -1,4 +1,6 @@
-# E0337_MUSHROOM_KINGDOM_SHOP_BOOKSHELF
+# pylint: disable=C0301
+
+"""E0337_MUSHROOM_KINGDOM_SHOP_BOOKSHELF"""
 
 from randomizer.scripts.event.script_imports import *
 

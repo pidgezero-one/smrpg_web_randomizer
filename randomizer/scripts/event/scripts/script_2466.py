@@ -1,4 +1,6 @@
-# E2466_BEAN_VALLEY_1ST_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2466_BEAN_VALLEY_1ST_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,7 +17,7 @@ script = EventScript(
         SummonObjectToSpecificLevel(NPC_10, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
         SummonObjectToSpecificLevel(NPC_11, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
         ClearBit(DIRECTIONAL_7047_0),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 4, ["EVENT_2466_set_7000_to_object_coord_19"]
         ),
@@ -28,7 +30,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 16, ["EVENT_2466_action_queue_sync_29"]),
         Jmp(["EVENT_2466_fade_in_from_black_async_36"]),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_Y,
             pixel=True,
             bit_7=True,
@@ -37,7 +39,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 70, ["EVENT_2466_action_queue_sync_33"]),
         Jmp(["EVENT_2466_action_queue_sync_25"]),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_Y,
             pixel=True,
             bit_7=True,

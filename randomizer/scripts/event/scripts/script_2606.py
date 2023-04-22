@@ -1,4 +1,6 @@
-# E2606_FACTORY_1ST_BOSS
+# pylint: disable=C0301
+
+"""E2606_FACTORY_1ST_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNortheast(),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
             ],
         ),
         ActionQueueSync(
@@ -27,7 +29,7 @@ script = EventScript(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASWalk1StepSouthwest(),
-                ASShiftSouthwestPixels(4),
+                ASWalkSouthwestPixels(4),
                 ASSetSpriteSequence(
                     index=0,
                     is_mold=True,
@@ -37,13 +39,13 @@ script = EventScript(
                 ),
             ],
         ),
-        ActionQueueSync(target=NPC_8, subscript=[ASShiftNorthwestPixels(12)]),
+        ActionQueueSync(target=NPC_8, subscript=[ASWalkNorthwestPixels(12)]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(4),
+                ASWalkSoutheastSteps(4),
             ],
         ),
         ActionQueueAsync(
@@ -51,7 +53,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(4),
+                ASWalkSoutheastSteps(4),
             ],
         ),
         RunEventAsSubroutine(E1186_HENCHMAN_BATTLE_PACK_SELECTOR),
@@ -69,14 +71,14 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthwestPixels(1),
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
             ],
         ),
         FadeInFromBlack(sync=False),
-        ActionQueueSync(target=NPC_8, subscript=[ASShiftSoutheastPixels(12)]),
+        ActionQueueSync(target=NPC_8, subscript=[ASWalkSoutheastPixels(12)]),
         Pause(16),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
         JmpIfBitClear(GAME_OVER, ["EVENT_2606_restore_all_hp_41"]),

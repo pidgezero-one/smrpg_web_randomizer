@@ -1,4 +1,6 @@
-# E2637_CASINO_GRATE_GUY
+# pylint: disable=C0301
+
+"""E2637_CASINO_GRATE_GUY"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,7 +21,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI3304_AWAIT_LEFT_OR_RIGHT,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=False,
             sync=True,
             multiline=True,
@@ -118,7 +120,7 @@ script = EventScript(
         Jmp(["EVENT_2637_run_dialog_79"]),
         RunDialog(
             dialog_id=DI3308_LOOK_THE_OTHER_WAY_PRIZE,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,

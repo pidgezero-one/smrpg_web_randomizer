@@ -1,4 +1,6 @@
-# E1722_SKY_BRIDGE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1722_SKY_BRIDGE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -76,7 +78,7 @@ script = EventScript(
             target=NPC_16,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthPixels(16),
+                ASWalkNorthPixels(16),
                 ASPause(
                     300, identifier="EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_2"
                 ),
@@ -87,7 +89,7 @@ script = EventScript(
                 ASSetVarToConst(TEMP_7034, 32774),
                 ASCreatePacketAtObjectCoords(
                     packet=P032_BLUE_CLOUD,
-                    object=DUMMY_0X07,
+                    target_npc=DUMMY_0X07,
                     destinations=["EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_4"],
                 ),
                 ASPause(120),

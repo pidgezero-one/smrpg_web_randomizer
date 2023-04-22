@@ -1,4 +1,6 @@
-# E3146_FREESTANDING_BIG_COIN
+# pylint: disable=C0301
+
+"""E3146_FREESTANDING_BIG_COIN"""
 
 from randomizer.scripts.event.script_imports import *
 

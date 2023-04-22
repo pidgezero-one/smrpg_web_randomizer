@@ -1,4 +1,6 @@
-# E0628_MARRYMORE_KITCHEN_LOADER
+# pylint: disable=C0301
+
+"""E0628_MARRYMORE_KITCHEN_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1837_UNKNOWN
+# pylint: disable=C0301
+
+"""E1837_UNKNOWN"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,9 +14,9 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNorthPixels(4),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(4),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -32,30 +34,30 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(SLOW),
                 ASShiftZUpSteps(5),
-                ASShiftSoutheastSteps(5),
+                ASWalkSoutheastSteps(5),
                 ASShiftZDownSteps(3),
-                ASShiftNortheastSteps(7),
-                ASShiftNorthwestSteps(2),
+                ASWalkNortheastSteps(7),
+                ASWalkNorthwestSteps(2),
                 ASWalk1StepNortheast(),
                 ASWalk1StepNorthwest(),
                 ASShiftZUpSteps(5),
                 ASShiftZDownSteps(3),
-                ASShiftNorthwestSteps(3),
+                ASWalkNorthwestSteps(3),
                 ASShiftZUpSteps(5),
                 ASShiftZDownSteps(5),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASShiftZDownSteps(3),
-                ASShiftSouthwestSteps(5),
+                ASWalkSouthwestSteps(5),
                 ASShiftZUpSteps(5),
                 ASShiftZDownSteps(2),
-                ASShiftSoutheastSteps(2),
-                ASShiftNortheastSteps(14),
-                ASShiftNorthwestSteps(4),
+                ASWalkSoutheastSteps(2),
+                ASWalkNortheastSteps(14),
+                ASWalkNorthwestSteps(4),
                 ASPlaySound(sound=SO113_OPEN_CHAMBER_DOOR, channel=4),
                 ASPause(30),
                 ASSetWalkingSpeed(NORMAL),
                 ASShiftZDownSteps(4),
-                ASShiftSouthwestSteps(17),
+                ASWalkSouthwestSteps(17),
                 ASPlaySound(sound=SO113_OPEN_CHAMBER_DOOR, channel=4),
                 ASPause(60),
                 ASJmp(["EVENT_1837_non_embedded_action_queue_8"]),

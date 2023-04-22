@@ -1,4 +1,6 @@
-# E3122_SEWER_BOSS_ROOM_TRAMPOLINE
+# pylint: disable=C0301
+
+"""E3122_SEWER_BOSS_ROOM_TRAMPOLINE"""
 
 from randomizer.scripts.event.script_imports import *
 

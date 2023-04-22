@@ -1,4 +1,6 @@
-# E2049_MONSTRO_SUPER_JUMP_HOUSE_LOADER
+# pylint: disable=C0301
+
+"""E2049_MONSTRO_SUPER_JUMP_HOUSE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,8 +9,8 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_0,
             subscript=[
-                ASShiftNortheastPixels(7),
-                ASShiftSoutheastPixels(2),
+                ASWalkNortheastPixels(7),
+                ASWalkSoutheastPixels(2),
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(SLOW),
                 ASSequenceLoopingOn(),
@@ -17,7 +19,7 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_1,
             subscript=[
-                ASShiftNorthwestPixels(4),
+                ASWalkNorthwestPixels(4),
                 ASFaceSoutheast(),
                 ASSetSequenceSpeed(SLOW),
                 ASSequenceLoopingOn(),

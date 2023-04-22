@@ -1,4 +1,6 @@
-# referenced by
+# pylint: disable=C0301,C0103
+
+"""referenced by"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -10,7 +12,7 @@ script = SubroutineOrBanklessScript(
             origin=ABSOLUTE_POSITION, x=16, y=0, z=0, set_x=True, set_y=True, set_z=True
         ),
         NewEffectObject(effect=EF0059_ORANGE_RED_BLAST__FIRE_BOMB_, looping_off=True),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
         RunSubroutine(["command_0x3a755e"]),
         Db(bytearray(b"[\x07\x00")),

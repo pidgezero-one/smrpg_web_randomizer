@@ -1,4 +1,6 @@
-# E0555_ROSE_TOWN_INN_TOAD_ITEM_GRANT
+# pylint: disable=C0301
+
+"""E0555_ROSE_TOWN_INN_TOAD_ITEM_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,7 +21,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASFloatingOn(),
-                ASShiftSoutheastSteps(4),
+                ASWalkSoutheastSteps(4),
             ],
         ),
         RemoveObjectFromCurrentLevel(MEM_70A8),

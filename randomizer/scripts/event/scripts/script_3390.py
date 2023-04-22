@@ -1,4 +1,6 @@
-# E3390_KEEP_LAVA_PATFORM_ROOM_CHEST_CAMERA
+# pylint: disable=C0301
+
+"""E3390_KEEP_LAVA_PATFORM_ROOM_CHEST_CAMERA"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3238_FREESTANDING_FROG_COIN
+# pylint: disable=C0301
+
+"""E3238_FREESTANDING_FROG_COIN"""
 
 from randomizer.scripts.event.script_imports import *
 

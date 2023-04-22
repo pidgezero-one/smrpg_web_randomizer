@@ -1,6 +1,9 @@
-# E0668_SUMMON_MARRYMORE_BOSS_TO_ROOM
+# pylint: disable=C0301
+
+"""E0668_SUMMON_MARRYMORE_BOSS_TO_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
+from randomizer.entities.items.items import Ring, Shoes, Crown, Brooch
 
 script = EventScript(
     [

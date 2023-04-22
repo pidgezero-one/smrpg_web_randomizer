@@ -1,4 +1,6 @@
-# E3299_OUTER_SEA_WHIRLPOOL
+# pylint: disable=C0301
+
+"""E3299_OUTER_SEA_WHIRLPOOL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,7 +15,7 @@ script = EventScript(
                     identifier="EVENT_3299_action_queue_async_0_SUBSCRIPT_turn_clockwise_45_degrees_n_times_1",
                 ),
                 ASShiftZUpPixels(2),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True),
                 ASCompareVarToConst(PRIMARY_TEMP_700C, 1280),
                 ASJmpIfLoadedMemoryIsAboveOrEqual0(
                     [

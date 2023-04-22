@@ -1,4 +1,6 @@
-# referenced by ally_spells Poison Gas
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Poison Gas"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -133,13 +135,13 @@ script = SubroutineOrBanklessScript(
             should_set_end_position=True,
             should_set_speed=True,
         ),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         Pause1Frame(identifier="command_0x35ae71"),
         SetAMEM8BitTo7E1x(0x6E, 0x7EE020),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 3, ["command_0x35ae71"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         SetAMEM8BitToConst(0x6E, 4),
         Set7E1xToAMEM8Bit(0x7EE020, 0x6E),
         Pause2Frames(),
@@ -173,13 +175,13 @@ script = SubroutineOrBanklessScript(
             should_set_end_position=True,
             should_set_speed=True,
         ),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         Pause1Frame(identifier="command_0x35aec1"),
         SetAMEM8BitTo7E1x(0x6E, 0x7EE020),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 3, ["command_0x35aec1"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         ResetObjectMappingMemory(),

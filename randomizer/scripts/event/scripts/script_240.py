@@ -1,4 +1,6 @@
-# E0240_FREESTANDING_2_GRANT
+# pylint: disable=C0301
+
+"""E0240_FREESTANDING_2_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 

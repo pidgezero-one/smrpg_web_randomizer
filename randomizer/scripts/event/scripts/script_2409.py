@@ -1,4 +1,6 @@
-# E2409_ABYSS_ROOM_BEFORE_1ST_BOSS_LOADER
+# pylint: disable=C0301
+
+"""E2409_ABYSS_ROOM_BEFORE_1ST_BOSS_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,9 +8,9 @@ script = EventScript(
     [
         JmpIfVarEqualsConst(FACTORY_FALL_1, 237, ["EVENT_2409_set_26"]),
         ActionQueueSync(
-            target=NPC_4, subscript=[ASShiftSouthPixels(2), ASShiftSoutheastPixels(5)]
+            target=NPC_4, subscript=[ASWalkSouthPixels(2), ASWalkSoutheastPixels(5)]
         ),
-        ActionQueueSync(target=NPC_6, subscript=[ASShiftSouthwestPixels(12)]),
+        ActionQueueSync(target=NPC_6, subscript=[ASWalkSouthwestPixels(12)]),
         SetVarToConst(FACTORY_FALL_1, 239),
         SetVarToConst(FACTORY_FALL_2, 24),
         SetVarToConst(FACTORY_FALL_3, 16),
@@ -18,7 +20,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASShiftToXYCoords(x=25, y=44),
-                ASShiftSouthwestPixels(5),
+                ASWalkSouthwestPixels(5),
                 ASShiftZDownPixels(19),
             ],
         ),
@@ -26,7 +28,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASShiftToXYCoords(x=25, y=43),
-                ASShiftSouthwestPixels(11),
+                ASWalkSouthwestPixels(11),
                 ASShiftZDownPixels(19),
             ],
         ),
@@ -34,7 +36,7 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASShiftToXYCoords(x=27, y=39),
-                ASShiftSouthwestPixels(5),
+                ASWalkSouthwestPixels(5),
                 ASShiftZDownPixels(19),
             ],
         ),
@@ -42,7 +44,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASShiftToXYCoords(x=28, y=38),
-                ASShiftSouthwestPixels(11),
+                ASWalkSouthwestPixels(11),
                 ASShiftZDownPixels(19),
             ],
         ),
@@ -72,11 +74,11 @@ script = EventScript(
         ClearBit(DIRECTIONAL_7045_0),
         ActionQueueSync(target=NPC_0, subscript=[ASShiftZDownPixels(19)]),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASShiftSouthwestPixels(6), ASShiftZDownPixels(19)]
+            target=NPC_1, subscript=[ASWalkSouthwestPixels(6), ASShiftZDownPixels(19)]
         ),
         ActionQueueSync(target=NPC_2, subscript=[ASShiftZDownPixels(19)]),
         ActionQueueAsync(
-            target=NPC_3, subscript=[ASShiftSouthwestPixels(6), ASShiftZDownPixels(19)]
+            target=NPC_3, subscript=[ASWalkSouthwestPixels(6), ASShiftZDownPixels(19)]
         ),
         RunBackgroundEvent(
             event_id=E2592_ABYSS_FALL_OFF_BEFORE_FIRST_BOSS, return_on_level_exit=True
@@ -92,7 +94,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASShiftToXYCoords(x=25, y=44),
-                ASShiftSouthwestPixels(5),
+                ASWalkSouthwestPixels(5),
                 ASShiftZDownPixels(19),
             ],
         ),
@@ -100,7 +102,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASShiftToXYCoords(x=25, y=43),
-                ASShiftSouthwestPixels(11),
+                ASWalkSouthwestPixels(11),
                 ASShiftZDownPixels(19),
             ],
         ),
@@ -108,7 +110,7 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASShiftToXYCoords(x=27, y=39),
-                ASShiftSouthwestPixels(5),
+                ASWalkSouthwestPixels(5),
                 ASShiftZDownPixels(19),
             ],
         ),
@@ -116,7 +118,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASShiftToXYCoords(x=28, y=38),
-                ASShiftSouthwestPixels(11),
+                ASWalkSouthwestPixels(11),
                 ASShiftZDownPixels(19),
             ],
         ),
@@ -147,11 +149,11 @@ script = EventScript(
         FreezeCamera(),
         ActionQueueSync(target=NPC_0, subscript=[ASShiftZDownPixels(19)]),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASShiftSouthwestPixels(6), ASShiftZDownPixels(19)]
+            target=NPC_1, subscript=[ASWalkSouthwestPixels(6), ASShiftZDownPixels(19)]
         ),
         ActionQueueSync(target=NPC_2, subscript=[ASShiftZDownPixels(19)]),
         ActionQueueSync(
-            target=NPC_3, subscript=[ASShiftSouthwestPixels(6), ASShiftZDownPixels(19)]
+            target=NPC_3, subscript=[ASWalkSouthwestPixels(6), ASShiftZDownPixels(19)]
         ),
         ActionQueueAsync(
             target=MARIO,

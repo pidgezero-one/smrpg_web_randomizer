@@ -1,13 +1,15 @@
+"""bank 0x35xxxx export"""
+
 from randomizer.types.battle_animation_scripts.classes import (
     AnimationScriptBankCollection,
 )
-from .monster_spells.export import bank as monster_spells
-from .monster_attacks.export import bank as monster_attacks
-from .monster_entrances.export import bank as monster_entrances
-from .misses.export import bank as misses
-from .items.export import bank as items
-from .ally_spells.export import bank as ally_spells
-from .weapons.export import bank as weapons
+from .monster_spells import bank as monster_spells
+from .monster_attacks import bank as monster_attacks
+from .monster_entrances import bank as monster_entrances
+from .misses import bank as misses
+from .items import bank as items
+from .ally_spells import bank as ally_spells
+from .weapons import bank as weapons
 from .monster_behaviours.export_0 import bank as monster_behaviour_0
 from .monster_behaviours.export_1 import bank as monster_behaviour_1
 from .monster_behaviours.export_2 import bank as monster_behaviour_2

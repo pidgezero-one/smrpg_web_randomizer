@@ -1,4 +1,6 @@
-# E0506_PIPE_VAULT_SUMMON_FIRST_GOOMBA
+# pylint: disable=C0301
+
+"""E0506_PIPE_VAULT_SUMMON_FIRST_GOOMBA"""
 
 from randomizer.scripts.event.script_imports import *
 

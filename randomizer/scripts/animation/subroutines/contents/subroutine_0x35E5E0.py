@@ -1,4 +1,6 @@
-# referenced by items FrightBomb
+# pylint: disable=C0301,C0103
+
+"""referenced by items FrightBomb"""
 
 from randomizer.scripts.animation.script_imports import *
 

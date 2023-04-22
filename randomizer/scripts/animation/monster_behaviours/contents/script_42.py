@@ -1,4 +1,4 @@
-# behaviour_42_0x350DED
+"""behaviour_42_0x350DED animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

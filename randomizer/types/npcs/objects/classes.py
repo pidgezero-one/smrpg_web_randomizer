@@ -4,7 +4,8 @@ These classes will be used to define the NPC table in each room,
 the overall NPC table for the seed, and the VRAM partition table for the seed."""
 
 
-from typing import Optional
+from math import ceil
+from typing import List, Optional, Type
 from randomizer.types.npcs.animations.animations import (
     BIRD_ATTACK,
     CROCO_BAG_HIT,
@@ -26,6 +27,10 @@ from randomizer.types.npcs.animations.animations import (
 from randomizer.types.npcs.animations.classes import SpriteAnimationCollection
 from randomizer.types.numbers.classes import Int8, UInt16, UInt4, UInt8
 from randomizer.types.npcs.objects.enums import ShadowSize, VramStore
+from randomizer.types.overworld_scripts.action_scripts.commands import SetSpriteSequence
+from randomizer.types.overworld_scripts.event_scripts.classes import (
+    ActionSubcriptCommandPrototype,
+)
 from randomizer.types.overworld_scripts.event_scripts.constants.misc import (
     TOTAL_SCRIPTS,
 )
@@ -39,6 +44,7 @@ from randomizer.types.overworld_scripts.packets.packets import (
     P090_BAG_STATIC,
 )
 from randomizer.types.palettes.classes import Palette
+from randomizer.types.scripts_common.classes import ScriptCommandT
 from randomizer.types.sprites.constants.misc import TOTAL_SPRITES
 from randomizer.types.sprites.constants.sprite_ids import (
     SPR1023_EMPTY,
@@ -242,6 +248,57 @@ class NPC:
         assert self._min_vram_size <= 7
         return UInt4(self._min_vram_size)
 
+    def min_vram_from_mold(self, mold_id: int, offset: int = 0) -> int:
+        """Get min vram size from a certain sprite mold ID"""
+        assert self.world is not None
+        sprite = self.world.sprites[self.sprite_id + offset]
+        assert mold_id < len(sprite.animation_data.molds)
+        tiles = sprite.animation_data.molds[mold_id].tiles
+        return ceil(max(0, len(tiles) - 4) / 4)
+
+    def min_vram_from_sequence(self, sequence_id: int, offset: int = 0) -> int:
+        """Get min vram size from a certain sprite sequence ID"""
+        assert self.world is not None
+        sprite = self.world.sprites[self.sprite_id + offset]
+        assert sequence_id < len(sprite.animation_data.sequences)
+        min_vram = 0
+        frames = sprite.animation_data.sequences[sequence_id].frames
+        for frame in frames:
+            min_vram = max(min_vram, self.min_vram_from_mold(frame.mold_id))
+        return min_vram
+
+    def _min_vram_size_from_script(self, script: List[ScriptCommandT]) -> int:
+        min_vram = self.min_vram_from_mold(0)
+        for cmd in script:
+            if isinstance(cmd, SetSpriteSequence):
+                prop_id = cmd.index
+                offset = cmd.sprite_offset
+                if cmd.is_mold:
+                    min_vram = max(min_vram, self.min_vram_from_mold(prop_id, offset))
+                else:
+                    min_vram = max(
+                        min_vram, self.min_vram_from_sequence(prop_id, offset)
+                    )
+        return min_vram
+
+    def min_vram_from_action_script(self, script_id: int) -> int:
+        """Get min vram size from a given action script"""
+        assert self.world is not None
+        script = self.world.action_scripts.scripts[script_id]
+        return self._min_vram_size_from_script(script.contents)
+
+    def min_vram_from_event_script(self, target: int, script_id: int) -> int:
+        """Get min vram size from subscripts in a given event script"""
+        assert self.world is not None
+        min_vram = self.min_vram_from_mold(0)
+        script = self.world.event_scripts.get_script_by_id(script_id)
+        for cmd in script.contents:
+            if isinstance(cmd, ActionSubcriptCommandPrototype) and cmd.target == target:
+                min_vram = max(
+                    min_vram, self._min_vram_size_from_script(cmd.subscript.contents)
+                )
+        return min_vram
+
     @property
     def byte2_bit0(self) -> bool:
         """(unknown)"""
@@ -319,6 +376,27 @@ class NPC:
         """A collection of properties specifying minor adjustments to make
         to the statue sprite before the room loads, if this is a statue."""
         return self._statue
+
+    def is_equal(self, npc: "NPC") -> bool:
+        """True if this NPC's properties are all equal to another NPC's."""
+        return (
+            self.sprite_id == npc.sprite_id
+            and self.show_shadow == npc.show_shadow
+            and self.shadow_size == npc.shadow_size
+            and self.acute_axis == npc.acute_axis
+            and self.obtuse_axis == npc.obtuse_axis
+            and self.height == npc.height
+            and self.directions == npc.directions
+            and self.min_vram_size == npc.min_vram_size
+            and self.byte2_bit0 == npc.byte2_bit0
+            and self.byte2_bit1 == npc.byte2_bit1
+            and self.byte2_bit2 == npc.byte2_bit2
+            and self.byte2_bit3 == npc.byte2_bit3
+            and self.byte2_bit4 == npc.byte2_bit4
+            and self.byte5_bit6 == npc.byte5_bit6
+            and self.byte5_bit7 == npc.byte5_bit7
+            and self.byte6_bit2 == npc.byte6_bit2
+        )
 
     def __init__(self, world: Optional[GameWorld] = None):
         self._world = world
@@ -453,7 +531,7 @@ class AreaNPC:
     used in boss shuffling, which determine how some AreaNPCs are filled based on the results
     of the boss shuffle."""
 
-    _occupant: NPC
+    _occupant: Type[NPC]
     _priority_0: bool = False
     _priority_1: bool = False
     _priority_2: bool = True
@@ -476,11 +554,11 @@ class AreaNPC:
     _byte6_bit2: Optional[bool] = None
 
     @property
-    def occupant(self) -> NPC:
+    def occupant(self) -> Type[NPC]:
         """The NPC occupying this position in the room."""
         return self._occupant
 
-    def set_occupant(self, occupant: NPC) -> None:
+    def set_occupant(self, occupant: Type[NPC]) -> None:
         """Set the NPC occupying this position in the room."""
         self._occupant = occupant
 
@@ -515,9 +593,8 @@ class AreaNPC:
     def show_shadow(self) -> bool:
         """If false, a shadow for the NPC when airborne will not be loaded to VRAM."""
         if self._show_shadow is None:
-            return self.occupant.show_shadow
-        else:
-            return self._show_shadow
+            return self.occupant().show_shadow
+        return self._show_shadow
 
     def set_show_shadow(self, show_shadow: Optional[bool] = None) -> None:
         """If false, a shadow for the NPC when airborne will not be loaded to VRAM.\n
@@ -529,9 +606,8 @@ class AreaNPC:
     def shadow_size(self) -> ShadowSize:
         """The size of the shadow for this NPC when it is airborne."""
         if self._shadow_size is None:
-            return self.occupant.shadow_size
-        else:
-            return self._shadow_size
+            return self.occupant().shadow_size
+        return self._shadow_size
 
     def set_shadow_size(self, shadow_size: Optional[ShadowSize] = None) -> None:
         """The size of the shadow for this NPC when it is airborne.\n
@@ -544,9 +620,8 @@ class AreaNPC:
         """The collision width of this NPC.
         If projected onto a flat plane, this axis would run top right to bottom left."""
         if self._acute_axis is None:
-            return self.occupant.acute_axis
-        else:
-            return UInt4(self._acute_axis)
+            return self.occupant().acute_axis
+        return UInt4(self._acute_axis)
 
     def set_acute_axis(self, acute_axis: Optional[int] = None) -> None:
         """The collision width of this NPC.
@@ -564,9 +639,8 @@ class AreaNPC:
         """The collision length of this NPC.
         If projected onto a flat plane, this axis would run top left to bottom right."""
         if self._obtuse_axis is None:
-            return self.occupant.obtuse_axis
-        else:
-            return UInt4(self._obtuse_axis)
+            return self.occupant().obtuse_axis
+        return UInt4(self._obtuse_axis)
 
     def set_obtuse_axis(self, obtuse_axis: Optional[int] = None) -> None:
         """The collision length of this NPC.
@@ -583,10 +657,9 @@ class AreaNPC:
     def height(self) -> UInt8:
         """The collision height of this NPC."""
         if self._height is None:
-            return self.occupant.height
-        else:
-            assert self._height <= 31
-            return UInt8(self._height)
+            return self.occupant().height
+        assert self._height <= 31
+        return UInt8(self._height)
 
     def set_height(self, height: Optional[int] = None) -> None:
         """The collision height of this NPC.\n
@@ -603,10 +676,9 @@ class AreaNPC:
         """The distance in pixels (from -16 to +15) to shift the sprite up or down
         as displayed, without also moving its collision box."""
         if self._y_shift is None:
-            return self.occupant.y_shift
-        else:
-            assert -16 <= self.y_shift <= 15
-            return Int8(self._y_shift)
+            return self.occupant().y_shift
+        assert -16 <= self.y_shift <= 15
+        return Int8(self._y_shift)
 
     def set_y_shift(self, y_shift: Optional[int] = None) -> None:
         """The distance in pixels (from -16 to +15) to shift the sprite up or down
@@ -623,9 +695,8 @@ class AreaNPC:
     def directions(self) -> VramStore:
         """The directions which the NPC can be expected to face."""
         if self._directions is None:
-            return self.occupant.directions
-        else:
-            return self._directions
+            return self.occupant().directions
+        return self._directions
 
     def set_directions(self, directions: Optional[VramStore] = None) -> None:
         """The directions which the NPC can be expected to face.\n
@@ -637,10 +708,9 @@ class AreaNPC:
     def vram_size(self) -> UInt4:
         """The number (0 to 7) of VRAM chunks the NPC's sprite can be expected to require."""
         if self._vram_size is None:
-            return self.occupant.min_vram_size
-        else:
-            assert self._vram_size <= 7
-            return UInt4(self._vram_size)
+            return self.occupant().min_vram_size
+        assert self._vram_size <= 7
+        return UInt4(self._vram_size)
 
     def set_vram_size(self, vram_size: Optional[int] = None) -> None:
         """The number (0 to 7) of VRAM chunks the NPC's sprite can be expected to require.\n
@@ -668,9 +738,8 @@ class AreaNPC:
     def byte2_bit0(self) -> bool:
         """(unknown)"""
         if self._byte2_bit0 is None:
-            return self.occupant.byte2_bit0
-        else:
-            return self._byte2_bit0
+            return self.occupant().byte2_bit0
+        return self._byte2_bit0
 
     def set_byte2_bit0(self, byte2_bit0: Optional[bool] = None) -> None:
         """(unknown)"""
@@ -680,9 +749,8 @@ class AreaNPC:
     def byte2_bit1(self) -> bool:
         """(unknown)"""
         if self._byte2_bit1 is None:
-            return self.occupant.byte2_bit1
-        else:
-            return self._byte2_bit1
+            return self.occupant().byte2_bit1
+        return self._byte2_bit1
 
     def set_byte2_bit1(self, byte2_bit1: Optional[bool] = None) -> None:
         """(unknown)"""
@@ -692,9 +760,8 @@ class AreaNPC:
     def byte2_bit2(self) -> bool:
         """(unknown)"""
         if self._byte2_bit2 is None:
-            return self.occupant.byte2_bit2
-        else:
-            return self._byte2_bit2
+            return self.occupant().byte2_bit2
+        return self._byte2_bit2
 
     def set_byte2_bit2(self, byte2_bit2: Optional[bool] = None) -> None:
         """(unknown)"""
@@ -704,9 +771,8 @@ class AreaNPC:
     def byte2_bit3(self) -> bool:
         """(unknown)"""
         if self._byte2_bit3 is None:
-            return self.occupant.byte2_bit3
-        else:
-            return self._byte2_bit3
+            return self.occupant().byte2_bit3
+        return self._byte2_bit3
 
     def set_byte2_bit3(self, byte2_bit3: Optional[bool] = None) -> None:
         """(unknown)"""
@@ -716,9 +782,8 @@ class AreaNPC:
     def byte2_bit4(self) -> bool:
         """(unknown)"""
         if self._byte2_bit4 is None:
-            return self.occupant.byte2_bit4
-        else:
-            return self._byte2_bit4
+            return self.occupant().byte2_bit4
+        return self._byte2_bit4
 
     def set_byte2_bit4(self, byte2_bit4: Optional[bool] = None) -> None:
         """(unknown)"""
@@ -728,9 +793,8 @@ class AreaNPC:
     def byte5_bit6(self) -> bool:
         """(unknown)"""
         if self._byte5_bit6 is None:
-            return self.occupant.byte5_bit6
-        else:
-            return self._byte5_bit6
+            return self.occupant().byte5_bit6
+        return self._byte5_bit6
 
     def set_byte5_bit6(self, byte5_bit6: Optional[bool] = None) -> None:
         """(unknown)"""
@@ -740,9 +804,8 @@ class AreaNPC:
     def byte5_bit7(self) -> bool:
         """(unknown)"""
         if self._byte5_bit7 is None:
-            return self.occupant.byte5_bit7
-        else:
-            return self._byte5_bit7
+            return self.occupant().byte5_bit7
+        return self._byte5_bit7
 
     def set_byte5_bit7(self, byte5_bit7: Optional[bool] = None) -> None:
         """(unknown)"""
@@ -752,17 +815,49 @@ class AreaNPC:
     def byte6_bit2(self) -> bool:
         """(unknown)"""
         if self._byte6_bit2 is None:
-            return self.occupant.byte6_bit2
-        else:
-            return self._byte6_bit2
+            return self.occupant().byte6_bit2
+        return self._byte6_bit2
 
     def set_byte6_bit2(self, byte6_bit2: Optional[bool] = None) -> None:
         """(unknown)"""
         self._byte6_bit2 = byte6_bit2
 
+    def is_equal(self, npc: "AreaNPC") -> bool:
+        """True if this NPC's properties are all equal to another NPC's."""
+        return (
+            self.occupant.sprite_id == npc.occupant.sprite_id
+            and (
+                (not self.show_shadow and not npc.show_shadow)
+                or (
+                    self.show_shadow
+                    and npc.show_shadow
+                    and self.occupant.shadow_size == npc.shadow_size
+                )
+            )
+            and self.priority_0 == npc.priority_0
+            and self.priority_1 == npc.priority_1
+            and self.priority_2 == npc.priority_2
+            and self.occupant.y_shift == npc.occupant.y_shift
+            and self.acute_axis == npc.acute_axis
+            and self.obtuse_axis == npc.obtuse_axis
+            and self.height == npc.height
+            and self.directions == npc.directions
+            and self.vram_size == npc.vram_size
+            and self.cannot_clone == npc.cannot_clone
+            and self.occupant.sprite_id == npc.occupant.sprite_id
+            and self.occupant.byte2_bit0 == npc.occupant.byte2_bit0
+            and self.occupant.byte2_bit1 == npc.occupant.byte2_bit1
+            and self.occupant.byte2_bit2 == npc.occupant.byte2_bit2
+            and self.occupant.byte2_bit3 == npc.occupant.byte2_bit3
+            and self.occupant.byte2_bit4 == npc.occupant.byte2_bit4
+            and self.occupant.byte5_bit6 == npc.occupant.byte5_bit6
+            and self.occupant.byte5_bit7 == npc.occupant.byte5_bit7
+            and self.occupant.byte6_bit2 == npc.occupant.byte6_bit2
+        )
+
     def __init__(
         self,
-        occupant: NPC,
+        occupant: Type[NPC],
         priority_0: bool = False,
         priority_1: bool = False,
         priority_2: bool = True,

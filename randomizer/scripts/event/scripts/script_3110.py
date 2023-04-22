@@ -1,4 +1,6 @@
-# E3110_FREESTANDING_JUICE_BAR_CARD_GRANT
+# pylint: disable=C0301
+
+"""E3110_FREESTANDING_JUICE_BAR_CARD_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 

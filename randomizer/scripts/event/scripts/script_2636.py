@@ -1,4 +1,6 @@
-# E2636_CASINO_GUARD
+# pylint: disable=C0301
+
+"""E2636_CASINO_GUARD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -21,8 +23,8 @@ script = EventScript(
         ApplySolidityModToLevel(
             permanent=True, room_id=R104_GRATE_GUYS_CASINO_FRONT_DOOR, mod_id=0
         ),
-        ActionQueueSync(target=NPC_0, subscript=[ASShiftNorthwestPixels(8)]),
-        ActionQueueAsync(target=NPC_1, subscript=[ASShiftSoutheastPixels(8)]),
+        ActionQueueSync(target=NPC_0, subscript=[ASWalkNorthwestPixels(8)]),
+        ActionQueueAsync(target=NPC_1, subscript=[ASWalkSoutheastPixels(8)]),
         Return(identifier="EVENT_2636_ret_10"),
         RunDialog(
             dialog_id=DI3301_BOUNCER_LEAVE,

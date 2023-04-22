@@ -1,4 +1,6 @@
-# E1604_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_REMOVE_FROM_LEVEL
+# pylint: disable=C0301
+
+"""E1604_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_REMOVE_FROM_LEVEL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -24,7 +26,7 @@ script = EventScript(
         Pause(3),
         CreatePacketAtObjectCoords(
             packet=P031_LEVELUP_TEXT,
-            object=MARIO,
+            target_npc=MARIO,
             destinations=["EVENT_1604_set_bit_5"],
         ),
         PlaySound(sound=SO095_LEVEL_UP_WITH_STAR, channel=6),

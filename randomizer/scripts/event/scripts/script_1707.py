@@ -1,4 +1,6 @@
-# E1707_BANDITS_WAY_5_LOADER_BACKGROUND
+# pylint: disable=C0301
+
+"""E1707_BANDITS_WAY_5_LOADER_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -25,12 +27,12 @@ script = EventScript(
                 ASWalk1StepSouth(),
                 ASWalk1StepSoutheast(),
                 ASWalk1StepEast(),
-                ASShiftNortheastSteps(3),
+                ASWalkNortheastSteps(3),
             ],
         ),
         ClearBit(TEMP_7044_6, identifier="EVENT_1707_clear_bit_9"),
         SetVarToRandom(PRIMARY_TEMP_7000, 32768),
-        JmpIf7000AllBitsClear(destinations=["EVENT_1707_clear_bit_13"]),
+        JmpIf7000AllBitsClear(bits=[], destinations=["EVENT_1707_clear_bit_13"]),
         SetBit(TEMP_7044_6),
         ClearBit(TEMP_7044_7, identifier="EVENT_1707_clear_bit_13"),
         CompareVarToConst(PRIMARY_TEMP_7000, 16384),
@@ -53,7 +55,7 @@ script = EventScript(
         JmpIfBitSet(TEMP_7044_3, ["EVENT_1707_action_queue_async_28"]),
         ActionQueueAsync(
             target=NPC_8,
-            subscript=[ASShiftNortheastSteps(8)],
+            subscript=[ASWalkNortheastSteps(8)],
             identifier="EVENT_1707_action_queue_async_28",
         ),
         Jmp(["EVENT_1707_action_queue_async_34"]),
@@ -73,7 +75,7 @@ script = EventScript(
             subscript=[
                 ASWalk1StepNortheast(),
                 ASWalk1StepNorth(),
-                ASShiftNorthwestSteps(9),
+                ASWalkNorthwestSteps(9),
             ],
             identifier="EVENT_1707_action_queue_async_32",
         ),
@@ -97,23 +99,23 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
-                ASShiftSoutheastSteps(7),
-                ASShiftEastSteps(3),
-                ASShiftNortheastSteps(3),
+                ASWalkSoutheastSteps(7),
+                ASWalkEastSteps(3),
+                ASWalkNortheastSteps(3),
             ],
             identifier="EVENT_1707_action_queue_async_46",
         ),
         Jmp(["EVENT_1707_action_queue_async_52"]),
         ActionQueueAsync(
             target=NPC_8,
-            subscript=[ASShiftNortheastSteps(8)],
+            subscript=[ASWalkNortheastSteps(8)],
             identifier="EVENT_1707_action_queue_async_48",
         ),
         Jmp(["EVENT_1707_action_queue_async_52"]),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
-                ASShiftSoutheastSteps(9),
+                ASWalkSoutheastSteps(9),
                 ASWalk1StepSouth(),
                 ASWalk1StepSouthwest(),
             ],
@@ -139,7 +141,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
-                ASShiftSoutheastSteps(9),
+                ASWalkSoutheastSteps(9),
                 ASWalk1StepSouth(),
                 ASWalk1StepSouthwest(),
             ],
@@ -148,7 +150,7 @@ script = EventScript(
         Jmp(["EVENT_1707_action_queue_async_70"]),
         ActionQueueAsync(
             target=NPC_8,
-            subscript=[ASShiftSouthwestSteps(8)],
+            subscript=[ASWalkSouthwestSteps(8)],
             identifier="EVENT_1707_action_queue_async_66",
         ),
         Jmp(["EVENT_1707_action_queue_async_70"]),
@@ -184,7 +186,7 @@ script = EventScript(
             subscript=[
                 ASWalk1StepNortheast(),
                 ASWalk1StepNorth(),
-                ASShiftNorthwestSteps(9),
+                ASWalkNorthwestSteps(9),
             ],
             identifier="EVENT_1707_action_queue_async_82",
         ),
@@ -192,16 +194,16 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
-                ASShiftSouthwestSteps(3),
-                ASShiftWestSteps(3),
-                ASShiftNorthwestSteps(7),
+                ASWalkSouthwestSteps(3),
+                ASWalkWestSteps(3),
+                ASWalkNorthwestSteps(7),
             ],
             identifier="EVENT_1707_action_queue_async_84",
         ),
         Jmp(["EVENT_1707_action_queue_async_88"]),
         ActionQueueAsync(
             target=NPC_8,
-            subscript=[ASShiftSouthwestSteps(8)],
+            subscript=[ASWalkSouthwestSteps(8)],
             identifier="EVENT_1707_action_queue_async_86",
         ),
         Jmp(["EVENT_1707_action_queue_async_88"]),
@@ -264,7 +266,7 @@ script = EventScript(
                 ASJmpIfBitClear(TEMP_7044_6, ["EVENT_1707_set_action_script_sync_109"]),
                 ASSetAllSpeeds(FASTEST),
                 ASSetBit(TEMP_7043_7),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASWalk1StepWest(),
                 ASWalk1StepNorthwest(),
                 ASWalk1StepNorth(),

@@ -1,4 +1,6 @@
-# E2422_ABYSS_ROOM_BEFORE_1ST_BOSS_LOWER_TRAMPOLINE
+# pylint: disable=C0301
+
+"""E2422_ABYSS_ROOM_BEFORE_1ST_BOSS_LOWER_TRAMPOLINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,7 +18,7 @@ script = EventScript(
                 ASSequencePlaybackOff(),
                 ASShadowOff(),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
             ],
         ),
         SetAsyncActionScript(MARIO, A0408_JUMP_ON_SAVE_BLOCK),
@@ -31,8 +33,8 @@ script = EventScript(
                 ),
                 ASShiftToXYCoords(x=23, y=53),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSouthPixels(2),
-                ASShiftSoutheastPixels(5),
+                ASWalkSouthPixels(2),
+                ASWalkSoutheastPixels(5),
                 ASFaceNorthwest(),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASDb(bytearray(b" \x07")),

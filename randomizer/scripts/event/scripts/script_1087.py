@@ -1,4 +1,6 @@
-# E1087_MELODY_BAY_EXIT_WATER_ANIMATION
+# pylint: disable=C0301
+
+"""E1087_MELODY_BAY_EXIT_WATER_ANIMATION"""
 
 from randomizer.scripts.event.script_imports import *
 

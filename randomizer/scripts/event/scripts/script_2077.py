@@ -1,4 +1,6 @@
-# E2077_DOJO_BOSS_4
+# pylint: disable=C0301
+
+"""E2077_DOJO_BOSS_4"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -27,7 +29,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(height=53, silent=True),
-                ASShiftSouthwestSteps(1),
+                ASWalkSouthwestSteps(1),
                 ASPause(20),
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(
@@ -59,7 +61,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASPause(30),
                 ASSetAllSpeeds(SLOW),
-                ASShiftSouthwestSteps(1),
+                ASWalkSouthwestSteps(1),
             ],
         ),
         ActionQueueAsync(
@@ -71,7 +73,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASPause(30),
                 ASSetAllSpeeds(SLOW),
-                ASShiftNortheastSteps(1),
+                ASWalkNortheastSteps(1),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
@@ -88,10 +90,10 @@ script = EventScript(
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
                 ASFixedFCoordOff(),
-                ASShiftSoutheastSteps(1),
-                ASShiftSouthwestSteps(4),
-                ASShiftNorthwestSteps(1),
-                ASShiftSouthwestSteps(1),
+                ASWalkSoutheastSteps(1),
+                ASWalkSouthwestSteps(4),
+                ASWalkNorthwestSteps(1),
+                ASWalkSouthwestSteps(1),
                 ASVisibilityOff(),
                 ASPlaySound(sound=SO016_OPEN_DOOR, channel=6),
                 ASPause(1),
@@ -118,8 +120,8 @@ script = EventScript(
                 ASPause(1),
                 ASPlaySound(sound=SO016_OPEN_DOOR, channel=6),
                 ASVisibilityOn(),
-                ASShiftNortheastSteps(1),
-                ASShiftSoutheastSteps(1),
+                ASWalkNortheastSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASWalkToXYCoords(x=6, y=16),
                 ASStopSound(),
                 ASFaceSouthwest(),

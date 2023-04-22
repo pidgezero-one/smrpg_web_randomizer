@@ -1,4 +1,6 @@
-# E2531_STAR_HILL_2ND_ROOM_WISH_BOTTOM_RIGHT
+# pylint: disable=C0301
+
+"""E2531_STAR_HILL_2ND_ROOM_WISH_BOTTOM_RIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -38,7 +40,7 @@ script = EventScript(
                 ),
                 ASJumpToHeight(108),
                 ASWalk1StepNortheast(),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
             ],
         ),
         RunDialog(
@@ -81,9 +83,9 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASStartLoopNTimes(8),
-                ASShiftNorthPixels(1),
+                ASWalkNorthPixels(1),
                 ASPause(2),
-                ASShiftSouthPixels(1),
+                ASWalkSouthPixels(1),
                 ASPause(16),
                 ASEndLoop(),
             ],
@@ -131,7 +133,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepSouthwest(),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASVisibilityOff(),
             ],
         ),

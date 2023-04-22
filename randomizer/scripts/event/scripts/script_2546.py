@@ -1,4 +1,6 @@
-# E2546_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_TRAMPOLINE_TO_LONE_CHEST
+# pylint: disable=C0301
+
+"""E2546_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_TRAMPOLINE_TO_LONE_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,7 +18,7 @@ script = EventScript(
                 ASSequencePlaybackOff(),
                 ASShadowOff(),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
             ],
         ),
         SetAsyncActionScript(MARIO, A0408_JUMP_ON_SAVE_BLOCK),

@@ -1,4 +1,6 @@
-# E2544_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_LOADER
+# pylint: disable=C0301
+
+"""E2544_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,7 +8,7 @@ script = EventScript(
     [
         PlaySound(sound=SO019_LONG_FALL, channel=6),
         FreezeCamera(),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2544_apply_tile_mod_10"]),
         SetBit(TEMP_7043_0),
         ApplyTileModToLevel(
@@ -23,7 +25,7 @@ script = EventScript(
                     TEMP_7043_0,
                     ["EVENT_2544_action_queue_sync_11_SUBSCRIPT_shift_z_up_steps_4"],
                 ),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASFaceSouth(),
                 ASShiftZUpSteps(
                     11,
@@ -38,14 +40,14 @@ script = EventScript(
             subscript=[
                 ASSetPriority(3),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
             ],
         ),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceNortheast(),
                 ASVisibilityOff(),
             ],
@@ -54,7 +56,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceNortheast(),
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),

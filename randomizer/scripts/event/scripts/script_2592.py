@@ -1,4 +1,6 @@
-# E2592_ABYSS_FALL_OFF_BEFORE_FIRST_BOSS
+# pylint: disable=C0301
+
+"""E2592_ABYSS_FALL_OFF_BEFORE_FIRST_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
         ClearBit(TEMP_7044_6),
         Jmp(["EVENT_2592_pause_0"]),
         SetBit(TEMP_7044_6, identifier="EVENT_2592_set_bit_4"),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 6, ["EVENT_2592_action_queue_sync_16"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_2592_action_queue_sync_16"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_2592_action_queue_sync_16"]),

@@ -1,4 +1,6 @@
-# E2338_TOWER_BUTTON_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2338_TOWER_BUTTON_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

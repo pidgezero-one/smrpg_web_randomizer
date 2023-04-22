@@ -1,4 +1,6 @@
-# E2427_FOREST_UNDERGROUND_2_LOADER
+# pylint: disable=C0301
+
+"""E2427_FOREST_UNDERGROUND_2_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

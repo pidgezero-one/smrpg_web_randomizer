@@ -1,4 +1,6 @@
-# E3354_KEEP_BARREL_COUNT_LOADER
+# pylint: disable=C0301
+
+"""E3354_KEEP_BARREL_COUNT_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

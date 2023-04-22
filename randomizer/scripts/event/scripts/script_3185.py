@@ -1,4 +1,6 @@
-# E3185_PA_MOLE_IN_DEEP_MINES
+# pylint: disable=C0301
+
+"""E3185_PA_MOLE_IN_DEEP_MINES"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -42,7 +44,7 @@ script = EventScript(
             subscript=[
                 ASSetAllSpeeds(FAST),
                 ASWalk1StepSoutheast(),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASWalk1StepNorthwest(),
                 ASFaceSouthwest(),
                 ASSetAllSpeeds(NORMAL),
@@ -64,7 +66,7 @@ script = EventScript(
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
                 ASWalkToXYCoords(x=6, y=24),
                 ASWalkToXYCoords(x=4, y=20),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASVisibilityOff(),
             ],

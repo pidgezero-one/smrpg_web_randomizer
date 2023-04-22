@@ -1,4 +1,6 @@
-# E3745_NIMBUS_BACK_EXIT_INITIATE_FALLING_SEQUENCE
+# pylint: disable=C0301
+
+"""E3745_NIMBUS_BACK_EXIT_INITIATE_FALLING_SEQUENCE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -177,8 +179,8 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestSteps(2),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestSteps(2),
+                ASWalkSouthwestPixels(8),
             ],
         ),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

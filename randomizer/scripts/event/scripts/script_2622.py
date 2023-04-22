@@ -1,4 +1,6 @@
-# E2622_ENDING_CREDITS_KEEP
+# pylint: disable=C0301
+
+"""E2622_ENDING_CREDITS_KEEP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkToXYCoords(x=1, y=4),
-                ASShiftWestPixels(8),
+                ASWalkWestPixels(8),
                 ASWalk1StepNorth(),
             ],
         ),

@@ -1,4 +1,6 @@
-# E1912_ABYSS_MACHINE_ARROW_HIT
+# pylint: disable=C0301
+
+"""E1912_ABYSS_MACHINE_ARROW_HIT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,7 +15,7 @@ script = EventScript(
                 ASPlaySound(sound=SO066_KICK_BALL_SHELL, channel=4),
                 ASJumpToHeight(128),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASVisibilityOff(),
                 ASClearBit(TEMP_7043_0),
             ],

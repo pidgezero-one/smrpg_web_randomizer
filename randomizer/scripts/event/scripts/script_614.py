@@ -1,4 +1,6 @@
-# E0614_MARRYMORE_SUITE_TIP_BELLHOP
+# pylint: disable=C0301
+
+"""E0614_MARRYMORE_SUITE_TIP_BELLHOP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -33,7 +35,7 @@ script = EventScript(
         Jmp(["EVENT_614_pause_17"]),
         RunDialog(
             dialog_id=DI0987_CANT_AFFORD_TIP,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,
@@ -56,7 +58,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(FAST),
                 ASWalk1StepSoutheast(),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
@@ -81,7 +83,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASWalk1StepNorthwest(),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASVisibilityOff(),
             ],
             identifier="EVENT_614_action_queue_async_29",

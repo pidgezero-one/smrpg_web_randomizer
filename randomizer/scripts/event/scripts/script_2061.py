@@ -1,4 +1,6 @@
-# E2061_MONSTRO_TOWN_STAR
+# pylint: disable=C0301
+
+"""E2061_MONSTRO_TOWN_STAR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -34,7 +36,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(3),
+                ASWalkNorthwestPixels(3),
                 ASPlaySound(sound=SO038_TADPOLE_POND_STAFF_MI, channel=6),
                 ASPause(20),
                 ASSetSpriteSequence(
@@ -45,7 +47,7 @@ script = EventScript(
                     mirror_sprite=True,
                 ),
                 ASPause(5),
-                ASShiftSoutheastPixels(3),
+                ASWalkSoutheastPixels(3),
                 ASPlaySound(sound=SO039_TADPOLE_POND_STAFF_FA, channel=6),
                 ASPause(10),
                 ASSetSpriteSequence(
@@ -71,7 +73,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(3),
+                ASWalkNorthwestPixels(3),
                 ASPlaySound(sound=SO040_TADPOLE_POND_STAFF_SO, channel=6),
                 ASPause(20),
                 ASSetSpriteSequence(
@@ -82,7 +84,7 @@ script = EventScript(
                     mirror_sprite=True,
                 ),
                 ASPause(5),
-                ASShiftSoutheastPixels(3),
+                ASWalkSoutheastPixels(3),
                 ASPlaySound(sound=SO041_TADPOLE_POND_STAFF_LA, channel=6),
                 ASPause(10),
                 ASSetSpriteSequence(

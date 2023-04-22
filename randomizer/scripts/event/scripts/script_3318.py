@@ -1,4 +1,6 @@
-# E3318_SET_OERLIKON_PACK
+# pylint: disable=C0301
+
+"""E3318_SET_OERLIKON_PACK"""
 
 from randomizer.scripts.event.script_imports import *
 

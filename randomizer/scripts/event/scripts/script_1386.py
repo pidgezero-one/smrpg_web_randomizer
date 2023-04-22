@@ -1,4 +1,6 @@
-# E1386_VISTA_HILL_LOADER_CONTINUED
+# pylint: disable=C0301
+
+"""E1386_VISTA_HILL_LOADER_CONTINUED"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASTransferToXYZF(x=4, y=26, z=0, direction=EAST),
-                ASShiftNortheastPixels(1),
+                ASWalkNortheastPixels(1),
                 ASFaceNorthwest(),
                 ASSequencePlaybackOff(),
             ],
@@ -26,18 +28,18 @@ script = EventScript(
         FadeInFromBlack(sync=True, duration=130),
         ActionQueueSync(
             target=LAYER_1,
-            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASShiftEastSteps(1)],
+            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalkEastSteps(1)],
         ),
         ActionQueueSync(
             target=LAYER_2,
-            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASShiftWestSteps(1)],
+            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalkWestSteps(1)],
         ),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftEastSteps(1),
+                ASWalkEastSteps(1),
             ],
         ),
         Pause(50),
@@ -50,9 +52,9 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSoutheastSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSoutheastSteps(6),
+                ASWalkSoutheastSteps(6),
                 ASVisibilityOff(),
                 ASPause(20),
             ],

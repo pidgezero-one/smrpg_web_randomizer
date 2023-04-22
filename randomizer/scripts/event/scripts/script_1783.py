@@ -1,4 +1,6 @@
-# E1783_LANDS_END_FINAL_WHIRLPOOL_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1783_LANDS_END_FINAL_WHIRLPOOL_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

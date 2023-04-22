@@ -1,4 +1,6 @@
-# referenced by battle_events BE0054_CLOAKER_TEAMS_UP_WITH_EARTHLINK, battle_events BE0027_BEAT_TENTACLES_MOVE_ON_TO_NEXT, battle_events BE0053_DOMINO_TEAMS_UP_WITH_MAD_ADDER
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0054_CLOAKER_TEAMS_UP_WITH_EARTHLINK, battle_events BE0027_BEAT_TENTACLES_MOVE_ON_TO_NEXT, battle_events BE0053_DOMINO_TEAMS_UP_WITH_MAD_ADDER"""
 
 from randomizer.scripts.animation.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3345_VOLCANO_CHASE_SEQEUNCE
+# pylint: disable=C0301
+
+"""E3345_VOLCANO_CHASE_SEQEUNCE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -20,7 +22,7 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(NPC_0, R394_VOLCANO_POSTCD_AREA_05),
         CreatePacketAtObjectCoords(
             packet=P045_TELEPORTATION_SHINE,
-            object=NPC_0,
+            target_npc=NPC_0,
             destinations=["EVENT_3345_pause_12"],
         ),
         Pause(1, identifier="EVENT_3345_pause_12"),
@@ -39,7 +41,7 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(NPC_1, R394_VOLCANO_POSTCD_AREA_05),
         CreatePacketAtObjectCoords(
             packet=P045_TELEPORTATION_SHINE,
-            object=NPC_1,
+            target_npc=NPC_1,
             destinations=["EVENT_3345_pause_25"],
         ),
         Pause(1, identifier="EVENT_3345_pause_25"),
@@ -53,12 +55,12 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(NPC_2, R394_VOLCANO_POSTCD_AREA_05),
         CreatePacketAtObjectCoords(
             packet=P045_TELEPORTATION_SHINE,
-            object=NPC_2,
+            target_npc=NPC_2,
             destinations=["EVENT_3345_create_packet_at_npc_coords_32"],
         ),
         CreatePacketAtObjectCoords(
             packet=P045_TELEPORTATION_SHINE,
-            object=NPC_0,
+            target_npc=NPC_0,
             destinations=["EVENT_3345_ret_33"],
             identifier="EVENT_3345_create_packet_at_npc_coords_32",
         ),

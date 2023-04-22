@@ -1,4 +1,6 @@
-# E2208_KEEP_1ST_BOSS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2208_KEEP_1ST_BOSS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

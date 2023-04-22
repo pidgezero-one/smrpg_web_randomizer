@@ -1,4 +1,6 @@
-# E2231_KEEP_DARK_ROOM_SUMMON_GOOMBA_3
+# pylint: disable=C0301
+
+"""E2231_KEEP_DARK_ROOM_SUMMON_GOOMBA_3"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,6 +1,8 @@
 """Int subclass instances representing valid sprite sequence playback speeds."""
 
-from classes import SequenceSpeed
+from randomizer.types.overworld_scripts.action_scripts.constants.classes import (
+    SequenceSpeed,
+)
 
 NORMAL = SequenceSpeed(0)
 FAST = SequenceSpeed(1)

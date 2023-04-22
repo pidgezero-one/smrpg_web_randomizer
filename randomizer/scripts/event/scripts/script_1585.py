@@ -1,4 +1,6 @@
-# E1585_MIDAS_RIVER_BARREL_SUBROUTINE
+# pylint: disable=C0301
+
+"""E1585_MIDAS_RIVER_BARREL_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 

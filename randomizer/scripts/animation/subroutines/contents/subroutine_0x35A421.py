@@ -1,4 +1,6 @@
-# referenced by ally_spells Sleepy Time
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Sleepy Time"""
 
 from randomizer.scripts.animation.script_imports import *
 

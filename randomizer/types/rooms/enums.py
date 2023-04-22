@@ -1,49 +1,59 @@
+"""Enums supporting development surrounding room contents."""
+
 from enum import Enum, IntEnum
 
 
 class ExtraSpriteActions(str, Enum):
-    Swim = "swim"
-    Whirl = "whirl"
-    Recoil = "recoil"
-    SurpriseFrame = "surprise_frame"
-    SurpriseFrameBack = "surprise_frame_back"
-    StandingSleep = "standing_sleep"
-    LeanBack = "lean_back"
-    LeanBack2 = "lean_back_2"
-    LeanForward = "lean_forward"
-    Salute = "salute"
-    DownPipe = "down_pipe"
-    PraiseFront = "praise_front"
-    PraiseBack = "praise_back"
-    DispleasedFront = "displeased_front"
-    DispleasedBack = "displeased_back"
-    TumbleFront = "tumble_front"
-    TumbleBack = "tumble_back"
-    Exor = "exor"
-    Challenge = "challenge"
-    ChallengeNimbus = "challenge_nimbus"
-    Crouch = "crouch"
-    Yoshi = "yoshi"
-    Climb = "climb"
-    ClimbFrame = "climb_frame"
-    Blackjack = "blackjack"
-    Flop = "flop"
-    Dizzy = "dizzy"
-    Wobble = "wobble"
-    Sleep = "sleep"
-    HoldStar = "hold_star"
-    LookAtDoll = "look_at_doll"
-    Defend = "defend"
-    Mute = "mute"
+    """Enum of specific actions that a sprite (usually of a playable character)
+    can be expected to perform in any given room."""
+
+    SWIM = "swim"
+    WHIRL = "whirl"
+    RECOIL = "recoil"
+    SURPRISE_FRAME = "surprise_frame"
+    SURPRISE_FRAME_BACK = "surprise_frame_back"
+    STANDING_SLEEP = "standing_sleep"
+    LEAN_BACK = "lean_back"
+    LEAN_BACK_2 = "lean_back_2"
+    LEAN_FORWARD = "lean_forward"
+    SALUTE = "salute"
+    DOWN_PIPE = "down_pipe"
+    PRAISE_FRONT = "praise_front"
+    PRAISE_BACK = "praise_back"
+    DISPLEASED_FRONT = "displeased_front"
+    DISPLEASED_BACK = "displeased_back"
+    TUMBLE_FRONT = "tumble_front"
+    TUMBLE_BACK = "tumble_back"
+    EXOR = "exor"
+    CHALLENGE = "challenge"
+    CHALLENGE_NIMBUS = "challenge_nimbus"
+    CROUCH = "crouch"
+    YOSHI = "yoshi"
+    CLIMB = "climb"
+    CLIMB_FRAME = "climb_frame"
+    BLACKJACK = "blackjack"
+    FLOP = "flop"
+    DIZZY = "dizzy"
+    WOBBLE = "wobble"
+    SLEEP = "sleep"
+    HOLD_STAR = "hold_star"
+    LOOK_AT_DOLL = "look_at_doll"
+    DEFEND = "defend"
+    MUTE = "mute"
 
 
 class ObjectType(IntEnum):
+    """Enum of NPC subtypes that control what properties they should have
+    in the ROM."""
+
     OBJECT = 0
     CHEST = 1
     BATTLE = 2
 
 
 class EventInitiator(IntEnum):
+    """Enum of the rules by which an NPC can have its interaction triggered."""
+
     NONE = 0x0
     PRESS_A_FROM_ANY_SIDE = 0x1
     PRESS_A_FROM_FRONT = 0x2
@@ -60,6 +70,8 @@ class EventInitiator(IntEnum):
 
 
 class PostBattleBehaviour(IntEnum):
+    """Enum of the ways NPCs should behave in the overworld after defeated in battle"""
+
     REMOVE_PERMANENTLY = 0x0
     REMOVE_UNTIL_RELOAD = 0x1
     DO_NOT_REMOVE = 0x2
@@ -69,18 +81,24 @@ class PostBattleBehaviour(IntEnum):
 
 
 class EdgeDirection(IntEnum):
+    """Enum of directions an event or exit tile can face"""
+
     SOUTHEAST = 0x00
     SOUTHWEST = 0x01
 
 
 class ExitType(IntEnum):
+    """Enum of room exit types"""
+
     ROOM = 0x00
     MAP_LOCATION = 0x01
 
 
 class BufferType(IntEnum):
-    _3_SPRITES_PER_ROW = 0x00
-    _4_SPRITES_PER_ROW = 0x01
+    """Enum of partition buffer types"""
+
+    THREE_SPRITES_PER_ROW = 0x00
+    FOUR_SPRITES_PER_ROW = 0x01
     TREASURE_CHEST = 0x02
     EMPTY_TREASURE_CHEST = 0x03
     COINS = 0x04
@@ -90,11 +108,13 @@ class BufferType(IntEnum):
 
 
 class BufferSpace(IntEnum):
-    _0_BYTES = 0x00
-    _256_BYTES = 0x01
-    _512_BYTES = 0x02
-    _768_BYTES = 0x03
-    _1024_BYTES = 0x04
-    _1280_BYTES = 0x05
-    _1536_BYTES = 0x06
-    _1792_BYTES = 0x07
+    """Enum of partition buffer sizes"""
+
+    BYTES_0 = 0x00
+    BYTES_256 = 0x01
+    BYTES_512 = 0x02
+    BYTES_768 = 0x03
+    BYTES_1024 = 0x04
+    BYTES_1280 = 0x05
+    BYTES_1536 = 0x06
+    BYTES_1792 = 0x07

@@ -1,4 +1,6 @@
-# E3388_SHIP_BOSS_ROOM_PERISCOPE
+# pylint: disable=C0301
+
+"""E3388_SHIP_BOSS_ROOM_PERISCOPE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -35,7 +37,7 @@ script = EventScript(
         CircleMaskShrinkToObject(target=MARIO, width=96, speed=8, static=True),
         RunDialog(
             dialog_id=DI2266_EMPTY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=False,
             sync=True,
             multiline=False,
@@ -52,7 +54,7 @@ script = EventScript(
             z=0,
         ),
         RunEventAsSubroutine(E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
-        ActionQueueAsync(target=MARIO, subscript=[ASShiftNortheastPixels(4)]),
+        ActionQueueAsync(target=MARIO, subscript=[ASWalkNortheastPixels(4)]),
         FadeInFromBlack(sync=False),
         Return(identifier="EVENT_3388_ret_64"),
     ]

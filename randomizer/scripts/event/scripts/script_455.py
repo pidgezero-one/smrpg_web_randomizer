@@ -1,4 +1,6 @@
-# E0455_RESUMMON_PIPE_VAULT_ENEMIES
+# pylint: disable=C0301
+
+"""E0455_RESUMMON_PIPE_VAULT_ENEMIES"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,12 +32,12 @@ script = EventScript(
         ),
         Set7000ToCurrentLevel(),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 33, ["EVENT_455_set_27"]),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 20),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW20_PIPE_VAULT),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
-                ASShiftEastPixels(11),
-                ASShiftNortheastPixels(4),
+                ASWalkEastPixels(11),
+                ASWalkNortheastPixels(4),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
             ],
@@ -59,7 +61,9 @@ script = EventScript(
         JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_455_ret_26"]),
         RunEventAsSubroutine(E3901_YOSTER_ISLE_STAR_PIECE_SIGNAL),
         Return(identifier="EVENT_455_ret_26"),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 52, identifier="EVENT_455_set_27"),
+        SetVarToConst(
+            CURRENT_OVERWORLD_MARKER_ID, OW52_YOSTER_ISLE, identifier="EVENT_455_set_27"
+        ),
         JmpIfBitSet(TEMP_7044_7, ["EVENT_455_run_event_as_subroutine_25"]),
         FadeInFromBlack(sync=False),
         Return(),

@@ -1,4 +1,6 @@
-# E1359_CURTAIN_GAME_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1359_CURTAIN_GAME_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,8 +10,8 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_4,
             subscript=[
-                ASShiftSouthPixels(22),
-                ASShiftEastPixels(7),
+                ASWalkSouthPixels(22),
+                ASWalkEastPixels(7),
                 ASSetPriority(2),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
@@ -18,15 +20,15 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_5,
             subscript=[
-                ASShiftNortheastPixels(5),
-                ASShiftNorthwestPixels(4),
+                ASWalkNortheastPixels(5),
+                ASWalkNorthwestPixels(4),
                 ASFaceSoutheast(),
                 ASSetPriority(3),
                 ASShadowOff(),
             ],
         ),
         ActionQueueAsync(
-            target=LAYER_1, subscript=[ASShiftEastPixels(8), ASShiftNorthPixels(8)]
+            target=LAYER_1, subscript=[ASWalkEastPixels(8), ASWalkNorthPixels(8)]
         ),
         ApplySolidityModToLevel(
             permanent=True,
@@ -38,10 +40,10 @@ script = EventScript(
         SummonObjectToCurrentLevel(NPC_8),
         SummonObjectToCurrentLevel(NPC_9),
         ActionQueueAsync(
-            target=NPC_8, subscript=[ASShiftWestPixels(8), ASShiftSouthPixels(8)]
+            target=NPC_8, subscript=[ASWalkWestPixels(8), ASWalkSouthPixels(8)]
         ),
         ActionQueueAsync(
-            target=NPC_9, subscript=[ASShiftWestPixels(8), ASShiftSouthPixels(8)]
+            target=NPC_9, subscript=[ASWalkWestPixels(8), ASWalkSouthPixels(8)]
         ),
         JmpIfBitSet(
             CURTAIN_MINIGAME_COMPLETED,

@@ -1,4 +1,6 @@
-# E2404_8BIT_END_WEST
+# pylint: disable=C0301
+
+"""E2404_8BIT_END_WEST"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,12 +20,12 @@ script = EventScript(
                 ASPause(64),
                 ASSetVRAMPriority(PRIORITY_3),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftWestPixels(6),
+                ASWalkWestPixels(6),
                 ASSetSpriteSequence(index=3, is_sequence=True, looping=True),
                 ASPause(54),
                 ASPause(16),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
-                ASShiftEastPixels(6),
+                ASWalkEastPixels(6),
                 ASSetVRAMPriority(PRIORITY_3),
                 ASSetSpriteSequence(
                     index=4, is_sequence=True, looping=True, mirror_sprite=True
@@ -38,13 +40,13 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(NORMAL),
                 ASShadowOn(),
-                ASShiftSoutheastSteps(7),
-                ASShiftSoutheastPixels(8),
-                ASShiftNortheastPixels(8),
+                ASWalkSoutheastSteps(7),
+                ASWalkSoutheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASJumpToHeight(108),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASJumpToHeight(108),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
             ],
         ),
         ActionQueueSync(
@@ -54,7 +56,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=4, is_sequence=True, looping=True),
             ],
         ),
-        ActionQueueAsync(target=MARIO, subscript=[ASShiftNorthwestSteps(8)]),
+        ActionQueueAsync(target=MARIO, subscript=[ASWalkNorthwestSteps(8)]),
         Jmp(["EVENT_2403_action_queue_async_9_"]),
         Return(identifier="EVENT_2404_ret_13"),
     ]

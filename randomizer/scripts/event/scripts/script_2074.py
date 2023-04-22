@@ -1,11 +1,13 @@
-# E2074_ENTER_MONSTRO_SEALED_ROOM
+# pylint: disable=C0301
+
+"""E2074_ENTER_MONSTRO_SEALED_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
         EnterArea(room_id=R351_CULEXS_ROOM, face_direction=NORTH, x=29, y=45, z=0),
-        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASShiftEastPixels(12)]),
+        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkEastPixels(12)]),
         SetSyncActionScript(LAYER_1, A0575_MONSTRO_LAIR_TRANSPARENCY_LAYER),
         RunEventAsSubroutine(E0816_MONSTRO_SUPERBOSS_SHUFFLED_NPC_ANIMATION_LOADER),
         FadeInFromBlack(sync=False, duration=70),

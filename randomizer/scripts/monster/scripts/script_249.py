@@ -1,4 +1,4 @@
-# 249 - Johnny
+"""249 - Johnny"""
 
 from randomizer.scripts.monster.script_imports import *
 

@@ -1,49 +1,133 @@
-# E3376_KEEP_6_DOOR_LOBBY_LOADER
+# pylint: disable=C0301
+
+"""E3376_KEEP_6_DOOR_LOBBY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	SpeedUpMusicToDefault(),
-	CopyVarToVar(from_var=UNKNOWN_70E7, to_var=PRIMARY_TEMP_7000),
-	JmpIf7000AllBitsClear(destinations=["EVENT_3376_jmp_if_7000_all_bits_clear_5"]),
-	ApplyTileModToLevel(use_alternate=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=0),
-	ApplySolidityModToLevel(permanent=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=0),
-	JmpIf7000AllBitsClear(destinations=["EVENT_3376_set_7000_to_70A0_short_mem_8"], identifier="EVENT_3376_jmp_if_7000_all_bits_clear_5"),
-	ApplyTileModToLevel(use_alternate=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=1),
-	ApplySolidityModToLevel(permanent=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=1),
-	CopyVarToVar(from_var=UNKNOWN_70E8, to_var=PRIMARY_TEMP_7000, identifier="EVENT_3376_set_7000_to_70A0_short_mem_8"),
-	JmpIf7000AllBitsClear(destinations=["EVENT_3376_jmp_if_7000_all_bits_clear_12"]),
-	ApplyTileModToLevel(use_alternate=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=2),
-	ApplySolidityModToLevel(permanent=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=2),
-	JmpIf7000AllBitsClear(destinations=["EVENT_3376_set_7000_to_70A0_short_mem_15"], identifier="EVENT_3376_jmp_if_7000_all_bits_clear_12"),
-	ApplyTileModToLevel(use_alternate=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=3),
-	ApplySolidityModToLevel(permanent=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=3),
-	CopyVarToVar(from_var=UNKNOWN_70E9, to_var=PRIMARY_TEMP_7000, identifier="EVENT_3376_set_7000_to_70A0_short_mem_15"),
-	JmpIf7000AllBitsClear(destinations=["EVENT_3376_jmp_if_7000_all_bits_clear_19"]),
-	ApplyTileModToLevel(use_alternate=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=4),
-	ApplySolidityModToLevel(permanent=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=4),
-	JmpIf7000AllBitsClear(destinations=["EVENT_3376_jmp_if_bit_set_22"], identifier="EVENT_3376_jmp_if_7000_all_bits_clear_19"),
-	ApplyTileModToLevel(use_alternate=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=5),
-	ApplySolidityModToLevel(permanent=True, room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, mod_id=5),
-	JmpIfBitSet(UNKNOWN_BOWSERS_KEEP_707F_0, ["EVENT_3356_clear_bit_5"], identifier="EVENT_3376_jmp_if_bit_set_22"),
-	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
-	Return(),
-	SetVarToConst(KEEP_DOOR_LIVES, 10, identifier="EVENT_3376_clear_attempt_counter"),
-	Mem7000AndConst(0x0007),
-	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ROSE_WAY_703E),
-	CopyVarToVar(from_var=KEEP_DOORS_EXIT_TYPE_2, to_var=PRIMARY_TEMP_7000),
-	Mem7000OrVar(ROSE_WAY_703E),
-	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=KEEP_DOORS_EXIT_TYPE_2),
-	CopyVarToVar(from_var=ROSE_WAY_703E, to_var=PRIMARY_TEMP_7000),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_3376_enter_area_65"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_3376_enter_area_67"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_3376_enter_area_69"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_3376_enter_area_71"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 6, ["EVENT_3376_enter_area_73"]),
-	JmpToEvent(E1957_KEEP_DOOR_5_CONTAINER),
-	JmpToEvent(E1959_KEEP_DOOR_4_CONTAINER, identifier="EVENT_3376_enter_area_65"),
-	JmpToEvent(E1961_KEEP_DOOR_6_CONTAINER, identifier="EVENT_3376_enter_area_67"),
-	JmpToEvent(E1963_KEEP_DOOR_3_CONTAINER, identifier="EVENT_3376_enter_area_69"),
-	JmpToEvent(E1965_KEEP_DOOR_1_CONTAINER, identifier="EVENT_3376_enter_area_71"),
-	JmpToEvent(E1967_KEEP_DOOR_2_CONTAINER, identifier="EVENT_3376_enter_area_73")
-])
+script = EventScript(
+    [
+        SpeedUpMusicToDefault(),
+        CopyVarToVar(from_var=UNKNOWN_70E7, to_var=PRIMARY_TEMP_7000),
+        JmpIf7000AllBitsClear(
+            bits=[], destinations=["EVENT_3376_jmp_if_7000_all_bits_clear_5"]
+        ),
+        ApplyTileModToLevel(
+            use_alternate=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=0,
+        ),
+        ApplySolidityModToLevel(
+            permanent=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=0,
+        ),
+        JmpIf7000AllBitsClear(
+            bits=[],
+            destinations=["EVENT_3376_set_7000_to_70A0_short_mem_8"],
+            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_5",
+        ),
+        ApplyTileModToLevel(
+            use_alternate=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=1,
+        ),
+        ApplySolidityModToLevel(
+            permanent=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=1,
+        ),
+        CopyVarToVar(
+            from_var=UNKNOWN_70E8,
+            to_var=PRIMARY_TEMP_7000,
+            identifier="EVENT_3376_set_7000_to_70A0_short_mem_8",
+        ),
+        JmpIf7000AllBitsClear(
+            bits=[], destinations=["EVENT_3376_jmp_if_7000_all_bits_clear_12"]
+        ),
+        ApplyTileModToLevel(
+            use_alternate=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=2,
+        ),
+        ApplySolidityModToLevel(
+            permanent=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=2,
+        ),
+        JmpIf7000AllBitsClear(
+            bits=[],
+            destinations=["EVENT_3376_set_7000_to_70A0_short_mem_15"],
+            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_12",
+        ),
+        ApplyTileModToLevel(
+            use_alternate=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=3,
+        ),
+        ApplySolidityModToLevel(
+            permanent=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=3,
+        ),
+        CopyVarToVar(
+            from_var=UNKNOWN_70E9,
+            to_var=PRIMARY_TEMP_7000,
+            identifier="EVENT_3376_set_7000_to_70A0_short_mem_15",
+        ),
+        JmpIf7000AllBitsClear(
+            bits=[], destinations=["EVENT_3376_jmp_if_7000_all_bits_clear_19"]
+        ),
+        ApplyTileModToLevel(
+            use_alternate=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=4,
+        ),
+        ApplySolidityModToLevel(
+            permanent=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=4,
+        ),
+        JmpIf7000AllBitsClear(
+            bits=[],
+            destinations=["EVENT_3376_jmp_if_bit_set_22"],
+            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_19",
+        ),
+        ApplyTileModToLevel(
+            use_alternate=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=5,
+        ),
+        ApplySolidityModToLevel(
+            permanent=True,
+            room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
+            mod_id=5,
+        ),
+        JmpIfBitSet(
+            UNKNOWN_BOWSERS_KEEP_707F_0,
+            ["EVENT_3356_clear_bit_5"],
+            identifier="EVENT_3376_jmp_if_bit_set_22",
+        ),
+        RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
+        Return(),
+        SetVarToConst(
+            KEEP_DOOR_LIVES, 10, identifier="EVENT_3376_clear_attempt_counter"
+        ),
+        Mem7000AndConst(0x0007),
+        CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ROSE_WAY_703E),
+        CopyVarToVar(from_var=KEEP_DOORS_EXIT_TYPE_2, to_var=PRIMARY_TEMP_7000),
+        Mem7000OrVar(ROSE_WAY_703E),
+        CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=KEEP_DOORS_EXIT_TYPE_2),
+        CopyVarToVar(from_var=ROSE_WAY_703E, to_var=PRIMARY_TEMP_7000),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_3376_enter_area_65"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_3376_enter_area_67"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_3376_enter_area_69"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_3376_enter_area_71"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 6, ["EVENT_3376_enter_area_73"]),
+        JmpToEvent(E1957_KEEP_DOOR_5_CONTAINER),
+        JmpToEvent(E1959_KEEP_DOOR_4_CONTAINER, identifier="EVENT_3376_enter_area_65"),
+        JmpToEvent(E1961_KEEP_DOOR_6_CONTAINER, identifier="EVENT_3376_enter_area_67"),
+        JmpToEvent(E1963_KEEP_DOOR_3_CONTAINER, identifier="EVENT_3376_enter_area_69"),
+        JmpToEvent(E1965_KEEP_DOOR_1_CONTAINER, identifier="EVENT_3376_enter_area_71"),
+        JmpToEvent(E1967_KEEP_DOOR_2_CONTAINER, identifier="EVENT_3376_enter_area_73"),
+    ]
+)

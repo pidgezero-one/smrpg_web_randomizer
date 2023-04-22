@@ -1,4 +1,6 @@
-from .classes import PaletteType
+"""Int subclass instances representing special effects that can be applied to a palette."""
+
+from randomizer.types.overworld_scripts.constants.classes import PaletteType
 
 NOTHING = PaletteType(0x00)
 GLOW = PaletteType(0x06)

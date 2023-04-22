@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from randomizer.types.enemy_attacks.constants import ENEMY_ATTACK_BASE_ADDRESS
-from randomizer.types.spells.enums import SpellBoosts, Status
+from randomizer.types.spells.enums import TempStatBuff, Status
 from randomizer.types.patch.classes import Patch
 from randomizer.types.numbers.classes import BitMapSet, ByteField, UInt4, UInt8
 from randomizer.types.world.classes import GameWorld
@@ -20,7 +20,7 @@ class EnemyAttack:
     _damageless_flag_2: bool = False
     _hit_rate: int = 0
     _status_effects: List[Status] = []
-    _buffs: List[SpellBoosts] = []
+    _buffs: List[TempStatBuff] = []
 
     _world: Optional[GameWorld]
 
@@ -106,11 +106,11 @@ class EnemyAttack:
         self._status_effects = status_effects
 
     @property
-    def buffs(self) -> List[SpellBoosts]:
+    def buffs(self) -> List[TempStatBuff]:
         """The list of temporary buffs to be applied by this attack."""
         return self._buffs
 
-    def set_buffs(self, buffs: List[SpellBoosts]) -> None:
+    def set_buffs(self, buffs: List[TempStatBuff]) -> None:
         """Overwrite the list of temporary buffs to be applied by this attack."""
         self._buffs = buffs
 

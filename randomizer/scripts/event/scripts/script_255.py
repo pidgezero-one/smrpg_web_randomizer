@@ -1,4 +1,6 @@
-# E0255_EXP_STAR_HIT
+# pylint: disable=C0301
+
+"""E0255_EXP_STAR_HIT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -21,7 +23,9 @@ script = EventScript(
         UnfreezeAllNPCs(),
         Pause(3),
         CreatePacketAtObjectCoords(
-            packet=P031_LEVELUP_TEXT, object=MARIO, destinations=["EVENT_255_set_bit_5"]
+            packet=P031_LEVELUP_TEXT,
+            target_npc=MARIO,
+            destinations=["EVENT_255_set_bit_5"],
         ),
         PlaySound(sound=SO095_LEVEL_UP_WITH_STAR, channel=6),
         SetVarToConst(TIMER_701E, 64),

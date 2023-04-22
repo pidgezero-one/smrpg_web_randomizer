@@ -1,4 +1,6 @@
-# E1675_MARIO_BUMPED_OFF_CANNON
+# pylint: disable=C0301
+
+"""E1675_MARIO_BUMPED_OFF_CANNON"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,15 +24,15 @@ script = EventScript(
         ),
         ResumeActionScript(MEM_70A8),
         MoveScriptToBackgroundThread2(),
-        ActionQueueAsync(target=MARIO, subscript=[ASShiftNorthwestSteps(5)]),
+        ActionQueueAsync(target=MARIO, subscript=[ASWalkNorthwestSteps(5)]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastPixels(4),
-                ASShiftNorthwestPixels(8),
-                ASShiftSoutheastPixels(8),
-                ASShiftNorthwestPixels(4),
+                ASWalkSoutheastPixels(4),
+                ASWalkNorthwestPixels(8),
+                ASWalkSoutheastPixels(8),
+                ASWalkNorthwestPixels(4),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -53,7 +55,7 @@ script = EventScript(
         ),
         Pause(1, identifier="EVENT_1675_pause_7"),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1675_action_queue_sync_11"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1675_action_queue_sync_11"]),
         Jmp(["EVENT_1675_pause_7"]),
         ActionQueueSync(
             target=MARIO,

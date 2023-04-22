@@ -1,4 +1,4 @@
-# behaviour_18_0x35099D
+"""behaviour_18_0x35099D animation"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -35,7 +35,7 @@ script = SubroutineOrBanklessScript(
             apply_to_z=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            set_speed=True,
+            should_set_speed=True,
         ),
         Db(bytearray(b"\x12A")),
         Db(bytearray(b"\x15")),

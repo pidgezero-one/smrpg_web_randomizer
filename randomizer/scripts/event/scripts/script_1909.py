@@ -1,4 +1,6 @@
-# E1909_ABYSS_CONVEYOR_BELT_JABIT_OR_BOWYER
+# pylint: disable=C0301
+
+"""E1909_ABYSS_CONVEYOR_BELT_JABIT_OR_BOWYER"""
 
 from randomizer.scripts.event.script_imports import *
 

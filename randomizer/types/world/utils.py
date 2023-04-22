@@ -1,7 +1,10 @@
-from typing import Any, Optional, Type
+"""Helper functions for settings."""
+
+from typing import Any, Optional, Type, List, Dict
 from re import compile as regex_compile
+from randomizer.types.world.exceptions import RandomizerSettingsException
 from randomizer.types.world.flags.categories.categories import (
-    TFlagCategory,
+    FlagCategoryT,
 )
 from randomizer.types.world.flags.classes import (
     BooleanFlag,
@@ -15,7 +18,8 @@ from randomizer.types.world.constants import B64_TABLE
 from randomizer.types.world.flags.enums import FlagOptions
 
 
-def get_flag_string_from_flag_collection(categories: list[Type[TFlagCategory]]) -> str:
+def get_flag_string_from_flag_collection(categories: list[Type[FlagCategoryT]]) -> str:
+    """Converts a series of settings into a copy-pastable string."""
     flag_strings: List[str] = []
     for category in categories:
         for subcategory in category().subcategories:
@@ -25,9 +29,9 @@ def get_flag_string_from_flag_collection(categories: list[Type[TFlagCategory]]) 
                     if flag.value:
                         flagstring_parts.append(flag.id)
                 elif isinstance(flag, SelectOneFlag):
-                    flagstring_parts.append("%s:%s" % (flag.id, flag.value.name))
+                    flagstring_parts.append(f"{flag.id}:{flag.value.name}")
                 elif isinstance(flag, NumberThresholdFlag):
-                    flagstring_parts.append("%s:%i" % (flag.id, flag.value))
+                    flagstring_parts.append(f"{flag.id}:{flag.value}")
                 elif isinstance(flag, CategorizationFlag):
                     ctr = 0
                     choice_rep = 0
@@ -42,11 +46,10 @@ def get_flag_string_from_flag_collection(categories: list[Type[TFlagCategory]]) 
                             choice_rep = 0
                     if ctr > 0:
                         choice_rep_string += B64_TABLE[choice_rep]
-                    flagstring_parts.append("%s:%s" % (flag.id, choice_rep_string))
-            if len(flagstring_parts) is not 0:
-                flag_strings.append(
-                    "%s.%s" % (subcategory.id, "|".join(flagstring_parts))
-                )
+                    flagstring_parts.append("{flag.id}:{choice_rep_string}")
+            if len(flagstring_parts) != 0:
+                flag_strings.append(f"{subcategory.id}.{flagstring_parts}")
+
     flag_string = "     ".join(flag_strings)
 
     return flag_string.strip()
@@ -55,7 +58,7 @@ def get_flag_string_from_flag_collection(categories: list[Type[TFlagCategory]]) 
 def separate_flag_string(
     flag_string: str, cosmetics_string: str
 ) -> Dict[str, dict[str, Any]]:
-
+    """Break up a flag string into individual settings"""
     flag_dict: Dict[str, dict[str, Any]] = {}
     flag_words_raw: List[str] = regex_compile(r"\s+").split(
         flag_string
@@ -63,13 +66,13 @@ def separate_flag_string(
     flag_words: List[str] = [f for f in flag_words_raw if f.strip() != ""]
 
     # index the supplied flag values to be referenced by category loop
-    for w in flag_words:
-        subcat = w[0]
+    for word in flag_words:
+        subcat = word[0]
         flag_dict[subcat] = {}
-        params = w[1:]
+        params = word[1:]
         flags_with_settings = params.split("|")
-        for s in flags_with_settings:
-            setting_data = s.split(":")
+        for setting in flags_with_settings:
+            setting_data = setting.split(":")
             if len(setting_data) == 1:
                 flag_dict[subcat][setting_data[0]] = True
             else:
@@ -81,6 +84,7 @@ def separate_flag_string(
 def set_flag_from_settings_string(
     flag_dict: Dict[str, dict[str, Any]], flag: Flag, parent_subcategory: FlagCategory
 ) -> None:
+    """Apply a setting based on settings string"""
     if (
         parent_subcategory.id in flag_dict
         and flag.id in flag_dict[parent_subcategory.id]
@@ -88,8 +92,8 @@ def set_flag_from_settings_string(
         if isinstance(flag, CategorizationFlag):
             option_booleans = []
             b64_string = flag_dict[parent_subcategory.id][flag.id]
-            for c in b64_string:
-                b64val = B64_TABLE.index(c)
+            for char in b64_string:
+                b64val = B64_TABLE.index(char)
                 for boss_location in range(0, 6):
                     option_booleans.append((b64val & (1 << boss_location)) != 0)
             checked_tuples = zip(option_booleans, flag.options)
@@ -108,19 +112,15 @@ def set_flag_from_settings_string(
                 None,
             )
             if val is None:
-                raise Exception(
-                    "invalid property for %s.%s flag: %s"
-                    % (
-                        parent_subcategory.id,
-                        flag.id,
-                        flag_dict[parent_subcategory.id][flag.id],
-                    )
+                prop = flag_dict[parent_subcategory.id][flag.id]
+                raise RandomizerSettingsException(
+                    f"invalid property for {parent_subcategory.id}.{flag.id} flag: {prop}"
                 )
             flag.set_value(val)
         elif isinstance(flag, BooleanFlag):
             flag.set_value(flag_dict[parent_subcategory.id][flag.id])
         else:
-            raise Exception("unknown flag type")
+            raise RandomizerSettingsException("unknown flag type")
     else:
         if isinstance(flag, CategorizationFlag):
             # safety
@@ -132,4 +132,4 @@ def set_flag_from_settings_string(
         elif isinstance(flag, BooleanFlag):
             flag.set_value(flag.default)
         else:
-            raise Exception("unknown flag type")
+            raise RandomizerSettingsException("unknown flag type")

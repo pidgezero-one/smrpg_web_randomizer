@@ -1,4 +1,6 @@
-# E1543_CHEST_CAMERA_SHIFT
+# pylint: disable=C0301
+
+"""E1543_CHEST_CAMERA_SHIFT"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3703_NIMBUS_CASTLE_TWO_LEVEL_CHEST_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3703_NIMBUS_CASTLE_TWO_LEVEL_CHEST_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

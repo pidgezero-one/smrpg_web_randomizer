@@ -1,4 +1,6 @@
-# E1166_SHED_KEY_DOOR
+# pylint: disable=C0301
+
+"""E1166_SHED_KEY_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,7 +12,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1166_pause_3"]),
         RunDialog(
             dialog_id=DI2802_NEED_THE_SHED_KEY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,

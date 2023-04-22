@@ -1,4 +1,6 @@
-# E0458_MUSHROOM_DERBY_BEGINS
+# pylint: disable=C0301
+
+"""E0458_MUSHROOM_DERBY_BEGINS"""
 
 from randomizer.scripts.event.script_imports import *
 

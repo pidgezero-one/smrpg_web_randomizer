@@ -1,4 +1,6 @@
-# E2603_FACTORY_4TH_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E2603_FACTORY_4TH_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,7 +17,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASPause(16),
                 ASFaceSoutheast(),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
             ],
         ),
         Db(bytearray(b"\xfd\x8d")),
@@ -25,7 +27,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
                 ASWalk1StepSouthwest(),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASFaceSoutheast(),
             ],
         ),
@@ -36,8 +38,8 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASWalk1StepNortheast(),
-                ASShiftNortheastPixels(10),
-                ASShiftNorthwestSteps(2),
+                ASWalkNortheastPixels(10),
+                ASWalkNorthwestSteps(2),
                 ASFaceSoutheast(),
             ],
         ),
@@ -84,7 +86,7 @@ script = EventScript(
             subscript=[
                 ASShiftToXYCoords(x=10, y=91),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
                 ASFaceNorthwest(),
                 ASSetWalkingSpeed(NORMAL),
             ],

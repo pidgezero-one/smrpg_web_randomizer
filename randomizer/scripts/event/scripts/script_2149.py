@@ -1,4 +1,6 @@
-# E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT
+# pylint: disable=C0301
+
+"""E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E2418_FOREST_UNDERGROUND_1_LOADER
+# pylint: disable=C0301
+
+"""E2418_FOREST_UNDERGROUND_1_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,8 +19,8 @@ script = EventScript(
                 ASSetAllSpeeds(FASTEST),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-                ASShiftSouthPixels(12),
-                ASShiftSouthwestPixels(5),
+                ASWalkSouthPixels(12),
+                ASWalkSouthwestPixels(5),
             ],
             identifier="EVENT_2418_action_queue_async_4",
         ),
@@ -93,8 +95,8 @@ script = EventScript(
                 ASSetAllSpeeds(FASTEST),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-                ASShiftSouthPixels(12),
-                ASShiftSouthwestPixels(5),
+                ASWalkSouthPixels(12),
+                ASWalkSouthwestPixels(5),
             ],
         ),
         SetSyncActionScript(NPC_10, A0947_FOREST_1ST_UNDERGROUND_RAT),
@@ -203,7 +205,7 @@ script = EventScript(
         ),
         Jmp(["EVENT_2418_action_queue_async_89"]),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_X,
             pixel=True,
             bit_7=True,
@@ -233,7 +235,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASSequencePlaybackOff(),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
             ],
             identifier="EVENT_2418_action_queue_async_89",
         ),

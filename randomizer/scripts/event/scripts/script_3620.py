@@ -1,4 +1,6 @@
-# E3620_NIMBUS_EXTERIOR_OPEN_GARROS_DOOR
+# pylint: disable=C0301
+
+"""E3620_NIMBUS_EXTERIOR_OPEN_GARROS_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 

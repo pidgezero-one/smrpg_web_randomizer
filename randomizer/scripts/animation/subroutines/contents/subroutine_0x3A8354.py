@@ -1,9 +1,22 @@
-# referenced by 
+# pylint: disable=C0301,C0103
+
+"""referenced by """
 
 from randomizer.scripts.animation.script_imports import *
 
-script = SubroutineOrBanklessScript(expected_size = 10, script = [
-	ResetTargetMappingMemory(),
-	SetAMEM40ToXYZCoords(origin=ABSOLUTE_POSITION, x=232, y=144, z=0, set_x=True, set_y=True, set_z=True),
-	ReturnSubroutine()
-])
+script = SubroutineOrBanklessScript(
+    expected_size=10,
+    script=[
+        ResetTargetMappingMemory(),
+        SetAMEM40ToXYZCoords(
+            origin=ABSOLUTE_POSITION,
+            x=232,
+            y=144,
+            z=0,
+            set_x=True,
+            set_y=True,
+            set_z=True,
+        ),
+        ReturnSubroutine(),
+    ],
+)

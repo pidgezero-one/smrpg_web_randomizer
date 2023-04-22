@@ -1,13 +1,15 @@
-# 122 - Kriffid
+"""122 - Kriffid"""
 
 from randomizer.scripts.monster.script_imports import *
 
-script = MonsterScript([
-	ClearVar(DESIGNATED_RANDOM_NUM_VAR),
-	Set7EE005ToRandomNumber(upper_bound=7),
-	IfVarLessThan(DESIGNATED_RANDOM_NUM_VAR, 4),
-	CastSpell(Flame, Blast, SandStorm),
-	Wait1TurnandRestartScript(),
-	Attack(PhysicalAttack1, PhysicalAttack1, GunkBall),
-	StartCounterCommands()
-])
+script = MonsterScript(
+    [
+        ClearVar(DESIGNATED_RANDOM_NUM_VAR),
+        Set7EE005ToRandomNumber(upper_bound=7),
+        IfVarLessThan(DESIGNATED_RANDOM_NUM_VAR, 4),
+        CastSpell(Flame, Blast, SandStorm),
+        Wait1TurnandRestartScript(),
+        Attack(PhysicalAttack1, PhysicalAttack1, GunkBall),
+        StartCounterCommands(),
+    ]
+)

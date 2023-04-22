@@ -1,4 +1,6 @@
-# E0618_MARIO_AS_BELLHOP_TRIES_TO_GO_UPSTAIRS_WITHOUT_GUEST
+# pylint: disable=C0301
+
+"""E0618_MARIO_AS_BELLHOP_TRIES_TO_GO_UPSTAIRS_WITHOUT_GUEST"""
 
 from randomizer.scripts.event.script_imports import *
 

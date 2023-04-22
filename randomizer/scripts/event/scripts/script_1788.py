@@ -1,4 +1,6 @@
-# E1788_LANDS_END_UNDERGROUND_DOG_WALL_ROOM_LOADER_BACKGROUND
+# pylint: disable=C0301
+
+"""E1788_LANDS_END_UNDERGROUND_DOG_WALL_ROOM_LOADER_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 

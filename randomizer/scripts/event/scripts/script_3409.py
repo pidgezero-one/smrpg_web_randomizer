@@ -1,4 +1,6 @@
-# E3409_FROG_COIN_CHEST_MULTI_HIT_5
+# pylint: disable=C0301
+
+"""E3409_FROG_COIN_CHEST_MULTI_HIT_5"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E2048_MONSTRO_TOWN_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E2048_MONSTRO_TOWN_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASLoadMemory(PRIMARY_TEMP_7000),
-                ASShiftSouthwestPixels(2),
+                ASWalkSouthwestPixels(2),
                 ASEndLoop(),
             ],
         ),

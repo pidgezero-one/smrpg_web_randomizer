@@ -1,7 +1,7 @@
-# E2870_CLONE_RESERVED
+# pylint: disable=C0301
+
+"""E2870_CLONE_RESERVED"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	
-])
+script = EventScript([])

@@ -1,4 +1,6 @@
-# E3413_MINES_SHYGUY_COLLIDE_WITH_BOXES
+# pylint: disable=C0301
+
+"""E3413_MINES_SHYGUY_COLLIDE_WITH_BOXES"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -20,9 +22,9 @@ script = EventScript(
                 ASJumpToHeight(height=80, silent=True),
                 ASShiftSouthSteps(2),
                 ASJumpToHeight(height=32, silent=True),
-                ASShiftSouthPixels(3),
+                ASWalkSouthPixels(3),
                 ASJumpToHeight(height=8, silent=True),
-                ASShiftSouthPixels(1),
+                ASWalkSouthPixels(1),
                 ASPause(20),
                 ASSetSolidityBits(cant_jump_through=True),
             ],

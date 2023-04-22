@@ -1,4 +1,6 @@
-# referenced by monster_attacks Endobubble
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Endobubble"""
 
 from randomizer.scripts.animation.script_imports import *
 

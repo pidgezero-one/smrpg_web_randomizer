@@ -1,4 +1,6 @@
-# E0406_YOUNGER_BROTHER
+# pylint: disable=C0301
+
+"""E0406_YOUNGER_BROTHER"""
 
 from randomizer.scripts.event.script_imports import *
 

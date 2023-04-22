@@ -1,4 +1,6 @@
-# E3787_NIMBUS_MEZZANINE_FALL_TO_EAST_VINE_ROOM
+# pylint: disable=C0301
+
+"""E3787_NIMBUS_MEZZANINE_FALL_TO_EAST_VINE_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,7 +19,7 @@ script = EventScript(
             subscript=[
                 ASFloatingOff(),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
                 ASDecZCoord1Step(),
                 ASFloatingOn(),
@@ -25,7 +27,7 @@ script = EventScript(
         ),
         Pause(2),
         FadeInFromBlack(sync=False),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 39),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW39_BEAN_VALLEY),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
         JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3787_ret_6"]),
         RunEventAsSubroutine(E3911_BEAN_VALLEY_STAR_PIECE_SIGNAL),

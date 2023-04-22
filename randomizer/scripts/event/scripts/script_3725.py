@@ -1,4 +1,6 @@
-# E3725_NIMBUS_CASTLE_NOTE_HALLWAY_LOADER
+# pylint: disable=C0301
+
+"""E3725_NIMBUS_CASTLE_NOTE_HALLWAY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

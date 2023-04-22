@@ -1,4 +1,6 @@
-# E3823_YOSTER_ISLE_GOALPOST_ITEM_GRANTER
+# pylint: disable=C0301
+
+"""E3823_YOSTER_ISLE_GOALPOST_ITEM_GRANTER"""
 
 from randomizer.scripts.event.script_imports import *
 

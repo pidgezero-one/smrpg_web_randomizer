@@ -1,4 +1,8 @@
+"""Base classes supporting the production of a ROM patch."""
+
+from typing import Any, Dict, List, Union
 from django.core.serializers.json import DjangoJSONEncoder
+
 
 class Patch:
     """Class representing a patch for a specific seed that can be added to as we build it."""
@@ -6,28 +10,16 @@ class Patch:
     def __init__(self):
         self._data = {}
 
-    def __add__(self, other):
-        """Add another patch to this patch and return a new Patch object.
-
-        :type other: Patch
-        :rtype: Patch
-        """
-        if not isinstance(other, Patch):
-            raise TypeError("Other object is not Patch type")
+    def __add__(self, other: "Patch") -> "Patch":
+        """Add another patch to this patch and return a new Patch object."""
 
         patch = Patch()
         patch += self
         patch += other
         return patch
 
-    def __iadd__(self, other):
-        """Add another patch to this patch in place.
-
-        :type other: Patch
-        :rtype: Patch
-        """
-        if not isinstance(other, Patch):
-            raise TypeError("Other object is not Patch type")
+    def __iadd__(self, other: "Patch") -> "Patch":
+        """Add another patch to this patch in place."""
 
         for addr in other.addresses:
             self.add_data(addr, other.get_data(addr))
@@ -35,30 +27,17 @@ class Patch:
         return self
 
     @property
-    def addresses(self):
-        """
-        :return: List of all addresses in the patch.
-        :rtype: list[int]
-        """
+    def addresses(self) -> List[int]:
+        """A list of all addresses in the patch."""
         return list(self._data.keys())
 
-    def get_data(self, addr):
-        """Get data in the patch for this address.  If the address is not present in the patch, returns empty bytes.
-
-        :param addr: Address for the start of the data.
-        :type addr: int
-        :rtype: bytearray|bytes|list[int]
-        """
+    def get_data(self, addr: int) -> Union[bytearray, bytes, List[int]]:
+        """Get data in the patch for this address.
+        If the address is not present in the patch, returns empty bytes."""
         return self._data.get(addr, bytes())
 
-    def add_data(self, addr, data):
-        """Add data to the patch.
-
-        :param addr: Address for the start of the data.
-        :type addr: int
-        :param data: Patch data as raw bytes.
-        :type data: bytearray|bytes|list[int]|int|str
-        """
+    def add_data(self, addr: int, data: Union[bytearray, bytes, List[int], int, str]):
+        """Add data to the patch."""
         # For integers and strings, convert them to byte representations.
         if isinstance(data, int) and data <= 0xFF:
             data = data.to_bytes(1, "little")
@@ -66,20 +45,13 @@ class Patch:
             data = data.encode("latin1")
         self._data[addr] = data
 
-    def remove_data(self, addr):
-        """Remove data from the patch.
-
-        :param addr: Address the data was added to.
-        :type addr: int
-        """
+    def remove_data(self, addr: int) -> None:
+        """Remove data from the patch."""
         if addr in self._data:
             del self._data[addr]
 
-    def for_json(self):
-        """Return patch as a JSON serializable object.
-
-        :rtype: list[dict]
-        """
+    def for_json(self) -> List[Dict[int, bytes]]:
+        """Return patch as a JSON serializable object."""
         patch = []
         addrs = list(self._data.keys())
         addrs.sort()
@@ -93,11 +65,10 @@ class Patch:
 class PatchJSONEncoder(DjangoJSONEncoder):
     """Extension of the Django JSON serializer to support randomizer patch data."""
 
-    def default(self, o):
+    def default(self, o: Any):
         # Support bytes and bytearray objects, which are just lists of integers.
         if isinstance(o, (bytearray, bytes)):
             return list(o)
-        elif isinstance(o, Patch):
+        if isinstance(o, Patch):
             return o.for_json()
         return super().default(o)
-

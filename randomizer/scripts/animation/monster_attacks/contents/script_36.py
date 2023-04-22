@@ -1,22 +1,24 @@
-# MushFunk
+"""MushFunk animation"""
 
 from randomizer.scripts.animation.script_imports import *
 
-script = AnimationScript([
-	SetOMEM60To072C(),
-	DisplayMessageAtOMEM60As(BATTLE_DIALOGUE),
-	SetAMEM8BitTo7E1x(0x6F, 0x7EE00F),
-	JmpIfAMEM8BitEqualsConst(0x6F, 1, ["command_0x3518f1"]),
-	JmpIfAMEM8BitEqualsConst(0x6F, 2, ["command_0x3518f5"]),
-	RunSubroutine(["command_0x357b83"]),
-	SpriteSequence(sequence=4, identifier="command_0x3518f1"),
-	PauseScriptUntilSpriteSequenceDone(),
-	ResetSpriteSequence(),
-	PlaySound(sound=S0139_GUITAR_STRING, identifier="command_0x3518f5"),
-	PlaySound(sound=S0140_S_CROW_BELL),
-	SetAMEM16BitToConst(0x60, 15),
-	RunSubroutine(["command_0x352475"]),
-	RunSubroutine(["command_0x3577f2"]),
-	RunSubroutine(["command_0x35240c"]),
-	ReturnSubroutine()
-])
+script = AnimationScript(
+    [
+        SetOMEM60To072C(),
+        DisplayMessageAtOMEM60As(BATTLE_DIALOGUE),
+        SetAMEM8BitTo7E1x(0x6F, 0x7EE00F),
+        JmpIfAMEM8BitEqualsConst(0x6F, 1, ["command_0x3518f1"]),
+        JmpIfAMEM8BitEqualsConst(0x6F, 2, ["command_0x3518f5"]),
+        RunSubroutine(["command_0x357b83"]),
+        SpriteSequence(sequence=4, identifier="command_0x3518f1"),
+        PauseScriptUntilSpriteSequenceDone(),
+        ResetSpriteSequence(),
+        PlaySound(sound=S0139_GUITAR_STRING, identifier="command_0x3518f5"),
+        PlaySound(sound=S0140_S_CROW_BELL),
+        SetAMEM16BitToConst(0x60, 15),
+        RunSubroutine(["command_0x352475"]),
+        RunSubroutine(["command_0x3577f2"]),
+        RunSubroutine(["command_0x35240c"]),
+        ReturnSubroutine(),
+    ]
+)

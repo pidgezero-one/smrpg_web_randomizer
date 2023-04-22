@@ -1,11 +1,13 @@
-# E3157_MINECART_ROOM_LOADER_BACKGROUND
+# pylint: disable=C0301
+
+"""E3157_MINECART_ROOM_LOADER_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_X,
             pixel=True,
             bit_7=True,
@@ -21,7 +23,7 @@ script = EventScript(
         ),
         Jmp(["EVENT_3157_set_7000_to_object_coord_0"]),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_Y,
             pixel=True,
             bit_7=True,

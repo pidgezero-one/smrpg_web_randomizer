@@ -1,4 +1,6 @@
-# E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN
+# pylint: disable=C0301
+
+"""E3216_SHIP_COIN_SNAKE_PUZZLE_TAIL_COIN"""
 
 from randomizer.scripts.event.script_imports import *
 

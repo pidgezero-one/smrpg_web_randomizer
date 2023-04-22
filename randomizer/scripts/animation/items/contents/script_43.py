@@ -1,7 +1,5 @@
-# DUMMY_43RoomKey
+"""DUMMY_43RoomKey animation"""
 
 from randomizer.scripts.animation.script_imports import *
 
-script = AnimationScript([
-	
-])
+script = AnimationScript([])

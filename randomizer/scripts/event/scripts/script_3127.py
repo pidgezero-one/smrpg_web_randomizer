@@ -1,4 +1,6 @@
-# E3127_SEWER_EXIT_TRAMPOLINE
+# pylint: disable=C0301
+
+"""E3127_SEWER_EXIT_TRAMPOLINE"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# referenced by items RockCandy
+# pylint: disable=C0301,C0103
+
+"""referenced by items RockCandy"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -17,7 +19,7 @@ script = SubroutineOrBanklessScript(
         ),
         NewEffectObject(effect=EF0005_METEOR_BLAST, looping_on=True),
         Db(bytearray(b"\x8a\x02")),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         MoveObject(
             speed=33,
             start_position=512,
@@ -39,7 +41,7 @@ script = SubroutineOrBanklessScript(
         PlaySound(sound=S0105_ROCK_CANDY),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=120),
         ResetObjectMappingMemory(),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         SetAMEM8BitToConst(0x6F, 1),

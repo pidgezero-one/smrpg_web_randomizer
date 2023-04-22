@@ -1,4 +1,6 @@
-# E2225_KEEP_2ND_BOSS
+# pylint: disable=C0301
+
+"""E2225_KEEP_2ND_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 

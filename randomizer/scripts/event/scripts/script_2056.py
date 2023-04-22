@@ -1,4 +1,6 @@
-# E2056_MONSTRO_LEDGE_ITEM
+# pylint: disable=C0301
+
+"""E2056_MONSTRO_LEDGE_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 

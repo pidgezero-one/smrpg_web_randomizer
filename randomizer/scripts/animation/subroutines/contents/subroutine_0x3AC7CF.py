@@ -1,4 +1,6 @@
-# referenced by battle_events BE0034_BLOW_THOSE_CANDLES_OUT, battle_events BE0036_TENTACLES_THROW_CHARACTER_OFF_SCREEN, battle_events BE0028_BEAT_TENTACLES_MOVE_ON_TO_KING_CALAMARI, battle_events BE0032_BUNDT_MOVES_AGAIN_BOTH_COOKS_RUN_AWAY, battle_events BE0033_CANDLES_APPEAR_ON_BUNDT
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0034_BLOW_THOSE_CANDLES_OUT, battle_events BE0036_TENTACLES_THROW_CHARACTER_OFF_SCREEN, battle_events BE0028_BEAT_TENTACLES_MOVE_ON_TO_KING_CALAMARI, battle_events BE0032_BUNDT_MOVES_AGAIN_BOTH_COOKS_RUN_AWAY, battle_events BE0033_CANDLES_APPEAR_ON_BUNDT"""
 
 from randomizer.scripts.animation.script_imports import *
 

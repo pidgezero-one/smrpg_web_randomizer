@@ -1,11 +1,11 @@
-# 241 - Croco2
+"""241 - Croco2"""
 
 from randomizer.scripts.monster.script_imports import *
 
 script = MonsterScript(
     [
         IfVarBitsSet(0x7EE004, [1]),
-        Attack(PhysicalAttack14, Chomp, Chomp),
+        Attack(PhysicalAttack14, ChompAttack, ChompAttack),
         Wait1TurnandRestartScript(),
         Attack(PhysicalAttack14, PhysicalAttack25, PhysicalAttack25),
         StartCounterCommands(),

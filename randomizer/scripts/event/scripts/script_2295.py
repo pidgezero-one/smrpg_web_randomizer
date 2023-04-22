@@ -1,4 +1,6 @@
-# E2295_ENDING_CREDITS_WEDDING_LOGIC
+# pylint: disable=C0301
+
+"""E2295_ENDING_CREDITS_WEDDING_LOGIC"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,20 +19,20 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASBounceToXYWithHeight(x=18, y=55, height=0),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
             ],
         ),
         ActionQueueSync(target=MARIO, subscript=[ASVisibilityOff()]),
         ActionQueueSync(
-            target=NPC_9, subscript=[ASFixedFCoordOn(), ASShiftNorthwestPixels(1)]
+            target=NPC_9, subscript=[ASFixedFCoordOn(), ASWalkNorthwestPixels(1)]
         ),
         ActionQueueSync(
-            target=NPC_10, subscript=[ASFixedFCoordOn(), ASShiftSoutheastPixels(1)]
+            target=NPC_10, subscript=[ASFixedFCoordOn(), ASWalkSoutheastPixels(1)]
         ),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
-                ASShiftSoutheastPixels(4),
+                ASWalkSoutheastPixels(4),
                 ASFaceSouthwest(),
                 ASSequenceLoopingOn(),
             ],
@@ -43,7 +45,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(NORMAL),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
             ],
         ),
         Pause(20),
@@ -52,7 +54,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(NORMAL),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
             ],
         ),
         Pause(20),
@@ -65,7 +67,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASFixedFCoordOn(),
                 ASPause(25),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
             ],
         ),
         Pause(5),
@@ -75,15 +77,15 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASFaceNortheast(),
                 ASFixedFCoordOn(),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFixedFCoordOff(),
-                ASShiftNortheastSteps(3),
-                ASShiftNortheastSteps(1),
-                ASShiftNorthwestSteps(3),
-                ASShiftSouthwestSteps(4),
-                ASShiftSoutheastSteps(1),
-                ASShiftSoutheastPixels(8),
-                ASShiftSouthwestSteps(10),
+                ASWalkNortheastSteps(3),
+                ASWalkNortheastSteps(1),
+                ASWalkNorthwestSteps(3),
+                ASWalkSouthwestSteps(4),
+                ASWalkSoutheastSteps(1),
+                ASWalkSoutheastPixels(8),
+                ASWalkSouthwestSteps(10),
             ],
         ),
         ActionQueueSync(
@@ -94,15 +96,15 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASPause(15),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(1),
-                ASShiftSoutheastPixels(4),
-                ASShiftNortheastSteps(2),
-                ASShiftNortheastSteps(2),
-                ASShiftNorthwestSteps(3),
-                ASShiftSouthwestSteps(4),
-                ASShiftSoutheastSteps(1),
-                ASShiftSoutheastPixels(8),
-                ASShiftSouthwestSteps(10),
+                ASWalkSoutheastSteps(1),
+                ASWalkSoutheastPixels(4),
+                ASWalkNortheastSteps(2),
+                ASWalkNortheastSteps(2),
+                ASWalkNorthwestSteps(3),
+                ASWalkSouthwestSteps(4),
+                ASWalkSoutheastSteps(1),
+                ASWalkSoutheastPixels(8),
+                ASWalkSouthwestSteps(10),
             ],
         ),
         ActionQueueSync(
@@ -118,8 +120,8 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASPause(65),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(4),
-                ASShiftSouthwestSteps(7),
+                ASWalkSoutheastSteps(4),
+                ASWalkSouthwestSteps(7),
             ],
         ),
         ActionQueueSync(
@@ -132,8 +134,8 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASPause(65),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(2),
-                ASShiftSouthwestSteps(7),
+                ASWalkSoutheastSteps(2),
+                ASWalkSouthwestSteps(7),
             ],
         ),
         ActionQueueSync(
@@ -146,8 +148,8 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASPause(65),
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(2),
-                ASShiftSouthwestSteps(7),
+                ASWalkNorthwestSteps(2),
+                ASWalkSouthwestSteps(7),
             ],
         ),
         ActionQueueSync(
@@ -160,8 +162,8 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASPause(65),
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(4),
-                ASShiftSouthwestSteps(7),
+                ASWalkNorthwestSteps(4),
+                ASWalkSouthwestSteps(7),
             ],
         ),
         ActionQueueSync(
@@ -175,8 +177,8 @@ script = EventScript(
                 ASPause(60),
                 ASVisibilityOn(),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(4),
-                ASShiftSouthwestSteps(7),
+                ASWalkSoutheastSteps(4),
+                ASWalkSouthwestSteps(7),
             ],
         ),
         ActionQueueSync(
@@ -191,8 +193,8 @@ script = EventScript(
                 ASPause(60),
                 ASVisibilityOn(),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(2),
-                ASShiftSouthwestSteps(7),
+                ASWalkSoutheastSteps(2),
+                ASWalkSouthwestSteps(7),
             ],
         ),
         ActionQueueSync(
@@ -206,8 +208,8 @@ script = EventScript(
                 ASPause(65),
                 ASPause(60),
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(2),
-                ASShiftSouthwestSteps(7),
+                ASWalkNorthwestSteps(2),
+                ASWalkSouthwestSteps(7),
             ],
         ),
         ActionQueueAsync(
@@ -221,8 +223,8 @@ script = EventScript(
                 ASPause(65),
                 ASPause(60),
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(4),
-                ASShiftSouthwestSteps(7),
+                ASWalkNorthwestSteps(4),
+                ASWalkSouthwestSteps(7),
             ],
         ),
         Pause(15),

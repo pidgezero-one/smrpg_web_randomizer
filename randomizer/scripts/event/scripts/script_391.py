@@ -1,4 +1,6 @@
-# E0391_MUSHROOM_KINGDOM_OCCUPIED_LEFT_STAIRWAY_LOADER
+# pylint: disable=C0301
+
+"""E0391_MUSHROOM_KINGDOM_OCCUPIED_LEFT_STAIRWAY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

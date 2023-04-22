@@ -1,4 +1,6 @@
-# E2403_8BIT_END_EAST
+# pylint: disable=C0301
+
+"""E2403_8BIT_END_EAST"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -33,7 +35,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(NORMAL),
                 ASWalk1StepSouthwest(),
-                ASShiftNorthwestSteps(8),
+                ASWalkNorthwestSteps(8),
             ],
         ),
         ActionQueueAsync(
@@ -51,7 +53,7 @@ script = EventScript(
                 ASShadowOff(),
                 ASPause(16),
                 ASSetSequenceSpeed(FAST),
-                ASShiftSoutheastSteps(5),
+                ASWalkSoutheastSteps(5),
                 ASPause(24),
                 ASFaceSouthwest(),
                 ASSetSpriteSequence(index=6, is_sequence=True, looping=True),

@@ -1,4 +1,6 @@
-# referenced by monster_spells SandStorm, monster_spells BigBang, monster_attacks PhysicalAttack91
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells SandStorm, monster_spells BigBang, monster_attacks PhysicalAttack91"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -79,13 +81,13 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\x9c\x00D\x08\x00\x08\x00\x10\x00")),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
         RunSubroutine(["command_0x3533df"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\x9d\x02")),
         Pause2Frames(),
         ClearEffectIndex(),
@@ -97,11 +99,11 @@ script = SubroutineOrBanklessScript(
             origin=ABSOLUTE_POSITION, x=16, y=0, z=0, set_x=True, set_y=True, set_z=True
         ),
         NewEffectObject(effect=EF0059_ORANGE_RED_BLAST__FIRE_BOMB_, looping_off=True),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),

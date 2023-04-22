@@ -1,4 +1,6 @@
-# E2549_BEAN_VALLEY_BOTTOM_RIGHT_PIPE_BASEMENT_LOADER
+# pylint: disable=C0301
+
+"""E2549_BEAN_VALLEY_BOTTOM_RIGHT_PIPE_BASEMENT_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

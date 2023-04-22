@@ -1,4 +1,6 @@
-# E3617_NIMBUS_INN_BEDROOM_LOADER
+# pylint: disable=C0301
+
+"""E3617_NIMBUS_INN_BEDROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

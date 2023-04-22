@@ -1,4 +1,6 @@
-# E2630_BLACKJACK_TABLE
+# pylint: disable=C0301
+
+"""E2630_BLACKJACK_TABLE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -234,7 +236,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -314,7 +316,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 10),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -326,7 +328,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 9),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -338,7 +340,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 8),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -350,7 +352,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 7),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -362,7 +364,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 6),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -374,7 +376,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 5),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -386,7 +388,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 4),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -398,7 +400,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 3),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -410,7 +412,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 2),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -422,7 +424,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 1),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -739,7 +741,7 @@ script = EventScript(
         CopyVarToVar(from_var=UNKNOWN_70AD, to_var=PRIMARY_TEMP_7000),
         RunDialog(
             dialog_id=DI3279_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -810,7 +812,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 10),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -831,7 +833,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 9),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -852,7 +854,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 8),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -873,7 +875,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 7),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -894,7 +896,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 6),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -915,7 +917,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 5),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -936,7 +938,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 4),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -957,7 +959,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 3),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -978,7 +980,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 2),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -999,7 +1001,7 @@ script = EventScript(
         SetVarToConst(PRIMARY_TEMP_7000, 1),
         RunDialog(
             dialog_id=DI3281_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -1030,7 +1032,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI3282_BLACKJACK,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,

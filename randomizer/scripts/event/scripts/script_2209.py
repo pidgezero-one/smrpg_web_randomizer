@@ -1,4 +1,6 @@
-# E2209_KEEP_1ST_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E2209_KEEP_1ST_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,7 +10,7 @@ script = EventScript(
         FadeOutMusicToVolume(duration=7, volume=0),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTER), ASShiftNortheastSteps(4)],
+            subscript=[ASSetWalkingSpeed(FASTER), ASWalkNortheastSteps(4)],
         ),
         ActionQueueAsync(
             target=NPC_1,
@@ -90,7 +92,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(3),
+                ASWalkNorthwestSteps(3),
                 ASFaceSoutheast(),
                 ASSetSequenceSpeed(NORMAL),
                 ASSequenceLoopingOn(),

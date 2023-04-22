@@ -1,4 +1,6 @@
-# E2066_DOJO_BOSS_1
+# pylint: disable=C0301
+
+"""E2066_DOJO_BOSS_1"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -28,7 +30,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(height=53, silent=True),
-                ASShiftSouthwestSteps(1),
+                ASWalkSouthwestSteps(1),
                 ASPause(20),
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(
@@ -66,7 +68,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASPause(30),
                 ASSetAllSpeeds(SLOW),
-                ASShiftSouthwestSteps(1),
+                ASWalkSouthwestSteps(1),
             ],
         ),
         ActionQueueAsync(
@@ -78,7 +80,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASPause(30),
                 ASSetAllSpeeds(SLOW),
-                ASShiftNortheastSteps(1),
+                ASWalkNortheastSteps(1),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),

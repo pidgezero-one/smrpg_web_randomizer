@@ -1,4 +1,6 @@
-# referenced by ally_spells Psychopath
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Psychopath"""
 
 from randomizer.scripts.animation.script_imports import *
 

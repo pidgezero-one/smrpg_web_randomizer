@@ -1,4 +1,6 @@
-# E1075_TOADOFSKY
+# pylint: disable=C0301
+
+"""E1075_TOADOFSKY"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,8 +32,8 @@ script = EventScript(
             target=NPC_7,
             subscript=[
                 ASTransferToXYZF(x=14, y=32, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASVisibilityOn(),
             ],
@@ -56,7 +58,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
                 ASVisibilityOff(),
-                ASShiftNorthwestSteps(1),
+                ASWalkNorthwestSteps(1),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
@@ -68,7 +70,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
                 ASVisibilityOff(),
-                ASShiftNorthwestSteps(1),
+                ASWalkNorthwestSteps(1),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
@@ -87,7 +89,7 @@ script = EventScript(
                 ASPause(7),
                 ASVisibilityOff(),
                 ASPause(45),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
@@ -99,7 +101,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
                 ASVisibilityOff(),
-                ASShiftSoutheastSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
@@ -111,7 +113,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
                 ASVisibilityOff(),
-                ASShiftSoutheastSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
@@ -129,7 +131,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
                 ASVisibilityOff(),
-                ASShiftSoutheastSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
@@ -141,7 +143,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),
                 ASVisibilityOff(),
-                ASShiftSoutheastSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(7),

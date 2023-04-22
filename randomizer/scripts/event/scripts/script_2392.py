@@ -1,4 +1,6 @@
-# E2392_GARDENER
+# pylint: disable=C0301
+
+"""E2392_GARDENER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -519,13 +521,13 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASFaceNortheast(),
                 ASPause(16),
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASShiftSouthwestPixels(10),
+                ASWalkSouthwestPixels(10),
                 ASFaceNortheast(),
                 ASResetProperties(),
                 ASSequenceLoopingOff(),

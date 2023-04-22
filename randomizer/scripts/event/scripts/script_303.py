@@ -1,4 +1,6 @@
-# E0303_MUSHROOM_KINGDOM_JUMPING_KID
+# pylint: disable=C0301
+
+"""E0303_MUSHROOM_KINGDOM_JUMPING_KID"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -77,7 +79,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASFaceMario(),
-                ASSet700CToObjectCoord(object=NPC_0, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=NPC_0, coord=COORD_F, pixel=True),
                 ASAddConstToVar(PRIMARY_TEMP_700C, 4),
                 ASMem700CAndConst(0x0007),
                 ASFixedFCoordOff(),

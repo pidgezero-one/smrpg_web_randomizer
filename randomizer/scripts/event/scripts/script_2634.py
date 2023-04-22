@@ -1,4 +1,6 @@
-# E2634_CASINO_SLOT_MACHINE
+# pylint: disable=C0301
+
+"""E2634_CASINO_SLOT_MACHINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -54,7 +56,7 @@ script = EventScript(
             subscript=[
                 ASShadowOff(),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftWestPixels(17),
+                ASWalkWestPixels(17),
             ],
         ),
         ActionQueueAsync(
@@ -62,7 +64,7 @@ script = EventScript(
             subscript=[
                 ASShadowOff(),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastPixels(17),
+                ASWalkEastPixels(17),
             ],
         ),
         PlaySound(sound=SO153_SLOT_MACHINES, channel=6),
@@ -94,11 +96,11 @@ script = EventScript(
         Pause(16),
         ActionQueueSync(
             target=NPC_5,
-            subscript=[ASSetWalkingSpeed(VERY_FAST), ASShiftEastPixels(17)],
+            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkEastPixels(17)],
         ),
         ActionQueueAsync(
             target=NPC_7,
-            subscript=[ASSetWalkingSpeed(VERY_FAST), ASShiftWestPixels(17)],
+            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkWestPixels(17)],
         ),
         RemoveObjectFromCurrentLevel(NPC_5),
         RemoveObjectFromCurrentLevel(NPC_6),

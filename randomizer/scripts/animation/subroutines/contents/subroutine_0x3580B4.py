@@ -1,4 +1,6 @@
-# referenced by ally_spells Come Back, ally_spells Shocker, ally_spells Psychopath, ally_spells Super Flame, ally_spells Crusher, ally_spells Geno Whirl, ally_spells Geno Boost, ally_spells Poison Gas, ally_spells HP Rain, ally_spells Snowy, ally_spells Thunderbolt, ally_spells Psych Bomb, ally_spells Geno Flash, ally_spells Sleepy Time, ally_spells Terrorize, ally_spells Therapy, ally_spells Ultra Flame, ally_spells Geno Blast, ally_spells Mute, ally_spells Star Rain, ally_spells Geno Beam
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Come Back, ally_spells Shocker, ally_spells Psychopath, ally_spells Super Flame, ally_spells Crusher, ally_spells Geno Whirl, ally_spells Geno Boost, ally_spells Poison Gas, ally_spells HP Rain, ally_spells Snowy, ally_spells Thunderbolt, ally_spells Psych Bomb, ally_spells Geno Flash, ally_spells Sleepy Time, ally_spells Terrorize, ally_spells Therapy, ally_spells Ultra Flame, ally_spells Geno Blast, ally_spells Mute, ally_spells Star Rain, ally_spells Geno Beam"""
 
 from randomizer.scripts.animation.script_imports import *
 

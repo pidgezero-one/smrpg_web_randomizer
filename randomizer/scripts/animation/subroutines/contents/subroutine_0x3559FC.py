@@ -1,4 +1,6 @@
-# referenced by monster_spells WaterBlast
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells WaterBlast"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -51,14 +53,14 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0053_LIGHT_BLUE_BLAST, looping_off=True),
         RunSubroutine(["command_0x353399"]),
         RunSubroutine(["command_0x3533ea"]),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PlaySound(sound=S0110_HUGE_EXPLOSION),
         RunSubroutine(["command_0x3533a7"]),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
         FadeOutObject(duration=3),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
         RunSubroutine(["command_0x35338b"]),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         ReturnObjectQueue(),
@@ -84,9 +86,9 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0057_SNOW_CONFETTI__SLATE_GREEN, playback_off=True),
         RunSubroutine(["command_0x353400"]),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         RunSubroutine(["command_0x35340b"]),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         RunSubroutine(["command_0x3533f5"]),
         ResetObjectMappingMemory(),
         Pause2Frames(),

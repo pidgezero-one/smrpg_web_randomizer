@@ -1,4 +1,6 @@
-# E1892_ABYSS_BOSS_1_DEFEATED_TEMP_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1892_ABYSS_BOSS_1_DEFEATED_TEMP_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

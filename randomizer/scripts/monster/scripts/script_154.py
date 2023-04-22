@@ -1,4 +1,4 @@
-# 154 - PeachClone
+"""154 - PeachClone"""
 
 from randomizer.scripts.monster.script_imports import *
 

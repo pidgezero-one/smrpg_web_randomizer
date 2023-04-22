@@ -1,4 +1,6 @@
-# E1647_MOLEVILLE_MINECART_FREEPLAY_ENTRANCE
+# pylint: disable=C0301
+
+"""E1647_MOLEVILLE_MINECART_FREEPLAY_ENTRANCE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,8 +13,8 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(8),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(8),
                 ASPause(8),
             ],
         ),

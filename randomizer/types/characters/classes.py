@@ -213,7 +213,7 @@ class Character(RecruitedCharacter):
     _magic_attack: UInt8 = UInt8(1)
     _magic_defense: UInt8 = UInt8(1)
     _xp: UInt16 = UInt16(0)
-    _learned_spells: Dict[int, CharacterSpell] = dict()
+    _learned_spells: Dict[int, CharacterSpell] = {}
     _palette: CharacterPaletteSet
 
     _starting_growths: List[StatGrowth] = []

@@ -1,4 +1,6 @@
-# E0751_VINE_FIELD
+# pylint: disable=C0301
+
+"""E0751_VINE_FIELD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,7 +15,7 @@ script = EventScript(
                 ASJumpToHeight(108),
                 ASPause(10),
                 ASSetSolidityBits(cant_pass_walls=True),
-                ASShiftSouthwestPixels(6),
+                ASWalkSouthwestPixels(6),
             ],
         ),
         Pause(1),

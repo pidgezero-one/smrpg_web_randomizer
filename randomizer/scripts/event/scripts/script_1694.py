@@ -1,4 +1,6 @@
-# E1694_TEMPLE_ELEVATOR
+# pylint: disable=C0301
+
+"""E1694_TEMPLE_ELEVATOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -40,7 +42,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(FAST),
                 ASSetSolidityBits(cant_pass_walls=True),
@@ -66,7 +68,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(FAST),
                 ASSetSolidityBits(cant_pass_walls=True),
@@ -85,9 +87,9 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNorthPixels(4),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(4),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -98,7 +100,7 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_0,
             subscript=[
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6])
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6])
             ],
         ),
         Pause(4),
@@ -107,9 +109,9 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNorthPixels(4),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(4),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),

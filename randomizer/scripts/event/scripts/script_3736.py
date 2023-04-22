@@ -1,4 +1,6 @@
-# E3736_NIMBUS_CASTLE_FINAL_HALLWAY_LOADER
+# pylint: disable=C0301
+
+"""E3736_NIMBUS_CASTLE_FINAL_HALLWAY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -31,7 +33,7 @@ script = EventScript(
         ClearBit(EXP_STAR_BIT_6),
         CreatePacketAtObjectCoords(
             packet=P022_RECURSIVE_SPARKLES,
-            object=MARIO,
+            target_npc=MARIO,
             destinations=["EVENT_3584_ret_0"],
         ),
         Return(),

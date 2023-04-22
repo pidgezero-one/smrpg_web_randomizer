@@ -1,4 +1,6 @@
-# E0681_MARRYMORE_LIBERATED_EXTERIOR_KID
+# pylint: disable=C0301
+
+"""E0681_MARRYMORE_LIBERATED_EXTERIOR_KID"""
 
 from randomizer.scripts.event.script_imports import *
 

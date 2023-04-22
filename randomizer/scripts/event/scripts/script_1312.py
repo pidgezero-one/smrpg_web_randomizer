@@ -1,4 +1,6 @@
-# E1312_TOWER_LOBBY_LOADER
+# pylint: disable=C0301
+
+"""E1312_TOWER_LOBBY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,14 +9,14 @@ script = EventScript(
         PauseActionScript(NPC_4),
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASSetWalkingSpeed(VERY_FAST), ASShiftSoutheastPixels(6)],
+            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkSoutheastPixels(6)],
         ),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastPixels(9),
-                ASShiftSouthwestPixels(12),
+                ASWalkSoutheastPixels(9),
+                ASWalkSouthwestPixels(12),
                 ASFaceSouthwest(),
             ],
         ),
@@ -24,8 +26,8 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
-                ASShiftNortheastPixels(4),
-                ASShiftSoutheastPixels(5),
+                ASWalkNortheastPixels(4),
+                ASWalkSoutheastPixels(5),
                 ASSetPriority(1),
                 ASShadowOff(),
             ],

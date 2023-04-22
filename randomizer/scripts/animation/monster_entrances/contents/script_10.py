@@ -1,4 +1,4 @@
-# ENT0010_FADE_IN
+"""ENT0010_FADE_IN animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

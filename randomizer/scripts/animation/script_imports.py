@@ -1,3 +1,7 @@
+# pylint: disable=W0611
+
+"""symbols imported by scripts"""
+
 from randomizer.types.battle_animation_scripts.commands import (
     NewSpriteAtCoords,
     SetAMEM32ToXYZCoords,
@@ -734,7 +738,7 @@ from randomizer.types.battle_animation_scripts.constants.battle_targets import (
     TOADSTOOL,
     BOWSER,
     GENO,
-    MALLOW,
+    Mallow,
     UNKNOWN_05,
     UNKNOWN_06,
     UNKNOWN_07,
@@ -2068,7 +2072,7 @@ from randomizer.entities.items.items import (
     Mushroom2,
     StarEgg,
 )
-from randomizer.entities.enemies.enemies import (
+from randomizer.entities.enemies import (
     Terrapin,
     Spikey,
     Skytroopa,
@@ -2097,7 +2101,7 @@ from randomizer.entities.enemies.enemies import (
     DryBones,
     Greaper,
     Sparky,
-    Chomp,
+    Chomp as ChompWeapon,
     Pandorite,
     ShyRanger,
     Bobomb,

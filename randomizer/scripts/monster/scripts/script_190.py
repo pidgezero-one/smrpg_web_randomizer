@@ -1,4 +1,4 @@
-# 190 - RightEye
+"""190 - RightEye"""
 
 from randomizer.scripts.monster.script_imports import *
 

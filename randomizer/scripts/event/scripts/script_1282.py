@@ -1,4 +1,6 @@
-# E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE
+# pylint: disable=C0301
+
+"""E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,9 +17,9 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASSetPriority(3),
-                ASShiftNortheastPixels(10),
-                ASShiftNorthPixels(2),
-                ASShiftWestPixels(2),
+                ASWalkNortheastPixels(10),
+                ASWalkNorthPixels(2),
+                ASWalkWestPixels(2),
                 ASFaceSouthwest(),
             ],
         ),

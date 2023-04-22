@@ -1,4 +1,4 @@
-# 62 - Mastadoom
+"""62 - Mastadoom"""
 
 from randomizer.scripts.monster.script_imports import *
 

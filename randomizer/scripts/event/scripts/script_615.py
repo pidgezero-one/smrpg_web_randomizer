@@ -1,4 +1,6 @@
-# E0615_MARRYMORE_LAMP
+# pylint: disable=C0301
+
+"""E0615_MARRYMORE_LAMP"""
 
 from randomizer.scripts.event.script_imports import *
 

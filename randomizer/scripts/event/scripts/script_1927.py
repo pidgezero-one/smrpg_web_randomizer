@@ -1,4 +1,6 @@
-# E1927_TOWER_BALCONY_JUMP_OFF
+# pylint: disable=C0301
+
+"""E1927_TOWER_BALCONY_JUMP_OFF"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,12 +9,12 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[
-                ASShiftSouthwestPixels(12),
-                ASShiftSouthwestSteps(7),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(12),
+                ASWalkSouthwestSteps(7),
+                ASWalkSouthwestPixels(8),
                 ASSetWalkingSpeed(FASTER),
                 ASJumpToHeight(144),
-                ASShiftSouthwestSteps(6),
+                ASWalkSouthwestSteps(6),
             ],
         ),
         Pause(150),

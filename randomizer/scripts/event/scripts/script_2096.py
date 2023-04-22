@@ -1,4 +1,6 @@
-# E2096_HINO_MART_LOADER
+# pylint: disable=C0301
+
+"""E2096_HINO_MART_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,27 +8,27 @@ script = EventScript(
     [
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASShiftSoutheastPixels(8), ASFaceSouthwest(), ASShadowOff()],
+            subscript=[ASWalkSoutheastPixels(8), ASFaceSouthwest(), ASShadowOff()],
         ),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
-                ASShiftNorthPixels(2),
+                ASWalkNorthPixels(2),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
             ],
         ),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
-                ASShiftNorthPixels(2),
-                ASShiftWestPixels(1),
+                ASWalkNorthPixels(2),
+                ASWalkWestPixels(1),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
             ],
         ),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
-                ASShiftNorthPixels(3),
+                ASWalkNorthPixels(3),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
             ],
         ),

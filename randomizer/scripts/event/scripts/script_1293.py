@@ -1,4 +1,6 @@
-# E1293_COLLECT_FREESTANDING_SMALL_COIN
+# pylint: disable=C0301
+
+"""E1293_COLLECT_FREESTANDING_SMALL_COIN"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1819_SHY_AWAY_EARLY_LANDS_END
+# pylint: disable=C0301
+
+"""E1819_SHY_AWAY_EARLY_LANDS_END"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
         Pause(1, identifier="EVENT_1819_pause_2"),
         JmpIfMarioInAir(["EVENT_1819_pause_2"]),
         JmpIfBitSet(LANDS_END_GROTTO_BARREL_FLIPPED, ["EVENT_1819_ret_13"]),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Y, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True, bit_7=True),
         CompareVarToConst(PRIMARY_TEMP_7000, 48),
         JmpIfComparisonResultIsGreaterOrEqual(["EVENT_1819_ret_13"]),
         ResetCoords(NPC_3),

@@ -1,4 +1,6 @@
-# E3726_NIMBUS_CASTLE_ANTECHAMBER_LOADER
+# pylint: disable=C0301
+
+"""E3726_NIMBUS_CASTLE_ANTECHAMBER_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

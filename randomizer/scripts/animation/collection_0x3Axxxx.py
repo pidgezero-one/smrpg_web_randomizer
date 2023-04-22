@@ -1,7 +1,11 @@
+# pylint: disable=C0103
+
+"""bank 0x3Axxxx export"""
+
 from randomizer.types.battle_animation_scripts.classes import (
     AnimationScriptBankCollection,
 )
-from .battle_events.export import bank as battle_events
+from .battle_events import bank as battle_events
 from .subroutines.export_0x3A711F import bank as subroutine_0x3A711F
 from .subroutines.export_0x3A71DA import bank as subroutine_0x3A71DA
 from .subroutines.export_0x3A72CE import bank as subroutine_0x3A72CE

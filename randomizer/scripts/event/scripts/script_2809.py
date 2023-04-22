@@ -1,4 +1,6 @@
-# E2809_MUSHROOM_WAY_BOSS_THREATENS_YOU
+# pylint: disable=C0301
+
+"""E2809_MUSHROOM_WAY_BOSS_THREATENS_YOU"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,32 +19,34 @@ script = EventScript(
         ClearBit(TEMP_7044_6),
         FreezeAllNPCsUntilReturn(),
         EnableControls([]),
-        ActionQueueAsync(MARIO, [FaceNortheast(), Pause(16)]),
-        ActionQueueAsync(SCREEN_FOCUS, [SetWalkingSpeed(FAST), WalkToXYCoords(24, 80)]),
+        ActionQueueAsync(MARIO, [ASFaceNortheast(), Pause(16)]),
+        ActionQueueAsync(
+            SCREEN_FOCUS, [ASSetWalkingSpeed(FAST), ASWalkToXYCoords(24, 80)]
+        ),
         FreezeCamera(),
         ActionQueueAsync(
             NPC_7,
             [
-                SequenceLoopingOn(),
-                SetSequenceSpeed(FAST),
+                ASSequenceLoopingOn(),
+                ASSetSequenceSpeed(FAST),
                 Pause(40),
-                SetSequenceSpeed(NORMAL),
+                ASSetSequenceSpeed(NORMAL),
             ],
         ),
         ActionQueueAsync(
             MARIO,
             [
                 Pause(5),
-                FixedFCoordOn(),
-                SetWalkingSpeed(SLOW),
-                ShiftSouthwestSteps(1),
-                SetWalkingSpeed(NORMAL),
-                FixedFCoordOff(),
+                ASFixedFCoordOn(),
+                ASSetWalkingSpeed(SLOW),
+                ASWalkSouthwestSteps(1),
+                ASSetWalkingSpeed(NORMAL),
+                ASFixedFCoordOff(),
             ],
         ),
         Pause(10),
         UnfreezeAllNPCs(),
-        EnableControls(LEFT, RIGHT, DOWN, UP, X, A, Y, B),
+        EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
         UnfreezeCamera(),
         Return(identifier="script_2809_end"),
     ]

@@ -1,4 +1,6 @@
-# E1782_LANDS_END_DESERT_1_LOADER
+# pylint: disable=C0301
+
+"""E1782_LANDS_END_DESERT_1_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

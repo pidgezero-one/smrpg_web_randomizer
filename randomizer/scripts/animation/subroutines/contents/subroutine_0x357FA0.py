@@ -1,4 +1,6 @@
-# referenced by monster_attacks Howl, monster_attacks ScrowBell, monster_attacks FunRun, monster_attacks Stench, monster_attacks ViroPlasm, monster_attacks Sporocyst
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Howl, monster_attacks ScrowBell, monster_attacks FunRun, monster_attacks Stench, monster_attacks ViroPlasm, monster_attacks Sporocyst"""
 
 from randomizer.scripts.animation.script_imports import *
 

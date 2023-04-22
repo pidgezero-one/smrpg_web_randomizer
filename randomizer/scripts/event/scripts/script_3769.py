@@ -1,4 +1,6 @@
-# E3769_NIMBUS_CASTLE_LIBERATED_BRIDGE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3769_NIMBUS_CASTLE_LIBERATED_BRIDGE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

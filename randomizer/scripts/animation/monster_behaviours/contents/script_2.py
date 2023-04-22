@@ -1,4 +1,4 @@
-# behaviour_2_0x350635
+"""behaviour_2_0x350635 animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

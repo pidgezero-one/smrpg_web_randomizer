@@ -1,4 +1,6 @@
-# E0607_LOCKED_DOOR
+# pylint: disable=C0301
+
+"""E0607_LOCKED_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,7 +12,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI2811_ITS_LOCKED,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,
@@ -23,7 +25,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_607_play_sound_8"]),
         RunDialog(
             dialog_id=DI2811_ITS_LOCKED,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,

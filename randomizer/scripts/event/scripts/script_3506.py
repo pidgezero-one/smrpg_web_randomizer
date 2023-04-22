@@ -1,4 +1,6 @@
-# E3506_BOOSTER_HILL_GET_FLOWER
+# pylint: disable=C0301
+
+"""E3506_BOOSTER_HILL_GET_FLOWER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,12 +20,12 @@ script = EventScript(
             target=NPC_8,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
                 ASSetSpriteSequence(
                     index=4, sprite_offset=2, is_sequence=True, looping=True
                 ),
-                ASShiftNorthPixels(4),
-                ASShiftWestPixels(8),
+                ASWalkNorthPixels(4),
+                ASWalkWestPixels(8),
                 ASSetSpriteSequence(
                     index=4,
                     sprite_offset=2,
@@ -31,7 +33,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftWestPixels(8),
+                ASWalkWestPixels(8),
             ],
         ),
         ActionQueueAsync(
@@ -47,11 +49,11 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_8,
             subscript=[
-                ASShiftEastPixels(8),
+                ASWalkEastPixels(8),
                 ASSetSpriteSequence(
                     index=4, sprite_offset=2, is_sequence=True, looping=True
                 ),
-                ASShiftEastPixels(8),
+                ASWalkEastPixels(8),
                 ASSetSpriteSequence(
                     index=3,
                     sprite_offset=2,
@@ -59,7 +61,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
             ],
         ),
         ActionQueueAsync(
@@ -92,7 +94,7 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASPause(1),
                 ASVisibilityOn(),
-                ASShiftSoutheastPixels(1),
+                ASWalkSoutheastPixels(1),
                 ASDec(SECONDARY_TEMP_7024),
                 ASEndLoop(),
                 ASResetProperties(),

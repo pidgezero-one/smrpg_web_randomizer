@@ -1,4 +1,6 @@
-# E1775_SKY_TROOPA_PLATFORM
+# pylint: disable=C0301
+
+"""E1775_SKY_TROOPA_PLATFORM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,14 +24,14 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASShiftZUpSteps(2),
                 ASPause(60),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASPause(30),
                 ASSetAllSpeeds(NORMAL),
                 ASShiftZDownSteps(2),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASClearBit(TEMP_7043_1),
             ],
         ),
@@ -48,14 +50,14 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSoutheastSteps(5),
+                ASWalkSoutheastSteps(5),
                 ASAddZCoord1Step(),
                 ASPause(60),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASPause(30),
                 ASSetAllSpeeds(NORMAL),
                 ASDecZCoord1Step(),
-                ASShiftNorthwestSteps(5),
+                ASWalkNorthwestSteps(5),
                 ASClearBit(TEMP_7043_2),
             ],
         ),
@@ -75,12 +77,12 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(SLOW),
                 ASShiftZUpSteps(2),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASPause(60),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASPause(30),
                 ASSetAllSpeeds(NORMAL),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASShiftZDownSteps(2),
                 ASClearBit(TEMP_7043_3),
             ],
@@ -100,12 +102,12 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNorthwestSteps(4),
+                ASWalkNorthwestSteps(4),
                 ASPause(60),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASPause(30),
                 ASSetAllSpeeds(NORMAL),
-                ASShiftSoutheastSteps(4),
+                ASWalkSoutheastSteps(4),
                 ASClearBit(TEMP_7043_4),
             ],
         ),
@@ -124,13 +126,13 @@ script = EventScript(
             target=NPC_6,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASShiftZUpSteps(2),
                 ASPause(60),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASPause(30),
                 ASSetAllSpeeds(NORMAL),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASShiftZDownSteps(2),
                 ASWalk1StepNorthwest(),
                 ASClearBit(TEMP_7043_5),
@@ -177,7 +179,7 @@ script = EventScript(
             target=NPC_8,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASShiftZDownSteps(3),
                 ASWalk1StepSoutheast(),
                 ASPause(60),
@@ -186,7 +188,7 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
                 ASWalk1StepNorthwest(),
                 ASShiftZUpSteps(3),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASClearBit(TEMP_7043_7),
             ],
         ),
@@ -205,14 +207,14 @@ script = EventScript(
             target=NPC_9,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASShiftZUpSteps(3),
                 ASPause(60),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASPause(60),
                 ASSetAllSpeeds(NORMAL),
                 ASShiftZDownSteps(3),
-                ASShiftNorthwestSteps(3),
+                ASWalkNorthwestSteps(3),
                 ASClearBit(TEMP_7044_0),
             ],
         ),
@@ -229,7 +231,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASFixedFCoordOn(),
                 ASFloatingOff(),
                 ASRunAwayShift(),

@@ -1,4 +1,6 @@
-# E0403_SHYSTER_HARASSING_WALLET_GUY
+# pylint: disable=C0301
+
+"""E0403_SHYSTER_HARASSING_WALLET_GUY"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -49,7 +51,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6])
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6])
             ],
         ),
         SetSyncActionScript(NPC_7, A0128_WALK_RANDOM_DIRECTIONS),

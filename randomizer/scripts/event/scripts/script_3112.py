@@ -1,4 +1,6 @@
-# E3112_FREESTANDING_SHUFFLE_FIREWORKS_GRANT
+# pylint: disable=C0301
+
+"""E3112_FREESTANDING_SHUFFLE_FIREWORKS_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 

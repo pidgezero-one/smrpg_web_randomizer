@@ -1,4 +1,6 @@
-# E3342_VOLCANO_5TH_BOSS_PATH_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3342_VOLCANO_5TH_BOSS_PATH_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

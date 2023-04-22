@@ -1,4 +1,6 @@
-# E3280_SHIP_LOWER_HENCHMAN_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3280_SHIP_LOWER_HENCHMAN_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -161,7 +163,7 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-                ASShiftNortheastSteps(13),
+                ASWalkNortheastSteps(13),
                 ASVisibilityOff(),
             ],
         ),
@@ -179,7 +181,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASWalk1StepSoutheast(),
-                ASShiftNortheastSteps(11),
+                ASWalkNortheastSteps(11),
                 ASVisibilityOff(),
             ],
         ),
@@ -193,9 +195,9 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-                ASShiftNortheastSteps(3),
-                ASShiftSoutheastSteps(4),
-                ASShiftNortheastSteps(11),
+                ASWalkNortheastSteps(3),
+                ASWalkSoutheastSteps(4),
+                ASWalkNortheastSteps(11),
                 ASVisibilityOff(),
             ],
         ),
@@ -209,9 +211,9 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-                ASShiftNortheastSteps(3),
-                ASShiftSoutheastSteps(3),
-                ASShiftNortheastSteps(10),
+                ASWalkNortheastSteps(3),
+                ASWalkSoutheastSteps(3),
+                ASWalkNortheastSteps(10),
                 ASVisibilityOff(),
             ],
         ),

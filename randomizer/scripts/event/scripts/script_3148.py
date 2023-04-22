@@ -1,4 +1,6 @@
-# E3148_ROSE_WAY_MAIN_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3148_ROSE_WAY_MAIN_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

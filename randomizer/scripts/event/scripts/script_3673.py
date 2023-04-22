@@ -1,4 +1,6 @@
-# E3673_NIMBUS_LIBERATED_TOWN_SQUARE_LOADER
+# pylint: disable=C0301
+
+"""E3673_NIMBUS_LIBERATED_TOWN_SQUARE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,7 +32,7 @@ script = EventScript(
                 ASJumpToHeight(height=132, silent=True),
                 ASWalk1StepNortheast(),
                 ASFloatingOn(),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
             ],
         ),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

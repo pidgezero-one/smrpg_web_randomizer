@@ -1,4 +1,6 @@
-# E1422_RESCUE_TOAD_MUSHROOM_WAY_2
+# pylint: disable=C0301
+
+"""E1422_RESCUE_TOAD_MUSHROOM_WAY_2"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -80,9 +82,9 @@ script = EventScript(
             target=NPC_7,
             subscript=[
                 ASSetAllSpeeds(FASTER),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASJumpToHeight(112),
-                ASShiftSoutheastSteps(11),
+                ASWalkSoutheastSteps(11),
                 ASVisibilityOff(),
             ],
         ),

@@ -1,4 +1,6 @@
-# referenced by monster_spells DrainBeam
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells DrainBeam"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -37,13 +39,13 @@ script = SubroutineOrBanklessScript(
         ),
         FadeInEffect(duration=2),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x35337d"]),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=80),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Db(bytearray(b"\x90")),
         RunSubroutine(["command_0x35338b"]),
         Pause2Frames(),
@@ -81,12 +83,12 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         FadeInEffect(duration=2),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=70),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Pause2Frames(),
         ResetObjectMappingMemory(),
         ClearEffectIndex(),

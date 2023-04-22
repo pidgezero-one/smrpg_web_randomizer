@@ -1,19 +1,21 @@
-# E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        Set0158Bit7Offset(),
-        Set0158Bit7Offset(),
+        Set0158Bit7Offset(0x015C),
+        Set0158Bit7Offset(0x015E),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASShadowOff(),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthPixels(6),
-                ASShiftNorthwestPixels(2),
+                ASWalkNorthPixels(6),
+                ASWalkNorthwestPixels(2),
             ],
         ),
         ActionQueueSync(target=NPC_4, subscript=[ASSetPriority(3)]),

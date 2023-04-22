@@ -1,4 +1,6 @@
-# E2359_ABYSS_1ST_SAVE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2359_ABYSS_1ST_SAVE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,7 +19,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASShiftToXYCoords(x=8, y=70),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
@@ -28,10 +30,10 @@ script = EventScript(
         Jmp(["EVENT_2359_set_16"]),
         SetVarToConst(FACTORY_FALL_2, 0, identifier="EVENT_2359_set_13"),
         ActionQueueSync(
-            target=NPC_0, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_0, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueAsync(
-            target=NPC_1, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_1, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         SetVarToConst(FACTORY_FALL_1, 220, identifier="EVENT_2359_set_16"),
         RunBackgroundEvent(
@@ -51,10 +53,10 @@ script = EventScript(
         SetVarToConst(FACTORY_FALL_1, 220, identifier="EVENT_2359_set_24"),
         SetVarToConst(FACTORY_FALL_2, 0),
         ActionQueueSync(
-            target=NPC_0, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_0, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_1, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueAsync(
             target=MARIO,
@@ -80,7 +82,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASShiftToXYCoords(x=8, y=70),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),

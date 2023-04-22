@@ -1,4 +1,6 @@
-# E1767_TEMPLE_FORTUNE_RESULTS_ROOM_GATE_OPENS
+# pylint: disable=C0301
+
+"""E1767_TEMPLE_FORTUNE_RESULTS_ROOM_GATE_OPENS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -52,7 +54,7 @@ script = EventScript(
                     1, identifier="EVENT_1767_action_queue_sync_7_SUBSCRIPT_pause_0"
                 ),
                 ASSet700CToObjectCoord(
-                    object=DUMMY_0X07, coord=COORD_Z, pixel=True, bit_7=True
+                    target_npc=DUMMY_0X07, coord=COORD_Z, pixel=True, bit_7=True
                 ),
                 ASJmpIfVarEqualsConst(PRIMARY_TEMP_700C, 0, ["EVENT_1767_ret_8"]),
                 ASJumpToHeight(0),

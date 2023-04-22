@@ -1,4 +1,6 @@
-# E3391_VOLCANO_1ST_SAVE_ROOM_LOWER_CHEST
+# pylint: disable=C0301
+
+"""E3391_VOLCANO_1ST_SAVE_ROOM_LOWER_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

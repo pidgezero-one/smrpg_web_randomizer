@@ -1,4 +1,6 @@
-# E3188_MOUNT_MINECART
+# pylint: disable=C0301
+
+"""E3188_MOUNT_MINECART"""
 
 from randomizer.scripts.event.script_imports import *
 

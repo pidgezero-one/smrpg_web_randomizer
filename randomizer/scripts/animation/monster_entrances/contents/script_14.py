@@ -1,4 +1,4 @@
-# ENT0014_SPREAD_FROM_MIDDLE
+"""ENT0014_SPREAD_FROM_MIDDLE animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

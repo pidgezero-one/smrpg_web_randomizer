@@ -1,4 +1,6 @@
-# E1897_ABYSS_UPPER_MACHINE_YARID_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1897_ABYSS_UPPER_MACHINE_YARID_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,8 +17,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthwestPixels(4),
-                ASShiftSouthPixels(8),
+                ASWalkNorthwestPixels(4),
+                ASWalkSouthPixels(8),
                 ASFaceSouthwest(),
                 ASSetSolidityBits(bit_7=True),
             ],

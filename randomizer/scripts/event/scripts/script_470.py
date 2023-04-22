@@ -1,4 +1,6 @@
-# E0470_GREEN_YOSHI
+# pylint: disable=C0301
+
+"""E0470_GREEN_YOSHI"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -52,7 +54,7 @@ script = EventScript(
             target=NPC_9,
             prefix=0xF1,
             subscript=[
-                ASSet700CToObjectCoord(object=NPC_9, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=NPC_9, coord=COORD_F, pixel=True),
                 ASAddConstToVar(PRIMARY_TEMP_700C, 4),
                 ASMem700CAndConst(0x0007),
                 ASFaceEast7C(),

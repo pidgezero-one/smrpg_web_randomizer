@@ -1,11 +1,13 @@
-# E0610_MARRYMORE_OCCUPIED_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E0610_MARRYMORE_OCCUPIED_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 28),
-        Set0158Bit7Offset(),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW28_MARRYMORE),
+        Set0158Bit7Offset(0x0158),
         ClearBit(TEMP_7042_0),
         ClearBit(TEMP_7042_1),
         ClearBit(TEMP_7042_2),

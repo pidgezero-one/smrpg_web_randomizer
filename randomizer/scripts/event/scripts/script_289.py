@@ -1,4 +1,6 @@
-# E0289_INNS_CONTAINER
+# pylint: disable=C0301
+
+"""E0289_INNS_CONTAINER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -122,7 +124,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=SECONDARY_TEMP_7024),
                 ASDb(bytearray(b"\xfd$\x00\x10")),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=PRIMARY_TEMP_7000),

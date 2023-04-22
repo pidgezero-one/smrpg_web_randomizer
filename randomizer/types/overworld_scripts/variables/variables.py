@@ -1,4 +1,6 @@
-from .classes import ShortVar, ByteVar, Flag
+"""Definitions of each in-game variable that can be accessed by event/action scripts"""
+
+from randomizer.types.overworld_scripts.variables.classes import ShortVar, ByteVar, Flag
 
 PRIMARY_TEMP_7000 = ShortVar(0x7000)
 UNKNOWN_7002 = ShortVar(0x7002)
@@ -148,7 +150,7 @@ TEMP_70AE = ByteVar(0x70AE)
 TEMP_70AF = ByteVar(0x70AF)
 UNKNOWN_70B0 = ByteVar(0x70B0)
 BOOSTER_HILL_70B1 = ByteVar(0x70B1)
-UNUSED_70B2 = ByteVar(0x70B2)
+WEDDING_GEAR_COUNTER = ByteVar(0x70B2)
 MIDAS_RIVER_70B3 = ByteVar(0x70B3)
 CHEST_COIN_SIZE = ByteVar(0x70B4)
 MINES_MIDBOSS_POSITION = ByteVar(0x70B5)

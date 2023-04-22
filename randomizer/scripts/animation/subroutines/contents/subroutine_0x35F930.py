@@ -1,4 +1,6 @@
-# referenced by weapons Space
+# pylint: disable=C0301,C0103
+
+"""referenced by weapons Space"""
 
 from randomizer.scripts.animation.script_imports import *
 

@@ -1,10 +1,12 @@
-# E0617_MARIO_AS_BELLHOP_MAIN_EVENT
+# pylint: disable=C0301
+
+"""E0617_MARIO_AS_BELLHOP_MAIN_EVENT"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        Set7000ToObjectCoord(object=NPC_5, coord=COORD_Y, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=NPC_5, coord=COORD_Y, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 63, ["EVENT_617_enable_controls_until_return_3"]
         ),
@@ -27,7 +29,7 @@ script = EventScript(
                 ASTransferToXYZF(x=6, y=64, z=0, direction=EAST),
                 ASSetSequenceSpeed(NORMAL),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNorthwestSteps(4),
+                ASWalkNorthwestSteps(4),
                 ASSetSequenceSpeed(SLOW),
             ],
         ),
@@ -41,7 +43,7 @@ script = EventScript(
                 ASVisibilityOn(),
                 ASSetSequenceSpeed(NORMAL),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNorthwestSteps(4),
+                ASWalkNorthwestSteps(4),
                 ASSetSequenceSpeed(SLOW),
             ],
             identifier="EVENT_617_action_queue_async_17",

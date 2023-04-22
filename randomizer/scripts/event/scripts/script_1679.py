@@ -1,4 +1,6 @@
-# E1679_LANDS_END_TRAMPOLINE_IN_LOWER_UNDERGROUND_GECKO_ROOM
+# pylint: disable=C0301
+
+"""E1679_LANDS_END_TRAMPOLINE_IN_LOWER_UNDERGROUND_GECKO_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 

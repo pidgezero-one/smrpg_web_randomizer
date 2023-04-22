@@ -1,4 +1,6 @@
-# E2417_TOWER_CHOMP_STAIRWAY_LOADER
+# pylint: disable=C0301
+
+"""E2417_TOWER_CHOMP_STAIRWAY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
         ),
         ActionQueueAsync(
             target=NPC_0,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftSoutheastPixels(8)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSoutheastPixels(8)],
         ),
         JmpIfObjectNotInSpecificLevel(
             NPC_1,
@@ -21,7 +23,7 @@ script = EventScript(
         ),
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftSouthwestPixels(8)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(8)],
         ),
         JmpIfObjectNotInSpecificLevel(
             NPC_2,
@@ -31,7 +33,7 @@ script = EventScript(
         ),
         ActionQueueAsync(
             target=NPC_2,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftSoutheastPixels(8)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSoutheastPixels(8)],
         ),
         FadeInFromBlack(sync=False, identifier="EVENT_2417_fade_in_from_black_async_6"),
         Return(),

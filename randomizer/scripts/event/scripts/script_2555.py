@@ -1,4 +1,6 @@
-# E2555_BEAN_VALLEY_BOSS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2555_BEAN_VALLEY_BOSS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,13 +8,13 @@ script = EventScript(
     [
         ClearBit(DIRECTIONAL_7047_0),
         ActionQueueSync(
-            target=NPC_0, subscript=[ASShiftSouthPixels(1), ASShiftSouthwestPixels(4)]
+            target=NPC_0, subscript=[ASWalkSouthPixels(1), ASWalkSouthwestPixels(4)]
         ),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
-                ASShiftSoutheastPixels(7),
-                ASShiftSouthwestPixels(1),
+                ASWalkSoutheastPixels(7),
+                ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
             ],
         ),
@@ -35,7 +37,7 @@ script = EventScript(
             subscript=[
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASTransferToXYZF(x=26, y=60, z=0, direction=EAST),
-                ASShiftNorthwestPixels(5),
+                ASWalkNorthwestPixels(5),
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 ),

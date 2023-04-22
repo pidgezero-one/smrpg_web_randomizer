@@ -1,4 +1,6 @@
-# E1370_CURTAIN_GAME_SUCCESS_FAILURE_GENERAL
+# pylint: disable=C0301
+
+"""E1370_CURTAIN_GAME_SUCCESS_FAILURE_GENERAL"""
 
 from randomizer.scripts.event.script_imports import *
 

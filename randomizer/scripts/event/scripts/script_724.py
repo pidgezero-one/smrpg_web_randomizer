@@ -1,4 +1,6 @@
-# E0724_NIMBUS_CROCO_HOUSE_LOADER
+# pylint: disable=C0301
+
+"""E0724_NIMBUS_CROCO_HOUSE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

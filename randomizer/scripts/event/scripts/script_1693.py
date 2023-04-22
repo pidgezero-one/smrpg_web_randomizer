@@ -1,4 +1,6 @@
-# E1693_TEMPLE_FINAL_FORTUNE_HEAD
+# pylint: disable=C0301
+
+"""E1693_TEMPLE_FINAL_FORTUNE_HEAD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,7 +8,7 @@ script = EventScript(
     [
         JmpIfBitSet(TEMP_7044_0, ["EVENT_1693_ret_21"]),
         Set7000ToTappedButton(),
-        JmpIf7000AllBitsClear(destinations=["EVENT_1693_ret_21"]),
+        JmpIf7000AllBitsClear(bits=[], destinations=["EVENT_1693_ret_21"]),
         ActionQueueSync(
             target=MARIO, subscript=[ASJumpToHeight(height=64, silent=True)]
         ),
@@ -37,14 +39,14 @@ script = EventScript(
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastPixels(4),
+                ASWalkSoutheastPixels(4),
                 ASJumpToHeight(64),
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 ),
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASSetSolidityBits(cant_pass_walls=True),
             ],
         ),

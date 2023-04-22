@@ -1,3 +1,5 @@
+"""Miscellaneous constants supporting the development of sprites."""
+
 import string
 
 TOTAL_SPRITES: int = 0x400

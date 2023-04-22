@@ -1,4 +1,6 @@
-# E3077_SHIP_PUZZLE_MUSHROOM
+# pylint: disable=C0301
+
+"""E3077_SHIP_PUZZLE_MUSHROOM"""
 
 from randomizer.scripts.event.script_imports import *
 

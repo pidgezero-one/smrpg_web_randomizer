@@ -1,4 +1,4 @@
-# 49 - Frogog
+"""49 - Frogog"""
 
 from randomizer.scripts.monster.script_imports import *
 

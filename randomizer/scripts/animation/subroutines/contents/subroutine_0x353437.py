@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack51, monster_attacks PhysicalAttack81, monster_spells ChestScrow, monster_attacks Backfire, monster_spells WaterBlast, monster_spells SpearRain, monster_spells Shredder, monster_attacks Chomp, behaviour_8_0x3507A2, behaviour_24_0x350A9C, behaviour_32_0x350C14, monster_spells MegaDrain, monster_attacks FunRun, monster_spells ChestPoison, behaviour_23_0x350A55, monster_spells PetalBlast, behaviour_9_0x3507E9, monster_spells IceRock, monster_spells LightBeam, behaviour_35_0x350CDC, monster_spells Storm, monster_spells DarkStar, monster_attacks PhysicalAttack90, monster_spells Crystal, monster_spells Solidify, monster_spells Flame, monster_spells BigBang, monster_attacks PhysicalAttack40, monster_attacks DarkClaw, monster_spells Sledge, monster_spells SandStorm, monster_spells ArrowRain, monster_spells DiamondSaw, monster_spells Bolt, monster_spells ChainSaw, behaviour_33_0x350C5B, monster_attacks GunkBall, monster_attacks 121, behaviour_11_0x35086A, monster_spells Electroshock, monster_spells BreakerBeam, monster_spells ChestFear, monster_spells Blizzard, monster_spells StaticE, monster_attacks 114, behaviour_53_0x350F7A, behaviour_25_0x350ABD, monster_spells LightningOrb, behaviour_16_0x350928, monster_spells DrainBeam, monster_attacks 119, behaviour_10_0x350830, monster_attacks 128, monster_spells FlameStone, monster_spells WillyWisp, monster_attacks VaVaVoom, monster_spells MeteorBlast, monster_spells Boulder, monster_attacks 120, monster_spells FlameWall, monster_spells ChestMute, monster_attacks 122, monster_spells MeteorSwarm, monster_attacks PhysicalAttack89, monster_spells SwordRain, monster_spells AuroraFlash, monster_attacks 125, monster_spells Corona, monster_attacks Endobubble, behaviour_44_0x350E4A, monster_spells KnockOut, monster_attacks 116
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack51, monster_attacks PhysicalAttack81, monster_spells ChestScrow, monster_attacks Backfire, monster_spells WaterBlast, monster_spells SpearRain, monster_spells Shredder, monster_attacks Chomp, behaviour_8_0x3507A2, behaviour_24_0x350A9C, behaviour_32_0x350C14, monster_spells MegaDrain, monster_attacks FunRun, monster_spells ChestPoison, behaviour_23_0x350A55, monster_spells PetalBlast, behaviour_9_0x3507E9, monster_spells IceRock, monster_spells LightBeam, behaviour_35_0x350CDC, monster_spells Storm, monster_spells DarkStar, monster_attacks PhysicalAttack90, monster_spells Crystal, monster_spells Solidify, monster_spells Flame, monster_spells BigBang, monster_attacks PhysicalAttack40, monster_attacks DarkClaw, monster_spells Sledge, monster_spells SandStorm, monster_spells ArrowRain, monster_spells DiamondSaw, monster_spells Bolt, monster_spells ChainSaw, behaviour_33_0x350C5B, monster_attacks GunkBall, monster_attacks 121, behaviour_11_0x35086A, monster_spells Electroshock, monster_spells BreakerBeam, monster_spells ChestFear, monster_spells Blizzard, monster_spells StaticE, monster_attacks 114, behaviour_53_0x350F7A, behaviour_25_0x350ABD, monster_spells LightningOrb, behaviour_16_0x350928, monster_spells DrainBeam, monster_attacks 119, behaviour_10_0x350830, monster_attacks 128, monster_spells FlameStone, monster_spells WillyWisp, monster_attacks VaVaVoom, monster_spells MeteorBlast, monster_spells Boulder, monster_attacks 120, monster_spells FlameWall, monster_spells ChestMute, monster_attacks 122, monster_spells MeteorSwarm, monster_attacks PhysicalAttack89, monster_spells SwordRain, monster_spells AuroraFlash, monster_attacks 125, monster_spells Corona, monster_attacks Endobubble, behaviour_44_0x350E4A, monster_spells KnockOut, monster_attacks 116"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -197,14 +199,14 @@ script = SubroutineOrBanklessScript(
             playback_off=True,
             identifier="command_0x35358a",
         ),
-        Layer3On(property=TRANSPARENCY_OFF),
+        Layer3On(prop=TRANSPARENCY_OFF),
         Db(bytearray(b"\xba\x03\x00\x01")),
         SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=1, y=1443, z=13370),
         ResetObjectMappingMemory(),
         Db(bytearray(b"?\x80\x15\x00\x00\x84")),
         Db(bytearray(b"\xa8\x02\x00")),
         PauseScriptUntilAMEMBitsSet(0x6F, [0, 1, 2, 3, 4, 5, 6, 7]),
-        Layer3Off(property=TRANSPARENCY_OFF),
+        Layer3Off(prop=TRANSPARENCY_OFF),
         Pause2Frames(),
         ClearEffectIndex(),
         ReturnSubroutine(),

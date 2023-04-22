@@ -1,4 +1,6 @@
-# E2621_FACTORY_3RD_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2621_FACTORY_3RD_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_10, R472_FACTORY_GROUNDS_AREA_03, ["EVENT_2621_jmp_if_bit_clear_3"]
         ),
-        ActionQueueSync(target=NPC_10, subscript=[ASShiftNortheastPixels(8)]),
+        ActionQueueSync(target=NPC_10, subscript=[ASWalkNortheastPixels(8)]),
         JmpIfBitClear(
             TEMP_7044_7,
             ["EVENT_2621_sequence_setter_2"],

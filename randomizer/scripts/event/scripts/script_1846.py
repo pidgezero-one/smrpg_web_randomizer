@@ -1,4 +1,6 @@
-# E1846_SAFE_DONUT_LIFT_JUMP
+# pylint: disable=C0301
+
+"""E1846_SAFE_DONUT_LIFT_JUMP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_702A),
                 ASDb(bytearray(b"\xc8\x91")),
                 ASSetWalkingSpeed(FAST),
@@ -31,13 +33,13 @@ script = EventScript(
             ],
         ),
         Set7000ToTappedButton(identifier="EVENT_1846_set_7000_to_tapped_button_7"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1846_action_queue_sync_21"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1846_action_queue_sync_21"]),
         JmpIfMarioInAir(["EVENT_1846_clear_bit_30"]),
         Set7000ToPressedButton(),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=X_COORD_1),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1846_action_queue_sync_17"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1846_action_queue_sync_17"]),
         CopyVarToVar(from_var=X_COORD_1, to_var=PRIMARY_TEMP_7000),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1846_action_queue_sync_19"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1846_action_queue_sync_19"]),
         Pause(1, identifier="EVENT_1846_pause_15"),
         Jmp(["EVENT_1846_set_7000_to_tapped_button_7"]),
         ActionQueueSync(
@@ -61,9 +63,11 @@ script = EventScript(
         Pause(1),
         Set7000ToPressedButton(),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=X_COORD_1),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1846_set_7000_to_70A0_short_mem_33"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1846_set_7000_to_70A0_short_mem_33"]
+        ),
         CopyVarToVar(from_var=X_COORD_1, to_var=PRIMARY_TEMP_7000),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1846_action_queue_async_39"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1846_action_queue_async_39"]),
         EndLoop(),
         ClearBit(TEMP_7043_1, identifier="EVENT_1846_clear_bit_30"),
         MoveScriptToMainThread(),
@@ -80,7 +84,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -89,7 +93,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(FASTER),
-                ASShiftNorthwestSteps(3),
+                ASWalkNorthwestSteps(3),
                 ASSetWalkingSpeed(NORMAL),
             ],
             identifier="EVENT_1846_action_queue_async_37",
@@ -99,7 +103,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASSetWalkingSpeed(NORMAL),
             ],
             identifier="EVENT_1846_action_queue_async_39",

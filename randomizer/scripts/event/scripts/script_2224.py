@@ -1,4 +1,6 @@
-# E2224_KEEP_FINAL_BOSS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2224_KEEP_FINAL_BOSS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,8 +12,8 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(SLOW),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNortheastPixels(8),
-                ASShiftNorthwestPixels(4),
+                ASWalkNortheastPixels(8),
+                ASWalkNorthwestPixels(4),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0, 1, 3]),
                 ASSequenceLoopingOn(),
                 ASSetPriority(3),
@@ -21,8 +23,8 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNortheastPixels(19),
-                ASShiftNorthPixels(3),
+                ASWalkNortheastPixels(19),
+                ASWalkNorthPixels(3),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0, 1, 3]),
                 ASSequenceLoopingOn(),
                 ASSetPriority(3),
@@ -33,8 +35,8 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNortheastPixels(23),
-                ASShiftSoutheastPixels(12),
+                ASWalkNortheastPixels(23),
+                ASWalkSoutheastPixels(12),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0, 1, 3]),
                 ASSequenceLoopingOn(),
                 ASSetPriority(3),
@@ -46,10 +48,10 @@ script = EventScript(
         Return(),
         ActionQueueSync(
             target=NPC_3,
-            subscript=[ASShiftSoutheastPixels(8)],
+            subscript=[ASWalkSoutheastPixels(8)],
             identifier="EVENT_2224_action_queue_sync_6",
         ),
-        ActionQueueAsync(target=NPC_4, subscript=[ASShiftSoutheastPixels(8)]),
+        ActionQueueAsync(target=NPC_4, subscript=[ASWalkSoutheastPixels(8)]),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM,
@@ -58,7 +60,7 @@ script = EventScript(
         RemoveObjectFromCurrentLevel(NPC_0),
         RemoveObjectFromCurrentLevel(NPC_1),
         RemoveObjectFromCurrentLevel(NPC_2),
-        PrioritySet(mainscreen=[LAYER_1, NPC_SPRITES], subscreen=[], colour_math=[]),
+        PrioritySet(mainscreen=[LAYER_L1, NPC_SPRITES], subscreen=[], colour_math=[]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

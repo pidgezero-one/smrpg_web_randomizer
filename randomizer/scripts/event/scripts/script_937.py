@@ -1,4 +1,6 @@
-# E0937_PECK_SUBROUTINE_MIDDLE_STATUE
+# pylint: disable=C0301
+
+"""E0937_PECK_SUBROUTINE_MIDDLE_STATUE"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1568_MIDAS_RIVER_BEGIN_BARREL_SECTION
+# pylint: disable=C0301
+
+"""E1568_MIDAS_RIVER_BEGIN_BARREL_SECTION"""
 
 from randomizer.scripts.event.script_imports import *
 

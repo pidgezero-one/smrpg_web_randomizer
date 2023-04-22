@@ -1,4 +1,6 @@
-# E1339_PORTRAIT_GAME_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1339_PORTRAIT_GAME_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,7 +9,7 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_15,
             subscript=[
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASShadowOff(),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
@@ -15,7 +17,7 @@ script = EventScript(
             ],
         ),
         ActionQueueSync(
-            target=NPC_14, subscript=[ASShiftNorthwestPixels(8), ASFaceSouthwest()]
+            target=NPC_14, subscript=[ASWalkNorthwestPixels(8), ASFaceSouthwest()]
         ),
         ActionQueueSync(
             target=NPC_0,

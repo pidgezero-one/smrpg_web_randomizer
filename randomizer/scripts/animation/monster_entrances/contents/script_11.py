@@ -1,4 +1,4 @@
-# ENT0011_SLOW_DROP_FROM_ABOVE
+"""ENT0011_SLOW_DROP_FROM_ABOVE animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

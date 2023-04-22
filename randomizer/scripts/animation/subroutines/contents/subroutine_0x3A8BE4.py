@@ -1,4 +1,6 @@
-# referenced by battle_events BE0092_SHELLY_BREAKS
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0092_SHELLY_BREAKS"""
 
 from randomizer.scripts.animation.script_imports import *
 

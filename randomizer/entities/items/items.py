@@ -4,12 +4,10 @@ from randomizer.types.items.enums import (
     EffectType,
     EquipStats,
     ItemShuffleType,
-    ItemTempBuff,
     ItemUnique,
 )
-from randomizer.types.spells.enums import Element, Status
+from randomizer.types.spells.enums import Element, Status, TempStatBuff
 
-from randomizer.logic.patch import Patch
 from randomizer.types.numbers.classes import BitMapSet, UInt16, UInt8
 from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
     E0256_RETURN,
@@ -46,10 +44,10 @@ from randomizer.types.items.classes import (
 from randomizer.types.overworld_scripts.constants.area_objects import (
     PartyCharacter,
     MARIO,
-    MALLOW,
+    Mallow,
     GENO,
     TOADSTOOL,
-    BOWSER,
+    Bowser,
 )
 
 from randomizer.logic import flags
@@ -140,7 +138,7 @@ class FroggieStick(Weapon, SpecialEquip):
     _description: str = "Frogfucius\x01made it"
     _tier: int = 5
     _order: int = 67
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _attack: int = 20
     _variance: int = 2
     _price: int = 180
@@ -199,7 +197,7 @@ class Cymbals(Weapon, RegularEquip):
     _description: str = "Scare enemies\x01with a clash"
     _tier: int = 5
     _order: int = 60
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _attack: int = 30
     _variance: int = 3
     _price: int = 42
@@ -211,7 +209,7 @@ class Chomp(Weapon, SpecialEquip):
     _description: str = "Just spin me\x01at an enemy!"
     _tier: int = 3
     _order: int = 64
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _attack: int = 10
     _variance: int = 4
     _price: int = 140
@@ -249,7 +247,7 @@ class ChompShell(Weapon, RegularEquip):
     _model: Type[ItemNPC] = ChompItem
     _tier: int = 5
     _order: int = 65
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _attack: int = 9
     _variance: int = 3
     _price: int = 60
@@ -283,7 +281,7 @@ class WhompGlove(Weapon, RegularEquip):
     _description: str = "The old double\x01whammie!"
     _tier: int = 5
     _order: int = 52
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _attack: int = 40
     _variance: int = 4
     _price: int = 72
@@ -335,7 +333,7 @@ class HurlyGloves(Weapon, RegularEquip):
     _description: str = "A classic\x01Mario}toss\x01attack"
     _tier: int = 5
     _order: int = 46
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _attack: int = 20
     _variance: int = 5
     _price: int = 92
@@ -377,7 +375,7 @@ class RibbitStick(Weapon, RegularEquip):
     _model: Type[ItemNPC] = FroggieStickNPC
     _tier: int = 5
     _order: int = 69
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _attack: int = 50
     _variance: int = 5
     _price: int = 86
@@ -388,7 +386,7 @@ class SpikedLink(Weapon, RegularEquip):
     _description: str = "A studded ball\x01and chain!"
     _tier: int = 4
     _order: int = 66
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _model: Type[ItemNPC] = ChompItem
     _attack: int = 30
     _variance: int = 6
@@ -434,7 +432,7 @@ class StickyGlove(Weapon, RegularEquip):
     _description: str = "Launches a\x01punch attack."
     _tier: int = 4
     _order: int = 50
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _attack: int = 60
     _variance: int = 6
     _price: int = 98
@@ -480,7 +478,7 @@ class DrillClaw(Weapon, RegularEquip):
     _description: str = "A drilling\x01claw!"
     _tier: int = 2
     _order: int = 45
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _attack: int = 40
     _variance: int = 7
     _price: int = 118
@@ -515,7 +513,7 @@ class SonicCymbal(Weapon, RegularEquip):
     _description: str = "Puts noise to\x01work for you!"
     _tier: int = 2
     _order: int = 61
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _attack: int = 70
     _variance: int = 7
     _price: int = 108
@@ -591,7 +589,7 @@ class Pants(Armor, RegularEquip):
     _description: str = "It~s a pair\x01of pants!"
     _tier: int = 5
     _order: int = 95
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _defense: int = 6
     _magic_defense: int = 3
     _price: int = 7
@@ -613,7 +611,7 @@ class ThickPants(Armor, RegularEquip):
     _description: str = "Padded pants"
     _tier: int = 5
     _order: int = 105
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _defense: int = 12
     _magic_defense: int = 6
     _price: int = 14
@@ -635,7 +633,7 @@ class MegaPants(Armor, RegularEquip):
     _description: str = "Durable work\x01pants"
     _tier: int = 5
     _order: int = 92
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _defense: int = 18
     _magic_defense: int = 9
     _price: int = 22
@@ -646,8 +644,7 @@ class WorkPants(Armor, RegularEquip):
     _description: str = "Sweaty\x01work pants!"
     _tier: int = 5
     _order: int = 107
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = 5
     _attack: int = 10
     _defense: int = 15
@@ -688,7 +685,7 @@ class HappyPants(Armor, RegularEquip):
     _description: str = "A lucky\x01pair of pants"
     _tier: int = 5
     _order: int = 85
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 38
@@ -711,7 +708,7 @@ class HappyShell(Armor, RegularEquip):
     _model: Type[ItemNPC] = GreenShell
     _tier: int = 5
     _order: int = 86
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _defense: int = 6
     _magic_defense: int = 3
     _price: int = 38
@@ -750,7 +747,7 @@ class SailorPants(Armor, RegularEquip):
     _description: str = "A sailor~s\x01pants"
     _tier: int = 5
     _order: int = 100
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 50
@@ -784,7 +781,7 @@ class CourageShell(Armor, RegularEquip):
     _model: Type[ItemNPC] = GreenShell
     _tier: int = 4
     _order: int = 74
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _defense: int = 12
     _magic_defense: int = 6
     _price: int = 60
@@ -806,7 +803,7 @@ class FuzzyPants(Armor, RegularEquip):
     _description: str = "Fuzzy pants"
     _tier: int = 4
     _order: int = 82
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 70
@@ -850,7 +847,7 @@ class FirePants(Armor, RegularEquip):
     _description: str = "Determined\x01person~s pants"
     _tier: int = 4
     _order: int = 77
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _defense: int = 42
     _magic_defense: int = 21
     _price: int = 90
@@ -874,7 +871,7 @@ class FireShell(Armor, RegularEquip):
     _model: Type[ItemNPC] = RedShell
     _tier: int = 4
     _order: int = 78
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _defense: int = 18
     _magic_defense: int = 9
     _price: int = 90
@@ -907,7 +904,7 @@ class PrincePants(Armor, RegularEquip):
     _description: str = "Legendary\x01pants!"
     _tier: int = 3
     _order: int = 97
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: List[PartyCharacter] = [Mallow]
     _defense: int = 48
     _magic_defense: int = 24
     _price: int = 100
@@ -932,7 +929,7 @@ class HealShell(Armor, RegularEquip):
     _model: Type[ItemNPC] = GreenShell
     _tier: int = 3
     _order: int = 88
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: List[PartyCharacter] = [Bowser]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 100
@@ -955,8 +952,7 @@ class SuperSuit(Armor, SpecialEquip):
     _description: str = "A truly fine\x01suit!"
     _tier: int = 1
     _order: int = 104
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = 30
     _attack: int = 50
     _defense: int = 50
@@ -999,8 +995,7 @@ class LazyShellArmor(Armor, SpecialEquip):
     _model: Type[ItemNPC] = RedShell
     _tier: int = 1
     _order: int = 90
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = -50
     _attack: int = -50
     _defense: int = 127
@@ -1037,8 +1032,7 @@ class ZoomShoes(Accessory, SpecialEquip):
     _description: str = "Speed up by 10!"
     _tier: int = 4
     _order: int = 128
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = 10
     _defense: int = 5
     _magic_defense: int = 5
@@ -1063,8 +1057,7 @@ class SafetyBadge(Accessory, RegularEquip):
     _description: str = "Prevents Mute \x9c\x01Poison attacks"
     _tier: int = 2
     _order: int = 121
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _defense: int = 5
     _magic_defense: int = 5
     _status_immunities: List[Status] = [
@@ -1106,8 +1099,7 @@ class SafetyRing(Accessory, RegularEquip):
     _description: str = "Guards against\x01mortal blows."
     _tier: int = 1
     _order: int = 122
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = 5
     _defense: int = 5
     _magic_defense: int = 5
@@ -1143,8 +1135,7 @@ class Amulet(Accessory, RegularEquip):
     _description: str = "Great item,\x01bad smell!"
     _tier: int = 2
     _order: int = 108
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = -5
     _attack: int = 7
     _defense: int = 7
@@ -1172,8 +1163,7 @@ class ScroogeRing(Accessory, RegularEquip):
     _description: str = "Cuts FP use\x01in half\x01during battle"
     _tier: int = 3
     _order: int = 123
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _price: int = 50
     _frog_coin_item: bool = True
     _model: Type[ItemNPC] = RingNPC
@@ -1190,8 +1180,7 @@ class ExpBooster(Accessory, RegularEquip):
     _description: str = "Doubles Exp.\x01when equipped"
     _tier: int = 3
     _order: int = 113
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _price: int = 22
     _frog_coin_item: bool = True
     _original_effect_type: EffectType = EffectType.FEW_EFFECTS
@@ -1230,8 +1219,7 @@ class RareScarf(Accessory, RegularEquip):
     _description: str = "Raises defense\x01power!"
     _tier: int = 3
     _order: int = 120
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _defense: int = 15
     _magic_defense: int = 15
     _price: int = 150
@@ -1269,8 +1257,7 @@ class AntidotePin(Accessory, RegularEquip):
     _description: str = "Prevents\x01poison damage"
     _tier: int = 3
     _order: int = 109
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _defense: int = 2
     _magic_defense: int = 2
     _status_immunities: List[Status] = [Status.POISON]
@@ -1284,8 +1271,7 @@ class WakeUpPin(Accessory, RegularEquip):
     _description: str = "Prevents Mute \x9c\x01Sleep attacks"
     _tier: int = 3
     _order: int = 127
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _defense: int = 3
     _magic_defense: int = 3
     _status_immunities: List[Status] = [
@@ -1302,8 +1288,7 @@ class FearlessPin(Accessory, RegularEquip):
     _description: str = "Prevents Fear\x01attacks"
     _tier: int = 3
     _order: int = 114
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _defense: int = 5
     _magic_defense: int = 5
     _status_immunities: List[Status] = [Status.FEAR]
@@ -1317,8 +1302,7 @@ class TrueformPin(Accessory, RegularEquip):
     _description: str = "You won~t be\x01turned into\x01Mushrooms or\x01Scarecrows!"
     _tier: int = 3
     _order: int = 126
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _defense: int = 4
     _magic_defense: int = 4
     _status_immunities: List[Status] = [
@@ -1352,11 +1336,10 @@ class GhostMedal(Accessory, SpecialEquip):
     _description: str = "Raises defense\x01while attacking"
     _tier: int = 2
     _order: int = 116
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
-    _temp_buffs: List[ItemTempBuff] = [
-        ItemTempBuff.DEFENSE,
-        ItemTempBuff.MAGIC_DEFENSE,
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
+    _temp_buffs: List[TempStatBuff] = [
+        TempStatBuff.DEFENSE,
+        TempStatBuff.MAGIC_DEFENSE,
     ]
     _price: int = 1600
     _original_effect_type: EffectType = EffectType.BUFFS
@@ -1374,8 +1357,7 @@ class JinxBelt(Accessory, SpecialEquip):
     _description: str = "Jinx~s emblem\x01of power!"
     _tier: int = 1
     _order: int = 117
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = 12
     _attack: int = 27
     _defense: int = 27
@@ -1395,8 +1377,7 @@ class Feather(Accessory, RegularEquip):
     _description: str = "Speed up by 20"
     _tier: int = 2
     _order: int = 115
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = 20
     _defense: int = 5
     _magic_defense: int = 5
@@ -1420,12 +1401,11 @@ class TroopaPin(Accessory, RegularEquip):
     _description: str = 'Grants "Troopa#\x01confidence!'
     _tier: int = 2
     _order: int = 125
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = 20
-    _temp_buffs: List[ItemTempBuff] = [
-        ItemTempBuff.ATTACK,
-        ItemTempBuff.MAGIC_ATTACK,
+    _temp_buffs: List[TempStatBuff] = [
+        TempStatBuff.ATTACK,
+        TempStatBuff.MAGIC_ATTACK,
     ]
     _price: int = 1000
     _original_effect_type: EffectType = EffectType.BUFFS
@@ -1443,8 +1423,7 @@ class SignalRing(Accessory, RegularEquip):
     _description: str = "Noise indicates\x01a hidden chest."
     _tier: int = 4
     _order: int = 124
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _speed: int = 10
     _price: int = 600
     _model: Type[ItemNPC] = RingNPC
@@ -1461,14 +1440,13 @@ class QuartzCharm(Accessory, SpecialEquip):
     _description: str = "Shining source\x01of power!"
     _tier: int = 1
     _order: int = 119
-    _equip_chars: List[PartyCharacter] = [
-        MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: List[PartyCharacter] = [MARIO, Mallow, GENO, Bowser, TOADSTOOL]
     _prevent_ko: bool = True
-    _temp_buffs: List[ItemTempBuff] = [
-        ItemTempBuff.ATTACK,
-        ItemTempBuff.MAGIC_ATTACK,
-        ItemTempBuff.DEFENSE,
-        ItemTempBuff.MAGIC_DEFENSE,
+    _temp_buffs: List[TempStatBuff] = [
+        TempStatBuff.ATTACK,
+        TempStatBuff.MAGIC_ATTACK,
+        TempStatBuff.DEFENSE,
+        TempStatBuff.MAGIC_DEFENSE,
     ]
     _price: int = 7
     _original_effect_type: EffectType = EffectType.BUFFS
@@ -1583,9 +1561,9 @@ class Bracer(RegularItem):
     _description: str = "Raises ally~s\x01def. in battle"
     _order: int = 2
     _consumable: bool = True
-    _temp_buffs: List[ItemTempBuff] = [
-        ItemTempBuff.DEFENSE,
-        ItemTempBuff.MAGIC_DEFENSE,
+    _temp_buffs: List[TempStatBuff] = [
+        TempStatBuff.DEFENSE,
+        TempStatBuff.MAGIC_DEFENSE,
     ]
     _price: int = 50
     _frog_coin_item: bool = True
@@ -1600,9 +1578,9 @@ class Energizer(RegularItem):
     _description: str = "Raises ally~s\x01battle power\x01during battle"
     _order: int = 5
     _consumable: bool = True
-    _temp_buffs: List[ItemTempBuff] = [
-        ItemTempBuff.ATTACK,
-        ItemTempBuff.MAGIC_ATTACK,
+    _temp_buffs: List[TempStatBuff] = [
+        TempStatBuff.ATTACK,
+        TempStatBuff.MAGIC_ATTACK,
     ]
     _price: int = 50
     _frog_coin_item: bool = True
@@ -1617,11 +1595,11 @@ class YoshiAde(RegularItem):
     _model: Type[ItemNPC] = GreenJuice
     _order: int = 23
     _consumable: bool = True
-    _temp_buffs: List[ItemTempBuff] = [
-        ItemTempBuff.ATTACK,
-        ItemTempBuff.MAGIC_ATTACK,
-        ItemTempBuff.DEFENSE,
-        ItemTempBuff.MAGIC_DEFENSE,
+    _temp_buffs: List[TempStatBuff] = [
+        TempStatBuff.ATTACK,
+        TempStatBuff.MAGIC_ATTACK,
+        TempStatBuff.DEFENSE,
+        TempStatBuff.MAGIC_DEFENSE,
     ]
     _price: int = 200
     _tier: int = 3
@@ -2216,9 +2194,9 @@ class Crystalline(RegularItem):
     _description: str = "Raises party's\x01Defense in\x01battle"
     _order: int = 3
     _consumable: bool = True
-    _temp_buffs: List[ItemTempBuff] = [
-        ItemTempBuff.DEFENSE,
-        ItemTempBuff.MAGIC_DEFENSE,
+    _temp_buffs: List[TempStatBuff] = [
+        TempStatBuff.DEFENSE,
+        TempStatBuff.MAGIC_DEFENSE,
     ]
     _price: int = 125
     _frog_coin_item: bool = True
@@ -2232,9 +2210,9 @@ class PowerBlast(RegularItem):
     _description: str = "Raises party's\x01Attack Power\x01in battle"
     _order: int = 18
     _consumable: bool = True
-    _temp_buffs: List[ItemTempBuff] = [
-        ItemTempBuff.ATTACK,
-        ItemTempBuff.MAGIC_ATTACK,
+    _temp_buffs: List[TempStatBuff] = [
+        TempStatBuff.ATTACK,
+        TempStatBuff.MAGIC_ATTACK,
     ]
     _price: int = 125
     _frog_coin_item: bool = True

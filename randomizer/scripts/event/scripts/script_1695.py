@@ -1,4 +1,6 @@
-# E1695_BANDITS_WAY_GOOMBA
+# pylint: disable=C0301
+
+"""E1695_BANDITS_WAY_GOOMBA"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,7 +32,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetAllSpeeds(FASTER),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),

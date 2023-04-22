@@ -1,4 +1,6 @@
-# E2476_BEAN_VALLEY_5_PIPE_AREA_LOADER
+# pylint: disable=C0301
+
+"""E2476_BEAN_VALLEY_5_PIPE_AREA_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,57 +10,57 @@ script = EventScript(
             NPC_2, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM
         ),
         ActionQueueSync(
-            target=NPC_0, subscript=[ASShiftSouthPixels(1), ASShiftSouthwestPixels(4)]
+            target=NPC_0, subscript=[ASWalkSouthPixels(1), ASWalkSouthwestPixels(4)]
         ),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASShiftZDownPixels(1), ASShiftSouthwestPixels(4)]
+            target=NPC_1, subscript=[ASShiftZDownPixels(1), ASWalkSouthwestPixels(4)]
         ),
         ActionQueueSync(
-            target=NPC_3, subscript=[ASShiftZDownPixels(1), ASShiftSouthwestPixels(4)]
+            target=NPC_3, subscript=[ASShiftZDownPixels(1), ASWalkSouthwestPixels(4)]
         ),
         ActionQueueSync(
-            target=NPC_4, subscript=[ASShiftZDownPixels(1), ASShiftSouthwestPixels(4)]
+            target=NPC_4, subscript=[ASShiftZDownPixels(1), ASWalkSouthwestPixels(4)]
         ),
         ActionQueueSync(
-            target=NPC_5, subscript=[ASShiftZDownPixels(1), ASShiftSouthwestPixels(4)]
+            target=NPC_5, subscript=[ASShiftZDownPixels(1), ASWalkSouthwestPixels(4)]
         ),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
-                ASShiftSoutheastPixels(7),
-                ASShiftSouthwestPixels(1),
+                ASWalkSoutheastPixels(7),
+                ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
             ],
         ),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
-                ASShiftSoutheastPixels(7),
-                ASShiftSouthwestPixels(1),
+                ASWalkSoutheastPixels(7),
+                ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
             ],
         ),
         ActionQueueSync(
             target=NPC_9,
             subscript=[
-                ASShiftSoutheastPixels(7),
-                ASShiftSouthwestPixels(1),
+                ASWalkSoutheastPixels(7),
+                ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
             ],
         ),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
-                ASShiftSoutheastPixels(7),
-                ASShiftSouthwestPixels(1),
+                ASWalkSoutheastPixels(7),
+                ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
             ],
         ),
         ActionQueueAsync(
             target=NPC_11,
             subscript=[
-                ASShiftSoutheastPixels(7),
-                ASShiftSouthwestPixels(1),
+                ASWalkSoutheastPixels(7),
+                ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
             ],
         ),

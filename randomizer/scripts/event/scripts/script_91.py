@@ -1,7 +1,7 @@
-# E0091_INVISIBLE_ITEM_SUMMONER
+# pylint: disable=C0301
+
+"""E0091_INVISIBLE_ITEM_SUMMONER"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	Return()
-])
+script = EventScript([Return()])

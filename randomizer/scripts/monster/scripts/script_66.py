@@ -1,4 +1,4 @@
-# 66 - Malakoopa
+"""66 - Malakoopa"""
 
 from randomizer.scripts.monster.script_imports import *
 

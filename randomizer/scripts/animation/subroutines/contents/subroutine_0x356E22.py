@@ -1,4 +1,6 @@
-# referenced by monster_spells DiamondSaw
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells DiamondSaw"""
 
 from randomizer.scripts.animation.script_imports import *
 

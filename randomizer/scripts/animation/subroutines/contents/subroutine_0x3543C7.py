@@ -1,4 +1,6 @@
-# referenced by monster_spells WillyWisp, monster_spells LightningOrb
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells WillyWisp, monster_spells LightningOrb"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -76,12 +78,12 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0106_LIGHTNING_ORB__BG_WAVES_, playback_off=True),
         FadeInEffect(duration=1),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x35336f"]),
         RunSubroutine(["command_0x3533f5"]),
         FadeOutObject(duration=1),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x353399"]),
         Pause2Frames(),
         ClearEffectIndex(),
@@ -192,13 +194,13 @@ script = SubroutineOrBanklessScript(
         ),
         FadeInEffect(duration=2),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x35337d"]),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
         RunSubroutine(["command_0x353400"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Db(bytearray(b"\x90")),
         RunSubroutine(["command_0x35338b"]),
         Pause2Frames(),

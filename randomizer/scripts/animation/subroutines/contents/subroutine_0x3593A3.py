@@ -1,4 +1,6 @@
-# referenced by ally_spells Super Flame, ally_spells Fire Orb
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Super Flame, ally_spells Fire Orb"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -166,7 +168,7 @@ script = SubroutineOrBanklessScript(
         ClearAMEM8Bit(0x6D),
         ClearAMEM8Bit(0x6E),
         TimingForMultipleButtonPresses(
-            end_accepting_input=7,
+            start_accepting_input=7,
             destinations=["command_0x35948d"],
             identifier="command_0x359483",
         ),
@@ -347,14 +349,14 @@ script = SubroutineOrBanklessScript(
         ),
         NewEffectObject(effect=EF0043_BLANK_RED_FLASH__4BPP_, looping_off=True),
         Db(bytearray(b"\x8a\x08")),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
         Pause1Frame(identifier="command_0x3595a4"),
         SetAMEM8BitToOMEMMain(amem=0x6E, omem=0x6E),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 1, ["command_0x3595a4"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         SetAMEM8BitToConst(0x6D, 1),

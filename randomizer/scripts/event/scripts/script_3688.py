@@ -1,4 +1,6 @@
-# E3688_MARRYMORE_SERVICE_BELL
+# pylint: disable=C0301
+
+"""E3688_MARRYMORE_SERVICE_BELL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -38,8 +40,8 @@ script = EventScript(
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftNortheastSteps(3),
-                ASShiftSoutheastSteps(1),
+                ASWalkNortheastSteps(3),
+                ASWalkSoutheastSteps(1),
                 ASSetSequenceSpeed(SLOW),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True

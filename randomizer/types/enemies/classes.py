@@ -550,8 +550,10 @@ class Enemy:
         self._name_override = name_override
 
     @property
-    def sprite(self) -> "Union[None, UInt16]":
+    def sprite(self) -> Union[None, UInt16]:
         """(possibly deprecated)"""
+        if self._sprite is None:
+            return self._sprite
         return UInt16(self._sprite)
 
     def set_sprite(self, sprite: "Union[None, int]") -> None:
@@ -599,8 +601,7 @@ class Enemy:
         # since zero is a death trigger that ends battle.
         if val > 0:
             return max(1, new_stat)
-        else:
-            return new_stat
+        return new_stat
 
     @classmethod
     def get_world_instance(cls, world: GameWorld) -> "Enemy":

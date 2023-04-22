@@ -1,4 +1,4 @@
-# 186 - Grit
+"""186 - Grit"""
 
 from randomizer.scripts.monster.script_imports import *
 

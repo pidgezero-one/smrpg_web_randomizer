@@ -1,10 +1,12 @@
-# E2078_MONSTRO_SAVE_BOX
+# pylint: disable=C0301
+
+"""E2078_MONSTRO_SAVE_BOX"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 38),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW38_MONSTRO_TOWN),
         SetBit(MONSTRO_SAVE_HOLE),
         CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=UNKNOWN_70C6),

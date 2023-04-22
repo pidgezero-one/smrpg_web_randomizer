@@ -1,4 +1,4 @@
-# 18 - TheBigBoo
+"""18 - TheBigBoo"""
 
 from randomizer.scripts.monster.script_imports import *
 

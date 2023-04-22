@@ -1,4 +1,6 @@
-# E0702_MARRYMORE_TAKE_PHOTO
+# pylint: disable=C0301
+
+"""E0702_MARRYMORE_TAKE_PHOTO"""
 
 from randomizer.scripts.event.script_imports import *
 

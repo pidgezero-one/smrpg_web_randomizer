@@ -1,4 +1,6 @@
-# E3193_MINES_RIGHT_HENCHMAN
+# pylint: disable=C0301
+
+"""E3193_MINES_RIGHT_HENCHMAN"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -40,9 +42,9 @@ script = EventScript(
                 ASJumpToHeight(56),
                 ASPause(32),
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
-                ASShiftNorthwestSteps(5),
-                ASShiftSouthwestSteps(5),
-                ASShiftNorthwestSteps(4),
+                ASWalkNorthwestSteps(5),
+                ASWalkSouthwestSteps(5),
+                ASWalkNorthwestSteps(4),
                 ASVisibilityOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASReturn(),

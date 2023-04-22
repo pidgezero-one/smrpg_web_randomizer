@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack47, monster_attacks Stench
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack47, monster_attacks Stench"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -93,13 +95,13 @@ script = SubroutineOrBanklessScript(
         ),
         NewEffectObject(effect=EF0020_ENDOBUBBLE__BLACK_BALL_ORB_, looping_off=True),
         FadeInEffect(duration=2),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
         ClearAMEM8Bit(0x68),
         SetAMEM16BitToConst(0x60, 3),
         ObjectQueueAtOffsetAndIndex(index=0, target_address=0x35624B),
         RunSubroutine(["command_0x352552"]),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         ResetTargetMappingMemory(),
@@ -115,11 +117,11 @@ script = SubroutineOrBanklessScript(
         ),
         NewEffectObject(effect=EF0020_ENDOBUBBLE__BLACK_BALL_ORB_, looping_off=True),
         FadeInEffect(duration=1),
-        Layer3On(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3On(prop=TRANSPARENCY_OFF, bpp4=True),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
         FadeOutObject(duration=6),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3Off(prop=TRANSPARENCY_OFF, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),

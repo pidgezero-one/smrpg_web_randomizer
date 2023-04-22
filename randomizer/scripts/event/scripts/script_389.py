@@ -1,4 +1,6 @@
-# E0389_MUSHROOM_KINGDOM_OCCUPIED_LEFT_STAIRWAY_SHYSTER
+# pylint: disable=C0301
+
+"""E0389_MUSHROOM_KINGDOM_OCCUPIED_LEFT_STAIRWAY_SHYSTER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -55,15 +57,15 @@ script = EventScript(
                 ASFloatingOn(),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetWalkingSpeed(FAST),
-                ASShiftNorthwestSteps(3),
-                ASShiftNorthwestPixels(8),
-                ASShiftNortheastSteps(4),
+                ASWalkNorthwestSteps(3),
+                ASWalkNorthwestPixels(8),
+                ASWalkNortheastSteps(4),
                 ASFaceSoutheast(),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASSetSequenceSpeed(FAST),
                 ASWalk1StepNortheast(),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASFixedFCoordOff(),
@@ -88,8 +90,8 @@ script = EventScript(
                 ASFloatingOn(),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetWalkingSpeed(FAST),
-                ASShiftNorthwestSteps(2),
-                ASShiftNortheastSteps(6),
+                ASWalkNorthwestSteps(2),
+                ASWalkNortheastSteps(6),
                 ASVisibilityOff(),
             ],
             identifier="EVENT_389_action_queue_sync_30",

@@ -1,4 +1,4 @@
-# 84 - GlumReaper
+"""84 - GlumReaper"""
 
 from randomizer.scripts.monster.script_imports import *
 

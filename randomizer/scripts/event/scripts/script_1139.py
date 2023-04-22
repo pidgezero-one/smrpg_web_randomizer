@@ -1,4 +1,6 @@
-# E1139_SEASIDE_OCCUPIED_WPN_ARM_SHOP_OCCUPANT_2
+# pylint: disable=C0301
+
+"""E1139_SEASIDE_OCCUPIED_WPN_ARM_SHOP_OCCUPANT_2"""
 
 from randomizer.scripts.event.script_imports import *
 

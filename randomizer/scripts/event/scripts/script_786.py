@@ -1,4 +1,6 @@
-# E0786_MINES_LONG_ROOM_IN_MINIBOSS_PATH_LOADER
+# pylint: disable=C0301
+
+"""E0786_MINES_LONG_ROOM_IN_MINIBOSS_PATH_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,7 +12,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
-                ASShiftNortheastPixels(4),
+                ASWalkNortheastPixels(4),
                 ASFaceSoutheast(),
                 ASSequenceLoopingOff(),
             ],

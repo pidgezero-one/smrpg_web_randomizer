@@ -1,4 +1,6 @@
-# E2350_CLIMB_GARDENER_BEANSTALK
+# pylint: disable=C0301
+
+"""E2350_CLIMB_GARDENER_BEANSTALK"""
 
 from randomizer.scripts.event.script_imports import *
 

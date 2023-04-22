@@ -1,4 +1,6 @@
-# E1367_CURTAIN_GAME_SUCCESS_1
+# pylint: disable=C0301
+
+"""E1367_CURTAIN_GAME_SUCCESS_1"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,10 +21,10 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftNorthwestSteps(4),
-                ASShiftNortheastSteps(2),
-                ASShiftNortheastPixels(8),
-                ASShiftNorthwestSteps(1),
+                ASWalkNorthwestSteps(4),
+                ASWalkNortheastSteps(2),
+                ASWalkNortheastPixels(8),
+                ASWalkNorthwestSteps(1),
                 ASPause(15),
             ],
         ),
@@ -173,7 +175,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASFaceNorthwest(),
                 ASPause(20),
                 ASSetSpriteSequence(
@@ -188,7 +190,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASFaceNorthwest(),
                 ASPause(20),
                 ASSetSpriteSequence(
@@ -203,7 +205,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASFaceNorthwest(),
                 ASPause(20),
                 ASSetSpriteSequence(
@@ -331,7 +333,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASFaceNorthwest(),
                 ASPause(20),
             ],
@@ -488,7 +490,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASFaceNorthwest(),
                 ASPause(20),
             ],
@@ -645,7 +647,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASFaceNorthwest(),
                 ASPause(20),
             ],
@@ -669,7 +671,7 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASFixedFCoordOn(),
                 ASDb(bytearray(b"\xfd\x9ck")),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASPause(5),
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
@@ -686,7 +688,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASFaceNorthwest(),
                 ASFixedFCoordOn(),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASPause(5),
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
@@ -703,7 +705,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASFaceNorthwest(),
                 ASFixedFCoordOn(),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASPause(5),
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
@@ -846,11 +848,11 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(2),
-                ASShiftNortheastSteps(4),
-                ASShiftNorthwestSteps(1),
-                ASShiftSouthwestSteps(4),
-                ASShiftNorthwestSteps(1),
+                ASWalkSoutheastSteps(2),
+                ASWalkNortheastSteps(4),
+                ASWalkNorthwestSteps(1),
+                ASWalkSouthwestSteps(4),
+                ASWalkNorthwestSteps(1),
                 ASFaceNorthwest(),
                 ASPause(30),
                 ASSetSpriteSequence(
@@ -866,13 +868,13 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(4),
-                ASShiftNortheastSteps(4),
-                ASShiftSoutheastSteps(1),
-                ASShiftNortheastSteps(1),
-                ASShiftNorthwestSteps(1),
+                ASWalkSouthwestSteps(4),
+                ASWalkNortheastSteps(4),
+                ASWalkSoutheastSteps(1),
+                ASWalkNortheastSteps(1),
+                ASWalkNorthwestSteps(1),
                 ASFixedFCoordOn(),
-                ASShiftNortheastSteps(1),
+                ASWalkNortheastSteps(1),
                 ASFaceNorthwest(),
                 ASFixedFCoordOff(),
                 ASPause(30),
@@ -889,10 +891,10 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASJumpToHeight(112),
-                ASShiftSouthwestSteps(6),
-                ASShiftNorthwestSteps(3),
+                ASWalkSouthwestSteps(6),
+                ASWalkNorthwestSteps(3),
                 ASFaceNorthwest(),
                 ASPause(30),
                 ASSetSpriteSequence(
@@ -981,7 +983,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
             ],
         ),
         ActionQueueSync(
@@ -989,7 +991,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
             ],
         ),
         ActionQueueAsync(
@@ -997,7 +999,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
             ],
         ),
         Pause(30),

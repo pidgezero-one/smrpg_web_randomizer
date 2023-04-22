@@ -1,4 +1,6 @@
-# referenced by battle_events BE0045_ZOMBONE_DIES, battle_events BE0055_SHY_AWAY_WATERS_SMILAX_PART_1, battle_events BE0056_SHY_AWAY_WATERS_SMILAX_PART_2, battle_events BE0044_CZAR_DRAGON_DIES, battle_events BE0057_SHY_AWAY_WATERS_SMILAX_PART_3, battle_events BE0058_THRAX_IS_THERE
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0045_ZOMBONE_DIES, battle_events BE0055_SHY_AWAY_WATERS_SMILAX_PART_1, battle_events BE0056_SHY_AWAY_WATERS_SMILAX_PART_2, battle_events BE0044_CZAR_DRAGON_DIES, battle_events BE0057_SHY_AWAY_WATERS_SMILAX_PART_3, battle_events BE0058_THRAX_IS_THERE"""
 
 from randomizer.scripts.animation.script_imports import *
 

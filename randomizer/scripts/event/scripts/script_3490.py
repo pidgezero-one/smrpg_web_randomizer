@@ -1,11 +1,13 @@
-# E3490_MIDAS_SMALL_MARIO_COORD_CALC
+# pylint: disable=C0301
+
+"""E3490_MIDAS_SMALL_MARIO_COORD_CALC"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
         Pause(2, identifier="EVENT_3490_pause_0"),
-        Set7000ToObjectCoord(object=NPC_1, coord=COORD_Y, pixel=True),
+        Set7000ToObjectCoord(target_npc=NPC_1, coord=COORD_Y, pixel=True),
         Mem7000AndConst(0xFF00),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1792, ["EVENT_3490_jmp_if_bit_set_9"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5120, ["EVENT_3490_jmp_if_bit_set_37"]),

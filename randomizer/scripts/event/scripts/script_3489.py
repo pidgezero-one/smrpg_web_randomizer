@@ -1,4 +1,6 @@
-# E3489_MIDAS_RIVER_WATERFALL_LISTEN_FOR_BUTTON_INPUTS
+# pylint: disable=C0301
+
+"""E3489_MIDAS_RIVER_WATERFALL_LISTEN_FOR_BUTTON_INPUTS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,17 +32,17 @@ script = EventScript(
         Pause(1),
         Set7000ToTappedButton(),
         JmpIf7000AnyBitsSet(
-            destinations=["EVENT_3489_enable_controls_until_return_25"]
+            bits=[], destinations=["EVENT_3489_enable_controls_until_return_25"]
         ),
         EnableControlsUntilReturn([LEFT, RIGHT]),
         Pause(1),
         Set7000ToTappedButton(),
         JmpIf7000AnyBitsSet(
-            destinations=["EVENT_3489_enable_controls_until_return_25"]
+            bits=[], destinations=["EVENT_3489_enable_controls_until_return_25"]
         ),
         Set7000ToPressedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3489_action_queue_sync_21"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3489_action_queue_sync_23"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_3489_action_queue_sync_21"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_3489_action_queue_sync_23"]),
         Jmp(["EVENT_3489_jmp_if_bit_set_8"]),
         ActionQueueSync(
             target=NPC_1,
@@ -71,7 +73,7 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO034_SQUIRM_WRITHE, channel=4),
                 ASSetWalkingSpeed(FASTER),
-                ASShiftNorthPixels(3),
+                ASWalkNorthPixels(3),
                 ASSetWalkingSpeed(SLOW),
             ],
         ),
@@ -85,13 +87,13 @@ script = EventScript(
         Pause(1),
         Set7000ToTappedButton(),
         JmpIf7000AnyBitsSet(
-            destinations=["EVENT_3489_enable_controls_until_return_29"]
+            bits=[], destinations=["EVENT_3489_enable_controls_until_return_29"]
         ),
         EnableControlsUntilReturn([LEFT, RIGHT]),
         Pause(1),
         Set7000ToTappedButton(),
         JmpIf7000AnyBitsSet(
-            destinations=["EVENT_3489_enable_controls_until_return_29"]
+            bits=[], destinations=["EVENT_3489_enable_controls_until_return_29"]
         ),
         EndLoop(),
         EnableControlsUntilReturn(
@@ -103,7 +105,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(FASTER),
-                ASShiftSouthPixels(3),
+                ASWalkSouthPixels(3),
                 ASSetWalkingSpeed(SLOW),
             ],
         ),

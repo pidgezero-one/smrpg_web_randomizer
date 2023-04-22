@@ -1,10 +1,10 @@
-# referenced by ,weapons SonicCymbal,weapons Accessory,behaviour_32_0x350C14,weapons SuperHammer,weapons StickyGlove,weapons FroggieStick,weapons SlapGlove,behaviour_23_0x350A55,weapons Armor,behaviour_8_0x3507A2,weapons Hammer,behaviour_51_0x350F56,weapons HandGun,weapons PunchGlove,weapons TroopaShell,weapons WarFan,behaviour_43_0x350E38,behaviour_24_0x350A9C,weapons SuperSlap,behaviour_33_0x350C5B,behaviour_52_0x350F6B,weapons Parasol,weapons MegaGlove,weapons StarGun,weapons NokNokShell,weapons SpikedLink,weapons WhompGlove,weapons Chomp,weapons LuckyHammer,behaviour_42_0x350DED,weapons DoublePunch,weapons FingerShot,weapons HurlyGloves,weapons Masher,behaviour_41_0x350DAF,weapons Weapon,weapons Cymbals,weapons RibbitStick,weapons UltraHammer,weapons ChompShell,weapons HandCannon,weapons DrillClaw,weapons FryingPan,weapons Space,ally_spells Sleepy Time,behaviour_34_0x350C9E,behaviour_16_0x350928,weapons LazyShellWeapon,behaviour_9_0x3507E9
+# pylint: disable=C0301,C0103
+
+"""referenced by ,weapons SonicCymbal,weapons Accessory,behaviour_32_0x350C14,weapons SuperHammer,weapons StickyGlove,weapons FroggieStick,weapons SlapGlove,behaviour_23_0x350A55,weapons Armor,behaviour_8_0x3507A2,weapons Hammer,behaviour_51_0x350F56,weapons HandGun,weapons PunchGlove,weapons TroopaShell,weapons WarFan,behaviour_43_0x350E38,behaviour_24_0x350A9C,weapons SuperSlap,behaviour_33_0x350C5B,behaviour_52_0x350F6B,weapons Parasol,weapons MegaGlove,weapons StarGun,weapons NokNokShell,weapons SpikedLink,weapons WhompGlove,weapons Chomp,weapons LuckyHammer,behaviour_42_0x350DED,weapons DoublePunch,weapons FingerShot,weapons HurlyGloves,weapons Masher,behaviour_41_0x350DAF,weapons Weapon,weapons Cymbals,weapons RibbitStick,weapons UltraHammer,weapons ChompShell,weapons HandCannon,weapons DrillClaw,weapons FryingPan,weapons Space,ally_spells Sleepy Time,behaviour_34_0x350C9E,behaviour_16_0x350928,weapons LazyShellWeapon,behaviour_9_0x3507E9"""
 
 # classes
 from randomizer.types.battle_animation_scripts.commands import *
 from randomizer.types.battle_animation_scripts.classes import (
-    AnimationScript,
-    BattleAnimationScript,
     SubroutineOrBanklessScript,
 )
 
@@ -24,7 +24,7 @@ from randomizer.types.battle_animation_scripts.constants.battle_targets import *
 from randomizer.types.battle_animation_scripts.constants.script_ids.battle_events import *
 from randomizer.types.sprites.constants.sprite_ids import *
 from randomizer.entities.items.items import *
-from randomizer.entities.enemies.enemies import *
+from randomizer.entities.enemies import *
 
 # types
 # entities

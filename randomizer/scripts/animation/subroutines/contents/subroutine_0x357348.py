@@ -1,4 +1,6 @@
-# referenced by monster_attacks GetTough
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks GetTough"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -46,10 +48,18 @@ script = SubroutineOrBanklessScript(
         ResetObjectMappingMemory(),
         PlaySound(sound=S0038_FRYING_PAN_HIT_2),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,

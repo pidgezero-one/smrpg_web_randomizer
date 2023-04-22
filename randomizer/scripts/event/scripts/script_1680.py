@@ -1,4 +1,6 @@
-# E1680_TEMPLE_PIPE_TO_FORTUNE_RESULT_ROOM
+# pylint: disable=C0301
+
+"""E1680_TEMPLE_PIPE_TO_FORTUNE_RESULT_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 

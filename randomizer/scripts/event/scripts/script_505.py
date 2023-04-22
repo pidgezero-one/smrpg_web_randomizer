@@ -1,4 +1,6 @@
-# E0505_PIPE_VAULT_MARIO_THWOMP_TUMBLE
+# pylint: disable=C0301
+
+"""E0505_PIPE_VAULT_MARIO_THWOMP_TUMBLE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -27,7 +29,7 @@ script = EventScript(
                 ),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(height=72, silent=True),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASPause(
                     1, identifier="EVENT_505_action_queue_async_8_SUBSCRIPT_pause_5"
                 ),

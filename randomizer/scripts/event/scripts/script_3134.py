@@ -1,4 +1,6 @@
-# E3134_RESUMMON_ENEMIES_IN_SEWER
+# pylint: disable=C0301
+
+"""E3134_RESUMMON_ENEMIES_IN_SEWER"""
 
 from randomizer.scripts.event.script_imports import *
 

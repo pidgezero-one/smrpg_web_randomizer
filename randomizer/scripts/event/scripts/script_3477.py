@@ -1,4 +1,6 @@
-# E3477_KINGDOM_HALLWAY_CHEST
+# pylint: disable=C0301
+
+"""E3477_KINGDOM_HALLWAY_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

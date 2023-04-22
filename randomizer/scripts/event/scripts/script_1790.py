@@ -1,4 +1,6 @@
-# E1790_LANDS_END_UNDERGROUND_UPPER_PIT_ROOM_LOADER_BACKGROUND
+# pylint: disable=C0301
+
+"""E1790_LANDS_END_UNDERGROUND_UPPER_PIT_ROOM_LOADER_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
                 ASPause(8),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASFixedFCoordOff(),
             ],
         ),
@@ -22,7 +24,7 @@ script = EventScript(
                 ASPause(8),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASFixedFCoordOff(),
             ],
         ),

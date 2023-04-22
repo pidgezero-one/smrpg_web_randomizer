@@ -1,4 +1,6 @@
-# E3778_BALL_SOLITAIRE_SET_PUZZLE
+# pylint: disable=C0301
+
+"""E3778_BALL_SOLITAIRE_SET_PUZZLE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -14,13 +16,15 @@ script = EventScript(
             ],
         ),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
-        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASShiftNortheastSteps(9)]),
+        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(9)]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[ASSetSpriteSequence(index=3, looping=False), ASPause(38)],
         ),
         RunEventAsSubroutine(E3884_BALL_SOLITAIRE_SET_PUZZLE_CONFIGURATION_VALUE),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3778_jmp_if_7000_any_bits_set_14"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3778_jmp_if_7000_any_bits_set_14"]
+        ),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -34,6 +38,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_16"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_14",
         ),
@@ -50,6 +55,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_18"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_16",
         ),
@@ -66,6 +72,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_20"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_18",
         ),
@@ -82,6 +89,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_22"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_20",
         ),
@@ -98,6 +106,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_24"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_22",
         ),
@@ -114,6 +123,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_26"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_24",
         ),
@@ -130,6 +140,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_28"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_26",
         ),
@@ -146,6 +157,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_30"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_28",
         ),
@@ -162,6 +174,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_32"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_30",
         ),
@@ -178,6 +191,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_34"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_32",
         ),
@@ -194,6 +208,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_36"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_34",
         ),
@@ -210,6 +225,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_38"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_36",
         ),
@@ -226,6 +242,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_40"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_38",
         ),
@@ -242,6 +259,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_42"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_40",
         ),
@@ -258,6 +276,7 @@ script = EventScript(
             ],
         ),
         JmpIf7000AnyBitsSet(
+            bits=[],
             destinations=["EVENT_3778_action_queue_async_44"],
             identifier="EVENT_3778_jmp_if_7000_any_bits_set_42",
         ),
@@ -275,7 +294,7 @@ script = EventScript(
         ),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASShiftSouthwestSteps(9)],
+            subscript=[ASWalkSouthwestSteps(9)],
             identifier="EVENT_3778_action_queue_async_44",
         ),
         PlayMusicAtDefaultVolume(M36_EXPLANATION),

@@ -1,7 +1,9 @@
+# pylint: disable=C0302
+
 """Formation class instances."""
 
 from typing import List, Optional
-from randomizer.entities.enemies.enemies import (
+from randomizer.entities.enemies import (
     K9,
     AeroBowyer,
     AeroSmithy,

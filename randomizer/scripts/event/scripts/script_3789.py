@@ -1,4 +1,6 @@
-# E3789_BEAN_VALLEY_WEST_VINE_ROOM_PLATFORM
+# pylint: disable=C0301
+
+"""E3789_BEAN_VALLEY_WEST_VINE_ROOM_PLATFORM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -23,7 +25,7 @@ script = EventScript(
             subscript=[
                 ASFloatingOff(),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSouthwestPixels(6),
+                ASWalkSouthwestPixels(6),
                 ASSetWalkingSpeed(NORMAL),
                 ASDecZCoord1Step(),
                 ASFloatingOn(),

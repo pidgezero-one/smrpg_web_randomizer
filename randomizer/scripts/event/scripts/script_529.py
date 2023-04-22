@@ -1,4 +1,6 @@
-# E0529_ROSE_TOWN_OCCUPIED_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E0529_ROSE_TOWN_OCCUPIED_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -80,7 +82,7 @@ script = EventScript(
         JmpIfBitSet(FREEZE_ROSE_TOWN_NPC_1, ["EVENT_529_jmp_if_bit_set_177"]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftNortheastSteps(2)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkNortheastSteps(2)],
         ),
         ActionQueueSync(
             target=NPC_0,
@@ -109,7 +111,9 @@ script = EventScript(
             to_var=PRIMARY_TEMP_7000,
             identifier="EVENT_529_set_7000_to_70A0_short_mem_181",
         ),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_529_set_7000_to_70A0_short_mem_190"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_529_set_7000_to_70A0_short_mem_190"]
+        ),
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=X_COORD_2,

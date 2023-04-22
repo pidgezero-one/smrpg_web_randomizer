@@ -1,4 +1,6 @@
-# E3219_SHIP_BARREL_PUZZLE_BUTTON
+# pylint: disable=C0301
+
+"""E3219_SHIP_BARREL_PUZZLE_BUTTON"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3290_SHIP_COLLECT_3D_MAZE_PRIZE
+# pylint: disable=C0301
+
+"""E3290_SHIP_COLLECT_3D_MAZE_PRIZE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -14,7 +16,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI1657_3D_MAZE_OVERLAY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=False,
             sync=True,
             multiline=False,

@@ -1,4 +1,7 @@
-from .packets import (
+"""An exportable list of packets"""
+
+from typing import List
+from randomizer.types.overworld_scripts.packets.packets import (
     P000_FLASHING_POOF_FLOWER,
     P001_FLASHING_POOF_MUSHROOM,
     P002_BRIEF_KEY,
@@ -256,7 +259,7 @@ from .packets import (
     P254_UNUSED,
     P255_UNUSED,
 )
-from .classes import Packet
+from randomizer.types.overworld_scripts.packets.classes import Packet
 
 packets: List[Packet] = [
     P000_FLASHING_POOF_FLOWER,

@@ -1,4 +1,6 @@
-# referenced by monster_spells AuroraFlash, monster_spells Boulder
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells AuroraFlash, monster_spells Boulder"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -16,9 +18,9 @@ script = SubroutineOrBanklessScript(
             identifier="queuestart_0x354f19",
         ),
         NewEffectObject(effect=EF0066_AURORA_FLASH, looping_off=True),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=120),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),
@@ -66,9 +68,9 @@ script = SubroutineOrBanklessScript(
             should_set_end_position=True,
             should_set_speed=True,
         ),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         RunSubroutine(["command_0x3533df"]),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Pause2Frames(),
         ResetObjectMappingMemory(),
         ClearEffectIndex(),
@@ -103,11 +105,11 @@ script = SubroutineOrBanklessScript(
             should_set_end_position=True,
             should_set_speed=True,
         ),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         RunSubroutine(["command_0x3533df"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         ResetObjectMappingMemory(),

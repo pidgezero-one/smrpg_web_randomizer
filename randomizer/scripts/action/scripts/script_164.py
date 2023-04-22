@@ -1,8 +1,5 @@
-#A0164_HIDE
+"""A0164_HIDE"""
 
 from randomizer.scripts.action.script_imports import *
 
-script = ActionScript([
-	VisibilityOff(),
-	Return()
-])
+script = ActionScript([VisibilityOff(), Return()])

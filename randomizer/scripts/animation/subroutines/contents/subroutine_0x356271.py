@@ -1,4 +1,6 @@
-# referenced by monster_attacks GunkBall, monster_spells Electroshock, monster_attacks PhysicalAttack91, monster_attacks Blazer
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks GunkBall, monster_spells Electroshock, monster_attacks PhysicalAttack91, monster_attacks Blazer"""
 
 from randomizer.scripts.animation.script_imports import *
 

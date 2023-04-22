@@ -1,4 +1,6 @@
-# E2798_STAR_HILL_EXIT_TO_WORLD_MAP
+# pylint: disable=C0301
+
+"""E2798_STAR_HILL_EXIT_TO_WORLD_MAP"""
 
 from randomizer.scripts.event.script_imports import *
 

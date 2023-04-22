@@ -1,4 +1,6 @@
-# referenced by weapons StarGun
+# pylint: disable=C0301,C0103
+
+"""referenced by weapons StarGun"""
 
 from randomizer.scripts.animation.script_imports import *
 

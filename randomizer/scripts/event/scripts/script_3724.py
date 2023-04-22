@@ -1,10 +1,12 @@
-# E3724_NIMBUS_CASTLE_OUTER_CELLAR_LOADER
+# pylint: disable=C0301
+
+"""E3724_NIMBUS_CASTLE_OUTER_CELLAR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 49),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW49_NIMBUS_LAND),
         ActionQueueSync(
             target=NPC_0,
             subscript=[ASTransferXYZFPixels(x=0, y=0, z=2, direction=EAST)],

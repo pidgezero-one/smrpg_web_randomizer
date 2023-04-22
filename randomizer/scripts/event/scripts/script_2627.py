@@ -1,4 +1,6 @@
-# E2627_FACTORY_3RD_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E2627_FACTORY_3RD_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -25,7 +27,7 @@ script = EventScript(
             ],
         ),
         ActionQueueSync(
-            target=NPC_10, subscript=[ASSetWalkingSpeed(FAST), ASShiftSoutheastSteps(7)]
+            target=NPC_10, subscript=[ASSetWalkingSpeed(FAST), ASWalkSoutheastSteps(7)]
         ),
         Pause(32),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),

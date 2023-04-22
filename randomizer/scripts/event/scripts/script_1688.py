@@ -1,4 +1,6 @@
-# E1688_TEMPLE_FORTUNE_HEADS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1688_TEMPLE_FORTUNE_HEADS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -24,7 +26,7 @@ script = EventScript(
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_7026),
         CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),
         JmpIf7000AllBitsClear(
-            destinations=["EVENT_1688_jmp_if_7000_all_bits_clear_12"]
+            bits=[], destinations=["EVENT_1688_jmp_if_7000_all_bits_clear_12"]
         ),
         ApplyTileModToLevel(
             use_alternate=True,
@@ -33,6 +35,7 @@ script = EventScript(
         ),
         SetBit(BELOME_HEAD_1),
         JmpIf7000AllBitsClear(
+            bits=[],
             destinations=["EVENT_1688_jmp_if_7000_all_bits_clear_15"],
             identifier="EVENT_1688_jmp_if_7000_all_bits_clear_12",
         ),
@@ -43,6 +46,7 @@ script = EventScript(
         ),
         SetBit(BELOME_HEAD_2),
         JmpIf7000AllBitsClear(
+            bits=[],
             destinations=["EVENT_1688_jmp_if_bit_clear_18"],
             identifier="EVENT_1688_jmp_if_7000_all_bits_clear_15",
         ),
@@ -65,7 +69,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASFixedFCoordOn(),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASFloatingOn(),
                 ASJumpToHeight(0),
                 ASPause(
@@ -74,7 +78,7 @@ script = EventScript(
                 ASJmpIfObjectInAir(
                     NPC_0, ["EVENT_1688_action_queue_sync_19_SUBSCRIPT_pause_8"]
                 ),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
             ],
         ),
         ActionQueueAsync(
@@ -85,7 +89,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASFixedFCoordOn(),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASFloatingOn(),
                 ASJumpToHeight(0),
                 ASPause(
@@ -94,7 +98,7 @@ script = EventScript(
                 ASJmpIfObjectInAir(
                     NPC_1, ["EVENT_1688_action_queue_async_20_SUBSCRIPT_pause_8"]
                 ),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
             ],
         ),
         JmpIfBitClear(UNKNOWN_BELOME_TEMPLE, ["EVENT_1688_jmp_to_event_23"]),
@@ -104,7 +108,7 @@ script = EventScript(
                 ASIncPaletteRowBy(1),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASFloatingOn(),
                 ASJumpToHeight(0),
                 ASPause(10),

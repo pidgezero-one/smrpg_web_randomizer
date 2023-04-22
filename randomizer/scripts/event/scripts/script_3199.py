@@ -1,4 +1,6 @@
-# E3199_SHYGUY_CART_PRIZE_GRANT
+# pylint: disable=C0301
+
+"""E3199_SHYGUY_CART_PRIZE_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 

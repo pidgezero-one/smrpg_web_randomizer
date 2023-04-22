@@ -1,4 +1,6 @@
-# E3113_FREESTANDING_PROGRESSIVE_FIREWORKS_GRANT
+# pylint: disable=C0301
+
+"""E3113_FREESTANDING_PROGRESSIVE_FIREWORKS_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 

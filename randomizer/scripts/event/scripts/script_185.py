@@ -1,4 +1,6 @@
-# E0185_NPC_QUEST_GRANT_PROGRESSIVE_FIREWORKS
+# pylint: disable=C0301
+
+"""E0185_NPC_QUEST_GRANT_PROGRESSIVE_FIREWORKS"""
 
 from randomizer.scripts.event.script_imports import *
 

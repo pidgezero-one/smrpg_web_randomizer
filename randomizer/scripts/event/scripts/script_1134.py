@@ -1,4 +1,6 @@
-# E1134_FAKE_ELDER
+# pylint: disable=C0301
+
+"""E1134_FAKE_ELDER"""
 
 from randomizer.scripts.event.script_imports import *
 

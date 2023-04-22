@@ -1,4 +1,6 @@
-# E0428_PIPE_VAULT_THWOMP_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E0428_PIPE_VAULT_THWOMP_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

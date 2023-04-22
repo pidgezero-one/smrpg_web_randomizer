@@ -1,4 +1,6 @@
-# E3935_FREESTANDING_SHOES
+# pylint: disable=C0301
+
+"""E3935_FREESTANDING_SHOES"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# referenced by monster_attacks InkBlast
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks InkBlast"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -18,7 +20,7 @@ script = SubroutineOrBanklessScript(
         Pause2Frames(),
         NewEffectObject(effect=EF0039_BLACK_BALL_ORB, playback_off=True),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PlaySound(sound=S0143_TOSS),
         ResetTargetMappingMemory(),
         SetAMEM60ToCurrentTarget(),
@@ -34,7 +36,7 @@ script = SubroutineOrBanklessScript(
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_SHIFT, speed=512, arch_height=0),
         PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
         PlaySound(sound=S0122_POISONED),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),

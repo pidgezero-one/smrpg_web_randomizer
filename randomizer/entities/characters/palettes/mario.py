@@ -1,7 +1,11 @@
+"""Mario palette instances."""
+
 from randomizer.types.palettes.classes import MarioPaletteSet, SpritePalette
 
 
 class Default(MarioPaletteSet):
+    """Default Mario palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -62,6 +66,8 @@ class Default(MarioPaletteSet):
 
 
 class Jumpman(MarioPaletteSet):
+    """Mario recoloured to resemble his original red-overall design."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -123,6 +129,8 @@ class Jumpman(MarioPaletteSet):
 
 
 class FireMario(MarioPaletteSet):
+    """Mario recoloured to resemble his Fire Flower look."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -184,6 +192,9 @@ class FireMario(MarioPaletteSet):
 
 
 class Luigi(MarioPaletteSet):
+    """Mario recoloured to resemble Luigi.\n
+    Used with permission from the Armageddon devs."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -245,6 +256,8 @@ class Luigi(MarioPaletteSet):
 
 
 class FireLuigi(MarioPaletteSet):
+    """Mario coloured to resemble Luigi with a fire flower."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -306,6 +319,8 @@ class FireLuigi(MarioPaletteSet):
 
 
 class Wario(MarioPaletteSet):
+    """Mario coloured to resemble Wario."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -367,6 +382,8 @@ class Wario(MarioPaletteSet):
 
 
 class Waluigi(MarioPaletteSet):
+    """Mario coloured to resemble Waluigi."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -428,6 +445,8 @@ class Waluigi(MarioPaletteSet):
 
 
 class Builder(MarioPaletteSet):
+    """Mario palette (reference unknown)"""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -489,6 +508,8 @@ class Builder(MarioPaletteSet):
 
 
 class Megaman(MarioPaletteSet):
+    """Mario coloured to resemble Mega Man."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -550,6 +571,8 @@ class Megaman(MarioPaletteSet):
 
 
 class Grey(MarioPaletteSet):
+    """Mario with a grey palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -612,6 +635,8 @@ class Grey(MarioPaletteSet):
 
 
 class Zombie(MarioPaletteSet):
+    """Mario coloured to look like a zombie."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xE8E0B8,
@@ -673,6 +698,8 @@ class Zombie(MarioPaletteSet):
 
 
 class Sponge(MarioPaletteSet):
+    """Mario palette (reference unknown)"""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -734,6 +761,8 @@ class Sponge(MarioPaletteSet):
 
 
 class Pretzel(MarioPaletteSet):
+    """Mario palette (reference unknown)"""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -795,6 +824,8 @@ class Pretzel(MarioPaletteSet):
 
 
 class Marlon(MarioPaletteSet):
+    """Mario palette (reference unknown)"""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,

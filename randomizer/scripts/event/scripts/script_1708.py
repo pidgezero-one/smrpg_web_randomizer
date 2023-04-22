@@ -1,4 +1,6 @@
-# E1708_BANDITS_WAY_5_LOADER
+# pylint: disable=C0301
+
+"""E1708_BANDITS_WAY_5_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -77,18 +79,18 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASShiftSouthSteps(11),
-                ASShiftSoutheastSteps(4),
+                ASWalkSoutheastSteps(4),
                 ASSetAllSpeeds(FASTEST),
                 ASStartLoopNTimes(1),
-                ASShiftSoutheastSteps(4),
+                ASWalkSoutheastSteps(4),
                 ASShiftSouthSteps(2),
-                ASShiftSoutheastSteps(4),
-                ASShiftSouthwestSteps(8),
-                ASShiftNorthwestSteps(8),
+                ASWalkSoutheastSteps(4),
+                ASWalkSouthwestSteps(8),
+                ASWalkNorthwestSteps(8),
                 ASShiftNorthSteps(2),
-                ASShiftNortheastSteps(8),
+                ASWalkNortheastSteps(8),
                 ASEndLoop(),
             ],
         ),
@@ -98,12 +100,12 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_FAST),
                 ASWalk1StepEast(),
                 ASShiftSouthSteps(7),
-                ASShiftSoutheastSteps(8),
+                ASWalkSoutheastSteps(8),
                 ASShiftSouthSteps(6),
                 ASPause(80),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASShiftNorthSteps(13),
-                ASShiftNorthwestSteps(8),
+                ASWalkNorthwestSteps(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),

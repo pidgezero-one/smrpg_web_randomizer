@@ -1,4 +1,6 @@
-# referenced by battle_events BE0082_SMITHY_1ST_FORM_IS_BEATEN_GROUND_SHAKES_ETC
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0082_SMITHY_1ST_FORM_IS_BEATEN_GROUND_SHAKES_ETC"""
 
 from randomizer.scripts.animation.script_imports import *
 

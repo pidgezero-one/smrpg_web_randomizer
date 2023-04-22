@@ -1,4 +1,6 @@
-# E3950_POST_FINAL_BOSS_INIT
+# pylint: disable=C0301
+
+"""E3950_POST_FINAL_BOSS_INIT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -69,7 +71,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASSetSequenceSpeed(FAST),
                 ASWalk1StepSouthwest(),
-                ASShiftSouthwestPixels(12),
+                ASWalkSouthwestPixels(12),
                 ASSetSpriteSequence(
                     index=12, sprite_offset=6, is_sequence=True, looping=True
                 ),
@@ -84,7 +86,7 @@ script = EventScript(
                 ASWalk1StepNorthwest(),
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNorthwest(),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASSetSpriteSequence(index=7, is_sequence=True, looping=True),
             ],
         ),
@@ -95,7 +97,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASSetSequenceSpeed(FAST),
                 ASWalk1StepSoutheast(),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASSetSpriteSequence(
                     index=6, is_sequence=True, looping=True, mirror_sprite=True
                 ),
@@ -108,7 +110,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASSetSequenceSpeed(FAST),
                 ASWalk1StepNortheast(),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASSetSpriteSequence(
                     index=7, is_sequence=True, looping=True, mirror_sprite=True
                 ),
@@ -387,7 +389,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASShiftNorthSteps(3),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
                 ASPause(2),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASShiftNorthSteps(6),

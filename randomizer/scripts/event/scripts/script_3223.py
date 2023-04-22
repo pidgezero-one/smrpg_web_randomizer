@@ -1,4 +1,6 @@
-# E3223_SHIP_TROOPA_PUZZLE
+# pylint: disable=C0301
+
+"""E3223_SHIP_TROOPA_PUZZLE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -23,8 +25,8 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASStartLoopNTimes(7),
-                ASShiftSouthPixels(2),
-                ASShiftNorthPixels(2),
+                ASWalkSouthPixels(2),
+                ASWalkNorthPixels(2),
                 ASEndLoop(),
             ],
         ),

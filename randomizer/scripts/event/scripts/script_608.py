@@ -1,4 +1,6 @@
-# E0608_MARRYMORE_INN_3F_HALLWAY_LOADER
+# pylint: disable=C0301
+
+"""E0608_MARRYMORE_INN_3F_HALLWAY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

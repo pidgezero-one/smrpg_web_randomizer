@@ -1,4 +1,4 @@
-# 25 - BobombHenchman
+"""25 - BobombHenchman"""
 
 from randomizer.scripts.monster.script_imports import *
 

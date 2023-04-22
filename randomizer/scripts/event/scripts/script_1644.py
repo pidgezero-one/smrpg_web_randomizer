@@ -1,10 +1,12 @@
-# E1644_MOLEVILLE_OCCUPIED_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E1644_MOLEVILLE_OCCUPIED_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 24),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW24_MOLEVILLE),
         FadeOutMusicToVolume(duration=1, volume=127),
         JmpIfBitSet(MINECART_CLEARED, ["EVENT_1644_enter_area_18"]),
         JmpIfBitSet(MOLE_DESCENDED, ["EVENT_1644_fade_in_from_black_async_16"]),

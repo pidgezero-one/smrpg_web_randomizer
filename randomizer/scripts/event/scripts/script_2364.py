@@ -1,4 +1,6 @@
-# E2364_TOWER_TOP_FLOOR_CHEST_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2364_TOWER_TOP_FLOOR_CHEST_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,7 +10,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
                 ASSetWalkingSpeed(NORMAL),
                 ASFaceSouthwest(),
             ],
@@ -17,7 +19,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
                 ASSetWalkingSpeed(NORMAL),
                 ASFaceSouthwest(),
             ],
@@ -25,14 +27,14 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_5,
             subscript=[
-                ASShiftSouthPixels(8),
-                ASShiftNorthwestPixels(1),
-                ASShiftSouthwestPixels(3),
+                ASWalkSouthPixels(8),
+                ASWalkNorthwestPixels(1),
+                ASWalkSouthwestPixels(3),
             ],
         ),
         ActionQueueSync(
             target=NPC_4,
-            subscript=[ASShiftNorthwestPixels(1), ASShiftSouthwestPixels(3)],
+            subscript=[ASWalkNorthwestPixels(1), ASWalkSouthwestPixels(3)],
         ),
         JmpIfBitClear(TEMP_7044_7, ["EVENT_2364_fade_in_from_black_async_18"]),
         RunEventAsSubroutine(E0081_MARIO_LANDS_SUBROUTINE),

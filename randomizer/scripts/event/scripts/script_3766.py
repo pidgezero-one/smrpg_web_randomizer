@@ -1,4 +1,6 @@
-# E3766_BEAN_VALLEY_LOWER_CHEST_ROOM_FALL_TO_HOT_SPRINGS_MEZZANINE
+# pylint: disable=C0301
+
+"""E3766_BEAN_VALLEY_LOWER_CHEST_ROOM_FALL_TO_HOT_SPRINGS_MEZZANINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -58,7 +60,7 @@ script = EventScript(
         ),
         SetSyncActionScript(NPC_0, A0976_CLOUD_LANDING_BLUE_PUFF_SPAWNER),
         ActionQueueAsync(
-            target=MARIO, subscript=[ASSetWalkingSpeed(NORMAL), ASShiftSouthPixels(8)]
+            target=MARIO, subscript=[ASSetWalkingSpeed(NORMAL), ASWalkSouthPixels(8)]
         ),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),

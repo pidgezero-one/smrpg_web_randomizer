@@ -1,4 +1,6 @@
-# E1824_KEEP_SET_PLATFORM_PROPERTIES
+# pylint: disable=C0301
+
+"""E1824_KEEP_SET_PLATFORM_PROPERTIES"""
 
 from randomizer.scripts.event.script_imports import *
 

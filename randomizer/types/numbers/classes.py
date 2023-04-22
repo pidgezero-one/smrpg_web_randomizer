@@ -21,7 +21,7 @@ class UInt4(int):
 class UInt8(int):
     """Unsigned 8-bit int"""
 
-    def __new__(cls, *args) -> "UInt8":
+    def __new__(cls, *args: int) -> "UInt8":
         num = args[0]
         assert 0 <= num <= 0xFF
         return super(UInt8, cls).__new__(cls, num)
@@ -34,7 +34,7 @@ class UInt8(int):
 class Int8(int):
     """Signed 8-bit int"""
 
-    def __new__(cls, *args) -> "Int8":
+    def __new__(cls, *args: int) -> "Int8":
         num = args[0]
         if num > 127:
             offset = num - 127 - 1
@@ -54,7 +54,7 @@ class Int8(int):
 class UInt16(int):
     """Unsigned 16-bit int"""
 
-    def __new__(cls, *args) -> "UInt16":
+    def __new__(cls, *args: int) -> "UInt16":
         num = args[0]
         assert 0 <= num <= 0xFFFF
         return super(UInt16, cls).__new__(cls, num)
@@ -205,10 +205,9 @@ class Mutator:
         # 1/10 chance to chain mutate for more variance.
         if randint(1, 10) == 10:
             return self.mutate_normal(value, minimum=minimum, maximum=maximum)
-        else:
-            value = max(minimum, min(value, maximum))
-            value = int(round(value))
-            return value
+        value = max(minimum, min(value, maximum))
+        value = int(round(value))
+        return value
 
 
 class GlobalMutator:

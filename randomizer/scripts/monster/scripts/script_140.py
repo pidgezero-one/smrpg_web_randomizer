@@ -1,4 +1,4 @@
-# 140 - CorkpediteBody
+"""140 - CorkpediteBody"""
 
 from randomizer.scripts.monster.script_imports import *
 

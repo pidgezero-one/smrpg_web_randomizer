@@ -1,4 +1,6 @@
-# E0594_MINES_BOSS_SHOVES_YOU
+# pylint: disable=C0301
+
+"""E0594_MINES_BOSS_SHOVES_YOU"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -36,7 +38,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(10),
+                ASWalkSouthwestSteps(10),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
@@ -51,7 +53,7 @@ script = EventScript(
                     mirror_sprite=True,
                 ),
                 ASSetWalkingSpeed(FAST),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASResetProperties(),
                 ASSetWalkingSpeed(NORMAL),
             ],
@@ -61,14 +63,14 @@ script = EventScript(
             subscript=[
                 ASPause(40),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNortheastPixels(4),
-                ASShiftSouthwestPixels(8),
-                ASShiftNortheastPixels(8),
-                ASShiftSouthwestPixels(6),
-                ASShiftNortheastPixels(2),
-                ASShiftSouthwestPixels(4),
-                ASShiftNortheastPixels(4),
-                ASShiftSouthwestPixels(2),
+                ASWalkNortheastPixels(4),
+                ASWalkSouthwestPixels(8),
+                ASWalkNortheastPixels(8),
+                ASWalkSouthwestPixels(6),
+                ASWalkNortheastPixels(2),
+                ASWalkSouthwestPixels(4),
+                ASWalkNortheastPixels(4),
+                ASWalkSouthwestPixels(2),
             ],
         ),
         FadeInFromBlack(sync=True),

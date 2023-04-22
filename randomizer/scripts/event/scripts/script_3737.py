@@ -1,4 +1,6 @@
-# E3737_NIMBUS_CASTLE_BACK_EXIT_LOADER
+# pylint: disable=C0301
+
+"""E3737_NIMBUS_CASTLE_BACK_EXIT_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -53,9 +55,9 @@ script = EventScript(
                 ),
                 ASSetWalkingSpeed(FAST),
                 ASStartLoopNTimes(2),
-                ASShiftSouthwestPixels(4),
+                ASWalkSouthwestPixels(4),
                 ASPause(3),
-                ASShiftNortheastPixels(4),
+                ASWalkNortheastPixels(4),
                 ASEndLoop(),
                 ASResetProperties(),
                 ASFaceSouthwest(),

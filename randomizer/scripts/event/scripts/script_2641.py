@@ -1,15 +1,17 @@
-# E2641_FACTORY_1ST_ROOM_LOADER_AFTER_FIGHT
+# pylint: disable=C0301
+
+"""E2641_FACTORY_1ST_ROOM_LOADER_AFTER_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 1),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW01_INNER_FACTORY),
         JmpIfBitClear(FAST_TRAVEL_ENABLED, ["EVENT_2641_action_queue_async_15"]),
         SummonObjectToCurrentLevel(NPC_8),
         ActionQueueAsync(
             target=NPC_7,
-            subscript=[ASShiftSouthwestPixels(8)],
+            subscript=[ASWalkSouthwestPixels(8)],
             identifier="EVENT_2641_action_queue_async_15",
         ),
         SetSyncActionScript(NPC_7, A0978_RANDOMLY_FACE_SOUTHWEST),

@@ -1,4 +1,4 @@
-# 9 - Goby
+"""9 - Goby"""
 
 from randomizer.scripts.monster.script_imports import *
 

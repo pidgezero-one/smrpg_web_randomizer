@@ -1,4 +1,6 @@
-# E0556_ROSE_TOWN_LIBERATED_LOADER
+# pylint: disable=C0301
+
+"""E0556_ROSE_TOWN_LIBERATED_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

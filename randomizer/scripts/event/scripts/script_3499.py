@@ -1,4 +1,6 @@
-# E3499_BOOSTER_HILL_1ST_PASS_LOADER
+# pylint: disable=C0301
+
+"""E3499_BOOSTER_HILL_1ST_PASS_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=LAYER_3,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNorthwestSteps(18)],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNorthwestSteps(18)],
         ),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
@@ -42,15 +44,15 @@ script = EventScript(
                     mirror_sprite=True,
                 ),
                 ASShiftZUpPixels(9),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
             ],
         ),
-        ActionQueueSync(target=NPC_8, subscript=[ASShiftNorthwestSteps(11)]),
+        ActionQueueSync(target=NPC_8, subscript=[ASWalkNorthwestSteps(11)]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(11),
+                ASWalkNorthwestSteps(11),
                 ASSetSequenceSpeed(NORMAL),
             ],
         ),
@@ -66,7 +68,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(8),
+                ASWalkNorthwestSteps(8),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(NORMAL),
             ],
@@ -110,12 +112,12 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_8,
             subscript=[
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
                 ASSetSpriteSequence(
                     index=4, sprite_offset=2, is_sequence=True, looping=True
                 ),
-                ASShiftNorthPixels(4),
-                ASShiftWestPixels(8),
+                ASWalkNorthPixels(4),
+                ASWalkWestPixels(8),
                 ASSetSpriteSequence(
                     index=4,
                     sprite_offset=2,
@@ -123,7 +125,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftWestPixels(8),
+                ASWalkWestPixels(8),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0]),
             ],
             identifier="EVENT_3499_action_queue_sync_130",
@@ -136,11 +138,11 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_8,
             subscript=[
-                ASShiftEastPixels(8),
+                ASWalkEastPixels(8),
                 ASSetSpriteSequence(
                     index=4, sprite_offset=2, is_sequence=True, looping=True
                 ),
-                ASShiftEastPixels(8),
+                ASWalkEastPixels(8),
                 ASSetSpriteSequence(
                     index=3,
                     sprite_offset=2,
@@ -148,7 +150,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0]),
             ],
             identifier="EVENT_3499_action_queue_sync_133",
@@ -167,7 +169,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
                 ASSetAllSpeeds(FASTER),
-                ASShiftSouthwestPixels(36),
+                ASWalkSouthwestPixels(36),
                 ASPlaySound(sound=SO049_BIG_SHELL_HIT, channel=4),
                 ASVisibilityOn(),
                 ASJumpToHeight(
@@ -175,7 +177,9 @@ script = EventScript(
                     identifier="EVENT_3499_action_queue_sync_136_SUBSCRIPT_jump_to_height_9",
                 ),
                 ASWalk1StepSoutheast(),
-                ASSet700CToObjectCoord(object=DUMMY_0X07, coord=COORD_X, pixel=True),
+                ASSet700CToObjectCoord(
+                    target_npc=DUMMY_0X07, coord=COORD_X, pixel=True
+                ),
                 ASCompareVarToConst(PRIMARY_TEMP_700C, 5888),
                 ASJmpIfComparisonResultIsLesser(
                     ["EVENT_3499_action_queue_sync_136_SUBSCRIPT_jump_to_height_9"]

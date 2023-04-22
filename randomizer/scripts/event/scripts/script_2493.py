@@ -1,4 +1,6 @@
-# E2493_MIMIC_3
+# pylint: disable=C0301
+
+"""E2493_MIMIC_3"""
 
 from randomizer.scripts.event.script_imports import *
 

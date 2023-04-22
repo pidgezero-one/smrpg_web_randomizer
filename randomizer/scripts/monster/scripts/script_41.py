@@ -1,4 +1,4 @@
-# 41 - Reacher
+"""41 - Reacher"""
 
 from randomizer.scripts.monster.script_imports import *
 

@@ -1,4 +1,6 @@
-# E2312_BOOSTER_PASS_SPINY_COIN_BUTTON
+# pylint: disable=C0301
+
+"""E2312_BOOSTER_PASS_SPINY_COIN_BUTTON"""
 
 from randomizer.scripts.event.script_imports import *
 

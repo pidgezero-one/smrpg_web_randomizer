@@ -1,4 +1,6 @@
-# referenced by battle_events BE0021_JOHNNY_CHALLENGES_MARIO_TO_A_ONE_ON_ONE
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0021_JOHNNY_CHALLENGES_MARIO_TO_A_ONE_ON_ONE"""
 
 from randomizer.scripts.animation.script_imports import *
 

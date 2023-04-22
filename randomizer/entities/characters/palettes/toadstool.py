@@ -1,3 +1,5 @@
+"""Toadstool palette instances."""
+
 from randomizer.types.palettes.classes import (
     EffectPalette,
     SpritePalette,
@@ -6,6 +8,8 @@ from randomizer.types.palettes.classes import (
 
 
 class Default(ToadstoolPaletteSet):
+    """Default Toadstool palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -110,6 +114,8 @@ class Default(ToadstoolPaletteSet):
 
 
 class Daisy(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Daisy."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -171,6 +177,8 @@ class Daisy(ToadstoolPaletteSet):
 
 
 class Pauline(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Pauline."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -232,6 +240,8 @@ class Pauline(ToadstoolPaletteSet):
 
 
 class Rosalina(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Rosalina."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -293,6 +303,8 @@ class Rosalina(ToadstoolPaletteSet):
 
 
 class Palutena(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Palutena from Kid Icarus."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xEBE3C8,
@@ -354,6 +366,8 @@ class Palutena(ToadstoolPaletteSet):
 
 
 class Kumatora(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Kumatora from Mother 3."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8C8C0,
@@ -415,6 +429,8 @@ class Kumatora(ToadstoolPaletteSet):
 
 
 class Tia(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Tia from Lufia II."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xD8D0B8,
@@ -476,6 +492,8 @@ class Tia(ToadstoolPaletteSet):
 
 
 class Kairi(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Kairi from Kingdom Hearts."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -537,6 +555,8 @@ class Kairi(ToadstoolPaletteSet):
 
 
 class Leena(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Leena from Chrono Cross."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -598,6 +618,8 @@ class Leena(ToadstoolPaletteSet):
 
 
 class Emeralda(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Emeralda from Xenogears."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8E1D5,
@@ -659,6 +681,8 @@ class Emeralda(ToadstoolPaletteSet):
 
 
 class Miku(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Hatsune Miku."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -720,6 +744,8 @@ class Miku(ToadstoolPaletteSet):
 
 
 class Jasmine(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Jasmine from Aladdin."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -781,6 +807,8 @@ class Jasmine(ToadstoolPaletteSet):
 
 
 class Kotori(ToadstoolPaletteSet):
+    """Toadstool coloured to resemble Kotori from Love Live."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -842,6 +870,8 @@ class Kotori(ToadstoolPaletteSet):
 
 
 class Zombie(ToadstoolPaletteSet):
+    """Toadstool coloured to look like a zombie."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8E0D0,
@@ -902,6 +932,8 @@ class Zombie(ToadstoolPaletteSet):
 
 
 class Blood(ToadstoolPaletteSet):
+    """Toadstool palette (reference unknown)"""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -962,6 +994,8 @@ class Blood(ToadstoolPaletteSet):
 
 
 class Demon(ToadstoolPaletteSet):
+    """Toadstool with a dark palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0x503810,
@@ -1022,6 +1056,8 @@ class Demon(ToadstoolPaletteSet):
 
 
 class Red(ToadstoolPaletteSet):
+    """Toadstool with a red dress a la Super Smash Bros."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -1082,6 +1118,8 @@ class Red(ToadstoolPaletteSet):
 
 
 class Green(ToadstoolPaletteSet):
+    """Toadstool with a green dress a la Super Smash Bros."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -1142,6 +1180,8 @@ class Green(ToadstoolPaletteSet):
 
 
 class Blue(ToadstoolPaletteSet):
+    """Toadstool with a blue dress a la Super Smash Bros."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -1202,6 +1242,8 @@ class Blue(ToadstoolPaletteSet):
 
 
 class Black(ToadstoolPaletteSet):
+    """Toadstool with a black dress."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,

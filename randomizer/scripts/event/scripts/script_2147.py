@@ -1,4 +1,6 @@
-# E2147_KEEP_ORIGINAL_THRONE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2147_KEEP_ORIGINAL_THRONE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,13 +11,13 @@ script = EventScript(
             room_id=R479_BOWSERS_KEEP_2ND_TIME_AREA_04_THRONE_ROOM,
             mod_id=0,
         ),
-        ActionQueueSync(target=NPC_2, subscript=[ASShiftNorthwestPixels(8)]),
-        ActionQueueSync(target=NPC_3, subscript=[ASShiftSoutheastPixels(8)]),
-        ActionQueueSync(target=NPC_4, subscript=[ASShiftSoutheastPixels(8)]),
-        ActionQueueSync(target=NPC_5, subscript=[ASShiftNorthwestPixels(8)]),
-        ActionQueueSync(target=NPC_6, subscript=[ASShiftSoutheastPixels(8)]),
-        ActionQueueAsync(target=NPC_7, subscript=[ASShiftSoutheastPixels(8)]),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        ActionQueueSync(target=NPC_2, subscript=[ASWalkNorthwestPixels(8)]),
+        ActionQueueSync(target=NPC_3, subscript=[ASWalkSoutheastPixels(8)]),
+        ActionQueueSync(target=NPC_4, subscript=[ASWalkSoutheastPixels(8)]),
+        ActionQueueSync(target=NPC_5, subscript=[ASWalkNorthwestPixels(8)]),
+        ActionQueueSync(target=NPC_6, subscript=[ASWalkSoutheastPixels(8)]),
+        ActionQueueAsync(target=NPC_7, subscript=[ASWalkSoutheastPixels(8)]),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000, 12, ["EVENT_2147_fade_in_from_black_async_13"]
         ),

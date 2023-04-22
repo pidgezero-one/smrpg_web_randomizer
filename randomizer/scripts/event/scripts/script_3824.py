@@ -1,4 +1,6 @@
-# E3824_YOSTER_ISLE_LOADER
+# pylint: disable=C0301
+
+"""E3824_YOSTER_ISLE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

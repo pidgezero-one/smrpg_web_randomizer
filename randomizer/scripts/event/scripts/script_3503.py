@@ -1,4 +1,6 @@
-# E3503_BOOSTER_HILL_BARREL_SUMMONER
+# pylint: disable=C0301
+
+"""E3503_BOOSTER_HILL_BARREL_SUMMONER"""
 
 from randomizer.scripts.event.script_imports import *
 

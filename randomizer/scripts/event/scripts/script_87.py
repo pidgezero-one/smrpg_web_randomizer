@@ -1,7 +1,7 @@
-# E0087_INVISIBLE_ITEM_CHECK_3
+# pylint: disable=C0301
+
+"""E0087_INVISIBLE_ITEM_CHECK_3"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	
-])
+script = EventScript([])

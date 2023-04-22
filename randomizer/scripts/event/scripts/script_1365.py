@@ -1,4 +1,6 @@
-# E1365_CURTAIN_GAME_BUSINESS_LOGIC_1
+# pylint: disable=C0301
+
+"""E1365_CURTAIN_GAME_BUSINESS_LOGIC_1"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -14,9 +16,9 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOff(),
                 ASSetAllSpeeds(SLOW),
-                ASShiftNortheastSteps(2),
-                ASShiftNortheastPixels(8),
-                ASShiftNorthwestSteps(1),
+                ASWalkNortheastSteps(2),
+                ASWalkNortheastPixels(8),
+                ASWalkNorthwestSteps(1),
                 ASFaceNorthwest(),
                 ASPause(30),
                 ASSetSpriteSequence(
@@ -77,7 +79,7 @@ script = EventScript(
                 ASSetAllSpeeds(SLOW),
                 ASFaceNortheast(),
                 ASPause(25),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASPause(20),
                 ASFaceNorthwest(),
                 ASPause(30),
@@ -138,7 +140,7 @@ script = EventScript(
                 ASPause(30),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftSouthwestSteps(4),
+                ASWalkSouthwestSteps(4),
                 ASFaceNorthwest(),
                 ASPause(25),
                 ASSetSpriteSequence(
@@ -198,7 +200,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASFaceNorthwest(),
                 ASPause(30),
                 ASSetSpriteSequence(
@@ -259,7 +261,7 @@ script = EventScript(
                 ASPause(10),
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftNortheastSteps(6),
+                ASWalkNortheastSteps(6),
                 ASFaceNorthwest(),
                 ASPause(20),
                 ASSetSpriteSequence(
@@ -337,7 +339,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
             ],
         ),
         Pause(30),

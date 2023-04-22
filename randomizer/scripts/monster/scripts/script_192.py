@@ -1,4 +1,4 @@
-# 192 - KnifeGuy
+"""192 - KnifeGuy"""
 
 from randomizer.scripts.monster.script_imports import *
 

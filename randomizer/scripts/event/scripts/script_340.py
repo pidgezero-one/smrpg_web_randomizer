@@ -1,4 +1,6 @@
-# E0340_MUSHROOM_KINGDOM_OCCUPIED_RAZ_RAINI_HOUSE_SHAKE
+# pylint: disable=C0301
+
+"""E0340_MUSHROOM_KINGDOM_OCCUPIED_RAZ_RAINI_HOUSE_SHAKE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,12 +12,12 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthwestPixels(4),
-                ASShiftSoutheastPixels(8),
-                ASShiftNorthwestPixels(6),
-                ASShiftSoutheastPixels(4),
-                ASShiftNorthwestPixels(3),
-                ASShiftSoutheastPixels(1),
+                ASWalkNorthwestPixels(4),
+                ASWalkSoutheastPixels(8),
+                ASWalkNorthwestPixels(6),
+                ASWalkSoutheastPixels(4),
+                ASWalkNorthwestPixels(3),
+                ASWalkSoutheastPixels(1),
             ],
         ),
         Jmp(["EVENT_340_pause_0"]),

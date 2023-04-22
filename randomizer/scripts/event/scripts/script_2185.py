@@ -1,13 +1,17 @@
-# E2185_KEEP_SPARKY_BATTLE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2185_KEEP_SPARKY_BATTLE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	ClearBit(TEMP_7043_1),
-	ClearBit(TEMP_7043_2),
-	ClearBit(TEMP_7043_3),
-	ClearBit(TEMP_7043_4),
-	RunEventAsSubroutine(E0849_KEEP_BATTLE_DOOR_2C_SHUFFLED_NPC_ANIMATION_LOADER),
-	FadeInFromBlack(sync=False),
-	Return()
-])
+script = EventScript(
+    [
+        ClearBit(TEMP_7043_1),
+        ClearBit(TEMP_7043_2),
+        ClearBit(TEMP_7043_3),
+        ClearBit(TEMP_7043_4),
+        RunEventAsSubroutine(E0849_KEEP_BATTLE_DOOR_2C_SHUFFLED_NPC_ANIMATION_LOADER),
+        FadeInFromBlack(sync=False),
+        Return(),
+    ]
+)

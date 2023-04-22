@@ -1,4 +1,6 @@
-# E3937_FREESTANDING_RING
+# pylint: disable=C0301
+
+"""E3937_FREESTANDING_RING"""
 
 from randomizer.scripts.event.script_imports import *
 

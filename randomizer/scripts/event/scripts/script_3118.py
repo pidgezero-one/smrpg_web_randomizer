@@ -1,4 +1,6 @@
-# E3118_WATER_STATE
+# pylint: disable=C0301
+
+"""E3118_WATER_STATE"""
 
 from randomizer.scripts.event.script_imports import *
 

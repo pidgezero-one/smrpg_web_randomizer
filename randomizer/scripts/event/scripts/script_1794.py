@@ -1,4 +1,6 @@
-# E1794_LANDS_END_BUY_CHEST
+# pylint: disable=C0301
+
+"""E1794_LANDS_END_BUY_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -184,7 +186,7 @@ script = EventScript(
                 ASSetVarToConst(TEMP_7034, 65535),
                 ASCreatePacketAtObjectCoords(
                     packet=P032_BLUE_CLOUD,
-                    object=MEM_70AA,
+                    target_npc=MEM_70AA,
                     destinations=[
                         "EVENT_1794_action_queue_async_73_SUBSCRIPT_pause_11"
                     ],

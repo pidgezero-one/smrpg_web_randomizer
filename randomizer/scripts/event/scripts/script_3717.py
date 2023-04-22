@@ -1,4 +1,6 @@
-# E3717_NIMBUS_CASTLE_TWO_LEVEL_CHEST_ROOM_FAN_GUST_PATH
+# pylint: disable=C0301
+
+"""E3717_NIMBUS_CASTLE_TWO_LEVEL_CHEST_ROOM_FAN_GUST_PATH"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -38,12 +40,12 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSoutheastPixels(2),
+                ASWalkSoutheastPixels(2),
                 ASStartLoopNTimes(3),
-                ASShiftNorthwestPixels(4),
-                ASShiftSoutheastPixels(4),
+                ASWalkNorthwestPixels(4),
+                ASWalkSoutheastPixels(4),
                 ASEndLoop(),
-                ASShiftNorthwestPixels(2),
+                ASWalkNorthwestPixels(2),
             ],
         ),
         Pause(30),

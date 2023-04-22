@@ -1,4 +1,6 @@
-# E3478_MIDAS_RIVER_TRAMPOLINE
+# pylint: disable=C0301
+
+"""E3478_MIDAS_RIVER_TRAMPOLINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -74,8 +76,8 @@ script = EventScript(
                 ASShiftZUpPixels(4),
                 ASShiftZDownPixels(4),
                 ASEndLoop(),
-                ASShiftSoutheastSteps(2),
-                ASShiftEastPixels(16),
+                ASWalkSoutheastSteps(2),
+                ASWalkEastPixels(16),
                 ASFaceSoutheast(),
                 ASSetAllSpeeds(NORMAL),
             ],
@@ -85,8 +87,8 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASSetAllSpeeds(FAST),
-                ASShiftWestPixels(16),
-                ASShiftNorthwestSteps(2),
+                ASWalkWestPixels(16),
+                ASWalkNorthwestSteps(2),
                 ASFaceSoutheast(),
                 ASSetAllSpeeds(NORMAL),
             ],

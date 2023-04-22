@@ -1,4 +1,4 @@
-# 155 - BowserClone
+"""155 - BowserClone"""
 
 from randomizer.scripts.monster.script_imports import *
 

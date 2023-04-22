@@ -1,4 +1,6 @@
-# E2363_ABYSS_1ST_BOSS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2363_ABYSS_1ST_BOSS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,8 +12,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetPriority(3),
-                ASShiftNorthPixels(4),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthPixels(4),
+                ASWalkNorthwestPixels(1),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
             ],
         ),
@@ -19,8 +21,8 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetPriority(3),
-                ASShiftWestPixels(11),
-                ASShiftSouthPixels(2),
+                ASWalkWestPixels(11),
+                ASWalkSouthPixels(2),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
             ],
         ),
@@ -28,8 +30,8 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetPriority(3),
-                ASShiftWestPixels(4),
-                ASShiftSouthPixels(2),
+                ASWalkWestPixels(4),
+                ASWalkSouthPixels(2),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
             ],
         ),

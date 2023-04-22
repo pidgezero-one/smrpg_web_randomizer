@@ -1,4 +1,6 @@
-# E2346_TOWER_THWOMP_SEESAW_CONTD
+# pylint: disable=C0301
+
+"""E2346_TOWER_THWOMP_SEESAW_CONTD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -20,7 +22,7 @@ script = EventScript(
         Pause(1),
         SetAsyncActionScript(NPC_1, A0739_TOWER_SEESAW_CHEST_ITEM),
         JmpIfMarioInAir(["EVENT_2346_clear_bit_9"]),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 23, ["EVENT_2346_enable_controls_11"]),
         ClearBit(TEMP_7043_0, identifier="EVENT_2346_clear_bit_9"),
         Return(),

@@ -1,4 +1,6 @@
-# E1146_SEASIDE_INITIATE_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E1146_SEASIDE_INITIATE_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -58,9 +60,9 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(6),
+                ASWalkNorthwestSteps(6),
                 ASSetAllSpeeds(NORMAL),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
             ],
         ),
         Pause(10),
@@ -76,11 +78,11 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetAllSpeeds(VERY_FAST), ASShiftNorthwestSteps(9)],
+            subscript=[ASSetAllSpeeds(VERY_FAST), ASWalkNorthwestSteps(9)],
         ),
         ActionQueueSync(
             target=NPC_6,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASShiftNorthwestSteps(4)],
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNorthwestSteps(4)],
         ),
         ActionQueueSync(
             target=MARIO,
@@ -113,7 +115,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASVisibilityOn(),
                 ASJumpToHeight(128),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASSetSequenceSpeed(NORMAL),
             ],
         ),
@@ -144,7 +146,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASVisibilityOn(),
                 ASJumpToHeight(128),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASSetSequenceSpeed(NORMAL),
             ],
         ),
@@ -176,12 +178,12 @@ script = EventScript(
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(128),
-                ASShiftSoutheastSteps(4),
+                ASWalkSoutheastSteps(4),
                 ASSequenceLoopingOff(),
             ],
         ),
         ActionQueueAsync(
-            target=NPC_6, subscript=[ASFixedFCoordOn(), ASShiftSoutheastSteps(1)]
+            target=NPC_6, subscript=[ASFixedFCoordOn(), ASWalkSoutheastSteps(1)]
         ),
         Pause(30),
         ActionQueueAsync(
@@ -194,19 +196,19 @@ script = EventScript(
         UnsyncDialog(),
         CloseDialog(),
         ActionQueueAsync(
-            target=NPC_4, subscript=[ASShiftSoutheastSteps(1), ASFaceNortheast()]
+            target=NPC_4, subscript=[ASWalkSoutheastSteps(1), ASFaceNortheast()]
         ),
         Pause(5),
         ActionQueueAsync(target=NPC_8, subscript=[ASSequenceLoopingOff()]),
         ActionQueueSync(
-            target=NPC_4, subscript=[ASShiftNorthwestSteps(1), ASFaceSoutheast()]
+            target=NPC_4, subscript=[ASWalkNorthwestSteps(1), ASFaceSoutheast()]
         ),
         ActionQueueAsync(
-            target=NPC_6, subscript=[ASFixedFCoordOff(), ASShiftSoutheastSteps(3)]
+            target=NPC_6, subscript=[ASFixedFCoordOff(), ASWalkSoutheastSteps(3)]
         ),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetAllSpeeds(VERY_FAST), ASShiftSoutheastSteps(5)],
+            subscript=[ASSetAllSpeeds(VERY_FAST), ASWalkSoutheastSteps(5)],
         ),
         ActionQueueAsync(
             target=MARIO,

@@ -1,4 +1,6 @@
-# E1686_TEMPLE_FORTUNE_HEAD_2
+# pylint: disable=C0301
+
+"""E1686_TEMPLE_FORTUNE_HEAD_2"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,7 +8,7 @@ script = EventScript(
     [
         JmpIfBitClear(BELOME_FORTUNE_1, ["EVENT_1686_ret_30"]),
         Set7000ToTappedButton(),
-        JmpIf7000AllBitsClear(destinations=["EVENT_1686_ret_30"]),
+        JmpIf7000AllBitsClear(bits=[], destinations=["EVENT_1686_ret_30"]),
         ActionQueueSync(target=MARIO, subscript=[ASJumpToHeight(64)]),
         JmpIfBitSet(BELOME_HEAD_2, ["EVENT_1686_ret_30"]),
         Pause(1, identifier="EVENT_1686_pause_5"),

@@ -1,4 +1,4 @@
-# 89 - Robomb
+"""89 - Robomb"""
 
 from randomizer.scripts.monster.script_imports import *
 

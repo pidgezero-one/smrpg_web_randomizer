@@ -1,4 +1,6 @@
-# E1353_TOWER_CHECKERBOARD_ROOM_LOCKED_DOOR
+# pylint: disable=C0301
+
+"""E1353_TOWER_CHECKERBOARD_ROOM_LOCKED_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,7 +9,7 @@ script = EventScript(
         JmpIfBitSet(KEEP_BOSS_2_DEFEATED, ["EVENT_1353_pause_3"]),
         RunDialog(
             dialog_id=DI2801_NEED_THE_KEY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,

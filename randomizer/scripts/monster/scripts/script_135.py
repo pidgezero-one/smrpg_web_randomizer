@@ -1,4 +1,4 @@
-# 135 - Shelly
+"""135 - Shelly"""
 
 from randomizer.scripts.monster.script_imports import *
 

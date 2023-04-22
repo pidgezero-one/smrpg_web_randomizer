@@ -1,4 +1,6 @@
-# E3936_FREESTANDING_BROOCH
+# pylint: disable=C0301
+
+"""E3936_FREESTANDING_BROOCH"""
 
 from randomizer.scripts.event.script_imports import *
 

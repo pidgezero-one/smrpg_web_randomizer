@@ -1,4 +1,7 @@
-import random, hashlib
+"""Base classes for game world."""
+
+import random
+import hashlib
 from copy import deepcopy
 import re
 from typing import Any, Dict, List, Optional, Type, Union
@@ -8,6 +11,7 @@ from randomizer.entities.dialogs.overworld_dialogs.classes.dialog import (
 )
 from randomizer.types.shops.classes import Shop
 from randomizer.types.sprites.classes.collection import SpriteCollection
+from randomizer.types.world.exceptions import RandomizerSettingsException
 from randomizer.utils.number import coin_flip
 from randomizer.types.battle_animation_scripts.classes import (
     AnimationScriptBankCollection,
@@ -32,7 +36,7 @@ from randomizer.types.progress_locations.classes import (
     ChestLocation,
     FreestandingLocation,
     GrantLocation,
-    TProgressLocation,
+    ProgressLocationT,
 )
 
 from randomizer.types.rooms.classes import Room
@@ -58,6 +62,7 @@ from randomizer.types.world.flags.enums import (
     PlayableCharacters,
     SeaGating,
 )
+from randomizer.types.world.flags.classes import FlagT
 from randomizer.types.world.flags.flags import (
     AvailableCharacters,
     AvailableSpells,
@@ -72,28 +77,29 @@ from randomizer.types.world.flags.flags import (
     StartingCharacter,
     StartingCharacters,
     TotalStarPieces,
-    TFlag,
 )
 from randomizer.types.world.utils import (
     set_flag_from_settings_string,
     separate_flag_string,
     get_flag_string_from_flag_collection,
 )
+
+
 class Settings:
+    """Container class for all settings."""
+
     _debug_mode: bool = False
     _override: dict = {}
     _all_flags: List[Flag] = []
 
     @property
     def override(self) -> dict:
+        """Override certain settings (developer mode)"""
         return self._override
 
     @property
-    def flag_string(self):
-        """
-        Returns:
-            str: Computed flag string for these settings.
-        """
+    def flag_string(self) -> str:
+        """Computed flag string for these settings."""
 
         non_cosmetic_categories = [
             category
@@ -103,45 +109,50 @@ class Settings:
 
         return get_flag_string_from_flag_collection(non_cosmetic_categories)
 
-    def get_flag(self, flag_class: Type[TFlag]) -> TFlag:
+    def get_flag(self, flag_class: Type[FlagT]) -> FlagT:
+        """Get the value of a specific setting."""
         return next(f for f in self._all_flags if isinstance(f, flag_class))
 
     def is_flag_value(self, flag_class: Type[Flag], value: Any) -> bool:
+        """Check if a setting is set to the given value."""
         flag = self.get_flag(flag_class)
-        if (
-            isinstance(flag, BooleanFlag)
-            or isinstance(flag, NumberThresholdFlag)
-            or isinstance(flag, SelectOneFlag)
-        ):
+        if isinstance(flag, (BooleanFlag, NumberThresholdFlag, SelectOneFlag)):
             return flag.value == value
-        elif isinstance(flag, CategorizationFlag):
+        if isinstance(flag, CategorizationFlag):
             return value in flag.enabled
-        else:
-            raise Exception("is_flag_value unknown flag type %r" % type(flag))
+        raise RandomizerSettingsException(
+            f"is_flag_value unknown flag type {type(flag)}"
+        )
 
     def is_boolean_flag_enabled(self, flag_class: Type[BooleanFlag]) -> bool:
+        """Check if a boolean flag is on or not."""
         return self.is_flag_value(flag_class, True)
 
     def update_single_value_flag(self, flag_class: Type[Flag], value: Any) -> None:
+        """For a setting which can only take one of multiple values, set it to the given value."""
         flag = self.get_flag(flag_class)
-        if (
-            isinstance(flag, BooleanFlag)
-            or isinstance(flag, NumberThresholdFlag)
-            or isinstance(flag, SelectOneFlag)
-        ):
+        if isinstance(flag, (BooleanFlag, NumberThresholdFlag, SelectOneFlag)):
             flag.set_value(value)
         elif isinstance(flag, CategorizationFlag):
-            raise Exception(
-                "is_flag_value illegal flag type CategorizationFlag, use append_categorization_flag_options, remove_categorization_flag_options, or overwrite_categorization_flag_options"
+            raise RandomizerSettingsException(
+                (
+                    "is_flag_value illegal flag type CategorizationFlag, "
+                    "use append_categorization_flag_options, "
+                    "remove_categorization_flag_options, "
+                    "or overwrite_categorization_flag_options"
+                )
             )
         else:
-            raise Exception("is_flag_value illegal flag type %r" % type(flag))
+            raise RandomizerSettingsException(
+                f"is_flag_value illegal flag type {type(flag)}"
+            )
 
     def append_categorization_flag_options(
         self,
         flag_class: Type[CategorizationFlag],
         options_to_append: Union[FlagOptions, List[FlagOptions]],
     ) -> None:
+        """For a value categorization flag, append values to Enabled."""
         flag = self.get_flag(flag_class)
         enabled = deepcopy(flag.enabled)
         if isinstance(options_to_append, FlagOptions):
@@ -154,6 +165,7 @@ class Settings:
         flag_class: Type[CategorizationFlag],
         options_to_remove: Union[FlagOptions, List[FlagOptions]],
     ) -> None:
+        """For a value categorization flag, append values to Disabled."""
         flag = self.get_flag(flag_class)
         if isinstance(options_to_remove, FlagOptions):
             options_to_remove = [options_to_remove]
@@ -163,10 +175,12 @@ class Settings:
     def overwrite_categorization_flag_options(
         self, flag_class: Type[CategorizationFlag], options: List[FlagOptions]
     ) -> None:
+        """For a value categorization flag, overwrite Enabled."""
         flag = self.get_flag(flag_class)
         flag.set_enabled(options)
 
-    def reject_illegal_flag_combos(self):
+    def reject_illegal_flag_combos(self) -> None:
+        """A sanity check for settings that are misconfigured."""
         # max chars less than starting party size
         max_char_setting: int = self.get_flag(MaxCharacters).value
         if max_char_setting < self.get_flag(StartingCharacters).value:
@@ -182,39 +196,44 @@ class Settings:
                 "You have excluded too many characters to fill your desired starting party size"
             )
         required_char_settings = [
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.mario),
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.mallow)
-            or self.is_flag_value(BanditsWayGate, BanditsWayGating.mallow),
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.geno)
-            or self.is_flag_value(ForestMazeGate, ForestMazeGating.geno),
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.bowser),
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.toadstool)
-            or self.is_flag_value(SeaGate, SeaGating.toadstool),
+            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO),
+            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW)
+            or self.is_flag_value(BanditsWayGate, BanditsWayGating.MALLOW),
+            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO)
+            or self.is_flag_value(ForestMazeGate, ForestMazeGating.GENO),
+            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.BOWSER),
+            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL)
+            or self.is_flag_value(SeaGate, SeaGating.TOADSTOOL),
         ]
         num_required = len([s for s in required_char_settings if s])
         if num_required > max_char_setting:
             raise FlagError(
-                "Your Progression settings require %i different characters, but you have set your max to %s"
-                % (num_required, max_char_setting)
+                (
+                    f"Your Progression settings require {num_required} different characters, "
+                    f"but you have set your max to {max_char_setting}"
+                )
             )
 
         # don't allow there to be less star pieces than gating allows
         if (
             (
                 self.get_flag(TotalStarPieces).value < 4
-                and self.is_flag_value(SeaGate, SeaGating.star4)
+                and self.is_flag_value(SeaGate, SeaGating.STAR_4)
             )
             or (
                 self.get_flag(TotalStarPieces).value < 6
-                and self.is_flag_value(BowsersKeepGate, BowsersKeepGating.star6)
+                and self.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6)
             )
             or (
                 self.get_flag(TotalStarPieces).value < 6
-                and self.is_flag_value(FactoryGate, FactoryGating.star6)
+                and self.is_flag_value(FactoryGate, FactoryGating.STAR_6)
             )
         ):
             raise FlagError(
-                "Not enough Star Pieces available to unlock world areas with your selected progression settings"
+                (
+                    "Not enough Star Pieces available to unlock world areas "
+                    "with your selected progression settings"
+                )
             )
         # don't allow endgame stars to be less than available stats
         if (
@@ -222,36 +241,39 @@ class Settings:
             < self.get_flag(StarPiecesRequired).value
         ):
             raise FlagError(
-                "Star Pieces required to access the final Factory boss cannot be higher than the total Star Pieces available in the world"
+                (
+                    "Star Pieces required to access the final Factory boss cannot be higher "
+                    "than the total Star Pieces available in the world"
+                )
             )
         # don't allow empty shops
         # needs at least 1 damaging spell to be enabled
         requires_one_of = [
-            LearnableSpells.Jump,
-            LearnableSpells.FireOrb,
-            LearnableSpells.SuperJump,
-            LearnableSpells.SuperFlame,
-            LearnableSpells.UltraJump,
-            LearnableSpells.UltraFlame,
-            LearnableSpells.SleepyTime,
-            LearnableSpells.PsychBomb,
-            LearnableSpells.Terrorize,
-            LearnableSpells.PoisonGas,
-            LearnableSpells.Crusher,
-            LearnableSpells.BowserCrush,
-            LearnableSpells.GenoBeam,
-            LearnableSpells.GenoWhirl,
-            LearnableSpells.GenoBlast,
-            LearnableSpells.GenoFlash,
-            LearnableSpells.Thunderbolt,
-            LearnableSpells.Shocker,
-            LearnableSpells.Snowy,
-            LearnableSpells.StarRain,
+            LearnableSpells.JUMP,
+            LearnableSpells.FIRE_ORB,
+            LearnableSpells.SUPER_JUMP,
+            LearnableSpells.SUPER_FLAME,
+            LearnableSpells.ULTRA_JUMP,
+            LearnableSpells.ULTRA_FLAME,
+            LearnableSpells.SLEEPY_TIME,
+            LearnableSpells.PSYCH_BOMB,
+            LearnableSpells.TERRORIZE,
+            LearnableSpells.POISON_GAS,
+            LearnableSpells.CRUSHER,
+            LearnableSpells.BOWSER_CRUSH,
+            LearnableSpells.GENO_BEAM,
+            LearnableSpells.GENO_WHIRL,
+            LearnableSpells.GENO_BLAST,
+            LearnableSpells.GENO_FLASH,
+            LearnableSpells.THUNDERBOLT,
+            LearnableSpells.SHOCKER,
+            LearnableSpells.SNOWY,
+            LearnableSpells.STAR_RAIN,
         ]
         # what to do about actually applying these when seed has limited chars?
         has_required = False
-        for s in requires_one_of:
-            if s in self.get_flag(AvailableSpells).enabled:
+        for spell in requires_one_of:
+            if spell in self.get_flag(AvailableSpells).enabled:
                 has_required = True
                 break
         if not has_required:
@@ -265,26 +287,26 @@ class Settings:
         max_chars = self.get_flag(MaxCharacters).value
         available_chars = []
         if required_char_settings[0]:
-            available_chars.append(PlayableCharacters.Mario)
+            available_chars.append(PlayableCharacters.MARIO)
         if required_char_settings[1]:
-            available_chars.append(PlayableCharacters.Mallow)
+            available_chars.append(PlayableCharacters.MALLOW)
         if required_char_settings[2]:
-            available_chars.append(PlayableCharacters.Geno)
+            available_chars.append(PlayableCharacters.GENO)
         if required_char_settings[3]:
-            available_chars.append(PlayableCharacters.Bowser)
+            available_chars.append(PlayableCharacters.BOWSER)
         if required_char_settings[4]:
-            available_chars.append(PlayableCharacters.Toadstool)
+            available_chars.append(PlayableCharacters.TOADSTOOL)
         starter = self.get_flag(StartingCharacter).value
-        if starter != PlayableCharacters.Random and starter not in available_chars:
+        if starter != PlayableCharacters.RANDOM and starter not in available_chars:
             available_chars.append(available_chars)
-        for c in available_chars:
-            if c not in allowed_chars:
+        for character in available_chars:
+            if character not in allowed_chars:
                 raise FlagError(
-                    "Your settings exclude a character that is required by one of your other settings."
+                    "Your settings exclude a character that is required by another setting."
                 )
         if max_chars < len(available_chars):
             raise FlagError(
-                "your settings require more characters than you've indicated should be allowed in the seed"
+                "your settings require more characters than are allowed in the seed"
             )
         if len(available_chars) < max_chars:
             available_chars.extend(
@@ -309,7 +331,7 @@ class Settings:
         self._debug_mode = debug_mode
 
         if self._debug_mode:
-            with open("randomizer/debug/config.yml", "r") as stream:
+            with open("randomizer/debug/config.yml", "r", encoding="utf-8") as stream:
                 try:
                     self._override = yaml.safe_load(stream)
                 except yaml.YAMLError as exc:
@@ -330,6 +352,8 @@ class Settings:
 
 
 class GameWorld:
+    """The base class for this seed's world."""
+
     _seed: int = 0
     _settings: Settings
     _file_select_hash: str = "MARIO1 / MARIO2 / MARIO3 / MARIO4"
@@ -377,6 +401,7 @@ class GameWorld:
 
     @property
     def seed(self) -> int:
+        """The seed literal"""
         return self._seed
 
     def _set_seed(self, seed: int) -> None:
@@ -384,6 +409,7 @@ class GameWorld:
 
     @property
     def settings(self) -> Settings:
+        """All of the settings applied to this game world"""
         return self._settings
 
     def _set_settings(self, settings: Settings) -> None:
@@ -391,6 +417,7 @@ class GameWorld:
 
     @property
     def file_select_hash(self) -> str:
+        """The strings that will appear as file select screen slots"""
         return self._file_select_hash
 
     def _set_file_select_hash(self, file_select_hash: str) -> None:
@@ -398,10 +425,12 @@ class GameWorld:
 
     @property
     def version(self) -> str:
+        """The randomizer version"""
         return self._version
 
     @property
     def event_scripts(self) -> EventScriptController:
+        """The entire collection of event scripts applied to this world"""
         return self._event_scripts
 
     def _set_event_scripts(self, event_scripts: EventScriptController) -> None:
@@ -409,6 +438,7 @@ class GameWorld:
 
     @property
     def action_scripts(self) -> ActionScriptBank:
+        """The entire collection of action scripts applied to this world"""
         return self._action_scripts
 
     def _set_action_scripts(self, action_scripts: ActionScriptBank) -> None:
@@ -418,6 +448,7 @@ class GameWorld:
     def flower_bonus_and_toad_tutorial_animation_scripts(
         self,
     ) -> AnimationScriptBankCollection:
+        """The entire collection of flower bonus & toad scripts applied to this world"""
         return self._flower_bonus_and_toad_tutorial_animation_scripts
 
     def _set_flower_bonus_and_toad_tutorial_animation_scripts(
@@ -432,6 +463,7 @@ class GameWorld:
     def monsters_attacks_and_items_animation_scripts(
         self,
     ) -> AnimationScriptBankCollection:
+        """The entire collection of monster attach & item use scripts applied to this world"""
         return self._monsters_attacks_and_items_animation_scripts
 
     def _set_monsters_attacks_and_items_animation_scripts(
@@ -444,6 +476,7 @@ class GameWorld:
 
     @property
     def battle_event_animation_scripts(self) -> AnimationScriptBankCollection:
+        """The entire collection of battle event scripts applied to this world"""
         return self._battle_event_animation_scripts
 
     def _set_battle_event_animation_scripts(
@@ -453,6 +486,7 @@ class GameWorld:
 
     @property
     def monster_scripts(self) -> MonsterScriptBank:
+        """The entire collection of enemy scripts applied to this world"""
         return self._monster_scripts
 
     def _set_monster_scripts(self, monster_scripts: MonsterScriptBank) -> None:
@@ -460,6 +494,7 @@ class GameWorld:
 
     @property
     def dialogs(self) -> DialogCollection:
+        """The entire collection of dialogs used in this world"""
         return self._dialogs
 
     def _set_dialogs(self, dialogs: DialogCollection) -> None:
@@ -467,6 +502,7 @@ class GameWorld:
 
     @property
     def enemies(self) -> List[Enemy]:
+        """All enemy instances in this world"""
         return self._enemies
 
     def _set_enemies(self, enemies: List[Enemy]) -> None:
@@ -474,6 +510,7 @@ class GameWorld:
 
     @property
     def formations(self) -> List[Optional[Formation]]:
+        """All enemy formation instances in this world"""
         return self._formations
 
     def _set_formations(self, formations: List[Optional[Formation]]) -> None:
@@ -481,6 +518,7 @@ class GameWorld:
 
     @property
     def packs(self) -> List[Optional[FormationPack]]:
+        """All enemy battle pack instances in this world"""
         return self._packs
 
     def _set_packs(self, packs: List[Optional[FormationPack]]) -> None:
@@ -488,6 +526,7 @@ class GameWorld:
 
     @property
     def characters(self) -> List[Character]:
+        """All recruitable characters in this world"""
         return self._characters
 
     def _set_characters(self, characters: List[Character]) -> None:
@@ -495,6 +534,7 @@ class GameWorld:
 
     @property
     def spotted_characters(self) -> List[SpottedCharacter]:
+        """All corresponding instances of seen characters in this world"""
         return self._spotted_characters
 
     def _set_spotted_characters(
@@ -504,6 +544,7 @@ class GameWorld:
 
     @property
     def items(self) -> List[Item]:
+        """All item instances in this world"""
         return self._items
 
     def _set_items(self, items: List[Item]) -> None:
@@ -511,10 +552,12 @@ class GameWorld:
 
     @property
     def spells(self) -> List[Spell]:
+        """All spell instances in this world"""
         return self._spells
 
     @property
     def character_spells(self) -> List[CharacterSpell]:
+        """Subset of all spell instances in this world (only learnable)"""
         return [spell for spell in self.spells if isinstance(spell, CharacterSpell)]
 
     def _set_spells(self, spells: List[Spell]) -> None:
@@ -522,6 +565,7 @@ class GameWorld:
 
     @property
     def shops(self) -> List[Shop]:
+        """All shop instances in this world"""
         return self.shops
 
     def _set_shops(self, shops: List[Shop]) -> None:
@@ -529,6 +573,7 @@ class GameWorld:
 
     @property
     def rooms(self) -> List[Room]:
+        """All level definitions in this world"""
         return self._rooms
 
     def _set_rooms(self, rooms: List[Room]) -> None:
@@ -538,6 +583,7 @@ class GameWorld:
     def item_locations(
         self,
     ) -> List[Union[ChestLocation, GrantLocation, FreestandingLocation]]:
+        """All progress locations for item grants in this world"""
         return self._item_locations
 
     def _set_item_locations(
@@ -548,6 +594,7 @@ class GameWorld:
 
     @property
     def boss_locations(self) -> List[BossFightLocation]:
+        """All progress locations for boss fights in this world"""
         return self._boss_locations
 
     def _set_boss_locations(self, boss_locations: List[BossFightLocation]) -> None:
@@ -555,6 +602,7 @@ class GameWorld:
 
     @property
     def boss_star_pieces(self) -> List[BossStarPiecePrize]:
+        """All progress locations for boss fight star piece grants in this world"""
         return self._boss_star_pieces
 
     def _set_boss_star_pieces(self, boss_star_pieces: List[BossStarPiecePrize]) -> None:
@@ -562,6 +610,7 @@ class GameWorld:
 
     @property
     def character_spotted_locations(self) -> List[CharacterSpottedLocation]:
+        """All progress locations for seen characters in this world"""
         return self._character_spotted_locations
 
     def _set_character_spotted_locations(
@@ -571,6 +620,7 @@ class GameWorld:
 
     @property
     def character_recruit_locations(self) -> List[CharacterRecruitLocation]:
+        """All progress locations for recruited characters in this world"""
         return self._character_recruit_locations
 
     def _set_character_recruit_locations(
@@ -580,6 +630,7 @@ class GameWorld:
 
     @property
     def character_spell_slots(self) -> List[CharacterSpellSlot]:
+        """All progress locations for learnable spells in this world"""
         return self._character_spell_slots
 
     def _set_character_spell_slots(
@@ -589,6 +640,7 @@ class GameWorld:
 
     @property
     def sprites(self) -> SpriteCollection:
+        """All NPC sprites definitions in this world"""
         return self._sprites
 
     def _set_sprites(self, sprites: SpriteCollection) -> None:
@@ -596,31 +648,38 @@ class GameWorld:
 
     @property
     def chocolate_cake(self) -> bool:
+        """If true, Bundt will be coloured brown"""
         return self._chocolate_cake
 
     def get_item_instance(self, item_class: Type[Item]) -> Item:
+        """Get this world's instance of a particular item class"""
         return next(x for x in self.items if isinstance(x, item_class))
 
     def get_enemy_instance(self, enemy_class: Type[Enemy]) -> Enemy:
+        """Get this world's instance of a particular enemy class"""
         return next(x for x in self.enemies if isinstance(x, enemy_class))
 
     def get_character_instance(self, character_class: Type[Character]) -> Character:
+        """Get this world's instance of a particular character class"""
         return next(x for x in self.characters if isinstance(x, character_class))
 
     def get_spotted_character_instance(
         self, spotted_character_class: Type[SpottedCharacter]
     ) -> SpottedCharacter:
+        """Get this world's instance of a particular seen character class"""
         return next(
             x for x in self.spotted_characters if isinstance(x, spotted_character_class)
         )
 
     def get_spell_instance(self, spell_class: Type[Spell]) -> Spell:
+        """Get this world's instance of a particular spell class"""
         return next(x for x in self.spells if isinstance(x, spell_class))
 
     def get_location_instance(
         self,
-        location_class: Type[TProgressLocation],
-    ) -> TProgressLocation:
+        location_class: Type[ProgressLocationT],
+    ) -> ProgressLocationT:
+        """Get this world's instance of a particular progress location class"""
         search = (
             self.character_spotted_locations
             + self.character_recruit_locations
@@ -649,10 +708,10 @@ class GameWorld:
             "PEACH",
         }
         # Replace file select names with "hash" values for seed verification.
-        for e in self.enemies:
-            name = e.name
+        for enemy in self.enemies:
+            name = enemy.name
             if name != "K9":
-                name = re.sub(r"[^A-Za-z]", "", e.name.upper())
+                name = re.sub(r"[^A-Za-z]", "", enemy.name.upper())
             if len(name) <= 6:
                 file_entry_names.add(name)
         file_entry_names = sorted(file_entry_names)
@@ -663,7 +722,8 @@ class GameWorld:
             file_entry_names[int(self.hash[24:32], 16) % len(file_entry_names)],
         ]
 
-        # Save file select hash text to show the user on the website, but the game uses '}' instead of dash.
+        # Save file select hash text to show the user on the website,
+        # but the game uses '}' instead of dash.
         self._file_select_hash = " / ".join(file_select_names).replace("}", "-")
 
     def __init__(
@@ -692,7 +752,7 @@ class GameWorld:
         character_spotted_locations: List[CharacterSpottedLocation],
         character_recruit_locations: List[CharacterRecruitLocation],
         character_spell_slots: List[CharacterSpellSlot],
-        sprites: SpriteCollection
+        sprites: SpriteCollection,
     ) -> None:
         self._set_seed(seed)
         random.seed(seed)
@@ -736,7 +796,7 @@ class GameWorld:
 
         file_select_names = self.file_select_hash.split(" / ")
 
-        for i, name in enumerate(file_select_names):
-            addr = 0x3EF528 + (i * 7)
+        for index, name in enumerate(file_select_names):
+            addr = 0x3EF528 + (index * 7)
             val = name.encode().ljust(7, b"\x00")
             patch.add_data(addr, val)

@@ -1,4 +1,6 @@
-# referenced by monster_attacks WildCard, monster_attacks PhysicalAttack21, monster_attacks RoyalFlush, monster_attacks FullHouse, monster_attacks PhysicalAttack115
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks WildCard, monster_attacks PhysicalAttack21, monster_attacks RoyalFlush, monster_attacks FullHouse, monster_attacks PhysicalAttack115"""
 
 from randomizer.scripts.animation.script_imports import *
 

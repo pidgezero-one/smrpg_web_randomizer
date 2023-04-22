@@ -1,4 +1,6 @@
-# referenced by monster_attacks Quicksilver, monster_attacks PhysicalAttack21, monster_attacks ScrowFangs, monster_spells Drain, monster_attacks PhysicalAttack90, monster_attacks 126, monster_attacks Shaker, monster_attacks Funguspike, monster_attacks BombsAway, monster_attacks Terrapunch, monster_attacks PhysicalAttack18, monster_attacks 121, monster_attacks 117, monster_attacks 114, monster_spells LightningOrb, monster_attacks PhysicalAttack113, monster_attacks 122, monster_attacks PhysicalAttack89, monster_attacks PhysicalAttack27, monster_attacks 125, monster_attacks PhysicalAttack108
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Quicksilver, monster_attacks PhysicalAttack21, monster_attacks ScrowFangs, monster_spells Drain, monster_attacks PhysicalAttack90, monster_attacks 126, monster_attacks Shaker, monster_attacks Funguspike, monster_attacks BombsAway, monster_attacks Terrapunch, monster_attacks PhysicalAttack18, monster_attacks 121, monster_attacks 117, monster_attacks 114, monster_spells LightningOrb, monster_attacks PhysicalAttack113, monster_attacks 122, monster_attacks PhysicalAttack89, monster_attacks PhysicalAttack27, monster_attacks 125, monster_attacks PhysicalAttack108"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -62,7 +64,11 @@ script = SubroutineOrBanklessScript(
         ResetObjectMappingMemory(),
         SpriteSequence(sequence=5, looping_off=True),
         MoveObject(
-            speed=1, start_position=256, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=256,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,

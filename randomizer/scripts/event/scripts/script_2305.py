@@ -1,4 +1,6 @@
-# E2305_SLOT_CHEST_TEMPLATE
+# pylint: disable=C0301
+
+"""E2305_SLOT_CHEST_TEMPLATE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,10 +24,10 @@ script = EventScript(
         SummonObjectToCurrentLevel(NPC_3),
         Pause(1),
         ActionQueueSync(
-            target=NPC_2, subscript=[ASSetWalkingSpeed(FASTEST), ASShiftEastPixels(17)]
+            target=NPC_2, subscript=[ASSetWalkingSpeed(FASTEST), ASWalkEastPixels(17)]
         ),
         ActionQueueAsync(
-            target=NPC_3, subscript=[ASSetWalkingSpeed(FASTEST), ASShiftWestPixels(17)]
+            target=NPC_3, subscript=[ASSetWalkingSpeed(FASTEST), ASWalkWestPixels(17)]
         ),
         SetSyncActionScript(NPC_1, A0185_CHEST_SLOT_MACHINE_ROLLER),
         SetSyncActionScript(NPC_2, A0186_CHEST_SLOT_MACHINE_ROLLER),
@@ -51,10 +53,10 @@ script = EventScript(
         PauseActionScript(NPC_2),
         Pause(16),
         ActionQueueSync(
-            target=NPC_3, subscript=[ASSetWalkingSpeed(VERY_FAST), ASShiftEastPixels(8)]
+            target=NPC_3, subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkEastPixels(8)]
         ),
         ActionQueueSync(
-            target=NPC_2, subscript=[ASSetWalkingSpeed(VERY_FAST), ASShiftWestPixels(8)]
+            target=NPC_2, subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkWestPixels(8)]
         ),
         StopEmbeddedActionScript(NPC_2),
         StopEmbeddedActionScript(NPC_3),
@@ -223,20 +225,20 @@ script = EventScript(
         RestoreAllHP(),
         RestoreAllFP(),
         TintLayers(
-            layers=[LAYER_1, LAYER_2, LAYER_3, LAYER_4, NPC_SPRITES, BACKGROUND],
+            layers=[LAYER_L1, LAYER_L2, LAYER_L3, LAYER_L4, NPC_SPRITES, BACKGROUND],
             red=64,
             green=160,
             blue=64,
             speed=3,
-            bit_7=True,
+            bit_15=True,
         ),
         TintLayers(
-            layers=[LAYER_1, LAYER_2, LAYER_3, LAYER_4, NPC_SPRITES, BACKGROUND],
+            layers=[LAYER_L1, LAYER_L2, LAYER_L3, LAYER_L4, NPC_SPRITES, BACKGROUND],
             red=0,
             green=0,
             blue=0,
             speed=3,
-            bit_7=True,
+            bit_15=True,
         ),
         Jmp(["EVENT_2305_action_queue_sync_99"]),
         PlaySound(

@@ -1,3 +1,6 @@
+"""Const names for area entrypoints on the world map."""
+
+
 OW00_TO_MARIOS_PAD_BEFORE = 0x00
 OW01_INNER_FACTORY = 0x01
 OW02_TO_MARIOS_PAD = 0x02

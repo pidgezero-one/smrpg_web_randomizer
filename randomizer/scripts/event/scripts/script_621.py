@@ -1,4 +1,6 @@
-# E0621_MARRYMORE_INN_ELDERLY_GUEST
+# pylint: disable=C0301
+
+"""E0621_MARRYMORE_INN_ELDERLY_GUEST"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -33,7 +35,7 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
             ],
             identifier="EVENT_621_action_queue_sync_11",
         ),
@@ -48,12 +50,12 @@ script = EventScript(
                 ),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFloatingOn(),
-                ASShiftNortheastSteps(3),
+                ASWalkNortheastSteps(3),
             ],
         ),
         ActionQueueSync(
             target=MEM_70A9,
-            subscript=[ASShiftSoutheastSteps(2), ASShiftNortheastSteps(2)],
+            subscript=[ASWalkSoutheastSteps(2), ASWalkNortheastSteps(2)],
         ),
         Pause(30),
         FadeOutToBlack(sync=False),
@@ -78,7 +80,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASWalk1StepNortheast(),
-                ASShiftNorthwestSteps(4),
+                ASWalkNorthwestSteps(4),
                 ASFaceSoutheast(),
             ],
         ),
@@ -93,14 +95,14 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
                 ASWalk1StepNortheast(),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
             ],
         ),
         RememberLastObject(),
         ActionQueueSync(
-            target=MARIO, subscript=[ASShiftNorthwestSteps(3), ASShiftNortheastSteps(3)]
+            target=MARIO, subscript=[ASWalkNorthwestSteps(3), ASWalkNortheastSteps(3)]
         ),
-        ActionQueueSync(target=MEM_70A9, subscript=[ASShiftNorthwestSteps(4)]),
+        ActionQueueSync(target=MEM_70A9, subscript=[ASWalkNorthwestSteps(4)]),
         Pause(50),
         FadeOutToBlack(sync=False),
         EnterArea(
@@ -123,17 +125,17 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftNortheastSteps(1),
-                ASShiftSoutheastSteps(2),
-                ASShiftSoutheastPixels(8),
-                ASShiftNortheastSteps(3),
+                ASWalkNortheastSteps(1),
+                ASWalkSoutheastSteps(2),
+                ASWalkSoutheastPixels(8),
+                ASWalkNortheastSteps(3),
                 ASPause(30),
                 ASFaceSouthwest(),
                 ASPause(30),
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
             ],
         ),
         ActionQueueSync(
@@ -146,10 +148,10 @@ script = EventScript(
                 ASTransferToXYZF(x=12, y=73, z=3, direction=EAST),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftNortheastSteps(1),
-                ASShiftSoutheastSteps(2),
-                ASShiftSoutheastPixels(8),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(1),
+                ASWalkSoutheastSteps(2),
+                ASWalkSoutheastPixels(8),
+                ASWalkNortheastSteps(2),
             ],
         ),
         Pause(52),
@@ -187,7 +189,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetSequenceSpeed(FAST),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASFaceSouthwest(),
             ],
         ),
@@ -198,7 +200,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASTransferToXYZF(x=3, y=22, z=0, direction=EAST),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
             ],
         ),
         RememberLastObject(),
@@ -211,7 +213,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftNorthwestSteps(3),
+                ASWalkNorthwestSteps(3),
                 ASFaceSouth(),
             ],
         ),
@@ -222,7 +224,7 @@ script = EventScript(
         PlaySound(sound=SO004_JUMP, channel=6),
         SetAsyncActionScript(MARIO, A0636_54_VELOCITY_SINGLE_JUMP),
         ActionQueueSync(
-            target=MARIO, subscript=[ASWalk1StepSoutheast(), ASShiftEastSteps(7)]
+            target=MARIO, subscript=[ASWalk1StepSoutheast(), ASWalkEastSteps(7)]
         ),
         ActionQueueSync(target=MEM_70A9, subscript=[ASPause(30), ASFaceNortheast()]),
         RememberLastObject(),
@@ -232,8 +234,8 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASShiftWestSteps(5),
-                ASShiftSouthwestSteps(2),
+                ASWalkWestSteps(5),
+                ASWalkSouthwestSteps(2),
                 ASPause(30),
                 ASSetSpriteSequence(index=6, is_sequence=True, looping=True),
                 ASPause(12),

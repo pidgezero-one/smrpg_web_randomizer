@@ -1,4 +1,6 @@
-# E1105_TADPOLE_BRIDGE_SUMMON
+# pylint: disable=C0301
+
+"""E1105_TADPOLE_BRIDGE_SUMMON"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -35,7 +37,7 @@ script = EventScript(
             subscript=[
                 ASVisibilityOff(),
                 ASShiftToXYCoords(x=15, y=49),
-                ASShiftNortheastPixels(3),
+                ASWalkNortheastPixels(3),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
         ),
@@ -51,7 +53,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASShiftToXYCoords(x=17, y=45),
-                ASShiftNortheastPixels(3),
+                ASWalkNortheastPixels(3),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
         ),
@@ -66,7 +68,7 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASShiftToXYCoords(x=19, y=41),
-                ASShiftNortheastPixels(3),
+                ASWalkNortheastPixels(3),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
         ),
@@ -81,7 +83,7 @@ script = EventScript(
             target=NPC_7,
             subscript=[
                 ASShiftToXYCoords(x=21, y=37),
-                ASShiftNortheastPixels(3),
+                ASWalkNortheastPixels(3),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
         ),
@@ -112,11 +114,13 @@ script = EventScript(
         ClearBit(TEMP_7044_6),
         Set7000ToTappedButton(identifier="EVENT_1105_set_7000_to_tapped_button_41"),
         Pause(1),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1105_set_7000_to_pressed_button_46"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1105_action_queue_sync_49"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1105_set_7000_to_pressed_button_46"]
+        ),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1105_action_queue_sync_49"]),
         Jmp(["EVENT_1105_set_7000_to_tapped_button_41"]),
         Set7000ToPressedButton(identifier="EVENT_1105_set_7000_to_pressed_button_46"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1107_action_queue_async_0"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1107_action_queue_async_0"]),
         Jmp(["EVENT_1105_set_7000_to_tapped_button_41"]),
         ActionQueueSync(
             target=MARIO,
@@ -124,7 +128,7 @@ script = EventScript(
                 ASShadowOn(),
                 ASSetWalkingSpeed(NORMAL),
                 ASFaceSouthwest(),
-                ASShiftSouthwestPixels(22),
+                ASWalkSouthwestPixels(22),
             ],
             identifier="EVENT_1105_action_queue_sync_49",
         ),

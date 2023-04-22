@@ -1,4 +1,6 @@
-# E3221_SHIP_3D_MAZE_HIT_BUTTON
+# pylint: disable=C0301
+
+"""E3221_SHIP_3D_MAZE_HIT_BUTTON"""
 
 from randomizer.scripts.event.script_imports import *
 

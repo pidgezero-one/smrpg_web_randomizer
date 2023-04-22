@@ -1,4 +1,6 @@
-# E2347_TOWER_TOP_FLOOR_DUMMY_CHEST
+# pylint: disable=C0301
+
+"""E2347_TOWER_TOP_FLOOR_DUMMY_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

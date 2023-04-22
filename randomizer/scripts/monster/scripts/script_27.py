@@ -1,4 +1,4 @@
-# 27 - HammerBro
+"""27 - HammerBro"""
 
 from randomizer.scripts.monster.script_imports import *
 

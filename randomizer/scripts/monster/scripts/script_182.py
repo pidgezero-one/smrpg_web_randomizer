@@ -1,4 +1,4 @@
-# 182 - Smithy2SafeHead
+"""182 - Smithy2SafeHead"""
 
 from randomizer.scripts.monster.script_imports import *
 

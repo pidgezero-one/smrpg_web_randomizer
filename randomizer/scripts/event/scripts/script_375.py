@@ -1,4 +1,6 @@
-# E0375_TALK_TO_CHANCELLOR_AFTER_MUSHROOM_KINGDOM_BOSS
+# pylint: disable=C0301
+
+"""E0375_TALK_TO_CHANCELLOR_AFTER_MUSHROOM_KINGDOM_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,7 +18,7 @@ script = EventScript(
         ),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftEastPixels(16)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkEastPixels(16)],
         ),
         FadeInFromBlack(sync=True, duration=200),
         ActionQueueAsync(
@@ -24,7 +26,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASSetSequenceSpeed(FAST),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASFaceSouthwest(),
                 ASPause(20),
                 ASWalk1StepSoutheast(),
@@ -33,7 +35,7 @@ script = EventScript(
                 ASWalk1StepNorthwest(),
                 ASFaceSouthwest(),
                 ASPause(20),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
             ],
         ),

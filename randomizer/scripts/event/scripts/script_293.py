@@ -1,4 +1,6 @@
-# E0293_WALLET_TOAD_1
+# pylint: disable=C0301
+
+"""E0293_WALLET_TOAD_1"""
 
 from randomizer.scripts.event.script_imports import *
 

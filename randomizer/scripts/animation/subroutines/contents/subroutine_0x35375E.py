@@ -1,4 +1,6 @@
-# referenced by monster_attacks LullaBye, monster_attacks PhysicalAttack105, monster_spells LightBeam
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks LullaBye, monster_attacks PhysicalAttack105, monster_spells LightBeam"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -25,7 +27,7 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x352552"]),
         RunSubroutine(["command_0x352582"]),
         Db(bytearray(b"\x9d\x02")),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Db(bytearray(b"\x90")),
         RunSubroutine(["command_0x352594"]),
         SetAMEM60ToCurrentTarget(),
@@ -61,7 +63,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -122,7 +128,7 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0092_LIGHT_BEAM, playback_off=True),
         Db(bytearray(b"\x9c\x00B\x10\x00\x08\x00 \x00")),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x353399"]),
         ResetTargetMappingMemory(),
         MoveObject(
@@ -217,7 +223,7 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x352552"]),
         RunSubroutine(["command_0x352582"]),
         Db(bytearray(b"\x9d\x02")),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Db(bytearray(b"\x90")),
         RunSubroutine(["command_0x352594"]),
         Db(bytearray(b"\x84\x03\x00")),
@@ -235,7 +241,7 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0092_LIGHT_BEAM, playback_off=True),
         RunSubroutine(["command_0x35336f"]),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x353399"]),
         ResetTargetMappingMemory(),
         MoveObject(

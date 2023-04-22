@@ -1,4 +1,6 @@
-# E2672_TOWER_KNIFE_GUY_MINIGAME_BUSINESS_LOGIC
+# pylint: disable=C0301
+
+"""E2672_TOWER_KNIFE_GUY_MINIGAME_BUSINESS_LOGIC"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3210_SHIP_TRAMPOLINE_PUZZLE_BLOCK
+# pylint: disable=C0301
+
+"""E3210_SHIP_TRAMPOLINE_PUZZLE_BLOCK"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,7 +17,7 @@ script = EventScript(
         JmpIfMem704XAt7000BitSet(["EVENT_3210_resume_action_script_82"]),
         PauseActionScript(MEM_70A9),
         SetMem704XAt7000Bit(),
-        Set7000ToObjectCoord(object=MEM_70A9, coord=COORD_X, pixel=True),
+        Set7000ToObjectCoord(target_npc=MEM_70A9, coord=COORD_X, pixel=True),
         JmpIfVarEqualsConst(
             TEMP_70A9, 20, ["EVENT_3210_set_7000_short_mem_to_7000_15"]
         ),
@@ -66,7 +68,7 @@ script = EventScript(
                 ASSetPaletteRow(5),
                 ASVisibilityOn(),
                 ASFloatingOn(),
-                ASShiftNortheastPixels(
+                ASWalkNortheastPixels(
                     1,
                     identifier="EVENT_3210_action_queue_async_25_SUBSCRIPT_shift_northeast_pixels_6",
                 ),
@@ -78,7 +80,7 @@ script = EventScript(
                 ),
             ],
         ),
-        Set7000ToObjectCoord(object=NPC_7, coord=COORD_X, pixel=True),
+        Set7000ToObjectCoord(target_npc=NPC_7, coord=COORD_X, pixel=True),
         DecVarFrom7000(SECONDARY_TEMP_7024),
         JmpIfLoadedMemoryIsBelow0(["EVENT_3210_mem_compare_val_31"]),
         Mem7000XorConst(0xFFFF),
@@ -95,7 +97,7 @@ script = EventScript(
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
             ],
         ),
-        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASShiftNortheastSteps(3)]),
+        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(3)]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -109,7 +111,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASSetSolidityBits(cant_pass_npcs=True),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
-                ASShiftNortheastPixels(
+                ASWalkNortheastPixels(
                     1,
                     identifier="EVENT_3210_action_queue_async_35_SUBSCRIPT_shift_northeast_pixels_10",
                 ),
@@ -121,7 +123,7 @@ script = EventScript(
                 ),
             ],
         ),
-        Set7000ToObjectCoord(object=NPC_7, coord=COORD_X, pixel=True),
+        Set7000ToObjectCoord(target_npc=NPC_7, coord=COORD_X, pixel=True),
         DecVarFrom7000(TEMP_7026),
         JmpIfLoadedMemoryIsBelow0(["EVENT_3210_mem_compare_val_41"]),
         Mem7000XorConst(0xFFFF),
@@ -138,7 +140,7 @@ script = EventScript(
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
             ],
         ),
-        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASShiftNortheastSteps(3)]),
+        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(3)]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -152,7 +154,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASSetSolidityBits(cant_pass_npcs=True),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
-                ASShiftNortheastPixels(
+                ASWalkNortheastPixels(
                     1,
                     identifier="EVENT_3210_action_queue_async_45_SUBSCRIPT_shift_northeast_pixels_10",
                 ),
@@ -164,7 +166,7 @@ script = EventScript(
                 ),
             ],
         ),
-        Set7000ToObjectCoord(object=NPC_7, coord=COORD_X, pixel=True),
+        Set7000ToObjectCoord(target_npc=NPC_7, coord=COORD_X, pixel=True),
         DecVarFrom7000(TEMP_7028),
         JmpIfLoadedMemoryIsBelow0(["EVENT_3210_mem_compare_val_51"]),
         Mem7000XorConst(0xFFFF),
@@ -181,7 +183,7 @@ script = EventScript(
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
             ],
         ),
-        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASShiftNortheastSteps(3)]),
+        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(3)]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -195,7 +197,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASSetSolidityBits(cant_pass_npcs=True),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
-                ASShiftNortheastPixels(
+                ASWalkNortheastPixels(
                     1,
                     identifier="EVENT_3210_action_queue_async_55_SUBSCRIPT_shift_northeast_pixels_10",
                 ),

@@ -1,4 +1,6 @@
-# E1590_SEWER_PIPE_TO_LANDS_END_SUBROUTINE
+# pylint: disable=C0301
+
+"""E1590_SEWER_PIPE_TO_LANDS_END_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
             subscript=[
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFixedFCoordOn(),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASClearSolidityBits(cant_pass_walls=True),
             ],
         ),
@@ -18,7 +20,7 @@ script = EventScript(
             subscript=[
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFixedFCoordOn(),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASClearSolidityBits(cant_pass_walls=True),
             ],
         ),
@@ -30,7 +32,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=24, y=30, z=0, direction=EAST),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastPixels(46),
+                ASWalkEastPixels(46),
                 ASFaceSouthwest(),
             ],
         ),

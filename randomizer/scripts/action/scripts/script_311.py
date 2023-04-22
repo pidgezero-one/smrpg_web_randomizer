@@ -1,43 +1,89 @@
-#A0311_SHIP_TROOPA_PUZZLE_TROOPA
+"""A0311_SHIP_TROOPA_PUZZLE_TROOPA"""
 
 from randomizer.scripts.action.script_imports import *
 
-script = ActionScript([
-	SetPriority(3, identifier="ACTION_311_set_priority_0"),
-	SetWalkingSpeed(SLOW),
-	SetVarToConst(TEMP_70AE, 0),
-	FaceMario(),
-	Walk1StepFDirection(),
-	ShadowOn(),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_X, pixel=True, bit_7=True),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 15, ["ACTION_311_set_700C_to_object_coord_12"]),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 111, ["ACTION_311_set_700C_to_object_coord_12"]),
-	SetVarToConst(TEMP_70AE, 1),
-	Jmp(["ACTION_311_face_mario_30"]),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_X, pixel=True, bit_7=True, identifier="ACTION_311_set_700C_to_object_coord_12"),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 15, ["ACTION_311_set_700C_to_object_coord_18"]),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 113, ["ACTION_311_set_700C_to_object_coord_18"]),
-	SetVarToConst(TEMP_70AE, 2),
-	Jmp(["ACTION_311_face_mario_30"]),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_X, pixel=True, bit_7=True, identifier="ACTION_311_set_700C_to_object_coord_18"),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 16, ["ACTION_311_set_700C_to_object_coord_24"]),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 111, ["ACTION_311_set_700C_to_object_coord_24"]),
-	SetVarToConst(TEMP_70AE, 3),
-	Jmp(["ACTION_311_face_mario_30"]),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_X, pixel=True, bit_7=True, identifier="ACTION_311_set_700C_to_object_coord_24"),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 16, ["ACTION_311_set_priority_0"]),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 113, ["ACTION_311_set_priority_0"]),
-	SetVarToConst(TEMP_70AE, 4),
-	Jmp(["ACTION_311_face_mario_30"]),
-	FaceMario(identifier="ACTION_311_face_mario_30"),
-	Walk1StepFDirection(),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_X, pixel=True, bit_7=True),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 16, ["ACTION_311_set_priority_0"]),
-	Set700CToObjectCoord(object=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 112, ["ACTION_311_set_priority_0"]),
-	Jmp(["ACTION_311_set_priority_0"])
-])
+script = ActionScript(
+    [
+        SetPriority(3, identifier="ACTION_311_set_priority_0"),
+        SetWalkingSpeed(SLOW),
+        SetVarToConst(TEMP_70AE, 0),
+        FaceMario(),
+        Walk1StepFDirection(),
+        ShadowOn(),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07, coord=COORD_X, pixel=True, bit_7=True
+        ),
+        JmpIfVarNotEqualsConst(
+            PRIMARY_TEMP_700C, 15, ["ACTION_311_set_700C_to_object_coord_12"]
+        ),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True
+        ),
+        JmpIfVarNotEqualsConst(
+            PRIMARY_TEMP_700C, 111, ["ACTION_311_set_700C_to_object_coord_12"]
+        ),
+        SetVarToConst(TEMP_70AE, 1),
+        Jmp(["ACTION_311_face_mario_30"]),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07,
+            coord=COORD_X,
+            pixel=True,
+            bit_7=True,
+            identifier="ACTION_311_set_700C_to_object_coord_12",
+        ),
+        JmpIfVarNotEqualsConst(
+            PRIMARY_TEMP_700C, 15, ["ACTION_311_set_700C_to_object_coord_18"]
+        ),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True
+        ),
+        JmpIfVarNotEqualsConst(
+            PRIMARY_TEMP_700C, 113, ["ACTION_311_set_700C_to_object_coord_18"]
+        ),
+        SetVarToConst(TEMP_70AE, 2),
+        Jmp(["ACTION_311_face_mario_30"]),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07,
+            coord=COORD_X,
+            pixel=True,
+            bit_7=True,
+            identifier="ACTION_311_set_700C_to_object_coord_18",
+        ),
+        JmpIfVarNotEqualsConst(
+            PRIMARY_TEMP_700C, 16, ["ACTION_311_set_700C_to_object_coord_24"]
+        ),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True
+        ),
+        JmpIfVarNotEqualsConst(
+            PRIMARY_TEMP_700C, 111, ["ACTION_311_set_700C_to_object_coord_24"]
+        ),
+        SetVarToConst(TEMP_70AE, 3),
+        Jmp(["ACTION_311_face_mario_30"]),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07,
+            coord=COORD_X,
+            pixel=True,
+            bit_7=True,
+            identifier="ACTION_311_set_700C_to_object_coord_24",
+        ),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 16, ["ACTION_311_set_priority_0"]),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True
+        ),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 113, ["ACTION_311_set_priority_0"]),
+        SetVarToConst(TEMP_70AE, 4),
+        Jmp(["ACTION_311_face_mario_30"]),
+        FaceMario(identifier="ACTION_311_face_mario_30"),
+        Walk1StepFDirection(),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07, coord=COORD_X, pixel=True, bit_7=True
+        ),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 16, ["ACTION_311_set_priority_0"]),
+        Set700CToObjectCoord(
+            target_npc=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True
+        ),
+        JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 112, ["ACTION_311_set_priority_0"]),
+        Jmp(["ACTION_311_set_priority_0"]),
+    ]
+)

@@ -1,4 +1,6 @@
-# E2574_TOWER_FIRST_STAIRCASE_CHEST
+# pylint: disable=C0301
+
+"""E2574_TOWER_FIRST_STAIRCASE_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1711_BANDITS_WAY_TRAMPOLINE
+# pylint: disable=C0301
+
+"""E1711_BANDITS_WAY_TRAMPOLINE"""
 
 from randomizer.scripts.event.script_imports import *
 

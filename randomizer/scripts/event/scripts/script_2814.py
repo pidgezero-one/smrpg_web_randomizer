@@ -1,4 +1,6 @@
-# E2814_MUSHROOM_WAY_3_LOADER
+# pylint: disable=C0301
+
+"""E2814_MUSHROOM_WAY_3_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

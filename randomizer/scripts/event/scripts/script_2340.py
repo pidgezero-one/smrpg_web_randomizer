@@ -1,4 +1,6 @@
-# E2340_TOWER_SEESAW_CHEST_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2340_TOWER_SEESAW_CHEST_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,7 +10,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-                ASShiftSouthwestPixels(5),
+                ASWalkSouthwestPixels(5),
             ],
         ),
         ActionQueueSync(
@@ -17,8 +19,8 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftZDownPixels(4),
-                ASShiftSouthPixels(6),
-                ASShiftNortheastPixels(8),
+                ASWalkSouthPixels(6),
+                ASWalkNortheastPixels(8),
             ],
         ),
         ActionQueueAsync(
@@ -26,10 +28,10 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNortheastPixels(9),
+                ASWalkNortheastPixels(9),
             ],
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         RunEventAsSubroutine(
             E0881_BOOSTER_PASS_SEESAW_CHEST_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),

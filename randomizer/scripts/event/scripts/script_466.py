@@ -1,4 +1,6 @@
-# E0466_MUSHROOM_DERBY_BUSINESS_LOGIC_EXTENSION
+# pylint: disable=C0301
+
+"""E0466_MUSHROOM_DERBY_BUSINESS_LOGIC_EXTENSION"""
 
 from randomizer.scripts.event.script_imports import *
 

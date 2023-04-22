@@ -45,14 +45,14 @@ items:
     ForestMazeSecret5: BanditsWayStar
     MolevilleMinesStarChest: BanditsWayStar
     MolevilleMinesCoins: BanditsWayStar
-    BoosterTowerSpookum: BanditsWayStar
-    SeaStarChest: BanditsWayStar
-    SunkenShipRatStairs: BanditsWayStar
-    SunkenShipCoins1: BanditsWayStar
-    SunkenShipCoins2: BanditsWayStar
-    SunkenShipCloneRoom: BanditsWayStar
-    SunkenShipFrogCoinRoom: BanditsWayStar
-    SunkenShipHidonMushroom: BanditsWayStar
+    BOOSTER_TOWER_SPOOKUM: BanditsWayStar
+    SEA_STAR_CHEST: BanditsWayStar
+    SUNKEN_SHIP_RAT_STAIRS: BanditsWayStar
+    SUNKEN_SHIP_COINS_1: BanditsWayStar
+    SUNKEN_SHIP_COINS_2: BanditsWayStar
+    SUNKEN_SHIP_CLONE_ROOM: BanditsWayStar
+    SUNKEN_SHIP_FROG_COIN_ROOM: BanditsWayStar
+    SUNKEN_SHIP_HIDON_MUSHROOM: BanditsWayStar
     LandsEndChowPit1: BanditsWayStar
     LandsEndChowPit2: BanditsWayStar
     LandsEndBeeRoom: BanditsWayStar
@@ -60,8 +60,8 @@ items:
     LandsEndStarChest1: BanditsWayStar
     LandsEndStarChest2: BanditsWayStar
     LandsEndStarChest3: BanditsWayStar
-    NimbusCastleBeforeBirdetta1: BanditsWayStar
-    NimbusCastleBeforeBirdetta2: BanditsWayStar
+    NIMBUS_LAND_BEFORE_BIRDETTA_1: BanditsWayStar
+    NIMBUS_LAND_BEFORE_BIRDETTA_2: BanditsWayStar
     NimbusCastleSingleGoldBird: BanditsWayStar
     NimbusCastleAfterEgg2: BanditsWayStar
     NimbusCastleStarChest: BanditsWayStar

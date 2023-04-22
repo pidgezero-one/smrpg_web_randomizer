@@ -1,4 +1,6 @@
-# E3746_HOT_SPRINGS_TRAMPOLINE_TO_MEZZANINE
+# pylint: disable=C0301
+
+"""E3746_HOT_SPRINGS_TRAMPOLINE_TO_MEZZANINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -20,13 +22,13 @@ script = EventScript(
                 ASFloatingOff(),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(height=132, silent=True),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASFloatingOn(),
-                ASShiftSouthwestPixels(20),
+                ASWalkSouthwestPixels(20),
             ],
         ),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 49),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW49_NIMBUS_LAND),
         PauseScriptUntilEffectDone(),
         Return(),
         RunEventAsSubroutine(

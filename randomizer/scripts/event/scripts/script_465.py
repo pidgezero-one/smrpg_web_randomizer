@@ -1,4 +1,6 @@
-# E0465_MUSHROOM_DERBY_BUSINESS_LOGIC
+# pylint: disable=C0301
+
+"""E0465_MUSHROOM_DERBY_BUSINESS_LOGIC"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -150,10 +152,10 @@ script = EventScript(
         ActionQueueSync(target=NPC_10, subscript=[ASSequenceLoopingOn()]),
         RememberLastObject(),
         Pause(1, identifier="EVENT_465_pause_132"),
-        JmpIfAudioMemoryEquals(["4"], ["EVENT_465_pause_132"]),
+        JmpIfAudioMemoryEquals(4, ["EVENT_465_pause_132"]),
         SlowDownMusicTempoBy(duration=0, change=2),
         Pause(1, identifier="EVENT_465_pause_135"),
-        JmpIfAudioMemoryEquals(["3"], ["EVENT_465_pause_135"]),
+        JmpIfAudioMemoryEquals(3, ["EVENT_465_pause_135"]),
         RunBackgroundEvent(
             event_id=E0466_MUSHROOM_DERBY_BUSINESS_LOGIC_EXTENSION,
             return_on_level_exit=True,
@@ -166,21 +168,21 @@ script = EventScript(
         ),
         Set7000ToTappedButton(identifier="EVENT_465_set_7000_to_tapped_button_140"),
         Pause(1),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_465_set_bit_172"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_465_set_bit_177"]),
-        JmpIfAudioMemoryEquals(["2"], ["EVENT_465_set_7000_to_tapped_button_140"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_465_set_bit_172"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_465_set_bit_177"]),
+        JmpIfAudioMemoryEquals(2, ["EVENT_465_set_7000_to_tapped_button_140"]),
         Jmp(["EVENT_465_pause_149"]),
         Pause(1, identifier="EVENT_465_pause_146"),
         JmpIfBitClear(UNKNOWN_MUSHROOM_DERBY_7085_4, ["EVENT_256_ret_0"]),
-        JmpIfAudioMemoryEquals(["2"], ["EVENT_465_pause_146"]),
+        JmpIfAudioMemoryEquals(2, ["EVENT_465_pause_146"]),
         Pause(1, identifier="EVENT_465_pause_149"),
         JmpIfBitClear(UNKNOWN_MUSHROOM_DERBY_7085_4, ["EVENT_256_ret_0"]),
-        JmpIfAudioMemoryEquals(["1"], ["EVENT_465_pause_149"]),
+        JmpIfAudioMemoryEquals(1, ["EVENT_465_pause_149"]),
         Set7000ToTappedButton(identifier="EVENT_465_set_7000_to_tapped_button_152"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_465_jmp_if_bit_set_162"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_465_jmp_if_bit_set_167"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_465_jmp_if_bit_set_162"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_465_jmp_if_bit_set_167"]),
         Pause(1),
-        JmpIfAudioMemoryEquals(["2"], ["EVENT_465_set_7000_to_tapped_button_152"]),
+        JmpIfAudioMemoryEquals(2, ["EVENT_465_set_7000_to_tapped_button_152"]),
         ClearBit(UNKNOWN_MUSHROOM_DERBY_704A_0),
         ClearBit(UNKNOWN_MUSHROOM_DERBY_704A_1),
         SetVarToConst(TEMP_7032, 0),

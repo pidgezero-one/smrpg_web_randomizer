@@ -1,4 +1,6 @@
-# E1876_KEEP_ROTATING_ROOM_PLATFORM_2
+# pylint: disable=C0301
+
+"""E1876_KEEP_ROTATING_ROOM_PLATFORM_2"""
 
 from randomizer.scripts.event.script_imports import *
 

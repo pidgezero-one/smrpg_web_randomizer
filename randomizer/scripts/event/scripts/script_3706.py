@@ -1,4 +1,6 @@
-# E3706_ACTIVATE_JAWFUL_EXTENDED_HITBOXES
+# pylint: disable=C0301
+
+"""E3706_ACTIVATE_JAWFUL_EXTENDED_HITBOXES"""
 
 from randomizer.scripts.event.script_imports import *
 

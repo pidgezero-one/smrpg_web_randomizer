@@ -1,4 +1,6 @@
-# E1347_TOWER_HENCHMAN_2_ROOM_HIDDEN_ITEM
+# pylint: disable=C0301
+
+"""E1347_TOWER_HENCHMAN_2_ROOM_HIDDEN_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 

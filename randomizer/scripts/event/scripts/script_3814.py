@@ -1,4 +1,6 @@
-# E3814_MUSHROOM_KINGDOM_LIBERATED_LOADER
+# pylint: disable=C0301
+
+"""E3814_MUSHROOM_KINGDOM_LIBERATED_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,7 +1,11 @@
+"""Bowser palette instances."""
+
 from randomizer.types.palettes.classes import BowserPaletteSet, SpritePalette
 
 
 class Default(BowserPaletteSet):
+    """Default Bowser palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -84,6 +88,8 @@ class Default(BowserPaletteSet):
 
 
 class Drybone(BowserPaletteSet):
+    """Bowser palette coloured like a Dry Bones."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F0F0,
@@ -145,6 +151,8 @@ class Drybone(BowserPaletteSet):
 
 
 class Culex(BowserPaletteSet):
+    """Bowser palette coloured like Culex."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xB0D8F8,
@@ -205,6 +213,8 @@ class Culex(BowserPaletteSet):
 
 
 class Wabowser(BowserPaletteSet):
+    """Bowser palette coloured like Waluigi."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8C0,
@@ -266,6 +276,8 @@ class Wabowser(BowserPaletteSet):
 
 
 class Red(BowserPaletteSet):
+    """Bowser palette coloured with a red tint like in Smash Bros."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -326,6 +338,8 @@ class Red(BowserPaletteSet):
 
 
 class Dark(BowserPaletteSet):
+    """Bowser palette coloured with a dark tint like in Smash Bros."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -386,6 +400,8 @@ class Dark(BowserPaletteSet):
 
 
 class Kronk(BowserPaletteSet):
+    """Bowser palette. I think this one was a vinesauce reference"""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F080,
@@ -447,6 +463,8 @@ class Kronk(BowserPaletteSet):
 
 
 class Zeccet(BowserPaletteSet):
+    """Bowser palette coloured with the Smash Sisters branding colours"""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -508,6 +526,8 @@ class Zeccet(BowserPaletteSet):
 
 
 class Blue(BowserPaletteSet):
+    """Bowser palette coloured with a blue tint like in Smash Bros."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,

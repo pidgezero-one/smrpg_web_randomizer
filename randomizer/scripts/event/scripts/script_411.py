@@ -1,4 +1,6 @@
-# E0411_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_REPEATING_SHYSTERS
+# pylint: disable=C0301
+
+"""E0411_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_REPEATING_SHYSTERS"""
 
 from randomizer.scripts.event.script_imports import *
 

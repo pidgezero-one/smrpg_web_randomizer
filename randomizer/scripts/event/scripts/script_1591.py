@@ -1,4 +1,6 @@
-# E1591_LANDS_END_GROTTO_BARREL_KICK
+# pylint: disable=C0301
+
+"""E1591_LANDS_END_GROTTO_BARREL_KICK"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -20,7 +22,7 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftSoutheastSteps(4),
+                ASWalkSoutheastSteps(4),
                 ASShiftSouthSteps(2),
                 ASSetWalkingSpeed(NORMAL),
             ],
@@ -33,7 +35,7 @@ script = EventScript(
                 ASPlaySound(sound=SO049_BIG_SHELL_HIT, channel=4),
                 ASJumpToHeight(64),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASStartLoopNTimes(1),
                 ASPause(
@@ -44,7 +46,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO109_BIG_SHELL_HIT, channel=4),
                 ASJumpToHeight(64),
-                ASShiftEastPixels(14),
+                ASWalkEastPixels(14),
                 ASEndLoop(),
                 ASStartLoopNTimes(2),
                 ASPause(
@@ -55,7 +57,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO109_BIG_SHELL_HIT, channel=4),
                 ASJumpToHeight(40),
-                ASShiftEastPixels(6),
+                ASWalkEastPixels(6),
                 ASEndLoop(),
             ],
         ),

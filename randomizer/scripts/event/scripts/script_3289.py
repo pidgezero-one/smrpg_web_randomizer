@@ -1,4 +1,6 @@
-# E3289_SHIP_COLLECT_TRAMPOLINE_PRIZE
+# pylint: disable=C0301
+
+"""E3289_SHIP_COLLECT_TRAMPOLINE_PRIZE"""
 
 from randomizer.scripts.event.script_imports import *
 

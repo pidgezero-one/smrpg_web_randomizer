@@ -1,32 +1,34 @@
-#A0528_MUSHROOM_WAY_1_GOOMBA
+"""A0528_MUSHROOM_WAY_1_GOOMBA"""
 
 from randomizer.scripts.action.script_imports import *
 
-script = ActionScript([
-	SetWalkingSpeed(SLOW),
-	SetSequenceSpeed(FASTER),
-	ShiftSouthwestSteps(1, identifier="ACTION_528_shift_southwest_steps_2"),
-	ShiftSoutheastSteps(12),
-	ShiftSouthwestSteps(3),
-	ShiftSoutheastSteps(1),
-	ShiftSouthwestSteps(4),
-	ShiftNorthwestSteps(1),
-	ShiftSouthwestSteps(2),
-	ShiftNorthwestSteps(6),
-	ShiftSouthwestSteps(1),
-	ShiftNorthwestSteps(7),
-	ShiftSouthwestSteps(2),
-	ShiftNorthwestSteps(8),
-	VisibilityOff(),
-	ShiftToXYCoords(x=12, y=11),
-	VisibilityOn(),
-	ShiftSouthwestSteps(2),
-	ShiftSoutheastSteps(1),
-	ShiftSouthwestSteps(1),
-	ShiftSoutheastSteps(1),
-	ShiftSouthwestSteps(1),
-	ShiftSoutheastSteps(3),
-	ShiftSouthwestSteps(1),
-	ShiftSoutheastSteps(2),
-	Jmp(["ACTION_528_shift_southwest_steps_2"])
-])
+script = ActionScript(
+    [
+        SetWalkingSpeed(SLOW),
+        SetSequenceSpeed(FASTER),
+        WalkSouthwestSteps(1, identifier="ACTION_528_shift_southwest_steps_2"),
+        WalkSoutheastSteps(12),
+        WalkSouthwestSteps(3),
+        WalkSoutheastSteps(1),
+        WalkSouthwestSteps(4),
+        WalkNorthwestSteps(1),
+        WalkSouthwestSteps(2),
+        WalkNorthwestSteps(6),
+        WalkSouthwestSteps(1),
+        WalkNorthwestSteps(7),
+        WalkSouthwestSteps(2),
+        WalkNorthwestSteps(8),
+        VisibilityOff(),
+        ShiftToXYCoords(x=12, y=11),
+        VisibilityOn(),
+        WalkSouthwestSteps(2),
+        WalkSoutheastSteps(1),
+        WalkSouthwestSteps(1),
+        WalkSoutheastSteps(1),
+        WalkSouthwestSteps(1),
+        WalkSoutheastSteps(3),
+        WalkSouthwestSteps(1),
+        WalkSoutheastSteps(2),
+        Jmp(["ACTION_528_shift_southwest_steps_2"]),
+    ]
+)

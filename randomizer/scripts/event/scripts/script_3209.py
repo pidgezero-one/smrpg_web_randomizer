@@ -1,4 +1,6 @@
-# E3209_SLEEPING_DRY_BONES
+# pylint: disable=C0301
+
+"""E3209_SLEEPING_DRY_BONES"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E2616_FACTORY_4TH_ROOM_GREEN_BUTTON
+# pylint: disable=C0301
+
+"""E2616_FACTORY_4TH_ROOM_GREEN_BUTTON"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -24,7 +26,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=3, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftSouthPixels(6),
+                ASWalkSouthPixels(6),
             ],
         ),
         SetAsyncActionScript(SCREEN_FOCUS, A0391_CAMERA_SHAKE),
@@ -77,7 +79,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASPause(56),
-                ASShiftWestPixels(1),
+                ASWalkWestPixels(1),
                 ASSetWalkingSpeed(FASTEST),
                 ASSetSpriteSequence(
                     index=4,
@@ -86,7 +88,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(2),
+                ASWalkNorthwestPixels(2),
                 ASFaceNortheast(),
                 ASJumpToHeight(108),
                 ASPause(16),
@@ -108,10 +110,10 @@ script = EventScript(
             subscript=[
                 ASShiftZUpSteps(5),
                 ASPause(16),
-                ASShiftNortheastSteps(4),
-                ASShiftNortheastPixels(3),
+                ASWalkNortheastSteps(4),
+                ASWalkNortheastPixels(3),
                 ASPause(16),
-                ASShiftNorthwestSteps(9),
+                ASWalkNorthwestSteps(9),
             ],
         ),
         ActionQueueAsync(
@@ -120,17 +122,17 @@ script = EventScript(
                 ASOverwriteSolidity(),
                 ASShiftZUpSteps(5),
                 ASPause(16),
-                ASShiftNortheastSteps(4),
-                ASShiftNortheastPixels(3),
+                ASWalkNortheastSteps(4),
+                ASWalkNortheastPixels(3),
                 ASPause(16),
-                ASShiftNorthwestSteps(6),
+                ASWalkNorthwestSteps(6),
                 ASShadowOff(),
-                ASShiftNorthwestSteps(3),
+                ASWalkNorthwestSteps(3),
             ],
         ),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASShiftSouthwestSteps(3)],
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkSouthwestSteps(3)],
         ),
         FreezeCamera(),
         Pause(16),

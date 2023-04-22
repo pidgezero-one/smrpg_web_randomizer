@@ -1,4 +1,6 @@
-# referenced by behaviour_33_0x350C5B, behaviour_24_0x350A9C, behaviour_8_0x3507A2, behaviour_16_0x350928, behaviour_32_0x350C14, ally_spells Star Rain, behaviour_23_0x350A55, behaviour_9_0x3507E9, monster_spells DarkStar
+# pylint: disable=C0301,C0103
+
+"""referenced by behaviour_33_0x350C5B, behaviour_24_0x350A9C, behaviour_8_0x3507A2, behaviour_16_0x350928, behaviour_32_0x350C14, ally_spells Star Rain, behaviour_23_0x350A55, behaviour_9_0x3507E9, monster_spells DarkStar"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -26,7 +28,7 @@ script = SubroutineOrBanklessScript(
         DoMaskEffect(POLYGON_MASK),
         SetMaskCoords((8, -16), (112, 120), (112, 120), (-128, -16)),
         ScreenFlash(BLUE, 8),
-        Layer3On(property=TRANSPARENCY_OFF, bit_0=True, bpp4=True),
+        Layer3On(prop=TRANSPARENCY_OFF, bit_0=True, bpp4=True),
         SetAMEM40ToXYZCoords(
             origin=ABSOLUTE_POSITION,
             x=128,
@@ -102,7 +104,7 @@ script = SubroutineOrBanklessScript(
         PlaySound(sound=S0087_BIG_BOUNCE),
         EndTrackingAllyButtonInputs(),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
-        Layer3Off(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3Off(prop=TRANSPARENCY_OFF, bpp4=True),
         Db(bytearray(b"\x90")),
         Db(bytearray(b"\xc4")),
         Db(bytearray(b"\xc5")),

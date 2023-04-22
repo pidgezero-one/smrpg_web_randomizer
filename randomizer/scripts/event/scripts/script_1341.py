@@ -1,4 +1,6 @@
-# E1341_ELDER_KEY_PRIZE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1341_ELDER_KEY_PRIZE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,8 +10,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNortheastPixels(9),
-                ASShiftNorthwestPixels(5),
+                ASWalkNortheastPixels(9),
+                ASWalkNorthwestPixels(5),
                 ASFaceSoutheast(),
                 ASObjectMemoryClearBit(arg_1=0x08, bits=[3, 4]),
             ],

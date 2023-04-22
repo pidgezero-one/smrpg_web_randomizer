@@ -1,8 +1,19 @@
-# E0521_ROSE_TOWN_OCCUPIED_EXTERIOR_BLUE_TOAD_LEFT
+# pylint: disable=C0301
+
+"""E0521_ROSE_TOWN_OCCUPIED_EXTERIOR_BLUE_TOAD_LEFT"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	RunDialog(dialog_id=DI0787_ARROW_DEMO, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return()
-])
+script = EventScript(
+    [
+        RunDialog(
+            dialog_id=DI0787_ARROW_DEMO,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        Return(),
+    ]
+)

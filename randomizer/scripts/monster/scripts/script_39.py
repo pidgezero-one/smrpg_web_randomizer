@@ -1,4 +1,4 @@
-# 39 - Babayaga
+"""39 - Babayaga"""
 
 from randomizer.scripts.monster.script_imports import *
 

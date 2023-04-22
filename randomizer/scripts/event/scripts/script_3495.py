@@ -1,4 +1,6 @@
-# E3495_MIDAS_RIVER_BOTTOM_RIGHT_TUNNEL_ANIMATION_AND_EXIT
+# pylint: disable=C0301
+
+"""E3495_MIDAS_RIVER_BOTTOM_RIGHT_TUNNEL_ANIMATION_AND_EXIT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,7 +10,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASFaceSoutheast(),
                 ASSetWalkingSpeed(NORMAL),
             ],
@@ -33,7 +35,7 @@ script = EventScript(
             subscript=[
                 ASPause(160),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftWestSteps(6),
+                ASWalkWestSteps(6),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -63,7 +65,7 @@ script = EventScript(
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\x80\x02\xec\xff")),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASBPL262728(),
                 ASSetSolidityBits(cant_pass_walls=True),
             ],

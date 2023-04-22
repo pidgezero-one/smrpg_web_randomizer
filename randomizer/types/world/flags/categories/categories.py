@@ -1,3 +1,5 @@
+"""Categories of randomizer settings."""
+
 from typing import List, Type, TypeVar
 
 from randomizer.types.world.flags.categories.classes import FlagCategory
@@ -118,6 +120,8 @@ from randomizer.types.world.flags.flags import (
 
 
 class CharacterRecruitmentSubcategory(FlagCategory):
+    """Collection of settings related to character recruitment."""
+
     _flags: List[Type[Flag]] = [
         ShuffleCharacters,
         StartingCharacter,
@@ -131,6 +135,8 @@ class CharacterRecruitmentSubcategory(FlagCategory):
 
 
 class CharacterEquipmentSubcategory(FlagCategory):
+    """Collection of settings related to equipment properties."""
+
     _flags: List[Type[Flag]] = [
         EquipmentCharacters,
         EquipmentProperties,
@@ -142,6 +148,8 @@ class CharacterEquipmentSubcategory(FlagCategory):
 
 
 class CharacterStatsSpellsSubcategory(FlagCategory):
+    """Collection of settings related to learnable spells."""
+
     _flags: List[Type[Flag]] = [
         EXPMultiplier,
         CharacterStats,
@@ -156,6 +164,8 @@ class CharacterStatsSpellsSubcategory(FlagCategory):
 
 
 class PartyCategory(FlagCategory):
+    """Pan-collection of settings related to party members and equips."""
+
     _name: str = "Party & Equipment"
     _subcategories: List[Type[FlagCategory]] = [
         CharacterRecruitmentSubcategory,
@@ -166,6 +176,8 @@ class PartyCategory(FlagCategory):
 
 
 class StarPiecesCategory(FlagCategory):
+    """Collection of settings related to star piece distribution."""
+
     _flags: List[Type[Flag]] = [
         ShuffleStarPieces,
         TotalStarPieces,
@@ -177,6 +189,8 @@ class StarPiecesCategory(FlagCategory):
 
 
 class ItemShuffleSubcategory(FlagCategory):
+    """Collection of settings related to item distribution."""
+
     _flags: List[Type[Flag]] = [
         ShuffleItems,
         ItemQuality,
@@ -197,6 +211,8 @@ class ItemShuffleSubcategory(FlagCategory):
 
 
 class ItemLocationSubcategory(FlagCategory):
+    """Collection of settings related to item availability."""
+
     _flags: List[Type[Flag]] = [
         InvisibleFlagsSetting,
         KeyItemsAnywhere,
@@ -207,6 +223,8 @@ class ItemLocationSubcategory(FlagCategory):
 
 
 class BehaviourSubcategory(FlagCategory):
+    """Collection of settings related to item and minigame behaviour."""
+
     _flags: List[Type[Flag]] = [
         PoisonMushroom,
         ReplaceItems,
@@ -227,6 +245,8 @@ class BehaviourSubcategory(FlagCategory):
 
 
 class ItemsCategory(FlagCategory):
+    """Pan-collection of settings related to items."""
+
     _name: str = "Items & Star Pieces"
     _subcategories: List[Type[FlagCategory]] = [
         StarPiecesCategory,
@@ -238,6 +258,8 @@ class ItemsCategory(FlagCategory):
 
 
 class AreaAccessSubcategory(FlagCategory):
+    """Collection of settings related to area gating logic."""
+
     _flags: List[Type[Flag]] = [
         BanditsWayGate,
         ForestMazeGate,
@@ -257,6 +279,8 @@ class AreaAccessSubcategory(FlagCategory):
 
 
 class OtherAccessSubcategory(FlagCategory):
+    """Collection of settings related to event gating logic."""
+
     _flags: List[Type[Flag]] = [
         YaridovichGate,
         SkipMustyFearsSequence,
@@ -272,6 +296,8 @@ class OtherAccessSubcategory(FlagCategory):
 
 
 class PuzzleCategory(FlagCategory):
+    """Collection of settings related to puzzles."""
+
     _name: str = "Puzzles & Minigames"
     _flags: List[Type[Flag]] = [
         BallSolitaireShuffle,
@@ -288,6 +314,8 @@ class PuzzleCategory(FlagCategory):
 
 
 class ShopsCategory(FlagCategory):
+    """Collection of settings related to shops."""
+
     _flags: List[Type[Flag]] = [
         ShuffleShops,
         ShopQuality,
@@ -301,6 +329,8 @@ class ShopsCategory(FlagCategory):
 
 
 class AccessCategory(FlagCategory):
+    """Pan-collection of settings related to logical access and puzzles."""
+
     _name: str = "Progression & Shops"
     _subcategories: List[Type[FlagCategory]] = [
         AreaAccessSubcategory,
@@ -312,6 +342,8 @@ class AccessCategory(FlagCategory):
 
 
 class BossPositionSubcategory(FlagCategory):
+    """Collection of settings related to boss placement."""
+
     _flags: List[Type[Flag]] = [
         BossShuffle,
         BossShuffleScaleStats,
@@ -325,6 +357,8 @@ class BossPositionSubcategory(FlagCategory):
 
 
 class BossStatSubcategory(FlagCategory):
+    """Collection of settings related to enemy stats."""
+
     _flags: List[Type[Flag]] = [
         EnemyStats,
         EnemyDrops,
@@ -340,6 +374,8 @@ class BossStatSubcategory(FlagCategory):
 
 
 class BossCheeseSubcategory(FlagCategory):
+    """Collection of settings related to boss exploits."""
+
     _flags: List[Type[Flag]] = [
         RequireBossFights,
         NoGenoWhirlExor,
@@ -351,6 +387,8 @@ class BossCheeseSubcategory(FlagCategory):
 
 
 class BossCategory(FlagCategory):
+    """Pan-collection of settings related to bosses."""
+
     _name: str = "Enemies & Boss Fights"
     _subcategories: List[Type[FlagCategory]] = [
         BossPositionSubcategory,
@@ -361,12 +399,16 @@ class BossCategory(FlagCategory):
 
 
 class AccessibilitySubcategory(FlagCategory):
+    """Collection of settings related to accessibility."""
+
     _flags: List[Type[Flag]] = [RemoveFlashes]
     _size: int = 4
     _id: str = "R"
 
 
 class MusicSubcategory(FlagCategory):
+    """Collection of settings related to music cosmetics."""
+
     _flags: List[Type[Flag]] = [
         BossShuffleMusic,
         ShuffledMusic,
@@ -376,12 +418,16 @@ class MusicSubcategory(FlagCategory):
 
 
 class PaletteSubcategory(FlagCategory):
+    """Collection of settings related to visual cosmetics."""
+
     _flags: List[Type[Flag]] = [PaletteSwaps, ChangeNames, JapaneseABXY]
     _size: int = 4
     _id: str = "R"
 
 
 class CosmeticCategory(FlagCategory):
+    """Pan-collection of settings related to things that don't affect logic."""
+
     _name: str = "Cosmetics"
     _subcategories: List[Type[FlagCategory]] = [
         PaletteSubcategory,
@@ -391,8 +437,8 @@ class CosmeticCategory(FlagCategory):
     _id: str = "CosmeticCategory"
 
 
-TFlagCategory = TypeVar(
-    "TFlagCategory",
+FlagCategoryT = TypeVar(
+    "FlagCategoryT",
     CharacterRecruitmentSubcategory,
     CharacterEquipmentSubcategory,
     CharacterStatsSpellsSubcategory,

@@ -1,11 +1,13 @@
-# E1745_WHIRLPOOL_SHOGUN
+# pylint: disable=C0301
+
+"""E1745_WHIRLPOOL_SHOGUN"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
         FreezeAllNPCsUntilReturn(),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=X_COORD_1),
         ActionQueueAsync(
             target=MEM_70A8,
@@ -18,7 +20,9 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASSet700CToObjectCoord(object=DUMMY_0X07, coord=COORD_X, pixel=True),
+                ASSet700CToObjectCoord(
+                    target_npc=DUMMY_0X07, coord=COORD_X, pixel=True
+                ),
                 ASCompare700CToVar(X_COORD_1),
                 ASJmpIfComparisonResultIsLesser(
                     ["EVENT_1745_action_queue_async_3_SUBSCRIPT_play_sound_10"]
@@ -47,7 +51,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASTurnClockwise45DegreesNTimes(4),
-                ASShiftFDirectionPixels(10),
+                ASWalkFDirectionPixels(10),
                 ASTurnClockwise45DegreesNTimes(4),
                 ASSetAllSpeeds(NORMAL),
             ],
@@ -96,7 +100,7 @@ script = EventScript(
         PauseActionScript(MARIO),
         ResetCoords(MARIO),
         Pause(1),
-        Set7000ToObjectCoord(object=MEM_70A8, coord=COORD_Y, pixel=True),
+        Set7000ToObjectCoord(target_npc=MEM_70A8, coord=COORD_Y, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Y_COORD_1),
         ActionQueueAsync(
             target=MARIO,
@@ -105,14 +109,14 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetWalkingSpeed(FASTEST),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_Y, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True),
                 ASCompare700CToVar(Y_COORD_1),
                 ASJmpIfComparisonResultIsGreaterOrEqual(
                     ["EVENT_1745_action_queue_async_37_SUBSCRIPT_shift_south_pixels_7"]
                 ),
-                ASShiftNorthPixels(14),
+                ASWalkNorthPixels(14),
                 ASJmp(["EVENT_1745_action_queue_async_37_SUBSCRIPT_face_north_8"]),
-                ASShiftSouthPixels(
+                ASWalkSouthPixels(
                     14,
                     identifier="EVENT_1745_action_queue_async_37_SUBSCRIPT_shift_south_pixels_7",
                 ),
@@ -145,7 +149,7 @@ script = EventScript(
                 ASSetVRAMPriority(PRIORITY_3),
                 ASSetPriority(3),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASAddConstToVar(PRIMARY_TEMP_700C, 2),
                 ASMem700CAndConst(0x0004),
                 ASMem700CXorConst(0x0004),
@@ -177,14 +181,14 @@ script = EventScript(
                 ASSetVRAMPriority(PRIORITY_3),
                 ASSetPriority(3),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASAddConstToVar(PRIMARY_TEMP_700C, 2),
                 ASMem700CAndConst(0x0004),
                 ASMem700CXorConst(0x0004),
                 ASFaceEast7C(),
                 ASFloatingOff(),
                 ASJumpToHeight(160),
-                ASShiftFDirectionSteps(2),
+                ASWalkFDirectionSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -229,7 +233,7 @@ script = EventScript(
                 ASSetBit(TEMP_7043_4),
             ],
         ),
-        Set7000ToObjectCoord(object=MEM_70A8, coord=COORD_Y, pixel=True),
+        Set7000ToObjectCoord(target_npc=MEM_70A8, coord=COORD_Y, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Y_COORD_1),
         ActionQueueAsync(
             target=MARIO,
@@ -238,14 +242,14 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetWalkingSpeed(FAST),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_Y, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True),
                 ASCompare700CToVar(Y_COORD_1),
                 ASJmpIfComparisonResultIsGreaterOrEqual(
                     ["EVENT_1745_action_queue_async_65_SUBSCRIPT_shift_south_pixels_7"]
                 ),
-                ASShiftNorthPixels(10),
+                ASWalkNorthPixels(10),
                 ASJmp(["EVENT_1745_action_queue_async_65_SUBSCRIPT_face_north_8"]),
-                ASShiftSouthPixels(
+                ASWalkSouthPixels(
                     10,
                     identifier="EVENT_1745_action_queue_async_65_SUBSCRIPT_shift_south_pixels_7",
                 ),

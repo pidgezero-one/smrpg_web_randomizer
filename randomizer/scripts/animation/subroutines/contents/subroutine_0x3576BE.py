@@ -1,4 +1,6 @@
-# referenced by monster_attacks SporeChimes, monster_attacks Backfire, monster_attacks Grinder, monster_attacks Chomp, monster_attacks PhysicalAttack21, monster_attacks PhysicalAttack46, monster_attacks PhysicalAttack50, monster_attacks LocoExpress, monster_attacks EerieJig, monster_attacks PhysicalAttack90, monster_attacks ValorUp, monster_attacks DarkClaw, monster_attacks PhysicalAttack29, behaviour_22_0x350A3E, monster_attacks BombsAway, monster_attacks PhysicalAttack85, monster_attacks PhysicalAttack18, monster_attacks GunkBall, monster_attacks 114, monster_attacks 128, monster_attacks PhysicalAttack5, monster_attacks WildCard, monster_attacks 122, monster_attacks PhysicalAttack27, monster_attacks Scythe, monster_attacks PhysicalAttack10, monster_attacks PhysicalAttack32, monster_attacks PhysicalAttack115, monster_attacks PhysicalAttack4, monster_attacks PhysicalAttack6, monster_attacks PhysicalAttack51, monster_attacks Toxicyst, monster_attacks Elegy, monster_attacks VenomDrool, monster_attacks ScrowDust, monster_attacks PhysicalAttack57, monster_attacks PhysicalAttack40, monster_attacks SomnusWaltz, monster_attacks Claw, monster_attacks PhysicalAttack47, monster_attacks PsychoPlasm, monster_attacks Missedme, monster_attacks PhysicalAttack7, monster_attacks PhysicalAttack86, monster_attacks PhysicalAttack95, monster_attacks 125, monster_attacks PhysicalAttack108, behaviour_40_0x350DA3, monster_attacks PhysicalAttack9, monster_attacks Sickle, monster_attacks Endobubble, monster_attacks LullaBye, monster_attacks PhysicalAttack15, monster_attacks PhysicalAttack20, monster_attacks Vigorup, monster_attacks Fangs, monster_attacks DoomReverb, monster_attacks MushFunk, monster_attacks FunRun, monster_attacks FlutterHush, monster_attacks PollenNap, monster_attacks PhysicalAttack28, monster_attacks PhysicalAttack105, monster_attacks 126, monster_attacks Funguspike, monster_attacks RoyalFlush, monster_attacks FullHouse, monster_attacks Multistrike, monster_attacks Psyche, monster_attacks Howl, monster_attacks PhysicalAttack56, monster_attacks Scream, behaviour_31_0x350BFD, monster_attacks Stench, monster_attacks 119, monster_attacks Sporocyst, monster_attacks PhysicalAttack31, monster_attacks 120, monster_attacks Thornet, monster_attacks Blazer, behaviour_15_0x35091C, monster_attacks PhysicalAttack2, monster_attacks PhysicalAttack81, monster_attacks DahliaDance, monster_attacks IronMaiden, monster_attacks InkBlast, monster_attacks Quicksilver, monster_attacks LastShot, monster_attacks Echofinder, monster_attacks ViroPlasm, monster_attacks Skewer, monster_attacks 124, monster_attacks Pierce, monster_attacks BodySlam, monster_attacks Magnum, monster_attacks 121, monster_attacks Deathsickle, behaviour_7_0x350796, monster_attacks SpritzBomb, monster_attacks VaVaVoom, monster_attacks GetTough, monster_attacks PhysicalAttack107, monster_attacks PhysicalAttack0, monster_attacks PhysicalAttack89, monster_attacks Migraine, behaviour_50_0x350F4A
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks SporeChimes, monster_attacks Backfire, monster_attacks Grinder, monster_attacks Chomp, monster_attacks PhysicalAttack21, monster_attacks PhysicalAttack46, monster_attacks PhysicalAttack50, monster_attacks LocoExpress, monster_attacks EerieJig, monster_attacks PhysicalAttack90, monster_attacks ValorUp, monster_attacks DarkClaw, monster_attacks PhysicalAttack29, behaviour_22_0x350A3E, monster_attacks BombsAway, monster_attacks PhysicalAttack85, monster_attacks PhysicalAttack18, monster_attacks GunkBall, monster_attacks 114, monster_attacks 128, monster_attacks PhysicalAttack5, monster_attacks WildCard, monster_attacks 122, monster_attacks PhysicalAttack27, monster_attacks Scythe, monster_attacks PhysicalAttack10, monster_attacks PhysicalAttack32, monster_attacks PhysicalAttack115, monster_attacks PhysicalAttack4, monster_attacks PhysicalAttack6, monster_attacks PhysicalAttack51, monster_attacks Toxicyst, monster_attacks Elegy, monster_attacks VenomDrool, monster_attacks ScrowDust, monster_attacks PhysicalAttack57, monster_attacks PhysicalAttack40, monster_attacks SomnusWaltz, monster_attacks Claw, monster_attacks PhysicalAttack47, monster_attacks PsychoPlasm, monster_attacks Missedme, monster_attacks PhysicalAttack7, monster_attacks PhysicalAttack86, monster_attacks PhysicalAttack95, monster_attacks 125, monster_attacks PhysicalAttack108, behaviour_40_0x350DA3, monster_attacks PhysicalAttack9, monster_attacks Sickle, monster_attacks Endobubble, monster_attacks LullaBye, monster_attacks PhysicalAttack15, monster_attacks PhysicalAttack20, monster_attacks Vigorup, monster_attacks Fangs, monster_attacks DoomReverb, monster_attacks MushFunk, monster_attacks FunRun, monster_attacks FlutterHush, monster_attacks PollenNap, monster_attacks PhysicalAttack28, monster_attacks PhysicalAttack105, monster_attacks 126, monster_attacks Funguspike, monster_attacks RoyalFlush, monster_attacks FullHouse, monster_attacks Multistrike, monster_attacks Psyche, monster_attacks Howl, monster_attacks PhysicalAttack56, monster_attacks Scream, behaviour_31_0x350BFD, monster_attacks Stench, monster_attacks 119, monster_attacks Sporocyst, monster_attacks PhysicalAttack31, monster_attacks 120, monster_attacks Thornet, monster_attacks Blazer, behaviour_15_0x35091C, monster_attacks PhysicalAttack2, monster_attacks PhysicalAttack81, monster_attacks DahliaDance, monster_attacks IronMaiden, monster_attacks InkBlast, monster_attacks Quicksilver, monster_attacks LastShot, monster_attacks Echofinder, monster_attacks ViroPlasm, monster_attacks Skewer, monster_attacks 124, monster_attacks Pierce, monster_attacks BodySlam, monster_attacks Magnum, monster_attacks 121, monster_attacks Deathsickle, behaviour_7_0x350796, monster_attacks SpritzBomb, monster_attacks VaVaVoom, monster_attacks GetTough, monster_attacks PhysicalAttack107, monster_attacks PhysicalAttack0, monster_attacks PhysicalAttack89, monster_attacks Migraine, behaviour_50_0x350F4A"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -25,12 +27,20 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=512, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=512,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=15),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=512, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=512,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=65,
@@ -45,7 +55,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=512, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=512,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=129,
@@ -80,12 +94,20 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=512, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=512,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=15),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,
@@ -107,7 +129,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,
@@ -149,12 +175,20 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=512, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=512,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=15),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=512, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=512,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,
@@ -176,7 +210,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=512, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=512,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,

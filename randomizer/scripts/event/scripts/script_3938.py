@@ -1,4 +1,6 @@
-# E3938_FREESTANDING_CROWN
+# pylint: disable=C0301
+
+"""E3938_FREESTANDING_CROWN"""
 
 from randomizer.scripts.event.script_imports import *
 

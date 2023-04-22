@@ -1,4 +1,6 @@
-# E2060_MONSTROMAMA_HOUSE_2F_LOADER
+# pylint: disable=C0301
+
+"""E2060_MONSTROMAMA_HOUSE_2F_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,8 +9,8 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_0,
             subscript=[
-                ASShiftNorthwestPixels(3),
-                ASShiftNortheastPixels(14),
+                ASWalkNorthwestPixels(3),
+                ASWalkNortheastPixels(14),
                 ASSetSpriteSequence(
                     index=9,
                     is_mold=True,
@@ -23,15 +25,15 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASClearSolidityBits(cant_pass_walls=True),
-                ASShiftNorthwestPixels(5),
-                ASShiftSouthwestPixels(3),
+                ASWalkNorthwestPixels(5),
+                ASWalkSouthwestPixels(3),
             ],
         ),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
-                ASShiftNortheastPixels(5),
-                ASShiftSoutheastPixels(3),
+                ASWalkNortheastPixels(5),
+                ASWalkSoutheastPixels(3),
                 ASFaceSouthwest(),
                 ASSequenceLoopingOn(),
             ],

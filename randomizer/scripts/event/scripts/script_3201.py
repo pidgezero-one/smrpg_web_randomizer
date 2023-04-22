@@ -1,4 +1,6 @@
-# E3201_MINES_1ST_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E3201_MINES_1ST_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 

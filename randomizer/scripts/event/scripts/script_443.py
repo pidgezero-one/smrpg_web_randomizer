@@ -1,11 +1,13 @@
-# E0443_PIPE_VAULT_CHOMPWEED_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E0443_PIPE_VAULT_CHOMPWEED_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
         ClearBit(TEMP_707C_0),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 20),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW20_PIPE_VAULT),
         RunEventAsSubroutine(E0281_CLEAR_EXP_STAR_BITS),
         ActionQueueSync(target=NPC_1, subscript=[ASSetPriority(2)]),
         ActionQueueSync(target=NPC_2, subscript=[ASSetPriority(2)]),

@@ -1,7 +1,11 @@
+"""Mallow palette instances."""
+
 from randomizer.types.palettes.classes import MallowPaletteSet, SpritePalette
 
 
 class Default(MallowPaletteSet):
+    """Default Mallow palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -84,6 +88,8 @@ class Default(MallowPaletteSet):
 
 
 class Mokura(MallowPaletteSet):
+    """Mallow coloured like the Mokura cloud in Land's End."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xE0F878,
@@ -145,6 +151,8 @@ class Mokura(MallowPaletteSet):
 
 
 class Frog(MallowPaletteSet):
+    """Mallow coloured to resemble a real frog."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0x50C800,
@@ -206,6 +214,8 @@ class Frog(MallowPaletteSet):
 
 
 class Palom(MallowPaletteSet):
+    """Mallow coloured with his outfit resembling that of Palom's from FFIV."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF0E5D9,
@@ -267,6 +277,8 @@ class Palom(MallowPaletteSet):
 
 
 class Porom(MallowPaletteSet):
+    """Mallow coloured with his outfit resembling that of Porom's from FFIV."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF0E5D9,
@@ -328,6 +340,8 @@ class Porom(MallowPaletteSet):
 
 
 class Cloud(MallowPaletteSet):
+    """Mallow coloured to look like a normal cloud."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -388,6 +402,8 @@ class Cloud(MallowPaletteSet):
 
 
 class Stormy(MallowPaletteSet):
+    """Mallow coloured to resemble a storm cloud."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xE8E8F8,
@@ -448,6 +464,8 @@ class Stormy(MallowPaletteSet):
 
 
 class Light(MallowPaletteSet):
+    """Mallow with a lightly tinted palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -508,6 +526,8 @@ class Light(MallowPaletteSet):
 
 
 class Water(MallowPaletteSet):
+    """Mallow with a blue tint."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -568,6 +588,8 @@ class Water(MallowPaletteSet):
 
 
 class Red(MallowPaletteSet):
+    """Mallow with a red tint."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F0F8,
@@ -628,6 +650,8 @@ class Red(MallowPaletteSet):
 
 
 class Mint(MallowPaletteSet):
+    """Mallow with a slight green tint."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF0F8F0,
@@ -688,6 +712,8 @@ class Mint(MallowPaletteSet):
 
 
 class Demon(MallowPaletteSet):
+    """Mallow with a dark palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0x403038,

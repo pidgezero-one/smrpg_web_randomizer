@@ -1,4 +1,6 @@
-# E3334_VOLCANO_ENTER_SHOP_AREA
+# pylint: disable=C0301
+
+"""E3334_VOLCANO_ENTER_SHOP_AREA"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -21,7 +23,7 @@ script = EventScript(
             subscript=[
                 ASClearSolidityBits(cant_pass_npcs=True),
                 ASWalkToXYCoords(x=14, y=102),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -40,7 +42,7 @@ script = EventScript(
             subscript=[
                 ASClearSolidityBits(cant_pass_npcs=True),
                 ASWalkToXYCoords(x=3, y=17),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASVisibilityOff(),
             ],
             identifier="EVENT_3334_action_queue_async_11",

@@ -1,4 +1,6 @@
-# E3132_MOLEVILLE_MINERS_SONG
+# pylint: disable=C0301
+
+"""E3132_MOLEVILLE_MINERS_SONG"""
 
 from randomizer.scripts.event.script_imports import *
 

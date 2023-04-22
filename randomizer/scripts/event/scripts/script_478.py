@@ -1,4 +1,6 @@
-# E0478_DISMOUNT_YOSHI_2
+# pylint: disable=C0301
+
+"""E0478_DISMOUNT_YOSHI_2"""
 
 from randomizer.scripts.event.script_imports import *
 

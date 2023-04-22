@@ -1,4 +1,6 @@
-# referenced by monster_attacks RoyalFlush
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks RoyalFlush"""
 
 from randomizer.scripts.animation.script_imports import *
 

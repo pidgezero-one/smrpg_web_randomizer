@@ -1,4 +1,6 @@
-# E1685_TEMPLE_FORTUNE_HEAD_1
+# pylint: disable=C0301
+
+"""E1685_TEMPLE_FORTUNE_HEAD_1"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,7 +8,7 @@ script = EventScript(
     [
         JmpIfBitClear(BELOME_FORTUNE_1, ["EVENT_1685_ret_45"]),
         Set7000ToTappedButton(),
-        JmpIf7000AllBitsClear(destinations=["EVENT_1685_ret_45"]),
+        JmpIf7000AllBitsClear(bits=[], destinations=["EVENT_1685_ret_45"]),
         ActionQueueSync(target=MARIO, subscript=[ASJumpToHeight(64)]),
         JmpIfBitSet(BELOME_HEAD_1, ["EVENT_1685_ret_45"]),
         Pause(1, identifier="EVENT_1685_pause_5"),
@@ -58,7 +60,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASFixedFCoordOn(),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASFloatingOn(),
                 ASJumpToHeight(0),
                 ASPause(
@@ -68,7 +70,7 @@ script = EventScript(
                     NPC_0, ["EVENT_1685_action_queue_sync_31_SUBSCRIPT_pause_8"]
                 ),
                 ASPlaySound(sound=SO109_BIG_SHELL_HIT, channel=4),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
             ],
         ),
         ActionQueueSync(
@@ -79,7 +81,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASFixedFCoordOn(),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASFloatingOn(),
                 ASJumpToHeight(0),
                 ASPause(
@@ -89,7 +91,7 @@ script = EventScript(
                     NPC_1, ["EVENT_1685_action_queue_sync_32_SUBSCRIPT_pause_8"]
                 ),
                 ASPlaySound(sound=SO109_BIG_SHELL_HIT, channel=4),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
             ],
         ),
         ActionQueueAsync(

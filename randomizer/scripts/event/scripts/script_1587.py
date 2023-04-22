@@ -1,4 +1,6 @@
-# E1587_BANDITS_WAY_4_RIGHT_CHEST
+# pylint: disable=C0301
+
+"""E1587_BANDITS_WAY_4_RIGHT_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

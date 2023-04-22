@@ -1,4 +1,4 @@
-# 246 - Booster
+"""246 - Booster"""
 
 from randomizer.scripts.monster.script_imports import *
 

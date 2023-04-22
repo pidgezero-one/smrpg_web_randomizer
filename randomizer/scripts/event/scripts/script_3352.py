@@ -1,4 +1,6 @@
-# E3352_DR_TOPPER_QUIZ
+# pylint: disable=C0301
+
+"""E3352_DR_TOPPER_QUIZ"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -27,7 +29,7 @@ script = EventScript(
         SetVarToConst(SECONDARY_TEMP_7024, 12),
         Jmp(["EVENT_3352_clear_bit_32"], identifier="EVENT_3352_jmp_15"),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_Z,
             pixel=True,
             identifier="EVENT_3352_set_7000_to_object_coord_16",
@@ -205,7 +207,7 @@ script = EventScript(
             subscript=[
                 ASPause(38),
                 ASJumpToHeight(256),
-                ASShiftNortheastSteps(4),
+                ASWalkNortheastSteps(4),
                 ASPause(
                     1, identifier="EVENT_3352_action_queue_sync_120_SUBSCRIPT_pause_3"
                 ),
@@ -213,10 +215,10 @@ script = EventScript(
                     ["EVENT_3352_action_queue_sync_120_SUBSCRIPT_pause_3"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSetBit(TEMP_7044_6),
                 ASPause(8),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASSetBit(TEMP_7044_5),
             ],
         ),

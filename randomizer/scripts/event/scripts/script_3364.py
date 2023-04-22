@@ -1,4 +1,6 @@
-# E3364_KEEP_LOGIC_GAME_LOADER
+# pylint: disable=C0301
+
+"""E3364_KEEP_LOGIC_GAME_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,8 +15,8 @@ script = EventScript(
             ],
         ),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
-        ActionQueueAsync(target=MARIO, subscript=[ASShiftNortheastSteps(5)]),
-        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASShiftNortheastSteps(2)]),
+        ActionQueueAsync(target=MARIO, subscript=[ASWalkNortheastSteps(5)]),
+        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(2)]),
         ClearBit(TEMP_7044_7),
         SetSyncActionScript(
             NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS

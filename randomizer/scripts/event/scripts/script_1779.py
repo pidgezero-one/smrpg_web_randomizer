@@ -1,4 +1,6 @@
-# E1779_LANDS_END_UNDERGROUND_1_LOADER
+# pylint: disable=C0301
+
+"""E1779_LANDS_END_UNDERGROUND_1_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

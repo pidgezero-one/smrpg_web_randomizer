@@ -1,4 +1,6 @@
-# E2407_STAR_HILL_FINAL_EXIT
+# pylint: disable=C0301
+
+"""E2407_STAR_HILL_FINAL_EXIT"""
 
 from randomizer.scripts.event.script_imports import *
 

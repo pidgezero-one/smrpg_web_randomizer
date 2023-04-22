@@ -1,4 +1,6 @@
-# E3212_SHIP_3D_MAZE_FORFEIT_LISTENER
+# pylint: disable=C0301
+
+"""E3212_SHIP_3D_MAZE_FORFEIT_LISTENER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,13 +12,15 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
             ],
         ),
         Pause(1),
         Set7000ToPressedButton(),
-        JmpIf7000AllBitsClear(destinations=["EVENT_3212_pause_action_script_0"]),
+        JmpIf7000AllBitsClear(
+            bits=[], destinations=["EVENT_3212_pause_action_script_0"]
+        ),
         EnableControlsUntilReturn([]),
         SetSyncActionScript(NPC_2, A0351_OERLIKONS_AND_3D_MAZE),
         ActionQueueSync(
@@ -24,7 +28,7 @@ script = EventScript(
         ),
         Pause(1, identifier="EVENT_3212_pause_10"),
         JmpIfMarioInAir(["EVENT_3212_pause_10"]),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         VarShiftLeft(UNKNOWN_7006, 1),
         CloseDialog(),
         RunDialog(
@@ -38,7 +42,7 @@ script = EventScript(
         JmpIfDialogOptionBSelected(["EVENT_3212_pause_action_script_19"]),
         RunDialog(
             dialog_id=DI1657_3D_MAZE_OVERLAY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=False,
             sync=True,
             multiline=False,
@@ -50,7 +54,7 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
             ],
         ),

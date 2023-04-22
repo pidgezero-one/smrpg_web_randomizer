@@ -1,4 +1,6 @@
-# E3493_MIDAS_RIVER_MID_RIGHT_TUNNEL_ANIMATION_AND_EXIT
+# pylint: disable=C0301
+
+"""E3493_MIDAS_RIVER_MID_RIGHT_TUNNEL_ANIMATION_AND_EXIT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -39,12 +41,12 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthPixels(32),
+                ASWalkSouthPixels(32),
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\x80\x02\xf2\xff")),
                 ASSetWalkingSpeed(NORMAL),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
-                ASShiftNorthwestSteps(6),
+                ASWalkNorthwestSteps(6),
                 ASBPL262728(),
                 ASSetSolidityBits(cant_pass_walls=True),
             ],

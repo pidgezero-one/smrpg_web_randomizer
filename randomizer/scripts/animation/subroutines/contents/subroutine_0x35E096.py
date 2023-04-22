@@ -1,4 +1,6 @@
-# referenced by items SheepAttack
+# pylint: disable=C0301,C0103
+
+"""referenced by items SheepAttack"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -425,7 +427,7 @@ script = SubroutineOrBanklessScript(
         ),
         Jmp(["command_0x35e3de"]),
         MoveSpriteToCoords(
-            condition=SHIFT_TYPE_SHIFT,
+            shift_type=SHIFT_TYPE_SHIFT,
             speed=2048,
             arch_height=0,
             identifier="command_0x35e3de",

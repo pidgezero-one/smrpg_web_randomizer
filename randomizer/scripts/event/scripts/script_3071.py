@@ -1,15 +1,19 @@
-# E3071_CLONE_RESERVED
+# pylint: disable=C0301
+
+"""E3071_CLONE_RESERVED"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	EndAll(),
-	EndAll(),
-	EndAll(),
-	EndAll(),
-	EndAll(),
-	EndAll(),
-	EndAll(),
-	EndAll(),
-	EndAll()
-])
+script = EventScript(
+    [
+        EndAll(),
+        EndAll(),
+        EndAll(),
+        EndAll(),
+        EndAll(),
+        EndAll(),
+        EndAll(),
+        EndAll(),
+        EndAll(),
+    ]
+)

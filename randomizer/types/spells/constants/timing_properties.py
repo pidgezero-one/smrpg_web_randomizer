@@ -1,3 +1,5 @@
+"""Int subclass instances representing the different timed hit functionality presets."""
+
 from randomizer.types.spells.constants.classes import TimingProperties
 
 ONE_TIMING_FOR_125_OR_15X_DMG = TimingProperties(0xCB0E)

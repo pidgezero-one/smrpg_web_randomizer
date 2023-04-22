@@ -1,4 +1,6 @@
-# E1555_FOREST_FIRST_WIGGLER_ROOM_LOADER_CONTD
+# pylint: disable=C0301
+
+"""E1555_FOREST_FIRST_WIGGLER_ROOM_LOADER_CONTD"""
 
 from randomizer.scripts.event.script_imports import *
 

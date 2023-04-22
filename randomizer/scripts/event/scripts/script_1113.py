@@ -1,29 +1,100 @@
-# E1113_SONG_HINT_TADPOLE
+# pylint: disable=C0301
+
+"""E1113_SONG_HINT_TADPOLE"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	JmpIfBitSet(MELODY_BAY_ITEM_3_GRANTED, ["EVENT_1113_run_dialog_33"]),
-	JmpIfBitSet(MELODY_BAY_ITEM_2_GRANTED, ["EVENT_1113_jmp_if_bit_clear_13"]),
-	JmpIfBitSet(MELODY_BAY_ITEM_1_GRANTED, ["EVENT_1113_jmp_if_bit_clear_9"]),
-	RunDialog(dialog_id=DI2664_TADPOLE_SONG_1_HINT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return(),
-	JmpIfBitClear(MINECART_CLEARED, ["EVENT_1113_run_dialog_31"], identifier="EVENT_1113_jmp_if_bit_clear_9"),
-	RunDialog(dialog_id=DI2665_TADPOLE_SONG_2_HINT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return(),
-	JmpIfBitClear(MELODY_BAY_SONG_3_UNLOCKED, ["EVENT_1113_run_dialog_insert"], identifier="EVENT_1113_jmp_if_bit_clear_13"),
-	RunDialog(dialog_id=DI2663_TADPOLE_FAVOURITE_SONG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	RunDialog(dialog_id=DI2668_TADPOLE_SONG_3_HINT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	FadeOutMusicToVolume(duration=1, volume=0),
-	Pause(30),
-	RunEventAsSubroutine(E1088_MELODY_BAY_THIRD_SONG_HINT),
-	RunDialog(dialog_id=DI2673_TADPOLE_SONG_3_HINT_END, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	FadeOutMusicToVolume(duration=3, volume=100),
-	Return(),
-	RunDialog(dialog_id=DI2660_TADPOLE_PROMPTS_YOU_TO_FIND_2ND_SONG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1113_run_dialog_31"),
-	Return(),
-	RunDialog(dialog_id=DI2662_TADPOLE_PROMPTS_YOU_TO_FIND_3RD_SONG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1113_run_dialog_insert"),
-	Return(),
-	RunDialog(dialog_id=DI2674_TADPOLE_AFTER_FINAL_SONG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1113_run_dialog_33"),
-	Return()
-])
+script = EventScript(
+    [
+        JmpIfBitSet(MELODY_BAY_ITEM_3_GRANTED, ["EVENT_1113_run_dialog_33"]),
+        JmpIfBitSet(MELODY_BAY_ITEM_2_GRANTED, ["EVENT_1113_jmp_if_bit_clear_13"]),
+        JmpIfBitSet(MELODY_BAY_ITEM_1_GRANTED, ["EVENT_1113_jmp_if_bit_clear_9"]),
+        RunDialog(
+            dialog_id=DI2664_TADPOLE_SONG_1_HINT,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        Return(),
+        JmpIfBitClear(
+            MINECART_CLEARED,
+            ["EVENT_1113_run_dialog_31"],
+            identifier="EVENT_1113_jmp_if_bit_clear_9",
+        ),
+        RunDialog(
+            dialog_id=DI2665_TADPOLE_SONG_2_HINT,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        Return(),
+        JmpIfBitClear(
+            MELODY_BAY_SONG_3_UNLOCKED,
+            ["EVENT_1113_run_dialog_insert"],
+            identifier="EVENT_1113_jmp_if_bit_clear_13",
+        ),
+        RunDialog(
+            dialog_id=DI2663_TADPOLE_FAVOURITE_SONG,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        RunDialog(
+            dialog_id=DI2668_TADPOLE_SONG_3_HINT,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        FadeOutMusicToVolume(duration=1, volume=0),
+        Pause(30),
+        RunEventAsSubroutine(E1088_MELODY_BAY_THIRD_SONG_HINT),
+        RunDialog(
+            dialog_id=DI2673_TADPOLE_SONG_3_HINT_END,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        FadeOutMusicToVolume(duration=3, volume=100),
+        Return(),
+        RunDialog(
+            dialog_id=DI2660_TADPOLE_PROMPTS_YOU_TO_FIND_2ND_SONG,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+            identifier="EVENT_1113_run_dialog_31",
+        ),
+        Return(),
+        RunDialog(
+            dialog_id=DI2662_TADPOLE_PROMPTS_YOU_TO_FIND_3RD_SONG,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+            identifier="EVENT_1113_run_dialog_insert",
+        ),
+        Return(),
+        RunDialog(
+            dialog_id=DI2674_TADPOLE_AFTER_FINAL_SONG,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+            identifier="EVENT_1113_run_dialog_33",
+        ),
+        Return(),
+    ]
+)

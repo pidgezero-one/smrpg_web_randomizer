@@ -1,4 +1,6 @@
-# E1622_BUCKET_WARP
+# pylint: disable=C0301
+
+"""E1622_BUCKET_WARP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -27,7 +29,9 @@ script = EventScript(
                 ASEndLoop(),
             ],
         ),
-        PixelateLayers(layers=[LAYER_1, LAYER_2, LAYER_3], pixel_size=8, duration=196),
+        PixelateLayers(
+            layers=[LAYER_L1, LAYER_L2, LAYER_L3], pixel_size=8, duration=196
+        ),
         JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["EVENT_1622_set_bit_7"]),
         JmpIfBitSet(BUCKET_WARP_ENABLED, ["EVENT_1622_bucket_warp"]),
         SetBit(BUCKET_WARP_BIT, identifier="EVENT_1622_set_bit_7"),

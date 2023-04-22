@@ -1,4 +1,6 @@
-# E1784_LANDS_END_DESERT_1_LEFT_WHIRLPOOL_SUBROUTINE
+# pylint: disable=C0301
+
+"""E1784_LANDS_END_DESERT_1_LEFT_WHIRLPOOL_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 

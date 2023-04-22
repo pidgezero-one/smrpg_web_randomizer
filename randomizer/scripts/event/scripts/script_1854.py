@@ -1,4 +1,6 @@
-# E1854_KEEP_DONKEY_ROOM_BACKGROUND
+# pylint: disable=C0301
+
+"""E1854_KEEP_DONKEY_ROOM_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 

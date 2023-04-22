@@ -1,4 +1,6 @@
-# referenced by behaviour_25_0x350ABD
+# pylint: disable=C0301,C0103
+
+"""referenced by behaviour_25_0x350ABD"""
 
 from randomizer.scripts.animation.script_imports import *
 

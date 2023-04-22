@@ -1,4 +1,6 @@
-# E3359_KEEP_INITIATE_COIN_GAME
+# pylint: disable=C0301
+
+"""E3359_KEEP_INITIATE_COIN_GAME"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -21,7 +23,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=24, y=79),
             ],
         ),
-        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASShiftNortheastSteps(4)]),
+        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(4)]),
         ClearBit(TEMP_7044_7),
         SetSyncActionScript(
             NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS
@@ -32,7 +34,7 @@ script = EventScript(
         FreezeCamera(),
         MoveScriptToBackgroundThread2(),
         SetVarToConst(ROSE_WAY_703A, 4, identifier="EVENT_3359_set_short_13"),
-        ActionQueueAsync(target=NPC_1, subscript=[ASShiftNortheastSteps(3)]),
+        ActionQueueAsync(target=NPC_1, subscript=[ASWalkNortheastSteps(3)]),
         Pause(1, identifier="EVENT_3359_pause_15"),
         Set7000ToTappedButton(),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 128, ["EVENT_3359_dec_short_21"]),
@@ -60,7 +62,7 @@ script = EventScript(
         Jmp(["EVENT_3359_pause_15"]),
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASShiftSouthwestSteps(3)],
+            subscript=[ASWalkSouthwestSteps(3)],
             identifier="EVENT_3359_action_queue_async_26",
         ),
         ClearBit(TEMP_7044_7),

@@ -1,4 +1,6 @@
-from .classes import Scene
+"""Int subclass instances representing IDs for some predefined cutscenes and screen transitions."""
+
+from randomizer.types.overworld_scripts.constants.classes import Scene
 
 SC00_OPEN_GAME_SELECT_MENU = Scene(0)
 SC01_OPEN_OVERWORLD_MENU = Scene(1)

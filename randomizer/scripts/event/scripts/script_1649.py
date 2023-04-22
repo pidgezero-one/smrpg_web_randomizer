@@ -1,4 +1,6 @@
-# E1649_MOLEVILLE_LIBERATED_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E1649_MOLEVILLE_LIBERATED_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -14,7 +16,9 @@ script = EventScript(
         ),
         RemoveObjectFromCurrentLevel(NPC_7),
         RemoveObjectFromSpecificLevel(NPC_7, R108_MOLEVILLE_OUTSIDE),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 24, identifier="EVENT_1649_set_0"),
+        SetVarToConst(
+            CURRENT_OVERWORLD_MARKER_ID, OW24_MOLEVILLE, identifier="EVENT_1649_set_0"
+        ),
         FadeOutMusicToVolume(duration=1, volume=127),
         ActionQueueSync(target=NPC_7, subscript=[ASShiftZDownPixels(5)]),
         JmpIfBitClear(TEMP_7042_1, ["EVENT_1649_jmp_if_bit_set_5"]),
@@ -79,8 +83,8 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FASTER),
-                ASShiftWestSteps(7),
-                ASShiftSouthwestSteps(8),
+                ASWalkWestSteps(7),
+                ASWalkSouthwestSteps(8),
                 ASShiftSouthSteps(5),
             ],
         ),
@@ -94,7 +98,7 @@ script = EventScript(
                 ASShadowOn(),
                 ASSetPriority(3),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestSteps(19),
+                ASWalkSouthwestSteps(19),
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\x01\x00\xe0\xff")),
                 ASSetWalkingSpeed(NORMAL),
@@ -140,7 +144,7 @@ script = EventScript(
             subscript=[
                 ASPause(16),
                 ASSetWalkingSpeed(FASTER),
-                ASShiftSouthwestSteps(4),
+                ASWalkSouthwestSteps(4),
             ],
         ),
         ActionQueueAsync(
@@ -151,9 +155,9 @@ script = EventScript(
                 ),
                 ASShadowOn(),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASFloatingOn(),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
             ],
         ),
         ActionQueueSync(
@@ -164,12 +168,12 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASStartLoopNTimes(5),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(8),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(8),
                 ASEndLoop(),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
             ],
         ),
         ActionQueueSync(
@@ -179,7 +183,7 @@ script = EventScript(
                 ASJumpToHeight(64),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[]),
                 ASSetAllSpeeds(FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASSetAllSpeeds(NORMAL),
                 ASWalk1StepSouthwest(),
                 ASSetAllSpeeds(SLOW),

@@ -1,4 +1,6 @@
-# E2391_BEANSTALK_FROM_INSIDE_GARDENERS_HOUSE
+# pylint: disable=C0301
+
+"""E2391_BEANSTALK_FROM_INSIDE_GARDENERS_HOUSE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
                     index=7, sprite_offset=6, is_sequence=True, looping=True
                 ),
                 ASTransferToXYZF(x=26, y=17, z=5, direction=EAST),
-                ASShiftWestPixels(4),
+                ASWalkWestPixels(4),
                 ASSetWalkingSpeed(NORMAL),
                 ASPause(4),
                 ASDb(bytearray(b" \x01")),

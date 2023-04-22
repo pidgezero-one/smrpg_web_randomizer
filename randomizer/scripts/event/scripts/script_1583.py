@@ -1,4 +1,6 @@
-# E1583_LANDS_END_UNDERGROUND_TRAMPOLINE_TO_DESERT
+# pylint: disable=C0301
+
+"""E1583_LANDS_END_UNDERGROUND_TRAMPOLINE_TO_DESERT"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1938_KEEP_ROTATING_ROOM_CHEST_3
+# pylint: disable=C0301
+
+"""E1938_KEEP_ROTATING_ROOM_CHEST_3"""
 
 from randomizer.scripts.event.script_imports import *
 

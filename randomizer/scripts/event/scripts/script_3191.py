@@ -1,4 +1,6 @@
-# E3191_ACTIVATE_POST_MINES_BOSS_FIRST_MINECART_SESSION
+# pylint: disable=C0301
+
+"""E3191_ACTIVATE_POST_MINES_BOSS_FIRST_MINECART_SESSION"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -21,7 +23,7 @@ script = EventScript(
             ],
         ),
         RunEventAsSubroutine(E1394_FOUR_DIGIT_COIN_VALUE_HANDLER),
-        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASShiftEastSteps(4)]),
+        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkEastSteps(4)]),
         CloseDialog(),
         Jmp(["EVENT_3190_stop_all_background_events_0"]),
         Return(identifier="EVENT_3191_ret_9"),

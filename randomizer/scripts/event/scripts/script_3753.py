@@ -1,4 +1,6 @@
-# E3753_HOT_SPRINGS_LOBBY_LOADER
+# pylint: disable=C0301
+
+"""E3753_HOT_SPRINGS_LOBBY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

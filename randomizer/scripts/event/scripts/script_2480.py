@@ -1,4 +1,6 @@
-# E2480_BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA
+# pylint: disable=C0301
+
+"""E2480_BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA"""
 
 from randomizer.scripts.event.script_imports import *
 

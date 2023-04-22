@@ -1,4 +1,6 @@
-# E1556_WIGGLER_JUMP
+# pylint: disable=C0301
+
+"""E1556_WIGGLER_JUMP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,7 +17,7 @@ script = EventScript(
         SetVarToConst(SECONDARY_TEMP_7024, 20),
         CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
         DecVarFrom7000(SECONDARY_TEMP_7024),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1556_set_bit_13"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1556_set_bit_13"]),
         SetBit(TEMP_7043_5),
         ClearBit(TEMP_7043_4),
         Jmp(["EVENT_1556_mem_7000_and_const_15"]),
@@ -25,7 +27,7 @@ script = EventScript(
         AddVarTo7000(SECONDARY_TEMP_7024),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_702E),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AA),
-        Set7000ToObjectCoord(object=MEM_70AA, coord=COORD_F, pixel=True),
+        Set7000ToObjectCoord(target_npc=MEM_70AA, coord=COORD_F, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),
         JmpIfBitClear(TEMP_7076_0, ["EVENT_1556_start_loop_n_times_21"]),
         JmpIfMarioOnAnObjectOrNot(
@@ -100,14 +102,14 @@ script = EventScript(
                 ASSetVRAMPriority(PRIORITY_3),
                 ASSetPriority(3),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASAddConstToVar(PRIMARY_TEMP_700C, 2),
                 ASMem700CAndConst(0x0004),
                 ASMem700CXorConst(0x0004),
                 ASFaceEast7C(),
                 ASFloatingOff(),
                 ASJumpToHeight(160),
-                ASShiftFDirectionSteps(2),
+                ASWalkFDirectionSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -134,7 +136,7 @@ script = EventScript(
                 ASSetVRAMPriority(PRIORITY_3),
                 ASSetPriority(3),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASAddConstToVar(PRIMARY_TEMP_700C, 2),
                 ASMem700CAndConst(0x0004),
                 ASMem700CXorConst(0x0004),

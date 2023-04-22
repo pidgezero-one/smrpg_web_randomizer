@@ -1,4 +1,6 @@
-# E2631_CASINO_SLOT_MACHINE
+# pylint: disable=C0301
+
+"""E2631_CASINO_SLOT_MACHINE"""
 
 from randomizer.scripts.event.script_imports import *
 

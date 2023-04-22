@@ -82,7 +82,7 @@ class ExtraStartingCharacterLocation(CharacterRecruitLocation):
         match = 1
         locs: List[Type[CharacterRecruitLocation]] = [
             MushroomWayCharacter,
-            ForestMazeCharacter,
+            FOREST_MAZE_CHARACTER,
             MinesCharacter,
             ChapelCharacter,
         ]
@@ -236,7 +236,7 @@ class MushroomWayCharacter(CharacterRecruitLocation):
     ]
 
 
-class ForestMazeCharacter(CharacterRecruitLocation):
+class FOREST_MAZE_CHARACTER(CharacterRecruitLocation):
     _associated_spotted_location: Type[
         CharacterSpottedLocation
     ] = ForestMazeCharacterSpotted

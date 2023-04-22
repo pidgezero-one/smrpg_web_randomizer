@@ -1,3 +1,6 @@
+"""Playable character classes."""
+
+from typing import List, Type, Union
 from randomizer.entities.progress_locations.characters_recruited import (
     StartingCharacter1,
 )
@@ -38,7 +41,6 @@ from randomizer.types.palettes.classes import (
     ToadstoolPaletteSet,
 )
 from randomizer.types.items.classes import SpottedCharacter
-from randomizer.helpers.flag_helpers import PlayableCharacters
 from randomizer.types.spells.classes import CharacterSpell
 from randomizer.types.numbers.classes import UInt16, UInt8
 from randomizer.types.characters.classes import Character, StatGrowth
@@ -53,8 +55,8 @@ from randomizer.entities.characters.palettes.mallow import (
 from randomizer.entities.characters.palettes.toadstool import (
     Default as DefaultToadstoolPalette,
 )
-from randomizer.logic import flags
-from randomizer.types.npcs.objects.classes import NPC, ItemNPC
+
+from randomizer.types.npcs.objects.classes import NPC
 from randomizer.types.npcs.objects.npcs import (
     BowserDoll,
     GenoDoll,
@@ -67,35 +69,52 @@ from randomizer.types.npcs.objects.npcs import (
     Toadstool as ToadstoolNPC,
     ToadstoolDoll,
 )
+from randomizer.types.world.flags.enums import PlayableCharacters
 
-from typing import List, Type, Union
 
 from randomizer.types.world.flags.flags import PlayAsStarter
 
 
 class MarioSpotted(SpottedCharacter):
+    """Placeholder instance representing the event of seeing Mario in the overworld
+    (without recruiting him)."""
+
     _item_id: int = 225
 
 
 class ToadstoolSpotted(SpottedCharacter):
+    """Placeholder instance representing the event of seeing Toadstool in the overworld
+    (without recruiting her)."""
+
     _item_id: int = 226
 
 
 class MallowSpotted(SpottedCharacter):
+    """Placeholder instance representing the event of seeing Mallow in the overworld
+    (without recruiting him)."""
+
     _item_id: int = 227
 
 
 class GenoSpotted(SpottedCharacter):
+    """Placeholder instance representing the event of seeing Geno in the overworld
+    (without recruiting him)."""
+
     _item_id: int = 228
 
 
 class BowserSpotted(SpottedCharacter):
+    """Placeholder instance representing the event of seeing Bowser in the overworld
+    (without recruiting him)."""
+
     _item_id: int = 229
 
 
 # ******************* Actual character data classes.
 class Mario(Character):
-    _original_name: str = PlayableCharacters.mario
+    """Playable character instance of Mario."""
+
+    _original_name: str = PlayableCharacters.MARIO
     _character_id: int = 0
     _starting_level: int = 1
     _max_hp: UInt16 = UInt16(20)
@@ -242,7 +261,7 @@ class Mario(Character):
     _runaway_bytes: bytearray = bytearray([0x03, 0x81, 0x08, 0x00, 0x00, 0x00])
 
     _item_id: int = 220
-    _description: str = PlayableCharacters.mario.value
+    _description: str = PlayableCharacters.MARIO.value
     _placeholder: str = "`MARIO_NAME`"
     _starter_script: int = 187
     _container_script: int = 193
@@ -351,7 +370,9 @@ class Mario(Character):
 
 
 class Toadstool(Character):
-    _original_name: str = PlayableCharacters.toadstool
+    """Playable character instance of Toadstool."""
+
+    _original_name: str = PlayableCharacters.TOADSTOOL
     _character_id: int = 1
     _placeholder: str = "`PEACH_NAME`"
     _starting_level: int = 9
@@ -483,7 +504,7 @@ class Toadstool(Character):
     _runaway_bytes: bytearray = bytearray([0x03, 0x81, 0x08, 0x07, 0x00, 0x00])
 
     _item_id: int = 221
-    _description: str = PlayableCharacters.toadstool.value
+    _description: str = PlayableCharacters.TOADSTOOL.value
     _placeholder: str = "`PEACH_NAME`"
     _gender: str = "woman"
     _gender_casual: str = "gal"
@@ -602,7 +623,9 @@ class Toadstool(Character):
 
 
 class Bowser(Character):
-    _original_name: str = PlayableCharacters.bowser
+    """Playable character instance of Bowser."""
+
+    _original_name: str = PlayableCharacters.BOWSER
     _character_id: int = 2
     _starting_level: int = 8
     _max_hp: UInt16 = UInt16(25)
@@ -731,7 +754,7 @@ class Bowser(Character):
 
     _item_id: int = 224
     _model: Type[NPC] = BowserNPC
-    _description: str = PlayableCharacters.bowser.value
+    _description: str = PlayableCharacters.BOWSER.value
     _placeholder: str = "`BOWSER_NAME`"
     _starter_script: int = 190
     _container_script: int = 196
@@ -827,7 +850,9 @@ class Bowser(Character):
 
 
 class Geno(Character):
-    _original_name: str = PlayableCharacters.geno
+    """Playable character instance of Geno."""
+
+    _original_name: str = PlayableCharacters.GENO
     _character_id: int = 3
     _starting_level: int = 6
     _max_hp: UInt16 = UInt16(20)
@@ -956,7 +981,7 @@ class Geno(Character):
     _runaway_bytes: bytearray = bytearray([0x03, 0x81, 0x08, 0x19, 0x00, 0x00])
 
     _item_id: int = 223
-    _description: str = PlayableCharacters.geno.value
+    _description: str = PlayableCharacters.GENO.value
     _placeholder: str = "`GENO_NAME`"
     _starter_script: int = 189
     _container_script: int = 195
@@ -1053,7 +1078,9 @@ class Geno(Character):
 
 
 class Mallow(Character):
-    _original_name: str = PlayableCharacters.mallow
+    """Playable character instance of Mallow."""
+
+    _original_name: str = PlayableCharacters.MALLOW
     _character_id: int = 4
     _starting_level: int = 2
     _max_hp: UInt16 = UInt16(6)
@@ -1192,7 +1219,7 @@ class Mallow(Character):
     _runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x13, 0x00, 0x00])
 
     _item_id: int = 222
-    _description: str = PlayableCharacters.mallow.value
+    _description: str = PlayableCharacters.MALLOW.value
     _placeholder: str = "`MALLOW_NAME`"
     _starter_script: int = 188
     _container_script: int = 194

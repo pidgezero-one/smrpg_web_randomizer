@@ -1,4 +1,6 @@
-# E3651_NIMBUS_NORTHEAST_HOUSE_CROCO
+# pylint: disable=C0301
+
+"""E3651_NIMBUS_NORTHEAST_HOUSE_CROCO"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -32,7 +34,7 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
                 ASDecZCoord1Step(),
-                ASShiftSoutheastSteps(6),
+                ASWalkSoutheastSteps(6),
             ],
         ),
         ActionQueueSync(
@@ -40,8 +42,8 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=17, y=54, z=1, direction=EAST),
                 ASJumpToHeight(height=108, silent=True),
-                ASShiftNorthwestSteps(2),
-                ASShiftNorthwestPixels(6),
+                ASWalkNorthwestSteps(2),
+                ASWalkNorthwestPixels(6),
             ],
         ),
         ActionQueueSync(
@@ -49,12 +51,12 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastPixels(2),
+                ASWalkSoutheastPixels(2),
                 ASStartLoopNTimes(3),
-                ASShiftNorthwestPixels(4),
-                ASShiftSoutheastPixels(4),
+                ASWalkNorthwestPixels(4),
+                ASWalkSoutheastPixels(4),
                 ASEndLoop(),
-                ASShiftNorthwestPixels(2),
+                ASWalkNorthwestPixels(2),
             ],
         ),
         ActionQueueAsync(
@@ -68,7 +70,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASWalk1StepSouthwest(),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASVisibilityOff(),
             ],
         ),

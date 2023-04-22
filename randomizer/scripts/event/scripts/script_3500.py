@@ -1,4 +1,6 @@
-# E3500_BOOSTER_HILL_1ST_PASS_SNIFIT_JUMPS
+# pylint: disable=C0301
+
+"""E3500_BOOSTER_HILL_1ST_PASS_SNIFIT_JUMPS"""
 
 from randomizer.scripts.event.script_imports import *
 

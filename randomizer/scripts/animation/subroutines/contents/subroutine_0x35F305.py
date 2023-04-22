@@ -1,4 +1,6 @@
-# referenced by weapons UltraHammer
+# pylint: disable=C0301,C0103
+
+"""referenced by weapons UltraHammer"""
 
 from randomizer.scripts.animation.script_imports import *
 

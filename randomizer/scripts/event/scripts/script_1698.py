@@ -1,4 +1,6 @@
-# E1698_BANDITS_WAY_4_LOADER
+# pylint: disable=C0301
+
+"""E1698_BANDITS_WAY_4_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -58,14 +60,14 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftNortheastSteps(5),
+                ASWalkNortheastSteps(5),
                 ASShiftNorthSteps(4),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASShiftNortheastSteps(2), ASWalk1StepNorth(), ASFaceNortheast()],
+            subscript=[ASWalkNortheastSteps(2), ASWalk1StepNorth(), ASFaceNortheast()],
         ),
         SetBit(BANDITS_WAY_CUTSCENE_4_VIEWED),
         RunEventAsSubroutine(E0759_BANDITS_WAY_AREA_04_SHUFFLED_NPC_ANIMATION_LOADER),
@@ -77,9 +79,9 @@ script = EventScript(
                 ASShadowOff(),
                 ASVisibilityOn(),
                 ASSequenceLoopingOn(),
-                ASShiftNortheastPixels(1),
+                ASWalkNortheastPixels(1),
                 ASFixedFCoordOn(),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
                 ASFixedFCoordOff(),
                 ASFaceNortheast(),
             ],
@@ -106,9 +108,9 @@ script = EventScript(
                 ASJumpToHeight(108),
                 ASFixedFCoordOn(),
                 ASSetAllSpeeds(FAST),
-                ASShiftEastPixels(4),
+                ASWalkEastPixels(4),
                 ASShadowOn(),
-                ASShiftEastPixels(
+                ASWalkEastPixels(
                     2,
                     identifier="EVENT_1698_action_queue_async_46_SUBSCRIPT_shift_east_pixels_6",
                 ),
@@ -128,7 +130,7 @@ script = EventScript(
                 ASPause(8),
                 ASFaceSouthwest(),
                 ASPause(20),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASSetSequenceSpeed(NORMAL),
             ],
         ),
@@ -141,7 +143,7 @@ script = EventScript(
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASJumpToHeight(112),
                 ASFixedFCoordOn(),
-                ASShiftEastSteps(4),
+                ASWalkEastSteps(4),
                 ASVisibilityOff(),
             ],
             identifier="EVENT_1698_action_queue_async_49",

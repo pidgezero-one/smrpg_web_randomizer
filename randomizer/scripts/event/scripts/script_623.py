@@ -1,4 +1,6 @@
-# E0623_MARRYMORE_INN_EMPLOYED_GUEST_LEAVES
+# pylint: disable=C0301
+
+"""E0623_MARRYMORE_INN_EMPLOYED_GUEST_LEAVES"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,7 +24,7 @@ script = EventScript(
         JmpIfBitSet(TEMP_7044_3, ["EVENT_623_set_7000_to_object_coord_16"]),
         Jmp(["EVENT_623_pause_13"]),
         Set7000ToObjectCoord(
-            object=NPC_5,
+            target_npc=NPC_5,
             coord=COORD_Y,
             pixel=True,
             bit_7=True,

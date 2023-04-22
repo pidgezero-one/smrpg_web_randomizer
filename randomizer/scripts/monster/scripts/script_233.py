@@ -1,4 +1,4 @@
-# 233 - Exor
+"""233 - Exor"""
 
 from randomizer.scripts.monster.script_imports import *
 

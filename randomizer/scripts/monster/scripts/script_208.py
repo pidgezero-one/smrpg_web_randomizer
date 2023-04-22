@@ -1,4 +1,4 @@
-# 208 - Punchinello
+"""208 - Punchinello"""
 
 from randomizer.scripts.monster.script_imports import *
 

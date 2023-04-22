@@ -13,7 +13,7 @@ from randomizer.types.scripts_common.classes import (
     TransformableIdentifier,
 )
 from randomizer.types.numbers.classes import Int16, UInt16, UInt8
-from .constants.classes import Origin
+from randomizer.types.battle_animation_scripts.constants.classes import Origin
 
 
 class AnimationScriptCommand(ScriptCommand):
@@ -403,22 +403,30 @@ class AnimationScript(Script[AnimationScriptCommand]):
         super().__init__(script)
 
     def insert_before_nth_command(
-        self, n: int, command: AnimationScriptCommand
+        self, index: int, command: AnimationScriptCommand
     ) -> None:
-        super().insert_before_nth_command(n, command)
+        super().insert_before_nth_command(index, command)
 
-    def insert_after_nth_command(self, n: int, command: AnimationScriptCommand) -> None:
-        super().insert_after_nth_command(n, command)
+    def insert_after_nth_command(
+        self, index: int, command: AnimationScriptCommand
+    ) -> None:
+        super().insert_after_nth_command(index, command)
 
     def insert_before_nth_command_of_type(
-        self, n: int, cls: Type[AnimationScriptCommand], command: AnimationScriptCommand
+        self,
+        ordinality: int,
+        cls: Type[AnimationScriptCommand],
+        command: AnimationScriptCommand,
     ) -> None:
-        super().insert_before_nth_command_of_type(n, cls, command)
+        super().insert_before_nth_command_of_type(ordinality, cls, command)
 
     def insert_after_nth_command_of_type(
-        self, n: int, cls: Type[AnimationScriptCommand], command: AnimationScriptCommand
+        self,
+        ordinality: int,
+        cls: Type[AnimationScriptCommand],
+        command: AnimationScriptCommand,
     ) -> None:
-        super().insert_after_nth_command_of_type(n, cls, command)
+        super().insert_after_nth_command_of_type(ordinality, cls, command)
 
     def insert_before_identifier(
         self, identifier: str, command: AnimationScriptCommand
@@ -569,10 +577,10 @@ class AnimationScriptBank(ScriptBank[AnimationScript]):
         assert len(scripts) == self.script_count
         super().set_contents(scripts)
 
-    def replace_script(self, n: int, script: AnimationScript) -> None:
+    def replace_script(self, index: int, script: AnimationScript) -> None:
         """Overwrite the contents of the script at index n."""
-        assert 0 <= n < self.script_count
-        super().replace_script(n, script)
+        assert 0 <= index < self.script_count
+        super().replace_script(index, script)
 
     def get_command_by_name(self, identifier: str) -> AnimationScriptCommand:
         """Return a single command whose unique identifier matches the name provided."""
@@ -659,8 +667,7 @@ class AnimationScriptBank(ScriptBank[AnimationScript]):
 
         if self.pointer_table_start != 0:
             return self.pointer_bytes + self.script_bytes
-        else:
-            return self.script_bytes
+        return self.script_bytes
 
 
 class AnimationScriptBankCollection:

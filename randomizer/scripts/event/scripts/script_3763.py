@@ -1,4 +1,6 @@
-# E3763_NIMBUS_BACK_EXIT_MARIO_FALL_ANIMATION
+# pylint: disable=C0301
+
+"""E3763_NIMBUS_BACK_EXIT_MARIO_FALL_ANIMATION"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,4 @@
-# ************************************** Default lists for the site.
+"""Default lists for the site."""
 
 # List of categories for the site.
 from randomizer.types.world.flags.categories.categories import (

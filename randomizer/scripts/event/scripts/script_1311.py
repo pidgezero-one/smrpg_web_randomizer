@@ -1,4 +1,6 @@
-# E1311_TOWER_CHECKERBOARD_LOCKED_DOOR
+# pylint: disable=C0301
+
+"""E1311_TOWER_CHECKERBOARD_LOCKED_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1311_apply_tile_mod_5"]),
         RunDialog(
             dialog_id=DI1941_NEED_ROOM_KEY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,

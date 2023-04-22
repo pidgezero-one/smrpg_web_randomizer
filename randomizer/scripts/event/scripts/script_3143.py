@@ -1,4 +1,6 @@
-# E3143_ROSE_WAY_MAIN_ROOM_PLATFORMS
+# pylint: disable=C0301
+
+"""E3143_ROSE_WAY_MAIN_ROOM_PLATFORMS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -28,7 +30,7 @@ script = EventScript(
         JmpIfMarioInAir(["EVENT_3143_set_7000_to_pressed_button_11"]),
         Set7000ToTappedButton(),
         JmpIf7000AllBitsClear(
-            destinations=["EVENT_3143_set_7000_to_pressed_button_11"]
+            bits=[], destinations=["EVENT_3143_set_7000_to_pressed_button_11"]
         ),
         ActionQueueSync(
             target=MARIO,
@@ -132,7 +134,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSequencePlaybackOn(),
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASShadowOn(),
             ],

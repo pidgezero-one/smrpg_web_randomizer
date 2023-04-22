@@ -1,8 +1,19 @@
-# E1135_SEASIDE_OCCUPIED_MUSHROOM_BOY_SHOP_OCCUPANT_1
+# pylint: disable=C0301
+
+"""E1135_SEASIDE_OCCUPIED_MUSHROOM_BOY_SHOP_OCCUPANT_1"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	RunDialog(dialog_id=DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-	Return()
-])
+script = EventScript(
+    [
+        RunDialog(
+            dialog_id=DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED,
+            above_object=MEM_70A8,
+            closable=True,
+            sync=False,
+            multiline=True,
+            use_background=True,
+        ),
+        Return(),
+    ]
+)

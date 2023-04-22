@@ -1,4 +1,6 @@
-# E0378_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHYSTER_CHASING_TOAD
+# pylint: disable=C0301
+
+"""E0378_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHYSTER_CHASING_TOAD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -33,7 +35,7 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),

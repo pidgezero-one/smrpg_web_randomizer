@@ -1,4 +1,6 @@
-# E3355_KEEP_BARREL_COUNT_LOADER_CONTD
+# pylint: disable=C0301
+
+"""E3355_KEEP_BARREL_COUNT_LOADER_CONTD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -97,7 +99,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASJumpToHeight(0),
                 ASPause(40),
-                ASShiftNortheastPixels(4),
+                ASWalkNortheastPixels(4),
                 ASWalk1StepNortheast(),
                 ASPause(20),
                 ASFloatingOff(),
@@ -220,7 +222,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASWalk1StepSoutheast(),
-                ASShiftNortheastSteps(7),
+                ASWalkNortheastSteps(7),
                 ASWalk1StepSoutheast(),
             ],
         ),

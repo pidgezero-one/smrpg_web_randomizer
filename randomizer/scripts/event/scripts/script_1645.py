@@ -1,4 +1,6 @@
-# E1645_BUCKET_GIRL
+# pylint: disable=C0301
+
+"""E1645_BUCKET_GIRL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -82,7 +84,7 @@ script = EventScript(
             target=MEM_70A8,
             subscript=[
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(9),
+                ASWalkSoutheastSteps(9),
                 ASVisibilityOff(),
             ],
             identifier="EVENT_1645_action_queue_async_18",
@@ -108,7 +110,7 @@ script = EventScript(
         AddFrogCoins(1),
         RunDialog(
             dialog_id=DI1176_RECEIVED_A_FROG_COIN,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,

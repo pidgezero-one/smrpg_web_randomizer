@@ -1,4 +1,6 @@
-# E3696_NIMBUS_CASTLE_WEST_LOWER_HALL_LOADER
+# pylint: disable=C0301
+
+"""E3696_NIMBUS_CASTLE_WEST_LOWER_HALL_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

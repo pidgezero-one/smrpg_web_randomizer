@@ -1,4 +1,6 @@
-# E3626_NIMBUS_SHOP_CHEST_CAMERA_SHIFT
+# pylint: disable=C0301
+
+"""E3626_NIMBUS_SHOP_CHEST_CAMERA_SHIFT"""
 
 from randomizer.scripts.event.script_imports import *
 

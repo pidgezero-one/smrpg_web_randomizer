@@ -1,4 +1,6 @@
-# referenced by monster_attacks Blazer, monster_attacks PhysicalAttack27, monster_attacks PhysicalAttack29, monster_attacks SpritzBomb, monster_attacks PhysicalAttack28
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Blazer, monster_attacks PhysicalAttack27, monster_attacks PhysicalAttack29, monster_attacks SpritzBomb, monster_attacks PhysicalAttack28"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -237,7 +239,7 @@ script = SubroutineOrBanklessScript(
             identifier="queuestart_0x353bea",
         ),
         NewEffectObject(effect=EF0054_BLACK_BALL_ORB, playback_off=True),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         ClearAMEM8Bit(0x68),
         SetAMEM16BitToConst(0x60, 2),
         ObjectQueueAtOffsetAndIndex(index=14, target_address=0x353706),
@@ -256,7 +258,7 @@ script = SubroutineOrBanklessScript(
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_SHIFT, speed=1536, arch_height=0),
         PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
         PlaySound(sound=S0015_SPIKE_STING),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         IncAMEM8BitByConst(0x68, 1),

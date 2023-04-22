@@ -1,4 +1,6 @@
-# referenced by battle_events BE0024_MACHINE_MADE_YARIDOVICH_MULTIPLIER, battle_events BE0015_CROCO_STEALS_ITEMS_YOU_WANT_THEM_BACK, battle_events BE0060_BELOME_CLONES_SOMEONE, battle_events BE0016_CROCO_RETURNS_ITEMS_ENOUGH_HERE_S_YOUR_JUNK
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0024_MACHINE_MADE_YARIDOVICH_MULTIPLIER, battle_events BE0015_CROCO_STEALS_ITEMS_YOU_WANT_THEM_BACK, battle_events BE0060_BELOME_CLONES_SOMEONE, battle_events BE0016_CROCO_RETURNS_ITEMS_ENOUGH_HERE_S_YOUR_JUNK"""
 
 from randomizer.scripts.animation.script_imports import *
 

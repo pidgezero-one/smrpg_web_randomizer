@@ -1,4 +1,4 @@
-# 213 - MezzoBomb
+"""213 - MezzoBomb"""
 
 from randomizer.scripts.monster.script_imports import *
 

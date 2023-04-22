@@ -1,4 +1,6 @@
-# E0351_GAMEBOY_KID
+# pylint: disable=C0301
+
+"""E0351_GAMEBOY_KID"""
 
 from randomizer.scripts.event.script_imports import *
 

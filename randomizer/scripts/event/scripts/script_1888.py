@@ -1,4 +1,6 @@
-# E1888_ABYSS_AXEM_PIT_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1888_ABYSS_AXEM_PIT_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

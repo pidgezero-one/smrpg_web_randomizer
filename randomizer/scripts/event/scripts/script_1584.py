@@ -1,4 +1,6 @@
-# E1584_TEMPLE_FINAL_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1584_TEMPLE_FINAL_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,8 +9,8 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
-                ASShiftEastPixels(11),
-                ASShiftNortheastPixels(4),
+                ASWalkEastPixels(11),
+                ASWalkNortheastPixels(4),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
             ],
@@ -28,10 +30,10 @@ script = EventScript(
             identifier="EVENT_1584_set_bit_0",
         ),
         ActionQueueAsync(
-            target=NPC_1, subscript=[ASShiftWestPixels(8), ASShiftSouthPixels(8)]
+            target=NPC_1, subscript=[ASWalkWestPixels(8), ASWalkSouthPixels(8)]
         ),
         ActionQueueAsync(
-            target=NPC_2, subscript=[ASShiftWestPixels(8), ASShiftSouthPixels(8)]
+            target=NPC_2, subscript=[ASWalkWestPixels(8), ASWalkSouthPixels(8)]
         ),
         Jmp(["EVENT_1584_set_0"]),
         RemoveObjectFromSpecificLevel(
@@ -44,9 +46,11 @@ script = EventScript(
             NPC_2, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN
         ),
         RemoveObjectFromCurrentLevel(NPC_2),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 37, identifier="EVENT_1584_set_0"),
+        SetVarToConst(
+            CURRENT_OVERWORLD_MARKER_ID, OW37_LANDS_END, identifier="EVENT_1584_set_0"
+        ),
         JmpIfBitClear(TEMP_708C_4, ["EVENT_1584_jmp_if_bit_clear_3"]),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 43),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW43_LANDS_END),
         JmpIfBitClear(
             LANDS_END_CHEST_2_REQUESTED,
             ["EVENT_1584_jmp_if_bit_set_5"],

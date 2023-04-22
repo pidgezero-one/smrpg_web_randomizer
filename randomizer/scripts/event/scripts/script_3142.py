@@ -1,4 +1,6 @@
-# E3142_PIPE_TO_BOSS
+# pylint: disable=C0301
+
+"""E3142_PIPE_TO_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 

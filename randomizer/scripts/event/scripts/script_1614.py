@@ -1,4 +1,6 @@
-# E1614_MOLEVILLE_SWAP_SHOP_LOADER
+# pylint: disable=C0301
+
+"""E1614_MOLEVILLE_SWAP_SHOP_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

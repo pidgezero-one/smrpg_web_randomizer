@@ -1,4 +1,4 @@
-# 251 - Valentina
+"""251 - Valentina"""
 
 from randomizer.scripts.monster.script_imports import *
 

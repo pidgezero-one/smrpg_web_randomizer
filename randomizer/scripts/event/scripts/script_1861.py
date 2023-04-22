@@ -1,4 +1,6 @@
-# E1861_KEEP_DONKEY_ROOM_DONKEY
+# pylint: disable=C0301
+
+"""E1861_KEEP_DONKEY_ROOM_DONKEY"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,7 +14,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASJumpToHeight(height=48, silent=True),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASFixedFCoordOff(),
                 ASFaceNorthwest(),
             ],
@@ -34,7 +36,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASStartLoopNTimes(1),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASPause(
                     1, identifier="EVENT_1861_action_queue_async_4_SUBSCRIPT_pause_11"
                 ),
@@ -43,7 +45,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
                 ASEndLoop(),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),

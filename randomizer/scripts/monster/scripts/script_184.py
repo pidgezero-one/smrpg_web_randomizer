@@ -1,4 +1,4 @@
-# 184 - Microbomb
+"""184 - Microbomb"""
 
 from randomizer.scripts.monster.script_imports import *
 

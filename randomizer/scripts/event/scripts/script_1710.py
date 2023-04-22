@@ -1,4 +1,6 @@
-# E1710_BANDITS_WAY_5_LOADER_BACKGROUND_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E1710_BANDITS_WAY_5_LOADER_BACKGROUND_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -42,7 +44,7 @@ script = EventScript(
             target=NPC_8,
             subscript=[
                 ASWalk1StepSouthwest(),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASSetSpriteSequence(
                     index=5, is_sequence=True, looping=True, mirror_sprite=True
                 ),
@@ -107,11 +109,11 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=6),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNorthPixels(4),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(4),
             ],
         ),
         ActionQueueAsync(

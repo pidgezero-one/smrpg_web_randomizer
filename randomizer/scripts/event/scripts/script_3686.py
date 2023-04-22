@@ -1,4 +1,6 @@
-# E3686_MARRYMORE_SHOWER
+# pylint: disable=C0301
+
+"""E3686_MARRYMORE_SHOWER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -44,7 +46,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASPause(60),
                 ASFaceWest(),
                 ASPause(2),

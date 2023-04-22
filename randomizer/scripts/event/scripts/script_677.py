@@ -1,4 +1,6 @@
-# E0677_MARRYMORE_UNOCCUPIED_SANCTUARY_LOADER
+# pylint: disable=C0301
+
+"""E0677_MARRYMORE_UNOCCUPIED_SANCTUARY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

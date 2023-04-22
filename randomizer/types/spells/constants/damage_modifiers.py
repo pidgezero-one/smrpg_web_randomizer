@@ -1,3 +1,5 @@
+"""(unknown)"""
+
 from randomizer.types.spells.constants.classes import DamageModifiers
 
 

@@ -1,4 +1,6 @@
-# E3231_SHIP_CANNONBALL_PUZZLE_INITIATOR_BLOCK
+# pylint: disable=C0301
+
+"""E3231_SHIP_CANNONBALL_PUZZLE_INITIATOR_BLOCK"""
 
 from randomizer.scripts.event.script_imports import *
 

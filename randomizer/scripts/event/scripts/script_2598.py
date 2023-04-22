@@ -1,4 +1,6 @@
-# E2598_FOREST_SECRET_ENTRANCE_LOADER
+# pylint: disable=C0301
+
+"""E2598_FOREST_SECRET_ENTRANCE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

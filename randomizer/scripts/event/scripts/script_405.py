@@ -1,4 +1,6 @@
-# E0405_TABLE_SHYSTER
+# pylint: disable=C0301
+
+"""E0405_TABLE_SHYSTER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -73,9 +75,9 @@ script = EventScript(
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFloatingOn(),
                 ASWalk1StepNorthwest(),
-                ASShiftSouthwestSteps(3),
-                ASShiftNorthwestSteps(1),
-                ASShiftNortheastSteps(2),
+                ASWalkSouthwestSteps(3),
+                ASWalkNorthwestSteps(1),
+                ASWalkNortheastSteps(2),
                 ASVisibilityOff(),
             ],
         ),

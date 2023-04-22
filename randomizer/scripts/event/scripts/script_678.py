@@ -1,4 +1,6 @@
-# E0678_MARRYMORE_JUMP_ON_ORGAN_PIPE
+# pylint: disable=C0301
+
+"""E0678_MARRYMORE_JUMP_ON_ORGAN_PIPE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -38,8 +40,8 @@ script = EventScript(
             subscript=[
                 ASResetProperties(),
                 ASJumpToHeight(96),
-                ASShiftSoutheastSteps(2),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastSteps(2),
+                ASWalkSoutheastPixels(8),
                 ASPause(
                     1, identifier="EVENT_678_action_queue_async_10_SUBSCRIPT_pause_4"
                 ),

@@ -1,4 +1,6 @@
-# E0404_MUSHROOM_KINGDOM_OCCUPIED_SHOP_LOADER
+# pylint: disable=C0301
+
+"""E0404_MUSHROOM_KINGDOM_OCCUPIED_SHOP_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

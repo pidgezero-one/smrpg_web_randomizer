@@ -1,4 +1,6 @@
-# E3788_BEAN_VALLEY_WEST_VINE_ROOM_SUMMON_PLATFORM
+# pylint: disable=C0301
+
+"""E3788_BEAN_VALLEY_WEST_VINE_ROOM_SUMMON_PLATFORM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,11 +18,13 @@ script = EventScript(
         JmpToEvent(E3584_BANK_20_RETURN_EVENT),
         Pause(1, identifier="EVENT_3788_pause_6"),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3584_ret_0"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3788_set_7000_to_pressed_button_11"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_3584_ret_0"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3788_set_7000_to_pressed_button_11"]
+        ),
         Jmp(["EVENT_3788_pause_6"]),
         Set7000ToPressedButton(identifier="EVENT_3788_set_7000_to_pressed_button_11"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3584_ret_0"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_3584_ret_0"]),
         PlaySound(sound=SO014_FLOWER, channel=6),
         SummonObjectToCurrentLevel(NPC_0),
         SummonObjectToSpecificLevel(

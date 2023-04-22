@@ -1,4 +1,6 @@
-# E0641_MARRYMORE_ANTECHAMBER_LOADER_EXTENSION
+# pylint: disable=C0301
+
+"""E0641_MARRYMORE_ANTECHAMBER_LOADER_EXTENSION"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3344_VOLCANO_FINAL_TRAMPOLINE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3344_VOLCANO_FINAL_TRAMPOLINE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -23,7 +25,7 @@ script = EventScript(
                 ASShiftXYPixels(x=252, y=254),
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASJumpToHeight(108),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
                 ASSetSolidityBits(cant_pass_npcs=True, bit_7=True),
@@ -54,7 +56,7 @@ script = EventScript(
                 ASPause(30),
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASJumpToHeight(108),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
                 ASSetSolidityBits(cant_pass_npcs=True, bit_7=True),
@@ -85,7 +87,7 @@ script = EventScript(
                 ASPause(60),
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASJumpToHeight(108),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
                 ASSetSolidityBits(cant_pass_npcs=True, bit_7=True),
@@ -116,7 +118,7 @@ script = EventScript(
                 ASPause(90),
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASJumpToHeight(108),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
                 ASSetSolidityBits(cant_pass_npcs=True, bit_7=True),
@@ -147,7 +149,7 @@ script = EventScript(
                 ASPause(120),
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASJumpToHeight(108),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
                 ASSetSolidityBits(cant_pass_npcs=True, bit_7=True),

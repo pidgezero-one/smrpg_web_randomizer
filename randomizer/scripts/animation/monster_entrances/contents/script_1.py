@@ -1,4 +1,4 @@
-# ENT0001_SLIDE_IN
+"""ENT0001_SLIDE_IN animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

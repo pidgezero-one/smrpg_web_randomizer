@@ -1,4 +1,6 @@
-# E3498_MIDAS_RIVER_BOTTOM_RIGHT_TUNNEL_BACKGROUND
+# pylint: disable=C0301
+
+"""E3498_MIDAS_RIVER_BOTTOM_RIGHT_TUNNEL_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -34,12 +36,12 @@ script = EventScript(
                 ASPlaySound(sound=SO055_LOSE_COINS_COIN_FOUNTAIN, channel=4),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASFixedFCoordOn(),
-                ASShiftEastPixels(4),
-                ASShiftWestPixels(8),
-                ASShiftEastPixels(8),
-                ASShiftWestPixels(8),
-                ASShiftEastPixels(8),
-                ASShiftWestPixels(4),
+                ASWalkEastPixels(4),
+                ASWalkWestPixels(8),
+                ASWalkEastPixels(8),
+                ASWalkWestPixels(8),
+                ASWalkEastPixels(8),
+                ASWalkWestPixels(4),
                 ASFaceSoutheast(),
             ],
         ),
@@ -47,7 +49,7 @@ script = EventScript(
         StartLoopNTimes(7),
         CreatePacketAtObjectCoords(
             packet=P017_SMALL_MINIGAME_COIN,
-            object=NPC_1,
+            target_npc=NPC_1,
             destinations=["EVENT_3498_pause_11"],
         ),
         Pause(1, identifier="EVENT_3498_pause_11"),
@@ -60,10 +62,10 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASFixedFCoordOff(),
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(9),
+                ASWalkNorthwestSteps(9),
                 ASFaceSoutheast(),
             ],
             identifier="EVENT_3498_action_queue_async_18",
@@ -89,7 +91,7 @@ script = EventScript(
         StartLoopNTimes(7),
         CreatePacketAtObjectCoords(
             packet=P017_SMALL_MINIGAME_COIN,
-            object=NPC_3,
+            target_npc=NPC_3,
             destinations=["EVENT_3498_pause_26"],
         ),
         Pause(1, identifier="EVENT_3498_pause_26"),
@@ -105,7 +107,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(SLOW),
                 ASSetSequenceSpeed(FAST),
-                ASShiftWestSteps(2),
+                ASWalkWestSteps(2),
             ],
         ),
         ActionQueueSync(
@@ -124,7 +126,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetAllSpeeds(VERY_FAST),
                 ASJumpToHeight(88),
-                ASShiftEastSteps(2),
+                ASWalkEastSteps(2),
                 ASPlaySound(sound=SO065_THWOMP_STOMP, channel=4),
                 ASFixedFCoordOff(),
                 ASFaceSouthwest(),

@@ -1,4 +1,4 @@
-# 40 - Hobgoblin
+"""40 - Hobgoblin"""
 
 from randomizer.scripts.monster.script_imports import *
 

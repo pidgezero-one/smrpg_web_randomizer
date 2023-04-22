@@ -1,4 +1,4 @@
-# ENT0012_WAIT_THEN_APPEAR
+"""ENT0012_WAIT_THEN_APPEAR animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

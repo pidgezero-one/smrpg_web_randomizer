@@ -1,4 +1,6 @@
-# E1071_BEGIN_MELODY_BAY_TADPOLES
+# pylint: disable=C0301
+
+"""E1071_BEGIN_MELODY_BAY_TADPOLES"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,8 +13,8 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(NORMAL),
                 ASWalkToXYCoords(x=7, y=48),
-                ASShiftNortheastPixels(3),
-                ASShiftNorthwestPixels(2),
+                ASWalkNortheastPixels(3),
+                ASWalkNorthwestPixels(2),
                 ASFaceNortheast(),
                 ASSetWalkingSpeed(NORMAL),
                 ASClearSolidityBits(cant_pass_walls=True),
@@ -41,7 +43,7 @@ script = EventScript(
                 ASSetSequenceSpeed(VERY_SLOW),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
                 ASClearSolidityBits(cant_pass_walls=True),
-                ASShiftSouthwestPixels(6),
+                ASWalkSouthwestPixels(6),
                 ASSequenceLoopingOn(),
             ],
         ),
@@ -108,8 +110,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASTransferToXYZF(x=6, y=43, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASReturn(),
             ],
         ),

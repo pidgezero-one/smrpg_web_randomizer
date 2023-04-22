@@ -1,4 +1,6 @@
-# E3336_CORKPEDITE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3336_CORKPEDITE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -34,7 +36,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[0, 1]),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
             identifier="EVENT_3336_action_queue_async_10",

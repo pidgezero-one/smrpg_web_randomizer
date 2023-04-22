@@ -1,4 +1,6 @@
-# E2431_FOREST_MAZE_AREA_LOADER
+# pylint: disable=C0301
+
+"""E2431_FOREST_MAZE_AREA_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

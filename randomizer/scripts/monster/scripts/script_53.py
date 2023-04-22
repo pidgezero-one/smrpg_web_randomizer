@@ -1,4 +1,4 @@
-# 53 - Remocon
+"""53 - Remocon"""
 
 from randomizer.scripts.monster.script_imports import *
 

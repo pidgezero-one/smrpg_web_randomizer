@@ -1,4 +1,6 @@
-# E1672_LANDS_END_2_SUMMON_INVISIBLE_PLATFORM
+# pylint: disable=C0301
+
+"""E1672_LANDS_END_2_SUMMON_INVISIBLE_PLATFORM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -43,8 +45,8 @@ script = EventScript(
             target=NPC_4,
             subscript=[
                 ASWalk1StepSoutheast(),
-                ASShiftNortheastSteps(4),
-                ASShiftSouthwestSteps(4),
+                ASWalkNortheastSteps(4),
+                ASWalkSouthwestSteps(4),
                 ASWalk1StepNorthwest(),
             ],
         ),

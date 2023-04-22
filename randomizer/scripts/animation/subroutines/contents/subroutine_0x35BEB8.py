@@ -1,4 +1,6 @@
-# referenced by ally_spells Thunderbolt
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Thunderbolt"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -45,14 +47,14 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x35bf01"),
         SetAMEM8BitToOMEMMain(amem=0x6E, omem=0x6E),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 0, ["command_0x35bf01"]),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         ScreenFlashWithDuration(WHITE, 3, 32),
         PlaySound(sound=S0078_TIMED_STAT_BOOST),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=12),
         FadeOutObject(duration=1),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         SetAMEM8BitToConst(0x6E, 1),
@@ -69,9 +71,9 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToOMEMMain(amem=0x6D, omem=0x6F),
         JmpIfAMEM8BitNotEqualsConst(0x6D, 0, ["command_0x35bf41"]),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=24),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=SEQ_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         SetAMEM8BitToConst(0x6F, 1),

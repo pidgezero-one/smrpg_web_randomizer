@@ -1,4 +1,6 @@
-# E1697_BANDITS_WAY_CHEST_PLATFORMS_2
+# pylint: disable=C0301
+
+"""E1697_BANDITS_WAY_CHEST_PLATFORMS_2"""
 
 from randomizer.scripts.event.script_imports import *
 

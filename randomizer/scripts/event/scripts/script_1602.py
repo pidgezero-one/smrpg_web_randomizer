@@ -1,4 +1,6 @@
-# E1602_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_DO_NOT_REMOVE_FROM_LEVEL
+# pylint: disable=C0301
+
+"""E1602_EXP_STAR_SUBROUTINE_CANCEL_NPC_EVENT_DO_NOT_REMOVE_FROM_LEVEL"""
 
 from randomizer.scripts.event.script_imports import *
 

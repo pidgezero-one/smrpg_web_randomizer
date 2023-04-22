@@ -1,3 +1,5 @@
+"""Miscellaneous constants supporting the development of spells."""
+
 STARTING_FP: int = 10
 
 SPELL_BASE_ADDRESS: int = 0x3A20F1

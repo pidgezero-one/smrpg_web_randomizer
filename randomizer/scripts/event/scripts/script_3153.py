@@ -1,4 +1,6 @@
-# E3153_OLD_CHEST_GRANTER
+# pylint: disable=C0301
+
+"""E3153_OLD_CHEST_GRANTER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -135,7 +137,7 @@ script = EventScript(
         ClearBit(EXP_STAR_BIT_5),
         CreatePacketAtObjectCoords(
             packet=P022_RECURSIVE_SPARKLES,
-            object=MARIO,
+            target_npc=MARIO,
             destinations=["EVENT_3153_jmp_103"],
         ),
         Jmp(["EVENT_3153_ret_112"], identifier="EVENT_3153_jmp_103"),
@@ -360,7 +362,7 @@ script = EventScript(
         Inc(HIDDEN_CHEST_COUNTER),
         RunDialog(
             dialog_id=DI3321_YOU_MISSED,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,

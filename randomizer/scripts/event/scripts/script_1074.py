@@ -1,4 +1,6 @@
-# E1074_MELODY_BAY_SONG_JUDGED
+# pylint: disable=C0301
+
+"""E1074_MELODY_BAY_SONG_JUDGED"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASPause(45),
                 ASSetPriority(2),
                 ASResetProperties(),
@@ -42,21 +44,21 @@ script = EventScript(
             subscript=[
                 ASPause(30),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthwestPixels(4),
+                ASWalkSouthwestPixels(4),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestSteps(9),
+                ASWalkSouthwestSteps(9),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthwestPixels(4),
+                ASWalkSouthwestPixels(4),
             ],
         ),
         Pause(15),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(SLOW), ASShiftNortheastSteps(12)],
+            subscript=[ASSetWalkingSpeed(SLOW), ASWalkNortheastSteps(12)],
         ),
         JmpIfBitSet(TOADOFSKY_REMOVED, ["EVENT_1074_set_7000_to_7000_short_mem_7"]),
         JmpIfBitSet(
@@ -195,7 +197,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASSetSpriteSequence(
                     index=1, is_mold=True, looping=True, mirror_sprite=True
                 ),
@@ -240,8 +242,8 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASShiftSoutheastSteps(2),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastSteps(2),
+                ASWalkSoutheastPixels(8),
                 ASSetSpriteSequence(
                     index=1, is_mold=True, looping=True, mirror_sprite=True
                 ),
@@ -285,8 +287,8 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASShiftSoutheastSteps(2),
-                ASShiftSoutheastPixels(10),
+                ASWalkSoutheastSteps(2),
+                ASWalkSoutheastPixels(10),
                 ASSetSpriteSequence(
                     index=1, is_mold=True, looping=True, mirror_sprite=True
                 ),
@@ -330,8 +332,8 @@ script = EventScript(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 ),
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftSoutheastSteps(2),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastSteps(2),
+                ASWalkSoutheastPixels(8),
             ],
         ),
         Pause(15),
@@ -391,11 +393,11 @@ script = EventScript(
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(112),
-                ASShiftSoutheastSteps(7),
+                ASWalkSoutheastSteps(7),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
                 ASPause(80),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-                ASShiftSouthwestSteps(8),
+                ASWalkSouthwestSteps(8),
                 ASVisibilityOff(),
             ],
             identifier="EVENT_1074_action_queue_async_185",

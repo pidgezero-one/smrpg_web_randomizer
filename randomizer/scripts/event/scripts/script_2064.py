@@ -1,4 +1,6 @@
-# E2064_DOJO_LOADER
+# pylint: disable=C0301
+
+"""E2064_DOJO_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,9 +10,9 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastSteps(2),
+                ASWalkEastSteps(2),
                 ASShiftNorthSteps(1),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
             ],
         ),
         JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["EVENT_2064_action_queue_sync_15"]),

@@ -1,4 +1,6 @@
-# E0943_KEEP_SECOND_BOSS_ANIMATION_SUBROUTINE
+# pylint: disable=C0301
+
+"""E0943_KEEP_SECOND_BOSS_ANIMATION_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 

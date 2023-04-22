@@ -1,4 +1,6 @@
-# E3504_BOOSTER_HILL_HENCHMAN_INTERACTION
+# pylint: disable=C0301
+
+"""E3504_BOOSTER_HILL_HENCHMAN_INTERACTION"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
             ["EVENT_3504_reset_coords_15", "EVENT_3504_set_7000_to_object_coord_4"]
         ),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_Z,
             pixel=True,
             identifier="EVENT_3504_set_7000_to_object_coord_4",
@@ -43,7 +45,7 @@ script = EventScript(
                 ASJmpIfLoadedMemoryIsAboveOrEqual0(
                     ["EVENT_3504_action_queue_async_9_SUBSCRIPT_pause_15"]
                 ),
-                ASShiftSoutheastPixels(2),
+                ASWalkSoutheastPixels(2),
                 ASAddConstToVar(SECONDARY_TEMP_7024, 65534),
                 ASJmp(["EVENT_3504_action_queue_async_9_SUBSCRIPT_visibility_off_7"]),
                 ASPause(

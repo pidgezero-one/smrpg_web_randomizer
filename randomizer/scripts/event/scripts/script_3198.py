@@ -1,4 +1,6 @@
-# E3198_SHYGUY_CART_PUSHES_MARIO_INTO_SMALLER_ROOM
+# pylint: disable=C0301
+
+"""E3198_SHYGUY_CART_PUSHES_MARIO_INTO_SMALLER_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -54,7 +56,7 @@ script = EventScript(
                 ASSetBit(TEMP_7043_2),
                 ASJumpToHeight(height=128, silent=True),
                 ASPause(16),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASPause(
                     1, identifier="EVENT_3198_action_queue_sync_11_SUBSCRIPT_pause_8"
                 ),
@@ -90,8 +92,8 @@ script = EventScript(
                 ASPlaySound(sound=SO021_RUMBLING, channel=6),
                 ASSetWalkingSpeed(FAST),
                 ASStartLoopNTimes(3),
-                ASShiftSouthwestPixels(4),
-                ASShiftNortheastPixels(4),
+                ASWalkSouthwestPixels(4),
+                ASWalkNortheastPixels(4),
                 ASEndLoop(),
                 ASSetWalkingSpeed(NORMAL),
             ],
@@ -106,10 +108,10 @@ script = EventScript(
                 ASSetSpriteSequence(index=7, is_sequence=True, looping=True),
                 ASPause(6),
                 ASVisibilityOn(),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASStartLoopNTimes(1),
-                ASShiftWestPixels(2),
-                ASShiftEastPixels(2),
+                ASWalkWestPixels(2),
+                ASWalkEastPixels(2),
                 ASEndLoop(),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASWalk1StepNortheast(),
@@ -141,10 +143,10 @@ script = EventScript(
                 ASPause(6),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=False),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASStartLoopNTimes(1),
-                ASShiftWestPixels(2),
-                ASShiftEastPixels(2),
+                ASWalkWestPixels(2),
+                ASWalkEastPixels(2),
                 ASEndLoop(),
                 ASJumpToHeight(128),
                 ASSequenceLoopingOn(),

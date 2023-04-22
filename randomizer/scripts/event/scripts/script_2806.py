@@ -1,4 +1,6 @@
-# E2806_FOREST_MAZE_ROOM_BEFORE_TRUNK_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2806_FOREST_MAZE_ROOM_BEFORE_TRUNK_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

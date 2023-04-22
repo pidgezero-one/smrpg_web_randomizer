@@ -1,4 +1,6 @@
-# E2278_BALCONY_LOADER_AFTER_NIMBUS_CASTLE
+# pylint: disable=C0301
+
+"""E2278_BALCONY_LOADER_AFTER_NIMBUS_CASTLE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,7 +19,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASTransferToXYZF(x=4, y=23, z=0, direction=EAST),
                 ASVisibilityOn(),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASFaceNorthwest(),
             ],
         ),
@@ -36,7 +38,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASTransferToXYZF(x=5, y=21, z=0, direction=EAST),
                 ASVisibilityOn(),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASFaceNorthwest(),
             ],
         ),

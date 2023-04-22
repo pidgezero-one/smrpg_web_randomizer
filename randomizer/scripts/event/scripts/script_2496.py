@@ -1,4 +1,6 @@
-# E2496_START_GAME
+# pylint: disable=C0301
+
+"""E2496_START_GAME"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -78,7 +80,7 @@ script = EventScript(
             room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN,
             mod_id=0,
         ),
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 8),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW08_MARIOS_PAD),
         SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_MARIOS_PAD),
         SetBit(MAP_DIRECTIONAL_MARIOS_PAD_MUSHROOM_WAY),
         SetBit(MAP_DIRECTIONAL_MUSHROOM_WAY_MUSHROOM_KINGDOM),

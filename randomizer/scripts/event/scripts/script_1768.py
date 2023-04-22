@@ -1,4 +1,6 @@
-# E1768_TEMPLE_BOSS
+# pylint: disable=C0301
+
+"""E1768_TEMPLE_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 

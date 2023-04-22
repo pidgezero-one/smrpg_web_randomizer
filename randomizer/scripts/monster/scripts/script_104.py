@@ -1,4 +1,4 @@
-# 104 - Strawhead
+"""104 - Strawhead"""
 
 from randomizer.scripts.monster.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1294_COLLECT_FREESTANDING_SMALL_FROG_COIN
+# pylint: disable=C0301
+
+"""E1294_COLLECT_FREESTANDING_SMALL_FROG_COIN"""
 
 from randomizer.scripts.event.script_imports import *
 

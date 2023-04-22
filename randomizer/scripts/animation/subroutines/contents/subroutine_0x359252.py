@@ -1,4 +1,6 @@
-# referenced by ally_spells Jump
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Jump"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -133,7 +135,7 @@ script = SubroutineOrBanklessScript(
             destinations=["147"],
         ),
         NewEffectObject(effect=EF0036_BLANK_WHITE_FLASH__2BPP_, playback_off=True),
-        Layer3On(property=TRANSPARENCY_OFF),
+        Layer3On(prop=TRANSPARENCY_OFF),
         Db(bytearray(b"\xba\x03\xe8\x00")),
         SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=1, y=1443, z=2592),
         SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=8332, y=268, z=8704),
@@ -181,7 +183,7 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntilAMEMBitsSet(0x6F, [0, 1, 2, 3, 4, 5, 6, 7]),
         JmpIfAMEM8BitNotEqualsConst(0x6A, 1, ["command_0x359367"]),
         Db(bytearray(b"\xa8\x02\x00")),
-        Layer3Off(property=TRANSPARENCY_OFF),
+        Layer3Off(prop=TRANSPARENCY_OFF),
         Pause2Frames(),
         ClearEffectIndex(),
         SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6C, identifier="command_0x359367"),

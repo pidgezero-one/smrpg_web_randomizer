@@ -1,4 +1,6 @@
-# referenced by ally_spells Geno Whirl
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Geno Whirl"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -156,10 +158,10 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x35bba8"),
         SetAMEM8BitTo7E1x(0x6E, 0x7EE020),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 3, ["command_0x35bba8"]),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         PlaySound(sound=S0063_GENO_BLAST_IGNITION),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         SetAMEM8BitToConst(0x6E, 1),

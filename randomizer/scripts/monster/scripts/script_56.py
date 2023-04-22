@@ -1,4 +1,4 @@
-# 56 - Dodo
+"""56 - Dodo"""
 
 from randomizer.scripts.monster.script_imports import *
 

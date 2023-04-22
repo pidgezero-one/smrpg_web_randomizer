@@ -1,4 +1,6 @@
-# referenced by monster_attacks Jinxed, monster_attacks TripleKick
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Jinxed, monster_attacks TripleKick"""
 
 from randomizer.scripts.animation.script_imports import *
 

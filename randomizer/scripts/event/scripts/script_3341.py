@@ -1,4 +1,6 @@
-# E3341_VOLCANO_SMALL_BOSS_PATH_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3341_VOLCANO_SMALL_BOSS_PATH_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,7 +18,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASVisibilityOff(),
             ],
         ),

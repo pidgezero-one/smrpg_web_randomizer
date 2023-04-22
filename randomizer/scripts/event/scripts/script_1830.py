@@ -1,4 +1,6 @@
-# E1830_KEEP_HANDLE_ROOM_RELOAD_AFTER_LAVA_FALL
+# pylint: disable=C0301
+
+"""E1830_KEEP_HANDLE_ROOM_RELOAD_AFTER_LAVA_FALL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -25,7 +27,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1830_pause_20"]),
         CreatePacketAtObjectCoords(
             packet=P017_SMALL_MINIGAME_COIN,
-            object=MARIO,
+            target_npc=MARIO,
             destinations=["EVENT_1830_pause_20"],
         ),
         SetVarToConst(PRIMARY_TEMP_7000, 1),
@@ -61,9 +63,13 @@ script = EventScript(
             identifier="EVENT_1830_set_7000_to_7000_short_mem_35",
         ),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ACTIVE_NPC),
-        Set7000ToObjectCoord(object=MEM_70A8, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(
+            target_npc=MEM_70A8, coord=COORD_X, pixel=True, bit_7=True
+        ),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_702E),
-        Set7000ToObjectCoord(object=MEM_70A8, coord=COORD_Y, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(
+            target_npc=MEM_70A8, coord=COORD_Y, pixel=True, bit_7=True
+        ),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_7030),
         EnterArea(
             room_id=R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,

@@ -1,4 +1,6 @@
-# E1692_TEMPLE_FORTUNE_SCROLL
+# pylint: disable=C0301
+
+"""E1692_TEMPLE_FORTUNE_SCROLL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -29,7 +31,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI1249_FORTUNE_PREAMBLE,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=False,
             sync=False,
             multiline=True,

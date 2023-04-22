@@ -1,4 +1,6 @@
-# E0282_UNKNOWN_PIPE_VAULT
+# pylint: disable=C0301
+
+"""E0282_UNKNOWN_PIPE_VAULT"""
 
 from randomizer.scripts.event.script_imports import *
 

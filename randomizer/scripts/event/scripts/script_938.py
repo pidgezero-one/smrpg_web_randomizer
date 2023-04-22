@@ -1,4 +1,6 @@
-# E0938_PECK_SUBROUTINE_RIGHT_STATUE
+# pylint: disable=C0301
+
+"""E0938_PECK_SUBROUTINE_RIGHT_STATUE"""
 
 from randomizer.scripts.event.script_imports import *
 

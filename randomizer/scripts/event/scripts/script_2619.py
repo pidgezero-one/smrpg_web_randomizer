@@ -1,4 +1,6 @@
-# E2619_ENDING_CREDITS_SUNSET
+# pylint: disable=C0301
+
+"""E2619_ENDING_CREDITS_SUNSET"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -23,7 +25,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(SLOW),
                 ASShiftSouthSteps(4),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
             ],
         ),
         StarMaskExpandFromScreenCenter(),

@@ -1,4 +1,6 @@
-# E3144_ROSE_WAY_MAIN_ROOM_PLATFORMS_BACKGROUND
+# pylint: disable=C0301
+
+"""E3144_ROSE_WAY_MAIN_ROOM_PLATFORMS_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 

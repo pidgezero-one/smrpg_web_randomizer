@@ -1,4 +1,6 @@
-# E1571_MIDAS_RIVER_BARREL_SECTION_BUSINESS_LOGIC
+# pylint: disable=C0301
+
+"""E1571_MIDAS_RIVER_BARREL_SECTION_BUSINESS_LOGIC"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -28,8 +30,8 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASShiftSouthwestPixels(4),
-                ASShiftNortheastSteps(2),
+                ASWalkSouthwestPixels(4),
+                ASWalkNortheastSteps(2),
             ],
         ),
         ActionQueueAsync(
@@ -61,7 +63,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
             ],
         ),
@@ -69,11 +71,11 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(4),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(4),
                 ASSetWalkingSpeed(FAST),
             ],
         ),
@@ -105,7 +107,9 @@ script = EventScript(
         JmpIfBitSet(TEMP_7044_7, ["EVENT_1571_clear_bit_82"]),
         JmpIfBitSet(UNKNOWN_MIDAS_RIVER_7078_2, ["EVENT_1571_adjust_music_tempo_132"]),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1571_jmp_if_mario_in_air_77"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1571_jmp_if_mario_in_air_77"]
+        ),
         Jmp(["EVENT_1571_pause_71"]),
         JmpIfMarioInAir(
             ["EVENT_1571_pause_71"], identifier="EVENT_1571_jmp_if_mario_in_air_77"
@@ -125,9 +129,9 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(4),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(4),
                 ASSetWalkingSpeed(FAST),
             ],
         ),
@@ -172,7 +176,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=4, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
             ],
         ),
         StoreSetBits(TEMP_7044_6),
@@ -190,7 +194,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASJumpToHeight(48),
-                ASShiftNortheastPixels(4),
+                ASWalkNortheastPixels(4),
                 ASResetProperties(),
             ],
         ),
@@ -219,7 +223,7 @@ script = EventScript(
         SetSyncActionScript(MEM_70A9, A0592_MIDAS_BARREL_CAMERA),
         SetSyncActionScript(MARIO, A0592_MIDAS_BARREL_CAMERA),
         PauseActionScript(SCREEN_FOCUS),
-        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASShiftSouthwestSteps(14)]),
+        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkSouthwestSteps(14)]),
         FadeOutToBlack(sync=False, duration=32),
         EnterArea(
             room_id=R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA,

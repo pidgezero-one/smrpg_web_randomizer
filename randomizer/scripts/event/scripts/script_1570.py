@@ -1,4 +1,6 @@
-# E1570_MIDAS_RIVER_FISH
+# pylint: disable=C0301
+
+"""E1570_MIDAS_RIVER_FISH"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -53,11 +55,11 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(4),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(4),
                 ASSetWalkingSpeed(FAST),
             ],
             identifier="EVENT_1570_action_queue_sync_11",
@@ -68,7 +70,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1570_pause_18"]),
         CreatePacketAtObjectCoords(
             packet=P017_SMALL_MINIGAME_COIN,
-            object=MARIO,
+            target_npc=MARIO,
             destinations=["EVENT_1570_pause_18"],
         ),
         Dec(TEMP_702A),

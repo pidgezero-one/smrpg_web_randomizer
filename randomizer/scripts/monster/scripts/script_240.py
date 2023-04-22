@@ -1,4 +1,4 @@
-# 240 - Croco1
+"""240 - Croco1"""
 
 from randomizer.scripts.monster.script_imports import *
 

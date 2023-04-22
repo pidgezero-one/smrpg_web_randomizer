@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack89, monster_attacks SporeChimes, monster_attacks GunkBall, monster_attacks DoomReverb, monster_attacks Quicksilver, monster_attacks 114, monster_attacks PhysicalAttack90
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack89, monster_attacks SporeChimes, monster_attacks GunkBall, monster_attacks DoomReverb, monster_attacks Quicksilver, monster_attacks 114, monster_attacks PhysicalAttack90"""
 
 from randomizer.scripts.animation.script_imports import *
 

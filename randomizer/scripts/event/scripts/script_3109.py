@@ -1,4 +1,6 @@
-# E3109_FREESTANDING_BEETLEMANIA_GRANT
+# pylint: disable=C0301
+
+"""E3109_FREESTANDING_BEETLEMANIA_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
         SetBit(BEETLEMANIA_UNLOCKED),
         RunDialog(
             dialog_id=DI3077_GOT_BEETLEMANIA,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,

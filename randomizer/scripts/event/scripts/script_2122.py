@@ -1,4 +1,6 @@
-# E2122_STAR_HILL_STAR_PIECE
+# pylint: disable=C0301
+
+"""E2122_STAR_HILL_STAR_PIECE"""
 
 from randomizer.scripts.event.script_imports import *
 

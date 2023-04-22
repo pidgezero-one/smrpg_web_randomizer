@@ -1,4 +1,6 @@
-# E0720_OLD_STAR_PIECE_SCRIPT
+# pylint: disable=C0301
+
+"""E0720_OLD_STAR_PIECE_SCRIPT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -212,9 +214,9 @@ script = EventScript(
                 ASJumpToHeight(56),
                 ASPause(32),
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
-                ASShiftSoutheastSteps(3),
-                ASShiftSouthwestSteps(3),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(3),
+                ASWalkSouthwestSteps(3),
+                ASWalkSoutheastSteps(2),
                 ASVisibilityOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASReturn(),
@@ -235,7 +237,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6),
         RunDialog(
             dialog_id=DI1645_EMPTY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -280,9 +282,9 @@ script = EventScript(
                 ASJumpToHeight(56),
                 ASPause(32),
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
-                ASShiftNorthwestSteps(5),
-                ASShiftSouthwestSteps(5),
-                ASShiftNorthwestSteps(4),
+                ASWalkNorthwestSteps(5),
+                ASWalkSouthwestSteps(5),
+                ASWalkNorthwestSteps(4),
                 ASVisibilityOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASReturn(),
@@ -303,7 +305,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6),
         RunDialog(
             dialog_id=DI1645_EMPTY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -346,8 +348,8 @@ script = EventScript(
                 ASJumpToHeight(56),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
-                ASShiftSoutheastSteps(4),
-                ASShiftNortheastSteps(3),
+                ASWalkSoutheastSteps(4),
+                ASWalkNortheastSteps(3),
                 ASVisibilityOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASReturn(),
@@ -368,7 +370,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6),
         RunDialog(
             dialog_id=DI1645_EMPTY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -567,7 +569,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASLoadMemory(PRIMARY_TEMP_7000),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASEndLoop(),
             ],
         ),

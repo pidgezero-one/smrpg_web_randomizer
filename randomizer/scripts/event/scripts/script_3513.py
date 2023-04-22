@@ -1,4 +1,6 @@
-# E3513_MIDAS_RIVER_BOTTOM_RIGHT_TUNNEL_ITEM_GRANTER
+# pylint: disable=C0301
+
+"""E3513_MIDAS_RIVER_BOTTOM_RIGHT_TUNNEL_ITEM_GRANTER"""
 
 from randomizer.scripts.event.script_imports import *
 

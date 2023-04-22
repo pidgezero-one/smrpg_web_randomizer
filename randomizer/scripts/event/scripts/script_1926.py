@@ -1,4 +1,6 @@
-# E1926_TOWER_BALCONY_LOADER
+# pylint: disable=C0301
+
+"""E1926_TOWER_BALCONY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

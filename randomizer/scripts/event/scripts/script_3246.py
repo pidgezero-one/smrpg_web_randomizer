@@ -1,4 +1,6 @@
-# E3246_DRY_BONES_FIGHT
+# pylint: disable=C0301
+
+"""E3246_DRY_BONES_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1677_TEMPLE_PIPE_TO_MONSTRO
+# pylint: disable=C0301
+
+"""E1677_TEMPLE_PIPE_TO_MONSTRO"""
 
 from randomizer.scripts.event.script_imports import *
 

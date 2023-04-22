@@ -1,14 +1,16 @@
-# E3225_SHIP_PASSWORD_BOX_DIALOG
+# pylint: disable=C0301
+
+"""E3225_SHIP_PASSWORD_BOX_DIALOG"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
         Pause(1, identifier="EVENT_3225_pause_0"),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_7032),
         VarShiftLeft(TEMP_7032, 248),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Y, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True, bit_7=True),
         AddVarTo7000(TEMP_7032),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3378, ["EVENT_3225_jmp_if_bit_set_15"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3636, ["EVENT_3225_jmp_if_bit_set_33"]),

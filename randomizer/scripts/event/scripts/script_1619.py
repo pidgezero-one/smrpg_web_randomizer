@@ -1,4 +1,6 @@
-# E1619_OCCUPIED_MOLEVILLE_EXTERIOR_NPC_TRIGGER_CUTSCENE
+# pylint: disable=C0301
+
+"""E1619_OCCUPIED_MOLEVILLE_EXTERIOR_NPC_TRIGGER_CUTSCENE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -58,7 +60,7 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-                ASShiftEastSteps(2),
+                ASWalkEastSteps(2),
                 ASFaceSoutheast(),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True

@@ -1,4 +1,6 @@
-# E1358_CURTAIN_GAME_BEGINS_NPCS_WALK_INTO_ROOM
+# pylint: disable=C0301
+
+"""E1358_CURTAIN_GAME_BEGINS_NPCS_WALK_INTO_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -27,8 +29,8 @@ script = EventScript(
                 ASSetSequenceSpeed(NORMAL),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-                ASShiftSouthwestSteps(3),
-                ASShiftNorthwestSteps(2),
+                ASWalkSouthwestSteps(3),
+                ASWalkNorthwestSteps(2),
                 ASFaceNortheast(),
             ],
         ),
@@ -43,8 +45,8 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-                ASShiftSouthwestSteps(7),
-                ASShiftNorthwestSteps(5),
+                ASWalkSouthwestSteps(7),
+                ASWalkNorthwestSteps(5),
                 ASFaceNortheast(),
                 ASSetPriority(3),
             ],
@@ -61,8 +63,8 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-                ASShiftSouthwestSteps(7),
-                ASShiftNorthwestSteps(3),
+                ASWalkSouthwestSteps(7),
+                ASWalkNorthwestSteps(3),
                 ASFaceNortheast(),
                 ASSetPriority(3),
             ],
@@ -80,8 +82,8 @@ script = EventScript(
                 ASSetSequenceSpeed(VERY_FAST),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-                ASShiftSouthwestSteps(7),
-                ASShiftNorthwestSteps(1),
+                ASWalkSouthwestSteps(7),
+                ASWalkNorthwestSteps(1),
                 ASFaceNortheast(),
                 ASSetPriority(3),
             ],
@@ -92,8 +94,8 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
-                ASShiftSouthwestSteps(1),
-                ASShiftNorthwestSteps(1),
+                ASWalkSouthwestSteps(1),
+                ASWalkNorthwestSteps(1),
                 ASSetAllSpeeds(NORMAL),
                 ASPause(30),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),

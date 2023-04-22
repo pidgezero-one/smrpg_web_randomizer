@@ -1,4 +1,6 @@
-# E1732_SKY_BRIDGE_BACKGROUND
+# pylint: disable=C0301
+
+"""E1732_SKY_BRIDGE_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 

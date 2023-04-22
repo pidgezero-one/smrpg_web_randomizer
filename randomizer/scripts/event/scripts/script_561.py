@@ -1,4 +1,6 @@
-# E0561_PLACE_LINK_IN_ROSE_TOWN
+# pylint: disable=C0301
+
+"""E0561_PLACE_LINK_IN_ROSE_TOWN"""
 
 from randomizer.scripts.event.script_imports import *
 

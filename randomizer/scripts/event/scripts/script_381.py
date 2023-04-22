@@ -1,4 +1,6 @@
-# E0381_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_ANTECHAMBER_FIGHT
+# pylint: disable=C0301
+
+"""E0381_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_ANTECHAMBER_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,7 +21,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASWalkToXYCoords(x=12, y=95),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceNorthwest(),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
@@ -50,9 +52,9 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\xc0\x06`\xff")),
-                ASShiftSoutheastPixels(11),
+                ASWalkSoutheastPixels(11),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSoutheastPixels(4),
+                ASWalkSoutheastPixels(4),
                 ASBPL262728(),
             ],
         ),
@@ -66,9 +68,9 @@ script = EventScript(
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\xc0\x06`\xff")),
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=6),
-                ASShiftNorthwestPixels(11),
+                ASWalkNorthwestPixels(11),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNorthwestPixels(4),
+                ASWalkNorthwestPixels(4),
                 ASBPL262728(),
             ],
         ),
@@ -102,14 +104,14 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASFaceNorthwest(),
             ],
         ),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=NPC_2,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASShiftNortheastPixels(8)],
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNortheastPixels(8)],
         ),
         ApplyTileModToLevel(
             use_alternate=True,

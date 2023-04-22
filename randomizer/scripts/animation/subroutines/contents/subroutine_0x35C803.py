@@ -1,10 +1,10 @@
-# referenced by ,items KerokeroCola,items MapleSyrup,items Megalixir,items 79,items BadMushroom,items RoyalSyrup,items SleepyBomb,items AbleJuice,items Bracer,items MukuCookie,items RockCandy,items PureWater,items Elixir,items IceBomb,items YoshiAde,items HoneySyrup,items MidMushroom,items RedEssence,items FireBomb,items Mushroom,items RottenMush,items FroggieDrink,items PickMeUp,items Energizer,items MysteryEgg,items WiltShroom,items MaxMushroom
+# pylint: disable=C0301,C0103
+
+"""referenced by ,items KerokeroCola,items MapleSyrup,items Megalixir,items 79,items BadMushroom,items RoyalSyrup,items SleepyBomb,items AbleJuice,items Bracer,items MukuCookie,items RockCandy,items PureWater,items Elixir,items IceBomb,items YoshiAde,items HoneySyrup,items MidMushroom,items RedEssence,items FireBomb,items Mushroom,items RottenMush,items FroggieDrink,items PickMeUp,items Energizer,items MysteryEgg,items WiltShroom,items MaxMushroom"""
 
 # classes
 from randomizer.types.battle_animation_scripts.commands import *
 from randomizer.types.battle_animation_scripts.classes import (
-    AnimationScript,
-    BattleAnimationScript,
     SubroutineOrBanklessScript,
 )
 
@@ -24,7 +24,7 @@ from randomizer.types.battle_animation_scripts.constants.battle_targets import *
 from randomizer.types.battle_animation_scripts.constants.script_ids.battle_events import *
 from randomizer.types.sprites.constants.sprite_ids import *
 from randomizer.entities.items.items import *
-from randomizer.entities.enemies.enemies import *
+from randomizer.entities.enemies import *
 
 # types
 # entities

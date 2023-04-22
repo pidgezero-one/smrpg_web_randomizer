@@ -9,7 +9,6 @@ from randomizer.types.items.enums import (
     EffectType,
     EquipStats,
     ItemShuffleType,
-    ItemTempBuff,
     ItemTypeValue,
     ItemUnique,
 )
@@ -22,6 +21,8 @@ from randomizer.types.items.constants import (
     ITEMS_DESC_DATA_POINTER_OFFSET,
     NUM_ITEMS,
 )
+from randomizer.types.npcs.objects.classes import ItemNPC
+from randomizer.types.npcs.objects.npcs import BigCoin, ItemBag, SmallCoin, TinyStar
 from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
     E0242_CHEST_6_GRANT,
     E0243_CHEST_5_GRANT,
@@ -35,10 +36,9 @@ from randomizer.types.overworld_scripts.event_scripts.constants.script_ids impor
     E3404_COIN_CHEST_MULTI_HIT_5,
     E3405_COIN_CHEST_MULTI_HIT_6,
 )
-from randomizer.types.spells.enums import Status, Element
+from randomizer.types.spells.enums import Status, Element, TempStatBuff
 from randomizer.types.overworld_scripts.variables.classes import Flag
 from randomizer.types.patch.classes import Patch
-from randomizer.data import npcs
 from randomizer.types.overworld_scripts.constants.area_objects import PartyCharacter
 from randomizer.types.numbers.classes import UInt16, UInt8, ByteField, BitMapSet
 
@@ -71,7 +71,7 @@ class Item:
     _elemental_immunities: List[Element] = []
     _elemental_resistances: List[Element] = []
     _status_immunities: List[Status] = []
-    _temp_buffs: List[ItemTempBuff] = []
+    _temp_buffs: List[TempStatBuff] = []
     _price: int = 0
     _frog_coin_item: bool = False
     _original_effect_type: EffectType = EffectType.NORMAL
@@ -83,7 +83,7 @@ class Item:
     _rank_order: int = 0
     _rank_order_reverse: int = 0
     _arbitrary_value: int = 0
-    _model: Type[npcs.ItemNPC] = npcs.ItemBag
+    _model: Type[ItemNPC] = ItemBag
     _chest_70a7_lower: int = 0
     _chest_70a7_upper: int = 0
     _packet: int = 0
@@ -225,7 +225,7 @@ class Item:
             self._status_immunities.remove(immunity)
 
     @property
-    def temp_buffs(self) -> List[ItemTempBuff]:
+    def temp_buffs(self) -> List[TempStatBuff]:
         """Boost multiplier effects applied to the wearer at the start of battle."""
         return deepcopy(self._temp_buffs)
 
@@ -324,7 +324,7 @@ class Item:
         return UInt16(self._arbitrary_value)
 
     @property
-    def model(self) -> Type[npcs.ItemNPC]:
+    def model(self) -> Type[ItemNPC]:
         """Graphic object that should be used to represent this item in the overworld."""
         return self._model
 
@@ -461,7 +461,7 @@ class Item:
         # If this is a special item, don't replace it.
         if self.rank_value <= 0:
             return self
-        elif self not in candidates:
+        if self not in candidates:
             return self
 
         # Sort by rank and mutate our position within the list to get a replacement item.
@@ -522,9 +522,7 @@ class Item:
         descriptions = [""] * NUM_ITEMS
         for item in world.items:
             # If this isn't an equipment, use the vanilla description, if any.
-            if (
-                isinstance(item, Equipment) or isinstance(item, RegularItem)
-            ) and item.price != 0:
+            if isinstance(item, (Equipment, RegularItem)) and item.price != 0:
                 desc = item.description
             else:
                 continue
@@ -588,6 +586,9 @@ class Item:
         return patch
 
 
+ItemT = TypeVar("ItemT", bound=Item)
+
+
 class Equipment(Item):
     """Base class for weapons, armor, and accessories."""
 
@@ -623,21 +624,21 @@ class Equipment(Item):
 
         # Physical attack/defense
         desc += ["\x8B", "\x8C"][self.attack < 0]
-        desc += ["\x20", "\x95"][ItemTempBuff.ATTACK in self.temp_buffs]
+        desc += ["\x20", "\x95"][TempStatBuff.ATTACK in self.temp_buffs]
         desc += str(abs(self.attack)).ljust(3, "\x99")
         desc += "\x99"
         desc += ["\x8F", "\x90"][self.defense < 0]
-        desc += ["\x20", "\x95"][ItemTempBuff.DEFENSE in self.temp_buffs]
+        desc += ["\x20", "\x95"][TempStatBuff.DEFENSE in self.temp_buffs]
         desc += str(abs(self.defense)).ljust(3, "\x99")
         desc += "\x01"
 
         # Magic attack/defense
         desc += ["\x8D", "\x8E"][self.magic_attack < 0]
-        desc += ["\x20", "\x95"][ItemTempBuff.MAGIC_ATTACK in self.temp_buffs]
+        desc += ["\x20", "\x95"][TempStatBuff.MAGIC_ATTACK in self.temp_buffs]
         desc += str(abs(self.magic_attack)).ljust(3, "\x99")
         desc += "\x99"
         desc += ["\x91", "\x92"][self.magic_defense < 0]
-        desc += ["\x20", "\x95"][ItemTempBuff.MAGIC_DEFENSE in self.temp_buffs]
+        desc += ["\x20", "\x95"][TempStatBuff.MAGIC_DEFENSE in self.temp_buffs]
         desc += str(abs(self.magic_defense)).ljust(3, "\x99")
 
         self.set_description(desc)
@@ -711,18 +712,18 @@ class Equipment(Item):
             self._elemental_resistances.remove(element)
             self._build_equipment_description()
 
-    def set_temp_buffs(self, temp_buffs: List[ItemTempBuff]) -> None:
+    def set_temp_buffs(self, temp_buffs: List[TempStatBuff]) -> None:
         """Overwrite the buff multipliers for this equip."""
         self._temp_buffs = deepcopy(temp_buffs)
         self._build_equipment_description()
 
-    def append_temp_buff(self, buff: ItemTempBuff) -> None:
+    def append_temp_buff(self, buff: TempStatBuff) -> None:
         """Add a buff multiplier to this equip."""
         if buff not in self._temp_buffs:
             self._temp_buffs.append(buff)
             self._build_equipment_description()
 
-    def remove_temp_buff(self, buff: ItemTempBuff) -> None:
+    def remove_temp_buff(self, buff: TempStatBuff) -> None:
         """Remove a buff multiplier from this equip."""
         if buff in self._temp_buffs:
             self._temp_buffs.remove(buff)
@@ -783,7 +784,7 @@ class Equipment(Item):
 
         patch.add_data(base_addr, data)
 
-        patch += super().get_patch
+        patch += super().get_patch()
 
         return patch
 
@@ -808,8 +809,7 @@ class Weapon(Equipment):
         """Primary stats of this item, depending on the type."""
         if self.attack >= self.magic_attack:
             return [EquipStats.ATTACK]
-        else:
-            return [EquipStats.MAGIC_ATTACK]
+        return [EquipStats.MAGIC_ATTACK]
 
 
 class Armor(Equipment):
@@ -837,7 +837,7 @@ class Accessory(Equipment):
         if self.item_id == 82:
             return [EquipStats.DEFENSE, EquipStats.MAGIC_DEFENSE]
         # Speed items are the Zoom Shoes and Feather
-        elif self.item_id in [74, 91]:
+        if self.item_id in [74, 91]:
             return [EquipStats.SPEED]
         return super().primary_stats
 
@@ -944,16 +944,15 @@ class Coins(MiscReward):
         six chests can be present in one room."""
         if parent == E0246_CHEST_2_GRANT:
             return E3401_COIN_CHEST_MULTI_HIT_2
-        elif parent == E0245_CHEST_3_GRANT:
+        if parent == E0245_CHEST_3_GRANT:
             return E3402_COIN_CHEST_MULTI_HIT_3
-        elif parent == E0244_CHEST_4_GRANT:
+        if parent == E0244_CHEST_4_GRANT:
             return E3403_COIN_CHEST_MULTI_HIT_4
-        elif parent == E0243_CHEST_5_GRANT:
+        if parent == E0243_CHEST_5_GRANT:
             return E3404_COIN_CHEST_MULTI_HIT_5
-        elif parent == E0242_CHEST_6_GRANT:
+        if parent == E0242_CHEST_6_GRANT:
             return E3405_COIN_CHEST_MULTI_HIT_6
-        else:
-            return E3074_COIN_CHEST_MULTI_HIT_1
+        return E3074_COIN_CHEST_MULTI_HIT_1
 
     @property
     def chest_event(self):
@@ -962,11 +961,11 @@ class Coins(MiscReward):
     def __init__(self, amount=0, world: Optional[GameWorld] = None):
         super().__init__(world)
         if amount < 10:
-            self._model: Type[npcs.ItemNPC] = npcs.SmallCoin
+            self._model: Type[ItemNPC] = SmallCoin
             self._set_chest_70a7_upper(8)
             self._set_chest_70a7_lower(amount)
         else:
-            self._model: Type[npcs.ItemNPC] = npcs.BigCoin
+            self._model: Type[ItemNPC] = BigCoin
             self._set_chest_70a7_upper(10)
             hits: int = amount // 10
             loops: int = hits // 16
@@ -987,7 +986,7 @@ class StarPiece(MiscReward):
     _npc_event: int = 164
     _overworld_event: int = 166
     _overworld_midas_event: int = 2821
-    _model: Type[npcs.ItemNPC] = npcs.TinyStar
+    _model: Type[ItemNPC] = TinyStar
     _dialog_replacements = {
         2911: (
             """ Item #1: A “Shooting Star”!\n"""
@@ -1040,10 +1039,10 @@ class RecruitedCharacter(Item):
 
     _starter_script: int = -1
     _container_script: int = -1
-    _model: Type[npcs.ItemNPC]
+    _model: Type[ItemNPC]
     _sprites_primary: Dict[str, tuple[int, int, bool]] = {}
     _sprites_secondary: Dict[str, tuple[int, int, bool]] = {}
-    _doll: Type[npcs.ItemNPC]
+    _doll: Type[ItemNPC]
     _placeholder: str = "`NAME`"
     _gender: str = "man"
     _gender_casual: str = "guy"
@@ -1066,7 +1065,7 @@ class RecruitedCharacter(Item):
         return self._container_script
 
     @property
-    def model(self) -> Type[npcs.ItemNPC]:
+    def model(self) -> Type[ItemNPC]:
         """Graphic object that should be used to represent this character in the overworld."""
         return self._model
 
@@ -1081,7 +1080,7 @@ class RecruitedCharacter(Item):
         return self._sprites_secondary
 
     @property
-    def doll(self) -> Type[npcs.ItemNPC]:
+    def doll(self) -> Type[ItemNPC]:
         """Graphic object that should be used to represent this character's
         corresponding doll in the overworld."""
         return self._doll

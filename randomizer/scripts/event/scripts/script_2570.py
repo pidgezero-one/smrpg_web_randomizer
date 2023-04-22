@@ -1,4 +1,6 @@
-# E2570_BOOSTER_PASS_SECRET_LOADER
+# pylint: disable=C0301
+
+"""E2570_BOOSTER_PASS_SECRET_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,15 +10,15 @@ script = EventScript(
             target=NPC_10,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASFaceSouthwest(),
             ],
         ),
         ActionQueueSync(
-            target=NPC_11, subscript=[ASSetWalkingSpeed(FASTEST), ASShiftNorthPixels(8)]
+            target=NPC_11, subscript=[ASSetWalkingSpeed(FASTEST), ASWalkNorthPixels(8)]
         ),
         ActionQueueAsync(
-            target=NPC_12, subscript=[ASSetWalkingSpeed(FASTEST), ASShiftWestPixels(8)]
+            target=NPC_12, subscript=[ASSetWalkingSpeed(FASTEST), ASWalkWestPixels(8)]
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_10,

@@ -1,4 +1,6 @@
-# E2171_KEEP_BOBOMB_BATTLE_ROOM_SUMMON_1ST_BATTLE
+# pylint: disable=C0301
+
+"""E2171_KEEP_BOBOMB_BATTLE_ROOM_SUMMON_1ST_BATTLE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -25,7 +27,7 @@ script = EventScript(
         RunEventAsSubroutine(E0941_KEEP_FIRST_BOSS_SET_SCRIPT),
         CreatePacketAtObjectCoords(
             packet=P034_GREY_EXPLOSION_SFX,
-            object=NPC_1,
+            target_npc=NPC_1,
             destinations=["EVENT_2171_create_packet_at_npc_coords_7"],
             identifier="EVENT_2171_create_packet_at_npc_coords_7",
         ),
@@ -85,13 +87,13 @@ script = EventScript(
         FadeInFromBlack(sync=False),
         CreatePacketAtObjectCoords(
             packet=P034_GREY_EXPLOSION_SFX,
-            object=NPC_0,
+            target_npc=NPC_0,
             destinations=["EVENT_2171_create_packet_at_npc_coords_24"],
             identifier="EVENT_2171_create_packet_at_npc_coords_24",
         ),
         CreatePacketAtObjectCoords(
             packet=P034_GREY_EXPLOSION_SFX,
-            object=NPC_1,
+            target_npc=NPC_1,
             destinations=["EVENT_2171_create_packet_at_npc_coords_24"],
         ),
         Return(identifier="EVENT_2171_ret_26"),

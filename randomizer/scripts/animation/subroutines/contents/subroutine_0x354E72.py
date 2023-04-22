@@ -1,4 +1,6 @@
-# referenced by monster_spells StaticE, monster_spells Bolt, monster_spells Electroshock
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells StaticE, monster_spells Bolt, monster_spells Electroshock"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -18,11 +20,11 @@ script = SubroutineOrBanklessScript(
         ),
         NewEffectObject(effect=EF0006_BOLT, looping_off=True),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
         FadeOutObject(duration=4),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),
@@ -37,11 +39,11 @@ script = SubroutineOrBanklessScript(
             identifier="queuestart_0x354e93",
         ),
         NewEffectObject(effect=EF0061_STATIC_E___ELECTRIC_BLAST_, looping_off=True),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=SEQ_4BPP_COMPLETE),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),
@@ -75,7 +77,7 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0068_ELECTROSHOCK, looping_off=True),
         Db(bytearray(b"y\x00\x11\x18\x02")),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PlaySound(sound=S0022_CORONA_DESCENDS),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=8),
         ClearAMEM8Bit(0x68),
@@ -86,7 +88,7 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x352552"]),
         FadeOutObject(duration=3),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=8),

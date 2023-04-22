@@ -1,4 +1,6 @@
-# E2550_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_GECKIT_RUNS_AT_YOU
+# pylint: disable=C0301
+
+"""E2550_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_GECKIT_RUNS_AT_YOU"""
 
 from randomizer.scripts.event.script_imports import *
 

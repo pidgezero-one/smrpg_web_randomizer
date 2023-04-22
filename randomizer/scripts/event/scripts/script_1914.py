@@ -1,4 +1,6 @@
-# E1914_ABYSS_MACHINE_ARROW_RESET
+# pylint: disable=C0301
+
+"""E1914_ABYSS_MACHINE_ARROW_RESET"""
 
 from randomizer.scripts.event.script_imports import *
 

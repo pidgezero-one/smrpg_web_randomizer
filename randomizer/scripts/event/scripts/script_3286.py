@@ -1,4 +1,6 @@
-# E3286_SHIP_INTERACT_WITH_BOSS_AFTER_WINNING
+# pylint: disable=C0301
+
+"""E3286_SHIP_INTERACT_WITH_BOSS_AFTER_WINNING"""
 
 from randomizer.scripts.event.script_imports import *
 

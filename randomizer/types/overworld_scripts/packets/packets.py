@@ -1,6 +1,10 @@
+"""Definitions of each individual packet.
+Some packet properties can be edited, but they're not really supposed to be,
+so they're here rather than in the Entities directory."""
+
 from randomizer.types.sprites.constants.sprite_ids import *
 from randomizer.types.overworld_scripts.action_scripts.constants.script_ids import *
-from .classes import Packet
+from randomizer.types.overworld_scripts.packets.classes import Packet
 
 P000_FLASHING_POOF_FLOWER = Packet(
     packet_id=0,

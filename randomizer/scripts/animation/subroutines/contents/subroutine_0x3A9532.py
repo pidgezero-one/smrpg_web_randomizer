@@ -1,4 +1,6 @@
-# referenced by battle_events BE0007_COUNTDOWN_RUNS_SCHEDULE_1_00_3_00_5_00_6_00_7_00, battle_events BE0008_COUNTDOWN_RUNS_SCHEDULE_6_00_9_00_10_00_12_00
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0007_COUNTDOWN_RUNS_SCHEDULE_1_00_3_00_5_00_6_00_7_00, battle_events BE0008_COUNTDOWN_RUNS_SCHEDULE_6_00_9_00_10_00_12_00"""
 
 from randomizer.scripts.animation.script_imports import *
 

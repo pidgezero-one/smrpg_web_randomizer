@@ -1,4 +1,4 @@
-# 70 - GuGoomba
+"""70 - GuGoomba"""
 
 from randomizer.scripts.monster.script_imports import *
 

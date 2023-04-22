@@ -1,4 +1,6 @@
-# E3372_KEEP_GET_CRUSHED_BY_HUGE_THWOMP
+# pylint: disable=C0301
+
+"""E3372_KEEP_GET_CRUSHED_BY_HUGE_THWOMP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,7 +14,9 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASDb(bytearray(b"\xfd\x9ci")),
-                ASSet700CToObjectCoord(object=DUMMY_0X07, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(
+                    target_npc=DUMMY_0X07, coord=COORD_F, pixel=True
+                ),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     7,
@@ -116,7 +120,7 @@ script = EventScript(
                 ),
                 ASSetWalkingSpeed(FAST),
                 ASTurnClockwise45DegreesNTimes(4),
-                ASShiftFDirectionSteps(2),
+                ASWalkFDirectionSteps(2),
                 ASTurnClockwise45DegreesNTimes(4),
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
@@ -148,7 +152,9 @@ script = EventScript(
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[0, 1]),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASShiftZDownSteps(4),
-                ASSet700CToObjectCoord(object=DUMMY_0X07, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(
+                    target_npc=DUMMY_0X07, coord=COORD_F, pixel=True
+                ),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     7,

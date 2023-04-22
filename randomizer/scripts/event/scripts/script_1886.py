@@ -1,4 +1,6 @@
-# E1886_WHIRLPOOL_SHOGUN_4
+# pylint: disable=C0301
+
+"""E1886_WHIRLPOOL_SHOGUN_4"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,7 +32,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASPause(90),
-                ASSummonToLevel(NPC_3, R404_LANDS_END_DESERT_AREA_04),
+                ASSummonObjectToSpecificLevel(NPC_3, R404_LANDS_END_DESERT_AREA_04),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
             ],
         ),

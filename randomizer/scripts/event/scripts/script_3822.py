@@ -1,4 +1,6 @@
-# E3822_ROSE_TOWN_SIGN_ITEM_GRANTER
+# pylint: disable=C0301
+
+"""E3822_ROSE_TOWN_SIGN_ITEM_GRANTER"""
 
 from randomizer.scripts.event.script_imports import *
 

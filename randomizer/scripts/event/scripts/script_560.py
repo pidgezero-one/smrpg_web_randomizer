@@ -1,4 +1,6 @@
-# E0560_OLD_KEY_ITEM_MANAGER
+# pylint: disable=C0301
+
+"""E0560_OLD_KEY_ITEM_MANAGER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -276,7 +278,7 @@ script = EventScript(
         ActionQueueSync(target=MARIO, subscript=[ASPause(30), ASFaceSoutheast()]),
         ActionQueueAsync(
             target=MEM_70A8,
-            subscript=[ASShiftSoutheastSteps(8), ASDb(bytearray(b"\xfd\xf2"))],
+            subscript=[ASWalkSoutheastSteps(8), ASDb(bytearray(b"\xfd\xf2"))],
         ),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceSouth()]),
         SetVarToConst(ITEM_ID, Fertilizer),
@@ -343,7 +345,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_560_pause_213"]),
         RunDialog(
             dialog_id=DI2801_NEED_THE_KEY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,
@@ -374,7 +376,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_560_pause_227"]),
         RunDialog(
             dialog_id=DI2801_NEED_THE_KEY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,
@@ -411,7 +413,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_560_pause_242"]),
         RunDialog(
             dialog_id=DI2801_NEED_THE_KEY,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,
@@ -529,7 +531,7 @@ script = EventScript(
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_560_play_sound_279"]),
         RunDialog(
             dialog_id=DI3600_WAIT_ITS_LOCKED,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,
@@ -570,7 +572,7 @@ script = EventScript(
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_560_play_sound_296"]),
         RunDialog(
             dialog_id=DI2811_ITS_LOCKED,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,
@@ -787,7 +789,7 @@ script = EventScript(
             subscript=[
                 ASSetAllSpeeds(FAST),
                 ASWalk1StepSoutheast(),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASWalk1StepNorthwest(),
                 ASFaceSouthwest(),
                 ASSetAllSpeeds(NORMAL),
@@ -809,7 +811,7 @@ script = EventScript(
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
                 ASWalkToXYCoords(x=6, y=24),
                 ASWalkToXYCoords(x=4, y=20),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASVisibilityOff(),
             ],

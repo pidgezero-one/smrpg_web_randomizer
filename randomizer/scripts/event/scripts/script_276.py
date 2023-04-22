@@ -1,4 +1,6 @@
-# E0276_REFOCUS_CAMERA_ON_SELF
+# pylint: disable=C0301
+
+"""E0276_REFOCUS_CAMERA_ON_SELF"""
 
 from randomizer.scripts.event.script_imports import *
 

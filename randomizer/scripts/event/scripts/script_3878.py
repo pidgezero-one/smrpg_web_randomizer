@@ -1,4 +1,6 @@
-# E3878_CASINO_TRAMPOLINE
+# pylint: disable=C0301
+
+"""E3878_CASINO_TRAMPOLINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,7 +10,7 @@ script = EventScript(
         Pause(10),
         RunDialog(
             dialog_id=DI1207_GRATE_GUY_WARNS_YOU_ABOUT_FACTORY_TRAMPOLINE,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,

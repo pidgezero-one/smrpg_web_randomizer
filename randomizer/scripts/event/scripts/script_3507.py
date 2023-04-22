@@ -1,4 +1,6 @@
-# E3507_BOOSTER_HILL_2ND_PASS_LOADER
+# pylint: disable=C0301
+
+"""E3507_BOOSTER_HILL_2ND_PASS_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,12 +21,12 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=LAYER_3,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNorthwestSteps(18)],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNorthwestSteps(18)],
         ),
         FadeInFromBlack(sync=False),
         SetVarToConst(TEMP_70AE, 26),
         ActionQueueAsync(
-            target=MARIO, subscript=[ASSetAllSpeeds(FAST), ASShiftNorthwestSteps(8)]
+            target=MARIO, subscript=[ASSetAllSpeeds(FAST), ASWalkNorthwestSteps(8)]
         ),
         ActionQueueAsync(
             target=NPC_6,
@@ -33,7 +35,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASVisibilityOn(),
                 ASSetAllSpeeds(FAST),
-                ASShiftNorthwestSteps(7),
+                ASWalkNorthwestSteps(7),
                 ASJumpToHeight(64),
             ],
         ),
@@ -60,10 +62,10 @@ script = EventScript(
         ),
         PlaySound(sound=SO087_CORRECT_SIGNAL, channel=6),
         ActionQueueSync(
-            target=NPC_6, subscript=[ASShiftSoutheastSteps(7), ASVisibilityOff()]
+            target=NPC_6, subscript=[ASWalkSoutheastSteps(7), ASVisibilityOff()]
         ),
         ActionQueueAsync(
-            target=MARIO, subscript=[ASShiftSoutheastSteps(7), ASVisibilityOff()]
+            target=MARIO, subscript=[ASWalkSoutheastSteps(7), ASVisibilityOff()]
         ),
         RunEventAtReturn(E3510_BOOSTER_HILL_EXIT_TO_WORLD_MAP),
         Return(),
@@ -113,7 +115,7 @@ script = EventScript(
             target=NPC_6,
             subscript=[
                 ASResetProperties(),
-                ASShiftSoutheastSteps(6),
+                ASWalkSoutheastSteps(6),
                 ASVisibilityOff(),
             ],
         ),

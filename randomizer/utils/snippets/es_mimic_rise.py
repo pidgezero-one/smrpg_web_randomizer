@@ -1,3 +1,7 @@
+"""Script snippets that can be inserted easily."""
+
+from typing import List
+
 from randomizer.types.overworld_scripts.action_scripts.classes import (
     ActionScriptCommand,
 )

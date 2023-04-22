@@ -1,12 +1,14 @@
-# E2399_ABYSS_ROOM_1_LOADER
+# pylint: disable=C0301
+
+"""E2399_ABYSS_ROOM_1_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 5),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW05_GATE),
         SetVarToConst(FACTORY_FALL_1, 219),
-        ActionQueueAsync(target=NPC_0, subscript=[ASShiftNorthwestPixels(12)]),
+        ActionQueueAsync(target=NPC_0, subscript=[ASWalkNorthwestPixels(12)]),
         JmpIfBitClear(ABYSS_ENTRANCE_DIRECTIONAL_BIT, ["EVENT_2399_fade_in_music_10"]),
         FadeInFromBlack(sync=False),
         Return(),
@@ -22,7 +24,7 @@ script = EventScript(
             subscript=[
                 ASFloatingOff(),
                 ASTransferToXYZF(x=4, y=25, z=21, direction=EAST),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
             ],
         ),
         FadeInFromBlack(sync=False),

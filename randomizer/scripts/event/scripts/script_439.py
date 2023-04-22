@@ -1,4 +1,6 @@
-# E0439_PIPE_VAULT_FIREBALL_4
+# pylint: disable=C0301
+
+"""E0439_PIPE_VAULT_FIREBALL_4"""
 
 from randomizer.scripts.event.script_imports import *
 

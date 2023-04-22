@@ -1,4 +1,6 @@
-# E3712_NIMBUS_CASTLE_BRIDGE_ROOM_NPC_ANIMATIONS
+# pylint: disable=C0301
+
+"""E3712_NIMBUS_CASTLE_BRIDGE_ROOM_NPC_ANIMATIONS"""
 
 from randomizer.scripts.event.script_imports import *
 

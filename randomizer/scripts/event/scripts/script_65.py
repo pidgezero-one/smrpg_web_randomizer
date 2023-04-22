@@ -1,4 +1,6 @@
-# E0065_TRAMPOLINE_SUBROUTINE
+# pylint: disable=C0301
+
+"""E0065_TRAMPOLINE_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 

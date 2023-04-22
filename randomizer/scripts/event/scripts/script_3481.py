@@ -1,4 +1,6 @@
-# E3481_MIDAS_RIVER_TUNNEL_WARP_CHECK
+# pylint: disable=C0301
+
+"""E3481_MIDAS_RIVER_TUNNEL_WARP_CHECK"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,7 +8,7 @@ script = EventScript(
     [
         Pause(1),
         Pause(4, identifier="EVENT_3481_pause_1"),
-        Set7000ToObjectCoord(object=NPC_1, coord=COORD_Y, pixel=True),
+        Set7000ToObjectCoord(target_npc=NPC_1, coord=COORD_Y, pixel=True),
         Mem7000AndConst(0xFF00),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 4352, ["EVENT_3481_set_7000_to_object_coord_9"]
@@ -22,7 +24,7 @@ script = EventScript(
         ),
         Jmp(["EVENT_3481_pause_1"]),
         Set7000ToObjectCoord(
-            object=NPC_1,
+            target_npc=NPC_1,
             coord=COORD_X,
             pixel=True,
             identifier="EVENT_3481_set_7000_to_object_coord_9",
@@ -41,7 +43,7 @@ script = EventScript(
         ),
         Return(),
         Set7000ToObjectCoord(
-            object=NPC_1,
+            target_npc=NPC_1,
             coord=COORD_X,
             pixel=True,
             identifier="EVENT_3481_set_7000_to_object_coord_16",
@@ -75,7 +77,7 @@ script = EventScript(
         ),
         Return(),
         Set7000ToObjectCoord(
-            object=NPC_1,
+            target_npc=NPC_1,
             coord=COORD_X,
             pixel=True,
             identifier="EVENT_3481_set_7000_to_object_coord_31",
@@ -94,7 +96,7 @@ script = EventScript(
         ),
         Return(),
         Set7000ToObjectCoord(
-            object=NPC_1,
+            target_npc=NPC_1,
             coord=COORD_X,
             pixel=True,
             identifier="EVENT_3481_set_7000_to_object_coord_38",
@@ -126,7 +128,9 @@ script = EventScript(
                 ASEndLoop(),
             ],
         ),
-        PixelateLayers(layers=[LAYER_1, LAYER_2, LAYER_3], pixel_size=8, duration=196),
+        PixelateLayers(
+            layers=[LAYER_L1, LAYER_L2, LAYER_L3], pixel_size=8, duration=196
+        ),
         EnableControls([]),
         Return(),
     ]

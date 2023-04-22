@@ -1,10 +1,12 @@
-# E1714_BANDITS_WAY_1_LOADER
+# pylint: disable=C0301
+
+"""E1714_BANDITS_WAY_1_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        ActionQueueSync(target=NPC_0, subscript=[ASShiftWestPixels(4)]),
+        ActionQueueSync(target=NPC_0, subscript=[ASWalkWestPixels(4)]),
         RunEventAsSubroutine(E0757_BANDITS_WAY_AREA_01_SHUFFLED_NPC_ANIMATION_LOADER),
         JmpIfBitClear(BANDITS_WAY_CUTSCENE_1_VIEWED, ["EVENT_1714_set_bit_3"]),
         RunEventAsSubroutine(E0014_STANDARD_ROOM_LOADER),
@@ -46,10 +48,10 @@ script = EventScript(
                 ASShiftSouthSteps(4),
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASJumpToHeight(108),
-                ASShiftSoutheastSteps(6),
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASWalkSoutheastSteps(6),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSetAllSpeeds(FASTER),
-                ASShiftEastSteps(6),
+                ASWalkEastSteps(6),
                 ASVisibilityOff(),
             ],
         ),
@@ -59,9 +61,9 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASShiftSouthSteps(4),
                 ASSetAllSpeeds(FASTER),
-                ASShiftSoutheastSteps(6),
+                ASWalkSoutheastSteps(6),
                 ASPause(30),
-                ASShiftNorthwestSteps(6),
+                ASWalkNorthwestSteps(6),
                 ASSetWalkingSpeed(FAST),
                 ASShiftNorthSteps(4),
                 ASSetWalkingSpeed(NORMAL),

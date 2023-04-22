@@ -1,4 +1,6 @@
-# E2601_FACTORY_4TH_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2601_FACTORY_4TH_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -60,8 +62,8 @@ script = EventScript(
             target=NPC_4,
             subscript=[
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-                ASShiftSouthPixels(4),
-                ASShiftWestPixels(4),
+                ASWalkSouthPixels(4),
+                ASWalkWestPixels(4),
                 ASSetSpriteSequence(
                     index=0,
                     is_mold=True,
@@ -75,7 +77,7 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-                ASShiftEastPixels(12),
+                ASWalkEastPixels(12),
                 ASSetSpriteSequence(
                     index=4,
                     is_mold=True,
@@ -89,8 +91,8 @@ script = EventScript(
             target=NPC_6,
             subscript=[
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-                ASShiftWestPixels(8),
-                ASShiftSouthPixels(1),
+                ASWalkWestPixels(8),
+                ASWalkSouthPixels(1),
                 ASSetSpriteSequence(
                     index=5,
                     is_mold=True,

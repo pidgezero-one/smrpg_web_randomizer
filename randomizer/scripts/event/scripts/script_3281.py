@@ -1,4 +1,6 @@
-# E3281_SHIP_UPPER_HENCHMAN_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3281_SHIP_UPPER_HENCHMAN_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -63,7 +65,7 @@ script = EventScript(
                 ASFaceNorthwest(),
             ],
         ),
-        ActionQueueAsync(target=NPC_1, subscript=[ASShiftNortheastSteps(2)]),
+        ActionQueueAsync(target=NPC_1, subscript=[ASWalkNortheastSteps(2)]),
         Pause(15),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplyTileModToLevel(

@@ -1,4 +1,6 @@
-# E0410_BED_SHYSTER
+# pylint: disable=C0301
+
+"""E0410_BED_SHYSTER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -29,7 +31,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
             ],
         ),
         Pause(10),
@@ -40,8 +42,8 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
-                ASShiftSouthwestSteps(2),
-                ASShiftSoutheastSteps(2),
+                ASWalkSouthwestSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASFaceNortheast(),
             ],
         ),
@@ -64,8 +66,8 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftNorthwestSteps(5),
-                ASShiftSouthwestSteps(5),
+                ASWalkNorthwestSteps(5),
+                ASWalkSouthwestSteps(5),
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASVisibilityOff(),
             ],

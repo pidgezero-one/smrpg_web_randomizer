@@ -1,4 +1,6 @@
-# referenced by battle_events BE0059_BELOME_CONFRONTS_A_CHARACTER_YOU_ALL_LOOK_DELICIOUS, battle_events BE0002_BELOME_SWALLOWS_MALLOW
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0059_BELOME_CONFRONTS_A_CHARACTER_YOU_ALL_LOOK_DELICIOUS, battle_events BE0002_BELOME_SWALLOWS_MALLOW"""
 
 from randomizer.scripts.animation.script_imports import *
 

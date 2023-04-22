@@ -1,4 +1,6 @@
-# E3819_LANDS_END_FIRST_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3819_LANDS_END_FIRST_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -37,14 +39,14 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 45, ["EVENT_3819_jmp_if_bit_clear_50"]),
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASShiftNortheastPixels(8)],
+            subscript=[ASWalkNortheastPixels(8)],
             identifier="EVENT_3819_action_queue_sync_36",
         ),
-        ActionQueueSync(target=NPC_0, subscript=[ASShiftWestPixels(4)]),
+        ActionQueueSync(target=NPC_0, subscript=[ASWalkWestPixels(4)]),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASShiftZUpPixels(4),
                 ASFaceSouthwest(),
             ],

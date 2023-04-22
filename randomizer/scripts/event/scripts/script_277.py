@@ -1,12 +1,16 @@
-# E0277_UNKNOWN
+# pylint: disable=C0301
+
+"""E0277_UNKNOWN"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_7032),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_277_jmp_if_var_equals_const_4"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_277_jmp_if_var_equals_const_4"]
+        ),
         Jmp(["EVENT_277_action_queue_async_8"]),
         JmpIfVarEqualsConst(
             TEMP_7032,

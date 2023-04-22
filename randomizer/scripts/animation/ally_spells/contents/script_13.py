@@ -1,10 +1,12 @@
-# Poison Gas
+"""Poison Gas animation"""
 
 from randomizer.scripts.animation.script_imports import *
 
-script = AnimationScript([
-	RunSubroutine(["command_0x358086"]),
-	RunSubroutine(["command_0x358127"]),
-	RunSubroutine(["command_0x358f72"]),
-	ReturnSubroutine()
-])
+script = AnimationScript(
+    [
+        RunSubroutine(["command_0x358086"]),
+        RunSubroutine(["command_0x358127"]),
+        RunSubroutine(["command_0x358f72"]),
+        ReturnSubroutine(),
+    ]
+)

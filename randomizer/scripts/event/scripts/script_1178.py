@@ -1,4 +1,6 @@
-# E1178_SEASIDE_GRANT_SHED_ITEM
+# pylint: disable=C0301
+
+"""E1178_SEASIDE_GRANT_SHED_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -81,8 +83,8 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftSoutheastSteps(1),
-                ASShiftSouthwestSteps(2),
+                ASWalkSoutheastSteps(1),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -100,8 +102,8 @@ script = EventScript(
             target=NPC_6,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftSoutheastSteps(1),
-                ASShiftSouthwestSteps(2),
+                ASWalkSoutheastSteps(1),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -119,8 +121,8 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftSoutheastSteps(1),
-                ASShiftSouthwestSteps(2),
+                ASWalkSoutheastSteps(1),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -147,8 +149,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftSoutheastSteps(1),
-                ASShiftSouthwestSteps(2),
+                ASWalkSoutheastSteps(1),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -156,7 +158,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -165,16 +167,16 @@ script = EventScript(
             target=NPC_4,
             subscript=[
                 ASSetAllSpeeds(NORMAL),
-                ASShiftSoutheastSteps(4),
-                ASShiftSouthwestSteps(1),
+                ASWalkSoutheastSteps(4),
+                ASWalkSouthwestSteps(1),
                 ASFaceSouthwest(),
             ],
         ),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
-                ASShiftSoutheastSteps(1),
-                ASShiftSouthwestSteps(2),
+                ASWalkSoutheastSteps(1),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -183,8 +185,8 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetAllSpeeds(NORMAL),
-                ASShiftSoutheastSteps(4),
-                ASShiftSouthwestSteps(2),
+                ASWalkSoutheastSteps(4),
+                ASWalkSouthwestSteps(2),
                 ASFaceSouthwest(),
             ],
         ),
@@ -192,8 +194,8 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
-                ASShiftSoutheastSteps(1),
-                ASShiftSouthwestSteps(2),
+                ASWalkSoutheastSteps(1),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),

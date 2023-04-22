@@ -1,4 +1,6 @@
-# referenced by ally_spells Bowser Crush
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Bowser Crush"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -31,7 +33,7 @@ script = SubroutineOrBanklessScript(
         DoMaskEffect(POLYGON_MASK),
         SetMaskCoords((8, -80), (-80, 64), (-80, 64), (48, -80)),
         ScreenFlash(YELLOW, 8),
-        Layer3On(property=TRANSPARENCY_OFF, bit_0=True, bpp4=True),
+        Layer3On(prop=TRANSPARENCY_OFF, bit_0=True, bpp4=True),
         Db(bytearray(b"\xdd\xff\x0e\x05\x02\x01")),
         ClearAMEM16Bit(0x60),
         ClearAMEM8Bit(0x6E),
@@ -50,7 +52,7 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x35b41b"]),
         RunSubroutine(["command_0x35b41b"]),
         StopShakingObject(),
-        Layer3Off(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3Off(prop=TRANSPARENCY_OFF, bpp4=True),
         Db(bytearray(b"\xde")),
         Db(bytearray(b"\x90")),
         Db(bytearray(b"\xc4")),

@@ -1,4 +1,6 @@
-# E0269_PIPE_UP_SUBROUTINE
+# pylint: disable=C0301
+
+"""E0269_PIPE_UP_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 

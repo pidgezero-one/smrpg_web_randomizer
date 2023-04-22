@@ -1,10 +1,12 @@
-# E3184_MINES_FIRST_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3184_MINES_FIRST_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 54),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW54_COAL_MINES_BOWSERS_KEEP),
         JmpIfBitSet(TEMP_7042_0, ["EVENT_3184_set_bit_3"]),
         JmpToSubroutine(["EVENT_3183_jmp_if_bit_set_4"]),
         SetBit(TEMP_7042_0, identifier="EVENT_3184_set_bit_3"),

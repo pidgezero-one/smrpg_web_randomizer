@@ -1,4 +1,6 @@
-# E3196_PARKED_MINECART_MARIO_COLLISION_CHECK_PROPERTIES
+# pylint: disable=C0301
+
+"""E3196_PARKED_MINECART_MARIO_COLLISION_CHECK_PROPERTIES"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,7 +15,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASShadowOn(),
             ],
             identifier="EVENT_3196_action_queue_async_6",

@@ -1,4 +1,6 @@
-# E1283_TOWER_BALCONY_LOADER_BEFORE_MARRYMORE
+# pylint: disable=C0301
+
+"""E1283_TOWER_BALCONY_LOADER_BEFORE_MARRYMORE"""
 
 from randomizer.scripts.event.script_imports import *
 

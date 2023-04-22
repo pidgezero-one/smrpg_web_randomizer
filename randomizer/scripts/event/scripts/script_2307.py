@@ -1,4 +1,6 @@
-# E2307_TOWER_BUTTON
+# pylint: disable=C0301
+
+"""E2307_TOWER_BUTTON"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -32,7 +34,7 @@ script = EventScript(
         SetAsyncActionScript(SCREEN_FOCUS, A0391_CAMERA_SHAKE),
         RunDialog(
             dialog_id=DI3154_BOOSTER_PASS_OPENED,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,

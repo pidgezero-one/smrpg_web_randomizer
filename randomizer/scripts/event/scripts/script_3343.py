@@ -1,4 +1,6 @@
-# E3343_VOLCANO_FINAL_BOSS_PATH_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3343_VOLCANO_FINAL_BOSS_PATH_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -26,7 +28,7 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASVisibilityOff(),
             ],
         ),
@@ -34,7 +36,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
-                ASShiftSouthwestSteps(4),
+                ASWalkSouthwestSteps(4),
                 ASVisibilityOff(),
             ],
         ),
@@ -42,7 +44,7 @@ script = EventScript(
             target=NPC_4,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
-                ASShiftSouthwestSteps(5),
+                ASWalkSouthwestSteps(5),
                 ASVisibilityOff(),
             ],
         ),

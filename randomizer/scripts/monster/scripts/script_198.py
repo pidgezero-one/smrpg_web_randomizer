@@ -1,4 +1,4 @@
-# 198 - DingALing
+"""198 - DingALing"""
 
 from randomizer.scripts.monster.script_imports import *
 

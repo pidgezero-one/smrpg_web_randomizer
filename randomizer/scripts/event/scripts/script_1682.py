@@ -1,4 +1,6 @@
-# E1682_TRAMPOLINE_SHAMAN
+# pylint: disable=C0301
+
+"""E1682_TRAMPOLINE_SHAMAN"""
 
 from randomizer.scripts.event.script_imports import *
 

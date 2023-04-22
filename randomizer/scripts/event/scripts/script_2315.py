@@ -1,4 +1,6 @@
-# E2315_TOWER_PARACHUTE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2315_TOWER_PARACHUTE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,30 +9,30 @@ script = EventScript(
         JmpIfBitSet(DIRECTIONAL_7045_0, ["EVENT_2315_jmp_if_bit_set_9"]),
         ActionQueueSync(target=NPC_0, subscript=[ASShiftZUpSteps(15)]),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASShiftZUpSteps(11), ASShiftSouthwestPixels(4)]
+            target=NPC_1, subscript=[ASShiftZUpSteps(11), ASWalkSouthwestPixels(4)]
         ),
         ActionQueueSync(target=NPC_2, subscript=[ASShiftZUpSteps(8)]),
         ActionQueueSync(target=NPC_3, subscript=[ASShiftZUpSteps(15)]),
         ActionQueueSync(
             target=NPC_4,
-            subscript=[ASFixedFCoordOn(), ASShiftEastPixels(4), ASShiftZUpSteps(15)],
+            subscript=[ASFixedFCoordOn(), ASWalkEastPixels(4), ASShiftZUpSteps(15)],
         ),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
                 ASFixedFCoordOn(),
-                ASShiftEastPixels(4),
-                ASShiftSouthwestPixels(4),
+                ASWalkEastPixels(4),
+                ASWalkSouthwestPixels(4),
                 ASShiftZUpSteps(11),
             ],
         ),
         ActionQueueSync(
             target=NPC_6,
-            subscript=[ASFixedFCoordOn(), ASShiftEastPixels(4), ASShiftZUpSteps(7)],
+            subscript=[ASFixedFCoordOn(), ASWalkEastPixels(4), ASShiftZUpSteps(7)],
         ),
         ActionQueueAsync(
             target=NPC_7,
-            subscript=[ASFixedFCoordOn(), ASShiftEastPixels(4), ASShiftZUpSteps(15)],
+            subscript=[ASFixedFCoordOn(), ASWalkEastPixels(4), ASShiftZUpSteps(15)],
         ),
         JmpIfBitSet(
             DIRECTIONAL_7045_0,

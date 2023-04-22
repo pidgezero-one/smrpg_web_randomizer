@@ -1,4 +1,6 @@
-# E1592_BELOME_STATUE
+# pylint: disable=C0301
+
+"""E1592_BELOME_STATUE"""
 
 from randomizer.scripts.event.script_imports import *
 

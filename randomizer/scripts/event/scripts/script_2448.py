@@ -1,4 +1,6 @@
-# E2448_FOREST_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E2448_FOREST_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,7 +18,7 @@ script = EventScript(
         ClearBit(DIRECTIONAL_7046_0),
         ClearBit(DIRECTIONAL_7046_1),
         ActionQueueSync(target=NPC_11, subscript=[ASSetPriority(3)]),
-        ActionQueueAsync(target=MARIO, subscript=[ASShiftNorthwestSteps(2)]),
+        ActionQueueAsync(target=MARIO, subscript=[ASWalkNorthwestSteps(2)]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -30,7 +32,7 @@ script = EventScript(
                 ),
             ],
         ),
-        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASShiftNorthwestSteps(10)]),
+        ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkNorthwestSteps(10)]),
         JmpIfObjectNotInSpecificLevel(
             NPC_1, R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, ["EVENT_2448_pause_42"]
         ),

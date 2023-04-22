@@ -1,3 +1,5 @@
+""""Miscellaeous constants used for event and NPC action scripts."""
+
 TOTAL_ROOMS = 510
 
 TOTAL_SOUNDS = 0xA3

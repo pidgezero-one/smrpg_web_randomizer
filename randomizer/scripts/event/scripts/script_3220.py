@@ -1,10 +1,14 @@
-# E3220_SHIP_BARREL_PUZZLE_BARREL_MOVEMENT
+# pylint: disable=C0301
+
+"""E3220_SHIP_BARREL_PUZZLE_BARREL_MOVEMENT"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        Set7000ToObjectCoord(object=MEM_70A8, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(
+            target_npc=MEM_70A8, coord=COORD_Z, pixel=True, bit_7=True
+        ),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3220_clear_bit_4"]),
         ActionQueueAsync(
             target=MEM_70A8,
@@ -16,12 +20,12 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-                ASShiftSouthwestPixels(4),
+                ASWalkSouthwestPixels(4),
                 ASSetAllSpeeds(SLOW),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASSetAllSpeeds(NORMAL),
                 ASJumpToHeight(height=48, silent=True),
-                ASShiftSouthwestPixels(20),
+                ASWalkSouthwestPixels(20),
                 ASFaceSoutheast(),
                 ASFixedFCoordOn(),
                 ASSetSpriteSequence(
@@ -46,7 +50,9 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[
-                ASSet700CToObjectCoord(object=DUMMY_0X07, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(
+                    target_npc=DUMMY_0X07, coord=COORD_F, pixel=True
+                ),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     1,
@@ -101,7 +107,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MEM_70A8,
             subscript=[
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     1,
@@ -151,23 +157,23 @@ script = EventScript(
                     looping=True,
                     identifier="EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_9",
                 ),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthwestPixels(1),
                 ASSetSpriteSequence(
                     index=4, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthwestPixels(1),
                 ASSetSpriteSequence(
                     index=3, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthwestPixels(1),
                 ASSetSpriteSequence(
                     index=2, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthwestPixels(1),
                 ASSetSpriteSequence(
                     index=1, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthwestPixels(1),
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -183,23 +189,23 @@ script = EventScript(
                     looping=True,
                     identifier="EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_21",
                 ),
-                ASShiftSoutheastPixels(1),
+                ASWalkSoutheastPixels(1),
                 ASSetSpriteSequence(
                     index=2, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftSoutheastPixels(1),
+                ASWalkSoutheastPixels(1),
                 ASSetSpriteSequence(
                     index=3, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftSoutheastPixels(1),
+                ASWalkSoutheastPixels(1),
                 ASSetSpriteSequence(
                     index=4, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftSoutheastPixels(1),
+                ASWalkSoutheastPixels(1),
                 ASSetSpriteSequence(
                     index=5, is_mold=True, is_sequence=True, looping=True
                 ),
-                ASShiftSoutheastPixels(1),
+                ASWalkSoutheastPixels(1),
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -209,7 +215,7 @@ script = EventScript(
                     identifier="EVENT_3220_action_queue_async_6_SUBSCRIPT_object_memory_clear_bit_32",
                 ),
                 ASSet700CToObjectCoord(
-                    object=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True
+                    target_npc=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True
                 ),
                 ASJmpIfVarNotEqualsConst(
                     PRIMARY_TEMP_700C,

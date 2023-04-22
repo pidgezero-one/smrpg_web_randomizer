@@ -1,8 +1,5 @@
-# 175 - AeroSmithy
+"""175 - AeroSmithy"""
 
 from randomizer.scripts.monster.script_imports import *
 
-script = MonsterScript([
-	Attack(PhysicalAttack0),
-	StartCounterCommands()
-])
+script = MonsterScript([Attack(PhysicalAttack0), StartCounterCommands()])

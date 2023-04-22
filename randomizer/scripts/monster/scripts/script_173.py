@@ -1,4 +1,4 @@
-# 173 - MachineMadeAxemBlackHenchman
+"""173 - MachineMadeAxemBlackHenchman"""
 
 from randomizer.scripts.monster.script_imports import *
 

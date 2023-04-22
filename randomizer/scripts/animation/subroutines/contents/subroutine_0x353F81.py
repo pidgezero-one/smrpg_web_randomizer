@@ -1,4 +1,6 @@
-# referenced by monster_attacks 115, monster_attacks Endobubble
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks 115, monster_attacks Endobubble"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -41,12 +43,12 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0107_ECHOFINDER, playback_off=True),
         FadeInEffect(duration=1),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x35336f"]),
         RunSubroutine(["command_0x3533f5"]),
         FadeOutObject(duration=1),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x353399"]),
         Pause2Frames(),
         Db(bytearray(b"y\x00\x05\x07\x00")),

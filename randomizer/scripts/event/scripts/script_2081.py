@@ -1,4 +1,6 @@
-# E2081_MUSTY_FEARS_LAMP
+# pylint: disable=C0301
+
+"""E2081_MUSTY_FEARS_LAMP"""
 
 from randomizer.scripts.event.script_imports import *
 

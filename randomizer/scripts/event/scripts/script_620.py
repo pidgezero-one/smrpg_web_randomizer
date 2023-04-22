@@ -1,4 +1,6 @@
-# E0620_REAL_BELLHOP_BLOCKS_EXIT_2
+# pylint: disable=C0301
+
+"""E0620_REAL_BELLHOP_BLOCKS_EXIT_2"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -14,7 +16,7 @@ script = EventScript(
         ),
         SetBit(TEMP_7043_4),
         ClearBit(TEMP_7043_3),
-        Set7000ToObjectCoord(object=NPC_5, coord=COORD_Y, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=NPC_5, coord=COORD_Y, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 64, ["EVENT_256_ret_0"]),
         ActionQueueAsync(
             target=NPC_5,

@@ -1,4 +1,4 @@
-# ENT0004_DROP_FROM_ABOVE
+"""ENT0004_DROP_FROM_ABOVE animation"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -22,7 +22,7 @@ script = AnimationScript(
             start_position=0,
             end_position=4096,
             apply_to_z=True,
-            set_start_position=True,
+            should_set_start_position=True,
             should_set_end_position=True,
             should_set_speed=True,
             identifier="command_0x3521ef",

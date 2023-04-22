@@ -1,4 +1,6 @@
-# E2401_BEGIN_8BIT
+# pylint: disable=C0301
+
+"""E2401_BEGIN_8BIT"""
 
 from randomizer.scripts.event.script_imports import *
 

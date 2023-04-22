@@ -1,4 +1,6 @@
-# E3218_SHIP_SUBMIT_PASSWORD
+# pylint: disable=C0301
+
+"""E3218_SHIP_SUBMIT_PASSWORD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -111,7 +113,7 @@ script = EventScript(
             subscript=[
                 ASFaceNortheast(),
                 ASFixedFCoordOn(),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASFixedFCoordOff(),
             ],
         ),

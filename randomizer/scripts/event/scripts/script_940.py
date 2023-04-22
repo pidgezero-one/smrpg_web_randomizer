@@ -1,4 +1,6 @@
-# E0940_STATUE_SUBROUTINE_2
+# pylint: disable=C0301
+
+"""E0940_STATUE_SUBROUTINE_2"""
 
 from randomizer.scripts.event.script_imports import *
 

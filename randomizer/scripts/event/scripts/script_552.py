@@ -1,4 +1,6 @@
-# E0552_ROSE_TOWN_OCCUPIED_INTRO_TOAD_MOVEMENT
+# pylint: disable=C0301
+
+"""E0552_ROSE_TOWN_OCCUPIED_INTRO_TOAD_MOVEMENT"""
 
 from randomizer.scripts.event.script_imports import *
 

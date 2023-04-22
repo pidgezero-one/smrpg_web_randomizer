@@ -1,4 +1,6 @@
-# E2309_BOOSTER_PASS_LAKITU_TOSSES_SPINY
+# pylint: disable=C0301
+
+"""E2309_BOOSTER_PASS_LAKITU_TOSSES_SPINY"""
 
 from randomizer.scripts.event.script_imports import *
 

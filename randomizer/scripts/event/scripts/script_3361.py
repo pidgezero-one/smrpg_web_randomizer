@@ -1,4 +1,6 @@
-# E3361_KEEP_EXIT_COMPLETED_DOORS_TO_BOSS_ANTECHAMBER
+# pylint: disable=C0301
+
+"""E3361_KEEP_EXIT_COMPLETED_DOORS_TO_BOSS_ANTECHAMBER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,7 +18,7 @@ script = EventScript(
             subscript=[
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
-                ASShiftSoutheastPixels(3),
+                ASWalkSoutheastPixels(3),
             ],
         ),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),

@@ -1,4 +1,6 @@
-# E1864_BOWSER_DOOR_ULTIMATE_FAILURE_ANIMATION
+# pylint: disable=C0301
+
+"""E1864_BOWSER_DOOR_ULTIMATE_FAILURE_ANIMATION"""
 
 from randomizer.scripts.event.script_imports import *
 

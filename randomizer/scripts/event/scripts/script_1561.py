@@ -1,4 +1,6 @@
-# E1561_LANDS_END_GECKIT_CANNON_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1561_LANDS_END_GECKIT_CANNON_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,7 +14,7 @@ script = EventScript(
         SummonObjectToSpecificLevel(NPC_5, R141_LANDS_END_AREA_04_ROTATING_FLOWERS),
         SetBit(TEMP_7044_2),
         ActionQueueSync(
-            target=NPC_0, subscript=[ASShiftWestPixels(4), ASFaceSoutheast()]
+            target=NPC_0, subscript=[ASWalkWestPixels(4), ASFaceSoutheast()]
         ),
         FadeInFromBlack(sync=False),
         RunBackgroundEvent(

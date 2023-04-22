@@ -1,4 +1,6 @@
-# referenced by monster_attacks LullaBye, monster_spells LightBeam
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks LullaBye, monster_spells LightBeam"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -14,7 +16,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=80, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=80,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -67,7 +73,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=64, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=64,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,

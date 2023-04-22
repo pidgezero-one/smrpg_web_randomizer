@@ -1,8 +1,7 @@
-# 138 - Oerlikon
+"""138 - Oerlikon"""
 
 from randomizer.scripts.monster.script_imports import *
 
-script = MonsterScript([
-	Attack(PhysicalAttack16, PhysicalAttack3, PhysicalAttack3),
-	StartCounterCommands()
-])
+script = MonsterScript(
+    [Attack(PhysicalAttack16, PhysicalAttack3, PhysicalAttack3), StartCounterCommands()]
+)

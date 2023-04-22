@@ -1,4 +1,6 @@
-# E3357_KEEP_BUTTON_GAME_LOADER
+# pylint: disable=C0301
+
+"""E3357_KEEP_BUTTON_GAME_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

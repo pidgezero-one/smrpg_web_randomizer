@@ -1,4 +1,6 @@
-# E3401_COIN_CHEST_MULTI_HIT_2
+# pylint: disable=C0301
+
+"""E3401_COIN_CHEST_MULTI_HIT_2"""
 
 from randomizer.scripts.event.script_imports import *
 

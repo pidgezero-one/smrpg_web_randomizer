@@ -1,7 +1,5 @@
-#A0000_DO_NOTHING
+"""A0000_DO_NOTHING"""
 
 from randomizer.scripts.action.script_imports import *
 
-script = ActionScript([
-	Return()
-])
+script = ActionScript([Return()])

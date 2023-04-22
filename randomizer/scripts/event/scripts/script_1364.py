@@ -1,4 +1,6 @@
-# E1364_CURTAIN_ROOM_EXIT_TO_BALCONY
+# pylint: disable=C0301
+
+"""E1364_CURTAIN_ROOM_EXIT_TO_BALCONY"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,7 +32,7 @@ script = EventScript(
             subscript=[
                 ASShiftToXYCoords(x=3, y=26),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASSetSpriteSequence(
                     index=3, sprite_offset=3, is_sequence=True, looping=True
                 ),
@@ -45,8 +47,8 @@ script = EventScript(
                 ASPause(15),
                 ASFaceNortheast(),
                 ASPause(15),
-                ASShiftNortheastSteps(3),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastSteps(3),
+                ASWalkNortheastPixels(8),
                 ASPause(7),
                 ASSetSpriteSequence(
                     index=10, is_mold=True, looping=True, mirror_sprite=True
@@ -65,8 +67,8 @@ script = EventScript(
                 ASPause(20),
                 ASSetPriority(3),
                 ASClearSolidityBits(cant_pass_walls=True),
-                ASShiftNorthwestSteps(3),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestSteps(3),
+                ASWalkNorthwestPixels(7),
             ],
         ),
         Pause(20),
@@ -93,7 +95,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASShiftNorthwestPixels(20),
+                ASWalkNorthwestPixels(20),
                 ASSetPriority(2),
                 ASPause(15),
                 ASFaceSoutheast(),

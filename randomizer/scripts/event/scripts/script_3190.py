@@ -1,4 +1,6 @@
-# E3190_ACTIVATE_POST_MINES_BOSS_FIRST_MINECART_SESSION_CONTINUED
+# pylint: disable=C0301
+
+"""E3190_ACTIVATE_POST_MINES_BOSS_FIRST_MINECART_SESSION_CONTINUED"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -53,18 +55,18 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASSequenceLoopingOff(),
                 ASSequencePlaybackOff(),
-                ASShiftSoutheastPixels(3),
-                ASShiftSouthPixels(6),
-                ASShiftSouthwestPixels(12),
-                ASShiftWestPixels(8),
+                ASWalkSoutheastPixels(3),
+                ASWalkSouthPixels(6),
+                ASWalkSouthwestPixels(12),
+                ASWalkWestPixels(8),
                 ASShiftZUpPixels(20),
                 ASPause(16),
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
                 ASShadowOff(),
                 ASBounceToXYWithHeight(x=12, y=62, height=2),
-                ASShiftSouthwestPixels(4),
-                ASShiftNortheastPixels(0),
+                ASWalkSouthwestPixels(4),
+                ASWalkNortheastPixels(0),
                 ASShiftZDownPixels(3),
                 ASFixedFCoordOff(),
                 ASClearSolidityBits(bit_4=True, cant_walk_through=True),
@@ -119,7 +121,7 @@ script = EventScript(
                 ASJumpToHeight(108),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthwestPixels(9),
+                ASWalkSouthwestPixels(9),
                 ASShadowOff(),
                 ASPause(8),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),

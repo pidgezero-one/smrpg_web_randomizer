@@ -1,4 +1,6 @@
-# E1785_LANDS_END_FINAL_WHIRLPOOL_1_SUBROUTINE
+# pylint: disable=C0301
+
+"""E1785_LANDS_END_FINAL_WHIRLPOOL_1_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 

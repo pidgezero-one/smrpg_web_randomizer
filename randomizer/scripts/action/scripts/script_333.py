@@ -1,4 +1,4 @@
-# A0333_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH
+"""A0333_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH"""
 
 from randomizer.scripts.action.script_imports import *
 
@@ -9,7 +9,7 @@ script = ActionScript(
         Pause(117),
         JmpIfBitSet(MIDAS_RIVER_TUNNEL_4_PRIZE, ["script_333_reset"]),
         JumpToHeight(108),
-        ShiftSouthwestSteps(2),
+        WalkSouthwestSteps(2),
         StartLoopNTimes(4),
         VisibilityOn(),
         Pause(2),

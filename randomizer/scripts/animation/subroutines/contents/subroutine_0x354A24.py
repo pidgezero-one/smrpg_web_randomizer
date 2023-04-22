@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack51, monster_attacks ScrowDust
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack51, monster_attacks ScrowDust"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -78,11 +80,11 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0052_SNOW_CONFETTI__GREEN, playback_off=True),
         RunSubroutine(["command_0x35337d"]),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x35340b"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         RunSubroutine(["command_0x3533b5"]),
         ResetObjectMappingMemory(),
         Pause2Frames(),
@@ -120,11 +122,11 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0047_METEOR_SHOWER__SNOW_CONFETTI_, playback_off=True),
         RunSubroutine(["command_0x35337d"]),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x35340b"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         RunSubroutine(["command_0x3533b5"]),
         ResetObjectMappingMemory(),
         Pause2Frames(),

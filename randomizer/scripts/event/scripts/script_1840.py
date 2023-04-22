@@ -1,4 +1,6 @@
-# E1840_PLATFORM_SUBROUTINE
+# pylint: disable=C0301
+
+"""E1840_PLATFORM_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -32,29 +34,35 @@ script = EventScript(
         Pause(1),
         JmpIfMarioInAir(["EVENT_1840_ret_24"]),
         Set7000ToPressedButton(),
-        JmpIf7000AllBitsClear(destinations=["EVENT_1840_ret_24"]),
+        JmpIf7000AllBitsClear(bits=[], destinations=["EVENT_1840_ret_24"]),
         EndLoop(),
         Return(identifier="EVENT_1840_ret_24"),
         PlaySound(sound=SO058_INSERT, channel=6, identifier="EVENT_1840_play_sound_25"),
         EnableControlsUntilReturn([Y, B]),
         Pause(1),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1840_set_7000_to_current_level_53"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1840_set_7000_to_current_level_53"]
+        ),
         JmpIfMarioInAir(["EVENT_1840_set_bit_70"]),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
         Pause(1),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1840_set_7000_to_current_level_53"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1840_set_7000_to_current_level_53"]
+        ),
         JmpIfMarioInAir(["EVENT_1840_set_bit_70"]),
         EnableControlsUntilReturn([Y, B]),
         StartLoopNTimes(5),
         Pause(1),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1840_set_7000_to_current_level_53"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1840_set_7000_to_current_level_53"]
+        ),
         JmpIfMarioInAir(["EVENT_1840_set_bit_70"]),
         Set7000ToPressedButton(),
         JmpIf7000AllBitsClear(
-            destinations=["EVENT_1840_enable_controls_until_return_45"]
+            bits=[], destinations=["EVENT_1840_enable_controls_until_return_45"]
         ),
         EndLoop(),
         EnableControlsUntilReturn(
@@ -63,7 +71,9 @@ script = EventScript(
         ),
         Pause(1, identifier="EVENT_1840_pause_46"),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1840_set_7000_to_current_level_53"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1840_set_7000_to_current_level_53"]
+        ),
         JmpIfMarioInAir(["EVENT_1840_set_bit_70"]),
         JmpIfMarioOnObject(MEM_70A8, ["EVENT_1840_pause_46"]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(),
@@ -77,8 +87,8 @@ script = EventScript(
             [B], identifier="EVENT_1840_enable_controls_until_return_56"
         ),
         Set7000ToPressedButton(identifier="EVENT_1840_set_7000_to_pressed_button_57"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1840_action_queue_async_63"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1840_action_queue_async_65"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1840_action_queue_async_63"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1840_action_queue_async_65"]),
         Pause(1),
         JmpIfMarioInAir(["EVENT_1840_set_7000_to_pressed_button_57"]),
         Jmp(["EVENT_1840_enable_controls_until_return_67"]),
@@ -86,7 +96,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftNortheastPixels(
+                ASWalkNortheastPixels(
                     2,
                     identifier="EVENT_1840_action_queue_async_63_SUBSCRIPT_shift_northeast_pixels_1",
                 ),
@@ -104,7 +114,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestPixels(
+                ASWalkSouthwestPixels(
                     2,
                     identifier="EVENT_1840_action_queue_async_65_SUBSCRIPT_shift_southwest_pixels_1",
                 ),

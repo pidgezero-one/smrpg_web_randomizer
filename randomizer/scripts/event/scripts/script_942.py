@@ -1,4 +1,6 @@
-# E0942_KEEP_FIRST_BOSS_SUMMON_CHEST
+# pylint: disable=C0301
+
+"""E0942_KEEP_FIRST_BOSS_SUMMON_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

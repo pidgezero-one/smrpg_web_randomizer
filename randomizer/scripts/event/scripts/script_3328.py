@@ -1,4 +1,6 @@
-# E3328_VOLCANO_GENERIC_LOADER_1
+# pylint: disable=C0301
+
+"""E3328_VOLCANO_GENERIC_LOADER_1"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,7 +12,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASTransferToObjectXY(MARIO),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASFaceEast7C(),
                 ASPause(1),
             ],

@@ -1,4 +1,6 @@
-# E0537_ROSE_TOWN_TREASURE_HOUSE_2F_LOADER
+# pylint: disable=C0301
+
+"""E0537_ROSE_TOWN_TREASURE_HOUSE_2F_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

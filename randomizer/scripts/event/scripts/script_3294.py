@@ -1,4 +1,6 @@
-# E3294_SHIP_BULLET_COLLISION_BACKGROUND
+# pylint: disable=C0301
+
+"""E3294_SHIP_BULLET_COLLISION_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
             subscript=[
                 ASClearSolidityBits(cant_pass_npcs=True, bit_7=True),
                 ASSetWalkingSpeed(FAST),
-                ASSet700CToObjectCoord(object=MEM_70AA, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MEM_70AA, coord=COORD_F, pixel=True),
                 ASMem700CAndConst(0x000F),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
@@ -31,7 +33,7 @@ script = EventScript(
                     mirror_sprite=True,
                     identifier="EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6",
                 ),
-                ASShiftSoutheastPixels(2),
+                ASWalkSoutheastPixels(2),
                 ASJmpIfMarioInAir(
                     ["EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_bit_14"]
                 ),
@@ -45,7 +47,7 @@ script = EventScript(
                     looping=True,
                     identifier="EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_10",
                 ),
-                ASShiftSouthwestPixels(2),
+                ASWalkSouthwestPixels(2),
                 ASJmpIfMarioInAir(
                     ["EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_bit_14"]
                 ),

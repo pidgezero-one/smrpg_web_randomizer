@@ -1,7 +1,8 @@
 """Base classes for frequently used sprite animations that need to be
 inserted into overworld scripts depending on boss shuffling."""
 
-from typing import Optional
+import re
+from typing import List, Optional
 from randomizer.types.numbers.classes import UInt4, UInt8
 from randomizer.types.overworld_scripts.action_scripts.constants.classes import (
     SequenceSpeed,
@@ -138,7 +139,8 @@ class SpriteAnimationCollection:
     @property
     def bandits_way_distracted(self) -> Optional[SpriteAnimation]:
         """Boss animation.
-        An animation to be used when looking away from the player in most Bandit's Way rooms."""
+        An animation to be used when looking away from the player in most Bandit's Way rooms.
+        """
         return self._bandits_way_distracted
 
     def set_bandits_way_distracted(
@@ -152,23 +154,27 @@ class SpriteAnimationCollection:
     @property
     def mines_punch(self) -> Optional[SpriteAnimation]:
         """Boss animation.
-        The animation to use when shoving the player out of the Mines final boss room."""
+        The animation to use when shoving the player out of the Mines final boss room.
+        """
         return self._mines_punch
 
     def set_mines_punch(self, mines_punch: Optional[SpriteAnimation] = None) -> None:
         """Boss animation.
-        Set the animation to use when shoving the player out of the Mines final boss room."""
+        Set the animation to use when shoving the player out of the Mines final boss room.
+        """
         self._mines_punch = mines_punch
 
     @property
     def tower_bullet(self) -> Optional[SpriteAnimation]:
         """Henchman animation.
-        The animation to use when spawning Bullet Bills in the third tower henchman room."""
+        The animation to use when spawning Bullet Bills in the third tower henchman room.
+        """
         return self._tower_bullet
 
     def set_tower_bullet(self, tower_bullet: Optional[SpriteAnimation] = None) -> None:
         """Henchman animation.
-        Set the animation to use when spawning Bullet Bills in the third tower henchman room."""
+        Set the animation to use when spawning Bullet Bills in the third tower henchman room.
+        """
         self._tower_bullet = tower_bullet
 
     @property
@@ -192,24 +198,28 @@ class SpriteAnimationCollection:
 
     def set_kitchen_prep(self, kitchen_prep: Optional[SpriteAnimation] = None) -> None:
         """Henchman animation.
-        Set the animation for the NPC to use while fussing with the cake in the kitchen."""
+        Set the animation for the NPC to use while fussing with the cake in the kitchen.
+        """
         self._kitchen_prep = kitchen_prep
 
     @property
     def ship_beckon(self) -> Optional[SpriteAnimation]:
         """Boss animation.
-        The animation performed by the NPC when it pops out of the ship password pipe."""
+        The animation performed by the NPC when it pops out of the ship password pipe.
+        """
         return self._ship_beckon
 
     def set_ship_beckon(self, ship_beckon: Optional[SpriteAnimation] = None) -> None:
         """Boss animation.
-        Sethe animation performed by the NPC when it pops out of the ship password pipe."""
+        Sethe animation performed by the NPC when it pops out of the ship password pipe.
+        """
         self._ship_beckon = ship_beckon
 
     @property
     def ship_chair(self) -> Optional[SpriteAnimation]:
         """Boss animation.
-        The animation performed by the NPC when it is seated in the chair in the ship boss room."""
+        The animation performed by the NPC when it is seated in the chair in the ship boss room.
+        """
         return self._ship_chair
 
     def set_ship_chair(self, ship_chair: Optional[SpriteAnimation] = None) -> None:
@@ -221,14 +231,16 @@ class SpriteAnimationCollection:
     @property
     def dojo_challenge(self) -> Optional[SpriteAnimation]:
         """Boss animation.
-        The animation performed by the NPC right before your battle begins in the dojo."""
+        The animation performed by the NPC right before your battle begins in the dojo.
+        """
         return self._dojo_challenge
 
     def set_dojo_challenge(
         self, dojo_challenge: Optional[SpriteAnimation] = None
     ) -> None:
         """Boss animation.
-        Set the animation performed by the NPC right before your battle begins in the dojo."""
+        Set the animation performed by the NPC right before your battle begins in the dojo.
+        """
         self._dojo_challenge = dojo_challenge
 
     @property
@@ -344,6 +356,11 @@ class SpriteAnimationCollection:
         Set the animation performed by the NPC, when it is the final boss,
         right before the battle starts."""
         self._endgame_challenge = endgame_challenge
+
+    @property
+    def animation_prop_names(self) -> List[str]:
+        """Returns the property names of all animations as strings"""
+        return [prop for prop in dir(self) if re.search("^_+", prop) is None]
 
     def __init__(
         self,

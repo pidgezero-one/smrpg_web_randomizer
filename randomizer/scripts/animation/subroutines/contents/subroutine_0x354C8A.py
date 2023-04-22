@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack40, monster_attacks IronMaiden
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack40, monster_attacks IronMaiden"""
 
 from randomizer.scripts.animation.script_imports import *
 

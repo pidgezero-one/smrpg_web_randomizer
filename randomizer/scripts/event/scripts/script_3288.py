@@ -1,4 +1,6 @@
-# E3288_SHIP_SPAWN_PRIZE_IN_TROOPA_PUZZLE_ROOM
+# pylint: disable=C0301
+
+"""E3288_SHIP_SPAWN_PRIZE_IN_TROOPA_PUZZLE_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 

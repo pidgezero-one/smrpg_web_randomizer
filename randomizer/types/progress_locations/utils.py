@@ -1,4 +1,10 @@
+# pylint: disable=line-too-long
+
+"""Supporting exports for progress locations"""
+
+from typing import Dict
 from randomizer.types.bosses.enums import Battlefields
+from randomizer.types.items.classes import IllegalItemPropertyException
 from randomizer.types.overworld_scripts.constants.room_names import *
 
 ROOMS_BATTLEFIELD_DICT: Dict[int, Battlefields] = {
@@ -147,7 +153,7 @@ ROOMS_BATTLEFIELD_DICT: Dict[int, Battlefields] = {
     R142_LANDS_END_AREA_05_SKY_BRIDGE: Battlefields.PLATEAU,
     R143_PIPE_VAULT_GOOMBATHUMPING_ROOM: Battlefields.KERO_SEWERS,
     R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM: Battlefields.BOWSERS_KEEP,
-    R145_STAR_HILL_AREA_01: Battlefields.StarHill,
+    R145_STAR_HILL_AREA_01: Battlefields.STAR_HILL,
     R146_PIPE_VAULT_AREA_02____DUMMY: Battlefields.KERO_SEWERS,
     R147_GAME_INTRO_MIDAS_RIVER_WATER_TUNNEL: Battlefields.SEA_ENCLAVE,
     R148_GAME_INTRO_BANDITS_WAY_AREA_04: Battlefields.MUSHROOM_WAY,
@@ -159,9 +165,9 @@ ROOMS_BATTLEFIELD_DICT: Dict[int, Battlefields] = {
     R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER: Battlefields.BUNDT,
     R155_MARRYMORE_CHAPEL_KITCHEN: Battlefields.HOUSE,
     R156_MARRYMORE_CHAPEL_KITCHEN_NO_SPRITESEXITS_UNUSED: Battlefields.HOUSE,
-    R157_STAR_HILL_AREA_03: Battlefields.StarHill,
-    R158_STAR_HILL_AREA_02: Battlefields.StarHill,
-    R159_STAR_HILL_AREA_04: Battlefields.StarHill,
+    R157_STAR_HILL_AREA_03: Battlefields.STAR_HILL,
+    R158_STAR_HILL_AREA_02: Battlefields.STAR_HILL,
+    R159_STAR_HILL_AREA_04: Battlefields.STAR_HILL,
     R160_SUNKEN_SHIP_AREA_01: Battlefields.SUNKEN_SHIP,
     R161_SUNKEN_SHIP_AREA_03_GREAPERS: Battlefields.SUNKEN_SHIP,
     R162_SUNKEN_SHIP_AREA_04_GREAPERS__DRY_BONES: Battlefields.SUNKEN_SHIP,
@@ -234,7 +240,7 @@ ROOMS_BATTLEFIELD_DICT: Dict[int, Battlefields] = {
     R229_FOREST_MAZE_AREA_06: Battlefields.FOREST,
     R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09: Battlefields.FOREST,
     R231_FOREST_MAZE_SECRET_ENTRANCE: Battlefields.FOREST,
-    R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD: Battlefields.Bowyer,
+    R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD: Battlefields.BOWYER,
     R233_FOREST_MAZE_AREA_03_UNDERGROUND: Battlefields.UNDERGROUND,
     R234_FOREST_MAZE_SECRET: Battlefields.UNDERGROUND,
     R235_FOREST_MAZE_AREA_08_UNDERGROUND: Battlefields.UNDERGROUND,
@@ -377,7 +383,7 @@ ROOMS_BATTLEFIELD_DICT: Dict[int, Battlefields] = {
     R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND: Battlefields.VALENTINA,
     R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD: Battlefields.VALENTINA,
     R374_NIMBUS_LAND_FALL_FROM_PLATFORM_4TH: Battlefields.VALENTINA,
-    R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY: Battlefields.StarHill,
+    R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY: Battlefields.STAR_HILL,
     R376_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2B_1ST_FIGHT_CHEWY: Battlefields.BOWSERS_KEEP,
     R377_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2C_1ST_FIGHT_SPARKY: Battlefields.BOWSERS_KEEP,
     R378_BEAN_VALLEY_BEANSTALKS_AREA_01: Battlefields.BEANSTALKS,
@@ -516,6 +522,10 @@ ROOMS_BATTLEFIELD_DICT: Dict[int, Battlefields] = {
 
 
 def get_default_battlefield_from_room(identifier: int) -> Battlefields:
+    """Given a room ID, get the default battlefield that should be loaded
+    for any battle in that room."""
     if identifier in ROOMS_BATTLEFIELD_DICT:
         return ROOMS_BATTLEFIELD_DICT[identifier]
-    raise Exception("room id %i not set in battlefield dict" % identifier)
+    raise IllegalItemPropertyException(
+        f"room id {identifier} not set in battlefield dict"
+    )

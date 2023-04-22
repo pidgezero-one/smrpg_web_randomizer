@@ -1,4 +1,6 @@
-# E3362_KEEP_BUTTON_GAME_PRESS_BUTTON
+# pylint: disable=C0301
+
+"""E3362_KEEP_BUTTON_GAME_PRESS_BUTTON"""
 
 from randomizer.scripts.event.script_imports import *
 

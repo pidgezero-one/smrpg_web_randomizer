@@ -1,4 +1,6 @@
-# E2344_TOWER_THWOMP_SEESAW_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2344_TOWER_THWOMP_SEESAW_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,9 +13,9 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSouthwestPixels(12),
-                ASShiftSoutheastPixels(2),
-                ASShiftNorthPixels(1),
+                ASWalkSouthwestPixels(12),
+                ASWalkSoutheastPixels(2),
+                ASWalkNorthPixels(1),
                 ASSetSpriteSequence(
                     index=0,
                     is_mold=True,
@@ -28,15 +30,15 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftZDownPixels(4),
-                ASShiftNorthPixels(15),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(5),
+                ASWalkNorthPixels(15),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(5),
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
             ],
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 22, ["EVENT_2344_freeze_camera_9"]),
         FadeInFromBlack(sync=False),
         Return(),

@@ -1,4 +1,6 @@
-# E3111_FREESTANDING_PROGRESSIVE_EGG_GRANT
+# pylint: disable=C0301
+
+"""E3111_FREESTANDING_PROGRESSIVE_EGG_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 

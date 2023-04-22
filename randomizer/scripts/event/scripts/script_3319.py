@@ -1,4 +1,6 @@
-# E3319_SET_VOMER_PACK
+# pylint: disable=C0301
+
+"""E3319_SET_VOMER_PACK"""
 
 from randomizer.scripts.event.script_imports import *
 

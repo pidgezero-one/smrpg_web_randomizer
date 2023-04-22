@@ -1,4 +1,4 @@
-# 226 - Yaridovich
+"""226 - Yaridovich"""
 
 from randomizer.scripts.monster.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1805_TEMPLE_3_FORTUNE_SHAMAN
+# pylint: disable=C0301
+
+"""E1805_TEMPLE_3_FORTUNE_SHAMAN"""
 
 from randomizer.scripts.event.script_imports import *
 

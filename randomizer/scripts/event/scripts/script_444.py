@@ -1,4 +1,6 @@
-# E0444_GOOMBA_THUMPIN_ADMINISTRATOR
+# pylint: disable=C0301
+
+"""E0444_GOOMBA_THUMPIN_ADMINISTRATOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -61,8 +63,8 @@ script = EventScript(
                 ASWalkToXYCoords(x=4, y=115),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFloatingOn(),
-                ASShiftSoutheastSteps(2),
-                ASShiftSouthPixels(8),
+                ASWalkSoutheastSteps(2),
+                ASWalkSouthPixels(8),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),

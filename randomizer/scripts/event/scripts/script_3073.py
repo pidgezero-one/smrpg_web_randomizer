@@ -1,4 +1,6 @@
-# E3073_ITEM_CHEST
+# pylint: disable=C0301
+
+"""E3073_ITEM_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

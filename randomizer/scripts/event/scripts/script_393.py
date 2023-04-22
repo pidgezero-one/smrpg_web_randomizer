@@ -1,4 +1,6 @@
-# E0393_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F_LOADER
+# pylint: disable=C0301
+
+"""E0393_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

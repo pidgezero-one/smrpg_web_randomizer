@@ -1,4 +1,6 @@
-# E3794_FACTORY_FINAL_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E3794_FACTORY_FINAL_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -133,7 +135,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
                 ASJumpToHeight(152),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASSetSpriteSequence(
                     index=9,
                     sprite_offset=1,
@@ -142,7 +144,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASFloatingOff(),
                 ASSetSpriteSequence(
                     index=9,
@@ -160,10 +162,10 @@ script = EventScript(
             target=NPC_9,
             subscript=[
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftNortheastPixels(2),
+                ASWalkNortheastPixels(2),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftSouthPixels(4),
-                ASShiftSouthwestPixels(6),
+                ASWalkSouthPixels(4),
+                ASWalkSouthwestPixels(6),
             ],
         ),
         ActionQueueSync(
@@ -181,9 +183,9 @@ script = EventScript(
             target=NPC_8,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftNortheastPixels(2),
+                ASWalkNortheastPixels(2),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthwestPixels(2),
+                ASWalkSouthwestPixels(2),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASShiftZDownPixels(4),
             ],
@@ -193,12 +195,12 @@ script = EventScript(
             subscript=[
                 ASPause(10),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSouthwestPixels(2),
+                ASWalkSouthwestPixels(2),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNortheastPixels(2),
+                ASWalkNortheastPixels(2),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftNortheastPixels(1),
-                ASShiftNorthPixels(2),
+                ASWalkNortheastPixels(1),
+                ASWalkNorthPixels(2),
                 ASSetSpriteSequence(
                     index=4, is_mold=True, is_sequence=True, looping=True
                 ),

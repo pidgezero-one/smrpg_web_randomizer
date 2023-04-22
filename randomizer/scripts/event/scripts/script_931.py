@@ -1,4 +1,6 @@
-# E0931_INITATIE_YOSHI_RACE_FOR_GAMBLING
+# pylint: disable=C0301
+
+"""E0931_INITATIE_YOSHI_RACE_FOR_GAMBLING"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E2075_MONSTRO_SEALED_DOOR
+# pylint: disable=C0301
+
+"""E2075_MONSTRO_SEALED_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
         Return(),
         RunDialog(
             dialog_id=DI3335_DUPLICATE,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,

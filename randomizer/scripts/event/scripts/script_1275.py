@@ -1,4 +1,6 @@
-# E1275_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_HENCHMAN
+# pylint: disable=C0301
+
+"""E1275_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_HENCHMAN"""
 
 from randomizer.scripts.event.script_imports import *
 

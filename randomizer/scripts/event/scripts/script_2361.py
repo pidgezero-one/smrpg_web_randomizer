@@ -1,4 +1,6 @@
-# E2361_ABYSS_AMEBOID_BUTTON_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2361_ABYSS_AMEBOID_BUTTON_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

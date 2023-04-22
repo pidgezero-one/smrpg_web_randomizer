@@ -1,4 +1,6 @@
-# E1737_SKY_BRIDGE_DONUT_LIFT
+# pylint: disable=C0301
+
+"""E1737_SKY_BRIDGE_DONUT_LIFT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,9 +14,9 @@ script = EventScript(
                 ASClearSolidityBits(cant_pass_npcs=True),
                 ASJumpToHeight(153),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSoutheastPixels(20),
+                ASWalkSoutheastPixels(20),
                 ASSetSolidityBits(cant_pass_npcs=True),
-                ASShiftSoutheastPixels(50),
+                ASWalkSoutheastPixels(50),
                 ASSetWalkingSpeed(FAST),
             ],
         ),

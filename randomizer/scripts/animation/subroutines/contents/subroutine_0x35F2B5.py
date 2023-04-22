@@ -1,4 +1,6 @@
-# referenced by weapons LazyShellWeapon
+# pylint: disable=C0301,C0103
+
+"""referenced by weapons LazyShellWeapon"""
 
 from randomizer.scripts.animation.script_imports import *
 

@@ -1,16 +1,19 @@
-# behaviour_51_0x350F56
+"""behaviour_51_0x350F56 animation"""
 
 from randomizer.scripts.animation.script_imports import *
 
-script = SubroutineOrBanklessScript(expected_size = 21, script = [
-	SpriteSequence(sequence=4),
-	PauseScriptUntilSpriteSequenceDone(),
-	ClearAMEM8Bit(0x60),
-	SetOMEM60To072C(),
-	DecAMEM16BitByConst(0x60, 64),
-	ObjectQueueAtOffsetAndIndexAtAMEM60(target_address=0x351026),
-	AttackTimerBegins(),
-	Db(bytearray(b'<\x00\x08')),
-	ResetSpriteSequence(),
-	Jmp(["command_0x350e93"])
-])
+script = SubroutineOrBanklessScript(
+    expected_size=21,
+    script=[
+        SpriteSequence(sequence=4),
+        PauseScriptUntilSpriteSequenceDone(),
+        ClearAMEM8Bit(0x60),
+        SetOMEM60To072C(),
+        DecAMEM16BitByConst(0x60, 64),
+        ObjectQueueAtOffsetAndIndexAtAMEM60(target_address=0x351026),
+        AttackTimerBegins(),
+        Db(bytearray(b"<\x00\x08")),
+        ResetSpriteSequence(),
+        Jmp(["command_0x350e93"]),
+    ],
+)

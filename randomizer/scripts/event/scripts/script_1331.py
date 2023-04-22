@@ -1,4 +1,6 @@
-# E1331_TOWER_BREAK_DOWN_DOOR
+# pylint: disable=C0301
+
+"""E1331_TOWER_BREAK_DOWN_DOOR"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -38,7 +40,7 @@ script = EventScript(
                 ASPause(45),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASFixedFCoordOn(),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
             ],
         ),
         ActionQueueSync(
@@ -47,12 +49,12 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASSequencePlaybackOff(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNortheastPixels(18),
-                ASShiftSouthwestPixels(12),
-                ASShiftNortheastPixels(8),
-                ASShiftSouthwestPixels(6),
-                ASShiftNortheastPixels(4),
-                ASShiftSouthwestPixels(4),
+                ASWalkNortheastPixels(18),
+                ASWalkSouthwestPixels(12),
+                ASWalkNortheastPixels(8),
+                ASWalkSouthwestPixels(6),
+                ASWalkNortheastPixels(4),
+                ASWalkSouthwestPixels(4),
             ],
         ),
         Pause(5),

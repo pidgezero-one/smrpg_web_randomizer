@@ -1,4 +1,6 @@
-# E3399_MIDAS_CAVE_PROGRESSIVE_FIREWORK_GRANTER
+# pylint: disable=C0301
+
+"""E3399_MIDAS_CAVE_PROGRESSIVE_FIREWORK_GRANTER"""
 
 from randomizer.scripts.event.script_imports import *
 

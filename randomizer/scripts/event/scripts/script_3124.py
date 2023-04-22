@@ -1,4 +1,6 @@
-# E3124_MIMIC_1_CHEST
+# pylint: disable=C0301
+
+"""E3124_MIMIC_1_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

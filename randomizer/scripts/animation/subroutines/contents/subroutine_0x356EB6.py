@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack10, monster_spells Boulder, monster_spells WillyWisp
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack10, monster_spells Boulder, monster_spells WillyWisp"""
 
 from randomizer.scripts.animation.script_imports import *
 

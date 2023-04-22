@@ -1,4 +1,6 @@
-# referenced by monster_attacks Howl, monster_attacks PhysicalAttack56, monster_attacks FunRun, monster_attacks BodySlam
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Howl, monster_attacks PhysicalAttack56, monster_attacks FunRun, monster_attacks BodySlam"""
 
 from randomizer.scripts.animation.script_imports import *
 

@@ -1,4 +1,6 @@
-# E2378_TOWER_PARACHUTE_ROOM_HIDDEN_ITEM
+# pylint: disable=C0301
+
+"""E2378_TOWER_PARACHUTE_ROOM_HIDDEN_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 

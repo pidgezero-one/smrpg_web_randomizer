@@ -1,4 +1,6 @@
-# E2604_ABYSS_CHEST_BEFORE_1ST_BOSS
+# pylint: disable=C0301
+
+"""E2604_ABYSS_CHEST_BEFORE_1ST_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3502_BOOSTER_HILL_END
+# pylint: disable=C0301
+
+"""E3502_BOOSTER_HILL_END"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,10 +15,18 @@ script = EventScript(
             identifier="EVENT_3502_jmp_if_bit_set_3",
         ),
         Set7000ToPressedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3502_jmp_if_var_equals_const_24"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3502_jmp_if_var_equals_const_24"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3502_jmp_if_var_equals_const_28"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_3502_jmp_if_var_equals_const_28"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3502_jmp_if_var_equals_const_24"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3502_jmp_if_var_equals_const_24"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3502_jmp_if_var_equals_const_28"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_3502_jmp_if_var_equals_const_28"]
+        ),
         Pause(1, identifier="EVENT_3502_pause_9"),
         JmpIfBitSet(
             TEMP_7043_4,
@@ -36,7 +46,7 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-                ASShiftSoutheastPixels(1),
+                ASWalkSoutheastPixels(1),
                 ASDec(SECONDARY_TEMP_7024),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
@@ -52,7 +62,7 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthwestPixels(1),
                 ASInc(SECONDARY_TEMP_7024),
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
@@ -70,7 +80,7 @@ script = EventScript(
             identifier="EVENT_3502_jmp_if_var_equals_const_24",
         ),
         ActionQueueAsync(
-            target=MARIO, subscript=[ASSetWalkingSpeed(FAST), ASShiftNortheastPixels(2)]
+            target=MARIO, subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastPixels(2)]
         ),
         Inc(TEMP_7034),
         Jmp(["EVENT_3502_jmp_if_bit_set_10"]),
@@ -81,7 +91,7 @@ script = EventScript(
             identifier="EVENT_3502_jmp_if_var_equals_const_28",
         ),
         ActionQueueAsync(
-            target=MARIO, subscript=[ASSetWalkingSpeed(FAST), ASShiftSouthwestPixels(2)]
+            target=MARIO, subscript=[ASSetWalkingSpeed(FAST), ASWalkSouthwestPixels(2)]
         ),
         Dec(TEMP_7034),
         Jmp(["EVENT_3502_jmp_if_bit_set_10"]),
@@ -100,7 +110,7 @@ script = EventScript(
         ResumeActionScript(NPC_4),
         ResumeActionScript(NPC_5),
         StartSyncEmbeddedActionScript(
-            target=LAYER_1, prefix=0xF1, subscript=[ASShiftNorthwestSteps(15)]
+            target=LAYER_1, prefix=0xF1, subscript=[ASWalkNorthwestSteps(15)]
         ),
         FadeOutMusicToVolume(duration=5, volume=0),
         Db(bytearray(b"\xfdE")),
@@ -144,7 +154,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetAllSpeeds(FAST),
                 ASPause(4),
-                ASShiftSouthwestSteps(8),
+                ASWalkSouthwestSteps(8),
                 ASVisibilityOff(),
             ],
             identifier="EVENT_3502_action_queue_sync_62",
@@ -152,11 +162,11 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_8,
             subscript=[
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
                 ASSetSpriteSequence(
                     index=4, sprite_offset=2, is_sequence=True, looping=True
                 ),
-                ASShiftNorthPixels(4),
+                ASWalkNorthPixels(4),
                 ASPause(64),
                 ASVisibilityOff(),
             ],
@@ -194,14 +204,14 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalk1StepSouthwest(),
                 ASPause(10),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASPause(10),
                 ASFixedFCoordOff(),
                 ASFaceNorthwest(),
                 ASPause(8),
                 ASFaceWest(),
                 ASPause(8),
-                ASShiftSouthwestSteps(5),
+                ASWalkSouthwestSteps(5),
             ],
         ),
         UnfreezeCamera(),
@@ -246,7 +256,7 @@ script = EventScript(
                 ),
                 ASPause(120),
                 ASResetProperties(),
-                ASShiftSouthwestSteps(5),
+                ASWalkSouthwestSteps(5),
             ],
         ),
         UnfreezeCamera(),

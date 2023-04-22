@@ -1,4 +1,6 @@
-# referenced by monster_attacks Vigorup, monster_attacks PhysicalAttack51, monster_attacks SporeChimes, monster_attacks Toxicyst, monster_attacks Elegy, monster_attacks IronMaiden, monster_attacks InkBlast, monster_attacks DoomReverb, monster_attacks Fangs, monster_attacks Quicksilver, monster_attacks Backfire, monster_attacks VenomDrool, monster_attacks MushFunk, monster_attacks PhysicalAttack21, monster_attacks PhysicalAttack46, monster_attacks FunRun, monster_attacks ViroPlasm, monster_attacks Echofinder, monster_attacks ScrowDust, monster_attacks PhysicalAttack50, monster_attacks PollenNap, monster_attacks PhysicalAttack28, monster_attacks CarniKiss, monster_attacks Poison, monster_attacks FearRoulette, monster_attacks 126, monster_attacks PhysicalAttack105, monster_attacks PhysicalAttack57, monster_attacks PhysicalAttack40, monster_attacks DarkClaw, monster_attacks PhysicalAttack29, monster_attacks PhysicalAttack115, monster_attacks BodySlam, monster_attacks RoyalFlush, monster_attacks FullHouse, monster_attacks PhysicalAttack85, monster_attacks PhysicalAttack47, monster_attacks PhysicalAttack56, monster_attacks GunkBall, monster_attacks Howl, monster_attacks Scream, monster_attacks SpritzBomb, monster_attacks Stench, monster_attacks PsychoPlasm, monster_attacks Sporocyst, monster_attacks VaVaVoom, monster_attacks PhysicalAttack31, monster_attacks GetTough, monster_attacks WildCard, monster_attacks 122, monster_attacks PhysicalAttack86, monster_attacks Migraine, monster_attacks PhysicalAttack94, monster_attacks PhysicalAttack91, monster_attacks PhysicalAttack27, monster_attacks Blazer, monster_attacks PhysicalAttack93, monster_attacks Scythe, monster_attacks Sickle, monster_attacks Endobubble, monster_attacks LullaBye
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Vigorup, monster_attacks PhysicalAttack51, monster_attacks SporeChimes, monster_attacks Toxicyst, monster_attacks Elegy, monster_attacks IronMaiden, monster_attacks InkBlast, monster_attacks DoomReverb, monster_attacks Fangs, monster_attacks Quicksilver, monster_attacks Backfire, monster_attacks VenomDrool, monster_attacks MushFunk, monster_attacks PhysicalAttack21, monster_attacks PhysicalAttack46, monster_attacks FunRun, monster_attacks ViroPlasm, monster_attacks Echofinder, monster_attacks ScrowDust, monster_attacks PhysicalAttack50, monster_attacks PollenNap, monster_attacks PhysicalAttack28, monster_attacks CarniKiss, monster_attacks Poison, monster_attacks FearRoulette, monster_attacks 126, monster_attacks PhysicalAttack105, monster_attacks PhysicalAttack57, monster_attacks PhysicalAttack40, monster_attacks DarkClaw, monster_attacks PhysicalAttack29, monster_attacks PhysicalAttack115, monster_attacks BodySlam, monster_attacks RoyalFlush, monster_attacks FullHouse, monster_attacks PhysicalAttack85, monster_attacks PhysicalAttack47, monster_attacks PhysicalAttack56, monster_attacks GunkBall, monster_attacks Howl, monster_attacks Scream, monster_attacks SpritzBomb, monster_attacks Stench, monster_attacks PsychoPlasm, monster_attacks Sporocyst, monster_attacks VaVaVoom, monster_attacks PhysicalAttack31, monster_attacks GetTough, monster_attacks WildCard, monster_attacks 122, monster_attacks PhysicalAttack86, monster_attacks Migraine, monster_attacks PhysicalAttack94, monster_attacks PhysicalAttack91, monster_attacks PhysicalAttack27, monster_attacks Blazer, monster_attacks PhysicalAttack93, monster_attacks Scythe, monster_attacks Sickle, monster_attacks Endobubble, monster_attacks LullaBye"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -56,7 +58,11 @@ script = SubroutineOrBanklessScript(
         SpriteSequence(sequence=3),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=512, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=512,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,

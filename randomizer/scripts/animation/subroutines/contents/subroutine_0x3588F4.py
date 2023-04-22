@@ -1,4 +1,6 @@
-# referenced by items Mushroom
+# pylint: disable=C0301,C0103
+
+"""referenced by items Mushroom"""
 
 from randomizer.scripts.animation.script_imports import *
 

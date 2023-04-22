@@ -1,4 +1,7 @@
-from .classes import Colour
+"""Int subclass instances representing valid colours to be used by
+certain graphics commands."""
+
+from randomizer.types.overworld_scripts.constants.classes import Colour
 
 BLACK = Colour(0)
 BLUE = Colour(1)

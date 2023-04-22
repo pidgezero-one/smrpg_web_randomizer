@@ -1,4 +1,6 @@
-# E0932_FAT_YOSHI
+# pylint: disable=C0301
+
+"""E0932_FAT_YOSHI"""
 
 from randomizer.scripts.event.script_imports import *
 

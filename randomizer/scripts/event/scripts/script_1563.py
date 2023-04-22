@@ -1,4 +1,6 @@
-# E1563_LANDS_END_MARIO_OOB
+# pylint: disable=C0301
+
+"""E1563_LANDS_END_MARIO_OOB"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,10 +1,12 @@
-# E2362_ABYSS_FOUR_BOLT_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2362_ABYSS_FOUR_BOLT_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 19, ["EVENT_2362_set_21"]),
         SetVarToConst(FACTORY_FALL_1, 222),
         SetVarToConst(FACTORY_FALL_2, 0),
@@ -16,22 +18,22 @@ script = EventScript(
             event_id=E2385_ABYSS_FOUR_BOLT_ROOM_BACKGROUND, return_on_level_exit=True
         ),
         ActionQueueSync(
-            target=NPC_0, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_0, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_1, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_2, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_2, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_3, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_3, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_4, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_4, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_5, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_5, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
             target=NPC_6,
@@ -43,7 +45,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -57,7 +59,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -71,7 +73,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -85,7 +87,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -108,7 +110,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASShiftToXYCoords(x=6, y=117),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
@@ -120,7 +122,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASShiftToXYCoords(x=12, y=105),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
@@ -132,7 +134,7 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASShiftToXYCoords(x=17, y=115),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
@@ -147,7 +149,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(2),
+                ASWalkNorthwestPixels(2),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -162,7 +164,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -177,7 +179,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(5),
+                ASWalkNorthwestPixels(5),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -192,7 +194,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftSoutheastPixels(2),
+                ASWalkSoutheastPixels(2),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -205,22 +207,22 @@ script = EventScript(
         SetVarToConst(FACTORY_FALL_5, 0),
         SetVarToConst(FACTORY_FALL_6, 0),
         ActionQueueSync(
-            target=NPC_0, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_0, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_1, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_2, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_2, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_3, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_3, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_4, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_4, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_5, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_5, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
             target=NPC_6,
@@ -232,7 +234,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -246,7 +248,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -260,7 +262,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -274,7 +276,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -311,21 +313,21 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASShiftToXYCoords(x=6, y=117),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
         ActionQueueSync(
-            target=NPC_2, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_2, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_3, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_3, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_4, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_4, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_5, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_5, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
             target=NPC_6,
@@ -337,7 +339,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -351,7 +353,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -365,7 +367,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -379,7 +381,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -416,21 +418,21 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASShiftToXYCoords(x=6, y=117),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
         ActionQueueSync(
-            target=NPC_2, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_2, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_3, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_3, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_4, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_4, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_5, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_5, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
             target=NPC_6,
@@ -443,7 +445,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(2),
+                ASWalkNorthwestPixels(2),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -458,7 +460,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -472,7 +474,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -486,7 +488,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -523,7 +525,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASShiftToXYCoords(x=6, y=117),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
@@ -535,15 +537,15 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASShiftToXYCoords(x=12, y=105),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
         ActionQueueSync(
-            target=NPC_4, subscript=[ASShiftSouthwestPixels(4), ASShiftZDownPixels(11)]
+            target=NPC_4, subscript=[ASWalkSouthwestPixels(4), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
-            target=NPC_5, subscript=[ASShiftSouthwestPixels(10), ASShiftZDownPixels(11)]
+            target=NPC_5, subscript=[ASWalkSouthwestPixels(10), ASShiftZDownPixels(11)]
         ),
         ActionQueueSync(
             target=NPC_6,
@@ -555,7 +557,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -569,7 +571,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -583,7 +585,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(7),
+                ASWalkNorthwestPixels(7),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -597,7 +599,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(13),
+                ASWalkNorthwestPixels(13),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -634,7 +636,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASShiftToXYCoords(x=6, y=117),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
@@ -646,7 +648,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASShiftToXYCoords(x=12, y=105),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
@@ -658,7 +660,7 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASShiftToXYCoords(x=17, y=115),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASShiftZDownPixels(11),
             ],
         ),
@@ -673,7 +675,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(2),
+                ASWalkNorthwestPixels(2),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -688,7 +690,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -703,7 +705,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestPixels(5),
+                ASWalkNorthwestPixels(5),
                 ASShiftZDownPixels(15),
             ],
         ),
@@ -718,7 +720,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftSoutheastPixels(2),
+                ASWalkSoutheastPixels(2),
                 ASShiftZDownPixels(15),
             ],
         ),

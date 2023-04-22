@@ -1,4 +1,6 @@
-# E1335_PORTRAIT_GAME_4
+# pylint: disable=C0301
+
+"""E1335_PORTRAIT_GAME_4"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,12 +32,12 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
-                ShiftToXYCoords(x=18, y=25),
-                ShiftNorthwestPixels(5),
-                VisibilityOn(),
-                FaceSoutheast(),
-                SetPriority(0),
-                SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
+                ASShiftToXYCoords(x=18, y=25),
+                ASWalkNorthwestPixels(5),
+                ASVisibilityOn(),
+                ASFaceSoutheast(),
+                ASSetPriority(0),
+                ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
         ),
         ApplyTileModToLevel(
@@ -53,36 +55,36 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                FaceNortheast(),
-                FixedFCoordOn(),
-                SetAllSpeeds(FAST),
-                WalkToXYCoords(x=17, y=27),
-                FixedFCoordOff(),
+                ASFaceNortheast(),
+                ASFixedFCoordOn(),
+                ASSetAllSpeeds(FAST),
+                ASWalkToXYCoords(x=17, y=27),
+                ASFixedFCoordOff(),
             ],
         ),
         Pause(30),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
-                FaceSouthwest(),
-                Pause(30),
-                SetSequenceSpeed(SLOW),
-                SetSpriteSequence(index=6, is_mold=True, looping=True),
+                ASFaceSouthwest(),
+                ASPause(30),
+                ASSetSequenceSpeed(SLOW),
+                ASSetSpriteSequence(index=6, is_mold=True, looping=True),
             ],
         ),
         Pause(10),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
-                VisibilityOn(),
-                PlaySound(sound=SO078_CLICK, channel=6),
-                SetWalkingSpeed(NORMAL),
-                JumpToHeight(21),
-                FloatingOn(),
-                ShiftSouthwestSteps(1),
+                ASVisibilityOn(),
+                ASPlaySound(sound=SO078_CLICK, channel=6),
+                ASSetWalkingSpeed(NORMAL),
+                ASJumpToHeight(21),
+                ASFloatingOn(),
+                ASWalkSouthwestSteps(1),
             ],
         ),
-        ActionQueueAsync(target=NPC_6, subscript=[ResetProperties()]),
+        ActionQueueAsync(target=NPC_6, subscript=[ASResetProperties()]),
         Pause(30),
         PlaySound(sound=SO106_OFF_BALANCE, channel=6),
         ApplyTileModToLevel(
@@ -149,18 +151,18 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[
-                SetAllSpeeds(NORMAL),
-                ShiftNortheastPixels(8),
-                Pause(15),
-                SetSpriteSequence(
+                ASSetAllSpeeds(NORMAL),
+                ASWalkNortheastPixels(8),
+                ASPause(15),
+                ASSetSpriteSequence(
                     index=10, sprite_offset=2, is_sequence=True, looping=False
                 ),
-                Pause(45),
+                ASPause(45),
             ],
         ),
-        ActionQueueAsync(target=NPC_7, subscript=[Pause(8), VisibilityOff()]),
+        ActionQueueAsync(target=NPC_7, subscript=[ASPause(8), ASVisibilityOff()]),
         RunEventAsSubroutine(E0241_FREESTANDING_1_GRANT),
-        ActionQueueAsync(target=MARIO, subscript=[ResetProperties()]),
+        ActionQueueAsync(target=MARIO, subscript=[ASResetProperties()]),
         SetBit(PORTRAIT_GAME_COMPLETED),
         Return(identifier="EVENT_1335_ret_54"),
     ]

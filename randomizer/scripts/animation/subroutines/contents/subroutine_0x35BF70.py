@@ -1,4 +1,6 @@
-# referenced by ally_spells HP Rain
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells HP Rain"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -180,7 +182,7 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x35c0bd"),
         SetAMEM8BitToOMEMMain(amem=0x69, omem=0x69),
         JmpIfAMEM8BitNotEqualsConst(0x69, 1, ["command_0x35c0bd"]),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         MoveObject(
             speed=1,
             start_position=272,
@@ -190,7 +192,7 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=130),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         ResetObjectMappingMemory(),
@@ -215,7 +217,7 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x35c0fb"),
         SetAMEM8BitToOMEMMain(amem=0x69, omem=0x69),
         JmpIfAMEM8BitNotEqualsConst(0x69, 1, ["command_0x35c0fb"]),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         MoveObject(
             speed=1,
             start_position=208,
@@ -225,7 +227,7 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=130),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         ResetObjectMappingMemory(),

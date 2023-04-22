@@ -1,4 +1,6 @@
-# E3600_MUSHROOM_DERBY_GOAL_TILE
+# pylint: disable=C0301
+
+"""E3600_MUSHROOM_DERBY_GOAL_TILE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -217,9 +219,9 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftNortheastPixels(8),
-                ASShiftNortheastSteps(2),
-                ASShiftSoutheastSteps(2),
+                ASWalkNortheastPixels(8),
+                ASWalkNortheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASSetSequenceSpeed(SLOW),
                 ASFaceSouthwest(),
             ],
@@ -231,9 +233,9 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftNortheastPixels(8),
-                ASShiftNortheastSteps(2),
-                ASShiftSoutheastSteps(1),
+                ASWalkNortheastPixels(8),
+                ASWalkNortheastSteps(2),
+                ASWalkSoutheastSteps(1),
                 ASSetSequenceSpeed(SLOW),
             ],
             identifier="EVENT_3600_action_queue_async_121",
@@ -339,8 +341,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftNortheastSteps(2),
-                ASShiftSoutheastSteps(2),
+                ASWalkNortheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASFaceSouthwest(),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
                 ASSetSequenceSpeed(SLOW),
@@ -351,8 +353,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(6),
-                ASShiftNortheastSteps(12),
+                ASWalkNorthwestSteps(6),
+                ASWalkNortheastSteps(12),
                 ASFaceSoutheast(),
                 ASSetSequenceSpeed(SLOW),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
@@ -363,8 +365,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftNorthwestSteps(4),
-                ASShiftNortheastSteps(2),
+                ASWalkNorthwestSteps(4),
+                ASWalkNortheastSteps(2),
                 ASSetSequenceSpeed(SLOW),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
             ],
@@ -607,7 +609,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(SLOW),
                 ASSetSequenceSpeed(FAST),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASSetSequenceSpeed(NORMAL),
             ],
         ),

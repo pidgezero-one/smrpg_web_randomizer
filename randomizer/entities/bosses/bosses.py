@@ -1,3 +1,7 @@
+# pylint: disable=C0301
+
+"""Individual bosses."""
+
 from typing import Dict, List, Type
 from randomizer.entities.bosses.henchmen import (
     AxemRangersAxemBlack,
@@ -240,6 +244,8 @@ from randomizer.types.npcs.objects.npcs import (
 
 
 class HammerBroBoss(Boss):
+    """Hammer Bros boss fight"""
+
     _name: str = "Hammer Bro"
     _letter_seaside_boss_name: str = "the Hammer Bros"
     _letter_volcano_boss_name: str = "two brothers dancing around"
@@ -281,6 +287,8 @@ class HammerBroBoss(Boss):
 
 
 class Croco1Boss(Boss):
+    """Croco 1 boss fight"""
+
     _name: str = "Croco"
     _letter_volcano_boss_name: str = "a thieving dinosaur dashing"
     _letter_final_boss_name: str = "Croco's accomplices."
@@ -321,6 +329,8 @@ class Croco1Boss(Boss):
 
 
 class MackBoss(Boss):
+    """Mack boss fight"""
+
     _name: str = "Mack"
     _letter_volcano_boss_name: str = "a small sword jumping"
     _letter_final_boss_name: str = "Mack's shysters."
@@ -385,6 +395,8 @@ class MackBoss(Boss):
 
 
 class PandoriteBoss(MimicBoss):
+    """Pandorite boss fight"""
+
     _name: str = "Pandorite"
     _letter_volcano_boss_name: str = "a red box sliding about"
     _letter_final_boss_name: str = "Pandorite's monsters."
@@ -425,6 +437,8 @@ class PandoriteBoss(MimicBoss):
 
 
 class Belome1Boss(Boss):
+    """Belome 1 boss fight"""
+
     _name: str = "Belome"
     _letter_volcano_boss_name: str = "a hungry dog walking"
     _letter_final_boss_name: str = "Belome's clones."
@@ -466,6 +480,8 @@ class Belome1Boss(Boss):
 
 
 class BowyerBoss(Boss):
+    """Bowyer boss fight"""
+
     _name: str = "Bowyer"
     _letter_volcano_boss_name: str = "a longbow loosing arrows at"
     _letter_final_boss_name: str = "Bowyer's lackeys."
@@ -533,6 +549,8 @@ class BowyerBoss(Boss):
 
 
 class Croco2Boss(Boss):
+    """Croco 2 boss fight"""
+
     _name: str = "Croco"
     _letter_volcano_boss_name: str = "a thieving dinosaur dashing"
     _letter_final_boss_name: str = "Croco's accomplices."
@@ -589,6 +607,8 @@ class Croco2Boss(Boss):
 
 
 class PunchinelloBoss(Boss):
+    """Punchinello boss fight"""
+
     _name: str = "Punchinello"
     _letter_seaside_boss_name: str = "Hothead"
     _letter_volcano_boss_name: str = "a demolitionist stomping"
@@ -653,6 +673,8 @@ class PunchinelloBoss(Boss):
 
 
 class BoosterBoss(Boss):
+    """Booster boss fight"""
+
     _name: str = "Booster"
     _letter_volcano_boss_name: str = "a viking riding trains"
     _letter_final_boss_name: str = "Booster's frenemies."
@@ -708,6 +730,8 @@ class BoosterBoss(Boss):
 
 
 class GrateGuyBoss(Boss):
+    """KGGG Boss fight"""
+
     _name: str = "Grate Guy"
     _letter_seaside_boss_name: str = "the Clowns"
     _letter_volcano_boss_name: str = "a couple clowns bouncing"
@@ -747,6 +771,8 @@ class GrateGuyBoss(Boss):
 
 
 class BundtBoss(Boss):
+    """Bundt boss fight"""
+
     _name: str = "Bundt"
     _letter_seaside_boss_name: str = "the Cake"
     _letter_volcano_boss_name: str = "a wedding cake shuffling"
@@ -802,6 +828,8 @@ class BundtBoss(Boss):
 
 
 class KingCalamariBoss(Boss):
+    """King Calamari boss fight"""
+
     _name: str = "King Calamari"
     _letter_seaside_boss_name: str = "the Squid"
     _letter_volcano_boss_name: str = "a giant squid lurking"
@@ -845,6 +873,8 @@ class KingCalamariBoss(Boss):
 
 
 class HidonBoss(MimicBoss):
+    """Hidon boss fight"""
+
     _name: str = "Hidon"
     _letter_volcano_boss_name: str = "a green box sliding about"
     _letter_final_boss_name: str = "Hidon's monsters."
@@ -908,6 +938,8 @@ class HidonBoss(MimicBoss):
 
 
 class JohnnyBoss(Boss):
+    """Johnny boss fight"""
+
     _name: str = "Johnny"
     _letter_volcano_boss_name: str = "a shark prowling around"
     _letter_final_boss_name: str = "Johnny's crew."
@@ -958,6 +990,8 @@ class JohnnyBoss(Boss):
 
 
 class YaridovichBoss(Boss):
+    """Yaridovich boss fight"""
+
     _name: str = "Yaridovich"
     _letter_seaside_boss_name: str = "Yarid"
     _letter_volcano_boss_name: str = "some conspicuous toads circling"
@@ -1010,6 +1044,8 @@ class YaridovichBoss(Boss):
 
 
 class MokuraBoss(Boss):
+    """Mokura boss fight"""
+
     _name: str = "Mokura"
     _letter_volcano_boss_name: str = "a noxious cloud floating"
     _letter_final_boss_name: str = "Mokura's collective."
@@ -1051,6 +1087,8 @@ class MokuraBoss(Boss):
 
 
 class Belome2Boss(Boss):
+    """Belome 2 boss fight"""
+
     _name: str = "Belome"
     _letter_volcano_boss_name: str = "a hungry dog walking"
     _letter_final_boss_name: str = "Belome's clones."
@@ -1098,6 +1136,8 @@ class Belome2Boss(Boss):
 
 
 class JaggerBoss(Boss):
+    """Jagger boss fight"""
+
     _name: str = "Jagger"
     _letter_volcano_boss_name: str = "a turtle shoulder-charging"
     _letter_final_boss_name: str = "Jagger's compatriots."
@@ -1136,6 +1176,8 @@ class JaggerBoss(Boss):
 
 
 class Jinx1Boss(Boss):
+    """Jinx 1 boss fight"""
+
     _name: str = "Jinx"
     _letter_volcano_boss_name: str = "a small figure blinking"
     _letter_final_boss_name: str = "Jinx's students."
@@ -1175,6 +1217,8 @@ class Jinx1Boss(Boss):
 
 
 class Jinx2Boss(Boss):
+    """Jinx 2 boss fight"""
+
     _name: str = "Jinx"
     _letter_volcano_boss_name: str = "a small figure blinking"
     _letter_final_boss_name: str = "Jinx's students."
@@ -1214,6 +1258,8 @@ class Jinx2Boss(Boss):
 
 
 class Jinx3Boss(Boss):
+    """Jinx 3 boss fight"""
+
     _name: str = "Jinx"
     _letter_volcano_boss_name: str = "a small figure blinking"
     _letter_final_boss_name: str = "Jinx's students."
@@ -1253,6 +1299,8 @@ class Jinx3Boss(Boss):
 
 
 class CulexBoss(Boss):
+    """Culex boss fight"""
+
     _name: str = "Culex"
     _letter_volcano_boss_name: str = "an ethereal knight gliding"
     _letter_final_boss_name: str = "Culex's travelers."
@@ -1312,6 +1360,8 @@ class CulexBoss(Boss):
 
 
 class BoxBoyBoss(MimicBoss):
+    """Box Boy boss fight"""
+
     _name: str = "Box Boy"
     _letter_volcano_boss_name: str = "a grey box sliding about"
     _letter_final_boss_name: str = "Box Boy's monsters."
@@ -1353,6 +1403,8 @@ class BoxBoyBoss(MimicBoss):
 
 
 class MegaSmilaxBoss(Boss):
+    """Megasmilax boss fight"""
+
     _name: str = "Megasmilax"
     _letter_seaside_boss_name: str = "the Plant"
     _letter_volcano_boss_name: str = "an invasive plant spreading"
@@ -1412,6 +1464,8 @@ class MegaSmilaxBoss(Boss):
 
 
 class DodoBoss(Boss):
+    """Dodo boss fight"""
+
     _name: str = "Dodo"
     _letter_volcano_boss_name: str = "a large bird flapping about"
     _letter_final_boss_name: str = "Dodo's flock."
@@ -1455,6 +1509,8 @@ class DodoBoss(Boss):
 
 
 class BirdettaBoss(Boss):
+    """Birdetta boss fight"""
+
     _name: str = "Birdetta"
     _letter_volcano_boss_name: str = "a giant egg rolling"
     _letter_final_boss_name: str = "Birdetta's bad eggs."
@@ -1516,6 +1572,8 @@ class BirdettaBoss(Boss):
 
 
 class ValentinaBoss(Boss):
+    """Valentina boss fight"""
+
     _name: str = "Valentina"
     _letter_volcano_boss_name: str = "a bossy lady being carried"
     _letter_final_boss_name: str = "Valentina's little birds."
@@ -1573,6 +1631,8 @@ class ValentinaBoss(Boss):
 
 
 class CzarBoss(Boss):
+    """Czar Dragon boss fight"""
+
     _name: str = "Czar Dragon"
     _letter_seaside_boss_name: str = "the Dragon"
     _letter_volcano_boss_name: str = "a huge dragon blazing"
@@ -1633,6 +1693,8 @@ class CzarBoss(Boss):
 
 
 class AxemRangersBoss(Boss):
+    """Axem Rangers boss fight"""
+
     _name: str = "Axem Red"
     _letter_seaside_boss_name: str = "the Axems"
     _letter_volcano_boss_name: str = "a huge AX flying around"
@@ -1700,6 +1762,8 @@ class AxemRangersBoss(Boss):
 
 
 class ChesterBoss(MimicBoss):
+    """Chester boss fight"""
+
     _name: str = "Chester"
     _letter_volcano_boss_name: str = "a purple box sliding about"
     _letter_final_boss_name: str = "Chester's monsters."
@@ -1741,6 +1805,8 @@ class ChesterBoss(MimicBoss):
 
 
 class KamekBoss(Boss):
+    """Kamek boss fight"""
+
     _name: str = "Kamek"
     _letter_volcano_boss_name: str = "a hooded sorceror flying"
     _letter_final_boss_name: str = "Kamek's creations."
@@ -1781,6 +1847,8 @@ class KamekBoss(Boss):
 
 
 class BoomerBoss(Boss):
+    """Boomer boss fight"""
+
     _name: str = "Boomer"
     _letter_volcano_boss_name: str = "a noble soldier marching"
     _letter_final_boss_name: str = "Boomer's soldiers."
@@ -1840,6 +1908,8 @@ class BoomerBoss(Boss):
 
 
 class ExorBoss(Boss):
+    """Exor boss fight"""
+
     _name: str = "Exor"
     _letter_volcano_boss_name: str = "a massive sword falling"
     _letter_final_boss_name: str = "Exor's sellswords."
@@ -1881,6 +1951,8 @@ class ExorBoss(Boss):
 
 
 class CountdownBoss(Boss):
+    """Count Down boss fight"""
+
     _name: str = "Count Down"
     _letter_seaside_boss_name: str = "the Clock"
     _letter_volcano_boss_name: str = "a noisy clock winding"
@@ -1938,6 +2010,8 @@ class CountdownBoss(Boss):
 
 
 class CloakerDominoBoss(Boss):
+    """Cloaker/Domino boss fight"""
+
     _name: str = "Domino"
     _letter_seaside_boss_name: str = "the Snake"
     _letter_volcano_boss_name: str = "a snake slithering around"
@@ -1981,6 +2055,8 @@ class CloakerDominoBoss(Boss):
 
 
 class ClerkBoss(Boss):
+    """Clerk boss fight"""
+
     _name: str = "Clerk"
     _letter_seaside_boss_name: str = "the Clerk"
     _letter_volcano_boss_name: str = "a yellow-clad smith trudging"
@@ -2040,6 +2116,8 @@ class ClerkBoss(Boss):
 
 
 class ManagerBoss(Boss):
+    """Manager boss fight"""
+
     _name: str = "Manager"
     _letter_seaside_boss_name: str = "the Manager"
     _letter_volcano_boss_name: str = "a blue-clad smith trudging"
@@ -2103,6 +2181,8 @@ class ManagerBoss(Boss):
 
 
 class DirectorBoss(Boss):
+    """Director boss fight"""
+
     _name: str = "Director"
     _letter_seaside_boss_name: str = "the Director"
     _letter_volcano_boss_name: str = "a red-clad smith trudging"
@@ -2167,6 +2247,8 @@ class DirectorBoss(Boss):
 
 
 class GunyolkBoss(Boss):
+    """Gunyolk boss fight"""
+
     _name: str = "Factory Chief"
     _letter_seaside_boss_name: str = "the Chief"
     _letter_volcano_boss_name: str = "a big machine rolling"
@@ -2208,6 +2290,8 @@ class GunyolkBoss(Boss):
 
 
 class SmithyBoss(Boss):
+    """Smithy boss fight"""
+
     _name: str = "Smithy"
     _letter_volcano_boss_name: str = "a furious weaponsmith thundering"
     _letter_final_boss_name: str = "Smithy's gang."

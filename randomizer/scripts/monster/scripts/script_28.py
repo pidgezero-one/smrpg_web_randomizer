@@ -1,4 +1,4 @@
-# 28 - Buzzer
+"""28 - Buzzer"""
 
 from randomizer.scripts.monster.script_imports import *
 

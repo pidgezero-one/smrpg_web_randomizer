@@ -1,4 +1,6 @@
-# E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE
+# pylint: disable=C0301
+
+"""E0372_MUSHROOM_KINGDOM_BOSS_FIGHT_CUTSCENE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -52,9 +54,9 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\x00\x07p\xff")),
-                ASShiftSoutheastPixels(15),
+                ASWalkSoutheastPixels(15),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSoutheastPixels(10),
+                ASWalkSoutheastPixels(10),
                 ASBPL262728(),
                 ASFixedFCoordOn(),
                 ASPlaySound(sound=SO066_KICK_BALL_SHELL, channel=6),
@@ -62,7 +64,7 @@ script = EventScript(
                 ASJumpToHeight(height=80, silent=True),
                 ASFloatingOn(),
                 ASWalk1StepNorthwest(),
-                ASShiftNorthwestPixels(9),
+                ASWalkNorthwestPixels(9),
                 ASPause(
                     1, identifier="EVENT_372_action_queue_sync_21_SUBSCRIPT_pause_17"
                 ),
@@ -89,16 +91,16 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\x00\x07p\xff")),
-                ASShiftNorthwestPixels(15),
+                ASWalkNorthwestPixels(15),
                 ASSetWalkingSpeed(FAST),
-                ASShiftNorthwestPixels(10),
+                ASWalkNorthwestPixels(10),
                 ASBPL262728(),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(NORMAL),
                 ASJumpToHeight(height=80, silent=True),
                 ASFloatingOn(),
                 ASWalk1StepSoutheast(),
-                ASShiftSoutheastPixels(9),
+                ASWalkSoutheastPixels(9),
                 ASPause(
                     1, identifier="EVENT_372_action_queue_sync_22_SUBSCRIPT_pause_15"
                 ),

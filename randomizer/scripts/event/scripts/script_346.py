@@ -1,4 +1,6 @@
-# E0346_TOADSTOOLS_ROOM_ITEM
+# pylint: disable=C0301
+
+"""E0346_TOADSTOOLS_ROOM_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 

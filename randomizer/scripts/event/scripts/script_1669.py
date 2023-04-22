@@ -1,4 +1,6 @@
-# E1669_NIMBUS_FINAL_HALLWAY_MINIBOSS_COLLISION
+# pylint: disable=C0301
+
+"""E1669_NIMBUS_FINAL_HALLWAY_MINIBOSS_COLLISION"""
 
 from randomizer.scripts.event.script_imports import *
 

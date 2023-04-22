@@ -1,4 +1,6 @@
-# E0468_MUSHROOM_DERBY_USE_YOSHI_COOKIE
+# pylint: disable=C0301
+
+"""E0468_MUSHROOM_DERBY_USE_YOSHI_COOKIE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,7 @@ script = EventScript(
         ),
         Pause(1, identifier="EVENT_468_pause_5"),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_468_jmp_if_bit_set_9"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_468_jmp_if_bit_set_9"]),
         Jmp(["EVENT_468_pause_5"]),
         JmpIfBitSet(
             TEMP_7043_4, ["EVENT_468_pause_5"], identifier="EVENT_468_jmp_if_bit_set_9"
@@ -52,7 +54,7 @@ script = EventScript(
             target=NPC_12,
             subscript=[
                 ASJumpToHeight(height=110, silent=True),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASVisibilityOff(),
             ],
         ),

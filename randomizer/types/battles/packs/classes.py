@@ -9,6 +9,8 @@ from randomizer.types.numbers.classes import UInt16, UInt8
 
 
 class FormationPack:
+    """Base class for an arrangement of enemies in battle."""
+
     _formation_ids: List[UInt16] = []
 
     @property

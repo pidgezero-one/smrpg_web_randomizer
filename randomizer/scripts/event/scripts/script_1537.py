@@ -1,4 +1,6 @@
-# E1537_SPINNING_FLOWER_CORE_LOGIC
+# pylint: disable=C0301
+
+"""E1537_SPINNING_FLOWER_CORE_LOGIC"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,7 +20,9 @@ script = EventScript(
         StartLoopNTimes(15),
         Pause(1),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1537_set_action_script_async_18"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1537_set_action_script_async_18"]
+        ),
         EndLoop(),
         ActionQueueSync(target=MARIO, subscript=[ASTurnClockwise45DegreesNTimes(1)]),
         Inc(TEMP_70AE),
@@ -67,7 +71,7 @@ script = EventScript(
         ),
         Pause(1, identifier="EVENT_1537_pause_28"),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1537_action_queue_sync_32"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1537_action_queue_sync_32"]),
         Jmp(["EVENT_1537_pause_28"]),
         ActionQueueSync(
             target=MARIO,

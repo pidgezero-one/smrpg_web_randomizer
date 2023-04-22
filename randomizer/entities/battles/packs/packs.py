@@ -1,4 +1,8 @@
-from typing import Optional
+# pylint: disable=C0302
+
+"""Pack class instances."""
+
+from typing import List, Optional
 from randomizer.types.battles.formations.constants.formation_ids import (
     FORM0000_ONE_BOBOMB_HENCHMAN,
     FORM0001_FOUR_BOBOMB_HENCHMEN,

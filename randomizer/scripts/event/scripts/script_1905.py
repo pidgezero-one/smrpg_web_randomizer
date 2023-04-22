@@ -1,4 +1,6 @@
-# E1905_ABYSS_EXIT_TO_BOSS_2_ROOM
+# pylint: disable=C0301
+
+"""E1905_ABYSS_EXIT_TO_BOSS_2_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,8 +17,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASStartLoopNTimes(59),
-                ASShiftEastPixels(8),
-                ASShiftWestPixels(8),
+                ASWalkEastPixels(8),
+                ASWalkWestPixels(8),
                 ASEndLoop(),
             ],
         ),

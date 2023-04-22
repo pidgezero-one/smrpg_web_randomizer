@@ -1,4 +1,6 @@
-# referenced by battle_events BE0045_ZOMBONE_DIES, battle_events BE0046_CZAR_DRAGON_SUMMONS_HELIOS, battle_events BE0042_BB_BOMBS_EXPLODE, battle_events BE0044_CZAR_DRAGON_DIES
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0045_ZOMBONE_DIES, battle_events BE0046_CZAR_DRAGON_SUMMONS_HELIOS, battle_events BE0042_BB_BOMBS_EXPLODE, battle_events BE0044_CZAR_DRAGON_DIES"""
 
 from randomizer.scripts.animation.script_imports import *
 

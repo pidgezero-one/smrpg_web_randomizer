@@ -1,7 +1,5 @@
-#A0051_EMPTY
+"""A0051_EMPTY"""
 
 from randomizer.scripts.action.script_imports import *
 
-script = ActionScript([
-	
-])
+script = ActionScript([])

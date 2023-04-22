@@ -1,4 +1,6 @@
-# E2459_STAR_HILL_1ST_ROOM_SUMMON_NORTHWEST_SACKIT
+# pylint: disable=C0301
+
+"""E2459_STAR_HILL_1ST_ROOM_SUMMON_NORTHWEST_SACKIT"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,10 +1,12 @@
-# E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E0376_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        Set0158Bit7Offset(),
+        Set0158Bit7Offset(0x0158),
         RunBackgroundEvent(
             event_id=E0392_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_REPEATING_SHYSTERS_POSITION,
             return_on_level_exit=True,

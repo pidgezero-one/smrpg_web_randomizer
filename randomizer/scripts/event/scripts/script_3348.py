@@ -1,4 +1,6 @@
-# E3348_KEEP_DOOR_REWARD_CHEST
+# pylint: disable=C0301
+
+"""E3348_KEEP_DOOR_REWARD_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E0081_MARIO_LANDS_SUBROUTINE
+# pylint: disable=C0301
+
+"""E0081_MARIO_LANDS_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 

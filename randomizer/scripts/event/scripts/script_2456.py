@@ -1,4 +1,6 @@
-# E2456_AWAKEN_SLEEPING_WIGGLER
+# pylint: disable=C0301
+
+"""E2456_AWAKEN_SLEEPING_WIGGLER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,7 +32,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASStartLoopNTimes(6),
                 ASSetSpriteSequence(
                     index=24,
@@ -39,7 +41,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftSouthPixels(5),
+                ASWalkSouthPixels(5),
                 ASPlaySound(sound=SO021_RUMBLING, channel=6),
                 ASPause(8),
                 ASSetSpriteSequence(
@@ -49,7 +51,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthPixels(5),
+                ASWalkNorthPixels(5),
                 ASPlaySound(sound=SO021_RUMBLING, channel=6),
                 ASPause(8),
                 ASEndLoop(),
@@ -81,7 +83,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO021_RUMBLING, channel=6),
                 ASPause(3),
-                ASShiftNorthwestPixels(6),
+                ASWalkNorthwestPixels(6),
                 ASSetSpriteSequence(
                     index=30,
                     is_mold=True,

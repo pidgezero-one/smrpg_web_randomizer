@@ -1,4 +1,6 @@
-# E2335_TOWER_FIRST_STAIRCASE_LOADER
+# pylint: disable=C0301
+
+"""E2335_TOWER_FIRST_STAIRCASE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -39,7 +41,7 @@ script = EventScript(
         SetBit(TEMP_707C_5),
         SetBit(TEMP_707C_6),
         SetBit(TEMP_707C_7),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 17, ["EVENT_2335_run_background_event_23"]
         ),

@@ -1,4 +1,6 @@
-# E1853_SKY_BRIDGE_RIDE_SHAMAN
+# pylint: disable=C0301
+
+"""E1853_SKY_BRIDGE_RIDE_SHAMAN"""
 
 from randomizer.scripts.event.script_imports import *
 

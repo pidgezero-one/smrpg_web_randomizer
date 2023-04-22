@@ -1,10 +1,12 @@
-# E2353_TOWER_HENCHMAN_3
+# pylint: disable=C0301
+
+"""E2353_TOWER_HENCHMAN_3"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        Set7000ToObjectCoord(object=NPC_8, coord=COORD_F, pixel=True),
+        Set7000ToObjectCoord(target_npc=NPC_8, coord=COORD_F, pixel=True),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 3, ["EVENT_2353_stop_all_background_events_4"]
         ),

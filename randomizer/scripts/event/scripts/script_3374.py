@@ -1,4 +1,6 @@
-# E3374_KEEP_THWOMP_ROOM_BACKGROUND
+# pylint: disable=C0301
+
+"""E3374_KEEP_THWOMP_ROOM_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 

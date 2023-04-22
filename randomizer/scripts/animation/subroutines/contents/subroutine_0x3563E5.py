@@ -1,4 +1,6 @@
-# referenced by monster_spells Flame
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells Flame"""
 
 from randomizer.scripts.animation.script_imports import *
 

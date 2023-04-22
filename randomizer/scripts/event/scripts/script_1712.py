@@ -1,4 +1,6 @@
-# E1712_BANDITS_WAY_2_DOG
+# pylint: disable=C0301
+
+"""E1712_BANDITS_WAY_2_DOG"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -29,7 +31,7 @@ script = EventScript(
                 ),
                 ASDb(bytearray(b"\xfd\x12")),
                 ASSet700CToObjectCoord(
-                    object=MARIO, coord=COORD_X, pixel=True, bit_7=True
+                    target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True
                 ),
                 ASCompareVarToConst(PRIMARY_TEMP_700C, 14),
                 ASJmpIfComparisonResultIsLesser(

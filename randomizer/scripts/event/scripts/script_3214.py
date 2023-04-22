@@ -1,4 +1,6 @@
-# E3214_SHIP_1ST_BOSS
+# pylint: disable=C0301
+
+"""E3214_SHIP_1ST_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 

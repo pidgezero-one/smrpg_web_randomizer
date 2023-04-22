@@ -1,4 +1,6 @@
-# E0593_MINES_BOSS_ROOM_LOADER_AFTER_DEFEAT
+# pylint: disable=C0301
+
+"""E0593_MINES_BOSS_ROOM_LOADER_AFTER_DEFEAT"""
 
 from randomizer.scripts.event.script_imports import *
 

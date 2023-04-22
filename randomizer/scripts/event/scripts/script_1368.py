@@ -1,4 +1,6 @@
-# E1368_CURTAIN_GAME_SUCCESS_2
+# pylint: disable=C0301
+
+"""E1368_CURTAIN_GAME_SUCCESS_2"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -36,9 +38,9 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftSouthwestPixels(8),
-                ASShiftNorthwestSteps(2),
-                ASShiftNorthwestPixels(13),
+                ASWalkSouthwestPixels(8),
+                ASWalkNorthwestSteps(2),
+                ASWalkNorthwestPixels(13),
                 ASPause(15),
                 ASSetSpriteSequence(index=14, is_sequence=True, looping=True),
                 ASPause(7),
@@ -89,7 +91,7 @@ script = EventScript(
                 ASSequenceLoopingOn(),
                 ASFixedFCoordOn(),
                 ASJumpToHeight(112),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASSequenceLoopingOn(),
             ],
         ),
@@ -101,9 +103,9 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(5),
-                ASShiftNortheastSteps(2),
-                ASShiftNortheastPixels(8),
+                ASWalkSoutheastSteps(5),
+                ASWalkNortheastSteps(2),
+                ASWalkNortheastPixels(8),
                 ASFaceNorthwest(),
             ],
         ),
@@ -112,9 +114,9 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(3),
-                ASShiftSouthwestPixels(8),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(3),
+                ASWalkSouthwestPixels(8),
+                ASWalkSoutheastSteps(2),
                 ASFaceNorthwest(),
             ],
         ),
@@ -123,8 +125,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSoutheastSteps(5),
-                ASShiftNortheastSteps(2),
+                ASWalkSoutheastSteps(5),
+                ASWalkNortheastSteps(2),
                 ASFaceNorthwest(),
             ],
         ),
@@ -159,8 +161,8 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
-                ASShiftNorthwestSteps(2),
-                ASShiftSouthwestPixels(6),
+                ASWalkNorthwestSteps(2),
+                ASWalkSouthwestPixels(6),
                 ASPause(30),
                 ASSequenceLoopingOn(),
                 ASSetSequenceSpeed(SLOW),
@@ -185,8 +187,8 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
-                ASShiftNortheastPixels(6),
-                ASShiftSoutheastSteps(2),
+                ASWalkNortheastPixels(6),
+                ASWalkSoutheastSteps(2),
                 ASFaceNorthwest(),
             ],
         ),
@@ -212,7 +214,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
                 ASBounceToXYWithHeight(x=3, y=16, height=0),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
             ],
         ),
@@ -244,7 +246,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASShadowOn(),
                 ASJumpToHeight(height=64, silent=True),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
             ],
         ),
         ActionQueueAsync(
@@ -253,10 +255,10 @@ script = EventScript(
                 ASPause(8),
                 ASSetWalkingSpeed(FAST),
                 ASPlaySound(sound=SO034_SQUIRM_WRITHE, channel=6),
-                ASShiftNorthPixels(7),
-                ASShiftSouthPixels(7),
-                ASShiftNorthPixels(4),
-                ASShiftSouthPixels(4),
+                ASWalkNorthPixels(7),
+                ASWalkSouthPixels(7),
+                ASWalkNorthPixels(4),
+                ASWalkSouthPixels(4),
             ],
         ),
         PauseActionScript(NPC_1),
@@ -290,7 +292,7 @@ script = EventScript(
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetWalkingSpeed(FAST),
                 ASPlaySound(sound=SO024_TAPPING_FEET, channel=6),
-                ASShiftNorthwestSteps(3),
+                ASWalkNorthwestSteps(3),
             ],
         ),
         ActionQueueAsync(
@@ -301,7 +303,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_FAST),
                 ASJumpToHeight(32),
                 ASPlaySound(sound=SO025_HEEL_CLICK, channel=6),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
             ],
         ),
         Pause(20),
@@ -312,9 +314,9 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftSoutheastSteps(3),
-                ASShiftSoutheastPixels(8),
-                ASShiftSouthwestSteps(6),
+                ASWalkSoutheastSteps(3),
+                ASWalkSoutheastPixels(8),
+                ASWalkSouthwestSteps(6),
             ],
         ),
         Pause(20),
@@ -322,27 +324,27 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(1),
-                ASShiftNorthwestPixels(8),
-                ASShiftSouthwestSteps(3),
+                ASWalkNorthwestSteps(1),
+                ASWalkNorthwestPixels(8),
+                ASWalkSouthwestSteps(3),
             ],
         ),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(1),
-                ASShiftNorthwestPixels(8),
-                ASShiftSouthwestSteps(3),
+                ASWalkNorthwestSteps(1),
+                ASWalkNorthwestPixels(8),
+                ASWalkSouthwestSteps(3),
             ],
         ),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(1),
-                ASShiftNorthwestPixels(8),
-                ASShiftSouthwestSteps(3),
+                ASWalkNorthwestSteps(1),
+                ASWalkNorthwestPixels(8),
+                ASWalkSouthwestSteps(3),
             ],
         ),
         Pause(45),
@@ -353,7 +355,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSouthwestPixels(10),
+                ASWalkSouthwestPixels(10),
                 ASVisibilityOff(),
             ],
         ),
@@ -362,7 +364,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
             ],
         ),
@@ -371,7 +373,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASVisibilityOff(),
             ],
         ),
@@ -380,7 +382,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASVisibilityOff(),
                 ASPause(45),
             ],

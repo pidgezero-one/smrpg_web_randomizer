@@ -1,4 +1,6 @@
-# E3657_ROOM_SERVICE_MENU
+# pylint: disable=C0301
+
+"""E3657_ROOM_SERVICE_MENU"""
 
 from randomizer.scripts.event.script_imports import *
 

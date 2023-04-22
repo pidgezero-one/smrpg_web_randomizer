@@ -1,4 +1,6 @@
-# E1798_LANDS_END_CLIFF_MOUSE_HINT
+# pylint: disable=C0301
+
+"""E1798_LANDS_END_CLIFF_MOUSE_HINT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,7 +17,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASJumpToHeight(108),
                 ASShiftSouthSteps(4),
-                ASShiftSouthwestSteps(3),
+                ASWalkSouthwestSteps(3),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
             ],

@@ -1,4 +1,6 @@
-# E1674_LANDS_END_ENTER_GROTTO
+# pylint: disable=C0301
+
+"""E1674_LANDS_END_ENTER_GROTTO"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,7 +24,9 @@ script = EventScript(
                 ASEndLoop(),
             ],
         ),
-        PixelateLayers(layers=[LAYER_1, LAYER_2, LAYER_3], pixel_size=8, duration=196),
+        PixelateLayers(
+            layers=[LAYER_L1, LAYER_L2, LAYER_L3], pixel_size=8, duration=196
+        ),
         EnterArea(
             room_id=R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS,
             face_direction=NORTHWEST,

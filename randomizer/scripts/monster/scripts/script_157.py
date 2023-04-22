@@ -1,4 +1,4 @@
-# 157 - MallowClone
+"""157 - MallowClone"""
 
 from randomizer.scripts.monster.script_imports import *
 

@@ -1,4 +1,6 @@
-# E0701_PASTOR_MARIO
+# pylint: disable=C0301
+
+"""E0701_PASTOR_MARIO"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,7 +14,7 @@ script = EventScript(
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASFloatingOff(),
                 ASBounceToXYWithHeight(x=23, y=70, height=2),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
                 ASShiftZUpPixels(4),
             ],

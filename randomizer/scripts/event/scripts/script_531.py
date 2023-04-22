@@ -1,4 +1,6 @@
-# E0531_ROSE_TOWN_OCCUPIED_INN_2F_LOADER
+# pylint: disable=C0301
+
+"""E0531_ROSE_TOWN_OCCUPIED_INN_2F_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

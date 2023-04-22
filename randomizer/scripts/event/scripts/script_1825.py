@@ -1,4 +1,6 @@
-# E1825_KEEP_ROTATING_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1825_KEEP_ROTATING_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,8 +9,8 @@ script = EventScript(
         JmpIfBitSet(TEMP_7044_6, ["EVENT_1825_priority_set_2"]),
         ClearBit(TEMP_7095_4),
         PrioritySet(
-            mainscreen=[LAYER_1, LAYER_2, NPC_SPRITES],
-            subscreen=[LAYER_3],
+            mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
+            subscreen=[LAYER_L3],
             colour_math=[NPC_SPRITES, BACKGROUND, HALF_INTENSITY],
             identifier="EVENT_1825_priority_set_2",
         ),

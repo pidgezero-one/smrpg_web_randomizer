@@ -1,4 +1,6 @@
-# E0382_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E0382_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -6,13 +8,13 @@ script = EventScript(
     [
         ActionQueueAsync(
             target=NPC_7,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftSouthwestPixels(4)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(4)],
         ),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthPixels(2),
+                ASWalkNorthPixels(2),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
         ),
@@ -53,7 +55,7 @@ script = EventScript(
             subscript=[
                 ASSetAllSpeeds(FAST),
                 ASWalk1StepNortheast(),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASFaceSouthwest(),
             ],
         ),
@@ -99,10 +101,10 @@ script = EventScript(
             subscript=[
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFloatingOn(),
-                ASShiftNortheastSteps(7),
-                ASShiftSoutheastSteps(3),
-                ASShiftNorthwestSteps(3),
-                ASShiftSouthwestSteps(7),
+                ASWalkNortheastSteps(7),
+                ASWalkSoutheastSteps(3),
+                ASWalkNorthwestSteps(3),
+                ASWalkSouthwestSteps(7),
                 ASFaceNorthwest(),
             ],
         ),

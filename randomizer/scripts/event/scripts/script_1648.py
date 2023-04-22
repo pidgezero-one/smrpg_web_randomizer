@@ -1,10 +1,12 @@
-# E1648_MINECART_ENDING
+# pylint: disable=C0301
+
+"""E1648_MINECART_ENDING"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 24),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW24_MOLEVILLE),
         JmpIfBitSet(TEMP_7044_6, ["EVENT_1648_set_bit_15"]),
         JmpIfBitSet(TEMP_7044_7, ["EVENT_1648_fade_in_from_black_sync_9"]),
         FadeInFromBlack(sync=False),

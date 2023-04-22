@@ -1,4 +1,6 @@
-# E1901_ABYSS_AXEM_PIT_PLATFORMS
+# pylint: disable=C0301
+
+"""E1901_ABYSS_AXEM_PIT_PLATFORMS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,9 +15,9 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNortheastSteps(4),
+                ASWalkNortheastSteps(4),
                 ASWalk1StepNorthwest(),
-                ASShiftSouthwestSteps(4),
+                ASWalkSouthwestSteps(4),
                 ASWalk1StepSoutheast(),
                 ASFaceSouthwest(),
             ],
@@ -25,9 +27,9 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthwestSteps(4),
+                ASWalkSouthwestSteps(4),
                 ASWalk1StepSoutheast(),
-                ASShiftNortheastSteps(4),
+                ASWalkNortheastSteps(4),
                 ASWalk1StepNorthwest(),
                 ASFaceSouthwest(),
                 ASPause(1),

@@ -1,4 +1,6 @@
-# E1813_SAVE_BOX_IN_ROOMS_WITH_EXP_STARS
+# pylint: disable=C0301
+
+"""E1813_SAVE_BOX_IN_ROOMS_WITH_EXP_STARS"""
 
 from randomizer.scripts.event.script_imports import *
 

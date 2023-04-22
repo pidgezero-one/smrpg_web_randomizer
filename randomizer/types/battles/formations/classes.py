@@ -2,7 +2,7 @@
 
 import statistics
 from typing import List, Tuple, Type, Optional
-from randomizer.entities.enemies.enemies import (
+from randomizer.entities.enemies import (
     AxemRangers,
     BandanaBlue,
     Belome2,

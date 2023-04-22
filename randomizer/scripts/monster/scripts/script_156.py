@@ -1,4 +1,4 @@
-# 156 - GenoClone
+"""156 - GenoClone"""
 
 from randomizer.scripts.monster.script_imports import *
 

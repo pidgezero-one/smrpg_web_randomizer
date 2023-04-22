@@ -1,4 +1,6 @@
-# referenced by monster_spells Flame, monster_spells FlameStone, monster_spells Drain, monster_spells FlameWall
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells Flame, monster_spells FlameStone, monster_spells Drain, monster_spells FlameWall"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -48,7 +50,7 @@ script = SubroutineOrBanklessScript(
         ),
         NewEffectObject(effect=EF0010_FLAME_STONE, looping_on=True),
         Db(bytearray(b"y\x00\x17\x1e\x02")),
-        Layer3On(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3On(prop=TRANSPARENCY_OFF, bpp4=True),
         ResetTargetMappingMemory(),
         MoveObject(
             speed=17,
@@ -69,7 +71,7 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=38),
         ResetObjectMappingMemory(),
         RunSubroutine(["command_0x3536dc"]),
-        Layer3Off(property=TRANSPARENCY_OFF, bpp4=True),
+        Layer3Off(prop=TRANSPARENCY_OFF, bpp4=True),
         Db(bytearray(b"y\x00\x11\x1a\x00")),
         Pause2Frames(),
         ClearEffectIndex(),
@@ -198,12 +200,12 @@ script = SubroutineOrBanklessScript(
             identifier="queuestart_0x353d71",
         ),
         NewEffectObject(effect=EF0008_FLAME__FIRE_ENGULF_, looping_on=True),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PlaySound(sound=S0032_FIRE_BURN),
         RunSubroutine(["command_0x352546"]),
         FadeOutObject(duration=1),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         ReturnObjectQueue(),
@@ -235,13 +237,13 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         FadeInEffect(duration=2),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\x9c\x00\x82\x10\x00 \x00\x00\x01")),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=90),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\x9d\x02")),
         Pause2Frames(),
         ClearEffectIndex(),

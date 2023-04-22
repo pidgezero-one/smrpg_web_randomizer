@@ -1,4 +1,6 @@
-# E2308_BOOSTER_PASS_1ST_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2308_BOOSTER_PASS_1ST_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

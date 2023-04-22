@@ -1,4 +1,6 @@
-# E3730_NIMBUS_CASTLE_OCCUPIED_4_PATH_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3730_NIMBUS_CASTLE_OCCUPIED_4_PATH_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

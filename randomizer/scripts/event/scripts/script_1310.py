@@ -1,4 +1,6 @@
-# E1310_TOWER_CHECKERBOARD_COLLECT_KEY_ITEM
+# pylint: disable=C0301
+
+"""E1310_TOWER_CHECKERBOARD_COLLECT_KEY_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 

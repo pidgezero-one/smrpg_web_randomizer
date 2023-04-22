@@ -1,4 +1,6 @@
-# E2100_HINOPIO
+# pylint: disable=C0301
+
+"""E2100_HINOPIO"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -55,8 +57,8 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASTransferToXYZF(x=8, y=56, z=2, direction=EAST),
-                ASShiftSoutheastPixels(8),
-                ASShiftSouthwestPixels(8),
+                ASWalkSoutheastPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASSetSpriteSequence(
                     index=8, sprite_offset=2, is_sequence=True, looping=True
                 ),

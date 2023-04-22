@@ -1,4 +1,6 @@
-# referenced by monster_spells MegaDrain, monster_spells Corona
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells MegaDrain, monster_spells Corona"""
 
 from randomizer.scripts.animation.script_imports import *
 

@@ -1,4 +1,6 @@
-# E0613_MARRYMORE_SUITE_LOADER
+# pylint: disable=C0301
+
+"""E0613_MARRYMORE_SUITE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -43,7 +45,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASSetSequenceSpeed(SLOW),
             ],
         ),
@@ -56,8 +58,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetSequenceSpeed(FAST),
-                ASShiftSouthwestSteps(1),
-                ASShiftNorthwestSteps(3),
+                ASWalkSouthwestSteps(1),
+                ASWalkNorthwestSteps(3),
                 ASSetSequenceSpeed(SLOW),
                 ASFaceSoutheast(),
             ],
@@ -69,8 +71,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetSequenceSpeed(FAST),
-                ASShiftSoutheastSteps(3),
-                ASShiftSouthwestSteps(1),
+                ASWalkSoutheastSteps(3),
+                ASWalkSouthwestSteps(1),
                 ASSetSequenceSpeed(SLOW),
             ],
         ),

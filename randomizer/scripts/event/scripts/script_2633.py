@@ -1,4 +1,6 @@
-# E2633_CASINO_INTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E2633_CASINO_INTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,13 +10,13 @@ script = EventScript(
         RunEventAsSubroutine(E2645_CASINO_SUBROUTINE),
         SetBit(DIRECTIONAL_7046_1, identifier="EVENT_2633_set_bit_0"),
         ActionQueueSync(
-            target=NPC_1, subscript=[ASSetWalkingSpeed(FASTEST), ASShiftWestPixels(5)]
+            target=NPC_1, subscript=[ASSetWalkingSpeed(FASTEST), ASWalkWestPixels(5)]
         ),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthPixels(8),
+                ASWalkNorthPixels(8),
                 ASSetSpriteSequence(
                     index=10, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -24,7 +26,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftWestPixels(16),
+                ASWalkWestPixels(16),
                 ASSetSpriteSequence(
                     index=10,
                     is_mold=True,
@@ -36,14 +38,14 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=NPC_8,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftSouthwestPixels(3)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(3)],
         ),
         ActionQueueAsync(
             target=NPC_9,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthwestPixels(8),
-                ASShiftSouthwestPixels(3),
+                ASWalkNorthwestPixels(8),
+                ASWalkSouthwestPixels(3),
             ],
         ),
         ActionQueueAsync(target=NPC_4, subscript=[ASVisibilityOn()]),

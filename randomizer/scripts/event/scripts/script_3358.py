@@ -1,4 +1,6 @@
-# E3358_KEEP_BALL_SOLITAIRE_LOADER
+# pylint: disable=C0301
+
+"""E3358_KEEP_BALL_SOLITAIRE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

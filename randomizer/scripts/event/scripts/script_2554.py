@@ -1,4 +1,6 @@
-# E2554_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_STAIRCASE_ITEM
+# pylint: disable=C0301
+
+"""E2554_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_STAIRCASE_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 

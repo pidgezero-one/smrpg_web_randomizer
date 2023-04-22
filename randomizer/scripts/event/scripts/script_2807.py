@@ -1,4 +1,6 @@
-# E2807_MUSHROOM_WAY_3_EXIT_TO_WORLD_MAP
+# pylint: disable=C0301
+
+"""E2807_MUSHROOM_WAY_3_EXIT_TO_WORLD_MAP"""
 
 from randomizer.scripts.event.script_imports import *
 

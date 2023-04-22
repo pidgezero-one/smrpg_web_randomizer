@@ -1,4 +1,6 @@
-# E1346_TOWER_HENCHMAN_2
+# pylint: disable=C0301
+
+"""E1346_TOWER_HENCHMAN_2"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -33,7 +35,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
             ],
         ),
         ActionQueueAsync(
@@ -42,7 +44,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
             ],
         ),
         Pause(30),

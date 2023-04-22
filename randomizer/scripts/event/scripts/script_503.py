@@ -1,4 +1,6 @@
-# E0503_PIPE_VAULT_CROUCH_ITEM_CONFIRM
+# pylint: disable=C0301
+
+"""E0503_PIPE_VAULT_CROUCH_ITEM_CONFIRM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,12 +9,16 @@ script = EventScript(
         JmpIfBitClear(TEMP_7043_0, ["EVENT_256_ret_0"]),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, A, Y, B]),
         Set7000ToPressedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_503_start_loop_n_times_5"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_503_start_loop_n_times_5"]),
         Return(),
         StartLoopNTimes(7, identifier="EVENT_503_start_loop_n_times_5"),
         Set7000ToPressedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_503_remember_last_object_20"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_503_enable_controls_until_return_12"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_503_remember_last_object_20"]
+        ),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_503_enable_controls_until_return_12"]
+        ),
         Pause(1),
         EndLoop(),
         Return(),
@@ -33,9 +39,9 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASWalk1StepNortheast(),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftNortheastPixels(4),
+                ASWalkNortheastPixels(4),
                 ASSetWalkingSpeed(NORMAL),
                 ASWalkToXYCoords(x=8, y=64),
             ],

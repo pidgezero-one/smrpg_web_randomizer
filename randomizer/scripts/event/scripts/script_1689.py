@@ -1,4 +1,6 @@
-# E1689_TEMPLE_PIPE_TO_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E1689_TEMPLE_PIPE_TO_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 

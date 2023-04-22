@@ -1,4 +1,6 @@
-# E2541_BEAN_VALLEY_TOP_PIPE_BASEMENT_LOADER
+# pylint: disable=C0301
+
+"""E2541_BEAN_VALLEY_TOP_PIPE_BASEMENT_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -18,13 +20,13 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftNorthwestPixels(8)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkNorthwestPixels(8)],
         ),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSouthwestPixels(6),
+                ASWalkSouthwestPixels(6),
                 ASSetWalkingSpeed(SLOW),
             ],
         ),
@@ -32,8 +34,8 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSoutheastPixels(3),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(3),
+                ASWalkSouthwestPixels(4),
                 ASSetWalkingSpeed(SLOW),
             ],
         ),
@@ -41,8 +43,8 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthwestPixels(8),
-                ASShiftNortheastPixels(6),
+                ASWalkNorthwestPixels(8),
+                ASWalkNortheastPixels(6),
             ],
         ),
         SetSyncActionScript(NPC_1, A0405_FOREST_MAZE_AREA_FREEMOVING_AMANITA),

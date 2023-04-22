@@ -1,4 +1,6 @@
-# E0597_MINES_BOSS_ROOM_EXPLOSION_RECOIL
+# pylint: disable=C0301
+
+"""E0597_MINES_BOSS_ROOM_EXPLOSION_RECOIL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -23,7 +25,7 @@ script = EventScript(
                 ),
                 ASJumpToHeight(height=64, silent=True),
                 ASSetWalkingSpeed(FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASPause(
                     1, identifier="EVENT_597_action_queue_async_3_SUBSCRIPT_pause_6"
                 ),

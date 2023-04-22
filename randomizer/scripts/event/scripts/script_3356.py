@@ -1,4 +1,6 @@
-# E3356_KEEP_RESPAWN_IN_LOBBY_UPON_FAILURE
+# pylint: disable=C0301
+
+"""E3356_KEEP_RESPAWN_IN_LOBBY_UPON_FAILURE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -29,7 +31,7 @@ script = EventScript(
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         Pause(1, identifier="EVENT_3356_pause_8"),
         Set7000ToPressedButton(),
-        JmpIf7000AllBitsClear(destinations=["EVENT_3356_pause_8"]),
+        JmpIf7000AllBitsClear(bits=[], destinations=["EVENT_3356_pause_8"]),
         FadeInMusic(M66_BOWSERS_CASTLE_2ND_TIME),
         SetVarToConst(TEMP_70AE, 20),
         SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),

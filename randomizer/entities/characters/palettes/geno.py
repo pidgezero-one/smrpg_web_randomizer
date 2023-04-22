@@ -1,3 +1,5 @@
+"""Geno palette instances."""
+
 from randomizer.types.palettes.classes import (
     EffectPalette,
     GenoPaletteSet,
@@ -6,6 +8,8 @@ from randomizer.types.palettes.classes import (
 
 
 class Default(GenoPaletteSet):
+    """Default Geno palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -110,6 +114,9 @@ class Default(GenoPaletteSet):
 
 
 class Pink(GenoPaletteSet):
+    """Geno palette swapped 1-1 with Peach's default palette,
+    like the graphical glitch seen in any% speedruns."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -171,6 +178,8 @@ class Pink(GenoPaletteSet):
 
 
 class Magikoopa(GenoPaletteSet):
+    """Geno coloured with his cape to resemble Magikoopa's blue robe."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -232,6 +241,8 @@ class Magikoopa(GenoPaletteSet):
 
 
 class MagikoopaRed(GenoPaletteSet):
+    """Geno coloured with his cape to resemble Magikoopa's red robe."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -293,6 +304,8 @@ class MagikoopaRed(GenoPaletteSet):
 
 
 class Link(GenoPaletteSet):
+    """Geno palette coloured to look like default ALTTP Link."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -354,6 +367,8 @@ class Link(GenoPaletteSet):
 
 
 class Vlados(GenoPaletteSet):
+    """Geno palette (reference unknown)"""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8E0E0,
@@ -415,6 +430,8 @@ class Vlados(GenoPaletteSet):
 
 
 class Light(GenoPaletteSet):
+    """Lightly-tinted Geno palette."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -475,6 +492,8 @@ class Light(GenoPaletteSet):
 
 
 class Purple(GenoPaletteSet):
+    """Geno palette with a purple cape."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -535,6 +554,8 @@ class Purple(GenoPaletteSet):
 
 
 class Grey(GenoPaletteSet):
+    """Geno palette with a grey cape."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,
@@ -595,6 +616,8 @@ class Grey(GenoPaletteSet):
 
 
 class Green(GenoPaletteSet):
+    """Geno palette with a green cape."""
+
     default_colours: SpritePalette = SpritePalette(
         [
             0xF8F8F8,

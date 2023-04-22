@@ -1,4 +1,6 @@
-# E1395_MARIOS_HOUSE_LAMP
+# pylint: disable=C0301
+
+"""E1395_MARIOS_HOUSE_LAMP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,16 +21,16 @@ script = EventScript(
             ],
         ),
         TintLayers(
-            layers=[LAYER_1, LAYER_2, NPC_SPRITES, MINUS_SUB],
+            layers=[LAYER_L1, LAYER_L2, NPC_SPRITES, MINUS_SUB],
             red=112,
             green=104,
             blue=16,
             speed=0,
         ),
         PrioritySet(
-            mainscreen=[LAYER_1, LAYER_2, NPC_SPRITES],
+            mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[],
-            colour_math=[LAYER_1, LAYER_2, NPC_SPRITES, MINUS_SUB],
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, MINUS_SUB],
         ),
         FadeOutMusicToVolume(duration=4, volume=0),
         RemoveObjectFromCurrentLevel(NPC_0),
@@ -38,7 +40,7 @@ script = EventScript(
                 ASPause(15),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
-                ASShiftNorthwestPixels(32),
+                ASWalkNorthwestPixels(32),
                 ASSetSpriteSequence(
                     index=8,
                     sprite_offset=2,
@@ -47,7 +49,7 @@ script = EventScript(
                     mirror_sprite=True,
                 ),
                 ASJumpToHeight(120),
-                ASShiftNorthwestPixels(32),
+                ASWalkNorthwestPixels(32),
             ],
         ),
         SummonObjectToCurrentLevel(NPC_0),
@@ -58,7 +60,7 @@ script = EventScript(
         RestoreAllFP(),
         Pause(110),
         TintLayers(
-            layers=[LAYER_1, LAYER_2, NPC_SPRITES, MINUS_SUB],
+            layers=[LAYER_L1, LAYER_L2, NPC_SPRITES, MINUS_SUB],
             red=0,
             green=0,
             blue=0,
@@ -75,7 +77,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASShiftNortheastPixels(16),
+                ASWalkNortheastPixels(16),
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(index=13, is_sequence=True, looping=True),
             ],
@@ -115,7 +117,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetSequenceSpeed(NORMAL),
                 ASJumpToHeight(120),
-                ASShiftSouthPixels(32),
+                ASWalkSouthPixels(32),
                 ASSetAllSpeeds(NORMAL),
             ],
         ),

@@ -1,4 +1,6 @@
-# E3496_MIDAS_RIVER_MID_RIGHT_TUNNEL_ANIMATION_AND_EXIT_BACKGROUND
+# pylint: disable=C0301
+
+"""E3496_MIDAS_RIVER_MID_RIGHT_TUNNEL_ANIMATION_AND_EXIT_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,11 +17,11 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(4),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(8),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(8),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(4),
                 ASSetWalkingSpeed(SLOW),
                 ASJmpIfVarEqualsConst(TEMP_7034, 0, ["EVENT_3496_action_queue_sync_8"]),
                 ASPlaySound(sound=SO055_LOSE_COINS_COIN_FOUNTAIN, channel=6),
@@ -46,7 +48,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3496_pause_15"]),
         CreatePacketAtObjectCoords(
             packet=P017_SMALL_MINIGAME_COIN,
-            object=MARIO,
+            target_npc=MARIO,
             destinations=["EVENT_3496_pause_15"],
         ),
         Dec(TEMP_702A),

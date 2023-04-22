@@ -1,10 +1,12 @@
-# E2478_BEAN_VALLEY_BEANSTALK_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2478_BEAN_VALLEY_BEANSTALK_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 39),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW39_BEAN_VALLEY),
         SummonObjectToSpecificLevel(NPC_0, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
         SummonObjectToSpecificLevel(NPC_1, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
         SummonObjectToSpecificLevel(NPC_3, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
@@ -20,9 +22,9 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-                ASShiftNortheastPixels(5),
-                ASShiftNorthPixels(5),
-                ASShiftWestPixels(2),
+                ASWalkNortheastPixels(5),
+                ASWalkNorthPixels(5),
+                ASWalkWestPixels(2),
                 ASJmpIfBitClear(
                     TEMP_708C_4,
                     ["EVENT_2478_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_8"],
@@ -46,10 +48,10 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-                ASShiftNortheastPixels(7),
-                ASShiftEastPixels(4),
-                ASShiftNorthPixels(1),
-                ASShiftWestPixels(2),
+                ASWalkNortheastPixels(7),
+                ASWalkEastPixels(4),
+                ASWalkNorthPixels(1),
+                ASWalkWestPixels(2),
                 ASJmpIfBitClear(
                     TEMP_708C_4,
                     [
@@ -73,7 +75,7 @@ script = EventScript(
         JmpIfBitClear(TEMP_708C_4, ["EVENT_2478_set_7000_to_object_coord_15"]),
         SetSyncActionScript(NPC_2, A0015_DO_NOTHING),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_Y,
             pixel=True,
             bit_7=True,
@@ -96,7 +98,7 @@ script = EventScript(
                     index=7, sprite_offset=6, is_sequence=True, looping=True
                 ),
                 ASTransferToXYZF(x=27, y=27, z=24, direction=EAST),
-                ASShiftEastPixels(8),
+                ASWalkEastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),

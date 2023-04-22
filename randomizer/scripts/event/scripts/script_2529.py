@@ -1,4 +1,6 @@
-# E2529_STAR_HILL_1ST_ROOM_WISH_TOP_LEFT
+# pylint: disable=C0301
+
+"""E2529_STAR_HILL_1ST_ROOM_WISH_TOP_LEFT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,7 +24,7 @@ script = EventScript(
             subscript=[
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASWalk1StepNortheast(),
-                ASShiftNortheastPixels(4),
+                ASWalkNortheastPixels(4),
                 ASFaceSouthwest(),
             ],
         ),
@@ -34,7 +36,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASSetSpriteSequence(index=4, is_sequence=True, looping=True),
                 ASStartLoopNTimes(3),
-                ASShiftSouthwestPixels(2),
+                ASWalkSouthwestPixels(2),
                 ASPause(8),
                 ASEndLoop(),
             ],
@@ -48,7 +50,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=3, sprite_offset=2, is_sequence=True, looping=True
                 ),
-                ASShiftSouthwestPixels(2),
+                ASWalkSouthwestPixels(2),
                 ASEndLoop(),
                 ASFaceNortheast(),
             ],
@@ -93,7 +95,7 @@ script = EventScript(
                 ASPause(16),
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepSouthwest(),
-                ASShiftSouthwestPixels(4),
+                ASWalkSouthwestPixels(4),
                 ASPause(8),
                 ASSetPriority(0),
                 ASPause(24),

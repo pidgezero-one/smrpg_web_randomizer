@@ -1,4 +1,6 @@
-# E1772_LANDS_END_BULLET_BILL
+# pylint: disable=C0301
+
+"""E1772_LANDS_END_BULLET_BILL"""
 
 from randomizer.scripts.event.script_imports import *
 

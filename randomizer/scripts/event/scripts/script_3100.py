@@ -1,4 +1,6 @@
-# E3100_PROGRESSIVE_FIREWORKS_CHEST_GRANT
+# pylint: disable=C0301
+
+"""E3100_PROGRESSIVE_FIREWORKS_CHEST_GRANT"""
 
 from randomizer.scripts.event.script_imports import *
 

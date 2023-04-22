@@ -1,3 +1,5 @@
+"""Const names for each regular shop (not event-only shops)."""
+
 SH00_MUSHROOM_KINGDOM = 0
 SH01_ROSE_TOWN_ITEM = 1
 SH02_ROSE_TOWN_ARMOR = 2

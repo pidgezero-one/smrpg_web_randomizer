@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack81, monster_attacks Magnum, monster_attacks 120, monster_attacks PhysicalAttack7, monster_attacks Psyche
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack81, monster_attacks Magnum, monster_attacks 120, monster_attacks PhysicalAttack7, monster_attacks Psyche"""
 
 from randomizer.scripts.animation.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3123_SEWER_DRAIN_WATER
+# pylint: disable=C0301
+
+"""E3123_SEWER_DRAIN_WATER"""
 
 from randomizer.scripts.event.script_imports import *
 

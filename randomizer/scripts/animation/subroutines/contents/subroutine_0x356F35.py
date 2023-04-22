@@ -1,4 +1,6 @@
-# referenced by monster_attacks PhysicalAttack40, monster_attacks PhysicalAttack32, monster_attacks IronMaiden
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks PhysicalAttack40, monster_attacks PhysicalAttack32, monster_attacks IronMaiden"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -36,7 +38,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=64, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=64,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -58,7 +64,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=64, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=64,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -97,10 +107,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-65, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-65,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -115,10 +133,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-65, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-65,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -157,10 +183,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -175,10 +209,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -217,10 +259,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -235,10 +285,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -339,7 +397,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -354,7 +416,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -393,7 +459,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -408,7 +478,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=17,
@@ -515,7 +589,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=64, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=64,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         Jmp(["command_0x357312"]),
         SetAMEM32ToXYZCoords(
@@ -541,10 +619,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-65, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-65,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         Jmp(["command_0x357312"]),
         SetAMEM32ToXYZCoords(
@@ -570,10 +656,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         Jmp(["command_0x357312"]),
         SetAMEM32ToXYZCoords(
@@ -599,10 +693,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         Jmp(["command_0x357312"]),
         SetAMEM32ToXYZCoords(
@@ -658,7 +760,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         Jmp(["command_0x357312"]),
         SetAMEM32ToXYZCoords(
@@ -684,7 +790,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=32),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         Jmp(["command_0x357312"]),
         SetAMEM32ToXYZCoords(

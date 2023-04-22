@@ -1,4 +1,6 @@
-# E3494_MIDAS_RIVER_BOTTOM_LEFT_TUNNEL_ANIMATION_AND_EXIT
+# pylint: disable=C0301
+
+"""E3494_MIDAS_RIVER_BOTTOM_LEFT_TUNNEL_ANIMATION_AND_EXIT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,9 +18,9 @@ script = EventScript(
             subscript=[
                 ASPause(220),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftWestSteps(4),
+                ASWalkWestSteps(4),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftNorthwestSteps(7),
+                ASWalkNorthwestSteps(7),
                 ASWalk1StepNorthwest(),
                 ASSetWalkingSpeed(NORMAL),
             ],
@@ -54,7 +56,7 @@ script = EventScript(
                 ASDb(bytearray(b"%\x80\x02\xe4\xff")),
                 ASSetWalkingSpeed(NORMAL),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASBPL262728(),
                 ASSetSolidityBits(cant_pass_walls=True),
             ],

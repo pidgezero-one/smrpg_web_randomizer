@@ -1,4 +1,6 @@
-# E3308_SHIP_BOSS_ROOM_DRINK
+# pylint: disable=C0301
+
+"""E3308_SHIP_BOSS_ROOM_DRINK"""
 
 from randomizer.scripts.event.script_imports import *
 

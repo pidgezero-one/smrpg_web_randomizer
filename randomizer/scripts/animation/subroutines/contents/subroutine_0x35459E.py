@@ -1,4 +1,6 @@
-# referenced by monster_spells Blizzard, monster_spells IceRock, monster_spells Crystal, monster_spells DiamondSaw
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_spells Blizzard, monster_spells IceRock, monster_spells Crystal, monster_spells DiamondSaw"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -73,13 +75,13 @@ script = SubroutineOrBanklessScript(
         PlaySound(sound=S0104_BLIZZARD),
         Db(bytearray(b"\x9c\x00D\x10\x00\x08\x00 \x00")),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\xdd\x04\x0e\x05\x02\x00")),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=140),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
         Db(bytearray(b"\x9d\x02")),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\xde")),
         RunSubroutine(["command_0x353399"]),
         Pause2Frames(),
@@ -365,13 +367,13 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0057_SNOW_CONFETTI__SLATE_GREEN, playback_off=True),
         Db(bytearray(b"\x9c\x00D\x10\x00\x08\x00 \x00")),
         FadeInEffect(duration=1),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\xdd\x04\x0e\x05\x02\x00")),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=140),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
         Db(bytearray(b"\x9d\x02")),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\xde")),
         Pause2Frames(),
         ClearEffectIndex(),

@@ -1,4 +1,6 @@
-# E1904_ABYSS_MACHINE_YARID_UPPER
+# pylint: disable=C0301
+
+"""E1904_ABYSS_MACHINE_YARID_UPPER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -14,7 +16,7 @@ script = EventScript(
         Pause(1, identifier="EVENT_1904_pause_7"),
         CreatePacketAtObjectCoords(
             packet=P024_REGULAR_SOUND_EXPLOSION,
-            object=NPC_0,
+            target_npc=NPC_0,
             destinations=["EVENT_1904_pause_7"],
         ),
         RemoveObjectFromCurrentLevel(NPC_0),

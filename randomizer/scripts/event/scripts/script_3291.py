@@ -1,4 +1,6 @@
-# E3291_SHIP_COLLECT_CANNONBALL_PRIZE
+# pylint: disable=C0301
+
+"""E3291_SHIP_COLLECT_CANNONBALL_PRIZE"""
 
 from randomizer.scripts.event.script_imports import *
 

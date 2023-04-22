@@ -1,4 +1,6 @@
-# E0330_CHANCELLOR
+# pylint: disable=C0301
+
+"""E0330_CHANCELLOR"""
 
 from randomizer.scripts.event.script_imports import *
 

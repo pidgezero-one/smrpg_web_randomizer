@@ -1,9 +1,29 @@
+"""Base classes for the entire game sprite collection."""
+
 from functools import cmp_to_key
 from math import trunc
-from typing import List, Optional, Set, Tuple, TypeVar, Union
+from typing import List, Optional, Set, Tuple, Union
+from random import choices
+from copy import deepcopy
 from randomizer.types.numbers.classes import UInt16, UInt8
+from randomizer.types.patch.classes import Patch
+from randomizer.types.scripts_common.classes import ScriptBankTooLongException
 from randomizer.types.sprites.classes.disassembler import ImagePack
-from randomizer.types.sprites.classes.sprite import AnimationData, GridplaneArrangement, GridplaneFormats, GridplaneMold, Mold, NonGridplaneArrangement, NonGridplaneMold, SpriteContainer, SpriteSequence, Tile
+from randomizer.types.sprites.classes.sprite import (
+    AnimationData,
+    GridplaneArrangement,
+    GridplaneFormats,
+    GridplaneMold,
+    Mold,
+    NonGridplaneArrangement,
+    NonGridplaneMold,
+    SpriteContainer,
+    SpriteSequence,
+    Tile,
+)
+from randomizer.types.sprites.classes.exceptions import (
+    InvalidSpriteConstructionException,
+)
 from randomizer.types.sprites.constants.misc import (
     ALPHABET,
     ANIMATION_DATA_BANK_1_START,
@@ -21,100 +41,159 @@ from randomizer.types.sprites.constants.misc import (
     UNCOMPRESSED_GFX_END,
     UNCOMPRESSED_GFX_START,
 )
-from random import choices
-from copy import deepcopy
+
+# Glossary:
+#
+# Sprite: graphical assets and animation data for those assets
+#   for an NPC in the overworld.
+#
+# Subtile: 32 bytes of raw pixel data.
+#
+# Subtile group: A collection of subtiles and what sprites share them.
+#
+# Tile: A grouping of subtiles, the building blocks of a mold.
+#
+# Mold: An individual animation frame for a sprite. Can be either a
+#   gridplane or a non-gridplane.
+#
+# Gridplane mold: A mold that consists of exactly one tile,
+#   which itself consists of subtiles aligned in a grid.
+#   The grid may be 3x3, 4x4, 3x4, or 4x3.
+#   These are used as much as possible as they use almost no VRAM.
+#
+# Non-gridplane mold: A mold that consists of several tiles,
+#   where each tile is a 2x2 arrangement of subtiles.
+#   Those 2x2 tiles can be arranged freeform and even overlapping.
+#   These can be much heavier on VRAM depending on how many tiles are used.
+#
+# Clone: A clone is a copy of a 2x2 tile (or consecutive series of 2x2 tiles)
+#   used elsewhere in the same sprite. It is used to alleviate some of the VRAM being
+#   used by the sprite. It can reference any prior mold in the sprite.
+#
+# Sequence: An animation definition using the molds of a sprite.
+#
+# Animation data: A container for the rules of how molds and sequences are arranged
+#   for a sprite. Multiple sprites can use the same animation data, such as recolours
+#   of the same enemy.
+#
+# Image data: A container for the rules of where specifically in the ROM that a sprite
+#   should be reading subtile data from to use with its animation data.
 
 
-class _AnimationBank:
+class _SpriteRawDataBank:
+    """Represents a contiguous block of raw sprite data bytes within a ROM.\n
+    Can be either subtile data or animation data.\n
+    Should always have the same upper byte, i.e. 0x280000-0x28FFFF."""
+
     _start: int = 0
     _end: int = 0
-    _tiles: bytearray = bytearray()
+    _raw_bytes: bytearray = bytearray()
 
     @property
     def start(self) -> int:
+        """The beginning of this ROM data block."""
         return self._start
 
     def set_start(self, start: int) -> None:
+        """Designate the beginning of this ROM data block."""
         self._start = start
 
     @property
     def end(self) -> int:
+        """The end of this ROM data block."""
         return self._end
 
     def set_end(self, end: int) -> None:
+        """Designate the end of this ROM data block."""
         self._end = end
 
     @property
-    def tiles(self) -> bytearray:
-        return self._tiles
+    def raw_bytes(self) -> bytearray:
+        """The contents of the raw data block."""
+        return self._raw_bytes
 
-    def set_tiles(self, tiles: bytearray) -> None:
-        self._tiles = tiles
+    def set_raw_bytes(self, raw_bytes: bytearray) -> None:
+        """Overwrite the contents of the raw data block."""
+        self._raw_bytes = raw_bytes
 
-    def extend_tiles(self, tiles: bytearray) -> None:
-        self._tiles += tiles
+    def extend_raw_bytes(self, raw_bytes: bytearray) -> None:
+        """Add raw data."""
+        self._raw_bytes += raw_bytes
 
     @property
     def remaining_space(self):
-        return self.end - self.start - len(self.tiles)
+        """The current amount of unused bytes in this block."""
+        return self.end - self.start - len(self.raw_bytes)
 
     @property
     def current_offset(self):
-        return self.start + len(self.tiles)
+        """The absolute ROM address where this raw data block's
+        unused space currently begins (not occupied yet)."""
+        return self.start + len(self.raw_bytes)
 
-    def __init__(self, start, end):
+    def __init__(self, start: int, end: int):
         self.set_start(start)
         self.set_end(end)
-        self.set_tiles(bytearray())
+        self.set_raw_bytes(bytearray())
 
 
-class _AnimationBankCollection(List[_AnimationBank]):
+class _SpriteRawDataBankCollection(List[_SpriteRawDataBank]):
+    """Represents the entirety of either subtile data or animation data in the ROM,
+    divided up into banks."""
+
     def place_bytes(self, these_bytes: bytearray):
+        """Given a set of raw data bytes, places them into the bank
+        that currently has the most empty space.\n
+        It is a good idea to use this in a function that places
+        raw data in order from longest to shortest."""
         # find bank with most space
         highest_space = 0
         index = 0
-        for b_index, b in enumerate(self):
-            if highest_space < b.remaining_space:
-                highest_space = b.remaining_space
-                index = b_index
+        for bank_index, bank in enumerate(self):
+            if highest_space < bank.remaining_space:
+                highest_space = bank.remaining_space
+                index = bank_index
         if len(these_bytes) > self[index].remaining_space:
-            raise Exception("could not place bytes into a bank with space")
+            raise ScriptBankTooLongException(
+                "could not place bytes into a bank with space"
+            )
         offset = self[index].current_offset
-        self[index].extend_tiles(these_bytes)
+        self[index].extend_raw_bytes(these_bytes)
         return offset
 
 
-_TILE_BANKS = _AnimationBankCollection(
+_SUBTILE_BANKS = _SpriteRawDataBankCollection(
     [
-        _AnimationBank(UNCOMPRESSED_GFX_START, 0x290000),
-        _AnimationBank(0x290000, 0x2A0000),
-        _AnimationBank(0x2A0000, 0x2B0000),
-        _AnimationBank(0x2B0000, 0x2C0000),
-        _AnimationBank(0x2C0000, 0x2D0000),
-        _AnimationBank(0x2D0000, 0x2E0000),
-        _AnimationBank(0x2E0000, 0x2F0000),
-        _AnimationBank(0x2F0000, 0x300000),
-        _AnimationBank(0x300000, 0x310000),
-        _AnimationBank(0x310000, 0x320000),
-        _AnimationBank(0x320000, 0x330000),
-        # _AnimationBank(0x330000, UNCOMPRESSED_GFX_END),
-        _AnimationBank(0x360000, 0x364000),
+        _SpriteRawDataBank(UNCOMPRESSED_GFX_START, 0x290000),
+        _SpriteRawDataBank(0x290000, 0x2A0000),
+        _SpriteRawDataBank(0x2A0000, 0x2B0000),
+        _SpriteRawDataBank(0x2B0000, 0x2C0000),
+        _SpriteRawDataBank(0x2C0000, 0x2D0000),
+        _SpriteRawDataBank(0x2D0000, 0x2E0000),
+        _SpriteRawDataBank(0x2E0000, 0x2F0000),
+        _SpriteRawDataBank(0x2F0000, 0x300000),
+        _SpriteRawDataBank(0x300000, 0x310000),
+        _SpriteRawDataBank(0x310000, 0x320000),
+        _SpriteRawDataBank(0x320000, 0x330000),
+        # _SpriteRawDataBank(0x330000, UNCOMPRESSED_GFX_END),
+        _SpriteRawDataBank(0x360000, 0x364000),
     ]
 )
 
 _ANIMATION_DATA_BANKS = [
-    _AnimationBank(0x259000, 0x260000),
-    _AnimationBank(0x260000, 0x270000),
-    _AnimationBank(0x270000, UNCOMPRESSED_GFX_START),
-    _AnimationBank(0x364000, 0x370000),
-    _AnimationBank(0x379A00, 0x37A000),
-    _AnimationBank(0x387CC0, 0x388000),
-    _AnimationBank(0x3DB5E0, 0x3DC000),
-    _AnimationBank(0x3DD800, 0x3DF000),
+    _SpriteRawDataBank(0x259000, 0x260000),
+    _SpriteRawDataBank(0x260000, 0x270000),
+    _SpriteRawDataBank(0x270000, UNCOMPRESSED_GFX_START),
+    _SpriteRawDataBank(0x364000, 0x370000),
+    _SpriteRawDataBank(0x379A00, 0x37A000),
+    _SpriteRawDataBank(0x387CC0, 0x388000),
+    _SpriteRawDataBank(0x3DB5E0, 0x3DC000),
+    _SpriteRawDataBank(0x3DD800, 0x3DF000),
 ]
 # classes for managing tile data as it is being collected
 
-class _TileTuple(
+
+class _SubtileTuple(
     Tuple[
         int,
         int,
@@ -147,107 +226,144 @@ class _TileTuple(
         int,
         int,
         int,
-        int
+        int,
     ]
 ):
-    def __new__(cls, bytes: bytearray):
-        assert len(bytes) == 0x20
-        return tuple.__new__(cls, tuple(bytes))
+    """Python representation of raw tile data. Tuple of 32 bytes."""
+
+    def __new__(cls, subtile_bytes: bytearray):
+        assert len(subtile_bytes) == 0x20
+        return tuple.__new__(cls, tuple(subtile_bytes))
 
 
-class _TileSorter(Tuple[_TileTuple, List[int]]):
-    def __new__(cls, bytes: _TileTuple, ids: List[int]):
-        return tuple.__new__(cls, (bytes, ids))
+class _SubtileSorter(Tuple[_SubtileTuple, List[int]]):
+    """Used to help sort raw subtile data such that as many NPCs as possible
+    using the same subtile set can re-use subtiles, where the relative IDs of those
+    subtiles need to be within a certain range of each other."""
+
+    def __new__(cls, subtile_bytes: _SubtileTuple, ids: List[int]):
+        return tuple.__new__(cls, (subtile_bytes, ids))
 
 
-class _TileGroup:
+class _SubtileGroup:
+    """Used to facilitate grouping of subtiles together by which sprites use them."""
+
     _used_by: List[int] = []
-    _tiles: List[_TileTuple] = []
-    _extra: List[_TileTuple] = []
+    _subtiles: List[_SubtileTuple] = []
+    _extra: List[_SubtileTuple] = []
     _offset: int = 0
-
 
     @property
     def used_by(self) -> List[int]:
+        """The IDs of sprites which use at least some of these tiles."""
         return self._used_by
 
     def set_used_by(self, used_by: List[int]) -> None:
+        """Overwrite the ID list of sprites which use at least some of these tiles."""
         self._used_by = used_by
 
     def add_used_by(self, index: int) -> None:
+        """Add to the ID list of sprites which use at least some of these tiles."""
         if index not in self._used_by:
             self._used_by.append(index)
 
     @property
-    def tiles(self) -> List[_TileTuple]:
-        return self._tiles
+    def subtiles(self) -> List[_SubtileTuple]:
+        """The raw subtile data at least partially used by every sprite in this group."""
+        return self._subtiles
 
-    def set_tiles(self, tiles: Union[List[bytearray], List[_TileTuple]]) -> None:
-        self._tiles = [_TileTuple(t) if isinstance(t, bytearray) else t for t in tiles]
-
-    def extend_tiles(self, tiles: Union[Set[bytearray], Set[_TileTuple]]) -> None:
-        incoming = [
-            _TileTuple(t) if isinstance(t, bytearray) else t
-            for t in tiles
-            if t not in self.tiles
+    def set_subtiles(
+        self, subtiles: Union[List[bytearray], List[_SubtileTuple]]
+    ) -> None:
+        """Overwrite the raw tile data at least partially used by every sprite in this group."""
+        self._subtiles = [
+            _SubtileTuple(t) if isinstance(t, bytearray) else t for t in subtiles
         ]
-        self.tiles.extend(incoming)
 
-    @property
-    def extra(self) -> List[_TileTuple]:
-        return self._extra
-
-    def set_extra(self, extra: List[bytearray]) -> None:
-        self._extra = [_TileTuple(t) for t in extra]
+    def extend_subtiles(
+        self, subtiles: Union[Set[bytearray], Set[_SubtileTuple]]
+    ) -> None:
+        """Add to the raw tile data at least partially used by every sprite in this group."""
+        incoming = [
+            _SubtileTuple(t) if isinstance(t, bytearray) else t
+            for t in subtiles
+            if t not in self.subtiles
+        ]
+        self.subtiles.extend(incoming)
 
     @property
     def offset(self) -> int:
+        """The offset in the ROM where this group of subtiles will begin."""
         return self._offset
 
     def set_offset(self, offset: int) -> None:
+        """Set the offset in the ROM where this group of subtiles will begin."""
         self._offset = offset
+
+    @property
+    def extra(self) -> List[_SubtileTuple]:
+        """Duplicated tiles, populated only when it does not seem possible to
+        make sure that every sprite using a subtile group can use the sprites it
+        needs within 511 indexes of each other."""
+        return self._extra
+
+    def set_extra(self, extra: List[_SubtileTuple]) -> None:
+        """Duplicated tiles, populated only when it does not seem possible to
+        make sure that every sprite using a subtile group can use the sprites it
+        needs within 511 indexes of each other."""
+        self._extra = extra
 
     def __init__(
         self,
         used_by: List[int],
-        tiles: Union[List[bytearray], List[_TileTuple]],
-        extra: List[bytearray] = [],
+        subtiles: Union[List[bytearray], List[_SubtileTuple]],
+        extra: Optional[List[_SubtileTuple]] = None,
     ) -> None:
+        if extra is None:
+            extra = []
         self.set_used_by(used_by)
-        self.set_tiles(tiles)
-        self.set_extra(extra)
+        self.set_subtiles(subtiles)
 
 
-class _TileGroupSet(dict[str, _TileGroup]):
-    def get_most_similar_tileset(
-        self, ts: Set[_TileTuple], index=0
+class _TileGroupSet(dict[str, _SubtileGroup]):
+    """A managerial class for all by-shared-sprites tile groupings."""
+
+    def get_most_similar_subtileset(
+        self, subtileset: Set[_SubtileTuple]
     ) -> Tuple[Optional[str], float]:
+        """Given tile data of a specific sprite, find the tile group
+        that it should most likely be merged into."""
         best = None
         best_similarity = 0
-        for k in self:
-            similarity = _tileset_similarity(list(ts), list(self[k].tiles))
+        for key in self:
+            similarity = _tileset_similarity(list(subtileset), list(self[key].subtiles))
             if similarity > best_similarity:
                 best_similarity = similarity
-                best = k
+                best = key
         if best is not None:
             return best, max(
-                best_similarity / len(ts), best_similarity / len(self[best].tiles)
+                best_similarity / len(subtileset),
+                best_similarity / len(self[best].subtiles),
             )
-        else:
-            return None, 0
+        return None, 0
+
 
 # classes for building graphics structures that need to include indexes instead of assets
 
 
 class _WorkingTile(Tile):
+    """Represents a tile in the process of being converted to ROM patch bytes."""
+
     _subtiles: List[int] = []
     _offset: int = 0
 
     @property
     def offset(self) -> int:
+        """Where this sprite will ultimately sit within the ROM."""
         return self._offset
 
     def set_offset(self, offset: int) -> None:
+        """Where this sprite will ultimately sit within the ROM."""
         self._offset = offset
 
     @property
@@ -257,56 +373,63 @@ class _WorkingTile(Tile):
     def set_subtiles(self, subtiles: List[int]) -> None:
         self._subtiles = subtiles
 
+    # pylint: disable=W0231
     def __init__(
         self,
         mirror: bool,
         invert: bool,
-        format: int,
+        fmt: int,
     ) -> None:
         super().set_mirror(mirror)
         super().set_invert(invert)
-        super().set_format(format)
+        super().set_format(fmt)
         self.set_subtiles([])
 
 
 class _WorkingGridplaneArrangement(_WorkingTile, GridplaneArrangement):
+    """Represents a gridplane mold in the process of being converted to ROM patch bytes.\n
+    Gridplanes are arrangements of tiles that have to follow a grid of a specified size.
+    They are very VRAM-efficient."""
 
     def set_subtiles(
         self,
         subtiles: List[int],
-        format: Optional[GridplaneFormats] = None,
+        fmt: Optional[GridplaneFormats] = None,
     ) -> None:
-        if format is None:
-            if self.format in [GridplaneFormats._3_WIDE_3_HIGH]:
+        """Set the order of indexes pointing to raw tile data."""
+        if fmt is None:
+            if self.format in [GridplaneFormats.THREE_WIDE_THREE_HIGH]:
                 assert len(subtiles) == 9
             elif self.format in [
-                GridplaneFormats._4_WIDE_3_HIGH,
-                GridplaneFormats._3_WIDE_4_HIGH,
+                GridplaneFormats.FOUR_WIDE_THREE_HIGH,
+                GridplaneFormats.THREE_WIDE_FOUR_HIGH,
             ]:
                 assert len(subtiles) == 12
-            elif self.format in [GridplaneFormats._4_WIDE_4_HIGH]:
+            elif self.format in [GridplaneFormats.FOUR_WIDE_FOUR_HIGH]:
                 assert len(subtiles) == 16
             else:
-                raise Exception("illegal subtile count (format is %i)" % self.format)
+                raise InvalidSpriteConstructionException(
+                    f"illegal subtile count (format is {self.format})"
+                )
         else:
-            if format in [GridplaneFormats._3_WIDE_3_HIGH]:
+            if fmt in [GridplaneFormats.THREE_WIDE_THREE_HIGH]:
                 assert len(subtiles) == 9
-            elif format in [
-                GridplaneFormats._4_WIDE_3_HIGH,
-                GridplaneFormats._3_WIDE_4_HIGH,
+            elif fmt in [
+                GridplaneFormats.FOUR_WIDE_THREE_HIGH,
+                GridplaneFormats.THREE_WIDE_FOUR_HIGH,
             ]:
                 assert len(subtiles) == 12
-            elif format in [GridplaneFormats._4_WIDE_4_HIGH]:
+            elif fmt in [GridplaneFormats.FOUR_WIDE_FOUR_HIGH]:
                 assert len(subtiles) == 16
             else:
-                raise Exception("illegal subtile count for given format")
-            self.set_format(format)
+                raise InvalidSpriteConstructionException(
+                    "illegal subtile count for given format"
+                )
+            self.set_format(fmt)
         super().set_subtiles(subtiles)
 
-    def __init__(
-        self,
-        arrangement: GridplaneArrangement
-    ) -> None:
+    # pylint: disable=W0231
+    def __init__(self, arrangement: GridplaneArrangement) -> None:
         self.set_mirror(arrangement.mirror)
         self.set_invert(arrangement.invert)
         super().set_format(arrangement.format)
@@ -315,20 +438,28 @@ class _WorkingGridplaneArrangement(_WorkingTile, GridplaneArrangement):
 
 
 class _WorkingNonGridplaneArrangement(_WorkingTile, NonGridplaneArrangement):
+    """Represents a non-gridplane tile grouping in the process of being
+    converted to ROM patch bytes.\n
+    These are always an arrangement of four raw tiles in a square.\n
+    Non-gridplane molds are freeform arrangements of many of these groupings.
+    They may be more VRAM-heavy than non-gridplane molds."""
 
-    def __init__(
-        self,
-        arrangement: NonGridplaneArrangement
-    ) -> None:
+    # pylint: disable=W0231
+    def __init__(self, arrangement: NonGridplaneArrangement) -> None:
         super().set_mirror(arrangement.mirror)
         super().set_invert(arrangement.invert)
         super().set_format(arrangement.format)
         super().set_x(arrangement.x)
         super().set_y(arrangement.y)
 
+
 class _Clone:
+    """A clone uses the same raw data as another gridplane
+    arrangement (or series of consecutive gridplane arrangements) within the same mold,
+    where the clone tile must be placed after the non-clone tile."""
+
     _offset: UInt8
-    _subtiles: List[_WorkingNonGridplaneArrangement]
+    _tiles: List[_WorkingNonGridplaneArrangement]
     _x: UInt16 = UInt16(0)
     _y: UInt16 = UInt16(0)
     _mirror: bool = False
@@ -336,44 +467,56 @@ class _Clone:
 
     @property
     def offset(self) -> UInt8:
+        """The ROM offset at which this clone will be written."""
         return self._offset
 
     def set_offset(self, offset: int) -> None:
+        """Specify the ROM offset at which this clone will be written."""
         self._offset = UInt8(offset)
 
     @property
-    def subtiles(self) -> List[_WorkingNonGridplaneArrangement]:
-        return self._subtiles
+    def tiles(self) -> List[_WorkingNonGridplaneArrangement]:
+        """The tile data being referenced by this clone."""
+        return self._tiles
 
-    def set_subtiles(self, subtiles: List[_WorkingNonGridplaneArrangement]) -> None:
-        self._subtiles = subtiles
+    def set_tiles(self, tiles: List[_WorkingNonGridplaneArrangement]) -> None:
+        """Overwrite the tile data being referenced by this clone."""
+        self._tiles = tiles
 
     @property
     def x(self) -> UInt16:
+        """The X coord of this clone."""
         return self._x
 
     def set_x(self, x: int) -> None:
+        """Set the X coord of this clone."""
         self._x = UInt16(x)
 
     @property
     def y(self) -> UInt16:
+        """The Y coord of this clone."""
         return self._y
 
     def set_y(self, y: int) -> None:
+        """Set the Y coord of this clone."""
         self._y = UInt16(y)
 
     @property
     def mirror(self) -> bool:
+        """If true, the tile is flipped horizontally compared to its parent."""
         return self._mirror
 
     def set_mirror(self, mirror: bool) -> None:
+        """If true, the tile is flipped horizontally compared to its parent."""
         self._mirror = mirror
 
     @property
     def invert(self) -> bool:
+        """If true, the tile is flipped vertically compared to its parent."""
         return self._invert
 
     def set_invert(self, invert: bool) -> None:
+        """If true, the tile is flipped vertically compared to its parent."""
         self._invert = invert
 
     def __init__(
@@ -384,31 +527,35 @@ class _Clone:
         mirror: bool,
         invert: bool,
     ) -> None:
-        self.set_subtiles(tiles)
+        self.set_tiles(tiles)
         self.set_x(x)
         self.set_y(y)
         self.set_mirror(mirror)
         self.set_invert(invert)
 
 
-TWorkingTile = TypeVar("TWorkingTile", bound=_WorkingTile)
-
 class _WorkingMold:
+    """A mold in the process of being converted to ROM bytes."""
+
     _base_mold: Mold
     _offset: int = 0
 
     @property
     def offset(self) -> int:
+        """The ROM offset at which this mold will be written."""
         return self._offset
 
     def set_offset(self, offset: int) -> None:
+        """Specify the ROM offset at which this mold will be written."""
         self._offset = offset
 
     @property
     def base_mold(self) -> Mold:
+        """The mold class to convert to bytes."""
         return self._base_mold
 
     def set_base_mold(self, base_mold: Mold) -> None:
+        """Designate the mold class to convert to bytes."""
         self._base_mold = base_mold
 
     def __init__(self, base_mold: Mold) -> None:
@@ -416,161 +563,224 @@ class _WorkingMold:
 
 
 class _WorkingGridplaneMold(_WorkingMold):
+    """A gridplane mold in the process of being converted to ROM bytes."""
+
     _tiles: List[_WorkingGridplaneArrangement] = []
+
     @property
     def tiles(self) -> List[_WorkingGridplaneArrangement]:
+        """A list of exactly one working gridplane tile, which will be converted to
+        bytes by functions that use this class."""
         return self._tiles
 
     def set_tiles(self, tiles: List[_WorkingGridplaneArrangement]) -> None:
+        """Overwrite the list of exactly one working gridplane tile, which will be converted to
+        bytes by functions that use this class."""
         self._tiles = tiles
 
+    # pylint: disable=W0231
     def __init__(self, base_mold: GridplaneMold) -> None:
         super().set_base_mold(base_mold)
 
+
 class _WorkingNonGridplaneMold(_WorkingMold):
+    """A non-gridplane mold in the process of being converted to ROM bytes."""
+
     _tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]] = []
+
     @property
     def tiles(self) -> List[Union[_WorkingNonGridplaneArrangement, _Clone]]:
+        """A list of the mold's working gridplane tiles, which will be converted to
+        bytes by functions that use this class."""
         return self._tiles
 
-    def set_tiles(self, tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]]) -> None:
+    def set_tiles(
+        self, tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]]
+    ) -> None:
+        """Overwrite the list of the mold's working gridplane tiles, which will be converted to
+        bytes by functions that use this class."""
         self._tiles = tiles
 
+    # pylint: disable=W0231
     def __init__(self, base_mold: NonGridplaneMold) -> None:
         super().set_base_mold(base_mold)
 
+
 class _WorkingAnimationData(AnimationData):
+    """Animation data in the process of being converted to ROM bytes."""
+
     _molds: List[Union[_WorkingGridplaneMold, _WorkingNonGridplaneMold]]
 
     @property
     def molds(self) -> List[Union[_WorkingGridplaneMold, _WorkingNonGridplaneMold]]:
+        """The working molds being converted to ROM bytes."""
         return self._molds
 
-    def set_molds(self, molds: List[Union[_WorkingGridplaneMold, _WorkingNonGridplaneMold]]) -> None:
+    def set_molds(
+        self, molds: List[Union[_WorkingGridplaneMold, _WorkingNonGridplaneMold]]
+    ) -> None:
+        """Set the working molds being converted to ROM bytes."""
         self._molds = molds
 
-    def __init__(
-        self,
-        data: AnimationData
-    ) -> None:
+    # pylint: disable=W0231
+    def __init__(self, data: AnimationData) -> None:
         self.set_molds([])
         self.set_sequences(deepcopy(data.sequences))
         self.set_vram_size(deepcopy(data.vram_size))
         self.set_unknown(deepcopy(data.unknown))
 
+
 class _WIPSprite:
+    """An entire sprite in the process of being converted to ROM bytes."""
+
     _sprite: SpriteContainer
-    _tiles: List[_TileTuple]
-    _tile_group: str
+    _subtiles: List[_SubtileTuple]
+    _subtile_group: str
     _relative_offset: int
     _working_animation_data: Optional[_WorkingAnimationData] = None
 
     @property
     def sprite(self) -> SpriteContainer:
+        """The sprite object being converted."""
         return self._sprite
 
     def set_sprite(self, sprite: SpriteContainer) -> None:
+        """Set the sprite object being converted."""
         self._sprite = sprite
 
     @property
-    def tiles(self) -> List[_TileTuple]:
-        return self._tiles
+    def subtiles(self) -> List[_SubtileTuple]:
+        """The subtiles that this sprite needs to use."""
+        return self._subtiles
 
-    def set_tiles(self, tiles: Union[List[bytearray], List[_TileTuple]]) -> None:
-        self._tiles = [_TileTuple(t) if isinstance(t, bytearray) else t for t in tiles]
+    def set_subtiles(
+        self, subtiles: Union[List[bytearray], List[_SubtileTuple]]
+    ) -> None:
+        """Overwrite the list of subtiles that this sprite needs to use."""
+        self._subtiles = [
+            _SubtileTuple(t) if isinstance(t, bytearray) else t for t in subtiles
+        ]
 
     @property
-    def tile_group_id(self) -> str:
-        return self._tile_group
+    def subtile_group_id(self) -> str:
+        """The ID of the subtile group used by this sprite."""
+        return self._subtile_group
 
-    def set_tile_group(self, tile_group: str) -> None:
-        self._tile_group = tile_group
+    def set_subtile_group(self, subtile_group: str) -> None:
+        """Set the ID of the subtile group used by this sprite."""
+        self._subtile_group = subtile_group
 
     @property
     def relative_offset(self) -> int:
+        """The offset at which this sprite should begin reading subtile data,
+        relative to the beginning of the subtile group."""
         return self._relative_offset
 
     def set_relative_offset(self, relative_offset: int) -> None:
+        """The offset at which this sprite should begin reading subtile data,
+        relative to the beginning of the subtile group."""
         self._relative_offset = relative_offset
 
     @property
     def working_animation_data(self) -> Optional[_WorkingAnimationData]:
+        """The sprite's working animation data being converted to ROM bytes."""
         return self._working_animation_data
 
-    def set_working_animation_data(self, working_animation_data: _WorkingAnimationData) -> None:
+    def set_working_animation_data(
+        self, working_animation_data: _WorkingAnimationData
+    ) -> None:
+        """Overwrite the sprite's working animation data being converted to ROM bytes."""
         self._working_animation_data = working_animation_data
 
     def __init__(
         self,
         sprite: SpriteContainer,
-        tiles: Union[List[bytearray], List[_TileTuple]],
+        subtiles: Union[List[bytearray], List[_SubtileTuple]],
         tile_group: str,
         relative_offset: int,
     ) -> None:
         self.set_sprite(sprite)
-        self.set_tiles(tiles)
-        self.set_tile_group(tile_group)
+        self.set_subtiles(subtiles)
+        self.set_subtile_group(tile_group)
         self.set_relative_offset(relative_offset)
 
 
 class _WIPSprites(List[_WIPSprite]):
-    def rearrange_tiles(self, group: _TileGroup) -> None:
-        tile_use: List[_TileSorter] = []
+    """The game's entire collection of sprites being converted to ROM bytes."""
+
+    def rearrange_tiles(self, group: _SubtileGroup) -> None:
+        """Reorder all of the subtiles in a group to make sure that subtiles used
+        by each sprite are as close together as possible.\n
+        This is to make sure that you don't end up with a situation where 4 different
+        Mario sprites use a collection of 1000 subtiles, and the first sprite needs to use
+        subtile 20 and subtile 800. That would not be allowed."""
+        subtile_use: List[_SubtileSorter] = []
         relevant_sprites = group.used_by
 
-        for tile in group.tiles:
+        for subtile in group.subtiles:
             sprites_using_this_tile: List[int] = []
             for sprite_id in relevant_sprites:
-                if tile in self[sprite_id].tiles:
+                if subtile in self[sprite_id].subtiles:
                     sprites_using_this_tile.append(sprite_id)
-            tile_use.append(_TileSorter(tile, sprites_using_this_tile))
+            subtile_use.append(_SubtileSorter(subtile, sprites_using_this_tile))
 
-        tile_use.sort(key=cmp_to_key(_WIPSprites.sort_by_used_sprites))
+        subtile_use.sort(key=cmp_to_key(_WIPSprites.sort_by_used_sprites))
 
-        group.set_tiles([t[0] for t in tile_use])
+        group.set_subtiles([t[0] for t in subtile_use])
 
     def get_comparative_similarity(self, key1: int, key2: int) -> float:
-        similarity = _tileset_similarity(self[key1].tiles, self[key2].tiles) / len(
-            [y for y in self[key1].tiles if _is_significant_tile(y)]
-        )
+        """Get the subtile overlap percentage between two sprites by ID."""
+        similarity = _tileset_similarity(
+            self[key1].subtiles, self[key2].subtiles
+        ) / len([y for y in self[key1].subtiles if _is_significant_tile(y)])
         if similarity == 1:
             return int(similarity)
         return trunc(round(similarity * 10.0)) / 10
 
     @classmethod
-    def sort_by_used_sprites(cls, tup1: _TileSorter, tup2: _TileSorter) -> int:
-        l1 = tup1[1]
-        l2 = tup2[1]
-        if len(l1) < len(l2):
-            l1 += [0] * (len(l2) - len(l1))
-        elif len(l1) > len(l2):
-            l2 += [0] * (len(l1) - len(l2))
-        used = zip(l1, l2)
-        for x in used:
-            if x[0] < x[1]:
+    def sort_by_used_sprites(cls, tup1: _SubtileSorter, tup2: _SubtileSorter) -> int:
+        """Sorting logic for sorting subtiles by sprite usage."""
+        raw_subtile_1 = tup1[1]
+        raw_subtile_2 = tup2[1]
+        if len(raw_subtile_1) < len(raw_subtile_2):
+            raw_subtile_1 += [0] * (len(raw_subtile_2) - len(raw_subtile_1))
+        elif len(raw_subtile_1) > len(raw_subtile_2):
+            raw_subtile_2 += [0] * (len(raw_subtile_1) - len(raw_subtile_2))
+        used = zip(raw_subtile_1, raw_subtile_2)
+        for used_subtile in used:
+            if used_subtile[0] < used_subtile[1]:
                 return -1
-            elif x[0] > x[1]:
+            if used_subtile[0] > used_subtile[1]:
                 return 1
         return 0
 
+
 class AssemblingSpriteContainer(SpriteContainer):
+    """A WIP container for a sprite as it is understood by SMRPG: an animation data ID
+    and an image data ID."""
+
     _animation_id: int
     _image_id: int
 
     @property
     def animation_id(self) -> int:
+        """The index of the animation data to be used by this sprite."""
         return self._animation_id
 
     def set_animation_id(self, animation_id: int) -> None:
+        """Set the index of the animation data to be used by this sprite."""
         self._animation_id = animation_id
 
     @property
     def image_id(self) -> int:
+        """The index of the image data to be used by this sprite."""
         return self._image_id
 
     def set_image_id(self, image_id: int) -> None:
+        """Set the index of the image data to be used by this sprite."""
         self._image_id = image_id
 
+    # pylint: disable=W0231
     def __init__(
         self,
         image_id: int,
@@ -583,59 +793,74 @@ class AssemblingSpriteContainer(SpriteContainer):
         super().set_palette_offset(palette_offset)
         super().set_unknown(unknown)
 
+
 class _CloneCandidate:
+    """A structure used to assess whether or not a tile is a good candidate for cloning."""
+
     _mold_id: int
     _start_index: int
     _end_index: int
     _x_offset: int
     _y_offset: int
+
     @property
     def mold_id(self) -> int:
+        """The ID of the mold being referenced."""
         return self._mold_id
 
     def set_mold_id(self, mold_id: int) -> None:
+        """Specify the ID of the mold being referenced."""
         self._mold_id = mold_id
-
 
     @property
     def start_index(self) -> int:
+        """The first index (within the reference mold) of the tiles to be cloned by this."""
         return self._start_index
 
     def set_start_index(self, start_index: int) -> None:
+        """The first index (within the reference mold) of the tiles to be cloned by this."""
         self._start_index = start_index
-
 
     @property
     def end_index(self) -> int:
+        """The last index (within the reference mold) of the tiles to be cloned by this."""
         return self._end_index
 
     def set_end_index(self, end_index: int) -> None:
+        """The last index (within the reference mold) of the tiles to be cloned by this."""
         self._end_index = end_index
-
 
     @property
     def x_offset(self) -> int:
+        """X axis pixels by which each cloned tile should be shifted."""
         return self._x_offset
 
     def set_x_offset(self, x_offset: int) -> None:
+        """X axis pixels by which each cloned tile should be shifted."""
         self._x_offset = x_offset
-
 
     @property
     def y_offset(self) -> int:
+        """Y axis pixels by which each cloned tile should be shifted."""
         return self._y_offset
 
     def set_y_offset(self, y_offset: int) -> None:
+        """Y axis pixels by which each cloned tile should be shifted."""
         self._y_offset = y_offset
 
-
-    def __init__(self, mold_id: int, start_index: int, end_index: int, x_offset: int, y_offset: int) -> None:
+    def __init__(
+        self,
+        mold_id: int,
+        start_index: int,
+        end_index: int,
+        x_offset: int,
+        y_offset: int,
+    ) -> None:
         self.set_mold_id(mold_id)
         self.set_start_index(start_index)
         self.set_end_index(end_index)
         self.set_x_offset(x_offset)
         self.set_y_offset(y_offset)
-
 
 
 def _random_tile_id() -> str:
@@ -646,18 +871,22 @@ def _random_tile_id() -> str:
 # Tiles which are mostly empty except for maybe a couple of pixels are not that.
 # The importance of this is that tiles deemed significant which are shared between different sprites
 # will mean that the assembler will try to group those sprites close together (within 512 indexes)
-# such that the same tile can be accessed by both sprites, instead of having to write the same tile twice.
-def _is_significant_tile(tiledata: _TileTuple) -> bool:
+# such that the same tile can be accessed by both sprites,
+# instead of having to write the same tile twice.
+def _is_significant_tile(tiledata: _SubtileTuple) -> bool:
     return len([offset for offset in tiledata if offset > 0]) > 4
 
 
-# Determine how similar two given tilesets are, where similarity is determined by the number of tiles between them that are the exact same
-def _tileset_similarity(tileset1: List[_TileTuple], tileset2: List[_TileTuple]) -> int:
-    sanitized_t1 = [t for t in tileset1 if _is_significant_tile(t)]
-    sanitized_t2 = [t for t in tileset2 if _is_significant_tile(t)]
-    t1 = set(sanitized_t1)
-    t2 = set(sanitized_t2)
-    similarity = len(set(t1).intersection(set(t2)))
+# Determine how similar two given tilesets are, where similarity is determined by the number of
+# tiles between them that are the exact same
+def _tileset_similarity(
+    tileset1: List[_SubtileTuple], tileset2: List[_SubtileTuple]
+) -> int:
+    sanitized_tileset_1 = [t for t in tileset1 if _is_significant_tile(t)]
+    sanitized_tileset_2 = [t for t in tileset2 if _is_significant_tile(t)]
+    tileset_1 = set(sanitized_tileset_1)
+    tileset_2 = set(sanitized_tileset_2)
+    similarity = len(set(tileset_1).intersection(set(tileset_2)))
     return similarity
 
 
@@ -672,26 +901,30 @@ def _is_same_animation(animation1: AnimationData, animation2: AnimationData) -> 
     if len(animation1.sequences) != len(animation2.sequences):
         return False
     molds = zip(animation1.molds, animation2.molds)
-    for m in molds:
-        if m[0].gridplane != m[1].gridplane:
+    for mold in molds:
+        if mold[0].gridplane != mold[1].gridplane:
             return False
-        if len(m[0].tiles) != len(m[1].tiles):
+        if len(mold[0].tiles) != len(mold[1].tiles):
             return False
-        for i in range(len(m[0].tiles)):
-            ts1 = m[0].tiles[i]
-            ts2 = m[1].tiles[i]
+        for index, _ in enumerate(mold[0].tiles):
+            ts1 = mold[0].tiles[index]
+            ts2 = mold[1].tiles[index]
             if type(ts1) != type(ts2):
                 return False
             if ts1.mirror != ts2.mirror:
                 return False
             if ts1.invert != ts2.invert:
                 return False
-            if isinstance(ts1, NonGridplaneArrangement) and isinstance(ts2, NonGridplaneArrangement):
+            if isinstance(ts1, NonGridplaneArrangement) and isinstance(
+                ts2, NonGridplaneArrangement
+            ):
                 if ts1.x != ts2.x:
                     return False
                 if ts1.y != ts2.y:
                     return False
-            elif isinstance(ts1, GridplaneArrangement) and isinstance(ts2, GridplaneArrangement):
+            elif isinstance(ts1, GridplaneArrangement) and isinstance(
+                ts2, GridplaneArrangement
+            ):
                 if ts1.y_plus != ts2.y_plus:
                     return False
                 if ts1.y_minus != ts2.y_minus:
@@ -700,14 +933,14 @@ def _is_same_animation(animation1: AnimationData, animation2: AnimationData) -> 
                 return False
 
     sequences = zip(animation1.sequences, animation2.sequences)
-    for s in sequences:
-        s1 = s[0]
-        s2 = s[1]
-        if len(s1.frames) != len(s2.frames):
+    for sequence in sequences:
+        sequence_1 = sequence[0]
+        sequence_2 = sequence[1]
+        if len(sequence_1.frames) != len(sequence_2.frames):
             return False
-        for i in range(len(s1.frames)):
-            as1 = s1.frames[i]
-            as2 = s2.frames[i]
+        for index, _ in enumerate(sequence_1.frames):
+            as1 = sequence_1.frames[index]
+            as2 = sequence_2.frames[index]
             if as1.duration != as2.duration:
                 return False
             if as1.mold_id != as2.mold_id:
@@ -715,11 +948,15 @@ def _is_same_animation(animation1: AnimationData, animation2: AnimationData) -> 
     return True
 
 
-# This method is run multiple times to try and figure out which tile is the beginning of a series of consecutive clone tiles.
-def _is_clone_start(tile: Union[_WorkingNonGridplaneArrangement, _Clone], compare_tile: Union[_WorkingNonGridplaneArrangement, _Clone]) -> Tuple[bool, int, int]:
+# This method is run multiple times to try and figure out which tile is the beginning
+# of a series of consecutive clone tiles.
+def _is_clone_start(
+    tile: Union[_WorkingNonGridplaneArrangement, _Clone],
+    compare_tile: Union[_WorkingNonGridplaneArrangement, _Clone],
+) -> Tuple[bool, int, int]:
     if isinstance(compare_tile, _Clone) or isinstance(tile, _Clone):
         return False, 0, 0
-    if tile.subtiles != compare_tile.subtiles: 
+    if tile.subtiles != compare_tile.subtiles:
         return False, 0, 0
     # Clones might require an x/y offset of at least 1.
     # Unsure
@@ -735,8 +972,14 @@ def _is_clone_start(tile: Union[_WorkingNonGridplaneArrangement, _Clone], compar
     return True, tile.x - compare_tile.x, tile.y - compare_tile.y
 
 
-# This method is run multiple times to try and figure if a tile is part of a series of consecutive clone tiles.
-def _is_clone_continuation(tile: Union[_WorkingNonGridplaneArrangement, _Clone], compare_tile: Union[_WorkingNonGridplaneArrangement, _Clone], x_offset: int, y_offset: int) -> bool:
+# This method is run multiple times to try and figure if a tile is part of a series of
+# consecutive clone tiles.
+def _is_clone_continuation(
+    tile: Union[_WorkingNonGridplaneArrangement, _Clone],
+    compare_tile: Union[_WorkingNonGridplaneArrangement, _Clone],
+    x_offset: int,
+    y_offset: int,
+) -> bool:
     if isinstance(tile, _Clone) or isinstance(compare_tile, _Clone):
         return False
     if tile.subtiles != compare_tile.subtiles:
@@ -751,34 +994,47 @@ def _is_clone_continuation(tile: Union[_WorkingNonGridplaneArrangement, _Clone],
 
 
 # final eligibility check of potential clone, adds if passes
-def _finish_candidate(mold_id: int, tile: Union[_WorkingNonGridplaneArrangement, _Clone], compare_tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]], end_index: int, start_index: int, x_offset: int, y_offset: int) -> Optional[_CloneCandidate]:
+def _finish_candidate(
+    mold_id: int,
+    tile: Union[_WorkingNonGridplaneArrangement, _Clone],
+    compare_tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]],
+    end_index: int,
+    start_index: int,
+    x_offset: int,
+    y_offset: int,
+) -> Optional[_CloneCandidate]:
     if isinstance(tile, _Clone):
         return None
     cloned = compare_tiles[start_index : end_index + 1]
     if len(cloned) == 0:
         return None
-    elif x_offset < 0 or y_offset < 0:
+    if x_offset < 0 or y_offset < 0:
         return None
-    elif len(cloned) == 1:
+    if len(cloned) == 1:
         if tile.x > 255 or tile.y > 255:
             pass
-        elif max(tile.subtiles) > 255: 
+        elif max(tile.subtiles) > 255:
             pass
         elif len([sb for sb in tile.subtiles if sb != 0]) > 2:
             pass
         else:
             return None
     return _CloneCandidate(mold_id, start_index, end_index + 1, x_offset, y_offset)
-    
-    
+
 
 # find all possible clones of the tile within the given mold tileset
-def _get_clone_ranges(mold_id: int, tiles: List[Union[_Clone, _WorkingNonGridplaneArrangement]], tile_index: int, compare_tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]], mold_index: int=0) -> List[_CloneCandidate]:
+def _get_clone_ranges(
+    mold_id: int,
+    tiles: List[Union[_Clone, _WorkingNonGridplaneArrangement]],
+    tile_index: int,
+    compare_tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]],
+    mold_index: int = 0,
+) -> List[_CloneCandidate]:
     tile = tiles[tile_index]
     clone_candidates: List[_CloneCandidate] = []
 
     # don't compare to self
-    tile_compare_index: int  = len(compare_tiles) - 1
+    tile_compare_index: int = len(compare_tiles) - 1
     if mold_id == mold_index:
         tile_compare_index = tile_index - 1
 
@@ -811,7 +1067,9 @@ def _get_clone_ranges(mold_id: int, tiles: List[Union[_Clone, _WorkingNonGridpla
                 start = tile_compare_index
                 if is_ending:
                     start += 1
-                finished_candidate = _finish_candidate(mold_id, tile, compare_tiles, end, start, x_offset, y_offset)
+                finished_candidate = _finish_candidate(
+                    mold_id, tile, compare_tiles, end, start, x_offset, y_offset
+                )
                 if finished_candidate is not None:
                     clone_candidates.append(finished_candidate)
                 is_candidate = False
@@ -828,8 +1086,12 @@ def _get_clone_ranges(mold_id: int, tiles: List[Union[_Clone, _WorkingNonGridpla
     return clone_candidates
 
 
-def _find_clones(tiles_: List[_WorkingNonGridplaneArrangement], molds: List[Union[_WorkingGridplaneMold, _WorkingNonGridplaneMold]], mold_index: int=0) -> List[Union[_WorkingNonGridplaneArrangement, _Clone]]:
-    tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]] = [t for t in tiles_]
+def _find_clones(
+    tiles_: List[_WorkingNonGridplaneArrangement],
+    molds: List[Union[_WorkingGridplaneMold, _WorkingNonGridplaneMold]],
+    mold_index: int = 0,
+) -> List[Union[_WorkingNonGridplaneArrangement, _Clone]]:
+    tiles: List[Union[_WorkingNonGridplaneArrangement, _Clone]] = list(tiles_)
     output: List[Union[_Clone, _WorkingNonGridplaneArrangement]] = []
     tmp_output: List[Union[_Clone, _WorkingNonGridplaneArrangement]] = []
 
@@ -843,7 +1105,8 @@ def _find_clones(tiles_: List[_WorkingNonGridplaneArrangement], molds: List[Unio
         while mold_index >= 0:
             mold = molds[mold_index]
             if isinstance(mold, _WorkingNonGridplaneMold):
-                # look for any possible point in previous molds that looks like it could be a clone range ending with this tile
+                # look for any possible point in previous molds that looks like it
+                # could be a clone range ending with this tile
                 clone_candidates += _get_clone_ranges(
                     mold_index, tiles, tile_index, mold.tiles, mold_index
                 )
@@ -857,23 +1120,36 @@ def _find_clones(tiles_: List[_WorkingNonGridplaneArrangement], molds: List[Unio
             ineligible_candidates = [
                 c for c in clone_candidates if c not in eligible_candidates
             ]
-            # clone detection just doesnt work out sometimes, ie 3 sets of the same tiles that overall are >255 apart
+            # clone detection just doesnt work out sometimes,
+            # ie 3 sets of the same tiles that overall are >255 apart
             # in those cases, un-clone them and just treat as normal tiles
             if len(eligible_candidates) == 0:
                 candidate = max(
-                    ineligible_candidates, key=lambda item: item.end_index - item.start_index
+                    ineligible_candidates,
+                    key=lambda item: item.end_index - item.start_index,
                 )
                 decoupled_tiles = deepcopy(
-                    molds[candidate.mold_id].tiles[candidate.start_index : candidate.end_index]
+                    molds[candidate.mold_id].tiles[
+                        candidate.start_index : candidate.end_index
+                    ]
                 )
                 decoupled_tiles.reverse()
                 for c_tile in decoupled_tiles:
-                    assert isinstance(c_tile, _WorkingNonGridplaneArrangement) or isinstance(c_tile, _Clone)
+                    assert isinstance(c_tile, (_WorkingNonGridplaneArrangement, _Clone))
                     tmp_output.insert(0, c_tile)
             else:
-                candidate = max(eligible_candidates, key=lambda item: item.end_index - item.start_index)
-                reference_tiles = molds[candidate.mold_id].tiles[candidate.start_index : candidate.end_index]
-                final_tiles = [t for t in reference_tiles if isinstance(t, _WorkingNonGridplaneArrangement)]
+                candidate = max(
+                    eligible_candidates,
+                    key=lambda item: item.end_index - item.start_index,
+                )
+                reference_tiles = molds[candidate.mold_id].tiles[
+                    candidate.start_index : candidate.end_index
+                ]
+                final_tiles = [
+                    t
+                    for t in reference_tiles
+                    if isinstance(t, _WorkingNonGridplaneArrangement)
+                ]
                 assert len(final_tiles) == len(reference_tiles)
                 tmp_output.insert(
                     0,
@@ -905,9 +1181,15 @@ def _find_clones(tiles_: List[_WorkingNonGridplaneArrangement], molds: List[Unio
             len(molds), tmp_output, tile_index, tmp_output, mold_index
         )
         if len(clone_candidates) > 0:
-            candidate = max(clone_candidates, key=lambda item: item.end_index - item.start_index)
+            candidate = max(
+                clone_candidates, key=lambda item: item.end_index - item.start_index
+            )
             reference_tiles = tmp_output[candidate.start_index : candidate.end_index]
-            final_tiles = [t for t in reference_tiles if isinstance(t, _WorkingNonGridplaneArrangement)]
+            final_tiles = [
+                t
+                for t in reference_tiles
+                if isinstance(t, _WorkingNonGridplaneArrangement)
+            ]
             assert len(final_tiles) == len(reference_tiles)
             output.insert(
                 0,
@@ -920,42 +1202,50 @@ def _find_clones(tiles_: List[_WorkingNonGridplaneArrangement], molds: List[Unio
                 ),
             )
             tile_index -= candidate.end_index - candidate.start_index
-            ineligible_to_be_clones.extend(list(range(candidate.start_index, candidate.end_index)))
+            ineligible_to_be_clones.extend(
+                list(range(candidate.start_index, candidate.end_index))
+            )
         else:
             output.insert(0, tile)
             tile_index -= 1
 
     return output
 
+
 def _place_bytes(these_bytes: bytearray) -> int:
     # find bank with most space
     highest_space = 0
     index = 0
-    for b_index, b in enumerate(_ANIMATION_DATA_BANKS):
-        if highest_space < b.remaining_space:
-            highest_space = b.remaining_space
-            index = b_index
-    if len(these_bytes) >_ANIMATION_DATA_BANKS[index].remaining_space:
-        raise Exception("could not place bytes into a bank with space")
+    for bank_index, bank in enumerate(_ANIMATION_DATA_BANKS):
+        if highest_space < bank.remaining_space:
+            highest_space = bank.remaining_space
+            index = bank_index
+    if len(these_bytes) > _ANIMATION_DATA_BANKS[index].remaining_space:
+        raise InvalidSpriteConstructionException(
+            "could not place bytes into a bank with space"
+        )
     offset = _ANIMATION_DATA_BANKS[index].current_offset
-    _ANIMATION_DATA_BANKS[index].tiles.extend(these_bytes)
+    _ANIMATION_DATA_BANKS[index].raw_bytes.extend(these_bytes)
     return offset
+
 
 def _create_dummy_sprite() -> _WorkingAnimationData:
     dummy_mold = NonGridplaneMold([])
     dummy_w_mold = _WorkingNonGridplaneMold(dummy_mold)
-    dummy_animation_data = AnimationData(
-        [dummy_mold],
-        [SpriteSequence([])],
-        2048,
-        2
-    )
+    dummy_animation_data = AnimationData([dummy_mold], [SpriteSequence([])], 2048, 2)
     dummy_w_animation_data = _WorkingAnimationData(dummy_animation_data)
     dummy_w_animation_data.set_molds([dummy_w_mold])
     return dummy_w_animation_data
 
+
 class SpriteCollection(list[SpriteContainer]):
-    def render(self, insert_whitespace=False) -> Tuple[bytearray, bytearray, bytearray, List[Tuple[int, bytearray]], List[Tuple[int, bytearray]]]:
+    """Managerial class for everything relating to NPC sprites."""
+
+    def get_patch(
+        self,
+    ) -> Patch:
+        """Get patch for all NPC sprite data."""
+        ### Produce ROM bytes
         tile_groups = _TileGroupSet()
         wip_sprites: _WIPSprites = _WIPSprites()
 
@@ -963,17 +1253,16 @@ class SpriteCollection(list[SpriteContainer]):
 
         # collect unique subtiles and group sprites by graphic similarity
         for index, wip_sprite in enumerate(self):
-
-            unique_subtiles: List[_TileTuple] = []
+            unique_subtiles: List[_SubtileTuple] = []
             for mold in wip_sprite.animation_data.molds:
                 for tile in mold.tiles:
                     for subtile in tile.subtiles:
                         if subtile is not None:
-                            hashable = _TileTuple(subtile)
+                            hashable = _SubtileTuple(subtile)
                             if hashable not in unique_subtiles:
                                 unique_subtiles.append(hashable)
-            key, similarity = tile_groups.get_most_similar_tileset(
-                set(unique_subtiles), index
+            key, similarity = tile_groups.get_most_similar_subtileset(
+                set(unique_subtiles)
             )
 
             if key is None or similarity < 0.075:  # add new tile group
@@ -982,10 +1271,10 @@ class SpriteCollection(list[SpriteContainer]):
                 while tile_id in tile_groups:
                     tile_id = _random_tile_id()
                 key = tile_id
-                tile_groups[key] = _TileGroup([index], unique_subtiles)
+                tile_groups[key] = _SubtileGroup([index], unique_subtiles)
             else:
                 tile_groups[key].add_used_by(index)
-                tile_groups[key].extend_tiles(set(unique_subtiles))
+                tile_groups[key].extend_subtiles(set(unique_subtiles))
             wip_sprite = _WIPSprite(wip_sprite, unique_subtiles, key, 0)
             wip_sprites.append(wip_sprite)
 
@@ -996,15 +1285,15 @@ class SpriteCollection(list[SpriteContainer]):
             has_variance = False
             if len(tile_group.used_by) > 1:
                 variance = []
-                for t in tile_group.used_by:
+                for key in tile_group.used_by:
                     this_variance = [
-                        wip_sprites.get_comparative_similarity(t, x)
+                        wip_sprites.get_comparative_similarity(key, x)
                         for x in tile_group.used_by
                     ]
                     variance.append(this_variance)
-                for x in range(len(variance)):
+                for x, variant in enumerate(variance):
                     for y in range(x + 1, len(variance)):
-                        if variance[x][y] != 1 and variance[y][x] != 1:
+                        if variant[y] != 1 and variance[y][x] != 1:
                             has_variance = True
             if has_variance:
                 wip_sprites.rearrange_tiles(tile_group)
@@ -1016,22 +1305,21 @@ class SpriteCollection(list[SpriteContainer]):
 
         # reserve 64 tiles for minecart and 8bit
         free_tiles -= 64
-        if free_tiles < 0:
-            free_tiles = 0
+        free_tiles = max(free_tiles, 0)
 
         # find sprites which are going to cause problems because of subtile deltas > 512
         # and duplicate tiles where necessary
         for sprite_index, wip_sprite in enumerate(wip_sprites):
-            tile_key: str = wip_sprite.tile_group_id
-            available_tiles = tile_groups[tile_key].tiles
+            tile_key: str = wip_sprite.subtile_group_id
+            available_tiles = tile_groups[tile_key].subtiles
 
             lowest_subtile_index: int = 0
-            if len(wip_sprite.tiles) > 0:
+            if len(wip_sprite.subtiles) > 0:
                 lowest_subtile_index = len(available_tiles)
                 highest_subtile_index: int = 0
                 all_indexes_for_this_tile: List[int] = []
-                for t in wip_sprite.tiles:
-                    tilegroup_index_of_this_tile: int = available_tiles.index(t)
+                for subtile in wip_sprite.subtiles:
+                    tilegroup_index_of_this_tile: int = available_tiles.index(subtile)
                     if tilegroup_index_of_this_tile not in all_indexes_for_this_tile:
                         all_indexes_for_this_tile.append(tilegroup_index_of_this_tile)
                     if tilegroup_index_of_this_tile < lowest_subtile_index:
@@ -1073,25 +1361,31 @@ class SpriteCollection(list[SpriteContainer]):
                     # if still too big, convert into its own tileset?
                     lowest_subtile_index = cutoff_index
                     # add too-low sprite IDs to be duped at the end
-                    new_tile_pool = tile_groups[tile_key].tiles[cutoff_index:] + tile_groups[tile_key].extra
+                    new_tile_pool = (
+                        tile_groups[tile_key].subtiles[cutoff_index:]
+                        + tile_groups[tile_key].extra
+                    )
                     for t_index in all_indexes_for_this_tile:
                         this_tile = available_tiles[t_index]
-                        if this_tile not in extra_tiles and this_tile not in new_tile_pool:
+                        if (
+                            this_tile not in extra_tiles
+                            and this_tile not in new_tile_pool
+                        ):
                             extra_tiles.append(this_tile)
                     tile_groups[tile_key].extra.extend(extra_tiles)
-            
-            wip_sprites[sprite_index].set_relative_offset(lowest_subtile_index)
+
+            wip_sprite.set_relative_offset(lowest_subtile_index)
 
         # start placing tile groups and get offsets for them
-        sortable_tile_groups: List[Tuple[str, _TileGroup]] = []
+        sortable_tile_groups: List[Tuple[str, _SubtileGroup]] = []
         for key in tile_groups:
             sortable_tile_groups.append((key, tile_groups[key]))
-        sortable_tile_groups.sort(key=lambda tup: len(tup[1].tiles), reverse=True)
+        sortable_tile_groups.sort(key=lambda tup: len(tup[1].subtiles), reverse=True)
         for tile_key, group in sortable_tile_groups:
             tilebytes = bytearray([])
-            for t in group.tiles + group.extra:
-                tilebytes += bytearray(t)
-            group_offset: int = _TILE_BANKS.place_bytes(tilebytes)
+            for subtile in group.subtiles + group.extra:
+                tilebytes += bytearray(subtile)
+            group_offset: int = _SUBTILE_BANKS.place_bytes(tilebytes)
             tile_groups[tile_key].set_offset(group_offset)
 
         # start building stuff
@@ -1101,22 +1395,27 @@ class SpriteCollection(list[SpriteContainer]):
 
         for sprite_index, wip_sprite in enumerate(wip_sprites):
             # prepare sprite to contain clone arrangement
-            wip_sprite.set_working_animation_data(_WorkingAnimationData(wip_sprite.sprite.animation_data))
+            wip_sprite.set_working_animation_data(
+                _WorkingAnimationData(wip_sprite.sprite.animation_data)
+            )
             assert wip_sprite.working_animation_data is not None
 
-            tile_key = wip_sprite.tile_group_id
-            available_tiles = tile_groups[tile_key].tiles[wip_sprite.relative_offset:] + tile_groups[tile_key].extra
+            tile_key = wip_sprite.subtile_group_id
+            available_tiles = (
+                tile_groups[tile_key].subtiles[wip_sprite.relative_offset :]
+                + tile_groups[tile_key].extra
+            )
 
             lowest_subtile_index = len(available_tiles)
             highest_subtile_index = 0
             all_indexes_for_this_tile = []
-            for tile in wip_sprite.tiles:
+            for tile in wip_sprite.subtiles:
                 tilegroup_index_of_this_tile = available_tiles.index(tile)
                 if tilegroup_index_of_this_tile < lowest_subtile_index:
                     lowest_subtile_index = tilegroup_index_of_this_tile
                 if tilegroup_index_of_this_tile > highest_subtile_index:
                     highest_subtile_index = tilegroup_index_of_this_tile
-            
+
             subtile_subtract: int = 0
 
             ### check if this tile group has already been placed
@@ -1124,107 +1423,153 @@ class SpriteCollection(list[SpriteContainer]):
             if len(available_tiles) > 510:
                 subtile_subtract = lowest_subtile_index
             # get image pack #, or create new
-            offset += ((subtile_subtract) * 0x20)
+            offset += (subtile_subtract) * 0x20
             # need to change this to accommodate diff offsets in same tile group
             palette_ptr = PALETTE_OFFSET + wip_sprite.sprite.palette_id * 30
             image_index_to_use = len(complete_images)
             for image_index, image in enumerate(complete_images):
-                if image.graphics_pointer == offset and image.palette_pointer == palette_ptr:
+                if (
+                    image.graphics_pointer == offset
+                    and image.palette_pointer == palette_ptr
+                ):
                     image_index_to_use = image_index
             if image_index_to_use == len(complete_images):
-                complete_images.append(ImagePack(image_index_to_use, offset, palette_ptr))
-
+                complete_images.append(
+                    ImagePack(image_index_to_use, offset, palette_ptr)
+                )
 
             # get animation #, or create new
             animation_id_to_use = len(complete_animations)
-            for prev_sprite_index, prev_sprite in enumerate(wip_sprites[0:sprite_index]):
-                if _is_same_animation(wip_sprite.sprite.animation_data, wip_sprite.sprite.animation_data):
-                    animation_id_to_use = complete_sprites[prev_sprite_index].animation_id
+            for prev_sprite_index, _ in enumerate(wip_sprites[0:sprite_index]):
+                if _is_same_animation(
+                    wip_sprite.sprite.animation_data, wip_sprite.sprite.animation_data
+                ):
+                    animation_id_to_use = complete_sprites[
+                        prev_sprite_index
+                    ].animation_id
             # if not found, create new
             if animation_id_to_use == len(complete_animations):
                 molds: List[Union[_WorkingGridplaneMold, _WorkingNonGridplaneMold]] = []
-                for mold_index, m in enumerate(wip_sprite.sprite.animation_data.molds):
+                for mold_index, mold in enumerate(
+                    wip_sprite.sprite.animation_data.molds
+                ):
                     # build numerical subtile bytes
-                    these_tiles: List[Union[_WorkingGridplaneArrangement, _WorkingNonGridplaneArrangement, _Clone]] = []
-                    for tile in m.tiles:
+                    these_tiles: List[
+                        Union[
+                            _WorkingGridplaneArrangement,
+                            _WorkingNonGridplaneArrangement,
+                            _Clone,
+                        ]
+                    ] = []
+                    for tile in mold.tiles:
                         subtile_bytes: List[int] = []
                         for subtile in tile.subtiles:
                             if subtile is None:
                                 subtile_index = 0
                             else:
-                                subtile_index = available_tiles.index(_TileTuple(subtile)) + 1 - subtile_subtract
+                                subtile_index = (
+                                    available_tiles.index(_SubtileTuple(subtile))
+                                    + 1
+                                    - subtile_subtract
+                                )
                             subtile_bytes.append(subtile_index)
                         if isinstance(tile, GridplaneArrangement):
                             this_tile = _WorkingGridplaneArrangement(tile)
                         elif isinstance(tile, NonGridplaneArrangement):
                             this_tile = _WorkingNonGridplaneArrangement(tile)
                         else:
-                            raise Exception("what was the original tile type?")
+                            raise InvalidSpriteConstructionException(
+                                "what was the original tile type?"
+                            )
                         this_tile.set_subtiles(subtile_bytes)
                         these_tiles.append(this_tile)
 
                     # create clones and use in mold
-                    if isinstance(m, NonGridplaneMold):
-                        this_mold = _WorkingNonGridplaneMold(m)
-                        insertions = [t for t in these_tiles if isinstance(t, _WorkingNonGridplaneArrangement)]
+                    if isinstance(mold, NonGridplaneMold):
+                        this_mold = _WorkingNonGridplaneMold(mold)
+                        insertions = [
+                            t
+                            for t in these_tiles
+                            if isinstance(t, _WorkingNonGridplaneArrangement)
+                        ]
                         assert len(insertions) == len(these_tiles)
                         include_clones = _find_clones(insertions, molds, mold_index)
                         this_mold.set_tiles(include_clones)
                     else:
-                        this_mold = _WorkingGridplaneMold(m)
-                        insertions = [t for t in these_tiles if isinstance(t, _WorkingGridplaneArrangement)]
+                        this_mold = _WorkingGridplaneMold(mold)
+                        insertions = [
+                            t
+                            for t in these_tiles
+                            if isinstance(t, _WorkingGridplaneArrangement)
+                        ]
                         assert len(insertions) == len(these_tiles)
                         this_mold.set_tiles(insertions)
                     molds.append(this_mold)
-                
-                # track this new clone-enabled animation data in case future sprites will need to use it
+
+                # track this new clone-enabled animation data
+                # in case future sprites will need to use it
                 wip_sprite.working_animation_data.set_molds(molds)
-                complete_animations.append( wip_sprite.working_animation_data)
-            
+                complete_animations.append(wip_sprite.working_animation_data)
+
             # create sprite pack
-            complete_sprites.append(AssemblingSpriteContainer(image_index_to_use, animation_id_to_use, wip_sprite.sprite.palette_offset, wip_sprite.sprite.unknown))
+            complete_sprites.append(
+                AssemblingSpriteContainer(
+                    image_index_to_use,
+                    animation_id_to_use,
+                    wip_sprite.sprite.palette_offset,
+                    wip_sprite.sprite.unknown,
+                )
+            )
 
         output_tiles = bytearray([])
         output_tile_ranges: List[Tuple[int, bytearray]] = []
-        final_offset = _TILE_BANKS[0].start
-        for bank_index, b in enumerate(_TILE_BANKS):
-            final_offset = b.start + len(b.tiles)
-            _TILE_BANKS[bank_index].set_tiles(bytearray([0] * (b.end - b.start - len(b.tiles))))
-            if b.end <= UNCOMPRESSED_GFX_END:
-                output_tiles += _TILE_BANKS[bank_index].tiles
-                if b.end == UNCOMPRESSED_GFX_END:
+        final_offset = _SUBTILE_BANKS[0].start
+        for bank_index, bank in enumerate(_SUBTILE_BANKS):
+            final_offset = bank.start + len(bank.raw_bytes)
+            _SUBTILE_BANKS[bank_index].set_raw_bytes(
+                bytearray([0] * (bank.end - bank.start - len(bank.raw_bytes)))
+            )
+            if bank.end <= UNCOMPRESSED_GFX_END:
+                output_tiles += _SUBTILE_BANKS[bank_index].raw_bytes
+                if bank.end == UNCOMPRESSED_GFX_END:
                     output_tile_ranges.append((UNCOMPRESSED_GFX_START, output_tiles))
             else:
-                output_tile_ranges.append((b.start, _TILE_BANKS[bank_index].tiles))
-        
+                output_tile_ranges.append(
+                    (bank.start, _SUBTILE_BANKS[bank_index].raw_bytes)
+                )
+
         if len(complete_images) > TOTAL_IMAGES:
-            raise Exception("too many images: %i" % len(complete_images))
+            raise InvalidSpriteConstructionException(
+                f"too many images: {len(complete_images)}"
+            )
         if len(complete_images) < TOTAL_IMAGES:
             ind = len(complete_images)
             while ind < TOTAL_IMAGES:
-                complete_images.append(ImagePack(ind, UNCOMPRESSED_GFX_START + final_offset, 0x250000))
+                complete_images.append(
+                    ImagePack(ind, UNCOMPRESSED_GFX_START + final_offset, 0x250000)
+                )
                 ind += 1
         if len(complete_animations) < TOTAL_ANIMATIONS:
             ind = len(complete_animations)
             while ind < TOTAL_ANIMATIONS:
                 complete_animations.append(_create_dummy_sprite())
                 ind += 1
-        
-        
+
         # secondary function starts here
         sprite_data = bytearray()
         image_data = bytearray()
         animation_pointers = bytearray()
-        animation_data_bank_1 = bytearray()
-        animation_data_bank_2 = bytearray()
-        bank_in_use: int = 0
         used_animations: List[int] = []
 
         for sprite in complete_sprites:
             assert sprite.image_id <= 0x1FF
             assert sprite.palette_offset <= 7
             sprite_data.append(sprite.image_id & 0xFF)
-            sprite_data.append(((sprite.image_id >> 8) & 0x01) + (sprite.palette_offset << 1) + (sprite.unknown << 4))
+            sprite_data.append(
+                ((sprite.image_id >> 8) & 0x01)
+                + (sprite.palette_offset << 1)
+                + (sprite.unknown << 4)
+            )
             assert sprite.animation_id <= 0xFFFF
             sprite_data.append(sprite.animation_id & 0xFF)
             sprite_data.append((sprite.animation_id >> 8) & 0xFF)
@@ -1246,10 +1591,8 @@ class SpriteCollection(list[SpriteContainer]):
         animation_pointers_wip: List[Optional[int]] = [None] * len(complete_animations)
 
         for anim_id, animation in enumerate(complete_animations):
-
             if anim_id not in used_animations:
                 animation = _create_dummy_sprite()
-
 
             length_bytes = bytearray()
             sequence_offset = bytearray([0x0C, 0x00])
@@ -1267,7 +1610,9 @@ class SpriteCollection(list[SpriteContainer]):
             mold_bytes = bytearray()
 
             for sequence in animation.sequences:
-                this_sequence_offset: int = 0x0C + (len(animation.sequences) + 1) * 2 + len(sequence_bytes)
+                this_sequence_offset: int = (
+                    0x0C + (len(animation.sequences) + 1) * 2 + len(sequence_bytes)
+                )
                 assert this_sequence_offset <= 0xFFFF
                 if len(sequence.frames) == 0:
                     sequence_ptrs.extend([0xFF, 0xFF])
@@ -1285,29 +1630,46 @@ class SpriteCollection(list[SpriteContainer]):
             mold_offset.append((mold_offset_short >> 8) & 0xFF)
             subtile_indexes = []
             for mold_index, mold in enumerate(animation.molds):
-                this_mold_offset = 0x0C + len(sequence_ptrs) + len(sequence_bytes) + (len(animation.molds) + 1) * 2 + len(mold_bytes)
+                this_mold_offset = (
+                    0x0C
+                    + len(sequence_ptrs)
+                    + len(sequence_bytes)
+                    + (len(animation.molds) + 1) * 2
+                    + len(mold_bytes)
+                )
                 assert this_mold_offset <= 0x7FFF
                 animation.molds[mold_index].set_offset(this_mold_offset)
                 if isinstance(mold, _WorkingGridplaneMold):
-                    this_mold_offset += (0x80 << 8)
+                    this_mold_offset += 0x80 << 8
                 if len(mold.tiles) > 0:
                     mold_ptrs.append(this_mold_offset & 0xFF)
                     mold_ptrs.append((this_mold_offset >> 8) & 0xFF)
                     this_mold_bytes = bytearray()
                     if isinstance(mold, _WorkingGridplaneMold):
                         for tile_index, tile in enumerate(mold.tiles):
-                            for i, subtile_byte in enumerate(tile.subtiles):
+                            for _, subtile_byte in enumerate(tile.subtiles):
                                 if subtile_byte >= 0x100:
                                     tile.set_is_16bit(True)
                             tile_bytes = bytearray([])
-                            animation.molds[mold_index].tiles[tile_index].set_offset(this_mold_offset + len(this_mold_bytes))
-                            byte_1: int = (tile.format & 0x03) + (tile.is_16bit << 3) + (tile.y_plus << 4) + (tile.y_minus << 5) + (tile.mirror << 6) + (tile.invert << 7)
+                            animation.molds[mold_index].tiles[tile_index].set_offset(
+                                this_mold_offset + len(this_mold_bytes)
+                            )
+                            byte_1: int = (
+                                (tile.format & 0x03)
+                                + (tile.is_16bit << 3)
+                                + (tile.y_plus << 4)
+                                + (tile.y_minus << 5)
+                                + (tile.mirror << 6)
+                                + (tile.invert << 7)
+                            )
                             tile_bytes.append(byte_1)
                             if tile.is_16bit:
                                 subtile_short = 0
-                                for i, subtile_byte in enumerate(tile.subtiles):
+                                for subtile_index, subtile_byte in enumerate(
+                                    tile.subtiles
+                                ):
                                     if subtile_byte >= 0x100:
-                                        subtile_short += (1 << i)
+                                        subtile_short += 1 << subtile_index
                                 tile_bytes.append(subtile_short & 0xFF)
                                 tile_bytes.append((subtile_short >> 8) & 0xFF)
                             for subtile_byte in tile.subtiles:
@@ -1316,73 +1678,121 @@ class SpriteCollection(list[SpriteContainer]):
                     else:
                         for tile_index, tile in enumerate(mold.tiles):
                             tile_bytes = bytearray([])
-                            animation.molds[mold_index].tiles[tile_index].set_offset(this_mold_offset + len(this_mold_bytes))
+                            animation.molds[mold_index].tiles[tile_index].set_offset(
+                                this_mold_offset + len(this_mold_bytes)
+                            )
                             found_clone = False
                             if isinstance(tile, _Clone):
-                                byte_1: int = (0x02) + (tile.mirror << 2) + (tile.invert << 3)
-                                ct = tile.subtiles[0]
+                                byte_1: int = (
+                                    (0x02) + (tile.mirror << 2) + (tile.invert << 3)
+                                )
+                                clone = tile.tiles[0]
                                 found_offset = 0
                                 tmp: int = mold_index
                                 while tmp >= 0:
-                                    m = animation.molds[tmp]
+                                    mold = animation.molds[tmp]
                                     if not found_clone:
-                                        for ct_index, compare_tile in enumerate(m.tiles):
-                                            if not found_clone and not isinstance(compare_tile, _Clone):
-                                                if compare_tile.mirror == ct.mirror and compare_tile.invert == ct.invert and compare_tile.subtiles == ct.subtiles:
+                                        for ct_index, compare_tile in enumerate(
+                                            mold.tiles
+                                        ):
+                                            if not found_clone and not isinstance(
+                                                compare_tile, _Clone
+                                            ):
+                                                if (
+                                                    compare_tile.mirror == clone.mirror
+                                                    and compare_tile.invert
+                                                    == clone.invert
+                                                    and compare_tile.subtiles
+                                                    == clone.subtiles
+                                                ):
                                                     confirm_tile = True
                                                     conf_i: int = 0
-                                                    while conf_i < len(tile.subtiles) and confirm_tile:
-                                                        tmp_tile_1 = tile.subtiles[conf_i]
-                                                        if ct_index + conf_i >= len(m.tiles):
+                                                    while (
+                                                        conf_i < len(tile.tiles)
+                                                        and confirm_tile
+                                                    ):
+                                                        tmp_tile_1 = tile.tiles[conf_i]
+                                                        if ct_index + conf_i >= len(
+                                                            mold.tiles
+                                                        ):
                                                             confirm_tile = False
                                                             continue
-                                                        tmp_tile_2 = m.tiles[ct_index + conf_i]
-                                                        if not isinstance(tmp_tile_2, _WorkingNonGridplaneArrangement):
+                                                        tmp_tile_2 = mold.tiles[
+                                                            ct_index + conf_i
+                                                        ]
+                                                        if not isinstance(
+                                                            tmp_tile_2,
+                                                            _WorkingNonGridplaneArrangement,
+                                                        ):
                                                             confirm_tile = False
                                                             continue
-                                                        elif tmp_tile_1.x != tmp_tile_2.x or tmp_tile_1.y != tmp_tile_2.y or tmp_tile_1.mirror != tmp_tile_2.mirror or tmp_tile_1.invert != tmp_tile_2.invert or tmp_tile_1.subtiles != tmp_tile_2.subtiles:
+                                                        if (
+                                                            tmp_tile_1.x != tmp_tile_2.x
+                                                            or tmp_tile_1.y
+                                                            != tmp_tile_2.y
+                                                            or tmp_tile_1.mirror
+                                                            != tmp_tile_2.mirror
+                                                            or tmp_tile_1.invert
+                                                            != tmp_tile_2.invert
+                                                            or tmp_tile_1.subtiles
+                                                            != tmp_tile_2.subtiles
+                                                        ):
                                                             confirm_tile = False
                                                             continue
                                                         conf_i += 1
                                                     if confirm_tile:
                                                         found_clone = True
-                                                        found_offset = compare_tile.offset
+                                                        found_offset = (
+                                                            compare_tile.offset
+                                                        )
                                     tmp -= 1
                                 if found_clone:
-                                    #print(tile)
-                                    byte_1 += (len(tile.subtiles) << 4)
+                                    byte_1 += len(tile.tiles) << 4
                                     tile_bytes.append(byte_1)
                                     tile_bytes.append(tile.y)
                                     tile_bytes.append(tile.x)
                                     tile_bytes.append(found_offset & 0xFF)
                                     tile_bytes.append((found_offset >> 8) & 0x7F)
                                     this_mold_bytes += tile_bytes
-                                    #if anim_id == 242:
-                                    #    print("clone ", [hex(a) for a in tile_bytes])
                                 else:
-                                    raise Exception("no clones found for anim %i mold %i" % (anim_id, mold_index))
+                                    raise InvalidSpriteConstructionException(
+                                        f"no clones found for anim {anim_id} mold {mold_index}"
+                                    )
                             else:
                                 if anim_id <= 6:
-                                    for st in tile.subtiles:
-                                        if st not in subtile_indexes:
-                                            subtile_indexes.append(st)
+                                    for subtile in tile.subtiles:
+                                        if subtile not in subtile_indexes:
+                                            subtile_indexes.append(subtile)
                                 tile_bytes.append(tile.y ^ 0x80)
                                 tile_bytes.append(tile.x ^ 0x80)
                                 byte_upper_1 = 0
-                                for i, subtile_byte in enumerate(tile.subtiles):
+                                for index, subtile_byte in enumerate(tile.subtiles):
                                     if subtile_byte > 0:
-                                        byte_upper_1 += (1 << (3-i))
+                                        byte_upper_1 += 1 << (3 - index)
                                         if subtile_byte > 255:
-                                            tile_to_set_format = complete_animations[anim_id].molds[mold_index].tiles[tile_index]
-                                            assert isinstance(tile_to_set_format, _WorkingNonGridplaneArrangement)
+                                            tile_to_set_format = (
+                                                complete_animations[anim_id]
+                                                .molds[mold_index]
+                                                .tiles[tile_index]
+                                            )
+                                            assert isinstance(
+                                                tile_to_set_format,
+                                                _WorkingNonGridplaneArrangement,
+                                            )
                                             tile_to_set_format.set_format(1)
                                             tile.set_format(1)
-                                for i, subtile_byte in enumerate(tile.subtiles):
+                                for subtile_byte in tile.subtiles:
                                     if subtile_byte > 0:
                                         tile_bytes.append(subtile_byte & 0xFF)
                                         if tile.format == 1:
-                                            tile_bytes.append((subtile_byte >> 8) & 0x01)
-                                byte_lower_1: int = (tile.format & 0x03) + (tile.mirror << 2) + (tile.invert << 3)
+                                            tile_bytes.append(
+                                                (subtile_byte >> 8) & 0x01
+                                            )
+                                byte_lower_1: int = (
+                                    (tile.format & 0x03)
+                                    + (tile.mirror << 2)
+                                    + (tile.invert << 3)
+                                )
                                 tile_bytes.insert(0, byte_lower_1 + (byte_upper_1 << 4))
                                 this_mold_bytes += tile_bytes
                         this_mold_bytes.append(0)
@@ -1393,9 +1803,31 @@ class SpriteCollection(list[SpriteContainer]):
                 subtile_indexes.sort()
             mold_ptrs.extend([0, 0])
 
-            length_bytes_short: int = 2 + len(sequence_offset) + len(mold_offset) + len(count_bytes) + len(misc_bytes) + len(sequence_ptrs) + len(sequence_bytes) + len(mold_ptrs) + len(mold_bytes)
-            length_bytes = bytearray([length_bytes_short & 0xFF, (length_bytes_short >> 8) & 0xFF])
-            finished_bytes: bytearray = length_bytes + sequence_offset + mold_offset + count_bytes + misc_bytes + sequence_ptrs + sequence_bytes + mold_ptrs + mold_bytes
+            length_bytes_short: int = (
+                2
+                + len(sequence_offset)
+                + len(mold_offset)
+                + len(count_bytes)
+                + len(misc_bytes)
+                + len(sequence_ptrs)
+                + len(sequence_bytes)
+                + len(mold_ptrs)
+                + len(mold_bytes)
+            )
+            length_bytes = bytearray(
+                [length_bytes_short & 0xFF, (length_bytes_short >> 8) & 0xFF]
+            )
+            finished_bytes: bytearray = (
+                length_bytes
+                + sequence_offset
+                + mold_offset
+                + count_bytes
+                + misc_bytes
+                + sequence_ptrs
+                + sequence_bytes
+                + mold_ptrs
+                + mold_bytes
+            )
 
             animations_ready_to_place.append((anim_id, finished_bytes))
 
@@ -1406,22 +1838,42 @@ class SpriteCollection(list[SpriteContainer]):
 
         for anim_ptr in animation_pointers_wip:
             assert anim_ptr is not None
-            animation_pointers.extend([anim_ptr & 0xFF, (anim_ptr >> 8) & 0xFF, (anim_ptr >> 16) & 0xFF])
+            animation_pointers.extend(
+                [anim_ptr & 0xFF, (anim_ptr >> 8) & 0xFF, (anim_ptr >> 16) & 0xFF]
+            )
 
         anim_tile_ranges: List[Tuple[int, bytearray]] = []
         anim_data = bytearray()
-        for bank_index, b in enumerate(_ANIMATION_DATA_BANKS):
-            final_offset = b.start + len(b.tiles)
-            _ANIMATION_DATA_BANKS[bank_index].extend_tiles(bytearray([0] * (b.end - b.start - len(b.tiles))))
-            if b.end <= UNCOMPRESSED_GFX_START:
-                anim_data += _ANIMATION_DATA_BANKS[bank_index].tiles
-                if b.end == UNCOMPRESSED_GFX_START:
+        for bank_index, bank in enumerate(_ANIMATION_DATA_BANKS):
+            final_offset = bank.start + len(bank.raw_bytes)
+            _ANIMATION_DATA_BANKS[bank_index].extend_raw_bytes(
+                bytearray([0] * (bank.end - bank.start - len(bank.raw_bytes)))
+            )
+            if bank.end <= UNCOMPRESSED_GFX_START:
+                anim_data += _ANIMATION_DATA_BANKS[bank_index].raw_bytes
+                if bank.end == UNCOMPRESSED_GFX_START:
                     anim_tile_ranges.append((ANIMATION_DATA_BANK_1_START, anim_data))
             else:
-                anim_tile_ranges.append((b.start, _ANIMATION_DATA_BANKS[bank_index].tiles))
+                anim_tile_ranges.append(
+                    (bank.start, _ANIMATION_DATA_BANKS[bank_index].raw_bytes)
+                )
 
-        sprite_data += bytearray([0] * (SPRITE_PTRS_END - SPRITE_PTRS_START - len(sprite_data)))
-        image_data += bytearray([0] * (IMAGE_PTRS_END - IMAGE_PTRS_START - len(image_data)))
-        animation_pointers += bytearray([0] * (ANIMATION_PTRS_END - ANIMATION_PTRS_START - len(animation_pointers)))
-        
-        return bytearray(sprite_data), bytearray(image_data), bytearray(animation_pointers), anim_tile_ranges, output_tile_ranges
+        sprite_data += bytearray(
+            [0] * (SPRITE_PTRS_END - SPRITE_PTRS_START - len(sprite_data))
+        )
+        image_data += bytearray(
+            [0] * (IMAGE_PTRS_END - IMAGE_PTRS_START - len(image_data))
+        )
+        animation_pointers += bytearray(
+            [0] * (ANIMATION_PTRS_END - ANIMATION_PTRS_START - len(animation_pointers))
+        )
+        patch = Patch()
+
+        patch.add_data(0x250000, bytearray(sprite_data))
+        patch.add_data(0x251800, bytearray(image_data) + bytearray(animation_pointers))
+        for offset, animation in anim_tile_ranges:
+            patch.add_data(offset, animation)
+        for offset, subtiles in output_tile_ranges:
+            patch.add_data(offset, subtiles)
+
+        return patch

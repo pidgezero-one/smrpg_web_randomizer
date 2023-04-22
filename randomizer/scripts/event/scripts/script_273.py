@@ -1,4 +1,6 @@
-# E0273_SLEEP_IN_INNS
+# pylint: disable=C0301
+
+"""E0273_SLEEP_IN_INNS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -461,8 +463,8 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASSetSequenceSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(3),
-                ASShiftWestSteps(3),
+                ASWalkSouthwestSteps(3),
+                ASWalkWestSteps(3),
                 ASFaceNorthwest(),
                 ASSetSpriteSequence(
                     index=16,
@@ -482,8 +484,8 @@ script = EventScript(
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetSpriteSequence(index=12, is_sequence=True, looping=True),
                 ASShiftSouthSteps(1),
-                ASShiftSouthwestSteps(3),
-                ASShiftWestSteps(3),
+                ASWalkSouthwestSteps(3),
+                ASWalkWestSteps(3),
                 ASSequenceLoopingOff(),
                 ASSetSequenceSpeed(FAST),
                 ASResetProperties(),
@@ -505,14 +507,14 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(SLOW),
                 ASSequenceLoopingOn(),
-                ASShiftNorthwestPixels(4),
+                ASWalkNorthwestPixels(4),
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
             ],
         ),
         Pause(10),
         ActionQueueAsync(
-            target=NPC_0, subscript=[ASSetWalkingSpeed(SLOW), ASShiftNorthwestPixels(4)]
+            target=NPC_0, subscript=[ASSetWalkingSpeed(SLOW), ASWalkNorthwestPixels(4)]
         ),
         RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
         RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
@@ -523,9 +525,9 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFloatingOn(),
-                ASShiftNortheastSteps(2),
-                ASShiftNorthwestSteps(2),
-                ASShiftNorthwestPixels(8),
+                ASWalkNortheastSteps(2),
+                ASWalkNorthwestSteps(2),
+                ASWalkNorthwestPixels(8),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
             ],

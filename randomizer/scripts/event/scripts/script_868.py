@@ -1,4 +1,6 @@
-# E0868_TEST_SCRIPT_2
+# pylint: disable=C0301
+
+"""E0868_TEST_SCRIPT_2"""
 
 from randomizer.scripts.event.script_imports import *
 

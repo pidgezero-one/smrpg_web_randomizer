@@ -1,4 +1,6 @@
-# E2405_STAR_HILL_FINAL_AREA_LOADER
+# pylint: disable=C0301
+
+"""E2405_STAR_HILL_FINAL_AREA_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,14 +19,14 @@ script = EventScript(
             target=NPC_9,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftNorthPixels(12),
+                ASWalkNorthPixels(12),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASShadowOff(),
             ],
         ),
-        ActionQueueSync(target=NPC_12, subscript=[ASShiftWestPixels(7)]),
-        ActionQueueSync(target=NPC_13, subscript=[ASShiftEastPixels(8)]),
-        ActionQueueSync(target=NPC_14, subscript=[ASShiftWestPixels(8)]),
+        ActionQueueSync(target=NPC_12, subscript=[ASWalkWestPixels(7)]),
+        ActionQueueSync(target=NPC_13, subscript=[ASWalkEastPixels(8)]),
+        ActionQueueSync(target=NPC_14, subscript=[ASWalkWestPixels(8)]),
         FreezeCamera(),
         ActionQueueAsync(
             target=MARIO,
@@ -44,7 +46,7 @@ script = EventScript(
         PlaySound(sound=SO126_EMERGE_DEEP_WATER, channel=6),
         Pause(16),
         ActionQueueAsync(
-            target=MARIO, subscript=[ASSetSequenceSpeed(FAST), ASShiftSouthwestSteps(2)]
+            target=MARIO, subscript=[ASSetSequenceSpeed(FAST), ASWalkSouthwestSteps(2)]
         ),
         Pause(16),
         Db(bytearray(b"\xfd\x8d")),

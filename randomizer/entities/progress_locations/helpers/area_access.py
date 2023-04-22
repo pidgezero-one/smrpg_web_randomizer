@@ -1,3 +1,6 @@
+"""Helper methods that calculate if the player can access a given area based on their inventory
+and settings."""
+
 from typing import Callable, List, Type, Union
 from randomizer.entities.bosses.bosses import (
     AxemRangersBoss,
@@ -120,7 +123,7 @@ from randomizer.entities.characters.characters import (
 def progression_safety(world: GameWorld) -> bool:
     return world.settings.is_boolean_flag_enabled(
         SafeLogicProgression
-    ) and world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.match)
+    ) and world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.MATCH)
 
 
 def can_defeat_some_of(
@@ -150,9 +153,9 @@ def can_defeat_mushroom_way_boss(world: GameWorld, inventory: Inventory) -> bool
 
 
 def can_access_bandits_way(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.mallow):
+    if world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MALLOW):
         return inventory.has_item(Mallow)
-    elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.hammerbro):
+    elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.HAMMER_BRO):
         return inventory.has_item(HammerBroBoss)
     return True
 
@@ -219,9 +222,9 @@ def can_defeat_sewer_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_forest(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.geno):
+    if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.GENO):
         return inventory.has_item(Geno)
-    elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.hammerbro):
+    elif world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.HAMMER_BRO):
         return inventory.has_item(HammerBroBoss)
     return True
 
@@ -241,11 +244,11 @@ def can_defeat_forest_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_moleville_entrance(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.geno):
+    if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.GENO):
         return inventory.has_item(Geno)
-    elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.forest):
+    elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.FOREST):
         return can_defeat_forest_boss(world, inventory)
-    elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.bowyer):
+    elif world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOWYER):
         return inventory.has_item(BowyerBoss)
     return True
 
@@ -319,19 +322,19 @@ def can_defeat_second_moleville_boss(world: GameWorld, inventory: Inventory) -> 
 
 
 def can_access_tower(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.mario):
+    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):
         return inventory.has_item(Mario)
-    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.mallow):
+    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW):
         return inventory.has_item(Mallow)
-    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.geno):
+    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
         return inventory.has_item(Geno)
-    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.bowser):
+    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.BOWSER):
         return inventory.has_item(Bowser)
-    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.toadstool):
+    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
         return inventory.has_item(Toadstool)
-    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.mines):
+    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MINES):
         return can_defeat_second_moleville_boss(world, inventory)
-    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.punchinello):
+    elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.PUNCHINELLO):
         return inventory.has_item(PunchinelloBoss)
     return True
 
@@ -378,9 +381,9 @@ def can_defeat_balcony_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_chapel(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.tower):
+    if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.TOWER):
         return can_defeat_balcony_boss(world, inventory)
-    elif world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.kggg):
+    elif world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.KGGG):
         return inventory.has_item(GrateGuyBoss)
     return True
 
@@ -418,11 +421,11 @@ def can_defeat_chapel_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_sea(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(SeaGate, SeaGating.toadstool):
+    if world.settings.is_flag_value(SeaGate, SeaGating.TOADSTOOL):
         return inventory.has_item(Toadstool)
-    elif world.settings.is_flag_value(SeaGate, SeaGating.star4):
+    elif world.settings.is_flag_value(SeaGate, SeaGating.STAR_4):
         return inventory.has_item_count(StarPiece, 4)
-    elif world.settings.is_flag_value(SeaGate, SeaGating.bundt):
+    elif world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
         return inventory.has_item(BundtBoss)
     return True
 
@@ -474,9 +477,9 @@ def can_access_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
         ],
         2,
     )
-    if world.settings.is_flag_value(YaridovichGate, YaridovichGating.ship):
+    if world.settings.is_flag_value(YaridovichGate, YaridovichGating.SHIP):
         return can_defeat_ship_boss(world, inventory) and sufficient_bosses
-    elif world.settings.is_flag_value(YaridovichGate, YaridovichGating.johnny):
+    elif world.settings.is_flag_value(YaridovichGate, YaridovichGating.JOHNNY):
         return inventory.has_item(JohnnyBoss) and sufficient_bosses
     return sufficient_bosses
 
@@ -510,9 +513,9 @@ def can_defeat_lands_end_cloud_boss(world: GameWorld, inventory: Inventory) -> b
 
 
 def can_access_temple(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.seaside):
+    if world.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.SEASIDE):
         return can_defeat_seaside_boss(world, inventory)
-    elif world.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.yarid):
+    elif world.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.YARID):
         return inventory.has_item(YaridovichBoss)
     return True
 
@@ -561,9 +564,9 @@ def can_defeat_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_monstro_town(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.landsend):
+    if world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.LANDS_END):
         return can_defeat_temple_boss(world, inventory)
-    elif world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.belome2):
+    elif world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.BELOME_2):
         return inventory.has_item(Belome2Boss)
     return True
 
@@ -667,6 +670,7 @@ def can_defeat_statue_boss(world: GameWorld, inventory: Inventory) -> bool:
     )
 
 
+# pylint: disable=W0613
 def can_access_inner_nimbus(world: GameWorld, inventory: Inventory) -> bool:
     return inventory.has_item(CastleKey1)
 
@@ -726,9 +730,9 @@ def can_defeat_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_volcano(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.nimbus):
+    if world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.NIMBUS):
         return can_defeat_nimbus_boss(world, inventory)
-    elif world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.valentina):
+    elif world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA):
         return inventory.has_item(ValentinaBoss)
     return True
 
@@ -781,11 +785,11 @@ def can_take_lategame_bosses(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_keep(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.volcano):
+    if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.VOLCANO):
         return can_defeat_volcano_boss(world, inventory)
-    elif world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.star6):
+    elif world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6):
         return inventory.has_item_count(StarPiece, 6)
-    elif world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.axem):
+    elif world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.AXEM):
         return inventory.has_item(AxemRangersBoss)
     return True
 
@@ -839,11 +843,11 @@ def can_defeat_keep_exit_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(FactoryGate, FactoryGating.star6):
+    if world.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
         return inventory.has_item_count(StarPiece, 6) and can_defeat_keep_exit_boss(
             world, inventory
         )
-    elif world.settings.is_flag_value(FactoryGate, FactoryGating.exor):
+    elif world.settings.is_flag_value(FactoryGate, FactoryGating.EXOR):
         return inventory.has_item(ExorBoss) and can_defeat_keep_exit_boss(
             world, inventory
         )
@@ -933,9 +937,9 @@ def can_defeat_inner_factory_fourth_boss(
 def can_access_inner_factory_final_boss(world: GameWorld, inventory: Inventory) -> bool:
     value = world.settings.get_flag(StarPiecesRequired).value
     has_stars = inventory.has_item_count(StarPiece, value)
-    if world.settings.is_flag_value(FireworksSetting, FireworksOptions.shuffle1):
+    if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
         fireworks_access = inventory.has_item(Fireworks)
-    elif world.settings.is_flag_value(FireworksSetting, FireworksOptions.progressive):
+    elif world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
         fireworks_access = inventory.has_item_count(ProgressiveFireworks, 3)
     else:
         fireworks_access = True
@@ -969,11 +973,11 @@ def can_access_sealed_door_boss(world: GameWorld, inventory: Inventory) -> bool:
         world, inventory
     )
     item_reqs: bool = False
-    if world.settings.is_flag_value(FireworksSetting, FireworksOptions.shuffle1):
+    if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
         item_reqs = inventory.has_item(Fireworks) and can_defeat_second_moleville_boss(
             world, inventory
         )
-    elif world.settings.is_flag_value(FireworksSetting, FireworksOptions.progressive):
+    elif world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
         item_reqs = inventory.has_item_count(ProgressiveFireworks, 2)
     else:
         item_reqs = can_defeat_second_moleville_boss(world, inventory)
@@ -994,10 +998,10 @@ def can_access_invisible_flags(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_access_pipe_vault(world: GameWorld, inventory: Inventory) -> bool:
-    if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.geno):
+    if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.GENO):
         return inventory.has_item(Geno)
-    elif world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.forest):
+    elif world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.FOREST):
         return can_defeat_forest_boss(world, inventory)
-    elif world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.bowyer):
+    elif world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.BOWYER):
         return inventory.has_item(BowyerBoss)
     return True

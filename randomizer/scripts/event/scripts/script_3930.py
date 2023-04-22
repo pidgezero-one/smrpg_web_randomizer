@@ -1,4 +1,6 @@
-# E3930_MARRYMORE_GEAR_PRELOADER
+# pylint: disable=C0301
+
+"""E3930_MARRYMORE_GEAR_PRELOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -27,7 +29,7 @@ script = EventScript(
             target=NPC_7,
             subscript=[
                 ASTransferToXYZF(x=22, y=73, z=2, direction=EAST),
-                ASShiftSoutheastPixels(5),
+                ASWalkSoutheastPixels(5),
                 ASFaceNortheast(),
             ],
         ),

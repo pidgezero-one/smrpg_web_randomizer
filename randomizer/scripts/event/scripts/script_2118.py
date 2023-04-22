@@ -1,4 +1,6 @@
-# E2118_INITIATE_STATUE_POLISHER_MANUAL_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E2118_INITIATE_STATUE_POLISHER_MANUAL_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 

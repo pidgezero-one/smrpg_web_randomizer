@@ -1,4 +1,6 @@
-# E0165_FREESTANDING_GRANT_ITEM_BAG
+# pylint: disable=C0301
+
+"""E0165_FREESTANDING_GRANT_ITEM_BAG"""
 
 from randomizer.scripts.event.script_imports import *
 

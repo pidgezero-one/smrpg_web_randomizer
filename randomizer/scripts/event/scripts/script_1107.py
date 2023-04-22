@@ -1,4 +1,6 @@
-# E1107_TADPOLE_BRIDGE_JUMPING
+# pylint: disable=C0301
+
+"""E1107_TADPOLE_BRIDGE_JUMPING"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,14 +21,18 @@ script = EventScript(
         Jmp(["EVENT_1107_set_7000_to_object_coord_10"]),
         Set7000ToTappedButton(identifier="EVENT_1107_set_7000_to_tapped_button_2"),
         Pause(1),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1107_set_7000_to_pressed_button_6"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1107_set_7000_to_pressed_button_6"]
+        ),
         Jmp(["EVENT_1107_set_7000_to_tapped_button_2"]),
         Set7000ToPressedButton(identifier="EVENT_1107_set_7000_to_pressed_button_6"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1107_set_7000_to_object_coord_10"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1107_action_queue_async_14"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1107_set_7000_to_object_coord_10"]
+        ),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1107_action_queue_async_14"]),
         Jmp(["EVENT_1107_action_queue_async_18"]),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_X,
             pixel=True,
             bit_7=True,
@@ -43,7 +49,7 @@ script = EventScript(
                 ASPause(1),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(80),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASShadowOff(),
                 ASPause(1),
@@ -61,7 +67,7 @@ script = EventScript(
                 ASShadowOn(),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(80),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASPause(1),
                 ASFaceSouthwest(),
@@ -71,7 +77,7 @@ script = EventScript(
             ],
             identifier="EVENT_1107_action_queue_async_14",
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 12, ["EVENT_1105_action_queue_sync_49"]),
         Jmp(["EVENT_1107_set_7000_to_tapped_button_2"]),
         ActionQueueAsync(
@@ -90,7 +96,7 @@ script = EventScript(
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(128),
-                ASShiftNortheastSteps(3),
+                ASWalkNortheastSteps(3),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASPause(1),
                 ASFaceNortheast(),
@@ -105,7 +111,7 @@ script = EventScript(
                 ASShadowOn(),
                 ASSetWalkingSpeed(NORMAL),
                 ASFaceNortheast(),
-                ASShiftNortheastPixels(22),
+                ASWalkNortheastPixels(22),
                 ASReturn(),
             ],
         ),

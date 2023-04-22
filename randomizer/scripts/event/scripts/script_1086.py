@@ -1,4 +1,6 @@
-# E1086_MELODY_BAY_SWIM_ANIMATION
+# pylint: disable=C0301
+
+"""E1086_MELODY_BAY_SWIM_ANIMATION"""
 
 from randomizer.scripts.event.script_imports import *
 

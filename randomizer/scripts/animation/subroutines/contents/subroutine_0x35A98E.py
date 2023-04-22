@@ -1,4 +1,6 @@
-# referenced by ally_spells Psych Bomb, ally_spells Bowser Crush
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Psych Bomb, ally_spells Bowser Crush"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -130,7 +132,7 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x35aa92"),
         SetAMEM8BitTo7E1x(0x6E, 0x7EE020),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 2, ["command_0x35aa92"]),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         MoveObject(
             speed=1,
             start_position=768,
@@ -151,7 +153,7 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitTo7E1x(0x6C, 0x7EE020),
         JmpIfAMEM8BitNotEqualsConst(0x6C, 20, ["command_0x35aaaf"]),
         ResetObjectMappingMemory(),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         ClearEffectIndex(),
         SetAMEM8BitToConst(0x6D, 30),
         Set7E1xToAMEM8Bit(0x7EE020, 0x6D),

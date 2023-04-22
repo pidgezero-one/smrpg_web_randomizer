@@ -1,4 +1,6 @@
-# E1553_FOREST_TREE_TRUNK_AREA_LOADER_CONTD
+# pylint: disable=C0301
+
+"""E1553_FOREST_TREE_TRUNK_AREA_LOADER_CONTD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -42,6 +44,7 @@ script = EventScript(
         JmpIfComparisonResultIsLesser(["EVENT_1553_jmp_if_7000_all_bits_clear_37"]),
         SetBit(TEMP_7044_6),
         JmpIf7000AllBitsClear(
+            bits=[],
             destinations=["EVENT_1553_jmp_if_bit_clear_39"],
             identifier="EVENT_1553_jmp_if_7000_all_bits_clear_37",
         ),

@@ -1,4 +1,4 @@
-# ENT0002_LONG_JUMP
+"""ENT0002_LONG_JUMP animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

@@ -1,4 +1,6 @@
-# E2339_TOWER_FIRST_STAIRCASE_CONTROLS_NPC_BEHIND_CURTAIN
+# pylint: disable=C0301
+
+"""E2339_TOWER_FIRST_STAIRCASE_CONTROLS_NPC_BEHIND_CURTAIN"""
 
 from randomizer.scripts.event.script_imports import *
 

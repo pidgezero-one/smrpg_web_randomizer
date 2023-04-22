@@ -1,4 +1,6 @@
-# E2387_BEAN_VALLEY_BOSS_PRIZE_PICKUP
+# pylint: disable=C0301
+
+"""E2387_BEAN_VALLEY_BOSS_PRIZE_PICKUP"""
 
 from randomizer.scripts.event.script_imports import *
 

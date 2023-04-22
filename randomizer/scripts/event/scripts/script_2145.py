@@ -1,4 +1,6 @@
-# E2145_KEEP_DONUT_BRIDGE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2145_KEEP_DONUT_BRIDGE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -40,27 +42,27 @@ script = EventScript(
             target=NPC_5,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestPixels(14),
-                ASShiftSoutheastPixels(8),
+                ASWalkSouthwestPixels(14),
+                ASWalkSoutheastPixels(8),
             ],
         ),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestPixels(14),
-                ASShiftSoutheastPixels(8),
+                ASWalkSouthwestPixels(14),
+                ASWalkSoutheastPixels(8),
             ],
         ),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestPixels(14),
-                ASShiftSoutheastPixels(8),
+                ASWalkSouthwestPixels(14),
+                ASWalkSoutheastPixels(8),
             ],
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000, 16, ["EVENT_2145_fade_in_from_black_async_14"]
         ),

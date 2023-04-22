@@ -1,4 +1,6 @@
-# E1307_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER
+# pylint: disable=C0301
+
+"""E1307_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,15 +12,15 @@ script = EventScript(
         Pause(1),
         CreatePacketAtObjectCoords(
             packet=P034_GREY_EXPLOSION_SFX,
-            object=MARIO,
+            target_npc=MARIO,
             destinations=["EVENT_1307_jmp_if_bit_set_0"],
         ),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
                 ASTransferToXYZF(x=25, y=33, z=0, direction=EAST),
-                ASShiftSoutheastPixels(8),
-                ASShiftSouthwestPixels(8),
+                ASWalkSoutheastPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASSetSequenceSpeed(FAST),
                 ASSetSpriteSequence(index=8, is_sequence=True, looping=True),
                 ASSetPriority(3),

@@ -1,4 +1,6 @@
-# E3337_CORKPEDITE_ANIMATION
+# pylint: disable=C0301
+
+"""E3337_CORKPEDITE_ANIMATION"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -21,8 +23,8 @@ script = EventScript(
                 ASDb(bytearray(b"\xfd\x9c\x15")),
                 ASSetWalkingSpeed(FAST),
                 ASStartLoopNTimes(23),
-                ASShiftNorthPixels(2),
-                ASShiftSouthPixels(2),
+                ASWalkNorthPixels(2),
+                ASWalkSouthPixels(2),
                 ASEndLoop(),
                 ASSetWalkingSpeed(NORMAL),
             ],

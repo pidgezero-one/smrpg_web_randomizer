@@ -1,4 +1,6 @@
-# E0013_BASE_ROM_ONLY_FIX_MAP_AND_PARTY
+# pylint: disable=C0301
+
+"""E0013_BASE_ROM_ONLY_FIX_MAP_AND_PARTY"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1072_MELODY_BAY_LOADER
+# pylint: disable=C0301
+
+"""E1072_MELODY_BAY_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -14,7 +16,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASSequenceLoopingOn(),
-                ASShiftSouthwestPixels(6),
+                ASWalkSouthwestPixels(6),
             ],
         ),
         JmpIfBitClear(MELODY_BAY_ITEM_1_GRANTED, ["EVENT_1072_clear_bit_14"]),
@@ -35,8 +37,8 @@ script = EventScript(
             target=NPC_8,
             subscript=[
                 ASShiftToXYCoords(x=15, y=27),
-                ASShiftSoutheastPixels(6),
-                ASShiftSouthwestPixels(6),
+                ASWalkSoutheastPixels(6),
+                ASWalkSouthwestPixels(6),
                 ASSequenceLoopingOn(),
                 ASSetSequenceSpeed(SLOW),
                 ASFaceSouthwest(),

@@ -1,4 +1,6 @@
-# E2618_FACTORY_2ND_BOSS
+# pylint: disable=C0301
+
+"""E2618_FACTORY_2ND_BOSS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -41,7 +43,7 @@ script = EventScript(
             target=NPC_15,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASSetSpriteSequence(
                     index=2,
                     is_mold=True,
@@ -49,7 +51,7 @@ script = EventScript(
                     looping=True,
                     mirror_sprite=True,
                 ),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -63,7 +65,7 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASResetProperties(),
                 ASSequenceLoopingOn(),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASFaceSouthwest(),
             ],
         ),
@@ -75,9 +77,9 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASResetProperties(),
                 ASSequenceLoopingOn(),
-                ASShiftNortheastPixels(6),
+                ASWalkNortheastPixels(6),
                 ASWalk1StepSoutheast(),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
             ],
         ),
@@ -89,9 +91,9 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASResetProperties(),
                 ASSequenceLoopingOn(),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASWalk1StepSouthwest(),
-                ASShiftSouthwestPixels(4),
+                ASWalkSouthwestPixels(4),
             ],
         ),
         SetSyncActionScript(NPC_12, A0401_SEQUENCE_LOOPING_OFF),
@@ -115,13 +117,13 @@ script = EventScript(
             ],
         ),
         ActionQueueSync(
-            target=NPC_12, subscript=[ASWalk1StepSoutheast(), ASShiftSoutheastPixels(8)]
+            target=NPC_12, subscript=[ASWalk1StepSoutheast(), ASWalkSoutheastPixels(8)]
         ),
         ActionQueueSync(
             target=NPC_13,
             subscript=[
                 ASWalk1StepSouthwest(),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASFaceSoutheast(),
             ],
         ),
@@ -130,7 +132,7 @@ script = EventScript(
             subscript=[
                 ASWalk1StepNortheast(),
                 ASWalk1StepNorthwest(),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASFaceSoutheast(),
             ],
         ),
@@ -138,12 +140,12 @@ script = EventScript(
             target=NPC_15,
             subscript=[
                 ASWalk1StepSoutheast(),
-                ASShiftSoutheastPixels(8),
+                ASWalkSoutheastPixels(8),
                 ASSetSpriteSequence(
                     index=2, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASWalk1StepNortheast(),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASSetSpriteSequence(
                     index=0,
                     is_mold=True,
@@ -157,17 +159,17 @@ script = EventScript(
             target=NPC_15, subscript=[ASSetWalkingSpeed(FAST), ASWalk1StepSoutheast()]
         ),
         ActionQueueSync(
-            target=NPC_12, subscript=[ASSetWalkingSpeed(FAST), ASShiftSoutheastSteps(4)]
+            target=NPC_12, subscript=[ASSetWalkingSpeed(FAST), ASWalkSoutheastSteps(4)]
         ),
         ActionQueueSync(
-            target=NPC_13, subscript=[ASSetWalkingSpeed(FAST), ASShiftSoutheastSteps(4)]
+            target=NPC_13, subscript=[ASSetWalkingSpeed(FAST), ASWalkSoutheastSteps(4)]
         ),
         ActionQueueSync(
-            target=NPC_14, subscript=[ASSetWalkingSpeed(FAST), ASShiftSoutheastSteps(4)]
+            target=NPC_14, subscript=[ASSetWalkingSpeed(FAST), ASWalkSoutheastSteps(4)]
         ),
         ActionQueueSync(
             target=NPC_15,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASShiftSoutheastSteps(2)],
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkSoutheastSteps(2)],
         ),
         Pause(24),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),

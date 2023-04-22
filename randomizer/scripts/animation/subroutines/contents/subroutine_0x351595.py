@@ -1,4 +1,6 @@
-# referenced by monster_attacks Gnight, monster_attacks Backfire, monster_attacks IronMaiden, monster_attacks InkBlast, monster_attacks VenomDrool, monster_attacks MushFunk, monster_attacks PhysicalAttack46, monster_attacks PhysicalAttack50, monster_attacks EerieJig, monster_attacks PhysicalAttack40, monster_attacks 118, behaviour_22_0x350A3E, monster_attacks SomnusWaltz, monster_attacks 116, behaviour_7_0x350796, behaviour_31_0x350BFD, monster_attacks SpritzBomb, monster_attacks Stench, monster_attacks VaVaVoom, monster_attacks PhysicalAttack8, behaviour_15_0x35091C, behaviour_40_0x350DA3, behaviour_50_0x350F4A, monster_attacks Endobubble, monster_attacks PhysicalAttack6
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Gnight, monster_attacks Backfire, monster_attacks IronMaiden, monster_attacks InkBlast, monster_attacks VenomDrool, monster_attacks MushFunk, monster_attacks PhysicalAttack46, monster_attacks PhysicalAttack50, monster_attacks EerieJig, monster_attacks PhysicalAttack40, monster_attacks 118, behaviour_22_0x350A3E, monster_attacks SomnusWaltz, monster_attacks 116, behaviour_7_0x350796, behaviour_31_0x350BFD, monster_attacks SpritzBomb, monster_attacks Stench, monster_attacks VaVaVoom, monster_attacks PhysicalAttack8, behaviour_15_0x35091C, behaviour_40_0x350DA3, behaviour_50_0x350F4A, monster_attacks Endobubble, monster_attacks PhysicalAttack6"""
 
 from randomizer.scripts.animation.script_imports import *
 

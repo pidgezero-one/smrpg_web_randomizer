@@ -1,4 +1,6 @@
-# E3326_STUMPET_ERUPTION
+# pylint: disable=C0301
+
+"""E3326_STUMPET_ERUPTION"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -57,8 +59,8 @@ script = EventScript(
             subscript=[
                 ASDb(bytearray(b"\xfd\x9c\x15")),
                 ASStartLoopNTimes(33),
-                ASShiftNorthPixels(1),
-                ASShiftSouthPixels(1),
+                ASWalkNorthPixels(1),
+                ASWalkSouthPixels(1),
                 ASEndLoop(),
             ],
         ),

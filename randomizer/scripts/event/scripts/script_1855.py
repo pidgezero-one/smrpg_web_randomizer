@@ -1,4 +1,6 @@
-# E1855_KEEP_DONKEY_ROOM_BARREL
+# pylint: disable=C0301
+
+"""E1855_KEEP_DONKEY_ROOM_BARREL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,7 +24,7 @@ script = EventScript(
                 ASWalk1StepSouth(
                     identifier="EVENT_1855_action_queue_async_1_SUBSCRIPT_walk_1_step_south_7"
                 ),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True),
                 ASJmpIfVarNotEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,

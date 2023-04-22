@@ -1,4 +1,6 @@
-# E3227_SHIP_CLONE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3227_SHIP_CLONE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
             R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM,
             ["EVENT_3227_run_event_as_subroutine_32"],
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000, 16, ["EVENT_3227_run_background_event_4"]
         ),

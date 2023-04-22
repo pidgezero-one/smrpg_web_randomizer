@@ -1,4 +1,6 @@
-# E2051_MONSTRO_SHOP_LOADER
+# pylint: disable=C0301
+
+"""E2051_MONSTRO_SHOP_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,8 +11,8 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(NORMAL),
                 ASSequenceLoopingOn(),
-                ASShiftSoutheastPixels(8),
-                ASShiftNortheastPixels(2),
+                ASWalkSoutheastPixels(8),
+                ASWalkNortheastPixels(2),
                 ASFaceSouthwest(),
                 ASSequenceLoopingOn(),
                 ASVisibilityOn(),
@@ -23,8 +25,8 @@ script = EventScript(
                 ASFloatingOff(),
                 ASSetSequenceSpeed(NORMAL),
                 ASSequenceLoopingOn(),
-                ASShiftSoutheastPixels(12),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(12),
+                ASWalkSouthwestPixels(4),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASShadowOff(),
@@ -37,8 +39,8 @@ script = EventScript(
                 ASFloatingOff(),
                 ASSetSequenceSpeed(NORMAL),
                 ASSequenceLoopingOn(),
-                ASShiftSoutheastPixels(8),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(8),
+                ASWalkSouthwestPixels(4),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASShadowOff(),
@@ -51,8 +53,8 @@ script = EventScript(
                 ASFloatingOff(),
                 ASSetSequenceSpeed(NORMAL),
                 ASSequenceLoopingOn(),
-                ASShiftSoutheastPixels(4),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(4),
+                ASWalkSouthwestPixels(4),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASShadowOff(),

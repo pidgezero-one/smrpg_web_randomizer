@@ -1,10 +1,16 @@
-# E3333_VOLCANO_GENERIC_LOADER_2
+# pylint: disable=C0301
+
+"""E3333_VOLCANO_GENERIC_LOADER_2"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 50, identifier="EVENT_3333_set_0"),
+        SetVarToConst(
+            CURRENT_OVERWORLD_MARKER_ID,
+            OW50_BARREL_VOLCANO,
+            identifier="EVENT_3333_set_0",
+        ),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         Set7000ToCurrentLevel(),
         JmpIfVarNotEqualsConst(
@@ -28,7 +34,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASTransferToObjectXY(MARIO),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASFaceEast7C(),
                 ASPause(1),
             ],

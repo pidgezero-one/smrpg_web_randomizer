@@ -1,4 +1,6 @@
-# E3365_KEEP_LOGIC_GAME_FINALIZE_ANSWER
+# pylint: disable=C0301
+
+"""E3365_KEEP_LOGIC_GAME_FINALIZE_ANSWER"""
 
 from randomizer.scripts.event.script_imports import *
 

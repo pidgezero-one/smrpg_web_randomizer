@@ -1,4 +1,6 @@
-# E3642_NIMBUS_EXTERIOR_OCCUPIED_LOADER
+# pylint: disable=C0301
+
+"""E3642_NIMBUS_EXTERIOR_OCCUPIED_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -39,7 +41,7 @@ script = EventScript(
                 ASJumpToHeight(132),
                 ASWalk1StepNortheast(),
                 ASFloatingOn(),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
             ],
         ),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

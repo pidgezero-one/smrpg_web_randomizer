@@ -1,4 +1,6 @@
-# E1919_ABYSS_BIG_CONVEYOR_PLATFORM
+# pylint: disable=C0301
+
+"""E1919_ABYSS_BIG_CONVEYOR_PLATFORM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,7 +15,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftNorthwestSteps(8),
+                ASWalkNorthwestSteps(8),
             ],
         ),
         JmpToSubroutine(["EVENT_1919_enable_controls_until_return_11"]),
@@ -21,7 +23,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftSoutheastSteps(8),
+                ASWalkSoutheastSteps(8),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
             ],
         ),
@@ -32,7 +34,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSoutheastSteps(8),
+                ASWalkSoutheastSteps(8),
             ],
             identifier="EVENT_1919_action_queue_async_7",
         ),
@@ -41,7 +43,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(FAST),
-                ASShiftNorthwestSteps(8),
+                ASWalkNorthwestSteps(8),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
             ],
         ),

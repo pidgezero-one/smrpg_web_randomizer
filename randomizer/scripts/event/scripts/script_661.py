@@ -1,4 +1,6 @@
-# E0661_BOWSERS_KEEP_BUTTON_ROOM_FORFEIT
+# pylint: disable=C0301
+
+"""E0661_BOWSERS_KEEP_BUTTON_ROOM_FORFEIT"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E2090_MONSTRO_ENTRANCE_LOADER
+# pylint: disable=C0301
+
+"""E2090_MONSTRO_ENTRANCE_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,13 +10,13 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_0,
             subscript=[
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
             ],
         ),
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASShiftNortheastPixels(6), ASFaceSouthwest(), ASPause(1)],
+            subscript=[ASWalkNortheastPixels(6), ASFaceSouthwest(), ASPause(1)],
         ),
         FadeInFromBlack(sync=False),
         JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_2090_ret_26"]),

@@ -1,4 +1,6 @@
-# E0297_MUSHROOM_KINGDOM_RUNNING_KID
+# pylint: disable=C0301
+
+"""E0297_MUSHROOM_KINGDOM_RUNNING_KID"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -35,10 +37,10 @@ script = EventScript(
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 191, ["EVENT_297_set_7000_to_object_coord_25"]
         ),
-        Set7000ToObjectCoord(object=NPC_6, coord=COORD_F, pixel=True),
+        Set7000ToObjectCoord(target_npc=NPC_6, coord=COORD_F, pixel=True),
         Jmp(["EVENT_297_set_7000_short_mem_to_7000_26"]),
         Set7000ToObjectCoord(
-            object=NPC_7,
+            target_npc=NPC_7,
             coord=COORD_F,
             pixel=True,
             identifier="EVENT_297_set_7000_to_object_coord_25",
@@ -103,7 +105,7 @@ script = EventScript(
                     identifier="EVENT_297_action_queue_async_27_SUBSCRIPT_turn_clockwise_45_degrees_n_times_19",
                 ),
                 ASPause(2),
-                ASSet700CToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     7,

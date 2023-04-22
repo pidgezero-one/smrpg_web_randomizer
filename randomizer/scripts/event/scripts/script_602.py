@@ -1,4 +1,6 @@
-# E0602_MARRYMORE_INN_MANAGER
+# pylint: disable=C0301
+
+"""E0602_MARRYMORE_INN_MANAGER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -101,9 +103,9 @@ script = EventScript(
                 ASPause(30),
                 ASSetSequenceSpeed(FAST),
                 ASFixedFCoordOff(),
-                ASShiftNortheastSteps(2),
-                ASShiftSoutheastSteps(4),
-                ASShiftSouthwestSteps(2),
+                ASWalkNortheastSteps(2),
+                ASWalkSoutheastSteps(4),
+                ASWalkSouthwestSteps(2),
                 ASSetSequenceSpeed(SLOW),
             ],
         ),
@@ -117,7 +119,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASWalk1StepNorthwest(),
                 ASWalkToXYCoords(x=6, y=61),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(SLOW),
             ],
@@ -172,7 +174,7 @@ script = EventScript(
             ["EVENT_602_run_dialog_157"],
             identifier="EVENT_602_jmp_if_bit_set_137",
         ),
-        Set7000ToObjectCoord(object=NPC_1, coord=COORD_F, pixel=True),
+        Set7000ToObjectCoord(target_npc=NPC_1, coord=COORD_F, pixel=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_602_run_dialog_162"]),
         CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),
         Dec(PRIMARY_TEMP_7000),

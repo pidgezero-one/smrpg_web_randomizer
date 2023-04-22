@@ -1,4 +1,6 @@
-# E1702_BANDITS_WAY_2_LOADER
+# pylint: disable=C0301
+
+"""E1702_BANDITS_WAY_2_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,7 +14,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASFixedFCoordOn(),
-                ASShiftWestPixels(8),
+                ASWalkWestPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -21,7 +23,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASFixedFCoordOn(),
-                ASShiftEastPixels(8),
+                ASWalkEastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -30,7 +32,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASFixedFCoordOn(),
-                ASShiftWestPixels(8),
+                ASWalkWestPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -39,7 +41,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASFixedFCoordOn(),
-                ASShiftEastPixels(8),
+                ASWalkEastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -48,7 +50,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASFixedFCoordOn(),
-                ASShiftEastPixels(24),
+                ASWalkEastPixels(24),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -57,7 +59,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASFixedFCoordOn(),
-                ASShiftEastPixels(8),
+                ASWalkEastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -107,7 +109,7 @@ script = EventScript(
             subscript=[
                 ASSequenceLoopingOn(),
                 ASSetAllSpeeds(FAST),
-                ASShiftNortheastSteps(2),
+                ASWalkNortheastSteps(2),
                 ASWalk1StepSoutheast(),
                 ASSetVRAMPriority(PRIORITY_3),
                 ASSetPriority(3),
@@ -116,15 +118,15 @@ script = EventScript(
                 ASPause(13),
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASJumpToHeight(144),
-                ASShiftNortheastSteps(4),
-                ASShiftNortheastPixels(16),
+                ASWalkNortheastSteps(4),
+                ASWalkNortheastPixels(16),
                 ASFaceSoutheast(),
                 ASFixedFCoordOn(),
                 ASPause(10),
-                ASShiftEastPixels(50),
+                ASWalkEastPixels(50),
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASJumpToHeight(80),
-                ASShiftEastPixels(40),
+                ASWalkEastPixels(40),
                 ASPause(
                     1, identifier="EVENT_1702_action_queue_sync_28_SUBSCRIPT_pause_20"
                 ),
@@ -134,7 +136,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASJumpToHeight(128),
-                ASShiftEastSteps(4),
+                ASWalkEastSteps(4),
                 ASVisibilityOff(),
             ],
         ),
@@ -158,12 +160,12 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNortheastSteps(5),
+                ASWalkNortheastSteps(5),
                 ASPause(20),
-                ASShiftEastSteps(4),
+                ASWalkEastSteps(4),
                 ASPause(80),
-                ASShiftWestSteps(4),
-                ASShiftSouthwestSteps(5),
+                ASWalkWestSteps(4),
+                ASWalkSouthwestSteps(5),
                 ASSetWalkingSpeed(VERY_FAST),
             ],
         ),

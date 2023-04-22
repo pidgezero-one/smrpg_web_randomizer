@@ -1,4 +1,6 @@
-# E3601_MUSHROOM_DERBY_YOSHI_AUTOPLAY
+# pylint: disable=C0301
+
+"""E3601_MUSHROOM_DERBY_YOSHI_AUTOPLAY"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,8 +32,8 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASShiftSoutheastSteps(3),
-                ASShiftNortheastSteps(1),
+                ASWalkSoutheastSteps(3),
+                ASWalkNortheastSteps(1),
                 ASWalkToXYCoords(x=13, y=84),
                 ASFaceNorthwest(),
             ],
@@ -42,7 +44,7 @@ script = EventScript(
             bit_7=True,
         ),
         Pause(1, identifier="EVENT_3601_pause_18"),
-        JmpIfAudioMemoryEquals(["3"], ["EVENT_3601_pause_18"]),
+        JmpIfAudioMemoryEquals(3, ["EVENT_3601_pause_18"]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -60,7 +62,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASResetProperties(),
-                ASShiftNortheastSteps(5),
+                ASWalkNortheastSteps(5),
                 ASFaceWest(),
             ],
         ),
@@ -80,7 +82,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
                 ASSequenceLoopingOn(),
-                ASShiftNortheastSteps(5),
+                ASWalkNortheastSteps(5),
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
                 ASFaceWest(),
@@ -103,7 +105,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
                 ASSequenceLoopingOn(),
-                ASShiftNortheastSteps(4),
+                ASWalkNortheastSteps(4),
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
                 ASFaceWest(),

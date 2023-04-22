@@ -1,4 +1,6 @@
-# E0933_FAT_YOSHI_PRESENT_GENERATOR
+# pylint: disable=C0301
+
+"""E0933_FAT_YOSHI_PRESENT_GENERATOR"""
 
 from randomizer.scripts.event.script_imports import *
 

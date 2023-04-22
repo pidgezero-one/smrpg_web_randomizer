@@ -1,4 +1,6 @@
-# referenced by behaviour_11_0x35086A, behaviour_10_0x350830, behaviour_3_0x350669, behaviour_2_0x350635, behaviour_4_0x3506A7
+# pylint: disable=C0301,C0103
+
+"""referenced by behaviour_11_0x35086A, behaviour_10_0x350830, behaviour_3_0x350669, behaviour_2_0x350635, behaviour_4_0x3506A7"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -16,7 +18,7 @@ script = SubroutineOrBanklessScript(
             end_position=0,
             apply_to_z=True,
             should_set_start_position=True,
-            set_end_position=True,
+            should_set_end_position=True,
             should_set_speed=True,
         ),
         Db(bytearray(b"\x12\x81")),
@@ -30,7 +32,11 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b">")),
         SpriteSequence(sequence=13, looping_off=True),
         MoveObject(
-            speed=1, start_position=256, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=256,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,
@@ -49,7 +55,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=8),
         ResetObjectMappingMemory(),
@@ -66,7 +76,11 @@ script = SubroutineOrBanklessScript(
             store_palette=True,
         ),
         MoveObject(
-            speed=1, start_position=256, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=256,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,
@@ -85,7 +99,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=8),
         ResetObjectMappingMemory(),
@@ -108,7 +126,11 @@ script = SubroutineOrBanklessScript(
             store_palette=True,
         ),
         MoveObject(
-            speed=1, start_position=256, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=256,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=1,
@@ -127,7 +149,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=8),
         ResetObjectMappingMemory(),

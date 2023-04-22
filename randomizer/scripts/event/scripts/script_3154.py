@@ -1,4 +1,6 @@
-# E3154_RESUMMON_ROSE_WAY_NPCS
+# pylint: disable=C0301
+
+"""E3154_RESUMMON_ROSE_WAY_NPCS"""
 
 from randomizer.scripts.event.script_imports import *
 

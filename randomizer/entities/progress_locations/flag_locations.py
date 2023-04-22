@@ -153,7 +153,7 @@ from randomizer.types.world.flags.flags import BowserDoorRequirements
 
 
 class MariosPadBed(MariosPadLocation, InvisibleItemCandidate):
-    _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MariosPadBed
+    _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_BED
     _original_item: Type[Item] = DryBonesFlag
     _room_ids: List[int] = [R189_MARIOS_PIPEHOUSE]
     _x_coord: int = 3
@@ -164,7 +164,7 @@ class MariosPadBed(MariosPadLocation, InvisibleItemCandidate):
 
 
 class RoseTownSign(RoseTownLocation, InvisibleItemCandidate):
-    _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.RoseTownFlag
+    _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_TOWN_FLAG
     _original_item: Type[Item] = GreaperFlag
     _room_ids: List[int] = [
         R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
@@ -178,7 +178,7 @@ class RoseTownSign(RoseTownLocation, InvisibleItemCandidate):
 
 
 class YosterIsleGoal(YosterIsleLocation, InvisibleItemCandidate):
-    _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.YosterIsleFlag
+    _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.YOSTER_ISLE_FLAG
     _original_item: Type[Item] = BigBooFlag
     _room_ids: List[int] = [R034_YOSTER_ISLE]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
@@ -605,7 +605,7 @@ class BoosterTowerDesk(BoosterTowerLocation, InvisibleItemCandidate):
         return InvisibleItemCandidate.can_access(self, BoosterTowerLocation, inventory)
 
 
-class BoosterTowerMasherRoom(BoosterTowerLocation, InvisibleItemCandidate):
+class BOOSTER_TOWER_MASHERRoom(BoosterTowerLocation, InvisibleItemCandidate):
     _room_ids: List[int] = [
         R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER
     ]
@@ -632,7 +632,7 @@ class BoosterTowerCurtain(BoosterTowerLocation, InvisibleItemCandidate):
         return InvisibleItemCandidate.can_access(self, BoosterTowerLocation, inventory)
 
 
-class BoosterTowerThwompInvisible(BoosterTowerLocation, InvisibleItemCandidate):
+class BOOSTER_TOWER_THWOMPInvisible(BoosterTowerLocation, InvisibleItemCandidate):
     _room_ids: List[int] = [
         R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER
     ]
@@ -753,7 +753,7 @@ class MarrymoreOrgan(MarrymoreChapelLocation, InvisibleItemCandidate):
         )
 
 
-class MarrymoreAltar(MarrymoreChapelLocation, InvisibleItemCandidate):
+class MARRYMORE_ALTAR(MarrymoreChapelLocation, InvisibleItemCandidate):
     _room_ids: List[int] = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,

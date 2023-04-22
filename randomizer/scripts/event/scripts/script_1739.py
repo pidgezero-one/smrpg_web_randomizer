@@ -1,4 +1,6 @@
-# E1739_REFOCUS_CAMERA
+# pylint: disable=C0301
+
+"""E1739_REFOCUS_CAMERA"""
 
 from randomizer.scripts.event.script_imports import *
 

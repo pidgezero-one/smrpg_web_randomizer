@@ -1,4 +1,6 @@
-from typing import List, Optional, Sequence, Union, cast
+"""Base classes for individual rooms in the game."""
+
+from typing import List, Optional, Type, Union, TypeVar, Generic
 from randomizer.types.battles.packs.constants.pack_ids import PACK0000_SNIFIT_FIGHT
 from randomizer.types.npcs.objects.classes import NPC, AreaNPC
 from randomizer.types.npcs.objects.enums import ShadowSize, VramStore
@@ -38,35 +40,43 @@ from randomizer.types.overworld_scripts.constants.classes import AreaObject, Dir
 
 
 class Buffer:
+    """Partition buffer, controls how sprites are loaded. Three to a partition"""
+
     _buffer_type: BufferType = BufferType.EMPTY_3
-    _main_buffer_space: BufferSpace = BufferSpace._0_BYTES
+    _main_buffer_space: BufferSpace = BufferSpace.BYTES_0
     _index_in_main_buffer: bool = True
 
     @property
     def buffer_type(self) -> BufferType:
+        """Buffer type"""
         return self._buffer_type
 
     def set_buffer_type(self, buffer_type: BufferType) -> None:
+        """Set buffer type"""
         self._buffer_type = buffer_type
 
     @property
     def main_buffer_space(self) -> BufferSpace:
+        """Buffer size"""
         return self._main_buffer_space
 
     def set_main_buffer_space(self, main_buffer_space: BufferSpace) -> None:
+        """Set buffer size"""
         self._main_buffer_space = main_buffer_space
 
     @property
     def index_in_main_buffer(self) -> bool:
+        """(unknown)"""
         return self._index_in_main_buffer
 
     def set_index_in_main_buffer(self, index_in_main_buffer: bool) -> None:
+        """(unknown)"""
         self._index_in_main_buffer = index_in_main_buffer
 
     def __init__(
         self,
         buffer_type=BufferType.EMPTY_3,
-        main_buffer_space=BufferSpace._0_BYTES,
+        main_buffer_space=BufferSpace.BYTES_0,
         index_in_main_buffer=True,
     ) -> None:
         self.set_buffer_type(buffer_type)
@@ -74,12 +84,13 @@ class Buffer:
         self.set_index_in_main_buffer(index_in_main_buffer)
 
     def __str__(self) -> str:
-
-        return "{}, {}, {}".format(
-            self.buffer_type, self.main_buffer_space, self.index_in_main_buffer
+        return (
+            f"{self.buffer_type}, {self.main_buffer_space}, {self.index_in_main_buffer}"
         )
 
     def is_same(self, buffer: "Buffer") -> bool:
+        """Compares this buffer to another buffer and returns true if all properties
+        are the same."""
         return (
             self.buffer_type == buffer.buffer_type
             and self.main_buffer_space == buffer.main_buffer_space
@@ -88,6 +99,8 @@ class Buffer:
 
 
 class Partition:
+    """Determines how NPC sprites within the room are loaded into VRAM"""
+
     _ally_sprite_buffer_size: UInt4 = UInt4(1)
     _allow_extra_sprite_buffer: bool = False
     _extra_sprite_buffer_size: UInt4 = UInt4(0)
@@ -96,40 +109,57 @@ class Partition:
 
     @property
     def ally_sprite_buffer_size(self) -> UInt4:
+        """The expected max size you will need for any action you expect
+        your player character to take. Calculated the same way as NPC
+        vram size: 0 if you only expect gridplanes, otherwise
+        floor(max # of tiles in your sprite / 4)."""
         return self._ally_sprite_buffer_size
 
     def set_ally_sprite_buffer_size(self, ally_sprite_buffer_size: int) -> None:
+        """Set the expected max size you will need for any action you expect
+        your player character to take. Calculated the same way as NPC
+        vram size: 0 if you only expect gridplanes, otherwise
+        floor(max # of tiles in your sprite / 4). \n
+        Must be 3 or less."""
         assert ally_sprite_buffer_size <= 3
         self._ally_sprite_buffer_size = UInt4(ally_sprite_buffer_size)
 
     @property
     def allow_extra_sprite_buffer(self) -> bool:
+        """Set this to true if you expect a packet to be created at any time."""
         return self._allow_extra_sprite_buffer
 
     def set_allow_extra_sprite_buffer(self, allow_extra_sprite_buffer: bool) -> None:
+        """Set this to true if you expect a packet to be created at any time."""
         self._allow_extra_sprite_buffer = allow_extra_sprite_buffer
 
     @property
     def extra_sprite_buffer_size(self) -> UInt4:
+        """The max number of packets you expect to be active at any given time."""
         return self._extra_sprite_buffer_size
 
     def set_extra_sprite_buffer_size(self, extra_sprite_buffer_size: int) -> None:
+        """Set the max number of packets you expect to be active at any given time."""
         self._extra_sprite_buffer_size = UInt4(extra_sprite_buffer_size)
 
     @property
     def buffers(self) -> List[Buffer]:
+        """Buffers define the ways in which NPC sprites are loaded into vram."""
         assert len(self._buffers) == 3
         return self._buffers
 
     def set_buffers(self, buffers: List[Buffer]) -> None:
+        """Buffers define the ways in which NPC sprites are loaded into vram."""
         assert len(buffers) == 3
         self._buffers = buffers
 
     @property
     def full_palette_buffer(self) -> bool:
+        """(unknown)"""
         return self._full_palette_buffer
 
     def set_full_palette_buffer(self, full_palette_buffer: bool) -> None:
+        """(unknown)"""
         self._full_palette_buffer = full_palette_buffer
 
     def __init__(
@@ -137,9 +167,11 @@ class Partition:
         ally_sprite_buffer_size: int = 1,
         allow_extra_sprite_buffer: bool = False,
         extra_sprite_buffer_size: int = 0,
-        buffers: List[Buffer] = [Buffer(), Buffer(), Buffer()],
+        buffers: Optional[List[Buffer]] = None,
         full_palette_buffer: bool = True,
     ) -> None:
+        if buffers is None:
+            buffers = [Buffer(), Buffer(), Buffer()]
         self.set_ally_sprite_buffer_size(ally_sprite_buffer_size)
         self.set_allow_extra_sprite_buffer(allow_extra_sprite_buffer)
         self.set_extra_sprite_buffer_size(extra_sprite_buffer_size)
@@ -147,15 +179,17 @@ class Partition:
         self.set_full_palette_buffer(full_palette_buffer)
 
     def __str__(self):
-        return "ally: {},  packet: {}, {},  buffers: {},  full: {}".format(
-            self.ally_sprite_buffer_size,
-            self.allow_extra_sprite_buffer,
-            self.extra_sprite_buffer_size,
-            ";".join([b.__str__() for b in self.buffers]),
-            self.full_palette_buffer,
+        buf_str = ";".join([b.__str__() for b in self.buffers])
+        return (
+            f"ally: {self.ally_sprite_buffer_size}, "
+            f"packet: {self.allow_extra_sprite_buffer}, "
+            f"{self.extra_sprite_buffer_size}, "
+            f"buffers: {buf_str}, "
+            f"full: {self.full_palette_buffer}"
         )
 
     def is_same(self, partition: "Partition"):
+        """Determines if this partition's properties are all the same as another one's."""
         return (
             self.ally_sprite_buffer_size == partition.ally_sprite_buffer_size
             and self.allow_extra_sprite_buffer == partition.allow_extra_sprite_buffer
@@ -167,10 +201,12 @@ class Partition:
         )
 
     def is_similar_but_larger_packet_buffer(self, partition: "Partition"):
+        """Determines if this partition's properties are all the same as another one's,
+        except for having a larger packet buffer."""
         return (
             self.ally_sprite_buffer_size == partition.ally_sprite_buffer_size
-            and self.allow_extra_sprite_buffer == True
-            and partition.allow_extra_sprite_buffer == True
+            and self.allow_extra_sprite_buffer
+            and partition.allow_extra_sprite_buffer
             and self.extra_sprite_buffer_size > partition.extra_sprite_buffer_size
             and self.extra_sprite_buffer_size <= 2
             and self.buffers[0].is_same(partition.buffers[0])
@@ -181,6 +217,8 @@ class Partition:
 
 
 class DestinationProps:
+    """Params that need to be set for a level being loaded via an exit tile."""
+
     _x: UInt8 = UInt8(0)
     _y: UInt8 = UInt8(0)
     _z: UInt8 = UInt8(0)
@@ -190,47 +228,61 @@ class DestinationProps:
 
     @property
     def x(self) -> UInt8:
+        """The X coord at which the player will be positioned when the destination loads."""
         return self._x
 
     def set_x(self, x: int) -> None:
+        """Set the X coord at which the player will be positioned when the destination loads."""
         assert x <= 63
         self._x = UInt8(x)
 
     @property
     def y(self) -> UInt8:
+        """The Y coord at which the player will be positioned when the destination loads."""
         return self._y
 
     def set_y(self, y: int) -> None:
+        """Set the X coord at which the player will be positioned when the destination loads.\n
+        Must be 0-127."""
         assert y <= 127
         self._y = UInt8(y)
 
     @property
     def z(self) -> UInt8:
+        """The Z coord at which the player will be positioned when the destination loads."""
         return self._z
 
     def set_z(self, z: int) -> None:
+        """Set the X coord at which the player will be positioned when the destination loads.\n
+        Must be 0-31."""
         assert z <= 31
         self._z = UInt8(z)
 
     @property
     def z_half(self) -> bool:
+        """If true, adds half a unit to the player's starting Z coordinate."""
         return self._z_half
 
     def set_z_half(self, z_half: bool) -> None:
+        """If true, adds half a unit to the player's starting Z coordinate."""
         self._z_half = z_half
 
     @property
     def f(self) -> Direction:
+        """The direction that the player will face when the room loads."""
         return self._f
 
     def set_f(self, f: Direction) -> None:
+        """Choose the direction that the player will face when the room loads."""
         self._f = f
 
     @property
     def x_bit_7(self) -> bool:
+        """(unknown)"""
         return self._x_bit_7
 
     def set_x_bit_7(self, x_bit_7: bool) -> None:
+        """(unknown)"""
         self._x_bit_7 = x_bit_7
 
     def __init__(
@@ -251,6 +303,8 @@ class DestinationProps:
 
 
 class Exit:
+    """A tile that exits to either another level or to a dot on the world map."""
+
     _x: UInt8 = UInt8(0)
     _y: UInt8 = UInt8(0)
     _z: UInt8 = UInt8(0)
@@ -265,100 +319,146 @@ class Exit:
     _show_message: bool = False
     _destination_props: DestinationProps
 
+    @property
+    def x(self) -> UInt8:
+        """The X coord at which to place the tile."""
+        return self._x
+
     def set_x(self, x: int) -> None:
+        """Set the X coord (0-63) at which to place the tile."""
         assert x <= 63
         self._x = UInt8(x)
 
     @property
     def y(self) -> UInt8:
+        """The Y coord at which to place the tile."""
         return self._y
 
     def set_y(self, y: int) -> None:
+        """Set the Y coord (0-127) at which to place the tile."""
         assert y <= 127
         self._y = UInt8(y)
 
     @property
     def z(self) -> UInt8:
+        """The Z coord at which to place the tile."""
         return self._z
 
     def set_z(self, z: int) -> None:
+        """Set the Z coord (0-31) at which to place the tile."""
         assert z <= 31
         self._z = UInt8(z)
 
     @property
     def f(self) -> EdgeDirection:
+        """The orientation of the tile."""
         return self._f
 
     def set_f(self, f: EdgeDirection) -> None:
+        """Set the orientation of the tile."""
         self._f = f
 
     @property
     def length(self) -> UInt8:
+        """The number of standard-sized tiles in a row this exit should encompass."""
         return self._length
 
     def set_length(self, length: int) -> None:
+        """Set the number of standard-sized tiles (0-16) in a row this exit should encompass."""
         assert 1 <= length <= 16
         self._length = UInt8(length)
 
     @property
     def height(self) -> UInt4:
+        """If >0, the exit can be triggered at any Z coordinate instead of just stepping on it."""
         return self._height
 
     def set_height(self, height: int) -> None:
+        """If >0, the exit can be triggered at any Z coordinate instead of just stepping on it.\n
+        Must be <= 7."""
         assert height <= 7
         self._height = UInt4(height)
 
     @property
     def nw_se_edge_active(self) -> bool:
+        """If true, the NW/SE diagonal edge is the edge from which you can enter the exit tile
+        to trigger it."""
         return self._nw_se_edge_active
 
     def set_nw_se_edge_active(self, nw_se_edge_active: bool) -> None:
+        """If true, the NW/SE diagonal edge is the edge from which you can enter the exit tile
+        to trigger it."""
         self._nw_se_edge_active = nw_se_edge_active
 
     @property
     def ne_sw_edge_active(self) -> bool:
+        """If true, the NE/SW diagonal edge is the edge from which you can enter the exit tile
+        to trigger it."""
         return self._ne_sw_edge_active
 
     def set_ne_sw_edge_active(self, ne_sw_edge_active: bool) -> None:
+        """If true, the NE/SW diagonal edge is the edge from which you can enter the exit tile
+        to trigger it."""
         self._ne_sw_edge_active = ne_sw_edge_active
 
     @property
     def destination_type(self) -> ExitType:
+        """Determines if this exit loads a room, or the world map."""
         return self._destination_type
 
     def set_destination_type(self, destination_type: ExitType) -> None:
+        """Determine if this exit loads a room, or the world map."""
         self._destination_type = destination_type
 
     @property
     def byte_2_bit_2(self) -> bool:
+        """(unknown)"""
         return self._byte_2_bit_2
 
     def set_byte_2_bit_2(self, byte_2_bit_2: bool) -> None:
+        """(unknown)"""
         self._byte_2_bit_2 = byte_2_bit_2
 
     @property
     def show_message(self) -> bool:
+        """If the room has an associated message, the message will be temporarily
+        displayed at the top of the screen upon load if this is true."""
         return self._show_message
 
     def set_show_message(self, show_message: bool) -> None:
+        """If the room has an associated message, the message will be temporarily
+        displayed at the top of the screen upon load if this is true."""
         self._show_message = show_message
 
     @property
     def destination_props(self) -> DestinationProps:
+        """A set of properties controlling the player's positioning when the destination room
+        loads."""
         return self._destination_props
 
     def set_destination_props(self, destination_props: DestinationProps) -> None:
+        """Replace the set of properties controlling the player's positioning when the
+        destination room loads."""
         self._destination_props = destination_props
 
 
+ExitT = TypeVar("ExitT", bound=Exit)
+
+
 class RoomExit(Exit):
+    """Exit tiles that specifically launch another room instead of the world map.\n
+    It is recommended to use room ID constant names for this."""
+
     _destination_type = ExitType.ROOM
 
     @property
     def destination(self) -> UInt16:
+        """The ID of the room to load."""
         return UInt16(self._destination)
 
     def set_destination(self, destination: int) -> None:
+        """Set the ID of the room to load.\n
+        It is recommended to use room ID constant names for this."""
         assert destination <= TOTAL_ROOMS
         self._destination = UInt16(destination)
 
@@ -400,30 +500,40 @@ class RoomExit(Exit):
 
 
 class MapExit(Exit):
+    """Exit tiles that specifically launch the world map instead of another room\n
+    It is recommended to use overworld location ID constant names for this."""
+
     _destination_type: ExitType = ExitType.MAP_LOCATION
     _byte_2_bit_1: bool = False
     _byte_2_bit_0: bool = False
 
     @property
     def destination(self) -> UInt8:
+        """The world map dot to return to."""
         return UInt8(self._destination)
 
     def set_destination(self, destination: int) -> None:
+        """Set the world map dot to return to.\n
+        It is recommended to use overworld location ID constant names for this."""
         assert destination < TOTAL_WORLD_MAP_AREAS
         self._destination = UInt8(destination)
 
     @property
     def byte_2_bit_1(self) -> bool:
+        """(unknown)"""
         return self._byte_2_bit_1
 
     def set_byte_2_bit_1(self, byte_2_bit_1: bool) -> None:
+        """(unknown)"""
         self._byte_2_bit_1 = byte_2_bit_1
 
     @property
     def byte_2_bit_0(self) -> bool:
+        """(unknown)"""
         return self._byte_2_bit_0
 
     def set_byte_2_bit_0(self, byte_2_bit_0: bool) -> None:
+        """(unknown)"""
         self._byte_2_bit_0 = byte_2_bit_0
 
     def __init__(
@@ -458,6 +568,9 @@ class MapExit(Exit):
 
 
 class Event:
+    """A tile that activates a specific event script.\n
+    It is recommended to use event ID constant names for this."""
+
     _event: UInt16 = UInt16(0)
     _x: UInt8 = UInt8(0)
     _y: UInt8 = UInt8(0)
@@ -471,78 +584,104 @@ class Event:
 
     @property
     def event(self) -> UInt16:
+        """The ID of the event that this tile launches."""
         return self._event
 
     def set_event(self, event: int) -> None:
+        """Set the ID of the event that this tile launches.\n
+        It is recommended to use event ID constant names for this."""
         assert event < TOTAL_EVENTS
         self._event = UInt16(event)
 
     @property
     def x(self) -> UInt8:
+        """The X coord at which to place the tile."""
         return self._x
 
     def set_x(self, x: int) -> None:
+        """Set the X coord (0-63) at which to place the tile."""
         assert x <= 63
         self._x = UInt8(x)
 
     @property
     def y(self) -> UInt8:
+        """The Y coord at which to place the tile."""
         return self._y
 
     def set_y(self, y: int) -> None:
+        """Set the Y coord (0-127) at which to place the tile."""
         assert y <= 127
         self._y = UInt8(y)
 
     @property
     def z(self) -> UInt8:
+        """The Z coord at which to place the tile."""
         return self._z
 
     def set_z(self, z: int) -> None:
+        """Set the Z coord (0-31) at which to place the tile."""
         assert z <= 31
         self._z = UInt8(z)
 
     @property
     def f(self) -> EdgeDirection:
+        """The orientation of the tile."""
         return self._f
 
     def set_f(self, f: EdgeDirection) -> None:
+        """Set the orientation of the tile."""
         self._f = f
 
     @property
     def length(self) -> UInt8:
+        """The number of standard-sized tiles in a row this exit should encompass."""
         return self._length
 
     def set_length(self, length: int) -> None:
+        """Set the number of standard-sized tiles (0-16) in a row this exit should encompass."""
         assert 1 <= length <= 16
         self._length = UInt8(length)
 
     @property
     def height(self) -> UInt4:
+        """If >0, the exit can be triggered at any Z coordinate instead of just stepping on it."""
         return self._height
 
     def set_height(self, height: int) -> None:
+        """If >0, the exit can be triggered at any Z coordinate instead of just stepping on it.\n
+        Must be <= 7."""
         assert height <= 7
         self._height = UInt4(height)
 
     @property
     def nw_se_edge_active(self) -> bool:
+        """If true, the NW/SE diagonal edge is the edge from which you can enter the exit tile
+        to trigger it."""
         return self._nw_se_edge_active
 
     def set_nw_se_edge_active(self, nw_se_edge_active: bool) -> None:
+        """If true, the NW/SE diagonal edge is the edge from which you can enter the exit tile
+        to trigger it."""
         self._nw_se_edge_active = nw_se_edge_active
 
     @property
     def ne_sw_edge_active(self) -> bool:
+        """If true, the NE/SW diagonal edge is the edge from which you can enter the exit tile
+        to trigger it."""
         return self._ne_sw_edge_active
 
     def set_ne_sw_edge_active(self, ne_sw_edge_active: bool) -> None:
+        """If true, the NE/SW diagonal edge is the edge from which you can enter the exit tile
+        to trigger it."""
         self._ne_sw_edge_active = ne_sw_edge_active
 
     @property
     def byte_8_bit_4(self) -> bool:
+        """(unknown)"""
         return self._byte_8_bit_4
 
     def set_byte_8_bit_4(self, byte_8_bit_4: bool) -> None:
+        """(unknown)"""
         self._byte_8_bit_4 = byte_8_bit_4
 
     def __init__(
@@ -571,9 +710,12 @@ class Event:
 
 
 class BaseRoomObject:
-    _id: AreaObject = NPC_0
-    _model: AreaNPC = AreaNPC(Empty())
-    _type: ObjectType = ObjectType.OBJECT
+    """The base definition for a room NPC, including placement and
+    interaction type."""
+
+    _object_id: AreaObject = NPC_0
+    _model: AreaNPC = AreaNPC(Empty)
+    _object_type: ObjectType = ObjectType.OBJECT
     _visible: bool = False
     _x: UInt8 = UInt8(0)
     _y: UInt8 = UInt8(0)
@@ -583,70 +725,96 @@ class BaseRoomObject:
 
     @property
     def id(self) -> int:
-        return self._id - 0x14
+        """The index of this NPC within the list of NPCs in the room."""
+        return self._object_id - 0x14
 
-    def set_id(self, id: AreaObject) -> None:
-        self._id = id
+    def set_id(self, object_id: AreaObject) -> None:
+        """Set the index of this NPC within the list of NPCs in the room.
+        (possibly deprecated)"""
+        self._object_id = object_id
 
     @property
     def model(self) -> AreaNPC:
+        """A more specific NPC definition that includes model info
+        and vram info."""
         return self._model
 
     def set_model(self, model: AreaNPC) -> None:
+        """Set a more specific NPC definition that includes model info
+        and vram info."""
         self._model = model
 
     @property
     def type(self) -> ObjectType:
-        return self._type
+        """Whether this NPC is a chest, battle, or regular object."""
+        return self._object_type
 
-    def set_type(self, type: ObjectType) -> None:
-        self._type = type
+    def set_type(self, object_type: ObjectType) -> None:
+        """Whether this NPC is a chest, battle, or regular object."""
+        self._object_type = object_type
 
     @property
     def visible(self) -> bool:
+        """If false, the NPC is hidden by default."""
         return self._visible
 
     def set_visible(self, visible: bool) -> None:
+        """If false, the NPC is hidden by default."""
         self._visible = visible
 
     @property
     def x(self) -> UInt8:
+        """The initial X coord of this NPC."""
         return self._x
 
     def set_x(self, x: int) -> None:
+        """Set the initial X coord of this NPC."""
         self._x = UInt8(x)
 
     @property
     def y(self) -> UInt8:
+        """The initial Y coord of this NPC."""
         return self._y
 
     def set_y(self, y: int) -> None:
+        """Set the initial Y coord of this NPC."""
         self._y = UInt8(y)
 
     @property
     def z(self) -> UInt8:
+        """The initial Z coord of this NPC."""
         return self._z
 
     def set_z(self, z: int) -> None:
+        """The initial Z (0-31) coord of this NPC."""
         assert z <= 31
         self._z = UInt8(z)
 
     @property
     def z_half(self) -> bool:
+        """If true, adds half a unit to the NPC's starting Z coordinate."""
         return self._z_half
 
     def set_z_half(self, z_half: bool) -> None:
+        """If true, adds half a unit to the NPC's starting Z coordinate."""
         self._z_half = z_half
 
     @property
     def direction(self) -> Direction:
+        """The direction that the NPC will face when the room loads."""
         return self._direction
 
     def set_direction(self, direction: Direction) -> None:
+        """Choose the direction that the NPC will face when the room loads."""
         self._direction = direction
 
 
+BaseRoomObjectT = TypeVar("BaseRoomObjectT", bound=BaseRoomObject)
+
+
 class RoomObject(BaseRoomObject):
+    """A basic class for a non-clone NPC."""
+
     _initiator: EventInitiator = EventInitiator.NONE
     _action_script: UInt16 = UInt16(0)
     _speed: UInt4 = UInt4(0)
@@ -669,174 +837,228 @@ class RoomObject(BaseRoomObject):
 
     @property
     def initiator(self) -> EventInitiator:
+        """The specific action needed to trigger this NPC."""
         return self._initiator
 
     def set_initiator(self, initiator: EventInitiator) -> None:
+        """Set the specific action needed to trigger this NPC."""
         self._initiator = initiator
 
     @property
     def action_script(self) -> UInt16:
+        """The default action script run by this NPC on load."""
         return self._action_script
 
     def set_action_script(self, action_script: int) -> None:
+        """The default action script run by this NPC on load.\n
+        It is recommended to use action script ID constant names for this."""
         assert action_script < TOTAL_ACTIONSCRIPTS
         self._action_script = UInt16(action_script)
 
     @property
     def speed(self) -> UInt4:
+        """(unknown)"""
         return self._speed
 
     def set_speed(self, speed: int) -> None:
+        """(unknown)"""
         assert speed <= 7
         self._speed = UInt4(speed)
 
     @property
     def face_on_trigger(self) -> bool:
+        """If true, the NPC faces the player when triggered."""
         return self._face_on_trigger
 
     def set_face_on_trigger(self, face_on_trigger: bool) -> None:
+        """If true, the NPC faces the player when triggered."""
         self._face_on_trigger = face_on_trigger
 
     @property
     def cant_enter_doors(self) -> bool:
+        """If true, the NPC is unable to pass through doors."""
         return self._cant_enter_doors
 
     def set_cant_enter_doors(self, cant_enter_doors: bool) -> None:
+        """If true, the NPC is unable to pass through doors."""
         self._cant_enter_doors = cant_enter_doors
 
     @property
     def byte2_bit5(self) -> bool:
+        """(unknown)"""
         return self._byte2_bit5
 
     def set_byte2_bit5(self, byte2_bit5: bool) -> None:
+        """(unknown)"""
         self._byte2_bit5 = byte2_bit5
 
     @property
     def set_sequence_playback(self) -> bool:
+        """(unknown)"""
         return self._set_sequence_playback
 
     def set_set_sequence_playback(self, set_sequence_playback: bool) -> None:
+        """(unknown)"""
         self._set_sequence_playback = set_sequence_playback
 
     @property
     def cant_float(self) -> bool:
+        """(unknown)"""
         return self._cant_float
 
     def set_cant_float(self, cant_float: bool) -> None:
+        """(unknown)"""
         self._cant_float = cant_float
 
     @property
     def cant_walk_up_stairs(self) -> bool:
+        """If true, the NPC is unable to walk up slopes."""
         return self._cant_walk_up_stairs
 
     def set_cant_walk_up_stairs(self, cant_walk_up_stairs: bool) -> None:
+        """If true, the NPC is unable to walk up slopes."""
         self._cant_walk_up_stairs = cant_walk_up_stairs
 
     @property
     def cant_walk_under(self) -> bool:
+        """If true, the NPC cannot be passed from underneath."""
         return self._cant_walk_under
 
     def set_cant_walk_under(self, cant_walk_under: bool) -> None:
+        """If true, the NPC cannot be passed from underneath."""
         self._cant_walk_under = cant_walk_under
 
     @property
     def cant_pass_walls(self) -> bool:
+        """If true, the NPC respects the collision data of walls."""
         return self._cant_pass_walls
 
     def set_cant_pass_walls(self, cant_pass_walls: bool) -> None:
+        """If true, the NPC respects the collision data of walls."""
         self._cant_pass_walls = cant_pass_walls
 
     @property
     def cant_jump_through(self) -> bool:
+        """If true, the NPC can't be passed through while the player is airborne."""
         return self._cant_jump_through
 
     def set_cant_jump_through(self, cant_jump_through: bool) -> None:
+        """If true, the NPC can't be passed through while the player is airborne."""
         self._cant_jump_through = cant_jump_through
 
     @property
     def cant_pass_npcs(self) -> bool:
+        """If true, the NPC respects the collision dat of other NPCs."""
         return self._cant_pass_npcs
 
     def set_cant_pass_npcs(self, cant_pass_npcs: bool) -> None:
+        """If true, the NPC respects the collision dat of other NPCs."""
         self._cant_pass_npcs = cant_pass_npcs
 
     @property
     def byte3_bit5(self) -> bool:
+        """(unknown)"""
         return self._byte3_bit5
 
     def set_byte3_bit5(self, byte3_bit5: bool) -> None:
+        """(unknown)"""
         self._byte3_bit5 = byte3_bit5
 
     @property
     def cant_walk_through(self) -> bool:
+        """If true, the NPC can't be passed through while the player is on the ground."""
         return self._cant_walk_through
 
     def set_cant_walk_through(self, cant_walk_through: bool) -> None:
+        """If true, the NPC can't be passed through while the player is on the ground."""
         self._cant_walk_through = cant_walk_through
 
     @property
     def byte3_bit7(self) -> bool:
+        """(unknown)"""
         return self._byte3_bit7
 
     def set_byte3_bit7(self, byte3_bit7: bool) -> None:
+        """(unknown)"""
         self._byte3_bit7 = byte3_bit7
 
     @property
     def slidable_along_walls(self) -> bool:
+        """(unknown)"""
         return self._slidable_along_walls
 
     def set_slidable_along_walls(self, slidable_along_walls: bool) -> None:
+        """(unknown)"""
         self._slidable_along_walls = slidable_along_walls
 
     @property
     def cant_move_if_in_air(self) -> bool:
+        """If true, the NPC cannot move in any direction while airborne."""
         return self._cant_move_if_in_air
 
     def set_cant_move_if_in_air(self, cant_move_if_in_air: bool) -> None:
+        """If true, the NPC cannot move in any direction while airborne."""
         self._cant_move_if_in_air = cant_move_if_in_air
 
     @property
     def byte7_upper2(self) -> bool:
+        """(unknown)"""
         return self._byte7_upper2
 
     def set_byte7_upper2(self, byte7_upper2: bool) -> None:
+        """(unknown)"""
         self._byte7_upper2 = byte7_upper2
 
 
 class Clone(BaseRoomObject):
+    """A basic class for a clone NPC.\n
+    A clone inherits some properties from the nearest prior regular NPC."""
+
     _action_script: UInt16 = UInt16(0)
 
     @property
     def action_script(self) -> UInt16:
+        """The default action script run by this clone on load."""
         return self._action_script
 
     def set_action_script(self, action_script: int) -> None:
+        """The default action script run by this clone on load.\n
+        It is recommended to use action script ID constant names for this."""
         assert action_script < TOTAL_ACTIONSCRIPTS
         self._action_script = UInt16(action_script)
 
 
 class BattlePackNPC(RoomObject):
-    _type = ObjectType.BATTLE
+    """A basic non-clone NPC that initiates a battle when interacted with."""
+
+    _object_type = ObjectType.BATTLE
     _battle_pack: UInt8 = UInt8(0)
     _after_battle = PostBattleBehaviour.REMOVE_PERMANENTLY
 
     @property
     def battle_pack(self) -> UInt8:
+        """When you interact with this NPC, it engages in battle against
+        this pack ID."""
         return self._battle_pack
 
     def set_battle_pack(self, battle_pack: int) -> None:
+        """When you interact with this NPC, it engages in battle against
+        this pack ID.\n
+        It is recommended to use pack ID constant names for this."""
         self._battle_pack = UInt8(battle_pack)
 
     @property
     def after_battle(self) -> PostBattleBehaviour:
+        """The behaviour this NPC should exhibit after battle."""
         return self._after_battle
 
     def set_after_battle(self, after_battle: PostBattleBehaviour) -> None:
+        """Set the behaviour this NPC should exhibit after battle."""
         self._after_battle = after_battle
 
     def __init__(
         self,
-        occupant: NPC,
+        occupant: Type[NPC],
         initiator: EventInitiator = EventInitiator.NONE,
         after_battle: PostBattleBehaviour = PostBattleBehaviour.REMOVE_PERMANENTLY,
         battle_pack: int = PACK0000_SNIFIT_FIGHT,
@@ -939,19 +1161,27 @@ class BattlePackNPC(RoomObject):
 
 
 class RegularNPC(RoomObject):
-    _type = ObjectType.OBJECT
+    """A basic non-clone NPC that is not a chest or a
+    battle initiator."""
+
+    _object_type = ObjectType.OBJECT
     _event_script: UInt16 = UInt16(E0256_RETURN)
 
     @property
     def event_script(self) -> UInt16:
+        """The ID of the event script that should run when this NPC
+        is interacted with."""
         return self._event_script
 
     def set_event_script(self, event_script: int) -> None:
+        """Set the ID of the event script that should run when this NPC
+        is interacted with.\n
+        It is recommended to use event script ID constant names for this."""
         self._event_script = UInt16(event_script)
 
     def __init__(
         self,
-        occupant: NPC,
+        occupant: Type[NPC],
         initiator: EventInitiator = EventInitiator.NONE,
         event_script: int = E0256_RETURN,
         action_script: int = A0000_DO_NOTHING,
@@ -1052,40 +1282,55 @@ class RegularNPC(RoomObject):
 
 
 class ChestNPC(RoomObject):
-    _type = ObjectType.CHEST
+    """A basic non-clone NPC that is a treasure chest."""
+
+    _object_type = ObjectType.CHEST
     _event_script: UInt16 = UInt16(E0256_RETURN)
-    _lower_70A7: UInt4 = UInt4(0)
-    _upper_70A7: UInt4 = UInt4(0)
+    _lower_70a7: UInt4 = UInt4(0)
+    _upper_70a7: UInt4 = UInt4(0)
 
     @property
     def event_script(self) -> UInt16:
+        """The ID of the event script that should run when this chest
+        is hit."""
         return self._event_script
 
     def set_event_script(self, event_script: int) -> None:
+        """Set the ID of the event script that should run when this chest
+        is hit.\n
+        It is recommended to use event script ID constant names for this."""
         self._event_script = UInt16(event_script)
 
     @property
-    def lower_70A7(self) -> UInt4:
-        return self._lower_70A7
+    def lower_70a7(self) -> UInt4:
+        """The lower 4 bits of a built-in value that can be used in place of
+        manually setting $70a7 (the usual item ID variable)."""
+        return self._lower_70a7
 
-    def set_lower_70A7(self, lower_70A7: int) -> None:
-        self._lower_70A7 = UInt4(lower_70A7)
+    def set_lower_70a7(self, lower_70a7: int) -> None:
+        """Set the lower 4 bits of a built-in value that can be used in place of
+        manually setting $70a7 (the usual item ID variable)."""
+        self._lower_70a7 = UInt4(lower_70a7)
 
     @property
-    def upper_70A7(self) -> UInt4:
-        return self._upper_70A7
+    def upper_70a7(self) -> UInt4:
+        """The upper 4 bits of a built-in value that can be used in place of
+        manually setting $70a7 (the usual item ID variable)."""
+        return self._upper_70a7
 
-    def set_upper_70A7(self, upper_70A7: int) -> None:
-        self._upper_70A7 = UInt4(upper_70A7)
+    def set_upper_70a7(self, upper_70a7: int) -> None:
+        """Set the upper 4 bits of a built-in value that can be used in place of
+        manually setting $70a7 (the usual item ID variable)."""
+        self._upper_70a7 = UInt4(upper_70a7)
 
     def __init__(
         self,
-        occupant: NPC,
+        occupant: Type[NPC],
         initiator: EventInitiator = EventInitiator.NONE,
         event_script: int = E0256_RETURN,
         action_script: int = A0000_DO_NOTHING,
-        lower_70A7: int = 0,
-        upper_70A7: int = 0,
+        lower_70a7: int = 0,
+        upper_70a7: int = 0,
         speed: int = 0,
         visible: bool = False,
         x: int = 0,
@@ -1133,8 +1378,8 @@ class ChestNPC(RoomObject):
         super().set_initiator(initiator)
         self.set_event_script(event_script)
         super().set_action_script(action_script)
-        self.set_lower_70A7(lower_70A7)
-        self.set_upper_70A7(upper_70A7)
+        self.set_lower_70a7(lower_70a7)
+        self.set_upper_70a7(upper_70a7)
         super().set_speed(speed)
         super().set_visible(visible)
         super().set_x(x)
@@ -1185,19 +1430,26 @@ class ChestNPC(RoomObject):
 
 
 class BattlePackClone(Clone):
-    _type = ObjectType.BATTLE
+    """A basic clone NPC that initiates a battle when interacted with."""
+
+    _object_type = ObjectType.BATTLE
     _battle_pack: UInt8 = UInt8(0)
 
     @property
     def battle_pack(self) -> UInt8:
+        """When you interact with this clone, it engages in battle against
+        this pack ID."""
         return self._battle_pack
 
     def set_battle_pack(self, battle_pack: int) -> None:
+        """When you interact with this clone, it engages in battle against
+        this pack ID.\n
+        It is recommended to use pack ID constant names for this."""
         self._battle_pack = UInt8(battle_pack)
 
     def __init__(
         self,
-        occupant: NPC,
+        occupant: Type[NPC],
         battle_pack: int = PACK0000_SNIFIT_FIGHT,
         action_script: int = A0000_DO_NOTHING,
         visible: bool = False,
@@ -1262,19 +1514,27 @@ class BattlePackClone(Clone):
 
 
 class RegularClone(Clone):
-    _type = ObjectType.OBJECT
+    """A basic clone NPC that is not a chest or a
+    battle initiator."""
+
+    _object_type = ObjectType.OBJECT
     _event_script: UInt16 = UInt16(E0256_RETURN)
 
     @property
     def event_script(self) -> UInt16:
+        """The ID of the event script that should run when this clone
+        is interacted with."""
         return self._event_script
 
     def set_event_script(self, event_script: int) -> None:
+        """Set the ID of the event script that should run when this clone
+        is interacted with.\n
+        It is recommended to use event script ID constant names for this."""
         self._event_script = UInt16(event_script)
 
     def __init__(
         self,
-        occupant: NPC,
+        occupant: Type[NPC],
         event_script: int = E0256_RETURN,
         action_script: int = A0000_DO_NOTHING,
         visible: bool = False,
@@ -1339,29 +1599,39 @@ class RegularClone(Clone):
 
 
 class ChestClone(Clone):
-    _type = ObjectType.CHEST
-    _lower_70A7: UInt4 = UInt4(0)
-    _upper_70A7: UInt4 = UInt4(0)
+    """A basic clone NPC that is a treasure chest."""
+
+    _object_type = ObjectType.CHEST
+    _lower_70a7: UInt4 = UInt4(0)
+    _upper_70a7: UInt4 = UInt4(0)
 
     @property
-    def lower_70A7(self) -> UInt4:
-        return self._lower_70A7
+    def lower_70a7(self) -> UInt4:
+        """The lower 4 bits of a built-in value that can be used in place of
+        manually setting $70a7 (the usual item ID variable)."""
+        return self._lower_70a7
 
-    def set_lower_70A7(self, lower_70A7: int) -> None:
-        self._lower_70A7 = UInt4(lower_70A7)
+    def set_lower_70a7(self, lower_70a7: int) -> None:
+        """Set the lower 4 bits of a built-in value that can be used in place of
+        manually setting $70a7 (the usual item ID variable)."""
+        self._lower_70a7 = UInt4(lower_70a7)
 
     @property
-    def upper_70A7(self) -> UInt4:
-        return self._upper_70A7
+    def upper_70a7(self) -> UInt4:
+        """The upper 4 bits of a built-in value that can be used in place of
+        manually setting $70a7 (the usual item ID variable)."""
+        return self._upper_70a7
 
-    def set_upper_70A7(self, upper_70A7: int) -> None:
-        self._upper_70A7 = UInt4(upper_70A7)
+    def set_upper_70a7(self, upper_70a7: int) -> None:
+        """Set the upper 4 bits of a built-in value that can be used in place of
+        manually setting $70a7 (the usual item ID variable)."""
+        self._upper_70a7 = UInt4(upper_70a7)
 
     def __init__(
         self,
         occupant,
-        lower_70A7: int = 0,
-        upper_70A7: int = 0,
+        lower_70a7: int = 0,
+        upper_70a7: int = 0,
         visible: bool = False,
         x: int = 0,
         y: int = 0,
@@ -1389,8 +1659,8 @@ class ChestClone(Clone):
         byte5_bit7: Optional[bool] = None,
         byte6_bit2: Optional[bool] = None,
     ):
-        self.set_lower_70A7(lower_70A7)
-        self.set_upper_70A7(upper_70A7)
+        self.set_lower_70a7(lower_70a7)
+        self.set_upper_70a7(upper_70a7)
         super().set_visible(visible)
         super().set_x(x)
         super().set_y(y)
@@ -1423,79 +1693,108 @@ class ChestClone(Clone):
         super().set_model(model)
 
 
-class Room:
+class Room(Generic[BaseRoomObjectT, ExitT]):
+    """The base definition for each of the 512 levels in the game."""
+
     _partition: Optional[Partition] = None
     _music: UInt8 = UInt8(0)
     _entrance_event: UInt16 = UInt16(0)
     _event_tiles: List[Event] = []
-    _exit_fields: List[Union[RoomExit, MapExit]] = []
-    _objects: Sequence[BaseRoomObject] = []
+    _exit_fields: List[ExitT] = []
+    _objects: List[BaseRoomObjectT] = []
     _extra_sprite_actions: List[ExtraSpriteActions] = []
 
     @property
     def partition(self) -> Optional[Partition]:
+        """A partition is a VRAM configuration for a specific room."""
         return self._partition
 
     def set_partition(self, partition: Optional[Partition]) -> None:
+        """A partition is a VRAM configuration for a specific room."""
         self._partition = partition
 
     @property
     def music(self) -> UInt8:
+        """The ID of the music that should play on loading this room."""
         return self._music
 
     def set_music(self, music: int) -> None:
+        """Set the ID of the music that should play on loading this room.\n
+        It is recommended to use music ID constant names for this."""
         self._music = UInt8(music)
 
     @property
     def entrance_event(self) -> UInt16:
+        """The ID of the event script that should play upon loading the room."""
         return self._entrance_event
 
     def set_entrance_event(self, entrance_event: int) -> None:
+        """Set the ID of the event script that should play upon loading the room.\n
+        It is recommended to use event script ID constant names for this."""
         self._entrance_event = UInt16(entrance_event)
 
     @property
     def event_tiles(self) -> List[Event]:
+        """A list of specific tile designations that run event scripts when entered."""
         return self._event_tiles
 
     def set_event_tiles(self, event_tiles: List[Event]) -> None:
+        """Overwrite the list of specific tile designations that run event scripts when entered."""
         self._event_tiles = event_tiles
 
     @property
-    def exit_fields(self) -> List[Union[RoomExit, MapExit]]:
+    def exit_fields(self) -> List[ExitT]:
+        """A list of specific tile designations that load other rooms or the world map."""
         return self._exit_fields
 
-    def set_exit_fields(self, exit_fields: List[Union[RoomExit, MapExit]]) -> None:
+    def set_exit_fields(self, exit_fields: List[ExitT]) -> None:
+        """Overwrite list of specific tile designations that load other rooms or the world map."""
         self._exit_fields = exit_fields
 
-    def add_object(self, item: BaseRoomObject) -> None:
-        objects = cast(list[BaseRoomObject], self.objects)
-        objects.append(item)
-        self._objects = cast(Sequence[BaseRoomObject], objects)
+    def add_object(self, item: BaseRoomObjectT) -> None:
+        """Add an object to the room."""
+        assert len(self.objects) + 1 <= 28
+        self.objects.append(item)
 
-    def add_objects(self, items: List[BaseRoomObject]) -> None:
-        objects = cast(list[BaseRoomObject], self.objects)
-        objects.extend(items)
-        self._objects = cast(Sequence[BaseRoomObject], objects)
+    def add_objects(self, items: List[BaseRoomObjectT]) -> None:
+        """Add several objects to the room."""
+        assert len(self.objects) + len(items) <= 28
+        self.objects.extend(items)
 
     @property
     def objects(
         self,
-    ) -> Sequence[BaseRoomObject]:
+    ) -> List[BaseRoomObjectT]:
+        """A list of all the NPCs in the room."""
         return self._objects
 
     def set_objects(
         self,
-        objects: Sequence[BaseRoomObject],
+        objects: List[BaseRoomObjectT],
     ) -> None:
+        """Overwrite the list of NPCs in the room."""
+        assert len(objects) <= 28
         self._objects = objects
 
     @property
     def extra_sprite_actions(self) -> List[ExtraSpriteActions]:
+        """A list of specific special actions your player character might be
+        expected to take within this room.\n
+        i.e. doing a victory pose before going to sleep, tumbling down a cliff,
+        etc.\n
+        This helps determine the ally buffer sprite size for the room's
+        partition."""
         return self._extra_sprite_actions
 
     def set_extra_sprite_actions(
         self, extra_sprite_actions: List[ExtraSpriteActions]
     ) -> None:
+        """Overwrite a list of specific special actions your player character might be
+        expected to take within this room.\n
+        i.e. doing a victory pose before going to sleep, tumbling down a cliff,
+        etc.\n
+        This helps determine the ally buffer sprite size for the room's
+        partition."""
         self._extra_sprite_actions = extra_sprite_actions
 
     def __init__(
@@ -1503,15 +1802,23 @@ class Room:
         partition: Partition = Partition(),
         music: int = M00_CURRENT,
         entrance_event: int = E0015_STANDARD_ROOM_LOADER,
-        event_tiles: List[Event] = [],
-        exit_fields: List[Union[RoomExit, MapExit]] = [],
-        objects: Sequence[BaseRoomObject] = [],
-        extra_sprite_actions: List[ExtraSpriteActions] = [],
+        events: Optional[List[Event]] = None,
+        exits: Optional[List[ExitT]] = None,
+        objects: Optional[List[BaseRoomObjectT]] = None,
+        extra_sprite_actions: Optional[List[ExtraSpriteActions]] = None,
     ):
+        if events is None:
+            events = []
+        if exits is None:
+            exits = []
+        if objects is None:
+            objects = []
+        if extra_sprite_actions is None:
+            extra_sprite_actions = []
         self.set_partition(partition)
         self.set_music(music)
         self.set_entrance_event(entrance_event)
-        self.set_event_tiles(event_tiles)
-        self.set_exit_fields(exit_fields)
+        self.set_event_tiles(events)
+        self.set_exit_fields(exits)
         self.set_objects(objects)
         self.set_extra_sprite_actions(extra_sprite_actions)

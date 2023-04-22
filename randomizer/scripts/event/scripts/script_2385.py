@@ -1,4 +1,6 @@
-# E2385_ABYSS_FOUR_BOLT_ROOM_BACKGROUND
+# pylint: disable=C0301
+
+"""E2385_ABYSS_FOUR_BOLT_ROOM_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
         ClearBit(TEMP_7044_6),
         Jmp(["EVENT_2385_pause_0"]),
         SetBit(TEMP_7044_6, identifier="EVENT_2385_set_bit_4"),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 9, ["EVENT_2385_action_queue_sync_17"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 8, ["EVENT_2385_action_queue_sync_17"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_2385_action_queue_sync_17"]),

@@ -1,4 +1,6 @@
-# E3330_VOLCANO_1ST_BOSS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3330_VOLCANO_1ST_BOSS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
         CopyVarToVar(from_var=X_COORD_1, to_var=SECONDARY_TEMP_7024),
         CopyVarToVar(from_var=Y_COORD_1, to_var=TEMP_7026),
         CopyVarToVar(from_var=Z_COORD_1, to_var=TEMP_7028),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_702A),
         RunBackgroundEvent(event_id=E3329_JUMPING_FIREBALLS, return_on_level_exit=True),
         ApplyTileModToLevel(
@@ -31,12 +33,12 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNortheast(),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftNortheastSteps(5),
+                ASWalkNortheastSteps(5),
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNortheast(),
             ],
         ),
-        ActionQueueSync(target=MARIO, subscript=[ASShiftNortheastSteps(3)]),
+        ActionQueueSync(target=MARIO, subscript=[ASWalkNortheastSteps(3)]),
         RunEventAtReturn(E3331_VOLCANO_1ST_BOSS_FIGHT),
         Return(identifier="EVENT_3330_ret_15"),
     ]

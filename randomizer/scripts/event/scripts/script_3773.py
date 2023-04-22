@@ -1,4 +1,6 @@
-# E3773_HOT_SPRINGS_EJECT_FROM_WATER
+# pylint: disable=C0301
+
+"""E3773_HOT_SPRINGS_EJECT_FROM_WATER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,11 +18,11 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(height=80, silent=True),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASSetSpriteSequence(
                     index=0, sprite_offset=3, is_sequence=True, looping=True
                 ),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASSetWalkingSpeed(NORMAL),
                 ASPause(
                     1, identifier="EVENT_3773_action_queue_async_5_SUBSCRIPT_pause_6"

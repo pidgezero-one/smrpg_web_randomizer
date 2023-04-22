@@ -1,4 +1,6 @@
-# E1119_SEASIDE_OCCUPIED_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E1119_SEASIDE_OCCUPIED_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -55,8 +57,8 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASTransferToXYZF(x=13, y=56, z=2, direction=EAST),
-                ASShiftSouthwestSteps(1),
-                ASShiftSoutheastSteps(1),
+                ASWalkSouthwestSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
             ],
@@ -65,8 +67,8 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASTransferToXYZF(x=13, y=57, z=2, direction=EAST),
-                ASShiftSouthwestSteps(1),
-                ASShiftSoutheastSteps(1),
+                ASWalkSouthwestSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
             ],
@@ -75,8 +77,8 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASTransferToXYZF(x=14, y=59, z=2, direction=EAST),
-                ASShiftSouthwestSteps(1),
-                ASShiftSoutheastSteps(1),
+                ASWalkSouthwestSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
             ],
@@ -85,8 +87,8 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASTransferToXYZF(x=15, y=60, z=2, direction=EAST),
-                ASShiftSouthwestSteps(1),
-                ASShiftSoutheastSteps(1),
+                ASWalkSouthwestSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
             ],
@@ -96,8 +98,8 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=14, y=58, z=2, direction=EAST),
                 ASOverwriteSolidity(),
-                ASShiftSouthwestSteps(1),
-                ASShiftSoutheastSteps(1),
+                ASWalkSouthwestSteps(1),
+                ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
@@ -107,7 +109,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASTransferToXYZF(x=12, y=63, z=2, direction=EAST),
-                ASShiftSouthwestSteps(1),
+                ASWalkSouthwestSteps(1),
                 ASFaceNortheast(),
             ],
         ),
@@ -131,16 +133,16 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftNortheastSteps(1),
+                ASWalkNortheastSteps(1),
                 ASSetSequenceSpeed(NORMAL),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
             ],
             identifier="EVENT_1119_action_queue_async_42",
         ),
         Pause(30),
         ActionQueueAsync(
-            target=NPC_4, subscript=[ASSetWalkingSpeed(SLOW), ASShiftSouthwestPixels(5)]
+            target=NPC_4, subscript=[ASSetWalkingSpeed(SLOW), ASWalkSouthwestPixels(5)]
         ),
         Pause(30),
         UnfreezeCamera(),
@@ -164,7 +166,7 @@ script = EventScript(
             target=NPC_4,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(30),
+                ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
             ],
         ),
@@ -172,7 +174,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(30),
+                ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
             ],
         ),
@@ -180,7 +182,7 @@ script = EventScript(
             target=NPC_1,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(30),
+                ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
             ],
         ),
@@ -188,7 +190,7 @@ script = EventScript(
             target=NPC_2,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(30),
+                ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
             ],
         ),
@@ -196,7 +198,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
-                ASShiftNorthwestSteps(30),
+                ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
             ],
         ),
@@ -254,7 +256,7 @@ script = EventScript(
             subscript=[
                 ASResetProperties(),
                 ASSetAllSpeeds(NORMAL),
-                ASShiftNortheastSteps(1),
+                ASWalkNortheastSteps(1),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
             ],
         ),

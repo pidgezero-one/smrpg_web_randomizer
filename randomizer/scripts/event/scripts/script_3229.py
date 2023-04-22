@@ -1,4 +1,6 @@
-# E3229_SHIP_CLONE_TRANSFORM
+# pylint: disable=C0301
+
+"""E3229_SHIP_CLONE_TRANSFORM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,7 +13,7 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO044_GHOST_FLOAT, channel=4),
                 ASTransferToObjectXY(NPC_0),
-                ASSet700CToObjectCoord(object=NPC_0, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=NPC_0, coord=COORD_F, pixel=True),
                 ASFaceEast7C(),
             ],
         ),

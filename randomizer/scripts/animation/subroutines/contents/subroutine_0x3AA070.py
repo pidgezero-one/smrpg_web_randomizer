@@ -1,4 +1,6 @@
-# referenced by battle_events BE0085_FEAR_ROULETTE
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0085_FEAR_ROULETTE"""
 
 from randomizer.scripts.animation.script_imports import *
 

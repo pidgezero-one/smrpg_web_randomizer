@@ -1,4 +1,6 @@
-# E1538_BANDITS_WAY_STAR_CHEST_CAMERA_AND_DOGS
+# pylint: disable=C0301
+
+"""E1538_BANDITS_WAY_STAR_CHEST_CAMERA_AND_DOGS"""
 
 from randomizer.scripts.event.script_imports import *
 

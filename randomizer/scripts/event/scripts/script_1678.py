@@ -1,4 +1,6 @@
-# E1678_OPEN_LANDS_END_GROTTO
+# pylint: disable=C0301
+
+"""E1678_OPEN_LANDS_END_GROTTO"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E1913_ABYSS_MACHINE_ARROW_ANIMATE
+# pylint: disable=C0301
+
+"""E1913_ABYSS_MACHINE_ARROW_ANIMATE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,12 +13,16 @@ script = EventScript(
         Set7016701BToObjectXYZ(MARIO),
         AddConstToVar(Z_COORD_2, 2048),
         Set7000ToPressedButton(),
-        JmpIf7000AllBitsClear(destinations=["EVENT_1913_action_queue_sync_24"]),
+        JmpIf7000AllBitsClear(
+            bits=[], destinations=["EVENT_1913_action_queue_sync_24"]
+        ),
         Set7000ToPressedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1913_set_7000_to_object_coord_11"]),
+        JmpIf7000AnyBitsSet(
+            bits=[], destinations=["EVENT_1913_set_7000_to_object_coord_11"]
+        ),
         SetBit(TEMP_7043_2),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_F,
             pixel=True,
             identifier="EVENT_1913_set_7000_to_object_coord_11",

@@ -1,4 +1,6 @@
-# E1172_MUSHROOM_BOY
+# pylint: disable=C0301
+
+"""E1172_MUSHROOM_BOY"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -50,7 +52,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_1172_run_dialog_19"),
         RunDialog(
             dialog_id=DI2939_RECEIVED_FLOWER_TAB,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,
@@ -64,7 +66,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_1172_run_dialog_29"),
         RunDialog(
             dialog_id=DI2937_RECEIVED_MAPLE_SYRUP,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=False,

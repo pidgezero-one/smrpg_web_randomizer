@@ -1,4 +1,6 @@
-# E1083_MELODY_BAY_SONG_2_INPUT
+# pylint: disable=C0301
+
+"""E1083_MELODY_BAY_SONG_2_INPUT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -23,14 +25,14 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNortheastSteps(2), ASReturn()],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
         ),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
                 ASTransferToXYZF(x=7, y=41, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASReturn(),
             ],
         ),
@@ -56,14 +58,14 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNortheastSteps(2), ASReturn()],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
         ),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
                 ASTransferToXYZF(x=8, y=39, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASReturn(),
             ],
         ),
@@ -89,14 +91,14 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNortheastSteps(2), ASReturn()],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
         ),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASTransferToXYZF(x=9, y=37, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASReturn(),
             ],
         ),
@@ -122,14 +124,14 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNortheastSteps(2), ASReturn()],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
         ),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
                 ASTransferToXYZF(x=10, y=35, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASReturn(),
             ],
         ),
@@ -155,14 +157,14 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNortheastSteps(2), ASReturn()],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
         ),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
                 ASTransferToXYZF(x=11, y=33, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASReturn(),
             ],
         ),
@@ -188,14 +190,14 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNortheastSteps(2), ASReturn()],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
         ),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
                 ASTransferToXYZF(x=12, y=31, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASReturn(),
             ],
         ),
@@ -223,14 +225,14 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNortheastSteps(2), ASReturn()],
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
         ),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
                 ASTransferToXYZF(x=13, y=29, z=0, direction=EAST),
-                ASShiftSoutheastPixels(5),
-                ASShiftSouthwestPixels(4),
+                ASWalkSoutheastPixels(5),
+                ASWalkSouthwestPixels(4),
                 ASReturn(),
             ],
         ),

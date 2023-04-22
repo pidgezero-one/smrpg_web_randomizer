@@ -1,4 +1,6 @@
-# E3501_BOOSTER_HILL_BARREL_INTERACTION
+# pylint: disable=C0301
+
+"""E3501_BOOSTER_HILL_BARREL_INTERACTION"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,7 +12,7 @@ script = EventScript(
         JmpIfMarioOnAnObjectOrNot(
             ["EVENT_3501_set_short_18", "EVENT_3501_action_queue_sync_7"]
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True),
         CompareVarToConst(PRIMARY_TEMP_7000, 256),
         JmpIfComparisonResultIsGreaterOrEqual(["EVENT_3501_set_short_18"]),
         ActionQueueSync(
@@ -47,7 +49,7 @@ script = EventScript(
                 ASJmpIfLoadedMemoryIsAboveOrEqual0(
                     ["EVENT_3501_action_queue_async_9_SUBSCRIPT_pause_17"]
                 ),
-                ASShiftSoutheastPixels(1),
+                ASWalkSoutheastPixels(1),
                 ASDec(SECONDARY_TEMP_7024),
                 ASJmp(["EVENT_3501_action_queue_async_9_SUBSCRIPT_end_loop_18"]),
                 ASPause(
@@ -141,7 +143,7 @@ script = EventScript(
                 ASJumpToHeight(height=108, silent=True),
                 ASFloatingOn(),
                 ASLoadMemory(PRIMARY_TEMP_700C),
-                ASShiftNorthwestPixels(1),
+                ASWalkNorthwestPixels(1),
                 ASInc(SECONDARY_TEMP_7024),
                 ASEndLoop(),
                 ASSetSolidityBits(

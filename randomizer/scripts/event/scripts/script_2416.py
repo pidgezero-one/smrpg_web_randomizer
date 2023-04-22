@@ -1,4 +1,6 @@
-# E2416_FOREST_TRAMPOLINE_BUSINESS_LOGIC
+# pylint: disable=C0301
+
+"""E2416_FOREST_TRAMPOLINE_BUSINESS_LOGIC"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -16,7 +18,7 @@ script = EventScript(
                 ASSequencePlaybackOff(),
                 ASShadowOff(),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(8),
             ],
         ),
         SetAsyncActionScript(MARIO, A0408_JUMP_ON_SAVE_BLOCK),

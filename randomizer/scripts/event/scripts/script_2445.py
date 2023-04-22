@@ -1,4 +1,6 @@
-# E2445_TOWER_SMALL_SAVE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2445_TOWER_SMALL_SAVE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

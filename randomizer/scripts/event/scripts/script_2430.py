@@ -1,4 +1,6 @@
-# E2430_FOREST_PREMAZE_SAVE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2430_FOREST_PREMAZE_SAVE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -15,7 +17,7 @@ script = EventScript(
         ClearBit(DIRECTIONAL_7046_0),
         SetBit(DIRECTIONAL_7046_1),
         ActionQueueAsync(
-            target=NPC_3, subscript=[ASShiftSouthPixels(4), ASShiftEastPixels(4)]
+            target=NPC_3, subscript=[ASWalkSouthPixels(4), ASWalkEastPixels(4)]
         ),
         JmpIfBitClear(DIRECTIONAL_7047_0, ["EVENT_2430_jmp_if_bit_clear_27"]),
         ActionQueueAsync(target=MARIO, subscript=[ASVisibilityOff()]),

@@ -1,4 +1,6 @@
-# E3293_SHIP_BULLET_COLLISION
+# pylint: disable=C0301
+
+"""E3293_SHIP_BULLET_COLLISION"""
 
 from randomizer.scripts.event.script_imports import *
 

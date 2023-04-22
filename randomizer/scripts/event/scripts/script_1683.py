@@ -1,4 +1,6 @@
-# E1683_TEMPLE_EXIT_WARP_TRAMPOLINE
+# pylint: disable=C0301
+
+"""E1683_TEMPLE_EXIT_WARP_TRAMPOLINE"""
 
 from randomizer.scripts.event.script_imports import *
 

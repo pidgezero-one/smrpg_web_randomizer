@@ -1,4 +1,6 @@
-# referenced by battle_events BE0093_BEAM_OF_LIGHT_FORMS_AROUND_SMITHY_HEAD_BEFORE_BODY_APPEARS, battle_events BE0086_SMELTER_POURS_MOLTEN_LIQUID_SMITHY_WELDS
+# pylint: disable=C0301,C0103
+
+"""referenced by battle_events BE0093_BEAM_OF_LIGHT_FORMS_AROUND_SMITHY_HEAD_BEFORE_BODY_APPEARS, battle_events BE0086_SMELTER_POURS_MOLTEN_LIQUID_SMITHY_WELDS"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -16,11 +18,11 @@ script = SubroutineOrBanklessScript(
             set_z=True,
         ),
         NewEffectObject(effect=EF0112_SMELTER__S_MOLTEN_METAL, looping_off=True),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         RunSubroutine(["command_0x3a757a"]),
         RunSubroutine(["command_0x3a773f"]),
         RunSubroutine(["command_0x3a7760"]),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         FadeInScreen(duration=1),
@@ -114,7 +116,7 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x3a783c"]),
         FadeInEffect(duration=2),
         ScreenFlash(RED, 8),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x3a76d8"]),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60),
@@ -122,7 +124,7 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=30),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Db(bytearray(b"\x90")),
         RunSubroutine(["command_0x3a76e6"]),
         Pause2Frames(),

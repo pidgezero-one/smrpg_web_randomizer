@@ -1,4 +1,6 @@
-# E1834_KEEP_CANNONBALL
+# pylint: disable=C0301
+
+"""E1834_KEEP_CANNONBALL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -13,7 +15,7 @@ script = EventScript(
         MoveScriptToBackgroundThread2(),
         Pause(1, identifier="EVENT_1834_pause_7"),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_1834_action_queue_sync_50"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1834_action_queue_sync_50"]),
         Set7000ToPressedButton(),
         Mem7000AndConst(0x000F),
         Compare7000ToVar(TEMP_7026),
@@ -83,7 +85,7 @@ script = EventScript(
                     identifier="EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_700C_to_7000_short_mem_2",
                 ),
                 ASFaceEast7C(),
-                ASShiftFDirectionPixels(1),
+                ASWalkFDirectionPixels(1),
             ],
             identifier="EVENT_1834_action_queue_sync_48",
         ),
@@ -117,9 +119,9 @@ script = EventScript(
             ],
             identifier="EVENT_1834_action_queue_async_55",
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True),
         Compare7000ToVar(X_COORD_2),
         JmpIfLoadedMemoryIs0(["EVENT_1834_set_7000_to_object_coord_70"]),
         JmpIfComparisonResultIsGreaterOrEqual(["EVENT_1834_set_short_65"]),
@@ -140,7 +142,7 @@ script = EventScript(
             ],
         ),
         Set7000ToObjectCoord(
-            object=MARIO,
+            target_npc=MARIO,
             coord=COORD_Y,
             pixel=True,
             identifier="EVENT_1834_set_7000_to_object_coord_70",
@@ -167,7 +169,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[
-                ASShiftWestPixels(1),
+                ASWalkWestPixels(1),
                 ASResetProperties(),
                 ASCopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_700C),
                 ASFaceEast7C(),

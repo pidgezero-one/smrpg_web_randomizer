@@ -1,4 +1,6 @@
-# E3615_CLIMB_UP_VALLEY_BEANSTALK_INTO_VINE_CLOUDS
+# pylint: disable=C0301
+
+"""E3615_CLIMB_UP_VALLEY_BEANSTALK_INTO_VINE_CLOUDS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,8 +21,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(132),
-                ASShiftNorthwestSteps(2),
-                ASShiftNorthwestPixels(20),
+                ASWalkNorthwestSteps(2),
+                ASWalkNorthwestPixels(20),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),

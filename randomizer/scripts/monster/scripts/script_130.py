@@ -1,12 +1,14 @@
-# 130 - BandanaRedHenchman
+"""130 - BandanaRedHenchman"""
 
 from randomizer.scripts.monster.script_imports import *
 
-script = MonsterScript([
-	IfLastMonsterStanding(),
-	SetTarget(SELF),
-	CastSpell(Escape),
-	Wait1TurnandRestartScript(),
-	Attack(PhysicalAttack1, PhysicalAttack1, Skewer),
-	StartCounterCommands()
-])
+script = MonsterScript(
+    [
+        IfLastMonsterStanding(),
+        SetTarget(SELF),
+        CastSpell(Escape),
+        Wait1TurnandRestartScript(),
+        Attack(PhysicalAttack1, PhysicalAttack1, Skewer),
+        StartCounterCommands(),
+    ]
+)

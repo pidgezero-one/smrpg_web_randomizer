@@ -1,4 +1,6 @@
-# E3756_HOT_SPRINGS_LOADER
+# pylint: disable=C0301
+
+"""E3756_HOT_SPRINGS_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

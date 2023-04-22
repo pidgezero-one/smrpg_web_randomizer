@@ -1,4 +1,6 @@
-# E0430_PIPE_VAULT_MARIO_HIT_BY_THWOMP
+# pylint: disable=C0301
+
+"""E0430_PIPE_VAULT_MARIO_HIT_BY_THWOMP"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -30,7 +32,7 @@ script = EventScript(
                 ASTransferToXYZF(x=25, y=28, z=10, direction=EAST),
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftSouthwestPixels(14),
+                ASWalkSouthwestPixels(14),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASClearSolidityBits(
@@ -50,7 +52,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=8, sprite_offset=2, is_sequence=True, looping=True
                 ),
-                ASShiftSouthwestPixels(16),
+                ASWalkSouthwestPixels(16),
                 ASEndLoop(),
                 ASPause(60),
                 ASFaceNortheast(),

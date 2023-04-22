@@ -1,4 +1,6 @@
-# E3820_FORCED_TOWER_BOSS_1_FIGHT
+# pylint: disable=C0301
+
+"""E3820_FORCED_TOWER_BOSS_1_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3228_SHIP_CLONE_CONTROL
+# pylint: disable=C0301
+
+"""E3228_SHIP_CLONE_CONTROL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,17 +9,17 @@ script = EventScript(
         Pause(1, identifier="EVENT_3228_pause_0"),
         JmpIfMarioInAir(["EVENT_3228_clear_bit_16"]),
         Set7000ToTappedButton(),
-        JmpIf7000AllBitsClear(destinations=["EVENT_3228_clear_bit_16"]),
+        JmpIf7000AllBitsClear(bits=[], destinations=["EVENT_3228_clear_bit_16"]),
         JmpIfBitSet(
             TEMP_7044_0, ["EVENT_3228_start_embedded_action_script_sync_F1_15"]
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000,
             17,
             ["EVENT_3228_start_embedded_action_script_sync_F1_15"],
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Y, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True, bit_7=True),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000,
             121,
@@ -34,11 +36,11 @@ script = EventScript(
         ClearBit(TEMP_7044_7, identifier="EVENT_3228_clear_bit_16"),
         Set7000ToPressedButton(),
         JmpIf7000AllBitsClear(
-            destinations=["EVENT_3228_set_7000_to_pressed_button_20"]
+            bits=[], destinations=["EVENT_3228_set_7000_to_pressed_button_20"]
         ),
         SetBit(TEMP_7044_7),
         Set7000ToPressedButton(identifier="EVENT_3228_set_7000_to_pressed_button_20"),
-        JmpIf7000AllBitsClear(destinations=["EVENT_3228_pause_0"]),
+        JmpIf7000AllBitsClear(bits=[], destinations=["EVENT_3228_pause_0"]),
         StartSyncEmbeddedActionScript(
             target=NPC_0,
             prefix=0xF1,
@@ -52,7 +54,7 @@ script = EventScript(
                 ),
                 ASSetAllSpeeds(FAST),
                 ASSet700CToObjectCoord(
-                    object=MARIO,
+                    target_npc=MARIO,
                     coord=COORD_F,
                     pixel=True,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_set_700C_to_object_coord_3",
@@ -113,42 +115,42 @@ script = EventScript(
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southwest_pixels_18"
                     ],
                 ),
-                ASShiftEastPixels(
+                ASWalkEastPixels(
                     5,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_east_pixels_12",
                 ),
                 ASReturn(),
-                ASShiftSoutheastPixels(
+                ASWalkSoutheastPixels(
                     3,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southeast_pixels_14",
                 ),
                 ASReturn(),
-                ASShiftSouthPixels(
+                ASWalkSouthPixels(
                     1,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_south_pixels_16",
                 ),
                 ASReturn(),
-                ASShiftSouthwestPixels(
+                ASWalkSouthwestPixels(
                     3,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southwest_pixels_18",
                 ),
                 ASReturn(),
-                ASShiftWestPixels(
+                ASWalkWestPixels(
                     5,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_west_pixels_20",
                 ),
                 ASReturn(),
-                ASShiftNorthwestPixels(
+                ASWalkNorthwestPixels(
                     3,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northwest_pixels_22",
                 ),
                 ASReturn(),
-                ASShiftNorthPixels(
+                ASWalkNorthPixels(
                     1,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_north_pixels_24",
                 ),
                 ASReturn(),
-                ASShiftNortheastPixels(
+                ASWalkNortheastPixels(
                     3,
                     identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northeast_pixels_26",
                 ),

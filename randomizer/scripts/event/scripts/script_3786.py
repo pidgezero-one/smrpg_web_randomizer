@@ -1,4 +1,6 @@
-# E3786_BEAN_VALLEY_WEST_VINE_ROOM_EXIT_TO_UPPER_CHEST_ROOM
+# pylint: disable=C0301
+
+"""E3786_BEAN_VALLEY_WEST_VINE_ROOM_EXIT_TO_UPPER_CHEST_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -19,7 +21,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASJumpToHeight(128),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASFloatingOn(),
                 ASWalk1StepNortheast(),
                 ASSetSolidityBits(cant_pass_walls=True),

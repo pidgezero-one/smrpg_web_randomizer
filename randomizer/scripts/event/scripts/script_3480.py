@@ -1,4 +1,6 @@
-# E3480_MIDAS_RIVER_WATERFALL_LOADER
+# pylint: disable=C0301
+
+"""E3480_MIDAS_RIVER_WATERFALL_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -82,14 +84,14 @@ script = EventScript(
                 ASShiftToXYCoords(x=9, y=2),
                 ASFixedFCoordOn(),
                 ASSequenceLoopingOn(),
-                ASShiftNorthPixels(5),
+                ASWalkNorthPixels(5),
                 ASSetWalkingSpeed(NORMAL),
                 ASStartLoopNTimes(4),
                 ASVisibilityOff(),
                 ASPause(2),
                 ASVisibilityOn(),
                 ASPause(2),
-                ASShiftSouthPixels(1),
+                ASWalkSouthPixels(1),
                 ASEndLoop(),
                 ASShiftSouthSteps(5),
                 ASFixedFCoordOff(),
@@ -113,7 +115,7 @@ script = EventScript(
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\x00\x02\xf0\xff")),
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASSetWalkingSpeed(NORMAL),
                 ASShiftSouthSteps(3),
                 ASBPL262728(),
@@ -139,7 +141,7 @@ script = EventScript(
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%p\x02\xf5\xff")),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
-                ASShiftNortheastSteps(6),
+                ASWalkNortheastSteps(6),
                 ASWalk1StepNorth(),
                 ASBPL262728(),
             ],

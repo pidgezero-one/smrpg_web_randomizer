@@ -1,3 +1,5 @@
+"""Const names for overworld music tracks."""
+
 M00_CURRENT = 0x00
 M01_DODOS_COMING = 0x01
 M02_MUSHROOM_KINGDOM = 0x02

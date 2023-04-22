@@ -1,4 +1,6 @@
-# E3779_BEAN_VALLEY_1ST_VINE_ROOM_EXIT_TO_2ND_VINE_ROOM
+# pylint: disable=C0301
+
+"""E3779_BEAN_VALLEY_1ST_VINE_ROOM_EXIT_TO_2ND_VINE_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -25,8 +27,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(132),
-                ASShiftNorthwestPixels(20),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestPixels(20),
+                ASWalkNorthwestSteps(2),
                 ASSetWalkingSpeed(NORMAL),
             ],
             identifier="EVENT_3779_action_queue_sync_6",

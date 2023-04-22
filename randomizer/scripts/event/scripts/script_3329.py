@@ -1,11 +1,13 @@
-# E3329_JUMPING_FIREBALLS
+# pylint: disable=C0301
+
+"""E3329_JUMPING_FIREBALLS"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
         Pause(1, identifier="EVENT_3329_pause_0"),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_Z, pixel=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3329_pause_0"]),
         JmpIfBitSet(TEMP_7076_0, ["EVENT_3329_pause_0"]),
         EnableControls([]),
@@ -30,7 +32,7 @@ script = EventScript(
                     ["EVENT_3329_action_queue_async_6_SUBSCRIPT_pause_6"]
                 ),
                 ASResetProperties(),
-                ASSet700CToObjectCoord(object=NPC_0, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=NPC_0, coord=COORD_F, pixel=True),
                 ASFaceEast7C(),
                 ASPause(1),
                 ASDb(bytearray(b"\xfd\x9c:")),
@@ -41,7 +43,9 @@ script = EventScript(
         NonEmbeddedActionQueue(
             subscript=[
                 ASFaceSouthwest7D(),
-                ASSet700CToObjectCoord(object=DUMMY_0X07, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(
+                    target_npc=DUMMY_0X07, coord=COORD_F, pixel=True
+                ),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     7,
@@ -136,7 +140,7 @@ script = EventScript(
                     identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17",
                 ),
                 ASJmpIfObjectWithinRange(
-                    object=NPC_0,
+                    comparing_npc=NPC_0,
                     usually=0,
                     tiles=8,
                     destinations=[
@@ -144,7 +148,7 @@ script = EventScript(
                     ],
                 ),
                 ASJmpIfObjectWithinRange(
-                    object=NPC_0,
+                    comparing_npc=NPC_0,
                     usually=0,
                     tiles=16,
                     destinations=[
@@ -152,7 +156,7 @@ script = EventScript(
                     ],
                 ),
                 ASJmpIfObjectWithinRange(
-                    object=NPC_0,
+                    comparing_npc=NPC_0,
                     usually=0,
                     tiles=28,
                     destinations=[
@@ -192,7 +196,7 @@ script = EventScript(
                 ),
                 ASCreatePacketAtObjectCoords(
                     packet=P047_BLUE_FIRE_TRAIL,
-                    object=MARIO,
+                    target_npc=MARIO,
                     destinations=[
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_clear_solidity_bits_29"
                     ],

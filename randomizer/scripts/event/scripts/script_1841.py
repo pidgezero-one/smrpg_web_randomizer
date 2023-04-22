@@ -1,4 +1,6 @@
-# E1841_KEEP_INVISIBLE_FLOOR_CHEST_1
+# pylint: disable=C0301
+
+"""E1841_KEEP_INVISIBLE_FLOOR_CHEST_1"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,9 +9,9 @@ script = EventScript(
         JmpIfBitSet(UNIVERSAL_CHEST_ANIMATION_BIT, ["EVENT_1841_inc_7"]),
         SetBit(UNIVERSAL_CHEST_ANIMATION_BIT),
         PrioritySet(
-            mainscreen=[LAYER_1, LAYER_2, NPC_SPRITES],
-            subscreen=[LAYER_3],
-            colour_math=[LAYER_1, LAYER_2, NPC_SPRITES, HALF_INTENSITY],
+            mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
+            subscreen=[LAYER_L3],
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY],
         ),
         SetVarToConst(TIMER_701E, 8),
         RunBackgroundEventWithPauseReturnOnExit(

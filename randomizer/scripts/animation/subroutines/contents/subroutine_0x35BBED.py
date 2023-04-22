@@ -1,4 +1,6 @@
-# referenced by ally_spells Geno Blast
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Geno Blast"""
 
 from randomizer.scripts.animation.script_imports import *
 

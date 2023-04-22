@@ -1,4 +1,6 @@
-# E2556_BEAN_VALLEY_BOSS_FIGHT
+# pylint: disable=C0301
+
+"""E2556_BEAN_VALLEY_BOSS_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -41,7 +43,7 @@ script = EventScript(
             subscript=[
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASShadowOn(),
-                ASShiftNorthwestSteps(16),
+                ASWalkNorthwestSteps(16),
             ],
         ),
         SetSyncActionScript(NPC_3, A0689_BEAN_VALLEY_BOSS_PRIZE_DRIFTS_DOWN),

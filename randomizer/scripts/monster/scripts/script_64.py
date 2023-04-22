@@ -1,4 +1,4 @@
-# 64 - Terracotta
+"""64 - Terracotta"""
 
 from randomizer.scripts.monster.script_imports import *
 

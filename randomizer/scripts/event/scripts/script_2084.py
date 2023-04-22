@@ -1,4 +1,6 @@
-# E2084_MARIOS_ROOM_INVISIBLE_ITEM
+# pylint: disable=C0301
+
+"""E2084_MARIOS_ROOM_INVISIBLE_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 

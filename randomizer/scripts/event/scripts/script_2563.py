@@ -1,4 +1,6 @@
-# E2563_REVEAL_BEAN_VALLEY_BEANSTALK
+# pylint: disable=C0301
+
+"""E2563_REVEAL_BEAN_VALLEY_BEANSTALK"""
 
 from randomizer.scripts.event.script_imports import *
 

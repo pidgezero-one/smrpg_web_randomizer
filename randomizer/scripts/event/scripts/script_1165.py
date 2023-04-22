@@ -1,4 +1,6 @@
-# E1165_SEASIDE_LIBERATED_BEACH_LETTER
+# pylint: disable=C0301
+
+"""E1165_SEASIDE_LIBERATED_BEACH_LETTER"""
 
 from randomizer.scripts.event.script_imports import *
 

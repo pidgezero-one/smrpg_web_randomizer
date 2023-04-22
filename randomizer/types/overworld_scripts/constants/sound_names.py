@@ -1,3 +1,5 @@
+"""Const names for sound effects played in the overworld."""
+
 SO000_SILENCE = 0x00
 SO001_MENU_SELECT = 0x01
 SO002_MENU_CANCEL = 0x02

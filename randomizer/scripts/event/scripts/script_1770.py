@@ -1,4 +1,6 @@
-# E1770_TEMPLE_FORTUNE_RESULTS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1770_TEMPLE_FORTUNE_RESULTS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

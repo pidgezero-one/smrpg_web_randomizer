@@ -1,4 +1,6 @@
-# E2402_8BIT_BACKGROUND
+# pylint: disable=C0301
+
+"""E2402_8BIT_BACKGROUND"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -9,7 +11,7 @@ script = EventScript(
         ClearBit(TEMP_7043_0),
         JmpIfMarioInAir(["EVENT_2402_set_bit_43"]),
         Set7000ToTappedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_action_queue_async_8"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_action_queue_async_8"]),
         ActionQueueAsync(target=NPC_0, subscript=[ASSetSequenceSpeed(NORMAL)]),
         Jmp(["EVENT_2402_set_7000_to_pressed_button_9"]),
         ActionQueueAsync(
@@ -18,14 +20,14 @@ script = EventScript(
             identifier="EVENT_2402_action_queue_async_8",
         ),
         Set7000ToPressedButton(identifier="EVENT_2402_set_7000_to_pressed_button_9"),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_jmp_if_bit_set_33"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_jmp_if_bit_set_38"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_jmp_if_bit_set_38"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_jmp_if_bit_set_33"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_jmp_if_bit_set_33"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_jmp_if_bit_set_38"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_jmp_if_bit_set_38"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_jmp_if_bit_set_33"]),
         ClearBit(TEMP_7043_1),
         ClearBit(TEMP_7043_2),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_2402_clear_bit_31"]),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_2402_action_queue_sync_29"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2402_action_queue_sync_29"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_2402_action_queue_sync_29"]),
@@ -85,11 +87,11 @@ script = EventScript(
         ClearBit(TEMP_7043_1),
         ClearBit(TEMP_7043_2),
         Set7000ToPressedButton(),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_action_queue_sync_67"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_action_queue_sync_65"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_action_queue_sync_65"]),
-        JmpIf7000AnyBitsSet(destinations=["EVENT_2402_action_queue_sync_67"]),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_F, pixel=True),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_action_queue_sync_67"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_action_queue_sync_65"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_action_queue_sync_65"]),
+        JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_action_queue_sync_67"]),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_2402_action_queue_sync_61"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2402_action_queue_sync_61"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_2402_action_queue_sync_61"]),

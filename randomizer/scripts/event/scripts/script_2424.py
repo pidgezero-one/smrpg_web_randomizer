@@ -1,4 +1,6 @@
-# E2424_FOREST_ARROW_HITS_YOU
+# pylint: disable=C0301
+
+"""E2424_FOREST_ARROW_HITS_YOU"""
 
 from randomizer.scripts.event.script_imports import *
 

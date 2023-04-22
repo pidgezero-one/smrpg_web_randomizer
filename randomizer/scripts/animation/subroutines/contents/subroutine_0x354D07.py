@@ -1,4 +1,6 @@
-# referenced by monster_attacks Vigorup, monster_attacks Sporocyst, monster_attacks PhysicalAttack31, monster_attacks GetTough, monster_attacks PhysicalAttack32
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks Vigorup, monster_attacks Sporocyst, monster_attacks PhysicalAttack31, monster_attacks GetTough, monster_attacks PhysicalAttack32"""
 
 from randomizer.scripts.animation.script_imports import *
 

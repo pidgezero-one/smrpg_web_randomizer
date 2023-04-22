@@ -1,4 +1,6 @@
-# E3697_NIMBUS_CASTLE_WEST_LOWER_HALL_PINWHEEL_ANIMATIONS
+# pylint: disable=C0301
+
+"""E3697_NIMBUS_CASTLE_WEST_LOWER_HALL_PINWHEEL_ANIMATIONS"""
 
 from randomizer.scripts.event.script_imports import *
 

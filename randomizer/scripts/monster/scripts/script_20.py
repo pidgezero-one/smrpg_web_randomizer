@@ -1,4 +1,4 @@
-# 20 - Greaper
+"""20 - Greaper"""
 
 from randomizer.scripts.monster.script_imports import *
 

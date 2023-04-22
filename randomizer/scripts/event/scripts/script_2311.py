@@ -1,4 +1,6 @@
-# E2311_BOOSTER_PASS_ARTICHOKER_ENCOUNTER_1
+# pylint: disable=C0301
+
+"""E2311_BOOSTER_PASS_ARTICHOKER_ENCOUNTER_1"""
 
 from randomizer.scripts.event.script_imports import *
 

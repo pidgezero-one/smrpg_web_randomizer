@@ -1,10 +1,12 @@
-# E2360_ABYSS_1ST_TRAMPOLINE_CATCHER_LOADER
+# pylint: disable=C0301
+
+"""E2360_ABYSS_1ST_TRAMPOLINE_CATCHER_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        ActionQueueAsync(target=NPC_0, subscript=[ASShiftNortheastPixels(10)]),
+        ActionQueueAsync(target=NPC_0, subscript=[ASWalkNortheastPixels(10)]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -12,8 +14,8 @@ script = EventScript(
                 ASOverwriteSolidity(),
                 ASFloatingOff(),
                 ASTransferToXYZF(x=14, y=9, z=20, direction=EAST),
-                ASShiftNorthPixels(14),
-                ASShiftWestPixels(3),
+                ASWalkNorthPixels(14),
+                ASWalkWestPixels(3),
             ],
         ),
         FadeInFromBlack(sync=False),
@@ -53,12 +55,12 @@ script = EventScript(
         ),
         ActionQueueAsync(
             target=MARIO,
-            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASShiftSouthPixels(8)],
+            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalkSouthPixels(8)],
         ),
         PlaySound(sound=SO010_TRAMPOLINE, channel=6),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASShiftNorthwestSteps(4)],
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNorthwestSteps(4)],
         ),
         ActionQueueSync(
             target=MARIO,

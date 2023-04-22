@@ -1321,7 +1321,7 @@ MINES_TRAMPOLINE_HENCHMAN_FILL = UniqueHenchmanFill(
     affected_event_scripts=[E0776_MINES_TRAMPOLINE_ROOM_LOADER],
     affected_action_scripts=[A0619_MINES_CENTER_CROOK],
     sequence_setter=E0777_MINES_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MolevilleMines,
+    battlefield=Battlefields.MOLEVILLE_MINES,
     can_run_away=True,
 )
 MINES_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
@@ -1334,7 +1334,7 @@ MINES_LEFT_HENCHMAN_FILL = UniqueHenchmanFill(
     affected_event_scripts=[E0778_MINES_LEFT_OF_TRAMPOLINE_ROOM_LOADER],
     affected_action_scripts=[A0617_MINES_LEFT_CROOK],
     sequence_setter=E0779_MINES_LEFT_OF_TRAMPOLINE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MolevilleMines,
+    battlefield=Battlefields.MOLEVILLE_MINES,
     can_run_away=True,
 )
 MINES_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
@@ -1347,7 +1347,7 @@ MINES_RIGHT_HENCHMAN_FILL = UniqueHenchmanFill(
     affected_event_scripts=[E0786_MINES_LONG_ROOM_IN_MINIBOSS_PATH_LOADER],
     affected_action_scripts=[A0618_MINES_RIGHT_CROOK],
     sequence_setter=E0787_MINES_LONG_ROOM_IN_MINIBOSS_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
-    battlefield=Battlefields.MolevilleMines,
+    battlefield=Battlefields.MOLEVILLE_MINES,
     can_run_away=True,
 )
 MINES_FINAL_BOSS_FILL = BossModelFill(

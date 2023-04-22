@@ -1,4 +1,6 @@
-# E2065_DOJO_LOADER_FIRST_TIME_ANIMATION
+# pylint: disable=C0301
+
+"""E2065_DOJO_LOADER_FIRST_TIME_ANIMATION"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,7 +24,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASResetProperties(),
                 ASFixedFCoordOff(),
             ],

@@ -1,4 +1,6 @@
-# E3644_NIMBUS_INNKEEPER
+# pylint: disable=C0301
+
+"""E3644_NIMBUS_INNKEEPER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -124,8 +126,8 @@ script = EventScript(
             target=LAYER_1,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastSteps(7),
-                ASShiftEastPixels(8),
+                ASWalkEastSteps(7),
+                ASWalkEastPixels(8),
             ],
         ),
         SummonObjectToCurrentLevel(NPC_4),
@@ -218,8 +220,8 @@ script = EventScript(
             target=LAYER_1,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastSteps(7),
-                ASShiftEastPixels(8),
+                ASWalkEastSteps(7),
+                ASWalkEastPixels(8),
             ],
         ),
         SetVarToRandom(PRIMARY_TEMP_7000, 4),
@@ -237,7 +239,7 @@ script = EventScript(
         Pause(10),
         RunDialog(
             dialog_id=DI3803_DREAM_GAZ,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -276,7 +278,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI3804_DREAM_YOSHI,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -330,7 +332,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI3805_DREAM_CHANCELLOR,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -354,7 +356,7 @@ script = EventScript(
         Pause(60),
         RunDialog(
             dialog_id=DI3806_DREAM_JUMPING_KID,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -365,7 +367,7 @@ script = EventScript(
         SetSyncActionScript(NPC_2, A0023_FAST_REPEATED_JUMPING),
         RunDialog(
             dialog_id=DI3807_DREAM,
-            above_object=BOWSER,
+            above_object=Bowser,
             closable=True,
             sync=False,
             multiline=True,
@@ -386,7 +388,7 @@ script = EventScript(
         FreezeCamera(),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftEastPixels(16)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkEastPixels(16)],
         ),
         ActionQueueSync(
             target=MARIO,
@@ -409,8 +411,8 @@ script = EventScript(
                         b"(\x00\x00\x00\x00\x00\xc0\x00\x03\x00\x01\x00\x00\x00\x08\x80"
                     )
                 ),
-                ASShiftEastSteps(7),
-                ASShiftEastPixels(16),
+                ASWalkEastSteps(7),
+                ASWalkEastPixels(16),
                 ASBPL262728(),
             ],
         ),
@@ -427,8 +429,8 @@ script = EventScript(
                         b"(\x00\x00\x00\x00\x00@\x00\x03\x00\x01\x00\x00\x00\x08\x80"
                     )
                 ),
-                ASShiftWestSteps(7),
-                ASShiftWestPixels(16),
+                ASWalkWestSteps(7),
+                ASWalkWestPixels(16),
                 ASBPL262728(),
             ],
         ),
@@ -442,7 +444,7 @@ script = EventScript(
                         b"(\x00\x00\x00\x00\x00\xc0\x00\x03\x00\x01\x00\x00\x00\x08\x80"
                     )
                 ),
-                ASShiftEastSteps(6),
+                ASWalkEastSteps(6),
                 ASBPL262728(),
             ],
         ),
@@ -455,7 +457,7 @@ script = EventScript(
                         b"(\x00\x00\x00\x00\x00@\x00\x03\x00\x01\x00\x00\x00\x08\x80"
                     )
                 ),
-                ASShiftWestSteps(6),
+                ASWalkWestSteps(6),
                 ASBPL262728(),
             ],
         ),

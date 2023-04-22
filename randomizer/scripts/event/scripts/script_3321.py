@@ -1,4 +1,6 @@
-# E3321_VOLCANO_ENTER_1ST_ROOM
+# pylint: disable=C0301
+
+"""E3321_VOLCANO_ENTER_1ST_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 

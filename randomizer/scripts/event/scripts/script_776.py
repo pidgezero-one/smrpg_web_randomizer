@@ -1,4 +1,6 @@
-# E0776_MINES_TRAMPOLINE_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E0776_MINES_TRAMPOLINE_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -8,7 +10,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASFaceSouthwest(),
                 ASSequenceLoopingOff(),
             ],

@@ -1,4 +1,4 @@
-# 165 - MachineMadeYaridovich
+"""165 - MachineMadeYaridovich"""
 
 from randomizer.scripts.monster.script_imports import *
 

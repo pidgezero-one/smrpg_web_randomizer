@@ -1,4 +1,6 @@
-# referenced by
+# pylint: disable=C0301,C0103
+
+"""referenced by"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -49,11 +51,11 @@ script = SubroutineOrBanklessScript(
             should_set_end_position=True,
             should_set_speed=True,
         ),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x3a7755"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Db(bytearray(b"\x90")),
         RunSubroutine(["command_0x3a757a"]),
         Pause2Frames(),
@@ -82,11 +84,11 @@ script = SubroutineOrBanklessScript(
             should_set_end_position=True,
             should_set_speed=True,
         ),
-        Layer3On(property=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL_EXCEPT_ALLIES, bit_0=True, bpp4=True),
         RunSubroutine(["command_0x3a7755"]),
         FadeOutObject(duration=2),
         PauseScriptUntil(condition=FADE_2BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL_EXCEPT_ALLIES, bpp4=True),
         Pause2Frames(),
         ResetObjectMappingMemory(),
         ClearEffectIndex(),

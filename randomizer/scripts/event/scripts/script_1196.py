@@ -1,7 +1,7 @@
-# E1196_EMPTY
+# pylint: disable=C0301
+
+"""E1196_EMPTY"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	
-])
+script = EventScript([])

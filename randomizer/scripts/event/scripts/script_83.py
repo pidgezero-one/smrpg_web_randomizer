@@ -1,4 +1,6 @@
-# E0083_THREE_MUSTY_FEARS_BOO_DIALOG
+# pylint: disable=C0301
+
+"""E0083_THREE_MUSTY_FEARS_BOO_DIALOG"""
 
 from randomizer.scripts.event.script_imports import *
 

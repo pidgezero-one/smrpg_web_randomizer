@@ -1,4 +1,5 @@
-from os import renames
+"""Base classes for swappable palettes."""
+
 from typing import List
 from randomizer.types.patch.classes import Patch
 from randomizer.types.palettes.constants import (
@@ -10,7 +11,11 @@ from randomizer.types.palettes.constants import (
 
 
 class Palette(list):
-    def __new__(cls, *args, **kwargs):
+    """A palette is a list of 15 valid colours.\n
+    A valid colour is a 6-digit hex value, where each 2 digits (R, G, B respectively)
+    are between 0 and 248 and divisible by 8."""
+
+    def __new__(cls, *args):
         for colour in args[0]:
             assert isinstance(colour, int)
             assert (colour >> 16) % 8 == 0
@@ -20,15 +25,17 @@ class Palette(list):
 
     @classmethod
     def _colour_bytes(cls, colour) -> bytearray:
-        r = colour >> 19
-        g = (colour >> 10) & 0x3E
-        b = (colour >> 1) & 0x7C
+        red = colour >> 19
+        green = (colour >> 10) & 0x3E
+        blue = (colour >> 1) & 0x7C
 
-        byte_1 = r + ((g << 4) & 0xF0)
-        byte_2 = b + (g >> 4)
+        byte_1 = red + ((green << 4) & 0xF0)
+        byte_2 = blue + (green >> 4)
         return bytearray([byte_1, byte_2])
 
     def to_bytes(self) -> bytearray:
+        """A representation of this palette as a sequence of bytes
+        that the game understands."""
         output = bytearray()
         for colour in self:
             output += Palette._colour_bytes(colour)
@@ -37,16 +44,21 @@ class Palette(list):
 
 
 class EffectPalette(Palette):
-    pass
+    """A palette to be applied to spell special effects."""
 
 
 class SpritePalette(Palette):
-    def __new__(cls, *args, **kwargs):
+    """A palette to be applied to NPC sprites."""
+
+    def __new__(cls, *args):
         assert len(*args) == 15
         return super(SpritePalette, cls).__new__(cls, *args)
 
 
 class CharacterPaletteSet:
+    """A collection of rules regarding the application of a palette
+    for a playable character."""
+
     _name: str = ""
     _original_name: str = ""
     _original_clone_name: str = ""
@@ -63,63 +75,98 @@ class CharacterPaletteSet:
     _poison_colours: SpritePalette
     _underwater_colours: SpritePalette
 
-    minecart_colours: SpritePalette
-    overworld_colours: SpritePalette
-    classic_colours: SpritePalette
+    _minecart_colours: SpritePalette
+    _overworld_colours: SpritePalette
+    _classic_colours: SpritePalette
 
     @property
     def name(self) -> str:
+        """A new name for the character using this palette.\n
+        Whether or not the character actually gets renamed depends on the player's options."""
         return self._name
 
     @property
     def original_name(self) -> str:
+        """The character's original name."""
         return self._original_name
-
-    def set_original_name(self, original_name: str) -> None:
-        self._original_name = original_name
 
     @property
     def original_clone_name(self) -> str:
+        """The original name of the Belome-summoned clone for this character."""
         return self._original_clone_name
-
-    def set_original_clone_name(self, original_clone_name: str) -> None:
-        self._original_clone_name = original_clone_name
 
     @property
     def addresses_for_default_palette(self) -> List[int]:
+        """The ROM addresses at which to write the main colours for this palette."""
         return self._addresses_for_default_palette
 
     @property
     def addresses_for_doll_colours(self) -> List[int]:
+        """The ROM addresses at which to write the colours for this palette
+        as they would apply to this character's doll sprite."""
         return self._addresses_for_doll_colours
 
     @property
     def addresses_for_poison_palette(self) -> List[int]:
+        """The ROM addresses at which to write the poison-tinted colours for this palette."""
         return self._addresses_for_poison_palette
 
     @property
     def addresses_for_underwater_palette(self) -> List[int]:
+        """The ROM addresses at which to write the underwater-tinted colours for this palette."""
         return self._addresses_for_underwater_palette
 
     @property
     def address_for_name(self) -> int:
+        """The ROM address at which to write this character's new name."""
         return self._address_for_name
 
     @property
     def address_for_clone_name(self) -> int:
+        """The ROM address at which to write this character's Belome-summoned clone's new name."""
         return self._address_for_clone_name
 
     @property
     def default_colours(self) -> SpritePalette:
+        """The default colours for this palette that you would see applied to this character
+        in the overworld, while not underwater or otherwise tinted."""
+        return self._default_colours
+
+    @property
+    def doll_colours(self) -> SpritePalette:
+        """The colours to be applied to a doll of this character. In most cases, the palette
+        is identical to the default colours."""
         return self._default_colours
 
     @property
     def poison_colours(self) -> SpritePalette:
+        """The colours for this palette that would be applied to the character when afflicted
+        by poison."""
         return self._poison_colours
 
     @property
     def underwater_colours(self) -> SpritePalette:
+        """The colours for this palette that would be applied to the character when underwater
+        or otherwise darkened."""
         return self._underwater_colours
+
+    @property
+    def minecart_colours(self) -> SpritePalette:
+        """The colours for this palette that would be applied to the character when they are
+        driving the minecart. Only used for the seed's main character."""
+        return self._minecart_colours
+
+    @property
+    def overworld_colours(self) -> SpritePalette:
+        """The colours for this palette that would be applied to the character's sprite
+        used on the world map."""
+        return self._overworld_colours
+
+    @property
+    def classic_colours(self) -> SpritePalette:
+        """The colours for this palette that would be applied to the character's 8-bit style
+        sprite upon emerging from the curtain in Booster Tower."""
+        return self._classic_colours
 
     @classmethod
     def _pad_name(cls, name: str) -> str:
@@ -128,6 +175,8 @@ class CharacterPaletteSet:
 
     @property
     def clone_name(self) -> str:
+        """Produce the name of this character's Belome-summoned clone,
+        to be used if the player has chosen to modify the character's name.."""
         clone_name: str = self.name.upper()
         if len(self.name) < 8:
             clone_name += " CLONE"
@@ -138,6 +187,7 @@ class CharacterPaletteSet:
     def get_patch(
         self, rename_character: bool = False, main_character: bool = False
     ) -> Patch:
+        """Get a ROM patch that applies the proper colours to each appropriate address."""
         patch = Patch()
         names = (self.original_name, self.original_clone_name)
         if rename_character:
@@ -163,6 +213,8 @@ class CharacterPaletteSet:
 
 
 class MarioPaletteSet(CharacterPaletteSet):
+    """A collection of rules regarding the application of a palette to Mario."""
+
     _name: str = "Mario"
     _original_name: str = "Mario"
     _original_clone_name: str = "MARIO CLONE"
@@ -188,7 +240,11 @@ class MarioPaletteSet(CharacterPaletteSet):
         0x3EE0FF,
     ]
     _addresses_for_doll_colours: List[int] = [
-        # doll 1 - for mario, 6th colour should be 7th in palette, 7th colour should be 8th in palette, and 8th and 9th colour should both be 9th in palette. 10th colour should be 11th in palette, 11th and 12th colour should be 12th in palette
+        # doll 1 - for mario, 6th colour should be 7th in palette,
+        # 7th colour should be 8th in palette,
+        # and 8th and 9th colour should both be 9th in palette.
+        # 10th colour should be 11th in palette,
+        # 11th and 12th colour should be 12th in palette
         # 0x2576E6
         0x258D66
     ]
@@ -205,8 +261,8 @@ class MarioPaletteSet(CharacterPaletteSet):
     _address_for_clone_name: int = 0x399A96
 
     @property
-    def classic_colours(self) -> EffectPalette:
-        return EffectPalette(
+    def classic_colours(self) -> SpritePalette:
+        return SpritePalette(
             [self.default_colours[10], self.default_colours[6], self.default_colours[1]]
         )
 
@@ -287,6 +343,8 @@ class MarioPaletteSet(CharacterPaletteSet):
 
 
 class MallowPaletteSet(CharacterPaletteSet):
+    """A collection of rules regarding the application of a palette to Mallow."""
+
     _name: str = "Mallow"
     _original_name: str = "Mallow"
     _original_clone_name: str = "MALLOW CLONE"
@@ -299,7 +357,8 @@ class MallowPaletteSet(CharacterPaletteSet):
         # portrait
         0x256B4C,
         # doll 1 - for mallow, skip 8th and 9th colour replacement
-        # maybe leave this out since mario and peach in credits have to share a palette and im probably not going to change them
+        # maybe leave this out since mario and peach in credits have to share a palette
+        # and im probably not going to change them
         # 0x2583CA,
         # scarecrow/mushroom
         # 0x256B4C
@@ -313,10 +372,9 @@ class MallowPaletteSet(CharacterPaletteSet):
     _address_for_name: int = 0x3A1375
     _address_for_clone_name: int = 0x399ACA
 
-    # todo
     @property
-    def classic_colours(self) -> EffectPalette:
-        return EffectPalette(self.default_colours)
+    def classic_colours(self) -> SpritePalette:
+        return SpritePalette(self.default_colours)
 
     @property
     def doll_colours(self) -> SpritePalette:
@@ -332,6 +390,8 @@ class MallowPaletteSet(CharacterPaletteSet):
 
 
 class GenoPaletteSet(CharacterPaletteSet):
+    """A collection of rules regarding the application of a palette to Geno."""
+
     _name: str = "Geno"
     _original_name: str = "Geno"
     _original_clone_name: str = "GENO CLONE"
@@ -358,8 +418,8 @@ class GenoPaletteSet(CharacterPaletteSet):
     _address_for_clone_name: int = 0x399ABD
 
     @property
-    def classic_colours(self) -> EffectPalette:
-        return EffectPalette(
+    def classic_colours(self) -> SpritePalette:
+        return SpritePalette(
             [self.default_colours[3], self.default_colours[6], self.default_colours[1]]
         )
 
@@ -377,6 +437,8 @@ class GenoPaletteSet(CharacterPaletteSet):
 
 
 class BowserPaletteSet(CharacterPaletteSet):
+    """A collection of rules regarding the application of a palette to Bowser."""
+
     _name: str = "Bowser"
     _original_name: str = "Bowser"
     _original_clone_name: str = "BOWSER CLONE"
@@ -406,8 +468,8 @@ class BowserPaletteSet(CharacterPaletteSet):
 
     # needs to be updated
     @property
-    def classic_colours(self) -> EffectPalette:
-        return EffectPalette(self.default_colours)
+    def classic_colours(self) -> SpritePalette:
+        return SpritePalette(self.default_colours)
 
     @property
     def doll_colours(self) -> SpritePalette:
@@ -423,6 +485,8 @@ class BowserPaletteSet(CharacterPaletteSet):
 
 
 class ToadstoolPaletteSet(CharacterPaletteSet):
+    """A collection of rules regarding the application of a palette to Toadstool."""
+
     _name: str = "Toadstool"
     _original_name: str = "Toadstool"
     _original_clone_name: str = "TOADSTOOL 2"
@@ -449,8 +513,8 @@ class ToadstoolPaletteSet(CharacterPaletteSet):
     _address_for_clone_name: int = 0x399AA3
 
     @property
-    def classic_colours(self) -> EffectPalette:
-        return EffectPalette(
+    def classic_colours(self) -> SpritePalette:
+        return SpritePalette(
             [self.default_colours[6], self.default_colours[3], self.default_colours[1]]
         )
 

@@ -1,4 +1,6 @@
-# E1766_TEMPLE_ELEVATOR_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1766_TEMPLE_ELEVATOR_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,7 +12,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=20, y=23, z=0, direction=EAST),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastPixels(14),
+                ASWalkEastPixels(14),
                 ASFaceSoutheast(),
             ],
         ),
@@ -21,7 +23,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=20, y=55, z=0, direction=EAST),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastPixels(14),
+                ASWalkEastPixels(14),
                 ASFaceSoutheast(),
             ],
             identifier="EVENT_1766_action_queue_async_4",

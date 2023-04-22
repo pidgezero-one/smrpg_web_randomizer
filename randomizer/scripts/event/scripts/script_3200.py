@@ -1,4 +1,6 @@
-# E3200_MINES_TRAMPOLINE
+# pylint: disable=C0301
+
+"""E3200_MINES_TRAMPOLINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -59,14 +61,14 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASStartLoopNTimes(2),
-                ASShiftWestPixels(2),
-                ASShiftNorthPixels(4),
-                ASShiftEastPixels(2),
-                ASShiftSouthPixels(1),
-                ASShiftWestPixels(1),
-                ASShiftSouthPixels(5),
-                ASShiftEastPixels(1),
-                ASShiftNorthPixels(2),
+                ASWalkWestPixels(2),
+                ASWalkNorthPixels(4),
+                ASWalkEastPixels(2),
+                ASWalkSouthPixels(1),
+                ASWalkWestPixels(1),
+                ASWalkSouthPixels(5),
+                ASWalkEastPixels(1),
+                ASWalkNorthPixels(2),
                 ASEndLoop(),
                 ASSetWalkingSpeed(NORMAL),
             ],

@@ -1,4 +1,4 @@
-# 111 - Bobomb
+"""111 - Bobomb"""
 
 from randomizer.scripts.monster.script_imports import *
 

@@ -1,4 +1,6 @@
-# E3479_MIDAS_RIVER_SCORE_SUBMISSION
+# pylint: disable=C0301
+
+"""E3479_MIDAS_RIVER_SCORE_SUBMISSION"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -187,7 +189,7 @@ script = EventScript(
             target=NPC_3,
             subscript=[
                 ASSetAllSpeeds(FAST),
-                ASShiftSouthwestSteps(4),
+                ASWalkSouthwestSteps(4),
                 ASWalk1StepSoutheast(),
                 ASSetAllSpeeds(NORMAL),
             ],

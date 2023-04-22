@@ -1,4 +1,6 @@
-# E0860_MINES_BOSS_SHOVE_SUBROUTINE
+# pylint: disable=C0301
+
+"""E0860_MINES_BOSS_SHOVE_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -31,7 +33,7 @@ script = EventScript(
                 ),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASPlaySound(sound=SO019_LONG_FALL, channel=6),
-                ASShiftSouthwestSteps(10),
+                ASWalkSouthwestSteps(10),
             ],
         ),
         Pause(30),

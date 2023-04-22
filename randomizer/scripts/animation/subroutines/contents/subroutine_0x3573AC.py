@@ -1,4 +1,6 @@
-# referenced by behaviour_46_0x350E98, behaviour_53_0x350F7A, monster_attacks TripleKick, behaviour_37_0x350D36, behaviour_28_0x350BB7, behaviour_44_0x350E4A
+# pylint: disable=C0301,C0103
+
+"""referenced by behaviour_46_0x350E98, behaviour_53_0x350F7A, monster_attacks TripleKick, behaviour_37_0x350D36, behaviour_28_0x350BB7, behaviour_44_0x350E4A"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -26,7 +28,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=64, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=64,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -48,7 +54,11 @@ script = SubroutineOrBanklessScript(
             should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=64, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=64,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -77,10 +87,18 @@ script = SubroutineOrBanklessScript(
         ),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-65, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-65,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -95,10 +113,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-65, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-65,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -127,10 +153,18 @@ script = SubroutineOrBanklessScript(
         ),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -145,10 +179,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=-97, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=-97,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -177,10 +219,18 @@ script = SubroutineOrBanklessScript(
         ),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -195,10 +245,18 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
-            speed=1, start_position=96, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=96,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -279,7 +337,11 @@ script = SubroutineOrBanklessScript(
         ),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -294,7 +356,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_x=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_x=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -323,7 +389,11 @@ script = SubroutineOrBanklessScript(
         ),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,
@@ -338,7 +408,11 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=BUTTON_PRESSED),
         ResetObjectMappingMemory(),
         MoveObject(
-            speed=1, start_position=128, end_position=0, apply_to_y=True, set_speed=True
+            speed=1,
+            start_position=128,
+            end_position=0,
+            apply_to_y=True,
+            should_set_speed=True,
         ),
         MoveObject(
             speed=33,

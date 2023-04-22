@@ -1,4 +1,6 @@
-# E2586_BOOSTER_PASS_APPRENTICE_FIGHT
+# pylint: disable=C0301
+
+"""E2586_BOOSTER_PASS_APPRENTICE_FIGHT"""
 
 from randomizer.scripts.event.script_imports import *
 

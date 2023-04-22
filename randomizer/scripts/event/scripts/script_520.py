@@ -1,4 +1,6 @@
-# E0520_ROSE_TOWN_OCCUPIED_EXTERIOR_PINK_TOAD
+# pylint: disable=C0301
+
+"""E0520_ROSE_TOWN_OCCUPIED_EXTERIOR_PINK_TOAD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -76,7 +78,7 @@ script = EventScript(
                 ),
                 ASJmp(["EVENT_520_action_queue_sync_12"]),
                 ASSet700CToObjectCoord(
-                    object=NPC_2,
+                    target_npc=NPC_2,
                     coord=COORD_X,
                     pixel=True,
                     bit_7=True,
@@ -100,7 +102,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASWalk1StepFDirection(),
-                ASSet700CToObjectCoord(object=NPC_2, coord=COORD_F, pixel=True),
+                ASSet700CToObjectCoord(target_npc=NPC_2, coord=COORD_F, pixel=True),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     5,

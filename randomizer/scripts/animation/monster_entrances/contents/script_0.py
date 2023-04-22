@@ -1,7 +1,5 @@
-# ENT0000_NONE
+"""ENT0000_NONE animation"""
 
 from randomizer.scripts.animation.script_imports import *
 
-script = AnimationScript([
-	ReturnSubroutine()
-])
+script = AnimationScript([ReturnSubroutine()])

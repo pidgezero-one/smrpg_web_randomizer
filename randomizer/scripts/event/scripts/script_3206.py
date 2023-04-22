@@ -1,4 +1,6 @@
-# E3206_SEA_PIPE_TO_SHIP
+# pylint: disable=C0301
+
+"""E3206_SEA_PIPE_TO_SHIP"""
 
 from randomizer.scripts.event.script_imports import *
 

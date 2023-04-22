@@ -1,4 +1,6 @@
-# referenced by ally_spells Ultra Flame
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Ultra Flame"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -166,7 +168,7 @@ script = SubroutineOrBanklessScript(
         ClearAMEM8Bit(0x6D),
         ClearAMEM8Bit(0x6E),
         TimingForMultipleButtonPresses(
-            end_accepting_input=7,
+            start_accepting_input=7,
             destinations=["command_0x359cfd"],
             identifier="command_0x359cf3",
         ),

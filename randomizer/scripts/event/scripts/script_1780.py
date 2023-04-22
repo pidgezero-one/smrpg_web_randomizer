@@ -1,4 +1,6 @@
-# E1780_LANDS_END_FLOWER_LOADER
+# pylint: disable=C0301
+
+"""E1780_LANDS_END_FLOWER_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

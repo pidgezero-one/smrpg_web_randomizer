@@ -1,4 +1,6 @@
-from .classes import Direction
+"""Int subclass instances representing valid directions in which an object can walk or face."""
+
+from randomizer.types.overworld_scripts.constants.classes import Direction
 
 EAST = Direction(0b0)
 SOUTHEAST = Direction(0b1)

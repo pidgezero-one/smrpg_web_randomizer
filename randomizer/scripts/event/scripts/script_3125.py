@@ -1,4 +1,6 @@
-# E3125_SEWER_PIPE_TO_LANDS_END
+# pylint: disable=C0301
+
+"""E3125_SEWER_PIPE_TO_LANDS_END"""
 
 from randomizer.scripts.event.script_imports import *
 

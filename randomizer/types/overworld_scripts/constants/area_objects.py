@@ -1,10 +1,17 @@
-from .classes import AreaObject, PartyCharacter
+"""Int subclass instances representing valid field NPC designations 
+that can be used in action and event script commands.\n
+The first 11 are in the range specifiable as party characters."""
+
+from randomizer.types.overworld_scripts.constants.classes import (
+    AreaObject,
+    PartyCharacter,
+)
 
 MARIO = PartyCharacter(0x00)
 TOADSTOOL = PartyCharacter(0x01)
-BOWSER = PartyCharacter(0x02)
+Bowser = PartyCharacter(0x02)
 GENO = PartyCharacter(0x03)
-MALLOW = PartyCharacter(0x04)
+Mallow = PartyCharacter(0x04)
 DUMMY_0X05 = PartyCharacter(0x05)
 DUMMY_0X06 = PartyCharacter(0x06)
 DUMMY_0X07 = PartyCharacter(0x07)

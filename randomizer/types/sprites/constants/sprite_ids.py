@@ -1,3 +1,5 @@
+"""Contextual constant names for every sprite ID."""
+
 SPR0000_MARIO_WALKING_DOWN_LEFT = 0
 SPR0001_MARIO_JUMP_FRONT = 1
 SPR0002_MARIO_WALKING_UP_RIGHT = 2

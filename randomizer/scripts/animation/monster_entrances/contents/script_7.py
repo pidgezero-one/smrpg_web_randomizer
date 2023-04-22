@@ -1,4 +1,4 @@
-# ENT0007_SPREAD_OUT_FROM_BACK
+"""ENT0007_SPREAD_OUT_FROM_BACK animation"""
 
 from randomizer.scripts.animation.script_imports import *
 

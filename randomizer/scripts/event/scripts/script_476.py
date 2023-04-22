@@ -1,4 +1,6 @@
-# E0476_INITIATE_MUSHROOM_DERBY_FROM_TALKING_TO_BOSHI
+# pylint: disable=C0301
+
+"""E0476_INITIATE_MUSHROOM_DERBY_FROM_TALKING_TO_BOSHI"""
 
 from randomizer.scripts.event.script_imports import *
 

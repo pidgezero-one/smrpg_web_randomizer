@@ -1,4 +1,6 @@
-# E2190_BATTLE_DOOR_MIMIC_BOSS_ANIMATION
+# pylint: disable=C0301
+
+"""E2190_BATTLE_DOOR_MIMIC_BOSS_ANIMATION"""
 
 from randomizer.scripts.event.script_imports import *
 

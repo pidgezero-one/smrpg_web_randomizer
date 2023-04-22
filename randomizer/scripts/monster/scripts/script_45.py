@@ -1,4 +1,4 @@
-# 45 - Shadow
+"""45 - Shadow"""
 
 from randomizer.scripts.monster.script_imports import *
 

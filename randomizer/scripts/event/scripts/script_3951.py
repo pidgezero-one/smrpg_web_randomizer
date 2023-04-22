@@ -1,4 +1,6 @@
-# E3951_STAR_PIECE_CREDITS_INIT
+# pylint: disable=C0301
+
+"""E3951_STAR_PIECE_CREDITS_INIT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -21,7 +23,7 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastPixels(16),
+                ASWalkEastPixels(16),
                 ASWalk1StepNorth(),
             ],
         ),
@@ -30,7 +32,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalk1StepWest(),
-                ASShiftNorthwestSteps(2),
+                ASWalkNorthwestSteps(2),
             ],
         ),
         ActionQueueSync(
@@ -89,9 +91,9 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(SLOW),
                 ASShiftSouthSteps(6),
-                ASShiftSouthPixels(12),
+                ASWalkSouthPixels(12),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftSouthPixels(4),
+                ASWalkSouthPixels(4),
                 ASShiftSouthSteps(11),
             ],
         ),

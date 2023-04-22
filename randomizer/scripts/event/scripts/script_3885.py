@@ -1,4 +1,6 @@
-# E3885_END_GAME
+# pylint: disable=C0301
+
+"""E3885_END_GAME"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,13 +13,13 @@ script = EventScript(
         StopMusicFDA2(),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftWestPixels(8)],
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkWestPixels(8)],
         ),
         ActionQueueSync(
             target=LAYER_3,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftEastPixels(22),
+                ASWalkEastPixels(22),
                 ASShiftNorthSteps(16),
             ],
         ),
@@ -110,7 +112,7 @@ script = EventScript(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
-                ASShiftEastPixels(16),
+                ASWalkEastPixels(16),
                 ASFaceNortheast(),
                 ASSetSpriteSequence(
                     index=23,
@@ -454,7 +456,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftNorthSteps(2),
-                ASShiftWestPixels(8),
+                ASWalkWestPixels(8),
             ],
         ),
         ActionQueueSync(
@@ -615,7 +617,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASJumpToHeight(height=92, silent=True),
                 ASWalk1StepNortheast(),
-                ASShiftNortheastPixels(10),
+                ASWalkNortheastPixels(10),
                 ASPause(80),
                 ASFaceSouthwest(),
                 ASResetProperties(),
@@ -816,7 +818,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASVisibilityOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftNortheastPixels(8),
+                ASWalkNortheastPixels(8),
                 ASDb(bytearray(b" \x03")),
                 ASDb(bytearray(b"$\xe0\x05\xe0\xf8")),
                 ASPause(32),

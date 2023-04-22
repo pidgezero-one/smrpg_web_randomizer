@@ -1,4 +1,6 @@
-# E2336_TOWER_FIRST_STAIRCASE_SPOOKUM_DIRECTION_1
+# pylint: disable=C0301
+
+"""E2336_TOWER_FIRST_STAIRCASE_SPOOKUM_DIRECTION_1"""
 
 from randomizer.scripts.event.script_imports import *
 

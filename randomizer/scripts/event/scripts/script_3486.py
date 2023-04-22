@@ -1,10 +1,12 @@
-# E3486_MIDAS_RIVER_BASE_AREA_LOADER
+# pylint: disable=C0301
+
+"""E3486_MIDAS_RIVER_BASE_AREA_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, 15),
+        SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW15_MIDAS_RIVER),
         ActionQueueAsync(
             target=MARIO, subscript=[ASObjectMemorySetBit(arg_1=0x0B, bits=[3])]
         ),
@@ -25,7 +27,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftWestPixels(4),
+                ASWalkWestPixels(4),
                 ASSetWalkingSpeed(NORMAL),
             ],
             identifier="EVENT_3486_action_queue_sync_5",
@@ -37,7 +39,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASAddZCoord1Step(),
-                ASShiftEastPixels(4),
+                ASWalkEastPixels(4),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0, 1]),
             ],
         ),
@@ -80,7 +82,7 @@ script = EventScript(
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(7),
+                ASWalkSoutheastSteps(7),
             ],
         ),
         ActionQueueAsync(
@@ -88,7 +90,7 @@ script = EventScript(
             subscript=[
                 ASShadowOff(),
                 ASSetAllSpeeds(FAST),
-                ASShiftSoutheastSteps(7),
+                ASWalkSoutheastSteps(7),
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
             ],
         ),
@@ -104,9 +106,9 @@ script = EventScript(
                         "EVENT_3486_action_queue_sync_21_SUBSCRIPT_shift_northeast_steps_5"
                     ],
                 ),
-                ASShiftNortheastSteps(5),
+                ASWalkNortheastSteps(5),
                 ASJmp(["EVENT_3486_action_queue_sync_22"]),
-                ASShiftNortheastSteps(
+                ASWalkNortheastSteps(
                     4,
                     identifier="EVENT_3486_action_queue_sync_21_SUBSCRIPT_shift_northeast_steps_5",
                 ),
@@ -116,9 +118,9 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
-                ASShiftSouthPixels(4),
-                ASShiftNorthPixels(8),
-                ASShiftSouthPixels(8),
+                ASWalkSouthPixels(4),
+                ASWalkNorthPixels(8),
+                ASWalkSouthPixels(8),
                 ASSetWalkingSpeed(SLOW),
             ],
             identifier="EVENT_3486_action_queue_sync_22",
@@ -130,7 +132,7 @@ script = EventScript(
                 ASShiftZUpPixels(4),
                 ASShiftZDownPixels(4),
                 ASEndLoop(),
-                ASShiftNorthwestSteps(8),
+                ASWalkNorthwestSteps(8),
                 ASVisibilityOff(),
             ],
         ),
@@ -147,7 +149,7 @@ script = EventScript(
                     mirror_sprite=True,
                 ),
                 ASJumpToHeight(height=112, silent=True),
-                ASShiftSoutheastSteps(3),
+                ASWalkSoutheastSteps(3),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASPause(
                     1, identifier="EVENT_3486_action_queue_async_24_SUBSCRIPT_pause_6"
@@ -158,7 +160,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
                 ASJumpToHeight(height=112, silent=True),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
                 ASPause(
                     1, identifier="EVENT_3486_action_queue_async_24_SUBSCRIPT_pause_12"
                 ),
@@ -199,12 +201,12 @@ script = EventScript(
                 ASPlaySound(sound=SO056_SHAKE_HEAD, channel=4),
                 ASSetAllSpeeds(FAST),
                 ASFixedFCoordOn(),
-                ASShiftEastPixels(2),
+                ASWalkEastPixels(2),
                 ASStartLoopNTimes(3),
-                ASShiftWestPixels(4),
-                ASShiftEastPixels(4),
+                ASWalkWestPixels(4),
+                ASWalkEastPixels(4),
                 ASEndLoop(),
-                ASShiftWestPixels(2),
+                ASWalkWestPixels(2),
                 ASWalk1StepSouthwest(),
                 ASFixedFCoordOff(),
                 ASFaceNortheast(),

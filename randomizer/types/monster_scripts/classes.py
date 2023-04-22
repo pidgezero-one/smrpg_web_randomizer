@@ -74,7 +74,8 @@ class MonsterScriptCommandOneTarget(MonsterScriptCommand):
 
 class MonsterScriptCommandOneTargetLimited(MonsterScriptCommand):
     """Base class for any command that takes one target, where the target value can only
-    fall within the range of targets beginning with MONSTER_1_SET and ending with SELF."""
+    fall within the range of targets beginning with MONSTER_1_SET and ending with SELF.
+    """
 
     _target: Target
 
@@ -122,21 +123,31 @@ class MonsterScript(Script[MonsterScriptCommand]):
     def __init__(self, script: Optional[List[MonsterScriptCommand]] = None) -> None:
         super().__init__(script)
 
-    def insert_before_nth_command(self, n: int, command: MonsterScriptCommand) -> None:
-        super().insert_before_nth_command(n, command)
+    def insert_before_nth_command(
+        self, index: int, command: MonsterScriptCommand
+    ) -> None:
+        super().insert_before_nth_command(index, command)
 
-    def insert_after_nth_command(self, n: int, command: MonsterScriptCommand) -> None:
-        super().insert_after_nth_command(n, command)
+    def insert_after_nth_command(
+        self, index: int, command: MonsterScriptCommand
+    ) -> None:
+        super().insert_after_nth_command(index, command)
 
     def insert_before_nth_command_of_type(
-        self, n: int, cls: Type[MonsterScriptCommand], command: MonsterScriptCommand
+        self,
+        ordinality: int,
+        cls: Type[MonsterScriptCommand],
+        command: MonsterScriptCommand,
     ) -> None:
-        super().insert_before_nth_command_of_type(n, cls, command)
+        super().insert_before_nth_command_of_type(ordinality, cls, command)
 
     def insert_after_nth_command_of_type(
-        self, n: int, cls: Type[MonsterScriptCommand], command: MonsterScriptCommand
+        self,
+        ordinality: int,
+        cls: Type[MonsterScriptCommand],
+        command: MonsterScriptCommand,
     ) -> None:
-        super().insert_after_nth_command_of_type(n, cls, command)
+        super().insert_after_nth_command_of_type(ordinality, cls, command)
 
     def insert_before_identifier(
         self, identifier: str, command: MonsterScriptCommand
@@ -200,9 +211,9 @@ class MonsterScriptBank(ScriptBank[MonsterScript]):
         assert len(scripts) == self.script_count
         super().set_contents(scripts)
 
-    def replace_script(self, n: int, script: MonsterScript) -> None:
-        assert 0 <= n < self.script_count
-        super().replace_script(n, script)
+    def replace_script(self, index: int, script: MonsterScript) -> None:
+        assert 0 <= index < self.script_count
+        super().replace_script(index, script)
 
     def __init__(
         self,
@@ -248,10 +259,9 @@ class MonsterScriptBank(ScriptBank[MonsterScript]):
                         raise ScriptBankTooLongException(
                             f"no room for monster script {script_index}"
                         )
-                    else:
-                        position_2 += script_size
-                        ptr = UInt16(position_2 & 0xFFFF).little_endian()
-                        bank_2 += rendered_script
+                    position_2 += script_size
+                    ptr = UInt16(position_2 & 0xFFFF).little_endian()
+                    bank_2 += rendered_script
                 else:
                     position_1 += script_size
                     ptr = UInt16(position_1 & 0xFFFF).little_endian()

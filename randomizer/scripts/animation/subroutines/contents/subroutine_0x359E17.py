@@ -1,4 +1,6 @@
-# referenced by ally_spells Therapy
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Therapy"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -62,14 +64,14 @@ script = SubroutineOrBanklessScript(
         ScreenFlash(RED),
         SetAMEM16BitToAMEM(amem=0x68, source_amem=0x8A),
         Db(bytearray(b"\xc5")),
-        Layer3On(property=OVERLAP_NONE, bit_0=True, bpp4=True),
+        Layer3On(prop=OVERLAP_NONE, bit_0=True, bpp4=True),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
         Db(bytearray(b"y\x00\x11\x17\x02")),
         Pause1Frame(identifier="command_0x359e96"),
         SetAMEM8BitToOMEMMain(amem=0x6D, omem=0x6D),
         JmpIfAMEM8BitNotEqualsConst(0x6D, 3, ["command_0x359e96"]),
         Db(bytearray(b"y\x00\x11\x17\x00")),
-        Layer3Off(property=OVERLAP_NONE, bit_0=True, bpp4=True),
+        Layer3Off(prop=OVERLAP_NONE, bit_0=True, bpp4=True),
         SetAMEMToAMEM16Bit(dest_amem=0x8A, amem=0x68),
         Db(bytearray(b"\x90")),
         Db(bytearray(b"\xc4")),

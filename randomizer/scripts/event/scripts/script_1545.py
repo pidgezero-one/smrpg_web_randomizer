@@ -1,4 +1,6 @@
-# E1545_SAND_WHIRLPOOL
+# pylint: disable=C0301
+
+"""E1545_SAND_WHIRLPOOL"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -22,9 +24,11 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
             ],
         ),
-        PixelateLayers(layers=[LAYER_1, LAYER_2, LAYER_3], pixel_size=9, duration=0),
+        PixelateLayers(layers=[LAYER_L1, LAYER_L2, LAYER_L3], pixel_size=9, duration=0),
         FadeInFromBlack(sync=True, duration=40),
-        PixelateLayers(layers=[LAYER_1, LAYER_2, LAYER_3], pixel_size=0, duration=70),
+        PixelateLayers(
+            layers=[LAYER_L1, LAYER_L2, LAYER_L3], pixel_size=0, duration=70
+        ),
         ActionQueueAsync(
             target=MARIO,
             subscript=[

@@ -1,4 +1,6 @@
-# E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS
+# pylint: disable=C0301
+
+"""E0441_PIPE_VAULT_CHOMPWEED_ROOM_CHOMPWEEDS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,9 +19,9 @@ script = EventScript(
                 ASFaceEast7C(),
                 ASJumpToHeight(height=108, silent=True),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftFDirectionPixels(12),
+                ASWalkFDirectionPixels(12),
                 ASFloatingOn(),
-                ASShiftFDirectionPixels(12),
+                ASWalkFDirectionPixels(12),
                 ASVisibilityOff(),
             ],
         ),
@@ -33,9 +35,9 @@ script = EventScript(
                 ASFaceEast7C(),
                 ASJumpToHeight(height=108, silent=True),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftFDirectionPixels(12),
+                ASWalkFDirectionPixels(12),
                 ASFloatingOn(),
-                ASShiftFDirectionPixels(12),
+                ASWalkFDirectionPixels(12),
                 ASVisibilityOff(),
             ],
         ),

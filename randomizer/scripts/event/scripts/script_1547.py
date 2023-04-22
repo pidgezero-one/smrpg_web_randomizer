@@ -1,4 +1,6 @@
-# E1547_LANDS_END_THIRD_CHEST
+# pylint: disable=C0301
+
+"""E1547_LANDS_END_THIRD_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

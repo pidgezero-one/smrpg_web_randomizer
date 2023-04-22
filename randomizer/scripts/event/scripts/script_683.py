@@ -1,4 +1,6 @@
-# E0683_MARRYMORE_LIBERATED_EXTERIOR_GREEN_TOAD
+# pylint: disable=C0301
+
+"""E0683_MARRYMORE_LIBERATED_EXTERIOR_GREEN_TOAD"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,12 +13,12 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FASTEST),
-                ASShiftSouthwestPixels(2),
+                ASWalkSouthwestPixels(2),
                 ASStartLoopNTimes(2),
-                ASShiftNortheastPixels(4),
-                ASShiftSouthwestPixels(4),
+                ASWalkNortheastPixels(4),
+                ASWalkSouthwestPixels(4),
                 ASEndLoop(),
-                ASShiftNortheastPixels(2),
+                ASWalkNortheastPixels(2),
             ],
         ),
         RunDialog(

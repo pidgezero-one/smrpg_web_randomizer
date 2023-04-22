@@ -1,4 +1,6 @@
-# E1823_LANDS_END_GROTTO_FIRST_ROOM_UPPER_CHEST
+# pylint: disable=C0301
+
+"""E1823_LANDS_END_GROTTO_FIRST_ROOM_UPPER_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

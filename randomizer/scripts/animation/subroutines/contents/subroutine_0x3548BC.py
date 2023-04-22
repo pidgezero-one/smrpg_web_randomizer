@@ -1,4 +1,6 @@
-# referenced by monster_attacks ScrowBell
+# pylint: disable=C0301,C0103
+
+"""referenced by monster_attacks ScrowBell"""
 
 from randomizer.scripts.animation.script_imports import *
 

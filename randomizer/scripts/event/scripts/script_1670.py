@@ -1,4 +1,6 @@
-# E1670_LANDS_END_2_SUMMON_INVISIBLE_PLATFORM
+# pylint: disable=C0301
+
+"""E1670_LANDS_END_2_SUMMON_INVISIBLE_PLATFORM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -17,7 +19,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASFixedFCoordOn(),
-                ASShiftNortheastPixels(4),
+                ASWalkNortheastPixels(4),
             ],
         ),
         SetBit(TEMP_7043_1),

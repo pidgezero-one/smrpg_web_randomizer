@@ -1,4 +1,6 @@
-# E3880_SEA_CHESTS
+# pylint: disable=C0301
+
+"""E3880_SEA_CHESTS"""
 
 from randomizer.scripts.event.script_imports import *
 

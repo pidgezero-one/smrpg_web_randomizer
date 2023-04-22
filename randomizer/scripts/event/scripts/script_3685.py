@@ -1,4 +1,6 @@
-# E3685_NIMBUS_GET_CROCOS_ITEM
+# pylint: disable=C0301
+
+"""E3685_NIMBUS_GET_CROCOS_ITEM"""
 
 from randomizer.scripts.event.script_imports import *
 

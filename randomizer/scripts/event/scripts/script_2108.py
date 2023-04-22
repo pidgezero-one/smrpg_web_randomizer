@@ -1,15 +1,17 @@
-# E2108_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_FIGHT_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2108_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_FIGHT_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        ActionQueueAsync(target=NPC_2, subscript=[ASShiftSouthPixels(7)]),
+        ActionQueueAsync(target=NPC_2, subscript=[ASWalkSouthPixels(7)]),
         PaletteSet(palette_set=84, row=1),
         JmpIfBitClear(STATUE_KEEPER_FIGHT_PRESENT, ["EVENT_2108_jmp_if_bit_set_14"]),
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASShiftNortheastPixels(8), ASFaceSoutheast(), ASVisibilityOn()],
+            subscript=[ASWalkNortheastPixels(8), ASFaceSoutheast(), ASVisibilityOn()],
         ),
         JmpIfBitSet(
             TEMP_7044_7,

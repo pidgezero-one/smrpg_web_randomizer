@@ -1,4 +1,6 @@
-from .classes import ControllerInput
+"""Int subclass instances representing inputs from a specific controller button."""
+
+from randomizer.types.overworld_scripts.constants.classes import ControllerInput
 
 LEFT = ControllerInput(0)
 RIGHT = ControllerInput(1)

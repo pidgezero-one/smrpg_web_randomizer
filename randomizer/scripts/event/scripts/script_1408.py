@@ -1,4 +1,6 @@
-# E1408_MARIOS_PAD_EXTERIOR_LOADER
+# pylint: disable=C0301
+
+"""E1408_MARIOS_PAD_EXTERIOR_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

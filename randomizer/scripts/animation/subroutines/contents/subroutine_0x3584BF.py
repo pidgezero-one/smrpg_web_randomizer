@@ -1,4 +1,6 @@
-# referenced by ally_spells Super Flame
+# pylint: disable=C0301,C0103
+
+"""referenced by ally_spells Super Flame"""
 
 from randomizer.scripts.animation.script_imports import *
 
@@ -54,11 +56,11 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(effect=EF0012_SPELL_CAST_SPADE, looping_on=True),
         PlaySound(sound=S0035_SPELL_POWER_UP),
         Db(bytearray(b"\x8a\x01")),
-        Layer3On(property=OVERLAP_ALL, bpp4=True),
+        Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=24),
         FadeOutObject(duration=1),
         PauseScriptUntil(condition=FADE_4BPP_COMPLETE),
-        Layer3Off(property=OVERLAP_ALL, bpp4=True),
+        Layer3Off(prop=OVERLAP_ALL, bpp4=True),
         Pause2Frames(),
         ClearEffectIndex(),
         SetAMEM8BitToConst(0x6E, 1),

@@ -1,4 +1,6 @@
-# E3492_MIDAS_RIVER_MID_LEFT_TUNNEL_ANIMATION_AND_EXIT
+# pylint: disable=C0301
+
+"""E3492_MIDAS_RIVER_MID_LEFT_TUNNEL_ANIMATION_AND_EXIT"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -11,21 +13,21 @@ script = EventScript(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
-                ASShiftEastSteps(2),
+                ASWalkEastSteps(2),
                 ASSetWalkingSpeed(VERY_SLOW),
-                ASShiftEastSteps(2),
+                ASWalkEastSteps(2),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftEastSteps(6),
+                ASWalkEastSteps(6),
                 ASSetWalkingSpeed(NORMAL),
-                ASShiftEastSteps(5),
-                ASShiftSoutheastSteps(3),
+                ASWalkEastSteps(5),
+                ASWalkSoutheastSteps(3),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSoutheastSteps(5),
+                ASWalkSoutheastSteps(5),
                 ASSetWalkingSpeed(NORMAL),
                 ASWalk1StepSoutheast(),
-                ASShiftEastSteps(5),
+                ASWalkEastSteps(5),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftEastSteps(1),
+                ASWalkEastSteps(1),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),
@@ -61,13 +63,13 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASSetWalkingSpeed(SLOW),
-                ASShiftSouthPixels(32),
+                ASWalkSouthPixels(32),
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\x80\x02\xf4\xff")),
                 ASSetWalkingSpeed(NORMAL),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
-                ASShiftNorthwestSteps(7),
-                ASShiftSouthwestPixels(4),
+                ASWalkNorthwestSteps(7),
+                ASWalkSouthwestPixels(4),
                 ASBPL262728(),
                 ASSetSolidityBits(cant_pass_walls=True),
             ],

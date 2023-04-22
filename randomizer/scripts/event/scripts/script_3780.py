@@ -1,4 +1,6 @@
-# E3780_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_EAST_VINE_ROOM
+# pylint: disable=C0301
+
+"""E3780_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_EAST_VINE_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -20,9 +22,9 @@ script = EventScript(
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(132),
-                ASShiftSoutheastSteps(2),
+                ASWalkSoutheastSteps(2),
                 ASSetSolidityBits(cant_pass_walls=True),
-                ASShiftSoutheastPixels(20),
+                ASWalkSoutheastPixels(20),
                 ASSetWalkingSpeed(NORMAL),
             ],
         ),

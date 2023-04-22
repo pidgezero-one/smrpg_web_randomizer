@@ -1,4 +1,6 @@
-# E3282_SHIP_BOSS_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E3282_SHIP_BOSS_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -7,7 +9,7 @@ script = EventScript(
         RunEventAsSubroutine(E0801_SHIP_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
         JmpIfBitSet(SHIP_LIBERATED, ["EVENT_3282_jmp_if_bit_set_129"]),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
-        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASShiftNortheastSteps(3)]),
+        ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(3)]),
         ActionQueueAsync(target=MARIO, subscript=[ASWalk1StepNortheast()]),
         ActionQueueSync(target=NPC_1, subscript=[ASWalk1StepSouthwest()]),
         ActionQueueSync(target=NPC_2, subscript=[ASWalk1StepSouthwest()]),
@@ -21,10 +23,10 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
                 ASWalk1StepSouth(),
-                ASObjectMemoryModifyBits(arg_1=0x09, set_flags=[5], clear_bits=[4, 6]),
+                ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSequenceLoopingOff(),
                 ASPause(50),
-                ASShiftSouthwestSteps(2),
+                ASWalkSouthwestSteps(2),
             ],
         ),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
@@ -44,7 +46,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
-                ASShiftNorthwestSteps(6),
+                ASWalkNorthwestSteps(6),
                 ASWalk1StepNortheast(),
                 ASFaceNorthwest(),
                 ASPause(2),

@@ -1,4 +1,6 @@
-# E2228_KEEP_DARK_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2228_KEEP_DARK_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -12,15 +14,15 @@ script = EventScript(
         SetSyncActionScript(NPC_2, A1010_KEEP_DARK_ROOM_INIT_GOOMBA),
         Db(bytearray(b"\xfd\x8f\x02"), identifier="EVENT_2228_db_2"),
         PrioritySet(
-            mainscreen=[LAYER_3],
-            subscreen=[LAYER_1, LAYER_2, NPC_SPRITES],
+            mainscreen=[LAYER_L3],
+            subscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             colour_math=[BACKGROUND, HALF_INTENSITY],
         ),
         ActionQueueSync(target=NPC_1, subscript=[ASSequenceLoopingOn()]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
-                ASShiftSoutheastPixels(4),
+                ASWalkSoutheastPixels(4),
                 ASFaceNorthwest(),
                 ASSetSequenceSpeed(FAST),
                 ASSequenceLoopingOn(),
@@ -29,20 +31,20 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_4,
             subscript=[
-                ASShiftSouthwestPixels(3),
-                ASShiftSoutheastPixels(1),
+                ASWalkSouthwestPixels(3),
+                ASWalkSoutheastPixels(1),
                 ASFaceSouthwest(),
             ],
         ),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
-                ASShiftSouthwestPixels(3),
-                ASShiftSoutheastPixels(1),
+                ASWalkSouthwestPixels(3),
+                ASWalkSoutheastPixels(1),
                 ASFaceSouthwest(),
             ],
         ),
-        Set7000ToObjectCoord(object=MARIO, coord=COORD_X, pixel=True, bit_7=True),
+        Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000, 27, ["EVENT_2228_fade_in_from_black_async_14"]
         ),

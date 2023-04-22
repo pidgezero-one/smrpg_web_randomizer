@@ -1,4 +1,6 @@
-# E2617_FACTORY_2ND_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E2617_FACTORY_2ND_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,8 +12,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASSetPriority(3),
-                ASShiftNorthwestPixels(8),
-                ASShiftNortheastPixels(8),
+                ASWalkNorthwestPixels(8),
+                ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
             ],
         ),
@@ -20,8 +22,8 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASSetPriority(3),
-                ASShiftNorthwestPixels(8),
-                ASShiftNortheastPixels(4),
+                ASWalkNorthwestPixels(8),
+                ASWalkNortheastPixels(4),
                 ASFaceSoutheast(),
             ],
         ),
@@ -30,7 +32,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASSetPriority(3),
-                ASShiftNorthwestPixels(8),
+                ASWalkNorthwestPixels(8),
                 ASFaceSoutheast(),
             ],
         ),

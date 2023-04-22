@@ -1,3 +1,7 @@
+# pylint: disable=W0611
+
+"""symbols imported by scripts"""
+
 from randomizer.types.battle_animation_scripts.constants.script_ids.battle_events import (
     BE0000_UNUSED,
     BE0001_UNUSED,
@@ -449,7 +453,7 @@ from randomizer.entities.enemy_attacks.attacks import (
     Gnight,
     PhysicalAttack107,
     PhysicalAttack108,
-    Chomp,
+    Chomp as ChompAttack,
     GetTough,
     PhysicalAttack111,
     Missedme,
@@ -477,7 +481,7 @@ from randomizer.types.monster_scripts.constants.targets import (
     TOADSTOOL,
     BOWSER,
     GENO,
-    MALLOW,
+    Mallow,
     UNKNOWN_5,
     UNKNOWN_6,
     UNKNOWN_7,

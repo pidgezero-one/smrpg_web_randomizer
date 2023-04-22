@@ -385,10 +385,9 @@ class PauseScriptUntil(AnimationScriptCommand):
     def render(self) -> bytearray:
         if self.opcode == 0x04:
             return super().render(self.condition, self.frames)
-        elif self.opcode == 0x74:
+        if self.opcode == 0x74:
             return super().render(self.condition)
-        else:
-            raise InvalidOpcodeException(f"invalid opcode {self.opcode}")
+        raise InvalidOpcodeException(f"invalid opcode {self.opcode}")
 
 
 class RemoveObject(AnimationScriptCommandNoArgs):
@@ -4044,8 +4043,7 @@ class Db(AnimationScriptCommand):
     """Catch-all command class representing any command not represented by other
     AnimationScriptCommand subclasses.
     Use this sparingly as there are no safety checks to make sure that
-    the number of arguments in the command are correct for the given opcode
-    (first byte)."""
+    the number of arguments in the command are correct."""
 
     _contents: bytearray
 

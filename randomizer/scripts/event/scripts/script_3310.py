@@ -1,4 +1,6 @@
-# E3310_SHIP_HIDDEN_CHEST
+# pylint: disable=C0301
+
+"""E3310_SHIP_HIDDEN_CHEST"""
 
 from randomizer.scripts.event.script_imports import *
 

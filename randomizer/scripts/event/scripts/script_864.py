@@ -1,4 +1,6 @@
-# E0864_DOJO_3RD_BOSS_CHALLENGE_SUBROUTINE
+# pylint: disable=C0301
+
+"""E0864_DOJO_3RD_BOSS_CHALLENGE_SUBROUTINE"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -10,7 +12,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(height=53, silent=True),
-                ASShiftNortheastSteps(1),
+                ASWalkNortheastSteps(1),
                 ASPause(20),
                 ASFixedFCoordOff(),
                 ASFaceSouthwest(),

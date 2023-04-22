@@ -1,4 +1,6 @@
-# E3804_ENDING_CREDITS_CORONATION_NPCS
+# pylint: disable=C0301
+
+"""E3804_ENDING_CREDITS_CORONATION_NPCS"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -206,7 +208,7 @@ script = EventScript(
                         b"(\x00\x00\x00\x00\x00@\x00\x02\x00\x01\x00\x00\x00\x08\x80"
                     )
                 ),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASBPL262728(),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFloatingOn(),
@@ -222,7 +224,7 @@ script = EventScript(
                         b"(\x00\x00\x00\x00\x00@\x00\x02\x00\x01\x00\x00\x00\x08\x80"
                     )
                 ),
-                ASShiftSouthwestPixels(8),
+                ASWalkSouthwestPixels(8),
                 ASBPL262728(),
             ],
         ),
@@ -237,7 +239,7 @@ script = EventScript(
                         b"(\x00\x00\x00\x00\x00@\x00\x02\x00\x01\x00\x00\x00\x08\x80"
                     )
                 ),
-                ASShiftNorthwestSteps(5),
+                ASWalkNorthwestSteps(5),
             ],
         ),
         Pause(160),

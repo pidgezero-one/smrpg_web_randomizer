@@ -1,4 +1,6 @@
-# E3315_SEWERS_3RD_WATER_ROOM_EXIT_TO_RAT_LINE_ROOM
+# pylint: disable=C0301
+
+"""E3315_SEWERS_3RD_WATER_ROOM_EXIT_TO_RAT_LINE_ROOM"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,3 +1,7 @@
+# pylint: disable=C0301,C0103
+
+"""exports subroutine 0X3A7E13"""
+
 from randomizer.types.battle_animation_scripts.classes import AnimationScriptBank
 from randomizer.types.battle_animation_scripts.constants.script_ids.bank_names import (
     SUBROUTINES_0X3A7E13,

@@ -1,4 +1,6 @@
-# E3405_COIN_CHEST_MULTI_HIT_6
+# pylint: disable=C0301
+
+"""E3405_COIN_CHEST_MULTI_HIT_6"""
 
 from randomizer.scripts.event.script_imports import *
 
@@ -28,11 +30,11 @@ script = EventScript(
         Jmp(["EVENT_3405_check_multiplier"]),
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
-            to_var=CURRENT_OVERWORLD_MARKER_ID,
+            to_var=COIN_COUNTER_6,
             identifier="EVENT_3405_set_70A0_short_mem_to_7000_16",
         ),
         JmpIfVarNotEqualsConst(
-            CURRENT_OVERWORLD_MARKER_ID,
+            COIN_COUNTER_6,
             1,
             ["EVENT_3405_set_temp_action_script_sync_35"],
             identifier="EVENT_3405_jmp_if_var_not_equals_const_26",
@@ -58,7 +60,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 160, ["EVENT_3405_dec_53"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 128, ["EVENT_3405_dec_68"]),
         Jmp(["EVENT_3405_ret_80"]),
-        Dec(CURRENT_OVERWORLD_MARKER_ID, identifier="EVENT_3405_dec_53"),
+        Dec(COIN_COUNTER_6, identifier="EVENT_3405_dec_53"),
         AddCoins(10),
         PlaySound(sound=SO013_COIN, channel=6),
         CreatePacketAt7010(
@@ -66,7 +68,7 @@ script = EventScript(
         ),
         SetSyncActionScript(MEM_70A9, A0906_COIN_CHEST),
         Jmp(["EVENT_3405_ret_80"]),
-        Dec(CURRENT_OVERWORLD_MARKER_ID, identifier="EVENT_3405_dec_68"),
+        Dec(COIN_COUNTER_6, identifier="EVENT_3405_dec_68"),
         AddCoins(1),
         PlaySound(sound=SO013_COIN, channel=6),
         CreatePacketAt7010(

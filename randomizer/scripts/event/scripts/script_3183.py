@@ -1,4 +1,6 @@
-# E3183_MINECART_PAID_LOBBY_TRAMPOLINE_TO_EXTERIOR
+# pylint: disable=C0301
+
+"""E3183_MINECART_PAID_LOBBY_TRAMPOLINE_TO_EXTERIOR"""
 
 from randomizer.scripts.event.script_imports import *
 

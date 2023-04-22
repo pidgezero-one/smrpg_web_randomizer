@@ -1,4 +1,4 @@
-# 72 - Fireball
+"""72 - Fireball"""
 
 from randomizer.scripts.monster.script_imports import *
 

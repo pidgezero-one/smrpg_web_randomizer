@@ -1,4 +1,6 @@
-# E1557_FOREST_MAZE_PAST_TRUNK_AREA_ROOM_LOADER
+# pylint: disable=C0301
+
+"""E1557_FOREST_MAZE_PAST_TRUNK_AREA_ROOM_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 

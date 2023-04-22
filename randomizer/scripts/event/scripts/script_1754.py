@@ -1,4 +1,6 @@
-# E1754_LANDS_END_FINAL_WHIRLPOOL_2
+# pylint: disable=C0301
+
+"""E1754_LANDS_END_FINAL_WHIRLPOOL_2"""
 
 from randomizer.scripts.event.script_imports import *
 

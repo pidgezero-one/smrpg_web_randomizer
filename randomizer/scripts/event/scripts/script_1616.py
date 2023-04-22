@@ -1,15 +1,21 @@
-# E1616_MOLEVILLE_INN_LOADER
+# pylint: disable=C0301
+
+"""E1616_MOLEVILLE_INN_LOADER"""
 
 from randomizer.scripts.event.script_imports import *
 
-script = EventScript([
-	FadeOutMusicToVolume(duration=1, volume=96),
-	JmpIfBitClear(TEMP_7044_7, ["EVENT_1616_jmp_to_event_1"]),
-	SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
-	RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_1616_jmp_to_event_1"),
-	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1616_ret_26"]),
-	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
-	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1616_ret_26"]),
-	RunEventAsSubroutine(E3897_MOLEVILLE_STAR_PIECE_SIGNAL),
-	Return(identifier="EVENT_1616_ret_26")
-])
+script = EventScript(
+    [
+        FadeOutMusicToVolume(duration=1, volume=96),
+        JmpIfBitClear(TEMP_7044_7, ["EVENT_1616_jmp_to_event_1"]),
+        SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
+        RunEventAsSubroutine(
+            E0015_STANDARD_ROOM_LOADER, identifier="EVENT_1616_jmp_to_event_1"
+        ),
+        JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1616_ret_26"]),
+        RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
+        JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1616_ret_26"]),
+        RunEventAsSubroutine(E3897_MOLEVILLE_STAR_PIECE_SIGNAL),
+        Return(identifier="EVENT_1616_ret_26"),
+    ]
+)
