@@ -1,8 +1,10 @@
 """Base classes for swappable palettes."""
 
 from typing import List
+
 from randomizer.types.patch.classes import Patch
-from randomizer.types.palettes.constants import (
+
+from .ids import (
     CLASSIC_PALETTE_OFFSET,
     MAP_PALETTE_OFFSET,
     MINECART_PALETTE_OFFSET,
@@ -82,7 +84,8 @@ class CharacterPaletteSet:
     @property
     def name(self) -> str:
         """A new name for the character using this palette.\n
-        Whether or not the character actually gets renamed depends on the player's options."""
+        Whether or not the character actually gets renamed depends on the player's options.
+        """
         return self._name
 
     @property

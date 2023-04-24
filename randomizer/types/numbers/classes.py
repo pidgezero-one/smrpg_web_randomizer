@@ -2,7 +2,8 @@
 
 from typing import Union
 from random import random, randint
-from randomizer.types.numbers.constants import SMALL_BOOST_AMOUNT
+
+from .constants import SMALL_BOOST_AMOUNT
 
 
 class UInt4(int):

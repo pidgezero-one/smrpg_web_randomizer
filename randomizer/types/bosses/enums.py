@@ -1,8 +1,9 @@
 """Enums relevant to boss shuffling."""
 
 from enum import Enum, IntEnum, auto
-from randomizer.types.battles.battle_music.classes import Music
-from randomizer.types.battles.battle_music.music import (
+
+from randomizer.types.battles.types import Music
+from randomizer.types.battles import (
     BossMusic,
     CorndillyMusic,
     CulexMusic,

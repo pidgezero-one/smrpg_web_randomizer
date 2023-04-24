@@ -16,8 +16,8 @@ from copy import deepcopy
 
 from randomizer.types.items.classes import Item
 
-from randomizer.types.overworld_scripts.variables.classes import ByteVar, ShortVar
-from randomizer.types.numbers.classes import Int8, UInt16, UInt8
+from randomizer.types.overworld_scripts.arguments.types import ByteVar, ShortVar
+from randomizer.types.numbers import Int8, UInt16, UInt8
 
 
 class IdentifierException(Exception):

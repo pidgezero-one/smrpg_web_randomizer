@@ -2,20 +2,20 @@
 
 from typing import Any, Optional, Type, List, Dict
 from re import compile as regex_compile
-from randomizer.types.world.exceptions import RandomizerSettingsException
-from randomizer.types.world.flags.categories.categories import (
-    FlagCategoryT,
-)
-from randomizer.types.world.flags.classes import (
+
+
+from .constants import B64_TABLE
+from .exceptions import RandomizerSettingsException
+from .flags import FlagOptions
+from .flags.categories import FlagCategoryT
+from .flags.categories.types import FlagCategory
+from .flags.types import (
     BooleanFlag,
     CategorizationFlag,
     Flag,
     NumberThresholdFlag,
     SelectOneFlag,
 )
-from randomizer.types.world.flags.categories.classes import FlagCategory
-from randomizer.types.world.constants import B64_TABLE
-from randomizer.types.world.flags.enums import FlagOptions
 
 
 def get_flag_string_from_flag_collection(categories: list[Type[FlagCategoryT]]) -> str:

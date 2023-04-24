@@ -1,7 +1,8 @@
 """"Miscellaeous constants used for item classes and functions."""
 
 from typing import List
-from randomizer.types.items.enums import EquipStats
+
+from .enums import EquipStats
 
 # Global item address info.
 ITEMS_BASE_ADDRESS: int = 0x3A014D

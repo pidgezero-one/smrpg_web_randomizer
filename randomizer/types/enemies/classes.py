@@ -2,12 +2,20 @@
 
 from copy import deepcopy
 from typing import List, Optional, Type, Union
+
+from randomizer.types.items import RegularItem
 from randomizer.types.monster_scripts.commands import IfTargetedByItem
+from randomizer.types.numbers import BitMapSet, ByteField, UInt16, UInt8
+from randomizer.types.patch import Patch
+from randomizer.types.spells import Status, Element
+from randomizer.types.world import GameWorld
+from randomizer.types.world.flags import NoOHKO
 
-from randomizer.types.world.classes import GameWorld
-from randomizer.types.world.flags.flags import NoOHKO
+from randomizer.utils.number import mutate_normal
 
-from randomizer.types.enemies.constants import (
+from randomizer.entities.items.items import BrightCard, Mushroom
+
+from .constants import (
     BASE_ENEMY_ADDRESS,
     BASE_PSYCHOPATH_DATA_ADDRESS,
     BASE_PSYCHOPATH_POINTER_ADDRESS,
@@ -17,14 +25,7 @@ from randomizer.types.enemies.constants import (
     PSYCHOPATH_DATA_POINTER_OFFSET,
     TOTAL_ENEMIES,
 )
-from randomizer.types.enemies.enums import ApproachSound, HitSound, FlowerBonusType
-
-from randomizer.types.spells.enums import Status, Element
-from randomizer.types.numbers.classes import BitMapSet, ByteField, UInt16, UInt8
-from randomizer.types.items.classes import RegularItem
-from randomizer.entities.items.items import BrightCard, Mushroom
-from randomizer.types.patch.classes import Patch
-from randomizer.utils.number import mutate_normal
+from .enums import ApproachSound, HitSound, FlowerBonusType
 
 
 class Enemy:

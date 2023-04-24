@@ -2,15 +2,22 @@
 
 from copy import deepcopy
 from typing import List, Optional, Type
-from randomizer.types.items.classes import SpellLearn
-from randomizer.types.spells.constants.classes import DamageModifiers, TimingProperties
-from randomizer.types.spells.constants.misc import (
+
+from randomizer.types.items import SpellLearn
+from randomizer.types.numbers import BitMapSet, ByteField, UInt16, UInt8
+from randomizer.types.patch import Patch
+from randomizer.types.world.classes import GameWorld
+
+from .arguments.types import DamageModifiers, TimingProperties
+from .ids.misc import (
     SPELL_BASE_ADDRESS,
     SPELL_BASE_NAME_ADDRESS,
     SPELL_DAMAGE_MODIFIERS_BASE_ADDRESS,
     SPELL_TIMING_MODIFIERS_BASE_ADDRESS,
+    ALLY_SPELL_POINTER_TABLE_START,
+    SPELL_BASE_DESC_ADDRESS,
 )
-from randomizer.types.spells.enums import (
+from .enums import (
     EffectType,
     InflictFunction,
     Element,
@@ -18,10 +25,6 @@ from randomizer.types.spells.enums import (
     SpellType,
     TempStatBuff,
 )
-from randomizer.types.patch.classes import Patch
-
-from randomizer.types.numbers.classes import BitMapSet, ByteField, UInt16, UInt8
-from randomizer.types.world.classes import GameWorld
 
 
 class Spell:
@@ -470,11 +473,11 @@ class CloneSpell(CharacterSpell):
         patch = super().get_patch()
 
         patch.add_data(
-            0x35C992 + self.index * 2,
+            ALLY_SPELL_POINTER_TABLE_START + self.index * 2,
             ByteField(UInt16(self.ref_ptr & 0xFFFF)).as_bytes(),
         )
         patch.add_data(
-            0x3A2B80 + self.index * 2,
+            SPELL_BASE_DESC_ADDRESS + self.index * 2,
             ByteField(UInt16(self.desc_ptr & 0xFFFF)).as_bytes(),
         )
 

@@ -1,11 +1,13 @@
 """Base classes for enemy attack data."""
 
 from typing import List, Optional
-from randomizer.types.enemy_attacks.constants import ENEMY_ATTACK_BASE_ADDRESS
-from randomizer.types.spells.enums import TempStatBuff, Status
-from randomizer.types.patch.classes import Patch
-from randomizer.types.numbers.classes import BitMapSet, ByteField, UInt4, UInt8
+
+from randomizer.types.numbers import BitMapSet, ByteField, UInt4, UInt8
+from randomizer.types.patch import Patch
+from randomizer.types.spells import TempStatBuff, Status
 from randomizer.types.world.classes import GameWorld
+
+from .constants import ENEMY_ATTACK_BASE_ADDRESS
 
 
 class EnemyAttack:

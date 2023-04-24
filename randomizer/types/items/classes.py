@@ -5,25 +5,9 @@ import random
 import math
 from typing import Dict, List, Optional, Type, TypeVar
 
-from randomizer.types.items.enums import (
-    EffectType,
-    EquipStats,
-    ItemShuffleType,
-    ItemTypeValue,
-    ItemUnique,
-)
-from randomizer.types.items.constants import (
-    EQUIP_STATS,
-    ITEMS_BASE_ADDRESS,
-    ITEMS_BASE_DESC_DATA_ADDRESSES,
-    ITEMS_BASE_DESC_POINTER_ADDRESS,
-    ITEMS_BASE_PRICE_ADDRESS,
-    ITEMS_DESC_DATA_POINTER_OFFSET,
-    NUM_ITEMS,
-)
-from randomizer.types.npcs.objects.classes import ItemNPC
-from randomizer.types.npcs.objects.npcs import BigCoin, ItemBag, SmallCoin, TinyStar
-from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
+
+from randomizer.types.overworld_scripts.arguments.types import Flag, PartyCharacter
+from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0242_CHEST_6_GRANT,
     E0243_CHEST_5_GRANT,
     E0244_CHEST_4_GRANT,
@@ -36,14 +20,31 @@ from randomizer.types.overworld_scripts.event_scripts.constants.script_ids impor
     E3404_COIN_CHEST_MULTI_HIT_5,
     E3405_COIN_CHEST_MULTI_HIT_6,
 )
-from randomizer.types.spells.enums import Status, Element, TempStatBuff
-from randomizer.types.overworld_scripts.variables.classes import Flag
-from randomizer.types.patch.classes import Patch
-from randomizer.types.overworld_scripts.constants.area_objects import PartyCharacter
-from randomizer.types.numbers.classes import UInt16, UInt8, ByteField, BitMapSet
-
+from randomizer.types.npcs.objects.types import ItemNPC
+from randomizer.types.npcs.objects import BigCoin, ItemBag, SmallCoin, TinyStar
+from randomizer.types.numbers import UInt16, UInt8, ByteField, BitMapSet
+from randomizer.types.patch import Patch
+from randomizer.types.spells import Status, Element, TempStatBuff
 from randomizer.types.world.classes import GameWorld
+
 from randomizer.utils.number import mutate_normal
+
+from .enums import (
+    EffectType,
+    EquipStats,
+    ItemShuffleType,
+    ItemTypeValue,
+    ItemUnique,
+)
+from .constants import (
+    EQUIP_STATS,
+    ITEMS_BASE_ADDRESS,
+    ITEMS_BASE_DESC_DATA_ADDRESSES,
+    ITEMS_BASE_DESC_POINTER_ADDRESS,
+    ITEMS_BASE_PRICE_ADDRESS,
+    ITEMS_DESC_DATA_POINTER_OFFSET,
+    NUM_ITEMS,
+)
 
 
 class IllegalItemPropertyException(Exception):
@@ -1138,6 +1139,3 @@ class RecruitedCharacter(Item):
 
 class MarrymoreGear(MiscReward):
     """Base class for collectible wedding chapel gear."""
-
-
-ItemT = TypeVar("ItemT", bound="Item")

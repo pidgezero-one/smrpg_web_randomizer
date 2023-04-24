@@ -6,7 +6,15 @@ from typing import Dict, List, Union
 from randomizer.entities.progress_locations.characters_recruited import (
     StartingCharacter1,
 )
-from randomizer.types.characters.constants import (
+
+from randomizer.types.items import RecruitedCharacter
+from randomizer.types.numbers import UInt4, UInt8, UInt16, ByteField, BitMapSet
+from randomizer.types.palettes import CharacterPaletteSet
+from randomizer.types.patch import Patch
+from randomizer.types.spells import CharacterSpell
+from randomizer.types.world.flags.flags import ChangeNames, PlayAsStarter
+
+from .constants import (
     CHARACTER_BASE_ADDRESS,
     CHARACTER_BASE_LEARNED_SPELLS_ADDRESS,
     CHARACTER_BASE_STAT_BONUS_ADDRESS,
@@ -14,15 +22,6 @@ from randomizer.types.characters.constants import (
     LEVEL_CURVE,
     LEVELUP_BASE_ADDRESS,
 )
-from randomizer.types.numbers.classes import UInt4, UInt8, UInt16, ByteField, BitMapSet
-from randomizer.types.spells.classes import CharacterSpell
-from randomizer.types.palettes.classes import CharacterPaletteSet
-
-from randomizer.types.patch.classes import Patch
-
-from randomizer.types.items.classes import RecruitedCharacter
-
-from randomizer.types.world.flags.flags import ChangeNames, PlayAsStarter
 
 
 class StatGrowth:

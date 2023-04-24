@@ -1,6 +1,6 @@
 """The available NPCs that can occupy any slot in a room."""
 
-from randomizer.types.npcs.animations.animations import (
+from randomizer.types.npcs.objects.animations import (
     AXEM_BLACK_HIT,
     AXEM_GREEN_HIT,
     AXEM_GREEN_HIT_FAST,
@@ -125,7 +125,7 @@ from randomizer.types.npcs.animations.animations import (
     YARIDOVICH_RECOIL,
     YARIDOVICH_TAUNT,
 )
-from randomizer.types.npcs.objects.enums import ShadowSize, VramStore
+from randomizer.types.npcs.objects import ShadowSize, VramStore
 from randomizer.types.npcs.objects.palettes import (
     BELOME_2_LARGE_PALETTE,
     BELOME_2_SMALL_PALETTE,
@@ -137,8 +137,8 @@ from randomizer.types.npcs.objects.palettes import (
     JINX_3_ALT_PALETTE,
     PANDORITE_FACE_PALETTE,
 )
-from randomizer.types.npcs.animations.classes import SpriteAnimationCollection
-from randomizer.types.npcs.objects.classes import (
+from randomizer.types.npcs.objects.animations.types import SpriteAnimationCollection
+from randomizer.types.npcs.objects.types import (
     BigToad,
     CloneNPC,
     Coin,
@@ -163,7 +163,7 @@ from randomizer.types.npcs.objects.classes import (
     Villager,
     YoshiNPC,
 )
-from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
+from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0882_CHEST_KEY_PACKET,
     E0884_CHEST_FEATHER_PACKET,
     E0885_CHEST_STAR_PIECE_PACKET,
@@ -211,8 +211,8 @@ from randomizer.types.overworld_scripts.event_scripts.constants.script_ids impor
     E0928_CHEST_CHEST_PARASOL_PACKET,
     E2952_CLONE_RESERVED,
 )
-from randomizer.types.overworld_scripts.packets.classes import Packet
-from randomizer.types.overworld_scripts.packets.packets import (
+from randomizer.types.overworld_scripts.arguments.types import Packet
+from randomizer.types.overworld_scripts.arguments import (
     P000_FLASHING_POOF_FLOWER,
     P001_FLASHING_POOF_MUSHROOM,
     P002_BRIEF_KEY,
@@ -367,8 +367,8 @@ from randomizer.types.overworld_scripts.packets.packets import (
     P225_PARASOL_FALL,
     P226_PARASOL_CHEST,
 )
-from randomizer.types.palettes.classes import Palette
-from randomizer.types.sprites.constants.sprite_ids import (
+from randomizer.types.palettes import Palette
+from randomizer.types.sprites.ids import (
     SPR0000_MARIO_WALKING_DOWN_LEFT,
     SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
     SPR0013_BOWSER_WALKING_DOWN_LEFT,

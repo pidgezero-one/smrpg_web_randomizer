@@ -6,28 +6,27 @@ from copy import deepcopy
 import re
 from typing import Any, Dict, List, Optional, Type, Union
 import yaml
+
 from randomizer.entities.dialogs.overworld_dialogs.classes.dialog import (
     DialogCollection,
 )
-from randomizer.types.shops.classes import Shop
-from randomizer.types.sprites.classes.collection import SpriteCollection
-from randomizer.types.world.exceptions import RandomizerSettingsException
+
 from randomizer.utils.number import coin_flip
-from randomizer.types.battle_animation_scripts.classes import (
+
+from randomizer.types.battle_animation_scripts import (
     AnimationScriptBankCollection,
 )
-from randomizer.types.battles.formations.classes import Formation
-from randomizer.types.battles.packs.classes import FormationPack
-from randomizer.types.characters.classes import Character
-from randomizer.types.enemies.classes import Enemy
-from randomizer.types.items.classes import Item, SpottedCharacter
-from randomizer.types.monster_scripts.classes import MonsterScriptBank
-from randomizer.types.overworld_scripts.event_scripts.classes import (
+from randomizer.types.battles.formations_packs.types import Formation, FormationPack
+from randomizer.types.characters import Character
+from randomizer.types.enemies import Enemy
+from randomizer.types.items import Item, SpottedCharacter
+from randomizer.types.monster_scripts import MonsterScriptBank
+from randomizer.types.overworld_scripts.event_scripts import (
     EventScriptController,
 )
-from randomizer.types.overworld_scripts.action_scripts.classes import ActionScriptBank
-from randomizer.types.patch.classes import Patch
-from randomizer.types.progress_locations.classes import (
+from randomizer.types.overworld_scripts.action_scripts import ActionScriptBank
+from randomizer.types.patch import Patch
+from randomizer.types.progress_locations import (
     BossFightLocation,
     BossStarPiecePrize,
     CharacterRecruitLocation,
@@ -38,20 +37,14 @@ from randomizer.types.progress_locations.classes import (
     GrantLocation,
     ProgressLocationT,
 )
+from randomizer.types.rooms import Room
+from randomizer.types.shops import Shop
+from randomizer.types.spells import CharacterSpell, Spell
+from randomizer.types.sprites import SpriteCollection
 
-from randomizer.types.rooms.classes import Room
-from randomizer.types.spells.classes import CharacterSpell, Spell
-from randomizer.types.world.flags.categories.categories import CosmeticCategory
-from randomizer.types.world.flags.categories.constants import CATEGORIES
-from randomizer.types.world.flags.classes import (
-    BooleanFlag,
-    CategorizationFlag,
-    Flag,
-    FlagError,
-    NumberThresholdFlag,
-    SelectOneFlag,
-)
-from randomizer.types.world.flags.enums import (
+
+from .exceptions import RandomizerSettingsException
+from .flags import (
     BanditsWayGating,
     BoosterTowerGating,
     BowsersKeepGating,
@@ -61,9 +54,6 @@ from randomizer.types.world.flags.enums import (
     LearnableSpells,
     PlayableCharacters,
     SeaGating,
-)
-from randomizer.types.world.flags.classes import FlagT
-from randomizer.types.world.flags.flags import (
     AvailableCharacters,
     AvailableSpells,
     BanditsWayGate,
@@ -78,7 +68,17 @@ from randomizer.types.world.flags.flags import (
     StartingCharacters,
     TotalStarPieces,
 )
-from randomizer.types.world.utils import (
+from .flags.categories import CosmeticCategory, CATEGORIES
+from .flags.types import (
+    BooleanFlag,
+    CategorizationFlag,
+    Flag,
+    FlagError,
+    NumberThresholdFlag,
+    SelectOneFlag,
+    FlagT,
+)
+from .utils import (
     set_flag_from_settings_string,
     separate_flag_string,
     get_flag_string_from_flag_collection,

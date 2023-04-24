@@ -2,9 +2,9 @@
 
 from typing import List, Type, TypeVar
 
-from randomizer.types.world.flags.categories.classes import FlagCategory
-from randomizer.types.world.flags.classes import Flag
-from randomizer.types.world.flags.flags import (
+from randomizer.types.world.flags.categories.types import FlagCategory
+from randomizer.types.world.flags.types import Flag
+from randomizer.types.world.flags import (
     AnnoyingChests,
     AvailableCharacters,
     AvailableSpells,
@@ -462,4 +462,12 @@ FlagCategoryT = TypeVar(
     PaletteSubcategory,
     CosmeticCategory,
     FlagCategory,
+)
+
+CATEGORIES = (
+    PartyCategory,
+    ItemsCategory,
+    AccessCategory,
+    BossCategory,
+    CosmeticCategory,
 )

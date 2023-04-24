@@ -2,17 +2,18 @@
 
 from typing import Dict, List, Optional, Type
 
-from randomizer.types.bosses.enums import Battlefields
-from randomizer.types.npcs.objects.classes import NPC, Statue
-from randomizer.types.npcs.objects.npcs import Empty, ValentinaStatue
-from randomizer.types.numbers.classes import UInt8
-from randomizer.types.overworld_scripts.action_scripts.classes import (
+from randomizer.types.items.classes import BossFight
+from randomizer.types.npcs.objects.types import NPC, Statue
+from randomizer.types.npcs.objects import Empty, ValentinaStatue
+from randomizer.types.numbers import UInt8
+from randomizer.types.overworld_scripts.action_scripts.commands.types import (
     ActionScriptCommand,
 )
 
 from randomizer.utils.snippets.es_mimic_rise import commands as mimic_subscript
 
-from randomizer.types.items.classes import BossFight
+
+from .enums import Battlefields
 
 EMPTY_DIALOG = "[await]"
 
@@ -161,7 +162,8 @@ class Boss(BossFight):
         """The model to be drawn representing this boss in contexts where
         the model can be larger than 32x32 px, AND we want to use a special animation
         such as an attack that the sprite can perform in battle.
-        Returns the big model or small model if no suitable sprite exists for this boss."""
+        Returns the big model or small model if no suitable sprite exists for this boss.
+        """
         if self._attack_model is not None:
             return self._attack_model
         return self.big_model
@@ -226,7 +228,8 @@ class Boss(BossFight):
     def dialog_replacements_if_mandatory_fights_changed(self) -> Dict[int, str]:
         """A dict of dialog ID keys, and strings that should replace the contents of those dialogs
         in the world's dialog bank, but only IF certain optional boss or henchman replacements
-        have been made (such as the Nimbus statue polisher or late Sunken Ship fights)."""
+        have been made (such as the Nimbus statue polisher or late Sunken Ship fights).
+        """
         return self._dialog_replacements_if_mandatory_fights_changed
 
     def set_dialog_replacements_if_mandatory_fights_changed(

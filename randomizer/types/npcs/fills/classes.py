@@ -8,17 +8,26 @@ from randomizer.entities.bosses.henchmen import (
     HidonGoombette,
     KingCalamariTinyBloober,
 )
-from randomizer.types.bosses.classes import Boss, Henchman
-from randomizer.types.bosses.enums import Battlefields, HenchmanType, SpriteSize
-from randomizer.types.numbers.classes import UInt16
-from randomizer.types.overworld_scripts.constants.area_objects import NPC_0
-from randomizer.types.overworld_scripts.constants.classes import AreaObject
-from randomizer.types.overworld_scripts.constants.misc import TOTAL_DIALOGS, TOTAL_ROOMS
-from randomizer.types.overworld_scripts.constants.room_names import R000_DEBUG_ROOM
-from randomizer.types.overworld_scripts.event_scripts.constants.misc import (
+
+from randomizer.types.bosses import (
+    Boss,
+    Henchman,
+    Battlefields,
+    HenchmanType,
+    SpriteSize,
+)
+from randomizer.types.numbers import UInt16
+from randomizer.types.overworld_scripts.arguments import NPC_0
+from randomizer.types.overworld_scripts.arguments.types import AreaObject
+from randomizer.types.overworld_scripts.ids import (
+    TOTAL_DIALOGS,
+    TOTAL_ROOMS,
+    R000_DEBUG_ROOM,
+)
+from randomizer.types.overworld_scripts.event_scripts.ids import (
     TOTAL_SCRIPTS as TOTAL_EVENTS,
 )
-from randomizer.types.overworld_scripts.action_scripts.constants.misc import (
+from randomizer.types.overworld_scripts.action_scripts.ids import (
     TOTAL_SCRIPTS as TOTAL_ACTIONS,
 )
 

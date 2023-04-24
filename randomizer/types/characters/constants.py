@@ -1,7 +1,8 @@
 """"Miscellaeous constants used for playable character classes and functions."""
 
 from typing import List, Tuple
-from randomizer.types.characters.enums import LevelStats
+
+from .enums import LevelStats
 
 LEVELUP_BASE_ADDRESS: int = 0x3A1AFF
 

@@ -5,6 +5,7 @@ a character recruitment opportunity, or an item granter."""
 from copy import deepcopy
 from random import choice, random
 from typing import Optional, Tuple, Type, TypeVar, List, Union
+
 from randomizer.entities.bosses.bosses import MokuraBoss
 from randomizer.entities.characters.characters import (
     Bowser,
@@ -106,9 +107,18 @@ from randomizer.entities.progress_locations.helpers.area_access import (
     progression_safety,
 )
 from randomizer.entities.spells.spells import SuperJump
-from randomizer.types.bosses.classes import Boss, Henchman
-from randomizer.types.characters.classes import Character
-from randomizer.types.items.classes import (
+
+from randomizer.types.bosses import (
+    Boss,
+    Henchman,
+    BattleMusic,
+    Battlefields,
+    BossLocations,
+    HenchmanType,
+    SpriteSize,
+)
+from randomizer.types.characters import Character
+from randomizer.types.items import (
     Coins,
     IllegalItemPropertyException,
     InvincibilityStar,
@@ -122,37 +132,31 @@ from randomizer.types.items.classes import (
     SpottedCharacter,
     StarPiece,
 )
-from randomizer.types.npcs.animations.classes import SpriteAnimation
-from randomizer.types.npcs.fills.classes import (
+from randomizer.types.npcs.objects.animations.types import SpriteAnimation
+from randomizer.types.npcs.fills import (
     BossModelFill,
     RepeatableHenchmanFill,
     StatueFill,
     UniqueHenchmanFill,
 )
-from randomizer.types.npcs.objects.enums import VramStore
-from randomizer.types.npcs.objects.npcs import Empty
-from randomizer.types.numbers.classes import Int8, UInt16, UInt8
-from randomizer.types.bosses.enums import (
-    BattleMusic,
-    Battlefields,
-    BossLocations,
-    HenchmanType,
-    SpriteSize,
+from randomizer.types.npcs.objects import VramStore, Empty
+from randomizer.types.numbers import Int8, UInt16, UInt8
+from randomizer.types.overworld_scripts.action_scripts.commands import (
+    SetSpriteSequence,
 )
-from randomizer.types.overworld_scripts.action_scripts.commands import SetSpriteSequence
-from randomizer.types.overworld_scripts.event_scripts.classes import (
+from randomizer.types.overworld_scripts.event_scripts.commands.types import (
     ActionSubcriptCommandPrototype,
 )
-from randomizer.types.progress_locations.enums import LocationWorldArea, PacketType
-from randomizer.types.progress_locations.utils import get_default_battlefield_from_room
-from randomizer.types.overworld_scripts.constants.misc import TOTAL_ROOMS
-from randomizer.types.rooms.classes import (
+from randomizer.types.overworld_scripts.event_scripts.ids import (
+    TOTAL_SCRIPTS as TOTAL_EVENTS,
+)
+from randomizer.types.overworld_scripts.ids import TOTAL_ROOMS
+from randomizer.types.rooms import (
     BattlePackClone,
     BattlePackNPC,
     RoomObject,
 )
-from randomizer.types.spells.classes import CharacterSpell
-from randomizer.types.spells.enums import Element
+from randomizer.types.spells import CharacterSpell, Element
 from randomizer.types.world.classes import GameWorld
 from randomizer.types.world.flags.enums import (
     FireworksOptions,
@@ -173,9 +177,9 @@ from randomizer.types.world.flags.flags import (
     ShuffleWeddingGear,
     StarPieceAvailability,
 )
-from randomizer.types.overworld_scripts.event_scripts.constants.misc import (
-    TOTAL_SCRIPTS as TOTAL_EVENTS,
-)
+
+from .enums import LocationWorldArea, PacketType
+from .table import get_default_battlefield_from_room
 
 
 class Inventory(List):

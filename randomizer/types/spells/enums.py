@@ -1,7 +1,8 @@
 """Enums supporting development surrounding spells."""
 
 from enum import IntEnum, Enum
-from randomizer.types.numbers.classes import UInt4, UInt8
+
+from randomizer.types.numbers import UInt4, UInt8
 
 ELEMENT_NAME_NONE = "No Element"
 ELEMENT_NAME_FIRE = "Fire"

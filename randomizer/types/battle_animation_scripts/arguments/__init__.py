@@ -1,0 +1,113 @@
+"""Class instances for battle animation script arguments that need special restrictions."""
+
+
+from .battle_targets import (
+    MARIO,
+    TOADSTOOL,
+    BOWSER,
+    GENO,
+    MALLOW,
+    UNKNOWN_05,
+    UNKNOWN_06,
+    UNKNOWN_07,
+    UNKNOWN_08,
+    UNKNOWN_09,
+    UNKNOWN_10,
+    UNKNOWN_11,
+    UNKNOWN_12,
+    UNKNOWN_13,
+    UNKNOWN_14,
+    UNKNOWN_15,
+    CHARACTER_IN_SLOT_1,
+    CHARACTER_IN_SLOT_2,
+    CHARACTER_IN_SLOT_3,
+    MONSTER_1_SET,
+    MONSTER_2_SET,
+    MONSTER_3_SET,
+    MONSTER_4_SET,
+    MONSTER_5_SET,
+    MONSTER_6_SET,
+    MONSTER_7_SET,
+    MONSTER_8_SET,
+    SELF,
+    ALL_ALLIES_NOT_SELF,
+    RANDOM_ALLY_NOT_SELF,
+    ALL_ALLIES_AND_SELF,
+    RANDOM_ALLY_OR_SELF,
+    UNKNOWN_32,
+    UNKNOWN_33,
+    UNKNOWN_34,
+    ALL_OPPONENTS,
+    AT_LEAST_ONE_OPPONENT,
+    RANDOM_OPPONENT,
+    UNKNOWN_38,
+    AT_LEAST_ONE_ALLY,
+    MONSTER_1_CALL,
+    MONSTER_2_CALL,
+    MONSTER_3_CALL,
+    MONSTER_4_CALL,
+    MONSTER_5_CALL,
+    MONSTER_6_CALL,
+    MONSTER_7_CALL,
+    MONSTER_8_CALL,
+)
+
+from .bonus_messages import (
+    BM_ATTACK,
+    BM_DEFENSE,
+    BM_UP,
+    BM_HPMAX,
+    BM_ONCE,
+    BM_AGAIN,
+    BM_LUCKY,
+)
+from .flash_colours import (
+    NO_COLOUR,
+    RED,
+    GREEN,
+    YELLOW,
+    BLUE,
+    PINK,
+    AQUA,
+    WHITE,
+)
+from .layer_priority_type import (
+    TRANSPARENCY_OFF,
+    OVERLAP_ALL,
+    OVERLAP_NONE,
+    OVERLAP_ALL_EXCEPT_ALLIES,
+)
+from .mask_effects import (
+    NO_MASK,
+    INCLINE_1,
+    INCLINE_2,
+    CIRCLE_MASK,
+    DOME_MASK,
+    POLYGON_MASK,
+    WAVY_CIRCLE_MASK,
+    CYLINDER_MASK,
+)
+from .message_type import BATTLE_DIALOGUE, PSYCHOPATH_MESSAGE, BATTLE_MESSAGE
+from .origins import (
+    ABSOLUTE_POSITION,
+    CASTER_INITIAL_POSITION,
+    TARGET_CURRENT_POSITION,
+    CASTER_CURRENT_POSITION,
+)
+from .pause_until import (
+    SPRITE_SHIFT_COMPLETE,
+    BUTTON_PRESSED,
+    FRAMES_ELAPSED,
+    SEQ_4BPP_COMPLETE,
+    SEQ_2BPP_COMPLETE,
+    FADE_IN_COMPLETE,
+    FADE_4BPP_COMPLETE,
+    FADE_2BPP_COMPLETE,
+)
+from .shift_type import (
+    SHIFT_TYPE_0X00,
+    SHIFT_TYPE_SHIFT,
+    SHIFT_TYPE_TRANSFER,
+    SHIFT_TYPE_0X04,
+    SHIFT_TYPE_0X08,
+)

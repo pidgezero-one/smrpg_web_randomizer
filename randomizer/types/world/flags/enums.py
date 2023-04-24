@@ -2,7 +2,7 @@
 
 import enum
 
-from randomizer.types.battles.battle_music.music import (
+from randomizer.types.battles import (
     BossMusic,
     CorndillyMusic,
     CulexMusic,

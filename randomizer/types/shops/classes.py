@@ -1,10 +1,8 @@
 """Base classes for shops."""
 
 from typing import Optional, List, Type, Generic
-from randomizer.types.patch.classes import Patch
-from randomizer.types.shops.constants import BASE_SHOP_ADDRESS
-from randomizer.types.numbers.classes import UInt16, UInt8
-from randomizer.types.items.classes import (
+
+from randomizer.types.items import (
     Accessory,
     Armor,
     Item,
@@ -12,8 +10,11 @@ from randomizer.types.items.classes import (
     RegularItem,
     Weapon,
 )
+from randomizer.types.numbers import UInt16, UInt8, ByteField
+from randomizer.types.patch import Patch
 from randomizer.types.world.classes import GameWorld
-from randomizer.types.numbers.classes import ByteField
+
+from .constants import BASE_SHOP_ADDRESS
 
 
 class Shop(Generic[ItemT]):

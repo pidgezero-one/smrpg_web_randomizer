@@ -1,6 +1,6 @@
 """Palettes to optionally distinguish enemies that use the same sprite."""
 
-from randomizer.types.palettes.classes import Palette
+from randomizer.types.palettes import Palette
 
 CROCO_ALT_PALETTE = Palette(
     [

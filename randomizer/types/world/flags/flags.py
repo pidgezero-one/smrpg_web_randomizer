@@ -3,14 +3,10 @@
 """Randomizer setting definitions."""
 
 from typing import List
-from randomizer.types.bosses.enums import BossLocations
-from randomizer.types.world.flags.classes import (
-    BooleanFlag,
-    CategorizationFlag,
-    NumberThresholdFlag,
-    SelectOneFlag,
-)
-from randomizer.types.world.flags.constants import (
+
+from randomizer.types.bosses import BossLocations
+
+from .categorizations import (
     BANDITS_WAY_GATING_LIST,
     BOSS_MUSIC_LIST,
     BOSS_SCALE_LIST,
@@ -41,7 +37,7 @@ from randomizer.types.world.flags.constants import (
     VOLCANO_GATING,
     WIN_CONDITION_LIST,
 )
-from randomizer.types.world.flags.enums import (
+from .enums import (
     AvailableMusic,
     BanditsWayGating,
     BarrelVolcanoGating,
@@ -68,6 +64,12 @@ from randomizer.types.world.flags.enums import (
     ShuffleLocationSelector,
     WinConditions,
     YaridovichGating,
+)
+from .types import (
+    BooleanFlag,
+    CategorizationFlag,
+    NumberThresholdFlag,
+    SelectOneFlag,
 )
 
 # ******** Party

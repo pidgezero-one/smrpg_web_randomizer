@@ -1,32 +1,29 @@
 """Base classes for individual rooms in the game."""
 
 from typing import List, Optional, Type, Union, TypeVar, Generic
-from randomizer.types.battles.packs.constants.pack_ids import PACK0000_SNIFIT_FIGHT
-from randomizer.types.npcs.objects.classes import NPC, AreaNPC
-from randomizer.types.npcs.objects.enums import ShadowSize, VramStore
-from randomizer.types.npcs.objects.npcs import Empty
-from randomizer.types.numbers.classes import UInt16, UInt4, UInt8
-from randomizer.types.overworld_scripts.constants.area_objects import NPC_0
-from randomizer.types.overworld_scripts.constants.directions import SOUTHWEST
-from randomizer.types.overworld_scripts.constants.misc import (
+
+from randomizer.types.battles.ids import PACK0000_SNIFIT_FIGHT
+from randomizer.types.npcs.objects import ShadowSize, VramStore, Empty
+from randomizer.types.npcs.objects.types import NPC, AreaNPC
+from randomizer.types.numbers import UInt16, UInt4, UInt8
+from randomizer.types.overworld_scripts.arguments import NPC_0, SOUTHWEST
+from randomizer.types.overworld_scripts.arguments.types import AreaObject, Direction
+from randomizer.types.overworld_scripts.ids import (
     TOTAL_ROOMS,
     TOTAL_WORLD_MAP_AREAS,
+    M00_CURRENT,
 )
-from randomizer.types.overworld_scripts.constants.music_names import M00_CURRENT
-from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
+from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0015_STANDARD_ROOM_LOADER,
     E0256_RETURN,
-)
-from randomizer.types.overworld_scripts.action_scripts.constants.script_ids import (
-    A0000_DO_NOTHING,
-)
-from randomizer.types.overworld_scripts.event_scripts.constants.misc import (
     TOTAL_SCRIPTS as TOTAL_EVENTS,
 )
-from randomizer.types.overworld_scripts.action_scripts.constants.misc import (
+from randomizer.types.overworld_scripts.action_scripts.ids import (
+    A0000_DO_NOTHING,
     TOTAL_SCRIPTS as TOTAL_ACTIONSCRIPTS,
 )
-from randomizer.types.rooms.enums import (
+
+from .enums import (
     BufferSpace,
     BufferType,
     EdgeDirection,
@@ -36,7 +33,6 @@ from randomizer.types.rooms.enums import (
     ObjectType,
     PostBattleBehaviour,
 )
-from randomizer.types.overworld_scripts.constants.classes import AreaObject, Direction
 
 
 class Buffer:
