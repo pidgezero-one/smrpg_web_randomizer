@@ -1,4 +1,6 @@
-from randomizer.entities.dialogs.overworld_dialogs.classes.dialog import (
+"""Dialog table for the randomizer."""
+
+from randomizer.types.dialogs import (
     DialogCollection,
 )
 from randomizer.entities.dialogs.overworld_dialogs.data.dialog_pointers import (

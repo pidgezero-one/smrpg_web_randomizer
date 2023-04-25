@@ -15,7 +15,7 @@ script = EventScript(
         SetBit(MAP_DIRECTIONAL_SEASIDE_DOWN_SEA),
         RunDialog(
             dialog_id=DI2261_SEA_OPEN,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

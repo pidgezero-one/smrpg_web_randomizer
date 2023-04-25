@@ -8,7 +8,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI1221_EXIT_TRAMPOLINE_CONFIRM,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

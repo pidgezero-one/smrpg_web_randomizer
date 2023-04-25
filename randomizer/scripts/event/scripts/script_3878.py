@@ -10,7 +10,7 @@ script = EventScript(
         Pause(10),
         RunDialog(
             dialog_id=DI1207_GRATE_GUY_WARNS_YOU_ABOUT_FACTORY_TRAMPOLINE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

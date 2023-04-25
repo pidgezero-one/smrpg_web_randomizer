@@ -64,7 +64,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_1872_play_sound_34"),
         RunDialog(
             dialog_id=DI1294_GOT_FIREWORKS,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

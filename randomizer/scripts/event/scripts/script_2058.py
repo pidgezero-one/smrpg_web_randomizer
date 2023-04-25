@@ -8,7 +8,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI2987_FAN_SETTING,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

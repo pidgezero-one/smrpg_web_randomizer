@@ -52,7 +52,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_1172_run_dialog_19"),
         RunDialog(
             dialog_id=DI2939_RECEIVED_FLOWER_TAB,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,
@@ -66,7 +66,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6, identifier="EVENT_1172_run_dialog_29"),
         RunDialog(
             dialog_id=DI2937_RECEIVED_MAPLE_SYRUP,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

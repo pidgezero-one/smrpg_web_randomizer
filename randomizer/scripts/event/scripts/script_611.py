@@ -130,7 +130,7 @@ script = EventScript(
         CopyVarToVar(from_var=TEMP_7026, to_var=PRIMARY_TEMP_7000),
         RunDialog(
             dialog_id=DI1003_THEY_TOOK_ALL_COINS,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=True,
             multiline=True,
@@ -224,7 +224,7 @@ script = EventScript(
         Pause(60),
         RunDialog(
             dialog_id=DI2478_LOST_ALL_COINS_AND_FROG_COINS,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

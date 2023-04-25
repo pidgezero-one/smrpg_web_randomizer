@@ -1,7 +1,7 @@
 """Utils for NPCs"""
 
 from math import ceil
-from randomizer.types.npcs.objects.classes import Coin
+from randomizer.types.npcs.objects.types.classes import Coin
 
 
 def min_vram(number_of_tiles: int):

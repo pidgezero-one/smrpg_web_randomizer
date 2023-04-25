@@ -11,18 +11,26 @@ import time
 
 from django.conf import settings
 from django.db import transaction
-from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse, HttpResponseNotFound, QueryDict
+from django.http import (
+    JsonResponse,
+    HttpResponseBadRequest,
+    HttpResponse,
+    HttpResponseNotFound,
+    QueryDict,
+)
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView
 
+from randomizer.types.world.flags.categories import CATEGORIES
+from randomizer.types.world.flags.presets import PRESETS
+from randomizer.types.world.flags.types import FlagError
+from randomizer.types.patch import PatchJSONEncoder
+
 from .models import Seed, Patch
 from .forms import GenerateForm
-from randomizer.types.world.flags.categories.constants import CATEGORIES, PRESETS
-from randomizer.types.world.flags.classes import FlagError
-from randomizer.types.patch.classes import PatchJSONEncoder
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -39,20 +47,20 @@ def _build_flag_json_data(f, letter):
         dict: Flag data.
 
     """
-    flag = f() # man i dont know what im doing
+    flag = f()  # man i dont know what im doing
     modes = flag.modes.copy()
 
     d = {
-        'subcategory': letter,
-        'id': flag.id,
-        'modes': modes,
-        'type': flag.type,
+        "subcategory": letter,
+        "id": flag.id,
+        "modes": modes,
+        "type": flag.type,
     }
     if flag.type == "categorization":
-        d['options'] = flag.options_dict
+        d["options"] = flag.options_dict
         d["default"] = flag.default_dict
     elif flag.type == "select_one":
-        d['choices'] = flag.choices_dict
+        d["choices"] = flag.choices_dict
         d["default"] = flag.default_dict
     else:
         d["default"] = flag.default
@@ -76,46 +84,46 @@ class RandomizerView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['version'] = VERSION
-        context['debug_enabled'] = settings.DEBUG
-        context['beta_site'] = settings.BETA
-        context['categories'] = CATEGORIES
-        context['presets'] = PRESETS
-        context['flags'] = FLAGS
+        context["version"] = VERSION
+        context["debug_enabled"] = settings.DEBUG
+        context["beta_site"] = settings.BETA
+        context["categories"] = CATEGORIES
+        context["presets"] = PRESETS
+        context["flags"] = FLAGS
 
         return context
 
 
 class AboutView(RandomizerView):
-    template_name = 'randomizer/about.html'
+    template_name = "randomizer/about.html"
 
 
 class HowToPlayView(RandomizerView):
-    template_name = 'randomizer/how_to_play.html'
+    template_name = "randomizer/how_to_play.html"
 
 
 class OptionsView(RandomizerView):
-    template_name = 'randomizer/options.html'
+    template_name = "randomizer/options.html"
 
 
 class ResourcesView(RandomizerView):
-    template_name = 'randomizer/resources.html'
+    template_name = "randomizer/resources.html"
 
 
 class GuideView(RandomizerView):
-    template_name = 'randomizer/guide.html'
+    template_name = "randomizer/guide.html"
 
 
 class UpdatesView(RandomizerView):
-    template_name = 'randomizer/updates.html'
+    template_name = "randomizer/updates.html"
 
 
 class RandomizeView(RandomizerView):
-    template_name = 'randomizer/randomize.html'
+    template_name = "randomizer/randomize.html"
 
 
 class HashView(RandomizerView):
-    template_name = 'randomizer/patch_from_hash.html'
+    template_name = "randomizer/patch_from_hash.html"
 
 
 class GenerateView(FormView):
@@ -127,11 +135,11 @@ class GenerateView(FormView):
 
         # Debug mode is only allowed if the server is running in debug mode for development.
         if not settings.DEBUG:
-            data['debug_mode'] = False
+            data["debug_mode"] = False
 
         # If seed is provided, use it.  Otherwise generate a random seed (10 digits max).
         # For non-numeric values, take the CRC32 checksum of it.
-        seed = data['seed']
+        seed = data["seed"]
 
         if seed:
             if seed.isdigit():
@@ -147,38 +155,47 @@ class GenerateView(FormView):
             seed = r.getrandbits(32)
             del r
 
-        mode = data['mode'] or 'open'
-        debug_mode = bool(data['debug_mode'])
-        race_mode = bool(data['race_mode'])
+        mode = data["mode"] or "open"
+        debug_mode = bool(data["debug_mode"])
+        race_mode = bool(data["race_mode"])
 
         try:
             # Build game world, randomize it, and generate the patch.
-            world = GameWorld(seed, Settings(mode, debug_mode, data['flags'] or '', data['cosmetics'] or ''))
+            world = GameWorld(
+                seed,
+                Settings(
+                    mode, debug_mode, data["flags"] or "", data["cosmetics"] or ""
+                ),
+            )
             world.randomize()
-            patches = {'US': world.build_patch()}
+            patches = {"US": world.build_patch()}
         except FlagError as e:
             # Catch error with flags and return that error message instead.
             result = {
-                'error': e.args[0],
+                "error": e.args[0],
             }
             return JsonResponse(result, encoder=PatchJSONEncoder)
         except Exception:
-            logger.error("ERROR form data: {!r}, generated seed: {!r}".format(data, seed))
+            logger.error(
+                "ERROR form data: {!r}, generated seed: {!r}".format(data, seed)
+            )
             raise
 
         # Send back patch data.
         result = {
-            'logic': VERSION,
-            'seed': seed,
-            'hash': world.hash,
-            'mode': mode,
-            'debug_mode': debug_mode,
-            'flag_string': world.settings.flag_string,
-            'file_select_character': world.file_select_character,
-            'file_select_hash': world.file_select_hash,
-            'permalink': reverse('randomizer:patch-from-hash', kwargs={'hash': world.hash}),
-            'race_mode': race_mode,
-            'spoiler': world.spoiler if not race_mode else {},
+            "logic": VERSION,
+            "seed": seed,
+            "hash": world.hash,
+            "mode": mode,
+            "debug_mode": debug_mode,
+            "flag_string": world.settings.flag_string,
+            "file_select_character": world.file_select_character,
+            "file_select_hash": world.file_select_hash,
+            "permalink": reverse(
+                "randomizer:patch-from-hash", kwargs={"hash": world.hash}
+            ),
+            "race_mode": race_mode,
+            "spoiler": world.spoiler if not race_mode else {},
         }
 
         # Save patch to the database (don't need to save EU since it's the same as US).
@@ -191,9 +208,18 @@ class GenerateView(FormView):
             else:
                 s.delete()
 
-            s = Seed(hash=world.hash, seed=seed, version=VERSION, mode=mode, debug_mode=debug_mode,
-                     flags=world.settings.flag_string, file_select_char=world.file_select_character,
-                     file_select_hash=world.file_select_hash, race_mode=race_mode, spoiler=world.spoiler)
+            s = Seed(
+                hash=world.hash,
+                seed=seed,
+                version=VERSION,
+                mode=mode,
+                debug_mode=debug_mode,
+                flags=world.settings.flag_string,
+                file_select_char=world.file_select_character,
+                file_select_hash=world.file_select_hash,
+                race_mode=race_mode,
+                spoiler=world.spoiler,
+            )
             s.save()
 
             for region, patch in patches.items():
@@ -205,12 +231,12 @@ class GenerateView(FormView):
 
         # Check if we're including the patch data in the response.
         if self.return_patch_data:
-            result['patch'] = patches['US']  # Patch for EU version is the same as US.
+            result["patch"] = patches["US"]  # Patch for EU version is the same as US.
 
         return JsonResponse(result, encoder=PatchJSONEncoder)
 
     def form_invalid(self, form):
-        msg = "{} form error: ".format(self.__class__.__name__) + '; '.join(form.errors)
+        msg = "{} form error: ".format(self.__class__.__name__) + "; ".join(form.errors)
         logger.error(msg)
         return HttpResponseBadRequest(msg.encode())
 
@@ -226,8 +252,8 @@ class GenerateFromHashView(View):
     def get(request, hash, region):
         """Get a previously generated patch via hash value."""
         # EU patch is actually the US one.
-        if region == 'EU':
-            region = 'US'
+        if region == "EU":
+            region = "US"
 
         try:
             s = Seed.objects.get(hash=hash)
@@ -237,53 +263,55 @@ class GenerateFromHashView(View):
         try:
             p = Patch.objects.get(seed=s, region=region)
         except Patch.DoesNotExist:
-            return HttpResponseNotFound("No patch found for hash {0!r}, region {1!r}".format(hash, region))
+            return HttpResponseNotFound(
+                "No patch found for hash {0!r}, region {1!r}".format(hash, region)
+            )
 
         result = {
-            'logic': s.version,
-            'seed': s.seed,
-            'hash': s.hash,
-            'mode': s.mode,
-            'debug_mode': s.debug_mode,
-            'flag_string': s.flags,
-            'file_select_character': s.file_select_char,
-            'file_select_hash': s.file_select_hash,
-            'patch': json.loads(p.patch),
-            'race_mode': s.race_mode,
-            'spoiler': s.spoiler,
+            "logic": s.version,
+            "seed": s.seed,
+            "hash": s.hash,
+            "mode": s.mode,
+            "debug_mode": s.debug_mode,
+            "flag_string": s.flags,
+            "file_select_character": s.file_select_char,
+            "file_select_hash": s.file_select_hash,
+            "patch": json.loads(p.patch),
+            "race_mode": s.race_mode,
+            "spoiler": s.spoiler,
         }
         return JsonResponse(result)
 
 
-@method_decorator(csrf_exempt, name='dispatch')
+@method_decorator(csrf_exempt, name="dispatch")
 class PackingView(View):
     @staticmethod
     def post(request):
         """Pack uploaded ROM into the provided WAD file as downloaded file."""
-        if not request.FILES.get('rom'):
+        if not request.FILES.get("rom"):
             return HttpResponseBadRequest("ROM file not provided")
-        elif not request.FILES.get('wad'):
+        elif not request.FILES.get("wad"):
             return HttpResponseBadRequest("WAD file not provided")
 
         with tempfile.TemporaryDirectory() as dumpdir:
-            romfile = os.path.join(dumpdir, 'rom.sfc')
-            with open(romfile, 'wb') as f:
-                shutil.copyfileobj(request.FILES['rom'], f)
+            romfile = os.path.join(dumpdir, "rom.sfc")
+            with open(romfile, "wb") as f:
+                shutil.copyfileobj(request.FILES["rom"], f)
 
             # Compress ROM file for US and EU (not JP)
             rom_to_copy = romfile
-            if request.POST.get('region') in ('US', 'EU'):
-                romcompressed = os.path.join(dumpdir, 'rom_compressed.sfc')
+            if request.POST.get("region") in ("US", "EU"):
+                romcompressed = os.path.join(dumpdir, "rom_compressed.sfc")
                 nlzss.encode_file(romfile, romcompressed)
                 rom_to_copy = romcompressed
 
             # Dump WAD file
-            wadf = Wii.WAD.load(request.FILES['wad'].read())
+            wadf = Wii.WAD.load(request.FILES["wad"].read())
             wadf.dumpDir(dumpdir)
 
             # Dump U8 archive
-            u8file = os.path.join(dumpdir, '00000005.app')
-            u8unpackdir = u8file + '_unpacked'
+            u8file = os.path.join(dumpdir, "00000005.app")
+            u8unpackdir = u8file + "_unpacked"
             u8archive = Wii.U8.loadFile(u8file)
             u8archive.dumpDir(u8unpackdir)
 
@@ -299,17 +327,17 @@ class PackingView(View):
             newu8.dumpFile(u8file)
 
             # Build new WAD
-            newwadfile = os.path.join(dumpdir, 'smrpg_randomized.wad')
+            newwadfile = os.path.join(dumpdir, "smrpg_randomized.wad")
             newwad = Wii.WAD.loadDir(dumpdir)
 
             # Make new channel title with seed (sync for all languages).
             # Read title from ROM and make sure it's in the correct spot.  If not, leave the title alone.
-            with open(romfile, 'rb') as f:
-                f.seek(0x7fc0)
+            with open(romfile, "rb") as f:
+                f.seek(0x7FC0)
                 title = f.read(20).strip()
                 title = title.ljust(20)
 
-            if not title.startswith(b'SMRPG-R'):
+            if not title.startswith(b"SMRPG-R"):
                 return HttpResponseBadRequest("Bad ROM title {!r}".format(title))
 
             try:
@@ -318,7 +346,7 @@ class PackingView(View):
                 return HttpResponseBadRequest("Bad ROM title {!r}".format(title))
 
             # Read first content file data to find the channel title data and update it.
-            if newwad.contents[0][0x80:0x84] != b'IMET':
+            if newwad.contents[0][0x80:0x84] != b"IMET":
                 return HttpResponseBadRequest("Can't find IMET in WAD contents file")
 
             imetpos = 0x80
@@ -333,7 +361,7 @@ class PackingView(View):
 
             # Update MD5 hash for this content file.
             data = content[64:1584]
-            data += b'\x00' * 16
+            data += b"\x00" * 16
             md5 = Wii.Crypto.createMD5Hash(data)
             for i in range(16):
                 content[1584 + i] = md5[i]
@@ -343,45 +371,74 @@ class PackingView(View):
             # Generate random title ID for the WAD that doesn't conflict with existing channels.
             choices = list(string.ascii_letters + string.digits)
             # The first character of the four byte title ID should exclude existing ones to avoid conflicts.
-            first_char_choices = list(set(choices) -
-                                      {'C', 'D', 'E', 'F', 'G', 'H', 'J', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'W', 'X'})
+            first_char_choices = list(
+                set(choices)
+                - {
+                    "C",
+                    "D",
+                    "E",
+                    "F",
+                    "G",
+                    "H",
+                    "J",
+                    "L",
+                    "M",
+                    "N",
+                    "P",
+                    "Q",
+                    "R",
+                    "S",
+                    "W",
+                    "X",
+                }
+            )
             first_char_choices.sort()
 
             random.seed(seed)
-            new_id = bytearray([0x00, 0x01, 0x00, 0x01, ord(random.choice(first_char_choices))])
+            new_id = bytearray(
+                [0x00, 0x01, 0x00, 0x01, ord(random.choice(first_char_choices))]
+            )
             for i in range(3):
                 new_id.append(ord(random.choice(choices)))
 
-            tid = int.from_bytes(new_id, 'big')
+            tid = int.from_bytes(new_id, "big")
             newwad.tmd.setTitleID(tid)
             newwad.tik.setTitleID(tid)
 
             newwad.dumpFile(newwadfile, fakesign=False)
 
             # Return new WAD file
-            response = HttpResponse(open(newwadfile, 'rb'), content_type='application/octet-stream')
-            response['Content-Disposition'] = 'attachment; filename="smrpg.wad"'
+            response = HttpResponse(
+                open(newwadfile, "rb"), content_type="application/octet-stream"
+            )
+            response["Content-Disposition"] = 'attachment; filename="smrpg.wad"'
             return response
 
 
 # ************** API views
 
-@method_decorator(csrf_exempt, name='dispatch')
+
+@method_decorator(csrf_exempt, name="dispatch")
 class APIGenerateView(GenerateView):
     """Use same fields and response as the generate view, but don't include the patch data."""
+
     return_patch_data = False
 
     def get_form_kwargs(self):
         """Parse JSON body in post request and fake form fields to reuse the form view."""
         kwargs = super().get_form_kwargs()
-        if self.request.method in ('POST', 'PUT'):
-            kwargs['data'] = QueryDict(mutable=True)
+        if self.request.method in ("POST", "PUT"):
+            kwargs["data"] = QueryDict(mutable=True)
             try:
                 data = json.loads(self.request.body)
                 for key, value in data.items():
-                    kwargs['data'][key] = value
+                    kwargs["data"][key] = value
             except json.JSONDecodeError:
-                logger.error("APIGenerateView got bad request body: {!r}".format(self.request.body))
+                logger.error(
+                    "APIGenerateView got bad request body: {!r}".format(
+                        self.request.body
+                    )
+                )
         return kwargs
 
 
@@ -389,6 +446,6 @@ class APIFlags(View):
     @staticmethod
     def get(request):
         data = {
-            'flags': FLAGS,
+            "flags": FLAGS,
         }
         return JsonResponse(data)

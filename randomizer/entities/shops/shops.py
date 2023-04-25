@@ -1,6 +1,9 @@
+"""Shop definitions."""
+
 from typing import Sequence, Type
-from randomizer.types.items.classes import Item
-from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
+
+from randomizer.types.items import Item
+from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0284_OPEN_MUSHROOM_KINGDOM_SHOP,
     E0525_ROSE_TOWN_ITEM_SHOP,
     E0526_ROSE_TOWN_EQUIP_SHOP,
@@ -28,14 +31,15 @@ from randomizer.types.overworld_scripts.event_scripts.constants.script_ids impor
     E3643_NIMBUS_SHOP,
     E3688_MARRYMORE_SERVICE_BELL,
 )
-from randomizer.types.shops.classes import (
+from randomizer.types.shops import (
     EventShop,
     FrogCoinShop,
     FullJuiceBarShop,
     NormalShop,
     PartialJuiceBarShop,
 )
-from randomizer.entities.items.items import (
+
+from randomizer.entities.items import (
     AbleJuice,
     AntidotePin,
     BadMushroom,
@@ -127,6 +131,8 @@ from randomizer.entities.items.items import (
 
 
 class MushroomKingdomShop(NormalShop):
+    """Shop definition for MushroomKingdomShop"""
+
     _shop_id: int = 0
     _original_items: Sequence[Type[Item]] = [
         Mushroom,
@@ -142,6 +148,8 @@ class MushroomKingdomShop(NormalShop):
 
 
 class RoseTownItemShop(NormalShop):
+    """Shop definition for RoseTownItemShop"""
+
     _shop_id: int = 1
     _original_items: Sequence[Type[Item]] = [
         Mushroom,
@@ -153,6 +161,8 @@ class RoseTownItemShop(NormalShop):
 
 
 class RoseTownArmorShop(NormalShop):
+    """Shop definition for RoseTownArmorShop"""
+
     _shop_id: int = 2
     _original_items: Sequence[Type[Item]] = [
         ThickShirt,
@@ -167,6 +177,8 @@ class RoseTownArmorShop(NormalShop):
 
 
 class DiscipleShop(FrogCoinShop):
+    """Shop definition for DiscipleShop"""
+
     _shop_id: int = 3
     _original_items: Sequence[Type[Item]] = [
         SeeYa,
@@ -178,6 +190,8 @@ class DiscipleShop(FrogCoinShop):
 
 
 class MolevilleShop(NormalShop):
+    """Shop definition for MolevilleShop"""
+
     _shop_id: int = 4
     _original_items: Sequence[Type[Item]] = [
         PunchGlove,
@@ -194,6 +208,8 @@ class MolevilleShop(NormalShop):
 
 
 class MarrymoreShop(NormalShop):
+    """Shop definition for MarrymoreShop"""
+
     _shop_id: int = 5
     _original_items: Sequence[Type[Item]] = [
         SuperHammer,
@@ -212,6 +228,8 @@ class MarrymoreShop(NormalShop):
 
 
 class FrogCoinEmporiumShop(FrogCoinShop):
+    """Shop definition for FrogCoinEmporiumShop"""
+
     _shop_id: int = 6
     _original_items: Sequence[Type[Item]] = [
         SleepyBomb,
@@ -224,6 +242,8 @@ class FrogCoinEmporiumShop(FrogCoinShop):
 
 
 class SeaShop(NormalShop):
+    """Shop definition for SeaShop"""
+
     _shop_id: int = 7
     _original_items: Sequence[Type[Item]] = [
         HurlyGloves,
@@ -244,6 +264,8 @@ class SeaShop(NormalShop):
 
 
 class SeasideYaridShop(NormalShop):
+    """Shop definition for SeasideYaridShop"""
+
     _shop_id: int = 8
     _original_items: Sequence[Type[Item]] = [
         BadMushroom,
@@ -256,24 +278,32 @@ class SeasideYaridShop(NormalShop):
 
 
 class JuiceBarPartial1(PartialJuiceBarShop):
+    """Shop definition for JuiceBarPartial1"""
+
     _shop_id: int = 9
     _original_items: Sequence[Type[Item]] = [FroggieDrink]
     _container_event: int = E1179_JUICE_BAR_NO_CARD
 
 
 class JuiceBarPartial2(PartialJuiceBarShop):
+    """Shop definition for JuiceBarPartial2"""
+
     _shop_id: int = 10
     _original_items: Sequence[Type[Item]] = [FroggieDrink, Elixir]
     _container_event: int = E1180_JUICE_BAR_ALTO_CARD
 
 
 class JuiceBarPartial3(PartialJuiceBarShop):
+    """Shop definition for JuiceBarPartial3"""
+
     _shop_id: int = 11
     _original_items: Sequence[Type[Item]] = [FroggieDrink, Elixir, Megalixir]
     _container_event: int = E1181_JUICE_BAR_TENOR_CARD
 
 
 class JuiceBarFull(FullJuiceBarShop):
+    """Shop definition for JuiceBarFull"""
+
     _shop_id: int = 12
     _original_items: Sequence[Type[Item]] = [
         FroggieDrink,
@@ -285,6 +315,8 @@ class JuiceBarFull(FullJuiceBarShop):
 
 
 class SeasideWeaponShop(NormalShop):
+    """Shop definition for SeasideWeaponShop"""
+
     _shop_id: int = 13
     _original_items: Sequence[Type[Item]] = [
         TroopaShell,
@@ -307,6 +339,8 @@ class SeasideWeaponShop(NormalShop):
 
 
 class SeasideArmorShop(NormalShop):
+    """Shop definition for SeasideArmorShop"""
+
     _shop_id: int = 14
     _original_items: Sequence[Type[Item]] = [
         SailorShirt,
@@ -329,6 +363,8 @@ class SeasideArmorShop(NormalShop):
 
 
 class SeasideAccessoryShop(NormalShop):
+    """Shop definition for SeasideAccessoryShop"""
+
     _shop_id: int = 15
     _original_items: Sequence[Type[Item]] = [
         JumpShoes,
@@ -342,6 +378,8 @@ class SeasideAccessoryShop(NormalShop):
 
 
 class SeasideItemShop(NormalShop):
+    """Shop definition for SeasideItemShop"""
+
     _shop_id: int = 16
     _original_items: Sequence[Type[Item]] = [
         Mushroom,
@@ -356,6 +394,8 @@ class SeasideItemShop(NormalShop):
 
 
 class MonstroTownShop(NormalShop):
+    """Shop definition for MonstroTownShop"""
+
     _shop_id: int = 17
     _original_items: Sequence[Type[Item]] = [
         SpikedLink,
@@ -370,6 +410,8 @@ class MonstroTownShop(NormalShop):
 
 
 class HinopioItemShop(NormalShop):
+    """Shop definition for HinopioItemShop"""
+
     _shop_id: int = 18
     _original_items: Sequence[Type[Item]] = [
         MidMushroom,
@@ -382,6 +424,8 @@ class HinopioItemShop(NormalShop):
 
 
 class HinopioArmorShop(NormalShop):
+    """Shop definition for HinopioArmorShop"""
+
     _shop_id: int = 19
     _original_items: Sequence[Type[Item]] = [
         FireShirt,
@@ -394,12 +438,16 @@ class HinopioArmorShop(NormalShop):
 
 
 class BabyGoombaShop(NormalShop):
+    """Shop definition for BabyGoombaShop"""
+
     _shop_id: int = 20
     _original_items: Sequence[Type[Item]] = [Mushroom2]
     _container_event: int = E2053_MONSTRO_GOOMBETTE_SHOP
 
 
 class NimbusShop(NormalShop):
+    """Shop definition for NimbusShop"""
+
     _shop_id: int = 21
     _original_items: Sequence[Type[Item]] = [
         MidMushroom,
@@ -420,6 +468,8 @@ class NimbusShop(NormalShop):
 
 
 class CrocoShop1(NormalShop):
+    """Shop definition for CrocoShop1"""
+
     _shop_id: int = 22
     _original_items: Sequence[Type[Item]] = [
         MidMushroom,
@@ -436,6 +486,8 @@ class CrocoShop1(NormalShop):
 
 
 class CrocoShop2(NormalShop):
+    """Shop definition for CrocoShop2"""
+
     _shop_id: int = 23
     _original_items: Sequence[Type[Item]] = [
         MidMushroom,
@@ -452,6 +504,8 @@ class CrocoShop2(NormalShop):
 
 
 class ToadShop(NormalShop):
+    """Shop definition for ToadShop"""
+
     _shop_id: int = 24
     _original_items: Sequence[Type[Item]] = [
         MidMushroom,
@@ -466,11 +520,15 @@ class ToadShop(NormalShop):
 
 
 class RoomServiceShop(EventShop):
+    """Shop definition for RoomServiceShop"""
+
     _original_items: Sequence[Type[Item]] = [PickMeUp, KerokeroCola]
     _container_event: int = E3688_MARRYMORE_SERVICE_BELL
 
 
 class MolevilleSwapShop(EventShop):
+    """Shop definition for MolevilleSwapShop"""
+
     _original_items: Sequence[Type[Item]] = [FrightBomb, FireBomb, IceBomb]
     _container_event: int = E1636_MOLEVILLE_SWAP_SHOP_LOGIC
 

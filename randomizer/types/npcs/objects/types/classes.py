@@ -5,7 +5,7 @@ the overall NPC table for the seed, and the VRAM partition table for the seed.""
 
 
 from math import ceil
-from typing import List, Optional, Type
+from typing import List, Optional, Type, TYPE_CHECKING
 
 from randomizer.types.numbers.classes import Int8, UInt16, UInt4, UInt8
 
@@ -29,7 +29,6 @@ from randomizer.types.overworld_scripts.arguments import (
 from randomizer.types.palettes import Palette
 from randomizer.types.scripts_common import ScriptCommandT
 from randomizer.types.sprites.ids import TOTAL_SPRITES, SPR1023_EMPTY
-from randomizer.types.world.classes import GameWorld
 
 from randomizer.types.npcs.objects import ShadowSize, VramStore
 from randomizer.types.npcs.objects.animations import (
@@ -50,6 +49,9 @@ from randomizer.types.npcs.objects.animations import (
     SHOVELKNIGHT_TILE,
     SMALL_MAGIKOOPA_HIT,
 )
+
+if TYPE_CHECKING:
+    from randomizer.types.world import GameWorld
 
 
 class StatueDetails:
@@ -182,10 +184,10 @@ class NPC:
 
     _statue: Optional[StatueDetails] = None
 
-    _world: Optional[GameWorld]
+    _world: Optional["GameWorld"]
 
     @property
-    def world(self) -> GameWorld:
+    def world(self) -> "GameWorld":
         """Game world reference"""
         assert self._world is not None
         return self._world
@@ -398,7 +400,7 @@ class NPC:
             and self.byte6_bit2 == npc.byte6_bit2
         )
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: Optional["GameWorld"] = None):
         self._world = world
 
 

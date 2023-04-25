@@ -347,7 +347,8 @@ class Script(Generic[ScriptCommandT]):
             raise ValueError(f"could not find {ordinality} instances of {cls}") from exc
         return index
 
-    def _get_index_of_identifier(self, identifier: str) -> int:
+    def get_index_of_identifier(self, identifier: str) -> int:
+        """Get script index of command that matches the given identifier name."""
         index = next(
             (
                 i
@@ -411,13 +412,13 @@ class Script(Generic[ScriptCommandT]):
     ) -> None:
         """Insert a command to this script immediately before the command matching the unique
         identifier specified."""
-        index: int = self._get_index_of_identifier(identifier)
+        index: int = self.get_index_of_identifier(identifier)
         self._insert(index + 1, command)
 
     def insert_after_identifier(self, identifier: str, command: ScriptCommandT) -> None:
         """Insert a command to this script immediately after the command matching the unique
         identifier specified."""
-        index: int = self._get_index_of_identifier(identifier)
+        index: int = self.get_index_of_identifier(identifier)
         self._insert(index, command)
 
     def replace_at_index(self, index: int, content: ScriptCommandT) -> None:
@@ -426,7 +427,7 @@ class Script(Generic[ScriptCommandT]):
 
     def replace_by_name(self, identifier: str, content: ScriptCommandT) -> None:
         """Replace the command that matches the specifed unique identifier."""
-        index: int = self._get_index_of_identifier(identifier)
+        index: int = self.get_index_of_identifier(identifier)
         self._contents[index] = content
 
     def delete_at_index(self, index: int) -> None:

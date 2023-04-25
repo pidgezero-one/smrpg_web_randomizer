@@ -37,7 +37,7 @@ script = EventScript(
         CircleMaskShrinkToObject(target=MARIO, width=96, speed=8, static=True),
         RunDialog(
             dialog_id=DI2266_EMPTY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=True,
             multiline=False,

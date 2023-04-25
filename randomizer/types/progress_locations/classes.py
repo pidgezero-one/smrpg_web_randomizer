@@ -4,7 +4,7 @@ a character recruitment opportunity, or an item granter."""
 
 from copy import deepcopy
 from random import choice, random
-from typing import Optional, Tuple, Type, TypeVar, List, Union
+from typing import Optional, Tuple, Type, TypeVar, List, Union, TYPE_CHECKING
 
 from randomizer.entities.bosses.bosses import MokuraBoss
 from randomizer.entities.characters.characters import (
@@ -157,12 +157,9 @@ from randomizer.types.rooms import (
     RoomObject,
 )
 from randomizer.types.spells import CharacterSpell, Element
-from randomizer.types.world.classes import GameWorld
-from randomizer.types.world.flags.enums import (
+from randomizer.types.world.flags import (
     FireworksOptions,
     ShuffleLocationSelector,
-)
-from randomizer.types.world.flags.flags import (
     AvailableSpells,
     BossReplaceMinigameSprites,
     EXPStarsAnywhere,
@@ -180,6 +177,10 @@ from randomizer.types.world.flags.flags import (
 
 from .enums import LocationWorldArea, PacketType
 from .table import get_default_battlefield_from_room
+
+
+if TYPE_CHECKING:
+    from randomizer.types.world import GameWorld
 
 
 class Inventory(List):
@@ -225,7 +226,7 @@ class ProgressLocation:
     _keep_original_item_if_excluded: bool = False
     _allow_empty_when_finished_shuffling: bool = False
 
-    world: GameWorld
+    world: "GameWorld"
 
     @property
     def room_ids(self) -> List[UInt16]:
@@ -453,7 +454,7 @@ class ProgressLocation:
         lacks the Bambino bomb."""
         return True
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         self.world = world
 
         if len(self._room_ids) == 0:
@@ -907,7 +908,7 @@ class BossFightLocation(ProgressLocation):
         own_ids.extend(flattened)
         return list(set(own_ids))
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
         if self.name_enum in world.settings.get_flag(EnabledBossChecks).disabled:
             self.set_excluded(True)
@@ -939,7 +940,7 @@ class BossStarPiecePrize(ProgressLocation):
         """A unique identifier for this star piece granter."""
         return self._name_enum
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
         if self.name_enum in world.settings.get_flag(EnabledBossChecks).disabled:
             self.set_excluded(True)
@@ -970,7 +971,7 @@ class ItemLocation(ProgressLocation):
         if self.original_item is not None:
             self.set_contents(self.world.get_item_instance(self.original_item))
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
         if self.name_enum in world.settings.get_flag(EnabledRegularChecks).disabled:
             self.set_excluded(True)
@@ -1050,7 +1051,7 @@ class ChestLocation(ItemLocation):
             assert npc_id <= 27
         return [UInt8(id) for id in self._npc_ids]
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
 
         if len(self._npc_ids) == 0:
@@ -1159,7 +1160,7 @@ class ChestLocationAllowCoins(ChestLocation):
     """A subtype of chest that is allowed to contain coins.\n
     This sometimes has to be restricted for graphical reasons."""
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
 
         allowed_items = deepcopy(self._accepted_types)
@@ -1171,7 +1172,7 @@ class ChestLocationAllowSlots(ChestLocationAllowCoins):
     """A subtype of chest that is allowed to contain slot machines.\n
     This sometimes has to be restricted for graphical reasons."""
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
 
         allowed_items = deepcopy(self._accepted_types)
@@ -1194,7 +1195,7 @@ class GrantLocation(ItemLocation):
     """A subtype of item location that grants an item to you explicitly in
     an event script, rather than via a chest or touching a freestanding item."""
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
 
         self._accepted_types = []
@@ -1381,7 +1382,7 @@ class StartingItemGrant(GrantLocation):
     def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
         return super().can_accept(item) and item.consumable
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
         self.initiate_vanilla()
 
@@ -1402,7 +1403,7 @@ class FreestandingLocation(ItemLocation):
             assert npc_id <= 27
         return [UInt8(id) for id in self._npc_ids]
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
 
         if len(self._npc_ids) == 0:
@@ -1485,7 +1486,7 @@ class CharacterSpottedLocation(ProgressLocation):
 
     _original_item: Optional[Type[SpottedCharacter]]
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
 
         self._accepted_types = [SpottedCharacter]
@@ -1631,7 +1632,7 @@ class CharacterRecruitLocation(ProgressLocation):
             spotted_char_instance = None
         equivalent_spotted_location.set_contents(spotted_char_instance)
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
 
         if len(self._fills) == 0:
@@ -1649,7 +1650,7 @@ class CharacterSpellSlot(ProgressLocation):
     This is included in the shuffler because progression may require you to have
     an offense spell to transform Mokura, for instance."""
 
-    def __init__(self, world: GameWorld):
+    def __init__(self, world: "GameWorld"):
         super().__init__(world)
 
         self._accepted_types = [CharacterSpell]

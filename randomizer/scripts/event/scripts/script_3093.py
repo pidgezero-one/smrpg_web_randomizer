@@ -14,7 +14,7 @@ script = EventScript(
         JmpIfBitClear(KEEP_BOSS_3_DEFEATED, ["EVENT_3093_star_piece"]),
         RunDialog(
             dialog_id=DI2265_GATE_OPEN,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

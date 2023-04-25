@@ -8,7 +8,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI1180_MALLOW_JOINS,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

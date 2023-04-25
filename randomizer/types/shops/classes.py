@@ -1,6 +1,6 @@
 """Base classes for shops."""
 
-from typing import Optional, List, Type, Generic
+from typing import Optional, List, Type, Generic, TYPE_CHECKING
 
 from randomizer.types.items import (
     Accessory,
@@ -12,9 +12,12 @@ from randomizer.types.items import (
 )
 from randomizer.types.numbers import UInt16, UInt8, ByteField
 from randomizer.types.patch import Patch
-from randomizer.types.world.classes import GameWorld
 
 from .constants import BASE_SHOP_ADDRESS
+
+
+if TYPE_CHECKING:
+    from randomizer.types.world import GameWorld
 
 
 class Shop(Generic[ItemT]):
@@ -24,7 +27,7 @@ class Shop(Generic[ItemT]):
     _items: List[ItemT] = []
     _retain_size: bool = False
     _container_event: Optional[int] = 0
-    _world: Optional[GameWorld] = None
+    _world: Optional["GameWorld"] = None
     _minimum_size: int = 0
 
     @property
@@ -61,7 +64,7 @@ class Shop(Generic[ItemT]):
         return UInt16(self._container_event)
 
     @property
-    def world(self) -> GameWorld:
+    def world(self) -> "GameWorld":
         """The game world instance for this seed."""
         assert self._world is not None
         return self._world
@@ -109,7 +112,7 @@ class Shop(Generic[ItemT]):
             return False
         return True
 
-    def __init__(self, world: GameWorld) -> None:
+    def __init__(self, world: "GameWorld") -> None:
         self._world = world
 
 

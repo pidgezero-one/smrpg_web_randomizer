@@ -1,4 +1,6 @@
-from randomizer.types.palettes.classes import SpritePalette
+"""Alt palettes for enemies."""
+
+from randomizer.types.palettes import SpritePalette
 
 
 CHOCOLATE_CAKE = SpritePalette(

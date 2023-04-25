@@ -1,0 +1,14 @@
+"""Room import"""
+from randomizer.entities.rooms.room_imports import *
+from randomizer.entities.rooms.room.room_351.room_351_partition import partition
+from randomizer.entities.rooms.room.room_351.room_351_objects import objects
+
+room = Room(
+    partition=partition,
+    music=M65_GATE,
+    entrance_event=E0015_STANDARD_ROOM_LOADER,
+    events=[],
+    exits=[],
+    objects=objects,
+    extra_sprite_actions=[],
+)

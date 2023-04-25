@@ -1,13 +1,15 @@
 """Base classes for enemy attack data."""
 
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 
 from randomizer.types.numbers import BitMapSet, ByteField, UInt4, UInt8
 from randomizer.types.patch import Patch
 from randomizer.types.spells import TempStatBuff, Status
-from randomizer.types.world.classes import GameWorld
 
 from .constants import ENEMY_ATTACK_BASE_ADDRESS
+
+if TYPE_CHECKING:
+    from randomizer.types.world import GameWorld
 
 
 class EnemyAttack:
@@ -24,10 +26,10 @@ class EnemyAttack:
     _status_effects: List[Status] = []
     _buffs: List[TempStatBuff] = []
 
-    _world: Optional[GameWorld]
+    _world: Optional["GameWorld"]
 
     @property
-    def world(self) -> GameWorld:
+    def world(self) -> "GameWorld":
         """World instance reference"""
         assert self._world is not None
         return self._world
@@ -116,7 +118,7 @@ class EnemyAttack:
         """Overwrite the list of temporary buffs to be applied by this attack."""
         self._buffs = buffs
 
-    def __init__(self, world: Optional[GameWorld] = None) -> None:
+    def __init__(self, world: Optional["GameWorld"] = None) -> None:
         self._world = world
 
     def __str__(self) -> str:

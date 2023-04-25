@@ -8,7 +8,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI3845_DUPLICATE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

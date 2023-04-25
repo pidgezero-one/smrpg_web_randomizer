@@ -36,7 +36,7 @@ script = EventScript(
         Return(identifier="EVENT_1111_ret_6__"),
         RunDialog(
             dialog_id=DI2759_FROGFUCIUS_CRICKET_JAM_WITHOUT_PIE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

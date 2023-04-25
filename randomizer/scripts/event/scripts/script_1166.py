@@ -12,7 +12,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1166_pause_3"]),
         RunDialog(
             dialog_id=DI2802_NEED_THE_SHED_KEY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

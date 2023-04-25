@@ -8,7 +8,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI1054_SUNKEN_SHIP_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

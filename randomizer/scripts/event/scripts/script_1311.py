@@ -11,7 +11,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1311_apply_tile_mod_5"]),
         RunDialog(
             dialog_id=DI1941_NEED_ROOM_KEY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

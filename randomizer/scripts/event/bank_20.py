@@ -1,3 +1,5 @@
+"""event bank 20"""
+
 from randomizer.types.overworld_scripts.event_scripts.classes import EventScriptBank
 from .scripts.script_3072 import script as script_3072
 from .scripts.script_3073 import script as script_3073

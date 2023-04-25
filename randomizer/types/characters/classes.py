@@ -244,6 +244,8 @@ class Character(RecruitedCharacter):
     _runaway_offset: int = 0
     _runaway_bytes: bytearray = bytearray()
 
+    _main_character: bool = False
+
     @property
     def original_name(self) -> str:
         """The character's original name, in case this needs to be referenced
@@ -411,6 +413,15 @@ class Character(RecruitedCharacter):
     def runaway_bytes(self) -> bytearray:
         """(don't remember what this does)"""
         return self._runaway_bytes
+
+    @property
+    def is_main_character(self) -> bool:
+        """Main character is your overworld protagonist"""
+        return self._main_character
+
+    def set_main_character(self, main: bool) -> None:
+        """Main character is your overworld protagonist"""
+        self._main_character = main
 
     def __str__(self):
         """String representation of current state"""

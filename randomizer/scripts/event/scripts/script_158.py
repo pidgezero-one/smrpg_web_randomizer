@@ -10,7 +10,7 @@ script = EventScript(
         AddFrogCoins(PRIMARY_TEMP_7000),
         RunDialog(
             dialog_id=DI1310_RECEIVED_X_FROG_COINS,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

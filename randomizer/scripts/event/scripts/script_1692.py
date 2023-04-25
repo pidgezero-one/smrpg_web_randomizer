@@ -31,7 +31,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI1249_FORTUNE_PREAMBLE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=False,
             multiline=True,

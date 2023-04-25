@@ -25,7 +25,9 @@ script = EventScript(
             E1294_COLLECT_FREESTANDING_SMALL_FROG_COIN,
             identifier="EVENT_240_room_41_logic",
         ),
-        JmpToEvent(E2822_CLONE_RESERVED, identifier="EVENT_240_room_79_logic"),
+        JmpToEvent(
+            E2822_ASYNC_NO_ANIMATION_MUSHROOM, identifier="EVENT_240_room_79_logic"
+        ),
         JmpToEvent(
             E1293_COLLECT_FREESTANDING_SMALL_COIN, identifier="EVENT_240_room_125_logic"
         ),

@@ -1,7 +1,7 @@
 """Definitions for henchmen belonging to certain bosses."""
 
 from typing import Type
-from randomizer.types.battles.packs.constants.pack_ids import (
+from randomizer.types.battles.ids.pack_ids import (
     PACK0000_SNIFIT_FIGHT,
     PACK0001_BOBOMB_HENCHMEN,
     PACK0010_REGULAR_SHYSTERS_BIASED_2,
@@ -58,7 +58,7 @@ from randomizer.types.battles.packs.constants.pack_ids import (
     PACK0255_SMITHY_HENCHMEN_PACK_3,
 )
 from randomizer.types.bosses.classes import Henchman
-from randomizer.types.npcs.objects.classes import NPC
+from randomizer.types.npcs.objects.types.classes import NPC
 from randomizer.types.npcs.objects.npcs import (
     AeroUpright,
     Apprentice,

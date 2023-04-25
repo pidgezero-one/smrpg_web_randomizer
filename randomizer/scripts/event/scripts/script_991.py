@@ -8,7 +8,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI2731_FROGFUCIUS_MARIOS_PAD_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -18,7 +18,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2732_FROGFUCIUS_BANDITS_WAY_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -28,7 +28,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2733_FROGFUCIUS_MUSHROOM_KINGDOM_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -38,7 +38,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2734_FROGFUCIUS_LANDS_END_GROTTO_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -48,7 +48,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2735_FROGFUCIUS_MELODY_BAY_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -58,7 +58,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2736_FROGFUCIUS_ROSE_TOWN_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -68,7 +68,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2737_FROGFUCIUS_YOSTER_ISLE_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -78,7 +78,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2738_FROGFUCIUS_MOLEVILLE_TOWN_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -88,7 +88,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2739_FROGFUCIUS_MINE_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -98,7 +98,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2740_FROGFUCIUS_TOWER_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -108,7 +108,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2741_FROGFUCIUS_SEASIDE_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -118,7 +118,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2742_FROGFUCIUS_MONSTRO_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -128,7 +128,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2743_FROGFUCIUS_BEAN_VALLEY_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -138,7 +138,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2744_FROGFUCIUS_NIMBUS_TOWN_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -148,7 +148,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2745_FROGFUCIUS_NIMBUS_CASTLE_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -158,7 +158,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2746_FROGFUCIUS_MUSHROOM_WAY_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -168,7 +168,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2747_FROGFUCIUS_SHIP_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -178,7 +178,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2748_FROGFUCIUS_SEWER_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -188,7 +188,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2749_FROGFUCIUS_FOREST_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -198,7 +198,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2750_FROGFUCIUS_MARRYMORE_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -208,7 +208,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2751_FROGFUCIUS_LANDS_END_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -218,7 +218,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2752_FROGFUCIUS_TEMPLE_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -228,7 +228,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2753_FROGFUCIUS_BOOSTER_HILL_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -237,7 +237,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2754_FROGFUCIUS_VOLCANO_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -247,7 +247,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2755_FROGFUCIUS_BOWSERS_KEEP_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -257,7 +257,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2756_FROGFUCIUS_FACTORY_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -267,7 +267,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2757_FROGFUCIUS_CASINO_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -277,7 +277,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2760_FROGFUCIUS_MIDAS_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -287,7 +287,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2761_FROGFUCIUS_ROSE_WAY_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -297,7 +297,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2762_FROGFUCIUS_PIPE_VAULT_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -307,7 +307,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2763_FROGFUCIUS_BOOSTER_PASS_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -317,7 +317,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2764_FROGFUCIUS_STAR_HILL_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -327,7 +327,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2765_FROGFUCIUS_MARRYMORE_HOTEL_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -337,7 +337,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2766_FROGFUCIUS_FROG_DISCIPLE_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -347,7 +347,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2767_FROGFUCIUS_SEA_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -357,7 +357,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2768_FROGFUCIUS_BEANSTALK_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -367,7 +367,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2769_FROGFUCIUS_SUPER_JUMP_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -377,7 +377,7 @@ script = EventScript(
         EndAll(),
         RunDialog(
             dialog_id=DI2770_FROGFUCIUS_KEEP_OBSTACLE_PRIZE_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

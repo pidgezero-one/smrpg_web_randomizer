@@ -1,4 +1,8 @@
-from randomizer.entities.bosses.bosses import (
+# pylint: disable=C0301
+
+"""Individual instances of model fills, which will belong to boss fights."""
+
+from randomizer.entities.bosses import (
     AxemRangersBoss,
     Belome1Boss,
     Belome2Boss,
@@ -30,8 +34,6 @@ from randomizer.entities.bosses.bosses import (
     SmithyBoss,
     ValentinaBoss,
     YaridovichBoss,
-)
-from randomizer.entities.bosses.henchmen import (
     AxemRangersAxemBlack,
     AxemRangersAxemGreen,
     AxemRangersAxemPink,
@@ -62,7 +64,9 @@ from randomizer.entities.bosses.henchmen import (
     ManagerPounder,
     YaridovichHenchman,
 )
-from randomizer.entities.dialogs.overworld_dialogs.constants.dialog_ids import (
+
+from randomizer.types.bosses import Battlefields, HenchmanType, SpriteSize
+from randomizer.types.dialogs.ids import (
     DI1660_SHIP_PASSWORD_COMPLETE,
     DI1694_FINAL_SHIP_HENCHMEN_DEFEATED,
     DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED,
@@ -101,15 +105,14 @@ from randomizer.entities.dialogs.overworld_dialogs.constants.dialog_ids import (
     DI3352_DOJO_BOSS_1_FULLY_DEFEATED,
     DI3353_DOJO_BOSS_2_FULLY_DEFEATED,
 )
-from randomizer.types.bosses.enums import Battlefields, HenchmanType, SpriteSize
-from randomizer.types.npcs.fills.classes import (
+from randomizer.types.npcs.fills import (
     StatueFill,
     BossModelFill,
     TinyHenchmanFill,
     UniqueHenchmanFill,
     RepeatableHenchmanFill,
 )
-from randomizer.types.overworld_scripts.action_scripts.constants.script_ids import (
+from randomizer.types.overworld_scripts.action_scripts.ids import (
     A0029_POST_THRONE_FIRST_BIRD,
     A0030_POST_THRONE_BIRDS_3_TO_7,
     A0101_MK_THRONE_HENCHMAN_BOUNCE,
@@ -207,7 +210,7 @@ from randomizer.types.overworld_scripts.action_scripts.constants.script_ids impo
     A1005_KEEP_BATTLE_ROOM_SUMMON_ENEMY,
     A1006_DOJO_PERMA_JUMP,
 )
-from randomizer.types.overworld_scripts.constants.area_objects import (
+from randomizer.types.overworld_scripts.arguments import (
     NPC_0,
     NPC_1,
     NPC_10,
@@ -225,7 +228,7 @@ from randomizer.types.overworld_scripts.constants.area_objects import (
     NPC_8,
     NPC_9,
 )
-from randomizer.types.overworld_scripts.constants.room_names import (
+from randomizer.types.overworld_scripts.ids import (
     R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
     R025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM,
     R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
@@ -325,7 +328,7 @@ from randomizer.types.overworld_scripts.constants.room_names import (
     R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
     R509_FACTORY_GROUNDS_SMITHYS_PAD,
 )
-from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
+from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0200_UNLOCK_FOREST_IF_GATED_BY_MARRYMORE_CHARACTER,
     E0368_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_LOADER,
     E0371_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_LOADER,

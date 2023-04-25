@@ -1,12 +1,11 @@
 """Base classes fors spells."""
 
 from copy import deepcopy
-from typing import List, Optional, Type
+from typing import List, Optional, Type, TYPE_CHECKING
 
 from randomizer.types.items import SpellLearn
 from randomizer.types.numbers import BitMapSet, ByteField, UInt16, UInt8
 from randomizer.types.patch import Patch
-from randomizer.types.world.classes import GameWorld
 
 from .arguments.types import DamageModifiers, TimingProperties
 from .ids.misc import (
@@ -25,6 +24,10 @@ from .enums import (
     SpellType,
     TempStatBuff,
 )
+
+
+if TYPE_CHECKING:
+    from randomizer.types.world import GameWorld
 
 
 class Spell:
@@ -62,7 +65,7 @@ class Spell:
     _status_effects: List[Status] = []
     _boosts: List[TempStatBuff] = []
 
-    _world: Optional[GameWorld] = None
+    _world: Optional["GameWorld"] = None
 
     @property
     def fp(self) -> UInt8:
@@ -279,12 +282,12 @@ class Spell:
         self._boosts = deepcopy(boosts)
 
     @property
-    def world(self) -> GameWorld:
+    def world(self) -> "GameWorld":
         """The seed's game world instance."""
         assert self._world is not None
         return self._world
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: Optional["GameWorld"] = None):
         self._world = world
 
         if len(self._status_effects) == 0:
@@ -438,7 +441,7 @@ class CloneSpell(CharacterSpell):
         """Designate which spell this is a clone of."""
         self._parent_spell = parent_spell
 
-    def __init__(self, world: Optional[GameWorld], title: str, spell: CharacterSpell):
+    def __init__(self, world: Optional["GameWorld"], title: str, spell: CharacterSpell):
         super().__init__(world)
         self.set_title(title)
         self.set_fp(spell.fp)

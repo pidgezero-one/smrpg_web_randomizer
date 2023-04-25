@@ -62,7 +62,7 @@ script = EventScript(
         JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
         SetVarToConst(ITEM_ID, SailorShirt, identifier="EVENT_9_set_3"),
         JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-        SetVarToConst(ITEM_ID, SpikedLink, identifier="EVENT_9_set_4"),
+        SetVarToConst(ITEM_ID, WorkPants, identifier="EVENT_9_set_4"),
         JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
         SetVarToConst(ITEM_ID, SpikedLink, identifier="EVENT_9_set_5"),
         JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),

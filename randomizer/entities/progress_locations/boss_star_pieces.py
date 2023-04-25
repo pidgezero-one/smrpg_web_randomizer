@@ -1,5 +1,8 @@
-from typing import Optional, Type
-from randomizer.entities.items.items import (
+"""Progress location definitions for star piece grants from boss fights."""
+
+from typing import Optional, Type, List
+
+from randomizer.entities.items import (
     MimicFightInitiator1,
     MimicFightInitiator2,
     MimicFightInitiator3,
@@ -11,7 +14,45 @@ from randomizer.entities.items.items import (
     StarPiece6,
     StarPiece7,
 )
-from randomizer.entities.progress_locations.helpers.area_access import (
+from randomizer.types.items import StarPiece
+from randomizer.types.overworld_scripts.ids import (
+    R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM,
+    R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
+    R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
+    R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+    R159_STAR_HILL_AREA_04,
+    R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE,
+    R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+    R202_BOOSTER_TOWER_ENTRANCE,
+    R205_MUSHROOM_WAY_AREA_03,
+    R206_BANDITS_WAY_AREA_05,
+    R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
+    R254_BEAN_VALLEY_SMILAX_AREA,
+    R255_MONSTRO_TOWN_JINXS_DOJO,
+    R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
+    R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
+    R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
+    R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
+    R316_SEASIDE_TOWN_BEACH,
+    R324_MONSTRO_TOWN_OUTSIDE,
+    R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+    R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+    R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+    R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+    R433_SMITHY_FACTORY_AREA_01_____DUMMY,
+    R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA,
+    R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
+    R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+    R471_FACTORY_GROUNDS_AREA_02,
+    R472_FACTORY_GROUNDS_AREA_03,
+)
+from randomizer.types.progress_locations import (
+    LocationWorldArea,
+    BossStarPiecePrize,
+    Inventory,
+)
+from randomizer.types.world.flags import ShuffleLocationSelector
+from .helpers.area_access import (
     can_defeat_balcony_boss,
     can_defeat_bandits_way_boss,
     can_defeat_battle_door_boss,
@@ -53,49 +94,11 @@ from randomizer.entities.progress_locations.helpers.area_access import (
     can_defeat_volcano_boss,
     can_defeat_volcano_midboss,
 )
-from randomizer.types.progress_locations.enums import LocationWorldArea
-from randomizer.types.world.flags.enums import ShuffleLocationSelector
-from randomizer.types.items.classes import StarPiece
-from randomizer.types.overworld_scripts.constants.room_names import (
-    R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM,
-    R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
-    R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS,
-    R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
-    R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
-    R159_STAR_HILL_AREA_04,
-    R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE,
-    R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT,
-    R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-    R202_BOOSTER_TOWER_ENTRANCE,
-    R205_MUSHROOM_WAY_AREA_03,
-    R206_BANDITS_WAY_AREA_05,
-    R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
-    R254_BEAN_VALLEY_SMILAX_AREA,
-    R255_MONSTRO_TOWN_JINXS_DOJO,
-    R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
-    R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
-    R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
-    R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
-    R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
-    R316_SEASIDE_TOWN_BEACH,
-    R324_MONSTRO_TOWN_OUTSIDE,
-    R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
-    R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM,
-    R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
-    R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
-    R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
-    R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
-    R433_SMITHY_FACTORY_AREA_01_____DUMMY,
-    R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA,
-    R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
-    R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
-    R471_FACTORY_GROUNDS_AREA_02,
-    R472_FACTORY_GROUNDS_AREA_03,
-)
-from randomizer.types.progress_locations.classes import BossStarPiecePrize, Inventory
 
 
 class MushroomWayBossFightStar(BossStarPiecePrize):
+    """MushroomWayBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MUSHROOM_WAY_STAR_PIECE
     )
@@ -107,6 +110,8 @@ class MushroomWayBossFightStar(BossStarPiecePrize):
 
 
 class BanditsWayBossFightStar(BossStarPiecePrize):
+    """BanditsWayBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BANDITS_WAY_STAR_PIECE
     _room_ids: List[int] = [R206_BANDITS_WAY_AREA_05]
     _world_area: LocationWorldArea = LocationWorldArea.BANDITS_WAY
@@ -116,6 +121,8 @@ class BanditsWayBossFightStar(BossStarPiecePrize):
 
 
 class MushroomKingdomBossFightStar(BossStarPiecePrize):
+    """MushroomKingdomBossFightStar progress location class"""
+
     _original_item: Type[StarPiece] = StarPiece1
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.INVASION_STAR_PIECE
     _room_ids: List[int] = [R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM]
@@ -126,9 +133,12 @@ class MushroomKingdomBossFightStar(BossStarPiecePrize):
 
 
 class MimicFightLocation1Star(BossStarPiecePrize):
+    """MimicFightLocation1Star progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PANDORITE_BOSS
     _identifier: int = 512
 
+    @property
     def world_area(self) -> Optional[LocationWorldArea]:
         location = next(
             (
@@ -147,6 +157,8 @@ class MimicFightLocation1Star(BossStarPiecePrize):
 
 
 class KeroSewersBossFightStar(BossStarPiecePrize):
+    """KeroSewersBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.KERO_SEWERS_BOSS
     _room_ids: List[int] = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
     _world_area: LocationWorldArea = LocationWorldArea.KERO_SEWERS
@@ -156,6 +168,8 @@ class KeroSewersBossFightStar(BossStarPiecePrize):
 
 
 class ForestBossFightStar(BossStarPiecePrize):
+    """ForestBossFightStar progress location class"""
+
     _original_item: Type[StarPiece] = StarPiece2
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FOREST_MAZE_BOSS
     _room_ids: List[int] = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
@@ -166,6 +180,8 @@ class ForestBossFightStar(BossStarPiecePrize):
 
 
 class MinesMidbossFightStar(BossStarPiecePrize):
+    """MinesMidbossFightStar progress location class"""
+
     _identifier: int = 518
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_1
     _world_area: LocationWorldArea = LocationWorldArea.MOLEVILLE_MINES
@@ -175,6 +191,8 @@ class MinesMidbossFightStar(BossStarPiecePrize):
 
 
 class MinesBossFightStar(BossStarPiecePrize):
+    """MinesBossFightStar progress location class"""
+
     _original_item: Type[StarPiece] = StarPiece3
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_2
     _room_ids: List[int] = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
@@ -185,6 +203,8 @@ class MinesBossFightStar(BossStarPiecePrize):
 
 
 class TowerCurtainRoomBossFightStar(BossStarPiecePrize):
+    """TowerCurtainRoomBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
     )
@@ -196,6 +216,8 @@ class TowerCurtainRoomBossFightStar(BossStarPiecePrize):
 
 
 class TowerBalconyBossFightStar(BossStarPiecePrize):
+    """TowerBalconyBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_2
     )
@@ -207,6 +229,8 @@ class TowerBalconyBossFightStar(BossStarPiecePrize):
 
 
 class ChapelBossFightStar(BossStarPiecePrize):
+    """ChapelBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_STAR_PIECE
     _room_ids: List[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _world_area: LocationWorldArea = LocationWorldArea.MARRYMORE
@@ -216,6 +240,8 @@ class ChapelBossFightStar(BossStarPiecePrize):
 
 
 class StarHillStar(BossStarPiecePrize):
+    """StarHillStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.STAR_HILL_STAR_PIECE_1
     _original_item: Type[StarPiece] = StarPiece4
     _room_ids: List[int] = [R159_STAR_HILL_AREA_04]
@@ -223,6 +249,8 @@ class StarHillStar(BossStarPiecePrize):
 
 
 class ShipPasswordBossFightStar(BossStarPiecePrize):
+    """ShipPasswordBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS
     _room_ids: List[int] = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
     _world_area: LocationWorldArea = LocationWorldArea.SUNKEN_SHIP
@@ -232,9 +260,12 @@ class ShipPasswordBossFightStar(BossStarPiecePrize):
 
 
 class MimicFightLocation2Star(BossStarPiecePrize):
+    """MimicFightLocation2Star progress location class"""
+
     _identifier: int = 513
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.HIDON_BOSS
 
+    @property
     def world_area(self) -> Optional[LocationWorldArea]:
         location = next(
             (
@@ -253,6 +284,8 @@ class MimicFightLocation2Star(BossStarPiecePrize):
 
 
 class ShipFinalBossFightStar(BossStarPiecePrize):
+    """ShipFinalBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUNKEN_SHIP_BOSS
     _room_ids: List[int] = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _world_area: LocationWorldArea = LocationWorldArea.SUNKEN_SHIP
@@ -262,6 +295,8 @@ class ShipFinalBossFightStar(BossStarPiecePrize):
 
 
 class SeasideBeachBossFightStar(BossStarPiecePrize):
+    """SeasideBeachBossFightStar progress location class"""
+
     _original_item: Type[StarPiece] = StarPiece5
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SEASIDE_TOWN_BOSS
     _room_ids: List[int] = [R316_SEASIDE_TOWN_BEACH]
@@ -272,6 +307,8 @@ class SeasideBeachBossFightStar(BossStarPiecePrize):
 
 
 class LandsEndCloudBossFightStar(BossStarPiecePrize):
+    """LandsEndCloudBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_STAR_PIECE_1
     _identifier: int = 519
     _world_area: LocationWorldArea = (
@@ -283,6 +320,8 @@ class LandsEndCloudBossFightStar(BossStarPiecePrize):
 
 
 class TempleBossFightStar(BossStarPiecePrize):
+    """TempleBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BELOME_TEMPLE_BOSS
     _room_ids: List[int] = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _world_area: LocationWorldArea = LocationWorldArea.BELOME_TEMPLE
@@ -292,6 +331,8 @@ class TempleBossFightStar(BossStarPiecePrize):
 
 
 class DojoFirstFightStar(BossStarPiecePrize):
+    """DojoFirstFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.DOJO_BOSS_1
     _room_ids: List[int] = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _world_area: LocationWorldArea = LocationWorldArea.MONSTRO_TOWN
@@ -301,6 +342,8 @@ class DojoFirstFightStar(BossStarPiecePrize):
 
 
 class DojoSecondFightStar(BossStarPiecePrize):
+    """DojoSecondFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.DOJO_BOSS_2
     _identifier: int = 515
     _world_area: LocationWorldArea = LocationWorldArea.MONSTRO_TOWN
@@ -310,6 +353,8 @@ class DojoSecondFightStar(BossStarPiecePrize):
 
 
 class DojoThirdFightStar(BossStarPiecePrize):
+    """DojoThirdFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.DOJO_BOSS_3
     _identifier: int = 516
     _world_area: LocationWorldArea = LocationWorldArea.MONSTRO_TOWN
@@ -319,6 +364,8 @@ class DojoThirdFightStar(BossStarPiecePrize):
 
 
 class DojoFourthFightStar(BossStarPiecePrize):
+    """DojoFourthFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.DOJO_BOSS_4
     _identifier: int = 517
     _world_area: LocationWorldArea = LocationWorldArea.MONSTRO_TOWN
@@ -328,6 +375,8 @@ class DojoFourthFightStar(BossStarPiecePrize):
 
 
 class MonstroSealedDoorBossFightStar(BossStarPiecePrize):
+    """MonstroSealedDoorBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CULEX_BOSS
     _room_ids: List[int] = [R324_MONSTRO_TOWN_OUTSIDE]
     _world_area: LocationWorldArea = LocationWorldArea.MONSTRO_TOWN
@@ -337,9 +386,12 @@ class MonstroSealedDoorBossFightStar(BossStarPiecePrize):
 
 
 class MimicFightLocation3Star(BossStarPiecePrize):
+    """MimicFightLocation3Star progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOX_BOY_BOSS
     _identifier: int = 514
 
+    @property
     def world_area(self) -> Optional[LocationWorldArea]:
         location = next(
             (
@@ -358,6 +410,8 @@ class MimicFightLocation3Star(BossStarPiecePrize):
 
 
 class BeanValleyPlanterBossFightStar(BossStarPiecePrize):
+    """BeanValleyPlanterBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BEAN_VALLEY_BOSS
     _room_ids: List[int] = [R254_BEAN_VALLEY_SMILAX_AREA]
     _world_area: LocationWorldArea = LocationWorldArea.BEAN_VALLEY
@@ -367,6 +421,8 @@ class BeanValleyPlanterBossFightStar(BossStarPiecePrize):
 
 
 class StatueRoomBossFightStar(BossStarPiecePrize):
+    """StatueRoomBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_LAND_STAR_PIECE_1
     )
@@ -378,6 +434,8 @@ class StatueRoomBossFightStar(BossStarPiecePrize):
 
 
 class GiantEggBossFightStar(BossStarPiecePrize):
+    """GiantEggBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_2
     )
@@ -389,6 +447,8 @@ class GiantEggBossFightStar(BossStarPiecePrize):
 
 
 class NimbusFinalBossFightStar(BossStarPiecePrize):
+    """NimbusFinalBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_3
     )
@@ -400,6 +460,8 @@ class NimbusFinalBossFightStar(BossStarPiecePrize):
 
 
 class VolcanoBridgeBossFightStar(BossStarPiecePrize):
+    """VolcanoBridgeBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_1
     _room_ids: List[int] = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
     _world_area: LocationWorldArea = LocationWorldArea.BARREL_VOLCANO
@@ -409,6 +471,8 @@ class VolcanoBridgeBossFightStar(BossStarPiecePrize):
 
 
 class VolcanoExitBossFightStar(BossStarPiecePrize):
+    """VolcanoExitBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_2
     _room_ids: List[int] = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
     _original_item: Type[StarPiece] = StarPiece6
@@ -419,6 +483,8 @@ class VolcanoExitBossFightStar(BossStarPiecePrize):
 
 
 class ObstacleCourseFinalFightStar(BossStarPiecePrize):
+    """ObstacleCourseFinalFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_BOSS_CHESTER
     )
@@ -430,6 +496,8 @@ class ObstacleCourseFinalFightStar(BossStarPiecePrize):
 
 
 class KeepAfterObstaclesBossFightStar(BossStarPiecePrize):
+    """KeepAfterObstaclesBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_1
     _room_ids: List[int] = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _world_area: LocationWorldArea = LocationWorldArea.BOWSERS_KEEP
@@ -439,6 +507,8 @@ class KeepAfterObstaclesBossFightStar(BossStarPiecePrize):
 
 
 class KeepChandelierBossFightStar(BossStarPiecePrize):
+    """KeepChandelierBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_2
     _identifier: int = 521
     _world_area: LocationWorldArea = LocationWorldArea.BOWSERS_KEEP
@@ -448,6 +518,8 @@ class KeepChandelierBossFightStar(BossStarPiecePrize):
 
 
 class KeepFinalBossFightStar(BossStarPiecePrize):
+    """KeepFinalBossFightStar progress location class"""
+
     _identifier: int = 522
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_3
     _world_area: LocationWorldArea = LocationWorldArea.BOWSERS_KEEP
@@ -457,6 +529,8 @@ class KeepFinalBossFightStar(BossStarPiecePrize):
 
 
 class FactoryEntranceBossStar(BossStarPiecePrize):
+    """FactoryEntranceBossStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FACTORY_BOSS_1
     _room_ids: List[int] = [R433_SMITHY_FACTORY_AREA_01_____DUMMY]
     _world_area: LocationWorldArea = LocationWorldArea.FACTORY
@@ -466,6 +540,8 @@ class FactoryEntranceBossStar(BossStarPiecePrize):
 
 
 class FactoryTransitionBossStar(BossStarPiecePrize):
+    """FactoryTransitionBossStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FACTORY_BOSS_2
     _room_ids: List[int] = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
     _world_area: LocationWorldArea = LocationWorldArea.FACTORY
@@ -475,6 +551,8 @@ class FactoryTransitionBossStar(BossStarPiecePrize):
 
 
 class InnerFactoryFirstFightStar(BossStarPiecePrize):
+    """InnerFactoryFirstFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.INNER_FACTORY_BOSS_1
     _room_ids: List[int] = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _world_area: LocationWorldArea = LocationWorldArea.INNER_FACTORY
@@ -484,6 +562,8 @@ class InnerFactoryFirstFightStar(BossStarPiecePrize):
 
 
 class InnerFactorySecondFightStar(BossStarPiecePrize):
+    """InnerFactorySecondFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.INNER_FACTORY_BOSS_2
     _room_ids: List[int] = [R471_FACTORY_GROUNDS_AREA_02]
     _world_area: LocationWorldArea = LocationWorldArea.INNER_FACTORY
@@ -493,6 +573,8 @@ class InnerFactorySecondFightStar(BossStarPiecePrize):
 
 
 class InnerFactoryThirdFightStar(BossStarPiecePrize):
+    """InnerFactoryThirdFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.INNER_FACTORY_BOSS_3
     _room_ids: List[int] = [R472_FACTORY_GROUNDS_AREA_03]
     _world_area: LocationWorldArea = LocationWorldArea.INNER_FACTORY
@@ -502,6 +584,8 @@ class InnerFactoryThirdFightStar(BossStarPiecePrize):
 
 
 class InnerFactoryFourthFightStar(BossStarPiecePrize):
+    """InnerFactoryFourthFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.INNER_FACTORY_BOSS_4
     _room_ids: List[int] = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     _world_area: LocationWorldArea = LocationWorldArea.INNER_FACTORY
@@ -511,6 +595,8 @@ class InnerFactoryFourthFightStar(BossStarPiecePrize):
 
 
 class FinalBossFightStar(BossStarPiecePrize):
+    """FinalBossFightStar progress location class"""
+
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
     )

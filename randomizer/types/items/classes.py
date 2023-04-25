@@ -3,10 +3,13 @@
 from copy import deepcopy
 import random
 import math
-from typing import Dict, List, Optional, Type, TypeVar
+from typing import Dict, List, Optional, Type, TypeVar, TYPE_CHECKING
 
 
-from randomizer.types.overworld_scripts.arguments.types import Flag, PartyCharacter
+from randomizer.types.overworld_scripts.arguments.types import (
+    Flag,
+    PartyCharacter,
+)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0242_CHEST_6_GRANT,
     E0243_CHEST_5_GRANT,
@@ -24,8 +27,9 @@ from randomizer.types.npcs.objects.types import ItemNPC
 from randomizer.types.npcs.objects import BigCoin, ItemBag, SmallCoin, TinyStar
 from randomizer.types.numbers import UInt16, UInt8, ByteField, BitMapSet
 from randomizer.types.patch import Patch
-from randomizer.types.spells import Status, Element, TempStatBuff
-from randomizer.types.world.classes import GameWorld
+
+# target .enums specifically to prevent cyclic import
+from randomizer.types.spells.enums import Status, Element, TempStatBuff
 
 from randomizer.utils.number import mutate_normal
 
@@ -45,6 +49,9 @@ from .constants import (
     ITEMS_DESC_DATA_POINTER_OFFSET,
     NUM_ITEMS,
 )
+
+if TYPE_CHECKING:
+    from randomizer.types.world import GameWorld
 
 
 class IllegalItemPropertyException(Exception):
@@ -87,7 +94,6 @@ class Item:
     _model: Type[ItemNPC] = ItemBag
     _chest_70a7_lower: int = 0
     _chest_70a7_upper: int = 0
-    _packet: int = 0
     _chest_event: int = 0
     _quick_chest_event: int = 0
     _npc_event: int = 0
@@ -99,7 +105,7 @@ class Item:
     # from turning in key items or completing monsto town sidequests
     _special_equip: bool = False
 
-    _world: Optional[GameWorld] = None
+    _world: Optional["GameWorld"] = None
 
     @property
     def item_id(self) -> int:
@@ -350,12 +356,6 @@ class Item:
         self._chest_70a7_upper = chest_70a7_upper
 
     @property
-    def packet(self) -> int:
-        """The packet definition that should be used to define this item's graphical appearance
-        and control its movement behaviour in chests and as sunken ship prizes."""
-        return self._packet
-
-    @property
     def chest_event(self) -> int:
         """The event ID that a chest containing this item should run when hit"""
         return self._chest_event
@@ -400,12 +400,12 @@ class Item:
         return self._special_equip
 
     @property
-    def world(self) -> GameWorld:
+    def world(self) -> "GameWorld":
         """World instance reference"""
         assert self._world is not None
         return self._world
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: Optional["GameWorld"] = None):
         self._world = world
         self._rank = None
         if len(self.equip_chars) == 0:
@@ -503,7 +503,7 @@ class Item:
         return patch
 
     @classmethod
-    def build_descriptions_patch(cls, world: GameWorld) -> Patch:
+    def build_descriptions_patch(cls, world: "GameWorld") -> Patch:
         """Build patch data for item descriptions.
         These use pointers, so we need to do them all together."""
         patch = Patch()
@@ -789,7 +789,7 @@ class Equipment(Item):
 
         return patch
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: Optional["GameWorld"] = None):
         super().__init__(world)
         self._set_chest_70a7_lower(self.item_id)
 
@@ -860,7 +860,7 @@ class RegularItem(Item):
     _overworld_event = 165
     _overworld_midas_event = 2820
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: Optional["GameWorld"] = None):
         super().__init__(world)
         self._set_chest_70a7_lower(self.item_id)
 
@@ -873,7 +873,7 @@ class KeyItem(Item):
     _overworld_event = 165
     _overworld_midas_event = 2820
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: Optional["GameWorld"] = None):
         super().__init__(world)
         self._set_chest_70a7_lower(self.item_id)
 
@@ -959,7 +959,7 @@ class Coins(MiscReward):
     def chest_event(self):
         raise IllegalItemPropertyException("use get_chest_event for coins")
 
-    def __init__(self, amount=0, world: Optional[GameWorld] = None):
+    def __init__(self, amount=0, world: Optional["GameWorld"] = None):
         super().__init__(world)
         if amount < 10:
             self._model: Type[ItemNPC] = SmallCoin

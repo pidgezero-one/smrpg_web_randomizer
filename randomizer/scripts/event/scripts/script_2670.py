@@ -22,7 +22,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI0524_GOT_A_70A7_AWAIT_TERMINATE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,
@@ -41,7 +41,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI0524_GOT_A_70A7_AWAIT_TERMINATE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

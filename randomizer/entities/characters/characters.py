@@ -1,9 +1,7 @@
 """Playable character classes."""
 
 from typing import List, Type, Union
-from randomizer.entities.progress_locations.characters_recruited import (
-    StartingCharacter1,
-)
+
 from randomizer.entities.spells.spells import (
     BowserCrush,
     ComeBack,
@@ -33,22 +31,15 @@ from randomizer.entities.spells.spells import (
     UltraFlame,
     UltraJump,
 )
-from randomizer.types.palettes.classes import (
-    BowserPaletteSet,
-    GenoPaletteSet,
-    MallowPaletteSet,
-    MarioPaletteSet,
-    ToadstoolPaletteSet,
-)
-from randomizer.types.items.classes import SpottedCharacter
-from randomizer.types.spells.classes import CharacterSpell
-from randomizer.types.numbers.classes import UInt16, UInt8
-from randomizer.types.characters.classes import Character, StatGrowth
 from randomizer.entities.characters.palettes.bowser import (
     Default as DefaultBowserPalette,
 )
-from randomizer.entities.characters.palettes.geno import Default as DefaultGenoPalette
-from randomizer.entities.characters.palettes.mario import Default as DefaultMarioPalette
+from randomizer.entities.characters.palettes.geno import (
+    Default as DefaultGenoPalette,
+)
+from randomizer.entities.characters.palettes.mario import (
+    Default as DefaultMarioPalette,
+)
 from randomizer.entities.characters.palettes.mallow import (
     Default as DefaultMallowPalette,
 )
@@ -56,8 +47,10 @@ from randomizer.entities.characters.palettes.toadstool import (
     Default as DefaultToadstoolPalette,
 )
 
-from randomizer.types.npcs.objects.classes import NPC
-from randomizer.types.npcs.objects.npcs import (
+from randomizer.types.characters import Character, StatGrowth
+from randomizer.types.items import SpottedCharacter
+from randomizer.types.npcs.objects.types import NPC
+from randomizer.types.npcs.objects import (
     BowserDoll,
     GenoDoll,
     MallowDoll,
@@ -69,10 +62,16 @@ from randomizer.types.npcs.objects.npcs import (
     Toadstool as ToadstoolNPC,
     ToadstoolDoll,
 )
-from randomizer.types.world.flags.enums import PlayableCharacters
-
-
-from randomizer.types.world.flags.flags import PlayAsStarter
+from randomizer.types.numbers import UInt16, UInt8
+from randomizer.types.palettes import (
+    BowserPaletteSet,
+    GenoPaletteSet,
+    MallowPaletteSet,
+    MarioPaletteSet,
+    ToadstoolPaletteSet,
+)
+from randomizer.types.spells import CharacterSpell
+from randomizer.types.world.flags import PlayableCharacters, PlayAsStarter
 
 
 class MarioSpotted(SpottedCharacter):
@@ -359,11 +358,9 @@ class Mario(Character):
     def get_patch(self):
         patch = super().get_patch()
 
-        starting_char = self.world.get_location_instance(StartingCharacter1).contents
-        is_main_character = isinstance(
-            starting_char, type(self)
-        ) and self.world.settings.is_boolean_flag_enabled(PlayAsStarter)
-        if is_main_character:  # don't remember what this does
+        if self.is_main_character and self.world.settings.is_boolean_flag_enabled(
+            PlayAsStarter
+        ):
             patch.add_data(0x37B0A6, bytearray([0x5F, 0x19, 0xD8, 0x1C, 0x35]))
 
         return patch
@@ -605,16 +602,13 @@ class Toadstool(Character):
     }
 
     _associated_spotted_class: Type[SpottedCharacter] = ToadstoolSpotted
-    # print([hex(i) for i in palette_to_bytes(["EFAD31", "DE9421", "B57B21", "946318", "6B5218", "6B5218", "212110", "DE9421", "946318", "4A3910", "DE9421", "9C6B18", "523910", "101008", "181818"])])
 
     def get_patch(self):
         patch = super().get_patch()
 
-        starting_char = self.world.get_location_instance(StartingCharacter1).contents
-        is_main_character = isinstance(
-            starting_char, type(self)
-        ) and self.world.settings.is_boolean_flag_enabled(PlayAsStarter)
-        if is_main_character:  # don't remember what this does
+        if self.is_main_character and self.world.settings.is_boolean_flag_enabled(
+            PlayAsStarter
+        ):
             patch.add_data(0x35FF43, bytearray([0x03, 0x81, 0x00, 0x05, 0x00, 0x04]))
             # patch.add_data(0x35FF98, 0x00)
             patch.add_data(0x35FF9D, bytearray([0x03, 0x81, 0x10, 0x02, 0x00, 0x01]))
@@ -1313,14 +1307,3 @@ class Mallow(Character):
     }
 
     _associated_spotted_class: Type[SpottedCharacter] = MallowSpotted
-
-
-def initiate_items(world) -> List[Character]:
-    """Instantiate each character for use in the game world."""
-    return [
-        Mario(world),
-        Mallow(world),
-        Geno(world),
-        Bowser(world),
-        Toadstool(world),
-    ]

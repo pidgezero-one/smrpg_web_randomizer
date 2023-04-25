@@ -59,13 +59,17 @@ script = EventScript(
         ),
         JmpToEvent(E3938_FREESTANDING_CROWN, identifier="EVENT_241_room_154_logic"),
         JmpToEvent(E1801_FREESTANDING_FLOWER, identifier="EVENT_241_room_163_logic"),
-        JmpToEvent(E2822_CLONE_RESERVED, identifier="EVENT_241_room_166_logic"),
+        JmpToEvent(
+            E2822_ASYNC_NO_ANIMATION_MUSHROOM, identifier="EVENT_241_room_166_logic"
+        ),
         JmpToEvent(E1801_FREESTANDING_FLOWER, identifier="EVENT_241_room_167_logic"),
         SetVarToConst(ITEM_ID, RoyalSyrup, identifier="EVENT_241_room_168_logic"),
         JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
         SetVarToConst(ITEM_ID, Mushroom, identifier="EVENT_241_room_172_logic"),
         JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),
-        JmpToEvent(E2822_CLONE_RESERVED, identifier="EVENT_241_room_176_logic"),
+        JmpToEvent(
+            E2822_ASYNC_NO_ANIMATION_MUSHROOM, identifier="EVENT_241_room_176_logic"
+        ),
         JmpToEvent(E3238_FREESTANDING_FROG_COIN, identifier="EVENT_241_room_187_logic"),
         SetVarToConst(ITEM_ID, ElderKey, identifier="EVENT_241_room_195_logic"),
         JmpToEvent(E0165_FREESTANDING_GRANT_ITEM_BAG),

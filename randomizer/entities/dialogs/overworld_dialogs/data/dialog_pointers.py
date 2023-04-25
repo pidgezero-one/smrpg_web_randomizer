@@ -1,10 +1,14 @@
-from randomizer.entities.dialogs.overworld_dialogs.classes.dialog import Dialog
-from randomizer.entities.dialogs.overworld_dialogs.constants.dialog_bank_ids import (
+# pylint: disable=C0301
+
+"""The positions of the dialog data at which each dialog ID should begin"""
+
+from typing import List
+
+from randomizer.types.dialogs import Dialog
+from randomizer.types.dialogs.ids import (
     DIALOG_BANK_22,
     DIALOG_BANK_23,
     DIALOG_BANK_24,
-)
-from randomizer.entities.dialogs.overworld_dialogs.constants.dialog_ids import (
     DI0000_INN_BANNER,
     DI0001_ITEM_SHOP_BANNER,
     DI0002_INN_AND_ITEM_SHOP_BANNER,

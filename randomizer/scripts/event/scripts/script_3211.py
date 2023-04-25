@@ -16,7 +16,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI1657_3D_MAZE_OVERLAY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=True,
             multiline=False,

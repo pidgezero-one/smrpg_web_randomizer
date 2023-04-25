@@ -10,7 +10,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1340_apply_tile_mod_5"]),
         RunDialog(
             dialog_id=DI1945_NEED_ELDER_KEY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

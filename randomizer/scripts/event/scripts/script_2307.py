@@ -34,7 +34,7 @@ script = EventScript(
         SetAsyncActionScript(SCREEN_FOCUS, A0391_CAMERA_SHAKE),
         RunDialog(
             dialog_id=DI3154_BOOSTER_PASS_OPENED,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

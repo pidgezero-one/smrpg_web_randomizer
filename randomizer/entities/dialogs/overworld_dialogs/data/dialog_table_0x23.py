@@ -1,3 +1,7 @@
+"""Dialog data bank 2"""
+
+from typing import List
+
 dialog_data: List[str] = ["""[await]"""] * 922
 dialog_data[
     0
@@ -125,7 +129,9 @@ dialog_data[
  [select]  (What else do you have?)[await]"""
 dialog_data[
     61
-] = """RAZ: We're getting married today,\n but the people who booked the\n chapel before us are late.[await]"""
+] = """RAZ: We're getting married today,
+ but the people who booked the
+ chapel before us are late.[await]"""
 dialog_data[62] = """RAINI: It's a lovely day outside,\n isn't it?[await]"""
 dialog_data[
     63
@@ -1083,7 +1089,9 @@ dialog_data[
 dialog_data[453] = """[await]"""
 dialog_data[
     454
-] = """ Have you heard about the Casino?[await]\n The guy who owns it has some\n pretty sketchy connections. [await]"""
+] = """ Have you heard about the Casino?[await]
+ The guy who owns it has some
+ pretty sketchy connections. [await]"""
 dialog_data[455] = """[await]"""
 dialog_data[
     456
@@ -1130,7 +1138,10 @@ dialog_data[478] = """[await]"""
 dialog_data[479] = """\n        He's holding a leaflet...[await]"""
 dialog_data[
     480
-] = """      Come to Grate Guy Casino!\n    Find us a quick turn down the\n  north pipe of central Bean Valley.[await]\n   Don't forget your Bright Card![await]"""
+] = """      Come to Grate Guy Casino!
+    Find us a quick turn down the
+  north pipe of central Bean Valley.[await]
+   Don't forget your Bright Card![await]"""
 dialog_data[481] = """[await]"""
 dialog_data[482] = """[await]"""
 dialog_data[483] = """[await]"""
@@ -1785,7 +1796,9 @@ dialog_data[
 dialog_data[775] = """[await]"""
 dialog_data[
     776
-] = """ I'm all out of inventory, and won't\n be selling any more.[await][pause] Thanks for\n your business![await]"""
+] = """ I'm all out of inventory, and won't
+ be selling any more.[await][pause] Thanks for
+ your business![await]"""
 dialog_data[
     777
 ] = """ Item #2: A “Mystery Egg”.
@@ -2062,7 +2075,7 @@ dialog_data[915] = """[await]"""
 dialog_data[916] = """[await]"""
 dialog_data[
     917
-] = """TOADOFSKY: 
+] = """TOADOFSKY:
            Okay, here we go![await][page]
  Listen to this, it’s our song![await]"""
 dialog_data[

@@ -1,35 +1,17 @@
-from typing import Optional, Type, TypeVar
+"""Progress location definitions for recruited characters."""
 
-from randomizer.entities.characters.characters import (
+from typing import Optional, Type, List
+
+from randomizer.entities.characters import (
     Bowser,
     Geno,
     Mallow,
     Mario,
     Toadstool,
 )
-from randomizer.entities.progress_locations.characters_spotted import (
-    ChapelCharacterSpotted,
-    ForestMazeCharacterSpotted,
-    MinesCharacterSpotted,
-    MushroomWayCharacterSpotted,
-    StartingCharacterSpotted1,
-    StartingCharacterSpotted2,
-    StartingCharacterSpotted3,
-    StartingCharacterSpotted4,
-    StartingCharacterSpotted5,
-)
-from randomizer.entities.progress_locations.helpers.area_access import (
-    can_defeat_chapel_boss,
-    can_defeat_forest_boss,
-    can_defeat_mushroom_way_boss,
-    can_defeat_second_moleville_boss,
-)
-from randomizer.types.characters.classes import Character
-from randomizer.types.overworld_scripts.action_scripts.constants.script_ids import (
-    A0488_FOREST_MAZE_AREA_RECRUITABLE_CHARACTER,
-    A0969_ENDING_CREDITS_CASTLE_DIRECTOR,
-)
-from randomizer.types.overworld_scripts.constants.room_names import (
+
+from randomizer.types.characters import Character
+from randomizer.types.overworld_scripts.ids import (
     R054_BOOSTER_HILL_____DUMMY,
     R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
     R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
@@ -45,7 +27,11 @@ from randomizer.types.overworld_scripts.constants.room_names import (
     R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER__TROOPS_REPAIR,
     R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
 )
-from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
+from randomizer.types.overworld_scripts.action_scripts.ids import (
+    A0488_FOREST_MAZE_AREA_RECRUITABLE_CHARACTER,
+    A0969_ENDING_CREDITS_CASTLE_DIRECTOR,
+)
+from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0186_PARTY_JOIN_LOGIC,
     E0192_GATING_AND_PARTY_JOIN_LOGIC,
     E2448_FOREST_BOSS_FIGHT,
@@ -59,121 +45,37 @@ from randomizer.types.overworld_scripts.event_scripts.constants.script_ids impor
     E3950_POST_FINAL_BOSS_INIT,
     E3951_STAR_PIECE_CREDITS_INIT,
 )
-from randomizer.types.progress_locations.classes import (
+from randomizer.types.progress_locations import (
     CharacterRecruitLocation,
     CharacterReplacementFill,
     CharacterSpottedLocation,
     Inventory,
 )
-from randomizer.types.world.classes import GameWorld
-from randomizer.types.world.flags.flags import StartingCharacters
+from randomizer.types.world import GameWorld
+from randomizer.types.world.flags import StartingCharacters
 
-TCharacterRecruitLocation = TypeVar(
-    "TCharacterRecruitLocation", bound="CharacterRecruitLocation"
+
+from .characters_spotted import (
+    ChapelCharacterSpotted,
+    ForestMazeCharacterSpotted,
+    MinesCharacterSpotted,
+    MushroomWayCharacterSpotted,
+    StartingCharacterSpotted1,
+    StartingCharacterSpotted2,
+    StartingCharacterSpotted3,
+    StartingCharacterSpotted4,
+    StartingCharacterSpotted5,
+)
+from .helpers.area_access import (
+    can_defeat_chapel_boss,
+    can_defeat_forest_boss,
+    can_defeat_mushroom_way_boss,
+    can_defeat_second_moleville_boss,
 )
 
 
-class ExtraStartingCharacterLocation(CharacterRecruitLocation):
-    _fill_priority: int = 0
-
-    @property
-    def credits_fills(self) -> List[CharacterReplacementFill]:
-        counter = 0
-        match = 1
-        locs: List[Type[CharacterRecruitLocation]] = [
-            MushroomWayCharacter,
-            FOREST_MAZE_CHARACTER,
-            MinesCharacter,
-            ChapelCharacter,
-        ]
-        for loc in locs:
-            inst = self.world.get_location_instance(loc)
-            if inst.contents is None:
-                counter += 1
-            if counter == match:
-                return inst.credits_fills
-        return []
-
-
-class StartingCharacter1(CharacterRecruitLocation):
-    _associated_spotted_location: Type[
-        CharacterSpottedLocation
-    ] = StartingCharacterSpotted1
-    _original_item: Type[Character] = Mario
-    _fills: List[CharacterReplacementFill] = [
-        CharacterReplacementFill(R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, 0)
-    ]
-    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
-
-    def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted1)
-
-
-class StartingCharacter2(ExtraStartingCharacterLocation):
-    _fill_priority: int = 1
-    _associated_spotted_location: Type[
-        CharacterSpottedLocation
-    ] = StartingCharacterSpotted2
-    _original_item = None
-    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
-
-    def can_access(self, inventory: Inventory) -> bool:
-        starting_chars = self.world.settings.get_flag(StartingCharacters).value
-        return starting_chars >= 2
-
-    def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted2)
-
-
-class StartingCharacter3(ExtraStartingCharacterLocation):
-    _fill_priority: int = 2
-    _associated_spotted_location: Type[
-        CharacterSpottedLocation
-    ] = StartingCharacterSpotted3
-    _original_item = None
-    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
-
-    def can_access(self, inventory: Inventory) -> bool:
-        starting_chars = self.world.settings.get_flag(StartingCharacters).value
-        return starting_chars >= 3
-
-    def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted3)
-
-
-class StartingCharacter4(ExtraStartingCharacterLocation):
-    _fill_priority: int = 3
-    _associated_spotted_location: Type[
-        CharacterSpottedLocation
-    ] = StartingCharacterSpotted4
-    _original_item = None
-    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
-
-    def can_access(self, inventory: Inventory) -> bool:
-        starting_chars = self.world.settings.get_flag(StartingCharacters).value
-        return starting_chars >= 4
-
-    def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted4)
-
-
-class StartingCharacter5(ExtraStartingCharacterLocation):
-    _fill_priority: int = 4
-    _associated_spotted_location: Type[
-        CharacterSpottedLocation
-    ] = StartingCharacterSpotted5
-    _original_item = None
-    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
-
-    def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted5)
-
-    def can_access(self, inventory: Inventory) -> bool:
-        starting_chars = self.world.settings.get_flag(StartingCharacters).value
-        return starting_chars >= 5
-
-
 def permit_placing_character(world: GameWorld):
+    """If true, a character may be placed here (depends on number of starting characters)."""
     starters: List[Type[CharacterRecruitLocation]] = [
         StartingCharacter1,
         StartingCharacter2,
@@ -183,17 +85,18 @@ def permit_placing_character(world: GameWorld):
     ]
     starting_chars = world.settings.get_flag(StartingCharacters).value
     permitted = True
-    for i, loc in enumerate(starters):
+    for index, loc in enumerate(starters):
         inst = world.get_location_instance(loc)
         if inst.contents is None:
-            permitted = False
-            break
-        if i + 1 >= starting_chars:
+            return False
+        if index + 1 >= starting_chars:
             break
     return permitted
 
 
 class MushroomWayCharacter(CharacterRecruitLocation):
+    """MushroomWayCharacter progress location class"""
+
     _associated_spotted_location: Type[
         CharacterSpottedLocation
     ] = MushroomWayCharacterSpotted
@@ -203,6 +106,9 @@ class MushroomWayCharacter(CharacterRecruitLocation):
 
     def set_contents(self, contents: Optional[Character]) -> None:
         super().set_contents(contents, MushroomWayCharacterSpotted)
+
+        if contents is not None:
+            contents.set_main_character(False)
 
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_mushroom_way_boss(
@@ -236,7 +142,9 @@ class MushroomWayCharacter(CharacterRecruitLocation):
     ]
 
 
-class FOREST_MAZE_CHARACTER(CharacterRecruitLocation):
+class ForestMazeCharacter(CharacterRecruitLocation):
+    """ForestMazeCharacter progress location class"""
+
     _associated_spotted_location: Type[
         CharacterSpottedLocation
     ] = ForestMazeCharacterSpotted
@@ -246,6 +154,9 @@ class FOREST_MAZE_CHARACTER(CharacterRecruitLocation):
 
     def set_contents(self, contents: Optional[Character]) -> None:
         super().set_contents(contents, ForestMazeCharacterSpotted)
+
+        if contents is not None:
+            contents.set_main_character(False)
 
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_forest_boss(
@@ -287,6 +198,8 @@ class FOREST_MAZE_CHARACTER(CharacterRecruitLocation):
 
 
 class MinesCharacter(CharacterRecruitLocation):
+    """MinesCharacter progress location class"""
+
     _associated_spotted_location: Type[CharacterSpottedLocation] = MinesCharacterSpotted
     _original_item: Type[Character] = Bowser
     _room_ids: List[int] = [R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM]
@@ -294,6 +207,9 @@ class MinesCharacter(CharacterRecruitLocation):
 
     def set_contents(self, contents: Optional[Character]) -> None:
         super().set_contents(contents, MinesCharacterSpotted)
+
+        if contents is not None:
+            contents.set_main_character(False)
 
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_second_moleville_boss(
@@ -326,6 +242,8 @@ class MinesCharacter(CharacterRecruitLocation):
 
 
 class ChapelCharacter(CharacterRecruitLocation):
+    """ChapelCharacter progress location class"""
+
     _associated_spotted_location: Type[
         CharacterSpottedLocation
     ] = ChapelCharacterSpotted
@@ -335,6 +253,9 @@ class ChapelCharacter(CharacterRecruitLocation):
 
     def set_contents(self, contents: Optional[Character]) -> None:
         super().set_contents(contents, ChapelCharacterSpotted)
+
+        if contents is not None:
+            contents.set_main_character(False)
 
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_chapel_boss(
@@ -375,3 +296,130 @@ class ChapelCharacter(CharacterRecruitLocation):
             [E3951_STAR_PIECE_CREDITS_INIT],
         ),
     ]
+
+
+class ExtraStartingCharacterLocation(CharacterRecruitLocation):
+    """ExtraStartingCharacterLocation progress location class"""
+
+    _fill_priority: int = 0
+
+    @property
+    def credits_fills(self) -> List[CharacterReplacementFill]:
+        counter = 0
+        match = 1
+        locs: List[Type[CharacterRecruitLocation]] = [
+            MushroomWayCharacter,
+            ForestMazeCharacter,
+            MinesCharacter,
+            ChapelCharacter,
+        ]
+        for loc in locs:
+            inst = self.world.get_location_instance(loc)
+            if inst.contents is None:
+                counter += 1
+            if counter == match:
+                return inst.credits_fills
+        return []
+
+
+class StartingCharacter1(CharacterRecruitLocation):
+    """StartingCharacter1 progress location class"""
+
+    _associated_spotted_location: Type[
+        CharacterSpottedLocation
+    ] = StartingCharacterSpotted1
+    _original_item: Type[Character] = Mario
+    _fills: List[CharacterReplacementFill] = [
+        CharacterReplacementFill(R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, 0)
+    ]
+    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
+
+    def set_contents(self, contents: Optional[Character]) -> None:
+        super().set_contents(contents, StartingCharacterSpotted1)
+
+        if contents is not None:
+            contents.set_main_character(True)
+
+
+class StartingCharacter2(ExtraStartingCharacterLocation):
+    """StartingCharacter2 progress location class"""
+
+    _fill_priority: int = 1
+    _associated_spotted_location: Type[
+        CharacterSpottedLocation
+    ] = StartingCharacterSpotted2
+    _original_item = None
+    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
+
+    def can_access(self, inventory: Inventory) -> bool:
+        starting_chars = self.world.settings.get_flag(StartingCharacters).value
+        return starting_chars >= 2
+
+    def set_contents(self, contents: Optional[Character]) -> None:
+        super().set_contents(contents, StartingCharacterSpotted2)
+
+        if contents is not None:
+            contents.set_main_character(False)
+
+
+class StartingCharacter3(ExtraStartingCharacterLocation):
+    """StartingCharacter3 progress location class"""
+
+    _fill_priority: int = 2
+    _associated_spotted_location: Type[
+        CharacterSpottedLocation
+    ] = StartingCharacterSpotted3
+    _original_item = None
+    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
+
+    def can_access(self, inventory: Inventory) -> bool:
+        starting_chars = self.world.settings.get_flag(StartingCharacters).value
+        return starting_chars >= 3
+
+    def set_contents(self, contents: Optional[Character]) -> None:
+        super().set_contents(contents, StartingCharacterSpotted3)
+
+        if contents is not None:
+            contents.set_main_character(False)
+
+
+class StartingCharacter4(ExtraStartingCharacterLocation):
+    """StartingCharacter4 progress location class"""
+
+    _fill_priority: int = 3
+    _associated_spotted_location: Type[
+        CharacterSpottedLocation
+    ] = StartingCharacterSpotted4
+    _original_item = None
+    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
+
+    def can_access(self, inventory: Inventory) -> bool:
+        starting_chars = self.world.settings.get_flag(StartingCharacters).value
+        return starting_chars >= 4
+
+    def set_contents(self, contents: Optional[Character]) -> None:
+        super().set_contents(contents, StartingCharacterSpotted4)
+
+        if contents is not None:
+            contents.set_main_character(False)
+
+
+class StartingCharacter5(ExtraStartingCharacterLocation):
+    """StartingCharacter5 progress location class"""
+
+    _fill_priority: int = 4
+    _associated_spotted_location: Type[
+        CharacterSpottedLocation
+    ] = StartingCharacterSpotted5
+    _original_item = None
+    _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
+
+    def set_contents(self, contents: Optional[Character]) -> None:
+        super().set_contents(contents, StartingCharacterSpotted5)
+
+        if contents is not None:
+            contents.set_main_character(False)
+
+    def can_access(self, inventory: Inventory) -> bool:
+        starting_chars = self.world.settings.get_flag(StartingCharacters).value
+        return starting_chars >= 5

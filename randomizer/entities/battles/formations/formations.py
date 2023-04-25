@@ -3,6 +3,7 @@
 """Formation class instances."""
 
 from typing import List, Optional
+
 from randomizer.entities.enemies import (
     K9,
     AeroBowyer,
@@ -246,20 +247,22 @@ from randomizer.entities.enemies import (
     Zeostar,
     Zombone,
 )
-from randomizer.types.battles.formations.classes import (
+from randomizer.types.battles.formations_packs.types import (
+    FormationMember,
+    Formation,
+)
+from randomizer.types.battles.formations_packs import (
     AxemBossFormation,
     Belome2BossFormation,
     CloakerDominoFormation,
     CulexBossFormation,
     ExorBossFormation,
-    FormationMember,
-    Formation,
     JohnnyBossFormation,
     KingCalamariBossFormation,
     MegasmilaxBossFormation,
     ValentinaBossFormation,
 )
-from randomizer.types.battles.formations.constants.formation_ids import (
+from randomizer.types.battles.ids import (
     FORM0000_ONE_BOBOMB_HENCHMAN,
     FORM0001_FOUR_BOBOMB_HENCHMEN,
     FORM0002_APPRENTICE_HENCHMAN,
@@ -645,8 +648,9 @@ from randomizer.types.battles.formations.constants.formation_ids import (
     FORM0432_SOLO_GENO_CLONE,
     FORM0433_SOLO_BOWSER_CLONE,
     FORM0434_SOLO_TOADSTOOL_CLONE,
+    TOTAL_FORMATIONS,
 )
-from randomizer.types.battle_animation_scripts.constants.script_ids.battle_events import (
+from randomizer.types.battle_animation_scripts.ids import (
     BE0011_SOLO_EARTH_CRYSTAL_APPEARS,
     BE0012_DIALOGUE_FROM_BOOSTER_FIGHT,
     BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
@@ -662,8 +666,7 @@ from randomizer.types.battle_animation_scripts.constants.script_ids.battle_event
     BE0076_SOLO_FIRE_CRYSTAL_APPEARS,
     BE0080_EXOR_FIGHT_BEGINS,
 )
-from randomizer.types.battles.formations.constants.misc import TOTAL_FORMATIONS
-from randomizer.types.bosses.enums import BattleMusic, Battlefields
+from randomizer.types.bosses import BattleMusic, Battlefields
 
 formations: List[Optional[Formation]] = [None] * TOTAL_FORMATIONS
 formations[FORM0000_ONE_BOBOMB_HENCHMAN] = Formation(

@@ -9,7 +9,7 @@ script = EventScript(
         JmpIfBitSet(BOOSTER_PASS_BUSH_ITEM_FOUND, ["EVENT_2564_ret_6"]),
         RunDialog(
             dialog_id=DI3156_BOOSTER_PASS_BUSH,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

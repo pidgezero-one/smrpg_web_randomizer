@@ -3,55 +3,8 @@
 """Individual bosses."""
 
 from typing import Dict, List, Type
-from randomizer.entities.bosses.henchmen import (
-    AxemRangersAxemBlack,
-    AxemRangersAxemGreen,
-    AxemRangersAxemPink,
-    AxemRangersAxemYellow,
-    AxemRangersMachine1,
-    AxemRangersMachine2,
-    AxemRangersMachine3,
-    AxemRangersMachine4,
-    AxemRangersMachine5,
-    Belome2BowserClone,
-    Belome2GenoClone,
-    Belome2MallowClone,
-    Belome2MarioClone,
-    Belome2PeachClone,
-    BirdettaEggbert,
-    BoomerShyGuy,
-    BoosterApprentice,
-    BoosterSnifit,
-    BowyerAero,
-    BundtTorte1,
-    BundtTorte2,
-    ClerkMadMallet,
-    CountdownDingALing,
-    Croco2Crook,
-    CulexEarthCrystal,
-    CulexFireCrystal,
-    CulexWaterCrystal,
-    CulexWindCrystal,
-    CzarPyrosphere,
-    DirectorPoundette,
-    GrateGuyKnifeGuy,
-    HidonGoombette,
-    JohnnyBandanaBlue,
-    JohnnyBandanaRed,
-    KingCalamariBloober,
-    MackShyster1,
-    MackShyster2,
-    ManagerPounder,
-    MegaSmilaxPiranha,
-    PunchinelloBobomb,
-    SmithyAero,
-    SmithyDrillBit,
-    SmithyShyster,
-    ValentinaBirdy,
-    ValentinaBluebird,
-    YaridovichHenchman,
-)
-from randomizer.entities.dialogs.overworld_dialogs.constants.dialog_ids import (
+
+from randomizer.types.dialogs.ids import (
     DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING,
     DI1660_SHIP_PASSWORD_COMPLETE,
     DI1694_FINAL_SHIP_HENCHMEN_DEFEATED,
@@ -91,7 +44,7 @@ from randomizer.entities.dialogs.overworld_dialogs.constants.dialog_ids import (
     DI3352_DOJO_BOSS_1_FULLY_DEFEATED,
     DI3353_DOJO_BOSS_2_FULLY_DEFEATED,
 )
-from randomizer.types.battles.packs.constants.pack_ids import (
+from randomizer.types.battles.ids import (
     PACK0140_PUNCHINELLO_STATIC,
     PACK0146_CLERK_STATIC,
     PACK0147_MANAGER_STATIC,
@@ -133,10 +86,15 @@ from randomizer.types.battles.packs.constants.pack_ids import (
     PACK0210_BOOMER_BOSS_STATIC,
     PACK0216_CULEX_BOSS_STATIC,
 )
-from randomizer.types.bosses.enums import Battlefields
-from randomizer.types.bosses.classes import EMPTY_DIALOG, Boss, Henchman, MimicBoss
-from randomizer.types.npcs.objects.classes import NPC
-from randomizer.types.npcs.objects.npcs import (
+from randomizer.types.bosses import (
+    Battlefields,
+    EMPTY_DIALOG,
+    Boss,
+    Henchman,
+    MimicBoss,
+)
+from randomizer.types.npcs.objects.types import NPC
+from randomizer.types.npcs.objects import (
     AxemRed,
     AxemRedStatue,
     Belome1Large,
@@ -240,6 +198,55 @@ from randomizer.types.npcs.objects.npcs import (
     YaridOverworld,
     YaridovichLarge,
     YaridovichStatue,
+)
+
+from .henchmen import (
+    AxemRangersAxemBlack,
+    AxemRangersAxemGreen,
+    AxemRangersAxemPink,
+    AxemRangersAxemYellow,
+    AxemRangersMachine1,
+    AxemRangersMachine2,
+    AxemRangersMachine3,
+    AxemRangersMachine4,
+    AxemRangersMachine5,
+    Belome2BowserClone,
+    Belome2GenoClone,
+    Belome2MallowClone,
+    Belome2MarioClone,
+    Belome2PeachClone,
+    BirdettaEggbert,
+    BoomerShyGuy,
+    BoosterApprentice,
+    BoosterSnifit,
+    BowyerAero,
+    BundtTorte1,
+    BundtTorte2,
+    ClerkMadMallet,
+    CountdownDingALing,
+    Croco2Crook,
+    CulexEarthCrystal,
+    CulexFireCrystal,
+    CulexWaterCrystal,
+    CulexWindCrystal,
+    CzarPyrosphere,
+    DirectorPoundette,
+    GrateGuyKnifeGuy,
+    HidonGoombette,
+    JohnnyBandanaBlue,
+    JohnnyBandanaRed,
+    KingCalamariBloober,
+    MackShyster1,
+    MackShyster2,
+    ManagerPounder,
+    MegaSmilaxPiranha,
+    PunchinelloBobomb,
+    SmithyAero,
+    SmithyDrillBit,
+    SmithyShyster,
+    ValentinaBirdy,
+    ValentinaBluebird,
+    YaridovichHenchman,
 )
 
 

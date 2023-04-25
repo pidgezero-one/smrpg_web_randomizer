@@ -21,7 +21,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI3304_AWAIT_LEFT_OR_RIGHT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=True,
             multiline=True,
@@ -120,7 +120,7 @@ script = EventScript(
         Jmp(["EVENT_2637_run_dialog_79"]),
         RunDialog(
             dialog_id=DI3308_LOOK_THE_OTHER_WAY_PRIZE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

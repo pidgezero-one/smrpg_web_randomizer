@@ -1028,7 +1028,7 @@ script = EventScript(
         JmpIfBitClear(SUPER_JUMP_PRIZE_2_GRANTED, ["EVENT_991_sj"]),
         RunDialog(
             dialog_id=DI2758_FROGFUCIUS_DEFAULT_STUFF,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

@@ -1,0 +1,17 @@
+"""Room import"""
+from randomizer.entities.rooms.room_imports import *
+from randomizer.entities.rooms.room.room_426.room_426_partition import partition
+from randomizer.entities.rooms.room.room_426.room_426_exits import exits
+from randomizer.entities.rooms.room.room_426.room_426_events import events
+
+room = Room(
+    partition=partition,
+    music=M27_DUNGEON_IS_FULL_OF_MONSTERS,
+    entrance_event=E1778_TEMPLE_GENERIC_PIPE_ROOM_LOADER,
+    events=events,
+    exits=exits,
+    objects=[],
+    extra_sprite_actions=[
+        ExtraSpriteActions.DOWN_PIPE,
+    ],
+)

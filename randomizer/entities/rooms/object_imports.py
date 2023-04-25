@@ -1,62 +1,23 @@
-from randomizer.types.overworld_scripts.action_scripts.constants.script_ids import *
-from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import *
-from randomizer.types.battles.packs.constants.pack_ids import *
-from randomizer.types.npcs.objects.classes import AreaNPC
-from randomizer.types.rooms.classes import (
+# pylint: disable=W0611
+
+"""Imports for NPC list definition files"""
+
+from randomizer.types.overworld_scripts.action_scripts.ids import *
+from randomizer.types.overworld_scripts.event_scripts.ids import *
+from randomizer.types.battles.ids import *
+from randomizer.types.npcs.objects.types import AreaNPC
+from randomizer.types.rooms import (
     BattlePackNPC,
     RegularNPC,
     ChestNPC,
     BattlePackClone,
     RegularClone,
     ChestClone,
-)
-from randomizer.types.npcs.objects.enums import ShadowSize, VramStore
-from randomizer.types.overworld_scripts.constants.area_objects import (
-    NPC_0,
-    NPC_1,
-    NPC_2,
-    NPC_3,
-    NPC_4,
-    NPC_5,
-    NPC_6,
-    NPC_7,
-    NPC_8,
-    NPC_9,
-    NPC_10,
-    NPC_11,
-    NPC_12,
-    NPC_13,
-    NPC_14,
-    NPC_15,
-    NPC_16,
-    NPC_17,
-    NPC_18,
-    NPC_19,
-    NPC_20,
-    NPC_21,
-    NPC_22,
-    NPC_23,
-    NPC_24,
-    NPC_25,
-    NPC_26,
-    NPC_27,
-)
-from randomizer.types.overworld_scripts.constants.directions import (
-    NORTH,
-    NORTHWEST,
-    WEST,
-    SOUTHWEST,
-    SOUTH,
-    SOUTHEAST,
-    EAST,
-    NORTHEAST,
-)
-from randomizer.types.rooms.enums import (
     EventInitiator,
     ObjectType,
     PostBattleBehaviour,
 )
-
+from randomizer.types.npcs.objects import ShadowSize, VramStore
 from randomizer.types.npcs.objects.npcs import (
     Mario,
     Toadstool,
@@ -476,4 +437,43 @@ from randomizer.types.npcs.objects.npcs import (
     SmithyLarge,
     Goombette,
     Empty,
+)
+
+from randomizer.types.overworld_scripts.arguments import (
+    NPC_0,
+    NPC_1,
+    NPC_2,
+    NPC_3,
+    NPC_4,
+    NPC_5,
+    NPC_6,
+    NPC_7,
+    NPC_8,
+    NPC_9,
+    NPC_10,
+    NPC_11,
+    NPC_12,
+    NPC_13,
+    NPC_14,
+    NPC_15,
+    NPC_16,
+    NPC_17,
+    NPC_18,
+    NPC_19,
+    NPC_20,
+    NPC_21,
+    NPC_22,
+    NPC_23,
+    NPC_24,
+    NPC_25,
+    NPC_26,
+    NPC_27,
+    NORTH,
+    NORTHWEST,
+    WEST,
+    SOUTHWEST,
+    SOUTH,
+    SOUTHEAST,
+    EAST,
+    NORTHEAST,
 )

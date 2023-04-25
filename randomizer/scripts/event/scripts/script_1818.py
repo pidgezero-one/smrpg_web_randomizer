@@ -11,7 +11,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI1274_WHIRLPOOL_INSTRUCTIONS,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -26,7 +26,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI1275_JUMP_ON_LANDS_END_MOUSE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

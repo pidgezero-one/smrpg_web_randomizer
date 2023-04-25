@@ -10,7 +10,7 @@ script = EventScript(
         PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
         RunDialog(
             dialog_id=DI2095_GOT_BROOCH,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

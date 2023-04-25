@@ -362,7 +362,7 @@ script = EventScript(
         Inc(HIDDEN_CHEST_COUNTER),
         RunDialog(
             dialog_id=DI3321_YOU_MISSED,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

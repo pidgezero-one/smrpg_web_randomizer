@@ -7,7 +7,7 @@ import re
 from typing import Any, Dict, List, Optional, Type, Union
 import yaml
 
-from randomizer.entities.dialogs.overworld_dialogs.classes.dialog import (
+from randomizer.types.dialogs import (
     DialogCollection,
 )
 
@@ -505,8 +505,9 @@ class GameWorld:
         """All enemy instances in this world"""
         return self._enemies
 
-    def _set_enemies(self, enemies: List[Enemy]) -> None:
-        self._enemies = enemies
+    def _set_enemies(self, enemies: List[Type[Enemy]]) -> None:
+        enemy_instances = [e(self) for e in enemies]
+        self._enemies = enemy_instances
 
     @property
     def formations(self) -> List[Optional[Formation]]:
@@ -529,8 +530,9 @@ class GameWorld:
         """All recruitable characters in this world"""
         return self._characters
 
-    def _set_characters(self, characters: List[Character]) -> None:
-        self._characters = characters
+    def _set_characters(self, characters: List[Type[Character]]) -> None:
+        char_instances = [c(self) for c in characters]
+        self._characters = char_instances
 
     @property
     def spotted_characters(self) -> List[SpottedCharacter]:
@@ -538,17 +540,19 @@ class GameWorld:
         return self._spotted_characters
 
     def _set_spotted_characters(
-        self, spotted_characters: List[SpottedCharacter]
+        self, spotted_characters: List[Type[SpottedCharacter]]
     ) -> None:
-        self._spotted_characters = spotted_characters
+        char_instances = [c(self) for c in spotted_characters]
+        self._spotted_characters = char_instances
 
     @property
     def items(self) -> List[Item]:
         """All item instances in this world"""
         return self._items
 
-    def _set_items(self, items: List[Item]) -> None:
-        self._items = items
+    def _set_items(self, items: List[Type[Item]]) -> None:
+        item_instances = [i(self) for i in items]
+        self._items = item_instances
 
     @property
     def spells(self) -> List[Spell]:
@@ -560,16 +564,18 @@ class GameWorld:
         """Subset of all spell instances in this world (only learnable)"""
         return [spell for spell in self.spells if isinstance(spell, CharacterSpell)]
 
-    def _set_spells(self, spells: List[Spell]) -> None:
-        self._spells = spells
+    def _set_spells(self, spells: List[Type[Spell]]) -> None:
+        spell_instances = [spell(self) for spell in spells]
+        self._spells = spell_instances
 
     @property
     def shops(self) -> List[Shop]:
         """All shop instances in this world"""
         return self.shops
 
-    def _set_shops(self, shops: List[Shop]) -> None:
-        self._shops = shops
+    def _set_shops(self, shops: List[Type[Shop]]) -> None:
+        shop_instances = [s(self) for s in shops]
+        self._shops = shop_instances
 
     @property
     def rooms(self) -> List[Room]:
@@ -588,25 +594,34 @@ class GameWorld:
 
     def _set_item_locations(
         self,
-        item_locations: List[Union[ChestLocation, GrantLocation, FreestandingLocation]],
+        item_locations: List[
+            Union[Type[ChestLocation], Type[GrantLocation], Type[FreestandingLocation]]
+        ],
     ) -> None:
-        self._item_locations = item_locations
+        location_instances = [l(self) for l in item_locations]
+        self._item_locations = location_instances
 
     @property
     def boss_locations(self) -> List[BossFightLocation]:
         """All progress locations for boss fights in this world"""
         return self._boss_locations
 
-    def _set_boss_locations(self, boss_locations: List[BossFightLocation]) -> None:
-        self._boss_locations = boss_locations
+    def _set_boss_locations(
+        self, boss_locations: List[Type[BossFightLocation]]
+    ) -> None:
+        location_instances = [l(self) for l in boss_locations]
+        self._boss_locations = location_instances
 
     @property
     def boss_star_pieces(self) -> List[BossStarPiecePrize]:
         """All progress locations for boss fight star piece grants in this world"""
         return self._boss_star_pieces
 
-    def _set_boss_star_pieces(self, boss_star_pieces: List[BossStarPiecePrize]) -> None:
-        self._boss_star_pieces = boss_star_pieces
+    def _set_boss_star_pieces(
+        self, boss_star_pieces: List[Type[BossStarPiecePrize]]
+    ) -> None:
+        location_instances = [l(self) for l in boss_star_pieces]
+        self._boss_star_pieces = location_instances
 
     @property
     def character_spotted_locations(self) -> List[CharacterSpottedLocation]:
@@ -614,9 +629,10 @@ class GameWorld:
         return self._character_spotted_locations
 
     def _set_character_spotted_locations(
-        self, character_spotted_locations: List[CharacterSpottedLocation]
+        self, character_spotted_locations: List[Type[CharacterSpottedLocation]]
     ) -> None:
-        self._character_spotted_locations = character_spotted_locations
+        location_instances = [l(self) for l in character_spotted_locations]
+        self._character_spotted_locations = location_instances
 
     @property
     def character_recruit_locations(self) -> List[CharacterRecruitLocation]:
@@ -624,9 +640,10 @@ class GameWorld:
         return self._character_recruit_locations
 
     def _set_character_recruit_locations(
-        self, character_recruit_locations: List[CharacterRecruitLocation]
+        self, character_recruit_locations: List[Type[CharacterRecruitLocation]]
     ) -> None:
-        self._character_recruit_locations = character_recruit_locations
+        location_instances = [l(self) for l in character_recruit_locations]
+        self._character_recruit_locations = location_instances
 
     @property
     def character_spell_slots(self) -> List[CharacterSpellSlot]:
@@ -634,9 +651,10 @@ class GameWorld:
         return self._character_spell_slots
 
     def _set_character_spell_slots(
-        self, character_spell_slots: List[CharacterSpellSlot]
+        self, character_spell_slots: List[Type[CharacterSpellSlot]]
     ) -> None:
-        self._character_spell_slots = character_spell_slots
+        location_instances = [l(self) for l in character_spell_slots]
+        self._character_spell_slots = location_instances
 
     @property
     def sprites(self) -> SpriteCollection:
@@ -737,21 +755,23 @@ class GameWorld:
         battle_event_animation_scripts: AnimationScriptBankCollection,
         monster_scripts: MonsterScriptBank,
         dialogs: DialogCollection,
-        enemies: List[Enemy],
+        enemies: List[Type[Enemy]],
         formations: List[Optional[Formation]],
         packs: List[Optional[FormationPack]],
-        characters: List[Character],
-        spotted_characters: List[SpottedCharacter],
-        items: List[Item],
-        spells: List[Spell],
-        shops: List[Shop],
+        characters: List[Type[Character]],
+        spotted_characters: List[Type[SpottedCharacter]],
+        items: List[Type[Item]],
+        spells: List[Type[Spell]],
+        shops: List[Type[Shop]],
         rooms: List[Room],
-        item_locations: List[Union[ChestLocation, GrantLocation, FreestandingLocation]],
-        boss_locations: List[BossFightLocation],
-        boss_star_pieces: List[BossStarPiecePrize],
-        character_spotted_locations: List[CharacterSpottedLocation],
-        character_recruit_locations: List[CharacterRecruitLocation],
-        character_spell_slots: List[CharacterSpellSlot],
+        item_locations: List[
+            Union[Type[ChestLocation], Type[GrantLocation], Type[FreestandingLocation]]
+        ],
+        boss_locations: List[Type[BossFightLocation]],
+        boss_star_pieces: List[Type[BossStarPiecePrize]],
+        character_spotted_locations: List[Type[CharacterSpottedLocation]],
+        character_recruit_locations: List[Type[CharacterRecruitLocation]],
+        character_spell_slots: List[Type[CharacterSpellSlot]],
         sprites: SpriteCollection,
     ) -> None:
         self._set_seed(seed)

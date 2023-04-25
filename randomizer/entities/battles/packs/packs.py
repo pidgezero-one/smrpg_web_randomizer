@@ -3,7 +3,8 @@
 """Pack class instances."""
 
 from typing import List, Optional
-from randomizer.types.battles.formations.constants.formation_ids import (
+
+from randomizer.types.battles.ids import (
     FORM0000_ONE_BOBOMB_HENCHMAN,
     FORM0001_FOUR_BOBOMB_HENCHMEN,
     FORM0002_APPRENTICE_HENCHMAN,
@@ -389,10 +390,7 @@ from randomizer.types.battles.formations.constants.formation_ids import (
     FORM0432_SOLO_GENO_CLONE,
     FORM0433_SOLO_BOWSER_CLONE,
     FORM0434_SOLO_TOADSTOOL_CLONE,
-)
-from randomizer.types.battles.packs.classes import FormationPack
-from randomizer.types.battles.packs.constants.misc import TOTAL_PACKS
-from randomizer.types.battles.packs.constants.pack_ids import (
+    TOTAL_PACKS,
     PACK0000_SNIFIT_FIGHT,
     PACK0001_BOBOMB_HENCHMEN,
     PACK0002_SPIKEYS_AND_TROOPAS,
@@ -639,6 +637,7 @@ from randomizer.types.battles.packs.constants.pack_ids import (
     PACK0254_SMITHY_HENCHMEN_PACK_2,
     PACK0255_SMITHY_HENCHMEN_PACK_3,
 )
+from randomizer.types.battles.formations_packs.types import FormationPack
 
 packs: List[Optional[FormationPack]] = [None] * TOTAL_PACKS
 packs[PACK0000_SNIFIT_FIGHT] = FormationPack(FORM0276_SNIFIT_HENCHMAN)

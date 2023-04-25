@@ -1,6 +1,8 @@
+"""Progress location definitions for boss fights."""
+
 from typing import List, Optional, Type
 
-from randomizer.entities.bosses.bosses import (
+from randomizer.entities.bosses import (
     AxemRangersBoss,
     Belome1Boss,
     Belome2Boss,
@@ -42,11 +44,89 @@ from randomizer.entities.bosses.bosses import (
     ValentinaBoss,
     YaridovichBoss,
 )
-from randomizer.entities.dialogs.overworld_dialogs.constants.dialog_ids import (
+from randomizer.entities.enemies import Shelly
+
+
+from randomizer.types.dialogs.ids import (
     DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING,
 )
-from randomizer.entities.enemies import Shelly
-from randomizer.entities.progress_locations.helpers.area_access import (
+
+
+from randomizer.types.battle_animation_scripts.commands import Jmp, Pause1Frame
+from randomizer.types.battle_animation_scripts.ids import SUBROUTINES_0X3A8BE4
+from randomizer.types.battle_animation_scripts.types import AnimationScriptBank
+from randomizer.types.battles.formations_packs.types import FormationMember
+from randomizer.types.battles.ids import (
+    FORM0297_BIRDETTA_BOSS_FIGHT,
+)
+from randomizer.types.bosses import Boss, Battlefields, BattleMusic, BossLocations
+from randomizer.types.monster_scripts.commands import CallTarget, RunBattleEvent
+from randomizer.types.monster_scripts.arguments import (
+    MONSTER_1_CALL,
+    MONSTER_2_CALL,
+    MONSTER_3_CALL,
+    MONSTER_4_CALL,
+    MONSTER_5_CALL,
+    MONSTER_6_CALL,
+    MONSTER_7_CALL,
+    MONSTER_8_CALL,
+)
+from randomizer.types.npcs.fills import (
+    BossModelFill,
+    RepeatableHenchmanFill,
+    StatueFill,
+    UniqueHenchmanFill,
+)
+from randomizer.types.npcs.objects import VramStore
+from randomizer.types.overworld_scripts.action_scripts.commands import (
+    Return,
+    ShiftXYPixels,
+)
+from randomizer.types.overworld_scripts.arguments import (
+    NORTHEAST,
+    SOUTHEAST,
+    SOUTHWEST,
+)
+from randomizer.types.overworld_scripts.ids import (
+    R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
+    R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
+    R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+    R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM,
+    R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+    R205_MUSHROOM_WAY_AREA_03,
+    R206_BANDITS_WAY_AREA_05,
+    R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM,
+    R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
+    R254_BEAN_VALLEY_SMILAX_AREA,
+    R255_MONSTRO_TOWN_JINXS_DOJO,
+    R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
+    R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
+    R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
+    R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
+    R302_KERO_SEWERS_AREA_08_BELOMES_ROOM,
+    R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+    R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
+    R351_CULEXS_ROOM,
+    R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+    R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+    R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
+    R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA,
+    R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
+    R469_FACTORY_GROUNDS_AREA_01,
+    R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+    R471_FACTORY_GROUNDS_AREA_02,
+    R472_FACTORY_GROUNDS_AREA_03,
+    R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
+)
+from randomizer.types.overworld_scripts.event_scripts.commands import ActionQueueAsync
+from randomizer.types.progress_locations import (
+    BossFightLocation,
+    Inventory,
+    LocationWorldArea,
+)
+from randomizer.types.rooms import RoomObject
+
+from .helpers.area_access import (
     can_access_balcony_boss,
     can_access_bandits_way,
     can_access_battle_door_boss,
@@ -87,7 +167,7 @@ from randomizer.entities.progress_locations.helpers.area_access import (
     can_defeat_ship_midboss,
     can_defeat_volcano_boss,
 )
-from randomizer.entities.progress_locations.helpers.model_fills import (
+from .helpers.model_fills import (
     BANDITS_WAY_1_BOSS_FILL,
     BANDITS_WAY_2_BOSS_FILL,
     BANDITS_WAY_3_BOSS_FILL,
@@ -377,82 +457,11 @@ from randomizer.entities.progress_locations.helpers.model_fills import (
     VOLCANO_THIRD_HENCHMAN_TELEPORT_FILL,
     VOLCANO_THIRD_HENCHMAN_TRAMPOLINE_FILL,
 )
-from randomizer.types.battle_animation_scripts.classes import AnimationScriptBank
-from randomizer.types.battle_animation_scripts.commands import Jmp, Pause1Frame
-from randomizer.types.battle_animation_scripts.constants.script_ids.bank_names import (
-    SUBROUTINES_0X3A8BE4,
-)
-from randomizer.types.battles.formations.classes import FormationMember
-from randomizer.types.battles.formations.constants.formation_ids import (
-    FORM0297_BIRDETTA_BOSS_FIGHT,
-)
-from randomizer.types.bosses.classes import Boss
-from randomizer.types.bosses.enums import Battlefields, BattleMusic, BossLocations
-from randomizer.types.monster_scripts.commands import CallTarget, RunBattleEvent
-from randomizer.types.monster_scripts.constants.targets import (
-    MONSTER_1_CALL,
-    MONSTER_2_CALL,
-    MONSTER_3_CALL,
-    MONSTER_4_CALL,
-    MONSTER_5_CALL,
-    MONSTER_6_CALL,
-    MONSTER_7_CALL,
-    MONSTER_8_CALL,
-)
-from randomizer.types.npcs.fills.classes import (
-    BossModelFill,
-    RepeatableHenchmanFill,
-    StatueFill,
-    UniqueHenchmanFill,
-)
-from randomizer.types.npcs.objects.enums import VramStore
-from randomizer.types.overworld_scripts.action_scripts.commands import (
-    Return,
-    ShiftXYPixels,
-)
-from randomizer.types.overworld_scripts.constants.directions import (
-    NORTHEAST,
-    SOUTHEAST,
-    SOUTHWEST,
-)
-from randomizer.types.overworld_scripts.constants.room_names import (
-    R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
-    R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
-    R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
-    R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM,
-    R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-    R205_MUSHROOM_WAY_AREA_03,
-    R206_BANDITS_WAY_AREA_05,
-    R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM,
-    R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
-    R254_BEAN_VALLEY_SMILAX_AREA,
-    R255_MONSTRO_TOWN_JINXS_DOJO,
-    R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
-    R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
-    R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
-    R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
-    R302_KERO_SEWERS_AREA_08_BELOMES_ROOM,
-    R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
-    R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
-    R351_CULEXS_ROOM,
-    R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
-    R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
-    R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
-    R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA,
-    R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
-    R469_FACTORY_GROUNDS_AREA_01,
-    R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
-    R471_FACTORY_GROUNDS_AREA_02,
-    R472_FACTORY_GROUNDS_AREA_03,
-    R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
-)
-from randomizer.types.overworld_scripts.event_scripts.commands import ActionQueueAsync
-from randomizer.types.progress_locations.classes import BossFightLocation, Inventory
-from randomizer.types.progress_locations.enums import LocationWorldArea
-from randomizer.types.rooms.classes import RoomObject
 
 
 class MushroomWayBossFight(BossFightLocation):
+    """MushroomWayBossFight progress location class"""
+
     _room_ids: List[int] = [R205_MUSHROOM_WAY_AREA_03]
     _name_enum: BossLocations = BossLocations.MUSHROOM_WAY
     _battlefield = Battlefields.MUSHROOM_WAY
@@ -464,6 +473,8 @@ class MushroomWayBossFight(BossFightLocation):
 
 
 class BanditsWayBossFight(BossFightLocation):
+    """BanditsWayBossFight progress location class"""
+
     _room_ids: List[int] = [R206_BANDITS_WAY_AREA_05]
     _name_enum: BossLocations = BossLocations.BANDITS_WAY
     _battlefield = Battlefields.MUSHROOM_WAY
@@ -486,11 +497,10 @@ class BanditsWayBossFight(BossFightLocation):
     def can_access(self, inventory: Inventory):
         return can_access_bandits_way(self.world, inventory)
 
-    def sanitize_animation_scripts(self) -> None:
-        super().sanitize_animation_scripts()
-
 
 class MushroomKingdomBossFight(BossFightLocation):
+    """MushroomKingdomBossFight progress location class"""
+
     _room_ids: List[int] = [R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM]
     _name_enum: BossLocations = BossLocations.MUSHROOM_KINGDOM
     _battlefield = Battlefields.MUSHROOM_KINGDOM_THRONE_ROOM
@@ -542,6 +552,8 @@ class MushroomKingdomBossFight(BossFightLocation):
 
 
 class MimicFightLocation1(BossFightLocation):
+    """MimicFightLocation1 progress location class"""
+
     _identifier: int = 512
     _name_enum: BossLocations = BossLocations.MIMIC_1
     _original_item: Type[Boss] = PandoriteBoss
@@ -551,6 +563,8 @@ class MimicFightLocation1(BossFightLocation):
 
 
 class KeroSewersBossFight(BossFightLocation):
+    """KeroSewersBossFight progress location class"""
+
     _room_ids: List[int] = [R302_KERO_SEWERS_AREA_08_BELOMES_ROOM]
     _battlefield = Battlefields.KERO_SEWERS
     _music = BattleMusic.BOSS_1
@@ -567,6 +581,8 @@ class KeroSewersBossFight(BossFightLocation):
 
 
 class ForestBossFight(BossFightLocation):
+    """ForestBossFight progress location class"""
+
     _room_ids: List[int] = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
     _name_enum: BossLocations = BossLocations.FOREST_MAZE
     _battlefield = Battlefields.BOWYER
@@ -592,6 +608,8 @@ class ForestBossFight(BossFightLocation):
 
 
 class MinesMidbossFight(BossFightLocation):
+    """MinesMidbossFight progress location class"""
+
     _identifier: int = 518
     _name_enum: BossLocations = BossLocations.MINES_MIDBOSS
     _battlefield = Battlefields.MOLEVILLE_MINES
@@ -620,6 +638,8 @@ class MinesMidbossFight(BossFightLocation):
 
 
 class MinesBossFight(BossFightLocation):
+    """MinesBossFight progress location class"""
+
     _room_ids: List[int] = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     _name_enum: BossLocations = BossLocations.MINES_END
     _battlefield = Battlefields.MOLEVILLE_MINES
@@ -649,6 +669,8 @@ class MinesBossFight(BossFightLocation):
 
 
 class TowerCurtainRoomBossFight(BossFightLocation):
+    """TowerCurtainRoomBossFight progress location class"""
+
     _room_ids: List[int] = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _name_enum: BossLocations = BossLocations.TOWER_CURTAIN
     _battlefield = Battlefields.BOOSTER_TOWER
@@ -706,6 +728,8 @@ class TowerCurtainRoomBossFight(BossFightLocation):
 
 
 class TowerBalconyBossFight(BossFightLocation):
+    """TowerBalconyBossFight progress location class"""
+
     _room_ids: List[int] = [R258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR]
     _battlefield = Battlefields.CLOWN_BROS
     _music = BattleMusic.BOSS_1
@@ -718,6 +742,8 @@ class TowerBalconyBossFight(BossFightLocation):
 
 
 class ChapelBossFight(BossFightLocation):
+    """ChapelBossFight progress location class"""
+
     _room_ids: List[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _name_enum: BossLocations = BossLocations.MARRYMORE
     _battlefield = Battlefields.BUNDT
@@ -744,6 +770,8 @@ class ChapelBossFight(BossFightLocation):
 
 
 class ShipPasswordBossFight(BossFightLocation):
+    """ShipPasswordBossFight progress location class"""
+
     _room_ids: List[int] = [R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM]
     _battlefield = Battlefields.SUNKEN_SHIP
     _music = BattleMusic.BOSS_1
@@ -757,6 +785,8 @@ class ShipPasswordBossFight(BossFightLocation):
 
 
 class MimicFightLocation2(BossFightLocation):
+    """MimicFightLocation2 progress location class"""
+
     _identifier: int = 513
     _name_enum: BossLocations = BossLocations.MIMIC_2
     _original_item: Type[Boss] = HidonBoss
@@ -766,6 +796,8 @@ class MimicFightLocation2(BossFightLocation):
 
 
 class ShipFinalBossFight(BossFightLocation):
+    """ShipFinalBossFight progress location class"""
+
     _room_ids: List[int] = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     _battlefield = Battlefields.SUNKEN_SHIP
     _music = BattleMusic.BOSS_1
@@ -804,6 +836,8 @@ class ShipFinalBossFight(BossFightLocation):
 
 
 class SeasideBeachBossFight(BossFightLocation):
+    """SeasideBeachBossFight progress location class"""
+
     _room_ids: List[int] = [R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     _name_enum: BossLocations = BossLocations.SEASIDE_TOWN
     _battlefield = Battlefields.YARIDOVICH
@@ -852,6 +886,8 @@ class SeasideBeachBossFight(BossFightLocation):
 
 
 class LandsEndCloudBossFight(BossFightLocation):
+    """LandsEndCloudBossFight progress location class"""
+
     _identifier: int = 519
     _music = BattleMusic.BOSS_1
     _name_enum: BossLocations = BossLocations.LANDS_END_CLOUD
@@ -863,6 +899,8 @@ class LandsEndCloudBossFight(BossFightLocation):
 
 
 class TempleBossFight(BossFightLocation):
+    """TempleBossFight progress location class"""
+
     _room_ids: List[int] = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
     _name_enum: BossLocations = BossLocations.BELOME_TEMPLE
     _battlefield = Battlefields.BELOME_TEMPLE
@@ -879,6 +917,8 @@ class TempleBossFight(BossFightLocation):
 
 
 class DojoFirstFight(BossFightLocation):
+    """DojoFirstFight progress location class"""
+
     _room_ids: List[int] = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _name_enum: BossLocations = BossLocations.DOJO_1
     _battlefield = Battlefields.JINX_DOJO
@@ -892,6 +932,8 @@ class DojoFirstFight(BossFightLocation):
 
 
 class DojoSecondFight(BossFightLocation):
+    """DojoSecondFight progress location class"""
+
     _identifier: int = 515
     _name_enum: BossLocations = BossLocations.DOJO_2
     _battlefield = Battlefields.JINX_DOJO
@@ -911,6 +953,8 @@ class DojoSecondFight(BossFightLocation):
 
 
 class DojoThirdFight(BossFightLocation):
+    """DojoThirdFight progress location class"""
+
     _identifier: int = 516
     _name_enum: BossLocations = BossLocations.DOJO_3
     _battlefield = Battlefields.JINX_DOJO
@@ -930,6 +974,8 @@ class DojoThirdFight(BossFightLocation):
 
 
 class DojoFourthFight(BossFightLocation):
+    """DojoFourthFight progress location class"""
+
     _identifier: int = 517
     _name_enum: BossLocations = BossLocations.DOJO_4
     _battlefield = Battlefields.JINX_DOJO
@@ -949,6 +995,8 @@ class DojoFourthFight(BossFightLocation):
 
 
 class MonstroSealedDoorBossFight(BossFightLocation):
+    """MonstroSealedDoorBossFight progress location class"""
+
     _room_ids: List[int] = [R351_CULEXS_ROOM]
     _name_enum: BossLocations = BossLocations.MONSTRO_DOOR
     _battlefield = Battlefields.CULEX
@@ -962,6 +1010,8 @@ class MonstroSealedDoorBossFight(BossFightLocation):
 
 
 class MimicFightLocation3(BossFightLocation):
+    """MimicFightLocation3 progress location class"""
+
     _identifier: int = 514
     _name_enum: BossLocations = BossLocations.MIMIC_3
     _original_item: Type[Boss] = BoxBoyBoss
@@ -971,6 +1021,8 @@ class MimicFightLocation3(BossFightLocation):
 
 
 class BeanValleyPlanterBossFight(BossFightLocation):
+    """BeanValleyPlanterBossFight progress location class"""
+
     _room_ids: List[int] = [R254_BEAN_VALLEY_SMILAX_AREA]
     _name_enum: BossLocations = BossLocations.BEAN_VALLEY
     _battlefield = Battlefields.BEAN_VALLEY
@@ -984,6 +1036,8 @@ class BeanValleyPlanterBossFight(BossFightLocation):
 
 
 class StatueRoomBossFight(BossFightLocation):
+    """StatueRoomBossFight progress location class"""
+
     _name_enum: BossLocations = BossLocations.NIMBUS_STATUES
     _identifier: int = 520
     _battlefield = Battlefields.NIMBUS_CASTLE
@@ -1002,6 +1056,8 @@ class StatueRoomBossFight(BossFightLocation):
 
 
 class GiantEggBossFight(BossFightLocation):
+    """GiantEggBossFight progress location class"""
+
     _room_ids: List[int] = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _name_enum: BossLocations = BossLocations.GIANT_EGG
     _battlefield = Battlefields.BIRDETTA
@@ -1118,6 +1174,8 @@ class GiantEggBossFight(BossFightLocation):
 
 
 class NimbusFinalBossFight(BossFightLocation):
+    """NimbusFinalBossFight progress location class"""
+
     _room_ids: List[int] = [R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA]
     _name_enum: BossLocations = BossLocations.NIMBUS_END
     _battlefield = Battlefields.VALENTINA
@@ -1223,6 +1281,8 @@ class NimbusFinalBossFight(BossFightLocation):
 
 
 class VolcanoBridgeBossFight(BossFightLocation):
+    """VolcanoBridgeBossFight progress location class"""
+
     _room_ids: List[int] = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
     _name_enum: BossLocations = BossLocations.BARREL_VOLCANO_MIDBOSS
     _battlefield = Battlefields.CZAR_DRAGON
@@ -1248,6 +1308,8 @@ class VolcanoBridgeBossFight(BossFightLocation):
 
 
 class VolcanoExitBossFight(BossFightLocation):
+    """VolcanoExitBossFight progress location class"""
+
     _room_ids: List[int] = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
     _name_enum: BossLocations = BossLocations.BARREL_VOLCANO_END
     _battlefield = Battlefields.AXEM_RANGERS
@@ -1286,6 +1348,8 @@ class VolcanoExitBossFight(BossFightLocation):
 
 
 class ObstacleCourseFinalFight(BossFightLocation):
+    """ObstacleCourseFinalFight progress location class"""
+
     _room_ids: List[int] = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
     _name_enum: BossLocations = BossLocations.BOWSERS_KEEP_OBSTACLES
     _battlefield = Battlefields.BOWSERS_KEEP
@@ -1300,6 +1364,8 @@ class ObstacleCourseFinalFight(BossFightLocation):
 
 
 class KeepAfterObstaclesBossFight(BossFightLocation):
+    """KeepAfterObstaclesBossFight progress location class"""
+
     _room_ids: List[int] = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _name_enum: BossLocations = BossLocations.BOWSERS_KEEP_MIDBOSS
     _battlefield = Battlefields.BOWSERS_KEEP
@@ -1307,7 +1373,9 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
     _world_area: LocationWorldArea = LocationWorldArea.BOWSERS_KEEP
     _original_item: Type[Boss] = KamekBoss
     _overworld_boss_npc_fills: List[BossModelFill] = [
-        KEEP_MIDBOSS_LAIR_FILL,  # may need to remove palette setter if not magikoopa, may need special animation when summoning
+        # may need to remove palette setter if not magikoopa,
+        # may need special animation when summoning
+        KEEP_MIDBOSS_LAIR_FILL,
         KEEP_BATTLE_ROOM_1_END_BOSS_FILL,
         KEEP_BATTLE_ROOM_2_END_BOSS_FILL,
         KEEP_BATTLE_ROOM_3_END_BOSS_FILL,
@@ -1322,6 +1390,8 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
 
 
 class KeepChandelierBossFight(BossFightLocation):
+    """KeepChandelierBossFight progress location class"""
+
     _identifier: int = 521
     _name_enum: BossLocations = BossLocations.BOWSERS_KEEP_END_1
     _battlefield = Battlefields.BOOMER
@@ -1335,6 +1405,8 @@ class KeepChandelierBossFight(BossFightLocation):
 
 
 class KeepFinalBossFight(BossFightLocation):
+    """KeepFinalBossFight progress location class"""
+
     _identifier: int = 522
     _name_enum: BossLocations = BossLocations.BOWSERS_KEEP_END_2
     _battlefield = Battlefields.BOWSERS_KEEP
@@ -1347,6 +1419,8 @@ class KeepFinalBossFight(BossFightLocation):
 
 
 class FactoryEntranceBoss(BossFightLocation):
+    """FactoryEntranceBoss progress location class"""
+
     _room_ids: List[int] = [R223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM]
     _name_enum: BossLocations = BossLocations.FACTORY_MIDBOSS
     _battlefield = Battlefields.GATE
@@ -1366,6 +1440,8 @@ class FactoryEntranceBoss(BossFightLocation):
 
 
 class FactoryTransitionBoss(BossFightLocation):
+    """FactoryTransitionBoss progress location class"""
+
     _room_ids: List[int] = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
     _name_enum: BossLocations = BossLocations.FACTORY_END
     _battlefield = Battlefields.GATE
@@ -1378,6 +1454,8 @@ class FactoryTransitionBoss(BossFightLocation):
 
 
 class InnerFactoryFirstFight(BossFightLocation):
+    """InnerFactoryFirstFight progress location class"""
+
     _room_ids: List[int] = [R469_FACTORY_GROUNDS_AREA_01]
     _name_enum: BossLocations = BossLocations.INNER_FACTORY_1
     _battlefield = Battlefields.FACTORY
@@ -1396,6 +1474,8 @@ class InnerFactoryFirstFight(BossFightLocation):
 
 
 class InnerFactorySecondFight(BossFightLocation):
+    """InnerFactorySecondFight progress location class"""
+
     _room_ids: List[int] = [R471_FACTORY_GROUNDS_AREA_02]
     _name_enum: BossLocations = BossLocations.INNER_FACTORY_2
     _battlefield = Battlefields.FACTORY
@@ -1415,6 +1495,8 @@ class InnerFactorySecondFight(BossFightLocation):
 
 
 class InnerFactoryThirdFight(BossFightLocation):
+    """InnerFactoryThirdFight progress location class"""
+
     _room_ids: List[int] = [R472_FACTORY_GROUNDS_AREA_03]
     _name_enum: BossLocations = BossLocations.INNER_FACTORY_3
     _battlefield = Battlefields.FACTORY
@@ -1432,6 +1514,8 @@ class InnerFactoryThirdFight(BossFightLocation):
 
 
 class InnerFactoryFourthFight(BossFightLocation):
+    """InnerFactoryFourthFight progress location class"""
+
     _room_ids: List[int] = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     _name_enum: BossLocations = BossLocations.INNER_FACTORY_4
     _battlefield = Battlefields.FACTORY
@@ -1448,6 +1532,8 @@ class InnerFactoryFourthFight(BossFightLocation):
 
 
 class FinalBossFight(BossFightLocation):
+    """FinalBossFight progress location class"""
+
     _room_ids: List[int] = [R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE]
     _name_enum: BossLocations = BossLocations.INNER_FACTORY_LAIR
     _battlefield = Battlefields.SMITHY

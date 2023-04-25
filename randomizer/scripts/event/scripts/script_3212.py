@@ -42,7 +42,7 @@ script = EventScript(
         JmpIfDialogOptionBSelected(["EVENT_3212_pause_action_script_19"]),
         RunDialog(
             dialog_id=DI1657_3D_MAZE_OVERLAY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=True,
             multiline=False,

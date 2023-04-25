@@ -9,7 +9,7 @@ script = EventScript(
         SetBit(BEETLEMANIA_UNLOCKED),
         RunDialog(
             dialog_id=DI3074_GOT_BEETLEMANIA,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

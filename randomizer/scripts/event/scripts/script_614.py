@@ -35,7 +35,7 @@ script = EventScript(
         Jmp(["EVENT_614_pause_17"]),
         RunDialog(
             dialog_id=DI0987_CANT_AFFORD_TIP,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

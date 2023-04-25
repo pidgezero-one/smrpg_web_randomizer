@@ -8,7 +8,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI2730_FROGFUCIUS_OFFER_HINT,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=False,
             multiline=True,

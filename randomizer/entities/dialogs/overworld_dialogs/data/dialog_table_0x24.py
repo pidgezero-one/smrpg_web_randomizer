@@ -1,3 +1,7 @@
+"""Dialog data bank 3"""
+
+from typing import List
+
 dialog_data: List[str] = ["""[await]"""] * 605
 dialog_data[
     0
@@ -176,7 +180,7 @@ dialog_data[
  home![await]"""
 dialog_data[
     52
-] = """MALLOW: 
+] = """MALLOW:
  This isn't the time to be crying![await]
  They're waiting for me to come
  home![await]"""
@@ -187,7 +191,7 @@ dialog_data[
  you eat dust if you don't hurry.[await]"""
 dialog_data[
     54
-] = """MALLOW: 
+] = """MALLOW:
                 Sniffle...[await]"""
 dialog_data[55] = """[await]"""
 dialog_data[56] = """[await]"""
@@ -438,15 +442,15 @@ dialog_data[
    I wish for everyone to be happy.[await]"""
 dialog_data[
     204
-] = """DEALER: 
+] = """DEALER:
          I will draw one card.[await]"""
 dialog_data[
     205
-] = """DEALER: 
+] = """DEALER:
         I'll play with this hand.[await]"""
 dialog_data[
     206
-] = """DEALER: 
+] = """DEALER:
  Draw or stay, `MAIN_CHARACTER_NAME`?[await]"""
 dialog_data[
     207
@@ -455,7 +459,7 @@ dialog_data[
   [select] (Stay)[await]"""
 dialog_data[
     208
-] = """DEALER: 
+] = """DEALER:
  I will first deal you two cards.[await]"""
 dialog_data[209] = """            You got a(n) [0x7000].[await]"""
 dialog_data[210] = """      Oh no! You went over 21.[await]"""
@@ -465,11 +469,11 @@ dialog_data[
       Please show me your hand.[await]"""
 dialog_data[
     212
-] = """DEALER: 
+] = """DEALER:
                 I have [0x7000].[await]"""
 dialog_data[
     213
-] = """DEALER: 
+] = """DEALER:
  `MAIN_CHARACTER_NAME`, you have [0x7000].[await]"""
 dialog_data[
     214
@@ -493,15 +497,15 @@ dialog_data[
  Sorry, you can't play then.[await]"""
 dialog_data[
     219
-] = """DEALER: 
+] = """DEALER:
             Your first card.[await]"""
 dialog_data[
     220
-] = """DEALER: 
+] = """DEALER:
           Your second card.[await]"""
 dialog_data[
     221
-] = """DEALER: 
+] = """DEALER:
  Welcome to the Blackjack table.[await]
  Play a round with me, `MAIN_CHARACTER_HONORIFIC`?
   [select] (Yes)
@@ -702,7 +706,7 @@ dialog_data[311] = """[await]"""
 dialog_data[312] = """[await]"""
 dialog_data[
     313
-] = """VALENTINA: 
+] = """VALENTINA:
  WHAT are you babbling about?[await][page]
  Why should I marry you?[await]"""
 dialog_data[

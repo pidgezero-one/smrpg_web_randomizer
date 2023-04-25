@@ -1,9 +1,13 @@
+"""Enemy attack classes."""
+
 from typing import List
 from randomizer.types.enemy_attacks.classes import EnemyAttack
 from randomizer.types.spells.enums import TempStatBuff, Status
 
 
 class PhysicalAttack0(EnemyAttack):
+    """PhysicalAttack0 enemy attack class"""
+
     _index: int = 0
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -11,6 +15,8 @@ class PhysicalAttack0(EnemyAttack):
 
 
 class PhysicalAttack1(EnemyAttack):
+    """PhysicalAttack1 enemy attack class"""
+
     _index: int = 1
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -18,6 +24,8 @@ class PhysicalAttack1(EnemyAttack):
 
 
 class PhysicalAttack2(EnemyAttack):
+    """PhysicalAttack2 enemy attack class"""
+
     _index: int = 2
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -25,6 +33,8 @@ class PhysicalAttack2(EnemyAttack):
 
 
 class PhysicalAttack3(EnemyAttack):
+    """PhysicalAttack3 enemy attack class"""
+
     _index: int = 3
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -32,6 +42,8 @@ class PhysicalAttack3(EnemyAttack):
 
 
 class PhysicalAttack4(EnemyAttack):
+    """PhysicalAttack4 enemy attack class"""
+
     _index: int = 4
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -39,6 +51,8 @@ class PhysicalAttack4(EnemyAttack):
 
 
 class PhysicalAttack5(EnemyAttack):
+    """PhysicalAttack5 enemy attack class"""
+
     _index: int = 5
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -46,6 +60,8 @@ class PhysicalAttack5(EnemyAttack):
 
 
 class PhysicalAttack6(EnemyAttack):
+    """PhysicalAttack6 enemy attack class"""
+
     _index: int = 6
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -53,6 +69,8 @@ class PhysicalAttack6(EnemyAttack):
 
 
 class PhysicalAttack7(EnemyAttack):
+    """PhysicalAttack7 enemy attack class"""
+
     _index: int = 7
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -60,6 +78,8 @@ class PhysicalAttack7(EnemyAttack):
 
 
 class PhysicalAttack8(EnemyAttack):
+    """PhysicalAttack8 enemy attack class"""
+
     _index: int = 8
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -67,6 +87,8 @@ class PhysicalAttack8(EnemyAttack):
 
 
 class PhysicalAttack9(EnemyAttack):
+    """PhysicalAttack9 enemy attack class"""
+
     _index: int = 9
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -74,6 +96,8 @@ class PhysicalAttack9(EnemyAttack):
 
 
 class PhysicalAttack10(EnemyAttack):
+    """PhysicalAttack10 enemy attack class"""
+
     _index: int = 10
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -81,6 +105,8 @@ class PhysicalAttack10(EnemyAttack):
 
 
 class PhysicalAttack11(EnemyAttack):
+    """PhysicalAttack11 enemy attack class"""
+
     _index: int = 11
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -88,6 +114,8 @@ class PhysicalAttack11(EnemyAttack):
 
 
 class PhysicalAttack12(EnemyAttack):
+    """PhysicalAttack12 enemy attack class"""
+
     _index: int = 12
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -95,6 +123,8 @@ class PhysicalAttack12(EnemyAttack):
 
 
 class PhysicalAttack13(EnemyAttack):
+    """PhysicalAttack13 enemy attack class"""
+
     _index: int = 13
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -102,6 +132,8 @@ class PhysicalAttack13(EnemyAttack):
 
 
 class PhysicalAttack14(EnemyAttack):
+    """PhysicalAttack14 enemy attack class"""
+
     _index: int = 14
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -109,6 +141,8 @@ class PhysicalAttack14(EnemyAttack):
 
 
 class PhysicalAttack15(EnemyAttack):
+    """PhysicalAttack15 enemy attack class"""
+
     _index: int = 15
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -116,6 +150,8 @@ class PhysicalAttack15(EnemyAttack):
 
 
 class PhysicalAttack16(EnemyAttack):
+    """PhysicalAttack16 enemy attack class"""
+
     _index: int = 16
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -124,6 +160,8 @@ class PhysicalAttack16(EnemyAttack):
 
 
 class Thornet(EnemyAttack):
+    """Thornet enemy attack class"""
+
     _index: int = 17
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -132,6 +170,8 @@ class Thornet(EnemyAttack):
 
 
 class PhysicalAttack18(EnemyAttack):
+    """PhysicalAttack18 enemy attack class"""
+
     _index: int = 18
     _attack_level: int = 3
     _hit_rate: int = 90
@@ -140,6 +180,8 @@ class PhysicalAttack18(EnemyAttack):
 
 
 class Funguspike(EnemyAttack):
+    """Funguspike enemy attack class"""
+
     _index: int = 19
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -148,6 +190,8 @@ class Funguspike(EnemyAttack):
 
 
 class PhysicalAttack20(EnemyAttack):
+    """PhysicalAttack20 enemy attack class"""
+
     _index: int = 20
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -156,6 +200,8 @@ class PhysicalAttack20(EnemyAttack):
 
 
 class PhysicalAttack21(EnemyAttack):
+    """PhysicalAttack21 enemy attack class"""
+
     _index: int = 21
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -164,6 +210,8 @@ class PhysicalAttack21(EnemyAttack):
 
 
 class FullHouse(EnemyAttack):
+    """FullHouse enemy attack class"""
+
     _index: int = 22
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -172,6 +220,8 @@ class FullHouse(EnemyAttack):
 
 
 class WildCard(EnemyAttack):
+    """WildCard enemy attack class"""
+
     _index: int = 23
     _attack_level: int = 3
     _hit_rate: int = 95
@@ -180,6 +230,8 @@ class WildCard(EnemyAttack):
 
 
 class RoyalFlush(EnemyAttack):
+    """RoyalFlush enemy attack class"""
+
     _index: int = 24
     _attack_level: int = 4
     _hit_rate: int = 90
@@ -188,6 +240,8 @@ class RoyalFlush(EnemyAttack):
 
 
 class PhysicalAttack25(EnemyAttack):
+    """PhysicalAttack25 enemy attack class"""
+
     _index: int = 25
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -196,6 +250,8 @@ class PhysicalAttack25(EnemyAttack):
 
 
 class SpritzBomb(EnemyAttack):
+    """SpritzBomb enemy attack class"""
+
     _index: int = 26
     _attack_level: int = 2
     _hit_rate: int = 90
@@ -204,6 +260,8 @@ class SpritzBomb(EnemyAttack):
 
 
 class PhysicalAttack27(EnemyAttack):
+    """PhysicalAttack27 enemy attack class"""
+
     _index: int = 27
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -212,6 +270,8 @@ class PhysicalAttack27(EnemyAttack):
 
 
 class PhysicalAttack28(EnemyAttack):
+    """PhysicalAttack28 enemy attack class"""
+
     _index: int = 28
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -220,6 +280,8 @@ class PhysicalAttack28(EnemyAttack):
 
 
 class PhysicalAttack29(EnemyAttack):
+    """PhysicalAttack29 enemy attack class"""
+
     _index: int = 29
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -227,6 +289,8 @@ class PhysicalAttack29(EnemyAttack):
 
 
 class Blazer(EnemyAttack):
+    """Blazer enemy attack class"""
+
     _index: int = 30
     _ohko: bool = True
     _hide_numbers: bool = True
@@ -236,6 +300,8 @@ class Blazer(EnemyAttack):
 
 
 class PhysicalAttack31(EnemyAttack):
+    """PhysicalAttack31 enemy attack class"""
+
     _index: int = 31
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -244,6 +310,8 @@ class PhysicalAttack31(EnemyAttack):
 
 
 class PhysicalAttack32(EnemyAttack):
+    """PhysicalAttack32 enemy attack class"""
+
     _index: int = 32
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -252,6 +320,8 @@ class PhysicalAttack32(EnemyAttack):
 
 
 class Echofinder(EnemyAttack):
+    """Echofinder enemy attack class"""
+
     _index: int = 33
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -260,6 +330,8 @@ class Echofinder(EnemyAttack):
 
 
 class ScrowBell(EnemyAttack):
+    """ScrowBell enemy attack class"""
+
     _index: int = 34
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -270,6 +342,8 @@ class ScrowBell(EnemyAttack):
 
 
 class DoomReverb(EnemyAttack):
+    """DoomReverb enemy attack class"""
+
     _index: int = 35
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -280,6 +354,8 @@ class DoomReverb(EnemyAttack):
 
 
 class SporeChimes(EnemyAttack):
+    """SporeChimes enemy attack class"""
+
     _index: int = 36
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -290,6 +366,8 @@ class SporeChimes(EnemyAttack):
 
 
 class InkBlast(EnemyAttack):
+    """InkBlast enemy attack class"""
+
     _index: int = 37
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -298,6 +376,8 @@ class InkBlast(EnemyAttack):
 
 
 class GunkBall(EnemyAttack):
+    """GunkBall enemy attack class"""
+
     _index: int = 38
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -306,6 +386,8 @@ class GunkBall(EnemyAttack):
 
 
 class Endobubble(EnemyAttack):
+    """Endobubble enemy attack class"""
+
     _index: int = 39
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -316,6 +398,8 @@ class Endobubble(EnemyAttack):
 
 
 class PhysicalAttack40(EnemyAttack):
+    """PhysicalAttack40 enemy attack class"""
+
     _index: int = 40
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -324,6 +408,8 @@ class PhysicalAttack40(EnemyAttack):
 
 
 class SleepSauce(EnemyAttack):
+    """SleepSauce enemy attack class"""
+
     _index: int = 41
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -333,6 +419,8 @@ class SleepSauce(EnemyAttack):
 
 
 class VenomDrool(EnemyAttack):
+    """VenomDrool enemy attack class"""
+
     _index: int = 42
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -342,6 +430,8 @@ class VenomDrool(EnemyAttack):
 
 
 class MushFunk(EnemyAttack):
+    """MushFunk enemy attack class"""
+
     _index: int = 43
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -352,6 +442,8 @@ class MushFunk(EnemyAttack):
 
 
 class ScrowFunk(EnemyAttack):
+    """ScrowFunk enemy attack class"""
+
     _index: int = 44
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -361,6 +453,8 @@ class ScrowFunk(EnemyAttack):
 
 
 class Stench(EnemyAttack):
+    """Stench enemy attack class"""
+
     _index: int = 45
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -370,6 +464,8 @@ class Stench(EnemyAttack):
 
 
 class PhysicalAttack46(EnemyAttack):
+    """PhysicalAttack46 enemy attack class"""
+
     _index: int = 46
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -378,6 +474,8 @@ class PhysicalAttack46(EnemyAttack):
 
 
 class PhysicalAttack47(EnemyAttack):
+    """PhysicalAttack47 enemy attack class"""
+
     _index: int = 47
     _attack_level: int = 2
     _hit_rate: int = 90
@@ -386,6 +484,8 @@ class PhysicalAttack47(EnemyAttack):
 
 
 class ViroPlasm(EnemyAttack):
+    """ViroPlasm enemy attack class"""
+
     _index: int = 48
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -395,6 +495,8 @@ class ViroPlasm(EnemyAttack):
 
 
 class PsychoPlasm(EnemyAttack):
+    """PsychoPlasm enemy attack class"""
+
     _index: int = 49
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -404,6 +506,8 @@ class PsychoPlasm(EnemyAttack):
 
 
 class PhysicalAttack50(EnemyAttack):
+    """PhysicalAttack50 enemy attack class"""
+
     _index: int = 50
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -413,6 +517,8 @@ class PhysicalAttack50(EnemyAttack):
 
 
 class PhysicalAttack51(EnemyAttack):
+    """PhysicalAttack51 enemy attack class"""
+
     _index: int = 51
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -422,6 +528,8 @@ class PhysicalAttack51(EnemyAttack):
 
 
 class PollenNap(EnemyAttack):
+    """PollenNap enemy attack class"""
+
     _index: int = 52
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -431,6 +539,8 @@ class PollenNap(EnemyAttack):
 
 
 class ScrowDust(EnemyAttack):
+    """ScrowDust enemy attack class"""
+
     _index: int = 53
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -440,6 +550,8 @@ class ScrowDust(EnemyAttack):
 
 
 class Sporocyst(EnemyAttack):
+    """Sporocyst enemy attack class"""
+
     _index: int = 54
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -449,6 +561,8 @@ class Sporocyst(EnemyAttack):
 
 
 class Toxicyst(EnemyAttack):
+    """Toxicyst enemy attack class"""
+
     _index: int = 55
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -458,6 +572,8 @@ class Toxicyst(EnemyAttack):
 
 
 class PhysicalAttack56(EnemyAttack):
+    """PhysicalAttack56 enemy attack class"""
+
     _index: int = 56
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -466,6 +582,8 @@ class PhysicalAttack56(EnemyAttack):
 
 
 class PhysicalAttack57(EnemyAttack):
+    """PhysicalAttack57 enemy attack class"""
+
     _index: int = 57
     _attack_level: int = 2
     _hit_rate: int = 90
@@ -474,6 +592,8 @@ class PhysicalAttack57(EnemyAttack):
 
 
 class LullaBye(EnemyAttack):
+    """LullaBye enemy attack class"""
+
     _index: int = 58
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -484,6 +604,8 @@ class LullaBye(EnemyAttack):
 
 
 class Elegy(EnemyAttack):
+    """Elegy enemy attack class"""
+
     _index: int = 59
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -494,6 +616,8 @@ class Elegy(EnemyAttack):
 
 
 class Backfire(EnemyAttack):
+    """Backfire enemy attack class"""
+
     _index: int = 60
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -501,6 +625,8 @@ class Backfire(EnemyAttack):
 
 
 class VaVaVoom(EnemyAttack):
+    """VaVaVoom enemy attack class"""
+
     _index: int = 61
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -509,6 +635,8 @@ class VaVaVoom(EnemyAttack):
 
 
 class FunRun(EnemyAttack):
+    """FunRun enemy attack class"""
+
     _index: int = 62
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -517,6 +645,8 @@ class FunRun(EnemyAttack):
 
 
 class BodySlam(EnemyAttack):
+    """BodySlam enemy attack class"""
+
     _index: int = 63
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -525,6 +655,8 @@ class BodySlam(EnemyAttack):
 
 
 class Howl(EnemyAttack):
+    """Howl enemy attack class"""
+
     _index: int = 64
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -535,6 +667,8 @@ class Howl(EnemyAttack):
 
 
 class Scream(EnemyAttack):
+    """Scream enemy attack class"""
+
     _index: int = 65
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -545,6 +679,8 @@ class Scream(EnemyAttack):
 
 
 class IronMaiden(EnemyAttack):
+    """IronMaiden enemy attack class"""
+
     _index: int = 66
     _damageless_flag_1: bool = True
     _hide_numbers: bool = True
@@ -555,6 +691,8 @@ class IronMaiden(EnemyAttack):
 
 
 class Fangs(EnemyAttack):
+    """Fangs enemy attack class"""
+
     _index: int = 67
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -563,6 +701,8 @@ class Fangs(EnemyAttack):
 
 
 class Poison(EnemyAttack):
+    """Poison enemy attack class"""
+
     _index: int = 68
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -571,6 +711,8 @@ class Poison(EnemyAttack):
 
 
 class CarniKiss(EnemyAttack):
+    """CarniKiss enemy attack class"""
+
     _index: int = 69
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -579,6 +721,8 @@ class CarniKiss(EnemyAttack):
 
 
 class Claw(EnemyAttack):
+    """Claw enemy attack class"""
+
     _index: int = 70
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -587,6 +731,8 @@ class Claw(EnemyAttack):
 
 
 class Grinder(EnemyAttack):
+    """Grinder enemy attack class"""
+
     _index: int = 71
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -595,6 +741,8 @@ class Grinder(EnemyAttack):
 
 
 class DarkClaw(EnemyAttack):
+    """DarkClaw enemy attack class"""
+
     _index: int = 72
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -603,6 +751,8 @@ class DarkClaw(EnemyAttack):
 
 
 class Scythe(EnemyAttack):
+    """Scythe enemy attack class"""
+
     _index: int = 73
     _ohko: bool = True
     _hide_numbers: bool = True
@@ -612,6 +762,8 @@ class Scythe(EnemyAttack):
 
 
 class Sickle(EnemyAttack):
+    """Sickle enemy attack class"""
+
     _index: int = 74
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -620,6 +772,8 @@ class Sickle(EnemyAttack):
 
 
 class Deathsickle(EnemyAttack):
+    """Deathsickle enemy attack class"""
+
     _index: int = 75
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -628,6 +782,8 @@ class Deathsickle(EnemyAttack):
 
 
 class EerieJig(EnemyAttack):
+    """EerieJig enemy attack class"""
+
     _index: int = 76
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -637,6 +793,8 @@ class EerieJig(EnemyAttack):
 
 
 class SomnusWaltz(EnemyAttack):
+    """SomnusWaltz enemy attack class"""
+
     _index: int = 77
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -646,6 +804,8 @@ class SomnusWaltz(EnemyAttack):
 
 
 class DahliaDance(EnemyAttack):
+    """DahliaDance enemy attack class"""
+
     _index: int = 78
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -655,6 +815,8 @@ class DahliaDance(EnemyAttack):
 
 
 class Skewer(EnemyAttack):
+    """Skewer enemy attack class"""
+
     _index: int = 79
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -663,6 +825,8 @@ class Skewer(EnemyAttack):
 
 
 class Pierce(EnemyAttack):
+    """Pierce enemy attack class"""
+
     _index: int = 80
     _attack_level: int = 2
     _hit_rate: int = 90
@@ -671,6 +835,8 @@ class Pierce(EnemyAttack):
 
 
 class PhysicalAttack81(EnemyAttack):
+    """PhysicalAttack81 enemy attack class"""
+
     _index: int = 81
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -678,6 +844,8 @@ class PhysicalAttack81(EnemyAttack):
 
 
 class Magnum(EnemyAttack):
+    """Magnum enemy attack class"""
+
     _index: int = 82
     _ohko: bool = True
     _hide_numbers: bool = True
@@ -687,6 +855,8 @@ class Magnum(EnemyAttack):
 
 
 class Psyche(EnemyAttack):
+    """Psyche enemy attack class"""
+
     _index: int = 83
     _ohko: bool = True
     _hide_numbers: bool = True
@@ -696,6 +866,8 @@ class Psyche(EnemyAttack):
 
 
 class Migraine(EnemyAttack):
+    """Migraine enemy attack class"""
+
     _index: int = 84
     _ohko: bool = True
     _hide_numbers: bool = True
@@ -705,6 +877,8 @@ class Migraine(EnemyAttack):
 
 
 class PhysicalAttack85(EnemyAttack):
+    """PhysicalAttack85 enemy attack class"""
+
     _index: int = 85
     _hit_rate: int = 99
     _status_effects: List[Status] = []
@@ -712,6 +886,8 @@ class PhysicalAttack85(EnemyAttack):
 
 
 class PhysicalAttack86(EnemyAttack):
+    """PhysicalAttack86 enemy attack class"""
+
     _index: int = 86
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -720,6 +896,8 @@ class PhysicalAttack86(EnemyAttack):
 
 
 class Multistrike(EnemyAttack):
+    """Multistrike enemy attack class"""
+
     _index: int = 87
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -728,6 +906,8 @@ class Multistrike(EnemyAttack):
 
 
 class FlutterHush(EnemyAttack):
+    """FlutterHush enemy attack class"""
+
     _index: int = 88
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -737,6 +917,8 @@ class FlutterHush(EnemyAttack):
 
 
 class PhysicalAttack89(EnemyAttack):
+    """PhysicalAttack89 enemy attack class"""
+
     _index: int = 89
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -744,6 +926,8 @@ class PhysicalAttack89(EnemyAttack):
 
 
 class PhysicalAttack90(EnemyAttack):
+    """PhysicalAttack90 enemy attack class"""
+
     _index: int = 90
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -751,6 +935,8 @@ class PhysicalAttack90(EnemyAttack):
 
 
 class PhysicalAttack91(EnemyAttack):
+    """PhysicalAttack91 enemy attack class"""
+
     _index: int = 91
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -760,6 +946,8 @@ class PhysicalAttack91(EnemyAttack):
 
 
 class FearRoulette(EnemyAttack):
+    """FearRoulette enemy attack class"""
+
     _index: int = 92
     _ohko: bool = True
     _hide_numbers: bool = True
@@ -769,6 +957,8 @@ class FearRoulette(EnemyAttack):
 
 
 class PhysicalAttack93(EnemyAttack):
+    """PhysicalAttack93 enemy attack class"""
+
     _index: int = 93
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -776,6 +966,8 @@ class PhysicalAttack93(EnemyAttack):
 
 
 class PhysicalAttack94(EnemyAttack):
+    """PhysicalAttack94 enemy attack class"""
+
     _index: int = 94
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -783,6 +975,8 @@ class PhysicalAttack94(EnemyAttack):
 
 
 class PhysicalAttack95(EnemyAttack):
+    """PhysicalAttack95 enemy attack class"""
+
     _index: int = 95
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -790,6 +984,8 @@ class PhysicalAttack95(EnemyAttack):
 
 
 class HammerTime(EnemyAttack):
+    """HammerTime enemy attack class"""
+
     _index: int = 96
     _attack_level: int = 2
     _hit_rate: int = 90
@@ -798,6 +994,8 @@ class HammerTime(EnemyAttack):
 
 
 class ValorUp(EnemyAttack):
+    """ValorUp enemy attack class"""
+
     _index: int = 97
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -807,6 +1005,8 @@ class ValorUp(EnemyAttack):
 
 
 class PhysicalAttack98(EnemyAttack):
+    """PhysicalAttack98 enemy attack class"""
+
     _index: int = 98
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -814,6 +1014,8 @@ class PhysicalAttack98(EnemyAttack):
 
 
 class LastShot(EnemyAttack):
+    """LastShot enemy attack class"""
+
     _index: int = 99
     _attack_level: int = 3
     _hit_rate: int = 100
@@ -822,6 +1024,8 @@ class LastShot(EnemyAttack):
 
 
 class PhysicalAttack100(EnemyAttack):
+    """PhysicalAttack100 enemy attack class"""
+
     _index: int = 100
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -829,6 +1033,8 @@ class PhysicalAttack100(EnemyAttack):
 
 
 class PhysicalAttack101(EnemyAttack):
+    """PhysicalAttack101 enemy attack class"""
+
     _index: int = 101
     _attack_level: int = 1
     _hit_rate: int = 90
@@ -837,6 +1043,8 @@ class PhysicalAttack101(EnemyAttack):
 
 
 class PhysicalAttack102(EnemyAttack):
+    """PhysicalAttack102 enemy attack class"""
+
     _index: int = 102
     _hit_rate: int = 100
     _hide_numbers: bool = True
@@ -846,6 +1054,8 @@ class PhysicalAttack102(EnemyAttack):
 
 
 class PhysicalAttack103(EnemyAttack):
+    """PhysicalAttack103 enemy attack class"""
+
     _index: int = 103
     _hit_rate: int = 100
     _hide_numbers: bool = True
@@ -855,6 +1065,8 @@ class PhysicalAttack103(EnemyAttack):
 
 
 class PhysicalAttack104(EnemyAttack):
+    """PhysicalAttack104 enemy attack class"""
+
     _index: int = 104
     _hit_rate: int = 100
     _hide_numbers: bool = True
@@ -864,6 +1076,8 @@ class PhysicalAttack104(EnemyAttack):
 
 
 class PhysicalAttack105(EnemyAttack):
+    """PhysicalAttack105 enemy attack class"""
+
     _index: int = 105
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -871,6 +1085,8 @@ class PhysicalAttack105(EnemyAttack):
 
 
 class Gnight(EnemyAttack):
+    """Gnight enemy attack class"""
+
     _index: int = 106
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -880,6 +1096,8 @@ class Gnight(EnemyAttack):
 
 
 class PhysicalAttack107(EnemyAttack):
+    """PhysicalAttack107 enemy attack class"""
+
     _index: int = 107
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -887,6 +1105,8 @@ class PhysicalAttack107(EnemyAttack):
 
 
 class PhysicalAttack108(EnemyAttack):
+    """PhysicalAttack108 enemy attack class"""
+
     _index: int = 108
     _hit_rate: int = 100
     _status_effects: List[Status] = []
@@ -894,6 +1114,8 @@ class PhysicalAttack108(EnemyAttack):
 
 
 class Chomp(EnemyAttack):
+    """Chomp enemy attack class"""
+
     _index: int = 109
     _attack_level: int = 2
     _hit_rate: int = 90
@@ -902,6 +1124,8 @@ class Chomp(EnemyAttack):
 
 
 class GetTough(EnemyAttack):
+    """GetTough enemy attack class"""
+
     _index: int = 110
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -911,6 +1135,8 @@ class GetTough(EnemyAttack):
 
 
 class PhysicalAttack111(EnemyAttack):
+    """PhysicalAttack111 enemy attack class"""
+
     _index: int = 111
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -918,6 +1144,8 @@ class PhysicalAttack111(EnemyAttack):
 
 
 class Missedme(EnemyAttack):
+    """Missedme enemy attack class"""
+
     _index: int = 112
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -927,6 +1155,8 @@ class Missedme(EnemyAttack):
 
 
 class PhysicalAttack113(EnemyAttack):
+    """PhysicalAttack113 enemy attack class"""
+
     _index: int = 113
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -935,6 +1165,8 @@ class PhysicalAttack113(EnemyAttack):
 
 
 class LocoExpress(EnemyAttack):
+    """LocoExpress enemy attack class"""
+
     _index: int = 114
     _attack_level: int = 3
     _hit_rate: int = 90
@@ -943,6 +1175,8 @@ class LocoExpress(EnemyAttack):
 
 
 class PhysicalAttack115(EnemyAttack):
+    """PhysicalAttack115 enemy attack class"""
+
     _index: int = 115
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -950,6 +1184,8 @@ class PhysicalAttack115(EnemyAttack):
 
 
 class PhysicalAttack116(EnemyAttack):
+    """PhysicalAttack116 enemy attack class"""
+
     _index: int = 116
     _attack_level: int = 1
     _hit_rate: int = 90
@@ -958,6 +1194,8 @@ class PhysicalAttack116(EnemyAttack):
 
 
 class PhysicalAttack117(EnemyAttack):
+    """PhysicalAttack117 enemy attack class"""
+
     _index: int = 117
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -965,6 +1203,8 @@ class PhysicalAttack117(EnemyAttack):
 
 
 class PhysicalAttack118(EnemyAttack):
+    """PhysicalAttack118 enemy attack class"""
+
     _index: int = 118
     _hit_rate: int = 95
     _status_effects: List[Status] = []
@@ -972,6 +1212,8 @@ class PhysicalAttack118(EnemyAttack):
 
 
 class Jinxed(EnemyAttack):
+    """Jinxed enemy attack class"""
+
     _index: int = 119
     _hit_rate: int = 100
     _status_effects: List[Status] = []
@@ -979,6 +1221,8 @@ class Jinxed(EnemyAttack):
 
 
 class TripleKick(EnemyAttack):
+    """TripleKick enemy attack class"""
+
     _index: int = 120
     _attack_level: int = 1
     _hit_rate: int = 95
@@ -987,6 +1231,8 @@ class TripleKick(EnemyAttack):
 
 
 class Quicksilver(EnemyAttack):
+    """Quicksilver enemy attack class"""
+
     _index: int = 121
     _attack_level: int = 2
     _hit_rate: int = 90
@@ -995,6 +1241,8 @@ class Quicksilver(EnemyAttack):
 
 
 class BombsAway(EnemyAttack):
+    """BombsAway enemy attack class"""
+
     _index: int = 122
     _attack_level: int = 3
     _hit_rate: int = 90
@@ -1003,6 +1251,8 @@ class BombsAway(EnemyAttack):
 
 
 class Vigorup(EnemyAttack):
+    """Vigorup enemy attack class"""
+
     _index: int = 123
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -1012,6 +1262,8 @@ class Vigorup(EnemyAttack):
 
 
 class PhysicalAttack124(EnemyAttack):
+    """PhysicalAttack124 enemy attack class"""
+
     _index: int = 124
     _hit_rate: int = 100
     _status_effects: List[Status] = []
@@ -1019,6 +1271,8 @@ class PhysicalAttack124(EnemyAttack):
 
 
 class SilverBullet(EnemyAttack):
+    """SilverBullet enemy attack class"""
+
     _index: int = 125
     _ohko: bool = True
     _hide_numbers: bool = True
@@ -1028,6 +1282,8 @@ class SilverBullet(EnemyAttack):
 
 
 class Terrapunch(EnemyAttack):
+    """Terrapunch enemy attack class"""
+
     _index: int = 126
     _attack_level: int = 2
     _hit_rate: int = 95
@@ -1036,6 +1292,8 @@ class Terrapunch(EnemyAttack):
 
 
 class ScrowFangs(EnemyAttack):
+    """ScrowFangs enemy attack class"""
+
     _index: int = 127
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
@@ -1045,6 +1303,8 @@ class ScrowFangs(EnemyAttack):
 
 
 class Shaker(EnemyAttack):
+    """Shaker enemy attack class"""
+
     _index: int = 128
     _ohko: bool = True
     _hide_numbers: bool = True
@@ -1054,6 +1314,8 @@ class Shaker(EnemyAttack):
 
 
 class AttackDoNothing(EnemyAttack):
+    """AttackDoNothing enemy attack class"""
+
     _index: int = 251
     _status_effects: List[Status] = []
     _buffs: List[TempStatBuff] = []

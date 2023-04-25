@@ -5,7 +5,7 @@ from typing import List
 from randomizer.types.overworld_scripts.action_scripts.classes import (
     ActionScriptCommand,
 )
-from randomizer.types.overworld_scripts.action_scripts.commands import (
+from randomizer.types.overworld_scripts.action_scripts.commands.commands import (
     FaceSouthwest,
     Pause,
     SetWalkingSpeed,
@@ -14,7 +14,7 @@ from randomizer.types.overworld_scripts.action_scripts.commands import (
     ShiftZUpSteps,
     VisibilityOn,
 )
-from randomizer.types.overworld_scripts.action_scripts.constants.sequence_speeds import (
+from randomizer.types.overworld_scripts.action_scripts.arguments.sequence_speeds import (
     FAST,
     VERY_FAST,
 )

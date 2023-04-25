@@ -1,14 +1,14 @@
 """Base classes for enemies encountered in battle and their overworld representations."""
 
 from copy import deepcopy
-from typing import List, Optional, Type, Union
+from typing import List, Optional, Type, Union, TYPE_CHECKING
 
 from randomizer.types.items import RegularItem
 from randomizer.types.monster_scripts.commands import IfTargetedByItem
 from randomizer.types.numbers import BitMapSet, ByteField, UInt16, UInt8
 from randomizer.types.patch import Patch
 from randomizer.types.spells import Status, Element
-from randomizer.types.world import GameWorld
+
 from randomizer.types.world.flags import NoOHKO
 
 from randomizer.utils.number import mutate_normal
@@ -27,14 +27,17 @@ from .constants import (
 )
 from .enums import ApproachSound, HitSound, FlowerBonusType
 
+if TYPE_CHECKING:
+    from randomizer.types.world import GameWorld
+
 
 class Enemy:
     """Class representing an enemy in the game."""
 
-    _world: Optional[GameWorld]
+    _world: Optional["GameWorld"]
 
     @property
-    def world(self) -> GameWorld:
+    def world(self) -> "GameWorld":
         """World instance reference"""
         assert self._world is not None
         return self._world
@@ -564,7 +567,7 @@ class Enemy:
             assert UInt16(sprite)
         self._sprite = sprite
 
-    def __init__(self, world: Optional[GameWorld] = None) -> None:
+    def __init__(self, world: Optional["GameWorld"] = None) -> None:
         self._world = world
 
     def __str__(self) -> str:
@@ -605,7 +608,7 @@ class Enemy:
         return new_stat
 
     @classmethod
-    def get_world_instance(cls, world: GameWorld) -> "Enemy":
+    def get_world_instance(cls, world: "GameWorld") -> "Enemy":
         """Get the instance of this enemy in the seed being generated."""
         return next(
             iter(
@@ -769,7 +772,7 @@ class Enemy:
         return patch
 
     @classmethod
-    def build_psychopath_patch(cls, world: GameWorld) -> Patch:
+    def build_psychopath_patch(cls, world: "GameWorld") -> Patch:
         """Build patch data for Psychopath text.
         These use pointers, so we need to do them all together."""
         patch = Patch()

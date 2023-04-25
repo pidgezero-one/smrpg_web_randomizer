@@ -1,0 +1,54 @@
+"""Event tile list import"""
+
+from randomizer.entities.rooms.event_imports import *
+
+events = [
+    Event(
+        event=E1671_LANDS_END_1_INVISIBLE_PLATFORM,
+        x=23,
+        y=27,
+        z=0,
+        f=EdgeDirection.SOUTHEAST,
+        length=1,
+        height=0,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_8_bit_4=False,
+    ),
+    Event(
+        event=E1673_LANDS_END_2_INVISIBLE_PLATFORM_UPPER,
+        x=25,
+        y=24,
+        z=4,
+        f=EdgeDirection.SOUTHEAST,
+        length=1,
+        height=0,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_8_bit_4=False,
+    ),
+    Event(
+        event=E1566_LANDS_END_DOG_PIT,
+        x=25,
+        y=21,
+        z=2,
+        f=EdgeDirection.SOUTHWEST,
+        length=2,
+        height=0,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_8_bit_4=False,
+    ),
+    Event(
+        event=E1566_LANDS_END_DOG_PIT,
+        x=25,
+        y=22,
+        z=2,
+        f=EdgeDirection.SOUTHWEST,
+        length=2,
+        height=0,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_8_bit_4=False,
+    ),
+]

@@ -1,4 +1,6 @@
-from randomizer.types.palettes.classes import EffectPalette, SpritePalette
+"""Alt palettes for spells infused with certain elements"""
+
+from randomizer.types.palettes import EffectPalette, SpritePalette
 
 FIRE_ORB_ICE_BALL = SpritePalette(
     [

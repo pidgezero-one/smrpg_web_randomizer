@@ -239,7 +239,7 @@ script = EventScript(
         Pause(10),
         RunDialog(
             dialog_id=DI3803_DREAM_GAZ,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -278,7 +278,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI3804_DREAM_YOSHI,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -332,7 +332,7 @@ script = EventScript(
         ),
         RunDialog(
             dialog_id=DI3805_DREAM_CHANCELLOR,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -356,7 +356,7 @@ script = EventScript(
         Pause(60),
         RunDialog(
             dialog_id=DI3806_DREAM_JUMPING_KID,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,
@@ -367,7 +367,7 @@ script = EventScript(
         SetSyncActionScript(NPC_2, A0023_FAST_REPEATED_JUMPING),
         RunDialog(
             dialog_id=DI3807_DREAM,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=True,

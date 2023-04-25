@@ -1,0 +1,42 @@
+"""Event tile list import"""
+
+from randomizer.entities.rooms.event_imports import *
+
+events = [
+    Event(
+        event=E3699_NIMBUS_CASTLE_WEST_LOWER_HALL_MARIO_BLOWN_BY_FAN_BIT,
+        x=25,
+        y=58,
+        z=0,
+        f=EdgeDirection.SOUTHEAST,
+        length=2,
+        height=7,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_8_bit_4=False,
+    ),
+    Event(
+        event=E3700_NIMBUS_CASTLE_WEST_LOWER_HALL_MARIO_BLOWN_BY_FAN_BIT,
+        x=24,
+        y=57,
+        z=0,
+        f=EdgeDirection.SOUTHEAST,
+        length=2,
+        height=7,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_8_bit_4=False,
+    ),
+    Event(
+        event=E3662_NIMBUS_CASTLE_LEFT_FAN_ROOM_EXIT_TO_BRIDGE_ROOM,
+        x=31,
+        y=42,
+        z=0,
+        f=EdgeDirection.SOUTHWEST,
+        length=2,
+        height=0,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_8_bit_4=False,
+    ),
+]

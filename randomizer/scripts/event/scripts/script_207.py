@@ -18,7 +18,7 @@ script = EventScript(
         SetBit(MAP_VISTA_HILL),
         RunDialog(
             dialog_id=DI2264_KEEP_OPEN,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

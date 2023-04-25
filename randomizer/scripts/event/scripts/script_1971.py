@@ -9,7 +9,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6),
         RunDialog(
             dialog_id=DI2938_RECEIVED_ROCK_CANDY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

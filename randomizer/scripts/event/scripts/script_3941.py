@@ -9,7 +9,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI2097_GOT_RING,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=False,
             multiline=False,

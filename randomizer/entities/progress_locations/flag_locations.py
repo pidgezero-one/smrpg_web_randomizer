@@ -1,61 +1,20 @@
-from typing import Type
-from randomizer.entities.items.items import (
+# pylint: disable=C0301
+
+"""Progress location definition pool for invisible items."""
+
+from typing import Type, List
+
+from randomizer.entities.items import (
     BigBooFlag,
     DryBonesFlag,
     GreaperFlag,
     ShedKey,
 )
-from randomizer.entities.progress_locations.helpers.area_access import (
-    can_access_volcano,
-    can_defeat_battle_door_boss,
-    can_defeat_chapel_boss,
-    can_defeat_forest_boss,
-    can_defeat_inner_factory_first_boss,
-    can_defeat_post_obstacle_boss,
-    can_defeat_seaside_boss,
-    can_defeat_second_moleville_boss,
-    can_defeat_temple_boss,
-)
-from randomizer.entities.progress_locations.helpers.classes import (
-    BanditsWayLocation,
-    BeanValleyLocation,
-    BoosterPassLocation,
-    BoosterTowerExteriorLocation,
-    BoosterTowerLocation,
-    BowsersKeepObstacleLocation,
-    CasinoLocation,
-    ForestLocation,
-    InnerSunkenShipLocation,
-    KeroSewersLocation,
-    LandsEndLocation,
-    MariosPadLocation,
-    MarrymoreChapelLocation,
-    MarrymoreLocation,
-    MidasRiverLocation,
-    MinesLocation,
-    MolevilleLocation,
-    MonstroTownLocation,
-    NimbusTownLocation,
-    NimbusCastleLocation,
-    NimbusDeepCastleLocation,
-    BarrelVolcanoLocation,
-    InnerFactoryLocation,
-    MushroomKingdomLocation,
-    MushroomWayLocation,
-    PipeVaultLocation,
-    RoseTownLocation,
-    RoseWayLocation,
-    SeaLocation,
-    SeasideTownLocation,
-    StarHillLocation,
-    SunkenShipLocation,
-    TadpolePondLocation,
-    YosterIsleLocation,
-)
-from randomizer.types.items.classes import (
+
+from randomizer.types.items import (
     Item,
 )
-from randomizer.types.overworld_scripts.constants.room_names import (
+from randomizer.types.overworld_scripts.ids import (
     R005_MARRYMORE_OUTSIDE_DURING_BOOSTER,
     R012_MARRYMORE_INN_SUITE_ROOM,
     R016_MARIOS_PAD,
@@ -140,19 +99,68 @@ from randomizer.types.overworld_scripts.constants.room_names import (
     R482_MUSHROOM_KINGDOM_DURING_MACK_RAZ_AND_RAINIS_HOUSE,
     R490_MUSHROOM_KINGDOM_RAZ_AND_RAINIS_HOUSE,
 )
-from randomizer.types.overworld_scripts.event_scripts.constants.script_ids import (
+from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0252_NPC_QUEST_2_GRANT,
-    E0253_NPC_QUEST_1_GRANT,
 )
-from randomizer.types.progress_locations.classes import (
+from randomizer.types.progress_locations import (
     Inventory,
     InvisibleItemCandidate,
 )
-from randomizer.types.world.flags.enums import ShuffleLocationSelector
-from randomizer.types.world.flags.flags import BowserDoorRequirements
+from randomizer.types.world.flags import ShuffleLocationSelector, BowserDoorRequirements
+
+
+from .helpers.area_access import (
+    can_access_volcano,
+    can_defeat_battle_door_boss,
+    can_defeat_chapel_boss,
+    can_defeat_forest_boss,
+    can_defeat_inner_factory_first_boss,
+    can_defeat_post_obstacle_boss,
+    can_defeat_seaside_boss,
+    can_defeat_second_moleville_boss,
+    can_defeat_temple_boss,
+)
+from .helpers.classes import (
+    BanditsWayLocation,
+    BeanValleyLocation,
+    BoosterPassLocation,
+    BoosterTowerExteriorLocation,
+    BoosterTowerLocation,
+    BowsersKeepObstacleLocation,
+    CasinoLocation,
+    ForestLocation,
+    InnerSunkenShipLocation,
+    KeroSewersLocation,
+    LandsEndLocation,
+    MariosPadLocation,
+    MarrymoreChapelLocation,
+    MarrymoreLocation,
+    MidasRiverLocation,
+    MinesLocation,
+    MolevilleLocation,
+    MonstroTownLocation,
+    NimbusTownLocation,
+    NimbusCastleLocation,
+    NimbusDeepCastleLocation,
+    BarrelVolcanoLocation,
+    InnerFactoryLocation,
+    MushroomKingdomLocation,
+    MushroomWayLocation,
+    PipeVaultLocation,
+    RoseTownLocation,
+    RoseWayLocation,
+    SeaLocation,
+    SeasideTownLocation,
+    StarHillLocation,
+    SunkenShipLocation,
+    TadpolePondLocation,
+    YosterIsleLocation,
+)
 
 
 class MariosPadBed(MariosPadLocation, InvisibleItemCandidate):
+    """MariosPadBed invisible progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_BED
     _original_item: Type[Item] = DryBonesFlag
     _room_ids: List[int] = [R189_MARIOS_PIPEHOUSE]
@@ -164,6 +172,8 @@ class MariosPadBed(MariosPadLocation, InvisibleItemCandidate):
 
 
 class RoseTownSign(RoseTownLocation, InvisibleItemCandidate):
+    """RoseTownSign invisible progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_TOWN_FLAG
     _original_item: Type[Item] = GreaperFlag
     _room_ids: List[int] = [
@@ -178,6 +188,8 @@ class RoseTownSign(RoseTownLocation, InvisibleItemCandidate):
 
 
 class YosterIsleGoal(YosterIsleLocation, InvisibleItemCandidate):
+    """YosterIsleGoal invisible progress location class"""
+
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.YOSTER_ISLE_FLAG
     _original_item: Type[Item] = BigBooFlag
     _room_ids: List[int] = [R034_YOSTER_ISLE]
@@ -191,6 +203,8 @@ class YosterIsleGoal(YosterIsleLocation, InvisibleItemCandidate):
 
 
 class MariosPadSteamwhistle(MariosPadLocation, InvisibleItemCandidate):
+    """MariosPadSteamwhistle invisible progress location class"""
+
     _room_ids: List[int] = [R016_MARIOS_PAD]
     _x_coord: int = 11
     _y_coord: int = 34
@@ -202,6 +216,8 @@ class MariosPadSteamwhistle(MariosPadLocation, InvisibleItemCandidate):
 
 
 class MariosPadLantern(MariosPadLocation, InvisibleItemCandidate):
+    """MariosPadLantern invisible progress location class"""
+
     _room_ids: List[int] = [R016_MARIOS_PAD]
     _x_coord: int = 13
     _y_coord: int = 35
@@ -214,6 +230,8 @@ class MariosPadLantern(MariosPadLocation, InvisibleItemCandidate):
 
 
 class MushroomWayTree(MushroomWayLocation, InvisibleItemCandidate):
+    """MushroomWayTree invisible progress location class"""
+
     _room_ids: List[int] = [R204_MUSHROOM_WAY_AREA_02]
     _x_coord: int = 11
     _y_coord: int = 16
@@ -226,6 +244,8 @@ class MushroomWayTree(MushroomWayLocation, InvisibleItemCandidate):
 
 
 class MushroomKingdomSign(MushroomKingdomLocation, InvisibleItemCandidate):
+    """MushroomKingdomSign invisible progress location class"""
+
     _room_ids: List[int] = [
         R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
         R191_MUSHROOM_KINGDOM_OUTSIDE,
@@ -243,6 +263,8 @@ class MushroomKingdomSign(MushroomKingdomLocation, InvisibleItemCandidate):
 
 
 class MushroomKingdomEmptyHouse(MushroomKingdomLocation, InvisibleItemCandidate):
+    """MushroomKingdomEmptyHouse invisible progress location class"""
+
     _room_ids: List[int] = [
         R482_MUSHROOM_KINGDOM_DURING_MACK_RAZ_AND_RAINIS_HOUSE,
         R490_MUSHROOM_KINGDOM_RAZ_AND_RAINIS_HOUSE,
@@ -259,6 +281,8 @@ class MushroomKingdomEmptyHouse(MushroomKingdomLocation, InvisibleItemCandidate)
 
 
 class ChancellorThrone(MushroomKingdomLocation, InvisibleItemCandidate):
+    """ChancellorThrone invisible progress location class"""
+
     _room_ids: List[int] = [
         R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM,
         R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
@@ -275,6 +299,8 @@ class ChancellorThrone(MushroomKingdomLocation, InvisibleItemCandidate):
 
 
 class BanditsWayFlower(BanditsWayLocation, InvisibleItemCandidate):
+    """BanditsWayFlower invisible progress location class"""
+
     _room_ids: List[int] = [R207_BANDITS_WAY_AREA_02]
     _x_coord: int = 25
     _y_coord: int = 89
@@ -286,6 +312,8 @@ class BanditsWayFlower(BanditsWayLocation, InvisibleItemCandidate):
 
 
 class KeroGate(KeroSewersLocation, InvisibleItemCandidate):
+    """KeroGate invisible progress location class"""
+
     _room_ids: List[int] = [
         R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS
     ]
@@ -300,6 +328,8 @@ class KeroGate(KeroSewersLocation, InvisibleItemCandidate):
 
 
 class KeroStairs(KeroSewersLocation, InvisibleItemCandidate):
+    """KeroStairs invisible progress location class"""
+
     _room_ids: List[int] = [R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE]
     _x_coord: int = 4
     _y_coord: int = 88
@@ -312,6 +342,8 @@ class KeroStairs(KeroSewersLocation, InvisibleItemCandidate):
 
 
 class MidasTrees(MidasRiverLocation, InvisibleItemCandidate):
+    """MidasTrees invisible progress location class"""
+
     _room_ids: List[int] = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
     _x_coord: int = 24
     _y_coord: int = 26
@@ -323,6 +355,8 @@ class MidasTrees(MidasRiverLocation, InvisibleItemCandidate):
 
 
 class TadpoleCabinet(TadpolePondLocation, InvisibleItemCandidate):
+    """TadpoleCabinet invisible progress location class"""
+
     _room_ids: List[int] = [R075_TADPOLE_POND_AREA_01]
     _x_coord: int = 25
     _y_coord: int = 29
@@ -336,6 +370,8 @@ class TadpoleCabinet(TadpolePondLocation, InvisibleItemCandidate):
 
 
 class RoseWayDirtPatch(RoseWayLocation, InvisibleItemCandidate):
+    """RoseWayDirtPatch invisible progress location class"""
+
     _room_ids: List[int] = [R066_ROSE_WAY_EXIT_AREA_WHERE_BOWSERS_TROOPS_GATHERED]
     _x_coord: int = 25
     _y_coord: int = 88
@@ -346,6 +382,8 @@ class RoseWayDirtPatch(RoseWayLocation, InvisibleItemCandidate):
 
 
 class RoseTownHydrant(RoseTownLocation, InvisibleItemCandidate):
+    """RoseTownHydrant invisible progress location class"""
+
     _room_ids: List[int] = [
         R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
         R084_ROSE_TOWN_OUTSIDE,
@@ -360,6 +398,8 @@ class RoseTownHydrant(RoseTownLocation, InvisibleItemCandidate):
 
 
 class RoseTownBowser(RoseTownLocation, InvisibleItemCandidate):
+    """RoseTownBowser invisible progress location class"""
+
     _room_ids: List[int] = [
         R085_ROSE_TOWN_DURING_BOWYER_INN_1F,
         R086_ROSE_TOWN_INN_1F,
@@ -373,6 +413,8 @@ class RoseTownBowser(RoseTownLocation, InvisibleItemCandidate):
 
 
 class RoseTownGardenerHydrant(RoseTownLocation, InvisibleItemCandidate):
+    """RoseTownGardenerHydrant invisible progress location class"""
+
     _room_ids: List[int] = [R417_GARDENERS_HOUSE_OUTSIDE]
     _x_coord: int = 2
     _y_coord: int = 85
@@ -388,6 +430,8 @@ class RoseTownGardenerHydrant(RoseTownLocation, InvisibleItemCandidate):
 
 
 class RoseTownGardenerBucket(RoseTownLocation, InvisibleItemCandidate):
+    """RoseTownGardenerBucket invisible progress location class"""
+
     _room_ids: List[int] = [R417_GARDENERS_HOUSE_OUTSIDE]
     _x_coord: int = 5
     _y_coord: int = 87
@@ -402,6 +446,8 @@ class RoseTownGardenerBucket(RoseTownLocation, InvisibleItemCandidate):
 
 
 class RoseTownGardenerLeaf(RoseTownLocation, InvisibleItemCandidate):
+    """RoseTownGardenerLeaf invisible progress location class"""
+
     _room_ids: List[int] = [R419_LAZY_SHELL_CLOUD]
     _x_coord: int = 4
     _y_coord: int = 111
@@ -417,6 +463,8 @@ class RoseTownGardenerLeaf(RoseTownLocation, InvisibleItemCandidate):
 
 
 class ForestMazeSecretStump(ForestLocation, InvisibleItemCandidate):
+    """ForestMazeSecretStump invisible progress location class"""
+
     _room_ids: List[int] = [R231_FOREST_MAZE_SECRET_ENTRANCE]
     _x_coord: int = 18
     _y_coord: int = 72
@@ -428,6 +476,8 @@ class ForestMazeSecretStump(ForestLocation, InvisibleItemCandidate):
 
 
 class ForestMazeSecretMushrooms(ForestLocation, InvisibleItemCandidate):
+    """ForestMazeSecretMushrooms invisible progress location class"""
+
     _room_ids: List[int] = [R235_FOREST_MAZE_AREA_08_UNDERGROUND]
     _x_coord: int = 25
     _y_coord: int = 93
@@ -440,6 +490,8 @@ class ForestMazeSecretMushrooms(ForestLocation, InvisibleItemCandidate):
 
 
 class ForestMazeSecretWiggler(ForestLocation, InvisibleItemCandidate):
+    """ForestMazeSecretWiggler invisible progress location class"""
+
     _room_ids: List[int] = [R236_FOREST_MAZE_AREA_07_UNDERGROUND_WSLEEPING_WIGGLER]
     _x_coord: int = 2
     _y_coord: int = 39
@@ -450,6 +502,8 @@ class ForestMazeSecretWiggler(ForestLocation, InvisibleItemCandidate):
 
 
 class PipeVaultExterior(PipeVaultLocation, InvisibleItemCandidate):
+    """PipeVaultExterior invisible progress location class"""
+
     _room_ids: List[int] = [R055_PIPE_VAULT_ENTRANCE]
     _x_coord: int = 17
     _y_coord: int = 19
@@ -462,6 +516,8 @@ class PipeVaultExterior(PipeVaultLocation, InvisibleItemCandidate):
 
 
 class PipeVaultRedPipe(PipeVaultLocation, InvisibleItemCandidate):
+    """PipeVaultRedPipe invisible progress location class"""
+
     _room_ids: List[int] = [R129_PIPE_VAULT_AREA_05]
     _x_coord: int = 21
     _y_coord: int = 107
@@ -474,6 +530,8 @@ class PipeVaultRedPipe(PipeVaultLocation, InvisibleItemCandidate):
 
 
 class YosterIsleHut(YosterIsleLocation, InvisibleItemCandidate):
+    """YosterIsleHut invisible progress location class"""
+
     _room_ids: List[int] = [R034_YOSTER_ISLE]
     _x_coord: int = 11
     _y_coord: int = 70
@@ -484,6 +542,8 @@ class YosterIsleHut(YosterIsleLocation, InvisibleItemCandidate):
 
 
 class MolevilleHydrant(MolevilleLocation, InvisibleItemCandidate):
+    """MolevilleHydrant invisible progress location class"""
+
     _room_ids: List[int] = [
         R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
         R108_MOLEVILLE_OUTSIDE,
@@ -498,6 +558,8 @@ class MolevilleHydrant(MolevilleLocation, InvisibleItemCandidate):
 
 
 class MolevilleMountainBush(MolevilleLocation, InvisibleItemCandidate):
+    """MolevilleMountainBush invisible progress location class"""
+
     _room_ids: List[int] = [
         R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
         R108_MOLEVILLE_OUTSIDE,
@@ -512,6 +574,8 @@ class MolevilleMountainBush(MolevilleLocation, InvisibleItemCandidate):
 
 
 class MolevilleBed(MolevilleLocation, InvisibleItemCandidate):
+    """MolevilleBed invisible progress location class"""
+
     _room_ids: List[int] = [
         R337_MOLEVILLE_INN,
     ]
@@ -525,6 +589,8 @@ class MolevilleBed(MolevilleLocation, InvisibleItemCandidate):
 
 
 class MolevilleMinesArrows(MinesLocation, InvisibleItemCandidate):
+    """MolevilleMinesArrows invisible progress location class"""
+
     _room_ids: List[int] = [
         R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE,
     ]
@@ -539,6 +605,8 @@ class MolevilleMinesArrows(MinesLocation, InvisibleItemCandidate):
 
 
 class MolevilleMinesCeiling(MinesLocation, InvisibleItemCandidate):
+    """MolevilleMinesCeiling invisible progress location class"""
+
     _room_ids: List[int] = [
         R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
     ]
@@ -552,6 +620,8 @@ class MolevilleMinesCeiling(MinesLocation, InvisibleItemCandidate):
 
 
 class MolevilleMinesEntry(MinesLocation, InvisibleItemCandidate):
+    """MolevilleMinesEntry invisible progress location class"""
+
     _room_ids: List[int] = [
         R290_MOLEVILLE_MINES_AREA_19_FROM_OUTSIDE_AFTER_PAYING,
     ]
@@ -568,6 +638,8 @@ class MolevilleMinesEntry(MinesLocation, InvisibleItemCandidate):
 
 
 class BoosterPassCornerBush(BoosterPassLocation, InvisibleItemCandidate):
+    """BoosterPassCornerBush invisible progress location class"""
+
     _room_ids: List[int] = [
         R101_BOOSTER_PASS_AREA_02,
     ]
@@ -582,6 +654,8 @@ class BoosterPassCornerBush(BoosterPassLocation, InvisibleItemCandidate):
 
 
 class BoosterTowerExteriorSign(BoosterTowerExteriorLocation, InvisibleItemCandidate):
+    """BoosterTowerExteriorSign invisible progress location class"""
+
     _room_ids: List[int] = [R202_BOOSTER_TOWER_ENTRANCE]
     _x_coord: int = 4
     _y_coord: int = 110
@@ -595,6 +669,8 @@ class BoosterTowerExteriorSign(BoosterTowerExteriorLocation, InvisibleItemCandid
 
 
 class BoosterTowerDesk(BoosterTowerLocation, InvisibleItemCandidate):
+    """BoosterTowerDesk invisible progress location class"""
+
     _room_ids: List[int] = [R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM]
     _x_coord: int = 24
     _y_coord: int = 113
@@ -605,7 +681,9 @@ class BoosterTowerDesk(BoosterTowerLocation, InvisibleItemCandidate):
         return InvisibleItemCandidate.can_access(self, BoosterTowerLocation, inventory)
 
 
-class BOOSTER_TOWER_MASHERRoom(BoosterTowerLocation, InvisibleItemCandidate):
+class BoosterTowerMasherRoom(BoosterTowerLocation, InvisibleItemCandidate):
+    """BoosterTowerMasherRoom invisible progress location class"""
+
     _room_ids: List[int] = [
         R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER
     ]
@@ -619,6 +697,8 @@ class BOOSTER_TOWER_MASHERRoom(BoosterTowerLocation, InvisibleItemCandidate):
 
 
 class BoosterTowerCurtain(BoosterTowerLocation, InvisibleItemCandidate):
+    """BoosterTowerCurtain invisible progress location class"""
+
     _room_ids: List[int] = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
     _x_coord: int = 7
     _y_coord: int = 64
@@ -632,7 +712,9 @@ class BoosterTowerCurtain(BoosterTowerLocation, InvisibleItemCandidate):
         return InvisibleItemCandidate.can_access(self, BoosterTowerLocation, inventory)
 
 
-class BOOSTER_TOWER_THWOMPInvisible(BoosterTowerLocation, InvisibleItemCandidate):
+class BoosterTowerThwompInvisible(BoosterTowerLocation, InvisibleItemCandidate):
+    """BoosterTowerThwompInvisible invisible progress location class"""
+
     _room_ids: List[int] = [
         R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER
     ]
@@ -646,6 +728,8 @@ class BOOSTER_TOWER_THWOMPInvisible(BoosterTowerLocation, InvisibleItemCandidate
 
 
 class BoosterTowerBrokenFrame(BoosterTowerLocation, InvisibleItemCandidate):
+    """BoosterTowerBrokenFrame invisible progress location class"""
+
     _room_ids: List[int] = [
         R038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS
     ]
@@ -660,6 +744,8 @@ class BoosterTowerBrokenFrame(BoosterTowerLocation, InvisibleItemCandidate):
 
 
 class BoosterTowerBeetleCage(BoosterTowerLocation, InvisibleItemCandidate):
+    """BoosterTowerBeetleCage invisible progress location class"""
+
     _room_ids: List[int] = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _x_coord: int = 7
     _y_coord: int = 18
@@ -670,6 +756,8 @@ class BoosterTowerBeetleCage(BoosterTowerLocation, InvisibleItemCandidate):
 
 
 class BoosterTowerToyBox(BoosterTowerLocation, InvisibleItemCandidate):
+    """BoosterTowerToyBox invisible progress location class"""
+
     _room_ids: List[int] = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _x_coord: int = 7
     _y_coord: int = 24
@@ -681,6 +769,8 @@ class BoosterTowerToyBox(BoosterTowerLocation, InvisibleItemCandidate):
 
 
 class MarrymoreOutsideCrate(MarrymoreLocation, InvisibleItemCandidate):
+    """MarrymoreOutsideCrate invisible progress location class"""
+
     _room_ids: List[int] = [
         R005_MARRYMORE_OUTSIDE_DURING_BOOSTER,
         R064_MARRYMORE_OUTSIDE,
@@ -697,6 +787,8 @@ class MarrymoreOutsideCrate(MarrymoreLocation, InvisibleItemCandidate):
 
 
 class MarrymoreSuiteBed(MarrymoreLocation, InvisibleItemCandidate):
+    """MarrymoreSuiteBed invisible progress location class"""
+
     _room_ids: List[int] = [R012_MARRYMORE_INN_SUITE_ROOM]
     _x_coord: int = 7
     _y_coord: int = 13
@@ -709,6 +801,8 @@ class MarrymoreSuiteBed(MarrymoreLocation, InvisibleItemCandidate):
 
 
 class MarrymoreKitchen(MarrymoreChapelLocation, InvisibleItemCandidate):
+    """MarrymoreKitchen invisible progress location class"""
+
     _room_ids: List[int] = [R155_MARRYMORE_CHAPEL_KITCHEN]
     _x_coord: int = 2
     _y_coord: int = 20
@@ -723,6 +817,8 @@ class MarrymoreKitchen(MarrymoreChapelLocation, InvisibleItemCandidate):
 
 
 class MarrymoreFireplace(MarrymoreChapelLocation, InvisibleItemCandidate):
+    """MarrymoreFireplace invisible progress location class"""
+
     _room_ids: List[int] = [R152_MARRYMORE_CHAPEL_MAIN_HALL]
     _x_coord: int = 9
     _y_coord: int = 33
@@ -737,6 +833,8 @@ class MarrymoreFireplace(MarrymoreChapelLocation, InvisibleItemCandidate):
 
 
 class MarrymoreOrgan(MarrymoreChapelLocation, InvisibleItemCandidate):
+    """MarrymoreOrgan invisible progress location class"""
+
     _room_ids: List[int] = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
@@ -753,7 +851,9 @@ class MarrymoreOrgan(MarrymoreChapelLocation, InvisibleItemCandidate):
         )
 
 
-class MARRYMORE_ALTAR(MarrymoreChapelLocation, InvisibleItemCandidate):
+class MarrymoreAltar(MarrymoreChapelLocation, InvisibleItemCandidate):
+    """MarrymoreAltar invisible progress location class"""
+
     _room_ids: List[int] = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
@@ -770,6 +870,8 @@ class MARRYMORE_ALTAR(MarrymoreChapelLocation, InvisibleItemCandidate):
 
 
 class StarHillNorthStar(StarHillLocation, InvisibleItemCandidate):
+    """StarHillNorthStar invisible progress location class"""
+
     _room_ids: List[int] = [R158_STAR_HILL_AREA_02]
     _x_coord: int = 8
     _y_coord: int = 69
@@ -782,6 +884,8 @@ class StarHillNorthStar(StarHillLocation, InvisibleItemCandidate):
 
 
 class SeasideTownAnchor(SeasideTownLocation, InvisibleItemCandidate):
+    """SeasideTownAnchor invisible progress location class"""
+
     _room_ids: List[int] = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord: int = 14
     _y_coord: int = 57
@@ -793,6 +897,8 @@ class SeasideTownAnchor(SeasideTownLocation, InvisibleItemCandidate):
 
 
 class SeasideTownHydrant(SeasideTownLocation, InvisibleItemCandidate):
+    """SeasideTownHydrant invisible progress location class"""
+
     _room_ids: List[int] = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord: int = 16
     _y_coord: int = 25
@@ -806,6 +912,8 @@ class SeasideTownHydrant(SeasideTownLocation, InvisibleItemCandidate):
 
 
 class SeasideTownBucket(SeasideTownLocation, InvisibleItemCandidate):
+    """SeasideTownBucket invisible progress location class"""
+
     _room_ids: List[int] = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     _x_coord: int = 20
     _y_coord: int = 31
@@ -817,6 +925,8 @@ class SeasideTownBucket(SeasideTownLocation, InvisibleItemCandidate):
 
 
 class SeasideTownFlowers(SeasideTownLocation, InvisibleItemCandidate):
+    """SeasideTownFlowers invisible progress location class"""
+
     _room_ids: List[int] = [
         R217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST,
         R313_SEASIDE_TOWN_ACCESSORY_SHOP,
@@ -831,6 +941,8 @@ class SeasideTownFlowers(SeasideTownLocation, InvisibleItemCandidate):
 
 
 class SeasideTownShedBox(SeasideTownLocation, InvisibleItemCandidate):
+    """SeasideTownShedBox invisible progress location class"""
+
     _room_ids: List[int] = [R314_SEASIDE_TOWN_SHED]
     _x_coord: int = 5
     _y_coord: int = 23
@@ -846,6 +958,8 @@ class SeasideTownShedBox(SeasideTownLocation, InvisibleItemCandidate):
 
 
 class SeaArrow(SeaLocation, InvisibleItemCandidate):
+    """SeaArrow invisible progress location class"""
+
     _room_ids: List[int] = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
     _x_coord: int = 8
     _y_coord: int = 21
@@ -858,6 +972,8 @@ class SeaArrow(SeaLocation, InvisibleItemCandidate):
 
 
 class SeaBoxes(SeaLocation, InvisibleItemCandidate):
+    """SeaBoxes invisible progress location class"""
+
     _room_ids: List[int] = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
     _x_coord: int = 9
     _y_coord: int = 36
@@ -869,6 +985,8 @@ class SeaBoxes(SeaLocation, InvisibleItemCandidate):
 
 
 class SeaStalagnate(SeaLocation, InvisibleItemCandidate):
+    """SeaStalagnate invisible progress location class"""
+
     _room_ids: List[int] = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
     _x_coord: int = 18
     _y_coord: int = 43
@@ -882,6 +1000,8 @@ class SeaStalagnate(SeaLocation, InvisibleItemCandidate):
 
 
 class SeaUnderwaterSail(SeaLocation, InvisibleItemCandidate):
+    """SeaUnderwaterSail invisible progress location class"""
+
     _room_ids: List[int] = [R174_SEA_AREA_08_SHORE_WITH_SUNKEN_SHIP]
     _x_coord: int = 4
     _y_coord: int = 41
@@ -892,6 +1012,8 @@ class SeaUnderwaterSail(SeaLocation, InvisibleItemCandidate):
 
 
 class ShipBarrelPile(SunkenShipLocation, InvisibleItemCandidate):
+    """ShipBarrelPile invisible progress location class"""
+
     _room_ids: List[int] = [R162_SUNKEN_SHIP_AREA_04_GREAPERS__DRY_BONES]
     _x_coord: int = 7
     _y_coord: int = 66
@@ -903,6 +1025,8 @@ class ShipBarrelPile(SunkenShipLocation, InvisibleItemCandidate):
 
 
 class ShipDoorMarker(SunkenShipLocation, InvisibleItemCandidate):
+    """ShipDoorMarker invisible progress location class"""
+
     _room_ids: List[int] = [R165_SUNKEN_SHIP_AREA_06_PUZZLE_ROOM_PASSAGEWAY]
     _x_coord: int = 18
     _y_coord: int = 82
@@ -915,6 +1039,8 @@ class ShipDoorMarker(SunkenShipLocation, InvisibleItemCandidate):
 
 
 class ShipButton(SunkenShipLocation, InvisibleItemCandidate):
+    """ShipButton invisible progress location class"""
+
     _room_ids: List[int] = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
     _x_coord: int = 16
     _y_coord: int = 133
@@ -925,6 +1051,8 @@ class ShipButton(SunkenShipLocation, InvisibleItemCandidate):
 
 
 class ShipSwitch(InnerSunkenShipLocation, InvisibleItemCandidate):
+    """ShipSwitch invisible progress location class"""
+
     _room_ids: List[int] = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
     _x_coord: int = 17
     _y_coord: int = 121
@@ -937,6 +1065,8 @@ class ShipSwitch(InnerSunkenShipLocation, InvisibleItemCandidate):
 
 
 class LandsEndPlatform(LandsEndLocation, InvisibleItemCandidate):
+    """LandsEndPlatform invisible progress location class"""
+
     _room_ids: List[int] = [R137_LANDS_END_AREA_01]
     _x_coord: int = 6
     _y_coord: int = 29
@@ -947,6 +1077,8 @@ class LandsEndPlatform(LandsEndLocation, InvisibleItemCandidate):
 
 
 class LandsEndCannon(LandsEndLocation, InvisibleItemCandidate):
+    """LandsEndCannon invisible progress location class"""
+
     _room_ids: List[int] = [R139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL]
     _x_coord: int = 11
     _y_coord: int = 115
@@ -958,6 +1090,8 @@ class LandsEndCannon(LandsEndLocation, InvisibleItemCandidate):
 
 
 class LandsEndArrow(LandsEndLocation, InvisibleItemCandidate):
+    """LandsEndArrow invisible progress location class"""
+
     _room_ids: List[int] = [
         R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS
     ]
@@ -971,6 +1105,8 @@ class LandsEndArrow(LandsEndLocation, InvisibleItemCandidate):
 
 
 class LandsEndHill(LandsEndLocation, InvisibleItemCandidate):
+    """LandsEndHill invisible progress location class"""
+
     _room_ids: List[int] = [R404_LANDS_END_DESERT_AREA_04]
     _x_coord: int = 23
     _y_coord: int = 96
@@ -983,6 +1119,8 @@ class LandsEndHill(LandsEndLocation, InvisibleItemCandidate):
 
 
 class LandsEndStalagmite(LandsEndLocation, InvisibleItemCandidate):
+    """LandsEndStalagmite invisible progress location class"""
+
     _room_ids: List[int] = [R265_LANDS_END_UNDERGROUND_AREA_03]
     _x_coord: int = 22
     _y_coord: int = 80
@@ -997,6 +1135,8 @@ class LandsEndStalagmite(LandsEndLocation, InvisibleItemCandidate):
 
 
 class LandsEndCliffBush(LandsEndLocation, InvisibleItemCandidate):
+    """LandsEndCliffBush invisible progress location class"""
+
     _room_ids: List[int] = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _x_coord: int = 23
     _y_coord: int = 103
@@ -1010,6 +1150,8 @@ class LandsEndCliffBush(LandsEndLocation, InvisibleItemCandidate):
 
 
 class DojoBonsai(MonstroTownLocation, InvisibleItemCandidate):
+    """DojoBonsai invisible progress location class"""
+
     _room_ids: List[int] = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _x_coord: int = 6
     _y_coord: int = 9
@@ -1020,7 +1162,9 @@ class DojoBonsai(MonstroTownLocation, InvisibleItemCandidate):
         return InvisibleItemCandidate.can_access(self, MonstroTownLocation, inventory)
 
 
-class MonstroEntrance(MonstroTownLocation, InvisibleItemCandidate):
+class MonstroEntranceSign(MonstroTownLocation, InvisibleItemCandidate):
+    """MonstroEntranceSign invisible progress location class"""
+
     _room_ids: List[int] = [R267_MONSTRO_TOWN_ENTRANCE]
     _x_coord: int = 9
     _y_coord: int = 102
@@ -1031,6 +1175,8 @@ class MonstroEntrance(MonstroTownLocation, InvisibleItemCandidate):
 
 
 class MonstroBat(MonstroTownLocation, InvisibleItemCandidate):
+    """MonstroBat invisible progress location class"""
+
     _room_ids: List[int] = [R324_MONSTRO_TOWN_OUTSIDE]
     _x_coord: int = 5
     _y_coord: int = 51
@@ -1043,6 +1189,8 @@ class MonstroBat(MonstroTownLocation, InvisibleItemCandidate):
 
 
 class MonstroFan(MonstroTownLocation, InvisibleItemCandidate):
+    """MonstroFan invisible progress location class"""
+
     _room_ids: List[int] = [R395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F]
     _x_coord: int = 12
     _y_coord: int = 80
@@ -1055,6 +1203,8 @@ class MonstroFan(MonstroTownLocation, InvisibleItemCandidate):
 
 
 class MonstroShell(MonstroTownLocation, InvisibleItemCandidate):
+    """MonstroShell invisible progress location class"""
+
     _room_ids: List[int] = [R398_MONSTRO_TOWN_WEAPON_AND_ARMOR_SHOP]
     _x_coord: int = 16
     _y_coord: int = 15
@@ -1067,6 +1217,8 @@ class MonstroShell(MonstroTownLocation, InvisibleItemCandidate):
 
 
 class BeanValleyPipe(BeanValleyLocation, InvisibleItemCandidate):
+    """BeanValleyPipe invisible progress location class"""
+
     _room_ids: List[int] = [R252_BEAN_VALLEY_MAIN_AREA]
     _x_coord: int = 17
     _y_coord: int = 85
@@ -1079,6 +1231,8 @@ class BeanValleyPipe(BeanValleyLocation, InvisibleItemCandidate):
 
 
 class BeanValleyBeanstalkBlock(BeanValleyLocation, InvisibleItemCandidate):
+    """BeanValleyBeanstalkBlock invisible progress location class"""
+
     _room_ids: List[int] = [R253_BEAN_VALLEY_MAGIC_BRICK_TO_BEANSTALK_AREA]
     _x_coord: int = 27
     _y_coord: int = 27
@@ -1089,6 +1243,8 @@ class BeanValleyBeanstalkBlock(BeanValleyLocation, InvisibleItemCandidate):
 
 
 class CasinoBell(CasinoLocation, InvisibleItemCandidate):
+    """CasinoBell invisible progress location class"""
+
     _room_ids: List[int] = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
     _x_coord: int = 14
     _y_coord: int = 19
@@ -1101,6 +1257,8 @@ class CasinoBell(CasinoLocation, InvisibleItemCandidate):
 
 
 class NimbusGoldGoomba(NimbusTownLocation, InvisibleItemCandidate):
+    """NimbusGoldGoomba invisible progress location class"""
+
     _room_ids: List[int] = [R341_NIMBUS_LAND_GARROS_HOUSE]
     _x_coord: int = 5
     _y_coord: int = 14
@@ -1112,6 +1270,8 @@ class NimbusGoldGoomba(NimbusTownLocation, InvisibleItemCandidate):
 
 
 class NimbusInnLobby(NimbusTownLocation, InvisibleItemCandidate):
+    """NimbusInnLobby invisible progress location class"""
+
     _room_ids: List[int] = [R343_NIMBUS_LAND_INN]
     _x_coord: int = 6
     _y_coord: int = 84
@@ -1125,6 +1285,8 @@ class NimbusInnLobby(NimbusTownLocation, InvisibleItemCandidate):
 
 
 class NimbusPlant(NimbusCastleLocation, InvisibleItemCandidate):
+    """NimbusPlant invisible progress location class"""
+
     _room_ids: List[int] = [
         R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT
     ]
@@ -1138,6 +1300,8 @@ class NimbusPlant(NimbusCastleLocation, InvisibleItemCandidate):
 
 
 class NimbusBird(NimbusDeepCastleLocation, InvisibleItemCandidate):
+    """NimbusBird invisible progress location class"""
+
     _room_ids: List[int] = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
     _x_coord: int = 28
     _y_coord: int = 48
@@ -1153,6 +1317,8 @@ class NimbusBird(NimbusDeepCastleLocation, InvisibleItemCandidate):
 
 
 class NimbusHotSprings(NimbusTownLocation, InvisibleItemCandidate):
+    """NimbusHotSprings invisible progress location class"""
+
     _room_ids: List[int] = [R447_NIMBUS_LAND_HOT_SPRINGS]
     _x_coord: int = 19
     _y_coord: int = 114
@@ -1166,6 +1332,8 @@ class NimbusHotSprings(NimbusTownLocation, InvisibleItemCandidate):
 
 
 class VolcanoShips(BarrelVolcanoLocation, InvisibleItemCandidate):
+    """VolcanoShips invisible progress location class"""
+
     _room_ids: List[int] = [R353_VOLCANO_AREA_18_HINO_MART]
     _x_coord: int = 11
     _y_coord: int = 61
@@ -1177,6 +1345,8 @@ class VolcanoShips(BarrelVolcanoLocation, InvisibleItemCandidate):
 
 
 class KeepPostObstacleBossRoom(BowsersKeepObstacleLocation, InvisibleItemCandidate):
+    """KeepPostObstacleBossRoom invisible progress location class"""
+
     _room_ids: List[int] = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _x_coord: int = 26
     _y_coord: int = 97
@@ -1197,6 +1367,8 @@ class KeepPostObstacleBossRoom(BowsersKeepObstacleLocation, InvisibleItemCandida
 
 
 class KeepThwomp(BowsersKeepObstacleLocation, InvisibleItemCandidate):
+    """KeepThwomp invisible progress location class"""
+
     _room_ids: List[int] = [
         R449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM
     ]
@@ -1217,6 +1389,8 @@ class KeepThwomp(BowsersKeepObstacleLocation, InvisibleItemCandidate):
 
 
 class FactoryButton(InnerFactoryLocation, InvisibleItemCandidate):
+    """FactoryButton invisible progress location class"""
+
     _room_ids: List[int] = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _x_coord: int = 4
     _y_coord: int = 36

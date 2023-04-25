@@ -9,7 +9,7 @@ script = EventScript(
     [
         RunDialog(
             dialog_id=DI2095_GOT_BROOCH,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=False,
             multiline=False,

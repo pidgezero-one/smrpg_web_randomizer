@@ -1,0 +1,44 @@
+"""Exit list import"""
+
+from randomizer.entities.rooms.exit_imports import *
+
+exits = [
+    RoomExit(
+        x=13,
+        y=20,
+        z=9,
+        f=EdgeDirection.SOUTHWEST,
+        length=2,
+        height=0,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_2_bit_2=False,
+        destination=R424_BELOME_TEMPLE_AREA_03_PIPE_TO_ROOM_DETERMINED_BY_FORTUNE,
+        show_message=False,
+        dst_x=13,
+        dst_y=80,
+        dst_z=1,
+        dst_z_half=False,
+        dst_f=NORTHEAST,
+        x_bit_7=False,
+    ),
+    RoomExit(
+        x=0,
+        y=47,
+        z=1,
+        f=EdgeDirection.SOUTHWEST,
+        length=3,
+        height=0,
+        nw_se_edge_active=True,
+        ne_sw_edge_active=False,
+        byte_2_bit_2=False,
+        destination=R428_BELOME_TEMPLE_AREA_01_WWARP_TRAMPOLINE,
+        show_message=False,
+        dst_x=27,
+        dst_y=112,
+        dst_z=0,
+        dst_z_half=False,
+        dst_f=SOUTHWEST,
+        x_bit_7=False,
+    ),
+]

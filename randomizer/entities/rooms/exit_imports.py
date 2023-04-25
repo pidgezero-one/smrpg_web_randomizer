@@ -1,8 +1,10 @@
-from randomizer.types.rooms.classes import RoomExit, MapExit
-from randomizer.types.rooms.enums import EdgeDirection
-from randomizer.types.overworld_scripts.constants.room_names import *
-from randomizer.types.overworld_scripts.constants.overworld_names import *
-from randomizer.types.overworld_scripts.constants.directions import (
+# pylint: disable=W0611
+
+"""Imports for exit list definition files"""
+
+from randomizer.types.rooms import RoomExit, MapExit, EdgeDirection
+from randomizer.types.overworld_scripts.ids import *
+from randomizer.types.overworld_scripts.arguments import (
     NORTH,
     NORTHWEST,
     WEST,

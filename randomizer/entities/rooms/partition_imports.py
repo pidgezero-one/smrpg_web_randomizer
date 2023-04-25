@@ -1,2 +1,6 @@
-from randomizer.types.rooms.classes import Partition, Buffer
-from randomizer.types.rooms.enums import BufferSpace, BufferType
+# pylint: disable=W0611
+
+"""Imports for partition definition files"""
+
+
+from randomizer.types.rooms import Partition, Buffer, BufferSpace, BufferType

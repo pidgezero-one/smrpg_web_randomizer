@@ -1,7 +1,7 @@
 """behaviour 22 export"""
 
-from randomizer.types.battle_animation_scripts.classes import AnimationScriptBank
-from randomizer.types.battle_animation_scripts.constants.script_ids.bank_names import (
+from randomizer.types.battle_animation_scripts.types import AnimationScriptBank
+from randomizer.types.battle_animation_scripts.ids import (
     BEHAVIOUR_22_0X350A3E,
 )
 from randomizer.scripts.animation.monster_behaviours.contents.script_22 import (

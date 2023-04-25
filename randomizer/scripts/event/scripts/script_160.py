@@ -21,7 +21,7 @@ script = EventScript(
         JmpIfVarEqualsConst(ITEM_ID, AltoCard, ["EVENT_160_run_dialog_104_"]),
         RunDialog(
             dialog_id=DI0524_GOT_A_70A7_AWAIT_TERMINATE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,
@@ -31,7 +31,7 @@ script = EventScript(
         Return(),
         RunDialog(
             dialog_id=DI0065_GOT_AN_70A7_AWAIT_TERMINATE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

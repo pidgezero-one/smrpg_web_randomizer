@@ -20,7 +20,7 @@ script = EventScript(
         Return(),
         RunDialog(
             dialog_id=DI3335_DUPLICATE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

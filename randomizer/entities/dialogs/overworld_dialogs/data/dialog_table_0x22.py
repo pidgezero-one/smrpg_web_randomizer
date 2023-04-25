@@ -1,3 +1,7 @@
+"""Dialog data bank 1"""
+
+from typing import List
+
 dialog_data: List[str] = ["""[await]"""] * 1149
 dialog_data[0] = """                     INN[end]"""
 dialog_data[1] = """                ITEM SHOP[end]"""
@@ -19,7 +23,7 @@ dialog_data[16] = """         GRATE GUY'S CASINO[end]"""
 dialog_data[17] = """               HINO MART[end]"""
 dialog_data[
     18
-] = """ I don't really like being a 
+] = """ I don't really like being a
  stepstool,[delay] but I understand that
  I'm the perfect height for it.[await]
  I guess I just have to accept this
@@ -44,7 +48,11 @@ dialog_data[
  Here's a special prize for you![await]"""
 dialog_data[
     22
-] = """FROGFUCIUS: Grasshopper, if your\n travels yield any cricket-related\n food, please bring it to me.[await]\n (...But bring me the Cricket Pie\n first.)[await]"""
+] = """FROGFUCIUS: Grasshopper, if your
+ travels yield any cricket-related
+ food, please bring it to me.[await]
+ (...But bring me the Cricket Pie
+ first.)[await]"""
 dialog_data[23] = """[await]"""
 dialog_data[24] = """[await]"""
 dialog_data[
@@ -234,7 +242,7 @@ dialog_data[
  give you something NICE.[await]"""
 dialog_data[
     109
-] = """ Hey `MAIN_CHARACTER_NAME`! 
+] = """ Hey `MAIN_CHARACTER_NAME`!
  Think you can get 100 Super Jumps
  today?[await][page]
  Even though it's tricky, just
@@ -645,7 +653,11 @@ dialog_data[
  You'll surely find something[delay] NICE.[await]"""
 dialog_data[
     321
-] = """ There may be some places you can\n go, or things you can do, only\n after completing something else.[await][page]\n It's a good idea to revisit some\n areas from time to time.[await]"""
+] = """ There may be some places you can
+ go, or things you can do, only
+ after completing something else.[await][page]
+ It's a good idea to revisit some
+ areas from time to time.[await]"""
 dialog_data[
     322
 ] = """ Sorry, I don't have any advice
@@ -2028,7 +2040,7 @@ dialog_data[749] = """[await]"""
 dialog_data[750] = """[await]"""
 dialog_data[
     751
-] = """SERGEANT FLUTTER: 
+] = """SERGEANT FLUTTER:
  Mission accomplished!
  Elapsed time is [0x7000timer].[await]
 [end]"""
@@ -2187,7 +2199,7 @@ dialog_data[
 dialog_data[794] = """[await]"""
 dialog_data[
     795
-] = """ 
+] = """
       Received [0x7000] Frog Coin(s)![await]"""
 dialog_data[
     796
@@ -3054,7 +3066,7 @@ dialog_data[
  [select]  (Oyster)[await]"""
 dialog_data[
     1074
-] = """DR. TOPPER: What was Mallow 
+] = """DR. TOPPER: What was Mallow
  asked to get for Frogfucius?[await][page]
 
  [select]  (Honey Syrup)

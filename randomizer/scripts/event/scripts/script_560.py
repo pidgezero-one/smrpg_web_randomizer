@@ -345,7 +345,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_560_pause_213"]),
         RunDialog(
             dialog_id=DI2801_NEED_THE_KEY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,
@@ -376,7 +376,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_560_pause_227"]),
         RunDialog(
             dialog_id=DI2801_NEED_THE_KEY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,
@@ -413,7 +413,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_560_pause_242"]),
         RunDialog(
             dialog_id=DI2801_NEED_THE_KEY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,
@@ -531,7 +531,7 @@ script = EventScript(
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_560_play_sound_279"]),
         RunDialog(
             dialog_id=DI3600_WAIT_ITS_LOCKED,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,
@@ -572,7 +572,7 @@ script = EventScript(
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_560_play_sound_296"]),
         RunDialog(
             dialog_id=DI2811_ITS_LOCKED,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

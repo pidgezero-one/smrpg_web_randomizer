@@ -9,7 +9,7 @@ script = EventScript(
         PlaySound(sound=SO081_STAR, channel=6),
         RunDialog(
             dialog_id=DI3079_GOT_A_STAR_PIECE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

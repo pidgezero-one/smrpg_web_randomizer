@@ -223,7 +223,7 @@ script = EventScript(
         JmpIfBitSet(TEMP_7042_0, ["EVENT_930_run_dialog_104"]),
         RunDialog(
             dialog_id=DI2343_COOKIE_COUNTER,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=False,
             multiline=False,
@@ -274,7 +274,7 @@ script = EventScript(
         Jmp(["EVENT_930_set_7000_to_pressed_button_105"]),
         RunDialog(
             dialog_id=DI2344_COOKIE_COUNTER_NEW_PAGE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=False,
             multiline=False,
@@ -309,7 +309,7 @@ script = EventScript(
         Jmp(["EVENT_930_set_7000_to_pressed_button_105"]),
         RunDialog(
             dialog_id=DI2344_COOKIE_COUNTER_NEW_PAGE,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=False,
             sync=False,
             multiline=False,

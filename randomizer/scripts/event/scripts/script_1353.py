@@ -9,7 +9,7 @@ script = EventScript(
         JmpIfBitSet(KEEP_BOSS_2_DEFEATED, ["EVENT_1353_pause_3"]),
         RunDialog(
             dialog_id=DI2801_NEED_THE_KEY,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,

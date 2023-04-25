@@ -1,15 +1,26 @@
+"""Spell definitions"""
+
 from random import choice
 from typing import Type, List
-from randomizer.types.spells.classes import CharacterSpell, CloneSpell, EnemySpell
-from randomizer.types.spells.constants.classes import DamageModifiers, TimingProperties
-from randomizer.types.spells.constants.damage_modifiers import (
+
+from randomizer.types.spells import (
+    CharacterSpell,
+    CloneSpell,
+    EnemySpell,
+    EffectType,
+    InflictFunction,
+    TempStatBuff,
+    Element,
+    Status,
+    SpellType,
+)
+from randomizer.types.spells.arguments.types import DamageModifiers, TimingProperties
+from randomizer.types.spells.arguments import (
     NO_MODIFIERS,
     X00625_MODIFIER,
     X00625_MODIFIER_WITH_MULTI_TARGETING,
     X0125_MODIFIER_WITH_MULTI_TARGETING,
     X05_MODIFIER,
-)
-from randomizer.types.spells.constants.timing_properties import (
     BUTTON_MASH,
     CHARGE_ONLY,
     MULTIPLE_BUTTON_PRESSES,
@@ -24,16 +35,10 @@ from randomizer.types.spells.constants.timing_properties import (
     TIMED_HEALS_ALL_HP_TO_FIRST_TARGET,
     TIMED_JUMPS,
 )
-from randomizer.types.spells.enums import (
-    EffectType,
-    InflictFunction,
-    TempStatBuff,
-    Element,
-    Status,
-    SpellType,
-)
+from randomizer.types.world import GameWorld
+from randomizer.types.world.flags import CharacterSpellElements
 
-from randomizer.entities.spells.palettes import (
+from .palettes import (
     FIRE_ORB_EARTH_BALL,
     FIRE_ORB_EARTH_FADE,
     FIRE_ORB_ICE_BALL,
@@ -53,10 +58,11 @@ from randomizer.entities.spells.palettes import (
     THUNDERBOLT_FIRE,
     THUNDERBOLT_ICE,
 )
-from randomizer.types.world.flags.flags import CharacterElements
 
 
 class Jump(CharacterSpell):
+    """Learnable spell definition for Jump"""
+
     _index: int = 0
     _fp: int = 3
     _power: int = 25
@@ -96,21 +102,29 @@ class Jump(CharacterSpell):
 
 
 class IceJump(Jump):
+    """Learnable spell definition for IceJump"""
+
     _title: str = "Ice Jump"
     _element: Element = Element.ICE
 
 
 class ThunderJump(Jump):
+    """Learnable spell definition for ThunderJump"""
+
     _title: str = "Thunder Jump"
     _element: Element = Element.THUNDER
 
 
 class FireJump(Jump):
+    """Learnable spell definition for FireJump"""
+
     _title: str = "Fire Jump"
     _element: Element = Element.FIRE
 
 
 class FireOrb(CharacterSpell):
+    """Learnable spell definition for FireOrb"""
+
     _index: int = 1
     _fp: int = 5
     _power: int = 20
@@ -144,6 +158,8 @@ class FireOrb(CharacterSpell):
 
 
 class IceOrb(FireOrb):
+    """Learnable spell definition for IceOrb"""
+
     _title: str = "Ice Orb"
     _element: Element = Element.ICE
 
@@ -163,6 +179,8 @@ class IceOrb(FireOrb):
 
 
 class ThunderOrb(FireOrb):
+    """Learnable spell definition for ThunderOrb"""
+
     _title: str = "Thunder Orb"
     _element: Element = Element.THUNDER
 
@@ -182,6 +200,8 @@ class ThunderOrb(FireOrb):
 
 
 class EarthOrb(FireOrb):
+    """Learnable spell definition for EarthOrb"""
+
     _title: str = "Earth Orb"
     _element: Element = Element.JUMP
 
@@ -201,6 +221,8 @@ class EarthOrb(FireOrb):
 
 
 class SuperJump(CharacterSpell):
+    """Learnable spell definition for SuperJump"""
+
     _index: int = 2
     _fp: int = 7
     _power: int = 45
@@ -234,21 +256,29 @@ class SuperJump(CharacterSpell):
 
 
 class IceSuperJump(SuperJump):
+    """Learnable spell definition for IceSuperJump"""
+
     _title: str = "Ice S.Jump"
     _element: Element = Element.ICE
 
 
 class ThunderSuperJump(SuperJump):
+    """Learnable spell definition for ThunderSuperJump"""
+
     _title: str = "Thndr S.Jump"
     _element: Element = Element.THUNDER
 
 
 class FireSuperJump(SuperJump):
+    """Learnable spell definition for FireSuperJump"""
+
     _title: str = "Fire S.Jump"
     _element: Element = Element.FIRE
 
 
 class SuperFlame(CharacterSpell):
+    """Learnable spell definition for SuperFlame"""
+
     _index: int = 3
     _fp: int = 9
     _power: int = 40
@@ -282,6 +312,8 @@ class SuperFlame(CharacterSpell):
 
 
 class IceSuperFlame(SuperFlame):
+    """Learnable spell definition for IceSuperFlame"""
+
     _title: str = "Super Ice"
     _element: Element = Element.ICE
 
@@ -301,6 +333,8 @@ class IceSuperFlame(SuperFlame):
 
 
 class ThunderSuperFlame(SuperFlame):
+    """Learnable spell definition for ThunderSuperFlame"""
+
     _title: str = "SuperThunder"
     _element: Element = Element.THUNDER
 
@@ -320,6 +354,8 @@ class ThunderSuperFlame(SuperFlame):
 
 
 class EarthSuperFlame(SuperFlame):
+    """Learnable spell definition for EarthSuperFlame"""
+
     _title: str = "Super Earth"
     _element: Element = Element.JUMP
 
@@ -339,6 +375,8 @@ class EarthSuperFlame(SuperFlame):
 
 
 class UltraJump(CharacterSpell):
+    """Learnable spell definition for UltraJump"""
+
     _index: int = 4
     _fp: int = 11
     _power: int = 65
@@ -372,21 +410,29 @@ class UltraJump(CharacterSpell):
 
 
 class IceUltraJump(UltraJump):
+    """Learnable spell definition for IceUltraJump"""
+
     _title: str = "Ice U.Jump"
     _element: Element = Element.ICE
 
 
 class ThunderUltraJump(UltraJump):
+    """Learnable spell definition for ThunderUltraJump"""
+
     _title: str = "Thndr U.Jump"
     _element: Element = Element.THUNDER
 
 
 class FireUltraJump(UltraJump):
+    """Learnable spell definition for FireUltraJump"""
+
     _title: str = "Fire U.Jump"
     _element: Element = Element.FIRE
 
 
 class UltraFlame(CharacterSpell):
+    """Learnable spell definition for UltraFlame"""
+
     _index: int = 5
     _fp: int = 14
     _power: int = 60
@@ -420,6 +466,8 @@ class UltraFlame(CharacterSpell):
 
 
 class IceUltraFlame(UltraFlame):
+    """Learnable spell definition for IceUltraFlame"""
+
     _title: str = "Ultra Ice"
     _element: Element = Element.ICE
 
@@ -439,6 +487,8 @@ class IceUltraFlame(UltraFlame):
 
 
 class ThunderUltraFlame(UltraFlame):
+    """Learnable spell definition for ThunderUltraFlame"""
+
     _title: str = "UltraThunder"
     _element: Element = Element.THUNDER
 
@@ -458,6 +508,8 @@ class ThunderUltraFlame(UltraFlame):
 
 
 class EarthUltraFlame(UltraFlame):
+    """Learnable spell definition for EarthUltraFlame"""
+
     _title: str = "Ultra Earth"
     _element: Element = Element.JUMP
 
@@ -477,6 +529,8 @@ class EarthUltraFlame(UltraFlame):
 
 
 class Therapy(CharacterSpell):
+    """Learnable spell definition for Therapy"""
+
     _index: int = 6
     _fp: int = 2
     _power: int = 40
@@ -518,6 +572,8 @@ class Therapy(CharacterSpell):
 
 
 class GroupHug(CharacterSpell):
+    """Learnable spell definition for GroupHug"""
+
     _index: int = 7
     _fp: int = 4
     _power: int = 30
@@ -559,6 +615,8 @@ class GroupHug(CharacterSpell):
 
 
 class SleepyTime(CharacterSpell):
+    """Learnable spell definition for SleepyTime"""
+
     _index: int = 8
     _fp: int = 4
     _hit_rate: int = 99
@@ -591,6 +649,8 @@ class SleepyTime(CharacterSpell):
 
 
 class ComeBack(CharacterSpell):
+    """Learnable spell definition for ComeBack"""
+
     _index: int = 9
     _fp: int = 2
     _hit_rate: int = 100
@@ -623,6 +683,8 @@ class ComeBack(CharacterSpell):
 
 
 class Mute(CharacterSpell):
+    """Learnable spell definition for Mute"""
+
     _index: int = 10
     _fp: int = 3
     _hit_rate: int = 99
@@ -655,6 +717,8 @@ class Mute(CharacterSpell):
 
 
 class PsychBomb(CharacterSpell):
+    """Learnable spell definition for PsychBomb"""
+
     _index: int = 11
     _fp: int = 15
     _power: int = 60
@@ -688,6 +752,8 @@ class PsychBomb(CharacterSpell):
 
 
 class Terrorize(CharacterSpell):
+    """Learnable spell definition for Terrorize"""
+
     _index: int = 12
     _fp: int = 6
     _power: int = 10
@@ -721,6 +787,8 @@ class Terrorize(CharacterSpell):
 
 
 class PoisonGas(CharacterSpell):
+    """Learnable spell definition for PoisonGas"""
+
     _index: int = 13
     _fp: int = 10
     _power: int = 20
@@ -754,6 +822,8 @@ class PoisonGas(CharacterSpell):
 
 
 class Crusher(CharacterSpell):
+    """Learnable spell definition for Crusher"""
+
     _index: int = 14
     _fp: int = 12
     _power: int = 60
@@ -787,6 +857,8 @@ class Crusher(CharacterSpell):
 
 
 class BowserCrush(CharacterSpell):
+    """Learnable spell definition for BowserCrush"""
+
     _index: int = 15
     _fp: int = 16
     _power: int = 58
@@ -820,6 +892,8 @@ class BowserCrush(CharacterSpell):
 
 
 class GenoBeam(CharacterSpell):
+    """Learnable spell definition for GenoBeam"""
+
     _index: int = 16
     _fp: int = 3
     _power: int = 40
@@ -853,6 +927,8 @@ class GenoBeam(CharacterSpell):
 
 
 class GenoBoost(CharacterSpell):
+    """Learnable spell definition for GenoBoost"""
+
     _index: int = 17
     _fp: int = 4
     _hit_rate: int = 100
@@ -885,6 +961,8 @@ class GenoBoost(CharacterSpell):
 
 
 class GenoWhirl(CharacterSpell):
+    """Learnable spell definition for GenoWhirl"""
+
     _index: int = 18
     _fp: int = 8
     _power: int = 45
@@ -918,6 +996,8 @@ class GenoWhirl(CharacterSpell):
 
 
 class GenoBlast(CharacterSpell):
+    """Learnable spell definition for GenoBlast"""
+
     _index: int = 19
     _fp: int = 12
     _power: int = 50
@@ -951,6 +1031,8 @@ class GenoBlast(CharacterSpell):
 
 
 class GenoFlash(CharacterSpell):
+    """Learnable spell definition for GenoFlash"""
+
     _index: int = 20
     _fp: int = 16
     _power: int = 60
@@ -984,6 +1066,8 @@ class GenoFlash(CharacterSpell):
 
 
 class Thunderbolt(CharacterSpell):
+    """Learnable spell definition for Thunderbolt"""
+
     _index: int = 21
     _fp: int = 2
     _power: int = 15
@@ -1017,6 +1101,8 @@ class Thunderbolt(CharacterSpell):
 
 
 class IceThunderbolt(Thunderbolt):
+    """Learnable spell definition for IceThunderbolt"""
+
     _title: str = "Icebolt"
     _element: Element = Element.ICE
 
@@ -1035,6 +1121,8 @@ class IceThunderbolt(Thunderbolt):
 
 
 class FireThunderbolt(Thunderbolt):
+    """Learnable spell definition for FireThunderbolt"""
+
     _title: str = "Firebolt"
     _element: Element = Element.FIRE
 
@@ -1053,6 +1141,8 @@ class FireThunderbolt(Thunderbolt):
 
 
 class EarthThunderbolt(Thunderbolt):
+    """Learnable spell definition for EarthThunderbolt"""
+
     _title: str = "Earthbolt"
     _element: Element = Element.JUMP
 
@@ -1071,6 +1161,8 @@ class EarthThunderbolt(Thunderbolt):
 
 
 class HPRain(CharacterSpell):
+    """Learnable spell definition for HPRain"""
+
     _index: int = 22
     _fp: int = 2
     _power: int = 10
@@ -1104,6 +1196,8 @@ class HPRain(CharacterSpell):
 
 
 class Psychopath(CharacterSpell):
+    """Learnable spell definition for Psychopath"""
+
     _index: int = 23
     _fp: int = 1
     _hit_rate: int = 100
@@ -1136,6 +1230,8 @@ class Psychopath(CharacterSpell):
 
 
 class Shocker(CharacterSpell):
+    """Learnable spell definition for Shocker"""
+
     _index: int = 24
     _fp: int = 8
     _power: int = 60
@@ -1169,6 +1265,8 @@ class Shocker(CharacterSpell):
 
 
 class IceShocker(Shocker):
+    """Learnable spell definition for IceShocker"""
+
     _title: str = "Ice Shocker"
     _element: Element = Element.ICE
 
@@ -1185,6 +1283,8 @@ class IceShocker(Shocker):
 
 
 class FireShocker(Shocker):
+    """Learnable spell definition for FireShocker"""
+
     _title: str = "Fire Shocker"
     _element: Element = Element.FIRE
 
@@ -1201,6 +1301,8 @@ class FireShocker(Shocker):
 
 
 class EarthShocker(Shocker):
+    """Learnable spell definition for EarthShocker"""
+
     _title: str = "EarthShocker"
     _element: Element = Element.FIRE
 
@@ -1217,6 +1319,8 @@ class EarthShocker(Shocker):
 
 
 class Snowy(CharacterSpell):
+    """Learnable spell definition for Snowy"""
+
     _index: int = 25
     _fp: int = 12
     _power: int = 40
@@ -1269,6 +1373,8 @@ class Snowy(CharacterSpell):
 
 
 class ThunderSnowy(Snowy):
+    """Learnable spell definition for ThunderSnowy"""
+
     _title: str = "Thundery"
     _element: Element = Element.THUNDER
 
@@ -1286,6 +1392,8 @@ class ThunderSnowy(Snowy):
 
 
 class FireSnowy(Snowy):
+    """Learnable spell definition for FireSnowy"""
+
     _title: str = "Firey"
     _element: Element = Element.FIRE
 
@@ -1303,6 +1411,8 @@ class FireSnowy(Snowy):
 
 
 class EarthSnowy(Snowy):
+    """Learnable spell definition for EarthSnowy"""
+
     _title: str = "Earthy"
     _element: Element = Element.JUMP
 
@@ -1320,6 +1430,8 @@ class EarthSnowy(Snowy):
 
 
 class StarRain(CharacterSpell):
+    """Learnable spell definition for StarRain"""
+
     _index: int = 26
     _fp: int = 14
     _power: int = 55
@@ -1353,18 +1465,26 @@ class StarRain(CharacterSpell):
 
 
 class Clone1(CloneSpell):
+    """Learnable spell definition for Clone1"""
+
     _index: int = 27
 
 
 class Clone2(CloneSpell):
+    """Learnable spell definition for Clone2"""
+
     _index: int = 28
 
 
 class Clone3(CloneSpell):
+    """Learnable spell definition for Clone3"""
+
     _index: int = 29
 
 
 class Drain(EnemySpell):
+    """Learnable spell definition for Drain"""
+
     _index: int = 64
     _fp: int = 1
     _power: int = 4
@@ -1391,6 +1511,8 @@ class Drain(EnemySpell):
 
 
 class LightningOrb(EnemySpell):
+    """Learnable spell definition for LightningOrb"""
+
     _index: int = 65
     _fp: int = 2
     _power: int = 8
@@ -1417,6 +1539,8 @@ class LightningOrb(EnemySpell):
 
 
 class Flame(EnemySpell):
+    """Learnable spell definition for Flame"""
+
     _index: int = 66
     _fp: int = 3
     _power: int = 12
@@ -1443,6 +1567,8 @@ class Flame(EnemySpell):
 
 
 class Bolt(EnemySpell):
+    """Learnable spell definition for Bolt"""
+
     _index: int = 67
     _fp: int = 4
     _power: int = 20
@@ -1469,6 +1595,8 @@ class Bolt(EnemySpell):
 
 
 class Crystal(EnemySpell):
+    """Learnable spell definition for Crystal"""
+
     _index: int = 68
     _fp: int = 5
     _power: int = 25
@@ -1495,6 +1623,8 @@ class Crystal(EnemySpell):
 
 
 class FlameStone(EnemySpell):
+    """Learnable spell definition for FlameStone"""
+
     _index: int = 69
     _fp: int = 6
     _power: int = 32
@@ -1521,6 +1651,8 @@ class FlameStone(EnemySpell):
 
 
 class MegaDrain(EnemySpell):
+    """Learnable spell definition for MegaDrain"""
+
     _index: int = 70
     _fp: int = 7
     _power: int = 40
@@ -1547,6 +1679,8 @@ class MegaDrain(EnemySpell):
 
 
 class WillyWisp(EnemySpell):
+    """Learnable spell definition for WillyWisp"""
+
     _index: int = 71
     _fp: int = 8
     _power: int = 48
@@ -1573,6 +1707,8 @@ class WillyWisp(EnemySpell):
 
 
 class DiamondSaw(EnemySpell):
+    """Learnable spell definition for DiamondSaw"""
+
     _index: int = 72
     _fp: int = 9
     _power: int = 60
@@ -1599,6 +1735,8 @@ class DiamondSaw(EnemySpell):
 
 
 class Electroshock(EnemySpell):
+    """Learnable spell definition for Electroshock"""
+
     _index: int = 73
     _fp: int = 10
     _power: int = 72
@@ -1625,6 +1763,8 @@ class Electroshock(EnemySpell):
 
 
 class Blast(EnemySpell):
+    """Learnable spell definition for Blast"""
+
     _index: int = 74
     _fp: int = 11
     _power: int = 89
@@ -1651,6 +1791,8 @@ class Blast(EnemySpell):
 
 
 class Storm(EnemySpell):
+    """Learnable spell definition for Storm"""
+
     _index: int = 75
     _fp: int = 12
     _power: int = 108
@@ -1677,6 +1819,8 @@ class Storm(EnemySpell):
 
 
 class IceRock(EnemySpell):
+    """Learnable spell definition for IceRock"""
+
     _index: int = 76
     _fp: int = 13
     _power: int = 130
@@ -1703,6 +1847,8 @@ class IceRock(EnemySpell):
 
 
 class Escape(EnemySpell):
+    """Learnable spell definition for Escape"""
+
     _index: int = 77
     _hit_rate: int = 100
 
@@ -1727,6 +1873,8 @@ class Escape(EnemySpell):
 
 
 class DarkStar(EnemySpell):
+    """Learnable spell definition for DarkStar"""
+
     _index: int = 78
     _fp: int = 20
     _power: int = 160
@@ -1753,6 +1901,8 @@ class DarkStar(EnemySpell):
 
 
 class Recover(EnemySpell):
+    """Learnable spell definition for Recover"""
+
     _index: int = 79
     _fp: int = 3
     _power: int = 50
@@ -1779,6 +1929,8 @@ class Recover(EnemySpell):
 
 
 class MegaRecover(EnemySpell):
+    """Learnable spell definition for MegaRecover"""
+
     _index: int = 80
     _fp: int = 9
     _power: int = 200
@@ -1805,6 +1957,8 @@ class MegaRecover(EnemySpell):
 
 
 class FlameWall(EnemySpell):
+    """Learnable spell definition for FlameWall"""
+
     _index: int = 81
     _fp: int = 2
     _power: int = 8
@@ -1831,6 +1985,8 @@ class FlameWall(EnemySpell):
 
 
 class StaticE(EnemySpell):
+    """Learnable spell definition for StaticE"""
+
     _index: int = 82
     _fp: int = 4
     _power: int = 12
@@ -1857,6 +2013,8 @@ class StaticE(EnemySpell):
 
 
 class SandStorm(EnemySpell):
+    """Learnable spell definition for SandStorm"""
+
     _index: int = 83
     _fp: int = 6
     _power: int = 16
@@ -1883,6 +2041,8 @@ class SandStorm(EnemySpell):
 
 
 class Blizzard(EnemySpell):
+    """Learnable spell definition for Blizzard"""
+
     _index: int = 84
     _fp: int = 8
     _power: int = 22
@@ -1909,6 +2069,8 @@ class Blizzard(EnemySpell):
 
 
 class DrainBeam(EnemySpell):
+    """Learnable spell definition for DrainBeam"""
+
     _index: int = 85
     _fp: int = 10
     _power: int = 26
@@ -1935,6 +2097,8 @@ class DrainBeam(EnemySpell):
 
 
 class MeteorBlast(EnemySpell):
+    """Learnable spell definition for MeteorBlast"""
+
     _index: int = 86
     _fp: int = 12
     _power: int = 30
@@ -1961,6 +2125,8 @@ class MeteorBlast(EnemySpell):
 
 
 class LightBeam(EnemySpell):
+    """Learnable spell definition for LightBeam"""
+
     _index: int = 87
     _fp: int = 13
     _power: int = 34
@@ -1987,6 +2153,8 @@ class LightBeam(EnemySpell):
 
 
 class WaterBlast(EnemySpell):
+    """Learnable spell definition for WaterBlast"""
+
     _index: int = 88
     _fp: int = 14
     _power: int = 39
@@ -2013,6 +2181,8 @@ class WaterBlast(EnemySpell):
 
 
 class Solidify(EnemySpell):
+    """Learnable spell definition for Solidify"""
+
     _index: int = 89
     _fp: int = 15
     _power: int = 47
@@ -2039,6 +2209,8 @@ class Solidify(EnemySpell):
 
 
 class PetalBlast(EnemySpell):
+    """Learnable spell definition for PetalBlast"""
+
     _index: int = 90
     _fp: int = 16
     _power: int = 40
@@ -2065,6 +2237,8 @@ class PetalBlast(EnemySpell):
 
 
 class AuroraFlash(EnemySpell):
+    """Learnable spell definition for AuroraFlash"""
+
     _index: int = 91
     _fp: int = 17
     _power: int = 50
@@ -2091,6 +2265,8 @@ class AuroraFlash(EnemySpell):
 
 
 class Boulder(EnemySpell):
+    """Learnable spell definition for Boulder"""
+
     _index: int = 92
     _fp: int = 18
     _power: int = 72
@@ -2117,6 +2293,8 @@ class Boulder(EnemySpell):
 
 
 class Corona(EnemySpell):
+    """Learnable spell definition for Corona"""
+
     _index: int = 93
     _fp: int = 19
     _power: int = 88
@@ -2143,6 +2321,8 @@ class Corona(EnemySpell):
 
 
 class MeteorSwarm(EnemySpell):
+    """Learnable spell definition for MeteorSwarm"""
+
     _index: int = 94
     _fp: int = 20
     _power: int = 100
@@ -2169,6 +2349,8 @@ class MeteorSwarm(EnemySpell):
 
 
 class KnockOut(EnemySpell):
+    """Learnable spell definition for KnockOut"""
+
     _index: int = 95
     _fp: int = 15
     _power: int = 1
@@ -2196,6 +2378,8 @@ class KnockOut(EnemySpell):
 
 
 class WeirdMushroom(EnemySpell):
+    """Learnable spell definition for WeirdMushroom"""
+
     _index: int = 96
     _power: int = 30
     _hit_rate: int = 100
@@ -2221,6 +2405,8 @@ class WeirdMushroom(EnemySpell):
 
 
 class BreakerBeam(EnemySpell):
+    """Learnable spell definition for BreakerBeam"""
+
     _index: int = 97
     _fp: int = 15
     _power: int = 80
@@ -2247,6 +2433,8 @@ class BreakerBeam(EnemySpell):
 
 
 class Shredder(EnemySpell):
+    """Learnable spell definition for Shredder"""
+
     _index: int = 98
     _fp: int = 8
     _hit_rate: int = 100
@@ -2277,6 +2465,8 @@ class Shredder(EnemySpell):
 
 
 class Sledge(EnemySpell):
+    """Learnable spell definition for Sledge"""
+
     _index: int = 99
     _fp: int = 6
     _power: int = 50
@@ -2303,6 +2493,8 @@ class Sledge(EnemySpell):
 
 
 class SwordRain(EnemySpell):
+    """Learnable spell definition for SwordRain"""
+
     _index: int = 100
     _fp: int = 8
     _power: int = 80
@@ -2329,6 +2521,8 @@ class SwordRain(EnemySpell):
 
 
 class SpearRain(EnemySpell):
+    """Learnable spell definition for SpearRain"""
+
     _index: int = 101
     _fp: int = 5
     _power: int = 60
@@ -2355,6 +2549,8 @@ class SpearRain(EnemySpell):
 
 
 class ArrowRain(EnemySpell):
+    """Learnable spell definition for ArrowRain"""
+
     _index: int = 102
     _fp: int = 2
     _power: int = 40
@@ -2381,6 +2577,8 @@ class ArrowRain(EnemySpell):
 
 
 class BigBang(EnemySpell):
+    """Learnable spell definition for BigBang"""
+
     _index: int = 103
     _power: int = 100
     _hit_rate: int = 100
@@ -2406,6 +2604,8 @@ class BigBang(EnemySpell):
 
 
 class ChestScrow(EnemySpell):
+    """Learnable spell definition for ChestScrow"""
+
     _index: int = 104
     _power: int = 10
     _hit_rate: int = 85
@@ -2431,6 +2631,8 @@ class ChestScrow(EnemySpell):
 
 
 class ChestFear(EnemySpell):
+    """Learnable spell definition for ChestFear"""
+
     _index: int = 105
     _power: int = 0
     _hit_rate: int = 82
@@ -2456,6 +2658,8 @@ class ChestFear(EnemySpell):
 
 
 class ChestMute(EnemySpell):
+    """Learnable spell definition for ChestMute"""
+
     _index: int = 106
     _power: int = 0
     _hit_rate: int = 85
@@ -2481,6 +2685,8 @@ class ChestMute(EnemySpell):
 
 
 class ChestPoison(EnemySpell):
+    """Learnable spell definition for ChestPoison"""
+
     _index: int = 107
     _power: int = 0
     _hit_rate: int = 85
@@ -2506,6 +2712,8 @@ class ChestPoison(EnemySpell):
 
 
 class ChainSaw(EnemySpell):
+    """Learnable spell definition for ChainSaw"""
+
     _index: int = 108
     _power: int = 50
     _hit_rate: int = 90
@@ -2531,6 +2739,8 @@ class ChainSaw(EnemySpell):
 
 
 class SpellDoNothing(EnemySpell):
+    """Learnable spell definition for SpellDoNothing"""
+
     _index: int = 251
     _power: int = 0
     _hit_rate: int = 100
@@ -2539,67 +2749,58 @@ class SpellDoNothing(EnemySpell):
 # ********************* Util functions to choose an elemental version of specific spells.
 
 
-def _get_jump_spell(world) -> Type[Jump]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_jump_spell(world: GameWorld) -> Type[Jump]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([Jump, FireJump, IceJump, ThunderJump])
-    else:
-        return Jump
+    return Jump
 
 
-def _get_fire_orb_spell(world) -> Type[FireOrb]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_fire_orb_spell(world: GameWorld) -> Type[FireOrb]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([FireOrb, IceOrb, ThunderOrb, EarthOrb])
-    else:
-        return FireOrb
+    return FireOrb
 
 
-def _get_super_jump_spell(world) -> Type[SuperJump]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_super_jump_spell(world: GameWorld) -> Type[SuperJump]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([SuperJump, FireSuperJump, IceSuperJump, ThunderSuperJump])
-    else:
-        return SuperJump
+    return SuperJump
 
 
-def _get_super_flame_spell(world) -> Type[SuperFlame]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_super_flame_spell(world: GameWorld) -> Type[SuperFlame]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([SuperFlame, IceSuperFlame, ThunderSuperFlame, EarthSuperFlame])
-    else:
-        return SuperFlame
+    return SuperFlame
 
 
-def _get_ultra_jump_spell(world) -> Type[UltraJump]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_ultra_jump_spell(world: GameWorld) -> Type[UltraJump]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([UltraJump, FireUltraJump, IceUltraJump, ThunderUltraJump])
-    else:
-        return UltraJump
+    return UltraJump
 
 
-def _get_ultra_flame_spell(world) -> Type[UltraFlame]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_ultra_flame_spell(world: GameWorld) -> Type[UltraFlame]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([UltraFlame, IceUltraFlame, ThunderUltraFlame, EarthUltraFlame])
-    else:
-        return UltraFlame
+    return UltraFlame
 
 
-def _get_thunderbolt_spell(world) -> Type[Thunderbolt]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_thunderbolt_spell(world: GameWorld) -> Type[Thunderbolt]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([Thunderbolt, IceThunderbolt, FireThunderbolt, EarthThunderbolt])
-    else:
-        return Thunderbolt
+    return Thunderbolt
 
 
-def _get_shocker_spell(world) -> Type[Shocker]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_shocker_spell(world: GameWorld) -> Type[Shocker]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([Shocker, IceShocker, FireShocker, EarthShocker])
-    else:
-        return Shocker
+    return Shocker
 
 
-def _get_snowy_spell(world) -> Type[Snowy]:
-    if world.settings.is_boolean_flag_enabled(CharacterElements):
+def _get_snowy_spell(world: GameWorld) -> Type[Snowy]:
+    if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([Snowy, ThunderSnowy, FireSnowy, EarthSnowy])
-    else:
-        return Snowy
+    return Snowy
 
 
 # ********************* Default lists for the world.

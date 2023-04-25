@@ -9,7 +9,7 @@ script = EventScript(
         PlaySound(sound=SO085_FLOWER, channel=6),
         RunDialog(
             dialog_id=PRIMARY_TEMP_7000,
-            above_object=Bowser,
+            above_object=BOWSER,
             closable=True,
             sync=False,
             multiline=False,
