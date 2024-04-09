@@ -101,7 +101,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR2_SWSE,
+        directions=VramStore.DIR2_SWSE,
         vram_size=4,
         cannot_clone=True,
     ),

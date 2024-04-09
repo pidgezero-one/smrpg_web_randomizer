@@ -9,8 +9,19 @@ from randomizer.entities.characters import (
     Mario,
     Toadstool,
 )
+from randomizer.entities.characters.characters import (
+    BowserSpotted,
+    GenoSpotted,
+    MallowSpotted,
+    MarioSpotted,
+    ToadstoolSpotted,
+)
 
 from randomizer.types.characters import Character
+from randomizer.types.items.classes import (
+    IllegalItemPropertyException,
+    SpottedCharacter,
+)
 from randomizer.types.overworld_scripts.ids import (
     R054_BOOSTER_HILL_____DUMMY,
     R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
@@ -94,6 +105,35 @@ def permit_placing_character(world: GameWorld):
     return permitted
 
 
+def _equivalent_spotted_character(char_class: Character) -> Type[SpottedCharacter]:
+    if isinstance(char_class, Mario):
+        return MarioSpotted
+    if isinstance(char_class, Mallow):
+        return MallowSpotted
+    if isinstance(char_class, Geno):
+        return GenoSpotted
+    if isinstance(char_class, Bowser):
+        return BowserSpotted
+    if isinstance(char_class, Toadstool):
+        return ToadstoolSpotted
+    raise IllegalItemPropertyException("what did you try to put in this location?")
+
+
+def _set_equivalent(
+    world: GameWorld,
+    contents: Optional[Character],
+    related: Type[CharacterSpottedLocation],
+) -> None:
+    equivalent_spotted_location = world.get_location_instance(related)
+    if contents is not None:
+        spotted_char = _equivalent_spotted_character(contents)
+        spotted_char_instance = world.get_spotted_character_instance(spotted_char)
+    else:
+        spotted_char = None
+        spotted_char_instance = None
+    equivalent_spotted_location.set_contents(spotted_char_instance)
+
+
 class MushroomWayCharacter(CharacterRecruitLocation):
     """MushroomWayCharacter progress location class"""
 
@@ -105,7 +145,7 @@ class MushroomWayCharacter(CharacterRecruitLocation):
     _container_event: int = E0186_PARTY_JOIN_LOGIC
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, MushroomWayCharacterSpotted)
+        _set_equivalent(self.world, contents, MushroomWayCharacterSpotted)
 
         if contents is not None:
             contents.set_main_character(False)
@@ -153,7 +193,7 @@ class ForestMazeCharacter(CharacterRecruitLocation):
     _container_event: int = E0186_PARTY_JOIN_LOGIC
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, ForestMazeCharacterSpotted)
+        _set_equivalent(self.world, contents, ForestMazeCharacterSpotted)
 
         if contents is not None:
             contents.set_main_character(False)
@@ -206,7 +246,7 @@ class MinesCharacter(CharacterRecruitLocation):
     _container_event: int = E0186_PARTY_JOIN_LOGIC
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, MinesCharacterSpotted)
+        _set_equivalent(self.world, contents, MinesCharacterSpotted)
 
         if contents is not None:
             contents.set_main_character(False)
@@ -252,7 +292,7 @@ class ChapelCharacter(CharacterRecruitLocation):
     _container_event: int = E0186_PARTY_JOIN_LOGIC
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, ChapelCharacterSpotted)
+        _set_equivalent(self.world, contents, ChapelCharacterSpotted)
 
         if contents is not None:
             contents.set_main_character(False)
@@ -335,7 +375,7 @@ class StartingCharacter1(CharacterRecruitLocation):
     _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted1)
+        _set_equivalent(self.world, contents, StartingCharacterSpotted1)
 
         if contents is not None:
             contents.set_main_character(True)
@@ -356,7 +396,7 @@ class StartingCharacter2(ExtraStartingCharacterLocation):
         return starting_chars >= 2
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted2)
+        _set_equivalent(self.world, contents, StartingCharacterSpotted2)
 
         if contents is not None:
             contents.set_main_character(False)
@@ -377,7 +417,7 @@ class StartingCharacter3(ExtraStartingCharacterLocation):
         return starting_chars >= 3
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted3)
+        _set_equivalent(self.world, contents, StartingCharacterSpotted3)
 
         if contents is not None:
             contents.set_main_character(False)
@@ -398,7 +438,7 @@ class StartingCharacter4(ExtraStartingCharacterLocation):
         return starting_chars >= 4
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted4)
+        _set_equivalent(self.world, contents, StartingCharacterSpotted4)
 
         if contents is not None:
             contents.set_main_character(False)
@@ -415,7 +455,7 @@ class StartingCharacter5(ExtraStartingCharacterLocation):
     _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
 
     def set_contents(self, contents: Optional[Character]) -> None:
-        super().set_contents(contents, StartingCharacterSpotted5)
+        _set_equivalent(self.world, contents, StartingCharacterSpotted5)
 
         if contents is not None:
             contents.set_main_character(False)

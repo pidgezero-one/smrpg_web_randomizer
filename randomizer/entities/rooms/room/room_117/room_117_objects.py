@@ -104,7 +104,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=True,
     ),
     # NPC_3
@@ -139,7 +139,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         vram_size=1,
         cannot_clone=True,
     ),

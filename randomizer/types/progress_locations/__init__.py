@@ -28,8 +28,8 @@ from .classes import (
     MarioSpellSlot,
     MallowSpellSlot,
     GenoSpellSlot,
-    BowserSpellSlot,
     ToadstoolSpellSlot,
+    BowserSpellSlot,
     ProgressLocationT,
 )
 from .enums import LocationWorldArea, PacketType

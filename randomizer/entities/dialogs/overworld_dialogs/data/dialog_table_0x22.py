@@ -1452,9 +1452,18 @@ dialog_data[
 
    Anyway, about my secret item...[await]"""
 dialog_data[602] = """   Invisible items have been placed.[await]"""
-dialog_data[603] = """[await]"""
-dialog_data[604] = """[await]"""
-dialog_data[605] = """[await]"""
+dialog_data[
+    603
+] = """
+ My flag's between “O” and “A”.[await]"""
+dialog_data[
+    604
+] = """
+ My flag's underneath a green bed.[await]"""
+dialog_data[
+    605
+] = """
+ My flag's behind a wooden flower.[await]"""
 dialog_data[
     606
 ] = """      CLOSED FOR MAINTENANCE

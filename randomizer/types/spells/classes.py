@@ -1,7 +1,7 @@
 """Base classes fors spells."""
 
 from copy import deepcopy
-from typing import List, Optional, Type, TYPE_CHECKING
+from typing import List, Optional, TYPE_CHECKING
 
 from randomizer.types.items import SpellLearn
 from randomizer.types.numbers import BitMapSet, ByteField, UInt16, UInt8
@@ -329,7 +329,7 @@ class Spell:
         if self.effect_type is not None:
             effect_type = self.effect_type.value
         if self.element is not None:
-            element = self.element.value
+            element = self.element.value.spell_value
         if self.inflict is not None:
             inflict_value = self.inflict.value
         patch.add_data(base_addr + 1, spell_type + effect_type + (self.quad9s * 0x08))
@@ -412,11 +412,7 @@ class CloneSpell(CharacterSpell):
     """Spell class that allows an ally spell to be repeated with a different name."""
 
     _ref_ptr: int = 0
-    _parent_spell: Type[CharacterSpell]
-
-    def set_title(self, title: str) -> None:
-        """Designate the in-game name of this clone spell"""
-        self._title = title
+    _parent_spell: CharacterSpell
 
     @property
     def ref_ptr(self) -> int:
@@ -433,43 +429,158 @@ class CloneSpell(CharacterSpell):
         self._desc_ptr = desc_ptr
 
     @property
-    def parent_spell(self) -> Type[CharacterSpell]:
+    def parent_spell(self) -> CharacterSpell:
         """The spell that this is a clone of."""
         return self._parent_spell
 
-    def _set_parent_spell(self, parent_spell: Type[CharacterSpell]) -> None:
+    def set_parent_spell(self, parent_spell: CharacterSpell) -> None:
         """Designate which spell this is a clone of."""
         self._parent_spell = parent_spell
 
-    def __init__(self, world: Optional["GameWorld"], title: str, spell: CharacterSpell):
+    @property
+    def fp(self) -> UInt8:
+        """The FP cost of this spell."""
+        return self._parent_spell.fp
+
+    @property
+    def power(self) -> UInt8:
+        """The base power of this spell."""
+        return self._parent_spell.power
+
+    @property
+    def hit_rate(self) -> UInt8:
+        """The likelihood that this spell will hit a target."""
+        return self._parent_spell.hit_rate
+
+    @property
+    def index(self) -> UInt8:
+        """The ID of this spell as known to SMRPG."""
+        return UInt8(self._index)
+
+    @property
+    def anim_ptr(self) -> int:
+        """The pointer for where the spell's animation begins.
+        TODO: (deprecate this)"""
+        return self._parent_spell.anim_ptr
+
+    @property
+    def desc_ptr(self) -> int:
+        """The pointer for where the spell's description begins."""
+        return self._parent_spell.desc_ptr
+
+    @property
+    def spell_type(self) -> SpellType:
+        """Damage vs. heal."""
+        return self._parent_spell.spell_type
+
+    @property
+    def effect_type(self) -> EffectType:
+        """Inflict vs. nullify."""
+        return self._parent_spell.effect_type
+
+    @property
+    def inflict(self) -> InflictFunction:
+        """A special property of the spell on contact, i.e. jump counter."""
+        return self._parent_spell.inflict
+
+    @property
+    def element(self) -> Element:
+        """The spell's infused element."""
+        return self._parent_spell.element
+
+    @property
+    def check_stats(self) -> bool:
+        """(unknown)"""
+        return self._parent_spell.check_stats
+
+    @property
+    def ignore_defense(self) -> bool:
+        """If true, the target's defense is not factored into output calculation."""
+        return self._parent_spell.ignore_defense
+
+    @property
+    def check_ohko(self) -> bool:
+        """(unknown)"""
+        return self._parent_spell.check_ohko
+
+    @property
+    def usable_outside_of_battle(self) -> bool:
+        """If true, the spell can be used in the X menu when not in battle."""
+        return self._parent_spell.usable_outside_of_battle
+
+    @property
+    def quad9s(self) -> bool:
+        """If true, the spell does max damage."""
+        return self._parent_spell.quad9s
+
+    @property
+    def hide_num(self) -> bool:
+        """If true, the damage output will not be shown."""
+        return self._parent_spell.hide_num
+
+    @property
+    def target_others(self) -> bool:
+        """If true, this spell targets all possible targets instead of just one."""
+        return self._parent_spell.target_others
+
+    @property
+    def target_enemies(self) -> bool:
+        """If true, this spell targets opponents."""
+        return self._parent_spell.target_enemies
+
+    @property
+    def target_party(self) -> bool:
+        """If true, this spell targets your own party."""
+        return self._parent_spell.target_party
+
+    @property
+    def target_wounded(self) -> bool:
+        """If true, this spell targets party members who are KOed."""
+        return self._parent_spell.target_wounded
+
+    @property
+    def target_one_party(self) -> bool:
+        """(unknown)"""
+        return self._parent_spell.target_one_party
+
+    @property
+    def target_not_self(self) -> bool:
+        """If true, the caster is excluded from targeting."""
+        return self._parent_spell.target_not_self
+
+    @property
+    def status_effects(self) -> List[Status]:
+        """A list of status effects inflicted by this spell."""
+        return self._parent_spell.status_effects
+
+    @property
+    def boosts(self) -> List[TempStatBuff]:
+        """A list of stat boosts applied by this spell."""
+        return self._parent_spell.boosts
+
+    @property
+    def world(self) -> "GameWorld":
+        """The seed's game world instance."""
+        assert self._world is not None
+        return self._world
+
+    def __str__(self):
+        return f"<{self.name}>"
+
+    def __repr__(self):
+        return str(self)
+
+    @property
+    def name(self) -> str:
+        """The class name of this spell."""
+        return self.__class__.__name__
+
+    def __init__(self, world: "GameWorld", spell: Optional[CharacterSpell]):
         super().__init__(world)
-        self.set_title(title)
-        self.set_fp(spell.fp)
-        self.set_power(spell.power)
-        self.set_hit_rate(spell.hit_rate)
-        self.set_ref_ptr(spell.anim_ptr)
-        self.set_desc_ptr(spell.desc_ptr)
-        self.set_check_stats(spell.check_stats)
-        self.set_ignore_defense(spell.ignore_defense)
-        self.set_check_ohko(spell.check_ohko)
-        self.set_usable_outside_of_battle(spell.usable_outside_of_battle)
-        self.set_spell_type(spell.spell_type)
-        self.set_effect_type(spell.effect_type)
-        self.set_quad9s(spell.quad9s)
-        self.set_target_others(spell.target_others)
-        self.set_target_enemies(spell.target_enemies)
-        self.set_target_party(spell.target_party)
-        self.set_target_wounded(spell.target_wounded)
-        self.set_target_one_party(spell.target_one_party)
-        self.set_target_not_self(spell.target_not_self)
-        self.set_element(spell.element)
-        self.set_status_effects(spell.status_effects)
-        self.set_boosts(spell.boosts)
-        self.set_inflict(spell.inflict)
-        self.set_hide_num(spell.hide_num)
-        self.set_timing_modifiers(spell.timing_modifiers)
-        self.set_damage_modifiers(spell.damage_modifiers)
-        self._set_parent_spell(type(spell))
+        if spell is not None:
+            original_spell = world.get_spell_instance(type(spell))
+            assert isinstance(original_spell, CharacterSpell)
+            self.set_parent_spell(original_spell)
 
     def get_patch(self) -> Patch:
         """Get patch for this spell."""

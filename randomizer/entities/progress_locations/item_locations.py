@@ -1,5 +1,6 @@
 """Progress location definitions for items."""
 
+from random import random
 from typing import List, Optional, Type
 
 from randomizer.entities.spells.spells import SuperJump
@@ -339,6 +340,7 @@ from randomizer.types.overworld_scripts.action_scripts.ids import (
     A0043_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH,
     A0333_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH,
 )
+from randomizer.types.overworld_scripts.ids.room_names import R101_BOOSTER_PASS_AREA_02
 from randomizer.types.progress_locations import (
     ChestLocationAllowSlots,
     EarlygameChestLocation,
@@ -365,6 +367,13 @@ from randomizer.types.world.flags import (
     ShuffleWeddingGear,
     FireworksOptions,
     ShuffleLocationSelector,
+)
+from randomizer.types.world.flags.enums import MonstroTownGating, PipeVaultGating
+from randomizer.types.world.flags.flags import (
+    MonstroTownGate,
+    PipeVaultGate,
+    RestrictSpecialEquips,
+    SuperJump1Threshold,
 )
 
 from .helpers.area_access import (
@@ -432,9 +441,30 @@ from .helpers.classes import (
     YosterIsleLocation,
 )
 
-# TODO: Need to figure out tiers.
-
 # *** Marios Pad
+
+
+def _restrict_best_monstro_item(world: Optional[GameWorld], item: Item) -> bool:
+    if world is None:
+        return False
+    if not world.settings.is_boolean_flag_enabled(RestrictSpecialEquips):
+        return False
+    equips = [
+        world.get_item_instance(FroggieStick),
+        world.get_item_instance(Chomp),
+        world.get_item_instance(ZoomShoes),
+        world.get_item_instance(LazyShellArmor),
+        world.get_item_instance(LazyShellWeapon),
+        world.get_item_instance(JinxBelt),
+        world.get_item_instance(QuartzCharm),
+        world.get_item_instance(AttackScarf),
+        world.get_item_instance(SuperSuit),
+        world.get_item_instance(GhostMedal),
+    ]
+    equips.sort(key=lambda x: x.rank_value, reverse=True)
+    if equips[0] == item:
+        return random() > 0.7
+    return False
 
 
 class StartingItem1(StartingItemGrant, MariosPadLocation):
@@ -1118,6 +1148,7 @@ class MidasRiverFirstCompletionReward(GrantLocation, MidasRiverLocation):
     _original_item: Type[Item] = NokNokShell
     _room_ids: List[int] = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 2
 
 
 class MidasRiverBottomLeftCave(MidasRiverTunnelItem, MidasRiverLocation):
@@ -1157,6 +1188,11 @@ class TadpolePondCricketPieExchange(GrantLocation, TadpolePondLocation):
     _room_ids: List[int] = [R075_TADPOLE_POND_AREA_01]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        return super().can_accept(item, inventory) and not _restrict_best_monstro_item(
+            self.world, item
+        )
+
     def can_access(self, inventory: Inventory):
         return inventory.has_item(CricketPie)
 
@@ -1180,6 +1216,7 @@ class MelodyBayFirstReward(GrantLocation, TadpolePondLocation):
     _original_item: Type[Item] = ProgressiveCard
     _room_ids: List[int] = [R074_TADPOLE_POND_AREA_02]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 2
 
 
 class MelodyBaySecondReward(GrantLocation, TadpolePondLocation):
@@ -1366,6 +1403,7 @@ class RoseTownShopLeftChest(
     _room_ids: List[int] = [R087_ROSE_TOWN_ITEM_SHOP]
     _npc_ids: List[int] = [4]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
 
 class RoseTownShopRightChest(
@@ -1378,6 +1416,7 @@ class RoseTownShopRightChest(
     _room_ids: List[int] = [R087_ROSE_TOWN_ITEM_SHOP]
     _npc_ids: List[int] = [5]
     _container_event: int = E0246_CHEST_2_GRANT
+    _tier: int = 2
 
 
 class RoseTownCloudRightChest(
@@ -1397,6 +1436,11 @@ class RoseTownCloudRightChest(
             and inventory.has_item(Fertilizer)
             and can_defeat_forest_boss(self.world, inventory)
             and can_defeat_chapel_boss(self.world, inventory)
+        )
+
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        return super().can_accept(item, inventory) and not _restrict_best_monstro_item(
+            self.world, item
         )
 
 
@@ -1419,6 +1463,11 @@ class RoseTownCloudLeftChest(
             and can_defeat_chapel_boss(self.world, inventory)
         )
 
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        return super().can_accept(item, inventory) and not _restrict_best_monstro_item(
+            self.world, item
+        )
+
 
 class RoseTownInnToadPrize(GrantLocation, RoseTownLocation):
     """RoseTownInnToadPrize progress location class"""
@@ -1430,6 +1479,7 @@ class RoseTownInnToadPrize(GrantLocation, RoseTownLocation):
         R096_ROSE_TOWN_INN_2F,
     ]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 2
 
 
 class RoseTownInnGazPrize(GrantLocation, RoseTownLocation):
@@ -1459,6 +1509,7 @@ class RoseTownTreasureHouseLeftChest(
     ]
     _npc_ids: List[int] = [0, 0]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
 
 class RoseTownTreasureHouseRightChest(
@@ -1476,6 +1527,7 @@ class RoseTownTreasureHouseRightChest(
     ]
     _npc_ids: List[int] = [1, 1]
     _container_event: int = E0246_CHEST_2_GRANT
+    _tier: int = 2
 
 
 class RoseTownTreasureHouseMazeReward(GrantLocation, RoseTownLocation):
@@ -1510,6 +1562,7 @@ class RoseTownTreasureHouseUpperChest(
     ]
     _npc_ids: List[int] = [1, 1]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
     # flowers do weird things in this room
     def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
@@ -1862,6 +1915,12 @@ class YosterEntranceChest(
     _npc_ids: List[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
 
+    @property
+    def tier(self) -> int:
+        if self.world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.OPEN):
+            return 2
+        return 4
+
 
 class YosterRacePrize1(GrantLocation, YosterIsleLocation):
     """YosterRacePrize1 progress location class"""
@@ -2126,6 +2185,7 @@ class BoosterPassBush(GrantLocation, BoosterPassLocation):
     _original_item: Type[Item] = FrogCoin
     _room_ids: List[int] = [R100_BOOSTER_PASS_AREA_01]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 2
 
 
 class BoosterPassFirstRoomLeftChest(
@@ -2138,6 +2198,7 @@ class BoosterPassFirstRoomLeftChest(
     _room_ids: List[int] = [R100_BOOSTER_PASS_AREA_01]
     _npc_ids: List[int] = [8]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
 
 class BoosterPassFirstRoomRightChest(
@@ -2150,6 +2211,18 @@ class BoosterPassFirstRoomRightChest(
     _room_ids: List[int] = [R100_BOOSTER_PASS_AREA_01]
     _npc_ids: List[int] = [9]
     _container_event: int = E0246_CHEST_2_GRANT
+    _tier: int = 2
+
+
+class BoosterPassSecondRoomFlower(FreestandingLocation, BoosterPassLocation):
+    """BoosterPassSecondRoomFlower progress location class"""
+
+    _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_PASS_FLOWER
+    _original_item: Type[Item] = Flower
+    _room_ids: List[int] = [R101_BOOSTER_PASS_AREA_02]
+    _npc_ids: List[int] = [6]
+    _container_event: int = E0239_FREESTANDING_3_GRANT
+    _tier: int = 2
 
 
 class BoosterPassSecretMiddleChest(
@@ -2259,6 +2332,10 @@ class BoosterTowerFallingChest(FreestandingLocation, BoosterTowerLocation):
 
     # this looks like a chest, requires an overworld item, but acts like a npc reward
 
+    @property
+    def tier(self) -> int:
+        return 4
+
 
 class BoosterTowerKnifeGuyPrize(GrantLocation, BoosterTowerLocation):
     """BoosterTowerKnifeGuyPrize progress location class"""
@@ -2272,6 +2349,10 @@ class BoosterTowerKnifeGuyPrize(GrantLocation, BoosterTowerLocation):
 
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_balcony_boss(self.world, inventory)
+
+    @property
+    def tier(self) -> int:
+        return 4
 
 
 class BoosterTowerPortraitPrize(FreestandingLocation, BoosterTowerLocation):
@@ -2296,6 +2377,15 @@ class BoosterTowerElderKeyItem(FreestandingLocation, BoosterTowerLocation):
     _container_event: int = E0241_FREESTANDING_1_GRANT
     _npc_ids: List[int] = [0]
     _keep_original_item_if_excluded: bool = False
+
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        return super().can_accept(item, inventory) and not _restrict_best_monstro_item(
+            self.world, item
+        )
+
+    @property
+    def tier(self) -> int:
+        return 4
 
 
 class BoosterTowerRightmostItem(FreestandingLocation, BoosterTowerLocation):
@@ -2519,9 +2609,15 @@ class BoosterTowerRoomKeyChest(
     _container_event: int = E0247_CHEST_1_GRANT
 
     def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
-        return super().can_accept(item, inventory) and not isinstance(
-            item, InvincibilityStar
+        return (
+            super().can_accept(item, inventory)
+            and not isinstance(item, InvincibilityStar)
+            and not _restrict_best_monstro_item(self.world, item)
         )
+
+    @property
+    def tier(self) -> int:
+        return 4
 
 
 class BoosterTowerTopFloorLowerChest(
@@ -2592,6 +2688,10 @@ class BoosterTowerCurtainGamePrize(GrantLocation, BoosterTowerLocation):
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
+    @property
+    def tier(self) -> int:
+        return 4
+
 
 # *** Marrymore
 
@@ -2603,6 +2703,7 @@ class MarrymoreFirstSuitePrize(GrantLocation, MarrymoreLocation):
     _original_item: Type[Item] = FlowerTab
     _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 2
 
 
 class MarrymoreSecondSuitePrize(GrantLocation, MarrymoreLocation):
@@ -2660,6 +2761,7 @@ class MarrymoreHotelChest(
     _room_ids: List[int] = [R009_MARRYMORE_INN_REGULAR_ROOM]
     _npc_ids: List[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
 
 class MarrymoreSnifit1(GrantLocation, MarrymoreChapelLocation):
@@ -2941,6 +3043,10 @@ class Ship3DMazePuzzle(PacketItem, SunkenShipLocation):
     _original_item: Type[Item] = RoyalSyrup
     _packet_type: PacketType = PacketType.FALLING
     _keep_original_item_if_excluded: bool = False
+
+    @property
+    def tier(self) -> int:
+        return 4
 
 
 class ShipShopChest(ChestLocationAllowSlots, MidgameChestLocation, SunkenShipLocation):
@@ -3388,6 +3494,7 @@ class LandsEndSecondPurchasableChest(
     _room_ids: List[int] = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
     _npc_ids: List[int] = [19]
     _container_event: int = E0246_CHEST_2_GRANT
+    _tier: int = 4
 
 
 class TroopaClimbSub12Prize(GrantLocation, LandsEndLocation):
@@ -3397,6 +3504,7 @@ class TroopaClimbSub12Prize(GrantLocation, LandsEndLocation):
     _original_item: Type[Item] = TroopaPin
     _room_ids: List[int] = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 4
 
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_temple_boss(self.world, inventory)
@@ -3729,6 +3837,12 @@ class MonstroEntrance(ChestLocationAllowSlots, MonstroTownLocation):
     _npc_ids: List[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
 
+    @property
+    def tier(self) -> int:
+        if self.world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.OPEN):
+            return 2
+        return 4
+
 
 class MonstroThwompItem(FreestandingLocation, MonstroTownLocation):
     """MonstroThwompItem progress location class"""
@@ -3738,6 +3852,12 @@ class MonstroThwompItem(FreestandingLocation, MonstroTownLocation):
     _room_ids: List[int] = [R324_MONSTRO_TOWN_OUTSIDE]
     _npc_ids: List[int] = [0]
     _container_event: int = E0241_FREESTANDING_1_GRANT
+
+    @property
+    def tier(self) -> int:
+        if self.world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.OPEN):
+            return 2
+        return 4
 
 
 class MonstroDojoClearReward(GrantLocation, MonstroTownLocation):
@@ -3751,6 +3871,11 @@ class MonstroDojoClearReward(GrantLocation, MonstroTownLocation):
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_fourth_dojo_boss(self.world, inventory)
 
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        return super().can_accept(item, inventory) and not _restrict_best_monstro_item(
+            self.world, item
+        )
+
 
 class MonstroSealedDoorClearReward(GrantLocation, MonstroTownLocation):
     """MonstroSealedDoorClearReward progress location class"""
@@ -3762,6 +3887,11 @@ class MonstroSealedDoorClearReward(GrantLocation, MonstroTownLocation):
 
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_sealed_door_boss(self.world, inventory)
+
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        return super().can_accept(item, inventory) and not _restrict_best_monstro_item(
+            self.world, item
+        )
 
 
 class MonstroFirstSuperJumpReward(GrantLocation, MonstroTownLocation):
@@ -3775,10 +3905,21 @@ class MonstroFirstSuperJumpReward(GrantLocation, MonstroTownLocation):
     def can_access(self, inventory: Inventory) -> bool:
         return super().can_access(inventory) and inventory.has_item(SuperJump)
 
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        return super().can_accept(item, inventory) and not _restrict_best_monstro_item(
+            self.world, item
+        )
+
     def __init__(self, world: GameWorld) -> None:
         super().__init__(world)
         if SuperJump.title in world.settings.get_flag(AvailableSpells).disabled:
             self.set_allow_empty_when_finished_shuffling(True)
+
+    @property
+    def tier(self) -> int:
+        if self.world.settings.get_flag(SuperJump1Threshold).value < 30:
+            return 2
+        return 4
 
 
 class MonstroSecondSuperJumpReward(GrantLocation, MonstroTownLocation):
@@ -3797,6 +3938,12 @@ class MonstroSecondSuperJumpReward(GrantLocation, MonstroTownLocation):
         if SuperJump.title in world.settings.get_flag(AvailableSpells).disabled:
             self.set_allow_empty_when_finished_shuffling(True)
 
+    @property
+    def tier(self) -> int:
+        if self.world.settings.get_flag(SuperJump1Threshold).value < 31:
+            return 2
+        return 4
+
 
 class MonstroFlagExchange(GrantLocation, MonstroTownLocation):
     """MonstroFlagExchange progress location class"""
@@ -3812,6 +3959,11 @@ class MonstroFlagExchange(GrantLocation, MonstroTownLocation):
             and inventory.has_item(DryBonesFlag)
             and inventory.has_item(GreaperFlag)
             and inventory.has_item(BigBooFlag)
+        )
+
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        return super().can_accept(item, inventory) and not _restrict_best_monstro_item(
+            self.world, item
         )
 
 
@@ -3946,6 +4098,7 @@ class BeanValleyBossNote(GrantLocation, BeanValleyLocation):
     _original_item: Type[Item] = Seed
     _room_ids: List[int] = [R254_BEAN_VALLEY_SMILAX_AREA]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 4
 
     def can_access(self, inventory: Inventory) -> bool:
         return can_defeat_valley_boss(self.world, inventory)
@@ -4191,6 +4344,7 @@ class BeanstalkUpperCloudLeftChest(ChestLocationAllowSlots, BeanValleyLocation):
     _room_ids: List[int] = [R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND]
     _npc_ids: List[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 4
 
 
 class BeanstalkUpperCloudRightChest(ChestLocationAllowSlots, BeanValleyLocation):
@@ -4201,6 +4355,7 @@ class BeanstalkUpperCloudRightChest(ChestLocationAllowSlots, BeanValleyLocation)
     _room_ids: List[int] = [R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND]
     _npc_ids: List[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
+    _tier: int = 4
 
 
 class BeanstalkLowerCloudLeftChest(ChestLocationAllowSlots, BeanValleyLocation):
@@ -4211,6 +4366,7 @@ class BeanstalkLowerCloudLeftChest(ChestLocationAllowSlots, BeanValleyLocation):
     _room_ids: List[int] = [R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD]
     _npc_ids: List[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 4
 
 
 class BeanstalkLowerCloudRightChest(ChestLocationAllowSlots, BeanValleyLocation):
@@ -4221,6 +4377,7 @@ class BeanstalkLowerCloudRightChest(ChestLocationAllowSlots, BeanValleyLocation)
     _room_ids: List[int] = [R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD]
     _npc_ids: List[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
+    _tier: int = 4
 
 
 # *** Grate Guy's Casino
@@ -4246,6 +4403,7 @@ class NimbusShopChest(ChestLocationAllowSlots, NimbusTownLocation):
     _room_ids: List[int] = [R344_NIMBUS_LAND_ITEM_SHOP]
     _npc_ids: List[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
 
 class NimbusInnDreamPrize1(GrantLocation, NimbusTownLocation):
@@ -4255,6 +4413,7 @@ class NimbusInnDreamPrize1(GrantLocation, NimbusTownLocation):
     _original_item: Type[Item] = RedEssence
     _room_ids: List[int] = [R346_NIMBUS_LAND_INN_BEDROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 2
 
 
 class NimbusInnDreamPrize2(GrantLocation, NimbusTownLocation):
@@ -4264,6 +4423,7 @@ class NimbusInnDreamPrize2(GrantLocation, NimbusTownLocation):
     _original_item: Type[Item] = RedEssence
     _room_ids: List[int] = [R346_NIMBUS_LAND_INN_BEDROOM]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
+    _tier: int = 2
 
 
 class NimbusCastleStatueGamePrize(GrantLocation, NimbusCastleLocation):
@@ -4283,6 +4443,7 @@ class NimbusCastleOuterPrisonCellarRightNPC(GrantLocation, NimbusCastleLocation)
     _original_item: Type[Item] = FlowerJar
     _room_ids: List[int] = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
+    _tier: int = 2
 
 
 class NimbusCastleOuterPrisonCellarLeftNPC(GrantLocation, NimbusCastleLocation):
@@ -4294,6 +4455,7 @@ class NimbusCastleOuterPrisonCellarLeftNPC(GrantLocation, NimbusCastleLocation):
     _original_item: Type[Item] = CastleKey1
     _room_ids: List[int] = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
+    _tier: int = 2
 
 
 class NimbusCastleBusinessCentreOccupiedChest(
@@ -4307,6 +4469,7 @@ class NimbusCastleBusinessCentreOccupiedChest(
     _npc_ids: List[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
     _missable: bool = True
+    _tier: int = 2
 
 
 class NimbusCastleCornerBridgeChest(ChestLocationAllowSlots, NimbusCastleLocation):
@@ -4322,6 +4485,7 @@ class NimbusCastleCornerBridgeChest(ChestLocationAllowSlots, NimbusCastleLocatio
     ]
     _npc_ids: List[int] = [2, 0]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
 
 class NimbusCastleOutOfBoundsChest(ChestLocationAllowSlots, NimbusCastleLocation):
@@ -4336,6 +4500,7 @@ class NimbusCastleOutOfBoundsChest(ChestLocationAllowSlots, NimbusCastleLocation
     ]
     _npc_ids: List[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
     def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
@@ -4355,6 +4520,7 @@ class NimbusCastleAboveJawfulChest(ChestLocationAllowSlots, NimbusCastleLocation
     ]
     _npc_ids: List[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
+    _tier: int = 2
 
     def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
@@ -4374,6 +4540,7 @@ class NimbusCastleSingleGoldBirdChest(ChestLocationAllowSlots, NimbusCastleLocat
     ]
     _npc_ids: List[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
 
 class NimbusCastleTwoLevelLowerChest(ChestLocationAllowSlots, NimbusCastleLocation):
@@ -4389,6 +4556,7 @@ class NimbusCastleTwoLevelLowerChest(ChestLocationAllowSlots, NimbusCastleLocati
     ]
     _npc_ids: List[int] = [0, 0]
     _container_event: int = E0247_CHEST_1_GRANT
+    _tier: int = 2
 
     def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
@@ -4473,7 +4641,7 @@ class NimbusCastleBusinessCentreLiberatedChest(
         )
 
 
-class NimbusLandRightSide(GrantLocation, NimbusMidCastleLocation):
+class NimbusLandRightSide(GrantLocation, NimbusTownLocation):
     """NimbusLandRightSide progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE

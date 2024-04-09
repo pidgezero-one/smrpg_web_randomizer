@@ -35,7 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_1
@@ -52,7 +52,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_2
@@ -69,7 +69,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_3
@@ -105,7 +105,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_4
@@ -122,7 +122,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_5
@@ -139,7 +139,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_6
@@ -175,7 +175,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_7

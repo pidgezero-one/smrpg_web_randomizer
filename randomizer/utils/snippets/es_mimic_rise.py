@@ -3,7 +3,7 @@
 from typing import List
 
 from randomizer.types.overworld_scripts.action_scripts.classes import (
-    ActionScriptCommand,
+    UsableActionScriptCommand,
 )
 from randomizer.types.overworld_scripts.action_scripts.commands.commands import (
     FaceSouthwest,
@@ -19,7 +19,7 @@ from randomizer.types.overworld_scripts.action_scripts.arguments.sequence_speeds
     VERY_FAST,
 )
 
-commands: List[ActionScriptCommand] = [
+commands: List[UsableActionScriptCommand] = [
     FaceSouthwest(),
     VisibilityOn(),
     Pause(35),

@@ -31,6 +31,7 @@ from randomizer.types.monster_scripts.commands import (
     SetTargetable,
     SetUntargetable,
 )
+from randomizer.types.patch import Patch
 from randomizer.types.spells import Element, Status
 from randomizer.types.world.flags import FixMagikoopa, NoGenoWhirlExor
 
@@ -64,6 +65,7 @@ from randomizer.entities.items.items import (
     RoyalSyrup,
     SleepyBomb,
 )
+from randomizer.types.world.flags.flags import DifferentiateRepeatedBosses
 
 from .palettes import CHOCOLATE_CAKE, CHOCOLATE_RASPBERRY
 

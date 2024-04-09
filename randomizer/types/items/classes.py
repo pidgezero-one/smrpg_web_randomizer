@@ -65,7 +65,7 @@ class Item:
     _type_value: ItemTypeValue = ItemTypeValue.ITEM
     _item_name: str = ""
     _description: str = ""
-    _tier: int = 5
+    _tier: int = 1
     _order: int = 0
     _consumable: bool = False
     _equip_chars: List[PartyCharacter] = []
@@ -82,6 +82,7 @@ class Item:
     _temp_buffs: List[TempStatBuff] = []
     _price: int = 0
     _frog_coin_item: bool = False
+    _effect_type: Optional[EffectType] = None
     _original_effect_type: EffectType = EffectType.NORMAL
     _shuffle_as_key_item: bool = False
     _is_subitem: bool = False
@@ -258,6 +259,17 @@ class Item:
     def original_effect_type(self) -> EffectType:
         """Indicator for special effects like EXP booster, coin trick, etc."""
         return self._original_effect_type
+
+    def set_effect_type(self, effect_type: Optional[EffectType] = None) -> None:
+        """Indicator for special effects like EXP booster, coin trick, etc."""
+        self._effect_type = effect_type
+
+    @property
+    def effect_type(self) -> EffectType:
+        """Indicator for special effects like EXP booster, coin trick, etc."""
+        if self._effect_type is None:
+            return self.original_effect_type
+        return self._effect_type
 
     @property
     def shuffle_as_key_item(self) -> bool:

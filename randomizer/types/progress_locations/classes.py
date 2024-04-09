@@ -9,15 +9,10 @@ from typing import Optional, Tuple, Type, TypeVar, List, Union, TYPE_CHECKING
 from randomizer.entities.bosses.bosses import MokuraBoss
 from randomizer.entities.characters.characters import (
     Bowser,
-    BowserSpotted,
     Geno,
-    GenoSpotted,
     Mallow,
-    MallowSpotted,
     Mario,
-    MarioSpotted,
     Toadstool,
-    ToadstoolSpotted,
 )
 from randomizer.entities.items.items import (
     AltoCard,
@@ -120,7 +115,6 @@ from randomizer.types.bosses import (
 from randomizer.types.characters import Character
 from randomizer.types.items import (
     Coins,
-    IllegalItemPropertyException,
     InvincibilityStar,
     Item,
     KeyItem,
@@ -140,6 +134,7 @@ from randomizer.types.npcs.fills import (
     UniqueHenchmanFill,
 )
 from randomizer.types.npcs.objects import VramStore, Empty
+from randomizer.types.npcs.objects.npcs import RedSmallToad
 from randomizer.types.numbers import Int8, UInt16, UInt8
 from randomizer.types.overworld_scripts.action_scripts.commands import (
     SetSpriteSequence,
@@ -157,6 +152,7 @@ from randomizer.types.rooms import (
     RoomObject,
 )
 from randomizer.types.spells import CharacterSpell, Element
+from randomizer.types.spells.classes import CloneSpell
 from randomizer.types.world.flags import (
     FireworksOptions,
     ShuffleLocationSelector,
@@ -225,6 +221,7 @@ class ProgressLocation:
     _excluded: bool = False
     _keep_original_item_if_excluded: bool = False
     _allow_empty_when_finished_shuffling: bool = False
+    _tier: int = 4
 
     world: "GameWorld"
 
@@ -248,6 +245,7 @@ class ProgressLocation:
             return self._identifier
         return UInt16(self._identifier)
 
+    @property
     def event_builder_identifiers(self) -> List[UInt16]:
         """Most item grant and boss fight location granters will run one of a small handful of
         designated scripts, each of which gives you the intended item depending usually on
@@ -356,6 +354,10 @@ class ProgressLocation:
         """If true, this location will keep its original item if it has been manually
         excluded as a progression candidate."""
         return self._keep_original_item_if_excluded
+
+    @property
+    def tier(self) -> int:
+        return self._tier
 
     # pylint: disable=W0613
     def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
@@ -790,8 +792,12 @@ class BossFightLocation(ProgressLocation):
 
         # do statue fills on valentina spot
 
-    def set_contents(self, contents: Boss) -> None:
+    def set_contents(self, contents: Optional[Boss]) -> None:
         super().set_contents(contents)
+
+        # this should only be used when unsetting boss occupation on seed re-roll
+        if contents is None:
+            return
 
         # replace overworld models and rewrite behaviour to match new models
         self._sanitize_room_data()
@@ -1028,6 +1034,11 @@ class FrogDiscipleShopItem(ItemLocation):
 
         return super().can_accept(item)
 
+    def set_contents(self, contents: Item | None) -> None:
+        if contents is not None:
+            contents.become_frog_coin_item()
+        return super().set_contents(contents)
+
 
 class ChestLocation(ItemLocation):
     """A location that can grant items, specifically as a treasure chest."""
@@ -1248,6 +1259,7 @@ class InvisibleItemCandidate(GrantLocation):
     _x_shift: int = 0
     _y_shift: int = 0
     _clue_text: str = ""
+    _tier: int = 4
 
     @property
     def key_item_location(self) -> bool:
@@ -1285,6 +1297,12 @@ class InvisibleItemCandidate(GrantLocation):
     def y_shift(self) -> Int8:
         """Any additional pixels by which this should be shifted on the Y axis."""
         return Int8(self._y_shift)
+
+    def set_original_item(self, item: Type[Item]) -> None:
+        """Only flag candidates have this method.
+        the three selected locations need to be able to donate each flag to the shuffler.
+        """
+        self._original_item = item
 
     def can_access(self, parent_class: Type[ProgressLocationT], inventory: Inventory):
         return parent_class.can_access(self, inventory) and can_access_invisible_flags(
@@ -1444,6 +1462,12 @@ class FreestandingLocation(ItemLocation):
             ):
                 self._accepted_types.append(ProgressiveFireworks)
 
+        if (
+            self.name_enum in world.settings.get_flag(EnabledRegularChecks).disabled
+            and self.original_item is not None
+        ):
+            self.set_contents(world.get_item_instance(self.original_item))
+
 
 class MidasRiverTunnelItem(FreestandingLocation):
     """A subclass of freestanding item grant that specifically defines items given to you
@@ -1490,20 +1514,6 @@ class CharacterSpottedLocation(ProgressLocation):
         super().__init__(world)
 
         self._accepted_types = [SpottedCharacter]
-
-
-def _equivalent_spotted_character(char_class: Character) -> Type[SpottedCharacter]:
-    if isinstance(char_class, Mario):
-        return MarioSpotted
-    if isinstance(char_class, Mallow):
-        return MallowSpotted
-    if isinstance(char_class, Geno):
-        return GenoSpotted
-    if isinstance(char_class, Bowser):
-        return BowserSpotted
-    if isinstance(char_class, Toadstool):
-        return ToadstoolSpotted
-    raise IllegalItemPropertyException("what did you try to put in this location?")
 
 
 class CharacterReplacementFill:
@@ -1593,6 +1603,11 @@ class CharacterRecruitLocation(ProgressLocation):
     ] = CharacterSpottedLocation
 
     @property
+    def original_item(self) -> Optional[Type[Character]]:
+        """The item originally held by this location before shuffling."""
+        return self._original_item
+
+    @property
     def associated_spotted_location(self) -> Type[CharacterSpottedLocation]:
         """The associated location class representing this same character being simply seen
         without necessarily being recruited."""
@@ -1616,21 +1631,22 @@ class CharacterRecruitLocation(ProgressLocation):
         to be populated by appropriate model info."""
         return self._doll_fills
 
-    # when setting contents, set associated spotted to world instance of character
-    def set_contents(
-        self, contents: Optional[Character], related: Type[CharacterSpottedLocation]
-    ) -> None:
+    def _fill_model(self, fill: CharacterReplacementFill):
+        model = RedSmallToad
+        if self.contents is not None:
+            model = self.contents.model
+        room = self.world.rooms[fill.room_id]
+        room_npc = room.objects[fill.npc_id]
+        assert isinstance(room_npc, RoomObject)
+        room_npc.model.set_occupant(model)
+
+        # TODO: finish this method, rewrite stuff like "sprites_primary" prop on characters
+
+    def set_contents(self, contents: Item | None) -> None:
         super().set_contents(contents)
-        equivalent_spotted_location = self.world.get_location_instance(related)
-        if contents is not None:
-            spotted_char = _equivalent_spotted_character(contents)
-            spotted_char_instance = self.world.get_spotted_character_instance(
-                spotted_char
-            )
-        else:
-            spotted_char = None
-            spotted_char_instance = None
-        equivalent_spotted_location.set_contents(spotted_char_instance)
+
+        for fill in self.fills:
+            self._fill_model(fill)
 
     def __init__(self, world: "GameWorld"):
         super().__init__(world)
@@ -1687,12 +1703,48 @@ class MarioSpellSlot(CharacterSpellSlot):
     def can_access(self, inventory: Inventory) -> bool:
         return inventory.has_item(Mario)
 
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        spell_slots = [
+            s for s in self.world.character_spell_slots if isinstance(s, MarioSpellSlot)
+        ]
+        if isinstance(item, CloneSpell):
+            for spell_slot in spell_slots:
+                if spell_slot.does_contain(type(item.parent_spell)):
+                    return False
+        elif isinstance(item, CharacterSpell):
+            for spell_slot in spell_slots:
+                if (
+                    isinstance(spell_slot.contents, CloneSpell)
+                    and item == spell_slot.contents.parent_spell
+                ):
+                    return False
+        return super().can_accept(item, inventory)
+
 
 class MallowSpellSlot(CharacterSpellSlot):
     """A spell slot granter specifically for spells that Mallow learns."""
 
     def can_access(self, inventory: Inventory) -> bool:
         return inventory.has_item(Mallow)
+
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        spell_slots = [
+            s
+            for s in self.world.character_spell_slots
+            if isinstance(s, MallowSpellSlot)
+        ]
+        if isinstance(item, CloneSpell):
+            for spell_slot in spell_slots:
+                if spell_slot.does_contain(type(item.parent_spell)):
+                    return False
+        elif isinstance(item, CharacterSpell):
+            for spell_slot in spell_slots:
+                if (
+                    isinstance(spell_slot.contents, CloneSpell)
+                    and item == spell_slot.contents.parent_spell
+                ):
+                    return False
+        return super().can_accept(item, inventory)
 
 
 class GenoSpellSlot(CharacterSpellSlot):
@@ -1701,6 +1753,23 @@ class GenoSpellSlot(CharacterSpellSlot):
     def can_access(self, inventory: Inventory) -> bool:
         return inventory.has_item(Geno)
 
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        spell_slots = [
+            s for s in self.world.character_spell_slots if isinstance(s, GenoSpellSlot)
+        ]
+        if isinstance(item, CloneSpell):
+            for spell_slot in spell_slots:
+                if spell_slot.does_contain(type(item.parent_spell)):
+                    return False
+        elif isinstance(item, CharacterSpell):
+            for spell_slot in spell_slots:
+                if (
+                    isinstance(spell_slot.contents, CloneSpell)
+                    and item == spell_slot.contents.parent_spell
+                ):
+                    return False
+        return super().can_accept(item, inventory)
+
 
 class BowserSpellSlot(CharacterSpellSlot):
     """A spell slot granter specifically for spells that Bowser learns."""
@@ -1708,9 +1777,47 @@ class BowserSpellSlot(CharacterSpellSlot):
     def can_access(self, inventory: Inventory) -> bool:
         return inventory.has_item(Bowser)
 
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        spell_slots = [
+            s
+            for s in self.world.character_spell_slots
+            if isinstance(s, BowserSpellSlot)
+        ]
+        if isinstance(item, CloneSpell):
+            for spell_slot in spell_slots:
+                if spell_slot.does_contain(type(item.parent_spell)):
+                    return False
+        elif isinstance(item, CharacterSpell):
+            for spell_slot in spell_slots:
+                if (
+                    isinstance(spell_slot.contents, CloneSpell)
+                    and item == spell_slot.contents.parent_spell
+                ):
+                    return False
+        return super().can_accept(item, inventory)
+
 
 class ToadstoolSpellSlot(CharacterSpellSlot):
     """A spell slot granter specifically for spells that Toadstool learns."""
 
     def can_access(self, inventory: Inventory) -> bool:
         return inventory.has_item(Toadstool)
+
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
+        spell_slots = [
+            s
+            for s in self.world.character_spell_slots
+            if isinstance(s, ToadstoolSpellSlot)
+        ]
+        if isinstance(item, CloneSpell):
+            for spell_slot in spell_slots:
+                if spell_slot.does_contain(type(item.parent_spell)):
+                    return False
+        elif isinstance(item, CharacterSpell):
+            for spell_slot in spell_slots:
+                if (
+                    isinstance(spell_slot.contents, CloneSpell)
+                    and item == spell_slot.contents.parent_spell
+                ):
+                    return False
+        return super().can_accept(item, inventory)

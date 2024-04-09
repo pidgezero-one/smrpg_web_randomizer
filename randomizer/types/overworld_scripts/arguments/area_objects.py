@@ -2,6 +2,7 @@
 that can be used in action and event script commands.\n
 The first 11 are in the range specifiable as party characters."""
 
+from typing import List
 from .types import (
     AreaObject,
     PartyCharacter,
@@ -55,3 +56,34 @@ NPC_24 = AreaObject(0x2C)
 NPC_25 = AreaObject(0x2D)
 NPC_26 = AreaObject(0x2E)
 NPC_27 = AreaObject(0x2F)
+
+AREAOBJECT_FROM_NPC_ID: List[AreaObject] = [
+    NPC_0,
+    NPC_1,
+    NPC_2,
+    NPC_3,
+    NPC_4,
+    NPC_5,
+    NPC_6,
+    NPC_7,
+    NPC_8,
+    NPC_9,
+    NPC_10,
+    NPC_11,
+    NPC_12,
+    NPC_13,
+    NPC_14,
+    NPC_15,
+    NPC_16,
+    NPC_17,
+    NPC_18,
+    NPC_19,
+    NPC_20,
+    NPC_21,
+    NPC_22,
+    NPC_23,
+    NPC_24,
+    NPC_25,
+    NPC_26,
+    NPC_27,
+]

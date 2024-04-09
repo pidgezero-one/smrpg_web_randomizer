@@ -85,6 +85,10 @@ from .utils import (
 )
 
 
+class WorldBuildingException(Exception):
+    pass
+
+
 class Settings:
     """Container class for all settings."""
 
@@ -565,7 +569,11 @@ class GameWorld:
         return [spell for spell in self.spells if isinstance(spell, CharacterSpell)]
 
     def _set_spells(self, spells: List[Type[Spell]]) -> None:
-        spell_instances = [spell(self) for spell in spells]
+        spell_instances = [
+            spell(self)
+            for spell in spells
+            if spell.title not in self.settings.get_flag(AvailableSpells).disabled
+        ]
         self._spells = spell_instances
 
     @property
@@ -743,6 +751,112 @@ class GameWorld:
         # Save file select hash text to show the user on the website,
         # but the game uses '}' instead of dash.
         self._file_select_hash = " / ".join(file_select_names).replace("}", "-")
+
+    def add_locations(
+        self,
+        locations: List[
+            Union[
+                Type[ChestLocation],
+                Type[GrantLocation],
+                Type[FreestandingLocation],
+                Type[BossFightLocation],
+                Type[BossStarPiecePrize],
+                Type[CharacterSpottedLocation],
+                Type[CharacterRecruitLocation],
+                Type[CharacterSpellSlot],
+            ]
+        ],
+    ) -> None:
+        """Add a location to the world that wasn't added on initialization."""
+        self._item_locations += [
+            l(self)
+            for l in locations
+            if issubclass(
+                l,
+                (ChestLocation, GrantLocation, FreestandingLocation),
+            )
+        ]
+        self._character_spell_slots += [
+            l(self)
+            for l in locations
+            if issubclass(
+                l,
+                CharacterSpellSlot,
+            )
+        ]
+        self._boss_locations += [
+            l(self)
+            for l in locations
+            if issubclass(
+                l,
+                BossFightLocation,
+            )
+        ]
+        self._boss_star_pieces += [
+            l(self)
+            for l in locations
+            if issubclass(
+                l,
+                BossStarPiecePrize,
+            )
+        ]
+        self._character_spotted_locations += [
+            l(self)
+            for l in locations
+            if issubclass(
+                l,
+                (CharacterSpottedLocation),
+            )
+        ]
+        self._character_recruit_locations += [
+            l(self)
+            for l in locations
+            if issubclass(
+                l,
+                CharacterRecruitLocation,
+            )
+        ]
+
+    def remove_locations(
+        self,
+        locations: List[
+            Union[
+                Type[ChestLocation],
+                Type[GrantLocation],
+                Type[FreestandingLocation],
+                Type[BossFightLocation],
+                Type[BossStarPiecePrize],
+                Type[CharacterSpottedLocation],
+                Type[CharacterRecruitLocation],
+                Type[CharacterSpellSlot],
+            ]
+        ],
+    ) -> None:
+        """Excude a progress location from the rando completely.
+        It will not be shuffled. This should only be used if the
+        location is completely inaccessible."""
+        self._item_locations = [
+            l for l in self.item_locations if not isinstance(l, tuple(locations))
+        ]
+        self._character_spell_slots = [
+            l for l in self.character_spell_slots if not isinstance(l, tuple(locations))
+        ]
+        self._boss_locations = [
+            l for l in self.boss_locations if not isinstance(l, tuple(locations))
+        ]
+        self._boss_star_pieces = [
+            l for l in self.boss_star_pieces if not isinstance(l, tuple(locations))
+        ]
+        self._character_spotted_locations = [
+            l
+            for l in self.character_spotted_locations
+            if not isinstance(l, tuple(locations))
+        ]
+        self._character_recruit_locations = [
+            l
+            for l in self.character_recruit_locations
+            if not isinstance(l, tuple(locations))
+        ]
 
     def __init__(
         self,

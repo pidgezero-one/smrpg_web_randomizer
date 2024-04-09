@@ -24,6 +24,7 @@ from randomizer.helpers.flag_helpers import (
     PipeVaultGating,
 )
 
+
 # There's a way to do perfect allocations with DYNAMIC PROGRAMMING,
 # but I'm not doing that.
 def allocate_string(string_length, free_list):
@@ -368,7 +369,6 @@ def randomize_quiz(world):
 
 
 def assemble_from_table(pointer_table, data_table):
-
     if len(pointer_table) != 4096:
         raise Exception("dialog pointer table must have exactly 4096 entries")
 

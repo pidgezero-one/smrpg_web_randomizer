@@ -2,7 +2,7 @@
 
 from .classes import (
     Shop,
-    NormalShop,
+    NonFrogCoinShop,
     FrogCoinShop,
     PartialJuiceBarShop,
     FullJuiceBarShop,

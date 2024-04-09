@@ -151,10 +151,40 @@ class NormalShop(Shop):
         return patch
 
 
-class FrogCoinShop(NormalShop):
-    """Base class for shops rrquiring frog coins."""
+class NonFrogCoinShop(NormalShop):
+    """Base class for shops not requiring frog coins."""
+
+    def can_accept(self, item: Item):
+        return super().can_accept(item) and not item.frog_coin_item
+
+
+class FrogCoinShop(NormalShop, Generic[ItemT]):
+    """Base class for shops requiring frog coins."""
 
     _is_frog_coin_shop: bool = True
+
+    def append_item(self, item: ItemT) -> None:
+        """Add an item to the shop."""
+        assert len(self._items) <= 14
+        item.become_frog_coin_item()
+        self._items.append(item)
+
+    def set_items(self, items: List[ItemT]) -> None:
+        """Overwrite the current contents of the shop."""
+        assert len(items) <= 15
+        super().set_items([])
+        for item in items:
+            self.append_item(item)
+
+    def can_accept(self, item: Item):
+        # Don't allow an item in a frog coin shop that's already been
+        # placed in another non frog coin shop.
+        other_shops = [s for s in self.world.shops if isinstance(s, NonFrogCoinShop)]
+        for shop in other_shops:
+            for item_class in shop.items:
+                if isinstance(item, item_class):
+                    return False
+        return super().can_accept(item)
 
 
 class PartialJuiceBarShop(NormalShop):

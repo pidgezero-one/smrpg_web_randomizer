@@ -89,7 +89,7 @@ from randomizer.types.npcs.objects import (
     RecoveryMushroom as RecoveryMushroomNPC,
     FrogCoin as FrogCoinNPC,
 )
-from randomizer.types.numbers.classes import UInt16, UInt8
+from randomizer.types.numbers import UInt16, UInt8
 from randomizer.types.overworld_scripts.arguments.types import Flag, PartyCharacter
 from randomizer.types.overworld_scripts.arguments import (
     SIGNAL_RING_STAR_PIECE_1,
@@ -1278,6 +1278,7 @@ class JumpShoes(Accessory, RegularEquip):
     _magic_defense: int = 1
     _price: int = 30
     _model: Type[ItemNPC] = ShoesNPC
+    _arbitrary_value: UInt16 = UInt16(1)
 
 
 class SafetyRing(Accessory, RegularEquip):
@@ -1365,6 +1366,7 @@ class ScroogeRing(Accessory, RegularEquip):
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Mage Totem”.\n It might help with spellcasting.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
         DI2914_TREASURE_SELLER_ITEM_3: """ Item #3: A “Mage Totem”.\n It might help with spellcasting.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
     }
+    _arbitrary_value: UInt16 = UInt16(1)
 
 
 class ExpBooster(Accessory, RegularEquip):
@@ -1384,6 +1386,7 @@ class ExpBooster(Accessory, RegularEquip):
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Training Device”.\n This'll make you strong in no time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
         DI2914_TREASURE_SELLER_ITEM_3: """ Item #3: A “Training Device”.\n This'll make you strong in no time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
     }
+    _arbitrary_value: UInt16 = UInt16(10)
 
 
 class AttackScarf(Accessory, SpecialEquip):
@@ -1450,6 +1453,7 @@ class BtubRing(Accessory, RegularEquip):
     ]
     _price: int = 145
     _model: Type[ItemNPC] = RingNPC
+    _arbitrary_value: UInt16 = UInt16(1)
 
 
 class AntidotePin(Accessory, RegularEquip):
@@ -1539,6 +1543,7 @@ class CoinTrick(Accessory, RegularEquip):
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
         DI2914_TREASURE_SELLER_ITEM_3: """ Item #3: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
     }
+    _arbitrary_value: UInt16 = UInt16(2)
 
 
 class GhostMedal(Accessory, SpecialEquip):
@@ -1653,6 +1658,14 @@ class SignalRing(Accessory, RegularEquip):
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
         DI2914_TREASURE_SELLER_ITEM_3: """ Item #3: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
     }
+
+    @property
+    def arbitrary_value(self) -> UInt16:
+        if self.world is not None and self.world.settings.is_boolean_flag_enabled(
+            StarPieceHints
+        ):
+            return UInt16(10)
+        return UInt16(1)
 
     def set_tier(self, tier: int = 1):
         # Make this a top tier item if signal ring hints are turned on
@@ -2748,6 +2761,7 @@ class BrightCard(KeyItem):
     _model: Type[ItemNPC] = Card
     _order: int = 133
     _unique: ItemUnique = ItemUnique.ALWAYS
+    _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _shuffle_as_key_item: bool = True
     _tier: int = 1
     _dialog_replacements: "dict[int, str]" = {

@@ -1,5 +1,8 @@
 """Randomize the ROM."""
 from copy import deepcopy
+from randomizer.logic.place_everything import shuffle_all
+from randomizer.logic.randomize_item_properties import randomize_all_items
+from randomizer.logic.randomize_spells import initialize_clone_spells_and_elements
 
 from randomizer.types.world import GameWorld, Settings
 from randomizer.types.patch import Patch
@@ -28,41 +31,63 @@ from randomizer.entities.progress_locations import (
     characters_recruited_table,
     characters_spotted_table,
     item_location_table,
-    flag_locations_table,
 )
+from randomizer.types.world.classes import WorldBuildingException
+
+from .finalize_location_list import finalize_location_list
 
 
 def randomize(
     seed: int, settings_string: str, cosmetics_string: str, debug: bool = False
 ) -> Patch:
     """Generate a randomized ROM patch."""
-    settings = Settings(
-        debug_mode=debug, flag_string=settings_string, cosmetics_string=cosmetics_string
-    )
-    world = GameWorld(
-        seed=seed,
-        settings=settings,
-        event_scripts=deepcopy(event_controller),
-        action_scripts=deepcopy(action_script_bank),
-        flower_bonus_and_toad_tutorial_animation_scripts=deepcopy(collection_0x02xxxx),
-        monsters_attacks_and_items_animation_scripts=deepcopy(collection_0x35xxxx),
-        battle_event_animation_scripts=deepcopy(collection_0x3Axxxx),
-        monster_scripts=deepcopy(monster_script_bank),
-        dialogs=deepcopy(dialog_table),
-        enemies=enemy_table,
-        formations=deepcopy(formations),
-        packs=deepcopy(packs),
-        characters=character_table,
-        spotted_characters=spotted_table,
-        items=item_table,
-        spells=spell_table,
-        shops=shop_table,
-        rooms=deepcopy(rooms),
-        item_locations=item_location_table + flag_locations_table,
-        boss_locations=bosses_table,
-        boss_star_pieces=boss_star_pieces_table,
-        character_spotted_locations=characters_spotted_table,
-        character_recruit_locations=characters_recruited_table,
-        character_spell_slots=character_spell_slots_table,
-        sprites=SpriteCollection(),
-    )
+
+    while True:
+        try:
+            settings = Settings(
+                debug_mode=debug,
+                flag_string=settings_string,
+                cosmetics_string=cosmetics_string,
+            )
+            world = GameWorld(
+                seed=seed,
+                settings=settings,
+                event_scripts=deepcopy(event_controller),
+                action_scripts=deepcopy(action_script_bank),
+                flower_bonus_and_toad_tutorial_animation_scripts=deepcopy(
+                    collection_0x02xxxx
+                ),
+                monsters_attacks_and_items_animation_scripts=deepcopy(
+                    collection_0x35xxxx
+                ),
+                battle_event_animation_scripts=deepcopy(collection_0x3Axxxx),
+                monster_scripts=deepcopy(monster_script_bank),
+                dialogs=deepcopy(dialog_table),
+                enemies=enemy_table,
+                formations=deepcopy(formations),
+                packs=deepcopy(packs),
+                characters=character_table,
+                spotted_characters=spotted_table,
+                items=item_table,
+                spells=spell_table,
+                shops=shop_table,
+                rooms=deepcopy(rooms),
+                item_locations=item_location_table,
+                boss_locations=bosses_table,
+                boss_star_pieces=boss_star_pieces_table,
+                character_spotted_locations=characters_spotted_table,
+                character_recruit_locations=characters_recruited_table,
+                character_spell_slots=character_spell_slots_table,
+                sprites=SpriteCollection(),
+            )
+
+            finalize_location_list(world)
+            randomize_all_items(world)
+            initialize_clone_spells_and_elements(world)
+            shuffle_all(world)
+
+            # TODO: reconstruct item granters according to allowed tiers
+        except WorldBuildingException:
+            pass
+        except Exception as exc:
+            raise WorldBuildingException(exc) from exc

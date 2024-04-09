@@ -46,6 +46,7 @@ from .flags import (
     CharacterLearnedSpells,
     CharacterSpellStats,
     CharacterSpellElements,
+    CharacterSpellExtraElements,
     UncapSuperJumps,
     AvailableSpells,
     ShuffleStarPieces,

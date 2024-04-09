@@ -246,12 +246,23 @@ class CharacterSpellStats(BooleanFlag):
     )
 
 
+class CharacterSpellExtraElements(BooleanFlag):
+    """Setting to assign elements to some element-neutral spells."""
+
+    _id: str = "extraelements"
+    _name: str = "Infuse more spells with elements"
+    _description: str = """Geno Flash and Psych Bomb become Fire type spells.\n
+Crusher and Bowser Crush become Earth (Jump) type spells.\n
+Geno Beam becomes an Ice type spell."""
+
+
 class CharacterSpellElements(BooleanFlag):
     """Setting to randomize the elements of elemental spells"""
 
     _id: str = "spellelements"
     _name: str = "Randomize character spell elements"
-    _description: str = "For the 9 spells which normally have an infused element, the element will be randomized."
+    _description: str = """Elemental party spells will be assigned a random element
+ (i.e. Fire Orb may become Thunder Orb)."""
 
 
 class UncapSuperJumps(BooleanFlag):
@@ -520,7 +531,7 @@ class InvisibleFlagsSetting(BooleanFlag):
     _name: str = "Move invisible flag checks"
     _description: str = """Chooses where the invisible items placed by the Three Musty Fears are located.
 <br>
-<br>If "Default locations" is selected, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
+<br>If not enabled, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
 <br>
 <br>If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations."""
 

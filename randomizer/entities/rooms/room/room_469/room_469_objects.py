@@ -202,7 +202,7 @@ objects = [
         acute_axis=4,
         obtuse_axis=4,
         height=8,
-        shadow_size=VramStore.DIR2_SWSE,
+        directions=VramStore.DIR2_SWSE,
         cannot_clone=False,
     ),
     # NPC_9

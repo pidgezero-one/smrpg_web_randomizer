@@ -52,6 +52,7 @@ from .area_objects import (
     NPC_25,
     NPC_26,
     NPC_27,
+    AREAOBJECT_FROM_NPC_ID,
 )
 from .battlefields import (
     BF01_FOREST_MAZE_BOWYERS_PAD,

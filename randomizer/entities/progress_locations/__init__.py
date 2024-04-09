@@ -713,7 +713,6 @@ characters_recruited_table = [
     ForestMazeCharacter,
     MinesCharacter,
     ChapelCharacter,
-    ExtraStartingCharacterLocation,
     StartingCharacter1,
     StartingCharacter2,
     StartingCharacter3,

@@ -104,7 +104,7 @@ objects = [
         acute_axis=5,
         obtuse_axis=5,
         height=11,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_4
@@ -124,7 +124,7 @@ objects = [
         acute_axis=5,
         obtuse_axis=5,
         height=11,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_5
@@ -144,7 +144,7 @@ objects = [
         acute_axis=5,
         obtuse_axis=5,
         height=11,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_6

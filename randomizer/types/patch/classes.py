@@ -36,7 +36,9 @@ class Patch:
         If the address is not present in the patch, returns empty bytes."""
         return self._data.get(addr, bytes())
 
-    def add_data(self, addr: int, data: Union[bytearray, bytes, List[int], int, str]):
+    def add_data(
+        self, addr: int, data: Union[bytearray, bytes, List[int], int, str]
+    ) -> None:
         """Add data to the patch."""
         # For integers and strings, convert them to byte representations.
         if isinstance(data, int) and data <= 0xFF:

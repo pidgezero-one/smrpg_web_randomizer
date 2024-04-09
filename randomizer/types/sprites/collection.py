@@ -5,6 +5,7 @@ from math import trunc
 from typing import List, Optional, Set, Tuple, Union
 from random import choices
 from copy import deepcopy
+from randomizer.types.dialogs.ids.misc import DIALOG_BANK_22_ENDS, DIALOG_BANK_23_ENDS
 
 from randomizer.types.numbers import UInt16, UInt8
 from randomizer.types.patch import Patch
@@ -178,19 +179,30 @@ _SUBTILE_BANKS = _SpriteRawDataBankCollection(
         _SpriteRawDataBank(0x310000, 0x320000),
         _SpriteRawDataBank(0x320000, 0x330000),
         # _SpriteRawDataBank(0x330000, UNCOMPRESSED_GFX_END),
-        _SpriteRawDataBank(0x360000, 0x364000),
+        _SpriteRawDataBank(0x360000, 0x370000),
+        _SpriteRawDataBank(0x379A00, 0x37A000),
     ]
 )
 
 _ANIMATION_DATA_BANKS = [
+    _SpriteRawDataBank(0x1A4DA0, 0x1A8000),
+    _SpriteRawDataBank(0x1BFC12, 0x1C0000),
+    _SpriteRawDataBank(0x1C6505, 0x1C8000),
+    _SpriteRawDataBank(DIALOG_BANK_22_ENDS, 0x22FD18),
+    _SpriteRawDataBank(DIALOG_BANK_23_ENDS, 0x23F2D5),
+    _SpriteRawDataBank(0x24EDE0, 0x250000),
     _SpriteRawDataBank(0x259000, 0x260000),
     _SpriteRawDataBank(0x260000, 0x270000),
     _SpriteRawDataBank(0x270000, UNCOMPRESSED_GFX_START),
-    _SpriteRawDataBank(0x364000, 0x370000),
-    _SpriteRawDataBank(0x379A00, 0x37A000),
+    _SpriteRawDataBank(0x384DD0, 0x385000),
+    _SpriteRawDataBank(0x385E40, 0x386000),
+    _SpriteRawDataBank(0x387220, 0x387400),
+    _SpriteRawDataBank(0x3878F0, 0x387A00),
     _SpriteRawDataBank(0x387CC0, 0x388000),
+    _SpriteRawDataBank(0x392690, 0x392AA0),
     _SpriteRawDataBank(0x3DB5E0, 0x3DC000),
     _SpriteRawDataBank(0x3DD800, 0x3DF000),
+    _SpriteRawDataBank(0x3EF610, 0x3EF700),
 ]
 # classes for managing tile data as it is being collected
 

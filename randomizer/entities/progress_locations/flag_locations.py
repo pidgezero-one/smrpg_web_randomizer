@@ -167,6 +167,8 @@ class MariosPadBed(MariosPadLocation, InvisibleItemCandidate):
     _x_coord: int = 3
     _y_coord: int = 11
 
+    _clue_text: str = """\n My flag's underneath a green bed.[await]"""
+
     def can_access(self, inventory: Inventory):
         return InvisibleItemCandidate.can_access(self, MariosPadLocation, inventory)
 
@@ -182,6 +184,7 @@ class RoseTownSign(RoseTownLocation, InvisibleItemCandidate):
     ]
     _x_coord: int = 10
     _y_coord: int = 47
+    _clue_text: str = """\n My flag's behind a wooden flower.[await]"""
 
     def can_access(self, inventory: Inventory):
         return InvisibleItemCandidate.can_access(self, RoseTownLocation, inventory)
@@ -197,6 +200,7 @@ class YosterIsleGoal(YosterIsleLocation, InvisibleItemCandidate):
     _x_coord: int = 21
     _y_coord: int = 62
     _y_shift: int = -4
+    _clue_text: str = """\n My flag's between “O” and “A”.[await]"""
 
     def can_access(self, inventory: Inventory):
         return InvisibleItemCandidate.can_access(self, YosterIsleLocation, inventory)

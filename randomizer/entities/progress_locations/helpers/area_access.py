@@ -31,6 +31,7 @@ from randomizer.entities.items import (
     Ring,
     Shoes,
 )
+from randomizer.entities.items.items import CricketPie
 from randomizer.entities.progress_locations import (
     BanditsWayBossFight,
     BeanValleyPlanterBossFight,
@@ -242,8 +243,8 @@ def can_access_forest(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Forest Maze."""
     if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.GENO):
         return inventory.has_item(Geno)
-    if world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.HAMMER_BRO):
-        return inventory.has_item(HammerBroBoss)
+    if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.PIE):
+        return inventory.has_item(CricketPie)
     return True
 
 

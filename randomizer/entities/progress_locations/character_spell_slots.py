@@ -32,12 +32,12 @@ from randomizer.entities.spells.spells import (
     UltraJump,
 )
 from randomizer.types.progress_locations import (
-    BowserSpellSlot,
+    ToadstoolSpellSlot,
     GenoSpellSlot,
     LaterSpellSlot,
     MallowSpellSlot,
     MarioSpellSlot,
-    ToadstoolSpellSlot,
+    BowserSpellSlot,
 )
 from randomizer.types.spells import Spell
 

@@ -17,7 +17,7 @@ script = EventScript(
         ),
         SetBit(INVISIBLE_ITEMS_ANYWHERE_EXPLAINED),
         RunDialog(
-            dialog_id=DI1106_INVISIBLE_ITEMS_CONFIRMED_PLACED,
+            dialog_id=DI1109_RESERVED_FOR_GREAPERFLAG_HINT,
             above_object=MEM_70A8,
             closable=True,
             sync=False,

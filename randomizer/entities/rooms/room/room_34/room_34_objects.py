@@ -287,7 +287,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR4_ALL_DIRECTIONS,
+        vram_size=VramStore.DIR4_ALL_DIRECTIONS,
         cannot_clone=False,
     ),
     # NPC_10
@@ -483,7 +483,7 @@ objects = [
         event_script=E3823_YOSTER_ISLE_GOALPOST_ITEM_GRANTER,
         action_script=A0015_DO_NOTHING,
         speed=0,
-        visible=True,
+        visible=False,
         x=21,
         y=62,
         z=0,

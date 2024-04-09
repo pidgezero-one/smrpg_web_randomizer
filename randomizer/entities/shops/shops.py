@@ -35,7 +35,7 @@ from randomizer.types.shops import (
     EventShop,
     FrogCoinShop,
     FullJuiceBarShop,
-    NormalShop,
+    NonFrogCoinShop,
     PartialJuiceBarShop,
 )
 
@@ -130,7 +130,7 @@ from randomizer.entities.items import (
 )
 
 
-class MushroomKingdomShop(NormalShop):
+class MushroomKingdomShop(NonFrogCoinShop):
     """Shop definition for MushroomKingdomShop"""
 
     _shop_id: int = 0
@@ -147,7 +147,7 @@ class MushroomKingdomShop(NormalShop):
     _container_event: int = E0284_OPEN_MUSHROOM_KINGDOM_SHOP
 
 
-class RoseTownItemShop(NormalShop):
+class RoseTownItemShop(NonFrogCoinShop):
     """Shop definition for RoseTownItemShop"""
 
     _shop_id: int = 1
@@ -160,7 +160,7 @@ class RoseTownItemShop(NormalShop):
     _container_event: int = E0525_ROSE_TOWN_ITEM_SHOP
 
 
-class RoseTownArmorShop(NormalShop):
+class RoseTownArmorShop(NonFrogCoinShop):
     """Shop definition for RoseTownArmorShop"""
 
     _shop_id: int = 2
@@ -189,7 +189,7 @@ class DiscipleShop(FrogCoinShop):
     ]
 
 
-class MolevilleShop(NormalShop):
+class MolevilleShop(NonFrogCoinShop):
     """Shop definition for MolevilleShop"""
 
     _shop_id: int = 4
@@ -207,7 +207,7 @@ class MolevilleShop(NormalShop):
     _container_event: int = E1624_MOLEVILLE_SHOP
 
 
-class MarrymoreShop(NormalShop):
+class MarrymoreShop(NonFrogCoinShop):
     """Shop definition for MarrymoreShop"""
 
     _shop_id: int = 5
@@ -241,7 +241,7 @@ class FrogCoinEmporiumShop(FrogCoinShop):
     _container_event: int = E1112_FROG_COIN_EMPORIUM
 
 
-class SeaShop(NormalShop):
+class SeaShop(NonFrogCoinShop):
     """Shop definition for SeaShop"""
 
     _shop_id: int = 7
@@ -263,7 +263,7 @@ class SeaShop(NormalShop):
     _container_event: int = E3297_SEA_SHOP
 
 
-class SeasideYaridShop(NormalShop):
+class SeasideYaridShop(NonFrogCoinShop):
     """Shop definition for SeasideYaridShop"""
 
     _shop_id: int = 8
@@ -314,7 +314,7 @@ class JuiceBarFull(FullJuiceBarShop):
     _container_event: int = E1182_JUICE_BAR_SOPRANO_CARD
 
 
-class SeasideWeaponShop(NormalShop):
+class SeasideWeaponShop(NonFrogCoinShop):
     """Shop definition for SeasideWeaponShop"""
 
     _shop_id: int = 13
@@ -338,7 +338,7 @@ class SeasideWeaponShop(NormalShop):
     _container_event: int = E1173_SEASIDE_WEAPON_SHOP
 
 
-class SeasideArmorShop(NormalShop):
+class SeasideArmorShop(NonFrogCoinShop):
     """Shop definition for SeasideArmorShop"""
 
     _shop_id: int = 14
@@ -362,7 +362,7 @@ class SeasideArmorShop(NormalShop):
     _container_event: int = E1174_SEASIDE_ARMOR_SHOP
 
 
-class SeasideAccessoryShop(NormalShop):
+class SeasideAccessoryShop(NonFrogCoinShop):
     """Shop definition for SeasideAccessoryShop"""
 
     _shop_id: int = 15
@@ -377,7 +377,7 @@ class SeasideAccessoryShop(NormalShop):
     _container_event: int = E1171_SEASIDE_ACCESSORY_SHOP
 
 
-class SeasideItemShop(NormalShop):
+class SeasideItemShop(NonFrogCoinShop):
     """Shop definition for SeasideItemShop"""
 
     _shop_id: int = 16
@@ -393,7 +393,7 @@ class SeasideItemShop(NormalShop):
     _container_event: int = E1170_SEASIDE_HEALTH_FOOD_SHOP
 
 
-class MonstroTownShop(NormalShop):
+class MonstroTownShop(NonFrogCoinShop):
     """Shop definition for MonstroTownShop"""
 
     _shop_id: int = 17
@@ -409,7 +409,7 @@ class MonstroTownShop(NormalShop):
     _container_event: int = E2054_MONSTRO_MAIN_SHOP
 
 
-class HinopioItemShop(NormalShop):
+class HinopioItemShop(NonFrogCoinShop):
     """Shop definition for HinopioItemShop"""
 
     _shop_id: int = 18
@@ -423,7 +423,7 @@ class HinopioItemShop(NormalShop):
     _container_event: int = E1183_VOLCANO_ITEM_SHOP
 
 
-class HinopioArmorShop(NormalShop):
+class HinopioArmorShop(NonFrogCoinShop):
     """Shop definition for HinopioArmorShop"""
 
     _shop_id: int = 19
@@ -437,7 +437,7 @@ class HinopioArmorShop(NormalShop):
     _container_event: int = E1184_VOLCANO_ARMOR_SHOP
 
 
-class BabyGoombaShop(NormalShop):
+class BabyGoombaShop(NonFrogCoinShop):
     """Shop definition for BabyGoombaShop"""
 
     _shop_id: int = 20
@@ -445,7 +445,7 @@ class BabyGoombaShop(NormalShop):
     _container_event: int = E2053_MONSTRO_GOOMBETTE_SHOP
 
 
-class NimbusShop(NormalShop):
+class NimbusShop(NonFrogCoinShop):
     """Shop definition for NimbusShop"""
 
     _shop_id: int = 21
@@ -467,7 +467,7 @@ class NimbusShop(NormalShop):
     _container_event: int = E3643_NIMBUS_SHOP
 
 
-class CrocoShop1(NormalShop):
+class CrocoShop1(NonFrogCoinShop):
     """Shop definition for CrocoShop1"""
 
     _shop_id: int = 22
@@ -485,7 +485,7 @@ class CrocoShop1(NormalShop):
     _container_event: int = E1862_CROCO_SHOP_1
 
 
-class CrocoShop2(NormalShop):
+class CrocoShop2(NonFrogCoinShop):
     """Shop definition for CrocoShop2"""
 
     _shop_id: int = 23
@@ -503,7 +503,7 @@ class CrocoShop2(NormalShop):
     _container_event: int = E1863_CROCO_SHOP_2
 
 
-class ToadShop(NormalShop):
+class ToadShop(NonFrogCoinShop):
     """Shop definition for ToadShop"""
 
     _shop_id: int = 24

@@ -36,7 +36,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        shadow_size=VramStore.DIR0_SWSE_NWNE,
+        directions=VramStore.DIR0_SWSE_NWNE,
         cannot_clone=False,
     ),
     # NPC_1

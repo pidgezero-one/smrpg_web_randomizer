@@ -470,7 +470,7 @@ class Command(BaseCommand):
                         objects_output += "\n        height=%i," % o.model._height
                     if o.model._directions != None:
                         objects_output += (
-                            "\n        shadow_size=VramStore.%s,"
+                            "\n        directions=VramStore.%s,"
                             % VRAM_SIZES[o.model._directions]
                         )
                     if o.model._vram_size != None:

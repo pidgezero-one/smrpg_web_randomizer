@@ -1,7 +1,7 @@
 """Spell definitions"""
 
 from random import choice
-from typing import Type, List
+from typing import Optional, Type, List
 
 from randomizer.types.spells import (
     CharacterSpell,
@@ -36,7 +36,10 @@ from randomizer.types.spells.arguments import (
     TIMED_JUMPS,
 )
 from randomizer.types.world import GameWorld
-from randomizer.types.world.flags import CharacterSpellElements
+from randomizer.types.world.flags import (
+    CharacterSpellElements,
+    CharacterSpellExtraElements,
+)
 
 from .palettes import (
     FIRE_ORB_EARTH_BALL,
@@ -750,6 +753,89 @@ class PsychBomb(CharacterSpell):
 
     _item_id: int = 523
 
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        if world is not None and world.settings.is_boolean_flag_enabled(
+            CharacterSpellExtraElements
+        ):
+            self.set_element(Element.FIRE)
+
+
+class IcePsychBomb(PsychBomb):
+    """Learnable spell definition for IcePsychBomb"""
+
+    _title: str = "Ice Bomb"
+    _element: Element = Element.ICE
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.ICE)
+
+
+class ThunderPsychBomb(PsychBomb):
+    """Learnable spell definition for ThunderPsychBomb"""
+
+    _title: str = "Thunder Bomb"
+    _element: Element = Element.THUNDER
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.THUNDER)
+
+
+class EarthPsychBomb(PsychBomb):
+    """Learnable spell definition for EarthPsychBomb"""
+
+    _title: str = "Earth Bomb"
+    _element: Element = Element.JUMP
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.JUMP)
+
 
 class Terrorize(CharacterSpell):
     """Learnable spell definition for Terrorize"""
@@ -855,6 +941,89 @@ class Crusher(CharacterSpell):
 
     _item_id: int = 526
 
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        if world is not None and world.settings.is_boolean_flag_enabled(
+            CharacterSpellExtraElements
+        ):
+            self.set_element(Element.JUMP)
+
+
+class IceCrusher(Crusher):
+    """Learnable spell definition for IceCrusher"""
+
+    _title: str = "Ice Crusher"
+    _element: Element = Element.ICE
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.ICE)
+
+
+class FireCrusher(Crusher):
+    """Learnable spell definition for FireCrusher"""
+
+    _title: str = "Fire Crusher"
+    _element: Element = Element.FIRE
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.FIRE)
+
+
+class ThunderCrusher(Crusher):
+    """Learnable spell definition for ThundrCrusher"""
+
+    _title: str = "ThundrCrusher"
+    _element: Element = Element.THUNDER
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.THUNDER)
+
 
 class BowserCrush(CharacterSpell):
     """Learnable spell definition for BowserCrush"""
@@ -890,6 +1059,89 @@ class BowserCrush(CharacterSpell):
 
     _item_id: int = 527
 
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        if world is not None and world.settings.is_boolean_flag_enabled(
+            CharacterSpellExtraElements
+        ):
+            self.set_element(Element.JUMP)
+
+
+class IceBowserCrush(BowserCrush):
+    """Learnable spell definition for IceBowserCrush"""
+
+    _title: str = "Ice Crush"
+    _element: Element = Element.ICE
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.ICE)
+
+
+class FireBowserCrush(BowserCrush):
+    """Learnable spell definition for FireBowserCrush"""
+
+    _title: str = "Fire Crush"
+    _element: Element = Element.FIRE
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.FIRE)
+
+
+class ThunderBowserCrush(BowserCrush):
+    """Learnable spell definition for ThunderBowserCrush"""
+
+    _title: str = "ThunderCrush"
+    _element: Element = Element.THUNDER
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.THUNDER)
+
 
 class GenoBeam(CharacterSpell):
     """Learnable spell definition for GenoBeam"""
@@ -924,6 +1176,89 @@ class GenoBeam(CharacterSpell):
     _damage_modifiers: DamageModifiers = NO_MODIFIERS
 
     _item_id: int = 528
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        if world is not None and world.settings.is_boolean_flag_enabled(
+            CharacterSpellExtraElements
+        ):
+            self.set_element(Element.ICE)
+
+
+class FireGenoBeam(GenoBeam):
+    """Learnable spell definition for FireGenoBeam"""
+
+    _title: str = "Fire Beam"
+    _element: Element = Element.FIRE
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.FIRE)
+
+
+class ThunderGenoBeam(GenoBeam):
+    """Learnable spell definition for ThunderGenoBeam"""
+
+    _title: str = "Thunder Beam"
+    _element: Element = Element.THUNDER
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.THUNDER)
+
+
+class EarthGenoBeam(GenoBeam):
+    """Learnable spell definition for EarthGenoBeam"""
+
+    _title: str = "Earth Beam"
+    _element: Element = Element.JUMP
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.JUMP)
 
 
 class GenoBoost(CharacterSpell):
@@ -1063,6 +1398,81 @@ class GenoFlash(CharacterSpell):
     _damage_modifiers: DamageModifiers = NO_MODIFIERS
 
     _item_id: int = 532
+
+
+class IceGenoFlash(GenoFlash):
+    """Learnable spell definition for IceGenoFlash"""
+
+    _title: str = "Ice Flash"
+    _element: Element = Element.ICE
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.ICE)
+
+
+class ThunderGenoFlash(GenoFlash):
+    """Learnable spell definition for ThunderGenoFlash"""
+
+    _title: str = "ThunderFlash"
+    _element: Element = Element.THUNDER
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.THUNDER)
+
+
+class EarthGenoFlash(GenoFlash):
+    """Learnable spell definition for EarthGenoFlash"""
+
+    _title: str = "Earth Flash"
+    _element: Element = Element.JUMP
+
+    def get_patch(self):
+        """Get patch for this spell.
+
+        Returns:
+            randomizer.logic.patch.Patch: Patch data.
+
+        """
+        patch = super().get_patch()
+
+        # TODO: Palettes
+
+        return patch
+
+    def __init__(self, world: Optional["GameWorld"] = None):
+        super().__init__(world)
+
+        self.set_element(Element.JUMP)
 
 
 class Thunderbolt(CharacterSpell):
