@@ -2408,7 +2408,16 @@ class GameWorld:
             patch.add_data(0x148000, npc_code[0] + npc_code[1])
             patch.add_data(0x20E000, eventtile_code[0] + eventtile_code[1])
             patch.add_data(0x1D2D64, exit_code[0] + exit_code[1])
-            patch.add_data(0x1DDE00, partition_code)
+
+            # patch.add_data(0x1DDE00, partition_code)
+            # !!!!!!! Pointer for beginning of partition table is at 0xc08baf
+            # Normally 0x1DDE00
+            # Change it to point to 0x1DEBE0 (so the argument bytes little endian in the rom are 0xE0 0xEB)
+            patch.add_data(0x1DEBE0, partition_code)
+            # Change the partition base pointer
+            patch.add_data(0x008BB0, bytearray([0xE0, 0xEB]))
+            patch.add_data(0x008B9D, bytearray([0xE0, 0xEB]))
+
             patch.add_data(0x1DB800, model_code)
             event_code = EventScript.assemble_from_table(event_table)
             patch.add_data(0x1E0000, event_code)

@@ -1638,11 +1638,11 @@ class Rooms:
             exit_output += bytearray([0xFF for x in range(empty_space)])
         exits = [exit_pointers, bytearray(exit_output)]
 
-        if len(partitions) > 128:  # bumped up to 128 from 120
+        if len(partitions) > 508:  # bumped up to 508 from 120 by moving
             raise Exception(
-                "Too many partitions (got %i, expected up to 128)" % len(partitions)
+                "Too many partitions (got %i, expected up to 508)" % len(partitions)
             )
-        for _ in range(len(partitions), 128):  # bumped up to 128 from 120
+        for _ in range(len(partitions), 508):  
             partitions.append([0xFF, 0xFF, 0xFF, 0xFF])
 
         return (
