@@ -959,5 +959,6 @@ def shuffle_all(world: GameWorld) -> None:
                 )
         # gating
         if isinstance(character, Mario) and world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):
+            # this location's container event should unlock booster tower
             loc.container_event
             
