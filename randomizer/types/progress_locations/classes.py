@@ -134,7 +134,7 @@ from randomizer.types.npcs.fills import (
     UniqueHenchmanFill,
 )
 from randomizer.types.npcs.objects import VramStore, Empty
-from randomizer.types.npcs.objects.npcs import RedSmallToad
+from randomizer.data.npcs.npcs import RedSmallToad
 from randomizer.types.numbers import Int8, UInt16, UInt8
 from randomizer.types.overworld_scripts.action_scripts.commands import (
     SetSpriteSequence,

@@ -2,8 +2,10 @@ import copy
 import enum
 import difflib
 
+from randomizer.data.npcs import npcs
+
 from . import utils
-from randomizer.data import palettes, items, chests, npcs
+from randomizer.data import palettes, items, chests
 from randomizer.data.packets import packets
 from randomizer.data.rooms import rooms
 from randomizer.data.rooms.room import (

@@ -18,7 +18,7 @@ from randomizer.types.rooms import (
     PostBattleBehaviour,
 )
 from randomizer.types.npcs.objects import ShadowSize, VramStore
-from randomizer.types.npcs.objects.npcs import (
+from randomizer.data.npcs.npcs import (
     Mario,
     Toadstool,
     Bowser,

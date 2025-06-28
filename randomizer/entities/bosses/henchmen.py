@@ -59,7 +59,7 @@ from randomizer.types.battles.ids.pack_ids import (
 )
 from randomizer.types.bosses.classes import Henchman
 from randomizer.types.npcs.objects.types.classes import NPC
-from randomizer.types.npcs.objects.npcs import (
+from randomizer.data.npcs.npcs import (
     AeroUpright,
     Apprentice,
     AxemBlack,

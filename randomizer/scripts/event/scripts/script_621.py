@@ -266,12 +266,20 @@ script = EventScript(
         ),
         Return(),
         JmpIfBitSet(
-            TEMP_7044_1,
-            ["EVENT_621_run_dialog_122"],
+            MARRYMORE_MAJOR_TIP_GIVEN,
+            ["EVENT_621_major_tip_already_given"],
             identifier="EVENT_621_jmp_if_bit_set_109",
         ),
+        RunEventAsSubroutine(E0212_NPC_QUEST_7_CONTAINER),
+        SetBit(MARRYMORE_MAJOR_TIP_GIVEN),
+		Return(),
+        JmpIfBitSet(
+            TEMP_7044_1,
+            ["EVENT_621_run_dialog_122"],
+            identifier="EVENT_621_major_tip_already_given",
+        ),
         SetBit(TEMP_7044_1),
-        RunEventAsSubroutine(E0626_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUNROUTINE_2),
+        RunEventAsSubroutine(E0626_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_2),
         Return(),
         RunDialog(
             dialog_id=DI2048_HOTEL_GUEST_LEAVING,

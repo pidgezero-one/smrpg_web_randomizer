@@ -259,6 +259,7 @@ class ShuffleLocationSelector(FlagOptions):
     MARRYMORE_PRIZE_4 = "Marrymore Suite total stays prize 4"
     MARRYMORE_PRIZE_5 = "Marrymore Suite total stays prize 5"
     MARRYMORE_PRIZE_6 = "Marrymore Suite total stays prize 6"
+    MARRYMORE_BIG_TIP = "Marrymore Inn elderly guest's major tip"
     MARRYMORE_INN = "Marrymore Inn regular room chest"
     MARRYMORE_SNIFIT_1 = "Marrymore Snifit 1 chapel item"
     MARRYMORE_SNIFIT_2 = "Marrymore Snifit 2 chapel item"

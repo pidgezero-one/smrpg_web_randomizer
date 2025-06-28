@@ -127,7 +127,7 @@ class Credits(object):
         ]
 
     def clear(self, words):
-        for (x, y, font) in words:
+        for x, y, font in words:
             self.add(x, y, font, EMPTY_STRING)
         del words[:]
 
@@ -234,7 +234,7 @@ class Credits(object):
             )
 
         # Underscore
-        patch.add_data(0x3FFDDA, "\x3F\xC0\x7F\x80")
+        patch.add_data(0x3FFDDA, "\x3f\xc0\x7f\x80")
         return patch
 
 
@@ -242,11 +242,12 @@ class Credits(object):
 DEV_MESSAGES = [
     ("DONT TRY IT...ALANIM.", "I ALREADY DID IT.", "   PAST ALANIM"),
     ("NOW TRY IT", "BLINDFOLDED", "     PATCDR"),
-    ("OH MAN I REALLY", "HOPE THAT CODE WORKED", "       PIDGEZERO_ONE"),
+    ("IF YOU CAN READ THIS", "IT MEANS I FIXED IT", "       PIDGEZERO_ONE"),
     ("OHH I GOTTA THINK", "OF SOMETHING FUNNY", "       YAKI"),
     ("WHY ARE YOU", "USING ZSNES", "    DORKMASTER FLEK"),
     ("GARY WAS HERE", "ASH IS A LOSER", EMPTY_STRING),
 ]
+
 
 # Takes world because everything does.
 # If we every implement stats, we'll need it, probably.
@@ -255,99 +256,20 @@ def update_credits(world):
 
     # Don't need this for the first title.
     # credits.begin_title(BEGIN_TITLES_DELAY)
-    # 2
-    credits.add_title(0x80, 0x00, 0x08, "SUPER MARIO RPG ORIGINAL CREDITS")
+
+    # This is what the remake does. We can do it too to make room for randomizer credits.
+    credits.add_title(0x80, 0x00, 0x08, "SINCE MCMXCVI")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "C. FUJIOKA   K. MATSUHARA")
-    credits.add_credit(0x80, 0x40, 0x81, "Y. MAEKAWA   Y. MATSUMURA")
-    credits.add_credit(0x80, 0x00, 0xC2, "T. KUDO         Y. HASEBE")
+    credits.add_credit(0x80, 0x80, 0xC0, "BASED ON THE WORK OF")
+    credits.add_credit(0x80, 0x40, 0x81, "THE ORIGINAL")
+    credits.add_credit(0x80, 0x00, 0xC2, "DEVELOPMENT STAFF")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    # 3
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "R. MUTO         F. FUKAYA")
-    credits.add_credit(0x80, 0x40, 0x81, "M. YOSHIOKA       A. OHTA")
-    credits.add_credit(0x80, 0x00, 0xC2, "AOY             H. MINABA")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 5
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "K. KURASHIMA      K. KATO")
-    credits.add_credit(0x80, 0x40, 0x81, "Y. HATAE     K. KURASHIMA")
-    credits.add_credit(0x80, 0x00, 0xC2, "J. MIFUNE        K. NISHI")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 7
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "T. KURIHARA       A. UEDA")
-    credits.add_credit(0x80, 0x40, 0x81, "Y. MIYAMOTO      Y. ABIRU")
-    credits.add_credit(0x80, 0x00, 0xC2, "M. TSUTSUI        T. MOGI")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 8
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "Y. SASAKI    T. SAKAGUCHI")
-    credits.add_credit(0x80, 0x40, 0x81, "Y. AZUMA     Y. SHIMOMURA")
-    credits.add_credit(0x80, 0x00, 0xC2, "T. SUGAWARA     H. SUZUKI")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 10
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "M. WATANABE   C. MINEKAWA")
-    credits.add_credit(0x80, 0x40, 0x81, "Y. HIRATA       Y. HIROTA")
-    credits.add_credit(0x80, 0x00, 0xC2, "K. MAEDA     K. TAKAHASHI")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 12
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "R. MARUYA         N. WADA")
-    credits.add_credit(0x80, 0x40, 0x81, "A. ITO         T. WOOLSEY")
-    credits.add_credit(0x80, 0x00, 0xC2, "H. HAMADA        Y. CHIBA")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 13
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "K. KAWASAKI     N. HANADA")
-    credits.add_credit(0x80, 0x40, 0x81, "R. KOUDA        R.KOMATSU")
-    credits.add_credit(0x80, 0x00, 0xC2, "K. KANEKO       H. MASUDA")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 13
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "Y. SHIBANO   S. HASHIMOTO")
-    credits.add_credit(0x80, 0x40, 0x81, "K. HASHIMOTO    H. OHMORI")
-    credits.add_credit(0x80, 0x00, 0xC2, "M. SAKAKIBARA   T. KAYANO")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 14
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "A. YAMAGUCHI      H. ITOU")
-    credits.add_credit(0x80, 0x40, 0x81, "Y. KOTABE      N. UEMATSU")
-    credits.add_credit(0x80, 0x00, 0xC2, "K. TANABE       T. NOMURA")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 15
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "A. TEJIMA    H. SAKAGUCHI")
-    credits.add_credit(0x80, 0x40, 0x81, "K. KONDO     S. TAKAHASHI")
-    credits.add_credit(0x80, 0x00, 0xC2, "H. YAMADA  T. KURIBAYASHI")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    # 20
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "J. WORNELL    H. YAMAUCHI")
-    credits.add_credit(0x80, 0x40, 0x81, "K. MCDONALD     T. MIZUNO")
-    credits.add_credit(0x80, 0x00, 0xC2, "S. MIYAMOTO")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
+    # Randomizer credits strt here.
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.end_titles(END_TITLES_DELAY)
-
-    # 24
-    credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "RANDOMIZER ORIGINAL CONCEPT")
+    credits.add_title(0x80, 0x00, 0x08, "RANDOMIZER CONCEPT")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
@@ -357,51 +279,80 @@ def update_credits(world):
 
     # 25
     credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, "DEVELOPMENT LEADS")
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0xC0, 0xC0, "ALANIM    DORKMASTER FLEK")
+    credits.add_credit(0x80, 0x80, 0xC2, "PATCDR      PIDGEZERO_ONE")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    # 26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, "DEVELOPMENT")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "ALANIM    DORKMASTER FLEK")
-    credits.add_credit(0x80, 0x40, 0x81, "YAKIBOMB           SWINCH")
-    credits.add_credit(0x80, 0x00, 0xC2, "PATCDR      PIDGEZERO_ONE")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "ATBIGELOW        FORALIAS")
-    credits.add_credit(0x80, 0x40, 0x81, "AMAZING AMPHAROS")
-    credits.add_credit(0x80, 0x00, 0xC2, "SNESCHALMERS")
+    credits.add_credit(0x80, 0x80, 0x81, "YAKIBOMB     ANAXEMRANGER")
+    credits.add_credit(0x80, 0x40, 0xC0, "ATBIGELOW        FORALIAS")
+    credits.add_credit(0x80, 0x00, 0x81, "AMAZING AMPHAROS   SWINCH")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "  SPRITING    FONTS AND ICONS")
+    credits.add_title(0x80, 0x00, 0x08, "ARCHIPELAGO DEVELOPMENT LEAD")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "  XIRR           SMBAI   ")
-    credits.add_credit(0x80, 0x40, 0x81, "DARKDATA       SEANCASS  ")
-    credits.add_credit(0x80, 0x00, 0xC2, " MR DEAN        ALANIM   ")
+    credits.add_credit(0x80, 0x40, 0x81, "ROSALIE")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "PALETTES")
+    credits.add_title(0x80, 0x00, 0x08, "ARCHIPELAGO DEVELOPMENT")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "DEVILING            SMBAI")
+    credits.add_credit(0x80, 0xC0, 0xC0, "SOLIDUS SNAKE")
+    credits.add_credit(0x80, 0x80, 0x81, "BIGMALLETMAN")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    # 26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, "TEST WRITING")
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0xC0, 0xC0, "SERAPHIN EVELES")
+    credits.add_credit(0x80, 0x80, 0x81, "WONDERJ")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    # 26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, "ARTWORK")
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xC0, "XIRR")
+    credits.add_credit(0x80, 0x40, 0x81, "DARKDATA")
+    credits.add_credit(0x80, 0x00, 0xC2, "MR DEAN")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xC0, "SMBAI")
+    credits.add_credit(0x80, 0x40, 0x81, "SEANCASS")
+    credits.add_credit(0x80, 0x00, 0xC2, "ALANIM")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xC0, "DEVILING         MINAMIYO")
     credits.add_credit(0x80, 0x40, 0x81, "EGGTALK         HERRSHAUN")
     credits.add_credit(0x80, 0x00, 0xC2, "MYOHMYKE       AARONDOBBE")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    credits.begin_credits()
-    credits.add_credit(0x80, 0xC0, 0xC0, "MINAMIYO    PIDGEZERO_ONE")
-    credits.add_credit(0x80, 0x80, 0x81, "XIRR             DARKDATA")
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
     # 26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "DIALOGS")
+    credits.add_title(0x80, 0x00, 0x08, "WRITING")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
@@ -411,19 +362,19 @@ def update_credits(world):
 
     # 27
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "QUALITY ASSURANCE AND RESEARCH")
+    credits.add_title(0x80, 0x00, 0x08, "QA AND RESEARCH")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xC0, "SEANCASS    INTHENAMEOFDT")
     credits.add_credit(0x80, 0x40, 0x81, "LOCKECOLELIVE  GOZENGATTA")
-    credits.add_credit(0x80, 0x00, 0xC2, "CAVIN               SMBAI")
+    credits.add_credit(0x80, 0x00, 0xC2, "CAVIN               FLARE")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "TINYWETBLANKET    AIRNICK")
+    credits.add_credit(0x80, 0x80, 0xC0, "TINYWETBLANKET      SMBAI")
     credits.add_credit(0x80, 0x40, 0x81, "WEFFJEBSTER     BROATMEAL")
-    credits.add_credit(0x80, 0x00, 0xC2, "CYNAS               FLARE")
+    credits.add_credit(0x80, 0x00, 0xC2, "CYNAS        SNESCHALMERS")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
@@ -442,7 +393,7 @@ def update_credits(world):
     if world.settings.is_flag_enabled(flags.RandomTadpolePondSong):
 
         credits.begin_titles(BEGIN_TITLES_DELAY)
-        credits.add_title(0x80, 0x00, 0x08, "MELODY BAY TUNES IN THIS SEED")
+        credits.add_title(0x80, 0x00, 0x08, "TODAYS MELODY BAY TUNES")
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()
@@ -473,7 +424,7 @@ def update_credits(world):
     if world.settings.is_flag_enabled(flags.RandomSunkenShipPassword):
 
         credits.begin_titles(BEGIN_TITLES_DELAY)
-        credits.add_title(0x80, 0x00, 0x08, "SHIP PASSWORD IN THIS SEED")
+        credits.add_title(0x80, 0x00, 0x08, "TODAYS SHIP PASSWORD")
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()
@@ -538,7 +489,7 @@ def update_credits(world):
 
     # 38
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "DEDICATED IN MEMORY OF")
+    credits.add_title(0x80, 0x00, 0x08, "DEDICATED TO")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()

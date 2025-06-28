@@ -5,9 +5,10 @@ import random
 import enum
 import copy
 
+from randomizer.data.npcs import npcs
 from scipy.stats import gamma
 
-from randomizer.data import items, locations, chests, bosses, npcs
+from randomizer.data import items, locations, chests, bosses
 from randomizer.data.chests import PacketType
 from randomizer.helpers.flag_helpers import (
     FireworksOptions,

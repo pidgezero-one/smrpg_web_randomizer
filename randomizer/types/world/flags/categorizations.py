@@ -181,6 +181,7 @@ REGULAR_CHECKS = [  # excludes key item checks. can't turn those off
     ShuffleLocationSelector.MARRYMORE_PRIZE_4,
     ShuffleLocationSelector.MARRYMORE_PRIZE_5,
     ShuffleLocationSelector.MARRYMORE_PRIZE_6,
+    ShuffleLocationSelector.MARRYMORE_BIG_TIP,
     ShuffleLocationSelector.MARRYMORE_SNIFIT_1,
     ShuffleLocationSelector.MARRYMORE_SNIFIT_2,
     ShuffleLocationSelector.MARRYMORE_SNIFIT_3,

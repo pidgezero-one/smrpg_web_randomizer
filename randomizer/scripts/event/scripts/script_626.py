@@ -1,6 +1,6 @@
 # pylint: disable=C0301
 
-"""E0626_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUNROUTINE_2"""
+"""E0626_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_2"""
 
 from randomizer.scripts.event.script_imports import *
 

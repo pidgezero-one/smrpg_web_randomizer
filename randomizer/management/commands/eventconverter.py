@@ -5443,7 +5443,7 @@ def convert_event_script_command(cmd, valid_identifiers):
         cmd["command"]
         == "multiply_and_add_mem_3148_store_to_offset_7FB000_plus_outputx2"
     ):
-        cls = "MultiplyAndAddMem3148StoreToOffsrt7fB000PlusOutputX2"
+        cls = "MultiplyAndAddMem3148StoreToOffset7fB000PlusOutputX2"
         args["adding"] = str(cmdargs[0])
         args["multiplying"] = str(cmdargs[1])
     elif cmd["command"] == "open_location":

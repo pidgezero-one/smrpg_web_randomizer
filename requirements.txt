@@ -1,4 +1,8 @@
-Django==3.1.3
+Django==5.1.7
 jsonfield2==4.0.0.post0
-Markdown==3.2.2
+Markdown==3.7
+nlzss==0.1.2
+pytest==8.3.5
 scipy==1.14.0
+Wii.py==0.1
+git+https://github.com/pidgezero-one/smrpgpatchbuilder.git@0.1.0

@@ -1,6 +1,6 @@
 """Base classes supporting the production of a ROM patch."""
 
-from typing import Any, Dict, List, Union
+from typing import Dict, List, Union, Any
 from django.core.serializers.json import DjangoJSONEncoder
 
 
@@ -46,6 +46,11 @@ class Patch:
         elif isinstance(data, str):
             data = data.encode("latin1")
         self._data[addr] = data
+
+    def add_dict(self, data: Dict[int, bytearray]) -> None:
+        """Add data to the patch in `{0x123456: bytearray([0x00])}` format."""
+        for addr, b in data.items():
+            self.add_data(addr, b)
 
     def remove_data(self, addr: int) -> None:
         """Remove data from the patch."""

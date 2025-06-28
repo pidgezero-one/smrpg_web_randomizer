@@ -1,3 +1,5 @@
+PIDGE TODO: change 7EE00A to literally any other variable in script 204 and 236, that's dedicated party var in here but megasmilax + 1 other use it natively
+
 # Super Mario RPG Open World Randomizer
 
 New web-based randomizer for Super Mario RPG based on the original command line [Gentle Beauty and Raw Power](https://github.com/abyssonym/smrpg_gbarp) randomizer by abyssonym.

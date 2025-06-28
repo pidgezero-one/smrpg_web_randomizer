@@ -1,6 +1,6 @@
 """Usable NPC model definitions and enums"""
 
-from randomizer.types.npcs.objects.npcs import (
+from randomizer.data.npcs.npcs import (
     Mario,
     Toadstool,
     Bowser,

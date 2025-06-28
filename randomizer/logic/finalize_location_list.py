@@ -23,7 +23,7 @@ from randomizer.types.dialogs.ids.dialog_ids import (
     DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
     DI1109_RESERVED_FOR_GREAPERFLAG_HINT,
 )
-from randomizer.types.npcs.objects.npcs import Empty
+from randomizer.data.npcs.npcs import Empty
 from randomizer.types.overworld_scripts.action_scripts.commands.commands import (
     WalkEastPixels,
     WalkNorthPixels,

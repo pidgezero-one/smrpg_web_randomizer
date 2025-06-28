@@ -2751,6 +2751,17 @@ class MarrymoreSixthSuitePrize(GrantLocation, MarrymoreLocation):
     _container_event: int = E0248_NPC_QUEST_6_GRANT
 
 
+class MarrymoreBigTip(GrantLocation, MarrymoreLocation):
+    """MarrymoreBigTip progress location class"""
+
+    _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_BIG_TIP
+    _original_item: Type[Item] = FlowerBox
+    _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
+    _npc_ids: List[int] = [6, 7]
+    _container_event: int = E0226_NPC_QUEST_7_GRANT
+    _tier: int = 2
+
+
 class MarrymoreHotelChest(
     ChestLocationAllowSlots, MidgameChestLocation, MarrymoreLocation
 ):

@@ -36,7 +36,7 @@ script = EventScript(
         SetSyncActionScript(NPC_0, A0320_BELLHOP_SET_POSITION),
         FadeInFromBlack(sync=False),
         UnsyncActionScript(NPC_0),
-        CopyVarToVar(from_var=UNKNOWN_70D7, to_var=PRIMARY_TEMP_7000),
+        CopyVarToVar(from_var=MARRYMORE_SUITE_LEGAL_COUNT, to_var=PRIMARY_TEMP_7000),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 1, ["EVENT_613_set_action_script_async_20"]
         ),

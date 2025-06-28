@@ -55,6 +55,7 @@ from randomizer.types.world.flags import (
     ForestMazeGate,
     FreeShops,
     GrateGuyPrizeThreshold,
+    IncludeRemakeBosses,
     InvisibleFlagsSetting,
     ItemQuality,
     JapaneseABXY,
@@ -78,6 +79,7 @@ from randomizer.types.world.flags import (
     QuizShuffle,
     RandomSunkenShipPassword,
     RandomTadpolePondSong,
+    RemakeNames,
     RemoveFlashes,
     ReplaceItems,
     RequireBossFights,
@@ -219,6 +221,7 @@ class ItemLocationSubcategory(FlagCategory):
         InvisibleFlagsSetting,
         KeyItemsAnywhere,
         StarPieceAvailability,
+        RemakePostgame,
         EnabledRegularChecks,
     ]
     _id: str = "L"
@@ -435,6 +438,7 @@ class CosmeticCategory(FlagCategory):
         PaletteSubcategory,
         MusicSubcategory,
         AccessibilitySubcategory,
+        RemakeNames,
     ]
     _id: str = "CosmeticCategory"
 

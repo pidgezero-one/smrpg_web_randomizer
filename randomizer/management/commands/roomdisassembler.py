@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from randomizer.data import npcs
+from randomizer.data.npcs import npcs
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,

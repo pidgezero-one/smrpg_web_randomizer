@@ -2901,7 +2901,7 @@ class Pounder(Enemy):
     _yoshi_cookie_item: "Type[RegularItem]" = Energizer
 
 
-class PounderHenchman(Pounder):
+class PounderHenchman(Pounder, Henchman):
     """PounderHenchman enemy class"""
 
     _monster_id: int = 116
@@ -2953,7 +2953,7 @@ class Poundette(Enemy):
     _yoshi_cookie_item: "Type[RegularItem]" = Energizer
 
 
-class PoundetteHenchman(Poundette):
+class PoundetteHenchman(Poundette, Henchman):
     """PoundetteHenchman enemy class"""
 
     _monster_id: int = 132

@@ -117,7 +117,9 @@ class StartingCharacters(NumberThresholdFlag):
     _id: str = "size"
     # remember to set switch bit if > 3
     _name: str = "Starting party size"
-    _description: str = "The number of characters you will have already recruited at the start of the seed, including your starter."
+    _description: str = (
+        "The number of characters you will have already recruited at the start of the seed, including your starter."
+    )
     _default: int = 1
     _min: int = 1
     _max: int = 5
@@ -141,7 +143,9 @@ class AvailableCharacters(CategorizationFlag):
 
     _id: str = "avail"
     _name: str = "Characters allowed"
-    _description: str = """If a character is NOT highlighted (white text over blue), they will not appear in the seed. If they ARE highlighted, they may appear in the seed depending on your "Maximum characters available" setting."""
+    _description: str = (
+        """If a character is NOT highlighted (white text over blue), they will not appear in the seed. If they ARE highlighted, they may appear in the seed depending on your "Maximum characters available" setting."""
+    )
     _optionEnum = PlayableCharacters
     _options: List[PlayableCharacters] = PLAYABLE_CHARACTER_LIST
     _enabled: List[PlayableCharacters] = PLAYABLE_CHARACTER_LIST
@@ -189,7 +193,9 @@ class EquipmentNoSafety(BooleanFlag):
 
     _id: str = "unsafe"
     _name: str = "No Equipment Property Safety"
-    _description: str = "Normally, certain namesake items retain their protections: <b>Fearless Pin</b>, <b>Antidote Pin</b>, <b>Trueform Pin</b>, and <b>Wakeup Pin</b>. In addition, at least four equips will have OHKO protection. This flag removes those guarantees."
+    _description: str = (
+        "Normally, certain namesake items retain their protections: <b>Fearless Pin</b>, <b>Antidote Pin</b>, <b>Trueform Pin</b>, and <b>Wakeup Pin</b>. In addition, at least four equips will have OHKO protection. This flag removes those guarantees."
+    )
 
 
 class StarPieceHints(BooleanFlag):
@@ -233,7 +239,9 @@ class CharacterLearnedSpells(BooleanFlag):
 
     _id: str = "spells"
     _name: str = "Randomize character learned spells"
-    _description: str = "The pool of spells learnable by each character will be randomized. This only covers spells originally learn-able by playable characters, and does not include enemy spells."
+    _description: str = (
+        "The pool of spells learnable by each character will be randomized. This only covers spells originally learn-able by playable characters, and does not include enemy spells."
+    )
 
 
 class CharacterSpellStats(BooleanFlag):
@@ -389,15 +397,21 @@ class NoStarEgg(BooleanFlag):
 
     _id: str = "noegg"
     _name: str = "No Star Egg"
-    _description: str = """If enabled, you will not find the Star Egg via any chests, overworld items, or NPC rewards."""
+    _description: str = (
+        """If enabled, you will not find the Star Egg via any chests, overworld items, or NPC rewards."""
+    )
 
 
 class RestrictSpecialEquips(BooleanFlag):
     """Setting to make 10 special equips shuffled within each other"""
 
     _id: str = "restrict_monstro"
-    _name: str = 'Shuffle "Special Item" exchange equips & Monstro Town reward equips'
+    _name: str = (
+        'Shuffle "Special Item" exchange equips, Monstro Town reward equips, and postgame rewards'
+    )
     _description: str = """If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will be shuffled within each other's original locations. This option ignores your chosen Item Quality setting.
+<br>
+<br>If 'Include postgame' is enabled, this pool will include the Sage Stick, Wonder Chomp, Stella 023, Enduring Brooch, E.ShinyStone, TeamworkBand, and CrystalShard. The Frying Pan will also be included in the pool so that every character's ultimate weapon is included.
 <br>
 <br>If disabled, the ten locations will simply contain random items, like every other item location."""
 
@@ -406,7 +420,9 @@ class RestrictSpecialEquipsExclusive(BooleanFlag):
     """Setting to make special equips ONLY available within their designated locations"""
 
     _id: str = "hard"
-    _name: str = 'Exclude "Special Item" exchange equips & Monstro Town reward equips from all other locations'
+    _name: str = (
+        'Exclude "Special Item" exchange equips & Monstro Town reward equips from all other locations'
+    )
     _description: str = """If enabled alongside the "Shuffle 'Special Item exchange equips & Monstro Town reward equips" option, the ten items will ONLY appear at the ten designated locations, and nowhere else in the seed.
 <br> 
 <br>This option is redundant if you have selected "Original item pool" as your shuffle option.
@@ -451,7 +467,9 @@ class ShuffleBeetlemania(BooleanFlag):
 
     _id: str = "beetle"
     _name: str = "Shuffle Beetlemania"
-    _description: str = """If enabled, the Mushroom Kingdom inn kid will give you a random item check for 500 coins. Beetlemania will appear in a random location, unless your item pool is set to "Completely Empty"."""
+    _description: str = (
+        """If enabled, the Mushroom Kingdom inn kid will give you a random item check for 500 coins. Beetlemania will appear in a random location, unless your item pool is set to "Completely Empty"."""
+    )
 
 
 class ShuffleMagikoopaChest(BooleanFlag):
@@ -459,7 +477,9 @@ class ShuffleMagikoopaChest(BooleanFlag):
 
     _id: str = "kamek"
     _name: str = "Shuffle Magikoopa's coin chest"
-    _description: str = """If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins, unless your item pool is set to "Completely Empty"."""
+    _description: str = (
+        """If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins, unless your item pool is set to "Completely Empty"."""
+    )
 
 
 class ShuffleWeddingGear(BooleanFlag):
@@ -520,7 +540,9 @@ class StarPieceAvailability(BooleanFlag):
 
     _id: str = "stars_anywhere"
     _name: str = "Star Pieces can appear in the general item pool"
-    _description: str = "If enabled, some Star Pieces may be shuffled in with items instead of being only granted by boss fights."
+    _description: str = (
+        "If enabled, some Star Pieces may be shuffled in with items instead of being only granted by boss fights."
+    )
 
 
 # disable this setting if empty chests is turned on. Doesn't make sense to hunt down a check with no confirmation that you've found it
@@ -534,6 +556,18 @@ class InvisibleFlagsSetting(BooleanFlag):
 <br>If not enabled, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
 <br>
 <br>If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations."""
+
+
+class RemakePostgame(BooleanFlag):
+    """Setting to include "demake" postgame content from the SMRPG remake"""
+
+    _id: str = "postgame"
+    _name: str = "Include postgame"
+    _description: str = """If enabled, the postgame refights against Punchinello, Belome, Johnny, Jinx, Bundt, Booster, and Culex from the 2023 Nintendo Switch SMRPG remake will be included, as well as their reward items.
+<br>
+<br>You can access these boss fight locations by visting Star Hill after beating them the first time (so for example, if you beat the final boss of Moleville Mines and then go to Star Hill and talk to the appropriate wish star, you can revisit Moleville Mines to fight a new boss.)
+<br>
+<br>These fights are shuffled into the regular boss pool and their rewards are shuffled into the item pool."""
 
 
 class EnabledRegularChecks(CategorizationFlag):
@@ -559,7 +593,9 @@ class ReplaceItems(BooleanFlag):
 
     _id: str = "replace"
     _name: str = "Replace some chest items with coins"
-    _description: str = "If enabled, the worst items (Wilt Shrooms, etc) will sometimes be replaced with coins in chests."
+    _description: str = (
+        "If enabled, the worst items (Wilt Shrooms, etc) will sometimes be replaced with coins in chests."
+    )
 
 
 class QuickHitCoins(BooleanFlag):
@@ -567,7 +603,9 @@ class QuickHitCoins(BooleanFlag):
 
     _id: str = "quick"
     _name: str = "Quick-hit coin chests"
-    _description: str = "If enabled, all coin and frog coin chests will grant coins in a single hit instead of multiple hits. (Normally, only chests in room which graphically cannot load coins will at this way.)"
+    _description: str = (
+        "If enabled, all coin and frog coin chests will grant coins in a single hit instead of multiple hits. (Normally, only chests in room which graphically cannot load coins will at this way.)"
+    )
 
 
 class PoisonMushroom(BooleanFlag):
@@ -605,7 +643,9 @@ class GrateGuyPrizeThreshold(NumberThresholdFlag):
 
     _id: str = "gg"
     _name: str = 'Required "Look The Other Way" wins'
-    _description: str = "The number of times required to win Grate Guy's casino minigame to receive its ultimate prize."
+    _description: str = (
+        "The number of times required to win Grate Guy's casino minigame to receive its ultimate prize."
+    )
     _default: int = 100
     _min: int = 1
     _max: int = 255
@@ -616,7 +656,9 @@ class KnifeGuyPrizeThreshold(NumberThresholdFlag):
 
     _id: str = "kg"
     _name: str = "Required juggling wins"
-    _description: str = "The number of wins minus losses required to win Knife Guy's ultimate juggling game prize."
+    _description: str = (
+        "The number of wins minus losses required to win Knife Guy's ultimate juggling game prize."
+    )
     _default: int = 12
     _min: int = 1
     _max: int = 254
@@ -627,7 +669,9 @@ class SuitePrize1Threshold(NumberThresholdFlag):
 
     _id: str = "s1"
     _name: str = "Required Suite prize #1 stays"
-    _description: str = "The number of times required to stay in the Marrymore Suite to receive the first special gift"
+    _description: str = (
+        "The number of times required to stay in the Marrymore Suite to receive the first special gift"
+    )
     _default: int = 1
     _min: int = 1
     _max: int = 254
@@ -638,7 +682,9 @@ class SuitePrize2Threshold(NumberThresholdFlag):
 
     _id: str = "s2"
     _name: str = "Required Suite prize #2 stays"
-    _description: str = "The number of times required to stay in the Marrymore Suite to receive the second special gift"
+    _description: str = (
+        "The number of times required to stay in the Marrymore Suite to receive the second special gift"
+    )
     _default: int = 3
     _min: int = 1
     _max: int = 254
@@ -649,7 +695,9 @@ class SuitePrize3Threshold(NumberThresholdFlag):
 
     _id: str = "s3"
     _name: str = "Required Suite prize #3 stays"
-    _description: str = "The number of times required to stay in the Marrymore Suite to receive the third special gift"
+    _description: str = (
+        "The number of times required to stay in the Marrymore Suite to receive the third special gift"
+    )
     _default: int = 5
     _min: int = 1
     _max: int = 254
@@ -660,7 +708,9 @@ class SuitePrize4Threshold(NumberThresholdFlag):
 
     _id: str = "s4"
     _name: str = "Required Suite prize #4 stays"
-    _description: str = "The number of times required to stay in the Marrymore Suite to receive the fourth special gift"
+    _description: str = (
+        "The number of times required to stay in the Marrymore Suite to receive the fourth special gift"
+    )
     _default: int = 10
     _min: int = 1
     _max: int = 254
@@ -671,7 +721,9 @@ class SuitePrize5Threshold(NumberThresholdFlag):
 
     _id: str = "s5"
     _name: str = "Required Suite prize #5 stays"
-    _description: str = "The number of times required to stay in the Marrymore Suite to receive the fifth special gift"
+    _description: str = (
+        "The number of times required to stay in the Marrymore Suite to receive the fifth special gift"
+    )
     _default: int = 15
     _min: int = 1
     _max: int = 254
@@ -682,7 +734,9 @@ class SuitePrize6Threshold(NumberThresholdFlag):
 
     _id: str = "s6"
     _name: str = "Required Suite prize #6 stays"
-    _description: str = "The number of times required to stay in the Marrymore Suite to receive the sixth special gift"
+    _description: str = (
+        "The number of times required to stay in the Marrymore Suite to receive the sixth special gift"
+    )
     _default: int = 200
     _min: int = 1
     _max: int = 254
@@ -693,7 +747,9 @@ class SuperJump1Threshold(NumberThresholdFlag):
 
     _id: str = "sj1"
     _name: str = "Required Super Jumps for prize #1"
-    _description: str = "The number of consecutive Super Jumps required for the first prize in Monstro Town"
+    _description: str = (
+        "The number of consecutive Super Jumps required for the first prize in Monstro Town"
+    )
     _default: int = 30
     _min: int = 1
     _max: int = 99
@@ -704,7 +760,9 @@ class SuperJump2Threshold(NumberThresholdFlag):
 
     _id: str = "sj2"
     _name: str = "Required Super Jumps for prize #2"
-    _description: str = "The number of consecutive Super Jumps required for the second prize in Monstro Town"
+    _description: str = (
+        "The number of consecutive Super Jumps required for the second prize in Monstro Town"
+    )
     _default: int = 100
     _min: int = 2
     _max: int = 100
@@ -957,7 +1015,9 @@ class StarPiecesRequired(NumberThresholdFlag):
 
     _id: str = "endgame"
     _name: str = "Star Pieces required to access the final Factory boss"
-    _description: str = "The total number of Star Pieces (0-7) that are required to access the final boss. Cannot be higher than Total Star Pieces."
+    _description: str = (
+        "The total number of Star Pieces (0-7) that are required to access the final boss. Cannot be higher than Total Star Pieces."
+    )
     _default: int = 6
     _min: int = 0
     _max: int = 7
@@ -968,7 +1028,9 @@ class CasinoWarp(BooleanFlag):
 
     _id: str = "cwarp"
     _name: str = "Casino Warp"
-    _description: str = """If enabled, a trampoline warping directly to the final boss will become available in Grate Guy's Casino once you have collected the number of Star Pieces specified in 'Star Pieces required to beat the game'."""
+    _description: str = (
+        """If enabled, a trampoline warping directly to the final boss will become available in Grate Guy's Casino once you have collected the number of Star Pieces specified in 'Star Pieces required to beat the game'."""
+    )
 
 
 class BucketWarp(BooleanFlag):
@@ -976,7 +1038,9 @@ class BucketWarp(BooleanFlag):
 
     _id: str = "bwarp"
     _name: str = "Bucket Warp"
-    _description: str = "If enabled, trading a Carbo Cookie to the bucket girl in Moleville will reveal a warp to the final boss once you have collected the number of Star Pieces specified in 'Star Pieces required to beat the game'."
+    _description: str = (
+        "If enabled, trading a Carbo Cookie to the bucket girl in Moleville will reveal a warp to the final boss once you have collected the number of Star Pieces specified in 'Star Pieces required to beat the game'."
+    )
 
 
 class FastTravel(BooleanFlag):
@@ -1033,7 +1097,9 @@ class QuizShuffle(BooleanFlag):
 
     _id: str = "quiz"
     _name: str = "Randomize Dr. Topper Quiz"
-    _description: str = "The question pool for the Dr. Topper quiz will include new questions provided by the community."
+    _description: str = (
+        "The question pool for the Dr. Topper quiz will include new questions provided by the community."
+    )
 
 
 class RandomTadpolePondSong(BooleanFlag):
@@ -1041,7 +1107,9 @@ class RandomTadpolePondSong(BooleanFlag):
 
     _id: str = "melody"
     _name: str = "Randomize Tadpole Pond songs"
-    _description: str = """If enabled, the songs required for the three Tadpole Pond songs will be selected from a random pool, submitted by players. Hints will be available in their normal locations within Tadpole Pond, Moleville Mines, and Monstro Town."""
+    _description: str = (
+        """If enabled, the songs required for the three Tadpole Pond songs will be selected from a random pool, submitted by players. Hints will be available in their normal locations within Tadpole Pond, Moleville Mines, and Monstro Town."""
+    )
 
 
 class RandomSunkenShipPassword(BooleanFlag):
@@ -1059,7 +1127,9 @@ class BowserDoorShuffle(BooleanFlag):
 
     _id: str = "doors"
     _name: str = "Randomize Bowser's Keep room sequences"
-    _description: str = """If enabled, the 18 rooms making up the six Bowser's Keep obstacle course doors will be shuffled into six random sequences of three rooms each."""
+    _description: str = (
+        """If enabled, the 18 rooms making up the six Bowser's Keep obstacle course doors will be shuffled into six random sequences of three rooms each."""
+    )
 
 
 class SkipMinecart(BooleanFlag):
@@ -1067,7 +1137,9 @@ class SkipMinecart(BooleanFlag):
 
     _id: str = "skipcart"
     _name: str = "Skip Minecart minigame"
-    _description: str = """If enabled, boarding the minecart for the first time will teleport you back to Moleville. Subsequent visits to the minecart room will play the minigame as normal."""
+    _description: str = (
+        """If enabled, boarding the minecart for the first time will teleport you back to Moleville. Subsequent visits to the minecart room will play the minigame as normal."""
+    )
 
 
 class BetterTips(BooleanFlag):
@@ -1095,7 +1167,9 @@ class ShuffleShops(BooleanFlag):
 
     _id: str = "random"
     _name: str = "Randomize the contents of shops"
-    _description: str = """If enabled, the contents of all regular shops and Frog Coin shops (including the Moleville treasure shop, Marrymore Suite room service menu, and Moleville swap shop) will be randomized."""
+    _description: str = (
+        """If enabled, the contents of all regular shops and Frog Coin shops (including the Moleville treasure shop, Marrymore Suite room service menu, and Moleville swap shop) will be randomized."""
+    )
 
 
 # if this is disabled, no options in this category can be changed
@@ -1147,7 +1221,9 @@ class FreeShops(BooleanFlag):
 
     _id: str = "free"
     _name: str = "'Free' Shops"
-    _description: str = """If enabled, all shop items will cost 1 coin. You will start with 9999 coins and 999 frog coins."""
+    _description: str = (
+        """If enabled, all shop items will cost 1 coin. You will start with 9999 coins and 999 frog coins."""
+    )
 
 
 # ******** Enemies & Bosses
@@ -1158,7 +1234,9 @@ class BossShuffle(BooleanFlag):
 
     _id: str = "random"
     _name: str = "Randomize boss positions"
-    _description: str = "If enabled, the positions of bosses (including Pandorite, Hidon, Box Boy, Chester, and Mokura) are shuffled."
+    _description: str = (
+        "If enabled, the positions of bosses (including Pandorite, Hidon, Box Boy, Chester, and Mokura) are shuffled."
+    )
 
     # if false, disable stat scaling and mimics anywhere
 
@@ -1207,11 +1285,21 @@ class DifferentiateRepeatedBosses(BooleanFlag):
 <br>
 <br>Croco 2 will have a darker hat.
 <br>
-<br>Jinx 2/3's hair will be black/white respectively.
+<br>Jinx 2/3/4's hair will be black/white/blue respectively.
 <br>
-<br>Belome 2 will be more subdued, and coloured like the golden Belome statue.
+<br>Belome 2 will be more subdued, and coloured like the golden Belome statue. Belome 3 will have purple highlights instead of red.
 <br>
-<br>Pandorite will be tinted orange, Hidon will be tinted green, and Chester will be tinted purple."""
+<br>Pandorite will be tinted orange, Hidon will be tinted green, and Chester will be tinted purple.
+<br>
+<br>Punchinello2 will have a darker hat.
+<br>
+<br>Duel Johnny will be red instead of blue.
+<br>
+<br>Fancy Bundt will have a purple raspberry instead of red.
+<br>
+<br>Booster 023 will have a darker shirt.
+<br>
+<br>Culex 3D will have green crystals instead of blue."""
 
 
 class ShuffledBosses(CategorizationFlag):
@@ -1242,7 +1330,9 @@ class EnemyDrops(BooleanFlag):
 
     _id: str = "drops"
     _name: str = "Randomize enemy drops"
-    _description: str = "If enabled, the EXP and in-battle items received from battles will be randomized."
+    _description: str = (
+        "If enabled, the EXP and in-battle items received from battles will be randomized."
+    )
 
 
 class EnemyFormations(BooleanFlag):
@@ -1250,7 +1340,9 @@ class EnemyFormations(BooleanFlag):
 
     _id: str = "formations"
     _name: str = "Randomize formations"
-    _description: str = "If enabled, enemy encounters may contain random unexpected additional enemies and be laid out erratically. Boss formations are not affected."
+    _description: str = (
+        "If enabled, enemy encounters may contain random unexpected additional enemies and be laid out erratically. Boss formations are not affected."
+    )
 
 
 class EnemyAttacks(BooleanFlag):
@@ -1258,7 +1350,9 @@ class EnemyAttacks(BooleanFlag):
 
     _id: str = "attacks"
     _name: str = "Randomize attack stats and effects"
-    _description: str = "If enabled, enemy spells and attacks will have their power randomized. Attacks which cast statuses will have the status effects randomized, and attacks which normally don't inflict statuses may inflict unexpected statuses."
+    _description: str = (
+        "If enabled, enemy spells and attacks will have their power randomized. Attacks which cast statuses will have the status effects randomized, and attacks which normally don't inflict statuses may inflict unexpected statuses."
+    )
 
 
 class EnemyNoSafetyChecks(BooleanFlag):
@@ -1266,7 +1360,9 @@ class EnemyNoSafetyChecks(BooleanFlag):
 
     _id: str = "unsafe"
     _name: str = "No safety checks"
-    _description: str = "If enabled, removes safety checks on enemy attack shuffle that prevent abnormally large effects."
+    _description: str = (
+        "If enabled, removes safety checks on enemy attack shuffle that prevent abnormally large effects."
+    )
 
 
 class EnemySpells(BooleanFlag):
@@ -1274,7 +1370,9 @@ class EnemySpells(BooleanFlag):
 
     _id: str = "spells"
     _name: str = "Randomize enemy spell assignments"
-    _description: str = "If enabled, enemies can cast random spells. I.E. Mack could cast Blast instead of Flame."
+    _description: str = (
+        "If enabled, enemies can cast random spells. I.E. Mack could cast Blast instead of Flame."
+    )
 
 
 class ExperienceNoRegular(BooleanFlag):
@@ -1353,7 +1451,19 @@ class ChangeNames(BooleanFlag):  # not available unless PaletteSwaps enabled
 
     _id: str = "names"
     _name: str = "Change character names"
-    _description: str = """Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette."""
+    _description: str = (
+        """Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette."""
+    )
+
+
+class RemakeNames(BooleanFlag):
+    """Setting to use the remake's names"""
+
+    _id: str = "renames"
+    _name: str = "Use remake names"
+    _description: str = (
+        """Characters, items, spells, and bosses will use their names from the 2023 Nintendo Switch SMRPG remake. (Palette-driven name changes override this setting for Toadstool.)"""
+    )
 
 
 class JapaneseABXY(BooleanFlag):
@@ -1361,7 +1471,9 @@ class JapaneseABXY(BooleanFlag):
 
     _id: str = "abxy"
     _name: str = "Japanese ABXY buttons"
-    _description: str = "If this flag is enabled, ABXY buttons will have the Super Famicom colours from the Japanese version of the game."
+    _description: str = (
+        "If this flag is enabled, ABXY buttons will have the Super Famicom colours from the Japanese version of the game."
+    )
 
 
 class BossShuffleMusic(BooleanFlag):

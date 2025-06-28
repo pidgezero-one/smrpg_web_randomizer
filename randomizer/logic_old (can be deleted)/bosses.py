@@ -5,8 +5,10 @@ import random
 import statistics
 import copy
 
+from randomizer.data.npcs import npcs
+
 from . import flags, utils
-from randomizer.data import bosses, enemies, npcs
+from randomizer.data import bosses, enemies
 from randomizer.data.bosses import (
     is_vanilla,
     has_vanilla_henchmen,

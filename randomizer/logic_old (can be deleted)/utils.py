@@ -13,7 +13,7 @@ from randomizer.helpers.objectsequencetables import (
 )  # circular dependency because of data init. consider moving data types into helpers
 from randomizer.helpers.eventtables import AreaObjects
 from randomizer.helpers.flag_helpers import SequenceType
-from randomizer.data.npcs import Coin, FrogCoin, SmallCoin, SmallFrogCoin
+from randomizer.data.npcs.npcs import Coin, FrogCoin, SmallCoin, SmallFrogCoin
 from randomizer.types.numbers.classes import UInt16, UInt8
 
 # Amount to boost very small values when shuffling to give a bit more range for very small values.

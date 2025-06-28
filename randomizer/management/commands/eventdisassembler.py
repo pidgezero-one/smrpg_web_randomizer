@@ -46,8 +46,7 @@ from randomizer.management.disassembler_common import (
     short,
     short_int,
     build_table,
-    use_table_name,
-    get_flag_string,
+    parse_flags,
     flags,
     con_int,
     flags_short,
@@ -766,7 +765,7 @@ def tok(rom, start, end, bank):
             print(hex(cmd), hex(dex))
             1 / 0
 
-        bytestring = [("0x%02x" % i) for i in rom[dex : dex + l]]
+        bytestring = [i for i in rom[dex : dex + l]]
         # print (hex(dex), " ".join(bytestring))
         script.append((rom[dex : dex + l], dex))
         dex += l
@@ -777,7 +776,7 @@ def parse_line(line, offset, with_comments=True):
     if offset in jumped_to_from_action_queue and is_eligible_nonembedded_command(
         line[0:2]
     ):
-        name, args = "non_embedded_action_queue", ["%r" % line]
+        name, args = "non_embedded_action_queue", [line]
     else:
         if line[0] == 0xFD:
             cmd = line[1]
@@ -790,7 +789,7 @@ def parse_line(line, offset, with_comments=True):
         if table[cmd]:
             name, args = table[cmd](rest)
         else:
-            name, args = "db", ["0x%02x" % (i) for i in line]
+            name, args = "db", line
 
     return name, args
 
@@ -828,18 +827,18 @@ def adjust_music_calc(args):
 def adjust_music_pitch(args):
     direction, change, duration = adjust_music_calc(args)
     return "adjust_music_pitch", [
-        "%s" % (use_table_name("MusicPitch", music_pitch_table, direction)),
-        "%i" % (change),
-        "%i" % (duration),
+        direction,
+        change,
+        duration
     ]
 
 
 def adjust_music_tempo(args):
     direction, change, duration = adjust_music_calc(args)
     return "adjust_music_tempo", [
-        "%s" % (use_table_name("MusicDirections", music_direction_table, direction)),
-        "%i" % (change),
-        "%i" % (duration),
+        direction,
+        change,
+        duration
     ]
 
 
@@ -849,8 +848,8 @@ def level_mod(args, prefix, table):
     area = area_byte & 0x01FF
     mod = (args[1] >> 1) & 0x3F
     return [
-        "%s" % (use_table_name("Rooms", room_table, area)),
-        "%i" % (mod),
+        area,
+        mod,
         use_alternate,
     ]
 
@@ -864,11 +863,7 @@ def apply_solidity_mod(args):
 
 
 def circle_mask(args):
-    return [
-        "%s" % (use_table_name("AreaObjects", area_object_table, args[0])),
-        "%i" % (args[1]),
-        "%i" % (args[2]),
-    ]
+    return args
 
 
 def circle_mask_nonstatic(args):
@@ -884,26 +879,26 @@ def enter_area(args):
     room = room_short & ~0x8000 & ~0x800
     x = args[2]
     y = args[3] & ~0x80
-    flags = get_flag_string(args[:4], "_0x68Flags", _0x68_flags, [11, 15, 31])
+    flags = parse_flags(args[:4], "_0x68Flags", _0x68_flags, [11, 15, 31])
     z_direction = args[4]
     z = z_direction & 0x1F
     direction = z_direction >> 5
     return "enter_area", [
-        "%s" % (use_table_name("Rooms", room_table, room)),
-        "%s" % (use_table_name("RadialDirections", radial_direction_table, direction)),
-        "%i" % (x),
-        "%i" % (y),
-        "%i" % (z),
+        room,
+        direction,
+        x,
+        y,
+        z,
         flags,
     ]
 
 
 def fade_out_music_to_volume(args):
-    return "fade_out_music_to_volume", ["%i" % (args[0]), "%i" % (args[1])]
+    return "fade_out_music_to_volume", args
 
 
 def fade_out_sound_to_volume(args):
-    return "fade_out_sound_to_volume", ["%i" % (args[0]), "%i" % (args[1])]
+    return "fade_out_sound_to_volume", args
 
 
 def jmp_depending_on_object_event_trigger(args):
@@ -916,9 +911,9 @@ def jmp_depending_on_object_event_trigger(args):
     else:
         func = "jmp_if_object_trigger_disabled"
     return func, [
-        "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
-        "%s" % (use_table_name("Rooms", room_table, level)),
-        "0x%04x" % (addr),
+        obj,
+        level,
+        addr,
     ]
 
 
@@ -932,16 +927,16 @@ def jmp_depending_on_object_presence(args):
     else:
         func = "jmp_if_object_not_in_level"
     return func, [
-        "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
-        "%s" % (use_table_name("Rooms", room_table, level)),
-        "0x%04x" % (addr),
+        obj,
+        level,
+        addr,
     ]
 
 
 def mem_7000_shift_left(args):
     addr = 2 * args[0] + 0x7000
     shift = 256 - args[1]
-    return "mem_7000_shift_left", ["0x%04x" % (addr), "%i" % (shift)]
+    return "mem_7000_shift_left", [addr, shift]
 
 
 def modify_party(args):
@@ -950,11 +945,11 @@ def modify_party(args):
     char = char_byte & ~0x80
     if is_joining:
         return "join_party", [
-            "%s" % (use_table_name("AreaObjects", area_object_table, char))
+            char
         ]
     else:
         return "leave_party", [
-            "%s" % (use_table_name("AreaObjects", area_object_table, char))
+            char
         ]
 
 
@@ -963,9 +958,9 @@ def palette_set(args):
     row = (args[0] >> 4) + 1
     unknown_bits = args[0] & 0x0F
     return "palette_set", [
-        "%i" % (palette_set),
-        "%i" % (row),
-        "%s" % get_flag_string(unknown_bits),
+        palette_set,
+        row,
+        parse_flags(unknown_bits),
     ]
 
 
@@ -975,10 +970,10 @@ def palette_set_morphs(args):
     palette_set = args[2]
     row = args[1]
     return "palette_set_morphs", [
-        "%s" % (use_table_name("PaletteSetTypes", palette_set_types_table, morph_type)),
-        "%i" % (duration),
-        "%i" % (palette_set),
-        "%i" % (row),
+        morph_type,
+        duration,
+        palette_set,
+        row,
     ]
 
 
@@ -988,13 +983,13 @@ def parse_object_coord(cmd):
         unit = bit(args, 0, 6)
         coord = cmd - 0xC4
         func_params = [
-            "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
-            "%s" % (use_table_name("Coords", coord_table, coord)),
-            "%s" % get_flag_string(args[0], bits=[7]),
+            obj,
+            coord,
+            parse_flags(args[0], bits=[7]),
         ]
         if cmd < 0xC9:
             func_params.append(
-                "%s" % (use_table_name("CoordUnits", coord_unit_table, unit))
+                unit
             )
         return "set_7000_to_object_coord", func_params
 
@@ -1013,9 +1008,9 @@ def parse_obj_fxn(obj):
                 else:
                     script = []
                 return cmd, [
-                    "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
-                    "%r" % (not is_async),
-                    "%r" % script,
+                    obj,
+                    not is_async,
+                    script,
                 ]
             else:  # 0xF0 and 0xF1 don't appear to be different...
                 is_async = bit(args, 1, 7)
@@ -1025,120 +1020,120 @@ def parse_obj_fxn(obj):
                 else:
                     script = []
                 return cmd, [
-                    "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
-                    "%r" % (not is_async),
-                    "0x%02x" % sub_command,
-                    "%r" % script,
+                    obj,
+                    not is_async,
+                    sub_command,
+                    script,
                 ]
         elif sub_command == 0xF2:
             script = shortify(args, 1)
             return "set_action_script", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
+                obj,
                 True,
-                "%i" % (script),
+                script,
             ]
         elif sub_command == 0xF3:
             script = shortify(args, 1)
             return "set_action_script", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
+                obj,
                 False,
-                "%i" % (script),
+                script,
             ]
         elif sub_command == 0xF4:
             script = shortify(args, 1)
             return "set_temp_action_script", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
+                obj,
                 True,
-                "%i" % (script),
+                script,
             ]
         elif sub_command == 0xF5:
             script = shortify(args, 1)
             return "set_temp_action_script", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
+                obj,
                 False,
-                "%i" % (script),
+                script,
             ]
         elif sub_command == 0xF6:
             return "unsync_action_script", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         elif sub_command == 0xF7:
             return "summon_to_current_level_at_marios_coords", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         elif sub_command == 0xF8:
             return "summon_to_current_level", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         elif sub_command == 0xF9:
             return "remove_from_current_level", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         elif sub_command == 0xFA:
             return "pause_action_script", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         elif sub_command == 0xFB:
             return "resume_action_script", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         elif sub_command == 0xFC:
             return "enable_trigger", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         elif sub_command == 0xFD:
             return "disable_trigger", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         elif sub_command == 0xFE:
             return "stop_embedded_action_script", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
         else:
             return "reset_coords", [
-                "%s" % (use_table_name("AreaObjects", area_object_table, obj))
+                obj
             ]
 
     return inner_parse_obj_fxn
 
 
 def pause(args):
-    return "pause", ["%i" % (args[0] + 1)]
+    return "pause", [args[0] + 1]
 
 
 def pause(args):
     s = shortify(args, 0)
-    return "pause", ["%i" % (s + 1)]
+    return "pause", [s+1]
 
 
 def pixelate_layers(args):
-    layers = get_flag_string(args[0], "_0x84Flags", _0x84_flags, bits=[0, 1, 2, 3])
+    layers = parse_flags(args[0], "_0x84Flags", _0x84_flags, bits=[0, 1, 2, 3])
     size = args[0] >> 4
     duration = args[1]
-    return "pixelate_layers", [layers, "%i" % (size), "%i" % (duration)]
+    return "pixelate_layers", [layers, size, duration]
 
 
 def priority_set(args):
-    mainscreen = get_flag_string(args[0], "_0x81Flags", _0x81_flags)
-    subscreen = get_flag_string(args[1], "_0x81Flags", _0x81_flags)
-    color_math = get_flag_string(args[2], "_0x81Flags", _0x81_flags)
+    mainscreen = parse_flags(args[0], "_0x81Flags", _0x81_flags)
+    subscreen = parse_flags(args[1], "_0x81Flags", _0x81_flags)
+    color_math = parse_flags(args[2], "_0x81Flags", _0x81_flags)
     return "priority_set", [
-        "%s" % (mainscreen),
-        "%s" % (subscreen),
-        "%s" % (color_math),
+        mainscreen,
+        subscreen,
+        color_math,
     ]
 
 
 def resume_background_event(args):
     timer_memory = 0x701C + args[0] * 2
-    return "resume_background_event", ["0x%04x" % (timer_memory)]
+    return "resume_background_event", [timer_memory]
 
 
 def run_background_event(args):
     event_byte = shortify(args, 0)
     event_id = event_byte & 0x0FFF
-    f = get_flag_string(event_byte, "_0x40Flags", _0x40_flags, [13, 14, 15])
-    return "run_background_event", ["%i" % (event_id), f]
+    f = parse_flags(event_byte, "_0x40Flags", _0x40_flags, [13, 14, 15])
+    return "run_background_event", [event_id, f]
 
 
 def run_bkgd_event_pause_math(args):
@@ -1146,9 +1141,9 @@ def run_bkgd_event_pause_math(args):
     event_id = s & 0x0FFF
     timer_memory = 0x701C + (args[1] >> 6) * 2
     return [
-        "%i" % (event_id),
-        "0x%04x" % (timer_memory),
-        "%s" % get_flag_string(s, bits=[12, 13]),
+        event_id,
+        timer_memory,
+        parse_flags(s, bits=[12, 13]),
     ]
 
 
@@ -1169,19 +1164,19 @@ def run_dialog(args):
         flags_arg = 1
         position_arg = 2
         dialog_id = shortify(args, 0) & 0x0FFF
-        dialog_output = "%i" % (dialog_id)
+        dialog_output = dialog_id
     else:
         flags_arg = 0
         position_arg = 1
         dialog_id = 0x7000
-        dialog_output = "0x%04x" % (dialog_id)
-    flags = get_flag_string(
+        dialog_output = dialog_id
+    flags = parse_flags(
         args[flags_arg : position_arg + 1], "_0x60Flags", _0x60_flags, [5, 6, 7, 14, 15]
     )
     above = args[position_arg] & 0x3F
     return "run_dialog", [
         dialog_output,
-        "%s" % (use_table_name("AreaObjects", area_object_table, above)),
+        above,
         flags,
     ]
 
@@ -1191,33 +1186,18 @@ def run_dialog_duration(args):
     flags = get_flag_string(args[1], "_0x60Flags", _0x60_flags, [7])
     duration = (args[1] & 0x7F) >> 5
     return "run_dialog_duration", [
-        "%i" % (dialog_id),
-        "%s" % (use_table_name("DialogDurations", dialog_duration_table, duration)),
+        dialog_id,
+        duration,
         flags,
     ]
 
 
 def run_event_sequence(args):
     def determine_table_value():
-        if args[0] == 0x02:
-            return "%s" % (use_table_name("Locations", location_table, args[1]))
-        elif args[0] == 0x03:
-            return "%s" % (use_table_name("Shops", shop_table, args[1]))
-        elif args[0] == 0x05:
-            return "%s" % (use_table_name("items", items_table, args[1]))
-        elif args[0] == 0x07:
-            return "%s" % (
-                use_table_name("MenuTutorials", menu_tutorial_table, args[1])
-            )
-        elif args[0] == 0x10:
-            return "%s" % (
-                use_table_name("OverworldSequences", overworld_sequence_table, args[1])
-            )
-        else:
-            return "0x%02x" % (args[1])
+        return args[1]
 
     return "run_event_sequence", [
-        "%s" % (use_table_name("EventSequences", event_sequence_table, args[0])),
+        args[0],
         determine_table_value(),
     ]
 
@@ -1232,7 +1212,7 @@ def parse_target_bit(cmd, args):
 def set_bit(cmd):
     def inner_set_bit(args):
         addr, bit = parse_target_bit(cmd, args)
-        return "set_bit", ["0x%04x" % addr, "%i" % bit]
+        return "set_bit", [addr, bit]
 
     return inner_set_bit
 
@@ -1240,7 +1220,7 @@ def set_bit(cmd):
 def clear_bit(cmd):
     def inner_clear_bit(args):
         addr, bit = parse_target_bit(cmd - 0xA4, args)
-        return "clear_bit", ["0x%04x" % addr, "%i" % bit]
+        return "clear_bit", [addr, bit]
 
     return inner_clear_bit
 
@@ -1248,7 +1228,7 @@ def clear_bit(cmd):
 def store_set_bits(cmd):
     def inner_set_bit(args):
         addr, bit = parse_target_bit(cmd - 0xA8, args)
-        return "store_set_bits", ["0x%04x" % addr, "%i" % bit]
+        return "store_set_bits", [addr, bit]
 
     return inner_set_bit
 
@@ -1258,9 +1238,7 @@ def jmp_if_bit_clear(cmd):
         addr, bit = parse_target_bit(cmd - 0xDC, args)
         to_addr = shortify(args, 1)
         return "jmp_if_bit_clear", [
-            "0x%04x" % addr,
-            "%i" % bit,
-            "0x%04x" % to_addr,
+            addr, bit, to_addr,
         ]
 
     return inner_jmp_if_bit_clear
@@ -1271,9 +1249,7 @@ def jmp_if_bit_set(cmd):
         addr, bit = parse_target_bit(cmd - 0xD8, args)
         to_addr = shortify(args, 1)
         return "jmp_if_bit_set", [
-            "0x%04x" % addr,
-            "%i" % bit,
-            "0x%04x" % to_addr,
+            addr, bit, to_addr,
         ]
 
     return inner_jmp_if_bit_set
@@ -1281,7 +1257,7 @@ def jmp_if_bit_set(cmd):
 
 def set_7000_to_member_in_slot(args):
     slot = args[0] - 0x08
-    return "set_7000_to_member_in_slot", ["%i" % (slot)]
+    return "set_7000_to_member_in_slot", [slot]
 
 
 def set_object_presence_in_level(args):
@@ -1292,11 +1268,8 @@ def set_object_presence_in_level(args):
         func = "summon_to_level"
     else:
         func = "remove_from_level"
-    # if (obj == 0x15 or obj == 0x16) and level == 28:
-    #    raise Exception("trace")
     return func, [
-        "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
-        "%s" % (use_table_name("Rooms", room_table, level)),
+        obj, level
     ]
 
 
@@ -1309,26 +1282,25 @@ def set_object_trigger_in_level(args):
     else:
         func = "disable_trigger_in_level"
     return func, [
-        "%s" % (use_table_name("AreaObjects", area_object_table, obj)),
-        "%s" % (use_table_name("Rooms", room_table, level)),
+        obj, level
     ]
 
 
 def stop_background_event(args):
     timer_memory = 0x701C + args[0] * 2
-    return "stop_background_event", ["0x%04x" % (timer_memory)]
+    return "stop_background_event", [timer_memory]
 
 
 def set_bit_7_offset(args):
     target = 0x0158 + (args[0] & 0x7F) * 2
     unknown_bits = get_flag_string(args[0], bits=[7])
-    return "set_bit_7_offset", ["0x%04x" % target, "%s" % unknown_bits]
+    return "set_bit_7_offset", [target, unknown_bits]
 
 
 def clear_bit_7_offset(args):
     target = 0x0158 + (args[0] & 0x7F) * 2
     unknown_bits = get_flag_string(args[0], bits=[7])
-    return "clear_bit_7_offset", ["0x%04x" % target, "%s" % unknown_bits]
+    return "clear_bit_7_offset", [target, unknown_bits]
 
 
 def tint_layers(args):
@@ -1342,12 +1314,7 @@ def tint_layers(args):
     )
     unknown_flags = get_flag_string(args[1], bits=[7])
     return "tint_layers", [
-        "0x%02x" % (red),
-        "0x%02x" % (green),
-        "0x%02x" % (blue),
-        "%i" % (speed),
-        "%s" % flags,
-        "%s" % unknown_flags,
+        red, green, blue, speed, flags, unknown_flags,
     ]
 
 
