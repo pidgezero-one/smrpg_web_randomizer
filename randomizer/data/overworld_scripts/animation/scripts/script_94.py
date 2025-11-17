@@ -1,0 +1,36 @@
+#A0094_EMPTY
+
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.coords import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
+from ....variables.action_script_names import *
+from ....variables.event_script_names import *
+from ....variables.overworld_sfx_names import *
+from ....variables.room_names import *
+from ....variables.variable_names import *
+from ....packets import *
+from ....items import *
+
+script = ActionScript([
+	A_SetSequenceSpeed(FAST),
+	A_VisibilityOn(),
+	A_PlaySound(sound=SO050_WATER_DROPLET, channel=4),
+	A_SetSpriteSequence(index=10, is_sequence=True, looping=True),
+	A_Pause(12),
+	A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True),
+	A_PlaySound(sound=SO043_POP_UP_FROM_WATER, channel=4),
+	A_Pause(15),
+	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
+	A_PlaySound(sound=SO043_POP_UP_FROM_WATER, channel=4),
+	A_Pause(15),
+	A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True),
+	A_PlaySound(sound=SO043_POP_UP_FROM_WATER, channel=4),
+	A_Pause(15),
+	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
+	A_PlaySound(sound=SO043_POP_UP_FROM_WATER, channel=4),
+	A_Jmp(["ACTION_154_fixed_f_coord_on_0"]),
+	A_ReturnQueue()
+])

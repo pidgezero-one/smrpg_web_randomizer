@@ -111,3 +111,5 @@ randomizer/management/commands/output/disassembler
 
 # VSCode
 smrpgr.code-workspace
+.vscode
+.claude
