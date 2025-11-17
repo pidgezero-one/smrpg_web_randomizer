@@ -113,3 +113,4 @@ randomizer/management/commands/output/disassembler
 smrpgr.code-workspace
 .vscode
 .claude
+patchvenv
