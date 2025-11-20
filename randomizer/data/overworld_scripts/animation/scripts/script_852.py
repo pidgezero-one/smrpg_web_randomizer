@@ -1,4 +1,5 @@
 #A0852_VALLEY_RIGHT_PIPE_2ND_GECKO_RUNNING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

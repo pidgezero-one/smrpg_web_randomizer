@@ -1,4 +1,5 @@
 #A0522_TOWER_SNIFIT_VIEWING_PORTRAITS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

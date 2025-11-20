@@ -1,4 +1,5 @@
 # E0158_NPC_QUEST_GRANT_MULTI_FROG_COIN
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

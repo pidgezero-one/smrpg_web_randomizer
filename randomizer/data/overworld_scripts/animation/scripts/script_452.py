@@ -1,4 +1,5 @@
 #A0452_FACTORY_FOUR_SCREW_ROOM_AMEBOID
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

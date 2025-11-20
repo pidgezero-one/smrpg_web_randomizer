@@ -1,4 +1,5 @@
 # E0653_MARRYMORE_SANCTUARY_CANDLE_7
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

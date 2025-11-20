@@ -1,4 +1,5 @@
 # E1621_OCCUPIED_MOLEVILLE_EXTERIOR_NPC_AT_MTN_TOP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

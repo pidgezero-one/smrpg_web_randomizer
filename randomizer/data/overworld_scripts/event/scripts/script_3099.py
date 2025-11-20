@@ -1,4 +1,5 @@
 # E3099_SHUFFLE_FIREWORKS_CHEST_GRANT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

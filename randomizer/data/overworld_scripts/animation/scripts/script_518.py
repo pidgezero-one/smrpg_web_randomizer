@@ -1,4 +1,5 @@
 #A0518_TOWER_BOSS_1_HIDES_BEHIND_DOORWAY_IN_LOBBY_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

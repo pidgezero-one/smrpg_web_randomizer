@@ -1,4 +1,5 @@
 # E3198_SHYGUY_CART_PUSHES_MARIO_INTO_SMALLER_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

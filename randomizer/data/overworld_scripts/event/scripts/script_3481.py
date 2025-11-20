@@ -1,4 +1,5 @@
 # E3481_MIDAS_RIVER_TUNNEL_WARP_CHECK
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

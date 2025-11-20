@@ -1,4 +1,5 @@
 # E0942_KEEP_FIRST_BOSS_SUMMON_CHEST
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

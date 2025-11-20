@@ -1,4 +1,5 @@
 # E0291_MUSHROOM_KINGDOM_OUTER_CASTLE_GUARDS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

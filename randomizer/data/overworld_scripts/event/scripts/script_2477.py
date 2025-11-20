@@ -1,4 +1,5 @@
 # E2477_BEAN_VALLEY_PIRANHA_PLANT_ANIMATIONS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

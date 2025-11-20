@@ -1,4 +1,5 @@
 # E1756_LANDS_END_SHY_AWAY_WHIRLPOOL_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

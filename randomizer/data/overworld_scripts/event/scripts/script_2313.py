@@ -1,4 +1,5 @@
 # E2313_BOOSTER_PASS_ARTICHOKER_ENCOUNTER_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

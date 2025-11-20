@@ -1,4 +1,5 @@
 #A0345_SHIP_1ST_WATER_ROOM_FISH
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

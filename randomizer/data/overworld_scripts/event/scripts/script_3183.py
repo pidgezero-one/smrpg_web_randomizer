@@ -1,4 +1,5 @@
 # E3183_MINECART_PAID_LOBBY_TRAMPOLINE_TO_EXTERIOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

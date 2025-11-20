@@ -1,4 +1,5 @@
 # E1123_SEASIDE_OCCUPIED_ELDERS_HOUSE_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

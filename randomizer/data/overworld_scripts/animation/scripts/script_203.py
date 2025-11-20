@@ -1,4 +1,5 @@
 #A0203_SHIP_PASSWORD_BOSS_REVEAL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

@@ -1,4 +1,5 @@
 # E1310_TOWER_CHECKERBOARD_COLLECT_KEY_ITEM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

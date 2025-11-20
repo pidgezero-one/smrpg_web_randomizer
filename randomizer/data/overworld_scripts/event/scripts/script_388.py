@@ -1,4 +1,5 @@
 # E0388_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_TOAD_3
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

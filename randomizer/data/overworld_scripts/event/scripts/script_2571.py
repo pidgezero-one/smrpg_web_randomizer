@@ -1,4 +1,5 @@
 # E2571_BOOSTER_PASS_SECRET_BACKGROUND
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

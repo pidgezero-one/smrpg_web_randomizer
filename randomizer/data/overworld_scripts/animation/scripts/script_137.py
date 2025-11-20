@@ -1,4 +1,5 @@
 #A0137_EMPTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -14,8 +15,4 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([
-	A_PlaySound(sound=SO255_UNKNOWN_INVALID, channel=6),
-	A_SetPriority(0),
-	A_ReturnQueue()
-])
+script = ActionScript([])

@@ -1,4 +1,5 @@
 #A0048_SEWERS_1ST_WATER_ROOM_RAT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

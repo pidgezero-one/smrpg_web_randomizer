@@ -1,4 +1,5 @@
 # E3750_NIMBUS_MEZZANINE_FALL_TO_HOT_SPRINGS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

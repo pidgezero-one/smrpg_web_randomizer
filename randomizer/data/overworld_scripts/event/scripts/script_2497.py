@@ -1,4 +1,5 @@
 # E2497_ADDITIONAL_GATING_LOGIC_START_PLAYING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

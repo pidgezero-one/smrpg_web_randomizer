@@ -1,4 +1,5 @@
 # E3355_KEEP_BARREL_COUNT_LOADER_CONTD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E2456_AWAKEN_SLEEPING_WIGGLER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -31,13 +32,13 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitClear(DIRECTIONAL_7046_7, ["EVENT_2456_ret_23"]),
-	JmpIfBitSet(UNKNOWN_7047_3, ["EVENT_2456_ret_23"]),
+	JmpIfBitSet(WIGGLER_IS_AWAKE, ["EVENT_2456_ret_23"]),
 	ClearBit(DIRECTIONAL_7046_7),
 	ClearBit(DIRECTIONAL_7046_5),
 	ClearBit(DIRECTIONAL_7046_6),
-	SetBit(UNKNOWN_7047_3),
+	SetBit(WIGGLER_IS_AWAKE),
 	SetBit(DIRECTIONAL_7047_0),
-	SetBit(UNKNOWN_7047_4),
+	SetBit(DIRECTIONAL_7047_4),
 	FreezeCamera(),
 	RemoveObjectFromCurrentLevel(NPC_10),
 	RemoveObjectFromSpecificLevel(NPC_10, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS),

@@ -1,4 +1,5 @@
 # E1371_UNLOCK_MARRYMORE_IF_GATED_BY_TOWER_BALCONY_FIGHT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

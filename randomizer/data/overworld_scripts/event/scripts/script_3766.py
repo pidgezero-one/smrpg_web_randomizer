@@ -1,4 +1,5 @@
 # E3766_BEAN_VALLEY_LOWER_CHEST_ROOM_FALL_TO_HOT_SPRINGS_MEZZANINE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

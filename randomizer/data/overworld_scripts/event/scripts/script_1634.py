@@ -1,4 +1,5 @@
 # E1634_FIREWORKS_HOUSE_LEFT_GIRL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

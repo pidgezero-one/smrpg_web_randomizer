@@ -1,4 +1,5 @@
 # E2518_STAR_HILL_2ND_ROOM_CENTRAL_LEFT_FLOWER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

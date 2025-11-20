@@ -1,4 +1,5 @@
 #A0167_SPAWN_AT_7016_701A_CALCULATED
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

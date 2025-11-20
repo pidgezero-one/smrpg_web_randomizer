@@ -1,4 +1,5 @@
 #A0136_MK_OCCUPIED_EXTERIOR_REPEATING_HENCHMEN
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

@@ -1,4 +1,5 @@
 # E2387_BEAN_VALLEY_BOSS_PRIZE_PICKUP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

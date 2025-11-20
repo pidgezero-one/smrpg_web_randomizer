@@ -1,4 +1,5 @@
 # E3383_SHIP_TRAMPOLINE_PRIZE_PACKET_GRANT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E3843_WORLD_MAP_MUSHROOM_KINGDOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

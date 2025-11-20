@@ -1,4 +1,5 @@
 # E3356_KEEP_RESPAWN_IN_LOBBY_UPON_FAILURE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

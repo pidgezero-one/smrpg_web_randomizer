@@ -1,4 +1,5 @@
 #A0660_VARIOUS_YELLOW_PLATFORMS_WITHOUT_XY_MOVEMENT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

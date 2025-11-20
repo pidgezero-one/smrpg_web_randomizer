@@ -1,4 +1,5 @@
 # E2515_STAR_HILL_1ST_ROOM_OPEN_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

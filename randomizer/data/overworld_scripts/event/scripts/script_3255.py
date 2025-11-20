@@ -1,4 +1,5 @@
 # E3255_SHIP_PUZZLE_HUB_ROOM_OPEN_3D_MAZE_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

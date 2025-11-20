@@ -1,4 +1,5 @@
 # E3215_SHIP_COIN_SNAKE_PUZZLE_HEADER_COIN
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

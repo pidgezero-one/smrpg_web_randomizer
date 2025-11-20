@@ -1,4 +1,5 @@
 # E0609_MARRYMORE_INN_3F_HALLWAY_BELLHOP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

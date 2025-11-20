@@ -1,4 +1,5 @@
 # E2808_MUSHROOM_WAY_BOSS_FIGHT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -63,5 +64,9 @@ script = EventScript([
 	RunEventAsSubroutine(E0186_PARTY_JOIN_LOGIC),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	JmpToEvent(E0199_UNLOCK_BANDITS_IF_GATED_BY_MUSHROOM_WAY),
+	JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_1, ["grant_toad_2_rescue_if_not_done"]),
+	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+	JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_2, ["EVENT_2808_ret_28"], identifier="grant_toad_2_rescue_if_not_done"),
+	RunEventAsSubroutine(E0180_NPC_QUEST_3_CONTAINER),
 	Return(identifier="EVENT_2808_ret_28")
 ])

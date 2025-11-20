@@ -1,4 +1,5 @@
 #A0907_MUSHROOM_THROWN_SOUTHWEST
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

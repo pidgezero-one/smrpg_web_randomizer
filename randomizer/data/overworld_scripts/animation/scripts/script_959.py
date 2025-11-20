@@ -1,4 +1,5 @@
 #A0959_FINAL_FACTORY_ROOM_MASS_PRODUCED_NPC_PICKED_UP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

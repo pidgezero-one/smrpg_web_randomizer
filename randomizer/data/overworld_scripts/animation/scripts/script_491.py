@@ -1,4 +1,5 @@
 #A0491_MUSHROOM_WAY_3_RECRUITABLE_CHARACTER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

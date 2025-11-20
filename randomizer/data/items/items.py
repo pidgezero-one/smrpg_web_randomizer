@@ -646,12 +646,67 @@ class FryingPanItem(Weapon):
     _half_time_window_ends = UInt8(24)
 
 
+class WonderChompItem(Weapon):
+    """Wonder Chomp item class"""
+    _item_name: str = "Wonder Chomp"
+    _prefix = ItemPrefix.CHOMP
+
+    _item_id: int = 35
+    _description: str = " A powerful,\n studded ball\n and chain"
+    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _attack: int = 67
+    _variance: int = 45
+    _price: int = 2
+    _inflict_type = None
+    _half_time_window_begins = UInt8(40)
+    _perfect_window_begins = UInt8(50)
+    _perfect_window_ends = UInt8(56)
+    _half_time_window_ends = UInt8(60)
+
+
+class Stella023Item(Weapon):
+    """Stella 023 item class"""
+    _item_name: str = "Stella 023"
+    _prefix = ItemPrefix.GUN
+
+    _item_id: int = 36
+    _description: str = " A cool weapon"
+    _equip_chars: List[PartyCharacter] = [GENO]
+    _attack: int = 62
+    _variance: int = 20
+    _price: int = 2
+    _inflict_type = None
+    _half_time_window_begins = UInt8(8)
+    _perfect_window_begins = UInt8(24)
+    _perfect_window_ends = UInt8(30)
+    _half_time_window_ends = UInt8(34)
+
+
+class SageStickItem(Weapon):
+    """Sage Stick item class"""
+    _item_name: str = "Sage Stick"
+    _prefix = ItemPrefix.WAND
+
+    _item_id: int = 37
+    _description: str = " A legendary stick"
+    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _attack: int = 80
+    _magic_attack: int = 15
+    _variance: int = 10
+    _price: int = 2
+    _inflict_type = None
+    _half_time_window_begins = UInt8(8)
+    _perfect_window_begins = UInt8(18)
+    _perfect_window_ends = UInt8(24)
+    _half_time_window_ends = UInt8(36)
+
+
 class LuckyHammerItem(Weapon):
     """Lucky Hammer item class"""
     _item_name: str = "Lucky Hammer"
     _prefix = ItemPrefix.HAMMER
 
-    _item_id: int = 35
+    _item_id: int = 38
     _description: str = "A lucky hammer!"
     _equip_chars: List[PartyCharacter] = [MARIO]
     _price: int = 123
@@ -662,27 +717,12 @@ class LuckyHammerItem(Weapon):
     _half_time_window_ends = UInt8(38)
 
 
-class SpareItem(Weapon):
-    """Spare item class"""
-    _item_name: str = "Spare"
-    _prefix = ItemPrefix.EMPTY_SPACE
-
-    _item_id: int = 36
-    _description: str = ""
-    _price: int = 100
-    _inflict_type = None
-    _half_time_window_begins = UInt8(10)
-    _perfect_window_begins = UInt8(20)
-    _perfect_window_ends = UInt8(30)
-    _half_time_window_ends = UInt8(40)
-
-
 class ShirtItem(Armor):
     """Shirt item class"""
     _item_name: str = "Shirt"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 37
+    _item_id: int = 39
     _description: str = " It's a\n shirt!"
     _equip_chars: List[PartyCharacter] = [MARIO]
     _defense: int = 6
@@ -696,7 +736,7 @@ class PantsItem(Armor):
     _item_name: str = "Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 38
+    _item_id: int = 40
     _description: str = " It's a pair\n of pants!"
     _equip_chars: List[PartyCharacter] = [MALLOW]
     _defense: int = 6
@@ -710,7 +750,7 @@ class ThickShirtItem(Armor):
     _item_name: str = "Thick Shirt"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 39
+    _item_id: int = 41
     _description: str = " A padded shirt"
     _equip_chars: List[PartyCharacter] = [MARIO]
     _defense: int = 12
@@ -724,7 +764,7 @@ class ThickPantsItem(Armor):
     _item_name: str = "Thick Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 40
+    _item_id: int = 42
     _description: str = " Padded pants"
     _equip_chars: List[PartyCharacter] = [MALLOW]
     _defense: int = 12
@@ -738,7 +778,7 @@ class MegaShirtItem(Armor):
     _item_name: str = "Mega Shirt"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 41
+    _item_id: int = 43
     _description: str = " Durable stay-\n pressed shirt"
     _equip_chars: List[PartyCharacter] = [MARIO]
     _defense: int = 18
@@ -752,7 +792,7 @@ class MegaPantsItem(Armor):
     _item_name: str = "Mega Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 42
+    _item_id: int = 44
     _description: str = " Durable work\n pants"
     _equip_chars: List[PartyCharacter] = [MALLOW]
     _defense: int = 18
@@ -766,7 +806,7 @@ class WorkPantsItem(Armor):
     _item_name: str = "Work Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 43
+    _item_id: int = 45
     _description: str = " Sweaty\n work pants!"
     _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 5
@@ -783,7 +823,7 @@ class MegaCapeItem(Armor):
     _item_name: str = "Mega Cape"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 44
+    _item_id: int = 46
     _description: str = " Durable\n pressed cape"
     _equip_chars: List[PartyCharacter] = [GENO]
     _defense: int = 6
@@ -797,7 +837,7 @@ class HappyShirtItem(Armor):
     _item_name: str = "Happy Shirt"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 45
+    _item_id: int = 47
     _description: str = " A lucky shirt"
     _equip_chars: List[PartyCharacter] = [MARIO]
     _defense: int = 24
@@ -811,7 +851,7 @@ class HappyPantsItem(Armor):
     _item_name: str = "Happy Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 46
+    _item_id: int = 48
     _description: str = " A lucky\n pair of pants"
     _equip_chars: List[PartyCharacter] = [MALLOW]
     _defense: int = 24
@@ -825,7 +865,7 @@ class HappyCapeItem(Armor):
     _item_name: str = "Happy Cape"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 47
+    _item_id: int = 49
     _description: str = " A lucky cape"
     _equip_chars: List[PartyCharacter] = [GENO]
     _defense: int = 12
@@ -839,7 +879,7 @@ class HappyShellItem(Armor):
     _item_name: str = "Happy Shell"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 48
+    _item_id: int = 50
     _description: str = " A lucky shell"
     _equip_chars: List[PartyCharacter] = [BOWSER]
     _defense: int = 6
@@ -853,7 +893,7 @@ class PolkaDressItem(Armor):
     _item_name: str = "Polka Dress"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 49
+    _item_id: int = 51
     _description: str = " A flashy dress"
     _equip_chars: List[PartyCharacter] = [TOADSTOOL]
     _defense: int = 24
@@ -867,7 +907,7 @@ class SailorShirtItem(Armor):
     _item_name: str = "Sailor Shirt"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 50
+    _item_id: int = 52
     _description: str = " A sailor's\n suit"
     _equip_chars: List[PartyCharacter] = [MARIO]
     _defense: int = 30
@@ -881,7 +921,7 @@ class SailorPantsItem(Armor):
     _item_name: str = "Sailor Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 51
+    _item_id: int = 53
     _description: str = " A sailor's\n pants"
     _equip_chars: List[PartyCharacter] = [MALLOW]
     _defense: int = 30
@@ -895,7 +935,7 @@ class SailorCapeItem(Armor):
     _item_name: str = "Sailor Cape"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 52
+    _item_id: int = 54
     _description: str = " A sailor's\n cape"
     _equip_chars: List[PartyCharacter] = [GENO]
     _defense: int = 18
@@ -909,7 +949,7 @@ class NauticaDressItem(Armor):
     _item_name: str = "NauticaDress"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 53
+    _item_id: int = 55
     _description: str = " A female\n sailor's dress"
     _equip_chars: List[PartyCharacter] = [TOADSTOOL]
     _defense: int = 30
@@ -923,7 +963,7 @@ class CourageShellItem(Armor):
     _item_name: str = "CourageShell"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 54
+    _item_id: int = 56
     _description: str = " A stout shell"
     _equip_chars: List[PartyCharacter] = [BOWSER]
     _defense: int = 12
@@ -937,7 +977,7 @@ class FuzzyShirtItem(Armor):
     _item_name: str = "Fuzzy Shirt"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 55
+    _item_id: int = 57
     _description: str = " A fuzzy shirt"
     _equip_chars: List[PartyCharacter] = [MARIO]
     _defense: int = 36
@@ -951,7 +991,7 @@ class FuzzyPantsItem(Armor):
     _item_name: str = "Fuzzy Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 56
+    _item_id: int = 58
     _description: str = " Fuzzy pants"
     _equip_chars: List[PartyCharacter] = [MALLOW]
     _defense: int = 36
@@ -965,7 +1005,7 @@ class FuzzyCapeItem(Armor):
     _item_name: str = "Fuzzy Cape"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 57
+    _item_id: int = 59
     _description: str = " A fuzzy cape"
     _equip_chars: List[PartyCharacter] = [GENO]
     _defense: int = 24
@@ -979,7 +1019,7 @@ class FuzzyDressItem(Armor):
     _item_name: str = "Fuzzy Dress"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 58
+    _item_id: int = 60
     _description: str = " A fuzzy dress"
     _equip_chars: List[PartyCharacter] = [TOADSTOOL]
     _defense: int = 36
@@ -993,7 +1033,7 @@ class FireShirtItem(Armor):
     _item_name: str = "Fire Shirt"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 59
+    _item_id: int = 61
     _description: str = " Determined\n person's shirt"
     _equip_chars: List[PartyCharacter] = [MARIO]
     _defense: int = 42
@@ -1007,7 +1047,7 @@ class FirePantsItem(Armor):
     _item_name: str = "Fire Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 60
+    _item_id: int = 62
     _description: str = " Determined\n person's pants"
     _equip_chars: List[PartyCharacter] = [MALLOW]
     _defense: int = 42
@@ -1021,7 +1061,7 @@ class FireCapeItem(Armor):
     _item_name: str = "Fire Cape"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 61
+    _item_id: int = 63
     _description: str = " Determined\n person's cape"
     _equip_chars: List[PartyCharacter] = [GENO]
     _defense: int = 30
@@ -1035,7 +1075,7 @@ class FireShellItem(Armor):
     _item_name: str = "Fire Shell"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 62
+    _item_id: int = 64
     _description: str = " Determined\n person's shell"
     _equip_chars: List[PartyCharacter] = [BOWSER]
     _defense: int = 18
@@ -1049,7 +1089,7 @@ class FireDressItem(Armor):
     _item_name: str = "Fire Dress"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 63
+    _item_id: int = 65
     _description: str = " Determined\n woman's dress"
     _equip_chars: List[PartyCharacter] = [TOADSTOOL]
     _defense: int = 42
@@ -1063,7 +1103,7 @@ class HeroShirtItem(Armor):
     _item_name: str = "Hero Shirt"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 64
+    _item_id: int = 66
     _description: str = " A legendary\n shirt."
     _equip_chars: List[PartyCharacter] = [MARIO]
     _defense: int = 48
@@ -1077,7 +1117,7 @@ class PrincePantsItem(Armor):
     _item_name: str = "Prince Pants"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 65
+    _item_id: int = 67
     _description: str = " Legendary\n pants!"
     _equip_chars: List[PartyCharacter] = [MALLOW]
     _defense: int = 48
@@ -1091,7 +1131,7 @@ class StarCapeItem(Armor):
     _item_name: str = "Star Cape"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 66
+    _item_id: int = 68
     _description: str = " A legendary\n cape."
     _equip_chars: List[PartyCharacter] = [GENO]
     _defense: int = 36
@@ -1105,7 +1145,7 @@ class HealShellItem(Armor):
     _item_name: str = "Heal Shell"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 67
+    _item_id: int = 69
     _description: str = " A legendary\n shell."
     _equip_chars: List[PartyCharacter] = [BOWSER]
     _defense: int = 24
@@ -1119,7 +1159,7 @@ class RoyalDressItem(Armor):
     _item_name: str = "Royal Dress"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 68
+    _item_id: int = 70
     _description: str = " A legendary\n dress!"
     _equip_chars: List[PartyCharacter] = [TOADSTOOL]
     _defense: int = 48
@@ -1133,7 +1173,7 @@ class SuperSuitItem(Armor):
     _item_name: str = "Super Suit"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 69
+    _item_id: int = 71
     _description: str = " A truly fine\n suit!"
     _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 30
@@ -1153,7 +1193,7 @@ class LazyShellItem2(Armor):
     _item_name: str = "Lazy Shell"
     _prefix = ItemPrefix.SHIRT
 
-    _item_id: int = 70
+    _item_id: int = 72
     _description: str = " A stout and\n durable shell."
     _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = -50
@@ -1168,40 +1208,17 @@ class LazyShellItem2(Armor):
     _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
 
-class SpareItem2(Armor):
-    """Spare item class"""
-    _item_name: str = "Spare"
-    _prefix = ItemPrefix.EMPTY_SPACE
-
-    _item_id: int = 71
-    _description: str = ""
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
-    _price: int = 100
-    _inflict_type = None
-
-
-class SpareItem3(Armor):
-    """Spare item class"""
-    _item_name: str = "Spare"
-    _prefix = ItemPrefix.EMPTY_SPACE
-
-    _item_id: int = 72
-    _description: str = ""
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
-    _price: int = 100
-    _inflict_type = None
-
-
-class SpareItem4(Armor):
-    """Spare item class"""
-    _item_name: str = "Spare"
-    _prefix = ItemPrefix.EMPTY_SPACE
+class EnduringBroochItem(Accessory):
+    """Enduring Brooch item class"""
+    _item_name: str = "Enduring Brooch"
+    _prefix = ItemPrefix.RING
 
     _item_id: int = 73
-    _description: str = ""
+    _description: str = " Prevents KOs"
     _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
-    _price: int = 100
+    _price: int = 2
     _inflict_type = None
+    _prevent_ko: bool = True
 
 
 class ZoomShoesItem(Accessory):
@@ -1521,16 +1538,17 @@ class QuartzCharmItem(Accessory):
     _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
 
-class SpareItem5(RegularItem):
-    """Spare item class"""
-    _item_name: str = "Spare"
+class TeamworkBandItem(Accessory):
+    """Teamwork Band item class"""
+    _item_name: str = "Teamwork Band"
     _prefix = ItemPrefix.RING
 
     _item_id: int = 95
-    _description: str = " Throw away\n unwanted items"
-    _price: int = 65535
+    _description: str = " It's a headband"
+    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _price: int = 2
     _inflict_type = None
-    _usable_overworld: bool = True
+    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
 
 class MushroomItem(RegularItem):
@@ -2197,17 +2215,17 @@ class ShinyStoneItem(RegularItem):
 
     _item_id: int = 138
     _description: str = " A pretty stone!"
-    _price: int = 4
+    _price: int = 0
     _inflict_type = None
 
 
-class DUMMYItem(RegularItem):
-    """DUMMY item class"""
-    _item_name: str = "DUMMY"
+class ExtraShinyStoneItem(RegularItem):
+    """Extra Shiny Stone item class"""
+    _item_name: str = "Shinier Stone"
     _prefix = ItemPrefix.EMPTY_SPACE
 
     _item_id: int = 139
-    _description: str = ""
+    _description: str = " A very\n pretty stone!"
     _price: int = 0
     _inflict_type = None
 
@@ -2332,13 +2350,13 @@ class LuckyJewelItem(RegularItem):
     _one_side_only: bool = True
 
 
-class DUMMYItem2(RegularItem):
-    """DUMMY item class"""
-    _item_name: str = "DUMMY"
+class CrystalShardItem(RegularItem):
+    """Crystal Shard item class"""
+    _item_name: str = "Crystal Shard"
     _prefix = ItemPrefix.EMPTY_SPACE
 
     _item_id: int = 149
-    _description: str = ""
+    _description: str = "A symbol\n of ultimate\n strength"
     _price: int = 0
     _inflict_type = None
 

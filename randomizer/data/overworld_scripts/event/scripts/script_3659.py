@@ -1,4 +1,5 @@
 # E3659_NIMBUS_DEEP_CASTLE_NOTE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

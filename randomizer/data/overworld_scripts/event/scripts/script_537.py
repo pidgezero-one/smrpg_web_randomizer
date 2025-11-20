@@ -1,4 +1,5 @@
 # E0537_ROSE_TOWN_TREASURE_HOUSE_2F_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

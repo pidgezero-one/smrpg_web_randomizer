@@ -1,4 +1,5 @@
 #A0276_VOLCANO_LONG_ROOM_FIREBALL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

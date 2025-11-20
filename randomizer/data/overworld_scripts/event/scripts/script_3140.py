@@ -1,4 +1,5 @@
 # E3140_1ST_WATER_TOOM_PIPE_TO_SEWERS_4_RAT_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E0292_MUSHROOM_KINGDOM_WEST_BLUE_TOAD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

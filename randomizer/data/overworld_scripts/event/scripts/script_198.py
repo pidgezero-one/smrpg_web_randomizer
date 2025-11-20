@@ -1,4 +1,5 @@
 # E0198_UNLOCK_TOWER_IF_GATED_BY_MOLEVILLE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

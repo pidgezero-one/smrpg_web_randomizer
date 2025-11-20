@@ -1,4 +1,5 @@
 # E0199_UNLOCK_BANDITS_IF_GATED_BY_MUSHROOM_WAY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

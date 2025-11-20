@@ -1,4 +1,5 @@
 # E0786_MINES_LONG_ROOM_IN_MINIBOSS_PATH_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

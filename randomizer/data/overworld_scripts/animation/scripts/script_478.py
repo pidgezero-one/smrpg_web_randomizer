@@ -1,4 +1,5 @@
 #A0478_BANDITS_WAY_1ST_PLATFORMS_SWING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

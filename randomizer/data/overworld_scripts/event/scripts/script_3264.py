@@ -1,4 +1,5 @@
 # E3264_SHIP_LOWER_FIRST_DRYBONES_ROOM_OPEN_UPPER_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

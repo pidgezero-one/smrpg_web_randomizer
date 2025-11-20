@@ -1,4 +1,5 @@
 # E1874_TEMPLE_ELEVATOR_ROOM_SHAMAN
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

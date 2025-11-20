@@ -1,4 +1,5 @@
 # E3303_SHIP_1ST_SAVE_ROOM_HINT_NOTE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

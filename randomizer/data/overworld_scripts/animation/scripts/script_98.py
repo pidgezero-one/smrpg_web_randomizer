@@ -1,4 +1,5 @@
 #A0098_WALK_RANDOM_DIRECTIONS_NO_SOLIDITY_CHANGE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

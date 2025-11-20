@@ -1,4 +1,5 @@
 #A0621_SEQ_10_STORE_BUTTON_INPUT_AND_MAKE_SOUND
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

@@ -1,4 +1,5 @@
 # E0555_ROSE_TOWN_INN_TOAD_ITEM_GRANT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

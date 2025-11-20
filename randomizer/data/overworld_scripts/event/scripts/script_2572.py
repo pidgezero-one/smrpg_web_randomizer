@@ -1,4 +1,5 @@
 # E2572_BOOSTER_PASS_EXIT_FROM_ROOM_1_TO_ROOM_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

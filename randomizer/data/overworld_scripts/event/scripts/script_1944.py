@@ -1,4 +1,5 @@
 # E1944_KEEP_CHEWY_BATTLE_ROOM_EXIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

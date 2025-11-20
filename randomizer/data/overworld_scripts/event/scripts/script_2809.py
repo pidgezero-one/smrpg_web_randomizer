@@ -1,4 +1,5 @@
 # E2809_MUSHROOM_WAY_BOSS_THREATENS_YOU
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

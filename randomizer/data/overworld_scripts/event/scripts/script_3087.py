@@ -1,4 +1,5 @@
 # E3087_PROGRESSIVE_EGG_UPGRADE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -39,9 +40,7 @@ script = EventScript([
 	SetVarToConst(ITEM_ID, MysteryEggItem),
 	JmpToEvent(E0892_CHEST_EGG_PACKET),
 	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3087_set_var_to_const_8"),
-	RemoveOneOfItemFromInventory(SheepAttackItem),
 	JmpToEvent(E0892_CHEST_EGG_PACKET),
-	Return(),
 	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3087_set_var_to_const_12"),
 	RemoveOneOfItemFromInventory(LambsLureItem),
 	JmpToEvent(E0892_CHEST_EGG_PACKET),

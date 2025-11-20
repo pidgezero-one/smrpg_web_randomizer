@@ -1,4 +1,5 @@
 #A0590_KEEP_FINAL_ROOM_CHANDELIER_STRING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

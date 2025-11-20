@@ -1,4 +1,5 @@
 # E3734_NIMBUS_CASTLE_FINAL_CHEST_HALLWAY_EXIT_TO_FINAL_HALLWAY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

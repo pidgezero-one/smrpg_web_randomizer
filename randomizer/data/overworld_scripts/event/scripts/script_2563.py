@@ -1,4 +1,5 @@
 # E2563_REVEAL_BEAN_VALLEY_BEANSTALK
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

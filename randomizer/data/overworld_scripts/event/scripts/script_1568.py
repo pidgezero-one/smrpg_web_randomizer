@@ -1,4 +1,5 @@
 # E1568_MIDAS_RIVER_BEGIN_BARREL_SECTION
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

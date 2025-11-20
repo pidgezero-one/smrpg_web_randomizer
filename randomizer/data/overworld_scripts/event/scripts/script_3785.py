@@ -1,4 +1,5 @@
 # E3785_BEAN_VALLEY_1ST_VINE_ROOM_EXIT_TO_GROUND_LEVEL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

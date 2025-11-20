@@ -1,4 +1,5 @@
 # E0093_BACKGROUND_EVENT_FOR_SLOT_MACHINE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

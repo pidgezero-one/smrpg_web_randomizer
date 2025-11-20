@@ -1,4 +1,5 @@
 # E0681_MARRYMORE_LIBERATED_EXTERIOR_KID
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

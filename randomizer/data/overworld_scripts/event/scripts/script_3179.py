@@ -1,4 +1,5 @@
 # E3179_SEWERS_FOUR_RAT_ROOM_PIPE_TO_STAIR_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

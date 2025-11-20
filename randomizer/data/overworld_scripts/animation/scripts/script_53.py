@@ -1,4 +1,5 @@
 #A0053_EMPTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -14,16 +15,4 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([
-	A_SetWalkingSpeed(NORMAL, identifier="ACTION_53_set_animation_speed_0"),
-	A_ShiftZUpSteps(8),
-	A_FaceMario(),
-	A_Pause(60),
-	A_SetWalkingSpeed(FASTEST),
-	A_ShiftZDownSteps(8),
-	A_JumpToHeight(height=0, silent=True),
-	A_SetBit(TEMP_7043_0),
-	A_PlaySound(sound=SO255_UNKNOWN_INVALID, channel=6),
-	A_Pause(120),
-	A_Jmp(["ACTION_53_set_animation_speed_0"])
-])
+script = ActionScript([])

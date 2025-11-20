@@ -1,4 +1,5 @@
 # E3249_SHIP_ENTRANCE_OPEN_LEFT_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

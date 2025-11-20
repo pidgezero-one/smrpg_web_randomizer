@@ -1,4 +1,5 @@
 # E2246_SETS_SEASIDE_ACCESSORY_SHOP_STATE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

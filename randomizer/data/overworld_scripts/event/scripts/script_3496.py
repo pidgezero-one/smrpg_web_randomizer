@@ -1,4 +1,5 @@
 # E3496_MIDAS_RIVER_MID_RIGHT_TUNNEL_ANIMATION_AND_EXIT_BACKGROUND
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 #A0487_FOREST_BOSS_ROOM_HENCHMEN_JUMP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

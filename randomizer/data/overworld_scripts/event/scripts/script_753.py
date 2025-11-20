@@ -1,4 +1,5 @@
 # E0753_ROSE_TOWN_INNKEEPER_OVER_COUNTER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

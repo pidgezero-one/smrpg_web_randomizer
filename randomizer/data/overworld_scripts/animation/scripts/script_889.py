@@ -1,4 +1,5 @@
 #A0889_JAWFUL_EXTENDED_HITBOXES
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

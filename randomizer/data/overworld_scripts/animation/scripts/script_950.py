@@ -1,4 +1,5 @@
 #A0950_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES_AFTER_PAINT_BASE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

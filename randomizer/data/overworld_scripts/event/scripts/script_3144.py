@@ -1,4 +1,5 @@
 # E3144_ROSE_WAY_MAIN_ROOM_PLATFORMS_BACKGROUND
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E1795_LANDS_END_UNDERGROUND_LOWER_LEVEL_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

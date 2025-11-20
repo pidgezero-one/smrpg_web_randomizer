@@ -1,4 +1,5 @@
 # E2167_KEEP_ALLEY_RAT_BATTLE_ROOM_SUMMON_2ND_BATTLE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

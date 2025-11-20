@@ -1,4 +1,5 @@
 #A0645_MIDAS_2ND_TUNNELS_JAWFUL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

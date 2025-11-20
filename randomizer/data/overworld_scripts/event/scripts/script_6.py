@@ -1,4 +1,5 @@
 # E0006_SET_70A7_TO_RANDOM_TIER_2_CONSUMABLE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

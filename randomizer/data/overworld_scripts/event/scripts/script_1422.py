@@ -1,4 +1,5 @@
 # E1422_RESCUE_TOAD_MUSHROOM_WAY_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

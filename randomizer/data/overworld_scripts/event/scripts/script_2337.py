@@ -1,4 +1,5 @@
 # E2337_TOWER_FIRST_STAIRCASE_SPOOKUM_DIRECTION_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

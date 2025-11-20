@@ -1,4 +1,5 @@
 # E0206_UNLOCK_SEA_IF_GATED_BY_STAR_PIECES
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

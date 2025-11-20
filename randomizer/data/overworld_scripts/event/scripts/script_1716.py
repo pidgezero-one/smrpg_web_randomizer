@@ -1,4 +1,5 @@
 # E1716_BANDITS_WAY_5_CHASE_CATCH_BOSS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

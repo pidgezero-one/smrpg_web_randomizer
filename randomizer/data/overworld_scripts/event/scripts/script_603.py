@@ -1,4 +1,5 @@
 # E0603_MARRYMORE_BELLHOP_LOBBY_WHILE_GUEST
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

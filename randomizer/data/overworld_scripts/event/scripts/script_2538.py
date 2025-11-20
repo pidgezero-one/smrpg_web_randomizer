@@ -1,4 +1,5 @@
 # E2538_STAR_HILL_3RD_ROOM_WISH_BEHIND_DOOR_RIGHT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

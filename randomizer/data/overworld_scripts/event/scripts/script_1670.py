@@ -1,4 +1,5 @@
 # E1670_LANDS_END_2_SUMMON_INVISIBLE_PLATFORM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

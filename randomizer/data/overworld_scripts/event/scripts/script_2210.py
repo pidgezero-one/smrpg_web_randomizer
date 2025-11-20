@@ -1,4 +1,5 @@
 # E2210_KEEP_1ST_BOSS_HEALS_YOU
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

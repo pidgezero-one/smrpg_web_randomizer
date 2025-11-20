@@ -1,4 +1,5 @@
 # E3825_NIMBUS_FINAL_CHEST_ROOM_PLATFORM_BIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

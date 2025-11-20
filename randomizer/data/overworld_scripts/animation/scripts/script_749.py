@@ -1,4 +1,5 @@
 #A0749_STAR_HILL_1ST_ROOM_SOUTHEAST_SACKIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

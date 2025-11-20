@@ -1,4 +1,5 @@
 #A0465_PAUSE_SCRIPT_FOR_2_FRAMES
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

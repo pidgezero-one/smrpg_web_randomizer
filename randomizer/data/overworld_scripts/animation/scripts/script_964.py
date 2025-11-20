@@ -1,4 +1,5 @@
 #A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

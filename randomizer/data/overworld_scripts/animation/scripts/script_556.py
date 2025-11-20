@@ -1,4 +1,5 @@
 #A0556_BOOSTER_PASS_LAKITU_TOSSING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

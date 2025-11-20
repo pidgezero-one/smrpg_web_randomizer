@@ -1,4 +1,5 @@
 # E1843_KEEP_INVISIBLE_FLOOR_SHOW_FLOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

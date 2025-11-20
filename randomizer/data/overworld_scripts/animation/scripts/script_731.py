@@ -1,4 +1,5 @@
 #A0731_MINES_CROCO
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -69,7 +70,6 @@ script = ActionScript([
 	A_WalkNorthwestSteps(5),
 	A_SetVarToConst(MINES_MIDBOSS_POSITION, 23),
 	A_Jmp(["ACTION_731_jmp_if_bit_set_2"]),
-	A_JmpIfBitSet(UNUSED_7056_4, ["ACTION_731_ret_58"]),
 	A_VisibilityOff(),
 	A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 	A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),

@@ -1,4 +1,5 @@
 # E1314_TOWER_BOSS_1_HIDES_BEHIND_DOORWAY_IN_LOBBY_1
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

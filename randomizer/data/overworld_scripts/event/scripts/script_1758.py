@@ -1,4 +1,5 @@
 # E1758_LANDS_END_PENULTIMATE_WHIRLPOOL_1
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

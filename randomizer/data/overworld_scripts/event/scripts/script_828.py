@@ -1,4 +1,5 @@
 # E0828_NIMBUS_CASTLE_SINGLE_BIRD_STATUE_ROOM_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

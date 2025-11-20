@@ -1,4 +1,5 @@
 # E1669_NIMBUS_FINAL_HALLWAY_MINIBOSS_COLLISION
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

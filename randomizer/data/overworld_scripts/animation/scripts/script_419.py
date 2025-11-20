@@ -1,4 +1,5 @@
 #A0419_GOOMBA_THUMPIN_BOTTOM_PIPE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

@@ -1,4 +1,5 @@
 # E0811_SEASIDE_OCCUPIED_HEALTH_STORE_SHUFFLED_NPC_ANIMATION_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

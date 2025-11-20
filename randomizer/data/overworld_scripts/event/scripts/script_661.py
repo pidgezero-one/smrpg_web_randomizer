@@ -1,4 +1,5 @@
 # E0661_BOWSERS_KEEP_BUTTON_ROOM_FORFEIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

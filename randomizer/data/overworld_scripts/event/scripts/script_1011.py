@@ -1,4 +1,5 @@
 # E1011_POST_MINES_BOSS_CHECK_IF_WON
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

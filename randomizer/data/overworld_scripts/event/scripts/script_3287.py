@@ -1,4 +1,5 @@
 # E3287_SHIP_UPPER_HENCHMAN_ROOM_TALK_TO_GUARD_AFTER_WINNING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

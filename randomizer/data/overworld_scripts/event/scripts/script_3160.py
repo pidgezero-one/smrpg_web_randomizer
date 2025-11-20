@@ -1,4 +1,5 @@
 # E3160_MINES_LONG_TRACK_ROOM_LOWER_BACKWARD_EXIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

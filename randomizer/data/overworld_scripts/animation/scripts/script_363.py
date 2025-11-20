@@ -1,4 +1,5 @@
 #A0363_SKY_BRIDGE_HIT_BY_BULLET_BILL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

@@ -1,4 +1,5 @@
 # E2079_MONSTRO_TOWN_EXTERIOR_LOADER_FROM_SAVE_BOX
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

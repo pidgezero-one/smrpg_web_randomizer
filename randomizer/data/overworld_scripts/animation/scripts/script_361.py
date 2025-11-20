@@ -1,4 +1,5 @@
 #A0361_PLAYER_IN_FOREST_TRUNK_ROOM_UPPER_RIGHT_TRUNK
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

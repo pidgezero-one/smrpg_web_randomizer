@@ -1,4 +1,5 @@
 # E1806_TEMPLE_FORTUNE_RESULTS_DOG_FIGHT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

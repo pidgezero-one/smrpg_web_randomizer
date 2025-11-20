@@ -1,4 +1,5 @@
 # E2472_BEAN_VALLEY_2ND_PROGRESSION_PIPE_REVERSE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

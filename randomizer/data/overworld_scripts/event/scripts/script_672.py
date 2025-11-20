@@ -1,4 +1,5 @@
 # E0672_MARRYMORE_OCCUPIED_EXTERIOR_CHAPEL_FRONT_ENTRANCE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

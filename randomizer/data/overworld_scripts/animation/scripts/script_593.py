@@ -1,4 +1,5 @@
 #A0593_MIDAS_BARREL_AREA_MOVE_SOUTHWEST_REPEATEDLY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

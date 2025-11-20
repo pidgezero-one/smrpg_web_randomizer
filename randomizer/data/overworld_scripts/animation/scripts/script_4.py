@@ -1,4 +1,5 @@
 #A0004_EMPTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -14,9 +15,4 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([
-	A_SetSolidityBits(bit_4=True, identifier="ACTION_4_set_solidity_bits_0"),
-	A_FaceMario(),
-	A_Walk1StepFDirection(),
-	A_Jmp(["ACTION_4_set_solidity_bits_0"])
-])
+script = ActionScript([])

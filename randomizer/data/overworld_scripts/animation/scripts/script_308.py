@@ -1,4 +1,5 @@
 #A0308_SHIP_FIRST_WHIRLPOOL_ROOM_FISH
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

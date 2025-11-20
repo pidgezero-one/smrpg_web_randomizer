@@ -1,4 +1,5 @@
 # E3074_COIN_CHEST_MULTI_HIT_1
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -29,16 +30,16 @@ from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
 
+# todo: how to fix this and make it available to 6 chests? COIN_CHEST_1_COMPLETED never gets cleared...
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
-	JmpIfVarEqualsConst(ITEM_ID, DUMMYItem62, ["EVENT_3074_play_sound_3"]),
+	JmpIfVarEqualsConst(ITEM_ID, int(b'11110000'), ["EVENT_3074_play_sound_3"]),
 	DisableTriggerOfObjectAt70A8InCurrentLevel(),
 	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6, identifier="EVENT_3074_play_sound_3"),
 	CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
-	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AA),
-	SetVarToConst(PRIMARY_TEMP_7000, 288),
-	JmpIfMem704XAt7000BitSet(["EVENT_3074_jmp_if_var_not_equals_const_16"]),
-	SetMem704XAt7000Bit(),
+	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AA), # 70AA = chest being hit
+	JmpIfBitSet(COIN_CHEST_1_COMPLETED,["EVENT_3074_jmp_if_var_not_equals_const_16"]),
+	SetBit(COIN_CHEST_1_COMPLETED),
 	CopyVarToVar(from_var=ITEM_ID, to_var=PRIMARY_TEMP_7000),
 	Mem7000AndConst(0x000F),
 	JmpIfVarEqualsConst(COIN_CHEST_MULTIPLIER, 0, ["EVENT_3074_copy_var_to_var_15"], identifier="EVENT_3074_jmp_if_var_equals_const_11"),
@@ -48,8 +49,7 @@ script = EventScript([
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=COIN_COUNTER_1, identifier="EVENT_3074_copy_var_to_var_15"),
 	JmpIfVarNotEqualsConst(COIN_COUNTER_1, 1, ["EVENT_3074_set_temp_action_script_21"], identifier="EVENT_3074_jmp_if_var_not_equals_const_16"),
 	SetSyncActionScript(MEM_70AA, A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED),
-	SetVarToConst(PRIMARY_TEMP_7000, 288),
-	ClearMem704XAt7000Bit(),
+	ClearBit(COIN_CHEST_2_COMPLETED),
 	Jmp(["EVENT_3074_set_7010_to_object_xyz_22"]),
 	SetTempSyncActionScript(MEM_70AA, A0008_HIT_TREASURE_CHEST_CONTENTS_REMAINING, identifier="EVENT_3074_set_temp_action_script_21"),
 	Set70107015ToObjectXYZ(target=MEM_70AA, identifier="EVENT_3074_set_7010_to_object_xyz_22"),

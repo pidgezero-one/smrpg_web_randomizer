@@ -1,4 +1,5 @@
 # E2550_BEAN_VALLEY_RIGHTMOST_PIPE_BASEMENT_GECKIT_RUNS_AT_YOU
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

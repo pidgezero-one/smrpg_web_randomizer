@@ -1,4 +1,5 @@
 # E0356_BOSS_HUNT_BIT_SETTER_CONTAINER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

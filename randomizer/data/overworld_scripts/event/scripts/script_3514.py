@@ -1,4 +1,5 @@
 # E3514_NIMBUS_CASTLE_EGG_ROOM_EXIT_TO_PREVIOUS_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E3314_SEWERS_RAT_LINE_ROOM_EXIT_TO_3RD_WATER_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

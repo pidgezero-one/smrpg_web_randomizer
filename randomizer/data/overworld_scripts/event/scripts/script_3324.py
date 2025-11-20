@@ -1,4 +1,5 @@
 # E3324_VOLCANO_3_LIFT_ROOM_DONUT_LIFT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

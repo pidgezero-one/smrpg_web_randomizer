@@ -1,4 +1,5 @@
 # E2467_BEAN_VALLEY_PIPE_TO_DEAD_END
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

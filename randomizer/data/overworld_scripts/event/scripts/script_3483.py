@@ -1,4 +1,5 @@
 # E3483_MIDAS_RIVER_MID_LEFT_OR_MID_RIGHT_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

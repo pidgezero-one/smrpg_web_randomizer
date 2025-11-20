@@ -1,4 +1,5 @@
 #A0859_ABYSS_BEFORE_1ST_BOSS_SCREW_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

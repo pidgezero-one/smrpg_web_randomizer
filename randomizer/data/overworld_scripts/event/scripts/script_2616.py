@@ -1,4 +1,5 @@
 # E2616_FACTORY_4TH_ROOM_GREEN_BUTTON
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

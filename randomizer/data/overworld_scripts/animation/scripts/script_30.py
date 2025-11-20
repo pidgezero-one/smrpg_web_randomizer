@@ -1,4 +1,5 @@
 #A0030_POST_THRONE_BIRDS_3_TO_7
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

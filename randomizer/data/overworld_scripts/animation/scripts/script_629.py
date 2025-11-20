@@ -1,4 +1,5 @@
 #A0629_EMPTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -14,27 +15,4 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([
-	A_Set700CToCurrentLevel(),
-	A_JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 120, ["ACTION_629_pause_13"]),
-	A_SetObjectMemoryBits(arg_1=0x0B, bits=[1]),
-	A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
-	A_FaceSoutheast(),
-	A_FixedFCoordOn(),
-	A_ShiftZDownPixels(8),
-	A_WalkEastPixels(16),
-	A_FixedFCoordOff(),
-	A_FaceSouthwest(),
-	A_FixedFCoordOn(),
-	A_WalkEastPixels(16),
-	A_ReturnQueue(),
-	A_Pause(30, identifier="ACTION_629_pause_13"),
-	A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-	A_Pause(30),
-	A_SetSpriteSequence(index=21, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-	A_Pause(10),
-	A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
-	A_JmpIfRandom1of2(["ACTION_629_pause_13"]),
-	A_Pause(30),
-	A_Jmp(["ACTION_629_pause_13"])
-])
+script = ActionScript([])

@@ -1,4 +1,5 @@
 # E3165_ACTIVE_MINECART_MARIO_COLLISION_CHECK
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

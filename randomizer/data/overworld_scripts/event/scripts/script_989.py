@@ -1,4 +1,5 @@
 # E0989_FROGFUCIUS_HINT_OPTIONAL_9
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

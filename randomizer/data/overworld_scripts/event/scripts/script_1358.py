@@ -1,4 +1,5 @@
 # E1358_CURTAIN_GAME_BEGINS_NPCS_WALK_INTO_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

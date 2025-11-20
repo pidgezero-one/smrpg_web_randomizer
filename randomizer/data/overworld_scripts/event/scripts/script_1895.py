@@ -1,4 +1,5 @@
 # E1895_ABYSS_AFTER_BOSS_1_TRAMPOLINE_BACKWARD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

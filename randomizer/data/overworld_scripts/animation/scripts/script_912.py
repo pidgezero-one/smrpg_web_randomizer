@@ -1,4 +1,5 @@
 #A0912_POOF_WHEN_MIMIC_3_DEFEATED
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

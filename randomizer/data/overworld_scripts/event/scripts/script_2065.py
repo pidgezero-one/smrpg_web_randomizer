@@ -1,4 +1,5 @@
 # E2065_DOJO_LOADER_FIRST_TIME_ANIMATION
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

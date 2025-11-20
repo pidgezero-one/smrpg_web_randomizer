@@ -1,4 +1,5 @@
 #A0485_PLAYER_SHOCKED_WHEN_WIGGLER_WAKES_UP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

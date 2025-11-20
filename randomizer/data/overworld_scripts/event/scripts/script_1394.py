@@ -1,4 +1,5 @@
 # E1394_FOUR_DIGIT_COIN_VALUE_HANDLER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

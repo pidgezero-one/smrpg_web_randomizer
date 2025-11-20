@@ -1,4 +1,5 @@
 #A0519_TOWER_BOSS_PEEKING_BEHIND_ENTRANCE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

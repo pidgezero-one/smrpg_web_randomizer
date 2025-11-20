@@ -1,4 +1,5 @@
 #A1013_KEEP_DARK_ROOM_KAMIKAZE_GOOMBA
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

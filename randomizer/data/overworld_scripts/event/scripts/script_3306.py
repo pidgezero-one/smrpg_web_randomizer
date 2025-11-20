@@ -1,4 +1,5 @@
 # E3306_SHIP_LOWER_HENCHMAN_ROOM_LOADER_CONTINUED
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

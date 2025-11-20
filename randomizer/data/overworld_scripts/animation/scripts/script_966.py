@@ -1,4 +1,5 @@
 #A0966_FACTORY_3RD_BOSS_CONVEYOR_NPC
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

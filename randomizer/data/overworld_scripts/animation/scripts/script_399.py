@@ -1,4 +1,5 @@
 #A0399_JUMPING_FALLING_STATE_IN_FACTORY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

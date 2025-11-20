@@ -1,4 +1,5 @@
 # E0633_MARRYMORE_CHAPEL_LOBBY_EXIT_TO_EXTERIOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

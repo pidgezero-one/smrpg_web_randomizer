@@ -1,4 +1,5 @@
 # E0930_YOSHI_COOKIE_STORAGE_BUSINESS_LOGIC
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

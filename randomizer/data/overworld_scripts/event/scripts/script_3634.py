@@ -1,4 +1,5 @@
 # E3634_NIMBUS_EXTERIOR_WOMAN_NEAR_ENTRANCE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

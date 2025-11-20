@@ -1,4 +1,5 @@
 #A0816_LANDS_END_VERTICAL_MOVING_PLATFORM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

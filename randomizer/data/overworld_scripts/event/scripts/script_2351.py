@@ -1,4 +1,5 @@
 # E2351_TOWER_START_BULLET_BILLS_ANIMATION
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

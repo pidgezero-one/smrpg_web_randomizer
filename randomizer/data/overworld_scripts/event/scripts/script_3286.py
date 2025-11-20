@@ -1,4 +1,5 @@
 # E3286_SHIP_INTERACT_WITH_BOSS_AFTER_WINNING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

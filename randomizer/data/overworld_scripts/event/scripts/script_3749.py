@@ -1,4 +1,5 @@
 # E3749_NIMBUS_MEZZANINE_TRAMPOLINE_TO_TOWN_SQUARE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

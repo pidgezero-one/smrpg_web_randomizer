@@ -1,4 +1,5 @@
 # E0565_ROSE_TOWN_LIBERATED_3RD_KID_OUTDOORS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

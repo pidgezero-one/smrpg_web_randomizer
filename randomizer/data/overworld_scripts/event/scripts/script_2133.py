@@ -1,4 +1,5 @@
 # E2133_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_FIGHT_ROOM_EXIT_TO_4WAY_PATH
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

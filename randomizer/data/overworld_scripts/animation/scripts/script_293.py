@@ -1,4 +1,5 @@
 #A0293_MINES_FINAL_BOSS_ROOM_HENCHMAN_BASE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

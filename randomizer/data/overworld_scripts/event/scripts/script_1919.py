@@ -1,4 +1,5 @@
 # E1919_ABYSS_BIG_CONVEYOR_PLATFORM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

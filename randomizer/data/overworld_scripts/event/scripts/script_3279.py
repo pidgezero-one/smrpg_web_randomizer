@@ -1,4 +1,5 @@
 # E3279_SHIP_OPEN_DOOR_IN_FINAL_BOSS_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

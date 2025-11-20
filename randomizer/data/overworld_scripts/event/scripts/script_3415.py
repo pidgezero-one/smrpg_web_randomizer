@@ -1,4 +1,5 @@
 # E3415_TOWER_STACKED_CHESTS_ON_TOP_FLOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

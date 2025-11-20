@@ -1,4 +1,5 @@
 # E3518_CHEST_DIFFERENTIATOR_NPC_2_3_4_5_6_OR_OTHER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

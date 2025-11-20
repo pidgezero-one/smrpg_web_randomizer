@@ -1,4 +1,5 @@
 #A0245_NIMBUS_5_EXIT_HALLWAY_FAKE_BIRD_STATUES_ACTIVATE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

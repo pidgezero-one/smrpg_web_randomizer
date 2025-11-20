@@ -1,4 +1,5 @@
 # E3393_SUPER_JUMP_COMPARE_FOR_1ST_PRIZE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E1710_BANDITS_WAY_5_LOADER_BACKGROUND_BOSS_FIGHT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

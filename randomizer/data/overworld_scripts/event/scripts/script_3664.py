@@ -1,4 +1,5 @@
 # E3664_NIMBUS_CASTLE_RIGHT_SHAMAN_ROOM_EXIT_TO_5_DOOR_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

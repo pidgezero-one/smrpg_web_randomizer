@@ -1,4 +1,5 @@
 # E3870_WORLD_MAP_GRATE_GUYS_CASINO
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

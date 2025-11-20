@@ -1,4 +1,5 @@
 #A0534_MUSHROOM_WAY_GUARD_GOOMBA
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

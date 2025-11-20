@@ -1,4 +1,5 @@
 # E0049_GRANT_ANY_EQUIP_EXCLUDE_WORST_TIER_3_CAP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E3721_NIMBUS_CASTLE_RIGHTMOST_OUTER_CELLAR_GUY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

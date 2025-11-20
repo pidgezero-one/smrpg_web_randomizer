@@ -1,4 +1,5 @@
 # E0340_MUSHROOM_KINGDOM_OCCUPIED_RAZ_RAINI_HOUSE_SHAKE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

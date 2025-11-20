@@ -1,4 +1,5 @@
 #A0661_PIPE_VAULT_JUMPING_CHOMPWEED
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

@@ -1,4 +1,5 @@
 # E1630_MOLEVILLE_LIBERATED_PA_MOLE_IN_HOUSE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

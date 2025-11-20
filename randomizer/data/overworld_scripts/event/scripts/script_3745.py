@@ -1,4 +1,5 @@
 # E3745_NIMBUS_BACK_EXIT_INITIATE_FALLING_SEQUENCE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

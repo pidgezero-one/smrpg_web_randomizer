@@ -907,7 +907,7 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0713_EMPTY,
     E0714_EMPTY,
     E0715_EMPTY,
-    E0716_EMPTY,
+    E0716_ENTER_JUMPING_KIDS_HOUSE,
     E0717_EMPTY,
     E0718_EMPTY,
     E0719_EMPTY,

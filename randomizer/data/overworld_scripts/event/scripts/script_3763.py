@@ -1,4 +1,5 @@
 # E3763_NIMBUS_BACK_EXIT_MARIO_FALL_ANIMATION
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

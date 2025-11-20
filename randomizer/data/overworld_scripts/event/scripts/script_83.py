@@ -1,4 +1,5 @@
 # E0083_THREE_MUSTY_FEARS_BOO_DIALOG
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

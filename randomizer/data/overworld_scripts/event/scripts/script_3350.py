@@ -1,4 +1,5 @@
 # E3350_KEEP_ALL_DOOR_PATHS_EXIT_TO_REWARD_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

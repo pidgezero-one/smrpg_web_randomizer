@@ -1,4 +1,5 @@
 # E2436_FOREST_BOSS_ROOM_EXIT_TO_MAZE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

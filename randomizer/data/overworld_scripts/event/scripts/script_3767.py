@@ -1,4 +1,5 @@
 # E3767_NIMBUS_CASTLE_ANGLED_PLANT_ROOM_EXIT_TO_4_PATH_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

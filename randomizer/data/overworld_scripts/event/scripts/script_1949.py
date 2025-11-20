@@ -1,4 +1,5 @@
 # E1949_KEEP_ALLEY_RAT_BATTLE_ROOM_EXIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

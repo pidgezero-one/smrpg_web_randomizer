@@ -1,4 +1,5 @@
 # E1824_KEEP_SET_PLATFORM_PROPERTIES
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

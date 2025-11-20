@@ -1,4 +1,5 @@
 # E0505_PIPE_VAULT_MARIO_THWOMP_TUMBLE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

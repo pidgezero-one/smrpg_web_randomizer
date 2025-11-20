@@ -1,4 +1,5 @@
 # E3713_NIMBUS_CASTLE_ANGLED_PLANT_ROOM_NPC_ANIMATIONS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

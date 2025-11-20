@@ -1,4 +1,5 @@
 # E0161_NPC_QUEST_GRANT_BEETLEMANIA
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

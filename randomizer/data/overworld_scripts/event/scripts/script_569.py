@@ -1,4 +1,5 @@
 # E0569_ROSE_TOWN_LIBERATED_PINK_TOAD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E0082_THREE_MUSTY_FEARS_GREAPER_DIALOG
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

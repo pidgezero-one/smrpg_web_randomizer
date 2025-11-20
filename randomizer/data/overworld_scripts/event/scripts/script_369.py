@@ -1,4 +1,5 @@
 # E0369_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_EXIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

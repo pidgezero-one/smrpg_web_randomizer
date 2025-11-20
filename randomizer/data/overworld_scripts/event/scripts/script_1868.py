@@ -1,4 +1,5 @@
 # E1868_LANDS_END_FLOWER_ROOM_EXIT_TO_SKY_BRIDGE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

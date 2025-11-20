@@ -1,4 +1,5 @@
 # E3372_KEEP_GET_CRUSHED_BY_HUGE_THWOMP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

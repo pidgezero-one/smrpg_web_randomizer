@@ -1,4 +1,5 @@
 # E0209_UNLOCK_SWITCH_MENU_IF_ENOUGH_MEMBERS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

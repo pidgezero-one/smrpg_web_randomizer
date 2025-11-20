@@ -1,4 +1,5 @@
 # E3113_FREESTANDING_PROGRESSIVE_FIREWORKS_GRANT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

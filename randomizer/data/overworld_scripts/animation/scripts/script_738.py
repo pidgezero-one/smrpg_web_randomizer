@@ -1,4 +1,5 @@
 #A0738_TOWER_CHEST_SEESAW_WHEN_ACTIVATED
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

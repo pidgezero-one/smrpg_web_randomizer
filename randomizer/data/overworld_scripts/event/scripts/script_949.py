@@ -1,4 +1,5 @@
 # E0949_FROGFUCIUS_HINT_TREASURE_CHESTS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -319,18 +320,12 @@ script = EventScript([
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_4, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["EVENT_991_run_dialog_74"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_5, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["EVENT_991_run_dialog_74"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_6, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, ["EVENT_991_run_dialog_74"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 512),
-	JmpIfMem704XAt7000BitClear(["EVENT_991_run_dialog_74"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 513),
-	JmpIfMem704XAt7000BitClear(["EVENT_991_run_dialog_74"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 514),
-	JmpIfMem704XAt7000BitClear(["EVENT_991_run_dialog_74"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 515),
-	JmpIfMem704XAt7000BitClear(["EVENT_991_run_dialog_74"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 516),
-	JmpIfMem704XAt7000BitClear(["EVENT_991_run_dialog_74"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 517),
-	JmpIfMem704XAt7000BitClear(["EVENT_991_run_dialog_74"]),
+	JmpIfBitClear(BK_OBSTACLE_1_PRIZE_RETRIEVED, ["EVENT_991_run_dialog_74"]),
+	JmpIfBitClear(BK_OBSTACLE_2_PRIZE_RETRIEVED, ["EVENT_991_run_dialog_74"]),
+	JmpIfBitClear(BK_OBSTACLE_3_PRIZE_RETRIEVED, ["EVENT_991_run_dialog_74"]),
+	JmpIfBitClear(BK_OBSTACLE_4_PRIZE_RETRIEVED, ["EVENT_991_run_dialog_74"]),
+	JmpIfBitClear(BK_OBSTACLE_5_PRIZE_RETRIEVED, ["EVENT_991_run_dialog_74"]),
+	JmpIfBitClear(BK_OBSTACLE_6_PRIZE_RETRIEVED, ["EVENT_991_run_dialog_74"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["EVENT_991_run_dialog_48"]),
 	JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_GATE, ["EVENT_949_jmp_if_bit_clear_313"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_1, R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT, ["EVENT_991_run_dialog_50"]),

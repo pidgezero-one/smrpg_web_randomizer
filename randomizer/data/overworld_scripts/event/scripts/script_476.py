@@ -1,4 +1,5 @@
 # E0476_INITIATE_MUSHROOM_DERBY_FROM_TALKING_TO_BOSHI
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

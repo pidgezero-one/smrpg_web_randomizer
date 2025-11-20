@@ -1,4 +1,5 @@
 # E3735_NIMBUS_CASTLE_FINAL_HALLWAY_APPLY_MOD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

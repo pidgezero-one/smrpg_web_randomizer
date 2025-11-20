@@ -1,4 +1,5 @@
 # E3700_NIMBUS_CASTLE_WEST_LOWER_HALL_MARIO_BLOWN_BY_FAN_BIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

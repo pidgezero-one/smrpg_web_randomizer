@@ -1,4 +1,5 @@
 # E0945_FINAL_BOSS_ANIMATION_SUBROUTINE_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

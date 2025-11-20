@@ -1,4 +1,5 @@
 #A0186_CHEST_SLOT_MACHINE_ROLLER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

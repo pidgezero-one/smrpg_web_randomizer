@@ -1,4 +1,5 @@
 # E2312_BOOSTER_PASS_SPINY_COIN_BUTTON
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -30,9 +31,9 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(UNKNOWN_7047_6, ["EVENT_2312_ret_78"]),
+	JmpIfBitSet(BOOSTER_PASS_2ND_ROOM_BUTTON_PRESSED, ["EVENT_2312_ret_78"]),
 	DisableObjectTrigger(NPC_5),
-	SetBit(UNKNOWN_7047_6),
+	SetBit(BOOSTER_PASS_2ND_ROOM_BUTTON_PRESSED),
 	RemoveObjectFromSpecificLevel(NPC_0, R101_BOOSTER_PASS_AREA_02),
 	RemoveObjectFromSpecificLevel(NPC_1, R101_BOOSTER_PASS_AREA_02),
 	RemoveObjectFromSpecificLevel(NPC_2, R101_BOOSTER_PASS_AREA_02),

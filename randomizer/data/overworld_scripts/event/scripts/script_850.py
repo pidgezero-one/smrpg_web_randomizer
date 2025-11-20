@@ -1,4 +1,5 @@
 # E0850_KEEP_BATTLE_DOOR_1A_SHUFFLED_NPC_ANIMATION_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

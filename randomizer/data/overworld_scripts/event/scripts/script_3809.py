@@ -1,4 +1,5 @@
 # E3809_MARRYMORE_SANCTUARY_BEGIN_WEDDING_GEAR_SEQUENCE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

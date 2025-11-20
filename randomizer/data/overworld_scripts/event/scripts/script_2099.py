@@ -1,4 +1,5 @@
 # E2099_MOVE_HINOPIO_TO_ARMOR_SHOP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

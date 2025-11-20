@@ -1,4 +1,5 @@
 # E2592_ABYSS_FALL_OFF_BEFORE_FIRST_BOSS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

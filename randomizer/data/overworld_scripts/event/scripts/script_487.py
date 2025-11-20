@@ -1,4 +1,5 @@
 # E0487_PIPE_VAULT_CHOMPWEED_ROOM_EXIT_PIPE_REVERSE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

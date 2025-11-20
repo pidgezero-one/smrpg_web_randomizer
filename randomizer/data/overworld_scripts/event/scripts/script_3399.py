@@ -1,4 +1,5 @@
 # E3399_MIDAS_CAVE_PROGRESSIVE_FIREWORK_GRANTER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -41,6 +42,7 @@ script = EventScript([
 	RemoveOneOfItemFromInventory(ShinyStoneItem),
 	JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM),
 	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_3399_set_var_to_const_10"),
+	# open culex door automatically
 	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
 	RemoveObjectFromSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
 	RemoveOneOfItemFromInventory(FireworksItem),

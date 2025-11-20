@@ -1,4 +1,5 @@
 # E2593_ABYSS_PRE_FIRST_BOSS_BOLT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

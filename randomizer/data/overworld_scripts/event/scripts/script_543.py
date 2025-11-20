@@ -1,4 +1,5 @@
 # E0543_ROSE_TOWN_OCCUPIED_KID_1
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

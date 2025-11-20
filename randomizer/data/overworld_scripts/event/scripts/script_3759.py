@@ -1,4 +1,5 @@
 # E3759_NIMBUS_CASTLE_LEFT_SHAMAN_HALLWAY_LIBERATED_NPC
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

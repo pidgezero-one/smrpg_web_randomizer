@@ -1,4 +1,5 @@
 # E0317_MUSHROOM_KINGDOM_OCCUPIED_MOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

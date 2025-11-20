@@ -1,4 +1,5 @@
 # E1706_BANDITS_WAY_LEFT_CHEST_STAR_CHECK
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 #A0821_KEEP_VERTICAL_PLATFORMS_IN_LAVA_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

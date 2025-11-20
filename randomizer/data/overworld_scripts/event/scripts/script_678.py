@@ -1,4 +1,5 @@
 # E0678_MARRYMORE_JUMP_ON_ORGAN_PIPE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

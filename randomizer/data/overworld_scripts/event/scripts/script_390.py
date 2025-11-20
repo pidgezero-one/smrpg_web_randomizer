@@ -1,4 +1,5 @@
 # E0390_MUSHROOM_KINGDOM_OCCUPIED_LEFT_STAIRWAY_TOAD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E1138_SEASIDE_OCCUPIED_WPN_ARM_SHOP_OCCUPANT_1
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

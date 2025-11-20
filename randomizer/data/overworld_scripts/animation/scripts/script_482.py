@@ -1,4 +1,5 @@
 #A0482_FOREST_PLAYER_FALLS_TO_UNDERGROUND
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -21,7 +22,7 @@ script = ActionScript([
 	A_SetPriority(3),
 	A_ShadowOn(),
 	A_FaceSouth(),
-	A_JmpIfBitSet(UNKNOWN_7047_4, ["ACTION_482_clear_bit_18"]),
+	A_JmpIfBitSet(DIRECTIONAL_7047_4, ["ACTION_482_clear_bit_18"]),
 	A_SetSpriteSequence(index=0, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
 	A_VisibilityOn(),
 	A_UnknownCommand(bytearray(b' \x07')),
@@ -33,7 +34,7 @@ script = ActionScript([
 	A_BPL262728(),
 	A_UnknownCommand(bytearray(b'\xfd\x9c:')),
 	A_ReturnQueue(),
-	A_ClearBit(UNKNOWN_7047_4, identifier="ACTION_482_clear_bit_18"),
+	A_ClearBit(DIRECTIONAL_7047_4, identifier="ACTION_482_clear_bit_18"),
 	A_FaceSouthwest(),
 	A_SetSpriteSequence(index=0, sprite_offset=3, is_mold=True, is_sequence=True, looping=True),
 	A_VisibilityOn(),

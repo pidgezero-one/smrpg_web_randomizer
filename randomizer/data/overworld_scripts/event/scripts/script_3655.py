@@ -1,4 +1,5 @@
 # E3655_NIMBUS_EXTERIOR_SOUTHERNMOST_BLUE_GUY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

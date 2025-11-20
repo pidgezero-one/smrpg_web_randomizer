@@ -1,4 +1,5 @@
 # E0203_UNLOCK_FOREST_IF_GATED_BY_CRICKET_PIE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

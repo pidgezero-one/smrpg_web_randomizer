@@ -1,4 +1,5 @@
 #A0404_FOREST_TRUNK_AREA_UNDERGROUND_AMANITA
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

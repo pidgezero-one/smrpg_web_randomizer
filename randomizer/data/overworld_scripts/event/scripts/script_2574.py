@@ -1,4 +1,5 @@
 # E2574_TOWER_FIRST_STAIRCASE_CHEST
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

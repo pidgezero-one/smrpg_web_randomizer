@@ -1,4 +1,5 @@
 # E3630_NIMBUS_EXTERIOR_BLUE_GUY_NEAR_INVISIBLE_PATH
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E1632_MOLEVILLE_MINECART_FREEPLAY_ENDING_LANDING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

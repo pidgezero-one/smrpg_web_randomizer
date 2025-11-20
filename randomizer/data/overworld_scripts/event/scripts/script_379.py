@@ -1,4 +1,5 @@
 # E0379_MUSHROOM_KINGDOM_OCCUPIED_GUEST_ROOM_GRANT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

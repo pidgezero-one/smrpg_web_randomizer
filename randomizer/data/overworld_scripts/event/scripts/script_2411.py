@@ -1,4 +1,5 @@
 # E2411_FOREST_UNDERGROUND_2_EXIT_TRAMPOLINE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

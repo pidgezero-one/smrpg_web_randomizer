@@ -1,4 +1,5 @@
 # E3221_SHIP_3D_MAZE_HIT_BUTTON
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E3631_NIMBUS_EXTERIOR_BLUE_GUY_NEAR_GARROS_HOUSE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

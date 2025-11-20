@@ -1,4 +1,5 @@
 #A0616_MINES_POST_LONG_TRACK_ROOM_MINECART
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

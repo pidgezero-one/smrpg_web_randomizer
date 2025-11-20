@@ -1,4 +1,5 @@
 #A0712_BOOSTER_HILL_HENCHMAN_JUMPS_OVER_BARREL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

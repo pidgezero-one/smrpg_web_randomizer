@@ -1,4 +1,5 @@
 # E3894_ROSE_WAY_STAR_PIECE_SIGNAL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

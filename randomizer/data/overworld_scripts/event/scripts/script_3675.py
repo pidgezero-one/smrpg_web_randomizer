@@ -1,4 +1,5 @@
 # E3675_NIMBUS_CASTLE_BRIDGE_ROOM_LOWER_NPC
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

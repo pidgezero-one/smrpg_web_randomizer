@@ -1,4 +1,5 @@
 # E3267_SHIP_LOWER_RAT_STAIRWAY_OPEN_LOWER_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

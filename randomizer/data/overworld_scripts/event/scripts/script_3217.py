@@ -1,4 +1,5 @@
 # E3217_SHIP_CANNONBALL_PUZZLE_CANNONBALL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

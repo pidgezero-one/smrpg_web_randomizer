@@ -1,4 +1,5 @@
 # E1136_SEASIDE_OCCUPIED_MUSHROOM_BOY_SHOP_OCCUPANT_2
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

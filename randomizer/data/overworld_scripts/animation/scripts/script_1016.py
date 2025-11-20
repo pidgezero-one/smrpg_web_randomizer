@@ -1,4 +1,5 @@
 #A1016_FREESTANDING_FLOWER_PICKED_UP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

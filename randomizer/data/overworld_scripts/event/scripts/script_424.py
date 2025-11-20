@@ -1,4 +1,5 @@
 # E0424_PIPE_VAULT_RED_ROOM_ENTRANCE_PIPE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

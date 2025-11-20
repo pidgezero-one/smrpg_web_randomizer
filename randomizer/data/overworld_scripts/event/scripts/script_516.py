@@ -1,4 +1,5 @@
 # E0516_OCCUPIED_ROSE_TOWN_GAZ
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

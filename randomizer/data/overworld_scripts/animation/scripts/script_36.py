@@ -1,4 +1,5 @@
 #A0036_WIGGLER_GOING_TO_STUMP_TO_SLEEP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

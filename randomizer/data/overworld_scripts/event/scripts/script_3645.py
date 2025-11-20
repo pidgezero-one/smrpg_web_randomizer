@@ -1,4 +1,5 @@
 # E3645_NIMBUS_EXTERIOR_EXIT_TO_VINES
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E3666_NIMBUS_CASTLE_NOTE_HALLWAY_EXIT_TO_TWO_LEVEL_CHEST_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

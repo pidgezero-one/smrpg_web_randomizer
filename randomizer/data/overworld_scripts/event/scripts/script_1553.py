@@ -1,4 +1,5 @@
 # E1553_FOREST_TREE_TRUNK_AREA_LOADER_CONTD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -85,7 +86,7 @@ script = EventScript([
 	SetVarToConst(TEMP_702C, 36),
 	SetVarToConst(X_COORD_2, 4608),
 	SetVarToConst(Y_COORD_2, 9984),
-	ClearMem704XAt7000Bit(identifier="EVENT_1553_clear_mem_704x_at_7000_bit_55"),
+	ClearMem704XAt7000Bit(identifier="EVENT_1553_clear_mem_704x_at_7000_bit_55"), # 7044.2-4
 	CopyVarToVar(from_var=TEMP_702C, to_var=PRIMARY_TEMP_7000),
 	SetMem704XAt7000Bit(),
 	CopyVarToVar(from_var=TEMP_702A, to_var=PRIMARY_TEMP_7000),

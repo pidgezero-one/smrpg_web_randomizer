@@ -1,4 +1,5 @@
 # E3628_NIMBUS_EXTERIOR_BLUE_GUY_IN_FRONT_OF_CASTLE_ENTRANCE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E3586_NIMBUS_INN_LOBBY_LOADER_FROM_SAVE_POINT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

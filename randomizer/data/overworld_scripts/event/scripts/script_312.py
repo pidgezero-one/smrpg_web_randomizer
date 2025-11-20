@@ -1,4 +1,5 @@
 # E0312_MUSHROOM_KINGDOM_OCCUPIED_RUNNING_KID
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 #A1009_KEEP_DARK_ROOM_GOOMBA_RUNS_FROM_CHEST
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

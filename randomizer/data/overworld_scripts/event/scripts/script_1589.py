@@ -1,4 +1,5 @@
 # E1589_LANDS_END_GROTTO_TRAMPOLINE_TO_SURFACE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

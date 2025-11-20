@@ -1,4 +1,5 @@
 #A0479_BANDITS_WAY_CHEST_PLATFORMS_ON_MOUNT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

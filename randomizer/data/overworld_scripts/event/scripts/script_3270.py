@@ -1,4 +1,5 @@
 # E3270_SHIP_ROOM_WITH_BOX_WALL_OPEN_RIGHT_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

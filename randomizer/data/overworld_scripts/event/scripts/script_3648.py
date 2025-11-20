@@ -1,4 +1,5 @@
 # E3648_NIMBUS_OCCUPIED_NORTHEAST_HOUSE_RIGHT_GUY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E1603_EXP_STAR_SUBROUTINE_CANCEL_TILE_EVENT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

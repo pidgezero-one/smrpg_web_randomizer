@@ -1,4 +1,5 @@
 #A0443_ROSE_WAY_SWINGING_PLATFORM_SHY_GUY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

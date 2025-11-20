@@ -1,4 +1,5 @@
 # E3762_NIMBUS_CASTLE_LIBERATED_5_DOOR_ROOM_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

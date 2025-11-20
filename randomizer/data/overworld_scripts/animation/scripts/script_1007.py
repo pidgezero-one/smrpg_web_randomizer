@@ -1,4 +1,5 @@
 #A1007_EMPTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -14,8 +15,4 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([
-	A_JumpToHeight(80, identifier="ACTION_1007_jump_to_height_0"),
-	A_Pause(25),
-	A_Jmp(["ACTION_1007_jump_to_height_0"])
-])
+script = ActionScript([])

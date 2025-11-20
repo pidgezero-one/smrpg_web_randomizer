@@ -1,4 +1,5 @@
 # E1809_LANDS_END_CLIFF_EXIT_TO_WORLD_MAP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

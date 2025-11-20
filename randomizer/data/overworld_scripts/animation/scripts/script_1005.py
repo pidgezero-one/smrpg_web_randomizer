@@ -1,4 +1,5 @@
 #A1005_KEEP_BATTLE_ROOM_SUMMON_ENEMY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

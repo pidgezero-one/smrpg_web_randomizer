@@ -1,4 +1,5 @@
 # E0554_ROSE_TOWN_OCCUPIED_EXTERIOR_YELLOW_TOAD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

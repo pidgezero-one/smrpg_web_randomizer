@@ -1,4 +1,5 @@
 # E0429_PIPE_VAULT_THWOMP_ROOM_LOADER_BACKGROUND
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

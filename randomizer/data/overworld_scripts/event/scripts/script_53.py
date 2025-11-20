@@ -1,4 +1,5 @@
 # E0053_GRANT_ANY_EQUIP_OR_CONSUMABLE_EXCLUDE_WORST_CUSTOM_CAP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

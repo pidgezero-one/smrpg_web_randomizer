@@ -1,4 +1,5 @@
 #A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

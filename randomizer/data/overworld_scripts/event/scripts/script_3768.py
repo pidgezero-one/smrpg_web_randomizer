@@ -1,4 +1,5 @@
 # E3768_NIMBUS_CASTLE_MAIN_HALL_EXIT_TO_4_WAY_PATH
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

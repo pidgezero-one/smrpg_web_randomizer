@@ -1,4 +1,5 @@
 # E3615_CLIMB_UP_VALLEY_BEANSTALK_INTO_VINE_CLOUDS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

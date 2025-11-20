@@ -1,4 +1,5 @@
 # E3091_MULTI_FROG_COIN_CHEST_SINGLE_HIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

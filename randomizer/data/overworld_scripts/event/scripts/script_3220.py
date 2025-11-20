@@ -1,4 +1,5 @@
 # E3220_SHIP_BARREL_PUZZLE_BARREL_MOVEMENT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

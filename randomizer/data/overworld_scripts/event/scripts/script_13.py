@@ -1,4 +1,5 @@
 # E0013_BASE_ROM_ONLY_FIX_MAP_AND_PARTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

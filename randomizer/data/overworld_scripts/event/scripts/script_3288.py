@@ -1,4 +1,5 @@
 # E3288_SHIP_SPAWN_PRIZE_IN_TROOPA_PUZZLE_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E3752_HOT_SPRINGS_EXIT_TO_LOBBY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

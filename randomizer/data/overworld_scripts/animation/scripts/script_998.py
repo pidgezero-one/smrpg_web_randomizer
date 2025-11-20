@@ -1,4 +1,5 @@
 #A0998_KEEP_ORIGINAL_THRONE_ROOM_GOOMBA
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

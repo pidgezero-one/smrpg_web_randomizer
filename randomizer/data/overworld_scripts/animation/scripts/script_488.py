@@ -1,4 +1,5 @@
 #A0488_FOREST_MAZE_AREA_RECRUITABLE_CHARACTER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

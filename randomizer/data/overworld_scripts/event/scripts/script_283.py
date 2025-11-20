@@ -1,4 +1,5 @@
 # E0283_GET_FROG_COIN_NO_DIALOG_POSSIBLY_UNUSED
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

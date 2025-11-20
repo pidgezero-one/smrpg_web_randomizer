@@ -1,4 +1,5 @@
 # E2672_TOWER_KNIFE_GUY_MINIGAME_BUSINESS_LOGIC
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

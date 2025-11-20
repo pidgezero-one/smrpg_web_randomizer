@@ -1,4 +1,5 @@
 # E3273_SHIP_1ST_WATER_ROOM_OPEN_UNDERWATER_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E2803_BEAN_VALLEY_NORTH_PIPE_DIRECTIONAL_BIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

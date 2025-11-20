@@ -1,0 +1,14 @@
+
+  {
+    "exclude": [
+      "randomizer/data_old",
+      "randomizer/data_old_2",
+      "randomizer/entities",
+      "randomizer/helpers (can be deleted)",
+      "randomizer/logic_old",
+      "randomizer/management",
+      "randomizer/scripts",
+      "randomizer/types",
+      "randomizer/utils",
+    ]
+  }

@@ -1,4 +1,5 @@
 # E2496_START_GAME
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -90,11 +91,6 @@ script = EventScript([
 	SetBit(UNKNOWN_ROSE_TOWN_7060_7),
 	SetBit(MAP_MENU_UNLOCKED),
 	SetBit(MARRYMORE_UNKNOWN_7063_2),
-	SetBit(UNUSED_7084_7),
-	SetBit(UNUSED_7085_0),
-	SetBit(UNUSED_708B_6),
-	SetBit(UNUSED_7091_6),
-	SetBit(COIN_CHEST_COMPLETED),
 	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
 	AddToInventory(WasteBasketItem),
 	RestoreAllHP(),
@@ -117,9 +113,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, mod_id=0),
 	ApplySolidityModToLevel(permanent=True, room_id=R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, mod_id=0),
 	ClearBit(UNKNOWN_STAR_PIECE),
-	ClearBit(UNUSED_7089_5),
 	SetBit(UNKNOWN_7053_0),
-	SetBit(UNUSED_7053_1),
 	SetBit(MAP_MARIOS_PAD),
 	SetBit(MAP_MUSHROOM_WAY),
 	SetBit(MAP_MUSHROOM_KINGDOM),

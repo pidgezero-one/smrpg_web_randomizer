@@ -1,4 +1,5 @@
 # E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

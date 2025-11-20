@@ -1,4 +1,5 @@
 # E1586_MIDAS_RIVER_BARREL_FISH_MOVEMENT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

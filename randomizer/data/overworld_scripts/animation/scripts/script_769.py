@@ -1,4 +1,5 @@
 #A0769_EMPTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -14,14 +15,4 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([
-	A_Set700CToPressedButton(),
-	A_AddConstToVar(PRIMARY_TEMP_700C, 65517),
-	A_LoadMemory(PRIMARY_TEMP_700C),
-	A_Pause(1),
-	A_EndLoop(),
-	A_SetAllSpeeds(FAST),
-	A_FaceMario(identifier="ACTION_769_face_mario_6"),
-	A_WalkFDirectionSteps(2),
-	A_Jmp(["ACTION_769_face_mario_6"])
-])
+script = ActionScript([])

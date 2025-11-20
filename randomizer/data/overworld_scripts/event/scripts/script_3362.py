@@ -1,4 +1,5 @@
 # E3362_KEEP_BUTTON_GAME_PRESS_BUTTON
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

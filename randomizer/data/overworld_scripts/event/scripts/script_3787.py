@@ -1,4 +1,5 @@
 # E3787_NIMBUS_MEZZANINE_FALL_TO_EAST_VINE_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

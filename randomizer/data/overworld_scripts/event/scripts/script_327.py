@@ -1,4 +1,5 @@
 # E0327_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM_TOAD
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

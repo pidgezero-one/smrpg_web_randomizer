@@ -1,4 +1,5 @@
 # E1931_TREASURE_CHEST_FAILURE_MIMIC_FIGHT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

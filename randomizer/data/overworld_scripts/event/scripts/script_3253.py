@@ -1,4 +1,5 @@
 # E3253_SHIP_PUZZLE_HUB_ROOM_OPEN_TROOPA_PUZZLE_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E1797_LANDS_END_SKY_BRIDGE_ROOM_EXIT_TO_DESERT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

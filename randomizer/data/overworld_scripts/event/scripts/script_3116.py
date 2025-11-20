@@ -1,4 +1,5 @@
 # E3116_CHANGE_MUSIC_IN_MOLEVILLE_MINES_WHEN_BACKTRACKING
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

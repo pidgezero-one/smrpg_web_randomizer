@@ -1,4 +1,5 @@
 # E1365_CURTAIN_GAME_BUSINESS_LOGIC_1
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

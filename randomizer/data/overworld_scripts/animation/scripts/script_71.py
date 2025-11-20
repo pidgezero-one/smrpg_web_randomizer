@@ -1,4 +1,5 @@
 #A0071_EMPTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -14,42 +15,4 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([
-	A_FixedFCoordOn(),
-	A_SetSolidityBits(cant_pass_walls=True),
-	A_FloatingOn(),
-	A_JumpToHeight(height=48, silent=True),
-	A_SetWalkingSpeed(FAST),
-	A_Walk1StepNorthwest(),
-	A_SetWalkingSpeed(NORMAL),
-	A_Pause(1, identifier="ACTION_71_pause_7"),
-	A_JmpIfObjectInAir(NPC_3, ["ACTION_71_pause_7"]),
-	A_Pause(120),
-	A_JumpToHeight(height=48, silent=True),
-	A_Pause(1, identifier="ACTION_71_pause_11"),
-	A_JmpIfObjectInAir(NPC_3, ["ACTION_71_pause_11"]),
-	A_Pause(30),
-	A_JumpToHeight(height=48, silent=True),
-	A_Pause(1, identifier="ACTION_71_pause_15"),
-	A_JmpIfObjectInAir(NPC_3, ["ACTION_71_pause_15"]),
-	A_Pause(40),
-	A_FixedFCoordOff(),
-	A_WalkSouthwestSteps(2),
-	A_WalkSoutheastSteps(1),
-	A_WalkNortheastSteps(2),
-	A_FaceSoutheast(),
-	A_JmpIfBitClear(TEMP_7044_6, ["ACTION_71_ret_36"]),
-	A_Pause(200),
-	A_TurnRandomDirection(),
-	A_Pause(20),
-	A_TurnRandomDirection(),
-	A_Pause(20),
-	A_TurnRandomDirection(),
-	A_Pause(20),
-	A_TurnRandomDirection(),
-	A_Pause(20),
-	A_TurnRandomDirection(),
-	A_Pause(20),
-	A_FaceSoutheast(),
-	A_ReturnQueue(identifier="ACTION_71_ret_36")
-])
+script = ActionScript([])

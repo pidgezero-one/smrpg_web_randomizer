@@ -1,4 +1,5 @@
 # E0618_MARIO_AS_BELLHOP_TRIES_TO_GO_UPSTAIRS_WITHOUT_GUEST
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

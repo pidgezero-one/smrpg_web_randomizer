@@ -1,4 +1,5 @@
 #A0706_MOLEVILLE_LIBERATED_ENTRANCE_MOLE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

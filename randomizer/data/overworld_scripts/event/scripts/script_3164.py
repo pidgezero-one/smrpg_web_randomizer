@@ -1,4 +1,5 @@
 # E3164_SEWERS_TUTORIAL_ROOM_PIPE_TO_FIRST_WATER_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E3717_NIMBUS_CASTLE_TWO_LEVEL_CHEST_ROOM_FAN_GUST_PATH
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

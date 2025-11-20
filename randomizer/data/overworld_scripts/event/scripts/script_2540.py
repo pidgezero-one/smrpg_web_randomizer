@@ -1,4 +1,5 @@
 # E2540_BEAN_VALLEY_TOP_PIPE_BASEMENT_TRAMPOLINE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

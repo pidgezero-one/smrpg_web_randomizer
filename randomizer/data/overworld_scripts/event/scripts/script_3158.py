@@ -1,4 +1,5 @@
 # E3158_ITEM_BEHIND_SHIP_UPPER_STAIRS_TILE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

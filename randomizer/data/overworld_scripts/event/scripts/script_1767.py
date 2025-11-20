@@ -1,4 +1,5 @@
 # E1767_TEMPLE_FORTUNE_RESULTS_ROOM_GATE_OPENS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -1,4 +1,5 @@
 # E2459_STAR_HILL_1ST_ROOM_SUMMON_NORTHWEST_SACKIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

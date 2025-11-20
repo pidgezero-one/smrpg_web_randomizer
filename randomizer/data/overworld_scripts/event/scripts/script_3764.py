@@ -1,4 +1,5 @@
 # E3764_NIMBUS_FIRST_FALL_ROOM_LOAD_2ND_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

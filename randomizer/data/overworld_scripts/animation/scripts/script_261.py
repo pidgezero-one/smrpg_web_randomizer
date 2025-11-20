@@ -1,4 +1,5 @@
 #A0261_NIMBUS_FINAL_HALLWAY_BOSS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

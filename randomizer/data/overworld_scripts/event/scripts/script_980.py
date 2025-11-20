@@ -1,4 +1,5 @@
 # E0980_FROGFUCIUS_HINT_MARRYMORE_SUITE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

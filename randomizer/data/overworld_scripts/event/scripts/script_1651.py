@@ -1,4 +1,5 @@
 # E1651_MARIO_CRASH_THRU_MOLEVILLE_ROOF
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

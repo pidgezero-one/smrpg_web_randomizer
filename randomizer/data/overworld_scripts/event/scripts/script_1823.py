@@ -1,4 +1,5 @@
 # E1823_LANDS_END_GROTTO_FIRST_ROOM_UPPER_CHEST
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

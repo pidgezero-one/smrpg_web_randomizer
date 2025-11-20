@@ -1,4 +1,5 @@
 # E1717_BANDITS_WAY_4_MANAGE_DOG_COLLISION
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

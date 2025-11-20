@@ -1,4 +1,5 @@
 # E0601_MARRYMORE_BACK_DOOR_ENTER_CHAPEL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

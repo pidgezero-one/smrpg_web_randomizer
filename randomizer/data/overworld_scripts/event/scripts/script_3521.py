@@ -1,4 +1,5 @@
 # E3521_CHEST_DIFFERENTIATOR_NPC_12_13_OR_OTHER_CAMERA_B
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

@@ -85,25 +85,6 @@ room = Room(
             x_bit_7=False,
         ),
         RoomExit(
-            x=3,
-            y=91,
-            z=4,
-            f=EdgeDirection.SOUTHEAST,
-            length=2,
-            height=0,
-            nw_se_edge_active=True,
-            ne_sw_edge_active=False,
-            byte_2_bit_2=False,
-            destination=R488_MUSHROOM_KINGDOM_JUMPING_KIDS_HOUSE_1F,
-            show_message=False,
-            dst_x=6,
-            dst_y=24,
-            dst_z=2,
-            dst_z_half=False,
-            dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
-        RoomExit(
             x=6,
             y=105,
             z=0,
@@ -178,6 +159,20 @@ room = Room(
             dst_z_half=False,
             dst_f=NORTHWEST,
             x_bit_7=False,
+        ),
+    ],
+    events=[
+        Event(
+            event=E0716_ENTER_JUMPING_KIDS_HOUSE,
+            x=3,
+            y=91,
+            z=4,
+            f=EdgeDirection.SOUTHEAST,
+            height=0,
+            length=2,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=False,
+            byte_8_bit_4=False,
         ),
     ],
     objects=[
@@ -446,3 +441,4 @@ room = Room(
         ),
     ]
 )
+

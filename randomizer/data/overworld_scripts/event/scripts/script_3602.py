@@ -1,4 +1,5 @@
 # E3602_MUSHROOM_KINGDOM_RAZ_RAINI_NOTE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

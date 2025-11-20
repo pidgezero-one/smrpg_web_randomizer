@@ -1,4 +1,5 @@
 # E0841_VOLCANO_FINAL_PRE_EXIT_ROOM_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

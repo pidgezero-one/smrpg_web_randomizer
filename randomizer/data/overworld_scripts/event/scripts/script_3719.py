@@ -1,4 +1,5 @@
 # E3719_NIMBUS_CASTLE_RIGHT_RED_CELLAR_WOMAN
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

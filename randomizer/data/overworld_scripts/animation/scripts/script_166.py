@@ -1,4 +1,5 @@
 #A0166_EMPTY
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
@@ -14,15 +15,4 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([
-	A_TransferToObjectXY(MARIO),
-	A_VisibilityOn(),
-	A_JumpToHeight(height=112, silent=True),
-	A_ShadowOn(),
-	A_SetVRAMPriority(PRIORITY_3),
-	A_SetPriority(3),
-	A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
-	A_WalkFDirectionSteps(2),
-	A_VisibilityOff(),
-	A_ReturnQueue()
-])
+script = ActionScript([])

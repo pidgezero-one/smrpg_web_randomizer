@@ -1,4 +1,5 @@
 # E1830_KEEP_HANDLE_ROOM_RELOAD_AFTER_LAVA_FALL
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

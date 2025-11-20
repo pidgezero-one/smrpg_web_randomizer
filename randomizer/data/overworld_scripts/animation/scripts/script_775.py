@@ -1,4 +1,5 @@
 #A0775_PLAYER_FALLS_IN_KEEP_LAVA
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

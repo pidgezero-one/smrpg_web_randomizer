@@ -1,4 +1,5 @@
 # E1538_BANDITS_WAY_STAR_CHEST_CAMERA_AND_DOGS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

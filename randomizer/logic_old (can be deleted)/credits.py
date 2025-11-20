@@ -393,7 +393,7 @@ def update_credits(world):
     if world.settings.is_flag_enabled(flags.RandomTadpolePondSong):
 
         credits.begin_titles(BEGIN_TITLES_DELAY)
-        credits.add_title(0x80, 0x00, 0x08, "TODAYS MELODY BAY TUNES")
+        credits.add_title(0x80, 0x00, 0x08, "SELECTED MELODY BAY TUNES")
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()
@@ -424,7 +424,7 @@ def update_credits(world):
     if world.settings.is_flag_enabled(flags.RandomSunkenShipPassword):
 
         credits.begin_titles(BEGIN_TITLES_DELAY)
-        credits.add_title(0x80, 0x00, 0x08, "TODAYS SHIP PASSWORD")
+        credits.add_title(0x80, 0x00, 0x08, "SELECTED SHIP PASSWORD")
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()

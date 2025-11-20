@@ -1,4 +1,5 @@
 #A0818_LANDS_END_CHOW_JUMP_OUT_OF_PIT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

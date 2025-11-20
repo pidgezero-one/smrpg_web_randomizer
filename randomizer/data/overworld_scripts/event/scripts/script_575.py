@@ -1,4 +1,5 @@
 # E0575_ROSE_TOWN_LIBERATED_COUPLES_HOUSE_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

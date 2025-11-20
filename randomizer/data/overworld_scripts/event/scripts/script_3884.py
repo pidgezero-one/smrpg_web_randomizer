@@ -1,4 +1,5 @@
 # E3884_BALL_SOLITAIRE_SET_PUZZLE_CONFIGURATION_VALUE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

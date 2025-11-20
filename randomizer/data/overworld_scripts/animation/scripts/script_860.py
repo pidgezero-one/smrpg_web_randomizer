@@ -1,4 +1,5 @@
 #A0860_ABYSS_BEFORE_1ST_BOSS_JUMP_BACK_UP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

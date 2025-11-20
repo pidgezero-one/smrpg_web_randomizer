@@ -1,4 +1,5 @@
 # E0039_GRANT_ANY_CONSUMABLE_OR_EQUIP_TIER_3_CAP
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

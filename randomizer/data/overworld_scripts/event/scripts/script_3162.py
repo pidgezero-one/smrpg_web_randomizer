@@ -1,4 +1,5 @@
 # E3162_MINES_AREA_2_LOWER_BACKWARD_EXIT_IF_MINES_CLEARED
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

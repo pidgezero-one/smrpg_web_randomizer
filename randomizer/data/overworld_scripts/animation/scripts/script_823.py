@@ -1,4 +1,5 @@
 #A0823_PLAYER_RESET_IN_SKY_BRIDGE_ROOM
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

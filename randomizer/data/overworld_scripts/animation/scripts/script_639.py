@@ -1,4 +1,5 @@
 #A0639_ROSE_TOWN_ARROW_THAT_FREEZES_TOAD_BY_INN
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *

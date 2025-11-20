@@ -1,4 +1,5 @@
 # E1784_LANDS_END_DESERT_1_LEFT_WHIRLPOOL_SUBROUTINE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

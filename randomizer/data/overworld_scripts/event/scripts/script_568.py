@@ -1,4 +1,5 @@
 # E0568_ROSE_ROWN_LIBERATED_WATER_PUMP_HOUSE_LOADER
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

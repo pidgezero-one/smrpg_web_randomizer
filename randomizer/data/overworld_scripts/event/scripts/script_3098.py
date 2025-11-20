@@ -1,4 +1,5 @@
 # E3098_PROGRESSIVE_EGG_NPC_GRANT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
@@ -31,20 +32,19 @@ from ....packets import *
 
 script = EventScript([
 	StoreItemAmountTo7000(MysteryEggItem),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3098_set_var_to_const_14"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3087_set_var_to_const_15"]),
 	StoreItemAmountTo7000(LambsLureItem),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3098_set_var_to_const_11"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3087_set_var_to_const_12"]),
 	StoreItemAmountTo7000(SheepAttackItem),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3098_set_var_to_const_8"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3087_set_var_to_const_8"]),
 	SetVarToConst(ITEM_ID, MysteryEggItem),
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3098_set_var_to_const_8"),
-	RemoveOneOfItemFromInventory(SheepAttackItem),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3087_set_var_to_const_8"),
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3098_set_var_to_const_11"),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3087_set_var_to_const_12"),
 	RemoveOneOfItemFromInventory(LambsLureItem),
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	SetVarToConst(ITEM_ID, LambsLureItem, identifier="EVENT_3098_set_var_to_const_14"),
+	SetVarToConst(ITEM_ID, LambsLureItem, identifier="EVENT_3087_set_var_to_const_15"),
 	RemoveOneOfItemFromInventory(MysteryEggItem),
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM)
 ])

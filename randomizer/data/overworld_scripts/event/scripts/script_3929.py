@@ -1,4 +1,5 @@
 # E3929_LANDS_END_PURCHASABLE_CHEST_2_SUBROUTINE
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

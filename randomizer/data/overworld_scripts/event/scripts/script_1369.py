@@ -1,4 +1,5 @@
 # E1369_CURTAIN_GAME_SUCCESS_FAILURE_FIGHT_BOSS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

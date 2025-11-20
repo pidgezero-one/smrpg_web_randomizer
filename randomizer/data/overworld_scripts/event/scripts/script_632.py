@@ -1,4 +1,5 @@
 # E0632_MARRYMORE_EXTERIOR_CHAPEL_LOCKED_FRONT_DOOR
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

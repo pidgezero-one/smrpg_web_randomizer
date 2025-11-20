@@ -1,4 +1,5 @@
 # E1902_ABYSS_EXIT_TO_SIDE_TREASURE_ROOMS
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *

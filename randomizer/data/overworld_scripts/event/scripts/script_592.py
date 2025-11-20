@@ -1,4 +1,5 @@
 # E0592_MINES_BOSS_ROOM_LOADER_BEFORE_DEFEAT
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
