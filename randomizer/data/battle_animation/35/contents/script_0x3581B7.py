@@ -1,0 +1,85 @@
+
+from smrpgpatchbuilder.datatypes.battle_animation_scripts import *
+from ....variables.sprite_names import *
+from ....variables.music_names import *
+from ....variables.battle_sfx_names import *
+from ....variables.battle_effect_names import *
+from ....variables.battle_event_names import *
+from ....variables.screen_effect_names import *
+from ....spells.spells import *
+from ....items.items import *
+from ....enemies.enemies import *
+from ....enemy_attacks.attacks import *
+
+script = AnimationScriptBlock(expected_size=184, expected_beginning=0x3581B7, script=[
+	PlaySound(sound=S0080_WALLOP_1, identifier="command_0x3581B7"),
+	Jmp(["command_0x358251"], identifier="command_0x3581B9"),
+	PlaySound(sound=S0054_HAMMER_HIT_1, identifier="command_0x3581BC"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0010_MALLOW_PUNCH_1, identifier="command_0x3581C1"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0054_HAMMER_HIT_1, identifier="command_0x3581C6"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0018_SUPER_JUMP_HIT_1, identifier="command_0x3581CB"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0059_SUPER_JUMP_HIT_3, identifier="command_0x3581D0"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0080_WALLOP_1, identifier="command_0x3581D5"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0113_GENO_FINGER_SHOT_HIT, identifier="command_0x3581DA"),
+	Jmp(["command_0x358251"], identifier="command_0x3581DC"),
+	PlaySound(sound=S0122_POISONED, identifier="command_0x3581DF"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0054_HAMMER_HIT_1, identifier="command_0x3581E4"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0122_POISONED, identifier="command_0x3581E9"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0054_HAMMER_HIT_1, identifier="command_0x3581EE"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0113_GENO_FINGER_SHOT_HIT, identifier="command_0x3581F3"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0010_MALLOW_PUNCH_1, identifier="command_0x3581F8"),
+	Jmp(["command_0x358251"], identifier="command_0x3581FA"),
+	PlaySound(sound=S0059_SUPER_JUMP_HIT_3, identifier="command_0x3581FD"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0046_PLASMA_BOUNCE, identifier="command_0x358202"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0159_BIG_DEEP_HIT, identifier="command_0x358207"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0054_HAMMER_HIT_1, identifier="command_0x35820C"),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=4),
+	PlaySound(sound=S0054_HAMMER_HIT_1),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0018_SUPER_JUMP_HIT_1, identifier="command_0x358217"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0137_BOWSER_CRUSH_STOMP, identifier="command_0x35821C"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0084_WALLOP_4, identifier="command_0x358221"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0160_SLAP, identifier="command_0x358226"),
+	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=3),
+	PlaySound(sound=S0160_SLAP),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0113_GENO_FINGER_SHOT_HIT, identifier="command_0x358231"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0152_HIT, identifier="command_0x358236"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0054_HAMMER_HIT_1, identifier="command_0x35823B"),
+	Jmp(["command_0x358251"], identifier="command_0x35823D"),
+	PlaySound(sound=S0197_GENO_STAR_GUN_HIT, identifier="command_0x358240"),
+	Jmp(["command_0x358251"], identifier="command_0x358242"),
+	PlaySound(sound=S0194_BIG_SHELL_HIT_2, identifier="command_0x358245"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0083_FRYING_PAN_HIT_1, identifier="command_0x35824A"),
+	Jmp(["command_0x358251"]),
+	PlaySound(sound=S0054_HAMMER_HIT_1, identifier="command_0x35824F"),
+	SetAMEM60ToCurrentTarget(identifier="command_0x358251"),
+	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=4, y=-10, z=0, set_x=True, set_y=True, set_z=True),
+	ClearAMEM8Bit(0x6F),
+	UnknownCommand(bytearray(b'?\x80\x15\x00\x00\x84')),
+	PauseScriptUntilAMEMBitsSet(0x6F, [0, 1, 2, 3, 4, 5, 6, 7]),
+	ResetObjectMappingMemory(),
+	SetAMEM8BitToConst(0x6F, 1),
+	SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
+	ReturnObjectQueue()
+])
