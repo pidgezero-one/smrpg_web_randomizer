@@ -45,7 +45,7 @@ script = AnimationScriptBlock(expected_size=243, expected_beginning=0x3589D5, sc
 	SetAMEM8BitToConst(0x63, 1),
 	SetAMEM8BitToConst(0x65, 1),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0008_TOADSTOOL_WALKING_UP_RIGHT, sequence=0, store_to_vram=True, overlap_all_sprites=True, bit_4=True),
-	RunSubroutine(["command_0x358072"]),
+	RunSubroutine(["fix_sprite_after_attack"]),
 	UnknownCommand(bytearray(b'm')),
 	ReturnSubroutine(),
 	ResetTargetMappingMemory(identifier="command_0x358A2A"),
