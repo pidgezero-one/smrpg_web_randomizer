@@ -1,4 +1,4 @@
-
+# pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.battle_animation_scripts import *
 from ....variables.sprite_names import *
 from ....variables.music_names import *

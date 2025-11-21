@@ -1,4 +1,4 @@
-
+# pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.battle_animation_scripts import *
 from ....variables.sprite_names import *
 from ....variables.music_names import *
@@ -55,7 +55,7 @@ script = AnimationScriptBlock(expected_size=191, expected_beginning=0x358916, sc
 	SetAMEM8BitToConst(0x63, 1),
 	SetAMEM8BitToConst(0x65, 1),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0002_MARIO_WALKING_UP_RIGHT, sequence=0, store_to_vram=True, overlap_all_sprites=True, bit_4=True),
-	RunSubroutine(["command_0x358072"]),
+	RunSubroutine(["fix_sprite_after_attack"]),
 	UnknownCommand(bytearray(b'm')),
 	ReturnSubroutine(),
 	ResetTargetMappingMemory(identifier="command_0x358993"),
