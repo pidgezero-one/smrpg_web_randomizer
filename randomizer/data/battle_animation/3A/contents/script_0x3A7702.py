@@ -12,16 +12,6 @@ from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=347, expected_beginning=0x3A7702, script=[
-	ClearAMEM8Bit(0x68, identifier="command_0x3A7702"),
-	SetAMEM8BitTo7E1x(0x68, 0x7EE01C),
-	SetAMEMBits(0x68, [6]),
-	Set7E1xToAMEM8Bit(0x7EE01C, 0x68),
-	ReturnSubroutine(),
-	ClearAMEM8Bit(0x68, identifier="command_0x3A7710"),
-	SetAMEM8BitTo7E1x(0x68, 0x7EE01C),
-	SetAMEMBits(0x68, [7]),
-	Set7E1xToAMEM8Bit(0x7EE01C, 0x68),
-	ReturnSubroutine(),
 	Pause1Frame(identifier="command_0x3A771E"),
 	SetAMEM8BitTo7E1x(0x68, 0x7EE01F),
 	JmpIfAMEMBitsClear(0x68, [0], ["command_0x3A771E"]),
