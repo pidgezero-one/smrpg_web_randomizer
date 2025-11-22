@@ -1,4 +1,5 @@
 # 105 - JUJUEnemy
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *

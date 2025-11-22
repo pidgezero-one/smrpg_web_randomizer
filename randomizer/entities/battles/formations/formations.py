@@ -656,7 +656,7 @@ from randomizer.types.battle_animation_scripts.ids import (
     BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
     BE0020_SOLO_WATER_CRYSTAL_APPEARS,
     BE0026_INTRO_SCENE_TENTACLES_RISE_FROM_HOLES,
-    BE0035_SOLO_WIND_CRYSTAL_APPEARS,
+    BE0035_BOOSTER_EATS_CAKE,
     BE0052_INTRO_SCENE_DOMINO_CLOAKER_S_INTRODUCTION,
     BE0058_THRAX_IS_THERE,
     BE0061_ONLY_MARIO_IS_THERE,
@@ -3595,7 +3595,7 @@ formations[FORM0407_ONE_WIND_CRYSTAL] = Formation(
     [
         FormationMember(WindCrystal, x_pos=183, y_pos=127),
     ],
-    run_event_at_load=BE0035_SOLO_WIND_CRYSTAL_APPEARS,
+    run_event_at_load=BE0035_BOOSTER_EATS_CAKE,
 )
 formations[FORM0408_THREE_GOOMBETTES] = Formation(
     [

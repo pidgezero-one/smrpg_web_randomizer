@@ -1,4 +1,5 @@
 # 159 - KINKLINKEnemy
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -20,7 +21,7 @@ script = MonsterScript([
 	IfHPBelow(0),
 	SetTargetable(MONSTER_1_SET),
 	SetTargetable(MONSTER_2_SET),
-	RunBattleEvent(BE0001_UNUSED),
+	RunBattleEvent(BE0001_SOLO_WIND_CRYSTAL_APPEARS),
 	ExitBattle(),
 	Wait1TurnandRestartScript()
 ])

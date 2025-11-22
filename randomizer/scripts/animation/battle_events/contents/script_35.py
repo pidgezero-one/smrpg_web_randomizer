@@ -1,4 +1,4 @@
-"""BE0035_SOLO_WIND_CRYSTAL_APPEARS"""
+"""BE0035_BOOSTER_EATS_CAKE"""
 
 from randomizer.scripts.animation.script_imports import *
 

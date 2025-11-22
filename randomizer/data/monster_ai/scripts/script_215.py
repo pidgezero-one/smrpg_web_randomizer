@@ -1,4 +1,5 @@
 # 215 - RASPBERRYEnemy
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -24,7 +25,7 @@ script = MonsterScript([
 	ClearVarBits(BV7EE00F, [0]),
 	StartCounterCommands(),
 	IfHPBelow(0),
-	RunObjectSequence(6),
+	RunBattleEvent(BE0035_BOOSTER_EATS_CAKE),
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript()
 ])

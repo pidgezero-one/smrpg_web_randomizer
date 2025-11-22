@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=4971, expected_beginning=0x35C992, script=[
 	DefineObjectQueue(["command_0x35C9C8", "command_0x35C9CC", "command_0x35C9D6", "command_0x35C9DA", "command_0x35C9E4", "command_0x35C9E8", "command_0x35C9F2", "command_0x35C9FC", "command_0x35CA00", "command_0x35CA07", "command_0x35CA11", "command_0x35CA1B", "command_0x35CA22", "command_0x35CA2C", "command_0x35CA36", "command_0x35CA40", "command_0x35CA47", "command_0x35CA4E", "command_0x35CA58", "command_0x35CA62", "command_0x35CA69", "command_0x35CA73", "command_0x35CA7D", "command_0x35CA84", "command_0x35CA8E", "command_0x35CA98", "command_0x35CAA2"], identifier="command_0x35C992"),
 	RunSubroutine(["command_0x358C8F"], identifier="command_0x35C9C8"),

@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=763, expected_beginning=0x02F4BF, script=[
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=128, y=192, z=0, set_x=True, set_y=True, set_z=True),
 	SummonMonster(monster=TERRAPINEnemy, position=0),

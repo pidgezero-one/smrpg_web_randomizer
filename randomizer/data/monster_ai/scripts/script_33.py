@@ -1,4 +1,5 @@
 # 33 - KAMEKEnemy
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *

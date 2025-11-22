@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=582, expected_beginning=0x3AA6A7, script=[
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0020_MALLOW_WALKING_UP_RIGHT, sequence=0, store_to_vram=True, looping=True, store_palette=True, behind_all_sprites=True, overlap_all_sprites=True, identifier="command_0x3AA6A7"),
 	RunSubroutine(["command_0x3A8296"]),

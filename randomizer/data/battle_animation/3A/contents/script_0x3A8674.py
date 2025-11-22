@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=12, expected_beginning=0x3A8674, script=[
 	Pause1Frame(identifier="command_0x3A8674"),
 	SetAMEM8BitToAMEM(amem=0x68, source_amem=0x68, upper=0x60),

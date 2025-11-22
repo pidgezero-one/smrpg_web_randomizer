@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=85, expected_beginning=0x352D13, script=[
 	SetAMEMToRandomShort(amem=0x60, upper_bound=7, identifier="command_0x352D13"),
 	UseObjectQueueAtOffsetWithAMEM60Index(destinations=["command_0x352D1B"]),

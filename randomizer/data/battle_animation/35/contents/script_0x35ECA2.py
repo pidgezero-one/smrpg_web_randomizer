@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=4681, expected_beginning=0x35ECA2, script=[
 	DefineObjectQueue(["command_0x35ECEA", "command_0x35ED03", "command_0x35ED22", "command_0x35ED43", "command_0x35ED57", "command_0x35ED70", "command_0x35ED94", "command_0x35EDB8", "command_0x35EDCC", "command_0x35EDE7", "command_0x35EDFB", "command_0x35EE1F", "command_0x35EE3C", "command_0x35EE60", "command_0x35EE7D", "command_0x35EEA1", "command_0x35EEB5", "command_0x35EECE", "command_0x35EEED", "command_0x35EF01", "command_0x35EF25", "command_0x35EF4C", "command_0x35EF60", "command_0x35EF89", "command_0x35EFA6", "command_0x35EFC0", "command_0x35EFE9", "command_0x35EFFD", "command_0x35F016", "command_0x35F041", "command_0x35F061", "command_0x35F08E", "command_0x35F0A2", "command_0x35F0C6", "command_0x35F0DA", "command_0x35F0FE"], identifier="command_0x35ECA2"),
 	JmpIfAMEM8BitEqualsConst(0x62, 1, ["command_0x35ECF7"], identifier="command_0x35ECEA"),

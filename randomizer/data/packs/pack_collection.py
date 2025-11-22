@@ -4715,6 +4715,8 @@ packs[PACK166_JOHNNY_FIGHT_STATIC] = FormationPack(
             FormationMember(BANDANABLUEEnemy, 135, 135),
             FormationMember(BANDANABLUEEnemy, 183, 159),
             FormationMember(BANDANABLUEEnemy, 215, 151),
+            FormationMember(WATERCRYSTALEnemy, 0, 0, hidden_at_start=True),
+            FormationMember(WATERCRYSTALEnemy, 0, 0, hidden_at_start=True),
         ],
         music=MidbossMusic(),
         can_run_away=False,

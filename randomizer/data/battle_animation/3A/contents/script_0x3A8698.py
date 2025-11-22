@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=292, expected_beginning=0x3A8698, script=[
 	PlaySound(sound=S0111_SLEDGE, identifier="command_0x3A8698"),
 	ShakeScreen(amount=5, speed=8),

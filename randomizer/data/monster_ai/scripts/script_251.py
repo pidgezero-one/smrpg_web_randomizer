@@ -1,4 +1,5 @@
 # 251 - VALENTINAEnemy
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -57,7 +58,7 @@ script = MonsterScript([
 	RunBattleEvent(BE0050_DODO_RETURNS_TO_VALENTINA_S_FORMATION),
 	Wait1TurnandRestartScript(),
 	IfHPBelow(0),
-	RunObjectSequence(3),
+	RunBattleEvent(BE0051_VALENTINA_DODO_END),
 	RemoveTarget(ALL_ALLIES_AND_SELF),
 	Wait1TurnandRestartScript()
 ])

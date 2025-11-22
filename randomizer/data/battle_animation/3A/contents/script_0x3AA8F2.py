@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=4816, expected_beginning=0x3AA8F2, script=[
 	UnknownCommand(bytearray(b'\xba\x01\x05\x00'), identifier="command_0x3AA8F2"),
 	ScreenEffect(SEF0006_SCREEN_FLASHES_WHITE),

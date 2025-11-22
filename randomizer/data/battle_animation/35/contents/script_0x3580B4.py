@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=183, expected_beginning=0x3580B4, script=[
 	SpriteSequence(sequence=0, looping_off=True, identifier="command_0x3580B4"),
 	SetAMEM40ToXYZCoords(origin=ABSOLUTE_POSITION, x=112, y=155, z=0, set_x=True, set_y=True, set_z=True),

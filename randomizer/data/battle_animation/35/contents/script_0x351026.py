@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=1133, expected_beginning=0x351026, script=[
 	DefineObjectQueue(["command_0x351080", "command_0x35108D", "command_0x3510A0", "command_0x3510B3", "command_0x3510C6", "command_0x3510D7", "command_0x3510EA", "command_0x3510FB", "command_0x35110E", "command_0x351123", "command_0x351136", "command_0x351143", "command_0x351157", "command_0x35116A", "command_0x35117E", "command_0x351195", "command_0x3511B8", "command_0x3511DB", "command_0x3511F2", "command_0x351209", "command_0x35121B", "command_0x351232", "command_0x351249", "command_0x351260", "command_0x351277", "command_0x35128E", "command_0x3512AF", "command_0x3512DA", "command_0x3512F1", "command_0x351309", "command_0x35131E", "command_0x351333", "command_0x351344", "command_0x351375", "command_0x35138F", "command_0x3513A4", "command_0x3513B8", "command_0x3513CE", "command_0x3513E4", "command_0x3513FA", "command_0x351415", "command_0x35142F", "command_0x35144B", "command_0x351467", "command_0x351483"], identifier="command_0x351026"),
 	RunSubroutine(["command_0x35252B"], identifier="command_0x351080"),

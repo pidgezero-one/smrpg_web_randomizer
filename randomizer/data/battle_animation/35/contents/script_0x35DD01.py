@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=4001, expected_beginning=0x35DD01, script=[
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=120, y=132, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x35DD01"),
 	NewSpriteAtCoords(sprite_id=SPR0433_MUKUMUKU, sequence=8, priority=3, vram_address=0x6200, palette_row=0, overwrite_vram=True, overwrite_palette=True, behind_all_sprites=True, overlap_all_sprites=True),

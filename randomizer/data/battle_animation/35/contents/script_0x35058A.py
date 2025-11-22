@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=374, expected_beginning=0x35058A, script=[
 	DefineObjectQueue(["command_0x3505C6", "command_0x3505DA", "command_0x350790", "command_0x350796", "command_0x3507A2", "command_0x350830"], identifier="monster_sprite_behaviour_0_no_movement_for_escape"),
 	DefineObjectQueue(["command_0x3505C6", "command_0x350635", "command_0x350790", "command_0x350796", "command_0x3507E9", "command_0x350830"], identifier="monster_sprite_behaviour_1_slide_backward_when_hit"),

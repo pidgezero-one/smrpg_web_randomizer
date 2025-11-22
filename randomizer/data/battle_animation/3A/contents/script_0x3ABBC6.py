@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=1409, expected_beginning=0x3ABBC6, script=[
 	RunSubroutine(["command_0x3A7760"], identifier="command_0x3ABBC6"),
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0001_MARIO_JUMP_FRONT, sequence=9, store_to_vram=True, store_palette=True, behind_all_sprites=True, overlap_all_sprites=True),
@@ -442,7 +442,7 @@ script = AnimationScriptBlock(expected_size=1409, expected_beginning=0x3ABBC6, s
 	RemoveObject(),
 	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=204, y=62, z=0, set_x=True, set_y=True, set_z=True),
 	NewSpriteAtCoords(sprite_id=SPR0331_BANDANA_BLUE, sequence=0, priority=2, vram_address=0x7800, palette_row=12, overwrite_vram=True, overwrite_palette=True, behind_all_sprites=True, overlap_all_sprites=True),
-	SummonMonster(monster=BANDANABLUEEnemy, position=1, bit_7=True),
+	SummonMonster(monster=WATERCRYSTALEnemy, position=5, bit_7=True),
 	SetAMEM40ToXYZCoords(origin=ABSOLUTE_POSITION, x=184, y=52, z=0, set_x=True, set_y=True, set_z=True),
 	MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=1024, arch_height=96),
 	PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),

@@ -1,4 +1,4 @@
-"""BE0001_UNUSED"""
+"""BE0001_SOLO_WIND_CRYSTAL_APPEARS"""
 
 from randomizer.scripts.animation.script_imports import *
 

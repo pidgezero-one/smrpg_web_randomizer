@@ -10,7 +10,7 @@ from ....spells.spells import *
 from ....items.items import *
 from ....enemies.enemies import *
 from ....enemy_attacks.attacks import *
-
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.battle_targets import *
 script = AnimationScriptBlock(expected_size=80, expected_beginning=0x357951, script=[
 	ReturnSubroutine(identifier="command_0x357951"),
 	ResetTargetMappingMemory(identifier="command_0x357952"),
