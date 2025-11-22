@@ -1,13 +1,14 @@
 # R142_LANDS_END_AREA_05_SKY_BRIDGE
+# pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
 from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from . import npcs
-from disassembler_output.variables.room_names import *
-from disassembler_output.variables.overworld_area_names import *
-from disassembler_output.variables.music_names import *
-from disassembler_output.variables.event_script_names import *
-from disassembler_output.variables.action_script_names import *
+from ..variables.room_names import *
+from ..variables.overworld_area_names import *
+from ..variables.music_names import *
+from ..variables.event_script_names import *
+from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -433,6 +434,34 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+        ),
+        RegularNPC( # 19
+            npc=npcs.ITEM_BAG_NPC,
+            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
+            event_script=E0240_FREESTANDING_1_GRANT,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=5,
+            y=80,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=True,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=True,
+            cant_jump_through=True,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=False,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=True,
+            byte7_upper2=3,
         ),
     ]
 )

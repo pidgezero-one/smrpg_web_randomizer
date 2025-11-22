@@ -562,12 +562,13 @@ class RemakePostgame(BooleanFlag):
     """Setting to include "demake" postgame content from the SMRPG remake"""
 
     _id: str = "postgame"
-    _name: str = "Include postgame"
-    _description: str = """If enabled, the postgame refights against Punchinello, Belome, Johnny, Jinx, Bundt, Booster, and Culex from the 2023 Nintendo Switch SMRPG remake will be included, as well as their reward items.
-<br>
-<br>You can access these boss fight locations by visting Star Hill after beating them the first time (so for example, if you beat the final boss of Moleville Mines and then go to Star Hill and talk to the appropriate wish star, you can revisit Moleville Mines to fight a new boss.)
-<br>
-<br>These fights are shuffled into the regular boss pool and their rewards are shuffled into the item pool."""
+    _name: str = "Include remake content"
+    _description: str = """If enabled, some content exclusive to the 2023 Switch remake will be included:
+<ol>
+<li>All seven postgame fights</li>
+<li>All postgame-exclusive items</li>
+<li>Extra prizes in Mushroom Way and Land's End</li>
+</ol>"""
 
 
 class EnabledRegularChecks(CategorizationFlag):

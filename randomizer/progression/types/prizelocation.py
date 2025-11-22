@@ -1,6 +1,9 @@
 from .prize import Prize, StandardPrize, CoinPrize, CoinPrize10, CoinPrize1, EXPStarPrize, SlotsPrize, BossFightPrize, CharacterPrize, StarPiecePrize, ItemPrize, SpellPrize, InfiniteCoinPrize, FPFlowerPrize, ArchipelagoPrize
 from ...data.variables.event_script_names import *
 from randomizer.types.world.flags import ShuffleLocationSelector
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import DisableObjectTriggerInSpecificLevel
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
 
 
 class PrizeLocation:
@@ -10,6 +13,7 @@ class PrizeLocation:
     _can_accept: list[type[Prize]]
     _rooms: list[int]
     _id: ShuffleLocationSelector
+    _remake_only: bool = False
 
     def set_prize(self, prize: Prize):
         self._prize = prize
@@ -27,23 +31,38 @@ class PrizeLocation:
 
 
 class TreasureChestLocation(PrizeLocation):
-    _npc_ids: list[int]
+    _npc_ids: list[AreaObject]
     def can_accept(self, prize: Prize) -> bool:
         return hasattr(prize, 'chest_grant')
+    
+    def grant(self) -> EventScript:
+        itemgrant = [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
+        for npc, room in zip(self._npc_ids, self._rooms):
+            itemgrant.append(DisableObjectTriggerInSpecificLevel(AreaObject(npc+14), room))
+        return EventScript(itemgrant)
 
 
 class StandingLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
         return hasattr(prize, 'standing_grant')
+    def grant(self) -> EventScript:
+        if self.prize.standing_grant is None: return EventScript([])
+        return self.prize.standing_grant
 
 
 class EventLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
         return hasattr(prize, 'npc_grant')
+    def grant(self) -> EventScript:
+        if self.prize.npc_grant is None: return EventScript([])
+        return self.prize.npc_grant
 
 class RiverLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
         return hasattr(prize, 'river_grant')
+    def grant(self) -> EventScript:
+        if self.prize.river_grant is None: return EventScript([])
+        return self.prize.river_grant
 
 
 class BossFightLocation(PrizeLocation):

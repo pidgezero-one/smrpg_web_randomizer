@@ -1,7 +1,8 @@
 from smrpgpatchbuilder.datatypes.levels.classes import NPC, ShadowSize, VramStore
+from ..variables.sprite_names import *
 
 MARIO_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=0,
+    sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -25,7 +26,7 @@ MARIO_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=7,
+    sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -49,7 +50,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 BOWSER_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=13,
+    sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,
@@ -73,7 +74,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=19,
+    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -97,7 +98,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC = NPC(
-    sprite_id=25,
+    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -121,7 +122,7 @@ GENO_WALKING_DOWN_LEFT_NPC = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=7,
+    sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -145,7 +146,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_2 = NPC(
 )
 
 MARIO_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=0,
+    sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=4,
@@ -169,7 +170,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_2 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=7,
+    sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -193,7 +194,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=13,
+    sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,
@@ -217,7 +218,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=19,
+    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -241,7 +242,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_2 = NPC(
 )
 
 FEATHER_NPC = NPC(
-    sprite_id=252,
+    sprite_id=SPR0252_FEATHER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -265,7 +266,7 @@ FEATHER_NPC = NPC(
 )
 
 HAMMER_NPC = NPC(
-    sprite_id=31,
+    sprite_id=SPR0031_HAMMER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=4,
@@ -289,7 +290,7 @@ HAMMER_NPC = NPC(
 )
 
 OLD_CLASSIC_MARIO_NPC = NPC(
-    sprite_id=621,
+    sprite_id=SPR0621_OLD_CLASSIC_MARIO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -313,7 +314,7 @@ OLD_CLASSIC_MARIO_NPC = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_2 = NPC(
-    sprite_id=25,
+    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -337,7 +338,7 @@ GENO_WALKING_DOWN_LEFT_NPC_2 = NPC(
 )
 
 MARIO_S_EXOR_IMPRESSION_NPC = NPC(
-    sprite_id=111,
+    sprite_id=SPR0111_MARIO_S_EXOR_IMPRESSION,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -361,7 +362,7 @@ MARIO_S_EXOR_IMPRESSION_NPC = NPC(
 )
 
 MARIO_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=0,
+    sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=4,
@@ -385,7 +386,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=7,
+    sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -409,7 +410,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=19,
+    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -433,7 +434,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=25,
+    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -457,7 +458,7 @@ GENO_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 FACTORY_CLERK_GREEN_NPC = NPC(
-    sprite_id=142,
+    sprite_id=SPR0142_FACTORY_CLERK_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=4,
@@ -481,7 +482,7 @@ FACTORY_CLERK_GREEN_NPC = NPC(
 )
 
 FAT_YOSHI_BABY_NPC = NPC(
-    sprite_id=122,
+    sprite_id=SPR0122_FAT_YOSHI_BABY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -505,7 +506,7 @@ FAT_YOSHI_BABY_NPC = NPC(
 )
 
 DODO_ND_TIME_NPC = NPC(
-    sprite_id=312,
+    sprite_id=SPR0312_DODO_ND_TIME,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=9,
     obtuse_axis=9,
@@ -529,7 +530,7 @@ DODO_ND_TIME_NPC = NPC(
 )
 
 NIMBUSITE_RED_NPC = NPC(
-    sprite_id=76,
+    sprite_id=SPR0076_NIMBUSITE_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -553,7 +554,7 @@ NIMBUSITE_RED_NPC = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=19,
+    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -577,7 +578,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_4 = NPC(
 )
 
 HINOPIO_NPC = NPC(
-    sprite_id=107,
+    sprite_id=SPR0107_HINOPIO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=10,
     obtuse_axis=8,
@@ -601,7 +602,7 @@ HINOPIO_NPC = NPC(
 )
 
 TEETER_TOTTER_NPC = NPC(
-    sprite_id=101,
+    sprite_id=SPR0101_TEETER_TOTTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=14,
@@ -625,7 +626,7 @@ TEETER_TOTTER_NPC = NPC(
 )
 
 GREEN_YOSHI_WALK_NPC = NPC(
-    sprite_id=51,
+    sprite_id=SPR0051_GREEN_YOSHI_WALK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -649,7 +650,7 @@ GREEN_YOSHI_WALK_NPC = NPC(
 )
 
 J_PUZZLE_BLOCK_NPC = NPC(
-    sprite_id=104,
+    sprite_id=SPR0104_J_PUZZLE_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=3,
@@ -673,7 +674,7 @@ J_PUZZLE_BLOCK_NPC = NPC(
 )
 
 SPARKLES_FROM_STAR_PIECE_NPC = NPC(
-    sprite_id=171,
+    sprite_id=SPR0171_SPARKLES_FROM_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -697,7 +698,7 @@ SPARKLES_FROM_STAR_PIECE_NPC = NPC(
 )
 
 GREEN_YOSHI_NPC = NPC(
-    sprite_id=49,
+    sprite_id=SPR0049_GREEN_YOSHI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -721,7 +722,7 @@ GREEN_YOSHI_NPC = NPC(
 )
 
 CHOMP_NPC = NPC(
-    sprite_id=34,
+    sprite_id=SPR0034_CHOMP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -745,7 +746,7 @@ CHOMP_NPC = NPC(
 )
 
 HAMMER_NPC_2 = NPC(
-    sprite_id=31,
+    sprite_id=SPR0031_HAMMER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -769,7 +770,7 @@ HAMMER_NPC_2 = NPC(
 )
 
 FROGGIE_STICK_NPC = NPC(
-    sprite_id=32,
+    sprite_id=SPR0032_FROGGIE_STICK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -793,7 +794,7 @@ FROGGIE_STICK_NPC = NPC(
 )
 
 FALLING_STEPPING_BRIDGE_BLOCK_NPC = NPC(
-    sprite_id=620,
+    sprite_id=SPR0620_FALLING_STEPPING_BRIDGE_BLOCK,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -817,7 +818,7 @@ FALLING_STEPPING_BRIDGE_BLOCK_NPC = NPC(
 )
 
 TOADSTOOL_S_PARACHUTE_NPC = NPC(
-    sprite_id=97,
+    sprite_id=SPR0097_TOADSTOOL_S_PARACHUTE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=8,
     obtuse_axis=8,
@@ -841,7 +842,7 @@ TOADSTOOL_S_PARACHUTE_NPC = NPC(
 )
 
 MALLOW_DOLL_NPC = NPC(
-    sprite_id=81,
+    sprite_id=SPR0081_MALLOW_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -865,7 +866,7 @@ MALLOW_DOLL_NPC = NPC(
 )
 
 SNIFIT_NPC = NPC(
-    sprite_id=504,
+    sprite_id=SPR0504_SNIFIT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -889,7 +890,7 @@ SNIFIT_NPC = NPC(
 )
 
 MICROBOMB_NPC = NPC(
-    sprite_id=440,
+    sprite_id=SPR0440_MICROBOMB,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -913,7 +914,7 @@ MICROBOMB_NPC = NPC(
 )
 
 SNIFIT_BLACK_BACK_NPC = NPC(
-    sprite_id=619,
+    sprite_id=SPR0619_SNIFIT_BLACK_BACK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -937,7 +938,7 @@ SNIFIT_BLACK_BACK_NPC = NPC(
 )
 
 SEASIDE_TOWN_FAKE_GREEN_NPC = NPC(
-    sprite_id=162,
+    sprite_id=SPR0162_SEASIDE_TOWN_FAKE_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -961,7 +962,7 @@ SEASIDE_TOWN_FAKE_GREEN_NPC = NPC(
 )
 
 SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC = NPC(
-    sprite_id=163,
+    sprite_id=SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -985,7 +986,7 @@ SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC = NPC(
 )
 
 SEASIDE_TOWN_ELDER_YELLOW_GREEN_NPC = NPC(
-    sprite_id=164,
+    sprite_id=SPR0164_SEASIDE_TOWN_ELDER_YELLOW_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1009,7 +1010,7 @@ SEASIDE_TOWN_ELDER_YELLOW_GREEN_NPC = NPC(
 )
 
 CROCO_NPC = NPC(
-    sprite_id=48,
+    sprite_id=SPR0048_CROCO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -1033,7 +1034,7 @@ CROCO_NPC = NPC(
 )
 
 GENO_ARM_SHOT_NPC = NPC(
-    sprite_id=648,
+    sprite_id=SPR0648_GENO_ARM_SHOT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1057,7 +1058,7 @@ GENO_ARM_SHOT_NPC = NPC(
 )
 
 WAR_FAN_NPC = NPC(
-    sprite_id=37,
+    sprite_id=SPR0037_WAR_FAN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -1081,7 +1082,7 @@ WAR_FAN_NPC = NPC(
 )
 
 YELLOW_YOSHI_NPC = NPC(
-    sprite_id=45,
+    sprite_id=SPR0045_YELLOW_YOSHI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1105,7 +1106,7 @@ YELLOW_YOSHI_NPC = NPC(
 )
 
 PINK_YOSHI_NPC = NPC(
-    sprite_id=46,
+    sprite_id=SPR0046_PINK_YOSHI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1129,7 +1130,7 @@ PINK_YOSHI_NPC = NPC(
 )
 
 BOSHI_NPC = NPC(
-    sprite_id=47,
+    sprite_id=SPR0047_BOSHI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1153,7 +1154,7 @@ BOSHI_NPC = NPC(
 )
 
 CROCO_NPC_2 = NPC(
-    sprite_id=48,
+    sprite_id=SPR0048_CROCO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -1177,7 +1178,7 @@ CROCO_NPC_2 = NPC(
 )
 
 CROCO_STILL_NPC = NPC(
-    sprite_id=189,
+    sprite_id=SPR0189_CROCO_STILL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -1201,7 +1202,7 @@ CROCO_STILL_NPC = NPC(
 )
 
 BOOSTER_NPC = NPC(
-    sprite_id=50,
+    sprite_id=SPR0050_BOOSTER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -1225,7 +1226,7 @@ BOOSTER_NPC = NPC(
 )
 
 GREEN_YOSHI_WALK_NPC_2 = NPC(
-    sprite_id=51,
+    sprite_id=SPR0051_GREEN_YOSHI_WALK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1249,7 +1250,7 @@ GREEN_YOSHI_WALK_NPC_2 = NPC(
 )
 
 JONATHAN_JONES_NPC = NPC(
-    sprite_id=55,
+    sprite_id=SPR0055_JONATHAN_JONES,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -1273,7 +1274,7 @@ JONATHAN_JONES_NPC = NPC(
 )
 
 KING_NIMBUS_NPC = NPC(
-    sprite_id=53,
+    sprite_id=SPR0053_KING_NIMBUS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -1297,7 +1298,7 @@ KING_NIMBUS_NPC = NPC(
 )
 
 QUEEN_NIMBUS_NPC = NPC(
-    sprite_id=54,
+    sprite_id=SPR0054_QUEEN_NIMBUS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1321,7 +1322,7 @@ QUEEN_NIMBUS_NPC = NPC(
 )
 
 JONATHAN_JONES_NPC_2 = NPC(
-    sprite_id=55,
+    sprite_id=SPR0055_JONATHAN_JONES,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -1345,7 +1346,7 @@ JONATHAN_JONES_NPC_2 = NPC(
 )
 
 VALENTINA_NPC = NPC(
-    sprite_id=56,
+    sprite_id=SPR0056_VALENTINA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1369,7 +1370,7 @@ VALENTINA_NPC = NPC(
 )
 
 MAGIKOOPA_NPC = NPC(
-    sprite_id=57,
+    sprite_id=SPR0057_MAGIKOOPA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -1393,7 +1394,7 @@ MAGIKOOPA_NPC = NPC(
 )
 
 FROGFUCIUS_NPC = NPC(
-    sprite_id=58,
+    sprite_id=SPR0058_FROGFUCIUS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1417,7 +1418,7 @@ FROGFUCIUS_NPC = NPC(
 )
 
 TADPOLE_NPC = NPC(
-    sprite_id=59,
+    sprite_id=SPR0059_TADPOLE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -1441,7 +1442,7 @@ TADPOLE_NPC = NPC(
 )
 
 MINE_CART_BAD_PALETTE_NPC = NPC(
-    sprite_id=135,
+    sprite_id=SPR0135_MINE_CART_BAD_PALETTE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=8,
     obtuse_axis=9,
@@ -1465,7 +1466,7 @@ MINE_CART_BAD_PALETTE_NPC = NPC(
 )
 
 DYNA_AND_MITE_NPC = NPC(
-    sprite_id=161,
+    sprite_id=SPR0161_DYNA_AND_MITE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -1489,7 +1490,7 @@ DYNA_AND_MITE_NPC = NPC(
 )
 
 TOADOFSKY_NPC = NPC(
-    sprite_id=80,
+    sprite_id=SPR0080_TOADOFSKY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1513,7 +1514,7 @@ TOADOFSKY_NPC = NPC(
 )
 
 VALENTINA_STATUE_NPC = NPC(
-    sprite_id=63,
+    sprite_id=SPR0063_VALENTINA_STATUE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1537,7 +1538,7 @@ VALENTINA_STATUE_NPC = NPC(
 )
 
 TOAD_NPC = NPC(
-    sprite_id=64,
+    sprite_id=SPR0064_TOAD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1561,7 +1562,7 @@ TOAD_NPC = NPC(
 )
 
 WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC = NPC(
-    sprite_id=65,
+    sprite_id=SPR0065_WALLET_GUY_ALSO_CASINO_ASSISTANTS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1585,7 +1586,7 @@ WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC = NPC(
 )
 
 RAINI_NPC = NPC(
-    sprite_id=66,
+    sprite_id=SPR0066_RAINI,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1609,7 +1610,7 @@ RAINI_NPC = NPC(
 )
 
 OLD_MAN_NPC = NPC(
-    sprite_id=67,
+    sprite_id=SPR0067_OLD_MAN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1633,7 +1634,7 @@ OLD_MAN_NPC = NPC(
 )
 
 OLD_WOMAN_NPC = NPC(
-    sprite_id=68,
+    sprite_id=SPR0068_OLD_WOMAN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1657,7 +1658,7 @@ OLD_WOMAN_NPC = NPC(
 )
 
 GREEN_BROWN_TOAD_NPC = NPC(
-    sprite_id=69,
+    sprite_id=SPR0069_GREEN_BROWN_TOAD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1681,7 +1682,7 @@ GREEN_BROWN_TOAD_NPC = NPC(
 )
 
 CHANCELLOR_NPC = NPC(
-    sprite_id=70,
+    sprite_id=SPR0070_CHANCELLOR,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1705,7 +1706,7 @@ CHANCELLOR_NPC = NPC(
 )
 
 PA_MOLE_NPC = NPC(
-    sprite_id=71,
+    sprite_id=SPR0071_PA_MOLE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1729,7 +1730,7 @@ PA_MOLE_NPC = NPC(
 )
 
 MA_MOLE_NPC = NPC(
-    sprite_id=72,
+    sprite_id=SPR0072_MA_MOLE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1753,7 +1754,7 @@ MA_MOLE_NPC = NPC(
 )
 
 GIRL_MOLE_PINK_BOW_NPC = NPC(
-    sprite_id=73,
+    sprite_id=SPR0073_GIRL_MOLE_PINK_BOW,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1777,7 +1778,7 @@ GIRL_MOLE_PINK_BOW_NPC = NPC(
 )
 
 GIRL_MOLE_YELLOW_BOW_NPC = NPC(
-    sprite_id=74,
+    sprite_id=SPR0074_GIRL_MOLE_YELLOW_BOW,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -1801,7 +1802,7 @@ GIRL_MOLE_YELLOW_BOW_NPC = NPC(
 )
 
 NIMBUSITE_BLUE_NPC = NPC(
-    sprite_id=75,
+    sprite_id=SPR0075_NIMBUSITE_BLUE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1825,7 +1826,7 @@ NIMBUSITE_BLUE_NPC = NPC(
 )
 
 NIMBUSITE_RED_NPC_2 = NPC(
-    sprite_id=76,
+    sprite_id=SPR0076_NIMBUSITE_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1849,7 +1850,7 @@ NIMBUSITE_RED_NPC_2 = NPC(
 )
 
 NIMBUSITE_BROWN_GREEN_NPC = NPC(
-    sprite_id=77,
+    sprite_id=SPR0077_NIMBUSITE_BROWN_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1873,7 +1874,7 @@ NIMBUSITE_BROWN_GREEN_NPC = NPC(
 )
 
 NIMBUSITE_YELLOW_GREEN_NPC = NPC(
-    sprite_id=78,
+    sprite_id=SPR0078_NIMBUSITE_YELLOW_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1897,7 +1898,7 @@ NIMBUSITE_YELLOW_GREEN_NPC = NPC(
 )
 
 NIMBUS_GUARD_NPC = NPC(
-    sprite_id=79,
+    sprite_id=SPR0079_NIMBUS_GUARD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -1921,7 +1922,7 @@ NIMBUS_GUARD_NPC = NPC(
 )
 
 SPLASH_WATER_DROPLETS_NPC = NPC(
-    sprite_id=623,
+    sprite_id=SPR0623_SPLASH_WATER_DROPLETS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -1945,7 +1946,7 @@ SPLASH_WATER_DROPLETS_NPC = NPC(
 )
 
 SMALL_SEA_FISH_NPC = NPC(
-    sprite_id=624,
+    sprite_id=SPR0624_SMALL_SEA_FISH,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -1969,7 +1970,7 @@ SMALL_SEA_FISH_NPC = NPC(
 )
 
 RED_STAR_PIECE_NPC = NPC(
-    sprite_id=84,
+    sprite_id=SPR0084_RED_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -1993,7 +1994,7 @@ RED_STAR_PIECE_NPC = NPC(
 )
 
 GOLD_STAR_PIECE_NPC = NPC(
-    sprite_id=85,
+    sprite_id=SPR0085_GOLD_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -2017,7 +2018,7 @@ GOLD_STAR_PIECE_NPC = NPC(
 )
 
 YELLOW_STAR_PIECE_NPC = NPC(
-    sprite_id=88,
+    sprite_id=SPR0088_YELLOW_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -2041,7 +2042,7 @@ YELLOW_STAR_PIECE_NPC = NPC(
 )
 
 GREEN_STAR_PIECE_NPC = NPC(
-    sprite_id=86,
+    sprite_id=SPR0086_GREEN_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -2065,7 +2066,7 @@ GREEN_STAR_PIECE_NPC = NPC(
 )
 
 BLUE_STAR_PIECE_NPC = NPC(
-    sprite_id=82,
+    sprite_id=SPR0082_BLUE_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -2089,7 +2090,7 @@ BLUE_STAR_PIECE_NPC = NPC(
 )
 
 LIGHT_BLUE_STAR_PIECE_NPC = NPC(
-    sprite_id=87,
+    sprite_id=SPR0087_LIGHT_BLUE_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -2113,7 +2114,7 @@ LIGHT_BLUE_STAR_PIECE_NPC = NPC(
 )
 
 PURPLE_STAR_PIECE_NPC = NPC(
-    sprite_id=83,
+    sprite_id=SPR0083_PURPLE_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -2137,7 +2138,7 @@ PURPLE_STAR_PIECE_NPC = NPC(
 )
 
 GENO_DOLL_NPC = NPC(
-    sprite_id=89,
+    sprite_id=SPR0089_GENO_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2161,7 +2162,7 @@ GENO_DOLL_NPC = NPC(
 )
 
 BOWSER_DOLL_NPC = NPC(
-    sprite_id=90,
+    sprite_id=SPR0090_BOWSER_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2185,7 +2186,7 @@ BOWSER_DOLL_NPC = NPC(
 )
 
 MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC = NPC(
-    sprite_id=600,
+    sprite_id=SPR0600_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2209,7 +2210,7 @@ MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC = NPC(
 )
 
 TOADSTOOL_DOLL_NPC = NPC(
-    sprite_id=92,
+    sprite_id=SPR0092_TOADSTOOL_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2233,7 +2234,7 @@ TOADSTOOL_DOLL_NPC = NPC(
 )
 
 YELLOW_STEPPING_BLOCK_NPC = NPC(
-    sprite_id=105,
+    sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=6,
     obtuse_axis=6,
@@ -2257,7 +2258,7 @@ YELLOW_STEPPING_BLOCK_NPC = NPC(
 )
 
 TREASURE_CHEST_NPC = NPC(
-    sprite_id=94,
+    sprite_id=SPR0094_TREASURE_CHEST,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -2281,7 +2282,7 @@ TREASURE_CHEST_NPC = NPC(
 )
 
 EMPTY_TREASURE_CHEST_NPC = NPC(
-    sprite_id=95,
+    sprite_id=SPR0095_EMPTY_TREASURE_CHEST,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -2305,7 +2306,7 @@ EMPTY_TREASURE_CHEST_NPC = NPC(
 )
 
 MARIO_DOLL_SURPRISED_NPC = NPC(
-    sprite_id=96,
+    sprite_id=SPR0096_MARIO_DOLL_SURPRISED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -2329,7 +2330,7 @@ MARIO_DOLL_SURPRISED_NPC = NPC(
 )
 
 MARIO_S_EXOR_IMPRESSION_NPC_2 = NPC(
-    sprite_id=111,
+    sprite_id=SPR0111_MARIO_S_EXOR_IMPRESSION,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=9,
     obtuse_axis=9,
@@ -2353,7 +2354,7 @@ MARIO_S_EXOR_IMPRESSION_NPC_2 = NPC(
 )
 
 ROLLING_BARREL_NPC = NPC(
-    sprite_id=98,
+    sprite_id=SPR0098_ROLLING_BARREL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=6,
     obtuse_axis=6,
@@ -2377,7 +2378,7 @@ ROLLING_BARREL_NPC = NPC(
 )
 
 TRAMPOLINE_WARP_NPC = NPC(
-    sprite_id=99,
+    sprite_id=SPR0099_TRAMPOLINE_WARP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -2401,7 +2402,7 @@ TRAMPOLINE_WARP_NPC = NPC(
 )
 
 TRAMPOLINE_JUMP_NPC = NPC(
-    sprite_id=100,
+    sprite_id=SPR0100_TRAMPOLINE_JUMP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -2425,7 +2426,7 @@ TRAMPOLINE_JUMP_NPC = NPC(
 )
 
 TEETER_TOTTER_NPC_2 = NPC(
-    sprite_id=101,
+    sprite_id=SPR0101_TEETER_TOTTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=14,
     obtuse_axis=5,
@@ -2449,7 +2450,7 @@ TEETER_TOTTER_NPC_2 = NPC(
 )
 
 SAVE_POINT_NPC = NPC(
-    sprite_id=102,
+    sprite_id=SPR0102_SAVE_POINT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -2473,7 +2474,7 @@ SAVE_POINT_NPC = NPC(
 )
 
 CORKPEDITE_NPC = NPC(
-    sprite_id=103,
+    sprite_id=SPR0103_CORKPEDITE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=14,
     obtuse_axis=14,
@@ -2497,7 +2498,7 @@ CORKPEDITE_NPC = NPC(
 )
 
 SPLASH_WATER_GEYSER_NPC = NPC(
-    sprite_id=625,
+    sprite_id=SPR0625_SPLASH_WATER_GEYSER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2521,7 +2522,7 @@ SPLASH_WATER_GEYSER_NPC = NPC(
 )
 
 YELLOW_STEPPING_BLOCK_NPC_2 = NPC(
-    sprite_id=105,
+    sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,
@@ -2545,7 +2546,7 @@ YELLOW_STEPPING_BLOCK_NPC_2 = NPC(
 )
 
 WHIRLPOOL_WATER_NPC = NPC(
-    sprite_id=106,
+    sprite_id=SPR0106_WHIRLPOOL_WATER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -2569,7 +2570,7 @@ WHIRLPOOL_WATER_NPC = NPC(
 )
 
 WHIRLPOOL_WATER_NPC_2 = NPC(
-    sprite_id=106,
+    sprite_id=SPR0106_WHIRLPOOL_WATER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2593,7 +2594,7 @@ WHIRLPOOL_WATER_NPC_2 = NPC(
 )
 
 FACTORY_HEX_NUT_NPC = NPC(
-    sprite_id=108,
+    sprite_id=SPR0108_FACTORY_HEX_NUT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -2617,7 +2618,7 @@ FACTORY_HEX_NUT_NPC = NPC(
 )
 
 GREEN_SWITCH_NPC = NPC(
-    sprite_id=109,
+    sprite_id=SPR0109_GREEN_SWITCH,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -2641,7 +2642,7 @@ GREEN_SWITCH_NPC = NPC(
 )
 
 CROCO_NPC_3 = NPC(
-    sprite_id=48,
+    sprite_id=SPR0048_CROCO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -2665,7 +2666,7 @@ CROCO_NPC_3 = NPC(
 )
 
 FLOWER_NPC = NPC(
-    sprite_id=195,
+    sprite_id=SPR0195_FLOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -2688,8 +2689,32 @@ FLOWER_NPC = NPC(
     byte6_bit2=False,
 )
 
+ITEM_BAG_NPC = NPC(
+    sprite_id=SPR0639_ITEM_BAG_STANDALONE,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=3,
+    obtuse_axis=3,
+    height=3,
+    y_shift=1,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 MUSHROOM_BOY_NPC = NPC(
-    sprite_id=112,
+    sprite_id=SPR0112_MUSHROOM_BOY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -2713,7 +2738,7 @@ MUSHROOM_BOY_NPC = NPC(
 )
 
 MARRYMORE_MAN_GREEN_NPC = NPC(
-    sprite_id=113,
+    sprite_id=SPR0113_MARRYMORE_MAN_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -2737,7 +2762,7 @@ MARRYMORE_MAN_GREEN_NPC = NPC(
 )
 
 MARRYMORE_WOMAN_YELLOW_NPC = NPC(
-    sprite_id=114,
+    sprite_id=SPR0114_MARRYMORE_WOMAN_YELLOW,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -2761,7 +2786,7 @@ MARRYMORE_WOMAN_YELLOW_NPC = NPC(
 )
 
 MARRYMORE_WOMAN_GREEN_NPC = NPC(
-    sprite_id=115,
+    sprite_id=SPR0115_MARRYMORE_WOMAN_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -2785,7 +2810,7 @@ MARRYMORE_WOMAN_GREEN_NPC = NPC(
 )
 
 MARRYMORE_KID_PURPLE_NPC = NPC(
-    sprite_id=116,
+    sprite_id=SPR0116_MARRYMORE_KID_PURPLE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -2809,7 +2834,7 @@ MARRYMORE_KID_PURPLE_NPC = NPC(
 )
 
 MARRYMORE_KID_BLUE_GREEN_NPC = NPC(
-    sprite_id=117,
+    sprite_id=SPR0117_MARRYMORE_KID_BLUE_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -2833,7 +2858,7 @@ MARRYMORE_KID_BLUE_GREEN_NPC = NPC(
 )
 
 MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY_NPC = NPC(
-    sprite_id=118,
+    sprite_id=SPR0118_MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -2857,7 +2882,7 @@ MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY_NPC = NPC(
 )
 
 ROSE_TOWN_GARDENER_GREEN_GREY_NPC = NPC(
-    sprite_id=119,
+    sprite_id=SPR0119_ROSE_TOWN_GARDENER_GREEN_GREY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -2881,7 +2906,7 @@ ROSE_TOWN_GARDENER_GREEN_GREY_NPC = NPC(
 )
 
 OLD_WOMAN_GREEN_GREY_NPC = NPC(
-    sprite_id=120,
+    sprite_id=SPR0120_OLD_WOMAN_GREEN_GREY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -2905,7 +2930,7 @@ OLD_WOMAN_GREEN_GREY_NPC = NPC(
 )
 
 OLD_WOMAN_PURPLE_GREY_NPC = NPC(
-    sprite_id=121,
+    sprite_id=SPR0121_OLD_WOMAN_PURPLE_GREY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -2929,7 +2954,7 @@ OLD_WOMAN_PURPLE_GREY_NPC = NPC(
 )
 
 BEETLE_NPC = NPC(
-    sprite_id=255,
+    sprite_id=SPR0255_BEETLE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -2953,7 +2978,7 @@ BEETLE_NPC = NPC(
 )
 
 YELLOW_STEPPING_BLOCK_NPC_3 = NPC(
-    sprite_id=105,
+    sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=6,
     obtuse_axis=6,
@@ -2977,7 +3002,7 @@ YELLOW_STEPPING_BLOCK_NPC_3 = NPC(
 )
 
 ROLLING_BARREL_NPC_2 = NPC(
-    sprite_id=98,
+    sprite_id=SPR0098_ROLLING_BARREL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -3001,7 +3026,7 @@ ROLLING_BARREL_NPC_2 = NPC(
 )
 
 FROGFUCIUS_STUDENT_NPC = NPC(
-    sprite_id=125,
+    sprite_id=SPR0125_FROGFUCIUS_STUDENT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -3025,7 +3050,7 @@ FROGFUCIUS_STUDENT_NPC = NPC(
 )
 
 CHOMP_BEHIND_NPC = NPC(
-    sprite_id=126,
+    sprite_id=SPR0126_CHOMP_BEHIND,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -3049,7 +3074,7 @@ CHOMP_BEHIND_NPC = NPC(
 )
 
 WIGGLER_HEAD_NPC = NPC(
-    sprite_id=127,
+    sprite_id=SPR0127_WIGGLER_HEAD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -3073,7 +3098,7 @@ WIGGLER_HEAD_NPC = NPC(
 )
 
 BLOCK_SHADOW_NPC = NPC(
-    sprite_id=128,
+    sprite_id=SPR0128_BLOCK_SHADOW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -3097,7 +3122,7 @@ BLOCK_SHADOW_NPC = NPC(
 )
 
 WIGGLER_BODY_SEGMENT_NPC = NPC(
-    sprite_id=130,
+    sprite_id=SPR0130_WIGGLER_BODY_SEGMENT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -3121,7 +3146,7 @@ WIGGLER_BODY_SEGMENT_NPC = NPC(
 )
 
 BLOCK_SHADOW_NPC_2 = NPC(
-    sprite_id=128,
+    sprite_id=SPR0128_BLOCK_SHADOW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -3145,7 +3170,7 @@ BLOCK_SHADOW_NPC_2 = NPC(
 )
 
 DODO_AS_PARSON_NPC = NPC(
-    sprite_id=131,
+    sprite_id=SPR0131_DODO_AS_PARSON,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -3169,7 +3194,7 @@ DODO_AS_PARSON_NPC = NPC(
 )
 
 MINE_CART_BAD_PALETTE_NPC_2 = NPC(
-    sprite_id=135,
+    sprite_id=SPR0135_MINE_CART_BAD_PALETTE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=6,
     obtuse_axis=7,
@@ -3193,7 +3218,7 @@ MINE_CART_BAD_PALETTE_NPC_2 = NPC(
 )
 
 KNIFE_GUY_JUGGLER_STILL_RED_BALLS_NPC = NPC(
-    sprite_id=133,
+    sprite_id=SPR0133_KNIFE_GUY_JUGGLER_STILL_RED_BALLS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -3217,7 +3242,7 @@ KNIFE_GUY_JUGGLER_STILL_RED_BALLS_NPC = NPC(
 )
 
 KNIFE_GUY_JUGGLER_NPC = NPC(
-    sprite_id=134,
+    sprite_id=SPR0134_KNIFE_GUY_JUGGLER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -3241,7 +3266,7 @@ KNIFE_GUY_JUGGLER_NPC = NPC(
 )
 
 LAKITU_NPC = NPC(
-    sprite_id=268,
+    sprite_id=SPR0268_LAKITU,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3265,7 +3290,7 @@ LAKITU_NPC = NPC(
 )
 
 LAKITU_NPC_2 = NPC(
-    sprite_id=268,
+    sprite_id=SPR0268_LAKITU,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3289,7 +3314,7 @@ LAKITU_NPC_2 = NPC(
 )
 
 FIREBALL_SURFACE_FROM_LAVA_NPC = NPC(
-    sprite_id=137,
+    sprite_id=SPR0137_FIREBALL_SURFACE_FROM_LAVA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -3313,7 +3338,7 @@ FIREBALL_SURFACE_FROM_LAVA_NPC = NPC(
 )
 
 PIRANHA_PLANT_NPC = NPC(
-    sprite_id=138,
+    sprite_id=SPR0138_PIRANHA_PLANT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -3337,7 +3362,7 @@ PIRANHA_PLANT_NPC = NPC(
 )
 
 GOOMBA_NPC = NPC(
-    sprite_id=139,
+    sprite_id=SPR0139_GOOMBA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -3361,7 +3386,7 @@ GOOMBA_NPC = NPC(
 )
 
 BULLET_BILL_NPC = NPC(
-    sprite_id=140,
+    sprite_id=SPR0140_BULLET_BILL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=7,
@@ -3385,7 +3410,7 @@ BULLET_BILL_NPC = NPC(
 )
 
 BULLET_BILL_NPC_2 = NPC(
-    sprite_id=140,
+    sprite_id=SPR0140_BULLET_BILL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=3,
@@ -3409,7 +3434,7 @@ BULLET_BILL_NPC_2 = NPC(
 )
 
 SAVE_POINT_NPC_2 = NPC(
-    sprite_id=102,
+    sprite_id=SPR0102_SAVE_POINT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -3433,7 +3458,7 @@ SAVE_POINT_NPC_2 = NPC(
 )
 
 LAND_S_END_CANNON_NPC = NPC(
-    sprite_id=143,
+    sprite_id=SPR0143_LAND_S_END_CANNON,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -3457,7 +3482,7 @@ LAND_S_END_CANNON_NPC = NPC(
 )
 
 RED_DOT_NPC = NPC(
-    sprite_id=144,
+    sprite_id=SPR0144_RED_DOT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -3481,7 +3506,7 @@ RED_DOT_NPC = NPC(
 )
 
 BOB_OMB_NPC = NPC(
-    sprite_id=281,
+    sprite_id=SPR0281_BOB_OMB,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3505,7 +3530,7 @@ BOB_OMB_NPC = NPC(
 )
 
 CHOMP_PACKET_NPC = NPC(
-    sprite_id=210,
+    sprite_id=SPR0210_CHOMP_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -3529,7 +3554,7 @@ CHOMP_PACKET_NPC = NPC(
 )
 
 CROCO_OVERWORLD_NPC = NPC(
-    sprite_id=190,
+    sprite_id=SPR0190_CROCO_OVERWORLD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -3553,7 +3578,7 @@ CROCO_OVERWORLD_NPC = NPC(
 )
 
 LAZY_SHELL_HEAVY_TROOPA_NOK_NOK_SHELL_NPC = NPC(
-    sprite_id=538,
+    sprite_id=SPR0538_LAZY_SHELL_HEAVY_TROOPA_NOK_NOK_SHELL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -3577,7 +3602,7 @@ LAZY_SHELL_HEAVY_TROOPA_NOK_NOK_SHELL_NPC = NPC(
 )
 
 BERRY_NPC = NPC(
-    sprite_id=253,
+    sprite_id=SPR0253_BERRY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -3601,7 +3626,7 @@ BERRY_NPC = NPC(
 )
 
 ROYAL_FLUSH_CARD_NPC = NPC(
-    sprite_id=806,
+    sprite_id=SPR0806_ROYAL_FLUSH_CARD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -3625,7 +3650,7 @@ ROYAL_FLUSH_CARD_NPC = NPC(
 )
 
 CULEX_SMALL_NPC = NPC(
-    sprite_id=633,
+    sprite_id=SPR0633_CULEX_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -3649,7 +3674,7 @@ CULEX_SMALL_NPC = NPC(
 )
 
 MARIO_DOLL_SURPRISED_NPC_2 = NPC(
-    sprite_id=96,
+    sprite_id=SPR0096_MARIO_DOLL_SURPRISED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -3673,7 +3698,7 @@ MARIO_DOLL_SURPRISED_NPC_2 = NPC(
 )
 
 HAMMER_PACKET_NPC = NPC(
-    sprite_id=208,
+    sprite_id=SPR0208_HAMMER_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -3697,7 +3722,7 @@ HAMMER_PACKET_NPC = NPC(
 )
 
 THRAX_NPC = NPC(
-    sprite_id=459,
+    sprite_id=SPR0459_THRAX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -3721,7 +3746,7 @@ THRAX_NPC = NPC(
 )
 
 SPARKY_NPC = NPC(
-    sprite_id=277,
+    sprite_id=SPR0277_SPARKY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -3745,7 +3770,7 @@ SPARKY_NPC = NPC(
 )
 
 TERRAPIN_NPC = NPC(
-    sprite_id=256,
+    sprite_id=SPR0256_TERRAPIN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3769,7 +3794,7 @@ TERRAPIN_NPC = NPC(
 )
 
 SPIKEY_NPC = NPC(
-    sprite_id=257,
+    sprite_id=SPR0257_SPIKEY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -3793,7 +3818,7 @@ SPIKEY_NPC = NPC(
 )
 
 GOOMBA_NPC = NPC(
-    sprite_id=262,
+    sprite_id=SPR0262_GOOMBA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3817,7 +3842,7 @@ GOOMBA_NPC = NPC(
 )
 
 SHY_GUY_NPC = NPC(
-    sprite_id=346,
+    sprite_id=SPR0346_SHY_GUY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -3841,7 +3866,7 @@ SHY_GUY_NPC = NPC(
 )
 
 MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT_NPC = NPC(
-    sprite_id=178,
+    sprite_id=SPR0178_MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3865,7 +3890,7 @@ MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT_NPC = NPC(
 )
 
 ROSE_TOWN_TREASURE_HOLDER_NPC = NPC(
-    sprite_id=179,
+    sprite_id=SPR0179_ROSE_TOWN_TREASURE_HOLDER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3889,7 +3914,7 @@ ROSE_TOWN_TREASURE_HOLDER_NPC = NPC(
 )
 
 ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS_NPC = NPC(
-    sprite_id=180,
+    sprite_id=SPR0180_ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3913,7 +3938,7 @@ ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS_NPC = NPC(
 )
 
 MARRYMORE_WOMAN_YELLOW_NPC = NPC(
-    sprite_id=181,
+    sprite_id=SPR0181_MARRYMORE_WOMAN_YELLOW,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3937,7 +3962,7 @@ MARRYMORE_WOMAN_YELLOW_NPC = NPC(
 )
 
 ROSE_TOWN_OLD_MAN_BLUE_GREY_NPC = NPC(
-    sprite_id=182,
+    sprite_id=SPR0182_ROSE_TOWN_OLD_MAN_BLUE_GREY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3961,7 +3986,7 @@ ROSE_TOWN_OLD_MAN_BLUE_GREY_NPC = NPC(
 )
 
 OLD_WOMAN_GREY_RED_NPC = NPC(
-    sprite_id=183,
+    sprite_id=SPR0183_OLD_WOMAN_GREY_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -3985,7 +4010,7 @@ OLD_WOMAN_GREY_RED_NPC = NPC(
 )
 
 KID_RED_STRIPED_HAT_NPC = NPC(
-    sprite_id=184,
+    sprite_id=SPR0184_KID_RED_STRIPED_HAT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -4009,7 +4034,7 @@ KID_RED_STRIPED_HAT_NPC = NPC(
 )
 
 GAZ_PURPLE_NPC = NPC(
-    sprite_id=185,
+    sprite_id=SPR0185_GAZ_PURPLE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -4033,7 +4058,7 @@ GAZ_PURPLE_NPC = NPC(
 )
 
 TENTACLE_EXTENDING_NPC = NPC(
-    sprite_id=618,
+    sprite_id=SPR0618_TENTACLE_EXTENDING,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=9,
@@ -4057,7 +4082,7 @@ TENTACLE_EXTENDING_NPC = NPC(
 )
 
 J_PUZZLE_BLOCK_NPC_2 = NPC(
-    sprite_id=104,
+    sprite_id=SPR0104_J_PUZZLE_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -4081,7 +4106,7 @@ J_PUZZLE_BLOCK_NPC_2 = NPC(
 )
 
 J_PUZZLE_BLOCK_NPC_3 = NPC(
-    sprite_id=104,
+    sprite_id=SPR0104_J_PUZZLE_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=3,
@@ -4105,7 +4130,7 @@ J_PUZZLE_BLOCK_NPC_3 = NPC(
 )
 
 J_PUZZLE_BLOCK_NPC_4 = NPC(
-    sprite_id=104,
+    sprite_id=SPR0104_J_PUZZLE_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -4129,7 +4154,7 @@ J_PUZZLE_BLOCK_NPC_4 = NPC(
 )
 
 BLOOBER_NPC = NPC(
-    sprite_id=266,
+    sprite_id=SPR0266_BLOOBER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -4153,7 +4178,7 @@ BLOOBER_NPC = NPC(
 )
 
 BLOOBER_NPC_2 = NPC(
-    sprite_id=266,
+    sprite_id=SPR0266_BLOOBER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -4177,7 +4202,7 @@ BLOOBER_NPC_2 = NPC(
 )
 
 DRY_BONES_NPC = NPC(
-    sprite_id=275,
+    sprite_id=SPR0275_DRY_BONES,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -4201,7 +4226,7 @@ DRY_BONES_NPC = NPC(
 )
 
 BLOCK_SHADOW_NPC_3 = NPC(
-    sprite_id=128,
+    sprite_id=SPR0128_BLOCK_SHADOW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4225,7 +4250,7 @@ BLOCK_SHADOW_NPC_3 = NPC(
 )
 
 HINOPIO_NPC_2 = NPC(
-    sprite_id=107,
+    sprite_id=SPR0107_HINOPIO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -4249,7 +4274,7 @@ HINOPIO_NPC_2 = NPC(
 )
 
 GOLDEN_BULLET_BILL_NPC = NPC(
-    sprite_id=141,
+    sprite_id=SPR0141_GOLDEN_BULLET_BILL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=7,
@@ -4273,7 +4298,7 @@ GOLDEN_BULLET_BILL_NPC = NPC(
 )
 
 GOLDEN_BULLET_BILL_NPC_2 = NPC(
-    sprite_id=141,
+    sprite_id=SPR0141_GOLDEN_BULLET_BILL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=3,
@@ -4297,7 +4322,7 @@ GOLDEN_BULLET_BILL_NPC_2 = NPC(
 )
 
 FROGFUCIUS_STUDENT_NPC_2 = NPC(
-    sprite_id=125,
+    sprite_id=SPR0125_FROGFUCIUS_STUDENT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=4,
@@ -4321,7 +4346,7 @@ FROGFUCIUS_STUDENT_NPC_2 = NPC(
 )
 
 COMMANDER_TROOPA_NPC = NPC(
-    sprite_id=146,
+    sprite_id=SPR0146_COMMANDER_TROOPA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -4345,7 +4370,7 @@ COMMANDER_TROOPA_NPC = NPC(
 )
 
 MONSTERMAMA_GOLDEN_BROWN_RED_NPC = NPC(
-    sprite_id=165,
+    sprite_id=SPR0165_MONSTERMAMA_GOLDEN_BROWN_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -4369,7 +4394,7 @@ MONSTERMAMA_GOLDEN_BROWN_RED_NPC = NPC(
 )
 
 NIMBUS_GUARD_NPC = NPC(
-    sprite_id=166,
+    sprite_id=SPR0166_NIMBUS_GUARD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -4393,7 +4418,7 @@ NIMBUS_GUARD_NPC = NPC(
 )
 
 BIRDY_NPC = NPC(
-    sprite_id=269,
+    sprite_id=SPR0269_BIRDY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -4417,7 +4442,7 @@ BIRDY_NPC = NPC(
 )
 
 SHYGUY_IN_BOWSER_S_HELICOPTER_NPC = NPC(
-    sprite_id=149,
+    sprite_id=SPR0149_SHYGUY_IN_BOWSER_S_HELICOPTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4441,7 +4466,7 @@ SHYGUY_IN_BOWSER_S_HELICOPTER_NPC = NPC(
 )
 
 MACHINE_MADE_AXEM_RED_NPC = NPC(
-    sprite_id=424,
+    sprite_id=SPR0424_MACHINE_MADE_AXEM_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -4465,7 +4490,7 @@ MACHINE_MADE_AXEM_RED_NPC = NPC(
 )
 
 MACHINE_MADE_BOWYER_NPC = NPC(
-    sprite_id=150,
+    sprite_id=SPR0150_MACHINE_MADE_BOWYER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=14,
     obtuse_axis=9,
@@ -4489,7 +4514,7 @@ MACHINE_MADE_BOWYER_NPC = NPC(
 )
 
 MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
-    sprite_id=151,
+    sprite_id=SPR0151_MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -4513,7 +4538,7 @@ MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
 )
 
 PINWHEEL_NPC = NPC(
-    sprite_id=270,
+    sprite_id=SPR0270_PINWHEEL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -4537,7 +4562,7 @@ PINWHEEL_NPC = NPC(
 )
 
 PINWHEEL_NPC_2 = NPC(
-    sprite_id=270,
+    sprite_id=SPR0270_PINWHEEL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -4561,7 +4586,7 @@ PINWHEEL_NPC_2 = NPC(
 )
 
 RED_MAGIKOOPA_NPC = NPC(
-    sprite_id=129,
+    sprite_id=SPR0129_RED_MAGIKOOPA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -4585,7 +4610,7 @@ RED_MAGIKOOPA_NPC = NPC(
 )
 
 SPARKLE_DOWNWARDS_NPC = NPC(
-    sprite_id=198,
+    sprite_id=SPR0198_SPARKLE_DOWNWARDS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4609,7 +4634,7 @@ SPARKLE_DOWNWARDS_NPC = NPC(
 )
 
 COIN_NPC = NPC(
-    sprite_id=192,
+    sprite_id=SPR0192_COIN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -4633,7 +4658,7 @@ COIN_NPC = NPC(
 )
 
 SPARKLE_CIRCULAR_WINDING_NPC = NPC(
-    sprite_id=635,
+    sprite_id=SPR0635_SPARKLE_CIRCULAR_WINDING,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4657,7 +4682,7 @@ SPARKLE_CIRCULAR_WINDING_NPC = NPC(
 )
 
 SMALL_COIN_NPC = NPC(
-    sprite_id=193,
+    sprite_id=SPR0193_SMALL_COIN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4681,7 +4706,7 @@ SMALL_COIN_NPC = NPC(
 )
 
 FROG_COIN_NPC = NPC(
-    sprite_id=194,
+    sprite_id=SPR0194_FROG_COIN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -4705,7 +4730,7 @@ FROG_COIN_NPC = NPC(
 )
 
 BIG_FLOWER_NPC = NPC(
-    sprite_id=605,
+    sprite_id=SPR0605_BIG_FLOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -4729,7 +4754,7 @@ BIG_FLOWER_NPC = NPC(
 )
 
 SPARKLE_SIDEWAYS_NPC = NPC(
-    sprite_id=197,
+    sprite_id=SPR0197_SPARKLE_SIDEWAYS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4753,7 +4778,7 @@ SPARKLE_SIDEWAYS_NPC = NPC(
 )
 
 RING_NPC = NPC(
-    sprite_id=196,
+    sprite_id=SPR0196_RING,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=6,
     obtuse_axis=6,
@@ -4777,7 +4802,7 @@ RING_NPC = NPC(
 )
 
 FLOWER_NPC_2 = NPC(
-    sprite_id=195,
+    sprite_id=SPR0195_FLOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4801,7 +4826,7 @@ FLOWER_NPC_2 = NPC(
 )
 
 EXPLOSION_NPC = NPC(
-    sprite_id=200,
+    sprite_id=SPR0200_EXPLOSION,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4825,7 +4850,7 @@ EXPLOSION_NPC = NPC(
 )
 
 MOKURA_S_CLOUD_BLUE_NPC = NPC(
-    sprite_id=201,
+    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -4849,7 +4874,7 @@ MOKURA_S_CLOUD_BLUE_NPC = NPC(
 )
 
 SMALL_FROG_COIN_NPC = NPC(
-    sprite_id=606,
+    sprite_id=SPR0606_SMALL_FROG_COIN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -4873,7 +4898,7 @@ SMALL_FROG_COIN_NPC = NPC(
 )
 
 LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR_NPC = NPC(
-    sprite_id=203,
+    sprite_id=SPR0203_LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -4897,7 +4922,7 @@ LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR_NPC = NPC(
 )
 
 GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS_NPC = NPC(
-    sprite_id=204,
+    sprite_id=SPR0204_GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -4921,7 +4946,7 @@ GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS_NPC = NPC(
 )
 
 PARASOL_NPC = NPC(
-    sprite_id=36,
+    sprite_id=SPR0036_PARASOL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -4945,7 +4970,7 @@ PARASOL_NPC = NPC(
 )
 
 TERRAPIN_ENDING_CREDITS_NPC = NPC(
-    sprite_id=609,
+    sprite_id=SPR0609_TERRAPIN_ENDING_CREDITS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -4969,7 +4994,7 @@ TERRAPIN_ENDING_CREDITS_NPC = NPC(
 )
 
 JINX_OVERWORLD_NPC = NPC(
-    sprite_id=607,
+    sprite_id=SPR0607_JINX_OVERWORLD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -4993,7 +5018,7 @@ JINX_OVERWORLD_NPC = NPC(
 )
 
 AXEM_RED_NPC = NPC(
-    sprite_id=466,
+    sprite_id=SPR0466_AXEM_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -5017,7 +5042,7 @@ AXEM_RED_NPC = NPC(
 )
 
 AXEM_BLACK_NPC = NPC(
-    sprite_id=485,
+    sprite_id=SPR0485_AXEM_BLACK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -5041,7 +5066,7 @@ AXEM_BLACK_NPC = NPC(
 )
 
 AXEM_PINK_NPC = NPC(
-    sprite_id=484,
+    sprite_id=SPR0484_AXEM_PINK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -5065,7 +5090,7 @@ AXEM_PINK_NPC = NPC(
 )
 
 AXEM_YELLOW_NPC = NPC(
-    sprite_id=463,
+    sprite_id=SPR0463_AXEM_YELLOW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -5089,7 +5114,7 @@ AXEM_YELLOW_NPC = NPC(
 )
 
 AXEM_GREEN_NPC = NPC(
-    sprite_id=467,
+    sprite_id=SPR0467_AXEM_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -5113,7 +5138,7 @@ AXEM_GREEN_NPC = NPC(
 )
 
 AXEM_RED_TELEPORT_NPC = NPC(
-    sprite_id=213,
+    sprite_id=SPR0213_AXEM_RED_TELEPORT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -5137,7 +5162,7 @@ AXEM_RED_TELEPORT_NPC = NPC(
 )
 
 STUMPET_HEAD_NPC = NPC(
-    sprite_id=610,
+    sprite_id=SPR0610_STUMPET_HEAD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,
@@ -5161,7 +5186,7 @@ STUMPET_HEAD_NPC = NPC(
 )
 
 STUMPET_ROOTS_RIGHT_NPC = NPC(
-    sprite_id=611,
+    sprite_id=SPR0611_STUMPET_ROOTS_RIGHT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -5185,7 +5210,7 @@ STUMPET_ROOTS_RIGHT_NPC = NPC(
 )
 
 CZAR_DRAGON_BODY_NPC = NPC(
-    sprite_id=612,
+    sprite_id=SPR0612_CZAR_DRAGON_BODY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -5209,7 +5234,7 @@ CZAR_DRAGON_BODY_NPC = NPC(
 )
 
 GROWING_VINE_BEANSTALK_NPC = NPC(
-    sprite_id=613,
+    sprite_id=SPR0613_GROWING_VINE_BEANSTALK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -5233,7 +5258,7 @@ GROWING_VINE_BEANSTALK_NPC = NPC(
 )
 
 BRICK_BEANSTALK_BLOCK_NPC = NPC(
-    sprite_id=614,
+    sprite_id=SPR0614_BRICK_BEANSTALK_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -5257,7 +5282,7 @@ BRICK_BEANSTALK_BLOCK_NPC = NPC(
 )
 
 WHIRLPOOL_DESERT_NPC = NPC(
-    sprite_id=615,
+    sprite_id=SPR0615_WHIRLPOOL_DESERT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=9,
     obtuse_axis=9,
@@ -5281,7 +5306,7 @@ WHIRLPOOL_DESERT_NPC = NPC(
 )
 
 YELLOW_LETTER_NPC = NPC(
-    sprite_id=616,
+    sprite_id=SPR0616_YELLOW_LETTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -5305,7 +5330,7 @@ YELLOW_LETTER_NPC = NPC(
 )
 
 YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
-    sprite_id=617,
+    sprite_id=SPR0617_YARIDOVICH_OUT_OF_BATTLE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=11,
     obtuse_axis=11,
@@ -5329,7 +5354,7 @@ YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
 )
 
 BANANA_PEEL_NPC = NPC(
-    sprite_id=222,
+    sprite_id=SPR0222_BANANA_PEEL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -5353,7 +5378,7 @@ BANANA_PEEL_NPC = NPC(
 )
 
 J_PUZZLE_BLOCK_NPC_5 = NPC(
-    sprite_id=104,
+    sprite_id=SPR0104_J_PUZZLE_BLOCK,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=7,
     obtuse_axis=7,
@@ -5377,7 +5402,7 @@ J_PUZZLE_BLOCK_NPC_5 = NPC(
 )
 
 SNIFIT_BLACK_BACK_NPC_2 = NPC(
-    sprite_id=619,
+    sprite_id=SPR0619_SNIFIT_BLACK_BACK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5401,7 +5426,7 @@ SNIFIT_BLACK_BACK_NPC_2 = NPC(
 )
 
 LEVEL_UP_BONUS_SELECTION_BOX_NPC = NPC(
-    sprite_id=225,
+    sprite_id=SPR0225_LEVEL_UP_BONUS_SELECTION_BOX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5425,7 +5450,7 @@ LEVEL_UP_BONUS_SELECTION_BOX_NPC = NPC(
 )
 
 TINY_STAR_NPC = NPC(
-    sprite_id=226,
+    sprite_id=SPR0226_TINY_STAR,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -5449,7 +5474,7 @@ TINY_STAR_NPC = NPC(
 )
 
 LIGHT_GREEN_PIPE_TOP_EDGE_NPC = NPC(
-    sprite_id=227,
+    sprite_id=SPR0227_LIGHT_GREEN_PIPE_TOP_EDGE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5473,7 +5498,7 @@ LIGHT_GREEN_PIPE_TOP_EDGE_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_TEXT_NPC = NPC(
-    sprite_id=228,
+    sprite_id=SPR0228_LEVEL_UP_BONUS_TEXT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5497,7 +5522,7 @@ LEVEL_UP_BONUS_TEXT_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_FLOWER_NPC = NPC(
-    sprite_id=229,
+    sprite_id=SPR0229_LEVEL_UP_BONUS_FLOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5521,7 +5546,7 @@ LEVEL_UP_BONUS_FLOWER_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_POW_POWER_NPC = NPC(
-    sprite_id=230,
+    sprite_id=SPR0230_LEVEL_UP_BONUS_POW_POWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5545,7 +5570,7 @@ LEVEL_UP_BONUS_POW_POWER_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_STAR_MAGIC_NPC = NPC(
-    sprite_id=231,
+    sprite_id=SPR0231_LEVEL_UP_BONUS_STAR_MAGIC,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5569,7 +5594,7 @@ LEVEL_UP_BONUS_STAR_MAGIC_NPC = NPC(
 )
 
 LEVEL_UP_BONUS_HP_NPC = NPC(
-    sprite_id=232,
+    sprite_id=SPR0232_LEVEL_UP_BONUS_HP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5593,7 +5618,7 @@ LEVEL_UP_BONUS_HP_NPC = NPC(
 )
 
 FALLING_STEPPING_BRIDGE_BLOCK_NPC_2 = NPC(
-    sprite_id=620,
+    sprite_id=SPR0620_FALLING_STEPPING_BRIDGE_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5617,7 +5642,7 @@ FALLING_STEPPING_BRIDGE_BLOCK_NPC_2 = NPC(
 )
 
 AERO_NPC = NPC(
-    sprite_id=487,
+    sprite_id=SPR0487_AERO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -5641,7 +5666,7 @@ AERO_NPC = NPC(
 )
 
 FRYING_PAN_NPC = NPC(
-    sprite_id=35,
+    sprite_id=SPR0035_FRYING_PAN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -5665,7 +5690,7 @@ FRYING_PAN_NPC = NPC(
 )
 
 MAGIKOOPA_NPC_2 = NPC(
-    sprite_id=57,
+    sprite_id=SPR0057_MAGIKOOPA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5689,7 +5714,7 @@ MAGIKOOPA_NPC_2 = NPC(
 )
 
 TERRAPIN_NPC_2 = NPC(
-    sprite_id=256,
+    sprite_id=SPR0256_TERRAPIN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5713,7 +5738,7 @@ TERRAPIN_NPC_2 = NPC(
 )
 
 SPLASH_WATER_DROPLETS_NPC_2 = NPC(
-    sprite_id=623,
+    sprite_id=SPR0623_SPLASH_WATER_DROPLETS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5737,7 +5762,7 @@ SPLASH_WATER_DROPLETS_NPC_2 = NPC(
 )
 
 SMALL_SEA_FISH_NPC_2 = NPC(
-    sprite_id=624,
+    sprite_id=SPR0624_SMALL_SEA_FISH,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5761,7 +5786,7 @@ SMALL_SEA_FISH_NPC_2 = NPC(
 )
 
 SPLASH_WATER_GEYSER_NPC_2 = NPC(
-    sprite_id=625,
+    sprite_id=SPR0625_SPLASH_WATER_GEYSER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5785,7 +5810,7 @@ SPLASH_WATER_GEYSER_NPC_2 = NPC(
 )
 
 BOWYER_NPC = NPC(
-    sprite_id=626,
+    sprite_id=SPR0626_BOWYER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=14,
     obtuse_axis=9,
@@ -5809,7 +5834,7 @@ BOWYER_NPC = NPC(
 )
 
 WHITE_GAS_CLOUD_NPC = NPC(
-    sprite_id=242,
+    sprite_id=SPR0242_WHITE_GAS_CLOUD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5833,7 +5858,7 @@ WHITE_GAS_CLOUD_NPC = NPC(
 )
 
 MACHINE_MADE_DRILL_BIT_NPC = NPC(
-    sprite_id=243,
+    sprite_id=SPR0243_MACHINE_MADE_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5857,7 +5882,7 @@ MACHINE_MADE_DRILL_BIT_NPC = NPC(
 )
 
 MUSHROOM_HOUSE_DECOR_MAILBOX_NPC = NPC(
-    sprite_id=627,
+    sprite_id=SPR0627_MUSHROOM_HOUSE_DECOR_MAILBOX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5881,7 +5906,7 @@ MUSHROOM_HOUSE_DECOR_MAILBOX_NPC = NPC(
 )
 
 LINK_SLEEPING_IN_ROSE_TOWN_INN_NPC = NPC(
-    sprite_id=628,
+    sprite_id=SPR0628_LINK_SLEEPING_IN_ROSE_TOWN_INN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5905,7 +5930,7 @@ LINK_SLEEPING_IN_ROSE_TOWN_INN_NPC = NPC(
 )
 
 SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM_NPC = NPC(
-    sprite_id=629,
+    sprite_id=SPR0629_SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5929,7 +5954,7 @@ SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM_NPC = NPC(
 )
 
 GREY_STEPPING_STONE_NPC = NPC(
-    sprite_id=630,
+    sprite_id=SPR0630_GREY_STEPPING_STONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5953,7 +5978,7 @@ GREY_STEPPING_STONE_NPC = NPC(
 )
 
 HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC = NPC(
-    sprite_id=631,
+    sprite_id=SPR0631_HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -5977,7 +6002,7 @@ HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC = NPC(
 )
 
 GREY_STONE_BLOCK_NPC = NPC(
-    sprite_id=632,
+    sprite_id=SPR0632_GREY_STONE_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -6001,7 +6026,7 @@ GREY_STONE_BLOCK_NPC = NPC(
 )
 
 STICK_PACKET_NPC = NPC(
-    sprite_id=209,
+    sprite_id=SPR0209_STICK_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -6025,7 +6050,7 @@ STICK_PACKET_NPC = NPC(
 )
 
 PARASOL_PACKET_NPC = NPC(
-    sprite_id=251,
+    sprite_id=SPR0251_PARASOL_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -6049,7 +6074,7 @@ PARASOL_PACKET_NPC = NPC(
 )
 
 FEATHER_NPC_2 = NPC(
-    sprite_id=252,
+    sprite_id=SPR0252_FEATHER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=0,
     obtuse_axis=0,
@@ -6073,7 +6098,7 @@ FEATHER_NPC_2 = NPC(
 )
 
 EMPTY_NPC = NPC(
-    sprite_id=1023,
+    sprite_id=SPR1023_EMPTY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -6097,7 +6122,7 @@ EMPTY_NPC = NPC(
 )
 
 EMPTY_NPC_2 = NPC(
-    sprite_id=1023,
+    sprite_id=SPR1023_EMPTY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=8,
     obtuse_axis=8,
@@ -6121,7 +6146,7 @@ EMPTY_NPC_2 = NPC(
 )
 
 EMPTY_NPC_3 = NPC(
-    sprite_id=1023,
+    sprite_id=SPR1023_EMPTY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -6145,7 +6170,7 @@ EMPTY_NPC_3 = NPC(
 )
 
 TERRAPIN_NPC_3 = NPC(
-    sprite_id=256,
+    sprite_id=SPR0256_TERRAPIN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6169,7 +6194,7 @@ TERRAPIN_NPC_3 = NPC(
 )
 
 SPIKEY_NPC_2 = NPC(
-    sprite_id=257,
+    sprite_id=SPR0257_SPIKEY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6193,7 +6218,7 @@ SPIKEY_NPC_2 = NPC(
 )
 
 SKY_TROOPA_NPC = NPC(
-    sprite_id=258,
+    sprite_id=SPR0258_SKY_TROOPA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -6217,7 +6242,7 @@ SKY_TROOPA_NPC = NPC(
 )
 
 MAD_MALLET_NPC = NPC(
-    sprite_id=259,
+    sprite_id=SPR0259_MAD_MALLET,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6241,7 +6266,7 @@ MAD_MALLET_NPC = NPC(
 )
 
 SHAMAN_NPC = NPC(
-    sprite_id=260,
+    sprite_id=SPR0260_SHAMAN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6265,7 +6290,7 @@ SHAMAN_NPC = NPC(
 )
 
 CROOK_NPC = NPC(
-    sprite_id=261,
+    sprite_id=SPR0261_CROOK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -6289,7 +6314,7 @@ CROOK_NPC = NPC(
 )
 
 GOOMBA_NPC_2 = NPC(
-    sprite_id=262,
+    sprite_id=SPR0262_GOOMBA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6313,7 +6338,7 @@ GOOMBA_NPC_2 = NPC(
 )
 
 PIRANHA_PLANT_NPC = NPC(
-    sprite_id=263,
+    sprite_id=SPR0263_PIRANHA_PLANT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6337,7 +6362,7 @@ PIRANHA_PLANT_NPC = NPC(
 )
 
 AMANITA_NPC = NPC(
-    sprite_id=264,
+    sprite_id=SPR0264_AMANITA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6361,7 +6386,7 @@ AMANITA_NPC = NPC(
 )
 
 GOBY_NPC = NPC(
-    sprite_id=265,
+    sprite_id=SPR0265_GOBY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -6385,7 +6410,7 @@ GOBY_NPC = NPC(
 )
 
 BLOOBER_NPC_3 = NPC(
-    sprite_id=266,
+    sprite_id=SPR0266_BLOOBER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6409,7 +6434,7 @@ BLOOBER_NPC_3 = NPC(
 )
 
 BANDANA_RED_NPC = NPC(
-    sprite_id=267,
+    sprite_id=SPR0267_BANDANA_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6433,7 +6458,7 @@ BANDANA_RED_NPC = NPC(
 )
 
 LAKITU_NPC_3 = NPC(
-    sprite_id=268,
+    sprite_id=SPR0268_LAKITU,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -6457,7 +6482,7 @@ LAKITU_NPC_3 = NPC(
 )
 
 BIRDY_NPC_2 = NPC(
-    sprite_id=269,
+    sprite_id=SPR0269_BIRDY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6481,7 +6506,7 @@ BIRDY_NPC_2 = NPC(
 )
 
 PINWHEEL_NPC_3 = NPC(
-    sprite_id=270,
+    sprite_id=SPR0270_PINWHEEL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6505,7 +6530,7 @@ PINWHEEL_NPC_3 = NPC(
 )
 
 RAT_FUNK_NPC = NPC(
-    sprite_id=271,
+    sprite_id=SPR0271_RAT_FUNK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6529,7 +6554,7 @@ RAT_FUNK_NPC = NPC(
 )
 
 K_NPC = NPC(
-    sprite_id=272,
+    sprite_id=SPR0272_K,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -6553,7 +6578,7 @@ K_NPC = NPC(
 )
 
 MAGMITE_NPC = NPC(
-    sprite_id=273,
+    sprite_id=SPR0273_MAGMITE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6577,7 +6602,7 @@ MAGMITE_NPC = NPC(
 )
 
 THE_BIG_BOO_NPC = NPC(
-    sprite_id=274,
+    sprite_id=SPR0274_THE_BIG_BOO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6601,7 +6626,7 @@ THE_BIG_BOO_NPC = NPC(
 )
 
 DRY_BONES_NPC_2 = NPC(
-    sprite_id=275,
+    sprite_id=SPR0275_DRY_BONES,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6625,7 +6650,7 @@ DRY_BONES_NPC_2 = NPC(
 )
 
 GREAPER_NPC = NPC(
-    sprite_id=276,
+    sprite_id=SPR0276_GREAPER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=8,
     obtuse_axis=8,
@@ -6649,7 +6674,7 @@ GREAPER_NPC = NPC(
 )
 
 FAN_PACKET_NPC = NPC(
-    sprite_id=211,
+    sprite_id=SPR0211_FAN_PACKET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -6673,7 +6698,7 @@ FAN_PACKET_NPC = NPC(
 )
 
 CHOMP_NPC = NPC(
-    sprite_id=278,
+    sprite_id=SPR0278_CHOMP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=9,
     obtuse_axis=9,
@@ -6697,7 +6722,7 @@ CHOMP_NPC = NPC(
 )
 
 BIRDY_NPC_3 = NPC(
-    sprite_id=269,
+    sprite_id=SPR0269_BIRDY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6721,7 +6746,7 @@ BIRDY_NPC_3 = NPC(
 )
 
 THWOMP_NPC = NPC(
-    sprite_id=60,
+    sprite_id=SPR0060_THWOMP,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=8,
     obtuse_axis=6,
@@ -6745,7 +6770,7 @@ THWOMP_NPC = NPC(
 )
 
 BOB_OMB_NPC_2 = NPC(
-    sprite_id=281,
+    sprite_id=SPR0281_BOB_OMB,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6769,7 +6794,7 @@ BOB_OMB_NPC_2 = NPC(
 )
 
 SPOOKUM_NPC = NPC(
-    sprite_id=282,
+    sprite_id=SPR0282_SPOOKUM,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -6793,7 +6818,7 @@ SPOOKUM_NPC = NPC(
 )
 
 HAMMER_BRO_NPC = NPC(
-    sprite_id=283,
+    sprite_id=SPR0283_HAMMER_BRO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=8,
     obtuse_axis=7,
@@ -6817,7 +6842,7 @@ HAMMER_BRO_NPC = NPC(
 )
 
 BUZZER_NPC = NPC(
-    sprite_id=284,
+    sprite_id=SPR0284_BUZZER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6841,7 +6866,7 @@ BUZZER_NPC = NPC(
 )
 
 AMEBOID_NPC = NPC(
-    sprite_id=285,
+    sprite_id=SPR0285_AMEBOID,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -6865,7 +6890,7 @@ AMEBOID_NPC = NPC(
 )
 
 GECKO_NPC = NPC(
-    sprite_id=286,
+    sprite_id=SPR0286_GECKO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -6889,7 +6914,7 @@ GECKO_NPC = NPC(
 )
 
 WIGGLER_NPC = NPC(
-    sprite_id=287,
+    sprite_id=SPR0287_WIGGLER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=8,
@@ -6913,7 +6938,7 @@ WIGGLER_NPC = NPC(
 )
 
 CRUSTY_NPC = NPC(
-    sprite_id=288,
+    sprite_id=SPR0288_CRUSTY,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -6937,7 +6962,7 @@ CRUSTY_NPC = NPC(
 )
 
 MAGIKOOPA_NPC = NPC(
-    sprite_id=289,
+    sprite_id=SPR0289_MAGIKOOPA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -6961,7 +6986,7 @@ MAGIKOOPA_NPC = NPC(
 )
 
 LEUKO_NPC = NPC(
-    sprite_id=290,
+    sprite_id=SPR0290_LEUKO,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=9,
     obtuse_axis=9,
@@ -6985,7 +7010,7 @@ LEUKO_NPC = NPC(
 )
 
 JAWFUL_NPC = NPC(
-    sprite_id=291,
+    sprite_id=SPR0291_JAWFUL,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -7009,7 +7034,7 @@ JAWFUL_NPC = NPC(
 )
 
 ENIGMA_NPC = NPC(
-    sprite_id=292,
+    sprite_id=SPR0292_ENIGMA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -7033,7 +7058,7 @@ ENIGMA_NPC = NPC(
 )
 
 BLASTER_NPC = NPC(
-    sprite_id=293,
+    sprite_id=SPR0293_BLASTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -7057,7 +7082,7 @@ BLASTER_NPC = NPC(
 )
 
 GUERRILLA_NPC = NPC(
-    sprite_id=294,
+    sprite_id=SPR0294_GUERRILLA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -7081,7 +7106,7 @@ GUERRILLA_NPC = NPC(
 )
 
 BABA_YAGA_NPC = NPC(
-    sprite_id=295,
+    sprite_id=SPR0295_BABA_YAGA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -7105,7 +7130,7 @@ BABA_YAGA_NPC = NPC(
 )
 
 HOBGOBLIN_NPC = NPC(
-    sprite_id=296,
+    sprite_id=SPR0296_HOBGOBLIN,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -7129,7 +7154,7 @@ HOBGOBLIN_NPC = NPC(
 )
 
 REACHER_NPC = NPC(
-    sprite_id=297,
+    sprite_id=SPR0297_REACHER,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -7153,7 +7178,7 @@ REACHER_NPC = NPC(
 )
 
 SHOGUN_NPC = NPC(
-    sprite_id=298,
+    sprite_id=SPR0298_SHOGUN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -7177,7 +7202,7 @@ SHOGUN_NPC = NPC(
 )
 
 ORB_USER_NPC = NPC(
-    sprite_id=299,
+    sprite_id=SPR0299_ORB_USER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -7201,7 +7226,7 @@ ORB_USER_NPC = NPC(
 )
 
 HEAVY_TROOPA_NPC = NPC(
-    sprite_id=300,
+    sprite_id=SPR0300_HEAVY_TROOPA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=10,
     obtuse_axis=13,
@@ -7225,7 +7250,7 @@ HEAVY_TROOPA_NPC = NPC(
 )
 
 SHADOW_NPC = NPC(
-    sprite_id=301,
+    sprite_id=SPR0301_SHADOW,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=10,
     obtuse_axis=10,
@@ -7249,7 +7274,7 @@ SHADOW_NPC = NPC(
 )
 
 CLUSTER_NPC = NPC(
-    sprite_id=302,
+    sprite_id=SPR0302_CLUSTER,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -7273,7 +7298,7 @@ CLUSTER_NPC = NPC(
 )
 
 BAHAMUTT_NPC = NPC(
-    sprite_id=303,
+    sprite_id=SPR0303_BAHAMUTT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -7297,7 +7322,7 @@ BAHAMUTT_NPC = NPC(
 )
 
 OCTOLOT_NPC = NPC(
-    sprite_id=304,
+    sprite_id=SPR0304_OCTOLOT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -7321,7 +7346,7 @@ OCTOLOT_NPC = NPC(
 )
 
 FROGOG_NPC = NPC(
-    sprite_id=305,
+    sprite_id=SPR0305_FROGOG,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -7345,7 +7370,7 @@ FROGOG_NPC = NPC(
 )
 
 CLERK_NPC = NPC(
-    sprite_id=306,
+    sprite_id=SPR0306_CLERK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -7369,7 +7394,7 @@ CLERK_NPC = NPC(
 )
 
 GUNYOLK_NPC = NPC(
-    sprite_id=307,
+    sprite_id=SPR0307_GUNYOLK,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -7393,7 +7418,7 @@ GUNYOLK_NPC = NPC(
 )
 
 BOOMER_NPC = NPC(
-    sprite_id=308,
+    sprite_id=SPR0308_BOOMER,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=9,
     obtuse_axis=9,
@@ -7417,7 +7442,7 @@ BOOMER_NPC = NPC(
 )
 
 REMO_CON_NPC = NPC(
-    sprite_id=309,
+    sprite_id=SPR0309_REMO_CON,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=11,
     obtuse_axis=11,
@@ -7441,7 +7466,7 @@ REMO_CON_NPC = NPC(
 )
 
 SNAPDRAGON_NPC = NPC(
-    sprite_id=310,
+    sprite_id=SPR0310_SNAPDRAGON,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -7465,7 +7490,7 @@ SNAPDRAGON_NPC = NPC(
 )
 
 STUMPET_NPC = NPC(
-    sprite_id=311,
+    sprite_id=SPR0311_STUMPET,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -7489,7 +7514,7 @@ STUMPET_NPC = NPC(
 )
 
 DODO_ND_TIME_NPC_2 = NPC(
-    sprite_id=312,
+    sprite_id=SPR0312_DODO_ND_TIME,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=9,
     obtuse_axis=9,
@@ -7513,7 +7538,7 @@ DODO_ND_TIME_NPC_2 = NPC(
 )
 
 JESTER_NPC = NPC(
-    sprite_id=313,
+    sprite_id=SPR0313_JESTER,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -7537,7 +7562,7 @@ JESTER_NPC = NPC(
 )
 
 ARTICHOKER_NPC = NPC(
-    sprite_id=314,
+    sprite_id=SPR0314_ARTICHOKER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -7561,7 +7586,7 @@ ARTICHOKER_NPC = NPC(
 )
 
 ARACHNE_NPC = NPC(
-    sprite_id=315,
+    sprite_id=SPR0315_ARACHNE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -7585,7 +7610,7 @@ ARACHNE_NPC = NPC(
 )
 
 CARROBOSCIS_NPC = NPC(
-    sprite_id=316,
+    sprite_id=SPR0316_CARROBOSCIS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=11,
     obtuse_axis=11,
@@ -7609,7 +7634,7 @@ CARROBOSCIS_NPC = NPC(
 )
 
 HIPPOPO_NPC = NPC(
-    sprite_id=317,
+    sprite_id=SPR0317_HIPPOPO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=15,
     obtuse_axis=15,
@@ -7633,7 +7658,7 @@ HIPPOPO_NPC = NPC(
 )
 
 MASTADOOM_NPC = NPC(
-    sprite_id=318,
+    sprite_id=SPR0318_MASTADOOM,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=15,
     obtuse_axis=15,
@@ -7657,7 +7682,7 @@ MASTADOOM_NPC = NPC(
 )
 
 CHOMP_BEHIND_NPC_2 = NPC(
-    sprite_id=126,
+    sprite_id=SPR0126_CHOMP_BEHIND,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=9,
     obtuse_axis=9,
@@ -7681,7 +7706,7 @@ CHOMP_BEHIND_NPC_2 = NPC(
 )
 
 TERRA_COTTA_NPC = NPC(
-    sprite_id=320,
+    sprite_id=SPR0320_TERRA_COTTA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -7705,7 +7730,7 @@ TERRA_COTTA_NPC = NPC(
 )
 
 SPIKESTER_NPC = NPC(
-    sprite_id=321,
+    sprite_id=SPR0321_SPIKESTER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -7729,7 +7754,7 @@ SPIKESTER_NPC = NPC(
 )
 
 MALAKOOPA_NPC = NPC(
-    sprite_id=322,
+    sprite_id=SPR0322_MALAKOOPA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -7753,7 +7778,7 @@ MALAKOOPA_NPC = NPC(
 )
 
 POUNDER_NPC = NPC(
-    sprite_id=323,
+    sprite_id=SPR0323_POUNDER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -7777,7 +7802,7 @@ POUNDER_NPC = NPC(
 )
 
 POUNDETTE_NPC = NPC(
-    sprite_id=324,
+    sprite_id=SPR0324_POUNDETTE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -7801,7 +7826,7 @@ POUNDETTE_NPC = NPC(
 )
 
 SACKIT_NPC = NPC(
-    sprite_id=325,
+    sprite_id=SPR0325_SACKIT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -7825,7 +7850,7 @@ SACKIT_NPC = NPC(
 )
 
 GU_GOOMBA_NPC = NPC(
-    sprite_id=326,
+    sprite_id=SPR0326_GU_GOOMBA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -7849,7 +7874,7 @@ GU_GOOMBA_NPC = NPC(
 )
 
 CHEWY_NPC = NPC(
-    sprite_id=327,
+    sprite_id=SPR0327_CHEWY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -7873,7 +7898,7 @@ CHEWY_NPC = NPC(
 )
 
 GREAPER_NPC_2 = NPC(
-    sprite_id=276,
+    sprite_id=SPR0276_GREAPER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=8,
     obtuse_axis=8,
@@ -7897,7 +7922,7 @@ GREAPER_NPC_2 = NPC(
 )
 
 MR_KIPPER_NPC = NPC(
-    sprite_id=329,
+    sprite_id=SPR0329_MR_KIPPER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -7921,7 +7946,7 @@ MR_KIPPER_NPC = NPC(
 )
 
 CHESTER_NPC = NPC(
-    sprite_id=395,
+    sprite_id=SPR0395_CHESTER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -7945,7 +7970,7 @@ CHESTER_NPC = NPC(
 )
 
 BANDANA_BLUE_NPC = NPC(
-    sprite_id=331,
+    sprite_id=SPR0331_BANDANA_BLUE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -7969,7 +7994,7 @@ BANDANA_BLUE_NPC = NPC(
 )
 
 SHOGUN_NPC_2 = NPC(
-    sprite_id=298,
+    sprite_id=SPR0298_SHOGUN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -7993,7 +8018,7 @@ SHOGUN_NPC_2 = NPC(
 )
 
 BLUEBIRD_NPC = NPC(
-    sprite_id=333,
+    sprite_id=SPR0333_BLUEBIRD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -8017,7 +8042,7 @@ BLUEBIRD_NPC = NPC(
 )
 
 BLUEBIRD_NPC_2 = NPC(
-    sprite_id=333,
+    sprite_id=SPR0333_BLUEBIRD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -8041,7 +8066,7 @@ BLUEBIRD_NPC_2 = NPC(
 )
 
 ALLEY_RAT_NPC = NPC(
-    sprite_id=335,
+    sprite_id=SPR0335_ALLEY_RAT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -8065,7 +8090,7 @@ ALLEY_RAT_NPC = NPC(
 )
 
 CHOW_NPC = NPC(
-    sprite_id=336,
+    sprite_id=SPR0336_CHOW,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -8089,7 +8114,7 @@ CHOW_NPC = NPC(
 )
 
 MAGMUS_NPC = NPC(
-    sprite_id=337,
+    sprite_id=SPR0337_MAGMUS,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -8113,7 +8138,7 @@ MAGMUS_NPC = NPC(
 )
 
 LI_XX_L_BOO_NPC = NPC(
-    sprite_id=338,
+    sprite_id=SPR0338_LI_XX_L_BOO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -8137,7 +8162,7 @@ LI_XX_L_BOO_NPC = NPC(
 )
 
 VOMER_NPC = NPC(
-    sprite_id=339,
+    sprite_id=SPR0339_VOMER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -8161,7 +8186,7 @@ VOMER_NPC = NPC(
 )
 
 GLUM_REAPER_NPC = NPC(
-    sprite_id=340,
+    sprite_id=SPR0340_GLUM_REAPER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=8,
     obtuse_axis=8,
@@ -8185,7 +8210,7 @@ GLUM_REAPER_NPC = NPC(
 )
 
 FIREBALL_NPC = NPC(
-    sprite_id=328,
+    sprite_id=SPR0328_FIREBALL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -8209,7 +8234,7 @@ FIREBALL_NPC = NPC(
 )
 
 CHOMP_CHOMP_NPC = NPC(
-    sprite_id=342,
+    sprite_id=SPR0342_CHOMP_CHOMP,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=9,
     obtuse_axis=9,
@@ -8233,7 +8258,7 @@ CHOMP_CHOMP_NPC = NPC(
 )
 
 HIDON_NPC = NPC(
-    sprite_id=343,
+    sprite_id=SPR0343_HIDON,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -8257,7 +8282,7 @@ HIDON_NPC = NPC(
 )
 
 SLING_SHY_NPC = NPC(
-    sprite_id=344,
+    sprite_id=SPR0344_SLING_SHY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -8281,7 +8306,7 @@ SLING_SHY_NPC = NPC(
 )
 
 ROB_OMB_NPC = NPC(
-    sprite_id=345,
+    sprite_id=SPR0345_ROB_OMB,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -8305,7 +8330,7 @@ ROB_OMB_NPC = NPC(
 )
 
 SHY_GUY_NPC_2 = NPC(
-    sprite_id=346,
+    sprite_id=SPR0346_SHY_GUY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -8329,7 +8354,7 @@ SHY_GUY_NPC_2 = NPC(
 )
 
 NINJA_NPC = NPC(
-    sprite_id=347,
+    sprite_id=SPR0347_NINJA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -8353,7 +8378,7 @@ NINJA_NPC = NPC(
 )
 
 STINGER_NPC = NPC(
-    sprite_id=348,
+    sprite_id=SPR0348_STINGER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -8377,7 +8402,7 @@ STINGER_NPC = NPC(
 )
 
 GOOMBETTE_LOWER_NPC = NPC(
-    sprite_id=960,
+    sprite_id=SPR0960_GOOMBETTE_LOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -8401,7 +8426,7 @@ GOOMBETTE_LOWER_NPC = NPC(
 )
 
 GECKIT_NPC = NPC(
-    sprite_id=350,
+    sprite_id=SPR0350_GECKIT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -8425,7 +8450,7 @@ GECKIT_NPC = NPC(
 )
 
 JABIT_NPC = NPC(
-    sprite_id=351,
+    sprite_id=SPR0351_JABIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -8449,7 +8474,7 @@ JABIT_NPC = NPC(
 )
 
 STAR_CRUSTER_NPC = NPC(
-    sprite_id=352,
+    sprite_id=SPR0352_STAR_CRUSTER,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -8473,7 +8498,7 @@ STAR_CRUSTER_NPC = NPC(
 )
 
 SLING_SHY_NPC_2 = NPC(
-    sprite_id=344,
+    sprite_id=SPR0344_SLING_SHY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -8497,7 +8522,7 @@ SLING_SHY_NPC_2 = NPC(
 )
 
 MUCKLE_NPC = NPC(
-    sprite_id=354,
+    sprite_id=SPR0354_MUCKLE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=9,
     obtuse_axis=9,
@@ -8521,7 +8546,7 @@ MUCKLE_NPC = NPC(
 )
 
 FORKIES_NPC = NPC(
-    sprite_id=355,
+    sprite_id=SPR0355_FORKIES,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -8545,7 +8570,7 @@ FORKIES_NPC = NPC(
 )
 
 GORGON_NPC = NPC(
-    sprite_id=356,
+    sprite_id=SPR0356_GORGON,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -8569,7 +8594,7 @@ GORGON_NPC = NPC(
 )
 
 BIG_BERTHA_NPC = NPC(
-    sprite_id=357,
+    sprite_id=SPR0357_BIG_BERTHA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -8593,7 +8618,7 @@ BIG_BERTHA_NPC = NPC(
 )
 
 CHAINED_KONG_NPC = NPC(
-    sprite_id=358,
+    sprite_id=SPR0358_CHAINED_KONG,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -8617,7 +8642,7 @@ CHAINED_KONG_NPC = NPC(
 )
 
 THE_BIG_BOO_NPC_2 = NPC(
-    sprite_id=274,
+    sprite_id=SPR0274_THE_BIG_BOO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -8641,7 +8666,7 @@ THE_BIG_BOO_NPC_2 = NPC(
 )
 
 STRAW_HEAD_NPC = NPC(
-    sprite_id=360,
+    sprite_id=SPR0360_STRAW_HEAD,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -8665,7 +8690,7 @@ STRAW_HEAD_NPC = NPC(
 )
 
 JUJU_NPC = NPC(
-    sprite_id=361,
+    sprite_id=SPR0361_JUJU,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -8689,7 +8714,7 @@ JUJU_NPC = NPC(
 )
 
 ARMORED_ANT_NPC = NPC(
-    sprite_id=362,
+    sprite_id=SPR0362_ARMORED_ANT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -8713,7 +8738,7 @@ ARMORED_ANT_NPC = NPC(
 )
 
 ORBISON_NPC = NPC(
-    sprite_id=363,
+    sprite_id=SPR0363_ORBISON,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=8,
     obtuse_axis=6,
@@ -8737,7 +8762,7 @@ ORBISON_NPC = NPC(
 )
 
 TUB_O_TROOPA_NPC = NPC(
-    sprite_id=364,
+    sprite_id=SPR0364_TUB_O_TROOPA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=10,
     obtuse_axis=13,
@@ -8761,7 +8786,7 @@ TUB_O_TROOPA_NPC = NPC(
 )
 
 DOPPEL_NPC = NPC(
-    sprite_id=365,
+    sprite_id=SPR0365_DOPPEL,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -8785,7 +8810,7 @@ DOPPEL_NPC = NPC(
 )
 
 PULSAR_NPC = NPC(
-    sprite_id=366,
+    sprite_id=SPR0366_PULSAR,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=15,
     obtuse_axis=15,
@@ -8809,7 +8834,7 @@ PULSAR_NPC = NPC(
 )
 
 CROCO_NPC_4 = NPC(
-    sprite_id=48,
+    sprite_id=SPR0048_CROCO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -8833,7 +8858,7 @@ CROCO_NPC_4 = NPC(
 )
 
 OCTOVADER_NPC = NPC(
-    sprite_id=368,
+    sprite_id=SPR0368_OCTOVADER,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -8857,7 +8882,7 @@ OCTOVADER_NPC = NPC(
 )
 
 RIBBITE_NPC = NPC(
-    sprite_id=369,
+    sprite_id=SPR0369_RIBBITE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -8881,7 +8906,7 @@ RIBBITE_NPC = NPC(
 )
 
 DIRECTOR_NPC = NPC(
-    sprite_id=370,
+    sprite_id=SPR0370_DIRECTOR,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -8905,7 +8930,7 @@ DIRECTOR_NPC = NPC(
 )
 
 BELOME_ST_TIME_NPC = NPC(
-    sprite_id=455,
+    sprite_id=SPR0455_BELOME_ST_TIME,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,
@@ -8929,7 +8954,7 @@ BELOME_ST_TIME_NPC = NPC(
 )
 
 BOOMER_BLUE_NPC = NPC(
-    sprite_id=372,
+    sprite_id=SPR0372_BOOMER_BLUE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=9,
     obtuse_axis=9,
@@ -8953,7 +8978,7 @@ BOOMER_BLUE_NPC = NPC(
 )
 
 PUPPOX_NPC = NPC(
-    sprite_id=373,
+    sprite_id=SPR0373_PUPPOX,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=11,
     obtuse_axis=11,
@@ -8977,7 +9002,7 @@ PUPPOX_NPC = NPC(
 )
 
 FINK_FLOWER_NPC = NPC(
-    sprite_id=374,
+    sprite_id=SPR0374_FINK_FLOWER,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -9001,7 +9026,7 @@ FINK_FLOWER_NPC = NPC(
 )
 
 LUMBLER_NPC = NPC(
-    sprite_id=375,
+    sprite_id=SPR0375_LUMBLER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9025,7 +9050,7 @@ LUMBLER_NPC = NPC(
 )
 
 SPRINGER_NPC = NPC(
-    sprite_id=376,
+    sprite_id=SPR0376_SPRINGER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9049,7 +9074,7 @@ SPRINGER_NPC = NPC(
 )
 
 HARLEQUIN_NPC = NPC(
-    sprite_id=377,
+    sprite_id=SPR0377_HARLEQUIN,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -9073,7 +9098,7 @@ HARLEQUIN_NPC = NPC(
 )
 
 KRIFFID_NPC = NPC(
-    sprite_id=378,
+    sprite_id=SPR0378_KRIFFID,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -9097,7 +9122,7 @@ KRIFFID_NPC = NPC(
 )
 
 SPINTHRA_NPC = NPC(
-    sprite_id=379,
+    sprite_id=SPR0379_SPINTHRA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=11,
     obtuse_axis=11,
@@ -9121,7 +9146,7 @@ SPINTHRA_NPC = NPC(
 )
 
 RADISH_NPC = NPC(
-    sprite_id=380,
+    sprite_id=SPR0380_RADISH,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=11,
     obtuse_axis=11,
@@ -9145,7 +9170,7 @@ RADISH_NPC = NPC(
 )
 
 CRIPPO_NPC = NPC(
-    sprite_id=381,
+    sprite_id=SPR0381_CRIPPO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=15,
     obtuse_axis=15,
@@ -9169,7 +9194,7 @@ CRIPPO_NPC = NPC(
 )
 
 MASTABLASTA_NPC = NPC(
-    sprite_id=382,
+    sprite_id=SPR0382_MASTABLASTA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=15,
     obtuse_axis=15,
@@ -9193,7 +9218,7 @@ MASTABLASTA_NPC = NPC(
 )
 
 PILE_DRIVER_NPC = NPC(
-    sprite_id=383,
+    sprite_id=SPR0383_PILE_DRIVER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=15,
     obtuse_axis=15,
@@ -9217,7 +9242,7 @@ PILE_DRIVER_NPC = NPC(
 )
 
 APPRENTICE_NPC = NPC(
-    sprite_id=384,
+    sprite_id=SPR0384_APPRENTICE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9241,7 +9266,7 @@ APPRENTICE_NPC = NPC(
 )
 
 BELOME_SCARECROW_NPC = NPC(
-    sprite_id=62,
+    sprite_id=SPR0062_BELOME_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=8,
     obtuse_axis=3,
@@ -9265,7 +9290,7 @@ BELOME_SCARECROW_NPC = NPC(
 )
 
 WIND_CRYSTAL_GRIDPLANE_NPC = NPC(
-    sprite_id=647,
+    sprite_id=SPR0647_WIND_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -9289,7 +9314,7 @@ WIND_CRYSTAL_GRIDPLANE_NPC = NPC(
 )
 
 NOTHING_NPC = NPC(
-    sprite_id=387,
+    sprite_id=SPR0387_NOTHING,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9313,7 +9338,7 @@ NOTHING_NPC = NPC(
 )
 
 GENO_REDEMPTION_NPC = NPC(
-    sprite_id=388,
+    sprite_id=SPR0388_GENO_REDEMPTION,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -9337,7 +9362,7 @@ GENO_REDEMPTION_NPC = NPC(
 )
 
 STAR_EGG_LITTLE_BROWN_BIRD_NPC = NPC(
-    sprite_id=777,
+    sprite_id=SPR0777_STAR_EGG_LITTLE_BROWN_BIRD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9361,7 +9386,7 @@ STAR_EGG_LITTLE_BROWN_BIRD_NPC = NPC(
 )
 
 BOX_BOY_NPC = NPC(
-    sprite_id=390,
+    sprite_id=SPR0390_BOX_BOY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -9385,7 +9410,7 @@ BOX_BOY_NPC = NPC(
 )
 
 SHELLY_NPC = NPC(
-    sprite_id=391,
+    sprite_id=SPR0391_SHELLY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=13,
     obtuse_axis=13,
@@ -9409,7 +9434,7 @@ SHELLY_NPC = NPC(
 )
 
 BELOME_SCARECROW_NPC = NPC(
-    sprite_id=392,
+    sprite_id=SPR0392_BELOME_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9433,7 +9458,7 @@ BELOME_SCARECROW_NPC = NPC(
 )
 
 DODO_NPC = NPC(
-    sprite_id=393,
+    sprite_id=SPR0393_DODO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9457,7 +9482,7 @@ DODO_NPC = NPC(
 )
 
 OERLIKON_NPC = NPC(
-    sprite_id=394,
+    sprite_id=SPR0394_OERLIKON,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -9481,7 +9506,7 @@ OERLIKON_NPC = NPC(
 )
 
 CHESTER_NPC_2 = NPC(
-    sprite_id=395,
+    sprite_id=SPR0395_CHESTER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -9505,7 +9530,7 @@ CHESTER_NPC_2 = NPC(
 )
 
 BODY_NPC = NPC(
-    sprite_id=396,
+    sprite_id=SPR0396_BODY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9529,7 +9554,7 @@ BODY_NPC = NPC(
 )
 
 TORTE_NPC = NPC(
-    sprite_id=398,
+    sprite_id=SPR0398_TORTE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -9553,7 +9578,7 @@ TORTE_NPC = NPC(
 )
 
 TORTE_NPC_2 = NPC(
-    sprite_id=398,
+    sprite_id=SPR0398_TORTE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -9577,7 +9602,7 @@ TORTE_NPC_2 = NPC(
 )
 
 SHY_AWAY_NPC = NPC(
-    sprite_id=399,
+    sprite_id=SPR0399_SHY_AWAY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -9601,7 +9626,7 @@ SHY_AWAY_NPC = NPC(
 )
 
 SHY_AWAY_NPC_2 = NPC(
-    sprite_id=399,
+    sprite_id=SPR0399_SHY_AWAY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -9625,7 +9650,7 @@ SHY_AWAY_NPC_2 = NPC(
 )
 
 MACHINE_MADE_SHYSTER_NPC = NPC(
-    sprite_id=401,
+    sprite_id=SPR0401_MACHINE_MADE_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -9649,7 +9674,7 @@ MACHINE_MADE_SHYSTER_NPC = NPC(
 )
 
 MACHINE_MADE_DRILL_BIT_NPC = NPC(
-    sprite_id=402,
+    sprite_id=SPR0402_MACHINE_MADE_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -9673,7 +9698,7 @@ MACHINE_MADE_DRILL_BIT_NPC = NPC(
 )
 
 GUNYOLK_TOP_SECTION_NPC = NPC(
-    sprite_id=153,
+    sprite_id=SPR0153_GUNYOLK_TOP_SECTION,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -9697,7 +9722,7 @@ GUNYOLK_TOP_SECTION_NPC = NPC(
 )
 
 GUNYOLK_OUTER_SECTION_NPC = NPC(
-    sprite_id=154,
+    sprite_id=SPR0154_GUNYOLK_OUTER_SECTION,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -9721,7 +9746,7 @@ GUNYOLK_OUTER_SECTION_NPC = NPC(
 )
 
 FIRE_CRYSTAL_NPC = NPC(
-    sprite_id=405,
+    sprite_id=SPR0405_FIRE_CRYSTAL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9745,7 +9770,7 @@ FIRE_CRYSTAL_NPC = NPC(
 )
 
 WATER_CRYSTAL_NPC = NPC(
-    sprite_id=406,
+    sprite_id=SPR0406_WATER_CRYSTAL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9769,7 +9794,7 @@ WATER_CRYSTAL_NPC = NPC(
 )
 
 EARTH_CRYSTAL_NPC = NPC(
-    sprite_id=407,
+    sprite_id=SPR0407_EARTH_CRYSTAL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9793,7 +9818,7 @@ EARTH_CRYSTAL_NPC = NPC(
 )
 
 WIND_CRYSTAL_NPC = NPC(
-    sprite_id=408,
+    sprite_id=SPR0408_WIND_CRYSTAL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9817,7 +9842,7 @@ WIND_CRYSTAL_NPC = NPC(
 )
 
 MARIO_CLONE_NPC = NPC(
-    sprite_id=409,
+    sprite_id=SPR0409_MARIO_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9841,7 +9866,7 @@ MARIO_CLONE_NPC = NPC(
 )
 
 TOADSTOOL_NPC = NPC(
-    sprite_id=410,
+    sprite_id=SPR0410_TOADSTOOL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9865,7 +9890,7 @@ TOADSTOOL_NPC = NPC(
 )
 
 BOWSER_CLONE_NPC = NPC(
-    sprite_id=411,
+    sprite_id=SPR0411_BOWSER_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9889,7 +9914,7 @@ BOWSER_CLONE_NPC = NPC(
 )
 
 GENO_CLONE_NPC = NPC(
-    sprite_id=412,
+    sprite_id=SPR0412_GENO_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9913,7 +9938,7 @@ GENO_CLONE_NPC = NPC(
 )
 
 MALLOW_CLONE_NPC = NPC(
-    sprite_id=413,
+    sprite_id=SPR0413_MALLOW_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9937,7 +9962,7 @@ MALLOW_CLONE_NPC = NPC(
 )
 
 SHYSTER_NPC = NPC(
-    sprite_id=414,
+    sprite_id=SPR0414_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -9961,7 +9986,7 @@ SHYSTER_NPC = NPC(
 )
 
 JINX_OVERWORLD_NPC = NPC(
-    sprite_id=191,
+    sprite_id=SPR0191_JINX_OVERWORLD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -9985,7 +10010,7 @@ JINX_OVERWORLD_NPC = NPC(
 )
 
 JINX_OVERWORLD_NPC = NPC(
-    sprite_id=608,
+    sprite_id=SPR0608_JINX_OVERWORLD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -10009,7 +10034,7 @@ JINX_OVERWORLD_NPC = NPC(
 )
 
 HANGIN_XX_SHY_NPC = NPC(
-    sprite_id=417,
+    sprite_id=SPR0417_HANGIN_XX_SHY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -10033,7 +10058,7 @@ HANGIN_XX_SHY_NPC = NPC(
 )
 
 HANGIN_XX_SHY_NPC_2 = NPC(
-    sprite_id=417,
+    sprite_id=SPR0417_HANGIN_XX_SHY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -10057,7 +10082,7 @@ HANGIN_XX_SHY_NPC_2 = NPC(
 )
 
 MACHINE_MADE_MACK_NPC = NPC(
-    sprite_id=419,
+    sprite_id=SPR0419_MACHINE_MADE_MACK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10081,7 +10106,7 @@ MACHINE_MADE_MACK_NPC = NPC(
 )
 
 MACHINE_MADE_BOWYER_NPC = NPC(
-    sprite_id=420,
+    sprite_id=SPR0420_MACHINE_MADE_BOWYER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=14,
     obtuse_axis=9,
@@ -10105,7 +10130,7 @@ MACHINE_MADE_BOWYER_NPC = NPC(
 )
 
 MACHINE_MADE_YARIDOVICH_NPC = NPC(
-    sprite_id=421,
+    sprite_id=SPR0421_MACHINE_MADE_YARIDOVICH,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10129,7 +10154,7 @@ MACHINE_MADE_YARIDOVICH_NPC = NPC(
 )
 
 MACHINE_MADE_AXEM_PINK_NPC = NPC(
-    sprite_id=422,
+    sprite_id=SPR0422_MACHINE_MADE_AXEM_PINK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10153,7 +10178,7 @@ MACHINE_MADE_AXEM_PINK_NPC = NPC(
 )
 
 WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC_2 = NPC(
-    sprite_id=65,
+    sprite_id=SPR0065_WALLET_GUY_ALSO_CASINO_ASSISTANTS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -10177,7 +10202,7 @@ WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC_2 = NPC(
 )
 
 MUSHROOM_BOY_NPC_2 = NPC(
-    sprite_id=112,
+    sprite_id=SPR0112_MUSHROOM_BOY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -10201,7 +10226,7 @@ MUSHROOM_BOY_NPC_2 = NPC(
 )
 
 MARRYMORE_MAN_GREEN_NPC_2 = NPC(
-    sprite_id=113,
+    sprite_id=SPR0113_MARRYMORE_MAN_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -10225,7 +10250,7 @@ MARRYMORE_MAN_GREEN_NPC_2 = NPC(
 )
 
 SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM_NPC_2 = NPC(
-    sprite_id=629,
+    sprite_id=SPR0629_SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -10249,7 +10274,7 @@ SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM_NPC_2 = NPC(
 )
 
 GREY_STEPPING_STONE_NPC_2 = NPC(
-    sprite_id=630,
+    sprite_id=SPR0630_GREY_STEPPING_STONE,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=6,
     obtuse_axis=6,
@@ -10273,7 +10298,7 @@ GREY_STEPPING_STONE_NPC_2 = NPC(
 )
 
 HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2 = NPC(
-    sprite_id=631,
+    sprite_id=SPR0631_HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -10297,7 +10322,7 @@ HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2 = NPC(
 )
 
 GREY_STONE_BLOCK_NPC_2 = NPC(
-    sprite_id=632,
+    sprite_id=SPR0632_GREY_STONE_BLOCK,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=7,
     obtuse_axis=7,
@@ -10321,7 +10346,7 @@ GREY_STONE_BLOCK_NPC_2 = NPC(
 )
 
 CANNON_BALL_NPC = NPC(
-    sprite_id=188,
+    sprite_id=SPR0188_CANNON_BALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -10345,7 +10370,7 @@ CANNON_BALL_NPC = NPC(
 )
 
 STARSLAP_NPC = NPC(
-    sprite_id=432,
+    sprite_id=SPR0432_STARSLAP,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=7,
@@ -10369,7 +10394,7 @@ STARSLAP_NPC = NPC(
 )
 
 STARSLAP_NPC_2 = NPC(
-    sprite_id=432,
+    sprite_id=SPR0432_STARSLAP,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -10393,7 +10418,7 @@ STARSLAP_NPC_2 = NPC(
 )
 
 MUKUMUKU_NPC = NPC(
-    sprite_id=433,
+    sprite_id=SPR0433_MUKUMUKU,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -10417,7 +10442,7 @@ MUKUMUKU_NPC = NPC(
 )
 
 ZEOSTAR_NPC = NPC(
-    sprite_id=434,
+    sprite_id=SPR0434_ZEOSTAR,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -10441,7 +10466,7 @@ ZEOSTAR_NPC = NPC(
 )
 
 WATER_CRYSTAL_GRIDPLANE_NPC = NPC(
-    sprite_id=645,
+    sprite_id=SPR0645_WATER_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -10465,7 +10490,7 @@ WATER_CRYSTAL_GRIDPLANE_NPC = NPC(
 )
 
 EMPTY_ENEMY_NPC = NPC(
-    sprite_id=436,
+    sprite_id=SPR0436_EMPTY_ENEMY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -10489,7 +10514,7 @@ EMPTY_ENEMY_NPC = NPC(
 )
 
 SMITHY_TANK_HEAD_NPC = NPC(
-    sprite_id=437,
+    sprite_id=SPR0437_SMITHY_TANK_HEAD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10513,7 +10538,7 @@ SMITHY_TANK_HEAD_NPC = NPC(
 )
 
 SMITHY_BOX_HEAD_NPC = NPC(
-    sprite_id=438,
+    sprite_id=SPR0438_SMITHY_BOX_HEAD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10537,7 +10562,7 @@ SMITHY_BOX_HEAD_NPC = NPC(
 )
 
 CORKPEDITE_NPC = NPC(
-    sprite_id=439,
+    sprite_id=SPR0439_CORKPEDITE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10561,7 +10586,7 @@ CORKPEDITE_NPC = NPC(
 )
 
 MICROBOMB_NPC_2 = NPC(
-    sprite_id=440,
+    sprite_id=SPR0440_MICROBOMB,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -10585,7 +10610,7 @@ MICROBOMB_NPC_2 = NPC(
 )
 
 BIG_THWOMP_NPC = NPC(
-    sprite_id=61,
+    sprite_id=SPR0061_BIG_THWOMP,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=14,
     obtuse_axis=8,
@@ -10609,7 +10634,7 @@ BIG_THWOMP_NPC = NPC(
 )
 
 GRIT_NPC = NPC(
-    sprite_id=442,
+    sprite_id=SPR0442_GRIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10633,7 +10658,7 @@ GRIT_NPC = NPC(
 )
 
 NEOSQUID_NPC = NPC(
-    sprite_id=443,
+    sprite_id=SPR0443_NEOSQUID,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -10657,7 +10682,7 @@ NEOSQUID_NPC = NPC(
 )
 
 YARIDOVICH_MIRAGE_NPC = NPC(
-    sprite_id=444,
+    sprite_id=SPR0444_YARIDOVICH_MIRAGE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10681,7 +10706,7 @@ YARIDOVICH_MIRAGE_NPC = NPC(
 )
 
 HELIO_NPC = NPC(
-    sprite_id=445,
+    sprite_id=SPR0445_HELIO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10705,7 +10730,7 @@ HELIO_NPC = NPC(
 )
 
 FACTORY_CLERK_GREEN_NPC_2 = NPC(
-    sprite_id=142,
+    sprite_id=SPR0142_FACTORY_CLERK_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10729,7 +10754,7 @@ FACTORY_CLERK_GREEN_NPC_2 = NPC(
 )
 
 LEFT_EYE_NPC = NPC(
-    sprite_id=447,
+    sprite_id=SPR0447_LEFT_EYE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10753,7 +10778,7 @@ LEFT_EYE_NPC = NPC(
 )
 
 KNIFE_GUY_NPC = NPC(
-    sprite_id=448,
+    sprite_id=SPR0448_KNIFE_GUY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -10777,7 +10802,7 @@ KNIFE_GUY_NPC = NPC(
 )
 
 GRATE_GUY_NPC = NPC(
-    sprite_id=449,
+    sprite_id=SPR0449_GRATE_GUY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -10801,7 +10826,7 @@ GRATE_GUY_NPC = NPC(
 )
 
 LINK_SLEEPING_IN_ROSE_TOWN_INN_NPC_2 = NPC(
-    sprite_id=628,
+    sprite_id=SPR0628_LINK_SLEEPING_IN_ROSE_TOWN_INN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -10825,7 +10850,7 @@ LINK_SLEEPING_IN_ROSE_TOWN_INN_NPC_2 = NPC(
 )
 
 MUSHROOM_HOUSE_DECOR_MAILBOX_NPC_2 = NPC(
-    sprite_id=627,
+    sprite_id=SPR0627_MUSHROOM_HOUSE_DECOR_MAILBOX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -10849,7 +10874,7 @@ MUSHROOM_HOUSE_DECOR_MAILBOX_NPC_2 = NPC(
 )
 
 GRATE_GUY_FROM_CASINO_NPC = NPC(
-    sprite_id=177,
+    sprite_id=SPR0177_GRATE_GUY_FROM_CASINO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -10873,7 +10898,7 @@ GRATE_GUY_FROM_CASINO_NPC = NPC(
 )
 
 COUNT_DOWN_NPC = NPC(
-    sprite_id=453,
+    sprite_id=SPR0453_COUNT_DOWN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -10897,7 +10922,7 @@ COUNT_DOWN_NPC = NPC(
 )
 
 DINGALING_GRIDPLANE_NPC = NPC(
-    sprite_id=642,
+    sprite_id=SPR0642_DINGALING_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -10921,7 +10946,7 @@ DINGALING_GRIDPLANE_NPC = NPC(
 )
 
 BELOME_ST_TIME_NPC_2 = NPC(
-    sprite_id=455,
+    sprite_id=SPR0455_BELOME_ST_TIME,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,
@@ -10945,7 +10970,7 @@ BELOME_ST_TIME_NPC_2 = NPC(
 )
 
 GOLDEN_BELOME_NPC = NPC(
-    sprite_id=147,
+    sprite_id=SPR0147_GOLDEN_BELOME,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,
@@ -10969,7 +10994,7 @@ GOLDEN_BELOME_NPC = NPC(
 )
 
 BELOME_ST_TIME_NPC_3 = NPC(
-    sprite_id=455,
+    sprite_id=SPR0455_BELOME_ST_TIME,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -10993,7 +11018,7 @@ BELOME_ST_TIME_NPC_3 = NPC(
 )
 
 SMILAX_NPC = NPC(
-    sprite_id=458,
+    sprite_id=SPR0458_SMILAX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -11017,7 +11042,7 @@ SMILAX_NPC = NPC(
 )
 
 THRAX_NPC_2 = NPC(
-    sprite_id=459,
+    sprite_id=SPR0459_THRAX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -11041,7 +11066,7 @@ THRAX_NPC_2 = NPC(
 )
 
 MEGASMILAX_NPC = NPC(
-    sprite_id=460,
+    sprite_id=SPR0460_MEGASMILAX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -11065,7 +11090,7 @@ MEGASMILAX_NPC = NPC(
 )
 
 BIRDETTA_NPC = NPC(
-    sprite_id=461,
+    sprite_id=SPR0461_BIRDETTA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=9,
     obtuse_axis=11,
@@ -11089,7 +11114,7 @@ BIRDETTA_NPC = NPC(
 )
 
 EGGBERT_GRIDPLANE_NPC = NPC(
-    sprite_id=643,
+    sprite_id=SPR0643_EGGBERT_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -11113,7 +11138,7 @@ EGGBERT_GRIDPLANE_NPC = NPC(
 )
 
 MIMIC_FACE_STANDALONE_NPC = NPC(
-    sprite_id=110,
+    sprite_id=SPR0110_MIMIC_FACE_STANDALONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -11137,7 +11162,7 @@ MIMIC_FACE_STANDALONE_NPC = NPC(
 )
 
 PUNCHINELLO_NPC = NPC(
-    sprite_id=464,
+    sprite_id=SPR0464_PUNCHINELLO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=8,
@@ -11161,7 +11186,7 @@ PUNCHINELLO_NPC = NPC(
 )
 
 TENTACLES_RIGHT_NPC = NPC(
-    sprite_id=465,
+    sprite_id=SPR0465_TENTACLES_RIGHT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -11185,7 +11210,7 @@ TENTACLES_RIGHT_NPC = NPC(
 )
 
 AXEM_RED_NPC_2 = NPC(
-    sprite_id=466,
+    sprite_id=SPR0466_AXEM_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -11209,7 +11234,7 @@ AXEM_RED_NPC_2 = NPC(
 )
 
 AXEM_GREEN_NPC_2 = NPC(
-    sprite_id=467,
+    sprite_id=SPR0467_AXEM_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -11233,7 +11258,7 @@ AXEM_GREEN_NPC_2 = NPC(
 )
 
 KING_BOMB_NPC = NPC(
-    sprite_id=468,
+    sprite_id=SPR0468_KING_BOMB,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -11257,7 +11282,7 @@ KING_BOMB_NPC = NPC(
 )
 
 MEZZO_BOMB_NPC = NPC(
-    sprite_id=469,
+    sprite_id=SPR0469_MEZZO_BOMB,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -11281,7 +11306,7 @@ MEZZO_BOMB_NPC = NPC(
 )
 
 BUNDT_OBJECT_NPC = NPC(
-    sprite_id=470,
+    sprite_id=SPR0470_BUNDT_OBJECT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -11305,7 +11330,7 @@ BUNDT_OBJECT_NPC = NPC(
 )
 
 MACHINE_MADE_MACK_NPC_2 = NPC(
-    sprite_id=419,
+    sprite_id=SPR0419_MACHINE_MADE_MACK,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -11329,7 +11354,7 @@ MACHINE_MADE_MACK_NPC_2 = NPC(
 )
 
 GOLDEN_CHOMP_BACK_NPC = NPC(
-    sprite_id=175,
+    sprite_id=SPR0175_GOLDEN_CHOMP_BACK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=9,
     obtuse_axis=9,
@@ -11353,7 +11378,7 @@ GOLDEN_CHOMP_BACK_NPC = NPC(
 )
 
 CHOMP_FRONT_NPC = NPC(
-    sprite_id=176,
+    sprite_id=SPR0176_CHOMP_FRONT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=9,
     obtuse_axis=9,
@@ -11377,7 +11402,7 @@ CHOMP_FRONT_NPC = NPC(
 )
 
 FROGGIE_STICK_NPC_2 = NPC(
-    sprite_id=32,
+    sprite_id=SPR0032_FROGGIE_STICK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -11401,7 +11426,7 @@ FROGGIE_STICK_NPC_2 = NPC(
 )
 
 SMELTER_BACK_SECTION_NPC = NPC(
-    sprite_id=173,
+    sprite_id=SPR0173_SMELTER_BACK_SECTION,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -11425,7 +11450,7 @@ SMELTER_BACK_SECTION_NPC = NPC(
 )
 
 GENO_DOLL_NPC = NPC(
-    sprite_id=172,
+    sprite_id=SPR0172_GENO_DOLL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -11449,7 +11474,7 @@ GENO_DOLL_NPC = NPC(
 )
 
 POUNDETTE_NPC_2 = NPC(
-    sprite_id=324,
+    sprite_id=SPR0324_POUNDETTE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -11473,7 +11498,7 @@ POUNDETTE_NPC_2 = NPC(
 )
 
 J_PUZZLE_BLOCK_NPC_6 = NPC(
-    sprite_id=104,
+    sprite_id=SPR0104_J_PUZZLE_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -11497,7 +11522,7 @@ J_PUZZLE_BLOCK_NPC_6 = NPC(
 )
 
 SPARKLES_FROM_STAR_PIECE_NPC_2 = NPC(
-    sprite_id=171,
+    sprite_id=SPR0171_SPARKLES_FROM_STAR_PIECE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -11521,7 +11546,7 @@ SPARKLES_FROM_STAR_PIECE_NPC_2 = NPC(
 )
 
 MACK_NPC = NPC(
-    sprite_id=480,
+    sprite_id=SPR0480_MACK,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -11545,7 +11570,7 @@ MACK_NPC = NPC(
 )
 
 DR_TOPPER_GREEN_NPC = NPC(
-    sprite_id=170,
+    sprite_id=SPR0170_DR_TOPPER_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=9,
     obtuse_axis=9,
@@ -11569,7 +11594,7 @@ DR_TOPPER_GREEN_NPC = NPC(
 )
 
 BOOMER_RED_NPC = NPC(
-    sprite_id=169,
+    sprite_id=SPR0169_BOOMER_RED,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=8,
     obtuse_axis=8,
@@ -11593,7 +11618,7 @@ BOOMER_RED_NPC = NPC(
 )
 
 DRILL_BIT_NPC = NPC(
-    sprite_id=483,
+    sprite_id=SPR0483_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -11617,7 +11642,7 @@ DRILL_BIT_NPC = NPC(
 )
 
 FACTORY_CHIEF_NPC = NPC(
-    sprite_id=330,
+    sprite_id=SPR0330_FACTORY_CHIEF,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -11641,7 +11666,7 @@ FACTORY_CHIEF_NPC = NPC(
 )
 
 POISON_TOXIC_GAS_NPC = NPC(
-    sprite_id=159,
+    sprite_id=SPR0159_POISON_TOXIC_GAS,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -11665,7 +11690,7 @@ POISON_TOXIC_GAS_NPC = NPC(
 )
 
 BOWYER_NPC = NPC(
-    sprite_id=486,
+    sprite_id=SPR0486_BOWYER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=14,
     obtuse_axis=9,
@@ -11689,7 +11714,7 @@ BOWYER_NPC = NPC(
 )
 
 AERO_UPRIGHT_NPC = NPC(
-    sprite_id=174,
+    sprite_id=SPR0174_AERO_UPRIGHT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -11713,7 +11738,7 @@ AERO_UPRIGHT_NPC = NPC(
 )
 
 THROWN_HAMMER_NPC = NPC(
-    sprite_id=545,
+    sprite_id=SPR0545_THROWN_HAMMER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -11737,7 +11762,7 @@ THROWN_HAMMER_NPC = NPC(
 )
 
 FACTORY_CLERK_GREEN_NPC_3 = NPC(
-    sprite_id=142,
+    sprite_id=SPR0142_FACTORY_CLERK_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -11761,7 +11786,7 @@ FACTORY_CLERK_GREEN_NPC_3 = NPC(
 )
 
 BLUE_GREEN_STAR_PIECE_SPINNING_NPC = NPC(
-    sprite_id=156,
+    sprite_id=SPR0156_BLUE_GREEN_STAR_PIECE_SPINNING,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -11785,7 +11810,7 @@ BLUE_GREEN_STAR_PIECE_SPINNING_NPC = NPC(
 )
 
 SMITHY_S_HAMMER_NPC = NPC(
-    sprite_id=157,
+    sprite_id=SPR0157_SMITHY_S_HAMMER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -11809,7 +11834,7 @@ SMITHY_S_HAMMER_NPC = NPC(
 )
 
 SMITHY_S_CHEST_NPC = NPC(
-    sprite_id=158,
+    sprite_id=SPR0158_SMITHY_S_CHEST,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -11833,7 +11858,7 @@ SMITHY_S_CHEST_NPC = NPC(
 )
 
 FACTORY_MANAGER_BLUE_NPC = NPC(
-    sprite_id=167,
+    sprite_id=SPR0167_FACTORY_MANAGER_BLUE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -11857,7 +11882,7 @@ FACTORY_MANAGER_BLUE_NPC = NPC(
 )
 
 ROLLING_BARREL_NPC_3 = NPC(
-    sprite_id=98,
+    sprite_id=SPR0098_ROLLING_BARREL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -11881,7 +11906,7 @@ ROLLING_BARREL_NPC_3 = NPC(
 )
 
 STAR_EGG_LITTLE_BROWN_BIRD_NPC_2 = NPC(
-    sprite_id=777,
+    sprite_id=SPR0777_STAR_EGG_LITTLE_BROWN_BIRD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -11905,7 +11930,7 @@ STAR_EGG_LITTLE_BROWN_BIRD_NPC_2 = NPC(
 )
 
 FACTORY_CRANE_NPC = NPC(
-    sprite_id=155,
+    sprite_id=SPR0155_FACTORY_CRANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -11929,7 +11954,7 @@ FACTORY_CRANE_NPC = NPC(
 )
 
 FACTORY_DIRECTOR_RED_NPC = NPC(
-    sprite_id=168,
+    sprite_id=SPR0168_FACTORY_DIRECTOR_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -11953,7 +11978,7 @@ FACTORY_DIRECTOR_RED_NPC = NPC(
 )
 
 GAMEBOY_KID_NPC = NPC(
-    sprite_id=124,
+    sprite_id=SPR0124_GAMEBOY_KID,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -11977,7 +12002,7 @@ GAMEBOY_KID_NPC = NPC(
 )
 
 COIN_NPC_2 = NPC(
-    sprite_id=192,
+    sprite_id=SPR0192_COIN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12001,7 +12026,7 @@ COIN_NPC_2 = NPC(
 )
 
 COMMANDER_TROOPA_NPC_2 = NPC(
-    sprite_id=146,
+    sprite_id=SPR0146_COMMANDER_TROOPA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -12025,7 +12050,7 @@ COMMANDER_TROOPA_NPC_2 = NPC(
 )
 
 SKY_TROOPA_NPC_2 = NPC(
-    sprite_id=258,
+    sprite_id=SPR0258_SKY_TROOPA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -12049,7 +12074,7 @@ SKY_TROOPA_NPC_2 = NPC(
 )
 
 FALLING_STEPPING_BRIDGE_BLOCK_NPC_3 = NPC(
-    sprite_id=620,
+    sprite_id=SPR0620_FALLING_STEPPING_BRIDGE_BLOCK,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=7,
     obtuse_axis=7,
@@ -12073,7 +12098,7 @@ FALLING_STEPPING_BRIDGE_BLOCK_NPC_3 = NPC(
 )
 
 TREASURE_CHEST_NPC_2 = NPC(
-    sprite_id=94,
+    sprite_id=SPR0094_TREASURE_CHEST,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=7,
     obtuse_axis=7,
@@ -12097,7 +12122,7 @@ TREASURE_CHEST_NPC_2 = NPC(
 )
 
 SNIFIT_NPC_2 = NPC(
-    sprite_id=504,
+    sprite_id=SPR0504_SNIFIT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12121,7 +12146,7 @@ SNIFIT_NPC_2 = NPC(
 )
 
 SNIFIT_NPC_3 = NPC(
-    sprite_id=504,
+    sprite_id=SPR0504_SNIFIT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12145,7 +12170,7 @@ SNIFIT_NPC_3 = NPC(
 )
 
 BRICK_BEANSTALK_BLOCK_NPC_2 = NPC(
-    sprite_id=614,
+    sprite_id=SPR0614_BRICK_BEANSTALK_BLOCK,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=7,
     obtuse_axis=7,
@@ -12169,7 +12194,7 @@ BRICK_BEANSTALK_BLOCK_NPC_2 = NPC(
 )
 
 YELLOW_STEPPING_BLOCK_NPC_4 = NPC(
-    sprite_id=105,
+    sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=6,
     obtuse_axis=6,
@@ -12193,7 +12218,7 @@ YELLOW_STEPPING_BLOCK_NPC_4 = NPC(
 )
 
 YELLOW_STEPPING_BLOCK_NPC_5 = NPC(
-    sprite_id=105,
+    sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=6,
     obtuse_axis=6,
@@ -12217,7 +12242,7 @@ YELLOW_STEPPING_BLOCK_NPC_5 = NPC(
 )
 
 SAVE_POINT_NPC_3 = NPC(
-    sprite_id=102,
+    sprite_id=SPR0102_SAVE_POINT,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=7,
     obtuse_axis=7,
@@ -12241,7 +12266,7 @@ SAVE_POINT_NPC_3 = NPC(
 )
 
 SAVE_POINT_NPC_4 = NPC(
-    sprite_id=102,
+    sprite_id=SPR0102_SAVE_POINT,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=7,
     obtuse_axis=7,
@@ -12265,7 +12290,7 @@ SAVE_POINT_NPC_4 = NPC(
 )
 
 CULEX_NPC = NPC(
-    sprite_id=511,
+    sprite_id=SPR0511_CULEX,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12289,7 +12314,7 @@ CULEX_NPC = NPC(
 )
 
 THROWN_HAMMER_NPC_2 = NPC(
-    sprite_id=545,
+    sprite_id=SPR0545_THROWN_HAMMER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -12313,7 +12338,7 @@ THROWN_HAMMER_NPC_2 = NPC(
 )
 
 CROCO_NPC_5 = NPC(
-    sprite_id=48,
+    sprite_id=SPR0048_CROCO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -12337,7 +12362,7 @@ CROCO_NPC_5 = NPC(
 )
 
 CROCO_NPC_6 = NPC(
-    sprite_id=48,
+    sprite_id=SPR0048_CROCO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -12361,7 +12386,7 @@ CROCO_NPC_6 = NPC(
 )
 
 SHYSTER_NPC_2 = NPC(
-    sprite_id=414,
+    sprite_id=SPR0414_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12385,7 +12410,7 @@ SHYSTER_NPC_2 = NPC(
 )
 
 SHYSTER_NPC_3 = NPC(
-    sprite_id=414,
+    sprite_id=SPR0414_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12409,7 +12434,7 @@ SHYSTER_NPC_3 = NPC(
 )
 
 SHYSTER_NPC_4 = NPC(
-    sprite_id=414,
+    sprite_id=SPR0414_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12433,7 +12458,7 @@ SHYSTER_NPC_4 = NPC(
 )
 
 MIMIC_FACE_STANDALONE_NPC_2 = NPC(
-    sprite_id=110,
+    sprite_id=SPR0110_MIMIC_FACE_STANDALONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12457,7 +12482,7 @@ MIMIC_FACE_STANDALONE_NPC_2 = NPC(
 )
 
 PANDORITE_NPC = NPC(
-    sprite_id=279,
+    sprite_id=SPR0279_PANDORITE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -12481,7 +12506,7 @@ PANDORITE_NPC = NPC(
 )
 
 BELOME_SCARECROW_NPC_2 = NPC(
-    sprite_id=62,
+    sprite_id=SPR0062_BELOME_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=8,
     obtuse_axis=3,
@@ -12505,7 +12530,7 @@ BELOME_SCARECROW_NPC_2 = NPC(
 )
 
 BELOME_SCARECROW_NPC_3 = NPC(
-    sprite_id=62,
+    sprite_id=SPR0062_BELOME_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=8,
     obtuse_axis=3,
@@ -12529,7 +12554,7 @@ BELOME_SCARECROW_NPC_3 = NPC(
 )
 
 BELOME_SCARECROW_NPC_4 = NPC(
-    sprite_id=62,
+    sprite_id=SPR0062_BELOME_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=8,
     obtuse_axis=3,
@@ -12553,7 +12578,7 @@ BELOME_SCARECROW_NPC_4 = NPC(
 )
 
 AERO_NPC_2 = NPC(
-    sprite_id=487,
+    sprite_id=SPR0487_AERO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12577,7 +12602,7 @@ AERO_NPC_2 = NPC(
 )
 
 CROCO_OVERWORLD_NPC_2 = NPC(
-    sprite_id=190,
+    sprite_id=SPR0190_CROCO_OVERWORLD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -12601,7 +12626,7 @@ CROCO_OVERWORLD_NPC_2 = NPC(
 )
 
 CROCO_OVERWORLD_NPC_3 = NPC(
-    sprite_id=190,
+    sprite_id=SPR0190_CROCO_OVERWORLD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -12625,7 +12650,7 @@ CROCO_OVERWORLD_NPC_3 = NPC(
 )
 
 CROCO_OVERWORLD_NPC_4 = NPC(
-    sprite_id=190,
+    sprite_id=SPR0190_CROCO_OVERWORLD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -12649,7 +12674,7 @@ CROCO_OVERWORLD_NPC_4 = NPC(
 )
 
 CROOK_NPC_2 = NPC(
-    sprite_id=261,
+    sprite_id=SPR0261_CROOK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -12673,7 +12698,7 @@ CROOK_NPC_2 = NPC(
 )
 
 CROOK_NPC_3 = NPC(
-    sprite_id=261,
+    sprite_id=SPR0261_CROOK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -12697,7 +12722,7 @@ CROOK_NPC_3 = NPC(
 )
 
 CROOK_NPC_4 = NPC(
-    sprite_id=261,
+    sprite_id=SPR0261_CROOK,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=6,
@@ -12721,7 +12746,7 @@ CROOK_NPC_4 = NPC(
 )
 
 BOB_OMB_NPC_3 = NPC(
-    sprite_id=281,
+    sprite_id=SPR0281_BOB_OMB,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12745,7 +12770,7 @@ BOB_OMB_NPC_3 = NPC(
 )
 
 BOB_OMB_NPC_4 = NPC(
-    sprite_id=281,
+    sprite_id=SPR0281_BOB_OMB,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12769,7 +12794,7 @@ BOB_OMB_NPC_4 = NPC(
 )
 
 BOB_OMB_NPC_5 = NPC(
-    sprite_id=281,
+    sprite_id=SPR0281_BOB_OMB,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12793,7 +12818,7 @@ BOB_OMB_NPC_5 = NPC(
 )
 
 SNIFIT_NPC_4 = NPC(
-    sprite_id=504,
+    sprite_id=SPR0504_SNIFIT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12817,7 +12842,7 @@ SNIFIT_NPC_4 = NPC(
 )
 
 SNIFIT_NPC_5 = NPC(
-    sprite_id=504,
+    sprite_id=SPR0504_SNIFIT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -12841,7 +12866,7 @@ SNIFIT_NPC_5 = NPC(
 )
 
 APPRENTICE_NPC_2 = NPC(
-    sprite_id=384,
+    sprite_id=SPR0384_APPRENTICE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -12865,7 +12890,7 @@ APPRENTICE_NPC_2 = NPC(
 )
 
 APPRENTICE_NPC_3 = NPC(
-    sprite_id=384,
+    sprite_id=SPR0384_APPRENTICE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -12889,7 +12914,7 @@ APPRENTICE_NPC_3 = NPC(
 )
 
 APPRENTICE_NPC_4 = NPC(
-    sprite_id=384,
+    sprite_id=SPR0384_APPRENTICE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -12913,7 +12938,7 @@ APPRENTICE_NPC_4 = NPC(
 )
 
 BOOSTER_NPC_2 = NPC(
-    sprite_id=50,
+    sprite_id=SPR0050_BOOSTER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -12937,7 +12962,7 @@ BOOSTER_NPC_2 = NPC(
 )
 
 BOOSTER_NPC_3 = NPC(
-    sprite_id=50,
+    sprite_id=SPR0050_BOOSTER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -12961,7 +12986,7 @@ BOOSTER_NPC_3 = NPC(
 )
 
 BOOSTER_NPC_4 = NPC(
-    sprite_id=50,
+    sprite_id=SPR0050_BOOSTER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -12985,7 +13010,7 @@ BOOSTER_NPC_4 = NPC(
 )
 
 GRATE_GUY_FROM_CASINO_NPC_2 = NPC(
-    sprite_id=177,
+    sprite_id=SPR0177_GRATE_GUY_FROM_CASINO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -13009,7 +13034,7 @@ GRATE_GUY_FROM_CASINO_NPC_2 = NPC(
 )
 
 GRATE_GUY_FROM_CASINO_NPC_3 = NPC(
-    sprite_id=177,
+    sprite_id=SPR0177_GRATE_GUY_FROM_CASINO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -13033,7 +13058,7 @@ GRATE_GUY_FROM_CASINO_NPC_3 = NPC(
 )
 
 GRATE_GUY_FROM_CASINO_NPC_4 = NPC(
-    sprite_id=177,
+    sprite_id=SPR0177_GRATE_GUY_FROM_CASINO,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -13057,7 +13082,7 @@ GRATE_GUY_FROM_CASINO_NPC_4 = NPC(
 )
 
 TORTE_NPC_3 = NPC(
-    sprite_id=398,
+    sprite_id=SPR0398_TORTE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13081,7 +13106,7 @@ TORTE_NPC_3 = NPC(
 )
 
 TORTE_NPC_4 = NPC(
-    sprite_id=398,
+    sprite_id=SPR0398_TORTE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13105,7 +13130,7 @@ TORTE_NPC_4 = NPC(
 )
 
 BUNDT_OBJECT_NPC_2 = NPC(
-    sprite_id=470,
+    sprite_id=SPR0470_BUNDT_OBJECT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -13129,7 +13154,7 @@ BUNDT_OBJECT_NPC_2 = NPC(
 )
 
 BUNDT_NPC = NPC(
-    sprite_id=450,
+    sprite_id=SPR0450_BUNDT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -13153,7 +13178,7 @@ BUNDT_NPC = NPC(
 )
 
 BLOOBER_NPC_4 = NPC(
-    sprite_id=266,
+    sprite_id=SPR0266_BLOOBER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -13177,7 +13202,7 @@ BLOOBER_NPC_4 = NPC(
 )
 
 GOOMBETTE_LOWER_NPC_2 = NPC(
-    sprite_id=960,
+    sprite_id=SPR0960_GOOMBETTE_LOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13201,7 +13226,7 @@ GOOMBETTE_LOWER_NPC_2 = NPC(
 )
 
 GOOMBETTE_LOWER_NPC_3 = NPC(
-    sprite_id=960,
+    sprite_id=SPR0960_GOOMBETTE_LOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13225,7 +13250,7 @@ GOOMBETTE_LOWER_NPC_3 = NPC(
 )
 
 GOOMBETTE_LOWER_NPC_4 = NPC(
-    sprite_id=960,
+    sprite_id=SPR0960_GOOMBETTE_LOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13249,7 +13274,7 @@ GOOMBETTE_LOWER_NPC_4 = NPC(
 )
 
 BANDANA_RED_NPC_2 = NPC(
-    sprite_id=267,
+    sprite_id=SPR0267_BANDANA_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13273,7 +13298,7 @@ BANDANA_RED_NPC_2 = NPC(
 )
 
 BANDANA_RED_NPC_3 = NPC(
-    sprite_id=267,
+    sprite_id=SPR0267_BANDANA_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13297,7 +13322,7 @@ BANDANA_RED_NPC_3 = NPC(
 )
 
 BANDANA_RED_NPC_4 = NPC(
-    sprite_id=267,
+    sprite_id=SPR0267_BANDANA_RED,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13321,7 +13346,7 @@ BANDANA_RED_NPC_4 = NPC(
 )
 
 BANDANA_BLUE_NPC_2 = NPC(
-    sprite_id=331,
+    sprite_id=SPR0331_BANDANA_BLUE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13345,7 +13370,7 @@ BANDANA_BLUE_NPC_2 = NPC(
 )
 
 BANDANA_BLUE_NPC_3 = NPC(
-    sprite_id=331,
+    sprite_id=SPR0331_BANDANA_BLUE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13369,7 +13394,7 @@ BANDANA_BLUE_NPC_3 = NPC(
 )
 
 BANDANA_BLUE_NPC_4 = NPC(
-    sprite_id=331,
+    sprite_id=SPR0331_BANDANA_BLUE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13393,7 +13418,7 @@ BANDANA_BLUE_NPC_4 = NPC(
 )
 
 JONATHAN_JONES_NPC_3 = NPC(
-    sprite_id=55,
+    sprite_id=SPR0055_JONATHAN_JONES,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -13417,7 +13442,7 @@ JONATHAN_JONES_NPC_3 = NPC(
 )
 
 JONATHAN_JONES_NPC_4 = NPC(
-    sprite_id=55,
+    sprite_id=SPR0055_JONATHAN_JONES,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -13441,7 +13466,7 @@ JONATHAN_JONES_NPC_4 = NPC(
 )
 
 JOHNNY_NPC = NPC(
-    sprite_id=505,
+    sprite_id=SPR0505_JOHNNY,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -13465,7 +13490,7 @@ JOHNNY_NPC = NPC(
 )
 
 SEASIDE_TOWN_FAKE_GREEN_NPC_2 = NPC(
-    sprite_id=162,
+    sprite_id=SPR0162_SEASIDE_TOWN_FAKE_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13489,7 +13514,7 @@ SEASIDE_TOWN_FAKE_GREEN_NPC_2 = NPC(
 )
 
 SEASIDE_TOWN_FAKE_GREEN_NPC_3 = NPC(
-    sprite_id=162,
+    sprite_id=SPR0162_SEASIDE_TOWN_FAKE_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13513,7 +13538,7 @@ SEASIDE_TOWN_FAKE_GREEN_NPC_3 = NPC(
 )
 
 SEASIDE_TOWN_FAKE_GREEN_NPC_4 = NPC(
-    sprite_id=162,
+    sprite_id=SPR0162_SEASIDE_TOWN_FAKE_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13537,7 +13562,7 @@ SEASIDE_TOWN_FAKE_GREEN_NPC_4 = NPC(
 )
 
 SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_2 = NPC(
-    sprite_id=163,
+    sprite_id=SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13561,7 +13586,7 @@ SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_2 = NPC(
 )
 
 SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_3 = NPC(
-    sprite_id=163,
+    sprite_id=SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13585,7 +13610,7 @@ SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_3 = NPC(
 )
 
 SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_4 = NPC(
-    sprite_id=163,
+    sprite_id=SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13609,7 +13634,7 @@ SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_4 = NPC(
 )
 
 YARIDOVICH_NPC = NPC(
-    sprite_id=482,
+    sprite_id=SPR0482_YARIDOVICH,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -13633,7 +13658,7 @@ YARIDOVICH_NPC = NPC(
 )
 
 MOKURA_S_CLOUD_BLUE_NPC_2 = NPC(
-    sprite_id=201,
+    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -13657,7 +13682,7 @@ MOKURA_S_CLOUD_BLUE_NPC_2 = NPC(
 )
 
 MOKURA_NPC = NPC(
-    sprite_id=573,
+    sprite_id=SPR0573_MOKURA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,
@@ -13681,7 +13706,7 @@ MOKURA_NPC = NPC(
 )
 
 BELOME_SCARECROW_NPC_2 = NPC(
-    sprite_id=392,
+    sprite_id=SPR0392_BELOME_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -13705,7 +13730,7 @@ BELOME_SCARECROW_NPC_2 = NPC(
 )
 
 BELOME_SCARECROW_NPC_3 = NPC(
-    sprite_id=392,
+    sprite_id=SPR0392_BELOME_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -13729,7 +13754,7 @@ BELOME_SCARECROW_NPC_3 = NPC(
 )
 
 BELOME_SCARECROW_NPC_4 = NPC(
-    sprite_id=392,
+    sprite_id=SPR0392_BELOME_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -13753,7 +13778,7 @@ BELOME_SCARECROW_NPC_4 = NPC(
 )
 
 TERRAPIN_NPC_4 = NPC(
-    sprite_id=256,
+    sprite_id=SPR0256_TERRAPIN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13777,7 +13802,7 @@ TERRAPIN_NPC_4 = NPC(
 )
 
 TERRAPIN_NPC_5 = NPC(
-    sprite_id=256,
+    sprite_id=SPR0256_TERRAPIN,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -13801,7 +13826,7 @@ TERRAPIN_NPC_5 = NPC(
 )
 
 JINX_OVERWORLD_NPC_2 = NPC(
-    sprite_id=607,
+    sprite_id=SPR0607_JINX_OVERWORLD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13825,7 +13850,7 @@ JINX_OVERWORLD_NPC_2 = NPC(
 )
 
 JINX_OVERWORLD_NPC_2 = NPC(
-    sprite_id=191,
+    sprite_id=SPR0191_JINX_OVERWORLD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13849,7 +13874,7 @@ JINX_OVERWORLD_NPC_2 = NPC(
 )
 
 JINX_OVERWORLD_NPC_2 = NPC(
-    sprite_id=608,
+    sprite_id=SPR0608_JINX_OVERWORLD,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13873,7 +13898,7 @@ JINX_OVERWORLD_NPC_2 = NPC(
 )
 
 WIND_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
-    sprite_id=647,
+    sprite_id=SPR0647_WIND_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -13897,7 +13922,7 @@ WIND_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
 )
 
 WATER_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
-    sprite_id=645,
+    sprite_id=SPR0645_WATER_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -13921,7 +13946,7 @@ WATER_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
 )
 
 PIRANHA_PLANT_NPC_2 = NPC(
-    sprite_id=263,
+    sprite_id=SPR0263_PIRANHA_PLANT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -13945,7 +13970,7 @@ PIRANHA_PLANT_NPC_2 = NPC(
 )
 
 PIRANHA_PLANT_NPC_3 = NPC(
-    sprite_id=263,
+    sprite_id=SPR0263_PIRANHA_PLANT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -13969,7 +13994,7 @@ PIRANHA_PLANT_NPC_3 = NPC(
 )
 
 PIRANHA_PLANT_NPC_4 = NPC(
-    sprite_id=263,
+    sprite_id=SPR0263_PIRANHA_PLANT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -13993,7 +14018,7 @@ PIRANHA_PLANT_NPC_4 = NPC(
 )
 
 DODO_NPC_2 = NPC(
-    sprite_id=393,
+    sprite_id=SPR0393_DODO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14017,7 +14042,7 @@ DODO_NPC_2 = NPC(
 )
 
 BLUEBIRD_NPC_3 = NPC(
-    sprite_id=333,
+    sprite_id=SPR0333_BLUEBIRD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -14041,7 +14066,7 @@ BLUEBIRD_NPC_3 = NPC(
 )
 
 BLUEBIRD_NPC_4 = NPC(
-    sprite_id=333,
+    sprite_id=SPR0333_BLUEBIRD,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -14065,7 +14090,7 @@ BLUEBIRD_NPC_4 = NPC(
 )
 
 BIRDY_NPC_4 = NPC(
-    sprite_id=269,
+    sprite_id=SPR0269_BIRDY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -14089,7 +14114,7 @@ BIRDY_NPC_4 = NPC(
 )
 
 BIRDY_NPC_5 = NPC(
-    sprite_id=269,
+    sprite_id=SPR0269_BIRDY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -14113,7 +14138,7 @@ BIRDY_NPC_5 = NPC(
 )
 
 BIRDY_NPC_6 = NPC(
-    sprite_id=269,
+    sprite_id=SPR0269_BIRDY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -14137,7 +14162,7 @@ BIRDY_NPC_6 = NPC(
 )
 
 VALENTINA_NPC_2 = NPC(
-    sprite_id=56,
+    sprite_id=SPR0056_VALENTINA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -14161,7 +14186,7 @@ VALENTINA_NPC_2 = NPC(
 )
 
 VALENTINA_NPC_3 = NPC(
-    sprite_id=56,
+    sprite_id=SPR0056_VALENTINA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -14185,7 +14210,7 @@ VALENTINA_NPC_3 = NPC(
 )
 
 VALENTINA_NPC_4 = NPC(
-    sprite_id=56,
+    sprite_id=SPR0056_VALENTINA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -14209,7 +14234,7 @@ VALENTINA_NPC_4 = NPC(
 )
 
 VALENTINA_NPC = NPC(
-    sprite_id=507,
+    sprite_id=SPR0507_VALENTINA,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -14233,7 +14258,7 @@ VALENTINA_NPC = NPC(
 )
 
 SPARKY_NPC_2 = NPC(
-    sprite_id=277,
+    sprite_id=SPR0277_SPARKY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,
@@ -14257,7 +14282,7 @@ SPARKY_NPC_2 = NPC(
 )
 
 CZAR_DRAGON_NPC = NPC(
-    sprite_id=476,
+    sprite_id=SPR0476_CZAR_DRAGON,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=13,
     obtuse_axis=13,
@@ -14281,7 +14306,7 @@ CZAR_DRAGON_NPC = NPC(
 )
 
 AXEM_BLACK_NPC_2 = NPC(
-    sprite_id=485,
+    sprite_id=SPR0485_AXEM_BLACK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -14305,7 +14330,7 @@ AXEM_BLACK_NPC_2 = NPC(
 )
 
 AXEM_PINK_NPC_2 = NPC(
-    sprite_id=484,
+    sprite_id=SPR0484_AXEM_PINK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -14329,7 +14354,7 @@ AXEM_PINK_NPC_2 = NPC(
 )
 
 AXEM_YELLOW_NPC_2 = NPC(
-    sprite_id=463,
+    sprite_id=SPR0463_AXEM_YELLOW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -14353,7 +14378,7 @@ AXEM_YELLOW_NPC_2 = NPC(
 )
 
 AXEM_GREEN_NPC_3 = NPC(
-    sprite_id=467,
+    sprite_id=SPR0467_AXEM_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -14377,7 +14402,7 @@ AXEM_GREEN_NPC_3 = NPC(
 )
 
 DING_A_LING_NPC = NPC(
-    sprite_id=454,
+    sprite_id=SPR0454_DING_A_LING,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -14401,7 +14426,7 @@ DING_A_LING_NPC = NPC(
 )
 
 MACHINE_MADE_AXEM_PINK_NPC_2 = NPC(
-    sprite_id=422,
+    sprite_id=SPR0422_MACHINE_MADE_AXEM_PINK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14425,7 +14450,7 @@ MACHINE_MADE_AXEM_PINK_NPC_2 = NPC(
 )
 
 AXEM_RED_NPC_3 = NPC(
-    sprite_id=466,
+    sprite_id=SPR0466_AXEM_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -14449,7 +14474,7 @@ AXEM_RED_NPC_3 = NPC(
 )
 
 RED_MAGIKOOPA_NPC_2 = NPC(
-    sprite_id=129,
+    sprite_id=SPR0129_RED_MAGIKOOPA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -14473,7 +14498,7 @@ RED_MAGIKOOPA_NPC_2 = NPC(
 )
 
 RED_MAGIKOOPA_NPC_3 = NPC(
-    sprite_id=129,
+    sprite_id=SPR0129_RED_MAGIKOOPA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -14497,7 +14522,7 @@ RED_MAGIKOOPA_NPC_3 = NPC(
 )
 
 RED_MAGIKOOPA_NPC_4 = NPC(
-    sprite_id=129,
+    sprite_id=SPR0129_RED_MAGIKOOPA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -14521,7 +14546,7 @@ RED_MAGIKOOPA_NPC_4 = NPC(
 )
 
 MERLIN_NPC = NPC(
-    sprite_id=353,
+    sprite_id=SPR0353_MERLIN,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -14545,7 +14570,7 @@ MERLIN_NPC = NPC(
 )
 
 SHY_GUY_NPC_3 = NPC(
-    sprite_id=346,
+    sprite_id=SPR0346_SHY_GUY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -14569,7 +14594,7 @@ SHY_GUY_NPC_3 = NPC(
 )
 
 SHY_GUY_NPC_4 = NPC(
-    sprite_id=346,
+    sprite_id=SPR0346_SHY_GUY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -14593,7 +14618,7 @@ SHY_GUY_NPC_4 = NPC(
 )
 
 SHY_GUY_NPC_5 = NPC(
-    sprite_id=346,
+    sprite_id=SPR0346_SHY_GUY,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=3,
     obtuse_axis=3,
@@ -14617,7 +14642,7 @@ SHY_GUY_NPC_5 = NPC(
 )
 
 MARIO_S_EXOR_IMPRESSION_NPC_3 = NPC(
-    sprite_id=111,
+    sprite_id=SPR0111_MARIO_S_EXOR_IMPRESSION,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -14641,7 +14666,7 @@ MARIO_S_EXOR_IMPRESSION_NPC_3 = NPC(
 )
 
 GREY_STONE_BLOCK_NPC_3 = NPC(
-    sprite_id=632,
+    sprite_id=SPR0632_GREY_STONE_BLOCK,
     shadow_size=ShadowSize.BLOCK,
     acute_axis=7,
     obtuse_axis=7,
@@ -14665,7 +14690,7 @@ GREY_STONE_BLOCK_NPC_3 = NPC(
 )
 
 CLOAKER_ST_TIME_NPC = NPC(
-    sprite_id=477,
+    sprite_id=SPR0477_CLOAKER_ST_TIME,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=8,
     obtuse_axis=8,
@@ -14689,7 +14714,7 @@ CLOAKER_ST_TIME_NPC = NPC(
 )
 
 MAD_MALLET_NPC_2 = NPC(
-    sprite_id=259,
+    sprite_id=SPR0259_MAD_MALLET,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -14713,7 +14738,7 @@ MAD_MALLET_NPC_2 = NPC(
 )
 
 MAD_MALLET_NPC_3 = NPC(
-    sprite_id=259,
+    sprite_id=SPR0259_MAD_MALLET,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -14737,7 +14762,7 @@ MAD_MALLET_NPC_3 = NPC(
 )
 
 MAD_MALLET_NPC_4 = NPC(
-    sprite_id=259,
+    sprite_id=SPR0259_MAD_MALLET,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -14761,7 +14786,7 @@ MAD_MALLET_NPC_4 = NPC(
 )
 
 FACTORY_CLERK_GREEN_NPC_4 = NPC(
-    sprite_id=142,
+    sprite_id=SPR0142_FACTORY_CLERK_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14785,7 +14810,7 @@ FACTORY_CLERK_GREEN_NPC_4 = NPC(
 )
 
 FACTORY_CLERK_GREEN_NPC_5 = NPC(
-    sprite_id=142,
+    sprite_id=SPR0142_FACTORY_CLERK_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14809,7 +14834,7 @@ FACTORY_CLERK_GREEN_NPC_5 = NPC(
 )
 
 FACTORY_MANAGER_BLUE_NPC_2 = NPC(
-    sprite_id=167,
+    sprite_id=SPR0167_FACTORY_MANAGER_BLUE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14833,7 +14858,7 @@ FACTORY_MANAGER_BLUE_NPC_2 = NPC(
 )
 
 FACTORY_MANAGER_BLUE_NPC_3 = NPC(
-    sprite_id=167,
+    sprite_id=SPR0167_FACTORY_MANAGER_BLUE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14857,7 +14882,7 @@ FACTORY_MANAGER_BLUE_NPC_3 = NPC(
 )
 
 FACTORY_MANAGER_BLUE_NPC_4 = NPC(
-    sprite_id=167,
+    sprite_id=SPR0167_FACTORY_MANAGER_BLUE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14881,7 +14906,7 @@ FACTORY_MANAGER_BLUE_NPC_4 = NPC(
 )
 
 FACTORY_DIRECTOR_RED_NPC_2 = NPC(
-    sprite_id=168,
+    sprite_id=SPR0168_FACTORY_DIRECTOR_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14905,7 +14930,7 @@ FACTORY_DIRECTOR_RED_NPC_2 = NPC(
 )
 
 FACTORY_DIRECTOR_RED_NPC_3 = NPC(
-    sprite_id=168,
+    sprite_id=SPR0168_FACTORY_DIRECTOR_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14929,7 +14954,7 @@ FACTORY_DIRECTOR_RED_NPC_3 = NPC(
 )
 
 FACTORY_DIRECTOR_RED_NPC_4 = NPC(
-    sprite_id=168,
+    sprite_id=SPR0168_FACTORY_DIRECTOR_RED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -14953,7 +14978,7 @@ FACTORY_DIRECTOR_RED_NPC_4 = NPC(
 )
 
 FACTORY_CHIEF_NPC_2 = NPC(
-    sprite_id=330,
+    sprite_id=SPR0330_FACTORY_CHIEF,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -14977,7 +15002,7 @@ FACTORY_CHIEF_NPC_2 = NPC(
 )
 
 FACTORY_CHIEF_NPC_3 = NPC(
-    sprite_id=330,
+    sprite_id=SPR0330_FACTORY_CHIEF,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -15001,7 +15026,7 @@ FACTORY_CHIEF_NPC_3 = NPC(
 )
 
 FACTORY_CHIEF_NPC_4 = NPC(
-    sprite_id=330,
+    sprite_id=SPR0330_FACTORY_CHIEF,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=7,
     obtuse_axis=7,
@@ -15025,7 +15050,7 @@ FACTORY_CHIEF_NPC_4 = NPC(
 )
 
 DRILL_BIT_NPC_2 = NPC(
-    sprite_id=483,
+    sprite_id=SPR0483_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15049,7 +15074,7 @@ DRILL_BIT_NPC_2 = NPC(
 )
 
 DRILL_BIT_NPC_3 = NPC(
-    sprite_id=483,
+    sprite_id=SPR0483_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15073,7 +15098,7 @@ DRILL_BIT_NPC_3 = NPC(
 )
 
 DRILL_BIT_NPC_4 = NPC(
-    sprite_id=483,
+    sprite_id=SPR0483_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15097,7 +15122,7 @@ DRILL_BIT_NPC_4 = NPC(
 )
 
 MACHINE_MADE_SHYSTER_NPC_2 = NPC(
-    sprite_id=401,
+    sprite_id=SPR0401_MACHINE_MADE_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15121,7 +15146,7 @@ MACHINE_MADE_SHYSTER_NPC_2 = NPC(
 )
 
 MACHINE_MADE_SHYSTER_NPC_3 = NPC(
-    sprite_id=401,
+    sprite_id=SPR0401_MACHINE_MADE_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15145,7 +15170,7 @@ MACHINE_MADE_SHYSTER_NPC_3 = NPC(
 )
 
 MACHINE_MADE_SHYSTER_NPC_4 = NPC(
-    sprite_id=401,
+    sprite_id=SPR0401_MACHINE_MADE_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15169,7 +15194,7 @@ MACHINE_MADE_SHYSTER_NPC_4 = NPC(
 )
 
 JABIT_NPC_2 = NPC(
-    sprite_id=351,
+    sprite_id=SPR0351_JABIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15193,7 +15218,7 @@ JABIT_NPC_2 = NPC(
 )
 
 JABIT_NPC_3 = NPC(
-    sprite_id=351,
+    sprite_id=SPR0351_JABIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15217,7 +15242,7 @@ JABIT_NPC_3 = NPC(
 )
 
 JABIT_NPC_4 = NPC(
-    sprite_id=351,
+    sprite_id=SPR0351_JABIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15241,7 +15266,7 @@ JABIT_NPC_4 = NPC(
 )
 
 SMITHY_LOWER_NPC = NPC(
-    sprite_id=959,
+    sprite_id=SPR0959_SMITHY_LOWER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=12,
     obtuse_axis=15,
@@ -15265,7 +15290,7 @@ SMITHY_LOWER_NPC = NPC(
 )
 
 POUNDER_NPC_2 = NPC(
-    sprite_id=323,
+    sprite_id=SPR0323_POUNDER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -15289,7 +15314,7 @@ POUNDER_NPC_2 = NPC(
 )
 
 POUNDER_NPC_3 = NPC(
-    sprite_id=323,
+    sprite_id=SPR0323_POUNDER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -15313,7 +15338,7 @@ POUNDER_NPC_3 = NPC(
 )
 
 POUNDER_NPC_4 = NPC(
-    sprite_id=323,
+    sprite_id=SPR0323_POUNDER,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -15337,7 +15362,7 @@ POUNDER_NPC_4 = NPC(
 )
 
 POUNDETTE_NPC_3 = NPC(
-    sprite_id=324,
+    sprite_id=SPR0324_POUNDETTE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -15361,7 +15386,7 @@ POUNDETTE_NPC_3 = NPC(
 )
 
 POUNDETTE_NPC_4 = NPC(
-    sprite_id=324,
+    sprite_id=SPR0324_POUNDETTE,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -15385,7 +15410,7 @@ POUNDETTE_NPC_4 = NPC(
 )
 
 EGG_NPC = NPC(
-    sprite_id=237,
+    sprite_id=SPR0237_EGG,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -15409,7 +15434,7 @@ EGG_NPC = NPC(
 )
 
 COUNT_DOWN_GRIDPLANE_NPC = NPC(
-    sprite_id=572,
+    sprite_id=SPR0572_COUNT_DOWN_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -15433,7 +15458,7 @@ COUNT_DOWN_GRIDPLANE_NPC = NPC(
 )
 
 COUNT_DOWN_GRIDPLANE_NPC_2 = NPC(
-    sprite_id=572,
+    sprite_id=SPR0572_COUNT_DOWN_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -15457,7 +15482,7 @@ COUNT_DOWN_GRIDPLANE_NPC_2 = NPC(
 )
 
 PANDORITE_SMALL_NPC = NPC(
-    sprite_id=583,
+    sprite_id=SPR0583_PANDORITE_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15481,7 +15506,7 @@ PANDORITE_SMALL_NPC = NPC(
 )
 
 PANDORITE_SMALL_NPC_2 = NPC(
-    sprite_id=583,
+    sprite_id=SPR0583_PANDORITE_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15505,7 +15530,7 @@ PANDORITE_SMALL_NPC_2 = NPC(
 )
 
 HIDON_SMALL_NPC = NPC(
-    sprite_id=584,
+    sprite_id=SPR0584_HIDON_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15529,7 +15554,7 @@ HIDON_SMALL_NPC = NPC(
 )
 
 HIDON_SMALL_NPC_2 = NPC(
-    sprite_id=584,
+    sprite_id=SPR0584_HIDON_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15553,7 +15578,7 @@ HIDON_SMALL_NPC_2 = NPC(
 )
 
 CHESTER_SMALL_NPC = NPC(
-    sprite_id=585,
+    sprite_id=SPR0585_CHESTER_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15577,7 +15602,7 @@ CHESTER_SMALL_NPC = NPC(
 )
 
 CHESTER_SMALL_NPC_2 = NPC(
-    sprite_id=585,
+    sprite_id=SPR0585_CHESTER_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15601,7 +15626,7 @@ CHESTER_SMALL_NPC_2 = NPC(
 )
 
 BOX_BOY_SMALL_NPC = NPC(
-    sprite_id=586,
+    sprite_id=SPR0586_BOX_BOY_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15625,7 +15650,7 @@ BOX_BOY_SMALL_NPC = NPC(
 )
 
 BOX_BOY_SMALL_NPC_2 = NPC(
-    sprite_id=586,
+    sprite_id=SPR0586_BOX_BOY_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15649,7 +15674,7 @@ BOX_BOY_SMALL_NPC_2 = NPC(
 )
 
 YOSHI_COOKIE_NPC = NPC(
-    sprite_id=254,
+    sprite_id=SPR0254_YOSHI_COOKIE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15673,7 +15698,7 @@ YOSHI_COOKIE_NPC = NPC(
 )
 
 HAMMER_BRO_SMALL_NPC = NPC(
-    sprite_id=587,
+    sprite_id=SPR0587_HAMMER_BRO_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15697,7 +15722,7 @@ HAMMER_BRO_SMALL_NPC = NPC(
 )
 
 HAMMER_BRO_SMALL_NPC_2 = NPC(
-    sprite_id=587,
+    sprite_id=SPR0587_HAMMER_BRO_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15721,7 +15746,7 @@ HAMMER_BRO_SMALL_NPC_2 = NPC(
 )
 
 MACK_SMALL_NPC = NPC(
-    sprite_id=588,
+    sprite_id=SPR0588_MACK_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15745,7 +15770,7 @@ MACK_SMALL_NPC = NPC(
 )
 
 MACK_SMALL_NPC_2 = NPC(
-    sprite_id=588,
+    sprite_id=SPR0588_MACK_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15769,7 +15794,7 @@ MACK_SMALL_NPC_2 = NPC(
 )
 
 BELOME_SMALL_NPC = NPC(
-    sprite_id=589,
+    sprite_id=SPR0589_BELOME_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15793,7 +15818,7 @@ BELOME_SMALL_NPC = NPC(
 )
 
 BELOME_SMALL_NPC_2 = NPC(
-    sprite_id=589,
+    sprite_id=SPR0589_BELOME_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15817,7 +15842,7 @@ BELOME_SMALL_NPC_2 = NPC(
 )
 
 BELOME_SMALL_NPC_3 = NPC(
-    sprite_id=589,
+    sprite_id=SPR0589_BELOME_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15841,7 +15866,7 @@ BELOME_SMALL_NPC_3 = NPC(
 )
 
 BELOME_SMALL_NPC_4 = NPC(
-    sprite_id=589,
+    sprite_id=SPR0589_BELOME_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15865,7 +15890,7 @@ BELOME_SMALL_NPC_4 = NPC(
 )
 
 BOWYER_SMALL_NPC = NPC(
-    sprite_id=591,
+    sprite_id=SPR0591_BOWYER_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15889,7 +15914,7 @@ BOWYER_SMALL_NPC = NPC(
 )
 
 BOWYER_SMALL_NPC_2 = NPC(
-    sprite_id=591,
+    sprite_id=SPR0591_BOWYER_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15913,7 +15938,7 @@ BOWYER_SMALL_NPC_2 = NPC(
 )
 
 PUNCHINELLO_SMALL_NPC = NPC(
-    sprite_id=592,
+    sprite_id=SPR0592_PUNCHINELLO_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -15937,7 +15962,7 @@ PUNCHINELLO_SMALL_NPC = NPC(
 )
 
 PUNCHINELLO_SMALL_NPC_2 = NPC(
-    sprite_id=592,
+    sprite_id=SPR0592_PUNCHINELLO_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -15961,7 +15986,7 @@ PUNCHINELLO_SMALL_NPC_2 = NPC(
 )
 
 DODO_SMALL_NPC = NPC(
-    sprite_id=593,
+    sprite_id=SPR0593_DODO_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -15985,7 +16010,7 @@ DODO_SMALL_NPC = NPC(
 )
 
 DODO_SMALL_NPC_2 = NPC(
-    sprite_id=593,
+    sprite_id=SPR0593_DODO_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16009,7 +16034,7 @@ DODO_SMALL_NPC_2 = NPC(
 )
 
 BIRDETTA_SMALL_NPC = NPC(
-    sprite_id=594,
+    sprite_id=SPR0594_BIRDETTA_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -16033,7 +16058,7 @@ BIRDETTA_SMALL_NPC = NPC(
 )
 
 BIRDETTA_SMALL_NPC_2 = NPC(
-    sprite_id=594,
+    sprite_id=SPR0594_BIRDETTA_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -16057,7 +16082,7 @@ BIRDETTA_SMALL_NPC_2 = NPC(
 )
 
 CZAR_DRAGON_SMALL_NPC = NPC(
-    sprite_id=595,
+    sprite_id=SPR0595_CZAR_DRAGON_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=8,
@@ -16081,7 +16106,7 @@ CZAR_DRAGON_SMALL_NPC = NPC(
 )
 
 CZAR_DRAGON_SMALL_NPC_2 = NPC(
-    sprite_id=595,
+    sprite_id=SPR0595_CZAR_DRAGON_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16105,7 +16130,7 @@ CZAR_DRAGON_SMALL_NPC_2 = NPC(
 )
 
 BOOMER_SMALL_NPC = NPC(
-    sprite_id=596,
+    sprite_id=SPR0596_BOOMER_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -16129,7 +16154,7 @@ BOOMER_SMALL_NPC = NPC(
 )
 
 BOOMER_SMALL_NPC_2 = NPC(
-    sprite_id=596,
+    sprite_id=SPR0596_BOOMER_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -16153,7 +16178,7 @@ BOOMER_SMALL_NPC_2 = NPC(
 )
 
 EXOR_SMALL_NPC = NPC(
-    sprite_id=597,
+    sprite_id=SPR0597_EXOR_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=3,
@@ -16177,7 +16202,7 @@ EXOR_SMALL_NPC = NPC(
 )
 
 EXOR_SMALL_NPC_2 = NPC(
-    sprite_id=597,
+    sprite_id=SPR0597_EXOR_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=3,
@@ -16201,7 +16226,7 @@ EXOR_SMALL_NPC_2 = NPC(
 )
 
 DOMINO_SMALL_NPC = NPC(
-    sprite_id=598,
+    sprite_id=SPR0598_DOMINO_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=3,
@@ -16225,7 +16250,7 @@ DOMINO_SMALL_NPC = NPC(
 )
 
 DOMINO_SMALL_NPC_2 = NPC(
-    sprite_id=598,
+    sprite_id=SPR0598_DOMINO_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=3,
@@ -16249,7 +16274,7 @@ DOMINO_SMALL_NPC_2 = NPC(
 )
 
 SMITHY_SMALL_NPC = NPC(
-    sprite_id=599,
+    sprite_id=SPR0599_SMITHY_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=3,
@@ -16273,7 +16298,7 @@ SMITHY_SMALL_NPC = NPC(
 )
 
 SMITHY_SMALL_NPC_2 = NPC(
-    sprite_id=599,
+    sprite_id=SPR0599_SMITHY_SMALL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=3,
@@ -16297,7 +16322,7 @@ SMITHY_SMALL_NPC_2 = NPC(
 )
 
 SHYSTER_NPC_5 = NPC(
-    sprite_id=414,
+    sprite_id=SPR0414_SHYSTER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -16321,7 +16346,7 @@ SHYSTER_NPC_5 = NPC(
 )
 
 HAMMER_STANDALONE_NPC = NPC(
-    sprite_id=601,
+    sprite_id=SPR0601_HAMMER_STANDALONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -16345,7 +16370,7 @@ HAMMER_STANDALONE_NPC = NPC(
 )
 
 GOLD_GOOMBA_NPC = NPC(
-    sprite_id=602,
+    sprite_id=SPR0602_GOLD_GOOMBA,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -16369,7 +16394,7 @@ GOLD_GOOMBA_NPC = NPC(
 )
 
 GOLD_GOOMBA_NPC_2 = NPC(
-    sprite_id=602,
+    sprite_id=SPR0602_GOLD_GOOMBA,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=4,
     obtuse_axis=4,
@@ -16393,7 +16418,7 @@ GOLD_GOOMBA_NPC_2 = NPC(
 )
 
 MACHINE_MADE_AXEM_BLACK_NPC = NPC(
-    sprite_id=423,
+    sprite_id=SPR0423_MACHINE_MADE_AXEM_BLACK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -16417,7 +16442,7 @@ MACHINE_MADE_AXEM_BLACK_NPC = NPC(
 )
 
 MACHINE_MADE_AXEM_BLACK_NPC_2 = NPC(
-    sprite_id=423,
+    sprite_id=SPR0423_MACHINE_MADE_AXEM_BLACK,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -16441,7 +16466,7 @@ MACHINE_MADE_AXEM_BLACK_NPC_2 = NPC(
 )
 
 MACHINE_MADE_AXEM_YELLOW_NPC = NPC(
-    sprite_id=425,
+    sprite_id=SPR0425_MACHINE_MADE_AXEM_YELLOW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -16465,7 +16490,7 @@ MACHINE_MADE_AXEM_YELLOW_NPC = NPC(
 )
 
 MACHINE_MADE_AXEM_YELLOW_NPC_2 = NPC(
-    sprite_id=425,
+    sprite_id=SPR0425_MACHINE_MADE_AXEM_YELLOW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -16489,7 +16514,7 @@ MACHINE_MADE_AXEM_YELLOW_NPC_2 = NPC(
 )
 
 MACHINE_MADE_AXEM_GREEN_NPC = NPC(
-    sprite_id=426,
+    sprite_id=SPR0426_MACHINE_MADE_AXEM_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -16513,7 +16538,7 @@ MACHINE_MADE_AXEM_GREEN_NPC = NPC(
 )
 
 MACHINE_MADE_AXEM_GREEN_NPC_2 = NPC(
-    sprite_id=426,
+    sprite_id=SPR0426_MACHINE_MADE_AXEM_GREEN,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -16537,7 +16562,7 @@ MACHINE_MADE_AXEM_GREEN_NPC_2 = NPC(
 )
 
 MARIO_CLONE_NPC_2 = NPC(
-    sprite_id=409,
+    sprite_id=SPR0409_MARIO_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16561,7 +16586,7 @@ MARIO_CLONE_NPC_2 = NPC(
 )
 
 MARIO_CLONE_NPC_3 = NPC(
-    sprite_id=409,
+    sprite_id=SPR0409_MARIO_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16585,7 +16610,7 @@ MARIO_CLONE_NPC_3 = NPC(
 )
 
 MARIO_CLONE_NPC_4 = NPC(
-    sprite_id=409,
+    sprite_id=SPR0409_MARIO_CLONE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -16609,7 +16634,7 @@ MARIO_CLONE_NPC_4 = NPC(
 )
 
 MALLOW_CLONE_NPC_2 = NPC(
-    sprite_id=413,
+    sprite_id=SPR0413_MALLOW_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16633,7 +16658,7 @@ MALLOW_CLONE_NPC_2 = NPC(
 )
 
 MALLOW_CLONE_NPC_3 = NPC(
-    sprite_id=413,
+    sprite_id=SPR0413_MALLOW_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16657,7 +16682,7 @@ MALLOW_CLONE_NPC_3 = NPC(
 )
 
 MALLOW_CLONE_NPC_4 = NPC(
-    sprite_id=413,
+    sprite_id=SPR0413_MALLOW_CLONE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -16681,7 +16706,7 @@ MALLOW_CLONE_NPC_4 = NPC(
 )
 
 GENO_CLONE_NPC_2 = NPC(
-    sprite_id=412,
+    sprite_id=SPR0412_GENO_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16705,7 +16730,7 @@ GENO_CLONE_NPC_2 = NPC(
 )
 
 GENO_CLONE_NPC_3 = NPC(
-    sprite_id=412,
+    sprite_id=SPR0412_GENO_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16729,7 +16754,7 @@ GENO_CLONE_NPC_3 = NPC(
 )
 
 GENO_CLONE_NPC_4 = NPC(
-    sprite_id=412,
+    sprite_id=SPR0412_GENO_CLONE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -16753,7 +16778,7 @@ GENO_CLONE_NPC_4 = NPC(
 )
 
 BOWSER_CLONE_NPC_2 = NPC(
-    sprite_id=411,
+    sprite_id=SPR0411_BOWSER_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16777,7 +16802,7 @@ BOWSER_CLONE_NPC_2 = NPC(
 )
 
 BOWSER_CLONE_NPC_3 = NPC(
-    sprite_id=411,
+    sprite_id=SPR0411_BOWSER_CLONE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16801,7 +16826,7 @@ BOWSER_CLONE_NPC_3 = NPC(
 )
 
 BOWSER_CLONE_NPC_4 = NPC(
-    sprite_id=411,
+    sprite_id=SPR0411_BOWSER_CLONE,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -16825,7 +16850,7 @@ BOWSER_CLONE_NPC_4 = NPC(
 )
 
 TOADSTOOL_NPC_2 = NPC(
-    sprite_id=410,
+    sprite_id=SPR0410_TOADSTOOL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16849,7 +16874,7 @@ TOADSTOOL_NPC_2 = NPC(
 )
 
 TOADSTOOL_NPC_3 = NPC(
-    sprite_id=410,
+    sprite_id=SPR0410_TOADSTOOL,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -16873,7 +16898,7 @@ TOADSTOOL_NPC_3 = NPC(
 )
 
 TOADSTOOL_NPC_4 = NPC(
-    sprite_id=410,
+    sprite_id=SPR0410_TOADSTOOL,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,
@@ -16897,7 +16922,7 @@ TOADSTOOL_NPC_4 = NPC(
 )
 
 MARIO_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=0,
+    sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16921,7 +16946,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_4 = NPC(
 )
 
 MARIO_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=0,
+    sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16945,7 +16970,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_5 = NPC(
 )
 
 MARIO_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=0,
+    sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16969,7 +16994,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=7,
+    sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -16993,7 +17018,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_5 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=7,
+    sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17017,7 +17042,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_7 = NPC(
-    sprite_id=7,
+    sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17041,7 +17066,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_7 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=19,
+    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17065,7 +17090,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_5 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=19,
+    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17089,7 +17114,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 MALLOW_WALKING_DOWN_LEFT_NPC_7 = NPC(
-    sprite_id=19,
+    sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17113,7 +17138,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_7 = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_4 = NPC(
-    sprite_id=25,
+    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17137,7 +17162,7 @@ GENO_WALKING_DOWN_LEFT_NPC_4 = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_5 = NPC(
-    sprite_id=25,
+    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17161,7 +17186,7 @@ GENO_WALKING_DOWN_LEFT_NPC_5 = NPC(
 )
 
 GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
-    sprite_id=25,
+    sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=6,
     obtuse_axis=5,
@@ -17185,7 +17210,7 @@ GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
 )
 
 BOWSER_WALKING_DOWN_LEFT_NPC_3 = NPC(
-    sprite_id=13,
+    sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=6,
     obtuse_axis=6,
@@ -17209,7 +17234,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC_3 = NPC(
 )
 
 FIRE_CRYSTAL_GRIDPLANE_NPC = NPC(
-    sprite_id=644,
+    sprite_id=SPR0644_FIRE_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -17233,7 +17258,7 @@ FIRE_CRYSTAL_GRIDPLANE_NPC = NPC(
 )
 
 FIRE_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
-    sprite_id=644,
+    sprite_id=SPR0644_FIRE_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -17257,7 +17282,7 @@ FIRE_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
 )
 
 EARTH_CRYSTAL_GRIDPLANE_NPC = NPC(
-    sprite_id=646,
+    sprite_id=SPR0646_EARTH_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -17281,7 +17306,7 @@ EARTH_CRYSTAL_GRIDPLANE_NPC = NPC(
 )
 
 EARTH_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
-    sprite_id=646,
+    sprite_id=SPR0646_EARTH_CRYSTAL_GRIDPLANE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,

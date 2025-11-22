@@ -80,7 +80,7 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_8, R204_MUSHROOM_WAY_AREA_02),
 	FadeInFromBlack(sync=False),
 	Pause(15),
-	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E0180_NPC_QUEST_3_CONTAINER),
 	Pause(15),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_SetAllSpeeds(FASTER),

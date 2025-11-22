@@ -1,13 +1,14 @@
 # R204_MUSHROOM_WAY_AREA_02
+# pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
 from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from . import npcs
-from disassembler_output.variables.room_names import *
-from disassembler_output.variables.overworld_area_names import *
-from disassembler_output.variables.music_names import *
-from disassembler_output.variables.event_script_names import *
-from disassembler_output.variables.action_script_names import *
+from ..variables.room_names import *
+from ..variables.overworld_area_names import *
+from ..variables.music_names import *
+from ..variables.event_script_names import *
+from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
@@ -385,6 +386,63 @@ room = Room(
             cant_pass_npcs=True,
             byte3_bit5=False,
             cant_walk_through=True,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=True,
+            byte7_upper2=3,
+        ),
+        # remake only
+        RegularNPC( # 10
+            npc=npcs.ITEM_BAG_NPC,
+            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
+            event_script=E0241_FREESTANDING_1_GRANT,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=1,
+            y=27,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=True,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=True,
+            cant_jump_through=True,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=False,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=True,
+            byte7_upper2=3,
+        ),
+        RegularNPC( # 11
+            npc=npcs.ITEM_BAG_NPC,
+            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
+            event_script=E0240_FREESTANDING_2_GRANT,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=10,
+            y=14,
+            z=3,
+            z_half=False,
+            direction=SOUTHWEST,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=True,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=True,
+            cant_jump_through=True,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=False,
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,

@@ -51,7 +51,7 @@ script = EventScript([
 	]),
 	SetBit(TOAD_IN_MUSHROOM_WAY_1),
 	FadeInFromBlack(sync=False),
-	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_SetAllSpeeds(FASTER),
 		A_WalkNortheastSteps(4),

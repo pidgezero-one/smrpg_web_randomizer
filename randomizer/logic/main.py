@@ -87,9 +87,10 @@ def randomize(
             shuffle_all(world)
 
             # Key item size patch
-            # 0xC305 = 0x18
-            # 0xC37F = 0x18
-            # 0xC3B5 = 0x18
+            # 0xC305 = 0x20
+            # 0xC37F = 0x20
+            # 0xC3B5 = 0x20
+            # TODO might need to be larger, recount key items
             # 0xC302 = 0xF0 0xF8
             # 0xC37C = 0xF0 0xF8
             # 0xC3B2 = 0xF0 0xF8

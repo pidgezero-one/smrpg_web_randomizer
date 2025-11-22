@@ -59,6 +59,7 @@ class Prize:
     spell_grant: Optional[EventScript] = None
     boss_fight_grant: Optional[EventScript] = None
     postfight_star_piece_grant: Optional[EventScript] = None
+    remake_only: bool = False
 
     @property
     def important(self) -> bool:

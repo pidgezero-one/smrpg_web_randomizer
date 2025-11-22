@@ -289,6 +289,33 @@ class FryingPanPrize(ItemPrize):
     )
 
 
+class WonderChompPrize(ItemPrize):
+    item = WonderChompItem
+    _nickname = TreasureHunterNickname(
+        nickname="Golden Chomp",
+        description="It's hungry to stir up some BIG\n trouble."
+    )
+    remake_only = True
+
+
+class Stella023Prize(ItemPrize):
+    item = Stella023Item
+    _nickname = TreasureHunterNickname(
+        nickname="Cool Gun",
+        description="Why does it remind me of a train?"
+    )
+    remake_only = True
+
+
+class SageStickPrize(ItemPrize):
+    item = SageStickItem
+    _nickname = TreasureHunterNickname(
+        nickname="Caster's Staff",
+        description="It looks pretty good at bonking."
+    )
+    remake_only = True
+
+
 class LuckyHammerPrize(ItemPrize):
     item = LuckyHammerItem
     _nickname = TreasureHunterNickname(
@@ -733,10 +760,26 @@ class SignalRingPrize(ItemPrize):
 class QuartzCharmPrize(ItemPrize):
     item = QuartzCharmItem
     _nickname = TreasureHunterNickname(
-        nickname="Crystal Pendant",
-        description="It could save your life!"
+        nickname="Crystal",
+        description="It might have special powers.\n Or it might not."
     )
 
+
+class TeamworkBandPrize(ItemPrize):
+    item = TeamworkBandItem
+    _nickname = TreasureHunterNickname(
+        nickname="Friendship Bracelet",
+        description="Maybe the real treasure is the\n friends we made along the way."
+    )
+    remake_only = True
+
+class EnduringBroochPrize(ItemPrize):
+    item = EnduringBroochItem
+    _nickname = TreasureHunterNickname(
+        nickname="Shiny Brooch",
+        description="It looks pretty stylish."
+    )
+    remake_only = True
 
 class MushroomPrize(ItemPrize):
     item = MushroomItem
@@ -1104,6 +1147,24 @@ class ProgressiveEggPrize(ProgressiveItemPrize):
         ])
 
 
+class ExtraShinyStonePrize(ItemPrize):
+    item = ExtraShinyStoneItem
+    _nickname = TreasureHunterNickname(
+        nickname="Crystal",
+        description="It might have special powers.\n Or it might not."
+    )
+    remake_only = True
+
+
+class CrystalShardPrize(ItemPrize):
+    item = CrystalShardItem
+    _nickname = TreasureHunterNickname(
+        nickname="Crystal",
+        description="It might have special powers.\n Or it might not."
+    )
+    remake_only = True
+
+
 class RoomKeyPrize(ItemPrize):
     item = RoomKeyItem
     _nickname = TreasureHunterNickname(
@@ -1273,6 +1334,15 @@ class ProgressiveFireworksPrize(ProgressiveItemPrize):
         ])
 
 
+class StayVoucherPrize(ItemPrize):
+    item = StayVoucherItem
+    _nickname = TreasureHunterNickname(
+        nickname="Special Ticket",
+        description="You can probably redeem it at a\n fancy hotel."
+    )
+    remake_only = True
+
+
 class BrightCardPrize(ItemPrize):
     item = BrightCardItem
     _nickname = TreasureHunterNickname(
@@ -1354,7 +1424,7 @@ class BroochPrize(WeddingGearPrize):
     item = BroochItem
     _nickname = TreasureHunterNickname(
         nickname="Shiny Brooch",
-        description="It looks made for special\n occasions."
+        description="It looks pretty stylish."
     )
     @property
     def chest_grant(self) -> EventScript:

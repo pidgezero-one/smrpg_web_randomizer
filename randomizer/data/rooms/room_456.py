@@ -1,13 +1,14 @@
 # R456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS
+# pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
 from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from . import npcs
-from disassembler_output.variables.room_names import *
-from disassembler_output.variables.overworld_area_names import *
-from disassembler_output.variables.music_names import *
-from disassembler_output.variables.event_script_names import *
-from disassembler_output.variables.action_script_names import *
+from ..variables.room_names import *
+from ..variables.overworld_area_names import *
+from ..variables.music_names import *
+from ..variables.event_script_names import *
+from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=3,
