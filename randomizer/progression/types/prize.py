@@ -9,6 +9,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 from ...data.variables.event_script_names import *
 from ...data.variables.variable_names import BEETLEMANIA_UNLOCKED, ITEM_ID
 from ...data.variables.overworld_sfx_names import SO027_FOUND_AN_ITEM
+from enum import StrEnum
 
 class TreasureHunterNickname:
     _nickname: str
@@ -77,9 +78,18 @@ class StandardPrize(Prize):
     def nickname(self) -> TreasureHunterNickname:
         return self._nickname
 
+class SpecialItemPrizeType(StrEnum):
+    KEY = "key"
+    SPECIAL_EQUIP_TIER_1 = "special_equip_tier_1"
+    SPECIAL_EQUIP_TIER_2 = "special_equip_tier_2"
 
 class ItemPrize(StandardPrize):
     item: type[Item]
+    _importance: Optional[SpecialItemPrizeType] = None
+
+    @property
+    def importance(self) -> Optional[SpecialItemPrizeType]:
+        return self._importance
 
     @property
     def chest_grant(self) -> EventScript:

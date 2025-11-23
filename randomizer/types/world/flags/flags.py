@@ -559,9 +559,9 @@ class InvisibleFlagsSetting(BooleanFlag):
 
 
 class RemakePostgame(BooleanFlag):
-    """Setting to include "demake" postgame content from the SMRPG remake"""
+    """Setting to include "demake" content from the SMRPG remake"""
 
-    _id: str = "postgame"
+    _id: str = "remake"
     _name: str = "Include remake content"
     _description: str = """If enabled, some content exclusive to the 2023 Switch remake will be included:
 <ol>

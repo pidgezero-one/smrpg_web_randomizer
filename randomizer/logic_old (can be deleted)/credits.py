@@ -294,7 +294,7 @@ def update_credits(world):
 
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0x81, "YAKIBOMB     ANAXEMRANGER")
-    credits.add_credit(0x80, 0x40, 0xC0, "ATBIGELOW        FORALIAS")
+    credits.add_credit(0x80, 0x40, 0xC0, "CLEARTONIC       FORALIAS")
     credits.add_credit(0x80, 0x00, 0x81, "AMAZING AMPHAROS   SWINCH")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 

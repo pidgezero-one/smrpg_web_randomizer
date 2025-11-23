@@ -1,4 +1,4 @@
-from .types.prize import Prize, StandardPrize, CoinPrize, SlotsPrize, BossFightPrize, CharacterPrize, StarPiecePrize, ItemPrize, SpellPrize, TreasureHunterNickname, ProgressiveItemPrize, WeddingGearPrize
+from .types.prize import Prize, StandardPrize, CoinPrize, SlotsPrize, BossFightPrize, CharacterPrize, StarPiecePrize, ItemPrize, SpellPrize, TreasureHunterNickname, ProgressiveItemPrize, WeddingGearPrize, SpecialItemPrizeType
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import AddToInventory, JmpIfVarEqualsConst, RemoveOneOfItemFromInventory, Return, SetVarToConst, StoreItemAmountTo7000, ApplySolidityModToLevel, RemoveObjectFromSpecificLevel, JmpToEvent
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_2
@@ -41,7 +41,8 @@ from ..data.items.items import (
     MoldyMushItem, SeedItem, FertilizerItem,
     BigBooFlagItem, DryBonesFlagItem, GreaperFlagItem, CricketJamItem, FireworksItem,
     BrightCardItem, StarEggItem, ShoesItem, BroochItem, RingItem, CrownItem,
-    LazyShellItem2, MushroomItem2
+    LazyShellItem2, MushroomItem2, WonderChompItem, Stella023Item, SageStickItem,
+    TeamworkBandItem, EnduringBroochItem
 )
 from ..data.variables.variable_names import *
 from ..data.variables.room_names import *
@@ -59,6 +60,7 @@ class HammerPrize(ItemPrize):
 
 class FroggiestickPrize(ItemPrize):
     item = FroggieStickItem
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_2
     _nickname = TreasureHunterNickname(
         nickname="Caster's Staff",
         description="It looks pretty good at bonking."
@@ -99,6 +101,7 @@ class CymbalsPrize(ItemPrize):
 
 class ChompPrize(ItemPrize):
     item = ChompItem
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_2
     _nickname = TreasureHunterNickname(
         nickname="Chain Chomp",
         description="It's hungry to stir up some trouble."
@@ -275,6 +278,7 @@ class SonicCymbalPrize(ItemPrize):
 
 class LazyShellWeaponPrize(ItemPrize):
     item = LazyShellItem
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_2
     _nickname = TreasureHunterNickname(
         nickname="Red Shell",
         description="There's no turtle inside of it."
@@ -582,6 +586,7 @@ class RoyalDressPrize(ItemPrize):
 
 
 class SuperSuitPrize(ItemPrize):
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_1
     item = SuperSuitItem
     _nickname = TreasureHunterNickname(
         nickname="Jumpsuit",
@@ -591,6 +596,7 @@ class SuperSuitPrize(ItemPrize):
 
 class LazyShellArmorPrize(ItemPrize):
     item = LazyShellItem2
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_2
     _nickname = TreasureHunterNickname(
         nickname="Red Shell",
         description="There's no turtle inside of it."
@@ -599,6 +605,7 @@ class LazyShellArmorPrize(ItemPrize):
 
 class ZoomShoesPrize(ItemPrize):
     item = ZoomShoesItem
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_2
     _nickname = TreasureHunterNickname(
         nickname="Red Vans",
         description="I bet you can run really fast in\n these."
@@ -655,6 +662,7 @@ class ExpBoosterPrize(ItemPrize):
 
 class AttackScarfPrize(ItemPrize):
     item = AttackScarfItem
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_1
     _nickname = TreasureHunterNickname(
         nickname="Starry Scarf",
         description="It could save your life!"
@@ -719,6 +727,7 @@ class CoinTrickPrize(ItemPrize):
 
 class GhostMedalPrize(ItemPrize):
     item = GhostMedalItem
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_1
     _nickname = TreasureHunterNickname(
         nickname="Military Decoration",
         description="I wonder what powers it bestows?"
@@ -727,6 +736,7 @@ class GhostMedalPrize(ItemPrize):
 
 class JinxBeltPrize(ItemPrize):
     item = JinxBeltItem
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_1
     _nickname = TreasureHunterNickname(
         nickname="Black Sash",
         description="A true fighter would love this."
@@ -759,6 +769,7 @@ class SignalRingPrize(ItemPrize):
 
 class QuartzCharmPrize(ItemPrize):
     item = QuartzCharmItem
+    _importance = SpecialItemPrizeType.SPECIAL_EQUIP_TIER_1
     _nickname = TreasureHunterNickname(
         nickname="Crystal",
         description="It might have special powers.\n Or it might not."
