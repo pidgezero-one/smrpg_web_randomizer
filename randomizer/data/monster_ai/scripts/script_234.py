@@ -1,4 +1,4 @@
-# 234 - SMITHYEnemy3
+# 234 - SMITHY1Enemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -27,7 +27,7 @@ script = MonsterScript([
 	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
 	CastSpell(MeteorSwarmSpell, MeteorSwarmSpell, MegaDrainSpell),
 	Wait1TurnandRestartScript(),
-	Attack(Attack93),
+	Attack(Attack90),
 	StartCounterCommands(),
 	IfHPBelow(0),
 	IfTargetAlive(MONSTER_4_SET),

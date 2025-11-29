@@ -1,5 +1,4 @@
-# 78 - CROOKEnemy2
-# pyright: reportWildcardImportFromLibrary=false
+# 78 - GENOCLONESEnemy
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -14,11 +13,46 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
 	Set7EE005ToRandomNumber(upper_bound=7),
-	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 3),
-	Attack(Attack5, Attack5, Attack20),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
+	CastSpell(FlameStoneSpell),
 	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
 	Wait1TurnandRestartScript(),
-	SetTarget(SELF),
-	CastSpell(EscapeSpell),
-	StartCounterCommands()
+	Attack(Attack89),
+	StartCounterCommands(),
+	IfHPBelow(0),
+	IfVarBitsSet(BV7EE004, [0]),
+	ClearVarBits(BV7EE00E, [1]),
+	DecreaseVarBy1(BV7EE000),
+	DecreaseVarBy1(BV7EE00C),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	Wait1TurnandRestartScript(),
+	IfHPBelow(0),
+	ClearVarBits(BV7EE00E, [0]),
+	DecreaseVarBy1(BV7EE000),
+	DecreaseVarBy1(BV7EE00C),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	Wait1TurnandRestartScript(),
+	IfTargetedByItem([PureWaterItem]),
+	IfTargetAlive(SELF),
+	IfVarBitsSet(BV7EE004, [0]),
+	ClearVarBits(BV7EE00E, [1]),
+	DecreaseVarBy1(BV7EE000),
+	DecreaseVarBy1(BV7EE00C),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	Wait1TurnandRestartScript(),
+	IfTargetedByItem([PureWaterItem]),
+	IfTargetAlive(SELF),
+	ClearVarBits(BV7EE00E, [0]),
+	DecreaseVarBy1(BV7EE000),
+	DecreaseVarBy1(BV7EE00C),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	Wait1TurnandRestartScript()
 ])

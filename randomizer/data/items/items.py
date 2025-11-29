@@ -4,10 +4,11 @@
 
 from typing import List
 from smrpgpatchbuilder.datatypes.items.classes import (
-    RegularItem,
-    Weapon,
-    Armor,
-    Accessory,
+    Item as ItemBase,
+    RegularItem as RegularItemBase,
+    Weapon as WeaponBase,
+    Armor as ArmorBase,
+    Accessory as AccessoryBase,
     ItemCollection,
 )
 from smrpgpatchbuilder.datatypes.items.enums import (
@@ -27,6 +28,25 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 )
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
 
+class Item(ItemBase):
+    _remake_name: Optional[str] = None
+
+    @property
+    def remake_name(self) -> str:
+        return self._remake_name or self._item_name
+
+
+class Weapon(WeaponBase, Item)
+    pass
+
+class Armor(ArmorBase, Item):
+    pass
+
+class Accessory(AccessoryBase, Item):
+    pass
+
+class RegularItem(RegularItemBase, Item):
+    pass
 
 class WeaponItem(Weapon):
     """Weapon item class"""
@@ -141,6 +161,8 @@ class FroggieStickItem(Weapon):
     _perfect_window_ends = UInt8(24)
     _half_time_window_ends = UInt8(36)
 
+    _remake_name = "Froggie Stick"
+
 
 class NokNokShellItem(Weapon):
     """NokNok Shell item class"""
@@ -158,6 +180,8 @@ class NokNokShellItem(Weapon):
     _perfect_window_begins = UInt8(25)
     _perfect_window_ends = UInt8(31)
     _half_time_window_ends = UInt8(36)
+
+    _remake_name = "Koopa Shell"
 
 
 class PunchGloveItem(Weapon):
@@ -267,6 +291,8 @@ class ChompShellItem(Weapon):
     _perfect_window_ends = UInt8(56)
     _half_time_window_ends = UInt8(60)
 
+    _remake_name = "Fake Chomp"
+
 
 class SuperHammerItem(Weapon):
     """Super Hammer item class"""
@@ -356,6 +382,8 @@ class TroopaShellItem(Weapon):
     _perfect_window_begins = UInt8(25)
     _perfect_window_ends = UInt8(31)
     _half_time_window_ends = UInt8(36)
+
+    _remake_name = "Para Shell"
 
 
 class ParasolItem(Weapon):
@@ -676,10 +704,10 @@ class Stella023Item(Weapon):
     _variance: int = 20
     _price: int = 2
     _inflict_type = None
-    _half_time_window_begins = UInt8(8)
-    _perfect_window_begins = UInt8(24)
-    _perfect_window_ends = UInt8(30)
-    _half_time_window_ends = UInt8(34)
+    _half_time_window_begins = UInt8(6)
+    _perfect_window_begins = UInt8(26)
+    _perfect_window_ends = UInt8(32)
+    _half_time_window_ends = UInt8(36)
 
 
 class SageStickItem(Weapon):
@@ -900,6 +928,8 @@ class PolkaDressItem(Armor):
     _magic_defense: int = 12
     _price: int = 160
     _inflict_type = None
+
+    _remake_name = "Lovely Dress"
 
 
 class SailorShirtItem(Armor):
@@ -1153,6 +1183,8 @@ class HealShellItem(Armor):
     _price: int = 100
     _inflict_type = None
 
+    _remake_name = "Heel Shell"
+
 
 class RoyalDressItem(Armor):
     """Royal Dress item class"""
@@ -1312,6 +1344,8 @@ class AmuletItem(Accessory):
     _inflict_type = None
     _elemental_resistances: List[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
 
+    _remake_name = "Booster'sCharm"
+
 
 class ScroogeRingItem(Accessory):
     """Scrooge Ring item class"""
@@ -1324,10 +1358,12 @@ class ScroogeRingItem(Accessory):
     _price: int = 50
     _inflict_type = None
 
+    _remake_name = "Flower Ring"
+
 
 class ExpBoosterItem(Accessory):
     """Exp Booster item class"""
-    _item_name: str = "Exp Booster"
+    _item_name: str = "Exp. Booster"
     _prefix = ItemPrefix.RING
 
     _item_id: int = 80
@@ -1368,10 +1404,12 @@ class RareScarfItem(Accessory):
     _price: int = 150
     _inflict_type = None
 
+    _remake_name = "Defense Scarf"
+
 
 class BtubRingItem(Accessory):
     """Btub Ring item class"""
-    _item_name: str = "Btub Ring"
+    _item_name: str = "B'tub Ring"
     _prefix = ItemPrefix.RING
 
     _item_id: int = 83
@@ -1380,6 +1418,8 @@ class BtubRingItem(Accessory):
     _price: int = 145
     _inflict_type = None
     _elemental_resistances: List[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
+
+    _remake_name = "Nurture Ring"
 
 
 class AntidotePinItem(Accessory):
@@ -1693,6 +1733,7 @@ class AbleJuiceItem(RegularItem):
     _one_side_only: bool = True
     _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
+    _remake_name = "CleansingJuice"
 
 class BracerItem(RegularItem):
     """Bracer item class"""
@@ -1730,7 +1771,7 @@ class EnergizerItem(RegularItem):
 
 class YoshiAdeItem(RegularItem):
     """Yoshi Ade item class"""
-    _item_name: str = "Yoshi Ade"
+    _item_name: str = "Yoshi-Ade"
     _prefix = ItemPrefix.CONSUMABLE
 
     _item_id: int = 106
@@ -1777,6 +1818,8 @@ class KerokeroColaItem(RegularItem):
     _overworld_menu_fill_fp: bool = True
     _target_all: bool = True
     _one_side_only: bool = True
+
+    _remake_name = "Croaka Cola"
 
 
 class YoshiCookieItem(RegularItem):
@@ -1844,6 +1887,8 @@ class BadMushroomItem(RegularItem):
     _target_enemies: bool = True
     _one_side_only: bool = True
     _status_immunities: List[Status] = [Status.POISON]
+
+    _remake_name = "PoisonMushroom"
 
 
 class FireBombItem(RegularItem):
@@ -1961,6 +2006,8 @@ class FroggieDrinkItem(RegularItem):
     _target_all: bool = True
     _one_side_only: bool = True
 
+    _remake_name = "Tadpola Cola"
+
 
 class MukuCookieItem(RegularItem):
     """Muku Cookie item class"""
@@ -1979,6 +2026,8 @@ class MukuCookieItem(RegularItem):
     _one_side_only: bool = True
     _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
+    _remake_name = "ThropherCookie"
+
 
 class ElixirItem(RegularItem):
     """Elixir item class"""
@@ -1996,6 +2045,8 @@ class ElixirItem(RegularItem):
     _target_all: bool = True
     _one_side_only: bool = True
 
+    _remake_name = "Frogleg Cola"
+
 
 class MegalixirItem(RegularItem):
     """Megalixir item class"""
@@ -2012,6 +2063,8 @@ class MegalixirItem(RegularItem):
     _overworld_menu_fill_fp: bool = True
     _target_all: bool = True
     _one_side_only: bool = True
+
+    _remake_name = "Finless Cola"
 
 
 class SeeYaItem(RegularItem):
@@ -2071,6 +2124,8 @@ class EarlierTimesItem(RegularItem):
     _target_all: bool = True
     _one_side_only: bool = True
 
+    _remake_name = "Earlier Times"
+
 
 class FreshenUpItem(RegularItem):
     """Freshen Up item class"""
@@ -2088,6 +2143,8 @@ class FreshenUpItem(RegularItem):
     _one_side_only: bool = True
     _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
+    _remake_name = "Party Cleanse"
+
 
 class RareFrogCoinItem(RegularItem):
     """RareFrogCoin item class"""
@@ -2098,6 +2155,8 @@ class RareFrogCoinItem(RegularItem):
     _description: str = " It's a Frog Coin\n from Frogfucius!"
     _price: int = 0
     _inflict_type = None
+
+    _remake_name = "Spec. FrogCoin"
 
 
 class WalletItem(RegularItem):
@@ -2169,6 +2228,8 @@ class BambinoBombItem(RegularItem):
     _description: str = " Handle with\n care!"
     _price: int = 0
     _inflict_type = None
+
+    _remake_name = "Microbomb"
 
 
 class SheepAttackItem(RegularItem):
@@ -2256,7 +2317,7 @@ class ShedKeyItem(RegularItem):
 
 class LambsLureItem(RegularItem):
     """Lambs Lure item class"""
-    _item_name: str = "Lambs Lure"
+    _item_name: str = "Lamb's Lure"
     _prefix = ItemPrefix.QUESTION
 
     _item_id: int = 143
@@ -2401,6 +2462,8 @@ class CrystallineItem(RegularItem):
     _one_side_only: bool = True
     _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
+    _remake_name = "Party Bracer"
+
 
 class PowerBlastItem(RegularItem):
     """Power Blast item class"""
@@ -2417,6 +2480,8 @@ class PowerBlastItem(RegularItem):
     _target_all: bool = True
     _one_side_only: bool = True
     _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
+
+    _remake_name = "PartyEnergizer"
 
 
 class WiltShroomItem(RegularItem):
@@ -2509,6 +2574,8 @@ class BigBooFlagItem(RegularItem):
     _description: str = " It's a\n Big Boo Flag"
     _price: int = 0
     _inflict_type = None
+
+    _remake_name = "Boo Flag"
 
 
 class DryBonesFlagItem(RegularItem):

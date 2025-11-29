@@ -1,6 +1,14 @@
-from smrpgpatchbuilder.datatypes.enemy_attacks.classes import EnemyAttack, EnemyAttackCollection
+from smrpgpatchbuilder.datatypes.enemy_attacks.classes import EnemyAttack as EnemyAttackBase, EnemyAttackCollection
 from smrpgpatchbuilder.datatypes.spells.enums import Status, TempStatBuff
 from smrpgpatchbuilder.datatypes.items.enums import ItemPrefix
+
+class EnemyAttack(EnemyAttackBase):
+    _remake_name: Optional[str] = None
+
+    @property
+    def remake_name(self) -> str:
+        return self._remake_name or self._name
+
 
 
 class Attack0(EnemyAttack):
@@ -73,14 +81,14 @@ class Attack6(EnemyAttack):
     _hit_rate = 95
 
 
-class Attack7(EnemyAttack):
+class ATKDEF100Attack(EnemyAttack):
     _index = 7
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = False
-    _damageless_flag_2 = False
-    _hit_rate = 95
+    _hide_numbers = True
+    _damageless_flag_2 = True
+    _hit_rate = 100
 
 
 class Attack8(EnemyAttack):
@@ -185,14 +193,15 @@ class ThornetAttack(EnemyAttack):
     _status_effects = [Status.POISON]
 
 
-class Attack18(EnemyAttack):
+class FinalClawAttack(EnemyAttack):
     _index = 18
-    _attack_level = 3
-    _ohko = False
+    _name = ' Final Claw'
+    _attack_level = 0
+    _ohko = True
     _damageless_flag_1 = False
-    _hide_numbers = False
+    _hide_numbers = True
     _damageless_flag_2 = False
-    _hit_rate = 90
+    _hit_rate = 100
 
 
 class FunguspikeAttack(EnemyAttack):
@@ -237,6 +246,8 @@ class FullHouseAttack(EnemyAttack):
     _damageless_flag_2 = False
     _hit_rate = 95
 
+    _remake_name = " Card Toss"
+
 
 class WildCardAttack(EnemyAttack):
     _index = 23
@@ -248,16 +259,17 @@ class WildCardAttack(EnemyAttack):
     _damageless_flag_2 = False
     _hit_rate = 95
 
+    _remake_name = " Card Rain"
 
-class RoyalFlushAttack(EnemyAttack):
+
+class ATKMATK5Attack(EnemyAttack):
     _index = 24
-    _name = ' Royal Flush'
-    _attack_level = 4
+    _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = False
-    _damageless_flag_2 = False
-    _hit_rate = 90
+    _hide_numbers = True
+    _damageless_flag_2 = True
+    _hit_rate = 100
 
 
 class Attack25(EnemyAttack):
@@ -471,6 +483,8 @@ class MushFunkAttack(EnemyAttack):
     _hit_rate = 90
     _status_effects = [Status.MUSHROOM]
 
+    _remake_name = " MushroomFunk"
+
 
 class ScrowFunkAttack(EnemyAttack):
     _index = 44
@@ -599,16 +613,14 @@ class SporocystAttack(EnemyAttack):
     _status_effects = [Status.MUSHROOM]
 
 
-class ToxicystAttack(EnemyAttack):
+class ATKMATKneg5Attack(EnemyAttack):
     _index = 55
-    _name = ' Toxicyst'
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
     _hide_numbers = True
     _damageless_flag_2 = True
-    _hit_rate = 90
-    _status_effects = [Status.POISON]
+    _hit_rate = 100
 
 
 class Attack56(EnemyAttack):
@@ -814,16 +826,15 @@ class ScytheAttack(EnemyAttack):
     _hit_rate = 90
 
 
-class SickleAttack(EnemyAttack):
+class MoralSupportAttack(EnemyAttack):
     _index = 74
-    _name = ' Sickle'
-    _attack_level = 1
+    _name = ' Moral Support'
+    _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = False
-    _damageless_flag_2 = False
-    _hit_rate = 95
-    _status_effects = [Status.SCARECROW]
+    _hide_numbers = True
+    _damageless_flag_2 = True
+    _hit_rate = 100
 
 
 class DeathsickleAttack(EnemyAttack):
@@ -862,16 +873,14 @@ class SomnusWaltzAttack(EnemyAttack):
     _status_effects = [Status.SLEEP]
 
 
-class DahliaDanceAttack(EnemyAttack):
+class BOBOMBSUPERAttack(EnemyAttack):
     _index = 78
-    _name = ' Dahlia Dance'
-    _attack_level = 0
+    _attack_level = 2
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = True
-    _damageless_flag_2 = True
-    _hit_rate = 99
-    _status_effects = [Status.MUSHROOM]
+    _hide_numbers = False
+    _damageless_flag_2 = False
+    _hit_rate = 100
 
 
 class SkewerAttack(EnemyAttack):
@@ -896,14 +905,16 @@ class PierceAttack(EnemyAttack):
     _hit_rate = 90
 
 
-class Attack81(EnemyAttack):
+class MagicForceAttack(EnemyAttack):
     _index = 81
+    _name = 'Magic Force'
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = False
-    _damageless_flag_2 = False
-    _hit_rate = 95
+    _hide_numbers = True
+    _damageless_flag_2 = True
+    _hit_rate = 100
+    _buffs = [TempStatBuff(3), TempStatBuff(5)]
 
 
 class MagnumAttack(EnemyAttack):
@@ -939,7 +950,7 @@ class MigraineAttack(EnemyAttack):
     _hit_rate = 80
 
 
-class Attack85(EnemyAttack):
+class BOBOMBBOMBAttack(EnemyAttack):
     _index = 85
     _attack_level = 0
     _ohko = False
@@ -1002,15 +1013,14 @@ class Attack90(EnemyAttack):
     _hit_rate = 95
 
 
-class Attack91(EnemyAttack):
+class CULEXTURNSAttack(EnemyAttack):
     _index = 91
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
     _hide_numbers = True
     _damageless_flag_2 = True
-    _hit_rate = 85
-    _status_effects = [Status.SLEEP]
+    _hit_rate = 100
 
 
 class FearRouletteAttack(EnemyAttack):
@@ -1024,34 +1034,39 @@ class FearRouletteAttack(EnemyAttack):
     _hit_rate = 99
 
 
-class Attack93(EnemyAttack):
+class ValorForceAttack(EnemyAttack):
     _index = 93
+    _name = ' Valor Force'
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = False
-    _damageless_flag_2 = False
-    _hit_rate = 95
+    _hide_numbers = True
+    _damageless_flag_2 = True
+    _hit_rate = 100
+    _buffs = [TempStatBuff(6)]
 
 
-class Attack94(EnemyAttack):
+class MeteorAttack(EnemyAttack):
     _index = 94
+    _name = ' Meteor'
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = False
-    _damageless_flag_2 = False
-    _hit_rate = 95
+    _hide_numbers = True
+    _damageless_flag_2 = True
+    _hit_rate = 100
 
 
-class Attack95(EnemyAttack):
+class VigorForceAttack(EnemyAttack):
     _index = 95
+    _name = ' Vigor Force'
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = False
-    _damageless_flag_2 = False
-    _hit_rate = 95
+    _hide_numbers = True
+    _damageless_flag_2 = True
+    _hit_rate = 100
+    _buffs = [TempStatBuff(4)]
 
 
 class HammerTimeAttack(EnemyAttack):
@@ -1097,6 +1112,8 @@ class LastShotAttack(EnemyAttack):
     _hide_numbers = False
     _damageless_flag_2 = False
     _hit_rate = 100
+
+    _remake_name = " Last Shot"
 
 
 class DUMMYAttack3(EnemyAttack):
@@ -1208,6 +1225,8 @@ class ChompAttack(EnemyAttack):
     _hide_numbers = False
     _damageless_flag_2 = False
     _hit_rate = 90
+
+    _remake_name = " Monster Toss"
 
 
 class GetToughAttack(EnemyAttack):
@@ -1366,14 +1385,14 @@ class VigorupAttack(EnemyAttack):
     _buffs = [TempStatBuff(3), TempStatBuff(4)]
 
 
-class DUMMYAttack17(EnemyAttack):
+class SpeedForceAttack(EnemyAttack):
     _index = 124
-    _name = 'DUMMY'
+    _name = ' Speed Force'
     _attack_level = 0
     _ohko = False
     _damageless_flag_1 = False
-    _hide_numbers = False
-    _damageless_flag_2 = False
+    _hide_numbers = True
+    _damageless_flag_2 = True
     _hit_rate = 100
 
 
@@ -1498,28 +1517,28 @@ collection = EnemyAttackCollection([
     GrinderAttack(),
     DarkClawAttack(),
     ScytheAttack(),
-    SickleAttack(),
+    MoralSupportAttack(),
     DeathsickleAttack(),
     EerieJigAttack(),
     SomnusWaltzAttack(),
-    DahliaDanceAttack(),
+    BOBOMBSUPERAttack(),
     SkewerAttack(),
     PierceAttack(),
     Attack81(),
     MagnumAttack(),
     PsycheAttack(),
     MigraineAttack(),
-    Attack85(),
+    BOBOMBBOMBAttack(),
     Attack86(),
     MultistrikeAttack(),
     FlutterHushAttack(),
     Attack89(),
     Attack90(),
-    Attack91(),
+    CULEXTURNSAttack(),
     FearRouletteAttack(),
-    Attack93(),
-    Attack94(),
-    Attack95(),
+    ValorForceAttack(),
+    MeteorAttack(),
+    VigorForceAttack(),
     HammerTimeAttack(),
     ValorUpAttack(),
     DUMMYAttack2(),
@@ -1548,7 +1567,7 @@ collection = EnemyAttackCollection([
     QuicksilverAttack(),
     BombsAwayAttack(),
     VigorupAttack(),
-    DUMMYAttack17(),
+     SpeedForceAttack(),
     SilverBulletAttack(),
     TerrapunchAttack(),
     ScrowFangsAttack(),

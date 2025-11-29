@@ -17,7 +17,7 @@ script = MonsterScript([
 	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
 	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
 	Wait1TurnandRestartScript(),
-	Attack(Attack85, Attack85, Attack86),
+	Attack(BOBOMBBOMBAttack, BOBOMBBOMBAttack, Attack86),
 	RemoveTarget(SELF),
 	StartCounterCommands(),
 	IfHPBelow(0),
@@ -25,7 +25,7 @@ script = MonsterScript([
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript(),
 	IfTargetedByElement([Element.FIRE]),
-	Attack(Attack85),
+	Attack(BOBOMBBOMBAttack),
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript()
 ])

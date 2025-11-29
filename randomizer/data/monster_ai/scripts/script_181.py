@@ -13,9 +13,9 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack81, Attack81, MagnumAttack),
+	Attack(Attack90, Attack90, MagnumAttack),
 	Wait1Turn(),
-	Attack(Attack81),
+	Attack(Attack90),
 	StartCounterCommands(),
 	IfHPBelow(0),
 	RunBattleEvent(BE0098_SMITHY_IS_DEFEATED),

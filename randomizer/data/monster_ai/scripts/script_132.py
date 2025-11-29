@@ -1,4 +1,4 @@
-# 132 - POUNDETTEEnemy2
+# 132 - POUNDETTEEnemyDouble
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

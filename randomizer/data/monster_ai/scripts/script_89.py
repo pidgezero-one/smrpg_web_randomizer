@@ -17,11 +17,11 @@ script = MonsterScript([
 	Set7EE005ToRandomNumber(upper_bound=7),
 	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 2),
 	Wait1TurnandRestartScript(),
-	Attack(Attack85, Attack85, Attack86),
+	Attack(BOBOMBBOMBAttack, BOBOMBBOMBAttack, Attack86),
 	RemoveTarget(SELF),
 	StartCounterCommands(),
 	IfTargetedByElement([Element.FIRE]),
-	Attack(Attack85, Attack85, Attack86),
+	Attack(BOBOMBBOMBAttack, BOBOMBBOMBAttack, Attack86),
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript()
 ])

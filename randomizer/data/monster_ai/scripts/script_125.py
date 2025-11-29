@@ -1,5 +1,4 @@
-# 125 - CRIPPOEnemy
-# pyright: reportWildcardImportFromLibrary=false
+# 125 - BOWSERCOPYSEnemy
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -13,19 +12,42 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	IfTargetAlive(ALL_ALLIES_EXCLUDING_SELF),
-	SetTarget(RANDOM_OPPONENT),
-	CastSpell(LightningOrbSpell),
+	Attack(DUMMYAttack3, DUMMYAttack3, DUMMYAttack4),
+	StartCounterCommands(),
+	IfHPBelow(0),
+	IfVarBitsSet(BV7EE004, [0]),
+	ClearVarBits(BV7EE00E, [1]),
+	DecreaseVarBy1(BV7EE000),
+	DecreaseVarBy1(BV7EE00B),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
 	Wait1TurnandRestartScript(),
-	IfVarBitsClear(BV7EE004, [0]),
-	SetTarget(SELF),
-	Attack(ThornetAttack),
-	SetVarBits(BV7EE004, [0]),
+	IfHPBelow(0),
+	ClearVarBits(BV7EE00E, [0]),
+	DecreaseVarBy1(BV7EE000),
+	DecreaseVarBy1(BV7EE00B),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
 	Wait1TurnandRestartScript(),
-	SetTarget(RANDOM_OPPONENT),
-	Attack(Attack0, DoomReverbAttack, VigorupAttack),
-	Wait1Turn(),
-	Attack(Attack0),
-	Wait1Turn(),
-	StartCounterCommands()
+	IfTargetedByItem([PureWaterItem]),
+	IfTargetAlive(SELF),
+	IfVarBitsSet(BV7EE004, [0]),
+	ClearVarBits(BV7EE00E, [1]),
+	DecreaseVarBy1(BV7EE000),
+	DecreaseVarBy1(BV7EE00B),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	Wait1TurnandRestartScript(),
+	IfTargetedByItem([PureWaterItem]),
+	IfTargetAlive(SELF),
+	ClearVarBits(BV7EE00E, [0]),
+	DecreaseVarBy1(BV7EE000),
+	DecreaseVarBy1(BV7EE00B),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	Wait1TurnandRestartScript()
 ])

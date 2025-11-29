@@ -100,6 +100,12 @@ def randomize(
             # 0x2BCB6 = 0xF0 0xF8 0x7F
             # 0x353080 = 0xF0 0xF8 0x7F
 
+            # Postgame weapon palettes
+            # 0x25894C (sage stick palette 762): 7B 37 BD 33 39 33 F7 2E F7 2A F7 22 31 26 52 22 DE 53 10 1E 8C 15 4A 15 08 11 C6 0C 63 0C
+            # 0x25896A (wonder chomp palette 763): BD 6B BD 6B 5B 47 39 3B 95 1A D7 1E 74 1A EF 15 6C 0D 09 09 A6 04 A6 04 84 04 FF 7B 63 0C
+            # 0x0x25DEE4 (stella palette 756): FF 7F F5 7F EA 7F E0 7F 40 7F 80 7E E0 7D 20 7D 00 69 C0 58 A0 44 60 30 40 20 00 0C 00 00
+
+
 
 
             # TODO: reconstruct item granters according to allowed tiers

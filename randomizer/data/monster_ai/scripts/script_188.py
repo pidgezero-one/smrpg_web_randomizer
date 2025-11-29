@@ -1,4 +1,4 @@
-# 188 - YARIDOVICHEnemy
+# 188 - YARIDOVICHMirageEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

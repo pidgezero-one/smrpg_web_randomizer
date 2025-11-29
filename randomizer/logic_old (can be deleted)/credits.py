@@ -279,7 +279,7 @@ def update_credits(world):
 
     # 25
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, "DEVELOPMENT LEADS")
+    credits.add_title(0x80, 0x00, 0x08, "CORE DEVELOPMENT")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
@@ -293,9 +293,18 @@ def update_credits(world):
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0x81, "YAKIBOMB     ANAXEMRANGER")
-    credits.add_credit(0x80, 0x40, 0xC0, "CLEARTONIC       FORALIAS")
-    credits.add_credit(0x80, 0x00, 0x81, "AMAZING AMPHAROS   SWINCH")
+    credits.add_credit(0x80, 0xC0, 0xC0, "YAKIBOMB         FORALIAS")
+    credits.add_credit(0x80, 0x80, 0x81, "AMAZING AMPHAROS   SWINCH")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    # 26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, "SWITCH DEMAKE DEVELOPMENT")
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0xC0, 0xC0, "ANAXEMRANGER")
+    credits.add_credit(0x80, 0x80, 0x81, "CLEARTONIC")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 26

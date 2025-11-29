@@ -1,5 +1,4 @@
-# 173 - MACHINEMADEEnemy11
-# pyright: reportWildcardImportFromLibrary=false
+# 185 - STRONGBOBOMB4Enemy
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -13,12 +12,48 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack5, Attack5, Attack25),
-	IfTargetAlive(AT_LEAST_ONE_OPPONENT),
-	Attack(Attack5, Attack5, Attack25),
+	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
+	Wait1TurnandRestartScript(),
+	IfVarEqualOrGreaterThan(BV7EE00C, 1),
+	SetTarget(SELF),
+	Attack(ATKDEF100Attack),
+	SetTarget(MONSTER_1_SET),
+	SetVarBits(BV7EE003, [1]),
+	Attack(BOBOMBSUPERAttack),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
+	IfVarLessThan(BV7EE00C, 1),
+	SetTarget(SELF),
+	Attack(ATKDEF100Attack),
+	SetTarget(RANDOM_OPPONENT),
+	Attack(BOBOMBSUPERAttack),
+	RemoveTarget(SELF),
 	Wait1TurnandRestartScript(),
 	StartCounterCommands(),
-	IfTargetedByCommand([COMMAND_SPECIAL]),
-	Attack(SpritzBombAttack),
+	IfHPBelow(0),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
+	IfTargetedByElement([Element.FIRE]),
+	IfVarEqualOrGreaterThan(BV7EE00C, 1),
+	SetTarget(SELF),
+	Attack(ATKDEF100Attack),
+	SetTarget(MONSTER_1_SET),
+	SetVarBits(BV7EE003, [1]),
+	Attack(BOBOMBSUPERAttack),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
+	IfTargetedByElement([Element.FIRE]),
+	IfVarLessThan(BV7EE00C, 1),
+	SetTarget(SELF),
+	Attack(ATKDEF100Attack),
+	SetTarget(RANDOM_OPPONENT),
+	Attack(BOBOMBSUPERAttack),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
+	IfTargetedByRegularAttack(),
+	RunObjectSequence(12),
 	Wait1TurnandRestartScript()
 ])

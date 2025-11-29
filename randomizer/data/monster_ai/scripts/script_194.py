@@ -64,7 +64,7 @@ script = MonsterScript([
 	IfTargetedByCommand([COMMAND_ATTACK]),
 	IfVarBitsSet(BV7EE000, [0]),
 	IncreaseVarBy1(BV7EE007),
-	IfVarBitsClear(BV7EE00A, [0, 1]),
+	IfVarLessThan(BV7EE00A, 2),
 	SetVarBits(BV7EE000, [7]),
 	Wait1TurnandRestartScript()
 ])

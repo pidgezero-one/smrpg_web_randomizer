@@ -1,6 +1,6 @@
 from typing import List, Type
 from smrpgpatchbuilder.datatypes.enemies.classes import (
-    Enemy,
+    Enemy as EnemyBase,
     EnemyCollection,
 )
 from smrpgpatchbuilder.datatypes.enemies.enums import (
@@ -13,6 +13,13 @@ from smrpgpatchbuilder.datatypes.enemies.enums import (
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
 from smrpgpatchbuilder.datatypes.items.classes import RegularItem
 from ..items import *
+
+class Enemy(EnemyBase):
+    _remake_name: Optional[str] = None
+
+    @property
+    def remake_name(self) -> str:
+        return self._remake_name or self._name
 
 
 class TERRAPINEnemy(Enemy):
@@ -104,6 +111,8 @@ class SKYTROOPAEnemy(Enemy):
     _cursor_x: int = 2
     _cursor_y: int = 2
     _psychopath_message: str = " What a gorgeous day![await]"
+
+    _remake_name = "PARATROOPA"
 
 
 class MADMALLETEnemy(Enemy):
@@ -320,6 +329,8 @@ class GOBYEnemy(Enemy):
     _cursor_y: int = 2
     _psychopath_message: str = " Blub blub blub...[await]"
 
+    _remake_name = "CHEEP CHEEP"
+
 
 class BLOOBEREnemy(Enemy):
     """BLOOBER enemy class"""
@@ -352,6 +363,8 @@ class BLOOBEREnemy(Enemy):
     _cursor_x: int = 1
     _cursor_y: int = 3
     _psychopath_message: str = " I love floating around.[await]"
+
+    _remake_name = "BLOOPER"
 
 
 class BANDANAREDEnemy(Enemy):
@@ -609,6 +622,8 @@ class THEBIGBOOEnemy(Enemy):
     _cursor_y: int = 2
     _psychopath_message: str = " Stop staring at me![await]"
 
+    _remake_name = "BOO"
+
 
 class DRYBONESEnemy(Enemy):
     """DRY BONES enemy class"""
@@ -708,6 +723,8 @@ class SPARKYEnemy(Enemy):
     _cursor_y: int = 3
     _psychopath_message: str = " Fire EVERYWHERE![await]"
 
+    _remake_name = "LAVA BUBBLE"
+
 
 class CHOMPEnemy(Enemy):
     """CHOMP enemy class"""
@@ -738,6 +755,8 @@ class CHOMPEnemy(Enemy):
     _cursor_x: int = 3
     _cursor_y: int = 3
     _psychopath_message: str = " Workin’ on a chain gang.[await]"
+
+    _remake_name = "CHAIN CHOMP"
 
 
 class PANDORITEEnemy(Enemy):
@@ -772,6 +791,8 @@ class PANDORITEEnemy(Enemy):
     _cursor_y: int = 4
     _ohko_immune: bool = True
     _psychopath_message: str = " I’m trying to sleep, OK?[await]"
+
+    _remake_name = "HUHWHAT"
 
 
 class SHYRANGEREnemy(Enemy):
@@ -865,6 +886,8 @@ class SPOOKUMEnemy(Enemy):
     _cursor_x: int = 1
     _cursor_y: int = 3
     _psychopath_message: str = " Que pasa?[await]"
+
+    _remake_name = "SNIFIT"
 
 
 class HAMMERBROEnemy(Enemy):
@@ -1088,6 +1111,8 @@ class KAMEKEnemy(Enemy):
     _disable_auto_death: bool = True
     _psychopath_message: str = " That’s...my child?[await]"
 
+    _remake_name = "WIZAKOOPA"
+
 
 class LEUKOEnemy(Enemy):
     """LEUKO enemy class"""
@@ -1247,7 +1272,7 @@ class GUERRILLAEnemy(Enemy):
     _cursor_y: int = 5
     _psychopath_message: str = " Don’t confuse me[await]\n with someone else![await]"
 
-
+# unused
 class BABAYAGAEnemy(Enemy):
     """BABA YAGA enemy class"""
     _monster_id: int = 39
@@ -1434,6 +1459,8 @@ class HEAVYTROOPAEnemy(Enemy):
     _cursor_x: int = 3
     _cursor_y: int = 5
     _psychopath_message: str = " I’ll make ya beautiful![await]"
+
+    _remake_name = "HEAVY TROOPA"
 
 
 class SHADOWEnemy(Enemy):
@@ -1718,6 +1745,8 @@ class REMOCONEnemy(Enemy):
     _cursor_x: int = 2
     _cursor_y: int = 5
     _psychopath_message: str = " The world is history.[await]"
+
+    _remake_name = "DOLLOX"
 
 
 class SNAPDRAGONEnemy(Enemy):
@@ -2038,6 +2067,8 @@ class CORKPEDITEEnemy(Enemy):
     _cursor_y: int = 5
     _psychopath_message: str = " Off! FORGET IT![await]"
 
+    _remake_name = "STOMPILLAR"
+
 
 class TERRACOTTAEnemy(Enemy):
     """TERRA COTTA enemy class"""
@@ -2253,6 +2284,8 @@ class GUGOOMBAEnemy(Enemy):
     _cursor_y: int = 2
     _psychopath_message: str = " Hey, maybe I CAN win![await]"
 
+    _remake_name = "PRO GOOMBA"
+
 
 class CHEWYEnemy(Enemy):
     """CHEWY enemy class"""
@@ -2317,6 +2350,8 @@ class FIREBALLEnemy(Enemy):
     _cursor_x: int = 1
     _cursor_y: int = 2
     _psychopath_message: str = " Blurb blurb blurb...[await]"
+
+    _remake_name = "LAVA BLUBBLE"
 
 
 class MRKIPPEREnemy(Enemy):
@@ -2473,34 +2508,38 @@ class BLUEBIRDEnemy(Enemy):
     _psychopath_message: str = " You are... magnificent[await]"
 
 
-class CROOKEnemy2(Enemy):
-    """CROOK enemy class"""
-    _monster_id: int = 78
-    _name: str = "CROOK"
 
-    _hp: int = 38
+class GENOCLONESEnemy(Enemy):
+    """GENO CLONE S enemy class"""
+    _monster_id: int = 78
+    _name: str = "GENO CLONE S"
+
+    _hp: int = 500
     _fp: int = 100
-    _attack: int = 35
-    _defense: int = 32
-    _magic_attack: int = 12
-    _magic_defense: int = 25
-    _speed: int = 22
-    _evade: int = 40
-    _magic_evade: int = 40
-    _xp: int = 10
-    _coins: int = 10
-    _yoshi_cookie_item = MidMushroomItem
-    _rare_item_drop = HoneySyrupItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.BITE
+    _attack: int = 220
+    _defense: int = 170
+    _magic_attack: int = 180
+    _magic_defense: int = 60
+    _speed: int = 30
+    _evade: int = 0
+    _magic_evade: int = 0
+    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _weaknesses: List[Element] = [Element.ICE, Element.FIRE]
+    _resistances: List[Element] = [Element.ICE]
+    _xp: int = 39
+    _coins: int = 0
+    _yoshi_cookie_item = MushroomItem
+    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
+    _sound_on_hit: HitSound = HitSound.PIERCE
     _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.BIG
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.SPREAD_OUT_FROM_BACK
     _cursor_x: int = 1
-    _cursor_y: int = 2
-    _psychopath_message: str = "[await]"
+    _cursor_y: int = 3
+    _ohko_immune: bool = True
+    _disable_auto_death: bool = True
+    _psychopath_message: str = " Truth is...[await]\nI don't care one bit about Star Pieces.[await]"
+
 
 
 class ALLEYRATEnemy(Enemy):
@@ -2626,6 +2665,8 @@ class LILBOOEnemy(Enemy):
     _cursor_y: int = 2
     _psychopath_message: str = " Beep pa doodle-dee!♪[await]"
 
+    _remake_name = "HIGH BOO"
+
 
 class VOMEREnemy(Enemy):
     """VOMER enemy class"""
@@ -2723,6 +2764,8 @@ class PYROSPHEREEnemy(Enemy):
     _cursor_y: int = 2
     _psychopath_message: str = " Vroom, VROOM!![await]"
 
+    _remake_name = "LAVA BABBLE"
+
 
 class CHOMPCHOMPEnemy(Enemy):
     """CHOMP CHOMP enemy class"""
@@ -2785,6 +2828,8 @@ class HIDONEnemy(Enemy):
     _cursor_y: int = 4
     _ohko_immune: bool = True
     _psychopath_message: str = " You wanna run, huh?![await]"
+
+    _remake_name = "WHUHOH"
 
 
 class SLINGSHYEnemy(Enemy):
@@ -2969,6 +3014,8 @@ class GOOMBETTEEnemy(Enemy):
     _cursor_y: int = 1
     _psychopath_message: str = " Me speak soft, BIG STICK![await]"
 
+    _remake_name = "MINI GOOMBA"
+
 
 class GECKITEnemy(Enemy):
     """GECKIT enemy class"""
@@ -3065,6 +3112,7 @@ class STARCRUSTEREnemy(Enemy):
     _psychopath_message: str = " I’M NOT A CRAB!![await]"
 
 
+# unused
 class MERLINEnemy(Enemy):
     """MERLIN enemy class"""
     _monster_id: int = 97
@@ -3157,6 +3205,8 @@ class FORKIESEnemy(Enemy):
     _cursor_y: int = 4
     _psychopath_message: str = " Shikashikashika~~![await]"
 
+    _remake_name = "FORKIE"
+
 
 class GORGONEnemy(Enemy):
     """GORGON enemy class"""
@@ -3189,6 +3239,8 @@ class GORGONEnemy(Enemy):
     _cursor_y: int = 4
     _psychopath_message: str = " I just wanna go home.[await]"
 
+    _remake_name = "ENIGMAX"
+
 
 class BIGBERTHAEnemy(Enemy):
     """BIG BERTHA enemy class"""
@@ -3218,6 +3270,8 @@ class BIGBERTHAEnemy(Enemy):
     _cursor_x: int = 3
     _cursor_y: int = 3
     _psychopath_message: str = " Adabing, ADABANG![await]"
+
+    _remake_name = "BIG BLASTER"
 
 
 class CHAINEDKONGEnemy(Enemy):
@@ -3283,6 +3337,8 @@ class FAUTSOEnemy(Enemy):
     _disable_auto_death: bool = True
     _psychopath_message: str = " Thanks to you I’m free![await]"
 
+    _remake_name = "JINNIE"
+
 
 class STRAWHEADEnemy(Enemy):
     """STRAW HEAD enemy class"""
@@ -3315,7 +3371,7 @@ class STRAWHEADEnemy(Enemy):
     _cursor_y: int = 5
     _psychopath_message: str = " Gotta press this shirt![await]"
 
-
+# unused
 class JUJUEnemy(Enemy):
     """JUJU enemy class"""
     _monster_id: int = 105
@@ -3439,6 +3495,8 @@ class TUBOTROOPAEnemy(Enemy):
     _cursor_x: int = 3
     _cursor_y: int = 4
     _psychopath_message: str = " My shell’s shot![await]"
+
+    _remake_name = "GRAND TROOPA"
 
 
 class DOPPELEnemy(Enemy):
@@ -3661,9 +3719,11 @@ class SNIFITEnemy(Enemy):
     _cursor_y: int = 2
     _psychopath_message: str = "[await]"
 
+    _remake_name = "SNIFSTER"
 
-class POUNDEREnemy2(Enemy):
-    """POUNDER enemy class"""
+
+class POUNDERDouble(Enemy):
+    """Pounder henchman class to not interfere with overworld enemy in factory encounters, etc"""
     _monster_id: int = 116
     _name: str = "POUNDER"
 
@@ -3755,7 +3815,7 @@ class FINKFLOWEREnemy(Enemy):
     _cursor_y: int = 4
     _psychopath_message: str = " Gimme your best shot![await]"
 
-
+# unused
 class LUMBLEREnemy(Enemy):
     """LUMBLER enemy class"""
     _monster_id: int = 119
@@ -3908,7 +3968,7 @@ class SPINTHRAEnemy(Enemy):
     _cursor_y: int = 4
     _psychopath_message: str = " Oh! I’m gonna poison ya![await]"
 
-
+# unused
 class RADISHEnemy(Enemy):
     """RADISH enemy class"""
     _monster_id: int = 124
@@ -3938,34 +3998,37 @@ class RADISHEnemy(Enemy):
     _psychopath_message: str = "[await]"
 
 
-class CRIPPOEnemy(Enemy):
-    """CRIPPO enemy class"""
+class BOWSERCOPYSEnemy(Enemy):
+    """BOWSER COPY S enemy class"""
     _monster_id: int = 125
-    _name: str = "CRIPPO"
+    _name: str = "BOWSER COPY S"
 
-    _hp: int = 10
+    _hp: int = 600
     _fp: int = 100
-    _attack: int = 0
-    _defense: int = 0
-    _magic_attack: int = 0
-    _magic_defense: int = 0
-    _speed: int = 0
+    _attack: int = 230
+    _defense: int = 180
+    _magic_attack: int = 142
+    _magic_defense: int = 30
+    _speed: int = 12
     _evade: int = 0
     _magic_evade: int = 0
-    _xp: int = 0
+    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _weaknesses: List[Element] = [Element.ICE]
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _xp: int = 99
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.SMASH
+    _sound_on_hit: HitSound = HitSound.CLAW
     _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
-    _cursor_x: int = 5
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.SPREAD_OUT_FROM_BACK
+    _cursor_x: int = 2
     _cursor_y: int = 4
-    _psychopath_message: str = "[await]"
-
+    _ohko_immune: bool = True
+    _disable_auto_death: bool = True
+    _psychopath_message: str = "What a rrrrrrollicking good time![await]"
+    
 
 class MASTABLASTAEnemy(Enemy):
     """MASTABLASTA enemy class"""
@@ -3995,7 +4058,7 @@ class MASTABLASTAEnemy(Enemy):
     _cursor_y: int = 6
     _psychopath_message: str = " Life is tough, ain’t it?[await]"
 
-
+# unused
 class PILEDRIVEREnemy(Enemy):
     """PILE DRIVER enemy class"""
     _monster_id: int = 127
@@ -4055,100 +4118,101 @@ class APPRENTICEEnemy(Enemy):
     _psychopath_message: str = " I’ve had ENOUGH.[await]"
 
 
-class APPRENTICEEnemy2(Enemy):
-    """APPRENTICE enemy class"""
+class TOADSTOOL3Enemy(Enemy):
+    """TOADSTOOL 3 enemy class"""
     _monster_id: int = 129
-    _name: str = "APPRENTICE"
+    _name: str = "TOADSTOOL 3"
 
-    _hp: int = 120
-    _fp: int = 32
-    _attack: int = 50
-    _defense: int = 50
-    _magic_attack: int = 20
-    _magic_defense: int = 20
+    _hp: int = 240
+    _fp: int = 180
+    _attack: int = 190
+    _defense: int = 155
+    _magic_attack: int = 152
+    _magic_defense: int = 100
     _speed: int = 20
     _evade: int = 0
     _magic_evade: int = 0
-    _weaknesses: List[Element] = [Element.ICE]
-    _xp: int = 1
-    _coins: int = 4
-    _yoshi_cookie_item = SleepyBombItem
-    _common_item_drop = MidMushroomItem
+    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _xp: int = 0
+    _coins: int = 0
+    _yoshi_cookie_item = MushroomItem
+    _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
+    _flower_bonus_chance: int = 40
+    _sound_on_hit: HitSound = HitSound.BITE
+    _sound_on_approach: ApproachSound = ApproachSound.NONE
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.SPREAD_OUT_FROM_BACK
+    _cursor_x: int = 1
+    _cursor_y: int = 3
+    _ohko_immune: bool = True
+    _disable_auto_death: bool = True
+    _psychopath_message: str = " Hey, Chancellor.[await]\n I'm the pretty one, right?[await]"
+
+
+class CRIPPOEnemy(Enemy):
+    """CRIPPO enemy class"""
+    _monster_id: int = 130
+    _name: str = "CRIPPO"
+
+    _hp: int = 10
+    _fp: int = 100
+    _attack: int = 0
+    _defense: int = 0
+    _magic_attack: int = 0
+    _magic_defense: int = 0
+    _speed: int = 0
+    _evade: int = 0
+    _magic_evade: int = 0
+    _xp: int = 0
+    _coins: int = 0
+    _yoshi_cookie_item = MushroomItem
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
-    _sound_on_hit: HitSound = HitSound.PUNCH
+    _morph_chance: float = 100
+    _sound_on_hit: HitSound = HitSound.SMASH
     _sound_on_approach: ApproachSound = ApproachSound.NONE
     _coin_sprite: CoinSprite = CoinSprite.SMALL
     _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
-    _cursor_x: int = 1
-    _cursor_y: int = 3
+    _cursor_x: int = 5
+    _cursor_y: int = 4
     _psychopath_message: str = "[await]"
 
 
-class BANDANAREDEnemy2(Enemy):
-    """BANDANA RED enemy class"""
-    _monster_id: int = 130
-    _name: str = "BANDANA RED"
+class MARIOCLONESEnemy(Enemy):
+    """MARIO CLONE S enemy class"""
+    _monster_id: int = 131
+    _name: str = "MARIO CLONE S"
 
-    _hp: int = 120
+    _hp: int = 400
     _fp: int = 100
-    _attack: int = 78
-    _defense: int = 60
-    _magic_attack: int = 25
-    _magic_defense: int = 25
+    _attack: int = 200
+    _defense: int = 170
+    _magic_attack: int = 163
+    _magic_defense: int = 80
     _speed: int = 20
     _evade: int = 0
     _magic_evade: int = 0
-    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
-    _xp: int = 18
-    _coins: int = 10
-    _yoshi_cookie_item = EnergizerItem
-    _rare_item_drop = MushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
-    _flower_bonus_chance: int = 30
-    _morph_chance: float = 75
-    _sound_on_hit: HitSound = HitSound.PIERCE
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.BIG
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _psychopath_message: str = "[await]"
-
-
-class PIRANHAPLANTEnemy2(Enemy):
-    """PIRANHA PLANT enemy class"""
-    _monster_id: int = 131
-    _name: str = "PIRANHA PLANT"
-
-    _hp: int = 168
-    _fp: int = 4
-    _attack: int = 45
-    _defense: int = 14
-    _magic_attack: int = 20
-    _magic_defense: int = 22
-    _speed: int = 6
-    _evade: int = 0
-    _magic_evade: int = 0
-    _resistances: List[Element] = [Element.JUMP]
-    _xp: int = 5
-    _coins: int = 5
-    _yoshi_cookie_item = SleepyBombItem
-    _common_item_drop = MapleSyrupItem
+    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
+    _xp: int = 9
+    _coins: int = 0
+    _yoshi_cookie_item = MushroomItem
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 75
-    _sound_on_hit: HitSound = HitSound.PIERCE
-    _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _coin_sprite: CoinSprite = CoinSprite.BIG
-    _entrance_style: EntranceStyle = EntranceStyle.NONE
+    _flower_bonus_chance: int = 40
+    _sound_on_hit: HitSound = HitSound.KNOCK
+    _sound_on_approach: ApproachSound = ApproachSound.NONE
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.SPREAD_OUT_FROM_BACK
     _cursor_x: int = 1
     _cursor_y: int = 3
-    _psychopath_message: str = "[await]"
+    _ohko_immune: bool = True
+    _disable_auto_death: bool = True
+    _psychopath_message: str = " ![await]"
 
 
-class POUNDETTEEnemy2(Enemy):
-    """POUNDETTE enemy class"""
+class POUNDETTEEnemyDouble(Enemy):
+    """POUNDETTE henchman class to not interfere with overworld enemy in factory, etc"""
     _monster_id: int = 132
     _name: str = "POUNDETTE"
 
@@ -4178,7 +4242,7 @@ class POUNDETTEEnemy2(Enemy):
 
 
 class MADMALLETEnemy2(Enemy):
-    """MAD MALLET enemy class"""
+    """MAD MALLET henchman class to not interfere with overworld enemy in factory, etc"""
     _monster_id: int = 133
     _name: str = "MAD MALLET"
 
@@ -4238,6 +4302,8 @@ class BOXBOYEnemy(Enemy):
     _ohko_immune: bool = True
     _psychopath_message: str = " Been waitin’ 100 years![await]"
 
+    _remake_name = "PLEASENO"
+
 
 class SHELLYEnemy(Enemy):
     """SHELLY enemy class"""
@@ -4270,36 +4336,39 @@ class SHELLYEnemy(Enemy):
     _psychopath_message: str = " Slow down![await]"
 
 
-class SUPERSPIKEEnemy(Enemy):
-    """SUPER SPIKE enemy class"""
+class PUNCHINELLOEnemy(Enemy):
+    """PUNCHINELLO enemy class"""
     _monster_id: int = 136
-    _name: str = "SUPER SPIKE"
+    _name: str = "PUNCHINELLO 2"
 
-    _hp: int = 10
+    _hp: int = 1200
     _fp: int = 100
-    _attack: int = 0
-    _defense: int = 0
-    _magic_attack: int = 0
-    _magic_defense: int = 0
-    _speed: int = 0
+    _attack: int = 235
+    _defense: int = 215
+    _magic_attack: int = 235
+    _magic_defense: int = 255
+    _speed: int = 99
     _evade: int = 0
     _magic_evade: int = 0
+    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _resistances: List[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
     _xp: int = 0
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.BITE
+    _flower_bonus_chance: int = 40
+    _sound_on_hit: HitSound = HitSound.CLAW
     _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _psychopath_message: str = "[await]"
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.NONE
+    _cursor_x: int = 3
+    _cursor_y: int = 5
+    _ohko_immune: bool = True
+    _disable_auto_death: bool = True
+    _psychopath_message: str = " Everyone is even MORE chic now![await]\n You've really leveled up your game![await]"
 
 
-class DODOEnemy2(Enemy):
+class DODOEnemySolo(Enemy):
     """DODO enemy class"""
     _monster_id: int = 137
     _name: str = "DODO"
@@ -4363,6 +4432,8 @@ class OERLIKONEnemy(Enemy):
     _cursor_y: int = 2
     _psychopath_message: str = " I live to eat.[await]"
 
+    _remake_name = "URSPIKE"
+
 
 class CHESTEREnemy(Enemy):
     """CHESTER enemy class"""
@@ -4394,6 +4465,8 @@ class CHESTEREnemy(Enemy):
     _cursor_y: int = 4
     _ohko_immune: bool = True
     _psychopath_message: str = " I love my job!♥[await]"
+
+    _remake_name = "COMEON"
 
 
 class BODYEnemy(Enemy):
@@ -4428,38 +4501,34 @@ class BODYEnemy(Enemy):
     _psychopath_message: str = " ••••••[await]"
 
 
-class BLUEBIRDEnemy2(Enemy):
-    """BLUEBIRD enemy class"""
+class STRONGBOBOMB1Enemy(Enemy):
+    """BOB-OMB enemy class"""
     _monster_id: int = 141
-    _name: str = "BLUEBIRD"
+    _name: str = "BOB-OMB S"
 
-    _hp: int = 200
+    _hp: int = 999
     _fp: int = 100
-    _attack: int = 95
-    _defense: int = 50
-    _magic_attack: int = 80
-    _magic_defense: int = 94
-    _speed: int = 29
-    _evade: int = 8
+    _attack: int = 255
+    _defense: int = 68
+    _magic_attack: int = 1
+    _magic_defense: int = 10
+    _speed: int = 2
+    _evade: int = 0
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _resistances: List[Element] = [Element.ICE]
-    _xp: int = 14
-    _coins: int = 6
-    _yoshi_cookie_item = BracerItem
-    _common_item_drop = BracerItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.PIERCE
-    _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _coin_sprite: CoinSprite = CoinSprite.BIG
-    _entrance_style: EntranceStyle = EntranceStyle.ZOOM_IN_FROM_RIGHT
-    _elevate: int = 3
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _xp: int = 0
+    _coins: int = 0
+    _yoshi_cookie_item = MushroomItem
+    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
+    _flower_bonus_chance: int = 40
+    _sound_on_hit: HitSound = HitSound.KNOCK
+    _sound_on_approach: ApproachSound = ApproachSound.NONE
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.NONE
     _cursor_x: int = 1
     _cursor_y: int = 3
-    _psychopath_message: str = " ••••••[await]"
+    _disable_auto_death: bool = True
+    _psychopath_message: str = " How many times do I need to say,[await]\n “Watch out.  I'm gonna explode.”[await]\n before you get it?[await]"
 
 
 class TORTEEnemy(Enemy):
@@ -4523,6 +4592,8 @@ class SHYAWAYEnemy(Enemy):
     _cursor_y: int = 2
     _psychopath_message: str = " La Dee Dah~ Ha Ha.[await]"
 
+    _remake_name = "BEEZO"
+
 
 class JINXCLONEEnemy(Enemy):
     """JINX CLONE enemy class"""
@@ -4555,7 +4626,7 @@ class JINXCLONEEnemy(Enemy):
     _psychopath_message: str = " I’m the REAL thing![await]"
 
 
-class MACHINEMADEEnemy(Enemy):
+class MACHINEMADEBodyguardEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 145
     _name: str = "MACHINE MADE"
@@ -4584,7 +4655,7 @@ class MACHINEMADEEnemy(Enemy):
     _psychopath_message: str = " Boing, boing, boing.[await]"
 
 
-class MACHINEMADEEnemy2(Enemy):
+class MACHINEMADEDrillbitEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 146
     _name: str = "MACHINE MADE"
@@ -4676,6 +4747,8 @@ class MOKURAEnemy(Enemy):
     _cursor_y: int = 2
     _ohko_immune: bool = True
     _psychopath_message: str = " Mwa ha ha...[await]"
+
+    _remake_name = "GASSOX"
 
 
 class FIRECRYSTALEnemy(Enemy):
@@ -5004,68 +5077,68 @@ class SHYSTEREnemy(Enemy):
     _cursor_y: int = 3
     _psychopath_message: str = " Boing, boing, boing.[await]"
 
+    _remake_name = "SHYMORE"
 
-class KINKLINKEnemy(Enemy):
-    """KINKLINK enemy class"""
+
+class STRONGBOBOMB2Enemy(Enemy):
+    """BOB-OMB enemy class"""
     _monster_id: int = 159
-    _name: str = "KINKLINK"
+    _name: str = "BOB-OMB S"
 
-    _hp: int = 60
+    _hp: int = 999
     _fp: int = 100
-    _attack: int = 0
-    _defense: int = 10
-    _magic_attack: int = 0
-    _magic_defense: int = 0
-    _speed: int = 99
+    _attack: int = 255
+    _defense: int = 68
+    _magic_attack: int = 1
+    _magic_defense: int = 10
+    _speed: int = 2
     _evade: int = 0
     _magic_evade: int = 0
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
     _xp: int = 0
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.BITE
+    _sound_on_hit: HitSound = HitSound.KNOCK
     _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
+    _coin_sprite: CoinSprite = CoinSprite.NONE
     _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _disable_auto_death: bool = True
-    _psychopath_message: str = "[await]"
-
-
-class BIRDYEnemy2(Enemy):
-    """BIRDY enemy class"""
-    _monster_id: int = 160
-    _name: str = "BIRDY"
-
-    _hp: int = 150
-    _fp: int = 100
-    _attack: int = 110
-    _defense: int = 75
-    _magic_attack: int = 55
-    _magic_defense: int = 13
-    _speed: int = 23
-    _evade: int = 18
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP]
-    _weaknesses: List[Element] = [Element.ICE]
-    _resistances: List[Element] = [Element.FIRE]
-    _xp: int = 16
-    _coins: int = 3
-    _yoshi_cookie_item = EnergizerItem
-    _common_item_drop = EnergizerItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.PIERCE
-    _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.ZOOM_IN_FROM_RIGHT
-    _elevate: int = 3
     _cursor_x: int = 1
     _cursor_y: int = 3
-    _psychopath_message: str = "[await]"
+    _disable_auto_death: bool = True
+    _psychopath_message: str = " How many times do I need to say,[await]\n “Watch out.  I'm gonna explode.”[await]\n before you get it?[await]"
 
 
+class STRONGBOBOMB3Enemy(Enemy):
+    """BOB-OMB enemy class"""
+    _monster_id: int = 160
+    _name: str = "BOB-OMB S"
+
+    _hp: int = 999
+    _fp: int = 100
+    _attack: int = 255
+    _defense: int = 68
+    _magic_attack: int = 1
+    _magic_defense: int = 10
+    _speed: int = 2
+    _evade: int = 0
+    _magic_evade: int = 0
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _xp: int = 0
+    _coins: int = 0
+    _yoshi_cookie_item = MushroomItem
+    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
+    _sound_on_hit: HitSound = HitSound.KNOCK
+    _sound_on_approach: ApproachSound = ApproachSound.NONE
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.NONE
+    _cursor_x: int = 1
+    _cursor_y: int = 3
+    _disable_auto_death: bool = True
+    _psychopath_message: str = " How many times do I need to say,[await]\n “Watch out.  I'm gonna explode.”[await]\n before you get it?[await]"
+
+
+# unused, but still needed in battle - maybe convert to a sprite non-formation
 class HANGINSHYEnemy(Enemy):
     """HANGIN’ SHY enemy class"""
     _monster_id: int = 161
@@ -5126,7 +5199,7 @@ class SMELTEREnemy(Enemy):
     _psychopath_message: str = " I brush after each meal![await]"
 
 
-class MACHINEMADEEnemy3(Enemy):
+class MACHINEMADEMackEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 163
     _name: str = "MACHINE MADE"
@@ -5159,7 +5232,7 @@ class MACHINEMADEEnemy3(Enemy):
     _psychopath_message: str = " Mario! I’m BAAAAAAAACK![await]"
 
 
-class MACHINEMADEEnemy4(Enemy):
+class MACHINEMADEBowyerEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 164
     _name: str = "MACHINE MADE"
@@ -5191,7 +5264,7 @@ class MACHINEMADEEnemy4(Enemy):
     _psychopath_message: str = " Nya! I’ll SNUFF ya! NYA![await]"
 
 
-class MACHINEMADEEnemy5(Enemy):
+class MACHINEMADEYaridovichEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 165
     _name: str = "MACHINE MADE"
@@ -5223,7 +5296,7 @@ class MACHINEMADEEnemy5(Enemy):
     _psychopath_message: str = " My promotion’s at stake![await]"
 
 
-class MACHINEMADEEnemy6(Enemy):
+class MACHINEMADEAxemPinkEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 166
     _name: str = "MACHINE MADE"
@@ -5256,7 +5329,7 @@ class MACHINEMADEEnemy6(Enemy):
     _psychopath_message: str = " Oh! My makeup![await]"
 
 
-class MACHINEMADEEnemy7(Enemy):
+class MACHINEMADEAxemBlackEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 167
     _name: str = "MACHINE MADE"
@@ -5288,7 +5361,7 @@ class MACHINEMADEEnemy7(Enemy):
     _psychopath_message: str = " Will I make the team?[await]"
 
 
-class MACHINEMADEEnemy8(Enemy):
+class MACHINEMADEAxemRedEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 168
     _name: str = "MACHINE MADE"
@@ -5321,7 +5394,7 @@ class MACHINEMADEEnemy8(Enemy):
     _psychopath_message: str = " Gotta fight for evil![await]"
 
 
-class MACHINEMADEEnemy9(Enemy):
+class MACHINEMADEAxemYellowEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 169
     _name: str = "MACHINE MADE"
@@ -5354,7 +5427,7 @@ class MACHINEMADEEnemy9(Enemy):
     _psychopath_message: str = " I’m STARVED![await]"
 
 
-class MACHINEMADEEnemy10(Enemy):
+class MACHINEMADEAxemGreenEnemy(Enemy):
     """MACHINE MADE enemy class"""
     _monster_id: int = 170
     _name: str = "MACHINE MADE"
@@ -5418,131 +5491,75 @@ class BAHAMUTTEnemy2(Enemy):
     _psychopath_message: str = "[await]"
 
 
-class BLOOBEREnemy2(Enemy):
-    """BLOOBER enemy class"""
+
+class MALLOWCOPYSEnemy(Enemy):
+    """MALLOW COPY S enemy class"""
     _monster_id: int = 172
-    _name: str = "BLOOBER"
+    _name: str = "MALLOW COPY S"
 
-    _hp: int = 130
-    _fp: int = 100
-    _attack: int = 80
-    _defense: int = 36
-    _magic_attack: int = 21
-    _magic_defense: int = 16
-    _speed: int = 23
-    _evade: int = 20
-    _magic_evade: int = 0
-    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
-    _xp: int = 12
-    _coins: int = 0
-    _yoshi_cookie_item = ElixirItem
-    _rare_item_drop = HoneySyrupItem
-    _common_item_drop = MaxMushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
-    _flower_bonus_chance: int = 100
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.PUNCH
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.NONE
-    _entrance_style: EntranceStyle = EntranceStyle.HOVER_IN
-    _elevate: int = 2
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _psychopath_message: str = "[await]"
-
-
-class MACHINEMADEEnemy11(Enemy):
-    """MACHINE MADE enemy class"""
-    _monster_id: int = 173
-    _name: str = "MACHINE MADE"
-
-    _hp: int = 120
-    _fp: int = 100
-    _attack: int = 120
-    _defense: int = 110
-    _magic_attack: int = 4
-    _magic_defense: int = 40
-    _speed: int = 55
-    _evade: int = 30
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP, Status.FEAR]
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _xp: int = 20
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _rare_item_drop = MaxMushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
-    _flower_bonus_chance: int = 30
-    _sound_on_hit: HitSound = HitSound.JAB
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.NONE
-    _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _ohko_immune: bool = True
-    _psychopath_message: str = "[await]"
-
-
-class MACHINEMADEEnemy12(Enemy):
-    """MACHINE MADE enemy class"""
-    _monster_id: int = 174
-    _name: str = "MACHINE MADE"
-
-    _hp: int = 100
-    _fp: int = 200
-    _attack: int = 95
-    _defense: int = 90
-    _magic_attack: int = 40
-    _magic_defense: int = 100
-    _speed: int = 35
-    _evade: int = 25
-    _magic_evade: int = 10
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _resistances: List[Element] = [Element.ICE]
-    _xp: int = 30
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _rare_item_drop = MapleSyrupItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 40
-    _sound_on_hit: HitSound = HitSound.JAB
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.NONE
-    _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _ohko_immune: bool = True
-    _psychopath_message: str = "[await]"
-
-
-class AEROEnemy(Enemy):
-    """AERO enemy class"""
-    _monster_id: int = 175
-    _name: str = "AERO"
-
-    _hp: int = 10
-    _fp: int = 100
-    _attack: int = 0
-    _defense: int = 0
-    _magic_attack: int = 0
-    _magic_defense: int = 0
-    _speed: int = 0
+    _hp: int = 300
+    _fp: int = 80
+    _attack: int = 180
+    _defense: int = 160
+    _magic_attack: int = 190
+    _magic_defense: int = 110
+    _speed: int = 14
     _evade: int = 0
     _magic_evade: int = 0
     _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _weaknesses: List[Element] = [Element.FIRE]
+    _resistances: List[Element] = [Element.ICE, Element.THUNDER]
+    _xp: int = 60
+    _coins: int = 0
+    _yoshi_cookie_item = MushroomItem
+    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
+    _sound_on_hit: HitSound = HitSound.KNOCK
+    _sound_on_approach: ApproachSound = ApproachSound.NONE
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.SPREAD_OUT_FROM_BACK
+    _cursor_x: int = 1
+    _cursor_y: int = 3
+    _ohko_immune: bool = True
+    _disable_auto_death: bool = True
+    _psychopath_message: str = "I'm afraid to go[await]\n to the bathroom at night.[await]"
+
+
+class STRONGBOBOMB4Enemy(Enemy):
+    """BOB-OMB enemy class"""
+    _monster_id: int = 173
+    _name: str = "BOB-OMB S"
+
+    _hp: int = 999
+    _fp: int = 100
+    _attack: int = 255
+    _defense: int = 68
+    _magic_attack: int = 1
+    _magic_defense: int = 10
+    _speed: int = 2
+    _evade: int = 0
+    _magic_evade: int = 0
+    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
     _xp: int = 0
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _sound_on_hit: HitSound = HitSound.BITE
+    _flower_bonus_chance: int = 40
+    _sound_on_hit: HitSound = HitSound.KNOCK
     _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.NONE
     _cursor_x: int = 1
-    _cursor_y: int = 4
-    _psychopath_message: str = "[await]"
+    _cursor_y: int = 3
+    _disable_auto_death: bool = True
+    _psychopath_message: str = " How many times do I need to say,[await]\n “Watch out.  I'm gonna explode.”[await]\n before you get it?[await]"
+
+
+
+# 174
+# reserved for optional henchmen
+
+# 175
+# reserved for optional henchmen
 
 
 class STARSLAPEnemy(Enemy):
@@ -5606,6 +5623,8 @@ class MUKUMUKUEnemy(Enemy):
     _cursor_x: int = 1
     _cursor_y: int = 3
     _psychopath_message: str = " Ya trying to bug me?![await]"
+
+    _remake_name = "THROPHER"
 
 
 class ZEOSTAREnemy(Enemy):
@@ -5672,34 +5691,8 @@ class JAGGEREnemy(Enemy):
     _psychopath_message: str = " Oh! I’m so excited![await]"
 
 
-class CHOMPWEEDEnemy(Enemy):
-    """CHOMPWEED enemy class"""
-    _monster_id: int = 180
-    _name: str = "CHOMPWEED"
-
-    _hp: int = 10
-    _fp: int = 100
-    _attack: int = 0
-    _defense: int = 0
-    _magic_attack: int = 0
-    _magic_defense: int = 0
-    _speed: int = 0
-    _evade: int = 0
-    _magic_evade: int = 0
-    _xp: int = 0
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.PIERCE
-    _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
-    _cursor_x: int = 1
-    _cursor_y: int = 1
-    _psychopath_message: str = "[await]"
-
+# 180
+# reserved for optional henchmen
 
 class SMITHYEnemy(Enemy):
     """SMITHY enemy class"""
@@ -5734,7 +5727,7 @@ class SMITHYEnemy(Enemy):
     _psychopath_message: str = " Don’t shock me! DON’T![await]"
 
 
-class SMITHYEnemy2(Enemy):
+class SMITHYSafeEnemy2(Enemy):
     """SMITHY enemy class"""
     _monster_id: int = 182
     _name: str = "SMITHY"
@@ -5768,37 +5761,8 @@ class SMITHYEnemy2(Enemy):
     _psychopath_message: str = " Nothin’ can hurt me![await]"
 
 
-class PYROSPHEREEnemy2(Enemy):
-    """PYROSPHERE enemy class"""
-    _monster_id: int = 183
-    _name: str = "PYROSPHERE"
-
-    _hp: int = 167
-    _fp: int = 100
-    _attack: int = 105
-    _defense: int = 66
-    _magic_attack: int = 100
-    _magic_defense: int = 48
-    _speed: int = 24
-    _evade: int = 7
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.POISON]
-    _weaknesses: List[Element] = [Element.ICE]
-    _resistances: List[Element] = [Element.FIRE]
-    _xp: int = 17
-    _coins: int = 2
-    _yoshi_cookie_item = FireBombItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
-    _flower_bonus_chance: int = 40
-    _morph_chance: float = 25
-    _sound_on_hit: HitSound = HitSound.BITE
-    _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.DROP_FROM_ABOVE
-    _elevate: int = 3
-    _cursor_x: int = 1
-    _cursor_y: int = 2
-    _psychopath_message: str = "[await]"
+# 183
+# reserved for optional henchmen
 
 
 class MICROBOMBEnemy(Enemy):
@@ -5832,35 +5796,10 @@ class MICROBOMBEnemy(Enemy):
     _psychopath_message: str = " Small is as small does.[await]"
 
 
-class SHYGUYEnemy2(Enemy):
-    """SHY GUY enemy class"""
-    _monster_id: int = 185
-    _name: str = "SHY GUY"
+# 184
+# reserved for optional henchmen
 
-    _hp: int = 78
-    _fp: int = 100
-    _attack: int = 29
-    _defense: int = 30
-    _magic_attack: int = 20
-    _magic_defense: int = 6
-    _speed: int = 14
-    _evade: int = 10
-    _magic_evade: int = 0
-    _xp: int = 2
-    _coins: int = 1
-    _yoshi_cookie_item = HoneySyrupItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.BITE
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.HOP_3_TIMES
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _psychopath_message: str = "[await]"
-
-
+# unused
 class GRITEnemy(Enemy):
     """GRIT enemy class"""
     _monster_id: int = 186
@@ -5921,7 +5860,7 @@ class NEOSQUIDEnemy(Enemy):
     _psychopath_message: str = " I’m so utterly alone...[await]"
 
 
-class YARIDOVICHEnemy(Enemy):
+class YARIDOVICHMirageEnemy(Enemy):
     """YARIDOVICH enemy class"""
     _monster_id: int = 188
     _name: str = "YARIDOVICH"
@@ -5950,6 +5889,8 @@ class YARIDOVICHEnemy(Enemy):
     _cursor_y: int = 8
     _disable_auto_death: bool = True
     _psychopath_message: str = " I’m not the real McCoy![await]"
+
+    _remake_name = "SPEARDOVICH"
 
 
 class HELIOEnemy(Enemy):
@@ -6280,6 +6221,8 @@ class DINGALINGEnemy(Enemy):
     _ohko_immune: bool = True
     _psychopath_message: str = " Wake up sleepy heads![await]"
 
+    _remake_name = "RING-A-DING"
+
 
 class BELOME1Enemy(Enemy):
     """BELOME 1 enemy class"""
@@ -6344,37 +6287,37 @@ class BELOME2Enemy(Enemy):
     _psychopath_message: str = " Gotta yummy in my tummy![await]"
 
 
-class MACHINEMADEEnemy13(Enemy):
-    """MACHINE MADE enemy class"""
+class BELOMEEnemy3(Enemy):
+    """BELOME enemy class"""
     _monster_id: int = 201
-    _name: str = "MACHINE MADE"
+    _name: str = "BELOME 3"
 
-    _hp: int = 180
-    _fp: int = 100
-    _attack: int = 135
-    _defense: int = 95
-    _magic_attack: int = 24
-    _magic_defense: int = 80
-    _speed: int = 45
-    _evade: int = 10
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP, Status.FEAR]
-    _weaknesses: List[Element] = [Element.ICE]
-    _resistances: List[Element] = [Element.FIRE]
-    _xp: int = 50
+    _hp: int = 4600
+    _fp: int = 250
+    _attack: int = 210
+    _defense: int = 0
+    _magic_attack: int = 140
+    _magic_defense: int = 0
+    _speed: int = 4
+    _evade: int = 0
+    _magic_evade: int = 25
+    _status_immunities: List[Status] = [Status.SLEEP]
+    _weaknesses: List[Element] = [Element.THUNDER]
+    _xp: int = 84
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
-    _rare_item_drop = RoyalSyrupItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
-    _flower_bonus_chance: int = 20
-    _sound_on_hit: HitSound = HitSound.JAB
+    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
+    _flower_bonus_chance: int = 40
+    _sound_on_hit: HitSound = HitSound.FLOPPING
     _sound_on_approach: ApproachSound = ApproachSound.NONE
     _coin_sprite: CoinSprite = CoinSprite.NONE
     _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _cursor_x: int = 1
-    _cursor_y: int = 3
+    _cursor_x: int = 3
+    _cursor_y: int = 5
     _ohko_immune: bool = True
-    _psychopath_message: str = "[await]"
+    _disable_auto_death: bool = True
+    _psychopath_message: str = "My throat's all scratchy.[await]\n Life would be better if it wasn't.[await]"
+
 
 
 class SMILAXEnemy(Enemy):
@@ -6409,34 +6352,10 @@ class SMILAXEnemy(Enemy):
     _disable_auto_death: bool = True
     _psychopath_message: str = " Turn your eyes![await]"
 
+# unused, but still needed in battle
 
-class THRAXEnemy(Enemy):
-    """THRAX enemy class"""
-    _monster_id: int = 203
-    _name: str = "THRAX"
-
-    _hp: int = 10
-    _fp: int = 100
-    _attack: int = 0
-    _defense: int = 0
-    _magic_attack: int = 0
-    _magic_defense: int = 0
-    _speed: int = 200
-    _evade: int = 0
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP]
-    _xp: int = 0
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _sound_on_hit: HitSound = HitSound.BITE
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.NONE
-    _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _ohko_immune: bool = True
-    _psychopath_message: str = "[await]"
-
+# 203
+# reserved for optional henchmen
 
 class MEGASMILAXEnemy(Enemy):
     """MEGASMILAX enemy class"""
@@ -6628,6 +6547,8 @@ class TENTACLESEnemy(Enemy):
     _disable_auto_death: bool = True
     _psychopath_message: str = " Keep me in cool![await]"
 
+    _remake_name = "TENTACLE"
+
 
 class AXEMREDEnemy(Enemy):
     """AXEM RED enemy class"""
@@ -6757,34 +6678,8 @@ class MEZZOBOMBEnemy(Enemy):
     _psychopath_message: str = " Look out![await]"
 
 
-class MACHINEMADEEnemy14(Enemy):
-    """MACHINE MADE enemy class"""
-    _monster_id: int = 214
-    _name: str = "MACHINE MADE"
-
-    _hp: int = 100
-    _fp: int = 250
-    _attack: int = 135
-    _defense: int = 95
-    _magic_attack: int = 90
-    _magic_defense: int = 65
-    _speed: int = 36
-    _evade: int = 10
-    _magic_evade: int = 0
-    _xp: int = 0
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _morph_chance: float = 100
-    _sound_on_hit: HitSound = HitSound.KNOCK
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.NONE
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _psychopath_message: str = "[await]"
-
+# 214
+# reserved for optional henchmen
 
 class RASPBERRYEnemy(Enemy):
     """RASPBERRY enemy class"""
@@ -6881,6 +6776,8 @@ class TENTACLESEnemy2(Enemy):
     _ohko_immune: bool = True
     _disable_auto_death: bool = True
     _psychopath_message: str = " You wouldn’t...EAT me?![await]"
+
+    _remake_name = "TENTACLE"
 
 
 class JINX3Enemy(Enemy):
@@ -7110,6 +7007,8 @@ class MACKEnemy(Enemy):
     _disable_auto_death: bool = True
     _psychopath_message: str = " Boing, boing, boing.[await]"
 
+    _remake_name = "CLAYMORTON"
+
 
 class BODYGUARDEnemy(Enemy):
     """BODYGUARD enemy class"""
@@ -7140,7 +7039,7 @@ class BODYGUARDEnemy(Enemy):
     _psychopath_message: str = " Boing, boing, boing.[await]"
 
 
-class YARIDOVICHEnemy2(Enemy):
+class YARIDOVICHEnemy(Enemy):
     """YARIDOVICH enemy class"""
     _monster_id: int = 226
     _name: str = "YARIDOVICH"
@@ -7170,6 +7069,8 @@ class YARIDOVICHEnemy2(Enemy):
     _ohko_immune: bool = True
     _disable_auto_death: bool = True
     _psychopath_message: str = " My promotion’s at stake![await]"
+
+    _remake_name = "SPEARDOVICH"
 
 
 class DRILLBITEnemy(Enemy):
@@ -7298,66 +7199,11 @@ class BOWYEREnemy(Enemy):
     _disable_auto_death: bool = True
     _psychopath_message: str = " What’s with these folks?[await]"
 
+# 231
+# reserved for optional henchmen
 
-class AEROEnemy2(Enemy):
-    """AERO enemy class"""
-    _monster_id: int = 231
-    _name: str = "AERO"
-
-    _hp: int = 10
-    _fp: int = 100
-    _attack: int = 0
-    _defense: int = 0
-    _magic_attack: int = 0
-    _magic_defense: int = 0
-    _speed: int = 0
-    _evade: int = 0
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
-    _xp: int = 0
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _sound_on_hit: HitSound = HitSound.BITE
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
-    _cursor_x: int = 1
-    _cursor_y: int = 4
-    _psychopath_message: str = "[await]"
-
-
-class MACHINEMADEEnemy15(Enemy):
-    """MACHINE MADE enemy class"""
-    _monster_id: int = 232
-    _name: str = "MACHINE MADE"
-
-    _hp: int = 80
-    _fp: int = 250
-    _attack: int = 105
-    _defense: int = 80
-    _magic_attack: int = 80
-    _magic_defense: int = 120
-    _speed: int = 40
-    _evade: int = 0
-    _magic_evade: int = 20
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP]
-    _weaknesses: List[Element] = [Element.ICE]
-    _xp: int = 10
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _rare_item_drop = RoyalSyrupItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
-    _flower_bonus_chance: int = 40
-    _sound_on_hit: HitSound = HitSound.JAB
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.NONE
-    _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _ohko_immune: bool = True
-    _psychopath_message: str = "[await]"
+# 232
+# reserved for optional henchmen
 
 
 class EXOREnemy(Enemy):
@@ -7392,7 +7238,7 @@ class EXOREnemy(Enemy):
     _psychopath_message: str = " Gotta mow the lawn soon.[await]"
 
 
-class SMITHYEnemy3(Enemy):
+class SMITHY1Enemy(Enemy):
     """SMITHY enemy class"""
     _monster_id: int = 234
     _name: str = "SMITHY"
@@ -7454,7 +7300,7 @@ class SHYPEREnemy(Enemy):
     _psychopath_message: str = " Ooh! This’ll be fun![await]"
 
 
-class SMITHYEnemy4(Enemy):
+class SMITHYBodyEnemy(Enemy):
     """SMITHY enemy class"""
     _monster_id: int = 236
     _name: str = "SMITHY"
@@ -7485,7 +7331,7 @@ class SMITHYEnemy4(Enemy):
     _psychopath_message: str = " What a heavy head![await]"
 
 
-class SMITHYEnemy5(Enemy):
+class SMITHY2Enemy(Enemy):
     """SMITHY enemy class"""
     _monster_id: int = 237
     _name: str = "SMITHY"
@@ -7517,7 +7363,7 @@ class SMITHYEnemy5(Enemy):
     _psychopath_message: str = " This isn’t good at all![await]"
 
 
-class SMITHYEnemy6(Enemy):
+class SMITHYMageEnemy(Enemy):
     """SMITHY enemy class"""
     _monster_id: int = 238
     _name: str = "SMITHY"
@@ -7550,7 +7396,7 @@ class SMITHYEnemy6(Enemy):
     _psychopath_message: str = " Good magic, bad defense.[await]"
 
 
-class SMITHYEnemy7(Enemy):
+class SMITHYChestEnemy(Enemy):
     """SMITHY enemy class"""
     _monster_id: int = 239
     _name: str = "SMITHY"
@@ -7650,38 +7496,8 @@ class CROCO2Enemy(Enemy):
     _psychopath_message: str = " Ooh! I’m good![await]"
 
 
-class MACHINEMADEEnemy16(Enemy):
-    """MACHINE MADE enemy class"""
-    _monster_id: int = 242
-    _name: str = "MACHINE MADE"
-
-    _hp: int = 200
-    _fp: int = 100
-    _attack: int = 140
-    _defense: int = 130
-    _magic_attack: int = 16
-    _magic_defense: int = 20
-    _speed: int = 20
-    _evade: int = 0
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP, Status.POISON]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _resistances: List[Element] = [Element.THUNDER]
-    _xp: int = 25
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _rare_item_drop = MaxMushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
-    _flower_bonus_chance: int = 80
-    _sound_on_hit: HitSound = HitSound.JAB
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.NONE
-    _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _ohko_immune: bool = True
-    _psychopath_message: str = "[await]"
-
+# 242
+# reserved for optional henchmen
 
 class EARTHLINKEnemy(Enemy):
     """EARTH LINK enemy class"""
@@ -7715,35 +7531,11 @@ class EARTHLINKEnemy(Enemy):
     _disable_auto_death: bool = True
     _psychopath_message: str = " What a royal pain![await]"
 
+    _remake_name = "BAD ADDER"
 
-class DRILLBITEnemy2(Enemy):
-    """DRILL BIT enemy class"""
-    _monster_id: int = 244
-    _name: str = "DRILL BIT"
 
-    _hp: int = 80
-    _fp: int = 100
-    _attack: int = 85
-    _defense: int = 70
-    _magic_attack: int = 40
-    _magic_defense: int = 56
-    _speed: int = 15
-    _evade: int = 0
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
-    _xp: int = 11
-    _coins: int = 1
-    _yoshi_cookie_item = MushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _sound_on_hit: HitSound = HitSound.BITE
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _cursor_x: int = 1
-    _cursor_y: int = 3
-    _psychopath_message: str = " Mario! It’s time![await]"
-
+# 244
+# reserved for optional henchmen
 
 class AXEMRANGERSEnemy(Enemy):
     """AXEM RANGERS enemy class"""
@@ -7775,6 +7567,8 @@ class AXEMRANGERSEnemy(Enemy):
     _ohko_immune: bool = True
     _disable_auto_death: bool = True
     _psychopath_message: str = " It’s a melee![await]"
+
+    _remake_name = "THE BLADE"
 
 
 class BOOSTEREnemy(Enemy):
@@ -7808,38 +7602,11 @@ class BOOSTEREnemy(Enemy):
     _ohko_immune: bool = True
     _psychopath_message: str = " This is like realizing[await]\n you’re outside without[await]\n your clothes on![await]"
 
-
-class BOOSTEREnemy2(Enemy):
-    """BOOSTER enemy class"""
-    _monster_id: int = 247
-    _name: str = "BOOSTER"
-
-    _hp: int = 10
-    _fp: int = 100
-    _attack: int = 0
-    _defense: int = 0
-    _magic_attack: int = 0
-    _magic_defense: int = 0
-    _speed: int = 0
-    _evade: int = 0
-    _magic_evade: int = 0
-    _xp: int = 0
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _sound_on_hit: HitSound = HitSound.SMASH
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.SMALL
-    _entrance_style: EntranceStyle = EntranceStyle.SLIDE_IN
-    _cursor_x: int = 1
-    _cursor_y: int = 2
-    _ohko_immune: bool = True
-    _psychopath_message: str = "[await]"
-
+# 247
+# reserved for optional henchmen
 
 class SNIFITEnemy2(Enemy):
-    """SNIFIT enemy class"""
+    """SNIFIT enemy class to not interfere with overworld enemy in tower, etc"""
     _monster_id: int = 248
     _name: str = "SNIFIT"
 
@@ -7866,6 +7633,8 @@ class SNIFITEnemy2(Enemy):
     _cursor_x: int = 1
     _cursor_y: int = 2
     _psychopath_message: str = " Minimum wage for THIS?![await]"
+
+    _remake_name = "SNIFSTER"
 
 
 class JOHNNYEnemy(Enemy):
@@ -7898,38 +7667,8 @@ class JOHNNYEnemy(Enemy):
     _disable_auto_death: bool = True
     _psychopath_message: str = " Whoa! It’s all over.[await]"
 
-
-class JOHNNYEnemy2(Enemy):
-    """JOHNNY enemy class"""
-    _monster_id: int = 250
-    _name: str = "JOHNNY"
-
-    _hp: int = 400
-    _fp: int = 100
-    _attack: int = 90
-    _defense: int = 100
-    _magic_attack: int = 0
-    _magic_defense: int = 32
-    _speed: int = 30
-    _evade: int = 10
-    _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.POISON]
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _xp: int = 0
-    _coins: int = 0
-    _yoshi_cookie_item = MushroomItem
-    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
-    _flower_bonus_chance: int = 20
-    _sound_on_hit: HitSound = HitSound.CLAW
-    _sound_on_approach: ApproachSound = ApproachSound.NONE
-    _coin_sprite: CoinSprite = CoinSprite.NONE
-    _entrance_style: EntranceStyle = EntranceStyle.NONE
-    _cursor_x: int = 3
-    _cursor_y: int = 6
-    _ohko_immune: bool = True
-    _disable_auto_death: bool = True
-    _psychopath_message: str = "[await]"
-
+# 250
+# reserved for optional henchmen
 
 class VALENTINAEnemy(Enemy):
     """VALENTINA enemy class"""
@@ -8209,7 +7948,7 @@ ALL_ENEMIES = EnemyCollection([
     RIBBITEEnemy(),
     DIRECTOREnemy(),
     SNIFITEnemy(),
-    POUNDEREnemy2(),
+    POUNDERDouble(),
     PUPPOXEnemy(),
     FINKFLOWEREnemy(),
     LUMBLEREnemy(),
@@ -8225,12 +7964,12 @@ ALL_ENEMIES = EnemyCollection([
     APPRENTICEEnemy2(),
     BANDANAREDEnemy2(),
     PIRANHAPLANTEnemy2(),
-    POUNDETTEEnemy2(),
+    POUNDETTEEnemyDouble(),
     MADMALLETEnemy2(),
     BOXBOYEnemy(),
     SHELLYEnemy(),
     SUPERSPIKEEnemy(),
-    DODOEnemy2(),
+    DODOEnemySolo(),
     OERLIKONEnemy(),
     CHESTEREnemy(),
     BODYEnemy(),
@@ -8238,8 +7977,8 @@ ALL_ENEMIES = EnemyCollection([
     TORTEEnemy(),
     SHYAWAYEnemy(),
     JINXCLONEEnemy(),
-    MACHINEMADEEnemy(),
-    MACHINEMADEEnemy2(),
+    MACHINEMADEBodyguardEnemy(),
+    MACHINEMADEDrillbitEnemy(),
     FORMLESSEnemy(),
     MOKURAEnemy(),
     FIRECRYSTALEnemy(),
@@ -8256,14 +7995,14 @@ ALL_ENEMIES = EnemyCollection([
     BIRDYEnemy2(),
     HANGINSHYEnemy(),
     SMELTEREnemy(),
-    MACHINEMADEEnemy3(),
-    MACHINEMADEEnemy4(),
-    MACHINEMADEEnemy5(),
-    MACHINEMADEEnemy6(),
-    MACHINEMADEEnemy7(),
-    MACHINEMADEEnemy8(),
-    MACHINEMADEEnemy9(),
-    MACHINEMADEEnemy10(),
+    MACHINEMADEMackEnemy(),
+    MACHINEMADEBowyerEnemy(),
+    MACHINEMADEYaridovichEnemy(),
+    MACHINEMADEAxemPinkEnemy(),
+    MACHINEMADEAxemBlackEnemy(),
+    MACHINEMADEAxemRedEnemy(),
+    MACHINEMADEAxemYellowEnemy(),
+    MACHINEMADEAxemGreenEnemy(),
     BAHAMUTTEnemy2(),
     BLOOBEREnemy2(),
     MACHINEMADEEnemy11(),
@@ -8275,13 +8014,13 @@ ALL_ENEMIES = EnemyCollection([
     JAGGEREnemy(),
     CHOMPWEEDEnemy(),
     SMITHYEnemy(),
-    SMITHYEnemy2(),
+    SMITHYSafeEnemy2(),
     PYROSPHEREEnemy2(),
     MICROBOMBEnemy(),
     SHYGUYEnemy2(),
     GRITEnemy(),
     NEOSQUIDEnemy(),
-    YARIDOVICHEnemy(),
+    YARIDOVICHMirageEnemy(),
     HELIOEnemy(),
     RIGHTEYEEnemy(),
     LEFTEYEEnemy(),
@@ -8307,7 +8046,7 @@ ALL_ENEMIES = EnemyCollection([
     AXEMGREENEnemy(),
     KINGBOMBEnemy(),
     MEZZOBOMBEnemy(),
-    MACHINEMADEEnemy14(),
+    MACHINEMADEBodyguardEnemy2(),
     RASPBERRYEnemy(),
     KINGCALAMARIEnemy(),
     TENTACLESEnemy2(),
@@ -8319,7 +8058,7 @@ ALL_ENEMIES = EnemyCollection([
     MADADDEREnemy(),
     MACKEnemy(),
     BODYGUARDEnemy(),
-    YARIDOVICHEnemy2(),
+    YARIDOVICHEnemy(),
     DRILLBITEnemy(),
     AXEMPINKEnemy(),
     AXEMBLACKEnemy(),
@@ -8327,12 +8066,12 @@ ALL_ENEMIES = EnemyCollection([
     AEROEnemy2(),
     MACHINEMADEEnemy15(),
     EXOREnemy(),
-    SMITHYEnemy3(),
+    SMITHY1Enemy(),
     SHYPEREnemy(),
-    SMITHYEnemy4(),
-    SMITHYEnemy5(),
-    SMITHYEnemy6(),
-    SMITHYEnemy7(),
+    SMITHYBodyEnemy(),
+    SMITHY2Enemy(),
+    SMITHYMageEnemy(),
+    SMITHYChestEnemy(),
     CROCO1Enemy(),
     CROCO2Enemy(),
     MACHINEMADEEnemy16(),

@@ -36,6 +36,6 @@ script = MonsterScript([
 	IncreaseVarBy1(BV7EE00F),
 	SetUntargetable(SELF),
 	SetVarBits(BV7EE003, [2]),
-	RunBattleEvent(BE0068_UNUSED),
+	RunBattleEvent(BE0068_PUNCHINELLO_2_SUMMONS_BOMBS),
 	Wait1TurnandRestartScript()
 ])

@@ -1,5 +1,4 @@
-# 201 - MACHINEMADEEnemy13
-# pyright: reportWildcardImportFromLibrary=false
+# 201 - BELOMEEnemy3
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -13,18 +12,35 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	IfVarBitsClear(BV7EE004, [0]),
+	IfVarBitsClear(BV7EE004, [7]),
+	IfVarBitsSet(BV7EE004, [0]),
+	SetVarBits(BV7EE004, [7]),
+	SetVarBits(BV7EE002, [0]),
+	RunBattleDialog(181),
+	RunBattleEvent(BE0059_BELOME_CONFRONTS_A_CHARACTER_YOU_ALL_LOOK_DELICIOUS),
+	RunBattleEvent(BE0099_BELOME_3_SUMMONS_CLONEs),
+	IncreaseVarBy1(BV7EE000),
+	ClearVarBits(BV7EE004, [0]),
+	Wait1TurnandRestartScript(),
+	IfVarBitsSet(BV7EE004, [0]),
+	RunBattleEvent(BE0059_BELOME_CONFRONTS_A_CHARACTER_YOU_ALL_LOOK_DELICIOUS),
+	RunBattleEvent(BE0099_BELOME_3_SUMMONS_CLONEs),
+	IncreaseVarBy1(BV7EE000),
+	ClearVarBits(BV7EE004, [0]),
+	Wait1TurnandRestartScript(),
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
+	CastSpell(AuroraFlashSpell, LightBeamSpell, LightBeamSpell),
+	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
+	Wait1TurnandRestartScript(),
+	Attack(Attack1, Attack1, LullaByeAttack),
+	StartCounterCommands(),
+	IfHPBelow(0),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
+	IfTargetedByRegularAttack(),
+	IfVarLessThan(BV7EE000, 2),
 	SetVarBits(BV7EE004, [0]),
-	SetTarget(SELF),
-	Attack(ValorUpAttack),
-	SetTarget(RANDOM_OPPONENT),
-	Wait1TurnandRestartScript(),
-	IfVarBitsClear(BV7EE004, [1]),
-	SetVarBits(BV7EE004, [1]),
-	SetTarget(SELF),
-	Attack(VigorupAttack),
-	SetTarget(RANDOM_OPPONENT),
-	Wait1TurnandRestartScript(),
-	Attack(Attack1, Attack1, Attack31),
-	StartCounterCommands()
+	Wait1TurnandRestartScript()
 ])

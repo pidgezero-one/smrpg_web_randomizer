@@ -5642,7 +5642,7 @@ FALLING_STEPPING_BRIDGE_BLOCK_NPC_2 = NPC(
 )
 
 AERO_NPC = NPC(
-    sprite_id=SPR0487_AERO,
+    sprite_id=SPR0717_AERO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -8930,7 +8930,7 @@ DIRECTOR_NPC = NPC(
 )
 
 BELOME_ST_TIME_NPC = NPC(
-    sprite_id=SPR0455_BELOME_ST_TIME,
+    sprite_id=SPR0455_BELOME_1ST_TIME,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,
@@ -9170,7 +9170,7 @@ RADISH_NPC = NPC(
 )
 
 CRIPPO_NPC = NPC(
-    sprite_id=SPR0381_CRIPPO,
+    sprite_id=SPR0381_BOWSER_CLONE_S,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=15,
     obtuse_axis=15,
@@ -9314,7 +9314,7 @@ WIND_CRYSTAL_GRIDPLANE_NPC = NPC(
 )
 
 NOTHING_NPC = NPC(
-    sprite_id=SPR0387_NOTHING,
+    sprite_id=SPR0387_MARIO_CLONE_S,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -9434,7 +9434,7 @@ SHELLY_NPC = NPC(
 )
 
 BELOME_SCARECROW_NPC = NPC(
-    sprite_id=SPR0392_BELOME_SCARECROW,
+    sprite_id=SPR0718_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10946,7 +10946,7 @@ DINGALING_GRIDPLANE_NPC = NPC(
 )
 
 BELOME_ST_TIME_NPC_2 = NPC(
-    sprite_id=SPR0455_BELOME_ST_TIME,
+    sprite_id=SPR0455_BELOME_1ST_TIME,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=10,
     obtuse_axis=10,
@@ -10994,7 +10994,7 @@ GOLDEN_BELOME_NPC = NPC(
 )
 
 BELOME_ST_TIME_NPC_3 = NPC(
-    sprite_id=SPR0455_BELOME_ST_TIME,
+    sprite_id=SPR0455_BELOME_1ST_TIME,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=11,
@@ -11618,7 +11618,7 @@ BOOMER_RED_NPC = NPC(
 )
 
 DRILL_BIT_NPC = NPC(
-    sprite_id=SPR0483_DRILL_BIT,
+    sprite_id=SPR0716_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -12578,7 +12578,7 @@ BELOME_SCARECROW_NPC_4 = NPC(
 )
 
 AERO_NPC_2 = NPC(
-    sprite_id=SPR0487_AERO,
+    sprite_id=SPR0717_AERO,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -13706,7 +13706,7 @@ MOKURA_NPC = NPC(
 )
 
 BELOME_SCARECROW_NPC_2 = NPC(
-    sprite_id=SPR0392_BELOME_SCARECROW,
+    sprite_id=SPR0718_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -13730,7 +13730,7 @@ BELOME_SCARECROW_NPC_2 = NPC(
 )
 
 BELOME_SCARECROW_NPC_3 = NPC(
-    sprite_id=SPR0392_BELOME_SCARECROW,
+    sprite_id=SPR0718_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -13754,7 +13754,7 @@ BELOME_SCARECROW_NPC_3 = NPC(
 )
 
 BELOME_SCARECROW_NPC_4 = NPC(
-    sprite_id=SPR0392_BELOME_SCARECROW,
+    sprite_id=SPR0718_SCARECROW,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -15050,7 +15050,7 @@ FACTORY_CHIEF_NPC_4 = NPC(
 )
 
 DRILL_BIT_NPC_2 = NPC(
-    sprite_id=SPR0483_DRILL_BIT,
+    sprite_id=SPR0716_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15074,7 +15074,7 @@ DRILL_BIT_NPC_2 = NPC(
 )
 
 DRILL_BIT_NPC_3 = NPC(
-    sprite_id=SPR0483_DRILL_BIT,
+    sprite_id=SPR0716_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -15098,7 +15098,7 @@ DRILL_BIT_NPC_3 = NPC(
 )
 
 DRILL_BIT_NPC_4 = NPC(
-    sprite_id=SPR0483_DRILL_BIT,
+    sprite_id=SPR0716_DRILL_BIT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,

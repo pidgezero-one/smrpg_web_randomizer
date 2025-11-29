@@ -1,4 +1,4 @@
-# 145 - MACHINEMADEEnemy
+# 145 - MACHINEMADEBodyguardEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

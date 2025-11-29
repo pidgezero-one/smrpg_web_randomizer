@@ -1,9 +1,24 @@
-from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell, EnemySpell, SpellCollection
+from smrpgpatchbuilder.datatypes.spells.classes import Spell as SpellBase, CharacterSpell as CharacterSpellBase, EnemySpell as EnemySpellBase, SpellCollection
 from smrpgpatchbuilder.datatypes.spells.enums import SpellType, EffectType, Element, Status, InflictFunction, TempStatBuff
 from smrpgpatchbuilder.datatypes.items.enums import ItemPrefix
 from smrpgpatchbuilder.datatypes.spells.arguments.types.classes import TimingProperties, DamageModifiers
 from smrpgpatchbuilder.datatypes.spells.arguments.timing_properties import BUTTON_MASH, CHARGE_ONLY, MULTIPLE_BUTTON_PRESSES, ONE_PLUS_MORE_TARGETS_WITH_PRESSES, ONE_TIMING_FOR_125_DMG_ONLY, ONE_TIMING_FOR_125_OR_15X_DMG, ROTATE_1_TARGET_IF_TIMED_ALL, ROTATE_ONLY, TIMED_FOR_9999_SET_ENEMY_HP_0, TIMED_GIVES_TARGET_DEFENSE_UP_BUFF, TIMED_HEALS_ALL_HP_TO_FIRST_TARGET, TIMED_JUMPS, TIME_TO_ACTIVATE_HP_READ
 from smrpgpatchbuilder.datatypes.spells.arguments.damage_modifiers import NO_MODIFIERS, X00625_MODIFIER, X00625_MODIFIER_WITH_MULTI_TARGETING, X0125_MODIFIER_WITH_MULTI_TARGETING, X05_MODIFIER
+
+class Spell(SpellBase):
+    _remake_name: Optional[str] = None
+
+    @property
+    def remake_name(self) -> str:
+        return self._remake_name or self._title
+
+
+class CharacterSpell(CharacterSpellBase, Spell)::
+    pass
+
+
+class EnemySpell(EnemySpellBase, Spell)::
+    pass
 
 
 class JumpSpell(CharacterSpell):
@@ -58,6 +73,8 @@ class FireOrbSpell(CharacterSpell):
     _damage_modifiers = X00625_MODIFIER
     _description = ' Fire orb!\n Push "Y"\n repeatedly!'
 
+    _remake_name = "Fireball"
+
 
 class SuperJumpSpell(CharacterSpell):
     _index = 2
@@ -110,6 +127,8 @@ class SuperFlameSpell(CharacterSpell):
     _damage_modifiers = X00625_MODIFIER
     _description = ' Fire blast!\n Push "Y"\n repeatedly!'
 
+    _remake_name = "Super Fireball"
+
 
 class UltraJumpSpell(CharacterSpell):
     _index = 4
@@ -161,6 +180,8 @@ class UltraFlameSpell(CharacterSpell):
     _timing_modifiers = ONE_PLUS_MORE_TARGETS_WITH_PRESSES
     _damage_modifiers = X00625_MODIFIER_WITH_MULTI_TARGETING
     _description = ' Fire orbs!\n Push "Y"\n repeatedly!'
+
+    _remake_name = "Ultra Fireball"
 
 
 class TherapySpell(CharacterSpell):
@@ -435,6 +456,8 @@ class BowserCrushSpell(CharacterSpell):
     _damage_modifiers = X00625_MODIFIER
     _description = "Bowser's\nultimate weapon!"
 
+    _remake_name = "Mecha Stomp"
+
 
 class GenoBeamSpell(CharacterSpell):
     _index = 16
@@ -645,6 +668,8 @@ class PsychopathSpell(CharacterSpell):
     _timing_modifiers = TIME_TO_ACTIVATE_HP_READ
     _damage_modifiers = NO_MODIFIERS
     _description = " See foe's HP\n and...secrets!"
+
+    _remake_name = "Thought Peek"
 
 
 class ShockerSpell(CharacterSpell):
@@ -1600,6 +1625,8 @@ class DrainSpell(EnemySpell):
     _target_one_party = True
     _target_not_self = False
 
+    _remake_name = " Hot Shot"
+
 
 class LightningOrbSpell(EnemySpell):
     _index = 65
@@ -1732,6 +1759,8 @@ class MegaDrainSpell(EnemySpell):
     _target_one_party = True
     _target_not_self = False
 
+    _remake_name = " Fire Saber"
+
 
 class WillyWispSpell(EnemySpell):
     _index = 71
@@ -1753,6 +1782,8 @@ class WillyWispSpell(EnemySpell):
     _target_wounded = False
     _target_one_party = True
     _target_not_self = False
+
+    _remake_name = " Will-O-Wisp"
 
 
 class DiamondSawSpell(EnemySpell):
@@ -1997,6 +2028,8 @@ class StaticESpell(EnemySpell):
     _target_one_party = True
     _target_not_self = False
 
+    _remake_name = " Static Elec."
+
 
 class SandStormSpell(EnemySpell):
     _index = 83
@@ -2064,6 +2097,8 @@ class DrainBeamSpell(EnemySpell):
     _target_wounded = False
     _target_one_party = True
     _target_not_self = False
+
+    _remake_name = " Painspout"
 
 
 class MeteorBlastSpell(EnemySpell):
@@ -2247,6 +2282,8 @@ class CoronaSpell(EnemySpell):
     _target_one_party = True
     _target_not_self = False
 
+    _remake_name = " Flare"
+
 
 class MeteorSwarmSpell(EnemySpell):
     _index = 94
@@ -2270,17 +2307,18 @@ class MeteorSwarmSpell(EnemySpell):
     _target_not_self = False
 
 
-class KnockOutSpell(EnemySpell):
+class Engine023Spell(EnemySpell):
     _index = 95
-    _title = ' Knock Out'
-    _fp = 15
-    _power = 1
-    _hit_rate = 60
+    _title = 'Engine 023'
+    _prefix = ItemPrefix.EMPTY_SPACE
+    _fp = 0
+    _power = 0
+    _hit_rate = 100
     _spell_type = SpellType.DAMAGE
     _element = Element.NONE
     _check_stats = False
     _ignore_defense = False
-    _check_ohko = True
+    _check_ohko = False
     _usable_outside_of_battle = False
     _quad9s = True
     _hide_num = False
@@ -2570,19 +2608,20 @@ class DummySpell41(EnemySpell):
     _status_effects = [Status.POISON]
 
 
-class ChainSawSpell(EnemySpell):
+class CakerBeamSpell(EnemySpell):
     _index = 108
-    _title = ' Chain Saw'
+    _title = 'Caker Beam'
+    _prefix = ItemPrefix.EMPTY_SPACE
     _fp = 0
     _power = 50
-    _hit_rate = 90
+    _hit_rate = 100
     _spell_type = SpellType.DAMAGE
     _element = Element.NONE
     _check_stats = False
     _ignore_defense = False
     _check_ohko = False
     _usable_outside_of_battle = False
-    _quad9s = False
+    _quad9s = True
     _hide_num = False
     _target_others = False
     _target_enemies = True

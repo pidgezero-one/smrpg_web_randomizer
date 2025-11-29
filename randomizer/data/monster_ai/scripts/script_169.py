@@ -1,4 +1,4 @@
-# 169 - MACHINEMADEEnemy9
+# 169 - MACHINEMADEAxemYellowEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

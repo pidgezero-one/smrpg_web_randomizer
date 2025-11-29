@@ -99,9 +99,4 @@ script = AnimationScriptBlock(expected_size=179, expected_beginning=0x35313B, sc
 	Jmp(["command_0x350E93"]),
 	SpriteSequence(sequence=9, looping_on=True, identifier="command_0x3531DA"),
 	Jmp(["command_0x350E93"]),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0012_TOADSTOOL_FALLEN_CRYING, sequence=1, store_to_vram=True, store_palette=True, overlap_all_sprites=True, identifier="command_0x3531DF"),
-	PauseScriptUntilSpriteSequenceDone(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT, sequence=0, store_to_vram=True, store_palette=True, overlap_all_sprites=True),
-	ResetSpriteSequence(),
-	ReturnSubroutine()
 ])

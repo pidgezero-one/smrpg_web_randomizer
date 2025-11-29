@@ -1,4 +1,4 @@
-# 137 - DODOEnemy2
+# 137 - DODOEnemySolo
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

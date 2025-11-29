@@ -1,4 +1,4 @@
-# 226 - YARIDOVICHEnemy2
+# 226 - YARIDOVICHEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

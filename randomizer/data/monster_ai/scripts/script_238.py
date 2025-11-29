@@ -1,4 +1,4 @@
-# 238 - SMITHYEnemy6
+# 238 - SMITHYMageEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

@@ -1,4 +1,4 @@
-# 236 - SMITHYEnemy4
+# 236 - SMITHYBodyEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -68,10 +68,10 @@ script = MonsterScript([
 	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
 	SetVarBits(BV7EE003, [0]),
 	IfVarBitsClear(BV7EE008, [7]),
-	Attack(Attack95, Attack32, Attack32),
+	Attack(Attack90, Attack32, Attack32),
 	Wait1TurnandRestartScript(),
 	IfVarBitsClear(BV7EE008, [7]),
-	Attack(Attack95, Attack32, Attack32),
+	Attack(Attack90, Attack32, Attack32),
 	Wait1TurnandRestartScript(),
 	IfTurnCounterEquals(3),
 	IfVarBitsClear(BV7EE008, [6]),
