@@ -70,7 +70,7 @@ script = EventScript([
 		A_VisibilityOff()
 	]),
 	FadeInFromBlack(sync=False),
-	JmpIfBitClear(GAMEBOY_KID_PURCHASE_COMPLETE, ["EVENT_2633_ret_16"]),
+	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_2633_ret_16"]),
 	SetVarToConst(PRIMARY_TEMP_7000, 523),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Return(identifier="EVENT_2633_ret_16")

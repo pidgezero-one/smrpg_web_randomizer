@@ -1,4 +1,4 @@
-"""BE0017_UNUSED"""
+"""BE0017_BEGIN_BUNDT_POSTGAME"""
 
 from randomizer.scripts.animation.script_imports import *
 

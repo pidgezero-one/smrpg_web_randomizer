@@ -1,4 +1,4 @@
-# 127 - PILEDRIVEREnemy
+# 132 - BOOSTERDUMMY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,9 +13,17 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack0, Attack0, Attack47),
-	StartCounterCommands(),
-	IfTargetedByCommand([COMMAND_ATTACK]),
-	Attack(DoNothing, DoNothing, FearRouletteAttack),
-	Wait1TurnandRestartScript()
+	IfVarBitsClear(BV7EE002, [0]),
+	SetUntargetable(SELF),
+	SetVarBits(BV7EE002, [0]),
+	RunBattleDialog(37),
+	RunBattleEvent(BE0037_BOOSTER_WORKING),
+	SetVarBits(BV7EE001, [0]),
+	Wait1TurnandRestartScript(),
+	RunBattleDialog(37),
+	RunBattleEvent(BE0037_BOOSTER_WORKING),
+	SetVarBits(BV7EE001, [0]),
+	ClearVarBits(BV7EE001, [1]),
+	Wait1TurnandRestartScript(),
+	StartCounterCommands()
 ])

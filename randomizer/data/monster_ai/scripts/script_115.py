@@ -1,4 +1,4 @@
-# 115 - SNIFITEnemy
+# 115 - SNIFITEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

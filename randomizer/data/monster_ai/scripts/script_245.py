@@ -15,7 +15,7 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 script = MonsterScript([
 	IfVarBitsClear(BV7EE004, [0]),
 	SetVarBits(BV7EE004, [0]),
-	RunBattleEvent(BE0062_UNUSED),
+	RunBattleEvent(BE0062_JINX_4_BE),
 	SetUntargetable(SELF),
 	Wait1TurnandRestartScript(),
 	IfVarBitsClear(BV7EE004, [1]),

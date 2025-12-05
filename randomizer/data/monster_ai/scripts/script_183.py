@@ -1,4 +1,4 @@
-# 183 - PYROSPHEREEnemy2
+# 183 - FIRECRYS3DEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,11 +13,33 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
-	Set7EE005ToRandomNumber(upper_bound=7),
-	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 3),
-	CastSpell(DrainSpell, DrainSpell, FlameStoneSpell),
+	IfTargetKOed(MONSTER_1_CALL),
+	RemoveTarget(ALL_ALLIES_EXCLUDING_SELF),
+	CallTarget(MONSTER_1_CALL),
+	RemoveTarget(SELF),
 	Wait1TurnandRestartScript(),
-	Attack(DoNothing, Attack2, Attack2),
-	StartCounterCommands()
+	IfTurnCounterEquals(1),
+	IfVarBitsClear(BV7EE002, [0]),
+	Set7EE005ToRandomNumber(upper_bound=4),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 1),
+	RunBattleDialog(145),
+	DisableCommand([COMMAND_ATTACK]),
+	SetVarBits(BV7EE002, [0]),
+	Wait1TurnandRestartScript(),
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 1),
+	CastSpell(DrainSpell),
+	Wait1TurnandRestartScript(),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 2),
+	CastSpell(FlameWallSpell),
+	Wait1TurnandRestartScript(),
+	CastSpell(FlameSpell, MegaDrainSpell, CoronaSpell),
+	Wait1TurnandRestartScript(),
+	StartCounterCommands(),
+	IfHPBelow(0),
+	SetTarget(MONSTER_1_SET),
+	SetTarget(ALL_ALLIES_EXCLUDING_SELF),
+	Attack(VigorForceAttack),
+	RunObjectSequence(3),
+	RemoveTarget(SELF)
 ])

@@ -822,7 +822,7 @@ script = SubroutineOrBanklessScript(
         ),
         PauseScriptUntilSpriteSequenceDone(),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0490_SMITHY_ST_FORM,
+            sprite_id=SPR0490_SMITHY_1ST_FORM,
             sequence=0,
             store_to_vram=True,
             store_palette=True,
@@ -1114,7 +1114,7 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x357b73"]),
         PlaySound(sound=S0035_SPELL_POWER_UP),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0452_JINX_ND_TIME,
+            sprite_id=SPR0451_JINX_2,
             sequence=4,
             store_to_vram=True,
             store_palette=True,
@@ -1124,7 +1124,7 @@ script = SubroutineOrBanklessScript(
         SetAMEM16BitToConst(0x60, 28),
         RunSubroutine(["command_0x352475"]),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             store_to_vram=True,
             store_palette=True,
@@ -1154,7 +1154,7 @@ script = SubroutineOrBanklessScript(
         PlaySound(sound=S0169_TELEPORT_ATTACK),
         RunSubroutine(["command_0x357ebe"]),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0452_JINX_ND_TIME,
+            sprite_id=SPR0451_JINX_2,
             sequence=6,
             store_to_vram=True,
             store_palette=True,
@@ -1162,7 +1162,7 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntilSpriteSequenceDone(),
         PlaySound(sound=S0110_HUGE_EXPLOSION),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             store_to_vram=True,
             store_palette=True,

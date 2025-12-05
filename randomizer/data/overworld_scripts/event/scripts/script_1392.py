@@ -31,10 +31,14 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+	JmpIfBitSet(VOUCHER_CHECK_DONE, ["mp_interior_load"]),
+    CompareVarToConst(POSTGAME_PROGRESS_COUNTER, 7, identifier="postgame_progress_checker_1"),
+    JmpIfComparisonResultIsLesser(["mp_interior_load"]),
+    SummonObjectToCurrentLevel(NPC_3),
 	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetWalkingSpeed(VERY_FAST),
 		A_WalkSouthwestPixels(2)
-	]),
+	], identifier="mp_interior_load"),
 	ActionQueueAsync(target=NPC_2, subscript=[
 		A_SetWalkingSpeed(VERY_FAST),
 		A_WalkNorthPixels(4)

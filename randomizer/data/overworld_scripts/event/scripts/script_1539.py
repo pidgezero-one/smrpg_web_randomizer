@@ -49,9 +49,9 @@ script = EventScript([
 	CopyVarToVar(from_var=TEMP_70AE, to_var=PRIMARY_TEMP_7000),
 	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 23, ["EVENT_1539_jmp_if_var_not_equals_short_19"]),
 	SetSyncActionScript(NPC_4, A0468_EMPTY),
-	SetBit(GAMEBOY_KID_PURCHASE_COMPLETE),
+	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 24, ["EVENT_1539_ret_22"], identifier="EVENT_1539_jmp_if_var_not_equals_short_19"),
 	SetSyncActionScript(NPC_5, A0468_EMPTY),
-	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
+	SetBit(GAMEBOY_KID_PURCHASE_COMPLETE),
 	Return(identifier="EVENT_1539_ret_22")
 ])

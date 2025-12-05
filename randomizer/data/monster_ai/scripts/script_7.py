@@ -1,4 +1,4 @@
-# 7 - PIRANHAPLANTEnemy
+# 7 - PIRANHAPLANTEnemyStatic
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

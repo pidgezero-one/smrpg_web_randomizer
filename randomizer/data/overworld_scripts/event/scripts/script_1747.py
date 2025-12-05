@@ -31,6 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetBit(TEMP_7044_1),
-	Return()
 ])

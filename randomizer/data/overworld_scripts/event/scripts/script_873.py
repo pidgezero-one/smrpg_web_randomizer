@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK176_BUNDT_FIGHT_STATIC, BF35_MARRYMORE_CHAPEL_SANCTUARY),
+	StartBattleAtBattlefield(PACK176_CHAPEL_BOSS, BF35_MARRYMORE_CHAPEL_SANCTUARY),
 	Return()
 ])

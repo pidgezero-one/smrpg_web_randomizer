@@ -13,6 +13,19 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack0),
-	StartCounterCommands()
+	IfVarBitsSet(BV7EE001, [0]),
+	CastSpell(Engine023Spell),
+	Wait1TurnandRestartScript(),
+	StartCounterCommands(),
+	IfHPBelow(0),
+	SetVarBits(BV7EE001, [2]),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
+	IfTargetedByRegularAttack(),
+	IfVarBitsSet(BV7EE001, [0]),
+	ClearVarBits(BV7EE001, [0]),
+	RunBattleDialog(187),
+	RunObjectSequence(1),
+	Wait1TurnandRestartScript()
 ])

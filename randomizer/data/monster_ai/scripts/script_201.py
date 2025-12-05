@@ -1,4 +1,5 @@
 # 201 - BELOMEEnemy3
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -18,13 +19,13 @@ script = MonsterScript([
 	SetVarBits(BV7EE002, [0]),
 	RunBattleDialog(181),
 	RunBattleEvent(BE0059_BELOME_CONFRONTS_A_CHARACTER_YOU_ALL_LOOK_DELICIOUS),
-	RunBattleEvent(BE0099_BELOME_3_SUMMONS_CLONEs),
+	RunBattleEvent(BE0099_BELOME_3_SUMMONS_CLONES),
 	IncreaseVarBy1(BV7EE000),
 	ClearVarBits(BV7EE004, [0]),
 	Wait1TurnandRestartScript(),
 	IfVarBitsSet(BV7EE004, [0]),
 	RunBattleEvent(BE0059_BELOME_CONFRONTS_A_CHARACTER_YOU_ALL_LOOK_DELICIOUS),
-	RunBattleEvent(BE0099_BELOME_3_SUMMONS_CLONEs),
+	RunBattleEvent(BE0099_BELOME_3_SUMMONS_CLONES),
 	IncreaseVarBy1(BV7EE000),
 	ClearVarBits(BV7EE004, [0]),
 	Wait1TurnandRestartScript(),

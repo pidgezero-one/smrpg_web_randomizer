@@ -31,6 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+    JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["EVENT_3749_trampoline_defunct"]),
 	JmpIfBitSet(DIRECTIONAL_7049_0, ["EVENT_3749_run_event_as_subroutine_12"]),
 	RunEventAsSubroutine(E0065_TRAMPOLINE_SUBROUTINE),
 	JmpIfBitSet(NIMBUS_BOSS_IN_TOWN_SQUARE, ["EVENT_3749_enter_area_10"]),
@@ -44,5 +45,5 @@ script = EventScript([
 	EnterArea(room_id=R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA, face_direction=NORTHEAST, x=11, y=59, z=0, run_entrance_event=True, identifier="EVENT_3749_enter_area_10"),
 	Return(),
 	RunEventAsSubroutine(E0065_TRAMPOLINE_SUBROUTINE, identifier="EVENT_3749_run_event_as_subroutine_12"),
-	Return()
+	Return(identifier="EVENT_3749_trampoline_defunct"),
 ])

@@ -38,7 +38,7 @@ script = EventScript([
 	Return(),
 	RunDialog(dialog_id=DI3732_GAMEBOY_KID, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_351_run_dialog_5"),
 	Return(),
-	JmpIfBitSet(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_351_jmp_if_bit_set_1"], identifier="EVENT_351_jmp_if_bit_set_7"),
+	JmpIfBitSet(GAMEBOY_KID_PURCHASE_COMPLETE, ["EVENT_351_jmp_if_bit_set_1"], identifier="EVENT_351_jmp_if_bit_set_7"),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
 		A_UnknownCommand(bytearray(b'\xfd$\x17\x00')),
 		A_Mem700CAndConst(0x00C0),
@@ -58,7 +58,7 @@ script = EventScript([
 	PlaySound(sound=SO013_COIN, channel=6),
 	SetVarToConst(PRIMARY_TEMP_7000, 500),
 	Dec7000FromCoins(),
-	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
+	SetBit(GAMEBOY_KID_PURCHASE_COMPLETE),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	Jmp(["EVENT_351_action_queue_37"]),
 	RunDialog(dialog_id=DI3742_GAMEBOY_KID_TUTORIAL_PROMPT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_351_run_dialog_23"),

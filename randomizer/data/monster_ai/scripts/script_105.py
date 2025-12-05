@@ -1,4 +1,4 @@
-# 105 - JUJUEnemy
+# 105 - BLUEBIRDEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,17 +13,25 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	IfTurnCounterEquals(4),
-	SetTarget(ALL_OPPONENTS),
-	CastSpell(KnockOutSpell),
-	ClearVar(BV7EE005_ATTACK_PHASE_COUNTER),
+	IfVarBitsSet(BV7EE004, [0]),
+	RunBattleDialog(209),
+	SetTarget(RANDOM_ALLY_OR_SELF),
+	Attack(Attack0),
+	SetTarget(RANDOM_OPPONENT),
 	Wait1TurnandRestartScript(),
-	Attack(Attack0, Attack0, MushFunkAttack),
-	Wait1Turn(),
-	Attack(Attack0, Attack0, ScreamAttack),
-	Wait1Turn(),
+	IfVarBitsSet(BV7EE004, [0]),
+	Attack(Attack10, Attack10, GrinderAttack),
+	Wait1TurnandRestartScript(),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
+	CastSpell(CrystalSpell, CrystalSpell, BlizzardSpell),
+	Wait1TurnandRestartScript(),
+	Attack(Attack10, Attack10, GrinderAttack),
 	StartCounterCommands(),
-	IfTargetedByCommand([COMMAND_SPECIAL]),
-	Attack(DoNothing, DoNothing, SilverBulletAttack),
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarBitsClear(BV7EE004, [0]),
+	IfTargetedByCommand([COMMAND_ATTACK]),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
+	RunBattleDialog(208),
+	SetVarBits(BV7EE004, [0]),
 	Wait1TurnandRestartScript()
 ])

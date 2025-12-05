@@ -36,7 +36,7 @@ script = EventScript([
 	SetBit(TEMP_707C_6),
 	SetBit(TEMP_707C_7),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
-	RemoveObjectFromCurrentLevel(NPC_1),
+	RemoveObjectFromCurrentLevel(NPC_4),
 	RestoreAllHP(),
 	RestoreAllFP(),
 	FadeInFromBlack(sync=False),
@@ -57,6 +57,7 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_2, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN),
 	SummonObjectToSpecificLevel(NPC_4, R324_MONSTRO_TOWN_OUTSIDE),
 	SetBit(TEMPLE_BOSS_DEFEATED),
+    Inc(POSTGAME_PROGRESS_COUNTER),
 	SetBit(MELODY_BAY_SONG_3_UNLOCKED),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER)
 ])

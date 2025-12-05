@@ -71,7 +71,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=9, is_sequence=True, looping=True, mirror_sprite=True),
 		A_Pause(50)
 	]),
-	StartBattleAtBattlefield(PACK208_DODO_BOSS_STATIC, BF22_NIMBUS_CASTLE),
+	StartBattleAtBattlefield(PACK208_NIMBUS_CASTLE_FIRST_BOSS, BF22_NIMBUS_CASTLE),
 	JmpIfBitClear(GAME_OVER, ["EVENT_2130_unfreeze_camera_11"]),
 	ResetAndChooseGame(),
 	UnfreezeCamera(identifier="EVENT_2130_unfreeze_camera_11"),

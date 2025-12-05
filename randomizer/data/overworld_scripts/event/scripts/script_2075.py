@@ -31,10 +31,11 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+    JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, []),
 	SetVarToConst(ITEM_ID, ShinyStoneItem),
 	StoreItemAt70A7QuantityTo7000(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2075_run_dialog_10"]),
-	Pause(15),
+	Pause(15, identifier="open_monstro_town_door"),
 	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
 	PlaySound(sound=SO081_STAR, channel=6),
 	Pause(15),
@@ -43,4 +44,8 @@ script = EventScript([
 	Return(),
 	RunDialog(dialog_id=DI3335_DUPLICATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_2075_run_dialog_10"),
 	Return()
+	SetVarToConst(ITEM_ID, ExtraShinyStoneItem),
+	StoreItemAt70A7QuantityTo7000(),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2075_run_dialog_10"]),
+    Jmp("open_monstro_town_door"),
 ])

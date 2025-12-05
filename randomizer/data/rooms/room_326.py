@@ -417,7 +417,7 @@ room = Room(
         RegularNPC( # 10
             npc=npcs.CHANCELLOR_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
-            event_script=E1930_EMPTY,
+            event_script=E1930_MACKSKIP_MAYBE,
             action_script=A0113_HENCHMAN_BOUNCING_IN_PLACE,
             visible=True,
             x=17,

@@ -1197,7 +1197,7 @@ script = SubroutineOrBanklessScript(
         ResetObjectMappingMemory(),
         RemoveObject(),
         NewSpriteAtCoords(
-            sprite_id=SPR0509_DOMINO_ND_TIME,
+            sprite_id=SPR0508_DOMINO_2,
             sequence=0,
             priority=2,
             vram_address=0x7000,
@@ -1309,7 +1309,7 @@ script = SubroutineOrBanklessScript(
         ResetObjectMappingMemory(),
         RemoveObject(),
         NewSpriteAtCoords(
-            sprite_id=SPR0508_CLOAKER_ND_TIME,
+            sprite_id=SPR0508_CLOAKER_2,
             sequence=0,
             priority=2,
             vram_address=0x7000,

@@ -32,14 +32,17 @@ from ....packets import *
 
 script = EventScript([
 	EnableControlsUntilReturn([]),
-	StartBattleAtBattlefield(PACK161_BOOSTER_FIGHT_STATIC, BF12_BOOSTER_TOWER),
+	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	JmpIfBitClear(GAME_OVER, ["EVENT_3820_remove_from_level_4"]),
 	ResetAndChooseGame(),
 	RemoveObjectFromSpecificLevel(NPC_7, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, identifier="EVENT_3820_remove_from_level_4"),
 	RemoveObjectFromCurrentLevel(NPC_7),
 	FadeInFromBlack(sync=False),
-	JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["EVENT_3820_ret_10"]),
+    JmpIfBitSet(CURTAIN_MINIGAME_COMPLETED, ["EVENT_3820_sp_doublecheck"]),
+	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	JmpIfBitSet(TOWER_BOSS_1_STAR_PIECE, ["EVENT_3820_ret_10"], identifier="EVENT_3820_sp_doublecheck"),
 	SetBit(TOWER_BOSS_1_STAR_PIECE),
+    Inc(POSTGAME_PROGRESS_COUNTER),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_3820_ret_10")
 ])

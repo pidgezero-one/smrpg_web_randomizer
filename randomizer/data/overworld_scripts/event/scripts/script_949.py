@@ -31,8 +31,10 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+	JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_1, ["EVENT_991_run_dialog_4"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R203_MUSHROOM_WAY_AREA_01, ["EVENT_991_run_dialog_30"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_1, R203_MUSHROOM_WAY_AREA_01, ["EVENT_991_run_dialog_30"]),
+	JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_2, ["EVENT_991_run_dialog_4"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R204_MUSHROOM_WAY_AREA_02, ["EVENT_991_run_dialog_30"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_1, R204_MUSHROOM_WAY_AREA_02, ["EVENT_991_run_dialog_30"]),
 	JmpIfObjectInSpecificLevel(NPC_10, R204_MUSHROOM_WAY_AREA_02, ["EVENT_991_run_dialog_30"]),

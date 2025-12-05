@@ -113,3 +113,6 @@ def randomize(
             pass
         except Exception as exc:
             raise WorldBuildingException(exc) from exc
+
+
+# set NIMBUS_MAINLAND_UNLOCKED if nimbus to be opened at start

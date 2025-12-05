@@ -1,4 +1,4 @@
-# 121 - HARLEQUINEnemy
+# 128 - APPRENTICEEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,6 +13,17 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack3, Attack3, Attack3),
-	StartCounterCommands()
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
+	CastSpell(StaticESpell, BoltSpell, BoltSpell),
+	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
+	Wait1TurnandRestartScript(),
+	Attack(Attack3, Attack29, GunkBallAttack),
+	StartCounterCommands(),
+	IfTargetKOed(AT_LEAST_ONE_ALLY),
+	IncreaseVarBy1(BV7EE000),
+	IfVarEqualOrGreaterThan(BV7EE000, 3),
+	SetTargetable(MONSTER_1_SET),
+	RunBattleDialog(69),
+	Wait1TurnandRestartScript()
 ])

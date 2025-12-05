@@ -1,4 +1,4 @@
-# 124 - RADISHEnemy
+# 124 - BANDANAREDEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,9 +13,10 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack2, Attack2, DUMMYAttack1),
-	StartCounterCommands(),
-	IfTargetedByCommand([COMMAND_ATTACK]),
-	Attack(DoNothing, DoNothing, EndobubbleAttack),
-	Wait1TurnandRestartScript()
+	IfLastMonsterStanding(),
+	SetTarget(SELF),
+	CastSpell(EscapeSpell),
+	Wait1TurnandRestartScript(),
+	Attack(Attack1, Attack1, SkewerAttack),
+	StartCounterCommands()
 ])

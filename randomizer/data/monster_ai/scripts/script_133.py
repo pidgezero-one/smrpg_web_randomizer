@@ -1,4 +1,4 @@
-# 133 - MADMALLETEnemy2
+# 133 - MADMALLETEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

@@ -369,19 +369,28 @@ def update_credits(world):
     credits.add_credit(0x80, 0x80, 0x81, "BROATMEAL        DARKDATA")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
+
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, "GAME DESIGN CONSULTING")
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x40, 0x81, "SEANCASS")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
     # 27
     credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, "QA AND RESEARCH")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "SEANCASS    INTHENAMEOFDT")
+    credits.add_credit(0x80, 0x80, 0xC0, "FLARE       INTHENAMEOFDT")
     credits.add_credit(0x80, 0x40, 0x81, "LOCKECOLELIVE  GOZENGATTA")
-    credits.add_credit(0x80, 0x00, 0xC2, "CAVIN               FLARE")
+    credits.add_credit(0x80, 0x00, 0xC2, "CAVIN               SMBAI")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xC0, "TINYWETBLANKET      SMBAI")
+    credits.add_credit(0x80, 0x80, 0xC0, "TINYWETBLANKET   SEANCASS")
     credits.add_credit(0x80, 0x40, 0x81, "WEFFJEBSTER     BROATMEAL")
     credits.add_credit(0x80, 0x00, 0xC2, "CYNAS        SNESCHALMERS")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)

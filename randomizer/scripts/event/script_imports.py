@@ -6717,7 +6717,7 @@ from randomizer.types.overworld_scripts.arguments import (
     FLAG_COLLECTION_709D,
     FLAG_COLLECTION_709E,
     FLAG_COLLECTION_709F,
-    UNKNOWN_70A0,
+    POSTGAME_PROGRESS_COUNTER,
     UNKNOWN_70A1,
     UNKNOWN_70A2,
     UNKNOWN_70A3,

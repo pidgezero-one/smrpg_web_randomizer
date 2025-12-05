@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK167_CALAMARI_FIGHT_STATIC, BF03_SUNKEN_SHIP_KING_CALAMARIS_CELLAR),
+	StartBattleAtBattlefield(PACK167_SHIP_FIRST_BOSS, BF03_SUNKEN_SHIP_KING_CALAMARIS_CELLAR),
 	Return()
 ])

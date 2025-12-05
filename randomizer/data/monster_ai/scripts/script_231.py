@@ -1,4 +1,4 @@
-# 231 - AEROEnemy2
+# 231 - RASPBERRY2Enemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,6 +13,11 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack0),
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarLessThan(BV7EE007, 4),
+	Attack(Attack0, Attack31, ScrowBellAttack),
+	Wait1TurnandRestartScript(),
+	CastSpell(SandStormSpell, LightBeamSpell, WaterBlastSpell),
+	Wait1TurnandRestartScript(),
 	StartCounterCommands()
 ])

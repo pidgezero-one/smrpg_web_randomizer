@@ -238,7 +238,7 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=24),
         ResetObjectMappingMemory(),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0496_CROCO_ST_TIME,
+            sprite_id=SPR0496_CROCO_1,
             sequence=0,
             store_to_vram=True,
             store_palette=True,

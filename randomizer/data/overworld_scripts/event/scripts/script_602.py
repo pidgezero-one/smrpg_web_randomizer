@@ -42,7 +42,7 @@ script = EventScript([
 	CloseDialog(),
 	JmpToEvent(E0646_MARRYMORE_SHOP_EVENT_CONTAINER),
 	RunDialog(dialog_id=DI2508_MARRYMORE_HOTEL_ROOM_CHOICE, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True, identifier="EVENT_602_run_dialog_10"),
-	JmpIfDialogOptionBOrCSelected(['EVENT_602_set_var_to_const_23', 'EVENT_602_run_dialog_50']),
+	JmpIfDialogOptionBOrCSelected(["EVENT_602_hotel_check_for_voucher", 'EVENT_602_run_dialog_50']),
 	SetVarToConst(SECONDARY_TEMP_7024, 10),
 	ClearBit(UNKNOWN_7049_4),
 	RunEventAsSubroutine(E0274_CHECK_IF_HAVE_ENOUGH_COINS),
@@ -54,6 +54,11 @@ script = EventScript([
 	Jmp(["EVENT_273_fade_out_music_to_volume_17"]),
 	RunDialog(dialog_id=DI2475_CANT_AFFORD_MARRYMORE_HOTEL, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_602_run_dialog_21"),
 	Return(),
+
+	StoreItemAmountTo7000(StayVoucherItem, identifier="EVENT_602_hotel_check_for_voucher"),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["run_stay_voucher_dialog"]),
+    
+
 	SetVarToConst(SECONDARY_TEMP_7024, 200, identifier="EVENT_602_set_var_to_const_23"),
 	ClearBit(UNKNOWN_7049_4),
 	RunEventAsSubroutine(E0274_CHECK_IF_HAVE_ENOUGH_COINS),
@@ -61,7 +66,18 @@ script = EventScript([
 	CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
 	Dec7000FromCoins(),
 	CopyVarToVar(from_var=MARRYMORE_SUITE_LEGAL_COUNT, to_var=PRIMARY_TEMP_7000),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 255, ["EVENT_602_set_bit_32"]),
+    
+	RunDialog(dialog_id=DI2122_STAY_VOUCHER_DIALOG, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="run_stay_voucher_dialog"),
+    RunDialog(dialog_id=DI2122_STAY_VOUCHER_USE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+    RemoveOneOfItemFromInventory(StayVoucherItem),
+	SetBit(STAY_VOUCHER_USED),
+    # put culex's door back
+    JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["hotel_check_prize_count"]),
+	ApplyTileModToLevel(use_alternate=False, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=33),
+	SummonObjectToSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
+	
+
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 255, ["EVENT_602_set_bit_32"], identifier="hotel_check_prize_count"),
 	Inc(MARRYMORE_SUITE_LEGAL_COUNT),
 	SetBit(TEMP_7043_0, identifier="EVENT_602_set_bit_32"),
 	CopyVarToVar(from_var=MARRYMORE_SUITE_LEGAL_COUNT, to_var=PRIMARY_TEMP_7000),

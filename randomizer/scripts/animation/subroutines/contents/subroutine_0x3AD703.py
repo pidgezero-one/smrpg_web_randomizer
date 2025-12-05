@@ -1136,7 +1136,7 @@ script = SubroutineOrBanklessScript(
             set_z=True,
         ),
         NewSpriteAtCoords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             priority=2,
             vram_address=0x7000,
@@ -1160,7 +1160,7 @@ script = SubroutineOrBanklessScript(
             set_z=True,
         ),
         NewSpriteAtCoords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             priority=2,
             vram_address=0x7000,
@@ -1184,7 +1184,7 @@ script = SubroutineOrBanklessScript(
             set_z=True,
         ),
         NewSpriteAtCoords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             priority=2,
             vram_address=0x7000,
@@ -1768,7 +1768,7 @@ script = SubroutineOrBanklessScript(
         PlaySound(sound=S0111_SLEDGE),
         PauseScriptUntilSpriteSequenceDone(),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0490_SMITHY_ST_FORM,
+            sprite_id=SPR0490_SMITHY_1ST_FORM,
             sequence=0,
             store_to_vram=True,
             store_palette=True,
@@ -2530,7 +2530,7 @@ script = SubroutineOrBanklessScript(
         PlaySound(sound=S0111_SLEDGE),
         PauseScriptUntilSpriteSequenceDone(),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0490_SMITHY_ST_FORM,
+            sprite_id=SPR0490_SMITHY_1ST_FORM,
             sequence=4,
             store_to_vram=True,
             looping=True,
@@ -2544,7 +2544,7 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x3a7755"]),
         DisplayMessage(BATTLE_DIALOGUE, 247),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0490_SMITHY_ST_FORM,
+            sprite_id=SPR0490_SMITHY_1ST_FORM,
             sequence=4,
             store_to_vram=True,
             looping=True,
@@ -2560,7 +2560,7 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntilSpriteSequenceDone(),
         PlaySound(sound=S0096_RUMBLE_MULTI),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0490_SMITHY_ST_FORM,
+            sprite_id=SPR0490_SMITHY_1ST_FORM,
             sequence=4,
             store_to_vram=True,
             looping=True,
@@ -2725,7 +2725,7 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"\xa8\x02\x00")),
         PlaySound(sound=S0078_TIMED_STAT_BOOST),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0490_SMITHY_ST_FORM,
+            sprite_id=SPR0490_SMITHY_1ST_FORM,
             sequence=7,
             store_to_vram=True,
             looping=True,
@@ -3365,7 +3365,7 @@ script = SubroutineOrBanklessScript(
             identifier="command_0x3aebbf",
         ),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0451_JINX_ST_TIME,
+            sprite_id=SPR0451_JINX_1,
             sequence=0,
             store_to_vram=True,
             store_palette=True,
@@ -3378,7 +3378,7 @@ script = SubroutineOrBanklessScript(
         PlaySound(sound=S0205_JINXED),
         PauseScriptUntilSpriteSequenceDone(),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             store_to_vram=True,
             store_palette=True,
@@ -3534,7 +3534,7 @@ script = SubroutineOrBanklessScript(
         ),
         PlaySound(sound=S0069_GENO_POWER_UP),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0452_JINX_ND_TIME,
+            sprite_id=SPR0451_JINX_2,
             sequence=5,
             store_to_vram=True,
             store_palette=True,
@@ -3543,7 +3543,7 @@ script = SubroutineOrBanklessScript(
         PlaySound(sound=S0085_WALLOP_5),
         PauseScriptUntilSpriteSequenceDone(),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             store_to_vram=True,
             store_palette=True,
@@ -3557,7 +3557,7 @@ script = SubroutineOrBanklessScript(
             field_object=0, destinations=["queuestart_0x3aec74"], current_target=True
         ),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0452_JINX_ND_TIME,
+            sprite_id=SPR0451_JINX_2,
             sequence=6,
             store_to_vram=True,
             store_palette=True,
@@ -3565,7 +3565,7 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntilSpriteSequenceDone(),
         PlaySound(sound=S0084_WALLOP_4),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             store_to_vram=True,
             store_palette=True,

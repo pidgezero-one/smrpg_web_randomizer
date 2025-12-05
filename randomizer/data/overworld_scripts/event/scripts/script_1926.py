@@ -50,7 +50,7 @@ script = EventScript([
 	RestoreAllFP(),
 	SetBit(TOWER_BOSS_2_DEFEATED),
 	RunEventAsSubroutine(E0205_UNLOCK_MARRYMORE_IF_GATED_BY_TOWER_BOSS),
-	SetBit(GAMEBOY_KID_PURCHASE_COMPLETE),
+	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	JmpToEvent(E1328_TOWER_EXTERIOR_LOADER),
 	Return(),
 	JmpIfBitClear(MARRYMORE_LIBERATED, ["EVENT_1926_jmp_to_event_24"], identifier="EVENT_1926_jmp_if_bit_clear_22"),

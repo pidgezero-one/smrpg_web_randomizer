@@ -1,4 +1,4 @@
-# 128 - APPRENTICEEnemy
+# 128 - APPRENTICEEnemyStatic
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

@@ -1,4 +1,4 @@
-# 119 - LUMBLEREnemy
+# 119 - CROOKEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,12 +13,12 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack0, DoNothing, DoNothing),
-	Wait1Turn(),
-	Attack(Attack0, DoNothing, DoNothing),
-	Wait1Turn(),
-	CastSpell(CrystalSpell),
-	Attack(DUMMYAttack13),
-	Wait1Turn(),
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 3),
+	Attack(Attack5, Attack5, Attack20),
+	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
+	Wait1TurnandRestartScript(),
+	SetTarget(SELF),
+	CastSpell(EscapeSpell),
 	StartCounterCommands()
 ])

@@ -1,4 +1,4 @@
-# E1372_EMPTY
+# E1372_TOAD_VOUCHER_GRANT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,16 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+	ActionQueueAsync(target=NPC_3, subscript=[
+        A_ClearSolidityBits(bit_4=True, cant_walk_through=True),
+        A_FaceNorthwest(),
+		A_SetWalkingSpeed(NORMAL),
+        A_WalkNorthwestSteps(2),
+        A_FaceSouthwest(),
+        A_WalkSouthwestSteps(3),
+    ]),
+    RemoveObjectFromCurrentLevel(NPC_3),
+    SetBit(VOUCHER_CHECK_DONE),
+    Return()
 ])

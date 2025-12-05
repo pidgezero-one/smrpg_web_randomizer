@@ -25,47 +25,26 @@ from ..variables.battle_event_names import *
 # Initialize packs array with None values
 packs: list[FormationPack] = [None] * 256 # type: ignore
 
-
-packs[PACK000_SNIFIT_FIGHT] = FormationPack(
-    # henchman
+#
+packs[PACK000_TOWER_HENCHMAN_1] = FormationPack(
     Formation(
         members=[
-            FormationMember(SNIFITEnemy, 183, 127),
+            FormationMember(SNIFITEnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
+        can_run_away=False
     )
 )
-packs[PACK001_BOBOMB_HENCHMEN] = FormationPack(
-    # henchman
+#
+packs[PACK001_TOWER_HENCHMAN_2] = FormationPack(
     Formation(
         members=[
-            FormationMember(BOBOMBEnemy, x_pos=183, y_pos=127)
+            FormationMember(SNIFITEnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
-    ),
-
-    Formation(
-        members=[
-            FormationMember(BOBOMBEnemy, x_pos=151, y_pos=127),
-            FormationMember(BOBOMBEnemy, x_pos=167, y_pos=103),
-            FormationMember(BOBOMBEnemy, x_pos=199, y_pos=151),
-            FormationMember(BOBOMBEnemy, x_pos=215, y_pos=127),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    ),
-
-    Formation(
-        members=[
-            FormationMember(BOBOMBEnemy, x_pos=151, y_pos=127),
-            FormationMember(BOBOMBEnemy, x_pos=167, y_pos=103),
-            FormationMember(BOBOMBEnemy, x_pos=199, y_pos=151),
-            FormationMember(BOBOMBEnemy, x_pos=215, y_pos=127),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
+        can_run_away=False
     )
 )
 packs[PACK002_SPIKEYS_AND_TROOPAS] = FormationPack(
@@ -303,7 +282,7 @@ packs[PACK009_K9S_WITH_SPIKEYS_OR_FROGS] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK010_REGULAR_SHYSTERS_BIASED_2] = FormationPack(
+packs[PACK010_KINGDOM_HENCHMEN_1] = FormationPack(
     # field
     Formation(
         members=[
@@ -333,7 +312,7 @@ packs[PACK010_REGULAR_SHYSTERS_BIASED_2] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK011_REGULAR_SHYSTERS_BIASED_3] = FormationPack(
+packs[PACK011_KINGDOM_HENCHMEN_2] = FormationPack(
     # field
     Formation(
         members=[
@@ -548,8 +527,8 @@ packs[PACK017_MULTIPLE_GOBYS_BIASED_3] = FormationPack(
 packs[PACK018_CROOKS_WITH_SHYGUY_OR_SNAPDRAGON] = FormationPack(
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 167, 111),
-            FormationMember(CROOKEnemy, 199, 151),
+            FormationMember(CROOKEnemyStatic, 167, 111),
+            FormationMember(CROOKEnemyStatic, 199, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -557,9 +536,9 @@ packs[PACK018_CROOKS_WITH_SHYGUY_OR_SNAPDRAGON] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 199, 143),
-            FormationMember(CROOKEnemy, 151, 119),
-            FormationMember(SHYGUYEnemy, 199, 119),
+            FormationMember(CROOKEnemyStatic, 199, 143),
+            FormationMember(CROOKEnemyStatic, 151, 119),
+            FormationMember(SHYGUYEnemyStatic, 199, 119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -567,7 +546,7 @@ packs[PACK018_CROOKS_WITH_SHYGUY_OR_SNAPDRAGON] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 183, 127),
+            FormationMember(CROOKEnemyStatic, 183, 127),
             FormationMember(SNAPDRAGONEnemy, 151, 111),
             FormationMember(SNAPDRAGONEnemy, 215, 143),
         ],
@@ -578,7 +557,7 @@ packs[PACK018_CROOKS_WITH_SHYGUY_OR_SNAPDRAGON] = FormationPack(
 packs[PACK019_CROOKS_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 199, 159),
+            FormationMember(CROOKEnemyStatic, 199, 159),
             None,
             None,
             FormationMember(STARSLAPEnemy, 215, 127),
@@ -590,7 +569,7 @@ packs[PACK019_CROOKS_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 183, 127),
+            FormationMember(CROOKEnemyStatic, 183, 127),
             FormationMember(SNAPDRAGONEnemy, 151, 111),
             FormationMember(SNAPDRAGONEnemy, 215, 143),
         ],
@@ -600,9 +579,9 @@ packs[PACK019_CROOKS_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 199, 143),
-            FormationMember(CROOKEnemy, 151, 119),
-            FormationMember(SHYGUYEnemy, 199, 119),
+            FormationMember(CROOKEnemyStatic, 199, 143),
+            FormationMember(CROOKEnemyStatic, 151, 119),
+            FormationMember(SHYGUYEnemyStatic, 199, 119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -611,7 +590,7 @@ packs[PACK019_CROOKS_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
 packs[PACK020_SHYGUYS_WITH_STARSLAP_OR_SNAPDRAGON] = FormationPack(
     Formation(
         members=[
-            FormationMember(SHYGUYEnemy, 151, 111),
+            FormationMember(SHYGUYEnemyStatic, 151, 111),
             None,
             FormationMember(STARSLAPEnemy, 199, 151),
         ],
@@ -621,7 +600,7 @@ packs[PACK020_SHYGUYS_WITH_STARSLAP_OR_SNAPDRAGON] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(SHYGUYEnemy, 151, 111),
+            FormationMember(SHYGUYEnemyStatic, 151, 111),
             None,
             FormationMember(STARSLAPEnemy, 199, 151),
         ],
@@ -631,8 +610,8 @@ packs[PACK020_SHYGUYS_WITH_STARSLAP_OR_SNAPDRAGON] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(SHYGUYEnemy, 135, 103),
-            FormationMember(SHYGUYEnemy, 215, 143),
+            FormationMember(SHYGUYEnemyStatic, 135, 103),
+            FormationMember(SHYGUYEnemyStatic, 215, 143),
             None,
             FormationMember(SNAPDRAGONEnemy, 183, 127),
         ],
@@ -643,9 +622,9 @@ packs[PACK020_SHYGUYS_WITH_STARSLAP_OR_SNAPDRAGON] = FormationPack(
 packs[PACK021_SHYGUY_STARSLAP_SNAPDRAGON_CROOK_ARACHNE] = FormationPack(
     Formation(
         members=[
-            FormationMember(SHYGUYEnemy, 231, 135),
+            FormationMember(SHYGUYEnemyStatic, 231, 135),
             None,
-            FormationMember(CROOKEnemy, 199, 143),
+            FormationMember(CROOKEnemyStatic, 199, 143),
             FormationMember(ARACHNEEnemy, 151, 111),
         ],
         music=NormalBattleMusic(),
@@ -654,8 +633,8 @@ packs[PACK021_SHYGUY_STARSLAP_SNAPDRAGON_CROOK_ARACHNE] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(SHYGUYEnemy, 135, 103),
-            FormationMember(SHYGUYEnemy, 215, 143),
+            FormationMember(SHYGUYEnemyStatic, 135, 103),
+            FormationMember(SHYGUYEnemyStatic, 215, 143),
             None,
             FormationMember(SNAPDRAGONEnemy, 183, 127),
         ],
@@ -665,7 +644,7 @@ packs[PACK021_SHYGUY_STARSLAP_SNAPDRAGON_CROOK_ARACHNE] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(SHYGUYEnemy, 151, 111),
+            FormationMember(SHYGUYEnemyStatic, 151, 111),
             None,
             FormationMember(STARSLAPEnemy, 199, 151),
         ],
@@ -677,7 +656,7 @@ packs[PACK022_STARSLAP_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
     Formation(
         members=[
             FormationMember(STARSLAPEnemy, 199, 159),
-            FormationMember(SHYGUYEnemy, 151, 111),
+            FormationMember(SHYGUYEnemyStatic, 151, 111),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -972,56 +951,35 @@ packs[PACK031_MULTIPLE_SPARKY_WITH_SHYRANGER] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK032_APPRENTICE_HENCHMAN_FIGHT] = FormationPack(
-    # henchman
+#
+packs[PACK032_TOWER_PASS_HENCHMAN] = FormationPack(
     Formation(
         members=[
-            FormationMember(APPRENTICEEnemy, x_pos=183, y_pos=127),
+            FormationMember(APPRENTICEEnemyStatic, x_pos=183, y_pos=127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
+        can_run_away=False,
     )
 )
-packs[PACK033_UNUSED] = FormationPack(
+#
+packs[PACK033_POSTGAME_TEMPLE] = FormationPack(
     # put belome 3 here
     Formation(
         members=[
-            FormationMember(GOOMBAEnemy, 167, 135),
-            None,
-            FormationMember(PIRANHAPLANTEnemy, 231, 151),
-            FormationMember(PIRANHAPLANTEnemy, 135, 103),
-            FormationMember(SPARKYEnemy, 199, 119),
+            FormationMember(BELOMEEnemy3, 183, 127),
+            FormationMember(MARIOCLONESEnemy, 135, 119, hidden_at_start=True),
+            FormationMember(TOADSTOOL3Enemy, 215, 159, hidden_at_start=True),
         ],
-        music=NormalBattleMusic(),
+        music=MidbossMusic(),
         unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(GOOMBAEnemy, 135, 119),
-            FormationMember(GOOMBAEnemy, 199, 151),
-            FormationMember(PIRANHAPLANTEnemy, 199, 119),
-            FormationMember(PIRANHAPLANTEnemy, 167, 135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(GOOMBAEnemy, 199, 151),
-            FormationMember(GOOMBAEnemy, 135, 119),
-            FormationMember(SHYRANGEREnemy, 183, 111),
-            FormationMember(SHYRANGEREnemy, 215, 127),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
+        can_run_away=False,
     )
 )
 packs[PACK034_PIRANHA_WITH_SHYRANGER] = FormationPack(
     Formation(
         members=[
-            FormationMember(PIRANHAPLANTEnemy, 167, 135),
+            FormationMember(PIRANHAPLANTEnemyStatic, 167, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1029,8 +987,8 @@ packs[PACK034_PIRANHA_WITH_SHYRANGER] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(PIRANHAPLANTEnemy, 215, 143),
-            FormationMember(PIRANHAPLANTEnemy, 151, 111),
+            FormationMember(PIRANHAPLANTEnemyStatic, 215, 143),
+            FormationMember(PIRANHAPLANTEnemyStatic, 151, 111),
             FormationMember(SHYRANGEREnemy, 183, 127),
         ],
         music=NormalBattleMusic(),
@@ -1039,9 +997,9 @@ packs[PACK034_PIRANHA_WITH_SHYRANGER] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(PIRANHAPLANTEnemy, 167, 111),
-            FormationMember(PIRANHAPLANTEnemy, 167, 135),
-            FormationMember(PIRANHAPLANTEnemy, 215, 135),
+            FormationMember(PIRANHAPLANTEnemyStatic, 167, 111),
+            FormationMember(PIRANHAPLANTEnemyStatic, 167, 135),
+            FormationMember(PIRANHAPLANTEnemyStatic, 215, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1050,11 +1008,11 @@ packs[PACK034_PIRANHA_WITH_SHYRANGER] = FormationPack(
 packs[PACK035_MULTIPLE_PIRANHA_WITH_SHYRANGER] = FormationPack(
     Formation(
         members=[
-            FormationMember(PIRANHAPLANTEnemy, 151, 143),
-            FormationMember(PIRANHAPLANTEnemy, 151, 111),
-            FormationMember(PIRANHAPLANTEnemy, 199, 119),
-            FormationMember(PIRANHAPLANTEnemy, 231, 143),
-            FormationMember(PIRANHAPLANTEnemy, 199, 159),
+            FormationMember(PIRANHAPLANTEnemyStatic, 151, 143),
+            FormationMember(PIRANHAPLANTEnemyStatic, 151, 111),
+            FormationMember(PIRANHAPLANTEnemyStatic, 199, 119),
+            FormationMember(PIRANHAPLANTEnemyStatic, 231, 143),
+            FormationMember(PIRANHAPLANTEnemyStatic, 199, 159),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1062,9 +1020,9 @@ packs[PACK035_MULTIPLE_PIRANHA_WITH_SHYRANGER] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(PIRANHAPLANTEnemy, 167, 111),
-            FormationMember(PIRANHAPLANTEnemy, 167, 135),
-            FormationMember(PIRANHAPLANTEnemy, 215, 135),
+            FormationMember(PIRANHAPLANTEnemyStatic, 167, 111),
+            FormationMember(PIRANHAPLANTEnemyStatic, 167, 135),
+            FormationMember(PIRANHAPLANTEnemyStatic, 215, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1072,8 +1030,8 @@ packs[PACK035_MULTIPLE_PIRANHA_WITH_SHYRANGER] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(PIRANHAPLANTEnemy, 215, 143),
-            FormationMember(PIRANHAPLANTEnemy, 151, 111),
+            FormationMember(PIRANHAPLANTEnemyStatic, 215, 143),
+            FormationMember(PIRANHAPLANTEnemyStatic, 151, 111),
             FormationMember(SHYRANGEREnemy, 183, 127),
         ],
         music=NormalBattleMusic(),
@@ -1083,7 +1041,7 @@ packs[PACK035_MULTIPLE_PIRANHA_WITH_SHYRANGER] = FormationPack(
 packs[PACK036_BOBOMB_WITH_CLUSTER] = FormationPack(
     Formation(
         members=[
-            FormationMember(BOBOMBEnemy, 183, 127),
+            FormationMember(BOBOMBEnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1091,8 +1049,8 @@ packs[PACK036_BOBOMB_WITH_CLUSTER] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BOBOMBEnemy, 135, 119),
-            FormationMember(BOBOMBEnemy, 199, 151),
+            FormationMember(BOBOMBEnemyStatic, 135, 119),
+            FormationMember(BOBOMBEnemyStatic, 199, 151),
             FormationMember(CLUSTEREnemy, 199, 119),
         ],
         music=NormalBattleMusic(),
@@ -1101,10 +1059,10 @@ packs[PACK036_BOBOMB_WITH_CLUSTER] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BOBOMBEnemy, 151, 127),
-            FormationMember(BOBOMBEnemy, 167, 103),
-            FormationMember(BOBOMBEnemy, 199, 151),
-            FormationMember(BOBOMBEnemy, 215, 127),
+            FormationMember(BOBOMBEnemyStatic, 151, 127),
+            FormationMember(BOBOMBEnemyStatic, 167, 103),
+            FormationMember(BOBOMBEnemyStatic, 199, 151),
+            FormationMember(BOBOMBEnemyStatic, 215, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1113,8 +1071,8 @@ packs[PACK036_BOBOMB_WITH_CLUSTER] = FormationPack(
 packs[PACK037_BOBOMB_WITH_CLUSTER_SOMETIMES_ENIGMA] = FormationPack(
     Formation(
         members=[
-            FormationMember(BOBOMBEnemy, 135, 119),
-            FormationMember(BOBOMBEnemy, 199, 151),
+            FormationMember(BOBOMBEnemyStatic, 135, 119),
+            FormationMember(BOBOMBEnemyStatic, 199, 151),
             FormationMember(ENIGMAEnemy, 183, 111),
             FormationMember(CLUSTEREnemy, 215, 127),
         ],
@@ -1124,10 +1082,10 @@ packs[PACK037_BOBOMB_WITH_CLUSTER_SOMETIMES_ENIGMA] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BOBOMBEnemy, 151, 127),
-            FormationMember(BOBOMBEnemy, 167, 103),
-            FormationMember(BOBOMBEnemy, 199, 151),
-            FormationMember(BOBOMBEnemy, 215, 127),
+            FormationMember(BOBOMBEnemyStatic, 151, 127),
+            FormationMember(BOBOMBEnemyStatic, 167, 103),
+            FormationMember(BOBOMBEnemyStatic, 199, 151),
+            FormationMember(BOBOMBEnemyStatic, 215, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1135,8 +1093,8 @@ packs[PACK037_BOBOMB_WITH_CLUSTER_SOMETIMES_ENIGMA] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BOBOMBEnemy, 135, 119),
-            FormationMember(BOBOMBEnemy, 199, 151),
+            FormationMember(BOBOMBEnemyStatic, 135, 119),
+            FormationMember(BOBOMBEnemyStatic, 199, 151),
             FormationMember(CLUSTEREnemy, 199, 119),
         ],
         music=NormalBattleMusic(),
@@ -1157,7 +1115,7 @@ packs[PACK038_SPARKY_WITH_ALWAYS_OTHER_ENEMIES_1] = FormationPack(
         members=[
             FormationMember(SPARKYEnemy, 167, 111),
             FormationMember(SPARKYEnemy, 215, 135),
-            FormationMember(BOBOMBEnemy, 167, 135),
+            FormationMember(BOBOMBEnemyStatic, 167, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1199,7 +1157,7 @@ packs[PACK039_SPARKY_WITH_ALWAYS_OTHER_ENEMIES_2] = FormationPack(
         members=[
             FormationMember(SPARKYEnemy, 167, 111),
             FormationMember(SPARKYEnemy, 215, 135),
-            FormationMember(BOBOMBEnemy, 167, 135),
+            FormationMember(BOBOMBEnemyStatic, 167, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1218,7 +1176,7 @@ packs[PACK040_MAGMITES_WITH_SPARKY_BOBOMB_OR_CLUSTER] = FormationPack(
     Formation(
         members=[
             FormationMember(MAGMITEEnemy, 151, 111),
-            FormationMember(BOBOMBEnemy, 183, 127),
+            FormationMember(BOBOMBEnemyStatic, 183, 127),
             FormationMember(SPARKYEnemy, 215, 143),
         ],
         music=NormalBattleMusic(),
@@ -1241,7 +1199,7 @@ packs[PACK041_MAGMITES_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
         members=[
             FormationMember(MAGMITEEnemy, 135, 103),
             FormationMember(MAGMITEEnemy, 231, 151),
-            FormationMember(BOBOMBEnemy, 167, 135),
+            FormationMember(BOBOMBEnemyStatic, 167, 135),
             None,
             FormationMember(CLUSTEREnemy, 199, 119),
         ],
@@ -1263,7 +1221,7 @@ packs[PACK041_MAGMITES_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
     Formation(
         members=[
             FormationMember(MAGMITEEnemy, 151, 111),
-            FormationMember(BOBOMBEnemy, 183, 127),
+            FormationMember(BOBOMBEnemyStatic, 183, 127),
             FormationMember(SPARKYEnemy, 215, 143),
         ],
         music=NormalBattleMusic(),
@@ -1648,62 +1606,30 @@ packs[PACK053_BLASTERS_AND_SPOOKUMS_2] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK054_TORTES] = FormationPack(
+#
+packs[PACK054_TOWER_HENCHMAN_3] = FormationPack(
     Formation(
         members=[
-            FormationMember(TORTEEnemy, 183, 127),
+            FormationMember(SNIFITEnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(TORTEEnemy, 215, 143),
-            FormationMember(TORTEEnemy, 151, 111),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(TORTEEnemy, 183, 103),
-            FormationMember(TORTEEnemy, 151, 135),
-            FormationMember(TORTEEnemy, 215, 135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
+        can_run_away=False
     )
 )
-packs[PACK055_MULTIPLE_TORTES] = FormationPack(
+#
+packs[PACK055_MONSTRO_DOOR_POSTGAME] = FormationPack(
     Formation(
         members=[
-            FormationMember(TORTEEnemy, 167, 135),
-            FormationMember(TORTEEnemy, 199, 119),
-            FormationMember(TORTEEnemy, 151, 111),
-            FormationMember(TORTEEnemy, 215, 143),
+            FormationMember(CULEX3DEnemy, 183, 103),
+            FormationMember(FIRECRYS3DEnemy, 135, 103, hidden_at_start=True),
+            FormationMember(FIRECRYS3DEnemy, 151, 119, hidden_at_start=True),
+            FormationMember(FIRECRYS3DEnemy, 183, 135, hidden_at_start=True),
+            FormationMember(FIRECRYS3DEnemy, 215, 143, hidden_at_start=True),
         ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(TORTEEnemy, 183, 103),
-            FormationMember(TORTEEnemy, 151, 135),
-            FormationMember(TORTEEnemy, 215, 135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(TORTEEnemy, 215, 143),
-            FormationMember(TORTEEnemy, 151, 111),
-        ],
-        music=NormalBattleMusic(),
+        run_event_at_load=BE0077_CULEX_3D,
+        music=CulexMusic(),
+        can_run_away=False,
         unknown_bit=True,
     )
 )
@@ -1910,7 +1836,7 @@ packs[PACK062_ZEOSTAR_WITH_BLOOBER_OR_LEUKO] = FormationPack(
         members=[
             FormationMember(ZEOSTAREnemy, 151, 135),
             FormationMember(ZEOSTAREnemy, 183, 103),
-            FormationMember(BLOOBEREnemy, 215, 135),
+            FormationMember(BLOOBEREnemyStatic, 215, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1953,7 +1879,7 @@ packs[PACK063_ZEOSTAR_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
         members=[
             FormationMember(ZEOSTAREnemy, 151, 135),
             FormationMember(ZEOSTAREnemy, 183, 103),
-            FormationMember(BLOOBEREnemy, 215, 135),
+            FormationMember(BLOOBEREnemyStatic, 215, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1962,7 +1888,7 @@ packs[PACK063_ZEOSTAR_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
 packs[PACK064_BLOOBER_PACK_1] = FormationPack(
     Formation(
         members=[
-            FormationMember(BLOOBEREnemy, 151, 111),
+            FormationMember(BLOOBEREnemyStatic, 151, 111),
             FormationMember(MRKIPPEREnemy, 215, 143),
         ],
         music=NormalBattleMusic(),
@@ -1971,9 +1897,9 @@ packs[PACK064_BLOOBER_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BLOOBEREnemy, 183, 127),
-            FormationMember(BLOOBEREnemy, 231, 143),
-            FormationMember(BLOOBEREnemy, 135, 111),
+            FormationMember(BLOOBEREnemyStatic, 183, 127),
+            FormationMember(BLOOBEREnemyStatic, 231, 143),
+            FormationMember(BLOOBEREnemyStatic, 135, 111),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -1981,8 +1907,8 @@ packs[PACK064_BLOOBER_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BLOOBEREnemy, 151, 111),
-            FormationMember(BLOOBEREnemy, 231, 151),
+            FormationMember(BLOOBEREnemyStatic, 151, 111),
+            FormationMember(BLOOBEREnemyStatic, 231, 151),
             FormationMember(MRKIPPEREnemy, 151, 143),
             FormationMember(CRUSTYEnemy, 199, 119),
         ],
@@ -1993,8 +1919,8 @@ packs[PACK064_BLOOBER_PACK_1] = FormationPack(
 packs[PACK065_BLOOBER_PACK_2] = FormationPack(
     Formation(
         members=[
-            FormationMember(BLOOBEREnemy, 231, 135),
-            FormationMember(BLOOBEREnemy, 167, 103),
+            FormationMember(BLOOBEREnemyStatic, 231, 135),
+            FormationMember(BLOOBEREnemyStatic, 167, 103),
             FormationMember(ZEOSTAREnemy, 135, 127),
             FormationMember(ZEOSTAREnemy, 183, 151),
             FormationMember(LEUKOEnemy, 183, 127),
@@ -2005,8 +1931,8 @@ packs[PACK065_BLOOBER_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BLOOBEREnemy, 151, 111),
-            FormationMember(BLOOBEREnemy, 231, 151),
+            FormationMember(BLOOBEREnemyStatic, 151, 111),
+            FormationMember(BLOOBEREnemyStatic, 231, 151),
             FormationMember(MRKIPPEREnemy, 151, 143),
             FormationMember(CRUSTYEnemy, 199, 119),
         ],
@@ -2016,9 +1942,9 @@ packs[PACK065_BLOOBER_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BLOOBEREnemy, 183, 127),
-            FormationMember(BLOOBEREnemy, 231, 143),
-            FormationMember(BLOOBEREnemy, 135, 111),
+            FormationMember(BLOOBEREnemyStatic, 183, 127),
+            FormationMember(BLOOBEREnemyStatic, 231, 143),
+            FormationMember(BLOOBEREnemyStatic, 135, 111),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -2087,7 +2013,8 @@ packs[PACK067_KIPPER_PACK_2] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK068_BANDANA_REDS_1] = FormationPack(
+#
+packs[PACK068_SHIP_HENCHMAN_1] = FormationPack(
     Formation(
         members=[
             FormationMember(BANDANAREDEnemy, 151, 127),
@@ -2097,9 +2024,11 @@ packs[PACK068_BANDANA_REDS_1] = FormationPack(
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
+        can_run_away=False
     )
 )
-packs[PACK069_BANDANA_REDS_2] = FormationPack(
+#
+packs[PACK069_SHIP_HENCHMAN_2] = FormationPack(
     Formation(
         members=[
             FormationMember(BANDANAREDEnemy, 199, 151),
@@ -2110,72 +2039,36 @@ packs[PACK069_BANDANA_REDS_2] = FormationPack(
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
+        can_run_away=False
     )
 )
-packs[PACK070_BANDANA_BLUES] = FormationPack(
+#
+packs[PACK070_TOWER_POSTGAME] = FormationPack(
     Formation(
         members=[
-            FormationMember(BANDANABLUEEnemy, 183, 127),
+            FormationMember(BOOSTEREnemy2, 184, 116),
+            FormationMember(SNIFIT2Enemy, 156, 132),
+            FormationMember(SNIFIT2Enemy, 143, 104),
+            FormationMember(SNIFIT2Enemy, 212, 138),
+            FormationMember(BOOSTERDUMMY, 0, 0),
         ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(BANDANABLUEEnemy, 135, 127),
-            FormationMember(BANDANABLUEEnemy, 167, 111),
-            FormationMember(BANDANABLUEEnemy, 183, 151),
-            FormationMember(BANDANABLUEEnemy, 215, 135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(BANDANABLUEEnemy, 135, 127),
-            FormationMember(BANDANABLUEEnemy, 167, 111),
-            FormationMember(BANDANABLUEEnemy, 183, 151),
-            FormationMember(BANDANABLUEEnemy, 215, 135),
-        ],
-        music=NormalBattleMusic(),
+        music=MidbossMusic(),
+        can_run_away=False,
         unknown_bit=True,
     )
 )
-packs[PACK071_BANDANA_RED_HENCHMEN] = FormationPack(
-    # henchman
+#
+packs[PACK071_MINES_POSTGAME] = FormationPack(
     Formation(
         members=[
-            FormationMember(BANDANAREDEnemy, x_pos=151, y_pos=127),
-            FormationMember(BANDANAREDEnemy, x_pos=183, y_pos=143),
-            FormationMember(BANDANAREDEnemy, x_pos=167, y_pos=103),
-            FormationMember(BANDANAREDEnemy, x_pos=231, y_pos=135),
+            FormationMember(PUNCHINELLO2Enemy, 188, 116),
+            FormationMember(STRONGBOBOMB3Enemy, 145, 103, hidden_at_start=True),
+            FormationMember(STRONGBOBOMB1Enemy, 150, 129, hidden_at_start=True),
+            FormationMember(STRONGBOBOMB4Enemy, 182, 142, hidden_at_start=True),
+            FormationMember(STRONGBOBOMB2Enemy, 223, 142, hidden_at_start=True),
         ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(BANDANAREDEnemy, x_pos=199, y_pos=151),
-            FormationMember(BANDANAREDEnemy, x_pos=135, y_pos=119),
-            FormationMember(BANDANAREDEnemy, x_pos=215, y_pos=127),
-            FormationMember(BANDANAREDEnemy, x_pos=167, y_pos=135),
-            FormationMember(BANDANAREDEnemy, x_pos=183, y_pos=111),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(BANDANAREDEnemy, x_pos=151, y_pos=127),
-            FormationMember(BANDANAREDEnemy, x_pos=183, y_pos=143),
-            FormationMember(BANDANAREDEnemy, x_pos=167, y_pos=103),
-            FormationMember(BANDANAREDEnemy, x_pos=231, y_pos=135),
-        ],
-        music=NormalBattleMusic(),
+        music=MidbossMusic(),
+        can_run_away=False,
         unknown_bit=True,
     )
 )
@@ -2368,63 +2261,29 @@ packs[PACK077_GREAPER_ALWAYS_WITH_OTHER_MONSTERS] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK078_DRILLBIT_PACK_1] = FormationPack(
+#
+packs[PACK078_CHAPEL_POSTGAME] = FormationPack(
     Formation(
         members=[
-            FormationMember(DRILLBITEnemy, 183, 127),
+            FormationMember(BUNDT2Enemy, 199, 127),
+            FormationMember(RASPBERRY2Enemy, 199, 119),
+            FormationMember(TORTE2Enemy, 199, 151),
+            FormationMember(TORTE2Enemy, 135, 119),
+            FormationMember(CANDLEEnemy, 0, 0),
         ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(DRILLBITEnemy, 167, 135),
-            FormationMember(DRILLBITEnemy, 199, 119),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(DRILLBITEnemy, 151, 119),
-            FormationMember(DRILLBITEnemy, 183, 151),
-            FormationMember(DRILLBITEnemy, 215, 119),
-        ],
-        music=NormalBattleMusic(),
+        run_event_at_load=BE0017_BEGIN_BUNDT_POSTGAME,
+        music=MidbossMusic(),
+        can_run_away=False,
         unknown_bit=True,
     )
 )
-packs[PACK079_DRILLBIT_PACK_2] = FormationPack(
+#
+packs[PACK079_UNUSED] = FormationPack(
     Formation(
         members=[
-            FormationMember(DRILLBITEnemy, 167, 119),
-            FormationMember(DRILLBITEnemy, 199, 151),
-            FormationMember(DRILLBITEnemy, 135, 119),
-            FormationMember(DRILLBITEnemy, 199, 119),
-            FormationMember(DRILLBITEnemy, 199, 135),
         ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(DRILLBITEnemy, 151, 119),
-            FormationMember(DRILLBITEnemy, 183, 151),
-            FormationMember(DRILLBITEnemy, 215, 119),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(DRILLBITEnemy, 167, 135),
-            FormationMember(DRILLBITEnemy, 199, 119),
-        ],
-        music=NormalBattleMusic(),
+        music=MidbossMusic(),
+        can_run_away=False,
         unknown_bit=True,
     )
 )
@@ -2803,7 +2662,7 @@ packs[PACK091_GECKIT_PACK_2] = FormationPack(
 packs[PACK092_BIRDY_PACK_1] = FormationPack(
     Formation(
         members=[
-            FormationMember(BIRDYEnemy, 135, 119),
+            FormationMember(BIRDYEnemyStatic, 135, 119),
             FormationMember(HEAVYTROOPAEnemy, 215, 135),
         ],
         music=NormalBattleMusic(),
@@ -2812,9 +2671,9 @@ packs[PACK092_BIRDY_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BIRDYEnemy, 215, 119),
-            FormationMember(BIRDYEnemy, 151, 119),
-            FormationMember(BIRDYEnemy, 183, 151),
+            FormationMember(BIRDYEnemyStatic, 215, 119),
+            FormationMember(BIRDYEnemyStatic, 151, 119),
+            FormationMember(BIRDYEnemyStatic, 183, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -2822,8 +2681,8 @@ packs[PACK092_BIRDY_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BIRDYEnemy, 199, 151),
-            FormationMember(BIRDYEnemy, 135, 119),
+            FormationMember(BIRDYEnemyStatic, 199, 151),
+            FormationMember(BIRDYEnemyStatic, 135, 119),
             FormationMember(HEAVYTROOPAEnemy, 199, 119),
         ],
         music=NormalBattleMusic(),
@@ -2833,11 +2692,11 @@ packs[PACK092_BIRDY_PACK_1] = FormationPack(
 packs[PACK093_BIRDY_PACK_2] = FormationPack(
     Formation(
         members=[
-            FormationMember(BIRDYEnemy, 151, 111),
-            FormationMember(BIRDYEnemy, 215, 143),
-            FormationMember(BIRDYEnemy, 151, 143),
-            FormationMember(BIRDYEnemy, 215, 111),
-            FormationMember(BIRDYEnemy, 183, 127),
+            FormationMember(BIRDYEnemyStatic, 151, 111),
+            FormationMember(BIRDYEnemyStatic, 215, 143),
+            FormationMember(BIRDYEnemyStatic, 151, 143),
+            FormationMember(BIRDYEnemyStatic, 215, 111),
+            FormationMember(BIRDYEnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -2845,8 +2704,8 @@ packs[PACK093_BIRDY_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BIRDYEnemy, 199, 151),
-            FormationMember(BIRDYEnemy, 135, 119),
+            FormationMember(BIRDYEnemyStatic, 199, 151),
+            FormationMember(BIRDYEnemyStatic, 135, 119),
             FormationMember(HEAVYTROOPAEnemy, 199, 119),
         ],
         music=NormalBattleMusic(),
@@ -2855,9 +2714,9 @@ packs[PACK093_BIRDY_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BIRDYEnemy, 215, 119),
-            FormationMember(BIRDYEnemy, 151, 119),
-            FormationMember(BIRDYEnemy, 183, 151),
+            FormationMember(BIRDYEnemyStatic, 215, 119),
+            FormationMember(BIRDYEnemyStatic, 151, 119),
+            FormationMember(BIRDYEnemyStatic, 183, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -2866,8 +2725,8 @@ packs[PACK093_BIRDY_PACK_2] = FormationPack(
 packs[PACK094_BLUEBIRD_PACK_1] = FormationPack(
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, 199, 151),
-            FormationMember(BLUEBIRDEnemy, 151, 111),
+            FormationMember(BLUEBIRDEnemyStatic, 199, 151),
+            FormationMember(BLUEBIRDEnemyStatic, 151, 111),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -2875,8 +2734,8 @@ packs[PACK094_BLUEBIRD_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, 167, 103),
-            FormationMember(BLUEBIRDEnemy, 231, 135),
+            FormationMember(BLUEBIRDEnemyStatic, 167, 103),
+            FormationMember(BLUEBIRDEnemyStatic, 231, 135),
             FormationMember(HEAVYTROOPAEnemy, 167, 135),
         ],
         music=NormalBattleMusic(),
@@ -2885,10 +2744,10 @@ packs[PACK094_BLUEBIRD_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, 183, 143),
-            FormationMember(BLUEBIRDEnemy, 183, 111),
-            FormationMember(BLUEBIRDEnemy, 231, 135),
-            FormationMember(BLUEBIRDEnemy, 135, 119),
+            FormationMember(BLUEBIRDEnemyStatic, 183, 143),
+            FormationMember(BLUEBIRDEnemyStatic, 183, 111),
+            FormationMember(BLUEBIRDEnemyStatic, 231, 135),
+            FormationMember(BLUEBIRDEnemyStatic, 135, 119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -2897,8 +2756,8 @@ packs[PACK094_BLUEBIRD_PACK_1] = FormationPack(
 packs[PACK095_BLUEBIRD_PACK_2] = FormationPack(
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, 151, 111),
-            FormationMember(BLUEBIRDEnemy, 215, 143),
+            FormationMember(BLUEBIRDEnemyStatic, 151, 111),
+            FormationMember(BLUEBIRDEnemyStatic, 215, 143),
             None,
             None,
             FormationMember(HEAVYTROOPAEnemy, 183, 127),
@@ -2909,10 +2768,10 @@ packs[PACK095_BLUEBIRD_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, 183, 143),
-            FormationMember(BLUEBIRDEnemy, 183, 111),
-            FormationMember(BLUEBIRDEnemy, 231, 135),
-            FormationMember(BLUEBIRDEnemy, 135, 119),
+            FormationMember(BLUEBIRDEnemyStatic, 183, 143),
+            FormationMember(BLUEBIRDEnemyStatic, 183, 111),
+            FormationMember(BLUEBIRDEnemyStatic, 231, 135),
+            FormationMember(BLUEBIRDEnemyStatic, 135, 119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -2920,8 +2779,8 @@ packs[PACK095_BLUEBIRD_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, 167, 103),
-            FormationMember(BLUEBIRDEnemy, 231, 135),
+            FormationMember(BLUEBIRDEnemyStatic, 167, 103),
+            FormationMember(BLUEBIRDEnemyStatic, 231, 135),
             FormationMember(HEAVYTROOPAEnemy, 167, 135),
         ],
         music=NormalBattleMusic(),
@@ -3614,72 +3473,25 @@ packs[PACK117_BIGBERTHA_PACK_2] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK118_MAGIKOOPA_INTRO] = FormationPack(
+#
+packs[PACK118_SHIP_POSTGAME] = FormationPack(
     Formation(
         members=[
-            FormationMember(KAMEKEnemy, 199, 119),
-            FormationMember(TERRACOTTAEnemy, 135, 103, hidden_at_start=True),
-            FormationMember(TERRACOTTAEnemy, 231, 151, hidden_at_start=True),
-            FormationMember(TERRACOTTAEnemy, 135, 127, hidden_at_start=True),
-            FormationMember(TERRACOTTAEnemy, 183, 151, hidden_at_start=True),
+            FormationMember(JOHNNYEnemy2, 165, 121),
         ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(KAMEKEnemy, 199, 119),
-            FormationMember(MALAKOOPAEnemy, 215, 143, hidden_at_start=True),
-            FormationMember(MALAKOOPAEnemy, 151, 111, hidden_at_start=True),
-            FormationMember(TUBOTROOPAEnemy, 167, 135, hidden_at_start=True),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(KAMEKEnemy, 199, 119),
-            FormationMember(GUGOOMBAEnemy, 119, 119, hidden_at_start=True),
-            FormationMember(GUGOOMBAEnemy, 199, 159, hidden_at_start=True),
-            FormationMember(STARCRUSTEREnemy, 167, 135, hidden_at_start=True),
-        ],
-        music=NormalBattleMusic(),
+        music=MidbossMusic(),
+        can_run_away=False,
         unknown_bit=True,
     )
 )
-packs[PACK119_MAGIKOOPA_UNUSED] = FormationPack(
+#
+packs[PACK119_DOJO_POSTGAME] = FormationPack(
     Formation(
         members=[
-            FormationMember(KAMEKEnemy, 199, 119),
-            FormationMember(FORKIESEnemy, 135, 111, hidden_at_start=True),
-            FormationMember(STARCRUSTEREnemy, 215, 151, hidden_at_start=True),
+            FormationMember(JINXEnemy4, 181, 122),
+            FormationMember(TeamGaugeEnemy, 36, 200),
         ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(KAMEKEnemy, 199, 119),
-            FormationMember(GUGOOMBAEnemy, 119, 119, hidden_at_start=True),
-            FormationMember(GUGOOMBAEnemy, 199, 159, hidden_at_start=True),
-            FormationMember(STARCRUSTEREnemy, 167, 135, hidden_at_start=True),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    )
-    ,
-    Formation(
-        members=[
-            FormationMember(KAMEKEnemy, 199, 119),
-            FormationMember(MALAKOOPAEnemy, 215, 143, hidden_at_start=True),
-            FormationMember(MALAKOOPAEnemy, 151, 111, hidden_at_start=True),
-            FormationMember(TUBOTROOPAEnemy, 167, 135, hidden_at_start=True),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
+        music=MidbossMusic(),
     )
 )
 packs[PACK120_NINJA_PACK_1] = FormationPack(
@@ -3804,8 +3616,8 @@ packs[PACK123_SPRINGER_PACK_2] = FormationPack(
 packs[PACK124_MADMALLET_PACK_1] = FormationPack(
     Formation(
         members=[
-            FormationMember(MADMALLETEnemy, 151, 119),
-            FormationMember(MADMALLETEnemy, 215, 143),
+            FormationMember(MADMALLETEnemyStatic, 151, 119),
+            FormationMember(MADMALLETEnemyStatic, 215, 143),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3813,9 +3625,9 @@ packs[PACK124_MADMALLET_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(MADMALLETEnemy, 151, 127),
-            FormationMember(MADMALLETEnemy, 199, 151),
-            FormationMember(MADMALLETEnemy, 199, 119),
+            FormationMember(MADMALLETEnemyStatic, 151, 127),
+            FormationMember(MADMALLETEnemyStatic, 199, 151),
+            FormationMember(MADMALLETEnemyStatic, 199, 119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3823,11 +3635,11 @@ packs[PACK124_MADMALLET_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(MADMALLETEnemy, 183, 127),
-            FormationMember(MADMALLETEnemy, 135, 127),
-            FormationMember(MADMALLETEnemy, 231, 135),
-            FormationMember(MADMALLETEnemy, 167, 103),
-            FormationMember(MADMALLETEnemy, 183, 151),
+            FormationMember(MADMALLETEnemyStatic, 183, 127),
+            FormationMember(MADMALLETEnemyStatic, 135, 127),
+            FormationMember(MADMALLETEnemyStatic, 231, 135),
+            FormationMember(MADMALLETEnemyStatic, 167, 103),
+            FormationMember(MADMALLETEnemyStatic, 183, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3836,11 +3648,11 @@ packs[PACK124_MADMALLET_PACK_1] = FormationPack(
 packs[PACK125_MADMALLET_PACK_2] = FormationPack(
     Formation(
         members=[
-            FormationMember(MADMALLETEnemy, 183, 127),
-            FormationMember(MADMALLETEnemy, 135, 127),
-            FormationMember(MADMALLETEnemy, 231, 135),
-            FormationMember(MADMALLETEnemy, 167, 103),
-            FormationMember(MADMALLETEnemy, 183, 151),
+            FormationMember(MADMALLETEnemyStatic, 183, 127),
+            FormationMember(MADMALLETEnemyStatic, 135, 127),
+            FormationMember(MADMALLETEnemyStatic, 231, 135),
+            FormationMember(MADMALLETEnemyStatic, 167, 103),
+            FormationMember(MADMALLETEnemyStatic, 183, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3848,9 +3660,9 @@ packs[PACK125_MADMALLET_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(MADMALLETEnemy, 151, 127),
-            FormationMember(MADMALLETEnemy, 199, 151),
-            FormationMember(MADMALLETEnemy, 199, 119),
+            FormationMember(MADMALLETEnemyStatic, 151, 127),
+            FormationMember(MADMALLETEnemyStatic, 199, 151),
+            FormationMember(MADMALLETEnemyStatic, 199, 119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3858,8 +3670,8 @@ packs[PACK125_MADMALLET_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(MADMALLETEnemy, 151, 119),
-            FormationMember(MADMALLETEnemy, 215, 143),
+            FormationMember(MADMALLETEnemyStatic, 151, 119),
+            FormationMember(MADMALLETEnemyStatic, 215, 143),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3868,7 +3680,7 @@ packs[PACK125_MADMALLET_PACK_2] = FormationPack(
 packs[PACK126_POUNDER_PACK_1] = FormationPack(
     Formation(
         members=[
-            FormationMember(POUNDEREnemy, 183, 127),
+            FormationMember(POUNDEREnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3876,9 +3688,9 @@ packs[PACK126_POUNDER_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(POUNDEREnemy, 183, 127),
-            FormationMember(POUNDEREnemy, 231, 135),
-            FormationMember(POUNDEREnemy, 167, 103),
+            FormationMember(POUNDEREnemyStatic, 183, 127),
+            FormationMember(POUNDEREnemyStatic, 231, 135),
+            FormationMember(POUNDEREnemyStatic, 167, 103),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3886,11 +3698,11 @@ packs[PACK126_POUNDER_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(POUNDEREnemy, 167, 135),
-            FormationMember(POUNDEREnemy, 199, 143),
-            FormationMember(POUNDEREnemy, 151, 119),
-            FormationMember(POUNDEREnemy, 167, 103),
-            FormationMember(POUNDEREnemy, 231, 135),
+            FormationMember(POUNDEREnemyStatic, 167, 135),
+            FormationMember(POUNDEREnemyStatic, 199, 143),
+            FormationMember(POUNDEREnemyStatic, 151, 119),
+            FormationMember(POUNDEREnemyStatic, 167, 103),
+            FormationMember(POUNDEREnemyStatic, 231, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3899,11 +3711,11 @@ packs[PACK126_POUNDER_PACK_1] = FormationPack(
 packs[PACK126_POUNDER_PACK_2] = FormationPack(
     Formation(
         members=[
-            FormationMember(POUNDEREnemy, 167, 135),
-            FormationMember(POUNDEREnemy, 199, 143),
-            FormationMember(POUNDEREnemy, 151, 119),
-            FormationMember(POUNDEREnemy, 167, 103),
-            FormationMember(POUNDEREnemy, 231, 135),
+            FormationMember(POUNDEREnemyStatic, 167, 135),
+            FormationMember(POUNDEREnemyStatic, 199, 143),
+            FormationMember(POUNDEREnemyStatic, 151, 119),
+            FormationMember(POUNDEREnemyStatic, 167, 103),
+            FormationMember(POUNDEREnemyStatic, 231, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3911,9 +3723,9 @@ packs[PACK126_POUNDER_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(POUNDEREnemy, 183, 127),
-            FormationMember(POUNDEREnemy, 231, 135),
-            FormationMember(POUNDEREnemy, 167, 103),
+            FormationMember(POUNDEREnemyStatic, 183, 127),
+            FormationMember(POUNDEREnemyStatic, 231, 135),
+            FormationMember(POUNDEREnemyStatic, 167, 103),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3921,7 +3733,7 @@ packs[PACK126_POUNDER_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(POUNDEREnemy, 183, 127),
+            FormationMember(POUNDEREnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3930,7 +3742,7 @@ packs[PACK126_POUNDER_PACK_2] = FormationPack(
 packs[PACK128_POUNDETTE_PACK_1] = FormationPack(
     Formation(
         members=[
-            FormationMember(POUNDETTEEnemy, 183, 127),
+            FormationMember(POUNDETTEEnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3938,9 +3750,9 @@ packs[PACK128_POUNDETTE_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(POUNDETTEEnemy, 183, 127),
-            FormationMember(POUNDETTEEnemy, 151, 111),
-            FormationMember(POUNDETTEEnemy, 215, 143),
+            FormationMember(POUNDETTEEnemyStatic, 183, 127),
+            FormationMember(POUNDETTEEnemyStatic, 151, 111),
+            FormationMember(POUNDETTEEnemyStatic, 215, 143),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3948,12 +3760,12 @@ packs[PACK128_POUNDETTE_PACK_1] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(POUNDETTEEnemy, 167, 135),
-            FormationMember(POUNDETTEEnemy, 199, 119),
-            FormationMember(POUNDETTEEnemy, 135, 119),
-            FormationMember(POUNDETTEEnemy, 167, 103),
-            FormationMember(POUNDETTEEnemy, 199, 151),
-            FormationMember(POUNDETTEEnemy, 231, 135),
+            FormationMember(POUNDETTEEnemyStatic, 167, 135),
+            FormationMember(POUNDETTEEnemyStatic, 199, 119),
+            FormationMember(POUNDETTEEnemyStatic, 135, 119),
+            FormationMember(POUNDETTEEnemyStatic, 167, 103),
+            FormationMember(POUNDETTEEnemyStatic, 199, 151),
+            FormationMember(POUNDETTEEnemyStatic, 231, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3962,12 +3774,12 @@ packs[PACK128_POUNDETTE_PACK_1] = FormationPack(
 packs[PACK128_POUNDETTE_PACK_2] = FormationPack(
     Formation(
         members=[
-            FormationMember(POUNDETTEEnemy, 167, 135),
-            FormationMember(POUNDETTEEnemy, 199, 119),
-            FormationMember(POUNDETTEEnemy, 135, 119),
-            FormationMember(POUNDETTEEnemy, 167, 103),
-            FormationMember(POUNDETTEEnemy, 199, 151),
-            FormationMember(POUNDETTEEnemy, 231, 135),
+            FormationMember(POUNDETTEEnemyStatic, 167, 135),
+            FormationMember(POUNDETTEEnemyStatic, 199, 119),
+            FormationMember(POUNDETTEEnemyStatic, 135, 119),
+            FormationMember(POUNDETTEEnemyStatic, 167, 103),
+            FormationMember(POUNDETTEEnemyStatic, 199, 151),
+            FormationMember(POUNDETTEEnemyStatic, 231, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3975,9 +3787,9 @@ packs[PACK128_POUNDETTE_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(POUNDETTEEnemy, 183, 127),
-            FormationMember(POUNDETTEEnemy, 151, 111),
-            FormationMember(POUNDETTEEnemy, 215, 143),
+            FormationMember(POUNDETTEEnemyStatic, 183, 127),
+            FormationMember(POUNDETTEEnemyStatic, 151, 111),
+            FormationMember(POUNDETTEEnemyStatic, 215, 143),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -3985,7 +3797,7 @@ packs[PACK128_POUNDETTE_PACK_2] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(POUNDETTEEnemy, 183, 127),
+            FormationMember(POUNDETTEEnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -4147,7 +3959,7 @@ packs[PACK136_JABITS_HAMMERS_PACK_1] = FormationPack(
     Formation(
         members=[
             FormationMember(JABITEnemy, 215, 135),
-            FormationMember(MADMALLETEnemy, 151, 119),
+            FormationMember(MADMALLETEnemyStatic, 151, 119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -4156,8 +3968,8 @@ packs[PACK136_JABITS_HAMMERS_PACK_1] = FormationPack(
     Formation(
         members=[
             FormationMember(JABITEnemy, 151, 143),
-            FormationMember(POUNDEREnemy, 151, 111),
-            FormationMember(POUNDETTEEnemy, 215, 143),
+            FormationMember(POUNDEREnemyStatic, 151, 111),
+            FormationMember(POUNDETTEEnemyStatic, 215, 143),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -4181,10 +3993,10 @@ packs[PACK137_JABITS_HAMMERS_PACK_2] = FormationPack(
         members=[
             FormationMember(JABITEnemy, 151, 127),
             FormationMember(JABITEnemy, 183, 143),
-            FormationMember(MADMALLETEnemy, 135, 103),
-            FormationMember(MADMALLETEnemy, 183, 111),
-            FormationMember(POUNDETTEEnemy, 215, 127),
-            FormationMember(POUNDETTEEnemy, 231, 151),
+            FormationMember(MADMALLETEnemyStatic, 135, 103),
+            FormationMember(MADMALLETEnemyStatic, 183, 111),
+            FormationMember(POUNDETTEEnemyStatic, 215, 127),
+            FormationMember(POUNDETTEEnemyStatic, 231, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -4206,8 +4018,8 @@ packs[PACK137_JABITS_HAMMERS_PACK_2] = FormationPack(
     Formation(
         members=[
             FormationMember(JABITEnemy, 151, 143),
-            FormationMember(POUNDEREnemy, 151, 111),
-            FormationMember(POUNDETTEEnemy, 215, 143),
+            FormationMember(POUNDEREnemyStatic, 151, 111),
+            FormationMember(POUNDETTEEnemyStatic, 215, 143),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -4275,7 +4087,8 @@ packs[PACK139_ARTICHOKERS_ONLY] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK140_PUNCHINELLO_STATIC] = FormationPack(
+#
+packs[PACK140_MINES_BOSS_2] = FormationPack(
     Formation(
         members=[
             FormationMember(PUNCHINELLOEnemy, 199, 119),
@@ -4289,13 +4102,13 @@ packs[PACK140_PUNCHINELLO_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK141_CROOK_HENCHMEN_ONLY] = FormationPack(
-    # henchman
+#
+packs[PACK141_MINES_HENCHMAN_LEFT] = FormationPack(
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 135, 119),
-            FormationMember(CROOKEnemy, 199, 119),
-            FormationMember(CROOKEnemy, 199, 151),
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 199, 119),
+            FormationMember(CROOKEnemyStatic, 199, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -4303,11 +4116,11 @@ packs[PACK141_CROOK_HENCHMEN_ONLY] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 167, 103),
-            FormationMember(CROOKEnemy, 135, 119),
-            FormationMember(CROOKEnemy, 183, 127),
-            FormationMember(CROOKEnemy, 199, 151),
-            FormationMember(CROOKEnemy, 231, 135),
+            FormationMember(CROOKEnemyStatic, 167, 103),
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 183, 127),
+            FormationMember(CROOKEnemyStatic, 199, 151),
+            FormationMember(CROOKEnemyStatic, 231, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -4315,19 +4128,43 @@ packs[PACK141_CROOK_HENCHMEN_ONLY] = FormationPack(
     ,
     Formation(
         members=[
-            FormationMember(CROOKEnemy, 135, 119),
-            FormationMember(CROOKEnemy, 199, 119),
-            FormationMember(CROOKEnemy, 199, 151),
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 199, 119),
+            FormationMember(CROOKEnemyStatic, 199, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     )
 )
-packs[PACK142_SNIFIT_ONLY] = FormationPack(
-    # henchman
+#
+packs[PACK142_MINES_HENCHMAN_MIDDLE] = FormationPack(
     Formation(
         members=[
-            FormationMember(SNIFITEnemy, 167, 135),
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 199, 119),
+            FormationMember(CROOKEnemyStatic, 199, 151),
+        ],
+        music=NormalBattleMusic(),
+        unknown_bit=True,
+    )
+    ,
+    Formation(
+        members=[
+            FormationMember(CROOKEnemyStatic, 167, 103),
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 183, 127),
+            FormationMember(CROOKEnemyStatic, 199, 151),
+            FormationMember(CROOKEnemyStatic, 231, 135),
+        ],
+        music=NormalBattleMusic(),
+        unknown_bit=True,
+    )
+    ,
+    Formation(
+        members=[
+            FormationMember(CROOKEnemyStatic, 135, 119),
+            FormationMember(CROOKEnemyStatic, 199, 119),
+            FormationMember(CROOKEnemyStatic, 199, 151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -4431,46 +4268,50 @@ packs[PACK145_CORKPEDITE_ENCOUNTER] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK146_CLERK_STATIC] = FormationPack(
+#
+packs[PACK146_FACTORY_BOSS_RUSH_1] = FormationPack(
     Formation(
         members=[
             FormationMember(CLERKEnemy, 199, 119),
-            FormationMember(MADMALLETEnemy, 135, 119),
-            FormationMember(MADMALLETEnemy, 199, 151),
+            FormationMember(MADMALLETEnemyHenchman, 135, 119),
+            FormationMember(MADMALLETEnemyHenchman, 199, 151),
         ],
         music=NormalBattleMusic(),
         can_run_away=False,
         unknown_bit=True,
     )
 )
-packs[PACK147_MANAGER_STATIC] = FormationPack(
+#
+packs[PACK147_FACTORY_BOSS_RUSH_2] = FormationPack(
     Formation(
         members=[
             FormationMember(MANAGEREnemy, 199, 119),
-            FormationMember(POUNDEREnemy, 151, 111),
-            FormationMember(POUNDEREnemy, 167, 135),
-            FormationMember(POUNDEREnemy, 215, 143),
+            FormationMember(POUNDEREnemyHenchman, 151, 111),
+            FormationMember(POUNDEREnemyHenchman, 167, 135),
+            FormationMember(POUNDEREnemyHenchman, 215, 143),
         ],
         music=NormalBattleMusic(),
         can_run_away=False,
         unknown_bit=True,
     )
 )
-packs[PACK148_DIRECTOR_STATIC] = FormationPack(
+#
+packs[PACK148_FACTORY_BOSS_RUSH_3] = FormationPack(
     Formation(
         members=[
             FormationMember(DIRECTOREnemy, 183, 127),
-            FormationMember(POUNDETTEEnemy, 135, 119),
-            FormationMember(POUNDETTEEnemy, 167, 103),
-            FormationMember(POUNDETTEEnemy, 199, 151),
-            FormationMember(POUNDETTEEnemy, 231, 135),
+            FormationMember(POUNDETTEEnemyHenchman, 135, 119),
+            FormationMember(POUNDETTEEnemyHenchman, 167, 103),
+            FormationMember(POUNDETTEEnemyHenchman, 199, 151),
+            FormationMember(POUNDETTEEnemyHenchman, 231, 135),
         ],
         music=NormalBattleMusic(),
         can_run_away=False,
         unknown_bit=True,
     )
 )
-packs[PACK149_GUNYOLK_STATIC] = FormationPack(
+#
+packs[PACK149_FACTORY_BOSS_RUSH_4] = FormationPack(
     Formation(
         members=[
             FormationMember(GUNYOLKEnemy, 199, 103),
@@ -4481,29 +4322,31 @@ packs[PACK149_GUNYOLK_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK150_MAD_MALLET_FACTORY_FIGHT] = FormationPack(
+#
+packs[PACK150_FACTORY_BOSS_RUSH_HENCHMAN] = FormationPack(
     Formation(
         members=[
-            FormationMember(MADMALLETEnemy, 151, 111),
-            FormationMember(MADMALLETEnemy, 167, 135),
-            FormationMember(MADMALLETEnemy, 215, 143),
+            FormationMember(MADMALLETEnemyHenchman, 151, 111),
+            FormationMember(MADMALLETEnemyHenchman, 167, 135),
+            FormationMember(MADMALLETEnemyHenchman, 215, 143),
         ],
         music=NormalBattleMusic(),
         can_run_away=False,
         unknown_bit=True,
     )
 )
-packs[PACK151_APPRENTICE_FIGHT] = FormationPack(
+#
+packs[PACK151_UNUSED] = FormationPack(
     Formation(
         members=[
-            FormationMember(APPRENTICEEnemy, 183, 127),
+            FormationMember(APPRENTICEEnemyStatic, 183, 127),
         ],
         music=NormalBattleMusic(),
         can_run_away=False,
-        unknown_bit=True,
     )
 )
-packs[PACK152_THREE_MACHINE_SHYSTER_SUBSTITUTE] = FormationPack(
+#
+packs[PACK152_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(MACHINEMADEBodyguardEnemy, 199, 119),
@@ -4514,7 +4357,7 @@ packs[PACK152_THREE_MACHINE_SHYSTER_SUBSTITUTE] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK153_THREE_DRILLBIT_SUBSTITUTE] = FormationPack(
+packs[PACK153_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(MACHINEMADEDrillbitEnemy, 183, 127),
@@ -4525,29 +4368,31 @@ packs[PACK153_THREE_DRILLBIT_SUBSTITUTE] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK154_SINGLE_SHYGUY_HENCHMAN] = FormationPack(
+#
+packs[PACK154_UNUSED] = FormationPack(
     # henchman
     Formation(
         members=[
-            FormationMember(SHYGUYEnemy, 167, 135),
+            FormationMember(SHYGUYEnemyStatic, 167, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     )
 )
-packs[PACK155_MAD_MALLET_HENCHMEN] = FormationPack(
-    # henchman
+#
+packs[PACK155_POSSIBLY_UNUSED] = FormationPack(
     Formation(
         members=[
-            FormationMember(MADMALLETEnemy, x_pos=151, y_pos=127),
-            FormationMember(MADMALLETEnemy, x_pos=199, y_pos=151),
-            FormationMember(MADMALLETEnemy, x_pos=199, y_pos=119),
+            FormationMember(MADMALLETEnemyStatic, x_pos=151, y_pos=127),
+            FormationMember(MADMALLETEnemyStatic, x_pos=199, y_pos=151),
+            FormationMember(MADMALLETEnemyStatic, x_pos=199, y_pos=119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     )
 )
-packs[PACK156_PANDORITE_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK156_SEWER_CHEST_FIGHT] = FormationPack(
     Formation(
         members=[
             FormationMember(PANDORITEEnemy, 183, 127),
@@ -4557,7 +4402,8 @@ packs[PACK156_PANDORITE_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK157_HIDON_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK157_SHIP_CHEST_FIGHT] = FormationPack(
     Formation(
         members=[
             FormationMember(HIDONEnemy, 167, 119),
@@ -4571,7 +4417,8 @@ packs[PACK157_HIDON_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK158_BOXBOY_FIGHT_STATIC] = FormationPack(
+
+packs[PACK158_VALLEY_CHEST_FIGHT] = FormationPack(
     Formation(
         members=[
             FormationMember(BOXBOYEnemy, 183, 127),
@@ -4582,7 +4429,8 @@ packs[PACK158_BOXBOY_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK159_CHESTER_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK159_SIX_DOOR_RUSH_FIGHT] = FormationPack(
     Formation(
         members=[
             FormationMember(CHESTEREnemy, 183, 127),
@@ -4593,7 +4441,8 @@ packs[PACK159_CHESTER_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK160_BOWYER_AERO_HENCHMEN] = FormationPack(
+#
+packs[PACK160_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(AEROEnemy, x_pos=167, y_pos=119),
@@ -4603,14 +4452,14 @@ packs[PACK160_BOWYER_AERO_HENCHMEN] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK161_BOOSTER_FIGHT_STATIC] = FormationPack(
-    # henchmen
+#
+packs[PACK161_TOWER_FIRST_FIGHT] = FormationPack(
     Formation(
         members=[
             FormationMember(BOOSTEREnemy, 183, 127),
-            FormationMember(SNIFITEnemy, 135, 119),
-            FormationMember(SNIFITEnemy, 151, 143),
-            FormationMember(SNIFITEnemy, 199, 151),
+            FormationMember(SNIFITEnemyHenchman, 135, 119),
+            FormationMember(SNIFITEnemyHenchman, 151, 143),
+            FormationMember(SNIFITEnemyHenchman, 199, 151),
         ],
         run_event_at_load=BE0012_DIALOGUE_FROM_BOOSTER_FIGHT,
         music=MidbossMusic(),
@@ -4618,7 +4467,8 @@ packs[PACK161_BOOSTER_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK162_DUMMY_BOOSTER_POSSIBLY_UNUSED] = FormationPack(
+#
+packs[PACK162__UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(BOOSTEREnemy2, 183, 127),
@@ -4628,7 +4478,8 @@ packs[PACK162_DUMMY_BOOSTER_POSSIBLY_UNUSED] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK163_CROCO1_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK163_BANDITS_WAY_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(CROCO1Enemy, 183, 127),
@@ -4638,7 +4489,8 @@ packs[PACK163_CROCO1_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK164_CROCO2_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK164_MINES_FIRST_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(CROCO2Enemy, 183, 127),
@@ -4648,17 +4500,19 @@ packs[PACK164_CROCO2_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
+#
 packs[PACK165_UNUSED] = FormationPack(
     Formation(
         members=[
-            FormationMember(MACHINEMADEEnemy16, 183, 127),
+            FormationMember(MACHINEMADEAxemBlackEnemy, 183, 127),
         ],
         music=MidbossMusic(),
         can_run_away=False,
         unknown_bit=True,
     )
 )
-packs[PACK166_JOHNNY_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK166_SHIP_SECOND_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(JOHNNYEnemy, 183, 127),
@@ -4674,7 +4528,8 @@ packs[PACK166_JOHNNY_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK167_CALAMARI_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK167_SHIP_FIRST_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(KINGCALAMARIEnemy, 222, 94, hidden_at_start=True),
@@ -4690,7 +4545,8 @@ packs[PACK167_CALAMARI_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK168_BELOME1_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK168_SEWER_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(BELOME1Enemy, 183, 127),
@@ -4700,7 +4556,8 @@ packs[PACK168_BELOME1_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK169_BELOME2_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK169_TEMPLE_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(BELOME2Enemy, 183, 127),
@@ -4712,6 +4569,7 @@ packs[PACK169_BELOME2_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
+#
 packs[PACK170_UNUSED] = FormationPack(
     Formation(
         members=[
@@ -4721,7 +4579,8 @@ packs[PACK170_UNUSED] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK171_VALENTINA_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK171_NIMBUS_CASTLE_THIRD_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(VALENTINAEnemy, 183, 127),
@@ -4732,7 +4591,8 @@ packs[PACK171_VALENTINA_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK172_CZAR_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK172_VOLCANO_FIRST_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(CZARDRAGONEnemy, 183, 143),
@@ -4747,7 +4607,8 @@ packs[PACK172_CZAR_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK173_MEGASMILAX_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK173_VALLEY_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(SMILAXEnemy, 180, 157),
@@ -4763,7 +4624,8 @@ packs[PACK173_MEGASMILAX_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK174_COUNTDOWN_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK174_FACTORY_FIRST_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(COUNTDOWNEnemy, 150, 93),
@@ -4775,7 +4637,8 @@ packs[PACK174_COUNTDOWN_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK175_BIRDETTA_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK175_NIMBUS_CASTLE_SECOND_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(BIRDETTAEnemy, 167, 118, hidden_at_start=True),
@@ -4790,7 +4653,8 @@ packs[PACK175_BIRDETTA_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK176_BUNDT_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK176_CHAPEL_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(BUNDTEnemy, 199, 127),
@@ -4803,7 +4667,8 @@ packs[PACK176_BUNDT_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK177_KGGG_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK177_TOWER_SECOND_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(KNIFEGUYEnemy, 151, 119),
@@ -4814,7 +4679,8 @@ packs[PACK177_KGGG_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK178_JINX1_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK178_DOJO_FIGHT_1] = FormationPack(
     Formation(
         members=[
             FormationMember(JINX1Enemy, 183, 127),
@@ -4823,7 +4689,8 @@ packs[PACK178_JINX1_FIGHT_STATIC] = FormationPack(
         music=MidbossMusic(),
     )
 )
-packs[PACK179_MACK_FIGHT_STATIC] = FormationPack(
+#
+packs[MUSHROOM_KINGDOM_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(MACKEnemy, 199, 119),
@@ -4837,7 +4704,8 @@ packs[PACK179_MACK_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK180_YARIDOVICH_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK180_SEASIDE_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(YARIDOVICHEnemy, 183, 127),
@@ -4848,7 +4716,8 @@ packs[PACK180_YARIDOVICH_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK181_BOWYER_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK181_FOREST_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(BOWYEREnemy, 183, 127),
@@ -4859,7 +4728,8 @@ packs[PACK181_BOWYER_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK182_AXEM_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK182_VOLCANO_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(AXEMRANGERSEnemy, 201, 79),
@@ -4875,7 +4745,8 @@ packs[PACK182_AXEM_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK183_HAMMERBRO_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK183_MUSHROOM_WAY_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(HAMMERBROEnemy, 135, 127),
@@ -4886,7 +4757,8 @@ packs[PACK183_HAMMERBRO_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK184_CLOAKER_DOMINO_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK184_FACTORY_SECOND_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(CLOAKEREnemy, 151, 111),
@@ -4899,7 +4771,8 @@ packs[PACK184_CLOAKER_DOMINO_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK185_SMITHY1_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK185_FINAL_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(SMITHY1Enemy, 199, 127),
@@ -4912,7 +4785,8 @@ packs[PACK185_SMITHY1_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK186_EXOR_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK186_KEEP_THIRD_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(EXOREnemy, 193, 64),
@@ -4926,7 +4800,8 @@ packs[PACK186_EXOR_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK187_JINX2_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK187_DOJO_SECOND_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(JINX2Enemy, 183, 127),
@@ -4935,7 +4810,8 @@ packs[PACK187_JINX2_FIGHT_STATIC] = FormationPack(
         music=MidbossMusic(),
     )
 )
-packs[PACK188_JINX3_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK188_DOJO_THIRD_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(JINX3Enemy, 183, 127),
@@ -4944,7 +4820,8 @@ packs[PACK188_JINX3_FIGHT_STATIC] = FormationPack(
         music=MidbossMusic(),
     )
 )
-packs[PACK189_JAGGER_FIGHT_STATIC] = FormationPack(
+#
+packs[PACK189_DOJO_PREFIGHT] = FormationPack(
     Formation(
         members=[
             FormationMember(JAGGEREnemy, 183, 127),
@@ -4953,8 +4830,8 @@ packs[PACK189_JAGGER_FIGHT_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK190_PYROSPHERE_HENCHMEN] = FormationPack(
-    # henchman
+#
+packs[PACK190_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(PYROSPHEREEnemy, x_pos=151, y_pos=135),
@@ -4976,6 +4853,7 @@ packs[PACK191_HEAVY_TROOPAS] = FormationPack(
         unknown_bit=True,
     )
 )
+#
 packs[PACK192_UNUSED] = FormationPack(
     Formation(
         members=[
@@ -4984,7 +4862,8 @@ packs[PACK192_UNUSED] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK193_HELIO_HENCHMEN] = FormationPack(
+#
+packs[PACK193_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(HELIOEnemy, x_pos=167, y_pos=119),
@@ -4996,7 +4875,8 @@ packs[PACK193_HELIO_HENCHMEN] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK194_BODYGUARD_PACK_1] = FormationPack(
+#
+packs[PACK194_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(BODYGUARDEnemy, x_pos=167, y_pos=119),
@@ -5023,7 +4903,8 @@ packs[PACK194_BODYGUARD_PACK_1] = FormationPack(
         unknown_bit=True,
     ),
 )
-packs[PACK195_BODYGUARD_PACK_2] = FormationPack(
+#
+packs[PACK195_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(BODYGUARDEnemy, x_pos=167, y_pos=119),
@@ -5051,7 +4932,8 @@ packs[PACK195_BODYGUARD_PACK_2] = FormationPack(
         unknown_bit=True,
     ),
 )
-packs[PACK196_GENO_CLONE_HENCHMAN] = FormationPack(
+#
+packs[PACK196_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(GENOCLONEEnemy, x_pos=183, y_pos=127),
@@ -5060,7 +4942,8 @@ packs[PACK196_GENO_CLONE_HENCHMAN] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK197_BOWSER_CLONE_HENCHMAN] = FormationPack(
+#
+packs[PACK197_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(BOWSERCLONEEnemy, x_pos=183, y_pos=127),
@@ -5069,7 +4952,8 @@ packs[PACK197_BOWSER_CLONE_HENCHMAN] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK198_TOADSTOOL_CLONE_HENCHMAN] = FormationPack(
+#
+packs[PACK198_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(TOADSTOOL2Enemy, x_pos=183, y_pos=127),
@@ -5081,35 +4965,36 @@ packs[PACK198_TOADSTOOL_CLONE_HENCHMAN] = FormationPack(
 packs[PACK199_CROOKS_ONLY] = FormationPack(
     Formation(
         members=[
-            FormationMember(CROOKEnemy, x_pos=135, y_pos=119),
-            FormationMember(CROOKEnemy, x_pos=199, y_pos=119),
-            FormationMember(CROOKEnemy, x_pos=199, y_pos=151),
+            FormationMember(CROOKEnemyStatic, x_pos=135, y_pos=119),
+            FormationMember(CROOKEnemyStatic, x_pos=199, y_pos=119),
+            FormationMember(CROOKEnemyStatic, x_pos=199, y_pos=151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ),
     Formation(
         members=[
-            FormationMember(CROOKEnemy, x_pos=167, y_pos=103),
-            FormationMember(CROOKEnemy, x_pos=135, y_pos=119),
-            FormationMember(CROOKEnemy, x_pos=183, y_pos=127),
-            FormationMember(CROOKEnemy, x_pos=199, y_pos=151),
-            FormationMember(CROOKEnemy, x_pos=231, y_pos=135),
+            FormationMember(CROOKEnemyStatic, x_pos=167, y_pos=103),
+            FormationMember(CROOKEnemyStatic, x_pos=135, y_pos=119),
+            FormationMember(CROOKEnemyStatic, x_pos=183, y_pos=127),
+            FormationMember(CROOKEnemyStatic, x_pos=199, y_pos=151),
+            FormationMember(CROOKEnemyStatic, x_pos=231, y_pos=135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ),
     Formation(
         members=[
-            FormationMember(CROOKEnemy, x_pos=135, y_pos=119),
-            FormationMember(CROOKEnemy, x_pos=199, y_pos=119),
-            FormationMember(CROOKEnemy, x_pos=199, y_pos=151),
+            FormationMember(CROOKEnemyStatic, x_pos=135, y_pos=119),
+            FormationMember(CROOKEnemyStatic, x_pos=199, y_pos=119),
+            FormationMember(CROOKEnemyStatic, x_pos=199, y_pos=151),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ),
 )
-packs[PACK200_MARIO_CLONE_HENCHMAN] = FormationPack(
+#
+packs[PACK200_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(MARIOCLONEEnemy, x_pos=183, y_pos=127),
@@ -5118,39 +5003,40 @@ packs[PACK200_MARIO_CLONE_HENCHMAN] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK201_BIRDY_HENCHMEN] = FormationPack(
-    # henchman
+#
+packs[PACK201_UNUSED] = FormationPack(
     Formation(
-        [
-            FormationMember(BIRDYEnemy, x_pos=215, y_pos=119),
-            FormationMember(BIRDYEnemy, x_pos=151, y_pos=119),
-            FormationMember(BIRDYEnemy, x_pos=183, y_pos=151),
-        ]
+        members=[
+            FormationMember(BIRDYEnemyStatic, x_pos=215, y_pos=119),
+            FormationMember(BIRDYEnemyStatic, x_pos=151, y_pos=119),
+            FormationMember(BIRDYEnemyStatic, x_pos=183, y_pos=151),
+        ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ),
     Formation(
-        [
-            FormationMember(BIRDYEnemy, x_pos=151, y_pos=111),
-            FormationMember(BIRDYEnemy, x_pos=215, y_pos=143),
-            FormationMember(BIRDYEnemy, x_pos=151, y_pos=143),
-            FormationMember(BIRDYEnemy, x_pos=215, y_pos=111),
-            FormationMember(BIRDYEnemy, x_pos=183, y_pos=127),
-        ]
+        members=[
+            FormationMember(BIRDYEnemyStatic, x_pos=151, y_pos=111),
+            FormationMember(BIRDYEnemyStatic, x_pos=215, y_pos=143),
+            FormationMember(BIRDYEnemyStatic, x_pos=151, y_pos=143),
+            FormationMember(BIRDYEnemyStatic, x_pos=215, y_pos=111),
+            FormationMember(BIRDYEnemyStatic, x_pos=183, y_pos=127),
+        ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ),
     Formation(
-        [
-            FormationMember(BIRDYEnemy, x_pos=215, y_pos=119),
-            FormationMember(BIRDYEnemy, x_pos=151, y_pos=119),
-            FormationMember(BIRDYEnemy, x_pos=183, y_pos=151),
-        ]
+        members=[
+            FormationMember(BIRDYEnemyStatic, x_pos=215, y_pos=119),
+            FormationMember(BIRDYEnemyStatic, x_pos=151, y_pos=119),
+            FormationMember(BIRDYEnemyStatic, x_pos=183, y_pos=151),
+        ],
         music=NormalBattleMusic(),
         unknown_bit=True,
-    ),
+    )
 )
-packs[PACK202_MALLOW_CLONE_HENCHMAN] = FormationPack(
+#
+packs[PACK202_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(MALLOWCLONEEnemy, x_pos=183, y_pos=127),
@@ -5159,8 +5045,8 @@ packs[PACK202_MALLOW_CLONE_HENCHMAN] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK203_MACHINE_AXEM_HENCHMEN] = FormationPack(
-    # henchmen
+#
+packs[PACK203_UNUSED] = FormationPack(
     Formation(
         [
             FormationMember(MACHINEMADEAxemPinkEnemy, x_pos=151, y_pos=111),
@@ -5194,41 +5080,42 @@ packs[PACK203_MACHINE_AXEM_HENCHMEN] = FormationPack(
         unknown_bit=True,
     ),
 )
-packs[PACK204_BLOOBER_HENCHMEN] = FormationPack(
-    # henchmen
+#
+packs[PACK204_UNUSED] = FormationPack(
     Formation(
         members=[
-            FormationMember(BLOOBEREnemy, x_pos=183, y_pos=127),
-            FormationMember(BLOOBEREnemy, x_pos=231, y_pos=143),
-            FormationMember(BLOOBEREnemy, x_pos=135, y_pos=111),
+            FormationMember(BLOOBEREnemyStatic, x_pos=183, y_pos=127),
+            FormationMember(BLOOBEREnemyStatic, x_pos=231, y_pos=143),
+            FormationMember(BLOOBEREnemyStatic, x_pos=135, y_pos=111),
         ],
         music=None,
     )
 )
-packs[PACK205_BLUEBIRD_HENCHMEN] = FormationPack(
+#
+packs[PACK205_UNUSED] = FormationPack(
     # henchmen
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, x_pos=199, y_pos=151),
-            FormationMember(BLUEBIRDEnemy, x_pos=151, y_pos=111),
+            FormationMember(BLUEBIRDEnemyStatic, x_pos=199, y_pos=151),
+            FormationMember(BLUEBIRDEnemyStatic, x_pos=151, y_pos=111),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ),
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, x_pos=183, y_pos=143),
-            FormationMember(BLUEBIRDEnemy, x_pos=183, y_pos=111),
-            FormationMember(BLUEBIRDEnemy, x_pos=231, y_pos=135),
-            FormationMember(BLUEBIRDEnemy, x_pos=135, y_pos=119),
+            FormationMember(BLUEBIRDEnemyStatic, x_pos=183, y_pos=143),
+            FormationMember(BLUEBIRDEnemyStatic, x_pos=183, y_pos=111),
+            FormationMember(BLUEBIRDEnemyStatic, x_pos=231, y_pos=135),
+            FormationMember(BLUEBIRDEnemyStatic, x_pos=135, y_pos=119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ),
     Formation(
         members=[
-            FormationMember(BLUEBIRDEnemy, x_pos=199, y_pos=151),
-            FormationMember(BLUEBIRDEnemy, x_pos=151, y_pos=111),
+            FormationMember(BLUEBIRDEnemyStatic, x_pos=199, y_pos=151),
+            FormationMember(BLUEBIRDEnemyStatic, x_pos=151, y_pos=111),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
@@ -5245,7 +5132,8 @@ packs[PACK206_DESERT_SHOGUNS] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK207_MOKURA_BOSS_STATIC] = FormationPack(
+#
+packs[PACK207_LANDS_END_CLOUD] = FormationPack(
     Formation(
         members=[
             FormationMember(FORMLESSEnemy, 167, 135),
@@ -5256,7 +5144,8 @@ packs[PACK207_MOKURA_BOSS_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK208_DODO_BOSS_STATIC] = FormationPack(
+#
+packs[PACK208_NIMBUS_CASTLE_FIRST_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(DODOEnemySolo, 183, 127),
@@ -5266,7 +5155,8 @@ packs[PACK208_DODO_BOSS_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK209_MAGIKOOPA_BOSS_STATIC] = FormationPack(
+#
+packs[PACK209_KEEP_FIRST_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(KAMEKEnemy, 215, 111),
@@ -5278,7 +5168,8 @@ packs[PACK209_MAGIKOOPA_BOSS_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK210_BOOMER_BOSS_STATIC] = FormationPack(
+#
+packs[PACK210_KEEP_SECOND_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(BOOMEREnemy, 215, 143),
@@ -5371,7 +5262,8 @@ packs[PACK215_SMITHY_2_PACK] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK216_CULEX_BOSS_STATIC] = FormationPack(
+#
+packs[PACK216_MONSTRO_DOOR_BOSS] = FormationPack(
     Formation(
         members=[
             FormationMember(CULEXEnemy, 183, 103),
@@ -5385,7 +5277,8 @@ packs[PACK216_CULEX_BOSS_STATIC] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK217_FIRE_CRYSTAL_HENCHMAN] = FormationPack(
+#
+packs[PACK217_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(FIRECRYSTALEnemy, x_pos=183, y_pos=127),
@@ -5395,7 +5288,8 @@ packs[PACK217_FIRE_CRYSTAL_HENCHMAN] = FormationPack(
         run_event_at_load=BE0076_SOLO_FIRE_CRYSTAL_APPEARS,
     )
 )
-packs[PACK218_WATER_CRYSTAL_HENCHMAN] = FormationPack(
+#
+packs[PACK218_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(WATERCRYSTALEnemy, x_pos=183, y_pos=127),
@@ -5405,7 +5299,8 @@ packs[PACK218_WATER_CRYSTAL_HENCHMAN] = FormationPack(
         run_event_at_load=BE0020_SOLO_WATER_CRYSTAL_APPEARS
     )
 )
-packs[PACK219_EARTH_CRYSTAL_HENCHMAN] = FormationPack(
+#
+packs[PACK219_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(EARTHCRYSTALEnemy, x_pos=183, y_pos=127),
@@ -5415,7 +5310,8 @@ packs[PACK219_EARTH_CRYSTAL_HENCHMAN] = FormationPack(
         run_event_at_load=BE0011_SOLO_EARTH_CRYSTAL_APPEARS
     )
 )
-packs[PACK220_WIND_CRYSTAL_HENCHMAN] = FormationPack(
+#
+packs[PACK220_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(WINDCRYSTALEnemy, x_pos=183, y_pos=127),
@@ -5425,7 +5321,8 @@ packs[PACK220_WIND_CRYSTAL_HENCHMAN] = FormationPack(
         run_event_at_load=BE0001_SOLO_WIND_CRYSTAL_APPEARS
     )
 )
-packs[PACK221_GOOMBETTE_HENCHMEN] = FormationPack(
+#
+packs[PACK221_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(GOOMBETTEEnemy, x_pos=183, y_pos=127),
@@ -5436,37 +5333,38 @@ packs[PACK221_GOOMBETTE_HENCHMEN] = FormationPack(
         unknown_bit=True,
     )
 )
-# henchman
-packs[PACK222_PIRANHA_HENCHMEN] = FormationPack(
+# 
+packs[PACK222_UNUSED] = FormationPack(
     Formation(
         members=[
-            FormationMember(PIRANHAPLANTEnemy, 167, 135),
+            FormationMember(PIRANHAPLANTEnemyStatic, 167, 135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ), 
     Formation(
         [
-            FormationMember(PIRANHAPLANTEnemy, x_pos=167, y_pos=111),
-            FormationMember(PIRANHAPLANTEnemy, x_pos=167, y_pos=135),
-            FormationMember(PIRANHAPLANTEnemy, x_pos=215, y_pos=135),
+            FormationMember(PIRANHAPLANTEnemyStatic, x_pos=167, y_pos=111),
+            FormationMember(PIRANHAPLANTEnemyStatic, x_pos=167, y_pos=135),
+            FormationMember(PIRANHAPLANTEnemyStatic, x_pos=215, y_pos=135),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
-    )
+    ),
     Formation(
         [
-            FormationMember(PIRANHAPLANTEnemy, x_pos=151, y_pos=143),
-            FormationMember(PIRANHAPLANTEnemy, x_pos=151, y_pos=111),
-            FormationMember(PIRANHAPLANTEnemy, x_pos=199, y_pos=119),
-            FormationMember(PIRANHAPLANTEnemy, x_pos=231, y_pos=143),
-            FormationMember(PIRANHAPLANTEnemy, x_pos=199, y_pos=159),
+            FormationMember(PIRANHAPLANTEnemyStatic, x_pos=151, y_pos=143),
+            FormationMember(PIRANHAPLANTEnemyStatic, x_pos=151, y_pos=111),
+            FormationMember(PIRANHAPLANTEnemyStatic, x_pos=199, y_pos=119),
+            FormationMember(PIRANHAPLANTEnemyStatic, x_pos=231, y_pos=143),
+            FormationMember(PIRANHAPLANTEnemyStatic, x_pos=199, y_pos=159),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     )
 )
-packs[PACK223_EGGBERT_HENCHMEN] = FormationPack(
+#
+packs[PACK223_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(EGGBERTEnemy, x_pos=183, y_pos=127),
@@ -5559,9 +5457,9 @@ packs[PACK228_OBSTACLE_ALLEYRAT] = FormationPack(
 packs[PACK229_OBSTACLE_BLOOBER] = FormationPack(
     Formation(
         members=[
-            FormationMember(BLOOBEREnemy, 199, 119),
-            FormationMember(BLOOBEREnemy, 183, 151),
-            FormationMember(BLOOBEREnemy, 231, 151),
+            FormationMember(BLOOBEREnemyStatic, 199, 119),
+            FormationMember(BLOOBEREnemyStatic, 183, 151),
+            FormationMember(BLOOBEREnemyStatic, 231, 151),
             FormationMember(STARCRUSTEREnemy, 135, 103),
         ],
         music=NormalBattleMusic(),
@@ -5633,7 +5531,8 @@ packs[PACK234_OBSTACLE_MAGMUS] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK235_CHESTER_DUPE] = FormationPack(
+#
+packs[PACK235_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(CHESTEREnemy, 183, 127),
@@ -5798,7 +5697,8 @@ packs[PACK247_OBSTACLE_SHAMANS] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK248_AXEM_BLACK_ALONE] = FormationPack(
+#
+packs[PACK248_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(AXEMBLACKEnemy, x_pos=183, y_pos=127),
@@ -5807,7 +5707,8 @@ packs[PACK248_AXEM_BLACK_ALONE] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK249_AXEM_PINK_ALONE] = FormationPack(
+#
+packs[PACK249_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(AXEMPINKEnemy, x_pos=183, y_pos=127),
@@ -5816,7 +5717,8 @@ packs[PACK249_AXEM_PINK_ALONE] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK250_AXEM_YELLOW_ALONE] = FormationPack(
+#
+packs[PACK250_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(AXEMYELLOWEnemy, x_pos=183, y_pos=127),
@@ -5825,7 +5727,8 @@ packs[PACK250_AXEM_YELLOW_ALONE] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK251_AXEM_GREEN_ALONE] = FormationPack(
+#
+packs[PACK251_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(AXEMGREENEnemy, x_pos=183, y_pos=127),
@@ -5834,7 +5737,8 @@ packs[PACK251_AXEM_GREEN_ALONE] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK252_DINGALING_ALONE] = FormationPack(
+# 
+packs[PACK252_UNUSED] = FormationPack(
     Formation(
         members=[
             FormationMember(DINGALINGEnemy, x_pos=183, y_pos=127),
@@ -5843,94 +5747,33 @@ packs[PACK252_DINGALING_ALONE] = FormationPack(
         unknown_bit=True,
     )
 )
-packs[PACK253_SMITHY_HENCHMEN_PACK_1] = FormationPack(
+# 
+packs[PACK253_UNUSED] = FormationPack(
     Formation(
         members=[
-            FormationMember(MACHINEMADEBodyguardEnemy2, x_pos=151, y_pos=111),
-            FormationMember(AEROEnemy2, x_pos=215, y_pos=127),
-            FormationMember(DRILLBITEnemy2, x_pos=167, y_pos=151),
+            FormationMember(DRILLBITEnemy, x_pos=135, y_pos=119),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
-    ),
+    )
+)
+#
+packs[PACK254_UNUSED] = FormationPack(
     Formation(
         members=[
-            FormationMember(DRILLBITEnemy2, x_pos=135, y_pos=119),
-            FormationMember(DRILLBITEnemy2, x_pos=167, y_pos=103),
-            FormationMember(DRILLBITEnemy2, x_pos=199, y_pos=151),
-            FormationMember(DRILLBITEnemy2, x_pos=231, y_pos=135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    ),
-    Formation(
-        members=[
-            FormationMember(DRILLBITEnemy2, x_pos=183, y_pos=127),
-            FormationMember(AEROEnemy2, x_pos=215, y_pos=143),
-            FormationMember(AEROEnemy2, x_pos=151, y_pos=111),
+            FormationMember(DRILLBITEnemy, x_pos=167, y_pos=103),
         ],
         music=NormalBattleMusic(),
         unknown_bit=True,
     ),
 )
-packs[PACK254_SMITHY_HENCHMEN_PACK_2] = FormationPack(
+#
+packs[PACK255_UNUSED] = FormationPack(
     Formation(
-        members=[
-            FormationMember(MACHINEMADEBodyguardEnemy2, x_pos=151, y_pos=111),
-            FormationMember(AEROEnemy2, x_pos=215, y_pos=127),
-            FormationMember(DRILLBITEnemy2, x_pos=167, y_pos=151),
-        ],
+        members=[],
         music=NormalBattleMusic(),
         unknown_bit=True,
-    ),
-    Formation(
-        members=[
-            FormationMember(MACHINEMADEBodyguardEnemy2, x_pos=167, y_pos=119),
-            FormationMember(MACHINEMADEBodyguardEnemy2, x_pos=199, y_pos=135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    ),
-    Formation(
-        members=[
-            FormationMember(DRILLBITEnemy2, x_pos=231, y_pos=135),
-            FormationMember(DRILLBITEnemy2, x_pos=167, y_pos=103),
-            FormationMember(MACHINEMADEBodyguardEnemy2, x_pos=167, y_pos=135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    ),
-)
-packs[PACK255_SMITHY_HENCHMEN_PACK_3] = FormationPack(
-    Formation(
-        members=[
-            FormationMember(MACHINEMADEBodyguardEnemy2, x_pos=151, y_pos=111),
-            FormationMember(AEROEnemy2, x_pos=215, y_pos=127),
-            FormationMember(DRILLBITEnemy2, x_pos=167, y_pos=151),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    ),
-    Formation(
-        members=[
-            FormationMember(AEROEnemy2, x_pos=167, y_pos=103),
-            FormationMember(AEROEnemy2, x_pos=135, y_pos=119),
-            FormationMember(AEROEnemy2, x_pos=183, y_pos=127),
-            FormationMember(AEROEnemy2, x_pos=199, y_pos=151),
-            FormationMember(AEROEnemy2, x_pos=231, y_pos=135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    ),
-    Formation(
-        members=[
-            FormationMember(AEROEnemy2, x_pos=231, y_pos=135),
-            FormationMember(AEROEnemy2, x_pos=167, y_pos=103),
-            FormationMember(MACHINEMADEBodyguardEnemy2, x_pos=167, y_pos=135),
-        ],
-        music=NormalBattleMusic(),
-        unknown_bit=True,
-    ),
+    )
 )
 
 # Pack Collection

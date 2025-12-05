@@ -1,4 +1,4 @@
-# 13 - BIRDYEnemy
+# 13 - BIRDYEnemyStatic
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

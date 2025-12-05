@@ -1,4 +1,4 @@
-# 126 - MASTABLASTAEnemy
+# 10 - BLOOBEREnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,9 +13,10 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	IfHPBelow(512),
-	CastSpell(CrystalSpell, BlastSpell, StormSpell),
-	Wait1TurnandRestartScript(),
-	Attack(Attack0, Attack0, EerieJigAttack),
-	StartCounterCommands()
+	Attack(Attack8, Attack8, InkBlastAttack),
+	StartCounterCommands(),
+	IfTargetedByCommand([COMMAND_ATTACK]),
+	SetTarget(SELF),
+	CastSpell(EscapeSpell),
+	Wait1TurnandRestartScript()
 ])

@@ -13,11 +13,11 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(Attack11, Attack11, ScrowBellAttack),
+	Attack(Attack90, Attack90, ScrowBellAttack),
 	Wait1Turn(),
 	Attack(SporeChimesAttack, ScrowBellAttack, DoomReverbAttack),
 	Wait1Turn(),
-	Attack(Attack11, Attack11, SporeChimesAttack),
+	Attack(Attack90, Attack90, SporeChimesAttack),
 	Wait1Turn(),
 	StartCounterCommands()
 ])

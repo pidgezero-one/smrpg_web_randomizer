@@ -31,8 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(UNUSED_7082_4, ["EVENT_256_ret_0"]),
-	SetBit(UNUSED_7082_4),
+	JmpIfBitSet(UNKNOWN_7082_4, ["EVENT_256_ret_0"]),
+	SetBit(UNKNOWN_7082_4),
 	SetBit(TEMP_7043_5),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_Pause(1, identifier="EVENT_372_action_queue_3_SUBSCRIPT_pause_0"),

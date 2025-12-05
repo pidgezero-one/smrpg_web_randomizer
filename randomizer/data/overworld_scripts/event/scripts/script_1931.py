@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK158_BOXBOY_FIGHT_STATIC, BF21_KERO_SEWERS),
+	StartBattleAtBattlefield(PACK158_VALLEY_CHEST_FIGHT, BF21_KERO_SEWERS),
 	JmpIfBitSet(GAME_OVER, ["EVENT_1931_reset_and_choose_game_3"]),
 	Return(),
 	ResetAndChooseGame(identifier="EVENT_1931_reset_and_choose_game_3"),

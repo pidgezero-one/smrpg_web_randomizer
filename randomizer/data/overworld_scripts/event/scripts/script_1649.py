@@ -54,7 +54,7 @@ script = EventScript([
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1649_jmp_to_event_23"]),
 	RunEventAsSubroutine(E3897_MOLEVILLE_STAR_PIECE_SIGNAL),
-	JmpIfBitClear(GAMEBOY_KID_PURCHASE_COMPLETE, ["EVENT_1649_ret_24"]),
+	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_1649_ret_24"]),
 	SetVarToConst(PRIMARY_TEMP_7000, 523),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE, identifier="EVENT_1649_jmp_to_event_23"),
 	Return(identifier="EVENT_1649_ret_24"),

@@ -1273,6 +1273,30 @@ JONATHAN_JONES_NPC = NPC(
     byte6_bit2=False,
 )
 
+JONATHAN_JONES_POSTGAME_NPC = NPC(
+    sprite_id=SPR0961_JOHNNY_2_OVERWORLD,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=5,
+    obtuse_axis=5,
+    height=11,
+    y_shift=2,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 KING_NIMBUS_NPC = NPC(
     sprite_id=SPR0053_KING_NIMBUS,
     shadow_size=ShadowSize.OVAL_MED,
@@ -3722,7 +3746,7 @@ HAMMER_PACKET_NPC = NPC(
 )
 
 THRAX_NPC = NPC(
-    sprite_id=SPR0459_THRAX,
+    sprite_id=SPR0715_THRAX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -4993,8 +5017,8 @@ TERRAPIN_ENDING_CREDITS_NPC = NPC(
     byte6_bit2=False,
 )
 
-JINX_OVERWORLD_NPC = NPC(
-    sprite_id=SPR0607_JINX_OVERWORLD,
+JINX_2_OVERWORLD_NPC = NPC(
+    sprite_id=SPR0607_JINX_OVERWORLD_2,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -7105,30 +7129,6 @@ GUERRILLA_NPC = NPC(
     byte6_bit2=False,
 )
 
-BABA_YAGA_NPC = NPC(
-    sprite_id=SPR0295_BABA_YAGA,
-    shadow_size=ShadowSize.OVAL_BIG,
-    acute_axis=15,
-    obtuse_axis=15,
-    height=23,
-    y_shift=1,
-    show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=6,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
 HOBGOBLIN_NPC = NPC(
     sprite_id=SPR0296_HOBGOBLIN,
     shadow_size=ShadowSize.OVAL_BIG,
@@ -8689,30 +8689,6 @@ STRAW_HEAD_NPC = NPC(
     byte6_bit2=False,
 )
 
-JUJU_NPC = NPC(
-    sprite_id=SPR0361_JUJU,
-    shadow_size=ShadowSize.OVAL_BIG,
-    acute_axis=15,
-    obtuse_axis=15,
-    height=23,
-    y_shift=1,
-    show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=5,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
 ARMORED_ANT_NPC = NPC(
     sprite_id=SPR0362_ARMORED_ANT,
     shadow_size=ShadowSize.OVAL_MED,
@@ -8953,30 +8929,6 @@ BELOME_ST_TIME_NPC = NPC(
     byte6_bit2=False,
 )
 
-BOOMER_BLUE_NPC = NPC(
-    sprite_id=SPR0372_BOOMER_BLUE,
-    shadow_size=ShadowSize.OVAL_BIG,
-    acute_axis=9,
-    obtuse_axis=9,
-    height=22,
-    y_shift=2,
-    show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=3,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
 PUPPOX_NPC = NPC(
     sprite_id=SPR0373_PUPPOX,
     shadow_size=ShadowSize.OVAL_MED,
@@ -9025,30 +8977,6 @@ FINK_FLOWER_NPC = NPC(
     byte6_bit2=False,
 )
 
-LUMBLER_NPC = NPC(
-    sprite_id=SPR0375_LUMBLER,
-    shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=7,
-    obtuse_axis=7,
-    height=13,
-    y_shift=1,
-    show_shadow=False,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=6,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
 SPRINGER_NPC = NPC(
     sprite_id=SPR0376_SPRINGER,
     shadow_size=ShadowSize.OVAL_SMALL,
@@ -9063,30 +8991,6 @@ SPRINGER_NPC = NPC(
     priority_1=False,
     priority_2=True,
     cannot_clone=False,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-HARLEQUIN_NPC = NPC(
-    sprite_id=SPR0377_HARLEQUIN,
-    shadow_size=ShadowSize.OVAL_BIG,
-    acute_axis=11,
-    obtuse_axis=11,
-    height=23,
-    y_shift=1,
-    show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=3,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
     byte2_bit0=False,
     byte2_bit1=False,
     byte2_bit2=False,
@@ -9145,80 +9049,8 @@ SPINTHRA_NPC = NPC(
     byte6_bit2=False,
 )
 
-RADISH_NPC = NPC(
-    sprite_id=SPR0380_RADISH,
-    shadow_size=ShadowSize.OVAL_MED,
-    acute_axis=11,
-    obtuse_axis=11,
-    height=23,
-    y_shift=1,
-    show_shadow=True,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=4,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
 CRIPPO_NPC = NPC(
     sprite_id=SPR0381_BOWSER_CLONE_S,
-    shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=15,
-    obtuse_axis=15,
-    height=23,
-    y_shift=1,
-    show_shadow=False,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=7,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-MASTABLASTA_NPC = NPC(
-    sprite_id=SPR0382_MASTABLASTA,
-    shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=15,
-    obtuse_axis=15,
-    height=23,
-    y_shift=1,
-    show_shadow=False,
-    directions=VramStore.DIR2_SWSE,
-    min_vram_size=6,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=True,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=False,
-    byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-PILE_DRIVER_NPC = NPC(
-    sprite_id=SPR0383_PILE_DRIVER,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=15,
     obtuse_axis=15,
@@ -9338,7 +9170,7 @@ NOTHING_NPC = NPC(
 )
 
 GENO_REDEMPTION_NPC = NPC(
-    sprite_id=SPR0388_GENO_REDEMPTION,
+    sprite_id=SPR0725_GENO_REDEMPTION,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -9986,7 +9818,7 @@ SHYSTER_NPC = NPC(
 )
 
 JINX_OVERWORLD_NPC = NPC(
-    sprite_id=SPR0191_JINX_OVERWORLD,
+    sprite_id=SPR0191_JINX_OVERWORLD_1,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -10010,7 +9842,55 @@ JINX_OVERWORLD_NPC = NPC(
 )
 
 JINX_OVERWORLD_NPC = NPC(
-    sprite_id=SPR0608_JINX_OVERWORLD,
+    sprite_id=SPR0191_JINX_OVERWORLD_1,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=2,
+    obtuse_axis=2,
+    height=5,
+    y_shift=0,
+    show_shadow=False,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
+JINX_3_OVERWORLD_NPC = NPC(
+    sprite_id=SPR0608_JINX_OVERWORLD_3,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=2,
+    obtuse_axis=2,
+    height=5,
+    y_shift=0,
+    show_shadow=False,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
+JINX_4_OVERWORLD_NPC = NPC(
+    sprite_id=SPR0727_JINX_OVERWORLD_4,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -10490,7 +10370,7 @@ WATER_CRYSTAL_GRIDPLANE_NPC = NPC(
 )
 
 EMPTY_ENEMY_NPC = NPC(
-    sprite_id=SPR0436_EMPTY_ENEMY,
+    sprite_id=SPR0524_EMPTY,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=3,
     obtuse_axis=3,
@@ -10562,7 +10442,7 @@ SMITHY_BOX_HEAD_NPC = NPC(
 )
 
 CORKPEDITE_NPC = NPC(
-    sprite_id=SPR0439_CORKPEDITE,
+    sprite_id=SPR0319_CORKPEDITE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -10630,30 +10510,6 @@ BIG_THWOMP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
-
-GRIT_NPC = NPC(
-    sprite_id=SPR0442_GRIT,
-    shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=7,
-    obtuse_axis=7,
-    height=13,
-    y_shift=1,
-    show_shadow=False,
-    directions=VramStore.DIR0_SWSE_NWNE,
-    min_vram_size=0,
-    priority_0=False,
-    priority_1=False,
-    priority_2=True,
-    cannot_clone=False,
-    byte2_bit0=False,
-    byte2_bit1=False,
-    byte2_bit2=False,
-    byte2_bit3=False,
-    byte2_bit4=False,
-    byte5_bit6=True,
-    byte5_bit7=True,
     byte6_bit2=False,
 )
 
@@ -10969,6 +10825,30 @@ BELOME_ST_TIME_NPC_2 = NPC(
     byte6_bit2=False,
 )
 
+BELOME_3_NPC = NPC(
+    sprite_id=SPR0457_BELOME_3RD_TIME,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=10,
+    obtuse_axis=10,
+    height=18,
+    y_shift=2,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=5,
+    priority_0=True,
+    priority_1=True,
+    priority_2=False,
+    cannot_clone=False,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 GOLDEN_BELOME_NPC = NPC(
     sprite_id=SPR0147_GOLDEN_BELOME,
     shadow_size=ShadowSize.OVAL_SMALL,
@@ -11042,7 +10922,7 @@ SMILAX_NPC = NPC(
 )
 
 THRAX_NPC_2 = NPC(
-    sprite_id=SPR0459_THRAX,
+    sprite_id=SPR0715_THRAX,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=4,
     obtuse_axis=4,
@@ -11163,6 +11043,31 @@ MIMIC_FACE_STANDALONE_NPC = NPC(
 
 PUNCHINELLO_NPC = NPC(
     sprite_id=SPR0464_PUNCHINELLO,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=11,
+    obtuse_axis=8,
+    height=19,
+    y_shift=1,
+    show_shadow=False,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=2,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
+
+PUNCHINELLO_POSTGAME_NPC = NPC(
+    sprite_id=SPR0392_PUNCHINELLO_2,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=8,
@@ -11306,7 +11211,7 @@ MEZZO_BOMB_NPC = NPC(
 )
 
 BUNDT_OBJECT_NPC = NPC(
-    sprite_id=SPR0470_BUNDT_OBJECT,
+    sprite_id=SPR0721_BUNDT_OBJECT_MAYBE,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -12312,6 +12217,52 @@ CULEX_NPC = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+CULEX_NPC_OVERWORLD_ONLY = NPC(
+    sprite_id=SPR0633_CULEX_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=8,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+CULEX_3D_NPC_OVERWORLD_ONLY = NPC(
+    sprite_id=SPR0726_CULEX_3D_SMALL,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=8,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    byte2_bit0=False,
+    byte2_bit1=False,
+    byte2_bit2=False,
+    byte2_bit3=False,
+    byte2_bit4=False,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
 
 THROWN_HAMMER_NPC_2 = NPC(
     sprite_id=SPR0545_THROWN_HAMMER,
@@ -13130,7 +13081,7 @@ TORTE_NPC_4 = NPC(
 )
 
 BUNDT_OBJECT_NPC_2 = NPC(
-    sprite_id=SPR0470_BUNDT_OBJECT,
+    sprite_id=SPR0728_BUNDT_OBJECT_MAYBE_2,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=7,
     obtuse_axis=7,
@@ -13825,8 +13776,8 @@ TERRAPIN_NPC_5 = NPC(
     byte6_bit2=False,
 )
 
-JINX_OVERWORLD_NPC_2 = NPC(
-    sprite_id=SPR0607_JINX_OVERWORLD,
+JINX_2_OVERWORLD_NPC_2 = NPC(
+    sprite_id=SPR0607_JINX_OVERWORLD_2,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13850,7 +13801,7 @@ JINX_OVERWORLD_NPC_2 = NPC(
 )
 
 JINX_OVERWORLD_NPC_2 = NPC(
-    sprite_id=SPR0191_JINX_OVERWORLD,
+    sprite_id=SPR0191_JINX_OVERWORLD_1,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -13873,8 +13824,8 @@ JINX_OVERWORLD_NPC_2 = NPC(
     byte6_bit2=False,
 )
 
-JINX_OVERWORLD_NPC_2 = NPC(
-    sprite_id=SPR0608_JINX_OVERWORLD,
+JINX_3_OVERWORLD_NPC_2 = NPC(
+    sprite_id=SPR0608_JINX_OVERWORLD_3,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=2,
     obtuse_axis=2,
@@ -14546,7 +14497,7 @@ RED_MAGIKOOPA_NPC_4 = NPC(
 )
 
 MERLIN_NPC = NPC(
-    sprite_id=SPR0353_MERLIN,
+    sprite_id=SPR0723_MERLIN,
     shadow_size=ShadowSize.OVAL_BIG,
     acute_axis=7,
     obtuse_axis=7,

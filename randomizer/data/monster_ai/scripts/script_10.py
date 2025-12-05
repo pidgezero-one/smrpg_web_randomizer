@@ -1,4 +1,4 @@
-# 10 - BLOOBEREnemy
+# 10 - BLOOBEREnemyStatic
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

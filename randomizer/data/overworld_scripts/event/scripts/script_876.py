@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK164_CROCO2_FIGHT_STATIC, BF05_MOLEVILLE_MINES),
+	StartBattleAtBattlefield(PACK164_MINES_FIRST_BOSS, BF05_MOLEVILLE_MINES),
 	Return()
 ])

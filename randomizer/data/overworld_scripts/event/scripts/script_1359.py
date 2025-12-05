@@ -80,11 +80,12 @@ script = EventScript([
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=1),
 	JmpIfBitClear(UNKNOWN_7054_4, ["EVENT_1359_fade_in_from_black_async_26"]),
 	ApplyTileModToLevel(use_alternate=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=33),
-	RunEventAsSubroutine(E0789_TOWER_CURTAIN_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
-	FadeInFromBlack(sync=False, identifier="EVENT_1359_fade_in_from_black_async_26"),
-	Return(),
+	Jmp(["EVENT_1359_fade_in_from_black_async_26"]),
 	ApplySolidityModToLevel(permanent=True, room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, mod_id=2, identifier="EVENT_1359_apply_solidity_mod_28"),
-	RunEventAsSubroutine(E0789_TOWER_CURTAIN_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
-	FadeInFromBlack(sync=False),
+	RunEventAsSubroutine(E0789_TOWER_CURTAIN_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_1359_fade_in_from_black_async_26"),
+    JmpIfBitSet(POSTGAME_TOWER_COMPLETED, ["curtain_room_end"]),
+    JmpIfBitClear(STAY_VOUCHER_USED, ["curtain_room_end"]),
+    SummonObjectToCurrentLevel(NPC_10),
+	FadeInFromBlack(sync=False, identifier="curtain_room_end"),
 	Return()
 ])

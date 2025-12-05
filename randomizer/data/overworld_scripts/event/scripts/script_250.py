@@ -33,10 +33,13 @@ from ....packets import *
 script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_250_set_var_to_const_3"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 34, ["EVENT_250_set_var_to_const_5"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 154, ["EVENT_250_set_var_to_const_7"]),
 	Return(),
 	SetVarToConst(PRIMARY_TEMP_7000, 10, identifier="EVENT_250_set_var_to_const_3"),
 	JmpToEvent(E0158_NPC_QUEST_GRANT_MULTI_FROG_COIN),
 	SetVarToConst(ITEM_ID, YoshiCookieItem, identifier="EVENT_250_set_var_to_const_5"),
+	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
+	SetVarToConst(ITEM_ID, EnduringBroochItem, identifier="EVENT_250_set_var_to_const_7"),
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
 	Return()
 ])

@@ -15,7 +15,7 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 script = MonsterScript([
 	IfVarBitsClear(BV7EE001, [0]),
 	SetVarBits(BV7EE001, [0]),
-	IfCurrentlyInFormationID(298),
+	IfTargetAlive(MONSTER_2_SET),
 	SetUntargetable(MONSTER_2_SET),
 	MakeInvulnerable(MONSTER_3_SET),
 	MakeInvulnerable(MONSTER_4_SET),

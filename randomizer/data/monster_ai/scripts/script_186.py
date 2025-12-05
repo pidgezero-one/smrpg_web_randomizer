@@ -1,4 +1,4 @@
-# 186 - GRITEnemy
+# 186 - PYROSPHEREEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,14 +13,11 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	IfTargetAlive(ALL_ALLIES_EXCLUDING_SELF),
-	SetTarget(RANDOM_OPPONENT),
-	Wait1Turn(),
+	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 3),
+	CastSpell(DrainSpell, DrainSpell, FlameStoneSpell),
 	Wait1TurnandRestartScript(),
-	Attack(DUMMYAttack4),
-	RemoveTarget(SELF),
-	StartCounterCommands(),
-	IfTargetAlive(SELF),
-	Wait1TurnandRestartScript(),
-	RemoveTarget(MONSTER_1_SET)
+	Attack(DoNothing, Attack2, Attack2),
+	StartCounterCommands()
 ])

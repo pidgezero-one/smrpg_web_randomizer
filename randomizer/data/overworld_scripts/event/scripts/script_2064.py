@@ -29,7 +29,7 @@ from ....variables.shop_names import *
 from ....variables.variable_names import *
 from ....items import *
 from ....packets import *
-
+#DOJO_POSTGAME_COMPLETED
 script = EventScript([
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FASTEST),
@@ -37,6 +37,7 @@ script = EventScript([
 		A_WalkNorthSteps(1),
 		A_WalkNorthPixels(8)
 	]),
+    JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["EVENT_2064_action_queue_30_2"]),
 	JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["EVENT_2064_action_queue_30"]),
 	JmpIfBitSet(DOJO_BOSS_3_DEFEATED, ["EVENT_2064_action_queue_25"]),
 	JmpIfBitSet(DOJO_BOSS_2_DEFEATED, ["EVENT_2064_action_queue_20"]),
@@ -98,12 +99,30 @@ script = EventScript([
 	RunEventAsSubroutine(E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False),
 	Return(),
+    
+	JmpIfBitClear(STAY_VOUCHER_USED, ["EVENT_2064_action_queue_30_2"]),
+    RemoveObjectFromCurrentLevel(NPC_3),
+    SummonObjectToCurrentLevel(NPC_4),
+	ActionQueueSync(target=NPC_1, subscript=[
+		A_ShiftToXYCoords(x=5, y=9),
+		A_FaceSoutheast(),
+		A_VisibilityOn()
+	]),
+	ActionQueueAsync(target=NPC_4, subscript=[
+		A_TransferToXYZF(x=5, y=15, z=0, direction=EAST),
+		A_FaceSouthwest(),
+		A_VisibilityOn()
+	]),
+	RunEventAsSubroutine(E0815_DOJO_SHUFFLED_NPC_ANIMATION_LOADER),
+	FadeInFromBlack(sync=False),
+	Return(),
+
 	ActionQueueSync(target=NPC_1, subscript=[
 		A_ShiftToXYCoords(x=5, y=14),
 		A_FaceSouthwest(),
 		A_VisibilityOn(),
 		A_ObjectMemoryClearBit(arg_1=0x08, bits=[3, 4])
-	], identifier="EVENT_2064_action_queue_30"),
+	], identifier="EVENT_2064_action_queue_30_2"),
 	ActionQueueAsync(target=NPC_3, subscript=[
 		A_TransferToXYZF(x=6, y=16, z=0, direction=EAST),
 		A_FaceSouthwest(),

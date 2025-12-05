@@ -34,6 +34,6 @@ script = EventScript([
 	Set7000ToCurrentLevel(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 190, ["EVENT_1190_start_battle_3"]),
 	Return(),
-	StartBattleAtBattlefield(PACK011_REGULAR_SHYSTERS_BIASED_3, BF28_MUSHROOM_KINGDOM, identifier="EVENT_1190_start_battle_3"),
+	StartBattleAtBattlefield(PACK011_KINGDOM_HENCHMEN_2, BF28_MUSHROOM_KINGDOM, identifier="EVENT_1190_start_battle_3"),
 	Return()
 ])

@@ -51,7 +51,7 @@ script = AnimationScriptBlock(expected_size=617, expected_beginning=0x357D0B, sc
 	MoveObject(speed=1, start_position=-129, end_position=0, apply_to_y=True, should_set_speed=True),
 	PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
 	ResetObjectMappingMemory(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0496_CROCO_ST_TIME, sequence=0, store_to_vram=True, looping=True, store_palette=True, overlap_all_sprites=True),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0496_CROCO_1, sequence=0, store_to_vram=True, looping=True, store_palette=True, overlap_all_sprites=True),
 	ResetSpriteSequence(),
 	ReturnSubroutine(),
 	ResetTargetMappingMemory(identifier="command_0x357D8C"),

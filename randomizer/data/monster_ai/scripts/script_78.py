@@ -1,4 +1,5 @@
 # 78 - GENOCLONESEnemy
+# pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -26,7 +27,7 @@ script = MonsterScript([
 	DecreaseVarBy1(BV7EE00C),
 	RunObjectSequence(3),
 	RemoveTarget(SELF),
-	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	RunBattleEvent(BE0083_BELOME_3_CLONES),
 	Wait1TurnandRestartScript(),
 	IfHPBelow(0),
 	ClearVarBits(BV7EE00E, [0]),
@@ -34,7 +35,7 @@ script = MonsterScript([
 	DecreaseVarBy1(BV7EE00C),
 	RunObjectSequence(3),
 	RemoveTarget(SELF),
-	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	RunBattleEvent(BE0083_BELOME_3_CLONES),
 	Wait1TurnandRestartScript(),
 	IfTargetedByItem([PureWaterItem]),
 	IfTargetAlive(SELF),
@@ -44,7 +45,7 @@ script = MonsterScript([
 	DecreaseVarBy1(BV7EE00C),
 	RunObjectSequence(3),
 	RemoveTarget(SELF),
-	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	RunBattleEvent(BE0083_BELOME_3_CLONES),
 	Wait1TurnandRestartScript(),
 	IfTargetedByItem([PureWaterItem]),
 	IfTargetAlive(SELF),
@@ -53,6 +54,6 @@ script = MonsterScript([
 	DecreaseVarBy1(BV7EE00C),
 	RunObjectSequence(3),
 	RemoveTarget(SELF),
-	RunBattleEvent(BE0083_SCREEN_FLASHES_WHITE),
+	RunBattleEvent(BE0083_BELOME_3_CLONES),
 	Wait1TurnandRestartScript()
 ])

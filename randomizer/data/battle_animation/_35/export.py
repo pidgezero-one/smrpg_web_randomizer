@@ -39,8 +39,6 @@ from .contents.script_0x357D0B import script as script_0x357D0B
 from .contents.script_0x357FA0 import script as script_0x357FA0
 from .contents.script_0x357FF8 import script as script_0x357FF8
 from .contents.script_0x3580B4 import script as script_0x3580B4
-from .contents.script_0x3581B7 import script as script_0x3581B7
-from .contents.script_0x3582BB import script as script_0x3582BB
 from .contents.script_0x358916 import script as script_0x358916
 from .contents.script_0x3589D5 import script as script_0x3589D5
 from .contents.script_0x358AC6 import script as script_0x358AC6

@@ -1,4 +1,4 @@
-# E1925_EMPTY
+# E1925_POSTGAME_TOWER_FIGHT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,16 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	SetVarToConst(PRIMARY_TEMP_7000, 528),
+	RunEventAsSubroutine(E0353_BOSS_BATTLE),
+	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	RestoreAllHP(),
+	RestoreAllFP(),
+	RemoveObjectFromCurrentLevel(NPC_10),
+	FadeInFromBlack(sync=False),
+	SetBit(POSTGAME_TOWER_COMPLETED),
+	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+	SetVarToConst(PRIMARY_TEMP_7000, 528),
+	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
 ])
+

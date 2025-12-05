@@ -54,7 +54,10 @@ script = EventScript([
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2048_jmp_to_event_18"]),
 	RunEventAsSubroutine(E3909_MONSTRO_STAR_PIECE_SIGNAL),
-	JmpIfBitClear(GAMEBOY_KID_PURCHASE_COMPLETE, ["EVENT_2048_ret_19"]),
+	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["attempt_postgame_door_starpiece"]),
+	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER, identifier="EVENT_2048_jmp_to_event_18"),
+	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT_2, ["EVENT_2048_ret_19"], identifier="attempt_postgame_door_starpiece"),
+    SetVarToConst(PRIMARY_TEMP_7000, 524),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER, identifier="EVENT_2048_jmp_to_event_18"),
 	Return(identifier="EVENT_2048_ret_19")
 ])

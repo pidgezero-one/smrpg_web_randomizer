@@ -3,12 +3,12 @@ from smrpgpatchbuilder.datatypes.items.classes import Item
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import AddToInventory, JmpToEvent, SetBit, RunDialog, PlaySound, DisableObjectTrigger, ActionQueueSync, SetVarToConst
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import A_ObjectMemorySetBit, A_PlaySound, A_VisibilityOff, A_UnknownCommand
-from ...data.variables.event_script_names import E3092_STAR_PIECE_GRANT
-from ...data.variables.dialog_names import DI3074_GOT_BEETLEMANIA, DI1177_FOUND_A_70A7_AUTO_TERMINATE, DI1178_FOUND_AN_70A7_AUTO_TERMINATE, DI0065_GOT_AN_70A7_AWAIT_TERMINATE, DI0524_GOT_A_70A7_AWAIT_TERMINATE, DI0064_GOT_AN_70A7_AUTO_TERMINATE, DI0066_GOT_A_70A7_AUTO_TERMINATE
+from ..data.variables.event_script_names import E3092_STAR_PIECE_GRANT
+from ..data.variables.dialog_names import DI3074_GOT_BEETLEMANIA, DI1177_FOUND_A_70A7_AUTO_TERMINATE, DI1178_FOUND_AN_70A7_AUTO_TERMINATE, DI0065_GOT_AN_70A7_AWAIT_TERMINATE, DI0524_GOT_A_70A7_AWAIT_TERMINATE, DI0064_GOT_AN_70A7_AUTO_TERMINATE, DI0066_GOT_A_70A7_AUTO_TERMINATE
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import BOWSER, MARIO, MEM_70A8
-from ...data.variables.event_script_names import *
-from ...data.variables.variable_names import BEETLEMANIA_UNLOCKED, ITEM_ID
-from ...data.variables.overworld_sfx_names import SO027_FOUND_AN_ITEM
+from ..data.variables.event_script_names import *
+from ..data.variables.variable_names import BEETLEMANIA_UNLOCKED, ITEM_ID, PRIMARY_TEMP_7000
+from ..data.variables.overworld_sfx_names import SO027_FOUND_AN_ITEM
 from enum import StrEnum
 
 class TreasureHunterNickname:
@@ -52,19 +52,51 @@ class TreasureHunterNickname:
     
 class Prize:
     _important: bool = False
-    npc_grant: Optional[EventScript] = None
-    chest_grant: Optional[EventScript] = None
-    standing_grant: Optional[EventScript] = None
-    river_grant: Optional[EventScript] = None
-    character_grant: Optional[EventScript] = None
-    spell_grant: Optional[EventScript] = None
-    boss_fight_grant: Optional[EventScript] = None
-    postfight_star_piece_grant: Optional[EventScript] = None
+    _npc_grant: Optional[EventScript] = None
+    _chest_grant: Optional[EventScript] = None
+    _standing_grant: Optional[EventScript] = None
+    _river_grant: Optional[EventScript] = None
+    _character_grant: Optional[EventScript] = None
+    _spell_grant: Optional[EventScript] = None
+    _boss_fight_grant: Optional[EventScript] = None
+    _postfight_star_piece_grant: Optional[EventScript] = None
     remake_only: bool = False
 
     @property
     def important(self) -> bool:
         return self._important
+    
+    @property
+    def npc_grant(self) -> Optional[EventScript]:
+        return self._npc_grant
+    
+    @property
+    def chest_grant(self) -> Optional[EventScript]:
+        return self._chest_grant
+    
+    @property
+    def standing_grant(self) -> Optional[EventScript]:
+        return self._standing_grant
+
+    @property
+    def river_grant(self) -> Optional[EventScript]:
+        return self._river_grant
+
+    @property
+    def character_grant(self) -> Optional[EventScript]:
+        return self._character_grant
+
+    @property
+    def spell_grant(self) -> Optional[EventScript]:
+        return self._spell_grant
+
+    @property
+    def boss_fight_grant(self) -> Optional[EventScript]:
+        return self._boss_fight_grant
+
+    @property
+    def postfight_star_piece_grant(self) -> Optional[EventScript]:
+        return self._postfight_star_piece_grant
 
     def set_important(self, important: bool) -> None:
         self._important = important
@@ -271,6 +303,7 @@ class CoinPrize10(CoinPrize):
 
 
 class InfiniteCoinPrize(Prize):
+    @property
     def chest_grant(self) -> EventScript:
         return EventScript([
             JmpToEvent(E3074_COIN_CHEST_MULTI_HIT_1)
@@ -307,6 +340,8 @@ class FrogCoinPrize(Prize):
 
 class FrogCoinPrize1(FrogCoinPrize):
     _amount: int = 1
+    
+    @property
     def chest_grant(self) -> EventScript:
         return EventScript([
             SetVarToConst(ITEM_ID, 48),

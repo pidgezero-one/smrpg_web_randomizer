@@ -150,10 +150,10 @@ script = EventScript([
 	SetSyncActionScript(NPC_1, A1006_DOJO_PERMA_JUMP),
 	ApplyTileModToLevel(use_alternate=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=32),
 	SetBit(DOJO_BOSS_4_DEFEATED),
-	SetVarToConst(PRIMARY_TEMP_7000, 517),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	SetVarToConst(PRIMARY_TEMP_7000, 517),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
+    Inc(POSTGAME_PROGRESS_COUNTER),
 	Return(),
 	RunDialog(dialog_id=DI3353_DOJO_BOSS_2_FULLY_DEFEATED, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_2077_run_dialog_40"),
 	Return(identifier="EVENT_2077_ret_41")

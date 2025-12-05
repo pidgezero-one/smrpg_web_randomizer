@@ -3,14 +3,7 @@
 # python manage.py itemdisassembler --rom <ROM_PATH>
 
 from typing import List
-from smrpgpatchbuilder.datatypes.items.classes import (
-    Item as ItemBase,
-    RegularItem as RegularItemBase,
-    Weapon as WeaponBase,
-    Armor as ArmorBase,
-    Accessory as AccessoryBase,
-    ItemCollection,
-)
+from smrpgpatchbuilder.datatypes.items.classes import ItemCollection
 from smrpgpatchbuilder.datatypes.items.enums import (
     EffectType,
     InflictFunction,
@@ -27,26 +20,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     MALLOW,
 )
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
-
-class Item(ItemBase):
-    _remake_name: Optional[str] = None
-
-    @property
-    def remake_name(self) -> str:
-        return self._remake_name or self._item_name
-
-
-class Weapon(WeaponBase, Item)
-    pass
-
-class Armor(ArmorBase, Item):
-    pass
-
-class Accessory(AccessoryBase, Item):
-    pass
-
-class RegularItem(RegularItemBase, Item):
-    pass
+from ...types.item import Weapon, Armor, Accessory, RegularItem
 
 class WeaponItem(Weapon):
     """Weapon item class"""
@@ -2624,7 +2598,7 @@ class FireworksItem(RegularItem):
     
 
 
-class StayVoucher(RegularItem):
+class StayVoucherItem(RegularItem):
     """Stay Voucher item class"""
     _item_name: str = "Stay Voucher"
     _prefix = ItemPrefix.EMPTY_SPACE
@@ -2725,3 +2699,201 @@ class CrownItem(RegularItem):
     _description: str = ""
     _price: int = 0
     _inflict_type = None
+
+
+class GoldPaintItem(RegularItem):
+    """Gold Paint item class"""
+    _item_name: str = "Gold Paint"
+    _prefix = ItemPrefix.EMPTY_SPACE
+
+    _item_id: int = 234
+    _description: str = ""
+    _price: int = 0
+    _inflict_type = None
+
+
+class MarioDollItem(RegularItem):
+    """Mario Doll item class"""
+    _item_name: str = "Mario Doll"
+    _prefix = ItemPrefix.EMPTY_SPACE
+
+    _item_id: int = 235
+    _description: str = ""
+    _price: int = 0
+
+    _inflict_type = None
+
+
+# Item collection with all items instantiated in order of item_id
+ITEMS = ItemCollection([
+    WeaponItem(),  # item_id: 0
+    ArmorItem(),  # item_id: 1
+    AccessoryItem(),  # item_id: 2
+    SpaceItem(),  # item_id: 3
+    HammerItem(),  # item_id: 5
+    FroggieStickItem(),  # item_id: 6
+    NokNokShellItem(),  # item_id: 7
+    PunchGloveItem(),  # item_id: 8
+    FingerShotItem(),  # item_id: 9
+    CymbalsItem(),  # item_id: 10
+    ChompItem(),  # item_id: 11
+    MasherItem(),  # item_id: 12
+    ChompShellItem(),  # item_id: 13
+    SuperHammerItem(),  # item_id: 14
+    HandGunItem(),  # item_id: 15
+    WhompGloveItem(),  # item_id: 16
+    SlapGloveItem(),  # item_id: 17
+    TroopaShellItem(),  # item_id: 18
+    ParasolItem(),  # item_id: 19
+    HurlyGlovesItem(),  # item_id: 20
+    DoublePunchItem(),  # item_id: 21
+    RibbitStickItem(),  # item_id: 22
+    SpikedLinkItem(),  # item_id: 23
+    MegaGloveItem(),  # item_id: 24
+    WarFanItem(),  # item_id: 25
+    HandCannonItem(),  # item_id: 26
+    StickyGloveItem(),  # item_id: 27
+    UltraHammerItem(),  # item_id: 28
+    SuperSlapItem(),  # item_id: 29
+    DrillClawItem(),  # item_id: 30
+    StarGunItem(),  # item_id: 31
+    SonicCymbalItem(),  # item_id: 32
+    LazyShellItem(),  # item_id: 33
+    FryingPanItem(),  # item_id: 34
+    WonderChompItem(),  # item_id: 35
+    Stella023Item(),  # item_id: 36
+    SageStickItem(),  # item_id: 37
+    LuckyHammerItem(),  # item_id: 38
+    ShirtItem(),  # item_id: 39
+    PantsItem(),  # item_id: 40
+    ThickShirtItem(),  # item_id: 41
+    ThickPantsItem(),  # item_id: 42
+    MegaShirtItem(),  # item_id: 43
+    MegaPantsItem(),  # item_id: 44
+    WorkPantsItem(),  # item_id: 45
+    MegaCapeItem(),  # item_id: 46
+    HappyShirtItem(),  # item_id: 47
+    HappyPantsItem(),  # item_id: 48
+    HappyCapeItem(),  # item_id: 49
+    HappyShellItem(),  # item_id: 50
+    PolkaDressItem(),  # item_id: 51
+    SailorShirtItem(),  # item_id: 52
+    SailorPantsItem(),  # item_id: 53
+    SailorCapeItem(),  # item_id: 54
+    NauticaDressItem(),  # item_id: 55
+    CourageShellItem(),  # item_id: 56
+    FuzzyShirtItem(),  # item_id: 57
+    FuzzyPantsItem(),  # item_id: 58
+    FuzzyCapeItem(),  # item_id: 59
+    FuzzyDressItem(),  # item_id: 60
+    FireShirtItem(),  # item_id: 61
+    FirePantsItem(),  # item_id: 62
+    FireCapeItem(),  # item_id: 63
+    FireShellItem(),  # item_id: 64
+    FireDressItem(),  # item_id: 65
+    HeroShirtItem(),  # item_id: 66
+    PrincePantsItem(),  # item_id: 67
+    StarCapeItem(),  # item_id: 68
+    HealShellItem(),  # item_id: 69
+    RoyalDressItem(),  # item_id: 70
+    SuperSuitItem(),  # item_id: 71
+    EnduringBroochItem(),  # item_id: 73
+    ZoomShoesItem(),  # item_id: 74
+    SafetyBadgeItem(),  # item_id: 75
+    JumpShoesItem(),  # item_id: 76
+    SafetyRingItem(),  # item_id: 77
+    AmuletItem(),  # item_id: 78
+    ScroogeRingItem(),  # item_id: 79
+    ExpBoosterItem(),  # item_id: 80
+    AttackScarfItem(),  # item_id: 81
+    RareScarfItem(),  # item_id: 82
+    BtubRingItem(),  # item_id: 83
+    AntidotePinItem(),  # item_id: 84
+    WakeUpPinItem(),  # item_id: 85
+    FearlessPinItem(),  # item_id: 86
+    TrueformPinItem(),  # item_id: 87
+    CoinTrickItem(),  # item_id: 88
+    GhostMedalItem(),  # item_id: 89
+    JinxBeltItem(),  # item_id: 90
+    FeatherItem(),  # item_id: 91
+    TroopaPinItem(),  # item_id: 92
+    SignalRingItem(),  # item_id: 93
+    QuartzCharmItem(),  # item_id: 94
+    TeamworkBandItem(),  # item_id: 95
+    MushroomItem(),  # item_id: 96
+    MidMushroomItem(),  # item_id: 97
+    MaxMushroomItem(),  # item_id: 98
+    HoneySyrupItem(),  # item_id: 99
+    MapleSyrupItem(),  # item_id: 100
+    RoyalSyrupItem(),  # item_id: 101
+    PickMeUpItem(),  # item_id: 102
+    AbleJuiceItem(),  # item_id: 103
+    BracerItem(),  # item_id: 104
+    EnergizerItem(),  # item_id: 105
+    YoshiAdeItem(),  # item_id: 106
+    RedEssenceItem(),  # item_id: 107
+    KerokeroColaItem(),  # item_id: 108
+    YoshiCookieItem(),  # item_id: 109
+    PureWaterItem(),  # item_id: 110
+    SleepyBombItem(),  # item_id: 111
+    BadMushroomItem(),  # item_id: 112
+    FireBombItem(),  # item_id: 113
+    IceBombItem(),  # item_id: 114
+    FlowerTabItem(),  # item_id: 115
+    FlowerJarItem(),  # item_id: 116
+    FlowerBoxItem(),  # item_id: 117
+    YoshiCandyItem(),  # item_id: 118
+    FroggieDrinkItem(),  # item_id: 119
+    MukuCookieItem(),  # item_id: 120
+    ElixirItem(),  # item_id: 121
+    MegalixirItem(),  # item_id: 122
+    SeeYaItem(),  # item_id: 123
+    TempleKeyItem(),  # item_id: 124
+    GoodieBagItem(),  # item_id: 125
+    EarlierTimesItem(),  # item_id: 126
+    FreshenUpItem(),  # item_id: 127
+    RareFrogCoinItem(),  # item_id: 128
+    WalletItem(),  # item_id: 129
+    CricketPieItem(),  # item_id: 130
+    RockCandyItem(),  # item_id: 131
+    CastleKey1Item(),  # item_id: 132
+    CastleKey2Item(),  # item_id: 134
+    BambinoBombItem(),  # item_id: 135
+    SheepAttackItem(),  # item_id: 136
+    CarboCookieItem(),  # item_id: 137
+    ShinyStoneItem(),  # item_id: 138
+    ExtraShinyStoneItem(),  # item_id: 139
+    RoomKeyItem(),  # item_id: 140
+    ElderKeyItem(),  # item_id: 141
+    ShedKeyItem(),  # item_id: 142
+    LambsLureItem(),  # item_id: 143
+    FrightBombItem(),  # item_id: 144
+    MysteryEggItem(),  # item_id: 145
+    BeetleBoxItem(),  # item_id: 146
+    LuckyJewelItem(),  # item_id: 148
+    CrystalShardItem(),  # item_id: 149
+    SopranoCardItem(),  # item_id: 150
+    AltoCardItem(),  # item_id: 151
+    TenorCardItem(),  # item_id: 152
+    CrystallineItem(),  # item_id: 153
+    PowerBlastItem(),  # item_id: 154
+    WiltShroomItem(),  # item_id: 155
+    RottenMushItem(),  # item_id: 156
+    MoldyMushItem(),  # item_id: 157
+    SeedItem(),  # item_id: 158
+    FertilizerItem(),  # item_id: 159
+    WasteBasketItem(),  # item_id: 160
+    BigBooFlagItem(),  # item_id: 161
+    DryBonesFlagItem(),  # item_id: 162
+    GreaperFlagItem(),  # item_id: 163
+    CricketJamItem(),  # item_id: 166
+    FireworksItem(),  # item_id: 172
+    BrightCardItem(),  # item_id: 174
+    StarEggItem(),  # item_id: 176
+    ShoesItem(),  # item_id: 230
+    BroochItem(),  # item_id: 231
+    RingItem(),  # item_id: 232
+    CrownItem(),  # item_id: 233
+    GoldPaintItem(),  # item_id: 234
+    MarioDollItem(),  # item_id: 235
+])

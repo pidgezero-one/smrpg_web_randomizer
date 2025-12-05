@@ -19,7 +19,7 @@ script = SubroutineOrBanklessScript(
         SpriteSequence(sequence=4),
         PauseScriptUntilSpriteSequenceDone(),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0490_SMITHY_ST_FORM,
+            sprite_id=SPR0490_SMITHY_1ST_FORM,
             sequence=0,
             store_to_vram=True,
             store_palette=True,

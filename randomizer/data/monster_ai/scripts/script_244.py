@@ -1,5 +1,4 @@
-# 244 - DRILLBITEnemy2
-# pyright: reportWildcardImportFromLibrary=false
+# 231 - AEROEnemy
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
@@ -13,11 +12,6 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	Attack(DoNothing, Attack1, SkewerAttack),
-	IncreaseVarBy1(BV7EE003),
-	Wait1Turn(),
-	Attack(DoNothing, Attack1, Attack1),
-	IncreaseVarBy1(BV7EE003),
-	Wait1Turn(),
+	Attack(Attack0),
 	StartCounterCommands()
 ])

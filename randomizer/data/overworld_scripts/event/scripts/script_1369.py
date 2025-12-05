@@ -126,6 +126,10 @@ script = EventScript([
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	RestoreAllHP(),
 	RestoreAllFP(),
+    Inc(POSTGAME_PROGRESS_COUNTER),
+    JmpIfBitSet(CURTAIN_MINIGAME_COMPLETED, ["EVENT_1369_failed_spgrant"]),
+	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+    SetBit(TOWER_BOSS_1_STAR_PIECE, identifier="EVENT_1369_failed_spgrant"),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()
 ])

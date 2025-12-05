@@ -1,4 +1,4 @@
-# E0867_TEST_SCRIPT_1
+# E0867_DOJO_5TH_BOSS_CHALLENGE_SUBROUTINE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,43 +31,17 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ActionQueueAsync(target=MEM_70A8, subscript=[
-		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True),
-		A_Pause(60),
+	ActionQueueAsync(target=NPC_4, subscript=[
+		A_FixedFCoordOn(),
+		A_SetWalkingSpeed(FAST),
+		A_JumpToHeight(height=53, silent=True),
+		A_WalkNortheastSteps(1),
+		A_Pause(20),
+		A_FixedFCoordOff(),
+		A_FaceSouthwest(),
 		A_SetSequenceSpeed(NORMAL),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=False),
-		A_Pause(120),
-		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True),
-		A_Pause(60),
-		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=False),
-		A_Pause(120),
-		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True),
-		A_Pause(60),
-		A_SetSequenceSpeed(FASTER),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=False),
-		A_Pause(120),
-		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True),
-		A_Pause(60),
-		A_SetSequenceSpeed(VERY_FAST),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=False),
-		A_Pause(120),
-		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True),
-		A_Pause(60),
-		A_SetSequenceSpeed(FASTEST),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=False),
-		A_Pause(120),
-		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True),
-		A_Pause(60),
-		A_MaximizeSequenceSpeed(),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=False),
-		A_Pause(120),
-		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True),
-		A_Pause(60),
-		A_MaximizeSequenceSpeed86(),
-		A_SetSpriteSequence(index=4, is_sequence=True, looping=False),
-		A_Pause(120),
-		A_SetSpriteSequence(index=0, is_mold=True, looping=True, mirror_sprite=True)
+		A_SetSpriteSequence(index=3, is_sequence=True, looping=False),
+		A_Pause(45)
 	]),
 	Return()
 ])

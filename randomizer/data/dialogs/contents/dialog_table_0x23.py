@@ -139,8 +139,10 @@ dialog_data[73] = ''' The chapel kitchen has been making
  some pretty weird cakes lately.[await]
  I'm not sure if all of them are even
  really cakes.[await]'''
-dialog_data[74] = '''[await]'''
-dialog_data[75] = '''[await]'''
+dialog_data[74] = ''' I see you have a Stay Voucher.[await]
+ You're going to love our hotel's
+ fine suite![await]'''
+dialog_data[75] = '''    Unlocked "Postgame" battles[await]'''
 dialog_data[76] = '''[await]'''
 dialog_data[77] = '''[await]'''
 dialog_data[78] = '''[await]'''
@@ -1536,7 +1538,10 @@ dialog_data[912] = '''[await]'''
 dialog_data[913] = '''  You will enter combat against me?[await]
   [select] (Yes)
   [select] (Uh...)[await]'''
-dialog_data[914] = '''[await]'''
+dialog_data[914] = '''  You will enter combat against me\n
+ in 3D?[await]
+  [select] (Yes)
+  [select] (Uh...)[await]'''
 dialog_data[915] = '''[await]'''
 dialog_data[916] = '''[await]'''
 dialog_data[917] = '''[await]'''

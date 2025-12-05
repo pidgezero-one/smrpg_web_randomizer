@@ -1,4 +1,4 @@
-# E1750_EMPTY
+# E1750_TEMPLE_BOSS_POSTGAME
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,9 +31,15 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetBit(TEMP_7044_2),
-	DisableObjectTrigger(MEM_70A8),
-	SetSyncActionScript(MEM_70A8, A0777_EMPTY),
-	ClearBit(TEMP_7044_2),
-	Return()
+	SetVarToConst(PRIMARY_TEMP_7000, 523),
+	RunEventAsSubroutine(E0353_BOSS_BATTLE),
+	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	RemoveObjectFromCurrentLevel(NPC_5),
+	RestoreAllHP(),
+	RestoreAllFP(),
+	FadeInFromBlack(sync=False),
+	SetBit(TEMPLE_POSTGAME_BOSS_DEFEATED),
+	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	SetVarToConst(PRIMARY_TEMP_7000, 523),
+	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
 ])

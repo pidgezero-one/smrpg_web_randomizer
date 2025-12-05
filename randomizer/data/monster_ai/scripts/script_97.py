@@ -1,4 +1,4 @@
-# 97 - MERLINEnemy
+# 186 - TeamGaugeEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,5 +13,11 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
+	IfVarBitsClear(BV7EE001, [0]),
+	SetVarBits(BV7EE001, [0]),
+	ClearVar(BV7EE003),
+	ClearVar(BV7EE00A),
+	SetUntargetable(SELF),
+	Wait1TurnandRestartScript(),
 	StartCounterCommands()
 ])

@@ -31,7 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	EnableControls([], identifier="EVENT_1723_enable_controls_0"),
-	EnterArea(room_id=R260_GAME_INTRO_FOREST_MAZE_JUMPING_ON_WIGGLER, face_direction=SOUTHEAST, x=6, y=32, z=3, run_entrance_event=True),
-	Return()
 ])

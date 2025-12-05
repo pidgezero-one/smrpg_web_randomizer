@@ -9,7 +9,7 @@ script = AnimationScript(
         RunSubroutine(["command_0x357b73"]),
         PlaySound(sound=S0035_SPELL_POWER_UP),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0452_JINX_ND_TIME,
+            sprite_id=SPR0451_JINX_2,
             sequence=4,
             store_to_vram=True,
             store_palette=True,
@@ -19,7 +19,7 @@ script = AnimationScript(
         SetAMEM16BitToConst(0x60, 28),
         RunSubroutine(["command_0x352475"]),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0474_JINX_RD_TIME,
+            sprite_id=SPR0451_JINX_3,
             sequence=0,
             store_to_vram=True,
             store_palette=True,

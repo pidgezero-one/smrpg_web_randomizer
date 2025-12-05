@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(POST_MINES_LEVEL_MODS_COMPLETED, ["EVENT_257_fade_in_from_black_async_0"]),
+	JmpIfBitSet(POST_MINES_LEVEL_MODS_COMPLETED, ["mines_postgame_check"]),
 	Pause(2),
 	FadeOutMusicToVolume(duration=0, volume=1),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
@@ -60,6 +60,11 @@ script = EventScript([
 	ApplySolidityModToLevel(permanent=True, room_id=R276_MOLEVILLE_MINES_AREA_01_ENTRANCE, mod_id=0),
 	SetBit(POST_MINES_LEVEL_MODS_COMPLETED),
 	Store01To0248(),
+    Inc(POSTGAME_PROGRESS_COUNTER),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
-	Return()
+	Return(),
+    JmpIfBitSet(MINES_POSTGAME_COMPLETED, ["finish_mines_boss_room_loader"], identifier="mines_postgame_check"),
+    JmpIfBitClear(STAY_VOUCHER_USED, ["finish_mines_boss_room_loader"]),
+	SummonObjectToCurrentLevel(NPC_0),
+	JmpToEvent(E0257_FADE_IN_ASYNC, identifier="finish_mines_boss_room_loader")
 ])

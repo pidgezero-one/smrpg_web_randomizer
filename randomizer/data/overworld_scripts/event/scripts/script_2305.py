@@ -171,7 +171,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=4, is_sequence=True, looping=True)
 	], identifier="EVENT_2305_action_queue_92"),
 	Pause(32),
-	StartBattleAtBattlefield(PACK158_BOXBOY_FIGHT_STATIC, BF21_KERO_SEWERS),
+	StartBattleAtBattlefield(PACK158_VALLEY_CHEST_FIGHT, BF21_KERO_SEWERS),
 	JmpIfBitClear(GAME_OVER, ["EVENT_2305_remove_from_current_level_97"]),
 	ResetAndChooseGame(),
 	RemoveObjectFromCurrentLevel(NPC_1, identifier="EVENT_2305_remove_from_current_level_97"),

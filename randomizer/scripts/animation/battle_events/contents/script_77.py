@@ -1,4 +1,4 @@
-"""BE0077_SCREEN_FLASHES_WHITE"""
+"""BE0077_CULEX_3D"""
 
 from randomizer.scripts.animation.script_imports import *
 

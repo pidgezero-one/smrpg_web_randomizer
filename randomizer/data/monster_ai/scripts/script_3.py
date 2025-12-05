@@ -1,4 +1,4 @@
-# 3 - MADMALLETEnemy
+# 3 - MADMALLETEnemyStatic
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

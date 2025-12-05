@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK184_CLOAKER_DOMINO_FIGHT_STATIC, BF40_SMITHY_FACTORY_DOMINO_CLOAKERS_PAD),
+	StartBattleAtBattlefield(PACK184_FACTORY_SECOND_BOSS, BF40_SMITHY_FACTORY_DOMINO_CLOAKERS_PAD),
 	Return()
 ])

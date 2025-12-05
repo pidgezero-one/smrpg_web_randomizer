@@ -91,6 +91,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0200_UNLOCK_FOREST_IF_GATED_BY_MARRYMORE_CHARACTER),
 	FadeInFromBlack(sync=False),
 	ClearBit(TEMP_704C_0),
+    Inc(POSTGAME_PROGRESS_COUNTER),
 	SetBit(MARRYMORE_LIBERATED),
 	SetBit(MAP_STAR_HILL),
 	SetBit(TEMP_7042_1),

@@ -1,4 +1,4 @@
-"""BE0062_UNUSED"""
+"""BE0062_JINX_4_BE"""
 
 from randomizer.scripts.animation.script_imports import *
 

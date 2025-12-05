@@ -31,7 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ClearBit(GAMEBOY_KID_PURCHASE_COMPLETE),
+	ClearBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
+	ClearBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT_2),
 	Inc(BOSS_VICTORY_COUNTER),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 28, ["EVENT_167_ret_44"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 103, ["EVENT_167_ret_45"]),
@@ -74,6 +75,13 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 520, ["EVENT_167_ret_82"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 521, ["EVENT_167_ret_83"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 522, ["EVENT_167_ret_84"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 523, ["EVENT_167_ret_85"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 524, ["EVENT_167_ret_86_monstro_postgame"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 525, ["EVENT_167_ret_87_dojo_postgame"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 526, ["EVENT_167_ret_88_ship_postgame"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 527, ["EVENT_167_ret_89_mines_postgame"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 528, ["EVENT_167_ret_90_tower_postgame"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 529, ["EVENT_167_ret_91_chapel_postgame"]),
 	Return(),
 	Return(identifier="EVENT_167_ret_44"),
 	Return(identifier="EVENT_167_ret_45"),
@@ -115,5 +123,12 @@ script = EventScript([
 	Return(identifier="EVENT_167_ret_81"),
 	Return(identifier="EVENT_167_ret_82"),
 	Return(identifier="EVENT_167_ret_83"),
-	Return(identifier="EVENT_167_ret_84")
+	Return(identifier="EVENT_167_ret_84"),
+	Return(identifier="EVENT_167_ret_85"),
+	Return(identifier="EVENT_167_ret_86_monstro_postgame"),
+	Return(identifier="EVENT_167_ret_87_dojo_postgame"),
+	Return(identifier="EVENT_167_ret_88_ship_postgame"),	
+	Return(identifier="EVENT_167_ret_89_mines_postgame"),	
+	Return(identifier="EVENT_167_ret_90_tower_postgame"),
+	Return(identifier="EVENT_167_ret_91_chapel_postgame"),
 ])

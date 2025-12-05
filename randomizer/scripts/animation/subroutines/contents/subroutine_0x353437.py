@@ -250,7 +250,7 @@ script = SubroutineOrBanklessScript(
         ObjectQueueAtOffsetAndIndex(index=0, target_address=0x35D2D5),
         PauseScriptUntilAMEMBitsSet(0x6F, [0]),
         DrawSpriteAtAMEM32Coords(
-            sprite_id=SPR0372_BOOMER_BLUE,
+            sprite_id=SPR0724_BOOMER_BLUE,
             sequence=0,
             store_to_vram=True,
             store_palette=True,

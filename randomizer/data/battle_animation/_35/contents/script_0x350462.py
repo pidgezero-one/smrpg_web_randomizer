@@ -43,7 +43,7 @@ script = AnimationScriptBlock(expected_size=264, expected_beginning=0x350462, sc
 	RunSubroutine(["command_0x3589D5"], identifier="command_0x35048F"),
 	UnknownCommand(bytearray(b'\x16')),
 	Jmp(["command_0x350463"]),
-	RunSubroutine(["command_0x358A6C"], identifier="command_0x350496"),
+	RunSubroutine(["bowser_weapon_wrapper"], identifier="command_0x350496"),
 	UnknownCommand(bytearray(b'\x16')),
 	Jmp(["command_0x350463"]),
 	RunSubroutine(["command_0x358B57"], identifier="command_0x35049D"),

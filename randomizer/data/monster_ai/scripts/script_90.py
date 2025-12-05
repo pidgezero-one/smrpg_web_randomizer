@@ -1,4 +1,4 @@
-# 90 - SHYGUYEnemy
+# 90 - SHYGUYEnemyStatic
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *

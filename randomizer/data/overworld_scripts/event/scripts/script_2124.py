@@ -31,11 +31,14 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(MARRYMORE_LIBERATED, ["EVENT_2124_enter_area_3"], identifier="EVENT_2124_jmp_if_bit_set_0"),
+	JmpIfBitSet(MARRYMORE_LIBERATED, ["check_for_postgame"], identifier="EVENT_2124_jmp_if_bit_set_0"),
 	JmpIfBitSet(CHAPEL_ITEM_RETRIEVAL_STARTED, ["EVENT_2124_enter_area_5"]),
 	JmpToEvent(E3809_MARRYMORE_SANCTUARY_BEGIN_WEDDING_GEAR_SEQUENCE),
+    JmpIfBitSet(POSTGAME_CHAPEL_COMPLETE, ["EVENT_2124_enter_area_3"], identifier="check_for_postgame"),
+    JmpIfBitSet(STAY_VOUCHER_USED, ["EVENT_2124_summon_object_4"]),
 	EnterArea(room_id=R065_MARRYMORE_CHAPEL_SANCTUARY, face_direction=NORTHEAST, x=9, y=98, z=0, run_entrance_event=True, identifier="EVENT_2124_enter_area_3"),
 	Return(),
+    SummonObjectToSpecificLevel(NPC_12, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, identifier="EVENT_2124_summon_object_4"),
 	EnterArea(room_id=R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, face_direction=NORTHEAST, x=9, y=98, z=0, run_entrance_event=True, identifier="EVENT_2124_enter_area_5"),
 	Return()
 ])

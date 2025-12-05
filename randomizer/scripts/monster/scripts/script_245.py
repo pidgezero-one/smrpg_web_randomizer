@@ -6,7 +6,7 @@ script = MonsterScript(
     [
         IfVarBitsClear(0x7EE004, [0]),
         SetVarBits(0x7EE004, [0]),
-        RunBattleEvent(BE0062_UNUSED),
+        RunBattleEvent(BE0062_JINX_4_BE),
         SetUntargetable(SELF),
         Wait1TurnandRestartScript(),
         IfVarBitsClear(0x7EE004, [1]),

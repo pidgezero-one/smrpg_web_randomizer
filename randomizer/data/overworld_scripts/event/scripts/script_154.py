@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK200_MARIO_CLONE_HENCHMAN, BF37_SEASIDE_TOWN_BEACH),
+	StartBattleAtBattlefield(PACK200_UNUSED, BF37_SEASIDE_TOWN_BEACH),
 	Jmp(["EVENT_143_jmp_to_event_1"])
 ])

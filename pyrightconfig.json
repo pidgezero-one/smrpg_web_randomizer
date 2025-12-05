@@ -8,7 +8,7 @@
       "randomizer/logic_old",
       "randomizer/management",
       "randomizer/scripts",
-      "randomizer/types",
+      "randomizer/types_old",
       "randomizer/utils",
     ]
   }

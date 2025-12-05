@@ -1,4 +1,4 @@
-# 232 - MACHINEMADEEnemy15
+# 232 - TORTE2Enemy
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,11 +13,32 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	ClearVar(BV7EE005_DESIGNATED_RANDOM_NUM_VAR),
-	Set7EE005ToRandomNumber(upper_bound=7),
-	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
-	CastSpell(FlameStoneSpell, MeteorBlastSpell, MeteorBlastSpell),
+	IfVarBitsClear(BV7EE001, [0]),
+	SetVarBits(BV7EE001, [0]),
+	SetUntargetable(MONSTER_2_SET),
+	SetUntargetable(MONSTER_5_SET),
+	ClearVar(BV7EE007),
+	RunBattleEvent(BE0029_TORTE_2),
+	RunBattleDialog(154),
+	RunObjectSequence(4),
+	DecreaseVarBy1(BV7EE007),
 	Wait1TurnandRestartScript(),
-	Attack(Attack3, Attack3, ElegyAttack),
+	IfVarBitsClear(BV7EE001, [1]),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	IncreaseVarBy1(BV7EE007),
+	RunObjectSequence(4),
+	SetTarget(MONSTER_1_SET),
+	Attack(ATKMATK5Attack),
+	DecreaseVarBy1(BV7EE007),
+	SetVarBits(BV7EE001, [1]),
+	Wait1TurnandRestartScript(),
+	IfVarEqualOrGreaterThan(BV7EE007, 1),
+	RunObjectSequence(4),
+	SetTarget(MONSTER_1_SET),
+	Attack(ATKMATK5Attack),
+	DecreaseVarBy1(BV7EE007),
+	Wait1TurnandRestartScript(),
 	StartCounterCommands()
 ])

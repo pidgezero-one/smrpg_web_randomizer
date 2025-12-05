@@ -1,4 +1,4 @@
-# E1748_EMPTY
+# E1748_MINES_POSTGAME_FIGHT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,10 +31,15 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ActionQueueSync(target=MARIO, subscript=[
-		A_JumpToHeight(height=108, silent=True)
-	]),
-	SetVarToConst(TIMER_701E, 58),
-	RunBackgroundEventWithPauseReturnOnExit(event_id=E1748_EMPTY, timer_var=TIMER_701E, bit_4=True, bit_5=True),
-	Return()
+	SetVarToConst(PRIMARY_TEMP_7000, 527),
+	RunEventAsSubroutine(E0353_BOSS_BATTLE),
+	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	RestoreAllHP(),
+	RestoreAllFP(),
+	RemoveObjectFromCurrentLevel(NPC_0),
+	FadeInFromBlack(sync=False),
+	SetBit(MINES_POSTGAME_COMPLETED),
+	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	SetVarToConst(PRIMARY_TEMP_7000, 527),
+	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE)
 ])

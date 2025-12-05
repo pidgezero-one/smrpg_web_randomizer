@@ -1,9 +1,8 @@
-from .types.prizelocation import TreasureChestLocationRow1, TreasureChestLocationRow2, TreasureChestLocationRow3, TreasureChestLocationRow4, TreasureChestLocationRow5, TreasureChestLocationRow6, NPCLocationRow1, NPCLocationRow2, NPCLocationRow3, NPCLocationRow4, NPCLocationRow5, NPCLocationRow6, NPCLocationRow7, StandingLocationRow1, StandingLocationRow2, StandingLocationRow3, StandingLocationRow4, StandingLocationRow5, StandingLocationRow6, StandingLocationRow7, StandingLocationRow8, StandingLocationRow9, StandingLocationRow10, StandingLocationRow11, StandingLocationRow12, StandingLocationRow13, StandingLocationRow14, StandingLocationRow15, RiverLocation, RiverLocationRow1, RiverLocationRow2, BossFightLocation, CharacterRecruitmentLocation, StarPieceLocation, ShopLocation, SpellSlotLocation
+from ..types.prizelocation import PrizeLocation, TreasureChestLocationRow1, TreasureChestLocationRow2, TreasureChestLocationRow3, TreasureChestLocationRow4, TreasureChestLocationRow5, TreasureChestLocationRow6, NPCLocationRow1, NPCLocationRow2, NPCLocationRow3, NPCLocationRow4, NPCLocationRow5, NPCLocationRow6, NPCLocationRow7, StandingLocationRow1, StandingLocationRow2, StandingLocationRow3, StandingLocationRow4, StandingLocationRow5, StandingLocationRow6, StandingLocationRow7, StandingLocationRow8, StandingLocationRow9, StandingLocationRow10, StandingLocationRow11, StandingLocationRow12, StandingLocationRow13, StandingLocationRow14, StandingLocationRow15, RiverLocation, RiverLocationRow1, RiverLocationRow2, BossFightLocation, CharacterRecruitmentLocation, StarPieceLocation, ShopLocation, SpellSlotLocation, ShuffleLocationSelector
 from ..data.variables.room_names import *
 from ..data.variables.event_script_names import *
 from .prizes import *
-from .types.prize import Prize, CoinPrize, CoinPrize1, CoinPrize10, FPFlowerPrize, FrogCoinPrize1, EXPStarPrize, BossFightPrize, SlotsPrize, EmptyPrize, InfiniteCoinPrize
-from randomizer.types.world.flags import ShuffleLocationSelector
+from ..types.prize import Prize, CoinPrize, CoinPrize1, CoinPrize10, FPFlowerPrize, FrogCoinPrize1, EXPStarPrize, BossFightPrize, SlotsPrize, EmptyPrize, InfiniteCoinPrize
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_0, NPC_1, NPC_2, NPC_3, NPC_4, NPC_5, NPC_6, NPC_7, NPC_8, NPC_9, NPC_10, NPC_11, NPC_12, NPC_13, NPC_14, NPC_15, NPC_16, NPC_17, NPC_18, NPC_19, NPC_20, NPC_21, NPC_22, NPC_23, NPC_24, NPC_25, NPC_26, NPC_27
 
 # Comments are included here to document what condition is met for a location to be considered checked.
@@ -90,7 +89,7 @@ class MushroomWayLeftItemRemake(StandingLocationRow1):
     _id = ShuffleLocationSelector.REMAKE_1
     _remake_only = True
     # Flag as checked: npc 10 in room 204 has been removed from the room.
-    # TODO: needs frogfucius hint
+    # TODO: Make sure starter event removes this if remake content is disabled.
 
 class MushroomWayRightItemRemake(StandingLocationRow2):
     _originally_held = PickMeUpPrize
@@ -99,7 +98,7 @@ class MushroomWayRightItemRemake(StandingLocationRow2):
     _id = ShuffleLocationSelector.REMAKE_2
     _remake_only = True
     # Flag as checked: npc 11 in room 204 has been removed from the room.
-    # TODO: needs frogfucius hint
+    # TODO: Make sure starter event removes this if remake content is disabled.
 
 
 class MushroomWayBossFightReward(NPCLocationRow1):
@@ -109,162 +108,81 @@ class MushroomWayBossFightReward(NPCLocationRow1):
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
 
 
+
 class MushroomKingdomMainHall(TreasureChestLocationRow1):
     _originally_held = FrogCoinPrize1
     _rooms = [R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL]
     _npc_ids = [NPC_2, NPC_6]
     # Flag as checked: either npc 2 in room 17 or npc 6 in room 325 has its object trigger disabled.
 
-# TODO: Can we add the 2 extra FCs to midas river? Too many NPCs?
-
-
-class LandsEndCaveSideRemake(TreasureChestLocationRow1):
-    _originally_held = FlowerTabPrize
-    _rooms = [R142_LANDS_END_AREA_05_SKY_BRIDGE]
-    _npc_ids = [NPC_19]
-    _remake_only = True
-    # Flag as checked: npc 19 in room 142 is removed.
-
-
-# *** Generated classes from item_locations.py ***
-
-class MushroomWayRoom1LowerLocation(TreasureChestLocationRow1):
-    _originally_held = CoinPrize5
-    _rooms = [R203_MUSHROOM_WAY_AREA_01]
-    _npc_ids = [NPC_0]
-    _id = ShuffleLocationSelector.MUSHROOM_WAY_1
-
-class MushroomWayRoom1UpperLocation(TreasureChestLocationRow2):
-    _originally_held = CoinPrize8
-    _rooms = [R203_MUSHROOM_WAY_AREA_01]
-    _npc_ids = [NPC_1]
-    _id = ShuffleLocationSelector.MUSHROOM_WAY_2
-
-class MushroomWayToadRescueFirstRoomLocation(NPCLocationRow1):
-    _originally_held = HoneySyrupPrize
-    _rooms = [R203_MUSHROOM_WAY_AREA_01]
-
-class MushroomWayLedgeLocation(TreasureChestLocationRow1):
-    _originally_held = FPFlowerPrize
-    _rooms = [R204_MUSHROOM_WAY_AREA_02]
-    _npc_ids = [NPC_0]
-    _id = ShuffleLocationSelector.MUSHROOM_WAY_3
-
-class MushroomWayToadRescueSecondRoomLocation(NPCLocationRow1):
-    _originally_held = FlowerTabPrize
-    _rooms = [R204_MUSHROOM_WAY_AREA_02]
-
-class MushroomWayRightGoombaLocation(TreasureChestLocationRow2):
-    _originally_held = RecoveryMushroomPrize
-    _rooms = [R204_MUSHROOM_WAY_AREA_02]
-    _npc_ids = [NPC_1]
-    _id = ShuffleLocationSelector.MUSHROOM_WAY_4
-
-class MushroomWayBossRewardLocation(NPCLocationRow1):
-    _originally_held = HammerPrize
-    _rooms = [R205_MUSHROOM_WAY_AREA_03]
-    _id = ShuffleLocationSelector.HAMMER_BROS_REWARD
-
-class MushroomKingdomCastleMainHallLocation(TreasureChestLocationRow1):
-    _originally_held = FrogCoinPrize1
-    _rooms = [ R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, ]
-    _npc_ids = [NPC_2, NPC_6]
-    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_HALLWAY
-
-class MushroomKingdomCastleVaultLeftLocation(TreasureChestLocationRow1):
-    _originally_held = CoinPrize10
-    _rooms = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
-    _npc_ids = [NPC_0]
-    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_1
-
-class MushroomKingdomCastleVaultRightLocation(TreasureChestLocationRow2):
-    _originally_held = RecoveryMushroomPrize
-    _rooms = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
-    _npc_ids = [NPC_1]
-    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_2
-
-class MushroomKingdomCastleVaultMiddleLocation(TreasureChestLocationRow3):
-    _originally_held = FPFlowerPrize
-    _rooms = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
-    _npc_ids = [NPC_2]
-    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_3
-
-class MushroomKingdomStoreBasementCenterLocation(TreasureChestLocationRow1):
-    _originally_held = FPFlowerPrize
-    _rooms = [R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]
-    _npc_ids = [NPC_0]
-    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_BASEMENT_1
-
-class MushroomKingdomStoreBasementStairsLocation(TreasureChestLocationRow2):
-    _originally_held = FPFlowerPrize
-    _rooms = [R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]
-    _npc_ids = [NPC_1]
-    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_BASEMENT_2
-
-class MushroomKingdomPeachsChairLocation(NPCLocationRow1):
-    _originally_held = MushroomPrize
-    _rooms = [ R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM, R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM, ]
-    _id = ShuffleLocationSelector.PEACH_SURPRISE
-
-class MushroomKingdomFreeShopItemLocation(NPCLocationRow1):
-    _originally_held = PickMeUpPrize
-    _rooms = [ R483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR, R491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR, ]
-    _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE
 
 class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
     _originally_held = KerokeroColaPrize
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BANDITS_WAY_1
+    # Flag as checked: npc 9 in room 207 has its object trigger disabled.
 
 class BanditsWayCoin1Location(StandingLocationRow3):
     _originally_held = CoinPrize1
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_3]
+    _id = ShuffleLocationSelector.BANDITS_WAY_COIN_1
+    # Flag as checked: npc 3 in room 207 has been removed from the room.
 
 class BanditsWayCoin2Location(StandingLocationRow2):
     _originally_held = CoinPrize1
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_4]
+    _id = ShuffleLocationSelector.BANDITS_WAY_COIN_2
+    # Flag as checked: npc 4 in room 207 has been removed from the room.
 
 class BanditsWayCoin3Location(StandingLocationRow1):
     _originally_held = CoinPrize1
     _rooms = [R207_BANDITS_WAY_AREA_02]
     _npc_ids = [NPC_5]
+    _id = ShuffleLocationSelector.BANDITS_WAY_COIN_3
+    # Flag as checked: npc 5 in room 207 has been removed from the room.
 
 class BanditsWayDogChestLocation(TreasureChestLocationRow1):
     _originally_held = RecoveryMushroomPrize
     _rooms = [R077_BANDITS_WAY_AREA_03]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_2
+    # Flag as checked: npc 0 in room 77 has its object trigger disabled.
 
 class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     _originally_held = EXPStarPrize
     _rooms = [R078_BANDITS_WAY_AREA_04]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_CHEST
+    # Flag as checked: npc 0 in room 78 has its object trigger disabled.
 
 class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     _originally_held = FPFlowerPrize
     _rooms = [R078_BANDITS_WAY_AREA_04]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BANDITS_WAY_DOG_JUMP
+    # Flag as checked: npc 1 in room 78 has its object trigger disabled.
 
 class BanditsWayDeadEndChestLocation(TreasureChestLocationRow1):
     _originally_held = RecoveryMushroomPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_CROCO
+    # Flag as checked: npc 0 in room 206 has its object trigger disabled.
 
 class BanditsWayBossFirstItemDropLocation(NPCLocationRow1):
     _originally_held = RareFrogCoinPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.CROCO_1_REWARD
+    # Flag as checked: BANDITS_WAY_LIBERATED set
 
 class BanditsWayBossSecondItemDropLocation(NPCLocationRow2):
     _originally_held = WalletPrize
     _rooms = [R206_BANDITS_WAY_AREA_05]
     _id = ShuffleLocationSelector.CROCO_1_REWARD_2
+    # Flag as checked: BANDITS_WAY_LIBERATED set (checked at same time as BanditsWayBossSecondItemDropLocation)
 
 class MushroomKingdomOccupiedVaultLeftLocation(TreasureChestLocationRow1):
     _originally_held = CoinPrize10
@@ -953,6 +871,7 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     _originally_held = AmuletPrize
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
+    # TOWER_BOSS_1_STAR_PIECE
 
 class MarrymoreFirstSuitePrizeLocation(NPCLocationRow1):
     _originally_held = FlowerTabPrize
@@ -1201,6 +1120,14 @@ class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
     _rooms = [R141_LANDS_END_AREA_04_ROTATING_FLOWERS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LNDS_END_BEE_ROOM
+
+class LandsEndCaveSideRemake(TreasureChestLocationRow1):
+    _originally_held = FlowerTabPrize
+    _rooms = [R142_LANDS_END_AREA_05_SKY_BRIDGE]
+    _npc_ids = [NPC_19]
+    _remake_only = True
+    # Flag as checked: npc 19 in room 142 is removed.
+    # TODO: Make sure starter event removes this if remake content is disabled.
 
 class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _originally_held = FPFlowerPrize
@@ -2119,3 +2046,8 @@ class InnerFactoryToadGiftLocation(NPCLocationRow1):
     _originally_held = RockCandyPrize
     _rooms = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _id = ShuffleLocationSelector.FACTORY_TOAD_GIFT
+
+
+CHECK_POOL: list[PrizeLocation] = [
+
+]

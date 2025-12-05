@@ -191,7 +191,7 @@ script = AnimationScriptBlock(expected_size=1042, expected_beginning=0x350C14, s
 	DrawSpriteAtAMEM32Coords(sprite_id=SPR0491_SHYPER, sequence=3, store_to_vram=True, store_palette=True, overlap_all_sprites=True),
 	SpriteSequence(sequence=4),
 	PauseScriptUntilSpriteSequenceDone(),
-	DrawSpriteAtAMEM32Coords(sprite_id=SPR0490_SMITHY_ST_FORM, sequence=0, store_to_vram=True, store_palette=True, overlap_all_sprites=True),
+	DrawSpriteAtAMEM32Coords(sprite_id=SPR0490_SMITHY_1ST_FORM, sequence=0, store_to_vram=True, store_palette=True, overlap_all_sprites=True),
 	ResetSpriteSequence(),
 	ClearAMEM8Bit(0x60),
 	SetOMEM60To072C(),

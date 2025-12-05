@@ -1,4 +1,4 @@
-# 39 - BABAYAGAEnemy
+# 39 - BIRDYEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -14,18 +14,18 @@ from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
 	IfVarBitsSet(BV7EE004, [0]),
-	SetTarget(SELF),
-	Attack(ThornetAttack),
-	ClearVarBits(BV7EE004, [0]),
-	SetVarBits(BV7EE004, [1]),
+	RunBattleDialog(209),
+	SetTarget(RANDOM_ALLY_OR_SELF),
+	Attack(Attack0),
+	SetTarget(RANDOM_OPPONENT),
 	Wait1TurnandRestartScript(),
-	IfTargetAlive(ALL_ALLIES_EXCLUDING_SELF),
-	Attack(Attack1, Attack1, VenomDroolAttack),
-	Wait1TurnandRestartScript(),
-	IfVarBitsSet(BV7EE004, [1]),
-	CastSpell(SandStormSpell, MegaRecoverSpell, SandStormSpell),
-	Wait1TurnandRestartScript(),
+	Attack(Attack10, Attack10, GrinderAttack),
+	StartCounterCommands(),
+	Set7EE005ToRandomNumber(upper_bound=7),
+	IfVarBitsClear(BV7EE004, [0]),
+	IfTargetedByCommand([COMMAND_SPECIAL]),
+	IfVarLessThan(BV7EE005_DESIGNATED_RANDOM_NUM_VAR, 4),
+	RunBattleDialog(208),
 	SetVarBits(BV7EE004, [0]),
-	Attack(Attack1),
-	StartCounterCommands()
+	Wait1TurnandRestartScript()
 ])

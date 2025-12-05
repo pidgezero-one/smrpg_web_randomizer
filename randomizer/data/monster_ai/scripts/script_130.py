@@ -1,4 +1,4 @@
-# 130 - CRIPPOEnemy
+# 130 - PIRANHAPLANTEnemyHenchman
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
@@ -13,19 +13,9 @@ from ...enemy_attacks.attacks import *
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import *
 
 script = MonsterScript([
-	IfTargetAlive(ALL_ALLIES_EXCLUDING_SELF),
-	SetTarget(RANDOM_OPPONENT),
-	CastSpell(LightningOrbSpell),
-	Wait1TurnandRestartScript(),
-	IfVarBitsClear(BV7EE004, [0]),
-	SetTarget(SELF),
-	Attack(ThornetAttack),
-	SetVarBits(BV7EE004, [0]),
-	Wait1TurnandRestartScript(),
-	SetTarget(RANDOM_OPPONENT),
-	Attack(Attack0, DoomReverbAttack, VigorupAttack),
+	Attack(Attack4, Attack4, ScrowDustAttack),
 	Wait1Turn(),
-	Attack(Attack0),
+	Attack(Attack4, Attack4, PollenNapAttack),
 	Wait1Turn(),
 	StartCounterCommands()
 ])
