@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3181_SEWERS_WATER_SWITCH_ROOM_PIPE_TO_3RD_WATER_ROOM,
         x=11,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3142_PIPE_TO_BOSS,
         x=12,
@@ -37,8 +35,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3125_SEWER_PIPE_TO_LANDS_END,
         x=8,
@@ -49,6 +46,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

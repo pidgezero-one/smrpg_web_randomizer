@@ -28,8 +28,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=6, y=22),
                 ASPause(60),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         Pause(60),
         ActionQueueAsync(
             target=NPC_0,
@@ -46,8 +45,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         Pause(10),
         RunDialog(
             dialog_id=DI3847_ROOM_SERVICE_MENU,
@@ -55,8 +53,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpToEvent(E3657_ROOM_SERVICE_MENU),
     ]
 )

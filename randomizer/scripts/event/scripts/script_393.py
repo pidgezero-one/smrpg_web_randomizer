@@ -12,22 +12,18 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             NPC_3,
             R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
-            ["EVENT_393_set_bit_16"],
-        ),
+            ["EVENT_393_set_bit_16"]),
         JmpIfObjectInSpecificLevel(
             NPC_4,
             R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
-            ["EVENT_393_set_bit_16"],
-        ),
+            ["EVENT_393_set_bit_16"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_1,
             R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
-            ["EVENT_393_summon_to_current_level_4"],
-        ),
+            ["EVENT_393_summon_to_current_level_4"]),
         JmpIfBitSet(
             OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_1_DEFEATED,
-            ["EVENT_393_jmp_if_object_not_in_level_27"],
-        ),
+            ["EVENT_393_jmp_if_object_not_in_level_27"]),
         SummonObjectToCurrentLevel(
             NPC_0, identifier="EVENT_393_summon_to_current_level_4"
         ),
@@ -36,8 +32,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=7, y=22, z=4, direction=EAST),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         PauseActionScript(NPC_0),
         SetSyncActionScript(NPC_0, A0119_SLOW_SEQUENCE_LOOP),
         ActionQueueSync(
@@ -46,15 +41,13 @@ script = EventScript(
                 ASTransferToXYZF(x=7, y=16, z=4, direction=EAST),
                 ASFaceNortheast(),
             ],
-            identifier="EVENT_393_action_queue_sync_8",
-        ),
+            identifier="EVENT_393_action_queue_sync_8"),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASTransferToXYZF(x=5, y=18, z=4, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         PauseActionScript(NPC_1),
         PauseActionScript(NPC_2),
@@ -76,8 +69,7 @@ script = EventScript(
             NPC_1,
             R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
             ["EVENT_393_summon_to_current_level_4"],
-            identifier="EVENT_393_jmp_if_object_not_in_level_27",
-        ),
+            identifier="EVENT_393_jmp_if_object_not_in_level_27"),
         RemoveObjectFromCurrentLevel(NPC_0),
         Jmp(["EVENT_393_action_queue_sync_8"]),
     ]

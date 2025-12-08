@@ -34,8 +34,7 @@ script = EventScript(
             coord=COORD_Y,
             pixel=True,
             bit_7=True,
-            identifier="EVENT_2466_set_7000_to_object_coord_19",
-        ),
+            identifier="EVENT_2466_set_7000_to_object_coord_19"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 70, ["EVENT_2466_action_queue_sync_33"]),
         Jmp(["EVENT_2466_action_queue_sync_25"]),
         Set7000ToObjectCoord(
@@ -43,8 +42,7 @@ script = EventScript(
             coord=COORD_Y,
             pixel=True,
             bit_7=True,
-            identifier="EVENT_2466_set_7000_to_object_coord_22",
-        ),
+            identifier="EVENT_2466_set_7000_to_object_coord_22"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 75, ["EVENT_2466_action_queue_sync_33"]),
         Jmp(["EVENT_2466_action_queue_sync_25"]),
         ActionQueueSync(
@@ -60,8 +58,7 @@ script = EventScript(
                     identifier="EVENT_2466_action_queue_sync_25_SUBSCRIPT_face_southeast_4"
                 ),
             ],
-            identifier="EVENT_2466_action_queue_sync_25",
-        ),
+            identifier="EVENT_2466_action_queue_sync_25"),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -74,8 +71,7 @@ script = EventScript(
                 ASFaceSoutheast(
                     identifier="EVENT_2466_action_queue_sync_26_SUBSCRIPT_face_southeast_4"
                 ),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_1),
         Jmp(["EVENT_2466_fade_in_from_black_async_36"]),
         ActionQueueSync(
@@ -91,8 +87,7 @@ script = EventScript(
                     identifier="EVENT_2466_action_queue_sync_29_SUBSCRIPT_face_southeast_4"
                 ),
             ],
-            identifier="EVENT_2466_action_queue_sync_29",
-        ),
+            identifier="EVENT_2466_action_queue_sync_29"),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -105,15 +100,13 @@ script = EventScript(
                 ASFaceSoutheast(
                     identifier="EVENT_2466_action_queue_sync_30_SUBSCRIPT_face_southeast_4"
                 ),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_2),
         Jmp(["EVENT_2466_fade_in_from_black_async_36"]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[ASShiftToXYCoords(x=5, y=72), ASFaceSoutheast()],
-            identifier="EVENT_2466_action_queue_sync_33",
-        ),
+            identifier="EVENT_2466_action_queue_sync_33"),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -126,8 +119,7 @@ script = EventScript(
                 ASFaceSoutheast(
                     identifier="EVENT_2466_action_queue_sync_34_SUBSCRIPT_face_southeast_4"
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -140,8 +132,7 @@ script = EventScript(
                 ASFaceSoutheast(
                     identifier="EVENT_2466_action_queue_sync_35_SUBSCRIPT_face_southeast_4"
                 ),
-            ],
-        ),
+            ]),
         FadeInFromBlack(
             sync=False, identifier="EVENT_2466_fade_in_from_black_async_36"
         ),

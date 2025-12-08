@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI1117_MA_MOLE,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_1629_jmp_if_bit_set_3",
-        ),
+            identifier="EVENT_1629_jmp_if_bit_set_3"),
         Return(),
     ]
 )

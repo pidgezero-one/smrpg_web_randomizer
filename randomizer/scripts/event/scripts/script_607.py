@@ -16,8 +16,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         StoreItemAmountTo7000(
             CastleKey2, identifier="EVENT_607_store_item_amount_7000_4"
@@ -29,8 +28,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         PlaySound(
             sound=SO005_BLOCK_SWITCH, channel=6, identifier="EVENT_607_play_sound_8"

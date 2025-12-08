@@ -18,8 +18,7 @@ script = EventScript(
                 ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASShadowOn(),
             ],
-            identifier="EVENT_3196_action_queue_async_6",
-        ),
+            identifier="EVENT_3196_action_queue_async_6"),
         Pause(1),
         Jmp(["EVENT_3196_set_7010_to_object_xyz_0"]),
     ]

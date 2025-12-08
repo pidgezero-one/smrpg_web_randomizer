@@ -12,8 +12,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         JmpToEvent(E0191_TOADSTOOL_JOINS),
     ]
 )

@@ -33,15 +33,13 @@ from randomizer.data.eventtables import (
     _0x6AFlags,
     _0x6BFlags,
     _0x81Flags,
-    _0x84Flags,
-)
+    _0x84Flags)
 from randomizer.data.objectsequencetables import (
     SequenceSpeeds,
     VramPriority,
     _0x08Flags,
     _0x0AFlags,
-    _0x10Flags,
-)
+    _0x10Flags)
 from randomizer.data import items
 
 script = [

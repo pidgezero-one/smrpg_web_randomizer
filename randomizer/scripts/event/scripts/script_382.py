@@ -8,30 +8,26 @@ script = EventScript(
     [
         ActionQueueAsync(
             target=NPC_7,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(4)],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(4)]),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkNorthPixels(2),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         JmpIfBitSet(TEMP_7044_7, ["EVENT_382_jmp_if_bit_clear_79"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_4,
             R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
-            ["EVENT_382_jmp_if_object_in_level_5"],
-        ),
+            ["EVENT_382_jmp_if_object_in_level_5"]),
         FadeInFromBlack(sync=False),
         Return(),
         JmpIfObjectInSpecificLevel(
             NPC_1,
             R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
             ["EVENT_257_fade_in_from_black_async_0"],
-            identifier="EVENT_382_jmp_if_object_in_level_5",
-        ),
+            identifier="EVENT_382_jmp_if_object_in_level_5"),
         JmpIfBitSet(
             OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED, ["EVENT_382_action_queue_async_84"]
         ),
@@ -45,8 +41,7 @@ script = EventScript(
         FadeInFromBlack(sync=True),
         ActionQueueAsync(
             target=NPC_3,
-            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalk1StepNortheast()],
-        ),
+            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalk1StepNortheast()]),
         PauseScriptUntilEffectDone(),
         ActionQueueAsync(target=NPC_3, subscript=[ASFaceNorthwest()]),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceNorthwest()]),
@@ -57,8 +52,7 @@ script = EventScript(
                 ASWalk1StepNortheast(),
                 ASWalkSoutheastSteps(3),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_3, subscript=[ASFaceNortheast()]),
         SetSyncActionScript(NPC_3, A0099_LOOPED_JUMPING),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceEast()]),
@@ -87,8 +81,7 @@ script = EventScript(
         RunEventAsSubroutine(E0278_UNKNOWN),
         ActionQueueSync(
             target=NPC_3,
-            subscript=[ASSetAllSpeeds(FAST), ASWalk1StepSouthwest(), ASFaceNorthwest()],
-        ),
+            subscript=[ASSetAllSpeeds(FAST), ASWalk1StepSouthwest(), ASFaceNorthwest()]),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceSoutheast()]),
         RememberLastObject(),
         SetSyncActionScript(NPC_3, A0099_LOOPED_JUMPING),
@@ -106,20 +99,16 @@ script = EventScript(
                 ASWalkNorthwestSteps(3),
                 ASWalkSouthwestSteps(7),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASPause(30), ASFaceNortheast(), ASPause(120), ASFaceNorthwest()],
-        ),
+            subscript=[ASPause(30), ASFaceNortheast(), ASPause(120), ASFaceNorthwest()]),
         ActionQueueSync(
             target=NPC_2,
-            subscript=[ASPause(30), ASFaceNortheast(), ASPause(120), ASFaceSouthwest()],
-        ),
+            subscript=[ASPause(30), ASFaceNortheast(), ASPause(120), ASFaceSouthwest()]),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASPause(30), ASFaceNortheast(), ASPause(120), ASFaceSoutheast()],
-        ),
+            subscript=[ASPause(30), ASFaceNortheast(), ASPause(120), ASFaceSoutheast()]),
         RememberLastObject(),
         RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
         ActionQueueAsync(target=MARIO, subscript=[ASPause(30), ASFaceSouth()]),
@@ -128,19 +117,16 @@ script = EventScript(
         JmpIfBitClear(
             OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED,
             ["EVENT_382_run_event_as_subroutine_81"],
-            identifier="EVENT_382_jmp_if_bit_clear_79",
-        ),
+            identifier="EVENT_382_jmp_if_bit_clear_79"),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASTransferToXYZF(x=4, y=63, z=0, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(
             E0081_MARIO_LANDS_SUBROUTINE,
-            identifier="EVENT_382_run_event_as_subroutine_81",
-        ),
+            identifier="EVENT_382_run_event_as_subroutine_81"),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
         JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_382_ret_82"]),
         RunEventAsSubroutine(E3889_MUSHROOM_KINGDOM_STAR_PIECE_SIGNAL),
@@ -148,16 +134,14 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             NPC_1,
             R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
-            ["EVENT_257_fade_in_from_black_async_0"],
-        ),
+            ["EVENT_257_fade_in_from_black_async_0"]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASTransferToXYZF(x=4, y=63, z=0, direction=EAST),
                 ASFaceSouthwest(),
             ],
-            identifier="EVENT_382_action_queue_async_84",
-        ),
+            identifier="EVENT_382_action_queue_async_84"),
         FadeInFromBlack(sync=False),
         Return(),
     ]

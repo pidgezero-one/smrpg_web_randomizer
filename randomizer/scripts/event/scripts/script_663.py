@@ -22,8 +22,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         SlowDownMusicTempoBy(
             duration=0, change=0, identifier="EVENT_663_adjust_music_tempo_12"

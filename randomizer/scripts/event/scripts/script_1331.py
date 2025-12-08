@@ -16,8 +16,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=4, y=114),
                 ASFaceEast(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         Pause(25),
         SummonObjectToCurrentLevelAtMariosCoords(NPC_0),
         ActionQueueAsync(
@@ -41,8 +40,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_FAST),
                 ASFixedFCoordOn(),
                 ASWalkNortheastSteps(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -55,8 +53,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(6),
                 ASWalkNortheastPixels(4),
                 ASWalkSouthwestPixels(4),
-            ],
-        ),
+            ]),
         Pause(5),
         ApplySolidityModToLevel(
             permanent=True, room_id=R202_BOOSTER_TOWER_ENTRANCE, mod_id=0
@@ -78,8 +75,7 @@ script = EventScript(
                 ASPause(60),
                 ASResetProperties(),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO, subscript=[ASWalkToXYCoords(x=5, y=116), ASFaceNortheast()]
         ),
@@ -93,8 +89,7 @@ script = EventScript(
                 ASSetSequenceSpeed(NORMAL),
                 ASWalkToXYCoords(x=5, y=116),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_0),
         SetBit(TOWER_OPENED),
         Return(identifier="EVENT_1331_ret"),

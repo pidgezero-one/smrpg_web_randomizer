@@ -36,8 +36,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackClone(
         occupant=Spikester,
@@ -52,8 +51,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackClone(
         occupant=Spikester,
@@ -68,8 +66,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     BattlePackClone(
         occupant=Spikester,
@@ -84,8 +81,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=BigCoin,
@@ -119,8 +115,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=Empty,
@@ -157,8 +152,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=3,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=BigFlower,
@@ -195,6 +189,5 @@ objects = [
         acute_axis=6,
         obtuse_axis=6,
         height=13,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

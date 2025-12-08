@@ -7,8 +7,7 @@ script = ActionScript(
         ClearSolidityBits(
             bit_4=True,
             cant_walk_through=True,
-            identifier="ACTION_406_clear_solidity_bits_0",
-        ),
+            identifier="ACTION_406_clear_solidity_bits_0"),
         SetSpriteSequence(index=10, is_mold=True, is_sequence=True, looping=True),
         Pause(1),
         ShiftToXYCoords(x=26, y=93),

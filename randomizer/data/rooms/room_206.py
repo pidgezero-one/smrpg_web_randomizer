@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         ChestNPC( # 0
@@ -85,8 +84,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.SKY_TROOPA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -114,8 +112,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.SKY_TROOPA_NPC,
             battle_pack=5,
@@ -125,8 +122,7 @@ room = Room(
             y=97,
             z=3,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 3
             npc=npcs.SKY_TROOPA_NPC,
             battle_pack=5,
@@ -136,8 +132,7 @@ room = Room(
             y=115,
             z=3,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 4
             npc=npcs.SKY_TROOPA_NPC,
             battle_pack=5,
@@ -147,8 +142,7 @@ room = Room(
             y=120,
             z=3,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 5
             npc=npcs.GOOMBA_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -175,8 +169,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.GOOMBA_NPC_2,
             event_script=E1695_BANDITS_WAY_GOOMBA,
@@ -186,8 +179,7 @@ room = Room(
             y=102,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.GOOMBA_NPC_2,
             event_script=E1695_BANDITS_WAY_GOOMBA,
@@ -197,8 +189,7 @@ room = Room(
             y=98,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.CROCO_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -225,8 +216,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.TRAMPOLINE_WARP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -253,7 +243,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

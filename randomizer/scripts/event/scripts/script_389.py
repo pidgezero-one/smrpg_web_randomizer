@@ -15,8 +15,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_4,
             R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
-            ["EVENT_389_jmp_if_object_not_in_level_11"],
-        ),
+            ["EVENT_389_jmp_if_object_not_in_level_11"]),
         RemoveObjectFromCurrentLevel(MEM_70A8),
         RemoveObjectFromSpecificLevel(
             NPC_1, R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM
@@ -27,15 +26,13 @@ script = EventScript(
             NPC_2,
             R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
             ["EVENT_257_fade_in_from_black_async_0"],
-            identifier="EVENT_389_jmp_if_object_not_in_level_11",
-        ),
+            identifier="EVENT_389_jmp_if_object_not_in_level_11"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASTransferToXYZF(x=25, y=27, z=0, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_1),
         RemoveObjectFromSpecificLevel(
             NPC_1, R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM
@@ -48,8 +45,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_0,
             R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
-            ["EVENT_389_action_queue_sync_30"],
-        ),
+            ["EVENT_389_action_queue_sync_30"]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -71,13 +67,11 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASWalk1StepNortheast(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASPause(30), ASFaceNorth()],
-            identifier="EVENT_389_action_queue_async_22",
-        ),
+            identifier="EVENT_389_action_queue_async_22"),
         ActionQueueAsync(target=MARIO, subscript=[ASPause(30), ASFaceSouth()]),
         RemoveObjectFromSpecificLevel(
             NPC_2, R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM
@@ -94,8 +88,7 @@ script = EventScript(
                 ASWalkNortheastSteps(6),
                 ASVisibilityOff(),
             ],
-            identifier="EVENT_389_action_queue_sync_30",
-        ),
+            identifier="EVENT_389_action_queue_sync_30"),
         Jmp(["EVENT_389_action_queue_async_22"]),
     ]
 )

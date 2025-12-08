@@ -15,8 +15,7 @@ script = EventScript(
                 ASWalkNorthPixels(4),
                 ASWalkNorthwestPixels(1),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -24,8 +23,7 @@ script = EventScript(
                 ASWalkWestPixels(11),
                 ASWalkSouthPixels(2),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -33,8 +31,7 @@ script = EventScript(
                 ASWalkWestPixels(4),
                 ASWalkSouthPixels(2),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO, subscript=[ASSetWalkingSpeed(FASTEST), ASShiftZUpSteps(16)]
         ),
@@ -54,8 +51,7 @@ script = EventScript(
                     ["EVENT_2363_action_queue_async_7_SUBSCRIPT_pause_2"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         UnfreezeCamera(),
         Return(),

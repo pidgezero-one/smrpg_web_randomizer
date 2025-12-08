@@ -37,8 +37,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackClone(
         occupant=Chow,
@@ -54,8 +53,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackClone(
         occupant=Chow,
@@ -71,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=YellowPlatform,
@@ -106,8 +103,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=-2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=YellowPlatform,
@@ -123,8 +119,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=-2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=LandsEndCannon,
@@ -157,8 +152,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     ChestNPC(
         occupant=TreasureChest,
@@ -193,8 +187,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     ChestNPC(
         occupant=TreasureChest,
@@ -229,6 +222,5 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

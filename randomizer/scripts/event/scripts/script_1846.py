@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_1,
             ["EVENT_1846_clear_bit_30"],
-            identifier="EVENT_1846_jmp_if_bit_set_0",
-        ),
+            identifier="EVENT_1846_jmp_if_bit_set_0"),
         EnableControls([B]),
         MoveScriptToBackgroundThread2(),
         SetBit(TEMP_7043_1),
@@ -30,8 +29,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASCopyVarToVar(from_var=TEMP_702A, to_var=PRIMARY_TEMP_700C),
                 ASFaceEast7C(),
-            ],
-        ),
+            ]),
         Set7000ToTappedButton(identifier="EVENT_1846_set_7000_to_tapped_button_7"),
         JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1846_action_queue_sync_21"]),
         JmpIfMarioInAir(["EVENT_1846_clear_bit_30"]),
@@ -45,20 +43,17 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[ASFaceNorthwest()],
-            identifier="EVENT_1846_action_queue_sync_17",
-        ),
+            identifier="EVENT_1846_action_queue_sync_17"),
         Jmp(["EVENT_1846_pause_15"]),
         ActionQueueSync(
             target=MARIO,
             subscript=[ASFaceSoutheast()],
-            identifier="EVENT_1846_action_queue_sync_19",
-        ),
+            identifier="EVENT_1846_action_queue_sync_19"),
         Jmp(["EVENT_1846_pause_15"]),
         ActionQueueSync(
             target=MARIO,
             subscript=[ASJumpToHeight(108)],
-            identifier="EVENT_1846_action_queue_sync_21",
-        ),
+            identifier="EVENT_1846_action_queue_sync_21"),
         StartLoopNTimes(11),
         Pause(1),
         Set7000ToPressedButton(),
@@ -75,8 +70,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=ACTIVE_NPC,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1846_set_7000_to_70A0_short_mem_33",
-        ),
+            identifier="EVENT_1846_set_7000_to_70A0_short_mem_33"),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 23, ["EVENT_1846_action_queue_async_37"]
         ),
@@ -86,8 +80,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASWalkNorthwestSteps(2),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_1846_clear_bit_30"]),
         ActionQueueAsync(
             target=MARIO,
@@ -96,8 +89,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(3),
                 ASSetWalkingSpeed(NORMAL),
             ],
-            identifier="EVENT_1846_action_queue_async_37",
-        ),
+            identifier="EVENT_1846_action_queue_async_37"),
         Jmp(["EVENT_1846_clear_bit_30"]),
         ActionQueueAsync(
             target=MARIO,
@@ -106,8 +98,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(2),
                 ASSetWalkingSpeed(NORMAL),
             ],
-            identifier="EVENT_1846_action_queue_async_39",
-        ),
+            identifier="EVENT_1846_action_queue_async_39"),
         Jmp(["EVENT_1846_clear_bit_30"]),
     ]
 )

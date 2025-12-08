@@ -12,8 +12,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7042_6,
             ["EVENT_3311_run_dialog_11"],
-            identifier="EVENT_3311_jmp_if_bit_set_3",
-        ),
+            identifier="EVENT_3311_jmp_if_bit_set_3"),
         CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3311_run_dialog_9"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 6, ["EVENT_3311_run_dialog_11"]),
@@ -23,8 +22,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Jmp(["EVENT_3311_open_shop_12"]),
         RunDialog(
             dialog_id=DI1686_SHAMAN_PASSWORD_WRONG,
@@ -33,8 +31,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_3311_run_dialog_9",
-        ),
+            identifier="EVENT_3311_run_dialog_9"),
         Jmp(["EVENT_3311_open_shop_12"]),
         RunDialog(
             dialog_id=DI1687_SHAMAN_PASSWORD_RIGHT,
@@ -43,8 +40,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_3311_run_dialog_11",
-        ),
+            identifier="EVENT_3311_run_dialog_11"),
         RunEventAsSubroutine(E3297_SEA_SHOP, identifier="EVENT_3311_open_shop_12"),
         JmpIfBitSet(TEMP_7042_6, ["EVENT_3311_ret_16"]),
         RunDialog(
@@ -53,8 +49,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(identifier="EVENT_3311_ret_16"),
     ]
 )

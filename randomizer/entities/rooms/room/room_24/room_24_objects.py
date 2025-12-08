@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=BandanaRed,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=BandanaRed,
@@ -67,8 +65,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=BandanaRed,
@@ -83,8 +80,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     ChestNPC(
         occupant=TreasureChest,
@@ -119,8 +115,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=Empty,
@@ -154,6 +149,5 @@ objects = [
         priority_1=False,
         priority_2=False,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

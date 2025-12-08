@@ -30,7 +30,6 @@ from .classes import (
     GenoSpellSlot,
     ToadstoolSpellSlot,
     BowserSpellSlot,
-    ProgressLocationT,
-)
+    ProgressLocationT)
 from .enums import LocationWorldArea, PacketType
 from .table import ROOMS_BATTLEFIELD_DICT

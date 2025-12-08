@@ -46,8 +46,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1578_MIDAS_RIVER_BARREL_SUBROUTINE,
             x=29,
@@ -58,8 +57,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1579_MIDAS_RIVER_BARREL_SUBROUTINE,
             x=15,
@@ -70,8 +68,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1581_MIDAS_RIVER_BARREL_SUBROUTINE,
             x=5,
@@ -82,8 +79,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1575_MIDAS_RIVER_BARREL_SUBROUTINE,
             x=4,
@@ -94,8 +90,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1576_MIDAS_RIVER_BARREL_SUBROUTINE,
             x=4,
@@ -106,8 +101,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1577_MIDAS_RIVER_BARREL_SUBROUTINE,
             x=3,
@@ -118,8 +112,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1580_MIDAS_RIVER_BARREL_SUBROUTINE,
             x=1,
@@ -130,8 +123,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -160,8 +152,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.ROLLING_BARREL_NPC,
             initiator=EventInitiator.NONE,
@@ -188,8 +179,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.ROLLING_BARREL_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -199,8 +189,7 @@ room = Room(
             y=26,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 3
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -227,8 +216,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -238,8 +226,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -249,8 +236,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -260,8 +246,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -271,8 +256,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 8
             npc=npcs.SMALL_COIN_NPC,
             event_script=E1572_MIDAS_RIVER_COIN,
@@ -282,8 +266,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 9
             npc=npcs.SPLASH_WATER_GEYSER_NPC,
             initiator=EventInitiator.NONE,
@@ -310,8 +293,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 10
             npc=npcs.SPLASH_WATER_GEYSER_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -321,8 +303,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 11
             npc=npcs.SPLASH_WATER_DROPLETS_NPC,
             initiator=EventInitiator.NONE,
@@ -349,8 +330,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 12
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
@@ -377,7 +357,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

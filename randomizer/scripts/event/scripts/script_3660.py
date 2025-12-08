@@ -37,28 +37,22 @@ script = EventScript(
         SummonObjectToSpecificLevel(NPC_5, R116_NIMBUS_CASTLE_AREA_02_LEFT_OF_AREA_01),
         RemoveObjectFromSpecificLevel(
             NPC_2,
-            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT,
-        ),
+            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT),
         RemoveObjectFromSpecificLevel(
             NPC_3,
-            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT,
-        ),
+            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT),
         RemoveObjectFromSpecificLevel(
             NPC_4,
-            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT,
-        ),
+            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT),
         RemoveObjectFromSpecificLevel(
             NPC_5,
-            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT,
-        ),
+            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT),
         SummonObjectToSpecificLevel(
             NPC_0,
-            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT,
-        ),
+            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT),
         SummonObjectToSpecificLevel(
             NPC_1,
-            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT,
-        ),
+            R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT),
         RemoveObjectFromSpecificLevel(
             NPC_0, R119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05
         ),
@@ -213,8 +207,7 @@ script = EventScript(
         JmpIfObjectTriggerEnabledInSpecificLevel(
             NPC_2,
             R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE,
-            ["EVENT_3660_jmp_if_object_trigger_enabled_90"],
-        ),
+            ["EVENT_3660_jmp_if_object_trigger_enabled_90"]),
         DisableObjectTriggerInSpecificLevel(
             NPC_0, R500_NIMBUS_CASTLE_AREA_04_____DUMMY
         ),
@@ -222,8 +215,7 @@ script = EventScript(
             NPC_0,
             R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
             ["EVENT_3660_jmp_if_object_trigger_enabled_92"],
-            identifier="EVENT_3660_jmp_if_object_trigger_enabled_90",
-        ),
+            identifier="EVENT_3660_jmp_if_object_trigger_enabled_90"),
         DisableObjectTriggerInSpecificLevel(
             NPC_0, R498_NIMBUS_CASTLE_AREA_10_____DUMMY
         ),
@@ -231,8 +223,7 @@ script = EventScript(
             NPC_1,
             R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
             ["EVENT_3660_ret_94"],
-            identifier="EVENT_3660_jmp_if_object_trigger_enabled_92",
-        ),
+            identifier="EVENT_3660_jmp_if_object_trigger_enabled_92"),
         DisableObjectTriggerInSpecificLevel(
             NPC_1, R498_NIMBUS_CASTLE_AREA_10_____DUMMY
         ),

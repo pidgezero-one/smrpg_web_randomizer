@@ -7,8 +7,7 @@ script = ActionScript(
         JmpIfBitSet(
             MINECART_CLEARED,
             ["ACTION_928_visibility_off_17"],
-            identifier="ACTION_928_jmp_if_bit_set_0",
-        ),
+            identifier="ACTION_928_jmp_if_bit_set_0"),
         SetWalkingSpeed(SLOW),
         JmpToSubroutine(["ACTION_928_face_northeast_11"]),
         WalkNorthwestSteps(2),
@@ -31,8 +30,7 @@ script = ActionScript(
             bit_4=True,
             cant_pass_npcs=True,
             cant_walk_through=True,
-            bit_7=True,
-        ),
+            bit_7=True),
         ObjectMemorySetBit(arg_1=0x30, bits=[4]),
         Return(),
     ]

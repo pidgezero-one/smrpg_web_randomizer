@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=12,
             y=97,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E3364_KEEP_LOGIC_GAME_LOADER),
     ]
 )

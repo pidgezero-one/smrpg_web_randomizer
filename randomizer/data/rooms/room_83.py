@@ -46,8 +46,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0549_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_2,
             x=11,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0549_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_2,
             x=7,
@@ -70,8 +68,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0549_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_2,
             x=15,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0549_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_2,
             x=13,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0553_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_4,
             x=16,
@@ -106,8 +101,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0550_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_3,
             x=9,
@@ -118,8 +112,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0550_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_3,
             x=10,
@@ -130,8 +123,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3590_ROSE_TOWN_CHIMNEY,
             x=23,
@@ -142,8 +134,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -159,8 +150,7 @@ room = Room(
             destination=OW18_ROSE_TOWN,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         RoomExit(
             x=5,
             y=36,
@@ -178,8 +168,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=21,
             y=45,
@@ -197,8 +186,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=14,
             y=55,
@@ -216,8 +204,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=16,
             y=34,
@@ -235,8 +222,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=12,
             y=24,
@@ -254,8 +240,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -284,8 +269,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.ROSE_TOWN_TREASURE_HOLDER_NPC,
             event_script=E0522_EMPTY,
@@ -295,8 +279,7 @@ room = Room(
             y=28,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 2
             npc=npcs.ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -323,8 +306,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -351,8 +333,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -379,8 +360,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.ROSE_TOWN_OLD_MAN_BLUE_GREY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -407,8 +387,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -435,8 +414,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -463,8 +441,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 8
             npc=npcs.AERO_UPRIGHT_NPC,
             event_script=E0256_RETURN,
@@ -474,8 +451,7 @@ room = Room(
             y=79,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 9
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -502,8 +478,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 10
             npc=npcs.EMPTY_NPC_3,
             event_script=E0581_ROSE_TOWN_LIBERATED_LOWER_HIDDEN_NPC,
@@ -513,7 +488,6 @@ room = Room(
             y=31,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

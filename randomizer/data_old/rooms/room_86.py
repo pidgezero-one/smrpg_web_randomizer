@@ -51,8 +51,7 @@ room = Room(
             dst_z=1,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=6,
             y=13,
@@ -70,8 +69,7 @@ room = Room(
             dst_z=1,
             dst_z_half=1,
             dst_f=RadialDirection.NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -104,8 +102,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.PinkStripedSmallToad,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -136,8 +133,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 2
             occupant=npcs.BowserDoll,
             initiator=Initiator.NONE,
@@ -168,8 +164,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 3
             occupant=npcs.MarioDoll,
             event_script=256,
@@ -183,8 +178,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 4
             occupant=npcs.ToadstoolDoll,
             event_script=256,
@@ -198,8 +192,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 5
             occupant=npcs.Empty,
             initiator=Initiator.PRESS_A_FROM_FRONT,
@@ -233,7 +226,6 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

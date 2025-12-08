@@ -232,8 +232,7 @@ class Enemy:
                 ('\x7E', 6, self.resistances),
                 ('\x7D', 4, self.resistances),
                 ('\x7F', 5, self.resistances),
-                ('\x85', 7, self.resistances),
-            ))
+                ('\x85', 7, self.resistances)))
         else:
             desc += '\x20' * 5
 
@@ -246,8 +245,7 @@ class Enemy:
                 ('\x7E', 6, self.weaknesses),
                 ('\x7D', 4, self.weaknesses),
                 ('\x7F', 5, self.weaknesses),
-                ('\x85', 7, self.weaknesses),
-            ))
+                ('\x85', 7, self.weaknesses)))
         else:
             desc += '\x20' * 5
 
@@ -261,8 +259,7 @@ class Enemy:
                 ('\x80', 1, vulnerabilities),
                 ('\x83', 2, vulnerabilities),
                 ('\x81', 3, vulnerabilities),
-                ('\x84\x84', True, not self.death_immune),
-            ))
+                ('\x84\x84', True, not self.death_immune)))
         else:
             desc += '\x20' * 6
 

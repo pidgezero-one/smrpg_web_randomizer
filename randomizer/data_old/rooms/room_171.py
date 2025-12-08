@@ -50,8 +50,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -85,8 +84,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -101,8 +99,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -117,8 +114,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -133,8 +129,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 4
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -149,8 +144,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 5
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -165,8 +159,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 6
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -181,8 +174,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 7
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -197,8 +189,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 8
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -213,8 +204,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 9
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -229,8 +219,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 10
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -245,8 +234,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 11
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -261,8 +249,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 12
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -277,8 +264,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 13
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -293,8 +279,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 14
             occupant=npcs.BigCoin,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -326,8 +311,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 15
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -342,8 +326,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 16
             occupant=npcs.BigCoin,
             event_script=3216,
@@ -358,8 +341,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 17
             occupant=npcs.JBlock,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -395,7 +377,6 @@ room = Room(
             cannot_clone=False,
             byte2_bit0=True,
             byte2_bit3=True,
-            byte2_bit4=True,
-        ),
+            byte2_bit4=True),
     ]
 )

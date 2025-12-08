@@ -26,13 +26,11 @@ script = EventScript(
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000,
             195,
-            ["EVENT_560_jmp_if_objects_less_than_xy_steps_apart_102"],
-        ),
+            ["EVENT_560_jmp_if_objects_less_than_xy_steps_apart_102"]),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000,
             41,
-            ["EVENT_560_jmp_if_objects_less_than_xy_steps_apart_111"],
-        ),
+            ["EVENT_560_jmp_if_objects_less_than_xy_steps_apart_111"]),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 316, ["EVENT_560_remove_from_current_level_119"]
         ),
@@ -46,8 +44,7 @@ script = EventScript(
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000,
             409,
-            ["EVENT_560_jmp_if_objects_less_than_xy_steps_apart_152"],
-        ),
+            ["EVENT_560_jmp_if_objects_less_than_xy_steps_apart_152"]),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 107, ["EVENT_560_remove_from_current_level_153"]
         ),
@@ -71,8 +68,7 @@ script = EventScript(
         JmpIfBitSet(
             ROSE_TOWN_GAZ_ITEM_GRANTED,
             ["EVENT_560_ret_33"],
-            identifier="EVENT_560_jmp_if_bit_set_28",
-        ),
+            identifier="EVENT_560_jmp_if_bit_set_28"),
         SetBit(ROSE_TOWN_GAZ_ITEM_GRANTED),
         SetVarToConst(ITEM_ID, FingerShot),
         SetVarToConst(PRIMARY_TEMP_7000, 524),
@@ -111,8 +107,7 @@ script = EventScript(
             ACTIVE_NPC,
             20,
             ["EVENT_560_jmp_to_event_60"],
-            identifier="EVENT_560_jmp_if_var_equals_const_57",
-        ),
+            identifier="EVENT_560_jmp_if_var_equals_const_57"),
         JmpIfBitSet(TEMP_7042_2, ["EVENT_560_set_61"]),
         JmpToEvent(E0032_NON_COIN_CHEST_CONTAINER),
         JmpToEvent(
@@ -129,8 +124,7 @@ script = EventScript(
         JmpIfBitClear(
             MELODY_BAY_ITEM_1_GRANTED,
             ["EVENT_560_set_bit_72"],
-            identifier="EVENT_560_jmp_if_bit_clear_69",
-        ),
+            identifier="EVENT_560_jmp_if_bit_clear_69"),
         JmpIfBitClear(MELODY_BAY_ITEM_2_GRANTED, ["EVENT_560_set_bit_79"]),
         JmpIfBitClear(MELODY_BAY_ITEM_3_GRANTED, ["EVENT_560_set_bit_86"]),
         SetBit(MELODY_BAY_ITEM_1_GRANTED, identifier="EVENT_560_set_bit_72"),
@@ -171,8 +165,7 @@ script = EventScript(
             3,
             3,
             ["EVENT_560_set_208"],
-            identifier="EVENT_560_jmp_if_objects_less_than_xy_steps_apart_102",
-        ),
+            identifier="EVENT_560_jmp_if_objects_less_than_xy_steps_apart_102"),
         SetBit(TEMP_7043_5),
         SetBit(PORTRAIT_GAME_COMPLETED),
         SetVarToConst(ITEM_ID, ElderKey),
@@ -187,13 +180,11 @@ script = EventScript(
             3,
             3,
             ["EVENT_560_set_222"],
-            identifier="EVENT_560_jmp_if_objects_less_than_xy_steps_apart_111",
-        ),
+            identifier="EVENT_560_jmp_if_objects_less_than_xy_steps_apart_111"),
         RemoveObjectFromCurrentLevel(NPC_5),
         RemoveObjectFromSpecificLevel(
             NPC_5,
-            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
-        ),
+            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS),
         SetVarToConst(ITEM_ID, RoomKey),
         SetVarToConst(PRIMARY_TEMP_7000, 524),
         JmpIfVarEqualsConst(ITEM_ID, AltoCard, ["EVENT_560_set_172"]),
@@ -229,8 +220,7 @@ script = EventScript(
         JmpIfBitSet(
             RED_CELLAR_GUARD_ITEM_GRANTED,
             ["EVENT_560_ret_151"],
-            identifier="EVENT_560_jmp_if_bit_set_140",
-        ),
+            identifier="EVENT_560_jmp_if_bit_set_140"),
         SetBit(RED_CELLAR_GUARD_ITEM_GRANTED),
         ClearBit(TEMP_704C_0),
         ClearBit(GUEST_DROPPED_OFF),
@@ -248,8 +238,7 @@ script = EventScript(
             3,
             3,
             ["EVENT_560_store_item_amount_7000_292"],
-            identifier="EVENT_560_jmp_if_objects_less_than_xy_steps_apart_152",
-        ),
+            identifier="EVENT_560_jmp_if_objects_less_than_xy_steps_apart_152"),
         RemoveObjectFromCurrentLevel(
             NPC_0, identifier="EVENT_560_remove_from_current_level_153"
         ),
@@ -271,15 +260,13 @@ script = EventScript(
                 ASPause(60),
                 ASResetProperties(),
             ],
-            identifier="EVENT_560_action_queue_async_161",
-        ),
+            identifier="EVENT_560_action_queue_async_161"),
         Pause(10),
         Pause(10),
         ActionQueueSync(target=MARIO, subscript=[ASPause(30), ASFaceSoutheast()]),
         ActionQueueAsync(
             target=MEM_70A8,
-            subscript=[ASWalkSoutheastSteps(8), ASDb(bytearray(b"\xfd\xf2"))],
-        ),
+            subscript=[ASWalkSoutheastSteps(8), ASDb(bytearray(b"\xfd\xf2"))]),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceSouth()]),
         SetVarToConst(ITEM_ID, Fertilizer),
         SetVarToConst(PRIMARY_TEMP_7000, 524),
@@ -349,21 +336,18 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         Pause(5, identifier="EVENT_560_pause_213"),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=33,
-        ),
+            mod_id=33),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=1,
-        ),
+            mod_id=1),
         RemoveObjectFromCurrentLevel(NPC_14),
         RemoveObjectFromSpecificLevel(
             NPC_14, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM
@@ -380,34 +364,29 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         Pause(5, identifier="EVENT_560_pause_227"),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
-            mod_id=32,
-        ),
+            mod_id=32),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
-            mod_id=0,
-        ),
+            mod_id=0),
         RemoveObjectFromCurrentLevel(NPC_6),
         RemoveObjectFromSpecificLevel(
             NPC_6,
-            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
-        ),
+            R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS),
         Pause(5),
         RemoveOneOfItemFromInventory(RoomKey),
         Return(),
         JmpIfBitClear(
             CHAPEL_ITEMS_ANYWHERE_ENABLED,
             ["EVENT_560_set_237"],
-            identifier="EVENT_560_jmp_if_bit_clear_236",
-        ),
+            identifier="EVENT_560_jmp_if_bit_clear_236"),
         SetVarToConst(ITEM_ID, ShedKey, identifier="EVENT_560_set_237"),
         StoreItemAt70A7QuantityTo7000(),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_560_pause_242"]),
@@ -417,16 +396,14 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         Pause(5, identifier="EVENT_560_pause_242"),
         PlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
-            mod_id=0,
-        ),
+            mod_id=0),
         RemoveObjectFromCurrentLevel(NPC_7),
         RemoveObjectFromSpecificLevel(
             NPC_7, R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE
@@ -440,16 +417,14 @@ script = EventScript(
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000,
             0,
-            ["EVENT_560_summon_to_current_level_at_marios_coords_254"],
-        ),
+            ["EVENT_560_summon_to_current_level_at_marios_coords_254"]),
         RunDialog(
             dialog_id=DI1235_BELOME_STATUE_KEY_HINT,
             above_object=MARIO,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         SummonObjectToCurrentLevelAtMariosCoords(
             NPC_12, identifier="EVENT_560_summon_to_current_level_at_marios_coords_254"
@@ -477,8 +452,7 @@ script = EventScript(
                 ASShiftZUpPixels(4),
                 ASSetWalkingSpeed(NORMAL),
                 ASShiftZUpPixels(2),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_16,
             subscript=[
@@ -488,8 +462,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASPause(10),
                 ASSetSpriteSequence(index=3, looping=False),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_12),
         Pause(60),
         PlaySound(sound=SO021_RUMBLING, channel=6),
@@ -514,14 +487,12 @@ script = EventScript(
                 ASPause(1),
                 ASEndLoop(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         RemoveOneOfItemFromInventory(TempleKey),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         SetBit(TEMPLE_KEY_USED),
         Return(),
         FreezeAllNPCsUntilReturn(
@@ -535,8 +506,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         UnfreezeAllNPCs(),
         Return(),
         PlaySound(
@@ -548,13 +518,11 @@ script = EventScript(
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
-            mod_id=0,
-        ),
+            mod_id=0),
         RemoveObjectFromCurrentLevel(NPC_10),
         RemoveObjectFromCurrentLevel(NPC_11),
         RemoveObjectFromSpecificLevel(
@@ -576,8 +544,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         PlaySound(
             sound=SO005_BLOCK_SWITCH, channel=6, identifier="EVENT_560_play_sound_296"
@@ -612,8 +579,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_560_run_dialog_314",
-        ),
+            identifier="EVENT_560_run_dialog_314"),
         Return(),
         RemoveOneOfItemFromInventory(
             Seed, identifier="EVENT_560_remove_one_from_inventory_316"
@@ -622,8 +588,7 @@ script = EventScript(
         JmpIfBitSet(
             GAVE_FERTILIZER,
             ["EVENT_560_jmp_if_bit_set_318"],
-            identifier="EVENT_560_jmp_if_bit_set_318",
-        ),
+            identifier="EVENT_560_jmp_if_bit_set_318"),
         StoreItemAmountTo7000(Fertilizer),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000, 0, ["EVENT_560_remove_one_from_inventory_322"]
@@ -647,8 +612,7 @@ script = EventScript(
         SummonObjectToSpecificLevel(NPC_1, R418_GARDENERS_HOUSE),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=22, y=0)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=22, y=0)]),
         PlaySound(sound=SO127_LIGHT_RATTLE, channel=6),
         ActionQueueAsync(
             target=NPC_0,
@@ -657,8 +621,7 @@ script = EventScript(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         Pause(24),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Pause(32),
@@ -671,10 +634,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         PlaySound(sound=SO128_FLOATING_HOVERING, channel=6),
         ActionQueueSync(
             target=NPC_0,
@@ -685,8 +646,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(40),
         SummonObjectToCurrentLevel(NPC_1),
         PlaySound(sound=SO000_SILENCE, channel=6),
@@ -698,16 +658,14 @@ script = EventScript(
         JmpIfBitSet(
             MELODY_BAY_ITEM_3_GRANTED,
             ["EVENT_560_pause_92"],
-            identifier="EVENT_560_jmp_if_bit_set_351",
-        ),
+            identifier="EVENT_560_jmp_if_bit_set_351"),
         JmpIfBitSet(MELODY_BAY_ITEM_2_GRANTED, ["EVENT_560_pause_84"]),
         JmpIfBitSet(MELODY_BAY_ITEM_1_GRANTED, ["EVENT_560_pause_77"]),
         Return(),
         JmpIfBitSet(
             MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED,
             ["EVENT_560_set_361"],
-            identifier="EVENT_560_jmp_if_bit_set_355",
-        ),
+            identifier="EVENT_560_jmp_if_bit_set_355"),
         SetBit(MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED),
         SetVarToConst(ITEM_ID, PickMeUp),
         SetVarToConst(PRIMARY_TEMP_7000, 524),
@@ -760,8 +718,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         SetVarToConst(TEMP_70AE, 20, identifier="EVENT_560_set_399"),
         SetAsyncActionScript(MARIO, A0670_NOD_YES),
@@ -772,13 +729,11 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R272_MOLEVILLE_MINES_AREA_11_BOMBED_ROOM_WSINGING_MOLES,
-            mod_id=32,
-        ),
+            mod_id=32),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R272_MOLEVILLE_MINES_AREA_11_BOMBED_ROOM_WSINGING_MOLES,
-            mod_id=0,
-        ),
+            mod_id=0),
         Pause(2),
         ClearBit(BAMBINO_BOMB_UNKNOWN),
         Store00To0248(),
@@ -794,8 +749,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSetAllSpeeds(NORMAL),
             ],
-            identifier="EVENT_560_action_queue_sync_414",
-        ),
+            identifier="EVENT_560_action_queue_sync_414"),
         SetVarToConst(TEMP_70AE, 20),
         SetSyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
         SetSyncActionScript(MARIO, A0670_NOD_YES),
@@ -814,8 +768,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(2),
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         SetBit(MINES_BACK_OPENED),
         RemoveOneOfItemFromInventory(BambinoBomb),
         Return(),

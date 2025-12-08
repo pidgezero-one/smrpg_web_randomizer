@@ -13,8 +13,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         JmpIfBitSet(MINECART_CLEARED, ["EVENT_1614_fade_in_from_black_async_5"]),
         RemoveObjectFromCurrentLevel(NPC_0),
         RemoveObjectFromCurrentLevel(NPC_2),

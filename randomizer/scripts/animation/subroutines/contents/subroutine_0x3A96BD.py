@@ -24,8 +24,7 @@ script = SubroutineOrBanklessScript(
             z=-128,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0792_BLACK_ROCK,
             sequence=0,
@@ -34,8 +33,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         MoveObject(
             speed=65,
             start_position=2048,
@@ -43,8 +41,7 @@ script = SubroutineOrBanklessScript(
             apply_to_z=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=8),
         ResetObjectMappingMemory(),
         RunSubroutine(["command_0x3a8698"]),
@@ -54,8 +51,7 @@ script = SubroutineOrBanklessScript(
             end_position=-1025,
             apply_to_z=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=4),
         ResetObjectMappingMemory(),
         SpriteSequence(sequence=1),
@@ -69,5 +65,4 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x3a8674"]),
         RunSubroutine(["command_0x3a7622"]),
         ReturnObjectQueue(),
-    ],
-)
+    ])

@@ -19,12 +19,10 @@ script = SubroutineOrBanklessScript(
             apply_to_z=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         Db(bytearray(b"\x12\x81")),
         PauseScriptUntilSpriteSequenceDone(),
         ResetTargetMappingMemory(),
         ResetObjectMappingMemory(),
         ReturnSubroutine(),
-    ],
-)
+    ])

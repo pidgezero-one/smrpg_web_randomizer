@@ -1,7 +1,6 @@
 from smrpgpatchbuilder.datatypes.world_map_locations.classes import (
     WorldMapLocation,
-    WorldMapLocationCollection,
-)
+    WorldMapLocationCollection)
 from ..variables.variable_names import *
 from ..variables.overworld_area_names import *
 from ..variables.event_script_names import *
@@ -24,8 +23,7 @@ world_map_locations[OW00_TO_MARIOS_PAD_BEFORE] = WorldMapLocation(
     location_to_west=OW01_INNER_FACTORY,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_BOWSERS_KEEP_MARIOS_PAD,
-    location_to_north=OW01_INNER_FACTORY,
-)
+    location_to_north=OW01_INNER_FACTORY)
 
 world_map_locations[OW01_INNER_FACTORY] = WorldMapLocation(
     index=1,
@@ -37,8 +35,7 @@ world_map_locations[OW01_INNER_FACTORY] = WorldMapLocation(
     run_event=E1924_WORLD_MAP_INNER_FACTORY,
     enabled_to_south=True,
     check_flag_to_south=MAP_INNER_FACTORY,
-    location_to_south=OW05_GATE,
-)
+    location_to_south=OW05_GATE)
 
 world_map_locations[OW02_TO_MARIOS_PAD] = WorldMapLocation(
     index=2,
@@ -55,8 +52,7 @@ world_map_locations[OW02_TO_MARIOS_PAD] = WorldMapLocation(
     location_to_west=OW03_VISTA_HILL,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_VISTA_HILL_MARIOS_PAD,
-    location_to_north=OW03_VISTA_HILL,
-)
+    location_to_north=OW03_VISTA_HILL)
 
 world_map_locations[OW03_VISTA_HILL] = WorldMapLocation(
     index=3,
@@ -77,8 +73,7 @@ world_map_locations[OW03_VISTA_HILL] = WorldMapLocation(
     location_to_west=OW06_TO_NIMBUS_LAND,
     enabled_to_north=True,
     check_flag_to_north=MAP_VISTA_HILL,
-    location_to_north=OW04_BOWSERS_KEEP,
-)
+    location_to_north=OW04_BOWSERS_KEEP)
 
 world_map_locations[OW04_BOWSERS_KEEP] = WorldMapLocation(
     index=4,
@@ -99,8 +94,7 @@ world_map_locations[OW04_BOWSERS_KEEP] = WorldMapLocation(
     location_to_west=OW06_TO_NIMBUS_LAND,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_BOWSERS_KEEP_GATE,
-    location_to_north=OW05_GATE,
-)
+    location_to_north=OW05_GATE)
 
 world_map_locations[OW05_GATE] = WorldMapLocation(
     index=5,
@@ -115,8 +109,7 @@ world_map_locations[OW05_GATE] = WorldMapLocation(
     location_to_south=OW04_BOWSERS_KEEP,
     enabled_to_north=True,
     check_flag_to_north=MAP_INNER_FACTORY,
-    location_to_north=OW01_INNER_FACTORY,
-)
+    location_to_north=OW01_INNER_FACTORY)
 
 world_map_locations[OW06_TO_NIMBUS_LAND] = WorldMapLocation(
     index=6,
@@ -133,8 +126,7 @@ world_map_locations[OW06_TO_NIMBUS_LAND] = WorldMapLocation(
     location_to_east=OW03_VISTA_HILL,
     enabled_to_south=True,
     check_flag_to_south=MAP_VISTA_HILL,
-    location_to_south=OW04_BOWSERS_KEEP,
-)
+    location_to_south=OW04_BOWSERS_KEEP)
 
 world_map_locations[OW07_TO_BOWSERS_KEEP] = WorldMapLocation(
     index=7,
@@ -151,8 +143,7 @@ world_map_locations[OW07_TO_BOWSERS_KEEP] = WorldMapLocation(
     location_to_east=OW08_MARIOS_PAD,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_BOWSERS_KEEP_MARIOS_PAD,
-    location_to_south=OW08_MARIOS_PAD,
-)
+    location_to_south=OW08_MARIOS_PAD)
 
 world_map_locations[OW08_MARIOS_PAD] = WorldMapLocation(
     index=8,
@@ -170,8 +161,7 @@ world_map_locations[OW08_MARIOS_PAD] = WorldMapLocation(
     location_to_west=OW07_TO_BOWSERS_KEEP,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_BOWSERS_KEEP_MARIOS_PAD,
-    location_to_north=OW07_TO_BOWSERS_KEEP,
-)
+    location_to_north=OW07_TO_BOWSERS_KEEP)
 
 world_map_locations[OW09_MUSHROOM_WAY] = WorldMapLocation(
     index=9,
@@ -189,8 +179,7 @@ world_map_locations[OW09_MUSHROOM_WAY] = WorldMapLocation(
     location_to_south=OW10_MUSHROOM_KINGDOM,
     enabled_to_west=True,
     check_flag_to_west=MAP_DIRECTIONAL_MARIOS_PAD_MUSHROOM_WAY,
-    location_to_west=OW08_MARIOS_PAD,
-)
+    location_to_west=OW08_MARIOS_PAD)
 
 world_map_locations[OW10_MUSHROOM_KINGDOM] = WorldMapLocation(
     index=10,
@@ -211,8 +200,7 @@ world_map_locations[OW10_MUSHROOM_KINGDOM] = WorldMapLocation(
     location_to_west=OW11_BANDITS_WAY,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_MUSHROOM_WAY_MUSHROOM_KINGDOM,
-    location_to_north=OW09_MUSHROOM_WAY,
-)
+    location_to_north=OW09_MUSHROOM_WAY)
 
 world_map_locations[OW11_BANDITS_WAY] = WorldMapLocation(
     index=11,
@@ -227,8 +215,7 @@ world_map_locations[OW11_BANDITS_WAY] = WorldMapLocation(
     location_to_east=OW10_MUSHROOM_KINGDOM,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_MUSHROOM_KINGDOM_BANDITS_WAY,
-    location_to_north=OW10_MUSHROOM_KINGDOM,
-)
+    location_to_north=OW10_MUSHROOM_KINGDOM)
 
 world_map_locations[OW12_KERO_SEWERS] = WorldMapLocation(
     index=12,
@@ -245,8 +232,7 @@ world_map_locations[OW12_KERO_SEWERS] = WorldMapLocation(
     location_to_west=OW10_MUSHROOM_KINGDOM,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_MUSHROOM_KINGDOM_KERO_SEWERS,
-    location_to_north=OW10_MUSHROOM_KINGDOM,
-)
+    location_to_north=OW10_MUSHROOM_KINGDOM)
 
 world_map_locations[OW13_TO_MUSHROOM_KINGDOM] = WorldMapLocation(
     index=13,
@@ -263,8 +249,7 @@ world_map_locations[OW13_TO_MUSHROOM_KINGDOM] = WorldMapLocation(
     location_to_south=OW14_KERO_SEWERS,
     enabled_to_west=True,
     check_flag_to_west=MAP_DIRECTIONAL_MUSHROOM_KINGDOM_KERO_SEWERS,
-    location_to_west=OW14_KERO_SEWERS,
-)
+    location_to_west=OW14_KERO_SEWERS)
 
 world_map_locations[OW14_KERO_SEWERS] = WorldMapLocation(
     index=14,
@@ -285,8 +270,7 @@ world_map_locations[OW14_KERO_SEWERS] = WorldMapLocation(
     location_to_west=OW15_MIDAS_RIVER,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_MUSHROOM_KINGDOM_KERO_SEWERS,
-    location_to_north=OW13_TO_MUSHROOM_KINGDOM,
-)
+    location_to_north=OW13_TO_MUSHROOM_KINGDOM)
 
 world_map_locations[OW15_MIDAS_RIVER] = WorldMapLocation(
     index=15,
@@ -304,8 +288,7 @@ world_map_locations[OW15_MIDAS_RIVER] = WorldMapLocation(
     location_to_west=OW16_TADPOLE_POND,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_KERO_SEWERS_MIDAS_RIVER,
-    location_to_north=OW14_KERO_SEWERS,
-)
+    location_to_north=OW14_KERO_SEWERS)
 
 world_map_locations[OW16_TADPOLE_POND] = WorldMapLocation(
     index=16,
@@ -320,8 +303,7 @@ world_map_locations[OW16_TADPOLE_POND] = WorldMapLocation(
     location_to_east=OW15_MIDAS_RIVER,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_TADPOLE_POND_ROSE_WAY,
-    location_to_south=OW17_ROSE_WAY,
-)
+    location_to_south=OW17_ROSE_WAY)
 
 world_map_locations[OW17_ROSE_WAY] = WorldMapLocation(
     index=17,
@@ -336,8 +318,7 @@ world_map_locations[OW17_ROSE_WAY] = WorldMapLocation(
     location_to_west=OW18_ROSE_TOWN,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_TADPOLE_POND_ROSE_WAY,
-    location_to_north=OW16_TADPOLE_POND,
-)
+    location_to_north=OW16_TADPOLE_POND)
 
 world_map_locations[OW18_ROSE_TOWN] = WorldMapLocation(
     index=18,
@@ -355,8 +336,7 @@ world_map_locations[OW18_ROSE_TOWN] = WorldMapLocation(
     location_to_west=OW20_PIPE_VAULT,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_ROSE_TOWN_FOREST_MAZE,
-    location_to_north=OW19_FOREST_MAZE,
-)
+    location_to_north=OW19_FOREST_MAZE)
 
 world_map_locations[OW19_FOREST_MAZE] = WorldMapLocation(
     index=19,
@@ -368,8 +348,7 @@ world_map_locations[OW19_FOREST_MAZE] = WorldMapLocation(
     run_event=E3851_WORLD_MAP_FOREST_MAZE,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_ROSE_TOWN_FOREST_MAZE,
-    location_to_south=OW18_ROSE_TOWN,
-)
+    location_to_south=OW18_ROSE_TOWN)
 
 world_map_locations[OW20_PIPE_VAULT] = WorldMapLocation(
     index=20,
@@ -387,8 +366,7 @@ world_map_locations[OW20_PIPE_VAULT] = WorldMapLocation(
     location_to_south=OW21_TO_YOSTER_ISLE,
     enabled_to_west=True,
     check_flag_to_west=MAP_DIRECTIONAL_ROSE_TOWN_PIPE_VAULT_MOLEVILLE,
-    location_to_west=OW22_TO_MOLEVILLE,
-)
+    location_to_west=OW22_TO_MOLEVILLE)
 
 world_map_locations[OW21_TO_YOSTER_ISLE] = WorldMapLocation(
     index=21,
@@ -402,8 +380,7 @@ world_map_locations[OW21_TO_YOSTER_ISLE] = WorldMapLocation(
     go_location_b=OW52_YOSTER_ISLE,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_PIPE_VAULT_YOSTER_ISLE,
-    location_to_north=OW20_PIPE_VAULT,
-)
+    location_to_north=OW20_PIPE_VAULT)
 
 world_map_locations[OW22_TO_MOLEVILLE] = WorldMapLocation(
     index=22,
@@ -420,8 +397,7 @@ world_map_locations[OW22_TO_MOLEVILLE] = WorldMapLocation(
     location_to_east=OW20_PIPE_VAULT,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_ROSE_TOWN_PIPE_VAULT_MOLEVILLE,
-    location_to_south=OW20_PIPE_VAULT,
-)
+    location_to_south=OW20_PIPE_VAULT)
 
 world_map_locations[OW23_TO_PIPE_VAULT] = WorldMapLocation(
     index=23,
@@ -435,8 +411,7 @@ world_map_locations[OW23_TO_PIPE_VAULT] = WorldMapLocation(
     go_location_b=OW20_PIPE_VAULT,
     enabled_to_west=True,
     check_flag_to_west=MAP_DIRECTIONAL_ROSE_TOWN_PIPE_VAULT_MOLEVILLE,
-    location_to_west=OW24_MOLEVILLE,
-)
+    location_to_west=OW24_MOLEVILLE)
 
 world_map_locations[OW24_MOLEVILLE] = WorldMapLocation(
     index=24,
@@ -451,8 +426,7 @@ world_map_locations[OW24_MOLEVILLE] = WorldMapLocation(
     location_to_east=OW23_TO_PIPE_VAULT,
     enabled_to_west=True,
     check_flag_to_west=MAP_DIRECTIONAL_MOLEVILLE_BOOSTER_PASS,
-    location_to_west=OW25_BOOSTER_PASS,
-)
+    location_to_west=OW25_BOOSTER_PASS)
 
 world_map_locations[OW25_BOOSTER_PASS] = WorldMapLocation(
     index=25,
@@ -470,8 +444,7 @@ world_map_locations[OW25_BOOSTER_PASS] = WorldMapLocation(
     location_to_west=OW26_BOOSTER_TOWER,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_BOOSTER_PASS_BOOSTER_TOWER,
-    location_to_north=OW26_BOOSTER_TOWER,
-)
+    location_to_north=OW26_BOOSTER_TOWER)
 
 world_map_locations[OW26_BOOSTER_TOWER] = WorldMapLocation(
     index=26,
@@ -489,8 +462,7 @@ world_map_locations[OW26_BOOSTER_TOWER] = WorldMapLocation(
     location_to_south=OW25_BOOSTER_PASS,
     enabled_to_west=True,
     check_flag_to_west=MAP_DIRECTIONAL_BOOSTER_TOWER_BOOSTER_HILL,
-    location_to_west=OW27_BOOSTER_HILL,
-)
+    location_to_west=OW27_BOOSTER_HILL)
 
 world_map_locations[OW27_BOOSTER_HILL] = WorldMapLocation(
     index=27,
@@ -508,8 +480,7 @@ world_map_locations[OW27_BOOSTER_HILL] = WorldMapLocation(
     location_to_west=OW28_MARRYMORE,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_BOOSTER_HILL_MARRYMORE,
-    location_to_north=OW28_MARRYMORE,
-)
+    location_to_north=OW28_MARRYMORE)
 
 world_map_locations[OW28_MARRYMORE] = WorldMapLocation(
     index=28,
@@ -530,8 +501,7 @@ world_map_locations[OW28_MARRYMORE] = WorldMapLocation(
     location_to_west=OW29_TO_STAR_HILL,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_MARRYMORE_STAR_HILL,
-    location_to_north=OW29_TO_STAR_HILL,
-)
+    location_to_north=OW29_TO_STAR_HILL)
 
 world_map_locations[OW29_TO_STAR_HILL] = WorldMapLocation(
     index=29,
@@ -548,8 +518,7 @@ world_map_locations[OW29_TO_STAR_HILL] = WorldMapLocation(
     location_to_east=OW28_MARRYMORE,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_MARRYMORE_STAR_HILL,
-    location_to_south=OW28_MARRYMORE,
-)
+    location_to_south=OW28_MARRYMORE)
 
 world_map_locations[OW30_TO_MARRYMORE] = WorldMapLocation(
     index=30,
@@ -566,8 +535,7 @@ world_map_locations[OW30_TO_MARRYMORE] = WorldMapLocation(
     location_to_west=OW31_STAR_HILL,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_MARRYMORE_STAR_HILL,
-    location_to_north=OW31_STAR_HILL,
-)
+    location_to_north=OW31_STAR_HILL)
 
 world_map_locations[OW31_STAR_HILL] = WorldMapLocation(
     index=31,
@@ -582,8 +550,7 @@ world_map_locations[OW31_STAR_HILL] = WorldMapLocation(
     location_to_east=OW30_TO_MARRYMORE,
     enabled_to_west=True,
     check_flag_to_west=MAP_DIRECTIONAL_STAR_HILL_SEASIDE_TOWN,
-    location_to_west=OW32_SEASIDE_TOWN,
-)
+    location_to_west=OW32_SEASIDE_TOWN)
 
 world_map_locations[OW32_SEASIDE_TOWN] = WorldMapLocation(
     index=32,
@@ -601,8 +568,7 @@ world_map_locations[OW32_SEASIDE_TOWN] = WorldMapLocation(
     location_to_west=OW33_SEA,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_SEASIDE_TOWN_LANDS_END,
-    location_to_north=OW35_TO_LANDS_END,
-)
+    location_to_north=OW35_TO_LANDS_END)
 
 world_map_locations[OW33_SEA] = WorldMapLocation(
     index=33,
@@ -620,8 +586,7 @@ world_map_locations[OW33_SEA] = WorldMapLocation(
     location_to_south=OW34_SUNKEN_SHIP,
     enabled_to_west=True,
     check_flag_to_west=MAP_DIRECTIONAL_SEA_SUNKEN_SHIP,
-    location_to_west=OW34_SUNKEN_SHIP,
-)
+    location_to_west=OW34_SUNKEN_SHIP)
 
 world_map_locations[OW34_SUNKEN_SHIP] = WorldMapLocation(
     index=34,
@@ -636,8 +601,7 @@ world_map_locations[OW34_SUNKEN_SHIP] = WorldMapLocation(
     location_to_east=OW33_SEA,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_SEA_SUNKEN_SHIP,
-    location_to_north=OW33_SEA,
-)
+    location_to_north=OW33_SEA)
 
 world_map_locations[OW35_TO_LANDS_END] = WorldMapLocation(
     index=35,
@@ -651,8 +615,7 @@ world_map_locations[OW35_TO_LANDS_END] = WorldMapLocation(
     go_location_b=OW37_LANDS_END,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_SEASIDE_TOWN_LANDS_END,
-    location_to_south=OW32_SEASIDE_TOWN,
-)
+    location_to_south=OW32_SEASIDE_TOWN)
 
 world_map_locations[OW36_TO_SEASIDE_TOWN] = WorldMapLocation(
     index=36,
@@ -666,8 +629,7 @@ world_map_locations[OW36_TO_SEASIDE_TOWN] = WorldMapLocation(
     go_location_b=OW32_SEASIDE_TOWN,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_SEASIDE_TOWN_LANDS_END,
-    location_to_north=OW37_LANDS_END,
-)
+    location_to_north=OW37_LANDS_END)
 
 world_map_locations[OW37_LANDS_END] = WorldMapLocation(
     index=37,
@@ -685,8 +647,7 @@ world_map_locations[OW37_LANDS_END] = WorldMapLocation(
     location_to_west=OW38_MONSTRO_TOWN,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_LANDS_END_BEAN_VALLEY,
-    location_to_north=OW39_BEAN_VALLEY,
-)
+    location_to_north=OW39_BEAN_VALLEY)
 
 world_map_locations[OW38_MONSTRO_TOWN] = WorldMapLocation(
     index=38,
@@ -701,8 +662,7 @@ world_map_locations[OW38_MONSTRO_TOWN] = WorldMapLocation(
     location_to_east=OW37_LANDS_END,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_LANDS_END_MONSTRO_TOWN,
-    location_to_north=OW37_LANDS_END,
-)
+    location_to_north=OW37_LANDS_END)
 
 world_map_locations[OW39_BEAN_VALLEY] = WorldMapLocation(
     index=39,
@@ -720,8 +680,7 @@ world_map_locations[OW39_BEAN_VALLEY] = WorldMapLocation(
     location_to_west=OW40_GRATE_GUYS_CASINO,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_BEAN_VALLEY_NIMBUS_LAND,
-    location_to_north=OW41_TO_NIMBUS_LAND,
-)
+    location_to_north=OW41_TO_NIMBUS_LAND)
 
 world_map_locations[OW40_GRATE_GUYS_CASINO] = WorldMapLocation(
     index=40,
@@ -733,8 +692,7 @@ world_map_locations[OW40_GRATE_GUYS_CASINO] = WorldMapLocation(
     run_event=E3870_WORLD_MAP_GRATE_GUYS_CASINO,
     enabled_to_east=True,
     check_flag_to_east=MAP_DIRECTIONAL_BEAN_VALLEY_CASINO,
-    location_to_east=OW39_BEAN_VALLEY,
-)
+    location_to_east=OW39_BEAN_VALLEY)
 
 world_map_locations[OW41_TO_NIMBUS_LAND] = WorldMapLocation(
     index=41,
@@ -748,8 +706,7 @@ world_map_locations[OW41_TO_NIMBUS_LAND] = WorldMapLocation(
     go_location_b=OW49_NIMBUS_LAND,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_BEAN_VALLEY_NIMBUS_LAND,
-    location_to_south=OW39_BEAN_VALLEY,
-)
+    location_to_south=OW39_BEAN_VALLEY)
 
 world_map_locations[OW42_TO_SEASIDE_TOWN] = WorldMapLocation(
     index=42,
@@ -763,8 +720,7 @@ world_map_locations[OW42_TO_SEASIDE_TOWN] = WorldMapLocation(
     go_location_b=OW32_SEASIDE_TOWN,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_SEASIDE_TOWN_LANDS_END,
-    location_to_north=OW43_LANDS_END,
-)
+    location_to_north=OW43_LANDS_END)
 
 world_map_locations[OW43_LANDS_END] = WorldMapLocation(
     index=43,
@@ -782,8 +738,7 @@ world_map_locations[OW43_LANDS_END] = WorldMapLocation(
     location_to_west=OW44_MONSTRO_TOWN,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_LANDS_END_BEAN_VALLEY,
-    location_to_north=OW45_BEAN_VALLEY,
-)
+    location_to_north=OW45_BEAN_VALLEY)
 
 world_map_locations[OW44_MONSTRO_TOWN] = WorldMapLocation(
     index=44,
@@ -798,8 +753,7 @@ world_map_locations[OW44_MONSTRO_TOWN] = WorldMapLocation(
     location_to_east=OW43_LANDS_END,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_LANDS_END_MONSTRO_TOWN,
-    location_to_north=OW43_LANDS_END,
-)
+    location_to_north=OW43_LANDS_END)
 
 world_map_locations[OW45_BEAN_VALLEY] = WorldMapLocation(
     index=45,
@@ -817,8 +771,7 @@ world_map_locations[OW45_BEAN_VALLEY] = WorldMapLocation(
     location_to_west=OW46_GRATE_GUYS_CASINO,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_BEAN_VALLEY_NIMBUS_LAND,
-    location_to_north=OW47_TO_NIMBUS_LAND,
-)
+    location_to_north=OW47_TO_NIMBUS_LAND)
 
 world_map_locations[OW46_GRATE_GUYS_CASINO] = WorldMapLocation(
     index=46,
@@ -830,8 +783,7 @@ world_map_locations[OW46_GRATE_GUYS_CASINO] = WorldMapLocation(
     run_event=E3870_WORLD_MAP_GRATE_GUYS_CASINO,
     enabled_to_east=True,
     check_flag_to_east=MAP_DIRECTIONAL_BEAN_VALLEY_CASINO,
-    location_to_east=OW45_BEAN_VALLEY,
-)
+    location_to_east=OW45_BEAN_VALLEY)
 
 world_map_locations[OW47_TO_NIMBUS_LAND] = WorldMapLocation(
     index=47,
@@ -845,8 +797,7 @@ world_map_locations[OW47_TO_NIMBUS_LAND] = WorldMapLocation(
     go_location_b=OW49_NIMBUS_LAND,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_BEAN_VALLEY_NIMBUS_LAND,
-    location_to_south=OW45_BEAN_VALLEY,
-)
+    location_to_south=OW45_BEAN_VALLEY)
 
 world_map_locations[OW48_TO_BEAN_VALLEY] = WorldMapLocation(
     index=48,
@@ -860,8 +811,7 @@ world_map_locations[OW48_TO_BEAN_VALLEY] = WorldMapLocation(
     go_location_b=OW45_BEAN_VALLEY,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_BEAN_VALLEY_NIMBUS_LAND,
-    location_to_north=OW49_NIMBUS_LAND,
-)
+    location_to_north=OW49_NIMBUS_LAND)
 
 world_map_locations[OW49_NIMBUS_LAND] = WorldMapLocation(
     index=49,
@@ -879,8 +829,7 @@ world_map_locations[OW49_NIMBUS_LAND] = WorldMapLocation(
     location_to_south=OW48_TO_BEAN_VALLEY,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_NIMBUS_LAND_BOWSERS_KEEP,
-    location_to_north=OW51_TO_BOWSERS_KEEP,
-)
+    location_to_north=OW51_TO_BOWSERS_KEEP)
 
 world_map_locations[OW50_BARREL_VOLCANO] = WorldMapLocation(
     index=50,
@@ -895,8 +844,7 @@ world_map_locations[OW50_BARREL_VOLCANO] = WorldMapLocation(
     location_to_west=OW49_NIMBUS_LAND,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_NIMBUS_LAND_BARREL_VOLCANO,
-    location_to_north=OW49_NIMBUS_LAND,
-)
+    location_to_north=OW49_NIMBUS_LAND)
 
 world_map_locations[OW51_TO_BOWSERS_KEEP] = WorldMapLocation(
     index=51,
@@ -910,8 +858,7 @@ world_map_locations[OW51_TO_BOWSERS_KEEP] = WorldMapLocation(
     go_location_b=OW03_VISTA_HILL,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_VISTA_HILL_MARIOS_PAD,
-    location_to_south=OW49_NIMBUS_LAND,
-)
+    location_to_south=OW49_NIMBUS_LAND)
 
 world_map_locations[OW52_YOSTER_ISLE] = WorldMapLocation(
     index=52,
@@ -923,8 +870,7 @@ world_map_locations[OW52_YOSTER_ISLE] = WorldMapLocation(
     run_event=E3852_WORLD_MAP_YOSTER_ISLE,
     enabled_to_north=True,
     check_flag_to_north=MAP_DIRECTIONAL_PIPE_VAULT_YOSTER_ISLE,
-    location_to_north=OW53_TO_PIPE_VAULT,
-)
+    location_to_north=OW53_TO_PIPE_VAULT)
 
 world_map_locations[OW53_TO_PIPE_VAULT] = WorldMapLocation(
     index=53,
@@ -938,8 +884,7 @@ world_map_locations[OW53_TO_PIPE_VAULT] = WorldMapLocation(
     go_location_b=OW20_PIPE_VAULT,
     enabled_to_south=True,
     check_flag_to_south=MAP_DIRECTIONAL_PIPE_VAULT_YOSTER_ISLE,
-    location_to_south=OW52_YOSTER_ISLE,
-)
+    location_to_south=OW52_YOSTER_ISLE)
 
 world_map_locations[OW54_COAL_MINES_BOWSERS_KEEP] = WorldMapLocation(
     index=54,
@@ -947,8 +892,7 @@ world_map_locations[OW54_COAL_MINES_BOWSERS_KEEP] = WorldMapLocation(
     y=0,
     show_check_flag=MAP_UNUSED_DOTS,
     go_location=False,
-    run_event=E3840_EMPTY,
-)
+    run_event=E3840_EMPTY)
 
 world_map_locations[OW55_FACTORY_BOWSERS_KEEP] = WorldMapLocation(
     index=55,
@@ -956,8 +900,7 @@ world_map_locations[OW55_FACTORY_BOWSERS_KEEP] = WorldMapLocation(
     y=0,
     show_check_flag=MAP_UNUSED_DOTS,
     go_location=False,
-    run_event=E3840_EMPTY,
-)
+    run_event=E3840_EMPTY)
 
 
 # World Map Location Collection

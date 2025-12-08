@@ -14,5 +14,4 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"\x15"), identifier="command_0x3505d5"),
         Pause1Frame(),
         Jmp(["command_0x3505d5"]),
-    ],
-)
+    ])

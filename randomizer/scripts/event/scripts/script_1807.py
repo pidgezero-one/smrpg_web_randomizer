@@ -15,8 +15,7 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             NPC_5,
             R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE,
-            ["EVENT_1807_ret_8"],
-        ),
+            ["EVENT_1807_ret_8"]),
         JmpToEvent(E1767_TEMPLE_FORTUNE_RESULTS_ROOM_GATE_OPENS),
         Return(identifier="EVENT_1807_ret_8"),
     ]

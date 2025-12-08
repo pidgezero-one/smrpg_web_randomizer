@@ -13,8 +13,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
         x=5,
@@ -25,8 +24,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
         x=10,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
         x=10,
@@ -49,8 +46,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
         x=14,
@@ -61,8 +57,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
         x=14,
@@ -73,6 +68,5 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

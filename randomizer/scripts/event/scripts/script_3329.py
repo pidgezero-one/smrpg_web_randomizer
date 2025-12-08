@@ -19,8 +19,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     cant_pass_npcs=True,
                     bit_7=True,
-                    identifier="EVENT_3329_action_queue_async_6_SUBSCRIPT_set_solidity_bits_1",
-                ),
+                    identifier="EVENT_3329_action_queue_async_6_SUBSCRIPT_set_solidity_bits_1"),
                 ASSetBit(TEMP_7044_4),
                 ASSetWalkingSpeed(NORMAL),
                 ASJumpToHeight(height=96, silent=True),
@@ -36,8 +35,7 @@ script = EventScript(
                 ASFaceEast7C(),
                 ASPause(1),
                 ASDb(bytearray(b"\xfd\x9c:")),
-            ],
-        ),
+            ]),
         EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
         Jmp(["EVENT_3329_pause_0"]),
         NonEmbeddedActionQueue(
@@ -51,65 +49,56 @@ script = EventScript(
                     7,
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     1,
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     2,
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     3,
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_14"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     4,
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     5,
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     6,
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(
                     index=9,
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10"),
                 ASJmp(["EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17"]),
                 ASSetSpriteSequence(
                     index=8,
@@ -117,52 +106,45 @@ script = EventScript(
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12"),
                 ASJmp(["EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17"]),
                 ASSetSpriteSequence(
                     index=8,
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_14",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_14"),
                 ASJmp(["EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17"]),
                 ASSetSpriteSequence(
                     index=9,
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16"),
                 ASDb(
                     bytearray(b"\xfd\x9ci"),
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17"),
                 ASJmpIfObjectWithinRange(
                     comparing_npc=NPC_0,
                     usually=0,
                     tiles=8,
                     destinations=[
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_27"
-                    ],
-                ),
+                    ]),
                 ASJmpIfObjectWithinRange(
                     comparing_npc=NPC_0,
                     usually=0,
                     tiles=16,
                     destinations=[
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_25"
-                    ],
-                ),
+                    ]),
                 ASJmpIfObjectWithinRange(
                     comparing_npc=NPC_0,
                     usually=0,
                     tiles=28,
                     destinations=[
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_23"
-                    ],
-                ),
+                    ]),
                 ASJumpToHeight(height=384, silent=True),
                 ASJmp(
                     [
@@ -172,8 +154,7 @@ script = EventScript(
                 ASJumpToHeight(
                     height=320,
                     silent=True,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_23",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_23"),
                 ASJmp(
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_create_packet_at_npc_coords_28"
@@ -182,8 +163,7 @@ script = EventScript(
                 ASJumpToHeight(
                     height=256,
                     silent=True,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_25",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_25"),
                 ASJmp(
                     [
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_create_packet_at_npc_coords_28"
@@ -192,21 +172,18 @@ script = EventScript(
                 ASJumpToHeight(
                     height=192,
                     silent=True,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_27",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_27"),
                 ASCreatePacketAtObjectCoords(
                     packet=P047_BLUE_FIRE_TRAIL,
                     target_npc=MARIO,
                     destinations=[
                         "EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_clear_solidity_bits_29"
                     ],
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_create_packet_at_npc_coords_28",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_create_packet_at_npc_coords_28"),
                 ASClearSolidityBits(
                     cant_pass_npcs=True,
                     bit_7=True,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_clear_solidity_bits_29",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_clear_solidity_bits_29"),
                 ASPause(4),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASDb(bytearray(b"\xc8\x14")),
@@ -216,8 +193,7 @@ script = EventScript(
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASPause(
                     1,
-                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_pause_37",
-                ),
+                    identifier="EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_pause_37"),
                 ASJmpIfMarioInAir(
                     ["EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_pause_37"]
                 ),
@@ -225,7 +201,6 @@ script = EventScript(
                     ["EVENT_3329_action_queue_async_6_SUBSCRIPT_set_solidity_bits_1"]
                 ),
             ],
-            identifier="EVENT_3329_non_embedded_action_queue_9",
-        ),
+            identifier="EVENT_3329_non_embedded_action_queue_9"),
     ]
 )

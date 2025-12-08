@@ -55,8 +55,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x02\x00\xff")),
                 ASPause(16),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_163"),
         ActionQueueAsync(
@@ -68,8 +67,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x01\x80\xfe")),
                 ASPause(16),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_166"),
         ActionQueueAsync(
@@ -81,8 +79,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x00\xab\xfe")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_169"),
         ActionQueueAsync(
@@ -94,8 +91,7 @@ script = EventScript(
                 ASDb(bytearray(b"$V\xffV\xfe")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_172"),
         ActionQueueAsync(
@@ -107,8 +103,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\xab\xfe\x00\xfe")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_175"),
         ActionQueueAsync(
@@ -120,8 +115,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x80\xfe@\xfe")),
                 ASPause(32),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_178"),
         ActionQueueAsync(
@@ -133,8 +127,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\xfe\x00\xfe")),
                 ASPause(32),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_181"),
         ActionQueueAsync(
@@ -146,8 +139,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x02\xab\xff")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_184"),
         ActionQueueAsync(
@@ -159,8 +151,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\xaa\x02\x00\x00")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_187"),
         ActionQueueAsync(
@@ -172,8 +163,7 @@ script = EventScript(
                 ASDb(bytearray(b"$U\x03U\x00")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_190"),
         ActionQueueAsync(
@@ -185,8 +175,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x04\xaa\x00")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_193"),
         ActionQueueAsync(
@@ -198,8 +187,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x80\x03\xc0\x00")),
                 ASPause(32),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1085_pause_action_script_196"),
         ActionQueueAsync(
@@ -211,8 +199,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x04\x00\x01")),
                 ASPause(32),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

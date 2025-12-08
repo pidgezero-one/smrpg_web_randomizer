@@ -36,8 +36,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     ChestNPC(
         occupant=TreasureChest,
@@ -73,8 +72,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     ChestNPC(
         occupant=TreasureChest,
@@ -110,6 +108,5 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

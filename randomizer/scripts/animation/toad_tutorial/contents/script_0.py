@@ -12,8 +12,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         SummonMonster(monster=Terrapin, position=0),
         SetAMEM16BitToConst(0x60, 64128),
         SetAMEM8BitToConst(0x62, 128),
@@ -36,8 +35,7 @@ script = SubroutineOrBanklessScript(
             looping=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         Pause1Frame(identifier="command_0x2f4f5"),
         SetAMEM8BitToAMEM(amem=0x62, source_amem=0x60),
         JmpIfAMEMBitsSet(0x62, [6], ["command_0x2f513"]),
@@ -45,5 +43,4 @@ script = SubroutineOrBanklessScript(
         JmpIfAMEM16BitGreaterOrEqualThanConst(0x62, 128, ["command_0x2f50e"]),
         SpriteSequence(sequence=1, looping_off=True),
         Jmp(["command_0x2f4f5"]),
-    ],
-)
+    ])

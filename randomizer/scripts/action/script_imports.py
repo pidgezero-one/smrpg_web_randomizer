@@ -186,8 +186,7 @@ from randomizer.types.overworld_scripts.action_scripts.commands import (
     StopSound,
     PlaySound,
     PlaySoundBalance,
-    FadeOutSoundToVolume,
-)
+    FadeOutSoundToVolume)
 from randomizer.types.overworld_scripts.action_scripts import ActionScript
 from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0000_EMPTY,
@@ -483,7 +482,7 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0290_MUSHROOM_KINGDOM_SHOP_LOGIC,
     E0291_MUSHROOM_KINGDOM_OUTER_CASTLE_GUARDS,
     E0292_MUSHROOM_KINGDOM_WEST_BLUE_TOAD,
-    E0293_WALLET_TOAD_1,
+    E0293_UNUSED,
     E0294_MUSHROOM_KINGDOM_INN_NPC,
     E0295_GO_TO_MUSHROOM_KINGDOM_OUTSIDE,
     E0296_MUSHROOM_KINGDOM_GRANDMA,
@@ -3292,11 +3291,11 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E3099_SHUFFLE_FIREWORKS_CHEST_GRANT,
     E3100_PROGRESSIVE_FIREWORKS_CHEST_GRANT,
     E3101_STAR_PIECE_HUNT_END_GAME,
-    E3102_EMPTY,
-    E3103_EMPTY,
-    E3104_EMPTY,
-    E3105_EMPTY,
-    E3106_EMPTY,
+    E3102_EXIT_JUMPING_KIDS_HOUSE,
+    E3103_ENTER_MK_GUEST_ROOM,
+    E3104_EXIT_MK_GUEST_ROOM,
+    E3104_ENTER_MK_STAIRCASE,
+    E3106_EXIT_MK_STAIRCASE,
     E3107_EMPTY,
     E3108_EMPTY,
     E3109_FREESTANDING_BEETLEMANIA_GRANT,
@@ -4285,8 +4284,7 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E4092_CLONE_RESERVED,
     E4093_CLONE_RESERVED,
     E4094_CLONE_RESERVED,
-    E4095_CLONE_RESERVED,
-)
+    E4095_CLONE_RESERVED)
 from randomizer.types.overworld_scripts.action_scripts.ids.script_ids import (
     A0000_DO_NOTHING,
     A0001_FIX_F_COORD_FOR_CLONES,
@@ -5311,8 +5309,7 @@ from randomizer.types.overworld_scripts.action_scripts.ids.script_ids import (
     A1020_EMPTY,
     A1021_EMPTY,
     A1022_HIT_BY_EXP_STAR,
-    A1023_ERUPTED_MAGMITES,
-)
+    A1023_ERUPTED_MAGMITES)
 from randomizer.types.overworld_scripts.arguments import (
     P000_FLASHING_POOF_FLOWER,
     P001_FLASHING_POOF_MUSHROOM,
@@ -6585,8 +6582,8 @@ from randomizer.types.overworld_scripts.arguments import (
     OCCUPIED_MUSHROOM_KINGDOM_HOUSE_SHYSTER_2_DEFEATED,
     OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED,
     UNKNOWN_7083_1,
+    RETURNED_WALLET,
     REFUSED_TO_RETURN_WALLET,
-    WALLET_GUY_UNKNOWN_7083_3,
     UNKNOWN_7083_4,
     UNKNOWN_7083_5,
     FOREST_LIBERATED,
@@ -6611,7 +6608,7 @@ from randomizer.types.overworld_scripts.arguments import (
     SEASIDE_BOSS_SET,
     CHAPEL_ITEMS_ANYWHERE_ENABLED,
     UNUSED_7086_3,
-    UNUSED_7086_4,
+    KINGDOM_BOUNCER_FREED,
     UNKNOWN_7086_5,
     SEASIDE_SHED_EMPTIED,
     ALTERNATE_STAR_PIECE_WIN_CONDITION,
@@ -6635,7 +6632,7 @@ from randomizer.types.overworld_scripts.arguments import (
     UNKNOWN_MONSTRO_TOWN_7089_1,
     UNKNOWN_TOWER_BOSS_2_FIGHT_7089_2,
     INVISIBLE_ITEMS_HAVE_BEEN_SPAWNED,
-    UNUSED_7089_4,
+    RARE_FROG_COIN_EXCHANGED,
     UNUSED_7089_5,
     UNUSED_7089_6,
     UNKNOWN_7089_7,
@@ -6790,7 +6787,7 @@ from randomizer.types.overworld_scripts.arguments import (
     BRIGHT_CARD_SOLD,
     COIN_CHEST_COMPLETED,
     UNKNOWN_709C_6,
-    WALLET_SOLD,
+    SECOND_WALLET_PRIZE_RECEIVED,
     UNKNOWN_709D_0,
     UNKNOWN_709D_1,
     UNKNOWN_709D_2,
@@ -6814,8 +6811,7 @@ from randomizer.types.overworld_scripts.arguments import (
     UNKNOWN_709F_4,
     TEMP_709F_5,
     MARRYMORE_UNKNOWN_709F_6,
-    UNKNOWN_709F_7,
-)
+    UNKNOWN_709F_7)
 from randomizer.types.overworld_scripts.ids import (
     SO000_SILENCE,
     SO001_MENU_SELECT,
@@ -7489,8 +7485,7 @@ from randomizer.types.overworld_scripts.ids import (
     R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
     R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN,
     R508_SMITHY_FACTORY_AREA_14_WSAVE_POINT,
-    R509_FACTORY_GROUNDS_SMITHYS_PAD,
-)
+    R509_FACTORY_GROUNDS_SMITHYS_PAD)
 from randomizer.types.overworld_scripts.action_scripts.arguments import (
     NORMAL,
     FAST,
@@ -7502,8 +7497,7 @@ from randomizer.types.overworld_scripts.action_scripts.arguments import (
     MARIO_OVERLAPS_ON_ALL_SIDES,
     NORMAL_PRIORITY,
     OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES,
-    PRIORITY_3,
-)
+    PRIORITY_3)
 from randomizer.entities.items.items import (
     Hammer,
     FroggieStick,
@@ -7660,5 +7654,4 @@ from randomizer.entities.items.items import (
     Fireworks,
     BrightCard,
     Mushroom2,
-    StarEgg,
-)
+    StarEgg)

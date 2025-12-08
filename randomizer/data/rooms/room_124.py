@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3605_PIPE_VAULT_PIPE_TO_TRIPLE_CHEST_ROOM,
             x=7,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0421_PIPE_VAULT_PIPES_ROOM_EXIT_PIPE,
             x=15,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0431_PIPE_VAULT_GOOMBA_THUMPIN_ENTRANCE_PIPE,
             x=13,
@@ -82,8 +79,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0492_PIPE_VAULT_PIRANHA_TIMER_1,
             x=6,
@@ -94,8 +90,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0494_PIPE_VAULT_PIRANHA_TIMER_2,
             x=8,
@@ -106,8 +101,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0495_PIPE_VAULT_PIRANHA_TIMER_3,
             x=10,
@@ -118,8 +112,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0496_PIPE_VAULT_PIRANHA_TIMER_4,
             x=12,
@@ -130,8 +123,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0497_PIPE_VAULT_PIRANHA_TIMER_5,
             x=14,
@@ -142,8 +134,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -173,8 +164,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.PIRANHA_PLANT_NPC,
             battle_pack=35,
@@ -184,8 +174,7 @@ room = Room(
             y=46,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.PIRANHA_PLANT_NPC,
             battle_pack=34,
@@ -195,8 +184,7 @@ room = Room(
             y=42,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.PIRANHA_PLANT_NPC,
             battle_pack=35,
@@ -206,7 +194,6 @@ room = Room(
             y=38,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

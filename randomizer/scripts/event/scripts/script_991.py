@@ -13,8 +13,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_marios_pad",
-        ),
+            identifier="EVENT_991_marios_pad"),
         EndAll(),
         RunDialog(
             dialog_id=DI2732_FROGFUCIUS_BANDITS_WAY_HINT,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_bandits",
-        ),
+            identifier="EVENT_991_bandits"),
         EndAll(),
         RunDialog(
             dialog_id=DI2733_FROGFUCIUS_MUSHROOM_KINGDOM_HINT,
@@ -33,8 +31,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_kingdom",
-        ),
+            identifier="EVENT_991_kingdom"),
         EndAll(),
         RunDialog(
             dialog_id=DI2734_FROGFUCIUS_LANDS_END_GROTTO_HINT,
@@ -43,8 +40,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_lands_end_secret",
-        ),
+            identifier="EVENT_991_lands_end_secret"),
         EndAll(),
         RunDialog(
             dialog_id=DI2735_FROGFUCIUS_MELODY_BAY_HINT,
@@ -53,8 +49,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_mb",
-        ),
+            identifier="EVENT_991_mb"),
         EndAll(),
         RunDialog(
             dialog_id=DI2736_FROGFUCIUS_ROSE_TOWN_HINT,
@@ -63,8 +58,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_rose_town",
-        ),
+            identifier="EVENT_991_rose_town"),
         EndAll(),
         RunDialog(
             dialog_id=DI2737_FROGFUCIUS_YOSTER_ISLE_HINT,
@@ -73,8 +67,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_yoster",
-        ),
+            identifier="EVENT_991_yoster"),
         EndAll(),
         RunDialog(
             dialog_id=DI2738_FROGFUCIUS_MOLEVILLE_TOWN_HINT,
@@ -83,8 +76,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_moleville_proper",
-        ),
+            identifier="EVENT_991_moleville_proper"),
         EndAll(),
         RunDialog(
             dialog_id=DI2739_FROGFUCIUS_MINE_HINT,
@@ -93,8 +85,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_mines",
-        ),
+            identifier="EVENT_991_mines"),
         EndAll(),
         RunDialog(
             dialog_id=DI2740_FROGFUCIUS_TOWER_HINT,
@@ -103,8 +94,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_tower",
-        ),
+            identifier="EVENT_991_tower"),
         EndAll(),
         RunDialog(
             dialog_id=DI2741_FROGFUCIUS_SEASIDE_HINT,
@@ -113,8 +103,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_seaside",
-        ),
+            identifier="EVENT_991_seaside"),
         EndAll(),
         RunDialog(
             dialog_id=DI2742_FROGFUCIUS_MONSTRO_HINT,
@@ -123,8 +112,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_monstro",
-        ),
+            identifier="EVENT_991_monstro"),
         EndAll(),
         RunDialog(
             dialog_id=DI2743_FROGFUCIUS_BEAN_VALLEY_HINT,
@@ -133,8 +121,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_bean",
-        ),
+            identifier="EVENT_991_bean"),
         EndAll(),
         RunDialog(
             dialog_id=DI2744_FROGFUCIUS_NIMBUS_TOWN_HINT,
@@ -143,8 +130,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_nimbus_proper",
-        ),
+            identifier="EVENT_991_nimbus_proper"),
         EndAll(),
         RunDialog(
             dialog_id=DI2745_FROGFUCIUS_NIMBUS_CASTLE_HINT,
@@ -153,8 +139,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_nimbus_castle",
-        ),
+            identifier="EVENT_991_nimbus_castle"),
         EndAll(),
         RunDialog(
             dialog_id=DI2746_FROGFUCIUS_MUSHROOM_WAY_HINT,
@@ -163,8 +148,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_mushroom_way",
-        ),
+            identifier="EVENT_991_mushroom_way"),
         EndAll(),
         RunDialog(
             dialog_id=DI2747_FROGFUCIUS_SHIP_HINT,
@@ -173,8 +157,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_ship",
-        ),
+            identifier="EVENT_991_ship"),
         EndAll(),
         RunDialog(
             dialog_id=DI2748_FROGFUCIUS_SEWER_HINT,
@@ -183,8 +166,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_sewer",
-        ),
+            identifier="EVENT_991_sewer"),
         EndAll(),
         RunDialog(
             dialog_id=DI2749_FROGFUCIUS_FOREST_HINT,
@@ -193,8 +175,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_forest",
-        ),
+            identifier="EVENT_991_forest"),
         EndAll(),
         RunDialog(
             dialog_id=DI2750_FROGFUCIUS_MARRYMORE_HINT,
@@ -203,8 +184,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_marrymore",
-        ),
+            identifier="EVENT_991_marrymore"),
         EndAll(),
         RunDialog(
             dialog_id=DI2751_FROGFUCIUS_LANDS_END_HINT,
@@ -213,8 +193,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_lands_end",
-        ),
+            identifier="EVENT_991_lands_end"),
         EndAll(),
         RunDialog(
             dialog_id=DI2752_FROGFUCIUS_TEMPLE_HINT,
@@ -223,8 +202,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_temple",
-        ),
+            identifier="EVENT_991_temple"),
         EndAll(),
         RunDialog(
             dialog_id=DI2753_FROGFUCIUS_BOOSTER_HILL_HINT,
@@ -232,8 +210,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         EndAll(),
         RunDialog(
             dialog_id=DI2754_FROGFUCIUS_VOLCANO_HINT,
@@ -242,8 +219,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_volcano",
-        ),
+            identifier="EVENT_991_volcano"),
         EndAll(),
         RunDialog(
             dialog_id=DI2755_FROGFUCIUS_BOWSERS_KEEP_HINT,
@@ -252,8 +228,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_keep",
-        ),
+            identifier="EVENT_991_keep"),
         EndAll(),
         RunDialog(
             dialog_id=DI2756_FROGFUCIUS_FACTORY_HINT,
@@ -262,8 +237,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_factory",
-        ),
+            identifier="EVENT_991_factory"),
         EndAll(),
         RunDialog(
             dialog_id=DI2757_FROGFUCIUS_CASINO_HINT,
@@ -272,8 +246,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_casino",
-        ),
+            identifier="EVENT_991_casino"),
         EndAll(),
         RunDialog(
             dialog_id=DI2760_FROGFUCIUS_MIDAS_HINT,
@@ -282,8 +255,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_midas",
-        ),
+            identifier="EVENT_991_midas"),
         EndAll(),
         RunDialog(
             dialog_id=DI2761_FROGFUCIUS_ROSE_WAY_HINT,
@@ -292,8 +264,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_rose_way",
-        ),
+            identifier="EVENT_991_rose_way"),
         EndAll(),
         RunDialog(
             dialog_id=DI2762_FROGFUCIUS_PIPE_VAULT_HINT,
@@ -302,8 +273,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_pipe",
-        ),
+            identifier="EVENT_991_pipe"),
         EndAll(),
         RunDialog(
             dialog_id=DI2763_FROGFUCIUS_BOOSTER_PASS_HINT,
@@ -312,8 +282,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_pass",
-        ),
+            identifier="EVENT_991_pass"),
         EndAll(),
         RunDialog(
             dialog_id=DI2764_FROGFUCIUS_STAR_HILL_HINT,
@@ -322,8 +291,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_star_hill",
-        ),
+            identifier="EVENT_991_star_hill"),
         EndAll(),
         RunDialog(
             dialog_id=DI2765_FROGFUCIUS_MARRYMORE_HOTEL_HINT,
@@ -332,8 +300,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_marrymore_inn",
-        ),
+            identifier="EVENT_991_marrymore_inn"),
         EndAll(),
         RunDialog(
             dialog_id=DI2766_FROGFUCIUS_FROG_DISCIPLE_HINT,
@@ -342,8 +309,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_seaside_frog",
-        ),
+            identifier="EVENT_991_seaside_frog"),
         EndAll(),
         RunDialog(
             dialog_id=DI2767_FROGFUCIUS_SEA_HINT,
@@ -352,8 +318,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_sea",
-        ),
+            identifier="EVENT_991_sea"),
         EndAll(),
         RunDialog(
             dialog_id=DI2768_FROGFUCIUS_BEANSTALK_HINT,
@@ -362,8 +327,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_beanstalk",
-        ),
+            identifier="EVENT_991_beanstalk"),
         EndAll(),
         RunDialog(
             dialog_id=DI2769_FROGFUCIUS_SUPER_JUMP_HINT,
@@ -372,8 +336,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_sj",
-        ),
+            identifier="EVENT_991_sj"),
         EndAll(),
         RunDialog(
             dialog_id=DI2770_FROGFUCIUS_KEEP_OBSTACLE_PRIZE_HINT,
@@ -382,8 +345,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_991_deep_keep",
-        ),
+            identifier="EVENT_991_deep_keep"),
         EndAll(),
     ]
 )

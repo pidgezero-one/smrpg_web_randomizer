@@ -5,27 +5,23 @@ the overall NPC table for the seed, and the VRAM partition table for the seed.""
 
 
 from math import ceil
-from typing import List, Optional, Type, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from randomizer.types.numbers.classes import Int8, UInt16, UInt4, UInt8
 
 from randomizer.types.npcs.objects.animations.types import SpriteAnimationCollection
 from randomizer.types.overworld_scripts.action_scripts.commands import (
-    SetSpriteSequence,
-)
+    SetSpriteSequence)
 from randomizer.types.overworld_scripts.event_scripts.commands.types import (
-    ActionSubcriptCommandPrototype,
-)
+    ActionSubcriptCommandPrototype)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
     TOTAL_SCRIPTS,
-    E0883_CHEST_ITEM_BAG_PACKET,
-)
+    E0883_CHEST_ITEM_BAG_PACKET)
 from randomizer.types.overworld_scripts.arguments.types import Packet
 from randomizer.types.overworld_scripts.arguments import (
     P005_BRIEF_POOF_BAG,
     P037_ITEM_BAG_FALL,
-    P090_BAG_STATIC,
-)
+    P090_BAG_STATIC)
 from randomizer.types.palettes import Palette
 from randomizer.types.scripts_common import ScriptCommandT
 from randomizer.types.sprites.ids import TOTAL_SPRITES, SPR1023_EMPTY
@@ -47,8 +43,7 @@ from randomizer.types.npcs.objects.animations import (
     SHOVELKNIGHT_RECOIL,
     SHOVELKNIGHT_TAUNT,
     SHOVELKNIGHT_TILE,
-    SMALL_MAGIKOOPA_HIT,
-)
+    SMALL_MAGIKOOPA_HIT)
 
 if TYPE_CHECKING:
     from randomizer.types.world import GameWorld
@@ -139,8 +134,7 @@ class StatueDetails:
         horizontal_pixel_shift: int = 0,
         vertical_pixel_shift: int = 0,
         north_facing_horizontal_pixel_shift: int = 0,
-        north_facing_vertical_pixel_shift: int = 0,
-    ):
+        north_facing_vertical_pixel_shift: int = 0):
         self.set_mold(mold)
         self.set_horizontal_pixel_shift(horizontal_pixel_shift)
         self.set_vertical_pixel_shift(vertical_pixel_shift)
@@ -180,11 +174,11 @@ class NPC:
     _animations = SpriteAnimationCollection()
     _eye_height: UInt8 = UInt8(17)
     _tower_entrance_horizontal_shift: UInt4 = UInt4(0)
-    _alt_palette: Optional[Palette] = None
+    _alt_palette: Palette | None = None
 
-    _statue: Optional[StatueDetails] = None
+    _statue: StatueDetails | None = None
 
-    _world: Optional["GameWorld"]
+    _world: "GameWorld" | None
 
     @property
     def world(self) -> "GameWorld":
@@ -269,7 +263,7 @@ class NPC:
             min_vram = max(min_vram, self.min_vram_from_mold(frame.mold_id))
         return min_vram
 
-    def _min_vram_size_from_script(self, script: List[ScriptCommandT]) -> int:
+    def _min_vram_size_from_script(self, script: list[ScriptCommandT]) -> int:
         min_vram = self.min_vram_from_mold(0)
         for cmd in script:
             if isinstance(cmd, SetSpriteSequence):
@@ -368,13 +362,13 @@ class NPC:
         return UInt4(self._tower_entrance_horizontal_shift)
 
     @property
-    def alt_palette(self) -> Optional[Palette]:
+    def alt_palette(self) -> Palette | None:
         """An alternate palette to be used by this NPC's sprite, if the player has
         selected the flag to distinguish similar bosses in the overworld."""
         return self._alt_palette
 
     @property
-    def statue(self) -> Optional[StatueDetails]:
+    def statue(self) -> StatueDetails | None:
         """A collection of properties specifying minor adjustments to make
         to the statue sprite before the room loads, if this is a statue."""
         return self._statue
@@ -400,7 +394,7 @@ class NPC:
             and self.byte6_bit2 == npc.byte6_bit2
         )
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         self._world = world
 
 
@@ -533,34 +527,34 @@ class AreaNPC:
     used in boss shuffling, which determine how some AreaNPCs are filled based on the results
     of the boss shuffle."""
 
-    _occupant: Type[NPC]
+    _occupant: type[NPC]
     _priority_0: bool = False
     _priority_1: bool = False
     _priority_2: bool = True
-    _show_shadow: Optional[bool] = None
-    _shadow_size: Optional[ShadowSize] = None
-    _acute_axis: Optional[int] = None
-    _obtuse_axis: Optional[int] = None
-    _height: Optional[int] = None
-    _y_shift: Optional[int] = None
-    _directions: Optional[VramStore] = None
-    _vram_size: Optional[int] = None
+    _show_shadow: bool | None = None
+    _shadow_size: ShadowSize | None = None
+    _acute_axis: int | None = None
+    _obtuse_axis: int | None = None
+    _height: int | None = None
+    _y_shift: int | None = None
+    _directions: VramStore | None = None
+    _vram_size: int | None = None
     _cannot_clone: bool = False
-    _byte2_bit0: Optional[bool] = None
-    _byte2_bit1: Optional[bool] = None
-    _byte2_bit2: Optional[bool] = None
-    _byte2_bit3: Optional[bool] = None
-    _byte2_bit4: Optional[bool] = None
-    _byte5_bit6: Optional[bool] = None
-    _byte5_bit7: Optional[bool] = None
-    _byte6_bit2: Optional[bool] = None
+    _byte2_bit0: bool | None = None
+    _byte2_bit1: bool | None = None
+    _byte2_bit2: bool | None = None
+    _byte2_bit3: bool | None = None
+    _byte2_bit4: bool | None = None
+    _byte5_bit6: bool | None = None
+    _byte5_bit7: bool | None = None
+    _byte6_bit2: bool | None = None
 
     @property
-    def occupant(self) -> Type[NPC]:
+    def occupant(self) -> type[NPC]:
         """The NPC occupying this position in the room."""
         return self._occupant
 
-    def set_occupant(self, occupant: Type[NPC]) -> None:
+    def set_occupant(self, occupant: type[NPC]) -> None:
         """Set the NPC occupying this position in the room."""
         self._occupant = occupant
 
@@ -598,7 +592,7 @@ class AreaNPC:
             return self.occupant().show_shadow
         return self._show_shadow
 
-    def set_show_shadow(self, show_shadow: Optional[bool] = None) -> None:
+    def set_show_shadow(self, show_shadow: bool | None = None) -> None:
         """If false, a shadow for the NPC when airborne will not be loaded to VRAM.\n
         This overrides the show_shadow property of the occupant NPC. This behaviour can be
         reversed by setting this to None."""
@@ -611,7 +605,7 @@ class AreaNPC:
             return self.occupant().shadow_size
         return self._shadow_size
 
-    def set_shadow_size(self, shadow_size: Optional[ShadowSize] = None) -> None:
+    def set_shadow_size(self, shadow_size: ShadowSize | None = None) -> None:
         """The size of the shadow for this NPC when it is airborne.\n
         This overrides the shadow_size property of the occupant NPC. This behaviour can be
         reversed by setting this to None."""
@@ -625,7 +619,7 @@ class AreaNPC:
             return self.occupant().acute_axis
         return UInt4(self._acute_axis)
 
-    def set_acute_axis(self, acute_axis: Optional[int] = None) -> None:
+    def set_acute_axis(self, acute_axis: int | None = None) -> None:
         """The collision width of this NPC.
         If projected onto a flat plane, this axis would run top right to bottom left.\n
         This overrides the acute_axis property of the occupant NPC. This behaviour can be
@@ -644,7 +638,7 @@ class AreaNPC:
             return self.occupant().obtuse_axis
         return UInt4(self._obtuse_axis)
 
-    def set_obtuse_axis(self, obtuse_axis: Optional[int] = None) -> None:
+    def set_obtuse_axis(self, obtuse_axis: int | None = None) -> None:
         """The collision length of this NPC.
         If projected onto a flat plane, this axis would run top left to bottom right.\n
         This overrides the obtuse_axis property of the occupant NPC. This behaviour can be
@@ -663,7 +657,7 @@ class AreaNPC:
         assert self._height <= 31
         return UInt8(self._height)
 
-    def set_height(self, height: Optional[int] = None) -> None:
+    def set_height(self, height: int | None = None) -> None:
         """The collision height of this NPC.\n
         This overrides the height property of the occupant NPC. This behaviour can be
         reversed by setting this to None."""
@@ -682,7 +676,7 @@ class AreaNPC:
         assert -16 <= self.y_shift <= 15
         return Int8(self._y_shift)
 
-    def set_y_shift(self, y_shift: Optional[int] = None) -> None:
+    def set_y_shift(self, y_shift: int | None = None) -> None:
         """The distance in pixels (from -16 to +15) to shift the sprite up or down
         as displayed, without also moving its collision box.\n
         This overrides the y_shift property of the occupant NPC. This behaviour can be
@@ -700,7 +694,7 @@ class AreaNPC:
             return self.occupant().directions
         return self._directions
 
-    def set_directions(self, directions: Optional[VramStore] = None) -> None:
+    def set_directions(self, directions: VramStore | None = None) -> None:
         """The directions which the NPC can be expected to face.\n
         This overrides the directions property of the occupant NPC. This behaviour can be
         reversed by setting this to None."""
@@ -714,7 +708,7 @@ class AreaNPC:
         assert self._vram_size <= 7
         return UInt4(self._vram_size)
 
-    def set_vram_size(self, vram_size: Optional[int] = None) -> None:
+    def set_vram_size(self, vram_size: int | None = None) -> None:
         """The number (0 to 7) of VRAM chunks the NPC's sprite can be expected to require.\n
         If not set, this uses the NPC's min_vram_size property."""
         if vram_size is None:
@@ -743,7 +737,7 @@ class AreaNPC:
             return self.occupant().byte2_bit0
         return self._byte2_bit0
 
-    def set_byte2_bit0(self, byte2_bit0: Optional[bool] = None) -> None:
+    def set_byte2_bit0(self, byte2_bit0: bool | None = None) -> None:
         """(unknown)"""
         self._byte2_bit0 = byte2_bit0
 
@@ -754,7 +748,7 @@ class AreaNPC:
             return self.occupant().byte2_bit1
         return self._byte2_bit1
 
-    def set_byte2_bit1(self, byte2_bit1: Optional[bool] = None) -> None:
+    def set_byte2_bit1(self, byte2_bit1: bool | None = None) -> None:
         """(unknown)"""
         self._byte2_bit1 = byte2_bit1
 
@@ -765,7 +759,7 @@ class AreaNPC:
             return self.occupant().byte2_bit2
         return self._byte2_bit2
 
-    def set_byte2_bit2(self, byte2_bit2: Optional[bool] = None) -> None:
+    def set_byte2_bit2(self, byte2_bit2: bool | None = None) -> None:
         """(unknown)"""
         self._byte2_bit2 = byte2_bit2
 
@@ -776,7 +770,7 @@ class AreaNPC:
             return self.occupant().byte2_bit3
         return self._byte2_bit3
 
-    def set_byte2_bit3(self, byte2_bit3: Optional[bool] = None) -> None:
+    def set_byte2_bit3(self, byte2_bit3: bool | None = None) -> None:
         """(unknown)"""
         self._byte2_bit3 = byte2_bit3
 
@@ -787,7 +781,7 @@ class AreaNPC:
             return self.occupant().byte2_bit4
         return self._byte2_bit4
 
-    def set_byte2_bit4(self, byte2_bit4: Optional[bool] = None) -> None:
+    def set_byte2_bit4(self, byte2_bit4: bool | None = None) -> None:
         """(unknown)"""
         self._byte2_bit4 = byte2_bit4
 
@@ -798,7 +792,7 @@ class AreaNPC:
             return self.occupant().byte5_bit6
         return self._byte5_bit6
 
-    def set_byte5_bit6(self, byte5_bit6: Optional[bool] = None) -> None:
+    def set_byte5_bit6(self, byte5_bit6: bool | None = None) -> None:
         """(unknown)"""
         self._byte5_bit6 = byte5_bit6
 
@@ -809,7 +803,7 @@ class AreaNPC:
             return self.occupant().byte5_bit7
         return self._byte5_bit7
 
-    def set_byte5_bit7(self, byte5_bit7: Optional[bool] = None) -> None:
+    def set_byte5_bit7(self, byte5_bit7: bool | None = None) -> None:
         """(unknown)"""
         self._byte5_bit7 = byte5_bit7
 
@@ -820,7 +814,7 @@ class AreaNPC:
             return self.occupant().byte6_bit2
         return self._byte6_bit2
 
-    def set_byte6_bit2(self, byte6_bit2: Optional[bool] = None) -> None:
+    def set_byte6_bit2(self, byte6_bit2: bool | None = None) -> None:
         """(unknown)"""
         self._byte6_bit2 = byte6_bit2
 
@@ -859,28 +853,27 @@ class AreaNPC:
 
     def __init__(
         self,
-        occupant: Type[NPC],
+        occupant: type[NPC],
         priority_0: bool = False,
         priority_1: bool = False,
         priority_2: bool = True,
-        show_shadow: Optional[bool] = None,
-        shadow_size: Optional[ShadowSize] = None,
-        y_shift: Optional[int] = None,
-        acute_axis: Optional[int] = None,
-        obtuse_axis: Optional[int] = None,
-        height: Optional[int] = None,
-        directions: Optional[VramStore] = None,
-        vram_size: Optional[int] = None,
+        show_shadow: bool | None = None,
+        shadow_size: ShadowSize | None = None,
+        y_shift: int | None = None,
+        acute_axis: int | None = None,
+        obtuse_axis: int | None = None,
+        height: int | None = None,
+        directions: VramStore | None = None,
+        vram_size: int | None = None,
         cannot_clone: bool = False,
-        byte2_bit0: Optional[bool] = None,
-        byte2_bit1: Optional[bool] = None,
-        byte2_bit2: Optional[bool] = None,
-        byte2_bit3: Optional[bool] = None,
-        byte2_bit4: Optional[bool] = None,
-        byte5_bit6: Optional[bool] = None,
-        byte5_bit7: Optional[bool] = None,
-        byte6_bit2: Optional[bool] = None,
-    ):
+        byte2_bit0: bool | None = None,
+        byte2_bit1: bool | None = None,
+        byte2_bit2: bool | None = None,
+        byte2_bit3: bool | None = None,
+        byte2_bit4: bool | None = None,
+        byte5_bit6: bool | None = None,
+        byte5_bit7: bool | None = None,
+        byte6_bit2: bool | None = None):
         self.set_occupant(occupant)
         self.set_priority_0(priority_0)
         self.set_priority_1(priority_1)
@@ -933,8 +926,7 @@ class CrocoBase(NPC):
         keep_challenge=CROCO_BAG_SUMMON,
         keep_summon=CROCO_BAG_HIT,
         chandelier_challenge=CROCO_BAG_SUMMON,
-        endgame_challenge=CROCO_BAG_SUMMON,
-    )
+        endgame_challenge=CROCO_BAG_SUMMON)
 
 
 class SmallMagikoopa(NPC):
@@ -953,8 +945,7 @@ class SmallMagikoopa(NPC):
         keep_challenge=SMALL_MAGIKOOPA_HIT,
         keep_summon=SMALL_MAGIKOOPA_HIT,
         chandelier_challenge=SMALL_MAGIKOOPA_HIT,
-        endgame_challenge=SMALL_MAGIKOOPA_HIT,
-    )
+        endgame_challenge=SMALL_MAGIKOOPA_HIT)
 
 
 class Villager(NPC):
@@ -1018,13 +1009,11 @@ class ShovelKnightBoss(NPC):
         keep_challenge=SHOVELKNIGHT_TILE,
         keep_summon=SHOVELKNIGHT_TILE,
         chandelier_challenge=SHOVELKNIGHT_TILE,
-        endgame_challenge=SHOVELKNIGHT_TILE,
-    )
+        endgame_challenge=SHOVELKNIGHT_TILE)
     _eye_height: int = 10
     _statue = StatueDetails(
         horizontal_pixel_shift=-3,
-        north_facing_horizontal_pixel_shift=-5,
-    )
+        north_facing_horizontal_pixel_shift=-5)
 
 
 class Jinx(NPC):
@@ -1048,8 +1037,7 @@ class Jinx(NPC):
         keep_challenge=JINX_PUNCH,
         keep_summon=JINX_PUNCH,
         chandelier_challenge=JINX_PUNCH,
-        endgame_challenge=JINX_PUNCH,
-    )
+        endgame_challenge=JINX_PUNCH)
 
 
 class Coin(ItemNPC):
@@ -1095,8 +1083,7 @@ class Fireball(NPC):
     _animations = SpriteAnimationCollection(
         tower_bullet=FIREBALL_SPIN,
         kitchen_prep=FIREBALL_SPIN,
-        factory_pierce=FIREBALL_SPIN_FAST,
-    )
+        factory_pierce=FIREBALL_SPIN_FAST)
 
 
 class MimicLarge(NPC):
@@ -1127,8 +1114,7 @@ class ShovelKnightBossLarge(NPC):
         statue_intro=SHOVELKNIGHT_ALT_TAUNT,
         statue_flustered=SHOVELKNIGHT_RECOIL,
         chandelier_challenge=SHOVELKNIGHT_TAUNT,
-        endgame_challenge=SHOVELKNIGHT_TAUNT,
-    )
+        endgame_challenge=SHOVELKNIGHT_TAUNT)
 
 
 class CloneNPC(NPC):

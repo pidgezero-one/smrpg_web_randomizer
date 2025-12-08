@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3750_NIMBUS_MEZZANINE_FALL_TO_HOT_SPRINGS,
             x=28,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3787_NIMBUS_MEZZANINE_FALL_TO_EAST_VINE_ROOM,
             x=24,
@@ -70,8 +68,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3787_NIMBUS_MEZZANINE_FALL_TO_EAST_VINE_ROOM,
             x=24,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -112,8 +108,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.TRAMPOLINE_WARP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -140,7 +135,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -64,7 +63,5 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
-    ],
-)
+            x_bit_7=False),
+    ])

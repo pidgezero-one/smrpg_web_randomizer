@@ -15,8 +15,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASVisibilityOff(),
                 ASWalk1StepNortheast(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0844_VOLCANO_EXIT_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         ActionQueueSync(
@@ -47,8 +46,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -78,8 +76,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -109,8 +106,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -140,8 +136,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -171,8 +166,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -189,16 +183,14 @@ script = EventScript(
                 ASPause(4),
                 ASClearBit(TEMP_7043_0),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(NORMAL),
                 ASVisibilityOn(),
                 ASWalk1StepSouthwest(),
-            ],
-        ),
+            ]),
         SetBit(VOLCANO_TRAMPOLINE_ROOM_ANIMATION_COMPLETED),
         Return(),
         JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3344_jmp_to_event_13"),

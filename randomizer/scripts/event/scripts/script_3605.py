@@ -16,8 +16,7 @@ script = EventScript(
             x=0,
             y=79,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         EnableControlsUntilReturn([]),
         ActionQueueAsync(
             target=MARIO,
@@ -26,8 +25,7 @@ script = EventScript(
                 ASAddConstToVar(Z_COORD_2, 2304),
                 ASDb(bytearray(b"\x99")),
                 ASJumpToHeight(height=0, silent=True),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

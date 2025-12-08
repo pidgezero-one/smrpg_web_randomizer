@@ -17,8 +17,7 @@ script = EventScript(
                 ASObjectMemorySetBit(
                     arg_1=0x30,
                     bits=[4],
-                    identifier="EVENT_3193_action_queue_sync_4_SUBSCRIPT_object_memory_set_bit_0",
-                ),
+                    identifier="EVENT_3193_action_queue_sync_4_SUBSCRIPT_object_memory_set_bit_0"),
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
@@ -48,8 +47,7 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetBit(MINES_HENCHMAN_RIGHT_DEFEATED),
         SetBit(TEMP_7043_1),
         RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),

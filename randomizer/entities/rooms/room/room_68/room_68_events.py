@@ -13,8 +13,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1578_MIDAS_RIVER_BARREL_SUBROUTINE,
         x=29,
@@ -25,8 +24,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1579_MIDAS_RIVER_BARREL_SUBROUTINE,
         x=15,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1581_MIDAS_RIVER_BARREL_SUBROUTINE,
         x=5,
@@ -49,8 +46,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1575_MIDAS_RIVER_BARREL_SUBROUTINE,
         x=4,
@@ -61,8 +57,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1576_MIDAS_RIVER_BARREL_SUBROUTINE,
         x=4,
@@ -73,8 +68,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1577_MIDAS_RIVER_BARREL_SUBROUTINE,
         x=3,
@@ -85,8 +79,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1580_MIDAS_RIVER_BARREL_SUBROUTINE,
         x=1,
@@ -97,6 +90,5 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

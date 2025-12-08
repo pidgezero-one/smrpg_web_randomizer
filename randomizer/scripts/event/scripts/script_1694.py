@@ -24,8 +24,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASFaceSouth(),
                 ASSetPriority(2),
-            ],
-        ),
+            ]),
         JmpToSubroutine(["EVENT_1694_play_sound_18"]),
         JmpIfBitSet(TEMPLE_ELEVATOR_DIRECTION, ["EVENT_1694_action_queue_async_13"]),
         ActionQueueAsync(
@@ -36,8 +35,7 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASFixedFCoordOn(),
                 ASShiftSouthSteps(16),
-            ],
-        ),
+            ]),
         JmpToSubroutine(["EVENT_1694_stop_sound_24"]),
         ActionQueueAsync(
             target=MARIO,
@@ -49,8 +47,7 @@ script = EventScript(
                 ASShadowOn(),
                 ASWalk1StepSoutheast(),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         SetBit(TEMPLE_ELEVATOR_DIRECTION),
         Return(),
         ActionQueueAsync(
@@ -62,8 +59,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASShiftNorthSteps(16),
             ],
-            identifier="EVENT_1694_action_queue_async_13",
-        ),
+            identifier="EVENT_1694_action_queue_async_13"),
         JmpToSubroutine(["EVENT_1694_stop_sound_24"]),
         ActionQueueAsync(
             target=MARIO,
@@ -75,8 +71,7 @@ script = EventScript(
                 ASShadowOn(),
                 ASWalk1StepNorthwest(),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ClearBit(TEMPLE_ELEVATOR_DIRECTION),
         Return(),
         PlaySound(
@@ -91,8 +86,7 @@ script = EventScript(
                 ASWalkSouthPixels(8),
                 ASWalkNorthPixels(4),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Pause(8),
         PlaySound(sound=SO048_MINECART_START, channel=6),
         Return(),
@@ -101,8 +95,7 @@ script = EventScript(
             target=NPC_0,
             subscript=[
                 ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6])
-            ],
-        ),
+            ]),
         Pause(4),
         PlaySound(sound=SO113_OPEN_CHAMBER_DOOR, channel=6),
         ActionQueueAsync(
@@ -113,8 +106,7 @@ script = EventScript(
                 ASWalkSouthPixels(8),
                 ASWalkNorthPixels(4),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

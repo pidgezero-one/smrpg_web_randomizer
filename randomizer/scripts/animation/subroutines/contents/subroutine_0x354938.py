@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x354938",
-        ),
+            identifier="queuestart_0x354938"),
         NewSpriteAtCoords(
             sprite_id=SPR0517_BOMB_EXPLOSION,
             sequence=0,
@@ -25,8 +24,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         PauseScriptUntilSpriteSequenceDone(),
         RemoveObject(),
         ClearAMEM8Bit(0x68),
@@ -69,8 +67,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3549c3",
-        ),
+            identifier="queuestart_0x3549c3"),
         NewEffectObject(effect=EF0083_SAND_STORM_BG__2BPP_, playback_off=True),
         MoveObject(
             speed=1,
@@ -78,8 +75,7 @@ script = SubroutineOrBanklessScript(
             end_position=-1025,
             apply_to_y=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         FadeInEffect(duration=1),
         Layer3On(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\x9c\x00D\x08\x00\x08\x00\x10\x00")),
@@ -107,5 +103,4 @@ script = SubroutineOrBanklessScript(
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),
-    ],
-)
+    ])

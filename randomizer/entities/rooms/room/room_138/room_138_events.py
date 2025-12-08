@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1673_LANDS_END_2_INVISIBLE_PLATFORM_UPPER,
         x=25,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1566_LANDS_END_DOG_PIT,
         x=25,
@@ -37,8 +35,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1566_LANDS_END_DOG_PIT,
         x=25,
@@ -49,6 +46,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

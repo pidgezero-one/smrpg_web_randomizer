@@ -23,8 +23,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         RunDialog(
             dialog_id=DI1230_TEMPLE_BOSS_FORTUNE,
@@ -33,8 +32,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_1799_run_dialog_13",
-        ),
+            identifier="EVENT_1799_run_dialog_13"),
         Return(),
     ]
 )

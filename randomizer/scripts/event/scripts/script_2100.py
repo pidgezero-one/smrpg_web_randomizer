@@ -16,8 +16,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_2100_run_dialog_6",
-        ),
+            identifier="EVENT_2100_run_dialog_6"),
         JmpIfDialogOptionBSelected(["EVENT_2100_ret_45"]),
         StoreCoinCountTo7000(),
         CompareVarToConst(PRIMARY_TEMP_7000, 30),
@@ -28,8 +27,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         SetVarToConst(PRIMARY_TEMP_7000, 30, identifier="EVENT_2100_set_13"),
         Dec7000FromCoins(),
@@ -46,10 +44,8 @@ script = EventScript(
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                )
-            ],
-        ),
+                    looping=True)
+            ]),
         Pause(60),
         CircleMaskShrinkToObject(target=MARIO, width=0, speed=1, static=True),
         Pause(30),
@@ -62,16 +58,14 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=8, sprite_offset=2, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_0, subscript=[ASFaceNortheast()]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASBounceToXYWithHeight(x=4, y=41, height=0),
-            ],
-        ),
+            ]),
         Pause(30),
         CircleMaskShrinkToObject(target=MARIO, width=40, speed=3, static=True),
         Pause(10),
@@ -89,8 +83,7 @@ script = EventScript(
             width=255,
             speed=5,
             static=True,
-            identifier="EVENT_2100_circle_mask_static_38",
-        ),
+            identifier="EVENT_2100_circle_mask_static_38"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -99,8 +92,7 @@ script = EventScript(
                 ASJumpToHeight(120),
                 ASPause(60),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_0, subscript=[ASFaceSouthwest()]),
         Pause(20),
         RestoreAllHP(),

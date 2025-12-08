@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -64,8 +63,7 @@ room = Room(
             dst_z=5,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=13,
             y=43,
@@ -83,8 +81,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -118,8 +115,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 1
             occupant=npcs.GuGoomba,
             battle_pack=115,
@@ -133,8 +129,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 2
             occupant=npcs.Malakoopa,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -166,8 +161,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 3
             occupant=npcs.Malakoopa,
             battle_pack=112,
@@ -181,8 +175,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 4
             occupant=npcs.Malakoopa,
             battle_pack=112,
@@ -196,8 +189,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 5
             occupant=npcs.Malakoopa,
             battle_pack=112,
@@ -211,8 +203,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 6
             occupant=npcs.Empty,
             initiator=Initiator.NONE,
@@ -247,8 +238,7 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 7
             occupant=npcs.Empty,
             event_script=0,
@@ -265,7 +255,6 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

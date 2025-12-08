@@ -12,5 +12,4 @@ room = Room(
     objects=objects,
     extra_sprite_actions=[
         ExtraSpriteActions.TUMBLE_BACK,
-    ],
-)
+    ])

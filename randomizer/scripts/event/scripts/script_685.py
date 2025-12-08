@@ -11,16 +11,14 @@ script = EventScript(
             subscript=[
                 ASSet700CToObjectCoord(target_npc=NPC_3, coord=COORD_F, pixel=True),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI2194_MARRYMORE_PHOTO,
             above_object=MEM_70A8,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(target=NPC_3, subscript=[ASFaceEast7C()]),
         Return(),
     ]

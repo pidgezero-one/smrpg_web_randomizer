@@ -17,8 +17,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0527_YELLOW_MIST_STEAM_FORMS_INTO_SMALL_STAR,
             sequence=1,
@@ -29,8 +28,7 @@ script = SubroutineOrBanklessScript(
             looping=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM16Bit(0x60),
         ClearAMEM8Bit(0x6E),
         ClearAMEM8Bit(0x6F),
@@ -64,8 +62,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35fcf6",
-        ),
+            identifier="queuestart_0x35fcf6"),
         NewSpriteAtCoords(
             sprite_id=SPR0527_YELLOW_MIST_STEAM_FORMS_INTO_SMALL_STAR,
             sequence=4,
@@ -75,8 +72,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM16Bit(0x60),
         ClearAMEM8Bit(0x6F),
         ObjectQueueAtOffsetAndIndex(index=6, target_address=0x35F9A2),
@@ -96,5 +92,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6E, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6E, amem=0x6E),
         ReturnObjectQueue(),
-    ],
-)
+    ])

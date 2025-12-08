@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358323",
-        ),
+            identifier="queuestart_0x358323"),
         NewSpriteAtCoords(
             sprite_id=SPR0528_VERY_SMALL_BLACK_DOT,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ShineEffect(
             colour_count=6, starting_colour_index=1, glow_duration=1, east=True
         ),
@@ -51,8 +49,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewEffectObject(effect=EF0013_SPELL_CAST_HEART, looping_on=True),
         PlaySound(sound=S0035_SPELL_POWER_UP),
         Db(bytearray(b"\x8a\x01")),
@@ -66,5 +63,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6E, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6E, amem=0x6E),
         ReturnObjectQueue(),
-    ],
-)
+    ])

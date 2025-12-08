@@ -3,8 +3,7 @@ from randomizer.management.disassembler_common import (
     shortify,
     shortify_signed,
     byte_signed,
-    writeline,
-)
+    writeline)
 import re
 from randomizer.types.sprites.constants.sprite_ids import *
 from copy import deepcopy
@@ -2584,8 +2583,7 @@ class Command(BaseCommand):
             "-d",
             "--debug",
             action="store_true",
-            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer",
-        )
+            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer")
 
     def handle(self, *args, **options):
         debug = options["debug"]
@@ -2679,10 +2677,8 @@ class Command(BaseCommand):
                                 hint,
                                 str(ind)
                                 if ind >= len(SCRIPT_NAMES[key])
-                                else SCRIPT_NAMES[key][ind],
-                            ),
-                            [],
-                        )
+                                else SCRIPT_NAMES[key][ind]),
+                            [])
                     )
                 for i in range(len(ptrs)):
                     this_script = []
@@ -3044,8 +3040,7 @@ class Command(BaseCommand):
                             rom,
                             ptrs[i] + offset + extra_offset,
                             ptrs[i + 1] - 1,
-                            bank_num,
-                        )
+                            bank_num)
                     else:
                         cmd_lengths.append(bank["end"] - ptrs[i])
                         script_content = tok(
@@ -3194,8 +3189,7 @@ class Command(BaseCommand):
                 export_file = open(
                     "randomizer/scripts/animation/monster_behaviours/export_%s.py"
                     % (spl[1]),
-                    "w",
-                )
+                    "w")
                 output_35collection_import += (
                     "\nfrom .monster_behaviours.export_%s import bank as monster_behaviour_%s"
                     % (spl[1], spl[1])
@@ -3209,8 +3203,7 @@ class Command(BaseCommand):
                         "\nfrom .%s.export import bank as %s"
                         % (
                             key,
-                            key,
-                        )
+                            key)
                     )
                     output_02collection_export += "\n\t%s," % key
                 if coverage == "35":
@@ -3218,8 +3211,7 @@ class Command(BaseCommand):
                         "\nfrom .%s.export import bank as %s"
                         % (
                             key,
-                            key,
-                        )
+                            key)
                     )
                     output_35collection_export += "\n\t%s," % key
                 if coverage == "3A":
@@ -3227,8 +3219,7 @@ class Command(BaseCommand):
                         "\nfrom .%s.export import bank as %s"
                         % (
                             key,
-                            key,
-                        )
+                            key)
                     )
                     output_3Acollection_export += "\n\t%s," % key
 
@@ -3325,28 +3316,24 @@ class Command(BaseCommand):
                     script_alias = "subroutine_0x%s" % hv.upper()
                     import_body += "\nfrom .contents.%s import script as %s" % (
                         script_alias,
-                        script_alias,
-                    )
+                        script_alias)
                 elif "behaviour" in key:
                     spl = key.split("_")
                     file = open(
                         "randomizer/scripts/animation/monster_behaviours/contents/script_%s.py"
                         % (spl[1]),
-                        "w",
-                    )
+                        "w")
                     script_alias = "subroutine_0x%s" % spl[1]
                     import_body += "\nfrom .contents.%s import script as %s" % (
                         script_alias,
-                        script_alias,
-                    )
+                        script_alias)
                 else:
                     dest = "randomizer/scripts/animation/" + key
                     file = open("%s/contents/script_%i.py" % (dest, index), "w")
                     script_alias = "script_%i" % index
                     import_body += "\nfrom .contents.%s import script as %s" % (
                         script_alias,
-                        script_alias,
-                    )
+                        script_alias)
 
                 output = ""
                 if "behaviour" in key:
@@ -3386,16 +3373,14 @@ class Command(BaseCommand):
                             """\n\nscript = BattleAnimationScript(header=["%s, %s"], script = [\n\t"""
                             % (
                                 scripts_with_headers["70"][0],
-                                scripts_with_headers["70"][1],
-                            )
+                                scripts_with_headers["70"][1])
                         )
                     elif index == 85:
                         output += (
                             """\n\nscript = BattleAnimationScript(header=["%s, %s"], script = [\n\t"""
                             % (
                                 scripts_with_headers["85"][0],
-                                scripts_with_headers["85"][1],
-                            )
+                                scripts_with_headers["85"][1])
                         )
                     else:
                         output += "\n\nscript = BattleAnimationScript(script=[\n\t"

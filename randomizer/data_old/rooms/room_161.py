@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -64,8 +63,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=10,
             y=41,
@@ -83,8 +81,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -118,8 +115,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 1
             occupant=npcs.Greaper,
             battle_pack=76,
@@ -133,8 +129,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 2
             occupant=npcs.Greaper,
             battle_pack=76,
@@ -148,8 +143,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.Letter,
             initiator=Initiator.PRESS_A_FROM_FRONT,
@@ -180,7 +174,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0678_MARRYMORE_JUMP_ON_ORGAN_PIPE,
         x=22,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0701_PASTOR_MARIO,
         x=23,
@@ -37,6 +35,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

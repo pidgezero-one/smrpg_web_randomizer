@@ -16,6 +16,5 @@ exits = [
         destination=OW19_FOREST_MAZE,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
 ]

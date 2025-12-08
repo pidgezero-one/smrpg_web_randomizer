@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=263,
             x=13,
@@ -55,8 +54,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -76,8 +74,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -110,8 +107,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.OldRedToad,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -142,8 +138,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.GreenSmallToad,
             event_script=312,
@@ -157,7 +152,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

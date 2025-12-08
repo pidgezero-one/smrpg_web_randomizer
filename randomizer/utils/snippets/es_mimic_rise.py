@@ -1,10 +1,7 @@
 """Script snippets that can be inserted easily."""
 
-from typing import List
-
 from randomizer.types.overworld_scripts.action_scripts.classes import (
-    UsableActionScriptCommand,
-)
+    UsableActionScriptCommand)
 from randomizer.types.overworld_scripts.action_scripts.commands.commands import (
     FaceSouthwest,
     Pause,
@@ -12,14 +9,12 @@ from randomizer.types.overworld_scripts.action_scripts.commands.commands import 
     ShiftZDownPixels,
     ShiftZUpPixels,
     ShiftZUpSteps,
-    VisibilityOn,
-)
+    VisibilityOn)
 from randomizer.types.overworld_scripts.action_scripts.arguments.sequence_speeds import (
     FAST,
-    VERY_FAST,
-)
+    VERY_FAST)
 
-commands: List[UsableActionScriptCommand] = [
+commands: list[UsableActionScriptCommand] = [
     FaceSouthwest(),
     VisibilityOn(),
     Pause(35),

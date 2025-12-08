@@ -19,13 +19,11 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_mold=True, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         SetSyncActionScript(
             NPC_1,
             A0456_FACTORY_SWITCH_ROOM_AMEBOID_INIT,
-            identifier="EVENT_2361_set_action_script_sync_8",
-        ),
+            identifier="EVENT_2361_set_action_script_sync_8"),
         SetSyncActionScript(NPC_2, A0456_FACTORY_SWITCH_ROOM_AMEBOID_INIT),
         SetSyncActionScript(NPC_3, A0456_FACTORY_SWITCH_ROOM_AMEBOID_INIT),
         SetSyncActionScript(NPC_4, A0456_FACTORY_SWITCH_ROOM_AMEBOID_INIT),

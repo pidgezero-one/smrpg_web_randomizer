@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3564d7",
-        ),
+            identifier="queuestart_0x3564d7"),
         EnableSpritesOnSubscreen(),
         NewSpriteAtCoords(
             sprite_id=SPR0794_DARK_RED_YELLOW_FIREBALL,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             palette_row=8,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         FadeInSprite(duration=2),
         VisibilityOn(),
         ClearAMEM8Bit(0x68),
@@ -48,5 +46,4 @@ script = SubroutineOrBanklessScript(
         JmpIfAMEM8BitNotEqualsConst(0x69, 12, ["command_0x356512"]),
         DisableSpritesOnSubscreen(),
         Jmp(["command_0x356b01"]),
-    ],
-)
+    ])

@@ -13,8 +13,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1315_TOWER_BOSS_1_HIDES_BEHIND_DOORWAY_IN_LOBBY_2,
         x=28,
@@ -25,6 +24,5 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

@@ -11,5 +11,4 @@ script = SubroutineOrBanklessScript(
         AttackTimerBegins(),
         Db(bytearray(b"<\x00\x08")),
         Jmp(["command_0x350e93"]),
-    ],
-)
+    ])

@@ -14,8 +14,7 @@ from .classes import (
     RegularClone,
     ChestNPC,
     ChestClone,
-    Room,
-)
+    Room)
 from .enums import (
     ExtraSpriteActions,
     ObjectType,
@@ -24,5 +23,4 @@ from .enums import (
     EdgeDirection,
     ExitType,
     BufferType,
-    BufferSpace,
-)
+    BufferSpace)

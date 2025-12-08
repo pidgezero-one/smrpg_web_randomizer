@@ -22,8 +22,7 @@ script = EventScript(
                 ASAddZCoord1Step(),
                 ASDecZCoord1Step(),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
@@ -38,8 +37,7 @@ script = EventScript(
                 ASPause(5),
                 ASFaceNorthwest(),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
@@ -48,8 +46,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=5, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         Pause(60),
         ActionQueueAsync(
             target=NPC_8,
@@ -59,8 +56,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASJumpToHeight(108),
                 ASWalk1StepNortheast(),
-            ],
-        ),
+            ]),
         Pause(23),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
         SetBit(TEMP_707C_5),
@@ -83,8 +79,7 @@ script = EventScript(
         RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=6, y=88)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=6, y=88)]),
         PlaySound(sound=SO019_LONG_FALL, channel=6),
         Pause(30),
         ActionQueueAsync(
@@ -102,8 +97,7 @@ script = EventScript(
                 ),
                 ASShadowOff(),
                 ASSetSolidityBits(cant_walk_through=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -114,8 +108,7 @@ script = EventScript(
                 ASWalkNorthPixels(8),
                 ASWalkSouthPixels(8),
                 ASWalkNorthPixels(4),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_9,
             subscript=[
@@ -124,8 +117,7 @@ script = EventScript(
                 ASPause(5),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=6),
                 ASPause(55),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -138,8 +130,7 @@ script = EventScript(
                 ASJmp(["EVENT_1710_set_bit_47"]),
                 ASShiftSouthSteps(6),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         SetBit(MUSHROOM_KINGDOM_OCCUPIED, identifier="EVENT_1710_set_bit_47"),
         SetBit(BANDITS_WAY_LIBERATED),
         JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),

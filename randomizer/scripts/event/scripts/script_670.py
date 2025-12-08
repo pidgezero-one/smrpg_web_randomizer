@@ -14,15 +14,13 @@ script = EventScript(
             subscript=[
                 ASTransferXYZFPixels(x=8, y=252, z=0, direction=EAST),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
                 ASTransferXYZFPixels(x=8, y=252, z=0, direction=EAST),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_5, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_6, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_7, subscript=[ASSetPriority(3)]),

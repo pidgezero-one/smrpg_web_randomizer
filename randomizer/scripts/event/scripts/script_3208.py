@@ -21,8 +21,7 @@ script = EventScript(
                 ASEndLoop(),
                 ASFloatingOn(),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

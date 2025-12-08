@@ -18,8 +18,7 @@ script = EventScript(
             x=2,
             y=26,
             z=1,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         JmpToEvent(E0282_UNKNOWN_PIPE_VAULT),
     ]
 )

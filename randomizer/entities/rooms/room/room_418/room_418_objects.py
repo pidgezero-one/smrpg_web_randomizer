@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=VineBeanstalk,
@@ -69,8 +68,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularNPC(
         occupant=BrownBrick,
@@ -103,8 +101,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=OldGreenToad,
@@ -137,6 +134,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

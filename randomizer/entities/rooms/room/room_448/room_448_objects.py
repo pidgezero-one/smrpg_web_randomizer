@@ -35,8 +35,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=WarpTrampoline,
@@ -69,6 +68,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

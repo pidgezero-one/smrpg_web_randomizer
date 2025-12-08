@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0288_UNKNOWN_ROSE_TOWN,
         x=3,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0558_ROSE_TOWN_SHOP_EXIT,
         x=2,
@@ -37,6 +35,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

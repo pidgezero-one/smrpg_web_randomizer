@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=RedNimbite,
@@ -69,8 +68,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackNPC(
         occupant=Pinwheel,
@@ -105,8 +103,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=Pinwheel,
@@ -141,8 +138,7 @@ objects = [
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_4
     BattlePackNPC(
         occupant=SlingShy,
@@ -177,8 +173,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_5
     BattlePackNPC(
         occupant=SlingShy,
@@ -212,6 +207,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

@@ -15,5 +15,4 @@ room = Room(
         ExtraSpriteActions.DISPLEASED_FRONT,
         ExtraSpriteActions.SURPRISE_FRAME,
         ExtraSpriteActions.WOBBLE,
-    ],
-)
+    ])

@@ -107,5 +107,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToAMEM(amem=0x67, source_amem=0xC7),
         JmpIfAMEM8BitNotEqualsConst(0x67, 1, ["command_0x35255e"]),
         ReturnSubroutine(),
-    ],
-)
+    ])

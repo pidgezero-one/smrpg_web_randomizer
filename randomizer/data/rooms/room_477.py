@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=17,
             y=67,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=5,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -103,8 +101,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -114,8 +111,7 @@ room = Room(
             y=87,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 2
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -125,8 +121,7 @@ room = Room(
             y=81,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 3
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -136,8 +131,7 @@ room = Room(
             y=83,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 4
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -147,8 +141,7 @@ room = Room(
             y=77,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 5
             npc=npcs.TERRA_COTTA_NPC,
             battle_pack=110,
@@ -158,7 +151,6 @@ room = Room(
             y=79,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
     ]
 )

@@ -22,8 +22,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkNortheastSteps(4),
                 ASShiftNorthSteps(22),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -36,8 +35,7 @@ script = EventScript(
                 ASBounceToXYWithHeight(x=24, y=113, height=44),
                 ASWalkNortheastSteps(2),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -53,8 +51,7 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -70,8 +67,7 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -87,8 +83,7 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -104,8 +99,7 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
@@ -121,8 +115,7 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
@@ -138,8 +131,7 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -155,8 +147,7 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_9,
             subscript=[
@@ -172,8 +163,7 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASFaceSoutheast(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_70AB, 21),
         RunEventAsSubroutine(E1739_REFOCUS_CAMERA),
         SetBit(SKY_BRIDGE_PAN),
@@ -192,8 +182,7 @@ script = EventScript(
                 ),
                 ASCreatePacketAt7010(
                     packet=P032_BLUE_CLOUD,
-                    destinations=["EVENT_1777_action_queue_async_26_SUBSCRIPT_pause_4"],
-                ),
+                    destinations=["EVENT_1777_action_queue_async_26_SUBSCRIPT_pause_4"]),
                 ASPlaySound(sound=SO134_SWIPE, channel=4),
                 ASPause(1),
                 ASSetSpriteSequence(
@@ -204,8 +193,7 @@ script = EventScript(
                 ASWalkNorthwestPixels(4),
                 ASWalkSoutheastPixels(4),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         Dec(TEMP_70AB),
         EndLoop(),
         SetVarToConst(TEMP_70AB, 0),

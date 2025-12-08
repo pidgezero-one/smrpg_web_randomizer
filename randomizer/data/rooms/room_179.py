@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=16,
             y=126,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -102,8 +100,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.GREAPER_NPC,
             initiator=EventInitiator.NONE,
@@ -130,8 +127,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -160,8 +156,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.J_PUZZLE_BLOCK_NPC_5,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -188,7 +183,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

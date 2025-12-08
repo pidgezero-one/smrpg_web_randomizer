@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=Empty,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=Empty,
@@ -67,8 +65,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Empty,
@@ -83,8 +80,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Empty,
@@ -99,8 +95,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Empty,
@@ -115,8 +110,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=Empty,
@@ -131,8 +125,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularNPC(
         occupant=YellowStarPiece,
@@ -165,8 +158,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_8
     RegularNPC(
         occupant=SpinningStarPiece,
@@ -199,8 +191,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=SpinningStarPiece,
@@ -215,8 +206,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularClone(
         occupant=SpinningStarPiece,
@@ -231,8 +221,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularClone(
         occupant=SpinningStarPiece,
@@ -247,8 +236,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     RegularClone(
         occupant=SpinningStarPiece,
@@ -263,8 +251,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     RegularClone(
         occupant=SpinningStarPiece,
@@ -279,8 +266,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_14
     RegularClone(
         occupant=SpinningStarPiece,
@@ -295,8 +281,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_15
     RegularNPC(
         occupant=StarPieceSparkle,
@@ -329,8 +314,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_16
     RegularClone(
         occupant=StarPieceSparkle,
@@ -345,8 +329,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_17
     RegularClone(
         occupant=StarPieceSparkle,
@@ -361,8 +344,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_18
     RegularClone(
         occupant=StarPieceSparkle,
@@ -377,8 +359,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_19
     RegularNPC(
         occupant=Toadstool,
@@ -412,8 +393,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         y_shift=0,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_20
     RegularClone(
         occupant=Mallow,
@@ -428,8 +408,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_21
     RegularClone(
         occupant=Geno,
@@ -445,8 +424,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         y_shift=0,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_22
     RegularNPC(
         occupant=GenoDoll,
@@ -479,8 +457,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_23
     RegularNPC(
         occupant=Bowser,
@@ -514,6 +491,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

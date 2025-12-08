@@ -41,8 +41,7 @@ from .boss_star_pieces import (
     InnerFactorySecondFightStar,
     InnerFactoryThirdFightStar,
     InnerFactoryFourthFightStar,
-    FinalBossFightStar,
-)
+    FinalBossFightStar)
 from .bosses import (
     MushroomWayBossFight,
     BanditsWayBossFight,
@@ -83,8 +82,7 @@ from .bosses import (
     InnerFactorySecondFight,
     InnerFactoryThirdFight,
     InnerFactoryFourthFight,
-    FinalBossFight,
-)
+    FinalBossFight)
 from .character_spell_slots import (
     MarioSpellSlot1,
     MarioSpellSlot2,
@@ -115,8 +113,7 @@ from .character_spell_slots import (
     ToadstoolSpellSlot3,
     ToadstoolSpellSlot4,
     ToadstoolSpellSlot5,
-    ToadstoolSpellSlot6,
-)
+    ToadstoolSpellSlot6)
 from .characters_recruited import (
     MushroomWayCharacter,
     ForestMazeCharacter,
@@ -127,8 +124,7 @@ from .characters_recruited import (
     StartingCharacter2,
     StartingCharacter3,
     StartingCharacter4,
-    StartingCharacter5,
-)
+    StartingCharacter5)
 from .characters_spotted import (
     StartingCharacterSpotted1,
     StartingCharacterSpotted2,
@@ -138,8 +134,7 @@ from .characters_spotted import (
     MushroomWayCharacterSpotted,
     ForestMazeCharacterSpotted,
     MinesCharacterSpotted,
-    ChapelCharacterSpotted,
-)
+    ChapelCharacterSpotted)
 from .flag_locations import (
     MariosPadBed,
     RoseTownSign,
@@ -224,8 +219,7 @@ from .flag_locations import (
     VolcanoShips,
     KeepPostObstacleBossRoom,
     KeepThwomp,
-    FactoryButton,
-)
+    FactoryButton)
 from .item_locations import (
     StartingItem1,
     StartingItem2,
@@ -588,8 +582,7 @@ from .item_locations import (
     FactoryBigConveyorRoomSecondChest,
     FactoryBehindNinjasRightChest,
     FactoryBehindNinjasLeftChest,
-    InnerFactoryToadGift,
-)
+    InnerFactoryToadGift)
 
 
 boss_star_pieces_table = [

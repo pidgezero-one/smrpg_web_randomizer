@@ -38,8 +38,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=106,
-                            y=124,
-                        ),
+                            y=124),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -59,8 +58,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=115,
-                            y=122,
-                        ),
+                            y=122),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -84,8 +82,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=116,
-                            y=128,
-                        ),
+                            y=128),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -105,10 +102,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=124,
-                            y=126,
-                        ),
-                    ],
-                ),
+                            y=126),
+                    ]),
                 Mold(
                     1,
                     gridplane=False,
@@ -134,8 +129,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=106,
-                            y=121,
-                        ),
+                            y=121),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -155,8 +149,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=115,
-                            y=122,
-                        ),
+                            y=122),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -178,8 +171,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=115,
-                            y=125,
-                        ),
+                            y=125),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -199,10 +191,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=124,
-                            y=126,
-                        ),
-                    ],
-                ),
+                            y=126),
+                    ]),
                 Mold(
                     2,
                     gridplane=False,
@@ -226,8 +216,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=115,
-                            y=122,
-                        ),
+                            y=122),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -247,10 +236,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=124,
-                            y=126,
-                        ),
-                    ],
-                ),
+                            y=126),
+                    ]),
             ],
             sequences=[
                 AnimationSequence(
@@ -260,10 +247,7 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=2, mold_id=2),
                     ]
                 ),
-            ],
-        ),
-    ),
+            ])),
     palette_id=691,
     palette_offset=0,
-    unknown_num=0,
-)
+    unknown_num=0)

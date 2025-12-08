@@ -12,8 +12,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASShiftNorthSteps(2),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         JmpToEvent(E0172_CHEST_1_CONTAINER),
         Return(),
     ]

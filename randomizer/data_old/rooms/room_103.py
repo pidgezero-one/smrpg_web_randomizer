@@ -43,8 +43,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -77,8 +76,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 1
             occupant=npcs.JumpTrampoline,
             initiator=Initiator.JUMP_ON,
@@ -109,7 +107,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

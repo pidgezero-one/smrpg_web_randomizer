@@ -70,10 +70,8 @@ sprite = CompleteSprite(
                             y_plus=1,
                             y_minus=0,
                             x=0,
-                            y=0,
-                        ),
-                    ],
-                ),
+                            y=0),
+                    ]),
                 Mold(
                     1,
                     gridplane=True,
@@ -133,10 +131,8 @@ sprite = CompleteSprite(
                             y_plus=1,
                             y_minus=0,
                             x=0,
-                            y=0,
-                        ),
-                    ],
-                ),
+                            y=0),
+                    ]),
                 Mold(
                     2,
                     gridplane=True,
@@ -196,10 +192,8 @@ sprite = CompleteSprite(
                             y_plus=1,
                             y_minus=0,
                             x=0,
-                            y=0,
-                        ),
-                    ],
-                ),
+                            y=0),
+                    ]),
             ],
             sequences=[
                 AnimationSequence(
@@ -210,10 +204,7 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=8, mold_id=2),
                     ]
                 ),
-            ],
-        ),
-    ),
+            ])),
     palette_id=421,
     palette_offset=0,
-    unknown_num=0,
-)
+    unknown_num=0)

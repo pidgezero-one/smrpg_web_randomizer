@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2097_MOVE_HINOPIO_TO_ITEM_SHOP,
             x=3,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2098_MOVE_HINOPIO_TO_INN,
             x=4,
@@ -70,8 +68,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2098_MOVE_HINOPIO_TO_INN,
             x=5,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2099_MOVE_HINOPIO_TO_ARMOR_SHOP,
             x=6,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2099_MOVE_HINOPIO_TO_ARMOR_SHOP,
             x=7,
@@ -106,8 +101,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -127,8 +121,7 @@ room = Room(
             dst_z=6,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=6,
             y=72,
@@ -146,8 +139,7 @@ room = Room(
             dst_z=3,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -176,8 +168,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -204,8 +195,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
             event_script=E0000_EMPTY,
@@ -215,8 +205,7 @@ room = Room(
             y=61,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2,
             event_script=E0000_EMPTY,
@@ -226,7 +215,6 @@ room = Room(
             y=62,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

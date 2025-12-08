@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -64,8 +63,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -100,8 +98,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 1
             occupant=npcs.Bluebird,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -134,8 +131,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 2
             occupant=npcs.SavePoint,
             initiator=Initiator.JUMP_ON,
@@ -166,7 +162,6 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

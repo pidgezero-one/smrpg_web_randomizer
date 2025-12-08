@@ -36,8 +36,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=Letter,
@@ -70,8 +69,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularNPC(
         occupant=Greaper,
@@ -104,8 +102,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=BigBoo,
@@ -138,8 +135,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=DryBones,
@@ -172,6 +168,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

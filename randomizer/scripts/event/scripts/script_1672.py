@@ -20,14 +20,12 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7043_2),
         Return(),
         JmpIfMarioOnAnObjectOrNot(
             ["EVENT_1672_jmp_if_bit_set_10", "EVENT_1672_ret_3"],
-            identifier="EVENT_1672_jmp_fork_mario_on_object_8",
-        ),
+            identifier="EVENT_1672_jmp_fork_mario_on_object_8"),
         Jmp(["EVENT_1672_ret_3"]),
         JmpIfBitSet(
             TEMP_7043_4, ["EVENT_1672_ret_3"], identifier="EVENT_1672_jmp_if_bit_set_10"
@@ -39,8 +37,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTER),
                 ASShiftNorthSteps(3),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -48,8 +45,7 @@ script = EventScript(
                 ASWalkNortheastSteps(4),
                 ASWalkSouthwestSteps(4),
                 ASWalk1StepNorthwest(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

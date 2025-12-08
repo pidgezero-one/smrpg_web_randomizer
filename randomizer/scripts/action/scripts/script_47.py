@@ -16,8 +16,7 @@ script = ActionScript(
         CreatePacketAtObjectCoords(
             packet=P032_BLUE_CLOUD,
             target_npc=DUMMY_0X07,
-            destinations=["ACTION_47_set_animation_speed_10"],
-        ),
+            destinations=["ACTION_47_set_animation_speed_10"]),
         SetAllSpeeds(FAST, identifier="ACTION_47_set_animation_speed_10"),
         SetBit(TEMP_7044_5),
         WalkSoutheastSteps(2),

@@ -35,8 +35,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=YellowPlatform,
@@ -70,6 +69,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=-2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

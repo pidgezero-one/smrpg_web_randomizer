@@ -13,11 +13,9 @@ script = SubroutineOrBanklessScript(
             start_position=512,
             end_position=0,
             apply_to_y=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         ReturnSubroutine(),
         SetAMEMToRandom(amem=0x60, upper_bound=6),
         ObjectQueueAtOffsetAndIndexAtAMEM60(target_address=0x352C79),
         ReturnSubroutine(),
-    ],
-)
+    ])

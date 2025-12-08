@@ -18,8 +18,7 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R423_BELOME_TEMPLE_AREA_06_BELOMES_FORTUNE_ROOM_WELEVATING_PLATFORM,
-            mod_id=32,
-        ),
+            mod_id=32),
         Store00To0248(),
         Pause(1),
         Inc(UNKNOWN_70AD),
@@ -48,8 +47,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASWalkSoutheastSteps(2),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_1693_ret_21"),
     ]
 )

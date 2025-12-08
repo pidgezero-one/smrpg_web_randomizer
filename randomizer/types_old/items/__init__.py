@@ -22,6 +22,5 @@ from .classes import (
     InvincibilityStar,
     SpottedCharacter,
     RecruitedCharacter,
-    MarrymoreGear,
-)
+    MarrymoreGear)
 from .enums import ItemShuffleType, ItemUnique

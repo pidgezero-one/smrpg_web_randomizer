@@ -44,8 +44,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=263,
             x=6,
@@ -56,8 +55,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=263,
             x=7,
@@ -68,8 +66,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=263,
             x=7,
@@ -80,8 +77,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -101,8 +97,7 @@ room = Room(
             dst_z=0,
             dst_z_half=1,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -140,7 +135,6 @@ room = Room(
             obtuse_axis=5,
             height=2,
             cannot_clone=True,
-            byte5_bit7=False,
-        ),
+            byte5_bit7=False),
     ]
 )

@@ -36,8 +36,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackNPC(
         occupant=Bloober,
@@ -75,8 +74,7 @@ objects = [
         acute_axis=3,
         obtuse_axis=3,
         height=4,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackClone(
         occupant=Bloober,
@@ -95,8 +93,7 @@ objects = [
         acute_axis=3,
         obtuse_axis=3,
         height=4,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     BattlePackClone(
         occupant=Bloober,
@@ -115,8 +112,7 @@ objects = [
         acute_axis=3,
         obtuse_axis=3,
         height=4,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=WhirlpoolBubble,
@@ -154,8 +150,7 @@ objects = [
         obtuse_axis=11,
         height=2,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_5
     RegularNPC(
         occupant=FrogCoin,
@@ -189,6 +184,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

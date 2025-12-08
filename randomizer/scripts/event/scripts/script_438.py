@@ -18,8 +18,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASTransferToXYZF(x=7, y=16, z=2, direction=EAST)],
-            identifier="EVENT_438_action_queue_async_7",
-        ),
+            identifier="EVENT_438_action_queue_async_7"),
         SetBit(TEMP_7049_6, identifier="EVENT_438_set_bit_8"),
         RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
         JmpIfBitClear(RUN_AWAY, ["EVENT_438_fade_in_from_black_async_12"]),

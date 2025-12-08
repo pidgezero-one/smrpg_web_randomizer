@@ -9,8 +9,7 @@ script = ActionScript(
         JmpIfBitSet(
             MINES_BOSS_1_DEFEATED,
             ["ACTION_730_clear_solidity_bits_54"],
-            identifier="ACTION_732_jmp_if_bit_set_3",
-        ),
+            identifier="ACTION_732_jmp_if_bit_set_3"),
         VisibilityOff(),
         ObjectMemorySetBit(arg_1=0x30, bits=[4]),
         ClearSolidityBits(
@@ -45,8 +44,7 @@ script = ActionScript(
             y=123,
             z=0,
             direction=EAST,
-            identifier="ACTION_732_transfer_to_xyzf_29",
-        ),
+            identifier="ACTION_732_transfer_to_xyzf_29"),
         JmpIfBitSet(TEMP_7044_6, ["ACTION_732_face_northwest_37"]),
         SetWalkingSpeed(FASTEST),
         WalkNorthwestSteps(2),

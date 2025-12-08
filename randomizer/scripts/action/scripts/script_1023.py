@@ -12,8 +12,7 @@ script = ActionScript(
             bit_4=True,
             cant_pass_npcs=True,
             cant_walk_through=True,
-            bit_7=True,
-        ),
+            bit_7=True),
         EndAll(),
         SetPaletteRow(253),
         RemoveObjectFromSpecificLevel(DUMMY_0X06, R001_____BLUE_BG_NOTHING_THERE),
@@ -31,7 +30,6 @@ script = ActionScript(
             bit_4=True,
             cant_pass_npcs=True,
             cant_walk_through=True,
-            bit_7=True,
-        ),
+            bit_7=True),
     ]
 )

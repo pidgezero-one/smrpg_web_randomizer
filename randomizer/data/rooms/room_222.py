@@ -46,8 +46,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2381_ABYSS_BOLT_FAR_SIDE,
             x=7,
@@ -58,8 +57,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2381_ABYSS_BOLT_FAR_SIDE,
             x=8,
@@ -70,8 +68,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2381_ABYSS_BOLT_FAR_SIDE,
             x=9,
@@ -82,8 +79,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2382_ABYSS_BOLT_NEAR_SIDE,
             x=12,
@@ -94,8 +90,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2382_ABYSS_BOLT_NEAR_SIDE,
             x=14,
@@ -106,8 +101,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2383_ABYSS_BOLT_FAR_SIDE,
             x=13,
@@ -118,8 +112,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2383_ABYSS_BOLT_FAR_SIDE,
             x=13,
@@ -130,8 +123,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2408_ABYSS_BOLT_NEAR_SIDE,
             x=18,
@@ -142,8 +134,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2408_ABYSS_BOLT_NEAR_SIDE,
             x=18,
@@ -154,8 +145,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -175,8 +165,7 @@ room = Room(
             dst_z=10,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=20,
             y=106,
@@ -194,8 +183,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -224,8 +212,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2370_ABYSS_BOLT,
@@ -235,8 +222,7 @@ room = Room(
             y=120,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2369_ABYSS_BOLT,
@@ -246,8 +232,7 @@ room = Room(
             y=108,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2369_ABYSS_BOLT,
@@ -257,8 +242,7 @@ room = Room(
             y=107,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2371_ABYSS_BOLT,
@@ -268,8 +252,7 @@ room = Room(
             y=118,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2371_ABYSS_BOLT,
@@ -279,8 +262,7 @@ room = Room(
             y=117,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.FACTORY_HEX_NUT_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -307,8 +289,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2372_ABYSS_BOLT,
@@ -318,8 +299,7 @@ room = Room(
             y=117,
             z=10,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 8
             npc=npcs.FACTORY_HEX_NUT_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -346,8 +326,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 9
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2386_ABYSS_FOUR_BOLT_ROOM_BOLT,
@@ -357,8 +336,7 @@ room = Room(
             y=105,
             z=10,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackNPC( # 10
             npc=npcs.GLUM_REAPER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -387,8 +365,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 11
             npc=npcs.GLUM_REAPER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -416,8 +393,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 12
             npc=npcs.GLUM_REAPER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -446,8 +422,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 13
             npc=npcs.AMEBOID_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -476,8 +451,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 14
             npc=npcs.AMEBOID_NPC,
             battle_pack=131,
@@ -487,8 +461,7 @@ room = Room(
             y=102,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 15
             npc=npcs.AMEBOID_NPC,
             battle_pack=130,
@@ -498,7 +471,6 @@ room = Room(
             y=123,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

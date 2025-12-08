@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=2,
             y=55,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E3354_KEEP_BARREL_COUNT_LOADER),
     ]
 )

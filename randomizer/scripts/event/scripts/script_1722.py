@@ -11,8 +11,7 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_2,
             subscript=[ASShiftZUpPixels(1)],
-            identifier="EVENT_1722_action_queue_sync_2",
-        ),
+            identifier="EVENT_1722_action_queue_sync_2"),
         ActionQueueSync(target=NPC_3, subscript=[ASShiftZUpPixels(1)]),
         FadeInFromBlack(sync=True),
         JmpIfBitClear(TEMP_7044_0, ["EVENT_1722_jmp_if_bit_clear_8"]),
@@ -39,14 +38,12 @@ script = EventScript(
                     ["EVENT_1722_action_queue_async_6_SUBSCRIPT_pause_9"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_1722_set_action_script_sync_10"]),
         JmpIfBitClear(
             TEMP_7043_7,
             ["EVENT_1722_set_action_script_sync_10"],
-            identifier="EVENT_1722_jmp_if_bit_clear_8",
-        ),
+            identifier="EVENT_1722_jmp_if_bit_clear_8"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -63,13 +60,11 @@ script = EventScript(
                     ["EVENT_1722_action_queue_async_9_SUBSCRIPT_pause_6"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         SetSyncActionScript(
             MARIO,
             A0823_PLAYER_RESET_IN_SKY_BRIDGE_ROOM,
-            identifier="EVENT_1722_set_action_script_sync_10",
-        ),
+            identifier="EVENT_1722_set_action_script_sync_10"),
         SetBit(SKY_BRIDGE_COURSE_CHOICE),
         SetBit(SKY_BRIDGE_COURSE_1_CHOSEN),
         SetVarToConst(TEMP_702E, 48),
@@ -90,13 +85,11 @@ script = EventScript(
                 ASCreatePacketAtObjectCoords(
                     packet=P032_BLUE_CLOUD,
                     target_npc=DUMMY_0X07,
-                    destinations=["EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_4"],
-                ),
+                    destinations=["EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_4"]),
                 ASPause(120),
                 ASShiftZUpPixels(16),
                 ASJmp(["EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_2"]),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

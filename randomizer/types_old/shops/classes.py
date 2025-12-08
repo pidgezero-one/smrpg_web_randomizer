@@ -1,6 +1,6 @@
 """Base classes for shops."""
 
-from typing import Optional, List, Type, Generic, TYPE_CHECKING
+from typing import Generic, TYPE_CHECKING
 
 from randomizer.types.items import (
     Accessory,
@@ -8,8 +8,7 @@ from randomizer.types.items import (
     Item,
     ItemT,
     RegularItem,
-    Weapon,
-)
+    Weapon)
 from randomizer.types.numbers import UInt16, UInt8, ByteField
 from randomizer.types.patch import Patch
 
@@ -23,24 +22,24 @@ if TYPE_CHECKING:
 class Shop(Generic[ItemT]):
     """Base class representing any shop."""
 
-    _original_items: List[Type[Item]] = []
-    _items: List[ItemT] = []
+    _original_items: list[type[Item]] = []
+    _items: list[ItemT] = []
     _retain_size: bool = False
-    _container_event: Optional[int] = 0
-    _world: Optional["GameWorld"] = None
+    _container_event: int | None = 0
+    _world: "GameWorld" | None = None
     _minimum_size: int = 0
 
     @property
-    def original_items(self) -> List[Type[Item]]:
+    def original_items(self) -> list[type[Item]]:
         """The list of item classes that were in this shop before shuffling."""
         return self.original_items
 
     @property
-    def items(self) -> List[ItemT]:
+    def items(self) -> list[ItemT]:
         """The current contents of the shop."""
         return self._items
 
-    def set_items(self, items: List[ItemT]) -> None:
+    def set_items(self, items: list[ItemT]) -> None:
         """Overwrite the current contents of the shop."""
         assert len(items) <= 15
         self._items = items
@@ -57,7 +56,7 @@ class Shop(Generic[ItemT]):
         return self._retain_size
 
     @property
-    def container_event(self) -> Optional[UInt16]:
+    def container_event(self) -> UInt16 | None:
         """The ID of the event script that launches this shop."""
         if self._container_event is None:
             return None
@@ -169,7 +168,7 @@ class FrogCoinShop(NormalShop, Generic[ItemT]):
         item.become_frog_coin_item()
         self._items.append(item)
 
-    def set_items(self, items: List[ItemT]) -> None:
+    def set_items(self, items: list[ItemT]) -> None:
         """Overwrite the current contents of the shop."""
         assert len(items) <= 15
         super().set_items([])

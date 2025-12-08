@@ -1,6 +1,6 @@
 """Base classes for individual rooms in the game."""
 
-from typing import List, Optional, Type, Union, TypeVar, Generic
+from typing import TypeVar, Generic
 
 from randomizer.types.battles.ids import PACK0000_SNIFIT_FIGHT
 from randomizer.types.npcs.objects import ShadowSize, VramStore, Empty
@@ -11,17 +11,14 @@ from randomizer.types.overworld_scripts.arguments.types import AreaObject, Direc
 from randomizer.types.overworld_scripts.ids import (
     TOTAL_ROOMS,
     TOTAL_WORLD_MAP_AREAS,
-    M00_CURRENT,
-)
+    M00_CURRENT)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0015_STANDARD_ROOM_LOADER,
     E0256_RETURN,
-    TOTAL_SCRIPTS as TOTAL_EVENTS,
-)
+    TOTAL_SCRIPTS as TOTAL_EVENTS)
 from randomizer.types.overworld_scripts.action_scripts.ids import (
     A0000_DO_NOTHING,
-    TOTAL_SCRIPTS as TOTAL_ACTIONSCRIPTS,
-)
+    TOTAL_SCRIPTS as TOTAL_ACTIONSCRIPTS)
 
 from .enums import (
     BufferSpace,
@@ -31,8 +28,7 @@ from .enums import (
     ExitType,
     ExtraSpriteActions,
     ObjectType,
-    PostBattleBehaviour,
-)
+    PostBattleBehaviour)
 
 
 class Buffer:
@@ -73,8 +69,7 @@ class Buffer:
         self,
         buffer_type=BufferType.EMPTY_3,
         main_buffer_space=BufferSpace.BYTES_0,
-        index_in_main_buffer=True,
-    ) -> None:
+        index_in_main_buffer=True) -> None:
         self.set_buffer_type(buffer_type)
         self.set_main_buffer_space(main_buffer_space)
         self.set_index_in_main_buffer(index_in_main_buffer)
@@ -100,7 +95,7 @@ class Partition:
     _ally_sprite_buffer_size: UInt4 = UInt4(1)
     _allow_extra_sprite_buffer: bool = False
     _extra_sprite_buffer_size: UInt4 = UInt4(0)
-    _buffers: List[Buffer] = []
+    _buffers: list[Buffer] = []
     _full_palette_buffer: bool = True
 
     @property
@@ -139,12 +134,12 @@ class Partition:
         self._extra_sprite_buffer_size = UInt4(extra_sprite_buffer_size)
 
     @property
-    def buffers(self) -> List[Buffer]:
+    def buffers(self) -> list[Buffer]:
         """Buffers define the ways in which NPC sprites are loaded into vram."""
         assert len(self._buffers) == 3
         return self._buffers
 
-    def set_buffers(self, buffers: List[Buffer]) -> None:
+    def set_buffers(self, buffers: list[Buffer]) -> None:
         """Buffers define the ways in which NPC sprites are loaded into vram."""
         assert len(buffers) == 3
         self._buffers = buffers
@@ -163,9 +158,8 @@ class Partition:
         ally_sprite_buffer_size: int = 1,
         allow_extra_sprite_buffer: bool = False,
         extra_sprite_buffer_size: int = 0,
-        buffers: Optional[List[Buffer]] = None,
-        full_palette_buffer: bool = True,
-    ) -> None:
+        buffers: list[Buffer] | None = None,
+        full_palette_buffer: bool = True) -> None:
         if buffers is None:
             buffers = [Buffer(), Buffer(), Buffer()]
         self.set_ally_sprite_buffer_size(ally_sprite_buffer_size)
@@ -288,8 +282,7 @@ class DestinationProps:
         z: int = 0,
         z_half: bool = False,
         f: Direction = SOUTHWEST,
-        x_bit_7: bool = False,
-    ) -> None:
+        x_bit_7: bool = False) -> None:
         self.set_x(x)
         self.set_y(y)
         self.set_z(z)
@@ -311,7 +304,7 @@ class Exit:
     _ne_sw_edge_active: bool = False
     _destination_type: ExitType = ExitType.ROOM
     _byte_2_bit_2: bool = False
-    _destination: Union[UInt8, UInt16]
+    _destination: UInt8 | UInt16
     _show_message: bool = False
     _destination_props: DestinationProps
 
@@ -476,8 +469,7 @@ class RoomExit(Exit):
         dst_z: int = 0,
         dst_z_half: bool = False,
         dst_f: Direction = SOUTHWEST,
-        x_bit_7: bool = False,
-    ) -> None:
+        x_bit_7: bool = False) -> None:
         super().set_x(x)
         super().set_y(y)
         super().set_z(z)
@@ -546,8 +538,7 @@ class MapExit(Exit):
         destination: int = 0,
         show_message: bool = False,
         byte_2_bit_1: bool = False,
-        byte_2_bit_0: bool = False,
-    ) -> None:
+        byte_2_bit_0: bool = False) -> None:
         super().set_x(x)
         super().set_y(y)
         super().set_z(z)
@@ -691,8 +682,7 @@ class Event:
         height: int,
         nw_se_edge_active: bool,
         ne_sw_edge_active: bool,
-        byte_8_bit_4: bool,
-    ) -> None:
+        byte_8_bit_4: bool) -> None:
         self.set_event(event)
         self.set_x(x)
         self.set_y(y)
@@ -1054,7 +1044,7 @@ class BattlePackNPC(RoomObject):
 
     def __init__(
         self,
-        occupant: Type[NPC],
+        occupant: type[NPC],
         initiator: EventInitiator = EventInitiator.NONE,
         after_battle: PostBattleBehaviour = PostBattleBehaviour.REMOVE_PERMANENTLY,
         battle_pack: int = PACK0000_SNIFIT_FIGHT,
@@ -1085,24 +1075,23 @@ class BattlePackNPC(RoomObject):
         priority_0: bool = False,
         priority_1: bool = False,
         priority_2: bool = True,
-        show_shadow: Optional[bool] = None,
-        shadow_size: Optional[ShadowSize] = None,
-        acute_axis: Optional[int] = None,
-        obtuse_axis: Optional[int] = None,
-        height: Optional[int] = None,
-        directions: Optional[VramStore] = None,
-        vram_size: Optional[int] = None,
+        show_shadow: bool | None = None,
+        shadow_size: ShadowSize | None = None,
+        acute_axis: int | None = None,
+        obtuse_axis: int | None = None,
+        height: int | None = None,
+        directions: VramStore | None = None,
+        vram_size: int | None = None,
         cannot_clone: bool = False,
-        byte2_bit0: Optional[bool] = None,
-        byte2_bit1: Optional[bool] = None,
-        byte2_bit2: Optional[bool] = None,
-        byte2_bit3: Optional[bool] = None,
-        byte2_bit4: Optional[bool] = None,
-        byte5_bit6: Optional[bool] = None,
-        byte5_bit7: Optional[bool] = None,
-        byte6_bit2: Optional[bool] = None,
-        y_shift: Optional[int] = None,
-    ):
+        byte2_bit0: bool | None = None,
+        byte2_bit1: bool | None = None,
+        byte2_bit2: bool | None = None,
+        byte2_bit3: bool | None = None,
+        byte2_bit4: bool | None = None,
+        byte5_bit6: bool | None = None,
+        byte5_bit7: bool | None = None,
+        byte6_bit2: bool | None = None,
+        y_shift: int | None = None):
         super().set_initiator(initiator)
         self.set_after_battle(after_battle)
         self.set_battle_pack(battle_pack)
@@ -1151,8 +1140,7 @@ class BattlePackNPC(RoomObject):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
         super().set_model(model)
 
 
@@ -1177,7 +1165,7 @@ class RegularNPC(RoomObject):
 
     def __init__(
         self,
-        occupant: Type[NPC],
+        occupant: type[NPC],
         initiator: EventInitiator = EventInitiator.NONE,
         event_script: int = E0256_RETURN,
         action_script: int = A0000_DO_NOTHING,
@@ -1207,24 +1195,23 @@ class RegularNPC(RoomObject):
         priority_0: bool = False,
         priority_1: bool = False,
         priority_2: bool = True,
-        show_shadow: Optional[bool] = None,
-        shadow_size: Optional[ShadowSize] = None,
-        acute_axis: Optional[int] = None,
-        obtuse_axis: Optional[int] = None,
-        height: Optional[int] = None,
-        directions: Optional[VramStore] = None,
-        vram_size: Optional[int] = None,
+        show_shadow: bool | None = None,
+        shadow_size: ShadowSize | None = None,
+        acute_axis: int | None = None,
+        obtuse_axis: int | None = None,
+        height: int | None = None,
+        directions: VramStore | None = None,
+        vram_size: int | None = None,
         cannot_clone: bool = False,
-        byte2_bit0: Optional[bool] = None,
-        byte2_bit1: Optional[bool] = None,
-        byte2_bit2: Optional[bool] = None,
-        byte2_bit3: Optional[bool] = None,
-        byte2_bit4: Optional[bool] = None,
-        byte5_bit6: Optional[bool] = None,
-        byte5_bit7: Optional[bool] = None,
-        byte6_bit2: Optional[bool] = None,
-        y_shift: Optional[int] = None,
-    ):
+        byte2_bit0: bool | None = None,
+        byte2_bit1: bool | None = None,
+        byte2_bit2: bool | None = None,
+        byte2_bit3: bool | None = None,
+        byte2_bit4: bool | None = None,
+        byte5_bit6: bool | None = None,
+        byte5_bit7: bool | None = None,
+        byte6_bit2: bool | None = None,
+        y_shift: int | None = None):
         super().set_initiator(initiator)
         self.set_event_script(event_script)
         super().set_action_script(action_script)
@@ -1272,8 +1259,7 @@ class RegularNPC(RoomObject):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
         super().set_model(model)
 
 
@@ -1321,7 +1307,7 @@ class ChestNPC(RoomObject):
 
     def __init__(
         self,
-        occupant: Type[NPC],
+        occupant: type[NPC],
         initiator: EventInitiator = EventInitiator.NONE,
         event_script: int = E0256_RETURN,
         action_script: int = A0000_DO_NOTHING,
@@ -1353,24 +1339,23 @@ class ChestNPC(RoomObject):
         priority_0: bool = False,
         priority_1: bool = False,
         priority_2: bool = True,
-        show_shadow: Optional[bool] = None,
-        shadow_size: Optional[ShadowSize] = None,
-        acute_axis: Optional[int] = None,
-        obtuse_axis: Optional[int] = None,
-        height: Optional[int] = None,
-        directions: Optional[VramStore] = None,
-        vram_size: Optional[int] = None,
+        show_shadow: bool | None = None,
+        shadow_size: ShadowSize | None = None,
+        acute_axis: int | None = None,
+        obtuse_axis: int | None = None,
+        height: int | None = None,
+        directions: VramStore | None = None,
+        vram_size: int | None = None,
         cannot_clone: bool = False,
-        byte2_bit0: Optional[bool] = None,
-        byte2_bit1: Optional[bool] = None,
-        byte2_bit2: Optional[bool] = None,
-        byte2_bit3: Optional[bool] = None,
-        byte2_bit4: Optional[bool] = None,
-        byte5_bit6: Optional[bool] = None,
-        byte5_bit7: Optional[bool] = None,
-        byte6_bit2: Optional[bool] = None,
-        y_shift: Optional[int] = None,
-    ):
+        byte2_bit0: bool | None = None,
+        byte2_bit1: bool | None = None,
+        byte2_bit2: bool | None = None,
+        byte2_bit3: bool | None = None,
+        byte2_bit4: bool | None = None,
+        byte5_bit6: bool | None = None,
+        byte5_bit7: bool | None = None,
+        byte6_bit2: bool | None = None,
+        y_shift: int | None = None):
         super().set_initiator(initiator)
         self.set_event_script(event_script)
         super().set_action_script(action_script)
@@ -1420,8 +1405,7 @@ class ChestNPC(RoomObject):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
         super().set_model(model)
 
 
@@ -1445,7 +1429,7 @@ class BattlePackClone(Clone):
 
     def __init__(
         self,
-        occupant: Type[NPC],
+        occupant: type[NPC],
         battle_pack: int = PACK0000_SNIFIT_FIGHT,
         action_script: int = A0000_DO_NOTHING,
         visible: bool = False,
@@ -1457,24 +1441,23 @@ class BattlePackClone(Clone):
         priority_0: bool = False,
         priority_1: bool = False,
         priority_2: bool = True,
-        show_shadow: Optional[bool] = None,
-        shadow_size: Optional[ShadowSize] = None,
-        y_shift: Optional[int] = None,
-        acute_axis: Optional[int] = None,
-        obtuse_axis: Optional[int] = None,
-        height: Optional[int] = None,
-        directions: Optional[VramStore] = None,
-        vram_size: Optional[int] = None,
+        show_shadow: bool | None = None,
+        shadow_size: ShadowSize | None = None,
+        y_shift: int | None = None,
+        acute_axis: int | None = None,
+        obtuse_axis: int | None = None,
+        height: int | None = None,
+        directions: VramStore | None = None,
+        vram_size: int | None = None,
         cannot_clone: bool = False,
-        byte2_bit0: Optional[bool] = None,
-        byte2_bit1: Optional[bool] = None,
-        byte2_bit2: Optional[bool] = None,
-        byte2_bit3: Optional[bool] = None,
-        byte2_bit4: Optional[bool] = None,
-        byte5_bit6: Optional[bool] = None,
-        byte5_bit7: Optional[bool] = None,
-        byte6_bit2: Optional[bool] = None,
-    ):
+        byte2_bit0: bool | None = None,
+        byte2_bit1: bool | None = None,
+        byte2_bit2: bool | None = None,
+        byte2_bit3: bool | None = None,
+        byte2_bit4: bool | None = None,
+        byte5_bit6: bool | None = None,
+        byte5_bit7: bool | None = None,
+        byte6_bit2: bool | None = None):
         self.set_battle_pack(battle_pack)
         super().set_action_script(action_script)
         super().set_visible(visible)
@@ -1504,8 +1487,7 @@ class BattlePackClone(Clone):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
         super().set_model(model)
 
 
@@ -1530,7 +1512,7 @@ class RegularClone(Clone):
 
     def __init__(
         self,
-        occupant: Type[NPC],
+        occupant: type[NPC],
         event_script: int = E0256_RETURN,
         action_script: int = A0000_DO_NOTHING,
         visible: bool = False,
@@ -1542,24 +1524,23 @@ class RegularClone(Clone):
         priority_0: bool = False,
         priority_1: bool = False,
         priority_2: bool = True,
-        show_shadow: Optional[bool] = None,
-        shadow_size: Optional[ShadowSize] = None,
-        y_shift: Optional[int] = None,
-        acute_axis: Optional[int] = None,
-        obtuse_axis: Optional[int] = None,
-        height: Optional[int] = None,
-        directions: Optional[VramStore] = None,
-        vram_size: Optional[int] = None,
+        show_shadow: bool | None = None,
+        shadow_size: ShadowSize | None = None,
+        y_shift: int | None = None,
+        acute_axis: int | None = None,
+        obtuse_axis: int | None = None,
+        height: int | None = None,
+        directions: VramStore | None = None,
+        vram_size: int | None = None,
         cannot_clone: bool = False,
-        byte2_bit0: Optional[bool] = None,
-        byte2_bit1: Optional[bool] = None,
-        byte2_bit2: Optional[bool] = None,
-        byte2_bit3: Optional[bool] = None,
-        byte2_bit4: Optional[bool] = None,
-        byte5_bit6: Optional[bool] = None,
-        byte5_bit7: Optional[bool] = None,
-        byte6_bit2: Optional[bool] = None,
-    ):
+        byte2_bit0: bool | None = None,
+        byte2_bit1: bool | None = None,
+        byte2_bit2: bool | None = None,
+        byte2_bit3: bool | None = None,
+        byte2_bit4: bool | None = None,
+        byte5_bit6: bool | None = None,
+        byte5_bit7: bool | None = None,
+        byte6_bit2: bool | None = None):
         self.set_event_script(event_script)
         super().set_action_script(action_script)
         super().set_visible(visible)
@@ -1589,8 +1570,7 @@ class RegularClone(Clone):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
         super().set_model(model)
 
 
@@ -1637,24 +1617,23 @@ class ChestClone(Clone):
         priority_0: bool = False,
         priority_1: bool = False,
         priority_2: bool = True,
-        show_shadow: Optional[bool] = None,
-        shadow_size: Optional[ShadowSize] = None,
-        y_shift: Optional[int] = None,
-        acute_axis: Optional[int] = None,
-        obtuse_axis: Optional[int] = None,
-        height: Optional[int] = None,
-        directions: Optional[VramStore] = None,
-        vram_size: Optional[int] = None,
+        show_shadow: bool | None = None,
+        shadow_size: ShadowSize | None = None,
+        y_shift: int | None = None,
+        acute_axis: int | None = None,
+        obtuse_axis: int | None = None,
+        height: int | None = None,
+        directions: VramStore | None = None,
+        vram_size: int | None = None,
         cannot_clone: bool = False,
-        byte2_bit0: Optional[bool] = None,
-        byte2_bit1: Optional[bool] = None,
-        byte2_bit2: Optional[bool] = None,
-        byte2_bit3: Optional[bool] = None,
-        byte2_bit4: Optional[bool] = None,
-        byte5_bit6: Optional[bool] = None,
-        byte5_bit7: Optional[bool] = None,
-        byte6_bit2: Optional[bool] = None,
-    ):
+        byte2_bit0: bool | None = None,
+        byte2_bit1: bool | None = None,
+        byte2_bit2: bool | None = None,
+        byte2_bit3: bool | None = None,
+        byte2_bit4: bool | None = None,
+        byte5_bit6: bool | None = None,
+        byte5_bit7: bool | None = None,
+        byte6_bit2: bool | None = None):
         self.set_lower_70a7(lower_70a7)
         self.set_upper_70a7(upper_70a7)
         super().set_visible(visible)
@@ -1684,28 +1663,27 @@ class ChestClone(Clone):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
         super().set_model(model)
 
 
 class Room(Generic[BaseRoomObjectT, ExitT]):
     """The base definition for each of the 512 levels in the game."""
 
-    _partition: Optional[Partition] = None
+    _partition: Partition | None = None
     _music: UInt8 = UInt8(0)
     _entrance_event: UInt16 = UInt16(0)
-    _event_tiles: List[Event] = []
-    _exit_fields: List[ExitT] = []
-    _objects: List[BaseRoomObjectT] = []
-    _extra_sprite_actions: List[ExtraSpriteActions] = []
+    _event_tiles: list[Event] = []
+    _exit_fields: list[ExitT] = []
+    _objects: list[BaseRoomObjectT] = []
+    _extra_sprite_actions: list[ExtraSpriteActions] = []
 
     @property
-    def partition(self) -> Optional[Partition]:
+    def partition(self) -> Partition | None:
         """A partition is a VRAM configuration for a specific room."""
         return self._partition
 
-    def set_partition(self, partition: Optional[Partition]) -> None:
+    def set_partition(self, partition: Partition | None) -> None:
         """A partition is a VRAM configuration for a specific room."""
         self._partition = partition
 
@@ -1730,20 +1708,20 @@ class Room(Generic[BaseRoomObjectT, ExitT]):
         self._entrance_event = UInt16(entrance_event)
 
     @property
-    def event_tiles(self) -> List[Event]:
+    def event_tiles(self) -> list[Event]:
         """A list of specific tile designations that run event scripts when entered."""
         return self._event_tiles
 
-    def set_event_tiles(self, event_tiles: List[Event]) -> None:
+    def set_event_tiles(self, event_tiles: list[Event]) -> None:
         """Overwrite the list of specific tile designations that run event scripts when entered."""
         self._event_tiles = event_tiles
 
     @property
-    def exit_fields(self) -> List[ExitT]:
+    def exit_fields(self) -> list[ExitT]:
         """A list of specific tile designations that load other rooms or the world map."""
         return self._exit_fields
 
-    def set_exit_fields(self, exit_fields: List[ExitT]) -> None:
+    def set_exit_fields(self, exit_fields: list[ExitT]) -> None:
         """Overwrite list of specific tile designations that load other rooms or the world map."""
         self._exit_fields = exit_fields
 
@@ -1752,28 +1730,26 @@ class Room(Generic[BaseRoomObjectT, ExitT]):
         assert len(self.objects) + 1 <= 28
         self.objects.append(item)
 
-    def add_objects(self, items: List[BaseRoomObjectT]) -> None:
+    def add_objects(self, items: list[BaseRoomObjectT]) -> None:
         """Add several objects to the room."""
         assert len(self.objects) + len(items) <= 28
         self.objects.extend(items)
 
     @property
     def objects(
-        self,
-    ) -> List[BaseRoomObjectT]:
+        self) -> list[BaseRoomObjectT]:
         """A list of all the NPCs in the room."""
         return self._objects
 
     def set_objects(
         self,
-        objects: List[BaseRoomObjectT],
-    ) -> None:
+        objects: list[BaseRoomObjectT]) -> None:
         """Overwrite the list of NPCs in the room."""
         assert len(objects) <= 28
         self._objects = objects
 
     @property
-    def extra_sprite_actions(self) -> List[ExtraSpriteActions]:
+    def extra_sprite_actions(self) -> list[ExtraSpriteActions]:
         """A list of specific special actions your player character might be
         expected to take within this room.\n
         i.e. doing a victory pose before going to sleep, tumbling down a cliff,
@@ -1783,7 +1759,7 @@ class Room(Generic[BaseRoomObjectT, ExitT]):
         return self._extra_sprite_actions
 
     def set_extra_sprite_actions(
-        self, extra_sprite_actions: List[ExtraSpriteActions]
+        self, extra_sprite_actions: list[ExtraSpriteActions]
     ) -> None:
         """Overwrite a list of specific special actions your player character might be
         expected to take within this room.\n
@@ -1798,11 +1774,10 @@ class Room(Generic[BaseRoomObjectT, ExitT]):
         partition: Partition = Partition(),
         music: int = M00_CURRENT,
         entrance_event: int = E0015_STANDARD_ROOM_LOADER,
-        events: Optional[List[Event]] = None,
-        exits: Optional[List[ExitT]] = None,
-        objects: Optional[List[BaseRoomObjectT]] = None,
-        extra_sprite_actions: Optional[List[ExtraSpriteActions]] = None,
-    ):
+        events: list[Event] | None = None,
+        exits: list[ExitT] | None = None,
+        objects: list[BaseRoomObjectT] | None = None,
+        extra_sprite_actions: list[ExtraSpriteActions] | None = None):
         if events is None:
             events = []
         if exits is None:

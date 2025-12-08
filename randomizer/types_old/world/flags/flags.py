@@ -2,8 +2,6 @@
 
 """Randomizer setting definitions."""
 
-from typing import List
-
 from randomizer.types.bosses import BossLocations
 
 from .categorizations import (
@@ -35,8 +33,7 @@ from .categorizations import (
     TOWER_GATING,
     VAULT_GATING_LIST,
     VOLCANO_GATING,
-    WIN_CONDITION_LIST,
-)
+    WIN_CONDITION_LIST)
 from .enums import (
     AvailableMusic,
     BanditsWayGating,
@@ -63,14 +60,12 @@ from .enums import (
     ShopQualities,
     ShuffleLocationSelector,
     WinConditions,
-    YaridovichGating,
-)
+    YaridovichGating)
 from .types import (
     BooleanFlag,
     CategorizationFlag,
     NumberThresholdFlag,
-    SelectOneFlag,
-)
+    SelectOneFlag)
 
 # ******** Party
 
@@ -97,7 +92,7 @@ class StartingCharacter(SelectOneFlag):
         """The first character in your party, who will appear on your save menu."""
     )
     _optionEnum = PlayableCharacters
-    _choices: List[PlayableCharacters] = STARTER_CHARACTER_LIST
+    _choices: list[PlayableCharacters] = STARTER_CHARACTER_LIST
     _default: PlayableCharacters = PlayableCharacters.MARIO
 
 
@@ -147,8 +142,8 @@ class AvailableCharacters(CategorizationFlag):
         """If a character is NOT highlighted (white text over blue), they will not appear in the seed. If they ARE highlighted, they may appear in the seed depending on your "Maximum characters available" setting."""
     )
     _optionEnum = PlayableCharacters
-    _options: List[PlayableCharacters] = PLAYABLE_CHARACTER_LIST
-    _enabled: List[PlayableCharacters] = PLAYABLE_CHARACTER_LIST
+    _options: list[PlayableCharacters] = PLAYABLE_CHARACTER_LIST
+    _enabled: list[PlayableCharacters] = PLAYABLE_CHARACTER_LIST
 
 
 # ******** Equipment
@@ -169,7 +164,7 @@ class EquipmentCharacters(SelectOneFlag):
 <br>
 <br><b>Anyone can equip anything</b>: No equips are character-restricted."""
     _optionEnum = EquipmentCharactersOptions
-    _choices: List[EquipmentCharactersOptions] = EQUIPMENT_CHARACTERS_LIST
+    _choices: list[EquipmentCharactersOptions] = EQUIPMENT_CHARACTERS_LIST
     _default: EquipmentCharactersOptions = EquipmentCharactersOptions.VANILLA
 
 
@@ -184,7 +179,7 @@ class EquipmentProperties(SelectOneFlag):
 <br>
 <br><b>Completely random</b>: The stats and buffs on each piece of equipment is randomized."""
     _optionEnum = EquipmentPropertiesOptions
-    _choices: List[EquipmentPropertiesOptions] = EQUIPMENT_PROPERTIES_LIST
+    _choices: list[EquipmentPropertiesOptions] = EQUIPMENT_PROPERTIES_LIST
     _default: EquipmentPropertiesOptions = EquipmentPropertiesOptions.VANILLA
 
 
@@ -220,7 +215,7 @@ class EXPMultiplier(SelectOneFlag):
         """If not set to "Default", all EXP gained will be doubled or tripled."""
     )
     _optionEnum = EXPMultiplierOptions
-    _choices: List[EXPMultiplierOptions] = EXP_MULTIPLIER_OPTIONS
+    _choices: list[EXPMultiplierOptions] = EXP_MULTIPLIER_OPTIONS
     _default: EXPMultiplierOptions = EXPMultiplierOptions.VANILLA
 
 
@@ -293,8 +288,8 @@ class AvailableSpells(CategorizationFlag):
 <br>
 <br>Note: Excluding "Super Jump" may make some equips inaccessible depending on your other settings."""
     _optionEnum = LearnableSpells
-    _options: List[LearnableSpells] = LEARNABLE_SPELL_LIST
-    _enabled: List[LearnableSpells] = LEARNABLE_SPELL_LIST
+    _options: list[LearnableSpells] = LEARNABLE_SPELL_LIST
+    _enabled: list[LearnableSpells] = LEARNABLE_SPELL_LIST
 
 
 # ******** Star Pieces
@@ -337,8 +332,8 @@ class EnabledBossChecks(CategorizationFlag):
 <br>
 <br>Note: "Nimbus Land statue keeper" will always be the same fight as the enemy running through the final Nimbus Land hallway. You can fight either instance of this boss to get its star piece, but you will never get 2 star pieces from doing both copies of the fight."""
     _optionEnum = ShuffleLocationSelector
-    _options: List[ShuffleLocationSelector] = BOSS_STAR_PIECE_LOCATIONS
-    _enabled: List[ShuffleLocationSelector] = BOSS_STAR_PIECE_LOCATIONS
+    _options: list[ShuffleLocationSelector] = BOSS_STAR_PIECE_LOCATIONS
+    _enabled: list[ShuffleLocationSelector] = BOSS_STAR_PIECE_LOCATIONS
 
 
 class StarPiecesRestrictedByArea(BooleanFlag):
@@ -378,7 +373,7 @@ class ItemQuality(SelectOneFlag):
 <br>
 <br>If "Completely empty" is selected, any chest which does not contain a required item will be empty."""
     _optionEnum = ItemQualities
-    _choices: List[ItemQualities] = ITEM_QUALITY_LIST
+    _choices: list[ItemQualities] = ITEM_QUALITY_LIST
     _default: ItemQualities = ItemQualities.ORIGINAL
 
 
@@ -516,7 +511,7 @@ class FireworksSetting(SelectOneFlag):
 <br>Note: If you do not have Bucket Warp enabled, completing the Carbo Cookie trade sequence will give you a random item if "Shuffle Fireworks" or "Shuffle Progressive Fireworks" is selected.
 """
     _optionEnum = FireworksOptions
-    _choices: List[FireworksOptions] = FIREWORKS_OPTION_LIST
+    _choices: list[FireworksOptions] = FIREWORKS_OPTION_LIST
     _default: FireworksOptions = FireworksOptions.VANILLA
 
 
@@ -582,8 +577,8 @@ class EnabledRegularChecks(CategorizationFlag):
 <br>
 <br>This setting only applies if you have "Special Items can appear in the general item pool" or "Star Pieces can appear in the general item pool" enabled."""
     _optionEnum = ShuffleLocationSelector
-    _options: List[ShuffleLocationSelector] = REGULAR_CHECKS
-    _enabled: List[ShuffleLocationSelector] = REGULAR_CHECKS
+    _options: list[ShuffleLocationSelector] = REGULAR_CHECKS
+    _enabled: list[ShuffleLocationSelector] = REGULAR_CHECKS
 
 
 # ******** Item behaviour
@@ -635,7 +630,7 @@ class EXPChallenge(SelectOneFlag):
 <br>
 <br>"Easy" settings grant 2, 4, 5, 6, 8, 9, or 11 EXP depending on your progress, and "Hard" settings grant 1, 2, 3, 5, 6, 7, or 11 EXP."""
     _optionEnum = EXPChallengeOptions
-    _choices: List[EXPChallengeOptions] = EXP_CHALLENGE_OPTIONS_LIST
+    _choices: list[EXPChallengeOptions] = EXP_CHALLENGE_OPTIONS_LIST
     _default: EXPChallengeOptions = EXPChallengeOptions.VANILLA
 
 
@@ -785,7 +780,7 @@ class BanditsWayGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: Bandit's Way will be available on the world map from the start of the game."""
     _optionEnum = BanditsWayGating
-    _choices: List[BanditsWayGating] = BANDITS_WAY_GATING_LIST
+    _choices: list[BanditsWayGating] = BANDITS_WAY_GATING_LIST
     _default: BanditsWayGating = BanditsWayGating.MALLOW
 
 
@@ -800,7 +795,7 @@ class ForestMazeGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: Forest Maze will be available on the world map from the start of the game."""
     _optionEnum = ForestMazeGating
-    _choices: List[ForestMazeGating] = FOREST_GATING_LIST
+    _choices: list[ForestMazeGating] = FOREST_GATING_LIST
     _default: ForestMazeGating = ForestMazeGating.GENO
 
 
@@ -817,7 +812,7 @@ class PipeVaultGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: Pipe Vault will be unblocked from the start of the game."""
     _optionEnum = PipeVaultGating
-    _choices: List[PipeVaultGating] = VAULT_GATING_LIST
+    _choices: list[PipeVaultGating] = VAULT_GATING_LIST
     _default: PipeVaultGating = PipeVaultGating.OPEN
 
 
@@ -834,7 +829,7 @@ class Moleville1Gate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: The top door inside the Moleville Mines entrance will be accessible from the start of the game."""
     _optionEnum = Moleville1Gating
-    _choices: List[Moleville1Gating] = MOLEVILLE_GATING
+    _choices: list[Moleville1Gating] = MOLEVILLE_GATING
     _default: Moleville1Gating = Moleville1Gating.OPEN
 
 
@@ -851,7 +846,7 @@ class BoosterTowerGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: Booster Tower's door will be unlocked from the start of the game."""
     _optionEnum = BoosterTowerGating
-    _choices: List[BoosterTowerGating] = TOWER_GATING
+    _choices: list[BoosterTowerGating] = TOWER_GATING
     _default: BoosterTowerGating = BoosterTowerGating.BOWSER
 
 
@@ -868,7 +863,7 @@ class MarrymoreGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: The chapel back door will be open from the start of the game."""
     _optionEnum = MarrymoreGating
-    _choices: List[MarrymoreGating] = MARRYMORE_GATING
+    _choices: list[MarrymoreGating] = MARRYMORE_GATING
     _default: MarrymoreGating = MarrymoreGating.HILL
 
 
@@ -885,7 +880,7 @@ class SeaGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: The Sea & Sunken Ship will be available on the world map from the start of the game."""
     _optionEnum = SeaGating
-    _choices: List[SeaGating] = SEA_GATING
+    _choices: list[SeaGating] = SEA_GATING
     _default: SeaGating = SeaGating.STAR_4
 
 
@@ -900,7 +895,7 @@ class BelomeTempleGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: Belome Temple access is unrestricted."""
     _optionEnum = BelomeTempleGating
-    _choices: List[BelomeTempleGating] = TEMPLE_GATING
+    _choices: list[BelomeTempleGating] = TEMPLE_GATING
     _default: BelomeTempleGating = BelomeTempleGating.OPEN
 
 
@@ -915,7 +910,7 @@ class MonstroTownGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: Monstro Town will be available on the World Map from the start of the game."""
     _optionEnum = MonstroTownGating
-    _choices: List[MonstroTownGating] = MONSTRO_GATING
+    _choices: list[MonstroTownGating] = MONSTRO_GATING
     _default: MonstroTownGating = MonstroTownGating.LANDS_END
 
 
@@ -930,7 +925,7 @@ class BarrelVolcanoGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: Barrel Volcano will be available on the World Map from the start of the game."""
     _optionEnum = BarrelVolcanoGating
-    _choices: List[BarrelVolcanoGating] = VOLCANO_GATING
+    _choices: list[BarrelVolcanoGating] = VOLCANO_GATING
     _default: BarrelVolcanoGating = BarrelVolcanoGating.NIMBUS
 
 
@@ -947,7 +942,7 @@ class BowsersKeepGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: Bowser's Keep will be available on the world map from the start of the game."""
     _optionEnum = BowsersKeepGating
-    _choices: List[BowsersKeepGating] = KEEP_GATING
+    _choices: list[BowsersKeepGating] = KEEP_GATING
     _default: BowsersKeepGating = BowsersKeepGating.VOLCANO
 
 
@@ -964,7 +959,7 @@ class FactoryGate(SelectOneFlag):
 <br>
 <br><b>Collect 6 Star Pieces</b>: Factory will become available on the world map when you collect 6 Star Pieces and Bowser's Keep has been opened."""
     _optionEnum = FactoryGating
-    _choices: List[FactoryGating] = FACTORY_GATING
+    _choices: list[FactoryGating] = FACTORY_GATING
     _default: FactoryGating = FactoryGating.KEEP
 
 
@@ -982,7 +977,7 @@ class YaridovichGate(SelectOneFlag):
 <br>
 <br><b>Always Open</b>: The Seaside boss will be available from the start of the game."""
     _optionEnum = YaridovichGating
-    _choices: List[YaridovichGating] = SEASIDE_BOSS_GATING
+    _choices: list[YaridovichGating] = SEASIDE_BOSS_GATING
     _default: YaridovichGating = YaridovichGating.SHIP
 
 
@@ -1070,7 +1065,7 @@ class WinCondition(SelectOneFlag):
 <br>
 <br><b>Beat Monstro Town sealed door</b>: The game is over when you defeat the boss behind the sealed door in Monstro Town, regardless of your Star Piece count."""
     _optionEnum = WinConditions
-    _choices: List[WinConditions] = WIN_CONDITION_LIST
+    _choices: list[WinConditions] = WIN_CONDITION_LIST
     _default: WinConditions = WinConditions.FACTORY
 
 
@@ -1187,7 +1182,7 @@ class ShopQuality(SelectOneFlag):
 <br>
 <br>If "Completely empty" is selected, all shops will be disabled."""
     _optionEnum = ShopQualities
-    _choices: List[ShopQualities] = SHOP_QUALITY_LIST  # maybe just o for o
+    _choices: list[ShopQualities] = SHOP_QUALITY_LIST  # maybe just o for o
     _default: ShopQualities = ShopQualities.ORIGINAL
 
 
@@ -1253,7 +1248,7 @@ class BossShuffleScaleStats(SelectOneFlag):
 <br>
 <br><b>Completely random</b>: A boss fight will inherit the relative stats of a random other location, regardless of position. For example, Culex could be placed in Mushroom Way, but have 1200 HP because he's inherited Belome 2's original stats."""
     _optionEnum = BossScaleOptions
-    _choices: List[BossScaleOptions] = BOSS_SCALE_LIST
+    _choices: list[BossScaleOptions] = BOSS_SCALE_LIST
     _default: BossScaleOptions = BossScaleOptions.VANILLA
 
 
@@ -1312,8 +1307,8 @@ class ShuffledBosses(CategorizationFlag):
 <br>
 <br>If a boss is not highlighted, it will stay in its original location."""
     _optionEnum = BossLocations
-    _options: List[BossLocations] = SHUFFLED_BOSS_LIST
-    _enabled: List[BossLocations] = SHUFFLED_BOSS_LIST
+    _options: list[BossLocations] = SHUFFLED_BOSS_LIST
+    _enabled: list[BossLocations] = SHUFFLED_BOSS_LIST
 
 
 class EnemyStats(BooleanFlag):
@@ -1497,8 +1492,8 @@ class ShuffledMusic(CategorizationFlag):
 <br>
 <br>If a song is not highlighted, it will never appear in a boss fight."""
     _optionEnum = AvailableMusic
-    _options: List[AvailableMusic] = BOSS_MUSIC_LIST
-    _enabled: List[AvailableMusic] = BOSS_MUSIC_LIST
+    _options: list[AvailableMusic] = BOSS_MUSIC_LIST
+    _enabled: list[AvailableMusic] = BOSS_MUSIC_LIST
 
 
 class RemoveFlashes(BooleanFlag):

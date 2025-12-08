@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3734_NIMBUS_CASTLE_FINAL_CHEST_HALLWAY_EXIT_TO_FINAL_HALLWAY,
         x=9,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3825_NIMBUS_FINAL_CHEST_ROOM_PLATFORM_BIT,
         x=5,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3825_NIMBUS_FINAL_CHEST_ROOM_PLATFORM_BIT,
         x=5,
@@ -49,8 +46,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3825_NIMBUS_FINAL_CHEST_ROOM_PLATFORM_BIT,
         x=6,
@@ -61,8 +57,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3825_NIMBUS_FINAL_CHEST_ROOM_PLATFORM_BIT,
         x=6,
@@ -73,8 +68,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3825_NIMBUS_FINAL_CHEST_ROOM_PLATFORM_BIT,
         x=6,
@@ -85,8 +79,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3825_NIMBUS_FINAL_CHEST_ROOM_PLATFORM_BIT,
         x=6,
@@ -97,6 +90,5 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

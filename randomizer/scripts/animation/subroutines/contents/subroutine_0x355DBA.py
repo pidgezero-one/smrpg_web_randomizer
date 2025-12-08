@@ -18,8 +18,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x355dc2",
-        ),
+            identifier="queuestart_0x355dc2"),
         NewSpriteAtCoords(
             sprite_id=SPR0769_YELLOW_LIGHTNING_BALL,
             sequence=0,
@@ -29,8 +28,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         PlaySound(sound=S0022_CORONA_DESCENDS),
         ResetTargetMappingMemory(),
         MoveObject(
@@ -40,8 +38,7 @@ script = SubroutineOrBanklessScript(
             apply_to_y=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=40),
         ResetObjectMappingMemory(),
         StopCurrentSoundEffect(),
@@ -57,11 +54,9 @@ script = SubroutineOrBanklessScript(
             apply_to_y=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60),
         ResetObjectMappingMemory(),
         StopCurrentSoundEffect(),
         Jmp(["command_0x35252f"]),
-    ],
-)
+    ])

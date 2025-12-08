@@ -8,8 +8,7 @@ script = EventScript(
     [
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASTransferXYZFPixels(x=0, y=0, z=2, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=0, y=0, z=2, direction=EAST)]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

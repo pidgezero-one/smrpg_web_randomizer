@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._3_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._3_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     extra_required_actions=[ExtraSpriteActions.Mute],
     music=Music._66_BOWSERS_CASTLE_2ND_TIME,
     entrance_event=15,
@@ -91,8 +85,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 1
             occupant=npcs.YellowPlatform,
             initiator=Initiator.JUMP_ON,
@@ -124,7 +117,5 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=-2,
-        ),
-    ],
-)
+            y_shift=-2),
+    ])

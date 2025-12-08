@@ -19,8 +19,7 @@ script = EventScript(
             use_alternate=True,
             room_id=R153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY,
             mod_id=0,
-            identifier="EVENT_729_apply_tile_mod_21",
-        ),
+            identifier="EVENT_729_apply_tile_mod_21"),
         JmpToEvent(E0641_MARRYMORE_ANTECHAMBER_LOADER_EXTENSION),
     ]
 )

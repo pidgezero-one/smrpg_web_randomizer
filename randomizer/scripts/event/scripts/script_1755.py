@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_6,
             R402_LANDS_END_DESERT_AREA_03,
-            ["EVENT_1755_run_event_as_subroutine_3"],
-        ),
+            ["EVENT_1755_run_event_as_subroutine_3"]),
         SetVarToConst(ACTIVE_NPC, 26),
         Jmp(["EVENT_1884_jmp_if_bit_set_4"]),
         RunEventAsSubroutine(
@@ -21,8 +20,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=22,
             y=102,
-            z=0,
-        ),
+            z=0),
         RunEventAsSubroutine(E1844_SUMMON_CLOUD_BOSS),
         SetVarToConst(ACTIVE_NPC, 20),
         RunEventAsSubroutine(E1545_SAND_WHIRLPOOL),

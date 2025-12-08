@@ -21,16 +21,13 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         RunBackgroundEvent(
             event_id=E1773_LANDS_END_BULLET_BILL_BACKGROUND,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         Return(identifier="EVENT_1772_ret_7"),
     ]
 )

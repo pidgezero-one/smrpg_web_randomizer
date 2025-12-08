@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3586bd",
-        ),
+            identifier="queuestart_0x3586bd"),
         NewSpriteAtCoords(
             sprite_id=SPR0567_RED_ITEM_COLLECTION,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -38,8 +36,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3586d2",
-        ),
+            identifier="queuestart_0x3586d2"),
         NewSpriteAtCoords(
             sprite_id=SPR0566_GREEN_ITEM_COLLECTION,
             sequence=0,
@@ -49,8 +46,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -61,8 +57,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3586e7",
-        ),
+            identifier="queuestart_0x3586e7"),
         NewSpriteAtCoords(
             sprite_id=SPR0569_YELLOW_ITEM_COLLECTION,
             sequence=0,
@@ -72,8 +67,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -84,8 +78,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3586fc",
-        ),
+            identifier="queuestart_0x3586fc"),
         NewSpriteAtCoords(
             sprite_id=SPR0567_RED_ITEM_COLLECTION,
             sequence=1,
@@ -95,8 +88,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -107,8 +99,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358711",
-        ),
+            identifier="queuestart_0x358711"),
         NewSpriteAtCoords(
             sprite_id=SPR0566_GREEN_ITEM_COLLECTION,
             sequence=1,
@@ -118,8 +109,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -130,8 +120,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358726",
-        ),
+            identifier="queuestart_0x358726"),
         NewSpriteAtCoords(
             sprite_id=SPR0569_YELLOW_ITEM_COLLECTION,
             sequence=1,
@@ -141,8 +130,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -153,8 +141,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35873b",
-        ),
+            identifier="queuestart_0x35873b"),
         NewSpriteAtCoords(
             sprite_id=SPR0567_RED_ITEM_COLLECTION,
             sequence=8,
@@ -164,8 +151,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -176,8 +162,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358750",
-        ),
+            identifier="queuestart_0x358750"),
         NewSpriteAtCoords(
             sprite_id=SPR0568_BLUE_ITEM_COLLECTION,
             sequence=7,
@@ -187,8 +172,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -199,8 +183,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358765",
-        ),
+            identifier="queuestart_0x358765"),
         NewSpriteAtCoords(
             sprite_id=SPR0569_YELLOW_ITEM_COLLECTION,
             sequence=4,
@@ -210,8 +193,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -222,8 +204,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35877a",
-        ),
+            identifier="queuestart_0x35877a"),
         NewSpriteAtCoords(
             sprite_id=SPR0566_GREEN_ITEM_COLLECTION,
             sequence=3,
@@ -233,8 +214,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -245,8 +225,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35878f",
-        ),
+            identifier="queuestart_0x35878f"),
         NewSpriteAtCoords(
             sprite_id=SPR0566_GREEN_ITEM_COLLECTION,
             sequence=2,
@@ -256,8 +235,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -268,8 +246,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3587a4",
-        ),
+            identifier="queuestart_0x3587a4"),
         NewSpriteAtCoords(
             sprite_id=SPR0567_RED_ITEM_COLLECTION,
             sequence=2,
@@ -279,8 +256,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -291,8 +267,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3587b9",
-        ),
+            identifier="queuestart_0x3587b9"),
         NewSpriteAtCoords(
             sprite_id=SPR0566_GREEN_ITEM_COLLECTION,
             sequence=6,
@@ -302,8 +277,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -314,8 +288,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3587ce",
-        ),
+            identifier="queuestart_0x3587ce"),
         NewSpriteAtCoords(
             sprite_id=SPR0569_YELLOW_ITEM_COLLECTION,
             sequence=5,
@@ -325,8 +298,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -337,8 +309,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3587e3",
-        ),
+            identifier="queuestart_0x3587e3"),
         NewSpriteAtCoords(
             sprite_id=SPR0566_GREEN_ITEM_COLLECTION,
             sequence=9,
@@ -348,8 +319,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -360,8 +330,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3587f8",
-        ),
+            identifier="queuestart_0x3587f8"),
         NewSpriteAtCoords(
             sprite_id=SPR0797_SLEEPY_TIME_SHEEP_RAM,
             sequence=4,
@@ -371,8 +340,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -383,8 +351,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35880d",
-        ),
+            identifier="queuestart_0x35880d"),
         NewSpriteAtCoords(
             sprite_id=SPR0051_GREEN_YOSHI_WALK,
             sequence=12,
@@ -394,8 +361,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -406,8 +372,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358822",
-        ),
+            identifier="queuestart_0x358822"),
         NewSpriteAtCoords(
             sprite_id=SPR0568_BLUE_ITEM_COLLECTION,
             sequence=1,
@@ -417,8 +382,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -429,8 +393,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358837",
-        ),
+            identifier="queuestart_0x358837"),
         NewSpriteAtCoords(
             sprite_id=SPR0569_YELLOW_ITEM_COLLECTION,
             sequence=10,
@@ -440,8 +403,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -452,8 +414,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35884c",
-        ),
+            identifier="queuestart_0x35884c"),
         NewSpriteAtCoords(
             sprite_id=SPR0562_YELLOW_REUSABLE_ITEM_SPRITE_WITH_LETTER_I,
             sequence=0,
@@ -464,8 +425,7 @@ script = SubroutineOrBanklessScript(
             looping=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -476,8 +436,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358861",
-        ),
+            identifier="queuestart_0x358861"),
         NewSpriteAtCoords(
             sprite_id=SPR0568_BLUE_ITEM_COLLECTION,
             sequence=5,
@@ -487,8 +446,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -499,8 +457,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x358876",
-        ),
+            identifier="queuestart_0x358876"),
         NewSpriteAtCoords(
             sprite_id=SPR0567_RED_ITEM_COLLECTION,
             sequence=5,
@@ -510,8 +467,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -522,8 +478,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35888b",
-        ),
+            identifier="queuestart_0x35888b"),
         NewSpriteAtCoords(
             sprite_id=SPR0567_RED_ITEM_COLLECTION,
             sequence=10,
@@ -533,8 +488,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -545,8 +499,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3588a0",
-        ),
+            identifier="queuestart_0x3588a0"),
         NewSpriteAtCoords(
             sprite_id=SPR0568_BLUE_ITEM_COLLECTION,
             sequence=10,
@@ -556,8 +509,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -568,8 +520,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3588b5",
-        ),
+            identifier="queuestart_0x3588b5"),
         NewSpriteAtCoords(
             sprite_id=SPR0566_GREEN_ITEM_COLLECTION,
             sequence=10,
@@ -579,8 +530,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -591,8 +541,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3588ca",
-        ),
+            identifier="queuestart_0x3588ca"),
         NewSpriteAtCoords(
             sprite_id=SPR0532_BLUE_SPARK,
             sequence=0,
@@ -603,9 +552,7 @@ script = SubroutineOrBanklessScript(
             looping=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3588f4"]),
         ReturnObjectQueue(),
-    ],
-)
+    ])

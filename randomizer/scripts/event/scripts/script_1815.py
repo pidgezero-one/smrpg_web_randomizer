@@ -19,8 +19,7 @@ script = EventScript(
             target_npc=MARIO,
             coord=COORD_Z,
             pixel=True,
-            identifier="EVENT_1815_set_7000_to_object_coord_7",
-        ),
+            identifier="EVENT_1815_set_7000_to_object_coord_7"),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 0, ["EVENT_1815_fade_out_music_to_volume_13"]
         ),

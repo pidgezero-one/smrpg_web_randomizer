@@ -13,8 +13,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P022_RECURSIVE_SPARKLES,
             target_npc=MARIO,
-            destinations=["EVENT_254_pause_0"],
-        ),
+            destinations=["EVENT_254_pause_0"]),
         Return(identifier="EVENT_254_ret_5"),
     ]
 )

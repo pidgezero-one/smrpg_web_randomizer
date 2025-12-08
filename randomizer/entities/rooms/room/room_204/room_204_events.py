@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1425_SUMMON_LEFT_GOOMBA_IN_MUSHROOM_WAY_2,
         x=4,
@@ -25,8 +24,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1426_SUMMON_RIGHT_GOOMBA_IN_MUSHROOM_WAY_2,
         x=19,
@@ -37,8 +35,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1429_SUMMON_JUMPING_GOOMBA_MUSHROOM_WAY_2,
         x=9,
@@ -49,8 +46,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1431_SUMMON_MIDDLE_GOOMBA_IN_MUSHROOM_WAY_2,
         x=8,
@@ -61,6 +57,5 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

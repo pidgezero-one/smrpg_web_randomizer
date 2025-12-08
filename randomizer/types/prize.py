@@ -1,8 +1,7 @@
-from typing import Optional
 from smrpgpatchbuilder.datatypes.items.classes import Item
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import AddToInventory, JmpToEvent, SetBit, RunDialog, PlaySound, DisableObjectTrigger, ActionQueueSync, SetVarToConst
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import A_ObjectMemorySetBit, A_PlaySound, A_VisibilityOff, A_UnknownCommand
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import JmpToEvent, SetVarToConst
 from ..data.variables.event_script_names import E3092_STAR_PIECE_GRANT
 from ..data.variables.dialog_names import DI3074_GOT_BEETLEMANIA, DI1177_FOUND_A_70A7_AUTO_TERMINATE, DI1178_FOUND_AN_70A7_AUTO_TERMINATE, DI0065_GOT_AN_70A7_AWAIT_TERMINATE, DI0524_GOT_A_70A7_AWAIT_TERMINATE, DI0064_GOT_AN_70A7_AUTO_TERMINATE, DI0066_GOT_A_70A7_AUTO_TERMINATE
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import BOWSER, MARIO, MEM_70A8
@@ -10,6 +9,11 @@ from ..data.variables.event_script_names import *
 from ..data.variables.variable_names import BEETLEMANIA_UNLOCKED, ITEM_ID, PRIMARY_TEMP_7000
 from ..data.variables.overworld_sfx_names import SO027_FOUND_AN_ITEM
 from enum import StrEnum
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import Battlefield
+from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import Formation, FormationMember
+from smrpgpatchbuilder.datatypes.characters.classes import Character
+from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
+from ..types.ally import Ally
 
 class TreasureHunterNickname:
     _nickname: str
@@ -41,7 +45,7 @@ class TreasureHunterNickname:
     def get_slot_3_dialog(self) -> str:
         return f" Item #3: {self.article} “{self._nickname}”.\n {self._description}[await][page]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"
 
-    def __init__(self, nickname: str, description: str, starts_with_vowel: Optional[bool] = None):
+    def __init__(self, nickname: str, description: str, starts_with_vowel: bool | None = None):
         self._nickname = nickname
         self._description = description
         if starts_with_vowel is not None:
@@ -52,14 +56,14 @@ class TreasureHunterNickname:
     
 class Prize:
     _important: bool = False
-    _npc_grant: Optional[EventScript] = None
-    _chest_grant: Optional[EventScript] = None
-    _standing_grant: Optional[EventScript] = None
-    _river_grant: Optional[EventScript] = None
-    _character_grant: Optional[EventScript] = None
-    _spell_grant: Optional[EventScript] = None
-    _boss_fight_grant: Optional[EventScript] = None
-    _postfight_star_piece_grant: Optional[EventScript] = None
+    _npc_grant: EventScript | None = None
+    _chest_grant: EventScript | None = None
+    _standing_grant: EventScript | None = None
+    _river_grant: EventScript | None = None
+    _character_grant: EventScript | None = None
+    _spell_grant: EventScript | None = None
+    _boss_fight_grant: EventScript | None = None
+    _postfight_star_piece_grant: EventScript | None = None
     remake_only: bool = False
 
     @property
@@ -67,35 +71,35 @@ class Prize:
         return self._important
     
     @property
-    def npc_grant(self) -> Optional[EventScript]:
+    def npc_grant(self) -> EventScript | None:
         return self._npc_grant
     
     @property
-    def chest_grant(self) -> Optional[EventScript]:
+    def chest_grant(self) -> EventScript | None:
         return self._chest_grant
     
     @property
-    def standing_grant(self) -> Optional[EventScript]:
+    def standing_grant(self) -> EventScript | None:
         return self._standing_grant
 
     @property
-    def river_grant(self) -> Optional[EventScript]:
+    def river_grant(self) -> EventScript | None:
         return self._river_grant
 
     @property
-    def character_grant(self) -> Optional[EventScript]:
+    def character_grant(self) -> EventScript | None:
         return self._character_grant
 
     @property
-    def spell_grant(self) -> Optional[EventScript]:
+    def spell_grant(self) -> EventScript | None:
         return self._spell_grant
 
     @property
-    def boss_fight_grant(self) -> Optional[EventScript]:
+    def boss_fight_grant(self) -> EventScript | None:
         return self._boss_fight_grant
 
     @property
-    def postfight_star_piece_grant(self) -> Optional[EventScript]:
+    def postfight_star_piece_grant(self) -> EventScript | None:
         return self._postfight_star_piece_grant
 
     def set_important(self, important: bool) -> None:
@@ -117,10 +121,10 @@ class SpecialItemPrizeType(StrEnum):
 
 class ItemPrize(StandardPrize):
     item: type[Item]
-    _importance: Optional[SpecialItemPrizeType] = None
+    _importance: SpecialItemPrizeType | None = None
 
     @property
-    def importance(self) -> Optional[SpecialItemPrizeType]:
+    def importance(self) -> SpecialItemPrizeType | None:
         return self._importance
 
     @property
@@ -157,6 +161,7 @@ class StarPiecePrize(StandardPrize):
         nickname="Shooting Star",
         description="It's sure to make all your wishes\n come true."
     )
+    _hint: Flag
 
     @property
     def chest_grant(self) -> EventScript:
@@ -211,30 +216,48 @@ class WeddingGearPrize(StandardPrize):
 
 
 class EXPStarPrize(Prize):
-    _chest_70a7_upper: int = 1
-
-    @property
-    def chest_grant(self) -> EventScript:
-        return EventScript([
-            JmpToEvent(E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST)
-        ])
-
+    pass
 
 class SlotsPrize(Prize):
+    # TODO
     pass
 
 
 class CharacterPrize(Prize):
-    pass
+    _ally: Ally
+
+    @property
+    def ally(self) -> Ally:
+        return self._ally
 
 
 class SpellPrize(Prize):
-    pass
+    _spell: type[CharacterSpell]
+
+    @property
+    def spell(self) -> type[CharacterSpell]:
+        return self._spell
 
 
 class BossFightPrize(Prize):
-    pass
+    _members: list[FormationMember]
+    _force_battlefield: Battlefield | None
+    _force_start_event: int | None
 
+    @property
+    def formation(self) -> list[FormationMember]:
+        return self._members
+    
+    @property
+    def force_battlefield(self) -> Battlefield | None:
+        return self._force_battlefield
+
+    @property
+    def force_start_event(self) -> int | None:
+        return self._force_start_event
+
+class MimicFightInitiatorPrize(Prize):
+    pass
 
 class EmptyPrize(Prize):
 
@@ -279,38 +302,8 @@ class CoinPrize(Prize):
     def __init__(self, amount: int):
         self._amount = amount
 
-class CoinPrize1(CoinPrize):
-    _amount: int = 1
-    @property
-    def standing_grant(self) -> EventScript:
-        return EventScript([
-            JmpToEvent(E1293_COLLECT_FREESTANDING_SMALL_COIN)
-        ])
 
-    def __init__(self):
-        pass
-
-class CoinPrize10(CoinPrize):
-    _amount: int = 10
-    @property
-    def standing_grant(self) -> EventScript:
-        return EventScript([
-            JmpToEvent(E3146_FREESTANDING_BIG_COIN)
-        ])
-
-    def __init__(self):
-        pass
-
-
-class InfiniteCoinPrize(Prize):
-    @property
-    def chest_grant(self) -> EventScript:
-        return EventScript([
-            JmpToEvent(E3074_COIN_CHEST_MULTI_HIT_1)
-        ])
-
-
-class FrogCoinPrize(Prize):
+class FrogCoinPrize(StandardPrize):
     _amount: int
     _nickname = TreasureHunterNickname(
         nickname="Green Coin",
@@ -319,12 +312,21 @@ class FrogCoinPrize(Prize):
 
     @property
     def chest_grant(self) -> EventScript:
+        if self.amount == 1:
+            return EventScript([
+            SetVarToConst(ITEM_ID, 48),
+            JmpToEvent(E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST)
+            ])
         return EventScript([
             SetVarToConst(PRIMARY_TEMP_7000, self.amount),
-            JmpToEvent(4096) # TODO need a quickhit
+            JmpToEvent(E3082_FROG_COIN_CHEST_MULTI_HIT_1)
         ])
     @property
     def npc_grant(self) -> EventScript:
+        if self.amount == 1:
+            return EventScript([
+                JmpToEvent(E0157_NPC_QUEST_GRANT_1_FROG_COIN)
+            ])
         return EventScript([
             SetVarToConst(PRIMARY_TEMP_7000, self.amount),
             JmpToEvent(E0158_NPC_QUEST_GRANT_MULTI_FROG_COIN)
@@ -337,26 +339,3 @@ class FrogCoinPrize(Prize):
     def __init__(self, amount: int):
         self._amount = amount
 
-
-class FrogCoinPrize1(FrogCoinPrize):
-    _amount: int = 1
-    
-    @property
-    def chest_grant(self) -> EventScript:
-        return EventScript([
-            SetVarToConst(ITEM_ID, 48),
-            JmpToEvent(E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST)
-        ])
-    @property
-    def npc_grant(self) -> EventScript:
-        return EventScript([
-            JmpToEvent(E0157_NPC_QUEST_GRANT_1_FROG_COIN)
-        ])
-    @property
-    def standing_grant(self) -> EventScript:
-        return EventScript([
-            JmpToEvent(E3238_FREESTANDING_FROG_COIN)
-        ])
-
-    def __init__(self):
-        pass

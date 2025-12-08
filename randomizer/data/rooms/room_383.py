@@ -53,8 +53,7 @@ room = Room(
             dst_z=1,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=19,
             y=38,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=1,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -102,8 +100,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.SPARKY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -131,8 +128,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.SPARKY_NPC,
             battle_pack=106,
@@ -142,8 +138,7 @@ room = Room(
             y=27,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.SPARKY_NPC,
             battle_pack=106,
@@ -153,8 +148,7 @@ room = Room(
             y=23,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -181,7 +175,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

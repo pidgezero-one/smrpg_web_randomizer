@@ -159,8 +159,7 @@ from randomizer.entities.items.items import (
     Fireworks,
     BrightCard,
     Mushroom2,
-    StarEgg,
-)
+    StarEgg)
 from randomizer.entities.spells.spells import (
     Jump,
     FireOrb,
@@ -237,8 +236,7 @@ from randomizer.entities.spells.spells import (
     ChestMute,
     ChestPoison,
     ChainSaw,
-    SpellDoNothing,
-)
+    SpellDoNothing)
 from randomizer.entities.enemy_attacks.attacks import (
     PhysicalAttack0,
     PhysicalAttack1,
@@ -369,8 +367,7 @@ from randomizer.entities.enemy_attacks.attacks import (
     Terrapunch,
     ScrowFangs,
     Shaker,
-    AttackDoNothing,
-)
+    AttackDoNothing)
 from randomizer.types.spells import Element, Status
 from randomizer.types.monster_scripts.arguments import (
     MARIO,
@@ -423,13 +420,11 @@ from randomizer.types.monster_scripts.arguments import (
     MONSTER_8_CALL,
     COMMAND_ATTACK,
     COMMAND_SPECIAL,
-    COMMAND_ITEM,
-)
+    COMMAND_ITEM)
 from randomizer.types.monster_scripts.ids import (
     DESIGNATED_RANDOM_NUM_VAR,
     ATTACK_PHASE_COUNTER,
-    PARTY_SIZE,
-)
+    PARTY_SIZE)
 
 
 from randomizer.types.monster_scripts.types import MonsterScript
@@ -476,5 +471,4 @@ from randomizer.types.monster_scripts.commands import (
     IfLastMonsterStanding,
     Wait1Turn,
     Wait1TurnandRestartScript,
-    StartCounterCommands,
-)
+    StartCounterCommands)

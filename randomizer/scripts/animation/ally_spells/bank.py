@@ -2,8 +2,7 @@
 
 from randomizer.types.battle_animation_scripts.types import AnimationScriptBank
 from randomizer.types.battle_animation_scripts.ids import (
-    ALLY_SPELLS,
-)
+    ALLY_SPELLS)
 from randomizer.types.spells.ids import ALLY_SPELL_POINTER_TABLE_START
 from .contents.script_0 import script as script_0
 from .contents.script_1 import script as script_1
@@ -66,5 +65,4 @@ bank = AnimationScriptBank(
         script_24,
         script_25,
         script_26,
-    ],
-)
+    ])

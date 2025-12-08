@@ -50,8 +50,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -85,7 +84,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

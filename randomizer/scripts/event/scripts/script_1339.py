@@ -14,8 +14,7 @@ script = EventScript(
                 ASShadowOff(),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_14, subscript=[ASWalkNorthwestPixels(8), ASFaceSouthwest()]
         ),
@@ -28,8 +27,7 @@ script = EventScript(
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASSetSequenceSpeed(FAST),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -39,8 +37,7 @@ script = EventScript(
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASSetSequenceSpeed(FAST),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -50,8 +47,7 @@ script = EventScript(
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASSetSequenceSpeed(FAST),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -61,8 +57,7 @@ script = EventScript(
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASSetSequenceSpeed(FAST),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -72,8 +67,7 @@ script = EventScript(
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASSetSequenceSpeed(FAST),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
@@ -83,8 +77,7 @@ script = EventScript(
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASSetSequenceSpeed(FAST),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(
             E0791_TOWER_ANCESTOR_GAME_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),
@@ -93,33 +86,27 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=34,
-        ),
+            mod_id=34),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=46,
-        ),
+            mod_id=46),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=50,
-        ),
+            mod_id=50),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=54,
-        ),
+            mod_id=54),
         FadeInFromBlack(sync=False),
         Return(),
         SetBit(TEMP_7043_0, identifier="EVENT_1339_set_bit_18"),
@@ -131,33 +118,27 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=36,
-        ),
+            mod_id=36),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=40,
-        ),
+            mod_id=40),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=44,
-        ),
+            mod_id=44),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=48,
-        ),
+            mod_id=48),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=52,
-        ),
+            mod_id=52),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=56,
-        ),
+            mod_id=56),
         FadeInFromBlack(sync=False),
         Return(),
     ]

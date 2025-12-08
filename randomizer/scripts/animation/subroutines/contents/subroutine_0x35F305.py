@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35f305",
-        ),
+            identifier="queuestart_0x35f305"),
         NewSpriteAtCoords(
             sprite_id=SPR0031_HAMMER,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         PauseScriptUntilSpriteSequenceDone(),
         Pause1Frame(identifier="command_0x35f317"),
         SetAMEM8BitToOMEMMain(amem=0x63, omem=0x63),
@@ -43,8 +41,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         Pause1Frame(identifier="command_0x35f332"),
         SetAMEM8BitToOMEMMain(amem=0x64, omem=0x64),
         JmpIfAMEM8BitNotEqualsConst(0x64, 1, ["command_0x35f332"]),
@@ -57,8 +54,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         PauseScriptUntilSpriteSequenceDone(),
         PlaySound(sound=S0055_HAMMER_HIT_2),
         DrawSpriteAtAMEM32Coords(
@@ -71,5 +67,4 @@ script = SubroutineOrBanklessScript(
         JmpIfAMEM8BitNotEqualsConst(0x65, 1, ["command_0x35f352"]),
         RemoveObject(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

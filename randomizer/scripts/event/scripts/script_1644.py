@@ -15,21 +15,18 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=20, y=45, z=24, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_1, A0160_SEQUENCE_LOOPING_ON),
         Jmp(
             ["EVENT_1644_fade_in_from_black_async_21"],
-            identifier="EVENT_1644_fade_in_from_black_async_16",
-        ),
+            identifier="EVENT_1644_fade_in_from_black_async_16"),
         EnterArea(
             room_id=R108_MOLEVILLE_OUTSIDE,
             face_direction=SOUTHWEST,
             x=17,
             y=44,
             z=4,
-            identifier="EVENT_1644_enter_area_18",
-        ),
+            identifier="EVENT_1644_enter_area_18"),
         JmpIfBitClear(TEMP_7042_1, ["EVENT_1644_fade_in_from_black_async_21"]),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R108_MOLEVILLE_OUTSIDE, mod_id=0

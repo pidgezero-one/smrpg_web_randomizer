@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -63,8 +62,7 @@ room = Room(
             destination=OW20_PIPE_VAULT,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         MapExit(
             x=20,
             y=31,
@@ -78,8 +76,7 @@ room = Room(
             destination=OW20_PIPE_VAULT,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -108,8 +105,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.YELLOW_LETTER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -136,7 +132,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

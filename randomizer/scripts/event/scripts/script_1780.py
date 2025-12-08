@@ -11,8 +11,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_7,
             ["EVENT_1780_jmp_to_event_13"],
-            identifier="EVENT_1780_jmp_if_bit_clear_7_",
-        ),
+            identifier="EVENT_1780_jmp_if_bit_clear_7_"),
         SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
         RunEventAsSubroutine(
             E0015_STANDARD_ROOM_LOADER, identifier="EVENT_1780_jmp_to_event_13"

@@ -17,22 +17,19 @@ script = EventScript(
             y=28,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_3818_enter_area_6",
-        ),
+            identifier="EVENT_3818_enter_area_6"),
         Return(),
         JmpIfBitClear(
             TOAD_IN_MUSHROOM_WAY_3,
             ["EVENT_3818_enter_area_6"],
-            identifier="EVENT_3818_jmp_if_bit_clear_8",
-        ),
+            identifier="EVENT_3818_jmp_if_bit_clear_8"),
         EnterArea(
             room_id=R205_MUSHROOM_WAY_AREA_03,
             face_direction=SOUTHWEST,
             x=28,
             y=89,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

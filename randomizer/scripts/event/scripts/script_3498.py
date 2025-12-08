@@ -19,8 +19,7 @@ script = EventScript(
                 ASPause(12),
                 ASFloatingOff(),
             ],
-            identifier="EVENT_3498_action_queue_async_5",
-        ),
+            identifier="EVENT_3498_action_queue_async_5"),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -28,8 +27,7 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
                 ASJumpToHeight(64),
                 ASWalk1StepNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -43,15 +41,13 @@ script = EventScript(
                 ASWalkEastPixels(8),
                 ASWalkWestPixels(4),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         SetVarToConst(PRIMARY_TEMP_700C, 0),
         StartLoopNTimes(7),
         CreatePacketAtObjectCoords(
             packet=P017_SMALL_MINIGAME_COIN,
             target_npc=NPC_1,
-            destinations=["EVENT_3498_pause_11"],
-        ),
+            destinations=["EVENT_3498_pause_11"]),
         Pause(1, identifier="EVENT_3498_pause_11"),
         Inc(PRIMARY_TEMP_700C),
         EndLoop(),
@@ -68,22 +64,19 @@ script = EventScript(
                 ASWalkNorthwestSteps(9),
                 ASFaceSoutheast(),
             ],
-            identifier="EVENT_3498_action_queue_async_18",
-        ),
+            identifier="EVENT_3498_action_queue_async_18"),
         Pause(180),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[ASJumpToHeight(0), ASPause(13), ASFloatingOff()],
-            identifier="EVENT_3498_action_queue_async_20",
-        ),
+            identifier="EVENT_3498_action_queue_async_20"),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
                 ASPlaySound(sound=SO055_LOSE_COINS_COIN_FOUNTAIN, channel=4),
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2, subscript=[ASBounceToXYWithHeight(x=5, y=90, height=9)]
         ),
@@ -92,8 +85,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P017_SMALL_MINIGAME_COIN,
             target_npc=NPC_3,
-            destinations=["EVENT_3498_pause_26"],
-        ),
+            destinations=["EVENT_3498_pause_26"]),
         Pause(1, identifier="EVENT_3498_pause_26"),
         Inc(PRIMARY_TEMP_700C),
         EndLoop(),
@@ -108,15 +100,13 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASSetSequenceSpeed(FAST),
                 ASWalkWestSteps(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASTransferToXYZF(x=3, y=90, z=8, direction=EAST),
                 ASJumpToHeight(0),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -130,8 +120,7 @@ script = EventScript(
                 ASPlaySound(sound=SO065_THWOMP_STOMP, channel=4),
                 ASFixedFCoordOff(),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_2, subscript=[ASShiftZDownPixels(8)]),
         SetBit(TEMP_7043_2),
         Jmp(["EVENT_3498_action_queue_async_20"]),

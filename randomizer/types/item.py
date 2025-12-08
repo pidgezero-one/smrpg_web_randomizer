@@ -3,12 +3,9 @@ from smrpgpatchbuilder.datatypes.items.classes import (
     RegularItem as RegularItemBase,
     Weapon as WeaponBase,
     Armor as ArmorBase,
-    Accessory as AccessoryBase,
-)
-from typing import Optional
-
+    Accessory as AccessoryBase)
 class Item(ItemBase):
-    _remake_name: Optional[str] = None
+    _remake_name: str | None = None
 
     @property
     def remake_name(self) -> str:

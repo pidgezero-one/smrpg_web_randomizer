@@ -12,8 +12,7 @@ script = EventScript(
             mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[LAYER_L3],
             colour_math=[NPC_SPRITES, BACKGROUND, HALF_INTENSITY],
-            identifier="EVENT_1825_priority_set_2",
-        ),
+            identifier="EVENT_1825_priority_set_2"),
         RemoveObjectFromCurrentLevel(NPC_0),
         SetVarToConst(ROSE_WAY_7038, 3200),
         SetVarToConst(ROSE_WAY_703A, 6016),
@@ -36,15 +35,13 @@ script = EventScript(
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=X_COORD_2,
-            identifier="EVENT_1825_set_7000_short_mem_to_7000_22",
-        ),
+            identifier="EVENT_1825_set_7000_short_mem_to_7000_22"),
         CopyVarToVar(from_var=TEMP_7030, to_var=Y_COORD_2),
         Jmp(["EVENT_1825_action_queue_sync_35"]),
         CopyVarToVar(
             from_var=TEMP_702E,
             to_var=X_COORD_2,
-            identifier="EVENT_1825_copy_var_to_var_25",
-        ),
+            identifier="EVENT_1825_copy_var_to_var_25"),
         CopyVarToVar(from_var=TEMP_7030, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 29),
         JmpIfComparisonResultIsLesser(["EVENT_1825_add_33"]),
@@ -56,13 +53,11 @@ script = EventScript(
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=Y_COORD_2,
-            identifier="EVENT_1825_set_7000_short_mem_to_7000_34",
-        ),
+            identifier="EVENT_1825_set_7000_short_mem_to_7000_34"),
         ActionQueueSync(
             target=NPC_7,
             subscript=[ASWalkTo70167018()],
-            identifier="EVENT_1825_action_queue_sync_35",
-        ),
+            identifier="EVENT_1825_action_queue_sync_35"),
         ActionQueueAsync(target=NPC_9, subscript=[ASWalkTo70167018()]),
         AddConstToVar(X_COORD_2, 65535),
         ActionQueueSync(target=NPC_8, subscript=[ASWalkTo70167018()]),
@@ -82,8 +77,7 @@ script = EventScript(
                 ASBPL262728(),
                 ASDb(bytearray(b"\xfd$\x11\x12")),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_702A),
-            ],
-        ),
+            ]),
         PauseActionScript(NPC_10),
         SetSyncActionScript(MEM_70AA, A0479_BANDITS_WAY_CHEST_PLATFORMS_ON_MOUNT),
         Pause(2),
@@ -94,8 +88,7 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E1877_KEEP_ROTATING_ROOM_LOADER_CONTD,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         JmpToEvent(E1829_KEEP_DISPLAY_REMAINING_TRIES),
     ]
 )

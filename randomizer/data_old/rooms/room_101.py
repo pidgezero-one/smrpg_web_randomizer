@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     extra_required_actions=[ExtraSpriteActions.Flop],
     music=Music._13_ROAD_IS_FULL_OF_DANGERS,
     entrance_event=3919,
@@ -71,8 +65,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2319,
             x=6,
@@ -83,8 +76,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2320,
             x=8,
@@ -95,8 +87,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2321,
             x=8,
@@ -107,8 +98,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2322,
             x=7,
@@ -119,8 +109,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2323,
             x=7,
@@ -131,8 +120,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2324,
             x=9,
@@ -143,8 +131,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2325,
             x=9,
@@ -155,8 +142,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2326,
             x=11,
@@ -167,8 +153,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2327,
             x=11,
@@ -179,8 +164,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2328,
             x=13,
@@ -191,8 +175,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2329,
             x=13,
@@ -203,8 +186,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2330,
             x=10,
@@ -215,8 +197,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2331,
             x=10,
@@ -227,8 +208,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2332,
             x=12,
@@ -239,8 +219,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2333,
             x=12,
@@ -251,8 +230,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         MapExit(
@@ -268,8 +246,7 @@ room = Room(
             destination=Locations._025_BOOSTER_PASS,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=True,
-        ),
+            byte_2_bit_0=True),
         RoomExit(
             x=1,
             y=122,
@@ -287,8 +264,7 @@ room = Room(
             dst_z=8,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC(  # 0
@@ -322,8 +298,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 1
             occupant=npcs.Spikester,
             battle_pack=45,
@@ -337,8 +312,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 2
             occupant=npcs.Spikester,
             battle_pack=45,
@@ -352,8 +326,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 3
             occupant=npcs.Spikester,
             battle_pack=45,
@@ -367,8 +340,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 4
             occupant=npcs.BigCoin,
             initiator=Initiator.NONE,
@@ -400,8 +372,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 5
             occupant=npcs.Empty,
             initiator=Initiator.JUMP_ON,
@@ -436,8 +407,7 @@ room = Room(
             acute_axis=7,
             obtuse_axis=7,
             height=3,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 6
             occupant=npcs.BigFlower,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -472,7 +442,5 @@ room = Room(
             obtuse_axis=6,
             height=13,
             cannot_clone=False,
-            y_shift=1,
-        ),
-    ],
-)
+            y_shift=1),
+    ])

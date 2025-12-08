@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=12,
             y=108,
-            z=11,
-        ),
+            z=11),
         RunEventAsSubroutine(E0014_STANDARD_ROOM_LOADER),
         ActionQueueAsync(
             target=MARIO, subscript=[ASJumpToHeight(height=144, silent=True)]

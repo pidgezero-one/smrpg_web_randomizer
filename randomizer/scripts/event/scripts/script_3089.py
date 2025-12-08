@@ -26,8 +26,7 @@ script = EventScript(
             sync=True,
             multiline=False,
             use_background=False,
-            bit_6=True,
-        ),
+            bit_6=True),
         AddToInventory(ITEM_ID),
         Return(),
         RunDialog(
@@ -38,8 +37,7 @@ script = EventScript(
             multiline=False,
             use_background=False,
             bit_6=True,
-            identifier="EVENT_3089_run_dialog_25_",
-        ),
+            identifier="EVENT_3089_run_dialog_25_"),
         AddToInventory(ITEM_ID),
         Return(),
     ]

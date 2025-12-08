@@ -62,8 +62,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -90,8 +89,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.SPLASH_WATER_DROPLETS_NPC,
             initiator=EventInitiator.NONE,
@@ -118,8 +116,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.GOOMBETTE_LOWER_NPC,
             initiator=EventInitiator.NONE,
@@ -146,8 +143,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.LAKITU_NPC,
             initiator=EventInitiator.NONE,
@@ -174,8 +170,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.GOOMBA_NPC_2,
             initiator=EventInitiator.NONE,
@@ -202,8 +197,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.GOOMBA_NPC_2,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -213,7 +207,6 @@ room = Room(
             y=14,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

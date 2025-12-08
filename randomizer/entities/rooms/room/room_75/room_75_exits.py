@@ -16,8 +16,7 @@ exits = [
         destination=OW16_TADPOLE_POND,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
     RoomExit(
         x=27,
         y=73,
@@ -35,6 +34,5 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=SOUTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
 ]

@@ -2,31 +2,26 @@
 
 from random import choices
 import statistics
-from typing import List, Tuple, Type, Optional, Dict
-
-
 from smrpgpatchbuilder.datatypes.battles.enums import BattleMusic, Battlefields
 from smrpgpatchbuilder.datatypes.enemies.classes import Enemy
 from smrpgpatchbuilder.datatypes.numbers.classes import (
     ByteField,
     BitMapSet,
     UInt16,
-    UInt8,
-)
+    UInt8)
 
 from smrpgpatchbuilder.datatypes.battles.ids.misc import (
     BASE_FORMATION_ADDRESS,
     BASE_FORMATION_META_ADDRESS,
     TOTAL_FORMATIONS,
-    PACK_BASE_ADDRESS,
-)
+    PACK_BASE_ADDRESS)
 
 
 class FormationMember:
     """Class representing a single enemy in a formation with metadata."""
 
     _hidden_at_start: bool
-    _enemy: Type[Enemy]
+    _enemy: type[Enemy]
     _x_pos: UInt8
     _y_pos: UInt8
     _anchor: bool
@@ -42,11 +37,11 @@ class FormationMember:
         self._hidden_at_start = hidden_at_start
 
     @property
-    def enemy(self) -> Type[Enemy]:
+    def enemy(self) -> type[Enemy]:
         """The class of the enemy being included in the formation."""
         return self._enemy
 
-    def set_enemy(self, enemy: Type[Enemy]) -> None:
+    def set_enemy(self, enemy: type[Enemy]) -> None:
         """Set the class of the enemy being included in the formation."""
         self._enemy = enemy
 
@@ -92,13 +87,12 @@ class FormationMember:
 
     def __init__(
         self,
-        enemy: Type[Enemy],
+        enemy: type[Enemy],
         x_pos: int,
         y_pos: int,
         hidden_at_start: bool = False,
         anchor: bool = False,
-        include_in_stat_totaling: bool = True,
-    ) -> None:
+        include_in_stat_totaling: bool = True) -> None:
         self.set_enemy(enemy)
         self.set_x_pos(x_pos)
         self.set_y_pos(y_pos)
@@ -110,32 +104,32 @@ class FormationMember:
 class Formation:
     """A subclass that defines an arrangement of enemies in a battle."""
 
-    _members: List[Optional[FormationMember]]
-    _run_event_at_load: Optional[UInt8]
+    _members: list[FormationMember | None]
+    _run_event_at_load: UInt8 | None
     _music: BattleMusic
     _can_run_away: bool
     _unknown_bit: bool
-    _battlefield_override: Optional[Battlefields]
-    _additional_enemies_to_scale: List[Type[Enemy]]
-    _additional_enemies_for_stat_count: List[Type[Enemy]]
+    _battlefield_override: Battlefields | None
+    _additional_enemies_to_scale: list[type[Enemy]]
+    _additional_enemies_for_stat_count: list[type[Enemy]]
 
     @property
-    def members(self) -> List[Optional[FormationMember]]:
+    def members(self) -> list[FormationMember | None]:
         """A list of containers including info about enemies and their positioning."""
         return self._members
 
-    def set_members(self, members: List[Optional[FormationMember]]) -> None:
+    def set_members(self, members: list[FormationMember | None]) -> None:
         """Overwrite the list of containers including info about enemies and their positioning."""
         self._members = members
         self._members.extend([None] * (8 - len(self._members)))
 
     @property
-    def run_event_at_load(self) -> Optional[UInt8]:
+    def run_event_at_load(self) -> UInt8 | None:
         """the event that should run at the start of the battle when this formation is used.
         If not set, no event will run."""
         return self._run_event_at_load
 
-    def set_run_event_at_load(self, run_event_at_load: Optional[int]) -> None:
+    def set_run_event_at_load(self, run_event_at_load: int | None) -> None:
         """set the event that should run at the start of the battle when this formation is used.
         If not set, no event will run."""
         if run_event_at_load is None:
@@ -171,20 +165,20 @@ class Formation:
         self._unknown_bit = unknown_bit
 
     @property
-    def battlefield_override(self) -> Optional[Battlefields]:
+    def battlefield_override(self) -> Battlefields | None:
         """if set, forces this formation to always load with the given battlefield,
         regardless of where in the world it is encountered."""
         return self._battlefield_override
 
     def set_battlefield_override(
-        self, battlefield_override: Optional[Battlefields]
+        self, battlefield_override: Battlefields | None
     ) -> None:
         """force this formation to always load with the given battlefield,
         regardless of where in the world it is encountered."""
         self._battlefield_override = battlefield_override
 
     @property
-    def additional_enemies_to_scale(self) -> List[Type[Enemy]]:
+    def additional_enemies_to_scale(self) -> list[type[Enemy]]:
         """if this formation is used in a boss fight, its stats will change depending on
         which location it is shuffled to inhabit. this property specifies enemies that are
         not included in the formation itself whose stats should also be scaled similarly to
@@ -200,7 +194,7 @@ class Formation:
         return self._additional_enemies_to_scale
 
     def set_additional_enemies_to_scale(
-        self, additional_enemies_to_scale: List[Type[Enemy]]
+        self, additional_enemies_to_scale: list[type[Enemy]]
     ) -> None:
         """if this formation is used in a boss fight, its stats will change depending on
         which location it is shuffled to inhabit. this property specifies enemies that are
@@ -217,7 +211,7 @@ class Formation:
         self._additional_enemies_to_scale = additional_enemies_to_scale
 
     @property
-    def additional_enemies_for_stat_count(self) -> List[Type[Enemy]]:
+    def additional_enemies_for_stat_count(self) -> list[type[Enemy]]:
         """calculating the stats that a boss location should confer onto the boss inhabiting it
         via shuffling is based on the stats of the boss that inhabited that location in the original
         game, and takes into account which enemies absolutely must be defeated in order
@@ -233,7 +227,7 @@ class Formation:
         return self._additional_enemies_for_stat_count
 
     def set_additional_enemies_for_stat_count(
-        self, additional_enemies_for_stat_count: List[Type[Enemy]]
+        self, additional_enemies_for_stat_count: list[type[Enemy]]
     ) -> None:
         """calculating the stats that a boss location should confer onto the boss inhabiting it
         via shuffling is based on the stats of the boss that inhabited that location in the original
@@ -249,7 +243,7 @@ class Formation:
         instead of five."""
         self._additional_enemies_for_stat_count = additional_enemies_for_stat_count
 
-    def get_summed_stats(self) -> Tuple[int, int, int, int, int, int, int, int, int]:
+    def get_summed_stats(self) -> tuple[int, int, int, int, int, int, int, int, int]:
         """calculates the stats that this fight's original location should confer onto whichever
         boss fight inhabits it via the shuffler, if the player's settings require relative
         stat scaling."""
@@ -291,21 +285,20 @@ class Formation:
             magic_attack,
             magic_defense,
             evade,
-            magic_evade,
-        )
+            magic_evade)
 
-    def get_scaled_enemy_classes(self) -> List[Type[Enemy]]:
+    def get_scaled_enemy_classes(self) -> list[type[Enemy]]:
         """A list of the class definitions of enemies which are included in scaling."""
         returned_enemy_classes = [m.enemy for m in self.members if m is not None]
         returned_enemy_classes.extend(self.additional_enemies_to_scale)
         return list(set(returned_enemy_classes))
 
-    def get_members_by_enemy_classes(self, *cls: Type[Enemy]) -> List[FormationMember]:
+    def get_members_by_enemy_classes(self, *cls: type[Enemy]) -> list[FormationMember]:
         """returns all of the enemy containers in this formation if the enemy class
         matches an entry in the given list."""
         return [m for m in self.members if m is not None and type(m) in cls]
 
-    def randomize_coords(self, valid_coordinates: List[Tuple[int, int]]) -> None:
+    def randomize_coords(self, valid_coordinates: list[tuple[int, int]]) -> None:
         """randomizes the coordinates of each formation member.\n
         Should not result in overlap."""
         valid_members = [m for m in self.members if m is not None]
@@ -316,15 +309,14 @@ class Formation:
 
     def __init__(
         self,
-        members: List[Optional[FormationMember]],
-        run_event_at_load: Optional[int] = None,
+        members: list[FormationMember | None],
+        run_event_at_load: int | None = None,
         music: BattleMusic = BattleMusic.NORMAL_MUSIC,
         can_run_away: bool = True,
         unknown_bit: bool = True,
-        battlefield_override: Optional[Battlefields] = None,
-        additional_enemies_to_scale: Optional[List[Type[Enemy]]] = None,
-        additional_enemies_for_stat_count: Optional[List[Type[Enemy]]] = None,
-    ) -> None:
+        battlefield_override: Battlefields | None = None,
+        additional_enemies_to_scale: list[type[Enemy]] | None = None,
+        additional_enemies_for_stat_count: list[type[Enemy]] | None = None) -> None:
         if additional_enemies_to_scale is None:
             additional_enemies_to_scale = []
         if additional_enemies_for_stat_count is None:
@@ -338,10 +330,10 @@ class Formation:
         self.set_additional_enemies_to_scale(additional_enemies_to_scale)
         self.set_additional_enemies_for_stat_count(additional_enemies_for_stat_count)
 
-    def render(self, formation_index: int) -> Dict[int, bytearray]:
+    def render(self, formation_index: int) -> dict[int, bytearray]:
         """Get formation data in `{0x123456: bytearray([0x00])}` format."""
         assert 0 <= formation_index < TOTAL_FORMATIONS
-        patch: Dict[int, bytearray] = {}
+        patch: dict[int, bytearray] = {}
         data = bytearray()
 
         # monsters present bitmap.
@@ -391,10 +383,10 @@ class Formation:
 class FormationPack:
     """Base class for an arrangement of enemies in battle."""
 
-    _formation_ids: List[UInt16] = []
+    _formation_ids: list[UInt16] = []
 
     @property
-    def formation_ids(self) -> List[UInt16]:
+    def formation_ids(self) -> list[UInt16]:
         """a list of all formation ids included in this battle pack.
         If all three formations are the same, it will just return one ID."""
         if self.formation_ids[0] == self.formation_ids[1] == self.formation_ids[2]:
@@ -431,12 +423,12 @@ class FormationPack:
         else:
             self.set_formation_ids(*formation_ids)
 
-    def render(self, pack_index: int) -> Dict[int, bytearray]:
+    def render(self, pack_index: int) -> dict[int, bytearray]:
         """Get pack data in `{0x123456: bytearray([0x00])}` format."""
         assert UInt8(pack_index)
         assert len(self._formation_ids) == 3
 
-        patch: Dict[int, bytearray] = {}
+        patch: dict[int, bytearray] = {}
         data = bytearray()
         hi_num = False
 

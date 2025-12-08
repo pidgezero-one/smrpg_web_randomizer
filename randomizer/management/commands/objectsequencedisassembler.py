@@ -17,15 +17,13 @@ from randomizer.management.disassembler_common import (
     con_int,
     flags_short,
     con_bitarray,
-    writeline,
-)
+    writeline)
 from randomizer.helpers.objectsequencetables import (
     sequence_speed_table,
     vram_priority_table,
     _0x08_flags,
     _0x0A_flags,
-    _0x10_flags,
-)
+    _0x10_flags)
 from randomizer.helpers.eventtables import (
     npc_packet_table,
     area_object_table,
@@ -33,8 +31,7 @@ from randomizer.helpers.eventtables import (
     sound_table,
     coord_table,
     coord_unit_table,
-    room_table,
-)
+    room_table)
 
 start = 0x210800
 # end = 0x21BADE
@@ -855,8 +852,7 @@ names[0x26] = named(
     byte(),
     byte(),
     byte(),
-    byte(),
-)
+    byte())
 names[0x27] = named(
     "embedded_animation_routine",
     con(0x27),
@@ -874,8 +870,7 @@ names[0x27] = named(
     byte(),
     byte(),
     byte(),
-    byte(),
-)
+    byte())
 names[0x28] = named(
     "embedded_animation_routine",
     con(0x28),
@@ -893,8 +888,7 @@ names[0x28] = named(
     byte(),
     byte(),
     byte(),
-    byte(),
-)
+    byte())
 # 0x29 undocumented
 names[0x2A] = named("bpl_26_27")
 # 0x2B - 0x3A undocumented
@@ -903,23 +897,20 @@ names[0x3A] = named(
     byte(prefix="AreaObjects", table=area_object_table),
     byte_int(),
     byte_int(),
-    short(),
-)
+    short())
 names[0x3B] = named(
     "jmp_if_object_within_range_same_z",
     byte(prefix="AreaObjects", table=area_object_table),
     byte_int(),
     byte_int(),
-    short(),
-)
+    short())
 names[0x3C] = named("unknown_jmp_3C", byte(), byte(), short())
 names[0x3D] = named("jmp_if_mario_in_air", short())
 names[0x3E] = named(
     "create_packet_at_npc_coords",
     byte(prefix="NPCPackets", table=npc_packet_table),
     byte(prefix="AreaObjects", table=area_object_table),
-    short(),
-)
+    short())
 names[0x3F] = named(
     "create_packet_at_7010", byte(prefix="NPCPackets", table=npc_packet_table), short()
 )
@@ -1148,8 +1139,7 @@ fd_names[0x3E] = named(
     "create_packet_at_7010_with_event",
     byte(prefix="NPCPackets", table=npc_packet_table),
     short_int(),
-    short(),
-)
+    short())
 # 0x3F - 0x9B undocumented
 # 0x1A - 0x9B undocumente
 fd_names[0x9E] = named(
@@ -1220,8 +1210,7 @@ class Command(BaseCommand):
             "-d",
             "--debug",
             action="store_true",
-            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer",
-        )
+            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer")
 
     def get_embedded_script(self, arr):
         if isinstance(arr, str):
@@ -1360,16 +1349,13 @@ class Command(BaseCommand):
             )
             writeline(
                 file,
-                "# python manage.py objectsequencedisassembler --rom ROM > openmode_sequence_debug.txt",
-            )
+                "# python manage.py objectsequencedisassembler --rom ROM > openmode_sequence_debug.txt")
             writeline(
                 file,
-                "from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags",
-            )
+                "from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags")
             writeline(
                 file,
-                "from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms",
-            )
+                "from randomizer.helpers.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms")
             script = scripts_with_named_jumps[i]
             if len(script) == 0:
                 writeline(file, "script = []")
@@ -1396,14 +1382,12 @@ class Command(BaseCommand):
         writeline(file, "# Run the following command if you need to rebuild the table")
         writeline(
             file,
-            "# python manage.py objectsequencedisassembler --rom ROM > openmode_sequence_debug.txt",
-        )
+            "# python manage.py objectsequencedisassembler --rom ROM > openmode_sequence_debug.txt")
         for i in range(len(scripts_data)):
             writeline(
                 file,
                 "from randomizer.data.actionscripts.script_%i import script as script_%i"
-                % (i, i),
-            )
+                % (i, i))
         writeline(file, "scripts = [None]*%i" % len(scripts_data))
         for i in range(len(scripts_data)):
             writeline(file, "scripts[%i] = script_%i" % (i, i))

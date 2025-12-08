@@ -53,8 +53,7 @@ room = Room(
             dst_z=4,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=21,
             y=23,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=20,
             y=25,
@@ -91,8 +89,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -121,8 +118,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.PA_MOLE_NPC,
             event_script=E3186_MOLES_IN_FIRST_MINES_ROOM,
@@ -132,7 +128,6 @@ room = Room(
             y=29,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
     ]
 )

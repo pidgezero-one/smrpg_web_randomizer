@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2804_BEAN_VALLEY_NORTH_PIPE_DIRECTIONAL_BIT,
         x=14,
@@ -25,8 +24,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2804_BEAN_VALLEY_NORTH_PIPE_DIRECTIONAL_BIT,
         x=14,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2801_BEAN_VALLEY_EXIT_TO_CASINO,
         x=13,
@@ -49,6 +46,5 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

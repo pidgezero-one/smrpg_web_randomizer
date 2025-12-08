@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0425_PIPE_VAULT_RED_ROOM_EXIT_PIPE,
             x=7,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0488_RED_ROOM_PIRANHA_1,
             x=2,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0488_RED_ROOM_PIRANHA_1,
             x=2,
@@ -82,8 +79,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0489_RED_ROOM_PIRANHA_2,
             x=3,
@@ -94,8 +90,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0488_RED_ROOM_PIRANHA_1,
             x=3,
@@ -106,8 +101,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0488_RED_ROOM_PIRANHA_1,
             x=3,
@@ -118,8 +112,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0490_RED_ROOM_PIRANHA_3,
             x=4,
@@ -130,8 +123,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0490_RED_ROOM_PIRANHA_3,
             x=4,
@@ -142,8 +134,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0491_RED_ROOM_PIRANHA_4,
             x=7,
@@ -154,8 +145,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0490_RED_ROOM_PIRANHA_3,
             x=5,
@@ -166,8 +156,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0490_RED_ROOM_PIRANHA_3,
             x=5,
@@ -178,8 +167,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -209,8 +197,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.PIRANHA_PLANT_NPC,
             battle_pack=35,
@@ -220,8 +207,7 @@ room = Room(
             y=94,
             z=0,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 2
             npc=npcs.EMPTY_ENEMY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -248,8 +234,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.EMPTY_ENEMY_NPC,
             event_script=E0433_PIPE_VAULT_CHOMPWEED,
@@ -259,8 +244,7 @@ room = Room(
             y=92,
             z=2,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 4
             npc=npcs.SMALL_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -287,8 +271,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 5
             npc=npcs.SMALL_COIN_NPC,
             event_script=E0256_RETURN,
@@ -298,7 +281,6 @@ room = Room(
             y=112,
             z=1,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
     ]
 )

@@ -10,8 +10,7 @@ script = EventScript(
         SetSyncActionScript(NPC_4, A0015_DO_NOTHING),
         ActionQueueAsync(
             target=NPC_4,
-            subscript=[ASTransferXYZFSteps(x=0, y=0, z=25, direction=NORTHEAST)],
-        ),
+            subscript=[ASTransferXYZFSteps(x=0, y=0, z=25, direction=NORTHEAST)]),
         RunEventAsSubroutine(
             E0803_SHIP_1ST_PREBOSS_BATTLE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),
@@ -20,16 +19,14 @@ script = EventScript(
         ActionQueueSync(target=NPC_1, subscript=[ASPause(3), ASFaceSouthwest()]),
         ActionQueueSync(
             target=NPC_2,
-            subscript=[ASPause(8), ASFaceMario(), ASWalk1StepSouth(), ASFaceMario()],
-        ),
+            subscript=[ASPause(8), ASFaceMario(), ASWalk1StepSouth(), ASFaceMario()]),
         ActionQueueSync(target=NPC_3, subscript=[ASFaceMario()]),
         ActionQueueAsync(
             target=SCREEN_FOCUS, subscript=[ASWalk1StepNortheast(), ASWalk1StepNorth()]
         ),
         JmpIfBitSet(
             UNKNOWN_FIRST_PRE_BOSS_SUNKEN_SHIP_ROOM_7058_5,
-            ["EVENT_3280_action_queue_sync_10"],
-        ),
+            ["EVENT_3280_action_queue_sync_10"]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -38,8 +35,7 @@ script = EventScript(
                 ASShiftZUpPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
-            identifier="EVENT_3280_action_queue_sync_10",
-        ),
+            identifier="EVENT_3280_action_queue_sync_10"),
         ActionQueueSync(
             target=NPC_0, subscript=[ASWalkToXYCoords(x=3, y=125), ASFaceMario()]
         ),
@@ -49,8 +45,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=4, y=122),
                 ASFaceMario(),
                 ASWalkToXYCoords(x=3, y=123),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2, subscript=[ASWalkToXYCoords(x=2, y=123), ASFaceMario()]
         ),
@@ -76,17 +71,14 @@ script = EventScript(
                 ASTurnClockwise45DegreesNTimes(255),
                 ASPause(2),
                 ASTurnClockwise45DegreesNTimes(255),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_4, A0014_FLOATING_CHEST),
         JmpIfBitSet(
             UNKNOWN_FIRST_PRE_BOSS_SUNKEN_SHIP_ROOM_7058_5,
-            ["EVENT_3280_start_battle_23"],
-        ),
+            ["EVENT_3280_start_battle_23"]),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASPause(4), ASFaceNorth(), ASPause(2), ASFaceNorthwest()],
-        ),
+            subscript=[ASPause(4), ASFaceNorth(), ASPause(2), ASFaceNorthwest()]),
         ActionQueueSync(
             target=NPC_2, subscript=[ASJumpToHeight(height=48, silent=True)]
         ),
@@ -101,8 +93,7 @@ script = EventScript(
                 ASFaceEast(),
                 ASPause(2),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0, subscript=[ASJumpToHeight(height=48, silent=True)]
         ),
@@ -118,16 +109,13 @@ script = EventScript(
         ActionQueueSync(target=MARIO, subscript=[ASFaceNortheast()]),
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASFixedFCoordOn(), ASWalk1StepNortheast(), ASFixedFCoordOff()],
-        ),
+            subscript=[ASFixedFCoordOn(), ASWalk1StepNortheast(), ASFixedFCoordOff()]),
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASFixedFCoordOn(), ASWalk1StepSoutheast(), ASFixedFCoordOff()],
-        ),
+            subscript=[ASFixedFCoordOn(), ASWalk1StepSoutheast(), ASFixedFCoordOff()]),
         ActionQueueSync(
             target=NPC_2,
-            subscript=[ASFixedFCoordOn(), ASWalk1StepNorthwest(), ASFixedFCoordOff()],
-        ),
+            subscript=[ASFixedFCoordOn(), ASWalk1StepNorthwest(), ASFixedFCoordOff()]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -135,15 +123,13 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalk1StepNorthwest(),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASJumpToHeight(height=48, silent=True),
                 ASJumpToHeight(height=48, silent=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -151,8 +137,7 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASFaceNorth(),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -165,8 +150,7 @@ script = EventScript(
                 ),
                 ASWalkNortheastSteps(13),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -183,8 +167,7 @@ script = EventScript(
                 ASWalk1StepSoutheast(),
                 ASWalkNortheastSteps(11),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -199,8 +182,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(4),
                 ASWalkNortheastSteps(11),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -215,8 +197,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(3),
                 ASWalkNortheastSteps(10),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RemoveObjectFromSpecificLevel(
             NPC_0, R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL
         ),
@@ -235,8 +216,7 @@ script = EventScript(
         JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3280_jmp_to_event_83"),
         SetBit(
             UNKNOWN_FIRST_PRE_BOSS_SUNKEN_SHIP_ROOM_7058_5,
-            identifier="EVENT_3280_set_bit_84",
-        ),
+            identifier="EVENT_3280_set_bit_84"),
         RunEventAtReturn(E3306_SHIP_LOWER_HENCHMAN_ROOM_LOADER_CONTINUED),
         Return(),
     ]

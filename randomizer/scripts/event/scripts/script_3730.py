@@ -28,20 +28,17 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=25, y=21, z=3, direction=EAST),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
                 ASTransferToXYZF(x=26, y=22, z=3, direction=EAST),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         RunEventAsSubroutine(
             E0824_NIMBUS_CASTLE_OCCUPIED_4WAY_PATH_SHUFFLED_NPC_ANIMATION_LOADER,
-            identifier="EVENT_3730_sequence_setter_1",
-        ),
+            identifier="EVENT_3730_sequence_setter_1"),
         FadeInFromBlack(sync=False),
         Return(),
     ]

@@ -13,8 +13,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2812_MUSHROOM_WAY_3_UPPER_QUICK_SPINY,
         x=18,
@@ -25,8 +24,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2811_MUSHROOM_WAY_3_LOWER_QUICK_SPINY,
         x=15,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2811_MUSHROOM_WAY_3_LOWER_QUICK_SPINY,
         x=14,
@@ -49,8 +46,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2807_MUSHROOM_WAY_3_EXIT_TO_WORLD_MAP,
         x=29,
@@ -61,8 +57,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2808_MUSHROOM_WAY_BOSS_FIGHT,
         x=27,
@@ -73,8 +68,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2808_MUSHROOM_WAY_BOSS_FIGHT,
         x=27,
@@ -85,8 +79,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2808_MUSHROOM_WAY_BOSS_FIGHT,
         x=28,
@@ -97,6 +90,5 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

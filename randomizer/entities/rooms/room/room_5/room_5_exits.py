@@ -16,8 +16,7 @@ exits = [
         destination=OW28_MARRYMORE,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
     MapExit(
         x=12,
         y=64,
@@ -31,8 +30,7 @@ exits = [
         destination=OW28_MARRYMORE,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
     RoomExit(
         x=19,
         y=62,
@@ -50,8 +48,7 @@ exits = [
         dst_z=1,
         dst_z_half=True,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=4,
         y=71,
@@ -69,6 +66,5 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
 ]

@@ -90,8 +90,7 @@ script = EventScript(
         JmpIfBitSet(
             MINES_BOSS_1_DEFEATED,
             ["EVENT_720_set_93"],
-            identifier="EVENT_720_jmp_if_bit_set_71",
-        ),
+            identifier="EVENT_720_jmp_if_bit_set_71"),
         SetBit(TEMP_7043_0),
         StartBattleAtBattlefield(164, BF05_MOLEVILLE_MINES),
         JmpIfBitSet(GAME_OVER, ["EVENT_720_reset_and_choose_game_366"]),
@@ -108,8 +107,7 @@ script = EventScript(
                     bit_4=True,
                     cant_pass_npcs=True,
                     cant_walk_through=True,
-                    bit_7=True,
-                ),
+                    bit_7=True),
                 ASSetAllSpeeds(VERY_FAST),
                 ASSequenceLoopingOn(),
                 ASJumpToHeight(56),
@@ -117,8 +115,7 @@ script = EventScript(
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASPlaySound(sound=SO011_WHOOSH_AWAY, channel=4),
                 ASReturn(),
-            ],
-        ),
+            ]),
         ResumeActionScript(MEM_70A8),
         Set7000ToCurrentLevel(),
         JmpIfVarNotEqualsConst(
@@ -134,14 +131,12 @@ script = EventScript(
                         "EVENT_720_action_queue_sync_106_SUBSCRIPT_object_memory_set_bit_0"
                     ]
                 ),
-            ],
-        ),
+            ]),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000,
             283,
             ["EVENT_720_jmp_if_7000_not_equals_short_90"],
-            identifier="EVENT_720_jmp_if_7000_not_equals_short_87",
-        ),
+            identifier="EVENT_720_jmp_if_7000_not_equals_short_87"),
         JmpIfBitSet(MINES_HENCHMAN_RIGHT_DEFEATED, ["EVENT_720_set_93"]),
         ActionQueueSync(
             target=NPC_2,
@@ -152,22 +147,19 @@ script = EventScript(
                         "EVENT_720_action_queue_sync_122_SUBSCRIPT_object_memory_set_bit_0"
                     ]
                 ),
-            ],
-        ),
+            ]),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000,
             273,
             ["EVENT_720_set_93"],
-            identifier="EVENT_720_jmp_if_7000_not_equals_short_90",
-        ),
+            identifier="EVENT_720_jmp_if_7000_not_equals_short_90"),
         JmpIfBitSet(MINES_HENCHMAN_MIDDLE_DEFEATED, ["EVENT_720_set_93"]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
                 ASSetBit(TEMP_7043_1),
                 ASJmp(["EVENT_720_action_queue_sync_138_SUBSCRIPT_pause_0"]),
-            ],
-        ),
+            ]),
         SetVarToConst(ITEM_ID, BambinoBomb, identifier="EVENT_720_set_93"),
         JmpIfVarEqualsConst(ITEM_ID, AltoCard, ["EVENT_720_set_613"]),
         SetVarToConst(PRIMARY_TEMP_7000, 524),
@@ -189,8 +181,7 @@ script = EventScript(
                 ASObjectMemorySetBit(
                     arg_1=0x30,
                     bits=[4],
-                    identifier="EVENT_720_action_queue_sync_106_SUBSCRIPT_object_memory_set_bit_0",
-                ),
+                    identifier="EVENT_720_action_queue_sync_106_SUBSCRIPT_object_memory_set_bit_0"),
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
@@ -220,16 +211,14 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASReturn(),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI1644_EMPTY,
             above_object=MEM_70A8,
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         SetBit(MINES_HENCHMAN_LEFT_DEFEATED),
         SetBit(TEMP_7043_1),
         JmpIfBitSet(RUN_AWAY, ["EVENT_720_close_dialog_115"]),
@@ -241,8 +230,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         AddToInventory(ITEM_ID),
         CloseDialog(identifier="EVENT_720_close_dialog_115"),
         ClearBit(TEMP_7043_0),
@@ -257,8 +245,7 @@ script = EventScript(
                 ASObjectMemorySetBit(
                     arg_1=0x30,
                     bits=[4],
-                    identifier="EVENT_720_action_queue_sync_122_SUBSCRIPT_object_memory_set_bit_0",
-                ),
+                    identifier="EVENT_720_action_queue_sync_122_SUBSCRIPT_object_memory_set_bit_0"),
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
@@ -288,16 +275,14 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASReturn(),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI1644_EMPTY,
             above_object=MEM_70A8,
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         SetBit(MINES_HENCHMAN_RIGHT_DEFEATED),
         SetBit(TEMP_7043_1),
         JmpIfBitSet(RUN_AWAY, ["EVENT_720_close_dialog_131"]),
@@ -309,8 +294,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         AddToInventory(ITEM_ID),
         CloseDialog(identifier="EVENT_720_close_dialog_131"),
         ClearBit(TEMP_7043_0),
@@ -353,16 +337,14 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASReturn(),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI1644_EMPTY,
             above_object=MEM_70A8,
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         SetBit(MINES_HENCHMAN_MIDDLE_DEFEATED),
         SetBit(TEMP_7043_1),
         JmpIfBitSet(RUN_AWAY, ["EVENT_720_close_dialog_147"]),
@@ -374,8 +356,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         AddToInventory(ITEM_ID),
         CloseDialog(identifier="EVENT_720_close_dialog_147"),
         ClearBit(TEMP_7043_0),
@@ -401,8 +382,7 @@ script = EventScript(
         SummonObjectToSpecificLevel(
             NPC_0,
             R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM,
-            identifier="EVENT_720_summon_to_level_160",
-        ),
+            identifier="EVENT_720_summon_to_level_160"),
         SummonObjectToSpecificLevel(NPC_1, R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM),
         SummonObjectToSpecificLevel(NPC_2, R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM),
         RemoveObjectFromSpecificLevel(NPC_3, R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM),
@@ -437,8 +417,7 @@ script = EventScript(
         JmpIfBitSet(
             SHIP_MIDBOSS_COMPLETED,
             ["EVENT_720_fade_out_to_black_async_200"],
-            identifier="EVENT_720_jmp_if_bit_set_182",
-        ),
+            identifier="EVENT_720_jmp_if_bit_set_182"),
         StartBattleAtBattlefield(167, BF03_SUNKEN_SHIP_KING_CALAMARIS_CELLAR),
         SetBit(TEMP_707C_5),
         ClearBit(TEMP_707C_6),
@@ -453,8 +432,7 @@ script = EventScript(
             x=3,
             y=89,
             z=8,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ClearBit(DIRECTIONAL_7049_0),
         ActionQueueSync(
             target=MARIO, subscript=[ASJumpToHeight(height=0, silent=True)]
@@ -476,8 +454,7 @@ script = EventScript(
             x=2,
             y=92,
             z=8,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ActionQueueSync(
             target=MARIO, subscript=[ASJumpToHeight(height=0, silent=True)]
         ),
@@ -538,8 +515,7 @@ script = EventScript(
             subscript=[
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         SummonObjectToSpecificLevel(NPC_1, R324_MONSTRO_TOWN_OUTSIDE),
         SummonObjectToSpecificLevel(NPC_4, R324_MONSTRO_TOWN_OUTSIDE),
         SetVarToConst(OLD_STAR_PIECE_GRANTER, 255),
@@ -571,13 +547,11 @@ script = EventScript(
                 ASLoadMemory(PRIMARY_TEMP_7000),
                 ASWalkSouthwestSteps(2),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[ASSetSpriteSequence(index=2, is_sequence=True, looping=True)],
-            identifier="EVENT_720_action_queue_async_270",
-        ),
+            identifier="EVENT_720_action_queue_async_270"),
         JmpIfBitSet(TEMP_7044_7, ["EVENT_720_enable_controls_until_return_281"]),
         FadeInFromBlack(sync=False),
         Jmp(["EVENT_720_set_292"]),
@@ -588,8 +562,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=11, y=62, z=8, direction=EAST),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         JmpIfVarEqualsConst(
             FLAG_COLLECTION_7044, 7, ["EVENT_720_enable_controls_until_return_281"]
         ),
@@ -609,8 +582,7 @@ script = EventScript(
                 ASFaceSouth(),
                 ASFloatingOff(),
                 ASSequencePlaybackOff(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=MARIO,
@@ -641,8 +613,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         UnfreezeCamera(),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
@@ -730,8 +701,7 @@ script = EventScript(
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=CHEST_COIN_SIZE),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNorthSteps(2)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASShiftNorthSteps(2)]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -744,8 +714,7 @@ script = EventScript(
                 ASPause(8),
                 ASBPL262728(),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         Set70107015ToObjectXYZ(MEM_70A8),
         CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 608),
@@ -761,8 +730,7 @@ script = EventScript(
         JmpIfBitSet(GAME_OVER, ["EVENT_720_reset_and_choose_game_366"]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASShiftSouthSteps(2), ASSetWalkingSpeed(NORMAL)],
-        ),
+            subscript=[ASShiftSouthSteps(2), ASSetWalkingSpeed(NORMAL)]),
         FadeInFromBlack(sync=False),
         SetBit(MIMIC_3_CLEARED),
         SetBit(UNKNOWN_MIMIC_BIT),
@@ -776,8 +744,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=4, is_sequence=True, looping=True),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         RemoveObjectFromSpecificLevel(
             NPC_5, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM
         ),
@@ -848,15 +815,13 @@ script = EventScript(
         JmpIfBitSet(
             STAR_PIECE_MENU_UNLOCKED,
             ["EVENT_720_jmp_if_var_equals_const_400"],
-            identifier="EVENT_720_jmp_if_bit_set_398",
-        ),
+            identifier="EVENT_720_jmp_if_bit_set_398"),
         SetBit(STAR_PIECE_MENU_UNLOCKED),
         JmpIfVarEqualsConst(
             EXP_STAR_70D5,
             6,
             ["EVENT_720_jmp_if_bit_clear_478"],
-            identifier="EVENT_720_jmp_if_var_equals_const_400",
-        ),
+            identifier="EVENT_720_jmp_if_var_equals_const_400"),
         JmpIfVarEqualsConst(EXP_STAR_70D5, 5, ["EVENT_720_inc_463"]),
         JmpIfVarEqualsConst(EXP_STAR_70D5, 4, ["EVENT_720_inc_452"]),
         JmpIfVarEqualsConst(EXP_STAR_70D5, 3, ["EVENT_720_inc_441"]),
@@ -937,8 +902,7 @@ script = EventScript(
         JmpIfBitClear(
             UNKNOWN_STAR_PIECE,
             ["EVENT_720_ret_492"],
-            identifier="EVENT_720_jmp_if_bit_clear_478",
-        ),
+            identifier="EVENT_720_jmp_if_bit_clear_478"),
         Inc(EXP_STAR_70D5),
         PlayMusicAtCurrentVolume(M24_GOT_A_STAR_PIECE_PART_2),
         Db(bytearray(b"\xfd\x8e\x80\x07\x01")),
@@ -962,8 +926,7 @@ script = EventScript(
         JmpIfBitClear(
             UNKNOWN_STAR_PIECE,
             ["EVENT_720_set_bit_504"],
-            identifier="EVENT_720_jmp_if_bit_clear_499",
-        ),
+            identifier="EVENT_720_jmp_if_bit_clear_499"),
         FadeInFromBlack(sync=False),
         JmpIfVarEqualsConst(OLD_STAR_PIECE_ID, 223, ["EVENT_720_set_short_327"]),
         Jmp(["EVENT_720_jmp_if_var_equals_const_520"]),
@@ -990,8 +953,7 @@ script = EventScript(
             OLD_STAR_PIECE_ID,
             202,
             ["EVENT_720_play_music_default_volume_561"],
-            identifier="EVENT_720_jmp_if_var_equals_const_520",
-        ),
+            identifier="EVENT_720_jmp_if_var_equals_const_520"),
         JmpIfVarEqualsConst(
             OLD_STAR_PIECE_ID, 204, ["EVENT_720_play_music_default_volume_565"]
         ),
@@ -1072,15 +1034,13 @@ script = EventScript(
         Return(),
         PlayMusicAtDefaultVolume(
             M13_ROAD_IS_FULL_OF_DANGERS,
-            identifier="EVENT_720_play_music_default_volume_549",
-        ),
+            identifier="EVENT_720_play_music_default_volume_549"),
         SetVarToConst(OLD_STAR_PIECE_ID, 0),
         SetVarToConst(OLD_STAR_PIECE_GRANTER, 0),
         Return(),
         PlayMusicAtDefaultVolume(
             M42_STILL_THE_ROAD_IS_FULL_OF_MONSTERS,
-            identifier="EVENT_720_play_music_default_volume_553",
-        ),
+            identifier="EVENT_720_play_music_default_volume_553"),
         SetVarToConst(OLD_STAR_PIECE_ID, 0),
         SetVarToConst(OLD_STAR_PIECE_GRANTER, 0),
         Return(),
@@ -1092,8 +1052,7 @@ script = EventScript(
         Return(),
         PlayMusicAtDefaultVolume(
             M27_DUNGEON_IS_FULL_OF_MONSTERS,
-            identifier="EVENT_720_play_music_default_volume_561",
-        ),
+            identifier="EVENT_720_play_music_default_volume_561"),
         SetVarToConst(OLD_STAR_PIECE_ID, 0),
         SetVarToConst(OLD_STAR_PIECE_GRANTER, 0),
         Return(),
@@ -1163,8 +1122,7 @@ script = EventScript(
         Return(),
         PlayMusicAtDefaultVolume(
             M66_BOWSERS_CASTLE_2ND_TIME,
-            identifier="EVENT_720_play_music_default_volume_609",
-        ),
+            identifier="EVENT_720_play_music_default_volume_609"),
         SetVarToConst(OLD_STAR_PIECE_ID, 0),
         SetVarToConst(OLD_STAR_PIECE_GRANTER, 0),
         Return(),

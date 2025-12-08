@@ -36,10 +36,12 @@ script = EventScript([
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	Return(),
 	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["EVENT_290_jmp_to_event_7"], identifier="EVENT_290_jmp_if_bit_clear_4"),
+    JmpIfBitSet(RARE_FROG_COIN_EXCHANGED, ["EVENT_290_jmp_to_event_7"]),
 	StoreItemAmountTo7000(RareFrogCoinItem),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_290_remove_one_from_inventory_8"]),
 	JmpToEvent(E0284_OPEN_MUSHROOM_KINGDOM_SHOP, identifier="EVENT_290_jmp_to_event_7"),
 	RemoveOneOfItemFromInventory(RareFrogCoinItem, identifier="EVENT_290_remove_one_from_inventory_8"),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+    SetBit(RARE_FROG_COIN_EXCHANGED),
 	Return()
 ])

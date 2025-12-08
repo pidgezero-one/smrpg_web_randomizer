@@ -20,8 +20,7 @@ script = EventScript(
         JmpIfBitSet(
             RUN_AWAY,
             ["EVENT_3246_set_temp_action_script_sync_12"],
-            identifier="EVENT_3246_jmp_if_bit_set_6",
-        ),
+            identifier="EVENT_3246_jmp_if_bit_set_6"),
         JmpIfBitSet(GAME_OVER, ["EVENT_3246_reset_and_choose_game_15"]),
         SetTempSyncActionScript(MEM_70A8, A0920_STATIC_DRY_BONES_COLLAPSE),
         ActionQueueSync(
@@ -32,15 +31,13 @@ script = EventScript(
                 ASShiftZDownPixels(2),
                 ASResetProperties(),
                 ASSetSolidityBits(cant_pass_npcs=True),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
         SetSyncActionScript(
             MEM_70A8,
             A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES,
-            identifier="EVENT_3246_set_temp_action_script_sync_12",
-        ),
+            identifier="EVENT_3246_set_temp_action_script_sync_12"),
         FadeInFromBlack(sync=False),
         Return(),
         ResetAndChooseGame(identifier="EVENT_3246_reset_and_choose_game_15"),

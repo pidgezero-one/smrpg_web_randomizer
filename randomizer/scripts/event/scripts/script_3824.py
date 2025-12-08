@@ -18,8 +18,7 @@ script = EventScript(
         SetTempAsyncActionScript(NPC_4, A0803_INC_PALETTE_ROW),
         ActionQueueAsync(
             target=NPC_16,
-            subscript=[ASTransferXYZFPixels(x=0, y=252, z=0, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=0, y=252, z=0, direction=EAST)]),
         JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["EVENT_3824_pause_action_script_47"]),
         PauseActionScript(NPC_5),
         PauseActionScript(NPC_9),
@@ -29,8 +28,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=14, y=86, z=0, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         StartSyncEmbeddedActionScript(
             target=NPC_5,
             prefix=0xF1,
@@ -39,8 +37,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[0, 1]),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_0, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_2, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_1, subscript=[ASSetPriority(3)]),
@@ -50,16 +47,14 @@ script = EventScript(
                 ASSetSpriteSequence(index=12, is_sequence=True, looping=True),
                 ASSetPriority(3),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         SetSyncActionScript(NPC_5, A0021_STAND_STILL_AND_MOVE_RANDOM_DIRECTIONS),
         SetSyncActionScript(NPC_9, A0098_WALK_RANDOM_DIRECTIONS_NO_SOLIDITY_CHANGE),
         JmpIfBitSet(
             YOSTER_ISLE_LIBERATED_1,
             ["EVENT_3824_jmp_if_bit_clear_32"],
-            identifier="EVENT_3824_jmp_if_bit_set_28",
-        ),
+            identifier="EVENT_3824_jmp_if_bit_set_28"),
         JmpIfBitSet(MARRYMORE_LIBERATED, ["EVENT_3824_jmp_if_bit_set_33"]),
         FadeInFromBlack(
             sync=False, identifier="EVENT_3824_fade_in_from_black_async_30"
@@ -72,13 +67,11 @@ script = EventScript(
         JmpIfBitClear(
             MARRYMORE_LIBERATED,
             ["EVENT_3824_clear_bit_41"],
-            identifier="EVENT_3824_jmp_if_bit_clear_32",
-        ),
+            identifier="EVENT_3824_jmp_if_bit_clear_32"),
         JmpIfBitSet(
             UNKNOWN_7084_1,
             ["EVENT_3824_summon_to_current_level_43"],
-            identifier="EVENT_3824_jmp_if_bit_set_33",
-        ),
+            identifier="EVENT_3824_jmp_if_bit_set_33"),
         SummonObjectToCurrentLevel(NPC_13),
         ApplyTileModToLevel(use_alternate=True, room_id=R034_YOSTER_ISLE, mod_id=0),
         ApplySolidityModToLevel(permanent=True, room_id=R034_YOSTER_ISLE, mod_id=0),
@@ -90,13 +83,11 @@ script = EventScript(
                 ),
                 ASSetPriority(3),
                 ASFloatingOff(),
-            ],
-        ),
+            ]),
         JmpIfBitSet(
             YOSTER_ISLE_LIBERATED_1,
             ["EVENT_3824_clear_bit_41"],
-            identifier="EVENT_3824_jmp_if_bit_set_38",
-        ),
+            identifier="EVENT_3824_jmp_if_bit_set_38"),
         Jmp(["EVENT_3824_fade_in_from_black_async_30"]),
         ClearBit(YOSTER_ISLE_LIBERATED_1, identifier="EVENT_3824_clear_bit_41"),
         Return(),
@@ -106,8 +97,7 @@ script = EventScript(
         RemoveObjectFromCurrentLevel(NPC_13),
         ActionQueueAsync(
             target=NPC_11,
-            subscript=[ASSetPriority(3), ASSequenceLoopingOn(), ASSequencePlaybackOn()],
-        ),
+            subscript=[ASSetPriority(3), ASSequenceLoopingOn(), ASSequencePlaybackOn()]),
         Jmp(["EVENT_3824_jmp_if_bit_set_38"]),
         PauseActionScript(NPC_3, identifier="EVENT_3824_pause_action_script_47"),
         StartSyncEmbeddedActionScript(
@@ -117,16 +107,14 @@ script = EventScript(
                 ASTransferToXYZF(x=11, y=82, z=0, direction=EAST),
                 ASSetPriority(3),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASTransferToXYZF(x=11, y=83, z=0, direction=EAST),
                 ASSetPriority(3),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
@@ -134,8 +122,7 @@ script = EventScript(
                 ASTransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
                 ASSetPriority(3),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -143,24 +130,21 @@ script = EventScript(
                 ASSetPriority(3),
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[1]),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASTransferToXYZF(x=19, y=60, z=0, direction=EAST),
                 ASSetPriority(3),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_12,
             subscript=[
                 ASSetSpriteSequence(index=12, is_sequence=True, looping=True),
                 ASSetPriority(3),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_0, A0677_MUSHROOM_DERBY_UNKNOWN),
         SetSyncActionScript(NPC_3, A0676_MUSHROOM_DERBY_UNKNOWN),
         Jmp(["EVENT_3824_jmp_if_bit_set_28"]),

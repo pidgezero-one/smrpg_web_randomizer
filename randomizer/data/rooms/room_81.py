@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=26,
             y=49,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         ChestNPC( # 0
@@ -104,8 +102,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestClone( # 1
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=5,
@@ -115,8 +112,7 @@ room = Room(
             y=37,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         ChestClone( # 2
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=5,
@@ -126,8 +122,7 @@ room = Room(
             y=29,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         ChestClone( # 3
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=5,
@@ -137,8 +132,7 @@ room = Room(
             y=22,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         ChestClone( # 4
             npc=npcs.TREASURE_CHEST_NPC,
             lower_70a7=5,
@@ -148,8 +142,7 @@ room = Room(
             y=38,
             z=3,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 5
             npc=npcs.SHY_GUY_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -177,8 +170,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 6
             npc=npcs.SHY_GUY_NPC,
             battle_pack=21,
@@ -188,8 +180,7 @@ room = Room(
             y=37,
             z=4,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 7
             npc=npcs.SHY_GUY_NPC,
             battle_pack=21,
@@ -199,8 +190,7 @@ room = Room(
             y=29,
             z=4,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 8
             npc=npcs.SHY_GUY_NPC,
             battle_pack=21,
@@ -210,8 +200,7 @@ room = Room(
             y=22,
             z=4,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 9
             npc=npcs.SHY_GUY_NPC,
             battle_pack=21,
@@ -221,8 +210,7 @@ room = Room(
             y=38,
             z=4,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackNPC( # 10
             npc=npcs.CROOK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -250,8 +238,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 11
             npc=npcs.CROOK_NPC,
             battle_pack=19,
@@ -261,7 +248,6 @@ room = Room(
             y=29,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

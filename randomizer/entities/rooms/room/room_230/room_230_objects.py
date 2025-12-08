@@ -37,8 +37,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackClone(
         occupant=Amanita,
@@ -54,8 +53,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackClone(
         occupant=Amanita,
@@ -71,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     BattlePackNPC(
         occupant=Amanita,
@@ -107,8 +104,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     BattlePackClone(
         occupant=Amanita,
@@ -124,8 +120,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=Amanita,
@@ -159,8 +154,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=Amanita,
@@ -176,8 +170,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     BattlePackNPC(
         occupant=Buzzer,
@@ -212,8 +205,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     BattlePackClone(
         occupant=Buzzer,
@@ -229,8 +221,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     BattlePackClone(
         occupant=Buzzer,
@@ -246,8 +237,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     BattlePackClone(
         occupant=Buzzer,
@@ -263,8 +253,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularNPC(
         occupant=Geno,
@@ -299,8 +288,7 @@ objects = [
         priority_2=True,
         acute_axis=6,
         obtuse_axis=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     RegularNPC(
         occupant=Empty,
@@ -335,8 +323,7 @@ objects = [
         priority_2=True,
         acute_axis=6,
         obtuse_axis=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     RegularNPC(
         occupant=AeroShot,
@@ -369,6 +356,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

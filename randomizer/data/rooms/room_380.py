@@ -46,8 +46,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3781_BEAN_VALLEY_EAST_VINE_ROOM_EXIT_TO_NIMBUS_MEZZANINE,
             x=26,
@@ -58,8 +57,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3781_BEAN_VALLEY_EAST_VINE_ROOM_EXIT_TO_NIMBUS_MEZZANINE,
             x=26,
@@ -70,8 +68,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3783_BEAN_VALLEY_EAST_VINE_ROOM_EXIT_TO_2ND_VINE_ROOM,
             x=25,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3783_BEAN_VALLEY_EAST_VINE_ROOM_EXIT_TO_2ND_VINE_ROOM,
             x=25,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0749_VINE_FIELD,
             x=29,
@@ -106,8 +101,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0750_VINE_FIELD,
             x=28,
@@ -118,8 +112,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0751_VINE_FIELD,
             x=29,
@@ -130,8 +123,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0752_VINE_FIELD,
             x=28,
@@ -142,8 +134,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0749_VINE_FIELD,
             x=28,
@@ -154,8 +145,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0750_VINE_FIELD,
             x=27,
@@ -166,8 +156,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0751_VINE_FIELD,
             x=28,
@@ -178,8 +167,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0752_VINE_FIELD,
             x=27,
@@ -190,8 +178,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0749_VINE_FIELD,
             x=25,
@@ -202,8 +189,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0750_VINE_FIELD,
             x=24,
@@ -214,8 +200,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0751_VINE_FIELD,
             x=25,
@@ -226,8 +211,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0752_VINE_FIELD,
             x=24,
@@ -238,8 +222,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -259,8 +242,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=18,
             y=80,
@@ -278,8 +260,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -308,8 +289,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_5,
             initiator=EventInitiator.NONE,
@@ -336,8 +316,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.NONE,
@@ -364,8 +343,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -392,8 +370,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -420,8 +397,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -448,8 +424,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -476,8 +451,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -504,7 +478,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -23,16 +23,14 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
                 ASTransferToXYZF(x=22, y=73, z=2, direction=EAST),
                 ASWalkSoutheastPixels(5),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         JmpIfObjectInSpecificLevel(
             NPC_5, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["EVENT_3930_phold"]
         ),
@@ -46,8 +44,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     cant_jump_through=True, bit_4=True, cant_walk_through=True
                 ),
-            ],
-        ),
+            ]),
         Pause(30, identifier="EVENT_3930_pause_368"),
         Jmp(["EVENT_3809_set_action_script_sync_384"]),
     ]

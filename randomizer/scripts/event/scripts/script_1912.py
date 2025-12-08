@@ -18,8 +18,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(2),
                 ASVisibilityOff(),
                 ASClearBit(TEMP_7043_0),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -31,8 +30,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=15, sprite_offset=1, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         SetVarToConst(TIMER_701C, 90),
         RunBackgroundEventWithPauseReturnOnExit(
             event_id=E1914_ABYSS_MACHINE_ARROW_RESET, timer_var=TIMER_701C

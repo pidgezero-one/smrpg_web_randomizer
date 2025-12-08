@@ -13,8 +13,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3267_SHIP_LOWER_RAT_STAIRWAY_OPEN_LOWER_DOOR,
         x=9,
@@ -25,6 +24,5 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

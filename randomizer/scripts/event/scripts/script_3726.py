@@ -10,8 +10,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_4,
             R122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM,
-            ["EVENT_3726_fade_in_from_black_async_3"],
-        ),
+            ["EVENT_3726_fade_in_from_black_async_3"]),
         ActionQueueAsync(target=NPC_4, subscript=[ASSetPriority(3)]),
         RunEventAsSubroutine(
             E0825_NIMBUS_CASTLE_THRONE_ROOM_ANTECHAMBER_SHUFFLED_NPC_ANIMATION_LOADER

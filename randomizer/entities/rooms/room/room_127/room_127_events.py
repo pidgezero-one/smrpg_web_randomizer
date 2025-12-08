@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0417_PIPE_VAULT_THWOMP_ROOM_EXIT_PIPE,
         x=30,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0506_PIPE_VAULT_SUMMON_FIRST_GOOMBA,
         x=26,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0506_PIPE_VAULT_SUMMON_FIRST_GOOMBA,
         x=26,
@@ -49,8 +46,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0507_PIPE_VAULT_PIRANHA_BIT,
         x=25,
@@ -61,8 +57,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0507_PIPE_VAULT_PIRANHA_BIT,
         x=25,
@@ -73,8 +68,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0507_PIPE_VAULT_PIRANHA_BIT,
         x=23,
@@ -85,8 +79,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0507_PIPE_VAULT_PIRANHA_BIT,
         x=23,
@@ -97,8 +90,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0506_PIPE_VAULT_SUMMON_FIRST_GOOMBA,
         x=23,
@@ -109,8 +101,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0506_PIPE_VAULT_SUMMON_FIRST_GOOMBA,
         x=23,
@@ -121,8 +112,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0507_PIPE_VAULT_PIRANHA_BIT,
         x=24,
@@ -133,8 +123,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0507_PIPE_VAULT_PIRANHA_BIT,
         x=24,
@@ -145,8 +134,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0507_PIPE_VAULT_PIRANHA_BIT,
         x=24,
@@ -157,8 +145,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0507_PIPE_VAULT_PIRANHA_BIT,
         x=24,
@@ -169,8 +156,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0430_PIPE_VAULT_MARIO_HIT_BY_THWOMP,
         x=25,
@@ -181,8 +167,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0493_PIPE_VAULT_PIRANHA_BIT,
         x=28,
@@ -193,8 +178,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0492_PIPE_VAULT_PIRANHA_TIMER_1,
         x=28,
@@ -205,8 +189,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0492_PIPE_VAULT_PIRANHA_TIMER_1,
         x=29,
@@ -217,6 +200,5 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

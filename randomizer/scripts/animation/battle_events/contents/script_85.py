@@ -23,5 +23,4 @@ script = BattleAnimationScript(
         ObjectQueueAtOffsetAndIndex(index=4, target_address=0x3A8AC0),
         RunSubroutine(["command_0x3a771e"]),
         Db(bytearray(b"\xe2")),
-    ],
-)
+    ])

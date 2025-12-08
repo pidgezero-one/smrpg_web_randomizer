@@ -43,8 +43,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2187,
             x=9,
@@ -55,8 +54,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2188,
             x=13,
@@ -67,8 +65,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2189,
             x=17,
@@ -79,8 +76,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3350,
             x=22,
@@ -91,8 +87,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -127,8 +122,7 @@ room = Room(
             priority_2=True,
             show_shadow=False,
             vram_size=2,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.RedFireball,
             initiator=Initiator.NONE,
@@ -159,8 +153,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 2
             occupant=npcs.Lakitu,
             initiator=Initiator.NONE,
@@ -191,8 +184,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.Zeostar,
             initiator=Initiator.NONE,
@@ -224,8 +216,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             height=5,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 4
             occupant=npcs.Shaman,
             initiator=Initiator.NONE,
@@ -256,7 +247,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

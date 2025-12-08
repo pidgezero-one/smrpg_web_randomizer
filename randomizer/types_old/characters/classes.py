@@ -1,10 +1,7 @@
 """Base classes for playable characters."""
 
-from typing import List, Union
-
 from randomizer.entities.progress_locations.characters_recruited import (
-    StartingCharacter1,
-)
+    StartingCharacter1)
 
 from randomizer.types.items import RecruitedCharacter
 from randomizer.types.palettes import CharacterPaletteSet
@@ -17,12 +14,12 @@ class Character(TODOImportedCharacterClass, RecruitedCharacter):
 
     _original_name: str = ""
 
-    _ending_palettes: List[int] = []
+    _ending_palettes: list[int] = []
 
-    _standard_sprite_addresses: List[int] = []
-    _original_weapon_sprite_ids: List[Union[int, None]] = []
-    _sprite_ids_as_main_character: List[int] = []
-    _sprite_addresses: List[Union[list[int], None]] = [
+    _standard_sprite_addresses: list[int] = []
+    _original_weapon_sprite_ids: list[int | None] = []
+    _sprite_ids_as_main_character: list[int] = []
+    _sprite_addresses: list[list[int] | None] = [
         [],
         [],
         [],
@@ -57,27 +54,27 @@ class Character(TODOImportedCharacterClass, RecruitedCharacter):
         return self._palette
 
     @property
-    def ending_palettes(self) -> List[int]:
+    def ending_palettes(self) -> list[int]:
         """The addresses where this character's palettes should be written during the credits."""
         return self._ending_palettes
 
     @property
-    def standard_sprite_addresses(self) -> List[int]:
+    def standard_sprite_addresses(self) -> list[int]:
         """Other places where this character's palettes should be written during the credits."""
         return self._standard_sprite_addresses
 
     @property
-    def original_weapon_sprite_ids(self) -> List[Union[int, None]]:
+    def original_weapon_sprite_ids(self) -> list[int | None]:
         """The IDs of weapons this character can use in the original game."""
         return self._original_weapon_sprite_ids
 
     @property
-    def sprite_ids_as_main_character(self) -> List[int]:
+    def sprite_ids_as_main_character(self) -> list[int]:
         """(deprecated)"""
         return self._sprite_ids_as_main_character
 
     @property
-    def sprite_addresses(self) -> List[Union[list[int], None]]:
+    def sprite_addresses(self) -> list[list[int] | None]:
         """(deprecated)"""
         return self._sprite_addresses
 

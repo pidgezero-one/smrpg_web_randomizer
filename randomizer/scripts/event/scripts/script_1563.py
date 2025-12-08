@@ -47,8 +47,7 @@ script = EventScript(
                 ASJumpToHeight(112),
                 ASRunAwayShift(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

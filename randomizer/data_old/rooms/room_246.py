@@ -31,5 +31,4 @@ room = Room(
         full_palette_buffer=True
     ),
     music=Music._00_CURRENT,
-    entrance_event=1520,
-)
+    entrance_event=1520)

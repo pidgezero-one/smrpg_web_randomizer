@@ -19,8 +19,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSequencePlaybackOff(),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MEM_70A8,
             subscript=[
@@ -40,8 +39,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO048_MINECART_START, channel=4),
                 ASPause(200),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -66,8 +64,7 @@ script = EventScript(
                 ASPause(200),
                 ASSetBit(TEMP_7043_0),
                 ASObjectMemoryClearBit(arg_1=0x0B, bits=[3]),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_3188_pause_5"),
         JmpIfBitClear(TEMP_7043_0, ["EVENT_3188_pause_5"]),
         FadeOutToBlack(sync=False),

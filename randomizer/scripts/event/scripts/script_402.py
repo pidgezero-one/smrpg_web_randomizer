@@ -17,8 +17,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=17, y=113, z=4, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         StartAsyncEmbeddedActionScript(
             target=NPC_9,
             prefix=0xF1,
@@ -26,8 +25,7 @@ script = EventScript(
                 ASTransferToXYZF(x=17, y=114, z=4, direction=EAST),
                 ASFaceNortheast(),
                 ASSetSolidityBits(cant_walk_through=True),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7049_6),
         RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
         FadeInFromBlack(sync=False),

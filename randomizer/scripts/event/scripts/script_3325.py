@@ -23,13 +23,11 @@ script = EventScript(
             NPC_0,
             R390_VOLCANO_AREA_16_ERUPTING_STUMPET,
             ["EVENT_3325_ret_11"],
-            identifier="EVENT_3325_jmp_if_object_not_in_level_9",
-        ),
+            identifier="EVENT_3325_jmp_if_object_not_in_level_9"),
         RunBackgroundEvent(
             event_id=E3326_STUMPET_ERUPTION,
             return_on_level_exit=True,
-            identifier="EVENT_3325_run_background_event_10",
-        ),
+            identifier="EVENT_3325_run_background_event_10"),
         Return(identifier="EVENT_3325_ret_11"),
     ]
 )

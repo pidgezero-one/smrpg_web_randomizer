@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3765_BEAN_VALLEY_UPPER_CHEST_ROOM_FALL_TO_LOWER_CHEST_ROOM,
         x=19,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3782_BEAN_VALLEY_UPPER_CHEST_ROOM_FALL_TO_WEST_VINE_ROOM,
         x=17,
@@ -37,8 +35,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3782_BEAN_VALLEY_UPPER_CHEST_ROOM_FALL_TO_WEST_VINE_ROOM,
         x=17,
@@ -49,6 +46,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

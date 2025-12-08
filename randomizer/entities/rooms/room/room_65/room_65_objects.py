@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=YellowToad,
@@ -70,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=0,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=YellowToad,
@@ -87,8 +85,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=0,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=YellowToad,
@@ -122,8 +119,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=0,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=BlueToad,
@@ -156,8 +152,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=PinkToad,
@@ -190,8 +185,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=BlueToad,
@@ -224,8 +218,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularNPC(
         occupant=OldRedToad,
@@ -258,8 +251,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=GreenSmallToad,
@@ -292,8 +284,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularNPC(
         occupant=PinkSmallToad,
@@ -326,8 +317,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularNPC(
         occupant=RedToad,
@@ -360,8 +350,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularClone(
         occupant=YellowToad,
@@ -377,8 +366,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=0,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     RegularNPC(
         occupant=GreenToad,
@@ -411,6 +399,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

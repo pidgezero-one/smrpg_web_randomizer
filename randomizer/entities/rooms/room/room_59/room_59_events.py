@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3170_SEWERS_FOUR_RAT_ROOM_PIPE_TO_STAIR_ROOM,
         x=30,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3173_SEWERS_FOUR_RAT_ROOM_PIPE_TO_RAT_LINE_ROOM,
         x=18,
@@ -37,8 +35,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3179_SEWERS_FOUR_RAT_ROOM_PIPE_TO_STAIR_ROOM,
         x=30,
@@ -49,6 +46,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

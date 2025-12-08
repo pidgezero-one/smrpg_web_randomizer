@@ -22,8 +22,7 @@ script = EventScript(
                 ASEndLoop(),
                 ASSetSolidityBits(bit_4=True, cant_walk_through=True),
             ],
-            identifier="EVENT_1602_action_queue_sync_77",
-        ),
+            identifier="EVENT_1602_action_queue_sync_77"),
         EndAll(),
     ]
 )

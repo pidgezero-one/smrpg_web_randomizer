@@ -1,7 +1,5 @@
 """Base classes for settings."""
 
-from typing import List
-
 from randomizer.types.world.flags.types import Flag
 
 
@@ -10,8 +8,8 @@ class FlagCategory:
 
     _id: str = ""
     _name: str = ""
-    _subcategories: "List[FlagCategory]" = []
-    _flags: List[Flag] = []
+    _subcategories: "list[FlagCategory]" = []
+    _flags: list[Flag] = []
     _size: int = 3
 
     @property
@@ -25,12 +23,12 @@ class FlagCategory:
         return self._name
 
     @property
-    def subcategories(self) -> "List[FlagCategory]":
+    def subcategories(self) -> "list[FlagCategory]":
         """Subcategories for this collection."""
         return self._subcategories
 
     @property
-    def flags(self) -> List[Flag]:
+    def flags(self) -> list[Flag]:
         """Individual settings that belong in this collection."""
         return self._flags
 

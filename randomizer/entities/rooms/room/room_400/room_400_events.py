@@ -13,8 +13,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT,
         x=13,
@@ -25,6 +24,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

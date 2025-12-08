@@ -18,8 +18,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBOrCSelected(
             ["EVENT_602_run_dialog_18", "EVENT_602_run_dialog_59"]
         ),
@@ -32,8 +31,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_18",
-        ),
+            identifier="EVENT_602_run_dialog_18"),
         JmpIfDialogOptionBOrCSelected(
             ["EVENT_602_set_short_31", "EVENT_602_run_dialog_59"]
         ),
@@ -49,8 +47,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         SetBit(MARRYMORE_REGULAR_INN),
         Jmp(["EVENT_273_fade_out_music_to_volume_17"]),
         RunDialog(
@@ -60,8 +57,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_29",
-        ),
+            identifier="EVENT_602_run_dialog_29"),
         Return(),
         SetVarToConst(SECONDARY_TEMP_7024, 200, identifier="EVENT_602_set_short_31"),
         ClearBit(UNKNOWN_7049_4),
@@ -80,8 +76,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         UnsyncDialog(),
         RememberLastObject(),
         JmpIfVarEqualsConst(
@@ -107,8 +102,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(4),
                 ASWalkSouthwestSteps(2),
                 ASSetSequenceSpeed(SLOW),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_602_set_bit_55"]),
         StartSyncEmbeddedActionScript(
             target=NPC_5,
@@ -123,8 +117,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(SLOW),
             ],
-            identifier="EVENT_602_start_embedded_action_script_sync_F1_81",
-        ),
+            identifier="EVENT_602_start_embedded_action_script_sync_F1_81"),
         SetBit(TEMP_7042_0, identifier="EVENT_602_set_bit_55"),
         SetAsyncActionScript(NPC_5, A0636_54_VELOCITY_SINGLE_JUMP),
         SetSyncActionScript(NPC_5, A0301_MARRYMORE_BELLHOP_WHILE_PLAYER_WORKING),
@@ -136,8 +129,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_59",
-        ),
+            identifier="EVENT_602_run_dialog_59"),
         Return(),
         RunDialog(
             dialog_id=DI0973_DUPLICATE,
@@ -146,8 +138,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_61",
-        ),
+            identifier="EVENT_602_run_dialog_61"),
         Return(),
         RunDialog(
             dialog_id=DI0998_THANK_YOU_VERY_MUCH,
@@ -156,8 +147,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_133",
-        ),
+            identifier="EVENT_602_run_dialog_133"),
         Return(),
         RunDialog(
             dialog_id=DI1004_BREAK_EVERY_BONE_IN_YOUR_BODY,
@@ -166,14 +156,12 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_135",
-        ),
+            identifier="EVENT_602_run_dialog_135"),
         Return(),
         JmpIfBitSet(
             GUEST_DROPPED_OFF,
             ["EVENT_602_run_dialog_157"],
-            identifier="EVENT_602_jmp_if_bit_set_137",
-        ),
+            identifier="EVENT_602_jmp_if_bit_set_137"),
         Set7000ToObjectCoord(target_npc=NPC_1, coord=COORD_F, pixel=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_602_run_dialog_162"]),
         CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),
@@ -186,8 +174,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -209,8 +196,7 @@ script = EventScript(
                 ),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ClearBit(EMPLOYMENT_704C_2),
         RunBackgroundEvent(
             event_id=E0617_MARIO_AS_BELLHOP_MAIN_EVENT, return_on_level_exit=True
@@ -223,8 +209,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_149",
-        ),
+            identifier="EVENT_602_run_dialog_149"),
         ClearBit(TEMP_704C_0),
         ClearBit(GUEST_DROPPED_OFF),
         ClearBit(EMPLOYMENT_704C_2),
@@ -239,13 +224,11 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_157",
-        ),
+            identifier="EVENT_602_run_dialog_157"),
         JmpIfBitSet(TEMP_7044_4, ["EVENT_256_ret_0"]),
         RunBackgroundEvent(
             event_id=E0623_MARRYMORE_INN_EMPLOYED_GUEST_LEAVES,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         SetBit(TEMP_7044_4),
         Return(),
         RunDialog(
@@ -255,8 +238,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_602_run_dialog_162",
-        ),
+            identifier="EVENT_602_run_dialog_162"),
         Return(),
     ]
 )

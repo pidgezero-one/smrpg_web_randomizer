@@ -18,8 +18,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(4),
                 ASWalkNorthwestPixels(3),
                 ASWalkSoutheastPixels(1),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_340_pause_0"]),
     ]
 )

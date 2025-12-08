@@ -34,10 +34,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=120,
-                            y=124,
-                        ),
-                    ],
-                ),
+                            y=124),
+                    ]),
             ],
             sequences=[
                 AnimationSequence(
@@ -45,10 +43,7 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=1, mold_id=0),
                     ]
                 ),
-            ],
-        ),
-    ),
+            ])),
     palette_id=674,
     palette_offset=0,
-    unknown_num=0,
-)
+    unknown_num=0)

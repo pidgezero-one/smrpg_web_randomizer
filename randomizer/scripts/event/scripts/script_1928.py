@@ -12,8 +12,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Pause(30),
         RunDialog(
             dialog_id=DI2812_TOP_OF_TOWER_WITH_FAST_TRAVEL_DISABLED,
@@ -21,8 +20,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Pause(30),
         RunDialog(
             dialog_id=DI2813_TOP_OF_TOWER_WITH_FAST_TRAVEL_DISABLED,
@@ -30,8 +28,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
     ]
 )

@@ -23,8 +23,7 @@ script = EventScript(
         SetTempSyncActionScript(
             MEM_70A8,
             A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES,
-            identifier="EVENT_3335_set_temp_action_script_sync_12",
-        ),
+            identifier="EVENT_3335_set_temp_action_script_sync_12"),
         RunBackgroundEvent(
             event_id=E3337_CORKPEDITE_ANIMATION, return_on_level_exit=True
         ),

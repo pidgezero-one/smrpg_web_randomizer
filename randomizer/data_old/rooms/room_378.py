@@ -44,8 +44,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3779,
             x=5,
@@ -56,8 +55,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3779,
             x=6,
@@ -68,8 +66,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3785,
             x=6,
@@ -80,8 +77,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3785,
             x=6,
@@ -92,8 +88,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=749,
             x=2,
@@ -104,8 +99,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=750,
             x=1,
@@ -116,8 +110,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=751,
             x=2,
@@ -128,8 +121,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=752,
             x=1,
@@ -140,8 +132,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=749,
             x=4,
@@ -152,8 +143,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=750,
             x=3,
@@ -164,8 +154,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=751,
             x=4,
@@ -176,8 +165,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=752,
             x=3,
@@ -188,8 +176,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -209,8 +196,7 @@ room = Room(
             dst_z=2,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=7,
             y=58,
@@ -228,8 +214,7 @@ room = Room(
             dst_z=2,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=2,
             y=56,
@@ -247,8 +232,7 @@ room = Room(
             dst_z=2,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=2,
             y=57,
@@ -266,8 +250,7 @@ room = Room(
             dst_z=2,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=6,
             y=47,
@@ -285,8 +268,7 @@ room = Room(
             dst_z=2,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=7,
             y=48,
@@ -304,8 +286,7 @@ room = Room(
             dst_z=2,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -338,8 +319,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         BattlePackNPC( # 1
             occupant=npcs.Birdy,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -371,8 +351,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 2
             occupant=npcs.Birdy,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -404,8 +383,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.FrogCoin,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -437,8 +415,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 4
             occupant=npcs.BigCoin,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -470,8 +447,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 5
             occupant=npcs.BigCoin,
             event_script=239,
@@ -486,8 +462,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 6
             occupant=npcs.BigCoin,
             event_script=238,
@@ -502,8 +477,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 7
             occupant=npcs.Empty,
             initiator=Initiator.NONE,
@@ -535,8 +509,7 @@ room = Room(
             priority_1=False,
             priority_2=False,
             height=7,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 8
             occupant=npcs.Empty,
             event_script=1845,
@@ -551,8 +524,7 @@ room = Room(
             priority_1=False,
             priority_2=False,
             height=7,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 9
             occupant=npcs.Empty,
             event_script=1845,
@@ -567,7 +539,6 @@ room = Room(
             priority_1=False,
             priority_2=False,
             height=7,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

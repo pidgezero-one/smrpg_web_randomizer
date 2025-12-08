@@ -11,8 +11,7 @@ script = EventScript(
             subscript=[
                 ASSet700CToObjectCoord(target_npc=NPC_6, coord=COORD_F, pixel=True),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7043_1),
         RunDialog(
             dialog_id=DI2197_MARRYMORE_PHOTO,
@@ -20,8 +19,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(target=NPC_6, subscript=[ASFaceEast7C()]),
         ClearBit(TEMP_7043_1),
         Return(),

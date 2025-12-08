@@ -13,8 +13,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

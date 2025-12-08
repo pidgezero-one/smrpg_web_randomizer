@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=RedSmallToad,
@@ -69,8 +68,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     ChestNPC(
         occupant=TreasureChest,
@@ -106,6 +104,5 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

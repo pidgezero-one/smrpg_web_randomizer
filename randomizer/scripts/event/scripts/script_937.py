@@ -15,8 +15,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=3, is_sequence=True, looping=False),
                 ASPause(20),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

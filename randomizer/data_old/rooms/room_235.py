@@ -43,8 +43,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2447,
             x=24,
@@ -55,8 +54,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -76,8 +74,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -111,8 +108,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.Amanita,
             event_script=2426,
@@ -127,8 +123,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.Amanita,
             event_script=2426,
@@ -143,8 +138,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 3
             occupant=npcs.Amanita,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -177,8 +171,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 4
             occupant=npcs.Amanita,
             battle_pack=27,
@@ -193,8 +186,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 5
             occupant=npcs.Amanita,
             battle_pack=26,
@@ -209,8 +201,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 6
             occupant=npcs.Amanita,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -244,8 +235,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 7
             occupant=npcs.RatFunk,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -277,8 +267,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 8
             occupant=npcs.RatFunk,
             battle_pack=138,
@@ -292,8 +281,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 9
             occupant=npcs.JumpTrampoline,
             initiator=Initiator.JUMP_ON,
@@ -324,7 +312,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

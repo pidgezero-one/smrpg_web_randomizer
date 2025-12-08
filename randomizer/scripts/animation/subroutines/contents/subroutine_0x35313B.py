@@ -99,16 +99,13 @@ script = SubroutineOrBanklessScript(
             sequence=1,
             store_to_vram=True,
             store_palette=True,
-            identifier="command_0x3531df",
-        ),
+            identifier="command_0x3531df"),
         PauseScriptUntilSpriteSequenceDone(),
         DrawSpriteAtAMEM32Coords(
             sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
             sequence=0,
             store_to_vram=True,
-            store_palette=True,
-        ),
+            store_palette=True),
         ResetSpriteSequence(),
         ReturnSubroutine(),
-    ],
-)
+    ])

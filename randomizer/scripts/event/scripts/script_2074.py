@@ -28,16 +28,14 @@ script = EventScript(
                 ASPause(30),
                 ASShiftSouthSteps(1),
                 ASPause(30),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI3057_MONSTRO_SUPERBOSS_PROMPT,
             above_object=NPC_14,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBSelected(["EVENT_2074_action_queue_async_21"]),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
         JmpIfBitClear(GAME_OVER, ["EVENT_2074_fade_in_from_black_async_29"]),
@@ -59,8 +57,7 @@ script = EventScript(
                 ASShiftNorthSteps(1),
                 ASPause(30),
             ],
-            identifier="EVENT_2074_action_queue_async_21",
-        ),
+            identifier="EVENT_2074_action_queue_async_21"),
         JmpIfBitSet(
             MONSTRO_MIDDLE_DOOR_COMPLETED, ["EVENT_2074_apply_solidity_mod_25"]
         ),
@@ -73,8 +70,7 @@ script = EventScript(
             permanent=False,
             room_id=R324_MONSTRO_TOWN_OUTSIDE,
             mod_id=0,
-            identifier="EVENT_2074_apply_solidity_mod_25",
-        ),
+            identifier="EVENT_2074_apply_solidity_mod_25"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=33
         ),
@@ -86,8 +82,7 @@ script = EventScript(
             x=11,
             y=63,
             z=4,
-            identifier="EVENT_2074_enter_area_27",
-        ),
+            identifier="EVENT_2074_enter_area_27"),
         Jmp(["EVENT_2048_set_bit_0"]),
         FadeInFromBlack(
             sync=False, identifier="EVENT_2074_fade_in_from_black_async_29"

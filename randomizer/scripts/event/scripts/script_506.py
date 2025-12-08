@@ -22,8 +22,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         SummonObjectToCurrentLevel(NPC_3),
         SetSyncActionScript(NPC_3, A0659_PIPE_VAULT_THWOMP_ROOM_GOOMBA),
         Return(),

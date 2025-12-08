@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=BlueStarPiece,
@@ -69,8 +68,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularNPC(
         occupant=SparkleDown,
@@ -103,8 +101,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=MackLarge,
@@ -138,8 +135,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_4
     RegularNPC(
         occupant=Shyster,
@@ -173,8 +169,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Shyster,
@@ -190,8 +185,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=Shyster,
@@ -207,8 +201,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=Shyster,
@@ -224,8 +217,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=Shyster,
@@ -262,8 +254,7 @@ objects = [
         acute_axis=3,
         obtuse_axis=3,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=Shyster,
@@ -282,8 +273,7 @@ objects = [
         acute_axis=3,
         obtuse_axis=3,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularNPC(
         occupant=Chancellor,
@@ -316,6 +306,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

@@ -17,8 +17,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0028_GENO_ELBOW_SHOT,
             sequence=3,
@@ -28,8 +27,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         PlaySound(sound=S0051_FIRE_THROW_BIG),
         ResetTargetMappingMemory(),
         SetAMEM60ToCurrentTarget(),
@@ -40,8 +38,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_SHIFT, speed=1792, arch_height=0),
         PlaySound(sound=S0051_FIRE_THROW_BIG),
         PauseScriptUntil(condition=0x07),
@@ -50,5 +47,4 @@ script = SubroutineOrBanklessScript(
         SetOMEMMainToAMEM8Bit(omem=0x66, amem=0x66),
         ResetObjectMappingMemory(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

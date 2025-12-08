@@ -13,8 +13,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=4,
             y=43,
-            z=9,
-        ),
+            z=9),
         SetBit(DIRECTIONAL_7049_0),
         EnableControls([]),
         ActionQueueSync(

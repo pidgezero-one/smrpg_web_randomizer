@@ -35,6 +35,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 34, ["EVENT_251_set_var_to_const_10"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 74, ["EVENT_251_jmp_to_event_12"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 154, ["EVENT_251_jmp_to_event_13"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 189, ["EVENT_252_set_var_to_const_free2"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 190, ["EVENT_251_jmp_to_event_14"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 191, ["EVENT_251_jmp_to_event_14"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 336, ["EVENT_251_set_var_to_const_15"]),
@@ -45,6 +46,8 @@ script = EventScript([
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
 	JmpToEvent(E3097_JUICE_BAR_CARD_NPC_GRANT, identifier="EVENT_251_jmp_to_event_12"),
 	JmpToEvent(E3931_GET_SHOES, identifier="EVENT_251_jmp_to_event_13"),
+	SetVarToConst(ITEM_ID, MushroomItem, identifier="EVENT_252_set_var_to_const_free2"),
+	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
 	JmpToEvent(E0157_NPC_QUEST_GRANT_1_FROG_COIN, identifier="EVENT_251_jmp_to_event_14"),
 	SetVarToConst(ITEM_ID, FryingPanItem, identifier="EVENT_251_set_var_to_const_15"),
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM)

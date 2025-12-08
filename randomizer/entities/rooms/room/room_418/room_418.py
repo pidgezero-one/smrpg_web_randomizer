@@ -16,5 +16,4 @@ room = Room(
         ExtraSpriteActions.FLOP,
         ExtraSpriteActions.DIZZY,
         ExtraSpriteActions.CLIMB,
-    ],
-)
+    ])

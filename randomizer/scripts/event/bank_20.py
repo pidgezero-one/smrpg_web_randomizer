@@ -2056,5 +2056,4 @@ bank = EventScriptBank(
         script_4093,
         script_4094,
         script_4095,
-    ],
-)
+    ])

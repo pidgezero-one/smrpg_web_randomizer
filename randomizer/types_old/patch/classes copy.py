@@ -1,8 +1,5 @@
 """Base classes supporting the production of a ROM patch."""
 
-from typing import Dict, List, Union
-
-
 class Patch:
     """Class representing a patch for a specific seed that can be added to as we build it."""
 
@@ -26,17 +23,17 @@ class Patch:
         return self
 
     @property
-    def addresses(self) -> List[int]:
+    def addresses(self) -> list[int]:
         """A list of all addresses in the patch."""
         return list(self._data.keys())
 
-    def get_data(self, addr: int) -> Union[bytearray, bytes, List[int]]:
+    def get_data(self, addr: int) -> bytearray | bytes | list[int]:
         """Get data in the patch for this address.
         If the address is not present in the patch, returns empty bytes."""
         return self._data.get(addr, bytes())
 
     def add_data(
-        self, addr: int, data: Union[bytearray, bytes, List[int], int, str]
+        self, addr: int, data: bytearray | bytes | list[int] | int | str
     ) -> None:
         """Add data to the patch."""
         # For integers and strings, convert them to byte representations.
@@ -51,7 +48,7 @@ class Patch:
         if addr in self._data:
             del self._data[addr]
 
-    def for_json(self) -> List[Dict[int, bytes]]:
+    def for_json(self) -> list[dict[int, bytes]]:
         """Return patch as a JSON serializable object."""
         patch = []
         addrs = list(self._data.keys())

@@ -38,8 +38,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     ChestClone(
         occupant=TreasureChest,
@@ -55,8 +54,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=TreasureChest,
@@ -90,8 +88,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=SlotFlower,
@@ -126,8 +123,7 @@ objects = [
         priority_2=True,
         show_shadow=True,
         height=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_4
     RegularNPC(
         occupant=BlockShadow,
@@ -160,8 +156,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=BlockShadow,
@@ -176,8 +171,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=SavePoint,
@@ -211,8 +205,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularNPC(
         occupant=Empty,
@@ -245,8 +238,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularClone(
         occupant=Empty,
@@ -261,8 +253,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     ChestNPC(
         occupant=TreasureChest,
@@ -297,6 +288,5 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

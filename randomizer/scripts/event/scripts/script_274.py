@@ -18,8 +18,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ClearBit(UNKNOWN_7049_4),
         Return(identifier="EVENT_274_ret_8"),
     ]

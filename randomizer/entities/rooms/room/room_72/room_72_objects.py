@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=FrogCoin,
@@ -70,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=SplashWaterDroplets,
@@ -104,8 +102,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=Goombette,
@@ -140,8 +137,7 @@ objects = [
         priority_2=True,
         height=2,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=Lakitu,
@@ -178,8 +174,7 @@ objects = [
         obtuse_axis=4,
         height=13,
         vram_size=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_5
     RegularNPC(
         occupant=Goomba,
@@ -212,8 +207,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=Goomba,
@@ -228,6 +222,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

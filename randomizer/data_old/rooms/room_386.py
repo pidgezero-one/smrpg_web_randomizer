@@ -50,8 +50,7 @@ room = Room(
             dst_z=1,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=19,
             y=124,
@@ -69,8 +68,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=18,
             y=109,
@@ -88,8 +86,7 @@ room = Room(
             dst_z=5,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=25,
             y=108,
@@ -107,8 +104,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -141,8 +137,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 1
             occupant=npcs.StumpetRoot,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -173,8 +168,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.StumpetRoot,
             event_script=3327,
@@ -188,8 +182,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.StumpetRoot,
             event_script=3327,
@@ -203,8 +196,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 4
             occupant=npcs.StumpetRoot,
             event_script=3327,
@@ -218,8 +210,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 5
             occupant=npcs.StumpetRoot,
             event_script=3327,
@@ -233,8 +224,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 6
             occupant=npcs.Magmus,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -266,8 +256,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 7
             occupant=npcs.Magmus,
             battle_pack=103,
@@ -281,8 +270,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 8
             occupant=npcs.Magmus,
             battle_pack=103,
@@ -296,8 +284,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 9
             occupant=npcs.Magmus,
             battle_pack=103,
@@ -311,8 +298,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 10
             occupant=npcs.Oerlikon,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -344,8 +330,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 11
             occupant=npcs.Oerlikon,
             battle_pack=104,
@@ -359,7 +344,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

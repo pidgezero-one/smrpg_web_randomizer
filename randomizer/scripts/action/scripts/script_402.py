@@ -8,8 +8,7 @@ script = ActionScript(
         SequenceLoopingOn(),
         JmpIfRandom1of2(
             ["ACTION_402_set_var_to_random_5"],
-            identifier="ACTION_402_jmp_if_random_above_128_2",
-        ),
+            identifier="ACTION_402_jmp_if_random_above_128_2"),
         TurnRandomDirection(),
         Pause(8),
         SetVarToRandom(

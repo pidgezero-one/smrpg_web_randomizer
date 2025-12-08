@@ -5,6 +5,5 @@
 from randomizer.types.overworld_scripts.event_scripts.ids import *
 from randomizer.types.overworld_scripts.ids import *
 from randomizer.types.rooms.enums import (
-    ExtraSpriteActions,
-)
+    ExtraSpriteActions)
 from randomizer.types.rooms import Room

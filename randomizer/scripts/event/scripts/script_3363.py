@@ -11,8 +11,7 @@ script = EventScript(
             subscript=[
                 ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=ROSE_WAY_7038),
-            ],
-        ),
+            ]),
         CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 65515),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
@@ -33,8 +32,7 @@ script = EventScript(
             ROSE_WAY_7038,
             1,
             ["EVENT_3363_set_7000_to_7000_short_mem_35"],
-            identifier="EVENT_3363_jmp_if_var_equals_const_9",
-        ),
+            identifier="EVENT_3363_jmp_if_var_equals_const_9"),
         JmpIfVarEqualsConst(
             ROSE_WAY_7038, 3, ["EVENT_3363_set_7000_to_7000_short_mem_53"]
         ),
@@ -42,8 +40,7 @@ script = EventScript(
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3363_jmp_if_var_equals_const_16"],
-            identifier="EVENT_3363_jmp_if_7000_any_bits_set_12",
-        ),
+            identifier="EVENT_3363_jmp_if_7000_any_bits_set_12"),
         JmpIfVarEqualsConst(
             ROSE_WAY_7038, 5, ["EVENT_3363_set_7000_to_7000_short_mem_71"]
         ),
@@ -55,8 +52,7 @@ script = EventScript(
             ROSE_WAY_7038,
             5,
             ["EVENT_3363_set_7000_to_7000_short_mem_71"],
-            identifier="EVENT_3363_jmp_if_var_equals_const_16",
-        ),
+            identifier="EVENT_3363_jmp_if_var_equals_const_16"),
         JmpIfVarEqualsConst(
             ROSE_WAY_7038, 3, ["EVENT_3363_set_7000_to_7000_short_mem_53"]
         ),
@@ -64,8 +60,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_19",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_19"),
         AddConstToVar(PRIMARY_TEMP_7000, 25),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         JmpIfObjectInCurrentLevel(MEM_70A9, ["EVENT_3363_play_sound_153"]),
@@ -78,8 +73,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_27",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_27"),
         AddConstToVar(PRIMARY_TEMP_7000, 21),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ACTIVE_NPC),
         AddConstToVar(PRIMARY_TEMP_7000, 4),
@@ -90,8 +84,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_35",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_35"),
         AddConstToVar(PRIMARY_TEMP_7000, 22),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         JmpIfObjectInCurrentLevel(MEM_70A9, ["EVENT_3363_play_sound_153"]),
@@ -104,8 +97,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_43",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_43"),
         AddConstToVar(PRIMARY_TEMP_7000, 21),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ACTIVE_NPC),
         AddConstToVar(PRIMARY_TEMP_7000, 1),
@@ -118,8 +110,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_53",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_53"),
         AddConstToVar(PRIMARY_TEMP_7000, 17),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         JmpIfObjectInCurrentLevel(MEM_70A9, ["EVENT_3363_play_sound_153"]),
@@ -132,8 +123,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_61",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_61"),
         AddConstToVar(PRIMARY_TEMP_7000, 21),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ACTIVE_NPC),
         AddConstToVar(PRIMARY_TEMP_7000, 65532),
@@ -146,8 +136,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_71",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_71"),
         AddConstToVar(PRIMARY_TEMP_7000, 20),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         JmpIfObjectInCurrentLevel(MEM_70A9, ["EVENT_3363_play_sound_153"]),
@@ -160,8 +149,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_79",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_79"),
         AddConstToVar(PRIMARY_TEMP_7000, 21),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ACTIVE_NPC),
         AddConstToVar(PRIMARY_TEMP_7000, 65535),
@@ -182,33 +170,28 @@ script = EventScript(
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     7,
-                    ["EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_5"],
-                ),
+                    ["EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_5"]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     1,
-                    ["EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_7"],
-                ),
+                    ["EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_7"]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     3,
-                    ["EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_9"],
-                ),
+                    ["EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_9"]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     5,
                     [
                         "EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_11"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(
                     index=9,
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_5",
-                ),
+                    identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_5"),
                 ASJmp(["EVENT_3363_action_queue_sync_91_SUBSCRIPT_pause_13"]),
                 ASSetSpriteSequence(
                     index=8,
@@ -216,31 +199,27 @@ script = EventScript(
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_7",
-                ),
+                    identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_7"),
                 ASJmp(["EVENT_3363_action_queue_sync_91_SUBSCRIPT_pause_13"]),
                 ASSetSpriteSequence(
                     index=8,
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_9",
-                ),
+                    identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_9"),
                 ASJmp(["EVENT_3363_action_queue_sync_91_SUBSCRIPT_pause_13"]),
                 ASSetSpriteSequence(
                     index=9,
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_11",
-                ),
+                    identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_11"),
                 ASJmp(["EVENT_3363_action_queue_sync_91_SUBSCRIPT_pause_13"]),
                 ASPause(
                     12, identifier="EVENT_3363_action_queue_sync_91_SUBSCRIPT_pause_13"
                 ),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MEM_70A8,
             subscript=[
@@ -263,8 +242,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MEM_70A9,
             subscript=[
@@ -283,8 +261,7 @@ script = EventScript(
                 ASPause(8),
                 ASDb(bytearray(b"\xfd\x9cW")),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MEM_70AA,
             subscript=[
@@ -300,8 +277,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         Dec(ROSE_WAY_703E),
         JmpIfVarEqualsConst(ROSE_WAY_703E, 1, ["EVENT_3363_pause_155"]),
         Jmp(["EVENT_3363_clear_bit_98"]),
@@ -310,8 +286,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_100",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_100"),
         AddConstToVar(PRIMARY_TEMP_7000, 21),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         JmpIfObjectInCurrentLevel(MEM_70A9, ["EVENT_3363_inc_short_149"]),
@@ -325,29 +300,25 @@ script = EventScript(
         Jmp(["EVENT_3363_inc_short_149"]),
         JmpToSubroutine(
             ["EVENT_3363_set_7000_to_7000_short_mem_126"],
-            identifier="EVENT_3363_jmp_to_subroutine_110",
-        ),
+            identifier="EVENT_3363_jmp_to_subroutine_110"),
         JmpToSubroutine(["EVENT_3363_set_7000_to_7000_short_mem_132"]),
         Jmp(["EVENT_3363_inc_short_149"]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3363_jmp_to_subroutine_117"],
-            identifier="EVENT_3363_jmp_if_7000_any_bits_set_113",
-        ),
+            identifier="EVENT_3363_jmp_if_7000_any_bits_set_113"),
         JmpToSubroutine(["EVENT_3363_set_7000_to_7000_short_mem_138"]),
         JmpToSubroutine(["EVENT_3363_set_7000_to_7000_short_mem_120"]),
         Jmp(["EVENT_3363_inc_short_149"]),
         JmpToSubroutine(
             ["EVENT_3363_set_7000_to_7000_short_mem_138"],
-            identifier="EVENT_3363_jmp_to_subroutine_117",
-        ),
+            identifier="EVENT_3363_jmp_to_subroutine_117"),
         JmpToSubroutine(["EVENT_3363_set_7000_to_7000_short_mem_132"]),
         Jmp(["EVENT_3363_inc_short_149"]),
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_120",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_120"),
         AddConstToVar(PRIMARY_TEMP_7000, 25),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         AddConstToVar(PRIMARY_TEMP_7000, 4),
@@ -356,8 +327,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_126",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_126"),
         AddConstToVar(PRIMARY_TEMP_7000, 22),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         AddConstToVar(PRIMARY_TEMP_7000, 1),
@@ -366,8 +336,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_132",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_132"),
         AddConstToVar(PRIMARY_TEMP_7000, 17),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         AddConstToVar(PRIMARY_TEMP_7000, 65532),
@@ -376,8 +345,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3363_set_7000_to_7000_short_mem_138",
-        ),
+            identifier="EVENT_3363_set_7000_to_7000_short_mem_138"),
         AddConstToVar(PRIMARY_TEMP_7000, 20),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         AddConstToVar(PRIMARY_TEMP_7000, 65535),
@@ -386,8 +354,7 @@ script = EventScript(
         JmpIfObjectInCurrentLevel(
             MEM_70A9,
             ["EVENT_3363_ret_146"],
-            identifier="EVENT_3363_jmp_if_present_in_current_level_144",
-        ),
+            identifier="EVENT_3363_jmp_if_present_in_current_level_144"),
         JmpIfObjectInCurrentLevel(MEM_70AA, ["EVENT_3363_set_bit_147"]),
         Return(identifier="EVENT_3363_ret_146"),
         SetBit(TEMP_7043_0, identifier="EVENT_3363_set_bit_147"),
@@ -422,19 +389,16 @@ script = EventScript(
                 ASEndLoop(),
                 ASVisibilityOff(),
                 ASClearSolidityBits(bit_4=True, cant_walk_through=True),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R468_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2C_BALL_SOLITAIRE,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R468_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2C_BALL_SOLITAIRE,
-            mod_id=0,
-        ),
+            mod_id=0),
         Return(),
         PlaySound(
             sound=SO088_WRONG_SIGNAL, channel=4, identifier="EVENT_3363_play_sound_168"
@@ -449,8 +413,7 @@ script = EventScript(
                     index=12, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASPause(2),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7044_7),
         SetSyncActionScript(
             NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS
@@ -461,8 +424,7 @@ script = EventScript(
             closable=True,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetBit(TEMP_7044_7),
         Pause(180),
         FadeOutToBlack(sync=False),

@@ -12,8 +12,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBOrCSelected(
             ["EVENT_2058_action_queue_async_4", "EVENT_2058_action_queue_async_6"]
         ),
@@ -26,8 +25,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         Return(),
         ActionQueueAsync(
             target=NPC_1,
@@ -39,8 +37,7 @@ script = EventScript(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
             ],
-            identifier="EVENT_2058_action_queue_async_4",
-        ),
+            identifier="EVENT_2058_action_queue_async_4"),
         Return(),
         ActionQueueAsync(
             target=NPC_1,
@@ -52,8 +49,7 @@ script = EventScript(
                     index=3, is_sequence=True, looping=True, mirror_sprite=True
                 ),
             ],
-            identifier="EVENT_2058_action_queue_async_6",
-        ),
+            identifier="EVENT_2058_action_queue_async_6"),
         Return(),
     ]
 )

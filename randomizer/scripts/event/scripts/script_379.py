@@ -8,8 +8,7 @@ script = EventScript(
     [
         JmpIfBitSet(
             OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED,
-            ["EVENT_379_run_dialog_20"],
-        ),
+            ["EVENT_379_run_dialog_20"]),
         SetBit(OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED),
         RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
         Return(),
@@ -20,8 +19,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_379_run_dialog_20",
-        ),
+            identifier="EVENT_379_run_dialog_20"),
         Return(),
     ]
 )

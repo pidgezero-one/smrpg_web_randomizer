@@ -12,8 +12,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_4,
             ["EVENT_3502_move_script_to_main_thread_32"],
-            identifier="EVENT_3502_jmp_if_bit_set_3",
-        ),
+            identifier="EVENT_3502_jmp_if_bit_set_3"),
         Set7000ToPressedButton(),
         JmpIf7000AnyBitsSet(
             bits=[], destinations=["EVENT_3502_jmp_if_var_equals_const_24"]
@@ -31,8 +30,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_4,
             ["EVENT_3502_move_script_to_main_thread_32"],
-            identifier="EVENT_3502_jmp_if_bit_set_10",
-        ),
+            identifier="EVENT_3502_jmp_if_bit_set_10"),
         JmpIfBitClear(TEMP_7043_5, ["EVENT_3502_pause_2"]),
         CompareVarToConst(SECONDARY_TEMP_7024, 0),
         JmpIfLoadedMemoryIs0(["EVENT_3502_clear_bit_22"]),
@@ -51,8 +49,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_7026, 1),
         Jmp(["EVENT_3502_jmp_if_bit_set_3"]),
         ActionQueueAsync(
@@ -68,8 +65,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
             ],
-            identifier="EVENT_3502_action_queue_async_20",
-        ),
+            identifier="EVENT_3502_action_queue_async_20"),
         Jmp(["EVENT_3502_jmp_if_bit_set_3"]),
         ClearBit(TEMP_7043_5, identifier="EVENT_3502_clear_bit_22"),
         Jmp(["EVENT_3502_pause_2"]),
@@ -77,8 +73,7 @@ script = EventScript(
             TEMP_7034,
             40,
             ["EVENT_3502_pause_9"],
-            identifier="EVENT_3502_jmp_if_var_equals_const_24",
-        ),
+            identifier="EVENT_3502_jmp_if_var_equals_const_24"),
         ActionQueueAsync(
             target=MARIO, subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastPixels(2)]
         ),
@@ -88,8 +83,7 @@ script = EventScript(
             TEMP_7034,
             0,
             ["EVENT_3502_pause_9"],
-            identifier="EVENT_3502_jmp_if_var_equals_const_28",
-        ),
+            identifier="EVENT_3502_jmp_if_var_equals_const_28"),
         ActionQueueAsync(
             target=MARIO, subscript=[ASSetWalkingSpeed(FAST), ASWalkSouthwestPixels(2)]
         ),
@@ -136,8 +130,7 @@ script = EventScript(
             closable=True,
             sync=True,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Jmp(["EVENT_3502_action_queue_sync_62"]),
         RunDialog(
             dialog_id=DI1193_NO_FLOWER_HILL,
@@ -146,8 +139,7 @@ script = EventScript(
             sync=True,
             multiline=False,
             use_background=False,
-            identifier="EVENT_3502_run_dialog_61",
-        ),
+            identifier="EVENT_3502_run_dialog_61"),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
@@ -157,8 +149,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(8),
                 ASVisibilityOff(),
             ],
-            identifier="EVENT_3502_action_queue_sync_62",
-        ),
+            identifier="EVENT_3502_action_queue_sync_62"),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -169,8 +160,7 @@ script = EventScript(
                 ASWalkNorthPixels(4),
                 ASPause(64),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -182,8 +172,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
                 ASBounceToXYWithHeight(x=5, y=54, height=0),
-            ],
-        ),
+            ]),
         PlayMusicAtCurrentVolume(M37_BOOSTER_HILL_START),
         FadeOutMusicToVolume(duration=3, volume=127),
         ActionQueueAsync(
@@ -196,8 +185,7 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(50),
                 ASResetProperties(),
                 ASSetSequenceSpeed(FAST),
@@ -212,8 +200,7 @@ script = EventScript(
                 ASFaceWest(),
                 ASPause(8),
                 ASWalkSouthwestSteps(5),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         UnsyncDialog(),
         SetBit(BOOSTER_HILL_CLEARED),
@@ -224,8 +211,7 @@ script = EventScript(
             use_alternate=True,
             room_id=R014_BOOSTER_HILL,
             mod_id=34,
-            identifier="EVENT_3502_apply_tile_mod_121",
-        ),
+            identifier="EVENT_3502_apply_tile_mod_121"),
         ApplyTileModToLevel(use_alternate=True, room_id=R014_BOOSTER_HILL, mod_id=33),
         ApplyTileModToLevel(use_alternate=True, room_id=R014_BOOSTER_HILL, mod_id=32),
         StopEmbeddedActionScript(LAYER_1),
@@ -240,8 +226,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
                 ASBounceToXYWithHeight(x=5, y=54, height=0),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -252,13 +237,11 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(120),
                 ASResetProperties(),
                 ASWalkSouthwestSteps(5),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         SetBit(MAP_BOOSTER_HILL),
         RunDialog(
@@ -267,8 +250,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ExitToWorldMap(area=OW27_BOOSTER_HILL, bit_6=True, bit_7=True),
         Return(),
     ]

@@ -10,5 +10,4 @@ room = Room(
     events=[],
     exits=[],
     objects=objects,
-    extra_sprite_actions=[],
-)
+    extra_sprite_actions=[])

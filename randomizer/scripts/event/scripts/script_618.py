@@ -20,8 +20,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(target=NPC_5, subscript=[ASFaceNorthwest()]),
         Return(),
     ]

@@ -16,8 +16,7 @@ script = EventScript(
             y=98,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_2124_enter_area_7",
-        ),
+            identifier="EVENT_2124_enter_area_7"),
         Return(),
         EnterArea(
             room_id=R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
@@ -26,8 +25,7 @@ script = EventScript(
             y=98,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_2124_enter_area_7_",
-        ),
+            identifier="EVENT_2124_enter_area_7_"),
         Return(),
     ]
 )

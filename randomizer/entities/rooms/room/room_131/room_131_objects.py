@@ -37,8 +37,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackClone(
         occupant=Zeostar,
@@ -54,8 +53,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackClone(
         occupant=Zeostar,
@@ -71,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     BattlePackClone(
         occupant=Zeostar,
@@ -88,8 +85,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     BattlePackClone(
         occupant=Zeostar,
@@ -105,6 +101,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

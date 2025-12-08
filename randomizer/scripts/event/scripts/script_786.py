@@ -15,8 +15,7 @@ script = EventScript(
                 ASWalkNortheastPixels(4),
                 ASFaceSoutheast(),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         JmpToEvent(E0015_STANDARD_ROOM_LOADER),
     ]
 )

@@ -14,99 +14,81 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=0,
-        ),
+            mod_id=0),
         JmpIf7000AllBitsClear(
             bits=[],
             destinations=["EVENT_3376_set_7000_to_70A0_short_mem_8"],
-            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_5",
-        ),
+            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_5"),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=1,
-        ),
+            mod_id=1),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=1,
-        ),
+            mod_id=1),
         CopyVarToVar(
             from_var=UNKNOWN_70E8,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3376_set_7000_to_70A0_short_mem_8",
-        ),
+            identifier="EVENT_3376_set_7000_to_70A0_short_mem_8"),
         JmpIf7000AllBitsClear(
             bits=[], destinations=["EVENT_3376_jmp_if_7000_all_bits_clear_12"]
         ),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=2,
-        ),
+            mod_id=2),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=2,
-        ),
+            mod_id=2),
         JmpIf7000AllBitsClear(
             bits=[],
             destinations=["EVENT_3376_set_7000_to_70A0_short_mem_15"],
-            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_12",
-        ),
+            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_12"),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=3,
-        ),
+            mod_id=3),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=3,
-        ),
+            mod_id=3),
         CopyVarToVar(
             from_var=UNKNOWN_70E9,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3376_set_7000_to_70A0_short_mem_15",
-        ),
+            identifier="EVENT_3376_set_7000_to_70A0_short_mem_15"),
         JmpIf7000AllBitsClear(
             bits=[], destinations=["EVENT_3376_jmp_if_7000_all_bits_clear_19"]
         ),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=4,
-        ),
+            mod_id=4),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=4,
-        ),
+            mod_id=4),
         JmpIf7000AllBitsClear(
             bits=[],
             destinations=["EVENT_3376_jmp_if_bit_set_22"],
-            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_19",
-        ),
+            identifier="EVENT_3376_jmp_if_7000_all_bits_clear_19"),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=5,
-        ),
+            mod_id=5),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=5,
-        ),
+            mod_id=5),
         JmpIfBitSet(
             UNKNOWN_BOWSERS_KEEP_707F_0,
             ["EVENT_3356_clear_bit_5"],
-            identifier="EVENT_3376_jmp_if_bit_set_22",
-        ),
+            identifier="EVENT_3376_jmp_if_bit_set_22"),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         Return(),
         SetVarToConst(

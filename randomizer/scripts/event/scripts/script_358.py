@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI1050_I_WISH_YOU_LUCK_ON_YOUR_QUEST,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_358_run_dialog_12",
-        ),
+            identifier="EVENT_358_run_dialog_12"),
         Return(),
     ]
 )

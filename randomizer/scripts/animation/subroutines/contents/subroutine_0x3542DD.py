@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3542dd",
-        ),
+            identifier="queuestart_0x3542dd"),
         NewSpriteAtCoords(
             sprite_id=SPR0566_GREEN_ITEM_COLLECTION,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ResetTargetMappingMemory(),
         ResetObjectMappingMemory(),
         MoveObject(
@@ -37,10 +35,8 @@ script = SubroutineOrBanklessScript(
             apply_to_z=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60),
         ResetObjectMappingMemory(),
         Jmp(["command_0x35252f"]),
-    ],
-)
+    ])

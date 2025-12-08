@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=MachineDrillBit,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=MachineDrillBit,
@@ -67,8 +65,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=MachineDrillBit,
@@ -83,8 +80,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=MachineDrillBit,
@@ -99,8 +95,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=MachineDrillBit,
@@ -115,8 +110,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=Jabit,
@@ -149,8 +143,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=Jabit,
@@ -165,8 +158,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularClone(
         occupant=Jabit,
@@ -181,8 +173,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=Jabit,
@@ -197,8 +188,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularClone(
         occupant=Jabit,
@@ -213,8 +203,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularClone(
         occupant=Jabit,
@@ -229,8 +218,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     RegularNPC(
         occupant=Pounder,
@@ -263,8 +251,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     RegularClone(
         occupant=Pounder,
@@ -279,8 +266,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_14
     RegularClone(
         occupant=Pounder,
@@ -295,8 +281,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_15
     RegularNPC(
         occupant=ManagerSmall,
@@ -330,8 +315,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_16
     RegularNPC(
         occupant=PoisonGas,
@@ -364,6 +348,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

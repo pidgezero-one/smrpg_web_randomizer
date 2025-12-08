@@ -37,8 +37,7 @@ objects = [
         priority_2=True,
         cannot_clone=True,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_1
     ChestNPC(
         occupant=TreasureChest,
@@ -73,8 +72,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     ChestClone(
         occupant=TreasureChest,
@@ -89,8 +87,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     ChestNPC(
         occupant=TreasureChest,
@@ -125,8 +122,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     ChestClone(
         occupant=TreasureChest,
@@ -141,8 +137,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     ChestClone(
         occupant=TreasureChest,
@@ -157,8 +152,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     ChestClone(
         occupant=TreasureChest,
@@ -173,8 +167,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularNPC(
         occupant=Empty,
@@ -207,8 +200,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularClone(
         occupant=Empty,
@@ -223,8 +215,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularNPC(
         occupant=GreyBlock,
@@ -257,8 +248,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularClone(
         occupant=GreyBlock,
@@ -273,6 +263,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

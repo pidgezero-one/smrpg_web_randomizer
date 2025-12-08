@@ -15,8 +15,7 @@ script = ActionScript(
             y=0,
             z=17,
             direction=EAST,
-            identifier="ACTION_102_transfer_xyzf_pixels_4",
-        ),
+            identifier="ACTION_102_transfer_xyzf_pixels_4"),
         Jmp(["ACTION_103_set_animation_speed_9"]),
         JmpIfRandom1of2(
             ["ACTION_101_pause_9"], identifier="ACTION_102_jmp_if_random_above_128_6"

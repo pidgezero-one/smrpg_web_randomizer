@@ -11,13 +11,11 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_4,
             subscript=[ASVisibilityOff()],
-            identifier="EVENT_3707_action_queue_async_6",
-        ),
+            identifier="EVENT_3707_action_queue_async_6"),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
-            mod_id=1,
-        ),
+            mod_id=1),
         FadeInFromBlack(sync=False),
         Return(),
     ]

@@ -44,8 +44,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1869,
             x=20,
@@ -56,8 +55,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1869,
             x=8,
@@ -68,8 +66,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1869,
             x=10,
@@ -80,8 +77,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=True,
-        ),
+            byte_8_bit_4=True),
     ],
     exit_fields=[
         RoomExit(
@@ -101,8 +97,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -135,8 +130,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.DonutLift,
             event_script=1549,
@@ -150,8 +144,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 2
             occupant=npcs.DonutLift,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -182,8 +175,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.DonutLift,
             event_script=1737,
@@ -197,8 +189,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 4
             occupant=npcs.DonutLift,
             initiator=Initiator.JUMP_ON,
@@ -229,8 +220,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 5
             occupant=npcs.DonutLift,
             event_script=1549,
@@ -244,8 +234,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 6
             occupant=npcs.DonutLift,
             event_script=1549,
@@ -259,8 +248,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 7
             occupant=npcs.DonutLift,
             event_script=1549,
@@ -274,8 +262,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 8
             occupant=npcs.DonutLift,
             event_script=1549,
@@ -289,8 +276,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 9
             occupant=npcs.DonutLift,
             event_script=1549,
@@ -304,8 +290,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 10
             occupant=npcs.DonutLift,
             event_script=1549,
@@ -319,8 +304,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 11
             occupant=npcs.BulletBill,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -353,8 +337,7 @@ room = Room(
             priority_2=True,
             acute_axis=7,
             obtuse_axis=3,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 12
             occupant=npcs.BulletBill,
             event_script=1772,
@@ -370,8 +353,7 @@ room = Room(
             priority_2=True,
             acute_axis=7,
             obtuse_axis=3,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 13
             occupant=npcs.BulletBill,
             event_script=1772,
@@ -387,8 +369,7 @@ room = Room(
             priority_2=True,
             acute_axis=7,
             obtuse_axis=3,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 14
             occupant=npcs.BulletBill,
             event_script=1772,
@@ -404,8 +385,7 @@ room = Room(
             priority_2=True,
             acute_axis=7,
             obtuse_axis=3,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 15
             occupant=npcs.LandsEndCannon,
             initiator=Initiator.NONE,
@@ -436,8 +416,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 16
             occupant=npcs.Empty,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -471,8 +450,7 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 17
             occupant=npcs.Shaman,
             initiator=Initiator.ANYTHING_EXCEPT_TOUCH_SIDE,
@@ -503,8 +481,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 18
             occupant=npcs.Shaman,
             event_script=1853,
@@ -518,7 +495,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

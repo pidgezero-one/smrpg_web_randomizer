@@ -15,13 +15,11 @@ script = EventScript(
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         FadeInFromBlack(sync=False),
         RestoreAllHP(),
         RestoreAllFP(),

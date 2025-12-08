@@ -28,8 +28,7 @@ script = EventScript(
                 ASDb(bytearray(b"\xc8\x91")),
                 ASWalkTo70167018(),
                 ASReturn(),
-            ],
-        ),
+            ]),
         FadeOutToBlack(sync=False),
         OpenSaveMenu(),
     ]

@@ -16,8 +16,7 @@ from django.http import (
     HttpResponseBadRequest,
     HttpResponse,
     HttpResponseNotFound,
-    QueryDict,
-)
+    QueryDict)
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -165,8 +164,7 @@ class GenerateView(FormView):
                 seed,
                 Settings(
                     mode, debug_mode, data["flags"] or "", data["cosmetics"] or ""
-                ),
-            )
+                ))
             world.randomize()
             patches = {"US": world.build_patch()}
         except FlagError as e:
@@ -218,8 +216,7 @@ class GenerateView(FormView):
                 file_select_char=world.file_select_character,
                 file_select_hash=world.file_select_hash,
                 race_mode=race_mode,
-                spoiler=world.spoiler,
-            )
+                spoiler=world.spoiler)
             s.save()
 
             for region, patch in patches.items():

@@ -15,8 +15,6 @@ script = SubroutineOrBanklessScript(
             should_set_start_position=True,
             should_set_end_position=True,
             should_set_speed=True,
-            identifier="queuestart_0x3a808f",
-        ),
+            identifier="queuestart_0x3a808f"),
         ReturnSubroutine(),
-    ],
-)
+    ])

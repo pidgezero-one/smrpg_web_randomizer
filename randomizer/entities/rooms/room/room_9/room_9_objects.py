@@ -37,8 +37,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=BlueToad,
@@ -76,6 +75,5 @@ objects = [
         obtuse_axis=5,
         height=2,
         cannot_clone=True,
-        byte5_bit7=False,
-    ),
+        byte5_bit7=False),
 ]

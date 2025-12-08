@@ -63,8 +63,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.MidasRiverMario,
             initiator=Initiator.NONE,
@@ -95,8 +94,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 2
             occupant=npcs.SmallFrogCoin,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -128,8 +126,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.SmallCoin,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -161,8 +158,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 4
             occupant=npcs.SmallCoin,
             event_script=3488,
@@ -177,8 +173,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 5
             occupant=npcs.SmallCoin,
             event_script=3488,
@@ -193,8 +188,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 6
             occupant=npcs.SmallCoin,
             event_script=3488,
@@ -209,8 +203,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 7
             occupant=npcs.SmallCoin,
             event_script=3488,
@@ -225,8 +218,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 8
             occupant=npcs.SmallCoin,
             event_script=3488,
@@ -241,8 +233,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 9
             occupant=npcs.SmallCoin,
             event_script=3488,
@@ -257,8 +248,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 10
             occupant=npcs.SmallCoin,
             event_script=3488,
@@ -273,8 +263,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 11
             occupant=npcs.SmallCoin,
             event_script=3488,
@@ -289,8 +278,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 12
             occupant=npcs.SplashWaterDroplets,
             initiator=Initiator.NONE,
@@ -321,8 +309,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 13
             occupant=npcs.SplashWaterDroplets,
             event_script=1551,
@@ -336,8 +323,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 14
             occupant=npcs.SplashWaterDroplets,
             event_script=1551,
@@ -351,8 +337,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 15
             occupant=npcs.SplashWaterDroplets,
             event_script=1551,
@@ -366,8 +351,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 16
             occupant=npcs.SplashWaterDroplets,
             event_script=1551,
@@ -381,7 +365,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

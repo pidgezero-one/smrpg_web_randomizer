@@ -11,8 +11,7 @@ script = AnimationScript(
         DrawSpriteAtAMEM32Coords(
             sprite_id=SPR0011_TOADSTOOL_FRYING_PAN_ATTACK,
             sequence=2,
-            store_to_vram=True,
-        ),
+            store_to_vram=True),
         ReturnSubroutine(),
         ObjectQueueAtOffsetAndIndex(
             index=2, target_address=0x35F3E8, identifier="command_0x35ef15"
@@ -21,8 +20,7 @@ script = AnimationScript(
         DrawSpriteAtAMEM32Coords(
             sprite_id=SPR0011_TOADSTOOL_FRYING_PAN_ATTACK,
             sequence=3,
-            store_to_vram=True,
-        ),
+            store_to_vram=True),
         PauseScriptUntilSpriteSequenceDone(),
         ReturnSubroutine(),
     ]

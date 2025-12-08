@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0673_MARRYMORE_CHAPEL_LOBBY_EXIT_TO_ANTECHAMBER,
             x=7,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -79,7 +77,5 @@ room = Room(
             dst_z=0,
             dst_z_half=True,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
-    ],
-)
+            x_bit_7=False),
+    ])

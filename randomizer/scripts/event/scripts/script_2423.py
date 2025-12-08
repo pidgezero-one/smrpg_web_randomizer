@@ -9,8 +9,7 @@ script = EventScript(
         StopAllBackgroundEvents(),
         ActionQueueSync(
             target=MEM_70A8,
-            subscript=[ASSetSpriteSequence(index=0, looping=False, mirror_sprite=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=0, looping=False, mirror_sprite=True)]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -20,8 +19,7 @@ script = EventScript(
                 ASShadowOff(),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASWalkSouthPixels(8),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0408_JUMP_ON_SAVE_BLOCK),
         PlaySound(sound=SO010_TRAMPOLINE, channel=6),
         ActionQueueSync(
@@ -33,16 +31,14 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASDb(bytearray(b" \x07")),
                 ASDb(bytearray(b"$0\x02\xe0\xfe")),
                 ASDb(bytearray(b"%\x00\t\x80\xff")),
                 ASPause(56),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Pause(24),
         FreezeCamera(),
         Pause(24),
@@ -55,8 +51,7 @@ script = EventScript(
             x=4,
             y=113,
             z=10,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN,
@@ -65,8 +60,7 @@ script = EventScript(
             y=10,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_2423_enter_area_14",
-        ),
+            identifier="EVENT_2423_enter_area_14"),
         Return(),
     ]
 )

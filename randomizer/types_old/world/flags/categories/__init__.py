@@ -23,5 +23,4 @@ from .categories import (
     PaletteSubcategory,
     CosmeticCategory,
     FlagCategoryT,
-    CATEGORIES,
-)
+    CATEGORIES)

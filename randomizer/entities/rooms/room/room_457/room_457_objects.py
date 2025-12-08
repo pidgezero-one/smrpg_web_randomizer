@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=BobOmb,
@@ -70,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=0,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=BobOmb,
@@ -87,8 +85,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=0,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     ChestNPC(
         occupant=TreasureChest,
@@ -123,8 +120,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     ChestClone(
         occupant=TreasureChest,
@@ -139,8 +135,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     ChestNPC(
         occupant=TreasureChest,
@@ -175,8 +170,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     ChestClone(
         occupant=TreasureChest,
@@ -191,8 +185,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     ChestClone(
         occupant=TreasureChest,
@@ -207,8 +200,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=BigCoin,
@@ -242,8 +234,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=BigCoin,
@@ -259,8 +250,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularClone(
         occupant=BigCoin,
@@ -276,8 +266,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularClone(
         occupant=BigCoin,
@@ -293,8 +282,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     RegularClone(
         occupant=BigCoin,
@@ -310,8 +298,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     RegularClone(
         occupant=BigCoin,
@@ -327,8 +314,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_14
     RegularClone(
         occupant=BigCoin,
@@ -344,8 +330,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_15
     RegularClone(
         occupant=BigCoin,
@@ -361,6 +346,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

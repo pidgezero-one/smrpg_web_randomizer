@@ -26,8 +26,7 @@ script = EventScript(
             x=2,
             y=47,
             z=16,
-            show_banner=True,
-        ),
+            show_banner=True),
         SetBit(DIRECTIONAL_7049_0),
         EnableControls([]),
         ActionQueueSync(

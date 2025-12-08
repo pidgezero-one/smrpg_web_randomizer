@@ -13,8 +13,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3378_KEEP_OPEN_DOOR_2,
         x=5,
@@ -25,8 +24,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3379_KEEP_OPEN_DOOR_3,
         x=6,
@@ -37,8 +35,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3380_KEEP_OPEN_DOOR_4,
         x=7,
@@ -49,8 +46,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3381_KEEP_OPEN_DOOR_5,
         x=8,
@@ -61,8 +57,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3382_KEEP_OPEN_DOOR_6,
         x=9,
@@ -73,8 +68,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3349_KEEP_6_DOOR_LOBBY_EXIT_TO_PREV_ROOM,
         x=2,
@@ -85,6 +79,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

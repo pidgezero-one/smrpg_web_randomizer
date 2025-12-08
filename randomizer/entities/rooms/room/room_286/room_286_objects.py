@@ -39,8 +39,7 @@ objects = [
         acute_axis=8,
         obtuse_axis=9,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=ShyGuy,
@@ -74,6 +73,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR2_SWSE,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

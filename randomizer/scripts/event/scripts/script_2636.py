@@ -16,8 +16,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_2636_ret_10"]),
         SetBit(TEMP_7043_0),
         ApplySolidityModToLevel(
@@ -33,22 +32,19 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_2636_run_dialog_11",
-        ),
+            identifier="EVENT_2636_run_dialog_11"),
         Return(),
         JmpIfBitSet(
             KNIFE_GUY_PRIZE_GRANTED,
             ["EVENT_2636_run_dialog_16"],
-            identifier="EVENT_2636_jmp_if_bit_set_13",
-        ),
+            identifier="EVENT_2636_jmp_if_bit_set_13"),
         RunDialog(
             dialog_id=DI3298_BOUNCER_REJECT,
             above_object=MEM_70A8,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI3299_BOUNCER_REJECT,
@@ -57,8 +53,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_2636_run_dialog_16",
-        ),
+            identifier="EVENT_2636_run_dialog_16"),
         Return(),
     ]
 )

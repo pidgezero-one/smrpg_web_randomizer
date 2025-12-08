@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         SetBit(TEMP_7043_0),
         Return(),
         RunDialog(
@@ -24,8 +23,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_2591_run_dialog_4",
-        ),
+            identifier="EVENT_2591_run_dialog_4"),
         Return(),
     ]
 )

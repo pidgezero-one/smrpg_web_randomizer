@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2448_FOREST_BOSS_FIGHT,
             x=15,
@@ -58,8 +57,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -75,8 +73,7 @@ room = Room(
             destination=OW19_FOREST_MAZE,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -105,8 +102,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -133,8 +129,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -161,8 +156,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -189,8 +183,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -217,8 +210,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -245,8 +237,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -273,8 +264,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -301,8 +291,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -329,8 +318,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.NONE,
@@ -357,8 +345,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.GENO_WALKING_DOWN_LEFT_NPC,
             initiator=EventInitiator.NONE,
@@ -385,8 +372,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 11
             npc=npcs.BOWYER_NPC,
             initiator=EventInitiator.NONE,
@@ -413,7 +399,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -20,8 +20,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(4),
                 ASWalk1StepSoutheast(),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -34,8 +33,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASPause(1),
                 ASClearBit(TEMP_7043_0),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_1901_ret_6"),
     ]
 )

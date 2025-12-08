@@ -20,8 +20,7 @@ script = EventScript(
                 ),
                 ASFixedFCoordOn(),
                 ASWalkNortheastPixels(4),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7043_1),
         Return(identifier="EVENT_1670_ret_7"),
     ]

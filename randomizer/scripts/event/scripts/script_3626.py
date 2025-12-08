@@ -18,8 +18,7 @@ script = EventScript(
                 ASWalk1StepNorth(),
                 ASSetWalkingSpeed(NORMAL),
                 ASWalk1StepNorth(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

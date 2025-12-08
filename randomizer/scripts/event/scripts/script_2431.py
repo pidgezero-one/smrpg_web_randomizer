@@ -23,8 +23,7 @@ script = EventScript(
                 "EVENT_2431_jmp_if_random_above_66_10",
                 "EVENT_2431_jmp_if_random_above_66_10",
             ],
-            identifier="EVENT_2431_jmp_if_random_above_66_7",
-        ),
+            identifier="EVENT_2431_jmp_if_random_above_66_7"),
         SummonObjectToCurrentLevel(NPC_1),
         SetSyncActionScript(NPC_1, A0405_FOREST_MAZE_AREA_FREEMOVING_AMANITA),
         JmpIfRandom2of3(
@@ -32,14 +31,12 @@ script = EventScript(
                 "EVENT_2431_jmp_if_random_above_128_13",
                 "EVENT_2431_jmp_if_random_above_128_13",
             ],
-            identifier="EVENT_2431_jmp_if_random_above_66_10",
-        ),
+            identifier="EVENT_2431_jmp_if_random_above_66_10"),
         SummonObjectToCurrentLevel(NPC_2),
         SetSyncActionScript(NPC_2, A0405_FOREST_MAZE_AREA_FREEMOVING_AMANITA),
         JmpIfRandom1of2(
             ["EVENT_2431_remove_from_current_level_18"],
-            identifier="EVENT_2431_jmp_if_random_above_128_13",
-        ),
+            identifier="EVENT_2431_jmp_if_random_above_128_13"),
         RemoveObjectFromCurrentLevel(NPC_5),
         JmpIfRandom1of2(["EVENT_2431_jmp_if_random_above_128_24"]),
         RemoveObjectFromCurrentLevel(NPC_3),
@@ -59,12 +56,10 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         JmpIfRandom1of2(
             ["EVENT_2431_remove_from_current_level_29"],
-            identifier="EVENT_2431_jmp_if_random_above_128_24",
-        ),
+            identifier="EVENT_2431_jmp_if_random_above_128_24"),
         RemoveObjectFromCurrentLevel(NPC_6),
         JmpIfRandom1of2(["EVENT_2431_jmp_if_random_above_128_35"]),
         RemoveObjectFromCurrentLevel(NPC_4),
@@ -84,30 +79,25 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         JmpIfRandom1of2(
             ["EVENT_2431_jmp_if_random_above_128_38"],
-            identifier="EVENT_2431_jmp_if_random_above_128_35",
-        ),
+            identifier="EVENT_2431_jmp_if_random_above_128_35"),
         SummonObjectToCurrentLevel(NPC_7),
         SetSyncActionScript(NPC_7, A0410_FOREST_MAZE_AREA_BEE),
         JmpIfRandom1of2(
             ["EVENT_2431_jmp_if_random_above_128_41"],
-            identifier="EVENT_2431_jmp_if_random_above_128_38",
-        ),
+            identifier="EVENT_2431_jmp_if_random_above_128_38"),
         SummonObjectToCurrentLevel(NPC_8),
         SetSyncActionScript(NPC_8, A0411_FOREST_MAZE_AREA_BEE),
         JmpIfRandom1of2(
             ["EVENT_2431_jmp_if_random_above_128_44"],
-            identifier="EVENT_2431_jmp_if_random_above_128_41",
-        ),
+            identifier="EVENT_2431_jmp_if_random_above_128_41"),
         SummonObjectToCurrentLevel(NPC_9),
         SetSyncActionScript(NPC_9, A0412_FOREST_MAZE_AREA_BEE),
         JmpIfRandom1of2(
             ["EVENT_2431_fade_in_from_black_async_47"],
-            identifier="EVENT_2431_jmp_if_random_above_128_44",
-        ),
+            identifier="EVENT_2431_jmp_if_random_above_128_44"),
         SummonObjectToCurrentLevel(NPC_10),
         SetSyncActionScript(NPC_10, A0412_FOREST_MAZE_AREA_BEE),
         FadeInFromBlack(

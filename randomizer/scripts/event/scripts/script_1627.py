@@ -20,8 +20,7 @@ script = EventScript(
         JmpIfBitClear(
             MINES_BOSS_2_DEFEATED,
             ["EVENT_1627_fade_in_from_black_async_17"],
-            identifier="EVENT_1627_jmp_if_bit_clear_14",
-        ),
+            identifier="EVENT_1627_jmp_if_bit_clear_14"),
         SummonObjectToCurrentLevel(NPC_1),
         SetSyncActionScript(NPC_1, A0160_SEQUENCE_LOOPING_ON),
         FadeInFromBlack(

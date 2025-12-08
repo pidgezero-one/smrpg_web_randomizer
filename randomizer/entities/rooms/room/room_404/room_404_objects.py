@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularClone(
         occupant=SandWhirlpool,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularClone(
         occupant=SandWhirlpool,
@@ -67,8 +65,7 @@ objects = [
         priority_0=False,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=Shogun,
@@ -101,8 +98,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_4
     RegularNPC(
         occupant=BigCoin,
@@ -136,8 +132,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=FrogCoin,
@@ -171,6 +166,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

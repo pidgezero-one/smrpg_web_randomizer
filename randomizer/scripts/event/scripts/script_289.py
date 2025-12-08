@@ -24,8 +24,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_7,
             ["EVENT_289_set_7010_to_object_xyz_36"],
-            identifier="EVENT_289_jmp_if_bit_set_15",
-        ),
+            identifier="EVENT_289_jmp_if_bit_set_15"),
         JmpIfBitSet(TEMP_7044_5, ["EVENT_289_set_7010_to_object_xyz_36"]),
         RunDialog(
             dialog_id=DI0766_ROSE_TOWN_INNKEEPER,
@@ -33,8 +32,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(["EVENT_289_pause_29"]),
         Pause(10),
         RunEventAsSubroutine(E3587_SET_70AE_TO_70A8),
@@ -46,8 +44,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfBitSet(TEMP_7044_2, ["EVENT_289_set_bit_27"]),
         SetBit(OCCUPIED_ROSE_TOWN_INN),
         Jmp(["EVENT_273_fade_out_music_to_volume_17"]),
@@ -64,8 +61,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         Db(bytearray(b"\xc7\x94"), identifier="EVENT_289_set_7010_to_object_xyz_36"),
         CompareVarToConst(X_COORD_1, 5),
@@ -81,8 +77,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(["EVENT_289_pause_55"]),
         Pause(10),
         ActionQueueAsync(
@@ -105,8 +100,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         Pause(10),
         RunDialog(
             dialog_id=DI0777_ROSE_TOWN_NEXT_MORNING_CONFIRM,
@@ -114,8 +108,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ResumeActionScript(NPC_0),
         ResumeActionScript(NPC_1),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, A, Y, B]),
@@ -132,61 +125,53 @@ script = EventScript(
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,
-                    ["EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_9"],
-                ),
+                    ["EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_9"]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     64,
                     [
                         "EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_15"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     128,
                     [
                         "EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_21"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     192,
                     [
                         "EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_27"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(
                     index=0,
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_9",
-                ),
+                    identifier="EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_9"),
                 ASPause(20),
                 ASSetSpriteSequence(
                     index=6,
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(40),
                 ASSetSpriteSequence(
                     index=0,
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASJmp(["EVENT_289_action_queue_async_56_SUBSCRIPT_pause_32"]),
                 ASSetSpriteSequence(
                     index=0,
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_15",
-                ),
+                    identifier="EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_15"),
                 ASPause(20),
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
@@ -202,32 +187,28 @@ script = EventScript(
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_21",
-                ),
+                    identifier="EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_21"),
                 ASPause(20),
                 ASSetSpriteSequence(
                     index=7,
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(40),
                 ASSetSpriteSequence(
                     index=3,
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASJmp(["EVENT_289_action_queue_async_56_SUBSCRIPT_pause_32"]),
                 ASSetSpriteSequence(
                     index=3,
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_27",
-                ),
+                    identifier="EVENT_289_action_queue_async_56_SUBSCRIPT_set_sprite_sequence_27"),
                 ASPause(20),
                 ASSetSpriteSequence(
                     index=7, is_mold=True, is_sequence=True, looping=True
@@ -243,8 +224,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         Pause(10),
         RunDialog(
             dialog_id=DI0778_ROSE_TOWN_NEXT_MORNING_DECLINE,
@@ -252,8 +232,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, A, Y, B]),
         ResumeActionScript(NPC_0),
         ResumeActionScript(NPC_1),

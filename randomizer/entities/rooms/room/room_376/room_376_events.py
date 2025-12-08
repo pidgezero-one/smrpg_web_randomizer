@@ -13,8 +13,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2182_KEEP_CHEWY_BATTLE_ROOM_SUMMON_2ND_BATTLE,
         x=9,
@@ -25,8 +24,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2183_KEEP_CHEWY_BATTLE_ROOM_SUMMON_3RD_BATTLE,
         x=13,
@@ -37,8 +35,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2184_KEEP_CHEWY_BATTLE_ROOM_SUMMON_4TH_BATTLE,
         x=17,
@@ -49,8 +46,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1944_KEEP_CHEWY_BATTLE_ROOM_EXIT,
         x=22,
@@ -61,6 +57,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

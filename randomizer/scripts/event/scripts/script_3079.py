@@ -15,8 +15,7 @@ script = EventScript(
         FadeInFromBlack(sync=False),
         EnableControls(
             [LEFT, RIGHT, DOWN, UP, X, A, Y, B],
-            identifier="EVENT_3079_enable_controls_7",
-        ),
+            identifier="EVENT_3079_enable_controls_7"),
         JmpIfBitClear(DODO_PRESENT_IN_NIMBUS_HALL, ["EVENT_3079_music"]),
         ClearBit(DODO_PRESENT_IN_NIMBUS_HALL),
         JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_3079_music"]),

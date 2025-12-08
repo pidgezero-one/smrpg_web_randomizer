@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=CommanderTroopa,
@@ -69,8 +68,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularNPC(
         occupant=SkyTroopa,
@@ -107,8 +105,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=SkyTroopa,
@@ -127,8 +124,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=SkyTroopa,
@@ -147,8 +143,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=SkyTroopa,
@@ -167,8 +162,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=SkyTroopa,
@@ -187,8 +181,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=SkyTroopa,
@@ -207,8 +200,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularClone(
         occupant=SkyTroopa,
@@ -227,8 +219,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=SkyTroopa,
@@ -247,8 +238,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularNPC(
         occupant=FrogCoin,
@@ -282,6 +272,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

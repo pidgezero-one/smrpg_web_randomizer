@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x356a82",
-        ),
+            identifier="queuestart_0x356a82"),
         NewSpriteAtCoords(
             sprite_id=SPR0797_SLEEPY_TIME_SHEEP_RAM,
             sequence=5,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         SetAMEM16BitToConst(0x60, 9),
@@ -48,8 +46,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x356abb",
-        ),
+            identifier="queuestart_0x356abb"),
         NewSpriteAtCoords(
             sprite_id=SPR0797_SLEEPY_TIME_SHEEP_RAM,
             sequence=5,
@@ -59,8 +56,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x67),
         ClearAMEM8Bit(0x69),
         SetAMEM16BitToConst(0x60, 9),
@@ -87,5 +83,4 @@ script = SubroutineOrBanklessScript(
         SetOMEMMainToAMEM8Bit(omem=0x67, amem=0x67),
         RemoveObject(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

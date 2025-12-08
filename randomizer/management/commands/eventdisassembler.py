@@ -31,8 +31,7 @@ from randomizer.helpers.eventtables import (
     _0x6A_flags,
     _0x6B_flags,
     _0x81_flags,
-    _0x84_flags,
-)
+    _0x84_flags)
 from randomizer.data.items import get_default_items
 from randomizer.management.disassembler_common import (
     shortify,
@@ -50,11 +49,9 @@ from randomizer.management.disassembler_common import (
     flags,
     con_int,
     flags_short,
-    writeline,
-)
+    writeline)
 from randomizer.management.commands.objectsequencedisassembler import (
-    Command as OSCommand,
-)
+    Command as OSCommand)
 from randomizer.logic.main import Settings, GameWorld
 import sys
 
@@ -1371,49 +1368,42 @@ names[0x31] = named("unfreeze_all_npcs")
 names[0x32] = named(
     "jmp_if_present_in_current_level",
     byte(prefix="AreaObjects", table=area_object_table),
-    short(),
-)
+    short())
 # 33 undocumented
 names[0x34] = named(
     "enable_controls_until_return",
-    flags(prefix="ControllerDirections", table=controller_direction_table),
-)
+    flags(prefix="ControllerDirections", table=controller_direction_table))
 names[0x35] = named(
     "enable_controls",
-    flags(prefix="ControllerDirections", table=controller_direction_table),
-)
+    flags(prefix="ControllerDirections", table=controller_direction_table))
 names[0x36] = modify_party
 names[0x37] = named("set_7000_to_party_capacity")
 names[0x38] = set_7000_to_member_in_slot
 names[0x39] = named(
     "jmp_if_mario_on_object",
     byte(prefix="AreaObjects", table=area_object_table),
-    short(),
-)
+    short())
 names[0x3A] = named(
     "jmp_if_objects_less_than_xy_steps_apart",
     byte(prefix="AreaObjects", table=area_object_table),
     byte(prefix="AreaObjects", table=area_object_table),
     byte(),
     byte(),
-    short(),
-)
+    short())
 names[0x3B] = named(
     "jmp_if_objects_less_than_xy_steps_apart_same_z_coord",
     byte(prefix="AreaObjects", table=area_object_table),
     byte(prefix="AreaObjects", table=area_object_table),
     byte_int(),
     byte_int(),
-    short(),
-)
+    short())
 # 3C undocumented
 names[0x3D] = named("jmp_if_mario_in_air", short())
 names[0x3E] = named(
     "create_packet_at_npc_coords",
     byte(prefix="NPCPackets", table=npc_packet_table),
     byte(prefix="AreaObjects", table=area_object_table),
-    short_int(),
-)
+    short_int())
 names[0x3F] = named(
     "create_packet_at_7010", byte(prefix="NPCPackets", table=npc_packet_table), short()
 )
@@ -1431,15 +1421,13 @@ names[0x4A] = named("start_battle", short(), byte_int())
 names[0x4B] = named(
     "open_location",
     byte(prefix="Locations", table=location_table),
-    flags(bits=[5, 6, 7]),
-)
+    flags(bits=[5, 6, 7]))
 names[0x4C] = named("open_shop", byte(prefix="Shops", table=shop_table))
 # 0x4D undocumented
 names[0x4E] = run_event_sequence
 names[0x4F] = named(
     "open_menu_or_run_event_sequence",
-    byte(prefix="EventSequences", table=event_sequence_table),
-)
+    byte(prefix="EventSequences", table=event_sequence_table))
 names[0x50] = named("put_inventory", byte(prefix="items", table=items_table))
 names[0x51] = named(
     "remove_one_from_inventory", byte(prefix="items", table=items_table)
@@ -1449,13 +1437,11 @@ names[0x53] = named("add_frog_coins", byte_int())
 names[0x54] = named(
     "equip_item_to_character",
     byte(prefix="PlayableCharacters", table=playable_characters_table),
-    byte(prefix="items", table=items_table),
-)
+    byte(prefix="items", table=items_table))
 names[0x55] = named("store_empty_inventory_slot_count_7000")
 names[0x56] = named(
     "dec_7000_from_current_HP",
-    byte(prefix="PlayableCharacters", table=playable_characters_table),
-)
+    byte(prefix="PlayableCharacters", table=playable_characters_table))
 names[0x57] = named("dec_7000_from_current_FP")
 names[0x58] = named("store_current_FP_7000")
 # 0x59 - 0x5A undocumented
@@ -1468,8 +1454,7 @@ names[0x61] = run_dialog
 names[0x62] = run_dialog_duration
 names[0x63] = named(
     "append_to_dialog_at_7000",
-    flags(prefix="_0x63Flags", table=_0x63_flags, bits=[5, 7]),
-)
+    flags(prefix="_0x63Flags", table=_0x63_flags, bits=[5, 7]))
 names[0x64] = named("close_dialog")
 names[0x65] = named("unsync_dialog")
 names[0x66] = named("jmp_if_dialog_option_b", short())
@@ -1490,13 +1475,11 @@ names[0x77] = named("fade_out_to_black_async_duration", byte_int())
 names[0x78] = named(
     "fade_in_from_colour_duration",
     byte_int(),
-    byte(prefix="Colours", table=colours_table),
-)
+    byte(prefix="Colours", table=colours_table))
 names[0x79] = named(
     "fade_out_to_colour_duration",
     byte_int(),
-    byte(prefix="Colours", table=colours_table),
-)
+    byte(prefix="Colours", table=colours_table))
 names[0x7A] = named("star_mask_expand_from_screen_center")
 names[0x7B] = named("star_mask_shrink_to_screen_center")
 names[0x7C] = named("circle_mask_expand_from_screen_center")
@@ -1644,13 +1627,11 @@ fd_names[0x32] = named("remember_last_object")
 fd_names[0x33] = named(
     "jmp_if_objects_action_script_running",
     byte(prefix="AreaObjects", table=area_object_table),
-    short(),
-)
+    short())
 fd_names[0x34] = named(
     "jmp_if_object_underwater",
     byte(prefix="AreaObjects", table=area_object_table),
-    short(),
-)
+    short())
 # 0x35 - 0x3C undocumented
 fd_names[0x3D] = named(
     "jmp_if_object_in_air", byte(prefix="AreaObjects", table=area_object_table), short()
@@ -1659,8 +1640,7 @@ fd_names[0x3E] = named(
     "create_packet_at_7010_with_event",
     byte(prefix="NPCPackets", table=npc_packet_table),
     short(),
-    short(),
-)
+    short())
 # 0x3F undocumented
 fd_names[0x40] = named("move_script_to_main_thread")
 fd_names[0x41] = named("move_script_to_background_thread_1")
@@ -1695,8 +1675,7 @@ fd_names[0x5C] = named("restore_all_fp")
 fd_names[0x5D] = named(
     "store_character_equipment_7000",
     byte(prefix="PlayableCharacters", table=playable_characters_table),
-    byte(prefix="EquipSlots", table=equip_slots_table),
-)
+    byte(prefix="EquipSlots", table=equip_slots_table))
 fd_names[0x5E] = named("store_7000_item_quantity_to_70A7")
 # 0x5F undocumented
 fd_names[0x60] = named("pause_script_resume_on_next_dialog_page_a")
@@ -1708,8 +1687,7 @@ fd_names[0x65] = named("run_levelup_bonus_sequence")
 fd_names[0x66] = named(
     "display_intro_title",
     byte_int(),
-    byte(prefix="IntroTitles", table=intro_titles_table),
-)
+    byte(prefix="IntroTitles", table=intro_titles_table))
 fd_names[0x67] = named("run_ending_credits")
 # 0x68 - 0x87 undocumented
 fd_names[0x88] = set_bit_7_offset
@@ -1765,8 +1743,7 @@ fd_names[0xC6] = named(
 fd_names[0xC8] = named(
     "multiply_and_add_mem_3148_store_to_offset_7FB000_plus_outputx2",
     byte_int(),
-    byte_int(),
-)
+    byte_int())
 # 0xC9 - 0xEF undocumented
 fd_names[0xF0] = jmp_depending_on_object_event_trigger
 # 0xF1 - 0xF7 undocumented
@@ -1787,8 +1764,7 @@ class Command(BaseCommand):
             "-d",
             "--debug",
             action="store_true",
-            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer",
-        )
+            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer")
 
     def handle(self, *args, **options):
         debug = options["debug"]
@@ -1993,16 +1969,13 @@ class Command(BaseCommand):
             )
             writeline(
                 file,
-                "# python manage.py eventdisassembler --rom ROM > openmode_debug.txt",
-            )
+                "# python manage.py eventdisassembler --rom ROM > openmode_debug.txt")
             writeline(
                 file,
-                "from randomizer.helpers.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags",
-            )
+                "from randomizer.helpers.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags")
             writeline(
                 file,
-                "from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags",
-            )
+                "from randomizer.helpers.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags")
             writeline(file, "from randomizer.data import items")
             script = scripts_with_named_jumps[i]
             if len(script) == 0:
@@ -2035,23 +2008,19 @@ class Command(BaseCommand):
                             # writeline(file, '                "offset": 0x%x,' % ss["offset"])
                             writeline(
                                 file,
-                                '                "identifier": %r,' % ss["identifier"],
-                            )
+                                '                "identifier": %r,' % ss["identifier"])
                             if len(ss["args"]) == 0:
                                 writeline(
                                     file,
-                                    '                "command": %r' % ss["command"],
-                                )
+                                    '                "command": %r' % ss["command"])
                             else:
                                 writeline(
                                     file,
-                                    '                "command": %r,' % ss["command"],
-                                )
+                                    '                "command": %r,' % ss["command"])
                                 writeline(
                                     file,
                                     '                "args": [%s]'
-                                    % ", ".join(ss["args"]),
-                                )
+                                    % ", ".join(ss["args"]))
                             if k == len(cmd["subscript"]) - 1:
                                 writeline(file, "            }")
                             else:
@@ -2074,8 +2043,7 @@ class Command(BaseCommand):
             writeline(
                 file,
                 "from randomizer.data.eventscripts.script_%i import script as script_%i"
-                % (i, i),
-            )
+                % (i, i))
         writeline(file, "scripts = [None]*%i" % len(scripts_data))
         for i in range(len(scripts_data)):
             writeline(file, "scripts[%i] = script_%i" % (i, i))

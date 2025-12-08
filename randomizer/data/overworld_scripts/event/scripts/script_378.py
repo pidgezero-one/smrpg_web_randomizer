@@ -57,5 +57,7 @@ script = EventScript([
 	]),
 	RemoveObjectFromSpecificLevel(NPC_5, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL),
 	RemoveObjectFromSpecificLevel(NPC_4, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL),
+    RemoveObjectFromSpecificLevel(NPC_4, R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL),
+	RemoveObjectFromSpecificLevel(NPC_5, R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL),
 	Return()
 ])

@@ -16,8 +16,7 @@ script = EventScript(
                 ASPlaySound(sound=SO073_THWOMP_STOMP, channel=4),
                 ASJumpToHeight(128),
                 ASPause(32),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_0, subscript=[ASShiftZUpPixels(4)]),
         Pause(1),
         SetAsyncActionScript(NPC_1, A0739_TOWER_SEESAW_CHEST_ITEM),
@@ -31,8 +30,7 @@ script = EventScript(
         ActionQueueSync(target=MARIO, subscript=[ASJumpToHeight(384)]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTER), ASShiftZUpSteps(16)],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTER), ASShiftZUpSteps(16)]),
         Pause(32),
         FadeOutToBlack(sync=False, duration=16),
         SetBit(DIRECTIONAL_7045_0),
@@ -42,8 +40,7 @@ script = EventScript(
             x=3,
             y=53,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

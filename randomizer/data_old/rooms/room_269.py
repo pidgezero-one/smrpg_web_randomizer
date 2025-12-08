@@ -64,8 +64,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=2,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 1
             occupant=npcs.BlueNimbite,
             initiator=Initiator.NONE,
@@ -96,8 +95,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.BlueNimbite,
             event_script=3629,
@@ -111,8 +109,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.BlueNimbite,
             event_script=3629,
@@ -126,8 +123,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 4
             occupant=npcs.BlueNimbite,
             event_script=3629,
@@ -141,8 +137,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 5
             occupant=npcs.BlueNimbite,
             event_script=3629,
@@ -156,8 +151,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 6
             occupant=npcs.BlueNimbite,
             event_script=3629,
@@ -171,8 +165,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 7
             occupant=npcs.RedNimbite,
             initiator=Initiator.NONE,
@@ -203,8 +196,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 8
             occupant=npcs.RedNimbite,
             event_script=3629,
@@ -218,8 +210,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 9
             occupant=npcs.RedNimbite,
             event_script=3628,
@@ -233,8 +224,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 10
             occupant=npcs.RedNimbite,
             event_script=3629,
@@ -248,8 +238,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 11
             occupant=npcs.GreenNimbite,
             initiator=Initiator.NONE,
@@ -280,8 +269,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 12
             occupant=npcs.NimbusGuardPurple,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -312,8 +300,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 13
             occupant=npcs.KingNimbus,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -344,8 +331,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 14
             occupant=npcs.QueenNimbus,
             event_script=3723,
@@ -359,7 +345,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

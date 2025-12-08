@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularClone(
         occupant=JumpTrampoline,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularNPC(
         occupant=Amanita,
@@ -86,8 +84,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Amanita,
@@ -103,8 +100,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Amanita,
@@ -120,8 +116,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Amanita,
@@ -137,8 +132,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     BattlePackNPC(
         occupant=Amanita,
@@ -173,8 +167,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     BattlePackClone(
         occupant=Amanita,
@@ -190,8 +183,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     BattlePackClone(
         occupant=Amanita,
@@ -207,8 +199,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     BattlePackClone(
         occupant=Amanita,
@@ -224,8 +215,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     BattlePackNPC(
         occupant=RatFunk,
@@ -259,6 +249,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

@@ -50,8 +50,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=12,
             y=74,
@@ -69,8 +68,7 @@ room = Room(
             dst_z=2,
             dst_z_half=1,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -103,8 +101,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.Empty,
             event_script=607,
@@ -118,8 +115,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 2
             occupant=npcs.PinkSmallToad,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -150,8 +146,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.PinkSmallToad,
             event_script=609,
@@ -165,8 +160,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 4
             occupant=npcs.OldDarkGreenToad,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -197,8 +191,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 5
             occupant=npcs.OldBrownToad,
             event_script=621,
@@ -212,7 +205,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

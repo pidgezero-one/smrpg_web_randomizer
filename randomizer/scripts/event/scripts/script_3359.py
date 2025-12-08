@@ -12,8 +12,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASWalkToXYCoords(x=23, y=81),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -21,8 +20,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASShiftZUpSteps(4),
                 ASWalkToXYCoords(x=24, y=79),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(4)]),
         ClearBit(TEMP_7044_7),
         SetSyncActionScript(
@@ -55,16 +53,14 @@ script = EventScript(
                     ["EVENT_3359_action_queue_async_22_SUBSCRIPT_pause_1"]
                 ),
                 ASPause(8),
-            ],
-        ),
+            ]),
         JmpIfVarEqualsConst(ROSE_WAY_703C, 0, ["EVENT_3359_resume_action_script_61"]),
         JmpIfVarEqualsConst(ROSE_WAY_703A, 0, ["EVENT_3359_action_queue_async_26"]),
         Jmp(["EVENT_3359_pause_15"]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[ASWalkSouthwestSteps(3)],
-            identifier="EVENT_3359_action_queue_async_26",
-        ),
+            identifier="EVENT_3359_action_queue_async_26"),
         ClearBit(TEMP_7044_7),
         SetSyncActionScript(
             NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS
@@ -78,8 +74,7 @@ script = EventScript(
                 ASJumpToHeight(48),
                 ASWalk1StepSouthwest(),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7044_7),
         SetVarToRandom(ROSE_WAY_703A, 4),
         Inc(ROSE_WAY_703A),
@@ -94,8 +89,7 @@ script = EventScript(
                 ASPause(10),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
             ],
-            identifier="EVENT_3359_action_queue_sync_33",
-        ),
+            identifier="EVENT_3359_action_queue_sync_33"),
         Pause(8),
         RunBackgroundEvent(
             event_id=E3360_KEEP_COIN_GAME_CHEST, return_on_level_exit=True
@@ -112,8 +106,7 @@ script = EventScript(
                 ASJumpToHeight(48),
                 ASWalk1StepNortheast(),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_3359_set_short_13"]),
         ResumeActionScript(NPC_2, identifier="EVENT_3359_resume_action_script_42"),
         Pause(16),
@@ -137,8 +130,7 @@ script = EventScript(
                 ASPause(2),
                 ASEndLoop(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -147,14 +139,12 @@ script = EventScript(
                 ASWalkToXYCoords(x=29, y=70),
                 ASShiftZDownSteps(2),
                 ASShiftZDownPixels(8),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO016_OPEN_DOOR, channel=4),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R467_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2A_COIN_COLLECTING,
-            mod_id=0,
-        ),
+            mod_id=0),
         ActionQueueAsync(
             target=MARIO, subscript=[ASJumpToHeight(32), ASWalk1StepNortheast()]
         ),
@@ -174,8 +164,7 @@ script = EventScript(
                     index=12, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASPause(2),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7044_7),
         SetSyncActionScript(
             NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS
@@ -186,8 +175,7 @@ script = EventScript(
             closable=True,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetBit(TEMP_7044_7),
         Pause(240),
         FadeOutToBlack(sync=False),

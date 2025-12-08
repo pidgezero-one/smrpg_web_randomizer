@@ -40,15 +40,13 @@ script = EventScript(
             sync=True,
             multiline=False,
             use_background=False,
-            bit_6=True,
-        ),
+            bit_6=True),
         AddToInventory(ITEM_ID),
         Jmp(["EVENT_3153_ret_33"]),
         StopSound(),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASSetWalkingSpeed(NORMAL)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASSetWalkingSpeed(NORMAL)]),
         Inc(HIDDEN_CHEST_COUNTER),
         SetVarToConst(TIMER_701C, 40),
         RunBackgroundEventWithPauseReturnOnExit(
@@ -127,8 +125,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=ITEM_ID,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3153_set_7000_to_70A0_short_mem_95",
-        ),
+            identifier="EVENT_3153_set_7000_to_70A0_short_mem_95"),
         Mem7000AndConst(0x000F),
         SetEXPPacketTo7000(),
         MarioGlows(),
@@ -138,8 +135,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P022_RECURSIVE_SPARKLES,
             target_npc=MARIO,
-            destinations=["EVENT_3153_jmp_103"],
-        ),
+            destinations=["EVENT_3153_jmp_103"]),
         Jmp(["EVENT_3153_ret_112"], identifier="EVENT_3153_jmp_103"),
         PlaySound(
             sound=SO014_FLOWER, channel=6, identifier="EVENT_3153_play_sound_104"
@@ -190,26 +186,22 @@ script = EventScript(
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=COIN_COUNTER_2,
-            identifier="EVENT_3153_set_70A0_short_mem_to_7000_134",
-        ),
+            identifier="EVENT_3153_set_70A0_short_mem_to_7000_134"),
         Jmp(["EVENT_3153_jmp_if_var_equals_const_139"]),
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=COIN_COUNTER_3,
-            identifier="EVENT_3153_set_70A0_short_mem_to_7000_136",
-        ),
+            identifier="EVENT_3153_set_70A0_short_mem_to_7000_136"),
         Jmp(["EVENT_3153_jmp_if_var_equals_const_139"]),
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=COIN_COUNTER_4,
-            identifier="EVENT_3153_set_70A0_short_mem_to_7000_138",
-        ),
+            identifier="EVENT_3153_set_70A0_short_mem_to_7000_138"),
         JmpIfVarEqualsConst(
             CHEST_COIN_SIZE,
             1,
             ["EVENT_3153_jmp_if_var_not_equals_const_144"],
-            identifier="EVENT_3153_jmp_if_var_equals_const_139",
-        ),
+            identifier="EVENT_3153_jmp_if_var_equals_const_139"),
         JmpIfVarEqualsConst(
             CHEST_COIN_SIZE, 2, ["EVENT_3153_jmp_if_var_not_equals_const_146"]
         ),
@@ -224,33 +216,28 @@ script = EventScript(
             COIN_COUNTER_2,
             1,
             ["EVENT_3153_set_temp_action_script_sync_151"],
-            identifier="EVENT_3153_jmp_if_var_not_equals_const_144",
-        ),
+            identifier="EVENT_3153_jmp_if_var_not_equals_const_144"),
         Jmp(["EVENT_3153_set_action_script_sync_149"]),
         JmpIfVarNotEqualsConst(
             COIN_COUNTER_3,
             1,
             ["EVENT_3153_set_temp_action_script_sync_151"],
-            identifier="EVENT_3153_jmp_if_var_not_equals_const_146",
-        ),
+            identifier="EVENT_3153_jmp_if_var_not_equals_const_146"),
         Jmp(["EVENT_3153_set_action_script_sync_149"]),
         JmpIfVarNotEqualsConst(
             COIN_COUNTER_4,
             1,
             ["EVENT_3153_set_temp_action_script_sync_151"],
-            identifier="EVENT_3153_jmp_if_var_not_equals_const_148",
-        ),
+            identifier="EVENT_3153_jmp_if_var_not_equals_const_148"),
         SetSyncActionScript(
             MEM_70AA,
             A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED,
-            identifier="EVENT_3153_set_action_script_sync_149",
-        ),
+            identifier="EVENT_3153_set_action_script_sync_149"),
         Jmp(["EVENT_3153_set_7010_to_object_xyz_152"]),
         SetTempSyncActionScript(
             MEM_70AA,
             A0008_HIT_TREASURE_CHEST_CONTENTS_REMAINING,
-            identifier="EVENT_3153_set_temp_action_script_sync_151",
-        ),
+            identifier="EVENT_3153_set_temp_action_script_sync_151"),
         Set70107015ToObjectXYZ(
             MEM_70AA, identifier="EVENT_3153_set_7010_to_object_xyz_152"
         ),
@@ -366,8 +353,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetSyncActionScript(SCREEN_FOCUS, A0391_CAMERA_SHAKE),
         ActionQueueAsync(
             target=MARIO,
@@ -377,8 +363,7 @@ script = EventScript(
                     index=1, sprite_offset=3, is_sequence=True, looping=True
                 ),
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
-            ],
-        ),
+            ]),
         Pause(40),
         SetAsyncActionScript(MARIO, A0384_PLAYER_LOOK_DOWN_SHAKE_HEAD),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
@@ -392,8 +377,7 @@ script = EventScript(
             sync=True,
             multiline=False,
             use_background=False,
-            bit_6=True,
-        ),
+            bit_6=True),
         DisableObjectTrigger(MEM_70A8),
         PlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
         DisableTriggerOfObjectAt70A8InCurrentLevel(),

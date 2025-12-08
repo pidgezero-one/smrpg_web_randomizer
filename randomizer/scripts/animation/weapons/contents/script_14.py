@@ -11,8 +11,7 @@ script = AnimationScript(
         DrawSpriteAtAMEM32Coords(
             sprite_id=SPR0005_MARIO_HAMMER_ATTACK_UP_RIGHT,
             sequence=2,
-            store_to_vram=True,
-        ),
+            store_to_vram=True),
         ReturnSubroutine(),
         ObjectQueueAtOffsetAndIndex(
             index=2, target_address=0x35F1BE, identifier="command_0x35ee91"
@@ -21,8 +20,7 @@ script = AnimationScript(
         DrawSpriteAtAMEM32Coords(
             sprite_id=SPR0005_MARIO_HAMMER_ATTACK_UP_RIGHT,
             sequence=3,
-            store_to_vram=True,
-        ),
+            store_to_vram=True),
         PauseScriptUntilSpriteSequenceDone(),
         ReturnSubroutine(),
     ]

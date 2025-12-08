@@ -21,8 +21,7 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_1671_ret_5"),
     ]
 )

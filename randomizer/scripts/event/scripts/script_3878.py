@@ -14,8 +14,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(["EVENT_3878_action_queue_async_56_"]),
         RunEventAsSubroutine(E0065_TRAMPOLINE_SUBROUTINE),
         SetBit(CASINO_WARP_DIRECTIONAL_BIT),
@@ -23,8 +22,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_1,
             subscript=[ASFaceSouthwest()],
-            identifier="EVENT_3878_action_queue_async_56_",
-        ),
+            identifier="EVENT_3878_action_queue_async_56_"),
         Return(),
     ]
 )

@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=Empty,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=Empty,
@@ -67,8 +65,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Empty,
@@ -83,8 +80,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Empty,
@@ -99,8 +95,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Empty,
@@ -115,8 +110,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     BattlePackNPC(
         occupant=Sackit,
@@ -150,8 +144,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     BattlePackClone(
         occupant=Sackit,
@@ -166,8 +159,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     BattlePackClone(
         occupant=Sackit,
@@ -182,8 +174,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     BattlePackClone(
         occupant=Sackit,
@@ -198,8 +189,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     BattlePackNPC(
         occupant=Gecko,
@@ -233,8 +223,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     BattlePackClone(
         occupant=Gecko,
@@ -249,8 +238,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     BattlePackNPC(
         occupant=Mukumuku,
@@ -285,8 +273,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_13
     BattlePackClone(
         occupant=Mukumuku,
@@ -302,8 +289,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_14
     BattlePackClone(
         occupant=Mukumuku,
@@ -319,8 +305,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_15
     BattlePackClone(
         occupant=Mukumuku,
@@ -336,8 +321,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_16
     RegularNPC(
         occupant=Empty,
@@ -370,8 +354,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_17
     RegularClone(
         occupant=Empty,
@@ -386,8 +369,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_18
     RegularClone(
         occupant=Empty,
@@ -402,8 +384,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_19
     RegularClone(
         occupant=Empty,
@@ -418,8 +399,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_20
     RegularClone(
         occupant=Empty,
@@ -434,8 +414,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_21
     RegularNPC(
         occupant=Mallow,
@@ -470,6 +449,5 @@ objects = [
         priority_2=True,
         acute_axis=6,
         obtuse_axis=5,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

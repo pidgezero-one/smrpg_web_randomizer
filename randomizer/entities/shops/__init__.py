@@ -27,8 +27,7 @@ from .shops import (
     CrocoShop2,
     ToadShop,
     RoomServiceShop,
-    MolevilleSwapShop,
-)
+    MolevilleSwapShop)
 
 shop_table = [
     MushroomKingdomShop,

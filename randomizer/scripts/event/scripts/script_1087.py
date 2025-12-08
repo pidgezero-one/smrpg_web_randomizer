@@ -17,8 +17,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x02\x00\xff")),
                 ASPause(16),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 0, ["EVENT_1087_pause_action_script_187_"]
         ),
@@ -48,11 +47,9 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
+                    mirror_sprite=True)
             ],
-            identifier="EVENT_1087_pause_action_script_187",
-        ),
+            identifier="EVENT_1087_pause_action_script_187"),
         Jmp(["EVENT_1087_action_queue_swim__"]),
         ActionQueueAsync(
             target=MARIO,
@@ -62,11 +59,9 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
+                    mirror_sprite=True)
             ],
-            identifier="EVENT_1087_pause_action_script_187_",
-        ),
+            identifier="EVENT_1087_pause_action_script_187_"),
         Jmp(["EVENT_1087_action_queue_swim__"]),
         ActionQueueAsync(
             target=MARIO,
@@ -75,8 +70,7 @@ script = EventScript(
                     index=14, sprite_offset=1, is_sequence=True, looping=True
                 )
             ],
-            identifier="EVENT_1087_pause_action_script_187__",
-        ),
+            identifier="EVENT_1087_pause_action_script_187__"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -84,8 +78,7 @@ script = EventScript(
                 ASPause(10),
                 ASWalkToXYCoords(x=15, y=32),
             ],
-            identifier="EVENT_1087_action_queue_swim__",
-        ),
+            identifier="EVENT_1087_action_queue_swim__"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -96,8 +89,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x02\x00\xff")),
                 ASPause(16),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

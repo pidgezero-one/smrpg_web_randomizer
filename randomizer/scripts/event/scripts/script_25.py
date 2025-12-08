@@ -12,8 +12,7 @@ script = EventScript(
         SetTempSyncActionScript(
             MEM_70A8,
             A0284_IFRAME_BLINK,
-            identifier="EVENT_25_set_temp_action_script_sync_3",
-        ),
+            identifier="EVENT_25_set_temp_action_script_sync_3"),
         JmpIfBitSet(TEMP_707C_5, ["EVENT_24_clear_bit_14"]),
         FadeInFromBlack(sync=False),
         Jmp(["EVENT_24_reactivate_trigger_if_mario_on_top_of_object_15"]),

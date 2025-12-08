@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x353f3b",
-        ),
+            identifier="queuestart_0x353f3b"),
         Pause2Frames(),
         NewEffectObject(effect=EF0039_BLACK_BALL_ORB, playback_off=True),
         FadeInEffect(duration=1),
@@ -31,8 +30,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_SHIFT, speed=512, arch_height=0),
         PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
         PlaySound(sound=S0122_POISONED),
@@ -40,5 +38,4 @@ script = SubroutineOrBanklessScript(
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),
-    ],
-)
+    ])

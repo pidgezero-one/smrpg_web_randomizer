@@ -8,8 +8,7 @@ script = EventScript(
     [
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASClearSolidityBits(cant_pass_walls=True), ASAddZCoord1Step()],
-        ),
+            subscript=[ASClearSolidityBits(cant_pass_walls=True), ASAddZCoord1Step()]),
         FadeInFromBlack(sync=False),
         RememberLastObject(),
         ActionQueueAsync(

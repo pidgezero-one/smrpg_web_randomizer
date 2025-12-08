@@ -15,14 +15,12 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7044_7,
             ["EVENT_1153_run_event_as_subroutine_7"],
-            identifier="EVENT_1153_jmp_if_bit_set_4",
-        ),
+            identifier="EVENT_1153_jmp_if_bit_set_4"),
         FadeInFromBlack(sync=False),
         Return(),
         RunEventAsSubroutine(
             E0081_MARIO_LANDS_SUBROUTINE,
-            identifier="EVENT_1153_run_event_as_subroutine_7",
-        ),
+            identifier="EVENT_1153_run_event_as_subroutine_7"),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
         JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1153_ret_8"]),
         RunEventAsSubroutine(E3904_SEASIDE_TOWN_STAR_PIECE_SIGNAL),

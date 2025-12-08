@@ -1,12 +1,12 @@
 # pylint: disable=C0301
 
-"""E0293_WALLET_TOAD_1"""
+"""E0293_UNUSED"""
 
 from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        JmpIfBitSet(WALLET_SOLD, ["EVENT_395_run_dialog_37"]),
+        JmpIfBitSet(SECOND_WALLET_PRIZE_RECEIVED, ["EVENT_395_run_dialog_37"]),
         JmpIfBitSet(WALLET_RETURNED, ["EVENT_293_run_dialog_45"]),
         JmpIfBitSet(MARRYMORE_LIBERATED, ["EVENT_293_jmp_if_bit_clear_30"]),
         JmpIfBitSet(MUSHROOM_KINGDOM_OCCUPIED, ["EVENT_395_jmp_if_bit_set_0"]),
@@ -18,8 +18,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         PauseActionScript(MEM_70A8),
         Pause(1, identifier="EVENT_293_pause_24"),
         JmpIfObjectInAir(MEM_70A8, ["EVENT_293_pause_24"]),
@@ -29,8 +28,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         StartAsyncEmbeddedActionScript(
             target=MEM_70A8,
             prefix=0xF1,
@@ -38,15 +36,13 @@ script = EventScript(
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFloatingOn(),
                 ASSetSolidityBits(cant_walk_through=True),
-            ],
-        ),
+            ]),
         SetSyncActionScript(MEM_70A8, A0021_STAND_STILL_AND_MOVE_RANDOM_DIRECTIONS),
         Return(),
         JmpIfBitClear(
-            REFUSED_TO_RETURN_WALLET,
+            RETURNED_WALLET,
             ["EVENT_395_jmp_if_bit_set_0"],
-            identifier="EVENT_293_jmp_if_bit_clear_30",
-        ),
+            identifier="EVENT_293_jmp_if_bit_clear_30"),
         SetBit(WALLET_RETURNED),
         RunEventAsSubroutine(E0180_NPC_QUEST_3_CONTAINER),
         Return(),
@@ -57,8 +53,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_293_run_dialog_45",
-        ),
+            identifier="EVENT_293_run_dialog_45"),
         Return(),
     ]
 )

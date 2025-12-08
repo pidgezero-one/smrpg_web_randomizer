@@ -13,8 +13,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.helpers.roomobjecttables import (
     object_type,
     event_initiator,
@@ -27,8 +26,7 @@ from randomizer.helpers.roomobjecttables import (
     room_table,
     partition_space_table,
     partition_buffer_table,
-    ExitType,
-)
+    ExitType)
 from randomizer.logic.utils import isclass_or_instance
 
 from randomizer.management.disassembler_common import (
@@ -49,13 +47,11 @@ from randomizer.management.disassembler_common import (
     con_int,
     flags_short,
     writeline,
-    bit_bool_from_num,
-)
+    bit_bool_from_num)
 from randomizer.helpers.npcmodeltables import (
     sprite_name_table,
     vram_store_table,
-    shadow_size_table,
-)
+    shadow_size_table)
 
 
 start = 0x148400
@@ -467,8 +463,7 @@ class Command(BaseCommand):
             "-d",
             "--debug",
             action="store_true",
-            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer",
-        )
+            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer")
 
     def handle(self, *args, **options):
         debug = options["debug"]
@@ -546,8 +541,7 @@ class Command(BaseCommand):
                     byte2_bit4,
                     byte5_bit6,
                     byte5_bit7,
-                    byte6_bit2,
-                )
+                    byte6_bit2)
             )
 
         for i in range(partitionstart, partitionend, 4):
@@ -574,21 +568,17 @@ class Command(BaseCommand):
                         Buffer(
                             clone_buffer_a_type,
                             clone_buffer_a_space,
-                            clone_buffer_a_index_in_main,
-                        ),
+                            clone_buffer_a_index_in_main),
                         Buffer(
                             clone_buffer_b_type,
                             clone_buffer_b_space,
-                            clone_buffer_b_index_in_main,
-                        ),
+                            clone_buffer_b_index_in_main),
                         Buffer(
                             clone_buffer_c_type,
                             clone_buffer_c_space,
-                            clone_buffer_c_index_in_main,
-                        ),
+                            clone_buffer_c_index_in_main),
                     ],
-                    full_palette_buffer,
-                )
+                    full_palette_buffer)
             )
 
         for i in range(ptrstart, ptrend, 2):
@@ -660,17 +650,14 @@ class Command(BaseCommand):
             writeline(file, "# python manage.py objectdisassembler --rom ROM")
             writeline(
                 file,
-                "from randomizer.helpers.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace",
-            )
+                "from randomizer.helpers.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace")
             writeline(
                 file,
-                "from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room",
-            )
+                "from randomizer.data.rooms.room import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room")
             writeline(file, "from randomizer.data import npcs")
             writeline(
                 file,
-                "from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize",
-            )
+                "from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize")
 
             if len(d) == 0 and len(r) == 0 and len(e) == 0:
                 writeline(file, "room = None")
@@ -688,18 +675,15 @@ class Command(BaseCommand):
             writeline(
                 file,
                 "        ally_sprite_buffer_size=%i,"
-                % partition.ally_sprite_buffer_size,
-            )
+                % partition.ally_sprite_buffer_size)
             writeline(
                 file,
                 "        allow_extra_sprite_buffer=%r,"
-                % partition.allow_extra_sprite_buffer,
-            )
+                % partition.allow_extra_sprite_buffer)
             writeline(
                 file,
                 "        extra_sprite_buffer_size=%i,"
-                % partition.extra_sprite_buffer_size,
-            )
+                % partition.extra_sprite_buffer_size)
             writeline(file, "        buffers = [")
             writeline(file, "            Buffer(")
             buffer_type, _ = byte(
@@ -713,8 +697,7 @@ class Command(BaseCommand):
             writeline(
                 file,
                 "                index_in_main_buffer=%r"
-                % partition.buffers[0].index_in_main_buffer,
-            )
+                % partition.buffers[0].index_in_main_buffer)
             writeline(file, "            ),")
             writeline(file, "            Buffer(")
             buffer_type, _ = byte(
@@ -728,8 +711,7 @@ class Command(BaseCommand):
             writeline(
                 file,
                 "                index_in_main_buffer=%r"
-                % partition.buffers[1].index_in_main_buffer,
-            )
+                % partition.buffers[1].index_in_main_buffer)
             writeline(file, "            ),")
             writeline(file, "            Buffer(")
             buffer_type, _ = byte(
@@ -743,8 +725,7 @@ class Command(BaseCommand):
             writeline(
                 file,
                 "                index_in_main_buffer=%r"
-                % partition.buffers[2].index_in_main_buffer,
-            )
+                % partition.buffers[2].index_in_main_buffer)
             writeline(file, "            )")
             writeline(file, "        ],")
             writeline(
@@ -787,8 +768,7 @@ class Command(BaseCommand):
                             height=(trigger_data[4] & 0xF0) >> 5,
                             nw_se_edge_active=trigger_data[2] & 0x80 == 0x80,
                             ne_sw_edge_active=trigger_data[3] & 0x80 == 0x80,
-                            byte_8_bit_4=byte_8_bit_4 == 1,
-                        )
+                            byte_8_bit_4=byte_8_bit_4 == 1)
                     )
                 if len(event_triggers) > 0:
                     writeline(file, "    event_tiles=[")
@@ -807,13 +787,11 @@ class Command(BaseCommand):
                         writeline(
                             file,
                             "            nw_se_edge_active=%r,"
-                            % event.nw_se_edge_active,
-                        )
+                            % event.nw_se_edge_active)
                         writeline(
                             file,
                             "            ne_sw_edge_active=%r,"
-                            % event.ne_sw_edge_active,
-                        )
+                            % event.ne_sw_edge_active)
                         writeline(
                             file, "            byte_8_bit_4=%r," % event.byte_8_bit_4
                         )
@@ -866,8 +844,7 @@ class Command(BaseCommand):
                                 dst_z=field_data[7] & 0x1F,
                                 dst_z_half=(field_data[6] & 0x80) == 0x80,
                                 dst_f=dst_f_val,
-                                x_bit_7=(field_data[5] & 0x80) == 0x80,
-                            )
+                                x_bit_7=(field_data[5] & 0x80) == 0x80)
                         )
                     else:  # world map location
                         dst &= 0xFF
@@ -885,8 +862,7 @@ class Command(BaseCommand):
                                 destination=dst,
                                 show_message=(field_data[1] & 0x08) == 0x08,
                                 byte_2_bit_1=byte_2_bit_1 == 1,
-                                byte_2_bit_0=byte_2_bit_0 == 1,
-                            )
+                                byte_2_bit_0=byte_2_bit_0 == 1)
                         )
                     j += offset
 
@@ -906,12 +882,10 @@ class Command(BaseCommand):
                         writeline(file, "            height=%i," % ex.height)
                         writeline(
                             file,
-                            "            nw_se_edge_active=%r," % ex.nw_se_edge_active,
-                        )
+                            "            nw_se_edge_active=%r," % ex.nw_se_edge_active)
                         writeline(
                             file,
-                            "            ne_sw_edge_active=%r," % ex.ne_sw_edge_active,
-                        )
+                            "            ne_sw_edge_active=%r," % ex.ne_sw_edge_active)
                         writeline(
                             file, "            byte_2_bit_2=%r," % ex.byte_2_bit_2
                         )
@@ -940,8 +914,7 @@ class Command(BaseCommand):
                             writeline(
                                 file,
                                 "            dst_z_half=%i,"
-                                % ex.destination_props.z_half,
-                            )
+                                % ex.destination_props.z_half)
                             dst_f, _ = byte(
                                 prefix="RadialDirection", table=radial_direction_table
                             )([ex.destination_props.f])
@@ -949,8 +922,7 @@ class Command(BaseCommand):
                             writeline(
                                 file,
                                 "            x_bit_7=%r,"
-                                % ex.destination_props.x_bit_7,
-                            )
+                                % ex.destination_props.x_bit_7)
                         else:
                             writeline(
                                 file, "            byte_2_bit_1=%r," % ex.byte_2_bit_1
@@ -1029,8 +1001,7 @@ class Command(BaseCommand):
                     if npc_class is None:
                         raise Exception(
                             "could not find a NPC matching sprite with ID %i in room %i"
-                            % (sprite_match, i),
-                        )
+                            % (sprite_match, i))
 
                     ending_args = [
                         speed,
@@ -1171,13 +1142,11 @@ class Command(BaseCommand):
                                     for x in ELIGIBLE_NPCS
                                     if x.sprite_id == sprite_match
                                 ),
-                                None,
-                            )
+                                None)
                             if npc_class is None:
                                 raise Exception(
                                     "could not find a NPC matching sprite with ID %i in room %i",
-                                    (sprite_match, i),
-                                )
+                                    (sprite_match, i))
 
                             # print(npc_from_table.cannot_clone)
 
@@ -1268,8 +1237,7 @@ class Command(BaseCommand):
                         raise Exception("unknown class")
                     writeline(
                         file,
-                        "            occupant=npcs.%s," % obj.model.occupant.__name__,
-                    )
+                        "            occupant=npcs.%s," % obj.model.occupant.__name__)
                     if (
                         isclass_or_instance(obj, BattlePackNPC)
                         or isclass_or_instance(obj, RegularNPC)
@@ -1334,55 +1302,45 @@ class Command(BaseCommand):
                     ):
                         writeline(
                             file,
-                            "            face_on_trigger=%r," % obj.face_on_trigger,
-                        )
+                            "            face_on_trigger=%r," % obj.face_on_trigger)
                         writeline(
                             file,
-                            "            cant_enter_doors=%r," % obj.cant_enter_doors,
-                        )
+                            "            cant_enter_doors=%r," % obj.cant_enter_doors)
                         writeline(file, "            byte2_bit5=%r," % obj.byte2_bit5)
                         writeline(
                             file,
                             "            set_sequence_playback=%r,"
-                            % obj.set_sequence_playback,
-                        )
+                            % obj.set_sequence_playback)
                         writeline(file, "            cant_float=%r," % obj.cant_float)
                         writeline(
                             file,
                             "            cant_walk_up_stairs=%r,"
-                            % obj.cant_walk_up_stairs,
-                        )
+                            % obj.cant_walk_up_stairs)
                         writeline(
                             file,
-                            "            cant_walk_under=%r," % obj.cant_walk_under,
-                        )
+                            "            cant_walk_under=%r," % obj.cant_walk_under)
                         writeline(
                             file,
-                            "            cant_pass_walls=%r," % obj.cant_pass_walls,
-                        )
+                            "            cant_pass_walls=%r," % obj.cant_pass_walls)
                         writeline(
                             file,
-                            "            cant_jump_through=%r," % obj.cant_jump_through,
-                        )
+                            "            cant_jump_through=%r," % obj.cant_jump_through)
                         writeline(
                             file, "            cant_pass_npcs=%r," % obj.cant_pass_npcs
                         )
                         writeline(file, "            byte3_bit5=%r," % obj.byte3_bit5)
                         writeline(
                             file,
-                            "            cant_walk_through=%r," % obj.cant_walk_through,
-                        )
+                            "            cant_walk_through=%r," % obj.cant_walk_through)
                         writeline(file, "            byte3_bit7=%r," % obj.byte3_bit7)
                         writeline(
                             file,
                             "            slidable_along_walls=%r,"
-                            % obj.slidable_along_walls,
-                        )
+                            % obj.slidable_along_walls)
                         writeline(
                             file,
                             "            cant_move_if_in_air=%r,"
-                            % obj.cant_move_if_in_air,
-                        )
+                            % obj.cant_move_if_in_air)
                         writeline(
                             file, "            byte7_upper2=%r," % obj.byte7_upper2
                         )
@@ -1460,8 +1418,7 @@ class Command(BaseCommand):
         for i in range(512):
             writeline(
                 file,
-                "from randomizer.data.rooms.room_%i import room as room_%i" % (i, i),
-            )
+                "from randomizer.data.rooms.room_%i import room as room_%i" % (i, i))
         writeline(file, "rooms = [None]*512")
         for i in range(512):
             writeline(file, "rooms[%i] = room_%i" % (i, i))

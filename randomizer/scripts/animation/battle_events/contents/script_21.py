@@ -18,20 +18,17 @@ script = BattleAnimationScript(
             field_object=2,
             destinations=["queuestart_0x3ac1f1"],
             character_slot=True,
-            bit_4=True,
-        ),
+            bit_4=True),
         SpriteQueue(
             field_object=1,
             destinations=["queuestart_0x3ac234"],
             character_slot=True,
-            bit_4=True,
-        ),
+            bit_4=True),
         SpriteQueue(
             field_object=0,
             destinations=["queuestart_0x3ac2c0"],
             character_slot=True,
-            bit_4=True,
-        ),
+            bit_4=True),
         RunSubroutine(["command_0x3a771e"]),
         Jmp(["command_0x3a7550"]),
     ]

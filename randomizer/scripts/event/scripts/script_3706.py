@@ -15,8 +15,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_5,
             R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
-            ["EVENT_3584_ret_0"],
-        ),
+            ["EVENT_3584_ret_0"]),
         StartBattleAtBattlefield(99, BF22_NIMBUS_CASTLE),
         JmpIfBitSet(GAME_OVER, ["EVENT_3705_jmp_to_event_18"]),
         JmpIfBitSet(RUN_AWAY, ["EVENT_3706_set_temp_action_script_sync_27"]),
@@ -38,8 +37,7 @@ script = EventScript(
             NPC_4,
             R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
             ["EVENT_3584_ret_0"],
-            identifier="EVENT_3706_jmp_if_object_not_in_level_15",
-        ),
+            identifier="EVENT_3706_jmp_if_object_not_in_level_15"),
         StartBattleAtBattlefield(99, BF22_NIMBUS_CASTLE),
         JmpIfBitSet(GAME_OVER, ["EVENT_3705_jmp_to_event_18"]),
         JmpIfBitSet(RUN_AWAY, ["EVENT_3706_set_temp_action_script_sync_27"]),
@@ -48,23 +46,19 @@ script = EventScript(
         RemoveObjectFromCurrentLevel(NPC_6),
         RemoveObjectFromSpecificLevel(
             NPC_4,
-            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
-        ),
+            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM),
         RemoveObjectFromSpecificLevel(
             NPC_5,
-            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
-        ),
+            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM),
         RemoveObjectFromSpecificLevel(
             NPC_6,
-            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
-        ),
+            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM),
         FadeInFromBlack(sync=False),
         Return(),
         SetSyncActionScript(
             MEM_70A8,
             A0889_JAWFUL_EXTENDED_HITBOXES,
-            identifier="EVENT_3706_set_temp_action_script_sync_27",
-        ),
+            identifier="EVENT_3706_set_temp_action_script_sync_27"),
         Set7000ToCurrentLevel(),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 410, ["EVENT_3706_set_temp_action_script_sync_33"]
@@ -75,8 +69,7 @@ script = EventScript(
         SetSyncActionScript(
             NPC_5,
             A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES,
-            identifier="EVENT_3706_set_temp_action_script_sync_33",
-        ),
+            identifier="EVENT_3706_set_temp_action_script_sync_33"),
         FadeInFromBlack(sync=False),
         Return(),
     ]

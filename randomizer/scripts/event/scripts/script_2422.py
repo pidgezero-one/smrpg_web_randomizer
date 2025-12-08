@@ -8,8 +8,7 @@ script = EventScript(
     [
         ActionQueueSync(
             target=MEM_70A8,
-            subscript=[ASSetSpriteSequence(index=0, looping=False, mirror_sprite=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=0, looping=False, mirror_sprite=True)]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -19,8 +18,7 @@ script = EventScript(
                 ASShadowOff(),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASWalkSouthPixels(8),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0408_JUMP_ON_SAVE_BLOCK),
         PlaySound(sound=SO010_TRAMPOLINE, channel=6),
         SetBit(TEMP_7043_0),
@@ -43,8 +41,7 @@ script = EventScript(
                 ASPause(32),
                 ASBPL262728(),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),
     ]

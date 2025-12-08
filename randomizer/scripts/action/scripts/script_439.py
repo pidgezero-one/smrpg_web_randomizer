@@ -45,8 +45,7 @@ script = ActionScript(
         CreatePacketAt7010WithEvent(
             packet=P028_MUSHROOM_THROWN_SOUTHWEST,
             event_id=E3077_SHIP_PUZZLE_MUSHROOM,
-            destinations=["ACTION_439_reset_properties_37"],
-        ),
+            destinations=["ACTION_439_reset_properties_37"]),
         ResetProperties(identifier="ACTION_439_reset_properties_37"),
         SetSequenceSpeed(NORMAL),
         Pause(128),
@@ -62,8 +61,7 @@ script = ActionScript(
         CreatePacketAt7010WithEvent(
             packet=P028_MUSHROOM_THROWN_SOUTHWEST,
             event_id=E3077_SHIP_PUZZLE_MUSHROOM,
-            destinations=["ACTION_439_reset_properties_50"],
-        ),
+            destinations=["ACTION_439_reset_properties_50"]),
         ResetProperties(identifier="ACTION_439_reset_properties_50"),
         SetSequenceSpeed(NORMAL),
         Pause(128),

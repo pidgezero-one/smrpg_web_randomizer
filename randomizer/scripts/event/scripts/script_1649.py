@@ -12,8 +12,7 @@ script = EventScript(
         JmpIfBitClear(
             FIRST_CARBO_COOKIE_GIVEN,
             ["EVENT_1649_set_0"],
-            identifier="EVENT_1649_remove_bucket_girl",
-        ),
+            identifier="EVENT_1649_remove_bucket_girl"),
         RemoveObjectFromCurrentLevel(NPC_7),
         RemoveObjectFromSpecificLevel(NPC_7, R108_MOLEVILLE_OUTSIDE),
         SetVarToConst(
@@ -28,8 +27,7 @@ script = EventScript(
         JmpIfBitSet(
             MINECART_CRASH_CUTSCENE_CLEARED,
             ["EVENT_1649_clear_bit_11"],
-            identifier="EVENT_1649_jmp_if_bit_set_5",
-        ),
+            identifier="EVENT_1649_jmp_if_bit_set_5"),
         JmpIfBitClear(
             BUCKET_WARP_DIRECTIONAL_BIT, ["EVENT_1649_fade_in_from_black_async_7"]
         ),
@@ -64,8 +62,7 @@ script = EventScript(
             subscript=[
                 ASFloatingOff(),
                 ASTransferXYZFSteps(x=0, y=0, z=20, direction=EAST),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
@@ -75,8 +72,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=7, is_sequence=True, looping=True),
                 ASSetPriority(3),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[2, 3]),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True),
         PlaySoundBalance(sound=SO019_LONG_FALL, balance=255),
         ActionQueueSync(
@@ -86,8 +82,7 @@ script = EventScript(
                 ASWalkWestSteps(7),
                 ASWalkSouthwestSteps(8),
                 ASShiftSouthSteps(5),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -105,14 +100,12 @@ script = EventScript(
                 ASWalk1StepSouthwest(),
                 ASWalk1StepSouthwest(),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         FadeOutMusicToVolume(duration=1, volume=0),
         FadeOutToBlack(sync=True, duration=15),
         ActionQueueAsync(
             target=MARIO,
-            subscript=[ASWalk1StepSouthwest(), ASFloatingOff(), ASBPL262728()],
-        ),
+            subscript=[ASWalk1StepSouthwest(), ASFloatingOff(), ASBPL262728()]),
         RunEventAtReturn(E1650_MOLEVILLE_LIBERATED_EXTERIOR_LOADER_CONTD),
         Return(),
         FadeOutMusicToVolume(
@@ -124,8 +117,7 @@ script = EventScript(
             subscript=[
                 ASFloatingOff(),
                 ASTransferXYZFSteps(x=0, y=0, z=18, direction=EAST),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
@@ -136,8 +128,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=7, is_sequence=True, looping=True),
                 ASSetPriority(3),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[2, 3]),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True),
         ActionQueueSync(
             target=SCREEN_FOCUS,
@@ -145,8 +136,7 @@ script = EventScript(
                 ASPause(16),
                 ASSetWalkingSpeed(FASTER),
                 ASWalkSouthwestSteps(4),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -158,8 +148,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(2),
                 ASFloatingOn(),
                 ASWalkSouthwestSteps(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8, subscript=[ASSetSolidityBits(cant_pass_walls=True)]
         ),
@@ -174,8 +163,7 @@ script = EventScript(
                 ASWalkSouthPixels(8),
                 ASEndLoop(),
                 ASWalkNorthPixels(4),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -191,8 +179,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=7, is_sequence=True, looping=False),
                 ASSetSolidityBits(cant_walk_through=True),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -213,8 +200,7 @@ script = EventScript(
                 ASPause(30),
                 ASResetProperties(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_7034, 6),
         SetVarToConst(X_COORD_1, 13312),
         SetVarToConst(Y_COORD_1, 5632),
@@ -241,8 +227,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CopyVarToVar(from_var=TEMP_702E, to_var=PRIMARY_TEMP_7000),
         RunDialogForDuration(
             dialog_id=DI1101_MINECART_HIGH_SCORE, duration=0, sync=False
@@ -258,8 +243,7 @@ script = EventScript(
             dialog_id=DI1103_MINECART_SET_PB,
             duration=1,
             sync=False,
-            identifier="EVENT_1649_run_dialog_duration_72",
-        ),
+            identifier="EVENT_1649_run_dialog_duration_72"),
         JmpIfBitClear(MINECART_INITIATE_FREEPLAY, ["EVENT_1649_clear_bit_90"]),
         SetSyncActionScript(NPC_3, A0650_BLUE_CLOUD_MOVEMENT),
         RunDialog(
@@ -268,16 +252,14 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueSync(
             target=MARIO,
             subscript=[
                 ASSetSpriteSequence(
                     index=2, sprite_offset=3, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_3, subscript=[ASSetSequenceSpeed(FAST)]),
         StartLoopNTimes(4),
         AddCoins(10),
@@ -304,8 +286,7 @@ script = EventScript(
                 ),
                 ASPause(60),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ClearBit(MINECART_INITIATE_FREEPLAY, identifier="EVENT_1649_clear_bit_90"),
         Return(),
     ]

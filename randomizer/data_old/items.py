@@ -30,8 +30,7 @@ class OverworldItem:
         falling_packet=37,
         treasure_packet=5,
         chest_event=883,
-        hover=False,
-    ):
+        hover=False):
         self.model = model
         self.action_script = action_script
         self.static_packet = static_packet
@@ -75,8 +74,7 @@ class Item:
     DESC_DATA_POINTER_OFFSET = 0x3A0000
     BASE_DESC_DATA_ADDRESSES = (
         (0x3A3120, 0x3A40F1),
-        (0x3A55F0, 0x3A5FFF),
-    )
+        (0x3A55F0, 0x3A5FFF))
 
     # Total number of items in the data.
     NUM_ITEMS = 256
@@ -286,8 +284,7 @@ class Item:
                 (
                     ("\x80\x98", 6, self.elemental_immunities),
                     ("\x81", 4, self.elemental_immunities),
-                    ("\x82", 5, self.elemental_immunities),
-                )
+                    ("\x82", 5, self.elemental_immunities))
             )
         else:
             desc += "\x99" * 4
@@ -299,8 +296,7 @@ class Item:
                 (
                     ("\x80\x98", 6, self.elemental_resistances),
                     ("\x81", 4, self.elemental_resistances),
-                    ("\x82", 5, self.elemental_resistances),
-                )
+                    ("\x82", 5, self.elemental_resistances))
             )
         else:
             desc += "\x99" * 4
@@ -320,8 +316,7 @@ class Item:
                 ("\x98\x87", 5, self.status_immunities),
                 ("\x88", 6, self.status_immunities),
                 ("\x89", True, self.prevent_ko),
-                ("\x8A", 4, self.status_immunities),
-            )
+                ("\x8A", 4, self.status_immunities))
         )
         desc += "\x01"
 
@@ -536,16 +531,13 @@ class Hammer(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -564,16 +556,13 @@ class FroggieStick(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Caster's Staff”!\n It looks pretty good at bonking.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Caster's Staff”!\n It looks pretty good at bonking.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -591,16 +580,13 @@ class NokNokShell(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Green Shell”!\n There's no turtle inside of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Green Shell”!\n There's no turtle inside of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Green Shell”.\n There's no turtle inside of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Green Shell”.\n There's no turtle inside of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Green Shell”.\n There's no turtle inside of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Green Shell”.\n There's no turtle inside of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -653,16 +639,13 @@ class Chomp(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Chain Chomp”!\n It's hungry to stir up some trouble.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Chain Chomp”!\n It's hungry to stir up some trouble.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Chain Chomp”.\n It's hungry to stir up some trouble.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Chain Chomp”.\n It's hungry to stir up some trouble.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Chain Chomp”.\n It's hungry to stir up some trouble.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Chain Chomp”.\n It's hungry to stir up some trouble.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -680,16 +663,13 @@ class Masher(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -752,16 +732,13 @@ class SlapGlove(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Little Glove”!\n You don't drink water out of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Little Glove”!\n You don't drink water out of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Little Glove”.\n You don't drink water out of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Little Glove”.\n You don't drink water out of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Little Glove”.\n You don't drink water out of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Little Glove”.\n You don't drink water out of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -913,16 +890,13 @@ class UltraHammer(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -939,16 +913,13 @@ class SuperSlap(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Big Glove”!\n You don't drink water out of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Big Glove”!\n You don't drink water out of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Big Glove”.\n You don't drink water out of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Big Glove”.\n You don't drink water out of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Big Glove”.\n You don't drink water out of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Big Glove”.\n You don't drink water out of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -965,16 +936,13 @@ class DrillClaw(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Drilling Appendage”!\n I bet you could do some real damage\n with this.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Drilling Appendage”!\n I bet you could do some real damage\n with this.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Drilling Appendage”.\n I bet you could do some real damage\n with this.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Drilling Appendage”.\n I bet you could do some real damage\n with this.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Drilling Appendage”.\n I bet you could do some real damage\n with this.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Drilling Appendage”.\n I bet you could do some real damage\n with this.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -992,16 +960,13 @@ class StarGun(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Celestial Launcher”!\n I bet you could do some real damage\n with this.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Celestial Launcher”!\n I bet you could do some real damage\n with this.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Celestial Launcher”.\n I bet you could do some real damage\n with this.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Celestial Launcher”.\n I bet you could do some real damage\n with this.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Celestial Launcher”.\n I bet you could do some real damage\n with this.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Celestial Launcher”.\n I bet you could do some real damage\n with this.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1019,16 +984,13 @@ class SonicCymbal(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Psych Percussion”!\n This could catch monsters\n off-guard.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Psych Percussion”!\n This could catch monsters\n off-guard.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Psych Percussion”.\n This could catch monsters\n off-guard.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Psych Percussion”.\n This could catch monsters\n off-guard.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Psych Percussion”.\n This could catch monsters\n off-guard.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Psych Percussion”.\n This could catch monsters\n off-guard.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1047,16 +1009,13 @@ class LazyShellWeapon(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Oversized Shell”!\n You could do some real damage\n with this.[await][await] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Oversized Shell”!\n You could do some real damage\n with this.[await][await] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Oversized Shell”.\n You could do some real damage\n with this.[await][await] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: An “Oversized Shell”.\n You could do some real damage\n with this.[await][await] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: An “Oversized Shell”.\n You could do some real damage\n with this.[await][await] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Oversized Shell”.\n You could do some real damage\n with this.[await][await] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1074,16 +1033,13 @@ class FryingPan(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Metal Plate”![await]\n Don't know what it’s used for,\n but I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Metal Plate”![await]\n Don't know what it’s used for,\n but I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Metal Plate”.[await]\n Don't know what it’s used for,\n but it's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Metal Plate”.[await]\n Don't know what it’s used for,\n but it's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Metal Plate”.[await]\n Don't know what it’s used for,\n but I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Metal Plate”.[await]\n Don't know what it’s used for,\n but I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1259,16 +1215,13 @@ class PolkaDress(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Casual Gown”!\n It's pink with little polka dots![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Casual Gown”!\n It's pink with little polka dots![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Casual Gown”.\n It's pink with little polka dots![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Casual Gown”.\n It's pink with little polka dots![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Casual Gown”.\n It's pink with little polka dots![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Casual Gown”.\n It's pink with little polka dots![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1528,16 +1481,13 @@ class SuperSuit(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Jumpsuit”!\n It looks pretty powerful, right?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Jumpsuit”!\n It looks pretty powerful, right?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Jumpsuit”.\n It looks pretty powerful, right?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Jumpsuit”.\n It looks pretty powerful, right?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Jumpsuit”.\n It looks pretty powerful, right?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Jumpsuit”.\n It looks pretty powerful, right?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1563,16 +1513,13 @@ class LazyShellArmor(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Oversized Shell”!\n It's quite beefy and protective.[await]\n I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Oversized Shell”!\n It's quite beefy and protective.[await]\n I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Oversized Shell”.\n It's quite beefy and protective.[await]\n It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: An “Oversized Shell”.\n It's quite beefy and protective.[await]\n It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: An “Oversized Shell”.\n It's quite beefy and protective.[await]\n I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Oversized Shell”.\n It's quite beefy and protective.[await]\n I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1593,16 +1540,13 @@ class ZoomShoes(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: “Pegasus Boots”!\n These will make you fast like Sonic![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: “Pegasus Boots”!\n These will make you fast like Sonic![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: “Pegasus Boots”.\n These will make you fast like Sonic![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: “Pegasus Boots”.\n These will make you fast like Sonic![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: “Pegasus Boots”.\n These will make you fast like Sonic![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: “Pegasus Boots”.\n These will make you fast like Sonic![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1623,16 +1567,13 @@ class SafetyBadge(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Status Protector”!\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it to\n you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Status Protector”!\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it to\n you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Status Protector”.\n It can prevent weird things from\n happening to you.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Status Protector”.\n It can prevent weird things from\n happening to you.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Status Protector”.\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Status Protector”.\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1671,16 +1612,13 @@ class SafetyRing(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Protective Charm”!\n Never go into battle without it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Protective Charm”!\n Never go into battle without it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Protective Charm”.\n Never go into battle without it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Protective Charm”.\n Never go into battle without it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Protective Charm”.\n Never go into battle without it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Protective Charm”.\n Never go into battle without it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1704,16 +1642,13 @@ class Amulet(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Stinky Charm”!\n It'll help you weather the elements.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Stinky Charm”!\n It'll help you weather the elements.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1731,16 +1666,13 @@ class ScroogeRing(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Mage Totem”!\n It might help with spellcasting.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Mage Totem”!\n It might help with spellcasting.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Mage Totem”.\n It might help with spellcasting.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Mage Totem”.\n It might help with spellcasting.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Mage Totem”.\n It might help with spellcasting.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Mage Totem”.\n It might help with spellcasting.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1758,16 +1690,13 @@ class ExpBooster(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Training Device”!\n This'll make you strong in no time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Training Device”!\n This'll make you strong in no time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Training Device”.\n This'll make you strong in no time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Training Device”.\n This'll make you strong in no time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Training Device”.\n This'll make you strong in no time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Training Device”.\n This'll make you strong in no time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1790,16 +1719,13 @@ class AttackScarf(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Jumper's Scarf”!\n It could save your life![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Jumper's Scarf”!\n It could save your life![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Jumper's Scarf”.\n It could save your life![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Jumper's Scarf”.\n It could save your life![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Jumper's Scarf”.\n It could save your life![await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Jumper's Scarf”.\n It could save your life![await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1817,16 +1743,13 @@ class RareScarf(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Unusual Garment”!\n I don't see these around often.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Unusual Garment”!\n I don't see these around often.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Unusual Garment”.\n I don't see these around often.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: An “Unusual Garment”.\n I don't see these around often.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: An “Unusual Garment”.\n I don't see these around often.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Unusual Garment”.\n I don't see these around often.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1916,16 +1839,13 @@ class CoinTrick(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Fortune Charm”!\n It's sure to make you very rich.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Fortune Charm”!\n It's sure to make you very rich.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1944,16 +1864,13 @@ class GhostMedal(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Scavenger's Prize”!\n It resembles a medal of honor.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Scavenger's Prize”!\n It resembles a medal of honor.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Scavenger's Prize”.\n It resembles a medal of honor.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Scavenger's Prize”.\n It resembles a medal of honor.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Scavenger's Prize”.\n It resembles a medal of honor.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Scavenger's Prize”.\n It resembles a medal of honor.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -1974,16 +1891,13 @@ class JinxBelt(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Martial Sash”!\n A true fighter would love this.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Martial Sash”!\n A true fighter would love this.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Martial Sash”.\n A true fighter would love this.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Martial Sash”.\n A true fighter would love this.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Martial Sash”.\n A true fighter would love this.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Martial Sash”.\n A true fighter would love this.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2003,16 +1917,13 @@ class Feather(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Fluttering Quill”!\n It's pretty exotic, isn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Fluttering Quill”!\n It's pretty exotic, isn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2032,16 +1943,13 @@ class TroopaPin(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Military Decoration”!\n I wonder what powers it bestows?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Military Decoration”!\n I wonder what powers it bestows?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Military Decoration”.\n I wonder what powers it bestows?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Military Decoration”.\n I wonder what powers it bestows?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Military Decoration”.\n I wonder what powers it bestows?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Military Decoration”.\n I wonder what powers it bestows?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2059,16 +1967,13 @@ class SignalRing(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Treasure Beacon”!\n I wonder what it can help you find?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Treasure Beacon”!\n I wonder what it can help you find?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2089,16 +1994,13 @@ class QuartzCharm(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Crystal Ring”!\n It could save your life![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Crystal Ring”!\n It could save your life![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Crystal Ring”.\n It could save your life![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Crystal Ring”.\n It could save your life![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Crystal Ring”.\n It could save your life![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Crystal Ring”.\n It could save your life![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2450,16 +2352,13 @@ class SeeYa(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Eject Button”!\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Eject Button”!\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Eject Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: An “Eject Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: An “Eject Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Eject Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2474,16 +2373,13 @@ class TempleKey(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2499,16 +2395,13 @@ class GoodieBag(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Coin Sack”!\n It could make you rich![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Coin Sack”!\n It could make you rich![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Coin Sack”.\n It could make you rich![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Coin Sack”.\n It could make you rich![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Coin Sack”.\n It could make you rich![await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Coin Sack”.\n It could make you rich![await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2524,16 +2417,13 @@ class EarlierTimes(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Reset Button”!\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Reset Button”!\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Reset Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Reset Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Reset Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Reset Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2561,16 +2451,13 @@ class RareFrogCoin(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Green Coin”!\n It looks different from most Frog\n Coins.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Green Coin”!\n It looks different from most Frog\n Coins.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2586,16 +2473,13 @@ class Wallet(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Coin Sack”!\n It looks like it belongs to someone.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Coin Sack”!\n It looks like it belongs to someone.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Coin Sack”.\n It looks like it belongs to someone.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Coin Sack”.\n It looks like it belongs to someone.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Coin Sack”.\n It looks like it belongs to someone.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Coin Sack”.\n It looks like it belongs to someone.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2610,16 +2494,13 @@ class CricketPie(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Baked Pastry”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Baked Pastry”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2647,16 +2528,13 @@ class CastleKey1(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2671,16 +2549,13 @@ class CastleKey2(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2707,16 +2582,13 @@ class SheepAttack(Item):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2732,16 +2604,13 @@ class CarboCookie(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
     def __init__(self, world):
@@ -2766,16 +2635,13 @@ class ShinyStone(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
     def __init__(self, world):
@@ -2800,16 +2666,13 @@ class RoomKey(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2824,16 +2687,13 @@ class ElderKey(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2848,16 +2708,13 @@ class ShedKey(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2873,16 +2730,13 @@ class LambsLure(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2912,16 +2766,13 @@ class MysteryEgg(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2950,16 +2801,13 @@ class LuckyJewel(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Lucky Jewel”!\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Lucky Jewel”!\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Lucky Jewel”.\n It’s sure to bring you plenty of\n good luck.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: An “Lucky Jewel”.\n It’s sure to bring you plenty of\n good luck.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: An “Lucky Jewel”.\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Lucky Jewel”.\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2974,16 +2822,13 @@ class SopranoCard(Item):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -2998,16 +2843,13 @@ class AltoCard(Item):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3022,16 +2864,13 @@ class TenorCard(Item):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3110,16 +2949,13 @@ class Seed(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Mysterious Seed”!\n I wonder what will grow from it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Mysterious Seed”!\n I wonder what will grow from it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3133,16 +2969,13 @@ class Fertilizer(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Bag of Dirt”!\n It seems different from the soil\n I dug it out of.[await][pause] I'll sell it to you\n for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Bag of Dirt”!\n It seems different from the soil\n I dug it out of.[await][pause] I'll sell it to you\n for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Bag of Dirt”.\n It seems different from the soil\n I dug it out of.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Bag of Dirt”.\n It seems different from the soil\n I dug it out of.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Bag of Dirt”.\n It seems different from the soil\n I dug it out of.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Bag of Dirt”.\n It seems different from the soil\n I dug it out of.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3157,16 +2990,13 @@ class BigBooFlag(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3181,16 +3011,13 @@ class DryBonesFlag(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3205,16 +3032,13 @@ class GreaperFlag(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2914,
-            """ Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3229,16 +3053,13 @@ class CricketJam(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: “Green Jelly”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: “Green Jelly”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3256,16 +3077,13 @@ class Fireworks(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
     def __init__(self, world):
@@ -3295,16 +3113,13 @@ class BrightCard(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Shiny Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Shiny Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3334,16 +3149,13 @@ class StarEgg(RegularItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: An “Adorable Bomb”!\n Seems like it'll last a long time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: An “Adorable Bomb”!\n Seems like it'll last a long time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3377,16 +3189,13 @@ class ProgressiveCard(ProgressiveItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3403,16 +3212,13 @@ class ProgressiveEgg(ProgressiveItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3427,16 +3233,13 @@ class ProgressiveFireworks(ProgressiveItem):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3923,16 +3726,13 @@ class Beetlemania(MiscReward):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Handheld Game”!\n Sounds pretty fun, doesn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Handheld Game”!\n Sounds pretty fun, doesn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -3970,16 +3770,13 @@ class StarPiece(MiscReward):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Shooting Star”!\n It's sure to make all your wishes\n come true.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Shooting Star”!\n It's sure to make all your wishes\n come true.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -4723,16 +4520,13 @@ class Shoes(MarrymoreGear):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Pair of Fancy Shoes”!\n I bet they would look great on you.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Pair of Fancy Shoes”!\n I bet they would look great on you.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Pair of Fancy Shoes”.\n I bet they would look great on you.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Pair of Fancy Shoes”.\n I bet they would look great on you.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Pair of Fancy Shoes”.\n I bet they would look great on you.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Pair of Fancy Shoes”.\n I bet they would look great on you.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -4749,16 +4543,13 @@ class Brooch(MarrymoreGear):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Shiny Brooch”! It\n looks made for special occasions.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Shiny Brooch”! It\n looks made for special occasions.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Shiny Brooch”. It\n looks made for special occasions.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Shiny Brooch”. It\n looks made for special occasions.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Shiny Brooch”. It\n looks made for special occasions.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Shiny Brooch”. It\n looks made for special occasions.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -4775,16 +4566,13 @@ class Ring(MarrymoreGear):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Diamond Ring”! It's\n a great gift for someone special.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Diamond Ring”! It's\n a great gift for someone special.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Diamond Ring”. It's\n a great gift for someone special.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Diamond Ring”. It's\n a great gift for someone special.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Diamond Ring”. It's\n a great gift for someone special.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Diamond Ring”. It's\n a great gift for someone special.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 
@@ -4801,16 +4589,13 @@ class Crown(MarrymoreGear):
     dialog_replacements = [
         (
             2911,
-            """ Item #1: A “Royal Crown”!\n It looks pretty important![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
-        ),
+            """ Item #1: A “Royal Crown”!\n It looks pretty important![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"""),
         (
             2908,
-            """ Item #2: A “Royal Crown”.\n It looks pretty important![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #2: A “Royal Crown”.\n It looks pretty important![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"""),
         (
             2914,
-            """ Item #3: A “Royal Crown”.\n It looks pretty important![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
-        ),
+            """ Item #3: A “Royal Crown”.\n It looks pretty important![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"""),
     ]
 
 

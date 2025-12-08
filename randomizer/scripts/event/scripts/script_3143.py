@@ -10,8 +10,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=TEMP_70AA,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3143_set_7000_to_70A0_short_mem_1",
-        ),
+            identifier="EVENT_3143_set_7000_to_70A0_short_mem_1"),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_7034),
         EnableControlsUntilReturn([X, B]),
         StartSyncEmbeddedActionScript(
@@ -23,8 +22,7 @@ script = EventScript(
                 ASAddConstToVar(X_COORD_2, 65532),
                 ASAddConstToVar(Y_COORD_2, 65522),
                 ASRunAwayShift(),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=MARIO, subscript=[ASSetWalkingSpeed(FAST)]),
         ActionQueueSync(target=MEM_70AA, subscript=[ASSetWalkingSpeed(FAST)]),
         JmpIfMarioInAir(["EVENT_3143_set_7000_to_pressed_button_11"]),
@@ -37,8 +35,7 @@ script = EventScript(
             subscript=[
                 ASDb(bytearray(b"\xfd\x9c\x04")),
                 ASJumpToHeight(height=108, silent=True),
-            ],
-        ),
+            ]),
         Set7000ToPressedButton(identifier="EVENT_3143_set_7000_to_pressed_button_11"),
         Mem7000AndConst(0x000F),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3143_set_short_23"]),
@@ -69,8 +66,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=PRIMARY_TEMP_700C,
             to_var=TEMP_7032,
-            identifier="EVENT_3143_copy_var_to_var_38",
-        ),
+            identifier="EVENT_3143_copy_var_to_var_38"),
         ClearBit(TEMP_7043_4),
         Set7016701BToObjectXYZ(MEM_70AA),
         StartSyncEmbeddedActionScript(
@@ -84,8 +80,7 @@ script = EventScript(
                 ASFaceEast7C(),
                 ASAddConstToVar(X_COORD_2, 48),
                 ASTransferTo70167018(),
-            ],
-        ),
+            ]),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3143_set_7000_to_70A0_short_mem_1"]),
         ActionQueueSync(
@@ -93,8 +88,7 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO051_MOVING_YELLOW_SWITCH, channel=4),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_7034, 0),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
         StartLoopNTimes(47),
@@ -107,13 +101,11 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO051_MOVING_YELLOW_SWITCH, channel=4),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_3143_set_7000_to_70A0_short_mem_1"]),
         EnableControlsUntilReturn(
             [LEFT, RIGHT, DOWN, UP, X, A, Y, B],
-            identifier="EVENT_3143_enable_controls_until_return_54",
-        ),
+            identifier="EVENT_3143_enable_controls_until_return_54"),
         CopyVarToVar(from_var=TEMP_70AE, to_var=PRIMARY_TEMP_7000),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AA),
         EnableObjectTrigger(MEM_70AA),
@@ -127,8 +119,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_70AA, 0),
         ActionQueueAsync(
             target=MARIO,
@@ -137,8 +128,7 @@ script = EventScript(
                 ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASShadowOn(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

@@ -17,8 +17,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=OLD_STAR_PIECE_ID,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1394_set_7000_to_7000_short_mem_6",
-        ),
+            identifier="EVENT_1394_set_7000_to_7000_short_mem_6"),
         AddCoins(PRIMARY_TEMP_7000),
         Return(),
     ]

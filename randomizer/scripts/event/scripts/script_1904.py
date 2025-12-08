@@ -17,8 +17,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P024_REGULAR_SOUND_EXPLOSION,
             target_npc=NPC_0,
-            destinations=["EVENT_1904_pause_7"],
-        ),
+            destinations=["EVENT_1904_pause_7"]),
         RemoveObjectFromCurrentLevel(NPC_0),
         RemoveObjectFromSpecificLevel(
             NPC_0, R474_SMITHY_FACTORY_AREA_15_FALLING_YARIDOVICHS
@@ -36,14 +35,12 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
                 ASResetProperties(),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         SetBit(UNKNOWN_DIRECTIONAL_BIT_2),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R474_SMITHY_FACTORY_AREA_15_FALLING_YARIDOVICHS,
-            mod_id=1,
-        ),
+            mod_id=1),
         Return(identifier="EVENT_1904_ret_14"),
         FadeInFromBlack(sync=True, identifier="EVENT_1904_fade_in_from_black_sync_15"),
         DisableObjectTrigger(MEM_70A8),

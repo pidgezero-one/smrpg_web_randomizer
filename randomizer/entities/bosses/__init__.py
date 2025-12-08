@@ -40,8 +40,7 @@ from .bosses import (
     ManagerBoss,
     DirectorBoss,
     GunyolkBoss,
-    SmithyBoss,
-)
+    SmithyBoss)
 from .henchmen import (
     MackShyster1,
     MackShyster2,
@@ -108,5 +107,4 @@ from .henchmen import (
     GunyolkPiece,
     SmithyDrillBit,
     SmithyShyster,
-    SmithyAero,
-)
+    SmithyAero)

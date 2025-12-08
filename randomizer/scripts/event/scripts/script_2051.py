@@ -16,8 +16,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSequenceLoopingOn(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -30,8 +29,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -44,8 +42,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -58,8 +55,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         ApplySolidityModToLevel(
             permanent=True, room_id=R398_MONSTRO_TOWN_WEAPON_AND_ARMOR_SHOP, mod_id=0
         ),

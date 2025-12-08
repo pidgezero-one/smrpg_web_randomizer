@@ -26,8 +26,7 @@ script = BattleAnimationScript(
             destinations=["queuestart_0x3ac345"],
             bit_2=True,
             bit_4=True,
-            identifier="command_0x3a6352",
-        ),
+            identifier="command_0x3a6352"),
         SpriteQueue(
             field_object=0, destinations=["queuestart_0x3ac35f"], bit_2=True, bit_4=True
         ),
@@ -40,8 +39,7 @@ script = BattleAnimationScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0482_YARIDOVICH,
             sequence=0,
@@ -52,9 +50,7 @@ script = BattleAnimationScript(
             looping=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x3a756c"]),
         SummonMonster(monster=Yaridovich, position=1, bit_6=True, bit_7=True),
-    ],
-)
+    ])

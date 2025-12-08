@@ -84,8 +84,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7043_0,
             ["ACTION_726_object_memory_set_bit_84"],
-            identifier="ACTION_726_jmp_if_bit_set_71",
-        ),
+            identifier="ACTION_726_jmp_if_bit_set_71"),
         FaceMario(),
         Pause(16),
         Set700CToObjectCoord(

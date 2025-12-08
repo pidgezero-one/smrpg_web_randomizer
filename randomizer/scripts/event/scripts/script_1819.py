@@ -22,16 +22,14 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkToXYCoords(x=28, y=37),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI1277_DEAD_END_SHY_AWAY,
             above_object=MARIO,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetSyncActionScript(NPC_3, A0714_LANDS_END_SLOW_RANDOM_MOVING_ENEMIES),
         Return(identifier="EVENT_1819_ret_13"),
     ]

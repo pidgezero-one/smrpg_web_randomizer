@@ -14,8 +14,7 @@ script = ActionScript(
             is_sequence=True,
             looping=True,
             mirror_sprite=True,
-            identifier="ACTION_924_set_sprite_sequence_4",
-        ),
+            identifier="ACTION_924_set_sprite_sequence_4"),
         Return(),
     ]
 )

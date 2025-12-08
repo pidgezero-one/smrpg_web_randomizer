@@ -12,8 +12,7 @@ script = EventScript(
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[0]),
                 ASWalk1StepNortheast(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Set7000ToCurrentLevel(),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 387, ["EVENT_3334_action_queue_async_11"]
@@ -25,8 +24,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=14, y=102),
                 ASWalkNortheastSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         EnterArea(
             room_id=R353_VOLCANO_AREA_18_HINO_MART,
             face_direction=NORTHEAST,
@@ -34,8 +32,7 @@ script = EventScript(
             y=61,
             z=0,
             show_banner=True,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         ActionQueueAsync(
             target=MARIO,
@@ -45,8 +42,7 @@ script = EventScript(
                 ASWalkNortheastSteps(2),
                 ASVisibilityOff(),
             ],
-            identifier="EVENT_3334_action_queue_async_11",
-        ),
+            identifier="EVENT_3334_action_queue_async_11"),
         EnterArea(
             room_id=R353_VOLCANO_AREA_18_HINO_MART,
             face_direction=NORTHEAST,
@@ -54,8 +50,7 @@ script = EventScript(
             y=71,
             z=0,
             show_banner=True,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

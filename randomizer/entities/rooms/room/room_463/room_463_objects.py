@@ -35,8 +35,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=YellowPlatform,
@@ -70,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=-2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=Barrel,
@@ -108,8 +106,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Barrel,
@@ -128,8 +125,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Barrel,
@@ -148,8 +144,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Barrel,
@@ -168,8 +163,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=Barrel,
@@ -188,8 +182,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=Barrel,
@@ -208,8 +201,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularClone(
         occupant=Barrel,
@@ -228,8 +220,7 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=Barrel,
@@ -248,6 +239,5 @@ objects = [
         acute_axis=7,
         obtuse_axis=7,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

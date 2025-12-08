@@ -46,8 +46,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2172_KEEP_BOBOMB_BATTLE_ROOM_SUMMON_2ND_BATTLE,
             x=9,
@@ -58,8 +57,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2173_KEEP_BOBOMB_BATTLE_ROOM_SUMMON_3RD_BATTLE,
             x=13,
@@ -70,8 +68,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2174_KEEP_BOBOMB_BATTLE_ROOM_SUMMON_4TH_BATTLE,
             x=17,
@@ -82,8 +79,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3350_KEEP_ALL_DOOR_PATHS_EXIT_TO_REWARD_ROOM,
             x=22,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -124,8 +119,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.BOB_OMB_NPC,
             initiator=EventInitiator.NONE,
@@ -152,8 +146,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.VOMER_NPC,
             initiator=EventInitiator.NONE,
@@ -180,8 +173,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.MAGMUS_NPC,
             initiator=EventInitiator.NONE,
@@ -208,8 +200,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.CHESTER_SMALL_NPC,
             initiator=EventInitiator.NONE,
@@ -236,7 +227,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

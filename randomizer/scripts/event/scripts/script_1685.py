@@ -19,8 +19,7 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         Store00To0248(),
         Pause(1),
         SetBit(BELOME_HEAD_1),
@@ -36,8 +35,7 @@ script = EventScript(
             TEMP_7026,
             0,
             ["EVENT_1685_set_7000_to_70A0_short_mem_26"],
-            identifier="EVENT_1685_jmp_if_var_not_equals_const_20",
-        ),
+            identifier="EVENT_1685_jmp_if_var_not_equals_const_20"),
         SetVarToConst(TEMP_7026, 4),
         CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 16),
@@ -46,8 +44,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=TEMP_70AC,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1685_set_7000_to_70A0_short_mem_26",
-        ),
+            identifier="EVENT_1685_set_7000_to_70A0_short_mem_26"),
         AddConstToVar(PRIMARY_TEMP_7000, 16),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AC),
         SetVarToConst(TEMP_70AB, 24, identifier="EVENT_1685_set_29"),
@@ -71,8 +68,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO109_BIG_SHELL_HIT, channel=4),
                 ASWalkNorthPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -92,8 +88,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO109_BIG_SHELL_HIT, channel=4),
                 ASWalkNorthPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -102,8 +97,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASFloatingOn(),
                 ASJumpToHeight(0),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_70AB, 0),
         RunEventAsSubroutine(E1739_REFOCUS_CAMERA),
         SetBit(UNKNOWN_BELOME_TEMPLE),
@@ -112,8 +106,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1685_set_7000_to_7000_short_mem_39",
-        ),
+            identifier="EVENT_1685_set_7000_to_7000_short_mem_39"),
         AddVarTo7000(TEMP_7026),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_7028),
         CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),

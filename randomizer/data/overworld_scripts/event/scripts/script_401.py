@@ -32,7 +32,8 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["EVENT_401_fade_in_from_black_async_2"]),
-	SummonObjectToCurrentLevel(NPC_0),
+	JmpIfBitClear(OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED, ["EVENT_401_fade_in_from_black_async_2"]),
+    SummonObjectToCurrentLevel(NPC_0),
 	FadeInFromBlack(sync=False, identifier="EVENT_401_fade_in_from_black_async_2"),
 	Return()
 ])

@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.TREASURE_CHEST,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._3_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes.COINS,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     music=Music._67_WEAPONS_FACTORY,
     entrance_event=1891,
     event_tiles=[
@@ -70,8 +64,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1916,
             x=25,
@@ -82,8 +75,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1917,
             x=19,
@@ -94,8 +86,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1917,
             x=18,
@@ -106,8 +97,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1918,
             x=24,
@@ -118,8 +108,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1920,
             x=29,
@@ -130,8 +119,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -151,8 +139,7 @@ room = Room(
             dst_z=2,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=30,
             y=68,
@@ -170,8 +157,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC(  # 0
@@ -204,8 +190,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 1
             occupant=npcs.GreyBlock,
             event_script=1919,
@@ -219,8 +204,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC(  # 2
             occupant=npcs.LilBoo,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -252,8 +236,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 3
             occupant=npcs.LilBoo,
             battle_pack=135,
@@ -267,8 +250,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 4
             occupant=npcs.LilBoo,
             battle_pack=134,
@@ -282,8 +264,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 5
             occupant=npcs.LilBoo,
             battle_pack=135,
@@ -297,8 +278,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 6
             occupant=npcs.LilBoo,
             battle_pack=134,
@@ -312,8 +292,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 7
             occupant=npcs.LilBoo,
             battle_pack=135,
@@ -327,8 +306,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         ChestNPC(  # 8
             occupant=npcs.TreasureChest,
             initiator=Initiator.HIT_FROM_BELOW,
@@ -361,8 +339,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         ChestClone(  # 9
             occupant=npcs.TreasureChest,
             lower_70a7=6,
@@ -376,7 +353,5 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=False,
-        ),
-    ],
-)
+            cannot_clone=False),
+    ])

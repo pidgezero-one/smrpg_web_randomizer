@@ -63,8 +63,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0571_FEAR_EXCLAMATION_POINT,
             sequence=0,
@@ -73,8 +72,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         SetAMEM8BitToConst(0x6D, 255),
         PauseScriptUntilSpriteSequenceDone(),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=6),
@@ -95,8 +93,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         Pause1Frame(identifier="command_0x35ad2e"),
         SetAMEM8BitToOMEMMain(amem=0x6D, omem=0x6D),
         JmpIfAMEM8BitNotEqualsConst(0x6D, 255, ["command_0x35ad2e"]),
@@ -107,5 +104,4 @@ script = SubroutineOrBanklessScript(
         JmpIfAMEM8BitNotEqualsConst(0x6D, 35, ["command_0x35ad3d"]),
         RemoveObject(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

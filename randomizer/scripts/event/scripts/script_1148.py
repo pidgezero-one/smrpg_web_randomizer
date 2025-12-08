@@ -12,8 +12,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         JmpIfBitClear(FROG_DISCIPLE_ITEM_1_PURCHASED, ["EVENT_1148_open_shop_19"]),
         JmpIfBitClear(FROG_DISCIPLE_ITEM_2_PURCHASED, ["EVENT_1148_open_shop_19"]),
         JmpIfBitClear(FROG_DISCIPLE_ITEM_3_PURCHASED, ["EVENT_1148_open_shop_19"]),
@@ -25,8 +24,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         OpenShop(SH03_FROG_DISCIPLE, identifier="EVENT_1148_open_shop_19"),
         FadeInFromBlack(sync=False),
@@ -36,8 +34,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

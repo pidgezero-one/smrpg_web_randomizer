@@ -11,8 +11,7 @@ script = EventScript(
         SummonObjectToSpecificLevel(
             NPC_2,
             R319_LANDS_END_DESERT_AREA_06,
-            identifier="EVENT_1786_summon_to_level_2",
-        ),
+            identifier="EVENT_1786_summon_to_level_2"),
         SummonObjectToSpecificLevel(NPC_6, R402_LANDS_END_DESERT_AREA_03),
         SummonObjectToSpecificLevel(NPC_2, R403_LANDS_END_DESERT_AREA_05),
         SummonObjectToSpecificLevel(NPC_3, R404_LANDS_END_DESERT_AREA_04),
@@ -22,8 +21,7 @@ script = EventScript(
             subscript=[
                 ASDb(bytearray(b"\x97\x16")),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0]),
-            ],
-        ),
+            ]),
         JmpIfBitSet(TEMP_7044_6, ["EVENT_1786_set_short_11"]),
         RunEventAsSubroutine(E1844_SUMMON_CLOUD_BOSS),
         FadeInFromBlack(sync=False),

@@ -50,8 +50,7 @@ room = Room(
             dst_z=4,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -86,8 +85,7 @@ room = Room(
             priority_2=True,
             height=2,
             vram_size=1,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.Goombette,
             event_script=2053,
@@ -103,8 +101,7 @@ room = Room(
             priority_2=True,
             height=2,
             vram_size=1,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.Goombette,
             event_script=2053,
@@ -120,8 +117,7 @@ room = Room(
             priority_2=True,
             height=2,
             vram_size=1,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.Goomba,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -152,8 +148,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 4
             occupant=npcs.Empty,
             initiator=Initiator.PRESS_A_FROM_FRONT,
@@ -186,7 +181,6 @@ room = Room(
             priority_1=False,
             priority_2=False,
             height=7,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

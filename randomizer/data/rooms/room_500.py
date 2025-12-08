@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=1,
             y=122,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=3,
             y=122,
@@ -91,8 +89,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         ChestNPC( # 0
@@ -123,8 +120,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.NIMBUSITE_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -151,8 +147,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.NIMBUS_GUARD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -179,7 +174,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

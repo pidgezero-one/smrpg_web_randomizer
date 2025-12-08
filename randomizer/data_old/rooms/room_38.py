@@ -50,8 +50,7 @@ room = Room(
             dst_z=5,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=13,
             y=90,
@@ -69,7 +68,5 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
-    ],
-)
+            x_bit_7=False),
+    ])

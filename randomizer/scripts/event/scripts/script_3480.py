@@ -32,8 +32,7 @@ script = EventScript(
         JmpIfBitSet(
             BUCKET_WARP_BIT,
             ["EVENT_3480_action_queue_async_22"],
-            identifier="EVENT_3480_jmp_if_bit_set_19",
-        ),
+            identifier="EVENT_3480_jmp_if_bit_set_19"),
         JmpIfBitSet(UNKNOWN_MIDAS_RIVER_704D_6, ["EVENT_3480_action_queue_async_22"]),
         ActionQueueSync(
             target=NPC_1,
@@ -45,8 +44,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftNorthSteps(27),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -73,8 +71,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSolidityBits(cant_pass_walls=True),
             ],
-            identifier="EVENT_3480_action_queue_async_22",
-        ),
+            identifier="EVENT_3480_action_queue_async_22"),
         FadeOutMusicToVolume(duration=1, volume=56),
         JmpIfBitSet(BUCKET_WARP_BIT, ["EVENT_3480_action_queue_async_30"]),
         JmpIfBitSet(UNKNOWN_MIDAS_RIVER_704D_6, ["EVENT_3480_action_queue_async_28"]),
@@ -95,8 +92,7 @@ script = EventScript(
                 ASEndLoop(),
                 ASShiftSouthSteps(5),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_3480_action_queue_sync_31"]),
         ActionQueueAsync(
             target=NPC_1,
@@ -121,8 +117,7 @@ script = EventScript(
                 ASBPL262728(),
                 ASFixedFCoordOff(),
             ],
-            identifier="EVENT_3480_action_queue_async_28",
-        ),
+            identifier="EVENT_3480_action_queue_async_28"),
         Jmp(["EVENT_3480_set_action_script_sync_69"]),
         ActionQueueAsync(
             target=NPC_1,
@@ -145,8 +140,7 @@ script = EventScript(
                 ASWalk1StepNorth(),
                 ASBPL262728(),
             ],
-            identifier="EVENT_3480_action_queue_async_30",
-        ),
+            identifier="EVENT_3480_action_queue_async_30"),
         ActionQueueSync(
             target=NPC_16,
             subscript=[
@@ -157,13 +151,11 @@ script = EventScript(
                 ASPause(60),
                 ASVisibilityOff(),
             ],
-            identifier="EVENT_3480_action_queue_sync_31",
-        ),
+            identifier="EVENT_3480_action_queue_sync_31"),
         SetSyncActionScript(
             MARIO,
             A0466_MIDAS_RIVER_TUNNEL_LEAVE,
-            identifier="EVENT_3480_set_action_script_sync_69",
-        ),
+            identifier="EVENT_3480_set_action_script_sync_69"),
         JmpToSubroutine(["EVENT_3480_action_queue_async_73"]),
         RunEventAtReturn(E3489_MIDAS_RIVER_WATERFALL_LISTEN_FOR_BUTTON_INPUTS),
         Return(),
@@ -176,8 +168,7 @@ script = EventScript(
                 ASShadowOff(),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[2, 3]),
             ],
-            identifier="EVENT_3480_action_queue_async_73",
-        ),
+            identifier="EVENT_3480_action_queue_async_73"),
         Return(),
     ]
 )

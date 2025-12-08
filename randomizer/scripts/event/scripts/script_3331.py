@@ -27,13 +27,11 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
-            mod_id=33,
-        ),
+            mod_id=33),
         Db(bytearray(b"\xfdD")),
         ResetPrioritySet(),
         FadeInFromBlack(sync=False),

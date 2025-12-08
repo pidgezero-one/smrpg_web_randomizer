@@ -16,8 +16,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkNorthPixels(6),
                 ASWalkNorthwestPixels(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_4, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_5, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_7, subscript=[ASSetPriority(3)]),
@@ -29,8 +28,7 @@ script = EventScript(
             subscript=[
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         FreezeCamera(),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
@@ -38,8 +36,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASBounceToXYWithHeight(x=10, y=19, height=6),
                 ASTransferXYZFPixels(x=0, y=252, z=0, direction=EAST),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(
             E0761_MUSHROOM_KINGDOM_OCCUPIED_THRONE_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),

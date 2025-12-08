@@ -14,8 +14,7 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             NPC_1,
             R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
-            ["EVENT_373_start_battle_99"],
-        ),
+            ["EVENT_373_start_battle_99"]),
         Db(bytearray(b"\xc7\x80")),
         JmpIfVarNotEqualsConst(Z_COORD_2, 4, ["EVENT_256_ret_0"]),
         ActionQueueSync(
@@ -30,8 +29,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASSetSolidityBits(cant_pass_walls=True),
             ],
-            identifier="EVENT_373_action_queue_sync_6",
-        ),
+            identifier="EVENT_373_action_queue_sync_6"),
         ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkToXYCoords(x=12, y=9)]),
         SetBit(TEMP_7043_5),
         Pause(30),
@@ -49,8 +47,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -67,8 +64,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(3),
                 ASSetWalkingSpeed(SLOW),
                 ASWalkSouthwestPixels(13),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -78,19 +74,16 @@ script = EventScript(
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(150),
                 ASSetSpriteSequence(
                     index=7,
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASJumpToHeight(height=108, silent=True),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO019_LONG_FALL, channel=6),
         Pause(180),
         SetBit(TEMP_7043_5),
@@ -117,8 +110,7 @@ script = EventScript(
                 ASWalkNorthwestPixels(8),
                 ASFixedFCoordOff(),
             ],
-            identifier="EVENT_373_action_queue_sync_32",
-        ),
+            identifier="EVENT_373_action_queue_sync_32"),
         ActionQueueSync(
             target=NPC_9,
             subscript=[
@@ -131,8 +123,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalkSoutheastPixels(8),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         PlaySound(
             sound=SO021_RUMBLING, channel=6, identifier="EVENT_373_play_sound_34"
         ),
@@ -149,8 +140,7 @@ script = EventScript(
                 ASStopSound(),
                 ASWalkSouthPixels(3),
                 ASWalkNorthPixels(1),
-            ],
-        ),
+            ]),
         Pause(60),
         ClearBit(TEMP_7043_5),
         SetSyncActionScript(NPC_10, A0113_HENCHMAN_BOUNCING_IN_PLACE),
@@ -191,8 +181,7 @@ script = EventScript(
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=6),
                 ASJumpToHeight(height=72, silent=True),
                 ASWalk1StepSoutheast(),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_70A9, 24),
         RunEventAsSubroutine(E0278_UNKNOWN),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceNorthwest()]),
@@ -207,8 +196,7 @@ script = EventScript(
                 ASJumpToHeight(height=80, silent=True),
                 ASWalk1StepSoutheast(),
                 ASWalkSoutheastPixels(4),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_70A9, 25),
         RunEventAsSubroutine(E0278_UNKNOWN),
         ActionQueueAsync(
@@ -227,8 +215,7 @@ script = EventScript(
                 ASJumpToHeight(height=80, silent=True),
                 ASWalk1StepNorthwest(),
                 ASWalkNorthwestPixels(4),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_70A9, 26),
         RunEventAsSubroutine(E0278_UNKNOWN),
         ActionQueueAsync(
@@ -245,8 +232,7 @@ script = EventScript(
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=6),
                 ASJumpToHeight(height=72, silent=True),
                 ASWalk1StepNorthwest(),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_70A9, 26),
         RunEventAsSubroutine(E0278_UNKNOWN),
         ActionQueueSync(target=MARIO, subscript=[ASPause(10), ASFaceSoutheast()]),
@@ -263,10 +249,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         PlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=6),
         Xor3105With01(),
         ActionQueueSync(
@@ -283,8 +267,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepSoutheast(),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -299,8 +282,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNortheast(),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
@@ -317,8 +299,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNortheast(),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
@@ -333,8 +314,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNorthwest(),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -351,8 +331,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASWalk1StepSouthwest(),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO000_SILENCE, channel=6),
         RememberLastObject(),
         FadeOutMusicToVolume(duration=0, volume=1),

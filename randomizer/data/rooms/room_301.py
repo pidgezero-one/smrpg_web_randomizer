@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3181_SEWERS_WATER_SWITCH_ROOM_PIPE_TO_3RD_WATER_ROOM,
             x=11,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3142_PIPE_TO_BOSS,
             x=12,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3125_SEWER_PIPE_TO_LANDS_END,
             x=8,
@@ -82,8 +79,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         ChestNPC( # 0
@@ -114,8 +110,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -144,8 +139,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.SAVE_POINT_NPC_3,
             initiator=EventInitiator.JUMP_ON,
@@ -172,8 +166,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 3
             npc=npcs.THE_BIG_BOO_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -201,8 +194,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 4
             npc=npcs.THE_BIG_BOO_NPC_2,
             battle_pack=15,
@@ -212,8 +204,7 @@ room = Room(
             y=111,
             z=9,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 5
             npc=npcs.THE_BIG_BOO_NPC_2,
             battle_pack=15,
@@ -223,8 +214,7 @@ room = Room(
             y=115,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.TRAMPOLINE_WARP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -251,8 +241,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.GREEN_SWITCH_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -279,7 +268,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

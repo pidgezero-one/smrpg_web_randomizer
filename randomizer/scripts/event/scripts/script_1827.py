@@ -19,8 +19,7 @@ script = EventScript(
             subscript=[
                 ASShiftZUpPixels(4),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         Inc(TEMP_70A9),
         EndLoop(),
         StartLoopNTimes(3),
@@ -39,8 +38,7 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E1833_KEEP_LINEAR_PLATFORM_ROOM_BACKGROUND,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         JmpToEvent(E1829_KEEP_DISPLAY_REMAINING_TRIES),
     ]
 )

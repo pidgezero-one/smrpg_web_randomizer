@@ -2052,5 +2052,4 @@ bank = ActionScriptBank(
         script_1021,
         script_1022,
         script_1023,
-    ],
-)
+    ])

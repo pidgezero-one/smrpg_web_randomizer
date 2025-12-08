@@ -14,8 +14,7 @@ script = EventScript(
             x=29,
             y=46,
             z=0,
-            show_banner=True,
-        ),
+            show_banner=True),
         SetBit(TEMP_7044_6),
         JmpToEvent(E1584_TEMPLE_FINAL_ROOM_LOADER),
     ]

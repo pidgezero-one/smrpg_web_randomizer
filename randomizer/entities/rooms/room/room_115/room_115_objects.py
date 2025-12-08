@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=NimbusLandStatue,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=NimbusGuard,
@@ -85,8 +83,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=NimbusGuard,
@@ -101,8 +98,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     BattlePackNPC(
         occupant=Birdy,
@@ -137,8 +133,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     BattlePackClone(
         occupant=Birdy,
@@ -154,6 +149,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

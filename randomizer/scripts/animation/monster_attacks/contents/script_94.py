@@ -15,8 +15,7 @@ script = AnimationScript(
             z=-48,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ReturnSubroutine(),
     ]
 )

@@ -13,8 +13,7 @@ script = EventScript(
         ),
         ClearBit(
             MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL,
-            identifier="EVENT_207_remove_map_connector",
-        ),
+            identifier="EVENT_207_remove_map_connector"),
         SetBit(MAP_VISTA_HILL),
         RunDialog(
             dialog_id=DI2264_KEEP_OPEN,
@@ -22,8 +21,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         JmpToEvent(E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET),
     ]
 )

@@ -11,15 +11,13 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7042_0,
             ["EVENT_612_jmp_if_bit_set_5"],
-            identifier="EVENT_612_jmp_if_bit_set_2",
-        ),
+            identifier="EVENT_612_jmp_if_bit_set_2"),
         FadeInFromBlack(sync=False),
         Return(),
         JmpIfBitSet(
             TEMP_7042_1,
             ["EVENT_257_fade_in_from_black_async_0"],
-            identifier="EVENT_612_jmp_if_bit_set_5",
-        ),
+            identifier="EVENT_612_jmp_if_bit_set_5"),
         JmpIfBitSet(TEMP_7042_4, ["EVENT_257_fade_in_from_black_async_0"]),
         SetBit(TEMP_7042_1),
         ActionQueueAsync(

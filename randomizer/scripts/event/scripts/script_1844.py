@@ -17,8 +17,7 @@ script = EventScript(
         CreatePacketAt7010WithEvent(
             packet=P032_BLUE_CLOUD,
             event_id=E1845_CLOUD_BOSS,
-            destinations=["EVENT_1844_pause_3"],
-        ),
+            destinations=["EVENT_1844_pause_3"]),
         PlaySound(sound=SO044_GHOST_FLOAT, channel=6),
         Return(),
     ]

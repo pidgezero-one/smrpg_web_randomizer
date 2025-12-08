@@ -30,5 +30,4 @@ script = SubroutineOrBanklessScript(
         SetAMEMToAMEM16Bit(dest_amem=0x6E, amem=0x62),
         Db(bytearray(b"F"), identifier="command_0x350d99"),
         Jmp(["command_0x350d31"]),
-    ],
-)
+    ])

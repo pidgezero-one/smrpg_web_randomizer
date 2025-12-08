@@ -20,8 +20,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkToXYCoords(x=5, y=16),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         Pause(30),
         FreezeCamera(),
         ActionQueueSync(
@@ -40,8 +39,7 @@ script = EventScript(
                 ASPause(15),
                 ASPlaySound(sound=SO096_SWINGING_FIST, channel=6),
                 ASPause(30),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0861_DOJO_1ST_BOSS_CHALLENGE_SUBROUTINE),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
         RestoreAllHP(),
@@ -54,8 +52,7 @@ script = EventScript(
                 ASTransferToXYZF(x=6, y=8, z=3, direction=EAST),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(
             sync=False, identifier="EVENT_2066_fade_in_from_black_async_17"
         ),
@@ -69,8 +66,7 @@ script = EventScript(
                 ASPause(30),
                 ASSetAllSpeeds(SLOW),
                 ASWalkSouthwestSteps(1),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -85,8 +81,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         Pause(30),
         JmpIfBitSet(RUN_AWAY, ["EVENT_2066_stop_music_FDA2_24"]),
@@ -104,8 +99,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_2066_run_dialog_35",
-        ),
+            identifier="EVENT_2066_run_dialog_35"),
         Return(),
         RunDialog(
             dialog_id=DI3352_DOJO_BOSS_1_FULLY_DEFEATED,
@@ -114,8 +108,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_2066_run_dialog_37",
-        ),
+            identifier="EVENT_2066_run_dialog_37"),
         Return(),
     ]
 )

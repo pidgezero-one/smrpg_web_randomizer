@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=NORTHWEST,
             x=4,
             y=48,
-            z=0,
-        ),
+            z=0),
         RunStarPieceSequence(8),
         PaletteSet(palette_set=163, row=1),
         PaletteSet(palette_set=164, row=1),
@@ -25,16 +24,14 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkEastPixels(16),
                 ASWalk1StepNorth(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=LAYER_2,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalk1StepWest(),
                 ASWalkNorthwestSteps(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -42,29 +39,25 @@ script = EventScript(
                 ASTransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
                 ASSetPriority(3),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
                 ASTransferXYZFPixels(x=16, y=4, z=0, direction=EAST),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASTransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
                 ASTransferXYZFPixels(x=8, y=0, z=0, direction=EAST),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -73,15 +66,13 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASTransferXYZFPixels(x=4, y=208, z=0, direction=EAST),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         Pause(30),
         FadeInFromColour(duration=60, colour=WHITE),
         PauseScriptUntilEffectDone(),
@@ -95,13 +86,11 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASWalkSouthPixels(4),
                 ASShiftSouthSteps(11),
-            ],
-        ),
+            ]),
         Pause(328),
         ActionQueueSync(
             target=LAYER_2,
-            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalk1StepSoutheast()],
-        ),
+            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalk1StepSoutheast()]),
         Pause(2),
         SetSyncActionScript(MARIO, A0229_ENDING_CUTSCENE_EFFECT),
         SetSyncActionScript(NPC_0, A0229_ENDING_CUTSCENE_EFFECT),
@@ -112,14 +101,12 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
-            mod_id=1,
-        ),
+            mod_id=1),
         Pause(1),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
-            mod_id=0,
-        ),
+            mod_id=0),
         Pause(180),
         Db(bytearray(b"_")),
         Pause(404),
@@ -135,18 +122,15 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW,
-            mod_id=1,
-        ),
+            mod_id=1),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW,
-            mod_id=2,
-        ),
+            mod_id=2),
         FadeOutToBlack(sync=True, duration=120),
         PauseScriptUntilEffectDone(),
         Pause(60, identifier="EVENT_3951_pause_329"),
@@ -159,8 +143,7 @@ script = EventScript(
             face_direction=SOUTHWEST,
             x=17,
             y=40,
-            z=2,
-        ),
+            z=2),
         JmpToEvent(E3804_ENDING_CREDITS_CORONATION_NPCS),
     ]
 )

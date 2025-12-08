@@ -19,8 +19,7 @@ script = ActionScript(
             is_sequence=True,
             looping=True,
             mirror_sprite=True,
-            identifier="ACTION_678_set_sprite_sequence_7",
-        ),
+            identifier="ACTION_678_set_sprite_sequence_7"),
         Pause(40),
         SetSpriteSequence(
             index=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True

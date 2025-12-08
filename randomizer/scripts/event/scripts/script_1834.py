@@ -35,8 +35,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 8, ["EVENT_1834_set_short_41"]),
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASSetSpriteSequence(index=0, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=0, is_sequence=True, looping=True)]),
         ActionQueueSync(
             target=MARIO, subscript=[ASSetSequenceSpeed(NORMAL), ASSequenceLoopingOff()]
         ),
@@ -67,8 +66,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASSequenceLoopingOn(),
             ],
-            identifier="EVENT_1834_action_queue_sync_47",
-        ),
+            identifier="EVENT_1834_action_queue_sync_47"),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -76,33 +74,28 @@ script = EventScript(
                     TEMP_7043_1,
                     [
                         "EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_700C_to_7000_short_mem_2"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(index=3, is_sequence=True, looping=True),
                 ASCopyVarToVar(
                     from_var=Z_COORD_1,
                     to_var=PRIMARY_TEMP_700C,
-                    identifier="EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_700C_to_7000_short_mem_2",
-                ),
+                    identifier="EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_700C_to_7000_short_mem_2"),
                 ASFaceEast7C(),
                 ASWalkFDirectionPixels(1),
             ],
-            identifier="EVENT_1834_action_queue_sync_48",
-        ),
+            identifier="EVENT_1834_action_queue_sync_48"),
         Jmp(["EVENT_1834_pause_7"]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[ASSetSpriteSequence(index=0, is_sequence=True, looping=True)],
-            identifier="EVENT_1834_action_queue_sync_50",
-        ),
+            identifier="EVENT_1834_action_queue_sync_50"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASSetSequenceSpeed(NORMAL),
                 ASSequenceLoopingOff(),
                 ASJumpToHeight(128),
-            ],
-        ),
+            ]),
         MoveScriptToMainThread(),
         ClearBit(TEMP_7043_0),
         Return(),
@@ -117,8 +110,7 @@ script = EventScript(
                 ASPause(4),
                 ASEndLoop(),
             ],
-            identifier="EVENT_1834_action_queue_async_55",
-        ),
+            identifier="EVENT_1834_action_queue_async_55"),
         Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Z_COORD_1),
         Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True),
@@ -139,14 +131,12 @@ script = EventScript(
                 ASFaceEast7C(),
                 ASCopyVarToVar(from_var=X_COORD_1, to_var=PRIMARY_TEMP_700C),
                 ASWalkFDirection16Pixels(),
-            ],
-        ),
+            ]),
         Set7000ToObjectCoord(
             target_npc=MARIO,
             coord=COORD_Y,
             pixel=True,
-            identifier="EVENT_1834_set_7000_to_object_coord_70",
-        ),
+            identifier="EVENT_1834_set_7000_to_object_coord_70"),
         Compare7000ToVar(Y_COORD_2),
         JmpIfLoadedMemoryIs0(["EVENT_1834_action_queue_async_82"]),
         JmpIfComparisonResultIsGreaterOrEqual(["EVENT_1834_set_short_77"]),
@@ -164,8 +154,7 @@ script = EventScript(
                 ASFaceEast7C(),
                 ASCopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_700C),
                 ASWalkFDirection16Pixels(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -177,8 +166,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASSetSolidityBits(cant_pass_walls=True),
             ],
-            identifier="EVENT_1834_action_queue_async_82",
-        ),
+            identifier="EVENT_1834_action_queue_async_82"),
         Return(),
     ]
 )

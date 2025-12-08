@@ -43,8 +43,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=425,
             x=7,
@@ -55,8 +54,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=488,
             x=2,
@@ -67,8 +65,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=488,
             x=2,
@@ -79,8 +76,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=489,
             x=3,
@@ -91,8 +87,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=488,
             x=3,
@@ -103,8 +98,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=488,
             x=3,
@@ -115,8 +109,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=490,
             x=4,
@@ -127,8 +120,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=490,
             x=4,
@@ -139,8 +131,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=491,
             x=7,
@@ -151,8 +142,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=490,
             x=5,
@@ -163,8 +153,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=490,
             x=5,
@@ -175,8 +164,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -210,8 +198,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 1
             occupant=npcs.PipePiranhaPlant,
             battle_pack=35,
@@ -225,8 +212,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 2
             occupant=npcs.Chompweed,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -257,8 +243,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.Chompweed,
             event_script=433,
@@ -272,8 +257,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 4
             occupant=npcs.SmallCoin,
             initiator=Initiator.NONE,
@@ -305,8 +289,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 5
             occupant=npcs.SmallCoin,
             event_script=256,
@@ -321,7 +304,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

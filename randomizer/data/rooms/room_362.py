@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=6,
             y=27,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -102,8 +100,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.OERLIKON_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -130,8 +127,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.OERLIKON_NPC,
             event_script=E3318_SET_OERLIKON_PACK,
@@ -141,8 +137,7 @@ room = Room(
             y=25,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 3
             npc=npcs.OERLIKON_NPC,
             event_script=E3318_SET_OERLIKON_PACK,
@@ -152,8 +147,7 @@ room = Room(
             y=25,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 4
             npc=npcs.OERLIKON_NPC,
             event_script=E3318_SET_OERLIKON_PACK,
@@ -163,7 +157,6 @@ room = Room(
             y=25,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
     ]
 )

@@ -14,8 +14,7 @@ script = EventScript(
             x=3,
             y=41,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R101_BOOSTER_PASS_AREA_02,
@@ -24,8 +23,7 @@ script = EventScript(
             y=95,
             z=6,
             run_entrance_event=True,
-            identifier="EVENT_3854_enter_area_3",
-        ),
+            identifier="EVENT_3854_enter_area_3"),
         Return(),
     ]
 )

@@ -11,8 +11,7 @@ script = AnimationScript(
         DrawSpriteAtAMEM32Coords(
             sprite_id=SPR0005_MARIO_HAMMER_ATTACK_UP_RIGHT,
             sequence=0,
-            store_to_vram=True,
-        ),
+            store_to_vram=True),
         ReturnSubroutine(),
     ]
 )

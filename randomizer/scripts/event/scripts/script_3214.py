@@ -21,8 +21,7 @@ script = EventScript(
             x=3,
             y=89,
             z=8,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ClearBit(DIRECTIONAL_7049_0),
         ActionQueueSync(
             target=MARIO, subscript=[ASJumpToHeight(height=0, silent=True)]
@@ -39,8 +38,7 @@ script = EventScript(
             x=2,
             y=92,
             z=8,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ActionQueueSync(
             target=MARIO, subscript=[ASJumpToHeight(height=0, silent=True)]
         ),

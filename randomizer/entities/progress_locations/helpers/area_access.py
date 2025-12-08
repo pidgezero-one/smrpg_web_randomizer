@@ -1,7 +1,7 @@
 """Helper methods that calculate if the player can access a given area based on their inventory
 and settings."""
 
-from typing import Callable, List, Type, Union
+from typing import Callable
 
 from randomizer.entities.bosses import (
     AxemRangersBoss,
@@ -14,8 +14,7 @@ from randomizer.entities.bosses import (
     JohnnyBoss,
     PunchinelloBoss,
     ValentinaBoss,
-    YaridovichBoss,
-)
+    YaridovichBoss)
 from randomizer.entities.items import (
     BambinoBomb,
     BrightCard,
@@ -29,8 +28,7 @@ from randomizer.entities.items import (
     MimicFightInitiator3,
     ProgressiveFireworks,
     Ring,
-    Shoes,
-)
+    Shoes)
 from randomizer.entities.items.items import CricketPie
 from randomizer.entities.progress_locations import (
     BanditsWayBossFight,
@@ -68,15 +66,13 @@ from randomizer.entities.progress_locations import (
     TowerBalconyBossFight,
     TowerCurtainRoomBossFight,
     VolcanoBridgeBossFight,
-    VolcanoExitBossFight,
-)
+    VolcanoExitBossFight)
 from randomizer.entities.characters import (
     Geno,
     Mallow,
     Mario,
     Toadstool,
-    Bowser,
-)
+    Bowser)
 
 
 from randomizer.types.items import StarPiece
@@ -118,8 +114,7 @@ from randomizer.types.world.flags import (
     ShuffleWeddingGear,
     SkipMustyFearsSequence,
     StarPiecesRequired,
-    YaridovichGate,
-)
+    YaridovichGate)
 
 
 def progression_safety(world: GameWorld) -> bool:
@@ -134,21 +129,20 @@ def progression_safety(world: GameWorld) -> bool:
 def can_defeat_some_of(
     world: GameWorld,
     inventory: Inventory,
-    conditions: List[Callable],
-    amount: int = 1,
-):
+    conditions: list[Callable],
+    amount: int = 1):
     """If true, the player is expected to be able to defeat at least some of
     the provided bosses.
     If progression safety is turned off, this will always return true."""
     if not progression_safety(world):
         return True
-    bosses: List[bool] = [cond(world, inventory) for cond in conditions]
-    completable: List[bool] = [cond for cond in bosses if cond]
+    bosses: list[bool] = [cond(world, inventory) for cond in conditions]
+    completable: list[bool] = [cond for cond in bosses if cond]
     return len(completable) >= amount
 
 
 def can_defeat_boss(
-    world: GameWorld, inventory: Inventory, location: Type[BossFightLocation]
+    world: GameWorld, inventory: Inventory, location: type[BossFightLocation]
 ) -> bool:
     """If true, the player is expected to be able to defeat the boss location."""
     inst = world.get_location_instance(location)
@@ -188,12 +182,7 @@ def can_defeat_mushroom_kingdom_boss(world: GameWorld, inventory: Inventory) -> 
 def can_defeat_mimic(
     world: GameWorld,
     inventory: Inventory,
-    mimic: Union[
-        Type[MimicFightInitiator1],
-        Type[MimicFightInitiator2],
-        Type[MimicFightInitiator3],
-    ],
-) -> bool:
+    mimic: type[MimicFightInitiator1] | type[MimicFightInitiator2] | type[MimicFightInitiator3]) -> bool:
     """If true, the player is expected to be able to defeat the specified mimic chest fight."""
     location = next((l for l in world.item_locations if l.does_contain(mimic)), None)
     if location is None:
@@ -215,8 +204,7 @@ def can_defeat_first_mimic(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_mushroom_way_boss,
             can_defeat_bandits_way_boss,
             can_defeat_mushroom_kingdom_boss,
-        ],
-    )
+        ])
 
 
 def can_access_sewer_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -228,8 +216,7 @@ def can_access_sewer_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_mushroom_way_boss,
             can_defeat_bandits_way_boss,
             can_defeat_mushroom_kingdom_boss,
-        ],
-    )
+        ])
 
 
 def can_defeat_sewer_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -253,8 +240,7 @@ def can_access_forest_boss(world: GameWorld, inventory: Inventory) -> bool:
     return can_access_forest(world, inventory) and can_defeat_some_of(
         world,
         inventory,
-        [can_defeat_mushroom_kingdom_boss, can_defeat_sewer_boss],
-    )
+        [can_defeat_mushroom_kingdom_boss, can_defeat_sewer_boss])
 
 
 def can_defeat_forest_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -282,13 +268,11 @@ def can_access_first_moleville_boss(world: GameWorld, inventory: Inventory) -> b
             world,
             inventory,
             [can_defeat_mushroom_kingdom_boss, can_defeat_sewer_boss],
-            2,
-        )
+            2)
         or can_defeat_some_of(
             world,
             inventory,
-            [can_defeat_forest_boss],
-        )
+            [can_defeat_forest_boss])
     )
 
 
@@ -304,13 +288,11 @@ def can_defeat_second_mimic(world: GameWorld, inventory: Inventory) -> bool:
             world,
             inventory,
             [can_defeat_mushroom_kingdom_boss, can_defeat_sewer_boss],
-            2,
-        )
+            2)
         or can_defeat_some_of(
             world,
             inventory,
-            [can_defeat_forest_boss],
-        )
+            [can_defeat_forest_boss])
     )
 
 
@@ -339,8 +321,7 @@ def can_access_second_moleville_boss(world: GameWorld, inventory: Inventory) -> 
                 can_defeat_forest_boss,
                 can_defeat_sewer_boss,
                 can_defeat_first_moleville_boss,
-            ],
-        )
+            ])
     )
 
 
@@ -380,8 +361,7 @@ def can_access_curtain_boss(world: GameWorld, inventory: Inventory) -> bool:
                 can_defeat_forest_boss,
                 can_defeat_second_moleville_boss,
                 can_defeat_first_moleville_boss,
-            ],
-        )
+            ])
     )
 
 
@@ -403,8 +383,7 @@ def can_access_balcony_boss(world: GameWorld, inventory: Inventory) -> bool:
                 can_defeat_second_moleville_boss,
                 can_defeat_first_moleville_boss,
                 can_defeat_curtain_boss,
-            ],
-        )
+            ])
     )
 
 
@@ -446,8 +425,7 @@ def can_access_chapel_boss(world: GameWorld, inventory: Inventory) -> bool:
                 can_defeat_first_moleville_boss,
                 can_defeat_curtain_boss,
                 can_defeat_balcony_boss,
-            ],
-        )
+            ])
     )
 
 
@@ -481,8 +459,7 @@ def can_access_ship_midboss(world: GameWorld, inventory: Inventory) -> bool:
                 can_defeat_curtain_boss,
                 can_defeat_balcony_boss,
                 can_defeat_chapel_boss,
-            ],
-        )
+            ])
     )
 
 
@@ -519,8 +496,7 @@ def can_access_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_ship_midboss,
             can_defeat_ship_boss,
         ],
-        2,
-    )
+        2)
     if world.settings.is_flag_value(YaridovichGate, YaridovichGating.SHIP):
         return can_defeat_ship_boss(world, inventory) and sufficient_bosses
     if world.settings.is_flag_value(YaridovichGate, YaridovichGating.JOHNNY):
@@ -549,8 +525,7 @@ def can_access_lands_end_cloud(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_ship_boss,
             can_defeat_seaside_boss,
         ],
-        2,
-    )
+        2)
 
 
 def can_defeat_lands_end_cloud_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -583,8 +558,7 @@ def can_access_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_seaside_boss,
             can_defeat_lands_end_cloud_boss,
         ],
-        2,
-    )
+        2)
 
 
 def can_access_third_mimic(world: GameWorld, inventory: Inventory) -> bool:
@@ -605,8 +579,7 @@ def can_defeat_third_mimic(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_ship_boss,
             can_defeat_seaside_boss,
             can_defeat_lands_end_cloud_boss,
-        ],
-    )
+        ])
 
 
 def can_defeat_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -636,8 +609,7 @@ def can_access_first_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_seaside_boss,
             can_defeat_lands_end_cloud_boss,
             can_defeat_temple_boss,
-        ],
-    )
+        ])
 
 
 def can_defeat_first_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -698,8 +670,7 @@ def can_access_valley_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_second_dojo_boss,
             can_defeat_third_dojo_boss,
             can_defeat_fourth_dojo_boss,
-        ],
-    )
+        ])
 
 
 def can_defeat_valley_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -725,8 +696,7 @@ def can_access_statue_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_third_dojo_boss,
             can_defeat_fourth_dojo_boss,
             can_defeat_valley_boss,
-        ],
-    )
+        ])
 
 
 def can_defeat_statue_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -758,8 +728,7 @@ def can_access_egg_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_fourth_dojo_boss,
             can_defeat_valley_boss,
             can_defeat_statue_boss,
-        ],
-    )
+        ])
 
 
 def can_defeat_egg_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -790,8 +759,7 @@ def can_access_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_valley_boss,
             can_defeat_statue_boss,
             can_defeat_egg_boss,
-        ],
-    )
+        ])
 
 
 def can_defeat_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -824,8 +792,7 @@ def can_access_volcano_midboss(world: GameWorld, inventory: Inventory) -> bool:
             can_defeat_statue_boss,
             can_defeat_egg_boss,
             can_defeat_nimbus_boss,
-        ],
-    )
+        ])
 
 
 def can_defeat_volcano_midboss(world: GameWorld, inventory: Inventory) -> bool:
@@ -859,8 +826,7 @@ def can_take_lategame_bosses(world: GameWorld, inventory: Inventory) -> bool:
             can_access_nimbus_boss,
             can_defeat_volcano_midboss,
             can_defeat_volcano_boss,
-        ],
-    )
+        ])
 
 
 def can_access_keep(world: GameWorld, inventory: Inventory) -> bool:

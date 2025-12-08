@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1905_ABYSS_EXIT_TO_BOSS_2_ROOM,
             x=20,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1902_ABYSS_EXIT_TO_SIDE_TREASURE_ROOMS,
             x=21,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -91,8 +88,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -121,8 +117,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.NINJA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -150,8 +145,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.NINJA_NPC,
             battle_pack=121,
@@ -161,8 +155,7 @@ room = Room(
             y=25,
             z=8,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 3
             npc=npcs.NINJA_NPC,
             battle_pack=120,
@@ -172,8 +165,7 @@ room = Room(
             y=36,
             z=8,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -200,7 +192,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

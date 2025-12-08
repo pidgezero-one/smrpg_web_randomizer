@@ -18,8 +18,7 @@ script = EventScript(
         ),
         JmpToSubroutine(
             ["EVENT_3681_action_queue_async_20"],
-            identifier="EVENT_3681_jmp_to_subroutine_8",
-        ),
+            identifier="EVENT_3681_jmp_to_subroutine_8"),
         PlaySound(sound=SO014_FLOWER, channel=6),
         RemoveObjectFromSpecificLevel(NPC_1, R379_BEAN_VALLEY_BEANSTALKS_AREA_02),
         RemoveObjectFromCurrentLevel(NPC_1),
@@ -27,8 +26,7 @@ script = EventScript(
         Return(),
         JmpToSubroutine(
             ["EVENT_3681_action_queue_async_20"],
-            identifier="EVENT_3681_jmp_to_subroutine_14",
-        ),
+            identifier="EVENT_3681_jmp_to_subroutine_14"),
         PlaySound(sound=SO014_FLOWER, channel=6),
         RemoveObjectFromSpecificLevel(
             NPC_0, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02
@@ -64,8 +62,7 @@ script = EventScript(
                 ASPause(1),
                 ASEndLoop(),
             ],
-            identifier="EVENT_3681_action_queue_async_20",
-        ),
+            identifier="EVENT_3681_action_queue_async_20"),
         Return(),
     ]
 )

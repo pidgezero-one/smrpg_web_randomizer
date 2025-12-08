@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=673,
             x=7,
@@ -55,8 +54,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -76,7 +74,5 @@ room = Room(
             dst_z=0,
             dst_z_half=1,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
-    ],
-)
+            x_bit_7=False),
+    ])

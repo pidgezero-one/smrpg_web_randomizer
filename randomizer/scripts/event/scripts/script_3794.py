@@ -30,12 +30,10 @@ script = EventScript(
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASPause(30),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASPause(30), ASSetWalkingSpeed(FAST), ASWalk1StepSouth()],
-        ),
+            subscript=[ASPause(30), ASSetWalkingSpeed(FAST), ASWalk1StepSouth()]),
         RememberLastObject(),
         Pause(10),
         UnsyncActionScript(NPC_9),
@@ -68,8 +66,7 @@ script = EventScript(
                 ASPause(30),
                 ASResetProperties(),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Pause(60),
         ActionQueueAsync(
             target=MARIO,
@@ -88,8 +85,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_3794_action_queue_async_51_SUBSCRIPT_pause_4"]
                 ),
-            ],
-        ),
+            ]),
         Pause(30),
         UnsyncActionScript(NPC_9),
         UnsyncActionScript(NPC_4),
@@ -113,8 +109,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, sprite_offset=6, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         JmpToSubroutine(["EVENT_3794_set_bit_144"]),
         Pause(10),
         JmpToSubroutine(["EVENT_3794_set_bit_149"]),
@@ -125,8 +120,7 @@ script = EventScript(
         UnsyncActionScript(NPC_4),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASPause(20), ASSetWalkingSpeed(NORMAL), ASWalk1StepNortheast()],
-        ),
+            subscript=[ASPause(20), ASSetWalkingSpeed(NORMAL), ASWalk1StepNortheast()]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -142,8 +136,7 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASWalkNortheastSteps(2),
                 ASFloatingOff(),
                 ASSetSpriteSequence(
@@ -152,10 +145,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         Pause(10),
         PauseActionScript(NPC_8),
         ActionQueueSync(
@@ -166,8 +157,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASWalkSouthPixels(4),
                 ASWalkSouthwestPixels(6),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -177,8 +167,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=12, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -188,8 +177,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(2),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASShiftZDownPixels(4),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -204,8 +192,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=4, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(55),
         InitiateBattleMask(),
         EnterArea(
@@ -214,8 +201,7 @@ script = EventScript(
             x=4,
             y=51,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         SetBit(TEMP_7043_1, identifier="EVENT_3794_set_bit_144"),
         UnsyncActionScript(NPC_8),

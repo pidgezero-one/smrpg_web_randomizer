@@ -18,8 +18,7 @@ script = ActionScript(
             y=14,
             z=30,
             direction=NORTHEAST,
-            identifier="ACTION_639_transfer_xyzf_pixels_9",
-        ),
+            identifier="ACTION_639_transfer_xyzf_pixels_9"),
         VisibilityOn(identifier="ACTION_639_visibility_on_10"),
         Jmp(["ACTION_638_set_bit_4"]),
     ]

@@ -23,8 +23,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
             ],
-            identifier="EVENT_3501_action_queue_sync_7",
-        ),
+            identifier="EVENT_3501_action_queue_sync_7"),
         ResumeActionScript(MEM_70A8),
         ActionQueueAsync(
             target=MARIO,
@@ -63,8 +62,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         EnableControlsUntilReturn([B]),
         CompareVarToConst(SECONDARY_TEMP_7024, 0),
         JmpIfLoadedMemoryIsBelow0(["EVENT_3501_resume_background_event_16"]),
@@ -86,8 +84,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
             ],
-            identifier="EVENT_3501_action_queue_sync_19",
-        ),
+            identifier="EVENT_3501_action_queue_sync_19"),
         ResumeActionScript(MEM_70A8),
         ActionQueueAsync(
             target=MARIO,
@@ -107,8 +104,7 @@ script = EventScript(
                 ASCopyVarToVar(
                     from_var=TEMP_7028,
                     to_var=PRIMARY_TEMP_700C,
-                    identifier="EVENT_3501_action_queue_async_21_SUBSCRIPT_set_700C_to_7000_short_mem_6",
-                ),
+                    identifier="EVENT_3501_action_queue_async_21_SUBSCRIPT_set_700C_to_7000_short_mem_6"),
                 ASJmp(
                     [
                         "EVENT_3501_action_queue_async_21_SUBSCRIPT_set_animation_speed_16"
@@ -117,16 +113,14 @@ script = EventScript(
                 ASSetVarToConst(
                     PRIMARY_TEMP_700C,
                     64,
-                    identifier="EVENT_3501_action_queue_async_21_SUBSCRIPT_set_8",
-                ),
+                    identifier="EVENT_3501_action_queue_async_21_SUBSCRIPT_set_8"),
                 ASDecVarFrom700C(SECONDARY_TEMP_7024),
                 ASJmpIfVarNotEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,
                     [
                         "EVENT_3501_action_queue_async_21_SUBSCRIPT_set_animation_speed_16"
-                    ],
-                ),
+                    ]),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
                 ASFloatingOff(),
                 ASJumpToHeight(height=108, silent=True),
@@ -136,8 +130,7 @@ script = EventScript(
                 ),
                 ASSetWalkingSpeed(
                     NORMAL,
-                    identifier="EVENT_3501_action_queue_async_21_SUBSCRIPT_set_animation_speed_16",
-                ),
+                    identifier="EVENT_3501_action_queue_async_21_SUBSCRIPT_set_animation_speed_16"),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
                 ASFloatingOff(),
                 ASJumpToHeight(height=108, silent=True),
@@ -151,10 +144,8 @@ script = EventScript(
                     cant_pass_npcs=True,
                     cant_walk_through=True,
                     bit_7=True,
-                    identifier="EVENT_3501_action_queue_async_21_SUBSCRIPT_set_solidity_bits_25",
-                ),
-            ],
-        ),
+                    identifier="EVENT_3501_action_queue_async_21_SUBSCRIPT_set_solidity_bits_25"),
+            ]),
         EnableControlsUntilReturn([B]),
         CompareVarToConst(SECONDARY_TEMP_7024, 0),
         JmpIfLoadedMemoryIsAboveOrEqual0(["EVENT_3501_resume_background_event_16"]),

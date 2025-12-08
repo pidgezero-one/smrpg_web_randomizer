@@ -15,8 +15,7 @@ script = BattleAnimationScript(
             palette_row=8,
             looping=True,
             param_2_and_0x10=True,
-            overwrite_palette=True,
-        ),
+            overwrite_palette=True),
         SpriteQueue(
             field_object=0, destinations=["queuestart_0x3ac505"], bit_2=True, bit_4=True
         ),

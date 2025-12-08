@@ -25,8 +25,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASSetSolidityBits(cant_walk_through=True),
                 ASObjectMemoryClearBit(arg_1=0x08, bits=[3, 4]),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_7, A0638_ROSE_TOWN_ARROW),
         Return(),
     ]

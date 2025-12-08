@@ -10,8 +10,7 @@ from randomizer.data import items
 from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
 from randomizer.helpers.flag_helpers import (
     EquipmentPropertiesOptions,
-    EquipmentCharactersOptions,
-)
+    EquipmentCharactersOptions)
 from randomizer.data.eventscripts.utils.random_mushroom import script as random_mushroom
 from . import flags, utils
 
@@ -186,9 +185,7 @@ def _randomize_item(item, safetychecks_on=True):
                     items.FearlessPin,
                     items.AntidotePin,
                     items.TrueformPin,
-                    items.WakeUpPin,
-                ),
-            ):
+                    items.WakeUpPin)):
                 guaranteed_immunities = item.status_immunities
 
             # Status immunities.
@@ -256,9 +253,7 @@ def _randomize_item(item, safetychecks_on=True):
                 items.HappyPants,
                 items.HappyCape,
                 items.HappyShell,
-                items.PolkaDress,
-            ),
-        ):
+                items.PolkaDress)):
             item.prevent_ko = True
         elif isinstance(item, (items.CourageShell)):
             statuses_to_add.append(3)
@@ -268,14 +263,11 @@ def _randomize_item(item, safetychecks_on=True):
                 items.SailorShirt,
                 items.SailorPants,
                 items.SailorCape,
-                items.NauticaDress,
-            ),
-        ):
+                items.NauticaDress)):
             immunities_to_add.append(4)
         elif isinstance(
             item,
-            (items.FuzzyShirt, items.FuzzyPants, items.FuzzyCape, items.FuzzyDress),
-        ):
+            (items.FuzzyShirt, items.FuzzyPants, items.FuzzyCape, items.FuzzyDress)):
             immunities_to_add.append(5)
         elif isinstance(
             item,
@@ -284,9 +276,7 @@ def _randomize_item(item, safetychecks_on=True):
                 items.FirePants,
                 items.FireCape,
                 items.FireShell,
-                items.FireDress,
-            ),
-        ):
+                items.FireDress)):
             immunities_to_add.append(6)
         elif isinstance(item, (items.HeroShirt)):
             statuses_to_add.append(6)
@@ -306,9 +296,7 @@ def _randomize_item(item, safetychecks_on=True):
                 items.RibbitStick,
                 items.SonicCymbal,
                 items.WarFan,
-                items.Parasol,
-            ),
-        ):
+                items.Parasol)):
             mag = item.magic_attack
             atk = item.attack
             item.attack = mag
@@ -338,8 +326,7 @@ def _randomize_item(item, safetychecks_on=True):
             ) or (
                 item.world.settings.is_flag_value(
                     flags.EquipmentCharacters,
-                    EquipmentCharactersOptions.r_accessories_all,
-                )
+                    EquipmentCharactersOptions.r_accessories_all)
                 and not item.is_accessory
             ):
                 num_equippable = random.randint(1, random.randint(1, 5))
@@ -367,12 +354,10 @@ def _randomize_item(item, safetychecks_on=True):
             elif item.is_accessory and (
                 item.world.settings.is_flag_value(
                     flags.EquipmentCharacters,
-                    EquipmentCharactersOptions.v_accessories_all,
-                )
+                    EquipmentCharactersOptions.v_accessories_all)
                 or item.world.settings.is_flag_value(
                     flags.EquipmentCharacters,
-                    EquipmentCharactersOptions.r_accessories_all,
-                )
+                    EquipmentCharactersOptions.r_accessories_all)
             ):
                 item.equip_chars = list({Mario, Mallow, Geno, Bowser, Peach})
 
@@ -568,16 +553,13 @@ def randomize_all(world):
                             1
                             if (item.attack - item.variance == 0)
                             else (item.attack - item.variance)
-                        ),
-                    ),
-                )
+                        )))
                 + max(
                     0,
                     (item.magic_attack / (2 if item.magic_attack < 0 else 1))
                     + (item.magic_defense / (2 if item.magic_defense < 0 else 1))
                     + (item.defense / (2 if item.defense < 0 else 1))
-                    + min(20, item.speed / 2),
-                )
+                    + min(20, item.speed / 2))
                 + 15 * len(item.status_immunities)
                 + 15 * len(item.elemental_immunities)
                 + 7.5 * len(item.elemental_resistances)

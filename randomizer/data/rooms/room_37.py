@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2349_TOWER_SPOOKUM_JUMPS_OUT,
             x=11,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2352_TOWER_START_BULLET_BILLS,
             x=10,
@@ -70,8 +68,7 @@ room = Room(
             length=6,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2352_TOWER_START_BULLET_BILLS,
             x=10,
@@ -82,8 +79,7 @@ room = Room(
             length=6,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2352_TOWER_START_BULLET_BILLS,
             x=11,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2352_TOWER_START_BULLET_BILLS,
             x=15,
@@ -106,8 +101,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -127,8 +121,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=11,
             y=50,
@@ -146,8 +139,7 @@ room = Room(
             dst_z=4,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -177,8 +169,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.BULLET_BILL_NPC,
             battle_pack=52,
@@ -188,8 +179,7 @@ room = Room(
             y=35,
             z=10,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.BULLET_BILL_NPC,
             battle_pack=52,
@@ -199,8 +189,7 @@ room = Room(
             y=35,
             z=10,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.BULLET_BILL_NPC,
             battle_pack=52,
@@ -210,8 +199,7 @@ room = Room(
             y=35,
             z=10,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 4
             npc=npcs.SPOOKUM_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -239,8 +227,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 5
             npc=npcs.SPOOKUM_NPC,
             battle_pack=46,
@@ -250,8 +237,7 @@ room = Room(
             y=44,
             z=5,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         BattlePackClone( # 6
             npc=npcs.SPOOKUM_NPC,
             battle_pack=46,
@@ -261,8 +247,7 @@ room = Room(
             y=39,
             z=3,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 7
             npc=npcs.MOKURA_S_CLOUD_BLUE_NPC,
             initiator=EventInitiator.NONE,
@@ -289,8 +274,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.SNIFIT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -317,7 +301,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

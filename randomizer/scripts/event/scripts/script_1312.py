@@ -9,8 +9,7 @@ script = EventScript(
         PauseActionScript(NPC_4),
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkSoutheastPixels(6)],
-        ),
+            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkSoutheastPixels(6)]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -18,8 +17,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(9),
                 ASWalkSouthwestPixels(12),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -30,19 +28,16 @@ script = EventScript(
                 ASWalkSoutheastPixels(5),
                 ASSetPriority(1),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0797_TOWER_LOBBY_SHUFFLED_NPC_ANIMATION_LOADER),
         JmpIfObjectNotInSpecificLevel(
             NPC_1,
             R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM,
-            ["EVENT_1312_pause_action_script_8"],
-        ),
+            ["EVENT_1312_pause_action_script_8"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_2,
             R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM,
-            ["EVENT_1312_pause_action_script_8"],
-        ),
+            ["EVENT_1312_pause_action_script_8"]),
         FadeInFromBlack(sync=False),
         Return(),
         PauseActionScript(NPC_1, identifier="EVENT_1312_pause_action_script_8"),

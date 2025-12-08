@@ -21,15 +21,13 @@ script = EventScript(
             NPC_0,
             R363_VOLCANO_AREA_15_STOMPING_CORKPEDITE,
             ["EVENT_3336_run_event_as_subroutine_12"],
-            identifier="EVENT_3336_jmp_if_object_not_in_level_7",
-        ),
+            identifier="EVENT_3336_jmp_if_object_not_in_level_7"),
         Jmp(["EVENT_3336_action_queue_async_10"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_0,
             R362_VOLCANO_AREA_07_STOMPING_CORKPEDITE,
             ["EVENT_3336_run_event_as_subroutine_12"],
-            identifier="EVENT_3336_jmp_if_object_not_in_level_9",
-        ),
+            identifier="EVENT_3336_jmp_if_object_not_in_level_9"),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -39,15 +37,13 @@ script = EventScript(
                 ASWalkNorthwestPixels(8),
                 ASSetWalkingSpeed(NORMAL),
             ],
-            identifier="EVENT_3336_action_queue_async_10",
-        ),
+            identifier="EVENT_3336_action_queue_async_10"),
         RunBackgroundEvent(
             event_id=E3337_CORKPEDITE_ANIMATION, return_on_level_exit=True
         ),
         RunEventAsSubroutine(
             E0015_STANDARD_ROOM_LOADER,
-            identifier="EVENT_3336_run_event_as_subroutine_12",
-        ),
+            identifier="EVENT_3336_run_event_as_subroutine_12"),
         Return(),
     ]
 )

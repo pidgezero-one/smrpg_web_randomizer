@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -63,8 +62,7 @@ room = Room(
             destination=OW10_MUSHROOM_KINGDOM,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         MapExit(
             x=22,
             y=124,
@@ -78,8 +76,7 @@ room = Room(
             destination=OW10_MUSHROOM_KINGDOM,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         RoomExit(
             x=13,
             y=80,
@@ -97,8 +94,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=6,
             y=105,
@@ -116,8 +112,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=19,
             y=110,
@@ -135,8 +130,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=15,
             y=97,
@@ -154,8 +148,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=11,
             y=115,
@@ -173,8 +166,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -203,8 +195,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -231,8 +222,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -259,8 +249,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 3
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -288,8 +277,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 4
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -317,8 +305,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -345,8 +332,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -373,8 +359,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -401,8 +386,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.RAINI_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -429,8 +413,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -457,8 +440,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -485,7 +467,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -13,8 +13,7 @@ script = EventScript(
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         JmpToEvent(E0184_NPC_QUEST_GRANT_SINGLE_FIREWORKS),
     ]
 )

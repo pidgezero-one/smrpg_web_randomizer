@@ -2,15 +2,13 @@
 
 from copy import copy
 from random import choice, choices, randint, random, shuffle
-from typing import Dict, List, Optional, Type, Union
 from scipy.stats import gamma
 from randomizer.entities.characters import (
     Bowser,
     Geno,
     Mallow,
     Mario,
-    Toadstool,
-)
+    Toadstool)
 from randomizer.entities.items import (
     BanditsWayStar,
     Beetlemania,
@@ -53,8 +51,7 @@ from randomizer.entities.items import (
     StarPiece6,
     StarPiece7,
     Wallet,
-    YouMissed,
-)
+    YouMissed)
 from randomizer.entities.progress_locations import (
     BowserSpellSlot1,
     BowserSpellSlot2,
@@ -89,11 +86,9 @@ from randomizer.entities.progress_locations import (
     StartingCharacter1,
     FireworksShopItem,
     KeepAfterObstaclesBossChest,
-    MushroomKingdomInnPurchase,
-)
+    MushroomKingdomInnPurchase)
 from randomizer.entities.progress_locations.helpers.classes import (
-    MarrymoreChapelLocation,
-)
+    MarrymoreChapelLocation)
 from randomizer.entities.spells import SuperJump
 from randomizer.types.bosses import Boss
 from randomizer.types.characters import Character
@@ -106,8 +101,7 @@ from randomizer.types.items import (
     RecruitedCharacter,
     RegularItem,
     StarPiece,
-    ItemUnique,
-)
+    ItemUnique)
 from randomizer.types.numbers.classes import UInt16
 from randomizer.types.overworld_scripts.arguments.variables import PRIMARY_TEMP_7000
 from randomizer.types.overworld_scripts.event_scripts.classes import EventScript
@@ -115,11 +109,9 @@ from randomizer.types.overworld_scripts.event_scripts.commands.commands import (
     Jmp,
     JmpIfVarEqualsConst,
     JmpToEvent,
-    Set7000ToCurrentLevel,
-)
+    Set7000ToCurrentLevel)
 from randomizer.types.overworld_scripts.event_scripts.commands.types.classes import (
-    UsableEventScriptCommand,
-)
+    UsableEventScriptCommand)
 from randomizer.types.progress_locations import (
     BossFightLocation,
     BossStarPiecePrize,
@@ -132,8 +124,7 @@ from randomizer.types.progress_locations import (
     Inventory,
     ItemLocation,
     ProgressLocation,
-    TreasureShopItem,
-)
+    TreasureShopItem)
 from randomizer.types.spells import CharacterSpell
 from randomizer.types.world import GameWorld
 from randomizer.types.world.classes import WorldBuildingException
@@ -178,8 +169,7 @@ from randomizer.types.world.flags import (
     SlotsAnywhere,
     StartingCharacter,
     TotalStarPieces,
-    WinCondition,
-)
+    WinCondition)
 
 _dummy_allpurpose_item = RegularItem(None)
 _dummy_allpurpose_item.set_price(1)
@@ -208,7 +198,7 @@ def _get_max_tier(world: GameWorld) -> int:
 
 def _generate_nonrequired_item(
     world: GameWorld, location: ProgressLocation
-) -> Optional[Item]:
+) -> Item | None:
     max_tier: int = _get_max_tier(world)
     rewards = copy(_REWARD_TABLE)
     if not world.settings.is_boolean_flag_enabled(SlotsAnywhere):
@@ -219,7 +209,7 @@ def _generate_nonrequired_item(
 
     weights, possible_options = list(zip(*table))
     result = choices(possible_options, weights=weights, k=1)[0]
-    item: Optional[Item] = None
+    item: Item | None = None
     if result == InvincibilityStar:
         all_choices = [
             world.get_item_instance(i)
@@ -330,7 +320,7 @@ def _generate_nonrequired_item(
     return item
 
 
-def _included_characters(world: GameWorld) -> List[Character]:
+def _included_characters(world: GameWorld) -> list[Character]:
     """Returns the list of character instances who will be recruitable in the seed."""
     max_chars: int = world.settings.get_flag(MaxCharacters).value
     excluded = world.settings.get_flag(AvailableCharacters).disabled
@@ -428,7 +418,7 @@ def _included_characters(world: GameWorld) -> List[Character]:
 
 
 def _collect_items(
-    world: GameWorld, collected: Optional[Inventory] = None
+    world: GameWorld, collected: Inventory | None = None
 ) -> Inventory:
     my_items = Inventory()
     if collected is not None:
@@ -466,19 +456,10 @@ def _collect_items(
 def _place_items(
     world: GameWorld,
     items_to_place: Inventory,
-    locations: List[
-        Union[
-            ChestLocation,
-            GrantLocation,
-            FreestandingLocation,
-            CharacterSpellSlot,
-            CharacterRecruitLocation,
-            BossStarPiecePrize,
-            BossFightLocation,
-        ]
+    locations: list[
+        ChestLocation | GrantLocation | FreestandingLocation | CharacterSpellSlot | CharacterRecruitLocation | BossStarPiecePrize | BossFightLocation
     ],
-    base_inventory: Optional[Inventory] = None,
-) -> Inventory:
+    base_inventory: Inventory | None = None) -> Inventory:
     if base_inventory is None:
         base_inventory = Inventory()
     remaining_fill_items = copy(items_to_place)
@@ -549,21 +530,12 @@ def _place_items(
 
 def _fill_locations(
     world: GameWorld,
-    locations: List[
-        Union[
-            ChestLocation,
-            GrantLocation,
-            FreestandingLocation,
-            CharacterSpellSlot,
-            CharacterRecruitLocation,
-            BossStarPiecePrize,
-            BossFightLocation,
-        ]
+    locations: list[
+        ChestLocation | GrantLocation | FreestandingLocation | CharacterSpellSlot | CharacterRecruitLocation | BossStarPiecePrize | BossFightLocation
     ],
     required_items: Inventory,
-    extra_items: Optional[Inventory] = None,
-    existing_inventory: Optional[Inventory] = None,
-) -> Inventory:
+    extra_items: Inventory | None = None,
+    existing_inventory: Inventory | None = None) -> Inventory:
     if extra_items is None:
         extra_items = Inventory()
     if existing_inventory is None:
@@ -658,8 +630,8 @@ def _place_everything(world: GameWorld) -> None:
     characters = _included_characters(world)
 
     # First: For anything that is NOT shuffled, place it in its original location.
-    preset_locations: List[
-        Union[ItemLocation, BossStarPiecePrize, CharacterRecruitLocation]
+    preset_locations: list[
+        ItemLocation | BossStarPiecePrize | CharacterRecruitLocation
     ] = []
     if not world.settings.is_boolean_flag_enabled(ShuffleItems):
         preset_locations += [l for l in world.item_locations if not l.key_item_location]
@@ -748,7 +720,7 @@ def _place_everything(world: GameWorld) -> None:
 
     # do the same for boss fights, but they're a little different
 
-    preset_bosses: List[BossFightLocation] = []
+    preset_bosses: list[BossFightLocation] = []
     if not world.settings.is_boolean_flag_enabled(BossShuffle):
         preset_bosses += world.boss_locations
     else:
@@ -803,7 +775,7 @@ def _place_everything(world: GameWorld) -> None:
         )
     else:
         # These items should be in every seed.
-        other_important_item_classes: List[Type[Item]] = [
+        other_important_item_classes: list[type[Item]] = [
             Wallet,
             Fireworks,
             ProgressiveEgg,
@@ -892,8 +864,7 @@ def _place_everything(world: GameWorld) -> None:
         all_locations,
         required_item_pool,
         extra_item_pool,
-        Inventory(presets),
-    )
+        Inventory(presets))
     remainder_check = [i for i in remainder if i in crosscheck]
     if len(remainder_check) > 0:
         raise WorldBuildingException
@@ -914,14 +885,13 @@ def _place_everything(world: GameWorld) -> None:
 
 
 class _Grant:
-    jumps: List[UsableEventScriptCommand]
-    executions: List[UsableEventScriptCommand]
+    jumps: list[UsableEventScriptCommand]
+    executions: list[UsableEventScriptCommand]
 
     def __init__(
         self,
-        jumps: List[UsableEventScriptCommand],
-        executions: Optional[List[UsableEventScriptCommand]] = None,
-    ):
+        jumps: list[UsableEventScriptCommand],
+        executions: list[UsableEventScriptCommand] | None = None):
         self.jumps = jumps
         if executions is None:
             self.executions = []
@@ -934,7 +904,7 @@ def shuffle_all(world: GameWorld) -> None:
     (items, boss fights, star pieces, characters, spells)."""
     _place_everything(world)
 
-    grant_builders: Dict[UInt16, _Grant] = {}
+    grant_builders: dict[UInt16, _Grant] = {}
 
     # update granter scripts to match character placements
     for loc in world.character_recruit_locations:
@@ -954,8 +924,7 @@ def shuffle_all(world: GameWorld) -> None:
                     JmpIfVarEqualsConst(
                         PRIMARY_TEMP_7000,
                         room_id,
-                        [recruitment_jump_command.identifier.name],
-                    )
+                        [recruitment_jump_command.identifier.name])
                 )
         # gating
         if isinstance(character, Mario) and world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):

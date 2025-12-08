@@ -17,8 +17,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_0,
             subscript=[ASSetSequenceSpeed(FAST)],
-            identifier="EVENT_2402_action_queue_async_8",
-        ),
+            identifier="EVENT_2402_action_queue_async_8"),
         Set7000ToPressedButton(identifier="EVENT_2402_set_7000_to_pressed_button_9"),
         JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_jmp_if_bit_set_33"]),
         JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_2402_jmp_if_bit_set_38"]),
@@ -44,34 +43,29 @@ script = EventScript(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 )
             ],
-            identifier="EVENT_2402_action_queue_sync_27",
-        ),
+            identifier="EVENT_2402_action_queue_sync_27"),
         Jmp(["EVENT_2402_pause_1"]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[ASSetSpriteSequence(index=2, is_sequence=True, looping=True)],
-            identifier="EVENT_2402_action_queue_sync_29",
-        ),
+            identifier="EVENT_2402_action_queue_sync_29"),
         Jmp(["EVENT_2402_pause_1"]),
         ClearBit(TEMP_7043_0, identifier="EVENT_2402_clear_bit_31"),
         Jmp(["EVENT_2402_pause_1"]),
         JmpIfBitSet(
             TEMP_7043_1,
             ["EVENT_2402_pause_1"],
-            identifier="EVENT_2402_jmp_if_bit_set_33",
-        ),
+            identifier="EVENT_2402_jmp_if_bit_set_33"),
         SetBit(TEMP_7043_1),
         ClearBit(TEMP_7043_2),
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASSetSpriteSequence(index=0, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=0, is_sequence=True, looping=True)]),
         Jmp(["EVENT_2402_pause_1"]),
         JmpIfBitSet(
             TEMP_7043_2,
             ["EVENT_2402_pause_1"],
-            identifier="EVENT_2402_jmp_if_bit_set_38",
-        ),
+            identifier="EVENT_2402_jmp_if_bit_set_38"),
         ClearBit(TEMP_7043_1),
         SetBit(TEMP_7043_2),
         ActionQueueSync(
@@ -80,8 +74,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         Jmp(["EVENT_2402_pause_1"]),
         SetBit(TEMP_7043_0, identifier="EVENT_2402_set_bit_43"),
         ClearBit(TEMP_7043_1),
@@ -104,8 +97,7 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_0,
             subscript=[ASSetSpriteSequence(index=1, is_sequence=True, looping=True)],
-            identifier="EVENT_2402_action_queue_sync_61",
-        ),
+            identifier="EVENT_2402_action_queue_sync_61"),
         Jmp(["EVENT_2402_pause_1"]),
         ActionQueueSync(
             target=NPC_0,
@@ -114,14 +106,12 @@ script = EventScript(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 )
             ],
-            identifier="EVENT_2402_action_queue_sync_63",
-        ),
+            identifier="EVENT_2402_action_queue_sync_63"),
         Jmp(["EVENT_2402_pause_1"]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[ASSetSpriteSequence(index=1, is_sequence=True, looping=True)],
-            identifier="EVENT_2402_action_queue_sync_65",
-        ),
+            identifier="EVENT_2402_action_queue_sync_65"),
         Jmp(["EVENT_2402_pause_1"]),
         ActionQueueSync(
             target=NPC_0,
@@ -130,8 +120,7 @@ script = EventScript(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 )
             ],
-            identifier="EVENT_2402_action_queue_sync_67",
-        ),
+            identifier="EVENT_2402_action_queue_sync_67"),
         Jmp(["EVENT_2402_pause_1"]),
     ]
 )

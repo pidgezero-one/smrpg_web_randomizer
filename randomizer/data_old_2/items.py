@@ -24,8 +24,7 @@ class Item:
     DESC_DATA_POINTER_OFFSET = 0x3a0000
     BASE_DESC_DATA_ADDRESSES = (
         (0x3a3120, 0x3a40f1),
-        (0x3a55f0, 0x3a5fff),
-    )
+        (0x3a55f0, 0x3a5fff))
 
     # Total number of items in the data.
     NUM_ITEMS = 256
@@ -248,8 +247,7 @@ class Item:
             desc += utils.add_desc_fields((
                 ('\x80\x98', 6, self.elemental_immunities),
                 ('\x81', 4, self.elemental_immunities),
-                ('\x82', 5, self.elemental_immunities),
-            ))
+                ('\x82', 5, self.elemental_immunities)))
         else:
             desc += '\x99' * 4
         desc += '\x99'
@@ -259,8 +257,7 @@ class Item:
             desc += utils.add_desc_fields((
                 ('\x80\x98', 6, self.elemental_resistances),
                 ('\x81', 4, self.elemental_resistances),
-                ('\x82', 5, self.elemental_resistances),
-            ))
+                ('\x82', 5, self.elemental_resistances)))
         else:
             desc += '\x99' * 4
         desc += '\x01'
@@ -278,8 +275,7 @@ class Item:
             ('\x98\x87', 5, self.status_immunities),
             ('\x88', 6, self.status_immunities),
             ('\x89', True, self.prevent_ko),
-            ('\x8A', 4, self.status_immunities),
-        ))
+            ('\x8A', 4, self.status_immunities)))
         desc += '\x01'
 
         # Physical attack/defense

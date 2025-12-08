@@ -17,8 +17,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ObjectQueueAtOffsetAndIndex(index=2, target_address=0x35EA0C),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=15),
         SetAMEM32ToXYZCoords(
@@ -28,8 +27,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ObjectQueueAtOffsetAndIndex(index=4, target_address=0x35EA0C),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=15),
         SetAMEM32ToXYZCoords(
@@ -39,8 +37,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ObjectQueueAtOffsetAndIndex(index=6, target_address=0x35EA0C),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=15),
         SetAMEM32ToXYZCoords(
@@ -50,8 +47,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ObjectQueueAtOffsetAndIndex(index=2, target_address=0x35EA0C),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=15),
         SetAMEM32ToXYZCoords(
@@ -61,8 +57,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ObjectQueueAtOffsetAndIndex(index=4, target_address=0x35EA0C),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=15),
         SetAMEM32ToXYZCoords(
@@ -72,8 +67,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ObjectQueueAtOffsetAndIndex(index=6, target_address=0x35EA0C),
         Pause1Frame(identifier="command_0x35ea7a"),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 6, ["command_0x35ea7a"]),
@@ -94,8 +88,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35ea9c",
-        ),
+            identifier="queuestart_0x35ea9c"),
         NewSpriteAtCoords(
             sprite_id=SPR0530_STAT_BOOST_ARROWS,
             sequence=0,
@@ -104,8 +97,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x35eadb"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -116,8 +108,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35eab1",
-        ),
+            identifier="queuestart_0x35eab1"),
         NewSpriteAtCoords(
             sprite_id=SPR0530_STAT_BOOST_ARROWS,
             sequence=0,
@@ -126,8 +117,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x35eadb"]),
         ReturnObjectQueue(),
         SetAMEM32ToXYZCoords(
@@ -138,8 +128,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35eac6",
-        ),
+            identifier="queuestart_0x35eac6"),
         NewSpriteAtCoords(
             sprite_id=SPR0530_STAT_BOOST_ARROWS,
             sequence=0,
@@ -148,8 +137,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x35eadb"]),
         ReturnObjectQueue(),
         SetAMEM8BitToOMEMMain(amem=0x6A, omem=0x6D, identifier="command_0x35eadb"),
@@ -163,5 +151,4 @@ script = SubroutineOrBanklessScript(
         IncAMEM8Bit(0x6E),
         SetOMEMMainToAMEM8Bit(omem=0x6E, amem=0x6E),
         ReturnSubroutine(),
-    ],
-)
+    ])

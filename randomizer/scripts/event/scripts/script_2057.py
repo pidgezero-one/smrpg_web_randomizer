@@ -15,8 +15,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -24,8 +23,7 @@ script = EventScript(
                 ASWalkNortheastPixels(3),
                 ASFaceSouthwest(),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

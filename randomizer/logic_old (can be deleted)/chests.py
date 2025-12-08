@@ -20,19 +20,16 @@ from randomizer.helpers.flag_helpers import (
     ForestMazeGating,
     BoosterTowerGating,
     SeaGating,
-    ShuffleLocationSelector,
-)
+    ShuffleLocationSelector)
 from randomizer.helpers.npcmodeltables import VramStore
 from randomizer.data.items import ItemUnique
 from randomizer.data.locations import Area
 from randomizer.data.keys import KeyItemLocation
 from randomizer.logic import flags, keys, utils
 from randomizer.data.eventscripts.utils.slot_machine.event import (
-    script as slot_machine_commands,
-)
+    script as slot_machine_commands)
 from randomizer.data.eventscripts.utils.slot_machine.objects import (
-    objects as slot_machine_npcs,
-)
+    objects as slot_machine_npcs)
 from randomizer.helpers.eventtables import AreaObjects
 from randomizer.data import characters
 
@@ -429,16 +426,14 @@ def _place_items(
                         set_item(
                             world.spotted_character_checks,
                             chests.MarrymoreCharacterSpotted,
-                            world.get_item_instance(spotted),
-                        )
+                            world.get_item_instance(spotted))
                     elif utils.isclass_or_instance(
                         fillable_locations[0], chests.MushroomWayCharacter
                     ):
                         set_item(
                             world.spotted_character_checks,
                             chests.MushroomWayCharacterSpotted,
-                            world.get_item_instance(spotted),
-                        )
+                            world.get_item_instance(spotted))
                     base_inventory.append(spotted)
 
             # Restrict star piece location eligibility if the proper flag is enabled
@@ -1233,8 +1228,7 @@ def randomize_all(world):
                 if world.settings.is_flag_value(flags.ShuffleBeetlemania, True):
                     world.replace_dialog(
                         3738,
-                        """ You want an item?\n It's only 500 coins.[await]\n [select]  (Well, sure!)\n [select]  (No)[await]""",
-                    )
+                        """ You want an item?\n It's only 500 coins.[await]\n [select]  (Well, sure!)\n [select]  (No)[await]""")
                     required_item_pool.append(
                         world.get_item_instance(items.Beetlemania)
                     )
@@ -1333,8 +1327,7 @@ def randomize_all(world):
                     for i, item in enumerate(required_item_pool)
                     if utils.isclass_or_instance(item, it)
                 ),
-                -1,
-            )
+                -1)
             if it_index == -1:
                 it_index = next(
                     (
@@ -1342,8 +1335,7 @@ def randomize_all(world):
                         for i, item in enumerate(extra_item_pool)
                         if utils.isclass_or_instance(item, it)
                     ),
-                    -1,
-                )
+                    -1)
                 if it_index == -1:
                     print("warning: could not remove %r" % it)
                 else:
@@ -1378,8 +1370,7 @@ def randomize_all(world):
                 copy.copy(all_locations),
                 copy.copy(required_item_pool),
                 copy.copy(extra_item_pool),
-                copy.copy(inventory),
-            )
+                copy.copy(inventory))
             print(remainder)
             # print(world.settings.get_flag(flags.StarPiecesRequired).value)
             # print([l for l in all_locations if l.item is None and not utils.isclass_or_instance(l, chests.BossStarPiece)])
@@ -1645,8 +1636,7 @@ def randomize_all(world):
                     mario_index = chri
             character_order[mario_index], character_order[0] = (
                 character_order[0],
-                character_order[mario_index],
-            )
+                character_order[mario_index])
 
         pickups = [
             chests.StarterCharacter1,
@@ -1961,8 +1951,7 @@ def randomize_all(world):
                             jmp = utils.new_command(
                                 c.event,
                                 "jmp_if_7000_equals_short",
-                                [r, cmds[0]["identifier"]],
-                            )
+                                [r, cmds[0]["identifier"]])
                             grant_builders[c.event]["jumps"].append(jmp)
                         grant_builders[c.event]["executions"].extend(cmds)
                     # mimics - update battlefield
@@ -2003,16 +1992,14 @@ def randomize_all(world):
                             utils.new_command(
                                 c.event,
                                 "jmp_to_event",
-                                [c.item.get_chest_event(c.event)],
-                            )
+                                [c.item.get_chest_event(c.event)])
                         )
                         grant_builders[c.event]["executions"].extend(cmds)
                         for r in c.rooms:
                             jmp = utils.new_command(
                                 c.event,
                                 "jmp_if_7000_equals_short",
-                                [r, cmds[0]["identifier"]],
-                            )
+                                [r, cmds[0]["identifier"]])
                             grant_builders[c.event]["jumps"].append(jmp)
                     else:
                         if c.manual_70A7 or len([r for r in c.rooms if r > 509]) > 0:
@@ -2092,8 +2079,7 @@ def randomize_all(world):
                             jmp = utils.new_command(
                                 c.event,
                                 "jmp_if_7000_equals_short",
-                                [r, cmds[0]["identifier"]],
-                            )
+                                [r, cmds[0]["identifier"]])
                             grant_builders[c.event]["jumps"].append(jmp)
                 # npc rewards
                 else:
@@ -2140,8 +2126,7 @@ def randomize_all(world):
                             jmp = utils.new_command(
                                 c.event,
                                 "jmp_if_7000_equals_short",
-                                [r, cmds[0]["identifier"]],
-                            )
+                                [r, cmds[0]["identifier"]])
                             grant_builders[c.event]["jumps"].append(jmp)
                         # coin snake considerations
                         if utils.isclass_or_instance(c, chests.SunkenShipCoinSnake):
@@ -2288,15 +2273,13 @@ def randomize_all(world):
                             0,
                             utils.new_command(
                                 3124, "disable_trigger", [AreaObjects.MEM_70A8]
-                            ),
-                        )
+                            ))
                     elif utils.isclass_or_instance(c, chests.HIDON_REWARD_2):
                         world.eventscripts[3126].insert(
                             0,
                             utils.new_command(
                                 3126, "disable_trigger", [AreaObjects.MEM_70A8]
-                            ),
-                        )
+                            ))
                     elif utils.isclass_or_instance(
                         c, chests.KeroSewersBeforeBelomeUpper2
                     ):
@@ -2312,9 +2295,7 @@ def randomize_all(world):
                                 utils.new_command(
                                     192,
                                     "disable_trigger_in_level",
-                                    [0x14 + chest_npc, chest_level],
-                                ),
-                            )
+                                    [0x14 + chest_npc, chest_level]))
 
         # freestanding items
         for c in [
@@ -2494,8 +2475,7 @@ def randomize_all(world):
                         utils.new_command(
                             c.event,
                             "jmp_if_bit_clear",
-                            [0x7099, 0, exp_inc["identifier"]],
-                        ),
+                            [0x7099, 0, exp_inc["identifier"]]),
                         utils.new_command(c.event, "jmp_to_event", [3886]),
                         exp_inc,
                         utils.new_command(c.event, "run_event_as_subroutine", [355]),
@@ -2523,8 +2503,7 @@ def randomize_all(world):
                 world.rooms[159].objects[9].visible = False
 
         grant_builders[167]["jumps"].append(
-            utils.new_command(167, "jmp_to_event", [3400]),
-        )
+            utils.new_command(167, "jmp_to_event", [3400]))
         # finalize granter scripts
         for e in grant_builders:
             grant_builders[e]["jumps"].append(utils.new_command(e, "ret"))
@@ -2534,8 +2513,7 @@ def randomize_all(world):
         # clear directional bit for rooms that needed it in star piece granter
         world.eventscripts[e].insert(
             0,
-            utils.new_command(167, "clear_bit", [0x7077, 5]),
-        )
+            utils.new_command(167, "clear_bit", [0x7077, 5]))
 
         # if star piece signal ring hints turned on, set the appropriate bit checks in each area
         if world.settings.is_flag_value(flags.StarPieceHints, True):
@@ -2624,9 +2602,7 @@ def randomize_all(world):
                             utils.new_command(
                                 hint_event,
                                 "jmp_if_bit_clear",
-                                [hint_var, hint_bit, sound_command["identifier"]],
-                            ),
-                        )
+                                [hint_var, hint_bit, sound_command["identifier"]]))
 
 
 def get_spoiler(world):

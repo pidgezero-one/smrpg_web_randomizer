@@ -21,8 +21,7 @@ script = SubroutineOrBanklessScript(
             should_set_start_position=True,
             should_set_end_position=True,
             should_set_speed=True,
-            identifier="command_0x3509ae",
-        ),
+            identifier="command_0x3509ae"),
         Db(bytearray(b"\x12\x81")),
         SetAMEM40ToXYZCoords(origin=CASTER_INITIAL_POSITION, x=0, y=0, z=0, set_x=True),
         PauseScriptUntil(condition=0x01),
@@ -35,11 +34,9 @@ script = SubroutineOrBanklessScript(
             apply_to_z=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         Db(bytearray(b"\x12A")),
         Db(bytearray(b"\x15")),
         Pause1Frame(),
         Jmp(["command_0x3509ae"]),
-    ],
-)
+    ])

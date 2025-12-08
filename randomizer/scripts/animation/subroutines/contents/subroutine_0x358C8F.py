@@ -22,5 +22,4 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"\x88")),
         JmpIfAMEM8BitEqualsConst(0x6D, 64, ["command_0x358cc0"]),
         RunSubroutine(["240"]),
-    ],
-)
+    ])

@@ -39,8 +39,7 @@ objects = [
         acute_axis=5,
         obtuse_axis=5,
         height=9,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=GreenSwitch,
@@ -73,8 +72,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=GreenSwitch,
@@ -89,8 +87,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=JBlock,
@@ -127,8 +124,7 @@ objects = [
         height=9,
         cannot_clone=False,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_4
     RegularNPC(
         occupant=SavePoint,
@@ -162,6 +158,5 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

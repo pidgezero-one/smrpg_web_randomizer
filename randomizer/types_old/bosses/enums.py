@@ -9,8 +9,7 @@ from randomizer.types.battles import (
     CulexMusic,
     MidbossMusic,
     NormalBattleMusic,
-    Smithy1Music,
-)
+    Smithy1Music)
 from randomizer.types.world.flags.enums import FlagOptions
 
 

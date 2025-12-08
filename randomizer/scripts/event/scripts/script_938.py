@@ -11,8 +11,7 @@ script = EventScript(
             subscript=[
                 ASSetSpriteSequence(index=0, is_mold=True, looping=True),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

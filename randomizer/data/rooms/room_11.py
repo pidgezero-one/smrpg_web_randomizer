@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=12,
             y=74,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=2,
             dst_z_half=True,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -102,8 +100,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.EMPTY_NPC_3,
             event_script=E0607_LOCKED_DOOR,
@@ -113,8 +110,7 @@ room = Room(
             y=70,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 2
             npc=npcs.MARRYMORE_KID_PURPLE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -141,8 +137,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.MARRYMORE_KID_PURPLE_NPC,
             event_script=E0609_MARRYMORE_INN_3F_HALLWAY_BELLHOP,
@@ -152,8 +147,7 @@ room = Room(
             y=101,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 4
             npc=npcs.OLD_WOMAN_GREEN_GREY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -180,8 +174,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 5
             npc=npcs.MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY_NPC,
             event_script=E0621_MARRYMORE_INN_ELDERLY_GUEST,
@@ -191,7 +184,6 @@ room = Room(
             y=101,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
     ]
 )

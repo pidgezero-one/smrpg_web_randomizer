@@ -12,15 +12,13 @@ script = EventScript(
             subscript=[
                 ASSetPriority(3),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
                 ASSetPriority(3),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_2, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_3, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_0, subscript=[ASSetPriority(3), ASVisibilityOff()]),

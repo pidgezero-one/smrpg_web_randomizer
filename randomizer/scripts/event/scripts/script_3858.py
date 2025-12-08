@@ -13,8 +13,7 @@ script = EventScript(
             x=13,
             y=62,
             z=1,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

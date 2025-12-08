@@ -8,16 +8,14 @@ script = EventScript(
     [
         JmpIfBitSet(
             MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED,
-            ["EVENT_290_jmp_if_bit_set_355_"],
-        ),
+            ["EVENT_290_jmp_if_bit_set_355_"]),
         SetBit(MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED),
         RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
         Return(),
         JmpIfBitClear(
             MUSHROOM_KINGDOM_LIBERATED,
             ["EVENT_290_open_shop_364"],
-            identifier="EVENT_290_jmp_if_bit_set_355_",
-        ),
+            identifier="EVENT_290_jmp_if_bit_set_355_"),
         StoreItemAmountTo7000(RareFrogCoin),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 1, ["EVENT_290_run_event_as_subroutine_359_"]

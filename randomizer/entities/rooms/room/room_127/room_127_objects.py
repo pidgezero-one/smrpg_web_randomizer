@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackNPC(
         occupant=PipePiranhaPlant,
@@ -70,8 +69,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackNPC(
         occupant=Goomba,
@@ -106,8 +104,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=10,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=Goomba,
@@ -141,6 +138,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=10,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

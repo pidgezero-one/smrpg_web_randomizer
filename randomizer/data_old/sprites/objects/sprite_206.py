@@ -32,8 +32,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=128,
-                            y=120,
-                        ),
+                            y=120),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -55,10 +54,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=120,
-                            y=120,
-                        ),
-                    ],
-                ),
+                            y=120),
+                    ]),
                 Mold(
                     1,
                     gridplane=False,
@@ -86,10 +83,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=120,
-                            y=120,
-                        ),
-                    ],
-                ),
+                            y=120),
+                    ]),
                 Mold(
                     2,
                     gridplane=False,
@@ -117,10 +112,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=120,
-                            y=120,
-                        ),
-                    ],
-                ),
+                            y=120),
+                    ]),
                 Mold(
                     3,
                     gridplane=False,
@@ -148,10 +141,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=120,
-                            y=120,
-                        ),
-                    ],
-                ),
+                            y=120),
+                    ]),
                 Mold(
                     4,
                     gridplane=False,
@@ -179,10 +170,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=120,
-                            y=120,
-                        ),
-                    ],
-                ),
+                            y=120),
+                    ]),
             ],
             sequences=[
                 AnimationSequence(
@@ -204,10 +193,7 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=16, mold_id=4),
                     ]
                 ),
-            ],
-        ),
-    ),
+            ])),
     palette_id=310,
     palette_offset=0,
-    unknown_num=0,
-)
+    unknown_num=0)

@@ -20,8 +20,7 @@ script = ActionScript(
             bit_4=True,
             cant_pass_npcs=True,
             cant_walk_through=True,
-            bit_7=True,
-        ),
+            bit_7=True),
         Return(),
     ]
 )

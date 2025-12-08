@@ -133,5 +133,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitTo7E1x(0x68, 0x7EE01C),
         JmpIfAMEMBitsClear(0x68, [4], ["command_0x3a7852"]),
         ReturnSubroutine(),
-    ],
-)
+    ])

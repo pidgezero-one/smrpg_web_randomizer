@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3565a2",
-        ),
+            identifier="queuestart_0x3565a2"),
         NewSpriteAtCoords(
             sprite_id=SPR0804_GUNK_BALL_INK_BLAST,
             sequence=5,
@@ -25,8 +24,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         ClearAMEM8Bit(0x64),
@@ -56,5 +54,4 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x3565f5"),
         JmpIfAMEM8BitNotEqualsConst(0x69, 60, ["command_0x3565f5"]),
         Jmp(["command_0x356b01"]),
-    ],
-)
+    ])

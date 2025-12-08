@@ -18,8 +18,7 @@ script = EventScript(
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["EVENT_257_fade_in_from_black_async_0"]),
         RunBackgroundEvent(
             event_id=E0596_MINES_BOSS_ROOM_BACKGROUND_EXPLOSIONS,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         FadeInFromBlack(sync=False),
         RunEventAsSubroutine(E0788_MINES_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
         Return(),

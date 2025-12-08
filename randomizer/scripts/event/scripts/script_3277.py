@@ -10,8 +10,7 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER,
-            mod_id=1,
-        ),
+            mod_id=1),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         SetBit(TEMP_7043_1),
         Return(identifier="EVENT_3277_ret_4"),

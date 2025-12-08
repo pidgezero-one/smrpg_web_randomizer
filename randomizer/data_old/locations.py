@@ -20,8 +20,7 @@ from randomizer.helpers.flag_helpers import (
     BowsersKeepGating,
     FactoryGating,
     PipeVaultGating,
-    ItemQualities,
-)
+    ItemQualities)
 from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch

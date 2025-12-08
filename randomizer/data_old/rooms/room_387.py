@@ -50,8 +50,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=7,
             y=21,
@@ -69,8 +68,7 @@ room = Room(
             dst_z=2,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -103,8 +101,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.Hinopio,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -138,7 +135,6 @@ room = Room(
             acute_axis=10,
             obtuse_axis=8,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
     ]
 )

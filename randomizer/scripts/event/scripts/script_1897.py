@@ -11,8 +11,7 @@ script = EventScript(
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R474_SMITHY_FACTORY_AREA_15_FALLING_YARIDOVICHS,
-            mod_id=0,
-        ),
+            mod_id=0),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -22,8 +21,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSetSolidityBits(bit_7=True),
             ],
-            identifier="EVENT_1897_action_queue_sync_3",
-        ),
+            identifier="EVENT_1897_action_queue_sync_3"),
         JmpIfBitSet(
             ABYSS_FINAL_ROOM_TRAMPOLINE, ["EVENT_1897_fade_in_from_black_sync_7"]
         ),
@@ -47,8 +45,7 @@ script = EventScript(
                     ["EVENT_1897_action_queue_async_8_SUBSCRIPT_pause_7"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         ClearBit(ABYSS_FINAL_ROOM_TRAMPOLINE),
         Return(),
     ]

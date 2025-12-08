@@ -11,24 +11,21 @@ script = EventScript(
             face_direction=SOUTHEAST,
             x=2,
             y=42,
-            z=10,
-        ),
+            z=10),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASWalkSoutheastPixels(3),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASJmpIfBitSet(
                     MAGIKOOPA_SAVE_ANIMATION_DONE,
-                    ["EVENT_3361_action_queue_async_3_SUBSCRIPT_set_solidity_bits_19"],
-                ),
+                    ["EVENT_3361_action_queue_async_3_SUBSCRIPT_set_solidity_bits_19"]),
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
@@ -45,8 +42,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(64),
                 ASStartLoopNTimes(7),
                 ASSetSpriteSequence(
@@ -54,8 +50,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(4),
                 ASSetSpriteSequence(
                     index=6, is_sequence=True, looping=True, mirror_sprite=True
@@ -67,8 +62,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetSolidityBits(
                     cant_pass_walls=True,
-                    identifier="EVENT_3361_action_queue_async_3_SUBSCRIPT_set_solidity_bits_19",
-                ),
+                    identifier="EVENT_3361_action_queue_async_3_SUBSCRIPT_set_solidity_bits_19"),
                 ASFloatingOn(),
                 ASJumpToHeight(height=0, silent=True),
                 ASPlaySound(sound=SO019_LONG_FALL, channel=4),
@@ -81,8 +75,7 @@ script = EventScript(
                 ASPlaySound(sound=SO058_INSERT, channel=4),
                 ASSetBit(MAGIKOOPA_SAVE_ANIMATION_DONE),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

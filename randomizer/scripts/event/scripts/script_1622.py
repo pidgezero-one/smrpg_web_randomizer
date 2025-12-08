@@ -27,8 +27,7 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASShiftZDownPixels(1),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         PixelateLayers(
             layers=[LAYER_L1, LAYER_L2, LAYER_L3], pixel_size=8, duration=196
         ),
@@ -42,8 +41,7 @@ script = EventScript(
             x=9,
             y=108,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(identifier="EVENT_1622_ret_10"),
         SetBit(BUCKET_WARP_DIRECTIONAL_BIT, identifier="EVENT_1622_bucket_warp"),
         JmpToEvent(E2651_BUCKET_WARP_CHECK_GRANTER),

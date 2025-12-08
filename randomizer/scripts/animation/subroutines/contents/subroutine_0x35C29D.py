@@ -29,12 +29,10 @@ script = SubroutineOrBanklessScript(
             partial_start=15,
             perfect_start=20,
             perfect_end=30,
-            destinations=["command_0x35c2d3"],
-        ),
+            destinations=["command_0x35c2d3"]),
         PlaySound(sound=S0078_TIMED_STAT_BOOST),
         EndTrackingAllyButtonInputs(identifier="command_0x35c2d3"),
         SetAMEM8BitToConst(0x6E, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6E, amem=0x6E),
         ReturnObjectQueue(),
-    ],
-)
+    ])

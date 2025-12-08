@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=4,
             y=58,
-            z=5,
-        ),
+            z=5),
         JmpToEvent(E1824_KEEP_SET_PLATFORM_PROPERTIES),
     ]
 )

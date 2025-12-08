@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3a8a7e",
-        ),
+            identifier="queuestart_0x3a8a7e"),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
             speed=65,
@@ -25,8 +24,7 @@ script = SubroutineOrBanklessScript(
             apply_to_y=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         MoveObject(
             speed=17,
             start_position=0,
@@ -34,8 +32,7 @@ script = SubroutineOrBanklessScript(
             apply_to_x=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=20),
         RunSubroutine(["command_0x3a88d2"]),
         SetAMEM32ToXYZCoords(
@@ -46,8 +43,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3a8a9f",
-        ),
+            identifier="queuestart_0x3a8a9f"),
         Db(bytearray(b"\x83\x83")),
         MoveObject(
             speed=65,
@@ -56,8 +52,7 @@ script = SubroutineOrBanklessScript(
             apply_to_y=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         MoveObject(
             speed=17,
             start_position=0,
@@ -65,9 +60,7 @@ script = SubroutineOrBanklessScript(
             apply_to_x=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=20),
         RunSubroutine(["command_0x3a88d2"]),
-    ],
-)
+    ])

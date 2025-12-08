@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3786_BEAN_VALLEY_WEST_VINE_ROOM_EXIT_TO_UPPER_CHEST_ROOM,
             x=12,
@@ -58,8 +57,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3786_BEAN_VALLEY_WEST_VINE_ROOM_EXIT_TO_UPPER_CHEST_ROOM,
             x=13,
@@ -70,8 +68,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3789_BEAN_VALLEY_WEST_VINE_ROOM_PLATFORM,
             x=15,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3789_BEAN_VALLEY_WEST_VINE_ROOM_PLATFORM,
             x=15,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0749_VINE_FIELD,
             x=16,
@@ -106,8 +101,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0750_VINE_FIELD,
             x=15,
@@ -118,8 +112,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0751_VINE_FIELD,
             x=16,
@@ -130,8 +123,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0752_VINE_FIELD,
             x=15,
@@ -142,8 +134,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0749_VINE_FIELD,
             x=18,
@@ -154,8 +145,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0750_VINE_FIELD,
             x=17,
@@ -166,8 +156,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0751_VINE_FIELD,
             x=18,
@@ -178,8 +167,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0752_VINE_FIELD,
             x=17,
@@ -190,8 +178,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0749_VINE_FIELD,
             x=16,
@@ -202,8 +189,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0750_VINE_FIELD,
             x=15,
@@ -214,8 +200,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0751_VINE_FIELD,
             x=16,
@@ -226,8 +211,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0752_VINE_FIELD,
             x=15,
@@ -238,8 +222,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -259,8 +242,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=25,
             y=124,
@@ -278,8 +260,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -308,8 +289,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.BIRDY_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -337,8 +317,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 2
             npc=npcs.BIRDY_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -366,8 +345,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 3
             npc=npcs.BIRDY_NPC_3,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -395,8 +373,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -423,8 +400,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -451,8 +427,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -479,8 +454,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -507,8 +481,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.NONE,
@@ -535,7 +508,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

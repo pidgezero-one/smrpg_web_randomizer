@@ -43,8 +43,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3715,
             x=28,
@@ -55,8 +54,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3715,
             x=29,
@@ -67,8 +65,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3715,
             x=29,
@@ -79,8 +76,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3767,
             x=21,
@@ -91,8 +87,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -112,8 +107,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -146,8 +140,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.RedNimbite,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -178,8 +171,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 2
             occupant=npcs.Pinwheel,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -212,8 +204,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 3
             occupant=npcs.Pinwheel,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -246,8 +237,7 @@ room = Room(
             priority_2=True,
             vram_size=1,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         BattlePackNPC( # 4
             occupant=npcs.SlingShy,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -280,8 +270,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         BattlePackNPC( # 5
             occupant=npcs.SlingShy,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -313,7 +302,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

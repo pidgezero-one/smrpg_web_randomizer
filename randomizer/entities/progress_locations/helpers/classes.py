@@ -1,6 +1,5 @@
 """Generic location classes belonging to world areas, with associated access logic."""
 
-from typing import Type
 from randomizer.entities.items import BrightCard, TempleKey
 from randomizer.entities.progress_locations.helpers.area_access import (
     can_access_bandits_way,
@@ -22,16 +21,14 @@ from randomizer.entities.progress_locations.helpers.area_access import (
     can_defeat_battle_door_boss,
     can_defeat_first_factory_boss,
     can_defeat_second_factory_boss,
-    can_defeat_ship_midboss,
-)
+    can_defeat_ship_midboss)
 from randomizer.types.items import Item
 from randomizer.types.items.classes import StarPiece
 
 from randomizer.types.progress_locations import (
     Inventory,
     ProgressLocation,
-    LocationWorldArea,
-)
+    LocationWorldArea)
 from randomizer.types.world import GameWorld
 from randomizer.types.world.flags import BowserDoorShuffle, StarPiecesRestrictedByArea
 from randomizer.types.world.flags.enums import (
@@ -45,8 +42,7 @@ from randomizer.types.world.flags.enums import (
     MarrymoreGating,
     Moleville1Gating,
     PipeVaultGating,
-    SeaGating,
-)
+    SeaGating)
 from randomizer.types.world.flags.flags import (
     BanditsWayGate,
     BarrelVolcanoGate,
@@ -58,11 +54,10 @@ from randomizer.types.world.flags.flags import (
     MarrymoreGate,
     Moleville1Gate,
     PipeVaultGate,
-    SeaGate,
-)
+    SeaGate)
 
 
-def _should_forbid_star_piece(world: GameWorld, *class_matches: Type[ProgressLocation]):
+def _should_forbid_star_piece(world: GameWorld, *class_matches: type[ProgressLocation]):
     if not world.settings.is_boolean_flag_enabled(StarPiecesRestrictedByArea):
         return False
     comparative_locations = [
@@ -86,8 +81,7 @@ def _area_1_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
         MushroomWayLocation,
         MushroomKingdomLocation,
         BanditsWayLocation,
-        MushroomKingdomOccupiedLocation,
-    )
+        MushroomKingdomOccupiedLocation)
 
 
 def _area_2_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
@@ -103,8 +97,7 @@ def _area_2_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
         RoseTownLocation,
         ForestLocation,
         PipeVaultLocation,
-        YosterIsleLocation,
-    )
+        YosterIsleLocation)
 
 
 def _area_3_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
@@ -119,8 +112,7 @@ def _area_3_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
         BoosterPassLocation,
         BoosterTowerExteriorLocation,
         BoosterTowerLocation,
-        MarrymoreLocation,
-    )
+        MarrymoreLocation)
 
 
 def _area_4_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
@@ -133,8 +125,7 @@ def _area_4_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
         SeasideTownLocation,
         SeaLocation,
         SunkenShipLocation,
-        InnerSunkenShipLocation,
-    )
+        InnerSunkenShipLocation)
 
 
 def _area_5_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
@@ -149,8 +140,7 @@ def _area_5_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
         TreasuryLocation,
         MonstroTownLocation,
         BeanValleyLocation,
-        CasinoLocation,
-    )
+        CasinoLocation)
 
 
 def _area_6_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
@@ -163,8 +153,7 @@ def _area_6_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
         NimbusCastleLocation,
         NimbusMidCastleLocation,
         NimbusDeepCastleLocation,
-        BarrelVolcanoLocation,
-    )
+        BarrelVolcanoLocation)
 
 
 def _area_7_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
@@ -177,8 +166,7 @@ def _area_7_should_forbid_star_piece(world: GameWorld, item: Item) -> bool:
         BowsersKeepObstacleLocation,
         OuterFactoryLocation,
         MidFactoryLocation,
-        InnerFactoryLocation,
-    )
+        InnerFactoryLocation)
 
 
 class _Area1Location(ProgressLocation):

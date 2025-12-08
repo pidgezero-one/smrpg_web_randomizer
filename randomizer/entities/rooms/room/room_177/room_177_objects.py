@@ -38,8 +38,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_1
     RegularClone(
         occupant=JBlock,
@@ -57,8 +56,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_2
     RegularClone(
         occupant=JBlock,
@@ -76,8 +74,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_3
     RegularClone(
         occupant=JBlock,
@@ -95,8 +92,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_4
     RegularClone(
         occupant=JBlock,
@@ -114,8 +110,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_5
     RegularClone(
         occupant=JBlock,
@@ -133,8 +128,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_6
     RegularNPC(
         occupant=Letter,
@@ -167,8 +161,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_7
     RegularNPC(
         occupant=TentacleExtending,
@@ -201,8 +194,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_8
     RegularNPC(
         occupant=Empty,
@@ -238,6 +230,5 @@ objects = [
         acute_axis=8,
         obtuse_axis=8,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

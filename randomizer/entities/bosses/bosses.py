@@ -2,8 +2,6 @@
 
 """Individual bosses."""
 
-from typing import Dict, List, Type
-
 from randomizer.types.dialogs.ids import (
     DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING,
     DI1660_SHIP_PASSWORD_COMPLETE,
@@ -42,8 +40,7 @@ from randomizer.types.dialogs.ids import (
     DI3073_TOWER_HENCHMAN_3,
     DI3338_MONSTRO_SUPERBOSS_HINT,
     DI3352_DOJO_BOSS_1_FULLY_DEFEATED,
-    DI3353_DOJO_BOSS_2_FULLY_DEFEATED,
-)
+    DI3353_DOJO_BOSS_2_FULLY_DEFEATED)
 from randomizer.types.battles.ids import (
     PACK0140_PUNCHINELLO_STATIC,
     PACK0146_CLERK_STATIC,
@@ -84,15 +81,13 @@ from randomizer.types.battles.ids import (
     PACK0208_DODO_BOSS_STATIC,
     PACK0209_MAGIKOOPA_BOSS_STATIC,
     PACK0210_BOOMER_BOSS_STATIC,
-    PACK0216_CULEX_BOSS_STATIC,
-)
+    PACK0216_CULEX_BOSS_STATIC)
 from randomizer.types.bosses import (
     Battlefields,
     EMPTY_DIALOG,
     Boss,
     Henchman,
-    MimicBoss,
-)
+    MimicBoss)
 from randomizer.types.npcs.objects.types import NPC
 from randomizer.types.npcs.objects import (
     AxemRed,
@@ -197,8 +192,7 @@ from randomizer.types.npcs.objects import (
     ValentinaSmall,
     YaridOverworld,
     YaridovichLarge,
-    YaridovichStatue,
-)
+    YaridovichStatue)
 
 from .henchmen import (
     AxemRangersAxemBlack,
@@ -246,8 +240,7 @@ from .henchmen import (
     SmithyShyster,
     ValentinaBirdy,
     ValentinaBluebird,
-    YaridovichHenchman,
-)
+    YaridovichHenchman)
 
 
 class HammerBroBoss(Boss):
@@ -258,10 +251,10 @@ class HammerBroBoss(Boss):
     _letter_volcano_boss_name: str = "two brothers dancing around"
     _letter_final_boss_name: str = "the Hammer Bros' pals."
     _pack_number: int = PACK0183_HAMMERBRO_FIGHT_STATIC
-    _small_model: Type[NPC] = HammerBroSmall
-    _big_model: Type[NPC] = HammerBroLarge
-    _statue: Type[NPC] = HammerBroStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = HammerBroSmall
+    _big_model: type[NPC] = HammerBroLarge
+    _statue: type[NPC] = HammerBroStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """HAMMER BRO: Alright already,\n you won, now go away![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you figured it out... But you\n gotta get past my hammer to get\n through![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Hammer Bros' place.[await]""",
@@ -286,9 +279,9 @@ class HammerBroBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """HAMMER BRO: I guess you were\n tougher than I thought![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """HAMMER BRO: I guess you were\n tougher than I thought![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 539
 
@@ -300,9 +293,9 @@ class Croco1Boss(Boss):
     _letter_volcano_boss_name: str = "a thieving dinosaur dashing"
     _letter_final_boss_name: str = "Croco's accomplices."
     _pack_number: int = PACK0163_CROCO1_FIGHT_STATIC
-    _small_model: Type[NPC] = Croco
-    _statue: Type[NPC] = CrocoStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = Croco
+    _statue: type[NPC] = CrocoStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n CROCO: Get the heck outta here![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Alright, alright, so ya figured out\n my password! But I ain't goin'\n down without a fight![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Croco's place.[await]""",
@@ -328,9 +321,9 @@ class Croco1Boss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 540
 
@@ -342,18 +335,18 @@ class MackBoss(Boss):
     _letter_volcano_boss_name: str = "a small sword jumping"
     _letter_final_boss_name: str = "Mack's shysters."
     _pack_number: int = PACK0179_MACK_FIGHT_STATIC
-    _small_model: Type[NPC] = MackSmall
-    _big_model: Type[NPC] = MackMedium
-    _attack_model: Type[NPC] = MackLarge
-    _statue: Type[NPC] = MackStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = MackSmall
+    _big_model: type[NPC] = MackMedium
+    _attack_model: type[NPC] = MackLarge
+    _statue: type[NPC] = MackStatue
+    _unique_henchmen: list[type[Henchman]] = [
         MackShyster1,
         MackShyster2,
         MackShyster1,
         MackShyster2,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [MackShyster1, MackShyster2]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [MackShyster1, MackShyster2]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MACK: Party's over. I'm going to\n sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Listen, bub![await]\n You may have figured out my\n password, but you still gotta get\n past me if you want through![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Mack's place.[await]""",
@@ -393,7 +386,7 @@ class MackBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MACK: I guess you CAN bounce\n after all.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MACK: I guess you CAN bounce\n after all.[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """BODYGUARD: Think you're tough,\n pal?[await][delay] March that ugly mustache into\n Mack's room, and see what\n happens![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """BODYGUARD: You beat Mack?[await]\n This is not good![delay_30]\n I guess you can bounce after all.[await]""",
     }
@@ -408,10 +401,10 @@ class PandoriteBoss(MimicBoss):
     _letter_volcano_boss_name: str = "a red box sliding about"
     _letter_final_boss_name: str = "Pandorite's monsters."
     _pack_number: int = PACK0156_PANDORITE_FIGHT_STATIC
-    _small_model: Type[NPC] = PandoriteSmall
-    _big_model: Type[NPC] = PandoriteLarge
-    _statue: Type[NPC] = MimicStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = PandoriteSmall
+    _big_model: type[NPC] = PandoriteLarge
+    _statue: type[NPC] = MimicStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """PANDORITE: That thing was making\n me sick...[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you cracked the code. I'm\n warning you though, I hate being\n woken up.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Pandorite's place.[await]""",
@@ -436,9 +429,9 @@ class PandoriteBoss(MimicBoss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """PANDORITE: ...I'm not sure how\n I'm accomplishing this.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """PANDORITE: ...I'm not sure how\n I'm accomplishing this.[await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 542
 
@@ -450,10 +443,10 @@ class Belome1Boss(Boss):
     _letter_volcano_boss_name: str = "a hungry dog walking"
     _letter_final_boss_name: str = "Belome's clones."
     _pack_number: int = PACK0168_BELOME1_FIGHT_STATIC
-    _small_model: Type[NPC] = Belome1Small
-    _big_model: Type[NPC] = Belome1Large
-    _statue: Type[NPC] = SmallBelomeStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = Belome1Small
+    _big_model: type[NPC] = Belome1Large
+    _statue: type[NPC] = SmallBelomeStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n        BELOME: Good night~![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, is it dinner time already?\n Come on in...[delay_60] if you dare~![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Belome's place.[await]""",
@@ -479,9 +472,9 @@ class Belome1Boss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 543
 
@@ -493,11 +486,11 @@ class BowyerBoss(Boss):
     _letter_volcano_boss_name: str = "a longbow loosing arrows at"
     _letter_final_boss_name: str = "Bowyer's lackeys."
     _pack_number: int = PACK0181_BOWYER_FIGHT_STATIC
-    _small_model: Type[NPC] = BowyerSmall
-    _big_model: Type[NPC] = BowyerOverworld
-    _attack_model: Type[NPC] = BowyerLarge
-    _statue: Type[NPC] = BowyerStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = BowyerSmall
+    _big_model: type[NPC] = BowyerOverworld
+    _attack_model: type[NPC] = BowyerLarge
+    _statue: type[NPC] = BowyerStatue
+    _unique_henchmen: list[type[Henchman]] = [
         BowyerAero,
         BowyerAero,
         BowyerAero,
@@ -507,8 +500,8 @@ class BowyerBoss(Boss):
         BowyerAero,
         BowyerAero,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [BowyerAero]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [BowyerAero]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOWYER: Disturb me you must not,\n nya!""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Nya, NYA?![delay_30] Cracked the code, you\n did! But fight you, I will, nya![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Bowyer's place.[await]""",
@@ -548,7 +541,7 @@ class BowyerBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOWYER: 1000 jumps I must do,\n nya![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOWYER: 1000 jumps I must do,\n nya![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """FLUNKIE: Whoa! You sure showed\n us! Go on ahead to Bowyer's\n place![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """FLUNKIE: Come back and visit\n us sometime. Bowyer won't stay\n mad forever![await]""",
     }
@@ -562,11 +555,11 @@ class Croco2Boss(Boss):
     _letter_volcano_boss_name: str = "a thieving dinosaur dashing"
     _letter_final_boss_name: str = "Croco's accomplices."
     _pack_number: int = PACK0164_CROCO2_FIGHT_STATIC
-    _small_model: Type[NPC] = Croco2
-    _statue: Type[NPC] = CrocoStatue
-    _unique_henchmen: List[Type[Henchman]] = [Croco2Crook, Croco2Crook, Croco2Crook]
-    _repeatable_henchmen: List[Type[Henchman]] = [Croco2Crook]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = Croco2
+    _statue: type[NPC] = CrocoStatue
+    _unique_henchmen: list[type[Henchman]] = [Croco2Crook, Croco2Crook, Croco2Crook]
+    _repeatable_henchmen: list[type[Henchman]] = [Croco2Crook]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n CROCO: Get the heck outta here![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Alright, alright, so ya figured out\n my password! But I ain't goin'\n down without a fight![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Croco's place.[await]""",
@@ -605,7 +598,7 @@ class Croco2Boss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CROCO: I hate to say it, but...\n I kinda like this![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """FLUNKIE: (Sob, sob...)[delay_30]\n You're pretty tough. I guess I'll let\n you through to Croco's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """FLUNKIE: You beat Croco!?[delay_30]\n We'll getcha for this![await][page]\n Maybe not today, maybe not\n tomorrow, but someday...[await]""",
     }
@@ -621,17 +614,17 @@ class PunchinelloBoss(Boss):
     _letter_volcano_boss_name: str = "a demolitionist stomping"
     _letter_final_boss_name: str = "Punchinello's demo team."
     _pack_number: int = PACK0140_PUNCHINELLO_STATIC
-    _small_model: Type[NPC] = PunchinelloSmall
-    _big_model: Type[NPC] = PunchinelloLarge
-    _statue: Type[NPC] = PunchinelloStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = PunchinelloSmall
+    _big_model: type[NPC] = PunchinelloLarge
+    _statue: type[NPC] = PunchinelloStatue
+    _unique_henchmen: list[type[Henchman]] = [
         PunchinelloBobomb,
         PunchinelloBobomb,
         PunchinelloBobomb,
         PunchinelloBobomb,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [PunchinelloBobomb]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [PunchinelloBobomb]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """PUNCHINELLO: Grrr... Leave me\n alone![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So... You figured out my\n password.[await]\n If you're not here for an\n autograph, I'll have to test you\n once more to let you through![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Punchinello's place.[await]""",
@@ -671,7 +664,7 @@ class PunchinelloBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """PUNCHINELLO: Will this training\n montage be my ticket to stardom?[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """BOB-OMB: I guess I was a little\n hot-headed, thinking I could win.\n Go on in to Punchinello's room.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """BOB-OMB: Wow, you beat\n Punchinello! He's not very happy\n about that.[await]""",
     }
@@ -686,15 +679,15 @@ class BoosterBoss(Boss):
     _letter_volcano_boss_name: str = "a viking riding trains"
     _letter_final_boss_name: str = "Booster's frenemies."
     _pack_number: int = PACK0161_BOOSTER_FIGHT_STATIC
-    _small_model: Type[NPC] = Booster
-    _statue: Type[NPC] = BoosterStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = Booster
+    _statue: type[NPC] = BoosterStatue
+    _unique_henchmen: list[type[Henchman]] = [
         BoosterSnifit,
         BoosterSnifit,
         BoosterSnifit,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [BoosterApprentice]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [BoosterApprentice]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOOSTER: It's pretty cozy in here.[await][pause]\n No, you can't come in![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Eh?[delay_30] THAT was my password?![delay_30]\n I'd better fight you, just to be\n sure.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Booster's place.[await]""",
@@ -728,7 +721,7 @@ class BoosterBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """APPRENTICE: Oh, dear![delay] We've\n failed to keep the intruder away\n from Booster![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """APPRENTICE: Booster's not happy\n about losing. Please do not jump\n on his head.[await]""",
     }
@@ -744,11 +737,11 @@ class GrateGuyBoss(Boss):
     _letter_volcano_boss_name: str = "a couple clowns bouncing"
     _letter_final_boss_name: str = "Grate Guy's clowns."
     _pack_number: int = PACK0177_KGGG_FIGHT_STATIC
-    _small_model: Type[NPC] = GrateGuySmall
-    _big_model: Type[NPC] = GrateGuyLarge
-    _statue: Type[NPC] = GrateGuyStatue
-    _unique_henchmen: List[Type[Henchman]] = [GrateGuyKnifeGuy]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = GrateGuySmall
+    _big_model: type[NPC] = GrateGuyLarge
+    _statue: type[NPC] = GrateGuyStatue
+    _unique_henchmen: list[type[Henchman]] = [GrateGuyKnifeGuy]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """GRATE GUY: Get lost, buddy, I'm\n busy![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, a patron![delay_30] Come on in and let's\n get this show on the road![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Knife Guy and Grate Guy's place.[await]""",
@@ -771,8 +764,8 @@ class GrateGuyBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """GRATE GUY: Look, `MAIN_CHARACTER_NAME`!\n I've been training so hard, that my\n ball jumps with me![await]""",
     }
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 548
 
@@ -785,12 +778,12 @@ class BundtBoss(Boss):
     _letter_volcano_boss_name: str = "a wedding cake shuffling"
     _letter_final_boss_name: str = "Bundt's bakers."
     _pack_number: int = PACK0176_BUNDT_FIGHT_STATIC
-    _small_model: Type[NPC] = BundtSmall
-    _big_model: Type[NPC] = BundtLarge
-    _statue: Type[NPC] = BundtStatue
-    _unique_henchmen: List[Type[Henchman]] = [BundtTorte1, BundtTorte2]
-    _repeatable_henchmen: List[Type[Henchman]] = [BundtTorte1, BundtTorte2]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = BundtSmall
+    _big_model: type[NPC] = BundtLarge
+    _statue: type[NPC] = BundtStatue
+    _unique_henchmen: list[type[Henchman]] = [BundtTorte1, BundtTorte2]
+    _repeatable_henchmen: list[type[Henchman]] = [BundtTorte1, BundtTorte2]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n        (There's no response.)[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """\n    (The cake beckons you forth.)[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Bundt's place.[await]""",
@@ -826,7 +819,7 @@ class BundtBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: EMPTY_DIALOG,
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: EMPTY_DIALOG,
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """APPRENTICE: All right, we'll let\n you through. But don't mess our\n cake up, we spent all day on it.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """APPRENTICE: I thought we asked\n you not to mess our cake up![await]""",
     }
@@ -843,10 +836,10 @@ class KingCalamariBoss(Boss):
     _letter_final_boss_name: str = "King Calamari's hands."
     _pack_number: int = PACK0167_CALAMARI_FIGHT_STATIC
     _forced_background = Battlefields.KING_CALAMARI
-    _small_model: Type[NPC] = Bloober
-    _statue: Type[NPC] = BlooberStatue
-    _repeatable_henchmen: List[Type[Henchman]] = [KingCalamariBloober]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = Bloober
+    _statue: type[NPC] = BlooberStatue
+    _repeatable_henchmen: list[type[Henchman]] = [KingCalamariBloober]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """KING CALAMARI: When I was born, I\n hatched from an egg that was only\n three times as large as this one.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n King Calamari's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n KING CALAMARI!![await]""",
@@ -873,8 +866,8 @@ class KingCalamariBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """KING CALAMARI: My tentacles\n shouldn't be able to do this.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """KING CALAMARI: My tentacles\n shouldn't be able to do this.[await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 550
 
@@ -886,17 +879,17 @@ class HidonBoss(MimicBoss):
     _letter_volcano_boss_name: str = "a green box sliding about"
     _letter_final_boss_name: str = "Hidon's monsters."
     _pack_number: int = PACK0157_HIDON_FIGHT_STATIC
-    _small_model: Type[NPC] = HidonSmall
-    _big_model: Type[NPC] = HidonLarge
-    _statue: Type[NPC] = MimicStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = HidonSmall
+    _big_model: type[NPC] = HidonLarge
+    _statue: type[NPC] = MimicStatue
+    _unique_henchmen: list[type[Henchman]] = [
         HidonGoombette,
         HidonGoombette,
         HidonGoombette,
         HidonGoombette,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [HidonGoombette]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [HidonGoombette]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """HIDON: No, I'm not gonna puke up\n another item for you! Go away![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Ugh... What a rude awakening!\n I'm going to make it a hassle for\n you to pass through here![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Hidon's place.[await]""",
@@ -936,7 +929,7 @@ class HidonBoss(MimicBoss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """HIDON: I bet this would be even\n harder to do in my box.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """HIDON: I bet this would be even\n harder to do in my box.[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """GOOMBETTE: You mighta' won\n against us, but Hidon's gonna\n beat you up![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """GOOMBETTE: You beat Hidon?![await]\n Oh, man...[await]""",
     }
@@ -951,17 +944,17 @@ class JohnnyBoss(Boss):
     _letter_volcano_boss_name: str = "a shark prowling around"
     _letter_final_boss_name: str = "Johnny's crew."
     _pack_number: int = PACK0166_JOHNNY_FIGHT_STATIC
-    _small_model: Type[NPC] = JohnnySmall
-    _big_model: Type[NPC] = JohnnyLarge
-    _statue: Type[NPC] = JohnnyStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = JohnnySmall
+    _big_model: type[NPC] = JohnnyLarge
+    _statue: type[NPC] = JohnnyStatue
+    _unique_henchmen: list[type[Henchman]] = [
         JohnnyBandanaBlue,
         JohnnyBandanaBlue,
         JohnnyBandanaBlue,
         JohnnyBandanaBlue,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [JohnnyBandanaRed]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [JohnnyBandanaRed]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JOHNNY: Matey, it'd be mighty fun\n to spar again, but I'm tryin' to\n sleep now.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Good job, matey... But ye gotta\n fight me first if ye wanna be let\n through![await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n To `MAIN_CHARACTER_NAME`,\n[await][page]\n Knowin' you, knocking down\n `SEASIDE_BOSS` was a breeze.[await]\n\n By the way, my pirates saw\n `VOLCANO_BOSS_DESCRIPTION`\n near the volcano.[await]\n It's probably one of \n `FINAL_BOSS_NAME`[await]\n Well, my gills are failing on me,\n so I'll be heading back down.\n Drop in when you have time, okay?[await][page]\n\n                         Your true mate,\n             Jonathan "Johnny" Jones[await]""",
@@ -991,7 +984,7 @@ class JohnnyBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JOHNNY: Matey, I've got lots o'\n training to do![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 552
 
@@ -1004,18 +997,18 @@ class YaridovichBoss(Boss):
     _letter_volcano_boss_name: str = "some conspicuous toads circling"
     _letter_final_boss_name: str = "Yaridovich's spies."
     _pack_number: int = PACK0180_YARIDOVICH_FIGHT_STATIC
-    _small_model: Type[NPC] = FakeElder
-    _big_model: Type[NPC] = YaridOverworld
-    _attack_model: Type[NPC] = YaridovichLarge
-    _statue: Type[NPC] = YaridovichStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = FakeElder
+    _big_model: type[NPC] = YaridOverworld
+    _attack_model: type[NPC] = YaridovichLarge
+    _statue: type[NPC] = YaridovichStatue
+    _unique_henchmen: list[type[Henchman]] = [
         YaridovichHenchman,
         YaridovichHenchman,
         YaridovichHenchman,
         YaridovichHenchman,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [YaridovichHenchman]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [YaridovichHenchman]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """YARIDOVICH: How could I lose to\n those...[delay] Huh? Hey, get lost![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Eee hee hee! So, you've cracked the\n code... Now, it's time for the\n REAL test![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Yaridovich's place.[await]""",
@@ -1042,7 +1035,7 @@ class YaridovichBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """YARIDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """TOWNSPERSON: Well done...\n You may go on... to Yaridovich.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """TOWNSPERSON: You won...\n Well done...[await]""",
     }
@@ -1057,10 +1050,10 @@ class MokuraBoss(Boss):
     _letter_volcano_boss_name: str = "a noxious cloud floating"
     _letter_final_boss_name: str = "Mokura's collective."
     _pack_number: int = PACK0207_MOKURA_BOSS_STATIC
-    _statue: Type[NPC] = MokuraStatue
-    _small_model: Type[NPC] = MokuraCloud
-    _big_model: Type[NPC] = MokuraLarge
-    _dialog_replacements: Dict[int, str] = {
+    _statue: type[NPC] = MokuraStatue
+    _small_model: type[NPC] = MokuraCloud
+    _big_model: type[NPC] = MokuraLarge
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n     MOKURA: Uhh... Go away![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """\n             Duh, huh, huh...[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Mokura's place.[await]""",
@@ -1083,12 +1076,12 @@ class MokuraBoss(Boss):
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """MOKURA: Uhh... Are you... gonna\n beat the Dojo Master?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Uhh... Hi there.[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Secret-this and Gas-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
-        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n    MOKURA: A cloud can jump...[await]""",
-        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n    MOKURA: A cloud can jump...[await]""",
+        DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n    MOKURA: Clouds can't jump...[await]""",
+        DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n    MOKURA: Clouds can't jump...[await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 554
 
@@ -1100,17 +1093,17 @@ class Belome2Boss(Boss):
     _letter_volcano_boss_name: str = "a hungry dog walking"
     _letter_final_boss_name: str = "Belome's clones."
     _pack_number: int = PACK0169_BELOME2_FIGHT_STATIC
-    _small_model: Type[NPC] = Belome2Small
-    _big_model: Type[NPC] = Belome2Large
-    _statue: Type[NPC] = SmallBelomeStatue
-    _repeatable_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = Belome2Small
+    _big_model: type[NPC] = Belome2Large
+    _statue: type[NPC] = SmallBelomeStatue
+    _repeatable_henchmen: list[type[Henchman]] = [
         Belome2MarioClone,
         Belome2MallowClone,
         Belome2GenoClone,
         Belome2BowserClone,
         Belome2PeachClone,
     ]
-    _dialog_replacements: Dict[int, str] = {
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n        BELOME: Good night~![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, is it dinner time already?\n Come on in...[delay_60] if you dare~![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Belome's place.[await]""",
@@ -1136,8 +1129,8 @@ class Belome2Boss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BELOME: This training regimen is\n giving me quite the appetite![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
-    _unique_henchmen: List[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
 
     _item_id: int = 555
 
@@ -1149,9 +1142,9 @@ class JaggerBoss(Boss):
     _letter_volcano_boss_name: str = "a turtle shoulder-charging"
     _letter_final_boss_name: str = "Jagger's compatriots."
     _pack_number: int = PACK0189_JAGGER_FIGHT_STATIC
-    _small_model: Type[NPC] = Terrapin
-    _statue: Type[NPC] = TerrapinStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = Terrapin
+    _statue: type[NPC] = TerrapinStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JAGGER: It'd be fun to fight\n again, but I need a nap.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Wow, you figured out the\n password! Come on in and let's\n have a spar![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Jagger's place.[await]""",
@@ -1175,9 +1168,9 @@ class JaggerBoss(Boss):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Sensei-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """JAGGER: Sensei, the new regimen\n will strengthen us, right?[await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 556
 
@@ -1189,9 +1182,9 @@ class Jinx1Boss(Boss):
     _letter_volcano_boss_name: str = "a small figure blinking"
     _letter_final_boss_name: str = "Jinx's students."
     _pack_number: int = PACK0178_JINX1_FIGHT_STATIC
-    _small_model: Type[NPC] = Jinx1
-    _statue: Type[NPC] = JinxStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = Jinx1
+    _statue: type[NPC] = JinxStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JINX: Please do not disturb me.\n I am training in here.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Jinx's place.[await]""",
@@ -1216,9 +1209,9 @@ class Jinx1Boss(Boss):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 557
 
@@ -1230,9 +1223,9 @@ class Jinx2Boss(Boss):
     _letter_volcano_boss_name: str = "a small figure blinking"
     _letter_final_boss_name: str = "Jinx's students."
     _pack_number: int = PACK0187_JINX2_FIGHT_STATIC
-    _small_model: Type[NPC] = Jinx2
-    _statue: Type[NPC] = JinxStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = Jinx2
+    _statue: type[NPC] = JinxStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JINX: Please do not disturb me.\n I am training in here.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Jinx's place.[await]""",
@@ -1257,9 +1250,9 @@ class Jinx2Boss(Boss):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 558
 
@@ -1271,9 +1264,9 @@ class Jinx3Boss(Boss):
     _letter_volcano_boss_name: str = "a small figure blinking"
     _letter_final_boss_name: str = "Jinx's students."
     _pack_number: int = PACK0188_JINX3_FIGHT_STATIC
-    _small_model: Type[NPC] = Jinx3
-    _statue: Type[NPC] = JinxStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = Jinx3
+    _statue: type[NPC] = JinxStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """JINX: Please do not disturb me.\n I am training in here.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you've figured out the\n password. But, I'm not letting you\n through just yet![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Jinx's place.[await]""",
@@ -1298,9 +1291,9 @@ class Jinx3Boss(Boss):
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Dojo-this and Ki-that.[await][page]\n Sometimes I'd like to ask him what\n he's babbling about, but the door\n won't open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """JINX: Master!\n Share your wisdom with us![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 559
 
@@ -1312,16 +1305,16 @@ class CulexBoss(Boss):
     _letter_volcano_boss_name: str = "an ethereal knight gliding"
     _letter_final_boss_name: str = "Culex's travelers."
     _pack_number: int = PACK0216_CULEX_BOSS_STATIC
-    _small_model: Type[NPC] = CulexSmall
-    _big_model: Type[NPC] = CulexLarge
-    _statue: Type[NPC] = CulexStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = CulexSmall
+    _big_model: type[NPC] = CulexLarge
+    _statue: type[NPC] = CulexStatue
+    _unique_henchmen: list[type[Henchman]] = [
         CulexFireCrystal,
         CulexWaterCrystal,
         CulexEarthCrystal,
         CulexWindCrystal,
     ]
-    _dialog_replacements: Dict[int, str] = {
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It will not give you thousands of\n experience points.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ You have passed the first test.\n But you're not finished yet!\n Please enter.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Culex's place.[await]""",
@@ -1357,11 +1350,11 @@ class CulexBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CRYSTAL: Proceed forth. Culex\n awaits you.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """CRYSTAL: Well met! You have\n satisfied Culex's hunger for a\n true challenge.[await]""",
     }
-    _repeatable_henchmen: List[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
 
     _item_id: int = 560
 
@@ -1373,10 +1366,10 @@ class BoxBoyBoss(MimicBoss):
     _letter_volcano_boss_name: str = "a grey box sliding about"
     _letter_final_boss_name: str = "Box Boy's monsters."
     _pack_number: int = PACK0158_BOXBOY_FIGHT_STATIC
-    _small_model: Type[NPC] = BoxBoySmall
-    _big_model: Type[NPC] = BoxBoyLarge
-    _statue: Type[NPC] = MimicStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = BoxBoySmall
+    _big_model: type[NPC] = BoxBoyLarge
+    _statue: type[NPC] = MimicStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOX BOY: How many times are you\n gonna wake me up? Get lost![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, you're gonna PAY for waking\n me up like this![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Box Boy's place.[await]""",
@@ -1402,9 +1395,9 @@ class BoxBoyBoss(MimicBoss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOX BOY: Ahh, you're not so\n tough![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOX BOY: Ahh, you're not so\n tough![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 561
 
@@ -1417,11 +1410,11 @@ class MegaSmilaxBoss(Boss):
     _letter_volcano_boss_name: str = "an invasive plant spreading"
     _letter_final_boss_name: str = "Megasmilax's seedlings."
     _pack_number: int = PACK0173_MEGASMILAX_FIGHT_STATIC
-    _small_model: Type[NPC] = PiranhaPlant
-    _big_model: Type[NPC] = Megasmilax
-    _statue: Type[NPC] = PiranhaPlantStatue
-    _repeatable_henchmen: List[Type[Henchman]] = [MegaSmilaxPiranha]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = PiranhaPlant
+    _big_model: type[NPC] = Megasmilax
+    _statue: type[NPC] = PiranhaPlantStatue
+    _repeatable_henchmen: list[type[Henchman]] = [MegaSmilaxPiranha]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MEGASMILAX: I'm thirsty.[await][pause] Can you\n ask Shy Away to come back here,[delay]\n please?[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Hm?[delay_30] Not often we get visitors\n down here.[delay_30] Come in...[delay_60]\n at your own risk, that is![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Megasmilax's place.[await]""",
@@ -1461,11 +1454,11 @@ class MegaSmilaxBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MEGASMILAX: This is harder than it\n looks. I'm a plant.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MEGASMILAX: This is harder than it\n looks. I'm a plant.[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """SMILAX: Go on ahead to visit\n Megasmilax. But be warned, he's\n pretty tough when he's hydrated.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """SMILAX: Wow, you won![await][pause] Shy Away\n must have watered you more than\n he watered Megasmilax.[await]""",
     }
-    _unique_henchmen: List[Henchman] = []
+    _unique_henchmen: list[Henchman] = []
 
     _item_id: int = 562
 
@@ -1477,10 +1470,10 @@ class DodoBoss(Boss):
     _letter_volcano_boss_name: str = "a large bird flapping about"
     _letter_final_boss_name: str = "Dodo's flock."
     _pack_number: int = PACK0208_DODO_BOSS_STATIC
-    _small_model: Type[NPC] = DodoSmall
-    _big_model: Type[NPC] = DodoLarge
-    _statue: Type[NPC] = DodoStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = DodoSmall
+    _big_model: type[NPC] = DodoLarge
+    _statue: type[NPC] = DodoStatue
+    _dialog_replacements: dict[int, str] = {
         # actually, don't use dialogs for dodo, just play sfx... how to handle this?
         # time this according to how long the feather sound effect is
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: EMPTY_DIALOG,
@@ -1508,9 +1501,9 @@ class DodoBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: EMPTY_DIALOG,
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: EMPTY_DIALOG,
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 563
 
@@ -1522,16 +1515,16 @@ class BirdettaBoss(Boss):
     _letter_volcano_boss_name: str = "a giant egg rolling"
     _letter_final_boss_name: str = "Birdetta's bad eggs."
     _pack_number: int = PACK0175_BIRDETTA_FIGHT_STATIC
-    _small_model: Type[NPC] = BirdettaSmall
-    _big_model: Type[NPC] = BirdettaLarge
-    _statue: Type[NPC] = BirdettaStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = BirdettaSmall
+    _big_model: type[NPC] = BirdettaLarge
+    _statue: type[NPC] = BirdettaStatue
+    _unique_henchmen: list[type[Henchman]] = [
         BirdettaEggbert,
         BirdettaEggbert,
         BirdettaEggbert,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [BirdettaEggbert]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [BirdettaEggbert]
+    _dialog_replacements: dict[int, str] = {
         DI1660_SHIP_PASSWORD_COMPLETE: """ Oh, yay, you've come to play!\n Come on in~![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Birdetta's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That's AMAZING!\n No one's EVER whipped\n BIRDETTA!![await]""",
@@ -1570,7 +1563,7 @@ class BirdettaBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BIRDETTA: Thanks for playing with\n me~![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BIRDETTA: Thanks for playing with\n me~![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """EGGBERT: Wow, you sure showed\n us! Don't disappoint Birdetta![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """EGGBERT: Thanks for playing\n with us today![await]""",
     }
@@ -1585,10 +1578,10 @@ class ValentinaBoss(Boss):
     _letter_volcano_boss_name: str = "a bossy lady being carried"
     _letter_final_boss_name: str = "Valentina's little birds."
     _pack_number: int = PACK0171_VALENTINA_FIGHT_STATIC
-    _small_model: Type[NPC] = ValentinaSmall
-    _big_model: Type[NPC] = ValentinaLarge
-    _repeatable_henchmen: List[Type[Henchman]] = [ValentinaBluebird, ValentinaBirdy]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = ValentinaSmall
+    _big_model: type[NPC] = ValentinaLarge
+    _repeatable_henchmen: list[type[Henchman]] = [ValentinaBluebird, ValentinaBirdy]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """VALENTINA: ...What? You're STILL\n here?! Go AWAY!!![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ ALRIGHT, already![delay_30] If you're going\n to annoy me like this, get in here\n and finish the job![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Valentina's place.[await]""",
@@ -1628,11 +1621,11 @@ class ValentinaBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """BLUEBIRD: Whatever, go on and\n fight Valentina. She doesn't pay\n us enough to keep you out.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """BLUEBIRD: Oh, you won?[await]\n [delay_30](...[delay_30]It's about time!)[await]""",
     }
-    _unique_henchmen: List[Henchman] = []
+    _unique_henchmen: list[Henchman] = []
 
     _item_id: int = 565
 
@@ -1645,12 +1638,12 @@ class CzarBoss(Boss):
     _letter_volcano_boss_name: str = "a huge dragon blazing"
     _letter_final_boss_name: str = "the Czar Dragon's spawn."
     _pack_number: int = PACK0172_CZAR_FIGHT_STATIC
-    _small_model: Type[NPC] = CzarDragonSmall
-    _big_model: Type[NPC] = CzarBody
-    _attack_model: Type[NPC] = CzarDragonLarge
-    _statue: Type[NPC] = CzarStatue
-    _repeatable_henchmen: List[Type[Henchman]] = [CzarPyrosphere]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = CzarDragonSmall
+    _big_model: type[NPC] = CzarBody
+    _attack_model: type[NPC] = CzarDragonLarge
+    _statue: type[NPC] = CzarStatue
+    _repeatable_henchmen: list[type[Henchman]] = [CzarPyrosphere]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """\n    CZAR DRAGON: BLARRGGGG[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ BLARRGGGG[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Czar Dragon's place.[await]""",
@@ -1690,11 +1683,11 @@ class CzarBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  CZAR DRAGON: BLAAARRRGGGG[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: EMPTY_DIALOG,
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: EMPTY_DIALOG,
     }
-    _unique_henchmen: List[Henchman] = []
+    _unique_henchmen: list[Henchman] = []
 
     _item_id: int = 566
 
@@ -1708,22 +1701,22 @@ class AxemRangersBoss(Boss):
     _letter_final_boss_name: str = "the Axem Rangers' stooges."
     _pack_number: int = PACK0182_AXEM_FIGHT_STATIC
     _forced_background = Battlefields.AXEM_RANGERS
-    _small_model: Type[NPC] = AxemRed
-    _statue: Type[NPC] = AxemRedStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = AxemRed
+    _statue: type[NPC] = AxemRedStatue
+    _unique_henchmen: list[type[Henchman]] = [
         AxemRangersAxemBlack,
         AxemRangersAxemPink,
         AxemRangersAxemYellow,
         AxemRangersAxemGreen,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [
+    _repeatable_henchmen: list[type[Henchman]] = [
         AxemRangersMachine1,
         AxemRangersMachine2,
         AxemRangersMachine3,
         AxemRangersMachine4,
         AxemRangersMachine5,
     ]
-    _dialog_replacements: Dict[int, str] = {
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """AXEM RED: We're busy playing Uno\n in here. Go bother someone else![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Listen up, nerd![delay_30] You may have\n figured out our password, but\n we're not going down without\n a fight![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Axem Rangers' place.[await]""",
@@ -1763,7 +1756,7 @@ class AxemRangersBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  AXEM RED: I'm way outta shape![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  AXEM RED: I'm way outta shape![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 567
 
@@ -1775,10 +1768,10 @@ class ChesterBoss(MimicBoss):
     _letter_volcano_boss_name: str = "a purple box sliding about"
     _letter_final_boss_name: str = "Chester's monsters."
     _pack_number: int = PACK0159_CHESTER_FIGHT_STATIC
-    _small_model: Type[NPC] = ChesterSmall
-    _big_model: Type[NPC] = ChesterLarge
-    _statue: Type[NPC] = MimicStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = ChesterSmall
+    _big_model: type[NPC] = ChesterLarge
+    _statue: type[NPC] = MimicStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CHESTER: Go on, take it. Just let\n me go back to sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Quit draggin' your feet! Get in\n here and let's fight![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Chester's place.[await]""",
@@ -1804,9 +1797,9 @@ class ChesterBoss(MimicBoss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n  CHESTER: I don't even have legs![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n  CHESTER: I don't even have legs![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 568
 
@@ -1818,10 +1811,10 @@ class KamekBoss(Boss):
     _letter_volcano_boss_name: str = "a hooded sorceror flying"
     _letter_final_boss_name: str = "Kamek's creations."
     _pack_number: int = PACK0209_MAGIKOOPA_BOSS_STATIC
-    _small_model: Type[NPC] = RedMagikoopa
-    _big_model: Type[NPC] = MagikoopaLarge
-    _statue: Type[NPC] = MagikoopaStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = RedMagikoopa
+    _big_model: type[NPC] = MagikoopaLarge
+    _statue: type[NPC] = MagikoopaStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """KAMEK: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ This..is..my ship!\n Come in..if you dare![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Kamek's place.[await]""",
@@ -1846,9 +1839,9 @@ class KamekBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n KAMEK: Oh, dear... What to do...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n KAMEK: Oh, dear... What to do...[await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 569
 
@@ -1860,13 +1853,13 @@ class BoomerBoss(Boss):
     _letter_volcano_boss_name: str = "a noble soldier marching"
     _letter_final_boss_name: str = "Boomer's soldiers."
     _pack_number: int = PACK0210_BOOMER_BOSS_STATIC
-    _small_model: Type[NPC] = BoomerSmall
-    _big_model: Type[NPC] = BoomerOverworld
-    _attack_model: Type[NPC] = BoomerLarge
-    _statue: Type[NPC] = BoomerStatue
-    _unique_henchmen: List[Type[Henchman]] = [BoomerShyGuy, BoomerShyGuy]
-    _repeatable_henchmen: List[Type[Henchman]] = [BoomerShyGuy]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = BoomerSmall
+    _big_model: type[NPC] = BoomerOverworld
+    _attack_model: type[NPC] = BoomerLarge
+    _statue: type[NPC] = BoomerStatue
+    _unique_henchmen: list[type[Henchman]] = [BoomerShyGuy, BoomerShyGuy]
+    _repeatable_henchmen: list[type[Henchman]] = [BoomerShyGuy]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """BOOMER: I lost fair and square.[await]\n Now it is time for me to sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Ahhhhh... So, it's YOU who solved\n my riddle![delay_30] Now, you've got to deal\n with ME![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Boomer's place.[await]""",
@@ -1906,7 +1899,7 @@ class BoomerBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """BOOMER: You won fair and square!\n But I won't make it so easy for you\n next time![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """BOOMER: You won fair and square!\n But I won't make it so easy for you\n next time![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CHANDELI-HO: Oh, no, I lost!\n Good luck, Boomer![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """CHANDELI-HO: I hope you didn't\n hurt Boomer too bad![await]""",
     }
@@ -1922,9 +1915,9 @@ class ExorBoss(Boss):
     _letter_final_boss_name: str = "Exor's sellswords."
     _pack_number: int = PACK0186_EXOR_FIGHT_STATIC
     _forced_background = Battlefields.EXOR
-    _small_model: Type[NPC] = ExorSmall
-    _statue: Type[NPC] = ExorStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = ExorSmall
+    _statue: type[NPC] = ExorStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """  EXOR: What do you want? Get\n lost![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Halt! This ship belongs to ME!\n If you want to get through...\n bring it on![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Exor's place.[await]""",
@@ -1950,9 +1943,9 @@ class ExorBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """\n        EXOR: How humiliating![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """\n        EXOR: How humiliating![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 571
 
@@ -1966,11 +1959,11 @@ class CountdownBoss(Boss):
     _letter_final_boss_name: str = "Count Down's friends."
     _pack_number: int = PACK0174_COUNTDOWN_FIGHT_STATIC
     _forced_background = Battlefields.COUNTDOWN
-    _small_model: Type[NPC] = CountDownGridplane
-    _statue: Type[NPC] = CountDownStatue
-    _unique_henchmen: List[Type[Henchman]] = [CountdownDingALing, CountdownDingALing]
-    _repeatable_henchmen: List[Type[Henchman]] = [CountdownDingALing]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = CountDownGridplane
+    _statue: type[NPC] = CountDownStatue
+    _unique_henchmen: list[type[Henchman]] = [CountdownDingALing, CountdownDingALing]
+    _repeatable_henchmen: list[type[Henchman]] = [CountdownDingALing]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """COUNT DOWN: Sometimes, even an\n alarm clock needs to sleep.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ This is not good![delay_30]\n He figured out the password![delay_30]\n ...We better do something![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Count Down's place.[await]""",
@@ -2007,7 +2000,7 @@ class CountdownBoss(Boss):
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """COUNT DOWN: This is a weird\n training regimen for an alarm\n clock![await]""",
     }
     # unsure if this makes sense to do with countdown. dingalings are kinda terrible to vram
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """DING-A-LING: We failed to stop\n you. Go ahead into Count Down's\n room![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """DING-A-LING: You beat Count Down!\n We didn't see that coming![await]""",
         # come up with something for booster's other replacement dialogs if it's feasible to have 4 bells in curtain room
@@ -2025,10 +2018,10 @@ class CloakerDominoBoss(Boss):
     _letter_final_boss_name: str = "Domino's snakes."
     _pack_number: int = PACK0184_CLOAKER_DOMINO_FIGHT_STATIC
     _forced_background = Battlefields.CLOAKER_DOMINO
-    _small_model: Type[NPC] = DominoSmall
-    _big_model: Type[NPC] = DominoLarge
-    _statue: Type[NPC] = DominoStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = DominoSmall
+    _big_model: type[NPC] = DominoLarge
+    _statue: type[NPC] = DominoStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """DOMINO: I'm busy wallowing in\n misery at my defeat here.[await][pause] Get lost![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Uh oh, you cracked the code...\n I don't like where this is going...[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Cloaker and Domino's place.[await]""",
@@ -2054,9 +2047,9 @@ class CloakerDominoBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """DOMINO: This is exactly the kind\n of training I needed.[await][pause] Fusing myself\n with a snake just hasn't been\n getting me the results I wanted.[await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 573
 
@@ -2069,12 +2062,12 @@ class ClerkBoss(Boss):
     _letter_volcano_boss_name: str = "a yellow-clad smith trudging"
     _letter_final_boss_name: str = "the Clerk's minions."
     _pack_number: int = PACK0146_CLERK_STATIC
-    _small_model: Type[NPC] = ClerkSmall
-    _big_model: Type[NPC] = ClerkLarge
-    _statue: Type[NPC] = ShovelKnightStatue
-    _unique_henchmen: List[Type[Henchman]] = [ClerkMadMallet, ClerkMadMallet]
-    _repeatable_henchmen: List[Type[Henchman]] = [ClerkMadMallet]
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = ClerkSmall
+    _big_model: type[NPC] = ClerkLarge
+    _statue: type[NPC] = ShovelKnightStatue
+    _unique_henchmen: list[type[Henchman]] = [ClerkMadMallet, ClerkMadMallet]
+    _repeatable_henchmen: list[type[Henchman]] = [ClerkMadMallet]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CLERK: I'm going to sleep for 10\n years.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Sorry, you may have figured out the\n password, but I can't allow you\n through without a fight.[await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Clerk's place.[await]""",
@@ -2114,7 +2107,7 @@ class ClerkBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CLERK: If anyone asks, I'm on\n break![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CLERK: If anyone asks, I'm on\n break![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """MAD MALLET: You trashed us!\n Go on to the Clerk's place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """MAD MALLET: Whoa... No one's\n beaten the Clerk in 10 years![await]""",
     }
@@ -2130,16 +2123,16 @@ class ManagerBoss(Boss):
     _letter_volcano_boss_name: str = "a blue-clad smith trudging"
     _letter_final_boss_name: str = "the Manager's minions."
     _pack_number: int = PACK0147_MANAGER_STATIC
-    _small_model: Type[NPC] = ManagerSmall
-    _big_model: Type[NPC] = ManagerLarge
-    _statue: Type[NPC] = ShovelKnightStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = ManagerSmall
+    _big_model: type[NPC] = ManagerLarge
+    _statue: type[NPC] = ShovelKnightStatue
+    _unique_henchmen: list[type[Henchman]] = [
         ManagerPounder,
         ManagerPounder,
         ManagerPounder,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [ManagerPounder]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [ManagerPounder]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MANAGER: I'm going to sleep for 25\n years.[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Who gave you the password?!\n You're gonna pay for this![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Manager's place.[await]""",
@@ -2179,7 +2172,7 @@ class ManagerBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MANAGER: Don't interrupt me while\n I'm training![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MANAGER: Don't interrupt me while\n I'm training![await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """POUNDER: We lost, but we made\n the Manager proud![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """POUNDER: Wow! The Manager's\n been here 25 years, and you just\n dethroned him![await]""",
     }
@@ -2195,17 +2188,17 @@ class DirectorBoss(Boss):
     _letter_volcano_boss_name: str = "a red-clad smith trudging"
     _letter_final_boss_name: str = "the Director's minions."
     _pack_number: int = PACK0148_DIRECTOR_STATIC
-    _small_model: Type[NPC] = DirectorSmall
-    _big_model: Type[NPC] = DirectorLarge
-    _statue: Type[NPC] = ShovelKnightStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = DirectorSmall
+    _big_model: type[NPC] = DirectorLarge
+    _statue: type[NPC] = ShovelKnightStatue
+    _unique_henchmen: list[type[Henchman]] = [
         DirectorPoundette,
         DirectorPoundette,
         DirectorPoundette,
         DirectorPoundette,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [DirectorPoundette]
-    _dialog_replacements: Dict[int, str] = {
+    _repeatable_henchmen: list[type[Henchman]] = [DirectorPoundette]
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """DIRECTOR: (Could this day get any\n worse?)[await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Figured out the password, did you?[delay_30]\n Don't get too cocky![delay_30]\n Intruders will be eliminated![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Director's place.[await]""",
@@ -2245,7 +2238,7 @@ class DirectorBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """DIRECTOR: This is quite the\n difficult regimen for a white-collar\n fellow like me.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """DIRECTOR: This is quite the\n difficult regimen for a white-collar\n fellow like me.[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """POUNDETTE: Well, we lost.\n Time for a break.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """POUNDETTE: You beat the Director!\n Impressive![await]""",
     }
@@ -2261,9 +2254,9 @@ class GunyolkBoss(Boss):
     _letter_volcano_boss_name: str = "a big machine rolling"
     _letter_final_boss_name: str = "the Factory Chief's goons."
     _pack_number: int = PACK0149_GUNYOLK_STATIC
-    _small_model: Type[NPC] = FactoryChief
-    _statue: Type[NPC] = FactoryChiefStatue
-    _dialog_replacements: Dict[int, str] = {
+    _small_model: type[NPC] = FactoryChief
+    _statue: type[NPC] = FactoryChiefStatue
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """FACTORY CHIEF: Grrr... Leave me\n alone![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ So, you solved it?[delay_30]\n Too bad, this is the end of the line\n for you! I won't let you through![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n the Gunyolk's place.[await]""",
@@ -2289,9 +2282,9 @@ class GunyolkBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """FACTORY CHIEF: I'll out-jump you\n if it's the last thing I do![await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """FACTORY CHIEF: I'll out-jump you\n if it's the last thing I do![await]""",
     }
-    _unique_henchmen: List[Henchman] = []
-    _repeatable_henchmen: List[Henchman] = []
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {}
+    _unique_henchmen: list[Henchman] = []
+    _repeatable_henchmen: list[Henchman] = []
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {}
 
     _item_id: int = 577
 
@@ -2303,20 +2296,20 @@ class SmithyBoss(Boss):
     _letter_volcano_boss_name: str = "a furious weaponsmith thundering"
     _letter_final_boss_name: str = "Smithy's gang."
     _pack_number: int = PACK0185_SMITHY1_FIGHT_STATIC
-    _small_model: Type[NPC] = SmithySmall
-    _big_model: Type[NPC] = SmithyLarge
-    _statue: Type[NPC] = SmithyStatue
-    _unique_henchmen: List[Type[Henchman]] = [
+    _small_model: type[NPC] = SmithySmall
+    _big_model: type[NPC] = SmithyLarge
+    _statue: type[NPC] = SmithyStatue
+    _unique_henchmen: list[type[Henchman]] = [
         SmithyDrillBit,
         SmithyShyster,
         SmithyAero,
     ]
-    _repeatable_henchmen: List[Type[Henchman]] = [
+    _repeatable_henchmen: list[type[Henchman]] = [
         SmithyDrillBit,
         SmithyShyster,
         SmithyAero,
     ]
-    _dialog_replacements: Dict[int, str] = {
+    _dialog_replacements: dict[int, str] = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """SMITHY: How utterly annoying!\n Leave me alone![await]""",
         DI1660_SHIP_PASSWORD_COMPLETE: """ Gufaw, haw, haw![delay_30] You really think\n I'm going to let you through with\n just a password?![await]""",
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You're pretty tough, `MAIN_CHARACTER_MOLE_GREETING`.\n All right. I'll let you through to\n Smithy's place.[await]""",
@@ -2356,7 +2349,7 @@ class SmithyBoss(Boss):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """SMITHY: Grr... [delay]You're stronger\n than I thought...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """SMITHY: Grr... [delay]You're stronger\n than I thought...[await]""",
     }
-    _dialog_replacements_if_mandatory_fights_changed: Dict[int, str] = {
+    _dialog_replacements_if_mandatory_fights_changed: dict[int, str] = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """ You're pretty tough, but are you\n ready to fight Smithy?[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """ Oh, wow, you did it![delay] No wonder we\n lost to you...[await]""",
     }

@@ -109,8 +109,7 @@ class Spell:
             (self.check_stats * 0x01)
             + (self.ignore_defense * 0x02)
             + (self.check_ohko * 0x20)
-            + (self.usable_outside_of_battle * 0x80),
-        )
+            + (self.usable_outside_of_battle * 0x80))
         if self.spell_type is None:
             st = 0
         else:
@@ -136,8 +135,7 @@ class Spell:
             + (self.target_party * 0x10)
             + (self.target_wounded * 0x20)
             + (self.target_one_party * 0x40)
-            + (self.target_not_self * 0x80),
-        )
+            + (self.target_not_self * 0x80))
         patch.add_data(base_addr + 4, el)
         data = utils.ByteField(self.power).as_bytes()
         data += utils.ByteField(self.hit_rate).as_bytes()
@@ -179,14 +177,12 @@ class CharacterSpell(Spell):
             0x02CACE + self.index * 2,
             bytearray(
                 [self.timingModifiers & 0xFF, (self.timingModifiers >> 8) & 0xFF]
-            ),
-        )
+            ))
         patch.add_data(
             0x02D05B + self.index * 2,
             bytearray(
                 [self.damageModifiers & 0xFF, (self.damageModifiers >> 8) & 0xFF]
-            ),
-        )
+            ))
 
         return patch
 
@@ -237,12 +233,10 @@ class CloneSpell(CharacterSpell):
 
         patch.add_data(
             0x35C992 + self.index * 2,
-            bytearray([self.ref_ptr & 0xFF, (self.ref_ptr >> 8) & 0xFF]),
-        )
+            bytearray([self.ref_ptr & 0xFF, (self.ref_ptr >> 8) & 0xFF]))
         patch.add_data(
             0x3A2B80 + self.index * 2,
-            bytearray([self.desc_ptr & 0xFF, (self.desc_ptr >> 8) & 0xFF]),
-        )
+            bytearray([self.desc_ptr & 0xFF, (self.desc_ptr >> 8) & 0xFF]))
 
         return patch
 
@@ -367,8 +361,7 @@ class FireOrb(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 392,
                 palette_to_bytes(
@@ -389,8 +382,7 @@ class FireOrb(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
         elif self.element == Element.THUNDER:
             patch.add_data(
                 0x253000 + 30 * 408,
@@ -412,8 +404,7 @@ class FireOrb(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 392,
                 palette_to_bytes(
@@ -434,8 +425,7 @@ class FireOrb(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
         elif self.element == Element.JUMP:
             patch.add_data(
                 0x253000 + 30 * 408,
@@ -457,8 +447,7 @@ class FireOrb(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 392,
                 palette_to_bytes(
@@ -479,8 +468,7 @@ class FireOrb(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
 
         return patch
 
@@ -578,8 +566,7 @@ class SuperFlame(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 815,
                 palette_to_bytes(
@@ -600,8 +587,7 @@ class SuperFlame(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
         elif self.element == Element.THUNDER:
             patch.add_data(
                 0x253000 + 30 * 817,
@@ -623,8 +609,7 @@ class SuperFlame(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 815,
                 palette_to_bytes(
@@ -645,8 +630,7 @@ class SuperFlame(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
         elif self.element == Element.JUMP:
             patch.add_data(
                 0x253000 + 30 * 817,
@@ -668,8 +652,7 @@ class SuperFlame(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 815,
                 palette_to_bytes(
@@ -690,8 +673,7 @@ class SuperFlame(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
 
         return patch
 
@@ -789,8 +771,7 @@ class UltraFlame(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 816,
                 palette_to_bytes(
@@ -811,8 +792,7 @@ class UltraFlame(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
         elif self.element == Element.THUNDER:
             patch.add_data(
                 0x253000 + 30 * 818,
@@ -834,8 +814,7 @@ class UltraFlame(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 816,
                 palette_to_bytes(
@@ -856,8 +835,7 @@ class UltraFlame(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
         elif self.element == Element.JUMP:
             patch.add_data(
                 0x253000 + 30 * 818,
@@ -879,8 +857,7 @@ class UltraFlame(CharacterSpell):
                         "0000D0",
                         "0000D0",
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x253000 + 30 * 816,
                 palette_to_bytes(
@@ -901,8 +878,7 @@ class UltraFlame(CharacterSpell):
                         "000000",
                         "000000",
                     ]
-                ),
-            )
+                ))
 
         return patch
 
@@ -1575,8 +1551,7 @@ class Shocker(CharacterSpell):
                         0x40,
                         0x08,
                     ]
-                ),
-            )
+                ))
         elif self.element == Element.FIRE:
             patch.add_data(
                 0x330BB8,
@@ -1610,8 +1585,7 @@ class Shocker(CharacterSpell):
                         0x00,
                         0x02,
                     ]
-                ),
-            )
+                ))
         elif self.element == Element.JUMP:
             patch.add_data(
                 0x330BB8,
@@ -1646,8 +1620,7 @@ class Shocker(CharacterSpell):
                         0x40,
                         0x08,
                     ]
-                ),
-            )
+                ))
         return patch
 
 

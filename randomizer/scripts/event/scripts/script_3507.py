@@ -21,8 +21,7 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=LAYER_3,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNorthwestSteps(18)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNorthwestSteps(18)]),
         FadeInFromBlack(sync=False),
         SetVarToConst(TEMP_70AE, 26),
         ActionQueueAsync(
@@ -37,8 +36,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkNorthwestSteps(7),
                 ASJumpToHeight(64),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO087_CORRECT_SIGNAL, channel=6),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceSoutheast()]),
         RunDialog(
@@ -47,8 +45,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBSelected(["EVENT_3507_set_7000_to_70A0_short_mem_36"]),
         Pause(10, identifier="EVENT_3507_pause_28"),
         SetAsyncActionScript(MARIO, A0670_NOD_YES),
@@ -58,8 +55,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         PlaySound(sound=SO087_CORRECT_SIGNAL, channel=6),
         ActionQueueSync(
             target=NPC_6, subscript=[ASWalkSoutheastSteps(7), ASVisibilityOff()]
@@ -72,8 +68,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=BOOSTER_HILL_70B1,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3507_set_7000_to_70A0_short_mem_36",
-        ),
+            identifier="EVENT_3507_set_7000_to_70A0_short_mem_36"),
         CompareVarToConst(PRIMARY_TEMP_7000, 8),
         JmpIfComparisonResultIsLesser(["EVENT_3507_pause_48"]),
         Pause(10),
@@ -85,8 +80,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBSelected(["EVENT_3507_pause_48"]),
         Jmp(["EVENT_3507_pause_28"]),
         RunDialog(
@@ -96,8 +90,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_3507_run_dialog_45",
-        ),
+            identifier="EVENT_3507_run_dialog_45"),
         JmpIfDialogOptionBSelected(["EVENT_3507_pause_48"]),
         Jmp(["EVENT_3507_pause_28"]),
         Pause(10, identifier="EVENT_3507_pause_48"),
@@ -108,8 +101,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         PlaySound(sound=SO087_CORRECT_SIGNAL, channel=6),
         ActionQueueAsync(
             target=NPC_6,
@@ -117,8 +109,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASWalkSoutheastSteps(6),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -126,13 +117,11 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         RunBackgroundEvent(
             event_id=E3511_BOOSTER_HILL_2ND_PASS_BACKGROUND,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         SetSyncActionScript(LAYER_1, A0704_BOOSTER_HILL_LAYER_1),
         SetSyncActionScript(LAYER_2, A0655_BOOSTER_HILL_LAYER_2),
         SetSyncActionScript(LAYER_3, A0705_BOOSTER_HILL_LAYER_3),

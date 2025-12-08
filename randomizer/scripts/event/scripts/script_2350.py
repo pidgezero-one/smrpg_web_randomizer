@@ -21,8 +21,7 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASTransferToXYZF(x=8, y=87, z=9, direction=EAST),
                 ASSetWalkingSpeed(NORMAL),
                 ASPause(4),
@@ -30,12 +29,10 @@ script = EventScript(
                 ASDb(bytearray(b"$ \x00\x00\x00")),
                 ASShiftZUpSteps(10),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASPause(16), ASSetWalkingSpeed(SLOW), ASShiftNorthSteps(5)],
-        ),
+            subscript=[ASPause(16), ASSetWalkingSpeed(SLOW), ASShiftNorthSteps(5)]),
         Pause(112),
         FadeOutToBlack(sync=False, duration=32),
         EnterArea(
@@ -44,8 +41,7 @@ script = EventScript(
             x=4,
             y=109,
             z=10,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

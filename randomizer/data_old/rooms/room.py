@@ -9,16 +9,13 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.roomobjecttables import (
     partition_buffer_table,
-    partition_space_table,
-)
+    partition_space_table)
 from randomizer.management.disassembler_common import (
-    byte,
-)
+    byte)
 
 
 class Buffer:
@@ -26,8 +23,7 @@ class Buffer:
         self,
         buffer_type=PartitionBufferTypes.EMPTY_3,
         main_buffer_space=PartitionMainSpace._0_BYTES,
-        index_in_main_buffer=True,
-    ):
+        index_in_main_buffer=True):
         self.buffer_type = buffer_type
         self.main_buffer_space = main_buffer_space
         self.index_in_main_buffer = index_in_main_buffer
@@ -61,8 +57,7 @@ class Partition:
         allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
         buffers=None,
-        full_palette_buffer=True,
-    ):
+        full_palette_buffer=True):
         self.ally_sprite_buffer_size = ally_sprite_buffer_size
         self.allow_extra_sprite_buffer = allow_extra_sprite_buffer
         self.extra_sprite_buffer_size = extra_sprite_buffer_size
@@ -80,8 +75,7 @@ class Partition:
             self.allow_extra_sprite_buffer,
             self.extra_sprite_buffer_size,
             ";".join([b.__str__() for b in self.buffers]),
-            self.full_palette_buffer,
-        )
+            self.full_palette_buffer)
 
     def is_same(self, partition):
         return (
@@ -164,8 +158,7 @@ class RoomExit(Exit):
         dst_z=0,
         dst_z_half=0,
         dst_f=RadialDirection.SOUTHWEST,
-        x_bit_7=False,
-    ):
+        x_bit_7=False):
         self.x = x
         self.y = y
         self.z = z
@@ -201,8 +194,7 @@ class MapExit(Exit):
         destination=None,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ):
+        byte_2_bit_0=False):
         self.x = x
         self.y = y
         self.z = z
@@ -241,8 +233,7 @@ class Event:
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ):
+        byte_8_bit_4=False):
         self.event = event
         self.x = x
         self.y = y
@@ -350,8 +341,7 @@ class BattlePackNPC(RoomObject):
         byte5_bit6=None,
         byte5_bit7=None,
         byte6_bit2=None,
-        y_shift=None,
-    ):
+        y_shift=None):
         self.self = self
         self.initiator = initiator
         self.after_battle = after_battle
@@ -401,8 +391,7 @@ class BattlePackNPC(RoomObject):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
 
 
 class RegularNPC(RoomObject):
@@ -457,8 +446,7 @@ class RegularNPC(RoomObject):
         byte5_bit6=None,
         byte5_bit7=None,
         byte6_bit2=None,
-        y_shift=None,
-    ):
+        y_shift=None):
         self.self = self
         self.initiator = initiator
         self.event_script = event_script
@@ -507,8 +495,7 @@ class RegularNPC(RoomObject):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
 
 
 class ChestNPC(RoomObject):
@@ -567,8 +554,7 @@ class ChestNPC(RoomObject):
         byte5_bit6=None,
         byte5_bit7=None,
         byte6_bit2=None,
-        y_shift=None,
-    ):
+        y_shift=None):
         self.self = self
         self.initiator = initiator
         self.event_script = event_script
@@ -619,8 +605,7 @@ class ChestNPC(RoomObject):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
 
 
 class BattlePackClone(Clone):
@@ -657,8 +642,7 @@ class BattlePackClone(Clone):
         byte2_bit4=None,
         byte5_bit6=None,
         byte5_bit7=None,
-        byte6_bit2=None,
-    ):
+        byte6_bit2=None):
         self.self = self
         self.battle_pack = battle_pack
         self.action_script = action_script
@@ -689,8 +673,7 @@ class BattlePackClone(Clone):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
 
 
 class RegularClone(Clone):
@@ -727,8 +710,7 @@ class RegularClone(Clone):
         byte2_bit4=None,
         byte5_bit6=None,
         byte5_bit7=None,
-        byte6_bit2=None,
-    ):
+        byte6_bit2=None):
         self.self = self
         self.event_script = event_script
         self.action_script = action_script
@@ -759,8 +741,7 @@ class RegularClone(Clone):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
 
 
 class ChestClone(Clone):
@@ -798,8 +779,7 @@ class ChestClone(Clone):
         byte2_bit4=None,
         byte5_bit6=None,
         byte5_bit7=None,
-        byte6_bit2=None,
-    ):
+        byte6_bit2=None):
         self.self = self
         self.lower_70a7 = lower_70a7
         self.upper_70a7 = upper_70a7
@@ -830,8 +810,7 @@ class ChestClone(Clone):
             byte2_bit4,
             byte5_bit6,
             byte5_bit7,
-            byte6_bit2,
-        )
+            byte6_bit2)
 
 
 class Room:
@@ -843,8 +822,7 @@ class Room:
         event_tiles=None,
         exit_fields=None,
         objects=None,
-        extra_required_actions=[],
-    ):
+        extra_required_actions=[]):
         if partition is None:
             partition = Partition()
         self.partition = partition

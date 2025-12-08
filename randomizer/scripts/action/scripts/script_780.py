@@ -31,8 +31,7 @@ script = ActionScript(
         JmpIfBitClear(
             TEMP_7043_2,
             ["ACTION_780_set_animation_speed_24"],
-            identifier="ACTION_780_jmp_if_bit_clear_20",
-        ),
+            identifier="ACTION_780_jmp_if_bit_clear_20"),
         SetWalkingSpeed(FAST),
         ClearSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True),
         Jmp(["ACTION_780_walk_1_step_f_direction_26"]),
@@ -45,8 +44,7 @@ script = ActionScript(
         JmpIfBitClear(
             TEMP_7043_2,
             ["ACTION_780_set_animation_speed_34"],
-            identifier="ACTION_780_jmp_if_bit_clear_30",
-        ),
+            identifier="ACTION_780_jmp_if_bit_clear_30"),
         SetWalkingSpeed(FAST),
         ClearSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True),
         Jmp(["ACTION_780_shift_f_direction_steps_36"]),
@@ -58,8 +56,7 @@ script = ActionScript(
         JmpIfBitClear(
             TEMP_7043_2,
             ["ACTION_780_pause_42"],
-            identifier="ACTION_780_jmp_if_bit_clear_39",
-        ),
+            identifier="ACTION_780_jmp_if_bit_clear_39"),
         Pause(24),
         Jmp(["ACTION_780_jmp_if_bit_clear_20"]),
         Pause(96, identifier="ACTION_780_pause_42"),
@@ -68,8 +65,7 @@ script = ActionScript(
             arg_1=0x09,
             set_bits=[5],
             clear_bits=[4, 6],
-            identifier="ACTION_780_object_memory_modify_bits_44",
-        ),
+            identifier="ACTION_780_object_memory_modify_bits_44"),
         SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True),
         Set700CToPressedButton(),
         Compare700CToVar(TEMP_7026),
@@ -84,8 +80,7 @@ script = ActionScript(
             comparing_npc=MARIO,
             usually=0,
             tiles=4,
-            destinations=["ACTION_780_set_animation_speed_67"],
-        ),
+            destinations=["ACTION_780_set_animation_speed_67"]),
         JmpIfRandom2of3(
             [
                 "ACTION_780_turn_clockwise_45_degrees_n_times_60",

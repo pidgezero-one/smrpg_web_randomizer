@@ -65,8 +65,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.PiranhaPlant,
             event_script=1551,
@@ -81,8 +80,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 2
             occupant=npcs.SkyTroopa,
             initiator=Initiator.NONE,
@@ -113,8 +111,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.Goby,
             initiator=Initiator.NONE,
@@ -145,8 +142,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 4
             occupant=npcs.Crook,
             initiator=Initiator.NONE,
@@ -177,8 +173,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 5
             occupant=npcs.Flower,
             initiator=Initiator.NONE,
@@ -211,8 +206,7 @@ room = Room(
             priority_2=True,
             show_shadow=True,
             height=3,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 6
             occupant=npcs.Jawful,
             initiator=Initiator.NONE,
@@ -243,7 +237,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

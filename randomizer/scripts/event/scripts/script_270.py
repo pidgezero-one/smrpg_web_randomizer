@@ -12,8 +12,7 @@ script = EventScript(
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASAddZCoord1Step(),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

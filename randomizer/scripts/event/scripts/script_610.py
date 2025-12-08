@@ -37,42 +37,36 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=17, y=113, z=0, direction=EAST),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
                 ASTransferToXYZF(x=18, y=113, z=0, direction=EAST),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_610_fade_in_from_black_async_42"]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[ASTransferToXYZF(x=15, y=72, z=8, direction=EAST)],
-            identifier="EVENT_610_action_queue_sync_33",
-        ),
+            identifier="EVENT_610_action_queue_sync_33"),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
                 ASTransferToXYZF(x=16, y=68, z=8, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASTransferToXYZF(x=16, y=69, z=8, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASTransferToXYZF(x=16, y=72, z=8, direction=EAST),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_7, subscript=[ASFaceSoutheast()]),
         RememberLastObject(),
         SetSyncActionScript(NPC_5, A0376_TURN_RANDOMLY_IN_PLACE),

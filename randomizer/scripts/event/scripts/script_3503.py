@@ -30,15 +30,13 @@ script = EventScript(
         SetSyncActionScript(
             NPC_1,
             A0709_BOOSTER_HILL_BARREL,
-            identifier="EVENT_3503_set_action_script_sync_16",
-        ),
+            identifier="EVENT_3503_set_action_script_sync_16"),
         SetSyncActionScript(NPC_2, A0710_BOOSTER_HILL_BARREL),
         Jmp(["EVENT_3503_pause_21"]),
         SetSyncActionScript(
             NPC_2,
             A0710_BOOSTER_HILL_BARREL,
-            identifier="EVENT_3503_set_action_script_sync_19",
-        ),
+            identifier="EVENT_3503_set_action_script_sync_19"),
         SetSyncActionScript(NPC_0, A0708_BOOSTER_HILL_BARREL),
         Pause(210, identifier="EVENT_3503_pause_21"),
         EndLoop(),

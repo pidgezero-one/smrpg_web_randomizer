@@ -38,8 +38,7 @@ objects = [
         acute_axis=8,
         obtuse_axis=8,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=Empty,
@@ -57,8 +56,7 @@ objects = [
         acute_axis=8,
         obtuse_axis=8,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=Empty,
@@ -76,8 +74,7 @@ objects = [
         acute_axis=8,
         obtuse_axis=8,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Empty,
@@ -95,6 +92,5 @@ objects = [
         acute_axis=8,
         obtuse_axis=8,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

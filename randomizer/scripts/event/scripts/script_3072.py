@@ -37,14 +37,12 @@ script = EventScript(
         Jmp(["EVENT_3072_ret_47"]),
         EnableControlsUntilReturn(
             [LEFT, RIGHT, DOWN, UP, X, A, Y, B],
-            identifier="EVENT_3072_enable_controls_until_return_1",
-        ),
+            identifier="EVENT_3072_enable_controls_until_return_1"),
         Pause(8),
         PrioritySet(
             mainscreen=[LAYER_L3],
             subscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
-            colour_math=[BACKGROUND, HALF_INTENSITY],
-        ),
+            colour_math=[BACKGROUND, HALF_INTENSITY]),
         Jmp(["EVENT_3072_ret_47"]),
         EnableControls(
             [LEFT, RIGHT, DOWN, UP, A, Y, B], identifier="EVENT_3072_enable_controls_23"
@@ -71,8 +69,7 @@ script = EventScript(
         JmpIfBitClear(
             PROGRESSIVE_BOSS_EXP_ENABLED,
             ["EVENT_3072_set_7000_to_70A0_short_mem_95"],
-            identifier="EVENT_3072_check_boss_bit",
-        ),
+            identifier="EVENT_3072_check_boss_bit"),
         JmpIfVarEqualsConst(BOSS_VICTORY_COUNTER, 0, ["EVENT_3072_set_74"]),
         JmpIfVarEqualsConst(BOSS_VICTORY_COUNTER, 1, ["EVENT_3072_set_77"]),
         JmpIfVarEqualsConst(BOSS_VICTORY_COUNTER, 2, ["EVENT_3072_set_77"]),
@@ -129,8 +126,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=ITEM_ID,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3072_set_7000_to_70A0_short_mem_95",
-        ),
+            identifier="EVENT_3072_set_7000_to_70A0_short_mem_95"),
         Mem7000AndConst(0x000F),
         SetEXPPacketTo7000(),
         MarioGlows(),
@@ -140,8 +136,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P022_RECURSIVE_SPARKLES,
             target_npc=MARIO,
-            destinations=["EVENT_3072_jmp_38"],
-        ),
+            destinations=["EVENT_3072_jmp_38"]),
         Jmp(["EVENT_3072_ret_47"], identifier="EVENT_3072_jmp_38"),
         PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_3072_play_sound_39"),
         CreatePacketAt7010(

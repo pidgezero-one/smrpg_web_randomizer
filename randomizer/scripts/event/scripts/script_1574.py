@@ -16,14 +16,12 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E1586_MIDAS_RIVER_BARREL_FISH_MOVEMENT,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         JmpIfVarNotEqualsConst(
             SECONDARY_TEMP_7024,
             2,
             ["EVENT_1574_set_short_8"],
-            identifier="EVENT_1574_jmp_if_var_not_equals_const_6",
-        ),
+            identifier="EVENT_1574_jmp_if_var_not_equals_const_6"),
         SpeedUpMusicTempoBy(duration=255, change=24),
         SetVarToConst(X_COORD_2, 6, identifier="EVENT_1574_set_short_8"),
         SetVarToConst(Y_COORD_2, 29),

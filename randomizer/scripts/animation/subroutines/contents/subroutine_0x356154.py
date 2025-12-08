@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         Db(bytearray(b" \xbeC\x00")),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 4, ["command_0x35253b"]),
         PlaySound(sound=S0134_BOO_DISAPPEARS),
@@ -29,11 +28,9 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         PauseScriptUntilSpriteSequenceDone(),
         SpriteSequence(sequence=1),
         PauseScriptUntilSpriteSequenceDone(),
         RunSubroutine(["command_0x35252f"]),
-    ],
-)
+    ])

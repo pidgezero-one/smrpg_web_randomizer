@@ -20,8 +20,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=10, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -32,22 +31,18 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_8,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(3)],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(3)]),
         ActionQueueAsync(
             target=NPC_9,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkNorthwestPixels(8),
                 ASWalkSouthwestPixels(3),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_4, subscript=[ASVisibilityOn()]),
         ActionQueueAsync(target=NPC_5, subscript=[ASVisibilityOff()]),
         ActionQueueAsync(target=NPC_6, subscript=[ASVisibilityOff()]),

@@ -24,19 +24,16 @@ script = EventScript(
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_244_room_234_logic",
-        ),
+            identifier="EVENT_244_room_234_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_244_room_322_logic"),
         SetVarToConst(COIN_CHEST_MULTIPLIER, 0, identifier="EVENT_244_room_421_logic"),
         JmpToEvent(E3403_COIN_CHEST_MULTI_HIT_4),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_244_room_425_logic",
-        ),
+            identifier="EVENT_244_room_425_logic"),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_244_room_443_logic",
-        ),
+            identifier="EVENT_244_room_443_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_244_room_455_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_244_room_457_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_244_room_458_logic"),

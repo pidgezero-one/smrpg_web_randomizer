@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularClone(
         occupant=JumpTrampoline,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     BattlePackNPC(
         occupant=Geckit,
@@ -86,8 +84,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     BattlePackNPC(
         occupant=Chow,
@@ -122,8 +119,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     BattlePackNPC(
         occupant=Geckit,
@@ -157,8 +153,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     ChestNPC(
         occupant=TreasureChest,
@@ -194,8 +189,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     ChestNPC(
         occupant=TreasureChest,
@@ -231,8 +225,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     ChestNPC(
         occupant=TreasureChest,
@@ -267,8 +260,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=Empty,
@@ -301,6 +293,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

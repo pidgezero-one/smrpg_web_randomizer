@@ -10,13 +10,11 @@ script = EventScript(
         JmpIfBitClear(UNUSED_708D_2, ["EVENT_2335_remove_from_level_3"]),
         ActionQueueAsync(
             target=NPC_6,
-            subscript=[ASSetSpriteSequence(index=4, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=4, is_sequence=True, looping=True)]),
         RemoveObjectFromSpecificLevel(
             NPC_0,
             R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS,
-            identifier="EVENT_2335_remove_from_level_3",
-        ),
+            identifier="EVENT_2335_remove_from_level_3"),
         RemoveObjectFromSpecificLevel(
             NPC_1, R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS
         ),
@@ -47,15 +45,13 @@ script = EventScript(
         ),
         RunBackgroundEvent(
             event_id=E2336_TOWER_FIRST_STAIRCASE_SPOOKUM_DIRECTION_1,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         FadeInFromBlack(sync=False),
         Return(),
         RunBackgroundEvent(
             event_id=E2337_TOWER_FIRST_STAIRCASE_SPOOKUM_DIRECTION_2,
             return_on_level_exit=True,
-            identifier="EVENT_2335_run_background_event_23",
-        ),
+            identifier="EVENT_2335_run_background_event_23"),
         FadeInFromBlack(sync=False),
         Return(),
     ]

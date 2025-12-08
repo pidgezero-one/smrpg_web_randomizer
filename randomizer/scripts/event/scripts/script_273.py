@@ -12,8 +12,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(["EVENT_273_run_event_as_subroutine_3"]),
         Jmp(["EVENT_273_run_event_as_subroutine_8"]),
         RunEventAsSubroutine(
@@ -27,8 +26,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Jmp(["EVENT_273_clear_bit_48"]),
         RunEventAsSubroutine(
             E3587_SET_70AE_TO_70A8, identifier="EVENT_273_run_event_as_subroutine_8"
@@ -56,10 +54,8 @@ script = EventScript(
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                )
-            ],
-        ),
+                    looping=True)
+            ]),
         Pause(60),
         CircleMaskShrinkToObject(target=MARIO, width=0, speed=1, static=True),
         PauseScriptUntilEffectDone(),
@@ -69,8 +65,7 @@ script = EventScript(
         RestoreAllFP(),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASSetSpriteSequence(index=13, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=13, is_sequence=True, looping=True)]),
         Pause(60),
         PlaySound(sound=SO029_ALARM_CLOCK, channel=6),
         Pause(92),
@@ -87,8 +82,7 @@ script = EventScript(
         StopSound(),
         ActionQueueAsync(
             target=MARIO,
-            subscript=[ASSetSpriteSequence(index=14, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=14, is_sequence=True, looping=True)]),
         RunEventAsSubroutine(E0286_AWAIT_B_PRESS),
         JmpToSubroutine(["EVENT_273_jmp_if_bit_set_131"]),
         PauseActionScript(MARIO),
@@ -105,8 +99,7 @@ script = EventScript(
                     ["EVENT_273_action_queue_async_47_SUBSCRIPT_pause_3"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         ClearBit(MARIOS_PAD_OR_MONSTRO_TOWN_SLEEP, identifier="EVENT_273_clear_bit_48"),
         ClearBit(OCCUPIED_MUSHROOM_KINGDOM_INN),
         ClearBit(OCCUPIED_ROSE_TOWN_INN),
@@ -126,8 +119,7 @@ script = EventScript(
         JmpIfBitSet(
             OCCUPIED_MUSHROOM_KINGDOM_INN,
             ["EVENT_273_enter_area_77"],
-            identifier="EVENT_273_jmp_if_bit_set_64",
-        ),
+            identifier="EVENT_273_jmp_if_bit_set_64"),
         JmpIfBitSet(OCCUPIED_ROSE_TOWN_INN, ["EVENT_273_enter_area_80"]),
         JmpIfBitSet(ROSE_TOWN_LIBERATED_INN, ["EVENT_273_enter_area_89"]),
         JmpIfBitSet(MOLEVILLE_INN, ["EVENT_273_enter_area_96"]),
@@ -143,8 +135,7 @@ script = EventScript(
             x=6,
             y=119,
             z=3,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R052_MUSHROOM_KINGDOM_INN_2F, mod_id=0
         ),
@@ -156,8 +147,7 @@ script = EventScript(
             y=119,
             z=3,
             run_entrance_event=True,
-            identifier="EVENT_273_enter_area_77",
-        ),
+            identifier="EVENT_273_enter_area_77"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R052_MUSHROOM_KINGDOM_INN_2F, mod_id=0
         ),
@@ -168,8 +158,7 @@ script = EventScript(
             x=6,
             y=43,
             z=3,
-            identifier="EVENT_273_enter_area_80",
-        ),
+            identifier="EVENT_273_enter_area_80"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R095_ROSE_TOWN_DURING_BOWYER_INN_2F, mod_id=0
         ),
@@ -185,8 +174,7 @@ script = EventScript(
             x=6,
             y=43,
             z=3,
-            identifier="EVENT_273_enter_area_89",
-        ),
+            identifier="EVENT_273_enter_area_89"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R096_ROSE_TOWN_INN_2F, mod_id=0
         ),
@@ -197,8 +185,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=5, y=40, z=6, direction=EAST),
                 ASTransferXYZFPixels(x=248, y=252, z=0, direction=EAST),
-            ],
-        ),
+            ]),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R096_ROSE_TOWN_INN_2F, mod_id=1
         ),
@@ -213,8 +200,7 @@ script = EventScript(
             x=6,
             y=11,
             z=1,
-            identifier="EVENT_273_enter_area_96",
-        ),
+            identifier="EVENT_273_enter_area_96"),
         ApplyTileModToLevel(use_alternate=True, room_id=R337_MOLEVILLE_INN, mod_id=0),
         Return(),
         EnterArea(
@@ -223,16 +209,14 @@ script = EventScript(
             x=17,
             y=12,
             z=1,
-            identifier="EVENT_273_enter_area_99",
-        ),
+            identifier="EVENT_273_enter_area_99"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R009_MARRYMORE_INN_REGULAR_ROOM, mod_id=0
         ),
         JmpIfObjectNotInSpecificLevel(
             NPC_1,
             R009_MARRYMORE_INN_REGULAR_ROOM,
-            ["EVENT_273_jmp_if_object_trigger_disabled_103"],
-        ),
+            ["EVENT_273_jmp_if_object_trigger_disabled_103"]),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R009_MARRYMORE_INN_REGULAR_ROOM, mod_id=33
         ),
@@ -240,8 +224,7 @@ script = EventScript(
             NPC_0,
             R009_MARRYMORE_INN_REGULAR_ROOM,
             ["EVENT_273_ret_105"],
-            identifier="EVENT_273_jmp_if_object_trigger_disabled_103",
-        ),
+            identifier="EVENT_273_jmp_if_object_trigger_disabled_103"),
         ActionQueueAsync(target=NPC_0, subscript=[ASVisibilityOff()]),
         Return(identifier="EVENT_273_ret_105"),
         EnterArea(
@@ -250,8 +233,7 @@ script = EventScript(
             x=8,
             y=13,
             z=1,
-            identifier="EVENT_273_enter_area_106",
-        ),
+            identifier="EVENT_273_enter_area_106"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R012_MARRYMORE_INN_SUITE_ROOM, mod_id=0
         ),
@@ -260,8 +242,7 @@ script = EventScript(
             subscript=[
                 ASTransferXYZFPixels(x=0, y=248, z=0, direction=EAST),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7042_0),
         Return(),
         EnterArea(
@@ -270,20 +251,17 @@ script = EventScript(
             x=6,
             y=73,
             z=3,
-            identifier="EVENT_273_enter_area_111",
-        ),
+            identifier="EVENT_273_enter_area_111"),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
                 ASTransferToXYZF(x=4, y=78, z=6, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R210_SEASIDE_TOWN_DURING_YARIDOVICH_INN_2F,
-            mod_id=0,
-        ),
+            mod_id=0),
         Return(),
         EnterArea(
             room_id=R306_SEASIDE_TOWN_INN_2F,
@@ -291,8 +269,7 @@ script = EventScript(
             x=6,
             y=73,
             z=3,
-            identifier="EVENT_273_enter_area_115",
-        ),
+            identifier="EVENT_273_enter_area_115"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R306_SEASIDE_TOWN_INN_2F, mod_id=0
         ),
@@ -304,8 +281,7 @@ script = EventScript(
             y=119,
             z=3,
             run_entrance_event=True,
-            identifier="EVENT_273_enter_area_118",
-        ),
+            identifier="EVENT_273_enter_area_118"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R052_MUSHROOM_KINGDOM_INN_2F, mod_id=0
         ),
@@ -316,8 +292,7 @@ script = EventScript(
             x=15,
             y=79,
             z=1,
-            identifier="EVENT_273_enter_area_121",
-        ),
+            identifier="EVENT_273_enter_area_121"),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R346_NIMBUS_LAND_INN_BEDROOM, mod_id=0
         ),
@@ -332,13 +307,11 @@ script = EventScript(
                 ASSetSpriteSequence(index=5, is_sequence=True, looping=True),
                 ASTransferToXYZF(x=17, y=83, z=2, direction=EAST),
                 ASTransferXYZFPixels(x=250, y=250, z=0, direction=EAST),
-            ],
-        ),
+            ]),
         JmpIfBitSet(
             TEMP_704C_0,
             ["EVENT_273_summon_to_current_level_129"],
-            identifier="EVENT_273_jmp_if_bit_set_127",
-        ),
+            identifier="EVENT_273_jmp_if_bit_set_127"),
         Return(),
         SummonObjectToCurrentLevel(
             NPC_0, identifier="EVENT_273_summon_to_current_level_129"
@@ -347,8 +320,7 @@ script = EventScript(
         JmpIfBitSet(
             OCCUPIED_MUSHROOM_KINGDOM_INN,
             ["EVENT_273_apply_tile_mod_143"],
-            identifier="EVENT_273_jmp_if_bit_set_131",
-        ),
+            identifier="EVENT_273_jmp_if_bit_set_131"),
         JmpIfBitSet(OCCUPIED_ROSE_TOWN_INN, ["EVENT_273_apply_tile_mod_145"]),
         JmpIfBitSet(ROSE_TOWN_LIBERATED_INN, ["EVENT_273_apply_tile_mod_147"]),
         JmpIfBitSet(MOLEVILLE_INN, ["EVENT_273_apply_tile_mod_149"]),
@@ -366,77 +338,66 @@ script = EventScript(
             use_alternate=False,
             room_id=R052_MUSHROOM_KINGDOM_INN_2F,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_143",
-        ),
+            identifier="EVENT_273_apply_tile_mod_143"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R095_ROSE_TOWN_DURING_BOWYER_INN_2F,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_145",
-        ),
+            identifier="EVENT_273_apply_tile_mod_145"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R096_ROSE_TOWN_INN_2F,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_147",
-        ),
+            identifier="EVENT_273_apply_tile_mod_147"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R337_MOLEVILLE_INN,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_149",
-        ),
+            identifier="EVENT_273_apply_tile_mod_149"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R009_MARRYMORE_INN_REGULAR_ROOM,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_151",
-        ),
+            identifier="EVENT_273_apply_tile_mod_151"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R012_MARRYMORE_INN_SUITE_ROOM,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_153",
-        ),
+            identifier="EVENT_273_apply_tile_mod_153"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R210_SEASIDE_TOWN_DURING_YARIDOVICH_INN_2F,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_155",
-        ),
+            identifier="EVENT_273_apply_tile_mod_155"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R306_SEASIDE_TOWN_INN_2F,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_157",
-        ),
+            identifier="EVENT_273_apply_tile_mod_157"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R052_MUSHROOM_KINGDOM_INN_2F,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_159",
-        ),
+            identifier="EVENT_273_apply_tile_mod_159"),
         Return(),
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R346_NIMBUS_LAND_INN_BEDROOM,
             mod_id=0,
-            identifier="EVENT_273_apply_tile_mod_161",
-        ),
+            identifier="EVENT_273_apply_tile_mod_161"),
         Return(),
         ActionQueueSync(
             target=NPC_0,
             subscript=[ASFaceSouthwest()],
-            identifier="EVENT_273_action_queue_sync_163",
-        ),
+            identifier="EVENT_273_action_queue_sync_163"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -472,10 +433,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         SetSyncActionScript(MARIO, A0787_PLAYER_COWERS_IN_CORNER),
         ActionQueueAsync(
             target=NPC_0,
@@ -490,8 +449,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASResetProperties(),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         Pause(30),
         PauseActionScript(MARIO),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
@@ -510,8 +468,7 @@ script = EventScript(
                 ASWalkNorthwestPixels(4),
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         Pause(10),
         ActionQueueAsync(
             target=NPC_0, subscript=[ASSetWalkingSpeed(SLOW), ASWalkNorthwestPixels(4)]
@@ -530,8 +487,7 @@ script = EventScript(
                 ASWalkNorthwestPixels(8),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -541,8 +497,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASPause(30),
                 ASFaceSouth(),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         ClearBit(TEMP_704C_0),

@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=2,
             y=51,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=11,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=2,
             y=48,
@@ -91,8 +89,7 @@ room = Room(
             dst_z=11,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=5,
             y=52,
@@ -110,8 +107,7 @@ room = Room(
             dst_z=11,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=3,
             y=45,
@@ -129,8 +125,7 @@ room = Room(
             dst_z=11,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=4,
             y=44,
@@ -148,8 +143,7 @@ room = Room(
             dst_z=11,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=4,
             y=50,
@@ -167,8 +161,7 @@ room = Room(
             dst_z=11,
             dst_z_half=False,
             dst_f=SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -198,8 +191,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.TOADSTOOL_S_PARACHUTE_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -209,8 +201,7 @@ room = Room(
             y=45,
             z=12,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.TOADSTOOL_S_PARACHUTE_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -220,8 +211,7 @@ room = Room(
             y=49,
             z=15,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.TOADSTOOL_S_PARACHUTE_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -231,8 +221,7 @@ room = Room(
             y=50,
             z=15,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 4
             npc=npcs.SPOOKUM_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -261,8 +250,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 5
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -272,8 +260,7 @@ room = Room(
             y=45,
             z=11,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 6
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -283,8 +270,7 @@ room = Room(
             y=49,
             z=15,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 7
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -294,8 +280,7 @@ room = Room(
             y=50,
             z=14,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -322,8 +307,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 9
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -352,7 +336,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

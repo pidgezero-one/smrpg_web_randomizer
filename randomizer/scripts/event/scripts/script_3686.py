@@ -37,8 +37,7 @@ script = EventScript(
                 ASVisibilityOn(),
                 ASPause(30),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R012_MARRYMORE_INN_SUITE_ROOM, mod_id=1
@@ -55,8 +54,7 @@ script = EventScript(
                 ASFaceNorth(),
                 ASPause(2),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         Pause(30),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplyTileModToLevel(
@@ -71,8 +69,7 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASPause(2),
                 ASFaceSouth(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         ClearBit(TEMP_7044_7),
         ClearBit(TEMP_7044_6),

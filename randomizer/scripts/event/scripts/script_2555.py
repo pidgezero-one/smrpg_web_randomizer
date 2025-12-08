@@ -16,15 +16,13 @@ script = EventScript(
                 ASWalkSoutheastPixels(7),
                 ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
                 ASSequenceLoopingOn(),
                 ASSetSpriteSequence(index=5, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         JmpIfBitSet(BEAN_VALLEY_BOSS_DEFEATED, ["EVENT_2555_action_queue_async_8"]),
         RunBackgroundEvent(
             event_id=E2557_BEAN_VALLEY_WATERS_BOSS, return_on_level_exit=True
@@ -42,8 +40,7 @@ script = EventScript(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 ),
             ],
-            identifier="EVENT_2555_action_queue_async_8",
-        ),
+            identifier="EVENT_2555_action_queue_async_8"),
         FadeInFromBlack(sync=False),
         Return(),
     ]

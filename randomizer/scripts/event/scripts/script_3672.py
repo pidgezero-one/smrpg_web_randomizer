@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=27,
             y=29,
-            z=6,
-        ),
+            z=6),
         JmpToEvent(E3745_NIMBUS_BACK_EXIT_INITIATE_FALLING_SEQUENCE),
     ]
 )

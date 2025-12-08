@@ -53,8 +53,7 @@ room = Room(
             dst_z=5,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=14,
             y=70,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -103,8 +101,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -114,8 +111,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 2
             npc=npcs.SPOOKUM_NPC,
             battle_pack=46,
@@ -125,8 +121,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 3
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -136,8 +131,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 4
             npc=npcs.SPOOKUM_NPC,
             battle_pack=46,
@@ -147,8 +141,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 5
             npc=npcs.SPOOKUM_NPC,
             battle_pack=47,
@@ -158,8 +151,7 @@ room = Room(
             y=0,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         ChestNPC( # 6
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -188,7 +180,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

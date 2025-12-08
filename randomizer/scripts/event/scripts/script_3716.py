@@ -16,8 +16,7 @@ script = EventScript(
         SetSyncActionScript(
             MARIO,
             A0814_MARIO_BLOWN_BY_FAN,
-            identifier="EVENT_3716_set_action_script_sync_7",
-        ),
+            identifier="EVENT_3716_set_action_script_sync_7"),
         ClearBit(TEMP_7043_4),
         ClearBit(TEMP_7043_5),
         JmpToEvent(E3716_NIMBUS_CASTLE_ANGLED_PLANT_ROOM_RIGHT_FAN_GUST),

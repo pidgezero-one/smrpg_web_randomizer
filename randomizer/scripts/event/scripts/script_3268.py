@@ -11,8 +11,7 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         SetBit(TEMP_7043_0),
         Store00To0248(),

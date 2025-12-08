@@ -12,8 +12,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfBitClear(TOAD_IN_MUSHROOM_WAY_3, ["EVENT_991_mushroom_way"]),
         JmpIfBitSet(MUSHROOM_KINGDOM_LIBERATED, ["EVENT_947_croco1"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["EVENT_947_croco1"]),
@@ -31,8 +30,7 @@ script = EventScript(
         JmpIfBitClear(
             MOLEVILLE_MINES_ENTRANCE_GATING,
             ["EVENT_947_rk+"],
-            identifier="EVENT_947_mines_access",
-        ),
+            identifier="EVENT_947_mines_access"),
         JmpIfBitClear(MINES_BOSS_1_DEFEATED, ["EVENT_991_mines"]),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["EVENT_947_rk+"]),
         JmpIfBitSet(MINES_BACK_OPENED, ["EVENT_991_mines"]),
@@ -45,14 +43,12 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             NPC_7,
             R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            ["EVENT_991_tower"],
-        ),
+            ["EVENT_991_tower"]),
         Jmp(["EVENT_947_bundt"]),
         JmpIfBitSet(
             TOWER_CHARACTER_RECRUITED,
             ["EVENT_991_tower"],
-            identifier="EVENT_947_booster_recruit+",
-        ),
+            identifier="EVENT_947_booster_recruit+"),
         JmpIfBitSet(
             MARRYMORE_LIBERATED, ["EVENT_947_star_hill"], identifier="EVENT_947_bundt"
         ),
@@ -75,15 +71,13 @@ script = EventScript(
         JmpIfBitClear(
             LANDS_END_CLOUD_STAR_PIECE,
             ["EVENT_991_lands_end"],
-            identifier="EVENT_947_mokura",
-        ),
+            identifier="EVENT_947_mokura"),
         JmpIfBitClear(BELOME_TEMPLE_OPEN, ["EVENT_947_mtown_open"]),
         JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["EVENT_991_temple"]),
         JmpIfBitClear(
             MAP_MONSTRO_TOWN,
             ["EVENT_947_megasmilax"],
-            identifier="EVENT_947_mtown_open",
-        ),
+            identifier="EVENT_947_mtown_open"),
         JmpIfBitClear(DOJO_BOSS_1_DEFEATED, ["EVENT_991_monstro"]),
         JmpIfBitClear(DOJO_BOSS_2_DEFEATED, ["EVENT_991_monstro"]),
         JmpIfBitClear(DOJO_BOSS_3_DEFEATED, ["EVENT_991_monstro"]),
@@ -99,22 +93,19 @@ script = EventScript(
         JmpIfBitClear(
             BEAN_VALLEY_BOSS_DEFEATED,
             ["EVENT_991_bean"],
-            identifier="EVENT_947_megasmilax",
-        ),
+            identifier="EVENT_947_megasmilax"),
         RunEventAsSubroutine(E0987_FROGFUCIUS_HINT_OPTIONAL_7),
         JmpIfObjectInSpecificLevel(
             NPC_1,
             R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
-            ["EVENT_991_nimbus_castle"],
-        ),
+            ["EVENT_991_nimbus_castle"]),
         JmpIfBitClear(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5, ["EVENT_991_nimbus_proper"]),
         StoreItemAmountTo7000(CastleKey1),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_991_nimbus_castle"]),
         JmpIfObjectInSpecificLevel(
             NPC_10,
             R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
-            ["EVENT_947_is_volcano_open"],
-        ),
+            ["EVENT_947_is_volcano_open"]),
         JmpIfBitClear(NIMBUS_MID_BOSS_COMPLETED, ["EVENT_991_nimbus_castle"]),
         StoreItemAmountTo7000(CastleKey2),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_991_nimbus_castle"]),
@@ -125,8 +116,7 @@ script = EventScript(
         JmpIfBitClear(
             MAP_BARREL_VOLCANO,
             ["EVENT_947_is_keep_open"],
-            identifier="EVENT_947_is_volcano_open",
-        ),
+            identifier="EVENT_947_is_volcano_open"),
         JmpIfBitClear(VOLCANO_LIBERATED, ["EVENT_991_volcano"]),
         JmpIfBitClear(
             MAP_VISTA_HILL, ["EVENT_947_smithy"], identifier="EVENT_947_is_keep_open"
@@ -149,8 +139,7 @@ script = EventScript(
         JmpIfBitClear(
             LANDS_END_GROTTO_BARREL_FLIPPED,
             ["EVENT_991_lands_end_secret"],
-            identifier="EVENT_947_barrel",
-        ),
+            identifier="EVENT_947_barrel"),
         JmpIfBitClear(SEWERS_FLIPPED_CHEST_OPENED, ["EVENT_991_sewer"]),
         JmpIfBitClear(MELODY_BAY_ITEM_1_GRANTED, ["EVENT_991_mb"]),
         JmpIfBitClear(MINECART_CLEARED, ["EVENT_947_rose_town_flower"]),
@@ -161,8 +150,7 @@ script = EventScript(
             NPC_13,
             R084_ROSE_TOWN_OUTSIDE,
             ["EVENT_991_rose_town"],
-            identifier="EVENT_947_rose_town_flower",
-        ),
+            identifier="EVENT_947_rose_town_flower"),
         JmpIfBitClear(PIPE_VAULT_GATED, ["EVENT_947_fw"]),
         JmpIfObjectInSpecificLevel(NPC_16, R034_YOSTER_ISLE, ["EVENT_991_yoster"]),
         RunEventAsSubroutine(
@@ -180,8 +168,7 @@ script = EventScript(
         JmpIfBitSet(
             TOWER_CHARACTER_RECRUITED,
             ["EVENT_991_tower"],
-            identifier="EVENT_947_booster_recruit",
-        ),
+            identifier="EVENT_947_booster_recruit"),
         JmpIfBitClear(
             MAP_MONSTRO_TOWN, ["EVENT_947_-seed"], identifier="EVENT_947_templekey"
         ),
@@ -193,16 +180,14 @@ script = EventScript(
             NPC_3,
             R254_BEAN_VALLEY_SMILAX_AREA,
             ["EVENT_991_bean"],
-            identifier="EVENT_947_-seed",
-        ),
+            identifier="EVENT_947_-seed"),
         JmpIfBitClear(RED_CELLAR_GUARD_ITEM_GRANTED, ["EVENT_991_nimbus_castle"]),
         StoreItemAmountTo7000(CastleKey1),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_991_nimbus_castle"]),
         JmpIfObjectInSpecificLevel(
             NPC_10,
             R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
-            ["EVENT_947_end"],
-        ),
+            ["EVENT_947_end"]),
         JmpIfBitClear(NIMBUS_MID_BOSS_COMPLETED, ["EVENT_991_nimbus_castle"]),
         StoreItemAmountTo7000(CastleKey2),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_991_nimbus_castle"]),

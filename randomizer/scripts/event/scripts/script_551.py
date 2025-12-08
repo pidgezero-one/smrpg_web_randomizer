@@ -30,8 +30,7 @@ script = EventScript(
             use_alternate=True,
             room_id=R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
             mod_id=3,
-            identifier="EVENT_551_apply_tile_mod_10",
-        ),
+            identifier="EVENT_551_apply_tile_mod_10"),
         ApplySolidityModToLevel(
             permanent=True, room_id=R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, mod_id=1
         ),

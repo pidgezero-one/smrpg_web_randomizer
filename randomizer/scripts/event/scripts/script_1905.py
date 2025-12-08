@@ -20,16 +20,14 @@ script = EventScript(
                 ASWalkEastPixels(8),
                 ASWalkWestPixels(8),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         EnterArea(
             room_id=R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
             face_direction=SOUTH,
             x=23,
             y=54,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
@@ -37,8 +35,7 @@ script = EventScript(
             x=23,
             y=54,
             z=0,
-            identifier="EVENT_1905_enter_area_9",
-        ),
+            identifier="EVENT_1905_enter_area_9"),
         FadeInFromBlack(sync=True),
         SetBit(DIRECTIONAL_7049_0),
         EnableControls([]),
@@ -47,8 +44,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=24, y=54, z=18, direction=EAST),
                 ASJumpToHeight(height=0, silent=True),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

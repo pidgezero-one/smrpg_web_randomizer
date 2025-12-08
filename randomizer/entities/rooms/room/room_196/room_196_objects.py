@@ -37,8 +37,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackClone(
         occupant=Spookum,
@@ -54,8 +53,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackClone(
         occupant=Spookum,
@@ -71,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     BattlePackClone(
         occupant=Spookum,
@@ -88,8 +85,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     BattlePackClone(
         occupant=Spookum,
@@ -105,8 +101,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     BattlePackClone(
         occupant=Spookum,
@@ -122,8 +117,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     ChestNPC(
         occupant=TreasureChest,
@@ -158,6 +152,5 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

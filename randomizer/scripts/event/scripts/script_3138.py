@@ -15,8 +15,7 @@ script = EventScript(
             x=8,
             y=96,
             z=11,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         SetAsyncActionScript(MARIO, A0010_FALL_ON_TRAMPOLINE),
         Return(),
     ]

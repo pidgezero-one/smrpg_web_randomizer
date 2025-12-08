@@ -20,8 +20,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
         FadeInFromBlack(sync=True, identifier="EVENT_1695_fade_in_from_black_sync_9"),
@@ -37,8 +36,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Return(),
         ResetAndChooseGame(identifier="EVENT_1695_reset_and_choose_game_12"),
         Return(),

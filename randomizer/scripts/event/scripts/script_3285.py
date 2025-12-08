@@ -14,8 +14,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7076_0,
             ["EVENT_3285_jmp_to_event_9"],
-            identifier="EVENT_3285_jmp_if_bit_clear_3",
-        ),
+            identifier="EVENT_3285_jmp_if_bit_clear_3"),
         Set7000ToCurrentLevel(),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 133, ["EVENT_3285_set_short_8"]),
         SetVarToConst(TIMER_7022, 5),

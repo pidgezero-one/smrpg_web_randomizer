@@ -12,8 +12,7 @@ script = EventScript(
         ),
         DisableObjectTriggerInSpecificLevel(
             NPC_1,
-            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
-        ),
+            R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM),
         DisableObjectTriggerInSpecificLevel(
             NPC_1, R498_NIMBUS_CASTLE_AREA_10_____DUMMY
         ),

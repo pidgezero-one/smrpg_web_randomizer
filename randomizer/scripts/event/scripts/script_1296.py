@@ -13,8 +13,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P034_GREY_EXPLOSION_SFX,
             target_npc=MARIO,
-            destinations=["EVENT_1296_jmp_if_bit_set_0"],
-        ),
+            destinations=["EVENT_1296_jmp_if_bit_set_0"]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -32,12 +31,10 @@ script = EventScript(
                 ASShiftNorthSteps(3),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
                 ASPause(30),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
-            subscript=[ASJumpToHeight(height=80, silent=True), ASPause(40)],
-        ),
+            subscript=[ASJumpToHeight(height=80, silent=True), ASPause(40)]),
         StartBattleAtBattlefield(143, BF12_BOOSTER_TOWER),
         JmpIfBitClear(GAME_OVER, ["EVENT_1296_set_bit_8"]),
         ResetAndChooseGame(),

@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3138_SEWERS_1ST_WATER_ROOM_PIPE_TO_3RD_WATER_ROOM,
             x=2,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3140_1ST_WATER_TOOM_PIPE_TO_SEWERS_4_RAT_ROOM,
             x=14,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3312_SEWERS_1ST_WATER_ROOM_EXIT_TO_RAT_LINE_ROOM,
             x=3,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -103,8 +99,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -133,8 +128,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.GOBY_NPC,
             event_script=E3119_GOBY_BATTLE,
@@ -144,8 +138,7 @@ room = Room(
             y=34,
             z=1,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 2
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -173,7 +166,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

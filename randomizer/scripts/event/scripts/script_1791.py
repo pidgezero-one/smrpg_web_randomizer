@@ -13,8 +13,7 @@ script = EventScript(
         SetVarToConst(TIMER_701C, 90),
         RunBackgroundEventWithPauseReturnOnExit(
             event_id=E1788_LANDS_END_UNDERGROUND_DOG_WALL_ROOM_LOADER_BACKGROUND,
-            timer_var=TIMER_701C,
-        ),
+            timer_var=TIMER_701C),
         JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_1791_jmp_to_event_4"),
     ]
 )

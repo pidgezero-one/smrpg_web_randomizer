@@ -36,8 +36,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=Empty,
@@ -70,8 +69,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=Empty,
@@ -86,8 +84,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Empty,
@@ -102,8 +99,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Empty,
@@ -118,8 +114,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Empty,
@@ -134,8 +129,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=Empty,
@@ -150,8 +144,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularNPC(
         occupant=Geno,
@@ -186,8 +179,7 @@ objects = [
         priority_2=True,
         acute_axis=6,
         obtuse_axis=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=Empty,
@@ -220,8 +212,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularNPC(
         occupant=PurpleStarPiece,
@@ -254,8 +245,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_10
     BattlePackNPC(
         occupant=Mukumuku,
@@ -290,8 +280,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_11
     BattlePackClone(
         occupant=Mukumuku,
@@ -307,8 +296,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_12
     RegularNPC(
         occupant=Empty,
@@ -341,8 +329,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     RegularClone(
         occupant=Empty,
@@ -357,8 +344,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_14
     RegularClone(
         occupant=Empty,
@@ -373,6 +359,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

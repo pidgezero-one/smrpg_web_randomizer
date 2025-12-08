@@ -3,8 +3,7 @@
 from randomizer.types.palettes import (
     EffectPalette,
     GenoPaletteSet,
-    SpritePalette,
-)
+    SpritePalette)
 
 
 class Default(GenoPaletteSet):

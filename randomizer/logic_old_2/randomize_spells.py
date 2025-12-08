@@ -1,7 +1,6 @@
 """Randomization logic for spells."""
 
 from random import choice, choices
-from typing import List, Type
 from randomizer.entities.spells import (
     BowserCrush,
     Clone1,
@@ -61,8 +60,7 @@ from randomizer.entities.spells import (
     GenoFlash,
     IceGenoFlash,
     ThunderGenoBeam,
-    ThunderGenoFlash,
-)
+    ThunderGenoFlash)
 from randomizer.types.spells.classes import CharacterSpell, CloneSpell
 from randomizer.types.spells.enums import Element
 from randomizer.types.world import GameWorld
@@ -96,7 +94,7 @@ def initialize_clone_spells_and_elements(world: GameWorld) -> None:
         randomizable_spells = [s for s in world.spells if s.element is not Element.NONE]
         for spell in randomizable_spells:
             index = world.spells.index(spell)
-            group: List[Type[CharacterSpell]] = next(
+            group: list[type[CharacterSpell]] = next(
                 (g for g in ELEMENTAL_SPELL_POOLS if type(spell) in g)
             )
             world.spells[index] = choice(group)(world)

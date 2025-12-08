@@ -30,8 +30,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7043_0,
             ["ACTION_216_turn_clockwise_45_degrees_n_times_28"],
-            identifier="ACTION_216_jmp_if_bit_set_21",
-        ),
+            identifier="ACTION_216_jmp_if_bit_set_21"),
         TurnClockwise45DegreesNTimes(2),
         Pause(4),
         TurnClockwise45DegreesNTimes(2),

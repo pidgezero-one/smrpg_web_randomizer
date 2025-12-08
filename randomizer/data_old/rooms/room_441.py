@@ -63,8 +63,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.Empty,
             initiator=Initiator.NONE,
@@ -96,8 +95,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 2
             occupant=npcs.Frogfucius,
             initiator=Initiator.NONE,
@@ -128,8 +126,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.FrogDisciple,
             initiator=Initiator.NONE,
@@ -162,7 +159,6 @@ room = Room(
             priority_2=True,
             acute_axis=3,
             obtuse_axis=4,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

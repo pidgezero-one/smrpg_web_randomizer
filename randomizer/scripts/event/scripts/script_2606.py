@@ -14,8 +14,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNortheast(),
                 ASWalkNortheastPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO, subscript=[ASWalkToXYCoords(x=10, y=47), ASFaceNorthwest()]
         ),
@@ -35,10 +34,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(target=NPC_8, subscript=[ASWalkNorthwestPixels(12)]),
         ActionQueueSync(
             target=NPC_6,
@@ -46,16 +43,14 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASWalkSoutheastSteps(4),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASSetSequenceSpeed(VERY_FAST),
                 ASWalkSoutheastSteps(4),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E1186_HENCHMAN_BATTLE_PACK_SELECTOR),
         JmpIfBitClear(GAME_OVER, ["EVENT_2606_remove_from_current_level_28"]),
         ResetAndChooseGame(),
@@ -75,8 +70,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         ActionQueueSync(target=NPC_8, subscript=[ASWalkSoutheastPixels(12)]),
         Pause(16),
@@ -94,8 +88,7 @@ script = EventScript(
             x=9,
             y=43,
             z=5,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
         Return(),
     ]

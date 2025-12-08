@@ -13,5 +13,4 @@ room = Room(
     extra_sprite_actions=[
         ExtraSpriteActions.LOOK_AT_DOLL,
         ExtraSpriteActions.PRAISE_FRONT,
-    ],
-)
+    ])

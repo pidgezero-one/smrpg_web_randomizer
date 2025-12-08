@@ -16,8 +16,7 @@ script = EventScript(
             x=20,
             y=30,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R055_PIPE_VAULT_ENTRANCE,
@@ -26,8 +25,7 @@ script = EventScript(
             y=14,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_3848_enter_area_3",
-        ),
+            identifier="EVENT_3848_enter_area_3"),
         Return(),
     ]
 )

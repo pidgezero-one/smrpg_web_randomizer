@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3168_SEWERS_3RD_WATER_ROOM_PIPE_TO_WATER_SWITCH_ROOM,
         x=15,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3172_SEWERS_3RD_WATER_ROOM_PIPE_TO_STAIR_ROOM,
         x=2,
@@ -37,8 +35,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3174_SEWERS_3RD_WATER_ROOM_PIPE_TO_WATER_SWITCH_ROOM,
         x=8,
@@ -49,8 +46,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3178_SEWERS_3RD_WATER_TOOM_PIPE_TO_RAT_LINE_ROOM,
         x=11,
@@ -61,8 +57,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3315_SEWERS_3RD_WATER_ROOM_EXIT_TO_RAT_LINE_ROOM,
         x=13,
@@ -73,8 +68,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3118_WATER_STATE,
         x=2,
@@ -85,6 +79,5 @@ events = [
         height=2,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

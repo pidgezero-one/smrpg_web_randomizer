@@ -16,8 +16,7 @@ exits = [
         destination=OW10_MUSHROOM_KINGDOM,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
     MapExit(
         x=22,
         y=124,
@@ -31,8 +30,7 @@ exits = [
         destination=OW10_MUSHROOM_KINGDOM,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
     RoomExit(
         x=13,
         y=80,
@@ -50,8 +48,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=3,
         y=91,
@@ -69,8 +66,7 @@ exits = [
         dst_z=2,
         dst_z_half=False,
         dst_f=NORTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=6,
         y=105,
@@ -88,8 +84,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=19,
         y=110,
@@ -107,8 +102,7 @@ exits = [
         dst_z=2,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=15,
         y=97,
@@ -126,8 +120,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=11,
         y=115,
@@ -145,6 +138,5 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
 ]

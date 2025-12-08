@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.TREASURE_CHEST,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._3_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes.COINS,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     music=Music._32_AND_MY_NAMES_BOOSTER,
     entrance_event=2364,
     exit_fields=[
@@ -77,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=23,
             y=84,
@@ -96,8 +89,7 @@ room = Room(
             dst_z=13,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         ChestNPC(  # 0
@@ -133,8 +125,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             show_shadow=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         ChestClone(  # 1
             occupant=npcs.TreasureChest,
             lower_70a7=13,
@@ -149,8 +140,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             show_shadow=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 2
             occupant=npcs.TreasureChest,
             initiator=Initiator.HIT_FROM_BELOW,
@@ -182,8 +172,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             show_shadow=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 3
             occupant=npcs.SlotFlower,
             initiator=Initiator.NONE,
@@ -216,8 +205,7 @@ room = Room(
             priority_2=True,
             show_shadow=True,
             height=3,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 4
             occupant=npcs.BlockShadow,
             initiator=Initiator.NONE,
@@ -249,8 +237,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 5
             occupant=npcs.BlockShadow,
             event_script=2304,
@@ -264,8 +251,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 6
             occupant=npcs.SavePoint,
             initiator=Initiator.JUMP_ON,
@@ -297,8 +283,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             show_shadow=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 7
             occupant=npcs.Empty,
             initiator=Initiator.NONE,
@@ -329,8 +314,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 8
             occupant=npcs.Empty,
             event_script=256,
@@ -344,8 +328,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         ChestNPC(  # 9
             occupant=npcs.TreasureChest,
             initiator=Initiator.HIT_FROM_BELOW,
@@ -378,7 +361,5 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=False,
-        ),
-    ],
-)
+            cannot_clone=False),
+    ])

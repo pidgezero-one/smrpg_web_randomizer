@@ -15,13 +15,11 @@ script = EventScript(
         Jmp(["EVENT_530_pause_4"]),
         RunEventAsSubroutine(
             E0548_ROSE_TOWN_OCCUPIED_ARROW_ANIMATE,
-            identifier="EVENT_530_run_event_as_subroutine_7",
-        ),
+            identifier="EVENT_530_run_event_as_subroutine_7"),
         JmpIfBitSet(
             TEMP_7044_5,
             ["EVENT_530_jmp_if_random_above_128_11"],
-            identifier="EVENT_530_jmp_if_bit_set_8",
-        ),
+            identifier="EVENT_530_jmp_if_bit_set_8"),
         Pause(1),
         Jmp(["EVENT_530_jmp_if_bit_set_8"]),
         JmpIfRandom1of2(

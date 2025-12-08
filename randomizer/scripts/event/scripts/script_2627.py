@@ -11,8 +11,7 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=7, y=88)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=7, y=88)]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -24,8 +23,7 @@ script = EventScript(
                 ),
                 ASWalkToXYCoords(x=11, y=113),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_10, subscript=[ASSetWalkingSpeed(FAST), ASWalkSoutheastSteps(7)]
         ),

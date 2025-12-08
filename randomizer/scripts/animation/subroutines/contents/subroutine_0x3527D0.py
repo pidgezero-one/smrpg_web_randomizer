@@ -12,5 +12,4 @@ script = SubroutineOrBanklessScript(
             origin=ABSOLUTE_POSITION, x=8, y=160, z=0, set_y=True, set_z=True
         ),
         ReturnSubroutine(),
-    ],
-)
+    ])

@@ -308,5 +308,4 @@ battle_messages[45] = ' ATTACK UP!![pause]'
 
 collection = BattleDialogCollection(
     battle_dialogs=battle_dialogs,
-    battle_messages=battle_messages,
-)
+    battle_messages=battle_messages)

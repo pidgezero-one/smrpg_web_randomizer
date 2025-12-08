@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=20,
             y=74,
-            z=0,
-        ),
+            z=0),
         Jmp(["EVENT_1690_fade_in_from_black_sync_2"]),
     ]
 )

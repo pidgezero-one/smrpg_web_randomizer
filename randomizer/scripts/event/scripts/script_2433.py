@@ -33,8 +33,7 @@ script = EventScript(
             x=8,
             y=61,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         ClearBit(DIRECTIONAL_7045_4, identifier="EVENT_2433_clear_bit_23"),
         EnterArea(
@@ -43,8 +42,7 @@ script = EventScript(
             x=16,
             y=40,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         ClearBit(DIRECTIONAL_7046_0, identifier="EVENT_2433_clear_bit_26"),
         EnterArea(
@@ -53,8 +51,7 @@ script = EventScript(
             x=21,
             y=76,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

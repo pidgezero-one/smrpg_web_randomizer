@@ -4,8 +4,7 @@ from randomizer.data.battlescripts import scripts
 
 from randomizer.management.disassembler_common import (
     shortify,
-    writeline,
-)
+    writeline)
 
 ENEMIES = [
     "Terrapin",

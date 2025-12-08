@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_3287_run_dialog_3_",
-        ),
+            identifier="EVENT_3287_run_dialog_3_"),
         Return(),
     ]
 )

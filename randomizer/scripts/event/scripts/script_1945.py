@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=6,
             y=47,
-            z=1,
-        ),
+            z=1),
         JmpToEvent(E1825_KEEP_ROTATING_ROOM_LOADER),
     ]
 )

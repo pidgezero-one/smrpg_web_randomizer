@@ -3079,5 +3079,4 @@ bank = EventScriptBank(
         script_3069,
         script_3070,
         script_3071,
-    ],
-)
+    ])

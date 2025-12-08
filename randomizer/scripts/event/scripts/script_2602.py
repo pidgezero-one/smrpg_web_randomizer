@@ -13,8 +13,7 @@ script = EventScript(
             area=OW45_BEAN_VALLEY,
             bit_6=True,
             bit_7=True,
-            identifier="EVENT_2602_open_location_3",
-        ),
+            identifier="EVENT_2602_open_location_3"),
         Return(),
     ]
 )

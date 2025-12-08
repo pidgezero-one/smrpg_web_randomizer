@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=SOUTHWEST,
             x=18,
             y=30,
-            z=5,
-        ),
+            z=5),
         SetBit(TEMP_7044_6),
         JmpToEvent(E1824_KEEP_SET_PLATFORM_PROPERTIES),
     ]

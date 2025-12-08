@@ -10,8 +10,7 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R165_SUNKEN_SHIP_AREA_06_PUZZLE_ROOM_PASSAGEWAY,
-            mod_id=1,
-        ),
+            mod_id=1),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         SetBit(TEMP_7043_1),
         Return(identifier="EVENT_3253_ret_4"),

@@ -10,5 +10,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM16BitToConst(0x60, 0, identifier="queuestart_0x35a4de"),
         ObjectQueueAtOffsetAndIndex(index=24, target_address=0x35A0A5),
         ReturnSubroutine(),
-    ],
-)
+    ])

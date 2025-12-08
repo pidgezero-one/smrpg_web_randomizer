@@ -12,15 +12,13 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=MEM_70A8,
             subscript=[
                 ASCopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_700C),
                 ASFaceEast7C(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

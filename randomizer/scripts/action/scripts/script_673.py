@@ -8,8 +8,7 @@ script = ActionScript(
         SetWalkingSpeed(VERY_SLOW, identifier="ACTION_673_set_animation_speed_1"),
         JmpIfRandom1of2(
             ["ACTION_673_walk_1_step_northeast_5"],
-            identifier="ACTION_673_jmp_if_random_above_128_2",
-        ),
+            identifier="ACTION_673_jmp_if_random_above_128_2"),
         Walk1StepSouthwest(),
         SetWalkingSpeed(SLOW),
         Walk1StepNortheast(identifier="ACTION_673_walk_1_step_northeast_5"),

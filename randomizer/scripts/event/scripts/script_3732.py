@@ -13,8 +13,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_7,
             subscript=[ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES)],
-            identifier="EVENT_3732_action_queue_async_2",
-        ),
+            identifier="EVENT_3732_action_queue_async_2"),
         RunEventAsSubroutine(
             E0839_NIMBUS_CASTLE_SECOND_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER
         ),
@@ -25,8 +24,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P022_RECURSIVE_SPARKLES,
             target_npc=MARIO,
-            destinations=["EVENT_3584_ret_0"],
-        ),
+            destinations=["EVENT_3584_ret_0"]),
         Return(),
     ]
 )

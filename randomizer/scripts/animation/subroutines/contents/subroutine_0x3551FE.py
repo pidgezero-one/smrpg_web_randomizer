@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3551fe",
-        ),
+            identifier="queuestart_0x3551fe"),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x67),
         ClearAMEM8Bit(0x66),
@@ -31,5 +30,4 @@ script = SubroutineOrBanklessScript(
         ObjectQueueAtOffsetAndIndex(index=0, target_address=0x35624B),
         RunSubroutine(["command_0x352552"]),
         Jmp(["command_0x35252f"]),
-    ],
-)
+    ])

@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0425_PIPE_VAULT_RED_ROOM_EXIT_PIPE,
         x=7,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0488_RED_ROOM_PIRANHA_1,
         x=2,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0488_RED_ROOM_PIRANHA_1,
         x=2,
@@ -49,8 +46,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0489_RED_ROOM_PIRANHA_2,
         x=3,
@@ -61,8 +57,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0488_RED_ROOM_PIRANHA_1,
         x=3,
@@ -73,8 +68,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0488_RED_ROOM_PIRANHA_1,
         x=3,
@@ -85,8 +79,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0490_RED_ROOM_PIRANHA_3,
         x=4,
@@ -97,8 +90,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0490_RED_ROOM_PIRANHA_3,
         x=4,
@@ -109,8 +101,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0491_RED_ROOM_PIRANHA_4,
         x=7,
@@ -121,8 +112,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0490_RED_ROOM_PIRANHA_3,
         x=5,
@@ -133,8 +123,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0490_RED_ROOM_PIRANHA_3,
         x=5,
@@ -145,6 +134,5 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

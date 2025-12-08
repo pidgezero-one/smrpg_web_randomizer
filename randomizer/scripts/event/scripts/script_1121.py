@@ -14,8 +14,7 @@ script = EventScript(
         Return(),
         RunEventAsSubroutine(
             E0081_MARIO_LANDS_SUBROUTINE,
-            identifier="EVENT_1121_run_event_as_subroutine_3",
-        ),
+            identifier="EVENT_1121_run_event_as_subroutine_3"),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
         JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1121_ret_4"]),
         RunEventAsSubroutine(E3904_SEASIDE_TOWN_STAR_PIECE_SIGNAL),

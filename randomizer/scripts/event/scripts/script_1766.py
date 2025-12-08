@@ -14,8 +14,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkEastPixels(14),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
         ActionQueueAsync(
@@ -26,8 +25,7 @@ script = EventScript(
                 ASWalkEastPixels(14),
                 ASFaceSoutheast(),
             ],
-            identifier="EVENT_1766_action_queue_async_4",
-        ),
+            identifier="EVENT_1766_action_queue_async_4"),
         FadeInFromBlack(sync=False),
         Return(),
     ]

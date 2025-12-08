@@ -13,8 +13,7 @@ script = EventScript(
             event_id=E1706_BANDITS_WAY_LEFT_CHEST_STAR_CHECK,
             return_on_level_exit=True,
             bit_6=True,
-            identifier="EVENT_1538_run_background_event_2",
-        ),
+            identifier="EVENT_1538_run_background_event_2"),
         JmpIfBitSet(UNIVERSAL_CHEST_ANIMATION_BIT, ["EVENT_1538_jmp_to_event_4"]),
         SetBit(UNIVERSAL_CHEST_ANIMATION_BIT),
         ActionQueueAsync(
@@ -24,8 +23,7 @@ script = EventScript(
                 ASShiftNorthSteps(2),
                 ASSetWalkingSpeed(NORMAL),
                 ASClearBit(UNIVERSAL_CHEST_ANIMATION_BIT),
-            ],
-        ),
+            ]),
         JmpToEvent(E0172_CHEST_1_CONTAINER, identifier="EVENT_1538_jmp_to_event_4"),
     ]
 )

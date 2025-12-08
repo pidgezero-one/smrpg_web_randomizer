@@ -36,8 +36,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         y_shift=0,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularClone(
         occupant=Mallow,
@@ -52,8 +51,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularClone(
         occupant=Geno,
@@ -69,8 +67,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         y_shift=0,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=Bowser,
@@ -104,8 +101,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_4
     RegularNPC(
         occupant=SmithyHammer,
@@ -138,8 +134,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_5
     RegularNPC(
         occupant=SmithyHammer,
@@ -172,8 +167,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_6
     RegularNPC(
         occupant=SmithyBodyOverworld,
@@ -206,8 +200,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=SmithyBodyOverworld,
@@ -222,8 +215,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=SmithyBodyOverworld,
@@ -256,8 +248,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=SmithyBodyOverworld,
@@ -272,8 +263,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularNPC(
         occupant=SmelterSection,
@@ -306,8 +296,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularClone(
         occupant=SmelterSection,
@@ -322,8 +311,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     RegularClone(
         occupant=SmelterSection,
@@ -338,8 +326,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     RegularClone(
         occupant=SmelterSection,
@@ -354,8 +341,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_14
     RegularClone(
         occupant=SmelterSection,
@@ -370,6 +356,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

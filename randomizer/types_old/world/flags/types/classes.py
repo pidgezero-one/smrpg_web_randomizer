@@ -1,6 +1,6 @@
 """Settings classes for the randomizer."""
 
-from typing import Type, Any, List, Dict, TypeVar
+from typing import Any, TypeVar
 from markdown import markdown
 import bleach
 from django.utils.safestring import mark_safe, SafeString
@@ -86,44 +86,44 @@ class CategorizationFlag(Flag):
     Example: choosing which locations can and cannot cntain progression."""
 
     _type: FlagTypes = FlagTypes.CATEGORIZATION
-    _options: List[FlagOptions] = []
-    _enabled: List[FlagOptions] = []
-    _optionEnum: Type[FlagOptions]
+    _options: list[FlagOptions] = []
+    _enabled: list[FlagOptions] = []
+    _optionEnum: type[FlagOptions]
 
     @property
-    def options(self) -> List[FlagOptions]:
+    def options(self) -> list[FlagOptions]:
         """The values to be sorted."""
         return self._options
 
     @property
-    def enabled(self) -> List[FlagOptions]:
+    def enabled(self) -> list[FlagOptions]:
         """The values that the user wants to enable."""
         return self._enabled
 
-    def set_enabled(self, options: List[FlagOptions]) -> None:
+    def set_enabled(self, options: list[FlagOptions]) -> None:
         """Overwrite the values that the user wants to enable."""
         for opt in options:
             assert opt in self.options
         self._enabled = list(set(options))
 
     @property
-    def disabled(self) -> List[FlagOptions]:
+    def disabled(self) -> list[FlagOptions]:
         """The values that the user wants to disable, which is necessarily
         the inverse of `enabled`."""
         return [o for o in self.options if o not in self.enabled]
 
     @property
-    def option_enum(self) -> Type[FlagOptions]:
+    def option_enum(self) -> type[FlagOptions]:
         """The enum from which this setting's options come."""
         return self._optionEnum
 
     @property
-    def options_dict(self) -> List[dict[str, Any]]:
+    def options_dict(self) -> list[dict[str, Any]]:
         """All options as a dict."""
         return [{"id": c.name, "text": c.value} for c in self.options]
 
     @property
-    def default_dict(self) -> List[dict[str, Any]]:
+    def default_dict(self) -> list[dict[str, Any]]:
         """Enabled options as a dict."""
         return [{"id": c.name, "text": c.value} for c in self.enabled]
         # this really should be coming from its enum
@@ -134,18 +134,18 @@ class SelectOneFlag(Flag):
     Example: choosing which condition needs to be met to unlock an area."""
 
     _type: FlagTypes = FlagTypes.SELECT_ONE
-    _choices: List[FlagOptions] = []
+    _choices: list[FlagOptions] = []
     _value: FlagOptions
-    _optionEnum: Type[FlagOptions]
+    _optionEnum: type[FlagOptions]
     _default: FlagOptions
 
     @property
-    def option_enum(self) -> Type[FlagOptions]:
+    def option_enum(self) -> type[FlagOptions]:
         """The enum from which this setting's options come."""
         return self._optionEnum
 
     @property
-    def choices(self) -> List[FlagOptions]:
+    def choices(self) -> list[FlagOptions]:
         """The values to be chosen from."""
         return self._choices
 
@@ -165,13 +165,13 @@ class SelectOneFlag(Flag):
         self._value = value
 
     @property
-    def choices_dict(self) -> List[dict[str, Any]]:
+    def choices_dict(self) -> list[dict[str, Any]]:
         """All options as a dict."""
         return [{"id": c.name, "text": c.value} for c in self.choices]
         # this really should be coming from its enum
 
     @property
-    def default_dict(self) -> Dict[str, str]:
+    def default_dict(self) -> dict[str, str]:
         """Selected option as a dict."""
         return {"text": self.default.value, "id": self.default.name}
         # this really should be coming from its enum

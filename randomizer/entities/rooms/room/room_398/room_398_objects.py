@@ -37,8 +37,7 @@ objects = [
         priority_2=True,
         height=2,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=Goombette,
@@ -55,8 +54,7 @@ objects = [
         priority_2=True,
         height=2,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=Goombette,
@@ -73,8 +71,7 @@ objects = [
         priority_2=True,
         height=2,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=Goomba,
@@ -107,8 +104,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=Empty,
@@ -142,6 +138,5 @@ objects = [
         priority_1=False,
         priority_2=False,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

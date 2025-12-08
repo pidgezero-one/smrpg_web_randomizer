@@ -39,8 +39,7 @@ objects = [
         acute_axis=5,
         obtuse_axis=5,
         height=9,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=Barrel,
@@ -77,8 +76,7 @@ objects = [
         acute_axis=5,
         obtuse_axis=5,
         height=9,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=Barrel,
@@ -97,8 +95,7 @@ objects = [
         acute_axis=5,
         obtuse_axis=5,
         height=9,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     BattlePackNPC(
         occupant=ShyAway,
@@ -133,8 +130,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=4,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     BattlePackClone(
         occupant=ShyAway,
@@ -150,8 +146,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=4,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=JumpTrampoline,
@@ -184,8 +179,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_6
     ChestNPC(
         occupant=TreasureChest,
@@ -220,6 +214,5 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

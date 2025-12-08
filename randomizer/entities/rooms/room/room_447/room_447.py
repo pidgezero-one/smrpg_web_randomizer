@@ -15,5 +15,4 @@ room = Room(
         ExtraSpriteActions.SURPRISE_FRAME,
         ExtraSpriteActions.MUTE,
         ExtraSpriteActions.LEAN_FORWARD,
-    ],
-)
+    ])

@@ -16,8 +16,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_FAST),
                 ASWalk1StepNortheast(),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         EnableControlsUntilReturn(
             [], identifier="EVENT_617_enable_controls_until_return_3"
         ),
@@ -31,8 +30,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalkNorthwestSteps(4),
                 ASSetSequenceSpeed(SLOW),
-            ],
-        ),
+            ]),
         SetVarToConst(TEMP_70A9, 27),
         SetVarToConst(TEMP_70B8, 1),
         Jmp(["EVENT_617_pause_20"]),
@@ -46,8 +44,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(4),
                 ASSetSequenceSpeed(SLOW),
             ],
-            identifier="EVENT_617_action_queue_async_17",
-        ),
+            identifier="EVENT_617_action_queue_async_17"),
         SetVarToConst(TEMP_70A9, 26),
         SetVarToConst(TEMP_70B8, 3),
         Pause(120, identifier="EVENT_617_pause_20"),
@@ -59,8 +56,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Pause(10),
         ActionQueueAsync(
             target=MARIO,
@@ -68,8 +64,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASSetSequenceSpeed(NORMAL),
                 ASFaceSouth(),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7042_4),
         ClearBit(TEMP_7042_5),
         ClearBit(TEMP_7042_6),
@@ -86,15 +81,13 @@ script = EventScript(
         SetSyncActionScript(
             NPC_8,
             A0321_BELLHOP_FACE_PLAYER,
-            identifier="EVENT_617_set_action_script_sync_43",
-        ),
+            identifier="EVENT_617_set_action_script_sync_43"),
         SetSyncActionScript(NPC_9, A0321_BELLHOP_FACE_PLAYER),
         Return(),
         SetSyncActionScript(
             NPC_6,
             A0321_BELLHOP_FACE_PLAYER,
-            identifier="EVENT_617_set_action_script_sync_46",
-        ),
+            identifier="EVENT_617_set_action_script_sync_46"),
         Return(),
     ]
 )

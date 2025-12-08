@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3786_BEAN_VALLEY_WEST_VINE_ROOM_EXIT_TO_UPPER_CHEST_ROOM,
         x=12,
@@ -25,8 +24,7 @@ events = [
         height=2,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3786_BEAN_VALLEY_WEST_VINE_ROOM_EXIT_TO_UPPER_CHEST_ROOM,
         x=13,
@@ -37,8 +35,7 @@ events = [
         height=2,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3789_BEAN_VALLEY_WEST_VINE_ROOM_PLATFORM,
         x=15,
@@ -49,8 +46,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3789_BEAN_VALLEY_WEST_VINE_ROOM_PLATFORM,
         x=15,
@@ -61,8 +57,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0749_VINE_FIELD,
         x=16,
@@ -73,8 +68,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0750_VINE_FIELD,
         x=15,
@@ -85,8 +79,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0751_VINE_FIELD,
         x=16,
@@ -97,8 +90,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0752_VINE_FIELD,
         x=15,
@@ -109,8 +101,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0749_VINE_FIELD,
         x=18,
@@ -121,8 +112,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0750_VINE_FIELD,
         x=17,
@@ -133,8 +123,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0751_VINE_FIELD,
         x=18,
@@ -145,8 +134,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0752_VINE_FIELD,
         x=17,
@@ -157,8 +145,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0749_VINE_FIELD,
         x=16,
@@ -169,8 +156,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0750_VINE_FIELD,
         x=15,
@@ -181,8 +167,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0751_VINE_FIELD,
         x=16,
@@ -193,8 +178,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0752_VINE_FIELD,
         x=15,
@@ -205,6 +189,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

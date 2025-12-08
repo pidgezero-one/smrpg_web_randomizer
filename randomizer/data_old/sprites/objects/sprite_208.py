@@ -32,8 +32,7 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=133,
-                            y=118,
-                        ),
+                            y=118),
                         Tile(
                             mirror=False,
                             invert=False,
@@ -57,19 +56,14 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=117,
-                            y=118,
-                        ),
-                    ],
-                )
+                            y=118),
+                    ])
             ],
             sequences=[
                 AnimationSequence(
                     frames=[AnimationSequenceFrame(duration=2, mold_id=0)]
                 ),
-            ],
-        ),
-    ),
+            ])),
     palette_id=349,
     palette_offset=0,
-    unknown_num=8,
-)
+    unknown_num=8)

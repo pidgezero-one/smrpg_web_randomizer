@@ -28,8 +28,7 @@ from .enums import (
     ShopQualities,
     BossScaleOptions,
     AvailableMusic,
-    LearnableSpells,
-)
+    LearnableSpells)
 from .flags import (
     ShuffleCharacters,
     StartingCharacter,
@@ -144,5 +143,4 @@ from .flags import (
     JapaneseABXY,
     BossShuffleMusic,
     ShuffledMusic,
-    RemoveFlashes,
-)
+    RemoveFlashes)

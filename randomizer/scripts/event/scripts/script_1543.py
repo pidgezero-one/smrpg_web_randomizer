@@ -13,8 +13,7 @@ script = EventScript(
                 ASShiftSouthSteps(2),
                 ASSetWalkingSpeed(NORMAL),
                 ASClearBit(UNIVERSAL_CHEST_ANIMATION_BIT),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         Return(),
     ]

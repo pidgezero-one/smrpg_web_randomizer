@@ -16,22 +16,19 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         RunBackgroundEvent(
             event_id=E0469_YOSTER_ISLE_BACKGROUND, return_on_level_exit=True, bit_7=True
         ),
         Return(),
         EnableControlsUntilReturn(
             [LEFT, RIGHT, DOWN, UP, A, Y, B],
-            identifier="EVENT_460_enable_controls_until_return_7",
-        ),
+            identifier="EVENT_460_enable_controls_until_return_7"),
         Pause(32),
         Return(),
         RunEventAsSubroutine(
             E0456_YOSHI_TALKS_TO_OTHER_YOSHI,
-            identifier="EVENT_460_run_event_as_subroutine_10",
-        ),
+            identifier="EVENT_460_run_event_as_subroutine_10"),
         JmpToEvent(E0930_YOSHI_COOKIE_STORAGE_BUSINESS_LOGIC),
     ]
 )

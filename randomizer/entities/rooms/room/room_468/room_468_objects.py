@@ -35,8 +35,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=JBlock,
@@ -77,8 +76,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_2
     RegularClone(
         occupant=JBlock,
@@ -101,8 +99,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_3
     RegularClone(
         occupant=JBlock,
@@ -125,8 +122,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_4
     RegularClone(
         occupant=JBlock,
@@ -149,8 +145,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_5
     RegularClone(
         occupant=JBlock,
@@ -173,8 +168,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_6
     RegularClone(
         occupant=JBlock,
@@ -197,8 +191,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_7
     RegularClone(
         occupant=JBlock,
@@ -221,8 +214,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_8
     RegularClone(
         occupant=JBlock,
@@ -245,8 +237,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_9
     RegularClone(
         occupant=JBlock,
@@ -269,8 +260,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_10
     RegularClone(
         occupant=JBlock,
@@ -293,8 +283,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_11
     RegularClone(
         occupant=JBlock,
@@ -317,8 +306,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_12
     RegularClone(
         occupant=JBlock,
@@ -341,8 +329,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_13
     RegularClone(
         occupant=JBlock,
@@ -365,8 +352,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_14
     RegularClone(
         occupant=JBlock,
@@ -389,8 +375,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_15
     RegularClone(
         occupant=JBlock,
@@ -413,8 +398,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_16
     RegularClone(
         occupant=JBlock,
@@ -437,6 +421,5 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
 ]

@@ -245,11 +245,9 @@ def randomize_all(world):
                     num_stars = utils.mutate_normal(
                         min(
                             len(eligible_chests),
-                            math.floor(ratio_stars / denominator * total_chests),
-                        ),
+                            math.floor(ratio_stars / denominator * total_chests)),
                         minimum=1,
-                        maximum=len(eligible_chests),
-                    )
+                        maximum=len(eligible_chests))
                     if num_stars > len(eligible_chests):
                         num_stars = len(eligible_chests)
                     while len(finished_chests) < num_stars:
@@ -418,9 +416,7 @@ def randomize_all(world):
                             chests.JinxDojoReward,
                             chests.SuperJumps30,
                             chests.SuperJumps100,
-                            chests.ThreeMustyFears,
-                        ),
-                    )
+                            chests.ThreeMustyFears))
                     and i not in finished_chests
                 ]
             elif world.settings.is_flag_enabled(flags.MonstroTownHard):
@@ -451,9 +447,7 @@ def randomize_all(world):
                             chests.BoosterTowerChomp,
                             chests.BOOSTER_TOWER_ZOOM_SHOES,
                             chests.GardenerCloud1,
-                            chests.GardenerCloud2,
-                        ),
-                    )
+                            chests.GardenerCloud2))
                     and i not in finished_chests
                 ]
             else:

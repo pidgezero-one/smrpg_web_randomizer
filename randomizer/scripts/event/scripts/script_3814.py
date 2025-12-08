@@ -19,13 +19,11 @@ script = EventScript(
         SetSyncActionScript(NPC_1, A0119_SLOW_SEQUENCE_LOOP),
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASTransferXYZFPixels(x=6, y=250, z=0, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=6, y=250, z=0, direction=EAST)]),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R022_MUSHROOM_KINGDOM_CASTLE_GUEST_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         FadeInFromBlack(sync=False),
         Return(),
     ]

@@ -14,14 +14,12 @@ script = EventScript(
         PrioritySet(
             mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[LAYER_L3],
-            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY],
-        ),
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY]),
         Pause(6),
         PrioritySet(
             mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[],
-            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY],
-        ),
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY]),
         ClearBit(TEMP_7043_2),
         Jmp(["EVENT_1831_pause_0"]),
     ]

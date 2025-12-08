@@ -26,7 +26,7 @@ class StatGrowth:
         :rtype: tuple[str]
         """
         options = [
-            (self.max_hp / 2, ("max_hp", )),
+            (self.max_hp / 2, ("max_hp")),
             (self.attack + self.defense, ("attack", "defense")),
             (self.magic_attack + self.magic_defense, ("magic_attack", "magic_defense")),
         ]
@@ -358,8 +358,7 @@ class Mario(Character):
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
-        (2, 2, 2, 2, 2),
-    )
+        (2, 2, 2, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -392,8 +391,7 @@ class Mario(Character):
         (1, 2, 1, 1, 1),
         (2, 1, 1, 1, 1),
         (1, 1, 1, 3, 1),
-        (1, 2, 1, 1, 1),
-    )
+        (1, 2, 1, 1, 1))
     forest_maze_sprite_id = 0x03
     mway_3_npc_id = [0x03, 0xB0]
     mway_2_npc_id = [0x03, 0x70]
@@ -468,8 +466,7 @@ class Peach(Character):
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
-        (2, 2, 2, 2, 2),
-    )
+        (2, 2, 2, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -502,8 +499,7 @@ class Peach(Character):
         (1, 3, 1, 1, 1),
         (2, 1, 1, 1, 1),
         (1, 1, 1, 3, 1),
-        (1, 3, 1, 1, 1),
-    )
+        (1, 3, 1, 1, 1))
     forest_maze_sprite_id = 0x07
     mway_3_npc_id = [0x07, 0xB0]
     mway_2_npc_id = [0x07, 0x70]
@@ -560,8 +556,7 @@ class Bowser(Character):
         (4, 2, 2, 2, 2),
         (4, 2, 2, 2, 2),
         (4, 2, 2, 2, 2),
-        (4, 2, 2, 2, 2),
-    )
+        (4, 2, 2, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -594,8 +589,7 @@ class Bowser(Character):
         (1, 2, 1, 1, 1),
         (3, 1, 1, 1, 1),
         (1, 1, 1, 3, 1),
-        (1, 2, 1, 1, 1),
-    )
+        (1, 2, 1, 1, 1))
     forest_maze_sprite_id = 0x0B
     mway_3_npc_id = [0x0B, 0xB0]
     mway_2_npc_id = [0x0B, 0x70]
@@ -653,8 +647,7 @@ class Geno(Character):
         (1, 2, 3, 2, 2),
         (1, 2, 3, 2, 2),
         (1, 2, 3, 2, 2),
-        (1, 2, 3, 2, 2),
-    )
+        (1, 2, 3, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -687,8 +680,7 @@ class Geno(Character):
         (1, 3, 1, 1, 1),
         (2, 1, 1, 1, 1),
         (1, 1, 1, 3, 1),
-        (1, 3, 1, 1, 1),
-    )
+        (1, 3, 1, 1, 1))
     forest_maze_sprite_id = 0x13
     mway_3_npc_id = [0x13, 0xB0]
     mway_2_npc_id = [0x13, 0x70]
@@ -747,8 +739,7 @@ class Mallow(Character):
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
-        (2, 2, 2, 2, 2),
-    )
+        (2, 2, 2, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -781,8 +772,7 @@ class Mallow(Character):
         (1, 3, 1, 1, 1),
         (2, 1, 1, 1, 1),
         (1, 1, 1, 2, 1),
-        (1, 3, 1, 1, 1),
-    )
+        (1, 3, 1, 1, 1))
     forest_maze_sprite_id = 0x0F
     mway_3_npc_id = [0x0F, 0xB0]
     mway_2_npc_id = [0x0F, 0x70]

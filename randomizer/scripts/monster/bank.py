@@ -516,5 +516,4 @@ bank = MonsterScriptBank(
         script_253,
         script_254,
         script_255,
-    ],
-)
+    ])

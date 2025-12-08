@@ -1,6 +1,5 @@
 """Enemy attack classes."""
 
-from typing import List
 from randomizer.types.enemy_attacks.classes import EnemyAttack
 from randomizer.types.spells.enums import TempStatBuff, Status
 
@@ -10,8 +9,8 @@ class PhysicalAttack0(EnemyAttack):
 
     _index: int = 0
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack1(EnemyAttack):
@@ -19,8 +18,8 @@ class PhysicalAttack1(EnemyAttack):
 
     _index: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack2(EnemyAttack):
@@ -28,8 +27,8 @@ class PhysicalAttack2(EnemyAttack):
 
     _index: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack3(EnemyAttack):
@@ -37,8 +36,8 @@ class PhysicalAttack3(EnemyAttack):
 
     _index: int = 3
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack4(EnemyAttack):
@@ -46,8 +45,8 @@ class PhysicalAttack4(EnemyAttack):
 
     _index: int = 4
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack5(EnemyAttack):
@@ -55,8 +54,8 @@ class PhysicalAttack5(EnemyAttack):
 
     _index: int = 5
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack6(EnemyAttack):
@@ -64,8 +63,8 @@ class PhysicalAttack6(EnemyAttack):
 
     _index: int = 6
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack7(EnemyAttack):
@@ -73,8 +72,8 @@ class PhysicalAttack7(EnemyAttack):
 
     _index: int = 7
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack8(EnemyAttack):
@@ -82,8 +81,8 @@ class PhysicalAttack8(EnemyAttack):
 
     _index: int = 8
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack9(EnemyAttack):
@@ -91,8 +90,8 @@ class PhysicalAttack9(EnemyAttack):
 
     _index: int = 9
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack10(EnemyAttack):
@@ -100,8 +99,8 @@ class PhysicalAttack10(EnemyAttack):
 
     _index: int = 10
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack11(EnemyAttack):
@@ -109,8 +108,8 @@ class PhysicalAttack11(EnemyAttack):
 
     _index: int = 11
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack12(EnemyAttack):
@@ -118,8 +117,8 @@ class PhysicalAttack12(EnemyAttack):
 
     _index: int = 12
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack13(EnemyAttack):
@@ -127,8 +126,8 @@ class PhysicalAttack13(EnemyAttack):
 
     _index: int = 13
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack14(EnemyAttack):
@@ -136,8 +135,8 @@ class PhysicalAttack14(EnemyAttack):
 
     _index: int = 14
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack15(EnemyAttack):
@@ -145,8 +144,8 @@ class PhysicalAttack15(EnemyAttack):
 
     _index: int = 15
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack16(EnemyAttack):
@@ -155,8 +154,8 @@ class PhysicalAttack16(EnemyAttack):
     _index: int = 16
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Thornet(EnemyAttack):
@@ -165,8 +164,8 @@ class Thornet(EnemyAttack):
     _index: int = 17
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.POISON]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack18(EnemyAttack):
@@ -175,8 +174,8 @@ class PhysicalAttack18(EnemyAttack):
     _index: int = 18
     _attack_level: int = 3
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Funguspike(EnemyAttack):
@@ -185,8 +184,8 @@ class Funguspike(EnemyAttack):
     _index: int = 19
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.MUSHROOM]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUSHROOM]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack20(EnemyAttack):
@@ -195,8 +194,8 @@ class PhysicalAttack20(EnemyAttack):
     _index: int = 20
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack21(EnemyAttack):
@@ -205,8 +204,8 @@ class PhysicalAttack21(EnemyAttack):
     _index: int = 21
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class FullHouse(EnemyAttack):
@@ -215,8 +214,8 @@ class FullHouse(EnemyAttack):
     _index: int = 22
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class WildCard(EnemyAttack):
@@ -225,8 +224,8 @@ class WildCard(EnemyAttack):
     _index: int = 23
     _attack_level: int = 3
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class RoyalFlush(EnemyAttack):
@@ -235,8 +234,8 @@ class RoyalFlush(EnemyAttack):
     _index: int = 24
     _attack_level: int = 4
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack25(EnemyAttack):
@@ -245,8 +244,8 @@ class PhysicalAttack25(EnemyAttack):
     _index: int = 25
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class SpritzBomb(EnemyAttack):
@@ -255,8 +254,8 @@ class SpritzBomb(EnemyAttack):
     _index: int = 26
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack27(EnemyAttack):
@@ -265,8 +264,8 @@ class PhysicalAttack27(EnemyAttack):
     _index: int = 27
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack28(EnemyAttack):
@@ -275,8 +274,8 @@ class PhysicalAttack28(EnemyAttack):
     _index: int = 28
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack29(EnemyAttack):
@@ -284,8 +283,8 @@ class PhysicalAttack29(EnemyAttack):
 
     _index: int = 29
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Blazer(EnemyAttack):
@@ -295,8 +294,8 @@ class Blazer(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack31(EnemyAttack):
@@ -305,8 +304,8 @@ class PhysicalAttack31(EnemyAttack):
     _index: int = 31
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack32(EnemyAttack):
@@ -315,8 +314,8 @@ class PhysicalAttack32(EnemyAttack):
     _index: int = 32
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Echofinder(EnemyAttack):
@@ -325,8 +324,8 @@ class Echofinder(EnemyAttack):
     _index: int = 33
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.MUTE]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUTE]
+    _buffs: list[TempStatBuff] = []
 
 
 class ScrowBell(EnemyAttack):
@@ -337,8 +336,8 @@ class ScrowBell(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.SCARECROW]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SCARECROW]
+    _buffs: list[TempStatBuff] = []
 
 
 class DoomReverb(EnemyAttack):
@@ -349,8 +348,8 @@ class DoomReverb(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.MUTE]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUTE]
+    _buffs: list[TempStatBuff] = []
 
 
 class SporeChimes(EnemyAttack):
@@ -361,8 +360,8 @@ class SporeChimes(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.MUSHROOM]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUSHROOM]
+    _buffs: list[TempStatBuff] = []
 
 
 class InkBlast(EnemyAttack):
@@ -371,8 +370,8 @@ class InkBlast(EnemyAttack):
     _index: int = 37
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class GunkBall(EnemyAttack):
@@ -381,8 +380,8 @@ class GunkBall(EnemyAttack):
     _index: int = 38
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.MUTE]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUTE]
+    _buffs: list[TempStatBuff] = []
 
 
 class Endobubble(EnemyAttack):
@@ -393,8 +392,8 @@ class Endobubble(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.FEAR]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack40(EnemyAttack):
@@ -403,8 +402,8 @@ class PhysicalAttack40(EnemyAttack):
     _index: int = 40
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class SleepSauce(EnemyAttack):
@@ -414,8 +413,8 @@ class SleepSauce(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.SLEEP]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _buffs: list[TempStatBuff] = []
 
 
 class VenomDrool(EnemyAttack):
@@ -425,8 +424,8 @@ class VenomDrool(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.POISON]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _buffs: list[TempStatBuff] = []
 
 
 class MushFunk(EnemyAttack):
@@ -437,8 +436,8 @@ class MushFunk(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.MUSHROOM]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUSHROOM]
+    _buffs: list[TempStatBuff] = []
 
 
 class ScrowFunk(EnemyAttack):
@@ -448,8 +447,8 @@ class ScrowFunk(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.SCARECROW]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SCARECROW]
+    _buffs: list[TempStatBuff] = []
 
 
 class Stench(EnemyAttack):
@@ -459,8 +458,8 @@ class Stench(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.POISON]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack46(EnemyAttack):
@@ -469,8 +468,8 @@ class PhysicalAttack46(EnemyAttack):
     _index: int = 46
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack47(EnemyAttack):
@@ -479,8 +478,8 @@ class PhysicalAttack47(EnemyAttack):
     _index: int = 47
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.FEAR]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _buffs: list[TempStatBuff] = []
 
 
 class ViroPlasm(EnemyAttack):
@@ -490,8 +489,8 @@ class ViroPlasm(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.POISON]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _buffs: list[TempStatBuff] = []
 
 
 class PsychoPlasm(EnemyAttack):
@@ -501,8 +500,8 @@ class PsychoPlasm(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.FEAR]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack50(EnemyAttack):
@@ -512,8 +511,8 @@ class PhysicalAttack50(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.MUTE]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUTE]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack51(EnemyAttack):
@@ -523,8 +522,8 @@ class PhysicalAttack51(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.SLEEP]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _buffs: list[TempStatBuff] = []
 
 
 class PollenNap(EnemyAttack):
@@ -534,8 +533,8 @@ class PollenNap(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.SLEEP]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _buffs: list[TempStatBuff] = []
 
 
 class ScrowDust(EnemyAttack):
@@ -545,8 +544,8 @@ class ScrowDust(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.SCARECROW]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SCARECROW]
+    _buffs: list[TempStatBuff] = []
 
 
 class Sporocyst(EnemyAttack):
@@ -556,8 +555,8 @@ class Sporocyst(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.MUSHROOM]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUSHROOM]
+    _buffs: list[TempStatBuff] = []
 
 
 class Toxicyst(EnemyAttack):
@@ -567,8 +566,8 @@ class Toxicyst(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.POISON]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack56(EnemyAttack):
@@ -577,8 +576,8 @@ class PhysicalAttack56(EnemyAttack):
     _index: int = 56
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack57(EnemyAttack):
@@ -587,8 +586,8 @@ class PhysicalAttack57(EnemyAttack):
     _index: int = 57
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class LullaBye(EnemyAttack):
@@ -599,8 +598,8 @@ class LullaBye(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = [Status.SLEEP]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _buffs: list[TempStatBuff] = []
 
 
 class Elegy(EnemyAttack):
@@ -611,8 +610,8 @@ class Elegy(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = [Status.MUTE]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUTE]
+    _buffs: list[TempStatBuff] = []
 
 
 class Backfire(EnemyAttack):
@@ -620,8 +619,8 @@ class Backfire(EnemyAttack):
 
     _index: int = 60
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class VaVaVoom(EnemyAttack):
@@ -630,8 +629,8 @@ class VaVaVoom(EnemyAttack):
     _index: int = 61
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class FunRun(EnemyAttack):
@@ -640,8 +639,8 @@ class FunRun(EnemyAttack):
     _index: int = 62
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class BodySlam(EnemyAttack):
@@ -650,8 +649,8 @@ class BodySlam(EnemyAttack):
     _index: int = 63
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Howl(EnemyAttack):
@@ -662,8 +661,8 @@ class Howl(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = [Status.FEAR]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _buffs: list[TempStatBuff] = []
 
 
 class Scream(EnemyAttack):
@@ -674,8 +673,8 @@ class Scream(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = [Status.FEAR]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _buffs: list[TempStatBuff] = []
 
 
 class IronMaiden(EnemyAttack):
@@ -686,8 +685,8 @@ class IronMaiden(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = [Status.FEAR]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _buffs: list[TempStatBuff] = []
 
 
 class Fangs(EnemyAttack):
@@ -696,8 +695,8 @@ class Fangs(EnemyAttack):
     _index: int = 67
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Poison(EnemyAttack):
@@ -706,8 +705,8 @@ class Poison(EnemyAttack):
     _index: int = 68
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.POISON]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _buffs: list[TempStatBuff] = []
 
 
 class CarniKiss(EnemyAttack):
@@ -716,8 +715,8 @@ class CarniKiss(EnemyAttack):
     _index: int = 69
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Claw(EnemyAttack):
@@ -726,8 +725,8 @@ class Claw(EnemyAttack):
     _index: int = 70
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Grinder(EnemyAttack):
@@ -736,8 +735,8 @@ class Grinder(EnemyAttack):
     _index: int = 71
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class DarkClaw(EnemyAttack):
@@ -746,8 +745,8 @@ class DarkClaw(EnemyAttack):
     _index: int = 72
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.POISON]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _buffs: list[TempStatBuff] = []
 
 
 class Scythe(EnemyAttack):
@@ -757,8 +756,8 @@ class Scythe(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Sickle(EnemyAttack):
@@ -767,8 +766,8 @@ class Sickle(EnemyAttack):
     _index: int = 74
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.SCARECROW]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SCARECROW]
+    _buffs: list[TempStatBuff] = []
 
 
 class Deathsickle(EnemyAttack):
@@ -777,8 +776,8 @@ class Deathsickle(EnemyAttack):
     _index: int = 75
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = [Status.FEAR]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _buffs: list[TempStatBuff] = []
 
 
 class EerieJig(EnemyAttack):
@@ -788,8 +787,8 @@ class EerieJig(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = [Status.SCARECROW]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SCARECROW]
+    _buffs: list[TempStatBuff] = []
 
 
 class SomnusWaltz(EnemyAttack):
@@ -799,8 +798,8 @@ class SomnusWaltz(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = [Status.SLEEP]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _buffs: list[TempStatBuff] = []
 
 
 class DahliaDance(EnemyAttack):
@@ -810,8 +809,8 @@ class DahliaDance(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = [Status.MUSHROOM]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUSHROOM]
+    _buffs: list[TempStatBuff] = []
 
 
 class Skewer(EnemyAttack):
@@ -820,8 +819,8 @@ class Skewer(EnemyAttack):
     _index: int = 79
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Pierce(EnemyAttack):
@@ -830,8 +829,8 @@ class Pierce(EnemyAttack):
     _index: int = 80
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack81(EnemyAttack):
@@ -839,8 +838,8 @@ class PhysicalAttack81(EnemyAttack):
 
     _index: int = 81
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Magnum(EnemyAttack):
@@ -850,8 +849,8 @@ class Magnum(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Psyche(EnemyAttack):
@@ -861,8 +860,8 @@ class Psyche(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 80
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Migraine(EnemyAttack):
@@ -872,8 +871,8 @@ class Migraine(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 80
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack85(EnemyAttack):
@@ -881,8 +880,8 @@ class PhysicalAttack85(EnemyAttack):
 
     _index: int = 85
     _hit_rate: int = 99
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack86(EnemyAttack):
@@ -891,8 +890,8 @@ class PhysicalAttack86(EnemyAttack):
     _index: int = 86
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Multistrike(EnemyAttack):
@@ -901,8 +900,8 @@ class Multistrike(EnemyAttack):
     _index: int = 87
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class FlutterHush(EnemyAttack):
@@ -912,8 +911,8 @@ class FlutterHush(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.MUTE]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUTE]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack89(EnemyAttack):
@@ -921,8 +920,8 @@ class PhysicalAttack89(EnemyAttack):
 
     _index: int = 89
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack90(EnemyAttack):
@@ -930,8 +929,8 @@ class PhysicalAttack90(EnemyAttack):
 
     _index: int = 90
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack91(EnemyAttack):
@@ -941,8 +940,8 @@ class PhysicalAttack91(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 85
-    _status_effects: List[Status] = [Status.SLEEP]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _buffs: list[TempStatBuff] = []
 
 
 class FearRoulette(EnemyAttack):
@@ -952,8 +951,8 @@ class FearRoulette(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack93(EnemyAttack):
@@ -961,8 +960,8 @@ class PhysicalAttack93(EnemyAttack):
 
     _index: int = 93
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack94(EnemyAttack):
@@ -970,8 +969,8 @@ class PhysicalAttack94(EnemyAttack):
 
     _index: int = 94
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack95(EnemyAttack):
@@ -979,8 +978,8 @@ class PhysicalAttack95(EnemyAttack):
 
     _index: int = 95
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class HammerTime(EnemyAttack):
@@ -989,8 +988,8 @@ class HammerTime(EnemyAttack):
     _index: int = 96
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class ValorUp(EnemyAttack):
@@ -1000,8 +999,8 @@ class ValorUp(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 100
-    _buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
-    _status_effects: List[Status] = []
+    _buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
+    _status_effects: list[Status] = []
 
 
 class PhysicalAttack98(EnemyAttack):
@@ -1009,8 +1008,8 @@ class PhysicalAttack98(EnemyAttack):
 
     _index: int = 98
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class LastShot(EnemyAttack):
@@ -1019,8 +1018,8 @@ class LastShot(EnemyAttack):
     _index: int = 99
     _attack_level: int = 3
     _hit_rate: int = 100
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack100(EnemyAttack):
@@ -1028,8 +1027,8 @@ class PhysicalAttack100(EnemyAttack):
 
     _index: int = 100
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack101(EnemyAttack):
@@ -1038,8 +1037,8 @@ class PhysicalAttack101(EnemyAttack):
     _index: int = 101
     _attack_level: int = 1
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack102(EnemyAttack):
@@ -1049,8 +1048,8 @@ class PhysicalAttack102(EnemyAttack):
     _hit_rate: int = 100
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack103(EnemyAttack):
@@ -1060,8 +1059,8 @@ class PhysicalAttack103(EnemyAttack):
     _hit_rate: int = 100
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack104(EnemyAttack):
@@ -1071,8 +1070,8 @@ class PhysicalAttack104(EnemyAttack):
     _hit_rate: int = 100
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack105(EnemyAttack):
@@ -1080,8 +1079,8 @@ class PhysicalAttack105(EnemyAttack):
 
     _index: int = 105
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Gnight(EnemyAttack):
@@ -1091,8 +1090,8 @@ class Gnight(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 90
-    _status_effects: List[Status] = [Status.SLEEP]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack107(EnemyAttack):
@@ -1100,8 +1099,8 @@ class PhysicalAttack107(EnemyAttack):
 
     _index: int = 107
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack108(EnemyAttack):
@@ -1109,8 +1108,8 @@ class PhysicalAttack108(EnemyAttack):
 
     _index: int = 108
     _hit_rate: int = 100
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Chomp(EnemyAttack):
@@ -1119,8 +1118,8 @@ class Chomp(EnemyAttack):
     _index: int = 109
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class GetTough(EnemyAttack):
@@ -1130,8 +1129,8 @@ class GetTough(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 100
-    _buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
-    _status_effects: List[Status] = []
+    _buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
+    _status_effects: list[Status] = []
 
 
 class PhysicalAttack111(EnemyAttack):
@@ -1139,8 +1138,8 @@ class PhysicalAttack111(EnemyAttack):
 
     _index: int = 111
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Missedme(EnemyAttack):
@@ -1150,8 +1149,8 @@ class Missedme(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack113(EnemyAttack):
@@ -1160,8 +1159,8 @@ class PhysicalAttack113(EnemyAttack):
     _index: int = 113
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class LocoExpress(EnemyAttack):
@@ -1170,8 +1169,8 @@ class LocoExpress(EnemyAttack):
     _index: int = 114
     _attack_level: int = 3
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack115(EnemyAttack):
@@ -1179,8 +1178,8 @@ class PhysicalAttack115(EnemyAttack):
 
     _index: int = 115
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack116(EnemyAttack):
@@ -1189,8 +1188,8 @@ class PhysicalAttack116(EnemyAttack):
     _index: int = 116
     _attack_level: int = 1
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack117(EnemyAttack):
@@ -1198,8 +1197,8 @@ class PhysicalAttack117(EnemyAttack):
 
     _index: int = 117
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class PhysicalAttack118(EnemyAttack):
@@ -1207,8 +1206,8 @@ class PhysicalAttack118(EnemyAttack):
 
     _index: int = 118
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Jinxed(EnemyAttack):
@@ -1216,8 +1215,8 @@ class Jinxed(EnemyAttack):
 
     _index: int = 119
     _hit_rate: int = 100
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class TripleKick(EnemyAttack):
@@ -1226,8 +1225,8 @@ class TripleKick(EnemyAttack):
     _index: int = 120
     _attack_level: int = 1
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Quicksilver(EnemyAttack):
@@ -1236,8 +1235,8 @@ class Quicksilver(EnemyAttack):
     _index: int = 121
     _attack_level: int = 2
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class BombsAway(EnemyAttack):
@@ -1246,8 +1245,8 @@ class BombsAway(EnemyAttack):
     _index: int = 122
     _attack_level: int = 3
     _hit_rate: int = 90
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Vigorup(EnemyAttack):
@@ -1257,8 +1256,8 @@ class Vigorup(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 100
-    _buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
-    _status_effects: List[Status] = []
+    _buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
+    _status_effects: list[Status] = []
 
 
 class PhysicalAttack124(EnemyAttack):
@@ -1266,8 +1265,8 @@ class PhysicalAttack124(EnemyAttack):
 
     _index: int = 124
     _hit_rate: int = 100
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class SilverBullet(EnemyAttack):
@@ -1277,8 +1276,8 @@ class SilverBullet(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class Terrapunch(EnemyAttack):
@@ -1287,8 +1286,8 @@ class Terrapunch(EnemyAttack):
     _index: int = 126
     _attack_level: int = 2
     _hit_rate: int = 95
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class ScrowFangs(EnemyAttack):
@@ -1298,8 +1297,8 @@ class ScrowFangs(EnemyAttack):
     _hide_numbers: bool = True
     _damageless_flag_2: bool = True
     _hit_rate: int = 85
-    _status_effects: List[Status] = [Status.SCARECROW]
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SCARECROW]
+    _buffs: list[TempStatBuff] = []
 
 
 class Shaker(EnemyAttack):
@@ -1309,16 +1308,16 @@ class Shaker(EnemyAttack):
     _ohko: bool = True
     _hide_numbers: bool = True
     _hit_rate: int = 99
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 class AttackDoNothing(EnemyAttack):
     """AttackDoNothing enemy attack class"""
 
     _index: int = 251
-    _status_effects: List[Status] = []
-    _buffs: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _buffs: list[TempStatBuff] = []
 
 
 # ********************* Default lists for the world.

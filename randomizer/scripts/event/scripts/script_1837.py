@@ -18,8 +18,7 @@ script = EventScript(
                 ASWalkSouthPixels(8),
                 ASWalkNorthPixels(4),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Pause(8),
         ActionQueueSync(
             target=NPC_0,
@@ -27,8 +26,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(SLOW),
                 ASJmp(["EVENT_1837_non_embedded_action_queue_8"]),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_1837_ret_7"),
         NonEmbeddedActionQueue(
             subscript=[
@@ -62,7 +60,6 @@ script = EventScript(
                 ASPause(60),
                 ASJmp(["EVENT_1837_non_embedded_action_queue_8"]),
             ],
-            identifier="EVENT_1837_non_embedded_action_queue_8",
-        ),
+            identifier="EVENT_1837_non_embedded_action_queue_8"),
     ]
 )

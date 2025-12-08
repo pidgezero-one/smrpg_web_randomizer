@@ -10,8 +10,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7044_6,
             ["ACTION_35_face_southwest_11"],
-            identifier="ACTION_35_jmp_if_bit_set_3",
-        ),
+            identifier="ACTION_35_jmp_if_bit_set_3"),
         FaceNortheast(),
         JmpToSubroutine(["ACTION_34_clear_solidity_bits_48"]),
         SetPriority(2),

@@ -37,8 +37,7 @@ objects = [
         priority_2=True,
         show_shadow=True,
         height=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=ShyAway,
@@ -72,8 +71,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=4,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularNPC(
         occupant=Empty,
@@ -107,8 +105,7 @@ objects = [
         priority_1=False,
         priority_2=False,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Empty,
@@ -124,8 +121,7 @@ objects = [
         priority_1=False,
         priority_2=False,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Empty,
@@ -141,8 +137,7 @@ objects = [
         priority_1=False,
         priority_2=False,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Empty,
@@ -158,8 +153,7 @@ objects = [
         priority_1=False,
         priority_2=False,
         height=7,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=Empty,
@@ -192,8 +186,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=Empty,
@@ -208,8 +201,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=DodoLarge,
@@ -243,6 +235,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR2_SWSE,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

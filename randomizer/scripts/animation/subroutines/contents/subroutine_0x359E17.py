@@ -30,8 +30,7 @@ script = SubroutineOrBanklessScript(
             partial_start=25,
             perfect_start=29,
             perfect_end=30,
-            destinations=["command_0x359e50"],
-        ),
+            destinations=["command_0x359e50"]),
         PlaySound(sound=S0172_WEAPON_TIMING, channel=4),
         EndTrackingAllyButtonInputs(identifier="command_0x359e50"),
         Db(bytearray(b"\x8c")),
@@ -51,8 +50,7 @@ script = SubroutineOrBanklessScript(
             apply_to_y=True,
             should_set_end_position=True,
             should_set_speed=True,
-            identifier="queuestart_0x359e6a",
-        ),
+            identifier="queuestart_0x359e6a"),
         SetAMEM60ToCurrentTarget(),
         SetAMEM32ToXYZCoords(
             origin=TARGET_CURRENT_POSITION, x=-16, y=0, z=0, set_z=True
@@ -91,8 +89,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0779_WHITE_STARS,
             sequence=0,
@@ -101,8 +98,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x359f08"]),
         ReturnObjectQueue(),
         PauseScriptUntil(
@@ -116,8 +112,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0779_WHITE_STARS,
             sequence=0,
@@ -126,8 +121,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x359f08"]),
         ReturnObjectQueue(),
         PauseScriptUntil(
@@ -141,8 +135,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0779_WHITE_STARS,
             sequence=0,
@@ -151,8 +144,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         RunSubroutine(["command_0x359f08"]),
         ReturnObjectQueue(),
         ShineEffect(
@@ -160,8 +152,7 @@ script = SubroutineOrBanklessScript(
             starting_colour_index=1,
             glow_duration=1,
             east=True,
-            identifier="command_0x359f08",
-        ),
+            identifier="command_0x359f08"),
         PauseScriptUntilSpriteSequenceDone(),
         RemoveObject(),
         Db(bytearray(b"\x81")),
@@ -169,5 +160,4 @@ script = SubroutineOrBanklessScript(
         IncAMEM8Bit(0x6D),
         SetOMEMMainToAMEM8Bit(omem=0x6D, amem=0x6D),
         ReturnSubroutine(),
-    ],
-)
+    ])

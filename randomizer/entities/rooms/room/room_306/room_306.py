@@ -13,5 +13,4 @@ room = Room(
     objects=[],
     extra_sprite_actions=[
         ExtraSpriteActions.SLEEP,
-    ],
-)
+    ])

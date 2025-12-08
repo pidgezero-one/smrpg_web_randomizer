@@ -20,8 +20,7 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=LAYER_3,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNorthwestSteps(18)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNorthwestSteps(18)]),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=NPC_8,
@@ -41,12 +40,10 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASShiftZUpPixels(9),
                 ASWalkSoutheastPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_8, subscript=[ASWalkNorthwestSteps(11)]),
         ActionQueueAsync(
             target=NPC_7,
@@ -54,8 +51,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkNorthwestSteps(11),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_8, A0715_FOREVER_PAUSE_LOOP),
         JmpToSubroutine(["EVENT_3499_action_queue_sync_130"]),
         JmpToSubroutine(["EVENT_3499_action_queue_sync_133"]),
@@ -71,8 +67,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(8),
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         JmpToSubroutine(["EVENT_3499_action_queue_sync_130"]),
         JmpToSubroutine(["EVENT_3499_action_queue_sync_133"]),
         ActionQueueAsync(
@@ -82,8 +77,7 @@ script = EventScript(
                 ASSequenceLoopingOn(),
                 ASPause(40),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         JmpToSubroutine(["EVENT_3499_action_queue_sync_130"]),
         ActionQueueSync(
             target=NPC_7, subscript=[ASSetSequenceSpeed(FAST), ASSequenceLoopingOn()]
@@ -101,8 +95,7 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E3503_BOOSTER_HILL_BARREL_SUMMONER,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         SetSyncActionScript(LAYER_1, A0704_BOOSTER_HILL_LAYER_1),
         SetSyncActionScript(LAYER_2, A0655_BOOSTER_HILL_LAYER_2),
         SetSyncActionScript(LAYER_3, A0705_BOOSTER_HILL_LAYER_3),
@@ -123,17 +116,14 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASWalkWestPixels(8),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0]),
             ],
-            identifier="EVENT_3499_action_queue_sync_130",
-        ),
+            identifier="EVENT_3499_action_queue_sync_130"),
         ActionQueueAsync(
             target=NPC_7,
-            subscript=[ASPause(4), ASFaceSouthwest(), ASPause(4), ASFaceSoutheast()],
-        ),
+            subscript=[ASPause(4), ASFaceSouthwest(), ASPause(4), ASFaceSoutheast()]),
         Return(),
         ActionQueueSync(
             target=NPC_8,
@@ -148,17 +138,14 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASWalkSouthPixels(8),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0]),
             ],
-            identifier="EVENT_3499_action_queue_sync_133",
-        ),
+            identifier="EVENT_3499_action_queue_sync_133"),
         ActionQueueAsync(
             target=NPC_7,
-            subscript=[ASPause(4), ASFaceSouthwest(), ASPause(4), ASFaceNorthwest()],
-        ),
+            subscript=[ASPause(4), ASFaceSouthwest(), ASPause(4), ASFaceNorthwest()]),
         Return(),
         ActionQueueSync(
             target=NPC_0,
@@ -174,8 +161,7 @@ script = EventScript(
                 ASVisibilityOn(),
                 ASJumpToHeight(
                     24,
-                    identifier="EVENT_3499_action_queue_sync_136_SUBSCRIPT_jump_to_height_9",
-                ),
+                    identifier="EVENT_3499_action_queue_sync_136_SUBSCRIPT_jump_to_height_9"),
                 ASWalk1StepSoutheast(),
                 ASSet700CToObjectCoord(
                     target_npc=DUMMY_0X07, coord=COORD_X, pixel=True
@@ -184,8 +170,7 @@ script = EventScript(
                 ASJmpIfComparisonResultIsLesser(
                     ["EVENT_3499_action_queue_sync_136_SUBSCRIPT_jump_to_height_9"]
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_3, subscript=[ASPause(50), ASJumpToHeight(112)]),
         Return(),
     ]

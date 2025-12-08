@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2124,
             x=21,
@@ -55,8 +54,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -90,8 +88,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             show_shadow=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 1
             occupant=npcs.BlockShadow,
             initiator=Initiator.NONE,
@@ -122,7 +119,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

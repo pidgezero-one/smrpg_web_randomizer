@@ -17,8 +17,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ClearAMEM8Bit(0x60),
         SetAMEM16BitToConst(0x60, 13),
         ObjectQueueAtOffsetAndIndex(index=2, target_address=0x353706),
@@ -46,8 +45,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x354b7d",
-        ),
+            identifier="queuestart_0x354b7d"),
         DoMaskEffect(CIRCLE_MASK),
         RunSubroutine(["command_0x35336f"]),
         SetAMEM8BitToConst(0x6A, 0),
@@ -64,5 +62,4 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"\xc4")),
         Db(bytearray(b"\xc5")),
         ReturnObjectQueue(),
-    ],
-)
+    ])

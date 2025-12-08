@@ -38,8 +38,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     ChestClone(
         occupant=TreasureChest,
@@ -55,8 +54,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=K9,
@@ -90,8 +88,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=K9,
@@ -107,8 +104,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=K9,
@@ -124,8 +120,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=K9,
@@ -141,8 +136,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=Empty,
@@ -175,8 +169,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=Empty,
@@ -191,8 +184,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=YellowPlatform,
@@ -226,8 +218,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=-2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=YellowPlatform,
@@ -243,8 +234,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=-2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularNPC(
         occupant=BlockShadow,
@@ -277,8 +267,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_11
     RegularClone(
         occupant=BlockShadow,
@@ -293,8 +282,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_12
     RegularNPC(
         occupant=Croco,
@@ -327,6 +315,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

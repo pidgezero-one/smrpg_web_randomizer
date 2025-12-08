@@ -48,9 +48,12 @@ script = EventScript([
 	]),
 	SetBit(TEMP_7049_6),
 	RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
+    RemoveObjectFromSpecificLevel(NPC_5, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE),
+    RemoveObjectFromSpecificLevel(NPC_10, R191_MUSHROOM_KINGDOM_OUTSIDE),
 	FadeInFromBlack(sync=False),
 	Pause(30),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	SetSyncActionScript(NPC_9, A0098_WALK_RANDOM_DIRECTIONS_NO_SOLIDITY_CHANGE),
+    SetBit(KINGDOM_BOUNCER_FREED),
 	Return()
 ])

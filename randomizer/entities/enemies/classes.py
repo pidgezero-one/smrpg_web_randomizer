@@ -1,15 +1,13 @@
 """Individual enemy class definitions."""
 
-from typing import List, Optional, Type, Union, cast
+from typing import cast
 from randomizer.types.battle_animation_scripts.ids import (
     BATTLE_EVENTS,
     BE0092_SHELLY_BREAKS,
-    SUBROUTINES_0X353437,
-)
+    SUBROUTINES_0X353437)
 from randomizer.types.battle_animation_scripts import AnimationScriptBank
 from randomizer.types.battle_animation_scripts.commands import (
-    SetAMEM16BitToConst,
-)
+    SetAMEM16BitToConst)
 from randomizer.types.enemies import (
     Enemy,
     AllyClone,
@@ -17,8 +15,7 @@ from randomizer.types.enemies import (
     ShellySupport,
     ApproachSound,
     HitSound,
-    FlowerBonusType,
-)
+    FlowerBonusType)
 from randomizer.types.items import RegularItem
 from randomizer.types.monster_scripts import MonsterScript
 from randomizer.types.monster_scripts.arguments import MONSTER_1_SET
@@ -29,8 +26,7 @@ from randomizer.types.monster_scripts.commands import (
     IfTurnCounterEquals,
     RunBattleEvent,
     SetTargetable,
-    SetUntargetable,
-)
+    SetUntargetable)
 from randomizer.types.patch import Patch
 from randomizer.types.spells import Element, Status
 from randomizer.types.world.flags import FixMagikoopa, NoGenoWhirlExor
@@ -63,8 +59,7 @@ from randomizer.entities.items.items import (
     PureWater,
     RockCandy,
     RoyalSyrup,
-    SleepyBomb,
-)
+    SleepyBomb)
 from randomizer.types.world.flags.flags import DifferentiateRepeatedBosses
 
 from .palettes import CHOCOLATE_CAKE, CHOCOLATE_RASPBERRY
@@ -84,16 +79,16 @@ class Terrapin(Enemy):
     _speed: int = 10
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # reward attributes
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -121,19 +116,19 @@ class Spikey(Enemy):
     _speed: int = 14
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element nullification
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 1
     _coins: int = 2
-    _common_item_drop: "Type[RegularItem]" = HoneySyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
+    _common_item_drop: "type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -163,19 +158,19 @@ class Skytroopa(Enemy):
     _evade: int = 8
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.JUMP]
+    _weaknesses: list[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 1
     _coins: int = 1
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
-    _yoshi_cookie_item: "Type[RegularItem]" = MidMushroom
+    _rare_item_drop: "type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = MidMushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -206,18 +201,18 @@ class MadMallet(Enemy):
     _speed: int = 20
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 20
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -267,20 +262,20 @@ class Shaman(Enemy):
     _speed: int = 9
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 17
     _coins: int = 4
-    _rare_item_drop: "Type[RegularItem]" = MapleSyrup
-    _common_item_drop: "Type[RegularItem]" = RoyalSyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = RoyalSyrup
+    _rare_item_drop: "type[RegularItem]" = MapleSyrup
+    _common_item_drop: "type[RegularItem]" = RoyalSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = RoyalSyrup
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -311,19 +306,19 @@ class Crook(Enemy):
     _magic_evade: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 10
     _coins: int = 10
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = MidMushroom
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = MidMushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
@@ -368,17 +363,17 @@ class Goomba(Enemy):
     _speed: int = 13
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -406,19 +401,19 @@ class PiranhaPlant(Enemy):
     _speed: int = 6
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 5
     _coins: int = 5
-    _common_item_drop: "Type[RegularItem]" = MapleSyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = SleepyBomb
+    _common_item_drop: "type[RegularItem]" = MapleSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = SleepyBomb
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -466,18 +461,18 @@ class Amanita(Enemy):
     _magic_evade: int = 10
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 3
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
-    _yoshi_cookie_item: "Type[RegularItem]" = BadMushroom
+    _rare_item_drop: "type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = BadMushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -507,19 +502,19 @@ class Goby(Enemy):
     _evade: int = 20
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 3
     _coins: int = 2
-    _common_item_drop: "Type[RegularItem]" = Mushroom
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
@@ -552,19 +547,19 @@ class Bloober(Enemy):
     _evade: int = 20
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE, Element.THUNDER]
+    _weaknesses: list[Element] = [Element.FIRE, Element.THUNDER]
 
     # rewards
     _xp: int = 12
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
-    _common_item_drop: "Type[RegularItem]" = MaxMushroom
-    _yoshi_cookie_item: "Type[RegularItem]" = Elixir
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
+    _common_item_drop: "type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Elixir
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -609,19 +604,19 @@ class BandanaRed(Enemy):
     _speed: int = 20
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE, Element.THUNDER]
+    _weaknesses: list[Element] = [Element.FIRE, Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 18
     _coins: int = 10
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
+    _rare_item_drop: "type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
@@ -666,20 +661,20 @@ class Lakitu(Enemy):
     _evade: int = 13
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.THUNDER]
+    _resistances: list[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 10
     _coins: int = 3
-    _rare_item_drop: "Type[RegularItem]" = MidMushroom
-    _common_item_drop: "Type[RegularItem]" = MapleSyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = MapleSyrup
+    _rare_item_drop: "type[RegularItem]" = MidMushroom
+    _common_item_drop: "type[RegularItem]" = MapleSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = MapleSyrup
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -710,19 +705,19 @@ class Birdy(Enemy):
     _evade: int = 18
 
     # effect nullification
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _status_immunities: list[Status] = [Status.SLEEP]
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 16
     _coins: int = 3
-    _common_item_drop: "Type[RegularItem]" = Energizer
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
+    _common_item_drop: "type[RegularItem]" = Energizer
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -770,7 +765,7 @@ class Pinwheel(Enemy):
     _evade: int = 35
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -778,15 +773,15 @@ class Pinwheel(Enemy):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.THUNDER]
+    _resistances: list[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 23
-    _rare_item_drop: "Type[RegularItem]" = PickMeUp
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
+    _rare_item_drop: "type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
@@ -815,19 +810,19 @@ class Ratfunk(Enemy):
     _evade: int = 30
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 2
     _coins: int = 6
-    _common_item_drop: "Type[RegularItem]" = AbleJuice
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = AbleJuice
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
@@ -855,17 +850,17 @@ class K9(Enemy):
     _speed: int = 19
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
@@ -892,18 +887,18 @@ class Magmite(Enemy):
     _speed: int = 2
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 5
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -932,19 +927,19 @@ class TheBigBoo(Enemy):
     _evade: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = [Status.FEAR]
+    _status_immunities: list[Status] = [Status.FEAR]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = FrightBomb
-    _common_item_drop: "Type[RegularItem]" = HoneySyrup
-    _rare_item_drop: "Type[RegularItem]" = PureWater
+    _yoshi_cookie_item: "type[RegularItem]" = FrightBomb
+    _common_item_drop: "type[RegularItem]" = HoneySyrup
+    _rare_item_drop: "type[RegularItem]" = PureWater
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
@@ -969,20 +964,20 @@ class DryBones(Enemy):
     _speed: int = 9
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 12
     _coins: int = 5
-    _rare_item_drop: "Type[RegularItem]" = PureWater
-    _common_item_drop: "Type[RegularItem]" = MaxMushroom
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = PureWater
+    _common_item_drop: "type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
@@ -1015,19 +1010,19 @@ class Greaper(Enemy):
     _magic_evade: int = 30
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 13
-    _rare_item_drop: "Type[RegularItem]" = PureWater
-    _common_item_drop: "Type[RegularItem]" = HoneySyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = HoneySyrup
+    _rare_item_drop: "type[RegularItem]" = PureWater
+    _common_item_drop: "type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = HoneySyrup
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -1057,18 +1052,18 @@ class Sparky(Enemy):
     _evade: int = 6
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.FIRE]
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # rewards
     _xp: int = 4
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = FireBomb
+    _yoshi_cookie_item: "type[RegularItem]" = FireBomb
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
@@ -1097,18 +1092,18 @@ class Chomp(Enemy):
     _speed: int = 10
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 10
-    _common_item_drop: "Type[RegularItem]" = Mushroom
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
+    _common_item_drop: "type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -1136,7 +1131,7 @@ class Pandorite(Enemy):
     _speed: int = 1
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -1144,10 +1139,10 @@ class Pandorite(Enemy):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.JUMP]
+    _weaknesses: list[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
@@ -1159,9 +1154,9 @@ class Pandorite(Enemy):
     # rewards
     _xp: int = 20
     _coins: int = 30
-    _rare_item_drop: "Type[RegularItem]" = FlowerJar
-    _common_item_drop: "Type[RegularItem]" = FlowerJar
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = FlowerJar
+    _common_item_drop: "type[RegularItem]" = FlowerJar
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -1191,13 +1186,13 @@ class ShyRanger(Enemy):
     _evade: int = 50
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
@@ -1207,7 +1202,7 @@ class ShyRanger(Enemy):
     # rewards
     _xp: int = 60
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = KerokeroCola
+    _yoshi_cookie_item: "type[RegularItem]" = KerokeroCola
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -1236,18 +1231,18 @@ class Bobomb(Enemy):
     _speed: int = 1
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER, Element.JUMP]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 4
-    _common_item_drop: "Type[RegularItem]" = PickMeUp
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
@@ -1294,19 +1289,19 @@ class Spookum(Enemy):
     _speed: int = 18
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 8
     _coins: int = 4
-    _common_item_drop: "Type[RegularItem]" = MidMushroom
-    _yoshi_cookie_item: "Type[RegularItem]" = SleepyBomb
+    _common_item_drop: "type[RegularItem]" = MidMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = SleepyBomb
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
@@ -1338,9 +1333,9 @@ class HammerBro(Enemy):
     # rewards
     _xp: int = 3
     _coins: int = 10
-    _rare_item_drop: "Type[RegularItem]" = FlowerJar
-    _common_item_drop: "Type[RegularItem]" = FlowerJar
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = FlowerJar
+    _common_item_drop: "type[RegularItem]" = FlowerJar
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
@@ -1348,13 +1343,13 @@ class HammerBro(Enemy):
 
     # other properties
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _status_immunities: list[Status] = [Status.SLEEP]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # special status
     _ohko_immune: bool = True
@@ -1386,20 +1381,20 @@ class Buzzer(Enemy):
     # rewards
     _xp: int = 4
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 70
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER, Element.JUMP]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # other properties
     _morph_chance: float = 1.0
@@ -1427,18 +1422,18 @@ class Ameboid(Enemy):
     _magic_evade: int = 50
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 10
-    _common_item_drop: "Type[RegularItem]" = RoyalSyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = MaxMushroom
+    _common_item_drop: "type[RegularItem]" = RoyalSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = MaxMushroom
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -1467,17 +1462,17 @@ class Gecko(Enemy):
     _evade: int = 14
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = [Element.THUNDER]
+    _resistances: list[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = FroggieDrink
+    _yoshi_cookie_item: "type[RegularItem]" = FroggieDrink
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -1505,19 +1500,19 @@ class Wiggler(Enemy):
     _speed: int = 10
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 6
     _coins: int = 10
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = AbleJuice
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = AbleJuice
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
@@ -1546,20 +1541,20 @@ class Crusty(Enemy):
     _speed: int = 6
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 25
     _coins: int = 7
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
-    _common_item_drop: "Type[RegularItem]" = RoyalSyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
+    _common_item_drop: "type[RegularItem]" = RoyalSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -1588,17 +1583,17 @@ class Kamek(Enemy):
     _speed: int = 12
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
@@ -1609,7 +1604,7 @@ class Kamek(Enemy):
     # rewards
     _xp: int = 30
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # special status
     _ohko_immune: bool = True
@@ -1639,20 +1634,20 @@ class Leuko(Enemy):
     _magic_evade: int = 30
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = [Element.THUNDER]
+    _resistances: list[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 20
     _coins: int = 3
-    _rare_item_drop: "Type[RegularItem]" = MidMushroom
-    _common_item_drop: "Type[RegularItem]" = HoneySyrup
-    _yoshi_cookie_item: "Type[RegularItem]" = Megalixir
+    _rare_item_drop: "type[RegularItem]" = MidMushroom
+    _common_item_drop: "type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Megalixir
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -1681,18 +1676,18 @@ class Jawful(Enemy):
     _speed: int = 200
 
     # effect nullification
-    _status_immunities: List[Status] = [Status.FEAR]
+    _status_immunities: list[Status] = [Status.FEAR]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 27
-    _yoshi_cookie_item: "Type[RegularItem]" = RockCandy
-    _rare_item_drop: "Type[RegularItem]" = SleepyBomb
+    _yoshi_cookie_item: "type[RegularItem]" = RockCandy
+    _rare_item_drop: "type[RegularItem]" = SleepyBomb
 
     # flower bonus
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
@@ -1725,19 +1720,19 @@ class Enigma(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.JUMP]
+    _weaknesses: list[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 10
     _coins: int = 5
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
-    _common_item_drop: "Type[RegularItem]" = MapleSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
+    _common_item_drop: "type[RegularItem]" = MapleSyrup
 
 
 class Blaster(Enemy):
@@ -1756,18 +1751,18 @@ class Blaster(Enemy):
     _flower_bonus_chance: int = 0
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 12
-    _yoshi_cookie_item: "Type[RegularItem]" = FrightBomb
-    _rare_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = FrightBomb
+    _rare_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class Guerrilla(Enemy):
@@ -1789,19 +1784,19 @@ class Guerrilla(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 8
     _coins: int = 8
-    _yoshi_cookie_item: "Type[RegularItem]" = AbleJuice
-    _rare_item_drop: "Type[RegularItem]" = AbleJuice
+    _yoshi_cookie_item: "type[RegularItem]" = AbleJuice
+    _rare_item_drop: "type[RegularItem]" = AbleJuice
 
 
 class Babayaga(Enemy):
@@ -1817,16 +1812,16 @@ class Babayaga(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Hobgoblin(Enemy):
@@ -1847,20 +1842,20 @@ class Hobgoblin(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 4
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = PureWater
-    _common_item_drop: "Type[RegularItem]" = PureWater
-    _rare_item_drop: "Type[RegularItem]" = PureWater
+    _yoshi_cookie_item: "type[RegularItem]" = PureWater
+    _common_item_drop: "type[RegularItem]" = PureWater
+    _rare_item_drop: "type[RegularItem]" = PureWater
 
 
 class Reacher(Enemy):
@@ -1880,20 +1875,20 @@ class Reacher(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 30
     _coins: int = 8
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
-    _common_item_drop: "Type[RegularItem]" = RoyalSyrup
-    _rare_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
+    _common_item_drop: "type[RegularItem]" = RoyalSyrup
+    _rare_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class Shogun(Enemy):
@@ -1914,22 +1909,22 @@ class Shogun(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.FEAR,
         Status.SLEEP,
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 24
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = RoyalSyrup
-    _rare_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = RoyalSyrup
+    _rare_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class Orbuser(Enemy):
@@ -1950,13 +1945,13 @@ class Orbuser(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
@@ -1964,8 +1959,8 @@ class Orbuser(Enemy):
     # rewards
     _xp: int = 5
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = MapleSyrup
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = MapleSyrup
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
 
 
 class HeavyTroopa(Enemy):
@@ -1989,19 +1984,19 @@ class HeavyTroopa(Enemy):
     _flying: bool = True
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.JUMP]
+    _weaknesses: list[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 32
     _coins: int = 4
-    _yoshi_cookie_item: "Type[RegularItem]" = Crystalline
-    _common_item_drop: "Type[RegularItem]" = Crystalline
+    _yoshi_cookie_item: "type[RegularItem]" = Crystalline
+    _common_item_drop: "type[RegularItem]" = Crystalline
 
 
 class Shadow(Enemy):
@@ -2023,19 +2018,19 @@ class Shadow(Enemy):
     _flower_bonus_chance: int = 60
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 3
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = HoneySyrup
-    _common_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = HoneySyrup
+    _common_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class Cluster(Enemy):
@@ -2057,19 +2052,19 @@ class Cluster(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 8
     _coins: int = 8
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
-    _rare_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
+    _rare_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class BahamuttKamek(Enemy):
@@ -2085,9 +2080,9 @@ class BahamuttKamek(Enemy):
     _magic_defense: int = 20
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.FEAR,
     ]
@@ -2095,7 +2090,7 @@ class BahamuttKamek(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.3125
@@ -2124,9 +2119,9 @@ class BahamuttChester(Enemy):
     _magic_defense: int = 20
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.FEAR,
     ]
@@ -2134,7 +2129,7 @@ class BahamuttChester(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 5 / 12
@@ -2167,20 +2162,20 @@ class Octolot(Enemy):
     _flower_bonus_chance: int = 60
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE, Element.ICE]
+    _weaknesses: list[Element] = [Element.FIRE, Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 6
     _coins: int = 4
-    _yoshi_cookie_item: "Type[RegularItem]" = HoneySyrup
-    _common_item_drop: "Type[RegularItem]" = HoneySyrup
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = HoneySyrup
+    _common_item_drop: "type[RegularItem]" = HoneySyrup
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
 
 
 class Frogog(Enemy):
@@ -2200,19 +2195,19 @@ class Frogog(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE, Element.THUNDER]
+    _weaknesses: list[Element] = [Element.FIRE, Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 3
     _coins: int = 4
-    _yoshi_cookie_item: "Type[RegularItem]" = AbleJuice
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = AbleJuice
+    _rare_item_drop: "type[RegularItem]" = Mushroom
 
 
 class Clerk(Enemy):
@@ -2234,18 +2229,18 @@ class Clerk(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 50
     _coins: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _anchor: bool = True
@@ -2280,18 +2275,18 @@ class Gunyolk(Enemy):
     sprite_height = 63
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE, Element.THUNDER]
+    _weaknesses: list[Element] = [Element.ICE, Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 100
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.6
@@ -2323,7 +2318,7 @@ class Boomer(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -2331,15 +2326,15 @@ class Boomer(Enemy):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 55
     _coins: int = 9
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -2376,8 +2371,7 @@ class Boomer(Enemy):
                 int(round(min(self.defense * 9 / 14, 255))),
                 int(round(min(self.magic_attack * 100 / 35, 255))),
                 int(round(min(self.magic_defense * 45 / 13, 255))),
-            ],
-        ):
+            ]):
             cmd = bank.get_command_by_name(name)
             assert isinstance(cmd, SetAMEM16BitToConst)
             cmd.set_value(value)
@@ -2401,19 +2395,19 @@ class Remocon(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = [Element.ICE, Element.THUNDER]
+    _resistances: list[Element] = [Element.ICE, Element.THUNDER]
 
     # rewards
     _xp: int = 8
     _coins: int = 7
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
-    _common_item_drop: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
+    _common_item_drop: "type[RegularItem]" = HoneySyrup
 
 
 class Snapdragon(Enemy):
@@ -2434,19 +2428,19 @@ class Snapdragon(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 4
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = SleepyBomb
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = SleepyBomb
+    _rare_item_drop: "type[RegularItem]" = Mushroom
 
 
 class Stumpet(Enemy):
@@ -2462,9 +2456,9 @@ class Stumpet(Enemy):
     _fp: int = 100
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -2477,9 +2471,9 @@ class Stumpet(Enemy):
     # rewards
     _xp: int = 70
     _coins: int = 15
-    _yoshi_cookie_item: "Type[RegularItem]" = RoyalSyrup
-    _common_item_drop: "Type[RegularItem]" = FireBomb
-    _rare_item_drop: "Type[RegularItem]" = FrightBomb
+    _yoshi_cookie_item: "type[RegularItem]" = RoyalSyrup
+    _common_item_drop: "type[RegularItem]" = FireBomb
+    _rare_item_drop: "type[RegularItem]" = FrightBomb
 
 
 class Dodo(Enemy):
@@ -2496,8 +2490,8 @@ class Dodo(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
@@ -2507,7 +2501,7 @@ class Dodo(Enemy):
 
     # rewards
     _xp: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4167
@@ -2553,18 +2547,18 @@ class Jester(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 10
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = HoneySyrup
 
 
 class Artichoker(Enemy):
@@ -2587,19 +2581,19 @@ class Artichoker(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: list[Element] = [Element.FIRE, Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = [Element.THUNDER]
+    _resistances: list[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 12
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = MidMushroom
-    _rare_item_drop: "Type[RegularItem]" = FrightBomb
+    _yoshi_cookie_item: "type[RegularItem]" = MidMushroom
+    _rare_item_drop: "type[RegularItem]" = FrightBomb
 
 
 class Arachne(Enemy):
@@ -2619,19 +2613,19 @@ class Arachne(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 6
     _coins: int = 6
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
-    _common_item_drop: "Type[RegularItem]" = AbleJuice
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
+    _common_item_drop: "type[RegularItem]" = AbleJuice
 
 
 class Carriboscis(Enemy):
@@ -2653,19 +2647,19 @@ class Carriboscis(Enemy):
     _flower_bonus_chance: int = 60
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: list[Element] = [Element.FIRE, Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 10
     _coins: int = 4
-    _yoshi_cookie_item: "Type[RegularItem]" = HoneySyrup
-    _rare_item_drop: "Type[RegularItem]" = AbleJuice
+    _yoshi_cookie_item: "type[RegularItem]" = HoneySyrup
+    _rare_item_drop: "type[RegularItem]" = AbleJuice
 
 
 class Hippopo(Enemy):
@@ -2688,7 +2682,7 @@ class Hippopo(Enemy):
     _one_per_battle: bool = True
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -2696,16 +2690,16 @@ class Hippopo(Enemy):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 80
     _coins: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Megalixir
-    _common_item_drop: "Type[RegularItem]" = RockCandy
+    _yoshi_cookie_item: "type[RegularItem]" = Megalixir
+    _common_item_drop: "type[RegularItem]" = RockCandy
 
 
 class Mastadoom(Enemy):
@@ -2725,18 +2719,18 @@ class Mastadoom(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _resistances: List[Element] = [Element.THUNDER]
+    _resistances: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = Crystalline
-    _rare_item_drop: "Type[RegularItem]" = MidMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Crystalline
+    _rare_item_drop: "type[RegularItem]" = MidMushroom
 
 
 class Corkpedite(Enemy):
@@ -2752,9 +2746,9 @@ class Corkpedite(Enemy):
     _fp: int = 100
     _morph_chance: float = 0.25
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -2767,8 +2761,8 @@ class Corkpedite(Enemy):
     # rewards
     _xp: int = 50
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Crystalline
-    _rare_item_drop: "Type[RegularItem]" = FrightBomb
+    _yoshi_cookie_item: "type[RegularItem]" = Crystalline
+    _rare_item_drop: "type[RegularItem]" = FrightBomb
 
 
 class Terracotta(Enemy):
@@ -2787,18 +2781,18 @@ class Terracotta(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 25
-    _yoshi_cookie_item: "Type[RegularItem]" = MidMushroom
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = MidMushroom
+    _rare_item_drop: "type[RegularItem]" = Mushroom
 
 
 class Spikester(Enemy):
@@ -2819,18 +2813,18 @@ class Spikester(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 6
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
 
 
 class Malakoopa(Enemy):
@@ -2854,19 +2848,19 @@ class Malakoopa(Enemy):
     _flying: bool = True
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 23
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = MapleSyrup
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = MapleSyrup
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
 
 
 class Pounder(Enemy):
@@ -2887,18 +2881,18 @@ class Pounder(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 24
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
 
 
 class PounderHenchman(Pounder, Henchman):
@@ -2939,18 +2933,18 @@ class Poundette(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 28
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
 
 
 class PoundetteHenchman(Poundette, Henchman):
@@ -2991,20 +2985,20 @@ class Sackit(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 20
     _coins: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = MaxMushroom
-    _common_item_drop: "Type[RegularItem]" = RoyalSyrup
-    _rare_item_drop: "Type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = MaxMushroom
+    _common_item_drop: "type[RegularItem]" = RoyalSyrup
+    _rare_item_drop: "type[RegularItem]" = MaxMushroom
 
 
 class GuGoomba(Enemy):
@@ -3026,19 +3020,19 @@ class GuGoomba(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 15
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = FroggieDrink
-    _rare_item_drop: "Type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = FroggieDrink
+    _rare_item_drop: "type[RegularItem]" = MaxMushroom
 
 
 class Chewy(Enemy):
@@ -3060,7 +3054,7 @@ class Chewy(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -3068,15 +3062,15 @@ class Chewy(Enemy):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 14
-    _yoshi_cookie_item: "Type[RegularItem]" = BadMushroom
-    _common_item_drop: "Type[RegularItem]" = SleepyBomb
+    _yoshi_cookie_item: "type[RegularItem]" = BadMushroom
+    _common_item_drop: "type[RegularItem]" = SleepyBomb
 
 
 class Fireball(Enemy):
@@ -3099,18 +3093,18 @@ class Fireball(Enemy):
     _flower_bonus_chance: int = 30
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE, Element.JUMP]
+    _weaknesses: list[Element] = [Element.ICE, Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 8
-    _yoshi_cookie_item: "Type[RegularItem]" = FireBomb
-    _common_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = FireBomb
+    _common_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class MrKipper(Enemy):
@@ -3135,19 +3129,19 @@ class MrKipper(Enemy):
     _high_flying: bool = True
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER, Element.ICE]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 8
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _common_item_drop: "Type[RegularItem]" = AbleJuice
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = AbleJuice
 
 
 class FactoryChief(Enemy):
@@ -3171,16 +3165,16 @@ class FactoryChief(Enemy):
     # rewards
     _xp: int = 80
     _coins: int = 90
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4
@@ -3210,17 +3204,17 @@ class BandanaBlue(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1829
@@ -3251,18 +3245,18 @@ class Manager(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 60
     _coins: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _anchor: bool = True
@@ -3292,9 +3286,9 @@ class Bluebird(Enemy):
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.PIERCE
     _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _resistances: List[Element] = [Element.ICE]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _resistances: list[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
     _flower_bonus_chance: int = 100
@@ -3303,8 +3297,8 @@ class Bluebird(Enemy):
     # rewards
     _xp: int = 14
     _coins: int = 6
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
-    _common_item_drop: "Type[RegularItem]" = Bracer
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
+    _common_item_drop: "type[RegularItem]" = Bracer
 
 
 class BluebirdHenchman(Bluebird, Henchman):
@@ -3325,8 +3319,8 @@ class BluebirdHenchman(Bluebird, Henchman):
     # rewards
     _xp: int = 14
     _coins: int = 6
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
-    _common_item_drop: "Type[RegularItem]" = Bracer
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
+    _common_item_drop: "type[RegularItem]" = Bracer
 
 
 class AlleyRat(Enemy):
@@ -3349,17 +3343,17 @@ class AlleyRat(Enemy):
     # rewards
     _xp: int = 9
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = AbleJuice
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = AbleJuice
+    _rare_item_drop: "type[RegularItem]" = Mushroom
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
 
 class Chow(Enemy):
@@ -3379,21 +3373,21 @@ class Chow(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 15
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = FrightBomb
+    _yoshi_cookie_item: "type[RegularItem]" = FrightBomb
 
 
 class Magmus(Enemy):
@@ -3410,9 +3404,9 @@ class Magmus(Enemy):
     _magic_evade: int = 10
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -3425,8 +3419,8 @@ class Magmus(Enemy):
     # rewards
     _xp: int = 18
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
-    _rare_item_drop: "Type[RegularItem]" = Bracer
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
+    _rare_item_drop: "type[RegularItem]" = Bracer
 
 
 class LilBoo(Enemy):
@@ -3448,17 +3442,17 @@ class LilBoo(Enemy):
     _flower_bonus_chance: int = 10
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 28
-    _yoshi_cookie_item: "Type[RegularItem]" = FreshenUp
+    _yoshi_cookie_item: "type[RegularItem]" = FreshenUp
 
 
 class Vomer(Enemy):
@@ -3479,7 +3473,7 @@ class Vomer(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -3487,15 +3481,15 @@ class Vomer(Enemy):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 19
-    _yoshi_cookie_item: "Type[RegularItem]" = PureWater
-    _rare_item_drop: "Type[RegularItem]" = PureWater
+    _yoshi_cookie_item: "type[RegularItem]" = PureWater
+    _rare_item_drop: "type[RegularItem]" = PureWater
 
 
 class GlumReaper(Enemy):
@@ -3518,19 +3512,19 @@ class GlumReaper(Enemy):
     _flower_bonus_chance: int = 50
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 35
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = PureWater
-    _common_item_drop: "Type[RegularItem]" = PureWater
+    _yoshi_cookie_item: "type[RegularItem]" = PureWater
+    _common_item_drop: "type[RegularItem]" = PureWater
 
 
 class Pyrosphere(Enemy):
@@ -3547,9 +3541,9 @@ class Pyrosphere(Enemy):
     _evade: int = 7
     _morph_chance: float = 0.25
     _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [Status.POISON]
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [Status.POISON]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
     _flower_bonus_chance: int = 70
@@ -3557,7 +3551,7 @@ class Pyrosphere(Enemy):
     # rewards
     _xp: int = 17
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = FireBomb
+    _yoshi_cookie_item: "type[RegularItem]" = FireBomb
 
 
 class PyrosphereHenchman(Pyrosphere, Henchman):
@@ -3579,7 +3573,7 @@ class PyrosphereHenchman(Pyrosphere, Henchman):
     # rewards
     _xp: int = 17
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = FireBomb
+    _yoshi_cookie_item: "type[RegularItem]" = FireBomb
 
 
 class ChompChomp(Enemy):
@@ -3600,19 +3594,19 @@ class ChompChomp(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 12
     _coins: int = 5
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _common_item_drop: "Type[RegularItem]" = Crystalline
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = Crystalline
 
 
 class Hidon(Enemy):
@@ -3629,13 +3623,13 @@ class Hidon(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
     ]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -3649,7 +3643,7 @@ class Hidon(Enemy):
     # xp = 50
     _xp: int = 42
     _coins: int = 100
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -3675,17 +3669,17 @@ class SlingShy(Enemy):
     # rewards
     _xp: int = 3
     _coins: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = MapleSyrup
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = MapleSyrup
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
 
 class Robomb(Enemy):
@@ -3706,19 +3700,19 @@ class Robomb(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: list[Element] = [Element.FIRE, Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 6
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
-    _common_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
+    _common_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class ShyGuy(Enemy):
@@ -3739,18 +3733,18 @@ class ShyGuy(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 2
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = HoneySyrup
 
 
 class ShyGuyHenchman(ShyGuy, Henchman):
@@ -3774,7 +3768,7 @@ class ShyGuyHenchman(ShyGuy, Henchman):
     # rewards
     _xp: int = 2
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = HoneySyrup
 
 
 class Ninja(Enemy):
@@ -3797,7 +3791,7 @@ class Ninja(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -3805,10 +3799,10 @@ class Ninja(Enemy):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.FIRE,
         Element.THUNDER,
@@ -3817,8 +3811,8 @@ class Ninja(Enemy):
     # rewards
     _xp: int = 32
     _coins: int = 6
-    _yoshi_cookie_item: "Type[RegularItem]" = PowerBlast
-    _common_item_drop: "Type[RegularItem]" = MapleSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = PowerBlast
+    _common_item_drop: "type[RegularItem]" = MapleSyrup
 
 
 class Stinger(Enemy):
@@ -3842,19 +3836,19 @@ class Stinger(Enemy):
     _flying: bool = True
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 13
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = AbleJuice
-    _rare_item_drop: "Type[RegularItem]" = AbleJuice
+    _yoshi_cookie_item: "type[RegularItem]" = AbleJuice
+    _rare_item_drop: "type[RegularItem]" = AbleJuice
 
 
 class Goombette(Henchman):
@@ -3875,18 +3869,18 @@ class Goombette(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
     # made this up
     _xp: int = 2
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1667
@@ -3918,18 +3912,18 @@ class Geckit(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 18
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
-    _rare_item_drop: "Type[RegularItem]" = AbleJuice
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
+    _rare_item_drop: "type[RegularItem]" = AbleJuice
 
 
 class Jabit(Enemy):
@@ -3948,18 +3942,18 @@ class Jabit(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 18
-    _yoshi_cookie_item: "Type[RegularItem]" = Bracer
-    _common_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = Bracer
+    _common_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class Starcruster(Enemy):
@@ -3981,19 +3975,19 @@ class Starcruster(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 36
     _coins: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Crystalline
-    _common_item_drop: "Type[RegularItem]" = Crystalline
+    _yoshi_cookie_item: "type[RegularItem]" = Crystalline
+    _common_item_drop: "type[RegularItem]" = Crystalline
 
 
 class Merlin(Enemy):
@@ -4015,18 +4009,18 @@ class Merlin(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 50
     _coins: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Muckle(Enemy):
@@ -4044,9 +4038,9 @@ class Muckle(Enemy):
     _evade: int = 1
     _morph_chance: float = 0.25
     _sound_on_hit: HitSound = HitSound.SLAP
-    _resistances: List[Element] = [Element.ICE]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -4059,8 +4053,8 @@ class Muckle(Enemy):
     # rewards
     _xp: int = 6
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = IceBomb
-    _common_item_drop: "Type[RegularItem]" = IceBomb
+    _yoshi_cookie_item: "type[RegularItem]" = IceBomb
+    _common_item_drop: "type[RegularItem]" = IceBomb
 
 
 class Forkies(Enemy):
@@ -4081,19 +4075,19 @@ class Forkies(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 32
     _coins: int = 7
-    _yoshi_cookie_item: "Type[RegularItem]" = RoyalSyrup
-    _rare_item_drop: "Type[RegularItem]" = SleepyBomb
+    _yoshi_cookie_item: "type[RegularItem]" = RoyalSyrup
+    _rare_item_drop: "type[RegularItem]" = SleepyBomb
 
 
 class Gorgon(Enemy):
@@ -4116,18 +4110,18 @@ class Gorgon(Enemy):
     _flower_bonus_chance: int = 30
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = MapleSyrup
-    _rare_item_drop: "Type[RegularItem]" = MidMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = MapleSyrup
+    _rare_item_drop: "type[RegularItem]" = MidMushroom
 
 
 class BigBertha(Enemy):
@@ -4145,18 +4139,18 @@ class BigBertha(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 35
     _coins: int = 7
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
 
 
 class ChainedKong(Enemy):
@@ -4179,19 +4173,19 @@ class ChainedKong(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 35
     _coins: int = 8
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
-    _rare_item_drop: "Type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
+    _rare_item_drop: "type[RegularItem]" = MaxMushroom
 
 
 class Fautso(Enemy):
@@ -4208,9 +4202,9 @@ class Fautso(Enemy):
     _fp: int = 100
     _evade: int = 10
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [Element.THUNDER, Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE, Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.THUNDER, Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE, Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.FEAR,
         Status.POISON,
@@ -4218,7 +4212,7 @@ class Fautso(Enemy):
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4667
@@ -4250,20 +4244,20 @@ class Strawhead(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 17
     _coins: int = 12
-    _yoshi_cookie_item: "Type[RegularItem]" = PureWater
-    _common_item_drop: "Type[RegularItem]" = PureWater
-    _rare_item_drop: "Type[RegularItem]" = PureWater
+    _yoshi_cookie_item: "type[RegularItem]" = PureWater
+    _common_item_drop: "type[RegularItem]" = PureWater
+    _rare_item_drop: "type[RegularItem]" = PureWater
 
 
 class Juju(Enemy):
@@ -4279,16 +4273,16 @@ class Juju(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class ArmoredAnt(Enemy):
@@ -4309,19 +4303,19 @@ class ArmoredAnt(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.FIRE]
 
     # rewards
     _xp: int = 30
     _coins: int = 5
-    _yoshi_cookie_item: "Type[RegularItem]" = PowerBlast
-    _common_item_drop: "Type[RegularItem]" = PowerBlast
+    _yoshi_cookie_item: "type[RegularItem]" = PowerBlast
+    _common_item_drop: "type[RegularItem]" = PowerBlast
 
 
 class Orbison(Enemy):
@@ -4341,13 +4335,13 @@ class Orbison(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.JUMP]
+    _weaknesses: list[Element] = [Element.JUMP]
 
     # element resistances
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
@@ -4355,8 +4349,8 @@ class Orbison(Enemy):
 
     # rewards
     _xp: int = 18
-    _yoshi_cookie_item: "Type[RegularItem]" = RoyalSyrup
-    _common_item_drop: "Type[RegularItem]" = PureWater
+    _yoshi_cookie_item: "type[RegularItem]" = RoyalSyrup
+    _common_item_drop: "type[RegularItem]" = PureWater
 
 
 class TuboTroopa(Enemy):
@@ -4379,19 +4373,19 @@ class TuboTroopa(Enemy):
     _flying: bool = True
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.THUNDER]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 40
     _coins: int = 11
-    _yoshi_cookie_item: "Type[RegularItem]" = Elixir
-    _common_item_drop: "Type[RegularItem]" = RockCandy
+    _yoshi_cookie_item: "type[RegularItem]" = Elixir
+    _common_item_drop: "type[RegularItem]" = RockCandy
 
 
 class Doppel(Enemy):
@@ -4413,19 +4407,19 @@ class Doppel(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 40
     _coins: int = 12
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
-    _rare_item_drop: "Type[RegularItem]" = PureWater
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
+    _rare_item_drop: "type[RegularItem]" = PureWater
 
 
 class Pulsar(Enemy):
@@ -4448,19 +4442,19 @@ class Pulsar(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
 
     # rewards
     _xp: int = 15
     _coins: int = 12
-    _yoshi_cookie_item: "Type[RegularItem]" = PickMeUp
-    _rare_item_drop: "Type[RegularItem]" = PickMeUp
+    _yoshi_cookie_item: "type[RegularItem]" = PickMeUp
+    _rare_item_drop: "type[RegularItem]" = PickMeUp
 
 
 class Octovader(Enemy):
@@ -4483,19 +4477,19 @@ class Octovader(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = [Element.THUNDER]
+    _resistances: list[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 30
     _coins: int = 8
-    _yoshi_cookie_item: "Type[RegularItem]" = FroggieDrink
-    _common_item_drop: "Type[RegularItem]" = PowerBlast
+    _yoshi_cookie_item: "type[RegularItem]" = FroggieDrink
+    _common_item_drop: "type[RegularItem]" = PowerBlast
 
 
 class Ribbite(Enemy):
@@ -4510,9 +4504,9 @@ class Ribbite(Enemy):
     _magic_defense: int = 29
     _fp: int = 100
     _morph_chance: float = 1.0
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [Status.FEAR]
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [Status.FEAR]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
     _flower_bonus_chance: int = 80
@@ -4520,8 +4514,8 @@ class Ribbite(Enemy):
     # rewards
     _xp: int = 22
     _coins: int = 8
-    _yoshi_cookie_item: "Type[RegularItem]" = Elixir
-    _common_item_drop: "Type[RegularItem]" = Elixir
+    _yoshi_cookie_item: "type[RegularItem]" = Elixir
+    _common_item_drop: "type[RegularItem]" = Elixir
 
 
 class Director(Enemy):
@@ -4543,18 +4537,18 @@ class Director(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 70
     _coins: int = 80
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _anchor: bool = True
@@ -4582,19 +4576,19 @@ class Puppox(Enemy):
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = [Element.THUNDER]
+    _resistances: list[Element] = [Element.THUNDER]
 
     # rewards
     _xp: int = 30
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = RockCandy
-    _rare_item_drop: "Type[RegularItem]" = FreshenUp
+    _yoshi_cookie_item: "type[RegularItem]" = RockCandy
+    _rare_item_drop: "type[RegularItem]" = FreshenUp
 
 
 class FinkFlower(Enemy):
@@ -4616,7 +4610,7 @@ class FinkFlower(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -4624,16 +4618,16 @@ class FinkFlower(Enemy):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.FIRE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 20
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = MaxMushroom
-    _rare_item_drop: "Type[RegularItem]" = MidMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = MaxMushroom
+    _rare_item_drop: "type[RegularItem]" = MidMushroom
 
 
 class Lumbler(Enemy):
@@ -4650,16 +4644,16 @@ class Lumbler(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Springer(Enemy):
@@ -4681,19 +4675,19 @@ class Springer(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 29
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = Elixir
-    _rare_item_drop: "Type[RegularItem]" = Energizer
+    _yoshi_cookie_item: "type[RegularItem]" = Elixir
+    _rare_item_drop: "type[RegularItem]" = Energizer
 
 
 class Harlequin(Enemy):
@@ -4709,16 +4703,16 @@ class Harlequin(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Kriffid(Enemy):
@@ -4735,9 +4729,9 @@ class Kriffid(Enemy):
     _morph_chance: float = 0.25
     _sound_on_hit: HitSound = HitSound.CLAW
     _sound_on_approach: ApproachSound = ApproachSound.SPARKY_GOOMBA_BIRDY
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [Status.POISON]
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [Status.POISON]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
     _flower_bonus_chance: int = 80
@@ -4745,8 +4739,8 @@ class Kriffid(Enemy):
     # rewards
     _xp: int = 35
     _coins: int = 6
-    _yoshi_cookie_item: "Type[RegularItem]" = Crystalline
-    _common_item_drop: "Type[RegularItem]" = BadMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Crystalline
+    _common_item_drop: "type[RegularItem]" = BadMushroom
 
 
 class Spinthra(Enemy):
@@ -4767,19 +4761,19 @@ class Spinthra(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = [Status.POISON]
+    _status_immunities: list[Status] = [Status.POISON]
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 30
     _coins: int = 4
-    _yoshi_cookie_item: "Type[RegularItem]" = PowerBlast
-    _rare_item_drop: "Type[RegularItem]" = Bracer
+    _yoshi_cookie_item: "type[RegularItem]" = PowerBlast
+    _rare_item_drop: "type[RegularItem]" = Bracer
 
 
 class Radish(Enemy):
@@ -4795,16 +4789,16 @@ class Radish(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Crippo(Enemy):
@@ -4820,16 +4814,16 @@ class Crippo(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class MastaBlasta(Enemy):
@@ -4845,16 +4839,16 @@ class MastaBlasta(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Piledriver(Enemy):
@@ -4870,16 +4864,16 @@ class Piledriver(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Apprentice(Enemy):
@@ -4900,19 +4894,19 @@ class Apprentice(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 1
     _coins: int = 4
-    _yoshi_cookie_item: "Type[RegularItem]" = SleepyBomb
-    _common_item_drop: "Type[RegularItem]" = MidMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = SleepyBomb
+    _common_item_drop: "type[RegularItem]" = MidMushroom
 
 
 class ApprenticeHenchman(Apprentice, Henchman):
@@ -4944,13 +4938,13 @@ class BoxBoy(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
     ]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -4963,7 +4957,7 @@ class BoxBoy(Enemy):
     # rewards
     _xp: int = 100
     _coins: int = 150
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -4983,7 +4977,7 @@ class Shelly(ShellySupport):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -4991,13 +4985,13 @@ class Shelly(ShellySupport):
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 500 / 777
@@ -5014,8 +5008,8 @@ class Shelly(ShellySupport):
 
     _position: int = 1
     _vanilla: bool = True
-    _summons: List[int] = [0x28]
-    _summon_event: Optional[int] = None
+    _summons: list[int] = [0x28]
+    _summon_event: int | None = None
 
     def update_world_entities(self):
         monsterscript: MonsterScript = self.world.monster_scripts.scripts[
@@ -5073,16 +5067,16 @@ class Superspike(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class DodoSolo(Enemy):
@@ -5099,8 +5093,8 @@ class DodoSolo(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
@@ -5108,11 +5102,11 @@ class DodoSolo(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 70
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -5134,9 +5128,9 @@ class Oerlikon(Enemy):
     _fp: int = 100
     _morph_chance: float = 1.0
     _sound_on_approach: ApproachSound = ApproachSound.STARSLAP_SPIKEY_ENIGMA
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5147,8 +5141,8 @@ class Oerlikon(Enemy):
 
     # rewards
     _xp: int = 22
-    _yoshi_cookie_item: "Type[RegularItem]" = Energizer
-    _rare_item_drop: "Type[RegularItem]" = Energizer
+    _yoshi_cookie_item: "type[RegularItem]" = Energizer
+    _rare_item_drop: "type[RegularItem]" = Energizer
 
 
 class Chester(Enemy):
@@ -5166,13 +5160,13 @@ class Chester(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.FIRE,
         Element.THUNDER,
     ]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5185,7 +5179,7 @@ class Chester(Enemy):
     # rewards
     _xp: int = 150
     _coins: int = 200
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class CorkpediteBody(Enemy):
@@ -5200,9 +5194,9 @@ class CorkpediteBody(Enemy):
     _magic_defense: int = 1
     _fp: int = 100
     _morph_chance: float = 1.0
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5213,7 +5207,7 @@ class CorkpediteBody(Enemy):
 
     # rewards
     _xp: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Torte(Henchman):
@@ -5231,7 +5225,7 @@ class Torte(Henchman):
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
     _sound_on_approach: ApproachSound = ApproachSound.TORTE
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5241,13 +5235,13 @@ class Torte(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
     # made this up
     _xp: int = 3
 
@@ -5282,19 +5276,19 @@ class Shyaway(Enemy):
     _flower_bonus_chance: int = 100
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 1
     _coins: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = MapleSyrup
-    _rare_item_drop: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = MapleSyrup
+    _rare_item_drop: "type[RegularItem]" = HoneySyrup
 
 
 class JinxClone(Enemy):
@@ -5314,19 +5308,19 @@ class JinxClone(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.FEAR,
     ]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.2
@@ -5358,17 +5352,17 @@ class MachineMadeShyster(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 28
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class MachineMadeShysterHenchman(MachineMadeShyster, Henchman):
@@ -5405,16 +5399,16 @@ class MachineMadeDrillBit(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Formless(Enemy):
@@ -5429,8 +5423,8 @@ class Formless(Enemy):
     _evade: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5441,10 +5435,10 @@ class Formless(Enemy):
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1 / 62
@@ -5473,8 +5467,8 @@ class Mokura(Enemy):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5485,13 +5479,13 @@ class Mokura(Enemy):
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 90
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _common_item_drop: "Type[RegularItem]" = KerokeroCola
-    _rare_item_drop: "Type[RegularItem]" = RoyalSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = KerokeroCola
+    _rare_item_drop: "type[RegularItem]" = RoyalSyrup
 
 
 class FireCrystal(Henchman):
@@ -5507,9 +5501,9 @@ class FireCrystal(Henchman):
     _fp: int = 250
     _evade: int = 10
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5521,7 +5515,7 @@ class FireCrystal(Henchman):
 
     # rewards
     _xp: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.6104
@@ -5548,9 +5542,9 @@ class WaterCrystal(Henchman):
     _fp: int = 250
     _evade: int = 20
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.ICE]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5562,7 +5556,7 @@ class WaterCrystal(Henchman):
 
     # rewards
     _xp: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4395
@@ -5589,9 +5583,9 @@ class EarthCrystal(Henchman):
     _fp: int = 250
     _evade: int = 5
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.JUMP]
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.JUMP]
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5603,7 +5597,7 @@ class EarthCrystal(Henchman):
 
     # rewards
     _xp: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.7813
@@ -5630,9 +5624,9 @@ class WindCrystal(Henchman):
     _fp: int = 250
     _evade: int = 30
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.THUNDER]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5644,7 +5638,7 @@ class WindCrystal(Henchman):
 
     # rewards
     _xp: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1953
@@ -5672,8 +5666,8 @@ class MarioClone(AllyClone):
     _fp: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5683,11 +5677,11 @@ class MarioClone(AllyClone):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1667
@@ -5714,7 +5708,7 @@ class PeachClone(AllyClone):
     _magic_defense: int = 70
     _fp: int = 180
     _ohko_immune: bool = True
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5724,14 +5718,14 @@ class PeachClone(AllyClone):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1
@@ -5758,9 +5752,9 @@ class BowserClone(AllyClone):
     _fp: int = 1
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5771,7 +5765,7 @@ class BowserClone(AllyClone):
 
     # rewards
     _xp: int = 100
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.25
@@ -5799,9 +5793,9 @@ class GenoClone(AllyClone):
     _fp: int = 40
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _resistances: List[Element] = [Element.ICE]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5812,7 +5806,7 @@ class GenoClone(AllyClone):
 
     # rewards
     _xp: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.2083
@@ -5840,8 +5834,8 @@ class MallowClone(AllyClone):
     _fp: int = 80
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[Element] = [Element.ICE, Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.ICE, Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5851,11 +5845,11 @@ class MallowClone(AllyClone):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 60
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.125
@@ -5888,19 +5882,19 @@ class Shyster(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 3
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = HoneySyrup
-    _common_item_drop: "Type[RegularItem]" = HoneySyrup
+    _yoshi_cookie_item: "type[RegularItem]" = HoneySyrup
+    _common_item_drop: "type[RegularItem]" = HoneySyrup
 
 
 class Kinklink(Enemy):
@@ -5918,16 +5912,16 @@ class Kinklink(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class HanginShy(Enemy):
@@ -5943,16 +5937,16 @@ class HanginShy(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Smelter(Enemy):
@@ -5965,9 +5959,9 @@ class Smelter(Enemy):
     _magic_defense: int = 100
     _fp: int = 100
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -5977,7 +5971,7 @@ class Smelter(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.75
@@ -6002,8 +5996,8 @@ class MachineMadeMack(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -6014,13 +6008,13 @@ class MachineMadeMack(Enemy):
     _flower_bonus_chance: int = 80
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 120
     _coins: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = FireBomb
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = FireBomb
 
 
 class MachineMadeBowyer(Enemy):
@@ -6037,7 +6031,7 @@ class MachineMadeBowyer(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -6048,16 +6042,16 @@ class MachineMadeBowyer(Enemy):
     _flower_bonus_chance: int = 80
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 150
     _coins: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = IceBomb
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = IceBomb
 
 
 class MachineMadeYaridovich(Enemy):
@@ -6074,7 +6068,7 @@ class MachineMadeYaridovich(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -6085,16 +6079,16 @@ class MachineMadeYaridovich(Enemy):
     _flower_bonus_chance: int = 80
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 180
     _coins: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = RockCandy
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = RockCandy
 
 
 class MachineMadeAxemPink(Enemy):
@@ -6112,9 +6106,9 @@ class MachineMadeAxemPink(Enemy):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[Element] = [Element.ICE]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
@@ -6123,8 +6117,8 @@ class MachineMadeAxemPink(Enemy):
 
     # rewards
     _xp: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = MapleSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = MapleSyrup
 
 
 class MachineMadeAxemPinkHenchman(MachineMadeAxemPink, Henchman):
@@ -6145,8 +6139,8 @@ class MachineMadeAxemPinkHenchman(MachineMadeAxemPink, Henchman):
 
     # rewards
     _xp: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = MapleSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = MapleSyrup
 
 
 class MachineMadeAxemBlack(Enemy):
@@ -6163,8 +6157,8 @@ class MachineMadeAxemBlack(Enemy):
     _evade: int = 30
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.FEAR,
     ]
@@ -6172,12 +6166,12 @@ class MachineMadeAxemBlack(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = MaxMushroom
 
 
 class MachineMadeAxemBlackHenchman(MachineMadeAxemBlack, Henchman):
@@ -6198,8 +6192,8 @@ class MachineMadeAxemBlackHenchman(MachineMadeAxemBlack, Henchman):
 
     # rewards
     _xp: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = MaxMushroom
 
 
 class MachineMadeAxemRed(Enemy):
@@ -6216,9 +6210,9 @@ class MachineMadeAxemRed(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.FEAR,
     ]
@@ -6227,8 +6221,8 @@ class MachineMadeAxemRed(Enemy):
 
     # rewards
     _xp: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = RoyalSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = RoyalSyrup
 
 
 class MachineMadeAxemRedHenchman(MachineMadeAxemRed, Henchman):
@@ -6249,8 +6243,8 @@ class MachineMadeAxemRedHenchman(MachineMadeAxemRed, Henchman):
 
     # rewards
     _xp: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = RoyalSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = RoyalSyrup
 
 
 class MachineMadeAxemYellow(Enemy):
@@ -6266,9 +6260,9 @@ class MachineMadeAxemYellow(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[Element] = [Element.THUNDER]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.POISON,
     ]
@@ -6277,8 +6271,8 @@ class MachineMadeAxemYellow(Enemy):
 
     # rewards
     _xp: int = 25
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = MaxMushroom
 
 
 class MachineMadeAxemYellowHenchman(MachineMadeAxemYellow, Henchman):
@@ -6299,8 +6293,8 @@ class MachineMadeAxemYellowHenchman(MachineMadeAxemYellow, Henchman):
 
     # rewards
     _xp: int = 25
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = MaxMushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = MaxMushroom
 
 
 class MachineMadeAxemGreen(Enemy):
@@ -6317,8 +6311,8 @@ class MachineMadeAxemGreen(Enemy):
     _magic_evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
@@ -6326,12 +6320,12 @@ class MachineMadeAxemGreen(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.DEFENSE_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = RoyalSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = RoyalSyrup
 
 
 class MachineMadeAxemGreenHenchman(MachineMadeAxemGreen, Henchman):
@@ -6352,8 +6346,8 @@ class MachineMadeAxemGreenHenchman(MachineMadeAxemGreen, Henchman):
 
     # rewards
     _xp: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = RoyalSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = RoyalSyrup
 
 
 class Starslap(Enemy):
@@ -6371,21 +6365,21 @@ class Starslap(Enemy):
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.KNOCK
     _sound_on_approach: ApproachSound = ApproachSound.STARSLAP_SPIKEY_ENIGMA
-    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.FIRE]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
     _flower_bonus_chance: int = 50
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 2
     _coins: int = 2
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Mukumuku(Enemy):
@@ -6402,20 +6396,20 @@ class Mukumuku(Enemy):
     _magic_evade: int = 80
     _morph_chance: float = 1.0
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[Element] = [Element.THUNDER]
-    _weaknesses: List[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.FIRE]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # rewards
     _xp: int = 8
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = MukuCookie
-    _rare_item_drop: "Type[RegularItem]" = MapleSyrup
+    _yoshi_cookie_item: "type[RegularItem]" = MukuCookie
+    _rare_item_drop: "type[RegularItem]" = MapleSyrup
 
 
 class Zeostar(Enemy):
@@ -6432,22 +6426,22 @@ class Zeostar(Enemy):
     _morph_chance: float = 0.75
     _sound_on_hit: HitSound = HitSound.KNOCK
     _sound_on_approach: ApproachSound = ApproachSound.STARSLAP_SPIKEY_ENIGMA
-    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.FIRE]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ONCE_AGAIN
     _flower_bonus_chance: int = 50
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 10
     _coins: int = 3
-    _yoshi_cookie_item: "Type[RegularItem]" = SleepyBomb
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = SleepyBomb
+    _rare_item_drop: "type[RegularItem]" = Mushroom
 
 
 class Jagger(Enemy):
@@ -6464,17 +6458,17 @@ class Jagger(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.POISON]
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.POISON]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -6491,22 +6485,22 @@ class EmptyEnemy(ShellySupport):
     _speed: int = 255
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # Specific to Shelly
-    _summons: List[int] = [0x28]
-    _summon_event: Union[int, None] = None
+    _summons: list[int] = [0x28]
+    _summon_event: int | None = None
     _sprite_sub: bool = False
-    _formation_id: Union[int, None] = None
+    _formation_id: int | None = None
 
 
 class Smithy2TankHead(Enemy):
@@ -6523,8 +6517,8 @@ class Smithy2TankHead(Enemy):
     _fp: int = 30
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -6535,10 +6529,10 @@ class Smithy2TankHead(Enemy):
     _flower_bonus_chance: int = 30
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     _ratio_hp: float = 8000 / 10000
     _ratio_attack: float = 250 / 186.875
@@ -6575,13 +6569,13 @@ class Smithy2SafeHead(Enemy):
     _magic_defense: int = 100
     _fp: int = 120
     _ohko_immune: bool = True
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.THUNDER,
         Element.FIRE,
         Element.JUMP,
     ]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -6592,7 +6586,7 @@ class Smithy2SafeHead(Enemy):
     _flower_bonus_chance: int = 30
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     _ratio_hp: float = 8000 / 10000
     _ratio_attack: float = 40 / 186.875
@@ -6630,16 +6624,16 @@ class Microbomb(Enemy):
     _magic_defense: int = 10
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _weaknesses: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # boss shuffle attributes
     _ratio_hp: float = 0.025
@@ -6666,16 +6660,16 @@ class Grit(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Neosquid(Enemy):
@@ -6696,17 +6690,17 @@ class Neosquid(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _status_immunities: list[Status] = [Status.SLEEP]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.3636
@@ -6731,8 +6725,8 @@ class YaridovichMirage(Enemy):
     _magic_defense: int = 10
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.CLAW
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -6742,10 +6736,10 @@ class YaridovichMirage(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.3333
@@ -6765,9 +6759,9 @@ class Helio(Enemy):
     _hp: int = 10
     _attack: int = 140
     _fp: int = 100
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -6778,7 +6772,7 @@ class Helio(Enemy):
     _flower_bonus_chance: int = 30
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.0031
@@ -6805,16 +6799,16 @@ class RightEye(Enemy):
     _magic_defense: int = 36
     _fp: int = 200
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.THUNDER]
-    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _resistances: list[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # rewards
     _xp: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.2273
@@ -6860,16 +6854,16 @@ class LeftEye(Enemy):
     _magic_defense: int = 80
     _fp: int = 200
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.THUNDER]
-    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _resistances: list[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # rewards
     _xp: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1364
@@ -6916,9 +6910,9 @@ class KnifeGuy(Enemy):
     _fp: int = 35
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.THUNDER]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _resistances: list[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 80
@@ -6926,7 +6920,7 @@ class KnifeGuy(Enemy):
     # rewards
     _xp: int = 40
     _coins: int = 15
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.44
@@ -6954,9 +6948,9 @@ class GrateGuy(Enemy):
     _fp: int = 50
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 80
@@ -6964,9 +6958,9 @@ class GrateGuy(Enemy):
     # rewards
     _xp: int = 50
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _common_item_drop: "Type[RegularItem]" = FlowerJar
-    _rare_item_drop: "Type[RegularItem]" = FlowerJar
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = FlowerJar
+    _rare_item_drop: "type[RegularItem]" = FlowerJar
 
     # boss shuffle attributes
     _ratio_hp: float = 0.56
@@ -6994,13 +6988,13 @@ class Bundt(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
     ]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7012,7 +7006,7 @@ class Bundt(Enemy):
     # rewards
     # xp = 25
     _xp: int = 23
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.6
@@ -7052,12 +7046,12 @@ class Jinx1(Enemy):
     _magic_evade: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
     ]
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7067,11 +7061,11 @@ class Jinx1(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 75
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -7105,12 +7099,12 @@ class Jinx2(Enemy):
     _magic_evade: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
     ]
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7120,11 +7114,11 @@ class Jinx2(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 100
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -7155,8 +7149,8 @@ class CountDown(Enemy):
     _magic_defense: int = 80
     _fp: int = 100
     _ohko_immune: bool = True
-    _weaknesses: List[Element] = [Element.THUNDER, Element.JUMP]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER, Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7166,12 +7160,12 @@ class CountDown(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 140
     _coins: int = 100
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.5
@@ -7196,8 +7190,8 @@ class DingALing(Henchman):
     _magic_defense: int = 50
     _fp: int = 100
     _ohko_immune: bool = True
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7207,11 +7201,11 @@ class DingALing(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.25
@@ -7238,18 +7232,18 @@ class Belome1(Enemy):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 30
     _coins: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -7284,20 +7278,20 @@ class Belome2(Enemy):
     _magic_evade: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 24
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 80
     _coins: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -7321,8 +7315,8 @@ class Smilax(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7333,10 +7327,10 @@ class Smilax(Enemy):
     _flower_bonus_chance: int = 20
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.0769
@@ -7361,16 +7355,16 @@ class Thrax(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # effect nullification
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _status_immunities: list[Status] = [Status.SLEEP]
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Megasmilax(Enemy):
@@ -7387,8 +7381,8 @@ class Megasmilax(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7399,11 +7393,11 @@ class Megasmilax(Enemy):
     _flower_bonus_chance: int = 30
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 120
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # Boss shuffle attributes
     _anchor: bool = True
@@ -7424,8 +7418,8 @@ class Birdetta(Enemy):
     _magic_defense: int = 100
     _fp: int = 100
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7435,13 +7429,13 @@ class Birdetta(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     # xp = 60
     _xp: int = 48
     _coins: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # Boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -7459,7 +7453,7 @@ class Eggbert(Henchman):
     _attack: int = 210
     _fp: int = 100
     _ohko_immune: bool = True
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7469,13 +7463,13 @@ class Eggbert(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
     # made this up
     _xp: int = 3
 
@@ -7505,9 +7499,9 @@ class AxemYellow(Henchman):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[Element] = [Element.THUNDER]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.POISON,
     ]
@@ -7516,7 +7510,7 @@ class AxemYellow(Henchman):
 
     # rewards
     _xp: int = 30
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1579
@@ -7544,8 +7538,8 @@ class Punchinello(Enemy):
     _fp: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7557,11 +7551,11 @@ class Punchinello(Enemy):
     battle_sesw_only = True
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 70
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -7600,8 +7594,8 @@ class TentaclesRight(Enemy):
     _magic_defense: int = 40
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.SLAP
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
@@ -7609,10 +7603,10 @@ class TentaclesRight(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.0985
@@ -7639,9 +7633,9 @@ class AxemRed(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.FEAR,
     ]
@@ -7650,7 +7644,7 @@ class AxemRed(Enemy):
 
     # rewards
     _xp: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.2106
@@ -7679,8 +7673,8 @@ class AxemGreen(Henchman):
     _magic_evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
@@ -7688,11 +7682,11 @@ class AxemGreen(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 20
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1185
@@ -7717,8 +7711,8 @@ class KingBomb(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7728,10 +7722,10 @@ class KingBomb(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.3125
@@ -7768,16 +7762,16 @@ class MezzoBomb(Enemy):
     _magic_defense: int = 10
     _fp: int = 100
     _sound_on_hit: HitSound = HitSound.SMASH
-    _weaknesses: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _weaknesses: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.125
@@ -7805,13 +7799,13 @@ class Raspberry(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
     ]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7822,7 +7816,7 @@ class Raspberry(Enemy):
     # rewards
     # xp = 50
     _xp: int = 46
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4
@@ -7861,8 +7855,8 @@ class KingCalamari(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.DEEP_JAB
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7872,12 +7866,12 @@ class KingCalamari(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 100
     _coins: int = 100
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # Boss shuffle attributes
     _anchor: bool = True
@@ -7899,8 +7893,8 @@ class TentaclesLeft(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SLAP
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
@@ -7908,10 +7902,10 @@ class TentaclesLeft(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.0758
@@ -7938,12 +7932,12 @@ class Jinx3(Enemy):
     _magic_evade: int = 25
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
     ]
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -7953,11 +7947,11 @@ class Jinx3(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 150
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -7994,9 +7988,9 @@ class Zombone(Enemy):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.ICE, Element.FIRE]
-    _weaknesses: List[Element] = [Element.THUNDER, Element.JUMP]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.ICE, Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.JUMP]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.POISON,
         Status.FEAR,
@@ -8007,7 +8001,7 @@ class Zombone(Enemy):
 
     # rewards
     _xp: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.5625
@@ -8036,16 +8030,16 @@ class CzarDragon(Enemy):
     _evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.FIRE]
-    _weaknesses: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _resistances: list[Element] = [Element.FIRE]
+    _weaknesses: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 20
 
     # rewards
     _xp: int = 100
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4375
@@ -8075,7 +8069,7 @@ class Cloaker(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8086,14 +8080,14 @@ class Cloaker(Enemy):
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 60
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.3934
@@ -8119,7 +8113,7 @@ class Domino(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8130,14 +8124,14 @@ class Domino(Enemy):
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 60
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.2951
@@ -8163,7 +8157,7 @@ class MadAdder(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8173,16 +8167,16 @@ class MadAdder(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 200
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _common_item_drop: "Type[RegularItem]" = Crystalline
-    _rare_item_drop: "Type[RegularItem]" = Crystalline
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = Crystalline
+    _rare_item_drop: "type[RegularItem]" = Crystalline
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4918
@@ -8208,8 +8202,8 @@ class Mack(Enemy):
     _fp: int = 28
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8219,14 +8213,14 @@ class Mack(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     # xp = 24
     _xp: int = 12
     # coins = 20
     _coins: int = 12
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # Boss shuffle attributes
     _anchor: bool = True
@@ -8249,7 +8243,7 @@ class Bodyguard(Henchman):
     _fp: int = 3
     _evade: int = 10
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8259,13 +8253,13 @@ class Bodyguard(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.HP_MAX
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # Boss shuffle attributes
     _ratio_hp: float = 0.05
@@ -8297,8 +8291,8 @@ class Yaridovich(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8308,12 +8302,12 @@ class Yaridovich(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 120
     _coins: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -8335,7 +8329,7 @@ class DrillBit(Henchman):
     _magic_attack: int = 40
     _magic_defense: int = 56
     _fp: int = 100
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8348,13 +8342,13 @@ class DrillBit(Henchman):
     # rewards
     _xp: int = 11
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # boss shuffle attributes
     _ratio_hp: float = 0.04
@@ -8379,7 +8373,7 @@ class YaridovichDrillBit(Henchman):
     _magic_attack: int = 40
     _magic_defense: int = 56
     _fp: int = 100
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8392,7 +8386,7 @@ class YaridovichDrillBit(Henchman):
     # rewards
     _xp: int = 11
     _coins: int = 1
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     # Attuned to ratio of machine made drill bit to machine made yarid.
@@ -8421,9 +8415,9 @@ class AxemPink(Henchman):
     _magic_evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _resistances: List[Element] = [Element.ICE]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
@@ -8432,7 +8426,7 @@ class AxemPink(Henchman):
 
     # rewards
     _xp: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1053
@@ -8461,8 +8455,8 @@ class AxemBlack(Henchman):
     _evade: int = 30
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.FEAR,
     ]
@@ -8470,11 +8464,11 @@ class AxemBlack(Henchman):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 40
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.1448
@@ -8502,7 +8496,7 @@ class Bowyer(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8512,17 +8506,17 @@ class Bowyer(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 60
     _coins: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _common_item_drop: "Type[RegularItem]" = FlowerBox
-    _rare_item_drop: "Type[RegularItem]" = FlowerBox
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = FlowerBox
+    _rare_item_drop: "type[RegularItem]" = FlowerBox
 
     _sprite: int = 688
 
@@ -8540,7 +8534,7 @@ class AeroBowyer(Henchman):
     _magic_attack: int = 1
     _magic_defense: int = 10
     _fp: int = 100
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8551,14 +8545,14 @@ class AeroBowyer(Henchman):
     _flower_bonus_chance: int = 40
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 4
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.125
@@ -8585,7 +8579,7 @@ class AeroSmithy(Henchman):
     _magic_attack: int = 66
     _magic_defense: int = 45
     _fp: int = 100
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8596,14 +8590,14 @@ class AeroSmithy(Henchman):
     _flower_bonus_chance: int = 40
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 28
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.075
@@ -8627,8 +8621,8 @@ class Exor(Enemy):
     _defense: int = 120
     _magic_defense: int = 80
     _ohko_immune: bool = True
-    _resistances: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8639,11 +8633,11 @@ class Exor(Enemy):
     _flower_bonus_chance: int = 30
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 100
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.8182
@@ -8680,7 +8674,7 @@ class Smithy1(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8690,13 +8684,13 @@ class Smithy1(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     _ratio_hp: float = 2000 / 10000
     _ratio_attack: float = 230 / 186.875
@@ -8720,7 +8714,7 @@ class Shyper(Enemy):
     _evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.KNOCK
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8730,13 +8724,13 @@ class Shyper(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Smithy2Body(Enemy):
@@ -8753,7 +8747,7 @@ class Smithy2Body(Enemy):
     _fp: int = 50
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8763,13 +8757,13 @@ class Smithy2Body(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     _ratio_hp: float = 1000 / 10000
     _ratio_attack: float = 180 / 186.875
@@ -8792,7 +8786,7 @@ class Smithy2Head(Enemy):
     _fp: int = 50
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8803,13 +8797,13 @@ class Smithy2Head(Enemy):
     _flower_bonus_chance: int = 30
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     _ratio_hp: float = 8000 / 10000
     _ratio_attack: float = 180 / 186.875
@@ -8848,12 +8842,12 @@ class Smithy2MageHead(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [
+    _resistances: list[Element] = [
         Element.ICE,
         Element.THUNDER,
         Element.FIRE,
     ]
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8864,10 +8858,10 @@ class Smithy2MageHead(Enemy):
     _flower_bonus_chance: int = 30
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     _ratio_hp: float = 8000 / 10000
     _ratio_attack: float = 135 / 186.875
@@ -8906,9 +8900,9 @@ class Smithy2ChestHead(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _resistances: List[Element] = [Element.THUNDER]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.THUNDER]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -8919,7 +8913,7 @@ class Smithy2ChestHead(Enemy):
     _flower_bonus_chance: int = 30
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     _ratio_hp: float = 8000 / 10000
     _ratio_attack: float = 150 / 186.875
@@ -8959,8 +8953,8 @@ class Croco1(Enemy):
     _evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.MUSHROOM,
         Status.SCARECROW,
@@ -8969,14 +8963,14 @@ class Croco1(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 16
     _coins: int = 10
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _common_item_drop: "Type[RegularItem]" = FlowerTab
-    _rare_item_drop: "Type[RegularItem]" = FlowerTab
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = FlowerTab
+    _rare_item_drop: "type[RegularItem]" = FlowerTab
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -9010,8 +9004,8 @@ class Croco2(Enemy):
     _evade: int = 20
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _weaknesses: List[Element] = [Element.FIRE]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [
         Status.SLEEP,
         Status.MUSHROOM,
         Status.SCARECROW,
@@ -9020,13 +9014,13 @@ class Croco2(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 30
     _coins: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = FlowerBox
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = FlowerBox
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -9058,7 +9052,7 @@ class Earthlink(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -9068,16 +9062,16 @@ class Earthlink(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 200
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _common_item_drop: "Type[RegularItem]" = PowerBlast
-    _rare_item_drop: "Type[RegularItem]" = PowerBlast
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _common_item_drop: "type[RegularItem]" = PowerBlast
+    _rare_item_drop: "type[RegularItem]" = PowerBlast
 
     # boss shuffle attributes
     _ratio_hp: float = 0.8197
@@ -9102,8 +9096,8 @@ class AxemRangers(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
-    _weaknesses: List[Element] = [Element.THUNDER]
-    _status_immunities: List[Status] = [
+    _weaknesses: list[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -9113,11 +9107,11 @@ class AxemRangers(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.263
@@ -9146,19 +9140,19 @@ class Booster(Enemy):
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.SMASH
     _sound_on_approach: ApproachSound = ApproachSound.AMANITA_TERRAPIN
-    _weaknesses: List[Element] = [Element.JUMP]
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _weaknesses: list[Element] = [Element.JUMP]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 16
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 60
     _coins: int = 100
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = FlowerBox
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = FlowerBox
 
     # Boss shuffle attributes
     _anchor: bool = True
@@ -9190,16 +9184,16 @@ class Booster2(Enemy):
     _flower_bonus_chance: int = 40
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
 
 class Snifit(Enemy):
@@ -9215,22 +9209,22 @@ class Snifit(Enemy):
     _magic_defense: int = 20
     _fp: int = 32
     _sound_on_hit: HitSound = HitSound.PUNCH
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
     _palette: int = 8
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.LUCKY
     _flower_bonus_chance: int = 80
 
     # effect nullification
-    _status_immunities: List[Status] = []
+    _status_immunities: list[Status] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 2
     _coins: int = 15
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = Mushroom
 
 
 class SnifitHenchman(Snifit, Henchman):
@@ -9250,8 +9244,8 @@ class SnifitHenchman(Snifit, Henchman):
     _ratio_magic_evade: float = 0.0
     _xp: int = 2
     _coins: int = 15
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
-    _rare_item_drop: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
+    _rare_item_drop: "type[RegularItem]" = Mushroom
 
 
 class Johnny(Enemy):
@@ -9268,21 +9262,21 @@ class Johnny(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _status_immunities: list[Status] = [Status.SLEEP]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
     _flower_bonus_chance: int = 40
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 90
     _coins: int = 50
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0
@@ -9315,16 +9309,16 @@ class JohnnySolo(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.POISON]
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.POISON]
     _palette: int = 32
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.4878
@@ -9353,8 +9347,8 @@ class Valentina(Enemy):
     _evade: int = 10
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _resistances: List[Element] = [Element.ICE]
-    _status_immunities: List[Status] = [
+    _resistances: list[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -9365,12 +9359,12 @@ class Valentina(Enemy):
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # rewards
     _xp: int = 120
     _coins: int = 200
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # Boss shuffle attributes
     _anchor: bool = True
@@ -9404,7 +9398,7 @@ class Cloaker2(Enemy):
     _fp: int = 100
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.JAB
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -9415,14 +9409,14 @@ class Cloaker2(Enemy):
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 60
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.3934
@@ -9448,7 +9442,7 @@ class Domino2(Enemy):
     _fp: int = 250
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.PIERCE
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -9459,14 +9453,14 @@ class Domino2(Enemy):
     _flower_bonus_chance: int = 20
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 60
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 0.2951
@@ -9485,7 +9479,7 @@ class Candle(Enemy):
     _boss: bool = True
     _hp: int = 10
     _fp: int = 100
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -9495,13 +9489,13 @@ class Candle(Enemy):
     _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
 
     # rewards
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
 
 class Culex(Enemy):
@@ -9518,7 +9512,7 @@ class Culex(Enemy):
     _fp: int = 200
     _ohko_immune: bool = True
     _sound_on_hit: HitSound = HitSound.CLAW
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -9529,14 +9523,14 @@ class Culex(Enemy):
     _flower_bonus_chance: int = 10
 
     # element weaknesses
-    _weaknesses: List[Element] = []
+    _weaknesses: list[Element] = []
 
     # element resistances
-    _resistances: List[Element] = []
+    _resistances: list[Element] = []
 
     # rewards
     _xp: int = 600
-    _yoshi_cookie_item: "Type[RegularItem]" = Mushroom
+    _yoshi_cookie_item: "type[RegularItem]" = Mushroom
 
     # boss shuffle attributes
     _ratio_hp: float = 1.0

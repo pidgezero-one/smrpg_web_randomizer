@@ -36,6 +36,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

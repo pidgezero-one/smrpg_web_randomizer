@@ -14,8 +14,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO, subscript=[ASShiftZDownPixels(1), ASResetProperties()]
         ),

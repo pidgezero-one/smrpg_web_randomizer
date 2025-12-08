@@ -28,8 +28,7 @@ script = EventScript(
                 ASPause(20),
                 ASSetSolidityBits(cant_jump_through=True),
             ],
-            identifier="EVENT_3413_action_queue_sync_15",
-        ),
+            identifier="EVENT_3413_action_queue_sync_15"),
         ClearBit(TEMP_7043_0),
         Return(identifier="EVENT_3413_r"),
     ]

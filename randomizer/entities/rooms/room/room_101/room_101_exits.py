@@ -16,8 +16,7 @@ exits = [
         destination=OW25_BOOSTER_PASS,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
     RoomExit(
         x=1,
         y=122,
@@ -35,6 +34,5 @@ exits = [
         dst_z=8,
         dst_z_half=False,
         dst_f=SOUTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
 ]

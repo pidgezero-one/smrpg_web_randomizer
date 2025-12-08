@@ -37,5 +37,4 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntilAMEMBitsSet(0x6F, [0]),
         AttackTimerBegins(),
         ReturnSubroutine(),
-    ],
-)
+    ])

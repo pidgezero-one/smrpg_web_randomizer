@@ -50,8 +50,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=9,
             y=94,
@@ -69,8 +68,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=16,
             y=77,
@@ -88,8 +86,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -122,8 +119,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 1
             occupant=npcs.Croco,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -155,7 +151,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

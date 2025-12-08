@@ -14,8 +14,7 @@ script = EventScript(
             subscript=[
                 ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
-            ],
-        ),
+            ]),
         Pause(1),
         Set7000ToPressedButton(),
         JmpIf7000AllBitsClear(
@@ -37,8 +36,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBSelected(["EVENT_3212_pause_action_script_19"]),
         RunDialog(
             dialog_id=DI1657_3D_MAZE_OVERLAY,
@@ -46,8 +44,7 @@ script = EventScript(
             closable=False,
             sync=True,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Jmp(["EVENT_3212_pause_action_script_0"]),
         PauseActionScript(NPC_2, identifier="EVENT_3212_pause_action_script_19"),
         RemoveObjectFromCurrentLevel(NPC_2),
@@ -56,16 +53,14 @@ script = EventScript(
             subscript=[
                 ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6]),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
-            ],
-        ),
+            ]),
         EnterArea(
             room_id=R168_SUNKEN_SHIP_PUZZLE_ROOM_3,
             face_direction=NORTHWEST,
             x=31,
             y=116,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

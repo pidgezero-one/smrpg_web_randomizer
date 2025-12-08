@@ -20,8 +20,7 @@ exits = [
         dst_z=5,
         dst_z_half=False,
         dst_f=SOUTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=6,
         y=87,
@@ -39,8 +38,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=SOUTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=9,
         y=73,
@@ -58,6 +56,5 @@ exits = [
         dst_z=5,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
 ]

@@ -15,34 +15,29 @@ script = EventScript(
             use_alternate=True,
             room_id=R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM,
             mod_id=0,
-            identifier="EVENT_2544_apply_tile_mod_10",
-        ),
+            identifier="EVENT_2544_apply_tile_mod_10"),
         ActionQueueSync(
             target=MARIO,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASJmpIfBitClear(
                     TEMP_7043_0,
-                    ["EVENT_2544_action_queue_sync_11_SUBSCRIPT_shift_z_up_steps_4"],
-                ),
+                    ["EVENT_2544_action_queue_sync_11_SUBSCRIPT_shift_z_up_steps_4"]),
                 ASWalkNorthwestPixels(8),
                 ASFaceSouth(),
                 ASShiftZUpSteps(
                     11,
-                    identifier="EVENT_2544_action_queue_sync_11_SUBSCRIPT_shift_z_up_steps_4",
-                ),
+                    identifier="EVENT_2544_action_queue_sync_11_SUBSCRIPT_shift_z_up_steps_4"),
                 ASSetWalkingSpeed(NORMAL),
                 ASClearBit(TEMP_7043_0),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASSetPriority(3),
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkNorthPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -50,8 +45,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(8),
                 ASFaceNortheast(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -61,8 +55,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=MARIO,
@@ -76,8 +69,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
                 ASPause(24),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         Return(),
     ]

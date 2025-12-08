@@ -16,8 +16,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=14, y=9, z=18, direction=EAST),
                 ASJumpToHeight(height=0, silent=True),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True),
         Return(),
         FadeInFromBlack(sync=False, identifier="EVENT_1892_fade_in_from_black_async_6"),

@@ -36,8 +36,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=Thrax,
@@ -53,8 +52,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=Thrax,
@@ -70,8 +68,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Thrax,
@@ -87,8 +84,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Thrax,
@@ -104,8 +100,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Thrax,
@@ -121,8 +116,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         vram_size=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=Smilax,
@@ -155,8 +149,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=Smilax,
@@ -171,8 +164,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularClone(
         occupant=Smilax,
@@ -187,8 +179,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=Smilax,
@@ -203,8 +194,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularClone(
         occupant=Smilax,
@@ -219,8 +209,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularClone(
         occupant=Smilax,
@@ -235,8 +224,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     BattlePackNPC(
         occupant=ShyAway,
@@ -271,8 +259,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=4,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     ChestNPC(
         occupant=TreasureChest,
@@ -308,8 +295,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_14
     RegularNPC(
         occupant=SavePoint,
@@ -342,6 +328,5 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

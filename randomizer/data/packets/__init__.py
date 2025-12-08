@@ -258,5 +258,4 @@ from .packets import (
     P253_UNUSED,
     P254_UNUSED,
     P255_UNUSED,
-    ALL_PACKETS,
-)
+    ALL_PACKETS)

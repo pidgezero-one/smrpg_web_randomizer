@@ -14,5 +14,4 @@ script = SubroutineOrBanklessScript(
         Set7E1xToAMEM8Bit(0x7EE000, 0x6A, identifier="command_0x2f513"),
         Db(bytearray(b"G\x08\x1e\xf5")),
         Jmp(["command_0x2f4f5"]),
-    ],
-)
+    ])

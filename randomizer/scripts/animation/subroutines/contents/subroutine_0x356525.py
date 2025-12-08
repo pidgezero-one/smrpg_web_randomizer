@@ -16,8 +16,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         EnableSpritesOnSubscreen(),
         NewSpriteAtCoords(
             sprite_id=SPR0790_PLASM_WATER_DROPLET_BLUE_GREEN,
@@ -27,8 +26,7 @@ script = SubroutineOrBanklessScript(
             palette_row=8,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         VisibilityOn(),
         PlaySound(sound=S0068_RECOVER_DRINK),
         ClearAMEM8Bit(0x68),
@@ -58,5 +56,4 @@ script = SubroutineOrBanklessScript(
         JmpIfAMEM8BitNotEqualsConst(0x69, 10, ["command_0x356595"]),
         DisableSpritesOnSubscreen(),
         Jmp(["command_0x356b01"]),
-    ],
-)
+    ])

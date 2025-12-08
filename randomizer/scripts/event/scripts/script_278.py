@@ -22,8 +22,7 @@ script = EventScript(
                 ASJmpIfVarEqualsConst(PRIMARY_TEMP_700C, 0, ["EVENT_278_ret_1"]),
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_278_ret_1"),
     ]
 )

@@ -10,8 +10,7 @@ script = EventScript(
         JmpIfBitSet(
             BEETLEMANIA_UNLOCKED,
             ["EVENT_351_run_dialog_42"],
-            identifier="EVENT_351_jmp_if_bit_set_0",
-        ),
+            identifier="EVENT_351_jmp_if_bit_set_0"),
         JmpIfRandom1of2(["EVENT_351_run_dialog_7"]),
         RunDialog(
             dialog_id=DI3733_GAMEBOY_KID,
@@ -19,8 +18,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI3732_GAMEBOY_KID,
@@ -29,14 +27,12 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_351_run_dialog_7",
-        ),
+            identifier="EVENT_351_run_dialog_7"),
         Return(),
         JmpIfBitSet(
             STAR_PIECE_GRANT_DIRECTIONAL_BIT,
             ["EVENT_351_jmp_if_bit_set_0"],
-            identifier="EVENT_351_jmp_if_bit_set_0_",
-        ),
+            identifier="EVENT_351_jmp_if_bit_set_0_"),
         ActionQueueAsync(
             target=MEM_70A8,
             subscript=[
@@ -48,8 +44,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASTransferXYZFPixels(x=4, y=0, z=0, direction=EAST),
                 ASJmp(["EVENT_351_run_event_as_subroutine_29"]),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(
             E3587_SET_70AE_TO_70A8, identifier="EVENT_351_run_event_as_subroutine_29"
         ),
@@ -59,8 +54,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(["EVENT_351_pause_52"]),
         Pause(10),
         SetAsyncActionScript(MARIO, A0670_NOD_YES),
@@ -80,8 +74,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_351_run_dialog_42",
-        ),
+            identifier="EVENT_351_run_dialog_42"),
         JmpIfDialogOptionBSelected(["EVENT_351_pause_48"]),
         Pause(10),
         SetAsyncActionScript(MARIO, A0670_NOD_YES),
@@ -91,8 +84,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Jmp(["EVENT_351_action_queue_async_58"]),
         Pause(10, identifier="EVENT_351_pause_48"),
         SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
@@ -107,8 +99,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_351_run_dialog_56",
-        ),
+            identifier="EVENT_351_run_dialog_56"),
         Jmp(["EVENT_351_action_queue_async_58"]),
         ActionQueueAsync(
             target=MEM_70A8,
@@ -122,8 +113,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
             ],
-            identifier="EVENT_351_action_queue_async_58",
-        ),
+            identifier="EVENT_351_action_queue_async_58"),
         Return(),
     ]
 )

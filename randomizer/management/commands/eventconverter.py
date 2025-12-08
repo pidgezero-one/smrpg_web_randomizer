@@ -19,8 +19,7 @@ from randomizer.data.actionscripts.actions import scripts as a_scripts
 from randomizer.types.overworld_scripts.action_scripts.commands.commands import *
 
 from randomizer.management.disassembler_common import (
-    writeline,
-)
+    writeline)
 
 import sys, re
 

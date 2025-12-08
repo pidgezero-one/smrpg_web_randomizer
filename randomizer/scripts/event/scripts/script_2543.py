@@ -14,8 +14,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftZUpSteps(11),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=MARIO,
@@ -28,8 +27,7 @@ script = EventScript(
                     ["EVENT_2543_action_queue_async_11_SUBSCRIPT_pause_1"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         Return(),
     ]

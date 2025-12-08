@@ -28,8 +28,7 @@ from .enums import (
     ShopQualities,
     ShuffleLocationSelector,
     WinConditions,
-    YaridovichGating,
-)
+    YaridovichGating)
 
 
 REGULAR_CHECKS = [  # excludes key item checks. can't turn those off

@@ -22,5 +22,4 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
         ResetObjectMappingMemory(),
         ReturnSubroutine(),
-    ],
-)
+    ])

@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI0861_GARDENER_HIDDEN_ITEM_HINT,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_570_run_dialog_0",
-        ),
+            identifier="EVENT_570_run_dialog_0"),
         Return(),
     ]
 )

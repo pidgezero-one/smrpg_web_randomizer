@@ -9,8 +9,7 @@ script = ActionScript(
         FixedFCoordOn(),
         JmpIfRandom2of3(
             ["ACTION_717_pause_6", "ACTION_717_pause_9"],
-            identifier="ACTION_717_jmp_if_random_above_66_3",
-        ),
+            identifier="ACTION_717_jmp_if_random_above_66_3"),
         Pause(30),
         Jmp(["ACTION_717_jmp_if_random_above_66_3"]),
         Pause(30, identifier="ACTION_717_pause_6"),

@@ -30,26 +30,22 @@ script = EventScript(
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=SECONDARY_TEMP_7024,
-            identifier="EVENT_3210_set_7000_short_mem_to_7000_15",
-        ),
+            identifier="EVENT_3210_set_7000_short_mem_to_7000_15"),
         Jmp(["EVENT_3210_jmp_if_bit_clear_21"]),
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=TEMP_7026,
-            identifier="EVENT_3210_set_7000_short_mem_to_7000_17",
-        ),
+            identifier="EVENT_3210_set_7000_short_mem_to_7000_17"),
         Jmp(["EVENT_3210_jmp_if_bit_clear_21"]),
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=TEMP_7028,
-            identifier="EVENT_3210_set_7000_short_mem_to_7000_19",
-        ),
+            identifier="EVENT_3210_set_7000_short_mem_to_7000_19"),
         Jmp(["EVENT_3210_jmp_if_bit_clear_21"]),
         JmpIfBitClear(
             TEMP_7043_0,
             ["EVENT_3210_ret_72"],
-            identifier="EVENT_3210_jmp_if_bit_clear_21",
-        ),
+            identifier="EVENT_3210_jmp_if_bit_clear_21"),
         JmpIfBitClear(TEMP_7043_1, ["EVENT_3210_ret_72"]),
         JmpIfBitClear(TEMP_7043_2, ["EVENT_3210_ret_72"]),
         ActionQueueAsync(
@@ -57,8 +53,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASBounceToXYWithHeight(x=0, y=103, height=10),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -70,16 +65,13 @@ script = EventScript(
                 ASFloatingOn(),
                 ASWalkNortheastPixels(
                     1,
-                    identifier="EVENT_3210_action_queue_async_25_SUBSCRIPT_shift_northeast_pixels_6",
-                ),
+                    identifier="EVENT_3210_action_queue_async_25_SUBSCRIPT_shift_northeast_pixels_6"),
                 ASJmpIfObjectInAir(
                     DUMMY_0X07,
                     [
                         "EVENT_3210_action_queue_async_25_SUBSCRIPT_shift_northeast_pixels_6"
-                    ],
-                ),
-            ],
-        ),
+                    ]),
+            ]),
         Set7000ToObjectCoord(target_npc=NPC_7, coord=COORD_X, pixel=True),
         DecVarFrom7000(SECONDARY_TEMP_7024),
         JmpIfLoadedMemoryIsBelow0(["EVENT_3210_mem_compare_val_31"]),
@@ -95,8 +87,7 @@ script = EventScript(
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=False),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(3)]),
         ActionQueueAsync(
             target=NPC_7,
@@ -113,16 +104,13 @@ script = EventScript(
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASWalkNortheastPixels(
                     1,
-                    identifier="EVENT_3210_action_queue_async_35_SUBSCRIPT_shift_northeast_pixels_10",
-                ),
+                    identifier="EVENT_3210_action_queue_async_35_SUBSCRIPT_shift_northeast_pixels_10"),
                 ASJmpIfObjectInAir(
                     DUMMY_0X07,
                     [
                         "EVENT_3210_action_queue_async_35_SUBSCRIPT_shift_northeast_pixels_10"
-                    ],
-                ),
-            ],
-        ),
+                    ]),
+            ]),
         Set7000ToObjectCoord(target_npc=NPC_7, coord=COORD_X, pixel=True),
         DecVarFrom7000(TEMP_7026),
         JmpIfLoadedMemoryIsBelow0(["EVENT_3210_mem_compare_val_41"]),
@@ -138,8 +126,7 @@ script = EventScript(
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=False),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(3)]),
         ActionQueueAsync(
             target=NPC_7,
@@ -156,16 +143,13 @@ script = EventScript(
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASWalkNortheastPixels(
                     1,
-                    identifier="EVENT_3210_action_queue_async_45_SUBSCRIPT_shift_northeast_pixels_10",
-                ),
+                    identifier="EVENT_3210_action_queue_async_45_SUBSCRIPT_shift_northeast_pixels_10"),
                 ASJmpIfObjectInAir(
                     DUMMY_0X07,
                     [
                         "EVENT_3210_action_queue_async_45_SUBSCRIPT_shift_northeast_pixels_10"
-                    ],
-                ),
-            ],
-        ),
+                    ]),
+            ]),
         Set7000ToObjectCoord(target_npc=NPC_7, coord=COORD_X, pixel=True),
         DecVarFrom7000(TEMP_7028),
         JmpIfLoadedMemoryIsBelow0(["EVENT_3210_mem_compare_val_51"]),
@@ -181,8 +165,7 @@ script = EventScript(
                 ASSetSequenceSpeed(VERY_FAST),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=False),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=4),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(3)]),
         ActionQueueAsync(
             target=NPC_7,
@@ -199,16 +182,13 @@ script = EventScript(
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASWalkNortheastPixels(
                     1,
-                    identifier="EVENT_3210_action_queue_async_55_SUBSCRIPT_shift_northeast_pixels_10",
-                ),
+                    identifier="EVENT_3210_action_queue_async_55_SUBSCRIPT_shift_northeast_pixels_10"),
                 ASJmpIfObjectInAir(
                     DUMMY_0X07,
                     [
                         "EVENT_3210_action_queue_async_55_SUBSCRIPT_shift_northeast_pixels_10"
-                    ],
-                ),
-            ],
-        ),
+                    ]),
+            ]),
         JmpIfObjectsAreLessThanXYStepsApartSameZCoord(
             NPC_7, NPC_6, 0, 1, ["EVENT_3210_set_bit_58"]
         ),
@@ -239,13 +219,11 @@ script = EventScript(
                 ASAddConstToVar(
                     Y_COORD_2,
                     65520,
-                    identifier="EVENT_3210_action_queue_async_71_SUBSCRIPT_add_short_5",
-                ),
+                    identifier="EVENT_3210_action_queue_async_71_SUBSCRIPT_add_short_5"),
                 ASDb(bytearray(b"\x98")),
                 ASSetWalkingSpeed(NORMAL),
             ],
-            identifier="EVENT_3210_action_queue_async_71",
-        ),
+            identifier="EVENT_3210_action_queue_async_71"),
         Return(identifier="EVENT_3210_ret_72"),
         ActionQueueSync(
             target=NPC_7,
@@ -258,8 +236,7 @@ script = EventScript(
                 ASPause(8),
                 ASVisibilityOff(),
             ],
-            identifier="EVENT_3210_action_queue_sync_73",
-        ),
+            identifier="EVENT_3210_action_queue_sync_73"),
         ResumeActionScript(NPC_0),
         ResumeActionScript(NPC_1),
         ResumeActionScript(NPC_2),

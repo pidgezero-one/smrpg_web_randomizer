@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=22,
             y=123,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E3778_BALL_SOLITAIRE_SET_PUZZLE),
     ]
 )

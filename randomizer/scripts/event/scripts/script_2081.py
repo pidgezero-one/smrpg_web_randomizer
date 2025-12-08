@@ -18,8 +18,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=13, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         SetVarToConst(ITEM_ID, BigBooFlag),
         StoreItemAt70A7QuantityTo7000(),
         JmpIfVarEqualsConst(
@@ -43,8 +42,7 @@ script = EventScript(
         RunBackgroundEventWithPause(
             event_id=E3075_HEAL_FLASH,
             timer_var=TIMER_7022,
-            identifier="EVENT_2081_run_background_event_with_pause_1",
-        ),
+            identifier="EVENT_2081_run_background_event_with_pause_1"),
         PlaySound(sound=SO071_MUSHROOM_CURE, channel=6),
         RestoreAllHP(),
         RestoreAllFP(),
@@ -52,8 +50,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_0,
             subscript=[ASResetProperties()],
-            identifier="EVENT_2081_action_queue_async_2_",
-        ),
+            identifier="EVENT_2081_action_queue_async_2_"),
         Return(),
     ]
 )

@@ -335,8 +335,7 @@ class ObjectSequenceScript:
         byte12,
         byte13,
         byte14,
-        byte15,
-    ):
+        byte15):
         self.append_byte(location)
         self.append_byte(byte1)
         self.append_byte(byte2)

@@ -12,8 +12,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASBounceToXYWithHeight(x=24, y=44, height=8),
                 ASFaceMario(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceSouthwest7D()]),
         RunDialog(
             dialog_id=DI1136_TOUCH_MINECART,
@@ -21,16 +20,14 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASSetAllSpeeds(SLOW),
                 ASBounceToXYWithHeight(x=25, y=40, height=8),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

@@ -25,8 +25,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Db(bytearray(b"\xfd\x8e2\x02\x07")),
         SetVarToConst(PRIMARY_TEMP_7000, 9),
         JmpToSubroutine(["EVENT_3355_play_music_default_volume_93"]),
@@ -45,13 +44,11 @@ script = EventScript(
         Jmp(["EVENT_3355_pause_38"]),
         JmpIfDialogOptionBOrCSelected(
             ["EVENT_3355_pause_38", "EVENT_3355_play_sound_28"],
-            identifier="EVENT_3355_jmp_if_dialog_option_b_or_c_24",
-        ),
+            identifier="EVENT_3355_jmp_if_dialog_option_b_or_c_24"),
         Jmp(["EVENT_3355_play_sound_28"]),
         JmpIfDialogOptionBOrCSelected(
             ["EVENT_3355_play_sound_28", "EVENT_3355_pause_38"],
-            identifier="EVENT_3355_jmp_if_dialog_option_b_or_c_26",
-        ),
+            identifier="EVENT_3355_jmp_if_dialog_option_b_or_c_26"),
         Jmp(["EVENT_3355_play_sound_28"]),
         PlaySound(
             sound=SO088_WRONG_SIGNAL, channel=4, identifier="EVENT_3355_play_sound_28"
@@ -64,8 +61,7 @@ script = EventScript(
                     index=12, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASPause(2),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7044_7),
         SetSyncActionScript(
             NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS
@@ -76,8 +72,7 @@ script = EventScript(
             closable=True,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetBit(TEMP_7044_7),
         Pause(240),
         FadeOutToBlack(sync=False),
@@ -105,8 +100,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASShiftZUpSteps(8),
                 ASWalkToXYCoords(x=11, y=42),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -117,12 +111,10 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(48),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -144,8 +136,7 @@ script = EventScript(
                 ASPause(4),
                 ASEndLoop(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -155,8 +146,7 @@ script = EventScript(
                 ASWalk1StepNortheast(),
                 ASSetWalkingSpeed(SLOW),
                 ASShiftZUpSteps(2),
-            ],
-        ),
+            ]),
         Pause(8),
         SetVarToConst(SECONDARY_TEMP_7024, 43),
         SetVarToConst(TEMP_7026, 26),
@@ -168,8 +158,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Db(bytearray(b"\xfd\x8e2\x02\x07")),
         SetVarToConst(PRIMARY_TEMP_7000, 19),
         JmpToSubroutine(["EVENT_3355_play_music_default_volume_93"]),
@@ -188,13 +177,11 @@ script = EventScript(
         Jmp(["EVENT_3355_pause_69"]),
         JmpIfDialogOptionBOrCSelected(
             ["EVENT_3355_pause_69", "EVENT_3355_play_sound_28"],
-            identifier="EVENT_3355_jmp_if_dialog_option_b_or_c_65",
-        ),
+            identifier="EVENT_3355_jmp_if_dialog_option_b_or_c_65"),
         Jmp(["EVENT_3355_play_sound_28"]),
         JmpIfDialogOptionBOrCSelected(
             ["EVENT_3355_play_sound_28", "EVENT_3355_pause_69"],
-            identifier="EVENT_3355_jmp_if_dialog_option_b_or_c_67",
-        ),
+            identifier="EVENT_3355_jmp_if_dialog_option_b_or_c_67"),
         Jmp(["EVENT_3355_play_sound_28"]),
         Pause(4, identifier="EVENT_3355_pause_69"),
         PlaySound(sound=SO087_CORRECT_SIGNAL, channel=6),
@@ -215,8 +202,7 @@ script = EventScript(
                 ASPause(2),
                 ASEndLoop(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -224,14 +210,12 @@ script = EventScript(
                 ASWalk1StepSoutheast(),
                 ASWalkNortheastSteps(7),
                 ASWalk1StepSoutheast(),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO016_OPEN_DOOR, channel=4),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R463_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1B_BARRELCOUNTING,
-            mod_id=0,
-        ),
+            mod_id=0),
         ActionQueueAsync(
             target=MARIO, subscript=[ASJumpToHeight(48), ASWalk1StepNortheast()]
         ),
@@ -240,8 +224,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=TEMP_7026,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3355_set_7000_to_7000_short_mem_84",
-        ),
+            identifier="EVENT_3355_set_7000_to_7000_short_mem_84"),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70A9),
         SetObjectMemoryToVar(TEMP_7028),
         JmpIfRandom1of2(["EVENT_3355_end_loop_91"]),
@@ -275,8 +258,7 @@ script = EventScript(
             closable=False,
             sync=True,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Pause(30),
         SetBit(TEMP_7044_7),
         JmpIfVarEqualsConst(SECONDARY_TEMP_7024, 0, ["EVENT_3355_end_loop_105"]),
@@ -299,8 +281,7 @@ script = EventScript(
             closable=False,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         PauseScriptResumeOnNextDialogPageB(),
         SetBit(TEMP_7044_7),
         CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
@@ -317,8 +298,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Inc(PRIMARY_TEMP_7000),
         RunDialog(
             dialog_id=DI1893_DUPLICATE,
@@ -326,8 +306,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Inc(PRIMARY_TEMP_7000),
         RunDialog(
             dialog_id=DI1893_DUPLICATE,
@@ -335,16 +314,14 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         RunDialog(
             dialog_id=DI1894_EMPTY,
             above_object=NPC_14,
             closable=True,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ClearBit(TEMP_7044_6),
         SetVarToConst(TEMP_7028, 30),
         StartLoopNFrames(299),
@@ -358,8 +335,7 @@ script = EventScript(
         SetVarToConst(TEMP_7028, 0),
         If0210Bits012ClearDoNotJump(
             ["EVENT_3355_end_loop_141"],
-            identifier="EVENT_3355_if_0210_bits_012_clear_do_not_jump_139",
-        ),
+            identifier="EVENT_3355_if_0210_bits_012_clear_do_not_jump_139"),
         Jmp(["EVENT_3355_close_dialog_143"]),
         EndLoop(identifier="EVENT_3355_end_loop_141"),
         SetBit(TEMP_7044_6),

@@ -15,8 +15,7 @@ script = EventScript(
                 ASShiftNorthSteps(2),
                 ASShiftSouthSteps(2),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         JmpIfVarEqualsConst(
             ACTIVE_NPC, 21, ["EVENT_3880_chest_2"], identifier="EVENT_3880_npc"
         ),

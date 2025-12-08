@@ -13,8 +13,7 @@ script = EventScript(
             area=OW44_MONSTRO_TOWN,
             bit_6=True,
             bit_7=True,
-            identifier="EVENT_2092_open_location_3",
-        ),
+            identifier="EVENT_2092_open_location_3"),
         Return(),
     ]
 )

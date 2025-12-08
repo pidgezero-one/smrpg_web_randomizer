@@ -4,7 +4,7 @@ a character recruitment opportunity, or an item granter."""
 
 from copy import deepcopy
 from random import choice, random
-from typing import Optional, Tuple, Type, TypeVar, List, Union, TYPE_CHECKING
+from typing import TypeVar, TYPE_CHECKING
 
 from randomizer.entities.bosses.bosses import MokuraBoss
 from randomizer.entities.characters.characters import (
@@ -12,8 +12,7 @@ from randomizer.entities.characters.characters import (
     Geno,
     Mallow,
     Mario,
-    Toadstool,
-)
+    Toadstool)
 from randomizer.entities.items.items import (
     AltoCard,
     Amulet,
@@ -94,13 +93,11 @@ from randomizer.entities.items.items import (
     UltraHammer,
     Wallet,
     YouMissed,
-    ZoomShoes,
-)
+    ZoomShoes)
 from randomizer.entities.progress_locations.helpers.area_access import (
     can_access_invisible_flags,
     can_defeat_second_moleville_boss,
-    progression_safety,
-)
+    progression_safety)
 from randomizer.entities.spells.spells import SuperJump
 
 from randomizer.types.bosses import (
@@ -110,8 +107,7 @@ from randomizer.types.bosses import (
     Battlefields,
     BossLocations,
     HenchmanType,
-    SpriteSize,
-)
+    SpriteSize)
 from randomizer.types.characters import Character
 from randomizer.types.items import (
     Coins,
@@ -124,33 +120,27 @@ from randomizer.types.items import (
     RegularItem,
     SpecialEquip,
     SpottedCharacter,
-    StarPiece,
-)
+    StarPiece)
 from randomizer.types.npcs.objects.animations.types import SpriteAnimation
 from randomizer.types.npcs.fills import (
     BossModelFill,
     RepeatableHenchmanFill,
     StatueFill,
-    UniqueHenchmanFill,
-)
+    UniqueHenchmanFill)
 from randomizer.types.npcs.objects import VramStore, Empty
 from randomizer.data.npcs.npcs import RedSmallToad
 from randomizer.types.numbers import Int8, UInt16, UInt8
 from randomizer.types.overworld_scripts.action_scripts.commands import (
-    SetSpriteSequence,
-)
+    SetSpriteSequence)
 from randomizer.types.overworld_scripts.event_scripts.commands.types import (
-    ActionSubcriptCommandPrototype,
-)
+    ActionSubcriptCommandPrototype)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
-    TOTAL_SCRIPTS as TOTAL_EVENTS,
-)
+    TOTAL_SCRIPTS as TOTAL_EVENTS)
 from randomizer.types.overworld_scripts.ids import TOTAL_ROOMS
 from randomizer.types.rooms import (
     BattlePackClone,
     BattlePackNPC,
-    RoomObject,
-)
+    RoomObject)
 from randomizer.types.spells import CharacterSpell, Element
 from randomizer.types.spells.classes import CloneSpell
 from randomizer.types.world.flags import (
@@ -168,8 +158,7 @@ from randomizer.types.world.flags import (
     RestrictSpecialEquips,
     ShuffleMagikoopaChest,
     ShuffleWeddingGear,
-    StarPieceAvailability,
-)
+    StarPieceAvailability)
 
 from .enums import LocationWorldArea, PacketType
 from .table import get_default_battlefield_from_room
@@ -183,17 +172,17 @@ class Inventory(List):
     """A list of items, boss fights, spells, and characters the player is assumed
     to have collected."""
 
-    def has_item_count(self, item_type: Type[Item], value=1):
+    def has_item_count(self, item_type: type[Item], value=1):
         """The amount of a given item class collected."""
         count = [item for item in self if isinstance(item, item_type)]
         return len(count) >= value
 
-    def has_item(self, item_type: Type[Item]):
+    def has_item(self, item_type: type[Item]):
         """Returns true if at least one of the given class is collected."""
         presence = next((item for item in self if isinstance(item, item_type)), None)
         return presence is not None
 
-    def has_one_of(self, item_types: List[Type[Item]]):
+    def has_one_of(self, item_types: list[type[Item]]):
         """Returns true of at least one of any of the given classes is collected."""
         found = False
         for held_item in self:
@@ -209,15 +198,15 @@ class ProgressLocation:
     a character's capacity to learn a spell, a character recruitment opportunity,
     or an item granter."""
 
-    _identifier: Optional[int] = None
-    _room_ids: List[int] = []
-    _accepted_types: List[Type[Item]] = []
-    _original_item: Optional[Type[Item]] = None
-    _contents: Optional[Item] = None
+    _identifier: int | None = None
+    _room_ids: list[int] = []
+    _accepted_types: list[type[Item]] = []
+    _original_item: type[Item] | None = None
+    _contents: Item | None = None
     _container_event: int = 0
     _missable: bool = False
     _world_area: LocationWorldArea
-    _affected_dialog_ids: List[int] = []
+    _affected_dialog_ids: list[int] = []
     _excluded: bool = False
     _keep_original_item_if_excluded: bool = False
     _allow_empty_when_finished_shuffling: bool = False
@@ -226,7 +215,7 @@ class ProgressLocation:
     world: "GameWorld"
 
     @property
-    def room_ids(self) -> List[UInt16]:
+    def room_ids(self) -> list[UInt16]:
         """A list of all rooms which this location is found in.\n
         For example, the treasure chest in the mushroom kingdom hallway can be opened
         in both the occupied and unoccupied states of the mushroom kingdom, which are
@@ -238,7 +227,7 @@ class ProgressLocation:
         return [UInt16(room_id) for room_id in self._room_ids]
 
     @property
-    def identifier(self) -> Optional[UInt16]:
+    def identifier(self) -> UInt16 | None:
         """Indicates the room number or arbitrary value specific to this location.
         Used for decision scripts to build and grant the correct item."""
         if self._identifier is None:
@@ -246,7 +235,7 @@ class ProgressLocation:
         return UInt16(self._identifier)
 
     @property
-    def event_builder_identifiers(self) -> List[UInt16]:
+    def event_builder_identifiers(self) -> list[UInt16]:
         """Most item grant and boss fight location granters will run one of a small handful of
         designated scripts, each of which gives you the intended item depending usually on
         what room you are currently in. There are some exceptions where a number has to be used
@@ -298,7 +287,7 @@ class ProgressLocation:
         )
 
     @property
-    def original_item(self) -> Optional[Type[Item]]:
+    def original_item(self) -> type[Item] | None:
         """The item originally held by this location before shuffling."""
         return self._original_item
 
@@ -314,13 +303,13 @@ class ProgressLocation:
         self._missable = missable
 
     @property
-    def affected_dialog_ids(self) -> List[int]:
+    def affected_dialog_ids(self) -> list[int]:
         """A list of dialog IDs that will need to undergo changes to reflect the contents
         of this grant location.\n
         It is recommended to use dialog ID constant names for this."""
         return self._affected_dialog_ids
 
-    def set_affected_dialog_ids(self, affected_dialog_ids: List[int]) -> None:
+    def set_affected_dialog_ids(self, affected_dialog_ids: list[int]) -> None:
         """Overwrite the list of dialog IDs that will need to undergo changes to reflect
         the contents of this grant location.\n
         It is recommended to use dialog ID constant names for this."""
@@ -360,7 +349,7 @@ class ProgressLocation:
         return self._tier
 
     # pylint: disable=W0613
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         """Returns true if this location is allowed to house items of the given type.\n
         For example, a boss fight location needs to house a boss fight, and cannot take
         character grants, etc."""
@@ -377,7 +366,7 @@ class ProgressLocation:
         if self.contents is None and self.original_item is None:
             return True
         if self.original_item is not None:
-            original_item: Type[Item] = self.original_item
+            original_item: type[Item] = self.original_item
             # pylint: disable=W1116
             if isinstance(self.contents, original_item):
                 return True
@@ -393,11 +382,11 @@ class ProgressLocation:
         return self.is_vanilla()
 
     @property
-    def contents(self) -> Optional[Item]:
+    def contents(self) -> Item | None:
         """The current contents of this location."""
         return self._contents
 
-    def set_contents(self, contents: Optional[Item]) -> None:
+    def set_contents(self, contents: Item | None) -> None:
         """Set the current contents of this location."""
         if contents is not None:
             assert self.can_accept(contents)
@@ -440,7 +429,7 @@ class ProgressLocation:
         """The overarching world area containing this location."""
         return self._world_area
 
-    def does_contain(self, item_type: Optional[Type[Item]]) -> bool:
+    def does_contain(self, item_type: type[Item] | None) -> bool:
         """Checks whether or not the location contains the given item type."""
         if self.contents is None and item_type is None:
             return True
@@ -473,16 +462,16 @@ ProgressLocationT = TypeVar("ProgressLocationT", bound="ProgressLocation")
 class BossFightLocation(ProgressLocation):
     """A location that houses a shuffled boss fight."""
 
-    _original_item: Type[Boss]
-    _battlefield: Optional[Battlefields] = None
+    _original_item: type[Boss]
+    _battlefield: Battlefields | None = None
     _name_enum: BossLocations = BossLocations.MUSHROOM_WAY
     _music: BattleMusic = BattleMusic.NORMAL
-    _overworld_boss_npc_fills: List[BossModelFill] = []
-    _overworld_unique_henchmen_npc_fills: List[list[UniqueHenchmanFill]] = []
-    _overworld_generic_henchmen_npc_fills: List[list[RepeatableHenchmanFill]] = []
-    _statue_fills: List[StatueFill] = []
+    _overworld_boss_npc_fills: list[BossModelFill] = []
+    _overworld_unique_henchmen_npc_fills: list[list[UniqueHenchmanFill]] = []
+    _overworld_generic_henchmen_npc_fills: list[list[RepeatableHenchmanFill]] = []
+    _statue_fills: list[StatueFill] = []
     _can_run_away: bool = False
-    _stat_inheritor: Optional["Type[Boss]"] = None
+    _stat_inheritor: "type[Boss]" | None = None
 
     # Have a class method here that scales stats
 
@@ -507,24 +496,24 @@ class BossFightLocation(ProgressLocation):
         return self._music
 
     @property
-    def original_item(self) -> Type[Boss]:
+    def original_item(self) -> type[Boss]:
         """The boss fight that originally was at this location."""
         return self._original_item
 
     @property
-    def overworld_boss_npc_fills(self) -> List[BossModelFill]:
+    def overworld_boss_npc_fills(self) -> list[BossModelFill]:
         """A list of overworld NPCs which will be replaced with the incoming boss' model."""
         return self._overworld_boss_npc_fills
 
     def set_overworld_boss_npc_fills(
-        self, overworld_boss_npc_fills: List[BossModelFill]
+        self, overworld_boss_npc_fills: list[BossModelFill]
     ) -> None:
         """Overwrite the list of overworld NPCs which will be replaced with the incoming
         boss' model. (I don't remember why this is modifiable)"""
         self._overworld_boss_npc_fills = overworld_boss_npc_fills
 
     @property
-    def overworld_unique_henchmen_npc_fills(self) -> List[list[UniqueHenchmanFill]]:
+    def overworld_unique_henchmen_npc_fills(self) -> list[list[UniqueHenchmanFill]]:
         """A list of overworld NPC collections which will be replaced with model and other
         information from incoming boss henchmen.
 
@@ -536,7 +525,7 @@ class BossFightLocation(ProgressLocation):
         return self._overworld_unique_henchmen_npc_fills
 
     def set_overworld_unique_henchmen_npc_fills(
-        self, overworld_unique_henchmen_npc_fills: List[list[UniqueHenchmanFill]]
+        self, overworld_unique_henchmen_npc_fills: list[list[UniqueHenchmanFill]]
     ) -> None:
         """Set the list of overworld NPC collections which will be replaced with model and other
         information from incoming boss henchmen.
@@ -550,8 +539,7 @@ class BossFightLocation(ProgressLocation):
 
     @property
     def overworld_generic_henchmen_npc_fills(
-        self,
-    ) -> List[list[RepeatableHenchmanFill]]:
+        self) -> list[list[RepeatableHenchmanFill]]:
         """A list of overworld NPC collections which will be replaced with model and other
         information from incoming boss henchmen.
 
@@ -563,7 +551,7 @@ class BossFightLocation(ProgressLocation):
         return self._overworld_generic_henchmen_npc_fills
 
     def set_overworld_generic_henchmen_npc_fills(
-        self, overworld_generic_henchmen_npc_fills: List[list[RepeatableHenchmanFill]]
+        self, overworld_generic_henchmen_npc_fills: list[list[RepeatableHenchmanFill]]
     ) -> None:
         """Set a list of overworld NPC collections which will be replaced with model and other
         information from incoming boss henchmen.
@@ -594,9 +582,8 @@ class BossFightLocation(ProgressLocation):
 
     def _fill_model(
         self,
-        fill: Union[BossModelFill, UniqueHenchmanFill, RepeatableHenchmanFill],
-        new_occupant: Optional[Union[Boss, Henchman]],
-    ):
+        fill: BossModelFill | UniqueHenchmanFill | RepeatableHenchmanFill,
+        new_occupant: Boss | Henchman | None):
         if fill.minigames_only and not self.world.settings.is_boolean_flag_enabled(
             BossReplaceMinigameSprites
         ):
@@ -613,15 +600,14 @@ class BossFightLocation(ProgressLocation):
             animation_props_to_replace = original_model.animations.animation_prop_names
             # get 1-1 pairs of animations being replaced
             min_vram = 0
-            animation_replacements: List[
-                Tuple[SpriteAnimation, Optional[SpriteAnimation]]
+            animation_replacements: list[
+                tuple[SpriteAnimation, SpriteAnimation | None]
             ] = [
                 (
                     getattr(original_model.animations, prop),
                     getattr(new_occupant.model().animations, prop)
                     if new_occupant is not None
-                    else None,
-                )
+                    else None)
                 for prop in animation_props_to_replace
                 if getattr(original_model.animations, prop) is not None
             ]
@@ -660,8 +646,7 @@ class BossFightLocation(ProgressLocation):
                             min_vram,
                             new_occupant.model(self.world).min_vram_from_event_script(
                                 fill.npc, script_id
-                            ),
-                        )
+                            ))
                 # replace animations in action scripts
                 for script_id in fill.affected_action_scripts:
                     script = self.world.action_scripts.scripts[script_id]
@@ -677,8 +662,7 @@ class BossFightLocation(ProgressLocation):
                             min_vram,
                             new_occupant.model(self.world).min_vram_from_action_script(
                                 script_id
-                            ),
-                        )
+                            ))
             # replace npc in room
             room = self.world.rooms[fill.room_id]
             room_npc = room.objects[fill.npc_id]
@@ -744,8 +728,7 @@ class BossFightLocation(ProgressLocation):
                     dialog_id,
                     self.contents.dialog_replacements_if_mandatory_fights_changed[
                         dialog_id
-                    ],
-                )
+                    ])
 
     def _sanitize_room_data(self) -> None:
         """Modify all related scripts to be appropriate for this location's boss."""
@@ -757,8 +740,7 @@ class BossFightLocation(ProgressLocation):
         for fill in self.overworld_boss_npc_fills:
             self._fill_model(
                 fill,
-                self.contents,
-            )
+                self.contents)
         if self.has_vanilla_henchmen:
             return
 
@@ -792,7 +774,7 @@ class BossFightLocation(ProgressLocation):
 
         # do statue fills on valentina spot
 
-    def set_contents(self, contents: Optional[Boss]) -> None:
+    def set_contents(self, contents: Boss | None) -> None:
         super().set_contents(contents)
 
         # this should only be used when unsetting boss occupation on seed re-roll
@@ -802,7 +784,7 @@ class BossFightLocation(ProgressLocation):
         # replace overworld models and rewrite behaviour to match new models
         self._sanitize_room_data()
 
-        original_item: Type[Boss] = self.original_item
+        original_item: type[Boss] = self.original_item
 
         # don't do any stat calc when vanilla
         # pylint: disable=W1116
@@ -840,8 +822,7 @@ class BossFightLocation(ProgressLocation):
             magic_attack,
             magic_defense,
             evade,
-            magic_evade,
-        ) = original_formation.get_summed_stats()
+            magic_evade) = original_formation.get_summed_stats()
 
         # this already accounts for formations with special stat summing rules
         # like exor, valentina, etc
@@ -854,8 +835,7 @@ class BossFightLocation(ProgressLocation):
             _,
             _,
             _,
-            _,
-        ) = incoming_formation.get_summed_stats()
+            _) = incoming_formation.get_summed_stats()
 
         # apply new stats to every incoming formation member's class instance
         truthy_members = [m.enemy for m in incoming_formation.members if m is not None]
@@ -891,7 +871,7 @@ class BossFightLocation(ProgressLocation):
         """If false, the player shouldn't be able to run away from this location."""
         self._can_run_away = can_run_away
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if not isinstance(item, Boss):
             return False
         if isinstance(item, MokuraBoss):
@@ -907,7 +887,7 @@ class BossFightLocation(ProgressLocation):
         return super().can_accept(item)
 
     @property
-    def affected_dialog_ids(self) -> List[int]:
+    def affected_dialog_ids(self) -> list[int]:
         own_ids = deepcopy(self._affected_dialog_ids)
         fill_ids = [f.affected_dialog_ids for f in self.overworld_boss_npc_fills]
         flattened = [dialog_id for sublist in fill_ids for dialog_id in sublist]
@@ -964,10 +944,10 @@ class BossStarPiecePrize(ProgressLocation):
 class ItemLocation(ProgressLocation):
     """A location that can grant items."""
 
-    _name_enum: Optional[ShuffleLocationSelector]
+    _name_enum: ShuffleLocationSelector | None
 
     @property
-    def name_enum(self) -> Optional[ShuffleLocationSelector]:
+    def name_enum(self) -> ShuffleLocationSelector | None:
         """A unique identifier for this item granter."""
         return self._name_enum
 
@@ -986,7 +966,7 @@ class ItemLocation(ProgressLocation):
 class FrogDiscipleShopItem(ItemLocation):
     """A special kind of location specifically for the seaside frog coin shop."""
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if type(item) not in [
             Hammer,
             FroggieStick,
@@ -1044,7 +1024,7 @@ class ChestLocation(ItemLocation):
     """A location that can grant items, specifically as a treasure chest."""
 
     _set_70a7_manually_in_event_script: bool = False
-    _npc_ids: List[int] = []
+    _npc_ids: list[int] = []
 
     @property
     def set_70a7_manually_in_event_script(self) -> bool:
@@ -1053,7 +1033,7 @@ class ChestLocation(ItemLocation):
         return self._set_70a7_manually_in_event_script
 
     @property
-    def npc_ids(self) -> List[UInt8]:
+    def npc_ids(self) -> list[UInt8]:
         """The NPC IDs that this chest possesses in the rooms it belongs to.\n
         Indexes must match the indexes of this location's room ids.\n
         For example, if the same chest is NPC 2 in room 100, and NPC 1 in room 200,
@@ -1117,7 +1097,7 @@ class ChestLocation(ItemLocation):
             ):
                 self._accepted_types.append(ProgressiveFireworks)
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if isinstance(item, InvincibilityStar):
             chest_locations = [
                 location
@@ -1149,7 +1129,7 @@ class EarlygameChestLocation(ChestLocation):
     """A subtype of chest locations that cannot accept the two strongest mimic fights
     when balanced boss scaling is turned on."""
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if progression_safety(self.world) and isinstance(
             item, (MimicFightInitiator2, MimicFightInitiator3)
         ):
@@ -1161,7 +1141,7 @@ class MidgameChestLocation(ChestLocation):
     """A subtype of chest locations that cannot accept the strongest mimic fight
     when balanced boss scaling is turned on."""
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if progression_safety(self.world) and isinstance(item, MimicFightInitiator3):
             return False
         return super().can_accept(item)
@@ -1196,7 +1176,7 @@ class MimicReloadRewardChest(ChestLocation):
     after defeating one of the two weaker mimic fights. It will always occupy
     the same chest as its corresponding mimic fight."""
 
-    def set_room_ids(self, room_ids: List[UInt16]) -> None:
+    def set_room_ids(self, room_ids: list[UInt16]) -> None:
         """Use this to set the room IDs of this chest to match the room IDs of the
         mimic chest it follows."""
         self._room_ids = [int(room) for room in room_ids]
@@ -1298,13 +1278,13 @@ class InvisibleItemCandidate(GrantLocation):
         """Any additional pixels by which this should be shifted on the Y axis."""
         return Int8(self._y_shift)
 
-    def set_original_item(self, item: Type[Item]) -> None:
+    def set_original_item(self, item: type[Item]) -> None:
         """Only flag candidates have this method.
         the three selected locations need to be able to donate each flag to the shuffler.
         """
         self._original_item = item
 
-    def can_access(self, parent_class: Type[ProgressLocationT], inventory: Inventory):
+    def can_access(self, parent_class: type[ProgressLocationT], inventory: Inventory):
         return parent_class.can_access(self, inventory) and can_access_invisible_flags(
             self.world, inventory
         )
@@ -1314,7 +1294,7 @@ class TreasureShopItem(ItemLocation):
     """A special item location subtype for the three items that are sold to you by the
     treasure hunting toad in Moleville."""
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if type(item) not in [
             Hammer,
             FroggieStick,
@@ -1397,7 +1377,7 @@ class TreasureShopItem(ItemLocation):
 class StartingItemGrant(GrantLocation):
     """A special location subtype for the four items that the player starts the game with."""
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item) and item.consumable
 
     def __init__(self, world: "GameWorld"):
@@ -1408,11 +1388,11 @@ class StartingItemGrant(GrantLocation):
 class FreestandingLocation(ItemLocation):
     """Item locations that grant specifically by picking up a physical item in the overworld."""
 
-    _npc_ids: List[int] = []
+    _npc_ids: list[int] = []
     _keep_original_item_if_excluded: bool = True
 
     @property
-    def npc_ids(self) -> List[UInt8]:
+    def npc_ids(self) -> list[UInt8]:
         """The NPC IDs that this object possesses in the rooms it belongs to.\n
         Indexes must match the indexes of this location's room ids.\n
         For example, if the same object is NPC 2 in room 100, and NPC 1 in room 200,
@@ -1508,7 +1488,7 @@ class CharacterSpottedLocation(ProgressLocation):
     character can be seen on Booster Hill without being recruited. Therefore, if you visit
     Booster Hill and see Geno being carried up the hill, it would open Forest Maze."""
 
-    _original_item: Optional[Type[SpottedCharacter]]
+    _original_item: type[SpottedCharacter] | None
 
     def __init__(self, world: "GameWorld"):
         super().__init__(world)
@@ -1525,8 +1505,8 @@ class CharacterReplacementFill:
 
     _room_id: int
     _npc_id: int
-    _event_scripts: List[int]
-    _action_scripts: List[int]
+    _event_scripts: list[int]
+    _action_scripts: list[int]
 
     @property
     def room_id(self) -> int:
@@ -1547,13 +1527,13 @@ class CharacterReplacementFill:
         self._npc_id = npc_id
 
     @property
-    def event_scripts(self) -> List[int]:
+    def event_scripts(self) -> list[int]:
         """The list of event scripts which may need to be changed to accommodate
         the character filling this location, usually due to those event
         scripts containing action queues animating this NPC."""
         return self._event_scripts
 
-    def set_event_scripts(self, event_scripts: List[int]) -> None:
+    def set_event_scripts(self, event_scripts: list[int]) -> None:
         """Overwrite the list of event scripts which may need to be changed to accommodate
         the character filling this location, usually due to those event
         scripts containing action queues animating this NPC.\n
@@ -1561,12 +1541,12 @@ class CharacterReplacementFill:
         self._event_scripts = event_scripts
 
     @property
-    def action_scripts(self) -> List[int]:
+    def action_scripts(self) -> list[int]:
         """The list of action scripts which may need to be changed to accommodate
         the character filling this location."""
         return self._action_scripts
 
-    def set_action_scripts(self, action_scripts: List[int]) -> None:
+    def set_action_scripts(self, action_scripts: list[int]) -> None:
         """Overwrite the list of action scripts which may need to be changed to accommodate
         the character filling this location.\n
         It is recommended to use action script ID constant names for this."""
@@ -1576,9 +1556,8 @@ class CharacterReplacementFill:
         self,
         room_id: int,
         npc_id: int,
-        event_scripts: Optional[List[int]] = None,
-        action_scripts: Optional[List[int]] = None,
-    ) -> None:
+        event_scripts: list[int] | None = None,
+        action_scripts: list[int] | None = None) -> None:
         if event_scripts is None:
             event_scripts = []
         if action_scripts is None:
@@ -1593,40 +1572,40 @@ class CharacterRecruitLocation(ProgressLocation):
     """A collection of instances where a certain recruitable character appears,
     which need to be filled with the model of a shuffled character."""
 
-    _original_item: Optional[Type[Character]]
-    _fills: List[CharacterReplacementFill] = []
-    _credits_fills: List[CharacterReplacementFill] = []
-    _doll_fills: List[CharacterReplacementFill] = []
+    _original_item: type[Character] | None
+    _fills: list[CharacterReplacementFill] = []
+    _credits_fills: list[CharacterReplacementFill] = []
+    _doll_fills: list[CharacterReplacementFill] = []
 
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = CharacterSpottedLocation
 
     @property
-    def original_item(self) -> Optional[Type[Character]]:
+    def original_item(self) -> type[Character] | None:
         """The item originally held by this location before shuffling."""
         return self._original_item
 
     @property
-    def associated_spotted_location(self) -> Type[CharacterSpottedLocation]:
+    def associated_spotted_location(self) -> type[CharacterSpottedLocation]:
         """The associated location class representing this same character being simply seen
         without necessarily being recruited."""
         return self._associated_spotted_location
 
     @property
-    def fills(self) -> List[CharacterReplacementFill]:
+    def fills(self) -> list[CharacterReplacementFill]:
         """The list of instances where this character appears in playable levels
         to be populated by this character's model info."""
         return self._fills
 
     @property
-    def credits_fills(self) -> List[CharacterReplacementFill]:
+    def credits_fills(self) -> list[CharacterReplacementFill]:
         """The list of instances where this character appears in the ending credits
         to be populated by this character's model info."""
         return self._credits_fills
 
     @property
-    def doll_fills(self) -> List[CharacterReplacementFill]:
+    def doll_fills(self) -> list[CharacterReplacementFill]:
         """The list of instances where this character's doll appears
         to be populated by appropriate model info."""
         return self._doll_fills
@@ -1675,7 +1654,7 @@ class CharacterSpellSlot(ProgressLocation):
 class LaterSpellSlot(CharacterSpellSlot):
     """A spell slot granter specifically for spells that the character does not start with."""
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if self.world.settings.is_boolean_flag_enabled(ExperienceNoRegular):
             assert inventory is not None
             # Do not place Super Jump in a late spell slot if character

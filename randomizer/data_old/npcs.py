@@ -15,8 +15,7 @@ class SpriteAnimation:
         contact_frame=None,
         total_duration=None,
         new_sprite_id=None,
-        speed=SequenceSpeeds.NORMAL,
-    ):
+        speed=SequenceSpeeds.NORMAL):
         self.sequence_id = sequence_id
         self.contact_frame = contact_frame
         self.total_duration = total_duration
@@ -61,8 +60,7 @@ class SpriteAnimationCollection:
         keep_summon=None,
         chandelier_challenge=None,
         factory_pierce=None,
-        endgame_challenge=None,
-    ):
+        endgame_challenge=None):
         self.recoil = recoil
         self.bandits_way_distracted = bandits_way_distracted
         self.mines_punch = mines_punch
@@ -95,8 +93,7 @@ class StatueDetails:
         horizontal_pixel_shift=0,
         vertical_pixel_shift=0,
         north_facing_horizontal_pixel_shift=0,
-        north_facing_vertical_pixel_shift=0,
-    ):
+        north_facing_vertical_pixel_shift=0):
         self.mold = mold
         self.horizontal_pixel_shift = horizontal_pixel_shift
         self.vertical_pixel_shift = vertical_pixel_shift
@@ -384,8 +381,7 @@ class AreaNPC:
         byte2_bit4=None,
         byte5_bit6=None,
         byte5_bit7=None,
-        byte6_bit2=None,
-    ):
+        byte6_bit2=None):
         self.occupant = occupant
         self.priority_0 = priority_0
         self.priority_1 = priority_1
@@ -495,8 +491,7 @@ class CrocoBase(NPC):
         keep_challenge=croco_bag_summon,
         keep_summon=croco_bag_hit,
         chandelier_challenge=croco_bag_summon,
-        endgame_challenge=croco_bag_summon,
-    )
+        endgame_challenge=croco_bag_summon)
 
 
 class Croco(CrocoBase):
@@ -536,8 +531,7 @@ class Booster(NPC):
         keep_challenge=booster_jump,
         keep_summon=booster_laugh,
         chandelier_challenge=booster_punch,
-        endgame_challenge=booster_punch,
-    )
+        endgame_challenge=booster_punch)
     eye_height = 17
 
 
@@ -585,8 +579,7 @@ class JohnnySmall(NPC):
         dojo_challenge=small_johnny_sit,
         keep_challenge=small_johnny_sit,
         chandelier_challenge=small_johnny_sit,
-        endgame_challenge=small_johnny_sit,
-    )
+        endgame_challenge=small_johnny_sit)
     eye_height = 20
 
 
@@ -613,8 +606,7 @@ class ValentinaSmall(NPC):
         keep_challenge=valentina_laugh,
         keep_summon=valentina_laugh,
         chandelier_challenge=valentina_laugh,
-        endgame_challenge=valentina_laugh,
-    )
+        endgame_challenge=valentina_laugh)
 
 
 small_magikoopa_hit = SpriteAnimation(
@@ -636,8 +628,7 @@ class SmallMagikoopa(NPC):
         keep_challenge=small_magikoopa_hit,
         keep_summon=small_magikoopa_hit,
         chandelier_challenge=small_magikoopa_hit,
-        endgame_challenge=small_magikoopa_hit,
-    )
+        endgame_challenge=small_magikoopa_hit)
 
 
 class MagikoopaSmall(SmallMagikoopa):
@@ -1218,8 +1209,7 @@ class ShovelKnightBoss(NPC):
         keep_challenge=shovelknight_tile,
         keep_summon=shovelknight_tile,
         chandelier_challenge=shovelknight_tile,
-        endgame_challenge=shovelknight_tile,
-    )
+        endgame_challenge=shovelknight_tile)
     eye_height = 10
     statue = StatueDetails(
         [
@@ -1240,8 +1230,7 @@ class ShovelKnightBoss(NPC):
             "181818",
         ],
         horizontal_pixel_shift=-3,
-        north_facing_horizontal_pixel_shift=-5,
-    )
+        north_facing_horizontal_pixel_shift=-5)
 
 
 class ClerkSmall(ShovelKnightBoss):
@@ -1296,8 +1285,7 @@ class BelomeStatue(NPC):
         statue_flustered=belome_recoil,
         statue_peck=belome_attack_fast,
         chandelier_challenge=belome_attack,
-        endgame_challenge=belome_attack,
-    )
+        endgame_challenge=belome_attack)
 
 
 class ShyGuyClownCar(NPC):
@@ -1616,8 +1604,7 @@ class Jinx(NPC):
         keep_challenge=jinx_punch,
         keep_summon=jinx_punch,
         chandelier_challenge=jinx_punch,
-        endgame_challenge=jinx_punch,
-    )
+        endgame_challenge=jinx_punch)
 
 
 class Jinx2(Jinx):
@@ -2128,8 +2115,7 @@ class Terrapin(NPC):
         keep_challenge=jagger_punch,
         keep_summon=jagger_punch,
         chandelier_challenge=jagger_punch,
-        endgame_challenge=jagger_punch,
-    )
+        endgame_challenge=jagger_punch)
 
 
 class Spikey(NPC):
@@ -2193,8 +2179,7 @@ class Crook(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=crook_scratch,
         kitchen_prep=crook_scratch,
-        factory_pierce=crook_scratch,
-    )
+        factory_pierce=crook_scratch)
 
 
 class Goomba(NPC):
@@ -2231,8 +2216,7 @@ class PiranhaPlant(NPC):
         keep_challenge=piranha_bite,
         keep_summon=piranha_bite,
         chandelier_challenge=piranha_bite,
-        endgame_challenge=piranha_bite,
-    )
+        endgame_challenge=piranha_bite)
     eye_height = 14
 
 
@@ -2277,8 +2261,7 @@ class Bloober(NPC):
         keep_challenge=squid_hit,
         keep_summon=squid_hit,
         chandelier_challenge=squid_hit,
-        endgame_challenge=squid_hit,
-    )
+        endgame_challenge=squid_hit)
     eye_height = 10
 
 
@@ -2298,8 +2281,7 @@ class BandanaRed(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=bandana_taunt,
         kitchen_prep=bandana_attack,
-        factory_pierce=bandana_attack,
-    )
+        factory_pierce=bandana_attack)
 
 
 class Lakitu(NPC):
@@ -2408,8 +2390,7 @@ class Fireball(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=fireball_spin,
         kitchen_prep=fireball_spin,
-        factory_pierce=fireball_spin_fast,
-    )
+        factory_pierce=fireball_spin_fast)
 
 
 class RedFireball(Fireball):
@@ -2451,8 +2432,7 @@ class PandoriteLarge(MimicLarge):
         statue_peck=pandorite_short,
         statue_flustered=mimic_recoil,
         chandelier_challenge=pandorite_attack,
-        endgame_challenge=pandorite_attack,
-    )
+        endgame_challenge=pandorite_attack)
 
 
 bomb_tick = SpriteAnimation(sequence_id=4)
@@ -2504,8 +2484,7 @@ class HammerBroLarge(NPC):
         statue_peck=hammer_bro_bop_fast,
         statue_flustered=hammer_bro_recoil,
         chandelier_challenge=hammer_bro_taunt,
-        endgame_challenge=hammer_bro_taunt,
-    )
+        endgame_challenge=hammer_bro_taunt)
 
 
 class Buzzer(NPC):
@@ -2607,8 +2586,7 @@ class ShovelKnightBossLarge(NPC):
         statue_intro=shovelknight_alt_taunt,
         statue_flustered=shovelknight_recoil,
         chandelier_challenge=shovelknight_taunt,
-        endgame_challenge=shovelknight_taunt,
-    )
+        endgame_challenge=shovelknight_taunt)
 
 
 class ClerkLarge(ShovelKnightBossLarge):
@@ -2635,8 +2613,7 @@ class BoomerLarge(NPC):
         # statue_peck=boomer_hit, # vram issues
         statue_flustered=boomer_recoil,
         chandelier_challenge=boomer_taunt,
-        endgame_challenge=boomer_taunt,
-    )
+        endgame_challenge=boomer_taunt)
 
 
 dodo_peck = SpriteAnimation(sequence_id=3, contact_frame=16, total_duration=22)
@@ -2658,8 +2635,7 @@ class DodoLarge(NPC):
         statue_flustered=dodo_taunt,
         statue_peck=dodo_peck,
         chandelier_challenge=dodo_taunt,
-        endgame_challenge=dodo_taunt,
-    )
+        endgame_challenge=dodo_taunt)
 
 
 class TerraCotta(NPC):
@@ -2763,8 +2739,7 @@ class FactoryChief(NPC):
         keep_challenge=ninja_hit,
         keep_summon=ninja_taunt,
         chandelier_challenge=ninja_hit,
-        endgame_challenge=ninja_hit,
-    )
+        endgame_challenge=ninja_hit)
 
 
 class BandanaBlue(NPC):
@@ -2779,8 +2754,7 @@ class BandanaBlue(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=bandana_taunt,
         kitchen_prep=bandana_attack,
-        factory_pierce=bandana_attack,
-    )
+        factory_pierce=bandana_attack)
 
 
 class ManagerLarge(ShovelKnightBossLarge):
@@ -2859,8 +2833,7 @@ class HidonLarge(MimicLarge):
         statue_peck=hidon_attack_fast,
         statue_intro=mimic_shake,
         chandelier_challenge=hidon_attack,
-        endgame_challenge=hidon_attack,
-    )
+        endgame_challenge=hidon_attack)
 
 
 class SlingShy(NPC):
@@ -2954,8 +2927,7 @@ class MagikoopaLarge(NPC):
         statue_peck=big_magikoopa_hit_fast,
         statue_flustered=big_magikoopa_recoil,
         chandelier_challenge=big_magikoopa_taunt,
-        endgame_challenge=big_magikoopa_taunt,
-    )
+        endgame_challenge=big_magikoopa_taunt)
 
 
 class DirectorLarge(ShovelKnightBossLarge):
@@ -2981,8 +2953,7 @@ class Apprentice(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=snifit_shoot,
         kitchen_prep=snifit_taunt,
-        factory_pierce=snifit_taunt,
-    )
+        factory_pierce=snifit_taunt)
 
 
 class GenoRedemption(NPC):
@@ -3007,8 +2978,7 @@ class BoxBoyLarge(MimicLarge):
         statue_peck=boxboy_short,
         statue_flustered=mimic_recoil,
         chandelier_challenge=boxboy_attack,
-        endgame_challenge=boxboy_attack,
-    )
+        endgame_challenge=boxboy_attack)
 
 
 class Oerlikon(NPC):
@@ -3035,8 +3005,7 @@ class ChesterLarge(MimicLarge):
         statue_peck=chester_attack_fast,
         statue_flustered=mimic_recoil,
         chandelier_challenge=chester_attack,
-        endgame_challenge=chester_attack,
-    )
+        endgame_challenge=chester_attack)
 
 
 torte_taunt = SpriteAnimation(sequence_id=3, total_duration=40)
@@ -3055,8 +3024,7 @@ class Torte(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=torte_taunt,
         kitchen_prep=torte_taunt,
-        factory_pierce=torte_taunt_fast,
-    )
+        factory_pierce=torte_taunt_fast)
 
 
 class ShyAway(NPC):
@@ -3114,8 +3082,7 @@ class PeachClone(CloneNPC):
     animations = SpriteAnimationCollection(
         tower_bullet=peachclone_mad,
         kitchen_prep=peachclone_mad,
-        factory_pierce=peachclone_mad,
-    )
+        factory_pierce=peachclone_mad)
 
 
 bowserclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
@@ -3133,8 +3100,7 @@ class BowserClone(CloneNPC):
     animations = SpriteAnimationCollection(
         tower_bullet=bowserclone_laugh,
         kitchen_prep=bowserclone_mad,
-        factory_pierce=bowserclone_mad,
-    )
+        factory_pierce=bowserclone_mad)
 
 
 genoclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
@@ -3150,8 +3116,7 @@ class GenoClone(CloneNPC):
     animations = SpriteAnimationCollection(
         tower_bullet=genoclone_laugh,
         kitchen_prep=genoclone_mad,
-        factory_pierce=genoclone_mad,
-    )
+        factory_pierce=genoclone_mad)
 
 
 mallowclone_laugh = SpriteAnimation(sequence_id=2, contact_frame=8, total_duration=16)
@@ -3165,8 +3130,7 @@ class MallowClone(CloneNPC):
     animations = SpriteAnimationCollection(
         tower_bullet=mallowclone_laugh,
         kitchen_prep=mallowclone_mad,
-        factory_pierce=mallowclone_mad,
-    )
+        factory_pierce=mallowclone_mad)
 
 
 shyster_taunt = SpriteAnimation(sequence_id=4, contact_frame=56, total_duration=56)
@@ -3186,8 +3150,7 @@ class Shyster(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
         kitchen_prep=shyster_taunt,
-        factory_pierce=shyster_fast,
-    )
+        factory_pierce=shyster_fast)
 
 
 class HanginShy(NPC):
@@ -3236,8 +3199,7 @@ class MachineAxemPink(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=axem_pink_hit,
         kitchen_prep=axem_pink_hit,
-        factory_pierce=axem_pink_hit,
-    )
+        factory_pierce=axem_pink_hit)
 
 
 class MachineAxemBlack(NPC):
@@ -3248,8 +3210,7 @@ class MachineAxemBlack(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=axem_black_hit,
         kitchen_prep=axem_black_hit,
-        factory_pierce=axem_black_hit,
-    )
+        factory_pierce=axem_black_hit)
 
 
 class MachineAxemRed(NPC):
@@ -3260,8 +3221,7 @@ class MachineAxemRed(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=axem_red_hit,
         kitchen_prep=axem_red_hit,
-        factory_pierce=axem_red_hit,
-    )
+        factory_pierce=axem_red_hit)
 
 
 class MachineAxemYellow(NPC):
@@ -3282,8 +3242,7 @@ class MachineAxemGreen(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=axem_green_hit,
         kitchen_prep=axem_green_hit,
-        factory_pierce=axem_green_hit_fast,
-    )
+        factory_pierce=axem_green_hit_fast)
 
 
 class Starslap(NPC):
@@ -3362,8 +3321,7 @@ class GrateGuyLarge(NPC):
         statue_peck=grate_guy_hit_fast,
         statue_flustered=grate_guy_recoil,
         chandelier_challenge=grate_guy_taunt,
-        endgame_challenge=grate_guy_taunt,
-    )
+        endgame_challenge=grate_guy_taunt)
 
 
 bundt_recoil = SpriteAnimation(sequence_id=2, total_duration=30)
@@ -3387,8 +3345,7 @@ class BundtLarge(NPC):
         statue_intro=bundt_taunt,
         statue_flustered=bundt_recoil,
         chandelier_challenge=bundt_taunt,
-        endgame_challenge=bundt_taunt,
-    )
+        endgame_challenge=bundt_taunt)
 
 
 class Belome1Large(NPC):
@@ -3406,8 +3363,7 @@ class Belome1Large(NPC):
         statue_flustered=belome_recoil,
         statue_peck=belome_attack_fast,
         chandelier_challenge=belome_attack,
-        endgame_challenge=belome_attack,
-    )
+        endgame_challenge=belome_attack)
 
 
 class Smilax(NPC):
@@ -3449,8 +3405,7 @@ class Megasmilax(NPC):
         statue_flustered=megasmilax_recoil,
         statue_peck=megasmilax_bite,
         chandelier_challenge=megasmilax_taunt,
-        endgame_challenge=megasmilax_taunt,
-    )
+        endgame_challenge=megasmilax_taunt)
 
 
 birdetta_attack = SpriteAnimation(sequence_id=3, contact_frame=40, total_duration=50)
@@ -3476,8 +3431,7 @@ class BirdettaLarge(NPC):
         statue_peck=birdetta_attack_fast,
         statue_intro=birdetta_taunt,
         chandelier_challenge=birdetta_attack,
-        endgame_challenge=birdetta_attack,
-    )
+        endgame_challenge=birdetta_attack)
 
 
 eggbert_expand = SpriteAnimation(sequence_id=2, total_duration=32)
@@ -3494,8 +3448,7 @@ class Eggbert(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=eggbert_expand,
         kitchen_prep=eggbert_expand,
-        factory_pierce=eggbert_expand,
-    )
+        factory_pierce=eggbert_expand)
 
 
 class AxemYellow(NPC):
@@ -3533,8 +3486,7 @@ class PunchinelloLarge(NPC):
         statue_peck=punchinello_hit_fast,
         statue_flustered=punchinello_recoil,
         chandelier_challenge=punchinello_taunt,
-        endgame_challenge=punchinello_taunt,
-    )
+        endgame_challenge=punchinello_taunt)
 
 
 class AxemRed(NPC):
@@ -3554,8 +3506,7 @@ class AxemRed(NPC):
         keep_challenge=axem_red_taunt,
         keep_summon=axem_red_hit,
         chandelier_challenge=axem_red_taunt,
-        endgame_challenge=axem_red_taunt,
-    )
+        endgame_challenge=axem_red_taunt)
 
 
 class AxemGreen(NPC):
@@ -3566,8 +3517,7 @@ class AxemGreen(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=axem_green_hit,
         kitchen_prep=axem_green_hit,
-        factory_pierce=axem_green_hit_fast,
-    )
+        factory_pierce=axem_green_hit_fast)
 
 
 class BundtSmall(NPC):
@@ -3598,8 +3548,7 @@ class CzarDragonLarge(NPC):
     animations = SpriteAnimationCollection(
         mines_punch=czar_dragon_hit,
         statue_intro=czar_taunt,
-        statue_flustered=czar_recoil,
-    )
+        statue_flustered=czar_recoil)
 
 
 cloaker_hit = SpriteAnimation(sequence_id=3, contact_frame=38, total_duration=50)
@@ -3657,8 +3606,7 @@ class MackLarge(NPC):
         statue_peck=mack_hit_fast,
         statue_flustered=mack_challenge,
         chandelier_challenge=mack_challenge,
-        endgame_challenge=mack_hit,
-    )
+        endgame_challenge=mack_hit)
 
 
 yaridovich_hit = SpriteAnimation(sequence_id=3, contact_frame=78, total_duration=84)
@@ -3684,8 +3632,7 @@ class YaridovichLarge(NPC):
         statue_intro=yaridovich_taunt,
         statue_flustered=yaridovich_recoil,
         chandelier_challenge=yaridovich_taunt,
-        endgame_challenge=yaridovich_taunt,
-    )
+        endgame_challenge=yaridovich_taunt)
 
 
 drillbit_hit = SpriteAnimation(sequence_id=3, contact_frame=54, total_duration=64)
@@ -3706,8 +3653,7 @@ class DrillBit(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=drillbit_hit,
         kitchen_prep=drillbit_hit,
-        factory_pierce=drillbit_hit_fast,
-    )
+        factory_pierce=drillbit_hit_fast)
 
 
 class AxemPink(NPC):
@@ -3718,8 +3664,7 @@ class AxemPink(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=axem_pink_hit,
         kitchen_prep=axem_pink_hit,
-        factory_pierce=axem_pink_hit,
-    )
+        factory_pierce=axem_pink_hit)
 
 
 class AxemBlack(NPC):
@@ -3730,8 +3675,7 @@ class AxemBlack(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=axem_black_hit,
         kitchen_prep=axem_black_hit,
-        factory_pierce=axem_black_hit,
-    )
+        factory_pierce=axem_black_hit)
 
 
 bowyer_hit = SpriteAnimation(sequence_id=3, contact_frame=76, total_duration=82)
@@ -3754,8 +3698,7 @@ class BowyerLarge(NPC):
         statue_intro=bowyer_taunt,
         statue_flustered=bowyer_recoil,
         chandelier_challenge=bowyer_taunt,
-        endgame_challenge=bowyer_taunt,
-    )
+        endgame_challenge=bowyer_taunt)
 
 
 class AeroUpright(NPC):
@@ -3778,8 +3721,7 @@ class Snifit(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=snifit_shoot,
         kitchen_prep=snifit_taunt,
-        factory_pierce=snifit_taunt,
-    )
+        factory_pierce=snifit_taunt)
 
 
 johnny_hit = SpriteAnimation(sequence_id=3, contact_frame=48, total_duration=84)
@@ -3800,8 +3742,7 @@ class JohnnyLarge(NPC):
     animations = SpriteAnimationCollection(
         mines_punch=johnny_hit,
         chandelier_challenge=johnny_taunt,
-        endgame_challenge=johnny_taunt,
-    )
+        endgame_challenge=johnny_taunt)
 
 
 class ValentinaLarge(NPC):
@@ -3819,8 +3760,7 @@ class ValentinaLarge(NPC):
         # statue_peck=valentina_hit,
         statue_flustered=valentina_recoil,
         chandelier_challenge=valentina_taunt,
-        endgame_challenge=valentina_taunt,
-    )
+        endgame_challenge=valentina_taunt)
 
 
 class CulexLarge(NPC):
@@ -4220,8 +4160,7 @@ class YaridOverworld(NPC):
 
     animations = SpriteAnimationCollection(
         chandelier_challenge=yaridovich_alt_taunt,
-        endgame_challenge=yaridovich_alt_taunt,
-    )
+        endgame_challenge=yaridovich_alt_taunt)
     # may need adjusting
 
 
@@ -4455,8 +4394,7 @@ class EggbertGridplane(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=eggbert_expand,
         kitchen_prep=eggbert_expand,
-        factory_pierce=eggbert_expand,
-    )
+        factory_pierce=eggbert_expand)
 
 
 class FireCrystal(NPC):
@@ -4550,16 +4488,14 @@ class MagikoopaStatue(SmallMagikoopa, Statue):
     details = StatueDetails(
         horizontal_pixel_shift=2,
         north_facing_horizontal_pixel_shift=-4,
-        north_facing_vertical_pixel_shift=-1,
-    )
+        north_facing_vertical_pixel_shift=-1)
 
 
 class ShovelKnightStatue(ShovelKnightBoss, Statue):
     sprite_id = 657
     details = StatueDetails(
         horizontal_pixel_shift=-3,
-        north_facing_horizontal_pixel_shift=-5,
-    )
+        north_facing_horizontal_pixel_shift=-5)
 
 
 class YaridovichStatue(FakeElder, Statue):
@@ -4570,8 +4506,7 @@ class GrateGuyStatue(GrateGuySmall, Statue):
     sprite_id = 659
     details = StatueDetails(
         horizontal_pixel_shift=-3,
-        north_facing_horizontal_pixel_shift=-2,
-    )
+        north_facing_horizontal_pixel_shift=-2)
 
 
 class JinxStatue(Jinx, Statue):
@@ -4613,8 +4548,7 @@ class CountDownStatue(CountDownGridplane, Statue):
     sprite_id = 668
     details = StatueDetails(
         horizontal_pixel_shift=4,
-        vertical_pixel_shift=-1,
-    )
+        vertical_pixel_shift=-1)
 
 
 class HammerBroStatue(HammerBroSmall, Statue):
@@ -4644,8 +4578,7 @@ class Belome2Large(NPC):
         statue_flustered=belome_recoil,
         statue_peck=belome_attack_fast,
         chandelier_challenge=belome_attack,
-        endgame_challenge=belome_attack,
-    )
+        endgame_challenge=belome_attack)
 
     alt_palette = [
         "F8F8D8",
@@ -4774,8 +4707,7 @@ class SmithyLarge(NPC):
         mines_punch=smithy_hit,
         statue_peck=smithy_hit_fast,
         chandelier_challenge=smithy_hit,
-        endgame_challenge=smithy_hit,
-    )
+        endgame_challenge=smithy_hit)
 
 
 goombette_hit = SpriteAnimation(sequence_id=3, contact_frame=42, total_duration=52)
@@ -4796,8 +4728,7 @@ class Goombette(NPC):
     animations = SpriteAnimationCollection(
         tower_bullet=goombette_hit,
         kitchen_prep=goombette_taunt,
-        factory_pierce=goombette_hit_fast,
-    )
+        factory_pierce=goombette_hit_fast)
 
 
 class Empty(NPC):
@@ -4855,8 +4786,7 @@ class TableNPC:
         byte2_bit4,
         byte5_bit6,
         byte5_bit7,
-        byte6_bit2,
-    ):
+        byte6_bit2):
         self.sprite_id = sprite_id
         self.priority_0 = priority_0
         self.priority_1 = priority_1

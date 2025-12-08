@@ -419,7 +419,6 @@ from randomizer.data.npcs.npcs import (
     TinyBird,
     SmithyLarge,
     Goombette,
-    Empty,
-)
+    Empty)
 
 from randomizer.types.npcs.objects.enums import VramStore, ShadowSize

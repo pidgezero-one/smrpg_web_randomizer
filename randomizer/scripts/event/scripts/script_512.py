@@ -22,8 +22,7 @@ script = EventScript(
             sync=True,
             multiline=False,
             use_background=False,
-            bit_6=True,
-        ),
+            bit_6=True),
         Return(),
     ]
 )

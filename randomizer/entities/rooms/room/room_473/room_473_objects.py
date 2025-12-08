@@ -37,8 +37,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackClone(
         occupant=MachineAxemRed,
@@ -54,8 +53,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackClone(
         occupant=MachineAxemRed,
@@ -71,8 +69,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     BattlePackClone(
         occupant=MachineAxemRed,
@@ -88,8 +85,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     BattlePackClone(
         occupant=MachineAxemRed,
@@ -105,8 +101,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=AeroShot,
@@ -139,8 +134,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=MachineBowyer,
@@ -173,6 +167,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

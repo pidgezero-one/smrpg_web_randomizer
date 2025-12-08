@@ -37,8 +37,7 @@ objects = [
         priority_2=True,
         acute_axis=6,
         obtuse_axis=5,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=Booster,
@@ -71,8 +70,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=Empty,
@@ -105,8 +103,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=GenoBullet,
@@ -143,8 +140,7 @@ objects = [
         obtuse_axis=4,
         height=12,
         vram_size=2,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_4
     RegularNPC(
         occupant=GenoBullet,
@@ -181,8 +177,7 @@ objects = [
         obtuse_axis=4,
         height=12,
         vram_size=2,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_5
     RegularNPC(
         occupant=Microbomb,
@@ -216,6 +211,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=-3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

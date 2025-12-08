@@ -3,7 +3,6 @@
 from copy import copy
 from enum import StrEnum
 from random import choice, choices, randint, sample, shuffle
-from typing import List, Union
 from randomizer.entities.items.items import (
     Amulet,
     AntidotePin,
@@ -62,8 +61,7 @@ from randomizer.entities.items.items import (
     TrueformPin,
     WakeUpPin,
     WarFan,
-    ZoomShoes,
-)
+    ZoomShoes)
 from randomizer.types.items.classes import Accessory, Armor, Equipment, Weapon
 from randomizer.types.items.constants import EQUIP_STATS
 from randomizer.types.items.enums import EffectType
@@ -72,11 +70,9 @@ from randomizer.types.overworld_scripts.arguments.area_objects import (
     GENO,
     MALLOW,
     MARIO,
-    TOADSTOOL,
-)
+    TOADSTOOL)
 from randomizer.types.overworld_scripts.event_scripts.commands.commands import (
-    JmpToEvent,
-)
+    JmpToEvent)
 from randomizer.types.overworld_scripts.event_scripts.ids.script_ids import (
     E0021_FOREST_MAZE_MUSHROOM_GRANT,
     E0042_GRANT_ANY_CONSUMABLE_TIER_2_CAP,
@@ -86,26 +82,23 @@ from randomizer.types.overworld_scripts.event_scripts.ids.script_ids import (
     E0626_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_2,
     E1973_CLONE_RESERVED,
     E2649_CASINO_GRATE_GUY_RANDOM_PRIZE_GRANTER,
-    E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE,
-)
+    E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE)
 from randomizer.types.spells.enums import Element, Status, TempStatBuff
 from randomizer.types.world.classes import GameWorld
 from randomizer.types.world.flags.enums import (
     EquipmentCharactersOptions,
-    EquipmentPropertiesOptions,
-)
+    EquipmentPropertiesOptions)
 from randomizer.types.world.flags.flags import (
     EnemyNoSafetyChecks,
     EquipmentCharacters,
     EquipmentNoSafety,
     EquipmentProperties,
-    PoisonMushroom,
-)
+    PoisonMushroom)
 from randomizer.utils.number import coin_flip, mutate_normal
 from randomizer.utils.snippets.es_any_mushroom import script as random_mushroom
 
 
-def _calculate_rank_value(item: Union[Armor, Weapon, Accessory]) -> int:
+def _calculate_rank_value(item: Armor | Weapon | Accessory) -> int:
     attack_factor = (item.attack + item.variance) / (
         1 if item.attack - item.variance == 0 else item.attack - item.variance
     )
@@ -131,7 +124,7 @@ def _calculate_rank_value(item: Union[Armor, Weapon, Accessory]) -> int:
     )
 
 
-def _randomize_equip_properties(item: Union[Armor, Weapon, Accessory]) -> None:
+def _randomize_equip_properties(item: Armor | Weapon | Accessory) -> None:
     assert item.world is not None
     world = item.world
     settings = world.settings
@@ -227,8 +220,7 @@ def _randomize_equip_properties(item: Union[Armor, Weapon, Accessory]) -> None:
                 item.set_speed,
             ],
             directions,
-            values,
-        ):
+            values):
             if direction != 0:
                 fxn(value * direction)
 
@@ -335,9 +327,7 @@ def _randomize_equip_properties(item: Union[Armor, Weapon, Accessory]) -> None:
                     FearlessPin,
                     AntidotePin,
                     TrueformPin,
-                    WakeUpPin,
-                ),
-            ):
+                    WakeUpPin)):
                 guaranteed_immunities = item.status_immunities
 
             status_immunities = []
@@ -438,12 +428,10 @@ def _randomize_equip_properties(item: Union[Armor, Weapon, Accessory]) -> None:
         and (
             settings.is_flag_value(
                 EquipmentCharacters,
-                EquipmentCharactersOptions.VANILLA_ACCESSORIES_ALL,
-            )
+                EquipmentCharactersOptions.VANILLA_ACCESSORIES_ALL)
             or settings.is_flag_value(
                 EquipmentCharacters,
-                EquipmentCharactersOptions.RANDOM_ACCESSORIES_ALL,
-            )
+                EquipmentCharactersOptions.RANDOM_ACCESSORIES_ALL)
         )
     ):
         item.set_equip_chars(character_pool)
@@ -522,8 +510,7 @@ def _preshuffle_all_items(world: GameWorld):
                 dest = _ShufflerDictKeys.HAPPY_ARMOR
             elif isinstance(
                 item,
-                (SailorShirt, SailorPants, SailorCape, CourageShell, NauticaDress),
-            ):
+                (SailorShirt, SailorPants, SailorCape, CourageShell, NauticaDress)):
                 dest = _ShufflerDictKeys.SAILOR_ARMOR
             elif isinstance(item, (FuzzyShirt, FuzzyPants, FuzzyCape, FuzzyDress)):
                 dest = _ShufflerDictKeys.FUZZY_ARMOR
@@ -549,9 +536,7 @@ def _preshuffle_all_items(world: GameWorld):
                 RareScarf,
                 BtubRing,
                 Feather,
-                SignalRing,
-            ),
-        ):
+                SignalRing)):
             destinations[_ShufflerDictKeys.MID_ACCESSORY_COSTS].append(item.price)
         elif isinstance(
             item, (SafetyRing, AttackScarf, GhostMedal, JinxBelt, TroopaPin)
@@ -593,8 +578,7 @@ def _preshuffle_all_items(world: GameWorld):
                 happy_count += 1
             elif isinstance(
                 item,
-                (SailorShirt, SailorPants, SailorCape, CourageShell, NauticaDress),
-            ):
+                (SailorShirt, SailorPants, SailorCape, CourageShell, NauticaDress)):
                 stat = destinations[_ShufflerDictKeys.SAILOR_ARMOR][sailor_count]
                 sailor_count += 1
             elif isinstance(item, (FuzzyShirt, FuzzyPants, FuzzyCape, FuzzyDress)):
@@ -625,9 +609,7 @@ def _preshuffle_all_items(world: GameWorld):
                 RareScarf,
                 BtubRing,
                 Feather,
-                SignalRing,
-            ),
-        ):
+                SignalRing)):
             item.set_price(
                 int(destinations[_ShufflerDictKeys.MID_ACCESSORY_COSTS].pop())
             )
@@ -651,7 +633,7 @@ def randomize_all_items(world: GameWorld):
 
     # Designate 1-4 magic weapons
     magic_weapon_count: int = randint(1, 4)
-    magic_weapon_candidates: List[Weapon] = []
+    magic_weapon_candidates: list[Weapon] = []
     for item in [i for i in world.items if isinstance(i, Weapon)]:
         magic_weapon_candidates.append(item)
     for item in sample(magic_weapon_candidates, magic_weapon_count):

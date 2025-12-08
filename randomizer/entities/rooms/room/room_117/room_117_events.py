@@ -13,8 +13,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3715_NIMBUS_CASTLE_ANGLED_PLANT_ROOM_RIGHT_FAN_GUST_PATH,
         x=28,
@@ -25,8 +24,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3715_NIMBUS_CASTLE_ANGLED_PLANT_ROOM_RIGHT_FAN_GUST_PATH,
         x=29,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3715_NIMBUS_CASTLE_ANGLED_PLANT_ROOM_RIGHT_FAN_GUST_PATH,
         x=29,
@@ -49,8 +46,7 @@ events = [
         height=3,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3767_NIMBUS_CASTLE_ANGLED_PLANT_ROOM_EXIT_TO_4_PATH_ROOM,
         x=21,
@@ -61,6 +57,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

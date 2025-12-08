@@ -50,8 +50,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=4,
             y=57,
@@ -69,8 +68,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=1,
             y=67,
@@ -88,8 +86,7 @@ room = Room(
             dst_z=5,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -124,8 +121,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             height=5,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 1
             occupant=npcs.Zeostar,
             battle_pack=62,
@@ -140,8 +136,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             height=5,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 2
             occupant=npcs.Zeostar,
             battle_pack=62,
@@ -156,8 +151,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             height=5,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 3
             occupant=npcs.Zeostar,
             battle_pack=62,
@@ -172,8 +166,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             height=5,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 4
             occupant=npcs.Zeostar,
             battle_pack=62,
@@ -188,7 +181,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             height=5,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

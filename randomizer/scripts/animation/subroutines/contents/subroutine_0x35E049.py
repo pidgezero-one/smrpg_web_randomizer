@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35e049",
-        ),
+            identifier="queuestart_0x35e049"),
         NewEffectObject(effect=EF0005_METEOR_BLAST, looping_on=True),
         Db(bytearray(b"\x8a\x02")),
         Layer3On(prop=OVERLAP_ALL, bpp4=True),
@@ -27,8 +26,7 @@ script = SubroutineOrBanklessScript(
             apply_to_x=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         MoveObject(
             speed=17,
             start_position=-257,
@@ -36,8 +34,7 @@ script = SubroutineOrBanklessScript(
             apply_to_y=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PlaySound(sound=S0105_ROCK_CANDY),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=120),
         ResetObjectMappingMemory(),
@@ -47,5 +44,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6F, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
         ReturnObjectQueue(),
-    ],
-)
+    ])

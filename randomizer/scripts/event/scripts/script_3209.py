@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -23,12 +22,10 @@ script = EventScript(
                 ASWalk1StepFDirection(),
                 ASTurnClockwise45DegreesNTimes(4),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MEM_70A8,
-            subscript=[ASSetSpriteSequence(index=8, looping=False), ASPause(36)],
-        ),
+            subscript=[ASSetSpriteSequence(index=8, looping=False), ASPause(36)]),
         SetVarToConst(BATTLE_PACK_ID, 72),
         JmpToEvent(E0016_FIGHT_REMOVE_PERMANENTLY),
     ]

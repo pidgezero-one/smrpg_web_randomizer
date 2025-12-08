@@ -234,8 +234,7 @@ class EventScript:
                                 "%s(%s) is an invalid instruction!"
                                 % (
                                     subscript_command["command"],
-                                    subscript_command["args"],
-                                )
+                                    subscript_command["args"])
                             )
                         os_func(*subscript_command["args"])
                         os_line = os_assembler.fin()
@@ -265,8 +264,7 @@ class EventScript:
                         command,
                         command["identifier"],
                         command["args"],
-                        len(command["args"]),
-                    )
+                        len(command["args"]))
                     print("")
                     raise Exception
                 line = assembler.fin()

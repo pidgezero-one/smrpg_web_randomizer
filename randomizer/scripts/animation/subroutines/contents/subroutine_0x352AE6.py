@@ -10,5 +10,4 @@ script = SubroutineOrBanklessScript(
         SetAMEMToRandom(amem=0x60, upper_bound=25),
         ObjectQueueAtOffsetAndIndexAtAMEM60(target_address=0x352AEE),
         ReturnSubroutine(),
-    ],
-)
+    ])

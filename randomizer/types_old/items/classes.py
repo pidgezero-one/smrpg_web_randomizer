@@ -1,11 +1,10 @@
 """Base classes for item entities"""
 
-from typing import Dict, List, Optional, Type, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 
 from randomizer.types.overworld_scripts.arguments.types import (
-    Flag,
-)
+    Flag)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0242_CHEST_6_GRANT,
     E0243_CHEST_5_GRANT,
@@ -17,8 +16,7 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E3402_COIN_CHEST_MULTI_HIT_3,
     E3403_COIN_CHEST_MULTI_HIT_4,
     E3404_COIN_CHEST_MULTI_HIT_5,
-    E3405_COIN_CHEST_MULTI_HIT_6,
-)
+    E3405_COIN_CHEST_MULTI_HIT_6)
 from randomizer.types.npcs.objects.types import ItemNPC
 from randomizer.types.npcs.objects import BigCoin, ItemBag, SmallCoin, TinyStar
 from randomizer.types.numbers import UInt16, UInt8, ByteField
@@ -33,15 +31,13 @@ from .enums import (
     EffectType,
     EquipStats,
     ItemShuffleType,
-    ItemUnique,
-)
+    ItemUnique)
 from .constants import (
     EQUIP_STATS,
     ITEMS_BASE_DESC_DATA_ADDRESSES,
     ITEMS_BASE_DESC_POINTER_ADDRESS,
     ITEMS_DESC_DATA_POINTER_OFFSET,
-    NUM_ITEMS,
-)
+    NUM_ITEMS)
 
 if TYPE_CHECKING:
     from randomizer.types.world import GameWorld
@@ -56,7 +52,7 @@ class Item(TODOImportItem):
 
     _tier: int = 1
     _order: int = 0
-    _effect_type: Optional[EffectType] = None
+    _effect_type: EffectType | None = None
     _original_effect_type: EffectType = EffectType.NORMAL
     _shuffle_as_key_item: bool = False
     _is_subitem: bool = False
@@ -66,7 +62,7 @@ class Item(TODOImportItem):
     _rank_order: int = 0
     _rank_order_reverse: int = 0
     _arbitrary_value: int = 0
-    _model: Type[ItemNPC] = ItemBag
+    _model: type[ItemNPC] = ItemBag
     _chest_70a7_lower: int = 0
     _chest_70a7_upper: int = 0
     _chest_event: int = 0
@@ -74,13 +70,13 @@ class Item(TODOImportItem):
     _npc_event: int = 0
     _overworld_event: int = 0
     _overworld_midas_event: int = 0
-    _dialog_replacements: Dict[int, str] = {}
+    _dialog_replacements: dict[int, str] = {}
     _room_service: str = ""
     # "special equip" refers to the 10 equips that can normally be obtained
     # from turning in key items or completing monsto town sidequests
     _special_equip: bool = False
 
-    _world: Optional["GameWorld"] = None
+    _world: "GameWorld" | None = None
     
     @property
     def tier(self) -> int:
@@ -107,7 +103,7 @@ class Item(TODOImportItem):
         """Indicator for special effects like EXP booster, coin trick, etc."""
         return self._original_effect_type
 
-    def set_effect_type(self, effect_type: Optional[EffectType] = None) -> None:
+    def set_effect_type(self, effect_type: EffectType | None = None) -> None:
         """Indicator for special effects like EXP booster, coin trick, etc."""
         self._effect_type = effect_type
 
@@ -190,7 +186,7 @@ class Item(TODOImportItem):
         return UInt16(self._arbitrary_value)
 
     @property
-    def model(self) -> Type[ItemNPC]:
+    def model(self) -> type[ItemNPC]:
         """Graphic object that should be used to represent this item in the overworld."""
         return self._model
 
@@ -244,7 +240,7 @@ class Item(TODOImportItem):
         return self._overworld_midas_event
 
     @property
-    def dialog_replacements(self) -> Dict[int, str]:
+    def dialog_replacements(self) -> dict[int, str]:
         """A dict of dialog IDs, and the text that should overwrite the dialogs at thsoe IDs."""
         return self._dialog_replacements
 
@@ -264,14 +260,14 @@ class Item(TODOImportItem):
         assert self._world is not None
         return self._world
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__()
         self._world = world
         self._rank = None
         if len(self.dialog_replacements) == 0:
             self._dialog_replacements = {}
 
-    def get_similar(self, candidates: "List[Item]") -> "Item":
+    def get_similar(self, candidates: "list[Item]") -> "Item":
         """Get a random similar item from a list of potential candidates for this one."""
         # If this is a special item, don't replace it.
         if self.rank_value <= 0:
@@ -280,7 +276,7 @@ class Item(TODOImportItem):
             return self
 
         # Sort by rank and mutate our position within the list to get a replacement item.
-        cands: List[Item] = sorted(candidates, key=lambda c: c.rank_value)
+        cands: list[Item] = sorted(candidates, key=lambda c: c.rank_value)
         index: int = cands.index(self)
         index = mutate_normal(index, maximum=len(cands) - 1)
         return cands[index]
@@ -294,7 +290,7 @@ class Item(TODOImportItem):
 
         # Begin text data with a single null byte to use for all empty descriptions to save space.
         pointer_data = bytearray()
-        text_data: List[bytearray] = []
+        text_data: list[bytearray] = []
         for _ in range(len(ITEMS_BASE_DESC_DATA_ADDRESSES)):
             text_data.append(bytearray())
         text_data[0].append(0x00)
@@ -428,7 +424,7 @@ class Equipment(Item, TODOImportEquipment):
         raise IllegalItemPropertyException("equipment cannot be a key item")
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         return EQUIP_STATS
 
@@ -450,7 +446,7 @@ class Equipment(Item, TODOImportEquipment):
                 score += 2 * value
         return score
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
         self._set_chest_70a7_lower(self.item_id)
 
@@ -460,7 +456,7 @@ class Weapon(Equipment, TODOImportWeapon):
     Also provides the weapon ID for unarmed attack animations."""
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         if self.attack >= self.magic_attack:
             return [EquipStats.ATTACK]
@@ -471,7 +467,7 @@ class Armor(Equipment, TODOImportArmor):
     """Base class for all armor."""
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         return [EquipStats.DEFENSE, EquipStats.MAGIC_DEFENSE]
 
@@ -480,7 +476,7 @@ class Accessory(Equipment, TODOImportAccessory):
     """Base class for all accessories."""
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         # include Rare Scarf
         if self.item_id == 82:
@@ -508,7 +504,7 @@ class RegularItem(Item):
     _overworld_event = 165
     _overworld_midas_event = 2820
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
         self._set_chest_70a7_lower(self.item_id)
 
@@ -521,7 +517,7 @@ class KeyItem(Item):
     _overworld_event = 165
     _overworld_midas_event = 2820
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
         self._set_chest_70a7_lower(self.item_id)
 
@@ -607,14 +603,14 @@ class Coins(MiscReward):
     def chest_event(self):
         raise IllegalItemPropertyException("use get_chest_event for coins")
 
-    def __init__(self, amount=0, world: Optional["GameWorld"] = None):
+    def __init__(self, amount=0, world: "GameWorld" | None = None):
         super().__init__(world)
         if amount < 10:
-            self._model: Type[ItemNPC] = SmallCoin
+            self._model: type[ItemNPC] = SmallCoin
             self._set_chest_70a7_upper(8)
             self._set_chest_70a7_lower(amount)
         else:
-            self._model: Type[ItemNPC] = BigCoin
+            self._model: type[ItemNPC] = BigCoin
             self._set_chest_70a7_upper(10)
             hits: int = amount // 10
             loops: int = hits // 16
@@ -635,7 +631,7 @@ class StarPiece(MiscReward):
     _npc_event: int = 164
     _overworld_event: int = 166
     _overworld_midas_event: int = 2821
-    _model: Type[ItemNPC] = TinyStar
+    _model: type[ItemNPC] = TinyStar
     _dialog_replacements = {
         2911: (
             """ Item #1: A “Shooting Star”!\n"""
@@ -688,10 +684,10 @@ class RecruitedCharacter(Item):
 
     _starter_script: int = -1
     _container_script: int = -1
-    _model: Type[ItemNPC]
-    _sprites_primary: Dict[str, tuple[int, int, bool]] = {}
-    _sprites_secondary: Dict[str, tuple[int, int, bool]] = {}
-    _doll: Type[ItemNPC]
+    _model: type[ItemNPC]
+    _sprites_primary: dict[str, tuple[int, int, bool]] = {}
+    _sprites_secondary: dict[str, tuple[int, int, bool]] = {}
+    _doll: type[ItemNPC]
     _placeholder: str = "`NAME`"
     _gender: str = "man"
     _gender_casual: str = "guy"
@@ -701,7 +697,7 @@ class RecruitedCharacter(Item):
     _mole_greeting: str = "mate"
     _mboy_greeting: str = ", man"
 
-    _associated_spotted_class: Type[SpottedCharacter]
+    _associated_spotted_class: type[SpottedCharacter]
 
     @property
     def starter_script(self) -> int:
@@ -714,22 +710,22 @@ class RecruitedCharacter(Item):
         return self._container_script
 
     @property
-    def model(self) -> Type[ItemNPC]:
+    def model(self) -> type[ItemNPC]:
         """Graphic object that should be used to represent this character in the overworld."""
         return self._model
 
     @property
-    def sprites_primary(self) -> Dict[str, tuple[int, int, bool]]:
+    def sprites_primary(self) -> dict[str, tuple[int, int, bool]]:
         """[Deprecated]"""
         return self._sprites_primary
 
     @property
-    def sprites_secondary(self) -> Dict[str, tuple[int, int, bool]]:
+    def sprites_secondary(self) -> dict[str, tuple[int, int, bool]]:
         """[Deprecated]"""
         return self._sprites_secondary
 
     @property
-    def doll(self) -> Type[ItemNPC]:
+    def doll(self) -> type[ItemNPC]:
         """Graphic object that should be used to represent this character's
         corresponding doll in the overworld."""
         return self._doll
@@ -780,7 +776,7 @@ class RecruitedCharacter(Item):
         return self._mboy_greeting
 
     @property
-    def associated_spotted_class(self) -> Type[SpottedCharacter]:
+    def associated_spotted_class(self) -> type[SpottedCharacter]:
         """The SpottedCharacter class definition that represents this character."""
         return self._associated_spotted_class
 

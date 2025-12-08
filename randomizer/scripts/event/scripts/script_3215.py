@@ -15,8 +15,7 @@ script = EventScript(
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASShiftZUpSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

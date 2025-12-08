@@ -7,10 +7,8 @@ import enum
 import copy
 import uuid
 import math
-from typing import Union
 from randomizer.helpers.objectsequencetables import (
-    _0x08Flags,
-)  # circular dependency because of data init. consider moving data types into helpers
+    _0x08Flags)  # circular dependency because of data init. consider moving data types into helpers
 from randomizer.helpers.eventtables import AreaObjects
 from randomizer.helpers.flag_helpers import SequenceType
 from randomizer.data.npcs.npcs import Coin, FrogCoin, SmallCoin, SmallFrogCoin
@@ -72,7 +70,7 @@ class BitMapSet(set):
 class ByteField:
     """Base class for an integer value field spanning one or more bytes."""
 
-    def __init__(self, value: Union[UInt8, UInt16, int], num_bytes: int = 1):
+    def __init__(self, value: UInt8 | UInt16 | int, num_bytes: int = 1):
         """
         :type value: int
         :type num_bytes: int
@@ -293,8 +291,7 @@ def fix_directions_for_sequenced_sprite(
     sequence_type=SequenceType.SEQUENCE,
     sequence_id=0,
     sprite_offset=0,
-    loop=True,
-):
+    loop=True):
     # specific sequence sprites: face left or right depending on intent of script
     output = []
     flags = []
@@ -594,8 +591,7 @@ def get_min_vram_size_for_eventscript(world, npc_id, sprite_id, script):
         if is_animation_header(cmd, npc_id):
             min_vram = max(
                 min_vram,
-                get_min_vram_size_for_actionscript(world, sprite_id, cmd["subscript"]),
-            )
+                get_min_vram_size_for_actionscript(world, sprite_id, cmd["subscript"]))
     return min_vram
 
 

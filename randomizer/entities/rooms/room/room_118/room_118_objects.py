@@ -37,8 +37,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     BattlePackNPC(
         occupant=Birdy,
@@ -75,8 +74,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_2
     BattlePackClone(
         occupant=Birdy,
@@ -94,8 +92,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_3
     BattlePackNPC(
         occupant=Birdy,
@@ -132,8 +129,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_4
     BattlePackClone(
         occupant=Birdy,
@@ -151,8 +147,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_5
     BattlePackNPC(
         occupant=Shaman,
@@ -186,8 +181,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     BattlePackClone(
         occupant=Shaman,
@@ -202,8 +196,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     BattlePackNPC(
         occupant=Birdy,
@@ -237,8 +230,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=Empty,
@@ -271,8 +263,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     BattlePackNPC(
         occupant=HeavyTropa,
@@ -307,8 +298,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_10
     RegularNPC(
         occupant=Empty,
@@ -341,8 +331,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularClone(
         occupant=Empty,
@@ -357,6 +346,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

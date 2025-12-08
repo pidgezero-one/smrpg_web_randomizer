@@ -18,8 +18,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASWalkNortheastPixels(8),
                 ASPause(45),
                 ASSetPriority(2),
@@ -37,8 +36,7 @@ script = EventScript(
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASSequenceLoopingOn(),
                 ASReturn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -53,13 +51,11 @@ script = EventScript(
                 ASWalkSouthwestPixels(8),
                 ASSetWalkingSpeed(SLOW),
                 ASWalkSouthwestPixels(4),
-            ],
-        ),
+            ]),
         Pause(15),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(SLOW), ASWalkNortheastSteps(12)],
-        ),
+            subscript=[ASSetWalkingSpeed(SLOW), ASWalkNortheastSteps(12)]),
         JmpIfBitSet(TOADOFSKY_REMOVED, ["EVENT_1074_set_7000_to_7000_short_mem_7"]),
         JmpIfBitSet(
             MELODY_BAY_ITEM_3_GRANTED, ["EVENT_1074_set_7000_to_7000_short_mem_7"]
@@ -74,20 +70,17 @@ script = EventScript(
         JmpIfBitClear(
             MINECART_CLEARED,
             ["EVENT_1074_set_7000_to_7000_short_mem_7"],
-            identifier="EVENT_1074_second_song_not_unlocked_yet",
-        ),
+            identifier="EVENT_1074_second_song_not_unlocked_yet"),
         JmpToEvent(E1080_MELODY_BAY_SONG_2_VALIDATOR),
         JmpIfBitClear(
             MELODY_BAY_SONG_3_UNLOCKED,
             ["EVENT_1074_set_7000_to_7000_short_mem_7"],
-            identifier="EVENT_1074_third_song_not_unlocked_yet",
-        ),
+            identifier="EVENT_1074_third_song_not_unlocked_yet"),
         JmpToEvent(E1081_MELODY_BAY_SONG_3_VALIDATOR),
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1074_set_7000_to_7000_short_mem_7",
-        ),
+            identifier="EVENT_1074_set_7000_to_7000_short_mem_7"),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
         SetSyncActionScript(NPC_0, A0572_MELODY_BAY_TADPOLE_INCORRECT),
         ClearBit(TEMP_7043_0),
@@ -139,16 +132,14 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFaceNorthwest(),
                 ASPause(5),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI2725_SONG_SIMILARITY_0,
             above_object=NPC_14,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),
         Pause(15, identifier="EVENT_1074_pause_113"),
@@ -159,8 +150,7 @@ script = EventScript(
                     index=1, is_mold=True, looping=True, mirror_sprite=True
                 ),
                 ASPause(15),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -169,20 +159,17 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFaceNorthwest(),
                 ASPause(5),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI2726_SONG_SIMILARITY_1,
             above_object=NPC_14,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueAsync(
             target=NPC_8,
-            subscript=[ASSetSpriteSequence(index=0, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=0, is_sequence=True, looping=True)]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),
         Pause(15, identifier="EVENT_1074_pause_121"),
@@ -201,8 +188,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_mold=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -211,23 +197,20 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFaceNorthwest(),
                 ASPause(5),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI2727_SONG_SIMILARITY_2,
             above_object=NPC_14,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
                 ASSetSequenceSpeed(SLOW),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),
         Pause(15, identifier="EVENT_1074_pause_129"),
@@ -247,8 +230,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_mold=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -257,23 +239,20 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFaceNorthwest(),
                 ASPause(5),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI2728_SONG_SIMILARITY_3,
             above_object=NPC_14,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),
         Pause(15, identifier="EVENT_1074_pause_137"),
@@ -292,8 +271,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_mold=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -302,23 +280,20 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFaceNorthwest(),
                 ASPause(5),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI2729_SONG_SIMILARITY_4,
             above_object=NPC_12,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
                 ASSetSequenceSpeed(FAST),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),
         Pause(15, identifier="EVENT_1074_pause_145"),
@@ -334,8 +309,7 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASWalkSoutheastSteps(2),
                 ASWalkSoutheastPixels(8),
-            ],
-        ),
+            ]),
         Pause(15),
         ActionQueueAsync(
             target=MARIO,
@@ -344,16 +318,14 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFaceNorthwest(),
                 ASSetPriority(2),
-            ],
-        ),
+            ]),
         Pause(15),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         Pause(15),
         ActionQueueAsync(
             target=NPC_8,
@@ -361,8 +333,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         JmpIfBitClear(MELODY_BAY_ITEM_1_GRANTED, ["EVENT_1074_set_157"]),
         JmpIfBitClear(MELODY_BAY_ITEM_2_GRANTED, ["EVENT_1074_set_162"]),
         JmpIfBitClear(MELODY_BAY_ITEM_3_GRANTED, ["EVENT_1074_set_168"]),
@@ -400,8 +371,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(8),
                 ASVisibilityOff(),
             ],
-            identifier="EVENT_1074_action_queue_async_185",
-        ),
+            identifier="EVENT_1074_action_queue_async_185"),
         RemoveObjectFromCurrentLevel(NPC_8),
         SetBit(TOADOFSKY_REMOVED),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
@@ -415,16 +385,14 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASPause(5),
             ],
-            identifier="EVENT_1074_action_queue_async_190",
-        ),
+            identifier="EVENT_1074_action_queue_async_190"),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000,
             0,
             ["EVENT_1074_play_sound_376"],
-            identifier="EVENT_1074_jmp_if_7000_equals_short_369",
-        ),
+            identifier="EVENT_1074_jmp_if_7000_equals_short_369"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_1074_play_sound_378"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_1074_play_sound_380"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_1074_play_sound_382"]),
@@ -434,44 +402,37 @@ script = EventScript(
         PlaySound(
             sound=SO036_TADPOLE_POND_STAFF_DO,
             channel=6,
-            identifier="EVENT_1074_play_sound_376",
-        ),
+            identifier="EVENT_1074_play_sound_376"),
         Return(),
         PlaySound(
             sound=SO037_TADPOLE_POND_STAFF_RE,
             channel=6,
-            identifier="EVENT_1074_play_sound_378",
-        ),
+            identifier="EVENT_1074_play_sound_378"),
         Return(),
         PlaySound(
             sound=SO038_TADPOLE_POND_STAFF_MI,
             channel=6,
-            identifier="EVENT_1074_play_sound_380",
-        ),
+            identifier="EVENT_1074_play_sound_380"),
         Return(),
         PlaySound(
             sound=SO039_TADPOLE_POND_STAFF_FA,
             channel=6,
-            identifier="EVENT_1074_play_sound_382",
-        ),
+            identifier="EVENT_1074_play_sound_382"),
         Return(),
         PlaySound(
             sound=SO040_TADPOLE_POND_STAFF_SO,
             channel=6,
-            identifier="EVENT_1074_play_sound_384",
-        ),
+            identifier="EVENT_1074_play_sound_384"),
         Return(),
         PlaySound(
             sound=SO041_TADPOLE_POND_STAFF_LA,
             channel=6,
-            identifier="EVENT_1074_play_sound_386",
-        ),
+            identifier="EVENT_1074_play_sound_386"),
         Return(),
         PlaySound(
             sound=SO042_TADPOLE_POND_STAFF_TI,
             channel=6,
-            identifier="EVENT_1074_play_sound_388",
-        ),
+            identifier="EVENT_1074_play_sound_388"),
         Return(),
     ]
 )

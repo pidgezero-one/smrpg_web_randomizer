@@ -13,5 +13,4 @@ room = Room(
     extra_sprite_actions=[
         ExtraSpriteActions.HOLD_STAR,
         ExtraSpriteActions.LEAN_BACK,
-    ],
-)
+    ])

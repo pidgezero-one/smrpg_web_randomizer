@@ -14,8 +14,7 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(
             NPC_2,
             R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
-            identifier="EVENT_2118_remove_from_level_4",
-        ),
+            identifier="EVENT_2118_remove_from_level_4"),
         RemoveObjectFromCurrentLevel(NPC_2),
         FadeInFromBlack(sync=False),
         ClearBit(STATUE_KEEPER_FIGHT_PRESENT),

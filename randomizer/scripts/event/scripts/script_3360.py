@@ -15,8 +15,7 @@ script = EventScript(
         SetTempSyncActionScript(
             NPC_2,
             A0008_HIT_TREASURE_CHEST_CONTENTS_REMAINING,
-            identifier="EVENT_3360_set_temp_action_script_sync_6",
-        ),
+            identifier="EVENT_3360_set_temp_action_script_sync_6"),
         Set70107015ToObjectXYZ(NPC_2, identifier="EVENT_3360_set_7010_to_object_xyz_7"),
         CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 608),

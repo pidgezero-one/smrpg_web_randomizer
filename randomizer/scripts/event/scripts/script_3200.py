@@ -18,8 +18,7 @@ script = EventScript(
                 ASPause(36),
                 ASSetSequenceSpeed(FAST),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=6),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -52,8 +51,7 @@ script = EventScript(
                     index=5, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASWalkToXYCoords(x=7, y=49),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO021_RUMBLING, channel=6),
         StartAsyncEmbeddedActionScript(
             target=SCREEN_FOCUS,
@@ -71,22 +69,19 @@ script = EventScript(
                 ASWalkNorthPixels(2),
                 ASEndLoop(),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         StartSyncEmbeddedActionScript(
             target=MEM_70AA,
             prefix=0xF1,
             subscript=[
                 ASPause(
                     1,
-                    identifier="EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_pause_0",
-                ),
+                    identifier="EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_pause_0"),
                 ASJmpIfBitClear(
                     TEMP_7043_1,
                     [
                         "EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_pause_0"
-                    ],
-                ),
+                    ]),
                 ASClearBit(TEMP_7043_1),
                 ASSequenceLoopingOn(),
                 ASSetSequenceSpeed(FAST),
@@ -96,8 +91,7 @@ script = EventScript(
                 ASSetSequenceSpeed(NORMAL),
                 ASResetProperties(),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -125,8 +119,7 @@ script = EventScript(
                 ASWalk1StepSouth(),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASSetSolidityBits(cant_pass_npcs=True),
-            ],
-        ),
+            ]),
         Pause(48),
         ActionQueueAsync(
             target=MARIO,
@@ -146,8 +139,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASSetSolidityBits(cant_pass_npcs=True),
                 ASClearBit(TEMP_7043_1),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

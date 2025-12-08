@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=2,
             y=63,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E2175_KEEP_GOOMBA_BATTLE_ROOM_LOADER),
     ]
 )

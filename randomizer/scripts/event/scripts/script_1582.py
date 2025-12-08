@@ -16,8 +16,7 @@ script = EventScript(
         ),
         RunEventAsSubroutine(
             E0065_TRAMPOLINE_SUBROUTINE,
-            identifier="EVENT_1582_run_event_as_subroutine_4",
-        ),
+            identifier="EVENT_1582_run_event_as_subroutine_4"),
         SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
         EnterArea(
             room_id=R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
@@ -25,8 +24,7 @@ script = EventScript(
             x=8,
             y=100,
             z=14,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         SetAsyncActionScript(MARIO, A0010_FALL_ON_TRAMPOLINE),
         Return(),
     ]

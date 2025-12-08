@@ -18,8 +18,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkToXYCoords(x=5, y=16),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         Pause(30),
         FreezeCamera(),
         ActionQueueSync(
@@ -38,8 +37,7 @@ script = EventScript(
                 ASPause(15),
                 ASPlaySound(sound=SO096_SWINGING_FIST, channel=6),
                 ASPause(30),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0864_DOJO_3RD_BOSS_CHALLENGE_SUBROUTINE),
         SetVarToConst(PRIMARY_TEMP_7000, 516),
         RunEventAsSubroutine(E0353_BOSS_BATTLE),
@@ -69,8 +67,7 @@ script = EventScript(
                 ASPause(30),
                 ASSetAllSpeeds(SLOW),
                 ASWalkSouthwestSteps(1),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_2076_action_queue_async_62"]),
         FadeInFromBlack(
             sync=False, identifier="EVENT_2076_fade_in_from_black_async_60"
@@ -85,8 +82,7 @@ script = EventScript(
                 ASPause(30),
                 ASSetAllSpeeds(SLOW),
                 ASWalkSouthwestSteps(1),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -102,8 +98,7 @@ script = EventScript(
                 ),
                 ASSetAllSpeeds(NORMAL),
             ],
-            identifier="EVENT_2076_action_queue_async_62",
-        ),
+            identifier="EVENT_2076_action_queue_async_62"),
         UnfreezeCamera(),
         JmpIfBitSet(RUN_AWAY, ["EVENT_2076_pause_64"]),
         JmpIfBitSet(GAME_OVER, ["EVENT_2076_pause_64"]),

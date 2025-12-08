@@ -13,8 +13,7 @@ from randomizer.scripts.action import action_script_bank
 from randomizer.scripts.animation import (
     collection_0x02xxxx,
     collection_0x35xxxx,
-    collection_0x3Axxxx,
-)
+    collection_0x3Axxxx)
 from randomizer.scripts.monster import monster_script_bank
 from randomizer.entities.dialogs.overworld_dialogs import dialog_table
 from randomizer.entities.enemies import enemy_table
@@ -30,8 +29,7 @@ from randomizer.entities.progress_locations import (
     character_spell_slots_table,
     characters_recruited_table,
     characters_spotted_table,
-    item_location_table,
-)
+    item_location_table)
 from randomizer.types.world.classes import WorldBuildingException
 
 from .finalize_location_list import finalize_location_list
@@ -47,8 +45,7 @@ def randomize(
             settings = Settings(
                 debug_mode=debug,
                 flag_string=settings_string,
-                cosmetics_string=cosmetics_string,
-            )
+                cosmetics_string=cosmetics_string)
             world = GameWorld(
                 seed=seed,
                 settings=settings,
@@ -78,8 +75,7 @@ def randomize(
                 character_spotted_locations=characters_spotted_table,
                 character_recruit_locations=characters_recruited_table,
                 character_spell_slots=character_spell_slots_table,
-                sprites=SpriteCollection(),
-            )
+                sprites=SpriteCollection())
 
             finalize_location_list(world)
             randomize_all_items(world)

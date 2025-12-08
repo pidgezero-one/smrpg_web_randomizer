@@ -4,11 +4,9 @@
 
 from randomizer.types.battle_animation_scripts.types import AnimationScriptBank
 from randomizer.types.battle_animation_scripts.ids import (
-    SUBROUTINES_0X3573AC,
-)
+    SUBROUTINES_0X3573AC)
 from randomizer.scripts.animation.subroutines.contents.subroutine_0x3573AC import (
-    script as subroutine_0x3573AC,
-)
+    script as subroutine_0x3573AC)
 
 bank = AnimationScriptBank(
     name=SUBROUTINES_0X3573AC,
@@ -16,5 +14,4 @@ bank = AnimationScriptBank(
     end=0x3575FB,
     scripts=[
         subroutine_0x3573AC,
-    ],
-)
+    ])

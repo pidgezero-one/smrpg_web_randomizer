@@ -1,14 +1,11 @@
 """Progress location definitions for spotted (not necessarily recruited) characters."""
 
-from typing import Type
-
 from randomizer.entities.characters import (
     BowserSpotted,
     GenoSpotted,
     MallowSpotted,
     MarioSpotted,
-    ToadstoolSpotted,
-)
+    ToadstoolSpotted)
 from randomizer.types.items import SpottedCharacter
 from randomizer.types.progress_locations import CharacterSpottedLocation
 
@@ -16,7 +13,7 @@ from randomizer.types.progress_locations import CharacterSpottedLocation
 class StartingCharacterSpotted1(CharacterSpottedLocation):
     """StartingCharacterSpotted1 progress location class"""
 
-    _original_item: Type[SpottedCharacter] = MarioSpotted
+    _original_item: type[SpottedCharacter] = MarioSpotted
 
 
 class StartingCharacterSpotted2(CharacterSpottedLocation):
@@ -46,22 +43,22 @@ class StartingCharacterSpotted5(CharacterSpottedLocation):
 class MushroomWayCharacterSpotted(CharacterSpottedLocation):
     """MushroomWayCharacterSpotted progress location class"""
 
-    _original_item: Type[SpottedCharacter] = MallowSpotted
+    _original_item: type[SpottedCharacter] = MallowSpotted
 
 
 class ForestMazeCharacterSpotted(CharacterSpottedLocation):
     """ForestMazeCharacterSpotted progress location class"""
 
-    _original_item: Type[SpottedCharacter] = GenoSpotted
+    _original_item: type[SpottedCharacter] = GenoSpotted
 
 
 class MinesCharacterSpotted(CharacterSpottedLocation):
     """MinesCharacterSpotted progress location class"""
 
-    _original_item: Type[SpottedCharacter] = BowserSpotted
+    _original_item: type[SpottedCharacter] = BowserSpotted
 
 
 class ChapelCharacterSpotted(CharacterSpottedLocation):
     """ChapelCharacterSpotted progress location class"""
 
-    _original_item: Type[SpottedCharacter] = ToadstoolSpotted
+    _original_item: type[SpottedCharacter] = ToadstoolSpotted

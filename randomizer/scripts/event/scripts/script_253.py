@@ -148,8 +148,7 @@ script = EventScript(
         JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
         JmpToEvent(
             E0184_NPC_QUEST_GRANT_SINGLE_FIREWORKS,
-            identifier="EVENT_253_room_339_logic",
-        ),
+            identifier="EVENT_253_room_339_logic"),
         SetVarToConst(ITEM_ID, RedEssence, identifier="EVENT_253_room_346_logic"),
         JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
         SetVarToConst(ITEM_ID, QuartzCharm, identifier="EVENT_253_room_351_logic"),

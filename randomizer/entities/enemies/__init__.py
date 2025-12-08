@@ -256,8 +256,7 @@ from .classes import (
     Cloaker2,
     Domino2,
     Candle,
-    Culex,
-)
+    Culex)
 
 enemy_table = [
     Terrapin,

@@ -33,7 +33,7 @@ room = Room(
         ],
         full_palette_buffer=True
     ),
-    music=M0002_MUSHROOMKINGDOM,
+    music=M0000_CURRENT,
     entrance_event=E0401_GUEST_ROOM_ANTECHAMBER_LOADER,
     exits=[
         RoomExit(
@@ -53,27 +53,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
-        RoomExit(
-            x=17,
-            y=61,
-            z=3,
-            f=EdgeDirection.SOUTHWEST,
-            length=2,
-            height=0,
-            nw_se_edge_active=True,
-            ne_sw_edge_active=False,
-            byte_2_bit_2=False,
-            destination=R022_MUSHROOM_KINGDOM_CASTLE_GUEST_ROOM,
-            show_message=False,
-            dst_x=22,
-            dst_y=52,
-            dst_z=0,
-            dst_z_half=False,
-            dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=13,
             y=70,
@@ -91,8 +71,20 @@ room = Room(
             dst_z=2,
             dst_z_half=True,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
+    ],
+    events=[
+        Event(
+            event=E3103_ENTER_MK_GUEST_ROOM,
+            x=17,
+            y=61,
+            z=3,
+            f=EdgeDirection.SOUTHWEST,
+            length=2,
+            height=0,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=False,
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -121,7 +113,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -15,8 +15,7 @@ script = EventScript(
                 ASLoadMemory(PRIMARY_TEMP_7000),
                 ASWalkSouthwestPixels(2),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_2048_jmp_if_bit_set_11"]),
         SetBit(MONSTRO_LEDGE_ITEM_KNOCKED_DOWN, identifier="EVENT_2048_set_bit_9"),
         ActionQueueAsync(
@@ -25,8 +24,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_7,
             ["EVENT_2048_fade_in_from_black_async_12"],
-            identifier="EVENT_2048_jmp_if_bit_set_11",
-        ),
+            identifier="EVENT_2048_jmp_if_bit_set_11"),
         SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
         RunEventAsSubroutine(E2079_MONSTRO_TOWN_EXTERIOR_LOADER_FROM_SAVE_BOX),
         Jmp(["EVENT_2048_jmp_if_bit_clear_7"]),
@@ -36,8 +34,7 @@ script = EventScript(
         JmpIfBitClear(
             SIGNAL_RING_DIRECTIONAL_BIT,
             ["EVENT_2048_star_grant"],
-            identifier="EVENT_2048_jmp_if_bit_clear_7",
-        ),
+            identifier="EVENT_2048_jmp_if_bit_clear_7"),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
         JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2048_star_grant"]),
         RunEventAsSubroutine(E3909_MONSTRO_STAR_PIECE_SIGNAL),

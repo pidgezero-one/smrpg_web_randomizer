@@ -27,8 +27,7 @@ script = EventScript(
             face_direction=SOUTHWEST,
             x=5,
             y=114,
-            z=15,
-        ),
+            z=15),
         RestoreAllHP(),
         RestoreAllFP(),
         SetBit(TOWER_BOSS_2_DEFEATED),
@@ -39,12 +38,10 @@ script = EventScript(
         JmpIfBitClear(
             MARRYMORE_LIBERATED,
             ["EVENT_1926_balcony_empty"],
-            identifier="EVENT_1926_jmp_if_bit_clear_73",
-        ),
+            identifier="EVENT_1926_jmp_if_bit_clear_73"),
         JmpToEvent(E1282_TOWER_BALCONY_LOADER_AFTER_MARRYMORE),
         JmpToEvent(
             E1283_TOWER_BALCONY_LOADER_BEFORE_MARRYMORE,
-            identifier="EVENT_1926_balcony_empty",
-        ),
+            identifier="EVENT_1926_balcony_empty"),
     ]
 )

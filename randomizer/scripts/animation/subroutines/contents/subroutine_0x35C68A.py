@@ -22,20 +22,17 @@ script = SubroutineOrBanklessScript(
         NewEffectObject(
             effect=EF0069_SMITHY_TREASURE_HEAD_SPELL__RED,
             playback_off=True,
-            identifier="command_0x35c6b0",
-        ),
+            identifier="command_0x35c6b0"),
         Jmp(["command_0x35c6bf"]),
         NewEffectObject(
             effect=EF0071_SMITHY_TREASURE_HEAD_SPELL__BLUE,
             playback_off=True,
-            identifier="command_0x35c6b6",
-        ),
+            identifier="command_0x35c6b6"),
         Jmp(["command_0x35c6bf"]),
         NewEffectObject(
             effect=EF0070_SMITHY_TREASURE_HEAD_SPELL__GREEN,
             playback_off=True,
-            identifier="command_0x35c6bc",
-        ),
+            identifier="command_0x35c6bc"),
         Db(bytearray(b"y\x00\x11\x1e\x02"), identifier="command_0x35c6bf"),
         Layer3On(prop=OVERLAP_ALL, bpp4=True),
         Db(bytearray(b"\x9c\x80B \x00\x04\x00`\x00")),
@@ -63,5 +60,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6F, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
         ReturnObjectQueue(),
-    ],
-)
+    ])

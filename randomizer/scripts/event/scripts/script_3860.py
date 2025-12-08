@@ -15,12 +15,10 @@ script = EventScript(
             x=4,
             y=18,
             z=8,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASFaceSouth(), ASJumpToHeight(height=0, silent=True)],
-        ),
+            subscript=[ASFaceSouth(), ASJumpToHeight(height=0, silent=True)]),
         Return(),
     ]
 )

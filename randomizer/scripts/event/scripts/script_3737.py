@@ -17,12 +17,10 @@ script = EventScript(
                 ASPause(1),
                 ASResetProperties(),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASWalk1StepEast()],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalk1StepEast()]),
         FadeInFromBlack(sync=True),
         ActionQueueAsync(
             target=MARIO,
@@ -51,8 +49,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASSetWalkingSpeed(FAST),
                 ASStartLoopNTimes(2),
                 ASWalkSouthwestPixels(4),
@@ -68,8 +65,7 @@ script = EventScript(
                     index=9, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         Pause(10),
         FadeOutToBlack(sync=False),
         EnterArea(
@@ -77,8 +73,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=27,
             y=29,
-            z=6,
-        ),
+            z=6),
         RunEventAtReturn(E3745_NIMBUS_BACK_EXIT_INITIATE_FALLING_SEQUENCE),
         Return(),
     ]

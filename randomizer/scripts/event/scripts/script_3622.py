@@ -16,15 +16,13 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA,
-            mod_id=7,
-        ),
+            mod_id=7),
         Return(),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA,
             mod_id=7,
-            identifier="EVENT_3622_apply_tile_mod_10",
-        ),
+            identifier="EVENT_3622_apply_tile_mod_10"),
         Return(),
     ]
 )

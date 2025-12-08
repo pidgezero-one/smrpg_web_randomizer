@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=22,
             y=123,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E1836_KEEP_DONKEY_ROOM_LOADER),
     ]
 )

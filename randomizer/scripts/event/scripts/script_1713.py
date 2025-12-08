@@ -16,16 +16,14 @@ script = EventScript(
         JmpIfBitClear(
             UNKNOWN_7077_7,
             ["EVENT_1713_sequence_setter_3"],
-            identifier="EVENT_1713_jmp_if_bit_clear_6",
-        ),
+            identifier="EVENT_1713_jmp_if_bit_clear_6"),
         SetSyncActionScript(NPC_8, A0162_BOSS_IN_BANDITS_WAY_3),
         RunEventAsSubroutine(E0758_BANDITS_WAY_AREA_03_SHUFFLED_NPC_ANIMATION_LOADER),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         Return(),
         RunEventAsSubroutine(
             E0758_BANDITS_WAY_AREA_03_SHUFFLED_NPC_ANIMATION_LOADER,
-            identifier="EVENT_1713_sequence_setter_3",
-        ),
+            identifier="EVENT_1713_sequence_setter_3"),
         FadeInFromBlack(sync=True),
         ActionQueueSync(
             target=NPC_8,
@@ -34,8 +32,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=5, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         Pause(60),
         ActionQueueAsync(
             target=NPC_8,
@@ -45,8 +42,7 @@ script = EventScript(
                 ASPause(30),
                 ASResetProperties(),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_8, A0162_BOSS_IN_BANDITS_WAY_3),
         Return(),
     ]

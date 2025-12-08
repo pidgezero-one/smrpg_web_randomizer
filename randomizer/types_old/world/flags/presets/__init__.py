@@ -8,5 +8,4 @@ from .presets import (
     QuickPreset,
     ExplorerPreset,
     Spring2021AsyncTourneyPreset,
-    PRESETS,
-)
+    PRESETS)

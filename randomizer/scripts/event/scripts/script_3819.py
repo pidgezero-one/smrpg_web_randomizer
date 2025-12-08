@@ -40,8 +40,7 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_1,
             subscript=[ASWalkNortheastPixels(8)],
-            identifier="EVENT_3819_action_queue_sync_36",
-        ),
+            identifier="EVENT_3819_action_queue_sync_36"),
         ActionQueueSync(target=NPC_0, subscript=[ASWalkWestPixels(4)]),
         ActionQueueAsync(
             target=NPC_4,
@@ -49,15 +48,13 @@ script = EventScript(
                 ASWalkNortheastPixels(8),
                 ASShiftZUpPixels(4),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         JmpIfBitSet(TEMP_7044_7, ["EVENT_3819_run_event_as_subroutine_43"]),
         RunEventAsSubroutine(E1844_SUMMON_CLOUD_BOSS),
         JmpIfBitClear(
             TEMP_7044_7,
             ["EVENT_3819_jmp_to_event_13"],
-            identifier="EVENT_3819_run_event_as_subroutine_43",
-        ),
+            identifier="EVENT_3819_run_event_as_subroutine_43"),
         SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
         RunEventAsSubroutine(
             E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3819_jmp_to_event_13"
@@ -70,15 +67,13 @@ script = EventScript(
         JmpIfBitClear(
             MELODY_BAY_SONG_3_UNLOCKED,
             ["EVENT_3819_action_queue_sync_36"],
-            identifier="EVENT_3819_jmp_if_bit_clear_50",
-        ),
+            identifier="EVENT_3819_jmp_if_bit_clear_50"),
         EnterArea(
             room_id=R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS,
             face_direction=SOUTHWEST,
             x=26,
             y=103,
-            z=22,
-        ),
+            z=22),
         SummonObjectToSpecificLevel(NPC_2, R319_LANDS_END_DESERT_AREA_06),
         SummonObjectToSpecificLevel(NPC_6, R402_LANDS_END_DESERT_AREA_03),
         SummonObjectToSpecificLevel(NPC_2, R403_LANDS_END_DESERT_AREA_05),

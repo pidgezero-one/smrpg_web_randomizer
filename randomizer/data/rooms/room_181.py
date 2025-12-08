@@ -53,8 +53,7 @@ room = Room(
             dst_z=6,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=22,
             y=69,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=20,
             y=65,
@@ -91,8 +89,7 @@ room = Room(
             dst_z=4,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -122,8 +119,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.ALLEY_RAT_NPC,
             battle_pack=74,
@@ -133,8 +129,7 @@ room = Room(
             y=60,
             z=6,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 2
             npc=npcs.ALLEY_RAT_NPC,
             battle_pack=74,
@@ -144,8 +139,7 @@ room = Room(
             y=58,
             z=6,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 3
             npc=npcs.ALLEY_RAT_NPC,
             battle_pack=74,
@@ -155,8 +149,7 @@ room = Room(
             y=58,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 4
             npc=npcs.ALLEY_RAT_NPC,
             battle_pack=74,
@@ -166,8 +159,7 @@ room = Room(
             y=60,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 5
             npc=npcs.ALLEY_RAT_NPC,
             battle_pack=74,
@@ -177,8 +169,7 @@ room = Room(
             y=62,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.BULLET_BILL_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -205,8 +196,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.BULLET_BILL_NPC,
             event_script=E3293_SHIP_BULLET_COLLISION,
@@ -216,8 +206,7 @@ room = Room(
             y=63,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 8
             npc=npcs.BULLET_BILL_NPC_2,
             event_script=E3293_SHIP_BULLET_COLLISION,
@@ -227,8 +216,7 @@ room = Room(
             y=63,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 9
             npc=npcs.BULLET_BILL_NPC_2,
             event_script=E3293_SHIP_BULLET_COLLISION,
@@ -238,8 +226,7 @@ room = Room(
             y=59,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 10
             npc=npcs.BULLET_BILL_NPC,
             event_script=E3293_SHIP_BULLET_COLLISION,
@@ -249,8 +236,7 @@ room = Room(
             y=61,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 11
             npc=npcs.BULLET_BILL_NPC_2,
             event_script=E3293_SHIP_BULLET_COLLISION,
@@ -260,7 +246,6 @@ room = Room(
             y=61,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

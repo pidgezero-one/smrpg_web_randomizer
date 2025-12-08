@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35be0e",
-        ),
+            identifier="queuestart_0x35be0e"),
         SetAMEM8BitToOMEMMain(amem=0x6C, omem=0x6D),
         Db(bytearray(b" \x80\x10\x00")),
         JmpIfAMEM8BitGreaterOrEqualThanConst(0x60, 31, ["command_0x35be28"]),
@@ -49,8 +48,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35be60",
-        ),
+            identifier="queuestart_0x35be60"),
         Db(bytearray(b"\x8b\x11\x00\x00\x11")),
         DoMaskEffect(CYLINDER_MASK),
         SetMaskCoords((1, 18), (-113, 13), (33, 56), (42, 0)),
@@ -74,5 +72,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6F, 1),
         Set7E1xToAMEM8Bit(0x7EE020, 0x6F),
         ReturnObjectQueue(),
-    ],
-)
+    ])

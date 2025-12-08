@@ -12,8 +12,7 @@ script = EventScript(
         JmpIfBitClear(
             BANDITS_WAY_LIBERATED,
             ["EVENT_1708_jmp_if_bit_clear_9"],
-            identifier="EVENT_1708_jmp_if_bit_clear_3",
-        ),
+            identifier="EVENT_1708_jmp_if_bit_clear_3"),
         RemoveObjectFromCurrentLevel(NPC_1),
         RemoveObjectFromCurrentLevel(NPC_2),
         RemoveObjectFromCurrentLevel(NPC_3),
@@ -24,13 +23,11 @@ script = EventScript(
                 ASVisibilityOn(),
                 ASJumpToHeight(0),
                 ASSetSolidityBits(cant_walk_through=True),
-            ],
-        ),
+            ]),
         JmpIfBitClear(
             MUSHROOM_KINGDOM_OCCUPIED,
             ["EVENT_1708_jmp_if_bit_clear_15"],
-            identifier="EVENT_1708_jmp_if_bit_clear_9",
-        ),
+            identifier="EVENT_1708_jmp_if_bit_clear_9"),
         RemoveObjectFromCurrentLevel(NPC_5),
         RemoveObjectFromCurrentLevel(NPC_6),
         RemoveObjectFromCurrentLevel(NPC_7),
@@ -40,8 +37,7 @@ script = EventScript(
         JmpIfBitClear(
             BANDITS_WAY_CUTSCENE_5_VIEWED,
             ["EVENT_1708_set_bit_20"],
-            identifier="EVENT_1708_jmp_if_bit_clear_15",
-        ),
+            identifier="EVENT_1708_jmp_if_bit_clear_15"),
         RunEventAsSubroutine(E0760_BANDITS_WAY_AREA_05_SHUFFLED_NPC_ANIMATION_LOADER),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         JmpToSubroutine(["EVENT_1708_action_queue_async_37"]),
@@ -59,8 +55,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=5, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         Pause(60),
         ActionQueueAsync(
             target=NPC_8,
@@ -72,8 +67,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASPause(20),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -92,8 +86,7 @@ script = EventScript(
                 ASShiftNorthSteps(2),
                 ASWalkNortheastSteps(8),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -107,8 +100,7 @@ script = EventScript(
                 ASShiftNorthSteps(13),
                 ASWalkNorthwestSteps(8),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         StopEmbeddedActionScript(NPC_8),
         JmpToSubroutine(["EVENT_1708_action_queue_async_37"]),
         RunBackgroundEvent(
@@ -121,15 +113,13 @@ script = EventScript(
                 ASTransferToXYZF(x=10, y=90, z=0, direction=EAST),
                 ASFaceNortheast(),
             ],
-            identifier="EVENT_1708_action_queue_async_37",
-        ),
+            identifier="EVENT_1708_action_queue_async_37"),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
                 ASTransferToXYZF(x=14, y=102, z=0, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7044_2),
         ClearBit(TEMP_7043_7),
         ActionQueueAsync(
@@ -138,15 +128,13 @@ script = EventScript(
                 ASTransferToXYZF(x=11, y=115, z=0, direction=EAST),
                 ASFaceNortheast(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
                 ASTransferToXYZF(x=6, y=98, z=0, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_5, A0472_BANDITS_WAY_5_GOOMBA),
         SetSyncActionScript(NPC_6, A0472_BANDITS_WAY_5_GOOMBA),
         SetSyncActionScript(NPC_7, A0472_BANDITS_WAY_5_GOOMBA),

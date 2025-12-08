@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1558_LANDS_END_SPINNY_FLOWER_1,
             x=2,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1559_LANDS_END_SPINNY_FLOWER_2,
             x=6,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1560_LANDS_END_SPINNY_FLOWER_3,
             x=9,
@@ -82,8 +79,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -103,8 +99,7 @@ room = Room(
             dst_z=6,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=17,
             y=37,
@@ -122,8 +117,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=14,
             y=23,
@@ -141,8 +135,7 @@ room = Room(
             dst_z=12,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -172,8 +165,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.STINGER_NPC,
             battle_pack=80,
@@ -183,8 +175,7 @@ room = Room(
             y=46,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.STINGER_NPC,
             battle_pack=80,
@@ -194,8 +185,7 @@ room = Room(
             y=41,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.STINGER_NPC,
             battle_pack=80,
@@ -205,8 +195,7 @@ room = Room(
             y=38,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 4
             npc=npcs.STINGER_NPC,
             battle_pack=80,
@@ -216,8 +205,7 @@ room = Room(
             y=34,
             z=7,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 5
             npc=npcs.STINGER_NPC,
             battle_pack=81,
@@ -227,8 +215,7 @@ room = Room(
             y=30,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         ChestNPC( # 6
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -257,8 +244,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.SAVE_POINT_NPC_3,
             initiator=EventInitiator.JUMP_ON,
@@ -285,7 +271,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

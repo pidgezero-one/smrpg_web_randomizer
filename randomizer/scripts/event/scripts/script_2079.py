@@ -17,8 +17,7 @@ script = EventScript(
                 ASFaceSouth(),
                 ASFloatingOff(),
                 ASSequencePlaybackOff(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=MARIO,
@@ -49,8 +48,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         UnfreezeCamera(),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),

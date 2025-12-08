@@ -33,8 +33,7 @@ script = EventScript(
                 ASShiftZDownSteps(2),
                 ASWalkNorthwestSteps(2),
                 ASClearBit(TEMP_7043_1),
-            ],
-        ),
+            ]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_13"
         ),
@@ -42,8 +41,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_2,
             ["EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_19"],
-            identifier="EVENT_1775_jmp_if_bit_set_15",
-        ),
+            identifier="EVENT_1775_jmp_if_bit_set_15"),
         SetBit(TEMP_7043_2),
         JmpToSubroutine(["EVENT_1775_jmp_if_bit_set_57"]),
         ActionQueueSync(
@@ -59,8 +57,7 @@ script = EventScript(
                 ASDecZCoord1Step(),
                 ASWalkNorthwestSteps(5),
                 ASClearBit(TEMP_7043_2),
-            ],
-        ),
+            ]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_19"
         ),
@@ -68,8 +65,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_3,
             ["EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_25"],
-            identifier="EVENT_1775_jmp_if_bit_set_21",
-        ),
+            identifier="EVENT_1775_jmp_if_bit_set_21"),
         SetBit(TEMP_7043_3),
         JmpToSubroutine(["EVENT_1775_jmp_if_bit_set_57"]),
         ActionQueueSync(
@@ -85,8 +81,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(2),
                 ASShiftZDownSteps(2),
                 ASClearBit(TEMP_7043_3),
-            ],
-        ),
+            ]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_25"
         ),
@@ -94,8 +89,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_4,
             ["EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_31"],
-            identifier="EVENT_1775_jmp_if_bit_set_27",
-        ),
+            identifier="EVENT_1775_jmp_if_bit_set_27"),
         SetBit(TEMP_7043_4),
         JmpToSubroutine(["EVENT_1775_jmp_if_bit_set_57"]),
         ActionQueueSync(
@@ -109,8 +103,7 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
                 ASWalkSoutheastSteps(4),
                 ASClearBit(TEMP_7043_4),
-            ],
-        ),
+            ]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_31"
         ),
@@ -118,8 +111,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_5,
             ["EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_37"],
-            identifier="EVENT_1775_jmp_if_bit_set_33",
-        ),
+            identifier="EVENT_1775_jmp_if_bit_set_33"),
         SetBit(TEMP_7043_5),
         JmpToSubroutine(["EVENT_1775_jmp_if_bit_set_57"]),
         ActionQueueSync(
@@ -136,8 +128,7 @@ script = EventScript(
                 ASShiftZDownSteps(2),
                 ASWalk1StepNorthwest(),
                 ASClearBit(TEMP_7043_5),
-            ],
-        ),
+            ]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_37"
         ),
@@ -145,8 +136,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_6,
             ["EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_43"],
-            identifier="EVENT_1775_jmp_if_bit_set_39",
-        ),
+            identifier="EVENT_1775_jmp_if_bit_set_39"),
         SetBit(TEMP_7043_6),
         JmpToSubroutine(["EVENT_1775_jmp_if_bit_set_57"]),
         ActionQueueSync(
@@ -162,8 +152,7 @@ script = EventScript(
                 ASWalk1StepNorthwest(),
                 ASShiftZDownSteps(4),
                 ASClearBit(TEMP_7043_6),
-            ],
-        ),
+            ]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_43"
         ),
@@ -171,8 +160,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_7,
             ["EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_49"],
-            identifier="EVENT_1775_jmp_if_bit_set_45",
-        ),
+            identifier="EVENT_1775_jmp_if_bit_set_45"),
         SetBit(TEMP_7043_7),
         JmpToSubroutine(["EVENT_1775_jmp_if_bit_set_57"]),
         ActionQueueSync(
@@ -190,8 +178,7 @@ script = EventScript(
                 ASShiftZUpSteps(3),
                 ASWalkNorthwestSteps(2),
                 ASClearBit(TEMP_7043_7),
-            ],
-        ),
+            ]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_49"
         ),
@@ -199,8 +186,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7044_0,
             ["EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_55"],
-            identifier="EVENT_1775_jmp_if_bit_set_51",
-        ),
+            identifier="EVENT_1775_jmp_if_bit_set_51"),
         SetBit(TEMP_7044_0),
         JmpToSubroutine(["EVENT_1775_jmp_if_bit_set_57"]),
         ActionQueueSync(
@@ -216,8 +202,7 @@ script = EventScript(
                 ASShiftZDownSteps(3),
                 ASWalkNorthwestSteps(3),
                 ASClearBit(TEMP_7044_0),
-            ],
-        ),
+            ]),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_55"
         ),
@@ -225,8 +210,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_707C_0,
             ["EVENT_1775_clear_bit_60"],
-            identifier="EVENT_1775_jmp_if_bit_set_57",
-        ),
+            identifier="EVENT_1775_jmp_if_bit_set_57"),
         Db(bytearray(b"\xc7\x90")),
         ActionQueueAsync(
             target=MARIO,
@@ -238,8 +222,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASFixedFCoordOff(),
                 ASFaceEast7C(),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_707C_0, identifier="EVENT_1775_clear_bit_60"),
         Return(),
     ]

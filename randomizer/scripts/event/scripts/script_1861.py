@@ -17,8 +17,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(2),
                 ASFixedFCoordOff(),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
@@ -47,8 +46,7 @@ script = EventScript(
                 ASEndLoop(),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

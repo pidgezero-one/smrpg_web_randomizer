@@ -1,27 +1,22 @@
 """Progress location definitions for recruited characters."""
 
-from typing import Optional, Type, List
-
 from randomizer.entities.characters import (
     Bowser,
     Geno,
     Mallow,
     Mario,
-    Toadstool,
-)
+    Toadstool)
 from randomizer.entities.characters.characters import (
     BowserSpotted,
     GenoSpotted,
     MallowSpotted,
     MarioSpotted,
-    ToadstoolSpotted,
-)
+    ToadstoolSpotted)
 
 from randomizer.types.characters import Character
 from randomizer.types.items.classes import (
     IllegalItemPropertyException,
-    SpottedCharacter,
-)
+    SpottedCharacter)
 from randomizer.types.overworld_scripts.ids import (
     R054_BOOSTER_HILL_____DUMMY,
     R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
@@ -36,12 +31,10 @@ from randomizer.types.overworld_scripts.ids import (
     R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM,
     R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
     R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER__TROOPS_REPAIR,
-    R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
-)
+    R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE)
 from randomizer.types.overworld_scripts.action_scripts.ids import (
     A0488_FOREST_MAZE_AREA_RECRUITABLE_CHARACTER,
-    A0969_ENDING_CREDITS_CASTLE_DIRECTOR,
-)
+    A0969_ENDING_CREDITS_CASTLE_DIRECTOR)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0186_PARTY_JOIN_LOGIC,
     E0192_GATING_AND_PARTY_JOIN_LOGIC,
@@ -54,14 +47,12 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E3885_END_GAME,
     E3930_MARRYMORE_GEAR_PRELOADER,
     E3950_POST_FINAL_BOSS_INIT,
-    E3951_STAR_PIECE_CREDITS_INIT,
-)
+    E3951_STAR_PIECE_CREDITS_INIT)
 from randomizer.types.progress_locations import (
     CharacterRecruitLocation,
     CharacterReplacementFill,
     CharacterSpottedLocation,
-    Inventory,
-)
+    Inventory)
 from randomizer.types.world import GameWorld
 from randomizer.types.world.flags import StartingCharacters
 
@@ -75,19 +66,17 @@ from .characters_spotted import (
     StartingCharacterSpotted2,
     StartingCharacterSpotted3,
     StartingCharacterSpotted4,
-    StartingCharacterSpotted5,
-)
+    StartingCharacterSpotted5)
 from .helpers.area_access import (
     can_defeat_chapel_boss,
     can_defeat_forest_boss,
     can_defeat_mushroom_way_boss,
-    can_defeat_second_moleville_boss,
-)
+    can_defeat_second_moleville_boss)
 
 
 def permit_placing_character(world: GameWorld):
     """If true, a character may be placed here (depends on number of starting characters)."""
-    starters: List[Type[CharacterRecruitLocation]] = [
+    starters: list[type[CharacterRecruitLocation]] = [
         StartingCharacter1,
         StartingCharacter2,
         StartingCharacter3,
@@ -105,7 +94,7 @@ def permit_placing_character(world: GameWorld):
     return permitted
 
 
-def _equivalent_spotted_character(char_class: Character) -> Type[SpottedCharacter]:
+def _equivalent_spotted_character(char_class: Character) -> type[SpottedCharacter]:
     if isinstance(char_class, Mario):
         return MarioSpotted
     if isinstance(char_class, Mallow):
@@ -121,9 +110,8 @@ def _equivalent_spotted_character(char_class: Character) -> Type[SpottedCharacte
 
 def _set_equivalent(
     world: GameWorld,
-    contents: Optional[Character],
-    related: Type[CharacterSpottedLocation],
-) -> None:
+    contents: Character | None,
+    related: type[CharacterSpottedLocation]) -> None:
     equivalent_spotted_location = world.get_location_instance(related)
     if contents is not None:
         spotted_char = _equivalent_spotted_character(contents)
@@ -137,14 +125,14 @@ def _set_equivalent(
 class MushroomWayCharacter(CharacterRecruitLocation):
     """MushroomWayCharacter progress location class"""
 
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = MushroomWayCharacterSpotted
-    _original_item: Type[Character] = Mallow
-    _room_ids: List[int] = [R205_MUSHROOM_WAY_AREA_03]
+    _original_item: type[Character] = Mallow
+    _room_ids: list[int] = [R205_MUSHROOM_WAY_AREA_03]
     _container_event: int = E0186_PARTY_JOIN_LOGIC
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, MushroomWayCharacterSpotted)
 
         if contents is not None:
@@ -155,44 +143,41 @@ class MushroomWayCharacter(CharacterRecruitLocation):
             self.world, inventory
         ) and permit_placing_character(self.world)
 
-    _fills: List[CharacterReplacementFill] = [
+    _fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(R203_MUSHROOM_WAY_AREA_01, 8),
         CharacterReplacementFill(R204_MUSHROOM_WAY_AREA_02, 7),
         CharacterReplacementFill(R205_MUSHROOM_WAY_AREA_03, 5),
     ]
-    _credits_fills: List[CharacterReplacementFill] = [
+    _credits_fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(
             R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW,
             0,
-            [E3804_ENDING_CREDITS_CORONATION_NPCS],
-        ),
+            [E3804_ENDING_CREDITS_CORONATION_NPCS]),
         CharacterReplacementFill(
             R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, 20, [E3885_END_GAME]
         ),
         CharacterReplacementFill(
             R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
             2,
-            [E3950_POST_FINAL_BOSS_INIT],
-        ),
+            [E3950_POST_FINAL_BOSS_INIT]),
         CharacterReplacementFill(
             R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
             1,
-            [E3951_STAR_PIECE_CREDITS_INIT],
-        ),
+            [E3951_STAR_PIECE_CREDITS_INIT]),
     ]
 
 
 class ForestMazeCharacter(CharacterRecruitLocation):
     """ForestMazeCharacter progress location class"""
 
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = ForestMazeCharacterSpotted
-    _original_item: Type[Character] = Geno
-    _room_ids: List[int] = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
+    _original_item: type[Character] = Geno
+    _room_ids: list[int] = [R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD]
     _container_event: int = E0186_PARTY_JOIN_LOGIC
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, ForestMazeCharacterSpotted)
 
         if contents is not None:
@@ -203,49 +188,45 @@ class ForestMazeCharacter(CharacterRecruitLocation):
             self.world, inventory
         ) and permit_placing_character(self.world)
 
-    _fills: List[CharacterReplacementFill] = [
+    _fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(
             R230_FOREST_MAZE_4WAY_PATH_FROM_AREA_09,
             11,
-            action_scripts=[A0488_FOREST_MAZE_AREA_RECRUITABLE_CHARACTER],
-        ),
+            action_scripts=[A0488_FOREST_MAZE_AREA_RECRUITABLE_CHARACTER]),
         CharacterReplacementFill(
             R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
             10,
-            [E2448_FOREST_BOSS_FIGHT],
-        ),
+            [E2448_FOREST_BOSS_FIGHT]),
     ]
-    _credits_fills: List[CharacterReplacementFill] = [
+    _credits_fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(
             R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, 21, [E3885_END_GAME]
         )
     ]
-    _doll_fills: List[CharacterReplacementFill] = [
+    _doll_fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(
             R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, 22
         ),
         CharacterReplacementFill(
             R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
             3,
-            [E3950_POST_FINAL_BOSS_INIT],
-        ),
+            [E3950_POST_FINAL_BOSS_INIT]),
         CharacterReplacementFill(
             R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
             2,
-            [E3951_STAR_PIECE_CREDITS_INIT],
-        ),
+            [E3951_STAR_PIECE_CREDITS_INIT]),
     ]
 
 
 class MinesCharacter(CharacterRecruitLocation):
     """MinesCharacter progress location class"""
 
-    _associated_spotted_location: Type[CharacterSpottedLocation] = MinesCharacterSpotted
-    _original_item: Type[Character] = Bowser
-    _room_ids: List[int] = [R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM]
+    _associated_spotted_location: type[CharacterSpottedLocation] = MinesCharacterSpotted
+    _original_item: type[Character] = Bowser
+    _room_ids: list[int] = [R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM]
     _container_event: int = E0186_PARTY_JOIN_LOGIC
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, MinesCharacterSpotted)
 
         if contents is not None:
@@ -256,42 +237,39 @@ class MinesCharacter(CharacterRecruitLocation):
             self.world, inventory
         ) and permit_placing_character(self.world)
 
-    _fills: List[CharacterReplacementFill] = [
+    _fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, 1),
     ]
-    _credits_fills: List[CharacterReplacementFill] = [
+    _credits_fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(
             R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER__TROOPS_REPAIR,
             7,
-            action_scripts=[A0969_ENDING_CREDITS_CASTLE_DIRECTOR],
-        ),
+            action_scripts=[A0969_ENDING_CREDITS_CASTLE_DIRECTOR]),
         CharacterReplacementFill(
             R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, 23, [E3885_END_GAME]
         ),
         CharacterReplacementFill(
             R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
             4,
-            [E3950_POST_FINAL_BOSS_INIT],
-        ),
+            [E3950_POST_FINAL_BOSS_INIT]),
         CharacterReplacementFill(
             R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
             4,
-            [E3951_STAR_PIECE_CREDITS_INIT],
-        ),
+            [E3951_STAR_PIECE_CREDITS_INIT]),
     ]
 
 
 class ChapelCharacter(CharacterRecruitLocation):
     """ChapelCharacter progress location class"""
 
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = ChapelCharacterSpotted
-    _original_item: Type[Character] = Toadstool
-    _room_ids: List[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _original_item: type[Character] = Toadstool
+    _room_ids: list[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _container_event: int = E0186_PARTY_JOIN_LOGIC
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, ChapelCharacterSpotted)
 
         if contents is not None:
@@ -302,15 +280,14 @@ class ChapelCharacter(CharacterRecruitLocation):
             self.world, inventory
         ) and permit_placing_character(self.world)
 
-    _fills: List[CharacterReplacementFill] = [
+    _fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(
             R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
             8,
             [
                 E3809_MARRYMORE_SANCTUARY_BEGIN_WEDDING_GEAR_SEQUENCE,
                 E3930_MARRYMORE_GEAR_PRELOADER,
-            ],
-        ),
+            ]),
         CharacterReplacementFill(
             R054_BOOSTER_HILL_____DUMMY,
             8,
@@ -318,23 +295,20 @@ class ChapelCharacter(CharacterRecruitLocation):
                 E3499_BOOSTER_HILL_1ST_PASS_LOADER,
                 E3502_BOOSTER_HILL_END,
                 E3506_BOOSTER_HILL_GET_FLOWER,
-            ],
-        ),
+            ]),
     ]
-    _credits_fills: List[CharacterReplacementFill] = [
+    _credits_fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(
             R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, 19, [E3885_END_GAME]
         ),
         CharacterReplacementFill(
             R088_SMITHYS_FINAL_FORM_DEFEAT_GENOS_REDEMPTION,
             0,
-            [E3950_POST_FINAL_BOSS_INIT],
-        ),
+            [E3950_POST_FINAL_BOSS_INIT]),
         CharacterReplacementFill(
             R375_ENDING_CREDITS_STAR_PIECES_SHOOT_THROUGH_THE_SKY,
             0,
-            [E3951_STAR_PIECE_CREDITS_INIT],
-        ),
+            [E3951_STAR_PIECE_CREDITS_INIT]),
     ]
 
 
@@ -344,10 +318,10 @@ class ExtraStartingCharacterLocation(CharacterRecruitLocation):
     _fill_priority: int = 0
 
     @property
-    def credits_fills(self) -> List[CharacterReplacementFill]:
+    def credits_fills(self) -> list[CharacterReplacementFill]:
         counter = 0
         match = 1
-        locs: List[Type[CharacterRecruitLocation]] = [
+        locs: list[type[CharacterRecruitLocation]] = [
             MushroomWayCharacter,
             ForestMazeCharacter,
             MinesCharacter,
@@ -365,16 +339,16 @@ class ExtraStartingCharacterLocation(CharacterRecruitLocation):
 class StartingCharacter1(CharacterRecruitLocation):
     """StartingCharacter1 progress location class"""
 
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = StartingCharacterSpotted1
-    _original_item: Type[Character] = Mario
-    _fills: List[CharacterReplacementFill] = [
+    _original_item: type[Character] = Mario
+    _fills: list[CharacterReplacementFill] = [
         CharacterReplacementFill(R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, 0)
     ]
     _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, StartingCharacterSpotted1)
 
         if contents is not None:
@@ -385,7 +359,7 @@ class StartingCharacter2(ExtraStartingCharacterLocation):
     """StartingCharacter2 progress location class"""
 
     _fill_priority: int = 1
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = StartingCharacterSpotted2
     _original_item = None
@@ -395,7 +369,7 @@ class StartingCharacter2(ExtraStartingCharacterLocation):
         starting_chars = self.world.settings.get_flag(StartingCharacters).value
         return starting_chars >= 2
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, StartingCharacterSpotted2)
 
         if contents is not None:
@@ -406,7 +380,7 @@ class StartingCharacter3(ExtraStartingCharacterLocation):
     """StartingCharacter3 progress location class"""
 
     _fill_priority: int = 2
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = StartingCharacterSpotted3
     _original_item = None
@@ -416,7 +390,7 @@ class StartingCharacter3(ExtraStartingCharacterLocation):
         starting_chars = self.world.settings.get_flag(StartingCharacters).value
         return starting_chars >= 3
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, StartingCharacterSpotted3)
 
         if contents is not None:
@@ -427,7 +401,7 @@ class StartingCharacter4(ExtraStartingCharacterLocation):
     """StartingCharacter4 progress location class"""
 
     _fill_priority: int = 3
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = StartingCharacterSpotted4
     _original_item = None
@@ -437,7 +411,7 @@ class StartingCharacter4(ExtraStartingCharacterLocation):
         starting_chars = self.world.settings.get_flag(StartingCharacters).value
         return starting_chars >= 4
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, StartingCharacterSpotted4)
 
         if contents is not None:
@@ -448,13 +422,13 @@ class StartingCharacter5(ExtraStartingCharacterLocation):
     """StartingCharacter5 progress location class"""
 
     _fill_priority: int = 4
-    _associated_spotted_location: Type[
+    _associated_spotted_location: type[
         CharacterSpottedLocation
     ] = StartingCharacterSpotted5
     _original_item = None
     _container_event: int = E0192_GATING_AND_PARTY_JOIN_LOGIC
 
-    def set_contents(self, contents: Optional[Character]) -> None:
+    def set_contents(self, contents: Character | None) -> None:
         _set_equivalent(self.world, contents, StartingCharacterSpotted5)
 
         if contents is not None:

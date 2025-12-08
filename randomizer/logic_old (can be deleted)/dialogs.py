@@ -21,8 +21,7 @@ from randomizer.helpers.flag_helpers import (
     PlayableCharacters,
     ShopQualities,
     WinConditions,
-    PipeVaultGating,
-)
+    PipeVaultGating)
 
 
 # There's a way to do perfect allocations with DYNAMIC PROGRAMMING,
@@ -64,35 +63,28 @@ def randomize_all(world):
         if world.settings.is_flag_enabled(flags.EXPStarsAnywhere):
             world.replace_dialog(
                 1222,
-                """ I have an item to sell, but you\n don't have enough coins.[await]""",
-            )
+                """ I have an item to sell, but you\n don't have enough coins.[await]""")
             world.replace_dialog(
                 1223,
-                """ You're looking for items?\n I'll sell one for 400 coins.\n Are you interested?[await]\n  [select] (Yes)\n  [select] (No)[await]""",
-            )
+                """ You're looking for items?\n I'll sell one for 400 coins.\n Are you interested?[await]\n  [select] (Yes)\n  [select] (No)[await]""")
             world.replace_dialog(
                 1224,
-                """ You want another item?[await]\n  [select] (Yes)\n  [select] (No)[await]""",
-            )
+                """ You want another item?[await]\n  [select] (Yes)\n  [select] (No)[await]""")
             world.replace_dialog(
                 1227,
-                """ I found another item.\n I'll sell it for 800 coins.[await]\n  [select] (Buy it)\n  [select] (Pass)[await]""",
-            )
+                """ I found another item.\n I'll sell it for 800 coins.[await]\n  [select] (Buy it)\n  [select] (Pass)[await]""")
         if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.hill):
             world.replace_dialog(
                 2116,
-                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n on Booster Hill.""",
-            )
+                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n on Booster Hill.""")
         elif world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             world.replace_dialog(
                 2116,
-                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n up atop Booster Tower.""",
-            )
+                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n up atop Booster Tower.""")
         elif world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.kggg):
             world.replace_dialog(
                 2116,
-                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n clowning around.""",
-            )
+                """ You want to know why we're\n standing around?[await]\n I'm waiting for something\n interesting to happen.[await][pause] But I think\n the usual troublemakers are busy\n clowning around.""")
         value = world.settings.get_flag(flags.GrateGuyPrizeThreshold).value
         world.search_replace_dialog("`GRATE_GUY_PRIZE_CAP`", "%i" % value)
         # disable sj dog checks if SJ not learnable in seed
@@ -108,8 +100,7 @@ def randomize_all(world):
                         2049,
                         AreaObjects.MARIO,
                         [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE],
-                    ],
-                ),
+                    ]),
                 new_command(2063, "ret"),
             ]
 

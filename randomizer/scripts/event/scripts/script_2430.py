@@ -33,8 +33,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_7,
             ["EVENT_2430_fade_in_from_black_async_29"],
-            identifier="EVENT_2430_jmp_if_bit_clear_27",
-        ),
+            identifier="EVENT_2430_jmp_if_bit_clear_27"),
         RunEventAsSubroutine(E0081_MARIO_LANDS_SUBROUTINE),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
         JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2430_ret_26"]),

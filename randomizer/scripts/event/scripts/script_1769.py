@@ -17,8 +17,7 @@ script = EventScript(
                 ),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ApplySolidityModToLevel(
             permanent=True, room_id=R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, mod_id=0
         ),
@@ -29,8 +28,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASShiftSouthSteps(3),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_1769_ret_6"),
     ]
 )

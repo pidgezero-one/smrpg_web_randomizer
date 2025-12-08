@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=SOUTHWEST,
             x=26,
             y=29,
-            z=2,
-        ),
+            z=2),
         Jmp(["EVENT_3315_jmp_if_bit_clear_1"]),
     ]
 )

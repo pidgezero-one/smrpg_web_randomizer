@@ -17,8 +17,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASWalkToXYCoords(x=14, y=62),
-            ],
-        ),
+            ]),
         StartAsyncEmbeddedActionScript(
             target=NPC_9, prefix=0xF1, subscript=[ASSetSequenceSpeed(FAST)]
         ),
@@ -33,8 +32,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceNorthwest()]),
         SetSyncActionScript(NPC_9, A0119_SLOW_SEQUENCE_LOOP),
         StoreItemAmountTo7000(YoshiCookie),
@@ -46,8 +44,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(["EVENT_932_close_dialog_28"]),
         RunDialog(
             dialog_id=DI2366_HOW_MANY_COOKIES_TO_FEED_BABY,
@@ -55,8 +52,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         SetBit(TEMP_7042_0),
         JmpToSubroutine(["EVENT_930_enable_controls_until_return_85"]),
         ActionQueueAsync(
@@ -70,8 +66,7 @@ script = EventScript(
                 ASPause(54),
                 ASResetProperties(),
                 ASSetSequenceSpeed(SLOW),
-            ],
-        ),
+            ]),
         SetObjectMemoryToVar(SECONDARY_TEMP_7024),
         RemoveOneOfItemFromInventory(YoshiCookie),
         EndLoop(),
@@ -94,8 +89,7 @@ script = EventScript(
         Return(),
         EnableControlsUntilReturn(
             [LEFT, RIGHT, DOWN, UP, A, Y, B],
-            identifier="EVENT_932_enable_controls_until_return_36",
-        ),
+            identifier="EVENT_932_enable_controls_until_return_36"),
         Pause(32),
         Return(),
         SetBit(UNKNOWN_7084_1, identifier="EVENT_932_set_bit_39"),

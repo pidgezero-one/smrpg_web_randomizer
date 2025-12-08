@@ -4,8 +4,7 @@ from randomizer.helpers.battletables import (
     Targets,
     targeting_table,
     Monsters,
-    monsters_table,
-)
+    monsters_table)
 from randomizer.data.attacks import get_default_enemy_attacks
 from randomizer.data.items import get_default_items
 from randomizer.data.spells import (
@@ -14,16 +13,14 @@ from randomizer.data.spells import (
     ChestMute,
     ChestPoison,
     Nothing,
-    get_default_spells,
-)
+    get_default_spells)
 
 from randomizer.management.disassembler_common import (
     named,
     con,
     byte,
     short,
-    build_table,
-)
+    build_table)
 
 battle_lengths = [
     1,
@@ -455,16 +452,14 @@ class Command(BaseCommand):
             "--mode",
             dest="mode",
             choices=["parse", "dump"],
-            help="Either parse a single script to Python code or dump all of them in intermediate form",
-        )
+            help="Either parse a single script to Python code or dump all of them in intermediate form")
 
         parser.add_argument(
             "-i",
             "--index",
             dest="dex",
             type=int,
-            help="Monster number to disassemble. Used with --mode parse.",
-        )
+            help="Monster number to disassemble. Used with --mode parse.")
 
     def handle(self, *args, **options):
         mode = options["mode"]

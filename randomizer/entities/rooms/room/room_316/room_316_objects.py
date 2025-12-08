@@ -37,8 +37,7 @@ objects = [
         priority_2=True,
         show_shadow=True,
         height=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=Letter,
@@ -71,6 +70,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

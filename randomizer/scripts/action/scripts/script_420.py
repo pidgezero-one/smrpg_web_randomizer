@@ -10,8 +10,7 @@ script = ActionScript(
             index=1,
             is_mold=True,
             looping=True,
-            identifier="ACTION_420_set_sprite_sequence_2",
-        ),
+            identifier="ACTION_420_set_sprite_sequence_2"),
         ClearSolidityBits(
             bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
         ),

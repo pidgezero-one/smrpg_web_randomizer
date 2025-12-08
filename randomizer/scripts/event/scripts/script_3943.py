@@ -20,8 +20,7 @@ script = EventScript(
             sync=True,
             multiline=False,
             use_background=False,
-            bit_6=True,
-        ),
+            bit_6=True),
         Inc(WEDDING_GEAR_COUNTER),
         Return(identifier="EVENT_3943_ret_259"),
     ]

@@ -15,8 +15,7 @@ script = EventScript(
                 ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASFaceEast7C(),
                 ASPause(1),
-            ],
-        ),
+            ]),
         RunBackgroundEvent(event_id=E3329_JUMPING_FIREBALLS, return_on_level_exit=True),
         Return(),
     ]

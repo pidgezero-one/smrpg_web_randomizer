@@ -1187,5 +1187,4 @@ PRESETS = (
     IntermediatePreset,
     AdvancedPreset,
     ExpertPreset,
-    QuickPreset,
-)
+    QuickPreset)

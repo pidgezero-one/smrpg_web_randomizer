@@ -53,8 +53,7 @@ room = Room(
             dst_z=1,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=17,
             y=25,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=5,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -103,8 +101,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.VOMER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -131,8 +128,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.VOMER_NPC,
             event_script=E3319_SET_VOMER_PACK,
@@ -142,7 +138,6 @@ room = Room(
             y=14,
             z=1,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
     ]
 )

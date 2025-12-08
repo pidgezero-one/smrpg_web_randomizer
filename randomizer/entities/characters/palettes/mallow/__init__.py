@@ -12,5 +12,4 @@ from .mallow import (
     Water,
     Red,
     Mint,
-    Demon,
-)
+    Demon)

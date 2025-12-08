@@ -25,11 +25,9 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

@@ -17,8 +17,7 @@ script = EventScript(
             x=9,
             y=108,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         ActionQueueSync(
             target=MEM_70A8,
@@ -31,8 +30,7 @@ script = EventScript(
                 ASPause(5),
                 ASSequenceLoopingOff(),
             ],
-            identifier="EVENT_3478_action_queue_sync_7",
-        ),
+            identifier="EVENT_3478_action_queue_sync_7"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -59,13 +57,11 @@ script = EventScript(
                 ASWalkToXYCoords(x=21, y=35),
                 ASJmpIfBitSet(BUCKET_WARP_BIT, ["EVENT_3478_jmp_if_bit_set_9"]),
                 ASFaceWest(),
-            ],
-        ),
+            ]),
         JmpIfBitSet(
             BUCKET_WARP_BIT,
             ["EVENT_3478_ret_14"],
-            identifier="EVENT_3478_jmp_if_bit_set_9",
-        ),
+            identifier="EVENT_3478_jmp_if_bit_set_9"),
         Pause(20),
         ActionQueueAsync(
             target=NPC_3,
@@ -80,8 +76,7 @@ script = EventScript(
                 ASWalkEastPixels(16),
                 ASFaceSoutheast(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E3479_MIDAS_RIVER_SCORE_SUBMISSION),
         ActionQueueAsync(
             target=NPC_3,
@@ -91,8 +86,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(2),
                 ASFaceSoutheast(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_3478_ret_14"),
     ]
 )

@@ -31,11 +31,9 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASWalkWestPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -44,8 +42,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASPause(4),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -59,11 +56,9 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASWalkSouthPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -72,8 +67,7 @@ script = EventScript(
                 ASPause(4),
                 ASFaceNorthwest(),
                 ASFixedFCoordOn(),
-            ],
-        ),
+            ]),
         JmpIfBitSet(TEMP_7043_7, ["EVENT_3506_action_queue_async_16"]),
         SetSyncActionScript(NPC_7, A0717_BOOSTER_HILL_BOSS_SHIFT_SIDE_COORD),
         ActionQueueAsync(
@@ -102,8 +96,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
             ],
-            identifier="EVENT_3506_action_queue_async_16",
-        ),
+            identifier="EVENT_3506_action_queue_async_16"),
         JmpIfBitClear(TEMP_7043_7, ["EVENT_3506_set_bit_19"]),
         SetTempSyncActionScript(NPC_7, A0718_BOOSTER_HILL_BOSS_MOVE_FORWARD),
         SetBit(TEMP_7043_7, identifier="EVENT_3506_set_bit_19"),

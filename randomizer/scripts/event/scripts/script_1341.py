@@ -14,8 +14,7 @@ script = EventScript(
                 ASWalkNorthwestPixels(5),
                 ASFaceSoutheast(),
                 ASObjectMemoryClearBit(arg_1=0x08, bits=[3, 4]),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

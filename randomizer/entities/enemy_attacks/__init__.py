@@ -130,5 +130,4 @@ from .attacks import (
     Terrapunch,
     ScrowFangs,
     Shaker,
-    AttackDoNothing,
-)
+    AttackDoNothing)

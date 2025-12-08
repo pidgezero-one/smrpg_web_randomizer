@@ -16,20 +16,17 @@ script = EventScript(
                 ASShiftZUpSteps(11),
                 ASSetWalkingSpeed(NORMAL),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkNorthwestPixels(8)],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkNorthwestPixels(8)]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkSouthwestPixels(6),
                 ASSetWalkingSpeed(SLOW),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -37,16 +34,14 @@ script = EventScript(
                 ASWalkSoutheastPixels(3),
                 ASWalkSouthwestPixels(4),
                 ASSetWalkingSpeed(SLOW),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkNorthwestPixels(8),
                 ASWalkNortheastPixels(6),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_1, A0405_FOREST_MAZE_AREA_FREEMOVING_AMANITA),
         SetSyncActionScript(NPC_2, A0846_VALLEY_TOP_PIPE_RIGHT_GECKO),
         SetSyncActionScript(NPC_3, A0847_VALLEY_TOP_PIPE_MID_GECKO),
@@ -55,12 +50,10 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             NPC_4,
             R347_BEAN_VALLEY_PIPE_ROOM_TOP_PIPE_LEADS_TO_GRATE_GUYS_CASINO,
-            ["EVENT_2541_action_queue_async_14"],
-        ),
+            ["EVENT_2541_action_queue_async_14"]),
         RunBackgroundEvent(
             event_id=E2802_BEAN_VALLEY_TOP_PIPE_BASEMENT_LOADER,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -73,8 +66,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
             ],
-            identifier="EVENT_2541_action_queue_async_14",
-        ),
+            identifier="EVENT_2541_action_queue_async_14"),
         UnfreezeCamera(),
         Return(),
     ]

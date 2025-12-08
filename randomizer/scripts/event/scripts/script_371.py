@@ -11,8 +11,7 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E0377_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_REPEATING_SHYSTERS_POSITION,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         RunEventAsSubroutine(
             E0765_MUSHROOM_KINGDOM_OCCUPIED_MAIN_HALL_SHUFFLED_NPC_ANIMATION_LOADER
         ),

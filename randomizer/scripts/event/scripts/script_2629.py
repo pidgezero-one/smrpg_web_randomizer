@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=NORTHWEST,
             x=0,
             y=0,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E2622_ENDING_CREDITS_KEEP),
         Return(),
     ]

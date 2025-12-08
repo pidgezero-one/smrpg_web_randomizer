@@ -22,65 +22,56 @@ script = EventScript(
                     7,
                     [
                         "EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_10"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,
                     [
                         "EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_10"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     1,
                     [
                         "EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_12"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     2,
                     [
                         "EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_12"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     3,
                     [
                         "EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_14"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     4,
                     [
                         "EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_14"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     5,
                     [
                         "EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_16"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     6,
                     [
                         "EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_16"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(
                     index=6,
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_10",
-                ),
+                    identifier="EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_10"),
                 ASJmp(
                     ["EVENT_3372_action_queue_async_4_SUBSCRIPT_fixed_f_coord_on_18"]
                 ),
@@ -89,8 +80,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_12",
-                ),
+                    identifier="EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_12"),
                 ASJmp(
                     ["EVENT_3372_action_queue_async_4_SUBSCRIPT_fixed_f_coord_on_18"]
                 ),
@@ -100,8 +90,7 @@ script = EventScript(
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_14",
-                ),
+                    identifier="EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_14"),
                 ASJmp(
                     ["EVENT_3372_action_queue_async_4_SUBSCRIPT_fixed_f_coord_on_18"]
                 ),
@@ -110,8 +99,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_16",
-                ),
+                    identifier="EVENT_3372_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_16"),
                 ASJmp(
                     ["EVENT_3372_action_queue_async_4_SUBSCRIPT_fixed_f_coord_on_18"]
                 ),
@@ -125,8 +113,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7044_7),
         Return(),
         SetBit(TEMP_7044_7, identifier="EVENT_3372_set_bit_7"),
@@ -142,8 +129,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[1]),
                 ASSetSolidityBits(bit_4=True, cant_walk_through=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -160,64 +146,55 @@ script = EventScript(
                     7,
                     [
                         "EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_14"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,
                     [
                         "EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_14"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     1,
                     [
                         "EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_20"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     2,
                     [
                         "EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_20"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     3,
                     [
                         "EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_18"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     4,
                     [
                         "EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_18"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     5,
                     [
                         "EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_16"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     6,
                     [
                         "EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_16"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(
                     index=8,
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_14",
-                ),
+                    identifier="EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_14"),
                 ASJmp(["EVENT_3372_resume_action_script_12"]),
                 ASSetSpriteSequence(
                     index=8,
@@ -225,16 +202,14 @@ script = EventScript(
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_16",
-                ),
+                    identifier="EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_16"),
                 ASJmp(["EVENT_3372_resume_action_script_12"]),
                 ASSetSpriteSequence(
                     index=1,
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_18",
-                ),
+                    identifier="EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_18"),
                 ASJmp(["EVENT_3372_resume_action_script_12"]),
                 ASSetSpriteSequence(
                     index=1,
@@ -242,11 +217,9 @@ script = EventScript(
                     is_sequence=True,
                     looping=True,
                     mirror_sprite=True,
-                    identifier="EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_20",
-                ),
+                    identifier="EVENT_3372_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_20"),
                 ASJmp(["EVENT_3372_resume_action_script_12"]),
-            ],
-        ),
+            ]),
         ResumeActionScript(MEM_70AB, identifier="EVENT_3372_resume_action_script_12"),
         SetVarToConst(SECONDARY_TEMP_7024, 0),
         Pause(1, identifier="EVENT_3372_pause_14"),
@@ -273,8 +246,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASSetWalkingSpeed(NORMAL),
             ],
-            identifier="EVENT_3372_action_queue_async_23",
-        ),
+            identifier="EVENT_3372_action_queue_async_23"),
         CopyVarToVar(from_var=TEMP_70AB, to_var=PRIMARY_TEMP_7000),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),
         SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),

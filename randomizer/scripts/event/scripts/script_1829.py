@@ -22,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=False,
             use_background=False,
-            bit_6=True,
-        ),
+            bit_6=True),
         PlaySound(sound=SO143_METRONOME_UPBEAT_DING, channel=6),
         Jmp(["EVENT_1829_reactivate_trigger_if_mario_on_top_of_object_17"]),
         RunDialog(
@@ -34,8 +33,7 @@ script = EventScript(
             multiline=False,
             use_background=False,
             bit_6=True,
-            identifier="EVENT_1829_run_dialog_12",
-        ),
+            identifier="EVENT_1829_run_dialog_12"),
         Jmp(["EVENT_1829_reactivate_trigger_if_mario_on_top_of_object_17"]),
         RunDialog(
             dialog_id=DI1317_GOT_X_CHANCES,
@@ -45,8 +43,7 @@ script = EventScript(
             multiline=False,
             use_background=False,
             bit_6=True,
-            identifier="EVENT_1829_run_dialog_14",
-        ),
+            identifier="EVENT_1829_run_dialog_14"),
         Jmp(["EVENT_1829_reactivate_trigger_if_mario_on_top_of_object_17"]),
         RunDialog(
             dialog_id=DI1316_GOT_X_TRIES,
@@ -56,8 +53,7 @@ script = EventScript(
             multiline=False,
             use_background=False,
             bit_6=True,
-            identifier="EVENT_1829_run_dialog_16",
-        ),
+            identifier="EVENT_1829_run_dialog_16"),
         ReactivateObject70A8TriggerIfMarioOnTopOfIt(
             identifier="EVENT_1829_reactivate_trigger_if_mario_on_top_of_object_17"
         ),

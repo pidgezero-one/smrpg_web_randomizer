@@ -10,8 +10,7 @@ script = EventScript(
         ActionQueueAsync(target=MARIO, subscript=[ASFaceNorthwest()]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=3, y=17)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=3, y=17)]),
         SetSyncActionScript(NPC_12, A0960_FACTORY_2ND_BOSS_HENCHMAN),
         SetSyncActionScript(NPC_13, A0960_FACTORY_2ND_BOSS_HENCHMAN),
         SetSyncActionScript(NPC_14, A0960_FACTORY_2ND_BOSS_HENCHMAN),
@@ -37,8 +36,7 @@ script = EventScript(
                 ),
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_15,
             subscript=[
@@ -49,14 +47,12 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASWalkNorthwestSteps(2),
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_12,
             subscript=[
@@ -67,8 +63,7 @@ script = EventScript(
                 ASSequenceLoopingOn(),
                 ASWalkNortheastSteps(2),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_13,
             subscript=[
@@ -81,8 +76,7 @@ script = EventScript(
                 ASWalk1StepSoutheast(),
                 ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_14,
             subscript=[
@@ -94,8 +88,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(3),
                 ASWalk1StepSouthwest(),
                 ASWalkSouthwestPixels(4),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_12, A0401_SEQUENCE_LOOPING_OFF),
         SetSyncActionScript(NPC_13, A0401_SEQUENCE_LOOPING_OFF),
         SetAsyncActionScript(NPC_14, A0401_SEQUENCE_LOOPING_OFF),
@@ -112,10 +105,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         ActionQueueSync(
             target=NPC_12, subscript=[ASWalk1StepSoutheast(), ASWalkSoutheastPixels(8)]
         ),
@@ -125,8 +116,7 @@ script = EventScript(
                 ASWalk1StepSouthwest(),
                 ASWalkSouthwestPixels(8),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_14,
             subscript=[
@@ -134,8 +124,7 @@ script = EventScript(
                 ASWalk1StepNorthwest(),
                 ASWalkNorthwestPixels(8),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_15,
             subscript=[
@@ -151,10 +140,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_15, subscript=[ASSetWalkingSpeed(FAST), ASWalk1StepSoutheast()]
         ),
@@ -169,8 +156,7 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=NPC_15,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkSoutheastSteps(2)],
-        ),
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkSoutheastSteps(2)]),
         Pause(24),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
         JmpIfBitClear(GAME_OVER, ["EVENT_2618_restore_all_hp_89"]),

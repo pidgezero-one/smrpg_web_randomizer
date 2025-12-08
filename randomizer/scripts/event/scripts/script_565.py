@@ -14,8 +14,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpToSubroutine(["EVENT_562_resume_action_script_11"]),
         Return(),
         RunDialog(
@@ -25,8 +24,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_565_run_dialog_5",
-        ),
+            identifier="EVENT_565_run_dialog_5"),
         Return(),
     ]
 )

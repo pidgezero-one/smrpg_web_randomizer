@@ -51,8 +51,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -87,8 +86,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 1
             occupant=npcs.Stinger,
             battle_pack=81,
@@ -103,8 +101,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 2
             occupant=npcs.Stinger,
             battle_pack=81,
@@ -119,8 +116,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._00_SWSE_NWNE,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.SandWhirlpool,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -151,8 +147,7 @@ room = Room(
             priority_0=False,
             priority_1=True,
             priority_2=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 4
             occupant=npcs.SandWhirlpool,
             event_script=1764,
@@ -166,8 +161,7 @@ room = Room(
             priority_0=False,
             priority_1=True,
             priority_2=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 5
             occupant=npcs.SandWhirlpool,
             event_script=1765,
@@ -181,8 +175,7 @@ room = Room(
             priority_0=False,
             priority_1=True,
             priority_2=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 6
             occupant=npcs.Shogun,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -213,8 +206,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 7
             occupant=npcs.BigCoin,
             initiator=Initiator.NONE,
@@ -246,8 +238,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 8
             occupant=npcs.FrogCoin,
             initiator=Initiator.NONE,
@@ -280,7 +271,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

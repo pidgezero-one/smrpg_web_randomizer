@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=17,
             y=47,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         ChestNPC( # 0
@@ -104,8 +102,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 1
             npc=npcs.TREASURE_CHEST_NPC,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -134,8 +131,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.K_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -162,8 +158,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.K_NPC,
             event_script=E1717_BANDITS_WAY_4_MANAGE_DOG_COLLISION,
@@ -173,8 +168,7 @@ room = Room(
             y=19,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 4
             npc=npcs.K_NPC,
             event_script=E1717_BANDITS_WAY_4_MANAGE_DOG_COLLISION,
@@ -184,8 +178,7 @@ room = Room(
             y=23,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.K_NPC,
             event_script=E1717_BANDITS_WAY_4_MANAGE_DOG_COLLISION,
@@ -195,8 +188,7 @@ room = Room(
             y=36,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularNPC( # 6
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.NONE,
@@ -223,8 +215,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.EMPTY_NPC_3,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -234,8 +225,7 @@ room = Room(
             y=24,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_2,
             initiator=EventInitiator.JUMP_ON,
@@ -262,8 +252,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 9
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_2,
             event_script=E1697_BANDITS_WAY_CHEST_PLATFORMS_2,
@@ -273,8 +262,7 @@ room = Room(
             y=24,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 10
             npc=npcs.BLOCK_SHADOW_NPC,
             initiator=EventInitiator.NONE,
@@ -301,8 +289,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 11
             npc=npcs.BLOCK_SHADOW_NPC,
             event_script=E1551_BANK_1F_RETURN_EVENT,
@@ -312,8 +299,7 @@ room = Room(
             y=24,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 12
             npc=npcs.CROCO_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -340,7 +326,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -19,8 +19,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkToXYCoords(x=5, y=16),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         Pause(30),
         FreezeCamera(),
         ActionQueueSync(
@@ -39,8 +38,7 @@ script = EventScript(
                 ASPause(15),
                 ASPlaySound(sound=SO096_SWINGING_FIST, channel=6),
                 ASPause(30),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0866_DOJO_4TH_BOSS_CHALLENGE_SUBROUTINE),
         SetVarToConst(PRIMARY_TEMP_7000, 517),
         RunEventAsSubroutine(E0353_BOSS_BATTLE),
@@ -62,8 +60,7 @@ script = EventScript(
                 ASPause(30),
                 ASSetAllSpeeds(SLOW),
                 ASWalkSouthwestSteps(1),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -78,8 +75,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         Pause(30),
         JmpIfBitSet(RUN_AWAY, ["EVENT_2077_ret_98"]),
@@ -101,8 +97,7 @@ script = EventScript(
                 ASPause(1),
                 ASPlaySound(sound=SO058_INSERT, channel=6),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -125,8 +120,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=6, y=16),
                 ASStopSound(),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         Pause(1),
         ActionQueueSync(
             target=NPC_3,
@@ -137,8 +131,7 @@ script = EventScript(
                 ASStopSound(),
                 ASStopSound(),
                 ASShadowOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -146,8 +139,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=5, y=14),
                 ASFaceSouthwest(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         Pause(1),
         Pause(1),
         SetSyncActionScript(NPC_3, A1006_DOJO_PERMA_JUMP),
@@ -168,8 +160,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_2077_run_dialog_97",
-        ),
+            identifier="EVENT_2077_run_dialog_97"),
         Return(identifier="EVENT_2077_ret_98"),
     ]
 )

@@ -12,8 +12,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(FAST),
                 ASSetSpriteSequence(index=3, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7043_0),
         SetSyncActionScript(MARIO, A0809_MARIO_BLOWN_BY_FAN),
         Pause(240),

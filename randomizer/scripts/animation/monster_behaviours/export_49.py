@@ -2,11 +2,9 @@
 
 from randomizer.types.battle_animation_scripts.types import AnimationScriptBank
 from randomizer.types.battle_animation_scripts.ids import (
-    BEHAVIOUR_49_0X350F44,
-)
+    BEHAVIOUR_49_0X350F44)
 from randomizer.scripts.animation.monster_behaviours.contents.script_49 import (
-    script as subroutine_0x49,
-)
+    script as subroutine_0x49)
 
 bank = AnimationScriptBank(
     name=BEHAVIOUR_49_0X350F44,
@@ -14,5 +12,4 @@ bank = AnimationScriptBank(
     end=0x350F49,
     scripts=[
         subroutine_0x49,
-    ],
-)
+    ])

@@ -1,6 +1,5 @@
 """Room table definition."""
 
-from typing import List, Optional
 from randomizer.types.rooms.classes import Room
 from .room.room_0.room_0 import room as room_0
 from .room.room_1.room_1 import room as room_1
@@ -513,7 +512,7 @@ from .room.room_507.room_507 import room as room_507
 from .room.room_508.room_508 import room as room_508
 from .room.room_509.room_509 import room as room_509
 
-rooms: List[Optional[Room]] = [None] * 512
+rooms: list[Room | None] = [None] * 512
 rooms[0] = room_0
 rooms[1] = room_1
 rooms[2] = room_2

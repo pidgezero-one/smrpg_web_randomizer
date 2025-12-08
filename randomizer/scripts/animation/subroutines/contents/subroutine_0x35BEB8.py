@@ -23,8 +23,7 @@ script = SubroutineOrBanklessScript(
             end_accepting_input=30,
             start_accepting_input=0,
             timed_hit_ends=30,
-            destinations=["command_0x35bee4"],
-        ),
+            destinations=["command_0x35bee4"]),
         ScreenFlashWithDuration(WHITE, 1, 16),
         PlaySound(sound=S0078_TIMED_STAT_BOOST),
         EndTrackingAllyButtonInputs(identifier="command_0x35bee4"),
@@ -39,8 +38,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35beee",
-        ),
+            identifier="queuestart_0x35beee"),
         NewEffectObject(effect=EF0046_BLANK_DARK_BLUE_FLASH__4BPP_, looping_off=True),
         SetAMEM8BitToConst(0x6E, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6E, amem=0x6E),
@@ -79,5 +77,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6F, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
         ReturnObjectQueue(),
-    ],
-)
+    ])

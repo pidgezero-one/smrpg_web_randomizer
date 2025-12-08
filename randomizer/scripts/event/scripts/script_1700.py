@@ -30,8 +30,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=ROSE_WAY_703E,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1700_set_7000_to_7000_short_mem_17",
-        ),
+            identifier="EVENT_1700_set_7000_to_7000_short_mem_17"),
         CompareVarToConst(PRIMARY_TEMP_7000, 26),
         JmpIfLoadedMemoryIsNot0(["EVENT_1700_set_21"]),
         AddConstToVar(SECONDARY_TEMP_7024, 128),

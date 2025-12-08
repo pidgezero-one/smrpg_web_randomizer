@@ -19,7 +19,6 @@ script = EventScript(
         ),
         JmpToEvent(
             E0178_NPC_QUEST_1_CONTAINER,
-            identifier="EVENT_3822_remove_from_current_level_5",
-        ),
+            identifier="EVENT_3822_remove_from_current_level_5"),
     ]
 )

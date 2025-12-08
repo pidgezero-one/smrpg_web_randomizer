@@ -32,8 +32,7 @@ script = ActionScript(
             is_mold=True,
             is_sequence=True,
             looping=True,
-            mirror_sprite=True,
-        ),
+            mirror_sprite=True),
         Jmp(["ACTION_408_ret_23"]),
         SetSpriteSequence(
             index=2,
@@ -42,8 +41,7 @@ script = ActionScript(
             is_sequence=True,
             looping=True,
             mirror_sprite=True,
-            identifier="ACTION_408_set_sprite_sequence_10",
-        ),
+            identifier="ACTION_408_set_sprite_sequence_10"),
         Jmp(["ACTION_408_ret_23"]),
         SetSpriteSequence(
             index=3,
@@ -52,8 +50,7 @@ script = ActionScript(
             is_sequence=True,
             looping=True,
             mirror_sprite=True,
-            identifier="ACTION_408_set_sprite_sequence_12",
-        ),
+            identifier="ACTION_408_set_sprite_sequence_12"),
         Jmp(["ACTION_408_ret_23"]),
         SetSpriteSequence(
             index=0,
@@ -61,8 +58,7 @@ script = ActionScript(
             is_mold=True,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_408_set_sprite_sequence_14",
-        ),
+            identifier="ACTION_408_set_sprite_sequence_14"),
         Jmp(["ACTION_408_ret_23"]),
         SetSpriteSequence(
             index=3,
@@ -70,8 +66,7 @@ script = ActionScript(
             is_mold=True,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_408_set_sprite_sequence_16",
-        ),
+            identifier="ACTION_408_set_sprite_sequence_16"),
         Jmp(["ACTION_408_ret_23"]),
         SetSpriteSequence(
             index=2,
@@ -79,8 +74,7 @@ script = ActionScript(
             is_mold=True,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_408_set_sprite_sequence_18",
-        ),
+            identifier="ACTION_408_set_sprite_sequence_18"),
         Jmp(["ACTION_408_ret_23"]),
         SetSpriteSequence(
             index=4,
@@ -88,8 +82,7 @@ script = ActionScript(
             is_mold=True,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_408_set_sprite_sequence_20",
-        ),
+            identifier="ACTION_408_set_sprite_sequence_20"),
         Jmp(["ACTION_408_ret_23"]),
         SetSpriteSequence(
             index=1,
@@ -97,8 +90,7 @@ script = ActionScript(
             is_mold=True,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_408_set_sprite_sequence_22",
-        ),
+            identifier="ACTION_408_set_sprite_sequence_22"),
         Return(identifier="ACTION_408_ret_23"),
     ]
 )

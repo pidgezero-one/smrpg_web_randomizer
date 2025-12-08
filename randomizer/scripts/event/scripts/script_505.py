@@ -25,8 +25,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(height=72, silent=True),
                 ASWalkSouthwestSteps(2),
@@ -39,8 +38,7 @@ script = EventScript(
                     index=6, sprite_offset=3, is_sequence=True, looping=True
                 ),
                 ASWalkToXYCoords(x=21, y=36),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -50,8 +48,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
         ClearBit(TEMP_7043_3),
         EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),

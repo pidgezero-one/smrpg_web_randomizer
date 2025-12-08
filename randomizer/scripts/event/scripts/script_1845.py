@@ -19,8 +19,7 @@ script = EventScript(
         JmpIfBitSet(
             LANDS_END_CLOUD_STAR_PIECE,
             ["EVENT_1845_ret"],
-            identifier="EVENT_1845_jmp_if_already_got_star_piece",
-        ),
+            identifier="EVENT_1845_jmp_if_already_got_star_piece"),
         SetBit(LANDS_END_CLOUD_STAR_PIECE),
         SetVarToConst(PRIMARY_TEMP_7000, 519),
         JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),

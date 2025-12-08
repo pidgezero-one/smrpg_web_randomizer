@@ -24,24 +24,21 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(SLOW),
                 ASRunAwayShift(),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI0788_SOME_JERK_IN_THE_FOREST,
             above_object=MEM_70A8,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
                 ASFixedFCoordOff(),
                 ASSetSolidityBits(cant_walk_through=True),
                 ASFaceMario(),
-            ],
-        ),
+            ]),
         JmpIfBitSet(TEMP_7044_3, ["EVENT_520_resume_action_script_27"]),
         ActionQueueAsync(
             target=NPC_2,
@@ -52,27 +49,23 @@ script = EventScript(
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,
-                    ["EVENT_520_action_queue_async_11_SUBSCRIPT_face_northwest_7"],
-                ),
+                    ["EVENT_520_action_queue_async_11_SUBSCRIPT_face_northwest_7"]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     64,
                     [
                         "EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     128,
-                    ["EVENT_520_action_queue_async_11_SUBSCRIPT_face_southeast_14"],
-                ),
+                    ["EVENT_520_action_queue_async_11_SUBSCRIPT_face_southeast_14"]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     192,
                     [
                         "EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9"
-                    ],
-                ),
+                    ]),
                 ASFaceNorthwest(
                     identifier="EVENT_520_action_queue_async_11_SUBSCRIPT_face_northwest_7"
                 ),
@@ -82,8 +75,7 @@ script = EventScript(
                     coord=COORD_X,
                     pixel=True,
                     bit_7=True,
-                    identifier="EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9",
-                ),
+                    identifier="EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9"),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_702C),
                 ASCompareVarToConst(TEMP_702C, 4),
                 ASJmpIfComparisonResultIsGreaterOrEqual(
@@ -94,8 +86,7 @@ script = EventScript(
                     identifier="EVENT_520_action_queue_async_11_SUBSCRIPT_face_southeast_14"
                 ),
                 ASSetBit(TEMP_7043_0),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -108,19 +99,16 @@ script = EventScript(
                     5,
                     [
                         "EVENT_520_action_queue_sync_12_SUBSCRIPT_object_memory_clear_bit_6"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(
                     index=10, is_sequence=True, looping=True, mirror_sprite=True
                 ),
                 ASObjectMemoryClearBit(
                     arg_1=0x08,
                     bits=[3, 4],
-                    identifier="EVENT_520_action_queue_sync_12_SUBSCRIPT_object_memory_clear_bit_6",
-                ),
+                    identifier="EVENT_520_action_queue_sync_12_SUBSCRIPT_object_memory_clear_bit_6"),
             ],
-            identifier="EVENT_520_action_queue_sync_12",
-        ),
+            identifier="EVENT_520_action_queue_sync_12"),
         SetAsyncActionScript(NPC_7, A0639_ROSE_TOWN_ARROW_THAT_FREEZES_TOAD_BY_INN),
         RememberLastObject(),
         Db(bytearray(b"\xc7\x96")),
@@ -130,8 +118,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=Y_COORD_2,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_520_set_7000_to_7000_short_mem_19",
-        ),
+            identifier="EVENT_520_set_7000_to_7000_short_mem_19"),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ROSE_TOWN_ARROW_POSITION),
         SetSyncActionScript(NPC_2, A0015_DO_NOTHING),
         ClearBit(TEMP_7043_0),
@@ -148,8 +135,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_520_run_dialog_31",
-        ),
+            identifier="EVENT_520_run_dialog_31"),
         Return(),
     ]
 )

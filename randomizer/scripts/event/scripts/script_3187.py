@@ -12,8 +12,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBSelected(["EVENT_3187_ret_3"]),
         RunDialog(
             dialog_id=DI1651_MINECART_INSTRUCTIONS_EXTENDED,
@@ -21,8 +20,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(identifier="EVENT_3187_ret_3"),
     ]
 )

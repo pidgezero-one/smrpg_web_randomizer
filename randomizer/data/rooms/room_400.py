@@ -46,8 +46,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT,
             x=13,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -79,8 +77,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -109,8 +106,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.HANGIN_XX_SHY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -137,8 +133,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.HANGIN_XX_SHY_NPC,
             event_script=E0000_EMPTY,
@@ -148,8 +143,7 @@ room = Room(
             y=30,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularNPC( # 3
             npc=npcs.EMPTY_NPC_2,
             initiator=EventInitiator.NONE,
@@ -177,8 +171,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.EMPTY_NPC_2,
             event_script=E0000_EMPTY,
@@ -188,7 +181,6 @@ room = Room(
             y=44,
             z=3,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

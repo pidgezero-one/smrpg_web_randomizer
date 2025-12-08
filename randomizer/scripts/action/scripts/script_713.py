@@ -13,8 +13,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7043_4,
             ["ACTION_713_set_animation_speed_8"],
-            identifier="ACTION_713_jmp_if_bit_set_6",
-        ),
+            identifier="ACTION_713_jmp_if_bit_set_6"),
         PlaySound(sound=SO009_GREEN_SWITCH, channel=4),
         SetAllSpeeds(FAST, identifier="ACTION_713_set_animation_speed_8"),
         ShiftZUpPixels(8),
@@ -46,8 +45,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7043_4,
             ["ACTION_713_set_animation_speed_37"],
-            identifier="ACTION_713_jmp_if_bit_set_35",
-        ),
+            identifier="ACTION_713_jmp_if_bit_set_35"),
         PlaySound(sound=SO009_GREEN_SWITCH, channel=4),
         SetAllSpeeds(FAST, identifier="ACTION_713_set_animation_speed_37"),
         ShiftZUpPixels(8),

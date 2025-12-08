@@ -9,8 +9,7 @@ script = EventScript(
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R479_BOWSERS_KEEP_2ND_TIME_AREA_04_THRONE_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ActionQueueSync(target=NPC_2, subscript=[ASWalkNorthwestPixels(8)]),
         ActionQueueSync(target=NPC_3, subscript=[ASWalkSoutheastPixels(8)]),
         ActionQueueSync(target=NPC_4, subscript=[ASWalkSoutheastPixels(8)]),
@@ -26,15 +25,13 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=2, y=66, z=0, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASTransferToXYZF(x=2, y=67, z=0, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_0, A0997_KEEP_ORIGINAL_THRONE_ROOM_RUNNING_GOOMBAS),
         SetSyncActionScript(NPC_1, A0997_KEEP_ORIGINAL_THRONE_ROOM_RUNNING_GOOMBAS),
         FadeInFromBlack(

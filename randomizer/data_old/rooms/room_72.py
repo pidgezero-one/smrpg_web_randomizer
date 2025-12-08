@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes.COINS,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     extra_required_actions=[ExtraSpriteActions.Swim],
     music=Music._22_MIDAS_RIVER,
     entrance_event=3484,
@@ -91,8 +85,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 1
             occupant=npcs.FrogCoin,
             initiator=Initiator.NONE,
@@ -124,8 +117,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 2
             occupant=npcs.SplashWaterDroplets,
             initiator=Initiator.NONE,
@@ -156,8 +148,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 3
             occupant=npcs.Goombette,
             initiator=Initiator.NONE,
@@ -190,8 +181,7 @@ room = Room(
             priority_2=True,
             height=2,
             vram_size=1,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 4
             occupant=npcs.Lakitu,
             initiator=Initiator.NONE,
@@ -226,8 +216,7 @@ room = Room(
             obtuse_axis=4,
             height=13,
             vram_size=3,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 5
             occupant=npcs.Goomba,
             initiator=Initiator.NONE,
@@ -258,8 +247,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 6
             occupant=npcs.Goomba,
             event_script=1551,
@@ -273,7 +261,5 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
-    ],
-)
+            cannot_clone=False),
+    ])

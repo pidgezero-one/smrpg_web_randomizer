@@ -38,8 +38,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=JumpTrampoline,
@@ -72,8 +71,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularNPC(
         occupant=SlotFlower,
@@ -108,8 +106,7 @@ objects = [
         priority_2=True,
         show_shadow=True,
         height=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularClone(
         occupant=SlotFlower,
@@ -126,8 +123,7 @@ objects = [
         priority_2=True,
         show_shadow=True,
         height=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_4
     RegularClone(
         occupant=SlotFlower,
@@ -144,8 +140,7 @@ objects = [
         priority_2=True,
         show_shadow=True,
         height=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_5
     RegularNPC(
         occupant=FrogCoin,
@@ -179,8 +174,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularNPC(
         occupant=Explosion,
@@ -213,6 +207,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

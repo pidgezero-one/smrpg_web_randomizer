@@ -19,8 +19,7 @@ script = EventScript(
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_243_room_234_logic",
-        ),
+            identifier="EVENT_243_room_234_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_243_room_455_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_243_room_457_logic"),
     ]

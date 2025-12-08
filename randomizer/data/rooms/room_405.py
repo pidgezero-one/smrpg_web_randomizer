@@ -46,8 +46,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -77,8 +76,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -88,8 +86,7 @@ room = Room(
             y=67,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -99,8 +96,7 @@ room = Room(
             y=63,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -110,8 +106,7 @@ room = Room(
             y=59,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 4
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -121,8 +116,7 @@ room = Room(
             y=55,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 5
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -132,8 +126,7 @@ room = Room(
             y=51,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 6
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -143,8 +136,7 @@ room = Room(
             y=47,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 7
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -154,8 +146,7 @@ room = Room(
             y=43,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 8
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -165,8 +156,7 @@ room = Room(
             y=39,
             z=13,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 9
             npc=npcs.SPOOKUM_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -193,8 +183,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 10
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -223,8 +212,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 11
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -253,8 +241,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 12
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -283,7 +270,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

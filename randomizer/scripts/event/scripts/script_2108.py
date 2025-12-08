@@ -11,13 +11,11 @@ script = EventScript(
         JmpIfBitClear(STATUE_KEEPER_FIGHT_PRESENT, ["EVENT_2108_jmp_if_bit_set_14"]),
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASWalkNortheastPixels(8), ASFaceSoutheast(), ASVisibilityOn()],
-        ),
+            subscript=[ASWalkNortheastPixels(8), ASFaceSoutheast(), ASVisibilityOn()]),
         JmpIfBitSet(
             TEMP_7044_7,
             ["EVENT_2108_run_event_as_subroutine_17"],
-            identifier="EVENT_2108_jmp_if_bit_set_14",
-        ),
+            identifier="EVENT_2108_jmp_if_bit_set_14"),
         RunEventAsSubroutine(
             E0818_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),
@@ -25,8 +23,7 @@ script = EventScript(
         Return(),
         JmpToSubroutine(
             ["EVENT_2108_jmp_if_bit_sub_0"],
-            identifier="EVENT_2108_run_event_as_subroutine_17",
-        ),
+            identifier="EVENT_2108_run_event_as_subroutine_17"),
         RunEventAsSubroutine(
             E0818_NIMBUS_CASTLE_STATUE_POLISHER_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),
@@ -38,8 +35,7 @@ script = EventScript(
         JmpIfBitSet(
             NIMBUS_LAND_LIBERATED,
             ["EVENT_2108_play_music_default_volume_sub_3"],
-            identifier="EVENT_2108_jmp_if_bit_sub_0",
-        ),
+            identifier="EVENT_2108_jmp_if_bit_sub_0"),
         PlayMusicAtDefaultVolume(M61_VALENTINA),
         Return(),
         PlayMusicAtDefaultVolume(

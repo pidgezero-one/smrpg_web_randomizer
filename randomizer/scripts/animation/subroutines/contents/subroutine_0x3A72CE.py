@@ -33,5 +33,4 @@ script = SubroutineOrBanklessScript(
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=768, arch_height=288),
         PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
         ReturnSubroutine(),
-    ],
-)
+    ])

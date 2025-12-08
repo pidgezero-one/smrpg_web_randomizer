@@ -8,12 +8,10 @@ script = EventScript(
     [
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASTransferXYZFPixels(x=0, y=0, z=2, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=0, y=0, z=2, direction=EAST)]),
         ActionQueueSync(
             target=NPC_2,
-            subscript=[ASTransferXYZFPixels(x=0, y=0, z=2, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=0, y=0, z=2, direction=EAST)]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

@@ -11,13 +11,11 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=39,
-        ),
+            mod_id=39),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-            mod_id=45,
-        ),
+            mod_id=45),
         CopyVarToVar(from_var=UNKNOWN_70E7, to_var=PRIMARY_TEMP_7000),
         Jmp(["EVENT_3376_clear_attempt_counter"]),
     ]

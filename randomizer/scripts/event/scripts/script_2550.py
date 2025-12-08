@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_2,
             R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM,
-            ["EVENT_2550_ret_3"],
-        ),
+            ["EVENT_2550_ret_3"]),
         RemoveObjectFromSpecificLevel(
             NPC_2, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM
         ),

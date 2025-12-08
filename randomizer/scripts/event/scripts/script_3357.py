@@ -10,16 +10,14 @@ script = EventScript(
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         ActionQueueAsync(
             target=MARIO,
-            subscript=[ASWalkToXYCoords(x=23, y=31), ASFaceNorthwest(), ASPause(1)],
-        ),
+            subscript=[ASWalkToXYCoords(x=23, y=31), ASFaceNorthwest(), ASPause(1)]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(SLOW),
                 ASShiftZUpSteps(3),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -30,8 +28,7 @@ script = EventScript(
                 ASPause(2),
                 ASEndLoop(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         PlayMusicAtDefaultVolume(M36_EXPLANATION),
         StartLoopNTimes(15),
         SetSyncActionScript(MEM_70A9, A0281_KEEP_TOPPER_GAME_SET_BUTTON_OR_BALL_STATE),

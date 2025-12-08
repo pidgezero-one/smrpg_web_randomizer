@@ -12,7 +12,6 @@ script = EventScript(
         JmpToEvent(E0206_UNLOCK_SEA_IF_GATED_BY_STAR_PIECES),
         JmpToEvent(
             E3886_END_GAME_CONTAINER_FROM_ALT_WIN_CONDITIONS,
-            identifier="EVENT_3101_set_bit_399",
-        ),
+            identifier="EVENT_3101_set_bit_399"),
     ]
 )

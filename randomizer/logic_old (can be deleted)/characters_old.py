@@ -74,8 +74,7 @@ def _randomize_learned_spells(world):
         our_spells = charspells[character]
         for s in (
                 spells.GenoBoost,
-                spells.GroupHug,
-        ):
+                spells.GroupHug):
             if s in our_spells:
                 index = our_spells.index(s)
                 if index == (len(our_spells) - 1):
@@ -379,10 +378,9 @@ def randomize_all(world):
 
         # Shuffle physical and magical bonuses together.
         for attrs in (
-                ('max_hp',),
+                ('max_hp'),
                 ('attack', 'defense'),
-                ('magic_attack', 'magic_defense'),
-        ):
+                ('magic_attack', 'magic_defense')):
             # Shuffle between all characters.
             shuffled = all_bonuses[:]
             random.shuffle(shuffled)

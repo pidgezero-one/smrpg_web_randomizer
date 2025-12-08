@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=24,
             y=18,
-            z=2,
-        ),
+            z=2),
         JmpToEvent(E0282_UNKNOWN_PIPE_VAULT),
         Return(),
     ]

@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35ba9b",
-        ),
+            identifier="queuestart_0x35ba9b"),
         Db(bytearray(b" \x8d@\x00")),
         JmpIfAMEM8BitEqualsConst(0x6D, 64, ["command_0x35bab9"]),
         NewSpriteAtCoords(
@@ -28,8 +27,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             invert_sprite=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         Jmp(["command_0x35bac2"]),
         NewSpriteAtCoords(
             sprite_id=SPR0039_RED_SCARECROW,
@@ -42,8 +40,7 @@ script = SubroutineOrBanklessScript(
             invert_sprite=True,
             behind_all_sprites=True,
             overlap_all_sprites=True,
-            identifier="command_0x35bab9",
-        ),
+            identifier="command_0x35bab9"),
         PauseScriptUntil(
             condition=FRAMES_ELAPSED, frames=9, identifier="command_0x35bac2"
         ),
@@ -60,8 +57,7 @@ script = SubroutineOrBanklessScript(
             end_accepting_input=15,
             start_accepting_input=0,
             timed_hit_ends=15,
-            destinations=["command_0x35baec"],
-        ),
+            destinations=["command_0x35baec"]),
         ScreenFlashWithDuration(BLUE, 1, 16),
         PlaySound(sound=S0078_TIMED_STAT_BOOST, channel=4),
         EndTrackingAllyButtonInputs(identifier="command_0x35baec"),
@@ -80,8 +76,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         PlaySound(sound=S0042_BLADE, channel=4),
         NewSpriteAtCoords(
             sprite_id=SPR0517_BOMB_EXPLOSION,
@@ -91,8 +86,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         PauseScriptUntilSpriteSequenceDone(),
         RemoveObject(),
         SetAMEM8BitToConst(0x6E, 1),
@@ -136,8 +130,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         Jmp(["command_0x35bb94"]),
         SetAMEM32ToXYZCoords(
             origin=CASTER_CURRENT_POSITION,
@@ -147,8 +140,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="command_0x35bb8c",
-        ),
+            identifier="command_0x35bb8c"),
         Pause1Frame(identifier="command_0x35bb94"),
         SetAMEM8BitTo7E1x(0x6E, 0x7EE020),
         JmpIfAMEM8BitNotEqualsConst(0x6E, 1, ["command_0x35bb94"]),
@@ -167,5 +159,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6E, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6E, amem=0x6E),
         ReturnObjectQueue(),
-    ],
-)
+    ])

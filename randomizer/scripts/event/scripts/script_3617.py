@@ -17,8 +17,7 @@ script = EventScript(
             subscript=[
                 ASSetSpriteSequence(index=5, is_sequence=True, looping=True),
                 ASTransferXYZFPixels(x=250, y=250, z=0, direction=EAST),
-            ],
-        ),
+            ]),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R346_NIMBUS_LAND_INN_BEDROOM, mod_id=1
         ),

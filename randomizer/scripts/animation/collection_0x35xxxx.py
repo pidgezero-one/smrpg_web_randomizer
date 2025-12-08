@@ -1,8 +1,7 @@
 """bank 0x35xxxx export"""
 
 from randomizer.types.battle_animation_scripts.types import (
-    AnimationScriptBankCollection,
-)
+    AnimationScriptBankCollection)
 from .monster_spells.bank import bank as monster_spells
 from .monster_attacks.bank import bank as monster_attacks
 from .monster_entrances.bank import bank as monster_entrances

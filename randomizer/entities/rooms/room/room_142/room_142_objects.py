@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=DonutLift,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=DonutLift,
@@ -85,8 +83,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=DonutLift,
@@ -101,8 +98,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=DonutLift,
@@ -135,8 +131,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=DonutLift,
@@ -151,8 +146,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=DonutLift,
@@ -167,8 +161,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularClone(
         occupant=DonutLift,
@@ -183,8 +176,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularClone(
         occupant=DonutLift,
@@ -199,8 +191,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=DonutLift,
@@ -215,8 +206,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularClone(
         occupant=DonutLift,
@@ -231,8 +221,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularNPC(
         occupant=BulletBill,
@@ -267,8 +256,7 @@ objects = [
         priority_2=True,
         acute_axis=7,
         obtuse_axis=3,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     RegularClone(
         occupant=BulletBill,
@@ -285,8 +273,7 @@ objects = [
         priority_2=True,
         acute_axis=7,
         obtuse_axis=3,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     RegularClone(
         occupant=BulletBill,
@@ -303,8 +290,7 @@ objects = [
         priority_2=True,
         acute_axis=7,
         obtuse_axis=3,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_14
     RegularClone(
         occupant=BulletBill,
@@ -321,8 +307,7 @@ objects = [
         priority_2=True,
         acute_axis=7,
         obtuse_axis=3,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_15
     RegularNPC(
         occupant=LandsEndCannon,
@@ -355,8 +340,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_16
     RegularNPC(
         occupant=Empty,
@@ -392,8 +376,7 @@ objects = [
         acute_axis=8,
         obtuse_axis=8,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_17
     RegularNPC(
         occupant=Shaman,
@@ -426,8 +409,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_18
     RegularClone(
         occupant=Shaman,
@@ -442,6 +424,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

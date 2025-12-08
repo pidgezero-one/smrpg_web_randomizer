@@ -21,5 +21,4 @@ script = SubroutineOrBanklessScript(
         ResetObjectMappingMemory(),
         ResetSpriteSequence(),
         Jmp(["command_0x3509ae"]),
-    ],
-)
+    ])

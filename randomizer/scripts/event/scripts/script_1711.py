@@ -13,8 +13,7 @@ script = EventScript(
             x=4,
             y=52,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -32,8 +31,7 @@ script = EventScript(
                     ["EVENT_1711_action_queue_async_2_SUBSCRIPT_pause_5"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

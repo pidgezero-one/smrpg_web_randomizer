@@ -23,8 +23,7 @@ script = EventScript(
         SetTempSyncActionScript(
             NPC_0,
             A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES,
-            identifier="EVENT_3327_set_temp_action_script_sync_13",
-        ),
+            identifier="EVENT_3327_set_temp_action_script_sync_13"),
         SetSyncActionScript(NPC_1, A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES),
         SetSyncActionScript(NPC_2, A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES),
         SetSyncActionScript(NPC_3, A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES),

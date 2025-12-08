@@ -21,8 +21,7 @@ script = EventScript(
             subscript=[
                 ASDb(bytearray(b"\x97\x17")),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0, 1]),
-            ],
-        ),
+            ]),
         JmpIfBitSet(TEMP_7044_6, ["EVENT_1787_set_short_14"]),
         RunEventAsSubroutine(E1844_SUMMON_CLOUD_BOSS),
         FadeInFromBlack(sync=False),

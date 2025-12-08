@@ -22,5 +22,4 @@ script = SubroutineOrBanklessScript(
         IncAMEM16BitByConst(0x60, 96),
         StoreOMEM60ToItemInventory(),
         ReturnSubroutine(),
-    ],
-)
+    ])

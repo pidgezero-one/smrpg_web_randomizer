@@ -35,8 +35,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),
         Mem7000AndConst(0x000F),
         JmpIfVarEqualsConst(
@@ -65,38 +64,33 @@ script = EventScript(
             dialog_id=DI1243_FORTUNE_1,
             duration=1,
             sync=False,
-            identifier="EVENT_1692_run_dialog_duration_30",
-        ),
+            identifier="EVENT_1692_run_dialog_duration_30"),
         SummonObjectToSpecificLevel(
             NPC_6, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6,
             R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE,
-            ["EVENT_1692_ret_68_-"],
-        ),
+            ["EVENT_1692_ret_68_-"]),
         Return(),
         RunDialogForDuration(
             dialog_id=DI1244_FORTUNE_2,
             duration=1,
             sync=False,
-            identifier="EVENT_1692_run_dialog_duration_39",
-        ),
+            identifier="EVENT_1692_run_dialog_duration_39"),
         SummonObjectToSpecificLevel(
             NPC_7, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7,
             R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE,
-            ["EVENT_1692_ret_68_-"],
-        ),
+            ["EVENT_1692_ret_68_-"]),
         Return(),
         RunDialogForDuration(
             dialog_id=DI1245_FORTUNE_3,
             duration=1,
             sync=False,
-            identifier="EVENT_1692_run_dialog_duration_43",
-        ),
+            identifier="EVENT_1692_run_dialog_duration_43"),
         SummonObjectToSpecificLevel(
             NPC_0, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE
         ),
@@ -111,8 +105,7 @@ script = EventScript(
             dialog_id=DI1246_FORTUNE_4,
             duration=1,
             sync=False,
-            identifier="EVENT_1692_run_dialog_duration_48",
-        ),
+            identifier="EVENT_1692_run_dialog_duration_48"),
         SummonObjectToSpecificLevel(
             NPC_5, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE
         ),
@@ -121,31 +114,27 @@ script = EventScript(
             dialog_id=DI1247_FORTUNE_5,
             duration=1,
             sync=False,
-            identifier="EVENT_1692_run_dialog_duration_56",
-        ),
+            identifier="EVENT_1692_run_dialog_duration_56"),
         SummonObjectToSpecificLevel(
             NPC_8, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_8,
             R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE,
-            ["EVENT_1692_ret_68_-"],
-        ),
+            ["EVENT_1692_ret_68_-"]),
         Return(),
         RunDialogForDuration(
             dialog_id=DI1248_FORTUNE_6,
             duration=1,
             sync=False,
-            identifier="EVENT_1692_run_dialog_duration_65",
-        ),
+            identifier="EVENT_1692_run_dialog_duration_65"),
         SummonObjectToSpecificLevel(
             NPC_9, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE
         ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_9,
             R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE,
-            ["EVENT_1692_ret_68_-"],
-        ),
+            ["EVENT_1692_ret_68_-"]),
         Return(),
         SetBit(HAS_A_PRIZE_FORTUNE, identifier="EVENT_1692_ret_68_-"),
         Return(),

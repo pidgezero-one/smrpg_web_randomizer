@@ -29,8 +29,7 @@ script = EventScript(
                 ),
                 ASJmpIfMarioInAir(["EVENT_1683_action_queue_sync_5_SUBSCRIPT_pause_6"]),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7044_6),
         JmpToEvent(E1783_LANDS_END_FINAL_WHIRLPOOL_ROOM_LOADER),
     ]

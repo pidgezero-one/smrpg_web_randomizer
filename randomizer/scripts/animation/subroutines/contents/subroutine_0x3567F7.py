@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3567f7",
-        ),
+            identifier="queuestart_0x3567f7"),
         NewSpriteAtCoords(
             sprite_id=SPR0531_BLACK_ROLLING_COAL_ROCK,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         ClearAMEM8Bit(0x64),
@@ -43,5 +41,4 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x35336f"]),
         RemoveObject(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

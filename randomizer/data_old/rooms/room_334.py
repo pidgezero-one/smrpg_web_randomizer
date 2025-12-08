@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.TREASURE_CHEST,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes.COINS,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     music=Music._42_STILL_THE_ROAD_IS_FULL_OF_MONSTERS,
     entrance_event=2489,
     objects=[
@@ -93,8 +87,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             show_shadow=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 1
             occupant=npcs.JumpTrampoline,
             initiator=Initiator.JUMP_ON,
@@ -125,8 +118,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 2
             occupant=npcs.SlotFlower,
             initiator=Initiator.NONE,
@@ -159,8 +151,7 @@ room = Room(
             priority_2=True,
             show_shadow=True,
             height=3,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone(  # 3
             occupant=npcs.SlotFlower,
             event_script=2304,
@@ -176,8 +167,7 @@ room = Room(
             priority_2=True,
             show_shadow=True,
             height=3,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone(  # 4
             occupant=npcs.SlotFlower,
             event_script=2304,
@@ -193,8 +183,7 @@ room = Room(
             priority_2=True,
             show_shadow=True,
             height=3,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 5
             occupant=npcs.FrogCoin,
             initiator=Initiator.NONE,
@@ -226,8 +215,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 6
             occupant=npcs.Explosion,
             initiator=Initiator.NONE,
@@ -259,7 +247,5 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
-    ],
-)
+            cannot_clone=True),
+    ])

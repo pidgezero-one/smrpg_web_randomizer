@@ -31,5 +31,4 @@ script = SubroutineOrBanklessScript(
         ),
         PlaySound(sound=S0084_WALLOP_4),
         ReturnObjectQueue(),
-    ],
-)
+    ])

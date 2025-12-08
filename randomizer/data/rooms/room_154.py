@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -76,8 +75,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -104,8 +102,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.SNIFIT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -132,8 +129,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.BANANA_PEEL_NPC,
             initiator=EventInitiator.NONE,
@@ -160,8 +156,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.BANANA_PEEL_NPC,
             initiator=EventInitiator.NONE,
@@ -188,8 +183,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.BANANA_PEEL_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -216,8 +210,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.BANANA_PEEL_NPC,
             initiator=EventInitiator.NONE,
@@ -244,8 +237,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.BOOSTER_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -272,8 +264,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC,
             initiator=EventInitiator.NONE,
@@ -300,8 +291,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.TORTE_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -328,8 +318,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.TORTE_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -356,8 +345,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 11
             npc=npcs.BUNDT_OBJECT_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -384,8 +372,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 12
             npc=npcs.BUNDT_OBJECT_NPC_2,
             initiator=EventInitiator.DO_ANYTHING,
@@ -412,7 +399,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

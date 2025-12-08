@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -41,21 +39,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._3_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._512_BYTES,
-                index_in_main_buffer=False,
-            ),
+                index_in_main_buffer=False),
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     music=Music._13_ROAD_IS_FULL_OF_DANGERS,
     entrance_event=2814,
     event_tiles=[
@@ -69,8 +63,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2812,
             x=18,
@@ -81,8 +74,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2811,
             x=15,
@@ -93,8 +85,7 @@ room = Room(
             length=5,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2811,
             x=14,
@@ -105,8 +96,7 @@ room = Room(
             length=5,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2807,
             x=29,
@@ -117,8 +107,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2808,
             x=27,
@@ -129,8 +118,7 @@ room = Room(
             length=5,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2808,
             x=27,
@@ -141,8 +129,7 @@ room = Room(
             length=8,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2808,
             x=28,
@@ -153,8 +140,7 @@ room = Room(
             length=5,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        )
+            byte_8_bit_4=False)
     ],
     exit_fields=[
         MapExit(
@@ -170,8 +156,7 @@ room = Room(
             destination=Locations._009_MUSHROOM_WAY,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=True,
-        ),
+            byte_2_bit_0=True),
         RoomExit(
             x=3,
             y=78,
@@ -189,8 +174,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC(  # 0
@@ -224,8 +208,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 1
             occupant=npcs.Spikey,
             battle_pack=2,
@@ -239,8 +222,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 2
             occupant=npcs.Spikey,
             battle_pack=2,
@@ -254,8 +236,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 3
             occupant=npcs.Spikey,
             battle_pack=2,
@@ -269,8 +250,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone(  # 4
             occupant=npcs.Spikey,
             battle_pack=2,
@@ -284,8 +264,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 5
             occupant=npcs.RedSmallToad,
             initiator=Initiator.NONE,
@@ -316,8 +295,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 6
             occupant=npcs.Lakitu,
             initiator=Initiator.NONE,
@@ -352,8 +330,7 @@ room = Room(
             obtuse_axis=4,
             height=13,
             vram_size=2,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 7
             occupant=npcs.HammerBroLarge,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -384,7 +361,5 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
-    ],
-)
+            cannot_clone=True),
+    ])

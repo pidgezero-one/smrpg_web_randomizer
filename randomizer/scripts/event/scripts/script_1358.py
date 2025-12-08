@@ -32,8 +32,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(3),
                 ASWalkNorthwestSteps(2),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -49,8 +48,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(5),
                 ASFaceNortheast(),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -67,8 +65,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(3),
                 ASFaceNortheast(),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -86,8 +83,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(1),
                 ASFaceNortheast(),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -101,8 +97,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
                 ASPause(30),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0, subscript=[ASFixedFCoordOff(), ASFaceNorthwest()]
         ),

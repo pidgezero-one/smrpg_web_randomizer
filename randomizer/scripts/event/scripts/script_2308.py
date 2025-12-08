@@ -14,8 +14,7 @@ script = EventScript(
         ),
         JmpIfBitClear(
             DISABLE_BOOSTER_PASS_EXIT_WHILE_FALLING,
-            ["EVENT_2308_fade_in_from_black_async_26"],
-        ),
+            ["EVENT_2308_fade_in_from_black_async_26"]),
         ActionQueueAsync(target=MARIO, subscript=[ASFloatingOff()]),
         RemoveObjectFromCurrentLevel(MARIO),
         FadeInFromBlack(sync=False),

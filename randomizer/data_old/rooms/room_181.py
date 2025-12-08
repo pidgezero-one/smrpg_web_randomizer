@@ -51,8 +51,7 @@ room = Room(
             dst_z=6,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=22,
             y=69,
@@ -70,8 +69,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=20,
             y=65,
@@ -89,8 +87,7 @@ room = Room(
             dst_z=4,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -124,8 +121,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 1
             occupant=npcs.AlleyRat,
             battle_pack=74,
@@ -139,8 +135,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 2
             occupant=npcs.AlleyRat,
             battle_pack=74,
@@ -154,8 +149,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 3
             occupant=npcs.AlleyRat,
             battle_pack=74,
@@ -169,8 +163,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 4
             occupant=npcs.AlleyRat,
             battle_pack=74,
@@ -184,8 +177,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 5
             occupant=npcs.AlleyRat,
             battle_pack=74,
@@ -199,8 +191,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 6
             occupant=npcs.BulletBill,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -231,8 +222,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 7
             occupant=npcs.BulletBill,
             event_script=3293,
@@ -246,8 +236,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 8
             occupant=npcs.BulletBill,
             event_script=3293,
@@ -263,8 +252,7 @@ room = Room(
             priority_2=True,
             acute_axis=7,
             obtuse_axis=3,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 9
             occupant=npcs.BulletBill,
             event_script=3293,
@@ -280,8 +268,7 @@ room = Room(
             priority_2=True,
             acute_axis=7,
             obtuse_axis=3,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 10
             occupant=npcs.BulletBill,
             event_script=3293,
@@ -295,8 +282,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 11
             occupant=npcs.BulletBill,
             event_script=3293,
@@ -312,7 +298,6 @@ room = Room(
             priority_2=True,
             acute_axis=7,
             obtuse_axis=3,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

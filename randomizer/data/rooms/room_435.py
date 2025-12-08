@@ -62,8 +62,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.TERRAPIN_ENDING_CREDITS_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -73,8 +72,7 @@ room = Room(
             y=21,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularClone( # 2
             npc=npcs.TERRAPIN_ENDING_CREDITS_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -84,8 +82,7 @@ room = Room(
             y=23,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 3
             npc=npcs.GOOMBA_NPC_2,
             initiator=EventInitiator.NONE,
@@ -112,8 +109,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.GOOMBA_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -123,8 +119,7 @@ room = Room(
             y=27,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 5
             npc=npcs.GOOMBA_NPC_2,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -134,8 +129,7 @@ room = Room(
             y=21,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 6
             npc=npcs.MAGIKOOPA_NPC,
             initiator=EventInitiator.NONE,
@@ -162,8 +156,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC,
             initiator=EventInitiator.NONE,
@@ -190,8 +183,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 8
             npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -201,8 +193,7 @@ room = Room(
             y=18,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 9
             npc=npcs.SHYGUY_IN_BOWSER_S_HELICOPTER_NPC,
             initiator=EventInitiator.NONE,
@@ -229,7 +220,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=HanginShy,
@@ -71,8 +70,7 @@ objects = [
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
         vram_size=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularClone(
         occupant=HanginShy,
@@ -88,8 +86,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=Empty,
@@ -125,8 +122,7 @@ objects = [
         acute_axis=8,
         obtuse_axis=8,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Empty,
@@ -144,6 +140,5 @@ objects = [
         acute_axis=8,
         obtuse_axis=8,
         height=11,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

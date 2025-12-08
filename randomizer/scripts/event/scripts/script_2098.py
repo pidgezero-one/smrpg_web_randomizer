@@ -13,8 +13,7 @@ script = EventScript(
         SetSyncActionScript(
             NPC_0,
             A0869_MOVE_HINOPIO_TO_INN,
-            identifier="EVENT_2098_set_action_script_sync_4",
-        ),
+            identifier="EVENT_2098_set_action_script_sync_4"),
         Return(identifier="EVENT_2098_ret_6"),
     ]
 )

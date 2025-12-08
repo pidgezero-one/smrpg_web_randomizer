@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x356831",
-        ),
+            identifier="queuestart_0x356831"),
         NewSpriteAtCoords(
             sprite_id=SPR0809_BLUE_MUSIC_NOTE,
             sequence=0,
@@ -25,8 +24,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ShineEffect(
             colour_count=8, starting_colour_index=1, glow_duration=1, east=True
         ),
@@ -62,8 +60,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x356899",
-        ),
+            identifier="queuestart_0x356899"),
         EnableSpritesOnSubscreen(),
         NewSpriteAtCoords(
             sprite_id=SPR0809_BLUE_MUSIC_NOTE,
@@ -73,8 +70,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ShineEffect(
             colour_count=8, starting_colour_index=1, glow_duration=1, east=True
         ),
@@ -110,5 +106,4 @@ script = SubroutineOrBanklessScript(
         DisableSpritesOnSubscreen(),
         Db(bytearray(b"\x81")),
         Jmp(["command_0x356b01"]),
-    ],
-)
+    ])

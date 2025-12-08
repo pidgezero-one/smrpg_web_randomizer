@@ -32,8 +32,11 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_249_set_var_to_const_2"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 189, ["EVENT_249_set_var_to_const_free3"]),
 	Return(),
 	SetVarToConst(PRIMARY_TEMP_7000, 15, identifier="EVENT_249_set_var_to_const_2"),
 	JmpToEvent(E0158_NPC_QUEST_GRANT_MULTI_FROG_COIN),
+	SetVarToConst(ITEM_ID, MushroomItem, identifier="EVENT_249_set_var_to_const_free3"),
+	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
 	Return()
 ])

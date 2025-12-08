@@ -62,8 +62,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.ROLLING_BARREL_NPC,
             event_script=E3501_BOOSTER_HILL_BARREL_INTERACTION,
@@ -73,8 +72,7 @@ room = Room(
             y=48,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.ROLLING_BARREL_NPC,
             event_script=E3501_BOOSTER_HILL_BARREL_INTERACTION,
@@ -84,8 +82,7 @@ room = Room(
             y=46,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 3
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -112,8 +109,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -140,8 +136,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.SNIFIT_BLACK_BACK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -168,8 +163,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
@@ -196,8 +190,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.BOOSTER_NPC,
             initiator=EventInitiator.NONE,
@@ -224,8 +217,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -252,8 +244,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.BIG_FLOWER_NPC,
             initiator=EventInitiator.NONE,
@@ -280,7 +271,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

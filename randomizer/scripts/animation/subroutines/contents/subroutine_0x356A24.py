@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x356a24",
-        ),
+            identifier="queuestart_0x356a24"),
         NewSpriteAtCoords(
             sprite_id=SPR0777_STAR_EGG_LITTLE_BROWN_BIRD,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             param_2_and_0x10=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         SetAMEM16BitToConst(0x60, 10),
@@ -46,8 +44,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x356a51",
-        ),
+            identifier="queuestart_0x356a51"),
         NewSpriteAtCoords(
             sprite_id=SPR0777_STAR_EGG_LITTLE_BROWN_BIRD,
             sequence=1,
@@ -57,8 +54,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             param_2_and_0x10=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x67),
         ClearAMEM8Bit(0x69),
         SetAMEM16BitToConst(0x60, 10),
@@ -69,5 +65,4 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x35337d"]),
         RemoveObject(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

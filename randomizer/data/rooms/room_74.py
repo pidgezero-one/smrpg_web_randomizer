@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -67,8 +66,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -98,8 +96,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.TADPOLE_NPC,
             event_script=E0577_ROSE_TOWN_TREASURE_HOUSE_CHEST_2,
@@ -109,8 +106,7 @@ room = Room(
             y=35,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 2
             npc=npcs.TADPOLE_NPC,
             event_script=E0578_ROSE_TOWN_LIBERATED_UPPER_HIDDEN_NPC,
@@ -120,8 +116,7 @@ room = Room(
             y=26,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 3
             npc=npcs.TADPOLE_NPC,
             event_script=E0578_ROSE_TOWN_LIBERATED_UPPER_HIDDEN_NPC,
@@ -131,8 +126,7 @@ room = Room(
             y=42,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 4
             npc=npcs.TADPOLE_NPC,
             event_script=E0578_ROSE_TOWN_LIBERATED_UPPER_HIDDEN_NPC,
@@ -142,8 +136,7 @@ room = Room(
             y=58,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 5
             npc=npcs.TADPOLE_NPC,
             event_script=E0578_ROSE_TOWN_LIBERATED_UPPER_HIDDEN_NPC,
@@ -153,8 +146,7 @@ room = Room(
             y=58,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 6
             npc=npcs.TADPOLE_NPC,
             event_script=E0578_ROSE_TOWN_LIBERATED_UPPER_HIDDEN_NPC,
@@ -164,8 +156,7 @@ room = Room(
             y=74,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 7
             npc=npcs.TADPOLE_NPC,
             event_script=E0578_ROSE_TOWN_LIBERATED_UPPER_HIDDEN_NPC,
@@ -175,8 +166,7 @@ room = Room(
             y=90,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 8
             npc=npcs.TOADOFSKY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -203,8 +193,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.SAVE_POINT_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -231,7 +220,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

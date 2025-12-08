@@ -25,8 +25,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_3680_run_dialog_35",
-        ),
+            identifier="EVENT_3680_run_dialog_35"),
         Return(),
     ]
 )

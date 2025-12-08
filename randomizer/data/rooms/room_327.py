@@ -37,25 +37,6 @@ room = Room(
     entrance_event=E0391_MUSHROOM_KINGDOM_OCCUPIED_LEFT_STAIRWAY_LOADER,
     exits=[
         RoomExit(
-            x=27,
-            y=30,
-            z=0,
-            f=EdgeDirection.SOUTHEAST,
-            length=2,
-            height=0,
-            nw_se_edge_active=True,
-            ne_sw_edge_active=False,
-            byte_2_bit_2=False,
-            destination=R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
-            show_message=False,
-            dst_x=4,
-            dst_y=23,
-            dst_z=2,
-            dst_z_half=False,
-            dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
-        RoomExit(
             x=26,
             y=19,
             z=3,
@@ -72,8 +53,20 @@ room = Room(
             dst_z=1,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
+    ],
+    events=[
+        Event(
+            event=E3106_EXIT_MK_STAIRCASE,
+            x=27,
+            y=30,
+            z=0,
+            f=EdgeDirection.SOUTHEAST,
+            length=2,
+            height=0,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=False,
+            byte_8_bit_4=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -103,8 +96,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -131,8 +123,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -159,7 +150,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

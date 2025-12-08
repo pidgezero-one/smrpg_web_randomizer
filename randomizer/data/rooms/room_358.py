@@ -53,8 +53,7 @@ room = Room(
             dst_z=3,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=12,
             y=122,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -102,8 +100,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -130,8 +127,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -158,8 +154,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             initiator=EventInitiator.JUMP_ON,
@@ -186,8 +181,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3324_VOLCANO_3_LIFT_ROOM_DONUT_LIFT,
@@ -197,8 +191,7 @@ room = Room(
             y=120,
             z=3,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             event_script=E3324_VOLCANO_3_LIFT_ROOM_DONUT_LIFT,
@@ -208,8 +201,7 @@ room = Room(
             y=124,
             z=1,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 6
             npc=npcs.VOMER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -236,8 +228,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.VOMER_NPC,
             event_script=E3319_SET_VOMER_PACK,
@@ -247,7 +238,6 @@ room = Room(
             y=119,
             z=1,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
     ]
 )

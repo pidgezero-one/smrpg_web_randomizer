@@ -19,8 +19,7 @@ script = SubroutineOrBanklessScript(
             field_object=0,
             destinations=["queuestart_0x35f728"],
             character_slot=True,
-            bit_5=True,
-        ),
+            bit_5=True),
         ClearAMEM16Bit(0x60),
         Set7E1xToAMEM8Bit(0x7EE025, 0x60),
         ObjectQueueAtOffsetAndIndex(index=4, target_address=0x35F5E4),
@@ -32,8 +31,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         JmpIfAMEM8BitNotEqualsConst(0x6F, 0, ["command_0x35f633"]),
         NewSpriteAtCoords(
             sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
@@ -44,8 +42,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             mirror_sprite=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         Jmp(["command_0x35f63c"]),
         NewSpriteAtCoords(
             sprite_id=SPR0096_MARIO_DOLL_SURPRISED,
@@ -57,8 +54,7 @@ script = SubroutineOrBanklessScript(
             param_2_and_0x10=True,
             overwrite_palette=True,
             overlap_all_sprites=True,
-            identifier="command_0x35f633",
-        ),
+            identifier="command_0x35f633"),
         PauseScriptUntil(
             condition=FRAMES_ELAPSED, frames=9, identifier="command_0x35f63c"
         ),
@@ -71,8 +67,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_SHIFT, speed=1792, arch_height=0),
         JmpIfAMEM8BitNotEqualsConst(0x6F, 0, ["command_0x35f65c"]),
         DrawSpriteAtAMEM32Coords(
@@ -96,8 +91,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         JmpIfAMEM8BitNotEqualsConst(0x6F, 0, ["command_0x35f695"]),
         NewSpriteAtCoords(
             sprite_id=SPR0003_MARIO_SURPRISE_LEFT,
@@ -106,8 +100,7 @@ script = SubroutineOrBanklessScript(
             vram_address=0x6600,
             palette_row=6,
             overwrite_vram=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         Jmp(["command_0x35f69e"]),
         NewSpriteAtCoords(
             sprite_id=SPR0580_SMALL_MARIO_HURLY_GLOVES,
@@ -119,8 +112,7 @@ script = SubroutineOrBanklessScript(
             param_2_and_0x10=True,
             overwrite_palette=True,
             overlap_all_sprites=True,
-            identifier="command_0x35f695",
-        ),
+            identifier="command_0x35f695"),
         ResetTargetMappingMemory(identifier="command_0x35f69e"),
         SetAMEM40ToXYZCoords(
             origin=CASTER_CURRENT_POSITION,
@@ -129,8 +121,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_TRANSFER, speed=768, arch_height=256),
         PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
         SetAMEM8BitToConst(0x6E, 1),
@@ -141,8 +132,7 @@ script = SubroutineOrBanklessScript(
             sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
             sequence=4,
             store_to_vram=True,
-            looping=True,
-        ),
+            looping=True),
         PauseScriptUntil(
             condition=FRAMES_ELAPSED, frames=9, identifier="command_0x35f6c9"
         ),
@@ -155,8 +145,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_SHIFT, speed=1792, arch_height=0),
         JmpIfAMEM8BitNotEqualsConst(0x6F, 0, ["command_0x35f6e9"]),
         DrawSpriteAtAMEM32Coords(
@@ -181,8 +170,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0096_MARIO_DOLL_SURPRISED,
             sequence=2,
@@ -192,8 +180,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             param_2_and_0x10=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         Pause1Frame(identifier="command_0x35f71b"),
         SetAMEM8BitTo7E1x(0x6F, 0x7EE025),
         JmpIfAMEM8BitNotEqualsConst(0x6F, 1, ["command_0x35f71b"]),
@@ -201,5 +188,4 @@ script = SubroutineOrBanklessScript(
         ReturnObjectQueue(),
         Db(bytearray(b"\x89"), identifier="queuestart_0x35f728"),
         ReturnSpriteQueue(),
-    ],
-)
+    ])

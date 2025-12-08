@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=10,
             y=74,
-            z=9,
-        ),
+            z=9),
         SetBit(TEMP_7043_7),
         JmpToEvent(E1722_SKY_BRIDGE_ROOM_LOADER),
     ]

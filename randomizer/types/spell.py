@@ -1,8 +1,6 @@
 from smrpgpatchbuilder.datatypes.spells.classes import Spell as SpellBase, CharacterSpell as CharacterSpellBase, EnemySpell as EnemySpellBase
-from typing import Optional
-
 class Spell(SpellBase):
-    _remake_name: Optional[str] = None
+    _remake_name: str | None = None
 
     @property
     def remake_name(self) -> str:

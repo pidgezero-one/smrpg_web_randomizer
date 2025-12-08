@@ -16,8 +16,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI0992_GOOD_MORNING_FROM_BELLHOP,
@@ -26,16 +25,14 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_603_run_dialog_6",
-        ),
+            identifier="EVENT_603_run_dialog_6"),
         RunDialog(
             dialog_id=DI0995_BELLHOP_GIFT,
             above_object=MEM_70A8,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Pause(10),
         RunEventAsSubroutine(E0635_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUNROUTINE_3),
         SetBit(TEMP_7043_1),
@@ -48,8 +45,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_603_run_dialog_42",
-        ),
+            identifier="EVENT_603_run_dialog_42"),
         Return(),
         RunDialog(
             dialog_id=DI0969_MAKE_YOURSELF_AT_HOME,
@@ -58,8 +54,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_603_run_dialog_44",
-        ),
+            identifier="EVENT_603_run_dialog_44"),
         Return(),
     ]
 )

@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -41,21 +39,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._3_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     extra_required_actions=[ExtraSpriteActions.TumbleBack],
     music=Music._37_BOOSTER_HILL_START,
     entrance_event=3499,
@@ -90,8 +84,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 1
             occupant=npcs.Barrel,
             event_script=3501,
@@ -105,8 +98,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 2
             occupant=npcs.Barrel,
             event_script=3501,
@@ -120,8 +112,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 3
             occupant=npcs.BackSnifit,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -226,8 +217,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 7
             occupant=npcs.Booster,
             initiator=Initiator.NONE,
@@ -258,8 +248,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 8
             occupant=npcs.Toadstool,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -295,8 +284,7 @@ room = Room(
             vram_size=2,
             show_shadow=False,
             cannot_clone=True,
-            y_shift=0,
-        ),
+            y_shift=0),
         RegularNPC(  # 9
             occupant=npcs.Flower,
             initiator=Initiator.NONE,
@@ -329,7 +317,5 @@ room = Room(
             priority_2=True,
             show_shadow=True,
             height=3,
-            cannot_clone=True,
-        ),
-    ],
-)
+            cannot_clone=True),
+    ])

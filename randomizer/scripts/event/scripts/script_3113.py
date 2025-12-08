@@ -14,8 +14,7 @@ script = EventScript(
                 ASPause(30),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         JmpToEvent(E0185_NPC_QUEST_GRANT_PROGRESSIVE_FIREWORKS),
     ]
 )

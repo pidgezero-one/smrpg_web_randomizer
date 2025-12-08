@@ -14,8 +14,7 @@ script = EventScript(
         SetSyncActionScript(
             NPC_0,
             A0014_FLOATING_CHEST,
-            identifier="EVENT_2208_set_action_script_sync_10",
-        ),
+            identifier="EVENT_2208_set_action_script_sync_10"),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -23,15 +22,13 @@ script = EventScript(
                 ASVisibilityOn(),
                 ASFaceSoutheast(),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
                 ASTransferToXYZF(x=27, y=104, z=7, direction=EAST),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0847_KEEP_FIRST_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
         FadeInFromBlack(sync=False),
         Return(),

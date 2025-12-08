@@ -17,8 +17,7 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_2,
             subscript=[ASSetPriority(3)],
-            identifier="EVENT_556_action_queue_sync_4",
-        ),
+            identifier="EVENT_556_action_queue_sync_4"),
         ActionQueueSync(target=NPC_3, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_4, subscript=[ASSetPriority(3)]),
         ActionQueueSync(target=NPC_5, subscript=[ASSetPriority(3)]),
@@ -31,8 +30,7 @@ script = EventScript(
         SummonObjectToSpecificLevel(NPC_1, R091_ROSE_TOWN_COUPLES_HOUSE),
         RunBackgroundEvent(
             event_id=E0557_ROSE_TOWN_LIBERATED_LOADER_BACKGROUND,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         FadeInFromBlack(sync=False),
         SetBit(TEMP_709F_5),
         JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_556_ret_40"]),

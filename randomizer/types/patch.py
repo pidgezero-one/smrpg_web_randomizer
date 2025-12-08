@@ -1,6 +1,4 @@
 
-from typing import Union
-
 class Patch:
     """Class representing a patch for a specific seed that can be added to as we build it."""
 
@@ -28,13 +26,13 @@ class Patch:
         """A list of all addresses in the patch."""
         return list(self._data.keys())
 
-    def get_data(self, addr: int) -> Union[bytearray, bytes, list[int]]:
+    def get_data(self, addr: int) -> bytearray | bytes | list[int]:
         """Get data in the patch for this address.
         If the address is not present in the patch, returns empty bytes."""
         return self._data.get(addr, bytes())
 
     def add_data(
-        self, addr: int, data: Union[bytearray, bytes, list[int], int, str]
+        self, addr: int, data: bytearray | bytes | list[int] | int | str
     ) -> None:
         """Add data to the patch."""
         # For integers and strings, convert them to byte representations.

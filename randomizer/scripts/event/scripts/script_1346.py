@@ -10,16 +10,14 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_0,
             R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM,
-            ["EVENT_1346_ret_16"],
-        ),
+            ["EVENT_1346_ret_16"]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
                 ASSetAllSpeeds(FAST),
                 ASTransferToXYZF(x=2, y=106, z=0, direction=EAST),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -27,8 +25,7 @@ script = EventScript(
                 ASTransferToXYZF(x=1, y=105, z=0, direction=EAST),
                 ASVisibilityOn(),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -36,8 +33,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(NORMAL),
                 ASWalkSoutheastSteps(3),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -45,8 +41,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASSetWalkingSpeed(NORMAL),
                 ASWalkSoutheastSteps(3),
-            ],
-        ),
+            ]),
         Pause(30),
         RunDialog(
             dialog_id=DI2572_TOWER_HENCHMAN_2,
@@ -54,8 +49,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Pause(5),
         RunEventAsSubroutine(E1186_HENCHMAN_BATTLE_PACK_SELECTOR),
         JmpIfBitClear(GAME_OVER, ["EVENT_1346_remove_from_current_level_11"]),

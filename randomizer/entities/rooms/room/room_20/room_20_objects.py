@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=Toadstool,
@@ -71,6 +70,5 @@ objects = [
         priority_2=True,
         acute_axis=6,
         obtuse_axis=5,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

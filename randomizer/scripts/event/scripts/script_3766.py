@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=27,
             y=115,
-            z=4,
-        ),
+            z=4),
         EnableControls([]),
         ActionQueueAsync(
             target=MARIO,
@@ -21,8 +20,7 @@ script = EventScript(
                 ASAddConstToVar(Z_COORD_2, 2304),
                 ASDb(bytearray(b"\x99")),
                 ASJumpToHeight(height=0, silent=True),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True),
         Pause(24),
         PauseScriptUntilEffectDone(),
@@ -33,8 +31,7 @@ script = EventScript(
             x=20,
             y=50,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -42,8 +39,7 @@ script = EventScript(
                 ASTransferToXYZF(x=20, y=50, z=0, direction=SOUTHEAST),
                 ASVisibilityOn(),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True),
         ActionQueueAsync(
             target=MARIO,
@@ -56,8 +52,7 @@ script = EventScript(
                 ),
                 ASBPL262728(),
                 ASJumpToHeight(height=80, silent=True),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_0, A0976_CLOUD_LANDING_BLUE_PUFF_SPAWNER),
         ActionQueueAsync(
             target=MARIO, subscript=[ASSetWalkingSpeed(NORMAL), ASWalkSouthPixels(8)]

@@ -22,8 +22,7 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASShiftZUpPixels(1),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         PixelateLayers(
             layers=[LAYER_L1, LAYER_L2, LAYER_L3], pixel_size=8, duration=196
         ),
@@ -32,8 +31,7 @@ script = EventScript(
             face_direction=NORTHWEST,
             x=17,
             y=103,
-            z=11,
-        ),
+            z=11),
         SetBit(DIRECTIONAL_7049_0),
         EnableControls([]),
         FadeInFromBlack(sync=True),

@@ -38,8 +38,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     ChestNPC(
         occupant=TreasureChest,
@@ -75,8 +74,7 @@ objects = [
         priority_1=True,
         priority_2=False,
         show_shadow=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=Chompweed,
@@ -109,8 +107,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularClone(
         occupant=Chompweed,
@@ -125,8 +122,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Chompweed,
@@ -141,8 +137,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularClone(
         occupant=Chompweed,
@@ -157,8 +152,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_6
     RegularClone(
         occupant=Chompweed,
@@ -173,8 +167,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularNPC(
         occupant=Chompweed,
@@ -207,8 +200,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_8
     RegularNPC(
         occupant=SmallCoin,
@@ -242,8 +234,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_9
     RegularClone(
         occupant=SmallCoin,
@@ -259,8 +250,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularNPC(
         occupant=YellowPlatform,
@@ -295,8 +285,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         y_shift=-2,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_11
     RegularNPC(
         occupant=YellowPlatform,
@@ -331,8 +320,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         y_shift=-2,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_12
     BattlePackNPC(
         occupant=Goomba,
@@ -367,8 +355,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=10,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_13
     BattlePackClone(
         occupant=Goomba,
@@ -384,6 +371,5 @@ objects = [
         priority_1=False,
         priority_2=True,
         height=10,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

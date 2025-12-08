@@ -32,7 +32,7 @@ class StatGrowth:
         :rtype: tuple[str]
         """
         options = [
-            (self.max_hp / 2, ("max_hp",)),
+            (self.max_hp / 2, ("max_hp")),
             (self.attack + self.defense, ("attack", "defense")),
             (self.magic_attack + self.magic_defense, ("magic_attack", "magic_defense")),
         ]
@@ -203,8 +203,7 @@ class Character:
             attack,
             defense,
             magic_attack,
-            magic_defense,
-        ) in self.starting_growths:
+            magic_defense) in self.starting_growths:
             self.levelup_growths.append(
                 StatGrowth(max_hp, attack, defense, magic_attack, magic_defense)
             )
@@ -215,8 +214,7 @@ class Character:
             attack,
             defense,
             magic_attack,
-            magic_defense,
-        ) in self.starting_bonuses:
+            magic_defense) in self.starting_bonuses:
             self.levelup_bonuses.append(
                 StatGrowth(max_hp, attack, defense, magic_attack, magic_defense)
             )
@@ -338,8 +336,7 @@ class Character:
             if self.learned_spells.get(level):
                 patch.add_data(
                     level_addr,
-                    utils.ByteField(self.learned_spells[level].index).as_bytes(),
-                )
+                    utils.ByteField(self.learned_spells[level].index).as_bytes())
             else:
                 patch.add_data(level_addr, utils.ByteField(0xFF).as_bytes())
 
@@ -432,8 +429,7 @@ class Mario(Character):
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
-        (2, 2, 2, 2, 2),
-    )
+        (2, 2, 2, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -466,8 +462,7 @@ class Mario(Character):
         (1, 2, 1, 1, 1),
         (2, 1, 1, 1, 1),
         (1, 1, 1, 3, 1),
-        (1, 2, 1, 1, 1),
-    )
+        (1, 2, 1, 1, 1))
     forest_maze_sprite_id = 0x03
     mway_3_npc_id = [0x03, 0xB0]
     mway_2_npc_id = [0x03, 0x70]
@@ -603,8 +598,7 @@ class Mario(Character):
             patch = self.special_palette(
                 [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
                 self.palette.doll_addresses[0],
-                patch,
-            )
+                patch)
             if (
                 self.world.starting_character == self.index
                 or not self.world.settings.is_flag_enabled(flags.PlayAsStarter)
@@ -628,18 +622,15 @@ class Mario(Character):
                         None,
                     ],
                     classic_palette_offset,
-                    patch,
-                )
+                    patch)
                 patch = self.special_palette(
                     [None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11],
                     minecart_palette_offset,
-                    patch,
-                )
+                    patch)
                 patch = self.special_palette(
                     [0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14],
                     map_palette_offset,
-                    patch,
-                )
+                    patch)
 
         if (
             self.world.starting_character == self.index
@@ -704,8 +695,7 @@ class Peach(Character):
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
-        (2, 2, 2, 2, 2),
-    )
+        (2, 2, 2, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -738,8 +728,7 @@ class Peach(Character):
         (1, 3, 1, 1, 1),
         (2, 1, 1, 1, 1),
         (1, 1, 1, 3, 1),
-        (1, 3, 1, 1, 1),
-    )
+        (1, 3, 1, 1, 1))
     forest_maze_sprite_id = 0x07
     mway_3_npc_id = [0x07, 0xB0]
     mway_2_npc_id = [0x07, 0x70]
@@ -923,8 +912,7 @@ class Peach(Character):
                         None,
                     ],
                     classic_palette_offset,
-                    patch,
-                )
+                    patch)
                 patch = self.special_palette(
                     [i for i in range(0, 15)], map_palette_offset, patch
                 )
@@ -989,8 +977,7 @@ class Bowser(Character):
         (4, 2, 2, 2, 2),
         (4, 2, 2, 2, 2),
         (4, 2, 2, 2, 2),
-        (4, 2, 2, 2, 2),
-    )
+        (4, 2, 2, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -1023,8 +1010,7 @@ class Bowser(Character):
         (1, 2, 1, 1, 1),
         (3, 1, 1, 1, 1),
         (1, 1, 1, 3, 1),
-        (1, 2, 1, 1, 1),
-    )
+        (1, 2, 1, 1, 1))
     forest_maze_sprite_id = 0x0B
     mway_3_npc_id = [0x0B, 0xB0]
     mway_2_npc_id = [0x0B, 0x70]
@@ -1216,8 +1202,7 @@ class Geno(Character):
         (1, 2, 3, 2, 2),
         (1, 2, 3, 2, 2),
         (1, 2, 3, 2, 2),
-        (1, 2, 3, 2, 2),
-    )
+        (1, 2, 3, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -1250,8 +1235,7 @@ class Geno(Character):
         (1, 3, 1, 1, 1),
         (2, 1, 1, 1, 1),
         (1, 1, 1, 3, 1),
-        (1, 3, 1, 1, 1),
-    )
+        (1, 3, 1, 1, 1))
     forest_maze_sprite_id = 0x13
     mway_3_npc_id = [0x13, 0xB0]
     mway_2_npc_id = [0x13, 0x70]
@@ -1423,8 +1407,7 @@ class Geno(Character):
                         None,
                     ],
                     classic_palette_offset,
-                    patch,
-                )
+                    patch)
                 patch = self.special_palette(
                     [i for i in range(0, 15)], map_palette_offset, patch
                 )
@@ -1485,8 +1468,7 @@ class Mallow(Character):
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
         (2, 2, 2, 2, 2),
-        (2, 2, 2, 2, 2),
-    )
+        (2, 2, 2, 2, 2))
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
@@ -1519,8 +1501,7 @@ class Mallow(Character):
         (1, 3, 1, 1, 1),
         (2, 1, 1, 1, 1),
         (1, 1, 1, 2, 1),
-        (1, 3, 1, 1, 1),
-    )
+        (1, 3, 1, 1, 1))
     forest_maze_sprite_id = 0x0F
     mway_3_npc_id = [0x0F, 0xB0]
     mway_2_npc_id = [0x0F, 0x70]

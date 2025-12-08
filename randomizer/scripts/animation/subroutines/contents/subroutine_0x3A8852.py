@@ -14,8 +14,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0792_BLACK_ROCK,
             sequence=3,
@@ -24,8 +23,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         ClearAMEM8Bit(0x60),
@@ -41,5 +39,4 @@ script = SubroutineOrBanklessScript(
         SetOMEMMainToAMEM8Bit(omem=0x68, amem=0x68),
         RemoveObject(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

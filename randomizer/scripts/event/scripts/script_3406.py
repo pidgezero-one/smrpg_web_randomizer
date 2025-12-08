@@ -23,22 +23,19 @@ script = EventScript(
             COIN_CHEST_MULTIPLIER,
             0,
             ["EVENT_3406_set_70A0_short_mem_to_7000_16"],
-            identifier="EVENT_3406_check_multiplier",
-        ),
+            identifier="EVENT_3406_check_multiplier"),
         AddConstToVar(PRIMARY_TEMP_7000, 15),
         Dec(COIN_CHEST_MULTIPLIER),
         Jmp(["EVENT_3406_check_multiplier"]),
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=COIN_COUNTER_2,
-            identifier="EVENT_3406_set_70A0_short_mem_to_7000_16",
-        ),
+            identifier="EVENT_3406_set_70A0_short_mem_to_7000_16"),
         JmpIfVarNotEqualsConst(
             COIN_COUNTER_2,
             1,
             ["EVENT_3406_set_temp_action_script_sync_35"],
-            identifier="EVENT_3406_jmp_if_var_not_equals_const_26",
-        ),
+            identifier="EVENT_3406_jmp_if_var_not_equals_const_26"),
         SetSyncActionScript(MEM_70AA, A0007_HIT_TREASURE_CHEST_CONTENTS_DEPLETED),
         SetVarToConst(PRIMARY_TEMP_7000, 289),
         ClearMem704XAt7000Bit(),
@@ -46,8 +43,7 @@ script = EventScript(
         SetTempSyncActionScript(
             MEM_70AA,
             A0008_HIT_TREASURE_CHEST_CONTENTS_REMAINING,
-            identifier="EVENT_3406_set_temp_action_script_sync_35",
-        ),
+            identifier="EVENT_3406_set_temp_action_script_sync_35"),
         Set70107015ToObjectXYZ(
             MEM_70AA, identifier="EVENT_3406_set_7010_to_object_xyz_36"
         ),

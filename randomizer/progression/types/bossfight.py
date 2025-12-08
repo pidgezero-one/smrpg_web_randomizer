@@ -1,6 +1,5 @@
 from smrpgpatchbuilder.datatypes.enemies.classes import (
-    Enemy,
-)
+    Enemy)
 from smrpgpatchbuilder.datatypes.monster_scripts import MonsterScript
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite
 
@@ -46,7 +45,7 @@ class APPRENTICEEnemyDouble(Enemy):
     _speed: int = 20
     _evade: int = 0
     _magic_evade: int = 0
-    _weaknesses: List[Element] = [Element.ICE]
+    _weaknesses: list[Element] = [Element.ICE]
     _xp: int = 1
     _coins: int = 4
     _yoshi_cookie_item = SleepyBombItem
@@ -75,7 +74,7 @@ class BANDANAREDEnemyDouble(Enemy):
     _speed: int = 20
     _evade: int = 0
     _magic_evade: int = 0
-    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.FIRE]
     _xp: int = 18
     _coins: int = 10
     _yoshi_cookie_item = EnergizerItem
@@ -105,7 +104,7 @@ class PIRANHAPLANTEnemyDouble(Enemy):
     _speed: int = 6
     _evade: int = 0
     _magic_evade: int = 0
-    _resistances: List[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.JUMP]
     _xp: int = 5
     _coins: int = 5
     _yoshi_cookie_item = SleepyBombItem
@@ -135,9 +134,9 @@ class BLUEBIRDEnemyDouble(Enemy):
     _speed: int = 29
     _evade: int = 8
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _resistances: List[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [Status.SLEEP]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.ICE]
     _xp: int = 14
     _coins: int = 6
     _yoshi_cookie_item = BracerItem
@@ -168,9 +167,9 @@ class BIRDYEnemyDouble(Enemy):
     _speed: int = 23
     _evade: int = 18
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP]
-    _weaknesses: List[Element] = [Element.ICE]
-    _resistances: List[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [Status.SLEEP]
+    _weaknesses: list[Element] = [Element.ICE]
+    _resistances: list[Element] = [Element.FIRE]
     _xp: int = 16
     _coins: int = 3
     _yoshi_cookie_item = EnergizerItem
@@ -202,7 +201,7 @@ class BLOOBEREnemyDouble(Enemy):
     _speed: int = 23
     _evade: int = 20
     _magic_evade: int = 0
-    _weaknesses: List[Element] = [Element.THUNDER, Element.FIRE]
+    _weaknesses: list[Element] = [Element.THUNDER, Element.FIRE]
     _xp: int = 12
     _coins: int = 0
     _yoshi_cookie_item = ElixirItem
@@ -236,8 +235,8 @@ class MACHINEMADEAxemBlackDouble(Enemy):
     _speed: int = 55
     _evade: int = 30
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP, Status.FEAR]
-    _weaknesses: List[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [Status.SLEEP, Status.FEAR]
+    _weaknesses: list[Element] = [Element.THUNDER]
     _xp: int = 20
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
@@ -267,9 +266,9 @@ class MACHINEMADEAxemPinkDouble(Enemy):
     _speed: int = 35
     _evade: int = 25
     _magic_evade: int = 10
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP]
-    _weaknesses: List[Element] = [Element.FIRE]
-    _resistances: List[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP]
+    _weaknesses: list[Element] = [Element.FIRE]
+    _resistances: list[Element] = [Element.ICE]
     _xp: int = 30
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
@@ -300,7 +299,7 @@ class AEROEnemy(Enemy):
     _speed: int = 0
     _evade: int = 0
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
     _xp: int = 0
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
@@ -328,9 +327,9 @@ class PYROSPHEREEnemyDouble(Enemy):
     _speed: int = 24
     _evade: int = 7
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.POISON]
-    _weaknesses: List[Element] = [Element.ICE]
-    _resistances: List[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [Status.POISON]
+    _weaknesses: list[Element] = [Element.ICE]
+    _resistances: list[Element] = [Element.FIRE]
     _xp: int = 17
     _coins: int = 2
     _yoshi_cookie_item = FireBombItem
@@ -388,9 +387,9 @@ class MACHINEMADEAxemRedDouble(Enemy):
     _speed: int = 45
     _evade: int = 10
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP, Status.FEAR]
-    _weaknesses: List[Element] = [Element.ICE]
-    _resistances: List[Element] = [Element.FIRE]
+    _status_immunities: list[Status] = [Status.SLEEP, Status.FEAR]
+    _weaknesses: list[Element] = [Element.ICE]
+    _resistances: list[Element] = [Element.FIRE]
     _xp: int = 50
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
@@ -452,7 +451,7 @@ class AEROEnemy2(Enemy):
     _speed: int = 0
     _evade: int = 0
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
     _xp: int = 0
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
@@ -480,8 +479,8 @@ class MACHINEMADEAxemGreenDouble(Enemy):
     _speed: int = 40
     _evade: int = 0
     _magic_evade: int = 20
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP]
-    _weaknesses: List[Element] = [Element.ICE]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP]
+    _weaknesses: list[Element] = [Element.ICE]
     _xp: int = 10
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
@@ -511,9 +510,9 @@ class MACHINEMADEAxemYellowDouble(Enemy):
     _speed: int = 20
     _evade: int = 0
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.SLEEP, Status.POISON]
-    _weaknesses: List[Element] = [Element.JUMP]
-    _resistances: List[Element] = [Element.THUNDER]
+    _status_immunities: list[Status] = [Status.SLEEP, Status.POISON]
+    _weaknesses: list[Element] = [Element.JUMP]
+    _resistances: list[Element] = [Element.THUNDER]
     _xp: int = 25
     _coins: int = 0
     _yoshi_cookie_item = MushroomItem
@@ -544,7 +543,7 @@ class DRILLBITEnemyDouble(Enemy):
     _speed: int = 15
     _evade: int = 0
     _magic_evade: int = 0
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
     _xp: int = 11
     _coins: int = 1
     _yoshi_cookie_item = MushroomItem

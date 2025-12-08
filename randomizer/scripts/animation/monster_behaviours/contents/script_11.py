@@ -14,5 +14,4 @@ script = SubroutineOrBanklessScript(
         JmpIfAMEM16BitEqualsConst(0x60, 7, ["command_0x35316c"]),
         JmpIfAMEM16BitEqualsConst(0x60, 8, ["command_0x353172"]),
         Jmp(["command_0x3505d5"]),
-    ],
-)
+    ])

@@ -4,26 +4,23 @@ import random
 import hashlib
 from copy import deepcopy
 import re
-from typing import Any, Dict, List, Optional, Type, Union
+from typing import Any
 import yaml
 
 from randomizer.types.dialogs import (
-    DialogCollection,
-)
+    DialogCollection)
 
 from randomizer.utils.number import coin_flip
 
 from randomizer.types.battle_animation_scripts import (
-    AnimationScriptBankCollection,
-)
+    AnimationScriptBankCollection)
 from randomizer.types.battles.formations_packs.types import Formation, FormationPack
 from randomizer.types.characters import Character
 from randomizer.types.enemies import Enemy
 from randomizer.types.items import Item, SpottedCharacter
 from randomizer.types.monster_scripts import MonsterScriptBank
 from randomizer.types.overworld_scripts.event_scripts import (
-    EventScriptController,
-)
+    EventScriptController)
 from randomizer.types.overworld_scripts.action_scripts import ActionScriptBank
 from randomizer.types.patch import Patch
 from randomizer.types.progress_locations import (
@@ -35,8 +32,7 @@ from randomizer.types.progress_locations import (
     ChestLocation,
     FreestandingLocation,
     GrantLocation,
-    ProgressLocationT,
-)
+    ProgressLocationT)
 from randomizer.types.rooms import Room
 from randomizer.types.shops import Shop
 from randomizer.types.spells import CharacterSpell, Spell
@@ -66,8 +62,7 @@ from .flags import (
     StarPiecesRequired,
     StartingCharacter,
     StartingCharacters,
-    TotalStarPieces,
-)
+    TotalStarPieces)
 from .flags.categories import CosmeticCategory, CATEGORIES
 from .flags.types import (
     BooleanFlag,
@@ -76,13 +71,11 @@ from .flags.types import (
     FlagError,
     NumberThresholdFlag,
     SelectOneFlag,
-    FlagT,
-)
+    FlagT)
 from .utils import (
     set_flag_from_settings_string,
     separate_flag_string,
-    get_flag_string_from_flag_collection,
-)
+    get_flag_string_from_flag_collection)
 
 
 class WorldBuildingException(Exception):
@@ -94,7 +87,7 @@ class Settings:
 
     _debug_mode: bool = False
     _override: dict = {}
-    _all_flags: List[Flag] = []
+    _all_flags: list[Flag] = []
 
     @property
     def override(self) -> dict:
@@ -113,11 +106,11 @@ class Settings:
 
         return get_flag_string_from_flag_collection(non_cosmetic_categories)
 
-    def get_flag(self, flag_class: Type[FlagT]) -> FlagT:
+    def get_flag(self, flag_class: type[FlagT]) -> FlagT:
         """Get the value of a specific setting."""
         return next(f for f in self._all_flags if isinstance(f, flag_class))
 
-    def is_flag_value(self, flag_class: Type[Flag], value: Any) -> bool:
+    def is_flag_value(self, flag_class: type[Flag], value: Any) -> bool:
         """Check if a setting is set to the given value."""
         flag = self.get_flag(flag_class)
         if isinstance(flag, (BooleanFlag, NumberThresholdFlag, SelectOneFlag)):
@@ -128,11 +121,11 @@ class Settings:
             f"is_flag_value unknown flag type {type(flag)}"
         )
 
-    def is_boolean_flag_enabled(self, flag_class: Type[BooleanFlag]) -> bool:
+    def is_boolean_flag_enabled(self, flag_class: type[BooleanFlag]) -> bool:
         """Check if a boolean flag is on or not."""
         return self.is_flag_value(flag_class, True)
 
-    def update_single_value_flag(self, flag_class: Type[Flag], value: Any) -> None:
+    def update_single_value_flag(self, flag_class: type[Flag], value: Any) -> None:
         """For a setting which can only take one of multiple values, set it to the given value."""
         flag = self.get_flag(flag_class)
         if isinstance(flag, (BooleanFlag, NumberThresholdFlag, SelectOneFlag)):
@@ -153,9 +146,8 @@ class Settings:
 
     def append_categorization_flag_options(
         self,
-        flag_class: Type[CategorizationFlag],
-        options_to_append: Union[FlagOptions, List[FlagOptions]],
-    ) -> None:
+        flag_class: type[CategorizationFlag],
+        options_to_append: FlagOptions | list[FlagOptions]) -> None:
         """For a value categorization flag, append values to Enabled."""
         flag = self.get_flag(flag_class)
         enabled = deepcopy(flag.enabled)
@@ -166,9 +158,8 @@ class Settings:
 
     def remove_categorization_flag_options(
         self,
-        flag_class: Type[CategorizationFlag],
-        options_to_remove: Union[FlagOptions, List[FlagOptions]],
-    ) -> None:
+        flag_class: type[CategorizationFlag],
+        options_to_remove: FlagOptions | list[FlagOptions]) -> None:
         """For a value categorization flag, append values to Disabled."""
         flag = self.get_flag(flag_class)
         if isinstance(options_to_remove, FlagOptions):
@@ -177,7 +168,7 @@ class Settings:
         flag.set_enabled(enabled)
 
     def overwrite_categorization_flag_options(
-        self, flag_class: Type[CategorizationFlag], options: List[FlagOptions]
+        self, flag_class: type[CategorizationFlag], options: list[FlagOptions]
     ) -> None:
         """For a value categorization flag, overwrite Enabled."""
         flag = self.get_flag(flag_class)
@@ -316,8 +307,7 @@ class Settings:
             available_chars.extend(
                 random.sample(
                     [c for c in allowed_chars if c not in available_chars],
-                    k=max_chars - len(available_chars),
-                )
+                    k=max_chars - len(available_chars))
             )
         if max_chars != len(available_chars):
             raise FlagError(
@@ -330,8 +320,7 @@ class Settings:
         self,
         debug_mode: bool = False,
         flag_string: str = "",
-        cosmetics_string: str = "",
-    ):
+        cosmetics_string: str = ""):
         self._debug_mode = debug_mode
 
         if self._debug_mode:
@@ -341,7 +330,7 @@ class Settings:
                 except yaml.YAMLError as exc:
                     print(exc)
 
-        flag_dict: Dict[str, dict[str, Any]] = separate_flag_string(
+        flag_dict: dict[str, dict[str, Any]] = separate_flag_string(
             flag_string, cosmetics_string
         )
 
@@ -375,27 +364,27 @@ class GameWorld:
     _dialogs: DialogCollection
 
     # mutable objects
-    _enemies: List[Enemy] = []
-    _formations: List[Optional[Formation]] = []
-    _packs: List[Optional[FormationPack]] = []
-    _characters: List[Character] = []
-    _spotted_characters: List[SpottedCharacter] = []
-    _items: List[Item] = []
-    _spells: List[Spell] = []
-    _shops: List[Shop] = []
+    _enemies: list[Enemy] = []
+    _formations: list[Formation | None] = []
+    _packs: list[FormationPack | None] = []
+    _characters: list[Character] = []
+    _spotted_characters: list[SpottedCharacter] = []
+    _items: list[Item] = []
+    _spells: list[Spell] = []
+    _shops: list[Shop] = []
 
     # rooms
-    _rooms: List[Room] = []
+    _rooms: list[Room] = []
 
     # locations
-    _item_locations: List[
-        Union[ChestLocation, GrantLocation, FreestandingLocation]
+    _item_locations: list[
+        ChestLocation | GrantLocation | FreestandingLocation
     ] = []
-    _boss_locations: List[BossFightLocation] = []
-    _boss_star_pieces: List[BossStarPiecePrize] = []
-    _character_spotted_locations: List[CharacterSpottedLocation] = []
-    _character_recruit_locations: List[CharacterRecruitLocation] = []
-    _character_spell_slots: List[CharacterSpellSlot]
+    _boss_locations: list[BossFightLocation] = []
+    _boss_star_pieces: list[BossStarPiecePrize] = []
+    _character_spotted_locations: list[CharacterSpottedLocation] = []
+    _character_recruit_locations: list[CharacterRecruitLocation] = []
+    _character_spell_slots: list[CharacterSpellSlot]
 
     # graphics
     _sprites: SpriteCollection
@@ -450,30 +439,26 @@ class GameWorld:
 
     @property
     def flower_bonus_and_toad_tutorial_animation_scripts(
-        self,
-    ) -> AnimationScriptBankCollection:
+        self) -> AnimationScriptBankCollection:
         """The entire collection of flower bonus & toad scripts applied to this world"""
         return self._flower_bonus_and_toad_tutorial_animation_scripts
 
     def _set_flower_bonus_and_toad_tutorial_animation_scripts(
         self,
-        flower_bonus_and_toad_tutorial_animation_scripts: AnimationScriptBankCollection,
-    ) -> None:
+        flower_bonus_and_toad_tutorial_animation_scripts: AnimationScriptBankCollection) -> None:
         self._flower_bonus_and_toad_tutorial_animation_scripts = (
             flower_bonus_and_toad_tutorial_animation_scripts
         )
 
     @property
     def monsters_attacks_and_items_animation_scripts(
-        self,
-    ) -> AnimationScriptBankCollection:
+        self) -> AnimationScriptBankCollection:
         """The entire collection of monster attach & item use scripts applied to this world"""
         return self._monsters_attacks_and_items_animation_scripts
 
     def _set_monsters_attacks_and_items_animation_scripts(
         self,
-        monsters_attacks_and_items_animation_scripts: AnimationScriptBankCollection,
-    ) -> None:
+        monsters_attacks_and_items_animation_scripts: AnimationScriptBankCollection) -> None:
         self._monsters_attacks_and_items_animation_scripts = (
             monsters_attacks_and_items_animation_scripts
         )
@@ -505,70 +490,70 @@ class GameWorld:
         self._dialogs = dialogs
 
     @property
-    def enemies(self) -> List[Enemy]:
+    def enemies(self) -> list[Enemy]:
         """All enemy instances in this world"""
         return self._enemies
 
-    def _set_enemies(self, enemies: List[Type[Enemy]]) -> None:
+    def _set_enemies(self, enemies: list[type[Enemy]]) -> None:
         enemy_instances = [e(self) for e in enemies]
         self._enemies = enemy_instances
 
     @property
-    def formations(self) -> List[Optional[Formation]]:
+    def formations(self) -> list[Formation | None]:
         """All enemy formation instances in this world"""
         return self._formations
 
-    def _set_formations(self, formations: List[Optional[Formation]]) -> None:
+    def _set_formations(self, formations: list[Formation | None]) -> None:
         self._formations = formations
 
     @property
-    def packs(self) -> List[Optional[FormationPack]]:
+    def packs(self) -> list[FormationPack | None]:
         """All enemy battle pack instances in this world"""
         return self._packs
 
-    def _set_packs(self, packs: List[Optional[FormationPack]]) -> None:
+    def _set_packs(self, packs: list[FormationPack | None]) -> None:
         self._packs = packs
 
     @property
-    def characters(self) -> List[Character]:
+    def characters(self) -> list[Character]:
         """All recruitable characters in this world"""
         return self._characters
 
-    def _set_characters(self, characters: List[Type[Character]]) -> None:
+    def _set_characters(self, characters: list[type[Character]]) -> None:
         char_instances = [c(self) for c in characters]
         self._characters = char_instances
 
     @property
-    def spotted_characters(self) -> List[SpottedCharacter]:
+    def spotted_characters(self) -> list[SpottedCharacter]:
         """All corresponding instances of seen characters in this world"""
         return self._spotted_characters
 
     def _set_spotted_characters(
-        self, spotted_characters: List[Type[SpottedCharacter]]
+        self, spotted_characters: list[type[SpottedCharacter]]
     ) -> None:
         char_instances = [c(self) for c in spotted_characters]
         self._spotted_characters = char_instances
 
     @property
-    def items(self) -> List[Item]:
+    def items(self) -> list[Item]:
         """All item instances in this world"""
         return self._items
 
-    def _set_items(self, items: List[Type[Item]]) -> None:
+    def _set_items(self, items: list[type[Item]]) -> None:
         item_instances = [i(self) for i in items]
         self._items = item_instances
 
     @property
-    def spells(self) -> List[Spell]:
+    def spells(self) -> list[Spell]:
         """All spell instances in this world"""
         return self._spells
 
     @property
-    def character_spells(self) -> List[CharacterSpell]:
+    def character_spells(self) -> list[CharacterSpell]:
         """Subset of all spell instances in this world (only learnable)"""
         return [spell for spell in self.spells if isinstance(spell, CharacterSpell)]
 
-    def _set_spells(self, spells: List[Type[Spell]]) -> None:
+    def _set_spells(self, spells: list[type[Spell]]) -> None:
         spell_instances = [
             spell(self)
             for spell in spells
@@ -577,89 +562,87 @@ class GameWorld:
         self._spells = spell_instances
 
     @property
-    def shops(self) -> List[Shop]:
+    def shops(self) -> list[Shop]:
         """All shop instances in this world"""
         return self.shops
 
-    def _set_shops(self, shops: List[Type[Shop]]) -> None:
+    def _set_shops(self, shops: list[type[Shop]]) -> None:
         shop_instances = [s(self) for s in shops]
         self._shops = shop_instances
 
     @property
-    def rooms(self) -> List[Room]:
+    def rooms(self) -> list[Room]:
         """All level definitions in this world"""
         return self._rooms
 
-    def _set_rooms(self, rooms: List[Room]) -> None:
+    def _set_rooms(self, rooms: list[Room]) -> None:
         self._rooms = rooms
 
     @property
     def item_locations(
-        self,
-    ) -> List[Union[ChestLocation, GrantLocation, FreestandingLocation]]:
+        self) -> list[ChestLocation | GrantLocation | FreestandingLocation]:
         """All progress locations for item grants in this world"""
         return self._item_locations
 
     def _set_item_locations(
         self,
-        item_locations: List[
-            Union[Type[ChestLocation], Type[GrantLocation], Type[FreestandingLocation]]
-        ],
-    ) -> None:
+        item_locations: list[
+            type[ChestLocation] | type[GrantLocation] | type[FreestandingLocation]
+        ]) -> None:
         location_instances = [l(self) for l in item_locations]
         self._item_locations = location_instances
 
     @property
-    def boss_locations(self) -> List[BossFightLocation]:
+    def boss_locations(self) -> list[BossFightLocation]:
         """All progress locations for boss fights in this world"""
         return self._boss_locations
 
     def _set_boss_locations(
-        self, boss_locations: List[Type[BossFightLocation]]
+        self, boss_locations: list[type[BossFightLocation]]
     ) -> None:
         location_instances = [l(self) for l in boss_locations]
         self._boss_locations = location_instances
 
     @property
-    def boss_star_pieces(self) -> List[BossStarPiecePrize]:
+    def boss_star_pieces(self) -> list[BossStarPiecePrize]:
         """All progress locations for boss fight star piece grants in this world"""
         return self._boss_star_pieces
 
     def _set_boss_star_pieces(
-        self, boss_star_pieces: List[Type[BossStarPiecePrize]]
+        self, boss_star_pieces: list[type[BossStarPiecePrize]]
     ) -> None:
         location_instances = [l(self) for l in boss_star_pieces]
         self._boss_star_pieces = location_instances
 
     @property
-    def character_spotted_locations(self) -> List[CharacterSpottedLocation]:
+    def character_spotted_locations(self) -> list[CharacterSpottedLocation]:
         """All progress locations for seen characters in this world"""
         return self._character_spotted_locations
 
     def _set_character_spotted_locations(
-        self, character_spotted_locations: List[Type[CharacterSpottedLocation]]
+        self, character_spotted_locations: list[type[CharacterSpottedLocation]]
     ) -> None:
         location_instances = [l(self) for l in character_spotted_locations]
         self._character_spotted_locations = location_instances
 
     @property
-    def character_recruit_locations(self) -> List[CharacterRecruitLocation]:
+    def character_recruit_locations(self) -> list[CharacterRecruitLocation]:
         """All progress locations for recruited characters in this world"""
         return self._character_recruit_locations
 
     def _set_character_recruit_locations(
-        self, character_recruit_locations: List[Type[CharacterRecruitLocation]]
+        self, character_recruit_locations: list[type[CharacterRecruitLocation]]
     ) -> None:
         location_instances = [l(self) for l in character_recruit_locations]
         self._character_recruit_locations = location_instances
 
     @property
-    def character_spell_slots(self) -> List[CharacterSpellSlot]:
+    def character_spell_slots(self) -> list[CharacterSpellSlot]:
         """All progress locations for learnable spells in this world"""
         return self._character_spell_slots
 
     def _set_character_spell_slots(
-        self, character_spell_slots: List[Type[CharacterSpellSlot]]
+        self, character_spell_slots: list[type[CharacterSpellSlot]]
     ) -> None:
         location_instances = [l(self) for l in character_spell_slots]
         self._character_spell_slots = location_instances
@@ -677,34 +660,33 @@ class GameWorld:
         """If true, Bundt will be coloured brown"""
         return self._chocolate_cake
 
-    def get_item_instance(self, item_class: Type[Item]) -> Item:
+    def get_item_instance(self, item_class: type[Item]) -> Item:
         """Get this world's instance of a particular item class"""
         return next(x for x in self.items if isinstance(x, item_class))
 
-    def get_enemy_instance(self, enemy_class: Type[Enemy]) -> Enemy:
+    def get_enemy_instance(self, enemy_class: type[Enemy]) -> Enemy:
         """Get this world's instance of a particular enemy class"""
         return next(x for x in self.enemies if isinstance(x, enemy_class))
 
-    def get_character_instance(self, character_class: Type[Character]) -> Character:
+    def get_character_instance(self, character_class: type[Character]) -> Character:
         """Get this world's instance of a particular character class"""
         return next(x for x in self.characters if isinstance(x, character_class))
 
     def get_spotted_character_instance(
-        self, spotted_character_class: Type[SpottedCharacter]
+        self, spotted_character_class: type[SpottedCharacter]
     ) -> SpottedCharacter:
         """Get this world's instance of a particular seen character class"""
         return next(
             x for x in self.spotted_characters if isinstance(x, spotted_character_class)
         )
 
-    def get_spell_instance(self, spell_class: Type[Spell]) -> Spell:
+    def get_spell_instance(self, spell_class: type[Spell]) -> Spell:
         """Get this world's instance of a particular spell class"""
         return next(x for x in self.spells if isinstance(x, spell_class))
 
     def get_location_instance(
         self,
-        location_class: Type[ProgressLocationT],
-    ) -> ProgressLocationT:
+        location_class: type[ProgressLocationT]) -> ProgressLocationT:
         """Get this world's instance of a particular progress location class"""
         search = (
             self.character_spotted_locations
@@ -754,84 +736,58 @@ class GameWorld:
 
     def add_locations(
         self,
-        locations: List[
-            Union[
-                Type[ChestLocation],
-                Type[GrantLocation],
-                Type[FreestandingLocation],
-                Type[BossFightLocation],
-                Type[BossStarPiecePrize],
-                Type[CharacterSpottedLocation],
-                Type[CharacterRecruitLocation],
-                Type[CharacterSpellSlot],
-            ]
-        ],
-    ) -> None:
+        locations: list[
+            type[ChestLocation] | type[GrantLocation] | type[FreestandingLocation] | type[BossFightLocation] | type[BossStarPiecePrize] | type[CharacterSpottedLocation] | type[CharacterRecruitLocation] | type[CharacterSpellSlot]
+        ]) -> None:
         """Add a location to the world that wasn't added on initialization."""
         self._item_locations += [
             l(self)
             for l in locations
             if issubclass(
                 l,
-                (ChestLocation, GrantLocation, FreestandingLocation),
-            )
+                (ChestLocation, GrantLocation, FreestandingLocation))
         ]
         self._character_spell_slots += [
             l(self)
             for l in locations
             if issubclass(
                 l,
-                CharacterSpellSlot,
-            )
+                CharacterSpellSlot)
         ]
         self._boss_locations += [
             l(self)
             for l in locations
             if issubclass(
                 l,
-                BossFightLocation,
-            )
+                BossFightLocation)
         ]
         self._boss_star_pieces += [
             l(self)
             for l in locations
             if issubclass(
                 l,
-                BossStarPiecePrize,
-            )
+                BossStarPiecePrize)
         ]
         self._character_spotted_locations += [
             l(self)
             for l in locations
             if issubclass(
                 l,
-                (CharacterSpottedLocation),
-            )
+                (CharacterSpottedLocation))
         ]
         self._character_recruit_locations += [
             l(self)
             for l in locations
             if issubclass(
                 l,
-                CharacterRecruitLocation,
-            )
+                CharacterRecruitLocation)
         ]
 
     def remove_locations(
         self,
-        locations: List[
-            Union[
-                Type[ChestLocation],
-                Type[GrantLocation],
-                Type[FreestandingLocation],
-                Type[BossFightLocation],
-                Type[BossStarPiecePrize],
-                Type[CharacterSpottedLocation],
-                Type[CharacterRecruitLocation],
-                Type[CharacterSpellSlot],
-            ]
-        ],
-    ) -> None:
+        locations: list[
+            type[ChestLocation] | type[GrantLocation] | type[FreestandingLocation] | type[BossFightLocation] | type[BossStarPiecePrize] | type[CharacterSpottedLocation] | type[CharacterRecruitLocation] | type[CharacterSpellSlot]
+        ]) -> None:
         """Excude a progress location from the rando completely.
         It will not be shuffled. This should only be used if the
         location is completely inaccessible."""
@@ -869,25 +825,24 @@ class GameWorld:
         battle_event_animation_scripts: AnimationScriptBankCollection,
         monster_scripts: MonsterScriptBank,
         dialogs: DialogCollection,
-        enemies: List[Type[Enemy]],
-        formations: List[Optional[Formation]],
-        packs: List[Optional[FormationPack]],
-        characters: List[Type[Character]],
-        spotted_characters: List[Type[SpottedCharacter]],
-        items: List[Type[Item]],
-        spells: List[Type[Spell]],
-        shops: List[Type[Shop]],
-        rooms: List[Room],
-        item_locations: List[
-            Union[Type[ChestLocation], Type[GrantLocation], Type[FreestandingLocation]]
+        enemies: list[type[Enemy]],
+        formations: list[Formation | None],
+        packs: list[FormationPack | None],
+        characters: list[type[Character]],
+        spotted_characters: list[type[SpottedCharacter]],
+        items: list[type[Item]],
+        spells: list[type[Spell]],
+        shops: list[type[Shop]],
+        rooms: list[Room],
+        item_locations: list[
+            type[ChestLocation] | type[GrantLocation] | type[FreestandingLocation]
         ],
-        boss_locations: List[Type[BossFightLocation]],
-        boss_star_pieces: List[Type[BossStarPiecePrize]],
-        character_spotted_locations: List[Type[CharacterSpottedLocation]],
-        character_recruit_locations: List[Type[CharacterRecruitLocation]],
-        character_spell_slots: List[Type[CharacterSpellSlot]],
-        sprites: SpriteCollection,
-    ) -> None:
+        boss_locations: list[type[BossFightLocation]],
+        boss_star_pieces: list[type[BossStarPiecePrize]],
+        character_spotted_locations: list[type[CharacterSpottedLocation]],
+        character_recruit_locations: list[type[CharacterRecruitLocation]],
+        character_spell_slots: list[type[CharacterSpellSlot]],
+        sprites: SpriteCollection) -> None:
         self._set_seed(seed)
         random.seed(seed)
         self._set_settings(settings)

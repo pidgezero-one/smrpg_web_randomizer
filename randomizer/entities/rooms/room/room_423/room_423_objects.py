@@ -36,8 +36,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         y_shift=-2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=JBlock,
@@ -74,8 +73,7 @@ objects = [
         height=9,
         cannot_clone=False,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_2
     RegularNPC(
         occupant=Shaman,
@@ -108,6 +106,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

@@ -15,8 +15,7 @@ script = BattleAnimationScript(
             palette_row=8,
             looping=True,
             param_2_and_0x10=True,
-            overwrite_palette=True,
-        ),
+            overwrite_palette=True),
         Jmp(["command_0x3a7550"]),
     ]
 )

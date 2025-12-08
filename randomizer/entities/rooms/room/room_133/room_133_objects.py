@@ -37,8 +37,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=WhirlpoolBubble,
@@ -71,8 +70,7 @@ objects = [
         priority_0=False,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularClone(
         occupant=WhirlpoolBubble,
@@ -87,8 +85,7 @@ objects = [
         priority_0=False,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_3
     RegularNPC(
         occupant=WhirlpoolBubble,
@@ -126,6 +123,5 @@ objects = [
         obtuse_axis=11,
         height=2,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

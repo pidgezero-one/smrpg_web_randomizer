@@ -43,8 +43,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1678,
             x=22,
@@ -55,8 +54,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=1678,
             x=22,
@@ -67,8 +65,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -88,8 +85,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=22,
             y=90,
@@ -107,8 +103,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=21,
             y=91,
@@ -126,8 +121,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTH,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=15,
             y=110,
@@ -145,8 +139,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -180,8 +173,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 1
             occupant=npcs.Geckit,
             battle_pack=91,
@@ -195,8 +187,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 2
             occupant=npcs.Geckit,
             battle_pack=91,
@@ -210,8 +201,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 3
             occupant=npcs.Chow,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -244,8 +234,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
         BattlePackClone( # 4
             occupant=npcs.Chow,
             battle_pack=83,
@@ -260,8 +249,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
         BattlePackClone( # 5
             occupant=npcs.Chow,
             battle_pack=83,
@@ -276,8 +264,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
         BattlePackClone( # 6
             occupant=npcs.Chow,
             battle_pack=83,
@@ -292,7 +279,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
     ]
 )

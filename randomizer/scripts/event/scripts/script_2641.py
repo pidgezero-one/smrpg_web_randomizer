@@ -12,8 +12,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_7,
             subscript=[ASWalkSouthwestPixels(8)],
-            identifier="EVENT_2641_action_queue_async_15",
-        ),
+            identifier="EVENT_2641_action_queue_async_15"),
         SetSyncActionScript(NPC_7, A0978_RANDOMLY_FACE_SOUTHWEST),
         ActionQueueAsync(
             target=NPC_0,
@@ -22,8 +21,7 @@ script = EventScript(
                     index=1, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(
             E0859_INNER_FACTORY_1ST_ROOM_POST_FIGHT_SHUFFLED_NPC_ANIMATION_LOADER
         ),

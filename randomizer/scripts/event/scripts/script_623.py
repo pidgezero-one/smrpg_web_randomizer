@@ -18,8 +18,7 @@ script = EventScript(
         SetSyncActionScript(
             NPC_6,
             A0327_MARRYMORE_ELDERLY_GUEST_LEAVES,
-            identifier="EVENT_623_set_action_script_sync_12",
-        ),
+            identifier="EVENT_623_set_action_script_sync_12"),
         Pause(1, identifier="EVENT_623_pause_13"),
         JmpIfBitSet(TEMP_7044_3, ["EVENT_623_set_7000_to_object_coord_16"]),
         Jmp(["EVENT_623_pause_13"]),
@@ -28,8 +27,7 @@ script = EventScript(
             coord=COORD_Y,
             pixel=True,
             bit_7=True,
-            identifier="EVENT_623_set_7000_to_object_coord_16",
-        ),
+            identifier="EVENT_623_set_7000_to_object_coord_16"),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 63, ["EVENT_623_unsync_action_script_19"]
         ),
@@ -39,8 +37,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_FAST),
                 ASWalk1StepNortheast(),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         UnsyncActionScript(NPC_9, identifier="EVENT_623_unsync_action_script_19"),
         UnsyncActionScript(NPC_8),
         UnsyncActionScript(NPC_6),

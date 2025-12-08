@@ -13,8 +13,7 @@ script = EventScript(
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         JmpToEvent(E3097_JUICE_BAR_CARD_NPC_GRANT),
     ]
 )

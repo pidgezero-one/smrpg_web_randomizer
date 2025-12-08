@@ -12,8 +12,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=12, sprite_offset=2, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         SlowDownMusic(identifier="EVENT_1864_slow_down_music_6"),
         Pause(90),
         FadeOutToBlack(sync=False, duration=40),

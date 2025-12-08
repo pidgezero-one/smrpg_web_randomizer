@@ -12,8 +12,7 @@ script = EventScript(
             x=4,
             y=57,
             z=15,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ActionQueueSync(
             target=MARIO, subscript=[ASJumpToHeight(height=0, silent=True)]
         ),

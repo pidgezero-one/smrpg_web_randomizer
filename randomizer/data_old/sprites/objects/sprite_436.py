@@ -38,10 +38,8 @@ sprite = CompleteSprite(
                             y_plus=0,
                             y_minus=0,
                             x=120,
-                            y=120,
-                        ),
-                    ],
-                ),
+                            y=120),
+                    ]),
             ],
             sequences=[
                 AnimationSequence(
@@ -49,10 +47,7 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=16, mold_id=0),
                     ]
                 ),
-            ],
-        ),
-    ),
+            ])),
     palette_id=0,
     palette_offset=0,
-    unknown_num=8,
-)
+    unknown_num=8)

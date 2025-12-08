@@ -18,8 +18,7 @@ script = EventScript(
                 ASWalkNortheastPixels(3),
                 ASResetProperties(),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

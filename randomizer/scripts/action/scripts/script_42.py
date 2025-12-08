@@ -8,8 +8,7 @@ script = ActionScript(
             index=4,
             looping=False,
             mirror_sprite=True,
-            identifier="ACTION_42_set_sprite_sequence_0",
-        ),
+            identifier="ACTION_42_set_sprite_sequence_0"),
         Pause(40),
         Jmp(["ACTION_42_set_sprite_sequence_0"]),
     ]

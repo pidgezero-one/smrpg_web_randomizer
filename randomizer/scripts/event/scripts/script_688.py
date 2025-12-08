@@ -15,8 +15,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI2112_RAZ_OCCUPIED,
@@ -25,8 +24,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_688_run_dialog__2",
-        ),
+            identifier="EVENT_688_run_dialog__2"),
         RunEventAsSubroutine(E0200_UNLOCK_FOREST_IF_GATED_BY_MARRYMORE_CHARACTER),
         Return(),
         RunDialog(
@@ -36,8 +34,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_688_run_dialog_7",
-        ),
+            identifier="EVENT_688_run_dialog_7"),
         Return(),
     ]
 )

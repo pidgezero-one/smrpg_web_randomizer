@@ -6,5 +6,4 @@ from .classes import (
     BossModelFill,
     UniqueHenchmanFill,
     RepeatableHenchmanFill,
-    TinyHenchmanFill,
-)
+    TinyHenchmanFill)

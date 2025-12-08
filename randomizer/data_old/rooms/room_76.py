@@ -46,8 +46,7 @@ room = Room(
             destination=Locations._011_BANDITS_WAY,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         RoomExit(
             x=14,
             y=51,
@@ -65,8 +64,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -100,8 +98,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             show_shadow=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 1
             occupant=npcs.Spikey,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -133,8 +130,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 2
             occupant=npcs.Spikey,
             battle_pack=3,
@@ -148,8 +144,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 3
             occupant=npcs.Spikey,
             battle_pack=3,
@@ -163,8 +158,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 4
             occupant=npcs.Goomba,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -196,8 +190,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 5
             occupant=npcs.Croco,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -229,7 +222,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

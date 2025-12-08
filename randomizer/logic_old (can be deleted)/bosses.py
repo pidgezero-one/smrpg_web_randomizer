@@ -16,8 +16,7 @@ from randomizer.data.bosses import (
     SpriteSize,
     HenchmanType,
     SequenceType,
-    CrownHeight,
-)
+    CrownHeight)
 from randomizer.data.formations import FormationMember
 from randomizer.data.items import PandoriteFight, HidonFight, BoxBoyFight
 from randomizer.helpers.flag_helpers import WinConditions, BossScaleOptions
@@ -26,25 +25,19 @@ from randomizer.helpers.eventtables import AreaObjects, Sounds, _0x60Flags, Colo
 from randomizer.helpers.objectsequencetables import (
     SequenceSpeeds,
     _0x08Flags,
-    _0x10Flags,
-)
+    _0x10Flags)
 from randomizer.helpers.roomobjecttables import RadialDirection, Rooms
 
 from randomizer.data.eventscripts.utils.castle_statue_room.bonk import (
-    script as statue_bonk,
-)
+    script as statue_bonk)
 from randomizer.data.eventscripts.utils.castle_statue_room.bonk_mario import (
-    script as statue_bonk_mario,
-)
+    script as statue_bonk_mario)
 from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3792 import (
-    script as non_smithy_3792,
-)
+    script as non_smithy_3792)
 from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3794 import (
-    script as non_smithy_3794,
-)
+    script as non_smithy_3794)
 from randomizer.data.eventscripts.utils.smithy_room.non_smithy_room_509 import (
-    objects as non_smithy_509_objects,
-)
+    objects as non_smithy_509_objects)
 
 from randomizer.helpers.flag_helpers import (
     BanditsWayGating,
@@ -58,8 +51,7 @@ from randomizer.helpers.flag_helpers import (
     BarrelVolcanoGating,
     BowsersKeepGating,
     FactoryGating,
-    PipeVaultGating,
-)
+    PipeVaultGating)
 
 from .utils import (
     fix_directions_for_sequenced_sprite,
@@ -67,8 +59,7 @@ from .utils import (
     new_command,
     is_animation_header,
     remove_sequence_changes_from_action_script,
-    is_mario_animation_header,
-)
+    is_mario_animation_header)
 
 
 def swapPositions(list, pos1, pos2):
@@ -165,9 +156,7 @@ def randomize_all(world):
                             bosses.KingCalamariBoss,
                             bosses.CountdownBoss,
                             bosses.SmithyBoss,
-                            bosses.AxemRangersBoss,
-                        ),
-                    ):
+                            bosses.AxemRangersBoss)):
                         target_formation_birdetta = world.get_enemy_formation_by_index(
                             297
                         )
@@ -194,9 +183,7 @@ def randomize_all(world):
                             bosses.ClerkBoss,
                             bosses.ManagerBoss,
                             bosses.DirectorBoss,
-                            bosses.GunyolkBoss,
-                        ),
-                    ):
+                            bosses.GunyolkBoss)):
                         target_formation_birdetta = world.get_enemy_formation_by_index(
                             297
                         )
@@ -238,8 +225,7 @@ def randomize_all(world):
                                 False,
                                 world.get_enemy_instance(enemies.Shelly),
                                 171,
-                                103,
-                            )
+                                103)
                         )
                         # add an invisible enemy to keep the battle alive while we despawn shelly
                         # target_formation.members.append(FormationMember(len(target_formation.members), True, world.get_enemy_instance(enemies.EmptyEnemy), 255, 255))
@@ -444,9 +430,7 @@ def randomize_all(world):
                                     enemies.WindCrystal,
                                     enemies.WaterCrystal,
                                     enemies.FireCrystal,
-                                    enemies.EarthCrystal,
-                                ),
-                            )
+                                    enemies.EarthCrystal))
                         )
                         coins = sum(
                             e.coins
@@ -458,9 +442,7 @@ def randomize_all(world):
                                     enemies.WindCrystal,
                                     enemies.WaterCrystal,
                                     enemies.FireCrystal,
-                                    enemies.EarthCrystal,
-                                ),
-                            )
+                                    enemies.EarthCrystal))
                         )
                     # For Johnny, need special exp calc
                     elif any(
@@ -604,22 +586,18 @@ def randomize_all(world):
 
                         enemy.hp = min(
                             int(round(stats["hp"] * enemy.ratio_hp)),
-                            enemy.hp if no_raise else 65535,
-                        )
+                            enemy.hp if no_raise else 65535)
                         enemy.attack = min(
                             int(round(stats["attack"] * enemy.ratio_attack)),
-                            enemy.attack if no_raise else 255,
-                        )
+                            enemy.attack if no_raise else 255)
                         enemy.defense = min(
                             int(round(stats["defense"] * enemy.ratio_defense)),
-                            enemy.defense if no_raise or no_raise_defense else 255,
-                        )
+                            enemy.defense if no_raise or no_raise_defense else 255)
                         enemy.magic_attack = min(
                             int(
                                 round(stats["magic_attack"] * enemy.ratio_magic_attack)
                             ),
-                            enemy.magic_attack if no_raise else 255,
-                        )
+                            enemy.magic_attack if no_raise else 255)
                         enemy.magic_defense = min(
                             int(
                                 round(
@@ -628,15 +606,13 @@ def randomize_all(world):
                             ),
                             enemy.magic_defense
                             if no_raise or no_raise_defense
-                            else 255,
-                        )
+                            else 255)
                         enemy.evade = min(
                             int(round(stats["evade"] * enemy.ratio_evade)), 100
                         )
                         enemy.magic_evade = min(
                             int(round(stats["magic_evade"] * enemy.ratio_magic_evade)),
-                            100,
-                        )
+                            100)
 
                         # For snek fight, the XP/coins need to be put on Cloaker/Domino 2 because you fight either one.
                         if formation.index == 309:
@@ -684,8 +660,7 @@ def randomize_all(world):
                                     1,
                                     round(
                                         enemy.xp / original_coin_sum * stats["coins"]
-                                    ),
-                                )
+                                    ))
                                 enemy.coins = min(enemy.coins, 255)
                             else:
                                 enemy.coins = 0
@@ -945,16 +920,14 @@ def randomize_all(world):
                             new_command(
                                 353,
                                 "start_battle",
-                                [boss.pack_number, boss_location.battlefield],
-                            )
+                                [boss.pack_number, boss_location.battlefield])
                         ]
                 else:
                     cmds = [
                         new_command(
                             353,
                             "start_battle",
-                            [boss.pack_number, formation.required_battlefield],
-                        )
+                            [boss.pack_number, formation.required_battlefield])
                     ]
                 if utils.isclass_or_instance(boss, bosses.SmithyBoss):
                     cmds.append(new_command(353, "set_bit_7_offset", [0x0158, [7]]))
@@ -973,8 +946,7 @@ def randomize_all(world):
                             new_command(
                                 353,
                                 "jmp_if_bit_set",
-                                [0x7040, 0, actual_ret["identifier"]],
-                            )
+                                [0x7040, 0, actual_ret["identifier"]])
                         )
                         cmds.append(new_command(353, "set_bit", [0x7099, 0]))
                         cmds.append(actual_ret)
@@ -983,8 +955,7 @@ def randomize_all(world):
                 jmp = new_command(
                     353,
                     "jmp_if_7000_equals_short",
-                    [boss_location.identifier, cmds[0]["identifier"]],
-                )
+                    [boss_location.identifier, cmds[0]["identifier"]])
                 fight_builders[353]["jumps"].append(jmp)
 
                 # boss hunting logic bits
@@ -1046,8 +1017,7 @@ def randomize_all(world):
                     map_clear_bits = [[0x707A, 3]]
                     world.search_replace_dialog(
                         "`BOWSERS_KEEP_CONDITION`",
-                        """with the\n help of the Axem Rangers.""",
-                    )
+                        """with the\n help of the Axem Rangers.""")
                 elif world.settings.is_flag_value(
                     flags.FactoryGate, FactoryGating.exor
                 ) and utils.isclass_or_instance(boss, bosses.ExorBoss):
@@ -1059,15 +1029,13 @@ def randomize_all(world):
                             2265,
                             AreaObjects.BOWSER,
                             [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC],
-                        ],
-                    )
+                        ])
                     dummy_cmd = utils.new_command(355, "add_coins", [0])
                     extra_script = [
                         utils.new_command(
                             355,
                             "jmp_if_bit_clear",
-                            [0x7068, 3, dummy_cmd["identifier"]],
-                        ),
+                            [0x7068, 3, dummy_cmd["identifier"]]),
                         extra_dialog_cmd,
                         dummy_cmd,
                     ]
@@ -1094,8 +1062,7 @@ def randomize_all(world):
                                         d,
                                         AreaObjects.BOWSER,
                                         [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC],
-                                    ],
-                                )
+                                    ])
                             )
                     cmds.extend(extra_script)
                     cmds.append(new_command(355, "ret"))
@@ -1103,8 +1070,7 @@ def randomize_all(world):
                     jmp = new_command(
                         355,
                         "jmp_if_7000_equals_short",
-                        [boss_location.grant_identifier, cmds[0]["identifier"]],
-                    )
+                        [boss_location.grant_identifier, cmds[0]["identifier"]])
                     fight_builders[355]["jumps"].append(jmp)
 
                 # the rest of these operations only matter if the boss is not vanilla
@@ -1150,8 +1116,7 @@ def randomize_all(world):
                                         "identifier": "dummy",
                                         "command": "sequence_playback_off",
                                     }
-                                ],
-                            )
+                                ])
                             sequence_setters[statue_location.sequence_setter].append(
                                 cmd
                             )
@@ -1209,8 +1174,7 @@ def randomize_all(world):
                                             "command": "shift_xy_pixels",
                                             "args": [horizontal_shift, vertical_shift],
                                         }
-                                    ],
-                                )
+                                    ])
                                 # print(statue_location.sequence_setter, cmd)
                                 sequence_setters[
                                     statue_location.sequence_setter
@@ -1231,8 +1195,7 @@ def randomize_all(world):
                                                 vertical_shift,
                                             ],
                                         }
-                                    ],
-                                )
+                                    ])
                                 sequence_setters[
                                     statue_location.sequence_setter
                                 ].append(cmd)
@@ -1252,8 +1215,7 @@ def randomize_all(world):
                                                 vertical_shift,
                                             ],
                                         }
-                                    ],
-                                )
+                                    ])
                                 sequence_setters[
                                     statue_location.sequence_setter
                                 ].append(cmd)
@@ -1388,8 +1350,7 @@ def randomize_all(world):
                                                 )
                                         for (
                                             subscript_command_index,
-                                            subscript_command,
-                                        ) in enumerate(command["subscript"]):
+                                            subscript_command) in enumerate(command["subscript"]):
                                             if subscript_command["command"] == "pause":
                                                 subscript_command["args"][0] = pause
                                                 command["subscript"][
@@ -1401,8 +1362,7 @@ def randomize_all(world):
                                     elif is_mario_animation_header(command):
                                         for (
                                             subscript_command_index,
-                                            subscript_command,
-                                        ) in enumerate(command["subscript"]):
+                                            subscript_command) in enumerate(command["subscript"]):
                                             if subscript_command["command"] == "pause":
                                                 subscript_command["args"][0] = max(
                                                     pause - 2, 1
@@ -1453,8 +1413,7 @@ def randomize_all(world):
                                         "identifier": "dummy",
                                         "command": order,
                                         "args": [shift],
-                                    },
-                                )
+                                    })
 
                             # adjust dojo pause
                             dojo_duration = (
@@ -1478,8 +1437,7 @@ def randomize_all(world):
                                         pause = max(45, dojo_duration)
                                         for (
                                             subscript_command_index,
-                                            subscript_command,
-                                        ) in enumerate(command["subscript"]):
+                                            subscript_command) in enumerate(command["subscript"]):
                                             if (
                                                 subscript_command["command"] == "pause"
                                                 and subscript_command["args"] == 45
@@ -1500,8 +1458,7 @@ def randomize_all(world):
                                     if is_animation_header(command, npc_id):
                                         for (
                                             subscript_command_index,
-                                            subscript_command,
-                                        ) in enumerate(command["subscript"]):
+                                            subscript_command) in enumerate(command["subscript"]):
                                             if script_id == 862:
                                                 pause = max(45, dojo_duration)
                                                 if (
@@ -1525,8 +1482,7 @@ def randomize_all(world):
                                     if is_animation_header(command, npc_id):
                                         for (
                                             subscript_command_index,
-                                            subscript_command,
-                                        ) in enumerate(command["subscript"]):
+                                            subscript_command) in enumerate(command["subscript"]):
                                             if script_id == 864:
                                                 pause = max(45, dojo_duration)
                                                 if (
@@ -1563,8 +1519,7 @@ def randomize_all(world):
                                         pause = max(45, dojo_duration)
                                         for (
                                             subscript_command_index,
-                                            subscript_command,
-                                        ) in enumerate(command["subscript"]):
+                                            subscript_command) in enumerate(command["subscript"]):
                                             if script_id == 866:
                                                 if (
                                                     subscript_command["command"]
@@ -2307,8 +2262,7 @@ def randomize_all(world):
                                                     "identifier": "dummy",
                                                     "command": "pause",
                                                     "args": [challenge_duration - 55],
-                                                },
-                                            )
+                                                })
                                         endgame_animation = {
                                             "identifier": "EVENT_944_taunt",
                                             "command": "action_queue",
@@ -2361,8 +2315,7 @@ def randomize_all(world):
                                             boss_sprite_location.occupant,
                                             boss_location,
                                             command["subscript"],
-                                            model,
-                                        )
+                                            model)
 
                         # action scripts
                         for script_id in boss_sprite_location.target_action_scripts:
@@ -2379,8 +2332,7 @@ def randomize_all(world):
                             ):
                                 for (
                                     subscript_command_index,
-                                    subscript_command,
-                                ) in enumerate(script):
+                                    subscript_command) in enumerate(script):
                                     # set the proper animation for the sprite, and determine if it should loop or not
                                     if (
                                         subscript_command["command"]
@@ -2433,18 +2385,14 @@ def randomize_all(world):
                                     world,
                                     npc_id,
                                     model.sprite_id,
-                                    world.eventscripts[script_id],
-                                ),
-                            )
+                                    world.eventscripts[script_id]))
                         for script_id in boss_sprite_location.target_action_scripts:
                             min_vram = max(
                                 min_vram,
                                 utils.get_min_vram_size_for_actionscript(
                                     world,
                                     model.sprite_id,
-                                    world.actionscripts[script_id],
-                                ),
-                            )
+                                    world.actionscripts[script_id]))
                         world.rooms[room_id].objects[npc_id].vram_size = min_vram
 
                     # Replace the henchmen in each room
@@ -2539,8 +2487,7 @@ def randomize_all(world):
                                                     boss,
                                                     boss_location,
                                                     command["subscript"],
-                                                    model,
-                                                )
+                                                    model)
 
                                     # action scripts
                                     for (
@@ -2560,8 +2507,7 @@ def randomize_all(world):
                                         ):
                                             for (
                                                 subscript_command_index,
-                                                subscript_command,
-                                            ) in enumerate(script):
+                                                subscript_command) in enumerate(script):
                                                 # set the proper animation for the sprite, and determine if it should loop or not
                                                 if (
                                                     subscript_command["command"]
@@ -2743,8 +2689,7 @@ def randomize_all(world):
                                                 ):  # figure out what to do here, how does the math work out if you speed it up...
                                                     print(
                                                         "warning: pauses are negative ",
-                                                        occupant,
-                                                    )
+                                                        occupant)
                                                     pass
 
                                                 world.actionscripts[script_id] = [
@@ -2841,8 +2786,7 @@ def randomize_all(world):
                                             # print(boss, boss_location)
                                             for (
                                                 subscript_command_index,
-                                                subscript_command,
-                                            ) in enumerate(script):
+                                                subscript_command) in enumerate(script):
                                                 if (
                                                     subscript_command["command"]
                                                     == "set_sprite_sequence"
@@ -2977,9 +2921,7 @@ def randomize_all(world):
                                             world,
                                             npc_id,
                                             model.sprite_id,
-                                            world.eventscripts[script_id],
-                                        ),
-                                    )
+                                            world.eventscripts[script_id]))
                                 for (
                                     script_id
                                 ) in henchman_location.target_action_scripts:
@@ -2989,9 +2931,7 @@ def randomize_all(world):
                                         utils.get_min_vram_size_for_actionscript(
                                             world,
                                             model.sprite_id,
-                                            world.actionscripts[script_id],
-                                        ),
-                                    )
+                                            world.actionscripts[script_id]))
                                 world.rooms[room_id].objects[
                                     npc_id
                                 ].vram_size = min_vram
@@ -3213,8 +3153,7 @@ def randomize_all(world):
                                     "jumps": [
                                         new_command(
                                             henchman_location.event_id,
-                                            "set_7000_to_current_level",
-                                        )
+                                            "set_7000_to_current_level")
                                     ],
                                     "executions": [],
                                 }
@@ -3225,8 +3164,7 @@ def randomize_all(world):
                                     [
                                         occupant.pack_number,
                                         henchman_location.battlefield,
-                                    ],
-                                ),
+                                    ]),
                                 new_command(henchman_location.event_id, "ret"),
                             ]
                             fight_builders[henchman_location.event_id][
@@ -3235,8 +3173,7 @@ def randomize_all(world):
                             jmp = new_command(
                                 henchman_location.event_id,
                                 "jmp_if_7000_equals_short",
-                                [room_id, cmds[0]["identifier"]],
-                            )
+                                [room_id, cmds[0]["identifier"]])
                             fight_builders[henchman_location.event_id]["jumps"].append(
                                 jmp
                             )
@@ -3285,8 +3222,7 @@ def randomize_all(world):
                     for loc in world.boss_locations
                     if not utils.isclass_or_instance(loc, bosses.Booster)
                 ],
-                3,
-            )
+                3)
             world.search_replace_dialog("`RANDOM_BOSS_NAME_1`", random_bosses[0])
             world.search_replace_dialog("`RANDOM_BOSS_NAME_2`", random_bosses[1])
             world.search_replace_dialog("`RANDOM_BOSS_NAME_3`", random_bosses[2])

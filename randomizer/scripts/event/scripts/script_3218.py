@@ -16,8 +16,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetBit(TEMP_7044_0),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3218_ret_8"]),
         RunBackgroundEvent(
@@ -31,8 +30,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_3218_run_dialog_9",
-        ),
+            identifier="EVENT_3218_run_dialog_9"),
         CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 1701),
         RunDialog(
@@ -41,8 +39,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CopyVarToVar(from_var=TEMP_7026, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 1713),
         RunDialog(
@@ -51,8 +48,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CopyVarToVar(from_var=TEMP_7028, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 1725),
         RunDialog(
@@ -61,8 +57,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CopyVarToVar(from_var=TEMP_702A, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 1737),
         RunDialog(
@@ -71,8 +66,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CopyVarToVar(from_var=TEMP_702C, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 1749),
         RunDialog(
@@ -81,8 +75,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CopyVarToVar(from_var=TEMP_702E, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 1761),
         RunDialog(
@@ -91,16 +84,14 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         RunDialog(
             dialog_id=DI1707_EMPTY,
             above_object=NPC_12,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetVarToConst(TEMP_70AC, 0),
         SetBit(TEMP_7042_2),
         RunEventAsSubroutine(E3411_SHIP_PASSWORD_CORRECTNESS_CHECK),
@@ -115,8 +106,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkSouthwestSteps(3),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplySolidityModToLevel(
             permanent=True, room_id=R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM, mod_id=0
@@ -124,23 +114,20 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         SetBit(TEMP_7043_0),
         SetBit(TEMP_7042_6),
         JmpIfBitSet(
             SHIP_MIDBOSS_COMPLETED,
             ["EVENT_3218_jmp_if_bit_set_59"],
-            identifier="EVENT_3218_jmp_if_bit_set_53",
-        ),
+            identifier="EVENT_3218_jmp_if_bit_set_53"),
         RunDialog(
             dialog_id=DI1660_SHIP_PASSWORD_COMPLETE,
             above_object=NPC_14,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         PlaySound(
             sound=SO088_WRONG_SIGNAL, channel=6, identifier="EVENT_3218_play_sound_56"
@@ -152,8 +139,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_0,
             ["EVENT_3218_ret_65"],
-            identifier="EVENT_3218_jmp_if_bit_set_59",
-        ),
+            identifier="EVENT_3218_jmp_if_bit_set_59"),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplySolidityModToLevel(
             permanent=True, room_id=R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM, mod_id=0
@@ -161,8 +147,7 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         SetBit(TEMP_7043_0),
         SetBit(TEMP_7042_6),
         Return(identifier="EVENT_3218_ret_65"),

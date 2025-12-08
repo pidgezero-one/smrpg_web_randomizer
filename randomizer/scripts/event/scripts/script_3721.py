@@ -14,8 +14,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI3765_NIMBUS_EGG_HINT,
@@ -24,8 +23,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_3721_run_dialog_4",
-        ),
+            identifier="EVENT_3721_run_dialog_4"),
         Return(),
     ]
 )

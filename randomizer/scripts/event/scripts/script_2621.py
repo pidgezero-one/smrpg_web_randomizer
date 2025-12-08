@@ -8,8 +8,7 @@ script = EventScript(
     [
         RunBackgroundEvent(
             event_id=E2620_FACTORY_3RD_ROOM_BACKGROUND_NPCS_BONK_CONVEYOR,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         JmpIfObjectNotInSpecificLevel(
             NPC_10, R472_FACTORY_GROUNDS_AREA_03, ["EVENT_2621_jmp_if_bit_clear_3"]
         ),
@@ -17,8 +16,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_7,
             ["EVENT_2621_sequence_setter_2"],
-            identifier="EVENT_2621_jmp_if_bit_clear_3",
-        ),
+            identifier="EVENT_2621_jmp_if_bit_clear_3"),
         EnableControls([]),
         FreezeCamera(),
         ActionQueueAsync(
@@ -30,8 +28,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASSequencePlaybackOff(),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(
             E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),
@@ -55,8 +52,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_2621_action_queue_async_8_SUBSCRIPT_pause_6"]
                 ),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         UnfreezeCamera(),
         EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
@@ -67,8 +63,7 @@ script = EventScript(
         Return(),
         RunEventAsSubroutine(
             E0857_INNER_FACTORY_3RD_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-            identifier="EVENT_2621_sequence_setter_2",
-        ),
+            identifier="EVENT_2621_sequence_setter_2"),
         FadeInFromBlack(sync=False),
         Return(),
     ]

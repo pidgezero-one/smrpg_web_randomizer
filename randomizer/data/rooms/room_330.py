@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0263_BOUNCE_ON_BED,
             x=28,
@@ -58,11 +57,9 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
-    ],
-    exits=[
-        RoomExit(
+            byte_8_bit_4=False),
+        Event(
+            event=E3104_EXIT_MK_GUEST_ROOM,
             x=21,
             y=53,
             z=0,
@@ -71,17 +68,9 @@ room = Room(
             height=0,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_2_bit_2=False,
-            destination=R329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM,
-            show_message=False,
-            dst_x=16,
-            dst_y=63,
-            dst_z=3,
-            dst_z_half=False,
-            dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            byte_8_bit_4=False),
     ],
+    exits=[],
     objects=[
         RegularNPC( # 0
             npc=npcs.TOAD_NPC,
@@ -109,7 +98,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

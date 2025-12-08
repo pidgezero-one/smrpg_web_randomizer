@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0702_MARRYMORE_TAKE_PHOTO,
             x=22,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -75,8 +73,7 @@ room = Room(
             destination=OW28_MARRYMORE,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         MapExit(
             x=12,
             y=64,
@@ -90,8 +87,7 @@ room = Room(
             destination=OW28_MARRYMORE,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         RoomExit(
             x=19,
             y=62,
@@ -109,8 +105,7 @@ room = Room(
             dst_z=1,
             dst_z_half=True,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=4,
             y=71,
@@ -128,8 +123,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=20,
             y=64,
@@ -147,8 +141,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -177,8 +170,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             event_script=E0680_MARRYMORE_LIBERATED_EXTERIOR_PATHWAY_YELLOW_TOAD,
@@ -188,8 +180,7 @@ room = Room(
             y=72,
             z=4,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 2
             npc=npcs.MARRYMORE_MAN_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -216,8 +207,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.MARRYMORE_WOMAN_GREEN_NPC,
             event_script=E0685_MARRYMORE_LIBERATED_EXTERIOR_WIFE,
@@ -227,8 +217,7 @@ room = Room(
             y=70,
             z=4,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 4
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -255,8 +244,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.MARRYMORE_MAN_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -283,8 +271,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.MARRYMORE_WOMAN_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -311,8 +298,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.MUSHROOM_BOY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -339,8 +325,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.MARRYMORE_KID_PURPLE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -367,8 +352,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.MUSHROOM_BOY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -395,7 +379,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -11,8 +11,7 @@ script = EventScript(
             subscript=[
                 ASTransferXYZFPixels(x=248, y=252, z=0, direction=EAST),
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         FadeOutMusicToVolume(duration=1, volume=96),
         FadeInFromBlack(sync=False),
         Return(),

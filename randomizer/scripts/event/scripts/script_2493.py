@@ -11,8 +11,7 @@ script = EventScript(
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=CHEST_COIN_SIZE),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftNorthSteps(2)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASShiftNorthSteps(2)]),
         ActionQueueSync(
             target=MEM_70A8,
             subscript=[
@@ -25,8 +24,7 @@ script = EventScript(
                 ASPause(8),
                 ASBPL262728(),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         Set70107015ToObjectXYZ(MEM_70A8),
         CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 608),
@@ -43,8 +41,7 @@ script = EventScript(
         JmpIfBitSet(GAME_OVER, ["EVENT_2493_reset_and_choose_game_26"]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASShiftSouthSteps(2), ASSetWalkingSpeed(NORMAL)],
-        ),
+            subscript=[ASShiftSouthSteps(2), ASSetWalkingSpeed(NORMAL)]),
         FadeInFromBlack(sync=False),
         SetBit(MIMIC_3_CLEARED),
         SetBit(UNKNOWN_MIMIC_BIT),
@@ -59,8 +56,7 @@ script = EventScript(
                     RUN_AWAY,
                     [
                         "EVENT_2493_action_queue_sync_25_SUBSCRIPT_object_memory_clear_bit_9"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(index=4, is_sequence=True, looping=True),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASSequenceLoopingOff(),
@@ -68,13 +64,11 @@ script = EventScript(
                 ASObjectMemoryClearBit(
                     arg_1=0x30,
                     bits=[4],
-                    identifier="EVENT_2493_action_queue_sync_25_SUBSCRIPT_object_memory_clear_bit_9",
-                ),
+                    identifier="EVENT_2493_action_queue_sync_25_SUBSCRIPT_object_memory_clear_bit_9"),
                 ASSequenceLoopingOff(),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=False),
                 ASReturn(),
-            ],
-        ),
+            ]),
         JmpIfBitSet(RUN_AWAY, ["EVENT_2493_ret_25"]),
         DisableObjectTrigger(MEM_70A8),
         DisableTriggerOfObjectAt70A8InCurrentLevel(),

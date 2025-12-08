@@ -16,8 +16,7 @@ exits = [
         destination=OW20_PIPE_VAULT,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
     MapExit(
         x=20,
         y=31,
@@ -31,6 +30,5 @@ exits = [
         destination=OW20_PIPE_VAULT,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
 ]

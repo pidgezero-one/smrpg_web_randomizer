@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=2,
             y=63,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E2160_KEEP_TERRA_COTTA_BATTLE_ROOM_LOADER),
     ]
 )

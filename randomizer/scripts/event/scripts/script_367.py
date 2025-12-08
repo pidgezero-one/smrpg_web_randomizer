@@ -15,8 +15,7 @@ script = EventScript(
                     1, identifier="EVENT_367_action_queue_async_0_SUBSCRIPT_pause_2"
                 ),
                 ASJmpIfMarioInAir(["EVENT_367_action_queue_async_0_SUBSCRIPT_pause_2"]),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

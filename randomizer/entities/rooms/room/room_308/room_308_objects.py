@@ -37,6 +37,5 @@ objects = [
         priority_2=True,
         acute_axis=3,
         obtuse_axis=4,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

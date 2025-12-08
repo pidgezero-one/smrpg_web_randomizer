@@ -9,8 +9,7 @@ script = ActionScript(
         JmpIfBitSet(
             MINES_BOSS_1_DEFEATED,
             ["ACTION_730_clear_solidity_bits_54"],
-            identifier="ACTION_730_jmp_if_bit_set_3",
-        ),
+            identifier="ACTION_730_jmp_if_bit_set_3"),
         VisibilityOff(),
         ObjectMemorySetBit(arg_1=0x30, bits=[4]),
         ClearSolidityBits(
@@ -75,8 +74,7 @@ script = ActionScript(
             cant_pass_npcs=True,
             cant_walk_through=True,
             bit_7=True,
-            identifier="ACTION_730_clear_solidity_bits_54",
-        ),
+            identifier="ACTION_730_clear_solidity_bits_54"),
         VisibilityOff(),
         ObjectMemorySetBit(arg_1=0x30, bits=[4]),
         Return(),

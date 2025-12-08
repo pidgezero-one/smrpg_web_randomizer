@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1814_START_TROOPA_CLIFF_TIMER,
             x=21,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1814_START_TROOPA_CLIFF_TIMER,
             x=21,
@@ -70,8 +68,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1816_TROOPA_CLIFF_FINISH,
             x=25,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1816_TROOPA_CLIFF_FINISH,
             x=25,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -115,8 +110,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -145,8 +139,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.COMMANDER_TROOPA_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -173,8 +166,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.SKY_TROOPA_NPC_2,
             initiator=EventInitiator.JUMP_ON,
@@ -201,8 +193,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.SKY_TROOPA_NPC_2,
             event_script=E1775_SKY_TROOPA_PLATFORM,
@@ -212,8 +203,7 @@ room = Room(
             y=125,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularClone( # 4
             npc=npcs.SKY_TROOPA_NPC_2,
             event_script=E1775_SKY_TROOPA_PLATFORM,
@@ -223,8 +213,7 @@ room = Room(
             y=125,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularClone( # 5
             npc=npcs.SKY_TROOPA_NPC_2,
             event_script=E1775_SKY_TROOPA_PLATFORM,
@@ -234,8 +223,7 @@ room = Room(
             y=125,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularClone( # 6
             npc=npcs.SKY_TROOPA_NPC_2,
             event_script=E1775_SKY_TROOPA_PLATFORM,
@@ -245,8 +233,7 @@ room = Room(
             y=125,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularClone( # 7
             npc=npcs.SKY_TROOPA_NPC_2,
             event_script=E1775_SKY_TROOPA_PLATFORM,
@@ -256,8 +243,7 @@ room = Room(
             y=125,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularClone( # 8
             npc=npcs.SKY_TROOPA_NPC_2,
             event_script=E1775_SKY_TROOPA_PLATFORM,
@@ -267,8 +253,7 @@ room = Room(
             y=125,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularClone( # 9
             npc=npcs.SKY_TROOPA_NPC_2,
             event_script=E1775_SKY_TROOPA_PLATFORM,
@@ -278,8 +263,7 @@ room = Room(
             y=125,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 10
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -306,7 +290,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3239_SHIP_OPEN_DOOR_TO_ROOM_BEHIND_BOX_WALL,
             x=20,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -79,8 +77,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=20,
             y=90,
@@ -98,8 +95,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=23,
             y=98,
@@ -117,8 +113,7 @@ room = Room(
             dst_z=2,
             dst_z_half=True,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -147,8 +142,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.DRY_BONES_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -175,8 +169,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.DRY_BONES_NPC,
             event_script=E3246_DRY_BONES_FIGHT,
@@ -186,8 +179,7 @@ room = Room(
             y=89,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 3
             npc=npcs.DRY_BONES_NPC,
             event_script=E3246_DRY_BONES_FIGHT,
@@ -197,7 +189,6 @@ room = Room(
             y=98,
             z=2,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
     ]
 )

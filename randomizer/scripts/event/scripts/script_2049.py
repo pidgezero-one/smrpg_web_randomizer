@@ -14,8 +14,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(SLOW),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -23,15 +22,13 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASSetSequenceSpeed(SLOW),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
                 ASSetSequenceSpeed(SLOW),
                 ASSetSpriteSequence(index=7, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

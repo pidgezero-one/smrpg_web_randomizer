@@ -25,8 +25,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=25, y=112),
                 ASFaceNortheast(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -34,8 +33,7 @@ script = EventScript(
                 ASPause(20),
                 ASPlaySound(sound=SO133_CLOSE_HIT_DOOR, channel=4),
                 ASPause(20),
-            ],
-        ),
+            ]),
         CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
         RunDialog(
             dialog_id=DI1263_TROOPA_CLIFF_TIME,
@@ -43,8 +41,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueAsync(target=NPC_1, subscript=[ASResetProperties()]),
         CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 1800),
@@ -79,8 +76,7 @@ script = EventScript(
         JmpIfBitClear(
             UNKNOWN_LARGE_CONVEYOR_ROOM,
             ["EVENT_1816_set_bit_36"],
-            identifier="EVENT_1816_jmp_if_bit_clear_71",
-        ),
+            identifier="EVENT_1816_jmp_if_bit_clear_71"),
         SetVarToConst(TEMP_7028, 5),
         ActionQueueSync(
             target=MARIO,
@@ -90,11 +86,9 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
+                    mirror_sprite=True)
             ],
-            identifier="EVENT_1816_action_queue_sync_74",
-        ),
+            identifier="EVENT_1816_action_queue_sync_74"),
         SetObjectMemoryToVar(TEMP_7028),
         ActionQueueAsync(
             target=NPC_10,
@@ -114,8 +108,7 @@ script = EventScript(
                 ASWalk1StepSouthwest(),
                 ASPause(6),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         SetVarToConst(PRIMARY_TEMP_7000, 1),
         AddFrogCoins(PRIMARY_TEMP_7000),
         EndLoop(),

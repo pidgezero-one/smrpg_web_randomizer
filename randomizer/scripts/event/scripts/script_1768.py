@@ -31,8 +31,7 @@ script = EventScript(
             subscript=[
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         RemoveObjectFromSpecificLevel(
             NPC_1, R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN
         ),

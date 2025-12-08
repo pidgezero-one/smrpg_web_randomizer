@@ -13,8 +13,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkNorthwestPixels(8),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -22,8 +21,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkNorthwestPixels(8),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         JmpIfBitClear(
             LANDS_END_GROTTO_BARREL_FLIPPED, ["EVENT_1590_fade_in_from_black_async_4"]
         ),
@@ -34,8 +32,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkEastPixels(46),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False, identifier="EVENT_1590_fade_in_from_black_async_4"),
         JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1590_ret_26"]),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),

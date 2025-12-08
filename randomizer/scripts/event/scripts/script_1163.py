@@ -17,8 +17,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
                 ASShadowOff(),
                 ASPause(1),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

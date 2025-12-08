@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3299_OUTER_SEA_WHIRLPOOL,
             x=3,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3299_OUTER_SEA_WHIRLPOOL,
             x=5,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3299_OUTER_SEA_WHIRLPOOL,
             x=2,
@@ -82,8 +79,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3299_OUTER_SEA_WHIRLPOOL,
             x=8,
@@ -94,8 +90,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3299_OUTER_SEA_WHIRLPOOL,
             x=10,
@@ -106,8 +101,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3299_OUTER_SEA_WHIRLPOOL,
             x=7,
@@ -118,8 +112,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -139,8 +132,7 @@ room = Room(
             dst_z=5,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -169,8 +161,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             event_script=E0256_RETURN,
@@ -180,8 +171,7 @@ room = Room(
             y=46,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             event_script=E0256_RETURN,
@@ -191,8 +181,7 @@ room = Room(
             y=31,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             event_script=E0256_RETURN,
@@ -202,8 +191,7 @@ room = Room(
             y=30,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             event_script=E0256_RETURN,
@@ -213,8 +201,7 @@ room = Room(
             y=52,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             event_script=E0256_RETURN,
@@ -224,8 +211,7 @@ room = Room(
             y=53,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             event_script=E0256_RETURN,
@@ -235,8 +221,7 @@ room = Room(
             y=35,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             event_script=E0256_RETURN,
@@ -246,8 +231,7 @@ room = Room(
             y=36,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.WHIRLPOOL_WATER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -274,8 +258,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 9
             npc=npcs.WHIRLPOOL_WATER_NPC,
             event_script=E3208_WATER_WHIRLPOOL,
@@ -285,8 +268,7 @@ room = Room(
             y=35,
             z=6,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 10
             npc=npcs.BLOOBER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -314,8 +296,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 11
             npc=npcs.BLOOBER_NPC,
             battle_pack=64,
@@ -325,7 +306,6 @@ room = Room(
             y=48,
             z=4,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
     ]
 )

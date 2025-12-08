@@ -20,10 +20,8 @@ script = EventScript(
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                )
-            ],
-        ),
+                    looping=True)
+            ]),
         StarMaskExpandFromScreenCenter(),
         Pause(60),
         SetTempSyncActionScript(NPC_8, A0238_CHEERING_NIMBITES),
@@ -68,42 +66,36 @@ script = EventScript(
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(20),
                 ASSetSpriteSequence(
                     index=14,
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(20),
                 ASSetSpriteSequence(
                     index=16,
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(20),
                 ASSetSpriteSequence(
                     index=14,
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(60),
                 ASSetSpriteSequence(
                     index=17,
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
-            ],
-        ),
+                    looping=True),
+            ]),
         Pause(95),
         ActionQueueSync(
             target=NPC_1,
@@ -111,8 +103,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -120,16 +111,14 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -137,24 +126,21 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
@@ -162,24 +148,21 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_9,
             subscript=[
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
@@ -187,8 +170,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_11,
             subscript=[
@@ -196,8 +178,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_13,
             subscript=[
@@ -212,8 +193,7 @@ script = EventScript(
                 ASBPL262728(),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_14,
             subscript=[
@@ -226,8 +206,7 @@ script = EventScript(
                 ),
                 ASWalkSouthwestPixels(8),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Pause(45),
         ActionQueueSync(
             target=NPC_12,
@@ -240,8 +219,7 @@ script = EventScript(
                     )
                 ),
                 ASWalkNorthwestSteps(5),
-            ],
-        ),
+            ]),
         Pause(160),
         StarMaskShrinkToScreenCenter(),
         PauseScriptUntilEffectDone(),

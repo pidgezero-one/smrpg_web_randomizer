@@ -16,8 +16,7 @@ script = EventScript(
         SetTempSyncActionScript(
             MEM_70A8,
             A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES,
-            identifier="EVENT_1008_set_temp_action_script_sync_7",
-        ),
+            identifier="EVENT_1008_set_temp_action_script_sync_7"),
         JmpIfBitSet(TEMP_704A_2, ["EVENT_1010_clear_bit_7"]),
         FadeInFromBlack(sync=False),
         Return(),

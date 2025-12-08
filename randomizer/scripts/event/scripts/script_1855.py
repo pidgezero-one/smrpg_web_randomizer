@@ -28,8 +28,7 @@ script = EventScript(
                 ASJmpIfVarNotEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,
-                    ["EVENT_1855_action_queue_async_1_SUBSCRIPT_walk_1_step_south_7"],
-                ),
+                    ["EVENT_1855_action_queue_async_1_SUBSCRIPT_walk_1_step_south_7"]),
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
                 ASSetSpriteSequence(
                     index=3, sprite_offset=2, is_sequence=True, looping=True
@@ -41,8 +40,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_1855_action_queue_async_1_SUBSCRIPT_pause_13"]
                 ),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_1830_store_coin_amount_7000_10"]),
     ]
 )

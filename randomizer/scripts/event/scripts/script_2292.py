@@ -11,16 +11,14 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=3,
             y=17,
-            z=0,
-        ),
+            z=0),
         FreezeCamera(),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASBounceToXYWithHeight(x=0, y=2, height=0),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=MARIO, subscript=[ASVisibilityOff()]),
         ActionQueueAsync(target=NPC_2, subscript=[ASWalkNorthPixels(3)]),
         Set0158Bit7Offset(0x0158),
@@ -44,8 +42,7 @@ script = EventScript(
                 ASPause(50),
                 ASSetSequenceSpeed(SLOW),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_2, A1015_END_CREDITS_FROGFUCIUS_RAISES),
         Pause(30),
         Clear0158Bit7Offset(0x0158),
@@ -60,8 +57,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -71,8 +67,7 @@ script = EventScript(
                 ASWalkNorthPixels(1),
                 ASPause(4),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         Pause(60),
         StarMaskShrinkToScreenCenter(),
         Pause(60),

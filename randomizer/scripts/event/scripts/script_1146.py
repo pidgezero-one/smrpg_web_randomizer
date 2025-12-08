@@ -13,40 +13,35 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASVisibilityOn(),
             ],
-            identifier="EVENT_1146_action_queue_sync_2",
-        ),
+            identifier="EVENT_1146_action_queue_sync_2"),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
                 ASTransferToXYZF(x=5, y=26, z=0, direction=EAST),
                 ASFaceNortheast(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASTransferToXYZF(x=6, y=28, z=0, direction=EAST),
                 ASFaceNortheast(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASTransferToXYZF(x=6, y=24, z=0, direction=EAST),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASTransferToXYZF(x=7, y=26, z=0, direction=EAST),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_0, A0147_SEASIDE_HENCHMAN),
         SetSyncActionScript(NPC_1, A0147_SEASIDE_HENCHMAN),
         SetSyncActionScript(NPC_2, A0147_SEASIDE_HENCHMAN),
@@ -63,8 +58,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(6),
                 ASSetAllSpeeds(NORMAL),
                 ASWalkNorthwestSteps(2),
-            ],
-        ),
+            ]),
         Pause(10),
         ActionQueueAsync(
             target=NPC_6,
@@ -74,16 +68,13 @@ script = EventScript(
                 ASPause(30),
                 ASJumpToHeight(96),
                 ASPause(15),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetAllSpeeds(VERY_FAST), ASWalkNorthwestSteps(9)],
-        ),
+            subscript=[ASSetAllSpeeds(VERY_FAST), ASWalkNorthwestSteps(9)]),
         ActionQueueSync(
             target=NPC_6,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNorthwestSteps(4)],
-        ),
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNorthwestSteps(4)]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -101,8 +92,7 @@ script = EventScript(
                 ASPlaySound(sound=SO093_JUMP_INTO_WATER, channel=6),
                 ASPause(15),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
@@ -117,8 +107,7 @@ script = EventScript(
                 ASJumpToHeight(128),
                 ASWalkSoutheastSteps(2),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -133,8 +122,7 @@ script = EventScript(
                 ASPlaySound(sound=SO093_JUMP_INTO_WATER, channel=6),
                 ASPause(15),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
@@ -148,8 +136,7 @@ script = EventScript(
                 ASJumpToHeight(128),
                 ASWalkSoutheastSteps(2),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -164,8 +151,7 @@ script = EventScript(
                 ASPlaySound(sound=SO093_JUMP_INTO_WATER, channel=6),
                 ASPause(15),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -180,8 +166,7 @@ script = EventScript(
                 ASJumpToHeight(128),
                 ASWalkSoutheastSteps(4),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_6, subscript=[ASFixedFCoordOn(), ASWalkSoutheastSteps(1)]
         ),
@@ -208,8 +193,7 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetAllSpeeds(VERY_FAST), ASWalkSoutheastSteps(5)],
-        ),
+            subscript=[ASSetAllSpeeds(VERY_FAST), ASWalkSoutheastSteps(5)]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -218,12 +202,10 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASResetProperties(),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_6,
-            subscript=[ASPause(40), ASFaceNorthwest(), ASPause(40), ASFaceSoutheast()],
-        ),
+            subscript=[ASPause(40), ASFaceNorthwest(), ASPause(40), ASFaceSoutheast()]),
         Pause(60),
         JmpToEvent(E1147_SEASIDE_INITIATE_BOSS_FIGHT_ANIMATION),
         Return(),

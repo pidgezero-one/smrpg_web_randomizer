@@ -16,8 +16,7 @@ exits = [
         destination=OW26_BOOSTER_TOWER,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
     RoomExit(
         x=8,
         y=108,
@@ -35,8 +34,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=7,
         y=109,
@@ -54,6 +52,5 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
 ]

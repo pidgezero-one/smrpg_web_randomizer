@@ -39,8 +39,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_1
     BattlePackClone(
         occupant=Birdy,
@@ -58,8 +57,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit1=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_2
     RegularNPC(
         occupant=Letter,
@@ -92,8 +90,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=Empty,
@@ -126,8 +123,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularClone(
         occupant=Empty,
@@ -142,6 +138,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

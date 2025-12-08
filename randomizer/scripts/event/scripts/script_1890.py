@@ -8,8 +8,7 @@ script = EventScript(
     [
         JmpIfBitSet(
             ABYSS_TWO_CHEST_ROOM_DIRECTIONAL_BIT,
-            ["EVENT_1890_remove_from_current_level_5"],
-        ),
+            ["EVENT_1890_remove_from_current_level_5"]),
         RemoveObjectFromCurrentLevel(NPC_1),
         RemoveObjectFromCurrentLevel(NPC_3),
         FadeInFromBlack(sync=False),

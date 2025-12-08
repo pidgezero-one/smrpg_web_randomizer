@@ -12,8 +12,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBSelected(["EVENT_1075_run_dialog_27"]),
         SetBit(TEMP_7044_6),
         JmpToSubroutine(["EVENT_1078_jmp_if_bit_clear_140"]),
@@ -23,8 +22,7 @@ script = EventScript(
             closable=False,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Pause(1),
         PauseScriptResumeOnNextDialogPageB(),
         Pause(1),
@@ -36,8 +34,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(4),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_7, A0081_MELODY_BAY_TUTORIAL),
         PlaySound(sound=SO040_TADPOLE_POND_STAFF_SO, channel=6),
         Pause(1),
@@ -79,8 +76,7 @@ script = EventScript(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
                 ASPause(50),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -122,8 +118,7 @@ script = EventScript(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
                 ASPause(25),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -155,8 +150,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=True),
                 ASPause(10),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         CloseDialog(),
         RunDialog(
             dialog_id=DI2717_SONGS_FINISHED,
@@ -164,8 +158,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ClearBit(TEMP_7044_6),
         Return(),
         RunDialog(
@@ -175,8 +168,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_1075_run_dialog_27",
-        ),
+            identifier="EVENT_1075_run_dialog_27"),
         Return(),
         RunDialog(
             dialog_id=DI2721_MUSIC_TUTORIAL_DECLINE,
@@ -184,8 +176,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
     ]
 )

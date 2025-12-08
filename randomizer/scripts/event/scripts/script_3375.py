@@ -49,8 +49,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=UNKNOWN_70E7,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3375_set_7000_to_70A0_short_mem_28",
-        ),
+            identifier="EVENT_3375_set_7000_to_70A0_short_mem_28"),
         CopyVarToVar(from_var=ROSE_WAY_703C, to_var=ROSE_WAY_703E),
         Mem7000OrVar(ROSE_WAY_703E),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=UNKNOWN_70E7),
@@ -58,8 +57,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=UNKNOWN_70E8,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3375_set_7000_to_70A0_short_mem_33",
-        ),
+            identifier="EVENT_3375_set_7000_to_70A0_short_mem_33"),
         CopyVarToVar(from_var=ROSE_WAY_703C, to_var=ROSE_WAY_703E),
         VarShiftLeft(ROSE_WAY_703E, 252),
         Mem7000OrVar(ROSE_WAY_703E),
@@ -68,8 +66,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=UNKNOWN_70E8,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3375_set_7000_to_70A0_short_mem_39",
-        ),
+            identifier="EVENT_3375_set_7000_to_70A0_short_mem_39"),
         CopyVarToVar(from_var=ROSE_WAY_703C, to_var=ROSE_WAY_703E),
         Mem7000OrVar(ROSE_WAY_703E),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=UNKNOWN_70E8),
@@ -77,8 +74,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=UNKNOWN_70E9,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3375_set_7000_to_70A0_short_mem_44",
-        ),
+            identifier="EVENT_3375_set_7000_to_70A0_short_mem_44"),
         CopyVarToVar(from_var=ROSE_WAY_703C, to_var=ROSE_WAY_703E),
         VarShiftLeft(ROSE_WAY_703E, 252),
         Mem7000OrVar(ROSE_WAY_703E),
@@ -87,8 +83,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=UNKNOWN_70E9,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3375_set_7000_to_70A0_short_mem_50",
-        ),
+            identifier="EVENT_3375_set_7000_to_70A0_short_mem_50"),
         CopyVarToVar(from_var=ROSE_WAY_703C, to_var=ROSE_WAY_703E),
         Mem7000OrVar(ROSE_WAY_703E),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=UNKNOWN_70E9),

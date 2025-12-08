@@ -9,8 +9,7 @@ script = EventScript(
         PrioritySet(
             mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[],
-            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY],
-        ),
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY]),
         Return(),
     ]
 )

@@ -16,8 +16,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0473_TENTACLES_LEFT,
             sequence=5,
@@ -27,10 +26,8 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         SummonMonster(monster=TentaclesLeft, position=1, bit_7=True),
         RunSubroutine(["command_0x3a7544"]),
         ReturnSpriteQueue(),
-    ],
-)
+    ])

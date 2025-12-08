@@ -15,8 +15,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTER),
                 ASJumpToHeight(144),
                 ASWalkSouthwestSteps(6),
-            ],
-        ),
+            ]),
         Pause(150),
         FadeOutToBlack(sync=False),
         EnterArea(
@@ -24,8 +23,7 @@ script = EventScript(
             face_direction=SOUTHWEST,
             x=5,
             y=114,
-            z=15,
-        ),
+            z=15),
         JmpToEvent(E1328_TOWER_EXTERIOR_LOADER),
         Return(),
     ]

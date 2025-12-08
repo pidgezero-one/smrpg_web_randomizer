@@ -37,8 +37,7 @@ objects = [
         priority_0=True,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=RedMagikoopa,
@@ -73,6 +72,5 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

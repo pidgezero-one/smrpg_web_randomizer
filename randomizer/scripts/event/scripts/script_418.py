@@ -16,8 +16,7 @@ script = EventScript(
             x=30,
             y=18,
             z=7,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         JmpToEvent(E0270_TRAMPOLINE_OR_PIPE_SUBROUTINE),
     ]
 )

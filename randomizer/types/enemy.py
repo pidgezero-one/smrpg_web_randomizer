@@ -1,8 +1,6 @@
 from smrpgpatchbuilder.datatypes.enemies.classes import Enemy as EnemyBase
-from typing import Optional
-
 class Enemy(EnemyBase):
-    _remake_name: Optional[str] = None
+    _remake_name: str | None = None
 
     @property
     def remake_name(self) -> str:

@@ -6,8 +6,7 @@ script = ActionScript(
     [
         JmpIfRandom2of3(
             ["ACTION_677_pause_2", "ACTION_677_pause_3"],
-            identifier="ACTION_677_jmp_if_random_above_66_0",
-        ),
+            identifier="ACTION_677_jmp_if_random_above_66_0"),
         Pause(30),
         Pause(30, identifier="ACTION_677_pause_2"),
         Pause(30, identifier="ACTION_677_pause_3"),

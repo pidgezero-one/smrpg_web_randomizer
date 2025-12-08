@@ -15,8 +15,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASShiftZUpPixels(4),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
@@ -25,8 +24,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASShiftZUpPixels(4),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

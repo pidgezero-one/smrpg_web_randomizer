@@ -18,8 +18,7 @@ script = AnimationScript(
             sequence=0,
             store_to_vram=True,
             looping=True,
-            store_palette=True,
-        ),
+            store_palette=True),
         ReturnSubroutine(),
     ]
 )

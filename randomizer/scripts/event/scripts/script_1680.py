@@ -20,16 +20,14 @@ script = EventScript(
             x=4,
             y=83,
             z=9,
-            identifier="EVENT_1680_enter_area_2",
-        ),
+            identifier="EVENT_1680_enter_area_2"),
         JmpIfBitClear(HAS_A_PRIZE_FORTUNE, ["EVENT_1680_action_queue_sync_6"]),
         SetBit(DIRECTIONAL_7049_0),
         EnableControls([]),
         ActionQueueSync(
             target=MARIO,
             subscript=[ASJumpToHeight(height=0, silent=True)],
-            identifier="EVENT_1680_action_queue_sync_6",
-        ),
+            identifier="EVENT_1680_action_queue_sync_6"),
         JmpToEvent(E1770_TEMPLE_FORTUNE_RESULTS_ROOM_LOADER),
     ]
 )

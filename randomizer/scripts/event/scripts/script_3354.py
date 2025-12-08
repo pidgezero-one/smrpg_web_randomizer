@@ -18,8 +18,7 @@ script = EventScript(
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASWalkToXYCoords(x=6, y=49),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         JmpToEvent(E3355_KEEP_BARREL_COUNT_LOADER_CONTD),
         Return(),
     ]

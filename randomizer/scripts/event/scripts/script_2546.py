@@ -19,8 +19,7 @@ script = EventScript(
                 ASShadowOff(),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASWalkSouthPixels(8),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0408_JUMP_ON_SAVE_BLOCK),
         PlaySound(sound=SO010_TRAMPOLINE, channel=6),
         ActionQueueSync(
@@ -31,8 +30,7 @@ script = EventScript(
                 ASDb(bytearray(b"%\x00\x0f\xf0\xff")),
                 ASPause(48),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Pause(24),
         FadeOutToBlack(sync=False, duration=8),
         StopEmbeddedActionScript(MARIO),
@@ -42,8 +40,7 @@ script = EventScript(
             x=16,
             y=23,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

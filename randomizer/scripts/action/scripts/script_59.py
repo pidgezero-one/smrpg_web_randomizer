@@ -43,8 +43,7 @@ script = ActionScript(
             target_npc=DUMMY_0X07,
             coord=COORD_F,
             pixel=True,
-            identifier="ACTION_59_set_700C_to_object_coord_23",
-        ),
+            identifier="ACTION_59_set_700C_to_object_coord_23"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_700C, 1, ["ACTION_59_set_sprite_sequence_32"]),
         SetSpriteSequence(index=21, is_mold=True, is_sequence=True, looping=True),
         Pause(8),
@@ -59,8 +58,7 @@ script = ActionScript(
             is_sequence=True,
             looping=True,
             mirror_sprite=True,
-            identifier="ACTION_59_set_sprite_sequence_32",
-        ),
+            identifier="ACTION_59_set_sprite_sequence_32"),
         Pause(8),
         SetSpriteSequence(
             index=22, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True

@@ -15,10 +15,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -28,10 +26,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -41,10 +37,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -54,10 +48,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -69,10 +61,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -83,10 +73,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
@@ -98,10 +86,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["EVENT_2601_summon_to_level_37___"]),
         RunEventAsSubroutine(E1969_CHECK_IF_STAR_PIECES_FOR_FACTORY_BOSS_COLLECTED),
         JmpIfComparisonResultIsLesser(["EVENT_2601_fade_in_from_black_async_7_"]),
@@ -113,13 +99,11 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(
             NPC_14,
             R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
-            identifier="EVENT_2601_summon_to_level_37___",
-        ),
+            identifier="EVENT_2601_summon_to_level_37___"),
         RemoveObjectFromCurrentLevel(NPC_14),
         RunEventAsSubroutine(
             E0858_INNER_FACTORY_4TH_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
-            identifier="EVENT_2601_sequence_setter_2",
-        ),
+            identifier="EVENT_2601_sequence_setter_2"),
         FadeInFromBlack(
             sync=False, identifier="EVENT_2601_fade_in_from_black_async_7_"
         ),

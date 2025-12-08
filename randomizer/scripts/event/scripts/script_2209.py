@@ -10,8 +10,7 @@ script = EventScript(
         FadeOutMusicToVolume(duration=7, volume=0),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTER), ASWalkNortheastSteps(4)],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTER), ASWalkNortheastSteps(4)]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -37,16 +36,14 @@ script = EventScript(
                 ASPause(1),
                 ASEndLoop(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         Pause(15),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(index=10, is_sequence=True, looping=False),
-            ],
-        ),
+            ]),
         Pause(80),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
         JmpIfBitClear(GAME_OVER, ["EVENT_2209_fade_in_from_black_async_10"]),
@@ -82,12 +79,10 @@ script = EventScript(
                 ASPause(1),
                 ASEndLoop(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASResetProperties(), ASFaceSouthwest(), ASSequenceLoopingOn()],
-        ),
+            subscript=[ASResetProperties(), ASFaceSouthwest(), ASSequenceLoopingOn()]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -96,8 +91,7 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASSetSequenceSpeed(NORMAL),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         SetBit(KEEP_BOSS_1_DEFEATED),
         RestoreAllHP(),
         RestoreAllFP(),

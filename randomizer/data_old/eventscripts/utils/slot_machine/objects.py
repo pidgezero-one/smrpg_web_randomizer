@@ -17,8 +17,7 @@ objects = [
         slidable_along_walls=True,
         cant_move_if_in_air=True,
         byte7_upper2=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     room.RegularClone(
         occupant=npcs.SlotFlower,
         event_script=2304,
@@ -26,8 +25,7 @@ objects = [
         x=17,
         y=42,
         z=4,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     room.RegularClone(
         occupant=npcs.SlotFlower,
         event_script=2304,
@@ -35,8 +33,7 @@ objects = [
         x=17,
         y=42,
         z=4,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     room.RegularNPC(
         occupant=npcs.FrogCoin,
         event_script=2304,
@@ -49,8 +46,7 @@ objects = [
         slidable_along_walls=True,
         cant_move_if_in_air=True,
         byte7_upper2=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     room.RegularNPC(
         occupant=npcs.Explosion,
         event_script=2304,
@@ -63,6 +59,5 @@ objects = [
         slidable_along_walls=True,
         cant_move_if_in_air=True,
         byte7_upper2=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

@@ -17,8 +17,7 @@ script = EventScript(
                 ASJumpToHeight(height=16, silent=True),
                 ASPlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
             ],
-            identifier="EVENT_615_action_queue_async_5",
-        ),
+            identifier="EVENT_615_action_queue_async_5"),
         PaletteSet(palette_set=89, row=7),
         Pause(60),
         FadeOutMusicToVolume(duration=2, volume=0),
@@ -34,10 +33,8 @@ script = EventScript(
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                )
-            ],
-        ),
+                    looping=True)
+            ]),
         Pause(60),
         CircleMaskShrinkToObject(target=MARIO, width=0, speed=1, static=True),
         PauseScriptUntilEffectDone(),
@@ -52,15 +49,13 @@ script = EventScript(
         RestoreAllFP(),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASSetSpriteSequence(index=13, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=13, is_sequence=True, looping=True)]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASTransferXYZFPixels(x=0, y=248, z=0, direction=EAST),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         Pause(80),
         PlaySound(sound=SO015_NIGHT_CRICKETS, channel=6),
         Pause(46),
@@ -80,8 +75,7 @@ script = EventScript(
         StopSound(),
         ActionQueueAsync(
             target=MARIO,
-            subscript=[ASSetSpriteSequence(index=14, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=14, is_sequence=True, looping=True)]),
         RunEventAsSubroutine(E0286_AWAIT_B_PRESS),
         ApplyTileModToLevel(
             use_alternate=False, room_id=R012_MARRYMORE_INN_SUITE_ROOM, mod_id=0
@@ -100,8 +94,7 @@ script = EventScript(
                     ["EVENT_615_action_queue_async_45_SUBSCRIPT_pause_3"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         ClearBit(MARIOS_PAD_OR_MONSTRO_TOWN_SLEEP, identifier="EVENT_615_clear_bit_46"),
         SetBit(TEMP_7042_5),
         Return(),
@@ -112,16 +105,14 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_615_run_dialog_49",
-        ),
+            identifier="EVENT_615_run_dialog_49"),
         RunDialog(
             dialog_id=DI0991_STAY_LONGER_IN_SUITE_PROMPT,
             above_object=NPC_12,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBSelected(["EVENT_615_clear_bit_46"]),
         SetBit(TEMP_7042_6),
         CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),

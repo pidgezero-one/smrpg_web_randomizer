@@ -16,6 +16,5 @@ exits = [
         destination=OW15_MIDAS_RIVER,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
 ]

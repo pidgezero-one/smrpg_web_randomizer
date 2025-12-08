@@ -20,8 +20,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             MEM_70AB,
             R139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL,
-            ["EVENT_1612_inc_13"],
-        ),
+            ["EVENT_1612_inc_13"]),
         SetSyncActionScript(MEM_70AB, A0126_CANNON_GECKIT),
         Inc(TEMP_70AB, identifier="EVENT_1612_inc_13"),
         EndLoop(),
@@ -31,8 +30,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             MEM_70AB,
             R139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL,
-            ["EVENT_1612_inc_20"],
-        ),
+            ["EVENT_1612_inc_20"]),
         SetSyncActionScript(MEM_70AB, A0126_CANNON_GECKIT),
         Inc(TEMP_70AB, identifier="EVENT_1612_inc_20"),
         EndLoop(),

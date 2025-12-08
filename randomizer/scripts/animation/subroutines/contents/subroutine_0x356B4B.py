@@ -16,5 +16,4 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x352c01"]),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=20),
         Jmp(["command_0x356af4"]),
-    ],
-)
+    ])

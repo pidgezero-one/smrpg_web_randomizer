@@ -3,8 +3,7 @@
 from randomizer.types.palettes import (
     EffectPalette,
     SpritePalette,
-    ToadstoolPaletteSet,
-)
+    ToadstoolPaletteSet)
 
 
 class Default(ToadstoolPaletteSet):

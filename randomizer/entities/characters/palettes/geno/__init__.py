@@ -10,5 +10,4 @@ from .geno import (
     Light,
     Purple,
     Grey,
-    Green,
-)
+    Green)

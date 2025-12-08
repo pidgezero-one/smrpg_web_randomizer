@@ -16,8 +16,7 @@ script = EventScript(
                 ASWalk1StepSouthwest(),
                 ASSetWalkingSpeed(NORMAL),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -25,8 +24,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(4),
                 ASShiftSouthSteps(2),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -59,8 +57,7 @@ script = EventScript(
                 ASJumpToHeight(40),
                 ASWalkEastPixels(6),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         SetBit(LANDS_END_GROTTO_BARREL_FLIPPED),
         Return(identifier="EVENT_1591_ret_5"),
     ]

@@ -17,8 +17,7 @@ script = EventScript(
             x=11,
             y=59,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         SetBit(TEMP_7042_0, identifier="EVENT_3749_set_bit_11"),
         EnterArea(
@@ -27,8 +26,7 @@ script = EventScript(
             x=11,
             y=59,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA,
@@ -37,13 +35,11 @@ script = EventScript(
             y=59,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_3749_enter_area_14",
-        ),
+            identifier="EVENT_3749_enter_area_14"),
         Return(),
         RunEventAsSubroutine(
             E0065_TRAMPOLINE_SUBROUTINE,
-            identifier="EVENT_3749_run_event_as_subroutine_16",
-        ),
+            identifier="EVENT_3749_run_event_as_subroutine_16"),
         Return(),
     ]
 )

@@ -15,8 +15,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI2113_RAINI_OCCUPIED,
@@ -25,8 +24,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_689_run_dialog_2",
-        ),
+            identifier="EVENT_689_run_dialog_2"),
         Return(),
         RunDialog(
             dialog_id=DI2177_I_DO,
@@ -35,8 +33,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_689_run_dialog_5",
-        ),
+            identifier="EVENT_689_run_dialog_5"),
         Return(),
     ]
 )

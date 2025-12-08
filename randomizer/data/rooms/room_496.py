@@ -62,8 +62,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.EMPTY_NPC_3,
             event_script=E0540_UNUSED_HINT_DIALOG,
@@ -73,8 +72,7 @@ room = Room(
             y=31,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.EMPTY_NPC_3,
             event_script=E0540_UNUSED_HINT_DIALOG,
@@ -84,8 +82,7 @@ room = Room(
             y=31,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.EMPTY_NPC_3,
             event_script=E0540_UNUSED_HINT_DIALOG,
@@ -95,8 +92,7 @@ room = Room(
             y=31,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.EMPTY_NPC_3,
             event_script=E0540_UNUSED_HINT_DIALOG,
@@ -106,8 +102,7 @@ room = Room(
             y=31,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.EMPTY_NPC_3,
             event_script=E0540_UNUSED_HINT_DIALOG,
@@ -117,8 +112,7 @@ room = Room(
             y=31,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.EMPTY_NPC_3,
             event_script=E0540_UNUSED_HINT_DIALOG,
@@ -128,8 +122,7 @@ room = Room(
             y=31,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 7
             npc=npcs.YELLOW_STAR_PIECE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -156,8 +149,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -184,8 +176,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 9
             npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
             event_script=E0256_RETURN,
@@ -195,8 +186,7 @@ room = Room(
             y=18,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 10
             npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
             event_script=E0256_RETURN,
@@ -206,8 +196,7 @@ room = Room(
             y=18,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 11
             npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
             event_script=E0256_RETURN,
@@ -217,8 +206,7 @@ room = Room(
             y=35,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 12
             npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
             event_script=E0256_RETURN,
@@ -228,8 +216,7 @@ room = Room(
             y=20,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 13
             npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
             event_script=E0256_RETURN,
@@ -239,8 +226,7 @@ room = Room(
             y=20,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 14
             npc=npcs.BLUE_GREEN_STAR_PIECE_SPINNING_NPC,
             event_script=E0256_RETURN,
@@ -250,8 +236,7 @@ room = Room(
             y=20,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 15
             npc=npcs.SPARKLES_FROM_STAR_PIECE_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -278,8 +263,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 16
             npc=npcs.SPARKLES_FROM_STAR_PIECE_NPC_2,
             event_script=E0256_RETURN,
@@ -289,8 +273,7 @@ room = Room(
             y=14,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 17
             npc=npcs.SPARKLES_FROM_STAR_PIECE_NPC_2,
             event_script=E0256_RETURN,
@@ -300,8 +283,7 @@ room = Room(
             y=12,
             z=1,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 18
             npc=npcs.SPARKLES_FROM_STAR_PIECE_NPC_2,
             event_script=E0256_RETURN,
@@ -311,8 +293,7 @@ room = Room(
             y=14,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 19
             npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC_4,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -339,8 +320,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 20
             npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -367,8 +347,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 21
             npc=npcs.GENO_WALKING_DOWN_LEFT_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -395,8 +374,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 22
             npc=npcs.GENO_DOLL_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -423,8 +401,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 23
             npc=npcs.BOWSER_WALKING_DOWN_LEFT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -451,7 +428,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

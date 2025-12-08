@@ -27,8 +27,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASPause(50),
                 ASWalkSouthwestSteps(2),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
         ClearBit(TEMP_707C_5),
         ClearBit(TEMP_707C_6),
@@ -50,16 +49,14 @@ script = EventScript(
                 ASWalk1StepNortheast(),
                 ASFaceNorthwest(),
                 ASPause(2),
-            ],
-        ),
+            ]),
         SetBit(JOHNNY_POSITION),
         JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
         Return(),
         JmpIfBitClear(
             JOHNNY_POSITION,
             ["EVENT_3282_jmp_to_event_133"],
-            identifier="EVENT_3282_jmp_if_bit_set_129",
-        ),
+            identifier="EVENT_3282_jmp_if_bit_set_129"),
         SetSyncActionScript(NPC_0, A0015_DO_NOTHING),
         ActionQueueSync(
             target=NPC_0,
@@ -68,8 +65,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSequencePlaybackOn(),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         JmpToEvent(
             E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3282_jmp_to_event_133"
         ),

@@ -25,8 +25,7 @@ script = EventScript(
                     index=1, is_mold=True, looping=True, mirror_sprite=True
                 )
             ],
-            identifier="EVENT_737_action_queue_async_9",
-        ),
+            identifier="EVENT_737_action_queue_async_9"),
         Jmp(["EVENT_737_set_action_script_sync_14"]),
         ActionQueueAsync(
             target=NPC_4,
@@ -35,8 +34,7 @@ script = EventScript(
                     index=2, is_mold=True, looping=True, mirror_sprite=True
                 )
             ],
-            identifier="EVENT_737_action_queue_async_11",
-        ),
+            identifier="EVENT_737_action_queue_async_11"),
         Jmp(["EVENT_737_set_action_script_sync_14"]),
         ActionQueueAsync(
             target=NPC_4,
@@ -45,13 +43,11 @@ script = EventScript(
                     index=3, is_mold=True, looping=True, mirror_sprite=True
                 )
             ],
-            identifier="EVENT_737_action_queue_async_13",
-        ),
+            identifier="EVENT_737_action_queue_async_13"),
         SetSyncActionScript(
             NPC_0,
             A0119_SLOW_SEQUENCE_LOOP,
-            identifier="EVENT_737_set_action_script_sync_14",
-        ),
+            identifier="EVENT_737_set_action_script_sync_14"),
         RunEventAsSubroutine(E0821_GARROS_HOUSE_SHUFFLED_NPC_ANIMATION_LOADER),
         FadeInFromBlack(sync=False),
         Return(),

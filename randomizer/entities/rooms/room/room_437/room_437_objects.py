@@ -36,8 +36,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR2_SWSE,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     BattlePackNPC(
         occupant=Bluebird,
@@ -71,8 +70,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     BattlePackClone(
         occupant=Bluebird,
@@ -87,6 +85,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

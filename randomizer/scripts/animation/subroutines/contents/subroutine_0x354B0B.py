@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x354b0b",
-        ),
+            identifier="queuestart_0x354b0b"),
         DoMaskEffect(POLYGON_MASK),
         RunSubroutine(["command_0x35336f"]),
         RunSubroutine(["command_0x3533ea"]),
@@ -27,5 +26,4 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"\xc4")),
         Db(bytearray(b"\xc5")),
         ReturnObjectQueue(),
-    ],
-)
+    ])

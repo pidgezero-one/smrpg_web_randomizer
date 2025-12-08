@@ -11,8 +11,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=7, y=14, z=0, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_0, subscript=[ASVisibilityOff()]),
         ActionQueueSync(target=NPC_1, subscript=[ASVisibilityOff()]),
         ActionQueueSync(target=NPC_2, subscript=[ASVisibilityOff()]),

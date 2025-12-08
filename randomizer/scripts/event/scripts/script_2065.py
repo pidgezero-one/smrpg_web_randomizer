@@ -17,8 +17,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=False),
                 ASPause(15),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -27,8 +26,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(2),
                 ASResetProperties(),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         SetBit(INITIAL_DOJO_CUTSCENE_COMPLETED),
         Return(),
     ]

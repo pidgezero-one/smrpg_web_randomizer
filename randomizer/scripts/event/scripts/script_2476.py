@@ -30,44 +30,38 @@ script = EventScript(
                 ASWalkSoutheastPixels(7),
                 ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
                 ASWalkSoutheastPixels(7),
                 ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_9,
             subscript=[
                 ASWalkSoutheastPixels(7),
                 ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
                 ASWalkSoutheastPixels(7),
                 ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_11,
             subscript=[
                 ASWalkSoutheastPixels(7),
                 ASWalkSouthwestPixels(1),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RunBackgroundEvent(
             event_id=E2477_BEAN_VALLEY_PIRANHA_PLANT_ANIMATIONS,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         JmpIfBitClear(TEMP_7044_7, ["EVENT_2476_fade_in_from_black_async_15"]),
         RunEventAsSubroutine(E0081_MARIO_LANDS_SUBROUTINE),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),

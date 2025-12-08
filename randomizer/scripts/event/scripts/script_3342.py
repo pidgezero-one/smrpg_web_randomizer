@@ -8,8 +8,7 @@ script = EventScript(
     [
         JmpIfBitSet(
             VOLCANO_STAIRCASE_ANIMATION_COMPLETED,
-            ["EVENT_3342_run_event_as_subroutine_2"],
-        ),
+            ["EVENT_3342_run_event_as_subroutine_2"]),
         ActionQueueSync(
             target=NPC_2, subscript=[ASTransferXYZFSteps(x=0, y=0, z=8, direction=EAST)]
         ),
@@ -18,8 +17,7 @@ script = EventScript(
         ),
         RunEventAsSubroutine(
             E0015_STANDARD_ROOM_LOADER,
-            identifier="EVENT_3342_run_event_as_subroutine_2",
-        ),
+            identifier="EVENT_3342_run_event_as_subroutine_2"),
         JmpIfBitSet(VOLCANO_STAIRCASE_ANIMATION_COMPLETED, ["EVENT_3342_ret_5"]),
         RunBackgroundEvent(
             event_id=E3345_VOLCANO_CHASE_SEQEUNCE, return_on_level_exit=True

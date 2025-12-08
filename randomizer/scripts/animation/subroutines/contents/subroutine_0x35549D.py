@@ -16,8 +16,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0525_BOWYER_S_ARROW,
             sequence=0,
@@ -27,8 +26,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             param_2_and_0x10=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ResetTargetMappingMemory(),
         SetAMEM60ToCurrentTarget(),
         SetAMEM40ToXYZCoords(
@@ -51,8 +49,7 @@ script = SubroutineOrBanklessScript(
             apply_to_z=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         MoveObject(
             speed=17,
             start_position=-897,
@@ -60,8 +57,7 @@ script = SubroutineOrBanklessScript(
             apply_to_x=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=30),
         ResetObjectMappingMemory(),
         MoveObject(
@@ -71,15 +67,13 @@ script = SubroutineOrBanklessScript(
             apply_to_z=True,
             should_set_start_position=True,
             should_set_end_position=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         MoveObject(
             speed=17,
             start_position=-385,
             end_position=-897,
             apply_to_x=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=30),
         ResetObjectMappingMemory(),
         PauseScriptUntilAMEMBitsSet(0x6F, [0, 1, 2, 3, 4, 5, 6, 7]),
@@ -93,8 +87,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0525_BOWYER_S_ARROW,
             sequence=0,
@@ -104,8 +97,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             param_2_and_0x10=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ResetTargetMappingMemory(),
         SetAMEM60ToCurrentTarget(),
         SetAMEM40ToXYZCoords(
@@ -125,5 +117,4 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x352552"]),
         RunSubroutine(["command_0x35255e"]),
         Jmp(["command_0x35252f"]),
-    ],
-)
+    ])

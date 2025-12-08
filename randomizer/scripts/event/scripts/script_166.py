@@ -14,8 +14,7 @@ script = EventScript(
                 ASPause(30),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         JmpToEvent(E3092_STAR_PIECE_GRANT),
     ]
 )

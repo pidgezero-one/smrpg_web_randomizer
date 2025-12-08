@@ -20,5 +20,4 @@ from .toadstool import (
     Red,
     Green,
     Blue,
-    Black,
-)
+    Black)

@@ -13,8 +13,7 @@ script = EventScript(
                 ASWalkSouthPixels(8),
                 ASSetWalkingSpeed(NORMAL),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -22,20 +21,17 @@ script = EventScript(
                 ASWalkSouthPixels(8),
                 ASSetWalkingSpeed(NORMAL),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
                 ASWalkSouthPixels(8),
                 ASWalkNorthwestPixels(1),
                 ASWalkSouthwestPixels(3),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
-            subscript=[ASWalkNorthwestPixels(1), ASWalkSouthwestPixels(3)],
-        ),
+            subscript=[ASWalkNorthwestPixels(1), ASWalkSouthwestPixels(3)]),
         JmpIfBitClear(TEMP_7044_7, ["EVENT_2364_fade_in_from_black_async_18"]),
         RunEventAsSubroutine(E0081_MARIO_LANDS_SUBROUTINE),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),

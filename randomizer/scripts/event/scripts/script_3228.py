@@ -17,22 +17,19 @@ script = EventScript(
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000,
             17,
-            ["EVENT_3228_start_embedded_action_script_sync_F1_15"],
-        ),
+            ["EVENT_3228_start_embedded_action_script_sync_F1_15"]),
         Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True, bit_7=True),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000,
             121,
-            ["EVENT_3228_start_embedded_action_script_sync_F1_15"],
-        ),
+            ["EVENT_3228_start_embedded_action_script_sync_F1_15"]),
         SetBit(TEMP_7044_5),
         SetBit(TEMP_7044_0),
         StartSyncEmbeddedActionScript(
             target=NPC_0,
             prefix=0xF1,
             subscript=[ASJumpToHeight(108)],
-            identifier="EVENT_3228_start_embedded_action_script_sync_F1_15",
-        ),
+            identifier="EVENT_3228_start_embedded_action_script_sync_F1_15"),
         ClearBit(TEMP_7044_7, identifier="EVENT_3228_clear_bit_16"),
         Set7000ToPressedButton(),
         JmpIf7000AllBitsClear(
@@ -50,113 +47,94 @@ script = EventScript(
                     TEMP_7044_7,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_set_700C_to_object_coord_3"
-                    ],
-                ),
+                    ]),
                 ASSetAllSpeeds(FAST),
                 ASSet700CToObjectCoord(
                     target_npc=MARIO,
                     coord=COORD_F,
                     pixel=True,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_set_700C_to_object_coord_3",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_set_700C_to_object_coord_3"),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     0,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_south_pixels_16"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     1,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southeast_pixels_14"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     2,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_east_pixels_12"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     3,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northeast_pixels_26"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     4,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_north_pixels_24"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     5,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northwest_pixels_22"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     6,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_west_pixels_20"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     7,
                     [
                         "EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southwest_pixels_18"
-                    ],
-                ),
+                    ]),
                 ASWalkEastPixels(
                     5,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_east_pixels_12",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_east_pixels_12"),
                 ASReturn(),
                 ASWalkSoutheastPixels(
                     3,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southeast_pixels_14",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southeast_pixels_14"),
                 ASReturn(),
                 ASWalkSouthPixels(
                     1,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_south_pixels_16",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_south_pixels_16"),
                 ASReturn(),
                 ASWalkSouthwestPixels(
                     3,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southwest_pixels_18",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_southwest_pixels_18"),
                 ASReturn(),
                 ASWalkWestPixels(
                     5,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_west_pixels_20",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_west_pixels_20"),
                 ASReturn(),
                 ASWalkNorthwestPixels(
                     3,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northwest_pixels_22",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northwest_pixels_22"),
                 ASReturn(),
                 ASWalkNorthPixels(
                     1,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_north_pixels_24",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_north_pixels_24"),
                 ASReturn(),
                 ASWalkNortheastPixels(
                     3,
-                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northeast_pixels_26",
-                ),
+                    identifier="EVENT_3228_start_embedded_action_script_sync_F1_22_SUBSCRIPT_shift_northeast_pixels_26"),
                 ASReturn(),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_3228_pause_0"]),
     ]
 )

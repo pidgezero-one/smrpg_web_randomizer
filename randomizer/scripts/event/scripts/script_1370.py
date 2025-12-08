@@ -17,23 +17,19 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=36,
-        ),
+            mod_id=36),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=40,
-        ),
+            mod_id=40),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=44,
-        ),
+            mod_id=44),
         MoveScriptToBackgroundThread2(),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, A, Y, B]),
         ActionQueueSync(
@@ -44,8 +40,7 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASBounceToXYWithHeight(x=5, y=19, height=0),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -54,8 +49,7 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASBounceToXYWithHeight(x=3, y=20, height=0),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -64,8 +58,7 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASBounceToXYWithHeight(x=4, y=22, height=0),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -74,8 +67,7 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASBounceToXYWithHeight(x=5, y=24, height=0),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         Pause(20),
         Inc(TEMP_7026),
         Jmp(["EVENT_1358_jmp_66"]),

@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0263_BOUNCE_ON_BED,
             x=12,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -79,8 +77,7 @@ room = Room(
             dst_z=1,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -109,8 +106,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.OLD_WOMAN_GREY_RED_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -137,8 +133,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -165,8 +160,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             event_script=E0545_ROSE_TOWN_OCCUPIED_KID_3,
@@ -176,8 +170,7 @@ room = Room(
             y=14,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularClone( # 4
             npc=npcs.KID_RED_STRIPED_HAT_NPC,
             event_script=E0543_ROSE_TOWN_OCCUPIED_KID_1,
@@ -187,7 +180,6 @@ room = Room(
             y=10,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

@@ -11,8 +11,7 @@ script = EventScript(
         SetVarToConst(MIDAS_RIVER_70D4, 0),
         EnableControls(
             [LEFT, RIGHT, DOWN, UP, X, A, Y, B],
-            identifier="EVENT_3489_enable_controls_3",
-        ),
+            identifier="EVENT_3489_enable_controls_3"),
         EnableControlsUntilReturn([]),
         RunBackgroundEvent(
             event_id=E3490_MIDAS_SMALL_MARIO_COORD_CALC, return_on_level_exit=True
@@ -20,14 +19,12 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E3481_MIDAS_RIVER_TUNNEL_WARP_CHECK,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         MoveScriptToBackgroundThread2(),
         JmpIfBitSet(
             TEMP_7043_0,
             ["EVENT_3489_fade_out_to_black_async_duration_51"],
-            identifier="EVENT_3489_jmp_if_bit_set_8",
-        ),
+            identifier="EVENT_3489_jmp_if_bit_set_8"),
         EnableControlsUntilReturn([]),
         Pause(1),
         Set7000ToTappedButton(),
@@ -47,14 +44,12 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_1,
             subscript=[ASFaceWest()],
-            identifier="EVENT_3489_action_queue_sync_21",
-        ),
+            identifier="EVENT_3489_action_queue_sync_21"),
         Jmp(["EVENT_3489_jmp_if_bit_set_8"]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[ASFaceEast()],
-            identifier="EVENT_3489_action_queue_sync_23",
-        ),
+            identifier="EVENT_3489_action_queue_sync_23"),
         Jmp(["EVENT_3489_jmp_if_bit_set_8"]),
         EnableControlsUntilReturn(
             [], identifier="EVENT_3489_enable_controls_until_return_25"
@@ -62,8 +57,7 @@ script = EventScript(
         PauseActionScript(MARIO),
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASSetSpriteSequence(index=4, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=4, is_sequence=True, looping=True)]),
         SetVarToConst(SECONDARY_TEMP_7024, 0),
         EnableControlsUntilReturn(
             [], identifier="EVENT_3489_enable_controls_until_return_29"
@@ -75,8 +69,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTER),
                 ASWalkNorthPixels(3),
                 ASSetWalkingSpeed(SLOW),
-            ],
-        ),
+            ]),
         Inc(SECONDARY_TEMP_7024),
         JmpIfVarEqualsConst(
             SECONDARY_TEMP_7024, 5, ["EVENT_3489_enable_controls_until_return_44"]
@@ -107,16 +100,14 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTER),
                 ASWalkSouthPixels(3),
                 ASSetWalkingSpeed(SLOW),
-            ],
-        ),
+            ]),
         EndLoop(),
         ResumeActionScript(MARIO),
         Jmp(["EVENT_3489_jmp_if_bit_set_8"]),
         FadeOutToBlack(
             sync=False,
             duration=30,
-            identifier="EVENT_3489_fade_out_to_black_async_duration_51",
-        ),
+            identifier="EVENT_3489_fade_out_to_black_async_duration_51"),
         StopSound(),
         EnableControls([]),
         EnterArea(
@@ -125,8 +116,7 @@ script = EventScript(
             x=13,
             y=16,
             z=3,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

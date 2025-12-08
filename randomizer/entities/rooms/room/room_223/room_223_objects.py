@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularClone(
         occupant=DingalingGridplane,
@@ -53,8 +52,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         y_shift=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularClone(
         occupant=DingalingGridplane,
@@ -71,6 +69,5 @@ objects = [
         priority_2=True,
         show_shadow=False,
         y_shift=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

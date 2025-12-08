@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         PlaySound(sound=SO000_SILENCE, channel=6),
         Return(),
     ]

@@ -12,5 +12,4 @@ from randomizer.types.overworld_scripts.arguments import (
     SOUTH,
     SOUTHEAST,
     EAST,
-    NORTHEAST,
-)
+    NORTHEAST)

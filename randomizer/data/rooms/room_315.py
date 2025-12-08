@@ -53,8 +53,7 @@ room = Room(
             dst_z=7,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -83,8 +82,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.SEASIDE_TOWN_FAKE_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -111,8 +109,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.SEASIDE_TOWN_FAKE_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -139,8 +136,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.SEASIDE_TOWN_FAKE_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -167,8 +163,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.BANDANA_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -195,8 +190,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.BANDANA_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -223,8 +217,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC,
             initiator=EventInitiator.NONE,
@@ -251,8 +244,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.YARIDOVICH_OUT_OF_BATTLE_NPC,
             initiator=EventInitiator.NONE,
@@ -279,8 +271,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.JONATHAN_JONES_NPC_2,
             initiator=EventInitiator.NONE,
@@ -307,7 +298,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

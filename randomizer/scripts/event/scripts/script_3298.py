@@ -15,8 +15,7 @@ script = EventScript(
                 ASShiftZUpPixels(2),
                 ASEndLoop(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Pause(50),
         EnterArea(
             room_id=R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS,
@@ -24,8 +23,7 @@ script = EventScript(
             x=23,
             y=33,
             z=7,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -35,8 +33,7 @@ script = EventScript(
                 ASEndLoop(),
                 ASFloatingOn(),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

@@ -1,35 +1,29 @@
 """NPC placeholder classes that are intended to be filled by shuffled bosses and henchmen."""
 
-from typing import List, Optional, Type, Union
 from randomizer.entities.bosses.henchmen import (
     BirdettaEggbert,
     CzarHelio,
     DefaultMicrobomb,
     HidonGoombette,
-    KingCalamariTinyBloober,
-)
+    KingCalamariTinyBloober)
 
 from randomizer.types.bosses import (
     Boss,
     Henchman,
     Battlefields,
     HenchmanType,
-    SpriteSize,
-)
+    SpriteSize)
 from randomizer.types.numbers import UInt16
 from randomizer.types.overworld_scripts.arguments import NPC_0
 from randomizer.types.overworld_scripts.arguments.types import AreaObject
 from randomizer.types.overworld_scripts.ids import (
     TOTAL_DIALOGS,
     TOTAL_ROOMS,
-    R000_DEBUG_ROOM,
-)
+    R000_DEBUG_ROOM)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
-    TOTAL_SCRIPTS as TOTAL_EVENTS,
-)
+    TOTAL_SCRIPTS as TOTAL_EVENTS)
 from randomizer.types.overworld_scripts.action_scripts.ids import (
-    TOTAL_SCRIPTS as TOTAL_ACTIONS,
-)
+    TOTAL_SCRIPTS as TOTAL_ACTIONS)
 
 
 class ModelFill:
@@ -38,17 +32,17 @@ class ModelFill:
     _room_id: int = 0
     _fill_type: HenchmanType = HenchmanType.NPC_ONLY
     _npc: AreaObject = NPC_0
-    _event_id: Optional[int] = None
+    _event_id: int | None = None
     _minigames_only: bool = False
     _repeatable_allowed: bool = True
     _remove_if_empty: bool = False
-    _occupant: Optional[Union[Type[Boss], Type[Henchman]]] = None
+    _occupant: type[Boss] | type[Henchman] | None = None
     _preferred_size: SpriteSize = SpriteSize.SMALL
-    _affected_dialog_ids: List[int] = []
-    _affected_event_scripts: List[int]
-    _affected_action_scripts: List[int]
-    _sequence_setter: Optional[int] = None
-    _battlefield: Optional[Battlefields] = None
+    _affected_dialog_ids: list[int] = []
+    _affected_event_scripts: list[int]
+    _affected_action_scripts: list[int]
+    _sequence_setter: int | None = None
+    _battlefield: Battlefields | None = None
     _can_run_away: bool = False
     _prefer_uncloneable: bool = False
     _prefer_south_only: bool = False
@@ -87,14 +81,14 @@ class ModelFill:
         self._npc = npc
 
     @property
-    def event_id(self) -> Optional[UInt16]:
+    def event_id(self) -> UInt16 | None:
         """IF this NPC is to run an event, this is the ID of the event it will run.
         It is encouraged to use event const names for this."""
         if self._event_id is None:
             return self._event_id
         return UInt16(self._event_id)
 
-    def set_event_id(self, event_id: Optional[int]) -> None:
+    def set_event_id(self, event_id: int | None) -> None:
         """IF this NPC is to run an event, this is the ID of the event it will run.
         It is encouraged to use event const names for this."""
         if event_id is not None:
@@ -137,12 +131,12 @@ class ModelFill:
         self._remove_if_empty = remove_if_empty
 
     @property
-    def occupant(self) -> Optional[Union[Type[Boss], Type[Henchman]]]:
+    def occupant(self) -> type[Boss] | type[Henchman] | None:
         """The boss or henchman object which should fill this placeholder."""
         return self._occupant
 
     def set_occupant(
-        self, occupant: Optional[Union[Type[Boss], Type[Henchman]]]
+        self, occupant: type[Boss] | type[Henchman] | None
     ) -> None:
         """Set the boss or henchman object which should fill this placeholder."""
         self._occupant = occupant
@@ -165,7 +159,7 @@ class ModelFill:
         self._preferred_size = preferred_size
 
     @property
-    def affected_dialog_ids(self) -> List[int]:
+    def affected_dialog_ids(self) -> list[int]:
         """A list of dialogs which would need to be changed depending on which boss
         or henchman occupies this placeholder.
         It is recommended to use dialog const names for this."""
@@ -173,14 +167,14 @@ class ModelFill:
             assert 0 <= dialog_id <= TOTAL_DIALOGS
         return self._affected_dialog_ids
 
-    def set_affected_dialog_ids(self, affected_dialog_ids: List[int]) -> None:
+    def set_affected_dialog_ids(self, affected_dialog_ids: list[int]) -> None:
         """Overwrite the list of dialogs which would need to be changed depending on which boss
         or henchman occupies this placeholder.
         It is recommended to use dialog const names for this."""
         self._affected_dialog_ids = affected_dialog_ids
 
     @property
-    def affected_event_scripts(self) -> List[int]:
+    def affected_event_scripts(self) -> list[int]:
         """A list of event scripts which would need to be changed depending on which boss
         or henchman occupies this placeholder.
         It is recommended to use event script const names for this."""
@@ -188,14 +182,14 @@ class ModelFill:
             assert 0 <= dialog_id <= TOTAL_EVENTS
         return self._affected_event_scripts
 
-    def set_affected_event_scripts(self, affected_event_scripts: List[int]) -> None:
+    def set_affected_event_scripts(self, affected_event_scripts: list[int]) -> None:
         """Overwrite the list of event scripts which would need to be changed depending on which
         boss or henchman occupies this placeholder.
         It is recommended to use event script const names for this."""
         self._affected_event_scripts = affected_event_scripts
 
     @property
-    def affected_action_scripts(self) -> List[int]:
+    def affected_action_scripts(self) -> list[int]:
         """A list of action scripts which would need to be changed depending on which boss
         or henchman occupies this placeholder.
         It is recommended to use action script const names for this."""
@@ -203,14 +197,14 @@ class ModelFill:
             assert 0 <= dialog_id <= TOTAL_ACTIONS
         return self._affected_action_scripts
 
-    def set_affected_action_scripts(self, affected_action_scripts: List[int]) -> None:
+    def set_affected_action_scripts(self, affected_action_scripts: list[int]) -> None:
         """Overwrite the list of action scripts which would need to be changed depending on which
         boss or henchman occupies this placeholder.
         It is recommended to use action script const names for this."""
         self._affected_action_scripts = affected_action_scripts
 
     @property
-    def sequence_setter(self) -> Optional[UInt16]:
+    def sequence_setter(self) -> UInt16 | None:
         """The event ID that is responsible for setting the sequences of specific NPCs in the room,
         before the room loads, if the NPC is supposed to display a default sequence other than 0.
         It is recommended to use event script const names for this."""
@@ -218,7 +212,7 @@ class ModelFill:
             return self._sequence_setter
         return UInt16(self._sequence_setter)
 
-    def set_sequence_setter(self, sequence_setter: Optional[int]) -> None:
+    def set_sequence_setter(self, sequence_setter: int | None) -> None:
         """The event ID that is responsible for setting the sequences of specific NPCs in the room,
         before the room loads, if the NPC is supposed to display a default sequence other than 0.
         It is recommended to use event script const names for this."""
@@ -227,12 +221,12 @@ class ModelFill:
         self._sequence_setter = sequence_setter
 
     @property
-    def battlefield(self) -> Optional[Battlefields]:
+    def battlefield(self) -> Battlefields | None:
         """An optional specific battlefield to be force-loaded by this placeholder,
         if the placeholder is expected to launch a battle."""
         return self._battlefield
 
-    def set_battlefield(self, battlefield: Optional[Battlefields] = None) -> None:
+    def set_battlefield(self, battlefield: Battlefields | None = None) -> None:
         """Set an optional specific battlefield to be force-loaded by this placeholder,
         if the placeholder is expected to launch a battle."""
         self._battlefield = battlefield
@@ -279,21 +273,20 @@ class ModelFill:
         fill_type: HenchmanType = HenchmanType.NPC_ONLY,
         room_id: int = R000_DEBUG_ROOM,
         npc: AreaObject = NPC_0,
-        event_id: Optional[int] = None,
-        occupant: Optional[Union[Type[Boss], Type[Henchman]]] = None,
+        event_id: int | None = None,
+        occupant: type[Boss] | type[Henchman] | None = None,
         preferred_size: SpriteSize = SpriteSize.SMALL,
         minigames_only: bool = False,
         repeatable_allowed: bool = False,
         remove_if_empty: bool = False,
-        affected_dialog_ids: Optional[List[int]] = None,
-        affected_event_scripts: Optional[List[int]] = None,
-        affected_action_scripts: Optional[List[int]] = None,
-        sequence_setter: Optional[int] = None,
-        battlefield: Optional[Battlefields] = None,
+        affected_dialog_ids: list[int] | None = None,
+        affected_event_scripts: list[int] | None = None,
+        affected_action_scripts: list[int] | None = None,
+        sequence_setter: int | None = None,
+        battlefield: Battlefields | None = None,
         can_run_away: bool = False,
         prefer_uncloneable: bool = False,
-        prefer_south_only: bool = False,
-    ):
+        prefer_south_only: bool = False):
         if affected_dialog_ids is None:
             affected_dialog_ids = []
         if affected_event_scripts is None:
@@ -325,7 +318,7 @@ class StatueFill:
 
     _room_id: int = R000_DEBUG_ROOM
     _npc: AreaObject = NPC_0
-    _sequence_setter: Optional[int] = None
+    _sequence_setter: int | None = None
 
     @property
     def room_id(self) -> int:
@@ -351,7 +344,7 @@ class StatueFill:
         self._npc = npc
 
     @property
-    def sequence_setter(self) -> Optional[UInt16]:
+    def sequence_setter(self) -> UInt16 | None:
         """The event ID that is responsible for setting the sequences of specific NPCs in the room,
         before the room loads, if the NPC is supposed to display a default sequence other than 0.
         It is recommended to use event script const names for this."""
@@ -359,7 +352,7 @@ class StatueFill:
             return self._sequence_setter
         return UInt16(self._sequence_setter)
 
-    def set_sequence_setter(self, sequence_setter: Optional[int]) -> None:
+    def set_sequence_setter(self, sequence_setter: int | None) -> None:
         """The event ID that is responsible for setting the sequences of specific NPCs in the room,
         before the room loads, if the NPC is supposed to display a default sequence other than 0.
         It is recommended to use event script const names for this."""
@@ -368,7 +361,7 @@ class StatueFill:
         self._sequence_setter = sequence_setter
 
     def __init__(
-        self, room_id: int, npc: AreaObject, sequence_setter: Optional[int] = None
+        self, room_id: int, npc: AreaObject, sequence_setter: int | None = None
     ):
         self.set_room_id(room_id)
         self.set_npc(npc)
@@ -379,7 +372,7 @@ class BossModelFill(ModelFill):
     """Base class for a placeholder to be filled specifically by a boss,
     and not a henchman."""
 
-    def set_occupant(self, occupant: Optional[Type[Boss]]) -> None:
+    def set_occupant(self, occupant: type[Boss] | None) -> None:
         """Set the boss which should fill this placeholder."""
         super().set_occupant(occupant)
 
@@ -387,16 +380,15 @@ class BossModelFill(ModelFill):
         self,
         room_id: int = R000_DEBUG_ROOM,
         npc: AreaObject = NPC_0,
-        occupant: Optional[Union[Type[Boss], Type[Henchman]]] = None,
+        occupant: type[Boss] | type[Henchman] | None = None,
         preferred_size: SpriteSize = SpriteSize.SMALL,
         minigames_only: bool = False,
-        affected_dialog_ids: Optional[List[int]] = None,
-        affected_event_scripts: Optional[List[int]] = None,
-        affected_action_scripts: Optional[List[int]] = None,
-        sequence_setter: Optional[int] = None,
+        affected_dialog_ids: list[int] | None = None,
+        affected_event_scripts: list[int] | None = None,
+        affected_action_scripts: list[int] | None = None,
+        sequence_setter: int | None = None,
         prefer_uncloneable: bool = False,
-        prefer_south_only: bool = False,
-    ):
+        prefer_south_only: bool = False):
         if affected_dialog_ids is None:
             affected_dialog_ids = []
         if affected_event_scripts is None:
@@ -415,8 +407,7 @@ class BossModelFill(ModelFill):
             affected_action_scripts=affected_action_scripts,
             sequence_setter=sequence_setter,
             prefer_uncloneable=prefer_uncloneable,
-            prefer_south_only=prefer_south_only,
-        )
+            prefer_south_only=prefer_south_only)
 
 
 class UniqueHenchmanFill(ModelFill):
@@ -424,7 +415,7 @@ class UniqueHenchmanFill(ModelFill):
     (such as a named Axem Ranger), and not a boss, nor a repeatable henchmen
     (such as a pogo Shy Guy)."""
 
-    def set_occupant(self, occupant: Optional[Type[Henchman]]) -> None:
+    def set_occupant(self, occupant: type[Henchman] | None) -> None:
         """Set the henchman which should fill this placeholder."""
         super().set_occupant(occupant)
 
@@ -432,21 +423,20 @@ class UniqueHenchmanFill(ModelFill):
         self,
         room_id: int = R000_DEBUG_ROOM,
         npc: AreaObject = NPC_0,
-        occupant: Optional[Type[Henchman]] = None,
+        occupant: type[Henchman] | None = None,
         minigames_only: bool = False,
         repeatable_allowed: bool = False,
         remove_if_empty: bool = False,
         fill_type: HenchmanType = HenchmanType.NPC_ONLY,
-        event_id: Optional[int] = None,
-        affected_dialog_ids: Optional[List[int]] = None,
-        affected_event_scripts: Optional[List[int]] = None,
-        affected_action_scripts: Optional[List[int]] = None,
-        sequence_setter: Optional[int] = None,
-        battlefield: Optional[Battlefields] = None,
+        event_id: int | None = None,
+        affected_dialog_ids: list[int] | None = None,
+        affected_event_scripts: list[int] | None = None,
+        affected_action_scripts: list[int] | None = None,
+        sequence_setter: int | None = None,
+        battlefield: Battlefields | None = None,
         can_run_away: bool = False,
         prefer_uncloneable: bool = False,
-        prefer_south_only: bool = False,
-    ):
+        prefer_south_only: bool = False):
         if affected_dialog_ids is None:
             affected_dialog_ids = []
         if affected_event_scripts is None:
@@ -470,8 +460,7 @@ class UniqueHenchmanFill(ModelFill):
             battlefield=battlefield,
             can_run_away=can_run_away,
             prefer_uncloneable=prefer_uncloneable,
-            prefer_south_only=prefer_south_only,
-        )
+            prefer_south_only=prefer_south_only)
 
 
 class RepeatableHenchmanFill(ModelFill):
@@ -479,7 +468,7 @@ class RepeatableHenchmanFill(ModelFill):
     which has no narrative restrictions, such as a pogo Shy Guy from the occupied
     Mushroom Kingdom, as opposed to a unique character such as Axem Green."""
 
-    def set_occupant(self, occupant: Optional[Type[Henchman]]) -> None:
+    def set_occupant(self, occupant: type[Henchman] | None) -> None:
         """Set the henchman which should fill this placeholder."""
         super().set_occupant(occupant)
 
@@ -487,20 +476,19 @@ class RepeatableHenchmanFill(ModelFill):
         self,
         room_id: int = R000_DEBUG_ROOM,
         npc: AreaObject = NPC_0,
-        occupant: Optional[Type[Henchman]] = None,
+        occupant: type[Henchman] | None = None,
         minigames_only: bool = False,
         remove_if_empty: bool = False,
         fill_type: HenchmanType = HenchmanType.NPC_ONLY,
-        event_id: Optional[int] = None,
-        affected_dialog_ids: Optional[List[int]] = None,
-        affected_event_scripts: Optional[List[int]] = None,
-        affected_action_scripts: Optional[List[int]] = None,
-        sequence_setter: Optional[int] = None,
-        battlefield: Optional[Battlefields] = None,
+        event_id: int | None = None,
+        affected_dialog_ids: list[int] | None = None,
+        affected_event_scripts: list[int] | None = None,
+        affected_action_scripts: list[int] | None = None,
+        sequence_setter: int | None = None,
+        battlefield: Battlefields | None = None,
         can_run_away: bool = False,
         prefer_uncloneable: bool = False,
-        prefer_south_only: bool = False,
-    ):
+        prefer_south_only: bool = False):
         if affected_dialog_ids is None:
             affected_dialog_ids = []
         if affected_event_scripts is None:
@@ -524,8 +512,7 @@ class RepeatableHenchmanFill(ModelFill):
             battlefield=battlefield,
             can_run_away=can_run_away,
             prefer_uncloneable=prefer_uncloneable,
-            prefer_south_only=prefer_south_only,
-        )
+            prefer_south_only=prefer_south_only)
 
 
 class TinyHenchmanFill(RepeatableHenchmanFill):
@@ -533,7 +520,7 @@ class TinyHenchmanFill(RepeatableHenchmanFill):
     specifically one that uses a tiny sprite. This is exclusively used to replace
     the exploding microbombs thrown by Punchinello in the Mines boss room."""
 
-    def set_occupant(self, occupant: Optional[Type[Henchman]]) -> None:
+    def set_occupant(self, occupant: type[Henchman] | None) -> None:
         """Set the henchman which should fill this placeholder."""
         if occupant not in [
             KingCalamariTinyBloober,

@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3766_BEAN_VALLEY_LOWER_CHEST_ROOM_FALL_TO_HOT_SPRINGS_MEZZANINE,
         x=27,
@@ -25,6 +24,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

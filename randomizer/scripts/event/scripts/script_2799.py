@@ -21,8 +21,7 @@ script = EventScript(
                 ASOverwriteSolidity(),
                 ASWalk1StepNortheast(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Pause(32),
         Db(bytearray(b"\xfd\x8d")),
         ApplyTileModToLevel(
@@ -38,8 +37,7 @@ script = EventScript(
             x=10,
             y=123,
             z=2,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

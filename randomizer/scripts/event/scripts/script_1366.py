@@ -22,8 +22,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -37,8 +36,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(20),
         SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
         SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -46,35 +44,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=45,
-        ),
+            mod_id=45),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=46,
-        ),
+            mod_id=46),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=39,
-        ),
+            mod_id=39),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=47,
-        ),
+            mod_id=47),
         StartLoopNTimes(79),
         JmpIfBitSet(TEMP_7043_1, ["EVENT_1366_move_script_to_main_thread_243"]),
         JmpIfBitSet(TEMP_7043_3, ["EVENT_1366_move_script_to_main_thread_243"]),
@@ -85,35 +77,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=46,
-        ),
+            mod_id=46),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=45,
-        ),
+            mod_id=45),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=36,
-        ),
+            mod_id=36),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=44,
-        ),
+            mod_id=44),
         Pause(3),
         PauseActionScript(NPC_1),
         PauseActionScript(NPC_2),
@@ -130,8 +116,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -144,8 +129,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(20),
         SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
         SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -153,35 +137,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=33,
-        ),
+            mod_id=33),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=41,
-        ),
+            mod_id=41),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=34,
-        ),
+            mod_id=34),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=35,
-        ),
+            mod_id=35),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=43,
-        ),
+            mod_id=43),
         StartLoopNTimes(59),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_1366_move_script_to_main_thread_243"]),
         JmpIfBitSet(TEMP_7043_2, ["EVENT_1366_move_script_to_main_thread_243"]),
@@ -192,35 +170,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=34,
-        ),
+            mod_id=34),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=33,
-        ),
+            mod_id=33),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=41,
-        ),
+            mod_id=41),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=40,
-        ),
+            mod_id=40),
         Pause(3),
         PauseActionScript(NPC_1),
         PauseActionScript(NPC_2),
@@ -240,8 +212,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -255,8 +226,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(20),
         SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
         SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -264,35 +234,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=41,
-        ),
+            mod_id=41),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=39,
-        ),
+            mod_id=39),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=43,
-        ),
+            mod_id=43),
         StartLoopNTimes(39),
         JmpIfBitSet(TEMP_7043_1, ["EVENT_1366_move_script_to_main_thread_243"]),
         JmpIfBitSet(TEMP_7043_2, ["EVENT_1366_move_script_to_main_thread_243"]),
@@ -303,35 +267,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=41,
-        ),
+            mod_id=41),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=36,
-        ),
+            mod_id=36),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=40,
-        ),
+            mod_id=40),
         Pause(3),
         PauseActionScript(NPC_1),
         PauseActionScript(NPC_2),
@@ -358,8 +316,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -381,8 +338,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(20),
         PlaySound(sound=SO107_DRUM_ROLL, channel=4),
         ActionQueueAsync(
@@ -397,8 +353,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(20),
         SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
         SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -406,35 +361,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=45,
-        ),
+            mod_id=45),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=46,
-        ),
+            mod_id=46),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=39,
-        ),
+            mod_id=39),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=47,
-        ),
+            mod_id=47),
         StartLoopNTimes(24),
         JmpIfBitSet(TEMP_7043_1, ["EVENT_1366_move_script_to_main_thread_243"]),
         JmpIfBitSet(TEMP_7043_3, ["EVENT_1366_move_script_to_main_thread_243"]),
@@ -445,35 +394,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=46,
-        ),
+            mod_id=46),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=45,
-        ),
+            mod_id=45),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=36,
-        ),
+            mod_id=36),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=44,
-        ),
+            mod_id=44),
         Pause(3),
         PauseActionScript(NPC_1),
         PauseActionScript(NPC_2),
@@ -484,8 +427,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASPause(5),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -500,8 +442,7 @@ script = EventScript(
                 ASPause(15),
                 ASJumpToHeight(53),
                 ASPause(15),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO107_DRUM_ROLL, channel=4),
         ActionQueueAsync(
             target=NPC_1,
@@ -516,8 +457,7 @@ script = EventScript(
                 ASWalkNortheastSteps(2),
                 ASPause(30),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -526,8 +466,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -536,8 +475,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(20),
         SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
         SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -545,35 +483,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=41,
-        ),
+            mod_id=41),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=45,
-        ),
+            mod_id=45),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=46,
-        ),
+            mod_id=46),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=43,
-        ),
+            mod_id=43),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=47,
-        ),
+            mod_id=47),
         StartLoopNTimes(14),
         JmpIfBitSet(TEMP_7043_2, ["EVENT_1366_move_script_to_main_thread_243"]),
         JmpIfBitSet(TEMP_7043_3, ["EVENT_1366_move_script_to_main_thread_243"]),
@@ -584,35 +516,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=46,
-        ),
+            mod_id=46),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=41,
-        ),
+            mod_id=41),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=45,
-        ),
+            mod_id=45),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=40,
-        ),
+            mod_id=40),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=44,
-        ),
+            mod_id=44),
         Pause(3),
         PauseActionScript(NPC_1),
         PauseActionScript(NPC_2),
@@ -631,8 +557,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -647,8 +572,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(20),
         SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
         SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -656,35 +580,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=41,
-        ),
+            mod_id=41),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=39,
-        ),
+            mod_id=39),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=43,
-        ),
+            mod_id=43),
         StartLoopNTimes(14),
         JmpIfBitSet(TEMP_7043_1, ["EVENT_1366_move_script_to_main_thread_243"]),
         JmpIfBitSet(TEMP_7043_2, ["EVENT_1366_move_script_to_main_thread_243"]),
@@ -695,35 +613,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=42,
-        ),
+            mod_id=42),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=41,
-        ),
+            mod_id=41),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=36,
-        ),
+            mod_id=36),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=40,
-        ),
+            mod_id=40),
         Pause(3),
         PauseActionScript(NPC_1),
         PauseActionScript(NPC_2),
@@ -742,8 +654,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -758,8 +669,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(20),
         SetSyncActionScript(NPC_1, A0576_CURTAIN_GAME_OPEN_CURTAIN),
         SetSyncActionScript(NPC_2, A0576_CURTAIN_GAME_OPEN_CURTAIN),
@@ -767,35 +677,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=33,
-        ),
+            mod_id=33),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=34,
-        ),
+            mod_id=34),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=35,
-        ),
+            mod_id=35),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=39,
-        ),
+            mod_id=39),
         StartLoopNTimes(29),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_1366_move_script_to_main_thread_243"]),
         JmpIfBitSet(TEMP_7043_1, ["EVENT_1366_move_script_to_main_thread_243"]),
@@ -806,35 +710,29 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=34,
-        ),
+            mod_id=34),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=38,
-        ),
+            mod_id=38),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=33,
-        ),
+            mod_id=33),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=37,
-        ),
+            mod_id=37),
         Pause(3),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=36,
-        ),
+            mod_id=36),
         Pause(3),
         PauseActionScript(NPC_1),
         PauseActionScript(NPC_2),
@@ -847,8 +745,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -858,8 +755,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(FAST),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         Pause(30),
         Jmp(["EVENT_1367_pause_action_script_0"]),
         MoveScriptToMainThread(identifier="EVENT_1366_move_script_to_main_thread_243"),
@@ -874,26 +770,22 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASWalkSoutheastSteps(2),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASWalkSoutheastSteps(2),
-            ],
-        ),
+            ]),
         Pause(30),
         ActionQueueSync(
             target=NPC_0,
@@ -902,8 +794,7 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASPause(10),
                 ASJumpToHeight(50),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -911,8 +802,7 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASPause(10),
                 ASJumpToHeight(50),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_1370_play_sound____"]),
     ]
 )

@@ -26,8 +26,7 @@ script = ActionScript(
         SetPriority(3),
         JmpIfRandom1of2(
             ["ACTION_818_set_animation_speed_19"],
-            identifier="ACTION_818_jmp_if_random_above_128_14",
-        ),
+            identifier="ACTION_818_jmp_if_random_above_128_14"),
         SetWalkingSpeed(NORMAL, identifier="ACTION_818_set_animation_speed_15"),
         FaceMario(),
         Walk1StepFDirection(),

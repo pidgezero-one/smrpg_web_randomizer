@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1106_TADPOLE_BRIDGE_SUMMON,
             x=22,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1114_SUMMON_TADPOLE_SHOPS,
             x=4,
@@ -70,8 +68,7 @@ room = Room(
             length=8,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1115_SUMMON_HINT_TADPOLE,
             x=25,
@@ -82,8 +79,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1115_SUMMON_HINT_TADPOLE,
             x=25,
@@ -94,8 +90,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -111,8 +106,7 @@ room = Room(
             destination=OW16_TADPOLE_POND,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         RoomExit(
             x=27,
             y=73,
@@ -130,8 +124,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -160,8 +153,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.TADPOLE_NPC,
             event_script=E1116_JUICE_BAR,
@@ -171,8 +163,7 @@ room = Room(
             y=49,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.TADPOLE_NPC,
             event_script=E1113_SONG_HINT_TADPOLE,
@@ -182,8 +173,7 @@ room = Room(
             y=43,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -193,8 +183,7 @@ room = Room(
             y=45,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -204,8 +193,7 @@ room = Room(
             y=39,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -215,8 +203,7 @@ room = Room(
             y=41,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -226,8 +213,7 @@ room = Room(
             y=35,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.TADPOLE_NPC,
             event_script=E1114_SUMMON_TADPOLE_SHOPS,
@@ -237,8 +223,7 @@ room = Room(
             y=37,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.FROGFUCIUS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -265,8 +250,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -294,7 +278,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

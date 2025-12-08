@@ -25,8 +25,7 @@ script = EventScript(
                 ASPause(5),
                 ASSequenceLoopingOff(),
             ],
-            identifier="EVENT_1583_action_queue_sync_6",
-        ),
+            identifier="EVENT_1583_action_queue_sync_6"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -57,8 +56,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_1583_action_queue_async_7_SUBSCRIPT_pause_21"]
                 ),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

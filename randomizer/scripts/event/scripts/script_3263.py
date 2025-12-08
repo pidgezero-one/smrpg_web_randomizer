@@ -10,8 +10,7 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE,
-            mod_id=0,
-        ),
+            mod_id=0),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         SetBit(TEMP_7043_0),
         Return(identifier="EVENT_3263_ret_4"),

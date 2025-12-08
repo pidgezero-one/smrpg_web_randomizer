@@ -12,8 +12,7 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 )
-            ],
-        ),
+            ]),
         StartAsyncEmbeddedActionScript(
             target=NPC_0,
             prefix=0xF1,
@@ -22,24 +21,20 @@ script = EventScript(
                 ASJumpToHeight(height=0, silent=True),
                 ASPause(
                     1,
-                    identifier="EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_pause_2",
-                ),
+                    identifier="EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_pause_2"),
                 ASJmpIfObjectInAir(
                     NPC_0,
                     [
                         "EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_pause_2"
-                    ],
-                ),
-            ],
-        ),
+                    ]),
+            ]),
         RunDialog(
             dialog_id=DI0541_JUMPING_KID,
             above_object=MEM_70A8,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(["EVENT_303_run_event_as_subroutine_12"]),
         RunEventAsSubroutine(E3587_SET_70AE_TO_70A8),
         SetAsyncActionScript(MARIO, A0670_NOD_YES),
@@ -50,24 +45,21 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 )
-            ],
-        ),
+            ]),
         Return(),
         RunEventAsSubroutine(
             E3587_SET_70AE_TO_70A8, identifier="EVENT_303_run_event_as_subroutine_12"
@@ -84,8 +76,7 @@ script = EventScript(
                 ASMem700CAndConst(0x0007),
                 ASFixedFCoordOff(),
                 ASFaceEast7C(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -96,8 +87,7 @@ script = EventScript(
                 ASJmpIfObjectInAir(
                     NPC_0, ["EVENT_303_action_queue_async_16_SUBSCRIPT_pause_1"]
                 ),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_0, A0015_DO_NOTHING),
         RunDialog(
             dialog_id=DI0546_THANKS_A_BUNCH,
@@ -105,24 +95,21 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 )
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

@@ -23,8 +23,7 @@ script = EventScript(
                 ASJumpToHeight(height=192, silent=True),
                 ASWalk1StepSouth(),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_1648_pause_11"),
         JmpIfMarioInAir(["EVENT_1648_pause_11"]),
         PlaySound(sound=SO058_INSERT, channel=6),
@@ -39,8 +38,7 @@ script = EventScript(
             x=28,
             y=39,
             z=4,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

@@ -8,8 +8,7 @@ script = EventScript(
     [
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASObjectMemoryClearBit(arg_1=0x0C, bits=[3, 4, 5]), ASPause(1)],
-        ),
+            subscript=[ASObjectMemoryClearBit(arg_1=0x0C, bits=[3, 4, 5]), ASPause(1)]),
         Return(),
     ]
 )

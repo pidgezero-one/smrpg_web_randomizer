@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3619_NIMBUS_EXTERIOR_OPEN_SHOP_DOOR,
             x=11,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3622_NIMBUS_EXTERIOR_OPEN_NORTHEAST_HOUSE_DOOR,
             x=12,
@@ -70,8 +68,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3621_NIMBUS_EXTERIOR_OPEN_SOUTH_HOUSE_DOOR,
             x=15,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3620_NIMBUS_EXTERIOR_OPEN_GARROS_DOOR,
             x=25,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3645_NIMBUS_EXTERIOR_EXIT_TO_VINES,
             x=12,
@@ -106,8 +101,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3645_NIMBUS_EXTERIOR_EXIT_TO_VINES,
             x=11,
@@ -118,8 +112,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -139,8 +132,7 @@ room = Room(
             dst_z=1,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=20,
             y=36,
@@ -158,8 +150,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=13,
             y=26,
@@ -177,8 +168,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=16,
             y=64,
@@ -196,8 +186,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=5,
             y=46,
@@ -215,8 +204,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=11,
             y=46,
@@ -234,8 +222,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=25,
             y=48,
@@ -253,8 +240,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -283,8 +269,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.NIMBUSITE_BLUE_NPC,
             event_script=E3629_NIMBUS_EXTERIOR_BLUE_GUY_NEAR_SHOP,
@@ -294,8 +279,7 @@ room = Room(
             y=38,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 2
             npc=npcs.NIMBUSITE_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -322,8 +306,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.NIMBUSITE_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -350,8 +333,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 4
             npc=npcs.NIMBUSITE_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -378,8 +360,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 5
             npc=npcs.NIMBUSITE_RED_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -406,8 +387,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.NIMBUSITE_RED_NPC_2,
             event_script=E3633_NIMBUS_EXTERIOR_WOMAN_NEAR_INN,
@@ -417,8 +397,7 @@ room = Room(
             y=50,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 7
             npc=npcs.NIMBUSITE_RED_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -445,8 +424,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.NIMBUSITE_YELLOW_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -473,8 +451,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.SHY_AWAY_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -501,7 +478,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

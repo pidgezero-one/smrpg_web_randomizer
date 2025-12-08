@@ -10,16 +10,14 @@ script = EventScript(
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_7000,
             0,
-            ["EVENT_1592_summon_to_current_level_at_marios_coords_254"],
-        ),
+            ["EVENT_1592_summon_to_current_level_at_marios_coords_254"]),
         RunDialog(
             dialog_id=DI1235_BELOME_STATUE_KEY_HINT,
             above_object=MARIO,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         SummonObjectToCurrentLevelAtMariosCoords(
             NPC_12, identifier="EVENT_1592_summon_to_current_level_at_marios_coords_254"
@@ -47,8 +45,7 @@ script = EventScript(
                 ASShiftZUpPixels(4),
                 ASSetWalkingSpeed(NORMAL),
                 ASShiftZUpPixels(2),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_16,
             subscript=[
@@ -58,8 +55,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASPause(10),
                 ASSetSpriteSequence(index=3, looping=False),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_12),
         Pause(60),
         PlaySound(sound=SO021_RUMBLING, channel=6),
@@ -84,14 +80,12 @@ script = EventScript(
                 ASPause(1),
                 ASEndLoop(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         RemoveOneOfItemFromInventory(TempleKey),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         SetBit(TEMPLE_KEY_USED),
         Return(),
     ]

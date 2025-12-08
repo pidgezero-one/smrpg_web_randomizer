@@ -3,8 +3,7 @@
 """bank 0x3Axxxx export"""
 
 from randomizer.types.battle_animation_scripts.types import (
-    AnimationScriptBankCollection,
-)
+    AnimationScriptBankCollection)
 from .battle_events.bank import bank as battle_events
 from .subroutines.export_0x3A711F import bank as subroutine_0x3A711F
 from .subroutines.export_0x3A71DA import bank as subroutine_0x3A71DA

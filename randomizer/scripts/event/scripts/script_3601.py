@@ -22,8 +22,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Pause(10),
         SetAsyncActionScript(MARIO, A0670_NOD_YES),
         Pause(10),
@@ -36,13 +35,11 @@ script = EventScript(
                 ASWalkNortheastSteps(1),
                 ASWalkToXYCoords(x=13, y=84),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         RunBackgroundEvent(
             event_id=E0465_MUSHROOM_DERBY_BUSINESS_LOGIC,
             return_on_level_exit=True,
-            bit_7=True,
-        ),
+            bit_7=True),
         Pause(1, identifier="EVENT_3601_pause_18"),
         JmpIfAudioMemoryEquals(3, ["EVENT_3601_pause_18"]),
         ActionQueueAsync(
@@ -51,8 +48,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=2, sprite_offset=3, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         SetSyncActionScript(SCREEN_FOCUS, A0801_MUSHROOM_DERBY_UNKNOWN),
         SetAsyncActionScript(MARIO, A0636_54_VELOCITY_SINGLE_JUMP),
         Pause(10),
@@ -64,8 +60,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASWalkNortheastSteps(5),
                 ASFaceWest(),
-            ],
-        ),
+            ]),
         Pause(1),
         CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 17),
@@ -73,8 +68,7 @@ script = EventScript(
         SetAsyncActionScript(
             MARIO,
             A0798_MUSHROOM_DERBY_UNKNOWN,
-            identifier="EVENT_3601_set_action_script_async_29",
-        ),
+            identifier="EVENT_3601_set_action_script_async_29"),
         SetSyncActionScript(SCREEN_FOCUS, A0801_MUSHROOM_DERBY_UNKNOWN),
         ActionQueueAsync(
             target=MARIO,
@@ -86,8 +80,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
                 ASFaceWest(),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_3601_pause_32"),
         CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 12),
@@ -96,8 +89,7 @@ script = EventScript(
         SetAsyncActionScript(
             MARIO,
             A0798_MUSHROOM_DERBY_UNKNOWN,
-            identifier="EVENT_3601_set_action_script_async_37",
-        ),
+            identifier="EVENT_3601_set_action_script_async_37"),
         SetSyncActionScript(SCREEN_FOCUS, A0801_MUSHROOM_DERBY_UNKNOWN),
         ActionQueueAsync(
             target=MARIO,
@@ -109,8 +101,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
                 ASFaceWest(),
-            ],
-        ),
+            ]),
         Pause(1),
         CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 8),
@@ -118,8 +109,7 @@ script = EventScript(
         SetAsyncActionScript(
             MARIO,
             A0802_MUSHROOM_DERBY_UNKNOWN,
-            identifier="EVENT_3601_set_action_script_async_44",
-        ),
+            identifier="EVENT_3601_set_action_script_async_44"),
         Pause(1, identifier="EVENT_3601_pause_45"),
         JmpIfVarEqualsConst(Z_COORD_1, 0, ["EVENT_3601_clear_bit_48"]),
         Jmp(["EVENT_3601_pause_45"]),
@@ -138,8 +128,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=9, sprite_offset=2, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         SetSyncActionScript(MARIO, A0677_MUSHROOM_DERBY_UNKNOWN),
         SetSyncActionScript(NPC_9, A0677_MUSHROOM_DERBY_UNKNOWN),
         Jmp(["EVENT_3600_action_queue_sync_21"]),

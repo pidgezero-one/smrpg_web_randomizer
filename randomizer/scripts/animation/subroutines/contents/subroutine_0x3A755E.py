@@ -152,5 +152,4 @@ script = SubroutineOrBanklessScript(
         SetAMEMBits(0x68, [4]),
         Set7E1xToAMEM8Bit(0x7EE01C, 0x68),
         ReturnSubroutine(),
-    ],
-)
+    ])

@@ -7,8 +7,7 @@ script = ActionScript(
         SetSolidityBits(
             bit_0=True,
             cant_pass_walls=True,
-            identifier="ACTION_317_set_solidity_bits_0",
-        ),
+            identifier="ACTION_317_set_solidity_bits_0"),
         SetVarToConst(TEMP_70AE, 21),
         Walk1StepNorthwest(),
         AddZCoord1Step(),

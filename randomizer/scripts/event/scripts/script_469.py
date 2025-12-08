@@ -14,8 +14,7 @@ script = EventScript(
         ),
         EnableControlsUntilReturn(
             [LEFT, RIGHT, DOWN, UP],
-            identifier="EVENT_469_enable_controls_until_return_4",
-        ),
+            identifier="EVENT_469_enable_controls_until_return_4"),
         ActionQueueAsync(target=NPC_9, subscript=[ASTransferToObjectXY(MARIO)]),
         SetSyncActionScript(NPC_9, A0505_SLOW_SEQUENCE_LOOP),
         Set7000ToPressedButton(identifier="EVENT_469_set_7000_to_pressed_button_7"),
@@ -55,8 +54,7 @@ script = EventScript(
                 ASSet700CToObjectCoord(target_npc=MARIO, coord=COORD_F, pixel=True),
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=ROSE_WAY_703E),
             ],
-            identifier="EVENT_469_action_queue_async_20",
-        ),
+            identifier="EVENT_469_action_queue_async_20"),
         Db(bytearray(b"\xc7\x80")),
         CopyVarToVar(from_var=Z_COORD_2, to_var=PRIMARY_TEMP_7000),
         JmpIfVarNotEqualsConst(
@@ -77,8 +75,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASRunAwayShift()],
-            identifier="EVENT_469_action_queue_async_30",
-        ),
+            identifier="EVENT_469_action_queue_async_30"),
         CopyVarToVar(from_var=ROSE_WAY_703E, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 4),
         Mem7000AndConst(0x0007),
@@ -103,8 +100,7 @@ script = EventScript(
         SetSyncActionScript(
             NPC_9,
             A0498_MUSHROOM_DERBY_UNKNOWN,
-            identifier="EVENT_469_set_action_script_sync_48",
-        ),
+            identifier="EVENT_469_set_action_script_sync_48"),
         SetSyncActionScript(MARIO, A0497_MUSHROOM_DERBY_UNKNOWN),
         UnsyncActionScript(MARIO),
         Pause(1, identifier="EVENT_469_pause_51"),
@@ -200,8 +196,7 @@ script = EventScript(
                     bits=[],
                     destinations=[
                         "EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_equals_short_5"
-                    ],
-                ),
+                    ]),
                 ASJmp(["EVENT_469_pause_102"]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
@@ -209,30 +204,26 @@ script = EventScript(
                     [
                         "EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_11"
                     ],
-                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_equals_short_5",
-                ),
+                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_equals_short_5"),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     5,
                     [
                         "EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_14"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     PRIMARY_TEMP_700C,
                     7,
                     [
                         "EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_17"
-                    ],
-                ),
+                    ]),
                 ASSetSequenceSpeed(FAST),
                 ASSetSpriteSequence(
                     index=3,
                     sprite_offset=2,
                     is_sequence=True,
                     looping=False,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASJmp(
                     [
                         "EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_pause_19"
@@ -240,8 +231,7 @@ script = EventScript(
                 ),
                 ASSetSequenceSpeed(
                     FAST,
-                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_11",
-                ),
+                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_11"),
                 ASSetSpriteSequence(
                     index=3, sprite_offset=2, is_sequence=True, looping=False
                 ),
@@ -252,8 +242,7 @@ script = EventScript(
                 ),
                 ASSetSequenceSpeed(
                     FAST,
-                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_14",
-                ),
+                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_14"),
                 ASSetSpriteSequence(
                     index=13, sprite_offset=1, is_sequence=True, looping=False
                 ),
@@ -264,22 +253,18 @@ script = EventScript(
                 ),
                 ASSetSequenceSpeed(
                     FAST,
-                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_17",
-                ),
+                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_17"),
                 ASSetSpriteSequence(
                     index=13,
                     sprite_offset=1,
                     is_sequence=True,
                     looping=False,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(
                     34,
-                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_pause_19",
-                ),
+                    identifier="EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_pause_19"),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_469_pause_102"),
         JmpIfMarioInAir(["EVENT_469_pause_102"]),
         RememberLastObject(),

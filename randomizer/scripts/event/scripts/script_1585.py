@@ -76,8 +76,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=X_COORD_2,
             to_var=Y_COORD_2,
-            identifier="EVENT_1585_copy_var_to_var_67",
-        ),
+            identifier="EVENT_1585_copy_var_to_var_67"),
         VarShiftLeft(X_COORD_2, 8),
         SetVarToConst(Z_COORD_2, 10),
         ActionQueueAsync(
@@ -86,8 +85,7 @@ script = EventScript(
                 ASDb(bytearray(b"\x9a")),
                 ASVisibilityOn(),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         SetSyncActionScript(MEM_70AB, A0163_MIDAS_SMALL_COIN),
         Inc(TEMP_70AB),
         Pause(2),

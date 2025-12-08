@@ -14,5 +14,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6F, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
         ReturnObjectQueue(),
-    ],
-)
+    ])

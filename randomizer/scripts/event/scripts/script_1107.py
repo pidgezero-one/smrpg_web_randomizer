@@ -16,8 +16,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASPause(1),
             ],
-            identifier="EVENT_1107_action_queue_async_0",
-        ),
+            identifier="EVENT_1107_action_queue_async_0"),
         Jmp(["EVENT_1107_set_7000_to_object_coord_10"]),
         Set7000ToTappedButton(identifier="EVENT_1107_set_7000_to_tapped_button_2"),
         Pause(1),
@@ -36,8 +35,7 @@ script = EventScript(
             coord=COORD_X,
             pixel=True,
             bit_7=True,
-            identifier="EVENT_1107_set_7000_to_object_coord_10",
-        ),
+            identifier="EVENT_1107_set_7000_to_object_coord_10"),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 20, ["EVENT_1107_enable_controls_until_return_20"]
         ),
@@ -56,8 +54,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASPause(1),
                 ASReturn(),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_1107_set_7000_to_tapped_button_2"]),
         ActionQueueAsync(
             target=MARIO,
@@ -75,16 +72,14 @@ script = EventScript(
                 ASShadowOff(),
                 ASReturn(),
             ],
-            identifier="EVENT_1107_action_queue_async_14",
-        ),
+            identifier="EVENT_1107_action_queue_async_14"),
         Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_X, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 12, ["EVENT_1105_action_queue_sync_49"]),
         Jmp(["EVENT_1107_set_7000_to_tapped_button_2"]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASShadowOn(), ASJumpToHeight(80), ASPause(24), ASShadowOff()],
-            identifier="EVENT_1107_action_queue_async_18",
-        ),
+            identifier="EVENT_1107_action_queue_async_18"),
         Jmp(["EVENT_1107_set_7000_to_tapped_button_2"]),
         EnableControlsUntilReturn(
             [], identifier="EVENT_1107_enable_controls_until_return_20"
@@ -103,8 +98,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetWalkingSpeed(NORMAL),
                 ASReturn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -113,8 +107,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASWalkNortheastPixels(22),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_7, A0157_MELODY_BAY_TADPOLES),
         Pause(5),
         SetSyncActionScript(NPC_6, A0157_MELODY_BAY_TADPOLES),

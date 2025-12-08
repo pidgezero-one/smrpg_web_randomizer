@@ -17,8 +17,7 @@ script = ActionScript(
         Pause(48, identifier="ACTION_845_pause_7"),
         JmpIfRandom1of2(
             ["ACTION_845_start_loop_n_times_22"],
-            identifier="ACTION_845_jmp_if_random_above_128_8",
-        ),
+            identifier="ACTION_845_jmp_if_random_above_128_8"),
         StartLoopNTimes(2),
         SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True),
         Pause(2),

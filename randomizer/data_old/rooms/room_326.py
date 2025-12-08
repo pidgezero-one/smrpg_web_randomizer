@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     music=Music._15_HERES_SOME_WEAPONS,
     entrance_event=368,
     event_tiles=[
@@ -70,8 +64,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=372,
             x=15,
@@ -82,8 +75,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=373,
             x=14,
@@ -94,8 +86,7 @@ room = Room(
             length=9,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=373,
             x=14,
@@ -106,8 +97,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=373,
             x=17,
@@ -118,8 +108,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=413,
             x=16,
@@ -130,8 +119,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=413,
             x=17,
@@ -142,8 +130,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=414,
             x=16,
@@ -154,8 +141,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC(  # 0
@@ -188,8 +174,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 1
             occupant=npcs.BlueStarPiece,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -220,8 +205,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 2
             occupant=npcs.SparkleDown,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -252,8 +236,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 3
             occupant=npcs.MackLarge,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -285,8 +268,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 4
             occupant=npcs.Shyster,
             initiator=Initiator.JUMP_ON,
@@ -318,8 +300,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
         RegularClone(  # 5
             occupant=npcs.Shyster,
             event_script=366,
@@ -334,8 +315,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
         RegularClone(  # 6
             occupant=npcs.Shyster,
             event_script=367,
@@ -350,8 +330,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
         RegularClone(  # 7
             occupant=npcs.Shyster,
             event_script=367,
@@ -366,8 +345,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             cannot_clone=False,
-            y_shift=1,
-        ),
+            y_shift=1),
         RegularNPC(  # 8
             occupant=npcs.Shyster,
             initiator=Initiator.JUMP_ON,
@@ -402,8 +380,7 @@ room = Room(
             acute_axis=3,
             obtuse_axis=3,
             height=11,
-            y_shift=1,
-        ),
+            y_shift=1),
         RegularClone(  # 9
             occupant=npcs.Shyster,
             event_script=367,
@@ -421,8 +398,7 @@ room = Room(
             acute_axis=3,
             obtuse_axis=3,
             height=11,
-            y_shift=1,
-        ),
+            y_shift=1),
         RegularNPC(  # 10
             occupant=npcs.Chancellor,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -453,7 +429,5 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
-    ],
-)
+            cannot_clone=False),
+    ])

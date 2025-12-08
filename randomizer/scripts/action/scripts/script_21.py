@@ -49,8 +49,7 @@ script = ActionScript(
         CopyVarToVar(
             from_var=TEMP_70AE,
             to_var=PRIMARY_TEMP_700C,
-            identifier="ACTION_21_set_700C_to_70A0_short_mem_40",
-        ),
+            identifier="ACTION_21_set_700C_to_70A0_short_mem_40"),
         CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_702C),
         CompareVarToConst(TEMP_702C, 28),
         JmpIfComparisonResultIsGreaterOrEqual(["ACTION_21_set_48"]),

@@ -17,5 +17,4 @@ room = Room(
         ExtraSpriteActions.LEAN_BACK_2,
         ExtraSpriteActions.LEAN_BACK,
         ExtraSpriteActions.CLIMB_FRAME,
-    ],
-)
+    ])

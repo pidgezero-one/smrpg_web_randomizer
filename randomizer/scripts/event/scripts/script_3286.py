@@ -19,8 +19,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         RunDialog(
             dialog_id=DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER,
@@ -29,13 +28,11 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_3286_run_dialog_4",
-        ),
+            identifier="EVENT_3286_run_dialog_4"),
         Return(),
         EnableControlsUntilReturn(
             [LEFT, RIGHT, DOWN, UP, X, A, Y, B],
-            identifier="EVENT_3286_enable_controls_until_return_6",
-        ),
+            identifier="EVENT_3286_enable_controls_until_return_6"),
         StartLoopNTimes(59),
         Pause(1),
         JmpIfMarioInAir(["EVENT_3286_ret_13"]),
@@ -47,8 +44,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(identifier="EVENT_3286_ret_13"),
     ]
 )

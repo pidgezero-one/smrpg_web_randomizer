@@ -37,8 +37,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=2,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=AlleyRat,
@@ -71,8 +70,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=Bloober,
@@ -108,8 +106,7 @@ objects = [
         y_shift=1,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_3
     RegularNPC(
         occupant=Stinger,
@@ -143,8 +140,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         directions=VramStore.DIR0_SWSE_NWNE,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=Geckit,
@@ -177,6 +173,5 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

@@ -14,8 +14,7 @@ script = EventScript(
             subscript=[
                 ASTransferXYZFSteps(x=0, y=0, z=16, direction=EAST),
                 ASJumpToHeight(height=0, silent=True),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_3323_jmp_if_bit_set_0"]),
     ]
 )

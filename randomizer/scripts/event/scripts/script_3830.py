@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         RunDialog(
             dialog_id=DI3746_RARE_FROG_COIN_HINT,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_3830_run_dialog_14",
-        ),
+            identifier="EVENT_3830_run_dialog_14"),
         Return(),
     ]
 )

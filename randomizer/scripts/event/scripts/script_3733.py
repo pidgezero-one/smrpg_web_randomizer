@@ -22,8 +22,7 @@ script = EventScript(
         JmpIfObjectInCurrentLevel(
             NPC_6,
             ["EVENT_3733_play_sound_13"],
-            identifier="EVENT_3733_jmp_if_present_in_current_level_11",
-        ),
+            identifier="EVENT_3733_jmp_if_present_in_current_level_11"),
         Jmp(["EVENT_3733_summon_to_current_level_15"]),
         PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_3733_play_sound_13"),
         SetBit(INNER_FACTORY_ROOM_2_COMPLETED),

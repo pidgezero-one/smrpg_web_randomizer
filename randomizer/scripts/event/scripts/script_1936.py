@@ -16,8 +16,7 @@ script = EventScript(
                 ASShiftNorthSteps(2),
                 ASSetWalkingSpeed(NORMAL),
                 ASClearBit(TEMP_7042_0),
-            ],
-        ),
+            ]),
         SetVarToConst(TIMER_701C, 40),
         RunBackgroundEventWithPauseReturnOnExit(
             event_id=E1543_CHEST_CAMERA_SHIFT, timer_var=TIMER_701C

@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=28,
             y=30,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -102,8 +100,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.THWOMP_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -130,8 +127,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.THWOMP_NPC,
             event_script=E3372_KEEP_GET_CRUSHED_BY_HUGE_THWOMP,
@@ -141,8 +137,7 @@ room = Room(
             y=62,
             z=8,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.THWOMP_NPC,
             event_script=E3372_KEEP_GET_CRUSHED_BY_HUGE_THWOMP,
@@ -152,8 +147,7 @@ room = Room(
             y=66,
             z=8,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.THWOMP_NPC,
             event_script=E3372_KEEP_GET_CRUSHED_BY_HUGE_THWOMP,
@@ -163,8 +157,7 @@ room = Room(
             y=58,
             z=8,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 5
             npc=npcs.GOLDEN_BULLET_BILL_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -192,8 +185,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 6
             npc=npcs.GOLDEN_BULLET_BILL_NPC,
             battle_pack=117,
@@ -203,8 +195,7 @@ room = Room(
             y=35,
             z=9,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 7
             npc=npcs.GOLDEN_BULLET_BILL_NPC,
             battle_pack=116,
@@ -214,8 +205,7 @@ room = Room(
             y=35,
             z=9,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 8
             npc=npcs.GOLDEN_BULLET_BILL_NPC,
             battle_pack=117,
@@ -225,7 +215,6 @@ room = Room(
             y=35,
             z=9,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=8,
             y=115,
-            z=2,
-        ),
+            z=2),
         JmpToEvent(E1826_KEEP_INVISIBLE_FLOOR_ROOM_LOADER),
     ]
 )

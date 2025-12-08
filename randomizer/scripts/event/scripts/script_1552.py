@@ -21,8 +21,7 @@ script = EventScript(
         StartLoopNTimes(7),
         ActionQueueSync(
             target=MEM_70A9,
-            subscript=[ASClearSolidityBits(bit_4=True, cant_walk_through=True)],
-        ),
+            subscript=[ASClearSolidityBits(bit_4=True, cant_walk_through=True)]),
         Inc(TEMP_70A9),
         EndLoop(),
         ActionQueueAsync(
@@ -31,8 +30,7 @@ script = EventScript(
         SetVarToConst(TEMP_70AB, 28),
         RunBackgroundEvent(
             event_id=E1553_FOREST_TREE_TRUNK_AREA_LOADER_CONTD,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         Return(),
     ]
 )

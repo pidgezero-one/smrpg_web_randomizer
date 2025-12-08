@@ -2,8 +2,6 @@
 
 """Formation class instances."""
 
-from typing import List, Optional
-
 from randomizer.entities.enemies import (
     K9,
     AeroBowyer,
@@ -245,12 +243,10 @@ from randomizer.entities.enemies import (
     YaridovichDrillBit,
     YaridovichMirage,
     Zeostar,
-    Zombone,
-)
+    Zombone)
 from randomizer.types.battles.formations_packs.types import (
     FormationMember,
-    Formation,
-)
+    Formation)
 from randomizer.types.battles.formations_packs import (
     AxemBossFormation,
     Belome2BossFormation,
@@ -260,8 +256,7 @@ from randomizer.types.battles.formations_packs import (
     JohnnyBossFormation,
     KingCalamariBossFormation,
     MegasmilaxBossFormation,
-    ValentinaBossFormation,
-)
+    ValentinaBossFormation)
 from randomizer.types.battles.ids import (
     FORM0000_ONE_BOBOMB_HENCHMAN,
     FORM0001_FOUR_BOBOMB_HENCHMEN,
@@ -648,8 +643,7 @@ from randomizer.types.battles.ids import (
     FORM0432_SOLO_GENO_CLONE,
     FORM0433_SOLO_BOWSER_CLONE,
     FORM0434_SOLO_TOADSTOOL_CLONE,
-    TOTAL_FORMATIONS,
-)
+    TOTAL_FORMATIONS)
 from randomizer.types.battle_animation_scripts.ids import (
     BE0011_SOLO_EARTH_CRYSTAL_APPEARS,
     BE0012_DIALOGUE_FROM_BOOSTER_FIGHT,
@@ -664,11 +658,10 @@ from randomizer.types.battle_animation_scripts.ids import (
     BE0072_JINX_USES_QUICKSILVER,
     BE0073_JINX_USES_BOMBS_AWAY,
     BE0076_SOLO_FIRE_CRYSTAL_APPEARS,
-    BE0080_EXOR_FIGHT_BEGINS,
-)
+    BE0080_EXOR_FIGHT_BEGINS)
 from randomizer.types.bosses import BattleMusic, Battlefields
 
-formations: List[Optional[Formation]] = [None] * TOTAL_FORMATIONS
+formations: list[Formation | None] = [None] * TOTAL_FORMATIONS
 formations[FORM0000_ONE_BOBOMB_HENCHMAN] = Formation(
     [FormationMember(BobombHenchman, x_pos=183, y_pos=127)]
 )
@@ -1240,32 +1233,28 @@ formations[FORM0092_SPOOKUM_ORBUSER] = Formation(
         FormationMember(Spookum, x_pos=199, y_pos=135),
         FormationMember(Orbuser, x_pos=135, y_pos=119),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0093_TWO_SPOOKUM_ONE_JESTER] = Formation(
     [
         FormationMember(Spookum, x_pos=135, y_pos=119),
         FormationMember(Spookum, x_pos=199, y_pos=151),
         FormationMember(Jester, x_pos=199, y_pos=119),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0094_SPOOKUM_REMOCON_ORBUSER] = Formation(
     [
         FormationMember(Spookum, x_pos=151, y_pos=111),
         FormationMember(Remocon, x_pos=167, y_pos=151),
         FormationMember(Orbuser, x_pos=215, y_pos=127),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0095_TWO_SPOOKUM_ONE_REMOCON] = Formation(
     [
         FormationMember(Spookum, x_pos=135, y_pos=119),
         FormationMember(Spookum, x_pos=199, y_pos=151),
         FormationMember(Remocon, x_pos=199, y_pos=119),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0096_ONE_ROBOMB] = Formation(
     [
         FormationMember(Robomb, x_pos=183, y_pos=127),
@@ -2417,8 +2406,7 @@ formations[FORM0268_PANDORITE_BOSS_FIGHT] = Formation(
     [
         FormationMember(Pandorite, x_pos=183, y_pos=127),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0269_HIDON_BOSS_FIGHT] = Formation(
     [
         FormationMember(Hidon, x_pos=167, y_pos=119),
@@ -2427,32 +2415,27 @@ formations[FORM0269_HIDON_BOSS_FIGHT] = Formation(
             x_pos=135,
             y_pos=111,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Goombette,
             x_pos=135,
             y_pos=135,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Goombette,
             x_pos=167,
             y_pos=151,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Goombette,
             x_pos=215,
             y_pos=151,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0270_BOXBOY_BOSS_FIGHT] = Formation(
     [
         FormationMember(BoxBoy, x_pos=183, y_pos=127),
@@ -2461,11 +2444,9 @@ formations[FORM0270_BOXBOY_BOSS_FIGHT] = Formation(
             x_pos=151,
             y_pos=111,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0271_CHESTER_BOSS_FIGHT] = Formation(
     [
         FormationMember(Chester, x_pos=183, y_pos=127),
@@ -2474,11 +2455,9 @@ formations[FORM0271_CHESTER_BOSS_FIGHT] = Formation(
             x_pos=135,
             y_pos=119,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0272_TWO_BLUEBIRD_HENCHMEN] = Formation(
     [
         FormationMember(BluebirdHenchman, x_pos=199, y_pos=151),
@@ -2496,28 +2475,24 @@ formations[FORM0274_BOOSTER_BOSS_FIGHT] = Formation(
     run_event_at_load=BE0012_DIALOGUE_FROM_BOOSTER_FIGHT,
     music=BattleMusic.BOSS_1,
     can_run_away=False,
-    additional_enemies_to_scale=[ApprenticeHenchman],
-)
+    additional_enemies_to_scale=[ApprenticeHenchman])
 formations[FORM0275_BOOSTER_DUMMY] = Formation(
     [
         FormationMember(Booster2, 183, 127),
     ],
     music=BattleMusic.BOSS_1,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0276_SNIFIT_HENCHMAN] = Formation(
     [
         FormationMember(SnifitHenchman, x_pos=183, y_pos=127),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0277_CROCO1_BOSS_FIGHT] = Formation(
     [
         FormationMember(Croco1, x_pos=183, y_pos=127),
     ],
     music=BattleMusic.BOSS_1,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0278_CROCO2_BOSS_FIGHT] = Formation(
     [
         FormationMember(Croco2, x_pos=183, y_pos=127),
@@ -2525,16 +2500,14 @@ formations[FORM0278_CROCO2_BOSS_FIGHT] = Formation(
     run_event_at_load=BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
     music=BattleMusic.BOSS_1,
     can_run_away=False,
-    additional_enemies_to_scale=[CrookHenchman],
-)
+    additional_enemies_to_scale=[CrookHenchman])
 formations[FORM0279_FOUR_BLUEBIRD_HENCHMEN] = Formation(
     [
         FormationMember(BluebirdHenchman, x_pos=183, y_pos=143),
         FormationMember(BluebirdHenchman, x_pos=183, y_pos=111),
         FormationMember(BluebirdHenchman, x_pos=231, y_pos=135),
         FormationMember(BluebirdHenchman, x_pos=135, y_pos=119),
-    ],
-)
+    ])
 formations[FORM0280_JOHNNY_BOSS_FIGHT] = JohnnyBossFormation(
     [
         FormationMember(Johnny, x_pos=183, y_pos=127),
@@ -2552,20 +2525,17 @@ formations[FORM0280_JOHNNY_BOSS_FIGHT] = JohnnyBossFormation(
             x_pos=91,
             y_pos=111,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             EmptyEnemy,
             x_pos=215,
             y_pos=181,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
     music=BattleMusic.BOSS_1,
     can_run_away=False,
-    additional_enemies_to_scale=[JohnnySolo, BandanaRedHenchman],
-)
+    additional_enemies_to_scale=[JohnnySolo, BandanaRedHenchman])
 formations[281] = None
 formations[282] = None
 formations[283] = None
@@ -2584,15 +2554,13 @@ formations[FORM0285_KING_CALAMARI_BOSS_FIGHT] = KingCalamariBossFormation(
     battlefield_override=Battlefields.KING_CALAMARI,
     can_run_away=False,
     additional_enemies_to_scale=[BlooberHenchman],
-    additional_enemies_for_stat_count=[TentaclesLeft, TentaclesLeft, TentaclesRight],
-)
+    additional_enemies_for_stat_count=[TentaclesLeft, TentaclesLeft, TentaclesRight])
 formations[FORM0286_BELOME_1_BOSS_FIGHT] = Formation(
     [
         FormationMember(Belome1, x_pos=183, y_pos=127),
     ],
     music=BattleMusic.BOSS_1,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0287_BELOME_2_BOSS_FIGHT] = Belome2BossFormation(
     [
         FormationMember(Belome2, x_pos=183, y_pos=127),
@@ -2601,20 +2569,17 @@ formations[FORM0287_BELOME_2_BOSS_FIGHT] = Belome2BossFormation(
             x_pos=135,
             y_pos=119,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             PeachClone,
             x_pos=215,
             y_pos=159,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
     music=BattleMusic.BOSS_1,
     can_run_away=False,
-    additional_enemies_to_scale=[MallowClone, GenoClone, BowserClone],
-)
+    additional_enemies_to_scale=[MallowClone, GenoClone, BowserClone])
 formations[288] = None
 formations[FORM0289_VALENTINA_BOSS_FIGHT] = ValentinaBossFormation(
     [
@@ -2624,8 +2589,7 @@ formations[FORM0289_VALENTINA_BOSS_FIGHT] = ValentinaBossFormation(
     run_event_at_load=BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
     music=BattleMusic.BOSS_1,
     can_run_away=False,
-    additional_enemies_to_scale=[BirdyHenchman, BluebirdHenchman],
-)
+    additional_enemies_to_scale=[BirdyHenchman, BluebirdHenchman])
 formations[290] = None
 formations[291] = None
 formations[292] = None
@@ -2638,34 +2602,29 @@ formations[FORM0293_CZAR_DRAGON_BOSS_FIGHT] = Formation(
             x_pos=167,
             y_pos=119,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Helio,
             x_pos=135,
             y_pos=135,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Helio,
             x_pos=199,
             y_pos=167,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Helio,
             x_pos=231,
             y_pos=151,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
     music=BattleMusic.BOSS_1,
     can_run_away=False,
-    additional_enemies_to_scale=[PyrosphereHenchman],
-)
+    additional_enemies_to_scale=[PyrosphereHenchman])
 formations[FORM0294_MEGASMILAX_BOSS_FIGHT] = MegasmilaxBossFormation(
     [
         FormationMember(Smilax, x_pos=180, y_pos=157),
@@ -2679,8 +2638,7 @@ formations[FORM0294_MEGASMILAX_BOSS_FIGHT] = MegasmilaxBossFormation(
     music=BattleMusic.BOSS_1,
     can_run_away=False,
     additional_enemies_to_scale=[PiranhaPlantHenchman],
-    additional_enemies_for_stat_count=[Smilax, Smilax, Smilax],
-)
+    additional_enemies_for_stat_count=[Smilax, Smilax, Smilax])
 formations[FORM0295_COUNTDOWN_BOSS_FIGHT] = Formation(
     [
         FormationMember(CountDown, x_pos=150, y_pos=93),
@@ -2690,8 +2648,7 @@ formations[FORM0295_COUNTDOWN_BOSS_FIGHT] = Formation(
     run_event_at_load=BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
     battlefield_override=Battlefields.COUNTDOWN,
     music=BattleMusic.BOSS_1,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[296] = None
 formations[FORM0297_BIRDETTA_BOSS_FIGHT] = Formation(
     [
@@ -2702,34 +2659,29 @@ formations[FORM0297_BIRDETTA_BOSS_FIGHT] = Formation(
             x_pos=135,
             y_pos=119,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Eggbert,
             x_pos=135,
             y_pos=135,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Eggbert,
             x_pos=167,
             y_pos=151,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Eggbert,
             x_pos=199,
             y_pos=151,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
     battlefield_override=Battlefields.BIRDETTA,
     music=BattleMusic.BOSS_1,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0298_BUNDT_BOSS_FIGHT] = Formation(
     [
         FormationMember(Bundt, x_pos=199, y_pos=127),
@@ -2739,16 +2691,14 @@ formations[FORM0298_BUNDT_BOSS_FIGHT] = Formation(
     ],
     run_event_at_load=BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
     music=BattleMusic.BOSS_1,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0299_KGGG_BOSS_FIGHT] = Formation(
     [
         FormationMember(KnifeGuy, x_pos=151, y_pos=119),
         FormationMember(GrateGuy, x_pos=199, y_pos=143),
     ],
     music=BattleMusic.BOSS_1,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0300_HELIO_HENCHMEN] = Formation(
     [
         FormationMember(Helio, x_pos=167, y_pos=119),
@@ -2762,8 +2712,7 @@ formations[FORM0301_JINX_1_BOSS_FIGHT] = Formation(
         FormationMember(Jinx1, x_pos=183, y_pos=127),
     ],
     run_event_at_load=BE0071_JINX_USES_TRIPLE_KICK,
-    music=BattleMusic.BOSS_1,
-)
+    music=BattleMusic.BOSS_1)
 formations[FORM0302_MACK_BOSS_FIGHT] = Formation(
     [
         FormationMember(Mack, x_pos=199, y_pos=119),
@@ -2773,8 +2722,7 @@ formations[FORM0302_MACK_BOSS_FIGHT] = Formation(
         FormationMember(Bodyguard, x_pos=215, y_pos=151),
     ],
     music=BattleMusic.BOSS_2,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0303_YARIDOVICH_BOSS_FIGHT] = Formation(
     [
         FormationMember(Yaridovich, x_pos=183, y_pos=127),
@@ -2783,13 +2731,11 @@ formations[FORM0303_YARIDOVICH_BOSS_FIGHT] = Formation(
             x_pos=183,
             y_pos=127,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
     music=BattleMusic.BOSS_2,
     can_run_away=False,
-    additional_enemies_to_scale=[YaridovichDrillBit],
-)
+    additional_enemies_to_scale=[YaridovichDrillBit])
 formations[FORM0304_AXEM_BOSS_FIGHT] = AxemBossFormation(
     [
         FormationMember(AxemRangers, x_pos=201, y_pos=79),
@@ -2809,8 +2755,7 @@ formations[FORM0304_AXEM_BOSS_FIGHT] = AxemBossFormation(
         MachineMadeAxemPinkHenchman,
         MachineMadeAxemRedHenchman,
         MachineMadeAxemYellowHenchman,
-    ],
-)
+    ])
 formations[FORM0305_BOWYER_BOSS_FIGHT] = Formation(
     [
         FormationMember(Bowyer, x_pos=183, y_pos=127),
@@ -2818,8 +2763,7 @@ formations[FORM0305_BOWYER_BOSS_FIGHT] = Formation(
     run_event_at_load=BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
     music=BattleMusic.BOSS_2,
     can_run_away=False,
-    additional_enemies_to_scale=[AeroBowyer],
-)
+    additional_enemies_to_scale=[AeroBowyer])
 formations[306] = None
 formations[FORM0307_EXOR_BOSS_FIGHT] = ExorBossFormation(
     [
@@ -2831,8 +2775,7 @@ formations[FORM0307_EXOR_BOSS_FIGHT] = ExorBossFormation(
     run_event_at_load=BE0080_EXOR_FIGHT_BEGINS,
     battlefield_override=Battlefields.EXOR,
     music=BattleMusic.BOSS_2,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0308_SMITHY_1_BOSS_FIGHT] = Formation(
     [
         FormationMember(Smithy1, x_pos=199, y_pos=127),
@@ -2842,15 +2785,13 @@ formations[FORM0308_SMITHY_1_BOSS_FIGHT] = Formation(
             x_pos=135,
             y_pos=127,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             MachineMadeShysterHenchman,
             x_pos=199,
             y_pos=159,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(Smithy2Head, x_pos=199, y_pos=127, hidden_at_start=True),
     ],
     run_event_at_load=BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
@@ -2865,8 +2806,7 @@ formations[FORM0308_SMITHY_1_BOSS_FIGHT] = Formation(
         Smithy2ChestHead,
         Smithy2SafeHead,
         Smithy2MageHead,
-    ],
-)
+    ])
 formations[FORM0309_CLOAKER_DOMINO_FIGHT] = CloakerDominoFormation(
     [
         FormationMember(Cloaker, x_pos=151, y_pos=111),
@@ -2878,8 +2818,7 @@ formations[FORM0309_CLOAKER_DOMINO_FIGHT] = CloakerDominoFormation(
     music=BattleMusic.BOSS_1,
     can_run_away=False,
     additional_enemies_for_stat_count=[Earthlink],
-    additional_enemies_to_scale=[Cloaker2, Domino2],
-)
+    additional_enemies_to_scale=[Cloaker2, Domino2])
 formations[FORM0310_THREE_RATFUNK] = Formation(
     [
         FormationMember(Ratfunk, x_pos=135, y_pos=119),
@@ -2900,15 +2839,13 @@ formations[FORM0312_ONE_ARTICHOKER] = Formation(
     [
         FormationMember(Artichoker, x_pos=183, y_pos=127),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0313_TWO_ARTICHOKERS] = Formation(
     [
         FormationMember(Artichoker, x_pos=151, y_pos=119),
         FormationMember(Artichoker, x_pos=215, y_pos=143),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0314_PUNCHINELLO_BOSS_FIGHT] = Formation(
     [
         FormationMember(Punchinello, x_pos=199, y_pos=119),
@@ -2917,42 +2854,36 @@ formations[FORM0314_PUNCHINELLO_BOSS_FIGHT] = Formation(
             x_pos=135,
             y_pos=119,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Microbomb,
             x_pos=151,
             y_pos=135,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Microbomb,
             x_pos=183,
             y_pos=151,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             Microbomb,
             x_pos=215,
             y_pos=159,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
     music=BattleMusic.BOSS_1,
     can_run_away=False,
-    additional_enemies_to_scale=[BobombHenchman, MezzoBomb],
-)
+    additional_enemies_to_scale=[BobombHenchman, MezzoBomb])
 formations[FORM0315_HAMMERBRO_BOSS_FIGHT] = Formation(
     [
         FormationMember(HammerBro, x_pos=135, y_pos=127),
         FormationMember(HammerBro, x_pos=199, y_pos=143),
     ],
     music=BattleMusic.BOSS_1,
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0316_THREE_CROOK_HENCHMEN] = Formation(
     [
         FormationMember(CrookHenchman, x_pos=135, y_pos=119),
@@ -2973,16 +2904,14 @@ formations[FORM0318_ONE_SNIFIT] = Formation(
     [
         FormationMember(Snifit, x_pos=167, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0319_ONE_STUMPET_TWO_MAGMUS] = Formation(
     [
         FormationMember(Stumpet, x_pos=183, y_pos=127),
         FormationMember(Magmus, x_pos=119, y_pos=127),
         FormationMember(Magmus, x_pos=183, y_pos=159),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0320_ONE_POUNDETTE] = Formation(
     [
         FormationMember(PoundetteHenchman, x_pos=183, y_pos=127),
@@ -3044,24 +2973,21 @@ formations[FORM0328_TWO_FIREBALL] = Formation(
         FormationMember(Fireball, x_pos=151, y_pos=111),
         FormationMember(Fireball, x_pos=199, y_pos=151),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0329_THREE_FIREBALL] = Formation(
     [
         FormationMember(Fireball, x_pos=167, y_pos=135),
         FormationMember(Fireball, x_pos=167, y_pos=111),
         FormationMember(Fireball, x_pos=215, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0330_ONE_STUMPET_THREE_MAGMUS] = Formation(
     [
         FormationMember(Stumpet, x_pos=151, y_pos=111),
         FormationMember(Magmus, x_pos=183, y_pos=159),
         FormationMember(Magmus, x_pos=199, y_pos=135),
         FormationMember(Magmus, x_pos=231, y_pos=159),
-    ],
-)
+    ])
 formations[FORM0331_CORKPEDITE_OERLIKON] = Formation(
     [
         FormationMember(Corkpedite, x_pos=151, y_pos=111),
@@ -3082,20 +3008,17 @@ formations[FORM0333_JINX_2_BOSS_FIGHT] = Formation(
         FormationMember(Jinx2, x_pos=183, y_pos=127),
     ],
     run_event_at_load=BE0072_JINX_USES_QUICKSILVER,
-    music=BattleMusic.BOSS_1,
-)
+    music=BattleMusic.BOSS_1)
 formations[FORM0334_JINX_3_BOSS_FIGHT] = Formation(
     [
         FormationMember(Jinx3, x_pos=183, y_pos=127),
     ],
     run_event_at_load=BE0073_JINX_USES_BOMBS_AWAY,
-    music=BattleMusic.BOSS_1,
-)
+    music=BattleMusic.BOSS_1)
 formations[FORM0335_JAGGER_BOSS_FIGHT] = Formation(
     [
         FormationMember(Jagger, x_pos=183, y_pos=127),
-    ],
-)
+    ])
 formations[336] = None
 formations[337] = None
 formations[338] = None
@@ -3112,8 +3035,7 @@ formations[FORM0345_FIVE_BIRDY_HENCHMEN] = Formation(
         FormationMember(BirdyHenchman, x_pos=151, y_pos=143),
         FormationMember(BirdyHenchman, x_pos=215, y_pos=111),
         FormationMember(BirdyHenchman, x_pos=183, y_pos=127),
-    ],
-)
+    ])
 formations[FORM0346_THREE_AXEM_HENCHMEN] = Formation(
     [
         FormationMember(MachineMadeAxemPinkHenchman, x_pos=151, y_pos=111),
@@ -3122,8 +3044,7 @@ formations[FORM0346_THREE_AXEM_HENCHMEN] = Formation(
         None,
         FormationMember(MachineMadeAxemGreenHenchman, x_pos=215, y_pos=143),
     ],
-    music=BattleMusic.BOSS_2,
-)
+    music=BattleMusic.BOSS_2)
 formations[FORM0347_FOUR_AXEM_HENCHMEN] = Formation(
     [
         FormationMember(MachineMadeAxemBlackHenchman, x_pos=151, y_pos=119),
@@ -3131,21 +3052,18 @@ formations[FORM0347_FOUR_AXEM_HENCHMEN] = Formation(
         FormationMember(MachineMadeAxemYellowHenchman, x_pos=199, y_pos=143),
         FormationMember(MachineMadeAxemYellowHenchman, x_pos=183, y_pos=103),
     ],
-    music=BattleMusic.BOSS_2,
-)
+    music=BattleMusic.BOSS_2)
 formations[FORM0348_THREE_BLOOBER_HENCHMEN] = Formation(
     [
         FormationMember(BlooberHenchman, x_pos=183, y_pos=127),
         FormationMember(BlooberHenchman, x_pos=231, y_pos=143),
         FormationMember(BlooberHenchman, x_pos=135, y_pos=111),
-    ],
-)
+    ])
 formations[FORM0349_TWO_BOWYER_AEROS] = Formation(
     [
         FormationMember(AeroBowyer, x_pos=167, y_pos=119),
         FormationMember(AeroBowyer, x_pos=199, y_pos=135),
-    ],
-)
+    ])
 formations[FORM0350_CULEX_BOSS_FIGHT] = CulexBossFormation(
     [
         FormationMember(Culex, x_pos=183, y_pos=103),
@@ -3154,75 +3072,64 @@ formations[FORM0350_CULEX_BOSS_FIGHT] = CulexBossFormation(
             x_pos=135,
             y_pos=103,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             WaterCrystal,
             x_pos=151,
             y_pos=119,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             EarthCrystal,
             x_pos=183,
             y_pos=135,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
         FormationMember(
             WindCrystal,
             x_pos=215,
             y_pos=143,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
     can_run_away=False,
-    music=BattleMusic.CULEX,
-)
+    music=BattleMusic.CULEX)
 formations[FORM0351_MOKURA_BOSS_FIGHT] = Formation(
     [
         FormationMember(Formless, x_pos=167, y_pos=135, include_in_stat_totaling=False),
         FormationMember(Mokura, x_pos=167, y_pos=135, hidden_at_start=True),
     ],
     can_run_away=False,
-    music=BattleMusic.BOSS_1,
-)
+    music=BattleMusic.BOSS_1)
 formations[FORM0352_THREE_PYROSPHERE_HENCHMEN] = Formation(
     [
         FormationMember(PyrosphereHenchman, x_pos=151, y_pos=135),
         FormationMember(PyrosphereHenchman, x_pos=215, y_pos=135),
         FormationMember(PyrosphereHenchman, x_pos=183, y_pos=103),
-    ],
-)
+    ])
 formations[FORM0353_ONE_FIRE_CRYSTAL] = Formation(
     [
         FormationMember(FireCrystal, x_pos=183, y_pos=127),
     ],
-    run_event_at_load=BE0076_SOLO_FIRE_CRYSTAL_APPEARS,
-)
+    run_event_at_load=BE0076_SOLO_FIRE_CRYSTAL_APPEARS)
 formations[FORM0354_THREE_SHOGUNS] = Formation(
     [
         FormationMember(Shogun, x_pos=167, y_pos=135),
         FormationMember(Shogun, x_pos=151, y_pos=111),
         FormationMember(Shogun, x_pos=215, y_pos=143),
-    ],
-)
+    ])
 formations[FORM0355_THREE_HEAVY_TROOPA] = Formation(
     [
         FormationMember(HeavyTroopa, x_pos=167, y_pos=135),
         FormationMember(HeavyTroopa, x_pos=151, y_pos=103),
         FormationMember(HeavyTroopa, x_pos=231, y_pos=143),
-    ],
-)
+    ])
 formations[FORM0356_DODO_BOSS_FIGHT] = Formation(
     [
         FormationMember(DodoSolo, x_pos=183, y_pos=127),
     ],
     can_run_away=False,
-    music=BattleMusic.BOSS_1,
-)
+    music=BattleMusic.BOSS_1)
 formations[FORM0357_KAMEK_BOSS_FIGHT] = Formation(
     [
         FormationMember(Kamek, x_pos=215, y_pos=111),
@@ -3231,13 +3138,11 @@ formations[FORM0357_KAMEK_BOSS_FIGHT] = Formation(
             x_pos=167,
             y_pos=135,
             hidden_at_start=True,
-            include_in_stat_totaling=False,
-        ),
+            include_in_stat_totaling=False),
     ],
     can_run_away=False,
     music=BattleMusic.BOSS_1,
-    additional_enemies_to_scale=[JinxClone, KingBomb, BahamuttKamek],
-)
+    additional_enemies_to_scale=[JinxClone, KingBomb, BahamuttKamek])
 formations[FORM0358_BOOMER_BOSS_FIGHT] = Formation(
     [
         FormationMember(Boomer, x_pos=215, y_pos=143),
@@ -3246,8 +3151,7 @@ formations[FORM0358_BOOMER_BOSS_FIGHT] = Formation(
     ],
     can_run_away=False,
     music=BattleMusic.BOSS_1,
-    additional_enemies_to_scale=[ShyGuyHenchman],
-)
+    additional_enemies_to_scale=[ShyGuyHenchman])
 formations[FORM0359_MACHINE_MACK] = Formation(
     [
         FormationMember(MachineMadeMack, x_pos=199, y_pos=119),
@@ -3256,14 +3160,12 @@ formations[FORM0359_MACHINE_MACK] = Formation(
         FormationMember(MachineMadeShyster, x_pos=183, y_pos=143),
         FormationMember(MachineMadeShyster, x_pos=215, y_pos=151),
     ],
-    music=BattleMusic.BOSS_2,
-)
+    music=BattleMusic.BOSS_2)
 formations[FORM0360_MACHINE_BOWYER] = Formation(
     [
         FormationMember(MachineMadeBowyer, x_pos=183, y_pos=127),
     ],
-    music=BattleMusic.BOSS_2,
-)
+    music=BattleMusic.BOSS_2)
 formations[FORM0361_MACHINE_YARIDOVICH] = Formation(
     [
         FormationMember(MachineMadeYaridovich, x_pos=183, y_pos=127),
@@ -3280,8 +3182,7 @@ formations[FORM0361_MACHINE_YARIDOVICH] = Formation(
             MachineMadeDrillBit, x_pos=231, y_pos=135, hidden_at_start=True
         ),
     ],
-    music=BattleMusic.BOSS_2,
-)
+    music=BattleMusic.BOSS_2)
 formations[FORM0362_THREE_MACHINE_AXEMS] = Formation(
     [
         FormationMember(MachineMadeAxemPink, x_pos=151, y_pos=111),
@@ -3290,23 +3191,20 @@ formations[FORM0362_THREE_MACHINE_AXEMS] = Formation(
         None,
         FormationMember(MachineMadeAxemGreen, x_pos=215, y_pos=143),
     ],
-    music=BattleMusic.BOSS_2,
-)
+    music=BattleMusic.BOSS_2)
 formations[FORM0363_SMITHY_2] = Formation(
     [
         FormationMember(Smithy2Body, x_pos=183, y_pos=135),
         FormationMember(Smithy2Head, x_pos=183, y_pos=175),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0364_CLERK_BOSS_FIGHT] = Formation(
     [
         FormationMember(Clerk, x_pos=199, y_pos=119),
         FormationMember(MadMalletHenchman, x_pos=135, y_pos=119),
         FormationMember(MadMalletHenchman, x_pos=199, y_pos=151),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0365_MANAGER_BOSS_FIGHT] = Formation(
     [
         FormationMember(Manager, x_pos=199, y_pos=119),
@@ -3314,8 +3212,7 @@ formations[FORM0365_MANAGER_BOSS_FIGHT] = Formation(
         FormationMember(PounderHenchman, x_pos=167, y_pos=135),
         FormationMember(PounderHenchman, x_pos=215, y_pos=143),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0366_DIRECTOR_BOSS_FIGHT] = Formation(
     [
         FormationMember(Director, x_pos=183, y_pos=127),
@@ -3324,30 +3221,26 @@ formations[FORM0366_DIRECTOR_BOSS_FIGHT] = Formation(
         FormationMember(PoundetteHenchman, x_pos=199, y_pos=151),
         FormationMember(PoundetteHenchman, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0367_GUNYOLK_BOSS_FIGHT] = Formation(
     [
         FormationMember(Gunyolk, x_pos=199, y_pos=103),
         FormationMember(FactoryChief, x_pos=231, y_pos=151),
     ],
     can_run_away=False,
-    music=BattleMusic.BOSS_1,
-)
+    music=BattleMusic.BOSS_1)
 formations[FORM0368_THREE_MAD_MALLETS] = Formation(
     [
         FormationMember(MadMallet, x_pos=151, y_pos=111),
         FormationMember(MadMallet, x_pos=167, y_pos=135),
         FormationMember(MadMallet, x_pos=215, y_pos=143),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0369_ONE_APPRENTICE] = Formation(
     [
         FormationMember(Apprentice, x_pos=183, y_pos=127),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0370_FOUR_MACHINE_AXEMS] = Formation(
     [
         FormationMember(MachineMadeAxemBlack, x_pos=151, y_pos=119),
@@ -3355,8 +3248,7 @@ formations[FORM0370_FOUR_MACHINE_AXEMS] = Formation(
         FormationMember(MachineMadeAxemYellow, x_pos=199, y_pos=143),
         FormationMember(MachineMadeAxemYellow, x_pos=183, y_pos=103),
     ],
-    music=BattleMusic.BOSS_2,
-)
+    music=BattleMusic.BOSS_2)
 formations[FORM0371_FOUR_TERRA_COTTA_KEEP] = Formation(
     [
         FormationMember(Terracotta, x_pos=135, y_pos=127),
@@ -3364,16 +3256,14 @@ formations[FORM0371_FOUR_TERRA_COTTA_KEEP] = Formation(
         FormationMember(Terracotta, x_pos=183, y_pos=151),
         FormationMember(Terracotta, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0372_TWO_OERLIKON_ONE_STARCRUSTER_KEEP] = Formation(
     [
         FormationMember(Oerlikon, x_pos=135, y_pos=119),
         FormationMember(Oerlikon, x_pos=199, y_pos=151),
         FormationMember(Starcruster, x_pos=199, y_pos=119),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0373_ONE_SACKIT_TWO_BIGBERTHA_KEEP] = Formation(
     [
         FormationMember(Sackit, x_pos=167, y_pos=135),
@@ -3381,24 +3271,21 @@ formations[FORM0373_ONE_SACKIT_TWO_BIGBERTHA_KEEP] = Formation(
         FormationMember(BigBertha, x_pos=151, y_pos=103),
         FormationMember(BigBertha, x_pos=231, y_pos=143),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0374_ONE_CHOW_TWO_FORKIES_KEEP] = Formation(
     [
         FormationMember(Chow, x_pos=135, y_pos=111),
         FormationMember(Chow, x_pos=215, y_pos=151),
         FormationMember(Forkies, x_pos=199, y_pos=119),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0375_ONE_ALLEYRAT_TWO_ARMOREDANT_KEEP] = Formation(
     [
         FormationMember(AlleyRat, x_pos=199, y_pos=119),
         FormationMember(ArmoredAnt, x_pos=135, y_pos=119),
         FormationMember(ArmoredAnt, x_pos=199, y_pos=151),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0376_THREE_BLOOBER_ONE_STARCRUSTER_KEEP] = Formation(
     [
         FormationMember(Bloober, x_pos=199, y_pos=119),
@@ -3406,8 +3293,7 @@ formations[FORM0376_THREE_BLOOBER_ONE_STARCRUSTER_KEEP] = Formation(
         FormationMember(Bloober, x_pos=231, y_pos=151),
         FormationMember(Starcruster, x_pos=135, y_pos=103),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0377_FOUR_STINGER_KEEP] = Formation(
     [
         FormationMember(Stinger, x_pos=151, y_pos=111),
@@ -3415,16 +3301,14 @@ formations[FORM0377_FOUR_STINGER_KEEP] = Formation(
         FormationMember(Stinger, x_pos=199, y_pos=143),
         FormationMember(Stinger, x_pos=231, y_pos=151),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0378_TWO_GECKIT_ONE_CHAINEDKONG_KEEP] = Formation(
     [
         FormationMember(Geckit, x_pos=215, y_pos=151),
         FormationMember(Geckit, x_pos=135, y_pos=111),
         FormationMember(ChainedKong, x_pos=199, y_pos=119),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0379_ONE_ROBOMB_TWO_BIGBERTHA_KEEP] = Formation(
     [
         FormationMember(Robomb, x_pos=167, y_pos=135),
@@ -3432,8 +3316,7 @@ formations[FORM0379_ONE_ROBOMB_TWO_BIGBERTHA_KEEP] = Formation(
         FormationMember(BigBertha, x_pos=167, y_pos=111),
         FormationMember(BigBertha, x_pos=215, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0380_FOUR_VOMER_KEEP] = Formation(
     [
         FormationMember(Vomer, x_pos=151, y_pos=127),
@@ -3441,8 +3324,7 @@ formations[FORM0380_FOUR_VOMER_KEEP] = Formation(
         FormationMember(Vomer, x_pos=151, y_pos=103),
         FormationMember(Vomer, x_pos=231, y_pos=143),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0381_TWO_MAGMUS_TWO_PULSAR_KEEP] = Formation(
     [
         FormationMember(Magmus, x_pos=151, y_pos=127),
@@ -3450,8 +3332,7 @@ formations[FORM0381_TWO_MAGMUS_TWO_PULSAR_KEEP] = Formation(
         FormationMember(Pulsar, x_pos=151, y_pos=103),
         FormationMember(Pulsar, x_pos=231, y_pos=143),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0382_FIVE_GUGOOMBAS_KEEP] = Formation(
     [
         FormationMember(GuGoomba, x_pos=151, y_pos=127),
@@ -3460,16 +3341,14 @@ formations[FORM0382_FIVE_GUGOOMBAS_KEEP] = Formation(
         FormationMember(GuGoomba, x_pos=167, y_pos=103),
         FormationMember(GuGoomba, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0383_TWO_MALAKOOPAS_ONE_TUBOTROOPA_KEEP] = Formation(
     [
         FormationMember(Malakoopa, x_pos=135, y_pos=111),
         FormationMember(Malakoopa, x_pos=215, y_pos=151),
         FormationMember(TuboTroopa, x_pos=199, y_pos=119),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0384_TWO_BIGBOO_TWO_ORBISON_KEEP] = Formation(
     [
         FormationMember(TheBigBoo, x_pos=183, y_pos=143),
@@ -3477,8 +3356,7 @@ formations[FORM0384_TWO_BIGBOO_TWO_ORBISON_KEEP] = Formation(
         FormationMember(Orbison, x_pos=167, y_pos=103),
         FormationMember(Orbison, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0385_FIVE_SLINGSHY_KEEP] = Formation(
     [
         FormationMember(SlingShy, x_pos=167, y_pos=135),
@@ -3487,8 +3365,7 @@ formations[FORM0385_FIVE_SLINGSHY_KEEP] = Formation(
         FormationMember(SlingShy, x_pos=167, y_pos=103),
         FormationMember(SlingShy, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0386_TWO_CHEWY_TWO_SHYAWAY_KEEP] = Formation(
     [
         FormationMember(Chewy, x_pos=151, y_pos=127),
@@ -3496,48 +3373,42 @@ formations[FORM0386_TWO_CHEWY_TWO_SHYAWAY_KEEP] = Formation(
         FormationMember(Shyaway, x_pos=167, y_pos=103),
         FormationMember(Shyaway, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0387_ONE_MRKIPPER_TWO_MUCKLES_KEEP] = Formation(
     [
         FormationMember(MrKipper, x_pos=167, y_pos=135),
         FormationMember(Muckle, x_pos=167, y_pos=103),
         FormationMember(Muckle, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0388_TWO_AMANITAS_ONE_ORBISON_KEEP] = Formation(
     [
         FormationMember(Amanita, x_pos=215, y_pos=143),
         FormationMember(Amanita, x_pos=151, y_pos=111),
         FormationMember(Orbison, x_pos=183, y_pos=127),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0389_TWO_GREAPERS_ONE_GLUMREAPER_KEEP] = Formation(
     [
         FormationMember(Greaper, x_pos=215, y_pos=143),
         FormationMember(Greaper, x_pos=151, y_pos=111),
         FormationMember(GlumReaper, x_pos=183, y_pos=127),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0390_THREE_PYROSPHERE_KEEP] = Formation(
     [
         FormationMember(Pyrosphere, x_pos=183, y_pos=127),
         FormationMember(Pyrosphere, x_pos=151, y_pos=111),
         FormationMember(Pyrosphere, x_pos=215, y_pos=143),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0391_THREE_LAKITU_KEEP] = Formation(
     [
         FormationMember(Lakitu, x_pos=183, y_pos=127),
         FormationMember(Lakitu, x_pos=151, y_pos=111),
         FormationMember(Lakitu, x_pos=215, y_pos=143),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0392_TWO_ZEOSTAR_TWO_SHAMAN_KEEP] = Formation(
     [
         FormationMember(Zeostar, x_pos=151, y_pos=127),
@@ -3545,8 +3416,7 @@ formations[FORM0392_TWO_ZEOSTAR_TWO_SHAMAN_KEEP] = Formation(
         FormationMember(Shaman, x_pos=167, y_pos=103),
         FormationMember(Shaman, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0393_SIX_SHAMANS_KEEP] = Formation(
     [
         FormationMember(Shaman, x_pos=135, y_pos=119),
@@ -3556,22 +3426,19 @@ formations[FORM0393_SIX_SHAMANS_KEEP] = Formation(
         FormationMember(Shaman, x_pos=199, y_pos=151),
         FormationMember(Shaman, x_pos=231, y_pos=135),
     ],
-    can_run_away=False,
-)
+    can_run_away=False)
 formations[FORM0394_THREE_MACHINE_SHYSTERS] = Formation(
     [
         FormationMember(MachineMadeShyster, x_pos=199, y_pos=119),
         FormationMember(MachineMadeShyster, x_pos=135, y_pos=119),
         FormationMember(MachineMadeShyster, x_pos=199, y_pos=151),
-    ],
-)
+    ])
 formations[FORM0395_THREE_MACHINE_DRILLBITS] = Formation(
     [
         FormationMember(YaridovichDrillBit, x_pos=183, y_pos=127),
         FormationMember(YaridovichDrillBit, x_pos=167, y_pos=103),
         FormationMember(YaridovichDrillBit, x_pos=231, y_pos=135),
-    ],
-)
+    ])
 formations[396] = None
 formations[397] = None
 formations[398] = None
@@ -3583,20 +3450,17 @@ formations[403] = None
 formations[404] = None
 formations[FORM0405_ONE_WATER_CRYSTAL] = Formation(
     [FormationMember(WaterCrystal, x_pos=183, y_pos=127)],
-    run_event_at_load=BE0020_SOLO_WATER_CRYSTAL_APPEARS,
-)
+    run_event_at_load=BE0020_SOLO_WATER_CRYSTAL_APPEARS)
 formations[FORM0406_ONE_EARTH_CRYSTAL] = Formation(
     [
         FormationMember(EarthCrystal, x_pos=183, y_pos=127),
     ],
-    run_event_at_load=BE0011_SOLO_EARTH_CRYSTAL_APPEARS,
-)
+    run_event_at_load=BE0011_SOLO_EARTH_CRYSTAL_APPEARS)
 formations[FORM0407_ONE_WIND_CRYSTAL] = Formation(
     [
         FormationMember(WindCrystal, x_pos=183, y_pos=127),
     ],
-    run_event_at_load=BE0035_BOOSTER_EATS_CAKE,
-)
+    run_event_at_load=BE0035_BOOSTER_EATS_CAKE)
 formations[FORM0408_THREE_GOOMBETTES] = Formation(
     [
         FormationMember(Goombette, x_pos=183, y_pos=127),
@@ -3669,8 +3533,7 @@ formations[FORM0419_SOLO_DINGALING] = Formation(
     [
         FormationMember(DingALing, x_pos=183, y_pos=127),
     ],
-    run_event_at_load=BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT,
-)
+    run_event_at_load=BE0014_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT)
 formations[FORM0420_SMITHY_HENCHMEN_MIX] = Formation(
     [
         FormationMember(MachineMadeShysterHenchman, x_pos=151, y_pos=111),

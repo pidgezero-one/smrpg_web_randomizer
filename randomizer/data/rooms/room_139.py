@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -67,8 +66,7 @@ room = Room(
             dst_z=4,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=18,
             y=87,
@@ -86,8 +84,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -116,8 +113,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.LAND_S_END_CANNON_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -144,8 +140,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.LAND_S_END_CANNON_NPC,
             event_script=E1675_MARIO_BUMPED_OFF_CANNON,
@@ -155,8 +150,7 @@ room = Room(
             y=107,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 3
             npc=npcs.LAND_S_END_CANNON_NPC,
             event_script=E1675_MARIO_BUMPED_OFF_CANNON,
@@ -166,8 +160,7 @@ room = Room(
             y=103,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 4
             npc=npcs.LAND_S_END_CANNON_NPC,
             event_script=E1675_MARIO_BUMPED_OFF_CANNON,
@@ -177,8 +170,7 @@ room = Room(
             y=99,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackNPC( # 5
             npc=npcs.GECKIT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -206,8 +198,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 6
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -217,8 +208,7 @@ room = Room(
             y=107,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 7
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -228,8 +218,7 @@ room = Room(
             y=103,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 8
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -239,8 +228,7 @@ room = Room(
             y=99,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 9
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -250,8 +238,7 @@ room = Room(
             y=111,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 10
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -261,8 +248,7 @@ room = Room(
             y=107,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 11
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -272,8 +258,7 @@ room = Room(
             y=103,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         BattlePackClone( # 12
             npc=npcs.GECKIT_NPC,
             battle_pack=90,
@@ -283,7 +268,6 @@ room = Room(
             y=99,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
     ]
 )

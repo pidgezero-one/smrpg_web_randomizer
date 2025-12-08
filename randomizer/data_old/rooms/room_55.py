@@ -44,8 +44,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         MapExit(
@@ -61,8 +60,7 @@ room = Room(
             destination=Locations._020_PIPE_VAULT,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=True,
-        ),
+            byte_2_bit_0=True),
         MapExit(
             x=20,
             y=31,
@@ -76,8 +74,7 @@ room = Room(
             destination=Locations._020_PIPE_VAULT,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=True,
-        ),
+            byte_2_bit_0=True),
     ],
     objects=[
         RegularNPC( # 0
@@ -110,8 +107,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.Letter,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -142,7 +138,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

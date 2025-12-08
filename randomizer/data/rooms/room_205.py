@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2812_MUSHROOM_WAY_3_UPPER_QUICK_SPINY,
             x=18,
@@ -58,8 +57,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2811_MUSHROOM_WAY_3_LOWER_QUICK_SPINY,
             x=15,
@@ -70,8 +68,7 @@ room = Room(
             length=5,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2811_MUSHROOM_WAY_3_LOWER_QUICK_SPINY,
             x=14,
@@ -82,8 +79,7 @@ room = Room(
             length=5,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2807_MUSHROOM_WAY_3_EXIT_TO_WORLD_MAP,
             x=29,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2808_MUSHROOM_WAY_BOSS_FIGHT,
             x=27,
@@ -106,8 +101,7 @@ room = Room(
             length=5,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2808_MUSHROOM_WAY_BOSS_FIGHT,
             x=27,
@@ -118,8 +112,7 @@ room = Room(
             length=8,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2808_MUSHROOM_WAY_BOSS_FIGHT,
             x=28,
@@ -130,8 +123,7 @@ room = Room(
             length=5,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -147,8 +139,7 @@ room = Room(
             destination=OW09_MUSHROOM_WAY,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         RoomExit(
             x=3,
             y=78,
@@ -166,8 +157,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -197,8 +187,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -208,8 +197,7 @@ room = Room(
             y=55,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -219,8 +207,7 @@ room = Room(
             y=55,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -230,8 +217,7 @@ room = Room(
             y=85,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 4
             npc=npcs.SPIKEY_NPC_2,
             battle_pack=2,
@@ -241,8 +227,7 @@ room = Room(
             y=107,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularNPC( # 5
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
@@ -269,8 +254,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.LAKITU_NPC_2,
             initiator=EventInitiator.NONE,
@@ -297,8 +281,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.HAMMER_BRO_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -325,7 +308,6 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

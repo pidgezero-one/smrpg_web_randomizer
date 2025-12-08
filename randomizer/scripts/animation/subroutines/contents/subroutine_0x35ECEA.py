@@ -16,5 +16,4 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntilAMEMBitsSet(0x6F, [0]),
         PauseScriptUntilSpriteSequenceDone(),
         ReturnSubroutine(),
-    ],
-)
+    ])

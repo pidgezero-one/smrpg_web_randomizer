@@ -13,8 +13,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_298_run_dialog_16",
-        ),
+            identifier="EVENT_298_run_dialog_16"),
         Return(),
     ]
 )

@@ -11,8 +11,7 @@ script = EventScript(
         ),
         ActionQueueAsync(
             target=NPC_1,
-            subscript=[ASWalkWestPixels(2), ASFaceSouthwest(), ASSequenceLoopingOff()],
-        ),
+            subscript=[ASWalkWestPixels(2), ASFaceSouthwest(), ASSequenceLoopingOff()]),
         JmpToEvent(E0015_STANDARD_ROOM_LOADER),
     ]
 )

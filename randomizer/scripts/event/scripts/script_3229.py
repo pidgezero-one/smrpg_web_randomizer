@@ -15,8 +15,7 @@ script = EventScript(
                 ASTransferToObjectXY(NPC_0),
                 ASSet700CToObjectCoord(target_npc=NPC_0, coord=COORD_F, pixel=True),
                 ASFaceEast7C(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -39,8 +38,7 @@ script = EventScript(
                 ASPause(2),
                 ASEndLoop(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -65,8 +63,7 @@ script = EventScript(
                 ASVisibilityOn(),
                 ASFaceMario(),
                 ASPause(2),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_707C_5),
         SetBit(TEMP_707C_6),
         SetBit(TEMP_707C_7),
@@ -83,10 +80,8 @@ script = EventScript(
                     bit_4=True,
                     cant_pass_npcs=True,
                     cant_walk_through=True,
-                    bit_7=True,
-                ),
-            ],
-        ),
+                    bit_7=True),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -98,10 +93,8 @@ script = EventScript(
                     bit_4=True,
                     cant_pass_npcs=True,
                     cant_walk_through=True,
-                    bit_7=True,
-                ),
-            ],
-        ),
+                    bit_7=True),
+            ]),
         Return(),
     ]
 )

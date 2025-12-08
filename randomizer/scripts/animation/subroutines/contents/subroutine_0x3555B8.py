@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3555b8",
-        ),
+            identifier="queuestart_0x3555b8"),
         NewEffectObject(effect=EF0005_METEOR_BLAST, looping_on=True),
         Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=60),
@@ -26,5 +25,4 @@ script = SubroutineOrBanklessScript(
         Pause2Frames(),
         ClearEffectIndex(),
         Jmp(["command_0x35252f"]),
-    ],
-)
+    ])

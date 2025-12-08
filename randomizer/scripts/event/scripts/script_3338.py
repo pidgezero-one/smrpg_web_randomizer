@@ -26,8 +26,7 @@ script = EventScript(
             area=OW50_BARREL_VOLCANO,
             bit_6=True,
             bit_7=True,
-            identifier="EVENT_3338_open_location_182",
-        ),
+            identifier="EVENT_3338_open_location_182"),
         Return(),
         ResetAndChooseGame(identifier="EVENT_3338_reset_and_choose_game_186"),
     ]

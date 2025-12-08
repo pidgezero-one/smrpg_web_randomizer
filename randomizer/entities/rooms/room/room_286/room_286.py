@@ -15,5 +15,4 @@ room = Room(
     extra_sprite_actions=[
         ExtraSpriteActions.TUMBLE_FRONT,
         ExtraSpriteActions.SURPRISE_FRAME,
-    ],
-)
+    ])

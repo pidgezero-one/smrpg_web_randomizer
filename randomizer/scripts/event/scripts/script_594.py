@@ -21,8 +21,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=27,
             y=96,
-            z=0,
-        ),
+            z=0),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -31,8 +30,7 @@ script = EventScript(
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
@@ -50,14 +48,12 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASSetWalkingSpeed(FAST),
                 ASWalkNortheastSteps(2),
                 ASResetProperties(),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -71,8 +67,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(4),
                 ASWalkNortheastPixels(4),
                 ASWalkSouthwestPixels(2),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True),
         PauseScriptUntilEffectDone(),
         RememberLastObject(),

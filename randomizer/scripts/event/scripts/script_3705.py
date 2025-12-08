@@ -19,8 +19,7 @@ script = EventScript(
         SetSyncActionScript(
             MEM_70A8,
             A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES,
-            identifier="EVENT_3705_set_temp_action_script_sync_7",
-        ),
+            identifier="EVENT_3705_set_temp_action_script_sync_7"),
         Set7000ToCurrentLevel(),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 410, ["EVENT_3705_set_temp_action_script_sync_14"]
@@ -32,8 +31,7 @@ script = EventScript(
         SetSyncActionScript(
             NPC_6,
             A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES,
-            identifier="EVENT_3705_set_temp_action_script_sync_14",
-        ),
+            identifier="EVENT_3705_set_temp_action_script_sync_14"),
         SetSyncActionScript(NPC_7, A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES),
         FadeInFromBlack(sync=False),
         Return(),

@@ -17,68 +17,59 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASPause(1),
                 ASReturn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
                 ASShiftToXYCoords(x=12, y=47),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASShiftToXYCoords(x=15, y=49),
                 ASWalkNortheastPixels(3),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASShiftToXYCoords(x=14, y=43),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
                 ASShiftToXYCoords(x=17, y=45),
                 ASWalkNortheastPixels(3),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
                 ASShiftToXYCoords(x=16, y=39),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
                 ASShiftToXYCoords(x=19, y=41),
                 ASWalkNortheastPixels(3),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
                 ASShiftToXYCoords(x=18, y=35),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
                 ASShiftToXYCoords(x=21, y=37),
                 ASWalkNortheastPixels(3),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_7, A0092_BRIDGE_TADPOLE),
         Pause(5),
         SetSyncActionScript(NPC_6, A0091_BRIDGE_TADPOLE),
@@ -114,8 +105,7 @@ script = EventScript(
                 ASWalkNortheastPixels(22),
                 ASReturn(),
             ],
-            identifier="EVENT_1106_action_queue_sync_36",
-        ),
+            identifier="EVENT_1106_action_queue_sync_36"),
         SetSyncActionScript(NPC_7, A0157_MELODY_BAY_TADPOLES),
         Pause(5),
         SetSyncActionScript(NPC_6, A0157_MELODY_BAY_TADPOLES),
@@ -152,8 +142,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSetWalkingSpeed(NORMAL),
             ],
-            identifier="EVENT_1106_action_queue_async_57",
-        ),
+            identifier="EVENT_1106_action_queue_async_57"),
         Jmp(["EVENT_1107_set_7000_to_tapped_button_2"]),
     ]
 )

@@ -2,14 +2,12 @@
 # Run the following command to rebuild:
 # python manage.py itemdisassembler --rom <ROM_PATH>
 
-from typing import List
 from smrpgpatchbuilder.datatypes.items.classes import ItemCollection
 from smrpgpatchbuilder.datatypes.items.enums import (
     EffectType,
     InflictFunction,
     OverworldMenuBehaviour,
-    ItemPrefix,
-)
+    ItemPrefix)
 from smrpgpatchbuilder.datatypes.numbers.classes import UInt8
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.party_character import PartyCharacter
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
@@ -17,8 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     TOADSTOOL,
     BOWSER,
     GENO,
-    MALLOW,
-)
+    MALLOW)
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
 from ...types.item import Weapon, Armor, Accessory, RegularItem
 
@@ -29,7 +26,7 @@ class WeaponItem(Weapon):
 
     _item_id: int = 0
     _description: str = ""
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _price: int = 0
     _inflict_type = None
     _half_time_window_begins = UInt8(0)
@@ -45,7 +42,7 @@ class ArmorItem(Weapon):
 
     _item_id: int = 1
     _description: str = ""
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _price: int = 0
     _inflict_type = None
     _half_time_window_begins = UInt8(0)
@@ -61,7 +58,7 @@ class AccessoryItem(Weapon):
 
     _item_id: int = 2
     _description: str = ""
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _price: int = 0
     _inflict_type = None
     _half_time_window_begins = UInt8(0)
@@ -76,7 +73,7 @@ class SpaceItem(Weapon):
 
     _item_id: int = 3
     _description: str = ""
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _price: int = 0
     _inflict_type = None
     _half_time_window_begins = UInt8(0)
@@ -91,7 +88,7 @@ class SpaceItem2(Weapon):
 
     _item_id: int = 4
     _description: str = ""
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _price: int = 0
     _inflict_type = None
     _half_time_window_begins = UInt8(0)
@@ -107,7 +104,7 @@ class HammerItem(Weapon):
 
     _item_id: int = 5
     _description: str = " Pounds enemies"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 10
     _variance: int = 1
     _price: int = 70
@@ -125,7 +122,7 @@ class FroggieStickItem(Weapon):
 
     _item_id: int = 6
     _description: str = " Frogfucius\n made it"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 20
     _variance: int = 2
     _price: int = 180
@@ -145,7 +142,7 @@ class NokNokShellItem(Weapon):
 
     _item_id: int = 7
     _description: str = " Kick to attack"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 20
     _variance: int = 2
     _price: int = 20
@@ -165,7 +162,7 @@ class PunchGloveItem(Weapon):
 
     _item_id: int = 8
     _description: str = " Knock out\n power!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 30
     _variance: int = 3
     _price: int = 36
@@ -183,7 +180,7 @@ class FingerShotItem(Weapon):
 
     _item_id: int = 9
     _description: str = " Fingers shoot\n bullets"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 12
     _variance: int = 3
     _price: int = 50
@@ -201,7 +198,7 @@ class CymbalsItem(Weapon):
 
     _item_id: int = 10
     _description: str = " Scare enemies\n with a clash"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 30
     _variance: int = 3
     _price: int = 42
@@ -219,7 +216,7 @@ class ChompItem(Weapon):
 
     _item_id: int = 11
     _description: str = " Just spin me\n at an enemy!"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 10
     _variance: int = 4
     _price: int = 140
@@ -237,7 +234,7 @@ class MasherItem(Weapon):
 
     _item_id: int = 12
     _description: str = " Makes monster\n mash!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 50
     _variance: int = 30
     _price: int = 160
@@ -255,7 +252,7 @@ class ChompShellItem(Weapon):
 
     _item_id: int = 13
     _description: str = " It's a\n Kinklink shell"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 9
     _variance: int = 3
     _price: int = 60
@@ -275,7 +272,7 @@ class SuperHammerItem(Weapon):
 
     _item_id: int = 14
     _description: str = " The standard\n for hammers!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 40
     _variance: int = 4
     _price: int = 70
@@ -293,7 +290,7 @@ class HandGunItem(Weapon):
 
     _item_id: int = 15
     _description: str = "It packs a kick"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 24
     _variance: int = 4
     _price: int = 75
@@ -311,7 +308,7 @@ class WhompGloveItem(Weapon):
 
     _item_id: int = 16
     _description: str = " The old double\n whammie!"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 40
     _variance: int = 4
     _price: int = 72
@@ -329,7 +326,7 @@ class SlapGloveItem(Weapon):
 
     _item_id: int = 17
     _description: str = " It slaps 'em\n silly"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 40
     _variance: int = 4
     _price: int = 100
@@ -347,7 +344,7 @@ class TroopaShellItem(Weapon):
 
     _item_id: int = 18
     _description: str = " Kick with it!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 50
     _variance: int = 5
     _price: int = 90
@@ -367,7 +364,7 @@ class ParasolItem(Weapon):
 
     _item_id: int = 19
     _description: str = " Inflicts\n serious pain!"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 50
     _variance: int = 5
     _price: int = 84
@@ -385,7 +382,7 @@ class HurlyGlovesItem(Weapon):
 
     _item_id: int = 20
     _description: str = " A classic\n Mario-toss\n attack"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 20
     _variance: int = 5
     _price: int = 92
@@ -403,7 +400,7 @@ class DoublePunchItem(Weapon):
 
     _item_id: int = 21
     _description: str = " A handy double\n rocket punch"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 35
     _variance: int = 5
     _price: int = 88
@@ -421,7 +418,7 @@ class RibbitStickItem(Weapon):
 
     _item_id: int = 22
     _description: str = " It'll come\n in handy"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 50
     _variance: int = 5
     _price: int = 86
@@ -439,7 +436,7 @@ class SpikedLinkItem(Weapon):
 
     _item_id: int = 23
     _description: str = " A studded ball\n and chain!"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 30
     _variance: int = 6
     _price: int = 94
@@ -457,7 +454,7 @@ class MegaGloveItem(Weapon):
 
     _item_id: int = 24
     _description: str = " Packs a mega\n wallop!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 60
     _variance: int = 6
     _price: int = 102
@@ -475,7 +472,7 @@ class WarFanItem(Weapon):
 
     _item_id: int = 25
     _description: str = " A mysterious\n battle fan!"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 60
     _variance: int = 6
     _price: int = 100
@@ -493,7 +490,7 @@ class HandCannonItem(Weapon):
 
     _item_id: int = 26
     _description: str = " Shoots bullets\n from elbow!"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 45
     _variance: int = 6
     _price: int = 105
@@ -511,7 +508,7 @@ class StickyGloveItem(Weapon):
 
     _item_id: int = 27
     _description: str = " Launches a\n punch attack."
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 60
     _variance: int = 6
     _price: int = 98
@@ -529,7 +526,7 @@ class UltraHammerItem(Weapon):
 
     _item_id: int = 28
     _description: str = " The ultimate\n hammer!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 70
     _variance: int = 7
     _price: int = 115
@@ -547,7 +544,7 @@ class SuperSlapItem(Weapon):
 
     _item_id: int = 29
     _description: str = " The Princess'\n mega-slap!"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 70
     _variance: int = 7
     _price: int = 110
@@ -565,7 +562,7 @@ class DrillClawItem(Weapon):
 
     _item_id: int = 30
     _description: str = " A drilling\n claw!"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 40
     _variance: int = 7
     _price: int = 118
@@ -583,7 +580,7 @@ class StarGunItem(Weapon):
 
     _item_id: int = 31
     _description: str = " Try shooting\n stars!"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 57
     _variance: int = 7
     _price: int = 120
@@ -601,7 +598,7 @@ class SonicCymbalItem(Weapon):
 
     _item_id: int = 32
     _description: str = " Puts noise to\n work for you!"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 70
     _variance: int = 7
     _price: int = 108
@@ -619,7 +616,7 @@ class LazyShellItem(Weapon):
 
     _item_id: int = 33
     _description: str = " Toss a shell\n at an enemy!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 90
     _variance: int = 40
     _price: int = 200
@@ -637,7 +634,7 @@ class FryingPanItem(Weapon):
 
     _item_id: int = 34
     _description: str = " Enough iron to\n be dangerous!"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 90
     _variance: int = 20
     _price: int = 300
@@ -655,7 +652,7 @@ class WonderChompItem(Weapon):
 
     _item_id: int = 35
     _description: str = " A powerful,\n studded ball\n and chain"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 67
     _variance: int = 45
     _price: int = 2
@@ -673,7 +670,7 @@ class Stella023Item(Weapon):
 
     _item_id: int = 36
     _description: str = " A cool weapon"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 62
     _variance: int = 20
     _price: int = 2
@@ -691,7 +688,7 @@ class SageStickItem(Weapon):
 
     _item_id: int = 37
     _description: str = " A legendary stick"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 80
     _magic_attack: int = 15
     _variance: int = 10
@@ -710,7 +707,7 @@ class LuckyHammerItem(Weapon):
 
     _item_id: int = 38
     _description: str = "A lucky hammer!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _price: int = 123
     _inflict_type = None
     _half_time_window_begins = UInt8(8)
@@ -726,7 +723,7 @@ class ShirtItem(Armor):
 
     _item_id: int = 39
     _description: str = " It's a\n shirt!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 6
     _magic_defense: int = 6
     _price: int = 7
@@ -740,7 +737,7 @@ class PantsItem(Armor):
 
     _item_id: int = 40
     _description: str = " It's a pair\n of pants!"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 6
     _magic_defense: int = 3
     _price: int = 7
@@ -754,7 +751,7 @@ class ThickShirtItem(Armor):
 
     _item_id: int = 41
     _description: str = " A padded shirt"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 12
     _magic_defense: int = 8
     _price: int = 14
@@ -768,7 +765,7 @@ class ThickPantsItem(Armor):
 
     _item_id: int = 42
     _description: str = " Padded pants"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 12
     _magic_defense: int = 6
     _price: int = 14
@@ -782,7 +779,7 @@ class MegaShirtItem(Armor):
 
     _item_id: int = 43
     _description: str = " Durable stay-\n pressed shirt"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 18
     _magic_defense: int = 10
     _price: int = 22
@@ -796,7 +793,7 @@ class MegaPantsItem(Armor):
 
     _item_id: int = 44
     _description: str = " Durable work\n pants"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 18
     _magic_defense: int = 9
     _price: int = 22
@@ -810,7 +807,7 @@ class WorkPantsItem(Armor):
 
     _item_id: int = 45
     _description: str = " Sweaty\n work pants!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 5
     _attack: int = 10
     _defense: int = 15
@@ -827,7 +824,7 @@ class MegaCapeItem(Armor):
 
     _item_id: int = 46
     _description: str = " Durable\n pressed cape"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 6
     _magic_defense: int = 3
     _price: int = 22
@@ -841,7 +838,7 @@ class HappyShirtItem(Armor):
 
     _item_id: int = 47
     _description: str = " A lucky shirt"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 38
@@ -855,7 +852,7 @@ class HappyPantsItem(Armor):
 
     _item_id: int = 48
     _description: str = " A lucky\n pair of pants"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 38
@@ -869,7 +866,7 @@ class HappyCapeItem(Armor):
 
     _item_id: int = 49
     _description: str = " A lucky cape"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 12
     _magic_defense: int = 6
     _price: int = 38
@@ -883,7 +880,7 @@ class HappyShellItem(Armor):
 
     _item_id: int = 50
     _description: str = " A lucky shell"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _defense: int = 6
     _magic_defense: int = 3
     _price: int = 38
@@ -897,7 +894,7 @@ class PolkaDressItem(Armor):
 
     _item_id: int = 51
     _description: str = " A flashy dress"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 160
@@ -913,7 +910,7 @@ class SailorShirtItem(Armor):
 
     _item_id: int = 52
     _description: str = " A sailor's\n suit"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 50
@@ -927,7 +924,7 @@ class SailorPantsItem(Armor):
 
     _item_id: int = 53
     _description: str = " A sailor's\n pants"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 50
@@ -941,7 +938,7 @@ class SailorCapeItem(Armor):
 
     _item_id: int = 54
     _description: str = " A sailor's\n cape"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 18
     _magic_defense: int = 9
     _price: int = 50
@@ -955,7 +952,7 @@ class NauticaDressItem(Armor):
 
     _item_id: int = 55
     _description: str = " A female\n sailor's dress"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 50
@@ -969,7 +966,7 @@ class CourageShellItem(Armor):
 
     _item_id: int = 56
     _description: str = " A stout shell"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _defense: int = 12
     _magic_defense: int = 6
     _price: int = 60
@@ -983,7 +980,7 @@ class FuzzyShirtItem(Armor):
 
     _item_id: int = 57
     _description: str = " A fuzzy shirt"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 70
@@ -997,7 +994,7 @@ class FuzzyPantsItem(Armor):
 
     _item_id: int = 58
     _description: str = " Fuzzy pants"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 70
@@ -1011,7 +1008,7 @@ class FuzzyCapeItem(Armor):
 
     _item_id: int = 59
     _description: str = " A fuzzy cape"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 70
@@ -1025,7 +1022,7 @@ class FuzzyDressItem(Armor):
 
     _item_id: int = 60
     _description: str = " A fuzzy dress"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 70
@@ -1039,7 +1036,7 @@ class FireShirtItem(Armor):
 
     _item_id: int = 61
     _description: str = " Determined\n person's shirt"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 42
     _magic_defense: int = 21
     _price: int = 90
@@ -1053,7 +1050,7 @@ class FirePantsItem(Armor):
 
     _item_id: int = 62
     _description: str = " Determined\n person's pants"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 42
     _magic_defense: int = 21
     _price: int = 90
@@ -1067,7 +1064,7 @@ class FireCapeItem(Armor):
 
     _item_id: int = 63
     _description: str = " Determined\n person's cape"
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 90
@@ -1081,7 +1078,7 @@ class FireShellItem(Armor):
 
     _item_id: int = 64
     _description: str = " Determined\n person's shell"
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _defense: int = 18
     _magic_defense: int = 9
     _price: int = 90
@@ -1095,7 +1092,7 @@ class FireDressItem(Armor):
 
     _item_id: int = 65
     _description: str = " Determined\n woman's dress"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 42
     _magic_defense: int = 21
     _price: int = 90
@@ -1109,7 +1106,7 @@ class HeroShirtItem(Armor):
 
     _item_id: int = 66
     _description: str = " A legendary\n shirt."
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 48
     _magic_defense: int = 24
     _price: int = 100
@@ -1123,7 +1120,7 @@ class PrincePantsItem(Armor):
 
     _item_id: int = 67
     _description: str = " Legendary\n pants!"
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 48
     _magic_defense: int = 24
     _price: int = 100
@@ -1137,7 +1134,7 @@ class StarCapeItem(Armor):
 
     _item_id: int = 68
     _description: str = " A legendary\n cape."
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 100
@@ -1151,7 +1148,7 @@ class HealShellItem(Armor):
 
     _item_id: int = 69
     _description: str = " A legendary\n shell."
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 100
@@ -1167,7 +1164,7 @@ class RoyalDressItem(Armor):
 
     _item_id: int = 70
     _description: str = " A legendary\n dress!"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 48
     _magic_defense: int = 24
     _price: int = 100
@@ -1181,7 +1178,7 @@ class SuperSuitItem(Armor):
 
     _item_id: int = 71
     _description: str = " A truly fine\n suit!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 30
     _attack: int = 50
     _defense: int = 50
@@ -1190,8 +1187,8 @@ class SuperSuitItem(Armor):
     _price: int = 700
     _effect_type = EffectType.PROTECTION
     _inflict_type = None
-    _elemental_immunities: List[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _elemental_immunities: list[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
 
 class LazyShellItem2(Armor):
@@ -1201,7 +1198,7 @@ class LazyShellItem2(Armor):
 
     _item_id: int = 72
     _description: str = " A stout and\n durable shell."
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = -50
     _attack: int = -50
     _defense: int = 127
@@ -1210,8 +1207,8 @@ class LazyShellItem2(Armor):
     _price: int = 222
     _effect_type = EffectType.PROTECTION
     _inflict_type = None
-    _elemental_immunities: List[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _elemental_immunities: list[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
 
 class EnduringBroochItem(Accessory):
@@ -1221,7 +1218,7 @@ class EnduringBroochItem(Accessory):
 
     _item_id: int = 73
     _description: str = " Prevents KOs"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _price: int = 2
     _inflict_type = None
     _prevent_ko: bool = True
@@ -1242,7 +1239,7 @@ class ZoomShoesItem(Accessory):
 
     _item_id: int = 74
     _description: str = "Speed up by 10!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 10
     _defense: int = 5
     _magic_defense: int = 5
@@ -1257,13 +1254,13 @@ class SafetyBadgeItem(Accessory):
 
     _item_id: int = 75
     _description: str = "Prevents Mute &\nPoison attacks"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _defense: int = 5
     _magic_defense: int = 5
     _price: int = 500
     _effect_type = EffectType.PROTECTION
     _inflict_type = None
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
 
 class JumpShoesItem(Accessory):
@@ -1273,7 +1270,7 @@ class JumpShoesItem(Accessory):
 
     _item_id: int = 76
     _description: str = "Use jump attacks\nagainst any foe"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _speed: int = 2
     _defense: int = 1
     _magic_attack: int = 5
@@ -1289,7 +1286,7 @@ class SafetyRingItem(Accessory):
 
     _item_id: int = 77
     _description: str = " Guards against\n mortal blows."
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 5
     _defense: int = 5
     _magic_defense: int = 5
@@ -1297,8 +1294,8 @@ class SafetyRingItem(Accessory):
     _effect_type = EffectType.PROTECTION
     _inflict_type = None
     _prevent_ko: bool = True
-    _elemental_immunities: List[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _elemental_immunities: list[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
 
 class AmuletItem(Accessory):
@@ -1308,7 +1305,7 @@ class AmuletItem(Accessory):
 
     _item_id: int = 78
     _description: str = " Great item,\n bad smell!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = -5
     _attack: int = 7
     _defense: int = 7
@@ -1316,7 +1313,7 @@ class AmuletItem(Accessory):
     _magic_defense: int = 7
     _price: int = 200
     _inflict_type = None
-    _elemental_resistances: List[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
+    _elemental_resistances: list[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
 
     _remake_name = "Booster'sCharm"
 
@@ -1328,7 +1325,7 @@ class ScroogeRingItem(Accessory):
 
     _item_id: int = 79
     _description: str = " Cuts FP use\n in half\n during battle"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _price: int = 50
     _inflict_type = None
 
@@ -1342,7 +1339,7 @@ class ExpBoosterItem(Accessory):
 
     _item_id: int = 80
     _description: str = " Doubles Exp.\n when equipped"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _price: int = 22
     _inflict_type = None
 
@@ -1354,7 +1351,7 @@ class AttackScarfItem(Accessory):
 
     _item_id: int = 81
     _description: str = " So comfy it'll\n make you jump!"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _speed: int = 30
     _attack: int = 30
     _defense: int = 30
@@ -1372,7 +1369,7 @@ class RareScarfItem(Accessory):
 
     _item_id: int = 82
     _description: str = " Raises defense\n power!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _defense: int = 15
     _magic_defense: int = 15
     _price: int = 150
@@ -1388,10 +1385,10 @@ class BtubRingItem(Accessory):
 
     _item_id: int = 83
     _description: str = "You'll win her\nheart with this!"
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _price: int = 145
     _inflict_type = None
-    _elemental_resistances: List[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
+    _elemental_resistances: list[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
 
     _remake_name = "Nurture Ring"
 
@@ -1403,13 +1400,13 @@ class AntidotePinItem(Accessory):
 
     _item_id: int = 84
     _description: str = " Prevents\n poison damage"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _defense: int = 2
     _magic_defense: int = 2
     _price: int = 28
     _effect_type = EffectType.PROTECTION
     _inflict_type = None
-    _status_immunities: List[Status] = [Status.POISON]
+    _status_immunities: list[Status] = [Status.POISON]
 
 
 class WakeUpPinItem(Accessory):
@@ -1419,13 +1416,13 @@ class WakeUpPinItem(Accessory):
 
     _item_id: int = 85
     _description: str = "Prevents Mute &\nSleep attacks"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _defense: int = 3
     _magic_defense: int = 3
     _price: int = 42
     _effect_type = EffectType.PROTECTION
     _inflict_type = None
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP]
 
 
 class FearlessPinItem(Accessory):
@@ -1435,13 +1432,13 @@ class FearlessPinItem(Accessory):
 
     _item_id: int = 86
     _description: str = " Prevents Fear\n attacks"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _defense: int = 5
     _magic_defense: int = 5
     _price: int = 130
     _effect_type = EffectType.PROTECTION
     _inflict_type = None
-    _status_immunities: List[Status] = [Status.FEAR]
+    _status_immunities: list[Status] = [Status.FEAR]
 
 
 class TrueformPinItem(Accessory):
@@ -1451,13 +1448,13 @@ class TrueformPinItem(Accessory):
 
     _item_id: int = 87
     _description: str = " You won't be\n turned into\n Mushrooms or\n Scarecrows!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _defense: int = 4
     _magic_defense: int = 4
     _price: int = 60
     _effect_type = EffectType.PROTECTION
     _inflict_type = None
-    _status_immunities: List[Status] = [Status.MUSHROOM, Status.SCARECROW]
+    _status_immunities: list[Status] = [Status.MUSHROOM, Status.SCARECROW]
 
 
 class CoinTrickItem(Accessory):
@@ -1467,7 +1464,7 @@ class CoinTrickItem(Accessory):
 
     _item_id: int = 88
     _description: str = " Doubles the\n coins you win\n in battle"
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _price: int = 36
     _inflict_type = None
 
@@ -1479,11 +1476,11 @@ class GhostMedalItem(Accessory):
 
     _item_id: int = 89
     _description: str = "Raises defense\nwhile attacking"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _price: int = 1600
     _effect_type = EffectType.INFLICTION
     _inflict_type = None
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
 
 class JinxBeltItem(Accessory):
@@ -1493,7 +1490,7 @@ class JinxBeltItem(Accessory):
 
     _item_id: int = 90
     _description: str = " Jinx's emblem\n of power!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 12
     _attack: int = 27
     _defense: int = 27
@@ -1509,7 +1506,7 @@ class FeatherItem(Accessory):
 
     _item_id: int = 91
     _description: str = " Speed up by 20"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 20
     _defense: int = 5
     _magic_defense: int = 5
@@ -1524,12 +1521,12 @@ class TroopaPinItem(Accessory):
 
     _item_id: int = 92
     _description: str = "Grants \"Troopa\"\nconfidence!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 20
     _price: int = 1000
     _effect_type = EffectType.INFLICTION
     _inflict_type = None
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
 
 
 class SignalRingItem(Accessory):
@@ -1539,7 +1536,7 @@ class SignalRingItem(Accessory):
 
     _item_id: int = 93
     _description: str = "Noise indicates\na hidden chest."
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _speed: int = 10
     _price: int = 600
     _inflict_type = None
@@ -1552,12 +1549,12 @@ class QuartzCharmItem(Accessory):
 
     _item_id: int = 94
     _description: str = " Shining source\n of power!"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _price: int = 7
     _effect_type = EffectType.INFLICTION
     _inflict_type = None
     _prevent_ko: bool = True
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
 
 class TeamworkBandItem(Accessory):
@@ -1567,10 +1564,10 @@ class TeamworkBandItem(Accessory):
 
     _item_id: int = 95
     _description: str = " It's a headband"
-    _equip_chars: List[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
+    _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
     _price: int = 2
     _inflict_type = None
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
 
 class MushroomItem(RegularItem):
@@ -1705,7 +1702,7 @@ class AbleJuiceItem(RegularItem):
     _usable_battle: bool = True
     _can_target_others: bool = True
     _one_side_only: bool = True
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
     _remake_name = "CleansingJuice"
 
@@ -1723,7 +1720,7 @@ class BracerItem(RegularItem):
     _usable_battle: bool = True
     _can_target_others: bool = True
     _one_side_only: bool = True
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
 
 class EnergizerItem(RegularItem):
@@ -1740,7 +1737,7 @@ class EnergizerItem(RegularItem):
     _usable_battle: bool = True
     _can_target_others: bool = True
     _one_side_only: bool = True
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
 
 
 class YoshiAdeItem(RegularItem):
@@ -1757,7 +1754,7 @@ class YoshiAdeItem(RegularItem):
     _usable_battle: bool = True
     _can_target_others: bool = True
     _one_side_only: bool = True
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
 
 class RedEssenceItem(RegularItem):
@@ -1774,7 +1771,7 @@ class RedEssenceItem(RegularItem):
     _usable_battle: bool = True
     _can_target_others: bool = True
     _one_side_only: bool = True
-    _status_immunities: List[Status] = [Status.INVINCIBLE]
+    _status_immunities: list[Status] = [Status.INVINCIBLE]
 
 
 class KerokeroColaItem(RegularItem):
@@ -1842,7 +1839,7 @@ class SleepyBombItem(RegularItem):
     _target_enemies: bool = True
     _target_all: bool = True
     _one_side_only: bool = True
-    _status_immunities: List[Status] = [Status.SLEEP]
+    _status_immunities: list[Status] = [Status.SLEEP]
 
 
 class BadMushroomItem(RegularItem):
@@ -1860,7 +1857,7 @@ class BadMushroomItem(RegularItem):
     _can_target_others: bool = True
     _target_enemies: bool = True
     _one_side_only: bool = True
-    _status_immunities: List[Status] = [Status.POISON]
+    _status_immunities: list[Status] = [Status.POISON]
 
     _remake_name = "PoisonMushroom"
 
@@ -1998,7 +1995,7 @@ class MukuCookieItem(RegularItem):
     _overworld_menu_fill_fp: bool = True
     _target_all: bool = True
     _one_side_only: bool = True
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
     _remake_name = "ThropherCookie"
 
@@ -2115,7 +2112,7 @@ class FreshenUpItem(RegularItem):
     _usable_battle: bool = True
     _target_all: bool = True
     _one_side_only: bool = True
-    _status_immunities: List[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]
 
     _remake_name = "Party Cleanse"
 
@@ -2321,7 +2318,7 @@ class FrightBombItem(RegularItem):
     _can_target_others: bool = True
     _target_enemies: bool = True
     _one_side_only: bool = True
-    _status_immunities: List[Status] = [Status.FEAR]
+    _status_immunities: list[Status] = [Status.FEAR]
 
 
 class MysteryEggItem(RegularItem):
@@ -2434,7 +2431,7 @@ class CrystallineItem(RegularItem):
     _usable_battle: bool = True
     _target_all: bool = True
     _one_side_only: bool = True
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 
     _remake_name = "Party Bracer"
 
@@ -2453,7 +2450,7 @@ class PowerBlastItem(RegularItem):
     _usable_battle: bool = True
     _target_all: bool = True
     _one_side_only: bool = True
-    _temp_buffs: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
+    _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
 
     _remake_name = "PartyEnergizer"
 
@@ -2637,7 +2634,7 @@ class MushroomItem2(RegularItem):
     _can_target_others: bool = True
     _can_target_self: bool = False
     _one_side_only: bool = True
-    _status_immunities: List[Status] = [Status.MUSHROOM]
+    _status_immunities: list[Status] = [Status.MUSHROOM]
 
 
 class StarEggItem(RegularItem):

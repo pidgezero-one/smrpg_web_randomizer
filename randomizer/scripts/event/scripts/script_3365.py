@@ -19,8 +19,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfDialogOptionBSelected(["EVENT_3365_set_bit_9"]),
         RunDialog(
             dialog_id=DI1933_MARATHON_PHASE_2_BEGIN,
@@ -29,8 +28,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_3365_run_dialog_7",
-        ),
+            identifier="EVENT_3365_run_dialog_7"),
         SetVarToConst(TEMP_70AF, 1),
         SetBit(TEMP_7044_7, identifier="EVENT_3365_set_bit_9"),
         Return(),
@@ -41,14 +39,12 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_3365_run_dialog_11",
-        ),
+            identifier="EVENT_3365_run_dialog_11"),
         SetVarToConst(TEMP_7034, 1),
         CopyVarToVar(
             from_var=TEMP_702C,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_13",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_13"),
         Compare7000ToVar(TEMP_7034),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_set_7000_to_7000_short_mem_18"]),
         RunDialog(
@@ -57,14 +53,12 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Jmp(["EVENT_3365_inc_short_32"]),
         CopyVarToVar(
             from_var=TEMP_702E,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_18",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_18"),
         Compare7000ToVar(TEMP_7034),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_set_7000_to_7000_short_mem_23"]),
         RunDialog(
@@ -73,14 +67,12 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Jmp(["EVENT_3365_inc_short_32"]),
         CopyVarToVar(
             from_var=TEMP_7030,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_23",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_23"),
         Compare7000ToVar(TEMP_7034),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_set_7000_to_7000_short_mem_28"]),
         RunDialog(
@@ -89,14 +81,12 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Jmp(["EVENT_3365_inc_short_32"]),
         CopyVarToVar(
             from_var=TEMP_7032,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_28",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_28"),
         Compare7000ToVar(TEMP_7034),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_inc_short_32"]),
         RunDialog(
@@ -105,8 +95,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Inc(TEMP_7034, identifier="EVENT_3365_inc_short_32"),
         CompareVarToConst(TEMP_7034, 5),
         JmpIfLoadedMemoryIs0(["EVENT_3365_mem_compare_36"]),
@@ -116,8 +105,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CompareVarToConst(TEMP_7034, 5, identifier="EVENT_3365_mem_compare_36"),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_set_7000_to_7000_short_mem_13"]),
         RunDialog(
@@ -126,8 +114,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetBit(TEMP_7044_7),
         JmpIfDialogOptionBSelected(["EVENT_3365_clear_bit_42"]),
         Jmp(["EVENT_3365_set_7000_to_7000_short_mem_49"]),
@@ -141,8 +128,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_49",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_49"),
         Compare7000ToVar(TEMP_702C),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_play_sound_78"]),
         CopyVarToVar(from_var=TEMP_7026, to_var=PRIMARY_TEMP_7000),
@@ -168,8 +154,7 @@ script = EventScript(
             subscript=[
                 ASStartLoopNTimes(
                     3,
-                    identifier="EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0",
-                ),
+                    identifier="EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0"),
                 ASVisibilityOff(),
                 ASPause(2),
                 ASVisibilityOn(),
@@ -179,16 +164,14 @@ script = EventScript(
                 ASClearSolidityBits(bit_4=True, cant_walk_through=True),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASJmp(
                     ["EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0"]
                 )
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -196,8 +179,7 @@ script = EventScript(
                 ASJmp(
                     ["EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0"]
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -205,8 +187,7 @@ script = EventScript(
                 ASJmp(
                     ["EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0"]
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
@@ -214,19 +195,16 @@ script = EventScript(
                 ASJmp(
                     ["EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0"]
                 ),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R466_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1C_WORD_PROBLEM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R466_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1C_WORD_PROBLEM,
-            mod_id=0,
-        ),
+            mod_id=0),
         Return(),
         PlaySound(
             sound=SO088_WRONG_SIGNAL, channel=4, identifier="EVENT_3365_play_sound_78"
@@ -241,8 +219,7 @@ script = EventScript(
                     index=12, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASPause(2),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7044_7),
         SetSyncActionScript(
             NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS
@@ -253,14 +230,12 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetVarToConst(TEMP_7034, 1),
         CopyVarToVar(
             from_var=SECONDARY_TEMP_7024,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_87",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_87"),
         Compare7000ToVar(TEMP_7034),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_set_7000_to_7000_short_mem_92"]),
         RunDialog(
@@ -269,14 +244,12 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Jmp(["EVENT_3365_inc_short_106"]),
         CopyVarToVar(
             from_var=TEMP_7026,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_92",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_92"),
         Compare7000ToVar(TEMP_7034),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_set_7000_to_7000_short_mem_97"]),
         RunDialog(
@@ -285,14 +258,12 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Jmp(["EVENT_3365_inc_short_106"]),
         CopyVarToVar(
             from_var=TEMP_7028,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_97",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_97"),
         Compare7000ToVar(TEMP_7034),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_set_7000_to_7000_short_mem_102"]),
         RunDialog(
@@ -301,14 +272,12 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Jmp(["EVENT_3365_inc_short_106"]),
         CopyVarToVar(
             from_var=TEMP_702A,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_3365_set_7000_to_7000_short_mem_102",
-        ),
+            identifier="EVENT_3365_set_7000_to_7000_short_mem_102"),
         Compare7000ToVar(TEMP_7034),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_inc_short_106"]),
         RunDialog(
@@ -317,8 +286,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Inc(TEMP_7034, identifier="EVENT_3365_inc_short_106"),
         CompareVarToConst(TEMP_7034, 5),
         JmpIfLoadedMemoryIs0(["EVENT_3365_mem_compare_110"]),
@@ -328,8 +296,7 @@ script = EventScript(
             closable=False,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         CompareVarToConst(TEMP_7034, 5, identifier="EVENT_3365_mem_compare_110"),
         JmpIfLoadedMemoryIsNot0(["EVENT_3365_set_7000_to_7000_short_mem_87"]),
         RunDialog(
@@ -338,8 +305,7 @@ script = EventScript(
             closable=False,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetBit(TEMP_7044_7),
         Pause(180),
         FadeOutToBlack(sync=False),

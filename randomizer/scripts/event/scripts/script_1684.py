@@ -13,8 +13,7 @@ script = EventScript(
             x=1,
             y=116,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R426_BELOME_TEMPLE_AREA_07_PIPE_TO_BELOMES_ROOM,
@@ -23,8 +22,7 @@ script = EventScript(
             y=11,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_1684_enter_area_3",
-        ),
+            identifier="EVENT_1684_enter_area_3"),
         Return(),
     ]
 )

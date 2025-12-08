@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=2,
             y=57,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E1835_KEEP_CANNONBALL_ROOM_LOADER),
     ]
 )

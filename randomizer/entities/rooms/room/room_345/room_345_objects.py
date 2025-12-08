@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=RedNimbite,
@@ -71,8 +70,7 @@ objects = [
         priority_2=True,
         y_shift=0,
         cannot_clone=False,
-        byte5_bit7=False,
-    ),
+        byte5_bit7=False),
     # NPC_2
     RegularClone(
         occupant=RedNimbite,
@@ -89,8 +87,7 @@ objects = [
         priority_2=True,
         y_shift=0,
         cannot_clone=False,
-        byte5_bit7=False,
-    ),
+        byte5_bit7=False),
     # NPC_3
     RegularNPC(
         occupant=NimbusGuard,
@@ -123,8 +120,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=Croco,
@@ -157,8 +153,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=Ring,
@@ -196,6 +191,5 @@ objects = [
         acute_axis=2,
         obtuse_axis=2,
         height=3,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

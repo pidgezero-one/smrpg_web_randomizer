@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1296_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=20,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1298_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=22,
@@ -37,8 +35,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1298_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=22,
@@ -49,8 +46,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1299_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=25,
@@ -61,8 +57,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1299_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=25,
@@ -73,8 +68,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1300_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=24,
@@ -85,8 +79,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1300_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=24,
@@ -97,8 +90,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1302_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=27,
@@ -109,8 +101,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1302_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=27,
@@ -121,8 +112,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1303_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=24,
@@ -133,8 +123,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1303_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=24,
@@ -145,8 +134,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1305_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=27,
@@ -157,8 +145,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1305_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=27,
@@ -169,8 +156,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1306_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=29,
@@ -181,8 +167,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1306_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=29,
@@ -193,8 +178,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1307_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=25,
@@ -205,8 +189,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1307_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=25,
@@ -217,8 +200,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1308_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=27,
@@ -229,8 +211,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E1308_TOWER_CHECKERBOARD_ROOM_FIREBALL_LAUNCHER,
         x=27,
@@ -241,6 +222,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

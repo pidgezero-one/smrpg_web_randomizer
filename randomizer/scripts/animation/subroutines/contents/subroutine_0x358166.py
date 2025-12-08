@@ -11,5 +11,4 @@ script = SubroutineOrBanklessScript(
             condition=FRAMES_ELAPSED, frames=24, identifier="queuestart_0x358166"
         ),
         ReturnSubroutine(),
-    ],
-)
+    ])

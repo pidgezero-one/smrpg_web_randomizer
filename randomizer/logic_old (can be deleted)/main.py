@@ -38,8 +38,7 @@ from randomizer.helpers.flag_helpers import (
     ShopQualities,
     WinConditions,
     PipeVaultGating,
-    Moleville1Gating,
-)
+    Moleville1Gating)
 from randomizer.data.sprites.objects.sprites import sprites as commonsprites
 from randomizer.data.utils import palette_to_bytes
 from randomizer.data.packets import packets as dpackets
@@ -66,30 +65,22 @@ from .battleassembler import assemble_battle_scripts
 
 from randomizer.data.eventscripts.utils.tower_access.mario import script as tower_mario
 from randomizer.data.eventscripts.utils.tower_access.mallow import (
-    script as tower_mallow,
-)
+    script as tower_mallow)
 from randomizer.data.eventscripts.utils.tower_access.geno import script as tower_geno
 from randomizer.data.eventscripts.utils.tower_access.bowser import (
-    script as tower_bowser,
-)
+    script as tower_bowser)
 from randomizer.data.eventscripts.utils.tower_access.toadstool import (
-    script as tower_toadstool,
-)
+    script as tower_toadstool)
 from randomizer.data.eventscripts.utils.tower_access.mario_self import (
-    script as tower_mario_self,
-)
+    script as tower_mario_self)
 from randomizer.data.eventscripts.utils.tower_access.mallow_self import (
-    script as tower_mallow_self,
-)
+    script as tower_mallow_self)
 from randomizer.data.eventscripts.utils.tower_access.geno_self import (
-    script as tower_geno_self,
-)
+    script as tower_geno_self)
 from randomizer.data.eventscripts.utils.tower_access.bowser_self import (
-    script as tower_bowser_self,
-)
+    script as tower_bowser_self)
 from randomizer.data.eventscripts.utils.tower_access.toadstool_self import (
-    script as tower_toadstool_self,
-)
+    script as tower_toadstool_self)
 
 from randomizer.helpers.roomobjecttables import RadialDirection
 from randomizer.helpers.eventtables import AreaObjects, Rooms, _0x60Flags
@@ -177,16 +168,14 @@ class Settings:
                                     for x in flag.choices
                                     if x.name == flag_dict[subcategory.id][flag.id]
                                 ),
-                                None,
-                            )
+                                None)
                             if val is None:
                                 raise Exception(
                                     "invalid property for %s.%s flag: %s"
                                     % (
                                         subcategory.id,
                                         flag.id,
-                                        flag_dict[subcategory.id][flag.id],
-                                    )
+                                        flag_dict[subcategory.id][flag.id])
                                 )
                             flag.value = val
                         else:
@@ -354,8 +343,7 @@ class Settings:
             available_chars.extend(
                 random.sample(
                     [c for c in allowed_chars if c != starter],
-                    k=max_chars - len(available_chars),
-                )
+                    k=max_chars - len(available_chars))
             )
             flag_val.enabled = available_chars
             flag_val.disabled = [
@@ -553,8 +541,7 @@ class GameWorld:
         # Get enemy formation data.
         (
             self.enemy_formations,
-            self.formation_packs,
-        ) = data.formations.get_default_enemy_formations(self)
+            self.formation_packs) = data.formations.get_default_enemy_formations(self)
         self.enemy_formations_dict = dict((f.index, f) for f in self.enemy_formations)
         self.formation_packs_dict = dict((p.index, p) for p in self.formation_packs)
 
@@ -744,9 +731,7 @@ class GameWorld:
             utils.new_command(
                 event,
                 "run_dialog",
-                [dialog, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]],
-            ),
-        )
+                [dialog, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]))
 
     @property
     def max_chest_quality(self):
@@ -818,8 +803,7 @@ class GameWorld:
             self.prepend_notice(199, 2256)
             self.replace_dialog(
                 1053,
-                """ To get to Bandit's Way, you will\n first need to take care of\n business in Mushroom Way.[await]""",
-            )
+                """ To get to Bandit's Way, you will\n first need to take care of\n business in Mushroom Way.[await]""")
         # elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario):
         #     self.prepend_bits(187, [[0x7065, 4], [0x706D, 4]])
         #     if not self.is_starting_character(data.items.MarioRecruit):
@@ -830,8 +814,7 @@ class GameWorld:
                 self.prepend_notice(198, 2256)
             self.replace_dialog(
                 1053,
-                """ To get to Bandit's Way, you will\n need to rendezvous with a cloudy\n sorceror.[await]""",
-            )
+                """ To get to Bandit's Way, you will\n need to rendezvous with a cloudy\n sorceror.[await]""")
         # elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.GENO):
         #     self.prepend_bits(189, [[0x7065, 4], [0x706D, 4]])
         #     if not self.is_starting_character(data.items.GenoRecruit):
@@ -851,8 +834,7 @@ class GameWorld:
         ):
             self.replace_dialog(
                 1053,
-                """ To get to Bandit's Way, you will\n need to locate and trounce a pair\n of well-equipped turtles.[await]""",
-            )
+                """ To get to Bandit's Way, you will\n need to locate and trounce a pair\n of well-equipped turtles.[await]""")
 
         # Forest Maze gating, special conditions
         if self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.OPEN):
@@ -867,8 +849,7 @@ class GameWorld:
             self.prepend_notice(211, 2258)
             self.replace_dialog(
                 1052,
-                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it went to take a break\n in the forest.[await]""",
-            )
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it went to take a break\n in the forest.[await]""")
         # elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mario):
         #     self.prepend_bits(187, [[0x7055, 7]])
         #     if not self.is_starting_character(data.items.MarioRecruit):
@@ -883,8 +864,7 @@ class GameWorld:
                 self.prepend_notice(189, 2258)
             self.replace_dialog(
                 1052,
-                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it went looking for\n someone named “`GENO_NAME`”.[await]""",
-            )
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it went looking for\n someone named “`GENO_NAME`”.[await]""")
         # elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowser):
         #     self.prepend_bits(190, [[0x7055, 7]])
         #     if not self.is_starting_character(data.items.BowserRecruit):
@@ -900,8 +880,7 @@ class GameWorld:
         elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowyer):
             self.replace_dialog(
                 1052,
-                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it was hunting for the\n jerk shooting arrows into town.[await]""",
-            )
+                """ There's a pipe in the road a bit\n west of here. I wonder what's\n down there?[await][page]\n It might be closed, though. The guy\n working on it was hunting for the\n jerk shooting arrows into town.[await]""")
 
         # Moleville entrance gating
         if self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.forest):
@@ -909,8 +888,7 @@ class GameWorld:
             self.prepend_notice(211, 2269)
             self.replace_dialog(
                 1051,
-                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to gather up wood in the\n forest.[await]""",
-            )
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to gather up wood in the\n forest.[await]""")
         # elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.mario):
         #     self.prepend_bits(187, [[0x707B, 3]])
         #     if not self.is_starting_character(data.items.MarioRecruit):
@@ -925,8 +903,7 @@ class GameWorld:
                 self.prepend_notice(189, 2269)
             self.replace_dialog(
                 1051,
-                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to chat with some fella named\n “`GENO_NAME`”, or somethin'.[await]""",
-            )
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to chat with some fella named\n “`GENO_NAME`”, or somethin'.[await]""")
         # elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.bowser):
         #     self.prepend_bits(190, [[0x707B, 3]])
         #     if not self.is_starting_character(data.items.BowserRecruit):
@@ -942,8 +919,7 @@ class GameWorld:
         elif self.settings.is_flag_value(flags.Moleville1Gate, Moleville1Gating.bowyer):
             self.replace_dialog(
                 1051,
-                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go hunt down some fella\n named “Bowyer”, or somethin'.[await]""",
-            )
+                """ The menfolk'll help you get inside\n once they come back to town.[await][pause] They\n left to go hunt down some fella\n named “Bowyer”, or somethin'.[await]""")
 
         # Starting characters - necessary to determine booster tower script
         # maintain the join order to match cursor character
@@ -988,8 +964,7 @@ class GameWorld:
                         )
                         self.search_replace_dialog(
                             "`MAIN_CHARACTER_HONORIFIC_CAP`",
-                            c.item.honorific.capitalize(),
-                        )
+                            c.item.honorific.capitalize())
                         self.search_replace_dialog(
                             "`MAIN_CHARACTER_HONORIFIC_CAPS`", c.item.honorific.upper()
                         )
@@ -1001,8 +976,7 @@ class GameWorld:
                         )
                         self.search_replace_dialog(
                             "`MAIN_CHARACTER_GENDER_CASUAL_CAP`",
-                            c.item.gender_casual.capitalize(),
-                        )
+                            c.item.gender_casual.capitalize())
                         self.search_replace_dialog(
                             "`MAIN_CHARACTER_MOLE_GREETING`", c.item.mole_greeting
                         )
@@ -1012,8 +986,7 @@ class GameWorld:
                         if cursor_id == 1:
                             self.replace_dialog(
                                 2320,
-                                " Hello, Princess![await][pause] Did you forget\n something in your room?[await]",
-                            )
+                                " Hello, Princess![await][pause] Did you forget\n something in your room?[await]")
                     else:
                         self.search_replace_dialog(
                             "`MAIN_CHARACTER_NAME`", "`MARIO_NAME`"
@@ -1042,8 +1015,7 @@ class GameWorld:
                     0,
                     utils.new_command(
                         c.event, "run_event_as_subroutine", [c.item.starter_script]
-                    ),
-                )
+                    ))
                 # check if character gates forest maze
                 if (
                     # (
@@ -1094,8 +1066,7 @@ class GameWorld:
             self.prepend_bits(187, [[0x7053, 7]])
             self.replace_dialog(
                 1163,
-                """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty good jumper for that.[await]""",
-            )
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty good jumper for that.[await]""")
             if not self.is_starting_character(data.items.MarioRecruit):
                 self.prepend_notice(187, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 0:
@@ -1108,8 +1079,7 @@ class GameWorld:
             self.prepend_bits(198, [[0x7053, 7]])
             self.replace_dialog(
                 1163,
-                """ You can't get inside Booster's\n Tower very easily. You'll need\n some pretty magical fluff for that.[await]""",
-            )
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n some pretty magical fluff for that.[await]""")
             if not self.is_starting_character(data.items.MallowRecruit):
                 self.prepend_notice(198, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 4:
@@ -1122,8 +1092,7 @@ class GameWorld:
             self.prepend_bits(189, [[0x7053, 7]])
             self.replace_dialog(
                 1163,
-                """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty strong gun for that.[await]""",
-            )
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty strong gun for that.[await]""")
             if not self.is_starting_character(data.items.GenoRecruit):
                 self.prepend_notice(189, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 3:
@@ -1136,8 +1105,7 @@ class GameWorld:
             self.prepend_bits(190, [[0x7053, 7]])
             self.replace_dialog(
                 1163,
-                """ You can't get inside Booster's\n Tower very easily. You'll need\n a REALLY strong person for that.[await]""",
-            )
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n a REALLY strong person for that.[await]""")
             if not self.is_starting_character(data.items.BowserRecruit):
                 self.prepend_notice(190, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 2:
@@ -1150,8 +1118,7 @@ class GameWorld:
             self.prepend_bits(191, [[0x7053, 7]])
             self.replace_dialog(
                 1163,
-                """ You can't get inside Booster's\n Tower very easily. You'll need\n to track down a for that.[await]""",
-            )
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n to track down a for that.[await]""")
             if not self.is_starting_character(data.items.ToadstoolRecruit):
                 self.prepend_notice(191, 2259)
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 1:
@@ -1163,8 +1130,7 @@ class GameWorld:
         ):
             self.replace_dialog(
                 1163,
-                """ You can't get inside Booster's\n Tower very easily. You'll need\n to track down a hot-head for that.[await]""",
-            )
+                """ You can't get inside Booster's\n Tower very easily. You'll need\n to track down a hot-head for that.[await]""")
 
         if not self.settings.is_flag_value(
             flags.BoosterTowerGate, BoosterTowerGating.GENO
@@ -1218,8 +1184,7 @@ class GameWorld:
                 self.prepend_notice(191, 2261)
                 self.replace_dialog(
                     1054,
-                    """ Did you know there's a shipwreck\n off the beach to the south?[await]\n `PEACH_NAME` can help you get there.[await]""",
-                )
+                    """ Did you know there's a shipwreck\n off the beach to the south?[await]\n `PEACH_NAME` can help you get there.[await]""")
         # else:
         elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star4):
             # if self.settings.is_flag_value(flags.SeaGate, SeaGating.star1):
@@ -1241,15 +1206,13 @@ class GameWorld:
             self.prepend_bits(192, [[0x7051, 0]])
             self.replace_dialog(
                 1054,
-                """ Did you know there's a shipwreck\n off the beach to the south?[await]\n It will be pretty easy to find if you\n have four stars to guide you.[await]""",
-            )
+                """ Did you know there's a shipwreck\n off the beach to the south?[await]\n It will be pretty easy to find if you\n have four stars to guide you.[await]""")
             # else:
             #     raise Exception("failed to set star piece gate on sea")
         elif self.settings.is_flag_value(flags.SeaGate, SeaGating.bundt):
             self.replace_dialog(
                 1054,
-                """ Did you know there's a shipwreck\n off the beach to the south?[await]\n You'll need to vanquish a large\n cake in order to make it more\n visible.[await]""",
-            )
+                """ Did you know there's a shipwreck\n off the beach to the south?[await]\n You'll need to vanquish a large\n cake in order to make it more\n visible.[await]""")
 
         # Yaridovich gating
         if self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.OPEN):
@@ -1271,16 +1234,13 @@ class GameWorld:
                 utils.new_command(
                     192,
                     "remove_from_level",
-                    [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM],
-                ),
-            )
+                    [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]))
             if self.settings.is_flag_value(
                 flags.BelomeTempleGate, BelomeTempleGating.seaside
             ):
                 self.replace_dialog(
                     1274,
-                    """ Look for the whirl where the ant\n pops up and proceed after it.[await][page]\n Keep following it and you'll find\n your way underground.[await][page]\n But be careful, you won't be able\n to go very far down there until you\n help out in Seaside Town.[await]""",
-                )
+                    """ Look for the whirl where the ant\n pops up and proceed after it.[await][page]\n Keep following it and you'll find\n your way underground.[await][page]\n But be careful, you won't be able\n to go very far down there until you\n help out in Seaside Town.[await]""")
                 self.eventscripts[1147].insert(
                     len(self.eventscripts[1147]) - 1,
                     utils.new_command(
@@ -1290,22 +1250,17 @@ class GameWorld:
                             2263,
                             AreaObjects.BOWSER,
                             [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC],
-                        ],
-                    ),
-                )
+                        ]))
                 self.eventscripts[1147].insert(
                     len(self.eventscripts[1147]) - 1,
                     utils.new_command(
                         1147,
                         "set_bit",
-                        [0x7052, 2],
-                    ),
-                )
+                        [0x7052, 2]))
             else:
                 self.replace_dialog(
                     1274,
-                    """ Look for the whirl where the ant\n pops up and proceed after it.[await][page]\n Keep following it and you'll find\n your way underground.[await][page]\n But be careful, you won't be able\n to go very far down there until you\n find Yaridovich.[await]""",
-                )
+                    """ Look for the whirl where the ant\n pops up and proceed after it.[await][page]\n Keep following it and you'll find\n your way underground.[await][page]\n But be careful, you won't be able\n to go very far down there until you\n find Yaridovich.[await]""")
 
         # Monstro Town gating
         if self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.OPEN):
@@ -1318,17 +1273,13 @@ class GameWorld:
                 utils.new_command(
                     1584,
                     "set_bit",
-                    [0x7067, 7],
-                ),
-            )
+                    [0x7067, 7]))
             self.eventscripts[1584].insert(
                 0,
                 utils.new_command(
                     1584,
                     "set_bit",
-                    [0x706F, 6],
-                ),
-            )
+                    [0x706F, 6]))
 
         # Volcano gating
         if self.settings.is_flag_value(
@@ -1342,15 +1293,13 @@ class GameWorld:
             self.prepend_notice(3660, 2268)
             self.replace_dialog(
                 2474,
-                """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need to clear\n out the castle first, though.[await]""",
-            )
+                """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need to clear\n out the castle first, though.[await]""")
         elif self.settings.is_flag_value(
             flags.BarrelVolcanoGate, BarrelVolcanoGating.valentina
         ):
             self.replace_dialog(
                 2474,
-                """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need\n Valentina's permission to enter,\n though.[await]""",
-            )
+                """ Oh, hello there! Are you visiting?[await]\n We don't get tourists here very\n often. I guess our town is a little\n bit out of the way.[await][page]\n If you're looking for something fun\n to do, you should visit our\n volcano![await][pause] You might need\n Valentina's permission to enter,\n though.[await]""")
 
         # Bowser's Keep gating
         if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.OPEN):
@@ -1376,9 +1325,7 @@ class GameWorld:
                             2264,
                             AreaObjects.BOWSER,
                             [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC],
-                        ],
-                    ),
-                )
+                        ]))
             # else:
             # if self.settings.is_flag_value(
             #     flags.BowsersKeepGate, BowsersKeepGating.star1
@@ -1441,8 +1388,7 @@ class GameWorld:
         elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.exor):
             self.replace_dialog(
                 3726,
-                """ I heard there was a big factory\n behind it. Is that true?[await][pause] I bet Exor\n would know, if you run into him![await]""",
-            )
+                """ I heard there was a big factory\n behind it. Is that true?[await][pause] I bet Exor\n would know, if you run into him![await]""")
         else:
             # if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.star1):
             #     value = 1
@@ -1463,8 +1409,7 @@ class GameWorld:
                 self.prepend_bits(192, [[0x7051, 3]])
                 self.replace_dialog(
                     3726,
-                    """ I heard there was a big factory\n behind it. Is that true?[await][pause] I wish I had\n 6 Star Pieces, so I could find out.[await]""",
-                )
+                    """ I heard there was a big factory\n behind it. Is that true?[await][pause] I wish I had\n 6 Star Pieces, so I could find out.[await]""")
 
             # else:
             #    raise Exception("failed to set star piece gate on factory")
@@ -1494,13 +1439,11 @@ class GameWorld:
                 utils.new_command(
                     984,
                     self.eventscripts[1969][0]["command"],
-                    self.eventscripts[1969][0]["args"],
-                ),
+                    self.eventscripts[1969][0]["args"]),
                 utils.new_command(
                     984,
                     self.eventscripts[1969][1]["command"],
-                    self.eventscripts[1969][1]["args"],
-                ),
+                    self.eventscripts[1969][1]["args"]),
             ]
             self.eventscripts[984].extend(
                 [
@@ -1733,19 +1676,16 @@ class GameWorld:
             self.eventscripts[3101][1]["args"][1] = [required_star_pieces]
             self.replace_dialog(
                 1050,
-                " I wish you the best of luck on your\n quest to collect the Star Pieces.[await]",
-            )
+                " I wish you the best of luck on your\n quest to collect the Star Pieces.[await]")
         elif self.settings.is_flag_value(flags.WinCondition, WinConditions.sealed):
             self.prepend_bits(192, [[0x7051, 7]])
             self.replace_dialog(
                 1050,
-                " I wish you the best of luck on your\n quest to conquer Monstro Town.[await]",
-            )
+                " I wish you the best of luck on your\n quest to conquer Monstro Town.[await]")
         elif self.settings.is_flag_value(flags.WinCondition, WinConditions.smithy):
             self.replace_dialog(
                 1050,
-                " I wish you the best of luck on your\n quest to defeat Smithy.[await]",
-            )
+                " I wish you the best of luck on your\n quest to defeat Smithy.[await]")
 
         # Marrymore item shuffle
         if self.settings.is_flag_enabled(flags.ShuffleWeddingGear):
@@ -1770,8 +1710,7 @@ class GameWorld:
         ):
             self.search_replace_dialog(
                 "`FIREWORKS_CLAUSE`",
-                """I'd have to go all the way through\n the mines to get some “Fireworks”\n to exchange for one of those.""",
-            )
+                """I'd have to go all the way through\n the mines to get some “Fireworks”\n to exchange for one of those.""")
             self.eventscripts[986] = [
                 {
                     "identifier": "EVENT_986_fw",
@@ -1797,8 +1736,7 @@ class GameWorld:
                 self.prepend_bits(192, [[0x705D, 4]])
                 self.search_replace_dialog(
                     "`FIREWORKS_CLAUSE`",
-                    """I'd need to exchange some\n “Fireworks” for one of those, and\n I have no idea where those are.""",
-                )
+                    """I'd need to exchange some\n “Fireworks” for one of those, and\n I have no idea where those are.""")
                 self.eventscripts[986] = [
                     {
                         "identifier": "EVENT_986_have_ss",
@@ -1860,8 +1798,7 @@ class GameWorld:
                 self.prepend_bits(192, [[0x705D, 5]])
                 self.search_replace_dialog(
                     "`FIREWORKS_CLAUSE`",
-                    """I have absolutely no idea where I\n could find one of those.""",
-                )
+                    """I have absolutely no idea where I\n could find one of those.""")
                 # add fireworks guy to frogfucius' second hint generator
                 self.eventscripts[981] = [
                     {
@@ -1990,8 +1927,7 @@ class GameWorld:
                     "identifier": "EVENT_192_summon_invisible_flags",
                     "command": "run_event_as_subroutine",
                     "args": [91],
-                },
-            )
+                })
 
         if self.settings.is_flag_enabled(flags.BetterTips):
             # Boshi odds - always 10:1
@@ -2010,45 +1946,37 @@ class GameWorld:
             if cursor_id == 4:
                 nc = data.characters.Mallow
                 from randomizer.data.sprites.insertions.mallow.sprites import (
-                    sprites as new_sprites,
-                )
+                    sprites as new_sprites)
                 from randomizer.data.sprites.insertions.mallow.map import (
                     map_sprite,
-                    map_address,
-                )
+                    map_address)
 
                 patch.add_data(map_address, map_sprite)
             elif cursor_id == 3:
                 nc = data.characters.Geno
                 from randomizer.data.sprites.insertions.geno.sprites import (
-                    sprites as new_sprites,
-                )
+                    sprites as new_sprites)
                 from randomizer.data.sprites.insertions.geno.map import (
                     map_sprite,
-                    map_address,
-                )
+                    map_address)
 
                 patch.add_data(map_address, map_sprite)
             elif cursor_id == 2:
                 nc = data.characters.Bowser
                 from randomizer.data.sprites.insertions.bowser.sprites import (
-                    sprites as new_sprites,
-                )
+                    sprites as new_sprites)
                 from randomizer.data.sprites.insertions.bowser.map import (
                     map_sprite,
-                    map_address,
-                )
+                    map_address)
 
                 patch.add_data(map_address, map_sprite)
             else:
                 nc = data.characters.Peach
                 from randomizer.data.sprites.insertions.toadstool.sprites import (
-                    sprites as new_sprites,
-                )
+                    sprites as new_sprites)
                 from randomizer.data.sprites.insertions.toadstool.map import (
                     map_sprite,
-                    map_address,
-                )
+                    map_address)
 
                 patch.add_data(map_address, map_sprite)
             for gsi, gs in enumerate(new_sprites):
@@ -2079,8 +2007,7 @@ class GameWorld:
                     for addr in addrs:
                         patch.add_data(
                             addr + 3,
-                            bytearray([sprite_id & 0xFF, (sprite_id >> 8) & 0xFF]),
-                        )
+                            bytearray([sprite_id & 0xFF, (sprite_id >> 8) & 0xFF]))
             for addrs, sprite_id in zip(
                 nc.sprite_addresses, nc.sprite_ids_as_main_character
             ):
@@ -2088,8 +2015,7 @@ class GameWorld:
                     for addr in addrs:
                         patch.add_data(
                             addr + 3,
-                            bytearray([sprite_id & 0xFF, (sprite_id >> 8) & 0xFF]),
-                        )
+                            bytearray([sprite_id & 0xFF, (sprite_id >> 8) & 0xFF]))
 
         # booster tower door animation
         if self.settings.is_flag_value(
@@ -2219,8 +2145,7 @@ class GameWorld:
                     0x11,
                     0x11,
                     0x11,
-                ],
-            )
+                ])
 
             # spiked link
             patch.add_data(0x35F5B1, [0x8E, 0x00, 0x01])
@@ -2246,8 +2171,7 @@ class GameWorld:
                     0x8E,
                     0x00,
                     0x01,
-                ],
-            )
+                ])
 
             # Smithy
             patch.add_data(0x3AE888, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
@@ -2323,8 +2247,7 @@ class GameWorld:
                 0x394B7F,
                 0x394B83,
                 0x3AB93F,
-                0x3AB95A,
-            ):
+                0x3AB95A):
                 patch.add_data(addr, self.character_join_order[1].index)
 
         # Learned spells and level-up exp.
@@ -2363,8 +2286,7 @@ class GameWorld:
                         0,
                         utils.new_command(
                             192, "put_inventory", [eval("data.items.%s.index" % item)]
-                        ),
-                    )
+                        ))
             # Set debug room specified by override config
             if "house_exit" in self.settings.override:
                 self.rooms[189].exit_fields[0].destination = self.settings.override[
@@ -2403,8 +2325,7 @@ class GameWorld:
                 exit_code,
                 partition_code,
                 model_code,
-                event_table,
-            ) = RoomObjects.assemble_from_table(self.rooms, self.eventscripts)
+                event_table) = RoomObjects.assemble_from_table(self.rooms, self.eventscripts)
             patch.add_data(0x148000, npc_code[0] + npc_code[1])
             patch.add_data(0x20E000, eventtile_code[0] + eventtile_code[1])
             patch.add_data(0x1D2D64, exit_code[0] + exit_code[1])
@@ -2453,8 +2374,7 @@ class GameWorld:
                 image_data,
                 animation_pointers,
                 animation_data,
-                tiles,
-            ) = Sprites.assemble_from_tables(self.sprites)
+                tiles) = Sprites.assemble_from_tables(self.sprites)
             patch.add_data(0x250000, sprite_data)
             patch.add_data(0x251800, image_data + animation_pointers)
             for animation_offset, animation in animation_data:
@@ -2540,8 +2460,7 @@ class GameWorld:
                         0xC1,
                         0x08,
                     ]
-                ),
-            )
+                ))
             patch.add_data(
                 0x255C6C,
                 bytearray(
@@ -2571,8 +2490,7 @@ class GameWorld:
                         0xC1,
                         0x08,
                     ]
-                ),
-            )
+                ))
 
         # Possible names we can use for the hash values on the file select screen.  Needs to be 6 characters or less.
         file_entry_names = {

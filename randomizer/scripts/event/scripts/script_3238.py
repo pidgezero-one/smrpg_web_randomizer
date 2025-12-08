@@ -18,8 +18,7 @@ script = EventScript(
                 ASShiftZUpSteps(2),
                 ASVisibilityOff(),
                 ASReturn(),
-            ],
-        ),
+            ]),
         AddFrogCoins(1),
         Return(),
     ]

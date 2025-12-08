@@ -18,13 +18,11 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASTransferToXYZF(x=8, y=13, z=4, direction=EAST)],
-            identifier="EVENT_439_action_queue_async_7",
-        ),
+            identifier="EVENT_439_action_queue_async_7"),
         JmpIfBitClear(
             RUN_AWAY,
             ["EVENT_439_fade_in_from_black_async_10"],
-            identifier="EVENT_439_jmp_if_bit_clear_8",
-        ),
+            identifier="EVENT_439_jmp_if_bit_clear_8"),
         SetTempSyncActionScript(MEM_70A8, A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES),
         FadeInFromBlack(sync=False, identifier="EVENT_439_fade_in_from_black_async_10"),
         Jmp(["EVENT_436_action_queue_async_13"]),

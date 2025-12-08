@@ -15,8 +15,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI0551_BELLHOP_1,
@@ -25,8 +24,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_321_run_dialog_5",
-        ),
+            identifier="EVENT_321_run_dialog_5"),
         Return(),
         RunDialog(
             dialog_id=DI0552_BELLHOP_2,
@@ -35,8 +33,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_321_run_dialog_7",
-        ),
+            identifier="EVENT_321_run_dialog_7"),
         Return(),
     ]
 )

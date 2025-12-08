@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x356043",
-        ),
+            identifier="queuestart_0x356043"),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x60),
         SetAMEM16BitToConst(0x60, 7),
@@ -24,5 +23,4 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x352552"]),
         SetOMEMMainToAMEM8Bit(omem=0x68, amem=0x68),
         ReturnObjectQueue(),
-    ],
-)
+    ])

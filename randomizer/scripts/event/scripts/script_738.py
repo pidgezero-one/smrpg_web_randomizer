@@ -16,8 +16,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftNorthSteps(3),
                 ASWalkNortheastSteps(6),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -25,16 +24,14 @@ script = EventScript(
                 ASFloatingOff(),
                 ASFaceNortheast(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(
             E0822_NIMBUS_LAND_OCCUPIED_EXTERIOR_FINAL_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),
         FadeInFromBlack(sync=True, duration=60),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNortheastSteps(5)],
-        ),
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNortheastSteps(5)]),
         ActionQueueSync(
             target=NPC_9,
             subscript=[
@@ -48,8 +45,7 @@ script = EventScript(
                 ASSetSequenceSpeed(NORMAL),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASWalkNortheastPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -61,8 +57,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(2),
                 ASSetSequenceSpeed(SLOW),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_8, subscript=[ASPause(1), ASFaceSoutheast()]),
         Pause(10),
         RememberLastObject(),
@@ -77,8 +72,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(2),
                 ASFaceNortheast(),
                 ASSetSequenceSpeed(SLOW),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -88,8 +82,7 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
                 ASWalkNortheastSteps(2),
                 ASSetSequenceSpeed(SLOW),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -97,8 +90,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASSetSequenceSpeed(NORMAL),
                 ASWalk1StepSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -107,8 +99,7 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
                 ASWalkNorthwestSteps(2),
                 ASSetSequenceSpeed(SLOW),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -116,8 +107,7 @@ script = EventScript(
                 ASPause(1),
                 ASWalk1StepNortheast(),
                 ASWalkNorthwestSteps(4),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         Pause(1),
         SetSyncActionScript(NPC_0, A0880_CROWD_AROUND_NIMBUS_BOSS),
@@ -137,8 +127,7 @@ script = EventScript(
                 ),
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Pause(1),
         ActionQueueSync(target=NPC_9, subscript=[ASPause(1), ASFaceSouthwest()]),
         SetSyncActionScript(NPC_7, A0880_CROWD_AROUND_NIMBUS_BOSS),
@@ -159,8 +148,7 @@ script = EventScript(
                 ),
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Pause(1),
         ActionQueueSync(target=NPC_9, subscript=[ASPause(1), ASFaceSoutheast()]),
         SetSyncActionScript(NPC_4, A0880_CROWD_AROUND_NIMBUS_BOSS),
@@ -181,8 +169,7 @@ script = EventScript(
                 ),
                 ASFloatingOff(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Pause(10),
         ActionQueueSync(
             target=NPC_9,
@@ -228,8 +215,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(4),
                 ASWalkNortheastPixels(4),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_8, A0880_CROWD_AROUND_NIMBUS_BOSS),
         Pause(1),
         Pause(1),
@@ -266,8 +252,7 @@ script = EventScript(
                 ASShiftZDownPixels(12),
                 ASPlaySound(sound=SO020_LIGHTING_BOLT, channel=4),
                 ASSequencePlaybackOn(),
-            ],
-        ),
+            ]),
         PauseActionScript(NPC_0),
         PauseActionScript(NPC_4),
         PauseActionScript(NPC_7),
@@ -284,8 +269,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASWalkNortheastSteps(2),
                 ASWalkNortheastPixels(4),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -297,8 +281,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASWalkSouthwestSteps(2),
                 ASWalkSouthwestPixels(4),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -310,8 +293,7 @@ script = EventScript(
                 ASSequenceLoopingOff(),
                 ASWalkSoutheastSteps(2),
                 ASWalkSoutheastPixels(4),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
@@ -324,8 +306,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASShiftSouthSteps(2),
                 ASWalkSouthPixels(4),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -338,8 +319,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASWalkNorthwestSteps(2),
                 ASWalkNorthwestPixels(4),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         Pause(1),
         ActionQueueAsync(
@@ -352,8 +332,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASPause(10),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         Pause(1),
         Pause(1),
         FreezeCamera(),
@@ -369,12 +348,10 @@ script = EventScript(
                 ASWalkSouthPixels(12),
                 ASSequenceLoopingOff(),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalk1StepSouthwest()],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalk1StepSouthwest()]),
         ActionQueueSync(
             target=NPC_2, subscript=[ASFixedFCoordOff(), ASPause(1), ASFaceSouthwest()]
         ),
@@ -397,8 +374,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASWalkNortheastSteps(4),
                 ASWalkNortheastPixels(11),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         ActionQueueAsync(
             target=MARIO,
@@ -412,25 +388,21 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(1),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         Pause(1),
         ActionQueueSync(
             target=NPC_9, subscript=[ASFaceSoutheast(), ASPause(2), ASFaceNortheast()]
         ),
         ActionQueueSync(
             target=NPC_2,
-            subscript=[ASPause(4), ASFaceSoutheast(), ASPause(2), ASFaceNortheast()],
-        ),
+            subscript=[ASPause(4), ASFaceSoutheast(), ASPause(2), ASFaceNortheast()]),
         ActionQueueSync(target=NPC_4, subscript=[ASPause(4), ASFaceNorthwest()]),
         ActionQueueSync(
             target=NPC_7,
-            subscript=[ASPause(4), ASFaceNorthwest(), ASPause(2), ASFaceNortheast()],
-        ),
+            subscript=[ASPause(4), ASFaceNorthwest(), ASPause(2), ASFaceNortheast()]),
         ActionQueueSync(target=NPC_8, subscript=[ASPause(4), ASFaceSoutheast()]),
         Pause(1),
         ActionQueueAsync(
@@ -458,16 +430,14 @@ script = EventScript(
                     sprite_offset=4,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(4),
                 ASSetSpriteSequence(
                     index=11,
                     sprite_offset=4,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(4),
                 ASEndLoop(),
                 ASSetSpriteSequence(
@@ -475,10 +445,8 @@ script = EventScript(
                     sprite_offset=4,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
-            ],
-        ),
+                    looping=True),
+            ]),
         ActionQueueSync(
             target=NPC_2, subscript=[ASFaceSouthwest(), ASPause(30), ASFaceSoutheast()]
         ),
@@ -508,8 +476,7 @@ script = EventScript(
             y=46,
             z=2,
             run_entrance_event=True,
-            identifier="EVENT_738_enter_area_0",
-        ),
+            identifier="EVENT_738_enter_area_0"),
         RunEventAsSubroutine(E3660_NIMBUS_REPOPULATE_CASTLE_UPON_LIBERATION),
         FadeInFromBlack(sync=True),
         JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),

@@ -1,8 +1,6 @@
 """"Miscellaeous constants used for playable character classes and functions."""
 
-from typing import List, Tuple
-
-ENDING_PALETTES: List[Tuple[int, int]] = [
+ENDING_PALETTES: list[tuple[int, int]] = [
     (0x37A9D8, 0x37B31A),
     (0x37B086, 0x37B338),
     (0x37B068, 0x37B356),

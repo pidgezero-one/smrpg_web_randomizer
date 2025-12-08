@@ -18,8 +18,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_1853_run_dialog_3",
-        ),
+            identifier="EVENT_1853_run_dialog_3"),
         Return(),
         StopAllBackgroundEvents(identifier="EVENT_1853_stop_all_background_events_5"),
         ClearBit(TEMP_7043_0),
@@ -31,8 +30,7 @@ script = EventScript(
         SetVarToConst(TEMP_702C, 70),
         ActionQueueSync(
             target=NPC_17,
-            subscript=[ASTransferToXYZF(x=20, y=104, z=18, direction=EAST)],
-        ),
+            subscript=[ASTransferToXYZF(x=20, y=104, z=18, direction=EAST)]),
         Db(bytearray(b"\xc7\x90")),
         ActionQueueAsync(
             target=MARIO, subscript=[ASFloatingOff(), ASRunAwayShift(), ASFloatingOn()]
@@ -58,8 +56,7 @@ script = EventScript(
                 ASSetSolidityBits(bit_4=True, cant_walk_through=True),
                 ASTransferToXYZF(x=20, y=112, z=0, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

@@ -13,8 +13,7 @@ script = EventScript(
             x=24,
             y=70,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R108_MOLEVILLE_OUTSIDE,
@@ -23,8 +22,7 @@ script = EventScript(
             y=70,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_1860_enter_area_3",
-        ),
+            identifier="EVENT_1860_enter_area_3"),
         Return(),
     ]
 )

@@ -12,8 +12,7 @@ script = EventScript(
             x=6,
             y=29,
             z=9,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         SetBit(DIRECTIONAL_7049_0),
         EnableControls([]),
         ActionQueueSync(

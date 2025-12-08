@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=22,
             y=93,
-            z=4,
-        ),
+            z=4),
         FadeInFromBlack(sync=True),
         ActionQueueAsync(
             target=MARIO,
@@ -29,8 +28,7 @@ script = EventScript(
                     ["EVENT_1679_action_queue_async_3_SUBSCRIPT_pause_4"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

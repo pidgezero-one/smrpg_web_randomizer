@@ -26,8 +26,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASWalkToXYCoords(x=2, y=124),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_6),
         RemoveObjectFromSpecificLevel(
             NPC_6, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM
@@ -37,8 +36,7 @@ script = EventScript(
             face_direction=SOUTHWEST,
             x=20,
             y=25,
-            z=0,
-        ),
+            z=0),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         ClearBit(TEMP_7043_0),
         RunBackgroundEvent(
@@ -68,8 +66,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASJumpToHeight(height=32, silent=True),
                 ASPause(16),
                 ASSetWalkingSpeed(NORMAL),
@@ -78,8 +75,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     cant_pass_walls=True, cant_pass_npcs=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -96,8 +92,7 @@ script = EventScript(
                 ASWalkNortheastPixels(4),
                 ASEndLoop(),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -124,8 +119,7 @@ script = EventScript(
                 ),
                 ASSequenceLoopingOff(),
                 ASSequencePlaybackOff(),
-            ],
-        ),
+            ]),
         JmpIfBitSet(
             RUNAWAY_MINECART_ITEM_OBTAINED, ["EVENT_3198_action_queue_async_16"]
         ),
@@ -170,19 +164,16 @@ script = EventScript(
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASDb(bytearray(b"\xfd\xf2")),
             ],
-            identifier="EVENT_3198_action_queue_async_16",
-        ),
+            identifier="EVENT_3198_action_queue_async_16"),
         SummonObjectToSpecificLevel(
             NPC_0,
-            R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM),
         RemoveObjectFromSpecificLevel(
             NPC_1, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM
         ),
         RemoveObjectFromSpecificLevel(
             NPC_0,
-            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM),
         Return(),
     ]
 )

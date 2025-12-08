@@ -15,5 +15,4 @@ room = Room(
         ExtraSpriteActions.SALUTE,
         ExtraSpriteActions.RECOIL,
         ExtraSpriteActions.DIZZY,
-    ],
-)
+    ])

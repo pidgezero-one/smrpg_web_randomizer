@@ -17,11 +17,9 @@ script = SubroutineOrBanklessScript(
             looping=True,
             overwrite_palette=True,
             overlap_all_sprites=True,
-            identifier="queuestart_0x352ebd",
-        ),
+            identifier="queuestart_0x352ebd"),
         ReturnSubroutine(),
         SetAMEMToRandom(amem=0x60, upper_bound=8),
         ObjectQueueAtOffsetAndIndexAtAMEM60(target_address=0x352ECF),
         ReturnSubroutine(),
-    ],
-)
+    ])

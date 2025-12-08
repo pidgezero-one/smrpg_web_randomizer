@@ -14,8 +14,7 @@ script = ActionScript(
         SetSpriteSequence(index=5, is_sequence=True, looping=True),
         JmpIfRandom1of2(
             ["ACTION_890_set_animation_speed_11"],
-            identifier="ACTION_890_jmp_if_random_above_128_8",
-        ),
+            identifier="ACTION_890_jmp_if_random_above_128_8"),
         SetWalkingSpeed(NORMAL),
         Jmp(["ACTION_890_walk_1_step_south_12"]),
         SetWalkingSpeed(SLOW, identifier="ACTION_890_set_animation_speed_11"),
@@ -38,8 +37,7 @@ script = ActionScript(
         SetSpriteSequence(index=5, is_sequence=True, looping=True),
         JmpIfRandom1of2(
             ["ACTION_890_set_animation_speed_32"],
-            identifier="ACTION_890_jmp_if_random_above_128_29",
-        ),
+            identifier="ACTION_890_jmp_if_random_above_128_29"),
         SetWalkingSpeed(NORMAL),
         Jmp(["ACTION_890_walk_1_step_south_33"]),
         SetWalkingSpeed(SLOW, identifier="ACTION_890_set_animation_speed_32"),

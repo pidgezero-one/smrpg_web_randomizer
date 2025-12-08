@@ -19,15 +19,13 @@ script = EventScript(
                 ASTransferToXYZF(x=4, y=25, z=4, direction=EAST),
                 ASVisibilityOn(),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASTransferToXYZF(x=5, y=24, z=4, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7049_6),
         RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
         FadeInFromBlack(sync=False),
@@ -37,8 +35,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASWalkNorthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RemoveObjectFromSpecificLevel(
             NPC_5, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL
         ),

@@ -28,8 +28,7 @@ script = EventScript(
                 ASPause(20),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MEM_70A8, identifier="EVENT_3293_pause_action_script_8"),
         ActionQueueSync(
@@ -44,8 +43,7 @@ script = EventScript(
                 ASPause(30),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

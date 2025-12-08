@@ -13,8 +13,7 @@ script = EventScript(
             x=11,
             y=42,
             z=1,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         SetBit(TEMP_7044_5),
         Return(),
     ]

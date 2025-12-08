@@ -2,5 +2,4 @@
 
 from .classes import (
     Mutator,
-    GlobalMutator,
-)
+    GlobalMutator)

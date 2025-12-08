@@ -2,8 +2,7 @@
 
 from randomizer.types.battle_animation_scripts.types import AnimationScriptBank
 from randomizer.types.battle_animation_scripts.ids import (
-    MONSTER_SPELLS,
-)
+    MONSTER_SPELLS)
 from .contents.script_0 import script as script_0
 from .contents.script_1 import script as script_1
 from .contents.script_2 import script as script_2
@@ -101,5 +100,4 @@ bank = AnimationScriptBank(
         script_42,
         script_43,
         script_44,
-    ],
-)
+    ])

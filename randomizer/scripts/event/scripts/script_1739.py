@@ -22,8 +22,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=Y_COORD_2,
-            identifier="EVENT_1739_set_7000_short_mem_to_7000_13",
-        ),
+            identifier="EVENT_1739_set_7000_short_mem_to_7000_13"),
         SetVarToConst(Z_COORD_2, 0),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
@@ -32,32 +31,26 @@ script = EventScript(
                     SKY_BRIDGE_PAN,
                     [
                         "EVENT_1739_action_queue_async_15_SUBSCRIPT_set_animation_speed_4"
-                    ],
-                ),
+                    ]),
                 ASJmpIfBitSet(
                     UNKNOWN_PAN,
                     [
                         "EVENT_1739_action_queue_async_15_SUBSCRIPT_set_animation_speed_6"
-                    ],
-                ),
+                    ]),
                 ASSetWalkingSpeed(FASTEST),
                 ASJmp(["EVENT_1739_action_queue_async_15_SUBSCRIPT_db_7"]),
                 ASSetWalkingSpeed(
                     FASTEST,
-                    identifier="EVENT_1739_action_queue_async_15_SUBSCRIPT_set_animation_speed_4",
-                ),
+                    identifier="EVENT_1739_action_queue_async_15_SUBSCRIPT_set_animation_speed_4"),
                 ASJmp(["EVENT_1739_action_queue_async_15_SUBSCRIPT_db_7"]),
                 ASSetWalkingSpeed(
                     FASTEST,
-                    identifier="EVENT_1739_action_queue_async_15_SUBSCRIPT_set_animation_speed_6",
-                ),
+                    identifier="EVENT_1739_action_queue_async_15_SUBSCRIPT_set_animation_speed_6"),
                 ASDb(
                     bytearray(b"\x98"),
-                    identifier="EVENT_1739_action_queue_async_15_SUBSCRIPT_db_7",
-                ),
+                    identifier="EVENT_1739_action_queue_async_15_SUBSCRIPT_db_7"),
                 ASSetWalkingSpeed(FASTEST),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

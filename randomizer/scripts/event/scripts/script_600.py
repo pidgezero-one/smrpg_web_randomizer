@@ -15,8 +15,7 @@ script = EventScript(
         RunEventAsSubroutine(E3930_MARRYMORE_GEAR_PRELOADER),
         RunEventAsSubroutine(
             E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
-            identifier="EVENT_600_sequence_setter",
-        ),
+            identifier="EVENT_600_sequence_setter"),
         FadeInFromBlack(sync=True),
         Return(identifier="EVENT_600_ret_12"),
     ]

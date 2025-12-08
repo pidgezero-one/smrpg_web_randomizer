@@ -18,8 +18,7 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(
             NPC_0,
             R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM,
-            identifier="EVENT_346_remove_from_level_1",
-        ),
+            identifier="EVENT_346_remove_from_level_1"),
         RemoveObjectFromSpecificLevel(
             NPC_7, R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM
         ),

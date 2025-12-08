@@ -33,36 +33,30 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
-            mod_id=0,
-        ),
+            mod_id=0),
         Pause(1),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
-            mod_id=1,
-        ),
+            mod_id=1),
         Pause(1),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
-            mod_id=0,
-        ),
+            mod_id=0),
         Pause(1),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
-            mod_id=1,
-        ),
+            mod_id=1),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
-            mod_id=0,
-        ),
+            mod_id=0),
         FadeInMusic(M33_MOLEVILLE),
         SetBit(TEMP_7049_6),
         ApplyTileModToLevel(

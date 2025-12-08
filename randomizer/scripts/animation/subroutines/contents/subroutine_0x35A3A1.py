@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35a3a1",
-        ),
+            identifier="queuestart_0x35a3a1"),
         Db(bytearray(b"\x83\x83")),
         SetAMEM40ToXYZCoords(
             origin=ABSOLUTE_POSITION,
@@ -25,10 +24,8 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         RunSubroutine(["command_0x35a45b"]),
         RemoveObject(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

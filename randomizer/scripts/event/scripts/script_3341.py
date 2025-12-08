@@ -20,8 +20,7 @@ script = EventScript(
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASWalkNortheastSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Return(),
         JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_3341_jmp_to_event_6"),
     ]

@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3a8894",
-        ),
+            identifier="queuestart_0x3a8894"),
         NewSpriteAtCoords(
             sprite_id=SPR0776_BLAST_ORANGE_GAS_CLOUD,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         ClearAMEM8Bit(0x64),
@@ -51,5 +49,4 @@ script = SubroutineOrBanklessScript(
         RemoveObject(),
         ResetObjectMappingMemory(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

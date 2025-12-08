@@ -14,8 +14,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         PlaySound(sound=SO000_SILENCE, channel=6),
         Return(),
         RunDialog(
@@ -25,8 +24,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_2530_run_dialog_5",
-        ),
+            identifier="EVENT_2530_run_dialog_5"),
         PlaySound(sound=SO000_SILENCE, channel=6),
         Return(),
     ]

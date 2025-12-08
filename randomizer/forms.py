@@ -2,8 +2,7 @@ from django import forms
 
 MODES = (
     ('open', 'Open'),
-    ('linear', 'Linear'),
-)
+    ('linear', 'Linear'))
 
 
 class GenerateForm(forms.Form):

@@ -6,8 +6,7 @@ from randomizer.types.npcs.objects.animations.types import SpriteAnimation
 from randomizer.types.overworld_scripts.action_scripts.arguments import (
     FAST,
     FASTEST,
-    VERY_FAST,
-)
+    VERY_FAST)
 
 CROCO_BAG_LOOP = SpriteAnimation(sequence_id=5, total_duration=104)
 CROCO_BAG_HIT = SpriteAnimation(sequence_id=4, contact_frame=152, total_duration=158)

@@ -9,8 +9,7 @@ from randomizer.types.overworld_scripts.action_scripts.ids.script_ids import *
 from randomizer.types.overworld_scripts.constants.overworld_names import *
 from randomizer.types.overworld_scripts.constants.room_names import *
 from randomizer.management.disassembler_common import (
-    writeline,
-)
+    writeline)
 
 
 DIRECTIONS = [
@@ -175,7 +174,7 @@ class Command(BaseCommand):
             partition_output = (
                 "from randomizer.entities.rooms.partition_imports import *"
             )
-            partition_output += """\n\nbuffers: List[Buffer] = ["""
+            partition_output += """\n\nbuffers: list[Buffer] = ["""
             partition_output += "\n    Buffer("
             partition_output += (
                 "\n        buffer_type = BufferType.%s,"

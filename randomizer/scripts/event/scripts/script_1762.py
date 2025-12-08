@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_3,
             R404_LANDS_END_DESERT_AREA_04,
-            ["EVENT_1762_run_event_as_subroutine_3"],
-        ),
+            ["EVENT_1762_run_event_as_subroutine_3"]),
         SetVarToConst(ACTIVE_NPC, 23),
         Jmp(["EVENT_1886_jmp_if_bit_set_4"]),
         RunEventAsSubroutine(

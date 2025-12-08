@@ -15,5 +15,4 @@ room = Room(
     extra_sprite_actions=[
         ExtraSpriteActions.PRAISE_FRONT,
         ExtraSpriteActions.YOSHI,
-    ],
-)
+    ])

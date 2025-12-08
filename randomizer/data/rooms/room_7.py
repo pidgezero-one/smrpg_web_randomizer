@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0620_REAL_BELLHOP_BLOCKS_EXIT_2,
             x=5,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0619_REAL_BELLHOP_BLOCKS_EXIT_1,
             x=6,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0618_MARIO_AS_BELLHOP_TRIES_TO_GO_UPSTAIRS_WITHOUT_GUEST,
             x=7,
@@ -82,8 +79,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0624_MARRYMORE_INN_LOBBY_STAIRS,
             x=7,
@@ -94,8 +90,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0625_MARRYMORE_INN_SOMETHING,
             x=6,
@@ -106,8 +101,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0625_MARRYMORE_INN_SOMETHING,
             x=7,
@@ -118,8 +112,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0625_MARRYMORE_INN_SOMETHING,
             x=6,
@@ -130,8 +123,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0625_MARRYMORE_INN_SOMETHING,
             x=6,
@@ -142,8 +134,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0625_MARRYMORE_INN_SOMETHING,
             x=6,
@@ -154,8 +145,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0625_MARRYMORE_INN_SOMETHING,
             x=6,
@@ -166,8 +156,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -196,8 +185,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.MARRYMORE_MAN_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -224,8 +212,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -252,8 +239,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.MARRYMORE_WOMAN_YELLOW_NPC,
             event_script=E0605_MARRYMORE_INN_LOBBY_GUEST_1,
@@ -263,8 +249,7 @@ room = Room(
             y=52,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 4
             npc=npcs.MUSHROOM_BOY_NPC,
             event_script=E0606_MARRYMORE_INN_LOBBY_GUEST_2,
@@ -274,8 +259,7 @@ room = Room(
             y=53,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularNPC( # 5
             npc=npcs.MARRYMORE_KID_PURPLE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -302,8 +286,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.OLD_WOMAN_GREEN_GREY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -330,8 +313,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY_NPC,
             event_script=E0621_MARRYMORE_INN_ELDERLY_GUEST,
@@ -341,7 +323,6 @@ room = Room(
             y=88,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
     ]
 )

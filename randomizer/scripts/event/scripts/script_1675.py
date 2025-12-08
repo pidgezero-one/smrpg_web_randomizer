@@ -20,8 +20,7 @@ script = EventScript(
                     index=7, sprite_offset=3, is_sequence=True, looping=True
                 ),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ResumeActionScript(MEM_70A8),
         MoveScriptToBackgroundThread2(),
         ActionQueueAsync(target=MARIO, subscript=[ASWalkNorthwestSteps(5)]),
@@ -34,8 +33,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(8),
                 ASWalkNorthwestPixels(4),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -51,8 +49,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=8, sprite_offset=2, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_1675_pause_7"),
         Set7000ToTappedButton(),
         JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1675_action_queue_sync_11"]),
@@ -60,8 +57,7 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[ASResetProperties(), ASFaceSouth(), ASJumpToHeight(108)],
-            identifier="EVENT_1675_action_queue_sync_11",
-        ),
+            identifier="EVENT_1675_action_queue_sync_11"),
         MoveScriptToMainThread(),
         Return(),
     ]

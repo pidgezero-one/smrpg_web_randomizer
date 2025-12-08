@@ -9,8 +9,7 @@ script = EventScript(
         SummonObjectToSpecificLevel(
             NPC_0,
             R056_KERO_SEWERS_AREA_02_LONG_ROOM_WTHREE_PIPES,
-            identifier="EVENT_3134_summon_to_level_15",
-        ),
+            identifier="EVENT_3134_summon_to_level_15"),
         SummonObjectToSpecificLevel(
             NPC_1, R056_KERO_SEWERS_AREA_02_LONG_ROOM_WTHREE_PIPES
         ),
@@ -93,33 +92,27 @@ script = EventScript(
         ApplySolidityModToLevel(
             permanent=False,
             room_id=R056_KERO_SEWERS_AREA_02_LONG_ROOM_WTHREE_PIPES,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=False,
             room_id=R056_KERO_SEWERS_AREA_02_LONG_ROOM_WTHREE_PIPES,
-            mod_id=1,
-        ),
+            mod_id=1),
         ApplySolidityModToLevel(
             permanent=False,
             room_id=R057_KERO_SEWERS_AREA_03_LARGE_WATER_ROOM_WPIPE_IN_CENTER,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=False,
             room_id=R057_KERO_SEWERS_AREA_03_LARGE_WATER_ROOM_WPIPE_IN_CENTER,
-            mod_id=1,
-        ),
+            mod_id=1),
         ApplySolidityModToLevel(
             permanent=False,
             room_id=R058_KERO_SEWERS_AREA_06_LONG_WATER_ROOM_WRAT_FUNKS_IN_A_LINE,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=False,
             room_id=R058_KERO_SEWERS_AREA_06_LONG_WATER_ROOM_WRAT_FUNKS_IN_A_LINE,
-            mod_id=1,
-        ),
+            mod_id=1),
         SetBit(TEMP_7042_0),
         Return(),
     ]

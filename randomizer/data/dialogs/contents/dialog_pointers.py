@@ -1,5 +1,4 @@
 from smrpgpatchbuilder.datatypes.dialogs.classes import Dialog
-from typing import Optional
 from ..variables.dialog_names import *
 pointers: list[Dialog] = [None]*4096 # type: ignore
 pointers[DI0000_INN_BANNER] = Dialog(bank=0x22, index=0, pos=0)

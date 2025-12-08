@@ -16,8 +16,7 @@ script = EventScript(
             target_npc=MARIO,
             coord=COORD_Z,
             pixel=True,
-            identifier="EVENT_3504_set_7000_to_object_coord_4",
-        ),
+            identifier="EVENT_3504_set_7000_to_object_coord_4"),
         CompareVarToConst(PRIMARY_TEMP_7000, 288),
         JmpIfComparisonResultIsGreaterOrEqual(["EVENT_3504_reset_coords_15"]),
         DisableObjectTrigger(MEM_70A8),
@@ -55,8 +54,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         EnableControlsUntilReturn([B]),
         EnableObjectTrigger(MEM_70A8),
         SetVarToConst(TIMER_701C, 2),

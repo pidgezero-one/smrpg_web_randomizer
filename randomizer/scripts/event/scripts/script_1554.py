@@ -21,8 +21,7 @@ script = EventScript(
         StartLoopNTimes(3),
         ActionQueueSync(
             target=MEM_70A9,
-            subscript=[ASClearSolidityBits(bit_4=True, cant_walk_through=True)],
-        ),
+            subscript=[ASClearSolidityBits(bit_4=True, cant_walk_through=True)]),
         Inc(TEMP_70A9),
         EndLoop(),
         ActionQueueAsync(
@@ -31,8 +30,7 @@ script = EventScript(
         SetVarToConst(TEMP_70AB, 24),
         RunBackgroundEvent(
             event_id=E1555_FOREST_FIRST_WIGGLER_ROOM_LOADER_CONTD,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         Return(),
     ]
 )

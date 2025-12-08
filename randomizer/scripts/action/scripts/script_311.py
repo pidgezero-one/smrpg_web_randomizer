@@ -29,8 +29,7 @@ script = ActionScript(
             coord=COORD_X,
             pixel=True,
             bit_7=True,
-            identifier="ACTION_311_set_700C_to_object_coord_12",
-        ),
+            identifier="ACTION_311_set_700C_to_object_coord_12"),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_700C, 15, ["ACTION_311_set_700C_to_object_coord_18"]
         ),
@@ -47,8 +46,7 @@ script = ActionScript(
             coord=COORD_X,
             pixel=True,
             bit_7=True,
-            identifier="ACTION_311_set_700C_to_object_coord_18",
-        ),
+            identifier="ACTION_311_set_700C_to_object_coord_18"),
         JmpIfVarNotEqualsConst(
             PRIMARY_TEMP_700C, 16, ["ACTION_311_set_700C_to_object_coord_24"]
         ),
@@ -65,8 +63,7 @@ script = ActionScript(
             coord=COORD_X,
             pixel=True,
             bit_7=True,
-            identifier="ACTION_311_set_700C_to_object_coord_24",
-        ),
+            identifier="ACTION_311_set_700C_to_object_coord_24"),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_700C, 16, ["ACTION_311_set_priority_0"]),
         Set700CToObjectCoord(
             target_npc=DUMMY_0X07, coord=COORD_Y, pixel=True, bit_7=True

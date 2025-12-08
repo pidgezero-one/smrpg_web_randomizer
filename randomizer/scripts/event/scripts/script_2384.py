@@ -14,8 +14,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -25,16 +24,14 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
                 ASSetSpriteSequence(
                     index=1, is_mold=True, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

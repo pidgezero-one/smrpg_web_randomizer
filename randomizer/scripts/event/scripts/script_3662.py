@@ -13,8 +13,7 @@ script = EventScript(
             x=1,
             y=121,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R500_NIMBUS_CASTLE_AREA_04_____DUMMY,
@@ -23,8 +22,7 @@ script = EventScript(
             y=121,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_3662_enter_area_3",
-        ),
+            identifier="EVENT_3662_enter_area_3"),
         Return(),
     ]
 )

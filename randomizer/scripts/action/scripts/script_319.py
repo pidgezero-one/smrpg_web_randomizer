@@ -11,8 +11,7 @@ script = ActionScript(
         CreatePacketAtObjectCoords(
             packet=P024_REGULAR_SOUND_EXPLOSION,
             target_npc=DUMMY_0X07,
-            destinations=["ACTION_319_visibility_on_5"],
-        ),
+            destinations=["ACTION_319_visibility_on_5"]),
         VisibilityOn(identifier="ACTION_319_visibility_on_5"),
         ObjectMemoryClearBit(arg_1=0x30, bits=[4]),
         SetSolidityBits(bit_4=True, cant_walk_through=True),

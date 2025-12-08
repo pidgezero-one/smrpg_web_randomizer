@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=27,
             y=67,
-            z=4,
-        ),
+            z=4),
         RunEventAsSubroutine(E3763_NIMBUS_BACK_EXIT_MARIO_FALL_ANIMATION),
         Return(),
     ]

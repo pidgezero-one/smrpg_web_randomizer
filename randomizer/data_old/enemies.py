@@ -39,14 +39,12 @@ def recolor_npcs():
         animation_index,
         palette_index,
         palette_offset,
-        palette,
-    ) in sprite_data:
+        palette) in sprite_data:
         gfx_offset = (sprite_index * 4) + 0x250000
 
         patch.add_data(
             gfx_offset,
-            utils.ByteField(image_index | (palette_index << 9), num_bytes=2).as_bytes(),
-        )
+            utils.ByteField(image_index | (palette_index << 9), num_bytes=2).as_bytes())
         patch.add_data(
             gfx_offset + 2, utils.ByteField(animation_index, num_bytes=2).as_bytes()
         )
@@ -149,8 +147,7 @@ class Enemy:
             self.attack,
             self.defense,
             self.magic_attack,
-            self.magic_defense,
-        )
+            self.magic_defense)
 
     def __repr__(self):
         return str(self)
@@ -229,8 +226,7 @@ class Enemy:
                     ("\x7E", 6, self.resistances),
                     ("\x7D", 4, self.resistances),
                     ("\x7F", 5, self.resistances),
-                    ("\x85", 7, self.resistances),
-                )
+                    ("\x85", 7, self.resistances))
             )
 
         # Elemental weaknesses.
@@ -241,8 +237,7 @@ class Enemy:
                     ("\x7E", 6, self.weaknesses),
                     ("\x7D", 4, self.weaknesses),
                     ("\x7F", 5, self.weaknesses),
-                    ("\x85", 7, self.weaknesses),
-                )
+                    ("\x85", 7, self.weaknesses))
             )
 
         # Status vulnerabilities.
@@ -254,8 +249,7 @@ class Enemy:
                     ("\x80", 1, vulnerabilities),
                     ("\x83", 2, vulnerabilities),
                     ("\x81", 3, vulnerabilities),
-                    ("\x84\x84", True, not self.death_immune),
-                )
+                    ("\x84\x84", True, not self.death_immune))
             )
 
         eligible = [
@@ -408,8 +402,7 @@ class Enemy:
             MallowClone,
             GenoClone,
             BowserClone,
-            PeachClone,
-        ):
+            PeachClone):
             for i in range(len(self.script)):
                 name, args = self.script[i]
                 if name == "if_item":
@@ -2135,24 +2128,20 @@ class Boomer(Enemy):
             # Change to blue state.  Scale shuffled stats based on vanilla ratios.
             patch.add_data(
                 0x353629,
-                utils.ByteField(int(round(min(self.attack * 0.6, 255)))).as_bytes(),
-            )
+                utils.ByteField(int(round(min(self.attack * 0.6, 255)))).as_bytes())
             patch.add_data(
                 0x35362D,
-                utils.ByteField(int(round(min(self.defense * 0.6429, 255)))).as_bytes(),
-            )
+                utils.ByteField(int(round(min(self.defense * 0.6429, 255)))).as_bytes())
             patch.add_data(
                 0x353631,
                 utils.ByteField(
                     int(round(min(self.magic_attack * 2.8571, 255)))
-                ).as_bytes(),
-            )
+                ).as_bytes())
             patch.add_data(
                 0x353635,
                 utils.ByteField(
                     int(round(min(self.magic_defense * 3.4615, 255)))
-                ).as_bytes(),
-            )
+                ).as_bytes())
 
             # Change back to red state (use starting stats).
             patch.add_data(0x3535E2, utils.ByteField(self.attack).as_bytes())

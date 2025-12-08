@@ -1,6 +1,6 @@
 """Base classes fors spells."""
 
-from typing import List, Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from randomizer.types.items import SpellLearn
 from randomizer.types.numbers import  ByteField, UInt16, UInt8
@@ -8,8 +8,7 @@ from randomizer.types.patch import Patch
 
 from .ids.misc import (
     ALLY_SPELL_POINTER_TABLE_START,
-    SPELL_BASE_DESC_ADDRESS,
-)
+    SPELL_BASE_DESC_ADDRESS)
 
 
 if TYPE_CHECKING:
@@ -18,7 +17,7 @@ if TYPE_CHECKING:
 class CharacterSpell(TODOImportCharacterSpell, SpellLearn):
     """Grouping class for character-specific spells."""
 
-    _world: Optional["GameWorld"] = None
+    _world: "GameWorld" | None = None
     
     @property
     def world(self) -> "GameWorld":
@@ -172,12 +171,12 @@ class CloneSpell(CharacterSpell):
         return self._parent_spell.target_not_self
 
     @property
-    def status_effects(self) -> List[Status]:
+    def status_effects(self) -> list[Status]:
         """A list of status effects inflicted by this spell."""
         return self._parent_spell.status_effects
 
     @property
-    def boosts(self) -> List[TempStatBuff]:
+    def boosts(self) -> list[TempStatBuff]:
         """A list of stat boosts applied by this spell."""
         return self._parent_spell.boosts
 
@@ -198,7 +197,7 @@ class CloneSpell(CharacterSpell):
         """The class name of this spell."""
         return self.__class__.__name__
 
-    def __init__(self, world: "GameWorld", spell: Optional[CharacterSpell]):
+    def __init__(self, world: "GameWorld", spell: CharacterSpell | None):
         super().__init__(world)
         if spell is not None:
             original_spell = world.get_spell_instance(type(spell))
@@ -211,12 +210,10 @@ class CloneSpell(CharacterSpell):
 
         patch.add_data(
             ALLY_SPELL_POINTER_TABLE_START + self.index * 2,
-            ByteField(UInt16(self.ref_ptr & 0xFFFF)).as_bytes(),
-        )
+            ByteField(UInt16(self.ref_ptr & 0xFFFF)).as_bytes())
         patch.add_data(
             SPELL_BASE_DESC_ADDRESS + self.index * 2,
-            ByteField(UInt16(self.desc_ptr & 0xFFFF)).as_bytes(),
-        )
+            ByteField(UInt16(self.desc_ptr & 0xFFFF)).as_bytes())
 
         return patch
 

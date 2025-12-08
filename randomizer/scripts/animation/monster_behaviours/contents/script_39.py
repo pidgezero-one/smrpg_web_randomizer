@@ -8,5 +8,4 @@ script = SubroutineOrBanklessScript(
         VisibilityOff(identifier="command_0x350d9d"),
         Db(bytearray(b"O")),
         Jmp(["command_0x350d25"]),
-    ],
-)
+    ])

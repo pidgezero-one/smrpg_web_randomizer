@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35600c",
-        ),
+            identifier="queuestart_0x35600c"),
         SetAMEM8BitToConst(0x61, 129),
         SetAMEM8BitToConst(0x62, 32),
         Db(bytearray(b" \x83\x01\x00")),
@@ -32,5 +31,4 @@ script = SubroutineOrBanklessScript(
         RemoveObject(),
         DisableSpritesOnSubscreen(),
         ReturnObjectQueue(),
-    ],
-)
+    ])

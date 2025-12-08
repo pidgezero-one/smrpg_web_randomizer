@@ -8,8 +8,7 @@ from randomizer.types.battles import (
     CulexMusic,
     MidbossMusic,
     NormalBattleMusic,
-    Smithy1Music,
-)
+    Smithy1Music)
 
 from randomizer.entities.spells.spells import (
     Jump,
@@ -38,8 +37,7 @@ from randomizer.entities.spells.spells import (
     Psychopath,
     Shocker,
     Snowy,
-    StarRain,
-)
+    StarRain)
 
 
 class FlagOptions(str, enum.Enum):

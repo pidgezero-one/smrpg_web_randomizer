@@ -14,5 +14,4 @@ room = Room(
     extra_sprite_actions=[
         ExtraSpriteActions.SWIM,
         ExtraSpriteActions.WHIRL,
-    ],
-)
+    ])

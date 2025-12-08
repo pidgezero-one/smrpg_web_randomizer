@@ -31,13 +31,11 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E2813_MUSHROOM_WAY_3_SUMMON_SPINYS,
             return_on_level_exit=True,
-            identifier="EVENT_2814_run_background_event_13",
-        ),
+            identifier="EVENT_2814_run_background_event_13"),
         RunBackgroundEvent(
             event_id=E2809_MUSHROOM_WAY_BOSS_THREATENS_YOU,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         Return(),
     ]
 )

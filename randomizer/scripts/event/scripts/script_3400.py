@@ -872,13 +872,11 @@ script = EventScript(
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000,
             492,
-            ["EVENT_3400_determine_mushroom_kingdom_indoor_music"],
-        ),
+            ["EVENT_3400_determine_mushroom_kingdom_indoor_music"]),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000,
             493,
-            ["EVENT_3400_determine_mushroom_kingdom_indoor_music"],
-        ),
+            ["EVENT_3400_determine_mushroom_kingdom_indoor_music"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 497, ["EVENT_3400_play_nimbus_music"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 498, ["EVENT_3400_play_nimbus_music"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 499, ["EVENT_3400_play_nimbus_music"]),
@@ -903,15 +901,13 @@ script = EventScript(
         JmpIfBitClear(
             MUSHROOM_KINGDOM_OCCUPIED,
             ["EVENT_3400_play_mushroom_kingdom_indoor_music"],
-            identifier="EVENT_3400_determine_mushroom_kingdom_indoor_music",
-        ),
+            identifier="EVENT_3400_determine_mushroom_kingdom_indoor_music"),
         JmpIfBitClear(
             MUSHROOM_KINGDOM_LIBERATED, ["EVENT_3400_play_occupied_indoor_music"]
         ),
         PlayMusicAtCurrentVolume(
             M02_MUSHROOM_KINGDOM,
-            identifier="EVENT_3400_play_mushroom_kingdom_indoor_music",
-        ),
+            identifier="EVENT_3400_play_mushroom_kingdom_indoor_music"),
         FadeOutMusicToVolume(duration=1, volume=96),
         Return(),
         PlayMusicAtCurrentVolume(
@@ -951,8 +947,7 @@ script = EventScript(
         Return(),
         PlayMusicAtDefaultVolume(
             M42_STILL_THE_ROAD_IS_FULL_OF_MONSTERS,
-            identifier="EVENT_3400_play_overworld_2_music",
-        ),
+            identifier="EVENT_3400_play_overworld_2_music"),
         Return(),
         PlayMusicAtDefaultVolume(
             M13_ROAD_IS_FULL_OF_DANGERS, identifier="EVENT_3400_play_overworld_1_music"
@@ -974,14 +969,12 @@ script = EventScript(
         JmpIfBitClear(
             MUSHROOM_KINGDOM_LIBERATED,
             ["EVENT_3400_play_occupied_music"],
-            identifier="EVENT_3400_play_occupied_music_only_if_occupied",
-        ),
+            identifier="EVENT_3400_play_occupied_music_only_if_occupied"),
         Return(),
         JmpIfBitSet(
             FOREST_LIBERATED,
             ["EVENT_3400_play_rose_town_indoor_music"],
-            identifier="EVENT_3400_determine_rose_town_shop_music",
-        ),
+            identifier="EVENT_3400_determine_rose_town_shop_music"),
         PlayMusicAtDefaultVolume(
             M15_HERES_SOME_WEAPONS, identifier="EVENT_3400_play_occupied_indoor_music"
         ),
@@ -994,8 +987,7 @@ script = EventScript(
         JmpIfBitSet(
             MINECART_CLEARED,
             ["EVENT_3400_play_moleville_music"],
-            identifier="EVENT_3400_determine_moleville_music",
-        ),
+            identifier="EVENT_3400_determine_moleville_music"),
         Jmp(["EVENT_3400_play_dungeon_music"]),
         PlayMusicAtDefaultVolume(
             M33_MOLEVILLE, identifier="EVENT_3400_play_moleville_music"
@@ -1013,8 +1005,7 @@ script = EventScript(
         JmpIfBitSet(
             NIMBUS_LAND_LIBERATED,
             ["EVENT_3400_play_nimbus_music"],
-            identifier="EVENT_3400_determine_nimbus_music",
-        ),
+            identifier="EVENT_3400_determine_nimbus_music"),
         PlayMusicAtDefaultVolume(
             M61_VALENTINA, identifier="EVENT_3400_play_valentina_music"
         ),
@@ -1038,8 +1029,7 @@ script = EventScript(
         JmpIfBitClear(
             SEASIDE_LIBERATED,
             ["EVENT_3400_play_occupied_indoor_music"],
-            identifier="EVENT_3400_determine_seaside_indoor_music",
-        ),
+            identifier="EVENT_3400_determine_seaside_indoor_music"),
         PlayMusicAtDefaultVolume(
             M05_SEASIDE_TOWN, identifier="EVENT_3400_play_seaside_indoor_music"
         ),
@@ -1074,8 +1064,7 @@ script = EventScript(
         JmpIfBitClear(
             MARRYMORE_LIBERATED,
             ["EVENT_3400_play_marrymore_music_indoors"],
-            identifier="EVENT_3400_determine_marrymore_music_speed",
-        ),
+            identifier="EVENT_3400_determine_marrymore_music_speed"),
         SpeedUpMusicTempoBy(duration=0, change=12),
         Jmp(["EVENT_3400_play_marrymore_music_indoors"]),
         Return(),

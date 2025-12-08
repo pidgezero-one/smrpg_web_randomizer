@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_1,
             R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
-            ["EVENT_406_pause_action_script_9"],
-        ),
+            ["EVENT_406_pause_action_script_9"]),
         PauseActionScript(NPC_0),
         StartAsyncEmbeddedActionScript(
             target=NPC_0,
@@ -21,8 +20,7 @@ script = EventScript(
                 ),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASJumpToHeight(height=0, silent=True),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_406_pause_3"),
         JmpIfObjectInAir(NPC_0, ["EVENT_406_pause_3"]),
         RunDialog(
@@ -31,8 +29,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=NPC_0, subscript=[ASSetSolidityBits(cant_walk_through=True)]
         ),
@@ -48,8 +45,7 @@ script = EventScript(
                 ),
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASJumpToHeight(height=0, silent=True),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_406_pause_11"),
         JmpIfObjectInAir(NPC_0, ["EVENT_406_pause_11"]),
         RunDialog(
@@ -58,8 +54,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=NPC_0, subscript=[ASSetSolidityBits(cant_walk_through=True)]
         ),

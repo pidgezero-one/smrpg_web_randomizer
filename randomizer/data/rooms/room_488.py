@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0305_UNKNOWN,
             x=6,
@@ -58,11 +57,9 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
-    ],
-    exits=[
-        RoomExit(
+            byte_8_bit_4=False),
+        Event(
+            event=E3102_EXIT_JUMPING_KIDS_HOUSE,
             x=6,
             y=26,
             z=2,
@@ -71,16 +68,10 @@ room = Room(
             height=0,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_2_bit_2=False,
-            destination=R191_MUSHROOM_KINGDOM_OUTSIDE,
-            show_message=False,
-            dst_x=5,
-            dst_y=92,
-            dst_z=4,
-            dst_z_half=False,
-            dst_f=SOUTHEAST,
-            x_bit_7=False,
+            byte_8_bit_4=False
         ),
+    ],
+    exits=[
         RoomExit(
             x=3,
             y=19,
@@ -98,8 +89,7 @@ room = Room(
             dst_z=1,
             dst_z_half=True,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -128,8 +118,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.RAINI_NPC,
             event_script=E0301_MUSHROOM_KINGDOM_MOM,
@@ -139,8 +128,7 @@ room = Room(
             y=16,
             z=2,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 2
             npc=npcs.MARRYMORE_KID_PURPLE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -167,7 +155,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -105,8 +105,7 @@ def _randomize_learned_spells(world):
         spell_class = spell_placement.item.related_class
         spell_index = next(
             (i for i, item in enumerate(default_spells) if type(item) == spell_class),
-            -1,
-        )
+            -1)
         spell = default_spells[spell_index]
 
         if not world.settings.is_flag_enabled(flags.ChangeNames):
@@ -404,8 +403,7 @@ def _finalize_character(character):
         setattr(
             character,
             attr,
-            character.get_optimal_stat_at_level(attr, character.starting_level),
-        )
+            character.get_optimal_stat_at_level(attr, character.starting_level))
 
     # If we're in debug mode, max all starting stats.
     if character.world.debug_mode:
@@ -466,10 +464,9 @@ def randomize_all(world):
 
         # Shuffle physical and magical bonuses together.
         for attrs in (
-            ("max_hp",),
+            ("max_hp"),
             ("attack", "defense"),
-            ("magic_attack", "magic_defense"),
-        ):
+            ("magic_attack", "magic_defense")):
             # Shuffle between all characters.
             shuffled = all_bonuses[:]
             random.shuffle(shuffled)

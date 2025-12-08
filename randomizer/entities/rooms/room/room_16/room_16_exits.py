@@ -20,8 +20,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     MapExit(
         x=10,
         y=51,
@@ -35,6 +34,5 @@ exits = [
         destination=OW08_MARIOS_PAD,
         show_message=False,
         byte_2_bit_1=False,
-        byte_2_bit_0=False,
-    ),
+        byte_2_bit_0=False),
 ]

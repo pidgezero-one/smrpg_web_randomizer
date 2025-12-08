@@ -1,7 +1,5 @@
 """Playable character classes."""
 
-from typing import List, Type, Union
-
 from randomizer.entities.spells.spells import (
     BowserCrush,
     ComeBack,
@@ -29,23 +27,17 @@ from randomizer.entities.spells.spells import (
     Therapy,
     Thunderbolt,
     UltraFlame,
-    UltraJump,
-)
+    UltraJump)
 from randomizer.entities.characters.palettes.bowser import (
-    Default as DefaultBowserPalette,
-)
+    Default as DefaultBowserPalette)
 from randomizer.entities.characters.palettes.geno import (
-    Default as DefaultGenoPalette,
-)
+    Default as DefaultGenoPalette)
 from randomizer.entities.characters.palettes.mario import (
-    Default as DefaultMarioPalette,
-)
+    Default as DefaultMarioPalette)
 from randomizer.entities.characters.palettes.mallow import (
-    Default as DefaultMallowPalette,
-)
+    Default as DefaultMallowPalette)
 from randomizer.entities.characters.palettes.toadstool import (
-    Default as DefaultToadstoolPalette,
-)
+    Default as DefaultToadstoolPalette)
 
 from randomizer.types.characters import Character, StatGrowth
 from randomizer.types.items import SpottedCharacter
@@ -60,16 +52,14 @@ from randomizer.types.npcs.objects import (
     Geno as GenoNPC,
     Bowser as BowserNPC,
     Toadstool as ToadstoolNPC,
-    ToadstoolDoll,
-)
+    ToadstoolDoll)
 from randomizer.types.numbers import UInt16, UInt8
 from randomizer.types.palettes import (
     BowserPaletteSet,
     GenoPaletteSet,
     MallowPaletteSet,
     MarioPaletteSet,
-    ToadstoolPaletteSet,
-)
+    ToadstoolPaletteSet)
 from randomizer.types.spells import CharacterSpell
 from randomizer.types.world.flags import PlayableCharacters, PlayAsStarter
 
@@ -122,7 +112,7 @@ class Mario(Character):
     _defense: UInt8 = UInt8(0)
     _magic_attack: UInt8 = UInt8(10)
     _magic_defense: UInt8 = UInt8(2)
-    _learned_spells: "dict[int, Type[CharacterSpell]]" = {
+    _learned_spells: "dict[int, type[CharacterSpell]]" = {
         1: Jump,
         3: FireOrb,
         6: SuperJump,
@@ -138,7 +128,7 @@ class Mario(Character):
 
     # Vanilla levelup stat growths
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_growths: List[StatGrowth] = [
+    _starting_growths: list[StatGrowth] = [
         StatGrowth(5, 3, 2, 2, 2),
         StatGrowth(5, 3, 2, 2, 2),
         StatGrowth(5, 3, 3, 2, 2),
@@ -172,7 +162,7 @@ class Mario(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _levelup_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: list[StatGrowth] = [
         StatGrowth(3, 1, 1, 3, 1),
         StatGrowth(3, 2, 1, 1, 1),
         StatGrowth(4, 1, 1, 1, 1),
@@ -204,11 +194,11 @@ class Mario(Character):
         StatGrowth(1, 2, 1, 1, 1),
     ]
 
-    _ending_palettes: List[int] = [0x37A9D8, 0x37B31A]
+    _ending_palettes: list[int] = [0x37A9D8, 0x37B31A]
 
-    _original_weapon_sprite_ids: List[Union[int, None]] = [0, 1, 2, 3, 4, 5, 6]
-    _sprite_ids_as_main_character: List[int] = [0, 1, 2, 3, 4, 5, 6]
-    _sprite_addresses: List[Union[list[int], None]] = [
+    _original_weapon_sprite_ids: list[int | None] = [0, 1, 2, 3, 4, 5, 6]
+    _sprite_ids_as_main_character: list[int] = [0, 1, 2, 3, 4, 5, 6]
+    _sprite_addresses: list[list[int] | None] = [
         [],
         [],
         [0x35F119, 0x35FF13, 0x35CD9F],
@@ -264,8 +254,8 @@ class Mario(Character):
     _placeholder: str = "`MARIO_NAME`"
     _starter_script: int = 187
     _container_script: int = 193
-    _model: Type[NPC] = MarioNPC
-    _doll: Type[NPC] = MarioDoll
+    _model: type[NPC] = MarioNPC
+    _doll: type[NPC] = MarioDoll
     _sprites_primary: "dict[str, tuple[int, int, bool]]" = {
         "south": (0, 12, True),
         "defend": (2, 16, True),
@@ -353,7 +343,7 @@ class Mario(Character):
         "hammer_static": (1, 3, True),
     }
 
-    _associated_spotted_class: Type[SpottedCharacter] = MarioSpotted
+    _associated_spotted_class: type[SpottedCharacter] = MarioSpotted
 
     def get_patch(self):
         patch = super().get_patch()
@@ -379,7 +369,7 @@ class Toadstool(Character):
     _defense: UInt8 = UInt8(0)
     _magic_attack: UInt8 = UInt8(14)
     _magic_defense: UInt8 = UInt8(14)
-    _learned_spells: "dict[int, Type[CharacterSpell]]" = {
+    _learned_spells: "dict[int, type[CharacterSpell]]" = {
         3: Therapy,
         7: GroupHug,
         11: SleepyTime,
@@ -395,7 +385,7 @@ class Toadstool(Character):
 
     # Vanilla levelup stat growths
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_growths: List[StatGrowth] = [
+    _starting_growths: list[StatGrowth] = [
         StatGrowth(2, 2, 2, 1, 1),
         StatGrowth(2, 2, 2, 1, 1),
         StatGrowth(2, 2, 2, 2, 1),
@@ -430,7 +420,7 @@ class Toadstool(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _levelup_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: list[StatGrowth] = [
         StatGrowth(5, 1, 1, 3, 1),
         StatGrowth(5, 3, 1, 1, 1),
         StatGrowth(9, 1, 1, 1, 1),
@@ -461,11 +451,11 @@ class Toadstool(Character):
         StatGrowth(1, 1, 1, 3, 1),
         StatGrowth(1, 3, 1, 1, 1),
     ]
-    _ending_palettes: List[int] = [0x37B086, 0x37B338]
+    _ending_palettes: list[int] = [0x37B086, 0x37B338]
 
-    _original_weapon_sprite_ids: List[Union[int, None]] = [7, None, 8, 9, 10, 11, 12]
-    _sprite_ids_as_main_character: List[int] = [0, 1, 2, 3, 4, 5, 634]
-    _sprite_addresses: List[Union[list[int], None]] = [
+    _original_weapon_sprite_ids: list[int | None] = [7, None, 8, 9, 10, 11, 12]
+    _sprite_ids_as_main_character: list[int] = [0, 1, 2, 3, 4, 5, 634]
+    _sprite_addresses: list[list[int] | None] = [
         [],
         None,
         [0x35FF1A, 0x35A9FD, 0x35CDA8],
@@ -512,8 +502,8 @@ class Toadstool(Character):
     _mboy_greeting: str = ""
     _starter_script: int = 191
     _container_script: int = 197
-    _doll: Type[NPC] = ToadstoolDoll
-    _model: Type[NPC] = ToadstoolNPC
+    _doll: type[NPC] = ToadstoolDoll
+    _model: type[NPC] = ToadstoolNPC
     _sprites_primary: "dict[str, tuple[int, int, bool]]" = {
         "south": (0, 12, True),
         "defend": (2, 15, True),
@@ -601,7 +591,7 @@ class Toadstool(Character):
         "hammer_static": (1, 3, True),
     }
 
-    _associated_spotted_class: Type[SpottedCharacter] = ToadstoolSpotted
+    _associated_spotted_class: type[SpottedCharacter] = ToadstoolSpotted
 
     def get_patch(self):
         patch = super().get_patch()
@@ -628,7 +618,7 @@ class Bowser(Character):
     _defense: UInt8 = UInt8(15)
     _magic_attack: UInt8 = UInt8(1)
     _magic_defense: UInt8 = UInt8(6)
-    _learned_spells: "dict[int, Type[CharacterSpell]]" = {
+    _learned_spells: "dict[int, type[CharacterSpell]]" = {
         8: Terrorize,
         12: PoisonGas,
         15: Crusher,
@@ -642,7 +632,7 @@ class Bowser(Character):
 
     # Vanilla levelup stat growths
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_growths: List[StatGrowth] = [
+    _starting_growths: list[StatGrowth] = [
         StatGrowth(6, 6, 5, 1, 3),
         StatGrowth(6, 6, 5, 1, 3),
         StatGrowth(7, 6, 5, 1, 3),
@@ -677,7 +667,7 @@ class Bowser(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _levelup_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: list[StatGrowth] = [
         StatGrowth(1, 1, 1, 3, 1),
         StatGrowth(1, 2, 1, 1, 1),
         StatGrowth(3, 1, 1, 1, 1),
@@ -709,9 +699,9 @@ class Bowser(Character):
         StatGrowth(1, 2, 1, 1, 1),
     ]
 
-    _ending_palettes: List[int] = [0x37B068, 0x37B356]
+    _ending_palettes: list[int] = [0x37B068, 0x37B356]
 
-    _original_weapon_sprite_ids: List[Union[int, None]] = [
+    _original_weapon_sprite_ids: list[int | None] = [
         13,
         None,
         14,
@@ -720,8 +710,8 @@ class Bowser(Character):
         17,
         18,
     ]
-    _sprite_ids_as_main_character: List[int] = [0, 1, 2, 3, 4, 5, 634]
-    _sprite_addresses: List[Union[list[int], None]] = [
+    _sprite_ids_as_main_character: list[int] = [0, 1, 2, 3, 4, 5, 634]
+    _sprite_addresses: list[list[int] | None] = [
         [],
         None,
         [0x35FF21, 0x35CDB1],
@@ -747,12 +737,12 @@ class Bowser(Character):
     _runaway_bytes: bytearray = bytearray([0x03, 0x81, 0x08, 0x0D, 0x00, 0x00])
 
     _item_id: int = 224
-    _model: Type[NPC] = BowserNPC
+    _model: type[NPC] = BowserNPC
     _description: str = PlayableCharacters.BOWSER.value
     _placeholder: str = "`BOWSER_NAME`"
     _starter_script: int = 190
     _container_script: int = 196
-    _doll: Type[NPC] = BowserDoll
+    _doll: type[NPC] = BowserDoll
     _sprites_primary: "dict[str, tuple[int, int, bool]]" = {
         "south": (0, 12, True),
         "defend": (2, 17, True),
@@ -840,7 +830,7 @@ class Bowser(Character):
         "hammer_static": (2, 13, True),
     }
 
-    _associated_spotted_class: Type[SpottedCharacter] = BowserSpotted
+    _associated_spotted_class: type[SpottedCharacter] = BowserSpotted
 
 
 class Geno(Character):
@@ -855,7 +845,7 @@ class Geno(Character):
     _defense: UInt8 = UInt8(6)
     _magic_attack: UInt8 = UInt8(3)
     _magic_defense: UInt8 = UInt8(5)
-    _learned_spells: "dict[int, Type[CharacterSpell]]" = {
+    _learned_spells: "dict[int, type[CharacterSpell]]" = {
         6: GenoBeam,
         8: GenoBoost,
         11: GenoWhirl,
@@ -870,7 +860,7 @@ class Geno(Character):
 
     # Vanilla levelup stat growths
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_growths: List[StatGrowth] = [
+    _starting_growths: list[StatGrowth] = [
         StatGrowth(3, 6, 3, 3, 2),
         StatGrowth(4, 6, 3, 3, 2),
         StatGrowth(4, 6, 3, 3, 2),
@@ -905,7 +895,7 @@ class Geno(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _levelup_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: list[StatGrowth] = [
         StatGrowth(5, 1, 1, 3, 1),
         StatGrowth(5, 3, 1, 1, 1),
         StatGrowth(6, 1, 1, 1, 1),
@@ -937,9 +927,9 @@ class Geno(Character):
         StatGrowth(1, 3, 1, 1, 1),
     ]
 
-    _ending_palettes: List[int] = [0x37AA14, 0x37B392]
+    _ending_palettes: list[int] = [0x37AA14, 0x37B392]
 
-    _original_weapon_sprite_ids: List[Union[int, None]] = [
+    _original_weapon_sprite_ids: list[int | None] = [
         25,
         None,
         26,
@@ -948,8 +938,8 @@ class Geno(Character):
         29,
         30,
     ]
-    _sprite_ids_as_main_character: List[int] = [0, 1, 2, 3, 4, 5, 634]
-    _sprite_addresses: List[Union[list[int], None]] = [
+    _sprite_ids_as_main_character: list[int] = [0, 1, 2, 3, 4, 5, 634]
+    _sprite_addresses: list[list[int] | None] = [
         [],
         None,
         [0x35FF28, 0x35BC59, 0x35CDBA],
@@ -979,8 +969,8 @@ class Geno(Character):
     _placeholder: str = "`GENO_NAME`"
     _starter_script: int = 189
     _container_script: int = 195
-    _doll: Type[NPC] = GenoDoll
-    _model: Type[NPC] = GenoNPC
+    _doll: type[NPC] = GenoDoll
+    _model: type[NPC] = GenoNPC
     _sprites_primary: "dict[str, tuple[int, int, bool]]" = {
         "south": (0, 12, True),
         "defend": (2, 16, True),
@@ -1068,7 +1058,7 @@ class Geno(Character):
         "hammer_static": (1, 3, True),
     }
 
-    _associated_spotted_class: Type[SpottedCharacter] = GenoSpotted
+    _associated_spotted_class: type[SpottedCharacter] = GenoSpotted
 
 
 class Mallow(Character):
@@ -1083,7 +1073,7 @@ class Mallow(Character):
     _defense: UInt8 = UInt8(0)
     _magic_attack: UInt8 = UInt8(11)
     _magic_defense: UInt8 = UInt8(7)
-    _learned_spells: "dict[int, Type[CharacterSpell]]" = {
+    _learned_spells: "dict[int, type[CharacterSpell]]" = {
         2: Thunderbolt,
         3: HPRain,
         6: Psychopath,
@@ -1099,7 +1089,7 @@ class Mallow(Character):
 
     # Vanilla levelup stat growths
     # (hp, attack, defense, m.attack, m.defense)
-    _starting_growths: List[StatGrowth] = [
+    _starting_growths: list[StatGrowth] = [
         StatGrowth(4, 2, 3, 2, 2),
         # Vanilla growths
         StatGrowth(4, 2, 3, 2, 2),
@@ -1134,7 +1124,7 @@ class Mallow(Character):
 
     # Vanilla levelup stat bonus options
     # (hp, attack, defense, m.attack, m.defense)
-    _levelup_bonuses: List[StatGrowth] = [
+    _levelup_bonuses: list[StatGrowth] = [
         StatGrowth(4, 1, 1, 2, 1),
         StatGrowth(4, 3, 1, 1, 1),
         StatGrowth(6, 1, 1, 1, 1),
@@ -1165,10 +1155,10 @@ class Mallow(Character):
         StatGrowth(1, 1, 1, 2, 1),
         StatGrowth(1, 3, 1, 1, 1),
     ]
-    _ending_palettes: List[int] = [0x37A9F6, 0x37B374]
+    _ending_palettes: list[int] = [0x37A9F6, 0x37B374]
 
-    _standard_sprite_addresses: List[int] = [0x35FF2F]
-    _original_weapon_sprite_ids: List[Union[int, None]] = [
+    _standard_sprite_addresses: list[int] = [0x35FF2F]
+    _original_weapon_sprite_ids: list[int | None] = [
         19,
         None,
         20,
@@ -1177,8 +1167,8 @@ class Mallow(Character):
         23,
         24,
     ]
-    _sprite_ids_as_main_character: List[int] = [0, 1, 2, 3, 4, 5, 6]
-    _sprite_addresses: List[Union[list[int], None]] = [
+    _sprite_ids_as_main_character: list[int] = [0, 1, 2, 3, 4, 5, 6]
+    _sprite_addresses: list[list[int] | None] = [
         [],
         None,
         [0x35FF2F, 0x35CDC3],
@@ -1217,8 +1207,8 @@ class Mallow(Character):
     _placeholder: str = "`MALLOW_NAME`"
     _starter_script: int = 188
     _container_script: int = 194
-    _doll: Type[NPC] = MallowDoll
-    _model: Type[NPC] = MallowNPC
+    _doll: type[NPC] = MallowDoll
+    _model: type[NPC] = MallowNPC
     _sprites_primary: "dict[str, tuple[int, int, bool]]" = {
         "south": (0, 12, True),
         "defend": (2, 15, True),
@@ -1306,4 +1296,4 @@ class Mallow(Character):
         "hammer_static": (1, 3, True),
     }
 
-    _associated_spotted_class: Type[SpottedCharacter] = MallowSpotted
+    _associated_spotted_class: type[SpottedCharacter] = MallowSpotted

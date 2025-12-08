@@ -19,5 +19,4 @@ script = SubroutineOrBanklessScript(
         ReturnSubroutine(),
         Db(bytearray(b"\xa0"), identifier="command_0x3a7550"),
         ReturnObjectQueue(),
-    ],
-)
+    ])

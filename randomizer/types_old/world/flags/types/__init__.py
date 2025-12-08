@@ -7,5 +7,4 @@ from .classes import (
     SelectOneFlag,
     BooleanFlag,
     NumberThresholdFlag,
-    FlagT,
-)
+    FlagT)

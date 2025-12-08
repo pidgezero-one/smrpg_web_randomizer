@@ -19,8 +19,7 @@ script = EventScript(
                 ),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASOverwriteSolidity(),
-            ],
-        ),
+            ]),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R100_BOOSTER_PASS_AREA_01, mod_id=0
         ),
@@ -38,8 +37,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(identifier="EVENT_2307_ret_12"),
     ]
 )

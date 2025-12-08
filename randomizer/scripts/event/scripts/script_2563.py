@@ -28,8 +28,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASShiftNorthSteps(6)]),
         ActionQueueSync(
             target=MARIO,
@@ -38,8 +37,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=3, sprite_offset=2, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(40),
         SummonObjectToCurrentLevel(NPC_1),
         ActionQueueAsync(
@@ -50,8 +48,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(8),
         PlaySound(sound=SO000_SILENCE, channel=6),
         Pause(48),
@@ -85,8 +82,7 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASOverwriteSolidity(),
                 ASFloatingOff(),
                 ASPlaySound(sound=SO004_JUMP, channel=4),
@@ -102,11 +98,9 @@ script = EventScript(
                     sprite_offset=6,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(24),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=SCREEN_FOCUS, subscript=[ASShiftNorthSteps(6)]),
         ActionQueueAsync(
             target=MARIO,
@@ -118,8 +112,7 @@ script = EventScript(
                 ASDb(bytearray(b"$ \x00\x00\x00")),
                 ASShiftNorthSteps(10),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         FadeOutToBlack(sync=False),
         JmpToEvent(E3615_CLIMB_UP_VALLEY_BEANSTALK_INTO_VINE_CLOUDS),
         Return(identifier="EVENT_2563_ret_38"),

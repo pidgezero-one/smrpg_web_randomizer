@@ -16,19 +16,16 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASWalkNorthwestPixels(5),
                 ASWalkSouthwestPixels(3),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -36,8 +33,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(3),
                 ASFaceSouthwest(),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

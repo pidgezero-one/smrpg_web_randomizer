@@ -1,4 +1,4 @@
-# E3103_EMPTY
+# E3103_ENTER_MK_GUEST_ROOM
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,11 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["3103_normal_exit"]),
+	JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED, ["3103_normal_exit"]),
+    EnterArea(R330_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_GUEST_ROOM, NORTHEAST, 22, 52, 0, False, False, True),
+    Return(),
+    EnterArea(R022_MUSHROOM_KINGDOM_CASTLE_GUEST_ROOM, NORTHEAST, 22, 52, 0, False, False, True, identifier="3103_normal_exit"),
+    Return(),
 ])
+

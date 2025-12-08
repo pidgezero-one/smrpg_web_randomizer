@@ -27,5 +27,4 @@ from .classes import (
     Fireball,
     MimicLarge,
     ShovelKnightBossLarge,
-    CloneNPC,
-)
+    CloneNPC)

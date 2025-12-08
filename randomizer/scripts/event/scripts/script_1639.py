@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI1254_FIREWORKS_HINT,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_1639_run_dialog_3",
-        ),
+            identifier="EVENT_1639_run_dialog_3"),
         Return(),
     ]
 )

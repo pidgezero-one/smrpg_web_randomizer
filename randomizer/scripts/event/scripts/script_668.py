@@ -16,35 +16,30 @@ script = EventScript(
         ActionQueueSync(target=MARIO, subscript=[ASFaceSouthwest()]),
         ActionQueueSync(
             target=NPC_8,
-            subscript=[ASFixedFCoordOff(), ASResetProperties(), ASFaceSouthwest()],
-        ),
+            subscript=[ASFixedFCoordOff(), ASResetProperties(), ASFaceSouthwest()]),
         ActionQueueSync(
             target=NPC_11,
             subscript=[
                 ASTransferToXYZF(x=9, y=97, z=0, direction=EAST),
                 ASTransferXYZFPixels(x=16, y=8, z=0, direction=EAST),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_9,
             subscript=[
                 ASTransferToXYZF(x=9, y=98, z=0, direction=EAST),
                 ASTransferXYZFPixels(x=8, y=4, z=0, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_10,
             subscript=[
                 ASTransferToXYZF(x=10, y=95, z=0, direction=EAST),
                 ASTransferXYZFPixels(x=254, y=4, z=0, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=5, y=85)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=5, y=85)]),
         RememberLastObject(),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Pause(30),

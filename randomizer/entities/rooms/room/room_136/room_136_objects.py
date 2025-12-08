@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularClone(
         occupant=WhirlpoolBubble,
@@ -51,6 +50,5 @@ objects = [
         priority_0=False,
         priority_1=True,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

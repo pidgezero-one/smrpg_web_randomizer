@@ -31,5 +31,4 @@ room = Room(
         full_palette_buffer=True
     ),
     music=Music._27_DUNGEON_IS_FULL_OF_MONSTERS,
-    entrance_event=15,
-)
+    entrance_event=15)

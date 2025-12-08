@@ -18,8 +18,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=NPC_8, subscript=[ASSetSolidityBits(cant_walk_through=True)]
         ),

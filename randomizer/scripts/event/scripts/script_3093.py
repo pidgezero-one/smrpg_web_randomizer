@@ -18,11 +18,9 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         JmpToEvent(
             E3400_RESTART_MUSIC_AFTER_STAR_PIECE_SEQUENCE,
-            identifier="EVENT_3093_star_piece",
-        ),
+            identifier="EVENT_3093_star_piece"),
     ]
 )

@@ -90,8 +90,7 @@ script = ActionScript(
             is_mold=True,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_445_set_sprite_sequence_71",
-        ),
+            identifier="ACTION_445_set_sprite_sequence_71"),
         Pause(256),
         SetSpriteSequence(index=5, is_mold=True, is_sequence=True, looping=True),
         Pause(6),
@@ -106,14 +105,12 @@ script = ActionScript(
         CreatePacketAtObjectCoords(
             packet=P030_WATER_SPLASH_DROPS_SFX,
             target_npc=DUMMY_0X07,
-            destinations=["ACTION_445_set_sprite_sequence_84"],
-        ),
+            destinations=["ACTION_445_set_sprite_sequence_84"]),
         SetSpriteSequence(
             index=5,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_445_set_sprite_sequence_84",
-        ),
+            identifier="ACTION_445_set_sprite_sequence_84"),
         SetPriority(3),
         IncPaletteRowBy(15),
         Set700CToPressedButton(),
@@ -136,8 +133,7 @@ script = ActionScript(
             is_mold=True,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_445_set_sprite_sequence_102",
-        ),
+            identifier="ACTION_445_set_sprite_sequence_102"),
         SetObjectMemoryBits(arg_1=0x0E, bits=[]),
         Set700CToPressedButton(),
         JmpIfVarEqualsConst(
@@ -166,8 +162,7 @@ script = ActionScript(
             packet=P030_WATER_SPLASH_DROPS_SFX,
             target_npc=DUMMY_0X07,
             destinations=["ACTION_445_jmp_116"],
-            identifier="ACTION_445_create_packet_at_npc_coords_115",
-        ),
+            identifier="ACTION_445_create_packet_at_npc_coords_115"),
         Jmp(["ACTION_445_set_object_memory_bits_51"], identifier="ACTION_445_jmp_116"),
     ]
 )

@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x67),
         ClearAMEM8Bit(0x66),
@@ -27,5 +26,4 @@ script = SubroutineOrBanklessScript(
         RunSubroutine(["command_0x3533df"]),
         RunSubroutine(["command_0x3533ea"]),
         Jmp(["command_0x35252f"]),
-    ],
-)
+    ])

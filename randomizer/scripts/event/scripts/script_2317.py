@@ -14,8 +14,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=0, y=76),
                 ASWalkNorthPixels(8),
                 ASWalkEastPixels(17),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -29,11 +28,9 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -43,8 +40,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         SetBit(TEMP_GARDENER_EXTERIOR_1),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
@@ -60,8 +56,7 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(16),
                 ASSetSpriteSequence(
                     index=4, sprite_offset=1, is_sequence=True, looping=True
@@ -74,11 +69,9 @@ script = EventScript(
                     bit_4=True,
                     cant_pass_npcs=True,
                     cant_walk_through=True,
-                    bit_7=True,
-                ),
+                    bit_7=True),
                 ASWalkNorthwestPixels(8),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         UnfreezeCamera(),
         Return(),

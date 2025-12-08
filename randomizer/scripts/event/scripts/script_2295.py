@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=22,
             y=74,
-            z=0,
-        ),
+            z=0),
         FreezeCamera(),
         ActionQueueSync(
             target=SCREEN_FOCUS,
@@ -20,8 +19,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_FAST),
                 ASBounceToXYWithHeight(x=18, y=55, height=0),
                 ASWalkNorthwestPixels(8),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=MARIO, subscript=[ASVisibilityOff()]),
         ActionQueueSync(
             target=NPC_9, subscript=[ASFixedFCoordOn(), ASWalkNorthwestPixels(1)]
@@ -35,8 +33,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(4),
                 ASFaceSouthwest(),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER),
         StarMaskExpandFromScreenCenter(),
         Pause(95),
@@ -46,8 +43,7 @@ script = EventScript(
                 ASSetSequenceSpeed(NORMAL),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASWalkSoutheastPixels(8),
-            ],
-        ),
+            ]),
         Pause(20),
         ActionQueueAsync(
             target=NPC_10,
@@ -55,8 +51,7 @@ script = EventScript(
                 ASSetSequenceSpeed(NORMAL),
                 ASSetWalkingSpeed(SLOW),
                 ASWalkSoutheastPixels(8),
-            ],
-        ),
+            ]),
         Pause(20),
         ActionQueueAsync(
             target=NPC_9,
@@ -68,8 +63,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASPause(25),
                 ASWalkSoutheastPixels(8),
-            ],
-        ),
+            ]),
         Pause(5),
         ActionQueueSync(
             target=NPC_10,
@@ -86,8 +80,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASWalkSoutheastPixels(8),
                 ASWalkSouthwestSteps(10),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_9,
             subscript=[
@@ -105,8 +98,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASWalkSoutheastPixels(8),
                 ASWalkSouthwestSteps(10),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0, subscript=[ASPause(100), ASPause(60), ASSequenceLoopingOff()]
         ),
@@ -122,8 +114,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkSoutheastSteps(4),
                 ASWalkSouthwestSteps(7),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -136,8 +127,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkSoutheastSteps(2),
                 ASWalkSouthwestSteps(7),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -150,8 +140,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkNorthwestSteps(2),
                 ASWalkSouthwestSteps(7),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -164,8 +153,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkNorthwestSteps(4),
                 ASWalkSouthwestSteps(7),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -179,8 +167,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkSoutheastSteps(4),
                 ASWalkSouthwestSteps(7),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
@@ -195,8 +182,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkSoutheastSteps(2),
                 ASWalkSouthwestSteps(7),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
@@ -210,8 +196,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkNorthwestSteps(2),
                 ASWalkSouthwestSteps(7),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
@@ -225,16 +210,14 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkNorthwestSteps(4),
                 ASWalkSouthwestSteps(7),
-            ],
-        ),
+            ]),
         Pause(15),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
                 ASSetSpriteSequence(index=1, is_sequence=True, looping=True),
                 ASPause(45),
-            ],
-        ),
+            ]),
         StarMaskShrinkToScreenCenter(),
         Pause(60),
         JmpToEvent(E3802_ENDING_CREDITS_YELLOW_STAR),

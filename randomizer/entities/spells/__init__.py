@@ -118,8 +118,7 @@ from .spells import (
     ChestMute,
     ChestPoison,
     ChainSaw,
-    SpellDoNothing,
-)
+    SpellDoNothing)
 
 spell_table = [
     Jump,

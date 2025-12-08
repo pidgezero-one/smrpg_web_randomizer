@@ -4,13 +4,10 @@
 
 from copy import deepcopy
 from random import choice
-from typing import List, Optional, Type
-
 from randomizer.types.dialogs.ids import (
     DI2911_TREASURE_SELLER_ITEM_1,
     DI2908_TREASURE_SELLER_ITEM_2,
-    DI2914_TREASURE_SELLER_ITEM_3,
-)
+    DI2914_TREASURE_SELLER_ITEM_3)
 from randomizer.types.items import (
     Coins,
     InvincibilityStar,
@@ -31,8 +28,7 @@ from randomizer.types.items import (
     EquipStats,
     ItemShuffleType,
     ItemUnique,
-    EQUIP_STATS,
-)
+    EQUIP_STATS)
 from randomizer.types.npcs.objects.types import ItemNPC
 from randomizer.types.npcs.objects import (
     Banana,
@@ -87,8 +83,7 @@ from randomizer.types.npcs.objects import (
     YellowSyrup,
     Flower as FlowerNPC,
     RecoveryMushroom as RecoveryMushroomNPC,
-    FrogCoin as FrogCoinNPC,
-)
+    FrogCoin as FrogCoinNPC)
 from randomizer.types.numbers import UInt16, UInt8
 from randomizer.types.overworld_scripts.arguments.types import Flag, PartyCharacter
 from randomizer.types.overworld_scripts.arguments import (
@@ -103,8 +98,7 @@ from randomizer.types.overworld_scripts.arguments import (
     MALLOW,
     GENO,
     TOADSTOOL,
-    BOWSER,
-)
+    BOWSER)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0256_RETURN,
     E3081_YOU_MISSED,
@@ -172,16 +166,14 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E3943_SHOES_CHEST,
     E3944_BROOCH_CHEST,
     E3945_RING_CHEST,
-    E3946_CROWN_CHEST,
-)
+    E3946_CROWN_CHEST)
 from randomizer.types.spells import Element, Status, TempStatBuff
 from randomizer.types.world import GameWorld
 from randomizer.types.world.flags import (
     FireworksSetting,
     FireworksOptions,
     CasinoWarp,
-    StarPieceHints,
-)
+    StarPieceHints)
 
 
 class Hammer(Weapon, RegularEquip):
@@ -191,12 +183,12 @@ class Hammer(Weapon, RegularEquip):
     _description: str = "Pounds\x01enemies"
     _tier: int = 1
     _order: int = 53
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 10
     _variance: int = 1
     _price: int = 70
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
-    _model: Type[ItemNPC] = HammerNPC
+    _model: type[ItemNPC] = HammerNPC
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -211,13 +203,13 @@ class FroggieStick(Weapon, SpecialEquip):
     _description: str = "Frogfucius\x01made it"
     _tier: int = 1
     _order: int = 67
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 20
     _variance: int = 2
     _price: int = 180
     _special_equip: bool = True
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
-    _model: Type[ItemNPC] = FroggieStickNPC
+    _model: type[ItemNPC] = FroggieStickNPC
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Caster's Staff”!\n It looks pretty good at bonking.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -232,8 +224,8 @@ class NokNokShell(Weapon, RegularEquip):
     _description: str = "Kick to attack"
     _tier: int = 1
     _order: int = 58
-    _equip_chars: List[PartyCharacter] = [MARIO]
-    _model: Type[ItemNPC] = GreenShell
+    _equip_chars: list[PartyCharacter] = [MARIO]
+    _model: type[ItemNPC] = GreenShell
     _attack: int = 20
     _variance: int = 2
     _price: int = 20
@@ -252,7 +244,7 @@ class PunchGlove(Weapon, RegularEquip):
     _description: str = "Knock out\x01power!"
     _tier: int = 1
     _order: int = 48
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 30
     _variance: int = 3
     _price: int = 36
@@ -265,7 +257,7 @@ class FingerShot(Weapon, RegularEquip):
     _description: str = "Fingers shoot\x01bullets"
     _tier: int = 1
     _order: int = 70
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 12
     _variance: int = 3
     _price: int = 50
@@ -278,11 +270,11 @@ class Cymbals(Weapon, RegularEquip):
     _description: str = "Scare enemies\x01with a clash"
     _tier: int = 1
     _order: int = 60
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 30
     _variance: int = 3
     _price: int = 42
-    _model: Type[ItemNPC] = Music
+    _model: type[ItemNPC] = Music
 
 
 class Chomp(Weapon, SpecialEquip):
@@ -292,12 +284,12 @@ class Chomp(Weapon, SpecialEquip):
     _description: str = "Just spin me\x01at an enemy!"
     _tier: int = 1
     _order: int = 64
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 10
     _variance: int = 4
     _price: int = 140
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
-    _model: Type[ItemNPC] = ChompItem
+    _model: type[ItemNPC] = ChompItem
     _special_equip: bool = True
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Chain Chomp”!\n It's hungry to stir up some trouble.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -313,12 +305,12 @@ class Masher(Weapon, RegularEquip):
     _description: str = "Makes monster\x01mash!"
     _tier: int = 4
     _order: int = 54
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 50
     _variance: int = 30
     _price: int = 160
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
-    _model: Type[ItemNPC] = HammerNPC
+    _model: type[ItemNPC] = HammerNPC
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -331,10 +323,10 @@ class ChompShell(Weapon, RegularEquip):
 
     _item_id: int = 13
     _description: str = "It~s a\x01Kinklink shell"
-    _model: Type[ItemNPC] = ChompItem
+    _model: type[ItemNPC] = ChompItem
     _tier: int = 1
     _order: int = 65
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 9
     _variance: int = 3
     _price: int = 60
@@ -347,11 +339,11 @@ class SuperHammer(Weapon, RegularEquip):
     _description: str = "The standard\x01for hammers!"
     _tier: int = 2
     _order: int = 55
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 40
     _variance: int = 4
     _price: int = 70
-    _model: Type[ItemNPC] = HammerNPC
+    _model: type[ItemNPC] = HammerNPC
 
 
 class HandGun(Weapon, RegularEquip):
@@ -361,7 +353,7 @@ class HandGun(Weapon, RegularEquip):
     _description: str = "It packs a kick"
     _tier: int = 1
     _order: int = 72
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 24
     _variance: int = 4
     _price: int = 75
@@ -374,7 +366,7 @@ class WhompGlove(Weapon, RegularEquip):
     _description: str = "The old double\x01whammie!"
     _tier: int = 2
     _order: int = 52
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 40
     _variance: int = 4
     _price: int = 72
@@ -387,7 +379,7 @@ class SlapGlove(Weapon, RegularEquip):
     _description: str = "It slaps ~em\x01silly"
     _tier: int = 2
     _order: int = 49
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 40
     _variance: int = 4
     _price: int = 100
@@ -404,10 +396,10 @@ class TroopaShell(Weapon, RegularEquip):
 
     _item_id: int = 18
     _description: str = "Kick with it!"
-    _model: Type[ItemNPC] = RedShell
+    _model: type[ItemNPC] = RedShell
     _tier: int = 2
     _order: int = 59
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 50
     _variance: int = 5
     _price: int = 90
@@ -418,10 +410,10 @@ class Parasol(Weapon, RegularEquip):
 
     _item_id: int = 19
     _description: str = "Inflicts\x01serious pain!"
-    _model: Type[ItemNPC] = ParasolNPC
+    _model: type[ItemNPC] = ParasolNPC
     _tier: int = 2
     _order: int = 68
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 50
     _variance: int = 5
     _price: int = 84
@@ -434,7 +426,7 @@ class HurlyGloves(Weapon, RegularEquip):
     _description: str = "A classic\x01Mario}toss\x01attack"
     _tier: int = 1
     _order: int = 46
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 20
     _variance: int = 5
     _price: int = 92
@@ -447,7 +439,7 @@ class DoublePunch(Weapon, RegularEquip):
     _description: str = "A handy double\x01rocket punch"
     _tier: int = 2
     _order: int = 44
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 35
     _variance: int = 5
     _price: int = 88
@@ -458,10 +450,10 @@ class RibbitStick(Weapon, RegularEquip):
 
     _item_id: int = 22
     _description: str = "It~ll come\x01in handy"
-    _model: Type[ItemNPC] = FroggieStickNPC
+    _model: type[ItemNPC] = FroggieStickNPC
     _tier: int = 2
     _order: int = 69
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 50
     _variance: int = 5
     _price: int = 86
@@ -474,8 +466,8 @@ class SpikedLink(Weapon, RegularEquip):
     _description: str = "A studded ball\x01and chain!"
     _tier: int = 1
     _order: int = 66
-    _equip_chars: List[PartyCharacter] = [BOWSER]
-    _model: Type[ItemNPC] = ChompItem
+    _equip_chars: list[PartyCharacter] = [BOWSER]
+    _model: type[ItemNPC] = ChompItem
     _attack: int = 30
     _variance: int = 6
     _price: int = 94
@@ -488,7 +480,7 @@ class MegaGlove(Weapon, RegularEquip):
     _description: str = "Packs a mega\x01wallop!"
     _tier: int = 3
     _order: int = 47
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 60
     _variance: int = 6
     _price: int = 102
@@ -499,10 +491,10 @@ class WarFan(Weapon, RegularEquip):
 
     _item_id: int = 25
     _description: str = "A mysterious\x01battle fan!"
-    _model: Type[ItemNPC] = Fan
+    _model: type[ItemNPC] = Fan
     _tier: int = 3
     _order: int = 63
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 60
     _variance: int = 6
     _price: int = 100
@@ -515,7 +507,7 @@ class HandCannon(Weapon, RegularEquip):
     _description: str = "Shoots bullets\x01from elbow!"
     _tier: int = 2
     _order: int = 71
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _attack: int = 45
     _variance: int = 6
     _price: int = 105
@@ -528,7 +520,7 @@ class StickyGlove(Weapon, RegularEquip):
     _description: str = "Launches a\x01punch attack."
     _tier: int = 3
     _order: int = 50
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 60
     _variance: int = 6
     _price: int = 98
@@ -541,11 +533,11 @@ class UltraHammer(Weapon, RegularEquip):
     _description: str = "The ultimate\x01hammer!"
     _tier: int = 3
     _order: int = 56
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 70
     _variance: int = 7
     _price: int = 115
-    _model: Type[ItemNPC] = HammerNPC
+    _model: type[ItemNPC] = HammerNPC
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -561,7 +553,7 @@ class SuperSlap(Weapon, RegularEquip):
     _description: str = "The Princess~\x01mega}slap!"
     _tier: int = 3
     _order: int = 51
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 70
     _variance: int = 7
     _price: int = 110
@@ -580,7 +572,7 @@ class DrillClaw(Weapon, RegularEquip):
     _description: str = "A drilling\x01claw!"
     _tier: int = 2
     _order: int = 45
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _attack: int = 40
     _variance: int = 7
     _price: int = 118
@@ -599,8 +591,8 @@ class StarGun(Weapon, RegularEquip):
     _description: str = "Try shooting\x01stars!"
     _tier: int = 3
     _order: int = 73
-    _equip_chars: List[PartyCharacter] = [GENO]
-    _model: Type[ItemNPC] = TinyStar
+    _equip_chars: list[PartyCharacter] = [GENO]
+    _model: type[ItemNPC] = TinyStar
     _attack: int = 57
     _variance: int = 7
     _price: int = 120
@@ -619,11 +611,11 @@ class SonicCymbal(Weapon, RegularEquip):
     _description: str = "Puts noise to\x01work for you!"
     _tier: int = 3
     _order: int = 61
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _attack: int = 70
     _variance: int = 7
     _price: int = 108
-    _model: Type[ItemNPC] = Music
+    _model: type[ItemNPC] = Music
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Psych Percussion”!\n This could catch monsters\n off-guard.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -637,10 +629,10 @@ class LazyShellWeapon(Weapon, SpecialEquip):
 
     _item_id: int = 33
     _description: str = "Toss a shell\x01at an enemy!"
-    _model: Type[ItemNPC] = RedShell
+    _model: type[ItemNPC] = RedShell
     _tier: int = 4
     _order: int = 57
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _attack: int = 90
     _variance: int = 40
     _price: int = 200
@@ -658,10 +650,10 @@ class FryingPan(Weapon, RegularEquip):
 
     _item_id: int = 34
     _description: str = "Enough iron to\x01be dangerous!"
-    _model: Type[ItemNPC] = FryingPanNPC
+    _model: type[ItemNPC] = FryingPanNPC
     _tier: int = 4
     _order: int = 62
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _attack: int = 90
     _variance: int = 20
     _price: int = 300
@@ -680,9 +672,9 @@ class LuckyHammer(Weapon, RegularEquip):
     _description: str = "A lucky hammer!"
     _tier: int = 1
     _order: int = 54
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _price: int = 123
-    _model: Type[ItemNPC] = HammerNPC
+    _model: type[ItemNPC] = HammerNPC
 
 
 class Shirt(Armor, RegularEquip):
@@ -692,7 +684,7 @@ class Shirt(Armor, RegularEquip):
     _description: str = "It~s a\x01shirt!"
     _tier: int = 1
     _order: int = 102
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 6
     _magic_defense: int = 6
     _price: int = 7
@@ -705,7 +697,7 @@ class Pants(Armor, RegularEquip):
     _description: str = "It~s a pair\x01of pants!"
     _tier: int = 1
     _order: int = 95
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 6
     _magic_defense: int = 3
     _price: int = 7
@@ -718,7 +710,7 @@ class ThickShirt(Armor, RegularEquip):
     _description: str = "A padded shirt"
     _tier: int = 1
     _order: int = 106
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 12
     _magic_defense: int = 8
     _price: int = 14
@@ -731,7 +723,7 @@ class ThickPants(Armor, RegularEquip):
     _description: str = "Padded pants"
     _tier: int = 1
     _order: int = 105
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 12
     _magic_defense: int = 6
     _price: int = 14
@@ -744,7 +736,7 @@ class MegaShirt(Armor, RegularEquip):
     _description: str = "Durable stay}\x01pressed shirt"
     _tier: int = 1
     _order: int = 93
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 18
     _magic_defense: int = 10
     _price: int = 22
@@ -757,7 +749,7 @@ class MegaPants(Armor, RegularEquip):
     _description: str = "Durable work\x01pants"
     _tier: int = 1
     _order: int = 92
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 18
     _magic_defense: int = 9
     _price: int = 22
@@ -770,7 +762,7 @@ class WorkPants(Armor, RegularEquip):
     _description: str = "Sweaty\x01work pants!"
     _tier: int = 1
     _order: int = 107
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = 5
     _attack: int = 10
     _defense: int = 15
@@ -779,7 +771,7 @@ class WorkPants(Armor, RegularEquip):
     _price: int = 22
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         return deepcopy(EQUIP_STATS)
 
@@ -791,7 +783,7 @@ class MegaCape(Armor, RegularEquip):
     _description: str = "Durable\x01pressed cape"
     _tier: int = 1
     _order: int = 91
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 6
     _magic_defense: int = 3
     _price: int = 22
@@ -804,7 +796,7 @@ class HappyShirt(Armor, RegularEquip):
     _description: str = "A lucky shirt"
     _tier: int = 1
     _order: int = 87
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 38
@@ -817,7 +809,7 @@ class HappyPants(Armor, RegularEquip):
     _description: str = "A lucky\x01pair of pants"
     _tier: int = 1
     _order: int = 85
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 38
@@ -830,7 +822,7 @@ class HappyCape(Armor, RegularEquip):
     _description: str = "A lucky cape"
     _tier: int = 1
     _order: int = 84
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 12
     _magic_defense: int = 6
     _price: int = 38
@@ -841,10 +833,10 @@ class HappyShell(Armor, RegularEquip):
 
     _item_id: int = 48
     _description: str = "A lucky shell"
-    _model: Type[ItemNPC] = GreenShell
+    _model: type[ItemNPC] = GreenShell
     _tier: int = 1
     _order: int = 86
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _defense: int = 6
     _magic_defense: int = 3
     _price: int = 38
@@ -857,7 +849,7 @@ class PolkaDress(Armor, RegularEquip):
     _description: str = "A flashy dress"
     _tier: int = 1
     _order: int = 96
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 160
@@ -876,7 +868,7 @@ class SailorShirt(Armor, RegularEquip):
     _description: str = "A sailor~s\x01suit"
     _tier: int = 1
     _order: int = 101
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 50
@@ -889,7 +881,7 @@ class SailorPants(Armor, RegularEquip):
     _description: str = "A sailor~s\x01pants"
     _tier: int = 1
     _order: int = 100
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 50
@@ -902,7 +894,7 @@ class SailorCape(Armor, RegularEquip):
     _description: str = "A sailor~s\x01cape"
     _tier: int = 1
     _order: int = 99
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 18
     _magic_defense: int = 9
     _price: int = 50
@@ -915,7 +907,7 @@ class NauticaDress(Armor, RegularEquip):
     _description: str = "A female\x01sailor~s dress"
     _tier: int = 1
     _order: int = 94
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 50
@@ -926,10 +918,10 @@ class CourageShell(Armor, RegularEquip):
 
     _item_id: int = 54
     _description: str = "A stout shell"
-    _model: Type[ItemNPC] = GreenShell
+    _model: type[ItemNPC] = GreenShell
     _tier: int = 1
     _order: int = 74
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _defense: int = 12
     _magic_defense: int = 6
     _price: int = 60
@@ -942,7 +934,7 @@ class FuzzyShirt(Armor, RegularEquip):
     _description: str = "A fuzzy shirt"
     _tier: int = 2
     _order: int = 83
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 70
@@ -955,7 +947,7 @@ class FuzzyPants(Armor, RegularEquip):
     _description: str = "Fuzzy pants"
     _tier: int = 2
     _order: int = 82
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 70
@@ -968,7 +960,7 @@ class FuzzyCape(Armor, RegularEquip):
     _description: str = "A fuzzy cape"
     _tier: int = 1
     _order: int = 80
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 70
@@ -981,7 +973,7 @@ class FuzzyDress(Armor, RegularEquip):
     _description: str = "A fuzzy dress"
     _tier: int = 2
     _order: int = 81
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 70
@@ -994,7 +986,7 @@ class FireShirt(Armor, RegularEquip):
     _description: str = "Determined\x01person~s shirt"
     _tier: int = 2
     _order: int = 79
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 42
     _magic_defense: int = 21
     _price: int = 90
@@ -1007,11 +999,11 @@ class FirePants(Armor, RegularEquip):
     _description: str = "Determined\x01person~s pants"
     _tier: int = 2
     _order: int = 77
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 42
     _magic_defense: int = 21
     _price: int = 90
-    _elemental_immunities: List[Element] = []
+    _elemental_immunities: list[Element] = []
 
 
 class FireCape(Armor, RegularEquip):
@@ -1021,7 +1013,7 @@ class FireCape(Armor, RegularEquip):
     _description: str = "Determined\x01person~s cape"
     _tier: int = 1
     _order: int = 75
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 30
     _magic_defense: int = 15
     _price: int = 90
@@ -1032,10 +1024,10 @@ class FireShell(Armor, RegularEquip):
 
     _item_id: int = 62
     _description: str = "Determined\x01person~s shell"
-    _model: Type[ItemNPC] = RedShell
+    _model: type[ItemNPC] = RedShell
     _tier: int = 1
     _order: int = 78
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _defense: int = 18
     _magic_defense: int = 9
     _price: int = 90
@@ -1048,7 +1040,7 @@ class FireDress(Armor, RegularEquip):
     _description: str = "Determined\x01woman~s dress"
     _tier: int = 2
     _order: int = 76
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 42
     _magic_defense: int = 21
     _price: int = 90
@@ -1061,7 +1053,7 @@ class HeroShirt(Armor, RegularEquip):
     _description: str = "A legendary\x01shirt."
     _tier: int = 3
     _order: int = 89
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _defense: int = 48
     _magic_defense: int = 24
     _price: int = 100
@@ -1074,11 +1066,11 @@ class PrincePants(Armor, RegularEquip):
     _description: str = "Legendary\x01pants!"
     _tier: int = 3
     _order: int = 97
-    _equip_chars: List[PartyCharacter] = [MALLOW]
+    _equip_chars: list[PartyCharacter] = [MALLOW]
     _defense: int = 48
     _magic_defense: int = 24
     _price: int = 100
-    _model: Type[ItemNPC] = CrownNPC
+    _model: type[ItemNPC] = CrownNPC
 
 
 class StarCape(Armor, RegularEquip):
@@ -1086,10 +1078,10 @@ class StarCape(Armor, RegularEquip):
 
     _item_id: int = 66
     _description: str = "A legendary\x01cape."
-    _model: Type[ItemNPC] = TinyStar
+    _model: type[ItemNPC] = TinyStar
     _tier: int = 2
     _order: int = 103
-    _equip_chars: List[PartyCharacter] = [GENO]
+    _equip_chars: list[PartyCharacter] = [GENO]
     _defense: int = 36
     _magic_defense: int = 18
     _price: int = 100
@@ -1100,10 +1092,10 @@ class HealShell(Armor, RegularEquip):
 
     _item_id: int = 67
     _description: str = "A legendary\x01shell."
-    _model: Type[ItemNPC] = GreenShell
+    _model: type[ItemNPC] = GreenShell
     _tier: int = 1
     _order: int = 88
-    _equip_chars: List[PartyCharacter] = [BOWSER]
+    _equip_chars: list[PartyCharacter] = [BOWSER]
     _defense: int = 24
     _magic_defense: int = 12
     _price: int = 100
@@ -1116,11 +1108,11 @@ class RoyalDress(Armor, RegularEquip):
     _description: str = "A legendary\x01dress!"
     _tier: int = 3
     _order: int = 98
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
     _defense: int = 48
     _magic_defense: int = 24
     _price: int = 100
-    _model: Type[ItemNPC] = CrownNPC
+    _model: type[ItemNPC] = CrownNPC
 
 
 class SuperSuit(Armor, SpecialEquip):
@@ -1130,19 +1122,19 @@ class SuperSuit(Armor, SpecialEquip):
     _description: str = "A truly fine\x01suit!"
     _tier: int = 4
     _order: int = 104
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = 30
     _attack: int = 50
     _defense: int = 50
     _magic_attack: int = 50
     _magic_defense: int = 50
-    _elemental_immunities: List[Element] = [
+    _elemental_immunities: list[Element] = [
         Element.ICE,
         Element.FIRE,
         Element.THUNDER,
         Element.JUMP,
     ]
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -1162,7 +1154,7 @@ class SuperSuit(Armor, SpecialEquip):
     }
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         return EQUIP_STATS
 
@@ -1172,22 +1164,22 @@ class LazyShellArmor(Armor, SpecialEquip):
 
     _item_id: int = 70
     _description: str = "A stout and\x01durable shell."
-    _model: Type[ItemNPC] = RedShell
+    _model: type[ItemNPC] = RedShell
     _tier: int = 4
     _order: int = 90
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = -50
     _attack: int = -50
     _defense: int = 127
     _magic_attack: int = -50
     _magic_defense: int = 127
-    _elemental_immunities: List[Element] = [
+    _elemental_immunities: list[Element] = [
         Element.ICE,
         Element.FIRE,
         Element.THUNDER,
         Element.JUMP,
     ]
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -1214,12 +1206,12 @@ class ZoomShoes(Accessory, SpecialEquip):
     _description: str = "Speed up by 10!"
     _tier: int = 1
     _order: int = 128
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = 10
     _defense: int = 5
     _magic_defense: int = 5
     _price: int = 100
-    _model: Type[ItemNPC] = ShoesNPC
+    _model: type[ItemNPC] = ShoesNPC
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
     _special_equip: bool = True
     _dialog_replacements: "dict[int, str]" = {
@@ -1229,7 +1221,7 @@ class ZoomShoes(Accessory, SpecialEquip):
     }
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         return [EquipStats.SPEED]
 
@@ -1241,10 +1233,10 @@ class SafetyBadge(Accessory, RegularEquip):
     _description: str = "Prevents Mute \x9c\x01Poison attacks"
     _tier: int = 2
     _order: int = 121
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _defense: int = 5
     _magic_defense: int = 5
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -1255,7 +1247,7 @@ class SafetyBadge(Accessory, RegularEquip):
     ]
     _price: int = 500
     _original_effect_type: EffectType = EffectType.STATUS_PROTECTION
-    _model: Type[ItemNPC] = BroochNPC
+    _model: type[ItemNPC] = BroochNPC
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Status Protector”!\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it to\n you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -1271,13 +1263,13 @@ class JumpShoes(Accessory, RegularEquip):
     _description: str = "Use jump attacks\x01against any foe"
     _tier: int = 1
     _order: int = 118
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _speed: int = 2
     _defense: int = 1
     _magic_attack: int = 5
     _magic_defense: int = 1
     _price: int = 30
-    _model: Type[ItemNPC] = ShoesNPC
+    _model: type[ItemNPC] = ShoesNPC
     _arbitrary_value: UInt16 = UInt16(1)
 
 
@@ -1288,18 +1280,18 @@ class SafetyRing(Accessory, RegularEquip):
     _description: str = "Guards against\x01mortal blows."
     _tier: int = 4
     _order: int = 122
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = 5
     _defense: int = 5
     _magic_defense: int = 5
     _prevent_ko: bool = True
-    _elemental_immunities: List[Element] = [
+    _elemental_immunities: list[Element] = [
         Element.ICE,
         Element.FIRE,
         Element.THUNDER,
         Element.JUMP,
     ]
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -1311,7 +1303,7 @@ class SafetyRing(Accessory, RegularEquip):
     _price: int = 800
     _original_effect_type: EffectType = EffectType.ELEMENTAL_IMMUNITY
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
-    _model: Type[ItemNPC] = RingNPC
+    _model: type[ItemNPC] = RingNPC
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Protective Charm”!\n Never go into battle without it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Protective Charm”.\n Never go into battle without it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -1326,13 +1318,13 @@ class Amulet(Accessory, RegularEquip):
     _description: str = "Great item,\x01bad smell!"
     _tier: int = 2
     _order: int = 108
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = -5
     _attack: int = 7
     _defense: int = 7
     _magic_attack: int = 7
     _magic_defense: int = 7
-    _elemental_resistances: List[Element] = [
+    _elemental_resistances: list[Element] = [
         Element.ICE,
         Element.FIRE,
         Element.THUNDER,
@@ -1341,7 +1333,7 @@ class Amulet(Accessory, RegularEquip):
     _price: int = 200
     _original_effect_type: EffectType = EffectType.ELEMENTAL_RESISTANCE
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
-    _model: Type[ItemNPC] = BroochNPC
+    _model: type[ItemNPC] = BroochNPC
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Stinky Charm”!\n It'll help you weather the elements.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -1356,10 +1348,10 @@ class ScroogeRing(Accessory, RegularEquip):
     _description: str = "Cuts FP use\x01in half\x01during battle"
     _tier: int = 1
     _order: int = 123
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _price: int = 50
     _frog_coin_item: bool = True
-    _model: Type[ItemNPC] = RingNPC
+    _model: type[ItemNPC] = RingNPC
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Mage Totem”!\n It might help with spellcasting.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -1376,7 +1368,7 @@ class ExpBooster(Accessory, RegularEquip):
     _description: str = "Doubles Exp.\x01when equipped"
     _tier: int = 4
     _order: int = 113
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _price: int = 22
     _frog_coin_item: bool = True
     _original_effect_type: EffectType = EffectType.FEW_EFFECTS
@@ -1396,7 +1388,7 @@ class AttackScarf(Accessory, SpecialEquip):
     _description: str = "So comfy it~ll\x01make you jump!"
     _tier: int = 4
     _order: int = 110
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _speed: int = 30
     _attack: int = 30
     _defense: int = 30
@@ -1420,7 +1412,7 @@ class RareScarf(Accessory, RegularEquip):
     _description: str = "Raises defense\x01power!"
     _tier: int = 1
     _order: int = 120
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _defense: int = 15
     _magic_defense: int = 15
     _price: int = 150
@@ -1432,7 +1424,7 @@ class RareScarf(Accessory, RegularEquip):
     }
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         return [EquipStats.DEFENSE, EquipStats.MAGIC_DEFENSE]
 
@@ -1444,15 +1436,15 @@ class BtubRing(Accessory, RegularEquip):
     _description: str = "You~ll win her\x01heart with this!"
     _tier: int = 1
     _order: int = 111
-    _equip_chars: List[PartyCharacter] = [TOADSTOOL]
-    _elemental_resistances: List[Element] = [
+    _equip_chars: list[PartyCharacter] = [TOADSTOOL]
+    _elemental_resistances: list[Element] = [
         Element.ICE,
         Element.FIRE,
         Element.THUNDER,
         Element.JUMP,
     ]
     _price: int = 145
-    _model: Type[ItemNPC] = RingNPC
+    _model: type[ItemNPC] = RingNPC
     _arbitrary_value: UInt16 = UInt16(1)
 
 
@@ -1463,13 +1455,13 @@ class AntidotePin(Accessory, RegularEquip):
     _description: str = "Prevents\x01poison damage"
     _tier: int = 1
     _order: int = 109
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _defense: int = 2
     _magic_defense: int = 2
-    _status_immunities: List[Status] = [Status.POISON]
+    _status_immunities: list[Status] = [Status.POISON]
     _price: int = 28
     _original_effect_type: EffectType = EffectType.STATUS_PROTECTION
-    _model: Type[ItemNPC] = BroochNPC
+    _model: type[ItemNPC] = BroochNPC
 
 
 class WakeUpPin(Accessory, RegularEquip):
@@ -1479,16 +1471,16 @@ class WakeUpPin(Accessory, RegularEquip):
     _description: str = "Prevents Mute \x9c\x01Sleep attacks"
     _tier: int = 1
     _order: int = 127
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _defense: int = 3
     _magic_defense: int = 3
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
     ]
     _price: int = 42
     _original_effect_type: EffectType = EffectType.STATUS_PROTECTION
-    _model: Type[ItemNPC] = BroochNPC
+    _model: type[ItemNPC] = BroochNPC
 
 
 class FearlessPin(Accessory, RegularEquip):
@@ -1498,13 +1490,13 @@ class FearlessPin(Accessory, RegularEquip):
     _description: str = "Prevents Fear\x01attacks"
     _tier: int = 1
     _order: int = 114
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _defense: int = 5
     _magic_defense: int = 5
-    _status_immunities: List[Status] = [Status.FEAR]
+    _status_immunities: list[Status] = [Status.FEAR]
     _price: int = 130
     _original_effect_type: EffectType = EffectType.STATUS_PROTECTION
-    _model: Type[ItemNPC] = BroochNPC
+    _model: type[ItemNPC] = BroochNPC
 
 
 class TrueformPin(Accessory, RegularEquip):
@@ -1514,16 +1506,16 @@ class TrueformPin(Accessory, RegularEquip):
     _description: str = "You won~t be\x01turned into\x01Mushrooms or\x01Scarecrows!"
     _tier: int = 1
     _order: int = 126
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _defense: int = 4
     _magic_defense: int = 4
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUSHROOM,
         Status.SCARECROW,
     ]
     _price: int = 60
     _original_effect_type: EffectType = EffectType.STATUS_PROTECTION
-    _model: Type[ItemNPC] = BroochNPC
+    _model: type[ItemNPC] = BroochNPC
 
 
 class CoinTrick(Accessory, RegularEquip):
@@ -1533,7 +1525,7 @@ class CoinTrick(Accessory, RegularEquip):
     _description: str = "Doubles the\x01coins you win\x01in battle"
     _tier: int = 1
     _order: int = 112
-    _equip_chars: List[PartyCharacter] = [MARIO]
+    _equip_chars: list[PartyCharacter] = [MARIO]
     _price: int = 36
     _frog_coin_item: bool = True
     _original_effect_type: EffectType = EffectType.FEW_EFFECTS
@@ -1553,8 +1545,8 @@ class GhostMedal(Accessory, SpecialEquip):
     _description: str = "Raises defense\x01while attacking"
     _tier: int = 2
     _order: int = 116
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
-    _temp_buffs: List[TempStatBuff] = [
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _temp_buffs: list[TempStatBuff] = [
         TempStatBuff.DEFENSE,
         TempStatBuff.MAGIC_DEFENSE,
     ]
@@ -1576,7 +1568,7 @@ class JinxBelt(Accessory, SpecialEquip):
     _description: str = "Jinx~s emblem\x01of power!"
     _tier: int = 4
     _order: int = 117
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = 12
     _attack: int = 27
     _defense: int = 27
@@ -1598,13 +1590,13 @@ class Feather(Accessory, RegularEquip):
     _description: str = "Speed up by 20"
     _tier: int = 1
     _order: int = 115
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = 20
     _defense: int = 5
     _magic_defense: int = 5
     _price: int = 666
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
-    _model: Type[ItemNPC] = FeatherNPC
+    _model: type[ItemNPC] = FeatherNPC
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Fluttering Quill”!\n It's pretty exotic, isn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -1612,7 +1604,7 @@ class Feather(Accessory, RegularEquip):
     }
 
     @property
-    def primary_stats(self) -> List[EquipStats]:
+    def primary_stats(self) -> list[EquipStats]:
         """Primary stats of this item, depending on the type."""
         return [EquipStats.SPEED]
 
@@ -1624,15 +1616,15 @@ class TroopaPin(Accessory, RegularEquip):
     _description: str = 'Grants "Troopa#\x01confidence!'
     _tier: int = 2
     _order: int = 125
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = 20
-    _temp_buffs: List[TempStatBuff] = [
+    _temp_buffs: list[TempStatBuff] = [
         TempStatBuff.ATTACK,
         TempStatBuff.MAGIC_ATTACK,
     ]
     _price: int = 1000
     _original_effect_type: EffectType = EffectType.BUFFS
-    _model: Type[ItemNPC] = BroochNPC
+    _model: type[ItemNPC] = BroochNPC
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Military Decoration”!\n I wonder what powers it bestows?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -1648,10 +1640,10 @@ class SignalRing(Accessory, RegularEquip):
     _description: str = "Noise indicates\x01a hidden chest."
     _tier: int = 1
     _order: int = 124
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _speed: int = 10
     _price: int = 600
-    _model: Type[ItemNPC] = RingNPC
+    _model: type[ItemNPC] = RingNPC
     _unique: ItemUnique = ItemUnique.ALWAYS
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Treasure Beacon”!\n I wonder what it can help you find?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -1676,7 +1668,7 @@ class SignalRing(Accessory, RegularEquip):
         else:
             super().set_tier(tier)
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: GameWorld | None = None):
         super().__init__(world)
         self.set_tier()
 
@@ -1688,9 +1680,9 @@ class QuartzCharm(Accessory, SpecialEquip):
     _description: str = "Shining source\x01of power!"
     _tier: int = 4
     _order: int = 119
-    _equip_chars: List[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
+    _equip_chars: list[PartyCharacter] = [MARIO, MALLOW, GENO, BOWSER, TOADSTOOL]
     _prevent_ko: bool = True
-    _temp_buffs: List[TempStatBuff] = [
+    _temp_buffs: list[TempStatBuff] = [
         TempStatBuff.ATTACK,
         TempStatBuff.MAGIC_ATTACK,
         TempStatBuff.DEFENSE,
@@ -1698,7 +1690,7 @@ class QuartzCharm(Accessory, SpecialEquip):
     ]
     _price: int = 7
     _original_effect_type: EffectType = EffectType.BUFFS
-    _model: Type[ItemNPC] = RingNPC
+    _model: type[ItemNPC] = RingNPC
     _unique: ItemUnique = ItemUnique.BALANCED_ONLY
     _special_equip: bool = True
     _dialog_replacements: "dict[int, str]" = {
@@ -1717,7 +1709,7 @@ class Mushroom(RegularItem):
     _consumable: bool = True
     _price: int = 4
     _tier: int = 1
-    _model: Type[ItemNPC] = RedMushroom
+    _model: type[ItemNPC] = RedMushroom
     _room_service: str = "Mushroom........"
 
 
@@ -1730,7 +1722,7 @@ class MidMushroom(RegularItem):
     _consumable: bool = True
     _price: int = 20
     _tier: int = 2
-    _model: Type[ItemNPC] = GreenMushroom
+    _model: type[ItemNPC] = GreenMushroom
     _room_service: str = "Mid Mushroom...."
 
 
@@ -1743,7 +1735,7 @@ class MaxMushroom(RegularItem):
     _consumable: bool = True
     _price: int = 78
     _tier: int = 3
-    _model: Type[ItemNPC] = YellowMushroom
+    _model: type[ItemNPC] = YellowMushroom
     _room_service: str = "Max Mushroom...."
 
 
@@ -1752,7 +1744,7 @@ class HoneySyrup(RegularItem):
 
     _item_id: int = 99
     _description: str = "Recovers 10 FP"
-    _model: Type[ItemNPC] = RedSyrup
+    _model: type[ItemNPC] = RedSyrup
     _order: int = 8
     _consumable: bool = True
     _price: int = 10
@@ -1765,7 +1757,7 @@ class MapleSyrup(RegularItem):
 
     _item_id: int = 100
     _description: str = "Recovers 40 FP"
-    _model: Type[ItemNPC] = GreenSyrup
+    _model: type[ItemNPC] = GreenSyrup
     _order: int = 10
     _consumable: bool = True
     _price: int = 30
@@ -1778,7 +1770,7 @@ class RoyalSyrup(RegularItem):
 
     _item_id: int = 101
     _description: str = "Recovers all FP"
-    _model: Type[ItemNPC] = YellowSyrup
+    _model: type[ItemNPC] = YellowSyrup
     _order: int = 21
     _consumable: bool = True
     _price: int = 101
@@ -1796,7 +1788,7 @@ class PickMeUp(RegularItem):
     _price: int = 5
     _tier: int = 1
     _room_service: str = "Pick Me Up......."
-    _model: Type[ItemNPC] = StarDrink
+    _model: type[ItemNPC] = StarDrink
 
 
 class AbleJuice(RegularItem):
@@ -1804,9 +1796,9 @@ class AbleJuice(RegularItem):
 
     _item_id: int = 103
     _description: str = "Heal status\x01ailments"
-    _model: Type[ItemNPC] = RDrink
+    _model: type[ItemNPC] = RDrink
     _consumable: bool = True
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -1827,7 +1819,7 @@ class Bracer(RegularItem):
     _description: str = "Raises ally~s\x01def. in battle"
     _order: int = 2
     _consumable: bool = True
-    _temp_buffs: List[TempStatBuff] = [
+    _temp_buffs: list[TempStatBuff] = [
         TempStatBuff.DEFENSE,
         TempStatBuff.MAGIC_DEFENSE,
     ]
@@ -1836,7 +1828,7 @@ class Bracer(RegularItem):
     _tier: int = 2
     _rank_value: int = 10
     _room_service: str = "Bracer..........."
-    _model: Type[ItemNPC] = DDrink
+    _model: type[ItemNPC] = DDrink
 
 
 class Energizer(RegularItem):
@@ -1846,7 +1838,7 @@ class Energizer(RegularItem):
     _description: str = "Raises ally~s\x01battle power\x01during battle"
     _order: int = 5
     _consumable: bool = True
-    _temp_buffs: List[TempStatBuff] = [
+    _temp_buffs: list[TempStatBuff] = [
         TempStatBuff.ATTACK,
         TempStatBuff.MAGIC_ATTACK,
     ]
@@ -1854,7 +1846,7 @@ class Energizer(RegularItem):
     _frog_coin_item: bool = True
     _tier: int = 2
     _room_service: str = "Energizer........"
-    _model: Type[ItemNPC] = PDrink
+    _model: type[ItemNPC] = PDrink
 
 
 class YoshiAde(RegularItem):
@@ -1862,10 +1854,10 @@ class YoshiAde(RegularItem):
 
     _item_id: int = 106
     _description: str = "Power raised\x01during battle"
-    _model: Type[ItemNPC] = GreenJuice
+    _model: type[ItemNPC] = GreenJuice
     _order: int = 23
     _consumable: bool = True
-    _temp_buffs: List[TempStatBuff] = [
+    _temp_buffs: list[TempStatBuff] = [
         TempStatBuff.ATTACK,
         TempStatBuff.MAGIC_ATTACK,
         TempStatBuff.DEFENSE,
@@ -1881,10 +1873,10 @@ class RedEssence(RegularItem):
 
     _item_id: int = 107
     _description: str = "Become invincible\x01for 3 turns"
-    _model: Type[ItemNPC] = RedJuice
+    _model: type[ItemNPC] = RedJuice
     _order: int = 19
     _consumable: bool = True
-    _status_immunities: List[Status] = [Status.INVINCIBLE]
+    _status_immunities: list[Status] = [Status.INVINCIBLE]
     _price: int = 400
     _tier: int = 4
     _room_service: str = "Red Essence......"
@@ -1900,7 +1892,7 @@ class KerokeroCola(RegularItem):
     _price: int = 400
     _tier: int = 4
     _room_service: str = "KerokeroCola....."
-    _model: Type[ItemNPC] = FrogDrink
+    _model: type[ItemNPC] = FrogDrink
 
 
 class YoshiCookie(RegularItem):
@@ -1911,7 +1903,7 @@ class YoshiCookie(RegularItem):
     _order: int = 26
     _consumable: bool = True
     _price: int = 100
-    _model: Type[ItemNPC] = Cookie
+    _model: type[ItemNPC] = Cookie
     _tier: int = 1
     _room_service: str = "Yoshi Cookie......"
 
@@ -1921,7 +1913,7 @@ class PureWater(RegularItem):
 
     _item_id: int = 110
     _description: str = "Defeats ghosts\x01in a wink"
-    _model: Type[ItemNPC] = BlueSyrup
+    _model: type[ItemNPC] = BlueSyrup
     _order: int = 30
     _consumable: bool = True
     _price: int = 150
@@ -1937,8 +1929,8 @@ class SleepyBomb(RegularItem):
     _description: str = "Puts enemies\x01to sleep"
     _order: int = 32
     _consumable: bool = True
-    _status_immunities: List[Status] = [Status.SLEEP]
-    _model: Type[ItemNPC] = YellowBomb
+    _status_immunities: list[Status] = [Status.SLEEP]
+    _model: type[ItemNPC] = YellowBomb
     _price: int = 25
     _frog_coin_item: bool = True
     _tier: int = 1
@@ -1953,10 +1945,10 @@ class BadMushroom(RegularItem):
     _description: str = "Poisons\x01an enemy"
     _order: int = 1
     _consumable: bool = True
-    _status_immunities: List[Status] = [Status.MUSHROOM]
+    _status_immunities: list[Status] = [Status.MUSHROOM]
     _price: int = 30
     _tier: int = 2
-    _model: Type[ItemNPC] = RedMushroom
+    _model: type[ItemNPC] = RedMushroom
     _room_service: str = "Bad Mushroom...."
 
 
@@ -1966,7 +1958,7 @@ class FireBomb(RegularItem):
     _item_name: str = "Fire Bomb"
     _item_id: int = 113
     _description: str = "Hit all\x01enemies w/fire"
-    _model: Type[ItemNPC] = RedBomb
+    _model: type[ItemNPC] = RedBomb
     _order: int = 27
     _consumable: bool = True
     _price: int = 200
@@ -1980,7 +1972,7 @@ class IceBomb(RegularItem):
     _item_name: str = "Ice Bomb"
     _item_id: int = 114
     _description: str = "Hit all\x01enemies w/ice"
-    _model: Type[ItemNPC] = BlueBomb
+    _model: type[ItemNPC] = BlueBomb
     _order: int = 29
     _consumable: bool = True
     _price: int = 250
@@ -2032,7 +2024,7 @@ class YoshiCandy(RegularItem):
     _order: int = 25
     _consumable: bool = True
     _price: int = 140
-    _model: Type[ItemNPC] = GreenCandy
+    _model: type[ItemNPC] = GreenCandy
     _tier: int = 2
     _room_service: str = "Yoshi Candy......"
 
@@ -2047,7 +2039,7 @@ class FroggieDrink(RegularItem):
     _price: int = 16
     _tier: int = 1
     _room_service: str = "FroggieDrink......"
-    _model: Type[ItemNPC] = YellowMusicDrink
+    _model: type[ItemNPC] = YellowMusicDrink
 
 
 class MukuCookie(RegularItem):
@@ -2057,7 +2049,7 @@ class MukuCookie(RegularItem):
     _description: str = "Party heals\x0169 HP"
     _order: int = 24
     _consumable: bool = True
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -2066,7 +2058,7 @@ class MukuCookie(RegularItem):
         Status.MUSHROOM,
         Status.SCARECROW,
     ]
-    _model: Type[ItemNPC] = Cookie
+    _model: type[ItemNPC] = Cookie
     _price: int = 69
     _tier: int = 3
     _room_service: str = "Muku Cookie......"
@@ -2082,7 +2074,7 @@ class Elixir(RegularItem):
     _price: int = 48
     _tier: int = 2
     _room_service: str = "Elixir............."
-    _model: Type[ItemNPC] = BlueMusicDrink
+    _model: type[ItemNPC] = BlueMusicDrink
 
 
 class Megalixir(RegularItem):
@@ -2095,7 +2087,7 @@ class Megalixir(RegularItem):
     _price: int = 120
     _tier: int = 3
     _room_service: str = "Megalixir.........."
-    _model: Type[ItemNPC] = RedMusicDrink
+    _model: type[ItemNPC] = RedMusicDrink
 
 
 class SeeYa(RegularItem):
@@ -2123,7 +2115,7 @@ class TempleKey(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Key
+    _model: type[ItemNPC] = Key
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2140,7 +2132,7 @@ class GoodieBag(RegularItem):
     _tier: int = 2
     _unique: ItemUnique = ItemUnique.ALWAYS
     _description: str = "It's packed\x01full of coins"
-    _model: Type[ItemNPC] = SmallCoin
+    _model: type[ItemNPC] = SmallCoin
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Coin Sack”!\n It could make you rich![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Coin Sack”.\n It could make you rich![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2172,7 +2164,7 @@ class FreshenUp(RegularItem):
     _description: str = "Heals party\x01status ailments"
     _order: int = 6
     _consumable: bool = True
-    _status_immunities: List[Status] = [
+    _status_immunities: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -2182,7 +2174,7 @@ class FreshenUp(RegularItem):
         Status.SCARECROW,
     ]
     _price: int = 50
-    _model: Type[ItemNPC] = RDrink
+    _model: type[ItemNPC] = RDrink
     _tier: int = 2
     _room_service: str = "Freshen Up........"
 
@@ -2195,7 +2187,7 @@ class RareFrogCoin(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = SmallFrogCoin
+    _model: type[ItemNPC] = SmallFrogCoin
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Green Coin”!\n It looks different from most Frog\n Coins.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2210,7 +2202,7 @@ class Wallet(RegularItem):
     _description: str = "A fat wallet"
     _order: int = 152
     _price: int = 246
-    _model: Type[ItemNPC] = SmallCoin
+    _model: type[ItemNPC] = SmallCoin
     _tier: int = 1
     _unique: ItemUnique = ItemUnique.ALWAYS
     _dialog_replacements: "dict[int, str]" = {
@@ -2228,7 +2220,7 @@ class CricketPie(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Cookie
+    _model: type[ItemNPC] = Cookie
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Baked Pastry”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2242,7 +2234,7 @@ class RockCandy(RegularItem):
     _item_name: str = "Rock Candy"
     _item_id: int = 131
     _description: str = "Attack all\x01enemies"
-    _model: Type[ItemNPC] = BlueCandy
+    _model: type[ItemNPC] = BlueCandy
     _order: int = 31
     _consumable: bool = True
     _price: int = 400
@@ -2258,7 +2250,7 @@ class CastleKey1(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Key
+    _model: type[ItemNPC] = Key
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2274,7 +2266,7 @@ class CastleKey2(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Key
+    _model: type[ItemNPC] = Key
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2290,7 +2282,7 @@ class BambinoBomb(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = MicroBombItem
+    _model: type[ItemNPC] = MicroBombItem
 
 
 class SheepAttack(RegularItem):
@@ -2302,7 +2294,7 @@ class SheepAttack(RegularItem):
     _price: int = 150
     _is_subitem: bool = True
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Egg
+    _model: type[ItemNPC] = Egg
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2318,7 +2310,7 @@ class CarboCookie(RegularItem):
     _order: int = 134
     _unique: ItemUnique = ItemUnique.ALWAYS
     _is_subitem: bool = True
-    _model: Type[ItemNPC] = Cookie
+    _model: type[ItemNPC] = Cookie
     _price: int = 2
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -2326,7 +2318,7 @@ class CarboCookie(RegularItem):
         DI2914_TREASURE_SELLER_ITEM_3: """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
     }
 
-    def __init__(self, world: Optional[GameWorld]):
+    def __init__(self, world: GameWorld | None):
         super().__init__(world)
         if world is None:
             return
@@ -2354,7 +2346,7 @@ class ShinyStone(RegularItem):
         DI2914_TREASURE_SELLER_ITEM_3: """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
     }
 
-    def __init__(self, world: Optional[GameWorld]):
+    def __init__(self, world: GameWorld | None):
         super().__init__(world)
         if world is None:
             return
@@ -2375,7 +2367,7 @@ class RoomKey(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Key
+    _model: type[ItemNPC] = Key
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2391,7 +2383,7 @@ class ElderKey(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Key
+    _model: type[ItemNPC] = Key
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2407,7 +2399,7 @@ class ShedKey(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Key
+    _model: type[ItemNPC] = Key
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2424,7 +2416,7 @@ class LambsLure(RegularItem):
     _price: int = 40
     _unique: ItemUnique = ItemUnique.ALWAYS
     _is_subitem: bool = True
-    _model: Type[ItemNPC] = Egg
+    _model: type[ItemNPC] = Egg
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2438,10 +2430,10 @@ class FrightBomb(RegularItem):
     _item_name: str = "Fright Bomb"
     _item_id: int = 144
     _description: str = "Inflict fear\x01on one enemy"
-    _model: Type[ItemNPC] = GreenBomb
+    _model: type[ItemNPC] = GreenBomb
     _order: int = 28
     _consumable: bool = True
-    _status_immunities: List[Status] = [Status.FEAR]
+    _status_immunities: list[Status] = [Status.FEAR]
     _price: int = 100
     _tier: int = 2
     _room_service: str = "Fright Bomb......"
@@ -2456,7 +2448,7 @@ class MysteryEgg(RegularItem):
     _is_subitem: bool = True
     _price: int = 200
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Egg
+    _model: type[ItemNPC] = Egg
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2504,7 +2496,7 @@ class SopranoCard(KeyItem):
     _shuffle_as_key_item: bool = True
     _is_subitem: bool = True
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Card
+    _model: type[ItemNPC] = Card
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2520,7 +2512,7 @@ class AltoCard(KeyItem):
     _shuffle_as_key_item: bool = True
     _is_subitem: bool = True
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Card
+    _model: type[ItemNPC] = Card
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2536,7 +2528,7 @@ class TenorCard(KeyItem):
     _shuffle_as_key_item: bool = True
     _is_subitem: bool = True
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Card
+    _model: type[ItemNPC] = Card
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2551,7 +2543,7 @@ class Crystalline(RegularItem):
     _description: str = "Raises party's\x01Defense in\x01battle"
     _order: int = 3
     _consumable: bool = True
-    _temp_buffs: List[TempStatBuff] = [
+    _temp_buffs: list[TempStatBuff] = [
         TempStatBuff.DEFENSE,
         TempStatBuff.MAGIC_DEFENSE,
     ]
@@ -2559,7 +2551,7 @@ class Crystalline(RegularItem):
     _frog_coin_item: bool = True
     _tier: int = 3
     _room_service: str = "Crystalline......."
-    _model: Type[ItemNPC] = DDrink
+    _model: type[ItemNPC] = DDrink
 
 
 class PowerBlast(RegularItem):
@@ -2569,7 +2561,7 @@ class PowerBlast(RegularItem):
     _description: str = "Raises party's\x01Attack Power\x01in battle"
     _order: int = 18
     _consumable: bool = True
-    _temp_buffs: List[TempStatBuff] = [
+    _temp_buffs: list[TempStatBuff] = [
         TempStatBuff.ATTACK,
         TempStatBuff.MAGIC_ATTACK,
     ]
@@ -2577,7 +2569,7 @@ class PowerBlast(RegularItem):
     _frog_coin_item: bool = True
     _tier: int = 3
     _room_service: str = "Power Blast......"
-    _model: Type[ItemNPC] = PDrink
+    _model: type[ItemNPC] = PDrink
 
 
 class WiltShroom(RegularItem):
@@ -2589,7 +2581,7 @@ class WiltShroom(RegularItem):
     _consumable: bool = True
     _price: int = 8
     _tier: int = 1
-    _model: Type[ItemNPC] = Banana
+    _model: type[ItemNPC] = Banana
     _room_service: str = "Wilt Shroom......"
 
 
@@ -2602,7 +2594,7 @@ class RottenMush(RegularItem):
     _consumable: bool = True
     _price: int = 4
     _tier: int = 1
-    _model: Type[ItemNPC] = Banana
+    _model: type[ItemNPC] = Banana
     _room_service: str = "Rotten Mush....."
 
 
@@ -2615,7 +2607,7 @@ class MoldyMush(RegularItem):
     _consumable: bool = True
     _price: int = 2
     _tier: int = 1
-    _model: Type[ItemNPC] = Banana
+    _model: type[ItemNPC] = Banana
     _room_service: str = "Moldy Mush......."
 
 
@@ -2627,7 +2619,7 @@ class Seed(KeyItem):
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Berry
+    _model: type[ItemNPC] = Berry
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: A “Mysterious Seed”!\n I wonder what will grow from it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2663,7 +2655,7 @@ class BigBooFlag(KeyItem):
     _order: int = 132
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
-    _model: Type[ItemNPC] = Card
+    _model: type[ItemNPC] = Card
     _unique: ItemUnique = ItemUnique.ALWAYS
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -2679,7 +2671,7 @@ class DryBonesFlag(KeyItem):
     _order: int = 139
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
-    _model: Type[ItemNPC] = Card
+    _model: type[ItemNPC] = Card
     _unique: ItemUnique = ItemUnique.ALWAYS
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -2695,7 +2687,7 @@ class GreaperFlag(KeyItem):
     _order: int = 143
     _shuffle_as_key_item: bool = True
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
-    _model: Type[ItemNPC] = Card
+    _model: type[ItemNPC] = Card
     _unique: ItemUnique = ItemUnique.ALWAYS
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
@@ -2710,7 +2702,7 @@ class CricketJam(KeyItem):
     _item_id: int = 166
     _order: int = 137
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
-    _model: Type[ItemNPC] = GreenJuice
+    _model: type[ItemNPC] = GreenJuice
     _shuffle_as_key_item: bool = True
     _unique: ItemUnique = ItemUnique.ALWAYS
     _dialog_replacements: "dict[int, str]" = {
@@ -2738,7 +2730,7 @@ class Fireworks(RegularItem):
         DI2914_TREASURE_SELLER_ITEM_3: """ Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]""",
     }
 
-    def __init__(self, world: Optional[GameWorld]):
+    def __init__(self, world: GameWorld | None):
         super().__init__(world)
         if world is None:
             return
@@ -2758,7 +2750,7 @@ class BrightCard(KeyItem):
     """BrightCard item class"""
 
     _item_id: int = 174
-    _model: Type[ItemNPC] = Card
+    _model: type[ItemNPC] = Card
     _order: int = 133
     _unique: ItemUnique = ItemUnique.ALWAYS
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
@@ -2779,7 +2771,7 @@ class BrightCard(KeyItem):
         else:
             super().set_tier(tier)
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: GameWorld | None = None):
         super().__init__(world)
         self.set_tier()
 
@@ -2791,13 +2783,13 @@ class Mushroom2(RegularItem):
     _description: str = "Recoers 30 HP,\x01but..."
     _order: int = 16
     _consumable: bool = True
-    _status_immunities: List[Status] = [Status.MUSHROOM]
+    _status_immunities: list[Status] = [Status.MUSHROOM]
     _price: int = 4
     _tier: int = 1
-    _model: Type[ItemNPC] = RedMushroom
+    _model: type[ItemNPC] = RedMushroom
     _room_service: str = "Mushroom........"
 
-    def __init__(self, world: Optional[GameWorld] = None):
+    def __init__(self, world: GameWorld | None = None):
         super().__init__(world)
         if world is not None:
             self.set_status_immunities(
@@ -2827,7 +2819,7 @@ class StarEgg(RegularItem):
     _price: int = 700
     _tier: int = 4
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Egg
+    _model: type[ItemNPC] = Egg
     _dialog_replacements: "dict[int, str]" = {
         DI2911_TREASURE_SELLER_ITEM_1: """ Item #1: An “Adorable Bomb”!\n Seems like it'll last a long time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]""",
         DI2908_TREASURE_SELLER_ITEM_2: """ Item #2: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]""",
@@ -2839,7 +2831,7 @@ class ProgressiveCard(ProgressiveItem, KeyItem):
     """ProgressiveCard item class"""
 
     _item_id: int = 195
-    _model: Type[ItemNPC] = Card
+    _model: type[ItemNPC] = Card
     _shuffle_type: ItemShuffleType = ItemShuffleType.REQUIRED
     _unique: ItemUnique = ItemUnique.ALWAYS
     _chest_event: int = E3086_JUICE_BAR_CARD_UPGRADE
@@ -2858,7 +2850,7 @@ class ProgressiveEgg(ProgressiveItem):
     """ProgressiveEgg item class"""
 
     _item_id: int = 196
-    _model: Type[ItemNPC] = Egg
+    _model: type[ItemNPC] = Egg
     _unique: ItemUnique = ItemUnique.ALWAYS
     _tier: int = 2
     _chest_event: int = E3087_PROGRESSIVE_EGG_UPGRADE
@@ -2922,7 +2914,7 @@ class Coins10(Coins):
     _tier: int = 1
     _overworld_event: int = E3146_FREESTANDING_BIG_COIN
     _overworld_midas_event: int = E2818_ASYNC_NO_ANIMATION_10_COIN
-    _model: Type[ItemNPC] = BigCoin
+    _model: type[ItemNPC] = BigCoin
     _amount = 10
 
     def __init__(self, world):
@@ -2936,7 +2928,7 @@ class Coins1(Coins):
     _tier: int = 1
     _overworld_event: int = E1293_COLLECT_FREESTANDING_SMALL_COIN
     _overworld_midas_event: int = E2819_ASYNC_NO_ANIMATION_1_COIN
-    # _model: Type[ItemNPC] = SmallCoin
+    # _model: type[ItemNPC] = SmallCoin
     # _amount = 1
 
     def __init__(self, world):
@@ -3002,7 +2994,7 @@ class Beetlemania(MiscReward):
 
     _item_id: int = 164
     _unique: ItemUnique = ItemUnique.ALWAYS
-    _model: Type[ItemNPC] = Beetle
+    _model: type[ItemNPC] = Beetle
     _tier: int = 1
     _chest_event: int = E0162_CHEST_GRANT_BEETLEMANIA
     _npc_event: int = E0161_NPC_QUEST_GRANT_BEETLEMANIA
@@ -3082,7 +3074,7 @@ class Nothing(MiscReward):
 
     _chest_event: int = E3081_YOU_MISSED
     _npc_event: int = E0256_RETURN
-    _model: Type[ItemNPC] = Empty
+    _model: type[ItemNPC] = Empty
     _overworld_midas_event: int = E0256_RETURN
     _overworld_event: int = E0256_RETURN
 
@@ -3092,7 +3084,7 @@ class Flower(MiscReward):
 
     _item_id: int = 198
     _tier: int = 1
-    _model: Type[ItemNPC] = FlowerNPC
+    _model: type[ItemNPC] = FlowerNPC
     _chest_70a7_upper: int = 2
     _chest_event: int = E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST
     _overworld_event: int = E1801_FREESTANDING_FLOWER
@@ -3108,7 +3100,7 @@ class RecoveryMushroom(MiscReward):
     _overworld_event: int = E2822_ASYNC_NO_ANIMATION_MUSHROOM
     _npc_event: int = E0397_HEAL_IN_TOADSTOOLS_ROOM
     _overworld_midas_event: int = E2822_ASYNC_NO_ANIMATION_MUSHROOM
-    _model: Type[ItemNPC] = RecoveryMushroomNPC
+    _model: type[ItemNPC] = RecoveryMushroomNPC
 
 
 class FrogCoin(MiscReward):
@@ -3116,7 +3108,7 @@ class FrogCoin(MiscReward):
 
     _item_id: int = 200
     _tier: int = 1
-    _model: Type[ItemNPC] = FrogCoinNPC
+    _model: type[ItemNPC] = FrogCoinNPC
     _chest_70a7_upper: int = 3
     _chest_event: int = E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST
     _npc_event: int = E0157_NPC_QUEST_GRANT_1_FROG_COIN
@@ -3133,7 +3125,7 @@ class MultiFrogCoin(MiscReward):
     _multiplier: int = 0
     _chest_event: int = E3091_MULTI_FROG_COIN_CHEST_SINGLE_HIT
     _quick_chest_event: int = E3082_FROG_COIN_CHEST_MULTI_HIT_1
-    _model: Type[ItemNPC] = FrogCoinNPC
+    _model: type[ItemNPC] = FrogCoinNPC
     _npc_event: int = E0158_NPC_QUEST_GRANT_MULTI_FROG_COIN
     _chest_70a7_upper: int = 0
 
@@ -3309,7 +3301,7 @@ class Shoes(MarrymoreGear):
     _npc_event: int = E3931_GET_SHOES
     _overworld_event: int = E3935_FREESTANDING_SHOES
     _overworld_midas_event: int = E3939_RIVER_SHOES
-    _model: Type[ItemNPC] = ShoesNPC
+    _model: type[ItemNPC] = ShoesNPC
     _price: int = 0
     _tier: int = 1
     _dialog_replacements: "dict[int, str]" = {
@@ -3328,7 +3320,7 @@ class Brooch(MarrymoreGear):
     _npc_event: int = E3932_GET_BROOCH
     _overworld_event: int = E3936_FREESTANDING_BROOCH
     _overworld_midas_event: int = E3940_RIVER_BROOCH
-    _model: Type[ItemNPC] = BroochNPC
+    _model: type[ItemNPC] = BroochNPC
     _price: int = 0
     _tier: int = 1
     _dialog_replacements: "dict[int, str]" = {
@@ -3347,7 +3339,7 @@ class Ring(MarrymoreGear):
     _npc_event: int = E3933_GET_RING
     _overworld_event: int = E3937_FREESTANDING_RING
     _overworld_midas_event: int = E3941_RIVER_RING
-    _model: Type[ItemNPC] = RingNPC
+    _model: type[ItemNPC] = RingNPC
     _price: int = 0
     _tier: int = 1
     _dialog_replacements: "dict[int, str]" = {
@@ -3366,7 +3358,7 @@ class Crown(MarrymoreGear):
     _npc_event: int = E3934_GET_CROWN
     _overworld_event: int = E3938_FREESTANDING_CROWN
     _overworld_midas_event: int = E3942_RIVER_CROWN
-    _model: Type[ItemNPC] = CrownNPC
+    _model: type[ItemNPC] = CrownNPC
     _price: int = 0
     _tier: int = 1
     _dialog_replacements: "dict[int, str]" = {
@@ -3377,10 +3369,10 @@ class Crown(MarrymoreGear):
 
 
 # type: ignore # this is too annoying to debug
-def initiate_items(world: GameWorld) -> List[Item]:
+def initiate_items(world: GameWorld) -> list[Item]:
     """Instantiate each item for use in the game world."""
 
-    items: List[Item] = [
+    items: list[Item] = [
         # literal items
         Hammer(world),
         FroggieStick(world),

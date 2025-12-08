@@ -15,8 +15,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI2158_MARRYMORE_FIELD_NPC,
@@ -25,8 +24,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_697_run_dialog_3",
-        ),
+            identifier="EVENT_697_run_dialog_3"),
         Return(),
         RunDialog(
             dialog_id=DI2179_CHAPEL_NPC,
@@ -35,8 +33,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_697_run_dialog_17",
-        ),
+            identifier="EVENT_697_run_dialog_17"),
         Return(),
     ]
 )

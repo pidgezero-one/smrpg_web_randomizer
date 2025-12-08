@@ -15,8 +15,7 @@ script = EventScript(
         Return(),
         RunEventAtReturn(
             E3493_MIDAS_RIVER_MID_RIGHT_TUNNEL_ANIMATION_AND_EXIT,
-            identifier="EVENT_3483_run_event_at_return_5",
-        ),
+            identifier="EVENT_3483_run_event_at_return_5"),
         Return(),
     ]
 )

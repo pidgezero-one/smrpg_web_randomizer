@@ -14,8 +14,7 @@ script = EventScript(
                 ASShiftNorthSteps(2),
                 ASShiftSouthSteps(2),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO, subscript=[ASFloatingOff(), ASPause(4), ASFloatingOn()]
         ),

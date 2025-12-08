@@ -20,8 +20,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(3),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

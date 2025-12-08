@@ -27,8 +27,7 @@ script = EventScript(
             y=10,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_2592_enter_area_14",
-        ),
+            identifier="EVENT_2592_enter_area_14"),
         Return(),
         ActionQueueSync(
             target=MARIO,
@@ -36,8 +35,7 @@ script = EventScript(
                 ASSetPriority(0),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
             ],
-            identifier="EVENT_2592_action_queue_sync_16",
-        ),
+            identifier="EVENT_2592_action_queue_sync_16"),
         Jmp(["EVENT_2592_pause_0"]),
     ]
 )

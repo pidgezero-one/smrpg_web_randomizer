@@ -14,8 +14,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_4,
             R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
-            ["EVENT_405_pause_action_script_6"],
-        ),
+            ["EVENT_405_pause_action_script_6"]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

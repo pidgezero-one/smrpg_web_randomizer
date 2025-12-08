@@ -1,6 +1,6 @@
 """Base classes for enemies encountered in battle and their overworld representations."""
 
-from typing import List, Optional, Type, Union, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from randomizer.types.items import RegularItem
 from randomizer.types.monster_scripts.commands import IfTargetedByItem
@@ -18,8 +18,7 @@ from .constants import (
     BASE_PSYCHOPATH_DATA_ADDRESS,
     BASE_PSYCHOPATH_POINTER_ADDRESS,
     PSYCHOPATH_DATA_POINTER_OFFSET,
-    TOTAL_ENEMIES,
-)
+    TOTAL_ENEMIES)
 from .enums import ApproachSound, HitSound, FlowerBonusType
 
 if TYPE_CHECKING:
@@ -29,7 +28,7 @@ if TYPE_CHECKING:
 class Enemy(TODOImportEnemy):
     """Class representing an enemy in the game."""
 
-    _world: Optional["GameWorld"]
+    _world: "GameWorld" | None
 
     @property
     def world(self) -> "GameWorld":
@@ -61,16 +60,16 @@ class Enemy(TODOImportEnemy):
     _name_override: str
 
     # overworld subs
-    _sprite: Union[None, int] = None
+    _sprite: None | int = None
 
     # attribute methods
 
     @property
-    def rare_item_drop(self) -> Optional[Type[RegularItem]]:
+    def rare_item_drop(self) -> type[RegularItem] | None:
         """A single item that the enemy has a very small chance of dropping."""
         return self._rare_item_drop
 
-    def set_rare_item_drop(self, rare_item_drop: Optional[Type[RegularItem]]) -> None:
+    def set_rare_item_drop(self, rare_item_drop: type[RegularItem] | None) -> None:
         """Set the single item that the enemy has a very small chance of dropping."""
         self._rare_item_drop = rare_item_drop
         if rare_item_drop is not None:
@@ -79,11 +78,11 @@ class Enemy(TODOImportEnemy):
             self.set_rare_item_drop_id(None)
 
     @property
-    def common_item_drop(self) -> Optional[Type[RegularItem]]:
+    def common_item_drop(self) -> type[RegularItem] | None:
         """A single item that the enemy has a high chance of dropping."""
         return self._common_item_drop
 
-    def set_common_item_drop(self, common_item_drop: Type[RegularItem]) -> None:
+    def set_common_item_drop(self, common_item_drop: type[RegularItem]) -> None:
         """Set the single item that the enemy has a high chance of dropping."""
         self._common_item_drop = common_item_drop
         if common_item_drop is not None:
@@ -251,24 +250,24 @@ class Enemy(TODOImportEnemy):
         self._name_override = name_override
 
     @property
-    def sprite(self) -> Union[None, UInt16]:
+    def sprite(self) -> None | UInt16:
         """(possibly deprecated)"""
         if self._sprite is None:
             return self._sprite
         return UInt16(self._sprite)
 
-    def set_sprite(self, sprite: "Union[None, int]") -> None:
+    def set_sprite(self, sprite: "None | int") -> None:
         """(possibly deprecated)"""
         if sprite is not None:
             assert 0 <= sprite <= 1023
             assert UInt16(sprite)
         self._sprite = sprite
 
-    def __init__(self, world: Optional["GameWorld"] = None) -> None:
+    def __init__(self, world: "GameWorld" | None = None) -> None:
         self._world = world
 
     @staticmethod
-    def round_for_battle_script(val: Union[float, int]) -> int:
+    def round_for_battle_script(val: float | int) -> int:
         """Round a HP value for battle event data.
         This means round to an integer, and make sure it does have them values 0xfe or 0xff
         because these are special values that stop processing the battle script."""
@@ -452,10 +451,10 @@ class ShellySupport(Enemy):
 
     _position: int = 0
     _vanilla: bool = False
-    _summons: List[int] = []
-    _summon_event: Union[int, None] = None
+    _summons: list[int] = []
+    _summon_event: int | None = None
     _sprite_sub: bool = False
-    _formation_id: Union[int, None] = 0
+    _formation_id: int | None = 0
 
     @property
     def position(self) -> int:
@@ -476,22 +475,22 @@ class ShellySupport(Enemy):
         self._vanilla = vanilla
 
     @property
-    def summons(self) -> List[int]:
+    def summons(self) -> list[int]:
         """A list of formation indexes corresponding to the enemies who should be summoned
         when Shelly hatches"""
         return self._summons
 
-    def set_summons(self, summons: List[int]) -> None:
+    def set_summons(self, summons: list[int]) -> None:
         """Set the list of formation indexes corresponding to the enemies who should be summoned
         when Shelly hatches"""
         self._summons = summons
 
     @property
-    def summon_event(self) -> Union[int, None]:
+    def summon_event(self) -> int | None:
         """Optional battle event to run after Shelly hatches"""
         return self._summon_event
 
-    def set_summon_event(self, summon_event: Union[int, None]) -> None:
+    def set_summon_event(self, summon_event: int | None) -> None:
         """Set an optional battle event to run after Shelly hatches"""
         self._summon_event = summon_event
 
@@ -505,13 +504,13 @@ class ShellySupport(Enemy):
         self._sprite_sub = sprite_sub
 
     @property
-    def formation_id(self) -> Union[UInt8, None]:
+    def formation_id(self) -> UInt8 | None:
         """The formation containing Shelly"""
         if self._formation_id is not None:
             return UInt8(self._formation_id)
         return self._formation_id
 
-    def set_formation_id(self, formation_id: Union[int, None]) -> None:
+    def set_formation_id(self, formation_id: int | None) -> None:
         """Set the formation containing Shelly"""
         if formation_id is not None:
             assert UInt8(formation_id)

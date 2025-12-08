@@ -54,8 +54,7 @@ script = EventScript(
         StartBattleAtBattlefield(
             184,
             BF40_SMITHY_FACTORY_DOMINO__CLOAKERS_PAD,
-            identifier="EVENT_353_room_103_logic",
-        ),
+            identifier="EVENT_353_room_103_logic"),
         Return(),
         StartBattleAtBattlefield(
             176, BF35_MARRYMORE_CHAPEL_SANCTUARY, identifier="EVENT_353_room_154_logic"
@@ -64,8 +63,7 @@ script = EventScript(
         StartBattleAtBattlefield(
             167,
             BF03_SUNKEN_SHIP_KING_CALAMARIS_CELLAR,
-            identifier="EVENT_353_room_177_logic",
-        ),
+            identifier="EVENT_353_room_177_logic"),
         Return(),
         StartBattleAtBattlefield(
             161, BF12_BOOSTER_TOWER, identifier="EVENT_353_room_192_logic"
@@ -86,8 +84,7 @@ script = EventScript(
         StartBattleAtBattlefield(
             174,
             BF18_SMITHY_FACTORY_COUNT_DOWNS_PAD,
-            identifier="EVENT_353_room_223_logic",
-        ),
+            identifier="EVENT_353_room_223_logic"),
         Return(),
         StartBattleAtBattlefield(
             181, BF01_FOREST_MAZE_BOWYERS_PAD, identifier="EVENT_353_room_232_logic"
@@ -132,8 +129,7 @@ script = EventScript(
         StartBattleAtBattlefield(
             172,
             BF08_BARREL_VOLCANO_CZAR_DRAGONS_PAD,
-            identifier="EVENT_353_room_352_logic",
-        ),
+            identifier="EVENT_353_room_352_logic"),
         Return(),
         StartBattleAtBattlefield(
             182, BF39_BLADE_AXEM_RANGERS, identifier="EVENT_353_room_393_logic"

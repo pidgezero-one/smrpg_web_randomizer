@@ -28,8 +28,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P017_SMALL_MINIGAME_COIN,
             target_npc=MARIO,
-            destinations=["EVENT_1830_pause_20"],
-        ),
+            destinations=["EVENT_1830_pause_20"]),
         SetVarToConst(PRIMARY_TEMP_7000, 1),
         Dec7000FromCoins(),
         Pause(1, identifier="EVENT_1830_pause_20"),
@@ -54,14 +53,12 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=22,
             y=123,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E1836_KEEP_DONKEY_ROOM_LOADER),
         CopyVarToVar(
             from_var=ROSE_WAY_703E,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1830_set_7000_to_7000_short_mem_35",
-        ),
+            identifier="EVENT_1830_set_7000_to_7000_short_mem_35"),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ACTIVE_NPC),
         Set7000ToObjectCoord(
             target_npc=MEM_70A8, coord=COORD_X, pixel=True, bit_7=True
@@ -76,8 +73,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=6,
             y=47,
-            z=1,
-        ),
+            z=1),
         SetBit(TEMP_7044_6),
         JmpToEvent(E1825_KEEP_ROTATING_ROOM_LOADER),
         EnterArea(
@@ -86,8 +82,7 @@ script = EventScript(
             x=4,
             y=62,
             z=7,
-            identifier="EVENT_1830_enter_area_44",
-        ),
+            identifier="EVENT_1830_enter_area_44"),
         JmpToSubroutine(["EVENT_1830_pause_70"]),
         SetBit(UNKNOWN_PAN),
         SetVarToConst(TEMP_70AB, 0),
@@ -101,8 +96,7 @@ script = EventScript(
             x=2,
             y=57,
             z=0,
-            identifier="EVENT_1830_enter_area_52",
-        ),
+            identifier="EVENT_1830_enter_area_52"),
         JmpToEvent(E1835_KEEP_CANNONBALL_ROOM_LOADER),
         EnterArea(
             room_id=R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN,
@@ -110,8 +104,7 @@ script = EventScript(
             x=8,
             y=115,
             z=2,
-            identifier="EVENT_1830_enter_area_54",
-        ),
+            identifier="EVENT_1830_enter_area_54"),
         JmpToSubroutine(["EVENT_1830_pause_70"]),
         SetBit(UNKNOWN_PAN),
         SetVarToConst(TEMP_70AB, 0),
@@ -125,8 +118,7 @@ script = EventScript(
             x=10,
             y=122,
             z=5,
-            identifier="EVENT_1830_enter_area_62",
-        ),
+            identifier="EVENT_1830_enter_area_62"),
         JmpToSubroutine(["EVENT_1830_pause_70"]),
         SetBit(UNKNOWN_PAN),
         SetVarToConst(TEMP_70AB, 0),
@@ -144,8 +136,7 @@ script = EventScript(
                 ASSwapVars(ROSE_WAY_703A, Y_COORD_2),
                 ASSwapVars(ROSE_WAY_703C, Z_COORD_2),
                 ASDb(bytearray(b"\x99")),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_1830_ret_81"]),
         Pause(1, identifier="EVENT_1830_pause_75"),
         CopyVarToVar(from_var=ROSE_WAY_703E, to_var=PRIMARY_TEMP_7000),
@@ -162,8 +153,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_1830_action_queue_async_80_SUBSCRIPT_pause_1"]
                 ),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_1830_ret_81"),
     ]
 )

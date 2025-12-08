@@ -35,6 +35,10 @@ script = EventScript([
 	Set0158Bit7Offset(0x015E),
 	ClearBit(TEMP_7042_7),
 	ApplySolidityModToLevel(permanent=True, room_id=R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, mod_id=0),
-	FadeInFromBlack(sync=False),
+    JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["EVENT_320_fade_in_from_black_async"]),
+    JmpIfObjectNotInSpecificLevel(NPC_4, R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, ["EVENT_320_fade_in_from_black_async"]),
+    SummonObjectToCurrentLevel(NPC_4),
+    SummonObjectToCurrentLevel(NPC_5),
+	FadeInFromBlack(sync=False, identifier="EVENT_320_fade_in_from_black_async"),
 	Return()
 ])

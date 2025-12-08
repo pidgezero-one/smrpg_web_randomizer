@@ -180,5 +180,4 @@ from .items import (
     RingItem,
     CrownItem,
     GoldPaintItem,
-    MarioDollItem,
-)
+    MarioDollItem)

@@ -27,12 +27,10 @@ script = EventScript(
                 ASDb(bytearray(b"$ \x00\x00\x00")),
                 ASShiftZUpSteps(10),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASPause(16), ASSetWalkingSpeed(VERY_SLOW), ASShiftNorthSteps(5)],
-        ),
+            subscript=[ASPause(16), ASSetWalkingSpeed(VERY_SLOW), ASShiftNorthSteps(5)]),
         Pause(112),
         FadeOutToBlack(sync=False, duration=32),
         SetBit(TEMP_GARDENER_EXTERIOR_2),
@@ -42,8 +40,7 @@ script = EventScript(
             x=8,
             y=87,
             z=3,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

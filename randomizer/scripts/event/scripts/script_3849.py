@@ -18,8 +18,7 @@ script = EventScript(
             x=4,
             y=56,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         SetVarToConst(UNKNOWN_7036, 4493, identifier="EVENT_3849_set_short_7"),
         EnterArea(
@@ -28,8 +27,7 @@ script = EventScript(
             x=26,
             y=77,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

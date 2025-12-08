@@ -61,8 +61,7 @@ script = EventScript(
                 ASCopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=ROSE_WAY_703E),
                 ASFixedFCoordOn(),
             ],
-            identifier="EVENT_470_start_embedded_action_script_async_F1_20",
-        ),
+            identifier="EVENT_470_start_embedded_action_script_async_F1_20"),
         SetBit(TEMP_7044_4),
         Return(),
         StopSound(),
@@ -82,8 +81,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_9,
             subscript=[ASFixedFCoordOff(), ASFaceMario()],
-            identifier="EVENT_470_action_queue_async_28",
-        ),
+            identifier="EVENT_470_action_queue_async_28"),
         PlaySound(sound=SO063_YOSHI_TALK, channel=6),
         RunDialog(
             dialog_id=DI0900_YOSHI_AFTER_YOU_ENABLE_HIM,
@@ -91,14 +89,12 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Jmp(["EVENT_470_start_embedded_action_script_async_F1_20"]),
         JmpIfBitSet(
             TEMP_7044_4,
             ["EVENT_470_pause_action_script_34"],
-            identifier="EVENT_470_jmp_if_bit_set_32",
-        ),
+            identifier="EVENT_470_jmp_if_bit_set_32"),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_470_pause_action_script_34"),
         PauseActionScript(NPC_9),
@@ -109,8 +105,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Db(bytearray(b"\xfdE")),
         FreezeCamera(),
         SetBit(TEMP_7044_5),
@@ -130,8 +125,7 @@ script = EventScript(
                 ASDb(bytearray(b"\x98")),
                 ASVisibilityOff(),
                 ASJmp(["EVENT_470_non_embedded_action_queue_46"]),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFixedFCoordOff()]),
         Jmp(["EVENT_470_action_queue_async_47"]),
         NonEmbeddedActionQueue(
@@ -142,57 +136,49 @@ script = EventScript(
                     1,
                     [
                         "EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_10"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     ROSE_WAY_703E,
                     2,
                     [
                         "EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_12"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     ROSE_WAY_703E,
                     3,
                     [
                         "EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_14"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     ROSE_WAY_703E,
                     4,
                     [
                         "EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_16"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     ROSE_WAY_703E,
                     5,
                     [
                         "EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_18"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     ROSE_WAY_703E,
                     6,
                     [
                         "EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_20"
-                    ],
-                ),
+                    ]),
                 ASJmpIfVarEqualsConst(
                     ROSE_WAY_703E,
                     7,
                     [
                         "EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_22"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(
                     index=4,
                     sprite_offset=6,
                     is_sequence=True,
                     looping=False,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASJmp(
                     ["EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23"]
                 ),
@@ -202,8 +188,7 @@ script = EventScript(
                     is_sequence=True,
                     looping=False,
                     mirror_sprite=True,
-                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_10",
-                ),
+                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_10"),
                 ASJmp(
                     ["EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23"]
                 ),
@@ -212,8 +197,7 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=False,
-                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_12",
-                ),
+                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_12"),
                 ASJmp(
                     ["EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23"]
                 ),
@@ -222,8 +206,7 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=False,
-                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_14",
-                ),
+                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_14"),
                 ASJmp(
                     ["EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23"]
                 ),
@@ -232,8 +215,7 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=False,
-                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_16",
-                ),
+                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_16"),
                 ASJmp(
                     ["EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23"]
                 ),
@@ -242,8 +224,7 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=False,
-                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_18",
-                ),
+                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_18"),
                 ASJmp(
                     ["EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23"]
                 ),
@@ -252,8 +233,7 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=False,
-                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_20",
-                ),
+                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_20"),
                 ASJmp(
                     ["EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23"]
                 ),
@@ -263,13 +243,11 @@ script = EventScript(
                     is_sequence=True,
                     looping=False,
                     mirror_sprite=True,
-                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_22",
-                ),
+                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_22"),
                 ASSetVarToConst(
                     Z_COORD_2,
                     0,
-                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23",
-                ),
+                    identifier="EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23"),
                 ASDb(bytearray(b"\x9a")),
                 ASVisibilityOn(),
                 ASFixedFCoordOff(),
@@ -282,13 +260,11 @@ script = EventScript(
                 ASShadowOff(),
                 ASReturn(),
             ],
-            identifier="EVENT_470_non_embedded_action_queue_46",
-        ),
+            identifier="EVENT_470_non_embedded_action_queue_46"),
         ActionQueueAsync(
             target=NPC_9,
             subscript=[ASTransferToObjectXY(MARIO), ASSequenceLoopingOff()],
-            identifier="EVENT_470_action_queue_async_47",
-        ),
+            identifier="EVENT_470_action_queue_async_47"),
         RememberLastObject(),
         ApplySolidityModToLevel(permanent=True, room_id=R034_YOSTER_ISLE, mod_id=3),
         ApplySolidityModToLevel(permanent=True, room_id=R034_YOSTER_ISLE, mod_id=5),

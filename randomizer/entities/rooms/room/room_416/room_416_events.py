@@ -13,8 +13,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3619_NIMBUS_EXTERIOR_OPEN_SHOP_DOOR,
         x=11,
@@ -25,8 +24,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3622_NIMBUS_EXTERIOR_OPEN_NORTHEAST_HOUSE_DOOR,
         x=12,
@@ -37,8 +35,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3621_NIMBUS_EXTERIOR_OPEN_SOUTH_HOUSE_DOOR,
         x=15,
@@ -49,8 +46,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3620_NIMBUS_EXTERIOR_OPEN_GARROS_DOOR,
         x=25,
@@ -61,8 +57,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3645_NIMBUS_EXTERIOR_EXIT_TO_VINES,
         x=12,
@@ -73,8 +68,7 @@ events = [
         height=3,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3645_NIMBUS_EXTERIOR_EXIT_TO_VINES,
         x=11,
@@ -85,8 +79,7 @@ events = [
         height=3,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0740_NIMBUS_LAND_OCCUPIED_CASTLE_FRONT_ENTRANCE,
         x=20,
@@ -97,6 +90,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

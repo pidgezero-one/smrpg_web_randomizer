@@ -64,8 +64,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -92,8 +91,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 2
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -122,8 +120,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.BIG_FLOWER_NPC,
             initiator=EventInitiator.NONE,
@@ -150,8 +147,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.BIG_FLOWER_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -161,8 +157,7 @@ room = Room(
             y=42,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.BIG_FLOWER_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
@@ -172,8 +167,7 @@ room = Room(
             y=42,
             z=4,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 6
             npc=npcs.FROG_COIN_NPC,
             initiator=EventInitiator.NONE,
@@ -200,8 +194,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.EXPLOSION_NPC,
             initiator=EventInitiator.NONE,
@@ -229,7 +222,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

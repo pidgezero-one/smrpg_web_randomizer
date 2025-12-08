@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2799,
             x=4,
@@ -55,8 +54,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -93,8 +91,7 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.Empty,
             event_script=2795,
@@ -111,8 +108,7 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.Empty,
             event_script=2796,
@@ -129,8 +125,7 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.Empty,
             event_script=2797,
@@ -147,7 +142,6 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         SetBit(INVISIBLE_ITEMS_ANYWHERE_EXPLAINED),
         RunDialog(
             dialog_id=DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_84_run_dialog_1",
-        ),
+            identifier="EVENT_84_run_dialog_1"),
         Return(),
     ]
 )

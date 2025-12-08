@@ -27,8 +27,7 @@ script = EventScript(
                 ASWalkWestPixels(2),
                 ASJmpIfBitClear(
                     TEMP_708C_4,
-                    ["EVENT_2478_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_8"],
-                ),
+                    ["EVENT_2478_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_8"]),
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -38,11 +37,9 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_2478_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_8",
-                ),
+                    identifier="EVENT_2478_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_8"),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -56,8 +53,7 @@ script = EventScript(
                     TEMP_708C_4,
                     [
                         "EVENT_2478_action_queue_async_12_SUBSCRIPT_set_sprite_sequence_9"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(
                     index=14, is_mold=True, is_sequence=True, looping=True
                 ),
@@ -67,11 +63,9 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    identifier="EVENT_2478_action_queue_async_12_SUBSCRIPT_set_sprite_sequence_9",
-                ),
+                    identifier="EVENT_2478_action_queue_async_12_SUBSCRIPT_set_sprite_sequence_9"),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         JmpIfBitClear(TEMP_708C_4, ["EVENT_2478_set_7000_to_object_coord_15"]),
         SetSyncActionScript(NPC_2, A0015_DO_NOTHING),
         Set7000ToObjectCoord(
@@ -79,8 +73,7 @@ script = EventScript(
             coord=COORD_Y,
             pixel=True,
             bit_7=True,
-            identifier="EVENT_2478_set_7000_to_object_coord_15",
-        ),
+            identifier="EVENT_2478_set_7000_to_object_coord_15"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 27, ["EVENT_2478_freeze_camera_19"]),
         FadeInFromBlack(sync=False),
         Return(),
@@ -100,16 +93,14 @@ script = EventScript(
                 ASTransferToXYZF(x=27, y=27, z=24, direction=EAST),
                 ASWalkEastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkToXYCoords(x=22, y=5),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=MARIO,
@@ -123,11 +114,9 @@ script = EventScript(
                     sprite_offset=6,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASPause(16),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -136,8 +125,7 @@ script = EventScript(
                     sprite_offset=1,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASFaceSouthwest(),
                 ASPlaySound(sound=SO004_JUMP, channel=4),
                 ASDb(bytearray(b" \x07")),
@@ -145,12 +133,10 @@ script = EventScript(
                 ASDb(bytearray(b"%\xc0\x06\x80\xff")),
                 ASPause(37),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASShiftSouthSteps(4)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASShiftSouthSteps(4)]),
         UnfreezeCamera(),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),

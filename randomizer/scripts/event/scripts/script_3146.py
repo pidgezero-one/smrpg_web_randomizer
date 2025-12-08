@@ -16,8 +16,7 @@ script = EventScript(
                 ASShiftZUpSteps(2),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         AddCoins(10),
         Return(),
     ]

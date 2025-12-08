@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2799_STAR_HILL_ENTRANCE_TO_1ST_ROOM,
             x=4,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -89,8 +87,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.EMPTY_NPC_2,
             event_script=E2795_STAR_HILL_PROGRESS_SIGN,
@@ -100,8 +97,7 @@ room = Room(
             y=16,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.EMPTY_NPC_2,
             event_script=E2796_STAR_HILL_MARRYMORE_EXIT_FLOWER,
@@ -111,8 +107,7 @@ room = Room(
             y=29,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.EMPTY_NPC_2,
             event_script=E2797_STAR_HILL_PROGRESS_FLOWER,
@@ -122,7 +117,6 @@ room = Room(
             y=17,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

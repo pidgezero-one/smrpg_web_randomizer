@@ -12,8 +12,7 @@ script = EventScript(
             x=4,
             y=48,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         JmpIfBitSet(MARIOS_PAD_OR_MONSTRO_TOWN_SLEEP, ["EVENT_256_ret_0"]),
         Pause(1),
         PlaySound(sound=SO010_TRAMPOLINE, channel=6),
@@ -22,8 +21,7 @@ script = EventScript(
             subscript=[
                 ASJumpToHeight(height=96, silent=True),
                 ASWalkFDirectionPixels(16),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

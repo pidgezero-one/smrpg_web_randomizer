@@ -16,8 +16,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkWestPixels(8),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_7,
             subscript=[
@@ -25,8 +24,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkEastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -34,8 +32,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkWestPixels(8),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -43,8 +40,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkEastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -52,8 +48,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkEastPixels(24),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
@@ -61,8 +56,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalkEastPixels(8),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_7, A0477_BANDITS_WAY_1ST_PLATFORMS_STATIC),
         SetVarToConst(SECONDARY_TEMP_7024, 128),
         SetVarToConst(ROSE_WAY_703E, 26),
@@ -80,8 +74,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=5, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         Pause(60),
         ActionQueueAsync(
             target=NPC_8,
@@ -94,16 +87,14 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASPause(8),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         FreezeAllNPCsUntilReturn(),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
                 ASSetSolidityBits(cant_pass_npcs=True),
                 ASSetSolidityBits(bit_7=True),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -138,8 +129,7 @@ script = EventScript(
                 ASJumpToHeight(128),
                 ASWalkEastSteps(4),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -154,8 +144,7 @@ script = EventScript(
                 ASPause(28),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -167,16 +156,14 @@ script = EventScript(
                 ASWalkWestSteps(4),
                 ASWalkSouthwestSteps(5),
                 ASSetWalkingSpeed(VERY_FAST),
-            ],
-        ),
+            ]),
         UnfreezeAllNPCs(),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
                 ASClearSolidityBits(cant_pass_npcs=True),
                 ASClearSolidityBits(bit_7=True),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

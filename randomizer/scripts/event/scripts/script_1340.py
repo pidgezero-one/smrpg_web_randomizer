@@ -14,8 +14,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         Pause(5),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
@@ -23,13 +22,11 @@ script = EventScript(
             use_alternate=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
             mod_id=33,
-            identifier="EVENT_1340_apply_tile_mod_5",
-        ),
+            identifier="EVENT_1340_apply_tile_mod_5"),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
-            mod_id=1,
-        ),
+            mod_id=1),
         RemoveObjectFromCurrentLevel(NPC_14),
         RemoveObjectFromSpecificLevel(
             NPC_14, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM

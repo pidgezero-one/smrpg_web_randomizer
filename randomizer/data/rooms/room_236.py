@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -67,8 +66,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -97,8 +95,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.AMANITA_NPC,
             event_script=E2426_FOREST_MUSHROOM_PICKUP,
@@ -108,8 +105,7 @@ room = Room(
             y=38,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 2
             npc=npcs.AMANITA_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -137,8 +133,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 3
             npc=npcs.AMANITA_NPC,
             battle_pack=26,
@@ -148,8 +143,7 @@ room = Room(
             y=38,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackNPC( # 4
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -177,8 +171,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 5
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=138,
@@ -188,8 +181,7 @@ room = Room(
             y=35,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 6
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -216,8 +208,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.WIGGLER_NPC,
             initiator=EventInitiator.NONE,
@@ -245,8 +236,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.WHIRLPOOL_WATER_NPC_2,
             initiator=EventInitiator.NONE,
@@ -274,7 +264,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

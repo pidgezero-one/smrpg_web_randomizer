@@ -21,8 +21,7 @@ script = EventScript(
                 ASPause(8),
                 ASBPL262728(),
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         Set70107015ToObjectXYZ(MEM_70A8),
         CopyVarToVar(from_var=Z_COORD_1, to_var=PRIMARY_TEMP_7000),
         AddConstToVar(PRIMARY_TEMP_7000, 608),
@@ -50,8 +49,7 @@ script = EventScript(
         JmpIfBitSet(
             GAME_OVER,
             ["EVENT_3078_reset_and_choose_game_30"],
-            identifier="EVENT_3078_jmp_if_bit_set_22",
-        ),
+            identifier="EVENT_3078_jmp_if_bit_set_22"),
         FadeInFromBlack(sync=False),
         SetBit(MIMIC_3_CLEARED),
         ActionQueueSync(
@@ -65,8 +63,7 @@ script = EventScript(
                     RUN_AWAY,
                     [
                         "EVENT_3078_action_queue_sync_25_SUBSCRIPT_object_memory_clear_bit_9"
-                    ],
-                ),
+                    ]),
                 ASSetSpriteSequence(index=4, is_sequence=True, looping=False),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASSequenceLoopingOff(),
@@ -74,13 +71,11 @@ script = EventScript(
                 ASObjectMemoryClearBit(
                     arg_1=0x30,
                     bits=[4],
-                    identifier="EVENT_3078_action_queue_sync_25_SUBSCRIPT_object_memory_clear_bit_9",
-                ),
+                    identifier="EVENT_3078_action_queue_sync_25_SUBSCRIPT_object_memory_clear_bit_9"),
                 ASSequenceLoopingOff(),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=False),
                 ASReturn(),
-            ],
-        ),
+            ]),
         ClearBit(UNKNOWN_MIMIC_BIT),
         JmpIfBitSet(RUN_AWAY, ["EVENT_3078_ret_29"]),
         SetBit(UNKNOWN_MIMIC_BIT),

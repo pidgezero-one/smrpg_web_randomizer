@@ -13,8 +13,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2319_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=6,
@@ -25,8 +24,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2320_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=8,
@@ -37,8 +35,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2321_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=8,
@@ -49,8 +46,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2322_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=7,
@@ -61,8 +57,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2323_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=7,
@@ -73,8 +68,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2324_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=9,
@@ -85,8 +79,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2325_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=9,
@@ -97,8 +90,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2326_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=11,
@@ -109,8 +101,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2327_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=11,
@@ -121,8 +112,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2328_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=13,
@@ -133,8 +123,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2329_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=13,
@@ -145,8 +134,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2330_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=10,
@@ -157,8 +145,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2331_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=10,
@@ -169,8 +156,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2332_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=12,
@@ -181,8 +167,7 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E2333_BOOSTER_PASS_2ND_ROOM_SPINY_SUMMONER,
         x=12,
@@ -193,6 +178,5 @@ events = [
         height=7,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

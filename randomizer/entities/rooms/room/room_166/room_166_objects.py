@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_1
     RegularNPC(
         occupant=GreenSwitch,
@@ -69,8 +68,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_2
     RegularNPC(
         occupant=JBlock,
@@ -110,8 +108,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_3
     RegularNPC(
         occupant=JBlock,
@@ -149,6 +146,5 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
 ]

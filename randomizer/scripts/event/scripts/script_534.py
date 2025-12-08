@@ -14,8 +14,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunEventAsSubroutine(
             E0178_NPC_QUEST_1_CONTAINER, identifier="EVENT_534_play_sound_3"
@@ -29,8 +28,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_534___run_dialog_66",
-        ),
+            identifier="EVENT_534___run_dialog_66"),
         Return(),
     ]
 )

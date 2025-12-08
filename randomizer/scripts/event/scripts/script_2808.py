@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfBitSet(
             TOAD_IN_MUSHROOM_WAY_3,
             ["EVENT_2808_ret_34"],
-            identifier="EVENT_2808_jmp_if_bit_set_0",
-        ),
+            identifier="EVENT_2808_jmp_if_bit_set_0"),
         FreezeAllNPCsUntilReturn(),
         ActionQueueSync(
             target=MARIO,
@@ -19,8 +18,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASWalkToXYCoords(x=27, y=94),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         StopEmbeddedActionScript(MARIO),
         RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
         JmpIfBitClear(GAME_OVER, ["EVENT_2808_restore_all_hp_7"]),

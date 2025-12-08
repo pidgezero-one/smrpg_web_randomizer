@@ -12,16 +12,14 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         RunDialog(
             dialog_id=DI3726_KEEP_ACCESS_HINT,
             above_object=NPC_12,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
     ]
 )

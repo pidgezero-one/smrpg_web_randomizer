@@ -22,8 +22,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         PixelateLayers(layers=[LAYER_L1, LAYER_L2, LAYER_L3], pixel_size=9, duration=0),
         FadeInFromBlack(sync=True, duration=40),
         PixelateLayers(
@@ -39,8 +38,7 @@ script = EventScript(
                 ASJumpToHeight(108),
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASWalk1StepFDirection(),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7044_6),
         Return(),
     ]

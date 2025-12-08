@@ -9,8 +9,7 @@ script = ActionScript(
             sprite_offset=3,
             is_sequence=True,
             looping=True,
-            identifier="ACTION_861_set_sprite_sequence_0",
-        ),
+            identifier="ACTION_861_set_sprite_sequence_0"),
         Pause(16),
         SetSpriteSequence(
             index=0, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True

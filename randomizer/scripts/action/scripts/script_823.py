@@ -23,8 +23,7 @@ script = ActionScript(
             arg_1=0x09,
             set_bits=[5],
             clear_bits=[4, 6],
-            identifier="ACTION_823_object_memory_modify_bits_13",
-        ),
+            identifier="ACTION_823_object_memory_modify_bits_13"),
         ShadowOn(),
         Jmp(["ACTION_823_pause_0"]),
     ]

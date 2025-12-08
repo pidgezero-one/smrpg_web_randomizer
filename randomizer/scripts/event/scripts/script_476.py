@@ -22,8 +22,7 @@ script = EventScript(
                 ASTransferToXYZF(x=16, y=77, z=0, direction=EAST),
                 ASFaceNorthwest(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         StartSyncEmbeddedActionScript(
             target=NPC_9,
             prefix=0xF1,
@@ -31,16 +30,14 @@ script = EventScript(
                 ASTransferToXYZF(x=10, y=81, z=0, direction=EAST),
                 ASFaceSoutheast(),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
                 ASTransferToXYZF(x=11, y=83, z=0, direction=EAST),
                 ASFaceNortheast(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         StartSyncEmbeddedActionScript(
             target=NPC_2,
             prefix=0xF1,
@@ -48,8 +45,7 @@ script = EventScript(
                 ASTransferToXYZF(x=11, y=75, z=0, direction=EAST),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         StartSyncEmbeddedActionScript(
             target=MARIO,
             prefix=0xF1,
@@ -60,26 +56,22 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         StartSyncEmbeddedActionScript(
             target=NPC_1,
             prefix=0xF1,
             subscript=[
                 ASTransferToXYZF(x=20, y=69, z=0, direction=EAST),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         StartSyncEmbeddedActionScript(
             target=NPC_3,
             prefix=0xF1,
             subscript=[
                 ASTransferToXYZF(x=15, y=67, z=0, direction=EAST),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         StartSyncEmbeddedActionScript(
             target=NPC_5,
             prefix=0xF1,
@@ -88,8 +80,7 @@ script = EventScript(
                 ASTransferXYZFPixels(x=8, y=252, z=0, direction=EAST),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         RemoveObjectFromCurrentLevel(NPC_13),
         SetBit(TEMP_7049_6),
@@ -99,8 +90,7 @@ script = EventScript(
         ActionQueueSync(
             target=NPC_10,
             subscript=[ASFaceNorthwest(), ASVisibilityOn()],
-            identifier="EVENT_476_action_queue_sync_191",
-        ),
+            identifier="EVENT_476_action_queue_sync_191"),
         ActionQueueSync(
             target=NPC_9, subscript=[ASFaceSoutheast(), ASSetSequenceSpeed(SLOW)]
         ),
@@ -112,10 +102,8 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         FadeInFromBlack(sync=True),
         PauseScriptUntilEffectDone(),
         Pause(30),
@@ -130,18 +118,15 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceNortheast()]),
         Pause(60),
         JmpToSubroutine(["EVENT_457_action_queue_sync_0"]),
         RunBackgroundEvent(
             event_id=E0465_MUSHROOM_DERBY_BUSINESS_LOGIC,
             return_on_level_exit=True,
-            bit_7=True,
-        ),
+            bit_7=True),
         EnableControls([]),
         Return(),
     ]

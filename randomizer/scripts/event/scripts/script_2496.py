@@ -12,74 +12,61 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R042_BOOSTER_TOWER_3F_AREA_02_NES_MARIO_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
-            mod_id=1,
-        ),
+            mod_id=1),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
-            mod_id=2,
-        ),
+            mod_id=2),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R226_FOREST_MAZE_AREA_02, mod_id=0
         ),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R433_SMITHY_FACTORY_AREA_01_____DUMMY, mod_id=0
         ),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R442_SMITHY_FACTORY_AREA_11_CONVEYOR_BELTS_SPAWNING_DRILL_BITS_AND_MACKS,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R448_BOWSERS_KEEP_AREA_09_TALL_ROOM_WSAVE_POINT,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN,
-            mod_id=1,
-        ),
+            mod_id=1),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN,
-            mod_id=0,
-        ),
+            mod_id=0),
         SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW08_MARIOS_PAD),
         SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_MARIOS_PAD),
         SetBit(MAP_DIRECTIONAL_MARIOS_PAD_MUSHROOM_WAY),
@@ -147,23 +134,19 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ClearBit(UNKNOWN_STAR_PIECE),
         SetBit(UNKNOWN_7053_0),
         SetBit(UNUSED_7053_1),

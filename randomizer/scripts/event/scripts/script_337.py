@@ -26,8 +26,7 @@ script = EventScript(
                 ASPause(40),
                 ASFaceSouth(),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         Pause(30),
         ActionQueueSync(
             target=MARIO,
@@ -38,8 +37,7 @@ script = EventScript(
                     index=0, sprite_offset=3, is_sequence=True, looping=True
                 ),
                 ASJumpToHeight(height=64, silent=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -48,21 +46,18 @@ script = EventScript(
                 ASAddZCoord1Step(),
                 ASDecZCoord1Step(),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI0608_SHOPKEEPER_YELLS_AT_YOU_ON_SHELF,
             above_object=NPC_14,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         RememberLastObject(),
         ActionQueueAsync(
             target=MARIO,
-            subscript=[ASResetProperties(), ASJumpToHeight(64), ASWalk1StepSouthwest()],
-        ),
+            subscript=[ASResetProperties(), ASJumpToHeight(64), ASWalk1StepSouthwest()]),
         RunEventAsSubroutine(E0278_UNKNOWN),
         ActionQueueAsync(target=NPC_1, subscript=[ASFaceSouthwest()]),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

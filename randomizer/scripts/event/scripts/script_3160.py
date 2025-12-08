@@ -10,16 +10,14 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             NPC_0,
             R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM,
-            ["EVENT_3160_ret_3"],
-        ),
+            ["EVENT_3160_ret_3"]),
         EnterArea(
             room_id=R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM,
             face_direction=SOUTHWEST,
             x=20,
             y=25,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(identifier="EVENT_3160_ret_3"),
     ]
 )

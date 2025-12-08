@@ -16,8 +16,7 @@ script = EventScript(
                 ASSetWalkingSpeed(NORMAL),
                 ASShiftZDownSteps(2),
                 ASClearBit(TEMP_7042_0),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         JmpToEvent(E0173_CHEST_2_CONTAINER),
     ]

@@ -2,13 +2,11 @@
 
 """Supporting exports for progress locations"""
 
-from typing import Dict
-
 from randomizer.types.bosses import Battlefields
 from randomizer.types.items import IllegalItemPropertyException
 from randomizer.types.overworld_scripts.ids.room_names import *
 
-ROOMS_BATTLEFIELD_DICT: Dict[int, Battlefields] = {
+ROOMS_BATTLEFIELD_DICT: dict[int, Battlefields] = {
     R000_DEBUG_ROOM: Battlefields.MUSHROOM_WAY,
     R001_____BLUE_BG_NOTHING_THERE: Battlefields.MUSHROOM_WAY,
     R002_BOWSERS_KEEP_OUTSIDE_MARIO_ENTERS_AT_BEGINNING_OF_GAME: Battlefields.MOUNTAINS,

@@ -37,8 +37,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularClone(
         occupant=Torte,
@@ -55,8 +54,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularClone(
         occupant=Torte,
@@ -73,8 +71,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=Torte,
@@ -109,8 +106,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_4
     RegularNPC(
         occupant=Torte,
@@ -145,8 +141,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_5
     RegularNPC(
         occupant=Torte,
@@ -181,6 +176,5 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=1,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

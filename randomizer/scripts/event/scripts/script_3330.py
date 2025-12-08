@@ -25,8 +25,7 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E3346_VOLCANO_1ST_BOSS_SCREEN_TINT,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -36,8 +35,7 @@ script = EventScript(
                 ASWalkNortheastSteps(5),
                 ASSetWalkingSpeed(SLOW),
                 ASWalk1StepNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=MARIO, subscript=[ASWalkNortheastSteps(3)]),
         RunEventAtReturn(E3331_VOLCANO_1ST_BOSS_FIGHT),
         Return(identifier="EVENT_3330_ret_15"),

@@ -14,5 +14,4 @@ from .mario import (
     Zombie,
     Sponge,
     Pretzel,
-    Marlon,
-)
+    Marlon)

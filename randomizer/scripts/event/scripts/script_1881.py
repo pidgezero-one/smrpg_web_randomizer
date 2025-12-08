@@ -9,8 +9,7 @@ script = EventScript(
         PrioritySet(
             mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[LAYER_L3],
-            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY],
-        ),
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY]),
         SetVarToConst(TIMER_701E, 8),
         RunBackgroundEventWithPauseReturnOnExit(
             event_id=E1843_KEEP_INVISIBLE_FLOOR_SHOW_FLOOR, timer_var=TIMER_701E

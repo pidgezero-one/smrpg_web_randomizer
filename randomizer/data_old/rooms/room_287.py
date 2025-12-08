@@ -50,8 +50,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=22,
             y=74,
@@ -69,8 +68,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=19,
             y=68,
@@ -88,8 +86,7 @@ room = Room(
             dst_z=4,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -122,8 +119,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         BattlePackNPC( # 1
             occupant=npcs.BobOmb,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -156,8 +152,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=0,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 2
             occupant=npcs.BobOmb,
             battle_pack=36,
@@ -172,8 +167,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=0,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 3
             occupant=npcs.BobOmb,
             battle_pack=36,
@@ -188,8 +182,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=0,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 4
             occupant=npcs.Empty,
             initiator=Initiator.NONE,
@@ -223,7 +216,6 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

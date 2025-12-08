@@ -53,8 +53,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=18,
             y=98,
@@ -72,8 +71,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         ChestNPC( # 0
@@ -104,8 +102,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.ZEOSTAR_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -133,8 +130,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -144,8 +140,7 @@ room = Room(
             y=91,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 3
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -155,8 +150,7 @@ room = Room(
             y=87,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 4
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -166,8 +160,7 @@ room = Room(
             y=86,
             z=5,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 5
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -177,8 +170,7 @@ room = Room(
             y=90,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 6
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -188,8 +180,7 @@ room = Room(
             y=89,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 7
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -199,8 +190,7 @@ room = Room(
             y=94,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 8
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -210,8 +200,7 @@ room = Room(
             y=98,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 9
             npc=npcs.ZEOSTAR_NPC,
             battle_pack=62,
@@ -221,7 +210,6 @@ room = Room(
             y=93,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

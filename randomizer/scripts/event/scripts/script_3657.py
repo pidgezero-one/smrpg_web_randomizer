@@ -40,8 +40,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_3657_run_dialog_52",
-        ),
+            identifier="EVENT_3657_run_dialog_52"),
         Jmp(["EVENT_3657_close_dialog_34"]),
     ]
 )

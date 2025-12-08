@@ -16,8 +16,7 @@ script = EventScript(
         SetTempSyncActionScript(
             NPC_9,
             A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES,
-            identifier="EVENT_2586_set_temp_action_script_sync_14",
-        ),
+            identifier="EVENT_2586_set_temp_action_script_sync_14"),
         FadeInFromBlack(sync=False),
         Return(),
         StopMusicFD9F(identifier="EVENT_2586_stop_music_FD9F_17"),
@@ -28,8 +27,7 @@ script = EventScript(
                     index=8, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         SetAsyncActionScript(NPC_9, A0851_BOOSTER_PASS_APPRENTICE_AFTER_FIGHT),
         Pause(16),

@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3267_SHIP_LOWER_RAT_STAIRWAY_OPEN_LOWER_DOOR,
             x=9,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -79,8 +77,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=14,
             y=82,
@@ -98,8 +95,7 @@ room = Room(
             dst_z=5,
             dst_z_half=False,
             dst_f=NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         BattlePackNPC( # 0
@@ -129,8 +125,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 1
             npc=npcs.ALLEY_RAT_NPC,
             battle_pack=74,
@@ -140,8 +135,7 @@ room = Room(
             y=93,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 2
             npc=npcs.ALLEY_RAT_NPC,
             battle_pack=74,
@@ -151,8 +145,7 @@ room = Room(
             y=94,
             z=0,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         BattlePackClone( # 3
             npc=npcs.ALLEY_RAT_NPC,
             battle_pack=74,
@@ -162,7 +155,6 @@ room = Room(
             y=87,
             z=6,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
     ]
 )

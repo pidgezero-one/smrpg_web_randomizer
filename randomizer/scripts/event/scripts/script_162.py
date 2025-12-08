@@ -22,8 +22,7 @@ script = EventScript(
             sync=True,
             multiline=False,
             use_background=False,
-            bit_6=True,
-        ),
+            bit_6=True),
         SetBit(BEETLEMANIA_UNLOCKED),
         Return(identifier="EVENT_162_ret_259"),
     ]

@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI1250_BOOSTER_PASS_SECRET_HINT,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_1642_run_dialog_3",
-        ),
+            identifier="EVENT_1642_run_dialog_3"),
         Return(),
     ]
 )

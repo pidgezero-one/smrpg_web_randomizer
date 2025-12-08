@@ -13,8 +13,7 @@ script = EventScript(
             x=7,
             y=21,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R474_SMITHY_FACTORY_AREA_15_FALLING_YARIDOVICHS,
@@ -23,8 +22,7 @@ script = EventScript(
             y=21,
             z=8,
             run_entrance_event=True,
-            identifier="EVENT_1903_enter_area_3",
-        ),
+            identifier="EVENT_1903_enter_area_3"),
         Return(),
     ]
 )

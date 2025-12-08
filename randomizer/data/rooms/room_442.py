@@ -46,8 +46,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
             x=5,
@@ -58,8 +57,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
             x=10,
@@ -70,8 +68,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
             x=10,
@@ -82,8 +79,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
             x=14,
@@ -94,8 +90,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1913_ABYSS_MACHINE_ARROW_ANIMATE,
             x=14,
@@ -106,8 +101,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -127,8 +121,7 @@ room = Room(
             dst_z=5,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=16,
             y=62,
@@ -146,8 +139,7 @@ room = Room(
             dst_z=9,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -176,8 +168,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.JABIT_NPC,
             event_script=E1909_ABYSS_CONVEYOR_BELT_JABIT_OR_BOWYER,
@@ -187,8 +178,7 @@ room = Room(
             y=70,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.JABIT_NPC,
             event_script=E1909_ABYSS_CONVEYOR_BELT_JABIT_OR_BOWYER,
@@ -198,8 +188,7 @@ room = Room(
             y=70,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.JABIT_NPC,
             event_script=E1909_ABYSS_CONVEYOR_BELT_JABIT_OR_BOWYER,
@@ -209,8 +198,7 @@ room = Room(
             y=70,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.MACHINE_MADE_SHYSTER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -237,8 +225,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 5
             npc=npcs.MACHINE_MADE_SHYSTER_NPC,
             event_script=E1910_ABYSS_CONVEYOR_BELT_SHYPER,
@@ -248,8 +235,7 @@ room = Room(
             y=70,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.MACHINE_MADE_SHYSTER_NPC,
             event_script=E1910_ABYSS_CONVEYOR_BELT_SHYPER,
@@ -259,8 +245,7 @@ room = Room(
             y=70,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.MACHINE_MADE_SHYSTER_NPC,
             event_script=E1910_ABYSS_CONVEYOR_BELT_SHYPER,
@@ -270,8 +255,7 @@ room = Room(
             y=70,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 8
             npc=npcs.AERO_UPRIGHT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -298,8 +282,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.MACHINE_MADE_MACK_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -326,7 +309,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

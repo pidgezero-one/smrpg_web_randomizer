@@ -23,8 +23,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P045_TELEPORTATION_SHINE,
             target_npc=NPC_0,
-            destinations=["EVENT_3345_pause_12"],
-        ),
+            destinations=["EVENT_3345_pause_12"]),
         Pause(1, identifier="EVENT_3345_pause_12"),
         JmpIfObjectsAreLessThanXYStepsApart(
             MARIO, NPC_0, 0, 2, ["EVENT_3345_pause_18"]
@@ -42,8 +41,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P045_TELEPORTATION_SHINE,
             target_npc=NPC_1,
-            destinations=["EVENT_3345_pause_25"],
-        ),
+            destinations=["EVENT_3345_pause_25"]),
         Pause(1, identifier="EVENT_3345_pause_25"),
         JmpIfObjectsAreLessThanXYStepsApart(
             MARIO, NPC_2, 0, 4, ["EVENT_3345_remove_from_current_level_28"]
@@ -56,14 +54,12 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P045_TELEPORTATION_SHINE,
             target_npc=NPC_2,
-            destinations=["EVENT_3345_create_packet_at_npc_coords_32"],
-        ),
+            destinations=["EVENT_3345_create_packet_at_npc_coords_32"]),
         CreatePacketAtObjectCoords(
             packet=P045_TELEPORTATION_SHINE,
             target_npc=NPC_0,
             destinations=["EVENT_3345_ret_33"],
-            identifier="EVENT_3345_create_packet_at_npc_coords_32",
-        ),
+            identifier="EVENT_3345_create_packet_at_npc_coords_32"),
         Return(identifier="EVENT_3345_ret_33"),
     ]
 )

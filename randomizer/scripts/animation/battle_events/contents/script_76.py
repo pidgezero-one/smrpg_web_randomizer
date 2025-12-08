@@ -11,8 +11,7 @@ script = BattleAnimationScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         NewSpriteAtCoords(
             sprite_id=SPR0603_FIRE_CRYSTAL,
             sequence=0,
@@ -22,8 +21,7 @@ script = BattleAnimationScript(
             param_2_and_0x10=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         SummonMonster(monster=FireCrystal, position=1, bit_7=True),
         Jmp(["command_0x3a7550"]),
     ]

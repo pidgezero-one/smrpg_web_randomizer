@@ -15,8 +15,7 @@ script = EventScript(
                 ASPause(30),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         SetBit(BEETLEMANIA_UNLOCKED),
         RunDialog(
             dialog_id=DI3077_GOT_BEETLEMANIA,
@@ -24,8 +23,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
     ]
 )

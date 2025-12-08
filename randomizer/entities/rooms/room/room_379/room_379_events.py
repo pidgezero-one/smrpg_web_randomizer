@@ -13,8 +13,7 @@ events = [
         height=2,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3780_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_EAST_VINE_ROOM,
         x=6,
@@ -25,8 +24,7 @@ events = [
         height=2,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3780_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_EAST_VINE_ROOM,
         x=7,
@@ -37,8 +35,7 @@ events = [
         height=2,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3790_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_WEST_VINE_ROOM,
         x=1,
@@ -49,8 +46,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3790_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_WEST_VINE_ROOM,
         x=2,
@@ -61,8 +57,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3790_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_WEST_VINE_ROOM,
         x=2,
@@ -73,8 +68,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3784_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_1ST_VINE_ROOM,
         x=7,
@@ -85,8 +79,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3784_BEAN_VALLEY_2ND_VINE_ROOM_EXIT_TO_1ST_VINE_ROOM,
         x=7,
@@ -97,8 +90,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0749_VINE_FIELD,
         x=7,
@@ -109,8 +101,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0750_VINE_FIELD,
         x=6,
@@ -121,8 +112,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0751_VINE_FIELD,
         x=7,
@@ -133,8 +123,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0752_VINE_FIELD,
         x=6,
@@ -145,8 +134,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0749_VINE_FIELD,
         x=3,
@@ -157,8 +145,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0750_VINE_FIELD,
         x=2,
@@ -169,8 +156,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0751_VINE_FIELD,
         x=3,
@@ -181,8 +167,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0752_VINE_FIELD,
         x=2,
@@ -193,8 +178,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0749_VINE_FIELD,
         x=5,
@@ -205,8 +189,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0750_VINE_FIELD,
         x=4,
@@ -217,8 +200,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0751_VINE_FIELD,
         x=5,
@@ -229,8 +211,7 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0752_VINE_FIELD,
         x=4,
@@ -241,6 +222,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=True,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

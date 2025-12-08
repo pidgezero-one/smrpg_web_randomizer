@@ -21,8 +21,7 @@ script = EventScript(
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASFaceSoutheast(),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(NPC_1, A0015_DO_NOTHING),
         ActionQueueAsync(
             target=NPC_1, subscript=[ASWalkToXYCoords(x=12, y=61), ASFaceNorthwest()]
@@ -36,8 +35,7 @@ script = EventScript(
                 ASPause(20),
                 ASJumpToHeight(54),
                 ASPause(30),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -79,8 +77,7 @@ script = EventScript(
                 ),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0]),
                 ASSetVRAMPriority(PRIORITY_3),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -131,8 +128,7 @@ script = EventScript(
                     index=5, sprite_offset=6, is_sequence=True, looping=True
                 ),
                 ASSetBit(TEMP_7044_5),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_3190_pause_12"),
         JmpIfBitClear(TEMP_7044_2, ["EVENT_3190_pause_12"]),
         SetBit(TEMP_7044_1),
@@ -157,8 +153,7 @@ script = EventScript(
                 ),
                 ASPlaySound(sound=SO048_MINECART_START, channel=4),
                 ASPause(200),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -181,8 +176,7 @@ script = EventScript(
                 ),
                 ASPause(200),
                 ASSetBit(TEMP_7043_0),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_3190_pause_19"),
         JmpIfBitClear(TEMP_7043_0, ["EVENT_3190_pause_19"]),
         CloseDialog(),
@@ -205,8 +199,7 @@ script = EventScript(
             x=0,
             y=0,
             z=0,
-            identifier="EVENT_3190_enter_area_43",
-        ),
+            identifier="EVENT_3190_enter_area_43"),
         RunEventAsSubroutine(E1394_FOUR_DIGIT_COIN_VALUE_HANDLER),
         SetBit(TEMP_7044_6),
         JmpToEvent(E1648_MINECART_ENDING),

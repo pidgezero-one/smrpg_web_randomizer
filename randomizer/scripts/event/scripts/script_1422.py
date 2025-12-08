@@ -25,8 +25,7 @@ script = EventScript(
                 ASTransferToXYZF(x=13, y=28, z=12, direction=EAST),
                 ASFaceSoutheast(),
                 ASReturn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_8,
             subscript=[
@@ -34,16 +33,14 @@ script = EventScript(
                 ASTransferToXYZF(x=13, y=28, z=14, direction=EAST),
                 ASFaceSoutheast(),
                 ASReturn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASTransferToXYZF(x=14, y=28, z=6, direction=EAST),
                 ASFaceSouth(),
                 ASReturn(),
-            ],
-        ),
+            ]),
         RunBackgroundEvent(
             event_id=E1432_RESCUE_TOAD_EXTENDED, return_on_level_exit=True
         ),
@@ -63,15 +60,13 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(NORMAL),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASTransferToXYZF(x=13, y=29, z=6, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_8),
         RemoveObjectFromSpecificLevel(NPC_8, R204_MUSHROOM_WAY_AREA_02),
         FadeInFromBlack(sync=False),
@@ -86,8 +81,7 @@ script = EventScript(
                 ASJumpToHeight(112),
                 ASWalkSoutheastSteps(11),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_7),
         RemoveObjectFromSpecificLevel(NPC_7, R204_MUSHROOM_WAY_AREA_02),
         SummonObjectToSpecificLevel(NPC_5, R205_MUSHROOM_WAY_AREA_03),

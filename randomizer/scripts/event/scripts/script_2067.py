@@ -19,8 +19,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=5, y=9),
                 ASFaceNortheast(),
             ],
-            identifier="EVENT_2067_action_queue_async_0",
-        ),
+            identifier="EVENT_2067_action_queue_async_0"),
         ActionQueueSync(
             target=NPC_1, subscript=[ASPause(80), ASFixedFCoordOff(), ASFaceSoutheast()]
         ),
@@ -36,8 +35,7 @@ script = EventScript(
                 ASShadowOn(),
                 ASJumpToHeight(48),
                 ASWalkSoutheastSteps(1),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -55,8 +53,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASJumpToHeight(height=48, silent=True),
                 ASPlaySound(sound=SO121_AXEM_RANGER_TELEPORT, channel=4),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -77,8 +74,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(4),
                 ASVisibilityOff(),
                 ASWalkSouthwestPixels(32),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -103,8 +99,7 @@ script = EventScript(
                 ASPause(1),
                 ASFaceNortheast(),
                 ASPause(5),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -115,8 +110,7 @@ script = EventScript(
                 ASPause(20),
                 ASResetProperties(),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -134,8 +128,7 @@ script = EventScript(
                 ASFixedFCoordOff(),
                 ASPause(1),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -151,8 +144,7 @@ script = EventScript(
                 ASPause(1),
                 ASFixedFCoordOff(),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -172,8 +164,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -185,8 +176,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASFaceNortheast(),
                 ASPause(10),
-            ],
-        ),
+            ]),
         SetBit(DOJO_BOSS_1_DEFEATED),
         JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
         Return(),

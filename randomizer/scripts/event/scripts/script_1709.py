@@ -22,8 +22,7 @@ script = EventScript(
                 ),
                 ASJumpToHeight(108),
                 ASPause(27),
-            ],
-        ),
+            ]),
         JmpToSubroutine(["EVENT_1709_enable_controls_until_return_43"]),
         StopEmbeddedActionScript(NPC_5),
         StopEmbeddedActionScript(NPC_6),
@@ -35,16 +34,14 @@ script = EventScript(
         Jmp(["EVENT_1709_start_loop_n_times_2"]),
         JmpToSubroutine(
             ["EVENT_1709_enable_controls_until_return_43"],
-            identifier="EVENT_1709_jmp_to_subroutine_17",
-        ),
+            identifier="EVENT_1709_jmp_to_subroutine_17"),
         JmpToSubroutine(["EVENT_1709_action_queue_async_52"]),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
         PlaySound(sound=SO011_WHOOSH_AWAY, channel=6),
         Jmp(["EVENT_1709_clear_bit_13"]),
         JmpToSubroutine(
             ["EVENT_1709_enable_controls_until_return_43"],
-            identifier="EVENT_1709_jmp_to_subroutine_22",
-        ),
+            identifier="EVENT_1709_jmp_to_subroutine_22"),
         Inc(TEMP_7032),
         JmpIfVarEqualsConst(TEMP_7032, 3, ["EVENT_1709_run_event_at_return_33"]),
         JmpToSubroutine(["EVENT_1709_action_queue_async_55"]),
@@ -57,8 +54,7 @@ script = EventScript(
         Jmp(["EVENT_1709_clear_bit_13"]),
         RunEventAtReturn(
             E1710_BANDITS_WAY_5_LOADER_BACKGROUND_BOSS_FIGHT,
-            identifier="EVENT_1709_run_event_at_return_33",
-        ),
+            identifier="EVENT_1709_run_event_at_return_33"),
         Return(),
         EnableControlsUntilReturn(
             [], identifier="EVENT_1709_enable_controls_until_return_43"
@@ -80,8 +76,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Inc(TEMP_70AB, identifier="EVENT_1709_inc_49"),
         EndLoop(),
         Return(),
@@ -96,8 +91,7 @@ script = EventScript(
                 ASPause(27),
                 ASFaceMario(),
             ],
-            identifier="EVENT_1709_action_queue_async_52",
-        ),
+            identifier="EVENT_1709_action_queue_async_52"),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceSouthwest7D()]),
         Return(),
         ActionQueueAsync(
@@ -124,8 +118,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASWalk1StepSouth(),
             ],
-            identifier="EVENT_1709_action_queue_async_55",
-        ),
+            identifier="EVENT_1709_action_queue_async_55"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -139,8 +132,7 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_8, subscript=[ASFixedFCoordOff(), ASFaceSoutheast()]
         ),

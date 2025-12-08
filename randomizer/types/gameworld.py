@@ -1,3 +1,7 @@
+from __future__ import annotations
+from copy import deepcopy
+from typing import Any, TYPE_CHECKING, TypeVar
+
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import AnimationScriptBank
 from smrpgpatchbuilder.datatypes.battles.battle_dialog_collection import BattleDialogCollection
 from smrpgpatchbuilder.datatypes.dialogs.classes import DialogCollection
@@ -21,7 +25,30 @@ from .enemy import Enemy
 from .patch import Patch
 from .attack import EnemyAttack as Attack
 from .spell import Spell
+from .prize import Prize
+from .flags import (
+    Flag, BooleanFlag, RangeFlag, SelectOneFlag, CategorizationFlag,
+    CosmeticCategory, CATEGORIES
+)
 
+if TYPE_CHECKING:
+    from .flags import CategorizationOption as FlagOptions
+
+FlagT = TypeVar('FlagT', bound=Flag)
+
+
+class RandomizerSettingsException(Exception):
+    pass
+
+
+def get_flag_string_from_flag_collection(categories: list) -> str:
+    """Placeholder for flag string generation."""
+    return ""
+
+
+class NumberThresholdFlag(RangeFlag):
+    """Alias for range flags used as thresholds."""
+    pass
 
 
 class WorldBuildingException(Exception):
@@ -33,7 +60,7 @@ class Settings:
 
     _debug_mode: bool = False
     _override: dict = {}
-    _all_flags: List[Flag] = []
+    _all_flags: list[Flag] = []
 
     @property
     def override(self) -> dict:
@@ -52,11 +79,11 @@ class Settings:
 
         return get_flag_string_from_flag_collection(non_cosmetic_categories)
 
-    def get_flag(self, flag_class: Type[FlagT]) -> FlagT:
+    def get_flag(self, flag_class: type[FlagT]) -> FlagT:
         """Get the value of a specific setting."""
         return next(f for f in self._all_flags if isinstance(f, flag_class))
 
-    def is_flag_value(self, flag_class: Type[Flag], value: Any) -> bool:
+    def is_flag_value(self, flag_class: type[Flag], value: Any) -> bool:
         """Check if a setting is set to the given value."""
         flag = self.get_flag(flag_class)
         if isinstance(flag, (BooleanFlag, NumberThresholdFlag, SelectOneFlag)):
@@ -67,11 +94,11 @@ class Settings:
             f"is_flag_value unknown flag type {type(flag)}"
         )
 
-    def is_boolean_flag_enabled(self, flag_class: Type[BooleanFlag]) -> bool:
+    def is_boolean_flag_enabled(self, flag_class: type[BooleanFlag]) -> bool:
         """Check if a boolean flag is on or not."""
         return self.is_flag_value(flag_class, True)
 
-    def update_single_value_flag(self, flag_class: Type[Flag], value: Any) -> None:
+    def update_single_value_flag(self, flag_class: type[Flag], value: Any) -> None:
         """For a setting which can only take one of multiple values, set it to the given value."""
         flag = self.get_flag(flag_class)
         if isinstance(flag, (BooleanFlag, NumberThresholdFlag, SelectOneFlag)):
@@ -92,9 +119,8 @@ class Settings:
 
     def append_categorization_flag_options(
         self,
-        flag_class: Type[CategorizationFlag],
-        options_to_append: Union[FlagOptions, List[FlagOptions]],
-    ) -> None:
+        flag_class: type[CategorizationFlag],
+        options_to_append: FlagOptions | list[FlagOptions]) -> None:
         """For a value categorization flag, append values to Enabled."""
         flag = self.get_flag(flag_class)
         enabled = deepcopy(flag.enabled)
@@ -105,9 +131,8 @@ class Settings:
 
     def remove_categorization_flag_options(
         self,
-        flag_class: Type[CategorizationFlag],
-        options_to_remove: Union[FlagOptions, List[FlagOptions]],
-    ) -> None:
+        flag_class: type[CategorizationFlag],
+        options_to_remove: FlagOptions | list[FlagOptions]) -> None:
         """For a value categorization flag, append values to Disabled."""
         flag = self.get_flag(flag_class)
         if isinstance(options_to_remove, FlagOptions):
@@ -116,7 +141,7 @@ class Settings:
         flag.set_enabled(enabled)
 
     def overwrite_categorization_flag_options(
-        self, flag_class: Type[CategorizationFlag], options: List[FlagOptions]
+        self, flag_class: type[CategorizationFlag], options: list[FlagOptions]
     ) -> None:
         """For a value categorization flag, overwrite Enabled."""
         flag = self.get_flag(flag_class)
@@ -255,8 +280,7 @@ class Settings:
             available_chars.extend(
                 random.sample(
                     [c for c in allowed_chars if c not in available_chars],
-                    k=max_chars - len(available_chars),
-                )
+                    k=max_chars - len(available_chars))
             )
         if max_chars != len(available_chars):
             raise FlagError(
@@ -269,8 +293,7 @@ class Settings:
         self,
         debug_mode: bool = False,
         flag_string: str = "",
-        cosmetics_string: str = "",
-    ):
+        cosmetics_string: str = ""):
         self._debug_mode = debug_mode
 
         if self._debug_mode:
@@ -280,7 +303,7 @@ class Settings:
                 except yaml.YAMLError as exc:
                     print(exc)
 
-        flag_dict: Dict[str, dict[str, Any]] = separate_flag_string(
+        flag_dict: dict[str, dict[str, Any]] = separate_flag_string(
             flag_string, cosmetics_string
         )
 

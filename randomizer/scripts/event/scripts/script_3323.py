@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7042_0,
             ["EVENT_3323_set_7000_to_current_level_3"],
-            identifier="EVENT_3323_jmp_if_bit_set_0",
-        ),
+            identifier="EVENT_3323_jmp_if_bit_set_0"),
         JmpToSubroutine(["EVENT_3323_summon_to_level_7"]),
         SetBit(TEMP_7042_0),
         Set7000ToCurrentLevel(identifier="EVENT_3323_set_7000_to_current_level_3"),
@@ -20,8 +19,7 @@ script = EventScript(
         SummonObjectToSpecificLevel(
             NPC_3,
             R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS,
-            identifier="EVENT_3323_summon_to_level_7",
-        ),
+            identifier="EVENT_3323_summon_to_level_7"),
         SummonObjectToSpecificLevel(NPC_4, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS),
         SummonObjectToSpecificLevel(NPC_5, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS),
         SummonObjectToSpecificLevel(NPC_0, R356_VOLCANO_AREA_08),

@@ -36,31 +36,25 @@ script = EventScript(
         JmpToEvent(E3402_COIN_CHEST_MULTI_HIT_3),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_125_logic",
-        ),
+            identifier="EVENT_245_room_125_logic"),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_128_logic",
-        ),
+            identifier="EVENT_245_room_128_logic"),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_132_logic",
-        ),
+            identifier="EVENT_245_room_132_logic"),
         SetVarToConst(ITEM_ID, DrillClaw, identifier="EVENT_245_room_144_446_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_199_logic",
-        ),
+            identifier="EVENT_245_room_199_logic"),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_234_logic",
-        ),
+            identifier="EVENT_245_room_234_logic"),
         JmpToEvent(E3081_YOU_MISSED, identifier="EVENT_245_room_242_logic"),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_331_logic",
-        ),
+            identifier="EVENT_245_room_331_logic"),
         SetVarToConst(COIN_CHEST_MULTIPLIER, 0, identifier="EVENT_245_pandorite_logic"),
         JmpToEvent(E3402_COIN_CHEST_MULTI_HIT_3),
         SetVarToConst(COIN_CHEST_MULTIPLIER, 0, identifier="EVENT_245_hidon_logic"),
@@ -71,16 +65,13 @@ script = EventScript(
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_245_room_405_logic"),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_421_logic",
-        ),
+            identifier="EVENT_245_room_421_logic"),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_425_logic",
-        ),
+            identifier="EVENT_245_room_425_logic"),
         JmpToEvent(
             E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST,
-            identifier="EVENT_245_room_443_logic",
-        ),
+            identifier="EVENT_245_room_443_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_245_room_455_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_245_room_457_logic"),
         JmpToEvent(E3089_GRANT_ITEM_FROM_CHEST, identifier="EVENT_245_room_458_logic"),

@@ -14,8 +14,6 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x3a7a93",
-        ),
+            identifier="queuestart_0x3a7a93"),
         ReturnSubroutine(),
-    ],
-)
+    ])

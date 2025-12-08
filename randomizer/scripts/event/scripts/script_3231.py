@@ -21,8 +21,7 @@ script = EventScript(
                 ASBPL262728(),
                 ASSetPaletteRow(1),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_4, A0319_SHIP_CANNONBALL_PUZZLE_CANNONBALL),
         Return(),
     ]

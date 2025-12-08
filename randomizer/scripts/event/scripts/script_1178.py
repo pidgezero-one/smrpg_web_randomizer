@@ -14,8 +14,7 @@ script = EventScript(
                 ASPause(1),
                 ASJumpToHeight(height=96, silent=True),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -23,8 +22,7 @@ script = EventScript(
                 ASPause(1),
                 ASJumpToHeight(height=96, silent=True),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -32,8 +30,7 @@ script = EventScript(
                 ASPause(1),
                 ASJumpToHeight(height=48, silent=True),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -41,8 +38,7 @@ script = EventScript(
                 ASPause(1),
                 ASJumpToHeight(height=80, silent=True),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -50,8 +46,7 @@ script = EventScript(
                 ASPause(1),
                 ASJumpToHeight(height=48, silent=True),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -59,8 +54,7 @@ script = EventScript(
                 ASPause(1),
                 ASJumpToHeight(height=85, silent=True),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
@@ -68,8 +62,7 @@ script = EventScript(
                 ASPause(1),
                 ASJumpToHeight(height=112, silent=True),
                 ASPause(1),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
@@ -77,8 +70,7 @@ script = EventScript(
                 ASBounceToXYWithHeight(x=4, y=19, height=0),
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
@@ -86,8 +78,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Pause(1),
         ActionQueueAsync(
             target=NPC_6,
@@ -96,8 +87,7 @@ script = EventScript(
                 ASBounceToXYWithHeight(x=4, y=19, height=0),
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
@@ -105,8 +95,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Pause(1),
         ActionQueueAsync(
             target=NPC_3,
@@ -115,8 +104,7 @@ script = EventScript(
                 ASBounceToXYWithHeight(x=4, y=19, height=0),
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -124,8 +112,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Pause(1),
         ActionQueueSync(
             target=NPC_0,
@@ -134,8 +121,7 @@ script = EventScript(
                 ASBounceToXYWithHeight(x=4, y=19, height=0),
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(FAST),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -143,8 +129,7 @@ script = EventScript(
                 ASBounceToXYWithHeight(x=5, y=20, height=0),
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(FAST),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -152,16 +137,14 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Pause(5),
         ActionQueueAsync(
             target=NPC_4,
@@ -170,16 +153,14 @@ script = EventScript(
                 ASWalkSoutheastSteps(4),
                 ASWalkSouthwestSteps(1),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
                 ASWalkSoutheastSteps(1),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Pause(1),
         ActionQueueAsync(
             target=NPC_2,
@@ -188,8 +169,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(4),
                 ASWalkSouthwestSteps(2),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
         ActionQueueAsync(
             target=NPC_2,
@@ -197,8 +177,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         SetBit(SEASIDE_SHED_EMPTIED),
         Pause(1),
         RemoveObjectFromSpecificLevel(

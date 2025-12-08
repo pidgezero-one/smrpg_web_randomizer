@@ -1,8 +1,6 @@
 """Dialog data bank 1"""
 
-from typing import List
-
-dialog_data: List[str] = ["""[await]"""] * 1149
+dialog_data: list[str] = ["""[await]"""] * 1149
 dialog_data[0] = """                     INN[end]"""
 dialog_data[1] = """                ITEM SHOP[end]"""
 dialog_data[2] = """             INN / ITEM SHOP[end]"""

@@ -29,8 +29,7 @@ from randomizer.helpers.flag_helpers import (
     ShopQualities,
     EquipmentCharactersOptions,
     regular_checks,
-    BossScaleOptions,
-)
+    BossScaleOptions)
 from randomizer.data import spells, music
 
 
@@ -1802,8 +1801,7 @@ CATEGORIES = (
     ItemsCategory,
     AccessCategory,
     BossCategory,
-    CosmeticCategory,
-)
+    CosmeticCategory)
 
 # List of presets.
 PRESETS = (ExplorerPreset, Spring2021AsyncTourneyPreset)

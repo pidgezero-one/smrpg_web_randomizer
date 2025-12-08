@@ -33,8 +33,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7043_6,
             ["ACTION_707_set_animation_speed_43"],
-            identifier="ACTION_707_jmp_if_bit_set_24",
-        ),
+            identifier="ACTION_707_jmp_if_bit_set_24"),
         JmpIfVarEqualsConst(TEMP_70AE, 3, ["ACTION_707_load_mem_13"]),
         Inc(TEMP_70AE),
         SetWalkingSpeed(SLOW),

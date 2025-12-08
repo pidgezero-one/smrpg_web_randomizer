@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHWEST,
             x=16,
             y=84,
-            z=0,
-        ),
+            z=0),
         Db(bytearray(b"\xfdI")),
         JmpToSubroutine(["EVENT_3790_jmp_if_present_in_current_level_9"]),
         ActionQueueSync(
@@ -26,8 +25,7 @@ script = EventScript(
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASWalkNorthwestPixels(20),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Pause(1, identifier="EVENT_3790_pause_6"),
         JmpIfMarioInAir(["EVENT_3790_pause_6"]),
@@ -35,48 +33,38 @@ script = EventScript(
         JmpIfObjectInCurrentLevel(
             NPC_3,
             ["EVENT_3790_jmp_if_present_in_current_level_11"],
-            identifier="EVENT_3790_jmp_if_present_in_current_level_9",
-        ),
+            identifier="EVENT_3790_jmp_if_present_in_current_level_9"),
         ActionQueueSync(
             target=NPC_3,
-            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)]),
         JmpIfObjectInCurrentLevel(
             NPC_4,
             ["EVENT_3790_jmp_if_present_in_current_level_13"],
-            identifier="EVENT_3790_jmp_if_present_in_current_level_11",
-        ),
+            identifier="EVENT_3790_jmp_if_present_in_current_level_11"),
         ActionQueueSync(
             target=NPC_4,
-            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)]),
         JmpIfObjectInCurrentLevel(
             NPC_5,
             ["EVENT_3790_jmp_if_present_in_current_level_15"],
-            identifier="EVENT_3790_jmp_if_present_in_current_level_13",
-        ),
+            identifier="EVENT_3790_jmp_if_present_in_current_level_13"),
         ActionQueueSync(
             target=NPC_5,
-            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)]),
         JmpIfObjectInCurrentLevel(
             NPC_6,
             ["EVENT_3790_jmp_if_present_in_current_level_17"],
-            identifier="EVENT_3790_jmp_if_present_in_current_level_15",
-        ),
+            identifier="EVENT_3790_jmp_if_present_in_current_level_15"),
         ActionQueueSync(
             target=NPC_6,
-            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)]),
         JmpIfObjectInCurrentLevel(
             NPC_7,
             ["EVENT_3790_remember_last_object_19"],
-            identifier="EVENT_3790_jmp_if_present_in_current_level_17",
-        ),
+            identifier="EVENT_3790_jmp_if_present_in_current_level_17"),
         ActionQueueSync(
             target=NPC_7,
-            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=248, y=4, z=0, direction=EAST)]),
         RememberLastObject(identifier="EVENT_3790_remember_last_object_19"),
         Return(),
     ]

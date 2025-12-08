@@ -29,8 +29,7 @@ script = EventScript(
         JmpIfBitClear(
             CRICKET_PIE_EXCHANGED,
             ["EVENT_1111_dia"],
-            identifier="EVENT_1111_check_if_pie_exchanged",
-        ),
+            identifier="EVENT_1111_check_if_pie_exchanged"),
         RemoveOneOfItemFromInventory(CricketJam),
         RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
         Return(identifier="EVENT_1111_ret_6__"),
@@ -41,8 +40,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_1111_dia",
-        ),
+            identifier="EVENT_1111_dia"),
         Jmp(["EVENT_1111_run_dialog_6"]),
     ]
 )

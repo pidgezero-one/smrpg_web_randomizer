@@ -14,8 +14,7 @@ script = EventScript(
             subscript=[
                 ASTransferToXYZF(x=14, y=11, z=0, direction=EAST),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

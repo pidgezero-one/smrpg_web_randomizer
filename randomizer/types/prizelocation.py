@@ -1,11 +1,17 @@
-from .prize import Prize, StandardPrize, CoinPrize, CoinPrize10, CoinPrize1, EXPStarPrize, SlotsPrize, BossFightPrize, CharacterPrize, StarPiecePrize, ItemPrize, SpellPrize, InfiniteCoinPrize, FPFlowerPrize, ArchipelagoPrize
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+from .prize import Prize, StandardPrize, CoinPrize, EXPStarPrize, SlotsPrize, BossFightPrize, CharacterPrize, StarPiecePrize, ItemPrize, SpellPrize, FPFlowerPrize, ArchipelagoPrize
 from ..data.variables.event_script_names import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import DisableObjectTriggerInSpecificLevel
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
-from ..types.settings import CategorizationOption
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import DisableObjectTriggerInSpecificLevel, Return
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject, Battlefield
+from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import Formation, FormationMember
+from .base import CategorizationOption
 
-
+if TYPE_CHECKING:
+    from ..types.settings import Settings
+    from ..types.logic import Inventory
 class ShuffleLocationSelector(CategorizationOption):
     """Enumeration for enabling and disabling locations"""
 
@@ -28,6 +34,7 @@ class ShuffleLocationSelector(CategorizationOption):
     REMAKE_2 = "Mushroom Way right freestanding item (remake)"
     TOAD_RESCUE_1 = "Mushroom Way first Toad reward"
     TOAD_RESCUE_2 = "Mushroom Way second Toad reward"
+    MUSHROOM_WAY_BOSS_FIGHT = "Mushroom Way boss fight"
     HAMMER_BROS_REWARD = "Mushroom Way boss reward"
     MUSHROOM_WAY_CHARACTER = "Mushroom Way character join"
     MUSHROOM_WAY_STAR_PIECE = "Mushroom Way boss Star Piece"
@@ -35,9 +42,6 @@ class ShuffleLocationSelector(CategorizationOption):
     MUSHROOM_KINGDOM_VAULT_1 = "Mushroom Kingdom vault left chest"
     MUSHROOM_KINGDOM_VAULT_2 = "Mushroom Kingdom vault right chest"
     MUSHROOM_KINGDOM_VAULT_3 = "Mushroom Kingdom vault middle chest"
-    INVASION_VAULT_1 = "Mushroom Kingdom vault left chest (invasion)"
-    INVASION_VAULT_2 = "Mushroom Kingdom vault right chest (invasion)"
-    INVASION_VAULT_3 = "Mushroom Kingdom vault middle chest (invasion)"
     INVASION_EASTERN_GUARD = "Mushroom Kingdom eastern guard rescue (invasion)"
     WALLET_GUY_1 = "Wallet reward 1"
     WALLET_GUY_2 = "Wallet reward 2"
@@ -51,6 +55,7 @@ class ShuffleLocationSelector(CategorizationOption):
     )
     INVASION_FAMILY = "Mushroom Kingdom invasion family rescue"
     INVASION_GUEST_ROOM = "Mushroom Kingdom invasion guest room"
+    INVASION_BOSS_FIGHT = "Mushroom Kingdom boss fight"
     INVASION_STAR_PIECE = "Mushroom Kingdom invasion boss Star Piece"
     MUSHROOM_KINGDOM_INN = "Mushroom Kingdom gameboy kid"
     BANDITS_WAY_1 = "Bandit's Way flower chest"
@@ -543,39 +548,47 @@ class ShuffleLocationSelector(CategorizationOption):
 
 
 class PrizeLocation:
-    _prize: Prize
-    _originally_held: type[Prize]
+    _prize: Prize | None
+    _originally_held: type[Prize] | None
     _missable: bool = False
     _can_accept: list[type[Prize]]
     _rooms: list[int]
     _id: ShuffleLocationSelector
     _remake_only: bool = False
+    _blacklist: list[type[Prize]]
 
     @property
     def id(self) -> ShuffleLocationSelector:
         return self._id
 
-    def set_prize(self, prize: Prize):
+    def set_prize(self, prize: Prize | None):
         self._prize = prize
 
     @property
-    def prize(self) -> Prize:
+    def prize(self) -> Prize | None:
         return self._prize
     
     @property
-    def originally_held(self) -> type[Prize]:
+    def originally_held(self) -> type[Prize] | None:
         return self._originally_held
 
-    def __init__(self, prize: Prize):
+    def __init__(self, prize: Prize | None):
         self._prize = prize
+
+    def can_accept(self, prize: Prize) -> bool:
+        return not isinstance(prize, tuple(self._blacklist))
+    
+    def can_access(self, settings: Settings) -> bool:
+        return True
 
 
 class TreasureChestLocation(PrizeLocation):
     _npc_ids: list[AreaObject]
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'chest_grant')
+        return hasattr(prize, 'chest_grant') and super().can_accept(prize)
     
     def grant(self) -> EventScript:
+        if self.prize is None: return EventScript([Return()])
         itemgrant = [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
         for npc, room in zip(self._npc_ids, self._rooms):
             itemgrant.append(DisableObjectTriggerInSpecificLevel(AreaObject(npc+14), room))
@@ -584,50 +597,53 @@ class TreasureChestLocation(PrizeLocation):
 
 class StandingLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'standing_grant')
+        return hasattr(prize, 'standing_grant') and super().can_accept(prize)
     def grant(self) -> EventScript:
-        if self.prize.standing_grant is None: return EventScript([])
+        if self.prize is None: return EventScript([Return()])
+        if self.prize.standing_grant is None: return EventScript([Return()])
         return self.prize.standing_grant
 
 
 class EventLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'npc_grant')
+        return hasattr(prize, 'npc_grant') and super().can_accept(prize)
     def grant(self) -> EventScript:
-        if self.prize.npc_grant is None: return EventScript([])
+        if self.prize is None: return EventScript([Return()])
+        if self.prize.npc_grant is None: return EventScript([Return()])
         return self.prize.npc_grant
 
 class RiverLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'river_grant')
+        return hasattr(prize, 'river_grant') and super().can_accept(prize)
     def grant(self) -> EventScript:
-        if self.prize.river_grant is None: return EventScript([])
+        if self.prize is None: return EventScript([Return()])
+        if self.prize.river_grant is None: return EventScript([Return()])
         return self.prize.river_grant
 
 
 class BossFightLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'boss_fight_grant')
+        return hasattr(prize, 'boss_fight_grant') and super().can_accept(prize)
 
 
 class CharacterRecruitmentLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'character_grant')
+        return hasattr(prize, 'character_grant') and super().can_accept(prize)  
 
 
 class StarPieceLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'postfight_star_piece_grant')
+        return hasattr(prize, 'postfight_star_piece_grant') and super().can_accept(prize)
 
 
 class ShopLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return isinstance(prize, ItemPrize)
+        return isinstance(prize, ItemPrize) and super().can_accept(prize)
 
 
 class SpellSlotLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return isinstance(prize, SpellPrize)
+        return isinstance(prize, SpellPrize) and super().can_accept(prize)
 
 
 class PrizeRow:

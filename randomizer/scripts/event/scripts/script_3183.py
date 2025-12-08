@@ -15,8 +15,7 @@ script = EventScript(
         JmpIfBitSet(
             MINES_BOSS_2_DEFEATED,
             ["EVENT_3183_remove_from_level_28"],
-            identifier="EVENT_3183_jmp_if_bit_set_4",
-        ),
+            identifier="EVENT_3183_jmp_if_bit_set_4"),
         SummonObjectToSpecificLevel(
             NPC_0, R278_MOLEVILLE_MINES_AREA_03_LEADS_BACK_TO_AREA_1
         ),
@@ -83,8 +82,7 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(
             NPC_0,
             R278_MOLEVILLE_MINES_AREA_03_LEADS_BACK_TO_AREA_1,
-            identifier="EVENT_3183_remove_from_level_28",
-        ),
+            identifier="EVENT_3183_remove_from_level_28"),
         RemoveObjectFromSpecificLevel(
             NPC_1, R278_MOLEVILLE_MINES_AREA_03_LEADS_BACK_TO_AREA_1
         ),
@@ -147,8 +145,7 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(
             NPC_2,
             R272_MOLEVILLE_MINES_AREA_11_BOMBED_ROOM_WSINGING_MOLES,
-            identifier="EVENT_3183_remove_from_level_50",
-        ),
+            identifier="EVENT_3183_remove_from_level_50"),
         RemoveObjectFromSpecificLevel(
             NPC_3, R272_MOLEVILLE_MINES_AREA_11_BOMBED_ROOM_WSINGING_MOLES
         ),
@@ -181,16 +178,13 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(
             NPC_0,
             R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM,
-            identifier="EVENT_3183_remove_from_level_62",
-        ),
+            identifier="EVENT_3183_remove_from_level_62"),
         RemoveObjectFromSpecificLevel(
             NPC_1,
-            R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM),
         RemoveObjectFromSpecificLevel(
             NPC_2,
-            R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM),
         SummonObjectToSpecificLevel(
             NPC_1, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM
         ),
@@ -208,24 +202,19 @@ script = EventScript(
         ),
         SummonObjectToSpecificLevel(
             NPC_0,
-            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM),
         SummonObjectToSpecificLevel(
             NPC_1,
-            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM),
         SummonObjectToSpecificLevel(
             NPC_2,
-            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM),
         SummonObjectToSpecificLevel(
             NPC_3,
-            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM),
         SummonObjectToSpecificLevel(
             NPC_4,
-            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM,
-        ),
+            R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM),
         SummonObjectToSpecificLevel(
             NPC_1, R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC
         ),

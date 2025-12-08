@@ -11,8 +11,7 @@ script = EventScript(
         ActionQueueAsync(
             target=NPC_0,
             subscript=[ASSetPriority(2)],
-            identifier="EVENT_561_action_queue_async_2",
-        ),
+            identifier="EVENT_561_action_queue_async_2"),
         JmpIfBitClear(TEMP_7044_7, ["EVENT_561_jmp_to_event_3"]),
         SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
         RunEventAsSubroutine(

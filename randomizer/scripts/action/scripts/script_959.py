@@ -17,8 +17,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7044_0,
             ["ACTION_959_shift_z_up_steps_11"],
-            identifier="ACTION_959_jmp_if_bit_set_8",
-        ),
+            identifier="ACTION_959_jmp_if_bit_set_8"),
         Pause(1),
         Jmp(["ACTION_959_jmp_if_bit_set_8"]),
         ShiftZUpSteps(3, identifier="ACTION_959_shift_z_up_steps_11"),

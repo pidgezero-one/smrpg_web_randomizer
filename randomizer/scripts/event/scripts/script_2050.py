@@ -31,8 +31,7 @@ script = EventScript(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASShiftZDownSteps(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO, subscript=[ASJumpToHeight(height=108, silent=True)]
         ),
@@ -53,8 +52,7 @@ script = EventScript(
                 ASWalkNorthPixels(14),
                 ASWalkSouthPixels(8),
                 ASWalkNorthPixels(8),
-            ],
-        ),
+            ]),
         JmpIfVarEqualsConst(MONSTRO_THWOMP_COUNTER, 7, ["EVENT_2050_run_dialog_20"]),
         Return(),
         RunDialog(
@@ -64,8 +62,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_2050_run_dialog_20",
-        ),
+            identifier="EVENT_2050_run_dialog_20"),
         SetBit(MONSTRO_LEDGE_ITEM_KNOCKED_DOWN),
         Return(),
     ]

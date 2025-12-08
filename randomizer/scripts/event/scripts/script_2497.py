@@ -19,17 +19,14 @@ script = EventScript(
                     index=6, is_sequence=True, looping=True, mirror_sprite=True
                 ),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(MARIO, A0095_PLAYER_GAME_START),
         ActionQueueSync(
             target=NPC_0,
-            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkSouthwestPixels(2)],
-        ),
+            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkSouthwestPixels(2)]),
         ActionQueueAsync(
             target=NPC_2,
-            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkNorthPixels(4)],
-        ),
+            subscript=[ASSetWalkingSpeed(VERY_FAST), ASWalkNorthPixels(4)]),
         FadeInFromBlack(sync=False),
         RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
         RunEventAsSubroutine(E0180_NPC_QUEST_3_CONTAINER),
@@ -70,8 +67,7 @@ script = EventScript(
                 ASStopSound(),
                 ASResetProperties(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         Pause(30),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, mod_id=0

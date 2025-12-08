@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35dc93",
-        ),
+            identifier="queuestart_0x35dc93"),
         NewEffectObject(effect=EF0059_ORANGE_RED_BLAST__FIRE_BOMB_, looping_off=True),
         Layer3On(prop=OVERLAP_ALL, bpp4=True),
         PlaySound(sound=S0012_BOMB_EXPLOSION),
@@ -27,5 +26,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6F, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6F, amem=0x6F),
         ReturnObjectQueue(),
-    ],
-)
+    ])

@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x356754",
-        ),
+            identifier="queuestart_0x356754"),
         NewSpriteAtCoords(
             sprite_id=SPR0792_BLACK_ROCK,
             sequence=3,
@@ -25,8 +24,7 @@ script = SubroutineOrBanklessScript(
             palette_row=0,
             overwrite_vram=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         SetAMEM16BitToConst(0x60, 5),
@@ -38,5 +36,4 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x356781"),
         JmpIfAMEM8BitNotEqualsConst(0x69, 4, ["command_0x356781"]),
         Jmp(["command_0x356b01"]),
-    ],
-)
+    ])

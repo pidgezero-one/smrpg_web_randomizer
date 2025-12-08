@@ -14,8 +14,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=13, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -29,13 +28,11 @@ script = EventScript(
                     sprite_offset=2,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASSetWalkingSpeed(VERY_FAST),
                 ASPlaySound(sound=SO019_LONG_FALL, channel=6),
                 ASWalkSouthwestSteps(10),
-            ],
-        ),
+            ]),
         Pause(30),
         Return(),
     ]

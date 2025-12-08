@@ -9,16 +9,14 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_0,
             R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
-            ["EVENT_385_run_dialog_3"],
-        ),
+            ["EVENT_385_run_dialog_3"]),
         RunDialog(
             dialog_id=DI0661_TRAPPED_AGAIN,
             above_object=MEM_70A8,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI0662_SAVED_BY_YOU_AGAIN,
@@ -27,8 +25,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_385_run_dialog_3",
-        ),
+            identifier="EVENT_385_run_dialog_3"),
         Return(),
     ]
 )

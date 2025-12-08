@@ -16,24 +16,21 @@ script = EventScript(
         JmpIfObjectInCurrentLevel(
             NPC_5,
             ["EVENT_2348_jmp_if_present_in_current_level_5"],
-            identifier="EVENT_2348_jmp_if_present_in_current_level_3",
-        ),
+            identifier="EVENT_2348_jmp_if_present_in_current_level_3"),
         ActionQueueSync(
             target=NPC_5, subscript=[ASWalkWestPixels(18), ASFaceNortheast()]
         ),
         JmpIfObjectInCurrentLevel(
             NPC_6,
             ["EVENT_2348_jmp_if_present_in_current_level_7"],
-            identifier="EVENT_2348_jmp_if_present_in_current_level_5",
-        ),
+            identifier="EVENT_2348_jmp_if_present_in_current_level_5"),
         ActionQueueSync(
             target=NPC_6, subscript=[ASWalkNorthPixels(8), ASFaceSouthwest()]
         ),
         JmpIfObjectInCurrentLevel(
             NPC_8,
             ["EVENT_2348_action_queue_async_9"],
-            identifier="EVENT_2348_jmp_if_present_in_current_level_7",
-        ),
+            identifier="EVENT_2348_jmp_if_present_in_current_level_7"),
         ActionQueueSync(
             target=NPC_8, subscript=[ASWalkSoutheastPixels(8), ASFaceNortheast()]
         ),
@@ -46,8 +43,7 @@ script = EventScript(
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
                 ASVisibilityOff(),
             ],
-            identifier="EVENT_2348_action_queue_async_9",
-        ),
+            identifier="EVENT_2348_action_queue_async_9"),
         RunEventAsSubroutine(
             E0799_TOWER_JUMPING_SPOOKUM_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),

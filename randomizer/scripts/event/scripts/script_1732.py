@@ -13,8 +13,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=1, is_sequence=True, looping=True, mirror_sprite=True
                 )
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_11, A0047_SKY_BRIDGE_BULLET_BILL),
         ClearBit(TEMP_7044_5),
         Pause(1, identifier="EVENT_1732_pause_4"),
@@ -59,8 +58,7 @@ script = EventScript(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 )
             ],
-            identifier="EVENT_1732_action_queue_async_35",
-        ),
+            identifier="EVENT_1732_action_queue_async_35"),
         ClearBit(TEMP_7044_3),
         SetObjectMemoryToVar(TEMP_702C),
         Pause(1),

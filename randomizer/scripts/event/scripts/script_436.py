@@ -18,8 +18,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASTransferToXYZF(x=4, y=22, z=2, direction=EAST)],
-            identifier="EVENT_436_action_queue_async_7",
-        ),
+            identifier="EVENT_436_action_queue_async_7"),
         SetBit(TEMP_7049_6, identifier="EVENT_436_set_bit_8"),
         RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
         JmpIfBitClear(RUN_AWAY, ["EVENT_436_fade_in_from_black_async_12"]),
@@ -47,8 +46,7 @@ script = EventScript(
                 ASPause(1),
                 ASEndLoop(),
             ],
-            identifier="EVENT_436_action_queue_async_13",
-        ),
+            identifier="EVENT_436_action_queue_async_13"),
         RunBackgroundEvent(event_id=E3329_JUMPING_FIREBALLS, return_on_level_exit=True),
         Return(),
     ]

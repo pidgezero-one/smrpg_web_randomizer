@@ -22,8 +22,7 @@ script = EventScript(
                 ASShiftZDownPixels(2),
                 ASShiftZUpPixels(2),
                 ASPause(20),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

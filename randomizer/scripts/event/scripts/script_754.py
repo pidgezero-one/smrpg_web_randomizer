@@ -16,8 +16,7 @@ script = EventScript(
             z=1,
             z_add_half_unit=True,
             run_entrance_event=True,
-            identifier="EVENT_754_enter_area_6",
-        ),
+            identifier="EVENT_754_enter_area_6"),
         Return(),
         EnterArea(
             room_id=R483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR,
@@ -27,8 +26,7 @@ script = EventScript(
             z=1,
             z_add_half_unit=True,
             run_entrance_event=True,
-            identifier="EVENT_754_enter_area_8",
-        ),
+            identifier="EVENT_754_enter_area_8"),
         Return(),
     ]
 )

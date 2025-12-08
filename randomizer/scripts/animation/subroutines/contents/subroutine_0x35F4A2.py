@@ -12,5 +12,4 @@ script = SubroutineOrBanklessScript(
         ),
         PlaySound(sound=S0039_CLAW),
         ReturnObjectQueue(),
-    ],
-)
+    ])

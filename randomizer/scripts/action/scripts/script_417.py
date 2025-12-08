@@ -39,8 +39,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7049_6,
             ["ACTION_417_pause_30"],
-            identifier="ACTION_417_jmp_if_bit_set_28",
-        ),
+            identifier="ACTION_417_jmp_if_bit_set_28"),
         Pause(1),
         Pause(1, identifier="ACTION_417_pause_30"),
         TransferXYZFPixels(x=254, y=0, z=0, direction=EAST),

@@ -18,14 +18,12 @@ script = EventScript(
         PrioritySet(
             mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[LAYER_L3],
-            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY],
-        ),
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY]),
         Pause(6),
         PrioritySet(
             mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[],
-            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY],
-        ),
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY]),
         Jmp(["EVENT_1832_pause_0"]),
         Pause(1, identifier="EVENT_1832_pause_13"),
         JmpIfMarioInAir(["EVENT_1832_pause_13"]),

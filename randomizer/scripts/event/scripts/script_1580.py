@@ -14,8 +14,7 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E1569_MIDAS_RIVER_BARREL_SUBROUTINE,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         SetVarToConst(X_COORD_2, 28),
         SetVarToConst(Y_COORD_2, 113),
         JmpToEvent(E1573_MIDAS_RIVER_BARREL_SUBROUTINE),

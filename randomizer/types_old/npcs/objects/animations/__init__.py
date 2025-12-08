@@ -158,5 +158,4 @@ from .animations import (
     SMITHY_HIT_FAST,
     GOOMBETTE_HIT,
     GOOMBETTE_TAUNT,
-    GOOMBETTE_HIT_FAST,
-)
+    GOOMBETTE_HIT_FAST)

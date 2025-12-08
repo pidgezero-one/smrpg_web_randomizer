@@ -9,5 +9,4 @@ from .classes import (
     GenoPaletteSet,
     BowserPaletteSet,
     ToadstoolPaletteSet,
-    CharacterPaletteSet,
-)
+    CharacterPaletteSet)

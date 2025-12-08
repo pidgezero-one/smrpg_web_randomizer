@@ -15,8 +15,6 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         ReturnSubroutine(),
-    ],
-)
+    ])

@@ -22,14 +22,12 @@ script = ActionScript(
         PlaySound(
             sound=SO060_DYNAMITE_BOMB_EXPLOSION,
             channel=4,
-            identifier="ACTION_63_play_sound_11",
-        ),
+            identifier="ACTION_63_play_sound_11"),
         Jmp(["ACTION_63_shift_z_up_pixels_14"]),
         PlaySound(
             sound=SO113_OPEN_CHAMBER_DOOR,
             channel=4,
-            identifier="ACTION_63_play_sound_13",
-        ),
+            identifier="ACTION_63_play_sound_13"),
         ShiftZUpPixels(18, identifier="ACTION_63_shift_z_up_pixels_14"),
         VisibilityOff(),
         Return(),

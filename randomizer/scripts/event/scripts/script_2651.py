@@ -14,13 +14,11 @@ script = EventScript(
             x=9,
             y=108,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         JmpToEvent(
             E3791_OPEN_FACTORY_FINAL_BOSS_ROOM,
-            identifier="EVENT_2651_summon_to_level_51",
-        ),
+            identifier="EVENT_2651_summon_to_level_51"),
         Return(),
     ]
 )

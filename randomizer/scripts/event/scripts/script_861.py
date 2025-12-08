@@ -19,8 +19,7 @@ script = EventScript(
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(index=4, is_sequence=True, looping=False),
                 ASPause(45),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

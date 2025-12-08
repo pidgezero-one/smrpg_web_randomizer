@@ -1,6 +1,5 @@
 """Base classes for numbers and numerical operations."""
 
-from typing import Union
 from random import random, randint
 
 from .constants import SMALL_BOOST_AMOUNT
@@ -14,7 +13,7 @@ class Mutator:
         # Placeholder for future difficulty option.
         self.difficulty = difficulty
 
-    def mutate_normal(self, value: Union[int, float], minimum=0, maximum=0xFF) -> int:
+    def mutate_normal(self, value: int | float, minimum=0, maximum=0xFF) -> int:
         """Mutate a value with a given range.
         This is roughly simulating a normal distribution with mean <value>,
         std deviation approx 1/5 <value>."""

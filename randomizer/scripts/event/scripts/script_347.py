@@ -8,8 +8,7 @@ script = EventScript(
     [
         ActionQueueAsync(
             target=NPC_0,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(4)],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkSouthwestPixels(4)]),
         FadeInFromBlack(sync=False),
         Return(),
     ]

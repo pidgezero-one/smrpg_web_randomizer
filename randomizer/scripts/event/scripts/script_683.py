@@ -19,16 +19,14 @@ script = EventScript(
                 ASWalkSouthwestPixels(4),
                 ASEndLoop(),
                 ASWalkNortheastPixels(2),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI2200_MARRYMORE_PHOTO,
             above_object=MEM_70A8,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=NPC_5, subscript=[ASSetSolidityBits(cant_walk_through=True)]
         ),

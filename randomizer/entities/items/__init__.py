@@ -202,8 +202,7 @@ from .items import (
     Shoes,
     Brooch,
     Ring,
-    Crown,
-)
+    Crown)
 
 item_table = [
     Hammer,

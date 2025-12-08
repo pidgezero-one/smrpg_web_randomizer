@@ -15,8 +15,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI2115_MARRYMORE_SHITPOST,
@@ -25,8 +24,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_696_run_dialog_insert",
-        ),
+            identifier="EVENT_696_run_dialog_insert"),
         RunEventAsSubroutine(E0200_UNLOCK_FOREST_IF_GATED_BY_MARRYMORE_CHARACTER),
         Return(),
         RunDialog(
@@ -36,8 +34,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_696_run_dialog_5",
-        ),
+            identifier="EVENT_696_run_dialog_5"),
         Return(),
     ]
 )

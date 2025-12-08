@@ -14,5 +14,4 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"R\x80\x00\x0e\x0c")),
         Db(bytearray(b"<\x00\x08")),
         Jmp(["command_0x350b06"]),
-    ],
-)
+    ])

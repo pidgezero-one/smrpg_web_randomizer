@@ -29,8 +29,7 @@ script = EventScript(
             NPC_6,
             R390_VOLCANO_AREA_16_ERUPTING_STUMPET,
             ["EVENT_3326_set_14"],
-            identifier="EVENT_3326_jmp_if_object_not_in_level_9",
-        ),
+            identifier="EVENT_3326_jmp_if_object_not_in_level_9"),
         JmpIfObjectNotInSpecificLevel(
             NPC_7, R390_VOLCANO_AREA_16_ERUPTING_STUMPET, ["EVENT_3326_set_16"]
         ),
@@ -62,8 +61,7 @@ script = EventScript(
                 ASWalkNorthPixels(1),
                 ASWalkSouthPixels(1),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         Pause(68),
         Jmp(["EVENT_3326_clear_bit_0"]),
     ]

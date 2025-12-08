@@ -17,15 +17,13 @@ script = ActionScript(
         Jmp(["ACTION_794_set_var_to_random_0"]),
         JmpToSubroutine(
             ["ACTION_794_set_animation_speed_25"],
-            identifier="ACTION_794_jmp_to_subroutine_9",
-        ),
+            identifier="ACTION_794_jmp_to_subroutine_9"),
         JmpToSubroutine(["ACTION_794_dec_short_42"]),
         JmpIfVarEqualsConst(TEMP_7026, 1, ["ACTION_794_shift_northeast_pixels_29"]),
         Jmp(["ACTION_794_set_var_to_random_0"]),
         JmpToSubroutine(
             ["ACTION_794_set_animation_speed_21"],
-            identifier="ACTION_794_jmp_to_subroutine_13",
-        ),
+            identifier="ACTION_794_jmp_to_subroutine_13"),
         JmpToSubroutine(["ACTION_794_dec_short_42"]),
         JmpIfVarEqualsConst(TEMP_7026, 1, ["ACTION_794_shift_northeast_pixels_29"]),
         Jmp(["ACTION_794_set_var_to_random_0"]),

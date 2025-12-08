@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3307_ret_4"]),
         RunBackgroundEvent(
             event_id=E3225_SHIP_PASSWORD_BOX_DIALOG, return_on_level_exit=True

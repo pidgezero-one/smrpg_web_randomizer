@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes.EMPTY_3,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._3_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._3_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     extra_required_actions=[ExtraSpriteActions.Crouch],
     music=Music._56_FACTORY,
     entrance_event=3792,
@@ -92,8 +86,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             cannot_clone=True,
-            y_shift=0,
-        ),
+            y_shift=0),
         RegularClone(  # 1
             occupant=npcs.Mallow,
             event_script=256,
@@ -107,8 +100,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone(  # 2
             occupant=npcs.Geno,
             event_script=256,
@@ -123,8 +115,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             cannot_clone=True,
-            y_shift=0,
-        ),
+            y_shift=0),
         RegularNPC(  # 3
             occupant=npcs.Bowser,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -156,8 +147,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 4
             occupant=npcs.SmithyHammer,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -188,8 +178,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 5
             occupant=npcs.SmithyHammer,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -220,8 +209,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 6
             occupant=npcs.SmithyBodyOverworld,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -252,8 +240,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 7
             occupant=npcs.SmithyBodyOverworld,
             event_script=256,
@@ -267,8 +254,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 8
             occupant=npcs.SmithyBodyOverworld,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -299,8 +285,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 9
             occupant=npcs.SmithyBodyOverworld,
             event_script=256,
@@ -314,8 +299,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 10
             occupant=npcs.SmelterSection,
             initiator=Initiator.NONE,
@@ -346,8 +330,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 11
             occupant=npcs.SmelterSection,
             event_script=256,
@@ -361,8 +344,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 12
             occupant=npcs.SmelterSection,
             event_script=256,
@@ -376,8 +358,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 13
             occupant=npcs.SmelterSection,
             event_script=256,
@@ -391,8 +372,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone(  # 14
             occupant=npcs.SmelterSection,
             event_script=256,
@@ -406,7 +386,5 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
-    ],
-)
+            cannot_clone=False),
+    ])

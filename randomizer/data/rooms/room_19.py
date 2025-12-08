@@ -53,8 +53,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=26,
             y=19,
@@ -72,7 +71,5 @@ room = Room(
             dst_z=1,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
-    ],
-)
+            x_bit_7=False),
+    ])

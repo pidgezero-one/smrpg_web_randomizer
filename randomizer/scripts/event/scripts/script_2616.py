@@ -16,8 +16,7 @@ script = EventScript(
                     index=1, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -27,13 +26,11 @@ script = EventScript(
                     index=3, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASWalkSouthPixels(6),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(SCREEN_FOCUS, A0391_CAMERA_SHAKE),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkToXYCoords(x=0, y=61)],
-        ),
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkToXYCoords(x=0, y=61)]),
         Pause(1, identifier="EVENT_2616_pause_6"),
         JmpIfBitSet(TEMP_7044_1, ["EVENT_2616_pause_6"]),
         SetBit(TEMP_7044_2),
@@ -57,8 +54,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, sprite_offset=2, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(32),
         ActionQueueSync(
             target=NPC_13,
@@ -73,8 +69,7 @@ script = EventScript(
                     index=4, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASPause(8),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -86,8 +81,7 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASWalkNorthwestPixels(2),
                 ASFaceNortheast(),
                 ASJumpToHeight(108),
@@ -98,11 +92,9 @@ script = EventScript(
                     sprite_offset=3,
                     is_mold=True,
                     is_sequence=True,
-                    looping=True,
-                ),
+                    looping=True),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Pause(24),
         UnfreezeCamera(),
         ActionQueueSync(
@@ -114,8 +106,7 @@ script = EventScript(
                 ASWalkNortheastPixels(3),
                 ASPause(16),
                 ASWalkNorthwestSteps(9),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -128,12 +119,10 @@ script = EventScript(
                 ASWalkNorthwestSteps(6),
                 ASShadowOff(),
                 ASWalkNorthwestSteps(3),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkSouthwestSteps(3)],
-        ),
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkSouthwestSteps(3)]),
         FreezeCamera(),
         Pause(16),
         ActionQueueAsync(
@@ -143,8 +132,7 @@ script = EventScript(
                     index=13, sprite_offset=6, is_sequence=True, looping=True
                 ),
                 ASPause(16),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_13, subscript=[ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES)]
         ),
@@ -169,8 +157,7 @@ script = EventScript(
                 ASSetPriority(1),
                 ASPause(6),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -178,8 +165,7 @@ script = EventScript(
                 ASDb(bytearray(b" \x04")),
                 ASDb(bytearray(b"%\x00\x00\xd0\xff")),
                 ASPause(59),
-            ],
-        ),
+            ]),
         Pause(88),
         FadeOutToBlack(sync=False, duration=8),
         Pause(48),

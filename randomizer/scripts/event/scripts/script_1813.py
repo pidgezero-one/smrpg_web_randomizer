@@ -20,8 +20,7 @@ script = EventScript(
                     ["EVENT_1813_action_queue_async_2_SUBSCRIPT_pause_2"]
                 ),
             ],
-            identifier="EVENT_1813_action_queue_async_2",
-        ),
+            identifier="EVENT_1813_action_queue_async_2"),
         Return(),
     ]
 )

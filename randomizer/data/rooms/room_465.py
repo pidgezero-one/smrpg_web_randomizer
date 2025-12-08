@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -76,8 +75,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.GREEN_SWITCH_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -104,8 +102,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 2
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -115,8 +112,7 @@ room = Room(
             y=28,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -126,8 +122,7 @@ room = Room(
             y=30,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -137,8 +132,7 @@ room = Room(
             y=32,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -148,8 +142,7 @@ room = Room(
             y=24,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -159,8 +152,7 @@ room = Room(
             y=26,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -170,8 +162,7 @@ room = Room(
             y=28,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 8
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -181,8 +172,7 @@ room = Room(
             y=30,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 9
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -192,8 +182,7 @@ room = Room(
             y=22,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 10
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -203,8 +192,7 @@ room = Room(
             y=24,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 11
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -214,8 +202,7 @@ room = Room(
             y=26,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 12
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -225,8 +212,7 @@ room = Room(
             y=28,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 13
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -236,8 +222,7 @@ room = Room(
             y=20,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 14
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -247,8 +232,7 @@ room = Room(
             y=22,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 15
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -258,8 +242,7 @@ room = Room(
             y=24,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 16
             npc=npcs.GREEN_SWITCH_NPC,
             event_script=E3362_KEEP_BUTTON_GAME_PRESS_BUTTON,
@@ -269,7 +252,6 @@ room = Room(
             y=26,
             z=0,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

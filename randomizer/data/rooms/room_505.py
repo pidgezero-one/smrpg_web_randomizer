@@ -62,8 +62,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.YELLOW_YOSHI_NPC,
             event_script=E0471_BOSHI,
@@ -73,8 +72,7 @@ room = Room(
             y=5,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularClone( # 2
             npc=npcs.YELLOW_YOSHI_NPC,
             event_script=E0471_BOSHI,
@@ -84,8 +82,7 @@ room = Room(
             y=17,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularClone( # 3
             npc=npcs.YELLOW_YOSHI_NPC,
             event_script=E0471_BOSHI,
@@ -95,8 +92,7 @@ room = Room(
             y=21,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularClone( # 4
             npc=npcs.YELLOW_YOSHI_NPC,
             event_script=E0471_BOSHI,
@@ -106,8 +102,7 @@ room = Room(
             y=19,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularNPC( # 5
             npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
             initiator=EventInitiator.NONE,
@@ -134,8 +129,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 6
             npc=npcs.RAINI_NPC,
             event_script=E0471_BOSHI,
@@ -145,8 +139,7 @@ room = Room(
             y=9,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 7
             npc=npcs.GREEN_YOSHI_NPC,
             initiator=EventInitiator.NONE,
@@ -173,8 +166,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.GREEN_YOSHI_WALK_NPC,
             initiator=EventInitiator.NONE,
@@ -201,8 +193,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.GREEN_YOSHI_WALK_NPC,
             initiator=EventInitiator.NONE,
@@ -229,8 +220,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.CROCO_NPC,
             initiator=EventInitiator.NONE,
@@ -257,7 +247,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

@@ -21,8 +21,7 @@ script = EventScript(
                 ASOverwriteSolidity(),
                 ASWalk1StepNortheast(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Pause(32),
         Db(bytearray(b"\xfd\x8d")),
         ApplyTileModToLevel(

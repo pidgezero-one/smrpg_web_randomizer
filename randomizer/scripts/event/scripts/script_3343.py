@@ -14,40 +14,35 @@ script = EventScript(
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASWalk1StepSouthwest(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASWalkSouthwestSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASWalkSouthwestSteps(3),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASWalkSouthwestSteps(4),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASWalkSouthwestSteps(5),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_3343_ret_8"),
     ]
 )

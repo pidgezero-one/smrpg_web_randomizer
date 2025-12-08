@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0477_DISMOUNT_YOSHI_1,
             x=7,
@@ -58,8 +57,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0478_DISMOUNT_YOSHI_2,
             x=8,
@@ -70,8 +68,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0479_DISMOUNT_YOSHI_3,
             x=23,
@@ -82,8 +79,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E0480_DISMOUNT_YOSHI_4,
             x=24,
@@ -94,8 +90,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -111,8 +106,7 @@ room = Room(
             destination=OW52_YOSTER_ISLE,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
+            byte_2_bit_0=False),
         RoomExit(
             x=24,
             y=52,
@@ -130,8 +124,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -160,8 +153,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.YELLOW_YOSHI_NPC,
             event_script=E0460_COOKIE_STORAGE_YOSHI,
@@ -171,8 +163,7 @@ room = Room(
             y=55,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 2
             npc=npcs.YELLOW_YOSHI_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -199,8 +190,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 3
             npc=npcs.YELLOW_YOSHI_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -227,8 +217,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 4
             npc=npcs.YELLOW_YOSHI_NPC,
             event_script=E0462_YOSHI_MOM,
@@ -238,8 +227,7 @@ room = Room(
             y=54,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 5
             npc=npcs.YELLOW_YOSHI_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -266,8 +254,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 6
             npc=npcs.WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -294,8 +281,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 7
             npc=npcs.RAINI_NPC,
             event_script=E0484_EMPTY,
@@ -305,8 +291,7 @@ room = Room(
             y=80,
             z=0,
             z_half=False,
-            direction=NORTHWEST,
-        ),
+            direction=NORTHWEST),
         RegularNPC( # 8
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.NONE,
@@ -333,8 +318,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 9
             npc=npcs.GREEN_YOSHI_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_TOUCH_SIDE,
@@ -361,8 +345,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 10
             npc=npcs.BOSHI_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -389,8 +372,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 11
             npc=npcs.FAT_YOSHI_BABY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -417,8 +399,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 12
             npc=npcs.GREEN_YOSHI_WALK_NPC,
             initiator=EventInitiator.NONE,
@@ -445,8 +426,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 13
             npc=npcs.GREEN_YOSHI_WALK_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -473,8 +453,7 @@ room = Room(
             byte3_bit7=True,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 14
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
@@ -501,8 +480,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 15
             npc=npcs.EMPTY_NPC_3,
             event_script=E3597_YOSTER_EMPTY_MAILBOX,
@@ -512,8 +490,7 @@ room = Room(
             y=77,
             z=0,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         RegularNPC( # 16
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -540,7 +517,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

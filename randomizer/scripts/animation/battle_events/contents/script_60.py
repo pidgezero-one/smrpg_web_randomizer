@@ -20,8 +20,7 @@ script = BattleAnimationScript(
             destinations=["queuestart_0x3ada5c"],
             bit_2=True,
             bit_4=True,
-            identifier="command_0x3a68b1",
-        ),
+            identifier="command_0x3a68b1"),
         RunSubroutine(["command_0x3a771e"], identifier="command_0x3a68b6"),
         Jmp(["command_0x3a7550"]),
     ]

@@ -13,8 +13,7 @@ script = EventScript(
             x=17,
             y=54,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         RunEventAsSubroutine(E0282_UNKNOWN_PIPE_VAULT),
         Return(),
     ]

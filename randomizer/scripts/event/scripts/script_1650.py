@@ -13,16 +13,14 @@ script = EventScript(
             face_direction=SOUTHWEST,
             x=4,
             y=41,
-            z=0,
-        ),
+            z=0),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASFloatingOff(),
                 ASShadowOff(),
                 ASTransferXYZFSteps(x=0, y=0, z=20, direction=EAST),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -30,8 +28,7 @@ script = EventScript(
                 ASTransferToXYZF(x=3, y=38, z=0, direction=EAST),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -41,8 +38,7 @@ script = EventScript(
                 ASSequenceLoopingOn(),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(SLOW),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         SetAsyncActionScript(NPC_1, A0650_BLUE_CLOUD_MOVEMENT),
         FadeOutSoundToVolume(duration=0, volume=64),
@@ -75,8 +71,7 @@ script = EventScript(
                 ASWalkSouthPixels(4),
                 ASEndLoop(),
                 ASWalkNorthPixels(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -96,8 +91,7 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
                 ASWalkSouthwestSteps(5),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -128,8 +122,7 @@ script = EventScript(
                 ASPause(60),
                 ASResetProperties(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -166,8 +159,7 @@ script = EventScript(
                 ASJumpToHeight(116),
                 ASWalkSouthwestSteps(2),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         Pause(20),
         SetVarToConst(TEMP_7034, 2),
         SetVarToConst(X_COORD_1, 2304),
@@ -189,8 +181,7 @@ script = EventScript(
                 ASWalk1StepSouthwest(),
                 ASFaceEast(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -199,8 +190,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSetSequenceSpeed(SLOW),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -215,8 +205,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -233,8 +222,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(NPC_2, A0650_BLUE_CLOUD_MOVEMENT),
         PauseScriptUntilEffectDone(),
         SetBit(OPTIONAL_MINECART_CLEARED),

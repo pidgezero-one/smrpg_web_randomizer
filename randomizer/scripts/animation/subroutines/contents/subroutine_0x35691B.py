@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35691b",
-        ),
+            identifier="queuestart_0x35691b"),
         NewSpriteAtCoords(
             sprite_id=SPR0785_SPRITZ_BOMB,
             sequence=1,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         PlaySound(sound=S0088_TICKING_BOMB),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
@@ -45,11 +43,9 @@ script = SubroutineOrBanklessScript(
             sprite_id=SPR0517_BOMB_EXPLOSION,
             sequence=0,
             store_to_vram=True,
-            store_palette=True,
-        ),
+            store_palette=True),
         PlaySound(sound=S0012_BOMB_EXPLOSION),
         Pause1Frame(identifier="command_0x35695f"),
         JmpIfAMEM8BitNotEqualsConst(0x69, 4, ["command_0x35695f"]),
         Jmp(["command_0x356b01"]),
-    ],
-)
+    ])

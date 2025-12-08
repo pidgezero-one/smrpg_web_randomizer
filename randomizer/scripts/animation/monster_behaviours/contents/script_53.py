@@ -37,5 +37,4 @@ script = SubroutineOrBanklessScript(
         ObjectQueueAtOffsetAndIndex(index=8, target_address=0x353706),
         ObjectQueueAtOffsetAndIndex(index=10, target_address=0x353706),
         Jmp(["command_0x350e93"]),
-    ],
-)
+    ])

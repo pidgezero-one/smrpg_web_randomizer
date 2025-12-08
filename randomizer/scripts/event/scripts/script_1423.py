@@ -13,8 +13,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASSetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
                 ASReturn(),
-            ],
-        ),
+            ]),
         JmpIfBitClear(
             TOAD_IN_MUSHROOM_WAY_1, ["EVENT_1423_remove_from_current_level_7"]
         ),

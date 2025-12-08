@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=7,
             y=117,
-            z=2,
-        ),
+            z=2),
         JmpToEvent(E1827_KEEP_LINEAR_PLATFORM_ROOM_LOADER),
     ]
 )

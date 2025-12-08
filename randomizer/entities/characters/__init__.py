@@ -10,8 +10,7 @@ from .characters import (
     MallowSpotted,
     GenoSpotted,
     BowserSpotted,
-    ToadstoolSpotted,
-)
+    ToadstoolSpotted)
 
 character_table = [Mario, Toadstool, Bowser, Geno, Mallow]
 spotted_table = [

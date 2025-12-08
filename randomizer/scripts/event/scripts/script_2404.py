@@ -30,8 +30,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=4, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         Pause(64),
         PlayMusicAtDefaultVolume(M45_HEART_BEATING_A_LITTLE_FASTER_PART_1),
         StopEmbeddedActionScript(NPC_0),
@@ -47,15 +46,13 @@ script = EventScript(
                 ASWalkNortheastSteps(2),
                 ASJumpToHeight(108),
                 ASWalkNortheastSteps(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASSetSpriteSequence(index=4, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=MARIO, subscript=[ASWalkNorthwestSteps(8)]),
         Jmp(["EVENT_2403_action_queue_async_9_"]),
         Return(identifier="EVENT_2404_ret_13"),

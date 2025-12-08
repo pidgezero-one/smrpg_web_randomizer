@@ -29,22 +29,19 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P033_BOMB_EXPLOSION,
             target_npc=NPC_2,
-            destinations=["EVENT_596_pause_31"],
-        ),
+            destinations=["EVENT_596_pause_31"]),
         Jmp(["EVENT_596_pause_10"]),
         Pause(2, identifier="EVENT_596_pause_34"),
         CreatePacketAtObjectCoords(
             packet=P033_BOMB_EXPLOSION,
             target_npc=NPC_3,
-            destinations=["EVENT_596_pause_34"],
-        ),
+            destinations=["EVENT_596_pause_34"]),
         Jmp(["EVENT_596_pause_20"]),
         Pause(2, identifier="EVENT_596_pause_37"),
         CreatePacketAtObjectCoords(
             packet=P033_BOMB_EXPLOSION,
             target_npc=NPC_1,
-            destinations=["EVENT_596_pause_37"],
-        ),
+            destinations=["EVENT_596_pause_37"]),
         Jmp(["EVENT_596_pause_0"]),
     ]
 )

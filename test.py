@@ -1,7 +1,5 @@
-from typing import Tuple
-
 class _TileTuple(
-    Tuple[
+    tuple[
         int,
         int,
         int,

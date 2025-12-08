@@ -39,6 +39,5 @@ objects = [
         obtuse_axis=4,
         height=8,
         vram_size=0,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

@@ -28,8 +28,7 @@ script = EventScript(
                 ASWalkSouthPixels(2),
                 ASWalkNorthPixels(2),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

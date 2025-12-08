@@ -230,8 +230,7 @@ class Credits(object):
             patch.add_data(base, string)
             patch.add_data(
                 string_table_start + i * 2,
-                utils.ByteField(base & 0xFFFF, num_bytes=2).as_bytes(),
-            )
+                utils.ByteField(base & 0xFFFF, num_bytes=2).as_bytes())
 
         # Underscore
         patch.add_data(0x3FFDDA, "\x3f\xc0\x7f\x80")

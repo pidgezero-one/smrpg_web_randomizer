@@ -22,8 +22,7 @@ script = SubroutineOrBanklessScript(
             sprite_id=SPR0490_SMITHY_1ST_FORM,
             sequence=0,
             store_to_vram=True,
-            store_palette=True,
-        ),
+            store_palette=True),
         ResetSpriteSequence(),
         ClearAMEM8Bit(0x60),
         SetOMEM60To072C(),
@@ -40,5 +39,4 @@ script = SubroutineOrBanklessScript(
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_0X00, speed=512, arch_height=0),
         PauseScriptUntil(condition=0x04),
         Jmp(["command_0x350d31"]),
-    ],
-)
+    ])

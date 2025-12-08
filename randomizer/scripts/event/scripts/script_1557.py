@@ -19,15 +19,13 @@ script = EventScript(
         JmpIfBitClear(
             WIGGLER_GOES_DOWN_TRUNK,
             ["EVENT_1557_set_action_script_sync_13"],
-            identifier="EVENT_1557_jmp_if_bit_clear_10",
-        ),
+            identifier="EVENT_1557_jmp_if_bit_clear_10"),
         FadeInFromBlack(sync=False),
         Return(),
         SetSyncActionScript(
             NPC_0,
             A0036_WIGGLER_GOING_TO_STUMP_TO_SLEEP,
-            identifier="EVENT_1557_set_action_script_sync_13",
-        ),
+            identifier="EVENT_1557_set_action_script_sync_13"),
         SetSyncActionScript(NPC_1, A0036_WIGGLER_GOING_TO_STUMP_TO_SLEEP),
         SetSyncActionScript(NPC_2, A0036_WIGGLER_GOING_TO_STUMP_TO_SLEEP),
         SetSyncActionScript(NPC_3, A0036_WIGGLER_GOING_TO_STUMP_TO_SLEEP),

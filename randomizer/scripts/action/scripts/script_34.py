@@ -10,8 +10,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7044_6,
             ["ACTION_34_face_northeast_11"],
-            identifier="ACTION_34_jmp_if_bit_set_3",
-        ),
+            identifier="ACTION_34_jmp_if_bit_set_3"),
         FaceSouthwest(),
         JmpToSubroutine(["ACTION_34_clear_solidity_bits_48"]),
         SetPriority(3),
@@ -59,8 +58,7 @@ script = ActionScript(
         ClearSolidityBits(
             bit_4=True,
             cant_walk_through=True,
-            identifier="ACTION_34_clear_solidity_bits_48",
-        ),
+            identifier="ACTION_34_clear_solidity_bits_48"),
         SetVarToConst(SECONDARY_TEMP_7024, 20),
         SetWalkingSpeed(NORMAL),
         Set700CToPressedButton(),

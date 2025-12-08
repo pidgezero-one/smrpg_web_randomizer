@@ -31,8 +31,7 @@ script = EventScript(
         SetAsyncActionScript(
             MARIO,
             A0820_JUMP_OFF_SPINNING_FLOWER,
-            identifier="EVENT_1537_set_action_script_async_18",
-        ),
+            identifier="EVENT_1537_set_action_script_async_18"),
         ClearBit(SPINNING_FLOWER_1),
         ClearBit(SPINNING_FLOWER_2),
         MoveScriptToMainThread(),
@@ -40,8 +39,7 @@ script = EventScript(
         SetSyncActionScript(
             MARIO,
             A0165_FALL_OFF_SPINNING_FLOWER,
-            identifier="EVENT_1537_set_action_script_sync_23",
-        ),
+            identifier="EVENT_1537_set_action_script_sync_23"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -49,8 +47,7 @@ script = EventScript(
                 ASTurnClockwise45DegreesNTimes(1),
                 ASFixedFCoordOn(),
             ],
-            identifier="EVENT_1537_action_queue_async_24",
-        ),
+            identifier="EVENT_1537_action_queue_async_24"),
         Pause(6),
         JmpIfObjectActionScriptIsRunning(MARIO, ["EVENT_1537_action_queue_async_24"]),
         ActionQueueAsync(
@@ -67,8 +64,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=8, sprite_offset=2, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_1537_pause_28"),
         Set7000ToTappedButton(),
         JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_1537_action_queue_sync_32"]),
@@ -76,8 +72,7 @@ script = EventScript(
         ActionQueueSync(
             target=MARIO,
             subscript=[ASResetProperties(), ASFaceSouth(), ASJumpToHeight(108)],
-            identifier="EVENT_1537_action_queue_sync_32",
-        ),
+            identifier="EVENT_1537_action_queue_sync_32"),
         ClearBit(SPINNING_FLOWER_1),
         ClearBit(SPINNING_FLOWER_2),
         MoveScriptToMainThread(),

@@ -34,8 +34,7 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         Db(bytearray(b"\x84\x01\x08")),
         Db(bytearray(b"\x8b\x11\x00\x00\x11")),
         DoMaskEffect(CYLINDER_MASK),
@@ -64,5 +63,4 @@ script = SubroutineOrBanklessScript(
         SetAMEM8BitToConst(0x6D, 1),
         SetOMEMMainToAMEM8Bit(omem=0x6D, amem=0x6D),
         ReturnObjectQueue(),
-    ],
-)
+    ])

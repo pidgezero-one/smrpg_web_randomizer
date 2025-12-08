@@ -12,8 +12,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=22,
             y=33,
-            z=0,
-        ),
+            z=0),
         JmpToEvent(E3358_KEEP_BALL_SOLITAIRE_LOADER),
     ]
 )

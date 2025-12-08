@@ -13,8 +13,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=TEMP_7026,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1573_set_7000_to_7000_short_mem_4",
-        ),
+            identifier="EVENT_1573_set_7000_to_7000_short_mem_4"),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ACTIVE_NPC),
         ResetCoords(MEM_70A8),
         SetSyncActionScript(MEM_70A8, A0595_MIDAS_BARREL_SLOW_ANIMATION),
@@ -32,8 +31,7 @@ script = EventScript(
         SetSyncActionScript(
             MEM_70A8,
             A0594_MIDAS_BARREL_RIGHT_LANE_TO_LEFT,
-            identifier="EVENT_1573_set_action_script_sync_19",
-        ),
+            identifier="EVENT_1573_set_action_script_sync_19"),
         SetSyncActionScript(MARIO, A0594_MIDAS_BARREL_RIGHT_LANE_TO_LEFT),
         Pause(5, identifier="EVENT_1573_pause_21"),
         SetBit(TEMP_7044_3),

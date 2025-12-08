@@ -14,8 +14,7 @@ script = EventScript(
         JmpToEvent(E0269_PIPE_UP_SUBROUTINE),
         RunEventAsSubroutine(
             E0065_TRAMPOLINE_SUBROUTINE,
-            identifier="EVENT_499_run_event_as_subroutine_4",
-        ),
+            identifier="EVENT_499_run_event_as_subroutine_4"),
         Return(),
     ]
 )

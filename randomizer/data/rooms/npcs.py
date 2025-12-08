@@ -22,8 +22,7 @@ MARIO_WALKING_DOWN_LEFT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC = NPC(
     sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
@@ -46,8 +45,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOWSER_WALKING_DOWN_LEFT_NPC = NPC(
     sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
@@ -70,8 +68,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
     sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
@@ -94,8 +91,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC = NPC(
     sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
@@ -118,8 +114,7 @@ GENO_WALKING_DOWN_LEFT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_2 = NPC(
     sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
@@ -142,8 +137,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_WALKING_DOWN_LEFT_NPC_2 = NPC(
     sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
@@ -166,8 +160,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_3 = NPC(
     sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
@@ -190,8 +183,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
     sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
@@ -214,8 +206,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_2 = NPC(
     sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
@@ -238,8 +229,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FEATHER_NPC = NPC(
     sprite_id=SPR0252_FEATHER,
@@ -262,8 +252,7 @@ FEATHER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HAMMER_NPC = NPC(
     sprite_id=SPR0031_HAMMER,
@@ -286,8 +275,7 @@ HAMMER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 OLD_CLASSIC_MARIO_NPC = NPC(
     sprite_id=SPR0621_OLD_CLASSIC_MARIO,
@@ -310,8 +298,7 @@ OLD_CLASSIC_MARIO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_2 = NPC(
     sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
@@ -334,8 +321,7 @@ GENO_WALKING_DOWN_LEFT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_S_EXOR_IMPRESSION_NPC = NPC(
     sprite_id=SPR0111_MARIO_S_EXOR_IMPRESSION,
@@ -358,8 +344,7 @@ MARIO_S_EXOR_IMPRESSION_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_WALKING_DOWN_LEFT_NPC_3 = NPC(
     sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
@@ -382,8 +367,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
     sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
@@ -406,8 +390,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
     sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
@@ -430,8 +413,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_3 = NPC(
     sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
@@ -454,8 +436,7 @@ GENO_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CLERK_GREEN_NPC = NPC(
     sprite_id=SPR0142_FACTORY_CLERK_GREEN,
@@ -478,8 +459,7 @@ FACTORY_CLERK_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FAT_YOSHI_BABY_NPC = NPC(
     sprite_id=SPR0122_FAT_YOSHI_BABY,
@@ -502,8 +482,7 @@ FAT_YOSHI_BABY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DODO_ND_TIME_NPC = NPC(
     sprite_id=SPR0312_DODO_ND_TIME,
@@ -526,8 +505,7 @@ DODO_ND_TIME_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NIMBUSITE_RED_NPC = NPC(
     sprite_id=SPR0076_NIMBUSITE_RED,
@@ -550,8 +528,7 @@ NIMBUSITE_RED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_4 = NPC(
     sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
@@ -574,8 +551,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HINOPIO_NPC = NPC(
     sprite_id=SPR0107_HINOPIO,
@@ -598,8 +574,7 @@ HINOPIO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TEETER_TOTTER_NPC = NPC(
     sprite_id=SPR0101_TEETER_TOTTER,
@@ -622,8 +597,7 @@ TEETER_TOTTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREEN_YOSHI_WALK_NPC = NPC(
     sprite_id=SPR0051_GREEN_YOSHI_WALK,
@@ -646,8 +620,7 @@ GREEN_YOSHI_WALK_NPC = NPC(
     byte2_bit4=True,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 J_PUZZLE_BLOCK_NPC = NPC(
     sprite_id=SPR0104_J_PUZZLE_BLOCK,
@@ -670,8 +643,7 @@ J_PUZZLE_BLOCK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPARKLES_FROM_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0171_SPARKLES_FROM_STAR_PIECE,
@@ -694,8 +666,7 @@ SPARKLES_FROM_STAR_PIECE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREEN_YOSHI_NPC = NPC(
     sprite_id=SPR0049_GREEN_YOSHI,
@@ -718,8 +689,7 @@ GREEN_YOSHI_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHOMP_NPC = NPC(
     sprite_id=SPR0034_CHOMP,
@@ -742,8 +712,7 @@ CHOMP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HAMMER_NPC_2 = NPC(
     sprite_id=SPR0031_HAMMER,
@@ -766,8 +735,7 @@ HAMMER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FROGGIE_STICK_NPC = NPC(
     sprite_id=SPR0032_FROGGIE_STICK,
@@ -790,8 +758,7 @@ FROGGIE_STICK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FALLING_STEPPING_BRIDGE_BLOCK_NPC = NPC(
     sprite_id=SPR0620_FALLING_STEPPING_BRIDGE_BLOCK,
@@ -814,8 +781,7 @@ FALLING_STEPPING_BRIDGE_BLOCK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_S_PARACHUTE_NPC = NPC(
     sprite_id=SPR0097_TOADSTOOL_S_PARACHUTE,
@@ -838,8 +804,7 @@ TOADSTOOL_S_PARACHUTE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALLOW_DOLL_NPC = NPC(
     sprite_id=SPR0081_MALLOW_DOLL,
@@ -862,8 +827,7 @@ MALLOW_DOLL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SNIFIT_NPC = NPC(
     sprite_id=SPR0504_SNIFIT,
@@ -886,8 +850,7 @@ SNIFIT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MICROBOMB_NPC = NPC(
     sprite_id=SPR0440_MICROBOMB,
@@ -910,8 +873,7 @@ MICROBOMB_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SNIFIT_BLACK_BACK_NPC = NPC(
     sprite_id=SPR0619_SNIFIT_BLACK_BACK,
@@ -934,8 +896,7 @@ SNIFIT_BLACK_BACK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_FAKE_GREEN_NPC = NPC(
     sprite_id=SPR0162_SEASIDE_TOWN_FAKE_GREEN,
@@ -958,8 +919,7 @@ SEASIDE_TOWN_FAKE_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC = NPC(
     sprite_id=SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN,
@@ -982,8 +942,7 @@ SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_ELDER_YELLOW_GREEN_NPC = NPC(
     sprite_id=SPR0164_SEASIDE_TOWN_ELDER_YELLOW_GREEN,
@@ -1006,8 +965,7 @@ SEASIDE_TOWN_ELDER_YELLOW_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_NPC = NPC(
     sprite_id=SPR0048_CROCO,
@@ -1030,8 +988,7 @@ CROCO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_ARM_SHOT_NPC = NPC(
     sprite_id=SPR0648_GENO_ARM_SHOT,
@@ -1054,8 +1011,7 @@ GENO_ARM_SHOT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WAR_FAN_NPC = NPC(
     sprite_id=SPR0037_WAR_FAN,
@@ -1078,8 +1034,7 @@ WAR_FAN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YELLOW_YOSHI_NPC = NPC(
     sprite_id=SPR0045_YELLOW_YOSHI,
@@ -1102,8 +1057,7 @@ YELLOW_YOSHI_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PINK_YOSHI_NPC = NPC(
     sprite_id=SPR0046_PINK_YOSHI,
@@ -1126,8 +1080,7 @@ PINK_YOSHI_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOSHI_NPC = NPC(
     sprite_id=SPR0047_BOSHI,
@@ -1150,8 +1103,7 @@ BOSHI_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_NPC_2 = NPC(
     sprite_id=SPR0048_CROCO,
@@ -1174,8 +1126,7 @@ CROCO_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_STILL_NPC = NPC(
     sprite_id=SPR0189_CROCO_STILL,
@@ -1198,8 +1149,7 @@ CROCO_STILL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOOSTER_NPC = NPC(
     sprite_id=SPR0050_BOOSTER,
@@ -1222,8 +1172,7 @@ BOOSTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREEN_YOSHI_WALK_NPC_2 = NPC(
     sprite_id=SPR0051_GREEN_YOSHI_WALK,
@@ -1246,8 +1195,7 @@ GREEN_YOSHI_WALK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JONATHAN_JONES_NPC = NPC(
     sprite_id=SPR0055_JONATHAN_JONES,
@@ -1270,8 +1218,7 @@ JONATHAN_JONES_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JONATHAN_JONES_POSTGAME_NPC = NPC(
     sprite_id=SPR0961_JOHNNY_2_OVERWORLD,
@@ -1294,8 +1241,7 @@ JONATHAN_JONES_POSTGAME_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 KING_NIMBUS_NPC = NPC(
     sprite_id=SPR0053_KING_NIMBUS,
@@ -1318,8 +1264,7 @@ KING_NIMBUS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 QUEEN_NIMBUS_NPC = NPC(
     sprite_id=SPR0054_QUEEN_NIMBUS,
@@ -1342,8 +1287,7 @@ QUEEN_NIMBUS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JONATHAN_JONES_NPC_2 = NPC(
     sprite_id=SPR0055_JONATHAN_JONES,
@@ -1366,8 +1310,7 @@ JONATHAN_JONES_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 VALENTINA_NPC = NPC(
     sprite_id=SPR0056_VALENTINA,
@@ -1390,8 +1333,7 @@ VALENTINA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAGIKOOPA_NPC = NPC(
     sprite_id=SPR0057_MAGIKOOPA,
@@ -1414,8 +1356,7 @@ MAGIKOOPA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FROGFUCIUS_NPC = NPC(
     sprite_id=SPR0058_FROGFUCIUS,
@@ -1438,8 +1379,7 @@ FROGFUCIUS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TADPOLE_NPC = NPC(
     sprite_id=SPR0059_TADPOLE,
@@ -1462,8 +1402,7 @@ TADPOLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MINE_CART_BAD_PALETTE_NPC = NPC(
     sprite_id=SPR0135_MINE_CART_BAD_PALETTE,
@@ -1486,8 +1425,7 @@ MINE_CART_BAD_PALETTE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DYNA_AND_MITE_NPC = NPC(
     sprite_id=SPR0161_DYNA_AND_MITE,
@@ -1510,8 +1448,7 @@ DYNA_AND_MITE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADOFSKY_NPC = NPC(
     sprite_id=SPR0080_TOADOFSKY,
@@ -1534,8 +1471,7 @@ TOADOFSKY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 VALENTINA_STATUE_NPC = NPC(
     sprite_id=SPR0063_VALENTINA_STATUE,
@@ -1558,8 +1494,7 @@ VALENTINA_STATUE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOAD_NPC = NPC(
     sprite_id=SPR0064_TOAD,
@@ -1582,8 +1517,7 @@ TOAD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC = NPC(
     sprite_id=SPR0065_WALLET_GUY_ALSO_CASINO_ASSISTANTS,
@@ -1606,8 +1540,7 @@ WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RAINI_NPC = NPC(
     sprite_id=SPR0066_RAINI,
@@ -1630,8 +1563,7 @@ RAINI_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 OLD_MAN_NPC = NPC(
     sprite_id=SPR0067_OLD_MAN,
@@ -1654,8 +1586,7 @@ OLD_MAN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 OLD_WOMAN_NPC = NPC(
     sprite_id=SPR0068_OLD_WOMAN,
@@ -1678,8 +1609,7 @@ OLD_WOMAN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREEN_BROWN_TOAD_NPC = NPC(
     sprite_id=SPR0069_GREEN_BROWN_TOAD,
@@ -1702,8 +1632,7 @@ GREEN_BROWN_TOAD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHANCELLOR_NPC = NPC(
     sprite_id=SPR0070_CHANCELLOR,
@@ -1726,8 +1655,7 @@ CHANCELLOR_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PA_MOLE_NPC = NPC(
     sprite_id=SPR0071_PA_MOLE,
@@ -1750,8 +1678,7 @@ PA_MOLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MA_MOLE_NPC = NPC(
     sprite_id=SPR0072_MA_MOLE,
@@ -1774,8 +1701,7 @@ MA_MOLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GIRL_MOLE_PINK_BOW_NPC = NPC(
     sprite_id=SPR0073_GIRL_MOLE_PINK_BOW,
@@ -1798,8 +1724,7 @@ GIRL_MOLE_PINK_BOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GIRL_MOLE_YELLOW_BOW_NPC = NPC(
     sprite_id=SPR0074_GIRL_MOLE_YELLOW_BOW,
@@ -1822,8 +1747,7 @@ GIRL_MOLE_YELLOW_BOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NIMBUSITE_BLUE_NPC = NPC(
     sprite_id=SPR0075_NIMBUSITE_BLUE,
@@ -1846,8 +1770,7 @@ NIMBUSITE_BLUE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NIMBUSITE_RED_NPC_2 = NPC(
     sprite_id=SPR0076_NIMBUSITE_RED,
@@ -1870,8 +1793,7 @@ NIMBUSITE_RED_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NIMBUSITE_BROWN_GREEN_NPC = NPC(
     sprite_id=SPR0077_NIMBUSITE_BROWN_GREEN,
@@ -1894,8 +1816,7 @@ NIMBUSITE_BROWN_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NIMBUSITE_YELLOW_GREEN_NPC = NPC(
     sprite_id=SPR0078_NIMBUSITE_YELLOW_GREEN,
@@ -1918,8 +1839,7 @@ NIMBUSITE_YELLOW_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NIMBUS_GUARD_NPC = NPC(
     sprite_id=SPR0079_NIMBUS_GUARD,
@@ -1942,8 +1862,7 @@ NIMBUS_GUARD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPLASH_WATER_DROPLETS_NPC = NPC(
     sprite_id=SPR0623_SPLASH_WATER_DROPLETS,
@@ -1966,8 +1885,7 @@ SPLASH_WATER_DROPLETS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMALL_SEA_FISH_NPC = NPC(
     sprite_id=SPR0624_SMALL_SEA_FISH,
@@ -1990,8 +1908,7 @@ SMALL_SEA_FISH_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RED_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0084_RED_STAR_PIECE,
@@ -2014,8 +1931,7 @@ RED_STAR_PIECE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOLD_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0085_GOLD_STAR_PIECE,
@@ -2038,8 +1954,7 @@ GOLD_STAR_PIECE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YELLOW_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0088_YELLOW_STAR_PIECE,
@@ -2062,8 +1977,7 @@ YELLOW_STAR_PIECE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREEN_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0086_GREEN_STAR_PIECE,
@@ -2086,8 +2000,7 @@ GREEN_STAR_PIECE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLUE_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0082_BLUE_STAR_PIECE,
@@ -2110,8 +2023,7 @@ BLUE_STAR_PIECE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LIGHT_BLUE_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0087_LIGHT_BLUE_STAR_PIECE,
@@ -2134,8 +2046,7 @@ LIGHT_BLUE_STAR_PIECE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PURPLE_STAR_PIECE_NPC = NPC(
     sprite_id=SPR0083_PURPLE_STAR_PIECE,
@@ -2158,8 +2069,7 @@ PURPLE_STAR_PIECE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_DOLL_NPC = NPC(
     sprite_id=SPR0089_GENO_DOLL,
@@ -2182,8 +2092,7 @@ GENO_DOLL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOWSER_DOLL_NPC = NPC(
     sprite_id=SPR0090_BOWSER_DOLL,
@@ -2206,8 +2115,7 @@ BOWSER_DOLL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC = NPC(
     sprite_id=SPR0600_MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE,
@@ -2230,8 +2138,7 @@ MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_DOLL_NPC = NPC(
     sprite_id=SPR0092_TOADSTOOL_DOLL,
@@ -2254,8 +2161,7 @@ TOADSTOOL_DOLL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YELLOW_STEPPING_BLOCK_NPC = NPC(
     sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
@@ -2278,8 +2184,7 @@ YELLOW_STEPPING_BLOCK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TREASURE_CHEST_NPC = NPC(
     sprite_id=SPR0094_TREASURE_CHEST,
@@ -2302,8 +2207,7 @@ TREASURE_CHEST_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EMPTY_TREASURE_CHEST_NPC = NPC(
     sprite_id=SPR0095_EMPTY_TREASURE_CHEST,
@@ -2326,8 +2230,7 @@ EMPTY_TREASURE_CHEST_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_DOLL_SURPRISED_NPC = NPC(
     sprite_id=SPR0096_MARIO_DOLL_SURPRISED,
@@ -2350,8 +2253,7 @@ MARIO_DOLL_SURPRISED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_S_EXOR_IMPRESSION_NPC_2 = NPC(
     sprite_id=SPR0111_MARIO_S_EXOR_IMPRESSION,
@@ -2374,8 +2276,7 @@ MARIO_S_EXOR_IMPRESSION_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROLLING_BARREL_NPC = NPC(
     sprite_id=SPR0098_ROLLING_BARREL,
@@ -2398,8 +2299,7 @@ ROLLING_BARREL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TRAMPOLINE_WARP_NPC = NPC(
     sprite_id=SPR0099_TRAMPOLINE_WARP,
@@ -2422,8 +2322,7 @@ TRAMPOLINE_WARP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TRAMPOLINE_JUMP_NPC = NPC(
     sprite_id=SPR0100_TRAMPOLINE_JUMP,
@@ -2446,8 +2345,7 @@ TRAMPOLINE_JUMP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TEETER_TOTTER_NPC_2 = NPC(
     sprite_id=SPR0101_TEETER_TOTTER,
@@ -2470,8 +2368,7 @@ TEETER_TOTTER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SAVE_POINT_NPC = NPC(
     sprite_id=SPR0102_SAVE_POINT,
@@ -2494,8 +2391,7 @@ SAVE_POINT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CORKPEDITE_NPC = NPC(
     sprite_id=SPR0103_CORKPEDITE,
@@ -2518,8 +2414,7 @@ CORKPEDITE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPLASH_WATER_GEYSER_NPC = NPC(
     sprite_id=SPR0625_SPLASH_WATER_GEYSER,
@@ -2542,8 +2437,7 @@ SPLASH_WATER_GEYSER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YELLOW_STEPPING_BLOCK_NPC_2 = NPC(
     sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
@@ -2566,8 +2460,7 @@ YELLOW_STEPPING_BLOCK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WHIRLPOOL_WATER_NPC = NPC(
     sprite_id=SPR0106_WHIRLPOOL_WATER,
@@ -2590,8 +2483,7 @@ WHIRLPOOL_WATER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WHIRLPOOL_WATER_NPC_2 = NPC(
     sprite_id=SPR0106_WHIRLPOOL_WATER,
@@ -2614,8 +2506,7 @@ WHIRLPOOL_WATER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_HEX_NUT_NPC = NPC(
     sprite_id=SPR0108_FACTORY_HEX_NUT,
@@ -2638,8 +2529,7 @@ FACTORY_HEX_NUT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREEN_SWITCH_NPC = NPC(
     sprite_id=SPR0109_GREEN_SWITCH,
@@ -2662,8 +2552,7 @@ GREEN_SWITCH_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_NPC_3 = NPC(
     sprite_id=SPR0048_CROCO,
@@ -2686,8 +2575,7 @@ CROCO_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FLOWER_NPC = NPC(
     sprite_id=SPR0195_FLOWER,
@@ -2710,8 +2598,7 @@ FLOWER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ITEM_BAG_NPC = NPC(
     sprite_id=SPR0639_ITEM_BAG_STANDALONE,
@@ -2734,8 +2621,7 @@ ITEM_BAG_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MUSHROOM_BOY_NPC = NPC(
     sprite_id=SPR0112_MUSHROOM_BOY,
@@ -2758,8 +2644,7 @@ MUSHROOM_BOY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_MAN_GREEN_NPC = NPC(
     sprite_id=SPR0113_MARRYMORE_MAN_GREEN,
@@ -2782,8 +2667,7 @@ MARRYMORE_MAN_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_WOMAN_YELLOW_NPC = NPC(
     sprite_id=SPR0114_MARRYMORE_WOMAN_YELLOW,
@@ -2806,8 +2690,7 @@ MARRYMORE_WOMAN_YELLOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_WOMAN_GREEN_NPC = NPC(
     sprite_id=SPR0115_MARRYMORE_WOMAN_GREEN,
@@ -2830,8 +2713,7 @@ MARRYMORE_WOMAN_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_KID_PURPLE_NPC = NPC(
     sprite_id=SPR0116_MARRYMORE_KID_PURPLE,
@@ -2854,8 +2736,7 @@ MARRYMORE_KID_PURPLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_KID_BLUE_GREEN_NPC = NPC(
     sprite_id=SPR0117_MARRYMORE_KID_BLUE_GREEN,
@@ -2878,8 +2759,7 @@ MARRYMORE_KID_BLUE_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY_NPC = NPC(
     sprite_id=SPR0118_MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY,
@@ -2902,8 +2782,7 @@ MARRYMORE_BRIGHT_CARD_BUYER_BROWN_GREY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROSE_TOWN_GARDENER_GREEN_GREY_NPC = NPC(
     sprite_id=SPR0119_ROSE_TOWN_GARDENER_GREEN_GREY,
@@ -2926,8 +2805,7 @@ ROSE_TOWN_GARDENER_GREEN_GREY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 OLD_WOMAN_GREEN_GREY_NPC = NPC(
     sprite_id=SPR0120_OLD_WOMAN_GREEN_GREY,
@@ -2950,8 +2828,7 @@ OLD_WOMAN_GREEN_GREY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 OLD_WOMAN_PURPLE_GREY_NPC = NPC(
     sprite_id=SPR0121_OLD_WOMAN_PURPLE_GREY,
@@ -2974,8 +2851,7 @@ OLD_WOMAN_PURPLE_GREY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BEETLE_NPC = NPC(
     sprite_id=SPR0255_BEETLE,
@@ -2998,8 +2874,7 @@ BEETLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YELLOW_STEPPING_BLOCK_NPC_3 = NPC(
     sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
@@ -3022,8 +2897,7 @@ YELLOW_STEPPING_BLOCK_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROLLING_BARREL_NPC_2 = NPC(
     sprite_id=SPR0098_ROLLING_BARREL,
@@ -3046,8 +2920,7 @@ ROLLING_BARREL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FROGFUCIUS_STUDENT_NPC = NPC(
     sprite_id=SPR0125_FROGFUCIUS_STUDENT,
@@ -3070,8 +2943,7 @@ FROGFUCIUS_STUDENT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHOMP_BEHIND_NPC = NPC(
     sprite_id=SPR0126_CHOMP_BEHIND,
@@ -3094,8 +2966,7 @@ CHOMP_BEHIND_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WIGGLER_HEAD_NPC = NPC(
     sprite_id=SPR0127_WIGGLER_HEAD,
@@ -3118,8 +2989,7 @@ WIGGLER_HEAD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLOCK_SHADOW_NPC = NPC(
     sprite_id=SPR0128_BLOCK_SHADOW,
@@ -3142,8 +3012,7 @@ BLOCK_SHADOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WIGGLER_BODY_SEGMENT_NPC = NPC(
     sprite_id=SPR0130_WIGGLER_BODY_SEGMENT,
@@ -3166,8 +3035,7 @@ WIGGLER_BODY_SEGMENT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLOCK_SHADOW_NPC_2 = NPC(
     sprite_id=SPR0128_BLOCK_SHADOW,
@@ -3190,8 +3058,7 @@ BLOCK_SHADOW_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DODO_AS_PARSON_NPC = NPC(
     sprite_id=SPR0131_DODO_AS_PARSON,
@@ -3214,8 +3081,7 @@ DODO_AS_PARSON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MINE_CART_BAD_PALETTE_NPC_2 = NPC(
     sprite_id=SPR0135_MINE_CART_BAD_PALETTE,
@@ -3238,8 +3104,7 @@ MINE_CART_BAD_PALETTE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 KNIFE_GUY_JUGGLER_STILL_RED_BALLS_NPC = NPC(
     sprite_id=SPR0133_KNIFE_GUY_JUGGLER_STILL_RED_BALLS,
@@ -3262,8 +3127,7 @@ KNIFE_GUY_JUGGLER_STILL_RED_BALLS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 KNIFE_GUY_JUGGLER_NPC = NPC(
     sprite_id=SPR0134_KNIFE_GUY_JUGGLER,
@@ -3286,8 +3150,7 @@ KNIFE_GUY_JUGGLER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LAKITU_NPC = NPC(
     sprite_id=SPR0268_LAKITU,
@@ -3310,8 +3173,7 @@ LAKITU_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LAKITU_NPC_2 = NPC(
     sprite_id=SPR0268_LAKITU,
@@ -3334,8 +3196,7 @@ LAKITU_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FIREBALL_SURFACE_FROM_LAVA_NPC = NPC(
     sprite_id=SPR0137_FIREBALL_SURFACE_FROM_LAVA,
@@ -3358,8 +3219,7 @@ FIREBALL_SURFACE_FROM_LAVA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PIRANHA_PLANT_NPC = NPC(
     sprite_id=SPR0138_PIRANHA_PLANT,
@@ -3382,8 +3242,7 @@ PIRANHA_PLANT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOOMBA_NPC = NPC(
     sprite_id=SPR0139_GOOMBA,
@@ -3406,8 +3265,7 @@ GOOMBA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BULLET_BILL_NPC = NPC(
     sprite_id=SPR0140_BULLET_BILL,
@@ -3430,8 +3288,7 @@ BULLET_BILL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BULLET_BILL_NPC_2 = NPC(
     sprite_id=SPR0140_BULLET_BILL,
@@ -3454,8 +3311,7 @@ BULLET_BILL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SAVE_POINT_NPC_2 = NPC(
     sprite_id=SPR0102_SAVE_POINT,
@@ -3478,8 +3334,7 @@ SAVE_POINT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LAND_S_END_CANNON_NPC = NPC(
     sprite_id=SPR0143_LAND_S_END_CANNON,
@@ -3502,8 +3357,7 @@ LAND_S_END_CANNON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RED_DOT_NPC = NPC(
     sprite_id=SPR0144_RED_DOT,
@@ -3526,8 +3380,7 @@ RED_DOT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOB_OMB_NPC = NPC(
     sprite_id=SPR0281_BOB_OMB,
@@ -3550,8 +3403,7 @@ BOB_OMB_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHOMP_PACKET_NPC = NPC(
     sprite_id=SPR0210_CHOMP_PACKET,
@@ -3574,8 +3426,7 @@ CHOMP_PACKET_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_OVERWORLD_NPC = NPC(
     sprite_id=SPR0190_CROCO_OVERWORLD,
@@ -3598,8 +3449,7 @@ CROCO_OVERWORLD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LAZY_SHELL_HEAVY_TROOPA_NOK_NOK_SHELL_NPC = NPC(
     sprite_id=SPR0538_LAZY_SHELL_HEAVY_TROOPA_NOK_NOK_SHELL,
@@ -3622,8 +3472,7 @@ LAZY_SHELL_HEAVY_TROOPA_NOK_NOK_SHELL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BERRY_NPC = NPC(
     sprite_id=SPR0253_BERRY,
@@ -3646,8 +3495,7 @@ BERRY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROYAL_FLUSH_CARD_NPC = NPC(
     sprite_id=SPR0806_ROYAL_FLUSH_CARD,
@@ -3670,8 +3518,7 @@ ROYAL_FLUSH_CARD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CULEX_SMALL_NPC = NPC(
     sprite_id=SPR0633_CULEX_SMALL,
@@ -3694,8 +3541,7 @@ CULEX_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_DOLL_SURPRISED_NPC_2 = NPC(
     sprite_id=SPR0096_MARIO_DOLL_SURPRISED,
@@ -3718,8 +3564,7 @@ MARIO_DOLL_SURPRISED_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HAMMER_PACKET_NPC = NPC(
     sprite_id=SPR0208_HAMMER_PACKET,
@@ -3742,8 +3587,7 @@ HAMMER_PACKET_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 THRAX_NPC = NPC(
     sprite_id=SPR0715_THRAX,
@@ -3766,8 +3610,7 @@ THRAX_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPARKY_NPC = NPC(
     sprite_id=SPR0277_SPARKY,
@@ -3790,8 +3633,7 @@ SPARKY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TERRAPIN_NPC = NPC(
     sprite_id=SPR0256_TERRAPIN,
@@ -3814,8 +3656,7 @@ TERRAPIN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPIKEY_NPC = NPC(
     sprite_id=SPR0257_SPIKEY,
@@ -3838,8 +3679,7 @@ SPIKEY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOOMBA_NPC = NPC(
     sprite_id=SPR0262_GOOMBA,
@@ -3862,8 +3702,7 @@ GOOMBA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHY_GUY_NPC = NPC(
     sprite_id=SPR0346_SHY_GUY,
@@ -3886,8 +3725,7 @@ SHY_GUY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT_NPC = NPC(
     sprite_id=SPR0178_MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT,
@@ -3910,8 +3748,7 @@ MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROSE_TOWN_TREASURE_HOLDER_NPC = NPC(
     sprite_id=SPR0179_ROSE_TOWN_TREASURE_HOLDER,
@@ -3934,8 +3771,7 @@ ROSE_TOWN_TREASURE_HOLDER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS_NPC = NPC(
     sprite_id=SPR0180_ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS,
@@ -3958,8 +3794,7 @@ ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_WOMAN_YELLOW_NPC = NPC(
     sprite_id=SPR0181_MARRYMORE_WOMAN_YELLOW,
@@ -3982,8 +3817,7 @@ MARRYMORE_WOMAN_YELLOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROSE_TOWN_OLD_MAN_BLUE_GREY_NPC = NPC(
     sprite_id=SPR0182_ROSE_TOWN_OLD_MAN_BLUE_GREY,
@@ -4006,8 +3840,7 @@ ROSE_TOWN_OLD_MAN_BLUE_GREY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 OLD_WOMAN_GREY_RED_NPC = NPC(
     sprite_id=SPR0183_OLD_WOMAN_GREY_RED,
@@ -4030,8 +3863,7 @@ OLD_WOMAN_GREY_RED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 KID_RED_STRIPED_HAT_NPC = NPC(
     sprite_id=SPR0184_KID_RED_STRIPED_HAT,
@@ -4054,8 +3886,7 @@ KID_RED_STRIPED_HAT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GAZ_PURPLE_NPC = NPC(
     sprite_id=SPR0185_GAZ_PURPLE,
@@ -4078,8 +3909,7 @@ GAZ_PURPLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TENTACLE_EXTENDING_NPC = NPC(
     sprite_id=SPR0618_TENTACLE_EXTENDING,
@@ -4102,8 +3932,7 @@ TENTACLE_EXTENDING_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 J_PUZZLE_BLOCK_NPC_2 = NPC(
     sprite_id=SPR0104_J_PUZZLE_BLOCK,
@@ -4126,8 +3955,7 @@ J_PUZZLE_BLOCK_NPC_2 = NPC(
     byte2_bit4=True,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 J_PUZZLE_BLOCK_NPC_3 = NPC(
     sprite_id=SPR0104_J_PUZZLE_BLOCK,
@@ -4150,8 +3978,7 @@ J_PUZZLE_BLOCK_NPC_3 = NPC(
     byte2_bit4=True,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 J_PUZZLE_BLOCK_NPC_4 = NPC(
     sprite_id=SPR0104_J_PUZZLE_BLOCK,
@@ -4174,8 +4001,7 @@ J_PUZZLE_BLOCK_NPC_4 = NPC(
     byte2_bit4=True,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLOOBER_NPC = NPC(
     sprite_id=SPR0266_BLOOBER,
@@ -4198,8 +4024,7 @@ BLOOBER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLOOBER_NPC_2 = NPC(
     sprite_id=SPR0266_BLOOBER,
@@ -4222,8 +4047,7 @@ BLOOBER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DRY_BONES_NPC = NPC(
     sprite_id=SPR0275_DRY_BONES,
@@ -4246,8 +4070,7 @@ DRY_BONES_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLOCK_SHADOW_NPC_3 = NPC(
     sprite_id=SPR0128_BLOCK_SHADOW,
@@ -4270,8 +4093,7 @@ BLOCK_SHADOW_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HINOPIO_NPC_2 = NPC(
     sprite_id=SPR0107_HINOPIO,
@@ -4294,8 +4116,7 @@ HINOPIO_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOLDEN_BULLET_BILL_NPC = NPC(
     sprite_id=SPR0141_GOLDEN_BULLET_BILL,
@@ -4318,8 +4139,7 @@ GOLDEN_BULLET_BILL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOLDEN_BULLET_BILL_NPC_2 = NPC(
     sprite_id=SPR0141_GOLDEN_BULLET_BILL,
@@ -4342,8 +4162,7 @@ GOLDEN_BULLET_BILL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FROGFUCIUS_STUDENT_NPC_2 = NPC(
     sprite_id=SPR0125_FROGFUCIUS_STUDENT,
@@ -4366,8 +4185,7 @@ FROGFUCIUS_STUDENT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 COMMANDER_TROOPA_NPC = NPC(
     sprite_id=SPR0146_COMMANDER_TROOPA,
@@ -4390,8 +4208,7 @@ COMMANDER_TROOPA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MONSTERMAMA_GOLDEN_BROWN_RED_NPC = NPC(
     sprite_id=SPR0165_MONSTERMAMA_GOLDEN_BROWN_RED,
@@ -4414,8 +4231,7 @@ MONSTERMAMA_GOLDEN_BROWN_RED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NIMBUS_GUARD_NPC = NPC(
     sprite_id=SPR0166_NIMBUS_GUARD,
@@ -4438,8 +4254,7 @@ NIMBUS_GUARD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDY_NPC = NPC(
     sprite_id=SPR0269_BIRDY,
@@ -4462,8 +4277,7 @@ BIRDY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHYGUY_IN_BOWSER_S_HELICOPTER_NPC = NPC(
     sprite_id=SPR0149_SHYGUY_IN_BOWSER_S_HELICOPTER,
@@ -4486,8 +4300,7 @@ SHYGUY_IN_BOWSER_S_HELICOPTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_AXEM_RED_NPC = NPC(
     sprite_id=SPR0424_MACHINE_MADE_AXEM_RED,
@@ -4510,8 +4323,7 @@ MACHINE_MADE_AXEM_RED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_BOWYER_NPC = NPC(
     sprite_id=SPR0150_MACHINE_MADE_BOWYER,
@@ -4534,8 +4346,7 @@ MACHINE_MADE_BOWYER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
     sprite_id=SPR0151_MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE,
@@ -4558,8 +4369,7 @@ MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PINWHEEL_NPC = NPC(
     sprite_id=SPR0270_PINWHEEL,
@@ -4582,8 +4392,7 @@ PINWHEEL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PINWHEEL_NPC_2 = NPC(
     sprite_id=SPR0270_PINWHEEL,
@@ -4606,8 +4415,7 @@ PINWHEEL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RED_MAGIKOOPA_NPC = NPC(
     sprite_id=SPR0129_RED_MAGIKOOPA,
@@ -4630,8 +4438,7 @@ RED_MAGIKOOPA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPARKLE_DOWNWARDS_NPC = NPC(
     sprite_id=SPR0198_SPARKLE_DOWNWARDS,
@@ -4654,8 +4461,7 @@ SPARKLE_DOWNWARDS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 COIN_NPC = NPC(
     sprite_id=SPR0192_COIN,
@@ -4678,8 +4484,7 @@ COIN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPARKLE_CIRCULAR_WINDING_NPC = NPC(
     sprite_id=SPR0635_SPARKLE_CIRCULAR_WINDING,
@@ -4702,8 +4507,7 @@ SPARKLE_CIRCULAR_WINDING_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMALL_COIN_NPC = NPC(
     sprite_id=SPR0193_SMALL_COIN,
@@ -4726,8 +4530,7 @@ SMALL_COIN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FROG_COIN_NPC = NPC(
     sprite_id=SPR0194_FROG_COIN,
@@ -4750,8 +4553,7 @@ FROG_COIN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIG_FLOWER_NPC = NPC(
     sprite_id=SPR0605_BIG_FLOWER,
@@ -4774,8 +4576,7 @@ BIG_FLOWER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPARKLE_SIDEWAYS_NPC = NPC(
     sprite_id=SPR0197_SPARKLE_SIDEWAYS,
@@ -4798,8 +4599,7 @@ SPARKLE_SIDEWAYS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RING_NPC = NPC(
     sprite_id=SPR0196_RING,
@@ -4822,8 +4622,7 @@ RING_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FLOWER_NPC_2 = NPC(
     sprite_id=SPR0195_FLOWER,
@@ -4846,8 +4645,7 @@ FLOWER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EXPLOSION_NPC = NPC(
     sprite_id=SPR0200_EXPLOSION,
@@ -4870,8 +4668,7 @@ EXPLOSION_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MOKURA_S_CLOUD_BLUE_NPC = NPC(
     sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
@@ -4894,8 +4691,7 @@ MOKURA_S_CLOUD_BLUE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMALL_FROG_COIN_NPC = NPC(
     sprite_id=SPR0606_SMALL_FROG_COIN,
@@ -4918,8 +4714,7 @@ SMALL_FROG_COIN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR_NPC = NPC(
     sprite_id=SPR0203_LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR,
@@ -4942,8 +4737,7 @@ LEVEL_UP_TEXT_FROM_INVINCIBLE_STAR_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS_NPC = NPC(
     sprite_id=SPR0204_GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS,
@@ -4966,8 +4760,7 @@ GREY_EXPLOSION_WHEN_ENCOUNTERING_FIREBALLS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PARASOL_NPC = NPC(
     sprite_id=SPR0036_PARASOL,
@@ -4990,8 +4783,7 @@ PARASOL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TERRAPIN_ENDING_CREDITS_NPC = NPC(
     sprite_id=SPR0609_TERRAPIN_ENDING_CREDITS,
@@ -5014,8 +4806,7 @@ TERRAPIN_ENDING_CREDITS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JINX_2_OVERWORLD_NPC = NPC(
     sprite_id=SPR0607_JINX_OVERWORLD_2,
@@ -5038,8 +4829,7 @@ JINX_2_OVERWORLD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_RED_NPC = NPC(
     sprite_id=SPR0466_AXEM_RED,
@@ -5062,8 +4852,7 @@ AXEM_RED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_BLACK_NPC = NPC(
     sprite_id=SPR0485_AXEM_BLACK,
@@ -5086,8 +4875,7 @@ AXEM_BLACK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_PINK_NPC = NPC(
     sprite_id=SPR0484_AXEM_PINK,
@@ -5110,8 +4898,7 @@ AXEM_PINK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_YELLOW_NPC = NPC(
     sprite_id=SPR0463_AXEM_YELLOW,
@@ -5134,8 +4921,7 @@ AXEM_YELLOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_GREEN_NPC = NPC(
     sprite_id=SPR0467_AXEM_GREEN,
@@ -5158,8 +4944,7 @@ AXEM_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_RED_TELEPORT_NPC = NPC(
     sprite_id=SPR0213_AXEM_RED_TELEPORT,
@@ -5182,8 +4967,7 @@ AXEM_RED_TELEPORT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STUMPET_HEAD_NPC = NPC(
     sprite_id=SPR0610_STUMPET_HEAD,
@@ -5206,8 +4990,7 @@ STUMPET_HEAD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STUMPET_ROOTS_RIGHT_NPC = NPC(
     sprite_id=SPR0611_STUMPET_ROOTS_RIGHT,
@@ -5230,8 +5013,7 @@ STUMPET_ROOTS_RIGHT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CZAR_DRAGON_BODY_NPC = NPC(
     sprite_id=SPR0612_CZAR_DRAGON_BODY,
@@ -5254,8 +5036,7 @@ CZAR_DRAGON_BODY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GROWING_VINE_BEANSTALK_NPC = NPC(
     sprite_id=SPR0613_GROWING_VINE_BEANSTALK,
@@ -5278,8 +5059,7 @@ GROWING_VINE_BEANSTALK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BRICK_BEANSTALK_BLOCK_NPC = NPC(
     sprite_id=SPR0614_BRICK_BEANSTALK_BLOCK,
@@ -5302,8 +5082,7 @@ BRICK_BEANSTALK_BLOCK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WHIRLPOOL_DESERT_NPC = NPC(
     sprite_id=SPR0615_WHIRLPOOL_DESERT,
@@ -5326,8 +5105,7 @@ WHIRLPOOL_DESERT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YELLOW_LETTER_NPC = NPC(
     sprite_id=SPR0616_YELLOW_LETTER,
@@ -5350,8 +5128,7 @@ YELLOW_LETTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
     sprite_id=SPR0617_YARIDOVICH_OUT_OF_BATTLE,
@@ -5374,8 +5151,7 @@ YARIDOVICH_OUT_OF_BATTLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANANA_PEEL_NPC = NPC(
     sprite_id=SPR0222_BANANA_PEEL,
@@ -5398,8 +5174,7 @@ BANANA_PEEL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 J_PUZZLE_BLOCK_NPC_5 = NPC(
     sprite_id=SPR0104_J_PUZZLE_BLOCK,
@@ -5422,8 +5197,7 @@ J_PUZZLE_BLOCK_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SNIFIT_BLACK_BACK_NPC_2 = NPC(
     sprite_id=SPR0619_SNIFIT_BLACK_BACK,
@@ -5446,8 +5220,7 @@ SNIFIT_BLACK_BACK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEVEL_UP_BONUS_SELECTION_BOX_NPC = NPC(
     sprite_id=SPR0225_LEVEL_UP_BONUS_SELECTION_BOX,
@@ -5470,8 +5243,7 @@ LEVEL_UP_BONUS_SELECTION_BOX_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TINY_STAR_NPC = NPC(
     sprite_id=SPR0226_TINY_STAR,
@@ -5494,8 +5266,7 @@ TINY_STAR_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LIGHT_GREEN_PIPE_TOP_EDGE_NPC = NPC(
     sprite_id=SPR0227_LIGHT_GREEN_PIPE_TOP_EDGE,
@@ -5518,8 +5289,7 @@ LIGHT_GREEN_PIPE_TOP_EDGE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEVEL_UP_BONUS_TEXT_NPC = NPC(
     sprite_id=SPR0228_LEVEL_UP_BONUS_TEXT,
@@ -5542,8 +5312,7 @@ LEVEL_UP_BONUS_TEXT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEVEL_UP_BONUS_FLOWER_NPC = NPC(
     sprite_id=SPR0229_LEVEL_UP_BONUS_FLOWER,
@@ -5566,8 +5335,7 @@ LEVEL_UP_BONUS_FLOWER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEVEL_UP_BONUS_POW_POWER_NPC = NPC(
     sprite_id=SPR0230_LEVEL_UP_BONUS_POW_POWER,
@@ -5590,8 +5358,7 @@ LEVEL_UP_BONUS_POW_POWER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEVEL_UP_BONUS_STAR_MAGIC_NPC = NPC(
     sprite_id=SPR0231_LEVEL_UP_BONUS_STAR_MAGIC,
@@ -5614,8 +5381,7 @@ LEVEL_UP_BONUS_STAR_MAGIC_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEVEL_UP_BONUS_HP_NPC = NPC(
     sprite_id=SPR0232_LEVEL_UP_BONUS_HP,
@@ -5638,8 +5404,7 @@ LEVEL_UP_BONUS_HP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FALLING_STEPPING_BRIDGE_BLOCK_NPC_2 = NPC(
     sprite_id=SPR0620_FALLING_STEPPING_BRIDGE_BLOCK,
@@ -5662,8 +5427,7 @@ FALLING_STEPPING_BRIDGE_BLOCK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AERO_NPC = NPC(
     sprite_id=SPR0717_AERO,
@@ -5686,8 +5450,7 @@ AERO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FRYING_PAN_NPC = NPC(
     sprite_id=SPR0035_FRYING_PAN,
@@ -5710,8 +5473,7 @@ FRYING_PAN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAGIKOOPA_NPC_2 = NPC(
     sprite_id=SPR0057_MAGIKOOPA,
@@ -5734,8 +5496,7 @@ MAGIKOOPA_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TERRAPIN_NPC_2 = NPC(
     sprite_id=SPR0256_TERRAPIN,
@@ -5758,8 +5519,7 @@ TERRAPIN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPLASH_WATER_DROPLETS_NPC_2 = NPC(
     sprite_id=SPR0623_SPLASH_WATER_DROPLETS,
@@ -5782,8 +5542,7 @@ SPLASH_WATER_DROPLETS_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMALL_SEA_FISH_NPC_2 = NPC(
     sprite_id=SPR0624_SMALL_SEA_FISH,
@@ -5806,8 +5565,7 @@ SMALL_SEA_FISH_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPLASH_WATER_GEYSER_NPC_2 = NPC(
     sprite_id=SPR0625_SPLASH_WATER_GEYSER,
@@ -5830,8 +5588,7 @@ SPLASH_WATER_GEYSER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOWYER_NPC = NPC(
     sprite_id=SPR0626_BOWYER,
@@ -5854,8 +5611,7 @@ BOWYER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WHITE_GAS_CLOUD_NPC = NPC(
     sprite_id=SPR0242_WHITE_GAS_CLOUD,
@@ -5878,8 +5634,7 @@ WHITE_GAS_CLOUD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_DRILL_BIT_NPC = NPC(
     sprite_id=SPR0243_MACHINE_MADE_DRILL_BIT,
@@ -5902,8 +5657,7 @@ MACHINE_MADE_DRILL_BIT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MUSHROOM_HOUSE_DECOR_MAILBOX_NPC = NPC(
     sprite_id=SPR0627_MUSHROOM_HOUSE_DECOR_MAILBOX,
@@ -5926,8 +5680,7 @@ MUSHROOM_HOUSE_DECOR_MAILBOX_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LINK_SLEEPING_IN_ROSE_TOWN_INN_NPC = NPC(
     sprite_id=SPR0628_LINK_SLEEPING_IN_ROSE_TOWN_INN,
@@ -5950,8 +5703,7 @@ LINK_SLEEPING_IN_ROSE_TOWN_INN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM_NPC = NPC(
     sprite_id=SPR0629_SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM,
@@ -5974,8 +5726,7 @@ SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREY_STEPPING_STONE_NPC = NPC(
     sprite_id=SPR0630_GREY_STEPPING_STONE,
@@ -5998,8 +5749,7 @@ GREY_STEPPING_STONE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC = NPC(
     sprite_id=SPR0631_HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY,
@@ -6022,8 +5772,7 @@ HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREY_STONE_BLOCK_NPC = NPC(
     sprite_id=SPR0632_GREY_STONE_BLOCK,
@@ -6046,8 +5795,7 @@ GREY_STONE_BLOCK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STICK_PACKET_NPC = NPC(
     sprite_id=SPR0209_STICK_PACKET,
@@ -6070,8 +5818,7 @@ STICK_PACKET_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PARASOL_PACKET_NPC = NPC(
     sprite_id=SPR0251_PARASOL_PACKET,
@@ -6094,8 +5841,7 @@ PARASOL_PACKET_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FEATHER_NPC_2 = NPC(
     sprite_id=SPR0252_FEATHER,
@@ -6118,8 +5864,7 @@ FEATHER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EMPTY_NPC = NPC(
     sprite_id=SPR1023_EMPTY,
@@ -6142,8 +5887,7 @@ EMPTY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EMPTY_NPC_2 = NPC(
     sprite_id=SPR1023_EMPTY,
@@ -6166,8 +5910,7 @@ EMPTY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EMPTY_NPC_3 = NPC(
     sprite_id=SPR1023_EMPTY,
@@ -6190,8 +5933,7 @@ EMPTY_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TERRAPIN_NPC_3 = NPC(
     sprite_id=SPR0256_TERRAPIN,
@@ -6214,8 +5956,7 @@ TERRAPIN_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPIKEY_NPC_2 = NPC(
     sprite_id=SPR0257_SPIKEY,
@@ -6238,8 +5979,7 @@ SPIKEY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SKY_TROOPA_NPC = NPC(
     sprite_id=SPR0258_SKY_TROOPA,
@@ -6262,8 +6002,7 @@ SKY_TROOPA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAD_MALLET_NPC = NPC(
     sprite_id=SPR0259_MAD_MALLET,
@@ -6286,8 +6025,7 @@ MAD_MALLET_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHAMAN_NPC = NPC(
     sprite_id=SPR0260_SHAMAN,
@@ -6310,8 +6048,7 @@ SHAMAN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROOK_NPC = NPC(
     sprite_id=SPR0261_CROOK,
@@ -6334,8 +6071,7 @@ CROOK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOOMBA_NPC_2 = NPC(
     sprite_id=SPR0262_GOOMBA,
@@ -6358,8 +6094,7 @@ GOOMBA_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PIRANHA_PLANT_NPC = NPC(
     sprite_id=SPR0263_PIRANHA_PLANT,
@@ -6382,8 +6117,7 @@ PIRANHA_PLANT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AMANITA_NPC = NPC(
     sprite_id=SPR0264_AMANITA,
@@ -6406,8 +6140,7 @@ AMANITA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOBY_NPC = NPC(
     sprite_id=SPR0265_GOBY,
@@ -6430,8 +6163,7 @@ GOBY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLOOBER_NPC_3 = NPC(
     sprite_id=SPR0266_BLOOBER,
@@ -6454,8 +6186,7 @@ BLOOBER_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANDANA_RED_NPC = NPC(
     sprite_id=SPR0267_BANDANA_RED,
@@ -6478,8 +6209,7 @@ BANDANA_RED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LAKITU_NPC_3 = NPC(
     sprite_id=SPR0268_LAKITU,
@@ -6502,8 +6232,7 @@ LAKITU_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDY_NPC_2 = NPC(
     sprite_id=SPR0269_BIRDY,
@@ -6526,8 +6255,7 @@ BIRDY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PINWHEEL_NPC_3 = NPC(
     sprite_id=SPR0270_PINWHEEL,
@@ -6550,8 +6278,7 @@ PINWHEEL_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RAT_FUNK_NPC = NPC(
     sprite_id=SPR0271_RAT_FUNK,
@@ -6574,8 +6301,7 @@ RAT_FUNK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 K_NPC = NPC(
     sprite_id=SPR0272_K,
@@ -6598,8 +6324,7 @@ K_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAGMITE_NPC = NPC(
     sprite_id=SPR0273_MAGMITE,
@@ -6622,8 +6347,7 @@ MAGMITE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 THE_BIG_BOO_NPC = NPC(
     sprite_id=SPR0274_THE_BIG_BOO,
@@ -6646,8 +6370,7 @@ THE_BIG_BOO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DRY_BONES_NPC_2 = NPC(
     sprite_id=SPR0275_DRY_BONES,
@@ -6670,8 +6393,7 @@ DRY_BONES_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREAPER_NPC = NPC(
     sprite_id=SPR0276_GREAPER,
@@ -6694,8 +6416,7 @@ GREAPER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FAN_PACKET_NPC = NPC(
     sprite_id=SPR0211_FAN_PACKET,
@@ -6718,8 +6439,7 @@ FAN_PACKET_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHOMP_NPC = NPC(
     sprite_id=SPR0278_CHOMP,
@@ -6742,8 +6462,7 @@ CHOMP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDY_NPC_3 = NPC(
     sprite_id=SPR0269_BIRDY,
@@ -6766,8 +6485,7 @@ BIRDY_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 THWOMP_NPC = NPC(
     sprite_id=SPR0060_THWOMP,
@@ -6790,8 +6508,7 @@ THWOMP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOB_OMB_NPC_2 = NPC(
     sprite_id=SPR0281_BOB_OMB,
@@ -6814,8 +6531,7 @@ BOB_OMB_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPOOKUM_NPC = NPC(
     sprite_id=SPR0282_SPOOKUM,
@@ -6838,8 +6554,7 @@ SPOOKUM_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HAMMER_BRO_NPC = NPC(
     sprite_id=SPR0283_HAMMER_BRO,
@@ -6862,8 +6577,7 @@ HAMMER_BRO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BUZZER_NPC = NPC(
     sprite_id=SPR0284_BUZZER,
@@ -6886,8 +6600,7 @@ BUZZER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AMEBOID_NPC = NPC(
     sprite_id=SPR0285_AMEBOID,
@@ -6910,8 +6623,7 @@ AMEBOID_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GECKO_NPC = NPC(
     sprite_id=SPR0286_GECKO,
@@ -6934,8 +6646,7 @@ GECKO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WIGGLER_NPC = NPC(
     sprite_id=SPR0287_WIGGLER,
@@ -6958,8 +6669,7 @@ WIGGLER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CRUSTY_NPC = NPC(
     sprite_id=SPR0288_CRUSTY,
@@ -6982,8 +6692,7 @@ CRUSTY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAGIKOOPA_NPC = NPC(
     sprite_id=SPR0289_MAGIKOOPA,
@@ -7006,8 +6715,7 @@ MAGIKOOPA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEUKO_NPC = NPC(
     sprite_id=SPR0290_LEUKO,
@@ -7030,8 +6738,7 @@ LEUKO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JAWFUL_NPC = NPC(
     sprite_id=SPR0291_JAWFUL,
@@ -7054,8 +6761,7 @@ JAWFUL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ENIGMA_NPC = NPC(
     sprite_id=SPR0292_ENIGMA,
@@ -7078,8 +6784,7 @@ ENIGMA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLASTER_NPC = NPC(
     sprite_id=SPR0293_BLASTER,
@@ -7102,8 +6807,7 @@ BLASTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GUERRILLA_NPC = NPC(
     sprite_id=SPR0294_GUERRILLA,
@@ -7126,8 +6830,7 @@ GUERRILLA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HOBGOBLIN_NPC = NPC(
     sprite_id=SPR0296_HOBGOBLIN,
@@ -7150,8 +6853,7 @@ HOBGOBLIN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 REACHER_NPC = NPC(
     sprite_id=SPR0297_REACHER,
@@ -7174,8 +6876,7 @@ REACHER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHOGUN_NPC = NPC(
     sprite_id=SPR0298_SHOGUN,
@@ -7198,8 +6899,7 @@ SHOGUN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ORB_USER_NPC = NPC(
     sprite_id=SPR0299_ORB_USER,
@@ -7222,8 +6922,7 @@ ORB_USER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HEAVY_TROOPA_NPC = NPC(
     sprite_id=SPR0300_HEAVY_TROOPA,
@@ -7246,8 +6945,7 @@ HEAVY_TROOPA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHADOW_NPC = NPC(
     sprite_id=SPR0301_SHADOW,
@@ -7270,8 +6968,7 @@ SHADOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CLUSTER_NPC = NPC(
     sprite_id=SPR0302_CLUSTER,
@@ -7294,8 +6991,7 @@ CLUSTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BAHAMUTT_NPC = NPC(
     sprite_id=SPR0303_BAHAMUTT,
@@ -7318,8 +7014,7 @@ BAHAMUTT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 OCTOLOT_NPC = NPC(
     sprite_id=SPR0304_OCTOLOT,
@@ -7342,8 +7037,7 @@ OCTOLOT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FROGOG_NPC = NPC(
     sprite_id=SPR0305_FROGOG,
@@ -7366,8 +7060,7 @@ FROGOG_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CLERK_NPC = NPC(
     sprite_id=SPR0306_CLERK,
@@ -7390,8 +7083,7 @@ CLERK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GUNYOLK_NPC = NPC(
     sprite_id=SPR0307_GUNYOLK,
@@ -7414,8 +7106,7 @@ GUNYOLK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOOMER_NPC = NPC(
     sprite_id=SPR0308_BOOMER,
@@ -7438,8 +7129,7 @@ BOOMER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 REMO_CON_NPC = NPC(
     sprite_id=SPR0309_REMO_CON,
@@ -7462,8 +7152,7 @@ REMO_CON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SNAPDRAGON_NPC = NPC(
     sprite_id=SPR0310_SNAPDRAGON,
@@ -7486,8 +7175,7 @@ SNAPDRAGON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STUMPET_NPC = NPC(
     sprite_id=SPR0311_STUMPET,
@@ -7510,8 +7198,7 @@ STUMPET_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DODO_ND_TIME_NPC_2 = NPC(
     sprite_id=SPR0312_DODO_ND_TIME,
@@ -7534,8 +7221,7 @@ DODO_ND_TIME_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JESTER_NPC = NPC(
     sprite_id=SPR0313_JESTER,
@@ -7558,8 +7244,7 @@ JESTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ARTICHOKER_NPC = NPC(
     sprite_id=SPR0314_ARTICHOKER,
@@ -7582,8 +7267,7 @@ ARTICHOKER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ARACHNE_NPC = NPC(
     sprite_id=SPR0315_ARACHNE,
@@ -7606,8 +7290,7 @@ ARACHNE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CARROBOSCIS_NPC = NPC(
     sprite_id=SPR0316_CARROBOSCIS,
@@ -7630,8 +7313,7 @@ CARROBOSCIS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HIPPOPO_NPC = NPC(
     sprite_id=SPR0317_HIPPOPO,
@@ -7654,8 +7336,7 @@ HIPPOPO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MASTADOOM_NPC = NPC(
     sprite_id=SPR0318_MASTADOOM,
@@ -7678,8 +7359,7 @@ MASTADOOM_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHOMP_BEHIND_NPC_2 = NPC(
     sprite_id=SPR0126_CHOMP_BEHIND,
@@ -7702,8 +7382,7 @@ CHOMP_BEHIND_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TERRA_COTTA_NPC = NPC(
     sprite_id=SPR0320_TERRA_COTTA,
@@ -7726,8 +7405,7 @@ TERRA_COTTA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPIKESTER_NPC = NPC(
     sprite_id=SPR0321_SPIKESTER,
@@ -7750,8 +7428,7 @@ SPIKESTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALAKOOPA_NPC = NPC(
     sprite_id=SPR0322_MALAKOOPA,
@@ -7774,8 +7451,7 @@ MALAKOOPA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POUNDER_NPC = NPC(
     sprite_id=SPR0323_POUNDER,
@@ -7798,8 +7474,7 @@ POUNDER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POUNDETTE_NPC = NPC(
     sprite_id=SPR0324_POUNDETTE,
@@ -7822,8 +7497,7 @@ POUNDETTE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SACKIT_NPC = NPC(
     sprite_id=SPR0325_SACKIT,
@@ -7846,8 +7520,7 @@ SACKIT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GU_GOOMBA_NPC = NPC(
     sprite_id=SPR0326_GU_GOOMBA,
@@ -7870,8 +7543,7 @@ GU_GOOMBA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHEWY_NPC = NPC(
     sprite_id=SPR0327_CHEWY,
@@ -7894,8 +7566,7 @@ CHEWY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREAPER_NPC_2 = NPC(
     sprite_id=SPR0276_GREAPER,
@@ -7918,8 +7589,7 @@ GREAPER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MR_KIPPER_NPC = NPC(
     sprite_id=SPR0329_MR_KIPPER,
@@ -7942,8 +7612,7 @@ MR_KIPPER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHESTER_NPC = NPC(
     sprite_id=SPR0395_CHESTER,
@@ -7966,8 +7635,7 @@ CHESTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANDANA_BLUE_NPC = NPC(
     sprite_id=SPR0331_BANDANA_BLUE,
@@ -7990,8 +7658,7 @@ BANDANA_BLUE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHOGUN_NPC_2 = NPC(
     sprite_id=SPR0298_SHOGUN,
@@ -8014,8 +7681,7 @@ SHOGUN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLUEBIRD_NPC = NPC(
     sprite_id=SPR0333_BLUEBIRD,
@@ -8038,8 +7704,7 @@ BLUEBIRD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLUEBIRD_NPC_2 = NPC(
     sprite_id=SPR0333_BLUEBIRD,
@@ -8062,8 +7727,7 @@ BLUEBIRD_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ALLEY_RAT_NPC = NPC(
     sprite_id=SPR0335_ALLEY_RAT,
@@ -8086,8 +7750,7 @@ ALLEY_RAT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHOW_NPC = NPC(
     sprite_id=SPR0336_CHOW,
@@ -8110,8 +7773,7 @@ CHOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAGMUS_NPC = NPC(
     sprite_id=SPR0337_MAGMUS,
@@ -8134,8 +7796,7 @@ MAGMUS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LI_XX_L_BOO_NPC = NPC(
     sprite_id=SPR0338_LI_XX_L_BOO,
@@ -8158,8 +7819,7 @@ LI_XX_L_BOO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 VOMER_NPC = NPC(
     sprite_id=SPR0339_VOMER,
@@ -8182,8 +7842,7 @@ VOMER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GLUM_REAPER_NPC = NPC(
     sprite_id=SPR0340_GLUM_REAPER,
@@ -8206,8 +7865,7 @@ GLUM_REAPER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FIREBALL_NPC = NPC(
     sprite_id=SPR0328_FIREBALL,
@@ -8230,8 +7888,7 @@ FIREBALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHOMP_CHOMP_NPC = NPC(
     sprite_id=SPR0342_CHOMP_CHOMP,
@@ -8254,8 +7911,7 @@ CHOMP_CHOMP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HIDON_NPC = NPC(
     sprite_id=SPR0343_HIDON,
@@ -8278,8 +7934,7 @@ HIDON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SLING_SHY_NPC = NPC(
     sprite_id=SPR0344_SLING_SHY,
@@ -8302,8 +7957,7 @@ SLING_SHY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROB_OMB_NPC = NPC(
     sprite_id=SPR0345_ROB_OMB,
@@ -8326,8 +7980,7 @@ ROB_OMB_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHY_GUY_NPC_2 = NPC(
     sprite_id=SPR0346_SHY_GUY,
@@ -8350,8 +8003,7 @@ SHY_GUY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NINJA_NPC = NPC(
     sprite_id=SPR0347_NINJA,
@@ -8374,8 +8026,7 @@ NINJA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STINGER_NPC = NPC(
     sprite_id=SPR0348_STINGER,
@@ -8398,8 +8049,7 @@ STINGER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOOMBETTE_LOWER_NPC = NPC(
     sprite_id=SPR0960_GOOMBETTE_LOWER,
@@ -8422,8 +8072,7 @@ GOOMBETTE_LOWER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GECKIT_NPC = NPC(
     sprite_id=SPR0350_GECKIT,
@@ -8446,8 +8095,7 @@ GECKIT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JABIT_NPC = NPC(
     sprite_id=SPR0351_JABIT,
@@ -8470,8 +8118,7 @@ JABIT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STAR_CRUSTER_NPC = NPC(
     sprite_id=SPR0352_STAR_CRUSTER,
@@ -8494,8 +8141,7 @@ STAR_CRUSTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SLING_SHY_NPC_2 = NPC(
     sprite_id=SPR0344_SLING_SHY,
@@ -8518,8 +8164,7 @@ SLING_SHY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MUCKLE_NPC = NPC(
     sprite_id=SPR0354_MUCKLE,
@@ -8542,8 +8187,7 @@ MUCKLE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FORKIES_NPC = NPC(
     sprite_id=SPR0355_FORKIES,
@@ -8566,8 +8210,7 @@ FORKIES_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GORGON_NPC = NPC(
     sprite_id=SPR0356_GORGON,
@@ -8590,8 +8233,7 @@ GORGON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIG_BERTHA_NPC = NPC(
     sprite_id=SPR0357_BIG_BERTHA,
@@ -8614,8 +8256,7 @@ BIG_BERTHA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHAINED_KONG_NPC = NPC(
     sprite_id=SPR0358_CHAINED_KONG,
@@ -8638,8 +8279,7 @@ CHAINED_KONG_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 THE_BIG_BOO_NPC_2 = NPC(
     sprite_id=SPR0274_THE_BIG_BOO,
@@ -8662,8 +8302,7 @@ THE_BIG_BOO_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STRAW_HEAD_NPC = NPC(
     sprite_id=SPR0360_STRAW_HEAD,
@@ -8686,8 +8325,7 @@ STRAW_HEAD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ARMORED_ANT_NPC = NPC(
     sprite_id=SPR0362_ARMORED_ANT,
@@ -8710,8 +8348,7 @@ ARMORED_ANT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ORBISON_NPC = NPC(
     sprite_id=SPR0363_ORBISON,
@@ -8734,8 +8371,7 @@ ORBISON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TUB_O_TROOPA_NPC = NPC(
     sprite_id=SPR0364_TUB_O_TROOPA,
@@ -8758,8 +8394,7 @@ TUB_O_TROOPA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DOPPEL_NPC = NPC(
     sprite_id=SPR0365_DOPPEL,
@@ -8782,8 +8417,7 @@ DOPPEL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PULSAR_NPC = NPC(
     sprite_id=SPR0366_PULSAR,
@@ -8806,8 +8440,7 @@ PULSAR_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_NPC_4 = NPC(
     sprite_id=SPR0048_CROCO,
@@ -8830,8 +8463,7 @@ CROCO_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 OCTOVADER_NPC = NPC(
     sprite_id=SPR0368_OCTOVADER,
@@ -8854,8 +8486,7 @@ OCTOVADER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RIBBITE_NPC = NPC(
     sprite_id=SPR0369_RIBBITE,
@@ -8878,8 +8509,7 @@ RIBBITE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DIRECTOR_NPC = NPC(
     sprite_id=SPR0370_DIRECTOR,
@@ -8902,8 +8532,7 @@ DIRECTOR_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_ST_TIME_NPC = NPC(
     sprite_id=SPR0455_BELOME_1ST_TIME,
@@ -8926,8 +8555,7 @@ BELOME_ST_TIME_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PUPPOX_NPC = NPC(
     sprite_id=SPR0373_PUPPOX,
@@ -8950,8 +8578,7 @@ PUPPOX_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FINK_FLOWER_NPC = NPC(
     sprite_id=SPR0374_FINK_FLOWER,
@@ -8974,8 +8601,7 @@ FINK_FLOWER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPRINGER_NPC = NPC(
     sprite_id=SPR0376_SPRINGER,
@@ -8998,8 +8624,7 @@ SPRINGER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 KRIFFID_NPC = NPC(
     sprite_id=SPR0378_KRIFFID,
@@ -9022,8 +8647,7 @@ KRIFFID_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPINTHRA_NPC = NPC(
     sprite_id=SPR0379_SPINTHRA,
@@ -9046,8 +8670,7 @@ SPINTHRA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CRIPPO_NPC = NPC(
     sprite_id=SPR0381_BOWSER_CLONE_S,
@@ -9070,8 +8693,7 @@ CRIPPO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 APPRENTICE_NPC = NPC(
     sprite_id=SPR0384_APPRENTICE,
@@ -9094,8 +8716,7 @@ APPRENTICE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 BELOME_SCARECROW_NPC = NPC(
     sprite_id=SPR0062_BELOME_SCARECROW,
@@ -9118,8 +8739,7 @@ BELOME_SCARECROW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WIND_CRYSTAL_GRIDPLANE_NPC = NPC(
     sprite_id=SPR0647_WIND_CRYSTAL_GRIDPLANE,
@@ -9142,8 +8762,7 @@ WIND_CRYSTAL_GRIDPLANE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NOTHING_NPC = NPC(
     sprite_id=SPR0387_MARIO_CLONE_S,
@@ -9166,8 +8785,7 @@ NOTHING_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 GENO_REDEMPTION_NPC = NPC(
     sprite_id=SPR0725_GENO_REDEMPTION,
@@ -9190,8 +8808,7 @@ GENO_REDEMPTION_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STAR_EGG_LITTLE_BROWN_BIRD_NPC = NPC(
     sprite_id=SPR0777_STAR_EGG_LITTLE_BROWN_BIRD,
@@ -9214,8 +8831,7 @@ STAR_EGG_LITTLE_BROWN_BIRD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 BOX_BOY_NPC = NPC(
     sprite_id=SPR0390_BOX_BOY,
@@ -9238,8 +8854,7 @@ BOX_BOY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHELLY_NPC = NPC(
     sprite_id=SPR0391_SHELLY,
@@ -9262,8 +8877,7 @@ SHELLY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SCARECROW_NPC = NPC(
     sprite_id=SPR0718_SCARECROW,
@@ -9286,8 +8900,7 @@ BELOME_SCARECROW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 DODO_NPC = NPC(
     sprite_id=SPR0393_DODO,
@@ -9310,8 +8923,7 @@ DODO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 OERLIKON_NPC = NPC(
     sprite_id=SPR0394_OERLIKON,
@@ -9334,8 +8946,7 @@ OERLIKON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHESTER_NPC_2 = NPC(
     sprite_id=SPR0395_CHESTER,
@@ -9358,8 +8969,7 @@ CHESTER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BODY_NPC = NPC(
     sprite_id=SPR0396_BODY,
@@ -9382,8 +8992,7 @@ BODY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TORTE_NPC = NPC(
     sprite_id=SPR0398_TORTE,
@@ -9406,8 +9015,7 @@ TORTE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TORTE_NPC_2 = NPC(
     sprite_id=SPR0398_TORTE,
@@ -9430,8 +9038,7 @@ TORTE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHY_AWAY_NPC = NPC(
     sprite_id=SPR0399_SHY_AWAY,
@@ -9454,8 +9061,7 @@ SHY_AWAY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHY_AWAY_NPC_2 = NPC(
     sprite_id=SPR0399_SHY_AWAY,
@@ -9478,8 +9084,7 @@ SHY_AWAY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_SHYSTER_NPC = NPC(
     sprite_id=SPR0401_MACHINE_MADE_SHYSTER,
@@ -9502,8 +9107,7 @@ MACHINE_MADE_SHYSTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_DRILL_BIT_NPC = NPC(
     sprite_id=SPR0402_MACHINE_MADE_DRILL_BIT,
@@ -9526,8 +9130,7 @@ MACHINE_MADE_DRILL_BIT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GUNYOLK_TOP_SECTION_NPC = NPC(
     sprite_id=SPR0153_GUNYOLK_TOP_SECTION,
@@ -9550,8 +9153,7 @@ GUNYOLK_TOP_SECTION_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GUNYOLK_OUTER_SECTION_NPC = NPC(
     sprite_id=SPR0154_GUNYOLK_OUTER_SECTION,
@@ -9574,8 +9176,7 @@ GUNYOLK_OUTER_SECTION_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FIRE_CRYSTAL_NPC = NPC(
     sprite_id=SPR0405_FIRE_CRYSTAL,
@@ -9598,8 +9199,7 @@ FIRE_CRYSTAL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 WATER_CRYSTAL_NPC = NPC(
     sprite_id=SPR0406_WATER_CRYSTAL,
@@ -9622,8 +9222,7 @@ WATER_CRYSTAL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 EARTH_CRYSTAL_NPC = NPC(
     sprite_id=SPR0407_EARTH_CRYSTAL,
@@ -9646,8 +9245,7 @@ EARTH_CRYSTAL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 WIND_CRYSTAL_NPC = NPC(
     sprite_id=SPR0408_WIND_CRYSTAL,
@@ -9670,8 +9268,7 @@ WIND_CRYSTAL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MARIO_CLONE_NPC = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
@@ -9694,8 +9291,7 @@ MARIO_CLONE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 TOADSTOOL_NPC = NPC(
     sprite_id=SPR0410_TOADSTOOL,
@@ -9718,8 +9314,7 @@ TOADSTOOL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 BOWSER_CLONE_NPC = NPC(
     sprite_id=SPR0411_BOWSER_CLONE,
@@ -9742,8 +9337,7 @@ BOWSER_CLONE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 GENO_CLONE_NPC = NPC(
     sprite_id=SPR0412_GENO_CLONE,
@@ -9766,8 +9360,7 @@ GENO_CLONE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MALLOW_CLONE_NPC = NPC(
     sprite_id=SPR0413_MALLOW_CLONE,
@@ -9790,8 +9383,7 @@ MALLOW_CLONE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 SHYSTER_NPC = NPC(
     sprite_id=SPR0414_SHYSTER,
@@ -9814,8 +9406,7 @@ SHYSTER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JINX_OVERWORLD_NPC = NPC(
     sprite_id=SPR0191_JINX_OVERWORLD_1,
@@ -9838,8 +9429,7 @@ JINX_OVERWORLD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JINX_OVERWORLD_NPC = NPC(
     sprite_id=SPR0191_JINX_OVERWORLD_1,
@@ -9862,8 +9452,7 @@ JINX_OVERWORLD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JINX_3_OVERWORLD_NPC = NPC(
     sprite_id=SPR0608_JINX_OVERWORLD_3,
@@ -9886,8 +9475,7 @@ JINX_3_OVERWORLD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JINX_4_OVERWORLD_NPC = NPC(
     sprite_id=SPR0727_JINX_OVERWORLD_4,
@@ -9910,8 +9498,7 @@ JINX_4_OVERWORLD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HANGIN_XX_SHY_NPC = NPC(
     sprite_id=SPR0417_HANGIN_XX_SHY,
@@ -9934,8 +9521,7 @@ HANGIN_XX_SHY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HANGIN_XX_SHY_NPC_2 = NPC(
     sprite_id=SPR0417_HANGIN_XX_SHY,
@@ -9958,8 +9544,7 @@ HANGIN_XX_SHY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_MACK_NPC = NPC(
     sprite_id=SPR0419_MACHINE_MADE_MACK,
@@ -9982,8 +9567,7 @@ MACHINE_MADE_MACK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MACHINE_MADE_BOWYER_NPC = NPC(
     sprite_id=SPR0420_MACHINE_MADE_BOWYER,
@@ -10006,8 +9590,7 @@ MACHINE_MADE_BOWYER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MACHINE_MADE_YARIDOVICH_NPC = NPC(
     sprite_id=SPR0421_MACHINE_MADE_YARIDOVICH,
@@ -10030,8 +9613,7 @@ MACHINE_MADE_YARIDOVICH_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MACHINE_MADE_AXEM_PINK_NPC = NPC(
     sprite_id=SPR0422_MACHINE_MADE_AXEM_PINK,
@@ -10054,8 +9636,7 @@ MACHINE_MADE_AXEM_PINK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC_2 = NPC(
     sprite_id=SPR0065_WALLET_GUY_ALSO_CASINO_ASSISTANTS,
@@ -10078,8 +9659,7 @@ WALLET_GUY_ALSO_CASINO_ASSISTANTS_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MUSHROOM_BOY_NPC_2 = NPC(
     sprite_id=SPR0112_MUSHROOM_BOY,
@@ -10102,8 +9682,7 @@ MUSHROOM_BOY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARRYMORE_MAN_GREEN_NPC_2 = NPC(
     sprite_id=SPR0113_MARRYMORE_MAN_GREEN,
@@ -10126,8 +9705,7 @@ MARRYMORE_MAN_GREEN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM_NPC_2 = NPC(
     sprite_id=SPR0629_SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM,
@@ -10150,8 +9728,7 @@ SAMUS_SLEEPING_IN_MUSHROOM_KINGDOM_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREY_STEPPING_STONE_NPC_2 = NPC(
     sprite_id=SPR0630_GREY_STEPPING_STONE,
@@ -10174,8 +9751,7 @@ GREY_STEPPING_STONE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2 = NPC(
     sprite_id=SPR0631_HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY,
@@ -10198,8 +9774,7 @@ HINOPIO_S_MODEL_AIRPLANE_BLUE_GREY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREY_STONE_BLOCK_NPC_2 = NPC(
     sprite_id=SPR0632_GREY_STONE_BLOCK,
@@ -10222,8 +9797,7 @@ GREY_STONE_BLOCK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CANNON_BALL_NPC = NPC(
     sprite_id=SPR0188_CANNON_BALL,
@@ -10246,8 +9820,7 @@ CANNON_BALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STARSLAP_NPC = NPC(
     sprite_id=SPR0432_STARSLAP,
@@ -10270,8 +9843,7 @@ STARSLAP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STARSLAP_NPC_2 = NPC(
     sprite_id=SPR0432_STARSLAP,
@@ -10294,8 +9866,7 @@ STARSLAP_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MUKUMUKU_NPC = NPC(
     sprite_id=SPR0433_MUKUMUKU,
@@ -10318,8 +9889,7 @@ MUKUMUKU_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ZEOSTAR_NPC = NPC(
     sprite_id=SPR0434_ZEOSTAR,
@@ -10342,8 +9912,7 @@ ZEOSTAR_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WATER_CRYSTAL_GRIDPLANE_NPC = NPC(
     sprite_id=SPR0645_WATER_CRYSTAL_GRIDPLANE,
@@ -10366,8 +9935,7 @@ WATER_CRYSTAL_GRIDPLANE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EMPTY_ENEMY_NPC = NPC(
     sprite_id=SPR0524_EMPTY,
@@ -10390,8 +9958,7 @@ EMPTY_ENEMY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMITHY_TANK_HEAD_NPC = NPC(
     sprite_id=SPR0437_SMITHY_TANK_HEAD,
@@ -10414,8 +9981,7 @@ SMITHY_TANK_HEAD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMITHY_BOX_HEAD_NPC = NPC(
     sprite_id=SPR0438_SMITHY_BOX_HEAD,
@@ -10438,8 +10004,7 @@ SMITHY_BOX_HEAD_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CORKPEDITE_NPC = NPC(
     sprite_id=SPR0319_CORKPEDITE,
@@ -10462,8 +10027,7 @@ CORKPEDITE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MICROBOMB_NPC_2 = NPC(
     sprite_id=SPR0440_MICROBOMB,
@@ -10486,8 +10050,7 @@ MICROBOMB_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIG_THWOMP_NPC = NPC(
     sprite_id=SPR0061_BIG_THWOMP,
@@ -10510,8 +10073,7 @@ BIG_THWOMP_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 NEOSQUID_NPC = NPC(
     sprite_id=SPR0443_NEOSQUID,
@@ -10534,8 +10096,7 @@ NEOSQUID_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YARIDOVICH_MIRAGE_NPC = NPC(
     sprite_id=SPR0444_YARIDOVICH_MIRAGE,
@@ -10558,8 +10119,7 @@ YARIDOVICH_MIRAGE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HELIO_NPC = NPC(
     sprite_id=SPR0445_HELIO,
@@ -10582,8 +10142,7 @@ HELIO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CLERK_GREEN_NPC_2 = NPC(
     sprite_id=SPR0142_FACTORY_CLERK_GREEN,
@@ -10606,8 +10165,7 @@ FACTORY_CLERK_GREEN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LEFT_EYE_NPC = NPC(
     sprite_id=SPR0447_LEFT_EYE,
@@ -10630,8 +10188,7 @@ LEFT_EYE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 KNIFE_GUY_NPC = NPC(
     sprite_id=SPR0448_KNIFE_GUY,
@@ -10654,8 +10211,7 @@ KNIFE_GUY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GRATE_GUY_NPC = NPC(
     sprite_id=SPR0449_GRATE_GUY,
@@ -10678,8 +10234,7 @@ GRATE_GUY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 LINK_SLEEPING_IN_ROSE_TOWN_INN_NPC_2 = NPC(
     sprite_id=SPR0628_LINK_SLEEPING_IN_ROSE_TOWN_INN,
@@ -10702,8 +10257,7 @@ LINK_SLEEPING_IN_ROSE_TOWN_INN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MUSHROOM_HOUSE_DECOR_MAILBOX_NPC_2 = NPC(
     sprite_id=SPR0627_MUSHROOM_HOUSE_DECOR_MAILBOX,
@@ -10726,8 +10280,7 @@ MUSHROOM_HOUSE_DECOR_MAILBOX_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GRATE_GUY_FROM_CASINO_NPC = NPC(
     sprite_id=SPR0177_GRATE_GUY_FROM_CASINO,
@@ -10750,8 +10303,7 @@ GRATE_GUY_FROM_CASINO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 COUNT_DOWN_NPC = NPC(
     sprite_id=SPR0453_COUNT_DOWN,
@@ -10774,8 +10326,7 @@ COUNT_DOWN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DINGALING_GRIDPLANE_NPC = NPC(
     sprite_id=SPR0642_DINGALING_GRIDPLANE,
@@ -10798,8 +10349,7 @@ DINGALING_GRIDPLANE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_ST_TIME_NPC_2 = NPC(
     sprite_id=SPR0455_BELOME_1ST_TIME,
@@ -10822,8 +10372,7 @@ BELOME_ST_TIME_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_3_NPC = NPC(
     sprite_id=SPR0457_BELOME_3RD_TIME,
@@ -10846,8 +10395,7 @@ BELOME_3_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOLDEN_BELOME_NPC = NPC(
     sprite_id=SPR0147_GOLDEN_BELOME,
@@ -10870,8 +10418,7 @@ GOLDEN_BELOME_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_ST_TIME_NPC_3 = NPC(
     sprite_id=SPR0455_BELOME_1ST_TIME,
@@ -10894,8 +10441,7 @@ BELOME_ST_TIME_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMILAX_NPC = NPC(
     sprite_id=SPR0458_SMILAX,
@@ -10918,8 +10464,7 @@ SMILAX_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 THRAX_NPC_2 = NPC(
     sprite_id=SPR0715_THRAX,
@@ -10942,8 +10487,7 @@ THRAX_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MEGASMILAX_NPC = NPC(
     sprite_id=SPR0460_MEGASMILAX,
@@ -10966,8 +10510,7 @@ MEGASMILAX_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDETTA_NPC = NPC(
     sprite_id=SPR0461_BIRDETTA,
@@ -10990,8 +10533,7 @@ BIRDETTA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EGGBERT_GRIDPLANE_NPC = NPC(
     sprite_id=SPR0643_EGGBERT_GRIDPLANE,
@@ -11014,8 +10556,7 @@ EGGBERT_GRIDPLANE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MIMIC_FACE_STANDALONE_NPC = NPC(
     sprite_id=SPR0110_MIMIC_FACE_STANDALONE,
@@ -11038,8 +10579,7 @@ MIMIC_FACE_STANDALONE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PUNCHINELLO_NPC = NPC(
     sprite_id=SPR0464_PUNCHINELLO,
@@ -11062,8 +10602,7 @@ PUNCHINELLO_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 
 PUNCHINELLO_POSTGAME_NPC = NPC(
@@ -11087,8 +10626,7 @@ PUNCHINELLO_POSTGAME_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TENTACLES_RIGHT_NPC = NPC(
     sprite_id=SPR0465_TENTACLES_RIGHT,
@@ -11111,8 +10649,7 @@ TENTACLES_RIGHT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_RED_NPC_2 = NPC(
     sprite_id=SPR0466_AXEM_RED,
@@ -11135,8 +10672,7 @@ AXEM_RED_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_GREEN_NPC_2 = NPC(
     sprite_id=SPR0467_AXEM_GREEN,
@@ -11159,8 +10695,7 @@ AXEM_GREEN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 KING_BOMB_NPC = NPC(
     sprite_id=SPR0468_KING_BOMB,
@@ -11183,8 +10718,7 @@ KING_BOMB_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MEZZO_BOMB_NPC = NPC(
     sprite_id=SPR0469_MEZZO_BOMB,
@@ -11207,8 +10741,7 @@ MEZZO_BOMB_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BUNDT_OBJECT_NPC = NPC(
     sprite_id=SPR0721_BUNDT_OBJECT_MAYBE,
@@ -11231,8 +10764,7 @@ BUNDT_OBJECT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_MACK_NPC_2 = NPC(
     sprite_id=SPR0419_MACHINE_MADE_MACK,
@@ -11255,8 +10787,7 @@ MACHINE_MADE_MACK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOLDEN_CHOMP_BACK_NPC = NPC(
     sprite_id=SPR0175_GOLDEN_CHOMP_BACK,
@@ -11279,8 +10810,7 @@ GOLDEN_CHOMP_BACK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHOMP_FRONT_NPC = NPC(
     sprite_id=SPR0176_CHOMP_FRONT,
@@ -11303,8 +10833,7 @@ CHOMP_FRONT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FROGGIE_STICK_NPC_2 = NPC(
     sprite_id=SPR0032_FROGGIE_STICK,
@@ -11327,8 +10856,7 @@ FROGGIE_STICK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMELTER_BACK_SECTION_NPC = NPC(
     sprite_id=SPR0173_SMELTER_BACK_SECTION,
@@ -11351,8 +10879,7 @@ SMELTER_BACK_SECTION_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_DOLL_NPC = NPC(
     sprite_id=SPR0172_GENO_DOLL,
@@ -11375,8 +10902,7 @@ GENO_DOLL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POUNDETTE_NPC_2 = NPC(
     sprite_id=SPR0324_POUNDETTE,
@@ -11399,8 +10925,7 @@ POUNDETTE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 J_PUZZLE_BLOCK_NPC_6 = NPC(
     sprite_id=SPR0104_J_PUZZLE_BLOCK,
@@ -11423,8 +10948,7 @@ J_PUZZLE_BLOCK_NPC_6 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPARKLES_FROM_STAR_PIECE_NPC_2 = NPC(
     sprite_id=SPR0171_SPARKLES_FROM_STAR_PIECE,
@@ -11447,8 +10971,7 @@ SPARKLES_FROM_STAR_PIECE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACK_NPC = NPC(
     sprite_id=SPR0480_MACK,
@@ -11471,8 +10994,7 @@ MACK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DR_TOPPER_GREEN_NPC = NPC(
     sprite_id=SPR0170_DR_TOPPER_GREEN,
@@ -11495,8 +11017,7 @@ DR_TOPPER_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOOMER_RED_NPC = NPC(
     sprite_id=SPR0169_BOOMER_RED,
@@ -11519,8 +11040,7 @@ BOOMER_RED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DRILL_BIT_NPC = NPC(
     sprite_id=SPR0716_DRILL_BIT,
@@ -11543,8 +11063,7 @@ DRILL_BIT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CHIEF_NPC = NPC(
     sprite_id=SPR0330_FACTORY_CHIEF,
@@ -11567,8 +11086,7 @@ FACTORY_CHIEF_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POISON_TOXIC_GAS_NPC = NPC(
     sprite_id=SPR0159_POISON_TOXIC_GAS,
@@ -11591,8 +11109,7 @@ POISON_TOXIC_GAS_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOWYER_NPC = NPC(
     sprite_id=SPR0486_BOWYER,
@@ -11615,8 +11132,7 @@ BOWYER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AERO_UPRIGHT_NPC = NPC(
     sprite_id=SPR0174_AERO_UPRIGHT,
@@ -11639,8 +11155,7 @@ AERO_UPRIGHT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 THROWN_HAMMER_NPC = NPC(
     sprite_id=SPR0545_THROWN_HAMMER,
@@ -11663,8 +11178,7 @@ THROWN_HAMMER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CLERK_GREEN_NPC_3 = NPC(
     sprite_id=SPR0142_FACTORY_CLERK_GREEN,
@@ -11687,8 +11201,7 @@ FACTORY_CLERK_GREEN_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLUE_GREEN_STAR_PIECE_SPINNING_NPC = NPC(
     sprite_id=SPR0156_BLUE_GREEN_STAR_PIECE_SPINNING,
@@ -11711,8 +11224,7 @@ BLUE_GREEN_STAR_PIECE_SPINNING_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMITHY_S_HAMMER_NPC = NPC(
     sprite_id=SPR0157_SMITHY_S_HAMMER,
@@ -11735,8 +11247,7 @@ SMITHY_S_HAMMER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMITHY_S_CHEST_NPC = NPC(
     sprite_id=SPR0158_SMITHY_S_CHEST,
@@ -11759,8 +11270,7 @@ SMITHY_S_CHEST_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_MANAGER_BLUE_NPC = NPC(
     sprite_id=SPR0167_FACTORY_MANAGER_BLUE,
@@ -11783,8 +11293,7 @@ FACTORY_MANAGER_BLUE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 ROLLING_BARREL_NPC_3 = NPC(
     sprite_id=SPR0098_ROLLING_BARREL,
@@ -11807,8 +11316,7 @@ ROLLING_BARREL_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 STAR_EGG_LITTLE_BROWN_BIRD_NPC_2 = NPC(
     sprite_id=SPR0777_STAR_EGG_LITTLE_BROWN_BIRD,
@@ -11831,8 +11339,7 @@ STAR_EGG_LITTLE_BROWN_BIRD_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CRANE_NPC = NPC(
     sprite_id=SPR0155_FACTORY_CRANE,
@@ -11855,8 +11362,7 @@ FACTORY_CRANE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_DIRECTOR_RED_NPC = NPC(
     sprite_id=SPR0168_FACTORY_DIRECTOR_RED,
@@ -11879,8 +11385,7 @@ FACTORY_DIRECTOR_RED_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GAMEBOY_KID_NPC = NPC(
     sprite_id=SPR0124_GAMEBOY_KID,
@@ -11903,8 +11408,7 @@ GAMEBOY_KID_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 COIN_NPC_2 = NPC(
     sprite_id=SPR0192_COIN,
@@ -11927,8 +11431,7 @@ COIN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 COMMANDER_TROOPA_NPC_2 = NPC(
     sprite_id=SPR0146_COMMANDER_TROOPA,
@@ -11951,8 +11454,7 @@ COMMANDER_TROOPA_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SKY_TROOPA_NPC_2 = NPC(
     sprite_id=SPR0258_SKY_TROOPA,
@@ -11975,8 +11477,7 @@ SKY_TROOPA_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FALLING_STEPPING_BRIDGE_BLOCK_NPC_3 = NPC(
     sprite_id=SPR0620_FALLING_STEPPING_BRIDGE_BLOCK,
@@ -11999,8 +11500,7 @@ FALLING_STEPPING_BRIDGE_BLOCK_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TREASURE_CHEST_NPC_2 = NPC(
     sprite_id=SPR0094_TREASURE_CHEST,
@@ -12023,8 +11523,7 @@ TREASURE_CHEST_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SNIFIT_NPC_2 = NPC(
     sprite_id=SPR0504_SNIFIT,
@@ -12047,8 +11546,7 @@ SNIFIT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SNIFIT_NPC_3 = NPC(
     sprite_id=SPR0504_SNIFIT,
@@ -12071,8 +11569,7 @@ SNIFIT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BRICK_BEANSTALK_BLOCK_NPC_2 = NPC(
     sprite_id=SPR0614_BRICK_BEANSTALK_BLOCK,
@@ -12095,8 +11592,7 @@ BRICK_BEANSTALK_BLOCK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YELLOW_STEPPING_BLOCK_NPC_4 = NPC(
     sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
@@ -12119,8 +11615,7 @@ YELLOW_STEPPING_BLOCK_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YELLOW_STEPPING_BLOCK_NPC_5 = NPC(
     sprite_id=SPR0105_YELLOW_STEPPING_BLOCK,
@@ -12143,8 +11638,7 @@ YELLOW_STEPPING_BLOCK_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SAVE_POINT_NPC_3 = NPC(
     sprite_id=SPR0102_SAVE_POINT,
@@ -12167,8 +11661,7 @@ SAVE_POINT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SAVE_POINT_NPC_4 = NPC(
     sprite_id=SPR0102_SAVE_POINT,
@@ -12191,8 +11684,7 @@ SAVE_POINT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CULEX_NPC = NPC(
     sprite_id=SPR0511_CULEX,
@@ -12215,8 +11707,7 @@ CULEX_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 CULEX_NPC_OVERWORLD_ONLY = NPC(
     sprite_id=SPR0633_CULEX_SMALL,
     shadow_size=ShadowSize.OVAL_MED,
@@ -12238,8 +11729,7 @@ CULEX_NPC_OVERWORLD_ONLY = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 CULEX_3D_NPC_OVERWORLD_ONLY = NPC(
     sprite_id=SPR0726_CULEX_3D_SMALL,
     shadow_size=ShadowSize.OVAL_MED,
@@ -12261,8 +11751,7 @@ CULEX_3D_NPC_OVERWORLD_ONLY = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 THROWN_HAMMER_NPC_2 = NPC(
     sprite_id=SPR0545_THROWN_HAMMER,
@@ -12285,8 +11774,7 @@ THROWN_HAMMER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_NPC_5 = NPC(
     sprite_id=SPR0048_CROCO,
@@ -12309,8 +11797,7 @@ CROCO_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_NPC_6 = NPC(
     sprite_id=SPR0048_CROCO,
@@ -12333,8 +11820,7 @@ CROCO_NPC_6 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHYSTER_NPC_2 = NPC(
     sprite_id=SPR0414_SHYSTER,
@@ -12357,8 +11843,7 @@ SHYSTER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHYSTER_NPC_3 = NPC(
     sprite_id=SPR0414_SHYSTER,
@@ -12381,8 +11866,7 @@ SHYSTER_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHYSTER_NPC_4 = NPC(
     sprite_id=SPR0414_SHYSTER,
@@ -12405,8 +11889,7 @@ SHYSTER_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MIMIC_FACE_STANDALONE_NPC_2 = NPC(
     sprite_id=SPR0110_MIMIC_FACE_STANDALONE,
@@ -12429,8 +11912,7 @@ MIMIC_FACE_STANDALONE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PANDORITE_NPC = NPC(
     sprite_id=SPR0279_PANDORITE,
@@ -12453,8 +11935,7 @@ PANDORITE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SCARECROW_NPC_2 = NPC(
     sprite_id=SPR0062_BELOME_SCARECROW,
@@ -12477,8 +11958,7 @@ BELOME_SCARECROW_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SCARECROW_NPC_3 = NPC(
     sprite_id=SPR0062_BELOME_SCARECROW,
@@ -12501,8 +11981,7 @@ BELOME_SCARECROW_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SCARECROW_NPC_4 = NPC(
     sprite_id=SPR0062_BELOME_SCARECROW,
@@ -12525,8 +12004,7 @@ BELOME_SCARECROW_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AERO_NPC_2 = NPC(
     sprite_id=SPR0717_AERO,
@@ -12549,8 +12027,7 @@ AERO_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_OVERWORLD_NPC_2 = NPC(
     sprite_id=SPR0190_CROCO_OVERWORLD,
@@ -12573,8 +12050,7 @@ CROCO_OVERWORLD_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_OVERWORLD_NPC_3 = NPC(
     sprite_id=SPR0190_CROCO_OVERWORLD,
@@ -12597,8 +12073,7 @@ CROCO_OVERWORLD_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROCO_OVERWORLD_NPC_4 = NPC(
     sprite_id=SPR0190_CROCO_OVERWORLD,
@@ -12621,8 +12096,7 @@ CROCO_OVERWORLD_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROOK_NPC_2 = NPC(
     sprite_id=SPR0261_CROOK,
@@ -12645,8 +12119,7 @@ CROOK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROOK_NPC_3 = NPC(
     sprite_id=SPR0261_CROOK,
@@ -12669,8 +12142,7 @@ CROOK_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CROOK_NPC_4 = NPC(
     sprite_id=SPR0261_CROOK,
@@ -12693,8 +12165,7 @@ CROOK_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOB_OMB_NPC_3 = NPC(
     sprite_id=SPR0281_BOB_OMB,
@@ -12717,8 +12188,7 @@ BOB_OMB_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOB_OMB_NPC_4 = NPC(
     sprite_id=SPR0281_BOB_OMB,
@@ -12741,8 +12211,7 @@ BOB_OMB_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOB_OMB_NPC_5 = NPC(
     sprite_id=SPR0281_BOB_OMB,
@@ -12765,8 +12234,7 @@ BOB_OMB_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SNIFIT_NPC_4 = NPC(
     sprite_id=SPR0504_SNIFIT,
@@ -12789,8 +12257,7 @@ SNIFIT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SNIFIT_NPC_5 = NPC(
     sprite_id=SPR0504_SNIFIT,
@@ -12813,8 +12280,7 @@ SNIFIT_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 APPRENTICE_NPC_2 = NPC(
     sprite_id=SPR0384_APPRENTICE,
@@ -12837,8 +12303,7 @@ APPRENTICE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 APPRENTICE_NPC_3 = NPC(
     sprite_id=SPR0384_APPRENTICE,
@@ -12861,8 +12326,7 @@ APPRENTICE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 APPRENTICE_NPC_4 = NPC(
     sprite_id=SPR0384_APPRENTICE,
@@ -12885,8 +12349,7 @@ APPRENTICE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 BOOSTER_NPC_2 = NPC(
     sprite_id=SPR0050_BOOSTER,
@@ -12909,8 +12372,7 @@ BOOSTER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOOSTER_NPC_3 = NPC(
     sprite_id=SPR0050_BOOSTER,
@@ -12933,8 +12395,7 @@ BOOSTER_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOOSTER_NPC_4 = NPC(
     sprite_id=SPR0050_BOOSTER,
@@ -12957,8 +12418,7 @@ BOOSTER_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GRATE_GUY_FROM_CASINO_NPC_2 = NPC(
     sprite_id=SPR0177_GRATE_GUY_FROM_CASINO,
@@ -12981,8 +12441,7 @@ GRATE_GUY_FROM_CASINO_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GRATE_GUY_FROM_CASINO_NPC_3 = NPC(
     sprite_id=SPR0177_GRATE_GUY_FROM_CASINO,
@@ -13005,8 +12464,7 @@ GRATE_GUY_FROM_CASINO_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GRATE_GUY_FROM_CASINO_NPC_4 = NPC(
     sprite_id=SPR0177_GRATE_GUY_FROM_CASINO,
@@ -13029,8 +12487,7 @@ GRATE_GUY_FROM_CASINO_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TORTE_NPC_3 = NPC(
     sprite_id=SPR0398_TORTE,
@@ -13053,8 +12510,7 @@ TORTE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TORTE_NPC_4 = NPC(
     sprite_id=SPR0398_TORTE,
@@ -13077,8 +12533,7 @@ TORTE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BUNDT_OBJECT_NPC_2 = NPC(
     sprite_id=SPR0728_BUNDT_OBJECT_MAYBE_2,
@@ -13101,8 +12556,7 @@ BUNDT_OBJECT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BUNDT_NPC = NPC(
     sprite_id=SPR0450_BUNDT,
@@ -13125,8 +12579,7 @@ BUNDT_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLOOBER_NPC_4 = NPC(
     sprite_id=SPR0266_BLOOBER,
@@ -13149,8 +12602,7 @@ BLOOBER_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOOMBETTE_LOWER_NPC_2 = NPC(
     sprite_id=SPR0960_GOOMBETTE_LOWER,
@@ -13173,8 +12625,7 @@ GOOMBETTE_LOWER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOOMBETTE_LOWER_NPC_3 = NPC(
     sprite_id=SPR0960_GOOMBETTE_LOWER,
@@ -13197,8 +12648,7 @@ GOOMBETTE_LOWER_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOOMBETTE_LOWER_NPC_4 = NPC(
     sprite_id=SPR0960_GOOMBETTE_LOWER,
@@ -13221,8 +12671,7 @@ GOOMBETTE_LOWER_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANDANA_RED_NPC_2 = NPC(
     sprite_id=SPR0267_BANDANA_RED,
@@ -13245,8 +12694,7 @@ BANDANA_RED_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANDANA_RED_NPC_3 = NPC(
     sprite_id=SPR0267_BANDANA_RED,
@@ -13269,8 +12717,7 @@ BANDANA_RED_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANDANA_RED_NPC_4 = NPC(
     sprite_id=SPR0267_BANDANA_RED,
@@ -13293,8 +12740,7 @@ BANDANA_RED_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANDANA_BLUE_NPC_2 = NPC(
     sprite_id=SPR0331_BANDANA_BLUE,
@@ -13317,8 +12763,7 @@ BANDANA_BLUE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANDANA_BLUE_NPC_3 = NPC(
     sprite_id=SPR0331_BANDANA_BLUE,
@@ -13341,8 +12786,7 @@ BANDANA_BLUE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BANDANA_BLUE_NPC_4 = NPC(
     sprite_id=SPR0331_BANDANA_BLUE,
@@ -13365,8 +12809,7 @@ BANDANA_BLUE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JONATHAN_JONES_NPC_3 = NPC(
     sprite_id=SPR0055_JONATHAN_JONES,
@@ -13389,8 +12832,7 @@ JONATHAN_JONES_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JONATHAN_JONES_NPC_4 = NPC(
     sprite_id=SPR0055_JONATHAN_JONES,
@@ -13413,8 +12855,7 @@ JONATHAN_JONES_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JOHNNY_NPC = NPC(
     sprite_id=SPR0505_JOHNNY,
@@ -13437,8 +12878,7 @@ JOHNNY_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_FAKE_GREEN_NPC_2 = NPC(
     sprite_id=SPR0162_SEASIDE_TOWN_FAKE_GREEN,
@@ -13461,8 +12901,7 @@ SEASIDE_TOWN_FAKE_GREEN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_FAKE_GREEN_NPC_3 = NPC(
     sprite_id=SPR0162_SEASIDE_TOWN_FAKE_GREEN,
@@ -13485,8 +12924,7 @@ SEASIDE_TOWN_FAKE_GREEN_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_FAKE_GREEN_NPC_4 = NPC(
     sprite_id=SPR0162_SEASIDE_TOWN_FAKE_GREEN,
@@ -13509,8 +12947,7 @@ SEASIDE_TOWN_FAKE_GREEN_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_2 = NPC(
     sprite_id=SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN,
@@ -13533,8 +12970,7 @@ SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_3 = NPC(
     sprite_id=SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN,
@@ -13557,8 +12993,7 @@ SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_4 = NPC(
     sprite_id=SPR0163_SEASIDE_TOWN_FAKE_ELDER_GREEN,
@@ -13581,8 +13016,7 @@ SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=True,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YARIDOVICH_NPC = NPC(
     sprite_id=SPR0482_YARIDOVICH,
@@ -13605,8 +13039,7 @@ YARIDOVICH_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MOKURA_S_CLOUD_BLUE_NPC_2 = NPC(
     sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
@@ -13629,8 +13062,7 @@ MOKURA_S_CLOUD_BLUE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MOKURA_NPC = NPC(
     sprite_id=SPR0573_MOKURA,
@@ -13653,8 +13085,7 @@ MOKURA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SCARECROW_NPC_2 = NPC(
     sprite_id=SPR0718_SCARECROW,
@@ -13677,8 +13108,7 @@ BELOME_SCARECROW_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SCARECROW_NPC_3 = NPC(
     sprite_id=SPR0718_SCARECROW,
@@ -13701,8 +13131,7 @@ BELOME_SCARECROW_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SCARECROW_NPC_4 = NPC(
     sprite_id=SPR0718_SCARECROW,
@@ -13725,8 +13154,7 @@ BELOME_SCARECROW_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TERRAPIN_NPC_4 = NPC(
     sprite_id=SPR0256_TERRAPIN,
@@ -13749,8 +13177,7 @@ TERRAPIN_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TERRAPIN_NPC_5 = NPC(
     sprite_id=SPR0256_TERRAPIN,
@@ -13773,8 +13200,7 @@ TERRAPIN_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JINX_2_OVERWORLD_NPC_2 = NPC(
     sprite_id=SPR0607_JINX_OVERWORLD_2,
@@ -13797,8 +13223,7 @@ JINX_2_OVERWORLD_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JINX_OVERWORLD_NPC_2 = NPC(
     sprite_id=SPR0191_JINX_OVERWORLD_1,
@@ -13821,8 +13246,7 @@ JINX_OVERWORLD_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JINX_3_OVERWORLD_NPC_2 = NPC(
     sprite_id=SPR0608_JINX_OVERWORLD_3,
@@ -13845,8 +13269,7 @@ JINX_3_OVERWORLD_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WIND_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
     sprite_id=SPR0647_WIND_CRYSTAL_GRIDPLANE,
@@ -13869,8 +13292,7 @@ WIND_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 WATER_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
     sprite_id=SPR0645_WATER_CRYSTAL_GRIDPLANE,
@@ -13893,8 +13315,7 @@ WATER_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PIRANHA_PLANT_NPC_2 = NPC(
     sprite_id=SPR0263_PIRANHA_PLANT,
@@ -13917,8 +13338,7 @@ PIRANHA_PLANT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PIRANHA_PLANT_NPC_3 = NPC(
     sprite_id=SPR0263_PIRANHA_PLANT,
@@ -13941,8 +13361,7 @@ PIRANHA_PLANT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PIRANHA_PLANT_NPC_4 = NPC(
     sprite_id=SPR0263_PIRANHA_PLANT,
@@ -13965,8 +13384,7 @@ PIRANHA_PLANT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DODO_NPC_2 = NPC(
     sprite_id=SPR0393_DODO,
@@ -13989,8 +13407,7 @@ DODO_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 BLUEBIRD_NPC_3 = NPC(
     sprite_id=SPR0333_BLUEBIRD,
@@ -14013,8 +13430,7 @@ BLUEBIRD_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BLUEBIRD_NPC_4 = NPC(
     sprite_id=SPR0333_BLUEBIRD,
@@ -14037,8 +13453,7 @@ BLUEBIRD_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDY_NPC_4 = NPC(
     sprite_id=SPR0269_BIRDY,
@@ -14061,8 +13476,7 @@ BIRDY_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDY_NPC_5 = NPC(
     sprite_id=SPR0269_BIRDY,
@@ -14085,8 +13499,7 @@ BIRDY_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDY_NPC_6 = NPC(
     sprite_id=SPR0269_BIRDY,
@@ -14109,8 +13522,7 @@ BIRDY_NPC_6 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 VALENTINA_NPC_2 = NPC(
     sprite_id=SPR0056_VALENTINA,
@@ -14133,8 +13545,7 @@ VALENTINA_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 VALENTINA_NPC_3 = NPC(
     sprite_id=SPR0056_VALENTINA,
@@ -14157,8 +13568,7 @@ VALENTINA_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 VALENTINA_NPC_4 = NPC(
     sprite_id=SPR0056_VALENTINA,
@@ -14181,8 +13591,7 @@ VALENTINA_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 VALENTINA_NPC = NPC(
     sprite_id=SPR0507_VALENTINA,
@@ -14205,8 +13614,7 @@ VALENTINA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SPARKY_NPC_2 = NPC(
     sprite_id=SPR0277_SPARKY,
@@ -14229,8 +13637,7 @@ SPARKY_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CZAR_DRAGON_NPC = NPC(
     sprite_id=SPR0476_CZAR_DRAGON,
@@ -14253,8 +13660,7 @@ CZAR_DRAGON_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_BLACK_NPC_2 = NPC(
     sprite_id=SPR0485_AXEM_BLACK,
@@ -14277,8 +13683,7 @@ AXEM_BLACK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_PINK_NPC_2 = NPC(
     sprite_id=SPR0484_AXEM_PINK,
@@ -14301,8 +13706,7 @@ AXEM_PINK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_YELLOW_NPC_2 = NPC(
     sprite_id=SPR0463_AXEM_YELLOW,
@@ -14325,8 +13729,7 @@ AXEM_YELLOW_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 AXEM_GREEN_NPC_3 = NPC(
     sprite_id=SPR0467_AXEM_GREEN,
@@ -14349,8 +13752,7 @@ AXEM_GREEN_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DING_A_LING_NPC = NPC(
     sprite_id=SPR0454_DING_A_LING,
@@ -14373,8 +13775,7 @@ DING_A_LING_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_AXEM_PINK_NPC_2 = NPC(
     sprite_id=SPR0422_MACHINE_MADE_AXEM_PINK,
@@ -14397,8 +13798,7 @@ MACHINE_MADE_AXEM_PINK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 AXEM_RED_NPC_3 = NPC(
     sprite_id=SPR0466_AXEM_RED,
@@ -14421,8 +13821,7 @@ AXEM_RED_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RED_MAGIKOOPA_NPC_2 = NPC(
     sprite_id=SPR0129_RED_MAGIKOOPA,
@@ -14445,8 +13844,7 @@ RED_MAGIKOOPA_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RED_MAGIKOOPA_NPC_3 = NPC(
     sprite_id=SPR0129_RED_MAGIKOOPA,
@@ -14469,8 +13867,7 @@ RED_MAGIKOOPA_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 RED_MAGIKOOPA_NPC_4 = NPC(
     sprite_id=SPR0129_RED_MAGIKOOPA,
@@ -14493,8 +13890,7 @@ RED_MAGIKOOPA_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MERLIN_NPC = NPC(
     sprite_id=SPR0723_MERLIN,
@@ -14517,8 +13913,7 @@ MERLIN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHY_GUY_NPC_3 = NPC(
     sprite_id=SPR0346_SHY_GUY,
@@ -14541,8 +13936,7 @@ SHY_GUY_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHY_GUY_NPC_4 = NPC(
     sprite_id=SPR0346_SHY_GUY,
@@ -14565,8 +13959,7 @@ SHY_GUY_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHY_GUY_NPC_5 = NPC(
     sprite_id=SPR0346_SHY_GUY,
@@ -14589,8 +13982,7 @@ SHY_GUY_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_S_EXOR_IMPRESSION_NPC_3 = NPC(
     sprite_id=SPR0111_MARIO_S_EXOR_IMPRESSION,
@@ -14613,8 +14005,7 @@ MARIO_S_EXOR_IMPRESSION_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GREY_STONE_BLOCK_NPC_3 = NPC(
     sprite_id=SPR0632_GREY_STONE_BLOCK,
@@ -14637,8 +14028,7 @@ GREY_STONE_BLOCK_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CLOAKER_ST_TIME_NPC = NPC(
     sprite_id=SPR0477_CLOAKER_ST_TIME,
@@ -14661,8 +14051,7 @@ CLOAKER_ST_TIME_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAD_MALLET_NPC_2 = NPC(
     sprite_id=SPR0259_MAD_MALLET,
@@ -14685,8 +14074,7 @@ MAD_MALLET_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAD_MALLET_NPC_3 = NPC(
     sprite_id=SPR0259_MAD_MALLET,
@@ -14709,8 +14097,7 @@ MAD_MALLET_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MAD_MALLET_NPC_4 = NPC(
     sprite_id=SPR0259_MAD_MALLET,
@@ -14733,8 +14120,7 @@ MAD_MALLET_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CLERK_GREEN_NPC_4 = NPC(
     sprite_id=SPR0142_FACTORY_CLERK_GREEN,
@@ -14757,8 +14143,7 @@ FACTORY_CLERK_GREEN_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CLERK_GREEN_NPC_5 = NPC(
     sprite_id=SPR0142_FACTORY_CLERK_GREEN,
@@ -14781,8 +14166,7 @@ FACTORY_CLERK_GREEN_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_MANAGER_BLUE_NPC_2 = NPC(
     sprite_id=SPR0167_FACTORY_MANAGER_BLUE,
@@ -14805,8 +14189,7 @@ FACTORY_MANAGER_BLUE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_MANAGER_BLUE_NPC_3 = NPC(
     sprite_id=SPR0167_FACTORY_MANAGER_BLUE,
@@ -14829,8 +14212,7 @@ FACTORY_MANAGER_BLUE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_MANAGER_BLUE_NPC_4 = NPC(
     sprite_id=SPR0167_FACTORY_MANAGER_BLUE,
@@ -14853,8 +14235,7 @@ FACTORY_MANAGER_BLUE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_DIRECTOR_RED_NPC_2 = NPC(
     sprite_id=SPR0168_FACTORY_DIRECTOR_RED,
@@ -14877,8 +14258,7 @@ FACTORY_DIRECTOR_RED_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_DIRECTOR_RED_NPC_3 = NPC(
     sprite_id=SPR0168_FACTORY_DIRECTOR_RED,
@@ -14901,8 +14281,7 @@ FACTORY_DIRECTOR_RED_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_DIRECTOR_RED_NPC_4 = NPC(
     sprite_id=SPR0168_FACTORY_DIRECTOR_RED,
@@ -14925,8 +14304,7 @@ FACTORY_DIRECTOR_RED_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CHIEF_NPC_2 = NPC(
     sprite_id=SPR0330_FACTORY_CHIEF,
@@ -14949,8 +14327,7 @@ FACTORY_CHIEF_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CHIEF_NPC_3 = NPC(
     sprite_id=SPR0330_FACTORY_CHIEF,
@@ -14973,8 +14350,7 @@ FACTORY_CHIEF_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FACTORY_CHIEF_NPC_4 = NPC(
     sprite_id=SPR0330_FACTORY_CHIEF,
@@ -14997,8 +14373,7 @@ FACTORY_CHIEF_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DRILL_BIT_NPC_2 = NPC(
     sprite_id=SPR0716_DRILL_BIT,
@@ -15021,8 +14396,7 @@ DRILL_BIT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DRILL_BIT_NPC_3 = NPC(
     sprite_id=SPR0716_DRILL_BIT,
@@ -15045,8 +14419,7 @@ DRILL_BIT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DRILL_BIT_NPC_4 = NPC(
     sprite_id=SPR0716_DRILL_BIT,
@@ -15069,8 +14442,7 @@ DRILL_BIT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_SHYSTER_NPC_2 = NPC(
     sprite_id=SPR0401_MACHINE_MADE_SHYSTER,
@@ -15093,8 +14465,7 @@ MACHINE_MADE_SHYSTER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_SHYSTER_NPC_3 = NPC(
     sprite_id=SPR0401_MACHINE_MADE_SHYSTER,
@@ -15117,8 +14488,7 @@ MACHINE_MADE_SHYSTER_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_SHYSTER_NPC_4 = NPC(
     sprite_id=SPR0401_MACHINE_MADE_SHYSTER,
@@ -15141,8 +14511,7 @@ MACHINE_MADE_SHYSTER_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JABIT_NPC_2 = NPC(
     sprite_id=SPR0351_JABIT,
@@ -15165,8 +14534,7 @@ JABIT_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JABIT_NPC_3 = NPC(
     sprite_id=SPR0351_JABIT,
@@ -15189,8 +14557,7 @@ JABIT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 JABIT_NPC_4 = NPC(
     sprite_id=SPR0351_JABIT,
@@ -15213,8 +14580,7 @@ JABIT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMITHY_LOWER_NPC = NPC(
     sprite_id=SPR0959_SMITHY_LOWER,
@@ -15237,8 +14603,7 @@ SMITHY_LOWER_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POUNDER_NPC_2 = NPC(
     sprite_id=SPR0323_POUNDER,
@@ -15261,8 +14626,7 @@ POUNDER_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POUNDER_NPC_3 = NPC(
     sprite_id=SPR0323_POUNDER,
@@ -15285,8 +14649,7 @@ POUNDER_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POUNDER_NPC_4 = NPC(
     sprite_id=SPR0323_POUNDER,
@@ -15309,8 +14672,7 @@ POUNDER_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POUNDETTE_NPC_3 = NPC(
     sprite_id=SPR0324_POUNDETTE,
@@ -15333,8 +14695,7 @@ POUNDETTE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 POUNDETTE_NPC_4 = NPC(
     sprite_id=SPR0324_POUNDETTE,
@@ -15357,8 +14718,7 @@ POUNDETTE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EGG_NPC = NPC(
     sprite_id=SPR0237_EGG,
@@ -15381,8 +14741,7 @@ EGG_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 COUNT_DOWN_GRIDPLANE_NPC = NPC(
     sprite_id=SPR0572_COUNT_DOWN_GRIDPLANE,
@@ -15405,8 +14764,7 @@ COUNT_DOWN_GRIDPLANE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 COUNT_DOWN_GRIDPLANE_NPC_2 = NPC(
     sprite_id=SPR0572_COUNT_DOWN_GRIDPLANE,
@@ -15429,8 +14787,7 @@ COUNT_DOWN_GRIDPLANE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PANDORITE_SMALL_NPC = NPC(
     sprite_id=SPR0583_PANDORITE_SMALL,
@@ -15453,8 +14810,7 @@ PANDORITE_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PANDORITE_SMALL_NPC_2 = NPC(
     sprite_id=SPR0583_PANDORITE_SMALL,
@@ -15477,8 +14833,7 @@ PANDORITE_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HIDON_SMALL_NPC = NPC(
     sprite_id=SPR0584_HIDON_SMALL,
@@ -15501,8 +14856,7 @@ HIDON_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HIDON_SMALL_NPC_2 = NPC(
     sprite_id=SPR0584_HIDON_SMALL,
@@ -15525,8 +14879,7 @@ HIDON_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHESTER_SMALL_NPC = NPC(
     sprite_id=SPR0585_CHESTER_SMALL,
@@ -15549,8 +14902,7 @@ CHESTER_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CHESTER_SMALL_NPC_2 = NPC(
     sprite_id=SPR0585_CHESTER_SMALL,
@@ -15573,8 +14925,7 @@ CHESTER_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOX_BOY_SMALL_NPC = NPC(
     sprite_id=SPR0586_BOX_BOY_SMALL,
@@ -15597,8 +14948,7 @@ BOX_BOY_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOX_BOY_SMALL_NPC_2 = NPC(
     sprite_id=SPR0586_BOX_BOY_SMALL,
@@ -15621,8 +14971,7 @@ BOX_BOY_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 YOSHI_COOKIE_NPC = NPC(
     sprite_id=SPR0254_YOSHI_COOKIE,
@@ -15645,8 +14994,7 @@ YOSHI_COOKIE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HAMMER_BRO_SMALL_NPC = NPC(
     sprite_id=SPR0587_HAMMER_BRO_SMALL,
@@ -15669,8 +15017,7 @@ HAMMER_BRO_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HAMMER_BRO_SMALL_NPC_2 = NPC(
     sprite_id=SPR0587_HAMMER_BRO_SMALL,
@@ -15693,8 +15040,7 @@ HAMMER_BRO_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACK_SMALL_NPC = NPC(
     sprite_id=SPR0588_MACK_SMALL,
@@ -15717,8 +15063,7 @@ MACK_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACK_SMALL_NPC_2 = NPC(
     sprite_id=SPR0588_MACK_SMALL,
@@ -15741,8 +15086,7 @@ MACK_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SMALL_NPC = NPC(
     sprite_id=SPR0589_BELOME_SMALL,
@@ -15765,8 +15109,7 @@ BELOME_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SMALL_NPC_2 = NPC(
     sprite_id=SPR0589_BELOME_SMALL,
@@ -15789,8 +15132,7 @@ BELOME_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SMALL_NPC_3 = NPC(
     sprite_id=SPR0589_BELOME_SMALL,
@@ -15813,8 +15155,7 @@ BELOME_SMALL_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BELOME_SMALL_NPC_4 = NPC(
     sprite_id=SPR0589_BELOME_SMALL,
@@ -15837,8 +15178,7 @@ BELOME_SMALL_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOWYER_SMALL_NPC = NPC(
     sprite_id=SPR0591_BOWYER_SMALL,
@@ -15861,8 +15201,7 @@ BOWYER_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOWYER_SMALL_NPC_2 = NPC(
     sprite_id=SPR0591_BOWYER_SMALL,
@@ -15885,8 +15224,7 @@ BOWYER_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PUNCHINELLO_SMALL_NPC = NPC(
     sprite_id=SPR0592_PUNCHINELLO_SMALL,
@@ -15909,8 +15247,7 @@ PUNCHINELLO_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 PUNCHINELLO_SMALL_NPC_2 = NPC(
     sprite_id=SPR0592_PUNCHINELLO_SMALL,
@@ -15933,8 +15270,7 @@ PUNCHINELLO_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DODO_SMALL_NPC = NPC(
     sprite_id=SPR0593_DODO_SMALL,
@@ -15957,8 +15293,7 @@ DODO_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DODO_SMALL_NPC_2 = NPC(
     sprite_id=SPR0593_DODO_SMALL,
@@ -15981,8 +15316,7 @@ DODO_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDETTA_SMALL_NPC = NPC(
     sprite_id=SPR0594_BIRDETTA_SMALL,
@@ -16005,8 +15339,7 @@ BIRDETTA_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BIRDETTA_SMALL_NPC_2 = NPC(
     sprite_id=SPR0594_BIRDETTA_SMALL,
@@ -16029,8 +15362,7 @@ BIRDETTA_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CZAR_DRAGON_SMALL_NPC = NPC(
     sprite_id=SPR0595_CZAR_DRAGON_SMALL,
@@ -16053,8 +15385,7 @@ CZAR_DRAGON_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 CZAR_DRAGON_SMALL_NPC_2 = NPC(
     sprite_id=SPR0595_CZAR_DRAGON_SMALL,
@@ -16077,8 +15408,7 @@ CZAR_DRAGON_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOOMER_SMALL_NPC = NPC(
     sprite_id=SPR0596_BOOMER_SMALL,
@@ -16101,8 +15431,7 @@ BOOMER_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOOMER_SMALL_NPC_2 = NPC(
     sprite_id=SPR0596_BOOMER_SMALL,
@@ -16125,8 +15454,7 @@ BOOMER_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EXOR_SMALL_NPC = NPC(
     sprite_id=SPR0597_EXOR_SMALL,
@@ -16149,8 +15477,7 @@ EXOR_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EXOR_SMALL_NPC_2 = NPC(
     sprite_id=SPR0597_EXOR_SMALL,
@@ -16173,8 +15500,7 @@ EXOR_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DOMINO_SMALL_NPC = NPC(
     sprite_id=SPR0598_DOMINO_SMALL,
@@ -16197,8 +15523,7 @@ DOMINO_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 DOMINO_SMALL_NPC_2 = NPC(
     sprite_id=SPR0598_DOMINO_SMALL,
@@ -16221,8 +15546,7 @@ DOMINO_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMITHY_SMALL_NPC = NPC(
     sprite_id=SPR0599_SMITHY_SMALL,
@@ -16245,8 +15569,7 @@ SMITHY_SMALL_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SMITHY_SMALL_NPC_2 = NPC(
     sprite_id=SPR0599_SMITHY_SMALL,
@@ -16269,8 +15592,7 @@ SMITHY_SMALL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 SHYSTER_NPC_5 = NPC(
     sprite_id=SPR0414_SHYSTER,
@@ -16293,8 +15615,7 @@ SHYSTER_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 HAMMER_STANDALONE_NPC = NPC(
     sprite_id=SPR0601_HAMMER_STANDALONE,
@@ -16317,8 +15638,7 @@ HAMMER_STANDALONE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOLD_GOOMBA_NPC = NPC(
     sprite_id=SPR0602_GOLD_GOOMBA,
@@ -16341,8 +15661,7 @@ GOLD_GOOMBA_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GOLD_GOOMBA_NPC_2 = NPC(
     sprite_id=SPR0602_GOLD_GOOMBA,
@@ -16365,8 +15684,7 @@ GOLD_GOOMBA_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_AXEM_BLACK_NPC = NPC(
     sprite_id=SPR0423_MACHINE_MADE_AXEM_BLACK,
@@ -16389,8 +15707,7 @@ MACHINE_MADE_AXEM_BLACK_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_AXEM_BLACK_NPC_2 = NPC(
     sprite_id=SPR0423_MACHINE_MADE_AXEM_BLACK,
@@ -16413,8 +15730,7 @@ MACHINE_MADE_AXEM_BLACK_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_AXEM_YELLOW_NPC = NPC(
     sprite_id=SPR0425_MACHINE_MADE_AXEM_YELLOW,
@@ -16437,8 +15753,7 @@ MACHINE_MADE_AXEM_YELLOW_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_AXEM_YELLOW_NPC_2 = NPC(
     sprite_id=SPR0425_MACHINE_MADE_AXEM_YELLOW,
@@ -16461,8 +15776,7 @@ MACHINE_MADE_AXEM_YELLOW_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_AXEM_GREEN_NPC = NPC(
     sprite_id=SPR0426_MACHINE_MADE_AXEM_GREEN,
@@ -16485,8 +15799,7 @@ MACHINE_MADE_AXEM_GREEN_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MACHINE_MADE_AXEM_GREEN_NPC_2 = NPC(
     sprite_id=SPR0426_MACHINE_MADE_AXEM_GREEN,
@@ -16509,8 +15822,7 @@ MACHINE_MADE_AXEM_GREEN_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_CLONE_NPC_2 = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
@@ -16533,8 +15845,7 @@ MARIO_CLONE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MARIO_CLONE_NPC_3 = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
@@ -16557,8 +15868,7 @@ MARIO_CLONE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MARIO_CLONE_NPC_4 = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
@@ -16581,8 +15891,7 @@ MARIO_CLONE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MALLOW_CLONE_NPC_2 = NPC(
     sprite_id=SPR0413_MALLOW_CLONE,
@@ -16605,8 +15914,7 @@ MALLOW_CLONE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MALLOW_CLONE_NPC_3 = NPC(
     sprite_id=SPR0413_MALLOW_CLONE,
@@ -16629,8 +15937,7 @@ MALLOW_CLONE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MALLOW_CLONE_NPC_4 = NPC(
     sprite_id=SPR0413_MALLOW_CLONE,
@@ -16653,8 +15960,7 @@ MALLOW_CLONE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 GENO_CLONE_NPC_2 = NPC(
     sprite_id=SPR0412_GENO_CLONE,
@@ -16677,8 +15983,7 @@ GENO_CLONE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 GENO_CLONE_NPC_3 = NPC(
     sprite_id=SPR0412_GENO_CLONE,
@@ -16701,8 +16006,7 @@ GENO_CLONE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 GENO_CLONE_NPC_4 = NPC(
     sprite_id=SPR0412_GENO_CLONE,
@@ -16725,8 +16029,7 @@ GENO_CLONE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 BOWSER_CLONE_NPC_2 = NPC(
     sprite_id=SPR0411_BOWSER_CLONE,
@@ -16749,8 +16052,7 @@ BOWSER_CLONE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 BOWSER_CLONE_NPC_3 = NPC(
     sprite_id=SPR0411_BOWSER_CLONE,
@@ -16773,8 +16075,7 @@ BOWSER_CLONE_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 BOWSER_CLONE_NPC_4 = NPC(
     sprite_id=SPR0411_BOWSER_CLONE,
@@ -16797,8 +16098,7 @@ BOWSER_CLONE_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 TOADSTOOL_NPC_2 = NPC(
     sprite_id=SPR0410_TOADSTOOL,
@@ -16821,8 +16121,7 @@ TOADSTOOL_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 TOADSTOOL_NPC_3 = NPC(
     sprite_id=SPR0410_TOADSTOOL,
@@ -16845,8 +16144,7 @@ TOADSTOOL_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 TOADSTOOL_NPC_4 = NPC(
     sprite_id=SPR0410_TOADSTOOL,
@@ -16869,8 +16167,7 @@ TOADSTOOL_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=True,
     byte5_bit7=True,
-    byte6_bit2=True,
-)
+    byte6_bit2=True)
 
 MARIO_WALKING_DOWN_LEFT_NPC_4 = NPC(
     sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
@@ -16893,8 +16190,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_WALKING_DOWN_LEFT_NPC_5 = NPC(
     sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
@@ -16917,8 +16213,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MARIO_WALKING_DOWN_LEFT_NPC_6 = NPC(
     sprite_id=SPR0000_MARIO_WALKING_DOWN_LEFT,
@@ -16941,8 +16236,7 @@ MARIO_WALKING_DOWN_LEFT_NPC_6 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_5 = NPC(
     sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
@@ -16965,8 +16259,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_6 = NPC(
     sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
@@ -16989,8 +16282,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_6 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 TOADSTOOL_WALKING_DOWN_LEFT_NPC_7 = NPC(
     sprite_id=SPR0007_TOADSTOOL_WALKING_DOWN_LEFT,
@@ -17013,8 +16305,7 @@ TOADSTOOL_WALKING_DOWN_LEFT_NPC_7 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_5 = NPC(
     sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
@@ -17037,8 +16328,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_6 = NPC(
     sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
@@ -17061,8 +16351,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_6 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 MALLOW_WALKING_DOWN_LEFT_NPC_7 = NPC(
     sprite_id=SPR0019_MALLOW_WALKING_DOWN_LEFT,
@@ -17085,8 +16374,7 @@ MALLOW_WALKING_DOWN_LEFT_NPC_7 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_4 = NPC(
     sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
@@ -17109,8 +16397,7 @@ GENO_WALKING_DOWN_LEFT_NPC_4 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_5 = NPC(
     sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
@@ -17133,8 +16420,7 @@ GENO_WALKING_DOWN_LEFT_NPC_5 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
     sprite_id=SPR0025_GENO_WALKING_DOWN_LEFT,
@@ -17157,8 +16443,7 @@ GENO_WALKING_DOWN_LEFT_NPC_6 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 BOWSER_WALKING_DOWN_LEFT_NPC_3 = NPC(
     sprite_id=SPR0013_BOWSER_WALKING_DOWN_LEFT,
@@ -17181,8 +16466,7 @@ BOWSER_WALKING_DOWN_LEFT_NPC_3 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FIRE_CRYSTAL_GRIDPLANE_NPC = NPC(
     sprite_id=SPR0644_FIRE_CRYSTAL_GRIDPLANE,
@@ -17205,8 +16489,7 @@ FIRE_CRYSTAL_GRIDPLANE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 FIRE_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
     sprite_id=SPR0644_FIRE_CRYSTAL_GRIDPLANE,
@@ -17229,8 +16512,7 @@ FIRE_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EARTH_CRYSTAL_GRIDPLANE_NPC = NPC(
     sprite_id=SPR0646_EARTH_CRYSTAL_GRIDPLANE,
@@ -17253,8 +16535,7 @@ EARTH_CRYSTAL_GRIDPLANE_NPC = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 
 EARTH_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
     sprite_id=SPR0646_EARTH_CRYSTAL_GRIDPLANE,
@@ -17277,6 +16558,5 @@ EARTH_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
     byte2_bit4=False,
     byte5_bit6=False,
     byte5_bit7=False,
-    byte6_bit2=False,
-)
+    byte6_bit2=False)
 

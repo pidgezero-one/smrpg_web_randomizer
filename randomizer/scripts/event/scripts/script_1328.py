@@ -19,8 +19,7 @@ script = EventScript(
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASSetPriority(0),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_5, subscript=[ASWalkNortheastPixels(8)]),
         Jmp(["EVENT_1328_fade_in_from_black_async_4_"]),
         RemoveObjectFromCurrentLevel(
@@ -43,8 +42,7 @@ script = EventScript(
         JmpIfBitClear(
             GAMEBOY_KID_PURCHASE_COMPLETE,
             ["EVENT_1328_ret_26"],
-            identifier="EVENT_1328_jmp_if_bit_set_22",
-        ),
+            identifier="EVENT_1328_jmp_if_bit_set_22"),
         JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
         Return(identifier="EVENT_1328_ret_26"),
     ]

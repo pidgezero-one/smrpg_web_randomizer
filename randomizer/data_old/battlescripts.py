@@ -50,8 +50,7 @@ scripts[0x5] = [
     ("if_less_than", [0x7EE005, 0x03]),
     (
         "attack",
-        [attacks.PhysicalAttack5, attacks.PhysicalAttack5, attacks.PhysicalAttack20],
-    ),
+        [attacks.PhysicalAttack5, attacks.PhysicalAttack5, attacks.PhysicalAttack20]),
     ("zero", [0x7EE005]),
     ("wait_return", []),
     ("set_target", [Targets.SELF]),
@@ -90,8 +89,7 @@ scripts[0x9] = [
     ("wait_return", []),
     (
         "attack",
-        [attacks.PhysicalAttack9, attacks.PhysicalAttack9, attacks.PhysicalAttack9],
-    ),
+        [attacks.PhysicalAttack9, attacks.PhysicalAttack9, attacks.PhysicalAttack9]),
     ("start_counter", []),
     ("if_element", [0x20]),
     ("set", [0x7EE003, 0x01]),
@@ -237,8 +235,7 @@ scripts[0x18] = [
     ("wait_return", []),
     (
         "attack",
-        [attacks.PhysicalAttack107, attacks.PhysicalAttack20, attacks.PhysicalAttack21],
-    ),
+        [attacks.PhysicalAttack107, attacks.PhysicalAttack20, attacks.PhysicalAttack21]),
     ("start_counter", []),
     ("if_target_status", [Targets.SELF, 0x0F]),
     ("set", [0x7EE004, 0x01]),
@@ -348,8 +345,7 @@ scripts[0x1F] = [
 scripts[0x20] = [
     (
         "attack",
-        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack50],
-    ),
+        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack50]),
     ("start_counter", []),
 ]
 scripts[0x21] = [
@@ -452,8 +448,7 @@ scripts[0x29] = [
     ("if_solo", []),
     (
         "attack",
-        [attacks.PhysicalAttack0, attacks.PhysicalAttack57, attacks.PhysicalAttack56],
-    ),
+        [attacks.PhysicalAttack0, attacks.PhysicalAttack57, attacks.PhysicalAttack56]),
     ("wait_return", []),
     ("attack", [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.Elegy]),
     ("start_counter", []),
@@ -718,8 +713,7 @@ scripts[0x3C] = [
     ("wait", []),
     (
         "attack",
-        [attacks.PhysicalAttack11, attacks.PhysicalAttack11, attacks.SporeChimes],
-    ),
+        [attacks.PhysicalAttack11, attacks.PhysicalAttack11, attacks.SporeChimes]),
     ("wait", []),
     ("start_counter", []),
 ]
@@ -740,8 +734,7 @@ scripts[0x3E] = [
     ("if_less_than", [0x7EE005, 0x04]),
     (
         "attack",
-        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack57],
-    ),
+        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack57]),
     ("zero", [0x7EE005]),
     ("wait_return", []),
     ("cast_spell", [spells.DrainBeam, spells.Blizzard, spells.DrainBeam]),
@@ -835,8 +828,7 @@ scripts[0x45] = [
     ("if_less_than", [0x7EE005, 0x03]),
     (
         "attack",
-        [attacks.PhysicalAttack5, attacks.PhysicalAttack20, attacks.PhysicalAttack5],
-    ),
+        [attacks.PhysicalAttack5, attacks.PhysicalAttack20, attacks.PhysicalAttack5]),
     ("zero", [0x7EE005]),
     ("wait_return", []),
     ("set_target", [Targets.SELF]),
@@ -888,8 +880,7 @@ scripts[0x48] = [
     ("wait_return", []),
     (
         "attack",
-        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack2],
-    ),
+        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack2]),
     ("start_counter", []),
     ("if_element", [0x10]),
     ("animate", [0x03]),
@@ -950,8 +941,7 @@ scripts[0x4E] = [
     ("if_less_than", [0x7EE005, 0x03]),
     (
         "attack",
-        [attacks.PhysicalAttack5, attacks.PhysicalAttack5, attacks.PhysicalAttack20],
-    ),
+        [attacks.PhysicalAttack5, attacks.PhysicalAttack5, attacks.PhysicalAttack20]),
     ("zero", [0x7EE005]),
     ("wait_return", []),
     ("set_target", [Targets.SELF]),
@@ -1080,15 +1070,13 @@ scripts[0x59] = [
     ("wait_return", []),
     (
         "attack",
-        [attacks.PhysicalAttack85, attacks.PhysicalAttack85, attacks.PhysicalAttack86],
-    ),
+        [attacks.PhysicalAttack85, attacks.PhysicalAttack85, attacks.PhysicalAttack86]),
     ("remove", [0x1B]),
     ("start_counter", []),
     ("if_element", [0x40]),
     (
         "attack",
-        [attacks.PhysicalAttack85, attacks.PhysicalAttack85, attacks.PhysicalAttack86],
-    ),
+        [attacks.PhysicalAttack85, attacks.PhysicalAttack85, attacks.PhysicalAttack86]),
     ("remove", [0x1B]),
     ("wait_return", []),
 ]
@@ -1097,15 +1085,13 @@ scripts[0x5A] = [
     ("set", [0x7EE004, 0x01]),
     (
         "attack",
-        [attacks.PhysicalAttack107, attacks.PhysicalAttack107, attacks.DoomReverb],
-    ),
+        [attacks.PhysicalAttack107, attacks.PhysicalAttack107, attacks.DoomReverb]),
     ("wait_return", []),
     ("attack", [attacks.PhysicalAttack107]),
     ("wait", []),
     (
         "attack",
-        [attacks.PhysicalAttack107, attacks.PhysicalAttack107, attacks.LullaBye],
-    ),
+        [attacks.PhysicalAttack107, attacks.PhysicalAttack107, attacks.LullaBye]),
     ("wait", []),
     ("start_counter", []),
 ]
@@ -1114,8 +1100,7 @@ scripts[0x5B] = [
     ("if_less_than", [0x7EE005, 0x06]),
     (
         "attack",
-        [attacks.PhysicalAttack5, attacks.PhysicalAttack20, attacks.PhysicalAttack21],
-    ),
+        [attacks.PhysicalAttack5, attacks.PhysicalAttack20, attacks.PhysicalAttack21]),
     ("zero", [0x7EE005]),
     ("wait_return", []),
     ("set_target", [Targets.SELF]),
@@ -1220,8 +1205,7 @@ scripts[0x67] = [
     ("if_less_than", [0x7EE005, 0x04]),
     (
         "attack",
-        [attacks.PhysicalAttack2, attacks.PhysicalAttack31, attacks.PhysicalAttack27],
-    ),
+        [attacks.PhysicalAttack2, attacks.PhysicalAttack31, attacks.PhysicalAttack27]),
     ("wait_return", []),
     ("cast_spell", [spells.AuroraFlash, spells.Boulder, spells.MeteorBlast]),
     ("start_counter", []),
@@ -1458,8 +1442,7 @@ scripts[0x7B] = [
 scripts[0x7C] = [
     (
         "attack",
-        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack40],
-    ),
+        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack40]),
     ("start_counter", []),
     ("if_command", [0x02, 0x02]),
     ("attack", [0xFB, 0xFB, attacks.Endobubble]),
@@ -1492,8 +1475,7 @@ scripts[0x7E] = [
 scripts[0x7F] = [
     (
         "attack",
-        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack47],
-    ),
+        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack47]),
     ("start_counter", []),
     ("if_command", [0x02, 0x02]),
     ("attack", [0xFB, 0xFB, attacks.FearRoulette]),
@@ -2243,8 +2225,7 @@ scripts[0xA8] = [
 scripts[0xA9] = [
     (
         "attack",
-        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack40],
-    ),
+        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack40]),
     ("start_counter", []),
     ("if_command", [0x02, 0x02]),
     ("attack", [attacks.BodySlam]),
@@ -2330,13 +2311,11 @@ scripts[0xB1] = [
             attacks.PhysicalAttack111,
             attacks.PhysicalAttack111,
             attacks.PhysicalAttack113,
-        ],
-    ),
+        ]),
     ("wait", []),
     (
         "attack",
-        [attacks.PhysicalAttack113, attacks.Missedme, attacks.PhysicalAttack113],
-    ),
+        [attacks.PhysicalAttack113, attacks.Missedme, attacks.PhysicalAttack113]),
     ("wait", []),
     ("start_counter", []),
 ]
@@ -2449,8 +2428,7 @@ scripts[0xB8] = [
     ("wait_return", []),
     (
         "attack",
-        [attacks.PhysicalAttack85, attacks.PhysicalAttack85, attacks.PhysicalAttack86],
-    ),
+        [attacks.PhysicalAttack85, attacks.PhysicalAttack85, attacks.PhysicalAttack86]),
     ("remove", [0x1B]),
     ("start_counter", []),
     ("if_hp", [0x0000]),
@@ -2467,15 +2445,13 @@ scripts[0xB9] = [
     ("set", [0x7EE004, 0x01]),
     (
         "attack",
-        [attacks.PhysicalAttack107, attacks.PhysicalAttack107, attacks.DoomReverb],
-    ),
+        [attacks.PhysicalAttack107, attacks.PhysicalAttack107, attacks.DoomReverb]),
     ("wait_return", []),
     ("attack", [attacks.PhysicalAttack107]),
     ("wait", []),
     (
         "attack",
-        [attacks.PhysicalAttack107, attacks.PhysicalAttack107, attacks.LullaBye],
-    ),
+        [attacks.PhysicalAttack107, attacks.PhysicalAttack107, attacks.LullaBye]),
     ("wait", []),
     ("start_counter", []),
 ]
@@ -3110,8 +3086,7 @@ scripts[0xCD] = [
             attacks.PhysicalAttack115,
             attacks.PhysicalAttack116,
             attacks.PhysicalAttack116,
-        ],
-    ),
+        ]),
     ("wait_return", []),
     ("attack", [attacks.PhysicalAttack115]),
     ("start_counter", []),
@@ -3175,8 +3150,7 @@ scripts[0xCF] = [
     ("wait_return", []),
     (
         "attack",
-        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack40],
-    ),
+        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack40]),
     ("start_counter", []),
     ("if_monster_in_formation", [304]),
     ("if_hp", [0x0000]),
@@ -3417,8 +3391,7 @@ scripts[0xD7] = [
     ("set", [0x7EE00F, 0x01]),
     (
         "attack",
-        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack31],
-    ),
+        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack31]),
     ("clear", [0x7EE00F, 0x01]),
     ("start_counter", []),
     ("if_hp", [0x0000]),
@@ -4030,14 +4003,12 @@ scripts[0xEC] = [
     ("if_bits_clear", [0x7EE008, 0x80]),
     (
         "attack",
-        [attacks.PhysicalAttack95, attacks.PhysicalAttack32, attacks.PhysicalAttack32],
-    ),
+        [attacks.PhysicalAttack95, attacks.PhysicalAttack32, attacks.PhysicalAttack32]),
     ("wait_return", []),
     ("if_bits_clear", [0x7EE008, 0x80]),
     (
         "attack",
-        [attacks.PhysicalAttack95, attacks.PhysicalAttack32, attacks.PhysicalAttack32],
-    ),
+        [attacks.PhysicalAttack95, attacks.PhysicalAttack32, attacks.PhysicalAttack32]),
     ("wait_return", []),
     ("if_phase", [0x03]),
     ("if_bits_clear", [0x7EE008, 0x40]),
@@ -4200,8 +4171,7 @@ scripts[0xF1] = [
 scripts[0xF2] = [
     (
         "attack",
-        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack40],
-    ),
+        [attacks.PhysicalAttack2, attacks.PhysicalAttack2, attacks.PhysicalAttack40]),
     ("start_counter", []),
     ("if_command", [0x02, 0x02]),
     ("attack", [attacks.BodySlam]),
@@ -4375,8 +4345,7 @@ scripts[0xFC] = [
     ("set", [0x7EE00F, 0x01]),
     (
         "attack",
-        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack20],
-    ),
+        [attacks.PhysicalAttack0, attacks.PhysicalAttack0, attacks.PhysicalAttack20]),
     ("clear", [0x7EE00F, 0x01]),
     ("start_counter", []),
     ("if_hp", [0x0000]),

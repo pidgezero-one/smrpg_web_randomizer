@@ -17,8 +17,7 @@ script = SubroutineOrBanklessScript(
             looping=True,
             overwrite_palette=True,
             overlap_all_sprites=True,
-            identifier="queuestart_0x352f25",
-        ),
+            identifier="queuestart_0x352f25"),
         ReturnSubroutine(),
         ClearAMEM8Bit(0x60, identifier="command_0x352f2f"),
         SetAMEM8BitTo7E5x(0x60, 0x7E002F),
@@ -174,5 +173,4 @@ script = SubroutineOrBanklessScript(
         ReturnSubroutine(),
         PlaySound(sound=S0084_WALLOP_4, identifier="command_0x3530f0"),
         ReturnSubroutine(),
-    ],
-)
+    ])

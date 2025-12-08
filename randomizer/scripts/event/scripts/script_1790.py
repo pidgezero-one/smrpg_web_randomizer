@@ -15,8 +15,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkNorthwestSteps(2),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -26,8 +25,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkSoutheastSteps(2),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -35,8 +33,7 @@ script = EventScript(
                 ASPause(8),
                 ASPause(4),
                 ASObjectMemorySetBit(arg_1=0x0B, bits=[3]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_6,
             subscript=[
@@ -44,8 +41,7 @@ script = EventScript(
                 ASPause(8),
                 ASPause(4),
                 ASObjectMemorySetBit(arg_1=0x0B, bits=[3]),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

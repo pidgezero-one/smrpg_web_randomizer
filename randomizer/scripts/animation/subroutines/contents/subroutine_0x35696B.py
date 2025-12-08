@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35696b",
-        ),
+            identifier="queuestart_0x35696b"),
         NewSpriteAtCoords(
             sprite_id=SPR0545_THROWN_HAMMER,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         SetAMEM16BitToConst(0x60, 7),
@@ -41,5 +39,4 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x3569a0"),
         JmpIfAMEM8BitNotEqualsConst(0x69, 4, ["command_0x3569a0"]),
         Jmp(["command_0x356b01"]),
-    ],
-)
+    ])

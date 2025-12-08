@@ -9,8 +9,7 @@ script = EventScript(
         PauseActionScript(NPC_0),
         ActionQueueSync(
             target=NPC_1,
-            subscript=[ASTransferXYZFPixels(x=0, y=0, z=29, direction=NORTHEAST)],
-        ),
+            subscript=[ASTransferXYZFPixels(x=0, y=0, z=29, direction=NORTHEAST)]),
         ActionQueueAsync(
             target=NPC_0, subscript=[ASTransferToXYZF(x=16, y=16, z=4, direction=EAST)]
         ),

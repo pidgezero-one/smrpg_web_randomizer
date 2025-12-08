@@ -12,8 +12,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(["EVENT_661_play_sound_168"]),
         Jmp(["EVENT_661_action_queue_async_2_"]),
         PlaySound(
@@ -30,16 +29,14 @@ script = EventScript(
                     index=12, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASPause(2),
-            ],
-        ),
+            ]),
         Pause(180),
         FadeOutToBlack(sync=False),
         JmpToEvent(E3356_KEEP_RESPAWN_IN_LOBBY_UPON_FAILURE),
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASWalkToXYCoords(x=23, y=31)],
-            identifier="EVENT_661_action_queue_async_2_",
-        ),
+            identifier="EVENT_661_action_queue_async_2_"),
         Return(),
     ]
 )

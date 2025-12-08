@@ -15,8 +15,7 @@ script = EventScript(
             x=2,
             y=100,
             z=1,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         JmpToEvent(E0269_PIPE_UP_SUBROUTINE),
     ]
 )

@@ -12,18 +12,15 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             MEM_70A9,
             R456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS,
-            ["EVENT_1854_summon_to_level_5"],
-        ),
+            ["EVENT_1854_summon_to_level_5"]),
         Jmp(["EVENT_1854_pause_2"]),
         SummonObjectToSpecificLevel(
             MEM_70A9,
             R456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS,
-            identifier="EVENT_1854_summon_to_level_5",
-        ),
+            identifier="EVENT_1854_summon_to_level_5"),
         ActionQueueSync(
             target=NPC_8,
-            subscript=[ASSetSpriteSequence(index=2, looping=False, mirror_sprite=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=2, looping=False, mirror_sprite=True)]),
         SetSyncActionScript(MEM_70A9, A0824_KEEP_DONKEY_ROOM_BARRELS),
         Pause(68),
         Inc(TEMP_70A9),
@@ -33,8 +30,7 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             MEM_70A9,
             R456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS,
-            ["EVENT_1854_pause_12"],
-        ),
+            ["EVENT_1854_pause_12"]),
         SummonObjectToSpecificLevel(
             MEM_70A9, R456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS
         ),
@@ -46,15 +42,13 @@ script = EventScript(
             subscript=[
                 ASPlaySound(sound=SO119_CZAR_DRAGON_ROAR, channel=4),
                 ASSetSpriteSequence(index=2, looping=False, mirror_sprite=True),
-            ],
-        ),
+            ]),
         SetSyncActionScript(MEM_70A9, A0824_KEEP_DONKEY_ROOM_BARRELS),
         Pause(1, identifier="EVENT_1854_pause_20"),
         JmpIfObjectInSpecificLevel(
             MEM_70A9,
             R456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS,
-            ["EVENT_1854_pause_20"],
-        ),
+            ["EVENT_1854_pause_20"]),
         SummonObjectToSpecificLevel(
             MEM_70A9, R456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS
         ),
@@ -63,8 +57,7 @@ script = EventScript(
         Pause(2),
         ActionQueueSync(
             target=NPC_8,
-            subscript=[ASSetSpriteSequence(index=2, looping=False, mirror_sprite=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=2, looping=False, mirror_sprite=True)]),
         SetSyncActionScript(MEM_70A9, A0824_KEEP_DONKEY_ROOM_BARRELS),
         Pause(20),
         Jmp(["EVENT_1854_set_0"]),

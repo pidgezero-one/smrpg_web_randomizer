@@ -13,5 +13,4 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"<\x00\x08")),
         ResetSpriteSequence(),
         Jmp(["command_0x350d31"]),
-    ],
-)
+    ])

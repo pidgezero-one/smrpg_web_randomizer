@@ -9,5 +9,4 @@ from .special import (
     AxemBossFormation,
     Belome2BossFormation,
     CulexBossFormation,
-    JohnnyBossFormation,
-)
+    JohnnyBossFormation)

@@ -16,8 +16,7 @@ exits = [
         destination=OW18_ROSE_TOWN,
         show_message=False,
         byte_2_bit_1=True,
-        byte_2_bit_0=True,
-    ),
+        byte_2_bit_0=True),
     RoomExit(
         x=5,
         y=36,
@@ -35,8 +34,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=21,
         y=45,
@@ -54,8 +52,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=14,
         y=55,
@@ -73,8 +70,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=16,
         y=34,
@@ -92,8 +88,7 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHEAST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
     RoomExit(
         x=12,
         y=24,
@@ -111,6 +106,5 @@ exits = [
         dst_z=0,
         dst_z_half=False,
         dst_f=NORTHWEST,
-        x_bit_7=False,
-    ),
+        x_bit_7=False),
 ]

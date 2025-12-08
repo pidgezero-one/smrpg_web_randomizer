@@ -14,8 +14,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_3,
             ["EVENT_1084_set_7000_to_tapped_button_0"],
-            identifier="EVENT_1084_jmp_if_bit_clear_5",
-        ),
+            identifier="EVENT_1084_jmp_if_bit_clear_5"),
         SetSyncActionScript(NPC_0, A0571_MELODY_BAY_TADPOLE_AFFIRMATIVE),
         CopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_7000),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
@@ -25,8 +24,7 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -34,8 +32,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(5),
                 ASWalkSouthwestPixels(4),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_1, A0570_MELODY_BAY_TADPOLE_SWIMS),
         SetVarToConst(TEMP_70A9, 21),
         SetSyncActionScript(MARIO, A0515_MARIO_DURING_SONGS),
@@ -47,8 +44,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_3,
             ["EVENT_1084_set_7000_to_tapped_button_18"],
-            identifier="EVENT_1084_jmp_if_bit_clear_23",
-        ),
+            identifier="EVENT_1084_jmp_if_bit_clear_23"),
         SetSyncActionScript(NPC_1, A0571_MELODY_BAY_TADPOLE_AFFIRMATIVE),
         CopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_7000),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
@@ -58,8 +54,7 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -67,8 +62,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(5),
                 ASWalkSouthwestPixels(4),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_2, A0570_MELODY_BAY_TADPOLE_SWIMS),
         SetVarToConst(TEMP_70A9, 22),
         SetSyncActionScript(MARIO, A0515_MARIO_DURING_SONGS),
@@ -80,8 +74,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_3,
             ["EVENT_1084_set_7000_to_tapped_button_36"],
-            identifier="EVENT_1084_jmp_if_bit_clear_41",
-        ),
+            identifier="EVENT_1084_jmp_if_bit_clear_41"),
         SetSyncActionScript(NPC_2, A0571_MELODY_BAY_TADPOLE_AFFIRMATIVE),
         CopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_7000),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
@@ -91,8 +84,7 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -100,8 +92,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(5),
                 ASWalkSouthwestPixels(4),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_3, A0570_MELODY_BAY_TADPOLE_SWIMS),
         SetVarToConst(TEMP_70A9, 23),
         SetSyncActionScript(MARIO, A0515_MARIO_DURING_SONGS),
@@ -113,8 +104,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_3,
             ["EVENT_1084_set_7000_to_tapped_button_54"],
-            identifier="EVENT_1084_jmp_if_bit_clear_59",
-        ),
+            identifier="EVENT_1084_jmp_if_bit_clear_59"),
         SetSyncActionScript(NPC_3, A0571_MELODY_BAY_TADPOLE_AFFIRMATIVE),
         CopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_7000),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
@@ -124,8 +114,7 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()]),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
@@ -133,8 +122,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(5),
                 ASWalkSouthwestPixels(4),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_4, A0570_MELODY_BAY_TADPOLE_SWIMS),
         SetVarToConst(TEMP_70A9, 24),
         SetSyncActionScript(MARIO, A0515_MARIO_DURING_SONGS),
@@ -146,8 +134,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_3,
             ["EVENT_1084_set_7000_to_tapped_button_72"],
-            identifier="EVENT_1084_jmp_if_bit_clear_77",
-        ),
+            identifier="EVENT_1084_jmp_if_bit_clear_77"),
         SetSyncActionScript(NPC_4, A0571_MELODY_BAY_TADPOLE_AFFIRMATIVE),
         CopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_7000),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
@@ -157,8 +144,7 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()]),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
@@ -166,8 +152,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(5),
                 ASWalkSouthwestPixels(4),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_5, A0570_MELODY_BAY_TADPOLE_SWIMS),
         SetVarToConst(TEMP_70A9, 25),
         SetSyncActionScript(MARIO, A0515_MARIO_DURING_SONGS),
@@ -179,8 +164,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_3,
             ["EVENT_1084_set_7000_to_tapped_button_90"],
-            identifier="EVENT_1084_jmp_if_bit_clear_95",
-        ),
+            identifier="EVENT_1084_jmp_if_bit_clear_95"),
         SetSyncActionScript(NPC_5, A0571_MELODY_BAY_TADPOLE_AFFIRMATIVE),
         CopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_7000),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
@@ -190,8 +174,7 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()]),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
@@ -199,8 +182,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(5),
                 ASWalkSouthwestPixels(4),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_6, A0570_MELODY_BAY_TADPOLE_SWIMS),
         SetVarToConst(TEMP_70A9, 26),
         SetSyncActionScript(MARIO, A0515_MARIO_DURING_SONGS),
@@ -214,8 +196,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_3,
             ["EVENT_1084_set_7000_to_tapped_button_108"],
-            identifier="EVENT_1084_jmp_if_bit_clear_113",
-        ),
+            identifier="EVENT_1084_jmp_if_bit_clear_113"),
         SetSyncActionScript(NPC_6, A0571_MELODY_BAY_TADPOLE_AFFIRMATIVE),
         CopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_7000),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
@@ -225,8 +206,7 @@ script = EventScript(
         CopyVarToVar(from_var=Y_COORD_1, to_var=X_COORD_1),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkNortheastSteps(2), ASReturn()]),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -234,8 +214,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(5),
                 ASWalkSouthwestPixels(4),
                 ASReturn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_7, A0570_MELODY_BAY_TADPOLE_SWIMS),
         SetVarToConst(TEMP_70A9, 27),
         SetSyncActionScript(MARIO, A0515_MARIO_DURING_SONGS),
@@ -249,8 +228,7 @@ script = EventScript(
         JmpIfBitClear(
             TEMP_7044_3,
             ["EVENT_1084_set_7000_to_tapped_button_126"],
-            identifier="EVENT_1084_jmp_if_bit_clear_131",
-        ),
+            identifier="EVENT_1084_jmp_if_bit_clear_131"),
         SetSyncActionScript(NPC_7, A0571_MELODY_BAY_TADPOLE_AFFIRMATIVE),
         CopyVarToVar(from_var=Y_COORD_1, to_var=PRIMARY_TEMP_7000),
         JmpToSubroutine(["EVENT_1074_jmp_if_7000_equals_short_369"]),
@@ -270,8 +248,7 @@ script = EventScript(
             PRIMARY_TEMP_7000,
             0,
             ["EVENT_1084_pause_action_script_160"],
-            identifier="EVENT_1084_jmp_if_7000_equals_short_147",
-        ),
+            identifier="EVENT_1084_jmp_if_7000_equals_short_147"),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 1, ["EVENT_1084_pause_action_script_163"]
         ),
@@ -318,8 +295,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x02\x00\xff")),
                 ASPause(16),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_163"),
         ActionQueueAsync(
@@ -331,8 +307,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x01\x80\xfe")),
                 ASPause(16),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_166"),
         ActionQueueAsync(
@@ -344,8 +319,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x00\xab\xfe")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_169"),
         ActionQueueAsync(
@@ -357,8 +331,7 @@ script = EventScript(
                 ASDb(bytearray(b"$V\xffV\xfe")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_172"),
         ActionQueueAsync(
@@ -370,8 +343,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\xab\xfe\x00\xfe")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_175"),
         ActionQueueAsync(
@@ -383,8 +355,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x80\xfe@\xfe")),
                 ASPause(32),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_178"),
         ActionQueueAsync(
@@ -396,8 +367,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\xfe\x00\xfe")),
                 ASPause(32),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_181"),
         ActionQueueAsync(
@@ -409,8 +379,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x02\xab\xff")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_184"),
         ActionQueueAsync(
@@ -422,8 +391,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\xaa\x02\x00\x00")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_187"),
         ActionQueueAsync(
@@ -435,8 +403,7 @@ script = EventScript(
                 ASDb(bytearray(b"$U\x03U\x00")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_190"),
         ActionQueueAsync(
@@ -448,8 +415,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x04\xaa\x00")),
                 ASPause(24),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_193"),
         ActionQueueAsync(
@@ -461,8 +427,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x80\x03\xc0\x00")),
                 ASPause(32),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
         PauseActionScript(MARIO, identifier="EVENT_1084_pause_action_script_196"),
         ActionQueueAsync(
@@ -474,8 +439,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x04\x00\x01")),
                 ASPause(32),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

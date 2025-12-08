@@ -46,8 +46,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2597_ABYSS_PRE_FIRST_BOSS_BOLT,
             x=28,
@@ -58,8 +57,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2597_ABYSS_PRE_FIRST_BOSS_BOLT,
             x=21,
@@ -70,8 +68,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -91,8 +88,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -121,8 +117,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2593_ABYSS_PRE_FIRST_BOSS_BOLT,
@@ -132,8 +127,7 @@ room = Room(
             y=47,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2594_ABYSS_PRE_FIRST_BOSS_BOLT,
@@ -143,8 +137,7 @@ room = Room(
             y=42,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.FACTORY_HEX_NUT_NPC,
             event_script=E2594_ABYSS_PRE_FIRST_BOSS_BOLT,
@@ -154,8 +147,7 @@ room = Room(
             y=41,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 4
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             initiator=EventInitiator.JUMP_ON,
@@ -182,8 +174,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 5
             npc=npcs.TRAMPOLINE_JUMP_NPC,
             event_script=E2423_ABYSS_TRAMPOLINE_TO_1ST_BOSS,
@@ -193,8 +184,7 @@ room = Room(
             y=34,
             z=10,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         RegularNPC( # 6
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.NONE,
@@ -222,8 +212,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 7
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -252,7 +241,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

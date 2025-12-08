@@ -13,8 +13,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3277_SHIP_BIG_WATER_ROOM_OPEN_HIDDEN_DOOR,
         x=23,
@@ -25,8 +24,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3118_WATER_STATE,
         x=28,
@@ -37,6 +35,5 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

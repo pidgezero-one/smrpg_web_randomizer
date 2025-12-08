@@ -15,8 +15,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalkEastSteps(8),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         JmpToSubroutine(["EVENT_3491_action_queue_sync_16"]),
         EnterArea(
             room_id=R069_MIDAS_RIVER_WATERFALL, face_direction=SOUTH, x=8, y=31, z=0
@@ -33,8 +32,7 @@ script = EventScript(
                 ASSetVarToConst(X_COORD_2, 6528),
                 ASSetVarToConst(Y_COORD_2, 3712),
                 ASTransferTo70167018(),
-            ],
-        ),
+            ]),
         JmpToSubroutine(["EVENT_3480_action_queue_async_73"]),
         ActionQueueAsync(
             target=MARIO,
@@ -50,8 +48,7 @@ script = EventScript(
                 ASWalk1StepSouthwest(),
                 ASBPL262728(),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         SetSyncActionScript(MARIO, A0466_MIDAS_RIVER_TUNNEL_LEAVE),
         Jmp(["EVENT_3489_enable_controls_3"]),
         Return(),
@@ -62,8 +59,7 @@ script = EventScript(
                     index=10, sprite_offset=1, is_sequence=True, looping=True
                 )
             ],
-            identifier="EVENT_3491_action_queue_sync_16",
-        ),
+            identifier="EVENT_3491_action_queue_sync_16"),
         StartLoopNTimes(2, identifier="EVENT_3491_start_loop_n_times_17"),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3491_fade_out_to_black_async_duration_65"]),
@@ -75,8 +71,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=13, sprite_offset=1, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         StartLoopNTimes(2, identifier="EVENT_3491_start_loop_n_times_23"),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3491_fade_out_to_black_async_duration_65"]),
@@ -88,8 +83,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=12, sprite_offset=1, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         StartLoopNTimes(2, identifier="EVENT_3491_start_loop_n_times_29"),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3491_fade_out_to_black_async_duration_65"]),
@@ -101,8 +95,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=14, sprite_offset=1, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         StartLoopNTimes(2, identifier="EVENT_3491_start_loop_n_times_35"),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3491_fade_out_to_black_async_duration_65"]),
@@ -114,8 +107,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=11, sprite_offset=1, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         StartLoopNTimes(2, identifier="EVENT_3491_start_loop_n_times_41"),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3491_fade_out_to_black_async_duration_65"]),
@@ -129,10 +121,8 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         StartLoopNTimes(2, identifier="EVENT_3491_start_loop_n_times_47"),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3491_fade_out_to_black_async_duration_65"]),
@@ -146,10 +136,8 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         StartLoopNTimes(2, identifier="EVENT_3491_start_loop_n_times_53"),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3491_fade_out_to_black_async_duration_65"]),
@@ -163,10 +151,8 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         StartLoopNTimes(2, identifier="EVENT_3491_start_loop_n_times_59"),
         Pause(1),
         JmpIfBitSet(TEMP_7043_0, ["EVENT_3491_fade_out_to_black_async_duration_65"]),
@@ -176,8 +162,7 @@ script = EventScript(
         FadeOutToBlack(
             sync=False,
             duration=32,
-            identifier="EVENT_3491_fade_out_to_black_async_duration_65",
-        ),
+            identifier="EVENT_3491_fade_out_to_black_async_duration_65"),
         Return(),
     ]
 )

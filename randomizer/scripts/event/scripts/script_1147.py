@@ -48,8 +48,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASBounceToXYWithHeight(x=6, y=26, height=0),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -91,8 +90,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASBounceToXYWithHeight(x=6, y=26, height=0),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -134,8 +132,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASBounceToXYWithHeight(x=6, y=26, height=0),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -178,8 +175,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASBounceToXYWithHeight(x=6, y=26, height=0),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO148_SURGING_ELECTRICITY, channel=6),
         FadeOutMusicToVolume(duration=8, volume=0),
         PaletteSetMorphs(palette_type=NOTHING, palette_set=2, duration=214, row=11),
@@ -199,8 +195,7 @@ script = EventScript(
                 ASTransferToXYZF(x=6, y=26, z=0, direction=EAST),
                 ASFaceSoutheast(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_7, A0527_SEASIDE_BOSS_TRANSFORM),
         Pause(7),
         ScreenFlashesWithColour(WHITE),
@@ -222,8 +217,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=False, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO091_TUMBLING_BOULDERS, channel=6),
         Pause(8),
         ScreenFlashesWithColour(WHITE),
@@ -248,8 +242,7 @@ script = EventScript(
         ),
         ActionQueueSync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkToXYCoords(x=0, y=8)],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTEST), ASWalkToXYCoords(x=0, y=8)]),
         ActionQueueSync(target=MARIO, subscript=[ASShiftToXYCoords(x=4, y=22)]),
         RunEventAsSubroutine(E1163_SEASIDE_LIBERATED_BEACH),
         PauseScriptUntilEffectDone(),

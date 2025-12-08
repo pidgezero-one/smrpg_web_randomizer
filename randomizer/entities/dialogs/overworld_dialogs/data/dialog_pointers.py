@@ -2,8 +2,6 @@
 
 """The positions of the dialog data at which each dialog ID should begin"""
 
-from typing import List
-
 from randomizer.types.dialogs import Dialog
 from randomizer.types.dialogs.ids import (
     DIALOG_BANK_22,
@@ -4104,10 +4102,9 @@ from randomizer.types.dialogs.ids import (
     DI4092_DUPLICATE,
     DI4093_DUPLICATE,
     DI4094_DUPLICATE,
-    DI4095_DUPLICATE,
-)
+    DI4095_DUPLICATE)
 
-pointers: List[Dialog] = []
+pointers: list[Dialog] = []
 pointers[DI0000_INN_BANNER] = Dialog(bank=DIALOG_BANK_22, index=0, pos=0)
 pointers[DI0001_ITEM_SHOP_BANNER] = Dialog(bank=DIALOG_BANK_22, index=1, pos=0)
 pointers[DI0002_INN_AND_ITEM_SHOP_BANNER] = Dialog(bank=DIALOG_BANK_22, index=2, pos=0)

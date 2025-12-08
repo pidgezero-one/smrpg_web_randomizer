@@ -12,8 +12,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -23,8 +22,7 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASBounceToXYWithHeight(x=15, y=65, height=0),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -33,8 +31,7 @@ script = EventScript(
                 ASPause(40),
                 ASFaceSoutheast(),
                 ASPause(20),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -42,8 +39,7 @@ script = EventScript(
                 ASBounceToXYWithHeight(x=13, y=69, height=0),
                 ASFaceMario(),
                 ASSetSequenceSpeed(FAST),
-            ],
-        ),
+            ]),
         Pause(25),
         RunDialog(
             dialog_id=DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT,
@@ -51,8 +47,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         ActionQueueAsync(target=NPC_0, subscript=[ASFaceSoutheast()]),
         Return(),
     ]

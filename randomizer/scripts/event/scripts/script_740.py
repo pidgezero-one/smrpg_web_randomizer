@@ -14,8 +14,7 @@ script = EventScript(
             x=1,
             y=35,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         PlayMusicAtDefaultVolume(M61_VALENTINA),
         Return(),
     ]

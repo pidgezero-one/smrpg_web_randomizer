@@ -1,7 +1,6 @@
 """Spell definitions"""
 
 from random import choice
-from typing import Optional, Type, List
 
 from randomizer.types.spells import (
     CharacterSpell,
@@ -12,8 +11,7 @@ from randomizer.types.spells import (
     TempStatBuff,
     Element,
     Status,
-    SpellType,
-)
+    SpellType)
 from randomizer.types.spells.arguments.types import DamageModifiers, TimingProperties
 from randomizer.types.spells.arguments import (
     NO_MODIFIERS,
@@ -33,13 +31,11 @@ from randomizer.types.spells.arguments import (
     TIMED_FOR_9999_SET_ENEMY_HP_0,
     TIMED_GIVES_TARGET_DEFENSE_UP_BUFF,
     TIMED_HEALS_ALL_HP_TO_FIRST_TARGET,
-    TIMED_JUMPS,
-)
+    TIMED_JUMPS)
 from randomizer.types.world import GameWorld
 from randomizer.types.world.flags import (
     CharacterSpellElements,
-    CharacterSpellExtraElements,
-)
+    CharacterSpellExtraElements)
 
 from .palettes import (
     FIRE_ORB_EARTH_BALL,
@@ -59,8 +55,7 @@ from .palettes import (
     SNOWY_THUNDER_UPPER,
     THUNDERBOLT_EARTH,
     THUNDERBOLT_FIRE,
-    THUNDERBOLT_ICE,
-)
+    THUNDERBOLT_ICE)
 
 
 class Jump(CharacterSpell):
@@ -95,8 +90,8 @@ class Jump(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
 
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
 
     _timing_modifiers: TimingProperties = ONE_TIMING_FOR_125_OR_15X_DMG
     _damage_modifiers: DamageModifiers = NO_MODIFIERS
@@ -150,8 +145,8 @@ class FireOrb(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = MULTIPLE_BUTTON_PRESSES
@@ -248,8 +243,8 @@ class SuperJump(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.JUMP
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = MULTIPLE_BUTTON_PRESSES
@@ -304,8 +299,8 @@ class SuperFlame(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = MULTIPLE_BUTTON_PRESSES
@@ -402,8 +397,8 @@ class UltraJump(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.JUMP
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ONE_PLUS_MORE_TARGETS_WITH_PRESSES
@@ -458,8 +453,8 @@ class UltraFlame(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ONE_PLUS_MORE_TARGETS_WITH_PRESSES
@@ -556,7 +551,7 @@ class Therapy(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [
+    _status_effects: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -565,7 +560,7 @@ class Therapy(CharacterSpell):
         Status.MUSHROOM,
         Status.SCARECROW,
     ]
-    _boosts: List[TempStatBuff] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ONE_TIMING_FOR_125_OR_15X_DMG
@@ -599,7 +594,7 @@ class GroupHug(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [
+    _status_effects: list[Status] = [
         Status.MUTE,
         Status.SLEEP,
         Status.POISON,
@@ -608,7 +603,7 @@ class GroupHug(CharacterSpell):
         Status.MUSHROOM,
         Status.SCARECROW,
     ]
-    _boosts: List[TempStatBuff] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ONE_TIMING_FOR_125_DMG_ONLY
@@ -641,8 +636,8 @@ class SleepyTime(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.SLEEP]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = True
     _timing_modifiers: TimingProperties = ROTATE_1_TARGET_IF_TIMED_ALL
@@ -675,8 +670,8 @@ class ComeBack(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction = InflictFunction.REVIVE
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = TIMED_HEALS_ALL_HP_TO_FIRST_TARGET
@@ -709,8 +704,8 @@ class Mute(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.MUTE]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUTE]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = True
     _timing_modifiers: TimingProperties = ROTATE_1_TARGET_IF_TIMED_ALL
@@ -744,8 +739,8 @@ class PsychBomb(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = BUTTON_MASH
@@ -753,7 +748,7 @@ class PsychBomb(CharacterSpell):
 
     _item_id: int = 523
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         if world is not None and world.settings.is_boolean_flag_enabled(
@@ -781,7 +776,7 @@ class IcePsychBomb(PsychBomb):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.ICE)
@@ -806,7 +801,7 @@ class ThunderPsychBomb(PsychBomb):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.THUNDER)
@@ -831,7 +826,7 @@ class EarthPsychBomb(PsychBomb):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.JUMP)
@@ -862,8 +857,8 @@ class Terrorize(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.FEAR]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ROTATE_ONLY
@@ -897,8 +892,8 @@ class PoisonGas(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.POISON]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ROTATE_ONLY
@@ -932,8 +927,8 @@ class Crusher(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ONE_TIMING_FOR_125_OR_15X_DMG
@@ -941,7 +936,7 @@ class Crusher(CharacterSpell):
 
     _item_id: int = 526
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         if world is not None and world.settings.is_boolean_flag_enabled(
@@ -969,7 +964,7 @@ class IceCrusher(Crusher):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.ICE)
@@ -994,7 +989,7 @@ class FireCrusher(Crusher):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.FIRE)
@@ -1019,7 +1014,7 @@ class ThunderCrusher(Crusher):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.THUNDER)
@@ -1050,8 +1045,8 @@ class BowserCrush(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = BUTTON_MASH
@@ -1059,7 +1054,7 @@ class BowserCrush(CharacterSpell):
 
     _item_id: int = 527
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         if world is not None and world.settings.is_boolean_flag_enabled(
@@ -1087,7 +1082,7 @@ class IceBowserCrush(BowserCrush):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.ICE)
@@ -1112,7 +1107,7 @@ class FireBowserCrush(BowserCrush):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.FIRE)
@@ -1137,7 +1132,7 @@ class ThunderBowserCrush(BowserCrush):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.THUNDER)
@@ -1168,8 +1163,8 @@ class GenoBeam(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = CHARGE_ONLY
@@ -1177,7 +1172,7 @@ class GenoBeam(CharacterSpell):
 
     _item_id: int = 528
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         if world is not None and world.settings.is_boolean_flag_enabled(
@@ -1205,7 +1200,7 @@ class FireGenoBeam(GenoBeam):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.FIRE)
@@ -1230,7 +1225,7 @@ class ThunderGenoBeam(GenoBeam):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.THUNDER)
@@ -1255,7 +1250,7 @@ class EarthGenoBeam(GenoBeam):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.JUMP)
@@ -1285,8 +1280,8 @@ class GenoBoost(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK]
     _inflict: InflictFunction
     _hide_num: bool = True
     _timing_modifiers: TimingProperties = TIMED_GIVES_TARGET_DEFENSE_UP_BUFF
@@ -1320,8 +1315,8 @@ class GenoWhirl(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = TIMED_FOR_9999_SET_ENEMY_HP_0
@@ -1355,8 +1350,8 @@ class GenoBlast(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = CHARGE_ONLY
@@ -1390,8 +1385,8 @@ class GenoFlash(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = CHARGE_ONLY
@@ -1419,7 +1414,7 @@ class IceGenoFlash(GenoFlash):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.ICE)
@@ -1444,7 +1439,7 @@ class ThunderGenoFlash(GenoFlash):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.THUNDER)
@@ -1469,7 +1464,7 @@ class EarthGenoFlash(GenoFlash):
 
         return patch
 
-    def __init__(self, world: Optional["GameWorld"] = None):
+    def __init__(self, world: "GameWorld" | None = None):
         super().__init__(world)
 
         self.set_element(Element.JUMP)
@@ -1500,8 +1495,8 @@ class Thunderbolt(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.THUNDER
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ONE_TIMING_FOR_125_DMG_ONLY
@@ -1595,8 +1590,8 @@ class HPRain(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ONE_TIMING_FOR_125_OR_15X_DMG
@@ -1629,8 +1624,8 @@ class Psychopath(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction = InflictFunction.SCAN
     _hide_num: bool = True
     _timing_modifiers: TimingProperties = TIME_TO_ACTIVATE_HP_READ
@@ -1664,8 +1659,8 @@ class Shocker(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.THUNDER
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ONE_TIMING_FOR_125_OR_15X_DMG
@@ -1753,8 +1748,8 @@ class Snowy(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.ICE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = ROTATE_ONLY
@@ -1864,8 +1859,8 @@ class StarRain(CharacterSpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
     _timing_modifiers: TimingProperties = TIMED_JUMPS
@@ -1914,8 +1909,8 @@ class Drain(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -1942,8 +1937,8 @@ class LightningOrb(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.THUNDER
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -1970,8 +1965,8 @@ class Flame(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -1998,8 +1993,8 @@ class Bolt(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.THUNDER
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2026,8 +2021,8 @@ class Crystal(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.ICE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2054,8 +2049,8 @@ class FlameStone(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2082,8 +2077,8 @@ class MegaDrain(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2110,8 +2105,8 @@ class WillyWisp(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2138,8 +2133,8 @@ class DiamondSaw(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2166,8 +2161,8 @@ class Electroshock(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.THUNDER
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2194,8 +2189,8 @@ class Blast(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2222,8 +2217,8 @@ class Storm(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2250,8 +2245,8 @@ class IceRock(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.ICE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2276,8 +2271,8 @@ class Escape(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction = InflictFunction.NO_DMG
     _hide_num: bool = False
 
@@ -2304,8 +2299,8 @@ class DarkStar(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2332,8 +2327,8 @@ class Recover(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2360,8 +2355,8 @@ class MegaRecover(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2388,8 +2383,8 @@ class FlameWall(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2416,8 +2411,8 @@ class StaticE(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.THUNDER
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2444,8 +2439,8 @@ class SandStorm(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.FEAR]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2472,8 +2467,8 @@ class Blizzard(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.ICE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2500,8 +2495,8 @@ class DrainBeam(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2528,8 +2523,8 @@ class MeteorBlast(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2556,8 +2551,8 @@ class LightBeam(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.SLEEP]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2584,8 +2579,8 @@ class WaterBlast(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2612,8 +2607,8 @@ class Solidify(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.ICE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2640,8 +2635,8 @@ class PetalBlast(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.MUSHROOM]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUSHROOM]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2668,8 +2663,8 @@ class AuroraFlash(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.SLEEP]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SLEEP]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2696,8 +2691,8 @@ class Boulder(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2724,8 +2719,8 @@ class Corona(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element = Element.FIRE
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2752,8 +2747,8 @@ class MeteorSwarm(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2781,8 +2776,8 @@ class KnockOut(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2808,8 +2803,8 @@ class WeirdMushroom(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2836,8 +2831,8 @@ class BreakerBeam(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2863,8 +2858,8 @@ class Shredder(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = [
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = [
         TempStatBuff.MAGIC_ATTACK,
         TempStatBuff.ATTACK,
         TempStatBuff.MAGIC_DEFENSE,
@@ -2896,8 +2891,8 @@ class Sledge(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2924,8 +2919,8 @@ class SwordRain(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2952,8 +2947,8 @@ class SpearRain(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -2980,8 +2975,8 @@ class ArrowRain(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -3007,8 +3002,8 @@ class BigBang(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -3034,8 +3029,8 @@ class ChestScrow(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.SCARECROW]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.SCARECROW]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -3061,8 +3056,8 @@ class ChestFear(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.FEAR]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.FEAR]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = True
 
@@ -3088,8 +3083,8 @@ class ChestMute(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.MUTE]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.MUTE]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = True
 
@@ -3115,8 +3110,8 @@ class ChestPoison(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = [Status.POISON]
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = [Status.POISON]
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = True
 
@@ -3142,8 +3137,8 @@ class ChainSaw(EnemySpell):
     _target_one_party: bool = True
     _target_not_self: bool = False
     _element: Element
-    _status_effects: List[Status] = []
-    _boosts: List[TempStatBuff] = []
+    _status_effects: list[Status] = []
+    _boosts: list[TempStatBuff] = []
     _inflict: InflictFunction
     _hide_num: bool = False
 
@@ -3159,55 +3154,55 @@ class SpellDoNothing(EnemySpell):
 # ********************* Util functions to choose an elemental version of specific spells.
 
 
-def _get_jump_spell(world: GameWorld) -> Type[Jump]:
+def _get_jump_spell(world: GameWorld) -> type[Jump]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([Jump, FireJump, IceJump, ThunderJump])
     return Jump
 
 
-def _get_fire_orb_spell(world: GameWorld) -> Type[FireOrb]:
+def _get_fire_orb_spell(world: GameWorld) -> type[FireOrb]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([FireOrb, IceOrb, ThunderOrb, EarthOrb])
     return FireOrb
 
 
-def _get_super_jump_spell(world: GameWorld) -> Type[SuperJump]:
+def _get_super_jump_spell(world: GameWorld) -> type[SuperJump]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([SuperJump, FireSuperJump, IceSuperJump, ThunderSuperJump])
     return SuperJump
 
 
-def _get_super_flame_spell(world: GameWorld) -> Type[SuperFlame]:
+def _get_super_flame_spell(world: GameWorld) -> type[SuperFlame]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([SuperFlame, IceSuperFlame, ThunderSuperFlame, EarthSuperFlame])
     return SuperFlame
 
 
-def _get_ultra_jump_spell(world: GameWorld) -> Type[UltraJump]:
+def _get_ultra_jump_spell(world: GameWorld) -> type[UltraJump]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([UltraJump, FireUltraJump, IceUltraJump, ThunderUltraJump])
     return UltraJump
 
 
-def _get_ultra_flame_spell(world: GameWorld) -> Type[UltraFlame]:
+def _get_ultra_flame_spell(world: GameWorld) -> type[UltraFlame]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([UltraFlame, IceUltraFlame, ThunderUltraFlame, EarthUltraFlame])
     return UltraFlame
 
 
-def _get_thunderbolt_spell(world: GameWorld) -> Type[Thunderbolt]:
+def _get_thunderbolt_spell(world: GameWorld) -> type[Thunderbolt]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([Thunderbolt, IceThunderbolt, FireThunderbolt, EarthThunderbolt])
     return Thunderbolt
 
 
-def _get_shocker_spell(world: GameWorld) -> Type[Shocker]:
+def _get_shocker_spell(world: GameWorld) -> type[Shocker]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([Shocker, IceShocker, FireShocker, EarthShocker])
     return Shocker
 
 
-def _get_snowy_spell(world: GameWorld) -> Type[Snowy]:
+def _get_snowy_spell(world: GameWorld) -> type[Snowy]:
     if world.settings.is_boolean_flag_enabled(CharacterSpellElements):
         return choice([Snowy, ThunderSnowy, FireSnowy, EarthSnowy])
     return Snowy

@@ -14,8 +14,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_0,
             ["EVENT_3237_end_all_11"],
-            identifier="EVENT_3237_jmp_if_bit_set_5",
-        ),
+            identifier="EVENT_3237_jmp_if_bit_set_5"),
         SetBit(TEMP_7044_0),
         SetTempSyncActionScript(MEM_70A8, A0337_VARIOUS_SHIP_OBJECTS),
         Return(),

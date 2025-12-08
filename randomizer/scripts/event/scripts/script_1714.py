@@ -22,8 +22,7 @@ script = EventScript(
                 ),
                 ASPause(135),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
@@ -34,8 +33,7 @@ script = EventScript(
                 ASPause(8),
                 ASFaceNorthwest(),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         Pause(10),
         ActionQueueSync(
             target=NPC_5,
@@ -53,8 +51,7 @@ script = EventScript(
                 ASSetAllSpeeds(FASTER),
                 ASWalkEastSteps(6),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -67,13 +64,11 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASShiftNorthSteps(4),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         JmpIfBitClear(
             SIGNAL_RING_DIRECTIONAL_BIT,
             ["EVENT_1714_ret_17"],
-            identifier="EVENT_1714_jmp_if_bit_clear_7",
-        ),
+            identifier="EVENT_1714_jmp_if_bit_clear_7"),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
         JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1714_ret_17"]),
         RunEventAsSubroutine(E3890_BANDITS_WAY_STAR_PIECE_SIGNAL),

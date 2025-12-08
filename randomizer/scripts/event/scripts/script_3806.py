@@ -27,8 +27,7 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=False,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(68),
                 ASResetProperties(),
                 ASFaceSoutheast(),
@@ -41,8 +40,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(5),
                 ASWalkSouthwestPixels(12),
                 ASSetSequenceSpeed(SLOW),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
@@ -68,8 +66,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(4),
                 ASSequenceLoopingOff(),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_9,
             subscript=[
@@ -101,8 +98,7 @@ script = EventScript(
                 ASWalkSouthPixels(2),
                 ASWalk1StepSouthwest(),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_5, subscript=[ASPause(300), ASFaceSouthwest()]),
         ActionQueueSync(target=NPC_6, subscript=[ASPause(300), ASFaceSouthwest()]),
         StarMaskExpandFromScreenCenter(),
@@ -118,8 +114,7 @@ script = EventScript(
                 ASWalkNortheastPixels(12),
                 ASFaceSoutheast(),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -131,8 +126,7 @@ script = EventScript(
                 ASWalkNorthwestPixels(4),
                 ASFaceNortheast(),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -143,8 +137,7 @@ script = EventScript(
                 ASWalkNorthwestSteps(2),
                 ASWalkNorthwestPixels(12),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_10, A0239_ENDING_CREDITS_CROCO),
         RememberLastObject(),
         ActionQueueAsync(target=NPC_7, subscript=[ASSequenceLoopingOff()]),
@@ -162,8 +155,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASSetSequenceSpeed(NORMAL),
                 ASWalkNortheastSteps(12),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_5, A0208_RAZ_ENDING),
         SetSyncActionScript(NPC_6, A0209_RAINI_ENDING),
         Pause(425),

@@ -15,12 +15,10 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=6,
             y=40,
-            z=9,
-        ),
+            z=9),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASFaceNortheast(), ASJumpToHeight(height=0, silent=True)],
-        ),
+            subscript=[ASFaceNortheast(), ASJumpToHeight(height=0, silent=True)]),
         ActionQueueSync(target=NPC_3, subscript=[ASShadowOff()]),
         FadeInFromBlack(sync=True),
         ActionQueueSync(
@@ -29,8 +27,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASShiftSouthSteps(6),
                 ASSetWalkingSpeed(NORMAL),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_3142_pause_11"),
         JmpIfMarioInAir(["EVENT_3142_pause_11"]),
         Return(),
@@ -43,8 +40,7 @@ script = EventScript(
             x=9,
             y=108,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

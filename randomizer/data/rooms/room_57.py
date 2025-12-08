@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3168_SEWERS_3RD_WATER_ROOM_PIPE_TO_WATER_SWITCH_ROOM,
             x=15,
@@ -58,8 +57,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3172_SEWERS_3RD_WATER_ROOM_PIPE_TO_STAIR_ROOM,
             x=2,
@@ -70,8 +68,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3174_SEWERS_3RD_WATER_ROOM_PIPE_TO_WATER_SWITCH_ROOM,
             x=8,
@@ -82,8 +79,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3178_SEWERS_3RD_WATER_TOOM_PIPE_TO_RAT_LINE_ROOM,
             x=11,
@@ -94,8 +90,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3315_SEWERS_3RD_WATER_ROOM_EXIT_TO_RAT_LINE_ROOM,
             x=13,
@@ -106,8 +101,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E3118_WATER_STATE,
             x=2,
@@ -118,8 +112,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -139,8 +132,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -169,8 +161,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackNPC( # 1
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -198,8 +189,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 2
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=12,
@@ -209,8 +199,7 @@ room = Room(
             y=103,
             z=9,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         BattlePackClone( # 3
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=13,
@@ -220,8 +209,7 @@ room = Room(
             y=94,
             z=11,
             z_half=False,
-            direction=NORTHEAST,
-        ),
+            direction=NORTHEAST),
         BattlePackClone( # 4
             npc=npcs.RAT_FUNK_NPC,
             battle_pack=13,
@@ -231,8 +219,7 @@ room = Room(
             y=104,
             z=5,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackNPC( # 5
             npc=npcs.RAT_FUNK_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -260,7 +247,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

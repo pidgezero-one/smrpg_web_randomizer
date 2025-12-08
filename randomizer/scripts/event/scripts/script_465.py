@@ -55,8 +55,7 @@ script = EventScript(
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 20, ["EVENT_465_set_short_107"]),
         JmpIfRandom2of3(
             ["EVENT_465_set_short_60", "EVENT_465_set_short_77"],
-            identifier="EVENT_465_jmp_if_random_above_66_47",
-        ),
+            identifier="EVENT_465_jmp_if_random_above_66_47"),
         JmpIfRandom1of2(["EVENT_465_set_short_87"]),
         Jmp(["EVENT_465_set_short_97"]),
         SetVarToConst(X_COORD_2, 81, identifier="EVENT_465_set_short_50"),
@@ -126,8 +125,7 @@ script = EventScript(
         JmpIfBitClear(
             YOSTER_ISLE_LIBERATED_2,
             ["EVENT_465_set_122"],
-            identifier="EVENT_465_jmp_if_bit_clear_114",
-        ),
+            identifier="EVENT_465_jmp_if_bit_clear_114"),
         StoreItemAmountTo7000(YoshiCookie),
         CompareVarToConst(PRIMARY_TEMP_7000, 6),
         JmpIfComparisonResultIsGreaterOrEqual(["EVENT_465_set_120"]),
@@ -145,8 +143,7 @@ script = EventScript(
         StartSyncEmbeddedActionScript(
             target=NPC_9,
             prefix=0xF1,
-            subscript=[ASSetSequenceSpeed(SLOW), ASSequenceLoopingOn()],
-        ),
+            subscript=[ASSetSequenceSpeed(SLOW), ASSequenceLoopingOn()]),
         ActionQueueSync(target=NPC_2, subscript=[ASSequenceLoopingOn()]),
         ActionQueueSync(target=NPC_3, subscript=[ASSequenceLoopingOn()]),
         ActionQueueSync(target=NPC_10, subscript=[ASSequenceLoopingOn()]),
@@ -158,14 +155,12 @@ script = EventScript(
         JmpIfAudioMemoryEquals(3, ["EVENT_465_pause_135"]),
         RunBackgroundEvent(
             event_id=E0466_MUSHROOM_DERBY_BUSINESS_LOGIC_EXTENSION,
-            return_on_level_exit=True,
-        ),
+            return_on_level_exit=True),
         JmpIfBitSet(MUSHROOM_DERBY_AUTO, ["EVENT_256_ret_0"]),
         RunBackgroundEvent(
             event_id=E0468_MUSHROOM_DERBY_USE_YOSHI_COOKIE,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         Set7000ToTappedButton(identifier="EVENT_465_set_7000_to_tapped_button_140"),
         Pause(1),
         JmpIf7000AnyBitsSet(bits=[], destinations=["EVENT_465_set_bit_172"]),
@@ -191,8 +186,7 @@ script = EventScript(
         JmpIfBitSet(
             UNKNOWN_MUSHROOM_DERBY_704A_0,
             ["EVENT_465_set_bit_182"],
-            identifier="EVENT_465_jmp_if_bit_set_162",
-        ),
+            identifier="EVENT_465_jmp_if_bit_set_162"),
         JmpIfBitSet(UNKNOWN_MUSHROOM_DERBY_704A_1, ["EVENT_465_set_bit_185"]),
         SetBit(UNKNOWN_MUSHROOM_DERBY_704A_0),
         ClearBit(UNKNOWN_MUSHROOM_DERBY_704A_1),
@@ -200,8 +194,7 @@ script = EventScript(
         JmpIfBitSet(
             UNKNOWN_MUSHROOM_DERBY_704A_1,
             ["EVENT_465_set_bit_182"],
-            identifier="EVENT_465_jmp_if_bit_set_167",
-        ),
+            identifier="EVENT_465_jmp_if_bit_set_167"),
         JmpIfBitSet(UNKNOWN_MUSHROOM_DERBY_704A_0, ["EVENT_465_set_bit_192"]),
         SetBit(UNKNOWN_MUSHROOM_DERBY_704A_1),
         ClearBit(UNKNOWN_MUSHROOM_DERBY_704A_0),

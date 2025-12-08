@@ -14,5 +14,4 @@ script = BattleAnimationScript(
         RunSubroutine(["command_0x3a7531"], identifier="command_0x3a6b9a"),
         RunSubroutine(["command_0x3aecdc"]),
         Db(bytearray(b"\xe2")),
-    ],
-)
+    ])

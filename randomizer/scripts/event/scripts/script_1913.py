@@ -25,8 +25,7 @@ script = EventScript(
             target_npc=MARIO,
             coord=COORD_F,
             pixel=True,
-            identifier="EVENT_1913_set_7000_to_object_coord_11",
-        ),
+            identifier="EVENT_1913_set_7000_to_object_coord_11"),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 6, ["EVENT_1913_add_short_18"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_1913_add_short_20"]),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_1913_add_short_23"]),
@@ -48,8 +47,7 @@ script = EventScript(
                 ASPause(4),
                 ASDb(
                     bytearray(b"\x99"),
-                    identifier="EVENT_1913_action_queue_sync_24_SUBSCRIPT_db_2",
-                ),
+                    identifier="EVENT_1913_action_queue_sync_24_SUBSCRIPT_db_2"),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
                 ASPlaySound(sound=SO078_CLICK, channel=4),
                 ASVisibilityOn(),
@@ -65,8 +63,7 @@ script = EventScript(
                 ASEndLoop(),
                 ASClearBit(TEMP_7043_0),
             ],
-            identifier="EVENT_1913_action_queue_sync_24",
-        ),
+            identifier="EVENT_1913_action_queue_sync_24"),
         Return(identifier="EVENT_1913_ret_25"),
     ]
 )

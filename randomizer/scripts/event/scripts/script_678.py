@@ -25,16 +25,14 @@ script = EventScript(
                     1, identifier="EVENT_678_action_queue_sync_8_SUBSCRIPT_pause_2"
                 ),
                 ASJmpIfMarioInAir(["EVENT_678_action_queue_sync_8_SUBSCRIPT_pause_2"]),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI2184_JUMP_ON_ORGAN,
             above_object=NPC_12,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -48,8 +46,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_678_action_queue_async_10_SUBSCRIPT_pause_4"]
                 ),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7043_0),
         SetSyncActionScript(NPC_0, A0119_SLOW_SEQUENCE_LOOP),
         SetSyncActionScript(NPC_5, A0119_SLOW_SEQUENCE_LOOP),

@@ -83,8 +83,7 @@ script = ActionScript(
         JmpIfBitSet(
             TEMP_7044_0,
             ["ACTION_827_jmp_if_bit_clear_100"],
-            identifier="ACTION_827_jmp_if_bit_set_74",
-        ),
+            identifier="ACTION_827_jmp_if_bit_set_74"),
         TransferToXYZF(x=7, y=101, z=28, direction=EAST),
         Pause(50),
         JumpToHeight(96),
@@ -113,8 +112,7 @@ script = ActionScript(
         JmpIfBitClear(
             TEMP_7044_0,
             ["ACTION_827_jmp_if_bit_set_74"],
-            identifier="ACTION_827_jmp_if_bit_clear_100",
-        ),
+            identifier="ACTION_827_jmp_if_bit_clear_100"),
         TransferToXYZF(x=8, y=58, z=12, direction=SOUTHEAST),
         Pause(30),
         JumpToHeight(96),

@@ -11,5 +11,4 @@ script = SubroutineOrBanklessScript(
         ObjectQueueAtOffsetAndIndexAtAMEM60(target_address=0x351493),
         Db(bytearray(b"<\x00\x08")),
         Jmp(["command_0x3508b5"]),
-    ],
-)
+    ])

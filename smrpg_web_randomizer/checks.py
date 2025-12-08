@@ -1,5 +1,4 @@
 import re
-from typing import List
 from django.core.checks import register
 from django.core.checks.messages import CheckMessage, DEBUG, INFO, WARNING, ERROR
 from django.conf import settings

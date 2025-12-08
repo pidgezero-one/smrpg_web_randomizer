@@ -14,8 +14,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI2172_CHAPEL_NPC,
@@ -24,8 +23,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_695_run_dialog_8",
-        ),
+            identifier="EVENT_695_run_dialog_8"),
         Return(),
     ]
 )

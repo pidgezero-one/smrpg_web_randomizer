@@ -18,14 +18,12 @@ script = EventScript(
                 ASSetSolidityBits(cant_pass_npcs=True),
                 ASWalkSoutheastPixels(50),
                 ASSetWalkingSpeed(FAST),
-            ],
-        ),
+            ]),
         Return(identifier="EVENT_1737_ret_3"),
         JmpIfBitSet(
             SKY_BRIDGE_COURSE_CHOICE,
             ["EVENT_1846_jmp_if_bit_set_0"],
-            identifier="EVENT_1737_jmp_if_bit_set_4",
-        ),
+            identifier="EVENT_1737_jmp_if_bit_set_4"),
         Return(),
     ]
 )

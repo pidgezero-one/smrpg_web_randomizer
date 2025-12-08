@@ -1,15 +1,12 @@
 """Base classes for swappable palettes."""
 
-from typing import List
-
 from randomizer.types.patch.classes import Patch
 
 from .ids import (
     CLASSIC_PALETTE_OFFSET,
     MAP_PALETTE_OFFSET,
     MINECART_PALETTE_OFFSET,
-    UNKNOWN_PALETTE_ADDR,
-)
+    UNKNOWN_PALETTE_ADDR)
 
 
 class Palette(list):
@@ -65,10 +62,10 @@ class CharacterPaletteSet:
     _original_name: str = ""
     _original_clone_name: str = ""
 
-    _addresses_for_default_palette: List[int] = []
-    _addresses_for_doll_colours: List[int] = []
-    _addresses_for_poison_palette: List[int] = []
-    _addresses_for_underwater_palette: List[int] = []
+    _addresses_for_default_palette: list[int] = []
+    _addresses_for_doll_colours: list[int] = []
+    _addresses_for_poison_palette: list[int] = []
+    _addresses_for_underwater_palette: list[int] = []
 
     _address_for_name: int = 0
     _address_for_clone_name: int = 0
@@ -99,23 +96,23 @@ class CharacterPaletteSet:
         return self._original_clone_name
 
     @property
-    def addresses_for_default_palette(self) -> List[int]:
+    def addresses_for_default_palette(self) -> list[int]:
         """The ROM addresses at which to write the main colours for this palette."""
         return self._addresses_for_default_palette
 
     @property
-    def addresses_for_doll_colours(self) -> List[int]:
+    def addresses_for_doll_colours(self) -> list[int]:
         """The ROM addresses at which to write the colours for this palette
         as they would apply to this character's doll sprite."""
         return self._addresses_for_doll_colours
 
     @property
-    def addresses_for_poison_palette(self) -> List[int]:
+    def addresses_for_poison_palette(self) -> list[int]:
         """The ROM addresses at which to write the poison-tinted colours for this palette."""
         return self._addresses_for_poison_palette
 
     @property
-    def addresses_for_underwater_palette(self) -> List[int]:
+    def addresses_for_underwater_palette(self) -> list[int]:
         """The ROM addresses at which to write the underwater-tinted colours for this palette."""
         return self._addresses_for_underwater_palette
 
@@ -198,8 +195,7 @@ class CharacterPaletteSet:
         patch.add_data(self.address_for_name, CharacterPaletteSet._pad_name(names[0]))
         patch.add_data(
             self.address_for_clone_name,
-            CharacterPaletteSet._pad_name(names[1]),
-        )
+            CharacterPaletteSet._pad_name(names[1]))
         for address in self.addresses_for_default_palette:
             patch.add_data(address, self.default_colours.to_bytes())
         for address in self.addresses_for_poison_palette:
@@ -222,7 +218,7 @@ class MarioPaletteSet(CharacterPaletteSet):
     _original_name: str = "Mario"
     _original_clone_name: str = "MARIO CLONE"
 
-    _addresses_for_default_palette: List[int] = [
+    _addresses_for_default_palette: list[int] = [
         # overworld
         0x257998,
         # battle
@@ -242,7 +238,7 @@ class MarioPaletteSet(CharacterPaletteSet):
         # ?
         0x3EE0FF,
     ]
-    _addresses_for_doll_colours: List[int] = [
+    _addresses_for_doll_colours: list[int] = [
         # doll 1 - for mario, 6th colour should be 7th in palette,
         # 7th colour should be 8th in palette,
         # and 8th and 9th colour should both be 9th in palette.
@@ -251,14 +247,14 @@ class MarioPaletteSet(CharacterPaletteSet):
         # 0x2576E6
         0x258D66
     ]
-    _addresses_for_poison_palette: List[int] = [
+    _addresses_for_poison_palette: list[int] = [
         0x2579D4,
         0x257BB4,
         0x256BC4,
         # ?
         0x257722,
     ]
-    _addresses_for_underwater_palette: List[int] = [0x257A10, 0x257BF0]
+    _addresses_for_underwater_palette: list[int] = [0x257A10, 0x257BF0]
 
     _address_for_name: int = 0x3A134D
     _address_for_clone_name: int = 0x399A96
@@ -352,7 +348,7 @@ class MallowPaletteSet(CharacterPaletteSet):
     _original_name: str = "Mallow"
     _original_clone_name: str = "MALLOW CLONE"
 
-    _addresses_for_default_palette: List[int] = [
+    _addresses_for_default_palette: list[int] = [
         # overworld
         0x2581AE,
         # battle
@@ -368,9 +364,9 @@ class MallowPaletteSet(CharacterPaletteSet):
         # ?
         # 0x37A9F6
     ]
-    _addresses_for_doll_colours: List[int] = []
-    _addresses_for_poison_palette: List[int] = [0x2581EA, 0x258280]
-    _addresses_for_underwater_palette: List[int] = [0x258226, 0x2582BC]
+    _addresses_for_doll_colours: list[int] = []
+    _addresses_for_poison_palette: list[int] = [0x2581EA, 0x258280]
+    _addresses_for_underwater_palette: list[int] = [0x258226, 0x2582BC]
 
     _address_for_name: int = 0x3A1375
     _address_for_clone_name: int = 0x399ACA
@@ -399,7 +395,7 @@ class GenoPaletteSet(CharacterPaletteSet):
     _original_name: str = "Geno"
     _original_clone_name: str = "GENO CLONE"
 
-    _addresses_for_default_palette: List[int] = [
+    _addresses_for_default_palette: list[int] = [
         # overworld
         0x258046,
         # battle
@@ -413,9 +409,9 @@ class GenoPaletteSet(CharacterPaletteSet):
         # ?
         # 0x37AA14
     ]
-    _addresses_for_doll_colours: List[int] = []
-    _addresses_for_poison_palette: List[int] = [0x258082, 0x258136]
-    _addresses_for_underwater_palette: List[int] = [0x2580BE, 0x258172]
+    _addresses_for_doll_colours: list[int] = []
+    _addresses_for_poison_palette: list[int] = [0x258082, 0x258136]
+    _addresses_for_underwater_palette: list[int] = [0x2580BE, 0x258172]
 
     _address_for_name: int = 0x3A136B
     _address_for_clone_name: int = 0x399ABD
@@ -446,7 +442,7 @@ class BowserPaletteSet(CharacterPaletteSet):
     _original_name: str = "Bowser"
     _original_clone_name: str = "BOWSER CLONE"
 
-    _addresses_for_default_palette: List[int] = [
+    _addresses_for_default_palette: list[int] = [
         # overworld
         0x257DD0,
         # battle
@@ -462,9 +458,9 @@ class BowserPaletteSet(CharacterPaletteSet):
         # ?
         # 0x37B068
     ]
-    _addresses_for_doll_colours: List[int] = []
-    _addresses_for_poison_palette: List[int] = [0x257E0C, 0x257EA2]
-    _addresses_for_underwater_palette: List[int] = [0x257E48, 0x257EDE]
+    _addresses_for_doll_colours: list[int] = []
+    _addresses_for_poison_palette: list[int] = [0x257E0C, 0x257EA2]
+    _addresses_for_underwater_palette: list[int] = [0x257E48, 0x257EDE]
 
     _address_for_name: int = 0x3A1361
     _address_for_clone_name: int = 0x399AB0
@@ -494,7 +490,7 @@ class ToadstoolPaletteSet(CharacterPaletteSet):
     _original_name: str = "Toadstool"
     _original_clone_name: str = "TOADSTOOL 2"
 
-    _addresses_for_default_palette: List[int] = [
+    _addresses_for_default_palette: list[int] = [
         # overworld
         0x257CA4,
         # battle
@@ -508,9 +504,9 @@ class ToadstoolPaletteSet(CharacterPaletteSet):
         # ?
         # 0x37B086
     ]
-    _addresses_for_doll_colours: List[int] = []
-    _addresses_for_poison_palette: List[int] = [0x257CE0, 0x257D76]
-    _addresses_for_underwater_palette: List[int] = [0x257D1C, 0x257DB2]
+    _addresses_for_doll_colours: list[int] = []
+    _addresses_for_poison_palette: list[int] = [0x257CE0, 0x257D76]
+    _addresses_for_underwater_palette: list[int] = [0x257D1C, 0x257DB2]
 
     _address_for_name: int = 0x3A1357
     _address_for_clone_name: int = 0x399AA3

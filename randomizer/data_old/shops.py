@@ -9,8 +9,7 @@ from randomizer.data.items import ItemUnique
 from randomizer.helpers.flag_helpers import (
     PlayableCharacters,
     SeaGating,
-    BowsersKeepGating,
-)
+    BowsersKeepGating)
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 from randomizer.logic import flags
@@ -268,9 +267,7 @@ class DiscipleShop(Shop):
                     items.Flower,
                     items.YouMissed,
                     items.InvincibilityStar,
-                    items.InfiniteCoins,
-                ),
-            )
+                    items.InfiniteCoins))
             and not item.is_key
             and (
                 item.is_equipment
@@ -813,9 +810,7 @@ class MolevilleTreasureShop(NPCShop):
                 items.Flower,
                 items.YouMissed,
                 items.InvincibilityStar,
-                items.InfiniteCoins,
-            ),
-        ) and (
+                items.InfiniteCoins)) and (
             item.unique == ItemUnique.Always or item.unique == ItemUnique.BalancedOnly
         )
 

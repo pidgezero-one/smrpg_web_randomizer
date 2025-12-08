@@ -62,8 +62,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 1
             npc=npcs.YELLOW_STEPPING_BLOCK_NPC_4,
             initiator=EventInitiator.NONE,
@@ -90,8 +89,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularNPC( # 2
             npc=npcs.ROLLING_BARREL_NPC_3,
             initiator=EventInitiator.NONE,
@@ -118,8 +116,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 3
             npc=npcs.ROLLING_BARREL_NPC_3,
             event_script=E0256_RETURN,
@@ -129,8 +126,7 @@ room = Room(
             y=46,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.ROLLING_BARREL_NPC_3,
             event_script=E0256_RETURN,
@@ -140,8 +136,7 @@ room = Room(
             y=45,
             z=1,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.ROLLING_BARREL_NPC_3,
             event_script=E0256_RETURN,
@@ -151,8 +146,7 @@ room = Room(
             y=44,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 6
             npc=npcs.ROLLING_BARREL_NPC_3,
             event_script=E0256_RETURN,
@@ -162,8 +156,7 @@ room = Room(
             y=39,
             z=10,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 7
             npc=npcs.ROLLING_BARREL_NPC_3,
             event_script=E0256_RETURN,
@@ -173,8 +166,7 @@ room = Room(
             y=37,
             z=11,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 8
             npc=npcs.ROLLING_BARREL_NPC_3,
             event_script=E0256_RETURN,
@@ -184,8 +176,7 @@ room = Room(
             y=38,
             z=11,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 9
             npc=npcs.ROLLING_BARREL_NPC_3,
             event_script=E0256_RETURN,
@@ -195,7 +186,6 @@ room = Room(
             y=35,
             z=12,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
     ]
 )

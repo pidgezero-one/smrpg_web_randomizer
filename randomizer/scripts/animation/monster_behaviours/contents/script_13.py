@@ -28,5 +28,4 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"\x98")),
         Db(bytearray(b"F"), identifier="command_0x3508db"),
         Jmp(["command_0x3508b5"]),
-    ],
-)
+    ])

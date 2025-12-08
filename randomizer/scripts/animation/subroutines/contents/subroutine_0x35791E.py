@@ -26,5 +26,4 @@ script = SubroutineOrBanklessScript(
         SpriteSequence(sequence=0),
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=1),
         ReturnSubroutine(),
-    ],
-)
+    ])

@@ -8,24 +8,19 @@ from randomizer.entities.items.items import (
     Mushroom,
     Mushroom2,
     RottenMush,
-    WiltShroom,
-)
+    WiltShroom)
 from randomizer.types.overworld_scripts.arguments.variables import (
     ITEM_ID,
-    PRIMARY_TEMP_7000,
-)
+    PRIMARY_TEMP_7000)
 
 from randomizer.types.overworld_scripts.event_scripts import (
-    EventScript,
-)
+    EventScript)
 from randomizer.types.overworld_scripts.event_scripts.commands import (
     JmpIfVarEqualsConst,
-    SetVarToRandom,
-)
+    SetVarToRandom)
 from randomizer.types.overworld_scripts.event_scripts.commands.commands import (
     Return,
-    SetVarToConst,
-)
+    SetVarToConst)
 
 
 script = EventScript(

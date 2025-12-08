@@ -84,8 +84,7 @@ def _randomize_enemy(enemy):
         "magic_defense",
         "fp",
         "evade",
-        "magic_evade",
-    )
+        "magic_evade")
     old_stats = {}
     for key in mutate_attributes:
         old_stats[key] = getattr(enemy, key)
@@ -260,7 +259,7 @@ def randomize_all(world):
         # *** Shuffle enemy attacks ***
         # Intershuffle hit rate of attacks with status effects.
         with_status_effects = [a for a in world.enemy_attacks if a.status_effects]
-        for attr in ("hit_rate",):
+        for attr in ("hit_rate"):
             shuffled = with_status_effects[:]
             random.shuffle(shuffled)
             swaps = []
@@ -289,8 +288,7 @@ def randomize_all(world):
             "magic_evade",
             "resistances",
             "weaknesses",
-            "status_immunities",
-        ):
+            "status_immunities"):
             shuffled = candidates[:]
             max_index = len(candidates) - 1
             done = set()
@@ -334,8 +332,7 @@ def randomize_all(world):
         enemies.Smithy2TankHead,
         enemies.Smithy2SafeHead,
         enemies.Smithy2MageHead,
-        enemies.Smithy2ChestHead,
-    ):
+        enemies.Smithy2ChestHead):
         head = world.get_enemy_instance(e)
         head.hp = main_head.hp
 

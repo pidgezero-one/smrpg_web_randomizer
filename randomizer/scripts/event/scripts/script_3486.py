@@ -20,8 +20,7 @@ script = EventScript(
                 ),
                 ASJmpIfBitSet(BUCKET_WARP_BIT, ["EVENT_3486_action_queue_sync_5"]),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -30,8 +29,7 @@ script = EventScript(
                 ASWalkWestPixels(4),
                 ASSetWalkingSpeed(NORMAL),
             ],
-            identifier="EVENT_3486_action_queue_sync_5",
-        ),
+            identifier="EVENT_3486_action_queue_sync_5"),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
@@ -41,15 +39,13 @@ script = EventScript(
                 ASAddZCoord1Step(),
                 ASWalkEastPixels(4),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[0, 1]),
-            ],
-        ),
+            ]),
         JmpIfBitClear(BUCKET_WARP_BIT, ["EVENT_3486_jmp_if_bit_set_9"]),
         RemoveObjectFromCurrentLevel(NPC_3),
         JmpIfBitSet(
             TEMP_7044_7,
             ["EVENT_3486_remove_from_current_level_11"],
-            identifier="EVENT_3486_jmp_if_bit_set_9",
-        ),
+            identifier="EVENT_3486_jmp_if_bit_set_9"),
         JmpIfBitSet(TEMP_7043_1, ["EVENT_3486_action_queue_async_15"]),
         RemoveObjectFromCurrentLevel(
             NPC_1, identifier="EVENT_3486_remove_from_current_level_11"
@@ -73,8 +69,7 @@ script = EventScript(
                 ASJumpToHeight(height=0, silent=True),
                 ASPause(5),
             ],
-            identifier="EVENT_3486_action_queue_async_15",
-        ),
+            identifier="EVENT_3486_action_queue_async_15"),
         FadeInFromBlack(sync=True),
         PlaySoundBalance(sound=SO048_MINECART_START, balance=30),
         ActionQueueSync(
@@ -83,8 +78,7 @@ script = EventScript(
                 ASFixedFCoordOn(),
                 ASSetAllSpeeds(FAST),
                 ASWalkSoutheastSteps(7),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -92,8 +86,7 @@ script = EventScript(
                 ASSetAllSpeeds(FAST),
                 ASWalkSoutheastSteps(7),
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
-            ],
-        ),
+            ]),
         JmpIfBitSet(BUCKET_WARP_BIT, ["EVENT_3486_action_queue_sync_22"]),
         ActionQueueSync(
             target=NPC_3,
@@ -104,16 +97,13 @@ script = EventScript(
                     UNKNOWN_MIDAS_RIVER_704E_5,
                     [
                         "EVENT_3486_action_queue_sync_21_SUBSCRIPT_shift_northeast_steps_5"
-                    ],
-                ),
+                    ]),
                 ASWalkNortheastSteps(5),
                 ASJmp(["EVENT_3486_action_queue_sync_22"]),
                 ASWalkNortheastSteps(
                     4,
-                    identifier="EVENT_3486_action_queue_sync_21_SUBSCRIPT_shift_northeast_steps_5",
-                ),
-            ],
-        ),
+                    identifier="EVENT_3486_action_queue_sync_21_SUBSCRIPT_shift_northeast_steps_5"),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -123,8 +113,7 @@ script = EventScript(
                 ASWalkSouthPixels(8),
                 ASSetWalkingSpeed(SLOW),
             ],
-            identifier="EVENT_3486_action_queue_sync_22",
-        ),
+            identifier="EVENT_3486_action_queue_sync_22"),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -134,8 +123,7 @@ script = EventScript(
                 ASEndLoop(),
                 ASWalkNorthwestSteps(8),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -146,8 +134,7 @@ script = EventScript(
                     sprite_offset=3,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASJumpToHeight(height=112, silent=True),
                 ASWalkSoutheastSteps(3),
                 ASSetSolidityBits(cant_pass_walls=True),
@@ -168,8 +155,7 @@ script = EventScript(
                     ["EVENT_3486_action_queue_async_24_SUBSCRIPT_pause_12"]
                 ),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_4),
         JmpIfBitSet(BUCKET_WARP_BIT, ["EVENT_3486_ret_44"]),
         JmpIfBitSet(UNKNOWN_MIDAS_RIVER_7079_0, ["EVENT_3486_jmp_if_bit_set_39"]),
@@ -185,14 +171,12 @@ script = EventScript(
         CopyVarToVar(
             from_var=PRIMARY_TEMP_7000,
             to_var=MIDAS_RIVER_70B3,
-            identifier="EVENT_3486_set_70A0_short_mem_to_7000_37",
-        ),
+            identifier="EVENT_3486_set_70A0_short_mem_to_7000_37"),
         SetBit(TEMP_7043_2),
         JmpIfBitSet(
             UNKNOWN_MIDAS_RIVER_704E_5,
             ["EVENT_3486_jmp_to_event_43"],
-            identifier="EVENT_3486_jmp_if_bit_set_39",
-        ),
+            identifier="EVENT_3486_jmp_if_bit_set_39"),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -210,8 +194,7 @@ script = EventScript(
                 ASWalk1StepSouthwest(),
                 ASFixedFCoordOff(),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -223,8 +206,7 @@ script = EventScript(
                     ["EVENT_3486_action_queue_async_41_SUBSCRIPT_pause_1"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         SetBit(UNKNOWN_MIDAS_RIVER_704E_5),
         JmpToEvent(
             E3479_MIDAS_RIVER_SCORE_SUBMISSION, identifier="EVENT_3486_jmp_to_event_43"

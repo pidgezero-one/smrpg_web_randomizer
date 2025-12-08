@@ -18,8 +18,7 @@ script = EventScript(
                 ),
                 ASSetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
                 ASOverwriteSolidity(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False, identifier="EVENT_2338_fade_in_from_black_async_3"),
         Return(),
     ]

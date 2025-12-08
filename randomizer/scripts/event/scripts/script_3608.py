@@ -10,7 +10,6 @@ script = EventScript(
         JmpToEvent(E1793_LANDS_END_PURCHASABLE_CHEST_1_SUBROUTINE),
         JmpToEvent(
             E3929_LANDS_END_PURCHASABLE_CHEST_2_SUBROUTINE,
-            identifier="EVENT_3608_chest_2",
-        ),
+            identifier="EVENT_3608_chest_2"),
     ]
 )

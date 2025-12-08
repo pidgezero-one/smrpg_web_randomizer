@@ -11,13 +11,11 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=20,
             y=42,
-            z=2,
-        ),
+            z=2),
         JmpIfBitClear(
             SEWER_WATER_LEVEL,
             ["EVENT_3315_jmp_to_event_3"],
-            identifier="EVENT_3315_jmp_if_bit_clear_1",
-        ),
+            identifier="EVENT_3315_jmp_if_bit_clear_1"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -28,8 +26,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_3315_action_queue_async_2_SUBSCRIPT_pause_1"]
                 ),
-            ],
-        ),
+            ]),
         JmpToEvent(E3135_SEWERS_GENERIC_LOADER, identifier="EVENT_3315_jmp_to_event_3"),
     ]
 )

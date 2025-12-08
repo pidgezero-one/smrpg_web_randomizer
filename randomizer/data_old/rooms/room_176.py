@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -64,8 +63,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=22,
             y=13,
@@ -83,8 +81,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -121,8 +118,7 @@ room = Room(
             obtuse_axis=5,
             height=9,
             cannot_clone=False,
-            y_shift=-2,
-        ),
+            y_shift=-2),
         RegularNPC( # 1
             occupant=npcs.GreenSwitch,
             initiator=Initiator.JUMP_ON,
@@ -153,8 +149,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.GreenSwitch,
             event_script=3219,
@@ -168,8 +163,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 3
             occupant=npcs.JBlock,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -204,8 +198,7 @@ room = Room(
             height=9,
             cannot_clone=False,
             byte2_bit1=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularNPC( # 4
             occupant=npcs.SavePoint,
             initiator=Initiator.JUMP_ON,
@@ -237,7 +230,6 @@ room = Room(
             priority_1=True,
             priority_2=False,
             show_shadow=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

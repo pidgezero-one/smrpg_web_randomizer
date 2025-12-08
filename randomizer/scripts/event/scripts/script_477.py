@@ -19,8 +19,7 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
@@ -28,8 +27,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASBounceToXYWithHeight(x=8, y=85, height=0),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         PauseActionScript(NPC_9),
         StartAsyncEmbeddedActionScript(
             target=NPC_9,
@@ -38,8 +36,7 @@ script = EventScript(
                 ASSetSequenceSpeed(SLOW),
                 ASSetObjectMemoryBits(arg_1=0x0E, bits=[]),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         ClearBit(TEMP_7044_0),
         ClearBit(TEMP_7044_1),
         ClearBit(TEMP_7044_2),

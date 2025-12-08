@@ -46,8 +46,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         MapExit(
@@ -63,7 +62,5 @@ room = Room(
             destination=OW14_KERO_SEWERS,
             show_message=False,
             byte_2_bit_1=False,
-            byte_2_bit_0=False,
-        ),
-    ],
-)
+            byte_2_bit_0=False),
+    ])

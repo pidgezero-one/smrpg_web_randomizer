@@ -16,16 +16,14 @@ script = EventScript(
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 )
-            ],
-        ),
+            ]),
         PauseActionScript(NPC_7),
         ActionQueueSync(
             target=MARIO,
             subscript=[
                 ASTransferToXYZF(x=14, y=119, z=0, direction=EAST),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         StartAsyncEmbeddedActionScript(
             target=NPC_7,
             prefix=0xF1,
@@ -34,8 +32,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASSetSolidityBits(cant_walk_through=True),
                 ASSetSolidityBits(bit_0=True),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         FadeInFromBlack(sync=False),
         Pause(30),
@@ -45,15 +42,13 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         UnsyncDialog(),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
                 ASObjectMemoryModifyBits(arg_1=0x09, set_bits=[5], clear_bits=[4, 6])
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_7, A0128_WALK_RANDOM_DIRECTIONS),
         Return(),
     ]

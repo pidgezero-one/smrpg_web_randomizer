@@ -6,58 +6,47 @@ from randomizer.entities.progress_locations.characters_recruited import (
     StartingCharacter2,
     StartingCharacter3,
     StartingCharacter4,
-    StartingCharacter5,
-)
+    StartingCharacter5)
 from randomizer.entities.progress_locations.flag_locations import (
     MariosPadBed,
     RoseTownSign,
-    YosterIsleGoal,
-)
+    YosterIsleGoal)
 from randomizer.entities.progress_locations.item_locations import (
     MonstroFirstSuperJumpReward,
     MonstroSecondSuperJumpReward,
-    BucketGirlReward,
-)
+    BucketGirlReward)
 from randomizer.types.dialogs.ids.dialog_ids import (
     DI1107_RESERVED_FOR_BIGBOOFLAG_HINT,
     DI1108_RESERVED_FOR_DRYBONESFLAG_HINT,
-    DI1109_RESERVED_FOR_GREAPERFLAG_HINT,
-)
+    DI1109_RESERVED_FOR_GREAPERFLAG_HINT)
 from randomizer.data.npcs.npcs import Empty
 from randomizer.types.overworld_scripts.action_scripts.commands.commands import (
     WalkEastPixels,
     WalkNorthPixels,
     WalkSouthPixels,
-    WalkWestPixels,
-)
+    WalkWestPixels)
 from randomizer.types.overworld_scripts.action_scripts.ids.script_ids import (
     A0324_INVISIBLE_ITEM_SHIFT_1,
     A0325_INVISIBLE_ITEM_SHIFT_2,
-    A0326_INVISIBLE_ITEM_SHIFT_3,
-)
+    A0326_INVISIBLE_ITEM_SHIFT_3)
 from randomizer.types.overworld_scripts.arguments.area_objects import (
-    AREAOBJECT_FROM_NPC_ID,
-)
+    AREAOBJECT_FROM_NPC_ID)
 from randomizer.types.overworld_scripts.event_scripts.commands.commands import (
     RunEventAsSubroutine,
-    SummonObjectToSpecificLevel,
-)
+    SummonObjectToSpecificLevel)
 from randomizer.types.overworld_scripts.event_scripts.ids.script_ids import (
     E0088_INVISIBLE_ITEM_CHECK_1_CONTAINER,
     E0089_INVISIBLE_ITEM_CHECK_2_CONTAINER,
     E0090_INVISIBLE_ITEM_CHECK_3_CONTAINER,
     E0091_INVISIBLE_ITEM_SUMMONER,
-    E0192_GATING_AND_PARTY_JOIN_LOGIC,
-)
+    E0192_GATING_AND_PARTY_JOIN_LOGIC)
 from randomizer.types.overworld_scripts.ids.room_names import (
     R034_YOSTER_ISLE,
     R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
     R084_ROSE_TOWN_OUTSIDE,
-    R189_MARIOS_PIPEHOUSE,
-)
+    R189_MARIOS_PIPEHOUSE)
 from randomizer.types.progress_locations.classes import (
-    InvisibleItemCandidate,
-)
+    InvisibleItemCandidate)
 from randomizer.types.rooms.classes import RegularNPC
 from randomizer.types.rooms.enums import EventInitiator
 from randomizer.types.world import GameWorld
@@ -65,8 +54,7 @@ from randomizer.types.world.flags import LearnableSpells, AvailableSpells
 
 
 from randomizer.entities.progress_locations import (
-    flag_locations_table,
-)
+    flag_locations_table)
 from randomizer.types.world.flags.enums import FireworksOptions
 from randomizer.types.world.flags.flags import (
     BucketWarp,
@@ -74,8 +62,7 @@ from randomizer.types.world.flags.flags import (
     FireworksSetting,
     InvisibleFlagsSetting,
     SkipMustyFearsSequence,
-    StartingCharacters,
-)
+    StartingCharacters)
 
 
 def _set_up_invisible_items(world: GameWorld) -> None:
@@ -116,8 +103,7 @@ def _set_up_invisible_items(world: GameWorld) -> None:
             items,
             check_containers,
             shift_action_scripts,
-            clue_dialog_ids,
-        ):
+            clue_dialog_ids):
             instance = world.get_location_instance(location)
             assert isinstance(instance, InvisibleItemCandidate) and item is not None
             instance.set_original_item(item)
@@ -141,8 +127,7 @@ def _set_up_invisible_items(world: GameWorld) -> None:
                         show_shadow=False,
                         acute_axis=15,
                         obtuse_axis=15,
-                        height=15,
-                    )
+                        height=15)
                 )
             # populate the shifter script
             script = world.action_scripts.scripts[shift_script_id]

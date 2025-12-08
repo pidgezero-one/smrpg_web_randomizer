@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Return(),
         RunDialog(
             dialog_id=DI2811_ITS_LOCKED,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=False,
             use_background=False,
-            identifier="EVENT_632_run_dialog_3",
-        ),
+            identifier="EVENT_632_run_dialog_3"),
         Return(),
     ]
 )

@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["EVENT_1619_jmp_if_bit_set_2"]),
         RunDialog(
             dialog_id=DI1051_MOLEVILLE_CLOSED,
@@ -22,13 +21,11 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfBitSet(
             MOLE_DESCENDED,
             ["EVENT_1619_resume_action_script_15"],
-            identifier="EVENT_1619_jmp_if_bit_set_2",
-        ),
+            identifier="EVENT_1619_jmp_if_bit_set_2"),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -45,15 +42,13 @@ script = EventScript(
                 ASPause(10),
                 ASFaceNortheast(),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
                 ASSetWalkingSpeed(FAST),
                 ASBounceToXYWithHeight(x=14, y=27, height=0),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -65,8 +60,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=MARIO, subscript=[ASFaceSouthwest7D()]),
         ActionQueueAsync(
             target=NPC_0,
@@ -78,16 +72,14 @@ script = EventScript(
                 ASPause(20),
                 ASEndLoop(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI1098_MOLEVILLE_CUTSCENE,
             above_object=NPC_12,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
@@ -99,16 +91,14 @@ script = EventScript(
                 ASPause(20),
                 ASEndLoop(),
                 ASClearSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI1099_MOLEVILLE_CUTSCENE,
             above_object=NPC_14,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         StartSyncEmbeddedActionScript(
             target=NPC_0,
             prefix=0xF1,
@@ -116,8 +106,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASSetAllSpeeds(NORMAL),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         StartAsyncEmbeddedActionScript(
             target=NPC_1,
             prefix=0xF1,
@@ -125,8 +114,7 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASSetAllSpeeds(NORMAL),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_1, A0648_MOLEVILLE_WOMAN_NEAR_MOUNTAIN),
         SetBit(MOLE_DESCENDED),
         ResumeActionScript(NPC_0, identifier="EVENT_1619_resume_action_script_15"),

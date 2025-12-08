@@ -13,22 +13,19 @@ script = EventScript(
             x=18,
             y=66,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         JmpIfBitSet(
             SEASIDE_SHED_EMPTIED,
             ["EVENT_2243_enter_area_3"],
-            identifier="EVENT_2243_jmp_if_bit_set_0",
-        ),
+            identifier="EVENT_2243_jmp_if_bit_set_0"),
         EnterArea(
             room_id=R310_SEASIDE_TOWN_WEAPON_AND_ARMOR_SHOP,
             face_direction=NORTHWEST,
             x=18,
             y=66,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R310_SEASIDE_TOWN_WEAPON_AND_ARMOR_SHOP,
@@ -38,8 +35,7 @@ script = EventScript(
             z=0,
             show_banner=True,
             run_entrance_event=True,
-            identifier="EVENT_2243_enter_area_3",
-        ),
+            identifier="EVENT_2243_enter_area_3"),
         Return(),
     ]
 )

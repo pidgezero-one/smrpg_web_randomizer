@@ -10,8 +10,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_0,
             R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
-            ["EVENT_256_ret_0"],
-        ),
+            ["EVENT_256_ret_0"]),
         SetBit(TEMP_7044_6),
         SetBit(TEMP_7043_5),
         ActionQueueSync(
@@ -26,8 +25,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueSync(target=NPC_0, subscript=[ASFaceSoutheast()]),
         ActionQueueSync(target=NPC_1, subscript=[ASFaceNorthwest()]),
         RememberLastObject(),
@@ -56,8 +54,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalkSoutheastPixels(4),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -72,8 +69,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalkNorthwestPixels(4),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         RunEventAsSubroutine(E1186_HENCHMAN_BATTLE_PACK_SELECTOR),
         SetBit(TEMP_704A_2),
@@ -89,16 +85,14 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_1,
             R327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
-            ["EVENT_381_jmp_if_object_in_level_45"],
-        ),
+            ["EVENT_381_jmp_if_object_in_level_45"]),
         FadeInFromBlack(sync=False),
         Return(),
         JmpIfObjectInSpecificLevel(
             NPC_4,
             R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
             ["EVENT_257_fade_in_from_black_async_0"],
-            identifier="EVENT_381_jmp_if_object_in_level_45",
-        ),
+            identifier="EVENT_381_jmp_if_object_in_level_45"),
         ActionQueueSync(target=MARIO, subscript=[ASFaceSouth()]),
         ActionQueueAsync(
             target=NPC_2,
@@ -106,23 +100,19 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASWalkNortheastPixels(8),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=NPC_2,
-            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNortheastPixels(8)],
-        ),
+            subscript=[ASSetWalkingSpeed(NORMAL), ASWalkNortheastPixels(8)]),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
-            mod_id=0,
-        ),
+            mod_id=0),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         ActionQueueSync(
             target=NPC_2,
@@ -130,12 +120,10 @@ script = EventScript(
                 ASWalk1StepNortheast(),
                 ASVisibilityOff(),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASPause(10), ASFaceEast(), ASPause(30), ASFaceSouth()],
-        ),
+            subscript=[ASPause(10), ASFaceEast(), ASPause(30), ASFaceSouth()]),
         RememberLastObject(),
         Return(),
     ]

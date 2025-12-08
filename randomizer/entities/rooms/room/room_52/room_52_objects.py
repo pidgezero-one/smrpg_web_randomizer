@@ -40,6 +40,5 @@ objects = [
         obtuse_axis=5,
         height=2,
         cannot_clone=True,
-        byte5_bit7=False,
-    ),
+        byte5_bit7=False),
 ]

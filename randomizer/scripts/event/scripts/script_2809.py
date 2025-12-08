@@ -14,8 +14,7 @@ script = EventScript(
         JmpIfBitSet(
             TOAD_IN_MUSHROOM_WAY_3,
             "script_2809_end",
-            identifier="script_2809_jmp_if_mem_set",
-        ),
+            identifier="script_2809_jmp_if_mem_set"),
         ClearBit(TEMP_7044_6),
         FreezeAllNPCsUntilReturn(),
         EnableControls([]),
@@ -31,8 +30,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 Pause(40),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             MARIO,
             [
@@ -42,8 +40,7 @@ script = EventScript(
                 ASWalkSouthwestSteps(1),
                 ASSetWalkingSpeed(NORMAL),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         Pause(10),
         UnfreezeAllNPCs(),
         EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),

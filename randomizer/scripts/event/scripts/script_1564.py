@@ -16,8 +16,7 @@ script = EventScript(
                 ASFaceSouth(),
                 ASFloatingOn(),
                 ASPause(6),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -28,16 +27,14 @@ script = EventScript(
                 ASWalkNorthPixels(2),
                 ASSetWalkingSpeed(NORMAL),
                 ASWalkNorthPixels(12),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MEM_70A8,
             subscript=[
                 ASClearSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -45,8 +42,7 @@ script = EventScript(
                 ASShiftZDownPixels(4),
                 ASVisibilityOff(),
                 ASShiftZDownPixels(12),
-            ],
-        ),
+            ]),
         Set7000ToObjectCoord(target_npc=MEM_70A8, coord=COORD_F, pixel=True),
         JmpIfVarEqualsConst(
             PRIMARY_TEMP_7000, 1, ["EVENT_1564_set_action_script_sync_10"]
@@ -56,8 +52,7 @@ script = EventScript(
         SetSyncActionScript(
             MEM_70A8,
             A0783_LANDS_END_CANNON_WHILE_PLAYER_OCCUPIED,
-            identifier="EVENT_1564_set_action_script_sync_10",
-        ),
+            identifier="EVENT_1564_set_action_script_sync_10"),
         Pause(1, identifier="EVENT_1564_pause_11"),
         Pause(1, identifier="EVENT_1564_pause_12"),
         Set7000ToTappedButton(),
@@ -85,17 +80,14 @@ script = EventScript(
                     target_npc=MARIO,
                     destinations=[
                         "EVENT_1564_action_queue_async_26_SUBSCRIPT_set_animation_speed_5"
-                    ],
-                ),
+                    ]),
                 ASSetWalkingSpeed(
                     NORMAL,
-                    identifier="EVENT_1564_action_queue_async_26_SUBSCRIPT_set_animation_speed_5",
-                ),
+                    identifier="EVENT_1564_action_queue_async_26_SUBSCRIPT_set_animation_speed_5"),
                 ASPause(2),
                 ASPlaySound(sound=SO033_JUMPING_BOUNCING_FISH, channel=4),
                 ASFloatingOn(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
     ]
 )

@@ -31,12 +31,10 @@ script = EventScript(
                 ASPlaySound(
                     sound=SO030_SURPRISED_MONSTER,
                     channel=4,
-                    identifier="EVENT_1745_action_queue_async_3_SUBSCRIPT_play_sound_10",
-                ),
+                    identifier="EVENT_1745_action_queue_async_3_SUBSCRIPT_play_sound_10"),
                 ASJumpToHeight(108),
                 ASPause(32),
-            ],
-        ),
+            ]),
         SetVarToConst(BATTLE_PACK_ID, 206),
         StartBattleWithPackAt700E(),
         JmpIfBitSet(RUN_AWAY, ["EVENT_1745_action_queue_async_31"]),
@@ -54,8 +52,7 @@ script = EventScript(
                 ASWalkFDirectionPixels(10),
                 ASTurnClockwise45DegreesNTimes(4),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         SetBit(TEMP_7043_2),
         FadeInFromBlack(sync=False),
         CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
@@ -67,8 +64,7 @@ script = EventScript(
                 ASClearSolidityBits(
                     cant_jump_through=True, bit_4=True, cant_walk_through=True
                 )
-            ],
-        ),
+            ]),
         Inc(ACTIVE_NPC),
         EndLoop(),
         Pause(1),
@@ -95,8 +91,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=8, is_sequence=True, looping=True),
                 ASSetSolidityBits(cant_walk_through=True),
             ],
-            identifier="EVENT_1745_action_queue_async_31",
-        ),
+            identifier="EVENT_1745_action_queue_async_31"),
         PauseActionScript(MARIO),
         ResetCoords(MARIO),
         Pause(1),
@@ -118,8 +113,7 @@ script = EventScript(
                 ASJmp(["EVENT_1745_action_queue_async_37_SUBSCRIPT_face_north_8"]),
                 ASWalkSouthPixels(
                     14,
-                    identifier="EVENT_1745_action_queue_async_37_SUBSCRIPT_shift_south_pixels_7",
-                ),
+                    identifier="EVENT_1745_action_queue_async_37_SUBSCRIPT_shift_south_pixels_7"),
                 ASFaceNorth(
                     identifier="EVENT_1745_action_queue_async_37_SUBSCRIPT_face_north_8"
                 ),
@@ -127,8 +121,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         Dec(TEMP_70AE),
         SetTempSyncActionScript(MEM_70A8, A0002_FLASH_AFTER_RUNNING_AWAY_IFRAMES),
         FadeInFromBlack(sync=False),
@@ -160,15 +153,13 @@ script = EventScript(
                 ASWalk1StepFDirection(),
                 ASVisibilityOff(),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
                 ASJumpToHeight(height=108, silent=True),
                 ASWalk1StepFDirection(),
-            ],
-        ),
+            ]),
         AddCoins(10),
         Jmp(["EVENT_1745_unfreeze_all_npcs_58"]),
         Inc(ACTIVE_NPC, identifier="EVENT_1745_inc_52"),
@@ -190,16 +181,14 @@ script = EventScript(
                 ASJumpToHeight(160),
                 ASWalkFDirectionSteps(2),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
                 ASPlaySound(sound=SO094_FROG_COIN, channel=4),
                 ASJumpToHeight(height=108, silent=True),
                 ASWalk1StepFDirection(),
-            ],
-        ),
+            ]),
         AddFrogCoins(1),
         SetVarToConst(TEMP_70AE, 0),
         UnfreezeAllNPCs(identifier="EVENT_1745_unfreeze_all_npcs_58"),
@@ -231,8 +220,7 @@ script = EventScript(
                 ASDb(bytearray(b"\xfd\xf2")),
                 ASClearSolidityBits(cant_walk_through=True),
                 ASSetBit(TEMP_7043_4),
-            ],
-        ),
+            ]),
         Set7000ToObjectCoord(target_npc=MEM_70A8, coord=COORD_Y, pixel=True),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=Y_COORD_1),
         ActionQueueAsync(
@@ -251,8 +239,7 @@ script = EventScript(
                 ASJmp(["EVENT_1745_action_queue_async_65_SUBSCRIPT_face_north_8"]),
                 ASWalkSouthPixels(
                     10,
-                    identifier="EVENT_1745_action_queue_async_65_SUBSCRIPT_shift_south_pixels_7",
-                ),
+                    identifier="EVENT_1745_action_queue_async_65_SUBSCRIPT_shift_south_pixels_7"),
                 ASFaceNorth(
                     identifier="EVENT_1745_action_queue_async_65_SUBSCRIPT_face_north_8"
                 ),
@@ -260,8 +247,7 @@ script = EventScript(
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
-            ],
-        ),
+            ]),
         UnfreezeAllNPCs(),
         Return(),
     ]

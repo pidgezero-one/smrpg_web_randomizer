@@ -24,8 +24,7 @@ script = EventScript(
                 ASSetWalkingSpeed(VERY_FAST),
                 ASWalk1StepSouthwest(),
                 ASFaceNorthwest(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

@@ -38,8 +38,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=3,
             exp_needed=48,
@@ -53,8 +52,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=4,
             exp_needed=84,
@@ -68,8 +66,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=5,
             exp_needed=130,
@@ -83,8 +80,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=6,
             exp_needed=200,
@@ -98,8 +94,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=7,
             exp_needed=290,
@@ -113,8 +108,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=8,
             exp_needed=402,
@@ -128,8 +122,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=9,
             exp_needed=538,
@@ -143,8 +136,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=10,
             exp_needed=700,
@@ -158,8 +150,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=11,
             exp_needed=890,
@@ -173,8 +164,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=12,
             exp_needed=1110,
@@ -188,8 +178,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=13,
             exp_needed=1360,
@@ -203,8 +192,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=14,
             exp_needed=1640,
@@ -218,8 +206,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=15,
             exp_needed=1950,
@@ -233,8 +220,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=16,
             exp_needed=2290,
@@ -248,8 +234,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=17,
             exp_needed=2660,
@@ -263,8 +248,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=18,
             exp_needed=3060,
@@ -278,8 +262,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=19,
             exp_needed=3490,
@@ -293,8 +276,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=20,
             exp_needed=3950,
@@ -308,8 +290,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=21,
             exp_needed=4440,
@@ -323,8 +304,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=22,
             exp_needed=4960,
@@ -338,8 +318,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=23,
             exp_needed=5510,
@@ -353,8 +332,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=24,
             exp_needed=6088,
@@ -368,8 +346,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=25,
             exp_needed=6692,
@@ -383,8 +360,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=26,
             exp_needed=7320,
@@ -398,8 +374,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=27,
             exp_needed=7968,
@@ -413,8 +388,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=28,
             exp_needed=8634,
@@ -428,8 +402,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=29,
             exp_needed=9315,
@@ -443,8 +416,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=30,
             exp_needed=9999,
@@ -458,8 +430,7 @@ MARIO_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
     ],
     coordinates=AllyCoordinate(
         cursor_x=1,
@@ -467,9 +438,7 @@ MARIO_Ally = Ally(
         sprite_abxy_y=191,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192,
-    ),
-)
+        sprite_abxy_y_scarecrow=192))
 
 TOADSTOOL_Ally = Ally(
     index=1,
@@ -501,8 +470,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=3,
             exp_needed=48,
@@ -516,8 +484,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=4,
             exp_needed=84,
@@ -531,8 +498,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=5,
             exp_needed=130,
@@ -546,8 +512,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=6,
             exp_needed=200,
@@ -561,8 +526,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=7,
             exp_needed=290,
@@ -576,8 +540,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=8,
             exp_needed=402,
@@ -591,8 +554,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=9,
             exp_needed=538,
@@ -606,8 +568,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=10,
             exp_needed=700,
@@ -621,8 +582,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=11,
             exp_needed=890,
@@ -636,8 +596,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=12,
             exp_needed=1110,
@@ -651,8 +610,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=13,
             exp_needed=1360,
@@ -666,8 +624,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=14,
             exp_needed=1640,
@@ -681,8 +638,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=15,
             exp_needed=1950,
@@ -696,8 +652,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=16,
             exp_needed=2290,
@@ -711,8 +666,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=17,
             exp_needed=2660,
@@ -726,8 +680,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=18,
             exp_needed=3060,
@@ -741,8 +694,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=19,
             exp_needed=3490,
@@ -756,8 +708,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=20,
             exp_needed=3950,
@@ -771,8 +722,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=21,
             exp_needed=4440,
@@ -786,8 +736,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=22,
             exp_needed=4960,
@@ -801,8 +750,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=23,
             exp_needed=5510,
@@ -816,8 +764,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=24,
             exp_needed=6088,
@@ -831,8 +778,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=25,
             exp_needed=6692,
@@ -846,8 +792,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=26,
             exp_needed=7320,
@@ -861,8 +806,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=27,
             exp_needed=7968,
@@ -876,8 +820,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=28,
             exp_needed=8634,
@@ -891,8 +834,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=29,
             exp_needed=9315,
@@ -906,8 +848,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=30,
             exp_needed=9999,
@@ -921,8 +862,7 @@ TOADSTOOL_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
     ],
     coordinates=AllyCoordinate(
         cursor_x=1,
@@ -930,9 +870,7 @@ TOADSTOOL_Ally = Ally(
         sprite_abxy_y=190,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192,
-    ),
-)
+        sprite_abxy_y_scarecrow=192))
 
 BOWSER_Ally = Ally(
     index=2,
@@ -966,8 +904,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=3,
             exp_needed=48,
@@ -981,8 +918,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=4,
             exp_needed=84,
@@ -996,8 +932,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=5,
             exp_needed=130,
@@ -1011,8 +946,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=6,
             exp_needed=200,
@@ -1026,8 +960,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=7,
             exp_needed=290,
@@ -1041,8 +974,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=8,
             exp_needed=402,
@@ -1056,8 +988,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=9,
             exp_needed=538,
@@ -1071,8 +1002,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=10,
             exp_needed=700,
@@ -1086,8 +1016,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=11,
             exp_needed=890,
@@ -1101,8 +1030,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=12,
             exp_needed=1110,
@@ -1116,8 +1044,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=13,
             exp_needed=1360,
@@ -1131,8 +1058,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=14,
             exp_needed=1640,
@@ -1146,8 +1072,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=15,
             exp_needed=1950,
@@ -1161,8 +1086,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=16,
             exp_needed=2290,
@@ -1176,8 +1100,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=17,
             exp_needed=2660,
@@ -1191,8 +1114,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=18,
             exp_needed=3060,
@@ -1206,8 +1128,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=19,
             exp_needed=3490,
@@ -1221,8 +1142,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=20,
             exp_needed=3950,
@@ -1236,8 +1156,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=21,
             exp_needed=4440,
@@ -1251,8 +1170,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=22,
             exp_needed=4960,
@@ -1266,8 +1184,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=23,
             exp_needed=5510,
@@ -1281,8 +1198,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=24,
             exp_needed=6088,
@@ -1296,8 +1212,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=25,
             exp_needed=6692,
@@ -1311,8 +1226,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=26,
             exp_needed=7320,
@@ -1326,8 +1240,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=27,
             exp_needed=7968,
@@ -1341,8 +1254,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=28,
             exp_needed=8634,
@@ -1356,8 +1268,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=29,
             exp_needed=9315,
@@ -1371,8 +1282,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=30,
             exp_needed=9999,
@@ -1386,8 +1296,7 @@ BOWSER_Ally = Ally(
             attack_plus_bonus=2,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
     ],
     coordinates=AllyCoordinate(
         cursor_x=2,
@@ -1395,9 +1304,7 @@ BOWSER_Ally = Ally(
         sprite_abxy_y=186,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192,
-    ),
-)
+        sprite_abxy_y_scarecrow=192))
 
 GENO_Ally = Ally(
     index=3,
@@ -1431,8 +1338,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=3,
             exp_needed=48,
@@ -1446,8 +1352,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=4,
             exp_needed=84,
@@ -1461,8 +1366,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=5,
             exp_needed=130,
@@ -1476,8 +1380,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=6,
             exp_needed=200,
@@ -1491,8 +1394,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=7,
             exp_needed=290,
@@ -1506,8 +1408,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=8,
             exp_needed=402,
@@ -1521,8 +1422,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=9,
             exp_needed=538,
@@ -1536,8 +1436,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=10,
             exp_needed=700,
@@ -1551,8 +1450,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=11,
             exp_needed=890,
@@ -1566,8 +1464,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=12,
             exp_needed=1110,
@@ -1581,8 +1478,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=13,
             exp_needed=1360,
@@ -1596,8 +1492,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=14,
             exp_needed=1640,
@@ -1611,8 +1506,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=15,
             exp_needed=1950,
@@ -1626,8 +1520,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=16,
             exp_needed=2290,
@@ -1641,8 +1534,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=17,
             exp_needed=2660,
@@ -1656,8 +1548,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=18,
             exp_needed=3060,
@@ -1671,8 +1562,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=19,
             exp_needed=3490,
@@ -1686,8 +1576,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=20,
             exp_needed=3950,
@@ -1701,8 +1590,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=21,
             exp_needed=4440,
@@ -1716,8 +1604,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=22,
             exp_needed=4960,
@@ -1731,8 +1618,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=23,
             exp_needed=5510,
@@ -1746,8 +1632,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=24,
             exp_needed=6088,
@@ -1761,8 +1646,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=25,
             exp_needed=6692,
@@ -1776,8 +1660,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=26,
             exp_needed=7320,
@@ -1791,8 +1674,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=27,
             exp_needed=7968,
@@ -1806,8 +1688,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=28,
             exp_needed=8634,
@@ -1821,8 +1702,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=29,
             exp_needed=9315,
@@ -1836,8 +1716,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=3,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=30,
             exp_needed=9999,
@@ -1851,8 +1730,7 @@ GENO_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
     ],
     coordinates=AllyCoordinate(
         cursor_x=1,
@@ -1860,9 +1738,7 @@ GENO_Ally = Ally(
         sprite_abxy_y=192,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192,
-    ),
-)
+        sprite_abxy_y_scarecrow=192))
 
 MALLOW_Ally = Ally(
     index=4,
@@ -1896,8 +1772,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=3,
             exp_needed=48,
@@ -1911,8 +1786,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=4,
             exp_needed=84,
@@ -1926,8 +1800,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=5,
             exp_needed=130,
@@ -1941,8 +1814,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=6,
             exp_needed=200,
@@ -1956,8 +1828,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=7,
             exp_needed=290,
@@ -1971,8 +1842,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=8,
             exp_needed=402,
@@ -1986,8 +1856,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=9,
             exp_needed=538,
@@ -2001,8 +1870,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=10,
             exp_needed=700,
@@ -2016,8 +1884,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=11,
             exp_needed=890,
@@ -2031,8 +1898,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=12,
             exp_needed=1110,
@@ -2046,8 +1912,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=13,
             exp_needed=1360,
@@ -2061,8 +1926,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=14,
             exp_needed=1640,
@@ -2076,8 +1940,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=15,
             exp_needed=1950,
@@ -2091,8 +1954,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=16,
             exp_needed=2290,
@@ -2106,8 +1968,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=17,
             exp_needed=2660,
@@ -2121,8 +1982,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=18,
             exp_needed=3060,
@@ -2136,8 +1996,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=19,
             exp_needed=3490,
@@ -2151,8 +2010,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=20,
             exp_needed=3950,
@@ -2166,8 +2024,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=21,
             exp_needed=4440,
@@ -2181,8 +2038,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=22,
             exp_needed=4960,
@@ -2196,8 +2052,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=23,
             exp_needed=5510,
@@ -2211,8 +2066,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=24,
             exp_needed=6088,
@@ -2226,8 +2080,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=25,
             exp_needed=6692,
@@ -2241,8 +2094,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=26,
             exp_needed=7320,
@@ -2256,8 +2108,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=27,
             exp_needed=7968,
@@ -2271,8 +2122,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=28,
             exp_needed=8634,
@@ -2286,8 +2136,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=29,
             exp_needed=9315,
@@ -2301,8 +2150,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=1,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=2,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
         LevelUp(
             level=30,
             exp_needed=9999,
@@ -2316,8 +2164,7 @@ MALLOW_Ally = Ally(
             attack_plus_bonus=3,
             defense_plus_bonus=1,
             mg_attack_plus_bonus=1,
-            mg_defense_plus_bonus=1,
-        ),
+            mg_defense_plus_bonus=1),
     ],
     coordinates=AllyCoordinate(
         cursor_x=1,
@@ -2325,9 +2172,7 @@ MALLOW_Ally = Ally(
         sprite_abxy_y=196,
         cursor_x_scarecrow=1,
         cursor_y_scarecrow=3,
-        sprite_abxy_y_scarecrow=192,
-    ),
-)
+        sprite_abxy_y_scarecrow=192))
 
 ally_collection = AllyCollection(
     allies=[

@@ -17,8 +17,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x02\x00\xff")),
                 ASPause(16),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -27,18 +26,15 @@ script = EventScript(
                     sprite_offset=1,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASPlaySound(sound=SO093_JUMP_INTO_WATER, channel=6),
                 ASPause(10),
                 ASWalkToXYCoords(x=15, y=32),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -49,8 +45,7 @@ script = EventScript(
                 ASDb(bytearray(b"$\x00\x02\x00\xff")),
                 ASPause(16),
                 ASBPL262728(),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

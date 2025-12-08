@@ -30,8 +30,7 @@ script = ActionScript(
             is_sequence=True,
             looping=True,
             mirror_sprite=True,
-            identifier="ACTION_269_set_sprite_sequence_12",
-        ),
+            identifier="ACTION_269_set_sprite_sequence_12"),
         ShiftZDownSteps(5, identifier="ACTION_269_shift_z_down_steps_13"),
         CopyVarToVar(from_var=TEMP_7032, to_var=PRIMARY_TEMP_700C),
         FaceEast7C(),
@@ -54,8 +53,7 @@ script = ActionScript(
             is_sequence=True,
             looping=True,
             mirror_sprite=True,
-            identifier="ACTION_269_set_sprite_sequence_22",
-        ),
+            identifier="ACTION_269_set_sprite_sequence_22"),
         ClearSolidityBits(
             cant_pass_walls=True, identifier="ACTION_269_clear_solidity_bits_23"
         ),

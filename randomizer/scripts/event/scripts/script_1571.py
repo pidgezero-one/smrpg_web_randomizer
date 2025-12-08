@@ -17,8 +17,7 @@ script = EventScript(
         EnableControlsUntilReturn([]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftSouthSteps(4)],
-        ),
+            subscript=[ASSetWalkingSpeed(FASTEST), ASShiftSouthSteps(4)]),
         FreezeCamera(),
         Db(bytearray(b"\xc7\x95")),
         SetAsyncActionScript(NPC_9, A0170_MIDAS_BARRELS_WATER_SPLASH),
@@ -32,8 +31,7 @@ script = EventScript(
                 ),
                 ASWalkSouthwestPixels(4),
                 ASWalkNortheastSteps(2),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -41,8 +39,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_sequence=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True),
         ActionQueueSync(
             target=MARIO,
@@ -57,16 +54,14 @@ script = EventScript(
                 ),
                 ASJumpToHeight(height=0, silent=True),
                 ASFloatingOn(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_1,
             subscript=[
                 ASSetWalkingSpeed(NORMAL),
                 ASWalkSouthwestSteps(2),
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[
@@ -77,8 +72,7 @@ script = EventScript(
                 ASWalkNorthPixels(8),
                 ASWalkSouthPixels(4),
                 ASSetWalkingSpeed(FAST),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -94,8 +88,7 @@ script = EventScript(
                 ASSequenceLoopingOn(),
                 ASFloatingOn(),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_1, A0593_MIDAS_BARREL_AREA_MOVE_SOUTHWEST_REPEATEDLY),
         SetSyncActionScript(MARIO, A0593_MIDAS_BARREL_AREA_MOVE_SOUTHWEST_REPEATEDLY),
         SetSyncActionScript(SCREEN_FOCUS, A0592_MIDAS_BARREL_CAMERA),
@@ -133,8 +126,7 @@ script = EventScript(
                 ASWalkNorthPixels(8),
                 ASWalkSouthPixels(4),
                 ASSetWalkingSpeed(FAST),
-            ],
-        ),
+            ]),
         PauseActionScript(MEM_70A9),
         ActionQueueSync(
             target=MARIO,
@@ -145,8 +137,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, sprite_offset=3, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ResumeActionScript(MARIO),
         StoreSetBits(TEMP_7044_6),
         Pause(19),
@@ -160,8 +151,7 @@ script = EventScript(
         CopyVarToVar(
             from_var=TEMP_7028,
             to_var=PRIMARY_TEMP_7000,
-            identifier="EVENT_1571_set_7000_to_7000_short_mem_100",
-        ),
+            identifier="EVENT_1571_set_7000_to_7000_short_mem_100"),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=ACTIVE_NPC),
         PauseActionScript(MEM_70A8),
         JmpIfBitSet(TEMP_7044_4, ["EVENT_1571_action_queue_sync_122"]),
@@ -177,8 +167,7 @@ script = EventScript(
                     index=4, is_sequence=True, looping=True, mirror_sprite=True
                 ),
                 ASWalkSouthwestPixels(8),
-            ],
-        ),
+            ]),
         StoreSetBits(TEMP_7044_6),
         ResumeActionScript(MEM_70A8),
         ResumeActionScript(MARIO),
@@ -196,14 +185,12 @@ script = EventScript(
                 ASJumpToHeight(48),
                 ASWalkNortheastPixels(4),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         Jmp(["EVENT_1571_enable_controls_until_return_70"]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[ASPause(3)],
-            identifier="EVENT_1571_action_queue_sync_122",
-        ),
+            identifier="EVENT_1571_action_queue_sync_122"),
         ResumeActionScript(SCREEN_FOCUS),
         ResetCoords(MARIO),
         ActionQueueAsync(
@@ -230,8 +217,7 @@ script = EventScript(
             face_direction=SOUTH,
             x=20,
             y=21,
-            z=0,
-        ),
+            z=0),
         ClearBit(UNKNOWN_MIDAS_RIVER_7079_1),
         SetBit(TEMP_7043_1),
         JmpToEvent(E3486_MIDAS_RIVER_BASE_AREA_LOADER),

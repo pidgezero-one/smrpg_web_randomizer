@@ -19,8 +19,7 @@ script = EventScript(
             closable=False,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
     ]
 )

@@ -12,8 +12,7 @@ script = EventScript(
             subscript=[
                 ASSetWalkingSpeed(VERY_FAST),
                 ASBounceToXYWithHeight(x=0, y=2, height=0),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -23,25 +22,21 @@ script = EventScript(
                 ASWalkNortheastPixels(1),
                 ASFaceNorthwest(),
                 ASSequencePlaybackOff(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True, duration=130),
         ActionQueueSync(
             target=LAYER_1,
-            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalkEastSteps(1)],
-        ),
+            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalkEastSteps(1)]),
         ActionQueueSync(
             target=LAYER_2,
-            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalkWestSteps(1)],
-        ),
+            subscript=[ASSetWalkingSpeed(VERY_SLOW), ASWalkWestSteps(1)]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASFixedFCoordOn(),
                 ASSetWalkingSpeed(VERY_SLOW),
                 ASWalkEastSteps(1),
-            ],
-        ),
+            ]),
         Pause(50),
         ActionQueueAsync(
             target=MARIO,
@@ -57,8 +52,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(6),
                 ASVisibilityOff(),
                 ASPause(20),
-            ],
-        ),
+            ]),
         FadeOutToBlack(sync=False, duration=70),
         ExitToWorldMap(area=OW03_VISTA_HILL, bit_6=True, bit_7=True),
         Return(),

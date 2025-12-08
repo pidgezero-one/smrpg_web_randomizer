@@ -11,13 +11,11 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=False,
             room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN,
-            mod_id=0,
-        ),
+            mod_id=0),
         ApplySolidityModToLevel(
             permanent=False,
             room_id=R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN,
-            mod_id=0,
-        ),
+            mod_id=0),
         JmpIfBitClear(
             ABYSS_FINAL_ROOM_TRAMPOLINE, ["EVENT_1891_fade_in_from_black_async_7"]
         ),
@@ -27,8 +25,7 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E1900_ABYSS_BIG_CONVEYOR_ROOM_FALL,
             return_on_level_exit=True,
-            identifier="EVENT_1891_run_background_event_8",
-        ),
+            identifier="EVENT_1891_run_background_event_8"),
         Return(),
     ]
 )

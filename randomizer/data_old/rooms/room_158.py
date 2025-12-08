@@ -43,8 +43,7 @@ room = Room(
             length=7,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2458,
             x=10,
@@ -55,8 +54,7 @@ room = Room(
             length=8,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2459,
             x=8,
@@ -67,8 +65,7 @@ room = Room(
             length=6,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2460,
             x=10,
@@ -79,8 +76,7 @@ room = Room(
             length=6,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=2523,
             x=6,
@@ -91,8 +87,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -125,8 +120,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.Empty,
             event_script=2511,
@@ -140,8 +134,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.Empty,
             event_script=2512,
@@ -155,8 +148,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.Empty,
             event_script=2513,
@@ -170,8 +162,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 4
             occupant=npcs.Empty,
             event_script=2514,
@@ -185,8 +176,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 5
             occupant=npcs.Sackit,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -219,8 +209,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 6
             occupant=npcs.Sackit,
             battle_pack=59,
@@ -234,8 +223,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 7
             occupant=npcs.Sackit,
             battle_pack=58,
@@ -249,8 +237,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 8
             occupant=npcs.Sackit,
             battle_pack=59,
@@ -264,8 +251,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 9
             occupant=npcs.Gecko,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -297,8 +283,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackClone( # 10
             occupant=npcs.Gecko,
             battle_pack=60,
@@ -312,8 +297,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 11
             occupant=npcs.Empty,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -345,8 +329,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 12
             occupant=npcs.Empty,
             event_script=2528,
@@ -360,8 +343,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 13
             occupant=npcs.Empty,
             event_script=2529,
@@ -375,8 +357,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 14
             occupant=npcs.Empty,
             event_script=2530,
@@ -390,8 +371,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 15
             occupant=npcs.Mallow,
             initiator=Initiator.NONE,
@@ -424,8 +404,7 @@ room = Room(
             priority_2=True,
             acute_axis=6,
             obtuse_axis=5,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 16
             occupant=npcs.Geno,
             event_script=2304,
@@ -441,8 +420,7 @@ room = Room(
             priority_2=True,
             acute_axis=6,
             obtuse_axis=5,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 17
             occupant=npcs.Geno,
             event_script=2304,
@@ -458,8 +436,7 @@ room = Room(
             priority_2=True,
             acute_axis=6,
             obtuse_axis=5,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 18
             occupant=npcs.Mukumuku,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -492,8 +469,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         BattlePackClone( # 19
             occupant=npcs.Mukumuku,
             battle_pack=56,
@@ -508,7 +484,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

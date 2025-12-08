@@ -12,8 +12,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         JmpIfBitSet(UNKNOWN_7091_7, ["EVENT_2795_ret_4"]),
         SetBit(UNKNOWN_7091_7),
         RunDialog(
@@ -22,8 +21,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(identifier="EVENT_2795_ret_4"),
     ]
 )

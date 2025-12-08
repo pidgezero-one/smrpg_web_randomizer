@@ -411,5 +411,4 @@ script = SubroutineOrBanklessScript(
         Db(bytearray(b"\x8c")),
         Pause1Frame(),
         ReturnSubroutine(),
-    ],
-)
+    ])

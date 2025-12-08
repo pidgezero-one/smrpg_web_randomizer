@@ -24,8 +24,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         SetSyncActionScript(SCREEN_FOCUS, A0391_CAMERA_SHAKE),
         ActionQueueAsync(
             target=MARIO,
@@ -35,8 +34,7 @@ script = EventScript(
                     index=1, sprite_offset=3, is_sequence=True, looping=True
                 ),
                 ASPlaySound(sound=SO022_CLOSE_DOOR, channel=4),
-            ],
-        ),
+            ]),
         Pause(40),
         SetAsyncActionScript(MARIO, A0384_PLAYER_LOOK_DOWN_SHAKE_HEAD),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),

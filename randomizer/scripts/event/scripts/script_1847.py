@@ -16,14 +16,12 @@ script = EventScript(
                 ASPlaySound(sound=SO089_LIT_FUSE, channel=4),
                 ASSetSpriteSequence(index=4, is_sequence=True, looping=True),
                 ASPause(30),
-            ],
-        ),
+            ]),
         Pause(1, identifier="EVENT_1847_pause_5"),
         CreatePacketAtObjectCoords(
             packet=P024_REGULAR_SOUND_EXPLOSION,
             target_npc=NPC_1,
-            destinations=["EVENT_1847_pause_5"],
-        ),
+            destinations=["EVENT_1847_pause_5"]),
         PlaySound(sound=SO060_DYNAMITE_BOMB_EXPLOSION, channel=6),
         RemoveObjectFromCurrentLevel(NPC_1),
         ActionQueueAsync(
@@ -43,8 +41,7 @@ script = EventScript(
                     ["EVENT_1847_action_queue_async_9_SUBSCRIPT_pause_5"]
                 ),
             ],
-            identifier="EVENT_1847_action_queue_async_9",
-        ),
+            identifier="EVENT_1847_action_queue_async_9"),
         Jmp(["EVENT_1830_store_coin_amount_7000_10"]),
         EnableControls([], identifier="EVENT_1847_enable_controls_11"),
         RunBackgroundEvent(

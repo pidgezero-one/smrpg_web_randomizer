@@ -11,8 +11,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=4,
             y=51,
-            z=0,
-        ),
+            z=0),
         FadeInFromBlack(sync=False),
         JmpToEvent(E3885_END_GAME),
     ]

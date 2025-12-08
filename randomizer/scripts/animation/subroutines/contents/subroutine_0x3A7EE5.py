@@ -13,18 +13,15 @@ script = SubroutineOrBanklessScript(
             start_position=512,
             end_position=0,
             apply_to_x=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         MoveObject(
             speed=1,
             start_position=-257,
             end_position=0,
             apply_to_y=True,
-            should_set_speed=True,
-        ),
+            should_set_speed=True),
         ReturnSubroutine(),
         SetAMEMToRandom(amem=0x60, upper_bound=7),
         ObjectQueueAtOffsetAndIndexAtAMEM60(target_address=0x3A7EFF),
         ReturnSubroutine(),
-    ],
-)
+    ])

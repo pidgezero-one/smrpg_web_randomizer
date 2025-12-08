@@ -7,8 +7,7 @@ from randomizer.types.battle_animation_scripts.arguments import *
 from randomizer.types.battle_animation_scripts.types import (
     AnimationScript,
     BattleAnimationScript,
-    SubroutineOrBanklessScript,
-)
+    SubroutineOrBanklessScript)
 from randomizer.types.sprites.ids import (
     SPR0000_MARIO_WALKING_DOWN_LEFT,
     SPR0001_MARIO_JUMP_FRONT,
@@ -1033,8 +1032,7 @@ from randomizer.types.sprites.ids import (
     SPR1020_EMPTY,
     SPR1021_EMPTY,
     SPR1022_EMPTY,
-    SPR1023_EMPTY,
-)
+    SPR1023_EMPTY)
 from randomizer.entities.items.items import (
     Hammer,
     FroggieStick,
@@ -1191,8 +1189,7 @@ from randomizer.entities.items.items import (
     Fireworks,
     BrightCard,
     Mushroom2,
-    StarEgg,
-)
+    StarEgg)
 from randomizer.entities.enemies import (
     Terrapin,
     Spikey,
@@ -1447,6 +1444,5 @@ from randomizer.entities.enemies import (
     Cloaker2,
     Domino2,
     Candle,
-    Culex,
-)
+    Culex)
 from randomizer.types.battle_animation_scripts.ids import *

@@ -15,8 +15,7 @@ script = EventScript(
             x=5,
             y=36,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         ClearBit(UNKNOWN_BOWSERS_KEEP_707F_0, identifier="EVENT_3356_clear_bit_5"),
         ActionQueueAsync(
@@ -26,8 +25,7 @@ script = EventScript(
                     index=8, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASPause(1),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         Pause(1, identifier="EVENT_3356_pause_8"),
         Set7000ToPressedButton(),

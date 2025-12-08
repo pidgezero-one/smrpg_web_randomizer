@@ -26,8 +26,7 @@ script = ActionScript(
         CreatePacketAtObjectCoords(
             packet=P032_BLUE_CLOUD,
             target_npc=DUMMY_0X07,
-            destinations=["ACTION_126_jump_to_height_20"],
-        ),
+            destinations=["ACTION_126_jump_to_height_20"]),
         JumpToHeight(188, identifier="ACTION_126_jump_to_height_20"),
         Pause(1),
         VisibilityOn(),

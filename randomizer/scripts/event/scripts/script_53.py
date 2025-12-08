@@ -15,11 +15,9 @@ script = EventScript(
         JmpToEvent(E0027_GRANT_TIER_2_CONSUMABLE_OR_EQUIP, identifier="EVENT_53_tier2"),
         JmpToEvent(
             E0050_GRANT_ANY_EQUIP_OR_CONSUMABLE_EXCLUDE_WORST_TIER_3_CAP,
-            identifier="EVENT_53_tier3",
-        ),
+            identifier="EVENT_53_tier3"),
         JmpToEvent(
             E0047_GRANT_ANY_CONSUMABLE_OR_EQUIP_EXCLUDE_WORST,
-            identifier="EVENT_53_tier4",
-        ),
+            identifier="EVENT_53_tier4"),
     ]
 )

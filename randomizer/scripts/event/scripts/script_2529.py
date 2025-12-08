@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         PlaySound(sound=SO000_SILENCE, channel=6),
         JmpIfBitSet(MALLOWS_WISH_READ, ["EVENT_2529_ret_25"]),
         SetBit(MALLOWS_WISH_READ),
@@ -26,8 +25,7 @@ script = EventScript(
                 ASWalk1StepNortheast(),
                 ASWalkNortheastPixels(4),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         FreezeCamera(),
         Pause(8),
         ActionQueueSync(
@@ -39,8 +37,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(2),
                 ASPause(8),
                 ASEndLoop(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -53,31 +50,27 @@ script = EventScript(
                 ASWalkSouthwestPixels(2),
                 ASEndLoop(),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI3120_MALLOW_WISH_CUTSCENE,
             above_object=NPC_12,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         StopEmbeddedActionScript(NPC_15),
         Pause(16),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         ActionQueueSync(
             target=NPC_15,
-            subscript=[ASSetSpriteSequence(index=8, is_sequence=True, looping=True)],
-        ),
+            subscript=[ASSetSpriteSequence(index=8, is_sequence=True, looping=True)]),
         RunDialog(
             dialog_id=DI3121_MALLOW_WISH_CUTSCENE,
             above_object=NPC_12,
             closable=True,
             sync=True,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         PauseScriptResumeOnNextDialogPageB(),
         ActionQueueSync(
             target=NPC_15,
@@ -85,8 +78,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=9, sprite_offset=1, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         UnsyncDialog(),
         ActionQueueAsync(
             target=NPC_15,
@@ -105,16 +97,14 @@ script = EventScript(
                     index=4, sprite_offset=2, is_sequence=True, looping=True
                 ),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         RunDialog(
             dialog_id=DI3122_MALLOW_WISH_CUTSCENE,
             above_object=NPC_12,
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         ActionQueueAsync(
             target=NPC_15,
             subscript=[
@@ -122,8 +112,7 @@ script = EventScript(
                 ASWalk1StepSouthwest(),
                 ASPause(4),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RemoveObjectFromCurrentLevel(NPC_15),
         UnfreezeCamera(),
         Return(identifier="EVENT_2529_ret_25"),

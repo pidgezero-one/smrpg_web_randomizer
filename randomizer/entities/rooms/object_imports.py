@@ -15,8 +15,7 @@ from randomizer.types.rooms import (
     ChestClone,
     EventInitiator,
     ObjectType,
-    PostBattleBehaviour,
-)
+    PostBattleBehaviour)
 from randomizer.types.npcs.objects import ShadowSize, VramStore
 from randomizer.data.npcs.npcs import (
     Mario,
@@ -436,8 +435,7 @@ from randomizer.data.npcs.npcs import (
     TinyBird,
     SmithyLarge,
     Goombette,
-    Empty,
-)
+    Empty)
 
 from randomizer.types.overworld_scripts.arguments import (
     NPC_0,
@@ -475,5 +473,4 @@ from randomizer.types.overworld_scripts.arguments import (
     SOUTH,
     SOUTHEAST,
     EAST,
-    NORTHEAST,
-)
+    NORTHEAST)

@@ -18,8 +18,7 @@ script = EventScript(
         JmpIfBitSet(
             BUCKET_WARP_DIRECTIONAL_BIT,
             ["EVENT_3797_enter_moleville"],
-            identifier="EVENT_3797_leave_to_moleville",
-        ),
+            identifier="EVENT_3797_leave_to_moleville"),
         JmpIfBitSet(CASINO_WARP_DIRECTIONAL_BIT, ["EVENT_3797_enter_casino"]),
         ClearBit(BUCKET_WARP_DIRECTIONAL_BIT),
         ClearBit(CASINO_WARP_DIRECTIONAL_BIT),
@@ -29,8 +28,7 @@ script = EventScript(
             x=7,
             y=82,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R108_MOLEVILLE_OUTSIDE,
@@ -39,8 +37,7 @@ script = EventScript(
             y=62,
             z=1,
             run_entrance_event=True,
-            identifier="EVENT_3797_enter_moleville",
-        ),
+            identifier="EVENT_3797_enter_moleville"),
         Return(),
         ClearBit(BUCKET_WARP_DIRECTIONAL_BIT, identifier="EVENT_3797_enter_casino"),
         ClearBit(CASINO_WARP_DIRECTIONAL_BIT),
@@ -50,8 +47,7 @@ script = EventScript(
             x=3,
             y=13,
             z=10,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

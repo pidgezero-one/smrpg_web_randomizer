@@ -15,18 +15,15 @@ script = EventScript(
         RunBackgroundEvent(
             event_id=E1831_KEEP_INVISIBLE_FLOOR_ROOM_BACKGROUND_1,
             return_on_level_exit=True,
-            bit_6=True,
-        ),
+            bit_6=True),
         RunBackgroundEvent(
             event_id=E1832_KEEP_INVISIBLE_FLOOR_ROOM_BACKGROUND_2,
             return_on_level_exit=True,
-            bit_7=True,
-        ),
+            bit_7=True),
         PrioritySet(
             mainscreen=[LAYER_L1, LAYER_L2, NPC_SPRITES],
             subscreen=[],
-            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY],
-        ),
+            colour_math=[LAYER_L1, LAYER_L2, NPC_SPRITES, HALF_INTENSITY]),
         JmpIfBitSet(TEMP_7044_6, ["EVENT_1826_play_sound_10"]),
         ClearBit(TEMP_7095_4),
         PlaySound(

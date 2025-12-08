@@ -13,8 +13,7 @@ script = ActionScript(
             index=1,
             is_sequence=True,
             looping=False,
-            identifier="ACTION_940_set_sprite_sequence_5",
-        ),
+            identifier="ACTION_940_set_sprite_sequence_5"),
         Pause(8),
         Return(),
     ]

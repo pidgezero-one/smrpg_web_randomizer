@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=3262,
             x=16,
@@ -55,8 +54,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -76,8 +74,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -113,8 +110,7 @@ room = Room(
             cannot_clone=False,
             byte2_bit0=True,
             byte2_bit3=True,
-            byte2_bit4=True,
-        ),
+            byte2_bit4=True),
         RegularClone( # 1
             occupant=npcs.JBlock,
             event_script=3233,
@@ -131,8 +127,7 @@ room = Room(
             cannot_clone=False,
             byte2_bit0=True,
             byte2_bit3=True,
-            byte2_bit4=True,
-        ),
+            byte2_bit4=True),
         RegularClone( # 2
             occupant=npcs.JBlock,
             event_script=3234,
@@ -149,8 +144,7 @@ room = Room(
             cannot_clone=False,
             byte2_bit0=True,
             byte2_bit3=True,
-            byte2_bit4=True,
-        ),
+            byte2_bit4=True),
         RegularClone( # 3
             occupant=npcs.JBlock,
             event_script=3235,
@@ -167,8 +161,7 @@ room = Room(
             cannot_clone=False,
             byte2_bit0=True,
             byte2_bit3=True,
-            byte2_bit4=True,
-        ),
+            byte2_bit4=True),
         RegularClone( # 4
             occupant=npcs.JBlock,
             event_script=3236,
@@ -185,8 +178,7 @@ room = Room(
             cannot_clone=False,
             byte2_bit0=True,
             byte2_bit3=True,
-            byte2_bit4=True,
-        ),
+            byte2_bit4=True),
         RegularClone( # 5
             occupant=npcs.JBlock,
             event_script=3237,
@@ -203,8 +195,7 @@ room = Room(
             cannot_clone=False,
             byte2_bit0=True,
             byte2_bit3=True,
-            byte2_bit4=True,
-        ),
+            byte2_bit4=True),
         RegularNPC( # 6
             occupant=npcs.Letter,
             initiator=Initiator.PRESS_A_FROM_FRONT,
@@ -235,8 +226,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 7
             occupant=npcs.TentacleExtending,
             initiator=Initiator.NONE,
@@ -267,8 +257,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 8
             occupant=npcs.Empty,
             initiator=Initiator.PRESS_A_FROM_FRONT,
@@ -302,7 +291,6 @@ room = Room(
             acute_axis=8,
             obtuse_axis=8,
             height=11,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
     ]
 )

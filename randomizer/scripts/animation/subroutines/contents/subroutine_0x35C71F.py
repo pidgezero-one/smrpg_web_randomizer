@@ -29,5 +29,4 @@ script = SubroutineOrBanklessScript(
         JmpIfAMEM8BitGreaterOrEqualThanConst(0x67, 100, ["command_0x35c760"]),
         Set7E1xToAMEM8Bit(0x7EE013, 0x6B),
         ReturnSubroutine(identifier="command_0x35c760"),
-    ],
-)
+    ])

@@ -13,8 +13,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
         RunDialog(
             dialog_id=DI3356_MONSTRO_PIRANHA_PLANT_AFTER_DEFEAT,
@@ -23,8 +22,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=False,
-            identifier="EVENT_2086_run_dialog_3",
-        ),
+            identifier="EVENT_2086_run_dialog_3"),
         Return(),
     ]
 )

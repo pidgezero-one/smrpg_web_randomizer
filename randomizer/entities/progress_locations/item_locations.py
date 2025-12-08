@@ -1,8 +1,6 @@
 """Progress location definitions for items."""
 
 from random import random
-from typing import List, Optional, Type
-
 from randomizer.entities.spells.spells import SuperJump
 from randomizer.entities.items import (
     Amulet,
@@ -111,19 +109,16 @@ from randomizer.entities.items import (
     Wallet,
     YoshiCookie,
     YouMissed,
-    ZoomShoes,
-)
+    ZoomShoes)
 
 from randomizer.types.dialogs.ids import (
     DI2908_TREASURE_SELLER_ITEM_2,
     DI2911_TREASURE_SELLER_ITEM_1,
-    DI2914_TREASURE_SELLER_ITEM_3,
-)
+    DI2914_TREASURE_SELLER_ITEM_3)
 from randomizer.types.items import (
     InvincibilityStar,
     Item,
-    MimicFightChestAssignment,
-)
+    MimicFightChestAssignment)
 from randomizer.types.overworld_scripts.ids import (
     R007_MARRYMORE_INN_1F,
     R009_MARRYMORE_INN_REGULAR_ROOM,
@@ -298,8 +293,7 @@ from randomizer.types.overworld_scripts.ids import (
     R493_MUSHROOM_KINGDOM_INN_1F,
     R498_NIMBUS_CASTLE_AREA_10_____DUMMY,
     R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
-    R500_NIMBUS_CASTLE_AREA_04_____DUMMY,
-)
+    R500_NIMBUS_CASTLE_AREA_04_____DUMMY)
 from randomizer.types.overworld_scripts.event_scripts.ids import (
     E0227_FREESTANDING_15_GRANT,
     E0228_FREESTANDING_14_GRANT,
@@ -334,12 +328,10 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E3386_SHIP_3D_MAZE_SPAWN_PRIZE,
     E3387_SHIP_CANNONBALL_PUZZLE_SPAWN_PRIZE,
     E3389_SHIP_BARREL_PUZZLE_SPAWN_PRIZE,
-    E3412_MINES_SHYGUY_ITEM_CREATE_PACKET,
-)
+    E3412_MINES_SHYGUY_ITEM_CREATE_PACKET)
 from randomizer.types.overworld_scripts.action_scripts.ids import (
     A0043_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH,
-    A0333_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH,
-)
+    A0333_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH)
 from randomizer.types.overworld_scripts.ids.room_names import R101_BOOSTER_PASS_AREA_02
 from randomizer.types.progress_locations import (
     ChestLocationAllowSlots,
@@ -354,8 +346,7 @@ from randomizer.types.progress_locations import (
     PacketItem,
     StartingItemGrant,
     TreasureShopItem,
-    PacketType,
-)
+    PacketType)
 from randomizer.types.progress_locations.classes import ChestLocationAllowCoins
 from randomizer.types.world import GameWorld, ItemPlacementError
 from randomizer.types.world.flags import (
@@ -366,15 +357,13 @@ from randomizer.types.world.flags import (
     FireworksSetting,
     ShuffleWeddingGear,
     FireworksOptions,
-    ShuffleLocationSelector,
-)
+    ShuffleLocationSelector)
 from randomizer.types.world.flags.enums import MonstroTownGating, PipeVaultGating
 from randomizer.types.world.flags.flags import (
     MonstroTownGate,
     PipeVaultGate,
     RestrictSpecialEquips,
-    SuperJump1Threshold,
-)
+    SuperJump1Threshold)
 
 from .helpers.area_access import (
     can_access_forest,
@@ -395,8 +384,7 @@ from .helpers.area_access import (
     can_defeat_second_mimic,
     can_defeat_second_moleville_boss,
     can_defeat_temple_boss,
-    can_defeat_valley_boss,
-)
+    can_defeat_valley_boss)
 from .helpers.classes import (
     BanditsWayLocation,
     BeanValleyLocation,
@@ -438,13 +426,12 @@ from .helpers.classes import (
     TadpolePondLocation,
     TempleLocation,
     TreasuryLocation,
-    YosterIsleLocation,
-)
+    YosterIsleLocation)
 
 # *** Marios Pad
 
 
-def _restrict_best_monstro_item(world: Optional[GameWorld], item: Item) -> bool:
+def _restrict_best_monstro_item(world: GameWorld | None, item: Item) -> bool:
     if world is None:
         return False
     if not world.settings.is_boolean_flag_enabled(RestrictSpecialEquips):
@@ -471,8 +458,8 @@ class StartingItem1(StartingItemGrant, MariosPadLocation):
     """StartingItem1 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_1
-    _original_item: Type[Item] = Mushroom
-    _room_ids: List[int] = [R189_MARIOS_PIPEHOUSE]
+    _original_item: type[Item] = Mushroom
+    _room_ids: list[int] = [R189_MARIOS_PIPEHOUSE]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
 
 
@@ -480,8 +467,8 @@ class StartingItem2(StartingItemGrant, MariosPadLocation):
     """StartingItem2 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_2
-    _original_item: Type[Item] = Mushroom
-    _room_ids: List[int] = [R189_MARIOS_PIPEHOUSE]
+    _original_item: type[Item] = Mushroom
+    _room_ids: list[int] = [R189_MARIOS_PIPEHOUSE]
     _container_event: int = E0251_NPC_QUEST_3_GRANT
 
 
@@ -489,8 +476,8 @@ class StartingItem3(StartingItemGrant, MariosPadLocation):
     """StartingItem3 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_3
-    _original_item: Type[Item] = Mushroom
-    _room_ids: List[int] = [R189_MARIOS_PIPEHOUSE]
+    _original_item: type[Item] = Mushroom
+    _room_ids: list[int] = [R189_MARIOS_PIPEHOUSE]
     _container_event: int = E0250_NPC_QUEST_4_GRANT
 
 
@@ -498,8 +485,8 @@ class StartingItem4(StartingItemGrant, MariosPadLocation):
     """StartingItem4 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARIOS_PAD_STARTER_4
-    _original_item: Type[Item] = Mushroom
-    _room_ids: List[int] = [R189_MARIOS_PIPEHOUSE]
+    _original_item: type[Item] = Mushroom
+    _room_ids: list[int] = [R189_MARIOS_PIPEHOUSE]
     _container_event: int = E0249_NPC_QUEST_5_GRANT
 
 
@@ -512,9 +499,9 @@ class MushroomWayRoom1Lower(
     """MushroomWayRoom1Lower progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MUSHROOM_WAY_1
-    _original_item: Type[Item] = Coins5
-    _room_ids: List[int] = [R203_MUSHROOM_WAY_AREA_01]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Coins5
+    _room_ids: list[int] = [R203_MUSHROOM_WAY_AREA_01]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -524,17 +511,17 @@ class MushroomWayRoom1Upper(
     """MushroomWayRoom1Upper progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MUSHROOM_WAY_2
-    _original_item: Type[Item] = Coins8
-    _room_ids: List[int] = [R203_MUSHROOM_WAY_AREA_01]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Coins8
+    _room_ids: list[int] = [R203_MUSHROOM_WAY_AREA_01]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
 class MushroomWayToadRescueFirstRoom(GrantLocation, MushroomWayLocation):
     """MushroomWayToadRescueFirstRoom progress location class"""
 
-    _original_item: Type[Item] = HoneySyrup
-    _room_ids: List[int] = [R203_MUSHROOM_WAY_AREA_01]
+    _original_item: type[Item] = HoneySyrup
+    _room_ids: list[int] = [R203_MUSHROOM_WAY_AREA_01]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
@@ -545,17 +532,17 @@ class MushroomWayLedge(
     """MushroomWayLedge progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MUSHROOM_WAY_3
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R204_MUSHROOM_WAY_AREA_02]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R204_MUSHROOM_WAY_AREA_02]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
 class MushroomWayToadRescueSecondRoom(GrantLocation, MushroomWayLocation):
     """MushroomWayToadRescueSecondRoom progress location class"""
 
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [R204_MUSHROOM_WAY_AREA_02]
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [R204_MUSHROOM_WAY_AREA_02]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
@@ -566,12 +553,12 @@ class MushroomWayRightGoomba(
     """MushroomWayRightGoomba progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MUSHROOM_WAY_4
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R204_MUSHROOM_WAY_AREA_02]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R204_MUSHROOM_WAY_AREA_02]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -581,8 +568,8 @@ class MushroomWayBossReward(GrantLocation, MushroomWayLocation):
     """MushroomWayBossReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.HAMMER_BROS_REWARD
-    _original_item: Type[Item] = Hammer
-    _room_ids: List[int] = [R205_MUSHROOM_WAY_AREA_03]
+    _original_item: type[Item] = Hammer
+    _room_ids: list[int] = [R205_MUSHROOM_WAY_AREA_03]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -600,12 +587,12 @@ class MushroomKingdomCastleMainHall(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MUSHROOM_KINGDOM_HALLWAY
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL,
         R325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
     ]
-    _npc_ids: List[int] = [2, 6]
+    _npc_ids: list[int] = [2, 6]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -617,9 +604,9 @@ class MushroomKingdomCastleVaultLeft(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_1
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -631,9 +618,9 @@ class MushroomKingdomCastleVaultRight(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_2
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -645,9 +632,9 @@ class MushroomKingdomCastleVaultMiddle(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MUSHROOM_KINGDOM_VAULT_3
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R031_MUSHROOM_KINGDOM_CASTLE_VAULT]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -659,9 +646,9 @@ class MushroomKingdomStoreBasementCenter(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_BASEMENT_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -673,9 +660,9 @@ class MushroomKingdomStoreBasementStairs(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_BASEMENT_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -683,8 +670,8 @@ class MushroomKingdomPeachsChair(GrantLocation, MushroomKingdomLocation):
     """MushroomKingdomPeachsChair progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PEACH_SURPRISE
-    _original_item: Type[Item] = Mushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Mushroom
+    _room_ids: list[int] = [
         R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM,
         R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM,
     ]
@@ -695,8 +682,8 @@ class MushroomKingdomFreeShopItem(GrantLocation, MushroomKingdomLocation):
     """MushroomKingdomFreeShopItem progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE
-    _original_item: Type[Item] = PickMeUp
-    _room_ids: List[int] = [
+    _original_item: type[Item] = PickMeUp
+    _room_ids: list[int] = [
         R483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR,
         R491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR,
     ]
@@ -712,12 +699,12 @@ class BanditsWayFlowerJump(
     """BanditsWayFlowerJump progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BANDITS_WAY_1
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [R207_BANDITS_WAY_AREA_02]
-    _npc_ids: List[int] = [9]
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [R207_BANDITS_WAY_AREA_02]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -726,27 +713,27 @@ class BanditsWayFlowerJump(
 class BanditsWayCoin1(FreestandingLocation, BanditsWayLocation):
     """BanditsWayCoin1 progress location class"""
 
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [R207_BANDITS_WAY_AREA_02]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [R207_BANDITS_WAY_AREA_02]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
 class BanditsWayCoin2(FreestandingLocation, BanditsWayLocation):
     """BanditsWayCoin2 progress location class"""
 
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [R207_BANDITS_WAY_AREA_02]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [R207_BANDITS_WAY_AREA_02]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
 class BanditsWayCoin3(FreestandingLocation, BanditsWayLocation):
     """BanditsWayCoin3 progress location class"""
 
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [R207_BANDITS_WAY_AREA_02]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [R207_BANDITS_WAY_AREA_02]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -756,12 +743,12 @@ class BanditsWayDogChest(
     """BanditsWayDogChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BANDITS_WAY_2
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R077_BANDITS_WAY_AREA_03]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R077_BANDITS_WAY_AREA_03]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -773,9 +760,9 @@ class BanditsWayPlatformsLeftChest(
     """BanditsWayPlatformsLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BANDITS_WAY_STAR_CHEST
-    _original_item: Type[Item] = BanditsWayStar
-    _room_ids: List[int] = [R078_BANDITS_WAY_AREA_04]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = BanditsWayStar
+    _room_ids: list[int] = [R078_BANDITS_WAY_AREA_04]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -785,9 +772,9 @@ class BanditsWayPlatformsRightChest(
     """BanditsWayPlatformsRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BANDITS_WAY_DOG_JUMP
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R078_BANDITS_WAY_AREA_04]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R078_BANDITS_WAY_AREA_04]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -795,12 +782,12 @@ class BanditsWayDeadEndChest(EarlygameChestLocation, BanditsWayLocation):
     """BanditsWayDeadEndChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BANDITS_WAY_CROCO
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R206_BANDITS_WAY_AREA_05]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R206_BANDITS_WAY_AREA_05]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -810,8 +797,8 @@ class BanditsWayBossFirstItemDrop(GrantLocation, BanditsWayLocation):
     """BanditsWayBossFirstItemDrop progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CROCO_1_REWARD
-    _original_item: Type[Item] = RareFrogCoin
-    _room_ids: List[int] = [R206_BANDITS_WAY_AREA_05]
+    _original_item: type[Item] = RareFrogCoin
+    _room_ids: list[int] = [R206_BANDITS_WAY_AREA_05]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
@@ -819,8 +806,8 @@ class BanditsWayBossSecondItemDrop(GrantLocation, BanditsWayLocation):
     """BanditsWayBossSecondItemDrop progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CROCO_1_REWARD_2
-    _original_item: Type[Item] = Wallet
-    _room_ids: List[int] = [R206_BANDITS_WAY_AREA_05]
+    _original_item: type[Item] = Wallet
+    _room_ids: list[int] = [R206_BANDITS_WAY_AREA_05]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
 
 
@@ -832,9 +819,9 @@ class MushroomKingdomOccupiedVaultLeft(
 ):
     """MushroomKingdomOccupiedVaultLeft progress location class"""
 
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
     _missable: bool = True
 
@@ -844,9 +831,9 @@ class MushroomKingdomOccupiedVaultRight(
 ):
     """MushroomKingdomOccupiedVaultRight progress location class"""
 
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
     _missable: bool = True
 
@@ -856,9 +843,9 @@ class MushroomKingdomOccupiedVaultMiddle(
 ):
     """MushroomKingdomOccupiedVaultMiddle progress location class"""
 
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0245_CHEST_3_GRANT
     _missable: bool = True
 
@@ -868,8 +855,8 @@ class MushroomKingdomOccupiedOutdoorGuard(
 ):
     """MushroomKingdomOccupiedOutdoorGuard progress location class"""
 
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
@@ -879,8 +866,8 @@ class MushroomKingdomWalletGuyFirstReward(
 ):
     """MushroomKingdomWalletGuyFirstReward progress location class"""
 
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [
         R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
         R191_MUSHROOM_KINGDOM_OUTSIDE,
     ]
@@ -893,8 +880,8 @@ class MushroomKingdomWalletGuySecondReward(
 ):
     """MushroomKingdomWalletGuySecondReward progress location class"""
 
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
         R191_MUSHROOM_KINGDOM_OUTSIDE,
     ]
@@ -907,8 +894,8 @@ class MushroomKingdomOccupiedCastleToadRescue(
 ):
     """MushroomKingdomOccupiedCastleToadRescue progress location class"""
 
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [
         R328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM,
     ]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
@@ -920,8 +907,8 @@ class MushroomKingdomOccupiedFamilyRescue(
 ):
     """MushroomKingdomOccupiedFamilyRescue progress location class"""
 
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [
         R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
         R481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
     ]
@@ -932,8 +919,8 @@ class MushroomKingdomOccupiedFamilyRescue(
 class MushroomKingdomOccupiedGuestRoom(GrantLocation, MushroomKingdomOccupiedLocation):
     """MushroomKingdomOccupiedGuestRoom progress location class"""
 
-    _original_item: Type[Item] = WakeUpPin
-    _room_ids: List[int] = [R330_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_GUEST_ROOM]
+    _original_item: type[Item] = WakeUpPin
+    _room_ids: list[int] = [R330_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_GUEST_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
@@ -941,8 +928,8 @@ class MushroomKingdomOccupiedGuestRoom(GrantLocation, MushroomKingdomOccupiedLoc
 class MushroomKingdomStoreExchange(GrantLocation, MushroomKingdomLocation):
     """MushroomKingdomStoreExchange progress location class"""
 
-    _original_item: Type[Item] = CricketPie
-    _room_ids: List[int] = [
+    _original_item: type[Item] = CricketPie
+    _room_ids: list[int] = [
         R483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR,
         R491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR,
     ]
@@ -961,8 +948,8 @@ class MushroomKingdomInnPurchase(GrantLocation, MushroomKingdomLocation):
     """MushroomKingdomInnPurchase progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MUSHROOM_KINGDOM_INN
-    _original_item: Type[Item] = Beetlemania
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Beetlemania
+    _room_ids: list[int] = [
         R493_MUSHROOM_KINGDOM_INN_1F,
     ]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
@@ -982,14 +969,14 @@ class KeroSewersStairRoomLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.KERO_SEWERS_PANDORITE_ROOM
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1001,14 +988,14 @@ class KeroSewersStairRoomRightChest(
     """KeroSewersStairRoomRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PANDORITE_CHEST
-    _original_item: Type[Item] = MimicFightInitiator1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = MimicFightInitiator1
+    _room_ids: list[int] = [
         R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS
     ]
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1018,7 +1005,7 @@ class Mimic1DropReward(GrantLocation):
     """Mimic1DropReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PANDORITE_REWARD_1
-    _original_item: Type[Item] = TrueformPin
+    _original_item: type[Item] = TrueformPin
     _identifier: int = 512
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
@@ -1030,7 +1017,7 @@ class Mimic1ReloadReward(EarlygameChestLocation, MimicReloadRewardChest):
     """Mimic1ReloadReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PANDORITE_REWARD_2
-    _original_item: Type[Item] = Coins50
+    _original_item: type[Item] = Coins50
     _identifier: int = 512
     _container_event: int = E0245_CHEST_3_GRANT
     _set_70a7_manually_in_event_script: bool = True
@@ -1038,7 +1025,7 @@ class Mimic1ReloadReward(EarlygameChestLocation, MimicReloadRewardChest):
     def can_access(self, inventory: Inventory):
         return can_defeat_first_mimic(self.world, inventory)
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if isinstance(item, (MimicFightChestAssignment, InfiniteCoins)):
             return False
         chest = next(
@@ -1047,21 +1034,19 @@ class Mimic1ReloadReward(EarlygameChestLocation, MimicReloadRewardChest):
                 for loc in self.world.item_locations
                 if loc.does_contain(MimicFightInitiator1)
             ),
-            None,
-        )
+            None)
         if chest is None:
             return False
         return chest.can_accept(item)
 
-    def set_contents(self, contents: Optional[Item]) -> None:
+    def set_contents(self, contents: Item | None) -> None:
         chest = next(
             (
                 loc
                 for loc in self.world.item_locations
                 if loc.does_contain(MimicFightInitiator1)
             ),
-            None,
-        )
+            None)
         if chest is None:
             raise ItemPlacementError(
                 "how are we setting contents on a reload reward that can't be accessed yet?"
@@ -1076,9 +1061,9 @@ class KeroSewersFourRatRoomChest(
     """KeroSewersFourRatRoomChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.KERO_SEWERS_STAR_CHEST
-    _original_item: Type[Item] = KeroSewersStar
-    _room_ids: List[int] = [R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = KeroSewersStar
+    _room_ids: list[int] = [R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -1090,12 +1075,12 @@ class KeroSewersBeforeBelomeLower(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_LOWER
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1106,13 +1091,13 @@ class KeroSewersBeforeBelomeUpperBeforeFlip(
 ):
     """KeroSewersBeforeBelomeUpperBeforeFlip progress location class"""
 
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
     _missable: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1126,13 +1111,13 @@ class KeroSewersBeforeBelomeUpperAfterFlip(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.KERO_SEWERS_BEFORE_BELOME_UPPER_2
     )
-    _original_item: Type[Item] = CricketJam
-    _room_ids: List[int] = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = CricketJam
+    _room_ids: list[int] = [R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0245_CHEST_3_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1145,8 +1130,8 @@ class MidasRiverFirstCompletionReward(GrantLocation, MidasRiverLocation):
     """MidasRiverFirstCompletionReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MIDAS_RIVER_FIRST_TIME
-    _original_item: Type[Item] = NokNokShell
-    _room_ids: List[int] = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
+    _original_item: type[Item] = NokNokShell
+    _room_ids: list[int] = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _tier: int = 2
 
@@ -1157,11 +1142,11 @@ class MidasRiverBottomLeftCave(MidasRiverTunnelItem, MidasRiverLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MIDAS_RIVER_BOTTOM_LEFT_CAVE
     )
-    _original_item: Type[Item] = FrogCoin
+    _original_item: type[Item] = FrogCoin
     _midas_action_script: int = A0043_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH
-    _room_ids: List[int] = [R072_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT]
+    _room_ids: list[int] = [R072_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT]
     _container_event: int = 241
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
 
 
 class MidasRiverBottomRightCave(MidasRiverTunnelItem, MidasRiverLocation):
@@ -1170,11 +1155,11 @@ class MidasRiverBottomRightCave(MidasRiverTunnelItem, MidasRiverLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MIDAS_RIVER_BOTTOM_RIGHT_CAVE
     )
-    _original_item: Type[Item] = Flower
+    _original_item: type[Item] = Flower
     _midas_action_script: int = A0333_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH
-    _room_ids: List[int] = [R073_MIDAS_RIVER_4TH_TUNNEL_ON_VERY_BOTTOM_RIGHT]
+    _room_ids: list[int] = [R073_MIDAS_RIVER_4TH_TUNNEL_ON_VERY_BOTTOM_RIGHT]
     _container_event: int = 241
-    _npc_ids: List[int] = [4]
+    _npc_ids: list[int] = [4]
 
 
 # *** Tadpole Pond
@@ -1184,8 +1169,8 @@ class TadpolePondCricketPieExchange(GrantLocation, TadpolePondLocation):
     """TadpolePondCricketPieExchange progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CRICKET_PIE_REWARD
-    _original_item: Type[Item] = FroggieStick
-    _room_ids: List[int] = [R075_TADPOLE_POND_AREA_01]
+    _original_item: type[Item] = FroggieStick
+    _room_ids: list[int] = [R075_TADPOLE_POND_AREA_01]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
@@ -1201,8 +1186,8 @@ class TadpolePondCricketJamExchange(GrantLocation, TadpolePondLocation):
     """TadpolePondCricketJamExchange progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CRICKET_JAM_REWARD
-    _original_item: Type[Item] = FrogCoins10
-    _room_ids: List[int] = [R075_TADPOLE_POND_AREA_01]
+    _original_item: type[Item] = FrogCoins10
+    _room_ids: list[int] = [R075_TADPOLE_POND_AREA_01]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -1213,8 +1198,8 @@ class MelodyBayFirstReward(GrantLocation, TadpolePondLocation):
     """MelodyBayFirstReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MELODY_BAY_1
-    _original_item: Type[Item] = ProgressiveCard
-    _room_ids: List[int] = [R074_TADPOLE_POND_AREA_02]
+    _original_item: type[Item] = ProgressiveCard
+    _room_ids: list[int] = [R074_TADPOLE_POND_AREA_02]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _tier: int = 2
 
@@ -1223,8 +1208,8 @@ class MelodyBaySecondReward(GrantLocation, TadpolePondLocation):
     """MelodyBaySecondReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MELODY_BAY_2
-    _original_item: Type[Item] = ProgressiveCard
-    _room_ids: List[int] = [R074_TADPOLE_POND_AREA_02]
+    _original_item: type[Item] = ProgressiveCard
+    _room_ids: list[int] = [R074_TADPOLE_POND_AREA_02]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -1235,8 +1220,8 @@ class MelodyBayThirdReward(GrantLocation, TadpolePondLocation):
     """MelodyBayThirdReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MELODY_BAY_3
-    _original_item: Type[Item] = ProgressiveCard
-    _room_ids: List[int] = [R074_TADPOLE_POND_AREA_02]
+    _original_item: type[Item] = ProgressiveCard
+    _room_ids: list[int] = [R074_TADPOLE_POND_AREA_02]
     _container_event: int = E0251_NPC_QUEST_3_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -1254,12 +1239,12 @@ class RoseWaySwingingPlatformRoom(
     """RoseWaySwingingPlatformRoom progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_WAY_PLATFORM
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1269,9 +1254,9 @@ class RoseWayLeftIsland(FreestandingLocation, RoseWayLocation):
     """RoseWayLeftIsland progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_WAY_FLOWER
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids: List[int] = [7]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R079_ROSE_WAY_MAIN_AREA]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -1279,54 +1264,54 @@ class RoseWayMiddleIsland(FreestandingLocation, RoseWayLocation):
     """RoseWayMiddleIsland progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_WAY_MUSHROOM
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids: List[int] = [8]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R079_ROSE_WAY_MAIN_AREA]
+    _npc_ids: list[int] = [8]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
 class RoseWayCoin1(FreestandingLocation, RoseWayLocation):
     """RoseWayCoin1 progress location class"""
 
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids: List[int] = [17]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R079_ROSE_WAY_MAIN_AREA]
+    _npc_ids: list[int] = [17]
     _container_event: int = E0235_FREESTANDING_7_GRANT
 
 
 class RoseWayCoin2(FreestandingLocation, RoseWayLocation):
     """RoseWayCoin2 progress location class"""
 
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids: List[int] = [18]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R079_ROSE_WAY_MAIN_AREA]
+    _npc_ids: list[int] = [18]
     _container_event: int = E0236_FREESTANDING_6_GRANT
 
 
 class RoseWayCoin3(FreestandingLocation, RoseWayLocation):
     """RoseWayCoin3 progress location class"""
 
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids: List[int] = [19]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R079_ROSE_WAY_MAIN_AREA]
+    _npc_ids: list[int] = [19]
     _container_event: int = E0237_FREESTANDING_5_GRANT
 
 
 class RoseWayCoin4(FreestandingLocation, RoseWayLocation):
     """RoseWayCoin4 progress location class"""
 
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids: List[int] = [20]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R079_ROSE_WAY_MAIN_AREA]
+    _npc_ids: list[int] = [20]
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
 
 class RoseWayCoin5(FreestandingLocation, RoseWayLocation):
     """RoseWayCoin5 progress location class"""
 
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R079_ROSE_WAY_MAIN_AREA]
-    _npc_ids: List[int] = [21]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R079_ROSE_WAY_MAIN_AREA]
+    _npc_ids: list[int] = [21]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
@@ -1336,9 +1321,9 @@ class RoseWayFiveChestRoomTop(
     """RoseWayFiveChestRoomTop progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_1
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -1348,9 +1333,9 @@ class RoseWayFiveChestRoomBottomLeft(
     """RoseWayFiveChestRoomBottomLeft progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_2
-    _original_item: Type[Item] = Coins5
-    _room_ids: List[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Coins5
+    _room_ids: list[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -1360,9 +1345,9 @@ class RoseWayFiveChestRoomRight(
     """RoseWayFiveChestRoomRight progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_3
-    _original_item: Type[Item] = Coins5
-    _room_ids: List[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = Coins5
+    _room_ids: list[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -1372,9 +1357,9 @@ class RoseWayFiveChestRoomLeft(
     """RoseWayFiveChestRoomLeft progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_4
-    _original_item: Type[Item] = Coins5
-    _room_ids: List[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Coins5
+    _room_ids: list[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0244_CHEST_4_GRANT
 
 
@@ -1384,9 +1369,9 @@ class RoseWayFiveChestRoomBottomRight(
     """RoseWayFiveChestRoomBottomRight progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_WAY_FIVE_CHESTS_5
-    _original_item: Type[Item] = Coins5
-    _room_ids: List[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = Coins5
+    _room_ids: list[int] = [R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0243_CHEST_5_GRANT
 
 
@@ -1399,9 +1384,9 @@ class RoseTownShopLeftChest(
     """RoseTownShopLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_TOWN_STORE_2
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R087_ROSE_TOWN_ITEM_SHOP]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R087_ROSE_TOWN_ITEM_SHOP]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
@@ -1412,9 +1397,9 @@ class RoseTownShopRightChest(
     """RoseTownShopRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_TOWN_STORE_1
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R087_ROSE_TOWN_ITEM_SHOP]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R087_ROSE_TOWN_ITEM_SHOP]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0246_CHEST_2_GRANT
     _tier: int = 2
 
@@ -1425,9 +1410,9 @@ class RoseTownCloudRightChest(
     """RoseTownCloudRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.GARDENER_CLOUD_1
-    _original_item: Type[Item] = LazyShellArmor
-    _room_ids: List[int] = [R419_LAZY_SHELL_CLOUD]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = LazyShellArmor
+    _room_ids: list[int] = [R419_LAZY_SHELL_CLOUD]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -1450,9 +1435,9 @@ class RoseTownCloudLeftChest(
     """RoseTownCloudLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.GARDENER_CLOUD_2
-    _original_item: Type[Item] = LazyShellWeapon
-    _room_ids: List[int] = [R419_LAZY_SHELL_CLOUD]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = LazyShellWeapon
+    _room_ids: list[int] = [R419_LAZY_SHELL_CLOUD]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -1473,8 +1458,8 @@ class RoseTownInnToadPrize(GrantLocation, RoseTownLocation):
     """RoseTownInnToadPrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.ROSE_TOWN_TOAD
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [
         R095_ROSE_TOWN_DURING_BOWYER_INN_2F,
         R096_ROSE_TOWN_INN_2F,
     ]
@@ -1486,8 +1471,8 @@ class RoseTownInnGazPrize(GrantLocation, RoseTownLocation):
     """RoseTownInnGazPrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.GAZ
-    _original_item: Type[Item] = FingerShot
-    _room_ids: List[int] = [R086_ROSE_TOWN_INN_1F]
+    _original_item: type[Item] = FingerShot
+    _room_ids: list[int] = [R086_ROSE_TOWN_INN_1F]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -1502,12 +1487,12 @@ class RoseTownTreasureHouseLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F,
         R094_ROSE_TOWN_TREASURE_HOUSE_1F,
     ]
-    _npc_ids: List[int] = [0, 0]
+    _npc_ids: list[int] = [0, 0]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
@@ -1520,12 +1505,12 @@ class RoseTownTreasureHouseRightChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F,
         R094_ROSE_TOWN_TREASURE_HOUSE_1F,
     ]
-    _npc_ids: List[int] = [1, 1]
+    _npc_ids: list[int] = [1, 1]
     _container_event: int = E0246_CHEST_2_GRANT
     _tier: int = 2
 
@@ -1536,8 +1521,8 @@ class RoseTownTreasureHouseMazeReward(GrantLocation, RoseTownLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_MAZE_REWARD
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F,
         R094_ROSE_TOWN_TREASURE_HOUSE_1F,
     ]
@@ -1555,17 +1540,17 @@ class RoseTownTreasureHouseUpperChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.ROSE_TOWN_TREASURE_HOUSE_3
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F,
         R098_ROSE_TOWN_TREASURE_HOUSE_2F,
     ]
-    _npc_ids: List[int] = [1, 1]
+    _npc_ids: list[int] = [1, 1]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
     # flowers do weird things in this room
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return (not isinstance(item, Flower)) and super().can_accept(item, inventory)
 
 
@@ -1578,12 +1563,12 @@ class ForestMazeFirstRoom(
     """ForestMazeFirstRoom progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FOREST_MAZE_1
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [R224_FOREST_MAZE_AREA_01]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [R224_FOREST_MAZE_AREA_01]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1595,12 +1580,12 @@ class ForestMazeFirstUndergroundExit(
     """ForestMazeFirstUndergroundExit progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FOREST_MAZE_2
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R228_FOREST_MAZE_AREA_04]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R228_FOREST_MAZE_AREA_04]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1614,13 +1599,13 @@ class ForestMazeUndergroundWigglerChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_1
     )
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0247_CHEST_1_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1634,13 +1619,13 @@ class ForestMazeUndergroundBottomRightTrunkChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0246_CHEST_2_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1654,13 +1639,13 @@ class ForestMazeUndergroundMiddleLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_3
     )
-    _original_item: Type[Item] = YouMissed
-    _room_ids: List[int] = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = YouMissed
+    _room_ids: list[int] = [R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0245_CHEST_3_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1674,9 +1659,9 @@ class ForestMazeInnerMazeEntrance(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.FOREST_MAZE_RED_ESSENCE
     )
-    _original_item: Type[Item] = RedEssence
-    _room_ids: List[int] = [R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = RedEssence
+    _room_ids: list[int] = [R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -1686,12 +1671,12 @@ class ForestMazeSecretTopRightChest(
     """ForestMazeSecretTopRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FOREST_MAZE_SECRET_1
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R234_FOREST_MAZE_SECRET]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R234_FOREST_MAZE_SECRET]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1703,12 +1688,12 @@ class ForestMazeSecretBottomRightChest(
     """ForestMazeSecretBottomRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FOREST_MAZE_SECRET_2
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R234_FOREST_MAZE_SECRET]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R234_FOREST_MAZE_SECRET]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1720,12 +1705,12 @@ class ForestMazeSecretTopMiddleChest(
     """ForestMazeSecretTopMiddleChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FOREST_MAZE_SECRET_3
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R234_FOREST_MAZE_SECRET]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R234_FOREST_MAZE_SECRET]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0245_CHEST_3_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1737,12 +1722,12 @@ class ForestMazeSecretBottomMiddleChest(
     """ForestMazeSecretBottomMiddleChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FOREST_MAZE_SECRET_4
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R234_FOREST_MAZE_SECRET]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R234_FOREST_MAZE_SECRET]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0244_CHEST_4_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1754,12 +1739,12 @@ class ForestMazeSecretLeftChest(
     """ForestMazeSecretLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FOREST_MAZE_SECRET_5
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R234_FOREST_MAZE_SECRET]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R234_FOREST_MAZE_SECRET]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0243_CHEST_5_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -1774,9 +1759,9 @@ class PipeVaultSlidingCoinRoomBackChest(
     """PipeVaultSlidingCoinRoomBackChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PIPE_VAULT_SLIDE_1
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [8]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [8]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -1786,9 +1771,9 @@ class PipeVaultSlidingCoinRoomMiddleChest(
     """PipeVaultSlidingCoinRoomMiddleChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PIPE_VAULT_SLIDE_2
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [9]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -1798,54 +1783,54 @@ class PipeVaultSlidingCoinRoomFrontChest(
     """PipeVaultSlidingCoinRoomFrontChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PIPE_VAULT_SLIDE_3
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [10]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [10]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
 class PipeVaultSlidingCoinRoomCoin1(FreestandingLocation, PipeVaultLocation):
     """PipeVaultSlidingCoinRoomCoin1 progress location class"""
 
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0237_FREESTANDING_5_GRANT
 
 
 class PipeVaultSlidingCoinRoomCoin2(FreestandingLocation, PipeVaultLocation):
     """PipeVaultSlidingCoinRoomCoin2 progress location class"""
 
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
 
 class PipeVaultSlidingCoinRoomCoin3(FreestandingLocation, PipeVaultLocation):
     """PipeVaultSlidingCoinRoomCoin3 progress location class"""
 
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
 class PipeVaultSlidingCoinRoomCoin4(FreestandingLocation, PipeVaultLocation):
     """PipeVaultSlidingCoinRoomCoin4 progress location class"""
 
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
 class PipeVaultSlidingCoinRoomCoin5(FreestandingLocation, PipeVaultLocation):
     """PipeVaultSlidingCoinRoomCoin5 progress location class"""
 
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -1855,9 +1840,9 @@ class PipeVaultSlidingCoinRoomCrouchItem(FreestandingLocation, PipeVaultLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.PIPE_VAULT_SLIDE_FROG_COIN
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0236_FREESTANDING_6_GRANT
 
 
@@ -1865,8 +1850,8 @@ class PipeVaultGoombaThumpinFirstPrize(GrantLocation, PipeVaultLocation):
     """PipeVaultGoombaThumpinFirstPrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.GOOMBA_THUMPING_1
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
@@ -1874,8 +1859,8 @@ class PipeVaultGoombaThumpinSecondPrize(GrantLocation, PipeVaultLocation):
     """PipeVaultGoombaThumpinSecondPrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.GOOMBA_THUMPING_2
-    _original_item: Type[Item] = FlowerJar
-    _room_ids: List[int] = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
+    _original_item: type[Item] = FlowerJar
+    _room_ids: list[int] = [R143_PIPE_VAULT_GOOMBATHUMPING_ROOM]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
 
 
@@ -1885,9 +1870,9 @@ class PipeVaultRisingPlatformChest(
     """PipeVaultRisingPlatformChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_1
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -1897,9 +1882,9 @@ class PipeVaultChompweedChest(
     """PipeVaultChompweedChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_2
-    _original_item: Type[Item] = Coins20
-    _room_ids: List[int] = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Coins20
+    _room_ids: list[int] = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -1910,9 +1895,9 @@ class YosterEntranceChest(
     """YosterEntranceChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.YOSTER_ISLE_ENTRANCE
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
 
     @property
@@ -1928,8 +1913,8 @@ class YosterRacePrize1(GrantLocation, YosterIsleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_1
     )
-    _original_item: Type[Item] = YoshiCookie
-    _room_ids: List[int] = [R034_YOSTER_ISLE]
+    _original_item: type[Item] = YoshiCookie
+    _room_ids: list[int] = [R034_YOSTER_ISLE]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
@@ -1939,8 +1924,8 @@ class YosterRacePrize2(GrantLocation, YosterIsleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_2
     )
-    _original_item: Type[Item] = YoshiCookie
-    _room_ids: List[int] = [R034_YOSTER_ISLE]
+    _original_item: type[Item] = YoshiCookie
+    _room_ids: list[int] = [R034_YOSTER_ISLE]
     _container_event: int = E0251_NPC_QUEST_3_GRANT
 
 
@@ -1950,8 +1935,8 @@ class YosterRacePrize3(GrantLocation, YosterIsleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_3
     )
-    _original_item: Type[Item] = YoshiCookie
-    _room_ids: List[int] = [R034_YOSTER_ISLE]
+    _original_item: type[Item] = YoshiCookie
+    _room_ids: list[int] = [R034_YOSTER_ISLE]
     _container_event: int = E0250_NPC_QUEST_4_GRANT
 
 
@@ -1962,8 +1947,8 @@ class BucketGirlReward(GrantLocation, MolevilleLocation):
     """BucketGirlReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BUCKET_GIRL
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R108_MOLEVILLE_OUTSIDE]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R108_MOLEVILLE_OUTSIDE]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def __init__(self, world: GameWorld):
@@ -1998,38 +1983,38 @@ class TreasureShopItem1(TreasureShopItem, MolevilleLocation):
     """TreasureShopItem1 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.TREASURE_SELLER_1
-    _original_item: Type[Item] = LuckyJewel
-    _room_ids: List[int] = [R336_MOLEVILLE_ITEM_SHOP]
+    _original_item: type[Item] = LuckyJewel
+    _room_ids: list[int] = [R336_MOLEVILLE_ITEM_SHOP]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
-    _affected_dialog_ids: List[int] = [DI2911_TREASURE_SELLER_ITEM_1]
+    _affected_dialog_ids: list[int] = [DI2911_TREASURE_SELLER_ITEM_1]
 
 
 class TreasureShopItem2(TreasureShopItem, MolevilleLocation):
     """TreasureShopItem2 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.TREASURE_SELLER_2
-    _original_item: Type[Item] = ProgressiveEgg
-    _room_ids: List[int] = [R336_MOLEVILLE_ITEM_SHOP]
+    _original_item: type[Item] = ProgressiveEgg
+    _room_ids: list[int] = [R336_MOLEVILLE_ITEM_SHOP]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
-    _affected_dialog_ids: List[int] = [DI2908_TREASURE_SELLER_ITEM_2]
+    _affected_dialog_ids: list[int] = [DI2908_TREASURE_SELLER_ITEM_2]
 
 
 class TreasureShopItem3(TreasureShopItem, MolevilleLocation):
     """TreasureShopItem3 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.TREASURE_SELLER_3
-    _original_item: Type[Item] = FryingPan
-    _room_ids: List[int] = [R336_MOLEVILLE_ITEM_SHOP]
+    _original_item: type[Item] = FryingPan
+    _room_ids: list[int] = [R336_MOLEVILLE_ITEM_SHOP]
     _container_event: int = E0251_NPC_QUEST_3_GRANT
-    _affected_dialog_ids: List[int] = [DI2914_TREASURE_SELLER_ITEM_3]
+    _affected_dialog_ids: list[int] = [DI2914_TREASURE_SELLER_ITEM_3]
 
 
 class FireworksShopItem(GrantLocation, MolevilleLocation):
     """FireworksShopItem progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FIREWORKS_SHOP
-    _original_item: Type[Item] = Fireworks
-    _room_ids: List[int] = [R339_MOLEVILLE_FIREWORKS_SHOP]
+    _original_item: type[Item] = Fireworks
+    _room_ids: list[int] = [R339_MOLEVILLE_FIREWORKS_SHOP]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     @property
@@ -2054,8 +2039,8 @@ class OuterMinesTrampolineHenchman(GrantLocation, MinesLocation):
     """OuterMinesTrampolineHenchman progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CROCO_FLUNKIE_1
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
@@ -2064,8 +2049,8 @@ class OuterMinesLeftHenchman(GrantLocation, MinesLocation):
     """OuterMinesLeftHenchman progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CROCO_FLUNKIE_2
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
@@ -2074,8 +2059,8 @@ class OuterMinesRightHenchman(GrantLocation, MinesLocation):
     """OuterMinesRightHenchman progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CROCO_FLUNKIE_3
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [
         R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM
     ]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
@@ -2086,7 +2071,7 @@ class OuterMinesBossPrize(GrantLocation, MinesLocation):
     """OuterMinesBossPrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CROCO_2_ITEM
-    _original_item: Type[Item] = BambinoBomb
+    _original_item: type[Item] = BambinoBomb
     _identifier: int = 518
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
@@ -2099,9 +2084,9 @@ class InnerMinesTracksChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MOLEVILLE_MINES_STAR_CHEST
     )
-    _original_item: Type[Item] = MolevilleMinesStar
-    _room_ids: List[int] = [R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = MolevilleMinesStar
+    _room_ids: list[int] = [R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -2111,8 +2096,8 @@ class InnerMinesShyguyCart(PacketItem, InnerMinesLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MOLEVILLE_MINES_SHY_GUY
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM
     ]
     _container_event: int = E0241_FREESTANDING_1_GRANT
@@ -2125,11 +2110,11 @@ class InnerMinesBoxesChest(
     """InnerMinesBoxesChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MOLEVILLE_MINES_COINS
-    _original_item: Type[Item] = Coins150
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins150
+    _room_ids: list[int] = [
         R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -2141,14 +2126,14 @@ class InnerMinesSaveBlockChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_1
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2162,14 +2147,14 @@ class InnerMinesHighUpChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.MOLEVILLE_MINES_PUNCHINELLO_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS
     ]
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2182,8 +2167,8 @@ class BoosterPassBush(GrantLocation, BoosterPassLocation):
     """BoosterPassBush progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_PASS_BUSH
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R100_BOOSTER_PASS_AREA_01]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R100_BOOSTER_PASS_AREA_01]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _tier: int = 2
 
@@ -2194,9 +2179,9 @@ class BoosterPassFirstRoomLeftChest(
     """BoosterPassFirstRoomLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_PASS_1
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R100_BOOSTER_PASS_AREA_01]
-    _npc_ids: List[int] = [8]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R100_BOOSTER_PASS_AREA_01]
+    _npc_ids: list[int] = [8]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
@@ -2207,9 +2192,9 @@ class BoosterPassFirstRoomRightChest(
     """BoosterPassFirstRoomRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_PASS_2
-    _original_item: Type[Item] = RockCandy
-    _room_ids: List[int] = [R100_BOOSTER_PASS_AREA_01]
-    _npc_ids: List[int] = [9]
+    _original_item: type[Item] = RockCandy
+    _room_ids: list[int] = [R100_BOOSTER_PASS_AREA_01]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0246_CHEST_2_GRANT
     _tier: int = 2
 
@@ -2218,9 +2203,9 @@ class BoosterPassSecondRoomFlower(FreestandingLocation, BoosterPassLocation):
     """BoosterPassSecondRoomFlower progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_PASS_FLOWER
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R101_BOOSTER_PASS_AREA_02]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R101_BOOSTER_PASS_AREA_02]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0239_FREESTANDING_3_GRANT
     _tier: int = 2
 
@@ -2231,9 +2216,9 @@ class BoosterPassSecretMiddleChest(
     """BoosterPassSecretMiddleChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_PASS_SECRET_1
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R405_BOOSTER_PASS_SECRET]
-    _npc_ids: List[int] = [10]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R405_BOOSTER_PASS_SECRET]
+    _npc_ids: list[int] = [10]
     _container_event: int = E0247_CHEST_1_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -2246,9 +2231,9 @@ class BoosterPassSecretRightChest(
     """BoosterPassSecretRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_PASS_SECRET_2
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R405_BOOSTER_PASS_SECRET]
-    _npc_ids: List[int] = [11]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R405_BOOSTER_PASS_SECRET]
+    _npc_ids: list[int] = [11]
     _container_event: int = E0246_CHEST_2_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -2261,9 +2246,9 @@ class BoosterPassSecretLeftChest(
     """BoosterPassSecretLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_PASS_SECRET_3
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [R405_BOOSTER_PASS_SECRET]
-    _npc_ids: List[int] = [12]
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [R405_BOOSTER_PASS_SECRET]
+    _npc_ids: list[int] = [12]
     _container_event: int = E0245_CHEST_3_GRANT
 
     def can_access(self, inventory: Inventory):
@@ -2279,11 +2264,11 @@ class BoosterTowerSpookumStairs(
     """BoosterTowerSpookumStairs progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_SPOOKUM
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS
     ]
-    _npc_ids: List[int] = [6]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -2291,8 +2276,8 @@ class BoosterTowerTrainRoomCrevice(GrantLocation, BoosterTowerLocation):
     """BoosterTowerTrainRoomCrevice progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_RAILWAY
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
@@ -2302,14 +2287,14 @@ class BoosterTowerChestNearThwomp(
     """BoosterTowerChestNearThwomp progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_THWOMP
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER
     ]
-    _npc_ids: List[int] = [2]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2319,15 +2304,15 @@ class BoosterTowerFallingChest(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerFallingChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_MASHER
-    _original_item: Type[Item] = Masher
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Masher
+    _room_ids: list[int] = [
         R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER
     ]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
-    _npc_ids: List[int] = [3]
+    _npc_ids: list[int] = [3]
     _keep_original_item_if_excluded: bool = False
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and item.npc_event > 0
 
     # this looks like a chest, requires an overworld item, but acts like a npc reward
@@ -2343,8 +2328,8 @@ class BoosterTowerKnifeGuyPrize(GrantLocation, BoosterTowerLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
     )
-    _original_item: Type[Item] = BrightCard
-    _room_ids: List[int] = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
+    _original_item: type[Item] = BrightCard
+    _room_ids: list[int] = [R039_BOOSTER_TOWER_5F_KNIFE_GUYS_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -2361,10 +2346,10 @@ class BoosterTowerPortraitPrize(FreestandingLocation, BoosterTowerLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_PORTRAITS
     )
-    _original_item: Type[Item] = ElderKey
-    _room_ids: List[int] = [R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM]
+    _original_item: type[Item] = ElderKey
+    _room_ids: list[int] = [R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [7]
+    _npc_ids: list[int] = [7]
     _keep_original_item_if_excluded: bool = False
 
 
@@ -2372,10 +2357,10 @@ class BoosterTowerElderKeyItem(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerElderKeyItem progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_CHOMP
-    _original_item: Type[Item] = Chomp
-    _room_ids: List[int] = [R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP]
+    _original_item: type[Item] = Chomp
+    _room_ids: list[int] = [R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _keep_original_item_if_excluded: bool = False
 
     def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
@@ -2392,12 +2377,12 @@ class BoosterTowerRightmostItem(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerRightmostItem progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_ROOM_KEY
-    _original_item: Type[Item] = RoomKey
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RoomKey
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0228_FREESTANDING_14_GRANT
-    _npc_ids: List[int] = [5]
+    _npc_ids: list[int] = [5]
     _keep_original_item_if_excluded: bool = False
 
 
@@ -2407,12 +2392,12 @@ class BoosterTowerTopItem(FreestandingLocation, BoosterTowerLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_1
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
 
 
 class BoosterTowerLeftmostItem(FreestandingLocation, BoosterTowerLocation):
@@ -2421,12 +2406,12 @@ class BoosterTowerLeftmostItem(FreestandingLocation, BoosterTowerLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_2
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0240_FREESTANDING_2_GRANT
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
 
 
 class BoosterTowerUpperRightItem(FreestandingLocation, BoosterTowerLocation):
@@ -2435,12 +2420,12 @@ class BoosterTowerUpperRightItem(FreestandingLocation, BoosterTowerLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_3
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0239_FREESTANDING_3_GRANT
-    _npc_ids: List[int] = [2]
+    _npc_ids: list[int] = [2]
 
 
 class BoosterTowerBottomItem(FreestandingLocation, BoosterTowerLocation):
@@ -2449,120 +2434,120 @@ class BoosterTowerBottomItem(FreestandingLocation, BoosterTowerLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_4
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0238_FREESTANDING_4_GRANT
-    _npc_ids: List[int] = [3]
+    _npc_ids: list[int] = [3]
 
 
 class BoosterTowerCoin1(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin1 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_1
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0237_FREESTANDING_5_GRANT
-    _npc_ids: List[int] = [7]
+    _npc_ids: list[int] = [7]
 
 
 class BoosterTowerCoin2(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin2 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_2
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0236_FREESTANDING_6_GRANT
-    _npc_ids: List[int] = [8]
+    _npc_ids: list[int] = [8]
 
 
 class BoosterTowerCoin3(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin3 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_3
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0235_FREESTANDING_7_GRANT
-    _npc_ids: List[int] = [9]
+    _npc_ids: list[int] = [9]
 
 
 class BoosterTowerCoin4(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin4 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_4
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0234_FREESTANDING_8_GRANT
-    _npc_ids: List[int] = [10]
+    _npc_ids: list[int] = [10]
 
 
 class BoosterTowerCoin5(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin5 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_5
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0233_FREESTANDING_9_GRANT
-    _npc_ids: List[int] = [11]
+    _npc_ids: list[int] = [11]
 
 
 class BoosterTowerCoin6(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin6 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_6
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0232_FREESTANDING_10_GRANT
-    _npc_ids: List[int] = [12]
+    _npc_ids: list[int] = [12]
 
 
 class BoosterTowerCoin7(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin7 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_7
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0231_FREESTANDING_11_GRANT
-    _npc_ids: List[int] = [13]
+    _npc_ids: list[int] = [13]
 
 
 class BoosterTowerCoin8(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin8 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_8
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0230_FREESTANDING_12_GRANT
-    _npc_ids: List[int] = [14]
+    _npc_ids: list[int] = [14]
 
 
 class BoosterTowerCoin9(FreestandingLocation, BoosterTowerLocation):
     """BoosterTowerCoin9 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_COIN_9
-    _original_item: Type[Item] = Coins1
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins1
+    _room_ids: list[int] = [
         R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
     ]
     _container_event: int = E0229_FREESTANDING_13_GRANT
-    _npc_ids: List[int] = [15]
+    _npc_ids: list[int] = [15]
 
 
 class BoosterTowerParachuteRoomChest(
@@ -2573,12 +2558,12 @@ class BoosterTowerParachuteRoomChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
-    _npc_ids: List[int] = [9]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2590,8 +2575,8 @@ class BoosterTowerParachuteRoomCrevice(GrantLocation, BoosterTowerLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE_CREVICE
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
@@ -2603,12 +2588,12 @@ class BoosterTowerRoomKeyChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_ZOOM_SHOES
     )
-    _original_item: Type[Item] = ZoomShoes
-    _room_ids: List[int] = [R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = ZoomShoes
+    _room_ids: list[int] = [R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return (
             super().can_accept(item, inventory)
             and not isinstance(item, InvincibilityStar)
@@ -2626,14 +2611,14 @@ class BoosterTowerTopFloorLowerChest(
     """BoosterTowerTopFloorLowerChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_TOP_1
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2645,14 +2630,14 @@ class BoosterTowerTopFloorUpperChest(
     """BoosterTowerTopFloorUpperChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_TOP_2
-    _original_item: Type[Item] = GoodieBag
-    _room_ids: List[int] = [
+    _original_item: type[Item] = GoodieBag
+    _room_ids: list[int] = [
         R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT
     ]
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2664,14 +2649,14 @@ class BoosterTowerTopFloorCornerChest(
     """BoosterTowerTopFloorCornerChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOOSTER_TOWER_TOP_3
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT
     ]
-    _npc_ids: List[int] = [9]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0245_CHEST_3_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2683,8 +2668,8 @@ class BoosterTowerCurtainGamePrize(GrantLocation, BoosterTowerLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
     )
-    _original_item: Type[Item] = Amulet
-    _room_ids: List[int] = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _original_item: type[Item] = Amulet
+    _room_ids: list[int] = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
@@ -2700,8 +2685,8 @@ class MarrymoreFirstSuitePrize(GrantLocation, MarrymoreLocation):
     """MarrymoreFirstSuitePrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_PRIZE_1
-    _original_item: Type[Item] = FlowerTab
-    _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
+    _original_item: type[Item] = FlowerTab
+    _room_ids: list[int] = [R007_MARRYMORE_INN_1F]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _tier: int = 2
 
@@ -2710,8 +2695,8 @@ class MarrymoreSecondSuitePrize(GrantLocation, MarrymoreLocation):
     """MarrymoreSecondSuitePrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_PRIZE_2
-    _original_item: Type[Item] = FlowerJar
-    _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
+    _original_item: type[Item] = FlowerJar
+    _room_ids: list[int] = [R007_MARRYMORE_INN_1F]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
 
 
@@ -2719,8 +2704,8 @@ class MarrymoreThirdSuitePrize(GrantLocation, MarrymoreLocation):
     """MarrymoreThirdSuitePrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_PRIZE_3
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R007_MARRYMORE_INN_1F]
     _container_event: int = E0251_NPC_QUEST_3_GRANT
 
 
@@ -2728,8 +2713,8 @@ class MarrymoreFourthSuitePrize(GrantLocation, MarrymoreLocation):
     """MarrymoreFourthSuitePrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_PRIZE_4
-    _original_item: Type[Item] = FrogCoins2
-    _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
+    _original_item: type[Item] = FrogCoins2
+    _room_ids: list[int] = [R007_MARRYMORE_INN_1F]
     _container_event: int = E0250_NPC_QUEST_4_GRANT
 
 
@@ -2737,8 +2722,8 @@ class MarrymoreFifthSuitePrize(GrantLocation, MarrymoreLocation):
     """MarrymoreFifthSuitePrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_PRIZE_5
-    _original_item: Type[Item] = FrogCoins3
-    _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
+    _original_item: type[Item] = FrogCoins3
+    _room_ids: list[int] = [R007_MARRYMORE_INN_1F]
     _container_event: int = E0249_NPC_QUEST_5_GRANT
 
 
@@ -2746,8 +2731,8 @@ class MarrymoreSixthSuitePrize(GrantLocation, MarrymoreLocation):
     """MarrymoreSixthSuitePrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_PRIZE_6
-    _original_item: Type[Item] = FrogCoins20
-    _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
+    _original_item: type[Item] = FrogCoins20
+    _room_ids: list[int] = [R007_MARRYMORE_INN_1F]
     _container_event: int = E0248_NPC_QUEST_6_GRANT
 
 
@@ -2755,9 +2740,9 @@ class MarrymoreBigTip(GrantLocation, MarrymoreLocation):
     """MarrymoreBigTip progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_BIG_TIP
-    _original_item: Type[Item] = FlowerBox
-    _room_ids: List[int] = [R007_MARRYMORE_INN_1F]
-    _npc_ids: List[int] = [6, 7]
+    _original_item: type[Item] = FlowerBox
+    _room_ids: list[int] = [R007_MARRYMORE_INN_1F]
+    _npc_ids: list[int] = [6, 7]
     _container_event: int = E0226_NPC_QUEST_7_GRANT
     _tier: int = 2
 
@@ -2768,9 +2753,9 @@ class MarrymoreHotelChest(
     """MarrymoreHotelChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_INN
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R009_MARRYMORE_INN_REGULAR_ROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R009_MARRYMORE_INN_REGULAR_ROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
@@ -2779,8 +2764,8 @@ class MarrymoreSnifit1(GrantLocation, MarrymoreChapelLocation):
     """MarrymoreSnifit1 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
-    _original_item: Type[Item] = Brooch
-    _room_ids: List[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _original_item: type[Item] = Brooch
+    _room_ids: list[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _keep_original_item_if_excluded: bool = True
 
@@ -2796,8 +2781,8 @@ class MarrymoreSnifit2(GrantLocation, MarrymoreChapelLocation):
     """MarrymoreSnifit2 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
-    _original_item: Type[Item] = Ring
-    _room_ids: List[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _original_item: type[Item] = Ring
+    _room_ids: list[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
     _keep_original_item_if_excluded: bool = True
 
@@ -2813,8 +2798,8 @@ class MarrymoreSnifit3(GrantLocation, MarrymoreChapelLocation):
     """MarrymoreSnifit3 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
-    _original_item: Type[Item] = Shoes
-    _room_ids: List[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _original_item: type[Item] = Shoes
+    _room_ids: list[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _container_event: int = E0251_NPC_QUEST_3_GRANT
     _keep_original_item_if_excluded: bool = True
 
@@ -2830,10 +2815,10 @@ class MarrymoreAltarHead(FreestandingLocation, MarrymoreChapelLocation):
     """MarrymoreAltarHead progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MARRYMORE_ALTAR
-    _original_item: Type[Item] = Crown
-    _room_ids: List[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _original_item: type[Item] = Crown
+    _room_ids: list[int] = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [5]
+    _npc_ids: list[int] = [5]
 
     def __init__(self, world: GameWorld):
         super().__init__(world)
@@ -2850,35 +2835,35 @@ class FrogDiscipleItem1(FrogDiscipleShopItem, SeasideTownLocation):
     """FrogDiscipleItem1 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FROG_DISCIPLE_1
-    _original_item: Type[Item] = SeeYa
+    _original_item: type[Item] = SeeYa
 
 
 class FrogDiscipleItem2(FrogDiscipleShopItem, SeasideTownLocation):
     """FrogDiscipleItem2 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FROG_DISCIPLE_2
-    _original_item: Type[Item] = EarlierTimes
+    _original_item: type[Item] = EarlierTimes
 
 
 class FrogDiscipleItem3(FrogDiscipleShopItem, SeasideTownLocation):
     """FrogDiscipleItem3 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FROG_DISCIPLE_3
-    _original_item: Type[Item] = ExpBooster
+    _original_item: type[Item] = ExpBooster
 
 
 class FrogDiscipleItem4(FrogDiscipleShopItem, SeasideTownLocation):
     """FrogDiscipleItem4 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FROG_DISCIPLE_4
-    _original_item: Type[Item] = CoinTrick
+    _original_item: type[Item] = CoinTrick
 
 
 class FrogDiscipleItem5(FrogDiscipleShopItem, SeasideTownLocation):
     """FrogDiscipleItem5 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FROG_DISCIPLE_5
-    _original_item: Type[Item] = ScroogeRing
+    _original_item: type[Item] = ScroogeRing
 
 
 class SeasideTownBossPrize(FreestandingLocation, SeasideTownLocation):
@@ -2887,9 +2872,9 @@ class SeasideTownBossPrize(FreestandingLocation, SeasideTownLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SEASIDE_TOWN_BOSS_PRIZE
     )
-    _original_item: Type[Item] = ShedKey
-    _room_ids: List[int] = [R316_SEASIDE_TOWN_BEACH]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = ShedKey
+    _room_ids: list[int] = [R316_SEASIDE_TOWN_BEACH]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0241_FREESTANDING_1_GRANT
     _keep_original_item_if_excluded: bool = False
 
@@ -2901,8 +2886,8 @@ class SeasideTownShedRescue(GrantLocation, SeasideTownLocation):
     """SeasideTownShedRescue progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SEASIDE_TOWN_RESCUE
-    _original_item: Type[Item] = FlowerBox
-    _room_ids: List[int] = [R314_SEASIDE_TOWN_SHED]
+    _original_item: type[Item] = FlowerBox
+    _room_ids: list[int] = [R314_SEASIDE_TOWN_SHED]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -2918,9 +2903,9 @@ class SeaStarslapRoomChest(ChestLocationAllowSlots, MidgameChestLocation, SeaLoc
     """SeaStarslapRoomChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SEA_STAR_CHEST
-    _original_item: Type[Item] = SeaStar
-    _room_ids: List[int] = [R134_SEA_AREA_03_SUPER_STAR_ROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = SeaStar
+    _room_ids: list[int] = [R134_SEA_AREA_03_SUPER_STAR_ROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -2928,12 +2913,12 @@ class SeaSaveRoomBackChest(ChestLocationAllowSlots, MidgameChestLocation, SeaLoc
     """SeaSaveRoomBackChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SEA_SAVE_ROOM_1
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0245_CHEST_3_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2945,12 +2930,12 @@ class SeaSaveRoomMiddleChest(
     """SeaSaveRoomMiddleChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SEA_SAVE_ROOM_2
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2960,12 +2945,12 @@ class SeaSaveRoomFrontChest(ChestLocationAllowSlots, MidgameChestLocation, SeaLo
     """SeaSaveRoomFrontChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SEA_SAVE_ROOM_3
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2975,12 +2960,12 @@ class SeaWhirlpoolChest(ChestLocationAllowSlots, MidgameChestLocation, SeaLocati
     """SeaWhirlpoolChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SEA_WHIRLPOOL_CHEST
-    _original_item: Type[Item] = MaxMushroom
-    _room_ids: List[int] = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = MaxMushroom
+    _room_ids: list[int] = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -2995,11 +2980,11 @@ class ShipRatStairsChest(
     """ShipRatStairsChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS
-    _original_item: Type[Item] = Coins100
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins100
+    _room_ids: list[int] = [
         R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3009,12 +2994,12 @@ class ShipRatStairsBoxes(PacketItem, SunkenShipLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS_FLOWER
     )
-    _room_ids: List[int] = [
+    _room_ids: list[int] = [
         R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS
     ]
     _container_event: int = E0241_FREESTANDING_1_GRANT
     _creation_script: int = E3385_SHIP_UPPER_STAIRWAY_ITEM_PACKET_GRANT
-    _original_item: Type[Item] = Flower
+    _original_item: type[Item] = Flower
     _packet_type: PacketType = PacketType.CHEST
 
 
@@ -3024,10 +3009,10 @@ class ShipTroopaPuzzle(PacketItem, SunkenShipLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_TROOPA_PUZZLE
     )
-    _room_ids: List[int] = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
+    _room_ids: list[int] = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
     _container_event: int = E0241_FREESTANDING_1_GRANT
     _creation_script: int = E3384_SHIP_TROOPA_PRIZE_PACKET_GRANT
-    _original_item: Type[Item] = RecoveryMushroom
+    _original_item: type[Item] = RecoveryMushroom
     _packet_type: PacketType = PacketType.FALLING
 
 
@@ -3037,10 +3022,10 @@ class ShipTrampolinePuzzle(PacketItem, SunkenShipLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_TRAMPOLINE_PUZZLE
     )
-    _room_ids: List[int] = [R163_SUNKEN_SHIP_PUZZLE_ROOM_2]
+    _room_ids: list[int] = [R163_SUNKEN_SHIP_PUZZLE_ROOM_2]
     _container_event: int = E0241_FREESTANDING_1_GRANT
     _creation_script: int = E3383_SHIP_TRAMPOLINE_PRIZE_PACKET_GRANT
-    _original_item: Type[Item] = Flower
+    _original_item: type[Item] = Flower
     _packet_type: PacketType = PacketType.FALLING
 
 
@@ -3048,10 +3033,10 @@ class Ship3DMazePuzzle(PacketItem, SunkenShipLocation):
     """Ship3DMazePuzzle progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUNKEN_SHIP_3D_MAZE
-    _room_ids: List[int] = [R168_SUNKEN_SHIP_PUZZLE_ROOM_3]
+    _room_ids: list[int] = [R168_SUNKEN_SHIP_PUZZLE_ROOM_3]
     _container_event: int = E0241_FREESTANDING_1_GRANT
     _creation_script: int = E3386_SHIP_3D_MAZE_SPAWN_PRIZE
-    _original_item: Type[Item] = RoyalSyrup
+    _original_item: type[Item] = RoyalSyrup
     _packet_type: PacketType = PacketType.FALLING
     _keep_original_item_if_excluded: bool = False
 
@@ -3064,14 +3049,14 @@ class ShipShopChest(ChestLocationAllowSlots, MidgameChestLocation, SunkenShipLoc
     """ShipShopChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUNKEN_SHIP_SHOP
-    _original_item: Type[Item] = Coins100
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins100
+    _room_ids: list[int] = [
         R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3081,11 +3066,11 @@ class ShipCoinSnakePuzzle(GrantLocation, SunkenShipLocation):
     """ShipCoinSnakePuzzle progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUNKEN_SHIP_COIN_SNAKE
-    _room_ids: List[int] = [R171_SUNKEN_SHIP_PUZZLE_ROOM_4]
+    _room_ids: list[int] = [R171_SUNKEN_SHIP_PUZZLE_ROOM_4]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
-    _original_item: Type[Item] = Coins150
+    _original_item: type[Item] = Coins150
     _keep_original_item_if_excluded: bool = True
-    _npc_ids: List[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+    _npc_ids: list[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
     # Needs special considerations for the sound played in 3216
     # and the sequences performed in 3216 and 3215
     # depending on the item
@@ -3097,10 +3082,10 @@ class ShipCannonballPuzzle(PacketItem, SunkenShipLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_CANNONBALL_PUZZLE
     )
-    _room_ids: List[int] = [R172_SUNKEN_SHIP_PUZZLE_ROOM_5]
+    _room_ids: list[int] = [R172_SUNKEN_SHIP_PUZZLE_ROOM_5]
     _container_event: int = E0241_FREESTANDING_1_GRANT
     _creation_script: int = E3387_SHIP_CANNONBALL_PUZZLE_SPAWN_PRIZE
-    _original_item: Type[Item] = Mushroom
+    _original_item: type[Item] = Mushroom
     _packet_type: PacketType = PacketType.FALLING
     _keep_original_item_if_excluded: bool = False
 
@@ -3111,12 +3096,12 @@ class ShipBarrelPuzzle(PacketItem, SunkenShipLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_BARREL_PUZZLE
     )
-    _room_ids: List[int] = [
+    _room_ids: list[int] = [
         R176_SUNKEN_SHIP_AREA_08_WSAVE_POINT_AND_GREEN_SWITCH_FOR_BARREL
     ]
     _container_event: int = E0241_FREESTANDING_1_GRANT
     _creation_script: int = E3389_SHIP_BARREL_PUZZLE_SPAWN_PRIZE
-    _original_item: Type[Item] = RecoveryMushroom
+    _original_item: type[Item] = RecoveryMushroom
     _packet_type: PacketType = PacketType.FALLING
 
 
@@ -3126,11 +3111,11 @@ class EarlyInnerShipLeftChest(
     """EarlyInnerShipLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
-    _original_item: Type[Item] = Coins100
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins100
+    _room_ids: list[int] = [
         R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3138,9 +3123,9 @@ class InnerShipCloneRoomChest(MidgameChestLocation, InnerSunkenShipLocation):
     """InnerShipCloneRoomChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUNKEN_SHIP_CLONE_ROOM
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3150,12 +3135,12 @@ class InnerShipBehindBoxesChest(MidgameChestLocation, InnerSunkenShipLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_FROG_COIN_ROOM
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3169,12 +3154,12 @@ class InnerShipSaveRoomLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_HIDON_MUSHROOM
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3186,12 +3171,12 @@ class InnerShipSaveRoomRightChest(
     """InnerShipSaveRoomRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.HIDON_CHEST
-    _original_item: Type[Item] = MimicFightInitiator2
-    _room_ids: List[int] = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = MimicFightInitiator2
+    _room_ids: list[int] = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3201,7 +3186,7 @@ class Mimic2DropReward(GrantLocation):
     """Mimic2DropReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.HIDON_REWARD_1
-    _original_item: Type[Item] = SafetyBadge
+    _original_item: type[Item] = SafetyBadge
     _identifier: int = 513
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
@@ -3213,7 +3198,7 @@ class Mimic2ReloadReward(MimicReloadRewardChest):
     """Mimic2ReloadReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.HIDON_REWARD_2
-    _original_item: Type[Item] = Coins100
+    _original_item: type[Item] = Coins100
     _identifier: int = 513
     _container_event: int = E0245_CHEST_3_GRANT
     _set_70a7_manually_in_event_script: bool = True
@@ -3221,7 +3206,7 @@ class Mimic2ReloadReward(MimicReloadRewardChest):
     def can_access(self, inventory: Inventory):
         return can_defeat_second_mimic(self.world, inventory)
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         if isinstance(item, (MimicFightChestAssignment, InfiniteCoins)):
             return False
         chest = next(
@@ -3230,21 +3215,19 @@ class Mimic2ReloadReward(MimicReloadRewardChest):
                 for loc in self.world.item_locations
                 if loc.does_contain(MimicFightInitiator2)
             ),
-            None,
-        )
+            None)
         if chest is None:
             return False
         return chest.can_accept(item)
 
-    def set_contents(self, contents: Optional[Item]) -> None:
+    def set_contents(self, contents: Item | None) -> None:
         chest = next(
             (
                 loc
                 for loc in self.world.item_locations
                 if loc.does_contain(MimicFightInitiator2)
             ),
-            None,
-        )
+            None)
         if chest is None:
             raise ItemPlacementError(
                 "how are we setting contents on a reload reward that can't be accessed yet?"
@@ -3261,9 +3244,9 @@ class InnerShipFirstUnderwaterRoomBottomItem(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_1
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -3275,9 +3258,9 @@ class InnerShipFirstUnderwaterRoomTopItem(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_2
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
@@ -3289,9 +3272,9 @@ class InnerShipFirstUnderwaterRoomLeftItem(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_3
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
@@ -3303,9 +3286,9 @@ class InnerShipFirstUnderwaterRoomMiddleItem(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_4
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
 
@@ -3317,12 +3300,12 @@ class InnerShipSecretRoomChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_SAFETY_RING
     )
-    _original_item: Type[Item] = SafetyRing
-    _room_ids: List[int] = [R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = SafetyRing
+    _room_ids: list[int] = [R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3334,11 +3317,11 @@ class InnerShipPoolRoom(FreestandingLocation, InnerSunkenShipLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_BLOOBER_ROOM
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER
     ]
-    _npc_ids: List[int] = [5]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -3350,14 +3333,14 @@ class InnerShipBeforeBossChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.SUNKEN_SHIP_BANDANA_REDS
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL
     ]
-    _npc_ids: List[int] = [4]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3372,12 +3355,12 @@ class LandsEndRisingPlatformChest(
     """LandsEndRisingPlatformChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_RED_ESSENCE
-    _original_item: Type[Item] = RedEssence
-    _room_ids: List[int] = [R137_LANDS_END_AREA_01]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = RedEssence
+    _room_ids: list[int] = [R137_LANDS_END_AREA_01]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3389,9 +3372,9 @@ class LandsEndChowPitStaticChest(
     """LandsEndChowPitStaticChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_CHOW_PIT_1
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [R138_LANDS_END_AREA_02]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [R138_LANDS_END_AREA_02]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3401,9 +3384,9 @@ class LandsEndChowPitMovingChest(
     """LandsEndChowPitMovingChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_CHOW_PIT_2
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R138_LANDS_END_AREA_02]
-    _npc_ids: List[int] = [7]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R138_LANDS_END_AREA_02]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -3413,9 +3396,9 @@ class LandsEndBeeTowerChest(
     """LandsEndBeeTowerChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LNDS_END_BEE_ROOM
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R141_LANDS_END_AREA_04_ROTATING_FLOWERS]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R141_LANDS_END_AREA_04_ROTATING_FLOWERS]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3425,14 +3408,14 @@ class LandsEndGrottoEntranceChest(
     """LandsEndGrottoEntranceChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_SECRET_1
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS
     ]
-    _npc_ids: List[int] = [7]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3444,11 +3427,11 @@ class LandsEndGrottoCornerChest(
     """LandsEndGrottoCornerChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_SECRET_2
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS
     ]
-    _npc_ids: List[int] = [6]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -3458,14 +3441,14 @@ class LandsEndGrottoEndChest(
     """LandsEndGrottoEndChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_SHY_AWAY
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS
     ]
-    _npc_ids: List[int] = [6]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -3477,9 +3460,9 @@ class LandsEndUndergroundSaveBoxChest(
     """LandsEndUndergroundSaveBoxChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_STAR_CHEST_1
-    _original_item: Type[Item] = LandsEndVolcanoStar
-    _room_ids: List[int] = [R263_LANDS_END_UNDERGROUND_AREA_01]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = LandsEndVolcanoStar
+    _room_ids: list[int] = [R263_LANDS_END_UNDERGROUND_AREA_01]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3489,9 +3472,9 @@ class LandsEndFirstPurchasableChest(
     """LandsEndFirstPurchasableChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_STAR_CHEST_2
-    _original_item: Type[Item] = LandsEndStar2
-    _room_ids: List[int] = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
-    _npc_ids: List[int] = [18]
+    _original_item: type[Item] = LandsEndStar2
+    _room_ids: list[int] = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
+    _npc_ids: list[int] = [18]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3501,9 +3484,9 @@ class LandsEndSecondPurchasableChest(
     """LandsEndSecondPurchasableChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.LANDS_END_STAR_CHEST_3
-    _original_item: Type[Item] = LandsEndStar3
-    _room_ids: List[int] = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
-    _npc_ids: List[int] = [19]
+    _original_item: type[Item] = LandsEndStar3
+    _room_ids: list[int] = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
+    _npc_ids: list[int] = [19]
     _container_event: int = E0246_CHEST_2_GRANT
     _tier: int = 4
 
@@ -3512,8 +3495,8 @@ class TroopaClimbSub12Prize(GrantLocation, LandsEndLocation):
     """TroopaClimbSub12Prize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.TROOPA_CLIMB
-    _original_item: Type[Item] = TroopaPin
-    _room_ids: List[int] = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
+    _original_item: type[Item] = TroopaPin
+    _room_ids: list[int] = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _tier: int = 4
 
@@ -3532,9 +3515,9 @@ class BelomeTempleFortuneTeller(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_TELLER
     )
-    _original_item: Type[Item] = Coins50
-    _room_ids: List[int] = [R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = Coins50
+    _room_ids: list[int] = [R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3546,9 +3529,9 @@ class BelomeTempleLMRChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_1
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3560,9 +3543,9 @@ class BelomeTempleLRMChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_2
     )
-    _original_item: Type[Item] = YoshiCookie
-    _room_ids: List[int] = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    _npc_ids: List[int] = [7]
+    _original_item: type[Item] = YoshiCookie
+    _room_ids: list[int] = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -3574,9 +3557,9 @@ class BelomeTempleRLMChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_3
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    _npc_ids: List[int] = [8]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
+    _npc_ids: list[int] = [8]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -3588,9 +3571,9 @@ class BelomeTempleRMLChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_4
     )
-    _original_item: Type[Item] = Coins100
-    _room_ids: List[int] = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    _npc_ids: List[int] = [9]
+    _original_item: type[Item] = Coins100
+    _room_ids: list[int] = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0244_CHEST_4_GRANT
 
 
@@ -3602,9 +3585,9 @@ class BelomeBeforeBossRightChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_1
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3616,9 +3599,9 @@ class BelomeBeforeBossLowerLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_2
     )
-    _original_item: Type[Item] = Coins150
-    _room_ids: List[int] = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Coins150
+    _room_ids: list[int] = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -3630,9 +3613,9 @@ class BelomeBeforeBossMiddleChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -3644,9 +3627,9 @@ class BelomeBeforeBossUpperLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0244_CHEST_4_GRANT
 
 
@@ -3656,9 +3639,9 @@ class BelomeTemplTreasuryeUpperCornerLeftItem(FreestandingLocation, TreasuryLoca
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -3670,9 +3653,9 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItem(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
@@ -3682,9 +3665,9 @@ class BelomeTempleTreasuryUpperCornerTopItem(FreestandingLocation, TreasuryLocat
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_3
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
@@ -3694,9 +3677,9 @@ class BelomeTempleTreasuryTopmostItem(FreestandingLocation, TreasuryLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_4
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
 
@@ -3706,9 +3689,9 @@ class BelomeTempleTreasuryMidLeftItem(FreestandingLocation, TreasuryLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_1
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0237_FREESTANDING_5_GRANT
 
 
@@ -3718,9 +3701,9 @@ class BelomeTempleTreasuryAlmostTopItem(FreestandingLocation, TreasuryLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_2
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0236_FREESTANDING_6_GRANT
 
 
@@ -3730,9 +3713,9 @@ class BelomeTempleTreasuryAlmostLeftmostItem(FreestandingLocation, TreasuryLocat
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_3
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0235_FREESTANDING_7_GRANT
 
 
@@ -3742,9 +3725,9 @@ class BelomeTempleTreasuryOuterUpperRightItem(FreestandingLocation, TreasuryLoca
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_4
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [7]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0234_FREESTANDING_8_GRANT
 
 
@@ -3754,9 +3737,9 @@ class BelomeTempleTreasuryInnerUpperRightItem(FreestandingLocation, TreasuryLoca
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_5
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [8]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [8]
     _container_event: int = E0233_FREESTANDING_9_GRANT
 
 
@@ -3766,9 +3749,9 @@ class BelomeTempleTreasuryLowestItemsRight(FreestandingLocation, TreasuryLocatio
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_6
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [9]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0232_FREESTANDING_10_GRANT
 
 
@@ -3780,9 +3763,9 @@ class BelomeTempleTreasuryLowerOuterBottomRightItem(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_7
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [10]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [10]
     _container_event: int = E0231_FREESTANDING_11_GRANT
 
 
@@ -3792,9 +3775,9 @@ class BelomeTempleTreasuryRightmostItem(FreestandingLocation, TreasuryLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_8
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [11]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [11]
     _container_event: int = E0230_FREESTANDING_12_GRANT
 
 
@@ -3804,9 +3787,9 @@ class BelomeTempleTreasuryBottomLeftCornerItem(FreestandingLocation, TreasuryLoc
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_2
     )
-    _original_item: Type[Item] = MaxMushroom
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [13]
+    _original_item: type[Item] = MaxMushroom
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [13]
     _container_event: int = E0229_FREESTANDING_13_GRANT
 
 
@@ -3816,9 +3799,9 @@ class BelomeTempleTreasuryLowestItemsLeft(FreestandingLocation, TreasuryLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_1
     )
-    _original_item: Type[Item] = RoyalSyrup
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [14]
+    _original_item: type[Item] = RoyalSyrup
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [14]
     _container_event: int = E0228_FREESTANDING_14_GRANT
 
 
@@ -3830,9 +3813,9 @@ class BelomeTempleTreasuryUpperOuterBottomRightItem(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_3
     )
-    _original_item: Type[Item] = FireBomb
-    _room_ids: List[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids: List[int] = [15]
+    _original_item: type[Item] = FireBomb
+    _room_ids: list[int] = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
+    _npc_ids: list[int] = [15]
     _container_event: int = E0227_FREESTANDING_15_GRANT
 
 
@@ -3843,9 +3826,9 @@ class MonstroEntrance(ChestLocationAllowSlots, MonstroTownLocation):
     """MonstroEntrance progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MONSTRO_TOWN_ENTRANCE
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R267_MONSTRO_TOWN_ENTRANCE]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R267_MONSTRO_TOWN_ENTRANCE]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
 
     @property
@@ -3859,9 +3842,9 @@ class MonstroThwompItem(FreestandingLocation, MonstroTownLocation):
     """MonstroThwompItem progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.MONSTRO_TOWN_THWOMP
-    _original_item: Type[Item] = TempleKey
-    _room_ids: List[int] = [R324_MONSTRO_TOWN_OUTSIDE]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = TempleKey
+    _room_ids: list[int] = [R324_MONSTRO_TOWN_OUTSIDE]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
     @property
@@ -3875,8 +3858,8 @@ class MonstroDojoClearReward(GrantLocation, MonstroTownLocation):
     """MonstroDojoClearReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.JINX_DOJO_REWARD
-    _original_item: Type[Item] = JinxBelt
-    _room_ids: List[int] = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _original_item: type[Item] = JinxBelt
+    _room_ids: list[int] = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -3892,8 +3875,8 @@ class MonstroSealedDoorClearReward(GrantLocation, MonstroTownLocation):
     """MonstroSealedDoorClearReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CULEX_REWARD
-    _original_item: Type[Item] = QuartzCharm
-    _room_ids: List[int] = [R351_CULEXS_ROOM]
+    _original_item: type[Item] = QuartzCharm
+    _room_ids: list[int] = [R351_CULEXS_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -3909,8 +3892,8 @@ class MonstroFirstSuperJumpReward(GrantLocation, MonstroTownLocation):
     """MonstroFirstSuperJumpReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUPER_JUMPS_30
-    _original_item: Type[Item] = AttackScarf
-    _room_ids: List[int] = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
+    _original_item: type[Item] = AttackScarf
+    _room_ids: list[int] = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -3937,8 +3920,8 @@ class MonstroSecondSuperJumpReward(GrantLocation, MonstroTownLocation):
     """MonstroSecondSuperJumpReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.SUPER_JUMPS_100
-    _original_item: Type[Item] = SuperSuit
-    _room_ids: List[int] = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
+    _original_item: type[Item] = SuperSuit
+    _room_ids: list[int] = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -3960,8 +3943,8 @@ class MonstroFlagExchange(GrantLocation, MonstroTownLocation):
     """MonstroFlagExchange progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.THREE_MUSTY_FEARS
-    _original_item: Type[Item] = GhostMedal
-    _room_ids: List[int] = [R399_MONSTRO_TOWN_3_MUSTY_FEARS_INN]
+    _original_item: type[Item] = GhostMedal
+    _room_ids: list[int] = [R399_MONSTRO_TOWN_3_MUSTY_FEARS_INN]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -3985,9 +3968,9 @@ class BeanValleyFirstDeadEnd(ChestLocationAllowSlots, BeanValleyLocation):
     """BeanValleyFirstDeadEnd progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BEAN_VALLEY_1
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R252_BEAN_VALLEY_MAIN_AREA]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R252_BEAN_VALLEY_MAIN_AREA]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -3995,9 +3978,9 @@ class BeanValleyFirstProgressChest(ChestLocationAllowSlots, BeanValleyLocation):
     """BeanValleyFirstProgressChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BEAN_VALLEY_2
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R252_BEAN_VALLEY_MAIN_AREA]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R252_BEAN_VALLEY_MAIN_AREA]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -4007,9 +3990,9 @@ class BeanValleyLeftPiranhaPipe(ChestLocationAllowSlots, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_LEFT_PIRANHA_PIPE
     )
-    _original_item: Type[Item] = SlotMachineChest
-    _room_ids: List[int] = [R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = SlotMachineChest
+    _room_ids: list[int] = [R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4019,9 +4002,9 @@ class BeanValleyBottomLeftPiranhaPipe(ChestLocationAllowSlots, BeanValleyLocatio
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_LEFT_PIRANHA_PIPE
     )
-    _original_item: Type[Item] = SlotMachineChest
-    _room_ids: List[int] = [R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = SlotMachineChest
+    _room_ids: list[int] = [R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4033,9 +4016,9 @@ class BeanValleyBottomRightPiranhaPipeUpper(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_UPPER
     )
-    _original_item: Type[Item] = SlotMachineChest
-    _room_ids: List[int] = [R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = SlotMachineChest
+    _room_ids: list[int] = [R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4047,9 +4030,9 @@ class BeanValleyBottomRightPiranhaPipeLower(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_LOWER
     )
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -4059,9 +4042,9 @@ class BeanValleyRightPipeLeftChest(ChestLocationAllowSlots, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_1
     )
-    _original_item: Type[Item] = MimicFightInitiator3
-    _room_ids: List[int] = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = MimicFightInitiator3
+    _room_ids: list[int] = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4071,9 +4054,9 @@ class BeanValleyRightPipeRightChest(ChestLocationAllowSlots, BeanValleyLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_2
     )
-    _original_item: Type[Item] = RedEssence
-    _room_ids: List[int] = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
-    _npc_ids: List[int] = [7]
+    _original_item: type[Item] = RedEssence
+    _room_ids: list[int] = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -4083,8 +4066,8 @@ class BeanValleyRightPipeUnderStairs(GrantLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_HIDDEN
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
@@ -4094,9 +4077,9 @@ class BeanValleyRightPipeAboveGround(ChestLocationAllowSlots, BeanValleyLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_PIRANHA_PLANTS
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
-    _npc_ids: List[int] = [13]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
+    _npc_ids: list[int] = [13]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4106,8 +4089,8 @@ class BeanValleyBossNote(GrantLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_MEGASMILAX_ROOM
     )
-    _original_item: Type[Item] = Seed
-    _room_ids: List[int] = [R254_BEAN_VALLEY_SMILAX_AREA]
+    _original_item: type[Item] = Seed
+    _room_ids: list[int] = [R254_BEAN_VALLEY_SMILAX_AREA]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _tier: int = 4
 
@@ -4119,9 +4102,9 @@ class BeanstalkLowestChest(ChestLocationAllowSlots, BeanValleyLocation):
     """BeanstalkLowestChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
-    _npc_ids: List[int] = [9]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4131,9 +4114,9 @@ class BeanValley1stRoomFloatingItem(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_FROG_COIN
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -4143,9 +4126,9 @@ class BeanValley1stRoomMiddleCoin(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_MIDDLE_COIN
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
@@ -4155,9 +4138,9 @@ class BeanValley1stRoomUpperCoin(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_UPPER_COIN
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
@@ -4167,9 +4150,9 @@ class BeanValley1stRoomLowerCoin(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_LOWER_COIN
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
 
@@ -4179,9 +4162,9 @@ class Beanstalk2ndRoomFloatingItem(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_FROG_COIN
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -4191,9 +4174,9 @@ class Beanstalk2ndRoomCoin1(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_1
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
@@ -4203,9 +4186,9 @@ class Beanstalk2ndRoomCoin2(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_2
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
@@ -4215,9 +4198,9 @@ class Beanstalk2ndRoomCoin3(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_3
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
 
@@ -4227,11 +4210,11 @@ class BeanValleyEastBeanstalkCoin1(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_1
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [
         R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [3]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -4241,11 +4224,11 @@ class BeanValleyEastBeanstalkCoin2(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_2
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [
         R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [4]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
@@ -4255,11 +4238,11 @@ class BeanValleyEastBeanstalkCoin3(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_3
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [
         R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [5]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
@@ -4269,11 +4252,11 @@ class BeanValleyEastBeanstalkCoin4(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_4
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [
         R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [6]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
 
@@ -4283,11 +4266,11 @@ class BeanValleyEastBeanstalkCoin5(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_5
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [
         R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [7]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0237_FREESTANDING_5_GRANT
 
 
@@ -4297,11 +4280,11 @@ class BeanValleyWestBeanstalkCoin1(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_1
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [
         R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [4]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
 
@@ -4311,11 +4294,11 @@ class BeanValleyWestBeanstalkCoin2(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_2
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [
         R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [5]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
 
@@ -4325,11 +4308,11 @@ class BeanValleyWestBeanstalkCoin3(FreestandingLocation, BeanValleyLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_3
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [
         R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [6]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
 
@@ -4339,11 +4322,11 @@ class BeanValleyWestBeanstalkFloatingItem(FreestandingLocation, BeanValleyLocati
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_FROG_COIN
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02
     ]
-    _npc_ids: List[int] = [7]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
 
@@ -4351,9 +4334,9 @@ class BeanstalkUpperCloudLeftChest(ChestLocationAllowSlots, BeanValleyLocation):
     """BeanstalkUpperCloudLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BEAN_VALLEY_CLOUD_1
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 4
 
@@ -4362,9 +4345,9 @@ class BeanstalkUpperCloudRightChest(ChestLocationAllowSlots, BeanValleyLocation)
     """BeanstalkUpperCloudRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BEAN_VALLEY_CLOUD_2
-    _original_item: Type[Item] = RareScarf
-    _room_ids: List[int] = [R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = RareScarf
+    _room_ids: list[int] = [R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
     _tier: int = 4
 
@@ -4373,9 +4356,9 @@ class BeanstalkLowerCloudLeftChest(ChestLocationAllowSlots, BeanValleyLocation):
     """BeanstalkLowerCloudLeftChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BEAN_VALLEY_FALL_1
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 4
 
@@ -4384,9 +4367,9 @@ class BeanstalkLowerCloudRightChest(ChestLocationAllowSlots, BeanValleyLocation)
     """BeanstalkLowerCloudRightChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BEAN_VALLEY_FALL_2
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
     _tier: int = 4
 
@@ -4398,8 +4381,8 @@ class CasinoGrateGuyPrize(GrantLocation, CasinoLocation):
     """CasinoGrateGuyPrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.CASINO_GRATE_GUY_PRIZE
-    _original_item: Type[Item] = StarEgg
-    _room_ids: List[int] = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
+    _original_item: type[Item] = StarEgg
+    _room_ids: list[int] = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
@@ -4410,9 +4393,9 @@ class NimbusShopChest(ChestLocationAllowSlots, NimbusTownLocation):
     """NimbusShopChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_LAND_SHOP
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R344_NIMBUS_LAND_ITEM_SHOP]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R344_NIMBUS_LAND_ITEM_SHOP]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
@@ -4421,8 +4404,8 @@ class NimbusInnDreamPrize1(GrantLocation, NimbusTownLocation):
     """NimbusInnDreamPrize1 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_LAND_INN
-    _original_item: Type[Item] = RedEssence
-    _room_ids: List[int] = [R346_NIMBUS_LAND_INN_BEDROOM]
+    _original_item: type[Item] = RedEssence
+    _room_ids: list[int] = [R346_NIMBUS_LAND_INN_BEDROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _tier: int = 2
 
@@ -4431,8 +4414,8 @@ class NimbusInnDreamPrize2(GrantLocation, NimbusTownLocation):
     """NimbusInnDreamPrize2 progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_LAND_INN_2
-    _original_item: Type[Item] = RedEssence
-    _room_ids: List[int] = [R346_NIMBUS_LAND_INN_BEDROOM]
+    _original_item: type[Item] = RedEssence
+    _room_ids: list[int] = [R346_NIMBUS_LAND_INN_BEDROOM]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
     _tier: int = 2
 
@@ -4441,8 +4424,8 @@ class NimbusCastleStatueGamePrize(GrantLocation, NimbusCastleLocation):
     """NimbusCastleStatueGamePrize progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.DODO_REWARD
-    _original_item: Type[Item] = Feather
-    _room_ids: List[int] = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM]
+    _original_item: type[Item] = Feather
+    _room_ids: list[int] = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _missable: bool = True
 
@@ -4451,8 +4434,8 @@ class NimbusCastleOuterPrisonCellarRightNPC(GrantLocation, NimbusCastleLocation)
     """NimbusCastleOuterPrisonCellarRightNPC progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS
-    _original_item: Type[Item] = FlowerJar
-    _room_ids: List[int] = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
+    _original_item: type[Item] = FlowerJar
+    _room_ids: list[int] = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
     _tier: int = 2
 
@@ -4463,8 +4446,8 @@ class NimbusCastleOuterPrisonCellarLeftNPC(GrantLocation, NimbusCastleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_LAND_PRISONERS_2
     )
-    _original_item: Type[Item] = CastleKey1
-    _room_ids: List[int] = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
+    _original_item: type[Item] = CastleKey1
+    _room_ids: list[int] = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _container_event: int = E0252_NPC_QUEST_2_GRANT
     _tier: int = 2
 
@@ -4475,9 +4458,9 @@ class NimbusCastleBusinessCentreOccupiedChest(
     """NimbusCastleBusinessCentreOccupiedChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_LAND_INN_2
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
     _missable: bool = True
     _tier: int = 2
@@ -4489,12 +4472,12 @@ class NimbusCastleCornerBridgeChest(ChestLocationAllowSlots, NimbusCastleLocatio
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_LAND_BEFORE_BIRDETTA_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE,
         R500_NIMBUS_CASTLE_AREA_04_____DUMMY,
     ]
-    _npc_ids: List[int] = [2, 0]
+    _npc_ids: list[int] = [2, 0]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
@@ -4505,15 +4488,15 @@ class NimbusCastleOutOfBoundsChest(ChestLocationAllowSlots, NimbusCastleLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_OUT_OF_BOUNDS_1
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -4525,15 +4508,15 @@ class NimbusCastleAboveJawfulChest(ChestLocationAllowSlots, NimbusCastleLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_OUT_OF_BOUNDS_2
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
     ]
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
     _tier: int = 2
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -4545,11 +4528,11 @@ class NimbusCastleSingleGoldBirdChest(ChestLocationAllowSlots, NimbusCastleLocat
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_SINGLE_GOLD_BIRD
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15,
     ]
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
@@ -4560,16 +4543,16 @@ class NimbusCastleTwoLevelLowerChest(ChestLocationAllowSlots, NimbusCastleLocati
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_AFTER_EGG_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
         R498_NIMBUS_CASTLE_AREA_10_____DUMMY,
     ]
-    _npc_ids: List[int] = [0, 0]
+    _npc_ids: list[int] = [0, 0]
     _container_event: int = E0247_CHEST_1_GRANT
     _tier: int = 2
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -4579,8 +4562,8 @@ class NimbusCastleGiantEggReward(GrantLocation, NimbusMidCastleLocation):
     """NimbusCastleGiantEggReward progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_CASTLE_BIRDETTA
-    _original_item: Type[Item] = CastleKey2
-    _room_ids: List[int] = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
+    _original_item: type[Item] = CastleKey2
+    _room_ids: list[int] = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
@@ -4590,12 +4573,12 @@ class NimbusCastleTwoLevelUpperChest(ChestLocationAllowSlots, NimbusDeepCastleLo
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_AFTER_EGG_2
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [
         R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
         R498_NIMBUS_CASTLE_AREA_10_____DUMMY,
     ]
-    _npc_ids: List[int] = [1, 1]
+    _npc_ids: list[int] = [1, 1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -4607,9 +4590,9 @@ class NimbusCastleBackHallwayOccupiedChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_STAR_CHEST
     )
-    _original_item: Type[Item] = NimbusLandStar
-    _room_ids: List[int] = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = NimbusLandStar
+    _room_ids: list[int] = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
     _missable: bool = True
 
@@ -4622,9 +4605,9 @@ class NimbusCastleBackHallwayLiberatedChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_STAR_AFTER_VALENTINA
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -4641,9 +4624,9 @@ class NimbusCastleBusinessCentreLiberatedChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -4656,8 +4639,8 @@ class NimbusLandRightSide(GrantLocation, NimbusTownLocation):
     """NimbusLandRightSide progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
-    _original_item: Type[Item] = Fertilizer
-    _room_ids: List[int] = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
+    _original_item: type[Item] = Fertilizer
+    _room_ids: list[int] = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -4672,10 +4655,10 @@ class NimbusLandCrocoItem(FreestandingLocation, NimbusMidCastleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.NIMBUS_LAND_SIGNAL_RING
     )
-    _original_item: Type[Item] = SignalRing
-    _room_ids: List[int] = [R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING]
+    _original_item: type[Item] = SignalRing
+    _room_ids: list[int] = [R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [5]
+    _npc_ids: list[int] = [5]
     _keep_original_item_if_excluded: bool = False
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -4688,8 +4671,8 @@ class NimbusLandInnerCellar(GrantLocation, NimbusMidCastleLocation):
     """NimbusLandInnerCellar progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.NIMBUS_LAND_CELLAR
-    _original_item: Type[Item] = FlowerJar
-    _room_ids: List[int] = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
+    _original_item: type[Item] = FlowerJar
+    _room_ids: list[int] = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -4707,9 +4690,9 @@ class VolcanoLavaCoveLeftChest(ChestLocationAllowSlots, BarrelVolcanoLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -4724,12 +4707,12 @@ class VolcanoLavaCoveRightChest(ChestLocationAllowSlots, BarrelVolcanoLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
-    _npc_ids: List[int] = [2]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -4741,12 +4724,12 @@ class VolcanoEarlyProgressChestLeft(ChestLocationAllowSlots, BarrelVolcanoLocati
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R384_VOLCANO_AREA_05]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R384_VOLCANO_AREA_05]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -4758,12 +4741,12 @@ class VolcanoEarlyProgressChestRight(ChestLocationAllowSlots, BarrelVolcanoLocat
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_2
     )
-    _original_item: Type[Item] = Coins100
-    _room_ids: List[int] = [R384_VOLCANO_AREA_05]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = Coins100
+    _room_ids: list[int] = [R384_VOLCANO_AREA_05]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -4775,9 +4758,9 @@ class VolcanoEarlyProgressThirdChest(ChestLocationAllowSlots, BarrelVolcanoLocat
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BARREL_VOLCANO_STAR_ROOM
     )
-    _original_item: Type[Item] = LandsEndVolcanoStar
-    _room_ids: List[int] = [R385_VOLCANO_AREA_06]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = LandsEndVolcanoStar
+    _room_ids: list[int] = [R385_VOLCANO_AREA_06]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4787,40 +4770,40 @@ class VolcanoLavaPool(FreestandingLocation, BarrelVolcanoLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BARREL_VOLCANO_LAVA_POOL
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R361_VOLCANO_AREA_09]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R361_VOLCANO_AREA_09]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
 
 
 class VolcanoReverseRecoilItem(FreestandingLocation, BarrelVolcanoLocation):
     """VolcanoReverseRecoilItem progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BARREL_VOLCANO_REVERSE
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [4]
+    _npc_ids: list[int] = [4]
 
 
 class VolcanoRightDonutItem(FreestandingLocation, BarrelVolcanoLocation):
     """VolcanoRightDonutItem progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_1
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R358_VOLCANO_AREA_11]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R358_VOLCANO_AREA_11]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
 
 
 class VolcanoLeftDonutItem(FreestandingLocation, BarrelVolcanoLocation):
     """VolcanoLeftDonutItem progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_2
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R358_VOLCANO_AREA_11]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R358_VOLCANO_AREA_11]
     _container_event: int = E0240_FREESTANDING_2_GRANT
-    _npc_ids: List[int] = [2]
+    _npc_ids: list[int] = [2]
 
 
 class VolcanoSaveRoomLowerChest(ChestLocationAllowSlots, BarrelVolcanoLocation):
@@ -4829,9 +4812,9 @@ class VolcanoSaveRoomLowerChest(ChestLocationAllowSlots, BarrelVolcanoLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R366_VOLCANO_AREA_13_WSAVE_POINT]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R366_VOLCANO_AREA_13_WSAVE_POINT]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4841,9 +4824,9 @@ class VolcanoSaveRoomUpperChest(ChestLocationAllowSlots, BarrelVolcanoLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_2
     )
-    _original_item: Type[Item] = FrogCoin
-    _room_ids: List[int] = [R366_VOLCANO_AREA_13_WSAVE_POINT]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = FrogCoin
+    _room_ids: list[int] = [R366_VOLCANO_AREA_13_WSAVE_POINT]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -4851,12 +4834,12 @@ class VolcanoShopEntranceChest(ChestLocationAllowSlots, BarrelVolcanoLocation):
     """VolcanoShopEntranceChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BARREL_VOLCANO_HINOPIO
-    _original_item: Type[Item] = Coins100
-    _room_ids: List[int] = [R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Coins100
+    _room_ids: list[int] = [R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InvincibilityStar
         )
@@ -4869,9 +4852,9 @@ class KeepDarkRoomChest(ChestLocationAllowSlots, BowsersKeepLocation):
     """KeepDarkRoomChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOWSERS_KEEP_DARK_ROOM
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4881,9 +4864,9 @@ class KeepFirstCrocoShopLeftChest(ChestLocationAllowSlots, BowsersKeepLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CROCO_SHOP_1
     )
-    _original_item: Type[Item] = Coins150
-    _room_ids: List[int] = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = Coins150
+    _room_ids: list[int] = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4893,9 +4876,9 @@ class KeepFirstCrocoShopRightChest(ChestLocationAllowSlots, BowsersKeepLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CROCO_SHOP_2
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
-    _npc_ids: List[int] = [1]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -4907,9 +4890,9 @@ class KeepInvisibleBridgeFrontChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_1
     )
-    _original_item: Type[Item] = FrightBomb
-    _room_ids: List[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = FrightBomb
+    _room_ids: list[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -4921,9 +4904,9 @@ class KeepInvisibleBridgeRightChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_2
     )
-    _original_item: Type[Item] = RoyalSyrup
-    _room_ids: List[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = RoyalSyrup
+    _room_ids: list[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -4935,9 +4918,9 @@ class KeepInvisibleBridgeLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_3
     )
-    _original_item: Type[Item] = IceBomb
-    _room_ids: List[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = IceBomb
+    _room_ids: list[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -4949,9 +4932,9 @@ class KeepInvisibleBridgeBackChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_4
     )
-    _original_item: Type[Item] = RockCandy
-    _room_ids: List[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
-    _npc_ids: List[int] = [7]
+    _original_item: type[Item] = RockCandy
+    _room_ids: list[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0244_CHEST_4_GRANT
 
 
@@ -4961,10 +4944,10 @@ class KeepInvisibleBridgeCoin1(FreestandingLocation, BowsersKeepObstacleLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_1
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [8]
+    _npc_ids: list[int] = [8]
 
 
 class KeepInvisibleBridgeCoin2(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -4973,10 +4956,10 @@ class KeepInvisibleBridgeCoin2(FreestandingLocation, BowsersKeepObstacleLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_2
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _container_event: int = E0240_FREESTANDING_2_GRANT
-    _npc_ids: List[int] = [9]
+    _npc_ids: list[int] = [9]
 
 
 class KeepInvisibleBridgeCoin3(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -4985,10 +4968,10 @@ class KeepInvisibleBridgeCoin3(FreestandingLocation, BowsersKeepObstacleLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_3
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _container_event: int = E0239_FREESTANDING_3_GRANT
-    _npc_ids: List[int] = [10]
+    _npc_ids: list[int] = [10]
 
 
 class KeepInvisibleBridgeCoin4(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -4997,10 +4980,10 @@ class KeepInvisibleBridgeCoin4(FreestandingLocation, BowsersKeepObstacleLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_4
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _container_event: int = E0238_FREESTANDING_4_GRANT
-    _npc_ids: List[int] = [11]
+    _npc_ids: list[int] = [11]
 
 
 class KeepXYPlatformsBackLeftChest(
@@ -5011,9 +4994,9 @@ class KeepXYPlatformsBackLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
-    _npc_ids: List[int] = [10]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
+    _npc_ids: list[int] = [10]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5025,9 +5008,9 @@ class KeepXYPlatformsFrontLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_2
     )
-    _original_item: Type[Item] = RedEssence
-    _room_ids: List[int] = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
-    _npc_ids: List[int] = [11]
+    _original_item: type[Item] = RedEssence
+    _room_ids: list[int] = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
+    _npc_ids: list[int] = [11]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -5039,9 +5022,9 @@ class KeepXYPlatformsFrontRightChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_3
     )
-    _original_item: Type[Item] = MaxMushroom
-    _room_ids: List[int] = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
-    _npc_ids: List[int] = [12]
+    _original_item: type[Item] = MaxMushroom
+    _room_ids: list[int] = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
+    _npc_ids: list[int] = [12]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -5053,9 +5036,9 @@ class KeepXYPlatformsBackRightChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_4
     )
-    _original_item: Type[Item] = FireBomb
-    _room_ids: List[int] = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
-    _npc_ids: List[int] = [13]
+    _original_item: type[Item] = FireBomb
+    _room_ids: list[int] = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
+    _npc_ids: list[int] = [13]
     _container_event: int = E0244_CHEST_4_GRANT
 
 
@@ -5065,11 +5048,11 @@ class KeepElevatorRoomChest(ChestLocationAllowSlots, BowsersKeepObstacleLocation
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_ELEVATOR_PLATFORMS
     )
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [
         R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS
     ]
-    _npc_ids: List[int] = [8]
+    _npc_ids: list[int] = [8]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5081,9 +5064,9 @@ class KeepCannonballRoomFrontRightChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
-    _npc_ids: List[int] = [3]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5093,9 +5076,9 @@ class KeepCannonballRoomBackChest(ChestLocationAllowSlots, BowsersKeepObstacleLo
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
-    _npc_ids: List[int] = [4]
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -5107,9 +5090,9 @@ class KeepCannonballFrontLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_3
     )
-    _original_item: Type[Item] = PickMeUp
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
-    _npc_ids: List[int] = [5]
+    _original_item: type[Item] = PickMeUp
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -5119,9 +5102,9 @@ class KeepCannonballMidRightChest(ChestLocationAllowSlots, BowsersKeepObstacleLo
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_4
     )
-    _original_item: Type[Item] = RockCandy
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
-    _npc_ids: List[int] = [6]
+    _original_item: type[Item] = RockCandy
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0244_CHEST_4_GRANT
 
 
@@ -5131,9 +5114,9 @@ class KeepCannonballMidLeftChest(ChestLocationAllowSlots, BowsersKeepObstacleLoc
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_5
     )
-    _original_item: Type[Item] = MaxMushroom
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
-    _npc_ids: List[int] = [7]
+    _original_item: type[Item] = MaxMushroom
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0243_CHEST_5_GRANT
 
 
@@ -5143,10 +5126,10 @@ class KeepCannonballCoin1(FreestandingLocation, BowsersKeepObstacleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_1
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _npc_ids: List[int] = [8]
+    _npc_ids: list[int] = [8]
 
 
 class KeepCannonballCoin2(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -5155,10 +5138,10 @@ class KeepCannonballCoin2(FreestandingLocation, BowsersKeepObstacleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_2
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _container_event: int = E0240_FREESTANDING_2_GRANT
-    _npc_ids: List[int] = [9]
+    _npc_ids: list[int] = [9]
 
 
 class KeepCannonballCoin3(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -5167,10 +5150,10 @@ class KeepCannonballCoin3(FreestandingLocation, BowsersKeepObstacleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_3
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _container_event: int = E0239_FREESTANDING_3_GRANT
-    _npc_ids: List[int] = [10]
+    _npc_ids: list[int] = [10]
 
 
 class KeepCannonballCoin4(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -5179,10 +5162,10 @@ class KeepCannonballCoin4(FreestandingLocation, BowsersKeepObstacleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_4
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _container_event: int = E0238_FREESTANDING_4_GRANT
-    _npc_ids: List[int] = [11]
+    _npc_ids: list[int] = [11]
 
 
 class KeepCannonballCoin5(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -5191,10 +5174,10 @@ class KeepCannonballCoin5(FreestandingLocation, BowsersKeepObstacleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_5
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _container_event: int = E0237_FREESTANDING_5_GRANT
-    _npc_ids: List[int] = [12]
+    _npc_ids: list[int] = [12]
 
 
 class KeepCannonballCoin6(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -5203,10 +5186,10 @@ class KeepCannonballCoin6(FreestandingLocation, BowsersKeepObstacleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_6
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _container_event: int = E0236_FREESTANDING_6_GRANT
-    _npc_ids: List[int] = [13]
+    _npc_ids: list[int] = [13]
 
 
 class KeepCannonballCoin7(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -5215,10 +5198,10 @@ class KeepCannonballCoin7(FreestandingLocation, BowsersKeepObstacleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_7
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _container_event: int = E0235_FREESTANDING_7_GRANT
-    _npc_ids: List[int] = [14]
+    _npc_ids: list[int] = [14]
 
 
 class KeepCannonballCoin8(FreestandingLocation, BowsersKeepObstacleLocation):
@@ -5227,10 +5210,10 @@ class KeepCannonballCoin8(FreestandingLocation, BowsersKeepObstacleLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_8
     )
-    _original_item: Type[Item] = Coins10
-    _room_ids: List[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
+    _original_item: type[Item] = Coins10
+    _room_ids: list[int] = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _container_event: int = E0234_FREESTANDING_8_GRANT
-    _npc_ids: List[int] = [15]
+    _npc_ids: list[int] = [15]
 
 
 class KeepRotatingPlatformsFrontChest(
@@ -5241,11 +5224,11 @@ class KeepRotatingPlatformsFrontChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_1
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
     ]
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5257,11 +5240,11 @@ class KeepRotatingPlatformsFrontMidLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
     ]
-    _npc_ids: List[int] = [2]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -5273,11 +5256,11 @@ class KeepRotatingPlatformsBackMidRightChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_3
     )
-    _original_item: Type[Item] = FireBomb
-    _room_ids: List[int] = [
+    _original_item: type[Item] = FireBomb
+    _room_ids: list[int] = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
     ]
-    _npc_ids: List[int] = [3]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -5289,11 +5272,11 @@ class KeepRotatingPlatformsFrontMidRightChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_4
     )
-    _original_item: Type[Item] = RoyalSyrup
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RoyalSyrup
+    _room_ids: list[int] = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
     ]
-    _npc_ids: List[int] = [4]
+    _npc_ids: list[int] = [4]
     _container_event: int = E0244_CHEST_4_GRANT
 
 
@@ -5305,11 +5288,11 @@ class KeepRotatingPlatformsBackMidLeftChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_5
     )
-    _original_item: Type[Item] = PickMeUp
-    _room_ids: List[int] = [
+    _original_item: type[Item] = PickMeUp
+    _room_ids: list[int] = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
     ]
-    _npc_ids: List[int] = [5]
+    _npc_ids: list[int] = [5]
     _container_event: int = E0243_CHEST_5_GRANT
 
 
@@ -5321,11 +5304,11 @@ class KeepRotatingPlatformsBackChest(
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_6
     )
-    _original_item: Type[Item] = KerokeroCola
-    _room_ids: List[int] = [
+    _original_item: type[Item] = KerokeroCola
+    _room_ids: list[int] = [
         R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS
     ]
-    _npc_ids: List[int] = [6]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0242_CHEST_6_GRANT
 
 
@@ -5335,16 +5318,16 @@ class KeepDoorRewardChest1(ChestLocationAllowSlots, BowsersKeepObstacleLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_1
     )
-    _original_item: Type[Item] = SonicCymbal
-    _room_ids: List[int] = [
+    _original_item: type[Item] = SonicCymbal
+    _room_ids: list[int] = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
         R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS,
     ]
-    _npc_ids: List[int] = [0, 0]
+    _npc_ids: list[int] = [0, 0]
     _container_event: int = E0247_CHEST_1_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InfiniteCoins
         )
@@ -5356,16 +5339,16 @@ class KeepDoorRewardChest2(ChestLocationAllowSlots, BowsersKeepObstacleLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_2
     )
-    _original_item: Type[Item] = SuperSlap
-    _room_ids: List[int] = [
+    _original_item: type[Item] = SuperSlap
+    _room_ids: list[int] = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
         R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS,
     ]
-    _npc_ids: List[int] = [0, 0]
+    _npc_ids: list[int] = [0, 0]
     _container_event: int = E0246_CHEST_2_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InfiniteCoins
         )
@@ -5377,16 +5360,16 @@ class KeepDoorRewardChest3(ChestLocationAllowSlots, BowsersKeepObstacleLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_3
     )
-    _original_item: Type[Item] = DrillClaw
-    _room_ids: List[int] = [
+    _original_item: type[Item] = DrillClaw
+    _room_ids: list[int] = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
         R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS,
     ]
-    _npc_ids: List[int] = [0, 0]
+    _npc_ids: list[int] = [0, 0]
     _container_event: int = E0245_CHEST_3_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InfiniteCoins
         )
@@ -5405,16 +5388,16 @@ class KeepDoorRewardChest4(ChestLocationAllowSlots, BowsersKeepObstacleLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_4
     )
-    _original_item: Type[Item] = StarGun
-    _room_ids: List[int] = [
+    _original_item: type[Item] = StarGun
+    _room_ids: list[int] = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
         R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS,
     ]
-    _npc_ids: List[int] = [0, 0]
+    _npc_ids: list[int] = [0, 0]
     _container_event: int = E0244_CHEST_4_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InfiniteCoins
         )
@@ -5426,16 +5409,16 @@ class KeepDoorRewardChest5(ChestLocationAllowSlots, BowsersKeepObstacleLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_5
     )
-    _original_item: Type[Item] = RockCandy
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RockCandy
+    _room_ids: list[int] = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
         R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS,
     ]
-    _npc_ids: List[int] = [0, 0]
+    _npc_ids: list[int] = [0, 0]
     _container_event: int = E0243_CHEST_5_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InfiniteCoins
         )
@@ -5447,16 +5430,16 @@ class KeepDoorRewardChest6(ChestLocationAllowSlots, BowsersKeepObstacleLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_6
     )
-    _original_item: Type[Item] = RockCandy
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RockCandy
+    _room_ids: list[int] = [
         R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM,
         R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS,
     ]
-    _npc_ids: List[int] = [0, 0]
+    _npc_ids: list[int] = [0, 0]
     _container_event: int = E0242_CHEST_6_GRANT
     _set_70a7_manually_in_event_script: bool = True
 
-    def can_accept(self, item: Item, inventory: Optional[Inventory] = None) -> bool:
+    def can_accept(self, item: Item, inventory: Inventory | None = None) -> bool:
         return super().can_accept(item, inventory) and not isinstance(
             item, InfiniteCoins
         )
@@ -5466,9 +5449,9 @@ class KeepAfterObstaclesBossChest(ChestLocationAllowSlots, BowsersKeepLocation):
     """KeepAfterObstaclesBossChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.BOWSERS_KEEP_MAGIKOOPA
-    _original_item: Type[Item] = InfiniteCoins
-    _room_ids: List[int] = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = InfiniteCoins
+    _room_ids: list[int] = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:
@@ -5488,9 +5471,9 @@ class OuterFactorySaveRoomChest(ChestLocationAllowSlots, OuterFactoryLocation):
     """OuterFactorySaveRoomChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FACTORY_SAVE_ROOM
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT]
-    _npc_ids: List[int] = [0]
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5498,9 +5481,9 @@ class FactoryBoltPlatformsChest(ChestLocationAllowSlots, OuterFactoryLocation):
     """FactoryBoltPlatformsChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FACTORY_BOLT_PLATFORMS
-    _original_item: Type[Item] = UltraHammer
-    _room_ids: List[int] = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
-    _npc_ids: List[int] = [7]
+    _original_item: type[Item] = UltraHammer
+    _room_ids: list[int] = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
+    _npc_ids: list[int] = [7]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5508,11 +5491,11 @@ class FactoryAxemConveyorsChest(ChestLocationAllowSlots, MidFactoryLocation):
     """FactoryAxemConveyorsChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FACTORY_FALLING_AXEMS
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS
     ]
-    _npc_ids: List[int] = [6]
+    _npc_ids: list[int] = [6]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5520,11 +5503,11 @@ class FactoryTreasurePitBackChest(ChestLocationAllowSlots, MidFactoryLocation):
     """FactoryTreasurePitBackChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FACTORY_TREASURE_PIT_1
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM
     ]
-    _npc_ids: List[int] = [0]
+    _npc_ids: list[int] = [0]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5532,11 +5515,11 @@ class FactoryTreasurePitFrontChest(ChestLocationAllowSlots, MidFactoryLocation):
     """FactoryTreasurePitFrontChest progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FACTORY_TREASURE_PIT_2
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM
     ]
-    _npc_ids: List[int] = [2]
+    _npc_ids: list[int] = [2]
     _container_event: int = E0245_CHEST_3_GRANT
 
 
@@ -5546,11 +5529,11 @@ class FactoryBigConveyorRoomFirstChest(ChestLocationAllowSlots, MidFactoryLocati
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_1
     )
-    _original_item: Type[Item] = RoyalSyrup
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RoyalSyrup
+    _room_ids: list[int] = [
         R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS
     ]
-    _npc_ids: List[int] = [8]
+    _npc_ids: list[int] = [8]
     _container_event: int = E0247_CHEST_1_GRANT
 
 
@@ -5560,11 +5543,11 @@ class FactoryBigConveyorRoomSecondChest(ChestLocationAllowSlots, MidFactoryLocat
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_2
     )
-    _original_item: Type[Item] = MaxMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = MaxMushroom
+    _room_ids: list[int] = [
         R475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS
     ]
-    _npc_ids: List[int] = [9]
+    _npc_ids: list[int] = [9]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -5574,11 +5557,11 @@ class FactoryBehindNinjasRightChest(ChestLocationAllowSlots, MidFactoryLocation)
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_1
     )
-    _original_item: Type[Item] = RecoveryMushroom
-    _room_ids: List[int] = [
+    _original_item: type[Item] = RecoveryMushroom
+    _room_ids: list[int] = [
         R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM
     ]
-    _npc_ids: List[int] = [1]
+    _npc_ids: list[int] = [1]
     _container_event: int = E0246_CHEST_2_GRANT
 
 
@@ -5588,11 +5571,11 @@ class FactoryBehindNinjasLeftChest(ChestLocationAllowSlots, MidFactoryLocation):
     _name_enum: ShuffleLocationSelector = (
         ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_2
     )
-    _original_item: Type[Item] = Flower
-    _room_ids: List[int] = [
+    _original_item: type[Item] = Flower
+    _room_ids: list[int] = [
         R443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM
     ]
-    _npc_ids: List[int] = [3]
+    _npc_ids: list[int] = [3]
     _container_event: int = E0244_CHEST_4_GRANT
 
 
@@ -5600,8 +5583,8 @@ class InnerFactoryToadGift(GrantLocation, InnerFactoryLocation):
     """InnerFactoryToadGift progress location class"""
 
     _name_enum: ShuffleLocationSelector = ShuffleLocationSelector.FACTORY_TOAD_GIFT
-    _original_item: Type[Item] = RockCandy
-    _room_ids: List[int] = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
+    _original_item: type[Item] = RockCandy
+    _room_ids: list[int] = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
     def can_access(self, inventory: Inventory) -> bool:

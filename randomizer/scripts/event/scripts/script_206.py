@@ -19,8 +19,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         JmpToEvent(E0207_UNLOCK_KEEP_IF_GATED_BY_STAR_PIECES),
     ]
 )

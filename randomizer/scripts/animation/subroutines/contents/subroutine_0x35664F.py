@@ -15,8 +15,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35664f",
-        ),
+            identifier="queuestart_0x35664f"),
         NewSpriteAtCoords(
             sprite_id=SPR0782_DIAMOND_SAW_SNOWFLAKE,
             sequence=0,
@@ -26,8 +25,7 @@ script = SubroutineOrBanklessScript(
             overwrite_vram=True,
             looping=True,
             overwrite_palette=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         SetAMEM16BitToConst(0x60, 4),
@@ -49,8 +47,7 @@ script = SubroutineOrBanklessScript(
             set_x=True,
             set_y=True,
             set_z=True,
-            identifier="queuestart_0x35668a",
-        ),
+            identifier="queuestart_0x35668a"),
         NewSpriteAtCoords(
             sprite_id=SPR0544_SMALL_PINK_PETAL,
             sequence=0,
@@ -61,8 +58,7 @@ script = SubroutineOrBanklessScript(
             looping=True,
             overwrite_palette=True,
             behind_all_sprites=True,
-            overlap_all_sprites=True,
-        ),
+            overlap_all_sprites=True),
         ClearAMEM8Bit(0x68),
         ClearAMEM8Bit(0x69),
         ClearAMEM8Bit(0x64),
@@ -76,5 +72,4 @@ script = SubroutineOrBanklessScript(
         Pause1Frame(identifier="command_0x3566b5"),
         JmpIfAMEM8BitNotEqualsConst(0x69, 32, ["command_0x3566b5"]),
         Jmp(["command_0x356b01"]),
-    ],
-)
+    ])

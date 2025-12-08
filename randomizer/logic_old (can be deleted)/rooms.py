@@ -22,21 +22,18 @@ from randomizer.data.rooms.room import (
     RegularClone,
     ChestClone,
     Room,
-    Clone,
-)
+    Clone)
 from randomizer.helpers.flag_helpers import BoosterTowerGating
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
 from randomizer.helpers.roomobjecttables import (
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 
 from randomizer.logic import flags
 from randomizer.helpers.roomobjecttables import (
     ObjectType,
     ExitType,
-    PartitionBufferTypes,
-)
+    PartitionBufferTypes)
 
 
 def validate_chain(chain):
@@ -661,8 +658,7 @@ def set_partitions(world):
         partition = Partition(
             ally_sprite_buffer_size=ally_buffer,
             allow_extra_sprite_buffer=packet_on,
-            extra_sprite_buffer_size=packet_size,
-        )
+            extra_sprite_buffer_size=packet_size)
 
         # elif room_index in [376, 377, 459, 460, 461, 462, 202] or (room is not None and len(room.objects) == 0): # rooms that always need triple empty + ex 1
         #     partition = Partition(ally_sprite_buffer_size=ally_buffer, allow_extra_sprite_buffer=True, extra_sprite_buffer_size=extra_sprite_buffer)
@@ -1050,8 +1046,7 @@ class Rooms:
                     sm = difflib.SequenceMatcher(
                         None,
                         tuple([tuple(c) for c in cg]),
-                        tuple([tuple(c) for c in clone_group]),
-                    )
+                        tuple([tuple(c) for c in clone_group]))
                     similarity = sm.ratio()
                     if (
                         similarity > best_match
@@ -1278,8 +1273,7 @@ class Rooms:
                                         utils.new_command(
                                             new_event_id,
                                             "jmp_to_event",
-                                            [this_npc.event_script],
-                                        )
+                                            [this_npc.event_script])
                                     ]
 
                                     new_event_group = [new_event_id]
@@ -1299,8 +1293,7 @@ class Rooms:
                                                 utils.new_command(
                                                     new_event_id,
                                                     "jmp_to_event",
-                                                    [clone.event_script],
-                                                )
+                                                    [clone.event_script])
                                             ]
                                         else:
                                             ind = event_group[0:clone_index].index(
@@ -1653,5 +1646,4 @@ class Rooms:
             exits,
             bytearray([p for partition in partitions for p in partition]),
             model_output,
-            event_table,
-        )
+            event_table)

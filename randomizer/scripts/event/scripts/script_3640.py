@@ -16,8 +16,7 @@ script = EventScript(
             face_direction=NORTHEAST,
             x=6,
             y=68,
-            z=1,
-        ),
+            z=1),
         PaletteSet(palette_set=111, row=1),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         ActionQueueAsync(
@@ -27,8 +26,7 @@ script = EventScript(
                 ASWalkToXYCoords(x=1, y=49),
                 ASWalkNorthwestSteps(1),
                 ASWalkEastPixels(13),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(
             E0819_NIMBUS_CASTLE_STATUE_POLISHING_ROOM_SHUFFLED_NPC_ANIMATION_LOADER
         ),
@@ -126,8 +124,7 @@ script = EventScript(
                 ASPause(50),
                 ASSetSpriteSequence(index=0, is_mold=True, looping=True),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         Pause(5),
         SetVarToConst(SECONDARY_TEMP_7024, 0),
         SetVarToConst(PRIMARY_TEMP_7000, 0, identifier="EVENT_3640_set_short_92"),
@@ -197,8 +194,7 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(45),
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
@@ -209,8 +205,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=0, looping=True, mirror_sprite=True),
                 ASWalkSoutheastSteps(3),
                 ASReturn(),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0938_PECK_SUBROUTINE_RIGHT_STATUE),
         SetVarToConst(PRIMARY_TEMP_7000, 0),
         ClearBit(UNKNOWN_708A_7),
@@ -266,8 +261,7 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(45),
                 ASSetWalkingSpeed(NORMAL),
                 ASSetSequenceSpeed(NORMAL),
@@ -298,8 +292,7 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASSetSpriteSequence(index=0, looping=True),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         Pause(25),
         RunEventAsSubroutine(E0937_PECK_SUBROUTINE_MIDDLE_STATUE),
         ClearBit(UNKNOWN_708A_7),
@@ -323,8 +316,7 @@ script = EventScript(
                 ASSetSpriteSequence(index=6, is_sequence=True, looping=False),
                 ASPause(90),
                 ASSequenceLoopingOff(),
-            ],
-        ),
+            ]),
         Pause(20),
         ActionQueueAsync(
             target=NPC_3,
@@ -337,8 +329,7 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASSequenceLoopingOff(),
                 ASStopSound(),
-            ],
-        ),
+            ]),
         Pause(60),
         PlaySound(sound=SO000_SILENCE, channel=6),
         Pause(30),
@@ -352,8 +343,7 @@ script = EventScript(
                     index=10, sprite_offset=2, is_sequence=True, looping=False
                 ),
                 ASPause(60),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         RemoveObjectFromSpecificLevel(
             NPC_1, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT
@@ -386,8 +376,7 @@ script = EventScript(
                 ASVisibilityOff(),
                 ASSequenceLoopingOff(),
                 ASPause(40),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -397,10 +386,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         Pause(60),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         Pause(60),
@@ -415,8 +402,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASResetProperties()],
-            identifier="EVENT_3640_action_queue_async_242",
-        ),
+            identifier="EVENT_3640_action_queue_async_242"),
         EnableControlsUntilReturn([]),
         Pause(60),
         FadeOutMusicToVolume(duration=5, volume=0),
@@ -440,8 +426,7 @@ script = EventScript(
                 ASSetSequenceSpeed(SLOW),
                 ASSetSpriteSequence(index=6, is_sequence=True, looping=True),
                 ASPause(120),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -461,8 +446,7 @@ script = EventScript(
                     index=12, is_mold=True, is_sequence=True, looping=True
                 ),
                 ASPause(40),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -474,8 +458,7 @@ script = EventScript(
                     index=9, is_sequence=True, looping=True, mirror_sprite=True
                 ),
                 ASPause(50),
-            ],
-        ),
+            ]),
         SetVarToConst(PRIMARY_TEMP_7000, 520),
         RunEventAsSubroutine(E0353_BOSS_BATTLE),
         JmpIfBitClear(GAME_OVER, ["EVENT_3640_unfreeze_camera_252"]),
@@ -487,8 +470,7 @@ script = EventScript(
             subscript=[
                 ASSetSequenceSpeed(FAST),
                 ASSetSpriteSequence(index=6, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO, subscript=[ASResetProperties(), ASFaceNortheast()]
         ),
@@ -502,8 +484,7 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASWalkNorthwestSteps(11),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         Pause(35),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         Pause(10),
@@ -559,8 +540,7 @@ script = EventScript(
                 ),
                 ASWalk1StepSoutheast(),
             ],
-            identifier="EVENT_3640_action_queue_async_288",
-        ),
+            identifier="EVENT_3640_action_queue_async_288"),
         Return(),
         ActionQueueAsync(
             target=NPC_3,
@@ -579,23 +559,19 @@ script = EventScript(
                 ),
                 ASWalk1StepSoutheast(),
             ],
-            identifier="EVENT_3640_action_queue_async_290",
-        ),
+            identifier="EVENT_3640_action_queue_async_290"),
         Return(),
         JmpToEvent(
             E0936_PECK_SUBROUTINE_LEFT_STATUE,
-            identifier="EVENT_3640_action_queue_async_292",
-        ),
+            identifier="EVENT_3640_action_queue_async_292"),
         Return(),
         JmpToEvent(
             E2115_STATUE_1_SHAKE,
-            identifier="EVENT_3640_set_temp_action_script_async_294",
-        ),
+            identifier="EVENT_3640_set_temp_action_script_async_294"),
         Return(),
         JmpToEvent(
             E2116_STATUE_2_SHAKE,
-            identifier="EVENT_3640_set_temp_action_script_async_305",
-        ),
+            identifier="EVENT_3640_set_temp_action_script_async_305"),
         Return(),
         StopMusic(identifier="EVENT_3640_stop_music_316"),
         EnableControlsUntilReturn([]),
@@ -609,8 +585,7 @@ script = EventScript(
                 ASWalkSouthwestPixels(4),
                 ASWalkNortheastPixels(2),
                 ASWalkSouthwestPixels(2),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -618,8 +593,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -650,8 +624,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FAST),
                 ASJumpToHeight(108),
                 ASWalkNortheastSteps(1),
-            ],
-        ),
+            ]),
         Pause(40),
         ActionQueueAsync(
             target=NPC_3,
@@ -659,8 +632,7 @@ script = EventScript(
                 ASSetSequenceSpeed(NORMAL),
                 ASSetSpriteSequence(index=7, is_sequence=True, looping=True),
                 ASPause(60),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -669,8 +641,7 @@ script = EventScript(
                 ASFaceNorthwest(),
                 ASWalkNorthwestSteps(11),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -680,10 +651,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         Pause(60),
         PlaySound(sound=SO016_OPEN_DOOR, channel=6),
         Pause(60),
@@ -697,8 +666,7 @@ script = EventScript(
         Return(),
         JmpToEvent(
             E2117_STATUE_4_SHAKE,
-            identifier="EVENT_3640_set_temp_action_script_async_337",
-        ),
+            identifier="EVENT_3640_set_temp_action_script_async_337"),
         Return(),
         ActionQueueAsync(
             target=NPC_3,
@@ -714,8 +682,7 @@ script = EventScript(
                 ),
                 ASWalk1StepNorthwest(),
             ],
-            identifier="EVENT_3640_action_queue_async_348",
-        ),
+            identifier="EVENT_3640_action_queue_async_348"),
         Return(),
         ActionQueueAsync(
             target=NPC_3,
@@ -731,8 +698,7 @@ script = EventScript(
                 ),
                 ASWalk1StepNorthwest(),
             ],
-            identifier="EVENT_3640_action_queue_async_350",
-        ),
+            identifier="EVENT_3640_action_queue_async_350"),
         Return(),
         RunDialog(
             dialog_id=DI3787_DODO_MINIGAME_HINT,
@@ -741,8 +707,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_3640_run_dialog__",
-        ),
+            identifier="EVENT_3640_run_dialog__"),
         Return(),
     ]
 )

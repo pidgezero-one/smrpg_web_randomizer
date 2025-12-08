@@ -43,8 +43,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=True,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exit_fields=[
         RoomExit(
@@ -64,8 +63,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=23,
             y=67,
@@ -83,8 +81,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.SOUTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=20,
             y=10,
@@ -102,8 +99,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=28,
             y=12,
@@ -121,8 +117,7 @@ room = Room(
             dst_z=0,
             dst_z_half=0,
             dst_f=RadialDirection.NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -157,8 +152,7 @@ room = Room(
             priority_2=True,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularClone( # 1
             occupant=npcs.YellowPlatform,
             event_script=3144,
@@ -174,8 +168,7 @@ room = Room(
             priority_2=True,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularClone( # 2
             occupant=npcs.YellowPlatform,
             event_script=3144,
@@ -191,8 +184,7 @@ room = Room(
             priority_2=True,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularClone( # 3
             occupant=npcs.YellowPlatform,
             event_script=3144,
@@ -208,8 +200,7 @@ room = Room(
             priority_2=True,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularClone( # 4
             occupant=npcs.YellowPlatform,
             event_script=3144,
@@ -225,8 +216,7 @@ room = Room(
             priority_2=True,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularClone( # 5
             occupant=npcs.YellowPlatform,
             event_script=3144,
@@ -242,8 +232,7 @@ room = Room(
             priority_2=True,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularClone( # 6
             occupant=npcs.YellowPlatform,
             event_script=3144,
@@ -259,8 +248,7 @@ room = Room(
             priority_2=True,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularNPC( # 7
             occupant=npcs.Flower,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -293,8 +281,7 @@ room = Room(
             priority_2=True,
             show_shadow=True,
             height=3,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone( # 8
             occupant=npcs.RecoveryMushroom,
             event_script=240,
@@ -310,8 +297,7 @@ room = Room(
             priority_2=True,
             show_shadow=True,
             height=3,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 9
             occupant=npcs.Empty,
             initiator=Initiator.NONE,
@@ -342,8 +328,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 10
             occupant=npcs.Empty,
             event_script=256,
@@ -357,8 +342,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 11
             occupant=npcs.Empty,
             event_script=256,
@@ -372,8 +356,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 12
             occupant=npcs.Empty,
             event_script=256,
@@ -387,8 +370,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         BattlePackNPC( # 13
             occupant=npcs.Starslap,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -423,8 +405,7 @@ room = Room(
             height=5,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         BattlePackClone( # 14
             occupant=npcs.Starslap,
             battle_pack=22,
@@ -441,8 +422,7 @@ room = Room(
             height=5,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         BattlePackClone( # 15
             occupant=npcs.Starslap,
             battle_pack=23,
@@ -459,8 +439,7 @@ room = Room(
             height=5,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         BattlePackClone( # 16
             occupant=npcs.Starslap,
             battle_pack=23,
@@ -477,8 +456,7 @@ room = Room(
             height=5,
             cannot_clone=False,
             byte2_bit0=True,
-            byte2_bit3=True,
-        ),
+            byte2_bit3=True),
         RegularNPC( # 17
             occupant=npcs.BigCoin,
             initiator=Initiator.ANYTHING_EXCEPT_PRESS_A,
@@ -511,8 +489,7 @@ room = Room(
             priority_2=False,
             show_shadow=True,
             cannot_clone=False,
-            y_shift=6,
-        ),
+            y_shift=6),
         RegularClone( # 18
             occupant=npcs.BigCoin,
             event_script=3146,
@@ -528,8 +505,7 @@ room = Room(
             priority_2=False,
             show_shadow=True,
             cannot_clone=False,
-            y_shift=6,
-        ),
+            y_shift=6),
         RegularClone( # 19
             occupant=npcs.BigCoin,
             event_script=3146,
@@ -545,8 +521,7 @@ room = Room(
             priority_2=False,
             show_shadow=True,
             cannot_clone=False,
-            y_shift=6,
-        ),
+            y_shift=6),
         RegularClone( # 20
             occupant=npcs.BigCoin,
             event_script=3146,
@@ -562,8 +537,7 @@ room = Room(
             priority_2=False,
             show_shadow=True,
             cannot_clone=False,
-            y_shift=6,
-        ),
+            y_shift=6),
         RegularClone( # 21
             occupant=npcs.BigCoin,
             event_script=3146,
@@ -579,7 +553,6 @@ room = Room(
             priority_2=False,
             show_shadow=True,
             cannot_clone=False,
-            y_shift=6,
-        ),
+            y_shift=6),
     ]
 )

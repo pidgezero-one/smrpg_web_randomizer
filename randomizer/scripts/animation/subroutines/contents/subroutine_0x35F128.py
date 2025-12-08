@@ -13,5 +13,4 @@ script = SubroutineOrBanklessScript(
         PauseScriptUntil(condition=FRAMES_ELAPSED, frames=10),
         PlaySound(sound=S0082_WALLOP_3),
         ReturnObjectQueue(),
-    ],
-)
+    ])

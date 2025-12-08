@@ -17,8 +17,7 @@ from randomizer.management.disassembler_common import (
     con_int,
     flags_short,
     writeline,
-    bit_bool_from_num,
-)
+    bit_bool_from_num)
 
 
 class Command(BaseCommand):
@@ -29,8 +28,7 @@ class Command(BaseCommand):
             "-d",
             "--debug",
             action="store_true",
-            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer",
-        )
+            help="If set, dumps to a gitignored folder instead of overwriting the scripts sourced by SMRPG Randomizer")
 
     def handle(self, *args, **options):
         debug = options["debug"]
@@ -66,8 +64,7 @@ class Command(BaseCommand):
             writeline(
                 file,
                 "    spell_type = %s"
-                % ("SpellType.Damage" if not spelltype else "SpellType.Heal"),
-            )
+                % ("SpellType.Damage" if not spelltype else "SpellType.Heal"))
             effecttype = tmp & 0x06
             if effecttype == 2:
                 writeline(file, "    effect_type = EffectType.Inflict")

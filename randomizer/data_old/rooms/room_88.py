@@ -65,8 +65,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             cannot_clone=True,
-            y_shift=0,
-        ),
+            y_shift=0),
         RegularNPC( # 1
             occupant=npcs.SparkleDown,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -97,8 +96,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 2
             occupant=npcs.Mallow,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -129,8 +127,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 3
             occupant=npcs.GenoDoll,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -161,8 +158,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 4
             occupant=npcs.Bowser,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -194,8 +190,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 5
             occupant=npcs.Empty,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -226,8 +221,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 6
             occupant=npcs.GenoRedemption,
             initiator=Initiator.PRESS_A_FROM_ANY_SIDE,
@@ -259,7 +253,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             show_shadow=False,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

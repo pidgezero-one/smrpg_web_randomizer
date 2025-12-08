@@ -21,10 +21,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueAsync(
             target=NPC_0,
             subscript=[
@@ -36,8 +34,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_mold=True, is_sequence=True, looping=True
                 ),
-            ],
-        ),
+            ]),
         Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Z, pixel=True, bit_7=True),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 22, ["EVENT_2344_freeze_camera_9"]),
         FadeInFromBlack(sync=False),
@@ -49,8 +46,7 @@ script = EventScript(
                 ASSetWalkingSpeed(FASTEST),
                 ASShiftToXYCoords(x=4, y=110),
                 ASShiftZUpSteps(16),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO019_LONG_FALL, channel=6),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
@@ -64,8 +60,7 @@ script = EventScript(
                     ["EVENT_2344_action_queue_async_13_SUBSCRIPT_pause_1"]
                 ),
                 ASPlaySound(sound=SO058_INSERT, channel=4),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         Return(),

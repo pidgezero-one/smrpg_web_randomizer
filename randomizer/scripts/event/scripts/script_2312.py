@@ -17,8 +17,7 @@ script = EventScript(
         PlaySound(sound=SO009_GREEN_SWITCH, channel=6),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=3, y=94)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=3, y=94)]),
         Pause(8),
         JmpIfObjectInCurrentLevel(NPC_0, ["EVENT_2312_apply_tile_mod_18"]),
         Pause(1, identifier="EVENT_2312_pause_12"),
@@ -38,21 +37,18 @@ script = EventScript(
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
                 ASPause(32),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R101_BOOSTER_PASS_AREA_02,
             mod_id=4,
-            identifier="EVENT_2312_apply_tile_mod_18",
-        ),
+            identifier="EVENT_2312_apply_tile_mod_18"),
         JmpIfBitSet(TEMP_7042_0, ["EVENT_2312_set_action_script_sync_21"]),
         PlaySound(sound=SO021_RUMBLING, channel=6),
         SetSyncActionScript(
             SCREEN_FOCUS,
             A0391_CAMERA_SHAKE,
-            identifier="EVENT_2312_set_action_script_sync_21",
-        ),
+            identifier="EVENT_2312_set_action_script_sync_21"),
         Pause(8),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R101_BOOSTER_PASS_AREA_02, mod_id=0
@@ -60,8 +56,7 @@ script = EventScript(
         Pause(48),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=4, y=85)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=4, y=85)]),
         Pause(8),
         JmpIfObjectInCurrentLevel(NPC_1, ["EVENT_2312_apply_tile_mod_34"]),
         Pause(1, identifier="EVENT_2312_pause_28"),
@@ -80,21 +75,18 @@ script = EventScript(
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
                 ASPause(32),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R101_BOOSTER_PASS_AREA_02,
             mod_id=5,
-            identifier="EVENT_2312_apply_tile_mod_34",
-        ),
+            identifier="EVENT_2312_apply_tile_mod_34"),
         JmpIfBitSet(TEMP_7042_1, ["EVENT_2312_set_action_script_sync_37"]),
         PlaySound(sound=SO021_RUMBLING, channel=6),
         SetSyncActionScript(
             SCREEN_FOCUS,
             A0391_CAMERA_SHAKE,
-            identifier="EVENT_2312_set_action_script_sync_37",
-        ),
+            identifier="EVENT_2312_set_action_script_sync_37"),
         Pause(8),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R101_BOOSTER_PASS_AREA_02, mod_id=1
@@ -102,8 +94,7 @@ script = EventScript(
         Pause(48),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=8, y=85)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=8, y=85)]),
         Pause(8),
         JmpIfObjectInCurrentLevel(NPC_2, ["EVENT_2312_apply_tile_mod_50"]),
         Pause(1, identifier="EVENT_2312_pause_44"),
@@ -122,21 +113,18 @@ script = EventScript(
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
                 ASPause(32),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R101_BOOSTER_PASS_AREA_02,
             mod_id=6,
-            identifier="EVENT_2312_apply_tile_mod_50",
-        ),
+            identifier="EVENT_2312_apply_tile_mod_50"),
         JmpIfBitSet(TEMP_7042_2, ["EVENT_2312_set_action_script_sync_53"]),
         PlaySound(sound=SO021_RUMBLING, channel=6),
         SetSyncActionScript(
             SCREEN_FOCUS,
             A0391_CAMERA_SHAKE,
-            identifier="EVENT_2312_set_action_script_sync_53",
-        ),
+            identifier="EVENT_2312_set_action_script_sync_53"),
         Pause(8),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R101_BOOSTER_PASS_AREA_02, mod_id=2
@@ -144,8 +132,7 @@ script = EventScript(
         Pause(48),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=8, y=73)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=8, y=73)]),
         Pause(8),
         JmpIfObjectInCurrentLevel(NPC_3, ["EVENT_2312_apply_tile_mod_65"]),
         Pause(1, identifier="EVENT_2312_pause_60"),
@@ -164,21 +151,18 @@ script = EventScript(
                 ASSetSpriteSequence(index=2, is_sequence=True, looping=True),
                 ASPause(32),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R101_BOOSTER_PASS_AREA_02,
             mod_id=7,
-            identifier="EVENT_2312_apply_tile_mod_65",
-        ),
+            identifier="EVENT_2312_apply_tile_mod_65"),
         JmpIfBitSet(TEMP_7042_3, ["EVENT_2312_set_action_script_sync_68"]),
         PlaySound(sound=SO021_RUMBLING, channel=6),
         SetSyncActionScript(
             SCREEN_FOCUS,
             A0391_CAMERA_SHAKE,
-            identifier="EVENT_2312_set_action_script_sync_68",
-        ),
+            identifier="EVENT_2312_set_action_script_sync_68"),
         Pause(8),
         ApplyTileModToLevel(
             use_alternate=True, room_id=R101_BOOSTER_PASS_AREA_02, mod_id=3
@@ -199,8 +183,7 @@ script = EventScript(
         Store00To0248(),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
-            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=6, y=95)],
-        ),
+            subscript=[ASSetWalkingSpeed(FAST), ASWalkToXYCoords(x=6, y=95)]),
         Return(identifier="EVENT_2312_ret_78"),
     ]
 )

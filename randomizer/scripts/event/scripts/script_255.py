@@ -13,8 +13,7 @@ script = EventScript(
             subscript=[
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[0, 1]),
                 ASDb(bytearray(b"\xfd\xf2")),
-            ],
-        ),
+            ]),
         SetSyncActionScript(MEM_70A8, A1022_HIT_BY_EXP_STAR),
         IncEXPByPacket(),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_255_ret_13"]),
@@ -25,8 +24,7 @@ script = EventScript(
         CreatePacketAtObjectCoords(
             packet=P031_LEVELUP_TEXT,
             target_npc=MARIO,
-            destinations=["EVENT_255_set_bit_5"],
-        ),
+            destinations=["EVENT_255_set_bit_5"]),
         PlaySound(sound=SO095_LEVEL_UP_WITH_STAR, channel=6),
         SetVarToConst(TIMER_701E, 64),
         RunBackgroundEventWithPauseReturnOnExit(

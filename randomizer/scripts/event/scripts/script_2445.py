@@ -19,8 +19,7 @@ script = EventScript(
                 ASFloatingOff(),
                 ASSequencePlaybackOff(),
                 ASSetPriority(3),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=False),
         ActionQueueAsync(
             target=MARIO,
@@ -41,8 +40,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_2445_action_queue_async_6_SUBSCRIPT_pause_6"]
                 ),
-            ],
-        ),
+            ]),
         SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         UnfreezeCamera(),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),

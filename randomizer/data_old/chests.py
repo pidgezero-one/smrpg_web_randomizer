@@ -30,8 +30,7 @@ from randomizer.helpers.flag_helpers import (
     BowsersKeepGating,
     FactoryGating,
     PlayableCharacters,
-    BossScaleOptions,
-)
+    BossScaleOptions)
 from randomizer.helpers.roomobjecttables import ObjectType, Initiator, RadialDirection
 from randomizer.helpers.eventtables import AreaObjects, _0x60Flags
 
@@ -693,9 +692,7 @@ class NPCReward(locations.ItemLocation):
                 items.Flower,
                 items.YouMissed,
                 items.InvincibilityStar,
-                items.InfiniteCoins,
-            ),
-        )
+                items.InfiniteCoins))
 
 
 class StarterItem(NPCReward):
@@ -794,9 +791,7 @@ class OverworldItem(locations.ItemLocation):
                     items.MultiFrogCoin,
                     items.YouMissed,
                     items.InvincibilityStar,
-                    items.InfiniteCoins,
-                ),
-            )
+                    items.InfiniteCoins))
         )
 
     @property
@@ -9799,8 +9794,7 @@ def get_default_chests(world):
                         cant_jump_through=True,
                         slidable_along_walls=True,
                         cant_move_if_in_air=True,
-                        byte7_upper2=3,
-                    )
+                        byte7_upper2=3)
                 )
                 # add summoner
                 world.eventscripts[91].append(

@@ -17,8 +17,7 @@ script = EventScript(
         StartSyncEmbeddedActionScript(
             target=MARIO,
             prefix=0xF1,
-            subscript=[ASBPL262728(), ASWalkToXYCoords(x=20, y=61)],
-        ),
+            subscript=[ASBPL262728(), ASWalkToXYCoords(x=20, y=61)]),
         CloseDialog(),
         PauseActionScript(NPC_9),
         StartAsyncEmbeddedActionScript(
@@ -29,16 +28,14 @@ script = EventScript(
                 ASFaceNortheast(),
                 ASSetSequenceSpeed(SLOW),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         StartAsyncEmbeddedActionScript(
             target=MARIO, prefix=0xF1, subscript=[ASSetAllSpeeds(NORMAL)]
         ),
         JmpIfBitClear(
             YOSTER_ISLE_LIBERATED_2,
             ["EVENT_3600_jmp_if_bit_set_166"],
-            identifier="EVENT_3600_jmp_if_bit_clear_13",
-        ),
+            identifier="EVENT_3600_jmp_if_bit_clear_13"),
         JmpIfBitSet(TEMP_7043_5, ["EVENT_3600_action_queue_sync_65"]),
         JmpIfBitSet(TEMP_7043_6, ["EVENT_3600_action_queue_sync_65"]),
         JmpIfBitSet(TEMP_7043_7, ["EVENT_3600_action_queue_sync_65"]),
@@ -48,16 +45,14 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=5, sprite_offset=6, is_sequence=True, looping=False
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceSouthwest()]),
         SetSyncActionScript(NPC_9, A0680_MUSHROOM_DERBY_UNKNOWN),
         SetSyncActionScript(MARIO, A0681_MUSHROOM_DERBY_UNKNOWN),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[ASWalkToXYCoords(x=17, y=49)],
-            identifier="EVENT_3600_action_queue_sync_21",
-        ),
+            identifier="EVENT_3600_action_queue_sync_21"),
         UnsyncActionScript(NPC_3),
         UnsyncActionScript(NPC_2),
         UnsyncActionScript(NPC_10),
@@ -89,17 +84,14 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceNortheast()]),
         Jmp(["EVENT_3600_play_sound_48"]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASResetProperties(), ASFaceNorthwest()],
-            identifier="EVENT_3600_action_queue_async_46",
-        ),
+            identifier="EVENT_3600_action_queue_async_46"),
         PlaySound(
             sound=SO027_FOUND_AN_ITEM, channel=6, identifier="EVENT_3600_play_sound_48"
         ),
@@ -112,8 +104,7 @@ script = EventScript(
             TEMP_7026,
             0,
             ["EVENT_3600_mem_7000_shift_left_60"],
-            identifier="EVENT_3600_jmp_if_var_equals_const_54",
-        ),
+            identifier="EVENT_3600_jmp_if_var_equals_const_54"),
         SetObjectMemoryToVar(SECONDARY_TEMP_7024),
         Inc(PRIMARY_TEMP_7000),
         EndLoop(),
@@ -129,15 +120,13 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         RunEventAsSubroutine(E3599_MUSHROOM_DERBY_PRIZE_CALCULATOR),
         Jmp(["EVENT_3600_pause_124"]),
         ActionQueueSync(
             target=SCREEN_FOCUS,
             subscript=[ASWalkToXYCoords(x=17, y=49)],
-            identifier="EVENT_3600_action_queue_sync_65",
-        ),
+            identifier="EVENT_3600_action_queue_sync_65"),
         JmpToSubroutine(["EVENT_3600_jmp_if_bit_set_85"]),
         JmpIfBitSet(MUSHROOM_DERBY_AUTO, ["EVENT_3600_action_queue_async_80"]),
         PlaySound(sound=SO063_YOSHI_TALK, channel=6),
@@ -147,8 +136,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         CopyVarToVar(from_var=UNKNOWN_70EE, to_var=PRIMARY_TEMP_7000),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3600_jmp_79"]),
         CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
@@ -162,8 +150,7 @@ script = EventScript(
         ActionQueueAsync(
             target=MARIO,
             subscript=[ASFaceNorthwest()],
-            identifier="EVENT_3600_action_queue_async_80",
-        ),
+            identifier="EVENT_3600_action_queue_async_80"),
         Pause(10),
         PlaySound(sound=SO063_YOSHI_TALK, channel=6),
         RunDialog(
@@ -172,14 +159,12 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         Jmp(["EVENT_3600_pause_124"]),
         JmpIfBitSet(
             TEMP_7043_7,
             ["EVENT_3600_unsync_action_script_92"],
-            identifier="EVENT_3600_jmp_if_bit_set_85",
-        ),
+            identifier="EVENT_3600_jmp_if_bit_set_85"),
         JmpIfBitSet(TEMP_7043_6, ["EVENT_3600_unsync_action_script_98"]),
         JmpIfBitSet(TEMP_7043_5, ["EVENT_3600_unsync_action_script_104"]),
         UnsyncActionScript(NPC_3),
@@ -224,8 +209,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(2),
                 ASSetSequenceSpeed(SLOW),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         Pause(30),
         Return(),
         ActionQueueAsync(
@@ -238,8 +222,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASSetSequenceSpeed(SLOW),
             ],
-            identifier="EVENT_3600_action_queue_async_121",
-        ),
+            identifier="EVENT_3600_action_queue_async_121"),
         Pause(30),
         Return(),
         Pause(30, identifier="EVENT_3600_pause_124"),
@@ -280,8 +263,7 @@ script = EventScript(
         Return(),
         EnableControls(
             [LEFT, RIGHT, DOWN, UP, X, A, Y, B],
-            identifier="EVENT_3600_enable_controls_158",
-        ),
+            identifier="EVENT_3600_enable_controls_158"),
         SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
         ActionQueueAsync(
             target=NPC_9,
@@ -290,8 +272,7 @@ script = EventScript(
                 ASSetSolidityBits(cant_walk_through=True),
                 ASSetSolidityBits(bit_4=True),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_1, A0496_MUSHROOM_DERBY_REFEREE),
         ClearBit(MUSHROOM_DERBY_AUTO),
         ClearBit(TEMP_7044_5),
@@ -300,8 +281,7 @@ script = EventScript(
         JmpIfBitSet(
             TEMP_7043_5,
             ["EVENT_3600_set_bit_288"],
-            identifier="EVENT_3600_jmp_if_bit_set_166",
-        ),
+            identifier="EVENT_3600_jmp_if_bit_set_166"),
         SetVarToConst(UNKNOWN_70EE, 0),
         SetVarToConst(UNKNOWN_70EB, 0),
         ActionQueueSync(
@@ -310,8 +290,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=5, sprite_offset=6, is_sequence=True, looping=False
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceSouthwest()]),
         SetSyncActionScript(NPC_9, A0680_MUSHROOM_DERBY_UNKNOWN),
         SetSyncActionScript(MARIO, A0681_MUSHROOM_DERBY_UNKNOWN),
@@ -320,8 +299,7 @@ script = EventScript(
         UnsyncActionScript(NPC_10),
         ActionQueueAsync(
             target=NPC_10,
-            subscript=[ASBounceToXYWithHeight(x=21, y=63, height=0), ASFaceNorthwest()],
-        ),
+            subscript=[ASBounceToXYWithHeight(x=21, y=63, height=0), ASFaceNorthwest()]),
         PauseActionScript(NPC_0),
         PauseActionScript(NPC_2),
         PauseActionScript(NPC_1),
@@ -347,8 +325,7 @@ script = EventScript(
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
                 ASSetSequenceSpeed(SLOW),
                 ASSequenceLoopingOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -358,8 +335,7 @@ script = EventScript(
                 ASFaceSoutheast(),
                 ASSetSequenceSpeed(SLOW),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -369,8 +345,7 @@ script = EventScript(
                 ASWalkNortheastSteps(2),
                 ASSetSequenceSpeed(SLOW),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         ActionQueueSync(
             target=MARIO,
@@ -380,10 +355,8 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceNortheast()]),
         SetAsyncActionScript(NPC_5, A0636_54_VELOCITY_SINGLE_JUMP),
         SetAsyncActionScript(NPC_0, A0636_54_VELOCITY_SINGLE_JUMP),
@@ -394,8 +367,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, sprite_offset=6, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceNorthwest()]),
         Pause(10),
         Pause(10),
@@ -412,10 +384,8 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=False,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         Pause(10),
         ActionQueueSync(
             target=NPC_9,
@@ -426,12 +396,10 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(10),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=MARIO,
             subscript=[
@@ -440,10 +408,8 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceNortheast()]),
         SetAsyncActionScript(NPC_5, A0636_54_VELOCITY_SINGLE_JUMP),
         Pause(10),
@@ -453,8 +419,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=6, sprite_offset=6, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceNorthwest()]),
         Pause(10),
         SetAsyncActionScript(NPC_0, A0636_54_VELOCITY_SINGLE_JUMP),
@@ -465,8 +430,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=5, sprite_offset=6, is_sequence=True, looping=True
                 )
-            ],
-        ),
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceSouthwest()]),
         Pause(10),
         SetAsyncActionScript(NPC_1, A0636_54_VELOCITY_SINGLE_JUMP),
@@ -479,10 +443,8 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         ActionQueueAsync(target=NPC_9, subscript=[ASFaceSoutheast()]),
         Pause(10),
         ActionQueueSync(
@@ -498,8 +460,7 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(5),
                 ASResetProperties(),
                 ASPause(
@@ -508,8 +469,7 @@ script = EventScript(
                 ASJmpIfObjectInAir(
                     NPC_9, ["EVENT_3600_action_queue_async_240_SUBSCRIPT_pause_4"]
                 ),
-            ],
-        ),
+            ]),
         Pause(10),
         SetBit(COMPLETED_MUSHROOM_DERBY),
         PlaySound(sound=SO063_YOSHI_TALK, channel=6),
@@ -523,8 +483,7 @@ script = EventScript(
                 ASJmpIfMarioInAir(
                     ["EVENT_3600_action_queue_sync_250_SUBSCRIPT_pause_1"]
                 ),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_9,
             subscript=[
@@ -535,12 +494,10 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(8),
                 ASResetProperties(),
-            ],
-        ),
+            ]),
         CircleMaskShrinkToObject(target=MARIO, width=0, speed=3, static=True),
         PauseScriptUntilEffectDone(),
         SetBit(YOSTER_ISLE_LIBERATED_1),
@@ -550,8 +507,7 @@ script = EventScript(
             x=20,
             y=61,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         PauseActionScript(NPC_3),
         PauseActionScript(NPC_9),
         ActionQueueSync(
@@ -559,16 +515,14 @@ script = EventScript(
             subscript=[
                 ASResetProperties(),
                 ASTransferToXYZF(x=21, y=62, z=0, direction=EAST),
-            ],
-        ),
+            ]),
         StartAsyncEmbeddedActionScript(
             target=NPC_9,
             prefix=0xF1,
             subscript=[
                 ASTransferToXYZF(x=20, y=61, z=0, direction=EAST),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True, duration=120),
         PauseScriptUntilEffectDone(),
         Pause(60),
@@ -592,18 +546,15 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(10),
                 ASResetProperties(),
                 ASPause(30),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_3, A0676_MUSHROOM_DERBY_UNKNOWN),
         ActionQueueSync(
             target=MARIO,
-            subscript=[ASPause(30), ASFaceNorth(), ASPause(60), ASFaceSouth()],
-        ),
+            subscript=[ASPause(30), ASFaceNorth(), ASPause(60), ASFaceSouth()]),
         ActionQueueAsync(
             target=NPC_9,
             subscript=[
@@ -611,8 +562,7 @@ script = EventScript(
                 ASSetSequenceSpeed(FAST),
                 ASWalkNortheastSteps(2),
                 ASSetSequenceSpeed(NORMAL),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_9, A0021_STAND_STILL_AND_MOVE_RANDOM_DIRECTIONS),
         SetBit(YOSTER_ISLE_LIBERATED_2),
         EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
@@ -643,10 +593,8 @@ script = EventScript(
                     sprite_offset=6,
                     is_sequence=True,
                     looping=False,
-                    mirror_sprite=True,
-                )
-            ],
-        ),
+                    mirror_sprite=True)
+            ]),
         PlaySound(sound=SO062_BIG_YOSHI_TALK, channel=6),
         CircleMaskShrinkToObject(target=MARIO, width=0, speed=3, static=True),
         PauseScriptUntilEffectDone(),
@@ -657,8 +605,7 @@ script = EventScript(
             x=20,
             y=61,
             z=0,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         PauseActionScript(NPC_3),
         PauseActionScript(NPC_9),
         ActionQueueSync(
@@ -666,16 +613,14 @@ script = EventScript(
             subscript=[
                 ASResetProperties(),
                 ASTransferToXYZF(x=21, y=62, z=0, direction=EAST),
-            ],
-        ),
+            ]),
         StartAsyncEmbeddedActionScript(
             target=NPC_9,
             prefix=0xF1,
             subscript=[
                 ASTransferToXYZF(x=20, y=61, z=0, direction=EAST),
                 ASFaceSoutheast(),
-            ],
-        ),
+            ]),
         FadeInFromBlack(sync=True, duration=120),
         PauseScriptUntilEffectDone(),
         Pause(60),
@@ -692,13 +637,11 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
+                    mirror_sprite=True),
                 ASPause(10),
                 ASResetProperties(),
                 ASPause(30),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_3, A0676_MUSHROOM_DERBY_UNKNOWN),
         SetSyncActionScript(NPC_9, A0119_SLOW_SEQUENCE_LOOP),
         EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
@@ -712,8 +655,7 @@ script = EventScript(
                 ),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
             ],
-            identifier="EVENT_3600_action_queue_sync_329",
-        ),
+            identifier="EVENT_3600_action_queue_sync_329"),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -721,8 +663,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -730,8 +671,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -739,8 +679,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         StartSyncEmbeddedActionScript(
             target=NPC_5,
             prefix=0xF1,
@@ -751,8 +690,7 @@ script = EventScript(
                 ASSetSolidityBits(cant_pass_walls=True),
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[1]),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
@@ -760,16 +698,14 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASObjectMemoryClearBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASSetSolidityBits(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 )
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

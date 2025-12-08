@@ -63,8 +63,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 1
             occupant=npcs.ThumpGoomba,
             initiator=Initiator.JUMP_ON,
@@ -95,8 +94,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.ThumpGoomba,
             event_script=449,
@@ -110,8 +108,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.ThumpGoomba,
             event_script=450,
@@ -125,8 +122,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 4
             occupant=npcs.ThumpGoomba,
             event_script=451,
@@ -140,8 +136,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 5
             occupant=npcs.GoldGoomba,
             initiator=Initiator.JUMP_ON,
@@ -172,8 +167,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 6
             occupant=npcs.GoldGoomba,
             event_script=585,
@@ -187,8 +181,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 7
             occupant=npcs.GoldGoomba,
             event_script=586,
@@ -202,8 +195,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 8
             occupant=npcs.GoldGoomba,
             event_script=587,
@@ -217,8 +209,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=False,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 9
             occupant=npcs.Toadstool,
             initiator=Initiator.JUMP_ON,
@@ -250,8 +241,7 @@ room = Room(
             priority_1=True,
             priority_2=False,
             cannot_clone=True,
-            y_shift=0,
-        ),
+            y_shift=0),
         RegularNPC( # 10
             occupant=npcs.Spikey,
             initiator=Initiator.JUMP_ON,
@@ -282,8 +272,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 11
             occupant=npcs.Spikey,
             event_script=589,
@@ -297,8 +286,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 12
             occupant=npcs.Spikey,
             event_script=590,
@@ -312,8 +300,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 13
             occupant=npcs.Spikey,
             event_script=591,
@@ -327,8 +314,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 14
             occupant=npcs.JumpTrampoline,
             initiator=Initiator.JUMP_ON,
@@ -359,7 +345,6 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

@@ -22,8 +22,7 @@ script = EventScript(
         Return(),
         JmpToEvent(
             E1294_COLLECT_FREESTANDING_SMALL_FROG_COIN,
-            identifier="EVENT_239_room_41_logic",
-        ),
+            identifier="EVENT_239_room_41_logic"),
         JmpToEvent(E3146_FREESTANDING_BIG_COIN, identifier="EVENT_239_room_79_logic"),
         JmpToEvent(
             E1293_COLLECT_FREESTANDING_SMALL_COIN, identifier="EVENT_239_room_125_logic"

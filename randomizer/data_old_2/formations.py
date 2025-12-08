@@ -75,8 +75,7 @@ class EnemyFormation:
         (231, 135),
         (231, 143),
         (231, 151),
-        (231, 159),
-    )
+        (231, 159))
 
     # TODO: Don't need this if we're not mutating coordinates???
     # Upper and lower bounds on the valid coordinates for mutating.

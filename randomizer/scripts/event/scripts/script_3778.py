@@ -13,14 +13,12 @@ script = EventScript(
                 ASClearSolidityBits(cant_pass_walls=True),
                 ASShiftXYPixels(x=250, y=253),
                 ASSetSolidityBits(cant_pass_walls=True),
-            ],
-        ),
+            ]),
         RunEventAsSubroutine(E0015_STANDARD_ROOM_LOADER),
         ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkNortheastSteps(9)]),
         ActionQueueAsync(
             target=NPC_0,
-            subscript=[ASSetSpriteSequence(index=3, looping=False), ASPause(38)],
-        ),
+            subscript=[ASSetSpriteSequence(index=3, looping=False), ASPause(38)]),
         RunEventAsSubroutine(E3884_BALL_SOLITAIRE_SET_PUZZLE_CONFIGURATION_VALUE),
         JmpIf7000AnyBitsSet(
             bits=[], destinations=["EVENT_3778_jmp_if_7000_any_bits_set_14"]
@@ -35,13 +33,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_16"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_14",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_14"),
         ActionQueueAsync(
             target=NPC_2,
             subscript=[
@@ -52,13 +48,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_18"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_16",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_16"),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -69,13 +63,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_20"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_18",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_18"),
         ActionQueueAsync(
             target=NPC_4,
             subscript=[
@@ -86,13 +78,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_22"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_20",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_20"),
         ActionQueueAsync(
             target=NPC_5,
             subscript=[
@@ -103,13 +93,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_24"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_22",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_22"),
         ActionQueueAsync(
             target=NPC_6,
             subscript=[
@@ -120,13 +108,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_26"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_24",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_24"),
         ActionQueueAsync(
             target=NPC_7,
             subscript=[
@@ -137,13 +123,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_28"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_26",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_26"),
         ActionQueueAsync(
             target=NPC_8,
             subscript=[
@@ -154,13 +138,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_30"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_28",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_28"),
         ActionQueueAsync(
             target=NPC_9,
             subscript=[
@@ -171,13 +153,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_32"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_30",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_30"),
         ActionQueueAsync(
             target=NPC_10,
             subscript=[
@@ -188,13 +168,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_34"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_32",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_32"),
         ActionQueueAsync(
             target=NPC_11,
             subscript=[
@@ -205,13 +183,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_36"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_34",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_34"),
         ActionQueueAsync(
             target=NPC_12,
             subscript=[
@@ -222,13 +198,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_38"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_36",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_36"),
         ActionQueueAsync(
             target=NPC_13,
             subscript=[
@@ -239,13 +213,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_40"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_38",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_38"),
         ActionQueueAsync(
             target=NPC_14,
             subscript=[
@@ -256,13 +228,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_jmp_if_7000_any_bits_set_42"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_40",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_40"),
         ActionQueueAsync(
             target=NPC_15,
             subscript=[
@@ -273,13 +243,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         JmpIf7000AnyBitsSet(
             bits=[],
             destinations=["EVENT_3778_action_queue_async_44"],
-            identifier="EVENT_3778_jmp_if_7000_any_bits_set_42",
-        ),
+            identifier="EVENT_3778_jmp_if_7000_any_bits_set_42"),
         ActionQueueAsync(
             target=NPC_16,
             subscript=[
@@ -290,13 +258,11 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASEndAll(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=SCREEN_FOCUS,
             subscript=[ASWalkSouthwestSteps(9)],
-            identifier="EVENT_3778_action_queue_async_44",
-        ),
+            identifier="EVENT_3778_action_queue_async_44"),
         PlayMusicAtDefaultVolume(M36_EXPLANATION),
         Return(),
     ]

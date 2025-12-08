@@ -46,8 +46,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1916_ABYSS_BIG_CONVEYOR_CHECKPOINT,
             x=25,
@@ -58,8 +57,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1917_ABYSS_BIG_CONVEYOR_CHECKPOINT,
             x=19,
@@ -70,8 +68,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1917_ABYSS_BIG_CONVEYOR_CHECKPOINT,
             x=18,
@@ -82,8 +79,7 @@ room = Room(
             length=4,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1918_ABYSS_BIG_CONVEYOR_CHECKPOINT,
             x=24,
@@ -94,8 +90,7 @@ room = Room(
             length=3,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E1920_ABYSS_BIG_CONVEYOR_CHECKPOINT,
             x=29,
@@ -106,8 +101,7 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     exits=[
         RoomExit(
@@ -127,8 +121,7 @@ room = Room(
             dst_z=2,
             dst_z_half=False,
             dst_f=SOUTHWEST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
         RoomExit(
             x=30,
             y=68,
@@ -146,8 +139,7 @@ room = Room(
             dst_z=0,
             dst_z_half=False,
             dst_f=NORTHEAST,
-            x_bit_7=False,
-        ),
+            x_bit_7=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -176,8 +168,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.GREY_STEPPING_STONE_NPC_2,
             event_script=E1919_ABYSS_BIG_CONVEYOR_PLATFORM,
@@ -187,8 +178,7 @@ room = Room(
             y=94,
             z=10,
             z_half=True,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 2
             npc=npcs.LI_XX_L_BOO_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -216,8 +206,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 3
             npc=npcs.LI_XX_L_BOO_NPC,
             battle_pack=135,
@@ -227,8 +216,7 @@ room = Room(
             y=85,
             z=9,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 4
             npc=npcs.LI_XX_L_BOO_NPC,
             battle_pack=134,
@@ -238,8 +226,7 @@ room = Room(
             y=83,
             z=11,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 5
             npc=npcs.LI_XX_L_BOO_NPC,
             battle_pack=135,
@@ -249,8 +236,7 @@ room = Room(
             y=91,
             z=11,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 6
             npc=npcs.LI_XX_L_BOO_NPC,
             battle_pack=134,
@@ -260,8 +246,7 @@ room = Room(
             y=71,
             z=12,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 7
             npc=npcs.LI_XX_L_BOO_NPC,
             battle_pack=135,
@@ -271,8 +256,7 @@ room = Room(
             y=72,
             z=12,
             z_half=True,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         ChestNPC( # 8
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -301,8 +285,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         ChestNPC( # 9
             npc=npcs.TREASURE_CHEST_NPC_2,
             initiator=EventInitiator.HIT_FROM_BELOW,
@@ -331,7 +314,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )

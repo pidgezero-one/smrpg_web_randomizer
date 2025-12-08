@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfObjectNotInSpecificLevel(
             NPC_6,
             R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
-            ["EVENT_3679_action_queue_sync_5"],
-        ),
+            ["EVENT_3679_action_queue_sync_5"]),
         ApplySolidityModToLevel(
             permanent=True, room_id=R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, mod_id=0
         ),
@@ -20,8 +19,7 @@ script = EventScript(
                 ASTransferToXYZF(x=20, y=49, z=10, direction=EAST),
                 ASSetSpriteSequence(index=6, is_sequence=True, looping=True),
             ],
-            identifier="EVENT_3679_action_queue_sync_5",
-        ),
+            identifier="EVENT_3679_action_queue_sync_5"),
         RememberLastObject(),
         SetSyncActionScript(NPC_1, A0978_RANDOMLY_FACE_SOUTHWEST),
         JmpIfBitClear(

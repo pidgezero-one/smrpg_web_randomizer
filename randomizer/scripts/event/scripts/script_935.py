@@ -15,8 +15,7 @@ script = EventScript(
         JmpIfBitSet(
             MARRYMORE_REGULAR_INN,
             ["EVENT_256_ret_0"],
-            identifier="EVENT_935_jmp_if_bit_set_4",
-        ),
+            identifier="EVENT_935_jmp_if_bit_set_4"),
         FadeInFromBlack(sync=False),
         Return(),
     ]

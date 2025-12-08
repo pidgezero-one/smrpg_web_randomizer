@@ -14,8 +14,7 @@ script = EventScript(
                 ),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
             ],
-            identifier="EVENT_457_action_queue_sync_0",
-        ),
+            identifier="EVENT_457_action_queue_sync_0"),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -24,8 +23,7 @@ script = EventScript(
                 ),
                 ASSequenceLoopingOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -33,8 +31,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -43,8 +40,7 @@ script = EventScript(
                 ),
                 ASSequenceLoopingOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_5,
             subscript=[
@@ -52,8 +48,7 @@ script = EventScript(
                     bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True
                 ),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
@@ -62,8 +57,7 @@ script = EventScript(
                 ),
                 ASSequenceLoopingOff(),
                 ASObjectMemorySetBit(arg_1=0x30, bits=[4]),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         Return(),
     ]

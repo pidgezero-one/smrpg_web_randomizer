@@ -14,8 +14,7 @@ script = EventScript(
             x=30,
             y=71,
             z=10,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
         EnterArea(
             room_id=R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
@@ -25,8 +24,7 @@ script = EventScript(
             z=6,
             z_add_half_unit=True,
             run_entrance_event=True,
-            identifier="EVENT_3306_enter_area_4",
-        ),
+            identifier="EVENT_3306_enter_area_4"),
         Return(),
     ]
 )

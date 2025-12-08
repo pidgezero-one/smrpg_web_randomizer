@@ -12,8 +12,7 @@ from randomizer.helpers.roomobjecttables import (
     Locations,
     Rooms,
     PartitionBufferTypes,
-    PartitionMainSpace,
-)
+    PartitionMainSpace)
 from randomizer.data.rooms.room import (
     Buffer,
     Partition,
@@ -27,8 +26,7 @@ from randomizer.data.rooms.room import (
     BattlePackClone,
     RegularClone,
     ChestClone,
-    Room,
-)
+    Room)
 from randomizer.data.npcs import npcs
 from randomizer.helpers.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.helpers.misc_helpers import ExtraSpriteActions
@@ -42,21 +40,17 @@ room = Room(
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
             Buffer(
                 buffer_type=PartitionBufferTypes._4_SPRITES_PER_ROW,
                 main_buffer_space=PartitionMainSpace._0_BYTES,
-                index_in_main_buffer=True,
-            ),
+                index_in_main_buffer=True),
         ],
-        full_palette_buffer=True,
-    ),
+        full_palette_buffer=True),
     extra_required_actions=[ExtraSpriteActions.Sleep],
     music=Music._00_CURRENT,
     entrance_event=15,
@@ -93,8 +87,7 @@ room = Room(
             priority_2=True,
             show_shadow=False,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone(  # 1
             occupant=npcs.Torte,
             event_script=631,
@@ -110,8 +103,7 @@ room = Room(
             priority_2=True,
             show_shadow=False,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularClone(  # 2
             occupant=npcs.Torte,
             event_script=631,
@@ -127,8 +119,7 @@ room = Room(
             priority_2=True,
             show_shadow=False,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC(  # 3
             occupant=npcs.Torte,
             initiator=Initiator.NONE,
@@ -161,8 +152,7 @@ room = Room(
             priority_2=True,
             show_shadow=False,
             vram_size=1,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 4
             occupant=npcs.Torte,
             initiator=Initiator.NONE,
@@ -195,8 +185,7 @@ room = Room(
             priority_2=True,
             show_shadow=False,
             vram_size=1,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC(  # 5
             occupant=npcs.Torte,
             initiator=Initiator.NONE,
@@ -229,7 +218,5 @@ room = Room(
             priority_2=True,
             show_shadow=False,
             vram_size=1,
-            cannot_clone=False,
-        ),
-    ],
-)
+            cannot_clone=False),
+    ])

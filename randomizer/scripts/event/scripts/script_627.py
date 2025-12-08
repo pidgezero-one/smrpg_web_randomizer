@@ -15,8 +15,7 @@ script = EventScript(
             y=16,
             z=0,
             run_entrance_event=True,
-            identifier="EVENT_627_enter_area_1",
-        ),
+            identifier="EVENT_627_enter_area_1"),
         Return(identifier="EVENT_627_ret_2"),
     ]
 )

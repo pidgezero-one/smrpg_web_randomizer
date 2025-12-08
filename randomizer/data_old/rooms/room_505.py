@@ -63,8 +63,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 1
             occupant=npcs.YellowYoshi,
             event_script=471,
@@ -78,8 +77,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 2
             occupant=npcs.YellowYoshi,
             event_script=471,
@@ -93,8 +91,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 3
             occupant=npcs.YellowYoshi,
             event_script=471,
@@ -108,8 +105,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 4
             occupant=npcs.YellowYoshi,
             event_script=471,
@@ -123,8 +119,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 5
             occupant=npcs.BlueToad,
             initiator=Initiator.NONE,
@@ -155,8 +150,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularClone( # 6
             occupant=npcs.PinkToad,
             event_script=471,
@@ -170,8 +164,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 7
             occupant=npcs.RideYoshi,
             initiator=Initiator.NONE,
@@ -203,8 +196,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore._04_ALL_DIRECTIONS,
-            cannot_clone=False,
-        ),
+            cannot_clone=False),
         RegularNPC( # 8
             occupant=npcs.GreenYoshi,
             initiator=Initiator.NONE,
@@ -235,8 +227,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 9
             occupant=npcs.GreenYoshi,
             initiator=Initiator.NONE,
@@ -267,8 +258,7 @@ room = Room(
             priority_0=False,
             priority_1=False,
             priority_2=True,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
         RegularNPC( # 10
             occupant=npcs.Croco,
             initiator=Initiator.NONE,
@@ -300,7 +290,6 @@ room = Room(
             priority_1=False,
             priority_2=True,
             vram_size=1,
-            cannot_clone=True,
-        ),
+            cannot_clone=True),
     ]
 )

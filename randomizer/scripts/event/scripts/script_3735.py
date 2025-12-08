@@ -13,13 +13,11 @@ script = EventScript(
             use_alternate=True,
             room_id=R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
             mod_id=0,
-            identifier="EVENT_3735_apply_tile_mod_3",
-        ),
+            identifier="EVENT_3735_apply_tile_mod_3"),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
-            mod_id=0,
-        ),
+            mod_id=0),
         Return(),
     ]
 )

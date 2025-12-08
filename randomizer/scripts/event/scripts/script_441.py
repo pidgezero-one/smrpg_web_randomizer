@@ -23,8 +23,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASWalkFDirectionPixels(12),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         SummonObjectToCurrentLevelAtMariosCoords(NPC_9),
         ActionQueueSync(
             target=NPC_9,
@@ -39,8 +38,7 @@ script = EventScript(
                 ASFloatingOn(),
                 ASWalkFDirectionPixels(12),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         PlaySound(sound=SO055_LOSE_COINS_COIN_FOUNTAIN, channel=6),
         SetVarToConst(PRIMARY_TEMP_7000, 2),
         Dec7000FromCoins(),
@@ -54,8 +52,7 @@ script = EventScript(
                 ASPause(15),
                 ASResetProperties(),
             ],
-            identifier="EVENT_441_action_queue_sync_10",
-        ),
+            identifier="EVENT_441_action_queue_sync_10"),
         Return(),
     ]
 )

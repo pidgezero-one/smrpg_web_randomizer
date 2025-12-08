@@ -28,10 +28,8 @@ script = EventScript(
                     sprite_offset=2,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueAsync(target=SCREEN_FOCUS, subscript=[ASWalkNorthwestSteps(10)]),
         JmpIfObjectNotInSpecificLevel(
             NPC_1, R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, ["EVENT_2448_pause_42"]
@@ -59,8 +57,7 @@ script = EventScript(
         PlaySound(sound=SO019_LONG_FALL, channel=6),
         ActionQueueSync(
             target=NPC_11,
-            subscript=[ASFaceSoutheast(), ASPause(16), ASSequenceLoopingOff()],
-        ),
+            subscript=[ASFaceSoutheast(), ASPause(16), ASSequenceLoopingOff()]),
         Pause(112),
         ActionQueueAsync(
             target=NPC_10,
@@ -90,10 +87,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_10,
             subscript=[
@@ -104,10 +99,8 @@ script = EventScript(
                     is_mold=True,
                     is_sequence=True,
                     looping=True,
-                    mirror_sprite=True,
-                ),
-            ],
-        ),
+                    mirror_sprite=True),
+            ]),
         ActionQueueSync(
             target=NPC_11, subscript=[ASSetSequenceSpeed(FASTER), ASSequenceLoopingOn()]
         ),

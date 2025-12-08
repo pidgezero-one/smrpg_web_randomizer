@@ -9,13 +9,11 @@ script = EventScript(
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM,
-            mod_id=32,
-        ),
+            mod_id=32),
         ApplyTileModToLevel(
             use_alternate=True,
             room_id=R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM,
-            mod_id=33,
-        ),
+            mod_id=33),
         JmpIfBitClear(SPOOKUM_DIRECTION, ["EVENT_1344_pause_action_script_6"]),
         PlayMusicAtDefaultVolume(M32_AND_MY_NAMES_BOOSTER),
         ClearBit(SPOOKUM_DIRECTION),

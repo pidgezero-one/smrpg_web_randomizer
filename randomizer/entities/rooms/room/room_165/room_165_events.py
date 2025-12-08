@@ -13,8 +13,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3253_SHIP_PUZZLE_HUB_ROOM_OPEN_TROOPA_PUZZLE_DOOR,
         x=19,
@@ -25,8 +24,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3254_SHIP_PUZZLE_HUB_ROOM_OPEN_TRAMPOLINE_PUZZLE_DOOR,
         x=16,
@@ -37,8 +35,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3255_SHIP_PUZZLE_HUB_ROOM_OPEN_3D_MAZE_DOOR,
         x=13,
@@ -49,8 +46,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3256_SHIP_PUZZLE_HUB_ROOM_OPEN_LOWER_EXIT_DOOR,
         x=25,
@@ -61,8 +57,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3257_SHIP_PUZZLE_HUB_ROOM_OPEN_CANNONBALL_PUZZLE_DOOR,
         x=20,
@@ -73,8 +68,7 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3258_SHIP_PUZZLE_HUB_ROOM_OPEN_COIN_SNAKE_PUZZLE_DOOR,
         x=16,
@@ -85,6 +79,5 @@ events = [
         height=4,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

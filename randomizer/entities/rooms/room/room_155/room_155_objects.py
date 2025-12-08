@@ -36,8 +36,7 @@ objects = [
         priority_1=False,
         priority_2=True,
         show_shadow=False,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularNPC(
         occupant=Torte,
@@ -72,8 +71,7 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularClone(
         occupant=Torte,
@@ -90,6 +88,5 @@ objects = [
         priority_2=True,
         show_shadow=False,
         vram_size=1,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
 ]

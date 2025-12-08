@@ -7,14 +7,13 @@ from randomizer.scripts.event.script_imports import *
 script = EventScript(
     [
         JmpIfBitSet(
-            WALLET_SOLD,
+            SECOND_WALLET_PRIZE_RECEIVED,
             ["EVENT_395_run_dialog_37"],
-            identifier="EVENT_395_jmp_if_bit_set_0",
-        ),
+            identifier="EVENT_395_jmp_if_bit_set_0"),
         JmpIfBitSet(
-            WALLET_GUY_UNKNOWN_7083_3, ["EVENT_395_run_event_as_subroutine_27"]
+            REFUSED_TO_RETURN_WALLET, ["EVENT_395_run_event_as_subroutine_27"]
         ),
-        JmpIfBitSet(REFUSED_TO_RETURN_WALLET, ["EVENT_395_run_dialog_32"]),
+        JmpIfBitSet(RETURNED_WALLET, ["EVENT_395_run_dialog_32"]),
         StoreItemAmountTo7000(Wallet),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_293_pause_action_script_20"]),
         RunEventAsSubroutine(E3587_SET_70AE_TO_70A8),
@@ -24,12 +23,10 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         JmpIfDialogOptionBSelected(
             ["EVENT_395_set_action_script_async_21"],
-            identifier="EVENT_395_jmp_if_dialog_option_b_7",
-        ),
+            identifier="EVENT_395_jmp_if_dialog_option_b_7"),
         Pause(10),
         RunEventAsSubroutine(E3587_SET_70AE_TO_70A8),
         SetAsyncActionScript(MARIO, A0670_NOD_YES),
@@ -40,19 +37,17 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
         RemoveOneOfItemFromInventory(Wallet),
-        SetBit(REFUSED_TO_RETURN_WALLET),
-        ClearBit(WALLET_GUY_UNKNOWN_7083_3),
+        SetBit(RETURNED_WALLET),
+        ClearBit(REFUSED_TO_RETURN_WALLET),
         SetSyncActionScript(MEM_70A8, A0978_RANDOMLY_FACE_SOUTHWEST),
         Return(),
         SetAsyncActionScript(
             MARIO,
             A0671_SHAKE_HEAD_NO,
-            identifier="EVENT_395_set_action_script_async_21",
-        ),
+            identifier="EVENT_395_set_action_script_async_21"),
         RememberLastObject(),
         Pause(10),
         RunDialog(
@@ -61,9 +56,8 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
-        SetBit(WALLET_GUY_UNKNOWN_7083_3),
+            use_background=True),
+        SetBit(REFUSED_TO_RETURN_WALLET),
         Return(),
         RunEventAsSubroutine(
             E3587_SET_70AE_TO_70A8, identifier="EVENT_395_run_event_as_subroutine_27"
@@ -74,8 +68,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=True,
-        ),
+            use_background=True),
         StoreItemAmountTo7000(Wallet),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_395_run_dialog_36"]),
         Jmp(["EVENT_395_jmp_if_dialog_option_b_7"]),
@@ -86,8 +79,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_395_run_dialog_32",
-        ),
+            identifier="EVENT_395_run_dialog_32"),
         Return(),
         SetBit(TEMP_7043_6),
         Jmp(["EVENT_293_pause_action_script_20"]),
@@ -98,8 +90,7 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_395_run_dialog_36",
-        ),
+            identifier="EVENT_395_run_dialog_36"),
         RunDialog(
             dialog_id=DI0890_DUPLICATE,
             above_object=MEM_70A8,
@@ -107,9 +98,8 @@ script = EventScript(
             sync=False,
             multiline=True,
             use_background=True,
-            identifier="EVENT_395_run_dialog_37",
-        ),
-        SetBit(WALLET_SOLD),
+            identifier="EVENT_395_run_dialog_37"),
+        SetBit(SECOND_WALLET_PRIZE_RECEIVED),
         Return(),
     ]
 )

@@ -16,8 +16,7 @@ script = ActionScript(
         CopyVarToVar(
             from_var=ROSE_WAY_703E,
             to_var=PRIMARY_TEMP_700C,
-            identifier="ACTION_281_set_700C_to_7000_short_mem_7",
-        ),
+            identifier="ACTION_281_set_700C_to_7000_short_mem_7"),
         Mem700CAndVar(TEMP_7026),
         CompareVarToConst(PRIMARY_TEMP_700C, 0),
         JmpIfLoadedMemoryIsNot0(["ACTION_281_jmp_to_subroutine_18"]),
@@ -30,8 +29,7 @@ script = ActionScript(
         Return(),
         JmpToSubroutine(
             ["ACTION_281_set_700C_to_7000_short_mem_25"],
-            identifier="ACTION_281_jmp_to_subroutine_18",
-        ),
+            identifier="ACTION_281_jmp_to_subroutine_18"),
         SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),
         ClearSolidityBits(bit_4=True, cant_walk_through=True),
         ObjectMemorySetBit(arg_1=0x30, bits=[4]),
@@ -41,8 +39,7 @@ script = ActionScript(
         CopyVarToVar(
             from_var=ROSE_WAY_703C,
             to_var=PRIMARY_TEMP_700C,
-            identifier="ACTION_281_set_700C_to_7000_short_mem_25",
-        ),
+            identifier="ACTION_281_set_700C_to_7000_short_mem_25"),
         Mem700CAndVar(TEMP_7026),
         CopyVarToVar(from_var=PRIMARY_TEMP_700C, to_var=TEMP_7028),
         CopyVarToVar(from_var=ROSE_WAY_703E, to_var=PRIMARY_TEMP_700C),

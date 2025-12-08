@@ -61,8 +61,7 @@ script = EventScript(
                 ASSetSpriteSequence(
                     index=0, is_mold=True, looping=True, mirror_sprite=True
                 ),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

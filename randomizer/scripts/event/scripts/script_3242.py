@@ -14,8 +14,7 @@ script = EventScript(
             closable=True,
             sync=False,
             multiline=True,
-            use_background=False,
-        ),
+            use_background=False),
         RunBackgroundEvent(
             event_id=E3212_SHIP_3D_MAZE_FORFEIT_LISTENER, return_on_level_exit=True
         ),
@@ -25,8 +24,7 @@ script = EventScript(
             closable=False,
             sync=True,
             multiline=False,
-            use_background=False,
-        ),
+            use_background=False),
         Return(),
     ]
 )

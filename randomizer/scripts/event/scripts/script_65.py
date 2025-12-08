@@ -16,8 +16,7 @@ script = EventScript(
                 ASPause(36),
                 ASSetSequenceSpeed(FAST),
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=6),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -42,8 +41,7 @@ script = EventScript(
                 ASJumpToHeight(height=256, silent=True),
                 ASFloatingOn(),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
-            ],
-        ),
+            ]),
         Pause(6),
         Return(),
         ActionQueueSync(
@@ -57,8 +55,7 @@ script = EventScript(
                 ASResetProperties(),
                 ASSequenceLoopingOff(),
             ],
-            identifier="EVENT_65_action_queue_sync_6",
-        ),
+            identifier="EVENT_65_action_queue_sync_6"),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
@@ -74,8 +71,7 @@ script = EventScript(
                 ASPlaySound(sound=SO010_TRAMPOLINE, channel=6),
                 ASWalk1StepSouth(),
                 ASSetSolidityBits(cant_pass_npcs=True),
-            ],
-        ),
+            ]),
         EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
         RememberLastObject(),
         ClearBit(DIRECTIONAL_7049_0),

@@ -15,12 +15,10 @@ script = SubroutineOrBanklessScript(
             z=0,
             set_x=True,
             set_y=True,
-            set_z=True,
-        ),
+            set_z=True),
         MoveSpriteToCoords(shift_type=SHIFT_TYPE_SHIFT, speed=1664, arch_height=0),
         PauseScriptUntil(condition=SPRITE_SHIFT_COMPLETE),
         ResetObjectMappingMemory(),
         ResetTargetMappingMemory(),
         ReturnSubroutine(),
-    ],
-)
+    ])

@@ -14,8 +14,7 @@ script = EventScript(
             x=8,
             y=35,
             z=5,
-            run_entrance_event=True,
-        ),
+            run_entrance_event=True),
         Return(),
     ]
 )

@@ -21,16 +21,14 @@ script = EventScript(
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[1]),
                 ASWalkToXYCoords(x=19, y=27),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASSetObjectMemoryBits(arg_1=0x0B, bits=[1]),
                 ASWalkToXYCoords(x=19, y=26),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         JmpToEvent(E0015_STANDARD_ROOM_LOADER),
         RemoveObjectFromCurrentLevel(
             NPC_0, identifier="EVENT_3184_remove_from_current_level_62"

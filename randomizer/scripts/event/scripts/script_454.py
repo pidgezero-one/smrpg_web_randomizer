@@ -22,8 +22,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_11,
             subscript=[
@@ -31,8 +30,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_12,
             subscript=[
@@ -40,8 +38,7 @@ script = EventScript(
                 ASSetPriority(3),
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_13,
             subscript=[
@@ -49,16 +46,14 @@ script = EventScript(
                 ASSetPriority(3),
                 ASFaceSouthwest(),
                 ASFixedFCoordOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_14,
             subscript=[
                 ASTransferXYZFPixels(x=2, y=6, z=0, direction=EAST),
                 ASSetPriority(3),
                 ASShadowOff(),
-            ],
-        ),
+            ]),
         RememberLastObject(),
         PaletteSet(palette_set=110, row=1),
         Pause(2),

@@ -37,8 +37,7 @@ objects = [
         priority_2=True,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_1
     RegularClone(
         occupant=YellowPlatform,
@@ -55,8 +54,7 @@ objects = [
         priority_2=True,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_2
     RegularClone(
         occupant=YellowPlatform,
@@ -73,8 +71,7 @@ objects = [
         priority_2=True,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_3
     RegularClone(
         occupant=YellowPlatform,
@@ -91,8 +88,7 @@ objects = [
         priority_2=True,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_4
     RegularClone(
         occupant=YellowPlatform,
@@ -109,8 +105,7 @@ objects = [
         priority_2=True,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_5
     RegularClone(
         occupant=YellowPlatform,
@@ -127,8 +122,7 @@ objects = [
         priority_2=True,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_6
     RegularClone(
         occupant=YellowPlatform,
@@ -145,8 +139,7 @@ objects = [
         priority_2=True,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_7
     RegularNPC(
         occupant=Flower,
@@ -181,8 +174,7 @@ objects = [
         priority_2=True,
         show_shadow=True,
         height=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_8
     RegularClone(
         occupant=RecoveryMushroom,
@@ -199,8 +191,7 @@ objects = [
         priority_2=True,
         show_shadow=True,
         height=3,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_9
     RegularNPC(
         occupant=Empty,
@@ -233,8 +224,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_10
     RegularClone(
         occupant=Empty,
@@ -249,8 +239,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_11
     RegularClone(
         occupant=Empty,
@@ -265,8 +254,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_12
     RegularClone(
         occupant=Empty,
@@ -281,8 +269,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=False,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_13
     BattlePackNPC(
         occupant=Starslap,
@@ -319,8 +306,7 @@ objects = [
         height=5,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_14
     BattlePackClone(
         occupant=Starslap,
@@ -338,8 +324,7 @@ objects = [
         height=5,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_15
     BattlePackClone(
         occupant=Starslap,
@@ -357,8 +342,7 @@ objects = [
         height=5,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_16
     BattlePackClone(
         occupant=Starslap,
@@ -376,8 +360,7 @@ objects = [
         height=5,
         cannot_clone=False,
         byte2_bit0=True,
-        byte2_bit3=True,
-    ),
+        byte2_bit3=True),
     # NPC_17
     RegularNPC(
         occupant=BigCoin,
@@ -412,8 +395,7 @@ objects = [
         priority_2=False,
         show_shadow=True,
         y_shift=6,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_18
     RegularClone(
         occupant=BigCoin,
@@ -430,8 +412,7 @@ objects = [
         priority_2=False,
         show_shadow=True,
         y_shift=6,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_19
     RegularClone(
         occupant=BigCoin,
@@ -448,8 +429,7 @@ objects = [
         priority_2=False,
         show_shadow=True,
         y_shift=6,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_20
     RegularClone(
         occupant=BigCoin,
@@ -466,8 +446,7 @@ objects = [
         priority_2=False,
         show_shadow=True,
         y_shift=6,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_21
     RegularClone(
         occupant=BigCoin,
@@ -484,6 +463,5 @@ objects = [
         priority_2=False,
         show_shadow=True,
         y_shift=6,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
 ]

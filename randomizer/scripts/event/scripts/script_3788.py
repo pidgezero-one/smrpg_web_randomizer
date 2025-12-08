@@ -9,8 +9,7 @@ script = EventScript(
         JmpIfObjectInSpecificLevel(
             NPC_0,
             R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02,
-            ["EVENT_3584_ret_0"],
-        ),
+            ["EVENT_3584_ret_0"]),
         JmpIfMarioInAir(["EVENT_3584_ret_0"]),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
         Db(bytearray(b"\xc7\x80")),

@@ -12,8 +12,7 @@ script = EventScript(
         JmpIfBitSet(
             SEASIDE_LIBERATED,
             ["EVENT_1119_play_music_default_volume_22"],
-            identifier="EVENT_1119_jmp_if_bit_set_18",
-        ),
+            identifier="EVENT_1119_jmp_if_bit_set_18"),
         PlayMusicAtDefaultVolume(M15_HERES_SOME_WEAPONS),
         Jmp(["EVENT_1119_jmp_if_present_in_current_level_25"]),
         Return(),
@@ -25,22 +24,19 @@ script = EventScript(
         JmpIfObjectInCurrentLevel(
             NPC_6,
             ["EVENT_1119_apply_solidity_mod_28"],
-            identifier="EVENT_1119_jmp_if_present_in_current_level_25",
-        ),
+            identifier="EVENT_1119_jmp_if_present_in_current_level_25"),
         Jmp(["EVENT_1119_jmp_if_bit_set_33"]),
         Return(),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
             mod_id=0,
-            identifier="EVENT_1119_apply_solidity_mod_28",
-        ),
+            identifier="EVENT_1119_apply_solidity_mod_28"),
         Jmp(["EVENT_1119_jmp_if_bit_set_33"]),
         Return(),
         RunEventAsSubroutine(
             E0806_SEASIDE_OCCUPIED_EXTERIOR_SHUFFLED_NPC_ANIMATION_LOADER,
-            identifier="EVENT_1119_sequence_setter_2",
-        ),
+            identifier="EVENT_1119_sequence_setter_2"),
         FadeInFromBlack(sync=True),
         JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1119_ret_32"]),
         RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
@@ -50,8 +46,7 @@ script = EventScript(
         JmpIfBitClear(
             SEASIDE_BOSS_AVAILABLE,
             ["EVENT_1119_sequence_setter_2"],
-            identifier="EVENT_1119_jmp_if_bit_set_33",
-        ),
+            identifier="EVENT_1119_jmp_if_bit_set_33"),
         JmpIfBitSet(SEASIDE_BOSS_SET, ["EVENT_1119_sequence_setter_2"]),
         ActionQueueSync(
             target=NPC_0,
@@ -61,8 +56,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -71,8 +65,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -81,8 +74,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_3,
             subscript=[
@@ -91,8 +83,7 @@ script = EventScript(
                 ASWalkSoutheastSteps(1),
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_4,
             subscript=[
@@ -103,16 +94,14 @@ script = EventScript(
                 ASFaceSouthwest(),
                 ASVisibilityOn(),
                 ASSetSpriteSequence(index=0, is_sequence=True, looping=True),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=MARIO,
             subscript=[
                 ASTransferToXYZF(x=12, y=63, z=2, direction=EAST),
                 ASWalkSouthwestSteps(1),
                 ASFaceNortheast(),
-            ],
-        ),
+            ]),
         SetSyncActionScript(NPC_0, A0147_SEASIDE_HENCHMAN),
         SetSyncActionScript(NPC_1, A0147_SEASIDE_HENCHMAN),
         SetSyncActionScript(NPC_2, A0147_SEASIDE_HENCHMAN),
@@ -138,8 +127,7 @@ script = EventScript(
                 ASSetWalkingSpeed(SLOW),
                 ASWalkNortheastPixels(8),
             ],
-            identifier="EVENT_1119_action_queue_async_42",
-        ),
+            identifier="EVENT_1119_action_queue_async_42"),
         Pause(30),
         ActionQueueAsync(
             target=NPC_4, subscript=[ASSetWalkingSpeed(SLOW), ASWalkSouthwestPixels(5)]
@@ -158,8 +146,7 @@ script = EventScript(
                 ASPause(15),
                 ASResetProperties(),
                 ASSetAllSpeeds(NORMAL),
-            ],
-        ),
+            ]),
         Pause(30),
         PlaySound(sound=SO011_WHOOSH_AWAY, channel=6),
         ActionQueueSync(
@@ -168,40 +155,35 @@ script = EventScript(
                 ASSetAllSpeeds(VERY_FAST),
                 ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
                 ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
                 ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
                 ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
                 ASSetAllSpeeds(VERY_FAST),
                 ASWalkNorthwestSteps(30),
                 ASVisibilityOff(),
-            ],
-        ),
+            ]),
         RemoveObjectFromSpecificLevel(
             NPC_0, R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE
         ),
@@ -258,8 +240,7 @@ script = EventScript(
                 ASSetAllSpeeds(NORMAL),
                 ASWalkNortheastSteps(1),
                 ASSetVRAMPriority(NORMAL_PRIORITY),
-            ],
-        ),
+            ]),
         Return(),
     ]
 )

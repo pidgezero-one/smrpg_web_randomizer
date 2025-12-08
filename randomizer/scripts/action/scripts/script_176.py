@@ -78,8 +78,7 @@ script = ActionScript(
         JmpIfBitSet(
             DIRECTIONAL_7045_0,
             ["ACTION_176_shift_z_down_steps_75"],
-            identifier="ACTION_176_jmp_if_bit_set_65",
-        ),
+            identifier="ACTION_176_jmp_if_bit_set_65"),
         FixedFCoordOff(),
         ShiftZDownSteps(20),
         Pause(8, identifier="ACTION_176_pause_68"),
@@ -94,8 +93,7 @@ script = ActionScript(
         JmpIfBitSet(
             DIRECTIONAL_7045_0,
             ["ACTION_176_shift_south_pixels_116"],
-            identifier="ACTION_176_jmp_if_bit_set_77",
-        ),
+            identifier="ACTION_176_jmp_if_bit_set_77"),
         SetWalkingSpeed(FASTEST),
         WalkNorthwestPixels(6),
         WalkNorthPixels(5),
@@ -145,8 +143,7 @@ script = ActionScript(
         JmpIfBitSet(
             DIRECTIONAL_7045_0,
             ["ACTION_176_fixed_f_coord_off_140"],
-            identifier="ACTION_176_jmp_if_bit_set_120",
-        ),
+            identifier="ACTION_176_jmp_if_bit_set_120"),
         WalkSouthPixels(3),
         FixedFCoordOff(),
         ShiftZDownSteps(13),

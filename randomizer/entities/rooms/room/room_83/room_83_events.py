@@ -13,8 +13,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0549_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_2,
         x=11,
@@ -25,8 +24,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0549_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_2,
         x=7,
@@ -37,8 +35,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0549_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_2,
         x=15,
@@ -49,8 +46,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0549_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_2,
         x=13,
@@ -61,8 +57,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0553_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_4,
         x=16,
@@ -73,8 +68,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0550_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_3,
         x=9,
@@ -85,8 +79,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E0550_ROSE_TOWN_OCCUPIED_ARROW_CONTROL_3,
         x=10,
@@ -97,8 +90,7 @@ events = [
         height=6,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
     Event(
         event=E3590_ROSE_TOWN_CHIMNEY,
         x=23,
@@ -109,6 +101,5 @@ events = [
         height=0,
         nw_se_edge_active=True,
         ne_sw_edge_active=False,
-        byte_8_bit_4=False,
-    ),
+        byte_8_bit_4=False),
 ]

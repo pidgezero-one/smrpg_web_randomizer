@@ -6,8 +6,7 @@ from randomizer.helpers.objectsequencetables import (
     VramPriority,
     _0x08Flags,
     _0x0AFlags,
-    _0x10Flags,
-)
+    _0x10Flags)
 from randomizer.helpers.eventtables import (
     RadialDirections,
     AreaObjects,
@@ -15,8 +14,7 @@ from randomizer.helpers.eventtables import (
     Sounds,
     Coords,
     CoordUnits,
-    Rooms,
-)
+    Rooms)
 
 script = [
     {"identifier": "ACTION_653_set_priority_0", "command": "set_priority", "args": [3]},

@@ -35,8 +35,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_1
     RegularClone(
         occupant=JumpTrampoline,
@@ -51,8 +50,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_2
     RegularClone(
         occupant=JumpTrampoline,
@@ -67,8 +65,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=True,
-    ),
+        cannot_clone=True),
     # NPC_3
     RegularNPC(
         occupant=JBlock,
@@ -104,8 +101,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_4
     RegularClone(
         occupant=JBlock,
@@ -123,8 +119,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_5
     RegularClone(
         occupant=JBlock,
@@ -142,8 +137,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_6
     RegularNPC(
         occupant=GreenSwitch,
@@ -176,8 +170,7 @@ objects = [
         priority_0=False,
         priority_1=False,
         priority_2=True,
-        cannot_clone=False,
-    ),
+        cannot_clone=False),
     # NPC_7
     RegularNPC(
         occupant=JBlock,
@@ -218,8 +211,7 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
     # NPC_8
     RegularNPC(
         occupant=JBlock,
@@ -257,6 +249,5 @@ objects = [
         cannot_clone=False,
         byte2_bit0=True,
         byte2_bit3=True,
-        byte2_bit4=True,
-    ),
+        byte2_bit4=True),
 ]

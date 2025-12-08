@@ -21,8 +21,7 @@ script = EventScript(
                 ASWalkSoutheastPixels(8),
                 ASFaceNortheast(),
             ],
-            identifier="EVENT_1369_action_queue_sync_5",
-        ),
+            identifier="EVENT_1369_action_queue_sync_5"),
         ActionQueueSync(
             target=NPC_0,
             subscript=[
@@ -30,8 +29,7 @@ script = EventScript(
                 ASTransferToXYZF(x=4, y=21, z=0, direction=EAST),
                 ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_1,
             subscript=[
@@ -41,8 +39,7 @@ script = EventScript(
                 ASTransferToXYZF(x=5, y=20, z=0, direction=EAST),
                 ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_2,
             subscript=[
@@ -52,8 +49,7 @@ script = EventScript(
                 ASTransferToXYZF(x=5, y=19, z=0, direction=EAST),
                 ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         ActionQueueAsync(
             target=NPC_3,
             subscript=[
@@ -63,14 +59,12 @@ script = EventScript(
                 ASTransferToXYZF(x=6, y=18, z=0, direction=EAST),
                 ASWalkSoutheastPixels(8),
                 ASFaceSouthwest(),
-            ],
-        ),
+            ]),
         UnfreezeCamera(),
         ApplySolidityModToLevel(
             permanent=True,
             room_id=R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
-            mod_id=2,
-        ),
+            mod_id=2),
         SetBit(TOWER_BOSS_1_DEFEATED),
         FadeInFromBlack(sync=False),
         ActionQueueSync(target=NPC_0, subscript=[ASWalkSouthwestSteps(4)]),
@@ -89,8 +83,7 @@ script = EventScript(
                 ASSetVRAMPriority(NORMAL_PRIORITY),
                 ASSetWalkingSpeed(NORMAL),
                 ASFixedFCoordOff(),
-            ],
-        ),
+            ]),
         ActionQueueSync(
             target=NPC_0, subscript=[ASWalkSouthwestSteps(1), ASVisibilityOff()]
         ),

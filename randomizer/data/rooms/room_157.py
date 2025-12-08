@@ -46,8 +46,7 @@ room = Room(
             length=12,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2462_STAR_HILL_2ND_ROOM_SUMMON_EAST_SACKIT,
             x=23,
@@ -58,8 +57,7 @@ room = Room(
             length=8,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2463_STAR_HILL_2ND_ROOM_SUMMON_WEST_SACKIT,
             x=7,
@@ -70,8 +68,7 @@ room = Room(
             length=8,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2464_STAR_HILL_2ND_ROOM_SUMMON_CENTRAL_SACKIT,
             x=14,
@@ -82,8 +79,7 @@ room = Room(
             length=12,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
         Event(
             event=E2525_STAR_HILL_2ND_ROOM_USE_DOOR,
             x=13,
@@ -94,8 +90,7 @@ room = Room(
             length=1,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False,
-        ),
+            byte_8_bit_4=False),
     ],
     objects=[
         RegularNPC( # 0
@@ -124,8 +119,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 1
             npc=npcs.EMPTY_NPC_3,
             event_script=E2517_STAR_HILL_2ND_ROOM_BOTTOM_LEFT_FLOWER,
@@ -135,8 +129,7 @@ room = Room(
             y=55,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 2
             npc=npcs.EMPTY_NPC_3,
             event_script=E2518_STAR_HILL_2ND_ROOM_CENTRAL_LEFT_FLOWER,
@@ -146,8 +139,7 @@ room = Room(
             y=39,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 3
             npc=npcs.EMPTY_NPC_3,
             event_script=E2519_STAR_HILL_2ND_ROOM_CENTRAL_RIGHT_FLOWER,
@@ -157,8 +149,7 @@ room = Room(
             y=47,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 4
             npc=npcs.EMPTY_NPC_3,
             event_script=E2520_STAR_HILL_2ND_ROOM_TOP_RIGHT_FLOWER,
@@ -168,8 +159,7 @@ room = Room(
             y=15,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 5
             npc=npcs.EMPTY_NPC_3,
             event_script=E2521_STAR_HILL_2ND_ROOM_BOTTOM_RIGHT_FLOWER,
@@ -179,8 +169,7 @@ room = Room(
             y=55,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackNPC( # 6
             npc=npcs.SACKIT_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -209,8 +198,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 7
             npc=npcs.SACKIT_NPC,
             battle_pack=59,
@@ -220,8 +208,7 @@ room = Room(
             y=112,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 8
             npc=npcs.SACKIT_NPC,
             battle_pack=58,
@@ -231,8 +218,7 @@ room = Room(
             y=112,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackClone( # 9
             npc=npcs.SACKIT_NPC,
             battle_pack=58,
@@ -242,8 +228,7 @@ room = Room(
             y=112,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackNPC( # 10
             npc=npcs.GECKO_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -271,8 +256,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 11
             npc=npcs.GECKO_NPC,
             battle_pack=61,
@@ -282,8 +266,7 @@ room = Room(
             y=43,
             z=2,
             z_half=False,
-            direction=SOUTHEAST,
-        ),
+            direction=SOUTHEAST),
         BattlePackNPC( # 12
             npc=npcs.MUKUMUKU_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -311,8 +294,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         BattlePackClone( # 13
             npc=npcs.MUKUMUKU_NPC,
             battle_pack=57,
@@ -322,8 +304,7 @@ room = Room(
             y=0,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 14
             npc=npcs.MUKUMUKU_NPC,
             battle_pack=56,
@@ -333,8 +314,7 @@ room = Room(
             y=0,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         BattlePackClone( # 15
             npc=npcs.MUKUMUKU_NPC,
             battle_pack=57,
@@ -344,8 +324,7 @@ room = Room(
             y=0,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 16
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -372,8 +351,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=False,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
         RegularClone( # 17
             npc=npcs.EMPTY_NPC_3,
             event_script=E2532_STAR_HILL_2ND_ROOM_WISH_BOTTOM_LEFT,
@@ -383,8 +361,7 @@ room = Room(
             y=47,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 18
             npc=npcs.EMPTY_NPC_3,
             event_script=E2533_STAR_HILL_2ND_ROOM_WISH_IN_FRONT_OF_DOOR,
@@ -394,8 +371,7 @@ room = Room(
             y=27,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 19
             npc=npcs.EMPTY_NPC_3,
             event_script=E2534_STAR_HILL_2ND_ROOM_WISH_TOP_RIGHT,
@@ -405,8 +381,7 @@ room = Room(
             y=25,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularClone( # 20
             npc=npcs.EMPTY_NPC_3,
             event_script=E2535_STAR_HILL_2ND_ROOM_WISH_TOP_LEFT,
@@ -416,8 +391,7 @@ room = Room(
             y=31,
             z=2,
             z_half=False,
-            direction=SOUTHWEST,
-        ),
+            direction=SOUTHWEST),
         RegularNPC( # 21
             npc=npcs.MALLOW_WALKING_DOWN_LEFT_NPC,
             initiator=EventInitiator.NONE,
@@ -444,7 +418,6 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3,
-        ),
+            byte7_upper2=3),
     ]
 )
