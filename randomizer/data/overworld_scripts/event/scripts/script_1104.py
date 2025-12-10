@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	DeactivateSoundChannels([]),
+	DeactivateSoundChannels(set()),
 	ActionQueueAsync(target=NPC_9, subscript=[
 		A_WalkSouthwestPixels(1)
 	]),

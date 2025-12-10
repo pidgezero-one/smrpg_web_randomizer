@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CopyVarToVar(from_var=EXP_STAR_70D5, to_var=PRIMARY_TEMP_7000),
+	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
 	CompareVarToConst(PRIMARY_TEMP_7000, 6),
 	JmpIfComparisonResultIsLesser(["EVENT_3949_jmp_to_event_4"]),
 	JmpToEvent(E3947_EMPTY),

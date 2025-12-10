@@ -31,8 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(UNUSED_7089_5, ["EVENT_2084_ret_3"]),
+	JmpIfBitSet(INVISIBLE_FLAG_1_FOUND, ["EVENT_2084_ret_3"]),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
-	SetBit(UNUSED_7089_5),
+	SetBit(INVISIBLE_FLAG_1_FOUND),
 	Return(identifier="EVENT_2084_ret_3")
 ])

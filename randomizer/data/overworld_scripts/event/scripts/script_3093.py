@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitClear(FACTORY_GATED_BY_STAR_PIECES, ["EVENT_3093_jmp_2"]),
-	JmpIfVarEqualsConst(EXP_STAR_70D5, 7, ["EVENT_3093_set_bit_3"]),
+	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 7, ["EVENT_3093_set_bit_3"]),
 	Jmp(["EVENT_3093_jmp_to_event_7"], identifier="EVENT_3093_jmp_2"),
 	SetBit(MAP_DIRECTIONAL_BOWSERS_KEEP_GATE, identifier="EVENT_3093_set_bit_3"),
 	SetBit(MAP_GATE),

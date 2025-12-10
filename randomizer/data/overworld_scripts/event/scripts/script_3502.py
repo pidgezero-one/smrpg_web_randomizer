@@ -159,9 +159,7 @@ script = EventScript([
 	UnfreezeCamera(),
 	UnsyncDialog(),
 	SetBit(BOOSTER_HILL_CLEARED),
-	RunEventAsSubroutine(E3508_BOOSTER_HILL_RETURN),
-	ExitToWorldMap(area=OW27_BOOSTER_HILL),
-	Return(),
+	Jmp(["EVENT_3502_hill_ends"]),
 	ApplyTileModToLevel(use_alternate=True, room_id=R014_BOOSTER_HILL, mod_id=34, identifier="EVENT_3502_apply_tile_mod_74"),
 	ApplyTileModToLevel(use_alternate=True, room_id=R014_BOOSTER_HILL, mod_id=33),
 	ApplyTileModToLevel(use_alternate=True, room_id=R014_BOOSTER_HILL, mod_id=32),
@@ -184,7 +182,20 @@ script = EventScript([
 	]),
 	UnfreezeCamera(),
 	SetBit(MAP_BOOSTER_HILL),
-	RunDialog(dialog_id=DI1198_HILL_COMPLETED_WHEN_EMPTY, above_object=TOADSTOOL, closable=True, sync=False, multiline=True, use_background=False),
-	ExitToWorldMap(area=OW27_BOOSTER_HILL, bit_6=True, bit_7=True),
-	Return()
+	CopyVarToVar(from_var=BOOSTER_HILL_70B1, to_var=PRIMARY_TEMP_7000),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3502_run_dialog_61_2"]),
+	RunDialog(dialog_id=DI1189_FLOWER_SCORE_ON_HILL, above_object=TOADSTOOL, closable=True, sync=True, multiline=False, use_background=False),
+	Jmp(["EVENT_3502_hill_ends"]),
+	RunDialog(dialog_id=DI1193_NO_FLOWER_HILL, above_object=TOADSTOOL, closable=True, sync=True, multiline=False, use_background=False, identifier="EVENT_3502_run_dialog_61_2"),
+    
+	JmpIfVarEqualsConst(TEMP_7032, 0, ["EVENT_3400_hill"], identifier="EVENT_3502_hill_ends"),
+	
+	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
+	AddVarTo7000(TEMP_7032),
+    Dec(PRIMARY_TEMP_7000),
+    CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=STAR_PIECE_COUNTER),
+    
+    JmpToEvent(E3092_STAR_PIECE_GRANT),
+	
+
 ])

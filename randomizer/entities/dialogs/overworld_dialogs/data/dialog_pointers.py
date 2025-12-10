@@ -542,9 +542,9 @@ from randomizer.types.dialogs.ids import (
     DI0532_EMPTY,
     DI0533_MUSHROOM_KINGDOM_NPC,
     DI0534_MUSHROOM_KINGDOM_NPC,
-    DI0535_EMPTY,
-    DI0536_EMPTY,
-    DI0537_EMPTY,
+    DI0535_BOOSTER_HILL_ITEM_VOWEL,
+    DI0536_BOOSTER_HILL_ITEM,
+    DI0537_NPC_FLOWER,
     DI0538_KINGDOM_SUPER_JUMP_HINT,
     DI0539_EMPTY,
     DI0540_KINGDOM_JUMP_SHOES_HINT,
@@ -3085,7 +3085,7 @@ from randomizer.types.dialogs.ids import (
     DI3075_GARDENER_CUTSCENE,
     DI3076_GARDENER_CUTSCENE,
     DI3077_GOT_BEETLEMANIA,
-    DI3078_EMPTY,
+    DI3078_GOT_BEETLEMANIA,
     DI3079_GOT_A_STAR_PIECE,
     DI3080_EMPTY,
     DI3081_EMPTY,
@@ -4674,9 +4674,9 @@ pointers[DI0531_RECEIVED_70A7] = Dialog(bank=DIALOG_BANK_22, index=60, pos=0)
 pointers[DI0532_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=61, pos=0)
 pointers[DI0533_MUSHROOM_KINGDOM_NPC] = Dialog(bank=DIALOG_BANK_22, index=62, pos=0)
 pointers[DI0534_MUSHROOM_KINGDOM_NPC] = Dialog(bank=DIALOG_BANK_22, index=63, pos=0)
-pointers[DI0535_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=64, pos=0)
-pointers[DI0536_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=65, pos=0)
-pointers[DI0537_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=66, pos=0)
+pointers[DI0535_BOOSTER_HILL_ITEM_VOWEL] = Dialog(bank=DIALOG_BANK_22, index=64, pos=0)
+pointers[DI0536_BOOSTER_HILL_ITEM] = Dialog(bank=DIALOG_BANK_22, index=65, pos=0)
+pointers[DI0537_NPC_FLOWER] = Dialog(bank=DIALOG_BANK_22, index=66, pos=0)
 pointers[DI0538_KINGDOM_SUPER_JUMP_HINT] = Dialog(bank=DIALOG_BANK_22, index=67, pos=0)
 pointers[DI0539_EMPTY] = Dialog(bank=DIALOG_BANK_22, index=68, pos=0)
 pointers[DI0540_KINGDOM_JUMP_SHOES_HINT] = Dialog(bank=DIALOG_BANK_22, index=69, pos=0)
@@ -7613,7 +7613,7 @@ pointers[DI3074_GOT_BEETLEMANIA] = Dialog(bank=DIALOG_BANK_24, index=2, pos=0)
 pointers[DI3075_GARDENER_CUTSCENE] = Dialog(bank=DIALOG_BANK_24, index=3, pos=0)
 pointers[DI3076_GARDENER_CUTSCENE] = Dialog(bank=DIALOG_BANK_24, index=4, pos=0)
 pointers[DI3077_GOT_BEETLEMANIA] = Dialog(bank=DIALOG_BANK_24, index=5, pos=0)
-pointers[DI3078_EMPTY] = Dialog(bank=DIALOG_BANK_24, index=6, pos=0)
+pointers[DI3078_GOT_BEETLEMANIA] = Dialog(bank=DIALOG_BANK_24, index=6, pos=0)
 pointers[DI3079_GOT_A_STAR_PIECE] = Dialog(bank=DIALOG_BANK_24, index=7, pos=0)
 pointers[DI3080_EMPTY] = Dialog(bank=DIALOG_BANK_24, index=8, pos=0)
 pointers[DI3081_EMPTY] = Dialog(bank=DIALOG_BANK_24, index=9, pos=0)

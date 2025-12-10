@@ -16,7 +16,6 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-	A_PlaySound(sound=SO085_FLOWER, channel=4),
 	A_SetVRAMPriority(PRIORITY_3),
 	A_SetPriority(3),
 	A_SetWalkingSpeed(NORMAL),

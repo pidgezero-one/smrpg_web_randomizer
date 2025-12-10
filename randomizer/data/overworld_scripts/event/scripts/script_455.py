@@ -60,7 +60,9 @@ script = EventScript([
 		A_SetSpriteSequence(index=1, is_sequence=True, looping=True),
 		A_SetVRAMPriority(NORMAL_PRIORITY)
 	]),
-	JmpIfBitClear(PIPE_VAULT_GATED, ["EVENT_455_fade_in_from_black_async_29"]),
+    SummonObjectToSpecificLevel(NPC_0, R055_PIPE_VAULT_ENTRANCE),
+	SummonObjectToSpecificLevel(NPC_1, R055_PIPE_VAULT_ENTRANCE),
+	JmpIfBitSet(PIPE_VAULT_GATED, ["EVENT_455_fade_in_from_black_async_29"]),
 	RemoveObjectFromCurrentLevel(NPC_1),
 	RemoveObjectFromCurrentLevel(NPC_0),
 	RemoveObjectFromSpecificLevel(NPC_1, R055_PIPE_VAULT_ENTRANCE),

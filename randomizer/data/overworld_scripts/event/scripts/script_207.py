@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitClear(KEEP_GATED_BY_STAR_PIECES, ["EVENT_207_jmp_to_event_2"]),
-	JmpIfVarEqualsConst(EXP_STAR_70D5, 6, ["EVENT_207_clear_bit_3"]),
+	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_207_clear_bit_3"]),
 	JmpToEvent(E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET, identifier="EVENT_207_jmp_to_event_2"),
 	ClearBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, identifier="EVENT_207_clear_bit_3"),
 	SetBit(MAP_VISTA_HILL),

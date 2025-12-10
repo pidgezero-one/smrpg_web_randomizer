@@ -1,4 +1,4 @@
-# E0216_EMPTY
+# E0216_GET_FLOWER_FROM_NPC
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,9 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+    PlaySound(sound=SO014_FLOWER, channel=6),
+	SetVarToConst(PRIMARY_TEMP_7000, 1),
+	Add7000ToMaxFP(),
+    RunDialog(dialog_id=DI0537_NPC_FLOWER, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+    Return()
 ])

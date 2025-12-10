@@ -1,4 +1,4 @@
-# E0215_EMPTY
+# E0215_HILL_ITEM
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,25 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
+	JmpIfVarEqualsConst(ITEM_ID, UltraHammerItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, AmuletItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, AttackScarfItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, ExpBoosterItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, AntidotePinItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, AbleJuiceItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, EnergizerItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, IceBombItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, ElixirItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, EarlierTimesItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, ElderKeyItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, AltoCardItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, EnduringBroochItem, ["EVENT_215_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, ExtraShinyStoneItem, ["EVENT_215_run_dialog_16"]),
+	RunDialog(dialog_id=DI0536_BOOSTER_HILL_ITEM, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	AddToInventory(ITEM_ID),
+	Return(),
+	RunDialog(dialog_id=DI0535_BOOSTER_HILL_ITEM_VOWEL, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_215_run_dialog_16"),
+	AddToInventory(ITEM_ID),
+	Return()
 ])

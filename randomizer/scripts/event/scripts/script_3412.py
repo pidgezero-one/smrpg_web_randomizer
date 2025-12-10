@@ -1,6 +1,6 @@
 # pylint: disable=C0301
 
-"""E3412_MINES_SHYGUY_ITEM_CREATE_PACKET"""
+"""E3412_EMPTY"""
 
 from randomizer.scripts.event.script_imports import *
 

@@ -1,4 +1,4 @@
-# E0214_EMPTY
+# E0214_HILL_GET_FLOWER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+    PlaySound(sound=SO014_FLOWER, channel=4),
+	SetVarToConst(PRIMARY_TEMP_7000, 1),
+	Add7000ToMaxFP(),
+    Return()
 ])

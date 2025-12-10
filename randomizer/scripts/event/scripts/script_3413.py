@@ -12,7 +12,7 @@ script = EventScript(
         Set70107015ToObjectXYZ(
             NPC_0, identifier="EVENT_3413_set_7010_to_object_xyz_13"
         ),
-        JmpToEvent(E3412_MINES_SHYGUY_ITEM_CREATE_PACKET),
+        JmpToEvent(E3412_EMPTY),
         ActionQueueSync(
             target=MEM_70A9,
             subscript=[

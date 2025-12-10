@@ -33,7 +33,7 @@ from ....packets import *
 script = EventScript([
 	JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["EVENT_2645_remove_from_current_level_3"]),
 	JmpIfBitClear(CASINO_WARP_ENABLED, ["EVENT_2645_remove_from_current_level_3"]),
-	JmpIfVarEqualsConst(EXP_STAR_70D5, 6, ["EVENT_2645_summon_to_current_level_5"]),
+	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_2645_summon_to_current_level_5"]),
 	RemoveObjectFromCurrentLevel(NPC_0, identifier="EVENT_2645_remove_from_current_level_3"),
 	Return(),
 	SummonObjectToCurrentLevel(NPC_0, identifier="EVENT_2645_summon_to_current_level_5"),

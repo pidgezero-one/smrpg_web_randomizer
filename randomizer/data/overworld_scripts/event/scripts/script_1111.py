@@ -46,6 +46,7 @@ script = EventScript([
 	JmpIfBitClear(CRICKET_PIE_EXCHANGED, ["EVENT_1111_run_dialog_16"], identifier="EVENT_1111_jmp_if_bit_clear_12"),
 	RemoveOneOfItemFromInventory(CricketJamItem),
 	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+    SetBit(CRICKET_JAM_EXCHANGED),
 	Return(identifier="EVENT_1111_ret_15"),
 	RunDialog(dialog_id=DI2759_FROGFUCIUS_CRICKET_JAM_WITHOUT_PIE, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1111_run_dialog_16"),
 	Jmp(["EVENT_1111_jmp_to_event_4"])

@@ -1,4 +1,4 @@
-# E0218_EMPTY
+# E0218_HILL_BEETLEMANIA
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
+	SetBit(BEETLEMANIA_UNLOCKED),
+	RunDialog(dialog_id=DI3078_GOT_BEETLEMANIA, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	Return()
 ])

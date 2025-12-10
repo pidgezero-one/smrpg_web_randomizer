@@ -52,27 +52,6 @@ script = EventScript([
 		A_ReturnQueue()
 	]),
 	ResumeActionScript(MEM_70A8),
-	Set7000ToCurrentLevel(),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 277, ["EVENT_3201_jmp_if_var_not_equals_short_15"]),
-	JmpIfBitSet(MINES_HENCHMAN_LEFT_DEFEATED, ["EVENT_3201_set_var_to_const_21"]),
-	ActionQueueSync(target=NPC_1, subscript=[
-		A_SetBit(TEMP_7043_1),
-		A_Jmp(["EVENT_3192_action_queue_5_SUBSCRIPT_object_memory_set_bit_0"])
-	]),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 283, ["EVENT_3201_jmp_if_var_not_equals_short_18"], identifier="EVENT_3201_jmp_if_var_not_equals_short_15"),
-	JmpIfBitSet(MINES_HENCHMAN_RIGHT_DEFEATED, ["EVENT_3201_set_var_to_const_21"]),
-	ActionQueueSync(target=NPC_2, subscript=[
-		A_SetBit(TEMP_7043_1),
-		A_Jmp(["EVENT_3193_action_queue_5_SUBSCRIPT_object_memory_set_bit_0"])
-	]),
-	JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 273, ["EVENT_3201_set_var_to_const_21"], identifier="EVENT_3201_jmp_if_var_not_equals_short_18"),
-	JmpIfBitSet(MINES_HENCHMAN_MIDDLE_DEFEATED, ["EVENT_3201_set_var_to_const_21"]),
-	ActionQueueSync(target=NPC_3, subscript=[
-		A_SetBit(TEMP_7043_1),
-		A_Jmp(["EVENT_3194_action_queue_5_SUBSCRIPT_pause_0"])
-	]),
-	SetVarToConst(PRIMARY_TEMP_7000, 518, identifier="EVENT_3201_set_var_to_const_21"),
-	ClearBit(TEMP_7043_0),
 	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
 	SetVarToConst(PRIMARY_TEMP_7000, 518),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),

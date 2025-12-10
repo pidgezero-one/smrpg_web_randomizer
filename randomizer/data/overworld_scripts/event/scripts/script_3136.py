@@ -31,10 +31,11 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+    JmpIfBitSet(SEWERS_CLOSED, ["EVENT_3136_sewers_pipe_exit_async_2"]),
 	SetVarToConst(X_COORD_2, 5),
 	SetVarToConst(Y_COORD_2, 20),
 	RunEventAsSubroutine(E0066_PIPE_DOWN_SUBROUTINE),
 	EnterArea(room_id=R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE, face_direction=SOUTH, x=5, y=90, z=4, run_entrance_event=True),
 	SetAsyncActionScript(MARIO, A0010_FALL_ON_TRAMPOLINE),
-	Return()
+	Return(identifier="EVENT_3136_sewers_pipe_exit_async_2")
 ])

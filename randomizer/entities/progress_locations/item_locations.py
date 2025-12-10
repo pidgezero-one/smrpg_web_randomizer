@@ -328,7 +328,7 @@ from randomizer.types.overworld_scripts.event_scripts.ids import (
     E3386_SHIP_3D_MAZE_SPAWN_PRIZE,
     E3387_SHIP_CANNONBALL_PUZZLE_SPAWN_PRIZE,
     E3389_SHIP_BARREL_PUZZLE_SPAWN_PRIZE,
-    E3412_MINES_SHYGUY_ITEM_CREATE_PACKET)
+    E3412_EMPTY)
 from randomizer.types.overworld_scripts.action_scripts.ids import (
     A0043_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH,
     A0333_MIDAS_RIVER_3RD_TUNNEL_ON_LEFT_ITEM_PATH)
@@ -2101,7 +2101,7 @@ class InnerMinesShyguyCart(PacketItem, InnerMinesLocation):
         R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM
     ]
     _container_event: int = E0241_FREESTANDING_1_GRANT
-    _creation_script: int = E3412_MINES_SHYGUY_ITEM_CREATE_PACKET
+    _creation_script: int = E3412_EMPTY
 
 
 class InnerMinesBoxesChest(

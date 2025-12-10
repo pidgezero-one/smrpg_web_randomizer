@@ -7,7 +7,7 @@ from randomizer.scripts.event.script_imports import *
 script = EventScript(
     [
         JmpIfBitClear(WIN_CONDITION_STAR_PIECES, ["EVENT_3101_ret_418_"]),
-        JmpIfVarEqualsConst(EXP_STAR_70D5, 7, ["EVENT_3101_set_bit_399"]),
+        JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 7, ["EVENT_3101_set_bit_399"]),
         FadeInFromBlack(sync=False, identifier="EVENT_3101_ret_418_"),
         JmpToEvent(E0206_UNLOCK_SEA_IF_GATED_BY_STAR_PIECES),
         JmpToEvent(

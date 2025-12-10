@@ -34,9 +34,8 @@ script = EventScript([
 	Pause(1, identifier="EVENT_3413_pause_0"),
 	JmpIfBitSet(TEMP_7043_0, ["EVENT_3413_set_7010_to_object_xyz_3"]),
 	Jmp(["EVENT_3413_pause_0"]),
-	Set70107015ToObjectXYZ(target=NPC_0, identifier="EVENT_3413_set_7010_to_object_xyz_3"),
-	JmpToEvent(E3412_MINES_SHYGUY_ITEM_CREATE_PACKET),
-	ActionQueueSync(target=MEM_70A9, subscript=[
+	JmpToEvent(E3412_EMPTY),
+	ActionQueueSync(target=NPC_2, subscript=[
 		A_FixedFCoordOn(),
 		A_TransferToObjectXY(NPC_0),
 		A_SetSequenceSpeed(FAST),

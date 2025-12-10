@@ -1,17 +1,50 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+from uuid import uuid4
 
-from .prize import Prize, StandardPrize, CoinPrize, EXPStarPrize, SlotsPrize, BossFightPrize, CharacterPrize, StarPiecePrize, ItemPrize, SpellPrize, FPFlowerPrize, ArchipelagoPrize
+from .prize import (
+    Prize,
+    StandardPrize,
+    CoinPrize,
+    EXPStarPrize,
+    SlotsPrize,
+    BossFightPrize,
+    CharacterPrize,
+    StarPiecePrize,
+    ItemPrize,
+    SpellPrize,
+    FPFlowerPrize,
+    ArchipelagoPrize,
+)
 from ..data.variables.event_script_names import *
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import DisableObjectTriggerInSpecificLevel, Return
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject, Battlefield
-from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import Formation, FormationMember
+from ..data.variables.action_script_names import *
+from ..data.variables.variable_names import PRIMARY_TEMP_7000
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
+    EventScript,
+    UsableEventScriptCommand,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    DisableObjectTriggerInSpecificLevel,
+    Return,
+    SetSyncActionScript,
+    Jmp,
+    JmpIfVarEqualsConst,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
+    AreaObject,
+    Battlefield,
+)
+from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
+    Formation,
+    FormationMember,
+)
 from .base import CategorizationOption
 
 if TYPE_CHECKING:
     from ..types.settings import Settings
     from ..types.logic import Inventory
+
+
 class ShuffleLocationSelector(CategorizationOption):
     """Enumeration for enabling and disabling locations"""
 
@@ -68,6 +101,7 @@ class ShuffleLocationSelector(CategorizationOption):
     BANDITS_WAY_CROCO = "Bandit's Way Croco chase chest"
     CROCO_1_REWARD = "Bandit's Way boss reward 1"
     CROCO_1_REWARD_2 = "Bandit's Way boss reward 2"
+    BANDITS_WAY_BOSS_FIGHT = "Bandit's Way boss fight"
     BANDITS_WAY_STAR_PIECE = "Bandit's Way boss Star Piece"
     KERO_SEWERS_PANDORITE_ROOM = "Kero Sewers stairway room left chest"
     PANDORITE_CHEST = "Kero Sewers stairway room right chest"
@@ -82,7 +116,8 @@ class ShuffleLocationSelector(CategorizationOption):
     KERO_SEWERS_BEFORE_BELOME_UPPER_2 = (
         "Kero Sewers before boss upper chest, after Land's End"
     )
-    KERO_SEWERS_BOSS = "Kero Sewers boss Star Piece"
+    KERO_SEWERS_BOSS = "Kero Sewers boss"
+    KERO_SEWERS_STAR_PIECE = "Kero Sewers boss Star Piece"
     MIDAS_RIVER_FIRST_TIME = "Midas River first play reward"
     MIDAS_RIVER_BOTTOM_LEFT_CAVE = (
         "Midas River bottom left tunnel freestanding frog coin"
@@ -131,7 +166,8 @@ class ShuffleLocationSelector(CategorizationOption):
     FOREST_MAZE_SECRET_4 = "Forest Maze secret bottom middle chest"
     FOREST_MAZE_SECRET_5 = "Forest Maze secret left chest"
     FOREST_MAZE_CHARACTER = "Forest Maze character recruit"
-    FOREST_MAZE_BOSS = "Forest Maze boss Star Piece"
+    FOREST_MAZE_BOSS = "Forest Maze boss"
+    FOREST_MAZE_STAR_PIECE = "Forest Maze boss Star Piece"
     PIPE_VAULT_SLIDE_1 = "Pipe Vault slide room back chest"
     PIPE_VAULT_SLIDE_2 = "Pipe Vault slide room middle chest"
     PIPE_VAULT_SLIDE_3 = "Pipe Vault slide room front chest"
@@ -147,21 +183,26 @@ class ShuffleLocationSelector(CategorizationOption):
     GOOMBA_THUMPING_2 = "Pipe Vault Goomba Thumpin second prize"
     YOSTER_ISLE_ENTRANCE = "Yo'ster Isle entrance chest"
     YOSTER_ISLE_RACE_REWARD_1 = "Yo'ster Isle first race prize item 1"
-    YOSTER_ISLE_RACE_REWARD_2 = "Yo'ster Isle Invisible Item"
+    YOSTER_ISLE_RACE_REWARD_2 = "Yo'ster Isle first race prize item 3"
     YOSTER_ISLE_RACE_REWARD_3 = "Yo'ster Isle first race prize item 2"
-    YOSTER_ISLE_FLAG = "Yo'ster Isle first race prize item 3"
+    YOSTER_ISLE_FLAG = "Yo'ster Isle Invisible Item"
     CROCO_FLUNKIE_1 = "Moleville Mines trampoline bandit"
     CROCO_FLUNKIE_2 = "Moleville Mines left bandit"
     CROCO_FLUNKIE_3 = "Moleville Mines right bandit"
     CROCO_2_ITEM = "Moleville Mines first boss item"
     MOLEVILLE_MINES_BOSS_1 = "Moleville Mines first boss Star Piece"
+    MOLEVILLE_MINES_BOSS_FIGHT_1 = "Moleville Mines first boss fight"
     MOLEVILLE_MINES_SHY_GUY = "Moleville Mines shy guy cart"
     MOLEVILLE_MINES_STAR_CHEST = "Moleville Mines two-level traintrack room chest"
     MOLEVILLE_MINES_COINS = "Moleville Mines near final train tracks chest"
     MOLEVILLE_MINES_PUNCHINELLO_1 = "Moleville Mines before boss left chest"
     MOLEVILLE_MINES_PUNCHINELLO_2 = "Moleville Mines before boss upper chest"
-    MOLEVILLE_MINES_BOSS_2 = "Moleville Mines final boss Star Piece"
+    MOLEVILLE_MINES_BOSS_FIGHT = "Moleville Mines second boss fight"
+    MOLEVILLE_MINES_BOSS_2 = "Moleville Mines second boss Star Piece"
     MOLEVILLE_MINES_CHARACTER = "Moleville Mines character recruit"
+    MOLEVILLE_MINES_BOSS_FIGHT_3 = "Moleville Mines postgame boss fight"
+    MOLEVILLE_MINES_BOSS_3 = "Moleville Mines postgame boss Star Piece"
+    MOLEVILLE_MINES_POSTGAME_DROP = "Moleville Mines postgame prize"
     BUCKET_GIRL = "Moleville bucket girl"
     TREASURE_SELLER_1 = "Moleville first treasure shop item"
     TREASURE_SELLER_2 = "Moleville second treasure shop item"
@@ -210,8 +251,28 @@ class ShuffleLocationSelector(CategorizationOption):
     BOOSTER_TOWER_PORTRAITS = "Booster Tower portrait prize"
     BOOSTER_TOWER_CHOMP = "Booster Tower Elder Key room"
     BOOSTER_TOWER_CURTAIN_GAME = "Booster Tower curtain prize"
+    BOOSTER_TOWER_BOSS_1 = "Booster Tower curtain room boss fight"
+    BOOSTER_TOWER_BOSS_2 = "Booster Tower balcony boss fight"
+    BOOSTER_TOWER_BOSS_3 = "Booster Tower postgame boss fight"
     BOOSTER_TOWER_STAR_PIECE_1 = "Booster Tower curtain room boss Star Piece"
     BOOSTER_TOWER_STAR_PIECE_2 = "Booster Tower balcony boss Star Piece"
+    BOOSTER_TOWER_STAR_PIECE_3 = "Booster Tower postgame boss Star Piece"
+    BOOSTER_HILL_FLOWER_1 = "Booster Hill flower 1"
+    BOOSTER_HILL_FLOWER_2 = "Booster Hill flower 2"
+    BOOSTER_HILL_FLOWER_3 = "Booster Hill flower 3"
+    BOOSTER_HILL_FLOWER_4 = "Booster Hill flower 4"
+    BOOSTER_HILL_FLOWER_5 = "Booster Hill flower 5"
+    BOOSTER_HILL_FLOWER_6 = "Booster Hill flower 6"
+    BOOSTER_HILL_FLOWER_7 = "Booster Hill flower 7"
+    BOOSTER_HILL_FLOWER_8 = "Booster Hill flower 8"
+    BOOSTER_HILL_FLOWER_9 = "Booster Hill flower 9"
+    BOOSTER_HILL_FLOWER_10 = "Booster Hill flower 10"
+    BOOSTER_HILL_FLOWER_11 = "Booster Hill flower 11"
+    BOOSTER_HILL_FLOWER_12 = "Booster Hill flower 12"
+    BOOSTER_HILL_FLOWER_13 = "Booster Hill flower 13"
+    BOOSTER_HILL_FLOWER_14 = "Booster Hill flower 14"
+    BOOSTER_HILL_FLOWER_15 = "Booster Hill flower 15"
+    BOOSTER_HILL_FLOWER_16 = "Booster Hill flower 16"
     MARRYMORE_PRIZE_1 = "Marrymore Suite total stays prize 1"
     MARRYMORE_PRIZE_2 = "Marrymore Suite total stays prize 2"
     MARRYMORE_PRIZE_3 = "Marrymore Suite total stays prize 3"
@@ -567,7 +628,7 @@ class PrizeLocation:
     @property
     def prize(self) -> Prize | None:
         return self._prize
-    
+
     @property
     def originally_held(self) -> type[Prize] | None:
         return self._originally_held
@@ -577,63 +638,86 @@ class PrizeLocation:
 
     def can_accept(self, prize: Prize) -> bool:
         return not isinstance(prize, tuple(self._blacklist))
-    
+
     def can_access(self, settings: Settings) -> bool:
         return True
+
+    def grant(self) -> EventScript:
+        return EventScript([Return()])
 
 
 class TreasureChestLocation(PrizeLocation):
     _npc_ids: list[AreaObject]
+
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'chest_grant') and super().can_accept(prize)
-    
+        return hasattr(prize, "chest_grant") and super().can_accept(prize)
+
     def grant(self) -> EventScript:
-        if self.prize is None: return EventScript([Return()])
-        itemgrant = [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
+        if self.prize is None:
+            return EventScript([Return()])
+        itemgrant = (
+            [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
+        )
         for npc, room in zip(self._npc_ids, self._rooms):
-            itemgrant.append(DisableObjectTriggerInSpecificLevel(AreaObject(npc+14), room))
+            itemgrant.append(
+                DisableObjectTriggerInSpecificLevel(AreaObject(npc + 14), room)
+            )
         return EventScript(itemgrant)
 
 
 class StandingLocation(PrizeLocation):
+    _npc_ids: list[AreaObject]
+
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'standing_grant') and super().can_accept(prize)
+        return hasattr(prize, "standing_grant") and super().can_accept(prize)
+
     def grant(self) -> EventScript:
-        if self.prize is None: return EventScript([Return()])
-        if self.prize.standing_grant is None: return EventScript([Return()])
+        if self.prize is None:
+            return EventScript([Return()])
+        if self.prize.standing_grant is None:
+            return EventScript([Return()])
         return self.prize.standing_grant
 
 
 class EventLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'npc_grant') and super().can_accept(prize)
+        return hasattr(prize, "npc_grant") and super().can_accept(prize)
+
     def grant(self) -> EventScript:
-        if self.prize is None: return EventScript([Return()])
-        if self.prize.npc_grant is None: return EventScript([Return()])
+        if self.prize is None:
+            return EventScript([Return()])
+        if self.prize.npc_grant is None:
+            return EventScript([Return()])
         return self.prize.npc_grant
+
 
 class RiverLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'river_grant') and super().can_accept(prize)
+        return hasattr(prize, "river_grant") and super().can_accept(prize)
+
     def grant(self) -> EventScript:
-        if self.prize is None: return EventScript([Return()])
-        if self.prize.river_grant is None: return EventScript([Return()])
+        if self.prize is None:
+            return EventScript([Return()])
+        if self.prize.river_grant is None:
+            return EventScript([Return()])
         return self.prize.river_grant
 
 
 class BossFightLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'boss_fight_grant') and super().can_accept(prize)
+        return hasattr(prize, "boss_fight_grant") and super().can_accept(prize)
 
 
 class CharacterRecruitmentLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'character_grant') and super().can_accept(prize)  
+        return hasattr(prize, "character_grant") and super().can_accept(prize)
 
 
 class StarPieceLocation(PrizeLocation):
     def can_accept(self, prize: Prize) -> bool:
-        return hasattr(prize, 'postfight_star_piece_grant') and super().can_accept(prize)
+        return hasattr(prize, "postfight_star_piece_grant") and super().can_accept(
+            prize
+        )
 
 
 class ShopLocation(PrizeLocation):
@@ -646,95 +730,201 @@ class SpellSlotLocation(PrizeLocation):
         return isinstance(prize, SpellPrize) and super().can_accept(prize)
 
 
-class PrizeRow:
+class PrizeRow(PrizeLocation):
     _container_event: int
 
-class TreasureChestLocationRow1(PrizeRow, TreasureChestLocation):
+    def render(
+        self,
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        identifier = str(uuid4())
+        grant = self.grant()
+        assert (
+            len(grant.contents) > 0
+        ), "Prize grant scripts must have at least one command"
+        grant.contents[0].rename(identifier)
+        return (
+            [
+                [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, r, [identifier])]
+                for r in self._rooms
+            ],
+            grant.contents,
+        )
+
+
+class TreasureChestLocationRow(PrizeRow, TreasureChestLocation):
+    def render(
+        self,
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        # TODO set 70A7 on NPCs
+        return super().render()
+
+
+class TreasureChestLocationRow1(TreasureChestLocationRow):
     _container_event: int = E0247_CHEST_1_GRANT
 
-class TreasureChestLocationRow2(PrizeRow, TreasureChestLocation):
+
+class TreasureChestLocationRow2(TreasureChestLocationRow):
     _container_event: int = E0246_CHEST_2_GRANT
 
-class TreasureChestLocationRow3(PrizeRow, TreasureChestLocation):
+
+class TreasureChestLocationRow3(TreasureChestLocationRow):
     _container_event: int = E0245_CHEST_3_GRANT
 
-class TreasureChestLocationRow4(PrizeRow, TreasureChestLocation):
+
+class TreasureChestLocationRow4(TreasureChestLocationRow):
     _container_event: int = E0244_CHEST_4_GRANT
 
-class TreasureChestLocationRow5(PrizeRow, TreasureChestLocation):
+
+class TreasureChestLocationRow5(TreasureChestLocationRow):
     _container_event: int = E0243_CHEST_5_GRANT
 
-class TreasureChestLocationRow6(PrizeRow, TreasureChestLocation):
+
+class TreasureChestLocationRow6(TreasureChestLocationRow):
     _container_event: int = E0242_CHEST_6_GRANT
 
-class NPCLocationRow1(PrizeRow, EventLocation):
+
+class NPCLocationRow(PrizeRow, EventLocation):
+    def render(
+        self,
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        # TODO set NPCs
+        return super().render()
+
+
+class NPCLocationRow1(NPCLocationRow):
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
-class NPCLocationRow2(PrizeRow, EventLocation):
+
+class NPCLocationRow2(NPCLocationRow):
     _container_event: int = E0252_NPC_QUEST_2_GRANT
 
-class NPCLocationRow3(PrizeRow, EventLocation):
+
+class NPCLocationRow3(NPCLocationRow):
     _container_event: int = E0251_NPC_QUEST_3_GRANT
 
-class NPCLocationRow4(PrizeRow, EventLocation):
+
+class NPCLocationRow4(NPCLocationRow):
     _container_event: int = E0250_NPC_QUEST_4_GRANT
 
-class NPCLocationRow5(PrizeRow, EventLocation):
+
+class NPCLocationRow5(NPCLocationRow):
     _container_event: int = E0249_NPC_QUEST_5_GRANT
 
-class NPCLocationRow6(PrizeRow, EventLocation):
+
+class NPCLocationRow6(NPCLocationRow):
     _container_event: int = E0248_NPC_QUEST_6_GRANT
 
-class NPCLocationRow7(PrizeRow, EventLocation):
+
+class NPCLocationRow7(NPCLocationRow):
     _container_event: int = E0226_NPC_QUEST_7_GRANT
 
-class StandingLocationRow1(PrizeRow, StandingLocation):
+
+class StandingLocationRow(PrizeRow, StandingLocation):
+    pass
+
+
+class StandingLocationRow1(StandingLocationRow):
     _container_event: int = E0241_FREESTANDING_1_GRANT
 
-class StandingLocationRow2(PrizeRow, StandingLocation):
+
+class StandingLocationRow2(StandingLocationRow):
     _container_event: int = E0240_FREESTANDING_2_GRANT
 
-class StandingLocationRow3(PrizeRow, StandingLocation):
+
+class StandingLocationRow3(StandingLocationRow):
     _container_event: int = E0239_FREESTANDING_3_GRANT
 
-class StandingLocationRow4(PrizeRow, StandingLocation):
+
+class StandingLocationRow4(StandingLocationRow):
     _container_event: int = E0238_FREESTANDING_4_GRANT
 
-class StandingLocationRow5(PrizeRow, StandingLocation):
+
+class StandingLocationRow5(StandingLocationRow):
     _container_event: int = E0237_FREESTANDING_5_GRANT
 
-class StandingLocationRow6(PrizeRow, StandingLocation):
+
+class StandingLocationRow6(StandingLocationRow):
     _container_event: int = E0236_FREESTANDING_6_GRANT
 
-class StandingLocationRow7(PrizeRow, StandingLocation):
+
+class StandingLocationRow7(StandingLocationRow):
     _container_event: int = E0235_FREESTANDING_7_GRANT
 
-class StandingLocationRow8(PrizeRow, StandingLocation):
+
+class StandingLocationRow8(StandingLocationRow):
     _container_event: int = E0234_FREESTANDING_8_GRANT
 
-class StandingLocationRow9(PrizeRow, StandingLocation):
+
+class StandingLocationRow9(StandingLocationRow):
     _container_event: int = E0233_FREESTANDING_9_GRANT
 
-class StandingLocationRow10(PrizeRow, StandingLocation):
+
+class StandingLocationRow10(StandingLocationRow):
     _container_event: int = E0232_FREESTANDING_10_GRANT
 
-class StandingLocationRow11(PrizeRow, StandingLocation):
+
+class StandingLocationRow11(StandingLocationRow):
     _container_event: int = E0231_FREESTANDING_11_GRANT
 
-class StandingLocationRow12(PrizeRow, StandingLocation):
+
+class StandingLocationRow12(StandingLocationRow):
     _container_event: int = E0230_FREESTANDING_12_GRANT
 
-class StandingLocationRow13(PrizeRow, StandingLocation):
+
+class StandingLocationRow13(StandingLocationRow):
     _container_event: int = E0229_FREESTANDING_13_GRANT
 
-class StandingLocationRow14(PrizeRow, StandingLocation):
+
+class StandingLocationRow14(StandingLocationRow):
     _container_event: int = E0228_FREESTANDING_14_GRANT
 
-class StandingLocationRow15(PrizeRow, StandingLocation):
+
+class StandingLocationRow15(StandingLocationRow):
     _container_event: int = E0227_FREESTANDING_15_GRANT
 
-class RiverLocationRow1(PrizeRow, RiverLocation):
+
+class RiverLocationRow(PrizeRow, RiverLocation):
+    pass
+
+
+class RiverLocationRow1(RiverLocationRow):
     _container_event: int = E0253_NPC_QUEST_1_GRANT
 
-class RiverLocationRow2(PrizeRow, RiverLocation):
+
+class RiverLocationRow2(RiverLocationRow):
     _container_event: int = E0241_FREESTANDING_1_GRANT
+
+
+class BoosterHillLocation(PrizeRow):
+    _70B1_id: int
+    _npc_id: AreaObject
+    _container_event: int = E0219_HILL_GRANT_LOGIC
+
+    def can_accept(self, prize: Prize) -> bool:
+        return hasattr(prize, "hill_grant") and super().can_accept(prize)
+
+    def grant(self) -> EventScript:
+        if self.prize is None:
+            return EventScript([Return()])
+        if self.prize.hill_grant is None:
+            return EventScript([Return()])
+        return self.prize.hill_grant
+
+    def render(
+        self,
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        identifier = str(uuid4())
+        grant = self.grant()
+        assert (
+            len(grant.contents) > 0
+        ), "Prize grant scripts must have at least one command"
+        grant.contents[0].rename(identifier)
+        return (
+            [[JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self._70B1_id, [identifier])]],
+            grant.contents,
+        )
+        # TODO set NPCs
+
+
+class TreasureShopLocation(PrizeLocation):
+    pass

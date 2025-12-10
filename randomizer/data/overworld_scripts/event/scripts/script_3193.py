@@ -62,9 +62,10 @@ script = EventScript([
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
 		A_ReturnQueue()
 	]),
+    RemoveObjectFromCurrentLevel(NPC_1),
 	SetBit(MINES_HENCHMAN_RIGHT_DEFEATED),
 	SetBit(TEMP_7043_1),
-	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
 	ClearBit(TEMP_7043_0, identifier="EVENT_3193_clear_bit_9"),
 	Return()
 ])

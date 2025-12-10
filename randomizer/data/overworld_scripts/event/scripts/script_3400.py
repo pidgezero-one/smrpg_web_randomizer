@@ -38,6 +38,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_3400_fade_out_music_to_volume_389"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 9, ["EVENT_3400_fade_out_music_to_volume_389"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 12, ["EVENT_3400_fade_out_music_to_volume_389"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 14, ["EVENT_3400_hill"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 10, ["EVENT_3400_play_music_default_volume_451"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 16, ["EVENT_3400_play_music_default_volume_453"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 17, ["EVENT_3400_play_music_current_volume_392"]),
@@ -61,6 +62,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 42, ["EVENT_3400_play_music_current_volume_403"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 43, ["EVENT_3400_play_music_current_volume_403"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 48, ["EVENT_3400_play_music_current_volume_403"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 54, ["EVENT_3400_hill"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 55, ["EVENT_3400_play_music_default_volume_420"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 56, ["EVENT_3400_play_music_current_volume_405"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 57, ["EVENT_3400_play_music_current_volume_405"]),
@@ -445,7 +447,7 @@ script = EventScript([
 	PlaySound(sound=SO035_RUNNING_WATER, channel=4),
 	Return(),
 	PlayMusicAtDefaultVolume(M0017_TADPOLEPOND, identifier="EVENT_3400_play_music_default_volume_413"),
-	DeactivateSoundChannels([0, 1, 2, 3]),
+	DeactivateSoundChannels({0, 1, 2, 3}),
 	Return(),
 	PlayMusicAtDefaultVolume(M0017_TADPOLEPOND, identifier="EVENT_3400_play_music_default_volume_416"),
 	Return(),
@@ -517,5 +519,9 @@ script = EventScript([
 	Return(),
 	JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_3400_jmp_to_event_484"),
 	ClearBit(BATTLE_DOOR_STAR_PIECE, identifier="EVENT_3400_clear_bit_485"),
-	JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT)
+	JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT),
+    
+	SetVarToConst(TEMP_7032, 0, identifier="EVENT_3400_hill"),
+	ExitToWorldMap(area=OW27_BOOSTER_HILL, bit_6=True, bit_7=True),
+	Return()
 ])

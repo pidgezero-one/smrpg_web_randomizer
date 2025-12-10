@@ -1,4 +1,4 @@
-# E0155_EMPTY
+# E0155_PACKET_DECIDER_CONTAINER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK197_UNUSED, BF10_MOUNTAINS),
-	Jmp(["EVENT_145_jmp_to_event_1"])
+	Set7000ToCurrentLevel(),
+	JmpToEvent(E0156_PACKET_DECIDER)
 ])

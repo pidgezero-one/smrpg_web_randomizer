@@ -1,4 +1,4 @@
-# E3115_EMPTY
+# E3115_HILL_PROGRESSIVE_CARD
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,16 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	StoreItemAmountTo7000(AltoCardItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3115_set_var_to_const_9"]),
+	StoreItemAmountTo7000(TenorCardItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3115_set_var_to_const_6"]),
+	SetVarToConst(ITEM_ID, AltoCardItem),
+	JmpToEvent(E0215_HILL_ITEM),
+	SetVarToConst(ITEM_ID, SopranoCardItem, identifier="EVENT_3115_set_var_to_const_6"),
+	RemoveOneOfItemFromInventory(TenorCardItem),
+	JmpToEvent(E0215_HILL_ITEM),
+	SetVarToConst(ITEM_ID, TenorCardItem, identifier="EVENT_3115_set_var_to_const_9"),
+	RemoveOneOfItemFromInventory(AltoCardItem),
+	JmpToEvent(E0215_HILL_ITEM)
 ])

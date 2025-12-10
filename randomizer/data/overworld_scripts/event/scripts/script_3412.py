@@ -1,4 +1,4 @@
-# E3412_MINES_SHYGUY_ITEM_CREATE_PACKET
+# E3412_EMPTY
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,6 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CreatePacketAt7010WithEvent(packet=P111_FROG_COIN_STATIC, event_id=E3199_SHYGUY_CART_PRIZE_GRANT, destinations=["EVENT_3413_ret_7"]),
-	Jmp(["EVENT_3413_action_queue_5"])
 ])

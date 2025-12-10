@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(PIPE_VAULT_GATED, ["EVENT_485_set_var_to_const_2"]),
+	JmpIfBitClear(PIPE_VAULT_GATED, ["EVENT_485_set_var_to_const_2"]),
 	Return(),
 	SetVarToConst(X_COORD_2, 17, identifier="EVENT_485_set_var_to_const_2"),
 	SetVarToConst(Y_COORD_2, 18),

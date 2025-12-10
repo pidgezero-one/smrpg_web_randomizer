@@ -1,12 +1,12 @@
 from smrpgpatchbuilder.datatypes.items.classes import Item
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import JmpToEvent, SetVarToConst
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import JmpToEvent, SetVarToConst, PlaySound, Inc, Return
 from ..data.variables.event_script_names import E3092_STAR_PIECE_GRANT
 from ..data.variables.dialog_names import DI3074_GOT_BEETLEMANIA, DI1177_FOUND_A_70A7_AUTO_TERMINATE, DI1178_FOUND_AN_70A7_AUTO_TERMINATE, DI0065_GOT_AN_70A7_AWAIT_TERMINATE, DI0524_GOT_A_70A7_AWAIT_TERMINATE, DI0064_GOT_AN_70A7_AUTO_TERMINATE, DI0066_GOT_A_70A7_AUTO_TERMINATE
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import BOWSER, MARIO, MEM_70A8
 from ..data.variables.event_script_names import *
-from ..data.variables.variable_names import BEETLEMANIA_UNLOCKED, ITEM_ID, PRIMARY_TEMP_7000
+from ..data.variables.variable_names import BEETLEMANIA_UNLOCKED, ITEM_ID, PRIMARY_TEMP_7000, TEMP_7032
 from ..data.variables.overworld_sfx_names import SO027_FOUND_AN_ITEM
 from enum import StrEnum
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import Battlefield
@@ -14,6 +14,7 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import F
 from smrpgpatchbuilder.datatypes.characters.classes import Character
 from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
 from ..types.ally import Ally
+from ..data.variables.overworld_sfx_names import SO081_STAR
 
 class TreasureHunterNickname:
     _nickname: str
@@ -60,6 +61,7 @@ class Prize:
     _chest_grant: EventScript | None = None
     _standing_grant: EventScript | None = None
     _river_grant: EventScript | None = None
+    _hill_grant: EventScript | None = None
     _character_grant: EventScript | None = None
     _spell_grant: EventScript | None = None
     _boss_fight_grant: EventScript | None = None
@@ -85,6 +87,10 @@ class Prize:
     @property
     def river_grant(self) -> EventScript | None:
         return self._river_grant
+    
+    @property
+    def hill_grant(self) -> EventScript | None:
+        return self._hill_grant
 
     @property
     def character_grant(self) -> EventScript | None:
@@ -154,6 +160,13 @@ class ItemPrize(StandardPrize):
             SetVarToConst(ITEM_ID, self.item().item_id),
             JmpToEvent(E2820_ASYNC_NO_ANIMATION_ITEM)
         ])
+    
+    @property
+    def hill_grant(self) -> EventScript:
+        return EventScript([
+            SetVarToConst(ITEM_ID, self.item().item_id),
+            JmpToEvent(E0215_HILL_ITEM)
+        ])
 
 
 class StarPiecePrize(StandardPrize):
@@ -186,6 +199,14 @@ class StarPiecePrize(StandardPrize):
         return EventScript([
             JmpToEvent(E2821_ASYNC_NO_ANIMATION_STAR_PIECE)
         ])
+    
+    @property
+    def hill_grant(self) -> EventScript:
+        return EventScript([
+            Inc(TEMP_7032),
+            PlaySound(sound=SO081_STAR, channel=4),
+            Return(),
+        ])
 
 
 class FPFlowerPrize(Prize):
@@ -196,6 +217,11 @@ class FPFlowerPrize(Prize):
             JmpToEvent(E3072_FLOWER_STAR_FC_OR_MUSHROOM_CHEST)
         ])
     @property
+    def npc_grant(self) -> EventScript:
+        return EventScript([
+            JmpToEvent(E0216_GET_FLOWER_FROM_NPC)
+        ])
+    @property
     def standing_grant(self) -> EventScript:
         return EventScript([
             JmpToEvent(E1801_FREESTANDING_FLOWER)
@@ -204,6 +230,11 @@ class FPFlowerPrize(Prize):
     def river_grant(self) -> EventScript:
         return EventScript([
             JmpToEvent(E2817_ASYNC_NO_ANIMATION_FLOWER)
+        ])
+    @property
+    def hill_grant(self) -> EventScript:
+        return EventScript([
+            JmpToEvent(E0214_HILL_GET_FLOWER)
         ])
 
 

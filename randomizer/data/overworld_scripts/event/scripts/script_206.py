@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitClear(SEA_GATED_BY_STAR_PIECES, ["EVENT_206_jmp_to_event_2"]),
-	JmpIfVarEqualsConst(EXP_STAR_70D5, 4, ["EVENT_206_set_bit_3"]),
+	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 4, ["EVENT_206_set_bit_3"]),
 	JmpToEvent(E0207_UNLOCK_KEEP_IF_GATED_BY_STAR_PIECES, identifier="EVENT_206_jmp_to_event_2"),
 	SetBit(MAP_SEA, identifier="EVENT_206_set_bit_3"),
 	SetBit(MAP_DIRECTIONAL_SEASIDE_DOWN_SEA),

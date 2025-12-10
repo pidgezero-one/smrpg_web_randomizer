@@ -795,6 +795,7 @@ class KeroSewersGate(SelectOneFlag[KeroSewersGating]):
     choices = [o for o in KeroSewersGating]
     _default = KeroSewersGating.OPEN
     _id = "ks"
+    # SEWERS_CLOSED - set when game starts, cleared by condition. or just not set if always open
 
 
 class ForestMazeGating(CategorizationOption):
@@ -1256,7 +1257,7 @@ class BetterTips(BooleanFlag):
 <br/>
 <br/>The cloud miniboss in Land's End will have an increased spawn rate. 
 <br/>
-<br/>Forest Maze mushrooms may be ANY kind of mushroom, regardless of your max item quality settings.
+<br/>Forest Maze mushrooms may be ANY kind of mushroom.
     """
     _id = "rng"
 

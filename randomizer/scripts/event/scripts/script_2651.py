@@ -6,7 +6,7 @@ from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        JmpIfVarEqualsConst(EXP_STAR_70D5, 6, ["EVENT_2651_summon_to_level_51"]),
+        JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_2651_summon_to_level_51"]),
         SetBit(BUCKET_WARP_BIT),
         EnterArea(
             room_id=R069_MIDAS_RIVER_WATERFALL,

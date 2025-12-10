@@ -1,4 +1,4 @@
-# E3114_EMPTY
+# E3114_HILL_PROGRESSIVE_EGG
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,20 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	StoreItemAmountTo7000(MysteryEggItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3114_set_var_to_const_15"]),
+	StoreItemAmountTo7000(LambsLureItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3114_set_var_to_const_12"]),
+	StoreItemAmountTo7000(SheepAttackItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_3114_set_var_to_const_8"]),
+	SetVarToConst(ITEM_ID, MysteryEggItem),
+	JmpToEvent(E0215_HILL_ITEM),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3114_set_var_to_const_8"),
+	JmpToEvent(E0215_HILL_ITEM),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_3114_set_var_to_const_12"),
+	RemoveOneOfItemFromInventory(LambsLureItem),
+	JmpToEvent(E0215_HILL_ITEM),
+	SetVarToConst(ITEM_ID, LambsLureItem, identifier="EVENT_3114_set_var_to_const_15"),
+	RemoveOneOfItemFromInventory(MysteryEggItem),
+	JmpToEvent(E0215_HILL_ITEM)
 ])

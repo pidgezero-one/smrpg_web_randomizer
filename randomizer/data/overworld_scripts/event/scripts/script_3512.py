@@ -32,12 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	EnableControlsUntilReturn([]),
-	DisableObjectTrigger(NPC_8),
-	SetAsyncActionScript(NPC_8, A0365_BOOSTER_HILL_LEFTOVER_FLOWERS_PICKED_UP),
-	SetVarToConst(PRIMARY_TEMP_7000, 1),
-	Add7000ToMaxFP(),
-	Inc(BOOSTER_HILL_70B1),
-	EnableControlsUntilReturn([B]),
-	SetBit(UNKNOWN_704E_2),
-	Return()
+	DisableObjectTrigger(MEM_70A8),
+	SetAsyncActionScript(MEM_70A8, A0365_BOOSTER_HILL_LEFTOVER_FLOWERS_PICKED_UP),
+    JmpToEvent(E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT),
 ])

@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	PlayMusicAtDefaultVolume(M0017_TADPOLEPOND),
-	DeactivateSoundChannels([0, 1, 2, 3]),
+	DeactivateSoundChannels({0, 1, 2, 3}),
 	JmpIfBitSet(MELODY_BAY_ITEM_3_GRANTED, ["EVENT_1072_action_queue_18"]),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_SetSequenceSpeed(VERY_SLOW),
@@ -64,7 +64,7 @@ script = EventScript([
 		A_FaceSouthwest()
 	], identifier="EVENT_1072_action_queue_18"),
 	ClearBit(TOADOFSKY_REMOVED),
-	DeactivateSoundChannels([0, 1, 2, 3]),
+	DeactivateSoundChannels({0, 1, 2, 3}),
 	JmpIfBitSet(TEMP_7044_7, ["EVENT_1072_clear_bit_24"]),
 	FadeInFromBlack(sync=False),
 	Return(),

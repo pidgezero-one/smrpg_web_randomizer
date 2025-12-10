@@ -1,4 +1,4 @@
-# E0219_EMPTY
+# E0219_HILL_GRANT_LOGIC
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,37 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_213_get_flower"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_213_get_flower_1"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 2, ["EVENT_213_get_flower_2"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 3, ["EVENT_213_get_flower_3"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 4, ["EVENT_213_get_flower_4"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_213_get_flower_5"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 6, ["EVENT_213_get_flower_6"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_213_get_flower_7"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 8, ["EVENT_213_get_flower_8"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 9, ["EVENT_213_get_flower_9"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 10, ["EVENT_213_get_flower_10"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 11, ["EVENT_213_get_flower_11"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 12, ["EVENT_213_get_flower_12"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 13, ["EVENT_213_get_flower_13"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 14, ["EVENT_213_get_flower_14"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 15, ["EVENT_213_get_flower_15"]),
+    Return(),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_1"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_2"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_3"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_4"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_5"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_6"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_7"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_8"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_9"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_10"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_11"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_12"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_13"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_14"),
+    JmpToEvent(E0214_HILL_GET_FLOWER, identifier="EVENT_213_get_flower_15"),
 ])

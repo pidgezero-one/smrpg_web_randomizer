@@ -31,6 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK201_UNUSED, BF09_GRASSLANDS),
-	Jmp(["EVENT_131_jmp_to_event_1"])
 ])

@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfVarEqualsConst(EXP_STAR_70D5, 6, ["EVENT_2651_jmp_to_event_4"]),
+	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_2651_jmp_to_event_4"]),
 	SetBit(BUCKET_WARP_BIT),
 	EnterArea(room_id=R069_MIDAS_RIVER_WATERFALL, face_direction=SOUTH, x=9, y=108, z=0, run_entrance_event=True),
 	Return(),

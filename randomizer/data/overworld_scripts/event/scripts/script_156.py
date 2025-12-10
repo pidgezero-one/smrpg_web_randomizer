@@ -1,4 +1,4 @@
-# E0156_EMPTY
+# E0156_PACKET_DECIDER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,6 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	StartBattleAtBattlefield(PACK204_UNUSED, BF08_BARREL_VOLCANO_CZAR_DRAGONS_PAD),
-	Jmp(["EVENT_146_jmp_to_event_1"])
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_253_set_var_to_const_61"]),
+	Return(identifier="default_packet_exit"),
+    CreatePacketAt7010WithEvent(packet=P111_FROG_COIN_STATIC, event_id=E3199_SHYGUY_CART_PRIZE_GRANT, destinations=["default_packet_exit"]),
+    Return(),
 ])

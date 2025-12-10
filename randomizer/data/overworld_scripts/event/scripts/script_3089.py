@@ -44,6 +44,8 @@ script = EventScript([
 	JmpIfVarEqualsConst(ITEM_ID, EarlierTimesItem, ["EVENT_3089_run_dialog_16"]),
 	JmpIfVarEqualsConst(ITEM_ID, ElderKeyItem, ["EVENT_3089_run_dialog_16"]),
 	JmpIfVarEqualsConst(ITEM_ID, AltoCardItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, EnduringBroochItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, ExtraShinyStoneItem, ["EVENT_3089_run_dialog_16"]),
 	RunDialog(dialog_id=DI1177_FOUND_A_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
 	AddToInventory(ITEM_ID),
 	Return(),

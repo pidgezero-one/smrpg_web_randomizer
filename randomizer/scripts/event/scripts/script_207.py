@@ -7,7 +7,7 @@ from randomizer.scripts.event.script_imports import *
 script = EventScript(
     [
         JmpIfBitClear(KEEP_GATED_BY_STAR_PIECES, ["EVENT_207_ret"]),
-        JmpIfVarEqualsConst(EXP_STAR_70D5, 6, ["EVENT_207_remove_map_connector"]),
+        JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_207_remove_map_connector"]),
         JmpToEvent(
             E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET, identifier="EVENT_207_ret"
         ),

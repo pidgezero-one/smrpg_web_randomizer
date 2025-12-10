@@ -1,4 +1,4 @@
-# E0213_EMPTY
+# E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	CopyVarToVar(from_var=BOOSTER_HILL_70B1, to_var=PRIMARY_TEMP_7000),
+    JmpToEvent(E0219_HILL_GRANT_LOGIC),
 ])

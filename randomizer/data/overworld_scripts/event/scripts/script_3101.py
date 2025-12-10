@@ -32,8 +32,9 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitClear(WIN_CONDITION_STAR_PIECES, ["EVENT_3101_fade_in_from_black_async_2"]),
-	JmpIfVarEqualsConst(EXP_STAR_70D5, 7, ["EVENT_3101_jmp_to_event_4"]),
+	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 7, ["EVENT_3101_jmp_to_event_4"]),
 	FadeInFromBlack(sync=False, identifier="EVENT_3101_fade_in_from_black_async_2"),
 	JmpToEvent(E0206_UNLOCK_SEA_IF_GATED_BY_STAR_PIECES),
 	JmpToEvent(E3886_END_GAME_CONTAINER_FROM_ALT_WIN_CONDITIONS, identifier="EVENT_3101_jmp_to_event_4")
+    # exit to world map if booster hill
 ])

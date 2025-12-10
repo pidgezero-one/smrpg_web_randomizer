@@ -31,6 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpToEvent(E0156_EMPTY),
-	JmpToEvent(E2290_EMPTY, identifier="EVENT_146_jmp_to_event_1")
 ])

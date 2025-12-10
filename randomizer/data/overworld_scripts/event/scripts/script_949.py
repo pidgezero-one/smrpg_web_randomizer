@@ -99,7 +99,7 @@ script = EventScript([
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_4, R234_FOREST_MAZE_SECRET, ["EVENT_991_run_dialog_36"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_5, R234_FOREST_MAZE_SECRET, ["EVENT_991_run_dialog_36"]),
 	JmpIfBitClear(TREASURE_HUNTER_HOUSE_PRIZE, ["EVENT_991_run_dialog_10"]),
-	JmpIfBitClear(PIPE_VAULT_GATED, ["EVENT_949_jmp_if_bit_clear_75"], identifier="EVENT_949_jmp_if_bit_clear_64"),
+	JmpIfBitSet(PIPE_VAULT_GATED, ["EVENT_949_jmp_if_bit_clear_75"], identifier="EVENT_949_jmp_if_bit_clear_64"),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_8, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["EVENT_991_run_dialog_58"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_9, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["EVENT_991_run_dialog_58"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_10, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["EVENT_991_run_dialog_58"]),

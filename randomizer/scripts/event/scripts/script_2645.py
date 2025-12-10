@@ -8,7 +8,7 @@ script = EventScript(
     [
         JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["EVENT_2645_summon_to_level_51_"]),
         JmpIfBitClear(CASINO_WARP_ENABLED, ["EVENT_2645_summon_to_level_51_"]),
-        JmpIfVarEqualsConst(EXP_STAR_70D5, 6, ["EVENT_2645_summon_to_level_51"]),
+        JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_2645_summon_to_level_51"]),
         RemoveObjectFromCurrentLevel(
             NPC_0, identifier="EVENT_2645_summon_to_level_51_"
         ),
