@@ -285,8 +285,12 @@ class ShuffleLocationSelector(CategorizationOption):
     MARRYMORE_SNIFIT_2 = "Marrymore Snifit 2 chapel item"
     MARRYMORE_SNIFIT_3 = "Marrymore Snifit 3 chapel item"
     MARRYMORE_ALTAR = "Marrymore altar chapel item"
+    MARRYMORE_BOSS_FIGHT = "Marrymore boss fight"
     MARRYMORE_STAR_PIECE = "Marrymore boss Star Piece"
     MARRYMORE_CHARACTER = "Marrymore character join"
+    MARRYMORE_POSTGAME_BOSS_FIGHT = "Marrymore postgame boss fight"
+    MARRYMORE_POSTGAME_STAR_PIECE = "Marrymore postgame boss Star Piece"
+    MARRYMORE_POSTGAME_ITEM_DROP = "Marrymore postgame prize"
     STAR_HILL_STAR_PIECE_1 = "Star Hill freestanding Star Piece"
     FROG_DISCIPLE_1 = "Disciple shop first item"
     FROG_DISCIPLE_2 = "Disciple shop second item"
@@ -617,6 +621,11 @@ class PrizeLocation:
     _id: ShuffleLocationSelector
     _remake_only: bool = False
     _blacklist: list[type[Prize]]
+    _override_id: int | None = None
+
+    @property
+    def override_id(self) -> int | None:
+        return self._override_id
 
     @property
     def id(self) -> ShuffleLocationSelector:
@@ -644,6 +653,15 @@ class PrizeLocation:
 
     def grant(self) -> EventScript:
         return EventScript([Return()])
+    
+    @property
+    def remake_only(self) -> bool:
+        return self._remake_only
+    
+
+class FrogDiscipleLocation(PrizeLocation):
+    pass 
+    # TODO: these go directly into the shop
 
 
 class TreasureChestLocation(PrizeLocation):
@@ -742,6 +760,13 @@ class PrizeRow(PrizeLocation):
             len(grant.contents) > 0
         ), "Prize grant scripts must have at least one command"
         grant.contents[0].rename(identifier)
+        if self.override_id is not None:
+            return (
+                [
+                    [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self.override_id, [identifier])]
+                ],
+                grant.contents,
+            )
         return (
             [
                 [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, r, [identifier])]

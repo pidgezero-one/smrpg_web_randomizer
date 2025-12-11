@@ -1,4 +1,4 @@
-# E0626_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_2
+# E0626_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_FLOWERBOX
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,10 +31,5 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToRandom(PRIMARY_TEMP_7000, 101),
-	CompareVarToConst(PRIMARY_TEMP_7000, 80),
-	JmpIfComparisonResultIsLesser(["EVENT_626_ret_5"]),
-	SetVarToConst(ITEM_ID, FlowerBoxItem),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
-	Return(identifier="EVENT_626_ret_5")
+	JmpToEvent(E0154_NPC_QUEST_7_CONTAINER)
 ])

@@ -1,4 +1,4 @@
-# E0154_EMPTY
+# E0154_NPC_QUEST_7_CONTAINER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,4 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+	Set7000ToCurrentLevel(),
+	JmpToEvent(E0226_NPC_QUEST_7_GRANT)
 ])

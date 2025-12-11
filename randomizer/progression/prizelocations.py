@@ -39,7 +39,8 @@ from ..types.prizelocation import (
     SpellSlotLocation,
     ShuffleLocationSelector,
     TreasureShopLocation,
-    BoosterHillLocation
+    BoosterHillLocation,
+    FrogDiscipleLocation,
 )
 from ..data.variables.room_names import *
 from ..data.variables.event_script_names import *
@@ -566,6 +567,7 @@ class Mimic1DropRewardLocation(NPCLocationRow1):
     _rooms = [512]  # can be in any room, custom id.
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PANDORITE_REWARD_1
+    _override_id = 512
     # flag as checked: MIMIC_1_CLEARED
 
 
@@ -573,6 +575,7 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
     _originally_held = CoinPrize
     _rooms = [512]  # can be in any room.
     _id = ShuffleLocationSelector.PANDORITE_REWARD_2
+    _override_id = 512
     # flag as checked: the host chest for FirstMimicFightLauncher has its object trigger disabled
 
 
@@ -1215,6 +1218,7 @@ class OuterMinesBossPrizeLocation(NPCLocationRow1):
 class OuterMinesBossFight(BossFightLocation):
     _originally_held = Croco2BossFight
     _rooms = [518]
+    _override_id = 518
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT_1
     # Flag as checked: MINES_BOSS_1_DEFEATED
 
@@ -1222,6 +1226,7 @@ class OuterMinesBossFight(BossFightLocation):
 class OuterMinesStarPiece(StarPieceLocation):
     _originally_held = None
     _rooms = [518]
+    _override_id = 518
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_1
     # Flag as checked: MINES_BOSS_1_DEFEATED
 
@@ -1291,7 +1296,8 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
 
 class InnerMinesPostgameBossFight(BossFightLocation):
     _originally_held = Punchinello2BossFight
-    _rooms = [527]
+    _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
+    _override_id = 527
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_FIGHT_3
     _remake_only = True
     # Flag as checked: MINES_POSTGAME_COMPLETED
@@ -1299,7 +1305,8 @@ class InnerMinesPostgameBossFight(BossFightLocation):
 
 class InnerMinesPostgameStarPiece(StarPieceLocation):
     _originally_held = None
-    _rooms = [527]
+    _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
+    _override_id = 527
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_BOSS_3
     _remake_only = True
     # Flag as checked: MINES_POSTGAME_COMPLETED
@@ -1644,7 +1651,8 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
 
 class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _originally_held = Booster2BossFight
-    _rooms = [528]
+    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _override_id = 528
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_1
     # Flag as checked: POSTGAME_TOWER_COMPLETED
     _remake_only = True
@@ -1652,7 +1660,8 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
 
 class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _originally_held = None
-    _rooms = [528]
+    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _override_id = 528
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
     # Flag as checked: POSTGAME_TOWER_COMPLETED
 
@@ -1867,8 +1876,8 @@ class MarrymoreSixthSuitePrizeLocation(NPCLocationRow6):
 class MarrymoreBigTipLocation(NPCLocationRow7):
     _originally_held = FlowerBoxPrize
     _rooms = [R007_MARRYMORE_INN_1F]
-    _npc_ids = [NPC_6, NPC_7]
     _id = ShuffleLocationSelector.MARRYMORE_BIG_TIP
+    # flag as checked: MARRYMORE_MAJOR_TIP_GIVEN
 
 
 class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
@@ -1876,24 +1885,28 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
     _rooms = [R009_MARRYMORE_INN_REGULAR_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MARRYMORE_INN
+    # flag as checked: npc 0 in room 9 has its object trigger disabled.
 
 
 class MarrymoreSnifit1Location(NPCLocationRow1):
     _originally_held = BroochPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
+    # flag as checked: CHAPEL_ITEM_1_RETRIEVED
 
 
 class MarrymoreSnifit2Location(NPCLocationRow2):
     _originally_held = RingPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
+    # flag as checked: CHAPEL_ITEM_2_RETRIEVED
 
 
 class MarrymoreSnifit3Location(NPCLocationRow3):
     _originally_held = ShoesPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
+    # flag as checked: CHAPEL_ITEM_3_RETRIEVED
 
 
 class MarrymoreAltarHeadLocation(StandingLocationRow1):
@@ -1901,17 +1914,90 @@ class MarrymoreAltarHeadLocation(StandingLocationRow1):
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.MARRYMORE_ALTAR
+    # flag as checked: npc 5 in room 154 has been removed from the room.
 
 
-# TODO: FrogDiscipleItem1 - original bases: FrogDiscipleShopItem, SeasideTownLocation
+class MarrymoreBossFight(BossFightLocation):
+    _originally_held = BundtBossFight
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _id = ShuffleLocationSelector.MARRYMORE_BOSS_FIGHT
+    # Flag as checked: MARRYMORE_LIBERATED
 
-# TODO: FrogDiscipleItem2 - original bases: FrogDiscipleShopItem, SeasideTownLocation
 
-# TODO: FrogDiscipleItem3 - original bases: FrogDiscipleShopItem, SeasideTownLocation
+class MarrymoreBossFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _id = ShuffleLocationSelector.MARRYMORE_STAR_PIECE
+    # Flag as checked: MARRYMORE_LIBERATED
 
-# TODO: FrogDiscipleItem4 - original bases: FrogDiscipleShopItem, SeasideTownLocation
 
-# TODO: FrogDiscipleItem5 - original bases: FrogDiscipleShopItem, SeasideTownLocation
+class MarrymoreCharacter(CharacterRecruitmentLocation):
+    _originally_held = ToadstoolRecruitmentPrize
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _id = ShuffleLocationSelector.MARRYMORE_CHARACTER
+    # Flag as checked: MARRYMORE_LIBERATED
+
+
+class MarrymoreBossFightRemake(BossFightLocation):
+    _originally_held = Booster2BossFight
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_BOSS_FIGHT
+    _override_id = 529
+    _remake_only = True
+    # Flag as checked: POSTGAME_CHAPEL_COMPLETE
+
+
+class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_STAR_PIECE
+    _override_id = 529
+    _remake_only = True
+    # Flag as checked: POSTGAME_CHAPEL_COMPLETE
+
+
+class MarrymoreBossFightRemakeItemDrop(NPCLocationRow4):
+    _originally_held = EnduringBroochPrize
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_ITEM_DROP
+    _remake_only = True
+    # flag as checked: POSTGAME_CHAPEL_COMPLETE
+
+
+########### seaside town pre-liberation
+
+
+class FrogDiscipleLocation1(FrogDiscipleLocation):
+    _originally_held = SeeYaPrize
+    _id = ShuffleLocationSelector.FROG_DISCIPLE_1
+    # flag as checked: FROG_DISCIPLE_ITEM_1_PURCHASED
+
+
+class FrogDiscipleLocation2(FrogDiscipleLocation):
+    _originally_held = EarlierTimesPrize
+    _id = ShuffleLocationSelector.FROG_DISCIPLE_2
+    # flag as checked: FROG_DISCIPLE_ITEM_2_PURCHASED
+
+
+class FrogDiscipleLocation3(FrogDiscipleLocation):
+    _originally_held = ExpBoosterPrize
+    _id = ShuffleLocationSelector.FROG_DISCIPLE_3
+    # flag as checked: FROG_DISCIPLE_ITEM_3_PURCHASED
+
+
+class FrogDiscipleLocation4(FrogDiscipleLocation):
+    _originally_held = CoinTrickPrize
+    _id = ShuffleLocationSelector.FROG_DISCIPLE_4
+    # flag as checked: FROG_DISCIPLE_ITEM_4_PURCHASED
+
+
+class FrogDiscipleLocation5(FrogDiscipleLocation):
+    _originally_held = ScroogeRingPrize
+    _id = ShuffleLocationSelector.FROG_DISCIPLE_5
+    # flag as checked: FROG_DISCIPLE_ITEM_5_PURCHASED
+
+
+########### seaside town when boss fight available
 
 
 class SeasideTownBossPrizeLocation(StandingLocationRow1):
@@ -1919,6 +2005,9 @@ class SeasideTownBossPrizeLocation(StandingLocationRow1):
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS_PRIZE
+
+
+########### seaside town gated by shed key
 
 
 class SeasideTownShedRescueLocation(NPCLocationRow1):
