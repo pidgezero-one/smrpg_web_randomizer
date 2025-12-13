@@ -4231,4 +4231,8 @@ class FinalBossFightStarPiece(StarPieceLocation):
     # Flag as checked: FACTORY_BOSS_DEFEATED
 
 
+# todo: spell slots
+# which aren't eligible for shuffling into any of the above locations
+
+
 CHECK_POOL: list[PrizeLocation] = []
