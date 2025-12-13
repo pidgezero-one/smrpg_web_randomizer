@@ -75,6 +75,7 @@ script = EventScript([
 	SetSyncActionScript(MEM_70A9, A0906_COIN_CHEST),
 	Jmp(["EVENT_3074_ret_49"]),
 	AddCoins(1, identifier="EVENT_3074_add_coins_44"),
+    SetBit(INFINITE_COINS_FOUND),
 	PlaySound(sound=SO013_COIN, channel=6),
 	CreatePacketAt7010(packet=P018_SMALL_COIN_BEING_COLLECTED, destinations=["EVENT_3074_ret_49"]),
 	SetSyncActionScript(MEM_70A9, A0906_COIN_CHEST),

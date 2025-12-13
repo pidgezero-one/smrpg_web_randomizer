@@ -51,6 +51,7 @@ script = EventScript([
 	RemoveOneOfItemFromInventory(BigBooFlagItem),
 	RemoveOneOfItemFromInventory(DryBonesFlagItem),
 	RemoveOneOfItemFromInventory(GreaperFlagItem),
+    SetBit(INVISIBLE_FLAG_CHECK_DONE),
 	Jmp(["EVENT_2081_action_queue_21"]),
 	RunBackgroundEventWithPause(event_id=E3075_HEAL_FLASH, timer_var=TIMER_7022, bit_4=True, bit_5=True, identifier="EVENT_2081_run_background_event_with_pause_16"),
 	PlaySound(sound=SO071_MUSHROOM_CURE, channel=6),

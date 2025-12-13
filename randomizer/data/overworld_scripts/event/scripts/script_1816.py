@@ -74,8 +74,8 @@ script = EventScript([
 	Jmp(["EVENT_1816_action_queue_43"]),
 	CompareVarToConst(PRIMARY_TEMP_7000, 660, identifier="EVENT_1816_compare_var_to_const_29"),
 	JmpIfComparisonResultIsLesser(["EVENT_1816_jmp_if_bit_clear_41"]),
-	JmpIfBitSet(UNKNOWN_LARGE_CONVEYOR_ROOM, ["EVENT_1816_set_var_to_const_35"]),
-	SetBit(UNKNOWN_LARGE_CONVEYOR_ROOM, identifier="EVENT_1816_set_bit_32"),
+	JmpIfBitSet(TROOPA_CLIMB_COMPLETED, ["EVENT_1816_set_var_to_const_35"]),
+	SetBit(TROOPA_CLIMB_COMPLETED, identifier="EVENT_1816_set_bit_32"),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	Return(),
 	SetVarToConst(TEMP_7028, 1, identifier="EVENT_1816_set_var_to_const_35"),
@@ -84,7 +84,7 @@ script = EventScript([
 	JmpIfComparisonResultIsLesser(["EVENT_1816_jmp_40"]),
 	JmpIfRandom1of2(["EVENT_1816_ret_51"]),
 	Jmp(["EVENT_1816_action_queue_43"], identifier="EVENT_1816_jmp_40"),
-	JmpIfBitClear(UNKNOWN_LARGE_CONVEYOR_ROOM, ["EVENT_1816_set_bit_32"], identifier="EVENT_1816_jmp_if_bit_clear_41"),
+	JmpIfBitClear(TROOPA_CLIMB_COMPLETED, ["EVENT_1816_set_bit_32"], identifier="EVENT_1816_jmp_if_bit_clear_41"),
 	SetVarToConst(TEMP_7028, 5),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_SetSpriteSequence(index=9, sprite_offset=2, is_sequence=True, looping=True, mirror_sprite=True)

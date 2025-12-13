@@ -31,8 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5, ["EVENT_3640_run_dialog_308"]),
-	SetBit(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5),
+	JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_run_dialog_308"]),
+	
 	FadeOutToBlack(sync=True, duration=60),
 	PauseScriptUntilEffectDone(),
 	ClearBit(TEMP_704C_0),
@@ -335,6 +335,7 @@ script = EventScript([
 	UnfreezeCamera(),
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+    SetBit(STATUE_GAME_DONE),
 	JmpIfBitSet(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_3640_set_bit_204"]),
 	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_3640_jmp_to_subroutine_205"]),
 	SetBit(STATUE_KEEPER_STAR_PIECE),
@@ -444,6 +445,9 @@ script = EventScript([
 	EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, X, A, Y, B]),
 	RestoreAllHP(),
 	RestoreAllFP(),
+	SetVarToConst(PRIMARY_TEMP_7000, 520),
+	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+    SetBit(STATUE_GAME_DONE),
 	JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["EVENT_3640_play_music_default_volume_254"]),
 	PlayMusicAtDefaultVolume(M0061_VALENTINA),
 	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_3640_ret_253"]),

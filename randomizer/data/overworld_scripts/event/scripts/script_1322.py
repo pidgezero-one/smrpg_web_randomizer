@@ -1,4 +1,4 @@
-# E1322_EMPTY
+# E1322_NIMBUS_5_DOOR_CHEST_LIBERATED
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	JmpIfBitSet(NIMBUS_MISSABLE_CHECK_OPENED, ["E0172_set_7000_to_current_level_0"]),
+    JmpToEvent(E2082_NIMBUS_MISSABLE_CHEST_1),
+    SetBit(NIMBUS_MISSABLE_CHECK_CLEARED, identifier="E1322_jmp_to_event_2"),
+    JmpToEvent(E0172_CHEST_1_CONTAINER)
 ])

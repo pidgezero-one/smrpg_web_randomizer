@@ -1,7 +1,32 @@
 # R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize
-from smrpgpatchbuilder.datatypes.levels.classes import Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, Room
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    ObjectType,
+    EventInitiator,
+    PostBattleBehaviour,
+    Direction,
+    EdgeDirection,
+    ExitType,
+    BufferType,
+    BufferSpace,
+    VramStore,
+    ShadowSize,
+)
+from smrpgpatchbuilder.datatypes.levels.classes import (
+    Buffer,
+    Partition,
+    DestinationProps,
+    RoomExit,
+    MapExit,
+    Event,
+    BattlePackNPC,
+    RegularNPC,
+    ChestNPC,
+    BattlePackClone,
+    RegularClone,
+    ChestClone,
+    Room,
+)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from . import npcs
 from ..variables.room_names import *
@@ -9,29 +34,30 @@ from ..variables.overworld_area_names import *
 from ..variables.music_names import *
 from ..variables.event_script_names import *
 from ..variables.action_script_names import *
+
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,
         extra_sprite_buffer_size=0,
-        buffers = [
+        buffers=[
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
+                index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True
-            )
+                index_in_main_buffer=True,
+            ),
         ],
-        full_palette_buffer=True
+        full_palette_buffer=True,
     ),
     music=M0039_MARRYMORE,
     entrance_event=E0600_MARRYMORE_OCCUPIED_CHAPEL_LOADER,
@@ -46,10 +72,11 @@ room = Room(
             length=2,
             nw_se_edge_active=True,
             ne_sw_edge_active=False,
-            byte_8_bit_4=False),
+            byte_8_bit_4=False,
+        ),
     ],
     objects=[
-        RegularNPC( # 0
+        RegularNPC(  # 0
             npc=npcs.SNIFIT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3594_GET_ITEM_FROM_CHAPEL_HENCHMAN_1,
@@ -75,8 +102,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 1
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 1
             npc=npcs.SNIFIT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3595_GET_ITEM_FROM_CHAPEL_HENCHMAN_2,
@@ -102,8 +130,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 2
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 2
             npc=npcs.SNIFIT_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E3593_GET_ITEM_FROM_CHAPEL_HENCHMAN_3,
@@ -129,8 +158,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 3
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 3
             npc=npcs.BANANA_PEEL_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0655_MARRYMORE_GEAR_GRANT_CROWN,
@@ -156,9 +186,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 4
-            npc=npcs.BANANA_PEEL_NPC,
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 4
+            npc=npcs.SHOES_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0656_EMPTY,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
@@ -183,9 +214,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 5
-            npc=npcs.BANANA_PEEL_NPC,
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 5
+            npc=npcs.CROWN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
@@ -210,9 +242,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 6
-            npc=npcs.BANANA_PEEL_NPC,
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 6
+            npc=npcs.BROOCH_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0658_EMPTY,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
@@ -237,9 +270,10 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 7
-            npc=npcs.BOOSTER_NPC,
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 7
+            npc=npcs.RING_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0663_INITIATE_MARRYMORE_BOSS_FIGHT_IF_ALL_GEAR_COLLECTED,
             action_script=A0015_DO_NOTHING,
@@ -264,8 +298,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 8
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 8
             npc=npcs.TOADSTOOL_WALKING_DOWN_LEFT_NPC,
             initiator=EventInitiator.NONE,
             event_script=E0663_INITIATE_MARRYMORE_BOSS_FIGHT_IF_ALL_GEAR_COLLECTED,
@@ -291,8 +326,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
-        RegularNPC( # 9
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 9
             npc=npcs.TORTE_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0630_MARRYMORE_KITCHEN_CHEF_1,
@@ -318,8 +354,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 10
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 10
             npc=npcs.TORTE_NPC_2,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0630_MARRYMORE_KITCHEN_CHEF_1,
@@ -345,8 +382,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 11
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 11
             npc=npcs.BUNDT_OBJECT_NPC,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0256_RETURN,
@@ -372,8 +410,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-        RegularNPC( # 12
+            byte7_upper2=3,
+        ),
+        RegularNPC(  # 12
             npc=npcs.BUNDT_OBJECT_NPC_2,
             initiator=EventInitiator.DO_ANYTHING,
             event_script=E2052_CHAPEL_POSTGAME_BOSS,
@@ -399,6 +438,7 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=False,
             cant_move_if_in_air=False,
-            byte7_upper2=3),
-    ]
+            byte7_upper2=3,
+        ),
+    ],
 )

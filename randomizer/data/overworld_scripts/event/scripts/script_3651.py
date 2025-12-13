@@ -39,9 +39,6 @@ script = EventScript([
 		A_ShiftZDownPixels(8),
 		A_EndLoop()
 	]),
-	ActionQueueSync(target=NPC_5, subscript=[
-		A_SetSpriteSequence(index=5, is_sequence=True, looping=True)
-	]),
 	ActionQueueAsync(target=NPC_4, subscript=[
 		A_FaceSoutheast(),
 		A_SetSequenceSpeed(FAST),

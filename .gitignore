@@ -114,3 +114,5 @@ smrpgr.code-workspace
 .vscode
 .claude
 patchvenv
+
+**/.DS_Store

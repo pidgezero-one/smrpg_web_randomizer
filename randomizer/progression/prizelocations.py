@@ -41,7 +41,9 @@ from ..types.prizelocation import (
     TreasureShopLocation,
     BoosterHillLocation,
     FrogDiscipleLocation,
+    PacketLocationRow1,
 )
+from ..types.packet_type import PacketType
 from ..data.variables.room_names import *
 from ..data.variables.event_script_names import *
 from .prizes import *
@@ -90,6 +92,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 # The actual memory address this corresponds to can be found in data/variables/variable_names.py
 # ie TOAD_IN_MUSHROOM_WAY_1 = Flag(0x7052, 4) = $7052 bit 4
 
+# There are no longer any missable checks. All missable checks have become permanent in one way or another
+
 # note: hidon + pandorite mimics work weird. they do three things
 # they can appear in any chest
 # say for example the fight is in the MushroomKingdomMainHall chest...
@@ -101,6 +105,13 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 # so it's kind of like a chest checked condition gets deferred when a mimic is found
 # the actual chest that does this is random every seed
 # i am not sure what that implies for AP but we can work it out
+
+# not sure what to do about InfiniteCoinsPrize
+# normally an easy way to tell a chest is checked is if its object trigger is disabled
+# but the chest that holds infinite coins never disables its object trigger
+# can be in a random chest
+# is it possible for tracker to know ahead of time which chest it is in and flag it as checked when first opened?
+# when the player first hits the chest that contains infinite coins it will set the INFINITE_COINS_FOUND bit regardless of what chest it's been shuffled into
 
 
 ########## mario's house
@@ -492,7 +503,7 @@ class BanditsWayDogChestLocation(TreasureChestLocationRow1):
 
 
 class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
-    _originally_held = EXPStarPrize
+    _originally_held = BanditsWayStarPrize
     _rooms = [R078_BANDITS_WAY_AREA_04]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_CHEST
@@ -562,13 +573,28 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
     # flag as checked: npc 1 in room 60 has its object trigger disabled.
 
 
+class Mimic1BossFight(BossFightLocation):
+    _originally_held = PandoriteBossFight
+    _rooms = [512]  # can be in any room.
+    _override_id = 512
+    _id = ShuffleLocationSelector.PANDORITE_BOSS_FIGHT
+    # Flag as checked: MIMIC_1_CLEARED
+
+
 class Mimic1DropRewardLocation(NPCLocationRow1):
     _originally_held = TrueformPinPrize
     _rooms = [512]  # can be in any room, custom id.
-    _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PANDORITE_REWARD_1
     _override_id = 512
     # flag as checked: MIMIC_1_CLEARED
+
+
+class Mimic1StarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [512]  # can be in any room.
+    _override_id = 512
+    _id = ShuffleLocationSelector.PANDORITE_BOSS
+    # Flag as checked: MIMIC_1_CLEARED
 
 
 class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
@@ -1232,7 +1258,7 @@ class OuterMinesStarPiece(StarPieceLocation):
 
 
 class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
-    _originally_held = EXPStarPrize
+    _originally_held = MolevilleMinesStarPrize
     _rooms = [R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_STAR_CHEST
@@ -1654,8 +1680,8 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _override_id = 528
     _id = ShuffleLocationSelector.BOOSTER_TOWER_BOSS_1
-    # Flag as checked: POSTGAME_TOWER_COMPLETED
     _remake_only = True
+    # Flag as checked: POSTGAME_TOWER_COMPLETED
 
 
 class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
@@ -1663,6 +1689,15 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
     _override_id = 528
     _id = ShuffleLocationSelector.BOOSTER_TOWER_STAR_PIECE_1
+    _remake_only = True
+    # Flag as checked: POSTGAME_TOWER_COMPLETED
+
+
+class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow2):
+    _originally_held = Stella023Prize
+    _rooms = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _id = ShuffleLocationSelector.BOOSTER_TOWER_POSTGAME_DROP
+    _remake_only = True
     # Flag as checked: POSTGAME_TOWER_COMPLETED
 
 
@@ -1852,21 +1887,21 @@ class MarrymoreThirdSuitePrizeLocation(NPCLocationRow3):
 
 
 class MarrymoreFourthSuitePrizeLocation(NPCLocationRow4):
-    _originally_held = FrogCoinPrize
+    _originally_held = FrogCoin2Prize
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_4
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize4Threshold setting
 
 
 class MarrymoreFifthSuitePrizeLocation(NPCLocationRow5):
-    _originally_held = FrogCoinPrize
+    _originally_held = FrogCoin3Prize
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_5
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize5Threshold setting
 
 
 class MarrymoreSixthSuitePrizeLocation(NPCLocationRow6):
-    _originally_held = FrogCoinPrize
+    _originally_held = FrogCoin20Prize
     _rooms = [R007_MARRYMORE_INN_1F]
     _id = ShuffleLocationSelector.MARRYMORE_PRIZE_6
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize6Threshold setting
@@ -1888,24 +1923,32 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
     # flag as checked: npc 0 in room 9 has its object trigger disabled.
 
 
-class MarrymoreSnifit1Location(NPCLocationRow1):
+# These are really NPC grants but they need sprite replacements.
+# Override container event
+class MarrymoreSnifit1Location(StandingLocationRow1):
     _originally_held = BroochPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
+    _container_event = E0253_NPC_QUEST_1_GRANT
+    _npc_ids = [NPC_6]
     # flag as checked: CHAPEL_ITEM_1_RETRIEVED
 
 
-class MarrymoreSnifit2Location(NPCLocationRow2):
+class MarrymoreSnifit2Location(StandingLocationRow2):
     _originally_held = RingPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
+    _container_event = E0252_NPC_QUEST_2_GRANT
+    _npc_ids = [NPC_7]
     # flag as checked: CHAPEL_ITEM_2_RETRIEVED
 
 
-class MarrymoreSnifit3Location(NPCLocationRow3):
+class MarrymoreSnifit3Location(StandingLocationRow3):
     _originally_held = ShoesPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
+    _container_event = E0251_NPC_QUEST_3_GRANT
+    _npc_ids = [NPC_4]
     # flag as checked: CHAPEL_ITEM_3_RETRIEVED
 
 
@@ -1964,6 +2007,18 @@ class MarrymoreBossFightRemakeItemDrop(NPCLocationRow4):
     # flag as checked: POSTGAME_CHAPEL_COMPLETE
 
 
+########### star hill
+
+
+class StarHillStarPiece(StarPieceLocation):
+    _originally_held = StarPiece4
+    _rooms = [R159_STAR_HILL_AREA_04]
+    _id = ShuffleLocationSelector.STAR_HILL_STAR_PIECE_1
+    # Flag as checked (send item, which i guess we can't do yet with SP checks):  NPC 9 removed from room and STAR_HILL_CHECKED
+    # Flag as checked (tracker): STAR_HILL_CHECKED
+    # TODO this is a special case where the star is a npc
+
+
 ########### seaside town pre-liberation
 
 
@@ -2000,11 +2055,27 @@ class FrogDiscipleLocation5(FrogDiscipleLocation):
 ########### seaside town when boss fight available
 
 
+class SeasideBeachBossFight(BossFightLocation):
+    _originally_held = YaridovichBossFight
+    _rooms = [R316_SEASIDE_TOWN_BEACH]
+    _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS_FIGHT
+    # Flag as checked: SEASIDE_LIBERATED
+
+
+class SeasideBeachStarPiece(StarPieceLocation):
+    _originally_held = StarPiece5
+    _rooms = [R316_SEASIDE_TOWN_BEACH]
+    _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS
+    # Flag as checked: SEASIDE_LIBERATED
+
+
 class SeasideTownBossPrizeLocation(StandingLocationRow1):
     _originally_held = ShedKeyPrize
     _rooms = [R316_SEASIDE_TOWN_BEACH]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_BOSS_PRIZE
+    # flag as checked: npc 0 in room 316 has been removed from the room.
+    # TODO probably need a bit for this, item is absent by default and only summoned when boss defeated
 
 
 ########### seaside town gated by shed key
@@ -2014,13 +2085,18 @@ class SeasideTownShedRescueLocation(NPCLocationRow1):
     _originally_held = FlowerBoxPrize
     _rooms = [R314_SEASIDE_TOWN_SHED]
     _id = ShuffleLocationSelector.SEASIDE_TOWN_RESCUE
+    # flag as checked: SEASIDE_SHED_EMPTIED
+
+
+########## sea
 
 
 class SeaStarslapRoomChestLocation(TreasureChestLocationRow1):
-    _originally_held = EXPStarPrize
+    _originally_held = SeaStarPrize
     _rooms = [R134_SEA_AREA_03_SUPER_STAR_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEA_STAR_CHEST
+    # flag as checked: npc 0 in room 134 has its object trigger disabled.
 
 
 class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
@@ -2028,6 +2104,7 @@ class SeaSaveRoomBackChestLocation(TreasureChestLocationRow3):
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_1
+    # flag as checked: npc 0 in room 132 has its object trigger disabled.
 
 
 class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
@@ -2035,6 +2112,7 @@ class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_2
+    # flag as checked: npc 1 in room 132 has its object trigger disabled.
 
 
 class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
@@ -2042,6 +2120,7 @@ class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow1):
     _rooms = [R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SEA_SAVE_ROOM_3
+    # flag as checked: npc 2 in room 132 has its object trigger disabled.
 
 
 class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
@@ -2049,6 +2128,10 @@ class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
     _rooms = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEA_WHIRLPOOL_CHEST
+    # flag as checked: npc 0 in room 133 has its object trigger disabled.
+
+
+########## sunken ship
 
 
 class ShipRatStairsChestLocation(TreasureChestLocationRow1):
@@ -2056,15 +2139,39 @@ class ShipRatStairsChestLocation(TreasureChestLocationRow1):
     _rooms = [R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS
+    # flag as checked: npc 0 in room 167 has its object trigger disabled.
 
 
-# TODO: ShipRatStairsBoxes - original bases: PacketItem, SunkenShipLocation
+class ShipRatStairsBoxesLocation(PacketLocationRow1):
+    _originally_held = FPFlowerPrize
+    _replace = "spawn_ship_box_item"
+    _rooms = [R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS]
+    _packet_type = PacketType.CHEST
+    # flag as checked: SHIP_STAIRWAY_FREESTANDING_ITEM_OBTAINED
 
-# TODO: ShipTroopaPuzzle - original bases: PacketItem, SunkenShipLocation
 
-# TODO: ShipTrampolinePuzzle - original bases: PacketItem, SunkenShipLocation
+class ShipTroopaPuzzleLocation(PacketLocationRow1):
+    _originally_held = RecoveryMushroomPrize
+    _replace = "spawn_ship_troopa_item"
+    _rooms = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
+    _packet_type = PacketType.FALLING
+    # flag as checked: SHIP_TROOPA_PRIZE
 
-# TODO: Ship3DMazePuzzle - original bases: PacketItem, SunkenShipLocation
+
+class ShipTrampolinePuzzle(PacketLocationRow1):
+    _originally_held = FPFlowerPrize
+    _replace = "spawn_ship_trampoline_item"
+    _rooms = [R163_SUNKEN_SHIP_PUZZLE_ROOM_2]
+    _packet_type = PacketType.FALLING
+    # flag as checked: UNKNOWN_707D_1
+
+
+class Ship3DMazePuzzle(PacketLocationRow1):
+    _originally_held = RoyalSyrupPrize
+    _replace = "spawn_ship_3d_maze_item"
+    _rooms = [R168_SUNKEN_SHIP_PUZZLE_ROOM_3]
+    _packet_type = PacketType.FALLING
+    # flag as checked: SHIP_MAZE_PRIZE
 
 
 class ShipShopChestLocation(TreasureChestLocationRow1):
@@ -2072,11 +2179,30 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
     _rooms = [R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SHOP
+    # flag as checked: npc 0 in room 169 has its object trigger disabled.
 
 
-class ShipCoinSnakePuzzleLocation(NPCLocationRow1):
-    _originally_held = CoinPrize
-    _rooms = [R171_SUNKEN_SHIP_PUZZLE_ROOM_4]
+class ShipCoinSnakePuzzleLocation(StandingLocationRow1):
+    _originally_held = Coins150Prize
+    _rooms = [
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+        R171_SUNKEN_SHIP_PUZZLE_ROOM_4,
+    ]
     _npc_ids = [
         NPC_0,
         NPC_1,
@@ -2097,18 +2223,53 @@ class ShipCoinSnakePuzzleLocation(NPCLocationRow1):
         NPC_16,
     ]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COIN_SNAKE
+    # flag as checked: SHIP_COIN_PRIZE
 
 
-# TODO: ShipCannonballPuzzle - original bases: PacketItem, SunkenShipLocation
+class ShipCannonballPuzzle(PacketLocationRow1):
+    _originally_held = MushroomPrize
+    _replace = "spawn_ship_cannonball_item"
+    _rooms = [R172_SUNKEN_SHIP_PUZZLE_ROOM_5]
+    _packet_type = PacketType.FALLING
+    # flag as checked: SHIP_CANNONBALL_PRIZE
 
-# TODO: ShipBarrelPuzzle - original bases: PacketItem, SunkenShipLocation
+
+class ShipBarrelPuzzle(PacketLocationRow1):
+    _originally_held = RecoveryMushroomPrize
+    _replace = "spawn_ship_barrel_item"
+    _rooms = [R176_SUNKEN_SHIP_AREA_08_WSAVE_POINT_AND_GREEN_SWITCH_FOR_BARREL]
+    _packet_type = PacketType.FALLING
+    # flag as checked: UNKNOWN_707D_5
+
+
+class ShipPasswordBossFight(BossFightLocation):
+    _originally_held = KingCalamariBossFight
+    _rooms = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS_BOSS_FIGHT
+    # Flag as checked: SHIP_MIDBOSS_COMPLETED
+
+
+class ShipPasswordStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE]
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_MIDBOSS
+    # Flag as checked: SHIP_MIDBOSS_COMPLETED
 
 
 class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
-    _originally_held = CoinPrize
+    _originally_held = Coins100Prize
     _rooms = [R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
+    # flag as checked: npc 0 in room 175 has its object trigger disabled.
+
+
+class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
+    _originally_held = Coins100Prize
+    _rooms = [R175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM]
+    _npc_ids = [NPC_1]
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
+    # flag as checked: npc 1 in room 175 has its object trigger disabled.
 
 
 class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
@@ -2116,6 +2277,7 @@ class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_CLONE_ROOM
+    # flag as checked: npc 2 in room 179 has its object trigger disabled.
 
 
 class InnerShipBehindBoxesChestLocation(TreasureChestLocationRow1):
@@ -2123,6 +2285,7 @@ class InnerShipBehindBoxesChestLocation(TreasureChestLocationRow1):
     _rooms = [R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_FROG_COIN_ROOM
+    # flag as checked: npc 0 in room 183 has its object trigger disabled.
 
 
 class InnerShipSaveRoomLeftChestLocation(TreasureChestLocationRow1):
@@ -2130,23 +2293,47 @@ class InnerShipSaveRoomLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_HIDON_MUSHROOM
+    # flag as checked: npc 1 in room 184 has its object trigger disabled.
 
 
 class InnerShipSaveRoomRightChestLocation(TreasureChestLocationRow2):
-    _originally_held = BossFightPrize
+    _originally_held = SecondMimicFightLauncher
     _rooms = [R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.HIDON_CHEST
+    # flag as checked: npc 2 in room 184 has its object trigger disabled.
 
 
 class Mimic2DropRewardLocation(NPCLocationRow1):
     _originally_held = SafetyBadgePrize
+    _rooms = [513]  # can be in any room, custom id.
     _id = ShuffleLocationSelector.HIDON_REWARD_1
+    _override_id = 513
+    # flag as checked: MIMIC_2_CLEARED
+
+
+class Mimic2BossFight(BossFightLocation):
+    _originally_held = HidonBossFight
+    _rooms = [513]  # can be in any room.
+    _override_id = 513
+    _id = ShuffleLocationSelector.HIDON_BOSS_FIGHT
+    # Flag as checked: MIMIC_2_CLEARED
+
+
+class Mimic2StarPiece(StarPieceLocation):
+    _originally_held = None
+    _id = ShuffleLocationSelector.HIDON_BOSS
+    _rooms = [513]
+    _override_id = 513
+    # Flag as checked: MIMIC_2_CLEARED
 
 
 class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
-    _originally_held = CoinPrize
+    _originally_held = Coins100Prize
+    _rooms = [513]  # can be in any room.
     _id = ShuffleLocationSelector.HIDON_REWARD_2
+    _override_id = 513
+    # flag as checked: the host chest for SecondMimicFightLauncher has its object trigger disabled
 
 
 class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
@@ -2154,6 +2341,7 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_1
+    # flag as checked: npc 0 in room 187 has been removed from the room.
 
 
 class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
@@ -2161,6 +2349,7 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_2
+    # flag as checked: npc 1 in room 187 has been removed from the room.
 
 
 class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
@@ -2168,6 +2357,7 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_3
+    # flag as checked: npc 2 in room 187 has been removed from the room.
 
 
 class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
@@ -2175,6 +2365,7 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
     _rooms = [R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_UNDERWATER_FROG_COIN_4
+    # flag as checked: npc 3 in room 187 has been removed from the room.
 
 
 class InnerShipSecretRoomChestLocation(TreasureChestLocationRow1):
@@ -2182,6 +2373,7 @@ class InnerShipSecretRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SAFETY_RING
+    # flag as checked: npc 0 in room 185 has its object trigger disabled.
 
 
 class InnerShipPoolRoomLocation(StandingLocationRow1):
@@ -2189,6 +2381,7 @@ class InnerShipPoolRoomLocation(StandingLocationRow1):
     _rooms = [R027_SUNKEN_SHIP_POSTKC_AREA_13_LARGE_UNDERWATER_ROOM_WITH_A_BLOOBER]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BLOOBER_ROOM
+    # flag as checked: npc 5 in room 27 has been removed from the room.
 
 
 class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
@@ -2196,6 +2389,50 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
     _rooms = [R024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BANDANA_REDS
+    # flag as checked: npc 4 in room 24 has its object trigger disabled.
+
+
+class ShipFinalBossFight(BossFightLocation):
+    _originally_held = JohnnyBossFight
+    _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_BOSS_FIGHT
+    # Flag as checked: SHIP_LIBERATED
+
+
+class ShipFinalStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_BOSS
+    # Flag as checked: SHIP_LIBERATED
+
+
+class ShipPostgameBossFight(BossFightLocation):
+    _originally_held = Johnny2Fight
+    _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS_FIGHT
+    _override_id = 526
+    _remake_only = True
+    # Flag as checked: POSTGAME_SHIP_COMPLETED
+
+
+class ShipPostgameFightItemDrop(NPCLocationRow1):
+    _originally_held = ExtraShinyStonePrize
+    _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_DROP
+    _remake_only = True
+    # flag as checked: POSTGAME_SHIP_COMPLETED
+
+
+class ShipPostgameStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    _id = ShuffleLocationSelector.SUNKEN_SHIP_POSTGAME_BOSS
+    _override_id = 526
+    _remake_only = True
+    # Flag as checked: POSTGAME_SHIP_COMPLETED
+
+
+########## lands end
 
 
 class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
@@ -2203,6 +2440,7 @@ class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
     _rooms = [R137_LANDS_END_AREA_01]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.LANDS_END_RED_ESSENCE
+    # flag as checked: npc 4 in room 137 has its object trigger disabled.
 
 
 class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
@@ -2210,6 +2448,7 @@ class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
     _rooms = [R138_LANDS_END_AREA_02]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_1
+    # flag as checked: npc 6 in room 138 has its object trigger disabled.
 
 
 class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
@@ -2217,6 +2456,7 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
     _rooms = [R138_LANDS_END_AREA_02]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_2
+    # flag as checked: npc 7 in room 138 has its object trigger disabled.
 
 
 class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
@@ -2224,6 +2464,7 @@ class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
     _rooms = [R141_LANDS_END_AREA_04_ROTATING_FLOWERS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LNDS_END_BEE_ROOM
+    # flag as checked: npc 6 in room 141 has its object trigger disabled.
 
 
 class LandsEndCaveSideRemake(TreasureChestLocationRow1):
@@ -2240,6 +2481,7 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _rooms = [R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_1
+    # flag as checked: npc 7 in room 270 has its object trigger disabled.
 
 
 class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
@@ -2247,6 +2489,7 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
     _rooms = [R270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_SECRET_2
+    # flag as checked: npc 6 in room 270 has its object trigger disabled.
 
 
 class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
@@ -2254,40 +2497,62 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
     _rooms = [R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_SHY_AWAY
+    # flag as checked: npc 6 in room 401 has its object trigger disabled.
 
 
 class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
-    _originally_held = EXPStarPrize
+    _originally_held = LandsEndVolcanoStarPrize
     _rooms = [R263_LANDS_END_UNDERGROUND_AREA_01]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_1
+    # flag as checked: npc 5 in room 263 has its object trigger disabled.
 
 
 class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
-    _originally_held = EXPStarPrize
+    _originally_held = LandsEndStar2Prize
     _rooms = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
     _npc_ids = [NPC_18]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_2
+    # flag as checked: npc 18 in room 262 has its object trigger disabled.
 
 
 class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
-    _originally_held = EXPStarPrize
+    _originally_held = LandsEndStar3Prize
     _rooms = [R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
     _npc_ids = [NPC_19]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_3
+    # flag as checked: npc 19 in room 262 has its object trigger disabled.
 
 
 class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
     _originally_held = TroopaPinPrize
     _rooms = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
     _id = ShuffleLocationSelector.TROOPA_CLIMB
+    # flag as checked: TROOPA_CLIMB_COMPLETED
+
+
+class LandsEndCloudBoss(StarPieceLocation):
+    _originally_held = None
+    _id = ShuffleLocationSelector.LANDS_END_CLOUD_BOSS_FIGHT
+    _rooms = [519]
+    _override_id = 519
+    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
+
+
+class LandsEndCloudStarPiece(StarPieceLocation):
+    _originally_held = None
+    _id = ShuffleLocationSelector.LANDS_END_STAR_PIECE_1
+    _rooms = [519]
+    _override_id = 519
+    # Flag as checked: LANDS_END_CLOUD_STAR_PIECE_COMPLETED
 
 
 class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
-    _originally_held = CoinPrize
+    _originally_held = Coins50Prize
     _rooms = [R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_TELLER
+    # flag as checked: npc 5 in room 420 has its object trigger disabled.
 
 
 class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
@@ -2295,6 +2560,7 @@ class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_1
+    # flag as checked: npc 6 in room 421 has its object trigger disabled.
 
 
 class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
@@ -2302,6 +2568,7 @@ class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_2
+    # flag as checked: npc 7 in room 421 has its object trigger disabled.
 
 
 class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
@@ -2309,6 +2576,7 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_3
+    # flag as checked: npc 8 in room 421 has its object trigger disabled.
 
 
 class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
@@ -2316,6 +2584,7 @@ class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_4
+    # flag as checked: npc 9 in room 421 has its object trigger disabled.
 
 
 class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
@@ -2323,13 +2592,15 @@ class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_1
+    # flag as checked: npc 0 in room 425 has its object trigger disabled.
 
 
 class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
-    _originally_held = CoinPrize
+    _originally_held = Coins150Prize
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_2
+    # flag as checked: npc 1 in room 425 has its object trigger disabled.
 
 
 class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
@@ -2337,6 +2608,7 @@ class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
+    # flag as checked: npc 2 in room 425 has its object trigger disabled.
 
 
 class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
@@ -2344,13 +2616,15 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
     _rooms = [R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_AFTER_FORTUNE_3
+    # flag as checked: npc 3 in room 425 has its object trigger disabled.
 
 
-class BelomeTemplTreasuryeUpperCornerLeftItemLocation(StandingLocationRow1):
+class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
     _originally_held = FPFlowerPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_1
+    # flag as checked: npc 0 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2):
@@ -2358,6 +2632,7 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_2
+    # flag as checked: npc 1 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
@@ -2365,6 +2640,7 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_3
+    # flag as checked: npc 2 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
@@ -2372,6 +2648,7 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FLOWER_4
+    # flag as checked: npc 3 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
@@ -2379,6 +2656,7 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_1
+    # flag as checked: npc 4 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
@@ -2386,6 +2664,7 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_2
+    # flag as checked: npc 5 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
@@ -2393,6 +2672,7 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_3
+    # flag as checked: npc 6 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
@@ -2400,6 +2680,7 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_4
+    # flag as checked: npc 7 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
@@ -2407,6 +2688,7 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_5
+    # flag as checked: npc 8 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
@@ -2414,6 +2696,7 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_6
+    # flag as checked: npc 9 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow11):
@@ -2421,6 +2704,7 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_7
+    # flag as checked: npc 10 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
@@ -2428,6 +2712,7 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_FROG_COIN_8
+    # flag as checked: npc 11 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
@@ -2435,6 +2720,7 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_2
+    # flag as checked: npc 13 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
@@ -2442,6 +2728,7 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_1
+    # flag as checked: npc 14 in room 422 has been removed from the room.
 
 
 class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow15):
@@ -2449,6 +2736,50 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
     _npc_ids = [NPC_15]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_3
+    # flag as checked: npc 15 in room 422 has been removed from the room.
+
+
+class TempleBossFight(BossFightLocation):
+    _originally_held = Belome2BossFight
+    _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
+    _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_FIGHT
+    # Flag as checked: TEMPLE_BOSS_DEFEATED
+
+
+class TempleBossFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
+    _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS
+    # Flag as checked: TEMPLE_BOSS_DEFEATED
+
+
+class TempleBossFightPostgame(BossFightLocation):
+    _originally_held = Belome3Dight
+    _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
+    _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_FIGHT
+    _override_id = 523
+    _remake_only = True
+    # Flag as checked: TEMPLE_POSTGAME_BOSS_DEFEATED
+
+
+class TempleBossFightStarPiecePostgame(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
+    _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME
+    _override_id = 523
+    _remake_only = True
+    # Flag as checked: TEMPLE_POSTGAME_BOSS_DEFEATED
+
+
+class TemplePostgameFightItemDrop(NPCLocationRow1):
+    _originally_held = SageStickPrize
+    _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
+    _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_DROP
+    _remake_only = True
+    # flag as checked: TEMPLE_POSTGAME_BOSS_DEFEATED
+
+
+########## monstro town
 
 
 class MonstroEntranceLocation(TreasureChestLocationRow1):
@@ -2456,6 +2787,7 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
     _rooms = [R267_MONSTRO_TOWN_ENTRANCE]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.MONSTRO_TOWN_ENTRANCE
+    # flag as checked: npc 1 in room 267 has its object trigger disabled.
 
 
 class MonstroThwompItemLocation(StandingLocationRow1):
@@ -2463,36 +2795,170 @@ class MonstroThwompItemLocation(StandingLocationRow1):
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MONSTRO_TOWN_THWOMP
+    # flag as checked: npc 0 in room 324 has been removed from the room.
+
+
+class DojoFirstFight(BossFightLocation):
+    _originally_held = JaggerBossFight
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_1
+    # Flag as checked: DOJO_BOSS_1_DEFEATED
+
+
+class DojoFirstFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_1
+    # Flag as checked: DOJO_BOSS_1_DEFEATED
+
+
+class DojoSecondFight(BossFightLocation):
+    _originally_held = Jinx1BossFight
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_2
+    _override_id = 515
+    # Flag as checked: DOJO_BOSS_2_DEFEATED
+
+
+class DojoSecondFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_2
+    _override_id = 515
+    # Flag as checked: DOJO_BOSS_2_DEFEATED
+
+
+class DojoThirdFight(BossFightLocation):
+    _originally_held = Jinx2BossFight
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_3
+    _override_id = 516
+    # Flag as checked: DOJO_BOSS_3_DEFEATED
+
+
+class DojoThirdFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_3
+    _override_id = 516
+    # Flag as checked: DOJO_BOSS_3_DEFEATED
+
+
+class DojoFourthFight(BossFightLocation):
+    _originally_held = Jinx3BossFight
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_4
+    _override_id = 517
+    # Flag as checked: DOJO_BOSS_4_DEFEATED
+
+
+class DojoFourthFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_4
+    _override_id = 517
+    # Flag as checked: DOJO_BOSS_4_DEFEATED
 
 
 class MonstroDojoClearRewardLocation(NPCLocationRow1):
     _originally_held = JinxBeltPrize
     _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
     _id = ShuffleLocationSelector.JINX_DOJO_REWARD
+    # Flag as checked: DOJO_BOSS_4_DEFEATED
+
+
+class DojoFifthFight(BossFightLocation):
+    _originally_held = Jinx4BossFight
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_FIGHT_POSTGAME
+    _override_id = 525
+    _remake_only = True
+    # Flag as checked: DOJO_POSTGAME_COMPLETED
+
+
+class DojoFifthFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_POSTGAME
+    _override_id = 525
+    _remake_only = True
+    # Flag as checked: DOJO_POSTGAME_COMPLETED
+
+
+class MonstroDojoPostgameClearRewardLocation(NPCLocationRow2):
+    _originally_held = TeamworkBandPrize
+    _rooms = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _id = ShuffleLocationSelector.DOJO_BOSS_POSTGAME_REWARD
+    _remake_only = True
+    # Flag as checked: DOJO_POSTGAME_COMPLETED
+
+
+class MonstroSealedDoorBossFight(BossFightLocation):
+    _originally_held = CulexBossFight
+    _rooms = [R351_CULEXS_ROOM]
+    _id = ShuffleLocationSelector.CULEX_BOSS_FIGHT
+    # Flag as checked: MONSTRO_MIDDLE_DOOR_COMPLETED
+
+
+class MonstroSealedDoorStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
+    _id = ShuffleLocationSelector.CULEX_BOSS
+    # Flag as checked: MONSTRO_MIDDLE_DOOR_COMPLETED
 
 
 class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
     _originally_held = QuartzCharmPrize
-    _rooms = [R351_CULEXS_ROOM]
+    _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_REWARD
+    # Flag as checked: MONSTRO_MIDDLE_DOOR_COMPLETED
+
+
+class MonstroSealedDoorBossFightPostgame(BossFightLocation):
+    _originally_held = Culex3DBossFight
+    _rooms = [R351_CULEXS_ROOM]
+    _override_id = 524
+    _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS_FIGHT
+    # Flag as checked: CULEX_POSTGAME_COMPLETED
+
+
+class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
+    _originally_held = None
+    _override_id = 524
+    _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
+    _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS
+    # Flag as checked: CULEX_POSTGAME_COMPLETED
+
+
+class MonstroSealedDoorClearRewardLocationPostgame(NPCLocationRow2):
+    _originally_held = CrystalShardPrize
+    _rooms = [R351_CULEXS_ROOM]
+    _id = ShuffleLocationSelector.CULEX_POSTGAME_REWARD
+    # Flag as checked: CULEX_POSTGAME_COMPLETED
 
 
 class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
     _originally_held = AttackScarfPrize
     _rooms = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
     _id = ShuffleLocationSelector.SUPER_JUMPS_30
+    # Flag as checked: SUPER_JUMP_PRIZE_1_GRANTED
 
 
 class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
     _originally_held = SuperSuitPrize
     _rooms = [R397_MONSTRO_TOWN_SUPERJUMPING_ROOM]
     _id = ShuffleLocationSelector.SUPER_JUMPS_100
+    # Flag as checked: SUPER_JUMP_PRIZE_2_GRANTED
 
 
 class MonstroFlagExchangeLocation(NPCLocationRow1):
     _originally_held = GhostMedalPrize
     _rooms = [R399_MONSTRO_TOWN_3_MUSTY_FEARS_INN]
     _id = ShuffleLocationSelector.THREE_MUSTY_FEARS
+    # Flag as checked: INVISIBLE_FLAG_CHECK_DONE
+
+
+########## bean valley
 
 
 class BeanValleyFirstDeadEndLocation(TreasureChestLocationRow1):
@@ -2500,6 +2966,7 @@ class BeanValleyFirstDeadEndLocation(TreasureChestLocationRow1):
     _rooms = [R252_BEAN_VALLEY_MAIN_AREA]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_1
+    # flag as checked: npc 3 in room 252 has its object trigger disabled.
 
 
 class BeanValleyFirstProgressChestLocation(TreasureChestLocationRow2):
@@ -2507,6 +2974,7 @@ class BeanValleyFirstProgressChestLocation(TreasureChestLocationRow2):
     _rooms = [R252_BEAN_VALLEY_MAIN_AREA]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_2
+    # flag as checked: npc 4 in room 252 has its object trigger disabled.
 
 
 class BeanValleyLeftPiranhaPipeLocation(TreasureChestLocationRow1):
@@ -2514,6 +2982,7 @@ class BeanValleyLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _rooms = [R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_LEFT_PIRANHA_PIPE
+    # flag as checked: npc 0 in room 334 has its object trigger disabled.
 
 
 class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
@@ -2521,6 +2990,7 @@ class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _rooms = [R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_LEFT_PIRANHA_PIPE
+    # flag as checked: npc 0 in room 348 has its object trigger disabled.
 
 
 class BeanValleyBottomRightPiranhaPipeUpperLocation(TreasureChestLocationRow1):
@@ -2528,6 +2998,7 @@ class BeanValleyBottomRightPiranhaPipeUpperLocation(TreasureChestLocationRow1):
     _rooms = [R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_UPPER
+    # flag as checked: npc 0 in room 349 has its object trigger disabled.
 
 
 class BeanValleyBottomRightPiranhaPipeLowerLocation(TreasureChestLocationRow2):
@@ -2535,13 +3006,31 @@ class BeanValleyBottomRightPiranhaPipeLowerLocation(TreasureChestLocationRow2):
     _rooms = [R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOTTOM_RIGHT_PIRANHA_PIPE_LOWER
+    # flag as checked: npc 2 in room 349 has its object trigger disabled.
 
 
 class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
-    _originally_held = BossFightPrize
+    _originally_held = ThirdMimicFightLauncher
     _rooms = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_1
+    # flag as checked: npc 5 in room 335 has its object trigger disabled.
+
+
+class Mimic3BossFight(BossFightLocation):
+    _originally_held = BoxBoyBossFight
+    _rooms = [514]  # can be in any room.
+    _override_id = 514
+    _id = ShuffleLocationSelector.BOX_BOY_BOSS_FIGHT
+    # Flag as checked: MIMIC_3_CLEARED
+
+
+class Mimic3StarPiece(StarPieceLocation):
+    _originally_held = None
+    _id = ShuffleLocationSelector.BOX_BOY_BOSS
+    _rooms = [514]
+    _override_id = 514
+    # Flag as checked: MIMIC_3_CLEARED
 
 
 class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
@@ -2549,12 +3038,14 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_2
+    # flag as checked: npc 7 in room 335 has its object trigger disabled.
 
 
 class BeanValleyRightPipeUnderStairsLocation(NPCLocationRow1):
     _originally_held = FrogCoin1Prize
     _rooms = [R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_HIDDEN
+    # flag as checked: npc 8 in room 335 has its object trigger disabled.
 
 
 class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
@@ -2562,12 +3053,28 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
     _rooms = [R251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BEAN_VALLEY_PIRANHA_PLANTS
+    # flag as checked: npc 13 in room 251 has its object trigger disabled.
+
+
+class BeanValleyPlanterBossFight(BossFightLocation):
+    _originally_held = MegasmilaxBossFight
+    _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
+    _id = ShuffleLocationSelector.BEAN_VALLEY_BOSS_FIGHT
+    # Flag as checked: BEAN_VALLEY_BOSS_DEFEATED
+
+
+class BeanValleyPlanterStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
+    _id = ShuffleLocationSelector.BEAN_VALLEY_BOSS
+    # Flag as checked: BEAN_VALLEY_BOSS_DEFEATED
 
 
 class BeanValleyBossNoteLocation(NPCLocationRow1):
     _originally_held = SeedPrize
     _rooms = [R254_BEAN_VALLEY_SMILAX_AREA]
     _id = ShuffleLocationSelector.BEAN_VALLEY_MEGASMILAX_ROOM
+    # flag as checked: SEED_CHECKED
 
 
 class BeanstalkLowestChestLocation(TreasureChestLocationRow1):
@@ -2575,6 +3082,7 @@ class BeanstalkLowestChestLocation(TreasureChestLocationRow1):
     _rooms = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK
+    # flag as checked: npc 9 in room 379 has its object trigger disabled.
 
 
 class BeanValley1stRoomFloatingItemLocation(StandingLocationRow1):
@@ -2582,111 +3090,127 @@ class BeanValley1stRoomFloatingItemLocation(StandingLocationRow1):
     _rooms = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_FROG_COIN
+    # flag as checked: npc 3 in room 378 has been removed from the room.
 
 
 class BeanValley1stRoomMiddleCoinLocation(StandingLocationRow2):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_MIDDLE_COIN
+    # flag as checked: npc 4 in room 378 has been removed from the room.
 
 
 class BeanValley1stRoomUpperCoinLocation(StandingLocationRow3):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_UPPER_COIN
+    # flag as checked: npc 5 in room 378 has been removed from the room.
 
 
 class BeanValley1stRoomLowerCoinLocation(StandingLocationRow4):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R378_BEAN_VALLEY_BEANSTALKS_AREA_01]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_LOWER_COIN
+    # flag as checked: npc 6 in room 378 has been removed from the room.
 
 
 class Beanstalk2ndRoomFloatingItemLocation(StandingLocationRow1):
-    _originally_held = FPFlowerPrize
+    _originally_held = FrogCoin1Prize
     _rooms = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_FROG_COIN
+    # flag as checked: npc 6 in room 379 has been removed from the room.
 
 
 class Beanstalk2ndRoomCoin1Location(StandingLocationRow2):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_1
+    # flag as checked: npc 3 in room 379 has its object trigger disabled.
 
 
 class Beanstalk2ndRoomCoin2Location(StandingLocationRow3):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_2
+    # flag as checked: npc 4 in room 379 has its object trigger disabled.
 
 
 class Beanstalk2ndRoomCoin3Location(StandingLocationRow4):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R379_BEAN_VALLEY_BEANSTALKS_AREA_02]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_3
+    # flag as checked: npc 5 in room 379 has its object trigger disabled.
 
 
 class BeanValleyEastBeanstalkCoin1Location(StandingLocationRow1):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_1
+    # flag as checked: npc 3 in room 380 has its object trigger disabled.
 
 
 class BeanValleyEastBeanstalkCoin2Location(StandingLocationRow2):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_2
+    # flag as checked: npc 4 in room 380 has its object trigger disabled.
 
 
 class BeanValleyEastBeanstalkCoin3Location(StandingLocationRow3):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_3
+    # flag as checked: npc 5 in room 380 has its object trigger disabled.
 
 
 class BeanValleyEastBeanstalkCoin4Location(StandingLocationRow4):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_4
+    # flag as checked: npc 6 in room 380 has its object trigger disabled.
 
 
 class BeanValleyEastBeanstalkCoin5Location(StandingLocationRow5):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_5
+    # flag as checked: npc 7 in room 380 has its object trigger disabled.
 
 
 class BeanValleyWestBeanstalkCoin1Location(StandingLocationRow1):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_1
+    # flag as checked: npc 4 in room 381 has its object trigger disabled.
 
 
 class BeanValleyWestBeanstalkCoin2Location(StandingLocationRow2):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_2
+    # flag as checked: npc 5 in room 381 has its object trigger disabled.
 
 
 class BeanValleyWestBeanstalkCoin3Location(StandingLocationRow3):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_3
+    # flag as checked: npc 6 in room 381 has its object trigger disabled.
 
 
 class BeanValleyWestBeanstalkFloatingItemLocation(StandingLocationRow4):
@@ -2694,13 +3218,15 @@ class BeanValleyWestBeanstalkFloatingItemLocation(StandingLocationRow4):
     _rooms = [R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_FROG_COIN
+    # flag as checked: npc 7 in room 381 has been removed from the room.
 
 
 class BeanstalkUpperCloudLeftChestLocation(TreasureChestLocationRow1):
-    _originally_held = FrogCoin1Prize
+    _originally_held = FPFlowerPrize
     _rooms = [R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BEAN_VALLEY_CLOUD_1
+    # flag as checked: npc 1 in room 372 has its object trigger disabled.
 
 
 class BeanstalkUpperCloudRightChestLocation(TreasureChestLocationRow2):
@@ -2708,6 +3234,7 @@ class BeanstalkUpperCloudRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BEAN_VALLEY_CLOUD_2
+    # flag as checked: npc 2 in room 372 has its object trigger disabled.
 
 
 class BeanstalkLowerCloudLeftChestLocation(TreasureChestLocationRow1):
@@ -2715,6 +3242,7 @@ class BeanstalkLowerCloudLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FALL_1
+    # flag as checked: npc 1 in room 373 has its object trigger disabled.
 
 
 class BeanstalkLowerCloudRightChestLocation(TreasureChestLocationRow2):
@@ -2722,12 +3250,20 @@ class BeanstalkLowerCloudRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BEAN_VALLEY_FALL_2
+    # flag as checked: npc 2 in room 373 has its object trigger disabled.
+
+
+########## casino
 
 
 class CasinoGrateGuyPrizeLocation(NPCLocationRow1):
     _originally_held = StarEggPrize
     _rooms = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
     _id = ShuffleLocationSelector.CASINO_GRATE_GUY_PRIZE
+    # flag as checked: CASINO_PRIZE_WON
+
+
+########## nimbus land
 
 
 class NimbusShopChestLocation(TreasureChestLocationRow1):
@@ -2735,36 +3271,57 @@ class NimbusShopChestLocation(TreasureChestLocationRow1):
     _rooms = [R344_NIMBUS_LAND_ITEM_SHOP]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_LAND_SHOP
+    # flag as checked: npc 0 in room 344 has its object trigger disabled.
 
 
 class NimbusInnDreamPrize1Location(NPCLocationRow1):
     _originally_held = RedEssencePrize
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN
+    # flag as checked: NIMBUS_INN_PRIZE_GRANTED
 
 
 class NimbusInnDreamPrize2Location(NPCLocationRow2):
     _originally_held = RedEssencePrize
     _rooms = [R346_NIMBUS_LAND_INN_BEDROOM]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
+    # flag as checked: NIMBUS_INN_PRIZE_GRANTED
 
 
 class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
     _originally_held = FeatherPrize
     _rooms = [R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM]
+    _override_id = 520
     _id = ShuffleLocationSelector.DODO_REWARD
+    # flag as checked: STATUE_GAME_DONE
+
+
+class StatueRoomBossFight(BossFightLocation):
+    _originally_held = DodoBossFight
+    _override_id = 520
+    _id = ShuffleLocationSelector.NIMBUS_LAND_STATUE_BOSS_FIGHT
+    # Flag as checked: STATUE_KEEPER_STAR_PIECE
+
+
+class StatueRoomStarPiece(StarPieceLocation):
+    _originally_held = None
+    _override_id = 520
+    _id = ShuffleLocationSelector.NIMBUS_LAND_STAR_PIECE_1
+    # Flag as checked: STATUE_KEEPER_STAR_PIECE
 
 
 class NimbusCastleOuterPrisonCellarRightNPCLocation(NPCLocationRow1):
     _originally_held = FlowerJarPrize
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS
+    # flag as checked: BLUE_CELLAR_GUARD_ITEM_GRANTED
 
 
 class NimbusCastleOuterPrisonCellarLeftNPCLocation(NPCLocationRow2):
     _originally_held = CastleKey1Prize
     _rooms = [R414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS_2
+    # flag as checked: RED_CELLAR_GUARD_ITEM_GRANTED
 
 
 class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1):
@@ -2772,16 +3329,20 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     _rooms = [R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_LAND_INN_2
+    # flag as checked: NIMBUS_MISSABLE_CHECK_CLEARED
+    # (not really missable anymore. the chest that replaces this in the liberated castle will simply give you its item first if you didn't already get it)
 
 
 class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
     _originally_held = FPFlowerPrize
     _rooms = [
         R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE,
-        R500_NIMBUS_CASTLE_AREA_04_____DUMMY,
+        R500_NIMBUS_CASTLE_AREA_04_DUMMY,
     ]
     _npc_ids = [NPC_2, NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_LAND_BEFORE_BIRDETTA_2
+    # flag as checked: npc 2 in room 111 has its object trigger disabled.
+    # or npc 0 in room 500 has its object trigger disabled
 
 
 class NimbusCastleOutOfBoundsChestLocation(TreasureChestLocationRow1):
@@ -2791,6 +3352,7 @@ class NimbusCastleOutOfBoundsChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_OUT_OF_BOUNDS_1
+    # flag as checked: npc 0 in room 410 has its object trigger disabled
 
 
 class NimbusCastleAboveJawfulChestLocation(TreasureChestLocationRow2):
@@ -2800,6 +3362,7 @@ class NimbusCastleAboveJawfulChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_OUT_OF_BOUNDS_2
+    # flag as checked: npc 1 in room 410 has its object trigger disabled
 
 
 class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
@@ -2809,39 +3372,81 @@ class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_SINGLE_GOLD_BIRD
+    # flag as checked: npc 1 in room 113 has its object trigger disabled.
 
 
 class NimbusCastleTwoLevelLowerChestLocation(TreasureChestLocationRow1):
     _originally_held = FPFlowerPrize
     _rooms = [
         R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
-        R498_NIMBUS_CASTLE_AREA_10_____DUMMY,
+        R498_NIMBUS_CASTLE_AREA_10_DUMMY,
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_AFTER_EGG_1
+    # flag as checked: npc 0 in room 114 has its object trigger disabled.
+
+
+### nimbus castle gated by ck1
+
+
+class GiantEggBossFight(BossFightLocation):
+    _originally_held = BirdettaBossFight
+    _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
+    _id = ShuffleLocationSelector.NIMBUS_CASTLE_EGG_BOSS_FIGHT
+    # Flag as checked: NIMBUS_MID_BOSS_COMPLETED
+
+
+class GiantEggStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
+    _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_2
+    # Flag as checked: NIMBUS_MID_BOSS_COMPLETED
 
 
 class NimbusCastleGiantEggRewardLocation(NPCLocationRow1):
     _originally_held = CastleKey2Prize
     _rooms = [R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BIRDETTA
+    # flag as checked: NIMBUS_MID_BOSS_COMPLETED
+
+
+### nimbus land gated by ck2
 
 
 class NimbusCastleTwoLevelUpperChestLocation(TreasureChestLocationRow2):
     _originally_held = FrogCoin1Prize
     _rooms = [
         R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
-        R498_NIMBUS_CASTLE_AREA_10_____DUMMY,
+        R498_NIMBUS_CASTLE_AREA_10_DUMMY,
     ]
     _npc_ids = [NPC_1, NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_AFTER_EGG_2
+    # flag as checked: npc 1 in room 114 has its object trigger disabled.
 
 
 class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
-    _originally_held = EXPStarPrize
+    _originally_held = NimbusLandStarPrize
     _rooms = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_CHEST
+    # flag as checked: npc 0 in room 121 has its object trigger disabled.
+
+
+class NimbusFinalBossFight(BossFightLocation):
+    _originally_held = ValentinaBossFight
+    _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
+    _id = ShuffleLocationSelector.NIMBUS_CASTLE_FINAL_BOSS_FIGHT
+    # Flag as checked: NIMBUS_LAND_LIBERATED
+
+
+class NimbusFinalStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
+    _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_PIECE_3
+    # Flag as checked: NIMBUS_LAND_LIBERATED
+
+
+### nimbus land gated by liberation
 
 
 class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
@@ -2849,6 +3454,7 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     _rooms = [R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_STAR_AFTER_VALENTINA
+    # flag as checked: npc 1 in room 121 has its object trigger disabled.
 
 
 class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1):
@@ -2856,12 +3462,14 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow1
     _rooms = [R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
+    # flag as checked: NIMBUS_MISSABLE_CHECK_CLEARED
 
 
 class NimbusLandRightSideLocation(NPCLocationRow1):
     _originally_held = FertilizerPrize
     _rooms = [R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA]
     _id = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
+    # flag as checked: NPC 9 removed from room 438.
 
 
 class NimbusLandCrocoItemLocation(StandingLocationRow1):
@@ -2869,12 +3477,14 @@ class NimbusLandCrocoItemLocation(StandingLocationRow1):
     _rooms = [R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.NIMBUS_LAND_SIGNAL_RING
+    # flag as checked: npc 5 in room 345 has been removed from the room.
 
 
 class NimbusLandInnerCellarLocation(NPCLocationRow1):
     _originally_held = FlowerJarPrize
     _rooms = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
     _id = ShuffleLocationSelector.NIMBUS_LAND_CELLAR
+    # flag as checked: NIMBUS_CASTLE_LIBERATED_GUARD_ITEM_GRANTED
 
 
 class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
@@ -2882,6 +3492,7 @@ class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
+    # flag as checked: npc 1 in room 355 has its object trigger disabled.
 
 
 class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
@@ -2889,6 +3500,7 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
+    # flag as checked: npc 2 in room 355 has its object trigger disabled.
 
 
 class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
@@ -2896,6 +3508,7 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
     _rooms = [R384_VOLCANO_AREA_05]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_1
+    # flag as checked: npc 0 in room 384 has its object trigger disabled.
 
 
 class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
@@ -2903,13 +3516,15 @@ class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
     _rooms = [R384_VOLCANO_AREA_05]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_2
+    # flag as checked: npc 1 in room 384 has its object trigger disabled.
 
 
 class VolcanoEarlyProgressThirdChestLocation(TreasureChestLocationRow1):
-    _originally_held = EXPStarPrize
+    _originally_held = LandsEndVolcanoStarPrize
     _rooms = [R385_VOLCANO_AREA_06]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_STAR_ROOM
+    # flag as checked: npc 0 in room 385 has its object trigger disabled.
 
 
 class VolcanoLavaPoolLocation(StandingLocationRow1):
@@ -2917,6 +3532,7 @@ class VolcanoLavaPoolLocation(StandingLocationRow1):
     _rooms = [R361_VOLCANO_AREA_09]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_LAVA_POOL
+    # flag as checked: npc 1 in room 361 has been removed from the room.
 
 
 class VolcanoReverseRecoilItemLocation(StandingLocationRow1):
@@ -2924,6 +3540,7 @@ class VolcanoReverseRecoilItemLocation(StandingLocationRow1):
     _rooms = [R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_REVERSE
+    # flag as checked: npc 4 in room 383 has been removed from the room.
 
 
 class VolcanoRightDonutItemLocation(StandingLocationRow1):
@@ -2931,6 +3548,7 @@ class VolcanoRightDonutItemLocation(StandingLocationRow1):
     _rooms = [R358_VOLCANO_AREA_11]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_1
+    # flag as checked: npc 1 in room 358 has been removed from the room.
 
 
 class VolcanoLeftDonutItemLocation(StandingLocationRow2):
@@ -2938,6 +3556,7 @@ class VolcanoLeftDonutItemLocation(StandingLocationRow2):
     _rooms = [R358_VOLCANO_AREA_11]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_2
+    # flag as checked: npc 2 in room 358 has been removed from the room.
 
 
 class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
@@ -2945,6 +3564,7 @@ class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
     _rooms = [R366_VOLCANO_AREA_13_WSAVE_POINT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_1
+    # flag as checked: npc 0 in room 366 has its object trigger disabled.
 
 
 class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
@@ -2952,6 +3572,7 @@ class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
     _rooms = [R366_VOLCANO_AREA_13_WSAVE_POINT]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SAVE_ROOM_2
+    # flag as checked: npc 1 in room 366 has its object trigger disabled.
 
 
 class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
@@ -2959,6 +3580,38 @@ class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
     _rooms = [R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_HINOPIO
+    # flag as checked: npc 0 in room 367 has its object trigger disabled.
+
+
+class VolcanoBridgeBossFight(BossFightLocation):
+    _originally_held = CzarDragonBossFight
+    _rooms = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
+    _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_FIGHT_1
+    # Flag as checked: VOLCANO_MIDBOSS_DEFEATED
+
+
+class VolcanoBridgeStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM]
+    _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_1
+    # Flag as checked: VOLCANO_MIDBOSS_DEFEATED
+
+
+class VolcanoExitBossFight(BossFightLocation):
+    _originally_held = AxemRangersBossFight
+    _rooms = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
+    _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_FIGHT_2
+    # Flag as checked: VOLCANO_LIBERATED
+
+
+class VolcanoExitStarPiece(StarPieceLocation):
+    _originally_held = StarPiece6
+    _rooms = [R393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP]
+    _id = ShuffleLocationSelector.BARREL_VOLCANO_BOSS_2
+    # Flag as checked: VOLCANO_LIBERATED
+
+
+########## bowser's keep
 
 
 class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
@@ -2966,13 +3619,15 @@ class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DARK_ROOM
+    # flag as checked: npc 0 in room 453 has its object trigger disabled.
 
 
 class KeepFirstCrocoShopLeftChestLocation(TreasureChestLocationRow1):
-    _originally_held = CoinPrize
+    _originally_held = Coins150Prize
     _rooms = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CROCO_SHOP_1
+    # flag as checked: npc 0 in room 451 has its object trigger disabled.
 
 
 class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
@@ -2980,6 +3635,7 @@ class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CROCO_SHOP_2
+    # flag as checked: npc 1 in room 451 has its object trigger disabled.
 
 
 class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
@@ -2987,6 +3643,7 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_1
+    # flag as checked: npc 4 in room 322 has its object trigger disabled.
 
 
 class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
@@ -2994,6 +3651,7 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_2
+    # flag as checked: npc 5 in room 322 has its object trigger disabled.
 
 
 class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
@@ -3001,6 +3659,7 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_3
+    # flag as checked: npc 6 in room 322 has its object trigger disabled.
 
 
 class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
@@ -3008,34 +3667,39 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_4
+    # flag as checked: npc 7 in room 322 has its object trigger disabled.
 
 
 class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_1
+    # flag as checked: npc 8 in room 322 has been removed from the room.
 
 
 class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_2
+    # flag as checked: npc 9 in room 322 has been removed from the room.
 
 
 class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_3
+    # flag as checked: npc 10 in room 322 has been removed from the room.
 
 
 class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_4
+    # flag as checked: npc 11 in room 322 has been removed from the room.
 
 
 class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
@@ -3043,6 +3707,7 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_1
+    # flag as checked: npc 10 in room 458 has its object trigger disabled.
 
 
 class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
@@ -3050,6 +3715,7 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_2
+    # flag as checked: npc 11 in room 458 has its object trigger disabled.
 
 
 class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
@@ -3057,6 +3723,7 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_3
+    # flag as checked: npc 12 in room 458 has its object trigger disabled.
 
 
 class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
@@ -3064,6 +3731,7 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _rooms = [R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS]
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_4
+    # flag as checked: npc 13 in room 458 has its object trigger disabled.
 
 
 class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
@@ -3071,6 +3739,7 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ELEVATOR_PLATFORMS
+    # flag as checked: npc 8 in room 321 has its object trigger disabled.
 
 
 class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
@@ -3078,6 +3747,7 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_1
+    # flag as checked: npc 3 in room 457 has its object trigger disabled.
 
 
 class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
@@ -3085,6 +3755,7 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_2
+    # flag as checked: npc 4 in room 457 has its object trigger disabled.
 
 
 class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
@@ -3092,6 +3763,7 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_3
+    # flag as checked: npc 5 in room 457 has its object trigger disabled.
 
 
 class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
@@ -3099,6 +3771,7 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_4
+    # flag as checked: npc 6 in room 457 has its object trigger disabled.
 
 
 class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
@@ -3106,62 +3779,71 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_5
+    # flag as checked: npc 7 in room 457 has its object trigger disabled.
 
 
 class KeepCannonballCoin1Location(StandingLocationRow1):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_1
+    # flag as checked: npc 8 in room 457 has been removed from the room.
 
 
 class KeepCannonballCoin2Location(StandingLocationRow2):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_2
+    # flag as checked: npc 9 in room 457 has been removed from the room.
 
 
 class KeepCannonballCoin3Location(StandingLocationRow3):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_3
+    # flag as checked: npc 10 in room 457 has been removed from the room.
 
 
 class KeepCannonballCoin4Location(StandingLocationRow4):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_4
+    # flag as checked: npc 11 in room 457 has been removed from the room.
 
 
 class KeepCannonballCoin5Location(StandingLocationRow5):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_5
+    # flag as checked: npc 12 in room 457 has been removed from the room.
 
 
 class KeepCannonballCoin6Location(StandingLocationRow6):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_6
+    # flag as checked: npc 13 in room 457 has been removed from the room.
 
 
 class KeepCannonballCoin7Location(StandingLocationRow7):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_7
+    # flag as checked: npc 14 in room 457 has been removed from the room.
 
 
 class KeepCannonballCoin8Location(StandingLocationRow8):
-    _originally_held = CoinPrize10
+    _originally_held = Coins10Prize
     _rooms = [R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING]
     _npc_ids = [NPC_15]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_8
+    # flag as checked: npc 15 in room 457 has been removed from the room.
 
 
 class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
@@ -3171,6 +3853,7 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_1
+    # flag as checked: npc 1 in room 455 has its object trigger disabled.
 
 
 class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
@@ -3180,6 +3863,7 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_2
+    # flag as checked: npc 2 in room 455 has its object trigger disabled.
 
 
 class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
@@ -3189,6 +3873,7 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     ]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_3
+    # flag as checked: npc 3 in room 455 has its object trigger disabled.
 
 
 class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4):
@@ -3198,6 +3883,7 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     ]
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_4
+    # flag as checked: npc 4 in room 455 has its object trigger disabled.
 
 
 class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
@@ -3207,6 +3893,7 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     ]
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_5
+    # flag as checked: npc 5 in room 455 has its object trigger disabled.
 
 
 class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
@@ -3216,6 +3903,21 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     ]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_6
+    # flag as checked: npc 6 in room 455 has its object trigger disabled.
+
+
+class ObstacleCourseFinalFight(BossFightLocation):
+    _originally_held = ChesterBossFight
+    _rooms = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
+    _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_CHESTER
+    # Flag as checked: BATTLE_DOOR_BOSS_BIT
+
+
+class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB]
+    _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_CHESTER
+    # Flag as checked: BATTLE_DOOR_BOSS_BIT
 
 
 class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
@@ -3226,6 +3928,7 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_1
+    # flag as checked: BK_OBSTACLE_1_PRIZE_RETRIEVED
 
 
 class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
@@ -3236,6 +3939,7 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_2
+    # flag as checked: BK_OBSTACLE_2_PRIZE_RETRIEVED
 
 
 class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
@@ -3246,6 +3950,7 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_3
+    # flag as checked: BK_OBSTACLE_3_PRIZE_RETRIEVED
 
 
 class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
@@ -3256,6 +3961,7 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_4
+    # flag as checked: BK_OBSTACLE_4_PRIZE_RETRIEVED
 
 
 class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
@@ -3266,6 +3972,7 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_5
+    # flag as checked: BK_OBSTACLE_5_PRIZE_RETRIEVED
 
 
 class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
@@ -3276,13 +3983,64 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     ]
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_6
+    # flag as checked: BK_OBSTACLE_6_PRIZE_RETRIEVED
+
+
+class KeepAfterObstaclesBossFight(BossFightLocation):
+    _originally_held = KamekBossFight
+    _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
+    _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_1
+    # Flag as checked: KEEP_BOSS_1_DEFEATED
+
+
+class KeepAfterObstaclesStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
+    _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_1
+    # Flag as checked: KEEP_BOSS_1_DEFEATED
 
 
 class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
-    _originally_held = InfiniteCoinPrize
+    _originally_held = InfiniteCoinsPrize
     _rooms = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MAGIKOOPA
+    # flag as checked: npc 0 in room 266 has its object trigger disabled.
+
+
+class KeepChandelierBossFight(BossFightLocation):
+    _originally_held = BoomerBossFight
+    _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_2
+    _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
+    _override_id = 521
+    # Flag as checked: KEEP_BOSS_2_DEFEATED
+
+
+class KeepChandelierStarPiece(StarPieceLocation):
+    _originally_held = None
+    _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_2
+    _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
+    _override_id = 521
+    # Flag as checked: KEEP_BOSS_2_DEFEATED
+
+
+class KeepFinalBossFight(BossFightLocation):
+    _originally_held = ExorBossFight
+    _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_FIGHT_3
+    _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
+    _override_id = 522
+    # Flag as checked: KEEP_BOSS_3_DEFEATED
+
+
+class KeepFinalStarPiece(StarPieceLocation):
+    _originally_held = None
+    _id = ShuffleLocationSelector.BOWSERS_KEEP_BOSS_3
+    _rooms = [R400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM]
+    _override_id = 522
+    # Flag as checked: KEEP_BOSS_3_DEFEATED
+
+
+########## outer factory
 
 
 class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
@@ -3290,6 +4048,7 @@ class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
     _rooms = [R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.FACTORY_SAVE_ROOM
+    # flag as checked: npc 0 in room 237 has its object trigger disabled.
 
 
 class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
@@ -3297,6 +4056,21 @@ class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
     _rooms = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.FACTORY_BOLT_PLATFORMS
+    # flag as checked: npc 7 in room 239 has its object trigger disabled.
+
+
+class FactoryEntranceBossFight(BossFightLocation):
+    _originally_held = CountdownBossFight
+    _rooms = [R433_SMITHY_FACTORY_AREA_01_DUMMY]
+    _id = ShuffleLocationSelector.FACTORY_BOSS_FIGHT_1
+    # Flag as checked: ABYSS_BOSS_1_DEFEATED
+
+
+class FactoryEntranceStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R433_SMITHY_FACTORY_AREA_01_DUMMY]
+    _id = ShuffleLocationSelector.FACTORY_BOSS_1
+    # Flag as checked: ABYSS_BOSS_1_DEFEATED
 
 
 class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
@@ -3304,6 +4078,7 @@ class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
     _rooms = [R434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS]
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.FACTORY_FALLING_AXEMS
+    # flag as checked: npc 6 in room 434 has its object trigger disabled.
 
 
 class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
@@ -3313,6 +4088,7 @@ class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.FACTORY_TREASURE_PIT_1
+    # flag as checked: npc 0 in room 443 has its object trigger disabled.
 
 
 class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
@@ -3322,6 +4098,7 @@ class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
     ]
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FACTORY_TREASURE_PIT_2
+    # flag as checked: npc 2 in room 443 has its object trigger disabled.
 
 
 class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
@@ -3331,6 +4108,7 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
     ]
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_1
+    # flag as checked: npc 8 in room 475 has its object trigger disabled.
 
 
 class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
@@ -3340,6 +4118,7 @@ class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_2
+    # flag as checked: npc 9 in room 475 has its object trigger disabled.
 
 
 class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
@@ -3349,6 +4128,7 @@ class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
     ]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_1
+    # flag as checked: npc 1 in room 443 has its object trigger disabled.
 
 
 class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
@@ -3358,12 +4138,97 @@ class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
     ]
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.FACTORY_BEHIND_SNAKES_2
+    # flag as checked: npc 3 in room 443 has its object trigger disabled.
 
+
+class FactoryTransitionBossFight(BossFightLocation):
+    _originally_held = CloakerDominoBossFight
+    _rooms = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
+    _id = ShuffleLocationSelector.FACTORY_BOSS_FIGHT_2
+    # Flag as checked: ABYSS_BOSS_2_DEFEATED
+
+
+class FactoryTransitionStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM]
+    _id = ShuffleLocationSelector.FACTORY_BOSS_2
+    # Flag as checked: ABYSS_BOSS_2_DEFEATED
+
+########## inner factory
+
+
+class InnerFactoryFirstFight(BossFightLocation):
+    _originally_held = ClerkBossFight
+    _rooms = [R469_FACTORY_GROUNDS_AREA_01]
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_1
+    # Flag as checked: INNER_FACTORY_ROOM_1_COMPLETED
+
+
+class InnerFactoryFirstFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R469_FACTORY_GROUNDS_AREA_01]
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_1
+    # Flag as checked: INNER_FACTORY_ROOM_1_COMPLETED
 
 class InnerFactoryToadGiftLocation(NPCLocationRow1):
     _originally_held = RockCandyPrize
     _rooms = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _id = ShuffleLocationSelector.FACTORY_TOAD_GIFT
+    # flag as checked: TOAD_SHOP_FREEBIE_RECEIVED
+
+
+class InnerFactorySecondFight(BossFightLocation):
+    _originally_held = ManagerBossFight
+    _rooms = [R471_FACTORY_GROUNDS_AREA_02]
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_2
+    # Flag as checked: INNER_FACTORY_ROOM_2_COMPLETED
+
+
+class InnerFactorySecondFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R471_FACTORY_GROUNDS_AREA_02]
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_2
+    # Flag as checked: INNER_FACTORY_ROOM_2_COMPLETED
+
+
+class InnerFactoryThirdFight(BossFightLocation):
+    _originally_held = DirectorBossFight
+    _rooms = [R472_FACTORY_GROUNDS_AREA_03]
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_3
+    # Flag as checked: npc 10 in room 472 removed
+
+
+class InnerFactoryThirdFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R472_FACTORY_GROUNDS_AREA_03]
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_3
+    # Flag as checked: npc 10 in room 472 removed
+
+
+class InnerFactoryFourthFight(BossFightLocation):
+    _originally_held = GunyolkBossFight
+    _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_4
+    # Flag as checked: INNER_FACTORY_ROOM_4_COMPLETED
+
+
+class InnerFactoryFourthFightStarPiece(StarPieceLocation):
+    _originally_held = None
+    _rooms = [R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_4
+    # Flag as checked: INNER_FACTORY_ROOM_4_COMPLETED
+
+
+class FinalBossFight(BossFightLocation):
+    _originally_held = SmithyBossFight
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_FINAL
+    # Flag as checked: FACTORY_BOSS_DEFEATED
+
+
+class FinalBossFightStarPiece(StarPieceLocation):
+    _originally_held = StarPiece7
+    _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
+    # Flag as checked: FACTORY_BOSS_DEFEATED
 
 
 CHECK_POOL: list[PrizeLocation] = []

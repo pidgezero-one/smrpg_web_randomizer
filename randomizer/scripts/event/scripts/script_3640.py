@@ -6,8 +6,8 @@ from randomizer.scripts.event.script_imports import *
 
 script = EventScript(
     [
-        JmpIfBitSet(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5, ["EVENT_3640_run_dialog__"]),
-        SetBit(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5),
+        JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_run_dialog__"]),
+        SetBit(STATUE_GAME_DONE),
         FadeOutToBlack(sync=True, duration=60),
         PauseScriptUntilEffectDone(),
         ClearBit(TEMP_704C_0),

@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(INNER_FACTORY_ROOM_3_COMPLETED, ["EVENT_2618_ret_58"]),
+	JmpIfBitSet(INNER_FACTORY_ROOM_2_COMPLETED, ["EVENT_2618_ret_58"]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FaceNorthwest()
 	]),
@@ -167,7 +167,7 @@ script = EventScript([
 	ResetAndChooseGame(),
 	RestoreAllHP(identifier="EVENT_2618_restore_all_hp_45"),
 	RestoreAllFP(),
-	SetBit(INNER_FACTORY_ROOM_3_COMPLETED),
+	SetBit(INNER_FACTORY_ROOM_2_COMPLETED),
 	RemoveObjectFromCurrentLevel(NPC_12),
 	RemoveObjectFromCurrentLevel(NPC_13),
 	RemoveObjectFromCurrentLevel(NPC_14),

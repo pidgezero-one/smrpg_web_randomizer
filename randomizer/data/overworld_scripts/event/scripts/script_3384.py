@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CreatePacketAt7010WithEvent(packet=P036_MUSHROOM_FALL, event_id=E3288_SHIP_SPAWN_PRIZE_IN_TROOPA_PUZZLE_ROOM, destinations=["EVENT_3223_pause_9"]),
+	CreatePacketAt7010WithEvent(packet=P036_MUSHROOM_FALL, event_id=E3288_SHIP_SPAWN_PRIZE_IN_TROOPA_PUZZLE_ROOM, destinations=["EVENT_3223_pause_9"], identifier="spawn_ship_troopa_item"),
 	Jmp(["EVENT_3223_ret_11"])
 ])

@@ -1,4 +1,4 @@
-# E2082_EMPTY
+# E2082_NIMBUS_MISSABLE_CHEST_1
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	SetBit(NIMBUS_MISSABLE_CHECK_OPENED),
+    SetVarToConst(PRIMARY_TEMP_7000, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA),
+	JmpToEvent(E0247_CHEST_1_GRANT)
 ])

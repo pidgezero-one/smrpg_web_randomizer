@@ -34,5 +34,6 @@ script = EventScript([
 	RemoveObjectFromCurrentLevel(NPC_3),
 	RemoveObjectFromSpecificLevel(NPC_3, R254_BEAN_VALLEY_SMILAX_AREA),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
+    SetBit(SEED_CHECKED),
 	Return()
 ])

@@ -81,7 +81,7 @@ script = EventScript([
 	JmpIfBitClear(BEAN_VALLEY_BOSS_DEFEATED, ["EVENT_991_run_dialog_24"], identifier="EVENT_947_jmp_if_bit_clear_47"),
 	RunEventAsSubroutine(E0987_FROGFUCIUS_HINT_OPTIONAL_7),
 	JmpIfObjectInSpecificLevel(NPC_1, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT, ["EVENT_991_run_dialog_28"]),
-	JmpIfBitClear(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5, ["EVENT_991_run_dialog_26"]),
+	JmpIfBitClear(STATUE_KEEPER_STAR_PIECE, ["EVENT_991_run_dialog_26"]),
 	StoreItemAmountTo7000(CastleKey1Item),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_991_run_dialog_28"]),
 	JmpIfObjectInSpecificLevel(NPC_10, R118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, ["EVENT_947_jmp_if_bit_clear_59"]),

@@ -31,14 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetVarToConst(ITEM_ID, RareScarfItem),
-	RunEventAsSubroutine(E0033_OLD_CHEST_LOADER_POSSIBLY_UNUSED),
-	PlaySound(sound=SO085_FLOWER, channel=6),
-	Pause(1, identifier="EVENT_3748_pause_3"),
-	JmpIfMarioInAir(["EVENT_3748_pause_3"]),
-	SetBit(NIMBUS_HOUSE_ITEM_RETRIEVED),
-	SetSyncActionScript(MARIO, A0510_EMPTY),
-	RunDialog(dialog_id=DI0522_GOT_A_70A7_AWAIT_TERMINATE, above_object=NPC_14, closable=True, sync=False, multiline=False, use_background=False),
-	AddToInventory(ITEM_ID),
-	Return()
 ])

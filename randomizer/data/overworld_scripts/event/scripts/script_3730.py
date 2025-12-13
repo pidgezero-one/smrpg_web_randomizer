@@ -35,7 +35,7 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_14, R416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA),
 	JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["EVENT_3730_run_event_as_subroutine_14"]),
 	JmpIfBitSet(UNKNOWN_STATUE_ROOM_7090_1, ["EVENT_3730_run_event_as_subroutine_14"]),
-	JmpIfBitSet(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5, ["EVENT_3730_palette_set_6"]),
+	JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3730_palette_set_6"]),
 	Jmp(["EVENT_3730_run_event_as_subroutine_14"]),
 	PaletteSet(palette_set=84, row=1, bit_0=True, bit_1=True, bit_2=True, bit_3=True, identifier="EVENT_3730_palette_set_6"),
 	PauseActionScript(NPC_4),

@@ -37,8 +37,6 @@ script = EventScript([
 		A_ResetProperties()
 	]),
 	Pause(20),
-	SetVarToConst(ITEM_ID, FertilizerItem),
-	SetVarToConst(PRIMARY_TEMP_7000, 524),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(30),

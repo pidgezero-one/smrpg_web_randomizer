@@ -1,4 +1,4 @@
-# E3385_SHIP_UPPER_STAIRWAY_ITEM_PACKET_GRANT
+ # E3385_SHIP_UPPER_STAIRWAY_ITEM_PACKET_GRANT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CreatePacketAt7010WithEvent(packet=P035_FLOWER_FALL, event_id=E3247_ITEM_BEHIND_SHIP_UPPER_STAIRS_GRANTER, destinations=["EVENT_3385_ret_1"]),
+	CreatePacketAt7010WithEvent(packet=P035_FLOWER_FALL, event_id=E3247_ITEM_BEHIND_SHIP_UPPER_STAIRS_GRANTER, destinations=["EVENT_3385_ret_1"], identifier="spawn_ship_box_item"),
 	Return(identifier="EVENT_3385_ret_1")
 ])

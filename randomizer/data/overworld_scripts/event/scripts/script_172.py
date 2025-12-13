@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	Set7000ToCurrentLevel(),
+	Set7000ToCurrentLevel(identifier="E0172_set_7000_to_current_level_0"),
 	JmpToEvent(E0247_CHEST_1_GRANT)
 ])

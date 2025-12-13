@@ -31,7 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitSet(INNER_FACTORY_ROOM_3_COMPLETED, ["EVENT_2617_run_event_as_subroutine_5"]),
+	JmpIfBitSet(INNER_FACTORY_ROOM_2_COMPLETED, ["EVENT_2617_run_event_as_subroutine_5"]),
 	ActionQueueSync(target=NPC_12, subscript=[
 		A_SetWalkingSpeed(FASTEST),
 		A_SetPriority(3),

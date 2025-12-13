@@ -155,7 +155,7 @@ script = EventScript(
         RemoveObjectFromSpecificLevel(
             NPC_5, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND
         ),
-        ClearBit(INNER_FACTORY_ROOM_2_COMPLETED),
+        ClearBit(NIMBUS_PLATFORM_ACTIVE),
         RemoveObjectFromSpecificLevel(
             NPC_0, R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD
         ),

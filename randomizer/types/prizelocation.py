@@ -39,6 +39,7 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
 )
 from .base import CategorizationOption
+from .packet_type import PacketType
 
 if TYPE_CHECKING:
     from ..types.settings import Settings
@@ -108,6 +109,7 @@ class ShuffleLocationSelector(CategorizationOption):
     PANDORITE_REWARD_1 = "Mimic Chest #1 first reward"
     PANDORITE_REWARD_2 = "Mimic Chest #1 reload reward"
     PANDORITE_BOSS = "Mimic Chest #1 Star Piece"
+    PANDORITE_BOSS_FIGHT = "Mimic Chest #1 boss fight"
     KERO_SEWERS_STAR_CHEST = "Kero Sewers four rat room chest"
     KERO_SEWERS_BEFORE_BELOME_LOWER = "Kero Sewers before boss lower chest"
     KERO_SEWERS_BEFORE_BELOME_UPPER_1 = (
@@ -257,6 +259,7 @@ class ShuffleLocationSelector(CategorizationOption):
     BOOSTER_TOWER_STAR_PIECE_1 = "Booster Tower curtain room boss Star Piece"
     BOOSTER_TOWER_STAR_PIECE_2 = "Booster Tower balcony boss Star Piece"
     BOOSTER_TOWER_STAR_PIECE_3 = "Booster Tower postgame boss Star Piece"
+    BOOSTER_TOWER_POSTGAME_DROP = "Booster Tower postgame prize"
     BOOSTER_HILL_FLOWER_1 = "Booster Hill flower 1"
     BOOSTER_HILL_FLOWER_2 = "Booster Hill flower 2"
     BOOSTER_HILL_FLOWER_3 = "Booster Hill flower 3"
@@ -297,6 +300,7 @@ class ShuffleLocationSelector(CategorizationOption):
     FROG_DISCIPLE_3 = "Disciple shop third item"
     FROG_DISCIPLE_4 = "Disciple shop fourth item"
     FROG_DISCIPLE_5 = "Disciple shop fifth item"
+    SEASIDE_TOWN_BOSS_FIGHT = "Seaside Town boss fight"
     SEASIDE_TOWN_BOSS = "Seaside Town boss Star Piece"
     SEASIDE_TOWN_BOSS_PRIZE = "Seaside Town boss prize"
     SEASIDE_TOWN_RESCUE = "Seaside Town shed rescue"
@@ -308,6 +312,14 @@ class ShuffleLocationSelector(CategorizationOption):
     SUNKEN_SHIP_RAT_STAIRS = "Sunken Ship first stairway chest"
     SUNKEN_SHIP_RAT_STAIRS_FLOWER = "Sunken Ship first stairway freestanding flower"
     SUNKEN_SHIP_SHOP = "Sunken Ship shop area chest"
+    SUNKEN_SHIP_TRAMPOLINE_PUZZLE = "Sunken Ship trampoline puzzle prize"
+    SUNKEN_SHIP_TROOPA_PUZZLE = "Sunken Ship troopa cannonball prize"
+    SUNKEN_SHIP_3D_MAZE = "Sunken Ship 3D maze prize"
+    SUNKEN_SHIP_COIN_SNAKE = "Sunken Ship coin snake puzzle prize"
+    SUNKEN_SHIP_CANNONBALL_PUZZLE = "Sunken Ship cannonball puzzle prize"
+    SUNKEN_SHIP_BARREL_PUZZLE = "Sunken Ship barrel switch prize"
+    SUNKEN_SHIP_MIDBOSS = "Sunken Ship password boss Star Piece"
+    SUNKEN_SHIP_MIDBOSS_BOSS_FIGHT = "Sunken Ship password boss fight"
     SUNKEN_SHIP_COINS_1 = "Sunken Ship outside clone room left chest"
     SUNKEN_SHIP_COINS_2 = "Sunken Ship outside clone room right chest"
     SUNKEN_SHIP_CLONE_ROOM = "Sunken Ship clone room chest"
@@ -317,6 +329,7 @@ class ShuffleLocationSelector(CategorizationOption):
     HIDON_REWARD_1 = "Mimic Chest #2 first reward"
     HIDON_REWARD_2 = "Mimic Chest #2 reload reward"
     HIDON_BOSS = "Mimic Chest #2 Star Piece"
+    HIDON_BOSS_FIGHT = "Mimic Chest #2 boss fight"
     SUNKEN_SHIP_UNDERWATER_FROG_COIN_1 = (
         "Sunken Ship underwater freestanding frog coin 1"
     )
@@ -330,16 +343,13 @@ class ShuffleLocationSelector(CategorizationOption):
         "Sunken Ship underwater freestanding frog coin 4"
     )
     SUNKEN_SHIP_SAFETY_RING = "Sunken Ship hidden underwater room chest"
-    SUNKEN_SHIP_BANDANA_REDS = "Sunken Ship near final boss chest"
     SUNKEN_SHIP_BLOOBER_ROOM = "Sunken Ship large pool freestanding frog coin"
-    SUNKEN_SHIP_TRAMPOLINE_PUZZLE = "Sunken Ship trampoline puzzle prize"
-    SUNKEN_SHIP_TROOPA_PUZZLE = "Sunken Ship troopa cannonball prize"
-    SUNKEN_SHIP_3D_MAZE = "Sunken Ship 3D maze prize"
-    SUNKEN_SHIP_COIN_SNAKE = "Sunken Ship coin snake puzzle prize"
-    SUNKEN_SHIP_CANNONBALL_PUZZLE = "Sunken Ship cannonball puzzle prize"
-    SUNKEN_SHIP_BARREL_PUZZLE = "Sunken Ship barrel switch prize"
-    SUNKEN_SHIP_MIDBOSS = "Sunken Ship password boss Star Piece"
+    SUNKEN_SHIP_BANDANA_REDS = "Sunken Ship near final boss chest"
     SUNKEN_SHIP_BOSS = "Sunken Ship final boss Star Piece"
+    SUNKEN_SHIP_BOSS_FIGHT = "Sunken Ship final boss fight"
+    SUNKEN_SHIP_POSTGAME_BOSS = "Sunken Ship postgame boss Star Piece"
+    SUNKEN_SHIP_POSTGAME_BOSS_FIGHT = "Sunken Ship postgame boss fight"
+    SUNKEN_SHIP_POSTGAME_DROP = "Sunken Ship postgame prize"
     LANDS_END_RED_ESSENCE = "Land's End first chest"
     LANDS_END_CHOW_PIT_1 = "Land's End chow pit left chest"
     LANDS_END_CHOW_PIT_2 = "Land's End chow pit right chest"
@@ -352,6 +362,7 @@ class ShuffleLocationSelector(CategorizationOption):
     LANDS_END_STAR_CHEST_2 = "Land's End 1st purchase chest"
     LANDS_END_STAR_CHEST_3 = "Land's End 2nd purchase chest"
     TROOPA_CLIMB = "Land's End Troopa Climb sub-12 second prize"
+    LANDS_END_CLOUD_BOSS_FIGHT = "Land's End/Belome Temple cloud boss fight"
     LANDS_END_STAR_PIECE_1 = "Land's End/Belome Temple cloud Star Piece"
     BELOME_TEMPLE_FORTUNE_TELLER = "Belome Temple first fortune-telling room chest"
     BELOME_TEMPLE_FORTUNE_1 = "Belome Temple left-middle-right fortune chest"
@@ -378,15 +389,30 @@ class ShuffleLocationSelector(CategorizationOption):
     BELOME_TEMPLE_TREASURE_2 = "Belome Temple vault left item bag"
     BELOME_TEMPLE_TREASURE_3 = "Belome Temple vault right item bag"
     BELOME_TEMPLE_BOSS = "Belome Temple boss Star Piece"
+    BELOME_TEMPLE_BOSS_FIGHT = "Belome Temple boss fight"
+    BELOME_TEMPLE_BOSS_POSTGAME = "Belome Temple postgame boss Star Piece"
+    BELOME_TEMPLE_BOSS_POSTGAME_FIGHT = "Belome Temple postgame boss fight"
+    BELOME_TEMPLE_BOSS_POSTGAME_DROP = "Belome Temple postgame prize"
     MONSTRO_TOWN_ENTRANCE = "Monstro Town entrance chest"
     MONSTRO_TOWN_THWOMP = "Monstro Town thwomp key"
-    JINX_DOJO_REWARD = "Monstro Town dojo prize"
     DOJO_BOSS_1 = "Monstro Town dojo first fight Star Piece"
     DOJO_BOSS_2 = "Monstro Town dojo second fight Star Piece"
     DOJO_BOSS_3 = "Monstro Town dojo third fight Star Piece"
     DOJO_BOSS_4 = "Monstro Town dojo fourth fight Star Piece"
+    DOJO_BOSS_FIGHT_1 = "Monstro Town dojo first fight"
+    DOJO_BOSS_FIGHT_2 = "Monstro Town dojo second fight"
+    DOJO_BOSS_FIGHT_3 = "Monstro Town dojo third fight"
+    DOJO_BOSS_FIGHT_4 = "Monstro Town dojo fourth fight"
+    JINX_DOJO_REWARD = "Monstro Town dojo prize"
+    DOJO_BOSS_FIGHT_POSTGAME = "Monstro Town dojo postgame fight"
+    DOJO_BOSS_POSTGAME = "Monstro Town dojo postgame Star Piece"
+    DOJO_BOSS_POSTGAME_REWARD = "Monstro Town dojo postgame prize"
+    CULEX_BOSS_FIGHT = "Monstro Town sealed door boss fight"
     CULEX_BOSS = "Monstro Town sealed door Star Piece"
     CULEX_REWARD = "Monstro Town sealed door prize"
+    CULEX_POSTGAME_BOSS_FIGHT = "Monstro Town postgame sealed door boss fight"
+    CULEX_POSTGAME_BOSS = "Monstro Town postgame sealed door Star Piece"
+    CULEX_POSTGAME_REWARD = "Monstro Town postgame sealed door prize"
     SUPER_JUMPS_30 = "Monstro Town Super Jump first prize"
     SUPER_JUMPS_100 = "Monstro Town Super Jump second prize"
     THREE_MUSTY_FEARS = "Monstro Town flag exchange prize"
@@ -401,6 +427,7 @@ class ShuffleLocationSelector(CategorizationOption):
         "Bean Valley bottom right piranha pipe lower chest"
     )
     BEAN_VALLEY_BOX_BOY_ROOM_1 = "Bean Valley right piranha pipe left chest"
+    BOX_BOY_BOSS_FIGHT = "Mimic Chest #3 boss fight"
     BOX_BOY_BOSS = "Mimic Chest #3 Star Piece"
     BEAN_VALLEY_BOX_BOY_ROOM_2 = "Bean Valley right piranha pipe right chest"
     BEAN_VALLEY_BOX_BOY_ROOM_HIDDEN = (
@@ -409,6 +436,7 @@ class ShuffleLocationSelector(CategorizationOption):
     BEAN_VALLEY_PIRANHA_PLANTS = "Bean Valley chest above Box Boy's room"
     BEAN_VALLEY_MEGASMILAX_ROOM = "Bean Valley boss reward"
     BEAN_VALLEY_BOSS = "Bean Valley boss Star Piece"
+    BEAN_VALLEY_BOSS_FIGHT = "Bean Valley boss fight"
     BEAN_VALLEY_BEANSTALK = "Bean Valley clouds solo vine chest"
     BEAN_VALLEY_BEANSTALK_FROG_COIN = (
         "Bean Valley middle vine room freestanding frog coin"
@@ -471,6 +499,7 @@ class ShuffleLocationSelector(CategorizationOption):
     NIMBUS_LAND_INN_2 = "Nimbus Land dream cushion 2nd item"
     NIMBUS_LAND_BEFORE_BIRDETTA_1 = "Nimbus Castle (occupied) 5-door room chest"
     NIMBUS_LAND_BEFORE_BIRDETTA_2 = "Nimbus Castle west two-level room chest"
+    NIMBUS_CASTLE_EGG_BOSS_FIGHT = "Nimbus Land giant egg boss fight"
     NIMBUS_CASTLE_BIRDETTA = "Nimbus Castle giant egg prize"
     NIMBUS_CASTLE_STAR_PIECE_2 = "Nimbus Land giant egg boss Star Piece"
     NIMBUS_CASTLE_OUT_OF_BOUNDS_1 = "Nimbus Castle west stairway room left chest"
@@ -478,6 +507,7 @@ class ShuffleLocationSelector(CategorizationOption):
     NIMBUS_CASTLE_SINGLE_GOLD_BIRD = "Nimbus Castle single gold bird room chest"
     NIMBUS_CASTLE_AFTER_EGG_1 = "Nimbus Castle east two-level room lower chest"
     NIMBUS_CASTLE_AFTER_EGG_2 = "Nimbus Castle east two-level room upper chest"
+    NIMBUS_CASTLE_FINAL_BOSS_FIGHT = "Nimbus Land final boss fight"
     NIMBUS_CASTLE_STAR_PIECE_3 = "Nimbus Land final boss Star Piece"
     NIMBUS_CASTLE_STAR_CHEST = "Nimbus Castle post-throne chest (occupied)"
     NIMBUS_CASTLE_STAR_AFTER_VALENTINA = "Nimbus Castle post-throne chest (unoccupied)"
@@ -485,6 +515,7 @@ class ShuffleLocationSelector(CategorizationOption):
         "Nimbus Castle (unoccupied) 5-door room chest"
     )
     NIMBUS_LAND_RIGHT_SIDE = "Nimbus Land post-invasion off-cloud item"
+    NIMBUS_LAND_STATUE_BOSS_FIGHT = "Nimbus Land statue keeper boss fight"
     DODO_REWARD = "Nimbus Land Dodo's statue game prize"
     NIMBUS_LAND_STAR_PIECE_1 = "Nimbus Land statue keeper boss Star Piece"
     NIMBUS_LAND_PRISONERS = "Nimbus Castle west cellar civilian"
@@ -507,12 +538,15 @@ class ShuffleLocationSelector(CategorizationOption):
     BARREL_VOLCANO_SAVE_ROOM_1 = "Barrel Volcano save room lower chest"
     BARREL_VOLCANO_SAVE_ROOM_2 = "Barrel Volcano save room upper chest"
     BARREL_VOLCANO_HINOPIO = "Barrel Volcano Hinopio shop chest"
+    BARREL_VOLCANO_BOSS_FIGHT_1 = "Barrel Volcano first boss fight"
     BARREL_VOLCANO_BOSS_1 = "Barrel Volcano first boss Star Piece"
+    BARREL_VOLCANO_BOSS_FIGHT_2 = "Barrel Volcano second boss fight"
     BARREL_VOLCANO_BOSS_2 = "Barrel Volcano second boss Star Piece"
     BOWSERS_KEEP_DARK_ROOM = "Bowser's Keep dark room chest"
     BOWSERS_KEEP_CROCO_SHOP_1 = "Bowser's Keep near first shop left chest"
     BOWSERS_KEEP_CROCO_SHOP_2 = "Bowser's Keep near first shop right chest"
     BOWSERS_KEEP_MAGIKOOPA = "Bowser's Keep Magikoopa's room chest"
+    BOWSERS_KEEP_BOSS_FIGHT_CHESTER = "Bowser's Keep battle door boss fight"
     BOWSERS_KEEP_BOSS_CHESTER = "Bowser's Keep battle door Star Piece"
     BOWSERS_KEEP_BOSS_1 = "Bowser's Keep first boss Star Piece"
     BOWSERS_KEEP_INVISIBLE_BRIDGE_1 = (
@@ -593,9 +627,13 @@ class ShuffleLocationSelector(CategorizationOption):
     BOWSERS_KEEP_DOOR_REWARD_6 = "Bowser's Keep door prize 6"
     BOWSERS_KEEP_BOSS_2 = "Bowser's Keep second boss Star Piece"
     BOWSERS_KEEP_BOSS_3 = "Bowser's Keep third boss Star Piece"
+    BOWSERS_KEEP_BOSS_FIGHT_1 = "Bowser's Keep first boss fight"
+    BOWSERS_KEEP_BOSS_FIGHT_2 = "Bowser's Keep second boss fight"
+    BOWSERS_KEEP_BOSS_FIGHT_3 = "Bowser's Keep third boss fight"
     FACTORY_SAVE_ROOM = "Outer Factory early save room chest"
     FACTORY_BOLT_PLATFORMS = "Outer Factory bot platform chest"
     FACTORY_BOSS_1 = "Outer Factory first boss Star Piece"
+    FACTORY_BOSS_FIGHT_1 = "Outer Factory first boss fight"
     FACTORY_FALLING_AXEMS = "Outer Factory falling axem room chest"
     FACTORY_TREASURE_PIT_1 = "Outer Factory pit back chest"
     FACTORY_TREASURE_PIT_2 = "Outer Factory pit front chest"
@@ -604,13 +642,19 @@ class ShuffleLocationSelector(CategorizationOption):
     FACTORY_BEHIND_SNAKES_1 = "Outer Factory room behind machine yarid right chest"
     FACTORY_BEHIND_SNAKES_2 = "Outer Factory room behind machine yarid left chest"
     FACTORY_BOSS_2 = "Outer Factory second boss Star Piece"
+    FACTORY_BOSS_FIGHT_2 = "Outer Factory second boss fight"
     FACTORY_TOAD_GIFT = "Inner Factory toad gift"
     INNER_FACTORY_BOSS_1 = "Inner Factory first boss Star Piece"
     INNER_FACTORY_BOSS_2 = "Inner Factory second boss Star Piece"
     INNER_FACTORY_BOSS_3 = "Inner Factory third boss Star Piece"
     INNER_FACTORY_BOSS_4 = "Inner Factory fourth boss Star Piece"
     INNER_FACTORY_BOSS_FINAL = "Factory final boss Star Piece"
-
+    INNER_FACTORY_BOSS_FIGHT_1 = "Inner Factory first boss fight"
+    INNER_FACTORY_BOSS_FIGHT_2 = "Inner Factory second boss fight"
+    INNER_FACTORY_BOSS_FIGHT_3 = "Inner Factory third boss fight"
+    INNER_FACTORY_BOSS_FIGHT_4 = "Inner Factory fourth boss fight"
+    INNER_FACTORY_BOSS_FIGHT_FINAL = "Factory final boss fight"
+    
 
 class PrizeLocation:
     _prize: Prize | None
@@ -845,7 +889,11 @@ class NPCLocationRow7(NPCLocationRow):
 
 
 class StandingLocationRow(PrizeRow, StandingLocation):
-    pass
+    def render(
+        self,
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        # TODO set NPCs
+        return super().render()
 
 
 class StandingLocationRow1(StandingLocationRow):
@@ -906,6 +954,23 @@ class StandingLocationRow14(StandingLocationRow):
 
 class StandingLocationRow15(StandingLocationRow):
     _container_event: int = E0227_FREESTANDING_15_GRANT
+
+
+class PacketLocation(StandingLocationRow):
+    _replace: str
+    _packet_type: PacketType
+
+    def render(self) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        return super().render()
+    
+    def packet(self): 
+        pass
+        # TODO: return prize model packet matching self.packet_type
+    
+    # TODO: find command with identifier _replace and set packet type
+
+class PacketLocationRow1(StandingLocationRow1, PacketLocation):
+    pass
 
 
 class RiverLocationRow(PrizeRow, RiverLocation):

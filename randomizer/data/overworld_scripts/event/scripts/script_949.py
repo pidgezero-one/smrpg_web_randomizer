@@ -207,7 +207,7 @@ script = EventScript([
 	JmpIfBitClear(LANDS_END_CHEST_1_USED, ["EVENT_991_run_dialog_40"]),
 	JmpIfBitClear(LANDS_END_CHEST_2_USED, ["EVENT_991_run_dialog_40"]),
 	JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["EVENT_949_jmp_if_bit_clear_172"]),
-	JmpIfBitClear(UNKNOWN_LARGE_CONVEYOR_ROOM, ["EVENT_991_run_dialog_40"]),
+	JmpIfBitClear(TROOPA_CLIMB_COMPLETED, ["EVENT_991_run_dialog_40"]),
 	JmpIfBitClear(BELOME_TEMPLE_OPEN, ["EVENT_949_jmp_if_bit_clear_200"], identifier="EVENT_949_jmp_if_bit_clear_172"),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_5, R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, ["EVENT_991_run_dialog_42"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_6, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["EVENT_991_run_dialog_42"]),

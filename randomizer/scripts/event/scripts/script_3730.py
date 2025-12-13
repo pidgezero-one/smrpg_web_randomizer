@@ -14,7 +14,7 @@ script = EventScript(
         ),
         JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["EVENT_3730_sequence_setter_1"]),
         JmpIfBitSet(UNKNOWN_STATUE_ROOM_7090_1, ["EVENT_3730_sequence_setter_1"]),
-        JmpIfBitSet(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5, ["EVENT_3730_palette_set_6"]),
+        JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3730_palette_set_6"]),
         Jmp(["EVENT_3730_sequence_setter_1"]),
         PaletteSet(palette_set=84, row=1, identifier="EVENT_3730_palette_set_6"),
         PauseActionScript(NPC_4),

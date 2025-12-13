@@ -99,7 +99,7 @@ script = EventScript(
             NPC_1,
             R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
             ["EVENT_991_nimbus_castle"]),
-        JmpIfBitClear(UNKNOWN_TOWER_BOSS_2_FIGHT_7092_5, ["EVENT_991_nimbus_proper"]),
+        JmpIfBitClear(STATUE_GAME_DONE, ["EVENT_991_nimbus_proper"]),
         StoreItemAmountTo7000(CastleKey1),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_991_nimbus_castle"]),
         JmpIfObjectInSpecificLevel(

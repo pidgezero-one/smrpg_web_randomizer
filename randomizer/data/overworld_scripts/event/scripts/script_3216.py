@@ -46,6 +46,6 @@ script = EventScript([
 	SetSyncActionScript(NPC_17, A0338_SHIP_TRAMPOLINE_PUZZLE_SCROLL, identifier="EVENT_3216_set_action_script_7"),
 	JmpIfBitSet(SHIP_COIN_PRIZE, ["EVENT_3216_ret_11"]),
 	SetBit(SHIP_COIN_PRIZE),
-	JmpToEvent(E0178_NPC_QUEST_1_CONTAINER),
+	JmpToEvent(E0241_FREESTANDING_1_GRANT),
 	Return(identifier="EVENT_3216_ret_11")
 ])

@@ -7,7 +7,7 @@ from randomizer.scripts.event.script_imports import *
 script = EventScript(
     [
         JmpIfBitSet(BATTLE_DOOR_STAR_PIECE, ["EVENT_3400_exor_eject"]),
-        JmpIfBitSet(UNUSED_7093_3, ["EVENT_3400_v"]),
+        JmpIfBitSet(RETURN_TO_OVERWORLD_AFTER_VOLCANO_STAR_PIECE, ["EVENT_3400_v"]),
         Set7000ToCurrentLevel(),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_3400_play_marrymore_music"]),
         JmpIfVarEqualsConst(
@@ -1072,7 +1072,7 @@ script = EventScript(
             M34_STAR_HILL, identifier="EVENT_3400_play_star_hill_music"
         ),
         Return(),
-        ClearBit(UNUSED_7093_3, identifier="EVENT_3400_v"),
+        ClearBit(RETURN_TO_OVERWORLD_AFTER_VOLCANO_STAR_PIECE, identifier="EVENT_3400_v"),
         ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True),
         Return(),
         JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_3400_boomer_eject"),

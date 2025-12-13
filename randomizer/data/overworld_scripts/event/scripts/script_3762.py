@@ -31,7 +31,9 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	ApplyTileModToLevel(use_alternate=True, room_id=R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, mod_id=0),
+    JmpIfBitSet(NIMBUS_MISSABLE_CHECK_CLEARED, ["E3762_apply_tile_mod_to_level_0"]),
+    EnableObjectTrigger(NPC_0),                                    
+	ApplyTileModToLevel(use_alternate=True, room_id=R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, mod_id=0, identifier="E3762_apply_tile_mod_to_level_0"),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_TransferXYZFPixels(x=0, y=0, z=2, direction=EAST)
 	]),

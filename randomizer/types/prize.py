@@ -54,7 +54,7 @@ class TreasureHunterNickname:
         else:
             self._starts_with_vowel = nickname[0].lower() in ['a', 'e', 'i', 'o', 'u']
         
-    
+# TODO: packets/models    
 class Prize:
     _important: bool = False
     _npc_grant: EventScript | None = None

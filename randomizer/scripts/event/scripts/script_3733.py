@@ -7,7 +7,7 @@ from randomizer.scripts.event.script_imports import *
 script = EventScript(
     [
         MoveScriptToBackgroundThread2(),
-        JmpIfBitSet(INNER_FACTORY_ROOM_2_COMPLETED, ["EVENT_3584_ret_0"]),
+        JmpIfBitSet(NIMBUS_PLATFORM_ACTIVE, ["EVENT_3584_ret_0"]),
         JmpIfBitSet(TEMP_7043_1, ["EVENT_3584_ret_0"]),
         SetBit(TEMP_7043_1),
         EnableControlsUntilReturn([LEFT, RIGHT, DOWN, UP, A, Y, B]),
@@ -25,7 +25,7 @@ script = EventScript(
             identifier="EVENT_3733_jmp_if_present_in_current_level_11"),
         Jmp(["EVENT_3733_summon_to_current_level_15"]),
         PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_3733_play_sound_13"),
-        SetBit(INNER_FACTORY_ROOM_2_COMPLETED),
+        SetBit(NIMBUS_PLATFORM_ACTIVE),
         SummonObjectToCurrentLevel(
             NPC_6, identifier="EVENT_3733_summon_to_current_level_15"
         ),

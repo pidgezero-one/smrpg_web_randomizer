@@ -168,7 +168,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 5
-            npc=npcs.BANANA_PEEL_NPC,
+            npc=npcs.RING_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E3685_NIMBUS_GET_CROCOS_ITEM,
             action_script=A0119_SLOW_SEQUENCE_LOOP,

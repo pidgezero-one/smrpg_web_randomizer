@@ -31,12 +31,4 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	PlaySound(sound=SO085_FLOWER, channel=6),
-	SetBit(NIMBUS_HOUSE_ITEM_RETRIEVED),
-	SetSyncActionScript(MARIO, A0510_EMPTY),
-	RunDialog(dialog_id=PRIMARY_TEMP_7000, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
-	AddToInventory(ITEM_ID),
-	UnsyncActionScript(MARIO),
-	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	Return()
 ])

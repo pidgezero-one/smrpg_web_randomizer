@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitSet(BATTLE_DOOR_STAR_PIECE, ["EVENT_3400_clear_bit_485"]),
-	JmpIfBitSet(UNUSED_7093_3, ["EVENT_3400_clear_bit_481"]),
+	JmpIfBitSet(RETURN_TO_OVERWORLD_AFTER_VOLCANO_STAR_PIECE, ["EVENT_3400_clear_bit_481"]),
 	Set7000ToCurrentLevel(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EVENT_3400_play_music_current_volume_390"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_3400_fade_out_music_to_volume_389"]),
@@ -514,7 +514,7 @@ script = EventScript([
 	Return(),
 	PlayMusicAtDefaultVolume(M0034_STARHILL, identifier="EVENT_3400_play_music_default_volume_479"),
 	Return(),
-	ClearBit(UNUSED_7093_3, identifier="EVENT_3400_clear_bit_481"),
+	ClearBit(RETURN_TO_OVERWORLD_AFTER_VOLCANO_STAR_PIECE, identifier="EVENT_3400_clear_bit_481"),
 	ExitToWorldMap(area=OW50_BARREL_VOLCANO, bit_6=True, bit_7=True),
 	Return(),
 	JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_3400_jmp_to_event_484"),

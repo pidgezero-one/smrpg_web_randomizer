@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CreatePacketAt7010WithEvent(packet=P038_MUSHROOM_FALL_DEFAULT_PRIORITY, event_id=E3295_SHIP_COLLECT_BARREL_PRIZE, destinations=["EVENT_3219_pause_13"]),
+	CreatePacketAt7010WithEvent(packet=P038_MUSHROOM_FALL_DEFAULT_PRIORITY, event_id=E3295_SHIP_COLLECT_BARREL_PRIZE, destinations=["EVENT_3219_pause_13"], identifier="spawn_ship_barrel_item"),
 	Return()
 ])

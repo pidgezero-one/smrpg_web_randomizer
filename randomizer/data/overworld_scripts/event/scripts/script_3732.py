@@ -31,12 +31,17 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	JmpIfBitClear(INNER_FACTORY_ROOM_2_COMPLETED, ["EVENT_3732_action_queue_2"]),
+	JmpIfBitClear(NIMBUS_PLATFORM_ACTIVE, ["EVENT_3732_action_queue_2"]),
 	SummonObjectToCurrentLevel(NPC_6),
 	ActionQueueAsync(target=NPC_7, subscript=[
 		A_SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES)
 	], identifier="EVENT_3732_action_queue_2"),
-	RunEventAsSubroutine(E0839_NIMBUS_CASTLE_SECOND_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER),
+    JmpIfBitClear(NIMBUS_LAND_LIBERATED, ["EVENT_3732_run_event_as_subroutine_0"]),
+	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["EVENT_3732_run_event_as_subroutine_0"]),
+	RemoveObjectFromSpecificLevel(NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND),
+	SummonObjectToSpecificLevel(NPC_1, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND),
+    
+	RunEventAsSubroutine(E0839_NIMBUS_CASTLE_SECOND_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_3732_run_event_as_subroutine_0"),
 	FadeInFromBlack(sync=False),
 	JmpIfBitClear(TEMP_7076_0, ["EVENT_3584_ret_0"]),
 	JmpIfBitSet(EXP_STAR_BIT_5, ["EVENT_3584_ret_0"]),

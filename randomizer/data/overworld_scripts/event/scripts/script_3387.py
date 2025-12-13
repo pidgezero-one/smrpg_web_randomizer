@@ -31,6 +31,6 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	CreatePacketAt7010WithEvent(packet=P037_ITEM_BAG_FALL, event_id=E3291_SHIP_COLLECT_CANNONBALL_PRIZE, destinations=["EVENT_3387_ret_1"]),
+	CreatePacketAt7010WithEvent(packet=P037_ITEM_BAG_FALL, event_id=E3291_SHIP_COLLECT_CANNONBALL_PRIZE, destinations=["EVENT_3387_ret_1"], identifier="spawn_ship_cannonball_item"),
 	Return(identifier="EVENT_3387_ret_1")
 ])

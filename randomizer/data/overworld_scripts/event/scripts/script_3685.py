@@ -32,7 +32,6 @@ from ....packets import *
 
 script = EventScript([
 	RemoveObjectFromCurrentLevel(MEM_70A8),
-	SetBit(NIMBUS_HOUSE_ITEM_RETRIEVED),
 	RunEventAsSubroutine(E0241_FREESTANDING_1_GRANT),
 	Return()
 ])

@@ -31,8 +31,7 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	SetBit(UNUSED_7093_5, identifier="EVENT_2048_set_bit_0"),
-	JmpIfBitSet(MONSTRO_LEDGE_ITEM_KNOCKED_DOWN, ["EVENT_2048_set_bit_6"]),
+	JmpIfBitSet(MONSTRO_LEDGE_ITEM_KNOCKED_DOWN, ["EVENT_2048_set_bit_6"], identifier="EVENT_2048_set_bit_0"),
 	CopyVarToVar(from_var=MONSTRO_THWOMP_COUNTER, to_var=PRIMARY_TEMP_7000),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2048_jmp_if_bit_clear_8"]),
 	ActionQueueAsync(target=NPC_0, subscript=[

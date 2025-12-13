@@ -7,7 +7,7 @@ from randomizer.scripts.event.script_imports import *
 script = EventScript(
     [
         JmpIfBitClear(
-            INNER_FACTORY_ROOM_2_COMPLETED, ["EVENT_3732_action_queue_async_2"]
+            NIMBUS_PLATFORM_ACTIVE, ["EVENT_3732_action_queue_async_2"]
         ),
         SummonObjectToCurrentLevel(NPC_6),
         ActionQueueAsync(
