@@ -598,7 +598,7 @@ class Mimic1StarPiece(StarPieceLocation):
 
 
 class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
-    _originally_held = CoinPrize
+    _originally_held = Coins50Prize
     _rooms = [512]  # can be in any room.
     _id = ShuffleLocationSelector.PANDORITE_REWARD_2
     _override_id = 512
@@ -688,7 +688,7 @@ class TadpolePondCricketPieExchangeLocation(NPCLocationRow1):
 
 
 class TadpolePondCricketJamExchangeLocation(NPCLocationRow2):
-    _originally_held = FrogCoinPrize
+    _originally_held = FrogCoin1Prize
     _rooms = [R075_TADPOLE_POND_AREA_01]
     _id = ShuffleLocationSelector.CRICKET_JAM_REWARD
     # Flag as checked: CRICKET_JAM_EXCHANGED
@@ -1123,7 +1123,7 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
 
 
 class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
-    _originally_held = CoinPrize
+    _originally_held = Coins20Prize
     _rooms = [R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_2
@@ -1172,6 +1172,8 @@ class BucketGirlRewardLocation(NPCLocationRow1):
     # Flag as checked: BUCKET_PRIZE_GRANT_NO_WARP
     # Not available if bucket warp is enabled
     # TODO: make it available?
+
+# TODO: progressive fireworks checks
 
 
 class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
@@ -1727,7 +1729,7 @@ class BoosterHillGuaranteedItem1(StandingLocation, BoosterHillLocation):
     # flag as checked $70B1 goes from 0 to 1
 
 
-class BoosterHillGuaranteedItem2:
+class BoosterHillGuaranteedItem2(StandingLocation, BoosterHillLocation):
     _70B1_id = 1
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1736,7 +1738,7 @@ class BoosterHillGuaranteedItem2:
     # flag as checked $70B1 goes from 1 to 2
 
 
-class BoosterHillGuaranteedItem3:
+class BoosterHillGuaranteedItem3(StandingLocation, BoosterHillLocation):
     _70B1_id = 2
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1745,7 +1747,7 @@ class BoosterHillGuaranteedItem3:
     # flag as checked $70B1 goes from 2 to 3
 
 
-class BoosterHillGuaranteedItem4:
+class BoosterHillGuaranteedItem4(StandingLocation, BoosterHillLocation):
     _70B1_id = 3
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1754,7 +1756,7 @@ class BoosterHillGuaranteedItem4:
     # flag as checked $70B1 goes from 3 to 4
 
 
-class BoosterHillGuaranteedItem5:
+class BoosterHillGuaranteedItem5(StandingLocation, BoosterHillLocation):
     _70B1_id = 4
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1763,7 +1765,7 @@ class BoosterHillGuaranteedItem5:
     # flag as checked $70B1 goes from 4 to 5
 
 
-class BoosterHillGuaranteedItem6:
+class BoosterHillGuaranteedItem6(StandingLocation, BoosterHillLocation):
     _70B1_id = 5
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1772,7 +1774,7 @@ class BoosterHillGuaranteedItem6:
     # flag as checked $70B1 goes from 5 to 6
 
 
-class BoosterHillGuaranteedItem7:
+class BoosterHillGuaranteedItem7(StandingLocation, BoosterHillLocation):
     _70B1_id = 6
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1781,7 +1783,7 @@ class BoosterHillGuaranteedItem7:
     # flag as checked $70B1 goes from 6 to 7
 
 
-class BoosterHillGuaranteedItem8:
+class BoosterHillGuaranteedItem8(StandingLocation, BoosterHillLocation):
     _70B1_id = 7
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1790,7 +1792,7 @@ class BoosterHillGuaranteedItem8:
     # flag as checked $70B1 goes from 7 to 8
 
 
-class BoosterHillGuaranteedItem9:
+class BoosterHillGuaranteedItem9(StandingLocation, BoosterHillLocation):
     _70B1_id = 8
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1799,7 +1801,7 @@ class BoosterHillGuaranteedItem9:
     # flag as checked $70B1 goes from 8 to 9
 
 
-class BoosterHillGuaranteedItem10:
+class BoosterHillGuaranteedItem10(StandingLocation, BoosterHillLocation):
     _70B1_id = 9
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1808,7 +1810,7 @@ class BoosterHillGuaranteedItem10:
     # flag as checked $70B1 goes from 9 to 10
 
 
-class BoosterHillGuaranteedItem11:
+class BoosterHillGuaranteedItem11(StandingLocation, BoosterHillLocation):
     _70B1_id = 10
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1817,7 +1819,7 @@ class BoosterHillGuaranteedItem11:
     # flag as checked $70B1 goes from 10 to 11
 
 
-class BoosterHillGuaranteedItem12:
+class BoosterHillGuaranteedItem12(StandingLocation, BoosterHillLocation):
     _70B1_id = 11
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1826,7 +1828,7 @@ class BoosterHillGuaranteedItem12:
     # flag as checked $70B1 goes from 11 to 12
 
 
-class BoosterHillGuaranteedItem13:
+class BoosterHillGuaranteedItem13(StandingLocation, BoosterHillLocation):
     _70B1_id = 12
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1835,7 +1837,7 @@ class BoosterHillGuaranteedItem13:
     # flag as checked $70B1 goes from 12 to 13
 
 
-class BoosterHillGuaranteedItem14:
+class BoosterHillGuaranteedItem14(StandingLocation, BoosterHillLocation):
     _70B1_id = 13
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1844,7 +1846,7 @@ class BoosterHillGuaranteedItem14:
     # flag as checked $70B1 goes from 13 to 14
 
 
-class BoosterHillGuaranteedItem15:
+class BoosterHillGuaranteedItem15(StandingLocation, BoosterHillLocation):
     _70B1_id = 14
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1853,7 +1855,7 @@ class BoosterHillGuaranteedItem15:
     # flag as checked $70B1 goes from 14 to 15
 
 
-class BoosterHillGuaranteedItem16:
+class BoosterHillGuaranteedItem16(StandingLocation, BoosterHillLocation):
     _70B1_id = 15
     _originally_held = FPFlowerPrize
     _rooms = [R054_BOOSTER_HILL_DUMMY, R014_BOOSTER_HILL]
@@ -1982,7 +1984,7 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
 
 
 class MarrymoreBossFightRemake(BossFightLocation):
-    _originally_held = Booster2BossFight
+    _originally_held = Bundt2BossFight
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     _id = ShuffleLocationSelector.MARRYMORE_POSTGAME_BOSS_FIGHT
     _override_id = 529
@@ -2135,7 +2137,7 @@ class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
 
 
 class ShipRatStairsChestLocation(TreasureChestLocationRow1):
-    _originally_held = CoinPrize
+    _originally_held = Coins100Prize
     _rooms = [R167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS
@@ -2175,7 +2177,7 @@ class Ship3DMazePuzzle(PacketLocationRow1):
 
 
 class ShipShopChestLocation(TreasureChestLocationRow1):
-    _originally_held = CoinPrize
+    _originally_held = Coins100Prize
     _rooms = [R169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SHOP
@@ -2580,7 +2582,7 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
 
 
 class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
-    _originally_held = CoinPrize
+    _originally_held = Coins100Prize
     _rooms = [R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_4
@@ -2919,6 +2921,7 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
     _rooms = [R351_CULEXS_ROOM]
     _override_id = 524
     _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS_FIGHT
+    _remake_only = True
     # Flag as checked: CULEX_POSTGAME_COMPLETED
 
 
@@ -2927,6 +2930,7 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
     _override_id = 524
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS
+    _remake_only = True
     # Flag as checked: CULEX_POSTGAME_COMPLETED
 
 
@@ -2934,6 +2938,7 @@ class MonstroSealedDoorClearRewardLocationPostgame(NPCLocationRow2):
     _originally_held = CrystalShardPrize
     _rooms = [R351_CULEXS_ROOM]
     _id = ShuffleLocationSelector.CULEX_POSTGAME_REWARD
+    _remake_only = True
     # Flag as checked: CULEX_POSTGAME_COMPLETED
 
 
@@ -3487,6 +3492,8 @@ class NimbusLandInnerCellarLocation(NPCLocationRow1):
     # flag as checked: NIMBUS_CASTLE_LIBERATED_GUARD_ITEM_GRANTED
 
 
+########## barrel volcano
+
 class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _originally_held = FPFlowerPrize
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
@@ -3512,7 +3519,7 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
 
 
 class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
-    _originally_held = CoinPrize
+    _originally_held = Coins100Prize
     _rooms = [R384_VOLCANO_AREA_05]
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_2
@@ -3576,7 +3583,7 @@ class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
 
 
 class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
-    _originally_held = CoinPrize
+    _originally_held = Coins100Prize
     _rooms = [R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_HINOPIO
@@ -4234,5 +4241,7 @@ class FinalBossFightStarPiece(StarPieceLocation):
 # todo: spell slots
 # which aren't eligible for shuffling into any of the above locations
 
+# todo:
+# invisible flag pool
 
 CHECK_POOL: list[PrizeLocation] = []
