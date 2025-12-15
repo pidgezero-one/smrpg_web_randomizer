@@ -29,30 +29,24 @@ from ..types.prizelocation import (
     StandingLocationRow13,
     StandingLocationRow14,
     StandingLocationRow15,
-    RiverLocation,
-    RiverLocationRow1,
     RiverLocationRow2,
     BossFightLocation,
     CharacterRecruitmentLocation,
     StarPieceLocation,
-    ShopLocation,
     SpellSlotLocation,
     ShuffleLocationSelector,
     TreasureShopLocation,
     BoosterHillLocation,
     FrogDiscipleLocation,
     PacketLocationRow1,
+    InvisibleFlagLocation,
 )
 from ..types.packet_type import PacketType
 from ..data.variables.room_names import *
 from ..data.variables.event_script_names import *
 from .prizes import *
 from ..types.prize import (
-    Prize,
-    CoinPrize,
     FPFlowerPrize,
-    EXPStarPrize,
-    BossFightPrize,
     SlotsPrize,
     EmptyPrize,
 )
@@ -606,7 +600,7 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
 
 
 class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
-    _originally_held = EXPStarPrize
+    _originally_held = KeroSewersStarPrize
     _rooms = [R059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS]
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.KERO_SEWERS_STAR_CHEST
@@ -1172,6 +1166,7 @@ class BucketGirlRewardLocation(NPCLocationRow1):
     # Flag as checked: BUCKET_PRIZE_GRANT_NO_WARP
     # Not available if bucket warp is enabled
     # TODO: make it available?
+
 
 # TODO: progressive fireworks checks
 
@@ -3494,6 +3489,7 @@ class NimbusLandInnerCellarLocation(NPCLocationRow1):
 
 ########## barrel volcano
 
+
 class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _originally_held = FPFlowerPrize
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
@@ -4161,6 +4157,7 @@ class FactoryTransitionStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.FACTORY_BOSS_2
     # Flag as checked: ABYSS_BOSS_2_DEFEATED
 
+
 ########## inner factory
 
 
@@ -4176,6 +4173,7 @@ class InnerFactoryFirstFightStarPiece(StarPieceLocation):
     _rooms = [R469_FACTORY_GROUNDS_AREA_01]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_1
     # Flag as checked: INNER_FACTORY_ROOM_1_COMPLETED
+
 
 class InnerFactoryToadGiftLocation(NPCLocationRow1):
     _originally_held = RockCandyPrize
@@ -4242,15 +4240,804 @@ class FinalBossFightStarPiece(StarPieceLocation):
 # which aren't eligible for shuffling into any of the above locations
 
 
-CHECK_POOL: list[PrizeLocation] = [
-
-]
+CHECK_POOL: list[PrizeLocation] = []
 
 
 ########## invisible flag check pool
 
-# 1: inject empty npc into room with event E1246_INVISIBLE_GRANT_1 / override 530
-# 2: inject empty npc into room with event E1247_INVISIBLE_GRANT_2 / override 531
-# 3: inject empty npc into room with event E1248_INVISIBLE_GRANT_3 / override 532
-# TODO generic frogfucius hints triggered by these three bits that don't give locattion away
+# Three of the following locations will be chosen at random and included in the seed. If the setting is disabled, then it will be the first three (defaults).
+# In a tracker, their exact locations should not be known, but these will be considered checked when a certain bit is set.
+# INVISIBLE_FLAG_1_FOUND, INVISIBLE_FLAG_2_FOUND, INVISIBLE_FLAG_3_FOUND
 
+
+class MariosPadBedFlag(InvisibleFlagLocation):
+    _room_ids = [R189_MARIOS_PIPEHOUSE]
+    _x_coord = 3
+    _y_coord = 11
+    _clue_text = """\n My flag's underneath a green bed.[await]"""
+
+
+class RoseTownSignFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
+        R084_ROSE_TOWN_OUTSIDE,
+    ]
+    _x_coord = 10
+    _y_coord = 47
+    _clue_text = """\n My flag's behind a wooden flower.[await]"""
+
+
+class YosterIsleGoalFlag(InvisibleFlagLocation):
+    _room_ids = [R034_YOSTER_ISLE]
+    _x_coord = 21
+    _y_coord = 62
+    _y_shift = -4
+    _clue_text = """\n My flag's between "O" and "A".[await]"""
+
+
+class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
+    _room_ids = [R016_MARIOS_PAD]
+    _x_coord = 11
+    _y_coord = 34
+    _z_coord = 1
+    _clue_text = "\n  Mine is underneath a steamwhistle.[await]"
+
+
+class MariosPadLanternFlag(InvisibleFlagLocation):
+    _room_ids = [R016_MARIOS_PAD]
+    _x_coord = 13
+    _y_coord = 35
+    _x_shift = 8
+    _y_shift = -8
+    _clue_text = "\n    Mine is under a white lantern.[await]"
+
+
+class MariosPadHatFlag(InvisibleFlagLocation):
+    _room_ids = [R189_MARIOS_PIPEHOUSE]
+    _x_coord = 3
+    _y_coord = 13
+    _z_coord = 1
+    _clue_text = """\n      My flag's under a red hat.[await]"""
+
+
+class MushroomWayTreeFlag(InvisibleFlagLocation):
+    _room_ids = [R204_MUSHROOM_WAY_AREA_02]
+    _x_coord = 11
+    _y_coord = 16
+    _z_coord = 3
+    _x_shift = -16
+    _clue_text = " Mine's under a tree, up on a ledge\n by itself.[await]"
+
+
+class MushroomKingdomSignFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+        R191_MUSHROOM_KINGDOM_OUTSIDE,
+    ]
+    _x_coord = 22
+    _y_coord = 116
+    _z_coord = 2
+    _y_shift = -8
+    _clue_text = "\n  Mine's behind a wooden mushroom.[await]"
+
+
+class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R482_MUSHROOM_KINGDOM_DURING_MACK_RAZ_AND_RAINIS_HOUSE,
+        R490_MUSHROOM_KINGDOM_RAZ_AND_RAINIS_HOUSE,
+    ]
+    _x_coord = 14
+    _y_coord = 61
+    _y_shift = 8
+    _clue_text = " Mine is under the bed in an empty\n house.[await]"
+
+
+class ChancellorThroneFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R018_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM,
+        R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
+    ]
+    _x_coord = 19
+    _y_coord = 24
+    _z_coord = 3
+    _clue_text = "\n       Mine's under a blue chair.[await]"
+
+
+class BanditsWayFlowerFlag(InvisibleFlagLocation):
+    _room_ids = [R207_BANDITS_WAY_AREA_02]
+    _x_coord = 25
+    _y_coord = 89
+    _x_shift = 16
+    _clue_text = "\n      Mine's on a landing flower.[await]"
+
+
+class KeroStairsFlag(InvisibleFlagLocation):
+    _room_ids = [R060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS]
+    _x_coord = 5
+    _y_coord = 41
+    _z_coord = 4
+    _y_shift = 8
+    _clue_text = " Mine's in a corner, nearby lots of\n dank stairs.[await]"
+
+
+class KeroGateFlag(InvisibleFlagLocation):
+    _room_ids = [R062_KERO_SEWERS_AREA_01_WATER_ROOM_WSAVE]
+    _x_coord = 4
+    _y_coord = 88
+    _z_coord = 4
+    _x_shift = -16
+    _clue_text = "\n Mine is by a lone metal spike fence.[await]"
+
+
+class MidasTreesFlag(InvisibleFlagLocation):
+    _room_ids = [R067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA]
+    _x_coord = 24
+    _y_coord = 26
+    _x_shift = -8
+    _clue_text = " Mine's between a lone pair of\n palm trees, near water.[await]"
+
+
+class TadpoleCabinetFlag(InvisibleFlagLocation):
+    _room_ids = [R075_TADPOLE_POND_AREA_01]
+    _x_coord = 25
+    _y_coord = 29
+    _z_coord = 2
+    _x_shift = 8
+    _y_shift = 8
+    _clue_text = "\n       Mine is in a frog cabinet.[await]"
+
+
+class RoseWayDirtPatchFlag(InvisibleFlagLocation):
+    _room_ids = [R066_ROSE_WAY_EXIT_AREA_WHERE_BOWSERS_TROOPS_GATHERED]
+    _x_coord = 25
+    _y_coord = 88
+    _clue_text = " Mine is in the middle of a HUGE\n patch of dirt.[await]"
+
+
+class RoseTownHydrantFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R083_ROSE_TOWN_DURING_BOWYER_OUTSIDE,
+        R084_ROSE_TOWN_OUTSIDE,
+    ]
+    _x_coord = 15
+    _y_coord = 63
+    _y_shift = -8
+    _clue_text = "\n  Mine is under a low steel hydrant.[await]"
+
+
+class RoseTownSinkFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R089_ROSE_TOWN_DURING_BOWYER_THREE_GRANDKIDS_HOUSE,
+        R090_ROSE_TOWN_THREE_GRANDKIDS_HOUSE,
+    ]
+    _x_coord = 15
+    _y_coord = 10
+    _y_shift = 1
+    _clue_text = "\n My flag is in a kitchen sink under\n some green curtains.[await]"
+
+
+class RoseTownBowserFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R085_ROSE_TOWN_DURING_BOWYER_INN_1F,
+        R086_ROSE_TOWN_INN_1F,
+    ]
+    _x_coord = 7
+    _y_coord = 21
+    _clue_text = "\n   Mine's under a miniature turtle.[await]"
+
+
+class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
+    _room_ids = [R417_GARDENERS_HOUSE_OUTSIDE]
+    _x_coord = 2
+    _y_coord = 85
+    _y_shift = -8
+    _clue_text = "\n   Mine is under a private hydrant.[await]"
+
+
+class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
+    _room_ids = [R417_GARDENERS_HOUSE_OUTSIDE]
+    _x_coord = 5
+    _y_coord = 87
+    _clue_text = "\n   Mine is under a private bucket.[await]"
+
+
+class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
+    _room_ids = [R419_LAZY_SHELL_CLOUD]
+    _x_coord = 4
+    _y_coord = 111
+    _z_coord = 10
+    _clue_text = "\n Mine's on a big leaf between\n two chests.[await]"
+
+
+class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
+    _room_ids = [R231_FOREST_MAZE_SECRET_ENTRANCE]
+    _x_coord = 18
+    _y_coord = 72
+    _x_shift = 16
+    _clue_text = " Mine is behind a brightly\n illuminated tree stump.[await]"
+
+
+class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
+    _room_ids = [R235_FOREST_MAZE_AREA_08_UNDERGROUND]
+    _x_coord = 25
+    _y_coord = 93
+    _x_shift = -8
+    _y_shift = 8
+    _clue_text = " Mine is on an illuminated pack of\n 5 mushrooms.[await]"
+
+
+class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
+    _room_ids = [R236_FOREST_MAZE_AREA_07_UNDERGROUND_WSLEEPING_WIGGLER]
+    _x_coord = 2
+    _y_coord = 39
+    _clue_text = "\n        Mine is on a sleepy bug.[await]"
+
+
+class PipeVaultExteriorFlag(InvisibleFlagLocation):
+    _room_ids = [R055_PIPE_VAULT_ENTRANCE]
+    _x_coord = 17
+    _y_coord = 19
+    _x_shift = -8
+    _y_shift = 8
+    _clue_text = " Mine is by a pipe in the middle of\n the road.[await]"
+
+
+class PipeVaultRedPipeFlag(InvisibleFlagLocation):
+    _room_ids = [R129_PIPE_VAULT_AREA_05]
+    _x_coord = 21
+    _y_coord = 107
+    _x_shift = -8
+    _y_shift = -8
+    _clue_text = "\n     Mine is behind a low red pipe.[await]"
+
+
+class YosterIsleHutFlag(InvisibleFlagLocation):
+    _room_ids = [R034_YOSTER_ISLE]
+    _x_coord = 11
+    _y_coord = 70
+    _clue_text = "\n         Mine's in a fruity hut.[await]"
+
+
+class MolevilleHydrantFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
+        R108_MOLEVILLE_OUTSIDE,
+    ]
+    _x_coord = 6
+    _y_coord = 63
+    _y_shift = -8
+    _clue_text = "\n     Mine's under a gold hydrant.[await]"
+
+
+class MolevilleMountainBushFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
+        R108_MOLEVILLE_OUTSIDE,
+    ]
+    _x_coord = 19
+    _y_coord = 31
+    _z_coord = 12
+    _clue_text = " Mine's in a bush at the top of\n a mountain.[await]"
+
+
+class MolevilleBedFlag(InvisibleFlagLocation):
+    _room_ids = [R337_MOLEVILLE_INN]
+    _x_coord = 6
+    _y_coord = 12
+    _x_shift = 16
+    _clue_text = "\n       Mine's under a middle bed.[await]"
+
+
+class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
+    _room_ids = [R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE]
+    _x_coord = 5
+    _y_coord = 51
+    _clue_text = " Mine's between two arrows,\n pointing away from each other.[await]"
+
+
+class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
+    _room_ids = [R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
+    _x_coord = 8
+    _y_coord = 13
+    _z_coord = 4
+    _clue_text = " Mine's in a zig-zag room, up\n on the ceiling.[await]"
+
+
+class MolevilleMinesEntryFlag(InvisibleFlagLocation):
+    _room_ids = [R290_MOLEVILLE_MINES_AREA_19_FROM_OUTSIDE_AFTER_PAYING]
+    _x_coord = 22
+    _y_coord = 23
+    _z_coord = 3
+    _x_shift = 16
+    _clue_text = '\n My flag?[delay]\n ...[delay]It\'s on the word "IN",\n [delay]above a big hole.[await]'
+
+
+class BoosterPassCornerBushFlag(InvisibleFlagLocation):
+    _room_ids = [R101_BOOSTER_PASS_AREA_02]
+    _x_coord = 17
+    _y_coord = 112
+    _x_shift = -8
+    _y_shift = 8
+    _clue_text = "\n        Mine's in a corner bush.[await]"
+
+
+class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
+    _room_ids = [R202_BOOSTER_TOWER_ENTRANCE]
+    _x_coord = 4
+    _y_coord = 110
+    _x_shift = 16
+    _clue_text = " Mine's behind a sign with Japanese\n letters.[await]"
+
+
+class BoosterTowerDeskFlag(InvisibleFlagLocation):
+    _room_ids = [R043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM]
+    _x_coord = 24
+    _y_coord = 113
+    _x_shift = 16
+    _clue_text = '\n      Mine\'s under "B" and "K".[await]'
+
+
+class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
+    _room_ids = [R197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER]
+    _x_coord = 19
+    _y_coord = 122
+    _y_shift = 8
+    _clue_text = "\n Mine's on a lightly-loaded see-saw.[await]"
+
+
+class BoosterTowerCurtainFlag(InvisibleFlagLocation):
+    _room_ids = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
+    _x_coord = 7
+    _y_coord = 64
+    _z_coord = 9
+    _y_shift = 8
+    _clue_text = " Mine's in a corner, between a\n window and a red curtain.[await]"
+
+
+class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
+    _room_ids = [R036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER]
+    _x_coord = 5
+    _y_coord = 114
+    _z_coord = 12
+    _clue_text = "\n     Mine is near a lonely thwomp.[await]"
+
+
+class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
+    _room_ids = [R038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
+    _x_coord = 15
+    _y_coord = 83
+    _x_shift = -8
+    _y_shift = -9
+    _clue_text = "\n       Mine is in a broken frame.[await]"
+
+
+class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
+    _room_ids = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _x_coord = 7
+    _y_coord = 18
+    _clue_text = "\n     Mine is on an insect cage.[await]"
+
+
+class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
+    _room_ids = [R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    _x_coord = 7
+    _y_coord = 24
+    _x_shift = 16
+    _clue_text = "\n       Mine is behind a toy box.[await]"
+
+
+class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R005_MARRYMORE_OUTSIDE_DURING_BOOSTER,
+        R064_MARRYMORE_OUTSIDE,
+    ]
+    _x_coord = 23
+    _y_coord = 60
+    _z_coord = 6
+    _x_shift = -8
+    _y_shift = -8
+    _clue_text = "\n  Mine is under a lone backyard box.[await]"
+
+
+class MarrymoreHallwayFlag(InvisibleFlagLocation):
+    _room_ids = [R011_MARRYMORE_INN_3F]
+    _x_coord = 18
+    _y_coord = 76
+    _z_coord = 3
+    _clue_text = " My flag is in a flower pot in a\n hallway.[await]"
+
+
+class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
+    _room_ids = [R012_MARRYMORE_INN_SUITE_ROOM]
+    _x_coord = 7
+    _y_coord = 13
+    _z_coord = 6
+    _x_shift = -16
+    _clue_text = " Mine's beneath two adjoined\n red beds.[await]"
+
+
+class MarrymoreKitchenFlag(InvisibleFlagLocation):
+    _room_ids = [R155_MARRYMORE_CHAPEL_KITCHEN]
+    _x_coord = 2
+    _y_coord = 20
+    _x_shift = -8
+    _y_shift = 8
+    _clue_text = " Mine is in a big cabinet full of\n dishes.[await]"
+
+
+class MarrymoreFireplaceFlag(InvisibleFlagLocation):
+    _room_ids = [R152_MARRYMORE_CHAPEL_MAIN_HALL]
+    _x_coord = 9
+    _y_coord = 33
+    _z_coord = 2
+    _y_shift = -8
+    _clue_text = "\n    Mine is in an empty fireplace.[await]"
+
+
+class MarrymoreOrganFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R065_MARRYMORE_CHAPEL_SANCTUARY,
+        R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+    ]
+    _x_coord = 23
+    _y_coord = 65
+    _z_coord = 1
+    _x_shift = -16
+    _clue_text = " Mine is behind a big musical\n instrument.[await]"
+
+
+class MarrymoreAltarFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R065_MARRYMORE_CHAPEL_SANCTUARY,
+        R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+    ]
+    _x_coord = 23
+    _y_coord = 70
+    _z_coord = 1
+    _clue_text = "\n        Mine's behind a podium.[await]"
+
+
+class StarHillNorthStarFlag(InvisibleFlagLocation):
+    _room_ids = [R158_STAR_HILL_AREA_02]
+    _x_coord = 8
+    _y_coord = 69
+    _z_coord = 2
+    _x_shift = -10
+    _clue_text = "\n     Mine is atop the North Star.[await]"
+
+
+class SeasideTownAnchorFlag(InvisibleFlagLocation):
+    _room_ids = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
+    _x_coord = 14
+    _y_coord = 57
+    _x_shift = 16
+    _clue_text = "\n       Mine is behind an anchor.[await]"
+
+
+class SeasideTownHydrantFlag(InvisibleFlagLocation):
+    _room_ids = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
+    _x_coord = 16
+    _y_coord = 25
+    _z_coord = 5
+    _x_shift = 0
+    _y_shift = -8
+    _clue_text = "\n  Mine is under a high steel hydrant.[await]"
+
+
+class SeasideTownBucketFlag(InvisibleFlagLocation):
+    _room_ids = [R208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
+    _x_coord = 20
+    _y_coord = 31
+    _z_coord = 3
+    _clue_text = "\n Mine is in a bucket between two\n staircases.[await]"
+
+
+class SeasideTownFlowersFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST,
+        R313_SEASIDE_TOWN_ACCESSORY_SHOP,
+    ]
+    _x_coord = 26
+    _y_coord = 60
+    _y_shift = 8
+    _clue_text = " Mine's in the middle of three\n pink flowers.[await]"
+
+
+class SeasideTownShedBoxFlag(InvisibleFlagLocation):
+    _room_ids = [R314_SEASIDE_TOWN_SHED]
+    _x_coord = 5
+    _y_coord = 23
+    _y_shift = 8
+    _clue_text = " Mine's under a lone crate in an\n empty house.[await]"
+
+
+class SeaArrowFlag(InvisibleFlagLocation):
+    _room_ids = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
+    _x_coord = 8
+    _y_coord = 21
+    _x_shift = -8
+    _y_shift = -8
+    _clue_text = "\n   Mine is beside a mossy up-arrow.[await]"
+
+
+class SeaBoxesFlag(InvisibleFlagLocation):
+    _room_ids = [R130_SEA_AREA_02_LARGE_ROOM_WITH_SHOP]
+    _x_coord = 9
+    _y_coord = 36
+    _y_shift = -8
+    _clue_text = "\n    Mine's in some V-shaped boxes.[await]"
+
+
+class SeaStalagnateFlag(InvisibleFlagLocation):
+    _room_ids = [R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS]
+    _x_coord = 18
+    _y_coord = 43
+    _z_coord = 6
+    _x_shift = -8
+    _y_shift = -8
+    _clue_text = " Mine is behind a big gray\n stalagnate.[await]"
+
+
+class SeaUnderwaterSailFlag(InvisibleFlagLocation):
+    _room_ids = [R174_SEA_AREA_08_SHORE_WITH_SUNKEN_SHIP]
+    _x_coord = 4
+    _y_coord = 41
+    _clue_text = "\n        Mine's behind a big sail.[await]"
+
+
+class ShipBarrelPileFlag(InvisibleFlagLocation):
+    _room_ids = [R162_SUNKEN_SHIP_AREA_04_GREAPERS_DRY_BONES]
+    _x_coord = 7
+    _y_coord = 66
+    _z_coord = 3
+    _clue_text = "\n  Mine is atop a big pile of barrels.[await]"
+
+
+class ShipDoorMarkerFlag(InvisibleFlagLocation):
+    _room_ids = [R165_SUNKEN_SHIP_AREA_06_PUZZLE_ROOM_PASSAGEWAY]
+    _x_coord = 18
+    _y_coord = 82
+    _z_coord = 1
+    _y_shift = 8
+    _clue_text = ' Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number "4".[await]'
+
+
+class ShipButtonFlag(InvisibleFlagLocation):
+    _room_ids = [R166_SUNKEN_SHIP_PUZZLE_ROOM_1]
+    _x_coord = 16
+    _y_coord = 133
+    _clue_text = "\n   Mine is under a floating button.[await]"
+
+
+class ShipSwitchFlag(InvisibleFlagLocation):
+    _room_ids = [R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM]
+    _x_coord = 17
+    _y_coord = 121
+    _clue_text = '\n  Mine is underneath a floating "J".[await]'
+
+
+class LandsEndPlatformFlag(InvisibleFlagLocation):
+    _room_ids = [R137_LANDS_END_AREA_01]
+    _x_coord = 6
+    _y_coord = 29
+    _clue_text = "\n   Mine is under a rising platform.[await]"
+
+
+class LandsEndCannonFlag(InvisibleFlagLocation):
+    _room_ids = [R139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL]
+    _x_coord = 11
+    _y_coord = 115
+    _y_shift = -8
+    _clue_text = " Mine's under a big and quiet\n cannon.[await]"
+
+
+class LandsEndArrowFlag(InvisibleFlagLocation):
+    _room_ids = [R401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]
+    _x_coord = 28
+    _y_coord = 29
+    _x_shift = 16
+    _clue_text = "\n Mine is beside an orange up-arrow.[await]"
+
+
+class LandsEndHillFlag(InvisibleFlagLocation):
+    _room_ids = [R404_LANDS_END_DESERT_AREA_04]
+    _x_coord = 23
+    _y_coord = 96
+    _x_shift = 8
+    _y_shift = 8
+    _clue_text = " Mine is on a short, red hill in a\n remote area.[await]"
+
+
+class LandsEndTwoHillFlag(InvisibleFlagLocation):
+    _room_ids = [R319_LANDS_END_DESERT_AREA_06]
+    _x_coord = 8
+    _y_coord = 121
+    _clue_text = "   My flag's between two red hills.[await]"
+
+
+class LandsEndStalagmiteFlag(InvisibleFlagLocation):
+    _room_ids = [R265_LANDS_END_UNDERGROUND_AREA_03]
+    _x_coord = 22
+    _y_coord = 80
+    _x_shift = 8
+    _y_shift = 8
+    _clue_text = (
+        " Mine's on a big stalagmite\n formation in an underground cave.[await]"
+    )
+
+
+class LandsEndCliffBushFlag(InvisibleFlagLocation):
+    _room_ids = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
+    _x_coord = 23
+    _y_coord = 103
+    _z_coord = 22
+    _clue_text = " Mine is on a bush, way up high on\n a cliff.[await]"
+
+
+class LandsEndSignFlag(InvisibleFlagLocation):
+    _room_ids = [R407_LANDS_END_CLIFF_CLIMB_WSKY_TROOPAS]
+    _x_coord = 24
+    _y_coord = 118
+    _z_coord = 0
+    _y_shift = -4
+    _x_shift = 8
+    _clue_text = "     My flag's on a yellow arrow.[await]"
+
+
+class DojoBonsaiFlag(InvisibleFlagLocation):
+    _room_ids = [R255_MONSTRO_TOWN_JINXS_DOJO]
+    _x_coord = 6
+    _y_coord = 9
+    _y_shift = 8
+    _clue_text = "\n   Mine's underneath a bonsai tree.[await]"
+
+
+class MonstroEntranceSignFlag(InvisibleFlagLocation):
+    _room_ids = [R267_MONSTRO_TOWN_ENTRANCE]
+    _x_coord = 9
+    _y_coord = 102
+    _clue_text = "\n     Mine's in a lone flowery bush.[await]"
+
+
+class MonstroBatFlag(InvisibleFlagLocation):
+    _room_ids = [R324_MONSTRO_TOWN_OUTSIDE]
+    _x_coord = 5
+    _y_coord = 51
+    _z_coord = 4
+    _y_shift = 8
+    _clue_text = "\n     Mine's behind a wooden bat.[await]"
+
+
+class MonstroFanFlag(InvisibleFlagLocation):
+    _room_ids = [R395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F]
+    _x_coord = 12
+    _y_coord = 80
+    _z_coord = 1
+    _x_shift = -16
+    _clue_text = "\n         Mine's beside a fan.[await]"
+
+
+class MonstroShellFlag(InvisibleFlagLocation):
+    _room_ids = [R398_MONSTRO_TOWN_WEAPON_AND_ARMOR_SHOP]
+    _x_coord = 16
+    _y_coord = 15
+    _z_coord = 1
+    _y_shift = 8
+    _clue_text = "\n   Mine's beneath a spinning shell.[await]"
+
+
+class BeanValleyPipeFlag(InvisibleFlagLocation):
+    _room_ids = [R252_BEAN_VALLEY_MAIN_AREA]
+    _x_coord = 17
+    _y_coord = 85
+    _z_coord = 1
+    _x_shift = -16
+    _clue_text = " Mine's on an isolated, dead-end\n pipe.[await]"
+
+
+class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
+    _room_ids = [R253_BEAN_VALLEY_MAGIC_BRICK_TO_BEANSTALK_AREA]
+    _x_coord = 27
+    _y_coord = 27
+    _clue_text = "\n  Mine's underneath a big beanstalk.[await]"
+
+
+class CasinoBellFlag(InvisibleFlagLocation):
+    _room_ids = [R092_GRATE_GUYS_CASINO_INSIDE_CASINO]
+    _x_coord = 14
+    _y_coord = 19
+    _x_shift = 8
+    _y_shift = 8
+    _clue_text = "\n       Mine is beside a tiny bell.[await][pause]\n I don't think it does anything.[await]"
+
+
+class NimbusGoldGoombaFlag(InvisibleFlagLocation):
+    _room_ids = [R341_NIMBUS_LAND_GARROS_HOUSE]
+    _x_coord = 5
+    _y_coord = 14
+    _z_coord = 1
+    _clue_text = "\n     Mine is on a golden Goomba.[await]"
+
+
+class NimbusInnLobbyFlag(InvisibleFlagLocation):
+    _room_ids = [R343_NIMBUS_LAND_INN]
+    _x_coord = 6
+    _y_coord = 84
+    _z_coord = 2
+    _x_shift = -8
+    _y_shift = -8
+    _clue_text = " Mine is under a stove with two\n pots.[await]"
+
+
+class NimbusPlantFlag(InvisibleFlagLocation):
+    _room_ids = [
+        R117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT
+    ]
+    _x_coord = 27
+    _y_coord = 74
+    _z_coord = 1
+    _clue_text = " Mine is behind a big potted plant\n in a corner.[await]"
+
+
+class NimbusBirdFlag(InvisibleFlagLocation):
+    _room_ids = [R413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR]
+    _x_coord = 28
+    _y_coord = 48
+    _y_shift = -8
+    _clue_text = " Mine is under a birdcage, in a\n restricted dead-end area.[await]"
+
+
+class NimbusHotSpringsFlag(InvisibleFlagLocation):
+    _room_ids = [R447_NIMBUS_LAND_HOT_SPRINGS]
+    _x_coord = 19
+    _y_coord = 114
+    _z_coord = 5
+    _clue_text = " Mine's on the right side of a\n hot pool.[await]"
+
+
+class VolcanoShipsFlag(InvisibleFlagLocation):
+    _room_ids = [R353_VOLCANO_AREA_18_HINO_MART]
+    _x_coord = 11
+    _y_coord = 61
+    _z_coord = 2
+    _clue_text = "\n    Mine is between two vehicles.[await]"
+
+
+class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
+    _room_ids = [R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM]
+    _x_coord = 26
+    _y_coord = 97
+    _x_shift = 8
+    _y_shift = 8
+    _clue_text = "\n  Mine is between two big red doors.[await]"
+
+
+class KeepThwompFlag(InvisibleFlagLocation):
+    _room_ids = [R449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM]
+    _x_coord = 19
+    _y_coord = 47
+    _clue_text = "\n      Mine is under a big thwomp.[await]"
+
+
+class FactoryLugnutFlag(InvisibleFlagLocation):
+    _room_ids = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
+    _x_coord = 23
+    _y_coord = 52
+    _z_coord = 7
+    _clue_text = "    My flag's underneath a lugnut.[await]"
+
+
+class FactoryTrampolineFlag(InvisibleFlagLocation):
+    _room_ids = [R507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN]
+    _x_coord = 14
+    _y_coord = 9
+    _y_shift = 16
+    _clue_text = " My flag is under the world's\n loneliest trampoline.[await]"
+
+
+class FactoryButtonFlag(InvisibleFlagLocation):
+    _room_ids = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
+    _x_coord = 4
+    _y_coord = 36
+    _z_coord = 5
+    _clue_text = " Mine is on a jammed machine\n button.[await]"

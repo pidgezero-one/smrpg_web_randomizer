@@ -24,6 +24,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
     EventScript,
     UsableEventScriptCommand,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import ActionScript, UsableActionScriptCommand
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     DisableObjectTriggerInSpecificLevel,
     Return,
@@ -31,6 +32,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     Jmp,
     JmpIfVarEqualsConst,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import A_WalkEastPixels, A_WalkWestPixels, A_WalkNorthPixels, A_WalkSouthPixels, A_ReturnQueue
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
     AreaObject,
     Battlefield,
@@ -44,6 +47,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import S
 from .base import CategorizationOption
 from .packet_type import PacketType
 from ..data.rooms.npcs import EMPTY_NPC_3
+from ..data.variables.variable_names import INVISIBLE_FLAG_1_FOUND, INVISIBLE_FLAG_2_FOUND, INVISIBLE_FLAG_3_FOUND
 
 if TYPE_CHECKING:
     from ..types.settings import Settings
@@ -1034,10 +1038,12 @@ class TreasureShopLocation(PrizeLocation):
 class InvisibleFlagLocation(NPCLocationRow1):
 
     _which: int
-    _x_coord: int = 11
-    _y_coord: int = 34
-    _z_coord: int = 1
-    _clue_text: str = "\n  Mine is underneath a steamwhistle.[await]"
+    _x_coord: int = 0
+    _y_coord: int = 0
+    _z_coord: int = 0
+    _x_shift: int = 0
+    _y_shift: int = 0
+    _clue_text: str 
 
     def which(self) -> int:
         return self._which
@@ -1067,20 +1073,47 @@ class InvisibleFlagLocation(NPCLocationRow1):
         raise ValueError("which must be 0, 1, or 2")
 
     @property
+    def shift(self) -> ActionScript:
+        cmds: list[UsableActionScriptCommand] = []
+        if self._x_shift > 0:
+            cmds.append(A_WalkEastPixels(self._x_shift))
+        elif self._x_shift < 0:
+            cmds.append(A_WalkWestPixels(-self._x_shift))
+        if self._y_shift > 0:
+            cmds.append(A_WalkSouthPixels(self._y_shift))
+        elif self._y_shift < 0:
+            cmds.append(A_WalkNorthPixels(-self._y_shift))
+        cmds.append(A_ReturnQueue())
+        return ActionScript(cmds)
+    
+    @property
+    def bit(self) -> Flag:
+        if self._which == 0:
+            return INVISIBLE_FLAG_1_FOUND
+        elif self._which == 1:
+            return INVISIBLE_FLAG_2_FOUND
+        elif self._which == 2:
+            return INVISIBLE_FLAG_3_FOUND
+        raise ValueError("which must be 0, 1, or 2")
+
+    @property
     def npc(self) -> RegularNPC:
         if self._which == 0:
             ev = E1246_INVISIBLE_GRANT_1
+            av = A0078_INVISIBLE_FLAG_1_POSITION
         elif self._which == 1:
             ev = E1247_INVISIBLE_GRANT_2
+            av = A0079_INVISIBLE_FLAG_2_POSITION
         elif self._which == 2:
             ev = E1248_INVISIBLE_GRANT_3
+            av = A0080_INVISIBLE_FLAG_3_POSITION
         else:
             raise ValueError("which must be 0, 1, or 2")
         return RegularNPC(
             npc=EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=ev,
-            action_script=A0000_DO_NOTHING,
+            action_script=av,
             speed=3,
             visible=True,
             x=self._x_coord,

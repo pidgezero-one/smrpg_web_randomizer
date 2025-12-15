@@ -1,4 +1,4 @@
-#A0078_EMPTY
+#A0078_INVISIBLE_FLAG_1_POSITION
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
