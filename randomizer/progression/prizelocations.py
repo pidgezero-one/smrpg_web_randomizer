@@ -4241,7 +4241,16 @@ class FinalBossFightStarPiece(StarPieceLocation):
 # todo: spell slots
 # which aren't eligible for shuffling into any of the above locations
 
-# todo:
-# invisible flag pool
 
-CHECK_POOL: list[PrizeLocation] = []
+CHECK_POOL: list[PrizeLocation] = [
+
+]
+
+
+########## invisible flag check pool
+
+# 1: inject empty npc into room with event E1246_INVISIBLE_GRANT_1 / override 530
+# 2: inject empty npc into room with event E1247_INVISIBLE_GRANT_2 / override 531
+# 3: inject empty npc into room with event E1248_INVISIBLE_GRANT_3 / override 532
+# TODO generic frogfucius hints triggered by these three bits that don't give locattion away
+
