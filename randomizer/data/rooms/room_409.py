@@ -63,9 +63,9 @@ room = Room(
         RegularNPC( # 0
             npc=npcs.BIG_FLOWER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E0560_OLD_KEY_ITEM_MANAGER,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
-            visible=True,
+            visible=False,
             x=17,
             y=20,
             z=4,

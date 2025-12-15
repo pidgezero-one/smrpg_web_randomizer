@@ -1,4 +1,4 @@
-# E1248_EMPTY
+# E1248_INVISIBLE_GRANT_3
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -31,5 +31,9 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
-	
+	JmpIfBitSet(INVISIBLE_FLAG_3_FOUND, ["EVENT_1248_ret_3"]),
+    SetVarToConst(PRIMARY_TEMP_7000, 532),
+	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),
+	SetBit(INVISIBLE_FLAG_3_FOUND),
+	Return(identifier="EVENT_1248_ret_3")
 ])

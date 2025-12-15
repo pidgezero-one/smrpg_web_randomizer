@@ -1,4 +1,4 @@
-# E3708_EMPTY
+# E3708_OPEN_CASTLEKEY1_DOOR
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript

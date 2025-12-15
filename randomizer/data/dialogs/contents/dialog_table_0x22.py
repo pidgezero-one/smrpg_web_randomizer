@@ -39,7 +39,9 @@ dialog_data[22] = '''FROGFUCIUS: Grasshopper, if your
  food, please bring it to me.[await]
  (...But bring me the Cricket Pie
  first.)[await]'''
-dialog_data[23] = '''[await]'''
+dialog_data[23] = ''' Grasshopper, have you heard of
+ “Invisible Items”?[await] You may learn
+ about them in Monstro Town.[await]'''
 dialog_data[24] = '''[await]'''
 dialog_data[25] = '''
  BIRDETTA: Don't forget about me![await]'''

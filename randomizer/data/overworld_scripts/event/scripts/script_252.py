@@ -32,7 +32,6 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 7, ["EVENT_252_set_var_to_const_18"]),
-	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 34, ["EVENT_252_set_var_to_const_20"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 74, ["EVENT_252_jmp_to_event_22"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 75, ["EVENT_252_set_var_to_const_23"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 143, ["EVENT_252_set_var_to_const_25"]),
@@ -55,8 +54,6 @@ script = EventScript([
 	Return(),
 	SetVarToConst(PRIMARY_TEMP_7000, 3, identifier="EVENT_252_set_var_to_const_18"),
 	JmpToEvent(E0158_NPC_QUEST_GRANT_MULTI_FROG_COIN),
-	SetVarToConst(ITEM_ID, BigBooFlagItem, identifier="EVENT_252_set_var_to_const_20"),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
 	JmpToEvent(E3097_JUICE_BAR_CARD_NPC_GRANT, identifier="EVENT_252_jmp_to_event_22"),
 	SetVarToConst(PRIMARY_TEMP_7000, 10, identifier="EVENT_252_set_var_to_const_23"),
 	JmpToEvent(E0158_NPC_QUEST_GRANT_MULTI_FROG_COIN),

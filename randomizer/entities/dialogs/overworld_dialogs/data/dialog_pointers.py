@@ -30,7 +30,7 @@ from randomizer.types.dialogs.ids import (
     DI0020_DUPLICATE,
     DI0021_DUPLICATE,
     DI0022_DUPLICATE,
-    DI0023_DUPLICATE,
+    DI0023_INVISIBLE_ITEM_HINT,
     DI0024_DUPLICATE,
     DI0025_DUPLICATE,
     DI0026_DUPLICATE,
@@ -4130,7 +4130,7 @@ pointers[DI0019_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)
 pointers[DI0020_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)
 pointers[DI0021_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)
 pointers[DI0022_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)
-pointers[DI0023_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)
+pointers[DI0023_INVISIBLE_ITEM_HINT] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)
 pointers[DI0024_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)
 pointers[DI0025_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)
 pointers[DI0026_DUPLICATE] = Dialog(bank=DIALOG_BANK_22, index=18, pos=0)

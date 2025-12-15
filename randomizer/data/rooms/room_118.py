@@ -357,7 +357,7 @@ room = Room(
         RegularNPC( # 10
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
-            event_script=E0560_OLD_KEY_ITEM_MANAGER,
+            event_script=E3708_OPEN_CASTLEKEY1_DOOR,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=27,
@@ -383,7 +383,7 @@ room = Room(
             byte7_upper2=3),
         RegularClone( # 11
             npc=npcs.EMPTY_NPC_3,
-            event_script=E0560_OLD_KEY_ITEM_MANAGER,
+            event_script=E3708_OPEN_CASTLEKEY1_DOOR,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=27,

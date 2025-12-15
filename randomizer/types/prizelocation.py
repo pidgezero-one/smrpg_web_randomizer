@@ -16,6 +16,7 @@ from .prize import (
     FPFlowerPrize,
     ArchipelagoPrize,
 )
+from ..progression.prizes import DryBonesFlagPrize, GreaperFlagPrize, BigBooFlagPrize
 from ..data.variables.event_script_names import *
 from ..data.variables.action_script_names import *
 from ..data.variables.variable_names import PRIMARY_TEMP_7000
@@ -38,8 +39,11 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     Formation,
     FormationMember,
 )
+from smrpgpatchbuilder.datatypes.levels.classes import RegularNPC, EventInitiator
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHEAST
 from .base import CategorizationOption
 from .packet_type import PacketType
+from ..data.rooms.npcs import EMPTY_NPC_3
 
 if TYPE_CHECKING:
     from ..types.settings import Settings
@@ -654,7 +658,7 @@ class ShuffleLocationSelector(CategorizationOption):
     INNER_FACTORY_BOSS_FIGHT_3 = "Inner Factory third boss fight"
     INNER_FACTORY_BOSS_FIGHT_4 = "Inner Factory fourth boss fight"
     INNER_FACTORY_BOSS_FIGHT_FINAL = "Factory final boss fight"
-    
+
 
 class PrizeLocation:
     _prize: Prize | None
@@ -686,9 +690,6 @@ class PrizeLocation:
     def originally_held(self) -> type[Prize] | None:
         return self._originally_held
 
-    def __init__(self, prize: Prize | None):
-        self._prize = prize
-
     def can_accept(self, prize: Prize) -> bool:
         return not isinstance(prize, tuple(self._blacklist))
 
@@ -697,14 +698,17 @@ class PrizeLocation:
 
     def grant(self) -> EventScript:
         return EventScript([Return()])
-    
+
     @property
     def remake_only(self) -> bool:
         return self._remake_only
-    
+
+    def __init__(self, prize: Prize | None):
+        self._prize = prize
+
 
 class FrogDiscipleLocation(PrizeLocation):
-    pass 
+    pass
     # TODO: these go directly into the shop
 
 
@@ -807,7 +811,11 @@ class PrizeRow(PrizeLocation):
         if self.override_id is not None:
             return (
                 [
-                    [JmpIfVarEqualsConst(PRIMARY_TEMP_7000, self.override_id, [identifier])]
+                    [
+                        JmpIfVarEqualsConst(
+                            PRIMARY_TEMP_7000, self.override_id, [identifier]
+                        )
+                    ]
                 ],
                 grant.contents,
             )
@@ -960,14 +968,17 @@ class PacketLocation(StandingLocationRow):
     _replace: str
     _packet_type: PacketType
 
-    def render(self) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+    def render(
+        self,
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         return super().render()
-    
-    def packet(self): 
+
+    def packet(self):
         pass
         # TODO: return prize model packet matching self.packet_type
-    
+
     # TODO: find command with identifier _replace and set packet type
+
 
 class PacketLocationRow1(StandingLocationRow1, PacketLocation):
     pass
@@ -1018,3 +1029,94 @@ class BoosterHillLocation(PrizeRow):
 
 class TreasureShopLocation(PrizeLocation):
     pass
+
+
+class InvisibleFlagLocation(NPCLocationRow1):
+
+    _which: int
+    _x_coord: int = 11
+    _y_coord: int = 34
+    _z_coord: int = 1
+    _clue_text: str = "\n  Mine is underneath a steamwhistle.[await]"
+
+    def which(self) -> int:
+        return self._which
+
+    @property
+    def override_id(self) -> int | None:
+        if self._which == 0:
+            return 530
+        elif self._which == 1:
+            return 531
+        elif self._which == 2:
+            return 532
+        raise ValueError("which must be 0, 1, or 2")
+
+    @property
+    def clue_text(self) -> str:
+        return self._clue_text
+
+    @property
+    def dialog_id(self) -> int:
+        if self._which == 0:
+            return E0084_THREE_MUSTY_FEARS_BONES_DIALOG
+        elif self._which == 1:
+            return E0082_THREE_MUSTY_FEARS_GREAPER_DIALOG
+        elif self._which == 2:
+            return E0083_THREE_MUSTY_FEARS_BOO_DIALOG
+        raise ValueError("which must be 0, 1, or 2")
+
+    @property
+    def npc(self) -> RegularNPC:
+        if self._which == 0:
+            ev = E1246_INVISIBLE_GRANT_1
+        elif self._which == 1:
+            ev = E1247_INVISIBLE_GRANT_2
+        elif self._which == 2:
+            ev = E1248_INVISIBLE_GRANT_3
+        else:
+            raise ValueError("which must be 0, 1, or 2")
+        return RegularNPC(
+            npc=EMPTY_NPC_3,
+            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            event_script=ev,
+            action_script=A0000_DO_NOTHING,
+            speed=3,
+            visible=True,
+            x=self._x_coord,
+            y=self._y_coord,
+            z=self._z_coord,
+            z_half=False,
+            direction=SOUTHEAST,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=False,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=False,
+            cant_jump_through=True,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=False,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=True,
+            byte7_upper2=3,
+        )
+
+    @property
+    def originally_held(self) -> type[Prize] | None:
+        if self._which == 0:
+            return DryBonesFlagPrize
+        elif self._which == 1:
+            return GreaperFlagPrize
+        elif self._which == 2:
+            return BigBooFlagPrize
+        raise ValueError("which must be 0, 1, or 2")
+
+    def __init__(self, which: int, prize: Prize | None):
+        super().__init__(prize)
+        assert which in (0, 1, 2)
+        self._which = which

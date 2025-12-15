@@ -31,6 +31,8 @@ from ....items import *
 from ....packets import *
 
 script = EventScript([
+    JmpIfBitSet(BK_OBSTACLE_3_PRIZE_RETRIEVED, ["bke3"]),
+    SetBit(BK_OBSTACLE_3_PRIZE_RETRIEVED),
 	JmpIfBitSet(UNIVERSAL_CHEST_ANIMATION_BIT, ["EVENT_1938_jmp_to_event_7"]),
 	SetBit(UNIVERSAL_CHEST_ANIMATION_BIT),
 	FreezeCamera(),
@@ -43,5 +45,5 @@ script = EventScript([
 	RunBackgroundEventWithPauseReturnOnExit(event_id=E1543_CHEST_CAMERA_SHIFT, timer_var=TIMER_701C, bit_4=True, bit_5=True),
 	ReactivateObject70A8TriggerIfMarioOnTopOfIt(),
 	JmpToEvent(E0174_CHEST_3_CONTAINER, identifier="EVENT_1938_jmp_to_event_7"),
-	Return()
+	Return(identifier="bke3")
 ])
