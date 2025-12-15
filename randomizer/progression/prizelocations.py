@@ -5019,6 +5019,15 @@ class KeepThwompFlag(InvisibleFlagLocation):
     _clue_text = "\n      Mine is under a big thwomp.[await]"
 
 
+class FactoryCanopyFlag(InvisibleFlagLocation):
+    _room_ids = [R220_SMITHY_FACTORY_AREA_02_WSAVE_POINT]
+    _x_coord = 16
+    _y_coord = 15
+    _z_coord = 10
+    _y_shift = 8
+    _clue_text = "  My flag's under a bolted canopy.[await]"
+
+
 class FactoryLugnutFlag(InvisibleFlagLocation):
     _room_ids = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
     _x_coord = 23

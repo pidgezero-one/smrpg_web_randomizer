@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+}
+
+.column, .labelColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.labelBox {
+  height: 50px;
+  width: 75px;
+  padding: 10px;
+  display: flex;
+}
+.labelBox > div {
+  margin: auto;
+}
+
+.notebox {
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  background: rgb(109, 153, 143);
+  border-right: 2px dotted #bbb;
+  border-top: 2px dotted #bbb;
+  position: relative;
+  display: flex;
+}
+
+.notebox:nth-child(even):after {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  height: 10px;
+  background: #fff;
+  content: "";
+  width: 100%;
+  display: block;
+}
+
+.notebox input {
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  z-index: 2;
+}
+
+.removeNote {
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  display: flex;
+}
+.removeNote > div {
+  margin: auto;
+  font-size: 50px;
+  color: red;
+  font-weight: bold;
+}
+
+.yourSong {
+  margin-left: 100px;
+}
+
+.scoreContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.playback {
+  margin-top: 50px;
+  padding: 25px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.upper {
+  display: flex;
+  flex-direction: row;
+}

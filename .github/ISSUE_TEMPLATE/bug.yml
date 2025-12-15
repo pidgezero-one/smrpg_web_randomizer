@@ -1,0 +1,93 @@
+name: Bug report
+description: Report a bug (not a feature request)
+title: "[Bug]: "
+labels: [bug]
+
+body:
+  # ─────────────────────────────────────────────
+  # Intro / warning text
+  # ─────────────────────────────────────────────
+  - type: markdown
+    attributes:
+      value: |
+        **PLEASE DO NOT USE THIS FORM TO REQUEST FEATURES!  
+        This form is for bug reports only**.
+
+  # ─────────────────────────────────────────────
+  # Required confirmation
+  # ─────────────────────────────────────────────
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Required confirmations
+      options:
+        - label: This issue occurs WITHOUT Crowd Control
+          required: true
+        - label: This is NOT about a ship password, melody bay tune, or invisible flag hint being difficult to solve (unless the hints, solution, or positioning is incorrect).
+          required: true
+
+  # ─────────────────────────────────────────────
+  # Platform info
+  # ─────────────────────────────────────────────
+  - type: input
+    id: platform
+    attributes:
+      label: Console or Emulator
+      description: |
+        If emulator, state which emulator and version.
+        If console, state which flash cart firmware.
+      placeholder: "e.g. bsnes 115, SNES EverDrive v2.6"
+    validations:
+      required: true
+
+  # ─────────────────────────────────────────────
+  # Crowd Control clarification
+  # ─────────────────────────────────────────────
+  - type: markdown
+    attributes:
+      value: |
+        **Note:** Crowd Control is NOT officially supported for the randomizer.  
+        Please only report issues that occur without Crowd Control enabled.
+
+        More info:  
+        https://forum.warp.world/t/super-mario-rpg-legend-of-the-seven-stars-snes/14219
+
+  # ─────────────────────────────────────────────
+  # Flags
+  # ─────────────────────────────────────────────
+  - type: textarea
+    id: flags
+    attributes:
+      label: Flags
+      description: Paste the flag string, if available
+    validations:
+      required: false
+
+  # ─────────────────────────────────────────────
+  # Seed / permalink
+  # ─────────────────────────────────────────────
+  - type: textarea
+    id: seed
+    attributes:
+      label: Seed number / hash or permalink
+      description: |
+        Provide ONE of the following:
+        • Seed number or hash (from filename or download page)
+        • Permalink URL (from download page)
+      placeholder: |
+        Seed: 123456
+        OR
+        https://randomizer.smrpgspeedruns.com/h/123456abcdef
+    validations:
+      required: true
+
+  # ─────────────────────────────────────────────
+  # Bug description
+  # ─────────────────────────────────────────────
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of problem
+      description: What happened? What did you expect to happen?
+    validations:
+      required: true

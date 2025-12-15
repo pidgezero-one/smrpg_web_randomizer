@@ -1,0 +1,74 @@
+name: Melody Bay submission
+description: Submit Melody Bay tune for review
+title: "[Submission - Melody Bay]: "
+labels: [submission]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Compose your song here first: https://randomizer.smrpgspeedruns.com/tadpole-pond-composer/index.html
+
+  - type: textarea
+    id: submission
+    attributes:
+      label: Tune notation
+      description: Paste the output of the composer tool here.
+    validations:
+      required: true
+
+  - type: input
+    id: songname
+    attributes:
+      label: Name of your submission
+      description: |
+        This is only used for developer purposes.
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Your name or handle
+      description: |
+        If your song is randomly selected for the seed, this is the name that will appear in the game's ending sequence.  
+        Only capital letters A-Z, periods, spaces, and underscores are supported (no numbers or other characters).
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Your song may end up as the first, second, or third song in a seed, so the NPCs that give hints for the first two songs need to have dialog to match it.  
+        Yes, this is required, no, the developers will not do this for you. Players must have something to go off of so that they do not need to solely bruteforce guess.
+        (Note the first song's score will also be printed on Frogfucius' scroll, and the third song hints are audio only and do not need any text.)
+
+  - type: textarea
+    id: hint1
+    attributes:
+      label: Hint 1
+      description: |
+        The apprentice tadpole should give a statement about the first of the three songs.  
+        If you like, you can have them simply follow the original game's template: "It's <song name>. “<NOTES>”. Toadofsky's fond of it, too!"
+    validations:
+      required: true
+
+  - type: textarea
+    id: hint2
+    attributes:
+      label: Hint 2 (pond)
+      description: |
+        The apprentice tadpole should give a statement about the second of the three songs.  
+        If you like, you can have them simply follow the original game's template: "It's <song name>. “<NOTES>”. It's got soul!"
+    validations:
+      required: true
+
+  - type: textarea
+    id: hint2
+    attributes:
+      label: Hint 2 (mines)
+      description: |
+        The miners in Moleville should give a statement about the second of the three songs.  
+        You do not need to be as elaborate as the original game's _Moleville Blues_ lyrics (unless you want to, of course). You can instead opt to say something simple i.e. "The Moleville Blues? Oh, it's really just Zelda's Lullaby with different words."
+    validations:
+      required: true

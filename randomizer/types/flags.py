@@ -574,7 +574,8 @@ class StarPieceAvailability(BooleanFlag):
 
 class InvisibleFlagsSetting(BooleanFlag):
     _name = "Move invisible flag checks"
-    _description = """Chooses where the invisible items placed by the Three Musty Fears are located. 
+    _description = """Chooses where the invisible items placed by the Three Musty Fears are located.
+<br>This setting will put your attention to detail and your knowledge of the world of SMRPG to the test.
 <br>
 <br>If "Default locations" is selected, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
 <br>
