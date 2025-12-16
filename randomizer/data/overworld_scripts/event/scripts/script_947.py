@@ -137,7 +137,7 @@ script = EventScript([
 	JmpIfObjectInSpecificLevel(NPC_6, R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, ["postgame_progress_checker_2"]),
 	JmpIfBitClear(NIMBUS_LAND_LIBERATED, ["EVENT_991_run_dialog_28"]),
 	JmpIfObjectInSpecificLevel(NPC_9, R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, ["EVENT_991_run_dialog_26"]),
-    CompareVarToConst(POSTGAME_PROGRESS_COUNTER, 7, identifier="postgame_progress_checker_2"),
+    CompareVarToConst(POSTGAME_PROGRESS_COUNTER, 8, identifier="postgame_progress_checker_2"),
     JmpIfComparisonResultIsLesser(["EVENT_947_jmp_if_bit_clear_911"]),
     JmpIfBitClear(VOUCHER_CHECK_DONE, ["EVENT_991_run_dialog_0"]),
     StoreItemAmountTo7000(StayVoucherItem),

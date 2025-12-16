@@ -1,13 +1,13 @@
-name: Invisible flag submission
-description: Submit invisible flag location
-title: "[Submission - Invisible Flag]: "
+name: Invisible item submission
+description: Submit invisible item location
+title: "[Submission - Invisible Item]: "
 labels: [submission]
 
 body:
   - type: markdown
     attributes:
       value: |
-        If you have a great idea for a place that one of the three invisible items can be randomly placed with the ""Move invisible flag checks" setting, submit it here.  
+        If you have a great idea for a place that one of the three invisible items can be randomly placed with the "Move invisible flag checks" setting, submit it here.  
         Use https://fantasyanime.com/squaresoft/mariorpg/mariorpg_maps.htm for reference.  
         Note: unlike ship passwords and tadpole pond songs, invisible flag locations are not credited.
 
@@ -16,7 +16,8 @@ body:
     attributes:
       label: Describe the location
       description: |
-        Give as much detail as possible.  Your location should ideally be unique and not confusable with any other location in the world (i.e. "blue curtain" is not specific enough).
+        Give as much detail as possible.  
+        Your location should ideally be unique and not confusable with any other location in the world (i.e. "blue curtain" is not specific enough, there are at least 5 rooms with blue curtains).
         If you can, use the Lazy Shell editor (https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) to find the room number and xyz coordinates and include them here, it saves the devs a lot of time.
     validations:
       required: true
@@ -27,7 +28,7 @@ body:
       label: Hint text
       description: |
         This will be what one of the Three Musty Fears says to give the player a hint about where the item is.  
-        Yes, this is required, no, the developers will not do this for you.  
+        This is required, for obvious reasons. The developers will not come up with hint text for you.  
         Keep your hint brief and vague but helpful. i.e. "behind a wooden bat" = good, "in Monstro Town behind the welcome sign" = bad (too obvious).
     validations:
       required: true

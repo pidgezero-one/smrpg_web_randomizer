@@ -32,7 +32,7 @@ from ....packets import *
 
 script = EventScript([
 	JmpIfBitSet(VOUCHER_CHECK_DONE, ["mp_interior_load"]),
-    CompareVarToConst(POSTGAME_PROGRESS_COUNTER, 7, identifier="postgame_progress_checker_1"),
+    CompareVarToConst(POSTGAME_PROGRESS_COUNTER, 8, identifier="postgame_progress_checker_1"),
     JmpIfComparisonResultIsLesser(["mp_interior_load"]),
     SummonObjectToCurrentLevel(NPC_3),
 	ActionQueueSync(target=NPC_0, subscript=[

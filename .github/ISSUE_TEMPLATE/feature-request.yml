@@ -9,9 +9,9 @@ body:
     attributes:
       label: Confirmation
       options:
-        - label: This is not a complaint about an existing feature, ship password, Melody Bay tune, or invisible item location being too difficult
+        - label: This is not a suggestion to change a specific existing ship password, Melody Bay tune, or invisible item location on the basis of it being too difficult.
           required: true
-        - label: I acknowledge and accept that SMRPG Randomizer is a volunteer-run, open-source fan project, and that my feature suggestion may not end up being implemented if nobody picks it up.
+        - label: I acknowledge and accept that SMRPG Randomizer is a volunteer-run, open-source fan project, and that my feature suggestion may not end up being implemented if nobody picks it up. I will not leave additional comments complaining about my idea not being implemented.
           required: true
 
   - type: textarea

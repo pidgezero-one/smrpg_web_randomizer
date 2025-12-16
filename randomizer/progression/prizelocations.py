@@ -50,6 +50,7 @@ from ..types.prize import (
     SlotsPrize,
     EmptyPrize,
 )
+from ..types.flags import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     NPC_0,
     NPC_1,
@@ -80,6 +81,12 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_26,
     NPC_27,
 )
+from collections.abc import Callable
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from ..types.logic import Inventory
+    from ..types.gameworld import GameWorld
 
 # Comments are included here to document what condition is met for a location to be considered checked.
 # Anything that takes a flag has a variable name listed, ie TOAD_IN_MUSHROOM_WAY_1.
@@ -145,6 +152,30 @@ class StartingCharacter1(CharacterRecruitmentLocation):
     _id = ShuffleLocationSelector = ShuffleLocationSelector.STARTER_CHARACTER_1
 
 
+class MarioSpell1(SpellSlotLocation):
+    _originally_held = JumpSpellPrize
+
+
+class MarioSpell2(SpellSlotLocation):
+    _originally_held = FireOrbSpellPrize
+
+
+class MarioSpell3(SpellSlotLocation):
+    _originally_held = SuperJumpSpellPrize
+
+
+class MarioSpell4(SpellSlotLocation):
+    _originally_held = SuperFlameSpellPrize
+
+
+class MarioSpell5(SpellSlotLocation):
+    _originally_held = UltraJumpSpellPrize
+
+
+class MarioSpell6(SpellSlotLocation):
+    _originally_held = UltraFlameSpellPrize
+
+
 class StartingCharacter2(CharacterRecruitmentLocation):
     _originally_held = None
     _rooms = [R189_MARIOS_PIPEHOUSE]
@@ -174,10 +205,11 @@ class PostgameVoucherLocation(NPCLocationRow6):
     _rooms = [R189_MARIOS_PIPEHOUSE]
     _id = ShuffleLocationSelector = ShuffleLocationSelector.POSTGAME_VOUCHER
     _remake_only = True
+
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
+        return world.settings.get_flag(Remake).enabled
+
     # Flag as checked: VOUCHER_CHECK_DONE
-
-
-# TODO: musty fears check
 
 
 ########## mushroom way
@@ -274,6 +306,30 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
     _originally_held = MallowRecruitmentPrize
     _rooms = [R205_MUSHROOM_WAY_AREA_03]
     # Flag as checked: TOAD_IN_MUSHROOM_WAY_3
+
+
+class MallowSpell1(SpellSlotLocation):
+    _originally_held = ThunderboltSpellPrize
+
+
+class MallowSpell2(SpellSlotLocation):
+    _originally_held = HPRainSpellPrize
+
+
+class MallowSpell3(SpellSlotLocation):
+    _originally_held = PsychopathSpellPrize
+
+
+class MallowSpell4(SpellSlotLocation):
+    _originally_held = ShockerSpellPrize
+
+
+class MallowSpell5(SpellSlotLocation):
+    _originally_held = SnowyPrize
+
+
+class MallowSpell6(SpellSlotLocation):
+    _originally_held = StarRainSpellPrize
 
 
 ########## mushroom kingdom - available before and during invasion
@@ -1019,6 +1075,30 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
     # Flag as checked: FOREST_LIBERATED
 
 
+class GenoSpell1(SpellSlotLocation):
+    _originally_held = GenoBeamSpellPrize
+
+
+class GenoSpell2(SpellSlotLocation):
+    _originally_held = GenoBoostSpellPrize
+
+
+class GenoSpell3(SpellSlotLocation):
+    _originally_held = GenoWhirlSpellPrize
+
+
+class GenoSpell4(SpellSlotLocation):
+    _originally_held = GenoBlastSpellPrize
+
+
+class GenoSpell5(SpellSlotLocation):
+    _originally_held = GenoFlashSpellPrize
+
+
+class GenoSpell6(SpellSlotLocation):
+    _originally_held = None
+
+
 ########## pipe vault
 
 
@@ -1315,6 +1395,30 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
     _originally_held = BowserRecruitmentPrize
     _rooms = [R271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     # Flag as checked: MINES_BOSS_2_DEFEATED
+
+
+class BowserSpell1(SpellSlotLocation):
+    _originally_held = TerrorizeSpellPrize
+
+
+class BowserSpell2(SpellSlotLocation):
+    _originally_held = PoisonGasSpellPrize
+
+
+class BowserSpell3(SpellSlotLocation):
+    _originally_held = CrusherSpellPrize
+
+
+class BowserSpell4(SpellSlotLocation):
+    _originally_held = BowserCrushSpellPrize
+
+
+class BowserSpell5(SpellSlotLocation):
+    _originally_held = None
+
+
+class BowserSpell6(SpellSlotLocation):
+    _originally_held = None
 
 
 class InnerMinesPostgameBossFight(BossFightLocation):
@@ -1978,6 +2082,30 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
     # Flag as checked: MARRYMORE_LIBERATED
 
 
+class ToadstoolSpell1(SpellSlotLocation):
+    _originally_held = TherapySpellPrize
+
+
+class ToadstoolSpell2(SpellSlotLocation):
+    _originally_held = GroupHugSpellPrize
+
+
+class ToadstoolSpell3(SpellSlotLocation):
+    _originally_held = SleepyTimeSpellPrize
+
+
+class ToadstoolSpell4(SpellSlotLocation):
+    _originally_held = ComeBackSpellPrize
+
+
+class ToadstoolSpell5(SpellSlotLocation):
+    _originally_held = MuteSpellPrize
+
+
+class ToadstoolSpell6(SpellSlotLocation):
+    _originally_held = PsychBombSpellPrize
+
+
 class MarrymoreBossFightRemake(BossFightLocation):
     _originally_held = Bundt2BossFight
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
@@ -2528,8 +2656,8 @@ class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
     # flag as checked: TROOPA_CLIMB_COMPLETED
 
 
-class LandsEndCloudBoss(StarPieceLocation):
-    _originally_held = None
+class LandsEndCloudBoss(BossFightLocation):
+    _originally_held = MokuraBossFight
     _id = ShuffleLocationSelector.LANDS_END_CLOUD_BOSS_FIGHT
     _rooms = [519]
     _override_id = 519
@@ -4236,13 +4364,6 @@ class FinalBossFightStarPiece(StarPieceLocation):
     # Flag as checked: FACTORY_BOSS_DEFEATED
 
 
-# todo: spell slots
-# which aren't eligible for shuffling into any of the above locations
-
-
-CHECK_POOL: list[PrizeLocation] = []
-
-
 ########## invisible flag check pool
 
 # Three of the following locations will be chosen at random and included in the seed. If the setting is disabled, then it will be the first three (defaults).
@@ -5050,3 +5171,1175 @@ class FactoryButtonFlag(InvisibleFlagLocation):
     _y_coord = 36
     _z_coord = 5
     _clue_text = " Mine is on a jammed machine\n button.[await]"
+
+
+def can_defeat_some_of(
+    world: GameWorld,
+    inventory: Inventory,
+    conditions: list[Callable[[GameWorld, Inventory], bool]],
+    amount: int = 1,
+) -> bool:
+    """If true, the player is expected to be able to defeat at least some of
+    the provided bosses."""
+    bosses: list[bool] = [cond(world, inventory) for cond in conditions]
+    completable: list[bool] = [cond for cond in bosses if cond]
+    return len(completable) >= amount
+
+
+def can_defeat_all_of(
+    world: GameWorld,
+    inventory: Inventory,
+    conditions: list[Callable[[GameWorld, Inventory], bool]],
+) -> bool:
+    """If true, the player is expected to be able to defeat all of the provided
+    bosses."""
+    return can_defeat_some_of(world, inventory, conditions, len(conditions))
+
+
+def can_defeat_boss(
+    world: GameWorld, inventory: Inventory, location_type: type[BossFightLocation]
+) -> bool:
+    if (
+        world.settings.get_flag(ProgressionLogicDifficulty).selected
+        == ProgressionLogicDifficultyOptions.HARD
+    ):
+        return True
+    location = world.get_location(location_type)
+    if location.prize is None:  # not assigned yet
+        return False
+    return inventory.has_item(type(location.prize))
+
+
+def can_defeat_mushroom_way_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the boss at Mushroom Way."""
+    return can_defeat_boss(world, inventory, MushrooomWayBossFight)
+
+
+def can_access_bandits_way(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Bandit's Way."""
+    if world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MALLOW):
+        return inventory.has_item(MallowRecruitmentPrize)
+    if world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.HAMMER_BRO):
+        return inventory.has_item(HammerBrosFight)
+    if world.settings.is_flag_value(BanditsWayGate, BanditsWayGating.MUSHROOM_WAY):
+        return can_defeat_mushroom_way_boss(world, inventory)
+    return True
+
+
+def can_defeat_bandits_way_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the boss at Bandit's Way."""
+    return can_access_bandits_way(world, inventory) and can_defeat_boss(
+        world, inventory, BanditsWayBossFight
+    )
+
+
+def can_access_invaded_kingdom(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the Invaded Kingdom."""
+    return can_defeat_bandits_way_boss(world, inventory)
+
+
+def can_defeat_mushroom_kingdom_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the boss at Mushroom Kingdom."""
+    return can_defeat_bandits_way_boss(world, inventory) and can_defeat_boss(
+        world, inventory, MushroomKingdomBossFight
+    )
+
+
+def can_defeat_mimic(
+    world: GameWorld, inventory: Inventory, mimic: type[MimicFightInitiatorPrize]
+) -> bool:
+    """If true, the player is expected to be able to defeat the specified mimic chest fight."""
+    location = next(
+        (v for (_, v) in world.locations.items() if isinstance(v.prize, mimic)), None
+    )
+    if location is None:
+        return False
+    return location.can_access(inventory, world)
+
+
+def can_access_first_mimic(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the first mimic chest fight."""
+    return can_defeat_mimic(world, inventory, FirstMimicFightLauncher)
+
+
+def can_defeat_first_mimic(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the first mimic chest fight."""
+    return can_access_first_mimic(world, inventory) and can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_mushroom_way_boss,
+            can_defeat_bandits_way_boss,
+            can_defeat_mushroom_kingdom_boss,
+        ],
+    )
+
+
+def can_access_sewer(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Kero Sewers."""
+    if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
+        return inventory.has_item(MallowRecruitmentPrize)
+    if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MACK):
+        return inventory.has_item(MackBossFight)
+    if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.KINGDOM):
+        return can_defeat_mushroom_kingdom_boss(world, inventory)
+    if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.RFC):
+        return can_defeat_mushroom_kingdom_boss(
+            world, inventory
+        ) and inventory.has_item(RareFrogCoinPrize)
+    return True
+
+
+def can_access_sewer_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the boss at Kero Sewers."""
+    return can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_mushroom_way_boss,
+            can_defeat_bandits_way_boss,
+            can_defeat_mushroom_kingdom_boss,
+        ],
+    )
+
+
+def can_defeat_sewer_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the boss at Kero Sewers."""
+    return can_access_sewer_boss(world, inventory) and can_defeat_boss(
+        world, inventory, KeroSewersBossFight
+    )
+
+
+def can_access_forest(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Forest Maze."""
+    if world.settings.is_flag_value(ForestMazeGate, ForestMazeGating.PIE):
+        return inventory.has_item(CricketPiePrize)
+    return True
+
+
+def can_access_forest_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the boss at Forest Maze."""
+    return can_access_forest(world, inventory) and can_defeat_some_of(
+        world, inventory, [can_defeat_mushroom_kingdom_boss, can_defeat_sewer_boss]
+    )
+
+
+def can_defeat_forest_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the boss at Forest Maze."""
+    return can_defeat_boss(
+        world, inventory, ForestMazeBossFight
+    ) and can_access_forest_boss(world, inventory)
+
+
+def can_access_pipe_vault(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Pipe Vault."""
+    if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.GENO):
+        return inventory.has_item(GenoRecruitmentPrize)
+    if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.FOREST):
+        return can_defeat_forest_boss(world, inventory)
+    if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.BOWYER):
+        return inventory.has_item(BowyerBossFight)
+    return True
+
+
+def can_access_moleville_entrance(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the uper entrance to the mines."""
+    if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.GENO):
+        return inventory.has_item(GenoRecruitmentPrize)
+    if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.FOREST):
+        return can_defeat_forest_boss(world, inventory)
+    if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOWYER):
+        return inventory.has_item(BowyerBossFight)
+    if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOSHI):
+        return can_access_pipe_vault(world, inventory)
+    return True
+
+
+def can_access_first_moleville_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 1st boss at Moleville."""
+    return can_access_moleville_entrance(world, inventory) and (
+        can_defeat_some_of(
+            world,
+            inventory,
+            [can_defeat_mushroom_kingdom_boss, can_defeat_sewer_boss],
+            2,
+        )
+        or can_defeat_some_of(world, inventory, [can_defeat_forest_boss])
+    )
+
+
+def can_access_second_mimic(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the second mimic chest fight."""
+    return can_defeat_mimic(world, inventory, SecondMimicFightLauncher)
+
+
+def can_defeat_second_mimic(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the second mimic chest fight."""
+    return can_access_second_mimic(world, inventory) and (
+        can_defeat_some_of(
+            world,
+            inventory,
+            [can_defeat_mushroom_kingdom_boss, can_defeat_sewer_boss],
+            2,
+        )
+        or can_defeat_some_of(world, inventory, [can_defeat_forest_boss])
+    )
+
+
+def can_defeat_first_moleville_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 1st boss at Moleville."""
+    return can_access_first_moleville_boss(world, inventory) and can_defeat_boss(
+        world, inventory, OuterMinesBossFight
+    )
+
+
+def can_access_inner_mines(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the inner half
+    of Moleville Mines (beyond the exploding wall)."""
+    return can_access_moleville_entrance(world, inventory) and inventory.has_item(
+        BambinoBombPrize
+    )
+
+
+def can_access_second_moleville_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 2nd boss at Moleville."""
+    return can_access_inner_mines(world, inventory) and (
+        can_defeat_some_of(
+            world,
+            inventory,
+            [
+                can_defeat_forest_boss,
+                can_defeat_sewer_boss,
+                can_defeat_first_moleville_boss,
+            ],
+        )
+    )
+
+
+def can_defeat_second_moleville_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd boss at Moleville."""
+    return can_access_second_moleville_boss(world, inventory) and can_defeat_boss(
+        world, inventory, InnerMinesBossFight
+    )
+
+
+def can_access_moleville_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the postgame boss at Moleville."""
+    return (
+        can_defeat_second_moleville_boss(world, inventory)
+        and inventory.has_item(StayVoucherPrize)
+        and world.settings.is_flag_value(Remake, True)
+        and can_take_lategame_bosses(world, inventory)
+    )
+
+
+def can_defeat_postgame_moleville_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd boss at Moleville."""
+    return can_access_moleville_postgame_boss(world, inventory) and can_defeat_boss(
+        world, inventory, InnerMinesPostgameBossFight
+    )
+
+
+def can_access_tower(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to enter Booster Tower."""
+    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):
+        return inventory.has_item(MarioRecruitmentPrize)
+    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW):
+        return inventory.has_item(MallowRecruitmentPrize)
+    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
+        return inventory.has_item(GenoRecruitmentPrize)
+    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.BOWSER):
+        return inventory.has_item(BowserRecruitmentPrize)
+    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
+        return inventory.has_item(ToadstoolRecruitmentPrize)
+    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MINES):
+        return can_defeat_second_moleville_boss(world, inventory)
+    if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.PUNCHINELLO):
+        return inventory.has_item(PunchinelloBossFight)
+    return True
+
+
+def can_access_curtain_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 1st boss of Booster Tower."""
+    return can_access_tower(world, inventory) and (
+        can_defeat_some_of(
+            world,
+            inventory,
+            [
+                can_defeat_forest_boss,
+                can_defeat_second_moleville_boss,
+                can_defeat_first_moleville_boss,
+            ],
+        )
+    )
+
+
+def can_defeat_curtain_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 1st boss of Booster Tower."""
+    return can_access_curtain_boss(world, inventory) and can_defeat_boss(
+        world, inventory, BoosterTowerIndoorBossFight
+    )
+
+
+def can_access_balcony_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 2nd boss of Booster Tower."""
+    return can_access_tower(world, inventory) and (
+        can_defeat_some_of(
+            world,
+            inventory,
+            [
+                can_defeat_forest_boss,
+                can_defeat_second_moleville_boss,
+                can_defeat_first_moleville_boss,
+                can_defeat_curtain_boss,
+            ],
+        )
+    )
+
+
+def can_defeat_balcony_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd boss of Booster Tower."""
+    return can_access_balcony_boss(world, inventory) and can_defeat_boss(
+        world, inventory, BoosterTowerBalconyBossFight
+    )
+
+
+def can_access_tower_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the postgame boss at Booster Tower."""
+    return (
+        can_defeat_curtain_boss(world, inventory)
+        and inventory.has_item(StayVoucherPrize)
+        and world.settings.is_flag_value(Remake, True)
+        and can_take_lategame_bosses(world, inventory)
+    )
+
+
+def can_defeat_postgame_tower_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd boss at Moleville."""
+    return can_access_tower_postgame_boss(world, inventory) and can_defeat_boss(
+        world, inventory, BoosterTowerIndoorBossFightRemake
+    )
+
+
+def can_access_hill(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Booster Hill."""
+    if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.TOWER):
+        return can_defeat_balcony_boss(world, inventory)
+    if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.KGGG):
+        return inventory.has_item(KnifeGuyGrateGuyBossFight)
+    return True
+
+
+def can_access_chapel(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to enter the Marrymore chapel."""
+    if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.TOWER):
+        return can_defeat_balcony_boss(world, inventory)
+    if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.KGGG):
+        return inventory.has_item(KnifeGuyGrateGuyBossFight)
+    if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.HILL):
+        return can_access_hill(world, inventory)
+    return True
+
+
+def can_access_chapel_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the boss of Marrymore."""
+    has_gear = True
+    if world.settings.isflag_enabled(ShuffleWeddingGear):
+        has_gear = (
+            inventory.has_item(ShoesPrize)
+            and inventory.has_item(RingPrize)
+            and inventory.has_item(BroochPrize)
+            and inventory.has_item(CrownPrize)
+        )
+    return (
+        has_gear
+        and can_access_chapel(world, inventory)
+        and can_defeat_some_of(
+            world,
+            inventory,
+            [
+                can_defeat_forest_boss,
+                can_defeat_second_moleville_boss,
+                can_defeat_first_moleville_boss,
+                can_defeat_curtain_boss,
+                can_defeat_balcony_boss,
+            ],
+        )
+    )
+
+
+def can_defeat_chapel_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the boss of Marrymore."""
+    return can_access_chapel_boss(world, inventory) and can_defeat_boss(
+        world, inventory, MarrymoreBossFight
+    )
+
+
+def can_access_chapel_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the postgame boss at Marrymore."""
+    return (
+        can_defeat_chapel_boss(world, inventory)
+        and inventory.has_item(StayVoucherPrize)
+        and world.settings.is_flag_value(Remake, True)
+        and can_take_lategame_bosses(world, inventory)
+    )
+
+
+def can_defeat_postgame_chapel_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd boss at Marrymore."""
+    return can_access_chapel_postgame_boss(world, inventory) and can_defeat_boss(
+        world, inventory, MarrymoreBossFightRemake
+    )
+
+
+def can_access_sea(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the Sea."""
+    if world.settings.is_flag_value(SeaGate, SeaGating.TOADSTOOL):
+        return inventory.has_item(ToadstoolRecruitmentPrize)
+    if world.settings.is_flag_value(SeaGate, SeaGating.STAR_4):
+        return inventory.has_item_count(StarPiecePrize, 4)
+    if world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
+        return inventory.has_item(BundtBossFight)
+    if world.settings.is_flag_value(SeaGate, SeaGating.MARRYMORE):
+        return can_defeat_chapel_boss(world, inventory)
+    return True
+
+
+def can_access_ship_midboss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 1st ship boss."""
+    return can_access_sea(world, inventory) and (
+        can_defeat_some_of(
+            world,
+            inventory,
+            [
+                can_defeat_second_moleville_boss,
+                can_defeat_first_moleville_boss,
+                can_defeat_curtain_boss,
+                can_defeat_balcony_boss,
+                can_defeat_chapel_boss,
+            ],
+        )
+    )
+
+
+def can_defeat_ship_midboss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 1st ship boss."""
+    return can_access_ship_midboss(world, inventory) and can_defeat_boss(
+        world, inventory, ShipPasswordBossFight
+    )
+
+
+def can_access_ship_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 2nd ship boss."""
+    return can_defeat_ship_midboss(world, inventory)
+
+
+def can_defeat_ship_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd ship boss."""
+    return can_access_ship_boss(world, inventory) and can_defeat_boss(
+        world, inventory, ShipFinalBossFight
+    )
+
+
+def can_access_ship_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the postgame boss at Sunken Ship."""
+    return (
+        can_defeat_ship_boss(world, inventory)
+        and inventory.has_item(StayVoucherPrize)
+        and world.settings.is_flag_value(Remake, True)
+        and can_take_lategame_bosses(world, inventory)
+    )
+
+
+def can_defeat_postgame_ship_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the postgame boss at Sunken Ship."""
+    return can_access_ship_postgame_boss(world, inventory) and can_defeat_boss(
+        world, inventory, ShipPostgameBossFight
+    )
+
+
+def can_access_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the Seaside Town boss."""
+    sufficient_bosses = can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_second_moleville_boss,
+            can_defeat_first_moleville_boss,
+            can_defeat_curtain_boss,
+            can_defeat_balcony_boss,
+            can_defeat_chapel_boss,
+            can_defeat_ship_midboss,
+            can_defeat_ship_boss,
+        ],
+        2,
+    )
+    if world.settings.is_flag_value(YaridovichGate, YaridovichGating.SHIP):
+        return can_defeat_ship_boss(world, inventory) and sufficient_bosses
+    if world.settings.is_flag_value(YaridovichGate, YaridovichGating.JOHNNY):
+        return inventory.has_item(JohnnyBossFight) and sufficient_bosses
+    return sufficient_bosses
+
+
+def can_defeat_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the Seaside Town boss."""
+    return can_access_seaside_boss(world, inventory) and can_defeat_boss(
+        world, inventory, SeasideBeachBossFight
+    )
+
+
+def can_access_lands_end(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Land's End."""
+    if world.settings.is_flag_value(LandsEndGate, LandsEndGating.STAR_5):
+        return inventory.has_item_count(StarPiecePrize, 5)
+    if world.settings.is_flag_value(LandsEndGate, LandsEndGating.ELDER):
+        return inventory.has_item(ShedKeyPrize) and can_access_seaside_boss(
+            world, inventory
+        )
+    if world.settings.is_flag_value(LandsEndGate, LandsEndGating.YARIDOVICH):
+        return inventory.has_item(YaridovichBossFight)
+    if world.settings.is_flag_value(LandsEndGate, LandsEndGating.SEASIDE):
+        return can_defeat_seaside_boss(world, inventory)
+    return True
+
+
+def can_access_lands_end_cloud(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the random cloud spawn
+    in Land's End.
+
+    note: Mokura can appear at Mario's elevation before the cannon, so this is not gated behind LE access.
+    """
+    return can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_curtain_boss,
+            can_defeat_balcony_boss,
+            can_defeat_chapel_boss,
+            can_defeat_ship_midboss,
+            can_defeat_ship_boss,
+            can_defeat_seaside_boss,
+        ],
+        2,
+    )
+
+
+def can_defeat_lands_end_cloud_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the Land's End cloud spawn boss."""
+    return can_access_lands_end_cloud(world, inventory) and can_defeat_boss(
+        world, inventory, LandsEndCloudBoss
+    )
+
+
+def can_access_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Belome Temple."""
+    sufficient_bosses = can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_curtain_boss,
+            can_defeat_balcony_boss,
+            can_defeat_chapel_boss,
+            can_defeat_ship_midboss,
+            can_defeat_ship_boss,
+            can_defeat_seaside_boss,
+            can_defeat_lands_end_cloud_boss,
+        ],
+        2,
+    )
+    if world.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.KEY):
+        return inventory.has_item(TempleKeyPrize) and sufficient_bosses
+    return sufficient_bosses
+
+
+def can_defeat_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the Belome Temple boss."""
+    return can_access_temple_boss(world, inventory) and can_defeat_boss(
+        world, inventory, TempleBossFight
+    )
+
+
+def can_access_temple_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the postgame boss at Belome Temple."""
+    return (
+        can_defeat_temple_boss(world, inventory)
+        and inventory.has_item(StayVoucherPrize)
+        and world.settings.is_flag_value(Remake, True)
+        and can_take_lategame_bosses(world, inventory)
+    )
+
+
+def can_defeat_postgame_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the postgame boss at Belome Temple."""
+    return can_access_temple_postgame_boss(world, inventory) and can_defeat_boss(
+        world, inventory, TempleBossFightPostgame
+    )
+
+
+def can_access_monstro_town(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Monstro Town."""
+    if world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.LANDS_END):
+        return can_defeat_temple_boss(world, inventory)
+    if world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.BELOME_2):
+        return inventory.has_item(Belome2BossFight)
+    return True
+
+
+def can_access_first_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 1st Monstro dojo boss."""
+    return can_access_monstro_town(world, inventory) and can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_ship_midboss,
+            can_defeat_ship_boss,
+            can_defeat_seaside_boss,
+            can_defeat_lands_end_cloud_boss,
+            can_defeat_temple_boss,
+        ],
+    )
+
+
+def can_defeat_first_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 1st Monstro dojo boss."""
+    return can_access_first_dojo_boss(world, inventory) and can_defeat_boss(
+        world, inventory, DojoFirstFight
+    )
+
+
+def can_access_second_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 2nd Monstro dojo boss."""
+    return can_defeat_first_dojo_boss(world, inventory)
+
+
+def can_defeat_second_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd Monstro dojo boss."""
+    return can_access_second_dojo_boss(world, inventory) and can_defeat_boss(
+        world, inventory, DojoSecondFight
+    )
+
+
+def can_access_third_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 3rd Monstro dojo boss."""
+    return can_defeat_second_dojo_boss(world, inventory)
+
+
+def can_defeat_third_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 3rd Monstro dojo boss."""
+    return can_access_third_dojo_boss(world, inventory) and can_defeat_boss(
+        world, inventory, DojoThirdFight
+    )
+
+
+def can_access_fourth_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 4th Monstro dojo boss."""
+    return can_defeat_third_dojo_boss(world, inventory)
+
+
+def can_defeat_fourth_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 4th Monstro dojo boss."""
+    return can_access_third_dojo_boss(world, inventory) and can_defeat_boss(
+        world, inventory, DojoFourthFight
+    )
+
+
+def can_access_fifth_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 5th Monstro dojo boss."""
+    return (
+        can_defeat_fourth_dojo_boss(world, inventory)
+        and inventory.has_item(StayVoucherPrize)
+        and world.settings.is_flag_value(Remake, True)
+        and can_take_lategame_bosses(world, inventory)
+    )
+
+
+def can_defeat_fifth_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 5th Monstro dojo boss."""
+    return can_access_fifth_dojo_boss(world, inventory) and can_defeat_boss(
+        world, inventory, DojoFifthFight
+    )
+
+
+def can_access_valley_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the Bean Valley boss."""
+    return can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_ship_midboss,
+            can_defeat_ship_boss,
+            can_defeat_seaside_boss,
+            can_defeat_lands_end_cloud_boss,
+            can_defeat_temple_boss,
+            can_defeat_first_dojo_boss,
+            can_defeat_second_dojo_boss,
+            can_defeat_third_dojo_boss,
+            can_defeat_fourth_dojo_boss,
+        ],
+    )
+
+
+def can_defeat_valley_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the Bean Valley boss."""
+    return can_access_valley_boss(world, inventory) and can_defeat_boss(
+        world, inventory, BeanValleyPlanterBossFight
+    )
+
+
+def can_access_third_mimic(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the third mimic chest fight."""
+    return can_defeat_mimic(world, inventory, ThirdMimicFightLauncher)
+
+
+def can_defeat_third_mimic(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the third mimic chest fight."""
+    return can_access_third_mimic(world, inventory) and can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_curtain_boss,
+            can_defeat_balcony_boss,
+            can_defeat_chapel_boss,
+            can_defeat_ship_midboss,
+            can_defeat_ship_boss,
+            can_defeat_seaside_boss,
+            can_defeat_lands_end_cloud_boss,
+        ],
+    )
+
+
+def can_access_statue_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 1st Nimbus boss."""
+    return can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_ship_midboss,
+            can_defeat_ship_boss,
+            can_defeat_seaside_boss,
+            can_defeat_lands_end_cloud_boss,
+            can_defeat_temple_boss,
+            can_defeat_first_dojo_boss,
+            can_defeat_second_dojo_boss,
+            can_defeat_third_dojo_boss,
+            can_defeat_fourth_dojo_boss,
+            can_defeat_valley_boss,
+        ],
+    )
+
+
+def can_defeat_statue_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 1st Nimbus boss."""
+    return can_access_statue_boss(world, inventory) and can_defeat_boss(
+        world, inventory, StatueRoomBossFight
+    )
+
+
+def can_access_outer_nimbus(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to get to Nimbus Land."""
+    if world.settings.is_flag_value(NimbusGate, NimbusGating.VALLEY):
+        return can_defeat_valley_boss(world, inventory)
+    if world.settings.is_flag_value(NimbusGate, NimbusGating.MEGASMILAX):
+        return inventory.has_item(MegasmilaxBossFight)
+    return True
+
+
+def can_access_nimbus_castle(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Nimbus Castle."""
+    outer_access = can_access_outer_nimbus(world, inventory)
+    if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
+        return outer_access and inventory.has_item(GoldPaintPrize)
+    return outer_access
+
+
+def can_access_inner_nimbus(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to get past the Castle Key 1 door."""
+    return can_access_nimbus_castle(world, inventory) and inventory.has_item(CastleKey1Prize)
+
+
+def can_access_egg_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 2nd Nimbus boss."""
+    return can_access_inner_nimbus(world, inventory) and can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_ship_midboss,
+            can_defeat_ship_boss,
+            can_defeat_seaside_boss,
+            can_defeat_temple_boss,
+            can_defeat_first_dojo_boss,
+            can_defeat_second_dojo_boss,
+            can_defeat_third_dojo_boss,
+            can_defeat_fourth_dojo_boss,
+            can_defeat_valley_boss,
+            can_defeat_statue_boss,
+        ],
+    )
+
+
+def can_defeat_egg_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd Nimbus boss."""
+    return can_access_egg_boss(world, inventory) and can_defeat_boss(
+        world, inventory, GiantEggBossFight
+    )
+
+
+def can_access_late_nimbus(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to get past the Castle Key 2 door."""
+    return can_access_inner_nimbus(world, inventory) and inventory.has_item(CastleKey2Prize)
+
+
+def can_access_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 3rd Nimbus boss."""
+    return can_access_late_nimbus(world, inventory) and can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_ship_boss,
+            can_defeat_seaside_boss,
+            can_defeat_lands_end_cloud_boss,
+            can_defeat_temple_boss,
+            can_defeat_second_dojo_boss,
+            can_defeat_third_dojo_boss,
+            can_defeat_fourth_dojo_boss,
+            can_defeat_valley_boss,
+            can_defeat_statue_boss,
+            can_defeat_egg_boss,
+        ])
+
+
+def can_defeat_nimbus_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 3rd Nimbus boss."""
+    return can_access_nimbus_boss(world, inventory) and can_defeat_boss(
+        world, inventory, NimbusFinalBossFight
+    )
+
+def can_access_volcano(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Barrel Volcano."""
+    if world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.NIMBUS):
+        return can_defeat_nimbus_boss(world, inventory)
+    if world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA):
+        return inventory.has_item(ValentinaBossFight)
+    return True
+
+
+def can_access_volcano_midboss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 1st volcano boss."""
+    return can_access_volcano(world, inventory) and can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_seaside_boss,
+            can_defeat_temple_boss,
+            can_defeat_third_dojo_boss,
+            can_defeat_fourth_dojo_boss,
+            can_defeat_valley_boss,
+            can_defeat_statue_boss,
+            can_defeat_egg_boss,
+            can_defeat_nimbus_boss,
+        ])
+
+def can_defeat_volcano_midboss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 1st volcano boss."""
+    return can_access_volcano_midboss(world, inventory) and can_defeat_boss(
+        world, inventory, VolcanoBridgeBossFight
+    )
+
+
+def can_access_volcano_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 2nd volcano boss."""
+    return can_defeat_volcano_midboss(world, inventory)
+
+
+def can_defeat_volcano_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd volcano boss."""
+    return can_access_volcano_boss(world, inventory) and can_defeat_boss(
+        world, inventory, VolcanoExitBossFight
+    )
+
+
+
+
+def can_take_lategame_bosses(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to reasonably have progressed enough in the seed
+    to fight lategame bosses."""
+    return can_defeat_some_of(
+        world,
+        inventory,
+        [
+            can_defeat_fourth_dojo_boss,
+            can_defeat_egg_boss,
+            can_access_nimbus_boss,
+            can_defeat_volcano_midboss,
+            can_defeat_volcano_boss,
+        ],
+    )
+
+
+
+def can_access_keep(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Bowser's Keep."""
+    if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.VOLCANO):
+        return can_defeat_volcano_boss(world, inventory)
+    if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6):
+        return inventory.has_item_count(StarPiecePrize, 6)
+    if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.AXEM):
+        return inventory.has_item(AxemRangersBossFight)
+    return True
+
+
+def can_access_battle_door_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the battle door
+    that normally contains the Chester fight."""
+    return can_access_keep(world, inventory) and can_take_lategame_bosses(
+        world, inventory
+    )
+
+
+def can_defeat_battle_door_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the battle door
+    that normally contains the Chester fight."""
+    return can_access_battle_door_boss(world, inventory) and can_defeat_boss(
+        world, inventory, ObstacleCourseFinalFight
+    )
+
+
+def can_access_post_obstacle_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the boss fight
+    after completing the Bowser's Keep red doors."""
+    return can_access_keep(world, inventory) and can_take_lategame_bosses(
+        world, inventory
+    )
+
+
+def can_defeat_post_obstacle_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the boss fight
+    after completing the Bowser's Keep red doors."""
+    return can_access_post_obstacle_boss(world, inventory) and can_defeat_boss(
+        world, inventory, KeepAfterObstaclesBossFight
+    )
+
+
+def can_access_keep_chandelier_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the first back-to-back Keep boss."""
+    return can_defeat_post_obstacle_boss(world, inventory) and can_take_lategame_bosses(
+        world, inventory
+    )
+
+
+def can_defeat_keep_chandelier_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the first back-to-back Keep boss."""
+    return can_access_keep_chandelier_boss(world, inventory) and can_defeat_boss(
+        world, inventory, KeepChandelierBossFight
+    )
+
+
+def can_access_keep_exit_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the second back-to-back Keep boss."""
+    return can_defeat_keep_chandelier_boss(
+        world, inventory
+    ) and can_take_lategame_bosses(world, inventory)
+
+
+def can_defeat_keep_exit_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the second back-to-back Keep boss."""
+    return can_access_keep_exit_boss(world, inventory) and can_defeat_boss(
+        world, inventory, KeepFinalBossFight
+    )
+
+
+def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the Outer Factory."""
+    if world.settings.is_flag_value(FactoryGate, FactoryGating.STAR_6):
+        return inventory.has_item_count(StarPiecePrize, 6) and can_defeat_keep_exit_boss(
+            world, inventory
+        )
+    if world.settings.is_flag_value(FactoryGate, FactoryGating.EXOR):
+        return inventory.has_item(ExorBossFight) and can_defeat_keep_exit_boss(
+            world, inventory
+        )
+    if world.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
+        return can_access_keep(
+            world, inventory
+        )
+    return can_defeat_keep_exit_boss(world, inventory)
+
+
+def can_access_first_factory_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 1st Outer Factory boss."""
+    return can_access_factory(world, inventory) and can_take_lategame_bosses(
+        world, inventory
+    )
+
+
+def can_defeat_first_factory_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 1st Outer Factory boss."""
+    return can_access_first_factory_boss(world, inventory) and can_defeat_boss(
+        world, inventory, FactoryEntranceBossFight
+    )
+
+
+def can_access_second_factory_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 2nd Outer Factory boss."""
+    return can_defeat_first_factory_boss(world, inventory) and can_take_lategame_bosses(
+        world, inventory
+    )
+
+
+def can_defeat_second_factory_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd Outer Factory boss."""
+    return can_access_second_factory_boss(world, inventory) and can_defeat_boss(
+        world, inventory, FactoryTransitionBossFight
+    )
+
+
+def can_access_inner_factory_first_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 1st Inner Factory boss."""
+    return can_defeat_second_factory_boss(
+        world, inventory
+    ) and can_take_lategame_bosses(world, inventory)
+
+
+def can_defeat_inner_factory_first_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 1st Inner Factory boss."""
+    return can_access_inner_factory_first_boss(world, inventory) and can_defeat_boss(
+        world, inventory, InnerFactoryFirstFight
+    )
+
+
+def can_access_inner_factory_second_boss(
+    world: GameWorld, inventory: Inventory
+) -> bool:
+    """If true, the player is expected to be able to access the 2nd Inner Factory boss."""
+    return can_defeat_first_factory_boss(world, inventory) and can_take_lategame_bosses(
+        world, inventory
+    )
+
+
+def can_defeat_inner_factory_second_boss(
+    world: GameWorld, inventory: Inventory
+) -> bool:
+    """If true, the player is expected to be able to defeat the 2nd Inner Factory boss."""
+    return can_access_inner_factory_second_boss(world, inventory) and can_defeat_boss(
+        world, inventory, InnerFactorySecondFight
+    )
+
+
+def can_access_inner_factory_third_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the 3rd Inner Factory boss."""
+    return can_defeat_inner_factory_second_boss(
+        world, inventory
+    ) and can_take_lategame_bosses(world, inventory)
+
+
+def can_defeat_inner_factory_third_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the 3rd Inner Factory boss."""
+    return can_access_inner_factory_third_boss(world, inventory) and can_defeat_boss(
+        world, inventory, InnerFactoryThirdFight
+    )
+
+
+def can_access_inner_factory_fourth_boss(
+    world: GameWorld, inventory: Inventory
+) -> bool:
+    """If true, the player is expected to be able to access the 4th Inner Factory boss."""
+    return can_defeat_inner_factory_third_boss(
+        world, inventory
+    ) and can_take_lategame_bosses(world, inventory)
+
+
+def can_defeat_inner_factory_fourth_boss(
+    world: GameWorld, inventory: Inventory
+) -> bool:
+    """If true, the player is expected to be able to defeat the 4th Inner Factory boss."""
+    return can_access_inner_factory_fourth_boss(world, inventory) and can_defeat_boss(
+        world, inventory, InnerFactoryFourthFight
+    )
+
+# TODO do we want bucket warp / casino warp to take us to the boss fight or to the inner factory?
+def can_access_inner_factory_final_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the final Factory boss."""
+    value = world.settings.get_flag(StarPiecesRequired).value
+    has_stars = inventory.has_item_count(StarPiecePrize, value)
+    if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
+        fireworks_access = inventory.has_item(RegularFireworksPrize)
+    elif world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
+        fireworks_access = inventory.has_item_count(ProgressiveFireworksPrize, 3)
+    else:
+        fireworks_access = can_defeat_second_moleville_boss(world, inventory)
+    can_access_bucket = (
+        fireworks_access
+        and can_defeat_second_moleville_boss(world, inventory)
+        and world.settings.isflag_enabled(BucketWarp)
+    )
+    can_access_casino = world.settings.isflag_enabled(
+        CasinoWarp
+    ) and inventory.has_item(BrightCardPrize)
+    return (
+        has_stars
+        and (
+            can_access_bucket
+            or can_access_casino
+            or can_defeat_inner_factory_fourth_boss(world, inventory)
+        )
+        and can_take_lategame_bosses(world, inventory)
+    )
+
+
+def can_defeat_inner_factory_final_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the final Factory boss."""
+    return can_access_inner_factory_final_boss(world, inventory) and can_defeat_boss(
+        world, inventory, FinalBossFight
+    )
+
+
+
+def can_access_sealed_door_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the sealed door boss."""
+    boss_reqs = can_access_monstro_town(world, inventory) and can_take_lategame_bosses(
+        world, inventory
+    )
+    item_reqs: bool = False
+    if world.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
+        item_reqs = inventory.has_item(
+            RegularFireworksPrize
+        ) and can_defeat_second_moleville_boss(world, inventory)
+    elif world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
+        item_reqs = inventory.has_item_count(ProgressiveFireworksPrize, 2)
+    else:
+        item_reqs = can_defeat_second_moleville_boss(world, inventory)
+    return item_reqs and boss_reqs
+
+
+def can_defeat_sealed_door_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the sealed door boss."""
+    return can_access_sealed_door_boss(world, inventory) and can_defeat_boss(
+        world, inventory, MonstroSealedDoorBossFight
+    )
+
+
+def can_access_sealed_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access the second sealed door boss."""
+    return (
+        can_defeat_sealed_door_boss(world, inventory)
+        and inventory.has_item(StayVoucherPrize)
+        and inventory.has_item(ExtraShinyStonePrize)
+        and world.settings.is_flag_value(Remake, True)
+        and can_take_lategame_bosses(world, inventory)
+    )
+
+
+def can_defeat_sealed_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to defeat the second sealed door boss."""
+    return can_access_sealed_postgame_boss(world, inventory) and can_defeat_boss(
+        world, inventory, MonstroSealedDoorBossFightPostgame
+    )
+
+
+def can_access_invisible_flags(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the invisible item checks have been activated."""
+    return world.settings.isflag_enabled(
+        SkipMustyFearsSequence
+    ) or can_access_monstro_town(world, inventory)
+
+    # mimic 3 and postgame temple

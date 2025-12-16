@@ -1594,6 +1594,13 @@ class CrownPrize(WeddingGearPrize):
             ]
         )
 
+class GoldPaintPrize(ItemPrize):
+    item = GoldPaintItem
+    _nickname = TreasureHunterNickname(
+        nickname="Chrome Coating", description="It'll make you look shiny!"
+    )
+    # TODO events
+
 
 class RecoveryMushroomPrize(StandardPrize):
     @property
@@ -2129,6 +2136,12 @@ class YaridovichBossFight(BossFightPrize):
     _members = [
         FormationMember(YARIDOVICHEnemy, 183, 127),
         FormationMember(YARIDOVICHMirageEnemy, 183, 127, hidden_at_start=True),
+    ]
+
+class MokuraBossFight(BossFightPrize):
+    _members = [
+        FormationMember(FORMLESSEnemy, 167, 135),
+        FormationMember(MOKURAEnemy, 167, 135, hidden_at_start=True),
     ]
 
 

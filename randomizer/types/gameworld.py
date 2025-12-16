@@ -1,25 +1,47 @@
 from __future__ import annotations
 from copy import deepcopy
-from typing import Any, TYPE_CHECKING, TypeVar
+from typing import Any, TYPE_CHECKING, TypeVar, cast
+import random
 
-from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import AnimationScriptBank
-from smrpgpatchbuilder.datatypes.battles.battle_dialog_collection import BattleDialogCollection
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
+    AnimationScriptBank,
+)
+from smrpgpatchbuilder.datatypes.battles.battle_dialog_collection import (
+    BattleDialogCollection,
+)
 from smrpgpatchbuilder.datatypes.dialogs.classes import DialogCollection
 from smrpgpatchbuilder.datatypes.enemies.classes import EnemyCollection
 from smrpgpatchbuilder.datatypes.enemy_attacks.classes import EnemyAttackCollection
 from smrpgpatchbuilder.datatypes.items.classes import ItemCollection
-from smrpgpatchbuilder.datatypes.monster_scripts.types import MonsterScriptBank, MonsterScript
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import ActionScriptBank
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScriptController, EventScriptBank
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import PacketCollection
-from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import PackCollection
+from smrpgpatchbuilder.datatypes.monster_scripts.types import (
+    MonsterScriptBank,
+    MonsterScript,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
+    ActionScriptBank,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
+    EventScriptController,
+    EventScriptBank,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import (
+    PacketCollection,
+)
+from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
+    PackCollection,
+)
 from smrpgpatchbuilder.datatypes.levels.room_collection import RoomCollection
 from smrpgpatchbuilder.datatypes.shops.classes import ShopCollection
 from smrpgpatchbuilder.datatypes.spells.classes import SpellCollection
 from smrpgpatchbuilder.datatypes.graphics.classes import SpriteCollection
 from smrpgpatchbuilder.datatypes.scripts_common.classes import IdentifierException
-from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import FormationMember, Formation
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import CompareVarToConst
+from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
+    FormationMember,
+    Formation,
+)
 from smrpgpatchbuilder.datatypes.allies.ally_collection import AllyCollection
+from smrpgpatchbuilder.datatypes.levels.classes import RoomObject
 from .item import Item
 from .enemy import Enemy
 from .patch import Patch
@@ -27,14 +49,23 @@ from .attack import EnemyAttack as Attack
 from .spell import Spell
 from .prize import Prize
 from .flags import (
-    Flag, BooleanFlag, RangeFlag, SelectOneFlag, CategorizationFlag,
-    CosmeticCategory, CATEGORIES
+    Flag,
+    BooleanFlag,
+    RangeFlag,
+    SelectOneFlag,
+    CategorizationFlag,
+    CosmeticCategory,
+    CATEGORIES,
 )
+from .prizelocation import PrizeLocation
+from ..progression.prizelocations import *
+
+PrizeLocationT = TypeVar("PrizeLocationT", bound=PrizeLocation)
+from .settings import Settings
 
 if TYPE_CHECKING:
     from .flags import CategorizationOption as FlagOptions
 
-FlagT = TypeVar('FlagT', bound=Flag)
 
 
 class RandomizerSettingsException(Exception):
@@ -48,274 +79,12 @@ def get_flag_string_from_flag_collection(categories: list) -> str:
 
 class NumberThresholdFlag(RangeFlag):
     """Alias for range flags used as thresholds."""
+
     pass
 
 
 class WorldBuildingException(Exception):
     pass
-
-
-class Settings:
-    """Container class for all settings."""
-
-    _debug_mode: bool = False
-    _override: dict = {}
-    _all_flags: list[Flag] = []
-
-    @property
-    def override(self) -> dict:
-        """Override certain settings (developer mode)"""
-        return self._override
-
-    @property
-    def flag_string(self) -> str:
-        """Computed flag string for these settings."""
-
-        non_cosmetic_categories = [
-            category
-            for category in CATEGORIES
-            if not isinstance(category, CosmeticCategory)
-        ]
-
-        return get_flag_string_from_flag_collection(non_cosmetic_categories)
-
-    def get_flag(self, flag_class: type[FlagT]) -> FlagT:
-        """Get the value of a specific setting."""
-        return next(f for f in self._all_flags if isinstance(f, flag_class))
-
-    def is_flag_value(self, flag_class: type[Flag], value: Any) -> bool:
-        """Check if a setting is set to the given value."""
-        flag = self.get_flag(flag_class)
-        if isinstance(flag, (BooleanFlag, NumberThresholdFlag, SelectOneFlag)):
-            return flag.value == value
-        if isinstance(flag, CategorizationFlag):
-            return value in flag.enabled
-        raise RandomizerSettingsException(
-            f"is_flag_value unknown flag type {type(flag)}"
-        )
-
-    def is_boolean_flag_enabled(self, flag_class: type[BooleanFlag]) -> bool:
-        """Check if a boolean flag is on or not."""
-        return self.is_flag_value(flag_class, True)
-
-    def update_single_value_flag(self, flag_class: type[Flag], value: Any) -> None:
-        """For a setting which can only take one of multiple values, set it to the given value."""
-        flag = self.get_flag(flag_class)
-        if isinstance(flag, (BooleanFlag, NumberThresholdFlag, SelectOneFlag)):
-            flag.set_value(value)
-        elif isinstance(flag, CategorizationFlag):
-            raise RandomizerSettingsException(
-                (
-                    "is_flag_value illegal flag type CategorizationFlag, "
-                    "use append_categorization_flag_options, "
-                    "remove_categorization_flag_options, "
-                    "or overwrite_categorization_flag_options"
-                )
-            )
-        else:
-            raise RandomizerSettingsException(
-                f"is_flag_value illegal flag type {type(flag)}"
-            )
-
-    def append_categorization_flag_options(
-        self,
-        flag_class: type[CategorizationFlag],
-        options_to_append: FlagOptions | list[FlagOptions]) -> None:
-        """For a value categorization flag, append values to Enabled."""
-        flag = self.get_flag(flag_class)
-        enabled = deepcopy(flag.enabled)
-        if isinstance(options_to_append, FlagOptions):
-            options_to_append = [options_to_append]
-        enabled.extend(options_to_append)
-        flag.set_enabled(enabled)
-
-    def remove_categorization_flag_options(
-        self,
-        flag_class: type[CategorizationFlag],
-        options_to_remove: FlagOptions | list[FlagOptions]) -> None:
-        """For a value categorization flag, append values to Disabled."""
-        flag = self.get_flag(flag_class)
-        if isinstance(options_to_remove, FlagOptions):
-            options_to_remove = [options_to_remove]
-        enabled = [opt for opt in flag.enabled if opt not in options_to_remove]
-        flag.set_enabled(enabled)
-
-    def overwrite_categorization_flag_options(
-        self, flag_class: type[CategorizationFlag], options: list[FlagOptions]
-    ) -> None:
-        """For a value categorization flag, overwrite Enabled."""
-        flag = self.get_flag(flag_class)
-        flag.set_enabled(options)
-
-    def reject_illegal_flag_combos(self) -> None:
-        """A sanity check for settings that are misconfigured."""
-        # max chars less than starting party size
-        max_char_setting: int = self.get_flag(MaxCharacters).value
-        if max_char_setting < self.get_flag(StartingCharacters).value:
-            raise FlagError(
-                "Your max characters setting is lower than your starting party size setting"
-            )
-        # not enough chars to fill desired party
-        if (
-            len(self.get_flag(AvailableCharacters).enabled)
-            < self.get_flag(StartingCharacters).value
-        ):
-            raise FlagError(
-                "You have excluded too many characters to fill your desired starting party size"
-            )
-        required_char_settings = [
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO),
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW)
-            or self.is_flag_value(BanditsWayGate, BanditsWayGating.MALLOW),
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO)
-            or self.is_flag_value(ForestMazeGate, ForestMazeGating.GENO),
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.BOWSER),
-            self.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL)
-            or self.is_flag_value(SeaGate, SeaGating.TOADSTOOL),
-        ]
-        num_required = len([s for s in required_char_settings if s])
-        if num_required > max_char_setting:
-            raise FlagError(
-                (
-                    f"Your Progression settings require {num_required} different characters, "
-                    f"but you have set your max to {max_char_setting}"
-                )
-            )
-
-        # don't allow there to be less star pieces than gating allows
-        if (
-            (
-                self.get_flag(TotalStarPieces).value < 4
-                and self.is_flag_value(SeaGate, SeaGating.STAR_4)
-            )
-            or (
-                self.get_flag(TotalStarPieces).value < 6
-                and self.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6)
-            )
-            or (
-                self.get_flag(TotalStarPieces).value < 6
-                and self.is_flag_value(FactoryGate, FactoryGating.STAR_6)
-            )
-        ):
-            raise FlagError(
-                (
-                    "Not enough Star Pieces available to unlock world areas "
-                    "with your selected progression settings"
-                )
-            )
-        # don't allow endgame stars to be less than available stats
-        if (
-            self.get_flag(TotalStarPieces).value
-            < self.get_flag(StarPiecesRequired).value
-        ):
-            raise FlagError(
-                (
-                    "Star Pieces required to access the final Factory boss cannot be higher "
-                    "than the total Star Pieces available in the world"
-                )
-            )
-        # don't allow empty shops
-        # needs at least 1 damaging spell to be enabled
-        requires_one_of = [
-            LearnableSpells.JUMP,
-            LearnableSpells.FIRE_ORB,
-            LearnableSpells.SUPER_JUMP,
-            LearnableSpells.SUPER_FLAME,
-            LearnableSpells.ULTRA_JUMP,
-            LearnableSpells.ULTRA_FLAME,
-            LearnableSpells.SLEEPY_TIME,
-            LearnableSpells.PSYCH_BOMB,
-            LearnableSpells.TERRORIZE,
-            LearnableSpells.POISON_GAS,
-            LearnableSpells.CRUSHER,
-            LearnableSpells.BOWSER_CRUSH,
-            LearnableSpells.GENO_BEAM,
-            LearnableSpells.GENO_WHIRL,
-            LearnableSpells.GENO_BLAST,
-            LearnableSpells.GENO_FLASH,
-            LearnableSpells.THUNDERBOLT,
-            LearnableSpells.SHOCKER,
-            LearnableSpells.SNOWY,
-            LearnableSpells.STAR_RAIN,
-        ]
-        # what to do about actually applying these when seed has limited chars?
-        has_required = False
-        for spell in requires_one_of:
-            if spell in self.get_flag(AvailableSpells).enabled:
-                has_required = True
-                break
-        if not has_required:
-            raise FlagError(
-                "At least one spell must be included that can transform Mokura."
-            )
-
-        # Clean up flag selections
-        # Set max # of chars from allowed chars
-        allowed_chars = self.get_flag(AvailableCharacters).enabled
-        max_chars = self.get_flag(MaxCharacters).value
-        available_chars = []
-        if required_char_settings[0]:
-            available_chars.append(PlayableCharacters.MARIO)
-        if required_char_settings[1]:
-            available_chars.append(PlayableCharacters.MALLOW)
-        if required_char_settings[2]:
-            available_chars.append(PlayableCharacters.GENO)
-        if required_char_settings[3]:
-            available_chars.append(PlayableCharacters.BOWSER)
-        if required_char_settings[4]:
-            available_chars.append(PlayableCharacters.TOADSTOOL)
-        starter = self.get_flag(StartingCharacter).value
-        if starter != PlayableCharacters.RANDOM and starter not in available_chars:
-            available_chars.append(available_chars)
-        for character in available_chars:
-            if character not in allowed_chars:
-                raise FlagError(
-                    "Your settings exclude a character that is required by another setting."
-                )
-        if max_chars < len(available_chars):
-            raise FlagError(
-                "your settings require more characters than are allowed in the seed"
-            )
-        if len(available_chars) < max_chars:
-            available_chars.extend(
-                random.sample(
-                    [c for c in allowed_chars if c not in available_chars],
-                    k=max_chars - len(available_chars))
-            )
-        if max_chars != len(available_chars):
-            raise FlagError(
-                "too many characters are restricted to make your settings possible"
-            )
-        flag_val = self.get_flag(AvailableCharacters)
-        flag_val.set_enabled(available_chars)
-
-    def __init__(
-        self,
-        debug_mode: bool = False,
-        flag_string: str = "",
-        cosmetics_string: str = ""):
-        self._debug_mode = debug_mode
-
-        if self._debug_mode:
-            with open("randomizer/debug/config.yml", "r", encoding="utf-8") as stream:
-                try:
-                    self._override = yaml.safe_load(stream)
-                except yaml.YAMLError as exc:
-                    print(exc)
-
-        flag_dict: dict[str, dict[str, Any]] = separate_flag_string(
-            flag_string, cosmetics_string
-        )
-
-        # Set flags from form data.
-        for category in CATEGORIES:
-            for subcategory in category().subcategories:
-                for flag in subcategory.flags:
-                    set_flag_from_settings_string(flag_dict, flag, subcategory)
-                    self._all_flags.append(flag)
-
-        self.reject_illegal_flag_combos()
-
 
 
 class GameWorld:
@@ -343,6 +112,8 @@ class GameWorld:
     spells: SpellCollection
     sprites: SpriteCollection
 
+    locations: dict[type[PrizeLocation], PrizeLocation]
+
     def get_item(self, item: int | type[Item]):
         if isinstance(item, int):
             i = next((i for i in self.items.items if i.item_id == item), None)
@@ -350,23 +121,32 @@ class GameWorld:
             i = next((i for i in self.items.items if isinstance(i, item)), None)
         assert i is not None, f"Item {item} does not exist in ItemCollection"
         return i
-    
+
     def get_enemy(self, enemy_id: int | type[Enemy]):
         if isinstance(enemy_id, int):
-            e = next((e for e in self.enemies.enemies if e.monster_id == enemy_id), None)
+            e = next(
+                (e for e in self.enemies.enemies if e.monster_id == enemy_id), None
+            )
         else:
             e = next((e for e in self.enemies.enemies if isinstance(e, enemy_id)), None)
         assert e is not None, f"Enemy {enemy_id} does not exist in EnemyCollection"
         return e
-    
+
     def get_attack(self, attack_id: int | type[Attack]):
         if isinstance(attack_id, int):
-            a = next((a for a in self.enemy_attacks.attacks if a.index == attack_id), None)
+            a = next(
+                (a for a in self.enemy_attacks.attacks if a.index == attack_id), None
+            )
         else:
-            a = next((a for a in self.enemy_attacks.attacks if isinstance(a, attack_id)), None)
-        assert a is not None, f"Attack {attack_id} does not exist in EnemyAttackCollection"
+            a = next(
+                (a for a in self.enemy_attacks.attacks if isinstance(a, attack_id)),
+                None,
+            )
+        assert (
+            a is not None
+        ), f"Attack {attack_id} does not exist in EnemyAttackCollection"
         return a
-    
+
     def get_spell(self, spell_id: int | type[Spell]):
         if isinstance(spell_id, int):
             s = next((s for s in self.spells.spells if s.index == spell_id), None)
@@ -374,20 +154,26 @@ class GameWorld:
             s = next((s for s in self.spells.spells if isinstance(s, spell_id)), None)
         assert s is not None, f"Spell {spell_id} does not exist in SpellCollection"
         return s
-    
+
     def get_dialog(self, dialog_id: int):
         d = self.overworld_dialogs.dialogs[dialog_id]
         assert d is not None, f"Dialog {dialog_id} does not exist in DialogCollection"
         return d
-    
+
     def update_dialog(self, dialog_id: int, new_dialog: str):
         self.overworld_dialogs.replace_dialog(dialog_id, new_dialog)
 
     def get_battle_dialog(self, dialog_id: int):
         d = self.battle_dialogs.battle_dialogs[dialog_id]
-        assert d is not None, f"Battle Dialog {dialog_id} does not exist in BattleDialogCollection"
+        assert (
+            d is not None
+        ), f"Battle Dialog {dialog_id} does not exist in BattleDialogCollection"
         return d
-    
+
+    def get_location(self, location_type: type[PrizeLocationT]) -> PrizeLocationT:
+        """Get a location instance with proper typing."""
+        return cast(PrizeLocationT, self.locations[location_type])
+
     def update_battle_dialog(self, dialog_id: int, new_dialog: str):
         self.battle_dialogs.battle_dialogs[dialog_id] = new_dialog
 
@@ -396,7 +182,7 @@ class GameWorld:
             return self.monster_scripts.scripts[script]
         else:
             return self.monster_scripts.scripts[script.monster_id]
-        
+
     def update_monster_script(self, script: int | Enemy, new_script: MonsterScript):
         if isinstance(script, int):
             self.monster_scripts.replace_script(script, new_script)
@@ -405,10 +191,10 @@ class GameWorld:
 
     def get_event_script(self, event_script_id: int):
         return self.event_scripts.get_script_by_id(event_script_id)
-    
+
     def get_action_script(self, action_script_id: int):
         return self.action_scripts.scripts[action_script_id]
-    
+
     def get_battle_animation_command_by_name(self, command_name: str):
         try:
             return self.battle_animations[0x02].get_command_by_name(command_name)
@@ -417,15 +203,17 @@ class GameWorld:
                 return self.battle_animations[0x35].get_command_by_name(command_name)
             except IdentifierException:
                 try:
-                    return self.battle_animations[0x3A].get_command_by_name(command_name)   
+                    return self.battle_animations[0x3A].get_command_by_name(
+                        command_name
+                    )
                 except IdentifierException:
                     raise WorldBuildingException("No battle animation banks found")
-                
+
     def get_packet(self, packet_id: int):
         p = self.packets.packets[packet_id]
         assert p is not None, f"Packet {packet_id} does not exist in PacketCollection"
         return p
-    
+
     def update_packet(self, packet_id: int, new_packet):
         self.packets.packets[packet_id] = new_packet
 
@@ -437,7 +225,9 @@ class GameWorld:
     def update_battle_pack(self, pack_id: int, new_pack):
         self.battle_packs.packs[pack_id] = new_pack
 
-    def replace_battle_pack_formations(self, members: list[FormationMember | None], pack_id: int):
+    def replace_battle_pack_formations(
+        self, members: list[FormationMember | None], pack_id: int
+    ):
         pack = self.get_battle_pack(pack_id)
         if len(pack.formations) == 0:
             pack._formations = [Formation(members)]
@@ -451,7 +241,7 @@ class GameWorld:
         r = self.rooms._rooms[room_id]
         assert r is not None, f"Room {room_id} does not exist in RoomCollection"
         return r
-    
+
     def update_room(self, room_id: int, new_room):
         self.rooms._rooms[room_id] = new_room
 
@@ -459,7 +249,7 @@ class GameWorld:
         s = self.shops.shops[shop_id]
         assert s is not None, f"Shop {shop_id} does not exist in ShopCollection"
         return s
-    
+
     def update_shop(self, shop_id: int, new_shop):
         self.shops._shops[shop_id] = new_shop
 
@@ -467,30 +257,34 @@ class GameWorld:
         s = self.sprites.sprites[sprite_id]
         assert s is not None, f"Sprite {sprite_id} does not exist in SpriteCollection"
         return s
-    
+
     def update_sprite(self, sprite_id: int, new_sprite):
         self.sprites.sprites[sprite_id] = new_sprite
 
     # Logic
     # TODO
 
-    def __init__(self, seed: int, settings: Settings, 
-                 allies: AllyCollection,
-                 battle_animations: dict[int, AnimationScriptBank],
-                 battle_dialogs: BattleDialogCollection,
-                 overworld_dialogs: DialogCollection,
-                 enemies: EnemyCollection,
-                 enemy_attacks: EnemyAttackCollection,
-                 items: ItemCollection,
-                 monster_scripts: MonsterScriptBank,
-                 event_scripts: EventScriptController,
-                 action_scripts: ActionScriptBank,
-                 packets: PacketCollection,
-                 battle_packs: PackCollection,
-                 rooms: RoomCollection,
-                 shops: ShopCollection,
-                 spells: SpellCollection,
-                 sprites: SpriteCollection):
+    def __init__(
+        self,
+        seed: int,
+        settings: Settings,
+        allies: AllyCollection,
+        battle_animations: dict[int, AnimationScriptBank],
+        battle_dialogs: BattleDialogCollection,
+        overworld_dialogs: DialogCollection,
+        enemies: EnemyCollection,
+        enemy_attacks: EnemyAttackCollection,
+        items: ItemCollection,
+        monster_scripts: MonsterScriptBank,
+        event_scripts: EventScriptController,
+        action_scripts: ActionScriptBank,
+        packets: PacketCollection,
+        battle_packs: PackCollection,
+        rooms: RoomCollection,
+        shops: ShopCollection,
+        spells: SpellCollection,
+        sprites: SpriteCollection,
+    ):
         self.allies = allies
         self.seed = seed
         self.settings = settings
@@ -510,6 +304,656 @@ class GameWorld:
         self.spells = spells
         self.sprites = sprites
 
+        # todo: extra moleville trade checks
+
+        # establish all prize locations
+        # regardless if they will have their contents shuffled or not
+        self.locations = {
+            StartingItem1Location: StartingItem1Location(),
+            StartingItem2Location: StartingItem2Location(),
+            StartingItem3Location: StartingItem3Location(),
+            StartingItem4Location: StartingItem4Location(),
+            StartingCharacter1: StartingCharacter1(),
+            StartingCharacter2: StartingCharacter2(),
+            StartingCharacter3: StartingCharacter3(),
+            StartingCharacter4: StartingCharacter4(),
+            StartingCharacter5: StartingCharacter5(),
+            MushroomWay1LowerChest: MushroomWay1LowerChest(),
+            MushroomWay1UpperChest: MushroomWay1UpperChest(),
+            MushroomWay1ToadRescue: MushroomWay1ToadRescue(),
+            MushroomWay2LedgeChest: MushroomWay2LedgeChest(),
+            MushroomWay2ToadRescue: MushroomWay2ToadRescue(),
+            MushroomWayRightGoomba: MushroomWayRightGoomba(),
+            MushrooomWayBossFight: MushrooomWayBossFight(),
+            MushroomWayStarPiece: MushroomWayStarPiece(),
+            MushroomWayBossFightRewardItem: MushroomWayBossFightRewardItem(),
+            MushroomWayCharacter: MushroomWayCharacter(),
+            MushroomKingdomMainHall: MushroomKingdomMainHall(),
+            MushroomKingdomLiberatedVaultLeft: MushroomKingdomLiberatedVaultLeft(),
+            MushroomKingdomLiberatedVaultRight: MushroomKingdomLiberatedVaultRight(),
+            MushroomKingdomLiberatedVaultMiddle: MushroomKingdomLiberatedVaultMiddle(),
+            MushroomKingdomChair: MushroomKingdomChair(),
+            MushroomKingdomFreeShopItem: MushroomKingdomFreeShopItem(),
+            MushroomKingdomShopBasementLeft: MushroomKingdomShopBasementLeft(),
+            MushroomKingdomShopBasementRight: MushroomKingdomShopBasementRight(),
+            MushroomKingdomWalletGuyFirstRewardLocation: MushroomKingdomWalletGuyFirstRewardLocation(),
+            MushroomKingdomWalletGuySecondRewardLocation: MushroomKingdomWalletGuySecondRewardLocation(),
+            MushroomKingdomOccupiedOutdoorGuardLocation: MushroomKingdomOccupiedOutdoorGuardLocation(),
+            MushroomKingdomOccupiedCastleToadRescueLocation: MushroomKingdomOccupiedCastleToadRescueLocation(),
+            MushroomKingdomOccupiedFamilyRescueLocation: MushroomKingdomOccupiedFamilyRescueLocation(),
+            MushroomKingdomOccupiedGuestRoomLocation: MushroomKingdomOccupiedGuestRoomLocation(),
+            MushroomKingdomBossFight: MushroomKingdomBossFight(),
+            MushroomKingdomStarPiece: MushroomKingdomStarPiece(),
+            MushroomKingdomStoreExchangeLocation: MushroomKingdomStoreExchangeLocation(),
+            MushroomKingdomInnPurchaseLocation: MushroomKingdomInnPurchaseLocation(),
+            BanditsWayFlowerJumpLocation: BanditsWayFlowerJumpLocation(),
+            BanditsWayCoin1Location: BanditsWayCoin1Location(),
+            BanditsWayCoin2Location: BanditsWayCoin2Location(),
+            BanditsWayCoin3Location: BanditsWayCoin3Location(),
+            BanditsWayDogChestLocation: BanditsWayDogChestLocation(),
+            BanditsWayPlatformsLeftChestLocation: BanditsWayPlatformsLeftChestLocation(),
+            BanditsWayPlatformsRightChestLocation: BanditsWayPlatformsRightChestLocation(),
+            BanditsWayDeadEndChestLocation: BanditsWayDeadEndChestLocation(),
+            BanditsWayBossFight: BanditsWayBossFight(),
+            BanditsWayStarPiece: BanditsWayStarPiece(),
+            BanditsWayBossFirstItemDropLocation: BanditsWayBossFirstItemDropLocation(),
+            BanditsWayBossSecondItemDropLocation: BanditsWayBossSecondItemDropLocation(),
+            KeroSewersStairRoomLeftChestLocation: KeroSewersStairRoomLeftChestLocation(),
+            KeroSewersStairRoomRightChestLocation: KeroSewersStairRoomRightChestLocation(),
+            Mimic1BossFight: Mimic1BossFight(),
+            Mimic1DropRewardLocation: Mimic1DropRewardLocation(),
+            Mimic1StarPiece: Mimic1StarPiece(),
+            Mimic1ReloadRewardLocation: Mimic1ReloadRewardLocation(),
+            KeroSewersFourRatRoomChestLocation: KeroSewersFourRatRoomChestLocation(),
+            KeroSewersBeforeBelomeLowerLocation: KeroSewersBeforeBelomeLowerLocation(),
+            KeroSewersBeforeBelomeUpperBeforeFlipLocation: KeroSewersBeforeBelomeUpperBeforeFlipLocation(),
+            KeroSewersBeforeBelomeUpperAfterFlipLocation: KeroSewersBeforeBelomeUpperAfterFlipLocation(),
+            KeroSewersBossFight: KeroSewersBossFight(),
+            KeroSewersStarPiece: KeroSewersStarPiece(),
+            MidasRiverFirstCompletionRewardLocation: MidasRiverFirstCompletionRewardLocation(),
+            MidasRiverBottomLeftCaveLocation: MidasRiverBottomLeftCaveLocation(),
+            MidasRiverBottomRightCaveLocation: MidasRiverBottomRightCaveLocation(),
+            TadpolePondCricketPieExchangeLocation: TadpolePondCricketPieExchangeLocation(),
+            TadpolePondCricketJamExchangeLocation: TadpolePondCricketJamExchangeLocation(),
+            MelodyBayFirstRewardLocation: MelodyBayFirstRewardLocation(),
+            MelodyBaySecondRewardLocation: MelodyBaySecondRewardLocation(),
+            MelodyBayThirdRewardLocation: MelodyBayThirdRewardLocation(),
+            RoseWaySwingingPlatformRoomLocation: RoseWaySwingingPlatformRoomLocation(),
+            RoseWayLeftIslandLocation: RoseWayLeftIslandLocation(),
+            RoseWayMiddleIslandLocation: RoseWayMiddleIslandLocation(),
+            RoseWayCoin1Location: RoseWayCoin1Location(),
+            RoseWayCoin2Location: RoseWayCoin2Location(),
+            RoseWayCoin3Location: RoseWayCoin3Location(),
+            RoseWayCoin4Location: RoseWayCoin4Location(),
+            RoseWayCoin5Location: RoseWayCoin5Location(),
+            RoseWayFiveChestRoomTopLocation: RoseWayFiveChestRoomTopLocation(),
+            RoseWayFiveChestRoomBottomLeftLocation: RoseWayFiveChestRoomBottomLeftLocation(),
+            RoseWayFiveChestRoomRightLocation: RoseWayFiveChestRoomRightLocation(),
+            RoseWayFiveChestRoomLeftLocation: RoseWayFiveChestRoomLeftLocation(),
+            RoseWayFiveChestRoomBottomRightLocation: RoseWayFiveChestRoomBottomRightLocation(),
+            RoseTownShopLeftChestLocation: RoseTownShopLeftChestLocation(),
+            RoseTownShopRightChestLocation: RoseTownShopRightChestLocation(),
+            RoseTownCloudRightChestLocation: RoseTownCloudRightChestLocation(),
+            RoseTownCloudLeftChestLocation: RoseTownCloudLeftChestLocation(),
+            RoseTownInnToadPrizeLocation: RoseTownInnToadPrizeLocation(),
+            RoseTownInnGazPrizeLocation: RoseTownInnGazPrizeLocation(),
+            RoseTownTreasureHouseLeftChestLocation: RoseTownTreasureHouseLeftChestLocation(),
+            RoseTownTreasureHouseRightChestLocation: RoseTownTreasureHouseRightChestLocation(),
+            RoseTownTreasureHouseMazeRewardLocation: RoseTownTreasureHouseMazeRewardLocation(),
+            RoseTownTreasureHouseUpperChestLocation: RoseTownTreasureHouseUpperChestLocation(),
+            ForestMazeFirstRoomLocation: ForestMazeFirstRoomLocation(),
+            ForestMazeFirstUndergroundExitLocation: ForestMazeFirstUndergroundExitLocation(),
+            ForestMazeUndergroundWigglerChestLocation: ForestMazeUndergroundWigglerChestLocation(),
+            ForestMazeUndergroundBottomRightTrunkChestLocation: ForestMazeUndergroundBottomRightTrunkChestLocation(),
+            ForestMazeUndergroundMiddleLeftChestLocation: ForestMazeUndergroundMiddleLeftChestLocation(),
+            ForestMazeInnerMazeEntranceLocation: ForestMazeInnerMazeEntranceLocation(),
+            ForestMazeSecretTopRightChestLocation: ForestMazeSecretTopRightChestLocation(),
+            ForestMazeSecretBottomRightChestLocation: ForestMazeSecretBottomRightChestLocation(),
+            ForestMazeSecretTopMiddleChestLocation: ForestMazeSecretTopMiddleChestLocation(),
+            ForestMazeSecretBottomMiddleChestLocation: ForestMazeSecretBottomMiddleChestLocation(),
+            ForestMazeSecretLeftChestLocation: ForestMazeSecretLeftChestLocation(),
+            ForestMazeBossFight: ForestMazeBossFight(),
+            ForestMazeStarPiece: ForestMazeStarPiece(),
+            ForestMazeCharacter: ForestMazeCharacter(),
+            PipeVaultSlidingCoinRoomBackChestLocation: PipeVaultSlidingCoinRoomBackChestLocation(),
+            PipeVaultSlidingCoinRoomMiddleChestLocation: PipeVaultSlidingCoinRoomMiddleChestLocation(),
+            PipeVaultSlidingCoinRoomFrontChestLocation: PipeVaultSlidingCoinRoomFrontChestLocation(),
+            PipeVaultSlidingCoinRoomCoin1Location: PipeVaultSlidingCoinRoomCoin1Location(),
+            PipeVaultSlidingCoinRoomCoin2Location: PipeVaultSlidingCoinRoomCoin2Location(),
+            PipeVaultSlidingCoinRoomCoin3Location: PipeVaultSlidingCoinRoomCoin3Location(),
+            PipeVaultSlidingCoinRoomCoin4Location: PipeVaultSlidingCoinRoomCoin4Location(),
+            PipeVaultSlidingCoinRoomCoin5Location: PipeVaultSlidingCoinRoomCoin5Location(),
+            PipeVaultSlidingCoinRoomCrouchItemLocation: PipeVaultSlidingCoinRoomCrouchItemLocation(),
+            PipeVaultGoombaThumpinFirstPrizeLocation: PipeVaultGoombaThumpinFirstPrizeLocation(),
+            PipeVaultGoombaThumpinSecondPrizeLocation: PipeVaultGoombaThumpinSecondPrizeLocation(),
+            PipeVaultRisingPlatformChestLocation: PipeVaultRisingPlatformChestLocation(),
+            PipeVaultChompweedChestLocation: PipeVaultChompweedChestLocation(),
+            YosterEntranceChestLocation: YosterEntranceChestLocation(),
+            YosterRacePrize1Location: YosterRacePrize1Location(),
+            YosterRacePrize2Location: YosterRacePrize2Location(),
+            YosterRacePrize3Location: YosterRacePrize3Location(),
+            BucketGirlRewardLocation: BucketGirlRewardLocation(),
+            TreasureShopItem1: TreasureShopItem1(),
+            TreasureShopItem2: TreasureShopItem2(),
+            TreasureShopItem3: TreasureShopItem3(),
+            FireworksShopItemLocation: FireworksShopItemLocation(),
+            OuterMinesTrampolineHenchmanLocation: OuterMinesTrampolineHenchmanLocation(),
+            OuterMinesLeftHenchmanLocation: OuterMinesLeftHenchmanLocation(),
+            OuterMinesRightHenchmanLocation: OuterMinesRightHenchmanLocation(),
+            OuterMinesBossPrizeLocation: OuterMinesBossPrizeLocation(),
+            OuterMinesBossFight: OuterMinesBossFight(),
+            OuterMinesStarPiece: OuterMinesStarPiece(),
+            InnerMinesTracksChestLocation: InnerMinesTracksChestLocation(),
+            InnerMinesShyguyCartLocation: InnerMinesShyguyCartLocation(),
+            InnerMinesBoxesChestLocation: InnerMinesBoxesChestLocation(),
+            InnerMinesSaveBlockChestLocation: InnerMinesSaveBlockChestLocation(),
+            InnerMinesHighUpChestLocation: InnerMinesHighUpChestLocation(),
+            InnerMinesBossFight: InnerMinesBossFight(),
+            InnerMinesStarPiece: InnerMinesStarPiece(),
+            InnerMinesCharacter: InnerMinesCharacter(),
+            BoosterPassBushLocation: BoosterPassBushLocation(),
+            BoosterPassFirstRoomLeftChestLocation: BoosterPassFirstRoomLeftChestLocation(),
+            BoosterPassFirstRoomRightChestLocation: BoosterPassFirstRoomRightChestLocation(),
+            BoosterPassSecondRoomFlowerLocation: BoosterPassSecondRoomFlowerLocation(),
+            BoosterPassSecretMiddleChestLocation: BoosterPassSecretMiddleChestLocation(),
+            BoosterPassSecretRightChestLocation: BoosterPassSecretRightChestLocation(),
+            BoosterPassSecretLeftChestLocation: BoosterPassSecretLeftChestLocation(),
+            BoosterTowerSpookumStairsLocation: BoosterTowerSpookumStairsLocation(),
+            BoosterTowerTrainRoomCreviceLocation: BoosterTowerTrainRoomCreviceLocation(),
+            BoosterTowerChestNearThwompLocation: BoosterTowerChestNearThwompLocation(),
+            BoosterTowerFallingChestLocation: BoosterTowerFallingChestLocation(),
+            BoosterTowerKnifeGuyPrizeLocation: BoosterTowerKnifeGuyPrizeLocation(),
+            BoosterTowerPortraitPrizeLocation: BoosterTowerPortraitPrizeLocation(),
+            BoosterTowerElderKeyItemLocation: BoosterTowerElderKeyItemLocation(),
+            BoosterTowerParachuteRoomChestLocation: BoosterTowerParachuteRoomChestLocation(),
+            BoosterTowerParachuteRoomCreviceLocation: BoosterTowerParachuteRoomCreviceLocation(),
+            BoosterTowerCheckerboardRightmostItemLocation: BoosterTowerCheckerboardRightmostItemLocation(),
+            BoosterTowerCheckerboardTopItemLocation: BoosterTowerCheckerboardTopItemLocation(),
+            BoosterTowerCheckerboardLeftmostItemLocation: BoosterTowerCheckerboardLeftmostItemLocation(),
+            BoosterTowerCheckerboardUpperRightItemLocation: BoosterTowerCheckerboardUpperRightItemLocation(),
+            BoosterTowerCheckerboardBottomItemLocation: BoosterTowerCheckerboardBottomItemLocation(),
+            BoosterTowerCheckerboardCoin1Location: BoosterTowerCheckerboardCoin1Location(),
+            BoosterTowerCheckerboardCoin2Location: BoosterTowerCheckerboardCoin2Location(),
+            BoosterTowerCheckerboardCoin3Location: BoosterTowerCheckerboardCoin3Location(),
+            BoosterTowerCheckerboardCoin4Location: BoosterTowerCheckerboardCoin4Location(),
+            BoosterTowerCheckerboardCoin5Location: BoosterTowerCheckerboardCoin5Location(),
+            BoosterTowerCheckerboardCoin6Location: BoosterTowerCheckerboardCoin6Location(),
+            BoosterTowerCheckerboardCoin7Location: BoosterTowerCheckerboardCoin7Location(),
+            BoosterTowerCheckerboardCoin8Location: BoosterTowerCheckerboardCoin8Location(),
+            BoosterTowerCheckerboardCoin9Location: BoosterTowerCheckerboardCoin9Location(),
+            BoosterTowerRoomKeyChestLocation: BoosterTowerRoomKeyChestLocation(),
+            BoosterTowerTopFloorLowerChestLocation: BoosterTowerTopFloorLowerChestLocation(),
+            BoosterTowerTopFloorUpperChestLocation: BoosterTowerTopFloorUpperChestLocation(),
+            BoosterTowerTopFloorCornerChestLocation: BoosterTowerTopFloorCornerChestLocation(),
+            BoosterTowerCurtainGamePrizeLocation: BoosterTowerCurtainGamePrizeLocation(),
+            BoosterTowerIndoorBossFight: BoosterTowerIndoorBossFight(),
+            BoosterTowerIndoorStarPiece: BoosterTowerIndoorStarPiece(),
+            BoosterTowerBalconyBossFight: BoosterTowerBalconyBossFight(),
+            BoosterTowerBalconyStarPiece: BoosterTowerBalconyStarPiece(),
+            BoosterHillGuaranteedItem1: BoosterHillGuaranteedItem1(),
+            BoosterHillGuaranteedItem2: BoosterHillGuaranteedItem2(),
+            BoosterHillGuaranteedItem3: BoosterHillGuaranteedItem3(),
+            BoosterHillGuaranteedItem4: BoosterHillGuaranteedItem4(),
+            BoosterHillGuaranteedItem5: BoosterHillGuaranteedItem5(),
+            BoosterHillGuaranteedItem6: BoosterHillGuaranteedItem6(),
+            BoosterHillGuaranteedItem7: BoosterHillGuaranteedItem7(),
+            BoosterHillGuaranteedItem8: BoosterHillGuaranteedItem8(),
+            BoosterHillGuaranteedItem9: BoosterHillGuaranteedItem9(),
+            BoosterHillGuaranteedItem10: BoosterHillGuaranteedItem10(),
+            BoosterHillGuaranteedItem11: BoosterHillGuaranteedItem11(),
+            BoosterHillGuaranteedItem12: BoosterHillGuaranteedItem12(),
+            BoosterHillGuaranteedItem13: BoosterHillGuaranteedItem13(),
+            BoosterHillGuaranteedItem14: BoosterHillGuaranteedItem14(),
+            BoosterHillGuaranteedItem15: BoosterHillGuaranteedItem15(),
+            BoosterHillGuaranteedItem16: BoosterHillGuaranteedItem16(),
+            MarrymoreFirstSuitePrizeLocation: MarrymoreFirstSuitePrizeLocation(),
+            MarrymoreSecondSuitePrizeLocation: MarrymoreSecondSuitePrizeLocation(),
+            MarrymoreThirdSuitePrizeLocation: MarrymoreThirdSuitePrizeLocation(),
+            MarrymoreFourthSuitePrizeLocation: MarrymoreFourthSuitePrizeLocation(),
+            MarrymoreFifthSuitePrizeLocation: MarrymoreFifthSuitePrizeLocation(),
+            MarrymoreSixthSuitePrizeLocation: MarrymoreSixthSuitePrizeLocation(),
+            MarrymoreBigTipLocation: MarrymoreBigTipLocation(),
+            MarrymoreHotelChestLocation: MarrymoreHotelChestLocation(),
+            MarrymoreSnifit1Location: MarrymoreSnifit1Location(),
+            MarrymoreSnifit2Location: MarrymoreSnifit2Location(),
+            MarrymoreSnifit3Location: MarrymoreSnifit3Location(),
+            MarrymoreAltarHeadLocation: MarrymoreAltarHeadLocation(),
+            MarrymoreBossFight: MarrymoreBossFight(),
+            MarrymoreBossFightStarPiece: MarrymoreBossFightStarPiece(),
+            MarrymoreCharacter: MarrymoreCharacter(),
+            StarHillStarPiece: StarHillStarPiece(),
+            FrogDiscipleLocation1: FrogDiscipleLocation1(),
+            FrogDiscipleLocation2: FrogDiscipleLocation2(),
+            FrogDiscipleLocation3: FrogDiscipleLocation3(),
+            FrogDiscipleLocation4: FrogDiscipleLocation4(),
+            FrogDiscipleLocation5: FrogDiscipleLocation5(),
+            SeasideBeachBossFight: SeasideBeachBossFight(),
+            SeasideBeachStarPiece: SeasideBeachStarPiece(),
+            SeasideTownBossPrizeLocation: SeasideTownBossPrizeLocation(),
+            SeasideTownShedRescueLocation: SeasideTownShedRescueLocation(),
+            SeaStarslapRoomChestLocation: SeaStarslapRoomChestLocation(),
+            SeaSaveRoomBackChestLocation: SeaSaveRoomBackChestLocation(),
+            SeaSaveRoomMiddleChestLocation: SeaSaveRoomMiddleChestLocation(),
+            SeaSaveRoomFrontChestLocation: SeaSaveRoomFrontChestLocation(),
+            SeaWhirlpoolChestLocation: SeaWhirlpoolChestLocation(),
+            ShipRatStairsChestLocation: ShipRatStairsChestLocation(),
+            ShipRatStairsBoxesLocation: ShipRatStairsBoxesLocation(),
+            ShipTroopaPuzzleLocation: ShipTroopaPuzzleLocation(),
+            ShipTrampolinePuzzle: ShipTrampolinePuzzle(),
+            Ship3DMazePuzzle: Ship3DMazePuzzle(),
+            ShipShopChestLocation: ShipShopChestLocation(),
+            ShipCoinSnakePuzzleLocation: ShipCoinSnakePuzzleLocation(),
+            ShipCannonballPuzzle: ShipCannonballPuzzle(),
+            ShipBarrelPuzzle: ShipBarrelPuzzle(),
+            ShipPasswordBossFight: ShipPasswordBossFight(),
+            ShipPasswordStarPiece: ShipPasswordStarPiece(),
+            EarlyInnerShipLeftChestLocation: EarlyInnerShipLeftChestLocation(),
+            EarlyInnerShipRightChestLocation: EarlyInnerShipRightChestLocation(),
+            InnerShipCloneRoomChestLocation: InnerShipCloneRoomChestLocation(),
+            InnerShipBehindBoxesChestLocation: InnerShipBehindBoxesChestLocation(),
+            InnerShipSaveRoomLeftChestLocation: InnerShipSaveRoomLeftChestLocation(),
+            InnerShipSaveRoomRightChestLocation: InnerShipSaveRoomRightChestLocation(),
+            Mimic2DropRewardLocation: Mimic2DropRewardLocation(),
+            Mimic2BossFight: Mimic2BossFight(),
+            Mimic2StarPiece: Mimic2StarPiece(),
+            Mimic2ReloadRewardLocation: Mimic2ReloadRewardLocation(),
+            InnerShipFirstUnderwaterRoomBottomItemLocation: InnerShipFirstUnderwaterRoomBottomItemLocation(),
+            InnerShipFirstUnderwaterRoomTopItemLocation: InnerShipFirstUnderwaterRoomTopItemLocation(),
+            InnerShipFirstUnderwaterRoomLeftItemLocation: InnerShipFirstUnderwaterRoomLeftItemLocation(),
+            InnerShipFirstUnderwaterRoomMiddleItemLocation: InnerShipFirstUnderwaterRoomMiddleItemLocation(),
+            InnerShipSecretRoomChestLocation: InnerShipSecretRoomChestLocation(),
+            InnerShipPoolRoomLocation: InnerShipPoolRoomLocation(),
+            InnerShipBeforeBossChestLocation: InnerShipBeforeBossChestLocation(),
+            ShipFinalBossFight: ShipFinalBossFight(),
+            ShipFinalStarPiece: ShipFinalStarPiece(),
+            LandsEndRisingPlatformChestLocation: LandsEndRisingPlatformChestLocation(),
+            LandsEndChowPitStaticChestLocation: LandsEndChowPitStaticChestLocation(),
+            LandsEndChowPitMovingChestLocation: LandsEndChowPitMovingChestLocation(),
+            LandsEndBeeTowerChestLocation: LandsEndBeeTowerChestLocation(),
+            LandsEndGrottoEntranceChestLocation: LandsEndGrottoEntranceChestLocation(),
+            LandsEndGrottoCornerChestLocation: LandsEndGrottoCornerChestLocation(),
+            LandsEndGrottoEndChestLocation: LandsEndGrottoEndChestLocation(),
+            LandsEndUndergroundSaveBoxChestLocation: LandsEndUndergroundSaveBoxChestLocation(),
+            LandsEndFirstPurchasableChestLocation: LandsEndFirstPurchasableChestLocation(),
+            LandsEndSecondPurchasableChestLocation: LandsEndSecondPurchasableChestLocation(),
+            TroopaClimbSub12PrizeLocation: TroopaClimbSub12PrizeLocation(),
+            LandsEndCloudBoss: LandsEndCloudBoss(),
+            LandsEndCloudStarPiece: LandsEndCloudStarPiece(),
+            BelomeTempleFortuneTellerLocation: BelomeTempleFortuneTellerLocation(),
+            BelomeTempleLMRChestLocation: BelomeTempleLMRChestLocation(),
+            BelomeTempleLRMChestLocation: BelomeTempleLRMChestLocation(),
+            BelomeTempleRLMChestLocation: BelomeTempleRLMChestLocation(),
+            BelomeTempleRMLChestLocation: BelomeTempleRMLChestLocation(),
+            BelomeBeforeBossRightChestLocation: BelomeBeforeBossRightChestLocation(),
+            BelomeBeforeBossLowerLeftChestLocation: BelomeBeforeBossLowerLeftChestLocation(),
+            BelomeBeforeBossMiddleChestLocation: BelomeBeforeBossMiddleChestLocation(),
+            BelomeBeforeBossUpperLeftChestLocation: BelomeBeforeBossUpperLeftChestLocation(),
+            BelomeTempleTreasuryUpperCornerLeftItemLocation: BelomeTempleTreasuryUpperCornerLeftItemLocation(),
+            BelomeTempleTreasuryUpperCornerLowerLeftItemLocation: BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(),
+            BelomeTempleTreasuryUpperCornerTopItemLocation: BelomeTempleTreasuryUpperCornerTopItemLocation(),
+            BelomeTempleTreasuryTopmostItemLocation: BelomeTempleTreasuryTopmostItemLocation(),
+            BelomeTempleTreasuryMidLeftItemLocation: BelomeTempleTreasuryMidLeftItemLocation(),
+            BelomeTempleTreasuryAlmostTopItemLocation: BelomeTempleTreasuryAlmostTopItemLocation(),
+            BelomeTempleTreasuryAlmostLeftmostItemLocation: BelomeTempleTreasuryAlmostLeftmostItemLocation(),
+            BelomeTempleTreasuryOuterUpperRightItemLocation: BelomeTempleTreasuryOuterUpperRightItemLocation(),
+            BelomeTempleTreasuryInnerUpperRightItemLocation: BelomeTempleTreasuryInnerUpperRightItemLocation(),
+            BelomeTempleTreasuryLowestItemsRightLocation: BelomeTempleTreasuryLowestItemsRightLocation(),
+            BelomeTempleTreasuryLowerOuterBottomRightItemLocation: BelomeTempleTreasuryLowerOuterBottomRightItemLocation(),
+            BelomeTempleTreasuryRightmostItemLocation: BelomeTempleTreasuryRightmostItemLocation(),
+            BelomeTempleTreasuryBottomLeftCornerItemLocation: BelomeTempleTreasuryBottomLeftCornerItemLocation(),
+            BelomeTempleTreasuryLowestItemsLeftLocation: BelomeTempleTreasuryLowestItemsLeftLocation(),
+            BelomeTempleTreasuryUpperOuterBottomRightItemLocation: BelomeTempleTreasuryUpperOuterBottomRightItemLocation(),
+            TempleBossFight: TempleBossFight(),
+            TempleBossFightStarPiece: TempleBossFightStarPiece(),
+            MonstroEntranceLocation: MonstroEntranceLocation(),
+            MonstroThwompItemLocation: MonstroThwompItemLocation(),
+            DojoFirstFight: DojoFirstFight(),
+            DojoFirstFightStarPiece: DojoFirstFightStarPiece(),
+            DojoSecondFight: DojoSecondFight(),
+            DojoSecondFightStarPiece: DojoSecondFightStarPiece(),
+            DojoThirdFight: DojoThirdFight(),
+            DojoThirdFightStarPiece: DojoThirdFightStarPiece(),
+            DojoFourthFight: DojoFourthFight(),
+            DojoFourthFightStarPiece: DojoFourthFightStarPiece(),
+            MonstroDojoClearRewardLocation: MonstroDojoClearRewardLocation(),
+            MonstroSealedDoorBossFight: MonstroSealedDoorBossFight(),
+            MonstroSealedDoorStarPiece: MonstroSealedDoorStarPiece(),
+            MonstroSealedDoorClearRewardLocation: MonstroSealedDoorClearRewardLocation(),
+            MonstroFirstSuperJumpRewardLocation: MonstroFirstSuperJumpRewardLocation(),
+            MonstroSecondSuperJumpRewardLocation: MonstroSecondSuperJumpRewardLocation(),
+            MonstroFlagExchangeLocation: MonstroFlagExchangeLocation(),
+            BeanValleyFirstDeadEndLocation: BeanValleyFirstDeadEndLocation(),
+            BeanValleyFirstProgressChestLocation: BeanValleyFirstProgressChestLocation(),
+            BeanValleyLeftPiranhaPipeLocation: BeanValleyLeftPiranhaPipeLocation(),
+            BeanValleyBottomLeftPiranhaPipeLocation: BeanValleyBottomLeftPiranhaPipeLocation(),
+            BeanValleyBottomRightPiranhaPipeUpperLocation: BeanValleyBottomRightPiranhaPipeUpperLocation(),
+            BeanValleyBottomRightPiranhaPipeLowerLocation: BeanValleyBottomRightPiranhaPipeLowerLocation(),
+            BeanValleyRightPipeLeftChestLocation: BeanValleyRightPipeLeftChestLocation(),
+            Mimic3BossFight: Mimic3BossFight(),
+            Mimic3StarPiece: Mimic3StarPiece(),
+            BeanValleyRightPipeRightChestLocation: BeanValleyRightPipeRightChestLocation(),
+            BeanValleyRightPipeUnderStairsLocation: BeanValleyRightPipeUnderStairsLocation(),
+            BeanValleyRightPipeAboveGroundLocation: BeanValleyRightPipeAboveGroundLocation(),
+            BeanValleyPlanterBossFight: BeanValleyPlanterBossFight(),
+            BeanValleyPlanterStarPiece: BeanValleyPlanterStarPiece(),
+            BeanValleyBossNoteLocation: BeanValleyBossNoteLocation(),
+            BeanstalkLowestChestLocation: BeanstalkLowestChestLocation(),
+            BeanValley1stRoomFloatingItemLocation: BeanValley1stRoomFloatingItemLocation(),
+            BeanValley1stRoomMiddleCoinLocation: BeanValley1stRoomMiddleCoinLocation(),
+            BeanValley1stRoomUpperCoinLocation: BeanValley1stRoomUpperCoinLocation(),
+            BeanValley1stRoomLowerCoinLocation: BeanValley1stRoomLowerCoinLocation(),
+            Beanstalk2ndRoomFloatingItemLocation: Beanstalk2ndRoomFloatingItemLocation(),
+            Beanstalk2ndRoomCoin1Location: Beanstalk2ndRoomCoin1Location(),
+            Beanstalk2ndRoomCoin2Location: Beanstalk2ndRoomCoin2Location(),
+            Beanstalk2ndRoomCoin3Location: Beanstalk2ndRoomCoin3Location(),
+            BeanValleyEastBeanstalkCoin1Location: BeanValleyEastBeanstalkCoin1Location(),
+            BeanValleyEastBeanstalkCoin2Location: BeanValleyEastBeanstalkCoin2Location(),
+            BeanValleyEastBeanstalkCoin3Location: BeanValleyEastBeanstalkCoin3Location(),
+            BeanValleyEastBeanstalkCoin4Location: BeanValleyEastBeanstalkCoin4Location(),
+            BeanValleyEastBeanstalkCoin5Location: BeanValleyEastBeanstalkCoin5Location(),
+            BeanValleyWestBeanstalkCoin1Location: BeanValleyWestBeanstalkCoin1Location(),
+            BeanValleyWestBeanstalkCoin2Location: BeanValleyWestBeanstalkCoin2Location(),
+            BeanValleyWestBeanstalkCoin3Location: BeanValleyWestBeanstalkCoin3Location(),
+            BeanValleyWestBeanstalkFloatingItemLocation: BeanValleyWestBeanstalkFloatingItemLocation(),
+            BeanstalkUpperCloudLeftChestLocation: BeanstalkUpperCloudLeftChestLocation(),
+            BeanstalkUpperCloudRightChestLocation: BeanstalkUpperCloudRightChestLocation(),
+            BeanstalkLowerCloudLeftChestLocation: BeanstalkLowerCloudLeftChestLocation(),
+            BeanstalkLowerCloudRightChestLocation: BeanstalkLowerCloudRightChestLocation(),
+            CasinoGrateGuyPrizeLocation: CasinoGrateGuyPrizeLocation(),
+            NimbusShopChestLocation: NimbusShopChestLocation(),
+            NimbusInnDreamPrize1Location: NimbusInnDreamPrize1Location(),
+            NimbusInnDreamPrize2Location: NimbusInnDreamPrize2Location(),
+            NimbusCastleStatueGamePrizeLocation: NimbusCastleStatueGamePrizeLocation(),
+            StatueRoomBossFight: StatueRoomBossFight(),
+            StatueRoomStarPiece: StatueRoomStarPiece(),
+            NimbusCastleOuterPrisonCellarRightNPCLocation: NimbusCastleOuterPrisonCellarRightNPCLocation(),
+            NimbusCastleOuterPrisonCellarLeftNPCLocation: NimbusCastleOuterPrisonCellarLeftNPCLocation(),
+            NimbusCastleBusinessCentreOccupiedChestLocation: NimbusCastleBusinessCentreOccupiedChestLocation(),
+            NimbusCastleCornerBridgeChestLocation: NimbusCastleCornerBridgeChestLocation(),
+            NimbusCastleOutOfBoundsChestLocation: NimbusCastleOutOfBoundsChestLocation(),
+            NimbusCastleAboveJawfulChestLocation: NimbusCastleAboveJawfulChestLocation(),
+            NimbusCastleSingleGoldBirdChestLocation: NimbusCastleSingleGoldBirdChestLocation(),
+            NimbusCastleTwoLevelLowerChestLocation: NimbusCastleTwoLevelLowerChestLocation(),
+            GiantEggBossFight: GiantEggBossFight(),
+            GiantEggStarPiece: GiantEggStarPiece(),
+            NimbusCastleGiantEggRewardLocation: NimbusCastleGiantEggRewardLocation(),
+            NimbusCastleTwoLevelUpperChestLocation: NimbusCastleTwoLevelUpperChestLocation(),
+            NimbusCastleBackHallwayOccupiedChestLocation: NimbusCastleBackHallwayOccupiedChestLocation(),
+            NimbusFinalBossFight: NimbusFinalBossFight(),
+            NimbusFinalStarPiece: NimbusFinalStarPiece(),
+            NimbusCastleBackHallwayLiberatedChestLocation: NimbusCastleBackHallwayLiberatedChestLocation(),
+            NimbusCastleBusinessCentreLiberatedChestLocation: NimbusCastleBusinessCentreLiberatedChestLocation(),
+            NimbusLandRightSideLocation: NimbusLandRightSideLocation(),
+            NimbusLandCrocoItemLocation: NimbusLandCrocoItemLocation(),
+            NimbusLandInnerCellarLocation: NimbusLandInnerCellarLocation(),
+            VolcanoLavaCoveLeftChestLocation: VolcanoLavaCoveLeftChestLocation(),
+            VolcanoLavaCoveRightChestLocation: VolcanoLavaCoveRightChestLocation(),
+            VolcanoEarlyProgressChestLeftLocation: VolcanoEarlyProgressChestLeftLocation(),
+            VolcanoEarlyProgressChestRightLocation: VolcanoEarlyProgressChestRightLocation(),
+            VolcanoEarlyProgressThirdChestLocation: VolcanoEarlyProgressThirdChestLocation(),
+            VolcanoLavaPoolLocation: VolcanoLavaPoolLocation(),
+            VolcanoReverseRecoilItemLocation: VolcanoReverseRecoilItemLocation(),
+            VolcanoRightDonutItemLocation: VolcanoRightDonutItemLocation(),
+            VolcanoLeftDonutItemLocation: VolcanoLeftDonutItemLocation(),
+            VolcanoSaveRoomLowerChestLocation: VolcanoSaveRoomLowerChestLocation(),
+            VolcanoSaveRoomUpperChestLocation: VolcanoSaveRoomUpperChestLocation(),
+            VolcanoShopEntranceChestLocation: VolcanoShopEntranceChestLocation(),
+            VolcanoBridgeBossFight: VolcanoBridgeBossFight(),
+            VolcanoBridgeStarPiece: VolcanoBridgeStarPiece(),
+            VolcanoExitBossFight: VolcanoExitBossFight(),
+            VolcanoExitStarPiece: VolcanoExitStarPiece(),
+            KeepDarkRoomChestLocation: KeepDarkRoomChestLocation(),
+            KeepFirstCrocoShopLeftChestLocation: KeepFirstCrocoShopLeftChestLocation(),
+            KeepFirstCrocoShopRightChestLocation: KeepFirstCrocoShopRightChestLocation(),
+            KeepInvisibleBridgeFrontChestLocation: KeepInvisibleBridgeFrontChestLocation(),
+            KeepInvisibleBridgeRightChestLocation: KeepInvisibleBridgeRightChestLocation(),
+            KeepInvisibleBridgeLeftChestLocation: KeepInvisibleBridgeLeftChestLocation(),
+            KeepInvisibleBridgeBackChestLocation: KeepInvisibleBridgeBackChestLocation(),
+            KeepInvisibleBridgeCoin1Location: KeepInvisibleBridgeCoin1Location(),
+            KeepInvisibleBridgeCoin2Location: KeepInvisibleBridgeCoin2Location(),
+            KeepInvisibleBridgeCoin3Location: KeepInvisibleBridgeCoin3Location(),
+            KeepInvisibleBridgeCoin4Location: KeepInvisibleBridgeCoin4Location(),
+            KeepXYPlatformsBackLeftChestLocation: KeepXYPlatformsBackLeftChestLocation(),
+            KeepXYPlatformsFrontLeftChestLocation: KeepXYPlatformsFrontLeftChestLocation(),
+            KeepXYPlatformsFrontRightChestLocation: KeepXYPlatformsFrontRightChestLocation(),
+            KeepXYPlatformsBackRightChestLocation: KeepXYPlatformsBackRightChestLocation(),
+            KeepElevatorRoomChestLocation: KeepElevatorRoomChestLocation(),
+            KeepCannonballRoomFrontRightChestLocation: KeepCannonballRoomFrontRightChestLocation(),
+            KeepCannonballRoomBackChestLocation: KeepCannonballRoomBackChestLocation(),
+            KeepCannonballFrontLeftChestLocation: KeepCannonballFrontLeftChestLocation(),
+            KeepCannonballMidRightChestLocation: KeepCannonballMidRightChestLocation(),
+            KeepCannonballMidLeftChestLocation: KeepCannonballMidLeftChestLocation(),
+            KeepCannonballCoin1Location: KeepCannonballCoin1Location(),
+            KeepCannonballCoin2Location: KeepCannonballCoin2Location(),
+            KeepCannonballCoin3Location: KeepCannonballCoin3Location(),
+            KeepCannonballCoin4Location: KeepCannonballCoin4Location(),
+            KeepCannonballCoin5Location: KeepCannonballCoin5Location(),
+            KeepCannonballCoin6Location: KeepCannonballCoin6Location(),
+            KeepCannonballCoin7Location: KeepCannonballCoin7Location(),
+            KeepCannonballCoin8Location: KeepCannonballCoin8Location(),
+            KeepRotatingPlatformsFrontChestLocation: KeepRotatingPlatformsFrontChestLocation(),
+            KeepRotatingPlatformsFrontMidLeftChestLocation: KeepRotatingPlatformsFrontMidLeftChestLocation(),
+            KeepRotatingPlatformsBackMidRightChestLocation: KeepRotatingPlatformsBackMidRightChestLocation(),
+            KeepRotatingPlatformsFrontMidRightChestLocation: KeepRotatingPlatformsFrontMidRightChestLocation(),
+            KeepRotatingPlatformsBackMidLeftChestLocation: KeepRotatingPlatformsBackMidLeftChestLocation(),
+            KeepRotatingPlatformsBackChestLocation: KeepRotatingPlatformsBackChestLocation(),
+            ObstacleCourseFinalFight: ObstacleCourseFinalFight(),
+            ObstacleCourseFinalFightStarPiece: ObstacleCourseFinalFightStarPiece(),
+            KeepDoorRewardChest1Location: KeepDoorRewardChest1Location(),
+            KeepDoorRewardChest2Location: KeepDoorRewardChest2Location(),
+            KeepDoorRewardChest3Location: KeepDoorRewardChest3Location(),
+            KeepDoorRewardChest4Location: KeepDoorRewardChest4Location(),
+            KeepDoorRewardChest5Location: KeepDoorRewardChest5Location(),
+            KeepDoorRewardChest6Location: KeepDoorRewardChest6Location(),
+            KeepAfterObstaclesBossFight: KeepAfterObstaclesBossFight(),
+            KeepAfterObstaclesStarPiece: KeepAfterObstaclesStarPiece(),
+            KeepAfterObstaclesBossChestLocation: KeepAfterObstaclesBossChestLocation(),
+            KeepChandelierBossFight: KeepChandelierBossFight(),
+            KeepChandelierStarPiece: KeepChandelierStarPiece(),
+            KeepFinalBossFight: KeepFinalBossFight(),
+            KeepFinalStarPiece: KeepFinalStarPiece(),
+            OuterFactorySaveRoomChestLocation: OuterFactorySaveRoomChestLocation(),
+            FactoryBoltPlatformsChestLocation: FactoryBoltPlatformsChestLocation(),
+            FactoryEntranceBossFight: FactoryEntranceBossFight(),
+            FactoryEntranceStarPiece: FactoryEntranceStarPiece(),
+            FactoryAxemConveyorsChestLocation: FactoryAxemConveyorsChestLocation(),
+            FactoryTreasurePitBackChestLocation: FactoryTreasurePitBackChestLocation(),
+            FactoryTreasurePitFrontChestLocation: FactoryTreasurePitFrontChestLocation(),
+            FactoryBigConveyorRoomFirstChestLocation: FactoryBigConveyorRoomFirstChestLocation(),
+            FactoryBigConveyorRoomSecondChestLocation: FactoryBigConveyorRoomSecondChestLocation(),
+            FactoryBehindNinjasRightChestLocation: FactoryBehindNinjasRightChestLocation(),
+            FactoryBehindNinjasLeftChestLocation: FactoryBehindNinjasLeftChestLocation(),
+            FactoryTransitionBossFight: FactoryTransitionBossFight(),
+            FactoryTransitionStarPiece: FactoryTransitionStarPiece(),
+            InnerFactoryFirstFight: InnerFactoryFirstFight(),
+            InnerFactoryFirstFightStarPiece: InnerFactoryFirstFightStarPiece(),
+            InnerFactoryToadGiftLocation: InnerFactoryToadGiftLocation(),
+            InnerFactorySecondFight: InnerFactorySecondFight(),
+            InnerFactorySecondFightStarPiece: InnerFactorySecondFightStarPiece(),
+            InnerFactoryThirdFight: InnerFactoryThirdFight(),
+            InnerFactoryThirdFightStarPiece: InnerFactoryThirdFightStarPiece(),
+            InnerFactoryFourthFight: InnerFactoryFourthFight(),
+            InnerFactoryFourthFightStarPiece: InnerFactoryFourthFightStarPiece(),
+            FinalBossFight: FinalBossFight(),
+            FinalBossFightStarPiece: FinalBossFightStarPiece(),
+            MarioSpell1: MarioSpell1(),
+            MarioSpell2: MarioSpell2(),
+            MarioSpell3: MarioSpell3(),
+            MarioSpell4: MarioSpell4(),
+            MarioSpell5: MarioSpell5(),
+            MarioSpell6: MarioSpell6(),
+            MallowSpell1: MallowSpell1(),
+            MallowSpell2: MallowSpell2(),
+            MallowSpell3: MallowSpell3(),
+            MallowSpell4: MallowSpell4(),
+            MallowSpell5: MallowSpell5(),
+            MallowSpell6: MallowSpell6(),
+            GenoSpell1: GenoSpell1(),
+            GenoSpell2: GenoSpell2(),
+            GenoSpell3: GenoSpell3(),
+            GenoSpell4: GenoSpell4(),
+            GenoSpell5: GenoSpell5(),
+            GenoSpell6: GenoSpell6(),
+            BowserSpell1: BowserSpell1(),
+            BowserSpell2: BowserSpell2(),
+            BowserSpell3: BowserSpell3(),
+            BowserSpell4: BowserSpell4(),
+            BowserSpell5: BowserSpell5(),
+            BowserSpell6: BowserSpell6(),
+            ToadstoolSpell1: ToadstoolSpell1(),
+            ToadstoolSpell2: ToadstoolSpell2(),
+            ToadstoolSpell3: ToadstoolSpell3(),
+            ToadstoolSpell4: ToadstoolSpell4(),
+            ToadstoolSpell5: ToadstoolSpell5(),
+            ToadstoolSpell6: ToadstoolSpell6(),
+        }
+
+        # Optionally include remake content.
+        if self.settings.get_flag(Remake).enabled:
+            self.locations = {
+                **self.locations,
+                PostgameVoucherLocation: PostgameVoucherLocation(),
+                MushroomWayLeftItemRemake: MushroomWayLeftItemRemake(),
+                MushroomWayRightItemRemake: MushroomWayRightItemRemake(),
+                InnerMinesPostgameBossFight: InnerMinesPostgameBossFight(),
+                InnerMinesPostgameStarPiece: InnerMinesPostgameStarPiece(),
+                InnerMinesPostgameDrop: InnerMinesPostgameDrop(),
+                BoosterTowerIndoorBossFightRemake: BoosterTowerIndoorBossFightRemake(),
+                BoosterTowerIndoorStarPieceRemake: BoosterTowerIndoorStarPieceRemake(),
+                BoosterTowerRemakeBossFightPrizeLocation: BoosterTowerRemakeBossFightPrizeLocation(),
+                MarrymoreBossFightRemake: MarrymoreBossFightRemake(),
+                MarrymoreBossFightStarPieceRemake: MarrymoreBossFightStarPieceRemake(),
+                MarrymoreBossFightRemakeItemDrop: MarrymoreBossFightRemakeItemDrop(),
+                ShipPostgameBossFight: ShipPostgameBossFight(),
+                ShipPostgameFightItemDrop: ShipPostgameFightItemDrop(),
+                ShipPostgameStarPiece: ShipPostgameStarPiece(),
+                TempleBossFightPostgame: TempleBossFightPostgame(),
+                TempleBossFightStarPiecePostgame: TempleBossFightStarPiecePostgame(),
+                TemplePostgameFightItemDrop: TemplePostgameFightItemDrop(),
+                DojoFifthFight: DojoFifthFight(),
+                DojoFifthFightStarPiece: DojoFifthFightStarPiece(),
+                MonstroDojoPostgameClearRewardLocation: MonstroDojoPostgameClearRewardLocation(),
+                MonstroSealedDoorBossFightPostgame: MonstroSealedDoorBossFightPostgame(),
+                MonstroSealedDoorStarPiecePostgame: MonstroSealedDoorStarPiecePostgame(),
+                MonstroSealedDoorClearRewardLocationPostgame: MonstroSealedDoorClearRewardLocationPostgame(),
+                LandsEndCaveSideRemake: LandsEndCaveSideRemake(),
+            }
+            # Checks for postgame-unlocking bosses by default expect an impossible value.
+            # Enabling the remake flag sets it to the correct value, 7.
+            cast(CompareVarToConst, self.event_scripts.get_script_by_id("postgame_progress_checker_1")).set_value(7)
+            cast(CompareVarToConst, self.event_scripts.get_script_by_id("postgame_progress_checker_2")).set_value(7)
+           
+        invisible_item_pool = [
+            MariosPadBedFlag,
+            RoseTownSignFlag,
+            YosterIsleGoalFlag,
+            MariosPadSteamwhistleFlag,
+            MariosPadLanternFlag,
+            MariosPadHatFlag,
+            MushroomWayTreeFlag,
+            MushroomKingdomSignFlag,
+            MushroomKingdomEmptyHouseFlag,
+            ChancellorThroneFlag,
+            BanditsWayFlowerFlag,
+            KeroStairsFlag,
+            KeroGateFlag,
+            MidasTreesFlag,
+            TadpoleCabinetFlag,
+            RoseWayDirtPatchFlag,
+            RoseTownHydrantFlag,
+            RoseTownSinkFlag,
+            RoseTownBowserFlag,
+            RoseTownGardenerHydrantFlag,
+            RoseTownGardenerBucketFlag,
+            RoseTownGardenerLeafFlag,
+            ForestMazeSecretStumpFlag,
+            ForestMazeSecretMushroomsFlag,
+            ForestMazeSecretWigglerFlag,
+            PipeVaultExteriorFlag,
+            PipeVaultRedPipeFlag,
+            YosterIsleHutFlag,
+            MolevilleHydrantFlag,
+            MolevilleMountainBushFlag,
+            MolevilleBedFlag,
+            MolevilleMinesArrowsFlag,
+            MolevilleMinesCeilingFlag,
+            MolevilleMinesEntryFlag,
+            BoosterPassCornerBushFlag,
+            BoosterTowerExteriorSignFlag,
+            BoosterTowerDeskFlag,
+            BoosterTowerMasherRoomFlag,
+            BoosterTowerCurtainFlag,
+            BoosterTowerThwompInvisibleFlag,
+            BoosterTowerBrokenFrameFlag,
+            BoosterTowerBeetleCageFlag,
+            BoosterTowerToyBoxFlag,
+            MarrymoreOutsideCrateFlag,
+            MarrymoreHallwayFlag,
+            MarrymoreSuiteBedFlag,
+            MarrymoreKitchenFlag,
+            MarrymoreFireplaceFlag,
+            MarrymoreOrganFlag,
+            MarrymoreAltarFlag,
+            StarHillNorthStarFlag,
+            SeasideTownAnchorFlag,
+            SeasideTownHydrantFlag,
+            SeasideTownBucketFlag,
+            SeasideTownFlowersFlag,
+            SeasideTownShedBoxFlag,
+            SeaArrowFlag,
+            SeaBoxesFlag,
+            SeaStalagnateFlag,
+            SeaUnderwaterSailFlag,
+            ShipBarrelPileFlag,
+            ShipDoorMarkerFlag,
+            ShipButtonFlag,
+            ShipSwitchFlag,
+            LandsEndPlatformFlag,
+            LandsEndCannonFlag,
+            LandsEndArrowFlag,
+            LandsEndHillFlag,
+            LandsEndTwoHillFlag,
+            LandsEndStalagmiteFlag,
+            LandsEndCliffBushFlag,
+            LandsEndSignFlag,
+            DojoBonsaiFlag,
+            MonstroEntranceSignFlag,
+            MonstroBatFlag,
+            MonstroFanFlag,
+            MonstroShellFlag,
+            BeanValleyPipeFlag,
+            BeanValleyBeanstalkBlockFlag,
+            CasinoBellFlag,
+            NimbusGoldGoombaFlag,
+            NimbusInnLobbyFlag,
+            NimbusPlantFlag,
+            NimbusBirdFlag,
+            NimbusHotSpringsFlag,
+            VolcanoShipsFlag,
+            KeepPostObstacleBossRoomFlag,
+            KeepThwompFlag,
+            FactoryCanopyFlag,
+            FactoryLugnutFlag,
+            FactoryTrampolineFlag,
+            FactoryButtonFlag,
+        ]
+
+        for i in range (0, 3):
+            if not self.settings.invisible_flags_setting:
+                self.locations[invisible_item_pool[i]] = invisible_item_pool[i](i)
+            else:
+                c = random.choice(invisible_item_pool)
+                self.locations[c] = c(i)
+
+        
+        # Perform progression gating setup tasks here
+
+        if self.settings.get_flag(KeroSewersGating).value != KeroSewersGating.OPEN:
+            cast(RoomObject, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE].get_npc_by_target_id(NPC_0)).set_visible(True)
+            cast(RoomObject, self.rooms._rooms[R333_KERO_SEWERS_ENTRANCE].get_npc_by_target_id(NPC_1)).set_visible(True)
+
+        # todo: bake boss hunts into writing event 353
+            
     def get_patch(self) -> Patch:
         patch = Patch()
 
@@ -518,7 +962,7 @@ class GameWorld:
             patches = animation_bank.render()
             for p in patches:
                 patch.add_data(p[0], p[1])
-        
+
         # Event scripts patch
         for event_script_bank in self.event_scripts.banks:
             patch.add_data(event_script_bank.start, event_script_bank.render())
@@ -551,7 +995,9 @@ class GameWorld:
         # Expand key item inventory size
         patch.add_data(0xC305, 0x20)
         patch.add_data(0xC37F, 0x20)
-        patch.add_data(0xC3B5, 0x20) # TODO might need to be larger than 0x20, recount key items
+        patch.add_data(
+            0xC3B5, 0x20
+        )  # TODO might need to be larger than 0x20, recount key items
         patch.add_data(0xC302, [0xF0, 0xF8])
         patch.add_data(0xC37C, [0xF0, 0xF8])
         patch.add_data(0xC3B2, [0xF0, 0xF8])
@@ -560,11 +1006,26 @@ class GameWorld:
         patch.add_data(0x2BCA1, [0xF0, 0xF8, 0x7F])
         patch.add_data(0x2BCB6, [0xF0, 0xF8, 0x7F])
         patch.add_data(0x353080, [0xF0, 0xF8, 0x7F])
-        
+
         # Postgame weapon palettes
-        patch.add_data(0x25894C, bytes.fromhex("7B 37 BD 33 39 33 F7 2E F7 2A F7 22 31 26 52 22 DE 53 10 1E 8C 15 4A 15 08 11 C6 0C 63 0C"))
-        patch.add_data(0x25896A, bytes.fromhex("BD 6B BD 6B 5B 47 39 3B 95 1A D7 1E 74 1A EF 15 6C 0D 09 09 A6 04 A6 04 84 04 FF 7B 63 0C"))
-        patch.add_data(0x25DEE4, bytes.fromhex("FF 7F F5 7F EA 7F E0 7F 40 7F 80 7E E0 7D 20 7D 00 69 C0 58 A0 44 60 30 40 20 00 0C 00 00"))
+        patch.add_data(
+            0x25894C,
+            bytes.fromhex(
+                "7B 37 BD 33 39 33 F7 2E F7 2A F7 22 31 26 52 22 DE 53 10 1E 8C 15 4A 15 08 11 C6 0C 63 0C"
+            ),
+        )
+        patch.add_data(
+            0x25896A,
+            bytes.fromhex(
+                "BD 6B BD 6B 5B 47 39 3B 95 1A D7 1E 74 1A EF 15 6C 0D 09 09 A6 04 A6 04 84 04 FF 7B 63 0C"
+            ),
+        )
+        patch.add_data(
+            0x25DEE4,
+            bytes.fromhex(
+                "FF 7F F5 7F EA 7F E0 7F 40 7F 80 7E E0 7D 20 7D 00 69 C0 58 A0 44 60 30 40 20 00 0C 00 00"
+            ),
+        )
 
         # TODO: make these conditional based on a flag
         # hold B to advance

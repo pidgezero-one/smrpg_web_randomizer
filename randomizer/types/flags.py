@@ -6,6 +6,7 @@ from ..types.spell import CharacterSpell
 from ..data.allies.allies import ally_collection
 from ..progression.prizes import ALL_BOSS_FIGHTS, BossFightPrize
 from .base import CategorizationOption
+from copy import deepcopy
 
 
 class FlagError(ValueError):
@@ -52,7 +53,7 @@ class Flag:
 
 
 # TypeVars for generic flag classes
-T = TypeVar('T', bound=CategorizationOption)
+T = TypeVar("T", bound=CategorizationOption)
 
 
 class CategorizationFlag(Flag, Generic[T]):
@@ -91,6 +92,16 @@ class CategorizationFlag(Flag, Generic[T]):
     def reset(self) -> None:
         self._options = self.default.copy()
 
+    def __init__(self, options: dict[T, bool] | None = None) -> None:
+        if options is not None:
+            for option, enabled in options.items():
+                if enabled:
+                    self.enable(option)
+                else:
+                    self.disable(option)
+        else:
+            self._options = self.default.copy()
+
 
 class CategorizationFlagWithOrdinance(Flag, Generic[T]):
     """For thing like choosing your starting party where order matters"""
@@ -109,7 +120,13 @@ class CategorizationFlagWithOrdinance(Flag, Generic[T]):
 
     @property
     def enabled(self) -> list[T]:
-        return sorted([option for option, enabled in self.options.items() if enabled is not None], key=lambda x: (self.options[x] is None, self.options[x] if self.options[x] is not None else 0))
+        return sorted(
+            [option for option, enabled in self.options.items() if enabled is not None],
+            key=lambda x: (
+                self.options[x] is None,
+                self.options[x] if self.options[x] is not None else 0,
+            ),
+        )
 
     @property
     def disabled(self) -> list[T]:
@@ -133,6 +150,13 @@ class CategorizationFlagWithOrdinance(Flag, Generic[T]):
 
     def reset(self) -> None:
         self._options = self.default.copy()
+
+    def __init__(self, options: dict[T, int | None] | None = None) -> None:
+        self._options = self.default.copy()
+        if options is not None:
+            for k, v in options.items():
+                assert k in self._options
+            self.options = deepcopy(options)
 
 
 class SelectOneFlag(Flag, Generic[T]):
@@ -159,6 +183,12 @@ class SelectOneFlag(Flag, Generic[T]):
     def reset(self) -> None:
         self._selected = self.default
 
+    def __init__(self, choice: T | None = None) -> None:
+        if choice is not None:
+            self.select(choice)
+        else:
+            self.select(self.default)
+
 
 class BooleanFlag(Flag):
     """For simple true/false flags"""
@@ -180,6 +210,12 @@ class BooleanFlag(Flag):
     def reset(self):
         self.enabled = self.default
 
+    def __init__(self, enabled: bool | None = None) -> None:
+        if enabled is not None:
+            self.enabled = enabled
+        else:
+            self.enabled = self.default
+
 
 class RangeFlag(Flag):
     """For flags that have a range of integer values"""
@@ -197,14 +233,20 @@ class RangeFlag(Flag):
     @property
     def value(self) -> int:
         return self._value or self.default
-    
+
     def set_value(self, value: int):
         if value < self.min_value or value > self.max_value:
             raise FlagError(f"Value {value} is out of range for this flag.")
         self._value = value
-    
+
     def reset(self):
         self._value = self.default
+
+    def __init__(self, threshold: int | None = None) -> None:
+        if threshold is not None:
+            self.set_value(threshold)
+        else:
+            self.set_value(self.default)
 
 
 # ******** Party
@@ -217,6 +259,7 @@ class ShuffleCharacters(BooleanFlag):
 <br>If disabled, you will start with Mario and recruit characters near their original locations."""
     _id = "random"
 
+
 class MaxCharacters(RangeFlag):
     _name = "Number of characters available"
     _description = "The total number of playable characters. Set this to 1 if you are attempting a solo challenge."
@@ -225,17 +268,25 @@ class MaxCharacters(RangeFlag):
     _default = 5
     _id = "max"
 
+
 class StartingCharacterEnum(CategorizationOption):
     pass
+
+
 _all_chars_list = [char.name for char in ally_collection._allies]
 for char_name in _all_chars_list:
-    setattr(StartingCharacterEnum, char_name.replace(" ", "_").replace("-", "_"), char_name)
-
+    setattr(
+        StartingCharacterEnum, char_name.replace(" ", "_").replace("-", "_"), char_name
+    )
 
 
 class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum]):
     _name = "Starting Characters"
-    _default: dict[StartingCharacterEnum, int | None] = {o: True for i, o in enumerate(StartingCharacterEnum.__members__.values()) if i == 0}
+    _default: dict[StartingCharacterEnum, int | None] = {
+        o: True
+        for i, o in enumerate(StartingCharacterEnum.__members__.values())
+        if i == 0
+    }
     _description = "The characters who will be in your party at the start of the game. Your first selection will be considered your starting character."
     _id = "starters"
 
@@ -259,7 +310,7 @@ class EquipmentCharactersOptions(CategorizationOption):
     RANDOM_ACCESSORIES_ALL = "Random, except anyone can wear any accessory"
     RANDOM = "Completely random"
     EQUIP_ALL = "Anyone can equip anything"
-    
+
 
 class EquipmentCharacters(SelectOneFlag[EquipmentCharactersOptions]):
     _name = "Equipment permissions"
@@ -371,12 +422,18 @@ class UncapSuperJumps(BooleanFlag):
 
 class LearnableSpellEnum(CategorizationOption):
     """Enumeration for all learnable spells"""
+
     pass
 
+
 # Populate the LearnableSpellEnum with spell names
-_all_spells_list = [spell.title for spell in ALL_SPELLS.spells if isinstance(spell, CharacterSpell)]
+_all_spells_list = [
+    spell.title for spell in ALL_SPELLS.spells if isinstance(spell, CharacterSpell)
+]
 for spell_name in _all_spells_list:
-    setattr(LearnableSpellEnum, spell_name.replace(" ", "_").replace("-", "_"), spell_name)
+    setattr(
+        LearnableSpellEnum, spell_name.replace(" ", "_").replace("-", "_"), spell_name
+    )
 
 
 class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
@@ -390,7 +447,7 @@ class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
     _id = "avail"
 
 
-# ******** Star Pieces
+# ******** Star Pieces and Bosses
 
 
 # if this is disabled, no other options in this category can be changed
@@ -404,7 +461,9 @@ class ShuffleStarPieces(BooleanFlag):
 
 class TotalStarPieces(RangeFlag):
     _name = "Total Star Pieces available"
-    _description = "The total number of Star Pieces (0-7) that can be collected in the seed."
+    _description = (
+        "The total number of Star Pieces (0-7) that can be collected in the seed."
+    )
     _default = 6
     min_value = 0
     max_value = 7
@@ -414,6 +473,21 @@ class TotalStarPieces(RangeFlag):
 # TODO: location enum
 class EnabledBossChecks(CategorizationFlag):
     pass
+
+
+class ProgressionLogicDifficultyOptions(CategorizationOption):
+    """Enumeration for progression logic difficulty levels"""
+
+    NORMAL = "Default"
+    HARD = "Hard"
+
+
+class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions]):
+    _name = "Progression logic difficulty"
+    _description = """<b>Normal</b> - The shuffler will take boss difficulty into account when placing progression items. Your expected early progression items are most likely to be found earlier in the game.
+<br>
+<br><b>Hard</b> - The shuffler will not consider boss difficulty when placing progression items. Your progression items may be found late in the game among higher level boss battles."""
+    _id = "restrict_map"
 
 
 class DisperseStarPieces(BooleanFlag):
@@ -460,7 +534,7 @@ class BiasItemShuffle(BooleanFlag):
     )
     _id = "bias"
 
-    
+
 class NoStarEgg(BooleanFlag):
     _name = "No Star Egg"
     _description = """If enabled, you are guaranteed not to find the Star Egg via any chests, overworld items, NPC rewards, or shops."""
@@ -473,7 +547,7 @@ class RestrictSpecialEquips(BooleanFlag):
 <br>
 <br>If disabled, the ten locations will simply contain random items, like every other item location."""
     _id = "restrict_monstro"
-    
+
 
 class EXPStarsAnywhere(BooleanFlag):
     _name = "Shuffle EXP stars"
@@ -492,14 +566,12 @@ class MimicsAnywhere(BooleanFlag):
     _id = "mimics"
 
 
-
 class SlotsAnywhere(BooleanFlag):
     _name = "Shuffle slot machine chests"
     _description = """If enabled, the three slot machine chests in Bean Valley may be moved elsewhere.
 <br>
 <br>If disabled, the three original slot machines in Bean Valley will be unchanged."""
     _id = "slots"
-
 
 
 class ShuffleBeetlemania(BooleanFlag):
@@ -591,6 +663,8 @@ class Remake(BooleanFlag):
 <br>
 <br>Boss fight locations will be available after you defeat the first iterations of those fights and also find the Stay Voucher. For example, you cannot do the postgame temple fight until after you have defeated the regular campaign temple fight, you can't use the Extra Shiny Stone until you've defeated the boss in the Monstro Town door the first time, etc."""
     _remake = False
+
+
 # If false, set "postgame_progress_checker_2" and "postgame_progress_checker_1" to 8 instead of 7 to make them inaccessible
 # enable the three freestanding npc prizes too
 
@@ -599,7 +673,11 @@ class Remake(BooleanFlag):
 from ..progression.prizelocations import CHECK_POOL
 from ..types.prizelocation import PrizeLocation, ShuffleLocationSelector
 
-_all_item_checks_list = [location.id for location in CHECK_POOL if isinstance(location, PrizeLocation)]
+_all_item_checks_list = [
+    location.id for location in CHECK_POOL if isinstance(location, PrizeLocation)
+]
+
+
 # TODO: remake inclusion
 class EnabledRegularChecks(CategorizationFlag[ShuffleLocationSelector]):
     _name = "General item pool checks"
@@ -748,6 +826,7 @@ class SuperJump2Threshold(RangeFlag):
 
 # ******** Progression Gating
 
+
 class BanditsWayGating(CategorizationOption):
     """Enumeration for Bandit's Way gating flag option"""
 
@@ -771,6 +850,7 @@ class BanditsWayGate(SelectOneFlag[BanditsWayGating]):
     _default = BanditsWayGating.MALLOW
     _id = "bw"
 
+
 class KeroSewersGating(CategorizationOption):
     """Enumeration for Bandit's Way gating flag option"""
 
@@ -779,6 +859,7 @@ class KeroSewersGating(CategorizationOption):
     KINGDOM = "Liberate Mushroom Kingdom"
     RFC = "Turn in the RareFrogCoin"
     OPEN = "Always open"
+
 
 class KeroSewersGate(SelectOneFlag[KeroSewersGating]):
     _name = """Kero Sewers access"""
@@ -962,6 +1043,7 @@ class SeaGating(CategorizationOption):
     TOADSTOOL = "Recruit Toadstool"
     STAR_4 = "Collect 4 Star Pieces"
     BUNDT = "Defeat Bundt"
+    MARRYMORE = "Finish Marrymore"
     OPEN = "Always open"
 
 
@@ -984,7 +1066,10 @@ class LandsEndGating(CategorizationOption):
 
     STAR_5 = "Collect 5 Star Pieces"
     ELDER = "Rescue and talk to the Seaside Town elder"
+    YARIDOVICH = "Defeat Yaridovich"
+    SEASIDE = "Finish Seaside Town"
     OPEN = "Always open"
+
 
 class LandsEndGate(SelectOneFlag[LandsEndGating]):
     _name = """Land's End access"""
@@ -1121,7 +1206,6 @@ class FactoryGating(CategorizationOption):
     EXOR = "Defeat Exor"
 
 
-
 class FactoryGate(SelectOneFlag[FactoryGating]):
     _name = """Factory access"""
     _description = """<b>Open when Bowser's Keep is opened</b>: When Bowser's Keep becomes available on the world map, Factory will also be immediately available on the world map.
@@ -1153,16 +1237,17 @@ class StarPiecesRequired(RangeFlag):
     max_value = 7
     _id = "endgame"
 
+
 # need to handle people attempting backtracking, expand event tile area
 class CasinoWarp(BooleanFlag):
     _name = "Casino Warp"
-    _description = """If enabled, a trampoline warping directly to the Inner Factory room containing the final boss' green button will become available in Grate Guy's Casino."""
+    _description = """If enabled, a trampoline warping directly to the final boss fight will become available in Grate Guy's Casino."""
     _id = "cwarp"
 
 
 class BucketWarp(BooleanFlag):
     _name = "Bucket Warp"
-    _description = "If enabled, trading a Carbo Cookie to the bucket girl in Moleville will reveal a warp to the Inner Factory room containing the final boss' green button."
+    _description = "If enabled, trading a Carbo Cookie to the bucket girl in Moleville will reveal a warp to the final boss fight."
     _id = "bwarp"
 
 
@@ -1235,7 +1320,6 @@ class RandomSunkenShipPassword(BooleanFlag):
     _id = "pwd"
 
 
-
 class BowserDoorShuffle(BooleanFlag):
     _name = "Randomize Bowser's Keep room sequences"
     _description = """If enabled, the 18 rooms making up the six Bowser's Keep obstacle course doors will be shuffled into six random sequences of three rooms each."""
@@ -1289,7 +1373,7 @@ class ShopQuality(SelectOneFlag[ShopQualities]):
 <br>"Completely random" means that some items which originally did not appear in shops may now appear in shops, but only a small pool of items are guaranteed to appear. Some items will never appear in non-depletable shops. 
 <br>
 <br>If "Completely empty" is selected, all shops will just sell the Goodie Bag."""
-    choices = [o for o in ShopQualities] 
+    choices = [o for o in ShopQualities]
     _default = ShopQualities.ORIGINAL
     _id = "quality"
     _requires_all = [(ShuffleShops(), True)]
@@ -1389,7 +1473,9 @@ class IncludeHenchmen(BooleanFlag):
 
 class ShuffledBossEnum(CategorizationOption):
     """Enumeration for all boss fights that can be shuffled"""
+
     pass
+
 
 # Populate ShuffledBossEnum with boss fight names from the class names
 def _boss_class_to_name(boss_class: type[BossFightPrize]) -> str:
@@ -1401,16 +1487,18 @@ def _boss_class_to_name(boss_class: type[BossFightPrize]) -> str:
         Culex3DBossFight -> Culex 3D
     """
     import re
+
     name = boss_class.__name__
     # Remove BossFight/Fight suffix
-    name = re.sub(r'(BossFight|Fight|Dight)$', '', name)
+    name = re.sub(r"(BossFight|Fight|Dight)$", "", name)
     # Add spaces before capital letters and numbers
-    name = re.sub(r'([a-z])([A-Z])', r'\1 \2', name)
-    name = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\1 \2', name)
-    name = re.sub(r'(\d+)', r' \1', name)
+    name = re.sub(r"([a-z])([A-Z])", r"\1 \2", name)
+    name = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", name)
+    name = re.sub(r"(\d+)", r" \1", name)
     # Clean up multiple spaces
-    name = re.sub(r'\s+', ' ', name).strip()
+    name = re.sub(r"\s+", " ", name).strip()
     return name
+
 
 for boss_class in ALL_BOSS_FIGHTS:
     boss_name = _boss_class_to_name(boss_class)
@@ -1512,7 +1600,6 @@ class NoGenoWhirlExor(BooleanFlag):
     _id = "nowhirl"
 
 
-
 class FixMagikoopa(BooleanFlag):
     _name = "Fix Magikoopa"
     _description = (
@@ -1560,7 +1647,9 @@ class CanonNames(BooleanFlag):
 
 class Peach(BooleanFlag):
     _name = "Rename Peach"
-    _description = "Toadstool is renamed 'Peach' (overridden by palette name swaps, if enabled)."
+    _description = (
+        "Toadstool is renamed 'Peach' (overridden by palette name swaps, if enabled)."
+    )
     _id = "peach"
 
 
@@ -1632,9 +1721,11 @@ class FlagCategory:
     def size(self) -> int:
         """Something to do with the frontend that I don't remember"""
         return self._size
-    
+
+
 class CharacterRecruitmentSubcategory(FlagCategory):
     """Collection of settings related to character recruitment."""
+
     _flags: list[type[Flag]] = [
         ShuffleCharacters,
         MaxCharacters,
@@ -1644,8 +1735,10 @@ class CharacterRecruitmentSubcategory(FlagCategory):
     _size: int = 4
     _id: str = "P"
 
+
 class CharacterEquipmentSubcategory(FlagCategory):
     """Collection of settings related to equipment properties."""
+
     _flags: list[type[Flag]] = [
         EquipmentCharacters,
         EquipmentProperties,
@@ -1654,6 +1747,7 @@ class CharacterEquipmentSubcategory(FlagCategory):
     ]
     _size: int = 4
     _id: str = "Q"
+
 
 class CharacterStatsSpellsSubcategory(FlagCategory):
     """Collection of settings related to learnable spells."""
@@ -1666,8 +1760,9 @@ class CharacterStatsSpellsSubcategory(FlagCategory):
         InfuseSpellElements,
         CharacterSpellElements,
         UncapSuperJumps,
-        AvailableSpells
+        AvailableSpells,
     ]
+
 
 class PartyCategory(FlagCategory):
     """Pan-collection of settings related to party members and equips."""
@@ -1680,6 +1775,7 @@ class PartyCategory(FlagCategory):
     ]
     _id: str = "PartyCategory"
 
+
 class StarPiecesCategory(FlagCategory):
     """Collection of settings related to star piece distribution."""
 
@@ -1687,10 +1783,12 @@ class StarPiecesCategory(FlagCategory):
         ShuffleStarPieces,
         TotalStarPieces,
         EnabledBossChecks,
-        DisperseStarPieces
+        ProgressionLogicDifficulty,
+        DisperseStarPieces,
     ]
     _size: int = 3
     _id: str = "X"
+
 
 class ItemShuffleSubcategory(FlagCategory):
     """Collection of settings related to item distribution."""
@@ -1712,6 +1810,7 @@ class ItemShuffleSubcategory(FlagCategory):
     ]
     _id: str = "T"
 
+
 class ItemLocationSubcategory(FlagCategory):
     """Collection of settings related to item availability."""
 
@@ -1720,9 +1819,10 @@ class ItemLocationSubcategory(FlagCategory):
         StarPieceAvailability,
         InvisibleFlagsSetting,
         Remake,
-        EnabledRegularChecks
+        EnabledRegularChecks,
     ]
     _id: str = "L"
+
 
 class BehaviourSubcategory(FlagCategory):
     """Collection of settings related to item and minigame behaviour."""
@@ -1744,6 +1844,7 @@ class BehaviourSubcategory(FlagCategory):
     ]
     _id: str = "I"
 
+
 class ItemsCategory(FlagCategory):
     """Pan-collection of settings related to items."""
 
@@ -1755,6 +1856,7 @@ class ItemsCategory(FlagCategory):
         BehaviourSubcategory,
     ]
     _id: str = "ItemsCategory"
+
 
 class AreaAccessSubcategory(FlagCategory):
     """Collection of settings related to area gating logic."""
@@ -1775,10 +1877,11 @@ class AreaAccessSubcategory(FlagCategory):
         NimbusGate,
         BarrelVolcanoGate,
         BowsersKeepGate,
-        FactoryGate
+        FactoryGate,
     ]
     _size: int = 3
     _id: str = "A"
+
 
 class OtherAccessSubcategory(FlagCategory):
     """Collection of settings related to event gating logic."""
@@ -1791,10 +1894,11 @@ class OtherAccessSubcategory(FlagCategory):
         CasinoWarp,
         BucketWarp,
         FastTravel,
-        WinCondition
+        WinCondition,
     ]
     _size: int = 3
     _id: str = "O"
+
 
 class PuzzleCategory(FlagCategory):
     """Collection of settings related to puzzles."""
@@ -1808,10 +1912,11 @@ class PuzzleCategory(FlagCategory):
         RandomSunkenShipPassword,
         BowserDoorShuffle,
         SkipMinecart,
-        BetterTips
+        BetterTips,
     ]
     _size: int = 3
     _id: str = "G"
+
 
 class ShopsCategory(FlagCategory):
     """Collection of settings related to shops."""
@@ -1822,10 +1927,11 @@ class ShopsCategory(FlagCategory):
         BiasShopShuffle,
         NoPickMeUps,
         ShowEquips,
-        FreeShops
+        FreeShops,
     ]
     _size: int = 3
     _id: str = "S"
+
 
 class AccessCategory(FlagCategory):
     """Pan-collection of settings related to logical access and puzzles."""
@@ -1839,6 +1945,7 @@ class AccessCategory(FlagCategory):
     ]
     _id: str = "AccessCategory"
 
+
 class BossPositionSubcategory(FlagCategory):
     """Collection of settings related to boss placement."""
 
@@ -1848,7 +1955,7 @@ class BossPositionSubcategory(FlagCategory):
         BossReplaceMinigameSprites,
         DifferentiateRepeatedBosses,
         IncludeHenchmen,
-        ShuffledBosses
+        ShuffledBosses,
     ]
     _size: int = 4
     _id: str = "B"
@@ -1882,6 +1989,7 @@ class BossCheeseSubcategory(FlagCategory):
     _size: int = 4
     _id: str = "F"
 
+
 class BossCategory(FlagCategory):
     """Pan-collection of settings related to bosses."""
 
@@ -1893,23 +2001,19 @@ class BossCategory(FlagCategory):
     ]
     _id: str = "BossCategory"
 
+
 class AccessibilitySubcategory(FlagCategory):
     """Collection of settings related to accessibility."""
 
-    _flags: list[type[Flag]] = [
-        RemoveFlashes,
-        HoldB
-    ]
+    _flags: list[type[Flag]] = [RemoveFlashes, HoldB]
     _size: int = 3
     _id: str = "R"
+
 
 class MusicSubcategory(FlagCategory):
     """Collection of settings related to music cosmetics."""
 
-    _flags: list[type[Flag]] = [
-        BossShuffleMusic,
-        ShuffledMusic
-    ]
+    _flags: list[type[Flag]] = [BossShuffleMusic, ShuffledMusic]
     _size: int = 3
     _id: str = "R"
 
@@ -1927,14 +2031,10 @@ class PaletteSubcategory(FlagCategory):
 
 class NamesCategory(FlagCategory):
 
-    _flags: list[type[Flag]] = [
-        ChangeNames,
-        RemakeNames,
-        CanonNames,
-        Peach
-    ]
+    _flags: list[type[Flag]] = [ChangeNames, RemakeNames, CanonNames, Peach]
     _size: int = 3
     _id: str = "R"
+
 
 class CosmeticCategory(FlagCategory):
     """Pan-collection of settings related to things that don't affect logic."""
@@ -1946,6 +2046,7 @@ class CosmeticCategory(FlagCategory):
         PaletteSubcategory,
         NamesCategory,
     ]
+
 
 FlagCategoryT = TypeVar(
     "FlagCategoryT",
@@ -1972,11 +2073,13 @@ FlagCategoryT = TypeVar(
     PaletteSubcategory,
     NamesCategory,
     CosmeticCategory,
-    FlagCategory)
+    FlagCategory,
+)
 
 CATEGORIES = (
     PartyCategory,
     ItemsCategory,
     AccessCategory,
     BossCategory,
-    CosmeticCategory)
+    CosmeticCategory,
+)

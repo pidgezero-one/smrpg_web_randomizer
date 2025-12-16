@@ -50,8 +50,8 @@ from ..data.rooms.npcs import EMPTY_NPC_3
 from ..data.variables.variable_names import INVISIBLE_FLAG_1_FOUND, INVISIBLE_FLAG_2_FOUND, INVISIBLE_FLAG_3_FOUND
 
 if TYPE_CHECKING:
-    from ..types.settings import Settings
     from ..types.logic import Inventory
+    from ..types.gameworld import GameWorld
 
 
 class ShuffleLocationSelector(CategorizationOption):
@@ -697,7 +697,7 @@ class PrizeLocation:
     def can_accept(self, prize: Prize) -> bool:
         return not isinstance(prize, tuple(self._blacklist))
 
-    def can_access(self, settings: Settings) -> bool:
+    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return True
 
     def grant(self) -> EventScript:
@@ -707,8 +707,8 @@ class PrizeLocation:
     def remake_only(self) -> bool:
         return self._remake_only
 
-    def __init__(self, prize: Prize | None):
-        self._prize = prize
+    def __init__(self):
+        self._prize = self.originally_held() if self.originally_held is not None else None
 
 
 class FrogDiscipleLocation(PrizeLocation):
@@ -1149,7 +1149,7 @@ class InvisibleFlagLocation(NPCLocationRow1):
             return BigBooFlagPrize
         raise ValueError("which must be 0, 1, or 2")
 
-    def __init__(self, which: int, prize: Prize | None):
-        super().__init__(prize)
+    def __init__(self, which: int):
+        super().__init__(self.originally_held() if self.originally_held is not None else None)
         assert which in (0, 1, 2)
         self._which = which
